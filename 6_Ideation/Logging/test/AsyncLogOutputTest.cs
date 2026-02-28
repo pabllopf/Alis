@@ -5,30 +5,29 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: AsyncLogOutputTest.cs
+//  File:AsyncLogOutputTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program. If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Logging.Abstractions;
 using Alis.Core.Aspect.Logging.Core;
 using Alis.Core.Aspect.Logging.Outputs;
@@ -78,6 +77,7 @@ namespace Alis.Core.Aspect.Logging.Test
                 LogEntry entry = new LogEntry(LogLevel.Info, $"Message {i}", "Logger");
                 asyncOutput.Write(entry);
             }
+
             asyncOutput.Flush();
 
             // Assert
@@ -139,13 +139,14 @@ namespace Alis.Core.Aspect.Logging.Test
         {
             // Arrange
             MemoryLogOutput innerOutput = new MemoryLogOutput();
-            AsyncLogOutput asyncOutput = new AsyncLogOutput(innerOutput, maxQueueSize: 5);
+            AsyncLogOutput asyncOutput = new AsyncLogOutput(innerOutput, 5);
 
             // Act
             for (int i = 0; i < 10; i++)
             {
                 asyncOutput.Write(new LogEntry(LogLevel.Info, $"Message {i}", "Logger"));
             }
+
             asyncOutput.Flush();
 
             // Assert - At most 5 should be queued
@@ -157,13 +158,14 @@ namespace Alis.Core.Aspect.Logging.Test
         {
             // Arrange
             MemoryLogOutput innerOutput = new MemoryLogOutput();
-            AsyncLogOutput asyncOutput = new AsyncLogOutput(innerOutput, maxQueueSize: 0);
+            AsyncLogOutput asyncOutput = new AsyncLogOutput(innerOutput, 0);
 
             // Act
             for (int i = 0; i < 1000; i++)
             {
                 asyncOutput.Write(new LogEntry(LogLevel.Info, $"Message {i}", "Logger"));
             }
+
             asyncOutput.Flush();
 
             // Assert
@@ -219,9 +221,13 @@ namespace Alis.Core.Aspect.Logging.Test
                 throw new InvalidOperationException("Faulty");
             }
 
-            public void Flush() { }
-            public void Dispose() { }
+            public void Flush()
+            {
+            }
+
+            public void Dispose()
+            {
+            }
         }
     }
 }
-

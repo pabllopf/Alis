@@ -476,8 +476,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="height">The height</param>
         /// <param name="depthBuffer">The depth buffer</param>
         /// <returns>The int ptr</returns>
-        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern IntPtr sfRenderTexture_create(uint width, uint height, bool depthBuffer);
 
         /// <summary>
@@ -487,16 +486,14 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="height">The height</param>
         /// <param name="settings">The settings</param>
         /// <returns>The int ptr</returns>
-        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern IntPtr sfRenderTexture_createWithSettings(uint width, uint height, ContextSettings settings);
 
         /// <summary>
         ///     Sfs the render texture destroy using the specified c pointer
         /// </summary>
         /// <param name="cPointer">The pointer</param>
-        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern void sfRenderTexture_destroy(IntPtr cPointer);
 
         /// <summary>
@@ -504,8 +501,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// </summary>
         /// <param name="cPointer">The pointer</param>
         /// <param name="clearColor">The clear color</param>
-        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern void sfRenderTexture_clear(IntPtr cPointer, Color clearColor);
 
         /// <summary>
@@ -513,8 +509,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// </summary>
         /// <param name="cPointer">The pointer</param>
         /// <returns>The vector 2u</returns>
-        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern Vector2F sfRenderTexture_getSize(IntPtr cPointer);
 
         /// <summary>
@@ -523,8 +518,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="cPointer">The pointer</param>
         /// <param name="active">The active</param>
         /// <returns>The bool</returns>
-        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern bool sfRenderTexture_setActive(IntPtr cPointer, bool active);
 
         /// <summary>
@@ -532,8 +526,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// </summary>
         /// <param name="cPointer">The pointer</param>
         /// <returns>The bool</returns>
-        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern bool sfRenderTexture_saveGLStates(IntPtr cPointer);
 
         /// <summary>
@@ -541,8 +534,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// </summary>
         /// <param name="cPointer">The pointer</param>
         /// <returns>The bool</returns>
-        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern bool sfRenderTexture_restoreGLStates(IntPtr cPointer);
 
         /// <summary>
@@ -550,8 +542,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// </summary>
         /// <param name="cPointer">The pointer</param>
         /// <returns>The bool</returns>
-        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern bool sfRenderTexture_display(IntPtr cPointer);
 
         /// <summary>
@@ -559,8 +550,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// </summary>
         /// <param name="cPointer">The pointer</param>
         /// <param name="view">The view</param>
-        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern void sfRenderTexture_setView(IntPtr cPointer, IntPtr view);
 
         /// <summary>
@@ -568,8 +558,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// </summary>
         /// <param name="cPointer">The pointer</param>
         /// <returns>The int ptr</returns>
-        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern IntPtr sfRenderTexture_getView(IntPtr cPointer);
 
         /// <summary>
@@ -577,8 +566,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// </summary>
         /// <param name="cPointer">The pointer</param>
         /// <returns>The int ptr</returns>
-        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern IntPtr sfRenderTexture_getDefaultView(IntPtr cPointer);
 
         /// <summary>
@@ -587,8 +575,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="cPointer">The pointer</param>
         /// <param name="targetView">The target view</param>
         /// <returns>The int rect</returns>
-        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern IntRect sfRenderTexture_getViewport(IntPtr cPointer, IntPtr targetView);
 
         /// <summary>
@@ -598,8 +585,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="point">The point</param>
         /// <param name="view">The view</param>
         /// <returns>The vector 2i</returns>
-        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern Vector2F sfRenderTexture_mapCoordsToPixel(IntPtr cPointer, Vector2F point, IntPtr view);
 
         /// <summary>
@@ -609,8 +595,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="point">The point</param>
         /// <param name="view">The view</param>
         /// <returns>The vector 2f</returns>
-        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern Vector2F sfRenderTexture_mapPixelToCoords(IntPtr cPointer, Vector2F point, IntPtr view);
 
         /// <summary>
@@ -618,16 +603,14 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// </summary>
         /// <param name="cPointer">The pointer</param>
         /// <returns>The int ptr</returns>
-        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern IntPtr sfRenderTexture_getTexture(IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the render texture get maximum antialiasing level
         /// </summary>
         /// <returns>The uint</returns>
-        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern uint sfRenderTexture_getMaximumAntialiasingLevel();
 
         /// <summary>
@@ -635,8 +618,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// </summary>
         /// <param name="cPointer">The pointer</param>
         /// <param name="smooth">The smooth</param>
-        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern void sfRenderTexture_setSmooth(IntPtr cPointer, bool smooth);
 
         /// <summary>
@@ -644,8 +626,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// </summary>
         /// <param name="cPointer">The pointer</param>
         /// <returns>The bool</returns>
-        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern bool sfRenderTexture_isSmooth(IntPtr cPointer);
 
         /// <summary>
@@ -653,8 +634,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// </summary>
         /// <param name="cPointer">The pointer</param>
         /// <param name="repeated">The repeated</param>
-        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern void sfRenderTexture_setRepeated(IntPtr cPointer, bool repeated);
 
         /// <summary>
@@ -662,8 +642,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// </summary>
         /// <param name="cPointer">The pointer</param>
         /// <returns>The bool</returns>
-        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern bool sfRenderTexture_isRepeated(IntPtr cPointer);
 
         /// <summary>
@@ -671,8 +650,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// </summary>
         /// <param name="cPointer">The pointer</param>
         /// <returns>The bool</returns>
-        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern bool sfRenderTexture_generateMipmap(IntPtr cPointer);
 
         /// <summary>
@@ -683,8 +661,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="vertexCount">The vertex count</param>
         /// <param name="type">The type</param>
         /// <param name="renderStates">The render states</param>
-        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern void sfRenderTexture_drawPrimitives(IntPtr cPointer, Vertex vertexPtr, uint vertexCount, PrimitiveType type, ref RenderStates.MarshalData renderStates);
 
         /// <summary>
@@ -695,8 +672,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="vertexCount">The vertex count</param>
         /// <param name="type">The type</param>
         /// <param name="renderStates">The render states</param>
-        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern void sfRenderTexture_drawPrimitives(IntPtr cPointer, IntPtr vertexPtr, uint vertexCount, PrimitiveType type, ref RenderStates.MarshalData renderStates);
 
 
@@ -704,24 +680,21 @@ namespace Alis.Extension.Graphic.Sfml.Render
         ///     Sfs the render texture push gl states using the specified c pointer
         /// </summary>
         /// <param name="cPointer">The pointer</param>
-        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern void sfRenderTexture_pushGLStates(IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the render texture pop gl states using the specified c pointer
         /// </summary>
         /// <param name="cPointer">The pointer</param>
-        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern void sfRenderTexture_popGLStates(IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the render texture reset gl states using the specified c pointer
         /// </summary>
         /// <param name="cPointer">The pointer</param>
-        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern void sfRenderTexture_resetGLStates(IntPtr cPointer);
     }
 }

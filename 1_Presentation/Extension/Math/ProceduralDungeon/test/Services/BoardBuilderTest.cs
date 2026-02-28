@@ -120,7 +120,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
             BoardSquare[,] board = builder.CreateEmptyBoard(20, 20);
             List<RoomData> rooms = new List<RoomData>
             {
-                new RoomData(5, 5, 3, 3, Direction.North, false)
+                new RoomData(5, 5, 3, 3, Direction.North)
             };
 
             // Act
@@ -228,7 +228,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
             // Arrange
             BoardBuilder builder = new BoardBuilder();
             BoardSquare[,] board = builder.CreateEmptyBoard(10, 10);
-            
+
             // Create a simple floor area
             board[5, 5].Type = BoardSquareType.Floor;
 
@@ -263,8 +263,8 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
             BoardSquare[,] board = builder.CreateEmptyBoard(30, 30);
             List<RoomData> rooms = new List<RoomData>
             {
-                new RoomData(5, 5, 3, 3, Direction.North, false),
-                new RoomData(15, 15, 4, 4, Direction.South, false)
+                new RoomData(5, 5, 3, 3, Direction.North),
+                new RoomData(15, 15, 4, 4, Direction.South)
             };
 
             // Act
@@ -274,7 +274,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
             // Check first room
             Assert.Equal(BoardSquareType.Floor, board[5, 5].Type);
             Assert.Equal(BoardSquareType.Floor, board[7, 7].Type);
-            
+
             // Check second room
             Assert.Equal(BoardSquareType.Floor, board[15, 15].Type);
             Assert.Equal(BoardSquareType.Floor, board[18, 18].Type);
@@ -327,7 +327,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
             BoardSquare[,] board = builder.CreateEmptyBoard(10, 10);
             List<RoomData> rooms = new List<RoomData>
             {
-                new RoomData(8, 8, 5, 5, Direction.North, false) // Would overflow
+                new RoomData(8, 8, 5, 5, Direction.North) // Would overflow
             };
 
             // Act
@@ -338,4 +338,3 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
         }
     }
 }
-

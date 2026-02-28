@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:MonitorTests.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,7 +39,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
     public class MonitorTests
     {
         /// <summary>
-        /// Tests that monitor none is default value
+        ///     Tests that monitor none is default value
         /// </summary>
         [Fact]
         public void Monitor_None_IsDefaultValue()
@@ -51,7 +52,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
         }
 
         /// <summary>
-        /// Tests that monitor equals with same monitor returns true
+        ///     Tests that monitor equals with same monitor returns true
         /// </summary>
         [Fact]
         public void Monitor_Equals_WithSameMonitor_ReturnsTrue()
@@ -68,7 +69,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
         }
 
         /// <summary>
-        /// Tests that monitor equals with object returns correct result
+        ///     Tests that monitor equals with object returns correct result
         /// </summary>
         [Fact]
         public void Monitor_Equals_WithObject_ReturnsCorrectResult()
@@ -85,7 +86,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
         }
 
         /// <summary>
-        /// Tests that monitor equals with non monitor object returns false
+        ///     Tests that monitor equals with non monitor object returns false
         /// </summary>
         [Fact]
         public void Monitor_Equals_WithNonMonitorObject_ReturnsFalse()
@@ -102,7 +103,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
         }
 
         /// <summary>
-        /// Tests that monitor get hash code returns same for equal monitors
+        ///     Tests that monitor get hash code returns same for equal monitors
         /// </summary>
         [Fact]
         public void Monitor_GetHashCode_ReturnsSameForEqualMonitors()
@@ -120,7 +121,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
         }
 
         /// <summary>
-        /// Tests that monitor equality operator with same monitors returns true
+        ///     Tests that monitor equality operator with same monitors returns true
         /// </summary>
         [Fact]
         public void Monitor_EqualityOperator_WithSameMonitors_ReturnsTrue()
@@ -137,7 +138,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
         }
 
         /// <summary>
-        /// Tests that monitor inequality operator with same monitors returns false
+        ///     Tests that monitor inequality operator with same monitors returns false
         /// </summary>
         [Fact]
         public void Monitor_InequalityOperator_WithSameMonitors_ReturnsFalse()
@@ -154,7 +155,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
         }
 
         /// <summary>
-        /// Tests that monitor equals with i equatable interface works
+        ///     Tests that monitor equals with i equatable interface works
         /// </summary>
         [Fact]
         public void Monitor_Equals_WithIEquatableInterface_Works()
@@ -171,4 +172,3 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
         }
     }
 }
-

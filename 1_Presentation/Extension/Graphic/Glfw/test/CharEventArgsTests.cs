@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:CharEventArgsTests.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -37,7 +38,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
     public class CharEventArgsTests
     {
         /// <summary>
-        /// Tests that constructor with valid parameters sets properties
+        ///     Tests that constructor with valid parameters sets properties
         /// </summary>
         [Fact]
         public void Constructor_WithValidParameters_SetsProperties()
@@ -55,7 +56,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that char with ascii code point returns correct character
+        ///     Tests that char with ascii code point returns correct character
         /// </summary>
         [Fact]
         public void Char_WithAsciiCodePoint_ReturnsCorrectCharacter()
@@ -72,7 +73,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that char with unicode code point returns correct character
+        ///     Tests that char with unicode code point returns correct character
         /// </summary>
         [Fact]
         public void Char_WithUnicodeCodePoint_ReturnsCorrectCharacter()
@@ -89,7 +90,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that char with lowercase code point returns correct character
+        ///     Tests that char with lowercase code point returns correct character
         /// </summary>
         [Fact]
         public void Char_WithLowercaseCodePoint_ReturnsCorrectCharacter()
@@ -106,7 +107,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that constructor with multiple modifiers stores modifiers
+        ///     Tests that constructor with multiple modifiers stores modifiers
         /// </summary>
         [Fact]
         public void Constructor_WithMultipleModifiers_StoresModifiers()
@@ -123,7 +124,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that code point property returns correct value
+        ///     Tests that code point property returns correct value
         /// </summary>
         [Fact]
         public void CodePoint_Property_ReturnsCorrectValue()
@@ -140,4 +141,3 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
     }
 }
-

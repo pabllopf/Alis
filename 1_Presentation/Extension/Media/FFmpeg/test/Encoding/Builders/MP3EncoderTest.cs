@@ -298,4 +298,3 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         }
     }
 }
-

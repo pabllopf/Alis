@@ -90,10 +90,6 @@ namespace Alis.Extension.Thread.Core
         /// <param name="count">The number of items</param>
         /// <param name="minBatchSize">The minimum batch size</param>
         /// <returns>True if parallel execution should be used</returns>
-        public bool ShouldExecuteInParallel(int count, int minBatchSize)
-        {
-            return EnableParallelExecution && count >= minBatchSize && MaxDegreeOfParallelism > 1;
-        }
+        public bool ShouldExecuteInParallel(int count, int minBatchSize) => EnableParallelExecution && (count >= minBatchSize) && (MaxDegreeOfParallelism > 1);
     }
 }
-

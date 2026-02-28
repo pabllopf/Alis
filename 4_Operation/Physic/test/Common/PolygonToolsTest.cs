@@ -46,7 +46,7 @@ namespace Alis.Core.Physic.Test.Common
         public void CreateRectangle_ShouldCreateFourVertices()
         {
             Vertices vertices = PolygonTools.CreateRectangle(5.0f, 3.0f);
-            
+
             Assert.Equal(4, vertices.Count);
         }
 
@@ -58,9 +58,9 @@ namespace Alis.Core.Physic.Test.Common
         {
             float hx = 5.0f;
             float hy = 3.0f;
-            
+
             Vertices vertices = PolygonTools.CreateRectangle(hx, hy);
-            
+
             Assert.Equal(new Vector2F(-hx, -hy), vertices[0]);
             Assert.Equal(new Vector2F(hx, -hy), vertices[1]);
             Assert.Equal(new Vector2F(hx, hy), vertices[2]);
@@ -74,10 +74,10 @@ namespace Alis.Core.Physic.Test.Common
         public void CreateRectangleWithTransform_ShouldCreateRotatedRectangle()
         {
             Vector2F center = new Vector2F(10, 10);
-            float angle = (float)Math.PI / 4; // 45 degrees
-            
+            float angle = (float) Math.PI / 4; // 45 degrees
+
             Vertices vertices = PolygonTools.CreateRectangle(5.0f, 3.0f, center, angle);
-            
+
             Assert.Equal(4, vertices.Count);
         }
 
@@ -89,9 +89,9 @@ namespace Alis.Core.Physic.Test.Common
         {
             Vector2F start = new Vector2F(0, 0);
             Vector2F end = new Vector2F(10, 0);
-            
+
             Vertices vertices = PolygonTools.CreateLine(start, end);
-            
+
             Assert.Equal(2, vertices.Count);
             Assert.Equal(start, vertices[0]);
             Assert.Equal(end, vertices[1]);
@@ -105,9 +105,9 @@ namespace Alis.Core.Physic.Test.Common
         {
             float radius = 5.0f;
             int edges = 16;
-            
+
             Vertices vertices = PolygonTools.CreateCircle(radius, edges);
-            
+
             Assert.Equal(edges, vertices.Count);
         }
 
@@ -119,9 +119,9 @@ namespace Alis.Core.Physic.Test.Common
         {
             float radius = 5.0f;
             int edges = 8;
-            
+
             Vertices vertices = PolygonTools.CreateCircle(radius, edges);
-            
+
             foreach (Vector2F vertex in vertices)
             {
                 float distance = vertex.Length();
@@ -138,9 +138,9 @@ namespace Alis.Core.Physic.Test.Common
             float xRadius = 5.0f;
             float yRadius = 3.0f;
             int edges = 16;
-            
+
             Vertices vertices = PolygonTools.CreateEllipse(xRadius, yRadius, edges);
-            
+
             Assert.Equal(edges, vertices.Count);
         }
 
@@ -155,9 +155,9 @@ namespace Alis.Core.Physic.Test.Common
             float xRadius = 1.0f;
             float yRadius = 1.0f;
             int segments = 2;
-            
+
             Vertices vertices = PolygonTools.CreateRoundedRectangle(width, height, xRadius, yRadius, segments);
-            
+
             Assert.NotEmpty(vertices);
         }
 
@@ -171,7 +171,7 @@ namespace Alis.Core.Physic.Test.Common
             float height = 6.0f;
             float xRadius = 10.0f; // Too large
             float yRadius = 1.0f;
-            
+
             Assert.Throws<Exception>(() => PolygonTools.CreateRoundedRectangle(width, height, xRadius, yRadius, 2));
         }
 
@@ -191,7 +191,7 @@ namespace Alis.Core.Physic.Test.Common
         public void CreateRoundedRectangle_WithZeroSegments_ShouldCreateBasicShape()
         {
             Vertices vertices = PolygonTools.CreateRoundedRectangle(10.0f, 6.0f, 1.0f, 1.0f, 0);
-            
+
             Assert.Equal(8, vertices.Count);
         }
 
@@ -202,7 +202,7 @@ namespace Alis.Core.Physic.Test.Common
         public void CreateRectangle_ShouldHandleZeroDimensions()
         {
             Vertices vertices = PolygonTools.CreateRectangle(0.0f, 0.0f);
-            
+
             Assert.Equal(4, vertices.Count);
             Assert.All(vertices, v => Assert.Equal(Vector2F.Zero, v));
         }
@@ -214,7 +214,7 @@ namespace Alis.Core.Physic.Test.Common
         public void CreateCircle_ShouldHandleMinimumEdges()
         {
             Vertices vertices = PolygonTools.CreateCircle(5.0f, 3);
-            
+
             Assert.Equal(3, vertices.Count);
         }
 
@@ -225,7 +225,7 @@ namespace Alis.Core.Physic.Test.Common
         public void CreateEllipse_ShouldHandleDifferentRadii()
         {
             Vertices vertices = PolygonTools.CreateEllipse(10.0f, 5.0f, 16);
-            
+
             Assert.Equal(16, vertices.Count);
         }
 
@@ -236,9 +236,8 @@ namespace Alis.Core.Physic.Test.Common
         public void CreateRectangle_WithNegativeDimensions_ShouldWork()
         {
             Vertices vertices = PolygonTools.CreateRectangle(-5.0f, -3.0f);
-            
+
             Assert.Equal(4, vertices.Count);
         }
     }
 }
-

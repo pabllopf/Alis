@@ -75,16 +75,14 @@ namespace Alis.Extension.Graphic.Sfml.Systems
         ///     Sfs the clock create
         /// </summary>
         /// <returns>The int ptr</returns>
-        [DllImport(Csfml.System, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.System, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern IntPtr sfClock_create();
 
         /// <summary>
         ///     Sfs the clock destroy using the specified c pointer
         /// </summary>
         /// <param name="cPointer">The pointer</param>
-        [DllImport(Csfml.System, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.System, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern void sfClock_destroy(IntPtr cPointer);
 
         /// <summary>
@@ -92,8 +90,7 @@ namespace Alis.Extension.Graphic.Sfml.Systems
         /// </summary>
         /// <param name="clock">The clock</param>
         /// <returns>The time</returns>
-        [DllImport(Csfml.System, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.System, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern SfmlTime sfClock_getElapsedTime(IntPtr clock);
 
         /// <summary>
@@ -101,8 +98,7 @@ namespace Alis.Extension.Graphic.Sfml.Systems
         /// </summary>
         /// <param name="clock">The clock</param>
         /// <returns>The time</returns>
-        [DllImport(Csfml.System, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.System, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern SfmlTime sfClock_restart(IntPtr clock);
     }
 }

@@ -5,53 +5,51 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: EscapeSequenceHandlerTest.cs
+//  File:EscapeSequenceHandlerTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program. If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Data.Json.Helpers;
 using Xunit;
 
 namespace Alis.Core.Aspect.Data.Test.Json.Helpers
 {
     /// <summary>
-    /// The escape sequence handler test class
+    ///     The escape sequence handler test class
     /// </summary>
     public class EscapeSequenceHandlerTest
     {
         /// <summary>
-        /// The handler
+        ///     The handler
         /// </summary>
         private readonly EscapeSequenceHandler _handler;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EscapeSequenceHandlerTest"/> class
+        ///     Initializes a new instance of the <see cref="EscapeSequenceHandlerTest" /> class
         /// </summary>
-        public EscapeSequenceHandlerTest()
-        {
-            _handler = new EscapeSequenceHandler();
-        }
+        public EscapeSequenceHandlerTest() => _handler = new EscapeSequenceHandler();
 
         /// <summary>
-        /// Tests that is escaped with escaped quote returns true
+        ///     Tests that is escaped with escaped quote returns true
         /// </summary>
         [Fact]
         public void IsEscaped_WithEscapedQuote_ReturnsTrue()
@@ -62,7 +60,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Helpers
         }
 
         /// <summary>
-        /// Tests that is escaped with unescaped character returns false
+        ///     Tests that is escaped with unescaped character returns false
         /// </summary>
         [Fact]
         public void IsEscaped_WithUnescapedCharacter_ReturnsFalse()
@@ -73,7 +71,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Helpers
         }
 
         /// <summary>
-        /// Tests that is escaped with negative position returns false
+        ///     Tests that is escaped with negative position returns false
         /// </summary>
         [Fact]
         public void IsEscaped_WithNegativePosition_ReturnsFalse()
@@ -84,7 +82,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Helpers
         }
 
         /// <summary>
-        /// Tests that is escaped with position out of range returns false
+        ///     Tests that is escaped with position out of range returns false
         /// </summary>
         [Fact]
         public void IsEscaped_WithPositionOutOfRange_ReturnsFalse()
@@ -95,16 +93,16 @@ namespace Alis.Core.Aspect.Data.Test.Json.Helpers
         }
 
         /// <summary>
-        /// Tests that is escaped with null text throws argument null exception
+        ///     Tests that is escaped with null text throws argument null exception
         /// </summary>
         [Fact]
         public void IsEscaped_WithNullText_ThrowsArgumentNullException()
         {
-            Assert.Throws<System.ArgumentNullException>(() => _handler.IsEscaped(null, 0));
+            Assert.Throws<ArgumentNullException>(() => _handler.IsEscaped(null, 0));
         }
 
         /// <summary>
-        /// Tests that unescape with quote escape unescapes correctly
+        ///     Tests that unescape with quote escape unescapes correctly
         /// </summary>
         [Fact]
         public void Unescape_WithQuoteEscape_UnescapesCorrectly()
@@ -115,7 +113,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Helpers
         }
 
         /// <summary>
-        /// Tests that unescape with backslash escape unescapes correctly
+        ///     Tests that unescape with backslash escape unescapes correctly
         /// </summary>
         [Fact]
         public void Unescape_WithBackslashEscape_UnescapesCorrectly()
@@ -126,7 +124,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Helpers
         }
 
         /// <summary>
-        /// Tests that unescape with newline escape unescapes correctly
+        ///     Tests that unescape with newline escape unescapes correctly
         /// </summary>
         [Fact]
         public void Unescape_WithNewlineEscape_UnescapesCorrectly()
@@ -137,7 +135,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Helpers
         }
 
         /// <summary>
-        /// Tests that unescape with tab escape unescapes correctly
+        ///     Tests that unescape with tab escape unescapes correctly
         /// </summary>
         [Fact]
         public void Unescape_WithTabEscape_UnescapesCorrectly()
@@ -148,7 +146,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Helpers
         }
 
         /// <summary>
-        /// Tests that unescape with multiple escapes unescapes correctly
+        ///     Tests that unescape with multiple escapes unescapes correctly
         /// </summary>
         [Fact]
         public void Unescape_WithMultipleEscapes_UnescapesCorrectly()
@@ -159,7 +157,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Helpers
         }
 
         /// <summary>
-        /// Tests that unescape with unicode escape unescapes correctly
+        ///     Tests that unescape with unicode escape unescapes correctly
         /// </summary>
         [Fact]
         public void Unescape_WithUnicodeEscape_UnescapesCorrectly()
@@ -170,7 +168,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Helpers
         }
 
         /// <summary>
-        /// Tests that unescape without escapes returns original string
+        ///     Tests that unescape without escapes returns original string
         /// </summary>
         [Fact]
         public void Unescape_WithoutEscapes_ReturnsOriginalString()
@@ -181,16 +179,16 @@ namespace Alis.Core.Aspect.Data.Test.Json.Helpers
         }
 
         /// <summary>
-        /// Tests that unescape with null value throws argument null exception
+        ///     Tests that unescape with null value throws argument null exception
         /// </summary>
         [Fact]
         public void Unescape_WithNullValue_ThrowsArgumentNullException()
         {
-            Assert.Throws<System.ArgumentNullException>(() => _handler.Unescape(null));
+            Assert.Throws<ArgumentNullException>(() => _handler.Unescape(null));
         }
 
         /// <summary>
-        /// Tests that unescape with formfeed escape unescapes correctly
+        ///     Tests that unescape with formfeed escape unescapes correctly
         /// </summary>
         [Fact]
         public void Unescape_WithFormfeedEscape_UnescapesCorrectly()
@@ -201,7 +199,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Helpers
         }
 
         /// <summary>
-        /// Tests that unescape with carriage return escape unescapes correctly
+        ///     Tests that unescape with carriage return escape unescapes correctly
         /// </summary>
         [Fact]
         public void Unescape_WithCarriageReturnEscape_UnescapesCorrectly()
@@ -212,7 +210,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Helpers
         }
 
         /// <summary>
-        /// Tests that unescape with backspace escape unescapes correctly
+        ///     Tests that unescape with backspace escape unescapes correctly
         /// </summary>
         [Fact]
         public void Unescape_WithBackspaceEscape_UnescapesCorrectly()
@@ -223,7 +221,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Helpers
         }
 
         /// <summary>
-        /// Tests that unescape with invalid unicode escape keeps escape sequence
+        ///     Tests that unescape with invalid unicode escape keeps escape sequence
         /// </summary>
         [Fact]
         public void Unescape_WithInvalidUnicodeEscape_KeepsEscapeSequence()
@@ -234,4 +232,3 @@ namespace Alis.Core.Aspect.Data.Test.Json.Helpers
         }
     }
 }
-

@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IMassTest.cs
+//  File:IMassTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,28 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
     /// </summary>
     public class IMassTest
     {
-        /// <summary>
-        ///     Helper builder class for mass.
-        /// </summary>
-        private class MassBuilder
-        {
-            public float MassValue { get; set; }
-        }
-
-        /// <summary>
-        ///     Helper implementation of IMass.
-        /// </summary>
-        private class MassBuilderImpl : IMass<MassBuilder, float>
-        {
-            private readonly MassBuilder _builder = new MassBuilder();
-
-            public MassBuilder Mass(float value)
-            {
-                _builder.MassValue = value;
-                return _builder;
-            }
-        }
-
         /// <summary>
         ///     Tests that IMass can be implemented.
         /// </summary>
@@ -97,18 +75,34 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Tests Mass with typical physics values.
         /// </summary>
-        [Theory]
-        [InlineData(0.1f)]
-        [InlineData(1f)]
-        [InlineData(5f)]
-        [InlineData(10f)]
-        [InlineData(100f)]
+        [Theory, InlineData(0.1f), InlineData(1f), InlineData(5f), InlineData(10f), InlineData(100f)]
         public void Mass_WithTypicalPhysicsValues(float mass)
         {
             MassBuilderImpl builder = new MassBuilderImpl();
             MassBuilder result = builder.Mass(mass);
             Assert.Equal(mass, result.MassValue);
         }
+
+        /// <summary>
+        ///     Helper builder class for mass.
+        /// </summary>
+        private class MassBuilder
+        {
+            public float MassValue { get; set; }
+        }
+
+        /// <summary>
+        ///     Helper implementation of IMass.
+        /// </summary>
+        private class MassBuilderImpl : IMass<MassBuilder, float>
+        {
+            private readonly MassBuilder _builder = new MassBuilder();
+
+            public MassBuilder Mass(float value)
+            {
+                _builder.MassValue = value;
+                return _builder;
+            }
+        }
     }
 }
-

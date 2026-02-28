@@ -30,19 +30,19 @@
 using System;
 using System.Linq;
 using System.Reflection;
-using Xunit;
 using Alis.Core.Graphic.OpenGL.Constructs;
 using Alis.Core.Graphic.OpenGL.Enums;
+using Xunit;
 
 namespace Alis.Core.Graphic.Test.Constructs
 {
     /// <summary>
-    /// Tests for the GlShader class handling individual shader compilation.
+    ///     Tests for the GlShader class handling individual shader compilation.
     /// </summary>
     public class GlShaderTest
     {
         /// <summary>
-        /// Tests that GlShader class is sealed and cannot be inherited.
+        ///     Tests that GlShader class is sealed and cannot be inherited.
         /// </summary>
         [Fact]
         public void GlShader_IsSealed_CannotBeInherited()
@@ -55,7 +55,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         }
 
         /// <summary>
-        /// Tests that GlShader class is public.
+        ///     Tests that GlShader class is public.
         /// </summary>
         [Fact]
         public void GlShader_IsPublic_CanBeAccessed()
@@ -68,7 +68,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         }
 
         /// <summary>
-        /// Tests that GlShader implements IDisposable interface.
+        ///     Tests that GlShader implements IDisposable interface.
         /// </summary>
         [Fact]
         public void GlShader_ImplementsIDisposable_InterfaceIsCorrect()
@@ -81,7 +81,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         }
 
         /// <summary>
-        /// Tests that GlShader has ShaderId property.
+        ///     Tests that GlShader has ShaderId property.
         /// </summary>
         [Fact]
         public void GlShader_ShaderId_PropertyExists()
@@ -95,7 +95,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         }
 
         /// <summary>
-        /// Tests that GlShader has ShaderType property.
+        ///     Tests that GlShader has ShaderType property.
         /// </summary>
         [Fact]
         public void GlShader_ShaderType_PropertyExists()
@@ -109,7 +109,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         }
 
         /// <summary>
-        /// Tests that GlShader has ShaderLog property.
+        ///     Tests that GlShader has ShaderLog property.
         /// </summary>
         [Fact]
         public void GlShader_ShaderLog_PropertyExists()
@@ -123,7 +123,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         }
 
         /// <summary>
-        /// Tests that GlShader ShaderLog property is read-only.
+        ///     Tests that GlShader ShaderLog property is read-only.
         /// </summary>
         [Fact]
         public void GlShader_ShaderLog_IsReadOnly()
@@ -136,10 +136,10 @@ namespace Alis.Core.Graphic.Test.Constructs
             Assert.True(shaderLogProperty.CanRead);
             Assert.False(shaderLogProperty.CanWrite);
         }
-        
+
 
         /// <summary>
-        /// Tests that GlShader constructor requires source and type parameters.
+        ///     Tests that GlShader constructor requires source and type parameters.
         /// </summary>
         [Fact]
         public void GlShader_Constructor_ParametersAreCorrect()
@@ -159,7 +159,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         }
 
         /// <summary>
-        /// Tests that GlShader has destructor for cleanup.
+        ///     Tests that GlShader has destructor for cleanup.
         /// </summary>
         [Fact]
         public void GlShader_HasDestructor_CleanupIsProvided()
@@ -172,7 +172,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         }
 
         /// <summary>
-        /// Tests that GlShader properties provide access to shader metadata.
+        ///     Tests that GlShader properties provide access to shader metadata.
         /// </summary>
         [Fact]
         public void GlShader_Properties_ProvideMetadata()
@@ -181,7 +181,7 @@ namespace Alis.Core.Graphic.Test.Constructs
             Type shaderType = typeof(GlShader);
 
             // Act
-            PropertyInfo[] properties = shaderType.GetProperties(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
+            PropertyInfo[] properties = shaderType.GetProperties(BindingFlags.Public | BindingFlags.Instance);
 
             // Assert
             Assert.NotEmpty(properties);
@@ -191,7 +191,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         }
 
         /// <summary>
-        /// Tests that GlShader class has only public properties and methods expected.
+        ///     Tests that GlShader class has only public properties and methods expected.
         /// </summary>
         [Fact]
         public void GlShader_PublicMembers_AreCorrect()
@@ -200,8 +200,8 @@ namespace Alis.Core.Graphic.Test.Constructs
             Type shaderType = typeof(GlShader);
 
             // Act
-            PropertyInfo[] publicProperties = shaderType.GetProperties(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
-            MethodInfo[] publicMethods = shaderType.GetMethods(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.DeclaredOnly);
+            PropertyInfo[] publicProperties = shaderType.GetProperties(BindingFlags.Public | BindingFlags.Instance);
+            MethodInfo[] publicMethods = shaderType.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly);
 
             // Assert
             Assert.NotEmpty(publicProperties);

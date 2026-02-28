@@ -5,31 +5,31 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: ConditionalLogFilterTest.cs
+//  File:ConditionalLogFilterTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program. If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System;
 using System.Collections.Generic;
-using Alis.Core.Aspect.Logging;
+using System.Threading;
 using Alis.Core.Aspect.Logging.Abstractions;
 using Alis.Core.Aspect.Logging.Core;
 using Alis.Core.Aspect.Logging.Filters;
@@ -82,7 +82,7 @@ namespace Alis.Core.Aspect.Logging.Test
         {
             // Arrange
             ConditionalLogFilter filter = new ConditionalLogFilter(e =>
-                e.Level >= LogLevel.Warning &&
+                (e.Level >= LogLevel.Warning) &&
                 e.Message.Contains("Critical")
             );
 
@@ -177,7 +177,7 @@ namespace Alis.Core.Aspect.Logging.Test
             ConditionalLogFilter filter = new ConditionalLogFilter(e => e.Scopes.Count > 0);
 
             // Act & Assert
-            LogEntry entryWithScopes = new LogEntry(LogLevel.Info, "Test", "Logger", scopes: new[] { "Scope" });
+            LogEntry entryWithScopes = new LogEntry(LogLevel.Info, "Test", "Logger", scopes: new[] {"Scope"});
             LogEntry entryWithoutScopes = new LogEntry(LogLevel.Info, "Test", "Logger");
 
             Assert.True(filter.ShouldLog(entryWithScopes));
@@ -192,9 +192,9 @@ namespace Alis.Core.Aspect.Logging.Test
 
             // Act & Assert
             LogEntry entryWithProperties = new LogEntry(LogLevel.Info, "Test", "Logger",
-                properties: new Dictionary<string, object> { { "key1", "value1" }, { "key2", "value2" } });
+                properties: new Dictionary<string, object> {{"key1", "value1"}, {"key2", "value2"}});
             LogEntry entryWithOneProperty = new LogEntry(LogLevel.Info, "Test", "Logger",
-                properties: new Dictionary<string, object> { { "key", "value" } });
+                properties: new Dictionary<string, object> {{"key", "value"}});
 
             Assert.True(filter.ShouldLog(entryWithProperties));
             Assert.False(filter.ShouldLog(entryWithOneProperty));
@@ -204,7 +204,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void ConditionalLogFilter_ThreadIdPredicate_ShouldApply()
         {
             // Arrange
-            int currentThreadId = System.Threading.Thread.CurrentThread.ManagedThreadId;
+            int currentThreadId = Thread.CurrentThread.ManagedThreadId;
             ConditionalLogFilter filter = new ConditionalLogFilter(e => e.ThreadId == currentThreadId);
 
             // Act & Assert
@@ -217,9 +217,9 @@ namespace Alis.Core.Aspect.Logging.Test
         {
             // Arrange
             ConditionalLogFilter filter = new ConditionalLogFilter(e =>
-                e.Level >= LogLevel.Error &&
+                (e.Level >= LogLevel.Error) &&
                 !string.IsNullOrEmpty(e.CorrelationId) &&
-                e.Message.Length > 5
+                (e.Message.Length > 5)
             );
 
             // Act & Assert
@@ -234,10 +234,6 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.False(filter.ShouldLog(invalidEntry3));
         }
 
-        private static ILogEntry CreateEntry(LogLevel level, string message = "Test", string loggerName = "Logger")
-        {
-            return new LogEntry(level, message, loggerName);
-        }
+        private static ILogEntry CreateEntry(LogLevel level, string message = "Test", string loggerName = "Logger") => new LogEntry(level, message, loggerName);
     }
 }
-

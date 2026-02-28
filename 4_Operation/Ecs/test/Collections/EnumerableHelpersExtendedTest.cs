@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:EnumerableHelpersExtendedTest.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -46,7 +47,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void ToArray_Enumerable_ConvertsSuccessfully()
         {
             // Arrange
-            int[] enumerable = new[] { 1, 2, 3, 4, 5 };
+            int[] enumerable = new[] {1, 2, 3, 4, 5};
 
             // Act
             int[] array = EnumerableHelpers.ToArray(enumerable, out int count);
@@ -63,7 +64,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void ToArray_ListEnumerable_OrderPreserved()
         {
             // Arrange
-            List<string> list = new List<string> { "a", "b", "c", "d" };
+            List<string> list = new List<string> {"a", "b", "c", "d"};
 
             // Act
             string[] array = EnumerableHelpers.ToArray(list, out int count);
@@ -141,7 +142,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void ToArray_OutputCount_MatchesArrayLength()
         {
             // Arrange
-            List<double> list = new List<double> { 1.1, 2.2, 3.3, 4.4, 5.5 };
+            List<double> list = new List<double> {1.1, 2.2, 3.3, 4.4, 5.5};
 
             // Act
             double[] array = EnumerableHelpers.ToArray(list, out int count);
@@ -158,7 +159,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void ToArray_CustomEnumerable_Works()
         {
             // Arrange
-            IEnumerable<int> enumerable = (IEnumerable<int>)new[] { 10, 20, 30, 40 };
+            IEnumerable<int> enumerable = new[] {10, 20, 30, 40};
 
             // Act
             int[] array = EnumerableHelpers.ToArray(enumerable, out int count);
@@ -174,9 +175,9 @@ namespace Alis.Core.Ecs.Test.Collections
         public void ToArray_ReferenceTypes_MaintainReferences()
         {
             // Arrange
-            var obj1 = new { ID = 1 };
-            var obj2 = new { ID = 2 };
-            List<object> list = new List<object> { obj1, obj2 };
+            var obj1 = new {ID = 1};
+            var obj2 = new {ID = 2};
+            List<object> list = new List<object> {obj1, obj2};
 
             // Act
             object[] array = EnumerableHelpers.ToArray(list, out int count);
@@ -187,4 +188,3 @@ namespace Alis.Core.Ecs.Test.Collections
         }
     }
 }
-

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:GameObjectIdOnlyTest.cs
+//  File:GameObjectIdOnlyExtendedTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -36,7 +36,7 @@ namespace Alis.Core.Ecs.Test.Kernel
     ///     The game object id only test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="GameObjectIdOnly"/> struct which stores only
+    ///     Tests the <see cref="GameObjectIdOnly" /> struct which stores only
     ///     the entity ID and version, used for lightweight entity references.
     /// </remarks>
     public partial class GameObjectIdOnlyTest
@@ -55,7 +55,7 @@ namespace Alis.Core.Ecs.Test.Kernel
 
             // Assert
             Assert.Equal(42, entityIdOnly.ID);
-            Assert.Equal((ushort)5, entityIdOnly.Version);
+            Assert.Equal((ushort) 5, entityIdOnly.Version);
         }
 
         /// <summary>
@@ -68,11 +68,11 @@ namespace Alis.Core.Ecs.Test.Kernel
         public void GameObjectIdOnly_CanBeCreatedWithDefault()
         {
             // Act
-            GameObjectIdOnly entityIdOnly = default;
+            GameObjectIdOnly entityIdOnly = default(GameObjectIdOnly);
 
             // Assert
             Assert.Equal(0, entityIdOnly.ID);
-            Assert.Equal((ushort)0, entityIdOnly.Version);
+            Assert.Equal((ushort) 0, entityIdOnly.Version);
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace Alis.Core.Ecs.Test.Kernel
 
             // Assert
             Assert.Equal(200, entityIdOnly.ID);
-            Assert.Equal((ushort)20, entityIdOnly.Version);
+            Assert.Equal((ushort) 20, entityIdOnly.Version);
         }
 
         /// <summary>
@@ -143,7 +143,7 @@ namespace Alis.Core.Ecs.Test.Kernel
 
             // Assert
             Assert.Equal(42, id);
-            Assert.Equal((ushort)5, version);
+            Assert.Equal((ushort) 5, version);
         }
 
         /// <summary>
@@ -182,12 +182,11 @@ namespace Alis.Core.Ecs.Test.Kernel
 
             // Assert
             Assert.Equal(1, entity1.ID);
-            Assert.Equal((ushort)0, entity1.Version);
+            Assert.Equal((ushort) 0, entity1.Version);
             Assert.Equal(1, entity2.ID);
-            Assert.Equal((ushort)1, entity2.Version);
+            Assert.Equal((ushort) 1, entity2.Version);
             Assert.Equal(1, entity3.ID);
-            Assert.Equal((ushort)100, entity3.Version);
+            Assert.Equal((ushort) 100, entity3.Version);
         }
     }
 }
-

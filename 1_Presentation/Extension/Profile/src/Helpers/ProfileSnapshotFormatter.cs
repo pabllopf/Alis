@@ -76,13 +76,10 @@ namespace Alis.Extension.Profile.Helpers
         /// <returns>
         ///     A compact string summarizing the snapshot.
         /// </returns>
-        public static string FormatCompact(ProfileSnapshot snapshot)
-        {
-            return $"[{snapshot.ElapsedTime.TotalMilliseconds:F2}ms | " +
-                   $"CPU: {snapshot.CpuUsageDelta:F2}ms | " +
-                   $"Mem: {FormatBytes(snapshot.MemoryUsageDelta)} | " +
-                   $"GC: {snapshot.GarbageCollectionsDuringProfiling}]";
-        }
+        public static string FormatCompact(ProfileSnapshot snapshot) => $"[{snapshot.ElapsedTime.TotalMilliseconds:F2}ms | " +
+                                                                        $"CPU: {snapshot.CpuUsageDelta:F2}ms | " +
+                                                                        $"Mem: {FormatBytes(snapshot.MemoryUsageDelta)} | " +
+                                                                        $"GC: {snapshot.GarbageCollectionsDuringProfiling}]";
 
         /// <summary>
         ///     Formats resource metrics into a readable string.
@@ -91,13 +88,10 @@ namespace Alis.Extension.Profile.Helpers
         /// <returns>
         ///     A formatted string containing the metrics information.
         /// </returns>
-        private static string FormatResourceMetrics(ResourceMetrics metrics)
-        {
-            return $"CPU: {metrics.CpuUsageMilliseconds:F2} ms | " +
-                   $"Memory: {FormatBytes(metrics.MemoryUsageBytes)} | " +
-                   $"GC Count: {metrics.GarbageCollectionCount} | " +
-                   $"Threads: {metrics.ThreadCount}";
-        }
+        private static string FormatResourceMetrics(ResourceMetrics metrics) => $"CPU: {metrics.CpuUsageMilliseconds:F2} ms | " +
+                                                                                $"Memory: {FormatBytes(metrics.MemoryUsageBytes)} | " +
+                                                                                $"GC Count: {metrics.GarbageCollectionCount} | " +
+                                                                                $"Threads: {metrics.ThreadCount}";
 
         /// <summary>
         ///     Formats a byte count into a human-readable string with appropriate units.
@@ -108,11 +102,11 @@ namespace Alis.Extension.Profile.Helpers
         /// </returns>
         public static string FormatBytes(long bytes)
         {
-            string[] sizes = { "B", "KB", "MB", "GB", "TB" };
+            string[] sizes = {"B", "KB", "MB", "GB", "TB"};
             double len = Math.Abs(bytes);
             int order = 0;
 
-            while (len >= 1024 && order < sizes.Length - 1)
+            while ((len >= 1024) && (order < sizes.Length - 1))
             {
                 order++;
                 len /= 1024;
@@ -123,4 +117,3 @@ namespace Alis.Extension.Profile.Helpers
         }
     }
 }
-

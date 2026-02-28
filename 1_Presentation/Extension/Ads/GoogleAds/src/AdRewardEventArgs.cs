@@ -35,6 +35,19 @@ namespace Alis.Extension.Ads.GoogleAds
     public class AdRewardEventArgs
     {
         /// <summary>
+        ///     Initializes a new instance of the <see cref="AdRewardEventArgs" /> class
+        /// </summary>
+        /// <param name="rewardType">The reward type</param>
+        /// <param name="rewardAmount">The reward amount</param>
+        /// <param name="adUnitId">The ad unit ID</param>
+        public AdRewardEventArgs(string rewardType, int rewardAmount, string adUnitId)
+        {
+            RewardType = rewardType;
+            RewardAmount = rewardAmount;
+            AdUnitId = adUnitId;
+        }
+
+        /// <summary>
         ///     Gets the reward type
         /// </summary>
         public string RewardType { get; }
@@ -48,19 +61,5 @@ namespace Alis.Extension.Ads.GoogleAds
         ///     Gets the ad unit ID that was rewarded
         /// </summary>
         public string AdUnitId { get; }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="AdRewardEventArgs" /> class
-        /// </summary>
-        /// <param name="rewardType">The reward type</param>
-        /// <param name="rewardAmount">The reward amount</param>
-        /// <param name="adUnitId">The ad unit ID</param>
-        public AdRewardEventArgs(string rewardType, int rewardAmount, string adUnitId)
-        {
-            RewardType = rewardType;
-            RewardAmount = rewardAmount;
-            AdUnitId = adUnitId;
-        }
     }
 }
-

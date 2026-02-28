@@ -198,10 +198,7 @@ namespace Alis.Extension.Cloud.DropBox.Test
         /// <summary>
         ///     Tests setting and getting manager properties
         /// </summary>
-        [Theory]
-        [InlineData("CustomName")]
-        [InlineData("AnotherName")]
-        [InlineData("")]
+        [Theory, InlineData("CustomName"), InlineData("AnotherName"), InlineData("")]
         public void ManagerProperties_CanBeSet(string newName)
         {
             // Arrange
@@ -218,10 +215,7 @@ namespace Alis.Extension.Cloud.DropBox.Test
         /// <summary>
         ///     Tests path validation logic
         /// </summary>
-        [Theory]
-        [InlineData("/file.txt")]
-        [InlineData("/folder/file.txt")]
-        [InlineData("/")]
+        [Theory, InlineData("/file.txt"), InlineData("/folder/file.txt"), InlineData("/")]
         public void PathValidation_WithVariousPaths_HandlesCorrectly(string path)
         {
             // This test demonstrates path handling patterns
@@ -250,10 +244,8 @@ namespace Alis.Extension.Cloud.DropBox.Test
                     checkCount++;
                 }
             }
+
             Assert.Equal(3, checkCount);
         }
     }
 }
-
-
-

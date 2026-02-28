@@ -49,9 +49,9 @@ namespace Alis.Extension.Thread.Test
 
             // Act
             using (ThreadManager manager = builder
-                .EnableParallelExecution()
-                .WithMaxThreads(4)
-                .BuildManager())
+                       .EnableParallelExecution()
+                       .WithMaxThreads(4)
+                       .BuildManager())
             {
                 // Assert
                 Assert.NotNull(manager);
@@ -86,10 +86,10 @@ namespace Alis.Extension.Thread.Test
         {
             // Arrange & Act
             using (ThreadManager manager = ParallelExtensionBuilder.Create()
-                .EnableParallelExecution()
-                .WithMaxThreads(2)
-                .WithMinBatchSize(32)
-                .BuildManager())
+                       .EnableParallelExecution()
+                       .WithMaxThreads(2)
+                       .WithMinBatchSize(32)
+                       .BuildManager())
             {
                 // Assert
                 Assert.NotNull(manager);
@@ -105,8 +105,8 @@ namespace Alis.Extension.Thread.Test
         {
             // Arrange & Act
             using (ThreadManager manager = ParallelExtensionBuilder.Create()
-                .DisableParallelExecution()
-                .BuildManager())
+                       .DisableParallelExecution()
+                       .BuildManager())
             {
                 // Assert
                 Assert.NotNull(manager);
@@ -115,4 +115,3 @@ namespace Alis.Extension.Thread.Test
         }
     }
 }
-

@@ -54,9 +54,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
         public void MemoryTrimming_HasExpectedValues()
         {
             // Assert
-            Assert.Equal(0, (int)MemoryTrimming.Always);
-            Assert.Equal(1, (int)MemoryTrimming.Normal);
-            Assert.Equal(2, (int)MemoryTrimming.Never);
+            Assert.Equal(0, (int) MemoryTrimming.Always);
+            Assert.Equal(1, (int) MemoryTrimming.Normal);
+            Assert.Equal(2, (int) MemoryTrimming.Never);
         }
 
         /// <summary>
@@ -125,9 +125,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
         public void MemoryTrimming_CanBeCastFromInt()
         {
             // Act
-            MemoryTrimming always = (MemoryTrimming)0;
-            MemoryTrimming normal = (MemoryTrimming)1;
-            MemoryTrimming never = (MemoryTrimming)2;
+            MemoryTrimming always = 0;
+            MemoryTrimming normal = (MemoryTrimming) 1;
+            MemoryTrimming never = (MemoryTrimming) 2;
 
             // Assert
             Assert.Equal(MemoryTrimming.Always, always);
@@ -203,11 +203,11 @@ namespace Alis.Core.Ecs.Test.Redifinition
         public void MemoryTrimming_DefaultValueIsAlways()
         {
             // Act
-            MemoryTrimming defaultValue = default;
+            MemoryTrimming defaultValue = default(MemoryTrimming);
 
             // Assert
             Assert.Equal(MemoryTrimming.Always, defaultValue);
-            Assert.Equal(0, (int)defaultValue);
+            Assert.Equal(0, (int) defaultValue);
         }
 
         /// <summary>
@@ -220,7 +220,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         public void MemoryTrimming_CanBeUsedInCollections()
         {
             // Arrange
-            List<MemoryTrimming> list = new System.Collections.Generic.List<MemoryTrimming>
+            List<MemoryTrimming> list = new List<MemoryTrimming>
             {
                 MemoryTrimming.Always,
                 MemoryTrimming.Normal,
@@ -244,11 +244,11 @@ namespace Alis.Core.Ecs.Test.Redifinition
         public void MemoryTrimming_CanBeUsedAsDictionaryKey()
         {
             // Arrange
-            Dictionary<MemoryTrimming, string> dict = new System.Collections.Generic.Dictionary<MemoryTrimming, string>
+            Dictionary<MemoryTrimming, string> dict = new Dictionary<MemoryTrimming, string>
             {
-                { MemoryTrimming.Always, "Always trim" },
-                { MemoryTrimming.Normal, "Normal trim" },
-                { MemoryTrimming.Never, "Never trim" }
+                {MemoryTrimming.Always, "Always trim"},
+                {MemoryTrimming.Normal, "Normal trim"},
+                {MemoryTrimming.Never, "Never trim"}
             };
 
             // Assert
@@ -268,7 +268,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         public void MemoryTrimming_HasExactlyThreeValues()
         {
             // Act
-            Array values = System.Enum.GetValues(typeof(MemoryTrimming));
+            Array values = Enum.GetValues(typeof(MemoryTrimming));
 
             // Assert
             Assert.Equal(3, values.Length);
@@ -284,7 +284,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         public void MemoryTrimming_IsPublic()
         {
             // Act
-            System.Type type = typeof(MemoryTrimming);
+            Type type = typeof(MemoryTrimming);
 
             // Assert
             Assert.True(type.IsPublic);
@@ -313,4 +313,3 @@ namespace Alis.Core.Ecs.Test.Redifinition
         }
     }
 }
-

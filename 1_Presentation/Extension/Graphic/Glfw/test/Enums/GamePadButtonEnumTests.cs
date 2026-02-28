@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:GamePadButtonEnumTests.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,7 +39,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
     public class GamePadButtonEnumTests
     {
         /// <summary>
-        /// Tests that game pad button a is defined
+        ///     Tests that game pad button a is defined
         /// </summary>
         [Fact]
         public void GamePadButton_A_IsDefined()
@@ -47,7 +48,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that game pad button b is defined
+        ///     Tests that game pad button b is defined
         /// </summary>
         [Fact]
         public void GamePadButton_B_IsDefined()
@@ -56,7 +57,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that game pad button x is defined
+        ///     Tests that game pad button x is defined
         /// </summary>
         [Fact]
         public void GamePadButton_X_IsDefined()
@@ -65,7 +66,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that game pad button y is defined
+        ///     Tests that game pad button y is defined
         /// </summary>
         [Fact]
         public void GamePadButton_Y_IsDefined()
@@ -74,7 +75,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that game pad button left bumper is defined
+        ///     Tests that game pad button left bumper is defined
         /// </summary>
         [Fact]
         public void GamePadButton_LeftBumper_IsDefined()
@@ -83,7 +84,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that game pad button right bumper is defined
+        ///     Tests that game pad button right bumper is defined
         /// </summary>
         [Fact]
         public void GamePadButton_RightBumper_IsDefined()
@@ -92,7 +93,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that game pad button back is defined
+        ///     Tests that game pad button back is defined
         /// </summary>
         [Fact]
         public void GamePadButton_Back_IsDefined()
@@ -101,7 +102,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that game pad button start is defined
+        ///     Tests that game pad button start is defined
         /// </summary>
         [Fact]
         public void GamePadButton_Start_IsDefined()
@@ -110,7 +111,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that game pad button guide is defined
+        ///     Tests that game pad button guide is defined
         /// </summary>
         [Fact]
         public void GamePadButton_Guide_IsDefined()
@@ -119,7 +120,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that game pad button left thumb is defined
+        ///     Tests that game pad button left thumb is defined
         /// </summary>
         [Fact]
         public void GamePadButton_LeftThumb_IsDefined()
@@ -128,7 +129,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that game pad button right thumb is defined
+        ///     Tests that game pad button right thumb is defined
         /// </summary>
         [Fact]
         public void GamePadButton_RightThumb_IsDefined()
@@ -137,7 +138,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that game pad button d pad up is defined
+        ///     Tests that game pad button d pad up is defined
         /// </summary>
         [Fact]
         public void GamePadButton_DPadUp_IsDefined()
@@ -146,7 +147,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that game pad button d pad right is defined
+        ///     Tests that game pad button d pad right is defined
         /// </summary>
         [Fact]
         public void GamePadButton_DPadRight_IsDefined()
@@ -155,7 +156,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that game pad button d pad down is defined
+        ///     Tests that game pad button d pad down is defined
         /// </summary>
         [Fact]
         public void GamePadButton_DPadDown_IsDefined()
@@ -164,7 +165,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that game pad button d pad left is defined
+        ///     Tests that game pad button d pad left is defined
         /// </summary>
         [Fact]
         public void GamePadButton_DPadLeft_IsDefined()
@@ -173,18 +174,18 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that game pad button can be cast to int
+        ///     Tests that game pad button can be cast to int
         /// </summary>
         [Fact]
         public void GamePadButton_CanBeCastToInt()
         {
             GamePadButton button = GamePadButton.A;
-            int value = (int)button;
+            int value = (int) button;
             Assert.True(value >= 0);
         }
 
         /// <summary>
-        /// Tests that game pad button all buttons are different
+        ///     Tests that game pad button all buttons are different
         /// </summary>
         [Fact]
         public void GamePadButton_AllButtons_AreDifferent()
@@ -195,4 +196,3 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
     }
 }
-

@@ -36,7 +36,7 @@ namespace Alis.Core.Ecs.Test.Kernel
     ///     The game object type test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="GameObjectType"/> struct which represents an archetype ID
+    ///     Tests the <see cref="GameObjectType" /> struct which represents an archetype ID
     ///     or the set of component and tag types that make up an entity type.
     /// </remarks>
     public class GameObjectTypeTest
@@ -89,7 +89,7 @@ namespace Alis.Core.Ecs.Test.Kernel
             GameObjectType type = new GameObjectType(0);
 
             // Assert
-            Assert.Equal((ushort)0, type.RawIndex);
+            Assert.Equal((ushort) 0, type.RawIndex);
         }
 
         /// <summary>
@@ -214,11 +214,10 @@ namespace Alis.Core.Ecs.Test.Kernel
             GameObjectType type3 = new GameObjectType(6);
 
             // Assert
-            Assert.True(type1.Equals((object)type2));
-            Assert.False(type1.Equals((object)type3));
+            Assert.True(type1.Equals((object) type2));
+            Assert.False(type1.Equals((object) type3));
             Assert.False(type1.Equals(null));
             Assert.False(type1.Equals("string"));
         }
     }
 }
-

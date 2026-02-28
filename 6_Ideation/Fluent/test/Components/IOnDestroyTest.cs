@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IOnDestroyTest.cs
+//  File:IOnDestroyTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Fluent.Components;
 using Xunit;
 
@@ -38,28 +39,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
     /// </summary>
     public class IOnDestroyTest
     {
-        
-
-        /// <summary>
-        ///     Helper implementation for testing IOnDestroy.
-        /// </summary>
-        private class DestroyHandler : IOnDestroy
-        {
-            public bool WasDestroyCalled { get; private set; }
-            public int DestroyCount { get; private set; }
-
-            public void OnDestroy(IGameObject self)
-            {
-                WasDestroyCalled = true;
-                DestroyCount++;
-            }
-
-            public void OnDestroy()
-            {
-                throw new System.NotImplementedException();
-            }
-        }
-
         /// <summary>
         ///     Tests that IOnDestroy can be implemented.
         /// </summary>
@@ -107,8 +86,29 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
             {
                 handler.OnDestroy(gameObject);
             }
+
             Assert.Equal(5, handler.DestroyCount);
+        }
+
+
+        /// <summary>
+        ///     Helper implementation for testing IOnDestroy.
+        /// </summary>
+        private class DestroyHandler : IOnDestroy
+        {
+            public bool WasDestroyCalled { get; private set; }
+            public int DestroyCount { get; private set; }
+
+            public void OnDestroy()
+            {
+                throw new NotImplementedException();
+            }
+
+            public void OnDestroy(IGameObject self)
+            {
+                WasDestroyCalled = true;
+                DestroyCount++;
+            }
         }
     }
 }
-

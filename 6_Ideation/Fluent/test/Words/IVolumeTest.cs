@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IVolumeTest.cs
+//  File:IVolumeTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,28 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
     /// </summary>
     public class IVolumeTest
     {
-        /// <summary>
-        ///     Helper builder class for volume.
-        /// </summary>
-        private class VolumeBuilder
-        {
-            public float VolumeLevel { get; set; }
-        }
-
-        /// <summary>
-        ///     Helper implementation of IVolume.
-        /// </summary>
-        private class VolumeBuilderImpl : IVolume<VolumeBuilder, float>
-        {
-            private readonly VolumeBuilder _builder = new VolumeBuilder();
-
-            public VolumeBuilder Volume(float value)
-            {
-                _builder.VolumeLevel = value;
-                return _builder;
-            }
-        }
-
         /// <summary>
         ///     Tests that IVolume can be implemented.
         /// </summary>
@@ -97,12 +75,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Tests Volume with valid range (0 to 1).
         /// </summary>
-        [Theory]
-        [InlineData(0f)]
-        [InlineData(0.25f)]
-        [InlineData(0.5f)]
-        [InlineData(0.75f)]
-        [InlineData(1f)]
+        [Theory, InlineData(0f), InlineData(0.25f), InlineData(0.5f), InlineData(0.75f), InlineData(1f)]
         public void Volume_WithValidRange(float level)
         {
             VolumeBuilderImpl builder = new VolumeBuilderImpl();
@@ -122,6 +95,27 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
             VolumeBuilder resultMax = builder.Volume(1f);
             Assert.Equal(1f, resultMax.VolumeLevel);
         }
+
+        /// <summary>
+        ///     Helper builder class for volume.
+        /// </summary>
+        private class VolumeBuilder
+        {
+            public float VolumeLevel { get; set; }
+        }
+
+        /// <summary>
+        ///     Helper implementation of IVolume.
+        /// </summary>
+        private class VolumeBuilderImpl : IVolume<VolumeBuilder, float>
+        {
+            private readonly VolumeBuilder _builder = new VolumeBuilder();
+
+            public VolumeBuilder Volume(float value)
+            {
+                _builder.VolumeLevel = value;
+                return _builder;
+            }
+        }
     }
 }
-

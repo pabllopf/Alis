@@ -1,16 +1,44 @@
-using Xunit;
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:IntRectTest.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using Alis.Extension.Graphic.Sfml.Render;
-using Alis.Core.Aspect.Math.Vector;
+using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
 {
     /// <summary>
-    /// Unit tests for the IntRect struct.
+    ///     Unit tests for the IntRect struct.
     /// </summary>
     public class IntRectTest
     {
         /// <summary>
-        /// Tests the constructors and field assignment.
+        ///     Tests the constructors and field assignment.
         /// </summary>
         [Fact]
         public void Constructor_AssignsFields()
@@ -23,7 +51,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         }
 
         /// <summary>
-        /// Tests Contains method for points inside and outside.
+        ///     Tests Contains method for points inside and outside.
         /// </summary>
         [Fact]
         public void Contains_Works()
@@ -34,7 +62,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         }
 
         /// <summary>
-        /// Tests Intersects method for overlapping and non-overlapping rectangles.
+        ///     Tests Intersects method for overlapping and non-overlapping rectangles.
         /// </summary>
         [Fact]
         public void Intersects_Works()
@@ -47,7 +75,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         }
 
         /// <summary>
-        /// Tests Intersects with overlap output.
+        ///     Tests Intersects with overlap output.
         /// </summary>
         [Fact]
         public void Intersects_OverlapOutput_Works()
@@ -62,7 +90,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         }
 
         /// <summary>
-        /// Tests ToString returns a non-empty string.
+        ///     Tests ToString returns a non-empty string.
         /// </summary>
         [Fact]
         public void ToString_NotEmpty()
@@ -72,4 +100,3 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         }
     }
 }
-

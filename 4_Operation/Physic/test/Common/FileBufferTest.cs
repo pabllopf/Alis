@@ -49,7 +49,7 @@ namespace Alis.Core.Physic.Test.Common
             using (MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(content)))
             {
                 FileBuffer buffer = new FileBuffer(stream);
-                
+
                 Assert.Equal(content, buffer.Buffer);
                 Assert.Equal(0, buffer.Position);
             }
@@ -65,9 +65,9 @@ namespace Alis.Core.Physic.Test.Common
             using (MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(content)))
             {
                 FileBuffer buffer = new FileBuffer(stream);
-                
+
                 char first = buffer.Next;
-                
+
                 Assert.Equal('A', first);
                 Assert.Equal(1, buffer.Position);
             }
@@ -83,11 +83,11 @@ namespace Alis.Core.Physic.Test.Common
             using (MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(content)))
             {
                 FileBuffer buffer = new FileBuffer(stream);
-                
+
                 char c1 = buffer.Next;
                 char c2 = buffer.Next;
                 char c3 = buffer.Next;
-                
+
                 Assert.Equal('A', c1);
                 Assert.Equal('B', c2);
                 Assert.Equal('C', c3);
@@ -104,7 +104,7 @@ namespace Alis.Core.Physic.Test.Common
             using (MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(content)))
             {
                 FileBuffer buffer = new FileBuffer(stream);
-                
+
                 Assert.False(buffer.EndOfBuffer);
             }
         }
@@ -119,7 +119,7 @@ namespace Alis.Core.Physic.Test.Common
             using (MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(content)))
             {
                 FileBuffer buffer = new FileBuffer(stream);
-                
+
                 Assert.False(buffer.EndOfBuffer);
             }
         }
@@ -134,9 +134,9 @@ namespace Alis.Core.Physic.Test.Common
             using (MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(content)))
             {
                 FileBuffer buffer = new FileBuffer(stream);
-                
+
                 buffer.Position = 5;
-                
+
                 Assert.Equal(5, buffer.Position);
             }
         }
@@ -152,9 +152,9 @@ namespace Alis.Core.Physic.Test.Common
             {
                 FileBuffer buffer = new FileBuffer(stream);
                 string newContent = "Modified";
-                
+
                 buffer.Buffer = newContent;
-                
+
                 Assert.Equal(newContent, buffer.Buffer);
             }
         }
@@ -168,7 +168,7 @@ namespace Alis.Core.Physic.Test.Common
             using (MemoryStream stream = new MemoryStream())
             {
                 FileBuffer buffer = new FileBuffer(stream);
-                
+
                 Assert.Equal(string.Empty, buffer.Buffer);
                 Assert.True(buffer.EndOfBuffer);
             }
@@ -184,7 +184,7 @@ namespace Alis.Core.Physic.Test.Common
             using (MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(content)))
             {
                 FileBuffer buffer = new FileBuffer(stream);
-                
+
                 Assert.Equal(content, buffer.Buffer);
             }
         }
@@ -199,7 +199,7 @@ namespace Alis.Core.Physic.Test.Common
             using (MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(content)))
             {
                 FileBuffer buffer = new FileBuffer(stream);
-                
+
                 Assert.Contains("世界", buffer.Buffer);
             }
         }
@@ -214,10 +214,10 @@ namespace Alis.Core.Physic.Test.Common
             using (MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(content)))
             {
                 FileBuffer buffer = new FileBuffer(stream);
-                
+
                 buffer.Position = 0;
                 char c = buffer.Next;
-                
+
                 Assert.Equal('A', c);
             }
         }
@@ -232,10 +232,9 @@ namespace Alis.Core.Physic.Test.Common
             using (MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(content)))
             {
                 FileBuffer buffer = new FileBuffer(stream);
-                
+
                 Assert.Equal(10000, buffer.Buffer.Length);
             }
         }
     }
 }
-

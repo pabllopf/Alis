@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:VideoModeTests.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
     public class VideoModeTests
     {
         /// <summary>
-        /// Tests that video mode struct size is 24 bytes
+        ///     Tests that video mode struct size is 24 bytes
         /// </summary>
         [Fact]
         public void VideoMode_StructSize_Is24Bytes()
@@ -52,7 +53,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
         }
 
         /// <summary>
-        /// Tests that video mode width field has correct offset
+        ///     Tests that video mode width field has correct offset
         /// </summary>
         [Fact]
         public void VideoMode_WidthField_HasCorrectOffset()
@@ -65,7 +66,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
         }
 
         /// <summary>
-        /// Tests that video mode height field has correct offset
+        ///     Tests that video mode height field has correct offset
         /// </summary>
         [Fact]
         public void VideoMode_HeightField_HasCorrectOffset()
@@ -78,7 +79,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
         }
 
         /// <summary>
-        /// Tests that video mode red bits field has correct offset
+        ///     Tests that video mode red bits field has correct offset
         /// </summary>
         [Fact]
         public void VideoMode_RedBitsField_HasCorrectOffset()
@@ -91,7 +92,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
         }
 
         /// <summary>
-        /// Tests that video mode green bits field has correct offset
+        ///     Tests that video mode green bits field has correct offset
         /// </summary>
         [Fact]
         public void VideoMode_GreenBitsField_HasCorrectOffset()
@@ -104,7 +105,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
         }
 
         /// <summary>
-        /// Tests that video mode blue bits field has correct offset
+        ///     Tests that video mode blue bits field has correct offset
         /// </summary>
         [Fact]
         public void VideoMode_BlueBitsField_HasCorrectOffset()
@@ -117,7 +118,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
         }
 
         /// <summary>
-        /// Tests that video mode refresh rate field has correct offset
+        ///     Tests that video mode refresh rate field has correct offset
         /// </summary>
         [Fact]
         public void VideoMode_RefreshRateField_HasCorrectOffset()
@@ -130,7 +131,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
         }
 
         /// <summary>
-        /// Tests that video mode can be allocated in unmanaged memory
+        ///     Tests that video mode can be allocated in unmanaged memory
         /// </summary>
         [Fact]
         public void VideoMode_CanBeAllocatedInUnmanagedMemory()
@@ -141,12 +142,12 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             try
             {
                 // Act - Write test data
-                Marshal.WriteInt32(ptr, 0, 1920);  // Width
-                Marshal.WriteInt32(ptr, 4, 1080);  // Height
-                Marshal.WriteInt32(ptr, 8, 8);     // RedBits
-                Marshal.WriteInt32(ptr, 12, 8);    // GreenBits
-                Marshal.WriteInt32(ptr, 16, 8);    // BlueBits
-                Marshal.WriteInt32(ptr, 20, 60);   // RefreshRate
+                Marshal.WriteInt32(ptr, 0, 1920); // Width
+                Marshal.WriteInt32(ptr, 4, 1080); // Height
+                Marshal.WriteInt32(ptr, 8, 8); // RedBits
+                Marshal.WriteInt32(ptr, 12, 8); // GreenBits
+                Marshal.WriteInt32(ptr, 16, 8); // BlueBits
+                Marshal.WriteInt32(ptr, 20, 60); // RefreshRate
 
                 // Read back
                 VideoMode mode = Marshal.PtrToStructure<VideoMode>(ptr);
@@ -166,4 +167,3 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
         }
     }
 }
-

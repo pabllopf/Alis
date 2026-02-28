@@ -41,13 +41,13 @@ namespace Alis.Extension.Thread.Sample
     /// <summary>
     ///     Simple parallel-safe component for velocity
     /// </summary>
-    [ParallelSafe(minBatchSize: 64)]
+    [ParallelSafe(64)]
     public struct VelocityComponent : IParallelCapable
     {
         public float X;
         public float Y;
         public float Z;
-        
+
         public void ApplyDamping(float damping)
         {
             X *= damping;
@@ -59,13 +59,13 @@ namespace Alis.Extension.Thread.Sample
     /// <summary>
     ///     Parallel-safe position component
     /// </summary>
-    [ParallelSafe(minBatchSize: 128)]
+    [ParallelSafe(128)]
     public struct PositionComponent : IParallelCapable
     {
         public float X;
         public float Y;
         public float Z;
-        
+
         public void ApplyVelocity(VelocityComponent velocity, float deltaTime)
         {
             X += velocity.X * deltaTime;
@@ -77,17 +77,14 @@ namespace Alis.Extension.Thread.Sample
     /// <summary>
     ///     Component for physics calculations (heavy computation)
     /// </summary>
-    [ParallelSafe(minBatchSize: 32)]
+    [ParallelSafe(32)]
     public struct PhysicsComponent : IParallelCapable
     {
         public float Mass;
         public float Friction;
         public float Restitution;
-        
-        public float CalculateForce(float acceleration)
-        {
-            return Mass * acceleration;
-        }
+
+        public float CalculateForce(float acceleration) => Mass * acceleration;
     }
 
     /// <summary>
@@ -138,9 +135,9 @@ namespace Alis.Extension.Thread.Sample
             Logger.Info("─── 1. BASIC PARALLEL EXECUTION ───\n");
 
             using (ThreadManager manager = ParallelExtensionBuilder.Create()
-                .EnableParallelExecution()
-                .WithAutoThreadCount()
-                .BuildManager())
+                       .EnableParallelExecution()
+                       .WithAutoThreadCount()
+                       .BuildManager())
             {
                 const int itemCount = 5000;
                 int[] data = new int[itemCount];
@@ -154,7 +151,7 @@ namespace Alis.Extension.Thread.Sample
                     {
                         data[i] = ComputeExpensiveOperation(i);
                     }
-                }, forceParallel: true, minBatchSize: 64);
+                }, true, 64);
                 sw.Stop();
 
                 Logger.Info($"✓ Completed in {sw.ElapsedMilliseconds}ms");
@@ -179,11 +176,11 @@ namespace Alis.Extension.Thread.Sample
 
             using (ThreadManager manager = new ThreadManager(config))
             {
-                Logger.Info($"Configuration:");
+                Logger.Info("Configuration:");
                 Logger.Info($"  - Parallel Execution: {config.EnableParallelExecution}");
                 Logger.Info($"  - Max Threads: {config.MaxDegreeOfParallelism}");
                 Logger.Info($"  - Min Batch Size: {config.MinBatchSizePerThread}");
-                
+
                 int[] data = new int[2000];
                 manager.ParallelExecutor.ExecuteUpdate(data.Length, (start, length) =>
                 {
@@ -191,7 +188,7 @@ namespace Alis.Extension.Thread.Sample
                     {
                         data[i] = i * 2;
                     }
-                }, forceParallel: true);
+                }, true);
 
                 Logger.Info($"✓ Processed {data.Length} items with custom configuration");
             }
@@ -217,9 +214,9 @@ namespace Alis.Extension.Thread.Sample
             // Initialize components
             for (int i = 0; i < entityCount; i++)
             {
-                velocities[i] = new VelocityComponent { X = i * 0.1f, Y = i * 0.2f, Z = i * 0.3f };
-                positions[i] = new PositionComponent { X = 0, Y = 0, Z = 0 };
-                physics[i] = new PhysicsComponent { Mass = 1.0f + i * 0.001f, Friction = 0.5f, Restitution = 0.8f };
+                velocities[i] = new VelocityComponent {X = i * 0.1f, Y = i * 0.2f, Z = i * 0.3f};
+                positions[i] = new PositionComponent {X = 0, Y = 0, Z = 0};
+                physics[i] = new PhysicsComponent {Mass = 1.0f + i * 0.001f, Friction = 0.5f, Restitution = 0.8f};
             }
 
             Logger.Info($"Simulating {entityCount} entities with 3 components each...");
@@ -232,15 +229,12 @@ namespace Alis.Extension.Thread.Sample
             parallelizer.ExecuteComponentUpdate(physicsSpan, index =>
             {
                 float force = physics[index].CalculateForce(9.81f);
-                velocities[index].Y += (force / physics[index].Mass) * deltaTime;
+                velocities[index].Y += force / physics[index].Mass * deltaTime;
             });
 
             // Apply damping to velocities (parallel)
             Span<VelocityComponent> velocitySpan = velocities.AsSpan();
-            parallelizer.ExecuteComponentUpdate(velocitySpan, index =>
-            {
-                velocities[index].ApplyDamping(0.99f);
-            });
+            parallelizer.ExecuteComponentUpdate(velocitySpan, index => { velocities[index].ApplyDamping(0.99f); });
 
             // Update positions (parallel with range action)
             parallelizer.ExecuteRangeUpdate<PositionComponent>(entityCount, (start, length) =>
@@ -266,7 +260,7 @@ namespace Alis.Extension.Thread.Sample
 
             const int iterations = 3;
             const int dataSize = 20000;
-            
+
             // Sequential baseline
             Logger.Info("Running sequential baseline...");
             long sequentialTime = 0;
@@ -278,9 +272,11 @@ namespace Alis.Extension.Thread.Sample
                 {
                     data[i] = ComputeExpensiveOperation(i);
                 }
+
                 sw.Stop();
                 sequentialTime += sw.ElapsedMilliseconds;
             }
+
             sequentialTime /= iterations;
             Logger.Info($"  Average: {sequentialTime}ms");
 
@@ -288,9 +284,9 @@ namespace Alis.Extension.Thread.Sample
             Logger.Info("\nRunning parallel execution...");
             long parallelTime = 0;
             using (ThreadManager manager = ParallelExtensionBuilder.Create()
-                .EnableParallelExecution()
-                .WithMaxThreads(Environment.ProcessorCount)
-                .BuildManager())
+                       .EnableParallelExecution()
+                       .WithMaxThreads(Environment.ProcessorCount)
+                       .BuildManager())
             {
                 for (int iter = 0; iter < iterations; iter++)
                 {
@@ -302,17 +298,18 @@ namespace Alis.Extension.Thread.Sample
                         {
                             data[i] = ComputeExpensiveOperation(i);
                         }
-                    }, forceParallel: true, minBatchSize: 64);
+                    }, true, 64);
                     sw.Stop();
                     parallelTime += sw.ElapsedMilliseconds;
                 }
             }
+
             parallelTime /= iterations;
             Logger.Info($"  Average: {parallelTime}ms");
 
-            double speedup = (double)sequentialTime / parallelTime;
+            double speedup = (double) sequentialTime / parallelTime;
             Logger.Info($"\n✓ Speedup: {speedup:F2}x faster");
-            Logger.Info($"  Efficiency: {(speedup / Environment.ProcessorCount * 100):F1}%");
+            Logger.Info($"  Efficiency: {speedup / Environment.ProcessorCount * 100:F1}%");
         }
 
         /// <summary>
@@ -325,8 +322,8 @@ namespace Alis.Extension.Thread.Sample
             // Scenario 1: Adaptive batch sizing
             Logger.Info("Scenario 1: Adaptive batch sizing");
             using (ThreadManager manager = ParallelExtensionBuilder.Create()
-                .WithMinBatchSize(32)
-                .BuildManager())
+                       .WithMinBatchSize(32)
+                       .BuildManager())
             {
                 VelocityComponent[] smallDataset = new VelocityComponent[100];
                 VelocityComponent[] largeDataset = new VelocityComponent[10000];
@@ -356,7 +353,7 @@ namespace Alis.Extension.Thread.Sample
                 // Critical section - sequential
                 for (int i = 0; i < count; i++)
                 {
-                    criticalData[i] = (float)Math.Sin(i * 0.01);
+                    criticalData[i] = (float) Math.Sin(i * 0.01);
                 }
 
                 // Normal processing - parallel
@@ -364,18 +361,18 @@ namespace Alis.Extension.Thread.Sample
                 {
                     for (int i = start; i < start + length; i++)
                     {
-                        normalData[i] = (int)(criticalData[i] * 1000);
+                        normalData[i] = (int) (criticalData[i] * 1000);
                     }
-                }, forceParallel: true);
+                }, true);
 
-                Logger.Info($"  ✓ Mixed update completed");
+                Logger.Info("  ✓ Mixed update completed");
             }
 
             // Scenario 3: Disabled parallelism for debugging
             Logger.Info("\nScenario 3: Debugging mode (parallel disabled)");
             using (ThreadManager manager = ParallelExtensionBuilder.Create()
-                .DisableParallelExecution()
-                .BuildManager())
+                       .DisableParallelExecution()
+                       .BuildManager())
             {
                 int[] data = new int[1000];
                 manager.ParallelExecutor.ExecuteUpdate(data.Length, (start, length) =>
@@ -385,7 +382,7 @@ namespace Alis.Extension.Thread.Sample
                         data[i] = i;
                     }
                 });
-                Logger.Info($"  ✓ Debug mode: sequential execution verified");
+                Logger.Info("  ✓ Debug mode: sequential execution verified");
             }
         }
 
@@ -399,6 +396,7 @@ namespace Alis.Extension.Thread.Sample
             {
                 result = (result * 31 + i) % 1000000;
             }
+
             return result;
         }
 
@@ -413,4 +411,3 @@ namespace Alis.Extension.Thread.Sample
         }
     }
 }
-

@@ -92,7 +92,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         public void MediaStream_IsAudio_ShouldReturnTrueForAudioCodecType()
         {
             // Arrange
-            MediaStream stream = new MediaStream { CodecType = "audio" };
+            MediaStream stream = new MediaStream {CodecType = "audio"};
 
             // Act
             bool isAudio = stream.IsAudio;
@@ -108,7 +108,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         public void MediaStream_IsVideo_ShouldReturnTrueForVideoCodecType()
         {
             // Arrange
-            MediaStream stream = new MediaStream { CodecType = "video" };
+            MediaStream stream = new MediaStream {CodecType = "video"};
 
             // Act
             bool isVideo = stream.IsVideo;
@@ -124,9 +124,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         public void MediaStream_IsAudio_ShouldBeCaseInsensitive()
         {
             // Arrange
-            MediaStream stream1 = new MediaStream { CodecType = "AUDIO" };
-            MediaStream stream2 = new MediaStream { CodecType = "Audio" };
-            MediaStream stream3 = new MediaStream { CodecType = "audio" };
+            MediaStream stream1 = new MediaStream {CodecType = "AUDIO"};
+            MediaStream stream2 = new MediaStream {CodecType = "Audio"};
+            MediaStream stream3 = new MediaStream {CodecType = "audio"};
 
             // Act & Assert
             Assert.True(stream1.IsAudio);
@@ -141,9 +141,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         public void MediaStream_IsVideo_ShouldBeCaseInsensitive()
         {
             // Arrange
-            MediaStream stream1 = new MediaStream { CodecType = "VIDEO" };
-            MediaStream stream2 = new MediaStream { CodecType = "Video" };
-            MediaStream stream3 = new MediaStream { CodecType = "video" };
+            MediaStream stream1 = new MediaStream {CodecType = "VIDEO"};
+            MediaStream stream2 = new MediaStream {CodecType = "Video"};
+            MediaStream stream3 = new MediaStream {CodecType = "video"};
 
             // Act & Assert
             Assert.True(stream1.IsVideo);
@@ -209,7 +209,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         public void MediaStream_SampleRateNumber_ShouldParseStringCorrectly()
         {
             // Arrange
-            MediaStream stream = new MediaStream { SampleRate = "44100" };
+            MediaStream stream = new MediaStream {SampleRate = "44100"};
 
             // Act
             int sampleRateNumber = stream.SampleRateNumber;
@@ -225,7 +225,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         public void MediaStream_SampleRateNumber_ShouldReturnNegativeOneForNull()
         {
             // Arrange
-            MediaStream stream = new MediaStream { SampleRate = null };
+            MediaStream stream = new MediaStream {SampleRate = null};
 
             // Act
             int sampleRateNumber = stream.SampleRateNumber;
@@ -241,7 +241,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         public void MediaStream_SampleRateNumber_ShouldReturnNegativeOneForEmptyString()
         {
             // Arrange
-            MediaStream stream = new MediaStream { SampleRate = string.Empty };
+            MediaStream stream = new MediaStream {SampleRate = string.Empty};
 
             // Act
             int sampleRateNumber = stream.SampleRateNumber;
@@ -308,9 +308,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         public void MediaStream_ShouldSupportCommonVideoCodecs()
         {
             // Arrange & Act
-            MediaStream h264Stream = new MediaStream { CodecName = "h264", CodecType = "video" };
-            MediaStream h265Stream = new MediaStream { CodecName = "hevc", CodecType = "video" };
-            MediaStream vp9Stream = new MediaStream { CodecName = "vp9", CodecType = "video" };
+            MediaStream h264Stream = new MediaStream {CodecName = "h264", CodecType = "video"};
+            MediaStream h265Stream = new MediaStream {CodecName = "hevc", CodecType = "video"};
+            MediaStream vp9Stream = new MediaStream {CodecName = "vp9", CodecType = "video"};
 
             // Assert
             Assert.True(h264Stream.IsVideo);
@@ -325,9 +325,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         public void MediaStream_ShouldSupportCommonAudioCodecs()
         {
             // Arrange & Act
-            MediaStream mp3Stream = new MediaStream { CodecName = "mp3", CodecType = "audio" };
-            MediaStream aacStream = new MediaStream { CodecName = "aac", CodecType = "audio" };
-            MediaStream vorbisStream = new MediaStream { CodecName = "vorbis", CodecType = "audio" };
+            MediaStream mp3Stream = new MediaStream {CodecName = "mp3", CodecType = "audio"};
+            MediaStream aacStream = new MediaStream {CodecName = "aac", CodecType = "audio"};
+            MediaStream vorbisStream = new MediaStream {CodecName = "vorbis", CodecType = "audio"};
 
             // Assert
             Assert.True(mp3Stream.IsAudio);
@@ -400,7 +400,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         public void MediaStream_IsAudio_ShouldHandleWhitespace()
         {
             // Arrange
-            MediaStream stream = new MediaStream { CodecType = "  audio  " };
+            MediaStream stream = new MediaStream {CodecType = "  audio  "};
 
             // Act
             bool isAudio = stream.IsAudio;
@@ -416,7 +416,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         public void MediaStream_IsVideo_ShouldHandleWhitespace()
         {
             // Arrange
-            MediaStream stream = new MediaStream { CodecType = "  video  " };
+            MediaStream stream = new MediaStream {CodecType = "  video  "};
 
             // Act
             bool isVideo = stream.IsVideo;
@@ -426,4 +426,3 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         }
     }
 }
-

@@ -27,9 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
-using Alis.Core.Physic.Dynamics.Contacts;
 using Xunit;
 
 namespace Alis.Core.Physic.Test.Dynamics
@@ -39,7 +37,6 @@ namespace Alis.Core.Physic.Test.Dynamics
     /// </summary>
     public class EndContactDelegateTest
     {
-
         /// <summary>
         ///     Tests that end contact delegate should accept null contact
         /// </summary>
@@ -47,15 +44,11 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void EndContactDelegate_ShouldAcceptNullContact()
         {
             bool invoked = false;
-            EndContactDelegate callback = contact =>
-            {
-                invoked = true;
-            };
-            
+            EndContactDelegate callback = contact => { invoked = true; };
+
             callback(null);
-            
+
             Assert.True(invoked);
         }
     }
 }
-

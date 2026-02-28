@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Generic;
-using Alis.Extension.Language.Dialogue.Core;
 
 namespace Alis.Extension.Language.Dialogue
 {
@@ -103,7 +102,7 @@ namespace Alis.Extension.Language.Dialogue
 
             if (dialog != null)
             {
-                dialog.ParentDialogId = this.Id;
+                dialog.ParentDialogId = Id;
                 Branches[key] = dialog;
             }
         }
@@ -113,9 +112,6 @@ namespace Alis.Extension.Language.Dialogue
         /// </summary>
         /// <param name="key">The branch key</param>
         /// <returns>The branch dialog or null if not found</returns>
-        public Dialog GetBranch(string key)
-        {
-            return Branches.TryGetValue(key, out Dialog branch) ? branch : null;
-        }
+        public Dialog GetBranch(string key) => Branches.TryGetValue(key, out Dialog branch) ? branch : null;
     }
 }

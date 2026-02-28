@@ -63,4 +63,3 @@ namespace Alis.Extension.Language.Translator.Abstractions
         int GetPluralFormCount(string languageCode);
     }
 }
-

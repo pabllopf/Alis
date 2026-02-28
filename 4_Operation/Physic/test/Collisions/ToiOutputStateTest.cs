@@ -45,7 +45,7 @@ namespace Alis.Core.Physic.Test.Collisions
         public void UnknownEnumValue_ShouldBeDefined()
         {
             ToiOutputState state = ToiOutputState.Unknown;
-            
+
             Assert.Equal(ToiOutputState.Unknown, state);
         }
 
@@ -56,7 +56,7 @@ namespace Alis.Core.Physic.Test.Collisions
         public void FailedEnumValue_ShouldBeDefined()
         {
             ToiOutputState state = ToiOutputState.Failed;
-            
+
             Assert.Equal(ToiOutputState.Failed, state);
         }
 
@@ -67,7 +67,7 @@ namespace Alis.Core.Physic.Test.Collisions
         public void OverlappedEnumValue_ShouldBeDefined()
         {
             ToiOutputState state = ToiOutputState.Overlapped;
-            
+
             Assert.Equal(ToiOutputState.Overlapped, state);
         }
 
@@ -78,7 +78,7 @@ namespace Alis.Core.Physic.Test.Collisions
         public void TouchingEnumValue_ShouldBeDefined()
         {
             ToiOutputState state = ToiOutputState.Touching;
-            
+
             Assert.Equal(ToiOutputState.Touching, state);
         }
 
@@ -89,7 +89,7 @@ namespace Alis.Core.Physic.Test.Collisions
         public void SeparatedEnumValue_ShouldBeDefined()
         {
             ToiOutputState state = ToiOutputState.Seperated;
-            
+
             Assert.Equal(ToiOutputState.Seperated, state);
         }
 
@@ -99,8 +99,8 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void ToiOutputState_ShouldHaveFiveValues()
         {
-            Array values = System.Enum.GetValues(typeof(ToiOutputState));
-            
+            Array values = Enum.GetValues(typeof(ToiOutputState));
+
             Assert.Equal(5, values.Length);
         }
 
@@ -110,10 +110,10 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void ToiOutputState_ShouldBeCastableToInt()
         {
-            int unknownValue = (int)ToiOutputState.Unknown;
-            int failedValue = (int)ToiOutputState.Failed;
-            int overlappedValue = (int)ToiOutputState.Overlapped;
-            
+            int unknownValue = (int) ToiOutputState.Unknown;
+            int failedValue = (int) ToiOutputState.Failed;
+            int overlappedValue = (int) ToiOutputState.Overlapped;
+
             Assert.Equal(0, unknownValue);
             Assert.Equal(1, failedValue);
             Assert.Equal(2, overlappedValue);
@@ -127,7 +127,7 @@ namespace Alis.Core.Physic.Test.Collisions
         {
             ToiOutputState state1 = ToiOutputState.Touching;
             ToiOutputState state2 = ToiOutputState.Touching;
-            
+
             Assert.Equal(state1, state2);
         }
 
@@ -139,9 +139,8 @@ namespace Alis.Core.Physic.Test.Collisions
         {
             ToiOutputState state1 = ToiOutputState.Unknown;
             ToiOutputState state2 = ToiOutputState.Failed;
-            
+
             Assert.NotEqual(state1, state2);
         }
     }
 }
-

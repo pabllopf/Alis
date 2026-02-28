@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test
@@ -47,7 +48,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             MediaType mediaType = MediaType.Video;
 
             // Assert
-            Assert.Equal(0, (int)mediaType);
+            Assert.Equal(0, (int) mediaType);
         }
 
         /// <summary>
@@ -60,7 +61,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             MediaType mediaType = MediaType.Audio;
 
             // Assert
-            Assert.Equal(1, (int)mediaType);
+            Assert.Equal(1, (int) mediaType);
         }
 
         /// <summary>
@@ -73,7 +74,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             MediaType mediaType = MediaType.Subtitle;
 
             // Assert
-            Assert.Equal(2, (int)mediaType);
+            Assert.Equal(2, (int) mediaType);
         }
 
         /// <summary>
@@ -83,7 +84,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         public void MediaType_Enum_ShouldHaveThreeValues()
         {
             // Arrange & Act
-            MediaType[] values = (MediaType[])System.Enum.GetValues(typeof(MediaType));
+            MediaType[] values = (MediaType[]) Enum.GetValues(typeof(MediaType));
 
             // Assert
             Assert.Equal(3, values.Length);
@@ -96,9 +97,9 @@ namespace Alis.Extension.Media.FFmpeg.Test
         public void MediaType_Enum_ShouldContainVideoAudioAndSubtitle()
         {
             // Arrange & Act
-            bool hasVideo = System.Enum.IsDefined(typeof(MediaType), MediaType.Video);
-            bool hasAudio = System.Enum.IsDefined(typeof(MediaType), MediaType.Audio);
-            bool hasSubtitle = System.Enum.IsDefined(typeof(MediaType), MediaType.Subtitle);
+            bool hasVideo = Enum.IsDefined(typeof(MediaType), MediaType.Video);
+            bool hasAudio = Enum.IsDefined(typeof(MediaType), MediaType.Audio);
+            bool hasSubtitle = Enum.IsDefined(typeof(MediaType), MediaType.Subtitle);
 
             // Assert
             Assert.True(hasVideo);
@@ -135,9 +136,9 @@ namespace Alis.Extension.Media.FFmpeg.Test
         public void MediaType_ShouldBeParseableFromString()
         {
             // Arrange & Act
-            MediaType video = (MediaType)System.Enum.Parse(typeof(MediaType), "Video");
-            MediaType audio = (MediaType)System.Enum.Parse(typeof(MediaType), "Audio");
-            MediaType subtitle = (MediaType)System.Enum.Parse(typeof(MediaType), "Subtitle");
+            MediaType video = (MediaType) Enum.Parse(typeof(MediaType), "Video");
+            MediaType audio = (MediaType) Enum.Parse(typeof(MediaType), "Audio");
+            MediaType subtitle = (MediaType) Enum.Parse(typeof(MediaType), "Subtitle");
 
             // Assert
             Assert.Equal(MediaType.Video, video);
@@ -196,9 +197,9 @@ namespace Alis.Extension.Media.FFmpeg.Test
         public void MediaType_ShouldHaveUniqueValues()
         {
             // Arrange
-            int videoValue = (int)MediaType.Video;
-            int audioValue = (int)MediaType.Audio;
-            int subtitleValue = (int)MediaType.Subtitle;
+            int videoValue = (int) MediaType.Video;
+            int audioValue = (int) MediaType.Audio;
+            int subtitleValue = (int) MediaType.Subtitle;
 
             // Act & Assert
             Assert.NotEqual(videoValue, audioValue);
@@ -216,7 +217,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             MediaType mediaType = MediaType.Video;
 
             // Act
-            int value = (int)mediaType;
+            int value = (int) mediaType;
 
             // Assert
             Assert.Equal(0, value);
@@ -232,11 +233,10 @@ namespace Alis.Extension.Media.FFmpeg.Test
             int value = 1;
 
             // Act
-            MediaType mediaType = (MediaType)value;
+            MediaType mediaType = (MediaType) value;
 
             // Assert
             Assert.Equal(MediaType.Audio, mediaType);
         }
     }
 }
-

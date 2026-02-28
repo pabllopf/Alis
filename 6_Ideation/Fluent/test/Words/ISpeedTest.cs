@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: ISpeedTest.cs
+//  File:ISpeedTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,28 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
     /// </summary>
     public class ISpeedTest
     {
-        /// <summary>
-        ///     Helper builder class for speed.
-        /// </summary>
-        private class SpeedBuilder
-        {
-            public float SpeedValue { get; set; }
-        }
-
-        /// <summary>
-        ///     Helper implementation of ISpeed.
-        /// </summary>
-        private class SpeedBuilderImpl : ISpeed<SpeedBuilder, float>
-        {
-            private readonly SpeedBuilder _builder = new SpeedBuilder();
-
-            public SpeedBuilder Speed(float value)
-            {
-                _builder.SpeedValue = value;
-                return _builder;
-            }
-        }
-
         /// <summary>
         ///     Tests that ISpeed can be implemented.
         /// </summary>
@@ -97,17 +75,34 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Tests Speed with realistic velocity values.
         /// </summary>
-        [Theory]
-        [InlineData(0f)]
-        [InlineData(5f)]
-        [InlineData(10f)]
-        [InlineData(30f)]
+        [Theory, InlineData(0f), InlineData(5f), InlineData(10f), InlineData(30f)]
         public void Speed_WithRealisticValues(float speed)
         {
             SpeedBuilderImpl builder = new SpeedBuilderImpl();
             SpeedBuilder result = builder.Speed(speed);
             Assert.Equal(speed, result.SpeedValue);
         }
+
+        /// <summary>
+        ///     Helper builder class for speed.
+        /// </summary>
+        private class SpeedBuilder
+        {
+            public float SpeedValue { get; set; }
+        }
+
+        /// <summary>
+        ///     Helper implementation of ISpeed.
+        /// </summary>
+        private class SpeedBuilderImpl : ISpeed<SpeedBuilder, float>
+        {
+            private readonly SpeedBuilder _builder = new SpeedBuilder();
+
+            public SpeedBuilder Speed(float value)
+            {
+                _builder.SpeedValue = value;
+                return _builder;
+            }
+        }
     }
 }
-

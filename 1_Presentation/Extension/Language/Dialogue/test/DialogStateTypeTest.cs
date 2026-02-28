@@ -43,7 +43,7 @@ namespace Alis.Extension.Language.Dialogue.Test
         [Fact]
         public void DialogStateType_Idle_HasCorrectValue()
         {
-            Assert.Equal(0, (int)DialogStateType.Idle);
+            Assert.Equal(0, (int) DialogStateType.Idle);
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Alis.Extension.Language.Dialogue.Test
         [Fact]
         public void DialogStateType_Running_HasCorrectValue()
         {
-            Assert.Equal(1, (int)DialogStateType.Running);
+            Assert.Equal(1, (int) DialogStateType.Running);
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace Alis.Extension.Language.Dialogue.Test
         [Fact]
         public void DialogStateType_Paused_HasCorrectValue()
         {
-            Assert.Equal(2, (int)DialogStateType.Paused);
+            Assert.Equal(2, (int) DialogStateType.Paused);
         }
 
         /// <summary>
@@ -70,8 +70,7 @@ namespace Alis.Extension.Language.Dialogue.Test
         [Fact]
         public void DialogStateType_Completed_HasCorrectValue()
         {
-            Assert.Equal(3, (int)DialogStateType.Completed);
+            Assert.Equal(3, (int) DialogStateType.Completed);
         }
     }
 }
-

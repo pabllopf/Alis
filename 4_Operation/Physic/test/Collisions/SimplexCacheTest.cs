@@ -44,7 +44,7 @@ namespace Alis.Core.Physic.Test.Collisions
         public void Constructor_ShouldInitializeWithDefaultValues()
         {
             SimplexCache cache = new SimplexCache();
-            
+
             Assert.Equal(0, cache.Count);
             Assert.Equal(0.0f, cache.Metric);
         }
@@ -59,7 +59,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 Count = 3
             };
-            
+
             Assert.Equal(3, cache.Count);
         }
 
@@ -73,7 +73,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 Metric = 1.5f
             };
-            
+
             Assert.Equal(1.5f, cache.Metric);
         }
 
@@ -88,7 +88,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 Count = 2,
                 Metric = 2.5f
             };
-            
+
             Assert.Equal(2, cache.Count);
             Assert.Equal(2.5f, cache.Metric);
         }
@@ -103,7 +103,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 Count = 0
             };
-            
+
             Assert.Equal(0, cache.Count);
         }
 
@@ -117,7 +117,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 Count = ushort.MaxValue
             };
-            
+
             Assert.Equal(ushort.MaxValue, cache.Count);
         }
 
@@ -131,9 +131,8 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 Metric = -1.0f
             };
-            
+
             Assert.Equal(-1.0f, cache.Metric);
         }
     }
 }
-

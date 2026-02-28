@@ -46,10 +46,7 @@ namespace Alis.Extension.Thread.Integration
         ///     Initializes a new instance of the <see cref="ComponentUpdateParallelizer" /> class
         /// </summary>
         /// <param name="executor">The parallel update executor</param>
-        public ComponentUpdateParallelizer(ParallelUpdateExecutor executor)
-        {
-            this.executor = executor ?? throw new ArgumentNullException(nameof(executor));
-        }
+        public ComponentUpdateParallelizer(ParallelUpdateExecutor executor) => this.executor = executor ?? throw new ArgumentNullException(nameof(executor));
 
         /// <summary>
         ///     Executes a component update action, potentially in parallel
@@ -106,4 +103,3 @@ namespace Alis.Extension.Thread.Integration
         }
     }
 }
-

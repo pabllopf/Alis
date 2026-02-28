@@ -52,10 +52,7 @@ namespace Alis.Extension.Language.Translator.Providers
         ///     Gets all available languages
         /// </summary>
         /// <returns>A read-only collection of available languages</returns>
-        public IReadOnlyList<ILanguage> GetAvailableLanguages()
-        {
-            return languages.AsReadOnly();
-        }
+        public IReadOnlyList<ILanguage> GetAvailableLanguages() => languages.AsReadOnly();
 
         /// <summary>
         ///     Adds a new language
@@ -124,10 +121,6 @@ namespace Alis.Extension.Language.Translator.Providers
         /// </summary>
         /// <param name="code">The language code</param>
         /// <returns>True if the language exists; otherwise, false</returns>
-        public bool LanguageExists(string code)
-        {
-            return GetLanguageByCode(code) != null;
-        }
+        public bool LanguageExists(string code) => GetLanguageByCode(code) != null;
     }
 }
-

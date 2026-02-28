@@ -48,7 +48,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         public void DefaultConstructor_ShouldInitializeWithNullValues()
         {
             FixedArray3<string> array = new FixedArray3<string>();
-            
+
             Assert.Null(array[0]);
             Assert.Null(array[1]);
             Assert.Null(array[2]);
@@ -61,9 +61,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         public void Indexer_ShouldSetAndGetValueAtIndexZero()
         {
             FixedArray3<string> array = new FixedArray3<string>();
-            
+
             array[0] = "test";
-            
+
             Assert.Equal("test", array[0]);
         }
 
@@ -74,9 +74,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         public void Indexer_ShouldSetAndGetValueAtIndexOne()
         {
             FixedArray3<string> array = new FixedArray3<string>();
-            
+
             array[1] = "value";
-            
+
             Assert.Equal("value", array[1]);
         }
 
@@ -87,9 +87,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         public void Indexer_ShouldSetAndGetValueAtIndexTwo()
         {
             FixedArray3<string> array = new FixedArray3<string>();
-            
+
             array[2] = "data";
-            
+
             Assert.Equal("data", array[2]);
         }
 
@@ -100,7 +100,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         public void Indexer_ShouldThrowException_ForNegativeIndex()
         {
             FixedArray3<string> array = new FixedArray3<string>();
-            
+
             Assert.Throws<CustomIndexOutOfRangeException>(() => array[-1]);
         }
 
@@ -111,7 +111,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         public void Indexer_ShouldThrowException_ForIndexGreaterThanTwo()
         {
             FixedArray3<string> array = new FixedArray3<string>();
-            
+
             Assert.Throws<CustomIndexOutOfRangeException>(() => array[3]);
         }
 
@@ -123,9 +123,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         {
             FixedArray3<string> array = new FixedArray3<string>();
             array[0] = "test";
-            
+
             bool result = array.Contains("test");
-            
+
             Assert.True(result);
         }
 
@@ -137,9 +137,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         {
             FixedArray3<string> array = new FixedArray3<string>();
             array[0] = "test";
-            
+
             bool result = array.Contains("missing");
-            
+
             Assert.False(result);
         }
 
@@ -151,9 +151,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         {
             FixedArray3<string> array = new FixedArray3<string>();
             array[1] = "value";
-            
+
             int index = array.IndexOf("value");
-            
+
             Assert.Equal(1, index);
         }
 
@@ -165,9 +165,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         {
             FixedArray3<string> array = new FixedArray3<string>();
             array[0] = "test";
-            
+
             int index = array.IndexOf("missing");
-            
+
             Assert.Equal(-1, index);
         }
 
@@ -181,9 +181,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
             array[0] = "a";
             array[1] = "b";
             array[2] = "c";
-            
+
             array.Clear();
-            
+
             Assert.Null(array[0]);
             Assert.Null(array[1]);
             Assert.Null(array[2]);
@@ -199,9 +199,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
             array[0] = "test";
             array[1] = "other";
             array[2] = "test";
-            
+
             array.Clear("test");
-            
+
             Assert.Null(array[0]);
             Assert.Equal("other", array[1]);
             Assert.Null(array[2]);
@@ -217,9 +217,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
             array[0] = "first";
             array[1] = "second";
             array[2] = "third";
-            
+
             List<string> values = array.ToList();
-            
+
             Assert.Equal(3, values.Count);
             Assert.Equal("first", values[0]);
             Assert.Equal("second", values[1]);
@@ -235,9 +235,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
             FixedArray3<string> array1 = new FixedArray3<string>();
             array1[0] = "test";
             FixedArray3<string> array2 = array1;
-            
+
             array2[0] = "modified";
-            
+
             Assert.NotEqual(array1[0], array2[0]);
         }
 
@@ -251,13 +251,16 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
             array[0] = "a";
             array[1] = null;
             array[2] = "c";
-            
+
             int nonNullCount = 0;
             foreach (string value in array)
             {
-                if (value != null) nonNullCount++;
+                if (value != null)
+                {
+                    nonNullCount++;
+                }
             }
-            
+
             Assert.Equal(2, nonNullCount);
         }
 
@@ -269,9 +272,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         {
             FixedArray3<TriangulationPoint> array = new FixedArray3<TriangulationPoint>();
             TriangulationPoint point = new TriangulationPoint(5, 10);
-            
+
             array[0] = point;
-            
+
             Assert.Equal(point, array[0]);
         }
 
@@ -285,9 +288,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
             array[0] = "unique";
             array[1] = "test";
             array[2] = "test";
-            
+
             int index = array.IndexOf("test");
-            
+
             Assert.Equal(1, index);
         }
 
@@ -301,9 +304,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
             array[0] = "test";
             array[1] = null;
             array[2] = "data";
-            
+
             bool result = array.Contains(null);
-            
+
             Assert.True(result);
         }
 
@@ -314,7 +317,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         public void IndexerSet_ShouldThrowException_ForInvalidIndex()
         {
             FixedArray3<string> array = new FixedArray3<string>();
-            
+
             Assert.Throws<CustomIndexOutOfRangeException>(() => array[5] = "value");
         }
 
@@ -325,8 +328,8 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         public void FixedArray_ShouldImplementIEnumerable()
         {
             FixedArray3<string> array = new FixedArray3<string>();
-            
-            Assert.IsAssignableFrom<System.Collections.Generic.IEnumerable<string>>(array);
+
+            Assert.IsAssignableFrom<IEnumerable<string>>(array);
         }
 
         /// <summary>
@@ -337,9 +340,8 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         {
             FixedArray3<object> array = new FixedArray3<object>();
             array[0] = new object();
-            
+
             Assert.NotNull(array[0]);
         }
     }
 }
-

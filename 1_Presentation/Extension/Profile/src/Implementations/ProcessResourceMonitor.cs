@@ -61,10 +61,7 @@ namespace Alis.Extension.Profile.Implementations
         /// <exception cref="ArgumentNullException">
         ///     Thrown when process is null.
         /// </exception>
-        public ProcessResourceMonitor(Process process)
-        {
-            this.process = process ?? throw new ArgumentNullException(nameof(process));
-        }
+        public ProcessResourceMonitor(Process process) => this.process = process ?? throw new ArgumentNullException(nameof(process));
 
         /// <summary>
         ///     Measures the current CPU usage of the process.
@@ -141,4 +138,3 @@ namespace Alis.Extension.Profile.Implementations
         }
     }
 }
-

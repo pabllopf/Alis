@@ -43,33 +43,33 @@ namespace Alis.Core.Aspect.Data.Json
     public static class JsonNativeAot
     {
         /// <summary>
-        /// The escape sequence handler
+        ///     The escape sequence handler
         /// </summary>
-        private static readonly Lazy<IEscapeSequenceHandler> _escapeSequenceHandler = 
+        private static readonly Lazy<IEscapeSequenceHandler> _escapeSequenceHandler =
             new(() => new EscapeSequenceHandler());
 
         /// <summary>
-        /// The value
+        ///     The value
         /// </summary>
-        private static readonly Lazy<IJsonParser> _jsonParser = 
+        private static readonly Lazy<IJsonParser> _jsonParser =
             new(() => new JsonParser(_escapeSequenceHandler.Value));
 
         /// <summary>
-        /// The json serializer
+        ///     The json serializer
         /// </summary>
-        private static readonly Lazy<IJsonSerializer> _jsonSerializer = 
+        private static readonly Lazy<IJsonSerializer> _jsonSerializer =
             new(() => new JsonSerializer());
 
         /// <summary>
-        /// The value
+        ///     The value
         /// </summary>
-        private static readonly Lazy<IJsonDeserializer> _jsonDeserializer = 
+        private static readonly Lazy<IJsonDeserializer> _jsonDeserializer =
             new(() => new JsonDeserializer(_jsonParser.Value));
 
         /// <summary>
-        /// The value
+        ///     The value
         /// </summary>
-        private static readonly Lazy<IJsonFileHandler> _jsonFileHandler = 
+        private static readonly Lazy<IJsonFileHandler> _jsonFileHandler =
             new(() => new JsonFileHandler(_jsonSerializer.Value, _jsonDeserializer.Value));
 
         /// <summary>
@@ -78,10 +78,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <typeparam name="T">The type of the object to serialize.</typeparam>
         /// <param name="instance">The instance to serialize.</param>
         /// <returns>A JSON string representation of the object.</returns>
-        public static string Serialize<T>(T instance) where T : IJsonSerializable
-        {
-            return _jsonSerializer.Value.Serialize(instance);
-        }
+        public static string Serialize<T>(T instance) where T : IJsonSerializable => _jsonSerializer.Value.Serialize(instance);
 
         /// <summary>
         ///     Serializes an object to a JSON file.
@@ -101,10 +98,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <typeparam name="T">The target type.</typeparam>
         /// <param name="json">The JSON string to deserialize.</param>
         /// <returns>An instance of the specified type.</returns>
-        public static T Deserialize<T>(string json) where T : IJsonSerializable, IJsonDesSerializable<T>, new()
-        {
-            return _jsonDeserializer.Value.Deserialize<T>(json);
-        }
+        public static T Deserialize<T>(string json) where T : IJsonSerializable, IJsonDesSerializable<T>, new() => _jsonDeserializer.Value.Deserialize<T>(json);
 
         /// <summary>
         ///     Parses a JSON string into a dictionary of property names and their string values.
@@ -116,9 +110,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <remarks>
         ///     This method provides low-level access to JSON parsing. It returns a raw dictionary
         ///     of property names and values without deserializing to a specific type.
-        ///     
         ///     Complex values (objects and arrays) are returned as raw JSON strings.
-        ///     
         ///     Time Complexity: O(n) where n is the length of the JSON string.
         ///     Space Complexity: O(n) for the output dictionary.
         /// </remarks>
@@ -130,10 +122,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     // props["Age"] = "30"
         ///     </code>
         /// </example>
-        public static Dictionary<string, string> ParseJsonToDictionary(string json)
-        {
-            return _jsonParser.Value.ParseToDictionary(json);
-        }
+        public static Dictionary<string, string> ParseJsonToDictionary(string json) => _jsonParser.Value.ParseToDictionary(json);
 
         /// <summary>
         ///     Deserializes a JSON file into an object.
@@ -142,9 +131,6 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="fileName">The name of the file (without .json extension).</param>
         /// <param name="relativePath">The relative path where the file is located.</param>
         /// <returns>An instance of the specified type.</returns>
-        public static T DeserializeFromFile<T>(string fileName, string relativePath) where T : IJsonSerializable, IJsonDesSerializable<T>, new()
-        {
-            return _jsonFileHandler.Value.DeserializeFromFile<T>(fileName, relativePath);
-        }
+        public static T DeserializeFromFile<T>(string fileName, string relativePath) where T : IJsonSerializable, IJsonDesSerializable<T>, new() => _jsonFileHandler.Value.DeserializeFromFile<T>(fileName, relativePath);
     }
 }

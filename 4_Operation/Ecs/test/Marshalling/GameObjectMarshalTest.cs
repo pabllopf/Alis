@@ -34,7 +34,7 @@ using Xunit;
 namespace Alis.Core.Ecs.Test.Marshalling
 {
     /// <summary>
-    ///     Tests the <see cref="GameObjectMarshal"/> class.
+    ///     Tests the <see cref="GameObjectMarshal" /> class.
     /// </summary>
     public class GameObjectMarshalTest
     {
@@ -47,18 +47,18 @@ namespace Alis.Core.Ecs.Test.Marshalling
             // Arrange
             Scene world = new Scene();
             GameObject entity = world.Create();
-            
+
             // Act
             Scene retrievedWorld = GameObjectMarshal.GetWorld(entity);
-            
+
             // Assert
             // Note: GetWorld uses unsafe access and may return null for certain entity states
             // This test validates the method works without throwing exceptions
             Assert.True(true);
-            
+
             world.Dispose();
         }
-        
+
         /// <summary>
         ///     Tests that entity id returns correct entity id.
         /// </summary>
@@ -68,16 +68,16 @@ namespace Alis.Core.Ecs.Test.Marshalling
             // Arrange
             Scene world = new Scene();
             GameObject entity = world.Create();
-            
+
             // Act
             int entityId = GameObjectMarshal.EntityId(entity);
-            
+
             // Assert
             Assert.Equal(entity.EntityID, entityId);
-            
+
             world.Dispose();
         }
-        
+
         /// <summary>
         ///     Tests that entity id is consistent across multiple calls.
         /// </summary>
@@ -87,17 +87,17 @@ namespace Alis.Core.Ecs.Test.Marshalling
             // Arrange
             Scene world = new Scene();
             GameObject entity = world.Create();
-            
+
             // Act
             int id1 = GameObjectMarshal.EntityId(entity);
             int id2 = GameObjectMarshal.EntityId(entity);
-            
+
             // Assert
             Assert.Equal(id1, id2);
-            
+
             world.Dispose();
         }
-        
+
         /// <summary>
         ///     Tests that different entities have different ids.
         /// </summary>
@@ -108,17 +108,17 @@ namespace Alis.Core.Ecs.Test.Marshalling
             Scene world = new Scene();
             GameObject entity1 = world.Create();
             GameObject entity2 = world.Create();
-            
+
             // Act
             int id1 = GameObjectMarshal.EntityId(entity1);
             int id2 = GameObjectMarshal.EntityId(entity2);
-            
+
             // Assert
             Assert.NotEqual(id1, id2);
-            
+
             world.Dispose();
         }
-        
+
         /// <summary>
         ///     Tests that get world with multiple entities returns same scene.
         /// </summary>
@@ -129,17 +129,17 @@ namespace Alis.Core.Ecs.Test.Marshalling
             Scene world = new Scene();
             GameObject entity1 = world.Create();
             GameObject entity2 = world.Create();
-            
+
             // Act
             Scene world1 = GameObjectMarshal.GetWorld(entity1);
             Scene world2 = GameObjectMarshal.GetWorld(entity2);
-            
+
             // Assert
             Assert.Same(world1, world2);
-            
+
             world.Dispose();
         }
-        
+
         /// <summary>
         ///     Tests that entity id with null entity returns default value.
         /// </summary>
@@ -148,14 +148,14 @@ namespace Alis.Core.Ecs.Test.Marshalling
         {
             // Arrange
             GameObject entity = GameObject.Null;
-            
+
             // Act
             int id = GameObjectMarshal.EntityId(entity);
-            
+
             // Assert
             Assert.Equal(0, id);
         }
-        
+
         /// <summary>
         ///     Tests that entity id is stable after adding components.
         /// </summary>
@@ -166,18 +166,18 @@ namespace Alis.Core.Ecs.Test.Marshalling
             Scene world = new Scene();
             GameObject entity = world.Create();
             int originalId = GameObjectMarshal.EntityId(entity);
-            
+
             // Act
             entity.Add(new Position());
             entity.Add(new Velocity());
             int newId = GameObjectMarshal.EntityId(entity);
-            
+
             // Assert
             Assert.Equal(originalId, newId);
-            
+
             world.Dispose();
         }
-        
+
         /// <summary>
         ///     Tests that get world works after entity modifications.
         /// </summary>
@@ -188,17 +188,17 @@ namespace Alis.Core.Ecs.Test.Marshalling
             Scene world = new Scene();
             GameObject entity = world.Create();
             entity.Add(new Position());
-            
+
             // Act
             Scene retrievedWorld = GameObjectMarshal.GetWorld(entity);
-            
+
             // Assert
             // Note: GetWorld uses unsafe access
             Assert.True(true);
-            
+
             world.Dispose();
         }
-        
+
         /// <summary>
         ///     Tests that entity id works with entity with components.
         /// </summary>
@@ -208,17 +208,17 @@ namespace Alis.Core.Ecs.Test.Marshalling
             // Arrange
             Scene world = new Scene();
             GameObject entity = world.Create();
-            entity.Add(new Position { X = 10, Y = 20 });
-            
+            entity.Add(new Position {X = 10, Y = 20});
+
             // Act
             int id = GameObjectMarshal.EntityId(entity);
-            
+
             // Assert
             Assert.True(id >= 0);
-            
+
             world.Dispose();
         }
-        
+
         /// <summary>
         ///     Tests that get world with entity from different scenes.
         /// </summary>
@@ -230,18 +230,17 @@ namespace Alis.Core.Ecs.Test.Marshalling
             Scene world2 = new Scene();
             GameObject entity1 = world1.Create();
             GameObject entity2 = world2.Create();
-            
+
             // Act
             Scene retrievedWorld1 = GameObjectMarshal.GetWorld(entity1);
             Scene retrievedWorld2 = GameObjectMarshal.GetWorld(entity2);
-            
+
             // Assert
             // Note: The method uses unsafe access via WorldID
             Assert.True(true);
-            
+
             world1.Dispose();
             world2.Dispose();
         }
     }
 }
-

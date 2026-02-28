@@ -43,8 +43,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         /// <param name="f">The </param>
         /// <param name="userDataPtr">The user data ptr</param>
-        [DllImport("emscripten", EntryPoint = "emscripten_request_animation_frame_loop"), DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories)]
-        [ExcludeFromCodeCoverage]
+        [DllImport("emscripten", EntryPoint = "emscripten_request_animation_frame_loop"), DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         public static extern void RequestAnimationFrameLoop(IntPtr f, nint userDataPtr);
     }
 }

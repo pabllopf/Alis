@@ -28,9 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using Alis.Core.Ecs.Collections;
-using Alis.Core.Ecs.Test.Models;
 using Xunit;
 
 namespace Alis.Core.Ecs.Test.Collections
@@ -39,7 +37,7 @@ namespace Alis.Core.Ecs.Test.Collections
     ///     The fastest stack test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="FastestStack{T}"/> collection which provides
+    ///     Tests the <see cref="FastestStack{T}" /> collection which provides
     ///     a high-performance stack implementation for the ECS system.
     /// </remarks>
     public class FastestStackTest
@@ -88,7 +86,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void FastestStack_CanBeCreatedFromEnumerable()
         {
             // Arrange
-            int[] items = { 1, 2, 3, 4, 5 };
+            int[] items = {1, 2, 3, 4, 5};
 
             // Act
             FastestStack<int> stack = new FastestStack<int>(items);
@@ -532,7 +530,7 @@ namespace Alis.Core.Ecs.Test.Collections
 
             // Assert
             Assert.Equal(itemCount, stack.Count);
-            
+
             for (int i = itemCount - 1; i >= 0; i--)
             {
                 Assert.Equal(i, stack.Pop());
@@ -588,4 +586,3 @@ namespace Alis.Core.Ecs.Test.Collections
         }
     }
 }
-

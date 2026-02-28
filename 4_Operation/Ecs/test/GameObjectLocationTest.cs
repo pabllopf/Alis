@@ -34,7 +34,7 @@ using Xunit;
 namespace Alis.Core.Ecs.Test
 {
     /// <summary>
-    ///     Tests the <see cref="GameObjectLocation"/> struct.
+    ///     Tests the <see cref="GameObjectLocation" /> struct.
     /// </summary>
     public class GameObjectLocationTest
     {
@@ -47,18 +47,18 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             Scene world = new Scene();
             Archetype archetype = world.DefaultArchetype;
-            
+
             // Act
             GameObjectLocation location = new GameObjectLocation(archetype, 5);
-            
+
             // Assert
             Assert.Equal(archetype, location.Archetype);
             Assert.Equal(5, location.Index);
             Assert.Equal(GameObjectFlags.None, location.Flags);
-            
+
             world.Dispose();
         }
-        
+
         /// <summary>
         ///     Tests that constructor with flags initializes all fields correctly.
         /// </summary>
@@ -69,18 +69,18 @@ namespace Alis.Core.Ecs.Test
             Scene world = new Scene();
             Archetype archetype = world.DefaultArchetype;
             GameObjectFlags flags = GameObjectFlags.AddComp;
-            
+
             // Act
             GameObjectLocation location = new GameObjectLocation(archetype, 10, flags);
-            
+
             // Assert
             Assert.Equal(archetype, location.Archetype);
             Assert.Equal(10, location.Index);
             Assert.Equal(flags, location.Flags);
-            
+
             world.Dispose();
         }
-        
+
         /// <summary>
         ///     Tests that archetype id returns correct archetype id.
         /// </summary>
@@ -91,16 +91,16 @@ namespace Alis.Core.Ecs.Test
             Scene world = new Scene();
             Archetype archetype = world.DefaultArchetype;
             GameObjectLocation location = new GameObjectLocation(archetype, 0);
-            
+
             // Act
             GameObjectType archetypeId = location.ArchetypeId;
-            
+
             // Assert
             Assert.Equal(archetype.Id, archetypeId);
-            
+
             world.Dispose();
         }
-        
+
         /// <summary>
         ///     Tests that default property returns valid default location.
         /// </summary>
@@ -109,12 +109,12 @@ namespace Alis.Core.Ecs.Test
         {
             // Act
             GameObjectLocation defaultLocation = GameObjectLocation.Default;
-            
+
             // Assert
             Assert.Equal(int.MaxValue, defaultLocation.Index);
             // Note: Default archetype may be null in the default static property
         }
-        
+
         /// <summary>
         ///     Tests that has event with no flags returns false.
         /// </summary>
@@ -125,16 +125,16 @@ namespace Alis.Core.Ecs.Test
             Scene world = new Scene();
             Archetype archetype = world.DefaultArchetype;
             GameObjectLocation location = new GameObjectLocation(archetype, 0, GameObjectFlags.None);
-            
+
             // Act
             bool hasEvent = location.HasEvent(GameObjectFlags.AddComp);
-            
+
             // Assert
             Assert.False(hasEvent);
-            
+
             world.Dispose();
         }
-        
+
         /// <summary>
         ///     Tests that has event with matching flag returns true.
         /// </summary>
@@ -145,16 +145,16 @@ namespace Alis.Core.Ecs.Test
             Scene world = new Scene();
             Archetype archetype = world.DefaultArchetype;
             GameObjectLocation location = new GameObjectLocation(archetype, 0, GameObjectFlags.AddComp);
-            
+
             // Act
             bool hasEvent = location.HasEvent(GameObjectFlags.AddComp);
-            
+
             // Assert
             Assert.True(hasEvent);
-            
+
             world.Dispose();
         }
-        
+
         /// <summary>
         ///     Tests that has event with non matching flag returns false.
         /// </summary>
@@ -165,16 +165,16 @@ namespace Alis.Core.Ecs.Test
             Scene world = new Scene();
             Archetype archetype = world.DefaultArchetype;
             GameObjectLocation location = new GameObjectLocation(archetype, 0, GameObjectFlags.AddComp);
-            
+
             // Act
             bool hasEvent = location.HasEvent(GameObjectFlags.RemoveComp);
-            
+
             // Assert
             Assert.False(hasEvent);
-            
+
             world.Dispose();
         }
-        
+
         /// <summary>
         ///     Tests that has event with multiple flags returns true if any match.
         /// </summary>
@@ -186,18 +186,18 @@ namespace Alis.Core.Ecs.Test
             Archetype archetype = world.DefaultArchetype;
             GameObjectFlags flags = GameObjectFlags.AddComp | GameObjectFlags.RemoveComp;
             GameObjectLocation location = new GameObjectLocation(archetype, 0, flags);
-            
+
             // Act
             bool hasEvent1 = location.HasEvent(GameObjectFlags.AddComp);
             bool hasEvent2 = location.HasEvent(GameObjectFlags.RemoveComp);
-            
+
             // Assert
             Assert.True(hasEvent1);
             Assert.True(hasEvent2);
-            
+
             world.Dispose();
         }
-        
+
         /// <summary>
         ///     Tests that version field can be set and retrieved.
         /// </summary>
@@ -208,16 +208,16 @@ namespace Alis.Core.Ecs.Test
             Scene world = new Scene();
             Archetype archetype = world.DefaultArchetype;
             GameObjectLocation location = new GameObjectLocation(archetype, 0);
-            
+
             // Act
             location.Version = 42;
-            
+
             // Assert
-            Assert.Equal((ushort)42, location.Version);
-            
+            Assert.Equal((ushort) 42, location.Version);
+
             world.Dispose();
         }
-        
+
         /// <summary>
         ///     Tests that index can be negative.
         /// </summary>
@@ -227,16 +227,16 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             Scene world = new Scene();
             Archetype archetype = world.DefaultArchetype;
-            
+
             // Act
             GameObjectLocation location = new GameObjectLocation(archetype, -1);
-            
+
             // Assert
             Assert.Equal(-1, location.Index);
-            
+
             world.Dispose();
         }
-        
+
         /// <summary>
         ///     Tests that flags can be modified after construction.
         /// </summary>
@@ -247,15 +247,14 @@ namespace Alis.Core.Ecs.Test
             Scene world = new Scene();
             Archetype archetype = world.DefaultArchetype;
             GameObjectLocation location = new GameObjectLocation(archetype, 0);
-            
+
             // Act
             location.Flags = GameObjectFlags.Tagged;
-            
+
             // Assert
             Assert.Equal(GameObjectFlags.Tagged, location.Flags);
-            
+
             world.Dispose();
         }
     }
 }
-

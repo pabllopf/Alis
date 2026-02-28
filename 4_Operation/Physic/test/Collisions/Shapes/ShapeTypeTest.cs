@@ -43,7 +43,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         [Fact]
         public void Unknown_ShouldHaveValueNegativeOne()
         {
-            Assert.Equal(-1, (int)ShapeType.Unknown);
+            Assert.Equal(-1, (int) ShapeType.Unknown);
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         [Fact]
         public void Circle_ShouldHaveValueZero()
         {
-            Assert.Equal(0, (int)ShapeType.Circle);
+            Assert.Equal(0, (int) ShapeType.Circle);
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         [Fact]
         public void Edge_ShouldHaveValueOne()
         {
-            Assert.Equal(1, (int)ShapeType.Edge);
+            Assert.Equal(1, (int) ShapeType.Edge);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         [Fact]
         public void Polygon_ShouldHaveValueTwo()
         {
-            Assert.Equal(2, (int)ShapeType.Polygon);
+            Assert.Equal(2, (int) ShapeType.Polygon);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         [Fact]
         public void Chain_ShouldHaveValueThree()
         {
-            Assert.Equal(3, (int)ShapeType.Chain);
+            Assert.Equal(3, (int) ShapeType.Chain);
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         [Fact]
         public void TypeCount_ShouldHaveValueFour()
         {
-            Assert.Equal(4, (int)ShapeType.TypeCount);
+            Assert.Equal(4, (int) ShapeType.TypeCount);
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 ShapeType.Chain,
                 ShapeType.TypeCount
             };
-            
+
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = i + 1; j < values.Length; j++)
@@ -117,4 +117,3 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         }
     }
 }
-

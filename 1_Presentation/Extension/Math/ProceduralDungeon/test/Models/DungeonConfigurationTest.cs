@@ -69,17 +69,17 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
         {
             // Arrange & Act
             DungeonConfiguration config = new DungeonConfiguration(
-                boardWidth: 200,
-                boardHeight: 200,
-                numberOfRooms: 6,
-                firstRoomWidth: 10,
-                firstRoomHeight: 10,
-                roomWidth: 6,
-                roomHeight: 6,
-                bossRoomWidth: 8,
-                bossRoomHeight: 8,
-                corridorWidth: 5,
-                corridorHeight: 5
+                200,
+                200,
+                6,
+                10,
+                10,
+                6,
+                6,
+                8,
+                8,
+                5,
+                5
             );
 
             // Assert
@@ -103,7 +103,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
         public void Validate_ShouldThrowException_WhenBoardWidthIsZero()
         {
             // Arrange
-            DungeonConfiguration config = new DungeonConfiguration { BoardWidth = 0 };
+            DungeonConfiguration config = new DungeonConfiguration {BoardWidth = 0};
 
             // Act & Assert
             Assert.Throws<ArgumentException>(() => config.Validate());
@@ -116,7 +116,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
         public void Validate_ShouldThrowException_WhenBoardWidthIsNegative()
         {
             // Arrange
-            DungeonConfiguration config = new DungeonConfiguration { BoardWidth = -10 };
+            DungeonConfiguration config = new DungeonConfiguration {BoardWidth = -10};
 
             // Act & Assert
             Assert.Throws<ArgumentException>(() => config.Validate());
@@ -129,7 +129,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
         public void Validate_ShouldThrowException_WhenBoardHeightIsZero()
         {
             // Arrange
-            DungeonConfiguration config = new DungeonConfiguration { BoardHeight = 0 };
+            DungeonConfiguration config = new DungeonConfiguration {BoardHeight = 0};
 
             // Act & Assert
             Assert.Throws<ArgumentException>(() => config.Validate());
@@ -142,7 +142,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
         public void Validate_ShouldThrowException_WhenNumberOfRoomsIsLessThanTwo()
         {
             // Arrange
-            DungeonConfiguration config = new DungeonConfiguration { NumberOfRooms = 1 };
+            DungeonConfiguration config = new DungeonConfiguration {NumberOfRooms = 1};
 
             // Act & Assert
             Assert.Throws<ArgumentException>(() => config.Validate());
@@ -155,7 +155,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
         public void Validate_ShouldThrowException_WhenFirstRoomWidthIsZero()
         {
             // Arrange
-            DungeonConfiguration config = new DungeonConfiguration { FirstRoomWidth = 0 };
+            DungeonConfiguration config = new DungeonConfiguration {FirstRoomWidth = 0};
 
             // Act & Assert
             Assert.Throws<ArgumentException>(() => config.Validate());
@@ -168,7 +168,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
         public void Validate_ShouldThrowException_WhenFirstRoomHeightIsNegative()
         {
             // Arrange
-            DungeonConfiguration config = new DungeonConfiguration { FirstRoomHeight = -5 };
+            DungeonConfiguration config = new DungeonConfiguration {FirstRoomHeight = -5};
 
             // Act & Assert
             Assert.Throws<ArgumentException>(() => config.Validate());
@@ -181,7 +181,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
         public void Validate_ShouldThrowException_WhenRoomWidthIsZero()
         {
             // Arrange
-            DungeonConfiguration config = new DungeonConfiguration { RoomWidth = 0 };
+            DungeonConfiguration config = new DungeonConfiguration {RoomWidth = 0};
 
             // Act & Assert
             Assert.Throws<ArgumentException>(() => config.Validate());
@@ -194,7 +194,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
         public void Validate_ShouldThrowException_WhenBossRoomWidthIsNegative()
         {
             // Arrange
-            DungeonConfiguration config = new DungeonConfiguration { BossRoomWidth = -3 };
+            DungeonConfiguration config = new DungeonConfiguration {BossRoomWidth = -3};
 
             // Act & Assert
             Assert.Throws<ArgumentException>(() => config.Validate());
@@ -207,7 +207,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
         public void Validate_ShouldThrowException_WhenCorridorWidthIsZero()
         {
             // Arrange
-            DungeonConfiguration config = new DungeonConfiguration { CorridorWidth = 0 };
+            DungeonConfiguration config = new DungeonConfiguration {CorridorWidth = 0};
 
             // Act & Assert
             Assert.Throws<ArgumentException>(() => config.Validate());
@@ -235,17 +235,17 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
         {
             // Act & Assert
             Assert.Throws<ArgumentException>(() => new DungeonConfiguration(
-                boardWidth: -1,
-                boardHeight: 150,
-                numberOfRooms: 4,
-                firstRoomWidth: 8,
-                firstRoomHeight: 8,
-                roomWidth: 5,
-                roomHeight: 5,
-                bossRoomWidth: 7,
-                bossRoomHeight: 7,
-                corridorWidth: 4,
-                corridorHeight: 4
+                -1,
+                150,
+                4,
+                8,
+                8,
+                5,
+                5,
+                7,
+                7,
+                4,
+                4
             ));
         }
 
@@ -270,4 +270,3 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
         }
     }
 }
-

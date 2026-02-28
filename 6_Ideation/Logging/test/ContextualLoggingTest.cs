@@ -5,35 +5,31 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: ContextualLoggingTest.cs
+//  File:ContextualLoggingTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program. If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System;
 using System.Collections.Generic;
-using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Logging.Abstractions;
-using Alis.Core.Aspect.Logging.Formatters;
-using Alis.Core.Aspect.Logging.Outputs;
-using Xunit;
 using Alis.Core.Aspect.Logging.Formatters;
 using Alis.Core.Aspect.Logging.Outputs;
 using Xunit;
@@ -102,6 +98,7 @@ namespace Alis.Core.Aspect.Logging.Test
                 {
                     logger.LogInfo("Inside scope");
                 }
+
                 logger.LogInfo("Outside scope");
 
                 // Assert
@@ -141,7 +138,7 @@ namespace Alis.Core.Aspect.Logging.Test
                 // Assert
                 IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
                 Assert.Equal(3, entries.Count);
-                
+
                 Assert.Single(entries[0].Scopes);
                 Assert.Equal("Level1", entries[0].Scopes[0]);
 
@@ -210,8 +207,8 @@ namespace Alis.Core.Aspect.Logging.Test
 
                 Dictionary<string, object> properties = new Dictionary<string, object>
                 {
-                    { "UserId", 123 },
-                    { "Action", "Login" }
+                    {"UserId", 123},
+                    {"Action", "Login"}
                 };
 
                 // Act
@@ -265,7 +262,7 @@ namespace Alis.Core.Aspect.Logging.Test
             {
                 MemoryLogOutput memoryOutput = new MemoryLogOutput();
                 factory.AddOutput(memoryOutput)
-                       .SetFormatter(new SimpleLogFormatter());
+                    .SetFormatter(new SimpleLogFormatter());
                 ILogger logger = factory.CreateLogger("TestLogger");
 
                 // Act
@@ -326,4 +323,3 @@ namespace Alis.Core.Aspect.Logging.Test
         }
     }
 }
-

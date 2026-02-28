@@ -42,21 +42,13 @@ namespace Alis.Core.Physic.Test.Common.Logic
     public class FilterDataTest
     {
         /// <summary>
-        ///     The test filter data class
-        /// </summary>
-        /// <seealso cref="FilterData" />
-        private class TestFilterData : FilterData
-        {
-        }
-
-        /// <summary>
         ///     Tests that default constructor should initialize with default values
         /// </summary>
         [Fact]
         public void DefaultConstructor_ShouldInitializeWithDefaultValues()
         {
             TestFilterData filter = new TestFilterData();
-            
+
             Assert.Equal(Category.None, filter.DisabledOnCategories);
             Assert.Equal(0, filter.DisabledOnGroup);
             Assert.Equal(Category.All, filter.EnabledOnCategories);
@@ -70,9 +62,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void IsActiveOn_ShouldReturnFalse_ForNullBody()
         {
             TestFilterData filter = new TestFilterData();
-            
+
             bool result = filter.IsActiveOn(null);
-            
+
             Assert.False(result);
         }
 
@@ -86,9 +78,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body body = world.CreateBody();
             body.Enabled = false;
-            
+
             bool result = filter.IsActiveOn(body);
-            
+
             Assert.False(result);
         }
 
@@ -100,10 +92,10 @@ namespace Alis.Core.Physic.Test.Common.Logic
         {
             TestFilterData filter = new TestFilterData();
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
-            Body body = world.CreateBody(Vector2F.Zero, 0, BodyType.Static);
-            
+            Body body = world.CreateBody(Vector2F.Zero);
+
             bool result = filter.IsActiveOn(body);
-            
+
             Assert.False(result);
         }
 
@@ -117,9 +109,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body body = world.CreateBody(Vector2F.Zero, 0, BodyType.Dynamic);
             body.CreateFixture(new CircleShape(1.0f, 1.0f));
-            
+
             bool result = filter.IsActiveOn(body);
-            
+
             Assert.True(result);
         }
 
@@ -130,9 +122,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void AddDisabledCategory_ShouldAddCategory()
         {
             TestFilterData filter = new TestFilterData();
-            
+
             filter.AddDisabledCategory(Category.Cat1);
-            
+
             Assert.True((filter.DisabledOnCategories & Category.Cat1) == Category.Cat1);
         }
 
@@ -144,9 +136,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
         {
             TestFilterData filter = new TestFilterData();
             filter.AddDisabledCategory(Category.Cat1);
-            
+
             filter.RemoveDisabledCategory(Category.Cat1);
-            
+
             Assert.False((filter.DisabledOnCategories & Category.Cat1) == Category.Cat1);
         }
 
@@ -158,9 +150,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
         {
             TestFilterData filter = new TestFilterData();
             filter.AddDisabledCategory(Category.Cat2);
-            
+
             bool result = filter.IsInDisabledCategory(Category.Cat2);
-            
+
             Assert.True(result);
         }
 
@@ -171,9 +163,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void IsInDisabledCategory_ShouldReturnFalse_ForEnabledCategory()
         {
             TestFilterData filter = new TestFilterData();
-            
+
             bool result = filter.IsInDisabledCategory(Category.Cat1);
-            
+
             Assert.False(result);
         }
 
@@ -185,9 +177,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
         {
             TestFilterData filter = new TestFilterData();
             filter.EnabledOnCategories = Category.None;
-            
+
             filter.AddEnabledCategory(Category.Cat3);
-            
+
             Assert.True((filter.EnabledOnCategories & Category.Cat3) == Category.Cat3);
         }
 
@@ -199,9 +191,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
         {
             TestFilterData filter = new TestFilterData();
             filter.AddEnabledCategory(Category.Cat4);
-            
+
             filter.RemoveEnabledCategory(Category.Cat4);
-            
+
             Assert.False((filter.EnabledOnCategories & Category.Cat4) == Category.Cat4);
         }
 
@@ -212,9 +204,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void IsInEnabledInCategory_ShouldReturnTrue_ForEnabledCategory()
         {
             TestFilterData filter = new TestFilterData();
-            
+
             bool result = filter.IsInEnabledInCategory(Category.Cat1);
-            
+
             Assert.True(result);
         }
 
@@ -225,7 +217,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void FilterData_ShouldBeAbstractClass()
         {
             Type type = typeof(FilterData);
-            
+
             Assert.True(type.IsAbstract);
         }
 
@@ -239,7 +231,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
             {
                 DisabledOnGroup = 5
             };
-            
+
             Assert.Equal(5, filter.DisabledOnGroup);
         }
 
@@ -253,7 +245,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
             {
                 EnabledOnGroup = 10
             };
-            
+
             Assert.Equal(10, filter.EnabledOnGroup);
         }
 
@@ -270,12 +262,19 @@ namespace Alis.Core.Physic.Test.Common.Logic
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body body = world.CreateBody(Vector2F.Zero, 0, BodyType.Dynamic);
             Fixture fixture = body.CreateFixture(new CircleShape(1.0f, 1.0f));
-            
-            
+
+
             bool result = filter.IsActiveOn(body);
-            
+
             Assert.True(result);
+        }
+
+        /// <summary>
+        ///     The test filter data class
+        /// </summary>
+        /// <seealso cref="FilterData" />
+        private class TestFilterData : FilterData
+        {
         }
     }
 }
-

@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:CursorModeEnumTests.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,7 +39,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
     public class CursorModeEnumTests
     {
         /// <summary>
-        /// Tests that cursor mode normal is defined
+        ///     Tests that cursor mode normal is defined
         /// </summary>
         [Fact]
         public void CursorMode_Normal_IsDefined()
@@ -51,7 +52,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that cursor mode hidden is defined
+        ///     Tests that cursor mode hidden is defined
         /// </summary>
         [Fact]
         public void CursorMode_Hidden_IsDefined()
@@ -64,7 +65,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that cursor mode disabled is defined
+        ///     Tests that cursor mode disabled is defined
         /// </summary>
         [Fact]
         public void CursorMode_Disabled_IsDefined()
@@ -77,7 +78,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that cursor mode can be cast to int
+        ///     Tests that cursor mode can be cast to int
         /// </summary>
         [Fact]
         public void CursorMode_CanBeCastToInt()
@@ -86,14 +87,14 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
             CursorMode mode = CursorMode.Normal;
 
             // Act
-            int value = (int)mode;
+            int value = (int) mode;
 
             // Assert
             Assert.True(value >= 0);
         }
 
         /// <summary>
-        /// Tests that cursor mode all modes are different
+        ///     Tests that cursor mode all modes are different
         /// </summary>
         [Fact]
         public void CursorMode_AllModes_AreDifferent()
@@ -105,4 +106,3 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
     }
 }
-

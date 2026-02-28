@@ -28,18 +28,19 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Xunit;
+using System.Collections.Generic;
 using Alis.Core.Graphic.OpenGL;
+using Xunit;
 
 namespace Alis.Core.Graphic.Test
 {
     /// <summary>
-    /// Tests for the PrimitiveType enum validating all geometric primitive types.
+    ///     Tests for the PrimitiveType enum validating all geometric primitive types.
     /// </summary>
     public class PrimitiveTypeTest
     {
         /// <summary>
-        /// Tests that Points primitive type has correct OpenGL value.
+        ///     Tests that Points primitive type has correct OpenGL value.
         /// </summary>
         [Fact]
         public void Points_HasCorrectValue_EqualsGlPoints()
@@ -48,11 +49,11 @@ namespace Alis.Core.Graphic.Test
             const int expectedValue = 0x0000;
 
             // Assert
-            Assert.Equal(expectedValue, (int)PrimitiveType.Points);
+            Assert.Equal(expectedValue, (int) PrimitiveType.Points);
         }
 
         /// <summary>
-        /// Tests that Lines primitive type has correct OpenGL value.
+        ///     Tests that Lines primitive type has correct OpenGL value.
         /// </summary>
         [Fact]
         public void Lines_HasCorrectValue_EqualsGlLines()
@@ -61,11 +62,11 @@ namespace Alis.Core.Graphic.Test
             const int expectedValue = 0x0001;
 
             // Assert
-            Assert.Equal(expectedValue, (int)PrimitiveType.Lines);
+            Assert.Equal(expectedValue, (int) PrimitiveType.Lines);
         }
 
         /// <summary>
-        /// Tests that LineLoop primitive type has correct OpenGL value.
+        ///     Tests that LineLoop primitive type has correct OpenGL value.
         /// </summary>
         [Fact]
         public void LineLoop_HasCorrectValue_EqualsGlLineLoop()
@@ -74,11 +75,11 @@ namespace Alis.Core.Graphic.Test
             const int expectedValue = 0x0002;
 
             // Assert
-            Assert.Equal(expectedValue, (int)PrimitiveType.LineLoop);
+            Assert.Equal(expectedValue, (int) PrimitiveType.LineLoop);
         }
 
         /// <summary>
-        /// Tests that LineStrip primitive type has correct OpenGL value.
+        ///     Tests that LineStrip primitive type has correct OpenGL value.
         /// </summary>
         [Fact]
         public void LineStrip_HasCorrectValue_EqualsGlLineStrip()
@@ -87,11 +88,11 @@ namespace Alis.Core.Graphic.Test
             const int expectedValue = 0x0003;
 
             // Assert
-            Assert.Equal(expectedValue, (int)PrimitiveType.LineStrip);
+            Assert.Equal(expectedValue, (int) PrimitiveType.LineStrip);
         }
 
         /// <summary>
-        /// Tests that Triangles primitive type has correct OpenGL value.
+        ///     Tests that Triangles primitive type has correct OpenGL value.
         /// </summary>
         [Fact]
         public void Triangles_HasCorrectValue_EqualsGlTriangles()
@@ -100,11 +101,11 @@ namespace Alis.Core.Graphic.Test
             const int expectedValue = 0x0004;
 
             // Assert
-            Assert.Equal(expectedValue, (int)PrimitiveType.Triangles);
+            Assert.Equal(expectedValue, (int) PrimitiveType.Triangles);
         }
 
         /// <summary>
-        /// Tests that TriangleStrip primitive type has correct OpenGL value.
+        ///     Tests that TriangleStrip primitive type has correct OpenGL value.
         /// </summary>
         [Fact]
         public void TriangleStrip_HasCorrectValue_EqualsGlTriangleStrip()
@@ -113,11 +114,11 @@ namespace Alis.Core.Graphic.Test
             const int expectedValue = 0x0005;
 
             // Assert
-            Assert.Equal(expectedValue, (int)PrimitiveType.TriangleStrip);
+            Assert.Equal(expectedValue, (int) PrimitiveType.TriangleStrip);
         }
 
         /// <summary>
-        /// Tests that TriangleFan primitive type has correct OpenGL value.
+        ///     Tests that TriangleFan primitive type has correct OpenGL value.
         /// </summary>
         [Fact]
         public void TriangleFan_HasCorrectValue_EqualsGlTriangleFan()
@@ -126,11 +127,11 @@ namespace Alis.Core.Graphic.Test
             const int expectedValue = 0x0006;
 
             // Assert
-            Assert.Equal(expectedValue, (int)PrimitiveType.TriangleFan);
+            Assert.Equal(expectedValue, (int) PrimitiveType.TriangleFan);
         }
 
         /// <summary>
-        /// Tests that Quads primitive type has correct OpenGL value.
+        ///     Tests that Quads primitive type has correct OpenGL value.
         /// </summary>
         [Fact]
         public void Quads_HasCorrectValue_EqualsGlQuads()
@@ -139,11 +140,11 @@ namespace Alis.Core.Graphic.Test
             const int expectedValue = 0x0007;
 
             // Assert
-            Assert.Equal(expectedValue, (int)PrimitiveType.Quads);
+            Assert.Equal(expectedValue, (int) PrimitiveType.Quads);
         }
 
         /// <summary>
-        /// Tests that all PrimitiveType values are unique.
+        ///     Tests that all PrimitiveType values are unique.
         /// </summary>
         [Fact]
         public void AllValues_AreUnique_NoConflicts()
@@ -151,25 +152,25 @@ namespace Alis.Core.Graphic.Test
             // Arrange
             int[] values = new[]
             {
-                (int)PrimitiveType.Points,
-                (int)PrimitiveType.Lines,
-                (int)PrimitiveType.LineLoop,
-                (int)PrimitiveType.LineStrip,
-                (int)PrimitiveType.Triangles,
-                (int)PrimitiveType.TriangleStrip,
-                (int)PrimitiveType.TriangleFan,
-                (int)PrimitiveType.Quads
+                (int) PrimitiveType.Points,
+                (int) PrimitiveType.Lines,
+                (int) PrimitiveType.LineLoop,
+                (int) PrimitiveType.LineStrip,
+                (int) PrimitiveType.Triangles,
+                (int) PrimitiveType.TriangleStrip,
+                (int) PrimitiveType.TriangleFan,
+                (int) PrimitiveType.Quads
             };
 
             // Act
-            int uniqueCount = new System.Collections.Generic.HashSet<int>(values).Count;
+            int uniqueCount = new HashSet<int>(values).Count;
 
             // Assert
             Assert.Equal(values.Length, uniqueCount);
         }
 
         /// <summary>
-        /// Tests that PrimitiveType is an enum type.
+        ///     Tests that PrimitiveType is an enum type.
         /// </summary>
         [Fact]
         public void PrimitiveType_IsEnum_TypeIsCorrect()
@@ -182,7 +183,7 @@ namespace Alis.Core.Graphic.Test
         }
 
         /// <summary>
-        /// Tests that PrimitiveType enum is public.
+        ///     Tests that PrimitiveType enum is public.
         /// </summary>
         [Fact]
         public void PrimitiveType_IsPublic_CanBeAccessed()
@@ -195,26 +196,26 @@ namespace Alis.Core.Graphic.Test
         }
 
         /// <summary>
-        /// Tests that PrimitiveType has 8 defined values.
+        ///     Tests that PrimitiveType has 8 defined values.
         /// </summary>
         [Fact]
         public void PrimitiveType_HasEightValues_CountIsCorrect()
         {
             // Arrange
-            Array enumValues = System.Enum.GetValues(typeof(PrimitiveType));
+            Array enumValues = Enum.GetValues(typeof(PrimitiveType));
 
             // Act & Assert
             Assert.Equal(8, enumValues.Length);
         }
 
         /// <summary>
-        /// Tests that PrimitiveType can be cast to int.
+        ///     Tests that PrimitiveType can be cast to int.
         /// </summary>
         [Fact]
         public void PrimitiveType_CanCastToInt_ConversionIsValid()
         {
             // Arrange & Act
-            int value = (int)PrimitiveType.Triangles;
+            int value = (int) PrimitiveType.Triangles;
 
             // Assert
             Assert.IsType<int>(value);
@@ -222,7 +223,7 @@ namespace Alis.Core.Graphic.Test
         }
 
         /// <summary>
-        /// Tests that PrimitiveType values can be compared.
+        ///     Tests that PrimitiveType values can be compared.
         /// </summary>
         [Fact]
         public void PrimitiveType_CanCompareValues_EqualityWorks()
@@ -236,7 +237,7 @@ namespace Alis.Core.Graphic.Test
         }
 
         /// <summary>
-        /// Tests that different PrimitiveType values are not equal.
+        ///     Tests that different PrimitiveType values are not equal.
         /// </summary>
         [Fact]
         public void PrimitiveType_DifferentValues_AreNotEqual()
@@ -250,4 +251,3 @@ namespace Alis.Core.Graphic.Test
         }
     }
 }
-

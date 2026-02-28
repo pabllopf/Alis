@@ -46,10 +46,7 @@ namespace Alis.Extension.Language.Dialogue.Core
         /// </summary>
         /// <param name="evaluateFunc">The evaluation function</param>
         /// <exception cref="ArgumentNullException">Thrown when evaluateFunc is null</exception>
-        public LambdaDialogCondition(Func<DialogContext, bool> evaluateFunc)
-        {
-            _evaluateFunc = evaluateFunc ?? throw new ArgumentNullException(nameof(evaluateFunc));
-        }
+        public LambdaDialogCondition(Func<DialogContext, bool> evaluateFunc) => _evaluateFunc = evaluateFunc ?? throw new ArgumentNullException(nameof(evaluateFunc));
 
         /// <summary>
         ///     Evaluates the condition against the provided context
@@ -67,4 +64,3 @@ namespace Alis.Extension.Language.Dialogue.Core
         }
     }
 }
-

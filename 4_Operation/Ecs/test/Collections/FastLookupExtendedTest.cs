@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:FastLookupExtendedTest.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -28,7 +29,6 @@
 
 using System.Collections.Generic;
 using Alis.Core.Ecs.Collections;
-using Alis.Core.Ecs;
 using Alis.Core.Ecs.Kernel;
 using Xunit;
 
@@ -134,7 +134,7 @@ namespace Alis.Core.Ecs.Test.Collections
         {
             // Arrange
             FastLookup lookup = new FastLookup();
-            HashSet<uint> keys = new System.Collections.Generic.HashSet<uint>();
+            HashSet<uint> keys = new HashSet<uint>();
 
             // Act
             for (ushort i = 0; i < 100; i++)
@@ -197,7 +197,5 @@ namespace Alis.Core.Ecs.Test.Collections
             // Assert
             Assert.Equal(32, index); // Assuming 32 indicates not found
         }
-
     }
 }
-

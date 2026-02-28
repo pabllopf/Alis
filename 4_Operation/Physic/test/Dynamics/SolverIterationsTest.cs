@@ -44,7 +44,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Constructor_ShouldInitializeWithDefaultValues()
         {
             SolverIterations iterations = new SolverIterations();
-            
+
             Assert.Equal(0, iterations.VelocityIterations);
             Assert.Equal(0, iterations.PositionIterations);
             Assert.Equal(0, iterations.ToiVelocityIterations);
@@ -61,7 +61,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             {
                 VelocityIterations = 8
             };
-            
+
             Assert.Equal(8, iterations.VelocityIterations);
         }
 
@@ -75,7 +75,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             {
                 PositionIterations = 3
             };
-            
+
             Assert.Equal(3, iterations.PositionIterations);
         }
 
@@ -89,7 +89,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             {
                 ToiVelocityIterations = 10
             };
-            
+
             Assert.Equal(10, iterations.ToiVelocityIterations);
         }
 
@@ -103,7 +103,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             {
                 ToiPositionIterations = 20
             };
-            
+
             Assert.Equal(20, iterations.ToiPositionIterations);
         }
 
@@ -120,7 +120,7 @@ namespace Alis.Core.Physic.Test.Dynamics
                 ToiVelocityIterations = 10,
                 ToiPositionIterations = 20
             };
-            
+
             Assert.Equal(8, iterations.VelocityIterations);
             Assert.Equal(3, iterations.PositionIterations);
             Assert.Equal(10, iterations.ToiVelocityIterations);
@@ -138,7 +138,7 @@ namespace Alis.Core.Physic.Test.Dynamics
                 VelocityIterations = -1,
                 PositionIterations = -1
             };
-            
+
             Assert.Equal(-1, iterations.VelocityIterations);
             Assert.Equal(-1, iterations.PositionIterations);
         }
@@ -156,7 +156,7 @@ namespace Alis.Core.Physic.Test.Dynamics
                 ToiVelocityIterations = 0,
                 ToiPositionIterations = 0
             };
-            
+
             Assert.Equal(0, iterations.VelocityIterations);
             Assert.Equal(0, iterations.PositionIterations);
             Assert.Equal(0, iterations.ToiVelocityIterations);
@@ -164,4 +164,3 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
     }
 }
-

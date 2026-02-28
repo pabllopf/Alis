@@ -31,18 +31,18 @@ using System;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using Xunit;
 using Alis.Core.Graphic.OpenGL.Delegates;
+using Xunit;
 
 namespace Alis.Core.Graphic.Test.Delegates
 {
     /// <summary>
-    /// Tests for the AttachShader delegate validating shader attachment function signature.
+    ///     Tests for the AttachShader delegate validating shader attachment function signature.
     /// </summary>
     public class AttachShaderTest
     {
         /// <summary>
-        /// Tests that AttachShader is a delegate type.
+        ///     Tests that AttachShader is a delegate type.
         /// </summary>
         [Fact]
         public void AttachShader_IsDelegate_TypeIsCorrect()
@@ -55,7 +55,7 @@ namespace Alis.Core.Graphic.Test.Delegates
         }
 
         /// <summary>
-        /// Tests that AttachShader is public.
+        ///     Tests that AttachShader is public.
         /// </summary>
         [Fact]
         public void AttachShader_IsPublic_CanBeAccessed()
@@ -68,7 +68,7 @@ namespace Alis.Core.Graphic.Test.Delegates
         }
 
         /// <summary>
-        /// Tests that AttachShader has UnmanagedFunctionPointer attribute.
+        ///     Tests that AttachShader has UnmanagedFunctionPointer attribute.
         /// </summary>
         [Fact]
         public void AttachShader_HasUnmanagedFunctionPointerAttribute_InteropIsConfigured()
@@ -82,7 +82,7 @@ namespace Alis.Core.Graphic.Test.Delegates
         }
 
         /// <summary>
-        /// Tests that AttachShader has two parameters.
+        ///     Tests that AttachShader has two parameters.
         /// </summary>
         [Fact]
         public void AttachShader_HasTwoParameters_SignatureIsCorrect()
@@ -98,7 +98,7 @@ namespace Alis.Core.Graphic.Test.Delegates
         }
 
         /// <summary>
-        /// Tests that AttachShader first parameter is uint (program).
+        ///     Tests that AttachShader first parameter is uint (program).
         /// </summary>
         [Fact]
         public void AttachShader_FirstParameter_IsUint()
@@ -114,7 +114,7 @@ namespace Alis.Core.Graphic.Test.Delegates
         }
 
         /// <summary>
-        /// Tests that AttachShader second parameter is uint (shader).
+        ///     Tests that AttachShader second parameter is uint (shader).
         /// </summary>
         [Fact]
         public void AttachShader_SecondParameter_IsUint()
@@ -130,7 +130,7 @@ namespace Alis.Core.Graphic.Test.Delegates
         }
 
         /// <summary>
-        /// Tests that AttachShader return type is void.
+        ///     Tests that AttachShader return type is void.
         /// </summary>
         [Fact]
         public void AttachShader_ReturnType_IsVoid()
@@ -145,28 +145,31 @@ namespace Alis.Core.Graphic.Test.Delegates
         }
 
         /// <summary>
-        /// Tests that AttachShader uses StdCall calling convention.
+        ///     Tests that AttachShader uses StdCall calling convention.
         /// </summary>
         [Fact]
         public void AttachShader_UsesStdCallConvention_InteropConventionIsCorrect()
         {
             // Arrange & Act
             Type delegateType = typeof(AttachShader);
-            UnmanagedFunctionPointerAttribute attribute = (UnmanagedFunctionPointerAttribute)delegateType.GetCustomAttributes(typeof(UnmanagedFunctionPointerAttribute), false)[0];
+            UnmanagedFunctionPointerAttribute attribute = (UnmanagedFunctionPointerAttribute) delegateType.GetCustomAttributes(typeof(UnmanagedFunctionPointerAttribute), false)[0];
 
             // Assert
             Assert.Equal(CallingConvention.StdCall, attribute.CallingConvention);
         }
 
         /// <summary>
-        /// Tests that AttachShader delegate can be instantiated.
+        ///     Tests that AttachShader delegate can be instantiated.
         /// </summary>
         [Fact]
         public void AttachShader_CanBeInstantiated_DelegateCreationIsValid()
         {
             // Arrange & Act
-            void TestFunction(uint program, uint shader) { }
-            AttachShader delegateInstance = new AttachShader(TestFunction);
+            void TestFunction(uint program, uint shader)
+            {
+            }
+
+            AttachShader delegateInstance = TestFunction;
 
             // Assert
             Assert.NotNull(delegateInstance);
@@ -174,7 +177,7 @@ namespace Alis.Core.Graphic.Test.Delegates
         }
 
         /// <summary>
-        /// Tests that AttachShader delegate Invoke method exists.
+        ///     Tests that AttachShader delegate Invoke method exists.
         /// </summary>
         [Fact]
         public void AttachShader_InvokeMethod_Exists()

@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: SerializationCodeBuilder.cs
+//  File:SerializationCodeBuilder.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program. If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -39,11 +39,12 @@ namespace Alis.Core.Aspect.Data.Generator
     internal class SerializationCodeBuilder
     {
         /// <summary>
-        /// The string builder
+        ///     The string builder
         /// </summary>
         private readonly StringBuilder _stringBuilder;
+
         /// <summary>
-        /// The type symbol
+        ///     The type symbol
         /// </summary>
         private readonly INamedTypeSymbol _typeSymbol;
 
@@ -108,9 +109,9 @@ namespace Alis.Core.Aspect.Data.Generator
         private void AddClassDeclaration()
         {
             string typeKeyword = _typeSymbol.TypeKind == TypeKind.Struct ? "struct" : "class";
-            _stringBuilder.AppendLine($"    /// <summary>");
+            _stringBuilder.AppendLine("    /// <summary>");
             _stringBuilder.AppendLine($"    ///     Partial implementation of {_typeSymbol.Name} providing JSON serialization support.");
-            _stringBuilder.AppendLine($"    /// </summary>");
+            _stringBuilder.AppendLine("    /// </summary>");
             _stringBuilder.AppendLine($"    public partial {typeKeyword} {_typeSymbol.Name} : IJsonSerializable, IJsonDesSerializable<{_typeSymbol.Name}>");
             _stringBuilder.AppendLine("    {");
         }
@@ -169,7 +170,7 @@ namespace Alis.Core.Aspect.Data.Generator
 
             foreach (ISymbol member in _typeSymbol.GetMembers())
             {
-                if (member is not IPropertySymbol property || property.DeclaredAccessibility != Accessibility.Public || 
+                if (member is not IPropertySymbol property || property.DeclaredAccessibility != Accessibility.Public ||
                     property.IsIndexer || property.SetMethod == null)
                 {
                     continue;
@@ -343,12 +344,12 @@ namespace Alis.Core.Aspect.Data.Generator
                     sb.AppendLine($"                {name} = Deserialize2DArray<{elemType}>(properties.TryGetValue(\"{jsonName}\", out var v_{name}) ? v_{name} : null),");
                 }
             }
-            else if (TypeConversionHelper.IsListOrCollection(type) && type is INamedTypeSymbol namedType && namedType.TypeArguments.Length == 1)
+            else if (TypeConversionHelper.IsListOrCollection(type) && type is INamedTypeSymbol namedType && (namedType.TypeArguments.Length == 1))
             {
                 string itemType = namedType.TypeArguments[0].ToDisplayString();
                 sb.AppendLine($"                {name} = DeserializeList<{itemType}>(properties.TryGetValue(\"{jsonName}\", out var v_{name}) ? v_{name} : null),");
             }
-            else if (TypeConversionHelper.IsDictionary(type) && type is INamedTypeSymbol dictType && dictType.TypeArguments.Length == 2)
+            else if (TypeConversionHelper.IsDictionary(type) && type is INamedTypeSymbol dictType && (dictType.TypeArguments.Length == 2))
             {
                 string keyType = dictType.TypeArguments[0].ToDisplayString();
                 string valueType = dictType.TypeArguments[1].ToDisplayString();
@@ -457,4 +458,3 @@ namespace Alis.Core.Aspect.Data.Generator
         }
     }
 }
-

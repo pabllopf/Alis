@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:SparseSetSimpleTest.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -84,19 +85,19 @@ namespace Alis.Core.Ecs.Test.Collections
         {
             // Arrange
             SparseSet<long> set = new SparseSet<long>();
-            int[] indices = { 5, 50, 500, 5000 };
+            int[] indices = {5, 50, 500, 5000};
 
             // Act
             for (int i = 0; i < indices.Length; i++)
             {
                 ref long val = ref set[indices[i]];
-                val = (long)indices[i] * 100;
+                val = (long) indices[i] * 100;
             }
 
             // Assert
             for (int i = 0; i < indices.Length; i++)
             {
-                Assert.Equal((long)indices[i] * 100, set[indices[i]]);
+                Assert.Equal((long) indices[i] * 100, set[indices[i]]);
             }
         }
 
@@ -125,8 +126,8 @@ namespace Alis.Core.Ecs.Test.Collections
         {
             // Arrange
             SparseSet<object> set = new SparseSet<object>();
-            var obj1 = new { ID = 1 };
-            var obj2 = new { ID = 2 };
+            var obj1 = new {ID = 1};
+            var obj2 = new {ID = 2};
 
             // Act
             ref object ref1 = ref set[0];
@@ -175,7 +176,7 @@ namespace Alis.Core.Ecs.Test.Collections
                 str = $"Seq_{i}";
             }
 
-            int[] sparseIndices = { 100, 500, 1000 };
+            int[] sparseIndices = {100, 500, 1000};
             for (int i = 0; i < sparseIndices.Length; i++)
             {
                 ref string str = ref set[sparseIndices[i]];
@@ -195,4 +196,3 @@ namespace Alis.Core.Ecs.Test.Collections
         }
     }
 }
-

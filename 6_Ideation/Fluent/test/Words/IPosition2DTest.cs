@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IPosition2DTest.cs
+//  File:IPosition2DTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,30 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
     /// </summary>
     public class IPosition2DTest
     {
-        /// <summary>
-        ///     Helper builder class for position.
-        /// </summary>
-        private class PositionBuilder
-        {
-            public float X { get; set; }
-            public float Y { get; set; }
-        }
-
-        /// <summary>
-        ///     Helper implementation of IPosition2D.
-        /// </summary>
-        private class Position2DBuilder : IPosition2D<PositionBuilder, float>
-        {
-            private readonly PositionBuilder _builder = new PositionBuilder();
-
-            public PositionBuilder Position(float x, float y)
-            {
-                _builder.X = x;
-                _builder.Y = y;
-                return _builder;
-            }
-        }
-
         /// <summary>
         ///     Tests that IPosition2D can be implemented.
         /// </summary>
@@ -112,10 +88,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Tests Position with negative coordinates.
         /// </summary>
-        [Theory]
-        [InlineData(-1.5f, -2.5f)]
-        [InlineData(-10f, 10f)]
-        [InlineData(10f, -10f)]
+        [Theory, InlineData(-1.5f, -2.5f), InlineData(-10f, 10f), InlineData(10f, -10f)]
         public void Position_WithVariousCoordinates(float x, float y)
         {
             Position2DBuilder builder = new Position2DBuilder();
@@ -123,6 +96,29 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
             Assert.Equal(x, result.X);
             Assert.Equal(y, result.Y);
         }
+
+        /// <summary>
+        ///     Helper builder class for position.
+        /// </summary>
+        private class PositionBuilder
+        {
+            public float X { get; set; }
+            public float Y { get; set; }
+        }
+
+        /// <summary>
+        ///     Helper implementation of IPosition2D.
+        /// </summary>
+        private class Position2DBuilder : IPosition2D<PositionBuilder, float>
+        {
+            private readonly PositionBuilder _builder = new PositionBuilder();
+
+            public PositionBuilder Position(float x, float y)
+            {
+                _builder.X = x;
+                _builder.Y = y;
+                return _builder;
+            }
+        }
     }
 }
-

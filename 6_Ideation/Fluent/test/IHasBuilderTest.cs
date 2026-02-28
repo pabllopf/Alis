@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IHasBuilderTest.cs
+//  File:IHasBuilderTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -37,14 +37,6 @@ namespace Alis.Core.Aspect.Fluent.Test
     /// </summary>
     public class IHasBuilderTest
     {
-        /// <summary>
-        ///     Helper implementation for testing.
-        /// </summary>
-        private class TestBuilderImpl : IHasBuilder<string>
-        {
-            public string Builder() => "test_value";
-        }
-
         /// <summary>
         ///     Tests that IHasBuilder can be implemented.
         /// </summary>
@@ -90,14 +82,6 @@ namespace Alis.Core.Aspect.Fluent.Test
         }
 
         /// <summary>
-        ///     Helper integer builder implementation.
-        /// </summary>
-        private class IntBuilderImpl : IHasBuilder<int>
-        {
-            public int Builder() => 100;
-        }
-
-        /// <summary>
         ///     Tests IHasBuilder with custom object type.
         /// </summary>
         [Fact]
@@ -108,6 +92,33 @@ namespace Alis.Core.Aspect.Fluent.Test
             Assert.NotNull(result);
             Assert.IsType<TestData>(result);
             Assert.Equal("data", result.Value);
+        }
+
+        /// <summary>
+        ///     Tests covariance with IHasBuilder.
+        /// </summary>
+        [Fact]
+        public void IHasBuilder_SupportsCovariance()
+        {
+            IHasBuilder<object> builder = new ObjectBuilderImpl();
+            object result = builder.Builder();
+            Assert.NotNull(result);
+        }
+
+        /// <summary>
+        ///     Helper implementation for testing.
+        /// </summary>
+        private class TestBuilderImpl : IHasBuilder<string>
+        {
+            public string Builder() => "test_value";
+        }
+
+        /// <summary>
+        ///     Helper integer builder implementation.
+        /// </summary>
+        private class IntBuilderImpl : IHasBuilder<int>
+        {
+            public int Builder() => 100;
         }
 
         /// <summary>
@@ -123,18 +134,7 @@ namespace Alis.Core.Aspect.Fluent.Test
         /// </summary>
         private class CustomBuilderImpl : IHasBuilder<TestData>
         {
-            public TestData Builder() => new TestData { Value = "data" };
-        }
-
-        /// <summary>
-        ///     Tests covariance with IHasBuilder.
-        /// </summary>
-        [Fact]
-        public void IHasBuilder_SupportsCovariance()
-        {
-            IHasBuilder<object> builder = new ObjectBuilderImpl();
-            object result = builder.Builder();
-            Assert.NotNull(result);
+            public TestData Builder() => new TestData {Value = "data"};
         }
 
         /// <summary>
@@ -146,4 +146,3 @@ namespace Alis.Core.Aspect.Fluent.Test
         }
     }
 }
-

@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:ContentScaleEventArgsTests.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -36,7 +37,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
     public class ContentScaleEventArgsTests
     {
         /// <summary>
-        /// Tests that constructor with valid scales sets properties
+        ///     Tests that constructor with valid scales sets properties
         /// </summary>
         [Fact]
         public void Constructor_WithValidScales_SetsProperties()
@@ -54,7 +55,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that x scale property returns correct value
+        ///     Tests that x scale property returns correct value
         /// </summary>
         [Fact]
         public void XScale_Property_ReturnsCorrectValue()
@@ -71,7 +72,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that y scale property returns correct value
+        ///     Tests that y scale property returns correct value
         /// </summary>
         [Fact]
         public void YScale_Property_ReturnsCorrectValue()
@@ -88,7 +89,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that constructor with equal scales sets properties
+        ///     Tests that constructor with equal scales sets properties
         /// </summary>
         [Fact]
         public void Constructor_WithEqualScales_SetsProperties()
@@ -105,7 +106,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that constructor with default scale sets properties
+        ///     Tests that constructor with default scale sets properties
         /// </summary>
         [Fact]
         public void Constructor_WithDefaultScale_SetsProperties()
@@ -123,7 +124,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that constructor with high dpi scales sets properties
+        ///     Tests that constructor with high dpi scales sets properties
         /// </summary>
         [Fact]
         public void Constructor_WithHighDpiScales_SetsProperties()
@@ -141,7 +142,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that constructor with different scales stores each independently
+        ///     Tests that constructor with different scales stores each independently
         /// </summary>
         [Fact]
         public void Constructor_WithDifferentScales_StoresEachIndependently()
@@ -158,4 +159,3 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
     }
 }
-

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
@@ -47,9 +48,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Constructor_ShouldInitializeWithWorld()
         {
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
-            
+
             BodyCollection collection = new BodyCollection(world);
-            
+
             Assert.NotNull(collection);
             Assert.Equal(0, collection.Count);
         }
@@ -62,7 +63,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             BodyCollection collection = new BodyCollection(world);
-            
+
             Assert.True(collection.IsReadOnly);
         }
 
@@ -75,7 +76,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             world.CreateBody();
             world.CreateBody();
-            
+
             Assert.Equal(2, world.BodyList.Count);
         }
 
@@ -87,9 +88,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body body = world.CreateBody();
-            
+
             Body retrievedBody = world.BodyList[0];
-            
+
             Assert.Equal(body, retrievedBody);
         }
 
@@ -102,7 +103,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             world.CreateBody();
             Body newBody = new Body();
-            
+
             Assert.Throws<NotSupportedException>(() => world.BodyList[0] = newBody);
         }
 
@@ -114,9 +115,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body body = world.CreateBody();
-            
+
             bool contains = world.BodyList.Contains(body);
-            
+
             Assert.True(contains);
         }
 
@@ -128,9 +129,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body body = new Body();
-            
+
             bool contains = world.BodyList.Contains(body);
-            
+
             Assert.False(contains);
         }
 
@@ -143,9 +144,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             world.CreateBody();
             Body body = world.CreateBody();
-            
+
             int index = world.BodyList.IndexOf(body);
-            
+
             Assert.Equal(1, index);
         }
 
@@ -159,9 +160,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             world.CreateBody();
             world.CreateBody();
             Body[] array = new Body[2];
-            
+
             world.BodyList.CopyTo(array, 0);
-            
+
             Assert.NotNull(array[0]);
             Assert.NotNull(array[1]);
         }
@@ -176,12 +177,12 @@ namespace Alis.Core.Physic.Test.Dynamics
             world.CreateBody();
             world.CreateBody();
             int count = 0;
-            
+
             foreach (Body body in world.BodyList)
             {
                 count++;
             }
-            
+
             Assert.Equal(2, count);
         }
 
@@ -193,8 +194,8 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body body = new Body();
-            
-            Assert.Throws<NotSupportedException>(() => ((System.Collections.Generic.ICollection<Body>)world.BodyList).Add(body));
+
+            Assert.Throws<NotSupportedException>(() => ((ICollection<Body>) world.BodyList).Add(body));
         }
 
         /// <summary>
@@ -205,8 +206,8 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body body = world.CreateBody();
-            
-            Assert.Throws<NotSupportedException>(() => ((System.Collections.Generic.ICollection<Body>)world.BodyList).Remove(body));
+
+            Assert.Throws<NotSupportedException>(() => ((ICollection<Body>) world.BodyList).Remove(body));
         }
 
         /// <summary>
@@ -216,8 +217,8 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Clear_ShouldThrowNotSupportedException()
         {
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
-            
-            Assert.Throws<NotSupportedException>(() => ((System.Collections.Generic.ICollection<Body>)world.BodyList).Clear());
+
+            Assert.Throws<NotSupportedException>(() => ((ICollection<Body>) world.BodyList).Clear());
         }
 
         /// <summary>
@@ -228,8 +229,8 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body body = new Body();
-            
-            Assert.Throws<NotSupportedException>(() => ((System.Collections.Generic.IList<Body>)world.BodyList).Insert(0, body));
+
+            Assert.Throws<NotSupportedException>(() => ((IList<Body>) world.BodyList).Insert(0, body));
         }
 
         /// <summary>
@@ -240,8 +241,8 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             world.CreateBody();
-            
-            Assert.Throws<NotSupportedException>(() => ((System.Collections.Generic.IList<Body>)world.BodyList).RemoveAt(0));
+
+            Assert.Throws<NotSupportedException>(() => ((IList<Body>) world.BodyList).RemoveAt(0));
         }
 
         /// <summary>
@@ -253,11 +254,10 @@ namespace Alis.Core.Physic.Test.Dynamics
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             world.CreateBody();
             world.CreateBody();
-            
+
             int count = world.BodyList.Count(b => b != null);
-            
+
             Assert.Equal(2, count);
         }
     }
 }
-

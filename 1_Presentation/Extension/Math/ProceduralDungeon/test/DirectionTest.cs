@@ -33,7 +33,7 @@ using Xunit;
 namespace Alis.Extension.Math.ProceduralDungeon.Test
 {
     /// <summary>
-    ///     Test class for <see cref="Direction"/> enum.
+    ///     Test class for <see cref="Direction" /> enum.
     /// </summary>
     public class DirectionTest
     {
@@ -44,7 +44,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         public void North_ShouldHaveValue0()
         {
             // Assert
-            Assert.Equal(1, (int)Direction.North);
+            Assert.Equal(1, (int) Direction.North);
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         public void East_ShouldHaveValue1()
         {
             // Assert
-            Assert.Equal(2, (int)Direction.East);
+            Assert.Equal(2, (int) Direction.East);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         public void South_ShouldHaveValue2()
         {
             // Assert
-            Assert.Equal(3, (int)Direction.South);
+            Assert.Equal(3, (int) Direction.South);
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         public void West_ShouldHaveValue3()
         {
             // Assert
-            Assert.Equal(4, (int)Direction.West);
+            Assert.Equal(4, (int) Direction.West);
         }
 
         /// <summary>
@@ -105,11 +105,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         /// <summary>
         ///     Tests that all enum values are defined.
         /// </summary>
-        [Theory]
-        [InlineData(Direction.North)]
-        [InlineData(Direction.East)]
-        [InlineData(Direction.South)]
-        [InlineData(Direction.West)]
+        [Theory, InlineData(Direction.North), InlineData(Direction.East), InlineData(Direction.South), InlineData(Direction.West)]
         public void EnumValue_ShouldBeDefined(Direction direction)
         {
             // Assert
@@ -119,11 +115,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         /// <summary>
         ///     Tests that direction can be converted to string.
         /// </summary>
-        [Theory]
-        [InlineData(Direction.North, "North")]
-        [InlineData(Direction.East, "East")]
-        [InlineData(Direction.South, "South")]
-        [InlineData(Direction.West, "West")]
+        [Theory, InlineData(Direction.North, "North"), InlineData(Direction.East, "East"), InlineData(Direction.South, "South"), InlineData(Direction.West, "West")]
         public void ToString_ShouldReturnName(Direction direction, string expected)
         {
             // Act
@@ -165,11 +157,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         /// <summary>
         ///     Tests that direction can be parsed from string.
         /// </summary>
-        [Theory]
-        [InlineData("North", Direction.North)]
-        [InlineData("East", Direction.East)]
-        [InlineData("South", Direction.South)]
-        [InlineData("West", Direction.West)]
+        [Theory, InlineData("North", Direction.North), InlineData("East", Direction.East), InlineData("South", Direction.South), InlineData("West", Direction.West)]
         public void Parse_WithValidString_ShouldReturnDirection(string value, Direction expected)
         {
             // Act
@@ -190,4 +178,3 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         }
     }
 }
-

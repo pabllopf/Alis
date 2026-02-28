@@ -117,15 +117,15 @@ namespace Alis.Extension.Profile.Test.Utilities
             ResourceMetricsFactory factory = new ResourceMetricsFactory(mockMonitor);
             IProfilerService service = new ProfilerService(mockTracker, factory);
 
-            ProfileSnapshot capturedSnapshot = default;
+            ProfileSnapshot capturedSnapshot = default(ProfileSnapshot);
             bool callbackInvoked = false;
 
             // Act
             using (ProfilerScope scope = new ProfilerScope(service, snapshot =>
-            {
-                capturedSnapshot = snapshot;
-                callbackInvoked = true;
-            }))
+                   {
+                       capturedSnapshot = snapshot;
+                       callbackInvoked = true;
+                   }))
             {
                 // Do nothing
             }
@@ -267,4 +267,3 @@ namespace Alis.Extension.Profile.Test.Utilities
         }
     }
 }
-

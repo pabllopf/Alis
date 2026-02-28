@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IOnUpdateTest.cs
+//  File:IOnUpdateTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,23 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
     /// </summary>
     public class IOnUpdateTest
     {
-        
-
-        /// <summary>
-        ///     Helper implementation for testing IOnUpdate.
-        /// </summary>
-        private class UpdateHandler : IOnUpdate
-        {
-            public bool WasUpdateCalled { get; private set; }
-            public int UpdateCount { get; private set; }
-
-            public void OnUpdate(IGameObject self)
-            {
-                WasUpdateCalled = true;
-                UpdateCount++;
-            }
-        }
-
         /// <summary>
         ///     Tests that IOnUpdate can be implemented.
         /// </summary>
@@ -90,16 +73,14 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
             {
                 handler.OnUpdate(gameObject);
             }
+
             Assert.Equal(10, handler.UpdateCount);
         }
 
         /// <summary>
         ///     Tests repeated update calls.
         /// </summary>
-        [Theory]
-        [InlineData(1)]
-        [InlineData(5)]
-        [InlineData(100)]
+        [Theory, InlineData(1), InlineData(5), InlineData(100)]
         public void OnUpdate_HandlesRepeatedCalls(int callCount)
         {
             UpdateHandler handler = new UpdateHandler();
@@ -108,8 +89,24 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
             {
                 handler.OnUpdate(gameObject);
             }
+
             Assert.Equal(callCount, handler.UpdateCount);
+        }
+
+
+        /// <summary>
+        ///     Helper implementation for testing IOnUpdate.
+        /// </summary>
+        private class UpdateHandler : IOnUpdate
+        {
+            public bool WasUpdateCalled { get; private set; }
+            public int UpdateCount { get; private set; }
+
+            public void OnUpdate(IGameObject self)
+            {
+                WasUpdateCalled = true;
+                UpdateCount++;
+            }
         }
     }
 }
-

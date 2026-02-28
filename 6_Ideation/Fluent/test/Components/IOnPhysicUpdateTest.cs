@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IOnPhysicUpdateTest.cs
+//  File:IOnPhysicUpdateTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Aspect.Fluent.Components;
 using Xunit;
 
@@ -39,21 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
     /// </summary>
     public class IOnPhysicUpdateTest
     {
-        
-
-        /// <summary>
-        ///     Helper implementation for testing IOnPhysicUpdate.
-        /// </summary>
-        private class PhysicUpdateHandler : IOnPhysicUpdate
-        {
-            public int UpdateCount { get; private set; }
-
-            public void OnPhysicUpdate(IGameObject self)
-            {
-                UpdateCount++;
-            }
-        }
-
         /// <summary>
         ///     Tests that IOnPhysicUpdate can be implemented.
         /// </summary>
@@ -89,8 +73,22 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
             {
                 handler.OnPhysicUpdate(gameObject);
             }
+
             Assert.Equal(50, handler.UpdateCount);
+        }
+
+
+        /// <summary>
+        ///     Helper implementation for testing IOnPhysicUpdate.
+        /// </summary>
+        private class PhysicUpdateHandler : IOnPhysicUpdate
+        {
+            public int UpdateCount { get; private set; }
+
+            public void OnPhysicUpdate(IGameObject self)
+            {
+                UpdateCount++;
+            }
         }
     }
 }
-

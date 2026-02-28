@@ -56,7 +56,7 @@ namespace Alis.Core.Ecs.Test
             GameObject entity = scene.Create();
 
             // Act
-            entity.Add(new Position { X = 1, Y = 2 });
+            entity.Add(new Position {X = 1, Y = 2});
 
             // Assert
             Assert.True(entity.IsAlive);
@@ -74,7 +74,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 1, Y = 2 });
+            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
             // Act
             entity.Remove<Position>();
@@ -95,14 +95,14 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            Position originalPos = new Position { X = 42, Y = 84 };
+            Position originalPos = new Position {X = 42, Y = 84};
             GameObject entity = scene.Create(originalPos);
 
             // Act
-            entity.Add(new Velocity { VX = 10, VY = 20 });
+            entity.Add(new Velocity {VX = 10, VY = 20});
 
             // Assert
-            Assert.True(entity.TryGet<Position>(out Ref<Position> pos));
+            Assert.True(entity.TryGet(out Ref<Position> pos));
             Assert.Equal(42, pos.Value.X);
             Assert.Equal(84, pos.Value.Y);
         }
@@ -121,9 +121,9 @@ namespace Alis.Core.Ecs.Test
             GameObject entity = scene.Create();
 
             // Act
-            entity.Add(new Position { X = 1, Y = 2 });
-            entity.Add(new Velocity { VX = 3, VY = 4 });
-            entity.Add(new Health { Value = 100 });
+            entity.Add(new Position {X = 1, Y = 2});
+            entity.Add(new Velocity {VX = 3, VY = 4});
+            entity.Add(new Health {Value = 100});
 
             // Assert
             Assert.True(entity.Has<Position>());
@@ -143,9 +143,9 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
-                new Position { X = 1, Y = 2 },
-                new Velocity { VX = 3, VY = 4 },
-                new Health { Value = 100 }
+                new Position {X = 1, Y = 2},
+                new Velocity {VX = 3, VY = 4},
+                new Health {Value = 100}
             );
 
             // Act
@@ -169,11 +169,11 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 1, Y = 2 });
+            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
             GameObject originalRef = entity;
 
             // Act
-            entity.Add(new Velocity { VX = 3, VY = 4 });
+            entity.Add(new Velocity {VX = 3, VY = 4});
 
             // Assert
             Assert.Equal(originalRef, entity);
@@ -192,8 +192,8 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
-                new Position { X = 1, Y = 2 },
-                new Velocity { VX = 3, VY = 4 }
+                new Position {X = 1, Y = 2},
+                new Velocity {VX = 3, VY = 4}
             );
 
             // Act
@@ -217,11 +217,11 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(new Position { X = 1, Y = 2 });
-            GameObject entity2 = scene.Create(new Position { X = 3, Y = 4 });
+            GameObject entity1 = scene.Create(new Position {X = 1, Y = 2});
+            GameObject entity2 = scene.Create(new Position {X = 3, Y = 4});
 
             // Act
-            entity1.Add(new Velocity { VX = 5, VY = 6 });
+            entity1.Add(new Velocity {VX = 5, VY = 6});
 
             // Assert
             Assert.True(entity2.IsAlive);
@@ -243,11 +243,11 @@ namespace Alis.Core.Ecs.Test
             GameObject[] entities = new GameObject[100];
             for (int i = 0; i < 100; i++)
             {
-                entities[i] = scene.Create(new Position { X = i, Y = i * 2 });
+                entities[i] = scene.Create(new Position {X = i, Y = i * 2});
             }
 
             // Act
-            entities[50].Add(new Velocity { VX = 10, VY = 20 });
+            entities[50].Add(new Velocity {VX = 10, VY = 20});
 
             // Assert
             Assert.True(entities[50].Has<Velocity>());
@@ -275,11 +275,11 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 1, Y = 2 });
+            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
             // Act
             scene.Update();
-            entity.Add(new Velocity { VX = 3, VY = 4 });
+            entity.Add(new Velocity {VX = 3, VY = 4});
 
             // Assert
             Assert.True(entity.IsAlive);
@@ -297,17 +297,17 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            Position originalPos = new Position { X = 1, Y = 2 };
+            Position originalPos = new Position {X = 1, Y = 2};
             GameObject entity = scene.Create(originalPos);
 
             // Act
             entity.Remove<Position>();
-            Position newPos = new Position { X = 10, Y = 20 };
+            Position newPos = new Position {X = 10, Y = 20};
             entity.Add(newPos);
 
             // Assert
             Assert.True(entity.Has<Position>());
-            Assert.True(entity.TryGet<Position>(out Ref<Position> pos));
+            Assert.True(entity.TryGet(out Ref<Position> pos));
             Assert.Equal(10, pos.Value.X);
             Assert.Equal(20, pos.Value.Y);
         }
@@ -323,13 +323,13 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 1, Y = 2 });
+            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
             // Act
-            entity.Add(new Velocity { VX = 3, VY = 4 });
-            entity.Add(new Health { Value = 100 });
+            entity.Add(new Velocity {VX = 3, VY = 4});
+            entity.Add(new Health {Value = 100});
             entity.Remove<Velocity>();
-            entity.Add(new Transform { X = 5, Y = 6, Rotation = 45 });
+            entity.Add(new Transform {X = 5, Y = 6, Rotation = 45});
 
             // Assert
             Assert.True(entity.Has<Position>());
@@ -349,10 +349,10 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 1, Y = 2 });
+            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
             // Act
-            entity.Add(new Velocity { VX = 3, VY = 4 });
+            entity.Add(new Velocity {VX = 3, VY = 4});
             scene.Update();
 
             // Assert
@@ -376,12 +376,11 @@ namespace Alis.Core.Ecs.Test
             GameObject entity2 = scene.Create();
 
             // Act
-            entity1.Add(new Position { X = 1, Y = 2 });
-            entity2.Add(new Position { X = 3, Y = 4 });
+            entity1.Add(new Position {X = 1, Y = 2});
+            entity2.Add(new Position {X = 3, Y = 4});
 
             // Assert
             Assert.Equal(initialCount + 2, scene.EntityCount);
         }
     }
 }
-

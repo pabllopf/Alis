@@ -34,7 +34,7 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.Platforms.Android
 {
     /// <summary>
-    /// The egl droid class
+    ///     The egl droid class
     /// </summary>
     public class EGLDroid
     {
@@ -43,8 +43,7 @@ namespace Alis.Core.Graphic.Platforms.Android
         /// </summary>
         /// <param name="proc">The proc</param>
         /// <returns>The int ptr</returns>
-        [DllImport("libEGL", EntryPoint = "eglGetProcAddress", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl), DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories)]
-        [ExcludeFromCodeCoverage]
+        [DllImport("libEGL", EntryPoint = "eglGetProcAddress", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl), DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         public static extern IntPtr GetProcAddress(string proc);
     }
 }

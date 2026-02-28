@@ -151,6 +151,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
                         break;
                     }
                 }
+
                 Assert.True(hasDifferentValues);
             }
         }
@@ -225,4 +226,3 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
         }
     }
 }
-

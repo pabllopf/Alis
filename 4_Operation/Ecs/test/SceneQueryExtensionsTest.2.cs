@@ -72,9 +72,9 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 1 }, new Velocity { VX = 1, VY = 1 });
-            scene.Create(new Position { X = 2, Y = 2 }); // Missing Velocity
-            scene.Create(new Velocity { VX = 3, VY = 3 }); // Missing Position
+            scene.Create(new Position {X = 1, Y = 1}, new Velocity {VX = 1, VY = 1});
+            scene.Create(new Position {X = 2, Y = 2}); // Missing Velocity
+            scene.Create(new Velocity {VX = 3, VY = 3}); // Missing Position
 
             // Act
             Query query = scene.Query<With<Position>, With<Velocity>>();
@@ -99,7 +99,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position { X = 5, Y = 10 }, new Velocity { VX = 2, VY = 3 });
+            scene.Create(new Position {X = 5, Y = 10}, new Velocity {VX = 2, VY = 3});
 
             // Act
             Query query = scene.Query<With<Position>, With<Velocity>>();
@@ -170,7 +170,7 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             for (int i = 0; i < 10; i++)
             {
-                scene.Create(new Position { X = i, Y = i * 2 }, new Velocity { VX = i * 0.5f, VY = i * 0.3f });
+                scene.Create(new Position {X = i, Y = i * 2}, new Velocity {VX = i * 0.5f, VY = i * 0.3f});
             }
 
             // Act
@@ -196,8 +196,8 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 1 }, new Health { Value = 100 });
-            scene.Create(new Position { X = 2, Y = 2 }); // No Health
+            scene.Create(new Position {X = 1, Y = 1}, new Health {Value = 100});
+            scene.Create(new Position {X = 2, Y = 2}); // No Health
 
             // Act
             Query query = scene.Query<With<Position>, With<Health>>();
@@ -223,7 +223,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 1 }, new Velocity { VX = 1, VY = 1 });
+            scene.Create(new Position {X = 1, Y = 1}, new Velocity {VX = 1, VY = 1});
 
             // Act
             Query query = scene.Query<With<Position>, With<Velocity>>();
@@ -250,7 +250,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 0, Y = 0 }, new Velocity { VX = 0, VY = 0 });
+            GameObject entity = scene.Create(new Position {X = 0, Y = 0}, new Velocity {VX = 0, VY = 0});
 
             // Act
             Query query = scene.Query<With<Position>, With<Velocity>>();
@@ -285,8 +285,8 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 1 }, new Velocity { VX = 1, VY = 1 });
-            GameObject disabled = scene.Create(new Position { X = 2, Y = 2 }, new Velocity { VX = 2, VY = 2 });
+            scene.Create(new Position {X = 1, Y = 1}, new Velocity {VX = 1, VY = 1});
+            GameObject disabled = scene.Create(new Position {X = 2, Y = 2}, new Velocity {VX = 2, VY = 2});
             disabled.Tag<Disable>();
 
             // Act
@@ -302,4 +302,3 @@ namespace Alis.Core.Ecs.Test
         }
     }
 }
-

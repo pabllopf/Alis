@@ -46,7 +46,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         public void ContactListHead_ShouldInheritFromContact()
         {
             ContactListHead head = new ContactListHead();
-            
+
             Assert.IsAssignableFrom<Contact>(head);
         }
 
@@ -57,7 +57,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         public void ContactListHead_ShouldImplementIEnumerable()
         {
             ContactListHead head = new ContactListHead();
-            
+
             Assert.IsAssignableFrom<IEnumerable<Contact>>(head);
         }
 
@@ -68,7 +68,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         public void Constructor_ShouldInitializeCircularLinkedList()
         {
             ContactListHead head = new ContactListHead();
-            
+
             Assert.Equal(head, head.Prev);
             Assert.Equal(head, head.Next);
         }
@@ -80,13 +80,13 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         public void GetEnumerator_ShouldNotIterate_EmptyList()
         {
             ContactListHead head = new ContactListHead();
-            
+
             int count = 0;
             foreach (Contact contact in head)
             {
                 count++;
             }
-            
+
             Assert.Equal(0, count);
         }
 
@@ -97,9 +97,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         public void ContactListHead_ShouldSupportLinqOperations()
         {
             ContactListHead head = new ContactListHead();
-            
+
             List<Contact> list = head.ToList();
-            
+
             Assert.NotNull(list);
             Assert.Empty(list);
         }
@@ -112,7 +112,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         {
             ContactListHead head1 = new ContactListHead();
             ContactListHead head2 = head1;
-            
+
             Assert.Same(head1, head2);
         }
 
@@ -124,7 +124,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         {
             ContactListHead head1 = new ContactListHead();
             ContactListHead head2 = new ContactListHead();
-            
+
             Assert.NotSame(head1, head2);
             Assert.Equal(head1, head1.Next);
             Assert.Equal(head2, head2.Next);
@@ -138,7 +138,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         {
             ContactListHead head = new ContactListHead();
             bool canIterate = true;
-            
+
             try
             {
                 foreach (Contact contact in head)
@@ -150,7 +150,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             {
                 canIterate = false;
             }
-            
+
             Assert.True(canIterate);
         }
 
@@ -161,7 +161,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         public void ContactListHead_ShouldInitializeWithNullFixtures()
         {
             ContactListHead head = new ContactListHead();
-            
+
             Assert.Null(head.FixtureA);
             Assert.Null(head.FixtureB);
         }
@@ -173,15 +173,20 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         public void ContactListHead_ShouldAllowEnumerationMultipleTimes()
         {
             ContactListHead head = new ContactListHead();
-            
+
             int count1 = 0;
-            foreach (Contact contact in head) count1++;
-            
+            foreach (Contact contact in head)
+            {
+                count1++;
+            }
+
             int count2 = 0;
-            foreach (Contact contact in head) count2++;
-            
+            foreach (Contact contact in head)
+            {
+                count2++;
+            }
+
             Assert.Equal(count1, count2);
         }
     }
 }
-

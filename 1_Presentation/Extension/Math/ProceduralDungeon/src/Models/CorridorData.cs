@@ -93,33 +93,24 @@ namespace Alis.Extension.Math.ProceduralDungeon.Models
         /// </summary>
         /// <param name="other">The other corridor data to compare with this instance.</param>
         /// <returns>True if the specified corridor data is equal to this instance; otherwise, false.</returns>
-        public bool Equals(CorridorData other)
-        {
-            return XPos == other.XPos && 
-                   YPos == other.YPos && 
-                   Width == other.Width && 
-                   Height == other.Height && 
-                   Direction == other.Direction;
-        }
+        public bool Equals(CorridorData other) => (XPos == other.XPos) &&
+                                                  (YPos == other.YPos) &&
+                                                  (Width == other.Width) &&
+                                                  (Height == other.Height) &&
+                                                  (Direction == other.Direction);
 
         /// <summary>
         ///     Determines whether the specified object is equal to this instance.
         /// </summary>
         /// <param name="obj">The object to compare with this instance.</param>
         /// <returns>True if the specified object is equal to this instance; otherwise, false.</returns>
-        public override bool Equals(object obj)
-        {
-            return obj is CorridorData other && Equals(other);
-        }
+        public override bool Equals(object obj) => obj is CorridorData other && Equals(other);
 
         /// <summary>
         ///     Returns a hash code for this instance.
         /// </summary>
         /// <returns>A hash code for this instance.</returns>
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(XPos, YPos, Width, Height, Direction);
-        }
+        public override int GetHashCode() => HashCode.Combine(XPos, YPos, Width, Height, Direction);
 
         /// <summary>
         ///     Equality operator for comparing two corridor data instances.
@@ -127,10 +118,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Models
         /// <param name="left">The left operand.</param>
         /// <param name="right">The right operand.</param>
         /// <returns>True if both instances are equal; otherwise, false.</returns>
-        public static bool operator ==(CorridorData left, CorridorData right)
-        {
-            return left.Equals(right);
-        }
+        public static bool operator ==(CorridorData left, CorridorData right) => left.Equals(right);
 
         /// <summary>
         ///     Inequality operator for comparing two corridor data instances.
@@ -138,10 +126,6 @@ namespace Alis.Extension.Math.ProceduralDungeon.Models
         /// <param name="left">The left operand.</param>
         /// <param name="right">The right operand.</param>
         /// <returns>True if both instances are not equal; otherwise, false.</returns>
-        public static bool operator !=(CorridorData left, CorridorData right)
-        {
-            return !left.Equals(right);
-        }
+        public static bool operator !=(CorridorData left, CorridorData right) => !left.Equals(right);
     }
 }
-

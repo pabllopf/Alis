@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Logging;
@@ -89,14 +90,14 @@ namespace Alis.Extension.Io.FileDialog
 
                 Logger.Trace($"Process {fileName} exited with code: {process.ExitCode}");
 
-                if (process.ExitCode != 0 && !string.IsNullOrEmpty(error))
+                if ((process.ExitCode != 0) && !string.IsNullOrEmpty(error))
                 {
                     Logger.Warning($"Command error: {error}");
                 }
 
                 return output;
             }
-            catch (System.ComponentModel.Win32Exception ex)
+            catch (Win32Exception ex)
             {
                 Logger.Warning($"File not found or cannot execute: {fileName} - {ex.Message}");
                 throw new InvalidOperationException($"Cannot execute {fileName}: {ex.Message}", ex);
@@ -152,5 +153,3 @@ namespace Alis.Extension.Io.FileDialog
         }
     }
 }
-
-

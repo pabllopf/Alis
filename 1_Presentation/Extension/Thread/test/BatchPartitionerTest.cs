@@ -123,4 +123,3 @@ namespace Alis.Extension.Thread.Test
         }
     }
 }
-

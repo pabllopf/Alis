@@ -27,13 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Collisions;
-using Alis.Core.Physic.Collisions.Shapes;
-using Alis.Core.Physic.Common;
-using Alis.Core.Physic.Dynamics;
-using Xunit;
-
 namespace Alis.Core.Physic.Test.Collisions
 {
     /// <summary>
@@ -41,7 +34,5 @@ namespace Alis.Core.Physic.Test.Collisions
     /// </summary>
     public class DistanceTest
     {
-        
     }
 }
-

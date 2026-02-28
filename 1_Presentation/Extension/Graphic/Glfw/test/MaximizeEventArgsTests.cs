@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:MaximizeEventArgsTests.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -36,7 +37,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
     public class MaximizeEventArgsTests
     {
         /// <summary>
-        /// Tests that constructor with true value sets is maximized to true
+        ///     Tests that constructor with true value sets is maximized to true
         /// </summary>
         [Fact]
         public void Constructor_WithTrueValue_SetsIsMaximizedToTrue()
@@ -49,7 +50,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that constructor with false value sets is maximized to false
+        ///     Tests that constructor with false value sets is maximized to false
         /// </summary>
         [Fact]
         public void Constructor_WithFalseValue_SetsIsMaximizedToFalse()
@@ -62,7 +63,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that is maximized property returns correct value
+        ///     Tests that is maximized property returns correct value
         /// </summary>
         [Fact]
         public void IsMaximized_Property_ReturnsCorrectValue()
@@ -79,7 +80,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that constructor with false value returns correct state
+        ///     Tests that constructor with false value returns correct state
         /// </summary>
         [Fact]
         public void Constructor_WithFalseValue_ReturnsCorrectState()
@@ -96,4 +97,3 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
     }
 }
-

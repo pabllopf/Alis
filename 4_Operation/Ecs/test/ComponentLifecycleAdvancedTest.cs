@@ -80,10 +80,7 @@ namespace Alis.Core.Ecs.Test
             GameObject entity = scene.Create();
 
             // Act & Assert
-            Assert.Throws<NullReferenceException>(() =>
-            {
-                _ = entity.Get<Position>();
-            });
+            Assert.Throws<NullReferenceException>(() => { _ = entity.Get<Position>(); });
         }
 
         /// <summary>
@@ -102,10 +99,10 @@ namespace Alis.Core.Ecs.Test
 
             // Act & Assert
             Assert.False(entity.Has<Position>());
-            
+
             entity.Add(new Position());
             Assert.True(entity.Has<Position>());
-            
+
             entity.Remove<Position>();
             Assert.False(entity.Has<Position>());
         }
@@ -123,9 +120,9 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             using Scene scene1 = new Scene();
             using Scene scene2 = new Scene();
-            
-            GameObject e1 = scene1.Create(new Health { Value = 100 });
-            GameObject e2 = scene2.Create(new Health { Value = 50 });
+
+            GameObject e1 = scene1.Create(new Health {Value = 100});
+            GameObject e2 = scene2.Create(new Health {Value = 50});
 
             // Act
             ref Health h1 = ref e1.Get<Health>();
@@ -135,7 +132,7 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(200, e1.Get<Health>().Value);
             Assert.Equal(50, e2.Get<Health>().Value);
         }
-        
+
         /// <summary>
         ///     Tests component lifecycle during rapid entity creation/destruction
         /// </summary>
@@ -153,11 +150,11 @@ namespace Alis.Core.Ecs.Test
             // Act & Assert
             for (int i = 0; i < iterations; i++)
             {
-                GameObject entity = scene.Create(new Position { X = i, Y = i * 2 });
+                GameObject entity = scene.Create(new Position {X = i, Y = i * 2});
                 Assert.True(entity.Has<Position>());
                 Assert.Equal(i, entity.Get<Position>().X);
                 Assert.Equal(i * 2, entity.Get<Position>().Y);
-                
+
                 entity.Delete();
             }
         }
@@ -199,18 +196,18 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 100, Y = 200 });
+            GameObject entity = scene.Create(new Position {X = 100, Y = 200});
 
             // Act - Multiple transitions
             entity.Add(new Velocity());
             Assert.Equal(100, entity.Get<Position>().X);
-            
+
             entity.Add(new Health());
             Assert.Equal(100, entity.Get<Position>().X);
-            
+
             entity.Remove<Velocity>();
             Assert.Equal(100, entity.Get<Position>().X);
-            
+
             entity.Add(new Velocity());
             Assert.Equal(100, entity.Get<Position>().X);
 
@@ -285,7 +282,7 @@ namespace Alis.Core.Ecs.Test
 
             for (int i = 0; i < entityCount; i++)
             {
-                GameObject entity = scene.Create(new Position { X = i, Y = i });
+                GameObject entity = scene.Create(new Position {X = i, Y = i});
             }
 
             // Act

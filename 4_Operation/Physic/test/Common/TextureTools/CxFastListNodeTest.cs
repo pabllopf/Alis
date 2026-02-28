@@ -44,9 +44,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
         public void Constructor_ShouldInitializeWithElement()
         {
             int value = 42;
-            
+
             CxFastListNode<int> node = new CxFastListNode<int>(value);
-            
+
             Assert.Equal(value, node.Elt);
             Assert.Null(node.Next);
         }
@@ -59,9 +59,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
         {
             string value = "test";
             CxFastListNode<string> node = new CxFastListNode<string>(value);
-            
+
             string result = node.GetElem();
-            
+
             Assert.Equal(value, result);
         }
 
@@ -74,9 +74,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             CxFastListNode<int> node1 = new CxFastListNode<int>(1);
             CxFastListNode<int> node2 = new CxFastListNode<int>(2);
             node1.Next = node2;
-            
+
             CxFastListNode<int> result = node1.NextPos();
-            
+
             Assert.Equal(node2, result);
         }
 
@@ -87,9 +87,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
         public void NextPos_ShouldReturnNull_WhenNoNextNode()
         {
             CxFastListNode<int> node = new CxFastListNode<int>(1);
-            
+
             CxFastListNode<int> result = node.NextPos();
-            
+
             Assert.Null(result);
         }
 
@@ -101,9 +101,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
         {
             CxFastListNode<int> node1 = new CxFastListNode<int>(1);
             CxFastListNode<int> node2 = new CxFastListNode<int>(2);
-            
+
             node1.Next = node2;
-            
+
             Assert.Equal(node2, node1.Next);
         }
 
@@ -116,10 +116,10 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             CxFastListNode<int> node1 = new CxFastListNode<int>(1);
             CxFastListNode<int> node2 = new CxFastListNode<int>(2);
             CxFastListNode<int> node3 = new CxFastListNode<int>(3);
-            
+
             node1.Next = node2;
             node2.Next = node3;
-            
+
             Assert.Equal(node2, node1.Next);
             Assert.Equal(node3, node2.Next);
             Assert.Null(node3.Next);
@@ -134,7 +134,7 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             CxFastListNode<string> stringNode = new CxFastListNode<string>("hello");
             CxFastListNode<double> doubleNode = new CxFastListNode<double>(3.14);
             CxFastListNode<bool> boolNode = new CxFastListNode<bool>(true);
-            
+
             Assert.Equal("hello", stringNode.Elt);
             Assert.Equal(3.14, doubleNode.Elt);
             Assert.True(boolNode.Elt);
@@ -147,7 +147,7 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
         public void CxFastListNode_ShouldHandleNullValues_ForReferenceTypes()
         {
             CxFastListNode<string> node = new CxFastListNode<string>(null);
-            
+
             Assert.Null(node.Elt);
         }
 
@@ -157,9 +157,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
         [Fact]
         public void CxFastListNode_ShouldHandleComplexObjects()
         {
-            var obj = new { Name = "Test", Value = 42 };
+            var obj = new {Name = "Test", Value = 42};
             CxFastListNode<object> node = new CxFastListNode<object>(obj);
-            
+
             Assert.NotNull(node.Elt);
         }
 
@@ -172,10 +172,10 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             CxFastListNode<int> node1 = new CxFastListNode<int>(1);
             CxFastListNode<int> node2 = new CxFastListNode<int>(2);
             CxFastListNode<int> node3 = new CxFastListNode<int>(3);
-            
+
             node1.Next = node2;
             node2.Next = node3;
-            
+
             int sum = 0;
             CxFastListNode<int> current = node1;
             while (current != null)
@@ -183,7 +183,7 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
                 sum += current.GetElem();
                 current = current.NextPos();
             }
-            
+
             Assert.Equal(6, sum);
         }
 
@@ -194,10 +194,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
         public void Elt_ShouldBeReadonly()
         {
             CxFastListNode<int> node = new CxFastListNode<int>(10);
-            
+
             // Verify Elt is readonly by confirming it can't be reassigned
             Assert.Equal(10, node.Elt);
         }
     }
 }
-

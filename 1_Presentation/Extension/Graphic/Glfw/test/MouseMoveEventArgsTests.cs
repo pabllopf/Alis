@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:MouseMoveEventArgsTests.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -37,7 +38,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
     public class MouseMoveEventArgsTests
     {
         /// <summary>
-        /// Tests that constructor with valid coordinates sets properties
+        ///     Tests that constructor with valid coordinates sets properties
         /// </summary>
         [Fact]
         public void Constructor_WithValidCoordinates_SetsProperties()
@@ -55,7 +56,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that x property returns correct value
+        ///     Tests that x property returns correct value
         /// </summary>
         [Fact]
         public void X_Property_ReturnsCorrectValue()
@@ -72,7 +73,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that y property returns correct value
+        ///     Tests that y property returns correct value
         /// </summary>
         [Fact]
         public void Y_Property_ReturnsCorrectValue()
@@ -89,7 +90,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that position property returns correct point
+        ///     Tests that position property returns correct point
         /// </summary>
         [Fact]
         public void Position_Property_ReturnsCorrectPoint()
@@ -108,7 +109,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that constructor with negative coordinates sets properties
+        ///     Tests that constructor with negative coordinates sets properties
         /// </summary>
         [Fact]
         public void Constructor_WithNegativeCoordinates_SetsProperties()
@@ -126,7 +127,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that constructor with zero coordinates sets properties
+        ///     Tests that constructor with zero coordinates sets properties
         /// </summary>
         [Fact]
         public void Constructor_WithZeroCoordinates_SetsProperties()
@@ -144,7 +145,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that position with large values converts correctly
+        ///     Tests that position with large values converts correctly
         /// </summary>
         [Fact]
         public void Position_WithLargeValues_ConvertsCorrectly()
@@ -163,4 +164,3 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
     }
 }
-

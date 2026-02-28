@@ -48,7 +48,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         public void AudioFrame_ConstructorWithValidParameters_ShouldCreateInstance()
         {
             // Arrange & Act
-            AudioFrame frame = new AudioFrame(2, 1024, 16);
+            AudioFrame frame = new AudioFrame(2);
 
             // Assert
             Assert.NotNull(frame);
@@ -74,7 +74,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         public void AudioFrame_ConstructorWithZeroChannels_ShouldThrowException()
         {
             // Arrange & Act & Assert
-            Assert.Throws<InvalidDataException>(() => new AudioFrame(0, 1024, 16));
+            Assert.Throws<InvalidDataException>(() => new AudioFrame(0));
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         public void AudioFrame_ConstructorWithNegativeChannels_ShouldThrowException()
         {
             // Arrange & Act & Assert
-            Assert.Throws<InvalidDataException>(() => new AudioFrame(-1, 1024, 16));
+            Assert.Throws<InvalidDataException>(() => new AudioFrame(-1));
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         public void AudioFrame_ConstructorWithZeroSampleCount_ShouldThrowException()
         {
             // Arrange & Act & Assert
-            Assert.Throws<InvalidDataException>(() => new AudioFrame(2, 0, 16));
+            Assert.Throws<InvalidDataException>(() => new AudioFrame(2, 0));
         }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         public void AudioFrame_ConstructorWithNegativeSampleCount_ShouldThrowException()
         {
             // Arrange & Act & Assert
-            Assert.Throws<InvalidDataException>(() => new AudioFrame(2, -1, 16));
+            Assert.Throws<InvalidDataException>(() => new AudioFrame(2, -1));
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         public void AudioFrame_ShouldSupport16BitDepth()
         {
             // Arrange & Act
-            AudioFrame frame = new AudioFrame(2, 1024, 16);
+            AudioFrame frame = new AudioFrame(2);
 
             // Assert
             Assert.Equal(2, frame.BytesPerSample);
@@ -153,7 +153,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         public void AudioFrame_RawData_ShouldNotBeNullAfterConstruction()
         {
             // Arrange & Act
-            AudioFrame frame = new AudioFrame(2, 1024, 16);
+            AudioFrame frame = new AudioFrame(2);
 
             // Assert
             Assert.NotNull(frame.RawData);
@@ -185,7 +185,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         public void AudioFrame_LoadedSamples_ShouldBeZeroInitially()
         {
             // Arrange & Act
-            AudioFrame frame = new AudioFrame(2, 1024, 16);
+            AudioFrame frame = new AudioFrame(2);
 
             // Assert
             Assert.Equal(0, frame.LoadedSamples);
@@ -198,7 +198,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         public void AudioFrame_LoadFromEmptyStream_ShouldReturnFalse()
         {
             // Arrange
-            AudioFrame frame = new AudioFrame(2, 1024, 16);
+            AudioFrame frame = new AudioFrame(2);
             MemoryStream emptyStream = new MemoryStream();
 
             // Act
@@ -215,7 +215,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         public void AudioFrame_LoadFromStreamWithData_ShouldReturnTrue()
         {
             // Arrange
-            AudioFrame frame = new AudioFrame(2, 100, 16);
+            AudioFrame frame = new AudioFrame(2, 100);
             byte[] testData = new byte[400]; // 2 channels * 100 samples * 2 bytes
             MemoryStream stream = new MemoryStream(testData);
 
@@ -233,7 +233,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         public void AudioFrame_Load_ShouldUpdateLoadedSamples()
         {
             // Arrange
-            AudioFrame frame = new AudioFrame(2, 100, 16);
+            AudioFrame frame = new AudioFrame(2, 100);
             byte[] testData = new byte[400]; // 2 channels * 100 samples * 2 bytes
             MemoryStream stream = new MemoryStream(testData);
 
@@ -251,12 +251,13 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         public void AudioFrame_GetSample_ShouldReturnCorrectByteArray()
         {
             // Arrange
-            AudioFrame frame = new AudioFrame(2, 10, 16);
+            AudioFrame frame = new AudioFrame(2, 10);
             byte[] testData = new byte[40]; // 2 channels * 10 samples * 2 bytes
             for (int i = 0; i < testData.Length; i++)
             {
-                testData[i] = (byte)i;
+                testData[i] = (byte) i;
             }
+
             MemoryStream stream = new MemoryStream(testData);
             frame.Load(stream);
 
@@ -276,12 +277,13 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         public void AudioFrame_GetSampleFromSecondChannel_ShouldWork()
         {
             // Arrange
-            AudioFrame frame = new AudioFrame(2, 10, 16);
+            AudioFrame frame = new AudioFrame(2, 10);
             byte[] testData = new byte[40];
             for (int i = 0; i < testData.Length; i++)
             {
-                testData[i] = (byte)i;
+                testData[i] = (byte) i;
             }
+
             MemoryStream stream = new MemoryStream(testData);
             frame.Load(stream);
 
@@ -301,7 +303,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         public void AudioFrame_Dispose_ShouldClearFrameBuffer()
         {
             // Arrange
-            AudioFrame frame = new AudioFrame(2, 1024, 16);
+            AudioFrame frame = new AudioFrame(2);
 
             // Act
             frame.Dispose();
@@ -317,7 +319,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         public void AudioFrame_ShouldSupportMonoAudio()
         {
             // Arrange & Act
-            AudioFrame frame = new AudioFrame(1, 1024, 16);
+            AudioFrame frame = new AudioFrame(1);
 
             // Assert
             Assert.Equal(1, frame.Channels);
@@ -330,7 +332,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         public void AudioFrame_ShouldSupportStereoAudio()
         {
             // Arrange & Act
-            AudioFrame frame = new AudioFrame(2, 1024, 16);
+            AudioFrame frame = new AudioFrame(2);
 
             // Assert
             Assert.Equal(2, frame.Channels);
@@ -343,7 +345,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         public void AudioFrame_ShouldSupportMultiChannelAudio()
         {
             // Arrange & Act
-            AudioFrame frame = new AudioFrame(8, 1024, 16);
+            AudioFrame frame = new AudioFrame(8);
 
             // Assert
             Assert.Equal(8, frame.Channels);
@@ -356,7 +358,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         public void AudioFrame_LoadFromPartialStream_ShouldWork()
         {
             // Arrange
-            AudioFrame frame = new AudioFrame(2, 100, 16);
+            AudioFrame frame = new AudioFrame(2, 100);
             byte[] testData = new byte[200]; // Only half the required data
             MemoryStream stream = new MemoryStream(testData);
 
@@ -375,7 +377,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         public void AudioFrame_ShouldImplementIMediaFrameInterface()
         {
             // Arrange & Act
-            AudioFrame frame = new AudioFrame(2, 1024, 16);
+            AudioFrame frame = new AudioFrame(2);
 
             // Assert
             Assert.IsAssignableFrom<IMediaFrame>(frame);
@@ -388,7 +390,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         public void AudioFrame_ShouldImplementIDisposableInterface()
         {
             // Arrange & Act
-            AudioFrame frame = new AudioFrame(2, 1024, 16);
+            AudioFrame frame = new AudioFrame(2);
 
             // Assert
             Assert.IsAssignableFrom<IDisposable>(frame);
@@ -401,13 +403,13 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         public void AudioFrame_MultipleLoadCalls_ShouldWork()
         {
             // Arrange
-            AudioFrame frame = new AudioFrame(2, 100, 16);
+            AudioFrame frame = new AudioFrame(2, 100);
             byte[] testData = new byte[400];
-            
+
             // Act
             MemoryStream stream1 = new MemoryStream(testData);
             bool result1 = frame.Load(stream1);
-            
+
             MemoryStream stream2 = new MemoryStream(testData);
             bool result2 = frame.Load(stream2);
 
@@ -423,9 +425,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         public void AudioFrame_ConstructorWithDifferentSampleCounts_ShouldWork()
         {
             // Arrange & Act
-            AudioFrame frame512 = new AudioFrame(2, 512, 16);
-            AudioFrame frame1024 = new AudioFrame(2, 1024, 16);
-            AudioFrame frame2048 = new AudioFrame(2, 2048, 16);
+            AudioFrame frame512 = new AudioFrame(2, 512);
+            AudioFrame frame1024 = new AudioFrame(2);
+            AudioFrame frame2048 = new AudioFrame(2, 2048);
 
             // Assert
             Assert.Equal(512, frame512.SampleCount);
@@ -434,4 +436,3 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         }
     }
 }
-

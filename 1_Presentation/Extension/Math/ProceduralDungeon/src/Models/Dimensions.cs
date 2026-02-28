@@ -53,9 +53,14 @@ namespace Alis.Extension.Math.ProceduralDungeon.Models
         public Dimensions(int width, int height)
         {
             if (width <= 0)
+            {
                 throw new ArgumentException("Width must be greater than 0.", nameof(width));
+            }
+
             if (height <= 0)
+            {
                 throw new ArgumentException("Height must be greater than 0.", nameof(height));
+            }
 
             Width = width;
             Height = height;
@@ -84,10 +89,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Models
         /// <param name="left">The first dimensions.</param>
         /// <param name="right">The second dimensions.</param>
         /// <returns>True if both dimensions are equal; otherwise, false.</returns>
-        public static bool operator ==(Dimensions left, Dimensions right)
-        {
-            return left.Equals(right);
-        }
+        public static bool operator ==(Dimensions left, Dimensions right) => left.Equals(right);
 
         /// <summary>
         ///     Determines whether two dimensions are not equal.
@@ -95,58 +97,39 @@ namespace Alis.Extension.Math.ProceduralDungeon.Models
         /// <param name="left">The first dimensions.</param>
         /// <param name="right">The second dimensions.</param>
         /// <returns>True if dimensions are not equal; otherwise, false.</returns>
-        public static bool operator !=(Dimensions left, Dimensions right)
-        {
-            return !left.Equals(right);
-        }
+        public static bool operator !=(Dimensions left, Dimensions right) => !left.Equals(right);
 
         /// <summary>
         ///     Determines whether the specified dimensions are equal to this instance.
         /// </summary>
         /// <param name="other">The other dimensions to compare with this instance.</param>
         /// <returns>True if the specified dimensions are equal to this instance; otherwise, false.</returns>
-        public bool Equals(Dimensions other)
-        {
-            return Width == other.Width && Height == other.Height;
-        }
+        public bool Equals(Dimensions other) => (Width == other.Width) && (Height == other.Height);
 
         /// <summary>
         ///     Determines whether the specified object is equal to this instance.
         /// </summary>
         /// <param name="obj">The object to compare with this instance.</param>
         /// <returns>True if the specified object is equal to this instance; otherwise, false.</returns>
-        public override bool Equals(object obj)
-        {
-            return obj is Dimensions other && Equals(other);
-        }
+        public override bool Equals(object obj) => obj is Dimensions other && Equals(other);
 
         /// <summary>
         ///     Returns a hash code for this instance.
         /// </summary>
         /// <returns>A hash code for this instance.</returns>
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(Width, Height);
-        }
+        public override int GetHashCode() => HashCode.Combine(Width, Height);
 
         /// <summary>
         ///     Returns a string representation of these dimensions.
         /// </summary>
         /// <returns>A string in the format "Width x Height".</returns>
-        public override string ToString()
-        {
-            return $"{Width} x {Height}";
-        }
+        public override string ToString() => $"{Width} x {Height}";
 
         /// <summary>
         ///     Determines whether these dimensions can contain the other dimensions.
         /// </summary>
         /// <param name="other">The other dimensions to check.</param>
         /// <returns>True if these dimensions can contain the other; otherwise, false.</returns>
-        public bool CanContain(Dimensions other)
-        {
-            return Width >= other.Width && Height >= other.Height;
-        }
+        public bool CanContain(Dimensions other) => (Width >= other.Width) && (Height >= other.Height);
     }
 }
-

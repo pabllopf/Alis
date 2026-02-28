@@ -71,4 +71,3 @@ namespace Alis.Extension.Profile.Interfaces
         int GetThreadCount();
     }
 }
-

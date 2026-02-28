@@ -59,7 +59,7 @@ namespace Alis.Core.Ecs.Test
             QueryEnumerator<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>.QueryEnumerable enumerable = query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>();
 
             // Assert
-            Assert.NotEqual(default, enumerable);
+            Assert.NotEqual(default(QueryEnumerator<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>.QueryEnumerable), enumerable);
         }
 
         /// <summary>
@@ -74,12 +74,12 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             using Scene scene = new Scene();
             scene.Create(
-                new Position { X = 10, Y = 20 },
-                new Velocity { VX = 5, VY = 10 },
-                new Health { Value = 150 },
-                new Transform { X = 1, Y = 2, Rotation = 45 },
-                new TestComponent { Value = 999, Name = "Test" },
-                new AnotherComponent { X = 100, Y = 200 }
+                new Position {X = 10, Y = 20},
+                new Velocity {VX = 5, VY = 10},
+                new Health {Value = 150},
+                new Transform {X = 1, Y = 2, Rotation = 45},
+                new TestComponent {Value = 999, Name = "Test"},
+                new AnotherComponent {X = 100, Y = 200}
             );
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>, With<AnotherComponent>>();
 
@@ -109,19 +109,19 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             using Scene scene = new Scene();
             scene.Create(
-                new Position { X = 1, Y = 1 },
-                new Velocity { VX = 1, VY = 1 },
-                new Health { Value = 100 },
-                new Transform { X = 0, Y = 0, Rotation = 0 },
-                new TestComponent { Value = 1, Name = "Test" },
-                new AnotherComponent { X = 5, Y = 10 }
+                new Position {X = 1, Y = 1},
+                new Velocity {VX = 1, VY = 1},
+                new Health {Value = 100},
+                new Transform {X = 0, Y = 0, Rotation = 0},
+                new TestComponent {Value = 1, Name = "Test"},
+                new AnotherComponent {X = 5, Y = 10}
             );
             scene.Create(
-                new Position { X = 2, Y = 2 },
-                new Velocity { VX = 2, VY = 2 },
-                new Health { Value = 50 },
-                new Transform { X = 1, Y = 1, Rotation = 0 },
-                new TestComponent { Value = 2, Name = "Test2" }
+                new Position {X = 2, Y = 2},
+                new Velocity {VX = 2, VY = 2},
+                new Health {Value = 50},
+                new Transform {X = 1, Y = 1, Rotation = 0},
+                new TestComponent {Value = 2, Name = "Test2"}
             ); // Missing AnotherComponent
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>, With<AnotherComponent>>();
 
@@ -148,12 +148,12 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
-                new Position { X = 0, Y = 0 },
-                new Velocity { VX = 0, VY = 0 },
-                new Health { Value = 0 },
-                new Transform { X = 0, Y = 0, Rotation = 0 },
-                new TestComponent { Value = 0, Name = "" },
-                new AnotherComponent { X = 0, Y = 0 }
+                new Position {X = 0, Y = 0},
+                new Velocity {VX = 0, VY = 0},
+                new Health {Value = 0},
+                new Transform {X = 0, Y = 0, Rotation = 0},
+                new TestComponent {Value = 0, Name = ""},
+                new AnotherComponent {X = 0, Y = 0}
             );
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>, With<AnotherComponent>>();
 
@@ -198,14 +198,15 @@ namespace Alis.Core.Ecs.Test
             for (int i = 0; i < 2; i++)
             {
                 scene.Create(
-                    new Position { X = i, Y = i * 2 },
-                    new Velocity { VX = i * 0.5f, VY = i * 0.3f },
-                    new Health { Value = i * 10 },
-                    new Transform { X = i, Y = i, Rotation = i * 45 },
-                    new TestComponent { Value = i, Name = $"Test{i}" },
-                    new AnotherComponent { X = i * 2, Y = i * 3 }
+                    new Position {X = i, Y = i * 2},
+                    new Velocity {VX = i * 0.5f, VY = i * 0.3f},
+                    new Health {Value = i * 10},
+                    new Transform {X = i, Y = i, Rotation = i * 45},
+                    new TestComponent {Value = i, Name = $"Test{i}"},
+                    new AnotherComponent {X = i * 2, Y = i * 3}
                 );
             }
+
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>, With<AnotherComponent>>();
 
             // Act
@@ -257,4 +258,3 @@ namespace Alis.Core.Ecs.Test
         }
     }
 }
-

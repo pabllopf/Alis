@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:MouseButtonEventArgsTests.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -37,7 +38,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
     public class MouseButtonEventArgsTests
     {
         /// <summary>
-        /// Tests that constructor with valid parameters sets properties
+        ///     Tests that constructor with valid parameters sets properties
         /// </summary>
         [Fact]
         public void Constructor_WithValidParameters_SetsProperties()
@@ -57,7 +58,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that button property returns correct value
+        ///     Tests that button property returns correct value
         /// </summary>
         [Fact]
         public void Button_Property_ReturnsCorrectValue()
@@ -74,7 +75,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that action property returns correct value
+        ///     Tests that action property returns correct value
         /// </summary>
         [Fact]
         public void Action_Property_ReturnsCorrectValue()
@@ -91,7 +92,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that modifiers property returns correct value
+        ///     Tests that modifiers property returns correct value
         /// </summary>
         [Fact]
         public void Modifiers_Property_ReturnsCorrectValue()
@@ -108,7 +109,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that constructor with middle button sets button correctly
+        ///     Tests that constructor with middle button sets button correctly
         /// </summary>
         [Fact]
         public void Constructor_WithMiddleButton_SetsButtonCorrectly()
@@ -125,7 +126,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that constructor with button 4 sets button correctly
+        ///     Tests that constructor with button 4 sets button correctly
         /// </summary>
         [Fact]
         public void Constructor_WithButton4_SetsButtonCorrectly()
@@ -142,7 +143,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that constructor with button 5 sets button correctly
+        ///     Tests that constructor with button 5 sets button correctly
         /// </summary>
         [Fact]
         public void Constructor_WithButton5_SetsButtonCorrectly()
@@ -159,7 +160,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that constructor with no modifiers sets modifiers to none
+        ///     Tests that constructor with no modifiers sets modifiers to none
         /// </summary>
         [Fact]
         public void Constructor_WithNoModifiers_SetsModifiersToNone()
@@ -175,7 +176,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that constructor with multiple modifiers stores all modifiers
+        ///     Tests that constructor with multiple modifiers stores all modifiers
         /// </summary>
         [Fact]
         public void Constructor_WithMultipleModifiers_StoresAllModifiers()
@@ -192,4 +193,3 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
     }
 }
-

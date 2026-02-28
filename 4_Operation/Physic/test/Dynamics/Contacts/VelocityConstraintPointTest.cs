@@ -46,7 +46,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         public void DefaultConstructor_ShouldInitializeWithDefaultValues()
         {
             VelocityConstraintPoint point = new VelocityConstraintPoint();
-            
+
             Assert.Equal(0.0f, point.NormalImpulse);
             Assert.Equal(0.0f, point.NormalMass);
             Assert.Equal(Vector2F.Zero, point.Ra);
@@ -66,7 +66,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             {
                 NormalImpulse = 5.5f
             };
-            
+
             Assert.Equal(5.5f, point.NormalImpulse);
         }
 
@@ -80,7 +80,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             {
                 NormalMass = 10.0f
             };
-            
+
             Assert.Equal(10.0f, point.NormalMass);
         }
 
@@ -94,7 +94,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             {
                 Ra = new Vector2F(3, 4)
             };
-            
+
             Assert.Equal(new Vector2F(3, 4), point.Ra);
         }
 
@@ -108,7 +108,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             {
                 Rb = new Vector2F(5, 6)
             };
-            
+
             Assert.Equal(new Vector2F(5, 6), point.Rb);
         }
 
@@ -122,7 +122,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             {
                 TangentImpulse = 2.5f
             };
-            
+
             Assert.Equal(2.5f, point.TangentImpulse);
         }
 
@@ -136,7 +136,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             {
                 TangentMass = 8.0f
             };
-            
+
             Assert.Equal(8.0f, point.TangentMass);
         }
 
@@ -150,7 +150,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             {
                 VelocityBias = 1.5f
             };
-            
+
             Assert.Equal(1.5f, point.VelocityBias);
         }
 
@@ -165,7 +165,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
                 NormalImpulse = -5.0f,
                 TangentImpulse = -3.0f
             };
-            
+
             Assert.Equal(-5.0f, point.NormalImpulse);
             Assert.Equal(-3.0f, point.TangentImpulse);
         }
@@ -177,7 +177,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         public void VelocityConstraintPoint_ShouldBeSealedClass()
         {
             Type type = typeof(VelocityConstraintPoint);
-            
+
             Assert.True(type.IsSealed);
         }
 
@@ -197,7 +197,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
                 TangentMass = 8.0f,
                 VelocityBias = 9.0f
             };
-            
+
             Assert.Equal(1.0f, point.NormalImpulse);
             Assert.Equal(2.0f, point.NormalMass);
             Assert.Equal(new Vector2F(3, 4), point.Ra);
@@ -221,10 +221,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
                 TangentMass = 0.0f,
                 VelocityBias = 0.0f
             };
-            
+
             Assert.Equal(0.0f, point.NormalImpulse);
             Assert.Equal(0.0f, point.NormalMass);
         }
     }
 }
-

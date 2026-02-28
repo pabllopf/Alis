@@ -5,30 +5,29 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: CompactLogFormatterTest.cs
+//  File:CompactLogFormatterTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program. If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Logging.Abstractions;
 using Alis.Core.Aspect.Logging.Core;
 using Alis.Core.Aspect.Logging.Formatters;
@@ -76,7 +75,7 @@ namespace Alis.Core.Aspect.Logging.Test
             CompactLogFormatter formatter = new CompactLogFormatter();
 
             // Test each level
-            (LogLevel, string)[] levelCodes = new (LogLevel, string)[]
+            (LogLevel, string)[] levelCodes = new[]
             {
                 (LogLevel.Trace, "[T]"),
                 (LogLevel.Debug, "[D]"),
@@ -93,7 +92,7 @@ namespace Alis.Core.Aspect.Logging.Test
                 string formatted = formatter.Format(entry);
 
                 // Assert
-                Assert.Contains(code, formatted, System.StringComparison.Ordinal);
+                Assert.Contains(code, formatted, StringComparison.Ordinal);
             }
         }
 
@@ -146,7 +145,7 @@ namespace Alis.Core.Aspect.Logging.Test
         {
             // Arrange
             CompactLogFormatter formatter = new CompactLogFormatter();
-            LogLevel[] levels = new[] { LogLevel.Trace, LogLevel.Debug, LogLevel.Info, LogLevel.Warning, LogLevel.Error, LogLevel.Critical };
+            LogLevel[] levels = new[] {LogLevel.Trace, LogLevel.Debug, LogLevel.Info, LogLevel.Warning, LogLevel.Error, LogLevel.Critical};
 
             foreach (LogLevel level in levels)
             {
@@ -234,6 +233,7 @@ namespace Alis.Core.Aspect.Logging.Test
             {
                 formatter.Format(entry);
             }
+
             TimeSpan elapsed = DateTime.UtcNow - startTime;
 
             // Assert - Should format 10000 entries in reasonable time (< 1 second)
@@ -241,4 +241,3 @@ namespace Alis.Core.Aspect.Logging.Test
         }
     }
 }
-

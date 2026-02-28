@@ -57,9 +57,9 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
         public void CreateFirstCorridor_ShouldCreateCorridorWithNorthDirection()
         {
             // Arrange
-            MockRandomNumberGenerator mockRng = new MockRandomNumberGenerator(1); // Direction.North
+            MockRandomNumberGenerator mockRng = new MockRandomNumberGenerator(); // Direction.North
             CorridorFactory factory = new CorridorFactory(mockRng);
-            RoomData room = new RoomData(10, 10, 8, 8, Direction.North, false);
+            RoomData room = new RoomData(10, 10, 8, 8, Direction.North);
             int width = 4;
             int height = 4;
 
@@ -75,8 +75,6 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
         }
 
 
-
-
         /// <summary>
         ///     Tests that create first corridor should create corridor with west direction.
         /// </summary>
@@ -86,7 +84,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
             // Arrange
             MockRandomNumberGenerator mockRng = new MockRandomNumberGenerator(4); // Direction.West
             CorridorFactory factory = new CorridorFactory(mockRng);
-            RoomData room = new RoomData(10, 10, 8, 8, Direction.North, false);
+            RoomData room = new RoomData(10, 10, 8, 8, Direction.North);
             int width = 4;
             int height = 4;
 
@@ -102,7 +100,6 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
         }
 
 
-
         /// <summary>
         ///     Tests that create first corridor should throw exception when width is zero.
         /// </summary>
@@ -112,7 +109,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
             // Arrange
             MockRandomNumberGenerator mockRng = new MockRandomNumberGenerator();
             CorridorFactory factory = new CorridorFactory(mockRng);
-            RoomData room = new RoomData(10, 10, 8, 8, Direction.North, false);
+            RoomData room = new RoomData(10, 10, 8, 8, Direction.North);
 
             // Act & Assert
             Assert.Throws<ArgumentException>(() => factory.CreateFirstCorridor(0, 4, room));
@@ -127,7 +124,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
             // Arrange
             MockRandomNumberGenerator mockRng = new MockRandomNumberGenerator();
             CorridorFactory factory = new CorridorFactory(mockRng);
-            RoomData room = new RoomData(10, 10, 8, 8, Direction.North, false);
+            RoomData room = new RoomData(10, 10, 8, 8, Direction.North);
 
             // Act & Assert
             Assert.Throws<ArgumentException>(() => factory.CreateFirstCorridor(4, -3, room));
@@ -142,7 +139,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
             // Arrange
             MockRandomNumberGenerator mockRng = new MockRandomNumberGenerator();
             CorridorFactory factory = new CorridorFactory(mockRng);
-            RoomData room = new RoomData(10, 10, 8, 8, Direction.North, false);
+            RoomData room = new RoomData(10, 10, 8, 8, Direction.North);
 
             // Act & Assert
             Assert.Throws<ArgumentException>(() => factory.CreateCorridor(0, 4, room));
@@ -157,7 +154,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
             // Arrange
             MockRandomNumberGenerator mockRng = new MockRandomNumberGenerator();
             CorridorFactory factory = new CorridorFactory(mockRng);
-            RoomData room = new RoomData(10, 10, 8, 8, Direction.North, false);
+            RoomData room = new RoomData(10, 10, 8, 8, Direction.North);
 
             // Act & Assert
             Assert.Throws<ArgumentException>(() => factory.CreateCorridor(4, -5, room));
@@ -172,7 +169,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
             // Arrange
             MockRandomNumberGenerator mockRng = new MockRandomNumberGenerator(3); // Direction.East
             CorridorFactory factory = new CorridorFactory(mockRng);
-            RoomData room = new RoomData(10, 10, 8, 8, Direction.East, false);
+            RoomData room = new RoomData(10, 10, 8, 8, Direction.East);
 
             // Act
             CorridorData corridor = factory.CreateCorridor(4, 4, room);
@@ -188,14 +185,14 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
         public void MultipleCalls_ShouldPotentiallyHaveDifferentDirections()
         {
             // Arrange
-            MockRandomNumberGenerator mockRng = new MockRandomNumberGenerator(1);
+            MockRandomNumberGenerator mockRng = new MockRandomNumberGenerator();
             CorridorFactory factory = new CorridorFactory(mockRng);
-            RoomData room = new RoomData(10, 10, 8, 8, Direction.North, false);
+            RoomData room = new RoomData(10, 10, 8, 8, Direction.North);
 
             // Act
             mockRng.SetValue(1);
             CorridorData corridor1 = factory.CreateFirstCorridor(4, 4, room);
-            
+
             mockRng.SetValue(2);
             CorridorData corridor2 = factory.CreateFirstCorridor(4, 4, room);
 
@@ -204,4 +201,3 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
         }
     }
 }
-

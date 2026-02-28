@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:EnumerableHelpersTest.cs
+//  File:EnumerableHelpersBasicTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -37,7 +37,7 @@ namespace Alis.Core.Ecs.Test.Collections
     ///     The enumerable helpers test class
     /// </summary>
     /// <remarks>
-    ///     Tests utility methods in <see cref="EnumerableHelpers"/> which provide
+    ///     Tests utility methods in <see cref="EnumerableHelpers" /> which provide
     ///     efficient conversions and operations on IEnumerable collections.
     ///     These helpers optimize performance when dealing with generic enumerables.
     /// </remarks>
@@ -90,7 +90,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void EnumerableHelpers_CanConvertEnumerableToArray()
         {
             // Arrange
-            List<int> list = new List<int> { 1, 2, 3, 4, 5 };
+            List<int> list = new List<int> {1, 2, 3, 4, 5};
 
             // Act
             int[] array = EnumerableHelpers.ToArray(list, out int length);
@@ -131,7 +131,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void EnumerableHelpers_ToArrayPreservesElementOrder()
         {
             // Arrange
-            List<int> list = new List<int> { 10, 20, 30, 40, 50 };
+            List<int> list = new List<int> {10, 20, 30, 40, 50};
 
             // Act
             int[] array = EnumerableHelpers.ToArray(list, out int length);
@@ -179,7 +179,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void EnumerableHelpers_ToArrayWorksWithReferenceTypes()
         {
             // Arrange
-            List<string> strings = new List<string> { "apple", "banana", "cherry" };
+            List<string> strings = new List<string> {"apple", "banana", "cherry"};
 
             // Act
             string[] array = EnumerableHelpers.ToArray(strings, out int length);
@@ -208,7 +208,7 @@ namespace Alis.Core.Ecs.Test.Collections
 
             // Assert
             Assert.Equal(5, length);
-            Assert.Equal(new[] { 1, 2, 3, 4, 5 }, array[..5]);
+            Assert.Equal(new[] {1, 2, 3, 4, 5}, array[..5]);
         }
 
         /// <summary>
@@ -224,4 +224,3 @@ namespace Alis.Core.Ecs.Test.Collections
         }
     }
 }
-

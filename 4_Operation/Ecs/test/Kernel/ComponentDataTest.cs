@@ -39,7 +39,7 @@ namespace Alis.Core.Ecs.Test.Kernel
     ///     The component data test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="ComponentData"/> record struct which stores metadata
+    ///     Tests the <see cref="ComponentData" /> record struct which stores metadata
     ///     about a component type including its storage and initialization/destruction handlers.
     /// </remarks>
     public class ComponentDataTest
@@ -371,4 +371,3 @@ namespace Alis.Core.Ecs.Test.Kernel
         }
     }
 }
-

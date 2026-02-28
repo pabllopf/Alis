@@ -45,7 +45,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Interfaces
         /// <param name="room">The room to connect the corridor to.</param>
         /// <returns>A corridor data instance.</returns>
         CorridorData CreateFirstCorridor(int width, int height, RoomData room);
-        
+
         /// <summary>
         ///     Creates a standard corridor connected to a room.
         /// </summary>
@@ -56,4 +56,3 @@ namespace Alis.Extension.Math.ProceduralDungeon.Interfaces
         CorridorData CreateCorridor(int width, int height, RoomData room);
     }
 }
-

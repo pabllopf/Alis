@@ -51,10 +51,10 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
         /// <exception cref="ArgumentException">Thrown when dimensions are invalid.</exception>
         public RoomData CreateFirstRoom(int xPos, int yPos, int width, int height)
         {
-            DimensionsValidator.ValidateDimensions(width, height, nameof(width), nameof(height));
+            DimensionsValidator.ValidateDimensions(width, height);
             DimensionsValidator.ValidatePosition(xPos, yPos, nameof(xPos), nameof(yPos));
-            
-            return new RoomData(xPos, yPos, width, height, Direction.North, false);
+
+            return new RoomData(xPos, yPos, width, height, Direction.North);
         }
 
         /// <summary>
@@ -67,8 +67,8 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
         /// <exception cref="ArgumentException">Thrown when dimensions are invalid.</exception>
         public RoomData CreateRoom(int width, int height, CorridorData corridor)
         {
-            DimensionsValidator.ValidateDimensions(width, height, nameof(width), nameof(height));
-            
+            DimensionsValidator.ValidateDimensions(width, height);
+
             return CreateRoomFromCorridor(width, height, corridor, false);
         }
 
@@ -82,8 +82,8 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
         /// <exception cref="ArgumentException">Thrown when dimensions are invalid.</exception>
         public RoomData CreateBossRoom(int width, int height, CorridorData corridor)
         {
-            DimensionsValidator.ValidateDimensions(width, height, nameof(width), nameof(height));
-            
+            DimensionsValidator.ValidateDimensions(width, height);
+
             return CreateRoomFromCorridor(width, height, corridor, true);
         }
 
@@ -138,4 +138,3 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
         }
     }
 }
-

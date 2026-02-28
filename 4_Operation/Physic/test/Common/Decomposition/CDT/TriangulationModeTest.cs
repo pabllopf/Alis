@@ -45,7 +45,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
         public void UnconstrainedEnumValue_ShouldBeDefined()
         {
             TriangulationMode mode = TriangulationMode.Unconstrained;
-            
+
             Assert.Equal(TriangulationMode.Unconstrained, mode);
         }
 
@@ -56,7 +56,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
         public void ConstrainedEnumValue_ShouldBeDefined()
         {
             TriangulationMode mode = TriangulationMode.Constrained;
-            
+
             Assert.Equal(TriangulationMode.Constrained, mode);
         }
 
@@ -67,7 +67,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
         public void PolygonEnumValue_ShouldBeDefined()
         {
             TriangulationMode mode = TriangulationMode.Polygon;
-            
+
             Assert.Equal(TriangulationMode.Polygon, mode);
         }
 
@@ -77,8 +77,8 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
         [Fact]
         public void TriangulationMode_ShouldHaveThreeValues()
         {
-            Array values = System.Enum.GetValues(typeof(TriangulationMode));
-            
+            Array values = Enum.GetValues(typeof(TriangulationMode));
+
             Assert.Equal(3, values.Length);
         }
 
@@ -88,10 +88,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
         [Fact]
         public void TriangulationMode_ShouldBeCastableToInt()
         {
-            int unconstrainedValue = (int)TriangulationMode.Unconstrained;
-            int constrainedValue = (int)TriangulationMode.Constrained;
-            int polygonValue = (int)TriangulationMode.Polygon;
-            
+            int unconstrainedValue = (int) TriangulationMode.Unconstrained;
+            int constrainedValue = (int) TriangulationMode.Constrained;
+            int polygonValue = (int) TriangulationMode.Polygon;
+
             Assert.Equal(0, unconstrainedValue);
             Assert.Equal(1, constrainedValue);
             Assert.Equal(2, polygonValue);
@@ -105,7 +105,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
         {
             TriangulationMode mode1 = TriangulationMode.Constrained;
             TriangulationMode mode2 = TriangulationMode.Constrained;
-            
+
             Assert.Equal(mode1, mode2);
         }
 
@@ -117,9 +117,8 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
         {
             TriangulationMode mode1 = TriangulationMode.Unconstrained;
             TriangulationMode mode2 = TriangulationMode.Polygon;
-            
+
             Assert.NotEqual(mode1, mode2);
         }
     }
 }
-

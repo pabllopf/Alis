@@ -39,34 +39,13 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
     public class NodeTest
     {
         /// <summary>
-        ///     The test node class
-        /// </summary>
-        /// <seealso cref="Node" />
-        private class TestNode : Node
-        {
-            /// <summary>
-            ///     Initializes a new instance of the <see cref="TestNode" /> class
-            /// </summary>
-            /// <param name="left">The left</param>
-            /// <param name="right">The right</param>
-            public TestNode(Node left, Node right) : base(left, right) { }
-
-            /// <summary>
-            ///     Locates the edge
-            /// </summary>
-            /// <param name="edge">The edge</param>
-            /// <returns>The sink</returns>
-            public override Sink Locate(Edge edge) => null;
-        }
-
-        /// <summary>
         ///     Tests that constructor should initialize with null children
         /// </summary>
         [Fact]
         public void Constructor_ShouldInitializeWithNullChildren()
         {
             TestNode node = new TestNode(null, null);
-            
+
             Assert.NotNull(node);
             Assert.NotNull(node.ParentList);
             Assert.Empty(node.ParentList);
@@ -81,9 +60,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             Trapezoid trap = CreateTestTrapezoid();
             Sink leftChild = Sink.Isink(trap);
             Sink rightChild = Sink.Isink(CreateTestTrapezoid());
-            
+
             TestNode node = new TestNode(leftChild, rightChild);
-            
+
             Assert.Contains(node, leftChild.ParentList);
             Assert.Contains(node, rightChild.ParentList);
         }
@@ -95,7 +74,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         public void ParentList_ShouldBeInitialized()
         {
             TestNode node = new TestNode(null, null);
-            
+
             Assert.NotNull(node.ParentList);
         }
 
@@ -106,7 +85,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         public void Node_ShouldBeAbstractClass()
         {
             Type type = typeof(Node);
-            
+
             Assert.True(type.IsAbstract);
         }
 
@@ -120,9 +99,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             Trapezoid trap2 = CreateTestTrapezoid();
             Sink leftChild = Sink.Isink(trap1);
             Sink rightChild = Sink.Isink(trap2);
-            
+
             TestNode node = new TestNode(leftChild, rightChild);
-            
+
             Assert.NotNull(node);
             Assert.Equal(2, leftChild.ParentList.Count + rightChild.ParentList.Count);
         }
@@ -135,10 +114,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         {
             Trapezoid trap = CreateTestTrapezoid();
             Sink child = Sink.Isink(trap);
-            
+
             TestNode parent1 = new TestNode(child, null);
             TestNode parent2 = new TestNode(child, null);
-            
+
             Assert.Equal(2, child.ParentList.Count);
         }
 
@@ -150,9 +129,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         {
             Trapezoid trap = CreateTestTrapezoid();
             Sink leftChild = Sink.Isink(trap);
-            
+
             TestNode node = new TestNode(leftChild, null);
-            
+
             Assert.Contains(node, leftChild.ParentList);
         }
 
@@ -164,9 +143,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         {
             Trapezoid trap = CreateTestTrapezoid();
             Sink rightChild = Sink.Isink(trap);
-            
+
             TestNode node = new TestNode(null, rightChild);
-            
+
             Assert.Contains(node, rightChild.ParentList);
         }
 
@@ -182,6 +161,28 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             Edge bottom = new Edge(new Point(0, -10), new Point(10, -10));
             return new Trapezoid(leftPoint, rightPoint, top, bottom);
         }
+
+        /// <summary>
+        ///     The test node class
+        /// </summary>
+        /// <seealso cref="Node" />
+        private class TestNode : Node
+        {
+            /// <summary>
+            ///     Initializes a new instance of the <see cref="TestNode" /> class
+            /// </summary>
+            /// <param name="left">The left</param>
+            /// <param name="right">The right</param>
+            public TestNode(Node left, Node right) : base(left, right)
+            {
+            }
+
+            /// <summary>
+            ///     Locates the edge
+            /// </summary>
+            /// <param name="edge">The edge</param>
+            /// <returns>The sink</returns>
+            public override Sink Locate(Edge edge) => null;
+        }
     }
 }
-

@@ -233,13 +233,14 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             byte[] testData = new byte[300];
             for (int i = 0; i < testData.Length; i++)
             {
-                testData[i] = (byte)i;
+                testData[i] = (byte) i;
             }
+
             MemoryStream stream = new MemoryStream(testData);
             frame.Load(stream);
 
             // Act
-            byte[] pixel = frame.GetPixels(0, 0, 1);
+            byte[] pixel = frame.GetPixels(0, 0);
 
             // Assert
             Assert.Equal(3, pixel.Length); // RGB24 = 3 bytes
@@ -293,11 +294,11 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             // Arrange
             VideoFrame frame = new VideoFrame(10, 10);
             byte[] testData = new byte[300];
-            
+
             // Act
             MemoryStream stream1 = new MemoryStream(testData);
             bool result1 = frame.Load(stream1);
-            
+
             MemoryStream stream2 = new MemoryStream(testData);
             bool result2 = frame.Load(stream2);
 
@@ -340,4 +341,3 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         }
     }
 }
-

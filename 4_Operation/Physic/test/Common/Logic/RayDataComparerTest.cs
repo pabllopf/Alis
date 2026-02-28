@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using Alis.Core.Physic.Common.Logic;
 using Xunit;
@@ -47,9 +48,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             RayDataComparer comparer = new RayDataComparer();
             float a = 10.0f;
             float b = 5.0f;
-            
-            int result = ((IComparer<float>)comparer).Compare(a, b);
-            
+
+            int result = ((IComparer<float>) comparer).Compare(a, b);
+
             Assert.Equal(1, result);
         }
 
@@ -62,9 +63,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             RayDataComparer comparer = new RayDataComparer();
             float a = 5.0f;
             float b = 10.0f;
-            
-            int result = ((IComparer<float>)comparer).Compare(a, b);
-            
+
+            int result = ((IComparer<float>) comparer).Compare(a, b);
+
             Assert.Equal(-1, result);
         }
 
@@ -77,9 +78,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             RayDataComparer comparer = new RayDataComparer();
             float a = 5.0f;
             float b = 5.0f;
-            
-            int result = ((IComparer<float>)comparer).Compare(a, b);
-            
+
+            int result = ((IComparer<float>) comparer).Compare(a, b);
+
             Assert.Equal(0, result);
         }
 
@@ -92,9 +93,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             RayDataComparer comparer = new RayDataComparer();
             float a = -10.0f;
             float b = -5.0f;
-            
-            int result = ((IComparer<float>)comparer).Compare(a, b);
-            
+
+            int result = ((IComparer<float>) comparer).Compare(a, b);
+
             Assert.Equal(-1, result);
         }
 
@@ -107,9 +108,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             RayDataComparer comparer = new RayDataComparer();
             float a = 0.0f;
             float b = 0.0f;
-            
-            int result = ((IComparer<float>)comparer).Compare(a, b);
-            
+
+            int result = ((IComparer<float>) comparer).Compare(a, b);
+
             Assert.Equal(0, result);
         }
 
@@ -122,9 +123,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             RayDataComparer comparer = new RayDataComparer();
             float a = 5.00001f;
             float b = 5.0f;
-            
-            int result = ((IComparer<float>)comparer).Compare(a, b);
-            
+
+            int result = ((IComparer<float>) comparer).Compare(a, b);
+
             Assert.Equal(1, result);
         }
 
@@ -135,7 +136,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void RayDataComparer_ShouldImplementIComparer()
         {
             RayDataComparer comparer = new RayDataComparer();
-            
+
             Assert.IsAssignableFrom<IComparer<float>>(comparer);
         }
 
@@ -148,10 +149,10 @@ namespace Alis.Core.Physic.Test.Common.Logic
             RayDataComparer comparer = new RayDataComparer();
             float a = 7.5f;
             float b = 3.2f;
-            
-            int result1 = ((IComparer<float>)comparer).Compare(a, b);
-            int result2 = ((IComparer<float>)comparer).Compare(a, b);
-            
+
+            int result1 = ((IComparer<float>) comparer).Compare(a, b);
+            int result2 = ((IComparer<float>) comparer).Compare(a, b);
+
             Assert.Equal(result1, result2);
         }
 
@@ -164,10 +165,10 @@ namespace Alis.Core.Physic.Test.Common.Logic
             RayDataComparer comparer = new RayDataComparer();
             float a = 7.5f;
             float b = 3.2f;
-            
-            int resultAB = ((IComparer<float>)comparer).Compare(a, b);
-            int resultBA = ((IComparer<float>)comparer).Compare(b, a);
-            
+
+            int resultAB = ((IComparer<float>) comparer).Compare(a, b);
+            int resultBA = ((IComparer<float>) comparer).Compare(b, a);
+
             Assert.Equal(-resultAB, resultBA);
         }
 
@@ -180,9 +181,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             RayDataComparer comparer = new RayDataComparer();
             float a = 1000000.0f;
             float b = 999999.0f;
-            
-            int result = ((IComparer<float>)comparer).Compare(a, b);
-            
+
+            int result = ((IComparer<float>) comparer).Compare(a, b);
+
             Assert.Equal(1, result);
         }
 
@@ -195,9 +196,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             RayDataComparer comparer = new RayDataComparer();
             float a = -5.0f;
             float b = 5.0f;
-            
-            int result = ((IComparer<float>)comparer).Compare(a, b);
-            
+
+            int result = ((IComparer<float>) comparer).Compare(a, b);
+
             Assert.Equal(-1, result);
         }
 
@@ -208,10 +209,10 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void Compare_ShouldWorkWithSortingAlgorithms()
         {
             RayDataComparer comparer = new RayDataComparer();
-            float[] array = new float[] { 5.0f, 2.0f, 8.0f, 1.0f, 9.0f };
-            
-            System.Array.Sort(array, comparer);
-            
+            float[] array = new[] {5.0f, 2.0f, 8.0f, 1.0f, 9.0f};
+
+            Array.Sort(array, comparer);
+
             Assert.Equal(1.0f, array[0]);
             Assert.Equal(2.0f, array[1]);
             Assert.Equal(5.0f, array[2]);
@@ -220,4 +221,3 @@ namespace Alis.Core.Physic.Test.Common.Logic
         }
     }
 }
-

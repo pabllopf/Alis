@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IInputTest.cs
+//  File:IInputTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,28 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
     /// </summary>
     public class IInputTest
     {
-        /// <summary>
-        ///     Helper builder class for input.
-        /// </summary>
-        private class InputBuilder
-        {
-            public string InputMode { get; set; }
-        }
-
-        /// <summary>
-        ///     Helper implementation of IInput.
-        /// </summary>
-        private class InputBuilderImpl : IInput<InputBuilder, string>
-        {
-            private readonly InputBuilder _builder = new InputBuilder();
-
-            public InputBuilder Input(string value)
-            {
-                _builder.InputMode = value;
-                return _builder;
-            }
-        }
-
         /// <summary>
         ///     Tests that IInput can be implemented.
         /// </summary>
@@ -97,17 +75,34 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Tests Input with various modes.
         /// </summary>
-        [Theory]
-        [InlineData("Keyboard")]
-        [InlineData("Mouse")]
-        [InlineData("Gamepad")]
-        [InlineData("Touch")]
+        [Theory, InlineData("Keyboard"), InlineData("Mouse"), InlineData("Gamepad"), InlineData("Touch")]
         public void Input_WithVariousModes(string mode)
         {
             InputBuilderImpl builder = new InputBuilderImpl();
             InputBuilder result = builder.Input(mode);
             Assert.Equal(mode, result.InputMode);
         }
+
+        /// <summary>
+        ///     Helper builder class for input.
+        /// </summary>
+        private class InputBuilder
+        {
+            public string InputMode { get; set; }
+        }
+
+        /// <summary>
+        ///     Helper implementation of IInput.
+        /// </summary>
+        private class InputBuilderImpl : IInput<InputBuilder, string>
+        {
+            private readonly InputBuilder _builder = new InputBuilder();
+
+            public InputBuilder Input(string value)
+            {
+                _builder.InputMode = value;
+                return _builder;
+            }
+        }
     }
 }
-

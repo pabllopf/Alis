@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 using Alis.Core.Ecs.Systems;
@@ -246,7 +247,7 @@ namespace Alis.Core.Ecs.Test.Systems
         public void IRuleProvider_MultipleProviders_CanBeCollected()
         {
             // Arrange
-            List<IRuleProvider> providers = new System.Collections.Generic.List<IRuleProvider>
+            List<IRuleProvider> providers = new List<IRuleProvider>
             {
                 new With<Position>(),
                 new With<Velocity>(),
@@ -254,7 +255,7 @@ namespace Alis.Core.Ecs.Test.Systems
             };
 
             // Act
-            List<Rule> rules = new System.Collections.Generic.List<Rule>();
+            List<Rule> rules = new List<Rule>();
             foreach (IRuleProvider provider in providers)
             {
                 rules.Add(provider.Rule);
@@ -298,7 +299,7 @@ namespace Alis.Core.Ecs.Test.Systems
         public void IRuleProvider_InterfaceIsPublic()
         {
             // Act
-            System.Type type = typeof(IRuleProvider);
+            Type type = typeof(IRuleProvider);
 
             // Assert
             Assert.True(type.IsPublic);
@@ -316,7 +317,7 @@ namespace Alis.Core.Ecs.Test.Systems
         public void IRuleProvider_HasOnlyRuleProperty()
         {
             // Act
-            System.Type type = typeof(IRuleProvider);
+            Type type = typeof(IRuleProvider);
             PropertyInfo[] properties = type.GetProperties();
 
             // Assert
@@ -334,7 +335,7 @@ namespace Alis.Core.Ecs.Test.Systems
         public void IRuleProvider_RuleProperty_IsReadOnly()
         {
             // Act
-            System.Type type = typeof(IRuleProvider);
+            Type type = typeof(IRuleProvider);
             PropertyInfo property = type.GetProperty("Rule");
 
             // Assert
@@ -348,12 +349,8 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Helper method to extract rule from provider with generic constraint
         /// </summary>
-        private Rule GetRuleFromProvider<T>(T provider) where T : IRuleProvider
-        {
-            return provider.Rule;
-        }
+        private Rule GetRuleFromProvider<T>(T provider) where T : IRuleProvider => provider.Rule;
 
         #endregion
     }
 }
-

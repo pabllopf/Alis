@@ -52,7 +52,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 0, Y = 0 });
+            GameObject entity = scene.Create(new Position {X = 0, Y = 0});
 
             // Act
             entity.Tag<PlayerTag>();
@@ -73,7 +73,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 0, Y = 0 });
+            GameObject entity = scene.Create(new Position {X = 0, Y = 0});
 
             // Act
             entity.Tag<PlayerTag>();
@@ -83,9 +83,5 @@ namespace Alis.Core.Ecs.Test
             Assert.True(entity.Tagged<PlayerTag>());
             Assert.True(entity.Tagged<EnemyTag>());
         }
-        
-
-
     }
 }
-

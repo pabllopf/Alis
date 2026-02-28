@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: ISetTest.cs
+//  File:ISetTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,25 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
     /// </summary>
     public class ISetTest
     {
-        /// <summary>
-        ///     Helper builder class.
-        /// </summary>
-        private class Builder { public string SetValue { get; set; } }
-
-        /// <summary>
-        ///     Helper implementation of ISet.
-        /// </summary>
-        private class SetBuilder : ISet<Builder, string>
-        {
-            private readonly Builder _builder = new Builder();
-
-            public Builder Set<T>(string value)
-            {
-                _builder.SetValue = value;
-                return _builder;
-            }
-        }
-
         /// <summary>
         ///     Tests that ISet can be implemented.
         /// </summary>
@@ -102,6 +83,27 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
             Builder result2 = builder.Set<string>("value2");
             Assert.Equal("value2", result2.SetValue);
         }
+
+        /// <summary>
+        ///     Helper builder class.
+        /// </summary>
+        private class Builder
+        {
+            public string SetValue { get; set; }
+        }
+
+        /// <summary>
+        ///     Helper implementation of ISet.
+        /// </summary>
+        private class SetBuilder : ISet<Builder, string>
+        {
+            private readonly Builder _builder = new Builder();
+
+            public Builder Set<T>(string value)
+            {
+                _builder.SetValue = value;
+                return _builder;
+            }
+        }
     }
 }
-

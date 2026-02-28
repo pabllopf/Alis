@@ -235,4 +235,3 @@ namespace Alis.Extension.Language.Translator.Test
         }
     }
 }
-

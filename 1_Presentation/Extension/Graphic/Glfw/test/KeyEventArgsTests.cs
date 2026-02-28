@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:KeyEventArgsTests.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -37,7 +38,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
     public class KeyEventArgsTests
     {
         /// <summary>
-        /// Tests that constructor with valid parameters sets properties
+        ///     Tests that constructor with valid parameters sets properties
         /// </summary>
         [Fact]
         public void Constructor_WithValidParameters_SetsProperties()
@@ -59,7 +60,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that key property returns correct value
+        ///     Tests that key property returns correct value
         /// </summary>
         [Fact]
         public void Key_Property_ReturnsCorrectValue()
@@ -76,7 +77,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that scan code property returns correct value
+        ///     Tests that scan code property returns correct value
         /// </summary>
         [Fact]
         public void ScanCode_Property_ReturnsCorrectValue()
@@ -93,7 +94,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that state property returns correct value
+        ///     Tests that state property returns correct value
         /// </summary>
         [Fact]
         public void State_Property_ReturnsCorrectValue()
@@ -110,7 +111,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that modifiers property returns correct value
+        ///     Tests that modifiers property returns correct value
         /// </summary>
         [Fact]
         public void Modifiers_Property_ReturnsCorrectValue()
@@ -127,7 +128,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that constructor with repeat state sets state correctly
+        ///     Tests that constructor with repeat state sets state correctly
         /// </summary>
         [Fact]
         public void Constructor_WithRepeatState_SetsStateCorrectly()
@@ -144,7 +145,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that constructor with unknown key sets key correctly
+        ///     Tests that constructor with unknown key sets key correctly
         /// </summary>
         [Fact]
         public void Constructor_WithUnknownKey_SetsKeyCorrectly()
@@ -161,7 +162,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that constructor with multiple modifiers stores all modifiers
+        ///     Tests that constructor with multiple modifiers stores all modifiers
         /// </summary>
         [Fact]
         public void Constructor_WithMultipleModifiers_StoresAllModifiers()
@@ -178,4 +179,3 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
     }
 }
-

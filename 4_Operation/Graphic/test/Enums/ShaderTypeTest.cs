@@ -28,72 +28,73 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Xunit;
+using System.Collections.Generic;
 using Alis.Core.Graphic.OpenGL.Enums;
+using Xunit;
 
 namespace Alis.Core.Graphic.Test.Enums
 {
     /// <summary>
-    /// Tests for the ShaderType enum validating all shader type definitions.
+    ///     Tests for the ShaderType enum validating all shader type definitions.
     /// </summary>
     public class ShaderTypeTest
     {
         /// <summary>
-        /// Tests that FragmentShader has correct value.
+        ///     Tests that FragmentShader has correct value.
         /// </summary>
         [Fact]
         public void FragmentShader_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x8B30, (int)ShaderType.FragmentShader);
+            Assert.Equal(0x8B30, (int) ShaderType.FragmentShader);
         }
 
         /// <summary>
-        /// Tests that VertexShader has correct value.
+        ///     Tests that VertexShader has correct value.
         /// </summary>
         [Fact]
         public void VertexShader_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x8B31, (int)ShaderType.VertexShader);
+            Assert.Equal(0x8B31, (int) ShaderType.VertexShader);
         }
 
         /// <summary>
-        /// Tests that GeometryShader has correct value.
+        ///     Tests that GeometryShader has correct value.
         /// </summary>
         [Fact]
         public void GeometryShader_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x8DD9, (int)ShaderType.GeometryShader);
+            Assert.Equal(0x8DD9, (int) ShaderType.GeometryShader);
         }
 
         /// <summary>
-        /// Tests that TessControlShader has correct value.
+        ///     Tests that TessControlShader has correct value.
         /// </summary>
         [Fact]
         public void TessControlShader_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x8E88, (int)ShaderType.TessControlShader);
+            Assert.Equal(0x8E88, (int) ShaderType.TessControlShader);
         }
 
         /// <summary>
-        /// Tests that TessEvaluationShader has correct value.
+        ///     Tests that TessEvaluationShader has correct value.
         /// </summary>
         [Fact]
         public void TessEvaluationShader_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x8E87, (int)ShaderType.TessEvaluationShader);
+            Assert.Equal(0x8E87, (int) ShaderType.TessEvaluationShader);
         }
 
         /// <summary>
-        /// Tests that ComputeShader has correct value.
+        ///     Tests that ComputeShader has correct value.
         /// </summary>
         [Fact]
         public void ComputeShader_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x91B9, (int)ShaderType.ComputeShader);
+            Assert.Equal(0x91B9, (int) ShaderType.ComputeShader);
         }
 
         /// <summary>
-        /// Tests that ShaderType is an enum type.
+        ///     Tests that ShaderType is an enum type.
         /// </summary>
         [Fact]
         public void ShaderType_IsEnum_TypeIsCorrect()
@@ -102,7 +103,7 @@ namespace Alis.Core.Graphic.Test.Enums
         }
 
         /// <summary>
-        /// Tests that ShaderType enum is public.
+        ///     Tests that ShaderType enum is public.
         /// </summary>
         [Fact]
         public void ShaderType_IsPublic_CanBeAccessed()
@@ -111,47 +112,47 @@ namespace Alis.Core.Graphic.Test.Enums
         }
 
         /// <summary>
-        /// Tests that ShaderType has six defined values.
+        ///     Tests that ShaderType has six defined values.
         /// </summary>
         [Fact]
         public void ShaderType_HasSixValues_CountIsCorrect()
         {
-            Array enumValues = System.Enum.GetValues(typeof(ShaderType));
+            Array enumValues = Enum.GetValues(typeof(ShaderType));
             Assert.Equal(6, enumValues.Length);
         }
 
         /// <summary>
-        /// Tests that all ShaderType values are unique.
+        ///     Tests that all ShaderType values are unique.
         /// </summary>
         [Fact]
         public void AllValues_AreUnique_NoConflicts()
         {
             int[] values = new[]
             {
-                (int)ShaderType.FragmentShader,
-                (int)ShaderType.VertexShader,
-                (int)ShaderType.GeometryShader,
-                (int)ShaderType.TessControlShader,
-                (int)ShaderType.TessEvaluationShader,
-                (int)ShaderType.ComputeShader
+                (int) ShaderType.FragmentShader,
+                (int) ShaderType.VertexShader,
+                (int) ShaderType.GeometryShader,
+                (int) ShaderType.TessControlShader,
+                (int) ShaderType.TessEvaluationShader,
+                (int) ShaderType.ComputeShader
             };
 
-            int uniqueCount = new System.Collections.Generic.HashSet<int>(values).Count;
+            int uniqueCount = new HashSet<int>(values).Count;
             Assert.Equal(values.Length, uniqueCount);
         }
 
         /// <summary>
-        /// Tests that ShaderType can be cast to int.
+        ///     Tests that ShaderType can be cast to int.
         /// </summary>
         [Fact]
         public void ShaderType_CanCastToInt_ConversionIsValid()
         {
-            int value = (int)ShaderType.VertexShader;
+            int value = (int) ShaderType.VertexShader;
             Assert.IsType<int>(value);
         }
 
         /// <summary>
-        /// Tests that ShaderType values can be compared.
+        ///     Tests that ShaderType values can be compared.
         /// </summary>
         [Fact]
         public void ShaderType_CanCompareValues_EqualityWorks()
@@ -162,7 +163,7 @@ namespace Alis.Core.Graphic.Test.Enums
         }
 
         /// <summary>
-        /// Tests that different ShaderType values are not equal.
+        ///     Tests that different ShaderType values are not equal.
         /// </summary>
         [Fact]
         public void ShaderType_DifferentValues_AreNotEqual()
@@ -171,15 +172,14 @@ namespace Alis.Core.Graphic.Test.Enums
         }
 
         /// <summary>
-        /// Tests that VertexShader and FragmentShader are consecutive values.
+        ///     Tests that VertexShader and FragmentShader are consecutive values.
         /// </summary>
         [Fact]
         public void VertexShader_AndFragmentShader_AreSequential()
         {
-            int fragmentValue = (int)ShaderType.FragmentShader;
-            int vertexValue = (int)ShaderType.VertexShader;
+            int fragmentValue = (int) ShaderType.FragmentShader;
+            int vertexValue = (int) ShaderType.VertexShader;
             Assert.Equal(vertexValue, fragmentValue + 1);
         }
     }
 }
-

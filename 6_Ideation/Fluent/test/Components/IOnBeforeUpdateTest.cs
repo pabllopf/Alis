@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IOnBeforeUpdateTest.cs
+//  File:IOnBeforeUpdateTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Aspect.Fluent.Components;
 using Xunit;
 
@@ -39,21 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
     /// </summary>
     public class IOnBeforeUpdateTest
     {
-        
-
-        /// <summary>
-        ///     Helper implementation for testing IOnBeforeUpdate.
-        /// </summary>
-        private class BeforeUpdateHandler : IOnBeforeUpdate
-        {
-            public int CallCount { get; private set; }
-
-            public void OnBeforeUpdate(IGameObject self)
-            {
-                CallCount++;
-            }
-        }
-
         /// <summary>
         ///     Tests that IOnBeforeUpdate can be implemented.
         /// </summary>
@@ -89,8 +73,22 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
             {
                 handler.OnBeforeUpdate(gameObject);
             }
+
             Assert.Equal(5, handler.CallCount);
+        }
+
+
+        /// <summary>
+        ///     Helper implementation for testing IOnBeforeUpdate.
+        /// </summary>
+        private class BeforeUpdateHandler : IOnBeforeUpdate
+        {
+            public int CallCount { get; private set; }
+
+            public void OnBeforeUpdate(IGameObject self)
+            {
+                CallCount++;
+            }
         }
     }
 }
-

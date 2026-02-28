@@ -33,7 +33,7 @@ using Xunit;
 namespace Alis.Core.Ecs.Test.Kernel
 {
     /// <summary>
-    ///     Tests the <see cref="GameObjectIdOnly"/> struct.
+    ///     Tests the <see cref="GameObjectIdOnly" /> struct.
     /// </summary>
     public partial class GameObjectIdOnlyTest
     {
@@ -45,12 +45,12 @@ namespace Alis.Core.Ecs.Test.Kernel
         {
             // Arrange & Act
             GameObjectIdOnly idOnly = new GameObjectIdOnly(42, 5);
-            
+
             // Assert
             Assert.Equal(42, idOnly.ID);
-            Assert.Equal((ushort)5, idOnly.Version);
+            Assert.Equal((ushort) 5, idOnly.Version);
         }
-        
+
         /// <summary>
         ///     Tests that to entity creates correct game object.
         /// </summary>
@@ -60,18 +60,18 @@ namespace Alis.Core.Ecs.Test.Kernel
             // Arrange
             Scene world = new Scene();
             GameObjectIdOnly idOnly = new GameObjectIdOnly(10, 2);
-            
+
             // Act
             GameObject entity = idOnly.ToEntity(world);
-            
+
             // Assert
             Assert.Equal(10, entity.EntityID);
-            Assert.Equal((ushort)2, entity.EntityVersion);
+            Assert.Equal((ushort) 2, entity.EntityVersion);
             Assert.Equal(world.Id, entity.WorldID);
-            
+
             world.Dispose();
         }
-        
+
         /// <summary>
         ///     Tests that deconstruct extracts id and version correctly.
         /// </summary>
@@ -80,15 +80,15 @@ namespace Alis.Core.Ecs.Test.Kernel
         {
             // Arrange
             GameObjectIdOnly idOnly = new GameObjectIdOnly(100, 10);
-            
+
             // Act
             idOnly.Deconstruct(out int id, out ushort version);
-            
+
             // Assert
             Assert.Equal(100, id);
-            Assert.Equal((ushort)10, version);
+            Assert.Equal((ushort) 10, version);
         }
-        
+
         /// <summary>
         ///     Tests that set entity updates game object correctly.
         /// </summary>
@@ -99,17 +99,17 @@ namespace Alis.Core.Ecs.Test.Kernel
             Scene world = new Scene();
             GameObject entity = world.Create();
             GameObjectIdOnly idOnly = new GameObjectIdOnly(50, 3);
-            
+
             // Act
             idOnly.SetEntity(ref entity);
-            
+
             // Assert
             Assert.Equal(50, entity.EntityID);
-            Assert.Equal((ushort)3, entity.EntityVersion);
-            
+            Assert.Equal((ushort) 3, entity.EntityVersion);
+
             world.Dispose();
         }
-        
+
         /// <summary>
         ///     Tests that init with game object copies values correctly.
         /// </summary>
@@ -120,17 +120,17 @@ namespace Alis.Core.Ecs.Test.Kernel
             Scene world = new Scene();
             GameObject entity = world.Create();
             GameObjectIdOnly idOnly = new GameObjectIdOnly(0, 0);
-            
+
             // Act
             idOnly.Init(entity);
-            
+
             // Assert
             Assert.Equal(entity.EntityID, idOnly.ID);
             Assert.Equal(entity.EntityVersion, idOnly.Version);
-            
+
             world.Dispose();
         }
-        
+
         /// <summary>
         ///     Tests that init with another game object id only copies values.
         /// </summary>
@@ -140,15 +140,15 @@ namespace Alis.Core.Ecs.Test.Kernel
             // Arrange
             GameObjectIdOnly source = new GameObjectIdOnly(75, 7);
             GameObjectIdOnly target = new GameObjectIdOnly(0, 0);
-            
+
             // Act
             target.Init(source);
-            
+
             // Assert
             Assert.Equal(75, target.ID);
-            Assert.Equal((ushort)7, target.Version);
+            Assert.Equal((ushort) 7, target.Version);
         }
-        
+
         /// <summary>
         ///     Tests that constructor with zero values works correctly.
         /// </summary>
@@ -157,12 +157,12 @@ namespace Alis.Core.Ecs.Test.Kernel
         {
             // Arrange & Act
             GameObjectIdOnly idOnly = new GameObjectIdOnly(0, 0);
-            
+
             // Assert
             Assert.Equal(0, idOnly.ID);
-            Assert.Equal((ushort)0, idOnly.Version);
+            Assert.Equal((ushort) 0, idOnly.Version);
         }
-        
+
         /// <summary>
         ///     Tests that constructor with negative id works correctly.
         /// </summary>
@@ -171,12 +171,12 @@ namespace Alis.Core.Ecs.Test.Kernel
         {
             // Arrange & Act
             GameObjectIdOnly idOnly = new GameObjectIdOnly(-1, 5);
-            
+
             // Assert
             Assert.Equal(-1, idOnly.ID);
-            Assert.Equal((ushort)5, idOnly.Version);
+            Assert.Equal((ushort) 5, idOnly.Version);
         }
-        
+
         /// <summary>
         ///     Tests that constructor with max values works correctly.
         /// </summary>
@@ -185,12 +185,12 @@ namespace Alis.Core.Ecs.Test.Kernel
         {
             // Arrange & Act
             GameObjectIdOnly idOnly = new GameObjectIdOnly(int.MaxValue, ushort.MaxValue);
-            
+
             // Assert
             Assert.Equal(int.MaxValue, idOnly.ID);
             Assert.Equal(ushort.MaxValue, idOnly.Version);
         }
-        
+
         /// <summary>
         ///     Tests that id can be modified after construction.
         /// </summary>
@@ -199,14 +199,14 @@ namespace Alis.Core.Ecs.Test.Kernel
         {
             // Arrange
             GameObjectIdOnly idOnly = new GameObjectIdOnly(10, 1);
-            
+
             // Act
             idOnly.ID = 20;
-            
+
             // Assert
             Assert.Equal(20, idOnly.ID);
         }
-        
+
         /// <summary>
         ///     Tests that version can be modified after construction.
         /// </summary>
@@ -215,14 +215,14 @@ namespace Alis.Core.Ecs.Test.Kernel
         {
             // Arrange
             GameObjectIdOnly idOnly = new GameObjectIdOnly(10, 1);
-            
+
             // Act
             idOnly.Version = 5;
-            
+
             // Assert
-            Assert.Equal((ushort)5, idOnly.Version);
+            Assert.Equal((ushort) 5, idOnly.Version);
         }
-        
+
         /// <summary>
         ///     Tests that set entity preserves world id.
         /// </summary>
@@ -234,16 +234,16 @@ namespace Alis.Core.Ecs.Test.Kernel
             GameObject entity = world.Create();
             ushort originalWorldId = entity.WorldID;
             GameObjectIdOnly idOnly = new GameObjectIdOnly(99, 9);
-            
+
             // Act
             idOnly.SetEntity(ref entity);
-            
+
             // Assert
             Assert.Equal(originalWorldId, entity.WorldID);
-            
+
             world.Dispose();
         }
-        
+
         /// <summary>
         ///     Tests that multiple init calls overwrite previous values.
         /// </summary>
@@ -254,15 +254,14 @@ namespace Alis.Core.Ecs.Test.Kernel
             GameObjectIdOnly idOnly = new GameObjectIdOnly(10, 1);
             GameObjectIdOnly source1 = new GameObjectIdOnly(20, 2);
             GameObjectIdOnly source2 = new GameObjectIdOnly(30, 3);
-            
+
             // Act
             idOnly.Init(source1);
             idOnly.Init(source2);
-            
+
             // Assert
             Assert.Equal(30, idOnly.ID);
-            Assert.Equal((ushort)3, idOnly.Version);
+            Assert.Equal((ushort) 3, idOnly.Version);
         }
     }
 }
-

@@ -168,7 +168,7 @@ namespace Alis.Extension.Thread.Test
             ParallelExtensionConfigurationBuilder builder = new ParallelExtensionConfigurationBuilder();
 
             // Act & Assert
-            Assert.Throws<ArgumentOutOfRangeException>(() => 
+            Assert.Throws<ArgumentOutOfRangeException>(() =>
                 builder.WithMaxDegreeOfParallelism(0));
         }
 
@@ -200,7 +200,7 @@ namespace Alis.Extension.Thread.Test
             ParallelExtensionConfigurationBuilder builder = new ParallelExtensionConfigurationBuilder();
 
             // Act & Assert
-            Assert.Throws<ArgumentOutOfRangeException>(() => 
+            Assert.Throws<ArgumentOutOfRangeException>(() =>
                 builder.WithMinBatchSizePerThread(0));
         }
 
@@ -232,7 +232,7 @@ namespace Alis.Extension.Thread.Test
             ParallelExtensionConfigurationBuilder builder = new ParallelExtensionConfigurationBuilder();
 
             // Act & Assert
-            Assert.Throws<ArgumentOutOfRangeException>(() => 
+            Assert.Throws<ArgumentOutOfRangeException>(() =>
                 builder.WithDefaultMinBatchSize(-1));
         }
 
@@ -265,7 +265,7 @@ namespace Alis.Extension.Thread.Test
             ParallelExtensionConfigurationBuilder builder = new ParallelExtensionConfigurationBuilder();
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>(() => 
+            Assert.Throws<ArgumentNullException>(() =>
                 builder.WithExecutionStrategy(null));
         }
 
@@ -291,4 +291,3 @@ namespace Alis.Extension.Thread.Test
         }
     }
 }
-

@@ -57,11 +57,7 @@ namespace Alis.Extension.Language.Translator.Test
         /// <summary>
         ///     Tests that English pluralization returns plural form for other quantities
         /// </summary>
-        [Theory]
-        [InlineData(0)]
-        [InlineData(2)]
-        [InlineData(5)]
-        [InlineData(100)]
+        [Theory, InlineData(0), InlineData(2), InlineData(5), InlineData(100)]
         public void GetPluralForm_EnglishWithMultiple_ShouldReturnPlural(int quantity)
         {
             // Arrange
@@ -77,10 +73,7 @@ namespace Alis.Extension.Language.Translator.Test
         /// <summary>
         ///     Tests that Spanish pluralization works correctly
         /// </summary>
-        [Theory]
-        [InlineData(1, 0)]
-        [InlineData(2, 1)]
-        [InlineData(0, 1)]
+        [Theory, InlineData(1, 0), InlineData(2, 1), InlineData(0, 1)]
         public void GetPluralForm_Spanish_ShouldWorkCorrectly(int quantity, int expected)
         {
             // Arrange
@@ -96,12 +89,12 @@ namespace Alis.Extension.Language.Translator.Test
         /// <summary>
         ///     Tests that Russian pluralization returns correct forms
         /// </summary>
-        [Theory]
-        [InlineData(1, 0)]      // Singular
-        [InlineData(21, 0)]     // Singular (ends with 1)
-        [InlineData(2, 1)]      // Few
-        [InlineData(5, 2)]      // Many
-        [InlineData(0, 2)]      // Many
+        [Theory, InlineData(1, 0), InlineData(21, 0), InlineData(2, 1), InlineData(5, 2), InlineData(0, 2)]
+        // Singular
+        // Singular (ends with 1)
+        // Few
+        // Many
+        // Many
         public void GetPluralForm_Russian_ShouldReturnCorrectForm(int quantity, int expected)
         {
             // Arrange
@@ -117,10 +110,7 @@ namespace Alis.Extension.Language.Translator.Test
         /// <summary>
         ///     Tests that Japanese has no pluralization
         /// </summary>
-        [Theory]
-        [InlineData(0)]
-        [InlineData(1)]
-        [InlineData(100)]
+        [Theory, InlineData(0), InlineData(1), InlineData(100)]
         public void GetPluralForm_Japanese_ShouldAlwaysReturnZero(int quantity)
         {
             // Arrange
@@ -167,11 +157,7 @@ namespace Alis.Extension.Language.Translator.Test
         /// <summary>
         ///     Tests that GetPluralFormCount returns correct counts
         /// </summary>
-        [Theory]
-        [InlineData("en", 2)]
-        [InlineData("es", 2)]
-        [InlineData("ru", 3)]
-        [InlineData("ja", 1)]
+        [Theory, InlineData("en", 2), InlineData("es", 2), InlineData("ru", 3), InlineData("ja", 1)]
         public void GetPluralFormCount_ShouldReturnCorrectCount(string languageCode, int expectedCount)
         {
             // Arrange
@@ -198,4 +184,3 @@ namespace Alis.Extension.Language.Translator.Test
         }
     }
 }
-

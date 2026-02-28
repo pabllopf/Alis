@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using Alis.Extension.Media.FFmpeg.BaseClasses;
 using Alis.Extension.Media.FFmpeg.Video.Models;
 using Xunit;
 
@@ -86,7 +84,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
             // Assert
             Assert.Equal(height, metadata.Height);
         }
-        
+
 
         /// <summary>
         ///     Tests that video metadata duration property should be settable
@@ -164,9 +162,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         public void VideoMetadata_ShouldSupportCommonResolutions()
         {
             // Arrange & Act
-            VideoMetadata hd720 = new VideoMetadata { Width = 1280, Height = 720 };
-            VideoMetadata hd1080 = new VideoMetadata { Width = 1920, Height = 1080 };
-            VideoMetadata uhd4k = new VideoMetadata { Width = 3840, Height = 2160 };
+            VideoMetadata hd720 = new VideoMetadata {Width = 1280, Height = 720};
+            VideoMetadata hd1080 = new VideoMetadata {Width = 1920, Height = 1080};
+            VideoMetadata uhd4k = new VideoMetadata {Width = 3840, Height = 2160};
 
             // Assert
             Assert.Equal(1280, hd720.Width);
@@ -184,9 +182,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         public void VideoMetadata_ShouldSupportCommonCodecs()
         {
             // Arrange & Act
-            VideoMetadata h264 = new VideoMetadata { Codec = "h264" };
-            VideoMetadata h265 = new VideoMetadata { Codec = "hevc" };
-            VideoMetadata vp9 = new VideoMetadata { Codec = "vp9" };
+            VideoMetadata h264 = new VideoMetadata {Codec = "h264"};
+            VideoMetadata h265 = new VideoMetadata {Codec = "hevc"};
+            VideoMetadata vp9 = new VideoMetadata {Codec = "vp9"};
 
             // Assert
             Assert.Equal("h264", h264.Codec);
@@ -195,4 +193,3 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         }
     }
 }
-

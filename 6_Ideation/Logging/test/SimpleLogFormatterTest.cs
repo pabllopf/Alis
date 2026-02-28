@@ -5,31 +5,30 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: SimpleLogFormatterTest.cs
+//  File:SimpleLogFormatterTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program. If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System;
 using System.Collections.Generic;
-using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Logging.Abstractions;
 using Alis.Core.Aspect.Logging.Core;
 using Alis.Core.Aspect.Logging.Formatters;
@@ -156,7 +155,7 @@ namespace Alis.Core.Aspect.Logging.Test
         {
             // Arrange
             SimpleLogFormatter formatter = new SimpleLogFormatter();
-            List<object> scopes = new List<object> { "Scope1", "Scope2", "Scope3" };
+            List<object> scopes = new List<object> {"Scope1", "Scope2", "Scope3"};
             LogEntry entry = new LogEntry(LogLevel.Info, "Test", "Logger", scopes: scopes);
 
             // Act
@@ -189,7 +188,7 @@ namespace Alis.Core.Aspect.Logging.Test
         {
             // Arrange
             SimpleLogFormatter formatter = new SimpleLogFormatter();
-            LogLevel[] levels = new[] { LogLevel.Trace, LogLevel.Debug, LogLevel.Info, LogLevel.Warning, LogLevel.Error, LogLevel.Critical };
+            LogLevel[] levels = new[] {LogLevel.Trace, LogLevel.Debug, LogLevel.Info, LogLevel.Warning, LogLevel.Error, LogLevel.Critical};
 
             foreach (LogLevel level in levels)
             {
@@ -253,7 +252,7 @@ namespace Alis.Core.Aspect.Logging.Test
         {
             // Arrange
             SimpleLogFormatter formatter = new SimpleLogFormatter();
-            List<object> scopes = new List<object> { "Engine", "Graphics", "Renderer" };
+            List<object> scopes = new List<object> {"Engine", "Graphics", "Renderer"};
             LogEntry entry = new LogEntry(LogLevel.Info, "Rendering", "Logger", scopes: scopes);
 
             // Act
@@ -268,4 +267,3 @@ namespace Alis.Core.Aspect.Logging.Test
         }
     }
 }
-

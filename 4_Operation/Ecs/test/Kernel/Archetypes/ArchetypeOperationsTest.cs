@@ -82,7 +82,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             GameObject entity = scene.Create();
 
             // Act
-            entity.Add<Position>(new Position());
+            entity.Add(new Position());
 
             // Assert
             Assert.True(entity.Has<Position>());
@@ -106,12 +106,12 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
 
             // Act
             GameObject e1 = scene.Create();
-            e1.Add<Position>(new Position());
-            e1.Add<Velocity>(new Velocity());
+            e1.Add(new Position());
+            e1.Add(new Velocity());
 
             GameObject e2 = scene.Create();
-            e2.Add<Position>(new Position());
-            e2.Add<Velocity>(new Velocity());
+            e2.Add(new Position());
+            e2.Add(new Velocity());
 
             // Both entities should be in efficient memory layout
             // Assert
@@ -138,11 +138,11 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             GameObject e2 = scene.Create();
 
             // Act
-            e1.Add<Position>(new Position());
-            e1.Add<Velocity>(new Velocity());
+            e1.Add(new Position());
+            e1.Add(new Velocity());
 
-            e2.Add<Position>(new Position());
-            e2.Add<Velocity>(new Velocity());
+            e2.Add(new Position());
+            e2.Add(new Velocity());
 
             // Assert
             Assert.True(e1.Has<Position>());
@@ -167,9 +167,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             // Arrange
             Scene scene = new Scene();
             GameObject entity = scene.Create();
-            entity.Add<Position>(new Position());
-            entity.Add<Velocity>(new Velocity());
-            entity.Add<Health>(new Health());
+            entity.Add(new Position());
+            entity.Add(new Velocity());
+            entity.Add(new Health());
 
             // Act
             entity.Remove<Health>();
@@ -201,9 +201,20 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             for (int i = 0; i < 10; i++)
             {
                 GameObject entity = scene.Create();
-                if (i % 2 == 0) entity.Add<Position>(new Position());
-                if (i % 3 == 0) entity.Add<Velocity>(new Velocity());
-                if (i % 4 == 0) entity.Add<Health>(new Health());
+                if (i % 2 == 0)
+                {
+                    entity.Add(new Position());
+                }
+
+                if (i % 3 == 0)
+                {
+                    entity.Add(new Velocity());
+                }
+
+                if (i % 4 == 0)
+                {
+                    entity.Add(new Health());
+                }
             }
 
             // Assert - All entities should be created and properly configured
@@ -213,6 +224,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             {
                 count++;
             }
+
             Assert.True(count > 0);
 
             // Cleanup
@@ -234,12 +246,12 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             GameObject entity = scene.Create();
 
             // Act
-            entity.Add<Position>(new Position());
+            entity.Add(new Position());
             ref Position pos1 = ref entity.Get<Position>();
             pos1.X = 100;
             pos1.Y = 200;
 
-            entity.Add<Velocity>(new Velocity());
+            entity.Add(new Velocity());
             ref Position pos2 = ref entity.Get<Position>();
 
             // Assert
@@ -264,12 +276,12 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Scene scene = new Scene();
 
             GameObject e1 = scene.Create();
-            e1.Add<Position>(new Position());
-            e1.Add<Velocity>(new Velocity());
+            e1.Add(new Position());
+            e1.Add(new Velocity());
 
             GameObject e2 = scene.Create();
-            e2.Add<Velocity>(new Velocity());
-            e2.Add<Position>(new Position());
+            e2.Add(new Velocity());
+            e2.Add(new Position());
 
             // Act
             Query query = scene.Query<With<Position>, With<Velocity>>();
@@ -287,4 +299,3 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         }
     }
 }
-

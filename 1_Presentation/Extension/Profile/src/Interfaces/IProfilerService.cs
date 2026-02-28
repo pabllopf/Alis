@@ -79,4 +79,3 @@ namespace Alis.Extension.Profile.Interfaces
         void Reset();
     }
 }
-

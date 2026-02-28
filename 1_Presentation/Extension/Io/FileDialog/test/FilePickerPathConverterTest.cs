@@ -27,7 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
+using System.IO;
+using System.Runtime.InteropServices;
 using Xunit;
 
 namespace Alis.Extension.Io.FileDialog.Test
@@ -88,9 +89,8 @@ namespace Alis.Extension.Io.FileDialog.Test
             // Assert
             Assert.Empty(result);
         }
-        
-        
-        
+
+
         /// <summary>
         ///     Tests that ConvertPathSeparators converts backslashes to forward slashes on Unix.
         /// </summary>
@@ -101,7 +101,7 @@ namespace Alis.Extension.Io.FileDialog.Test
             string result = FilePickerPathConverter.ConvertPathSeparators("C:\\Users\\user\\file.txt");
 
             // Assert
-            string expected = "C:" + System.IO.Path.DirectorySeparatorChar + "Users" + System.IO.Path.DirectorySeparatorChar + "user" + System.IO.Path.DirectorySeparatorChar + "file.txt";
+            string expected = "C:" + Path.DirectorySeparatorChar + "Users" + Path.DirectorySeparatorChar + "user" + Path.DirectorySeparatorChar + "file.txt";
             Assert.Equal(expected, result);
         }
 
@@ -195,7 +195,7 @@ namespace Alis.Extension.Io.FileDialog.Test
             // On Unix/macOS, most of these are actually valid
             // We use Path.GetInvalidPathChars() which returns an empty array on .NET Core on Unix
 
-            if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Windows))
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 // Act
                 bool result = FilePickerPathConverter.IsValidPath("C:\\path<with>invalid|chars", false);
@@ -231,7 +231,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void IsValidPath_WithNonexistentPath_MustExist_ShouldReturnFalse()
         {
             // Act
-            bool result = FilePickerPathConverter.IsValidPath("/nonexistent/path/file.txt", true);
+            bool result = FilePickerPathConverter.IsValidPath("/nonexistent/path/file.txt");
 
             // Assert
             Assert.False(result);
@@ -265,4 +265,3 @@ namespace Alis.Extension.Io.FileDialog.Test
         }
     }
 }
-

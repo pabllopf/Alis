@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IAngularVelocityTest.cs
+//  File:IAngularVelocityTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,28 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
     /// </summary>
     public class IAngularVelocityTest
     {
-        /// <summary>
-        ///     Helper builder class for angular velocity.
-        /// </summary>
-        private class AngularVelocityBuilder
-        {
-            public float AngularVelocityValue { get; set; }
-        }
-
-        /// <summary>
-        ///     Helper implementation of IAngularVelocity.
-        /// </summary>
-        private class AngularVelocityBuilderImpl : IAngularVelocity<AngularVelocityBuilder, float>
-        {
-            private readonly AngularVelocityBuilder _builder = new AngularVelocityBuilder();
-
-            public AngularVelocityBuilder AngularVelocity(float value)
-            {
-                _builder.AngularVelocityValue = value;
-                return _builder;
-            }
-        }
-
         /// <summary>
         ///     Tests that IAngularVelocity can be implemented.
         /// </summary>
@@ -97,18 +75,34 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Tests AngularVelocity with various rotation speeds.
         /// </summary>
-        [Theory]
-        [InlineData(0f)]
-        [InlineData(45f)]
-        [InlineData(90f)]
-        [InlineData(180f)]
-        [InlineData(360f)]
+        [Theory, InlineData(0f), InlineData(45f), InlineData(90f), InlineData(180f), InlineData(360f)]
         public void AngularVelocity_WithVariousRotationSpeeds(float velocity)
         {
             AngularVelocityBuilderImpl builder = new AngularVelocityBuilderImpl();
             AngularVelocityBuilder result = builder.AngularVelocity(velocity);
             Assert.Equal(velocity, result.AngularVelocityValue);
         }
+
+        /// <summary>
+        ///     Helper builder class for angular velocity.
+        /// </summary>
+        private class AngularVelocityBuilder
+        {
+            public float AngularVelocityValue { get; set; }
+        }
+
+        /// <summary>
+        ///     Helper implementation of IAngularVelocity.
+        /// </summary>
+        private class AngularVelocityBuilderImpl : IAngularVelocity<AngularVelocityBuilder, float>
+        {
+            private readonly AngularVelocityBuilder _builder = new AngularVelocityBuilder();
+
+            public AngularVelocityBuilder AngularVelocity(float value)
+            {
+                _builder.AngularVelocityValue = value;
+                return _builder;
+            }
+        }
     }
 }
-

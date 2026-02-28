@@ -27,9 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Xunit;
-using Alis.Extension.Graphic.Sdl2.Structs;
-
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
     /// <summary>
@@ -39,4 +36,3 @@ namespace Alis.Extension.Graphic.Sdl2.Test
     {
     }
 }
-

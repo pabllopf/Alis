@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:GlfwNativeMonitorTests.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,7 +39,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
     public class GlfwNativeMonitorTests
     {
         /// <summary>
-        /// Gets the monitors returns non null array
+        ///     Gets the monitors returns non null array
         /// </summary>
         [RequiresDisplay]
         public void GetMonitors_ReturnsNonNullArray()
@@ -51,7 +52,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Gets the primary monitor returns monitor
+        ///     Gets the primary monitor returns monitor
         /// </summary>
         [RequiresDisplay]
         public void GetPrimaryMonitor_ReturnsMonitor()
@@ -65,14 +66,17 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Gets the monitor physical size with valid monitor returns size
+        ///     Gets the monitor physical size with valid monitor returns size
         /// </summary>
         [RequiresDisplay]
         public void GetMonitorPhysicalSize_WithValidMonitor_ReturnsSize()
         {
             // Arrange
             Monitor monitor = GlfwNative.PrimaryMonitor;
-            if (monitor == Monitor.None) return;
+            if (monitor == Monitor.None)
+            {
+                return;
+            }
 
             // Act
             GlfwNative.GetMonitorPhysicalSize(monitor, out int width, out int height);
@@ -83,14 +87,17 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Gets the monitor position with valid monitor returns position
+        ///     Gets the monitor position with valid monitor returns position
         /// </summary>
         [RequiresDisplay]
         public void GetMonitorPosition_WithValidMonitor_ReturnsPosition()
         {
             // Arrange
             Monitor monitor = GlfwNative.PrimaryMonitor;
-            if (monitor == Monitor.None) return;
+            if (monitor == Monitor.None)
+            {
+                return;
+            }
 
             // Act
             GlfwNative.GetMonitorPosition(monitor, out int x, out int y);
@@ -101,14 +108,17 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Gets the monitor work area with valid monitor returns work area
+        ///     Gets the monitor work area with valid monitor returns work area
         /// </summary>
         [RequiresDisplay]
         public void GetMonitorWorkArea_WithValidMonitor_ReturnsWorkArea()
         {
             // Arrange
             Monitor monitor = GlfwNative.PrimaryMonitor;
-            if (monitor == Monitor.None) return;
+            if (monitor == Monitor.None)
+            {
+                return;
+            }
 
             // Act
             GlfwNative.GetMonitorWorkArea(monitor, out int x, out int y, out int width, out int height);
@@ -119,4 +129,3 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
     }
 }
-

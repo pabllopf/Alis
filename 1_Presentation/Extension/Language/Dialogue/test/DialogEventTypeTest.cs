@@ -43,7 +43,7 @@ namespace Alis.Extension.Language.Dialogue.Test
         [Fact]
         public void DialogEventType_OnDialogStart_HasCorrectValue()
         {
-            Assert.Equal(0, (int)DialogEventType.OnDialogStart);
+            Assert.Equal(0, (int) DialogEventType.OnDialogStart);
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Alis.Extension.Language.Dialogue.Test
         [Fact]
         public void DialogEventType_OnDialogEnd_HasCorrectValue()
         {
-            Assert.Equal(1, (int)DialogEventType.OnDialogEnd);
+            Assert.Equal(1, (int) DialogEventType.OnDialogEnd);
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace Alis.Extension.Language.Dialogue.Test
         [Fact]
         public void DialogEventType_OnOptionSelected_HasCorrectValue()
         {
-            Assert.Equal(2, (int)DialogEventType.OnOptionSelected);
+            Assert.Equal(2, (int) DialogEventType.OnOptionSelected);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace Alis.Extension.Language.Dialogue.Test
         [Fact]
         public void DialogEventType_OnOptionValidated_HasCorrectValue()
         {
-            Assert.Equal(3, (int)DialogEventType.OnOptionValidated);
+            Assert.Equal(3, (int) DialogEventType.OnOptionValidated);
         }
 
         /// <summary>
@@ -79,8 +79,7 @@ namespace Alis.Extension.Language.Dialogue.Test
         [Fact]
         public void DialogEventType_OnStateChanged_HasCorrectValue()
         {
-            Assert.Equal(4, (int)DialogEventType.OnStateChanged);
+            Assert.Equal(4, (int) DialogEventType.OnStateChanged);
         }
     }
 }
-

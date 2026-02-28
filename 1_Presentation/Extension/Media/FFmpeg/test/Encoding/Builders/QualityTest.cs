@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Extension.Media.FFmpeg.Encoding.Builders;
 using Xunit;
 
@@ -48,7 +49,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Quality quality = Quality.Good;
 
             // Assert
-            Assert.Equal(0, (int)quality);
+            Assert.Equal(0, (int) quality);
         }
 
         /// <summary>
@@ -61,7 +62,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Quality quality = Quality.Best;
 
             // Assert
-            Assert.Equal(1, (int)quality);
+            Assert.Equal(1, (int) quality);
         }
 
         /// <summary>
@@ -74,7 +75,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Quality quality = Quality.RealTime;
 
             // Assert
-            Assert.Equal(2, (int)quality);
+            Assert.Equal(2, (int) quality);
         }
 
         /// <summary>
@@ -84,7 +85,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         public void Quality_Enum_ShouldHaveThreeValues()
         {
             // Arrange & Act
-            Quality[] values = (Quality[])System.Enum.GetValues(typeof(Quality));
+            Quality[] values = (Quality[]) Enum.GetValues(typeof(Quality));
 
             // Assert
             Assert.Equal(3, values.Length);
@@ -119,8 +120,8 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         public void Quality_ShouldBeParseableFromString()
         {
             // Arrange & Act
-            Quality good = (Quality)System.Enum.Parse(typeof(Quality), "Good");
-            Quality best = (Quality)System.Enum.Parse(typeof(Quality), "Best");
+            Quality good = (Quality) Enum.Parse(typeof(Quality), "Good");
+            Quality best = (Quality) Enum.Parse(typeof(Quality), "Best");
 
             // Assert
             Assert.Equal(Quality.Good, good);
@@ -200,9 +201,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         public void Quality_AllValues_ShouldBeDefined()
         {
             // Arrange & Act & Assert
-            Assert.True(System.Enum.IsDefined(typeof(Quality), Quality.Good));
-            Assert.True(System.Enum.IsDefined(typeof(Quality), Quality.Best));
-            Assert.True(System.Enum.IsDefined(typeof(Quality), Quality.RealTime));
+            Assert.True(Enum.IsDefined(typeof(Quality), Quality.Good));
+            Assert.True(Enum.IsDefined(typeof(Quality), Quality.Best));
+            Assert.True(Enum.IsDefined(typeof(Quality), Quality.RealTime));
         }
 
         /// <summary>
@@ -212,9 +213,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         public void Quality_ShouldHaveUniqueValues()
         {
             // Arrange
-            int goodValue = (int)Quality.Good;
-            int bestValue = (int)Quality.Best;
-            int realTimeValue = (int)Quality.RealTime;
+            int goodValue = (int) Quality.Good;
+            int bestValue = (int) Quality.Best;
+            int realTimeValue = (int) Quality.RealTime;
 
             // Act & Assert
             Assert.NotEqual(goodValue, bestValue);
@@ -232,7 +233,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Quality quality = Quality.Best;
 
             // Act
-            int value = (int)quality;
+            int value = (int) quality;
 
             // Assert
             Assert.Equal(1, value);
@@ -248,11 +249,10 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             int value = 2;
 
             // Act
-            Quality quality = (Quality)value;
+            Quality quality = (Quality) value;
 
             // Assert
             Assert.Equal(Quality.RealTime, quality);
         }
     }
 }
-

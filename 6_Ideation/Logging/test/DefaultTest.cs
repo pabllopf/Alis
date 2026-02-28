@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: DefaultTest.cs
+//  File:DefaultTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program. If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -281,7 +281,7 @@ namespace Alis.Core.Aspect.Logging.Test
             {
                 MemoryLogOutput memoryOutput = new MemoryLogOutput();
                 factory.AddOutput(memoryOutput);
-                factory.AddFilter(new LoggerNameFilter(new[] { "AllowedLogger" }, inclusive: true));
+                factory.AddFilter(new LoggerNameFilter(new[] {"AllowedLogger"}, true));
 
                 ILogger allowedLogger = factory.CreateLogger("AllowedLogger");
                 ILogger deniedLogger = factory.CreateLogger("DeniedLogger");
@@ -302,7 +302,7 @@ namespace Alis.Core.Aspect.Logging.Test
             {
                 MemoryLogOutput memoryOutput = new MemoryLogOutput();
                 factory.AddOutput(memoryOutput);
-                factory.AddFilter(new LoggerNameFilter(new[] { "ExcludedLogger" }, inclusive: false));
+                factory.AddFilter(new LoggerNameFilter(new[] {"ExcludedLogger"}, false));
 
                 ILogger allowedLogger = factory.CreateLogger("AllowedLogger");
                 ILogger excludedLogger = factory.CreateLogger("ExcludedLogger");
@@ -344,8 +344,8 @@ namespace Alis.Core.Aspect.Logging.Test
                 ILogger logger = factory.CreateLogger("TestLogger");
                 Dictionary<string, object> properties = new Dictionary<string, object>
                 {
-                    { "UserId", 123 },
-                    { "Action", "Login" }
+                    {"UserId", 123},
+                    {"Action", "Login"}
                 };
                 logger.LogStructured(LogLevel.Info, "User action", properties);
 
@@ -396,7 +396,7 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void MemoryLogOutput_MaxEntries_ShouldLimitStorage()
         {
-            MemoryLogOutput memoryOutput = new MemoryLogOutput(maxEntries: 3);
+            MemoryLogOutput memoryOutput = new MemoryLogOutput(3);
 
             for (int i = 0; i < 5; i++)
             {
@@ -411,8 +411,8 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CompositeLogFilter_AND_ShouldRequireAllFilters()
         {
             LogLevelFilter filter1 = new LogLevelFilter(LogLevel.Info);
-            LoggerNameFilter filter2 = new LoggerNameFilter(new[] { "AllowedLogger" }, inclusive: true);
-            CompositeLogFilter composite = new CompositeLogFilter(new ILogFilter[] { filter1, filter2 }, requireAll: true);
+            LoggerNameFilter filter2 = new LoggerNameFilter(new[] {"AllowedLogger"}, true);
+            CompositeLogFilter composite = new CompositeLogFilter(new ILogFilter[] {filter1, filter2}, true);
 
             LogEntry entryAllows = new LogEntry(LogLevel.Info, "Message", "AllowedLogger");
             LogEntry entryFailsLevel = new LogEntry(LogLevel.Debug, "Message", "AllowedLogger");
@@ -427,8 +427,8 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CompositeLogFilter_OR_ShouldRequireAnyFilter()
         {
             LogLevelFilter filter1 = new LogLevelFilter(LogLevel.Error);
-            LoggerNameFilter filter2 = new LoggerNameFilter(new[] { "AllowedLogger" }, inclusive: true);
-            CompositeLogFilter composite = new CompositeLogFilter(new ILogFilter[] { filter1, filter2 }, requireAll: false);
+            LoggerNameFilter filter2 = new LoggerNameFilter(new[] {"AllowedLogger"}, true);
+            CompositeLogFilter composite = new CompositeLogFilter(new ILogFilter[] {filter1, filter2}, false);
 
             LogEntry entryPassesLevel = new LogEntry(LogLevel.Error, "Message", "OtherLogger");
             LogEntry entryPassesName = new LogEntry(LogLevel.Debug, "Message", "AllowedLogger");
@@ -460,9 +460,9 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LoggerFactory_FluentConfiguration_ShouldChainCorrectly()
         {
             using (LoggerFactory factory = new LoggerFactory()
-                .AddOutput(new MemoryLogOutput())
-                .AddFilter(new LogLevelFilter(LogLevel.Info))
-                .SetMinimumLevel(LogLevel.Trace))
+                       .AddOutput(new MemoryLogOutput())
+                       .AddFilter(new LogLevelFilter(LogLevel.Info))
+                       .SetMinimumLevel(LogLevel.Trace))
             {
                 ILogger logger = factory.CreateLogger("TestLogger");
                 Assert.NotNull(logger);

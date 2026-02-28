@@ -38,36 +38,6 @@ namespace Alis.Extension.Io.FileDialog
     public class FilePickerOptions
     {
         /// <summary>
-        ///     Gets or sets the title of the dialog window.
-        /// </summary>
-        public string Title { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the default path to start browsing.
-        /// </summary>
-        public string DefaultPath { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the file filters available in the dialog.
-        /// </summary>
-        public List<FilePickerFilter> Filters { get; set; }
-
-        /// <summary>
-        ///     Gets or sets a value indicating whether multiple files can be selected.
-        /// </summary>
-        public bool AllowMultiple { get; set; }
-
-        /// <summary>
-        ///     Gets or sets a value indicating whether directories can be selected (only for SelectFolder dialog).
-        /// </summary>
-        public bool AllowDirectories { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the type of dialog to display.
-        /// </summary>
-        public FileDialogType DialogType { get; set; }
-
-        /// <summary>
         ///     Initializes a new instance of the FilePickerOptions class with default values.
         /// </summary>
         public FilePickerOptions()
@@ -101,6 +71,36 @@ namespace Alis.Extension.Io.FileDialog
             AllowDirectories = false;
             DialogType = dialogType;
         }
+
+        /// <summary>
+        ///     Gets or sets the title of the dialog window.
+        /// </summary>
+        public string Title { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the default path to start browsing.
+        /// </summary>
+        public string DefaultPath { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the file filters available in the dialog.
+        /// </summary>
+        public List<FilePickerFilter> Filters { get; set; }
+
+        /// <summary>
+        ///     Gets or sets a value indicating whether multiple files can be selected.
+        /// </summary>
+        public bool AllowMultiple { get; set; }
+
+        /// <summary>
+        ///     Gets or sets a value indicating whether directories can be selected (only for SelectFolder dialog).
+        /// </summary>
+        public bool AllowDirectories { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the type of dialog to display.
+        /// </summary>
+        public FileDialogType DialogType { get; set; }
 
         /// <summary>
         ///     Adds a file filter to the options.
@@ -144,10 +144,6 @@ namespace Alis.Extension.Io.FileDialog
         ///     Gets a value indicating whether this dialog allows directory selection.
         /// </summary>
         /// <returns>True if dialog type is SelectFolder, false otherwise</returns>
-        public bool IsDirectoryDialog()
-        {
-            return DialogType == FileDialogType.SelectFolder;
-        }
+        public bool IsDirectoryDialog() => DialogType == FileDialogType.SelectFolder;
     }
 }
-

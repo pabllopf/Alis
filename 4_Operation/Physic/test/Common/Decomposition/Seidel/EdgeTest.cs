@@ -45,9 +45,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         {
             Point p = new Point(0, 0);
             Point q = new Point(10, 10);
-            
+
             Edge edge = new Edge(p, q);
-            
+
             Assert.Equal(p, edge.P);
             Assert.Equal(q, edge.Q);
             Assert.NotNull(edge.MPoints);
@@ -63,9 +63,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         {
             Point p = new Point(0, 0);
             Point q = new Point(10, 5);
-            
+
             Edge edge = new Edge(p, q);
-            
+
             Assert.Equal(0.5f, edge.Slope);
         }
 
@@ -77,9 +77,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         {
             Point p = new Point(5, 0);
             Point q = new Point(5, 10);
-            
+
             Edge edge = new Edge(p, q);
-            
+
             Assert.Equal(0, edge.Slope);
         }
 
@@ -91,9 +91,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         {
             Point p = new Point(0, 0);
             Point q = new Point(10, 10);
-            
+
             Edge edge = new Edge(p, q);
-            
+
             Assert.Contains(p, edge.MPoints);
             Assert.Contains(q, edge.MPoints);
         }
@@ -108,9 +108,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             Point q = new Point(10, 10);
             Edge edge = new Edge(p, q);
             Point testPoint = new Point(5, 3);
-            
+
             bool isAbove = edge.IsAbove(testPoint);
-            
+
             Assert.True(isAbove);
         }
 
@@ -124,9 +124,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             Point q = new Point(10, 10);
             Edge edge = new Edge(p, q);
             Point testPoint = new Point(5, 7);
-            
+
             bool isBelow = edge.IsBelow(testPoint);
-            
+
             Assert.True(isBelow);
         }
 
@@ -140,9 +140,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             Point q = new Point(10, 10);
             Edge edge = new Edge(p, q);
             Point newPoint = new Point(5, 5);
-            
+
             edge.AddMpoint(newPoint);
-            
+
             Assert.Contains(newPoint, edge.MPoints);
         }
 
@@ -156,13 +156,13 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             Point q = new Point(10, 10);
             Edge edge = new Edge(p, q);
             Point duplicatePoint = new Point(0, 0);
-            
+
             int initialCount = edge.MPoints.Count;
             edge.AddMpoint(duplicatePoint);
-            
+
             Assert.Equal(initialCount, edge.MPoints.Count);
         }
-        
+
         /// <summary>
         ///     Tests that edge should calculate b intercept correctly
         /// </summary>
@@ -171,9 +171,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         {
             Point p = new Point(0, 5);
             Point q = new Point(10, 15);
-            
+
             Edge edge = new Edge(p, q);
-            
+
             Assert.Equal(5.0f, edge.B);
         }
 
@@ -185,9 +185,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         {
             Point p = new Point(0, 5);
             Point q = new Point(10, 5);
-            
+
             Edge edge = new Edge(p, q);
-            
+
             Assert.Equal(0.0f, edge.Slope);
         }
 
@@ -199,11 +199,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         {
             Point p = new Point(0, 10);
             Point q = new Point(10, 0);
-            
+
             Edge edge = new Edge(p, q);
-            
+
             Assert.True(edge.Slope < 0);
         }
     }
 }
-

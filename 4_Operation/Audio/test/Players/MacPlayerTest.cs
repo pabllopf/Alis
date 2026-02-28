@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Alis.Core.Audio.Interfaces;
 using Alis.Core.Audio.Players;
@@ -277,9 +276,9 @@ namespace Alis.Core.Audio.Test.Players
             byte volume = 101;
 
             // Act & Assert
-            ArgumentOutOfRangeException exception = await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() => 
+            ArgumentOutOfRangeException exception = await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() =>
                 player.SetVolume(volume));
-            
+
             Assert.Equal("percent", exception.ParamName);
         }
 
@@ -568,9 +567,9 @@ namespace Alis.Core.Audio.Test.Players
             byte volume = 150;
 
             // Act & Assert
-            ArgumentOutOfRangeException exception = await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() => 
+            ArgumentOutOfRangeException exception = await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() =>
                 player.SetVolume(volume));
-            
+
             Assert.Equal("percent", exception.ParamName);
         }
 
@@ -585,9 +584,9 @@ namespace Alis.Core.Audio.Test.Players
             byte volume = 150;
 
             // Act & Assert
-            ArgumentOutOfRangeException exception = await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() => 
+            ArgumentOutOfRangeException exception = await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() =>
                 player.SetVolume(volume));
-            
+
             Assert.Contains("100", exception.Message);
         }
 
@@ -688,9 +687,9 @@ namespace Alis.Core.Audio.Test.Players
         {
             // Arrange
             MacPlayer player = new MacPlayer();
-            string[] fileNames = 
+            string[] fileNames =
             {
-                "test.wav", "test.mp3", "test.ogg", "test.flac", 
+                "test.wav", "test.mp3", "test.ogg", "test.flac",
                 "test.m4a", "test.aiff", "test.aac", "test.wma"
             };
 

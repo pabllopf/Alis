@@ -3262,32 +3262,28 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <param name="g">The </param>
         /// <param name="b">The </param>
         /// <returns>The uint</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_MapRGB", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [ExcludeFromCodeCoverage]
+        [DllImport(NativeLibName, EntryPoint = "SDL_MapRGB", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining), ExcludeFromCodeCoverage]
         public static extern uint InternalMapRGB(IntPtr surfaceObjectFormat, int r, int g, int b);
 
         /// <summary>
         ///     Internals the unlock texture using the specified font texture
         /// </summary>
         /// <param name="fontTexture">The font texture</param>
-        [DllImport(NativeLibName, EntryPoint = "SDL_UnlockTexture", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [ExcludeFromCodeCoverage]
+        [DllImport(NativeLibName, EntryPoint = "SDL_UnlockTexture", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining), ExcludeFromCodeCoverage]
         public static extern void InternalUnlockTexture(IntPtr fontTexture);
 
         /// <summary>
         ///     Internals the lock surface using the specified surface
         /// </summary>
         /// <param name="surface">The surface</param>
-        [DllImport(NativeLibName, EntryPoint = "SDL_LockTexture", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [ExcludeFromCodeCoverage]
+        [DllImport(NativeLibName, EntryPoint = "SDL_LockTexture", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining), ExcludeFromCodeCoverage]
         public static extern void InternalLockSurface(IntPtr surface);
 
         /// <summary>
         ///     Internals the unlock surface using the specified surface
         /// </summary>
         /// <param name="surface">The surface</param>
-        [DllImport(NativeLibName, EntryPoint = "SDL_UnlockSurface", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [ExcludeFromCodeCoverage]
+        [DllImport(NativeLibName, EntryPoint = "SDL_UnlockSurface", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining), ExcludeFromCodeCoverage]
         public static extern void InternalUnlockSurface(IntPtr surface);
     }
 }

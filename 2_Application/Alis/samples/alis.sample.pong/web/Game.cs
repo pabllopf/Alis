@@ -47,7 +47,7 @@ namespace Alis.Sample.Pong.Web
         /// <returns>The video game</returns>
         public static VideoGame Create()
         {
-           return VideoGame
+            return VideoGame
                 .Create()
                 .Settings(setting => setting
                     .General(general => general
@@ -101,7 +101,6 @@ namespace Alis.Sample.Pong.Web
                                 .FixedRotation(true)
                                 .IgnoreGravity(true)
                             )
-       
                         )
                         .Add<GameObject>(player => player
                             .Transform(transform => transform
@@ -122,7 +121,6 @@ namespace Alis.Sample.Pong.Web
                                 .FixedRotation(true)
                                 .IgnoreGravity(true)
                             )
-               
                         )
                         .Add<GameObject>(ball => ball
                             .Transform(transform => transform

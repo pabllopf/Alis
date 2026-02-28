@@ -37,7 +37,7 @@ namespace Alis.Core.Ecs.Test.Collections
     ///     The frugal stack basic test class
     /// </summary>
     /// <remarks>
-    ///     Tests basic functionality of <see cref="FrugalStack{T}"/> which is a
+    ///     Tests basic functionality of <see cref="FrugalStack{T}" /> which is a
     ///     memory-efficient stack implementation optimized for small collections.
     ///     The frugal stack uses lazy initialization and grows dynamically as needed.
     /// </remarks>
@@ -129,8 +129,8 @@ namespace Alis.Core.Ecs.Test.Collections
         {
             // Arrange
             FrugalStack<Position> stack = new FrugalStack<Position>();
-            Position pos1 = new Position { X = 1, Y = 2 };
-            Position pos2 = new Position { X = 3, Y = 4 };
+            Position pos1 = new Position {X = 1, Y = 2};
+            Position pos2 = new Position {X = 3, Y = 4};
 
             // Act
             stack.Push(pos1);
@@ -164,4 +164,3 @@ namespace Alis.Core.Ecs.Test.Collections
         }
     }
 }
-

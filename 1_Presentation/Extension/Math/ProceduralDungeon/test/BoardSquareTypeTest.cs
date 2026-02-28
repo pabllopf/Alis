@@ -33,7 +33,7 @@ using Xunit;
 namespace Alis.Extension.Math.ProceduralDungeon.Test
 {
     /// <summary>
-    ///     Test class for <see cref="BoardSquareType"/> enum.
+    ///     Test class for <see cref="BoardSquareType" /> enum.
     /// </summary>
     public class BoardSquareTypeTest
     {
@@ -44,7 +44,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         public void Empty_ShouldHaveValue0()
         {
             // Assert
-            Assert.Equal(0, (int)BoardSquareType.Empty);
+            Assert.Equal(0, (int) BoardSquareType.Empty);
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         public void Floor_ShouldHaveValue1()
         {
             // Assert
-            Assert.Equal(1, (int)BoardSquareType.Floor);
+            Assert.Equal(1, (int) BoardSquareType.Floor);
         }
 
         /// <summary>
@@ -114,21 +114,8 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         /// <summary>
         ///     Tests that all enum values are defined.
         /// </summary>
-        [Theory]
-        [InlineData(BoardSquareType.Empty)]
-        [InlineData(BoardSquareType.Floor)]
-        [InlineData(BoardSquareType.WallTop)]
-        [InlineData(BoardSquareType.WallDown)]
-        [InlineData(BoardSquareType.WallLeft)]
-        [InlineData(BoardSquareType.WallRight)]
-        [InlineData(BoardSquareType.CornerLeftUp)]
-        [InlineData(BoardSquareType.CornerLeftDown)]
-        [InlineData(BoardSquareType.CornerRightUp)]
-        [InlineData(BoardSquareType.CornerRightDown)]
-        [InlineData(BoardSquareType.CornerInternalLeftUp)]
-        [InlineData(BoardSquareType.CornerInternalLeftDown)]
-        [InlineData(BoardSquareType.CornerInternalRightUp)]
-        [InlineData(BoardSquareType.CornerInternalRightDown)]
+        [Theory, InlineData(BoardSquareType.Empty), InlineData(BoardSquareType.Floor), InlineData(BoardSquareType.WallTop), InlineData(BoardSquareType.WallDown), InlineData(BoardSquareType.WallLeft), InlineData(BoardSquareType.WallRight), InlineData(BoardSquareType.CornerLeftUp), InlineData(BoardSquareType.CornerLeftDown), InlineData(BoardSquareType.CornerRightUp),
+         InlineData(BoardSquareType.CornerRightDown), InlineData(BoardSquareType.CornerInternalLeftUp), InlineData(BoardSquareType.CornerInternalLeftDown), InlineData(BoardSquareType.CornerInternalRightUp), InlineData(BoardSquareType.CornerInternalRightDown)]
         public void EnumValue_ShouldBeDefined(BoardSquareType type)
         {
             // Assert
@@ -170,11 +157,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         /// <summary>
         ///     Tests that all wall types are distinct from floor and empty.
         /// </summary>
-        [Theory]
-        [InlineData(BoardSquareType.WallTop)]
-        [InlineData(BoardSquareType.WallDown)]
-        [InlineData(BoardSquareType.WallLeft)]
-        [InlineData(BoardSquareType.WallRight)]
+        [Theory, InlineData(BoardSquareType.WallTop), InlineData(BoardSquareType.WallDown), InlineData(BoardSquareType.WallLeft), InlineData(BoardSquareType.WallRight)]
         public void WallTypes_ShouldBeDistinctFromFloorAndEmpty(BoardSquareType wallType)
         {
             // Assert
@@ -185,11 +168,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         /// <summary>
         ///     Tests that all corner types are distinct from floor and empty.
         /// </summary>
-        [Theory]
-        [InlineData(BoardSquareType.CornerLeftUp)]
-        [InlineData(BoardSquareType.CornerLeftDown)]
-        [InlineData(BoardSquareType.CornerRightUp)]
-        [InlineData(BoardSquareType.CornerRightDown)]
+        [Theory, InlineData(BoardSquareType.CornerLeftUp), InlineData(BoardSquareType.CornerLeftDown), InlineData(BoardSquareType.CornerRightUp), InlineData(BoardSquareType.CornerRightDown)]
         public void OuterCornerTypes_ShouldBeDistinctFromFloorAndEmpty(BoardSquareType cornerType)
         {
             // Assert
@@ -200,11 +179,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         /// <summary>
         ///     Tests that all internal corner types are distinct from floor and empty.
         /// </summary>
-        [Theory]
-        [InlineData(BoardSquareType.CornerInternalLeftUp)]
-        [InlineData(BoardSquareType.CornerInternalLeftDown)]
-        [InlineData(BoardSquareType.CornerInternalRightUp)]
-        [InlineData(BoardSquareType.CornerInternalRightDown)]
+        [Theory, InlineData(BoardSquareType.CornerInternalLeftUp), InlineData(BoardSquareType.CornerInternalLeftDown), InlineData(BoardSquareType.CornerInternalRightUp), InlineData(BoardSquareType.CornerInternalRightDown)]
         public void InternalCornerTypes_ShouldBeDistinctFromFloorAndEmpty(BoardSquareType cornerType)
         {
             // Assert
@@ -213,4 +188,3 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         }
     }
 }
-

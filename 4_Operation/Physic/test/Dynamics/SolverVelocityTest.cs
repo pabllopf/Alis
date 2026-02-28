@@ -45,7 +45,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void DefaultConstructor_ShouldInitializeWithDefaultValues()
         {
             SolverVelocity velocity = new SolverVelocity();
-            
+
             Assert.Equal(Vector2F.Zero, velocity.V);
             Assert.Equal(0.0f, velocity.W);
         }
@@ -60,7 +60,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             {
                 V = new Vector2F(10.0f, 15.0f)
             };
-            
+
             Assert.Equal(10.0f, velocity.V.X);
             Assert.Equal(15.0f, velocity.V.Y);
         }
@@ -75,7 +75,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             {
                 W = 5.0f
             };
-            
+
             Assert.Equal(5.0f, velocity.W);
         }
 
@@ -89,7 +89,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             {
                 V = new Vector2F(-5.0f, -10.0f)
             };
-            
+
             Assert.Equal(-5.0f, velocity.V.X);
             Assert.Equal(-10.0f, velocity.V.Y);
         }
@@ -104,7 +104,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             {
                 W = -2.5f
             };
-            
+
             Assert.Equal(-2.5f, velocity.W);
         }
 
@@ -114,11 +114,11 @@ namespace Alis.Core.Physic.Test.Dynamics
         [Fact]
         public void SolverVelocity_ShouldBeValueType()
         {
-            SolverVelocity velocity1 = new SolverVelocity { W = 1.0f };
+            SolverVelocity velocity1 = new SolverVelocity {W = 1.0f};
             SolverVelocity velocity2 = velocity1;
-            
+
             velocity2.W = 2.0f;
-            
+
             Assert.NotEqual(velocity1.W, velocity2.W);
         }
 
@@ -133,7 +133,7 @@ namespace Alis.Core.Physic.Test.Dynamics
                 V = Vector2F.Zero,
                 W = 0.0f
             };
-            
+
             Assert.Equal(Vector2F.Zero, velocity.V);
             Assert.Equal(0.0f, velocity.W);
         }
@@ -149,7 +149,7 @@ namespace Alis.Core.Physic.Test.Dynamics
                 V = new Vector2F(1000.0f, 2000.0f),
                 W = 100.0f
             };
-            
+
             Assert.Equal(1000.0f, velocity.V.X);
             Assert.Equal(2000.0f, velocity.V.Y);
             Assert.Equal(100.0f, velocity.W);
@@ -166,11 +166,10 @@ namespace Alis.Core.Physic.Test.Dynamics
                 V = new Vector2F(float.Epsilon, float.Epsilon),
                 W = float.Epsilon
             };
-            
+
             Assert.Equal(float.Epsilon, velocity.V.X);
             Assert.Equal(float.Epsilon, velocity.V.Y);
             Assert.Equal(float.Epsilon, velocity.W);
         }
     }
 }
-

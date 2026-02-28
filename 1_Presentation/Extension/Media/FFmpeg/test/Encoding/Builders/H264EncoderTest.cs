@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Extension.Media.FFmpeg.Encoding;
 using Alis.Extension.Media.FFmpeg.Encoding.Builders;
 using Xunit;
@@ -379,7 +380,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         public void H264Encoder_ShouldSupportAllPresets()
         {
             // Arrange & Act & Assert
-            foreach (Preset preset in System.Enum.GetValues(typeof(Preset)))
+            foreach (Preset preset in Enum.GetValues(typeof(Preset)))
             {
                 H264Encoder encoder = new H264Encoder();
                 encoder.EncoderPreset = preset;
@@ -395,7 +396,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         public void H264Encoder_ShouldSupportAllTunes()
         {
             // Arrange & Act & Assert
-            foreach (Tune tune in System.Enum.GetValues(typeof(Tune)))
+            foreach (Tune tune in Enum.GetValues(typeof(Tune)))
             {
                 H264Encoder encoder = new H264Encoder();
                 encoder.EncoderTune = tune;
@@ -411,7 +412,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         public void H264Encoder_ShouldSupportAllProfiles()
         {
             // Arrange & Act & Assert
-            foreach (FFmpegProfile profile in System.Enum.GetValues(typeof(FFmpegProfile)))
+            foreach (FFmpegProfile profile in Enum.GetValues(typeof(FFmpegProfile)))
             {
                 H264Encoder encoder = new H264Encoder();
                 encoder.EncoderFFmpegProfile = profile;
@@ -451,4 +452,3 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         }
     }
 }
-

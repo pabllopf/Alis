@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:ErrorCodeEnumTests.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,7 +39,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
     public class ErrorCodeEnumTests
     {
         /// <summary>
-        /// Tests that error code none is defined
+        ///     Tests that error code none is defined
         /// </summary>
         [Fact]
         public void ErrorCode_None_IsDefined()
@@ -51,7 +52,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that error code not initialized is defined
+        ///     Tests that error code not initialized is defined
         /// </summary>
         [Fact]
         public void ErrorCode_NotInitialized_IsDefined()
@@ -64,7 +65,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that error code no current context is defined
+        ///     Tests that error code no current context is defined
         /// </summary>
         [Fact]
         public void ErrorCode_NoCurrentContext_IsDefined()
@@ -77,7 +78,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that error code invalid enum is defined
+        ///     Tests that error code invalid enum is defined
         /// </summary>
         [Fact]
         public void ErrorCode_InvalidEnum_IsDefined()
@@ -90,7 +91,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that error code invalid value is defined
+        ///     Tests that error code invalid value is defined
         /// </summary>
         [Fact]
         public void ErrorCode_InvalidValue_IsDefined()
@@ -103,7 +104,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that error code out of memory is defined
+        ///     Tests that error code out of memory is defined
         /// </summary>
         [Fact]
         public void ErrorCode_OutOfMemory_IsDefined()
@@ -116,7 +117,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that error code api unavailable is defined
+        ///     Tests that error code api unavailable is defined
         /// </summary>
         [Fact]
         public void ErrorCode_ApiUnavailable_IsDefined()
@@ -129,7 +130,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that error code version unavailable is defined
+        ///     Tests that error code version unavailable is defined
         /// </summary>
         [Fact]
         public void ErrorCode_VersionUnavailable_IsDefined()
@@ -142,7 +143,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that error code platform error is defined
+        ///     Tests that error code platform error is defined
         /// </summary>
         [Fact]
         public void ErrorCode_PlatformError_IsDefined()
@@ -155,7 +156,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that error code format unavailable is defined
+        ///     Tests that error code format unavailable is defined
         /// </summary>
         [Fact]
         public void ErrorCode_FormatUnavailable_IsDefined()
@@ -168,7 +169,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that error code no window context is defined
+        ///     Tests that error code no window context is defined
         /// </summary>
         [Fact]
         public void ErrorCode_NoWindowContext_IsDefined()
@@ -181,7 +182,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that error code can be cast to int
+        ///     Tests that error code can be cast to int
         /// </summary>
         [Fact]
         public void ErrorCode_CanBeCastToInt()
@@ -190,24 +191,24 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
             ErrorCode errorCode = ErrorCode.InvalidEnum;
 
             // Act
-            int value = (int)errorCode;
+            int value = (int) errorCode;
 
             // Assert
             Assert.True(value != 0);
         }
 
         /// <summary>
-        /// Tests that error code none has zero value
+        ///     Tests that error code none has zero value
         /// </summary>
         [Fact]
         public void ErrorCode_None_HasZeroValue()
         {
             // Assert
-            Assert.Equal(0, (int)ErrorCode.None);
+            Assert.Equal(0, (int) ErrorCode.None);
         }
 
         /// <summary>
-        /// Tests that error code all error codes are different
+        ///     Tests that error code all error codes are different
         /// </summary>
         [Fact]
         public void ErrorCode_AllErrorCodes_AreDifferent()
@@ -219,4 +220,3 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
     }
 }
-

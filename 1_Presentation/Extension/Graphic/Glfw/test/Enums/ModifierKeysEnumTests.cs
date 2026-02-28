@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:ModifierKeysEnumTests.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,7 +39,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
     public class ModifierKeysEnumTests
     {
         /// <summary>
-        /// Tests that modifier keys none is defined
+        ///     Tests that modifier keys none is defined
         /// </summary>
         [Fact]
         public void ModifierKeys_None_IsDefined()
@@ -51,7 +52,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that modifier keys shift is defined
+        ///     Tests that modifier keys shift is defined
         /// </summary>
         [Fact]
         public void ModifierKeys_Shift_IsDefined()
@@ -64,7 +65,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that modifier keys control is defined
+        ///     Tests that modifier keys control is defined
         /// </summary>
         [Fact]
         public void ModifierKeys_Control_IsDefined()
@@ -77,7 +78,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that modifier keys alt is defined
+        ///     Tests that modifier keys alt is defined
         /// </summary>
         [Fact]
         public void ModifierKeys_Alt_IsDefined()
@@ -90,7 +91,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that modifier keys super is defined
+        ///     Tests that modifier keys super is defined
         /// </summary>
         [Fact]
         public void ModifierKeys_Super_IsDefined()
@@ -103,7 +104,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that modifier keys can be combined with bitwise or
+        ///     Tests that modifier keys can be combined with bitwise or
         /// </summary>
         [Fact]
         public void ModifierKeys_CanBeCombinedWithBitwiseOr()
@@ -118,7 +119,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that modifier keys can be checked with bitwise and
+        ///     Tests that modifier keys can be checked with bitwise and
         /// </summary>
         [Fact]
         public void ModifierKeys_CanBeCheckedWithBitwiseAnd()
@@ -136,17 +137,17 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that modifier keys none has zero value
+        ///     Tests that modifier keys none has zero value
         /// </summary>
         [Fact]
         public void ModifierKeys_None_HasZeroValue()
         {
             // Assert
-            Assert.Equal(0, (int)ModifierKeys.None);
+            Assert.Equal(0, (int) ModifierKeys.None);
         }
 
         /// <summary>
-        /// Tests that modifier keys can be cast to int
+        ///     Tests that modifier keys can be cast to int
         /// </summary>
         [Fact]
         public void ModifierKeys_CanBeCastToInt()
@@ -155,14 +156,14 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
             ModifierKeys modifier = ModifierKeys.Shift;
 
             // Act
-            int value = (int)modifier;
+            int value = (int) modifier;
 
             // Assert
             Assert.True(value > 0);
         }
 
         /// <summary>
-        /// Tests that modifier keys all modifiers are different
+        ///     Tests that modifier keys all modifiers are different
         /// </summary>
         [Fact]
         public void ModifierKeys_AllModifiers_AreDifferent()
@@ -174,4 +175,3 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
     }
 }
-

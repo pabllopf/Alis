@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:MouseButtonEnumTests.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,7 +39,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
     public class MouseButtonEnumTests
     {
         /// <summary>
-        /// Tests that mouse button left is defined
+        ///     Tests that mouse button left is defined
         /// </summary>
         [Fact]
         public void MouseButton_Left_IsDefined()
@@ -51,7 +52,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that mouse button right is defined
+        ///     Tests that mouse button right is defined
         /// </summary>
         [Fact]
         public void MouseButton_Right_IsDefined()
@@ -64,7 +65,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that mouse button middle is defined
+        ///     Tests that mouse button middle is defined
         /// </summary>
         [Fact]
         public void MouseButton_Middle_IsDefined()
@@ -77,7 +78,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that mouse button can be cast to int
+        ///     Tests that mouse button can be cast to int
         /// </summary>
         [Fact]
         public void MouseButton_CanBeCastToInt()
@@ -86,30 +87,30 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
             MouseButton button = MouseButton.Left;
 
             // Act
-            int value = (int)button;
+            int value = (int) button;
 
             // Assert
             Assert.True(value >= 0);
         }
 
         /// <summary>
-        /// Tests that mouse button can be cast from int
+        ///     Tests that mouse button can be cast from int
         /// </summary>
         [Fact]
         public void MouseButton_CanBeCastFromInt()
         {
             // Arrange
-            int value = (int)MouseButton.Left;
+            int value = (int) MouseButton.Left;
 
             // Act
-            MouseButton button = (MouseButton)value;
+            MouseButton button = (MouseButton) value;
 
             // Assert
             Assert.Equal(MouseButton.Left, button);
         }
 
         /// <summary>
-        /// Tests that mouse button all buttons are different
+        ///     Tests that mouse button all buttons are different
         /// </summary>
         [Fact]
         public void MouseButton_AllButtons_AreDifferent()
@@ -121,4 +122,3 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
     }
 }
-

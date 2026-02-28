@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IAction7Test.cs
+//  File:IAction7Test.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,25 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
     /// </summary>
     public class IAction7Test
     {
-        /// <summary>
-        ///     Helper implementation for testing seven parameter action.
-        /// </summary>
-        private class SevenParamAction : IAction<int, int, int, int, int, int, int>
-        {
-            public int[] Values { get; } = new int[7];
-
-            public void Run(ref int arg1, ref int arg2, ref int arg3, ref int arg4, ref int arg5, ref int arg6, ref int arg7)
-            {
-                Values[0] = arg1;
-                Values[1] = arg2;
-                Values[2] = arg3;
-                Values[3] = arg4;
-                Values[4] = arg5;
-                Values[5] = arg6;
-                Values[6] = arg7;
-            }
-        }
-
         /// <summary>
         ///     Tests that IAction with seven parameters can be implemented.
         /// </summary>
@@ -97,6 +78,24 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
                 Assert.Equal(-(i + 1), action.Values[i]);
             }
         }
+
+        /// <summary>
+        ///     Helper implementation for testing seven parameter action.
+        /// </summary>
+        private class SevenParamAction : IAction<int, int, int, int, int, int, int>
+        {
+            public int[] Values { get; } = new int[7];
+
+            public void Run(ref int arg1, ref int arg2, ref int arg3, ref int arg4, ref int arg5, ref int arg6, ref int arg7)
+            {
+                Values[0] = arg1;
+                Values[1] = arg2;
+                Values[2] = arg3;
+                Values[3] = arg4;
+                Values[4] = arg5;
+                Values[5] = arg6;
+                Values[6] = arg7;
+            }
+        }
     }
 }
-

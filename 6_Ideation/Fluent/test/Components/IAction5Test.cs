@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IAction5Test.cs
+//  File:IAction5Test.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,23 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
     /// </summary>
     public class IAction5Test
     {
-        /// <summary>
-        ///     Helper implementation for testing five parameter action.
-        /// </summary>
-        private class FiveParamAction : IAction<int, int, int, int, int>
-        {
-            public int[] Values { get; } = new int[5];
-
-            public void Run(ref int arg1, ref int arg2, ref int arg3, ref int arg4, ref int arg5)
-            {
-                Values[0] = arg1;
-                Values[1] = arg2;
-                Values[2] = arg3;
-                Values[3] = arg4;
-                Values[4] = arg5;
-            }
-        }
-
         /// <summary>
         ///     Tests that IAction with five parameters can be implemented.
         /// </summary>
@@ -94,6 +77,22 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
             action.Run(ref v1, ref v2, ref v3, ref v4, ref v5);
             Assert.All(action.Values, val => Assert.Equal(42, val));
         }
+
+        /// <summary>
+        ///     Helper implementation for testing five parameter action.
+        /// </summary>
+        private class FiveParamAction : IAction<int, int, int, int, int>
+        {
+            public int[] Values { get; } = new int[5];
+
+            public void Run(ref int arg1, ref int arg2, ref int arg3, ref int arg4, ref int arg5)
+            {
+                Values[0] = arg1;
+                Values[1] = arg2;
+                Values[2] = arg3;
+                Values[3] = arg4;
+                Values[4] = arg5;
+            }
+        }
     }
 }
-

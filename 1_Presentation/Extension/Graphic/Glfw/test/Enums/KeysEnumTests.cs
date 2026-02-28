@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:KeysEnumTests.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,27 +39,27 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
     public class KeysEnumTests
     {
         /// <summary>
-        /// Tests that keys unknown has correct value
+        ///     Tests that keys unknown has correct value
         /// </summary>
         [Fact]
         public void Keys_Unknown_HasCorrectValue()
         {
             // Assert
-            Assert.Equal(-1, (int)Keys.Unknown);
+            Assert.Equal(-1, (int) Keys.Unknown);
         }
 
         /// <summary>
-        /// Tests that keys space has correct value
+        ///     Tests that keys space has correct value
         /// </summary>
         [Fact]
         public void Keys_Space_HasCorrectValue()
         {
             // Assert
-            Assert.Equal(32, (int)Keys.Space);
+            Assert.Equal(32, (int) Keys.Space);
         }
 
         /// <summary>
-        /// Tests that keys a is defined
+        ///     Tests that keys a is defined
         /// </summary>
         [Fact]
         public void Keys_A_IsDefined()
@@ -71,7 +72,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that keys escape is defined
+        ///     Tests that keys escape is defined
         /// </summary>
         [Fact]
         public void Keys_Escape_IsDefined()
@@ -84,7 +85,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that keys enter is defined
+        ///     Tests that keys enter is defined
         /// </summary>
         [Fact]
         public void Keys_Enter_IsDefined()
@@ -97,7 +98,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that keys can be cast to int
+        ///     Tests that keys can be cast to int
         /// </summary>
         [Fact]
         public void Keys_CanBeCastToInt()
@@ -106,14 +107,14 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
             Keys key = Keys.A;
 
             // Act
-            int value = (int)key;
+            int value = (int) key;
 
             // Assert
             Assert.True(value > 0);
         }
 
         /// <summary>
-        /// Tests that keys can be cast from int
+        ///     Tests that keys can be cast from int
         /// </summary>
         [Fact]
         public void Keys_CanBeCastFromInt()
@@ -122,14 +123,14 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
             int value = 32;
 
             // Act
-            Keys key = (Keys)value;
+            Keys key = (Keys) value;
 
             // Assert
             Assert.Equal(Keys.Space, key);
         }
 
         /// <summary>
-        /// Tests that keys all alpha keys are defined
+        ///     Tests that keys all alpha keys are defined
         /// </summary>
         [Fact]
         public void Keys_AllAlphaKeys_AreDefined()
@@ -140,7 +141,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that keys all numeric keys are defined
+        ///     Tests that keys all numeric keys are defined
         /// </summary>
         [Fact]
         public void Keys_AllNumericKeys_AreDefined()
@@ -151,7 +152,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that keys function keys are defined
+        ///     Tests that keys function keys are defined
         /// </summary>
         [Fact]
         public void Keys_FunctionKeys_AreDefined()
@@ -162,4 +163,3 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
     }
 }
-

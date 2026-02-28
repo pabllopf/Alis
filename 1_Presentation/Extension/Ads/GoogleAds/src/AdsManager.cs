@@ -48,14 +48,19 @@ namespace Alis.Extension.Ads.GoogleAds
         private AdConfiguration _configuration;
 
         /// <summary>
-        ///     Flag indicating if the manager is initialized
-        /// </summary>
-        private bool _isInitialized;
-
-        /// <summary>
         ///     Flag indicating if banner ad is loaded
         /// </summary>
         private bool _isBannerAdLoaded;
+
+        /// <summary>
+        ///     Flag indicating if banner ad is visible
+        /// </summary>
+        internal bool _isBannerAdVisible;
+
+        /// <summary>
+        ///     Flag indicating if the manager is initialized
+        /// </summary>
+        private bool _isInitialized;
 
         /// <summary>
         ///     Flag indicating if interstitial ad is loaded
@@ -66,11 +71,6 @@ namespace Alis.Extension.Ads.GoogleAds
         ///     Flag indicating if rewarded video ad is loaded
         /// </summary>
         private bool _isRewardedVideoAdLoaded;
-
-        /// <summary>
-        ///     Flag indicating if banner ad is visible
-        /// </summary>
-        internal bool _isBannerAdVisible;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="AdsManager" /> class
@@ -287,6 +287,18 @@ namespace Alis.Extension.Ads.GoogleAds
             _isRewardedVideoAdLoaded = false;
         }
 
+        public void Dispose()
+        {
+            // Clean up any resources if necessary
+            Logger.Info("AdsManager disposed");
+            if (OnAdClosed != null)
+            {
+                OnAdClosed.Invoke("all");
+            }
+
+            GC.SuppressFinalize(this);
+        }
+
         /// <summary>
         ///     Initialize the ads manager
         /// </summary>
@@ -419,18 +431,6 @@ namespace Alis.Extension.Ads.GoogleAds
                 Logger.Error($"Failed to load rewarded video ad: {ex.Message}");
                 OnRewardedVideoAdFailedToLoad?.Invoke(adUnitId);
             }
-        }
-
-        public void Dispose()
-        {
-                // Clean up any resources if necessary
-                Logger.Info("AdsManager disposed");
-                if (OnAdClosed != null)
-                {
-                    OnAdClosed.Invoke("all");
-                }
-
-                GC.SuppressFinalize(this);
         }
     }
 }

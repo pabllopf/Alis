@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:CursorTests.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,7 +39,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
     public class CursorTests
     {
         /// <summary>
-        /// Tests that cursor none is default value
+        ///     Tests that cursor none is default value
         /// </summary>
         [Fact]
         public void Cursor_None_IsDefaultValue()
@@ -51,7 +52,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
         }
 
         /// <summary>
-        /// Tests that cursor equals with same cursor returns true
+        ///     Tests that cursor equals with same cursor returns true
         /// </summary>
         [Fact]
         public void Cursor_Equals_WithSameCursor_ReturnsTrue()
@@ -68,7 +69,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
         }
 
         /// <summary>
-        /// Tests that cursor equals with object returns correct result
+        ///     Tests that cursor equals with object returns correct result
         /// </summary>
         [Fact]
         public void Cursor_Equals_WithObject_ReturnsCorrectResult()
@@ -85,7 +86,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
         }
 
         /// <summary>
-        /// Tests that cursor equals with non cursor object returns false
+        ///     Tests that cursor equals with non cursor object returns false
         /// </summary>
         [Fact]
         public void Cursor_Equals_WithNonCursorObject_ReturnsFalse()
@@ -102,7 +103,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
         }
 
         /// <summary>
-        /// Tests that cursor get hash code returns same for equal cursors
+        ///     Tests that cursor get hash code returns same for equal cursors
         /// </summary>
         [Fact]
         public void Cursor_GetHashCode_ReturnsSameForEqualCursors()
@@ -120,7 +121,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
         }
 
         /// <summary>
-        /// Tests that cursor equality operator with same cursors returns true
+        ///     Tests that cursor equality operator with same cursors returns true
         /// </summary>
         [Fact]
         public void Cursor_EqualityOperator_WithSameCursors_ReturnsTrue()
@@ -137,7 +138,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
         }
 
         /// <summary>
-        /// Tests that cursor inequality operator with same cursors returns false
+        ///     Tests that cursor inequality operator with same cursors returns false
         /// </summary>
         [Fact]
         public void Cursor_InequalityOperator_WithSameCursors_ReturnsFalse()
@@ -154,7 +155,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
         }
 
         /// <summary>
-        /// Tests that cursor equals with i equatable interface works
+        ///     Tests that cursor equals with i equatable interface works
         /// </summary>
         [Fact]
         public void Cursor_Equals_WithIEquatableInterface_Works()
@@ -171,4 +172,3 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
         }
     }
 }
-

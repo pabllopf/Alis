@@ -27,10 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.Marshalling;
-using Alis.Core.Ecs.Test.Models;
-using Xunit;
-
 namespace Alis.Core.Ecs.Test.Marshalling
 {
     /// <summary>
@@ -43,7 +39,5 @@ namespace Alis.Core.Ecs.Test.Marshalling
     /// </remarks>
     public class SceneMarshalAdvancedTest
     {
-        
     }
 }
-

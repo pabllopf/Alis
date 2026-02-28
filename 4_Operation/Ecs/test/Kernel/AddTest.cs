@@ -36,7 +36,7 @@ namespace Alis.Core.Ecs.Test.Kernel
     ///     The add component test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="GameObject.NeighborCache{T}.Add"/> record struct which represents
+    ///     Tests the <see cref="GameObject.NeighborCache{T}.Add" /> record struct which represents
     ///     a command to add a component to an entity.
     /// </remarks>
     public class AddTest
@@ -81,7 +81,7 @@ namespace Alis.Core.Ecs.Test.Kernel
 
             // Assert
             Assert.Equal(42, addComp.Entity.ID);
-            Assert.Equal((ushort)5, addComp.Entity.Version);
+            Assert.Equal((ushort) 5, addComp.Entity.Version);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace Alis.Core.Ecs.Test.Kernel
 
             // Assert
             Assert.Equal(10, addComp.ComponentHandle.Index);
-            Assert.Equal((ushort)2, addComp.ComponentHandle.ComponentId.RawIndex);
+            Assert.Equal((ushort) 2, addComp.ComponentHandle.ComponentId.RawIndex);
         }
 
         /// <summary>
@@ -291,4 +291,3 @@ namespace Alis.Core.Ecs.Test.Kernel
         }
     }
 }
-

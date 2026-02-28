@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IOnPressKeyTest.cs
+//  File:IOnPressKeyTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Fluent.Components;
 using Xunit;
 
@@ -38,28 +39,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
     /// </summary>
     public class IOnPressKeyTest
     {
-        
-
-        /// <summary>
-        ///     Helper implementation for testing IOnPressKey.
-        /// </summary>
-        private class PressKeyHandler : IOnPressKey
-        {
-            public int PressCount { get; private set; }
-            public KeyEventInfo LastKeyEvent { get; private set; }
-
-            public void OnPressKey(IGameObject self, KeyEventInfo keyInfo)
-            {
-                PressCount++;
-                LastKeyEvent = keyInfo;
-            }
-
-            public void OnPressKey(KeyEventInfo info)
-            {
-                throw new System.NotImplementedException();
-            }
-        }
-
         /// <summary>
         ///     Tests that IOnPressKey can be implemented.
         /// </summary>
@@ -79,7 +58,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         {
             PressKeyHandler handler = new PressKeyHandler();
             MockGameObject self = new MockGameObject();
-            KeyEventInfo keyInfo = new KeyEventInfo(System.ConsoleKey.A, System.DateTime.UtcNow, System.TimeSpan.Zero);
+            KeyEventInfo keyInfo = new KeyEventInfo(ConsoleKey.A, DateTime.UtcNow, TimeSpan.Zero);
             handler.OnPressKey(self, keyInfo);
             Assert.Equal(1, handler.PressCount);
         }
@@ -92,9 +71,9 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         {
             PressKeyHandler handler = new PressKeyHandler();
             MockGameObject self = new MockGameObject();
-            KeyEventInfo keyInfo = new KeyEventInfo(System.ConsoleKey.Enter, System.DateTime.UtcNow, System.TimeSpan.FromMilliseconds(100));
+            KeyEventInfo keyInfo = new KeyEventInfo(ConsoleKey.Enter, DateTime.UtcNow, TimeSpan.FromMilliseconds(100));
             handler.OnPressKey(self, keyInfo);
-            Assert.Equal(System.ConsoleKey.Enter, handler.LastKeyEvent.Key);
+            Assert.Equal(ConsoleKey.Enter, handler.LastKeyEvent.Key);
         }
 
         /// <summary>
@@ -105,13 +84,33 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         {
             PressKeyHandler handler = new PressKeyHandler();
             MockGameObject self = new MockGameObject();
-            KeyEventInfo keyInfo1 = new KeyEventInfo(System.ConsoleKey.A, System.DateTime.UtcNow, System.TimeSpan.Zero);
-            KeyEventInfo keyInfo2 = new KeyEventInfo(System.ConsoleKey.B, System.DateTime.UtcNow, System.TimeSpan.Zero);
+            KeyEventInfo keyInfo1 = new KeyEventInfo(ConsoleKey.A, DateTime.UtcNow, TimeSpan.Zero);
+            KeyEventInfo keyInfo2 = new KeyEventInfo(ConsoleKey.B, DateTime.UtcNow, TimeSpan.Zero);
             handler.OnPressKey(self, keyInfo1);
             handler.OnPressKey(self, keyInfo2);
             Assert.Equal(2, handler.PressCount);
-            Assert.Equal(System.ConsoleKey.B, handler.LastKeyEvent.Key);
+            Assert.Equal(ConsoleKey.B, handler.LastKeyEvent.Key);
+        }
+
+
+        /// <summary>
+        ///     Helper implementation for testing IOnPressKey.
+        /// </summary>
+        private class PressKeyHandler : IOnPressKey
+        {
+            public int PressCount { get; private set; }
+            public KeyEventInfo LastKeyEvent { get; private set; }
+
+            public void OnPressKey(KeyEventInfo info)
+            {
+                throw new NotImplementedException();
+            }
+
+            public void OnPressKey(IGameObject self, KeyEventInfo keyInfo)
+            {
+                PressCount++;
+                LastKeyEvent = keyInfo;
+            }
         }
     }
 }
-

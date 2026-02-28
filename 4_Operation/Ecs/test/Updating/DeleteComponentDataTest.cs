@@ -36,7 +36,7 @@ namespace Alis.Core.Ecs.Test.Updating
     ///     The delete component data test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="DeleteComponentData"/> record struct which represents
+    ///     Tests the <see cref="DeleteComponentData" /> record struct which represents
     ///     metadata about component deletion operations (source and destination indices).
     /// </remarks>
     public class DeleteComponentDataTest
@@ -168,4 +168,3 @@ namespace Alis.Core.Ecs.Test.Updating
         }
     }
 }
-

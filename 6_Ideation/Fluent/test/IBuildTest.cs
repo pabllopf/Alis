@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IBuildTest.cs
+//  File:IBuildTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -37,14 +37,6 @@ namespace Alis.Core.Aspect.Fluent.Test
     /// </summary>
     public class IBuildTest
     {
-        /// <summary>
-        ///     Helper builder class for testing.
-        /// </summary>
-        private class TestBuilder : IBuild<string>
-        {
-            public string Build() => "built";
-        }
-
         /// <summary>
         ///     Tests that IBuild can be implemented with different return types.
         /// </summary>
@@ -90,14 +82,6 @@ namespace Alis.Core.Aspect.Fluent.Test
         }
 
         /// <summary>
-        ///     Helper integer builder for testing.
-        /// </summary>
-        private class IntBuilder : IBuild<int>
-        {
-            public int Build() => 42;
-        }
-
-        /// <summary>
         ///     Tests IBuild with object return type.
         /// </summary>
         [Fact]
@@ -110,6 +94,22 @@ namespace Alis.Core.Aspect.Fluent.Test
         }
 
         /// <summary>
+        ///     Helper builder class for testing.
+        /// </summary>
+        private class TestBuilder : IBuild<string>
+        {
+            public string Build() => "built";
+        }
+
+        /// <summary>
+        ///     Helper integer builder for testing.
+        /// </summary>
+        private class IntBuilder : IBuild<int>
+        {
+            public int Build() => 42;
+        }
+
+        /// <summary>
         ///     Helper object builder for testing.
         /// </summary>
         private class ObjectBuilder : IBuild<object>
@@ -118,4 +118,3 @@ namespace Alis.Core.Aspect.Fluent.Test
         }
     }
 }
-

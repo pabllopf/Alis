@@ -39,7 +39,7 @@ namespace Alis.Core.Ecs.Test.Kernel
     ///     The tag id test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="TagId"/> struct which represents a lightweight
+    ///     Tests the <see cref="TagId" /> struct which represents a lightweight
     ///     tag type identifier used for fast tag-based queries.
     /// </remarks>
     public class TagIdTest
@@ -184,7 +184,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         public void TagId_CanBeUsedInDictionary()
         {
             // Arrange
-            Dictionary<TagId, string> dict = new System.Collections.Generic.Dictionary<TagId, string>();
+            Dictionary<TagId, string> dict = new Dictionary<TagId, string>();
             TagId playerId = Tag<PlayerTag>.Id;
             TagId enemyId = Tag<EnemyTag>.Id;
 
@@ -247,7 +247,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         {
             // Act
             TagId id = Tag<Disable>.Id;
-            
+
             Assert.Equal(typeof(Disable), id.Type);
         }
 
@@ -293,4 +293,3 @@ namespace Alis.Core.Ecs.Test.Kernel
         }
     }
 }
-

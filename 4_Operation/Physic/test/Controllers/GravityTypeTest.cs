@@ -43,7 +43,7 @@ namespace Alis.Core.Physic.Test.Controllers
         [Fact]
         public void Linear_ShouldHaveValueZero()
         {
-            Assert.Equal(0, (int)GravityType.Linear);
+            Assert.Equal(0, (int) GravityType.Linear);
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Alis.Core.Physic.Test.Controllers
         [Fact]
         public void DistanceSquared_ShouldHaveValueOne()
         {
-            Assert.Equal(1, (int)GravityType.DistanceSquared);
+            Assert.Equal(1, (int) GravityType.DistanceSquared);
         }
 
         /// <summary>
@@ -70,9 +70,8 @@ namespace Alis.Core.Physic.Test.Controllers
         [Fact]
         public void Values_ShouldBeSequential()
         {
-            Assert.Equal(0, (int)GravityType.Linear);
-            Assert.Equal(1, (int)GravityType.DistanceSquared);
+            Assert.Equal(0, (int) GravityType.Linear);
+            Assert.Equal(1, (int) GravityType.DistanceSquared);
         }
     }
 }
-

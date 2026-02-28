@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IPhysicTest.cs
+//  File:IPhysicTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,28 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
     /// </summary>
     public class IPhysicTest
     {
-        /// <summary>
-        ///     Helper builder class for physics.
-        /// </summary>
-        private class PhysicBuilder
-        {
-            public string PhysicsEngine { get; set; }
-        }
-
-        /// <summary>
-        ///     Helper implementation of IPhysic.
-        /// </summary>
-        private class PhysicBuilderImpl : IPhysic<PhysicBuilder, string>
-        {
-            private readonly PhysicBuilder _builder = new PhysicBuilder();
-
-            public PhysicBuilder Physic(string value)
-            {
-                _builder.PhysicsEngine = value;
-                return _builder;
-            }
-        }
-
         /// <summary>
         ///     Tests that IPhysic can be implemented.
         /// </summary>
@@ -97,17 +75,34 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Tests Physic with various engines.
         /// </summary>
-        [Theory]
-        [InlineData("Box2D")]
-        [InlineData("Bullet")]
-        [InlineData("PhysX")]
-        [InlineData("Havok")]
+        [Theory, InlineData("Box2D"), InlineData("Bullet"), InlineData("PhysX"), InlineData("Havok")]
         public void Physic_WithVariousEngines(string engine)
         {
             PhysicBuilderImpl builder = new PhysicBuilderImpl();
             PhysicBuilder result = builder.Physic(engine);
             Assert.Equal(engine, result.PhysicsEngine);
         }
+
+        /// <summary>
+        ///     Helper builder class for physics.
+        /// </summary>
+        private class PhysicBuilder
+        {
+            public string PhysicsEngine { get; set; }
+        }
+
+        /// <summary>
+        ///     Helper implementation of IPhysic.
+        /// </summary>
+        private class PhysicBuilderImpl : IPhysic<PhysicBuilder, string>
+        {
+            private readonly PhysicBuilder _builder = new PhysicBuilder();
+
+            public PhysicBuilder Physic(string value)
+            {
+                _builder.PhysicsEngine = value;
+                return _builder;
+            }
+        }
     }
 }
-

@@ -53,8 +53,8 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 2 });
-            scene.Create(new Velocity { VX = 3, VY = 4 }); // No Position
+            scene.Create(new Position {X = 1, Y = 2});
+            scene.Create(new Velocity {VX = 3, VY = 4}); // No Position
 
             // Act
             Query query = scene.Query<With<Position>>();
@@ -79,8 +79,8 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 2 });
-            scene.Create(new Position { X = 3, Y = 4 }, new Velocity { VX = 5, VY = 6 });
+            scene.Create(new Position {X = 1, Y = 2});
+            scene.Create(new Position {X = 3, Y = 4}, new Velocity {VX = 5, VY = 6});
 
             // Act
             Query query = scene.Query<With<Position>, Not<Velocity>>();
@@ -105,9 +105,9 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(new Position { X = 1, Y = 2 });
-            GameObject entity2 = scene.Create(new Position { X = 3, Y = 4 });
-            
+            GameObject entity1 = scene.Create(new Position {X = 1, Y = 2});
+            GameObject entity2 = scene.Create(new Position {X = 3, Y = 4});
+
             entity1.Tag<RuleTestPlayerTag>();
 
             // Act
@@ -133,9 +133,9 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(new Position { X = 1, Y = 2 });
-            GameObject entity2 = scene.Create(new Position { X = 3, Y = 4 });
-            
+            GameObject entity1 = scene.Create(new Position {X = 1, Y = 2});
+            GameObject entity2 = scene.Create(new Position {X = 3, Y = 4});
+
             entity1.Tag<RuleTestPlayerTag>();
 
             // Act
@@ -161,9 +161,9 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 2 });
-            scene.Create(new Position { X = 3, Y = 4 }, new Velocity { VX = 5, VY = 6 });
-            scene.Create(new Velocity { VX = 7, VY = 8 });
+            scene.Create(new Position {X = 1, Y = 2});
+            scene.Create(new Position {X = 3, Y = 4}, new Velocity {VX = 5, VY = 6});
+            scene.Create(new Velocity {VX = 7, VY = 8});
 
             // Act
             Query query = scene.Query<With<Position>, With<Velocity>>();
@@ -188,9 +188,9 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 2 });
-            scene.Create(new Position { X = 3, Y = 4 }, new Velocity { VX = 5, VY = 6 });
-            scene.Create(new Position { X = 7, Y = 8 }, new Health { Value = 100 });
+            scene.Create(new Position {X = 1, Y = 2});
+            scene.Create(new Position {X = 3, Y = 4}, new Velocity {VX = 5, VY = 6});
+            scene.Create(new Position {X = 7, Y = 8}, new Health {Value = 100});
 
             // Act
             Query query = scene.Query<With<Position>, Not<Velocity>>();
@@ -215,9 +215,9 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(new Position { X = 1, Y = 2 });
-            GameObject entity2 = scene.Create(new Position { X = 3, Y = 4 });
-            
+            GameObject entity1 = scene.Create(new Position {X = 1, Y = 2});
+            GameObject entity2 = scene.Create(new Position {X = 3, Y = 4});
+
             entity2.Tag<Disable>();
 
             // Act
@@ -243,9 +243,9 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(new Position { X = 1, Y = 2 });
-            GameObject entity2 = scene.Create(new Position { X = 3, Y = 4 });
-            
+            GameObject entity1 = scene.Create(new Position {X = 1, Y = 2});
+            GameObject entity2 = scene.Create(new Position {X = 3, Y = 4});
+
             entity2.Tag<Disable>();
 
             // Act
@@ -272,19 +272,19 @@ namespace Alis.Core.Ecs.Test.Systems
             // Arrange
             using Scene scene = new Scene();
             GameObject entity1 = scene.Create(
-                new Position { X = 1, Y = 2 },
-                new Velocity { VX = 3, VY = 4 }
+                new Position {X = 1, Y = 2},
+                new Velocity {VX = 3, VY = 4}
             );
             GameObject entity2 = scene.Create(
-                new Position { X = 5, Y = 6 },
-                new Health { Value = 100 }
+                new Position {X = 5, Y = 6},
+                new Health {Value = 100}
             );
             GameObject entity3 = scene.Create(
-                new Position { X = 7, Y = 8 },
-                new Velocity { VX = 9, VY = 10 },
-                new Health { Value = 150 }
+                new Position {X = 7, Y = 8},
+                new Velocity {VX = 9, VY = 10},
+                new Health {Value = 150}
             );
-            
+
             entity1.Tag<RuleTestPlayerTag>();
             entity3.Tag<RuleTestEnemyTag>();
 
@@ -313,7 +313,7 @@ namespace Alis.Core.Ecs.Test.Systems
             using Scene scene = new Scene();
             for (int i = 0; i < 10; i++)
             {
-                GameObject entity = scene.Create(new Position { X = i, Y = i });
+                GameObject entity = scene.Create(new Position {X = i, Y = i});
                 if (i % 2 == 0)
                 {
                     entity.Tag<RuleTestPlayerTag>();
@@ -350,7 +350,7 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 1, Y = 2 });
+            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
             // Act
             Query query = scene.Query<With<Position>, With<Velocity>>();
@@ -360,7 +360,7 @@ namespace Alis.Core.Ecs.Test.Systems
                 countBefore++;
             }
 
-            entity.Add(new Velocity { VX = 3, VY = 4 });
+            entity.Add(new Velocity {VX = 3, VY = 4});
 
             int countAfter = 0;
             foreach (RefTuple<Position, Velocity> _ in query.Enumerate<Position, Velocity>())
@@ -384,7 +384,7 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Velocity { VX = 1, VY = 2 }); // No Position
+            scene.Create(new Velocity {VX = 1, VY = 2}); // No Position
 
             // Act
             Query query = scene.Query<With<Position>>();
@@ -399,4 +399,3 @@ namespace Alis.Core.Ecs.Test.Systems
         }
     }
 }
-

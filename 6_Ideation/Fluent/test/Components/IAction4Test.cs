@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IAction4Test.cs
+//  File:IAction4Test.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,25 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
     /// </summary>
     public class IAction4Test
     {
-        /// <summary>
-        ///     Helper implementation for testing four parameter action.
-        /// </summary>
-        private class FourParamAction : IAction<int, int, int, int>
-        {
-            public int Arg1 { get; private set; }
-            public int Arg2 { get; private set; }
-            public int Arg3 { get; private set; }
-            public int Arg4 { get; private set; }
-
-            public void Run(ref int arg1, ref int arg2, ref int arg3, ref int arg4)
-            {
-                Arg1 = arg1;
-                Arg2 = arg2;
-                Arg3 = arg3;
-                Arg4 = arg4;
-            }
-        }
-
         /// <summary>
         ///     Tests that IAction with four parameters can be implemented.
         /// </summary>
@@ -89,10 +70,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// <summary>
         ///     Tests Run method parameter order preservation.
         /// </summary>
-        [Theory]
-        [InlineData(1, 2, 3, 4)]
-        [InlineData(100, 200, 300, 400)]
-        [InlineData(-1, -2, -3, -4)]
+        [Theory, InlineData(1, 2, 3, 4), InlineData(100, 200, 300, 400), InlineData(-1, -2, -3, -4)]
         public void Run_PreservesParameterOrder(int v1, int v2, int v3, int v4)
         {
             FourParamAction action = new FourParamAction();
@@ -103,6 +81,24 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
             Assert.Equal(v3, action.Arg3);
             Assert.Equal(v4, action.Arg4);
         }
+
+        /// <summary>
+        ///     Helper implementation for testing four parameter action.
+        /// </summary>
+        private class FourParamAction : IAction<int, int, int, int>
+        {
+            public int Arg1 { get; private set; }
+            public int Arg2 { get; private set; }
+            public int Arg3 { get; private set; }
+            public int Arg4 { get; private set; }
+
+            public void Run(ref int arg1, ref int arg2, ref int arg3, ref int arg4)
+            {
+                Arg1 = arg1;
+                Arg2 = arg2;
+                Arg3 = arg3;
+                Arg4 = arg4;
+            }
+        }
     }
 }
-

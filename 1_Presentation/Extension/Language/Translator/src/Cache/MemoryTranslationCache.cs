@@ -167,4 +167,3 @@ namespace Alis.Extension.Language.Translator.Cache
         }
     }
 }
-

@@ -94,4 +94,3 @@ namespace Alis.Extension.Math.ProceduralDungeon.Models
         public int Height => Board.GetLength(1);
     }
 }
-

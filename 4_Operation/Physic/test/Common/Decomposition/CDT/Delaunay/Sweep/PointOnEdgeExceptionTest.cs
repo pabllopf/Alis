@@ -45,9 +45,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         public void Constructor_ShouldInitializeWithMessage()
         {
             string message = "Point is on edge";
-            
+
             PointOnEdgeException exception = new PointOnEdgeException(message);
-            
+
             Assert.Equal(message, exception.Message);
         }
 
@@ -58,7 +58,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         public void PointOnEdgeException_ShouldInheritFromNotImplementedException()
         {
             PointOnEdgeException exception = new PointOnEdgeException("test");
-            
+
             Assert.IsAssignableFrom<NotImplementedException>(exception);
         }
 
@@ -69,7 +69,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         public void Exception_ShouldBeCatchableAsNotImplementedException()
         {
             bool caught = false;
-            
+
             try
             {
                 throw new PointOnEdgeException("Test");
@@ -78,7 +78,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             {
                 caught = true;
             }
-            
+
             Assert.True(caught);
         }
 
@@ -89,7 +89,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         public void Exception_ShouldPreserveMessage()
         {
             string expectedMessage = "Custom error message";
-            
+
             try
             {
                 throw new PointOnEdgeException(expectedMessage);
@@ -107,10 +107,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         public void Exception_ShouldHandleEmptyMessage()
         {
             PointOnEdgeException exception = new PointOnEdgeException(string.Empty);
-            
+
             Assert.Equal(string.Empty, exception.Message);
         }
-        
+
 
         /// <summary>
         ///     Tests that exception should be catchable in generic exception handler
@@ -119,7 +119,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         public void Exception_ShouldBeCatchableInGenericExceptionHandler()
         {
             bool caught = false;
-            
+
             try
             {
                 throw new PointOnEdgeException("Test");
@@ -128,7 +128,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             {
                 caught = true;
             }
-            
+
             Assert.True(caught);
         }
 
@@ -140,7 +140,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         {
             PointOnEdgeException ex1 = new PointOnEdgeException("Message 1");
             PointOnEdgeException ex2 = new PointOnEdgeException("Message 2");
-            
+
             Assert.NotEqual(ex1.Message, ex2.Message);
         }
 
@@ -161,4 +161,3 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         }
     }
 }
-

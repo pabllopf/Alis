@@ -46,18 +46,15 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void FixtureDelegate_ShouldBeInvokable()
         {
             bool invoked = false;
-            FixtureDelegate callback = (sender, body, fixture) =>
-            {
-                invoked = true;
-            };
-            
+            FixtureDelegate callback = (sender, body, fixture) => { invoked = true; };
+
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body body = world.CreateBody();
             CircleShape shape = new CircleShape(1.0f, 1.0f);
             Fixture fixture = body.CreateFixture(shape);
-            
+
             callback(world, body, fixture);
-            
+
             Assert.True(invoked);
         }
 
@@ -68,18 +65,15 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void FixtureDelegate_ShouldReceiveWorldParameter()
         {
             WorldPhysic capturedWorld = null;
-            FixtureDelegate callback = (sender, body, fixture) =>
-            {
-                capturedWorld = sender;
-            };
-            
+            FixtureDelegate callback = (sender, body, fixture) => { capturedWorld = sender; };
+
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body body = world.CreateBody();
             CircleShape shape = new CircleShape(1.0f, 1.0f);
             Fixture fixture = body.CreateFixture(shape);
-            
+
             callback(world, body, fixture);
-            
+
             Assert.Equal(world, capturedWorld);
         }
 
@@ -90,18 +84,15 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void FixtureDelegate_ShouldReceiveBodyParameter()
         {
             Body capturedBody = null;
-            FixtureDelegate callback = (sender, body, fixture) =>
-            {
-                capturedBody = body;
-            };
-            
+            FixtureDelegate callback = (sender, body, fixture) => { capturedBody = body; };
+
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body body = world.CreateBody();
             CircleShape shape = new CircleShape(1.0f, 1.0f);
             Fixture fixture = body.CreateFixture(shape);
-            
+
             callback(world, body, fixture);
-            
+
             Assert.Equal(body, capturedBody);
         }
 
@@ -112,18 +103,15 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void FixtureDelegate_ShouldReceiveFixtureParameter()
         {
             Fixture capturedFixture = null;
-            FixtureDelegate callback = (sender, body, fixture) =>
-            {
-                capturedFixture = fixture;
-            };
-            
+            FixtureDelegate callback = (sender, body, fixture) => { capturedFixture = fixture; };
+
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body body = world.CreateBody();
             CircleShape shape = new CircleShape(1.0f, 1.0f);
             Fixture fixture = body.CreateFixture(shape);
-            
+
             callback(world, body, fixture);
-            
+
             Assert.Equal(fixture, capturedFixture);
         }
 
@@ -136,16 +124,16 @@ namespace Alis.Core.Physic.Test.Dynamics
             int callCount = 0;
             FixtureDelegate callback1 = (sender, body, fixture) => callCount++;
             FixtureDelegate callback2 = (sender, body, fixture) => callCount++;
-            
+
             FixtureDelegate combined = callback1 + callback2;
-            
+
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body body = world.CreateBody();
             CircleShape shape = new CircleShape(1.0f, 1.0f);
             Fixture fixture = body.CreateFixture(shape);
-            
+
             combined(world, body, fixture);
-            
+
             Assert.Equal(2, callCount);
         }
 
@@ -158,17 +146,17 @@ namespace Alis.Core.Physic.Test.Dynamics
             int callCount = 0;
             FixtureDelegate callback1 = (sender, body, fixture) => callCount++;
             FixtureDelegate callback2 = (sender, body, fixture) => callCount++;
-            
+
             FixtureDelegate combined = callback1 + callback2;
             combined -= callback1;
-            
+
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body body = world.CreateBody();
             CircleShape shape = new CircleShape(1.0f, 1.0f);
             Fixture fixture = body.CreateFixture(shape);
-            
+
             combined(world, body, fixture);
-            
+
             Assert.Equal(1, callCount);
         }
 
@@ -179,13 +167,10 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void FixtureDelegate_ShouldHandleNullParameters()
         {
             bool invoked = false;
-            FixtureDelegate callback = (sender, body, fixture) =>
-            {
-                invoked = true;
-            };
-            
+            FixtureDelegate callback = (sender, body, fixture) => { invoked = true; };
+
             callback(null, null, null);
-            
+
             Assert.True(invoked);
         }
 
@@ -197,18 +182,17 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             int count = 0;
             FixtureDelegate callback = (sender, body, fixture) => count++;
-            
+
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body body = world.CreateBody();
             CircleShape shape = new CircleShape(1.0f, 1.0f);
             Fixture fixture = body.CreateFixture(shape);
-            
+
             callback(world, body, fixture);
             callback(world, body, fixture);
             callback(world, body, fixture);
-            
+
             Assert.Equal(3, count);
         }
     }
 }
-

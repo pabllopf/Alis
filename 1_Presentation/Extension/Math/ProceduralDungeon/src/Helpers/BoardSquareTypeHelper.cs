@@ -50,13 +50,10 @@ namespace Alis.Extension.Math.ProceduralDungeon.Helpers
         ///     bool notWall = BoardSquareTypeHelper.IsWall(BoardSquareType.Floor); // false
         ///     </code>
         /// </example>
-        public static bool IsWall(BoardSquareType type)
-        {
-            return type == BoardSquareType.WallDown ||
-                   type == BoardSquareType.WallLeft ||
-                   type == BoardSquareType.WallRight ||
-                   type == BoardSquareType.WallTop;
-        }
+        public static bool IsWall(BoardSquareType type) => type == BoardSquareType.WallDown ||
+                                                           type == BoardSquareType.WallLeft ||
+                                                           type == BoardSquareType.WallRight ||
+                                                           type == BoardSquareType.WallTop;
 
         /// <summary>
         ///     Determines whether the specified square type is a corner.
@@ -69,10 +66,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Helpers
         ///     bool notCorner = BoardSquareTypeHelper.IsCorner(BoardSquareType.Floor); // false
         ///     </code>
         /// </example>
-        public static bool IsCorner(BoardSquareType type)
-        {
-            return IsOuterCorner(type) || IsInnerCorner(type);
-        }
+        public static bool IsCorner(BoardSquareType type) => IsOuterCorner(type) || IsInnerCorner(type);
 
         /// <summary>
         ///     Determines whether the specified square type is an outer corner.
@@ -85,13 +79,10 @@ namespace Alis.Extension.Math.ProceduralDungeon.Helpers
         ///     bool notOuter = BoardSquareTypeHelper.IsOuterCorner(BoardSquareType.CornerInternalLeftUp); // false
         ///     </code>
         /// </example>
-        public static bool IsOuterCorner(BoardSquareType type)
-        {
-            return type == BoardSquareType.CornerLeftUp ||
-                   type == BoardSquareType.CornerRightUp ||
-                   type == BoardSquareType.CornerLeftDown ||
-                   type == BoardSquareType.CornerRightDown;
-        }
+        public static bool IsOuterCorner(BoardSquareType type) => type == BoardSquareType.CornerLeftUp ||
+                                                                  type == BoardSquareType.CornerRightUp ||
+                                                                  type == BoardSquareType.CornerLeftDown ||
+                                                                  type == BoardSquareType.CornerRightDown;
 
         /// <summary>
         ///     Determines whether the specified square type is an inner corner.
@@ -104,13 +95,10 @@ namespace Alis.Extension.Math.ProceduralDungeon.Helpers
         ///     bool notInner = BoardSquareTypeHelper.IsInnerCorner(BoardSquareType.CornerLeftUp); // false
         ///     </code>
         /// </example>
-        public static bool IsInnerCorner(BoardSquareType type)
-        {
-            return type == BoardSquareType.CornerInternalLeftUp ||
-                   type == BoardSquareType.CornerInternalRightUp ||
-                   type == BoardSquareType.CornerInternalLeftDown ||
-                   type == BoardSquareType.CornerInternalRightDown;
-        }
+        public static bool IsInnerCorner(BoardSquareType type) => type == BoardSquareType.CornerInternalLeftUp ||
+                                                                  type == BoardSquareType.CornerInternalRightUp ||
+                                                                  type == BoardSquareType.CornerInternalLeftDown ||
+                                                                  type == BoardSquareType.CornerInternalRightDown;
 
         /// <summary>
         ///     Determines whether the specified square type is walkable (floor).
@@ -123,10 +111,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Helpers
         ///     bool cantWalk = BoardSquareTypeHelper.IsWalkable(BoardSquareType.WallTop); // false
         ///     </code>
         /// </example>
-        public static bool IsWalkable(BoardSquareType type)
-        {
-            return type == BoardSquareType.Floor;
-        }
+        public static bool IsWalkable(BoardSquareType type) => type == BoardSquareType.Floor;
 
         /// <summary>
         ///     Determines whether the specified square type is empty (unoccupied).
@@ -139,10 +124,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Helpers
         ///     bool notEmpty = BoardSquareTypeHelper.IsEmpty(BoardSquareType.Floor); // false
         ///     </code>
         /// </example>
-        public static bool IsEmpty(BoardSquareType type)
-        {
-            return type == BoardSquareType.Empty;
-        }
+        public static bool IsEmpty(BoardSquareType type) => type == BoardSquareType.Empty;
 
         /// <summary>
         ///     Determines whether the specified square type is solid (wall or corner).
@@ -158,10 +140,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Helpers
         ///     bool notSolid = BoardSquareTypeHelper.IsSolid(BoardSquareType.Floor); // false
         ///     </code>
         /// </example>
-        public static bool IsSolid(BoardSquareType type)
-        {
-            return IsWall(type) || IsCorner(type);
-        }
+        public static bool IsSolid(BoardSquareType type) => IsWall(type) || IsCorner(type);
 
         /// <summary>
         ///     Gets a display character representation of the board square type.
@@ -205,4 +184,3 @@ namespace Alis.Extension.Math.ProceduralDungeon.Helpers
         }
     }
 }
-

@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IIsTest.cs
+//  File:IIsTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,25 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
     /// </summary>
     public class IIsTest
     {
-        /// <summary>
-        ///     Helper builder class.
-        /// </summary>
-        private class Builder { public string IsValue { get; set; } }
-
-        /// <summary>
-        ///     Helper implementation of IIs.
-        /// </summary>
-        private class IsBuilder : IIs<Builder, string>
-        {
-            private readonly Builder _builder = new Builder();
-
-            public Builder Is<T>(string value)
-            {
-                _builder.IsValue = value;
-                return _builder;
-            }
-        }
-
         /// <summary>
         ///     Tests that IIs can be implemented.
         /// </summary>
@@ -114,6 +95,27 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
             Assert.NotNull(result);
             Assert.IsType<Builder>(result);
         }
+
+        /// <summary>
+        ///     Helper builder class.
+        /// </summary>
+        private class Builder
+        {
+            public string IsValue { get; set; }
+        }
+
+        /// <summary>
+        ///     Helper implementation of IIs.
+        /// </summary>
+        private class IsBuilder : IIs<Builder, string>
+        {
+            private readonly Builder _builder = new Builder();
+
+            public Builder Is<T>(string value)
+            {
+                _builder.IsValue = value;
+                return _builder;
+            }
+        }
     }
 }
-

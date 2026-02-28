@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: LoggerFactory.cs
+//  File:LoggerFactory.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program. If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -43,19 +43,45 @@ namespace Alis.Core.Aspect.Logging
     /// </summary>
     public sealed class LoggerFactory : IDisposable
     {
-        private readonly List<ILogOutput> _outputs = new List<ILogOutput>();
         private readonly List<ILogFilter> _filters = new List<ILogFilter>();
+        private readonly List<ILogOutput> _outputs = new List<ILogOutput>();
+        private bool _disposed;
         private ILogFormatter _formatter;
         private LogLevel _minimumLevel = LogLevel.Trace;
-        private bool _disposed;
 
         /// <summary>
         ///     Initializes a new instance of the LoggerFactory class.
         /// </summary>
-        public LoggerFactory()
-        {
+        public LoggerFactory() =>
             // Default formatter
             _formatter = new SimpleLogFormatter();
+
+        /// <inheritdoc />
+        public void Dispose()
+        {
+            if (_disposed)
+            {
+                return;
+            }
+
+            _disposed = true;
+
+            // Flush all outputs
+            foreach (ILogOutput output in _outputs)
+            {
+                try
+                {
+                    output.Flush();
+                    output.Dispose();
+                }
+                catch
+                {
+                    // Prevent one output failure from affecting others
+                }
+            }
+
+            _outputs.Clear();
+            _filters.Clear();
         }
 
         /// <summary>
@@ -149,34 +175,5 @@ namespace Alis.Core.Aspect.Logging
                 }
             }
         }
-
-        /// <inheritdoc />
-        public void Dispose()
-        {
-            if (_disposed)
-            {
-                return;
-            }
-
-            _disposed = true;
-
-            // Flush all outputs
-            foreach (ILogOutput output in _outputs)
-            {
-                try
-                {
-                    output.Flush();
-                    output.Dispose();
-                }
-                catch
-                {
-                    // Prevent one output failure from affecting others
-                }
-            }
-
-            _outputs.Clear();
-            _filters.Clear();
-        }
     }
 }
-

@@ -68,7 +68,7 @@ namespace Alis.Core.Audio.Test
 
             // Assert
             Assert.NotNull(player);
-            
+
             // Verify the player is initialized correctly for current OS
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
@@ -563,7 +563,7 @@ namespace Alis.Core.Audio.Test
             await player.SetVolume(25);
             await player.SetVolume(50);
             await player.SetVolume(75);
-            
+
             Assert.NotNull(player);
         }
 
@@ -577,10 +577,10 @@ namespace Alis.Core.Audio.Test
             Player player = new Player();
             int eventCount = 0;
             EventHandler handler = (sender, e) => eventCount++;
-            
+
             player.PlaybackFinished += handler;
             player.OnPlaybackFinished(player, EventArgs.Empty);
-            
+
             // Act
             player.PlaybackFinished -= handler;
             player.OnPlaybackFinished(player, EventArgs.Empty);
@@ -735,7 +735,7 @@ namespace Alis.Core.Audio.Test
             await player.Pause();
             await player.Resume();
             await player.Stop();
-            
+
             Assert.NotNull(player);
         }
 
@@ -750,13 +750,13 @@ namespace Alis.Core.Audio.Test
 
             // Assert
             Assert.NotNull(player);
-            
+
             // Verify it's one of the expected types
-            bool isValidType = player is WindowsPlayer || 
-                              player is LinuxPlayer || 
-                              player is MacPlayer || 
-                              player is BrowserPlayer;
-            
+            bool isValidType = player is WindowsPlayer ||
+                               player is LinuxPlayer ||
+                               player is MacPlayer ||
+                               player is BrowserPlayer;
+
             Assert.True(isValidType || player == null);
         }
 
@@ -849,7 +849,7 @@ namespace Alis.Core.Audio.Test
             {
                 // Ignore file not found
             }
-            
+
             await player.SetVolume(75);
 
             // Assert - No exception thrown
@@ -930,4 +930,3 @@ namespace Alis.Core.Audio.Test
         }
     }
 }
-

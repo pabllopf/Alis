@@ -41,14 +41,14 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
     public class DungeonGenerator : IDungeonGenerator
     {
         /// <summary>
+        ///     The board builder for constructing the board.
+        /// </summary>
+        private readonly IBoardBuilder _boardBuilder;
+
+        /// <summary>
         ///     The dungeon configuration.
         /// </summary>
         private readonly DungeonConfiguration _configuration;
-
-        /// <summary>
-        ///     The room factory for creating rooms.
-        /// </summary>
-        private readonly IRoomFactory _roomFactory;
 
         /// <summary>
         ///     The corridor factory for creating corridors.
@@ -56,9 +56,9 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
         private readonly ICorridorFactory _corridorFactory;
 
         /// <summary>
-        ///     The board builder for constructing the board.
+        ///     The room factory for creating rooms.
         /// </summary>
-        private readonly IBoardBuilder _boardBuilder;
+        private readonly IRoomFactory _roomFactory;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="DungeonGenerator" /> class.
@@ -163,4 +163,3 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
         }
     }
 }
-

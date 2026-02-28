@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using Alis.Core.Aspect.Logging;
@@ -42,7 +41,7 @@ namespace Alis.Extension.Io.FileDialog
     public class WindowsFilePicker : IFilePicker
     {
         /// <summary>
-        /// The file open script
+        ///     The file open script
         /// </summary>
         private const string FileOpenScript = @"
 Add-Type -AssemblyName System.Windows.Forms
@@ -56,7 +55,7 @@ if ($dialog.ShowDialog() -eq 'OK') {{
 ";
 
         /// <summary>
-        /// The file save script
+        ///     The file save script
         /// </summary>
         private const string FileSaveScript = @"
 Add-Type -AssemblyName System.Windows.Forms
@@ -70,7 +69,7 @@ if ($dialog.ShowDialog() -eq 'OK') {{
 ";
 
         /// <summary>
-        /// The folder select script
+        ///     The folder select script
         /// </summary>
         private const string FolderSelectScript = @"
 Add-Type -AssemblyName System.Windows.Forms
@@ -95,7 +94,11 @@ if ($dialog.ShowDialog() -eq 'OK') {{
             try
             {
                 FilePickerValidator.ValidateOptions(options);
-                if (options == null) throw new ArgumentNullException(nameof(options));
+                if (options == null)
+                {
+                    throw new ArgumentNullException(nameof(options));
+                }
+
                 options.AllowMultiple = false;
 
                 string script = BuildOpenFileScript(options);
@@ -122,7 +125,11 @@ if ($dialog.ShowDialog() -eq 'OK') {{
             try
             {
                 FilePickerValidator.ValidateOptions(options);
-                if (options == null) throw new ArgumentNullException(nameof(options));
+                if (options == null)
+                {
+                    throw new ArgumentNullException(nameof(options));
+                }
+
                 options.AllowMultiple = true;
 
                 string script = BuildOpenFileScript(options);
@@ -149,7 +156,10 @@ if ($dialog.ShowDialog() -eq 'OK') {{
             try
             {
                 FilePickerValidator.ValidateOptions(options);
-                if (options == null) throw new ArgumentNullException(nameof(options));
+                if (options == null)
+                {
+                    throw new ArgumentNullException(nameof(options));
+                }
 
                 string script = BuildFolderSelectScript(options);
                 string result = ExecuteScript(script);
@@ -184,7 +194,7 @@ if ($dialog.ShowDialog() -eq 'OK') {{
 
             // Add filters and multiselect
             StringBuilder optionsConfig = new StringBuilder();
-            if (options.Filters != null && options.Filters.Count > 0)
+            if ((options.Filters != null) && (options.Filters.Count > 0))
             {
                 optionsConfig.AppendLine("$dialog.Filter = '" + BuildFilterString(options.Filters) + "'");
             }
@@ -248,7 +258,7 @@ if ($dialog.ShowDialog() -eq 'OK') {{
 
             try
             {
-                return FilePickerExecutor.ExecuteCommand("powershell", $"-NoProfile -NonInteractive -Command \"{script}\"", 30000);
+                return FilePickerExecutor.ExecuteCommand("powershell", $"-NoProfile -NonInteractive -Command \"{script}\"");
             }
             catch (Exception ex)
             {
@@ -274,7 +284,7 @@ if ($dialog.ShowDialog() -eq 'OK') {{
             {
                 string[] paths = allowMultiple
                     ? FilePickerPathConverter.SplitMultiplePaths(output)
-                    : new[] { FilePickerPathConverter.NormalizePath(output) };
+                    : new[] {FilePickerPathConverter.NormalizePath(output)};
 
                 paths = paths.Where(p => !string.IsNullOrEmpty(p)).ToArray();
 

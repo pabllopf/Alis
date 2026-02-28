@@ -45,7 +45,7 @@ namespace Alis.Core.Physic.Test.Collisions
         public void PointsEnumValue_ShouldBeDefined()
         {
             SeparationFunctionType type = SeparationFunctionType.Points;
-            
+
             Assert.Equal(SeparationFunctionType.Points, type);
         }
 
@@ -56,7 +56,7 @@ namespace Alis.Core.Physic.Test.Collisions
         public void FaceAEnumValue_ShouldBeDefined()
         {
             SeparationFunctionType type = SeparationFunctionType.FaceA;
-            
+
             Assert.Equal(SeparationFunctionType.FaceA, type);
         }
 
@@ -67,7 +67,7 @@ namespace Alis.Core.Physic.Test.Collisions
         public void FaceBEnumValue_ShouldBeDefined()
         {
             SeparationFunctionType type = SeparationFunctionType.FaceB;
-            
+
             Assert.Equal(SeparationFunctionType.FaceB, type);
         }
 
@@ -77,8 +77,8 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void SeparationFunctionType_ShouldHaveThreeValues()
         {
-            Array values = System.Enum.GetValues(typeof(SeparationFunctionType));
-            
+            Array values = Enum.GetValues(typeof(SeparationFunctionType));
+
             Assert.Equal(3, values.Length);
         }
 
@@ -88,10 +88,10 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void SeparationFunctionType_ShouldBeCastableToInt()
         {
-            int pointsValue = (int)SeparationFunctionType.Points;
-            int faceAValue = (int)SeparationFunctionType.FaceA;
-            int faceBValue = (int)SeparationFunctionType.FaceB;
-            
+            int pointsValue = (int) SeparationFunctionType.Points;
+            int faceAValue = (int) SeparationFunctionType.FaceA;
+            int faceBValue = (int) SeparationFunctionType.FaceB;
+
             Assert.Equal(0, pointsValue);
             Assert.Equal(1, faceAValue);
             Assert.Equal(2, faceBValue);
@@ -105,7 +105,7 @@ namespace Alis.Core.Physic.Test.Collisions
         {
             SeparationFunctionType type1 = SeparationFunctionType.FaceA;
             SeparationFunctionType type2 = SeparationFunctionType.FaceA;
-            
+
             Assert.Equal(type1, type2);
         }
 
@@ -117,9 +117,8 @@ namespace Alis.Core.Physic.Test.Collisions
         {
             SeparationFunctionType type1 = SeparationFunctionType.Points;
             SeparationFunctionType type2 = SeparationFunctionType.FaceB;
-            
+
             Assert.NotEqual(type1, type2);
         }
     }
 }
-

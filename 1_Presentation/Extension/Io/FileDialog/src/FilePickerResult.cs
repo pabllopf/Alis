@@ -39,31 +39,6 @@ namespace Alis.Extension.Io.FileDialog
     public class FilePickerResult
     {
         /// <summary>
-        ///     Gets a value indicating whether the operation was successful.
-        /// </summary>
-        public bool IsSuccess { get; private set; }
-
-        /// <summary>
-        ///     Gets a value indicating whether the user cancelled the dialog.
-        /// </summary>
-        public bool IsCancelled { get; private set; }
-
-        /// <summary>
-        ///     Gets the list of selected file paths.
-        /// </summary>
-        public List<string> SelectedPaths { get; private set; }
-
-        /// <summary>
-        ///     Gets the error message if an error occurred.
-        /// </summary>
-        public string ErrorMessage { get; private set; }
-
-        /// <summary>
-        ///     Gets the first selected path (for single-file dialogs).
-        /// </summary>
-        public string SelectedPath => SelectedPaths?.FirstOrDefault();
-
-        /// <summary>
         ///     Initializes a new instance of the FilePickerResult class for a successful operation.
         /// </summary>
         /// <param name="selectedPaths">The list of selected paths</param>
@@ -102,24 +77,51 @@ namespace Alis.Extension.Io.FileDialog
 
             IsSuccess = true;
             IsCancelled = false;
-            SelectedPaths = new List<string> { selectedPath };
+            SelectedPaths = new List<string> {selectedPath};
             ErrorMessage = null;
         }
+
+        /// <summary>
+        ///     Private constructor for factory methods.
+        /// </summary>
+        private FilePickerResult() => SelectedPaths = new List<string>();
+
+        /// <summary>
+        ///     Gets a value indicating whether the operation was successful.
+        /// </summary>
+        public bool IsSuccess { get; private set; }
+
+        /// <summary>
+        ///     Gets a value indicating whether the user cancelled the dialog.
+        /// </summary>
+        public bool IsCancelled { get; private set; }
+
+        /// <summary>
+        ///     Gets the list of selected file paths.
+        /// </summary>
+        public List<string> SelectedPaths { get; private set; }
+
+        /// <summary>
+        ///     Gets the error message if an error occurred.
+        /// </summary>
+        public string ErrorMessage { get; private set; }
+
+        /// <summary>
+        ///     Gets the first selected path (for single-file dialogs).
+        /// </summary>
+        public string SelectedPath => SelectedPaths?.FirstOrDefault();
 
         /// <summary>
         ///     Creates a cancelled result.
         /// </summary>
         /// <returns>A cancelled FilePickerResult</returns>
-        public static FilePickerResult CreateCancelled()
+        public static FilePickerResult CreateCancelled() => new FilePickerResult
         {
-            return new FilePickerResult
-            {
-                IsSuccess = false,
-                IsCancelled = true,
-                SelectedPaths = new List<string>(),
-                ErrorMessage = "User cancelled the dialog."
-            };
-        }
+            IsSuccess = false,
+            IsCancelled = true,
+            SelectedPaths = new List<string>(),
+            ErrorMessage = "User cancelled the dialog."
+        };
 
         /// <summary>
         ///     Creates an error result.
@@ -143,14 +145,5 @@ namespace Alis.Extension.Io.FileDialog
                 ErrorMessage = errorMessage
             };
         }
-
-        /// <summary>
-        ///     Private constructor for factory methods.
-        /// </summary>
-        private FilePickerResult()
-        {
-            SelectedPaths = new List<string>();
-        }
     }
 }
-

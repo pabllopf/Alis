@@ -112,7 +112,7 @@ namespace Alis.Extension.Thread.Scheduling
 
             Parallel.For(0, partitions, options, partition =>
             {
-                int start = startIndex + (partition * itemsPerPartition);
+                int start = startIndex + partition * itemsPerPartition;
                 int length = itemsPerPartition;
 
                 if (partition == partitions - 1)
@@ -133,4 +133,3 @@ namespace Alis.Extension.Thread.Scheduling
         }
     }
 }
-

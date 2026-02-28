@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Extension.Media.FFmpeg.BaseClasses;
+using System;
 using Alis.Extension.Media.FFmpeg.Video;
 using Xunit;
 
@@ -52,7 +52,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.NotNull(player);
         }
 
-      
+
         /// <summary>
         ///     Tests that video player should be disposable
         /// </summary>
@@ -63,10 +63,10 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             VideoPlayer player = new VideoPlayer();
 
             // Assert
-            Assert.IsAssignableFrom<System.IDisposable>(player);
+            Assert.IsAssignableFrom<IDisposable>(player);
         }
 
-   
+
         /// <summary>
         ///     Tests that video player should be disposable multiple times
         /// </summary>
@@ -81,7 +81,5 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             player.Dispose();
             player.Dispose();
         }
-        
     }
 }
-

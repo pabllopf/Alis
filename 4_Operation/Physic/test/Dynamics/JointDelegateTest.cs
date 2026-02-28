@@ -46,18 +46,15 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void JointDelegate_ShouldBeInvokable()
         {
             bool invoked = false;
-            JointDelegate callback = (sender, joint) =>
-            {
-                invoked = true;
-            };
-            
+            JointDelegate callback = (sender, joint) => { invoked = true; };
+
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body bodyA = world.CreateBody();
             Body bodyB = world.CreateBody();
             DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.One);
-            
+
             callback(world, joint);
-            
+
             Assert.True(invoked);
         }
 
@@ -68,18 +65,15 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void JointDelegate_ShouldReceiveWorldParameter()
         {
             WorldPhysic capturedWorld = null;
-            JointDelegate callback = (sender, joint) =>
-            {
-                capturedWorld = sender;
-            };
-            
+            JointDelegate callback = (sender, joint) => { capturedWorld = sender; };
+
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body bodyA = world.CreateBody();
             Body bodyB = world.CreateBody();
             DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.One);
-            
+
             callback(world, joint);
-            
+
             Assert.Equal(world, capturedWorld);
         }
 
@@ -90,18 +84,15 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void JointDelegate_ShouldReceiveJointParameter()
         {
             Joint capturedJoint = null;
-            JointDelegate callback = (sender, joint) =>
-            {
-                capturedJoint = joint;
-            };
-            
+            JointDelegate callback = (sender, joint) => { capturedJoint = joint; };
+
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body bodyA = world.CreateBody();
             Body bodyB = world.CreateBody();
             DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.One);
-            
+
             callback(world, joint);
-            
+
             Assert.Equal(joint, capturedJoint);
         }
 
@@ -114,16 +105,16 @@ namespace Alis.Core.Physic.Test.Dynamics
             int callCount = 0;
             JointDelegate callback1 = (sender, joint) => callCount++;
             JointDelegate callback2 = (sender, joint) => callCount++;
-            
+
             JointDelegate combined = callback1 + callback2;
-            
+
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body bodyA = world.CreateBody();
             Body bodyB = world.CreateBody();
             DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.One);
-            
+
             combined(world, joint);
-            
+
             Assert.Equal(2, callCount);
         }
 
@@ -136,17 +127,17 @@ namespace Alis.Core.Physic.Test.Dynamics
             int callCount = 0;
             JointDelegate callback1 = (sender, joint) => callCount++;
             JointDelegate callback2 = (sender, joint) => callCount++;
-            
+
             JointDelegate combined = callback1 + callback2;
             combined -= callback1;
-            
+
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body bodyA = world.CreateBody();
             Body bodyB = world.CreateBody();
             DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.One);
-            
+
             combined(world, joint);
-            
+
             Assert.Equal(1, callCount);
         }
 
@@ -157,18 +148,15 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void JointDelegate_ShouldHandleNullWorld()
         {
             bool invoked = false;
-            JointDelegate callback = (sender, joint) =>
-            {
-                invoked = true;
-            };
-            
+            JointDelegate callback = (sender, joint) => { invoked = true; };
+
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body bodyA = world.CreateBody();
             Body bodyB = world.CreateBody();
             DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.One);
-            
+
             callback(null, joint);
-            
+
             Assert.True(invoked);
         }
 
@@ -179,15 +167,12 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void JointDelegate_ShouldHandleNullJoint()
         {
             bool invoked = false;
-            JointDelegate callback = (sender, joint) =>
-            {
-                invoked = true;
-            };
-            
+            JointDelegate callback = (sender, joint) => { invoked = true; };
+
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
-            
+
             callback(world, null);
-            
+
             Assert.True(invoked);
         }
 
@@ -199,15 +184,15 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             int count = 0;
             JointDelegate callback = (sender, joint) => count++;
-            
+
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body bodyA = world.CreateBody();
             Body bodyB = world.CreateBody();
             DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.One);
-            
+
             callback(world, joint);
             callback(world, joint);
-            
+
             Assert.Equal(2, count);
         }
 
@@ -218,20 +203,16 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void JointDelegate_ShouldAllowAccessToJointProperties()
         {
             JointType capturedType = JointType.Unknown;
-            JointDelegate callback = (sender, joint) =>
-            {
-                capturedType = joint.JointType;
-            };
-            
+            JointDelegate callback = (sender, joint) => { capturedType = joint.JointType; };
+
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body bodyA = world.CreateBody();
             Body bodyB = world.CreateBody();
             DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.One);
-            
+
             callback(world, joint);
-            
+
             Assert.Equal(JointType.Distance, capturedType);
         }
     }
 }
-

@@ -85,7 +85,7 @@ namespace Alis.Extension.Io.FileDialog
             try
             {
                 string[] paths = pathsString
-                    .Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries)
+                    .Split(new[] {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries)
                     .Select(p => NormalizePath(p))
                     .Where(p => !string.IsNullOrEmpty(p))
                     .ToArray();
@@ -226,4 +226,3 @@ namespace Alis.Extension.Io.FileDialog
         }
     }
 }
-

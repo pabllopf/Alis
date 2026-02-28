@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:GlfwNativeTests.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
     public class GlfwNativeTests
     {
         /// <summary>
-        /// Glfws the native version returns valid version
+        ///     Glfws the native version returns valid version
         /// </summary>
         [RequiresDisplay]
         public void GlfwNative_Version_ReturnsValidVersion()
@@ -54,7 +55,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Glfws the native version string returns non empty string
+        ///     Glfws the native version string returns non empty string
         /// </summary>
         [RequiresDisplay]
         public void GlfwNative_VersionString_ReturnsNonEmptyString()
@@ -67,7 +68,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Glfws the native get error with no error returns none
+        ///     Glfws the native get error with no error returns none
         /// </summary>
         [RequiresDisplay]
         public void GlfwNative_GetError_WithNoError_ReturnsNone()
@@ -81,7 +82,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Glfws the native time can get and set
+        ///     Glfws the native time can get and set
         /// </summary>
         [RequiresDisplay]
         public void GlfwNative_Time_CanGetAndSet()
@@ -99,7 +100,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Glfws the native timer frequency returns positive value
+        ///     Glfws the native timer frequency returns positive value
         /// </summary>
         [RequiresDisplay]
         public void GlfwNative_TimerFrequency_ReturnsPositiveValue()
@@ -112,7 +113,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Glfws the native timer value returns positive value
+        ///     Glfws the native timer value returns positive value
         /// </summary>
         [RequiresDisplay]
         public void GlfwNative_TimerValue_ReturnsPositiveValue()
@@ -125,7 +126,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Glfws the native monitors returns monitor array
+        ///     Glfws the native monitors returns monitor array
         /// </summary>
         [RequiresDisplay]
         public void GlfwNative_Monitors_ReturnsMonitorArray()
@@ -138,7 +139,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Glfws the native primary monitor returns valid monitor
+        ///     Glfws the native primary monitor returns valid monitor
         /// </summary>
         [RequiresDisplay]
         public void GlfwNative_PrimaryMonitor_ReturnsValidMonitor()
@@ -152,7 +153,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Glfws the native current context returns window or none
+        ///     Glfws the native current context returns window or none
         /// </summary>
         [RequiresDisplay]
         public void GlfwNative_CurrentContext_ReturnsWindowOrNone()
@@ -166,7 +167,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Glfws the native get clipboard string returns string
+        ///     Glfws the native get clipboard string returns string
         /// </summary>
         [RequiresDisplay]
         public void GlfwNative_GetClipboardString_ReturnsString()
@@ -191,7 +192,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Glfws the native create window with valid parameters creates window
+        ///     Glfws the native create window with valid parameters creates window
         /// </summary>
         [RequiresDisplay]
         public void GlfwNative_CreateWindow_WithValidParameters_CreatesWindow()
@@ -214,7 +215,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Glfws the native destroy window with valid window does not throw
+        ///     Glfws the native destroy window with valid window does not throw
         /// </summary>
         [RequiresDisplay]
         public void GlfwNative_DestroyWindow_WithValidWindow_DoesNotThrow()
@@ -228,7 +229,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Glfws the native get window size with valid window returns size
+        ///     Glfws the native get window size with valid window returns size
         /// </summary>
         [RequiresDisplay]
         public void GlfwNative_GetWindowSize_WithValidWindow_ReturnsSize()
@@ -253,7 +254,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Glfws the native set window size with valid window sets size
+        ///     Glfws the native set window size with valid window sets size
         /// </summary>
         [RequiresDisplay]
         public void GlfwNative_SetWindowSize_WithValidWindow_SetsSize()
@@ -279,7 +280,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Glfws the native window should close with new window returns false
+        ///     Glfws the native window should close with new window returns false
         /// </summary>
         [RequiresDisplay]
         public void GlfwNative_WindowShouldClose_WithNewWindow_ReturnsFalse()
@@ -303,7 +304,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Glfws the native set window title with valid window changes title
+        ///     Glfws the native set window title with valid window changes title
         /// </summary>
         [RequiresDisplay]
         public void GlfwNative_SetWindowTitle_WithValidWindow_ChangesTitle()
@@ -327,7 +328,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Glfws the native poll events does not throw
+        ///     Glfws the native poll events does not throw
         /// </summary>
         [RequiresDisplay]
         public void GlfwNative_PollEvents_DoesNotThrow()
@@ -337,7 +338,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Glfws the native window hint with valid hint does not throw
+        ///     Glfws the native window hint with valid hint does not throw
         /// </summary>
         [RequiresDisplay]
         public void GlfwNative_WindowHint_WithValidHint_DoesNotThrow()
@@ -348,7 +349,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Glfws the native get key with valid window returns state
+        ///     Glfws the native get key with valid window returns state
         /// </summary>
         [RequiresDisplay]
         public void GlfwNative_GetKey_WithValidWindow_ReturnsState()
@@ -372,7 +373,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Glfws the native get mouse button with valid window returns state
+        ///     Glfws the native get mouse button with valid window returns state
         /// </summary>
         [RequiresDisplay]
         public void GlfwNative_GetMouseButton_WithValidWindow_ReturnsState()
@@ -396,7 +397,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Glfws the native show window with valid window does not throw
+        ///     Glfws the native show window with valid window does not throw
         /// </summary>
         [RequiresDisplay]
         public void GlfwNative_ShowWindow_WithValidWindow_DoesNotThrow()
@@ -418,7 +419,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Glfws the native iconify window with valid window does not throw
+        ///     Glfws the native iconify window with valid window does not throw
         /// </summary>
         [RequiresDisplay]
         public void GlfwNative_IconifyWindow_WithValidWindow_DoesNotThrow()
@@ -439,7 +440,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Glfws the native restore window with valid window does not throw
+        ///     Glfws the native restore window with valid window does not throw
         /// </summary>
         [RequiresDisplay]
         public void GlfwNative_RestoreWindow_WithValidWindow_DoesNotThrow()
@@ -460,4 +461,3 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
     }
 }
-

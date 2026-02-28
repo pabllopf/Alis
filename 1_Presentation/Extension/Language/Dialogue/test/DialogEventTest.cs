@@ -61,7 +61,7 @@ namespace Alis.Extension.Language.Dialogue.Test
         public void DialogEvent_Data_WorksCorrectly()
         {
             DialogEvent dialogEvent = new DialogEvent(DialogEventType.OnOptionSelected, "testDialog");
-            object testData = new { Text = "Test Option" };
+            object testData = new {Text = "Test Option"};
 
             dialogEvent.Data = testData;
 
@@ -84,4 +84,3 @@ namespace Alis.Extension.Language.Dialogue.Test
         }
     }
 }
-

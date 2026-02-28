@@ -45,15 +45,15 @@ namespace Alis.Extension.Language.Translator.Providers
     public class MemoryTranslationProvider : ITranslationProvider
     {
         /// <summary>
+        ///     The lock object for thread-safe operations
+        /// </summary>
+        private readonly object syncLock = new object();
+
+        /// <summary>
         ///     The translations storage: {languageCode -> {key -> value}}
         /// </summary>
         private readonly Dictionary<string, Dictionary<string, string>> translations =
             new Dictionary<string, Dictionary<string, string>>();
-
-        /// <summary>
-        ///     The lock object for thread-safe operations
-        /// </summary>
-        private readonly object syncLock = new object();
 
         /// <summary>
         ///     Gets the name of this provider
@@ -205,4 +205,3 @@ namespace Alis.Extension.Language.Translator.Providers
         }
     }
 }
-

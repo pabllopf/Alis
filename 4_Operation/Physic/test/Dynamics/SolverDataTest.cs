@@ -44,7 +44,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void DefaultConstructor_ShouldInitializeWithDefaultValues()
         {
             SolverData data = new SolverData();
-            
+
             Assert.Equal(default(TimeStep), data.Step);
             Assert.Null(data.Positions);
             Assert.Null(data.Velocities);
@@ -61,12 +61,12 @@ namespace Alis.Core.Physic.Test.Dynamics
             {
                 Dt = 0.016f
             };
-            
+
             SolverData data = new SolverData
             {
                 Step = timeStep
             };
-            
+
             Assert.Equal(0.016f, data.Step.Dt);
         }
 
@@ -81,7 +81,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             {
                 Positions = positions
             };
-            
+
             Assert.NotNull(data.Positions);
             Assert.Equal(5, data.Positions.Length);
         }
@@ -97,7 +97,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             {
                 Velocities = velocities
             };
-            
+
             Assert.NotNull(data.Velocities);
             Assert.Equal(10, data.Velocities.Length);
         }
@@ -113,7 +113,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             {
                 Locks = locks
             };
-            
+
             Assert.NotNull(data.Locks);
             Assert.Equal(3, data.Locks.Length);
         }
@@ -130,7 +130,7 @@ namespace Alis.Core.Physic.Test.Dynamics
                 Velocities = new SolverVelocity[0],
                 Locks = new int[0]
             };
-            
+
             Assert.NotNull(data.Positions);
             Assert.NotNull(data.Velocities);
             Assert.NotNull(data.Locks);
@@ -147,9 +147,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             SolverData data1 = new SolverData();
             SolverData data2 = data1;
-            
+
             data2.Locks = new int[1];
-            
+
             Assert.Null(data1.Locks);
             Assert.NotNull(data2.Locks);
         }
@@ -160,11 +160,11 @@ namespace Alis.Core.Physic.Test.Dynamics
         [Fact]
         public void SolverData_ShouldHandleAllPropertiesTogether()
         {
-            TimeStep step = new TimeStep { Dt = 0.033f };
+            TimeStep step = new TimeStep {Dt = 0.033f};
             SolverPosition[] positions = new SolverPosition[2];
             SolverVelocity[] velocities = new SolverVelocity[2];
             int[] locks = new int[2];
-            
+
             SolverData data = new SolverData
             {
                 Step = step,
@@ -172,7 +172,7 @@ namespace Alis.Core.Physic.Test.Dynamics
                 Velocities = velocities,
                 Locks = locks
             };
-            
+
             Assert.Equal(0.033f, data.Step.Dt);
             Assert.Equal(2, data.Positions.Length);
             Assert.Equal(2, data.Velocities.Length);
@@ -180,4 +180,3 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
     }
 }
-

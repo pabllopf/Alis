@@ -53,9 +53,9 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 new Vector2F(0, 1)
             };
             float density = 1.0f;
-            
+
             PolygonShape polygon = new PolygonShape(vertices, density);
-            
+
             Assert.Equal(ShapeType.Polygon, polygon.ShapeType);
             Assert.NotNull(polygon.Vertices);
         }
@@ -67,9 +67,9 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         public void ConstructorWithDensity_ShouldInitializeCorrectly()
         {
             float density = 1.5f;
-            
+
             PolygonShape polygon = new PolygonShape(density);
-            
+
             Assert.Equal(ShapeType.Polygon, polygon.ShapeType);
             Assert.NotNull(polygon.Vertices);
             Assert.NotNull(polygon.Normals);
@@ -88,9 +88,9 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 new Vector2F(2, 0),
                 new Vector2F(1, 2)
             };
-            
+
             polygon.Vertices = vertices;
-            
+
             Assert.NotNull(polygon.Vertices);
             Assert.Equal(3, polygon.Vertices.Count);
         }
@@ -108,9 +108,9 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 new Vector2F(1, 0),
                 new Vector2F(0, 1)
             };
-            
+
             polygon.Vertices = vertices;
-            
+
             Assert.NotNull(polygon.Normals);
             Assert.Equal(3, polygon.Normals.Count);
         }
@@ -122,7 +122,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         public void ChildCount_ShouldReturnOne()
         {
             PolygonShape polygon = new PolygonShape(1.0f);
-            
+
             Assert.Equal(1, polygon.ChildCount);
         }
 
@@ -139,9 +139,9 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 new Vector2F(1, 1),
                 new Vector2F(0, 1)
             };
-            
+
             PolygonShape polygon = new PolygonShape(square, 1.0f);
-            
+
             Assert.NotNull(polygon.Vertices);
         }
 
@@ -157,9 +157,9 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 new Vector2F(1, 0),
                 new Vector2F(0.5f, 1)
             };
-            
+
             PolygonShape polygon = new PolygonShape(triangle, 1.0f);
-            
+
             Assert.Equal(3, polygon.Vertices.Count);
         }
 
@@ -175,9 +175,9 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 new Vector2F(1, 0),
                 new Vector2F(0, 1)
             };
-            
+
             PolygonShape polygon = new PolygonShape(vertices, 1.0f);
-            
+
             Assert.True(polygon.MassData.Mass > 0);
         }
 
@@ -193,9 +193,9 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 new Vector2F(1, 0),
                 new Vector2F(0, 1)
             };
-            
+
             PolygonShape polygon = new PolygonShape(vertices, 0.0f);
-            
+
             Assert.Equal(0, polygon.MassData.Mass);
         }
 
@@ -215,9 +215,9 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
             PolygonShape polygon = new PolygonShape(vertices, 1.0f);
             ControllerTransform transform = ControllerTransform.Identity;
             Vector2F point = new Vector2F(5, 5);
-            
+
             bool inside = polygon.TestPoint(ref transform, ref point);
-            
+
             Assert.True(inside);
         }
 
@@ -237,9 +237,9 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
             PolygonShape polygon = new PolygonShape(vertices, 1.0f);
             ControllerTransform transform = ControllerTransform.Identity;
             Vector2F point = new Vector2F(15, 15);
-            
+
             bool inside = polygon.TestPoint(ref transform, ref point);
-            
+
             Assert.False(inside);
         }
 
@@ -250,7 +250,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         public void PolygonShape_ShouldInheritFromShape()
         {
             PolygonShape polygon = new PolygonShape(1.0f);
-            
+
             Assert.IsAssignableFrom<Shape>(polygon);
         }
 
@@ -269,11 +269,10 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 new Vector2F(1, 2),
                 new Vector2F(0, 2)
             };
-            
+
             PolygonShape polygon = new PolygonShape(vertices, 1.0f);
-            
+
             Assert.NotNull(polygon.Vertices);
         }
     }
 }
-

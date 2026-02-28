@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IOnAfterUpdateTest.cs
+//  File:IOnAfterUpdateTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,21 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
     /// </summary>
     public class IOnAfterUpdateTest
     {
-        
-
-        /// <summary>
-        ///     Helper implementation for testing IOnAfterUpdate.
-        /// </summary>
-        private class AfterUpdateHandler : IOnAfterUpdate
-        {
-            public int CallCount { get; private set; }
-
-            public void OnAfterUpdate(IGameObject self)
-            {
-                CallCount++;
-            }
-        }
-
         /// <summary>
         ///     Tests that IOnAfterUpdate can be implemented.
         /// </summary>
@@ -88,8 +73,22 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
             {
                 handler.OnAfterUpdate(gameObject);
             }
+
             Assert.Equal(10, handler.CallCount);
+        }
+
+
+        /// <summary>
+        ///     Helper implementation for testing IOnAfterUpdate.
+        /// </summary>
+        private class AfterUpdateHandler : IOnAfterUpdate
+        {
+            public int CallCount { get; private set; }
+
+            public void OnAfterUpdate(IGameObject self)
+            {
+                CallCount++;
+            }
         }
     }
 }
-

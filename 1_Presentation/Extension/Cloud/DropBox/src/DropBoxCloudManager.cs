@@ -49,14 +49,14 @@ namespace Alis.Extension.Cloud.DropBox
     public class DropBoxCloudManager : AManager, ICloudManager, IDisposable
     {
         /// <summary>
-        ///     The Dropbox client
-        /// </summary>
-        private DropboxClient _dropboxClient;
-
-        /// <summary>
         ///     The access token
         /// </summary>
         private string _accessToken;
+
+        /// <summary>
+        ///     The Dropbox client
+        /// </summary>
+        private DropboxClient _dropboxClient;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="DropBoxCloudManager" /> class
@@ -83,7 +83,7 @@ namespace Alis.Extension.Cloud.DropBox
         /// <summary>
         ///     Gets a value indicating whether the manager is initialized with a valid access token
         /// </summary>
-        public bool IsInitialized => _dropboxClient != null && !string.IsNullOrEmpty(_accessToken);
+        public bool IsInitialized => (_dropboxClient != null) && !string.IsNullOrEmpty(_accessToken);
 
         /// <summary>
         ///     Initializes the Dropbox client with the given access token
@@ -228,7 +228,7 @@ namespace Alis.Extension.Cloud.DropBox
 
             try
             {
-                ListFolderResult result = await _dropboxClient.Files.ListFolderAsync(folderPath, recursive: recursive);
+                ListFolderResult result = await _dropboxClient.Files.ListFolderAsync(folderPath, recursive);
                 Logger.Info($"Listed {result.Entries.Count} items from DropBox path: {folderPath}");
                 return result.Entries;
             }
@@ -298,6 +298,12 @@ namespace Alis.Extension.Cloud.DropBox
             }
         }
 
+        public void Dispose()
+        {
+            GC.SuppressFinalize(this);
+            OnDestroy();
+        }
+
         /// <summary>
         ///     Ons the destroy
         /// </summary>
@@ -311,12 +317,6 @@ namespace Alis.Extension.Cloud.DropBox
             }
 
             base.OnDestroy();
-        }
-
-        public void Dispose()
-        {
-            GC.SuppressFinalize(this);
-            OnDestroy();
         }
     }
 }

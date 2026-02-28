@@ -47,9 +47,9 @@ namespace Alis.Core.Physic.Test.Collisions
         {
             Vector2F min = new Vector2F(1.0f, 2.0f);
             Vector2F max = new Vector2F(4.0f, 6.0f);
-            
+
             Aabb aabb = new Aabb(min, max);
-            
+
             Assert.Equal(min, aabb.LowerBound);
             Assert.Equal(max, aabb.UpperBound);
         }
@@ -62,9 +62,9 @@ namespace Alis.Core.Physic.Test.Collisions
         {
             Vector2F min = new Vector2F(1.0f, 2.0f);
             Vector2F max = new Vector2F(4.0f, 6.0f);
-            
+
             Aabb aabb = new Aabb(ref min, ref max);
-            
+
             Assert.Equal(min, aabb.LowerBound);
             Assert.Equal(max, aabb.UpperBound);
         }
@@ -78,9 +78,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Vector2F center = new Vector2F(5.0f, 5.0f);
             float width = 4.0f;
             float height = 6.0f;
-            
+
             Aabb aabb = new Aabb(center, width, height);
-            
+
             Assert.Equal(new Vector2F(3.0f, 2.0f), aabb.LowerBound);
             Assert.Equal(new Vector2F(7.0f, 8.0f), aabb.UpperBound);
         }
@@ -92,7 +92,7 @@ namespace Alis.Core.Physic.Test.Collisions
         public void Width_ShouldReturnCorrectValue()
         {
             Aabb aabb = new Aabb(new Vector2F(1.0f, 2.0f), new Vector2F(5.0f, 8.0f));
-            
+
             Assert.Equal(4.0f, aabb.Width);
         }
 
@@ -103,7 +103,7 @@ namespace Alis.Core.Physic.Test.Collisions
         public void Height_ShouldReturnCorrectValue()
         {
             Aabb aabb = new Aabb(new Vector2F(1.0f, 2.0f), new Vector2F(5.0f, 8.0f));
-            
+
             Assert.Equal(6.0f, aabb.Height);
         }
 
@@ -114,7 +114,7 @@ namespace Alis.Core.Physic.Test.Collisions
         public void Center_ShouldReturnCorrectValue()
         {
             Aabb aabb = new Aabb(new Vector2F(2.0f, 4.0f), new Vector2F(6.0f, 10.0f));
-            
+
             Assert.Equal(new Vector2F(4.0f, 7.0f), aabb.Center);
         }
 
@@ -125,7 +125,7 @@ namespace Alis.Core.Physic.Test.Collisions
         public void Extents_ShouldReturnCorrectValue()
         {
             Aabb aabb = new Aabb(new Vector2F(2.0f, 4.0f), new Vector2F(6.0f, 10.0f));
-            
+
             Assert.Equal(new Vector2F(2.0f, 3.0f), aabb.Extents);
         }
 
@@ -136,7 +136,7 @@ namespace Alis.Core.Physic.Test.Collisions
         public void Perimeter_ShouldReturnCorrectValue()
         {
             Aabb aabb = new Aabb(new Vector2F(1.0f, 2.0f), new Vector2F(5.0f, 8.0f));
-            
+
             float expectedPerimeter = 2.0f * (4.0f + 6.0f);
             Assert.Equal(expectedPerimeter, aabb.Perimeter);
         }
@@ -148,9 +148,9 @@ namespace Alis.Core.Physic.Test.Collisions
         public void Vertices_ShouldReturnCorrectCorners()
         {
             Aabb aabb = new Aabb(new Vector2F(1.0f, 2.0f), new Vector2F(5.0f, 8.0f));
-            
+
             Vertices vertices = aabb.Vertices;
-            
+
             Assert.Equal(4, vertices.Count);
             Assert.Equal(new Vector2F(5.0f, 8.0f), vertices[0]); // UpperBound
             Assert.Equal(new Vector2F(5.0f, 2.0f), vertices[1]);
@@ -165,9 +165,9 @@ namespace Alis.Core.Physic.Test.Collisions
         public void Q1_ShouldReturnFirstQuadrant()
         {
             Aabb aabb = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(10.0f, 10.0f));
-            
+
             Aabb q1 = aabb.Q1;
-            
+
             Assert.Equal(new Vector2F(5.0f, 5.0f), q1.LowerBound);
             Assert.Equal(new Vector2F(10.0f, 10.0f), q1.UpperBound);
         }
@@ -179,9 +179,9 @@ namespace Alis.Core.Physic.Test.Collisions
         public void Q2_ShouldReturnSecondQuadrant()
         {
             Aabb aabb = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(10.0f, 10.0f));
-            
+
             Aabb q2 = aabb.Q2;
-            
+
             Assert.Equal(new Vector2F(0.0f, 5.0f), q2.LowerBound);
             Assert.Equal(new Vector2F(5.0f, 10.0f), q2.UpperBound);
         }
@@ -193,9 +193,9 @@ namespace Alis.Core.Physic.Test.Collisions
         public void Q3_ShouldReturnThirdQuadrant()
         {
             Aabb aabb = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(10.0f, 10.0f));
-            
+
             Aabb q3 = aabb.Q3;
-            
+
             Assert.Equal(new Vector2F(0.0f, 0.0f), q3.LowerBound);
             Assert.Equal(new Vector2F(5.0f, 5.0f), q3.UpperBound);
         }
@@ -207,9 +207,9 @@ namespace Alis.Core.Physic.Test.Collisions
         public void Q4_ShouldReturnFourthQuadrant()
         {
             Aabb aabb = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(10.0f, 10.0f));
-            
+
             Aabb q4 = aabb.Q4;
-            
+
             Assert.Equal(new Vector2F(5.0f, 0.0f), q4.LowerBound);
             Assert.Equal(new Vector2F(10.0f, 5.0f), q4.UpperBound);
         }
@@ -221,7 +221,7 @@ namespace Alis.Core.Physic.Test.Collisions
         public void IsValid_ShouldReturnTrue_ForValidAabb()
         {
             Aabb aabb = new Aabb(new Vector2F(1.0f, 2.0f), new Vector2F(5.0f, 8.0f));
-            
+
             Assert.True(aabb.IsValid());
         }
 
@@ -232,7 +232,7 @@ namespace Alis.Core.Physic.Test.Collisions
         public void IsValid_ShouldReturnFalse_WhenUpperBoundLessThanLowerBound()
         {
             Aabb aabb = new Aabb(new Vector2F(5.0f, 8.0f), new Vector2F(1.0f, 2.0f));
-            
+
             Assert.False(aabb.IsValid());
         }
 
@@ -244,9 +244,9 @@ namespace Alis.Core.Physic.Test.Collisions
         {
             Aabb aabb1 = new Aabb(new Vector2F(1.0f, 2.0f), new Vector2F(5.0f, 6.0f));
             Aabb aabb2 = new Aabb(new Vector2F(3.0f, 4.0f), new Vector2F(7.0f, 8.0f));
-            
+
             aabb1.Combine(ref aabb2);
-            
+
             Assert.Equal(new Vector2F(1.0f, 2.0f), aabb1.LowerBound);
             Assert.Equal(new Vector2F(7.0f, 8.0f), aabb1.UpperBound);
         }
@@ -260,9 +260,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Aabb aabb = new Aabb();
             Aabb aabb1 = new Aabb(new Vector2F(1.0f, 2.0f), new Vector2F(5.0f, 6.0f));
             Aabb aabb2 = new Aabb(new Vector2F(3.0f, 4.0f), new Vector2F(7.0f, 8.0f));
-            
+
             aabb.Combine(ref aabb1, ref aabb2);
-            
+
             Assert.Equal(new Vector2F(1.0f, 2.0f), aabb.LowerBound);
             Assert.Equal(new Vector2F(7.0f, 8.0f), aabb.UpperBound);
         }
@@ -275,7 +275,7 @@ namespace Alis.Core.Physic.Test.Collisions
         {
             Aabb outerAabb = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(10.0f, 10.0f));
             Aabb innerAabb = new Aabb(new Vector2F(2.0f, 2.0f), new Vector2F(8.0f, 8.0f));
-            
+
             Assert.True(outerAabb.Contains(ref innerAabb));
         }
 
@@ -287,7 +287,7 @@ namespace Alis.Core.Physic.Test.Collisions
         {
             Aabb aabb1 = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(5.0f, 5.0f));
             Aabb aabb2 = new Aabb(new Vector2F(4.0f, 4.0f), new Vector2F(10.0f, 10.0f));
-            
+
             Assert.False(aabb1.Contains(ref aabb2));
         }
 
@@ -299,7 +299,7 @@ namespace Alis.Core.Physic.Test.Collisions
         {
             Aabb aabb = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(10.0f, 10.0f));
             Vector2F point = new Vector2F(5.0f, 5.0f);
-            
+
             Assert.True(aabb.Contains(ref point));
         }
 
@@ -311,7 +311,7 @@ namespace Alis.Core.Physic.Test.Collisions
         {
             Aabb aabb = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(10.0f, 10.0f));
             Vector2F point = new Vector2F(15.0f, 15.0f);
-            
+
             Assert.False(aabb.Contains(ref point));
         }
 
@@ -323,7 +323,7 @@ namespace Alis.Core.Physic.Test.Collisions
         {
             Aabb aabb1 = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(5.0f, 5.0f));
             Aabb aabb2 = new Aabb(new Vector2F(3.0f, 3.0f), new Vector2F(8.0f, 8.0f));
-            
+
             Assert.True(Aabb.TestOverlap(ref aabb1, ref aabb2));
         }
 
@@ -335,7 +335,7 @@ namespace Alis.Core.Physic.Test.Collisions
         {
             Aabb aabb1 = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(5.0f, 5.0f));
             Aabb aabb2 = new Aabb(new Vector2F(10.0f, 10.0f), new Vector2F(15.0f, 15.0f));
-            
+
             Assert.False(Aabb.TestOverlap(ref aabb1, ref aabb2));
         }
 
@@ -347,7 +347,7 @@ namespace Alis.Core.Physic.Test.Collisions
         {
             Aabb aabb1 = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(5.0f, 5.0f));
             Aabb aabb2 = new Aabb(new Vector2F(5.0f, 5.0f), new Vector2F(10.0f, 10.0f));
-            
+
             Assert.True(Aabb.TestOverlap(ref aabb1, ref aabb2));
         }
 
@@ -364,9 +364,9 @@ namespace Alis.Core.Physic.Test.Collisions
                 Point2 = new Vector2F(15.0f, 7.5f),
                 MaxFraction = 1.0f
             };
-            
-            bool hit = aabb.RayCast(out RayCastOutput output, ref input, true);
-            
+
+            bool hit = aabb.RayCast(out RayCastOutput output, ref input);
+
             Assert.True(hit);
         }
 
@@ -383,9 +383,9 @@ namespace Alis.Core.Physic.Test.Collisions
                 Point2 = new Vector2F(3.0f, 0.0f),
                 MaxFraction = 1.0f
             };
-            
-            bool hit = aabb.RayCast(out RayCastOutput output, ref input, true);
-            
+
+            bool hit = aabb.RayCast(out RayCastOutput output, ref input);
+
             Assert.False(hit);
         }
 
@@ -396,7 +396,7 @@ namespace Alis.Core.Physic.Test.Collisions
         public void Constructor_WithZeroDimensions_ShouldWork()
         {
             Aabb aabb = new Aabb(Vector2F.Zero, Vector2F.Zero);
-            
+
             Assert.Equal(Vector2F.Zero, aabb.LowerBound);
             Assert.Equal(Vector2F.Zero, aabb.UpperBound);
             Assert.Equal(0.0f, aabb.Width);
@@ -410,7 +410,7 @@ namespace Alis.Core.Physic.Test.Collisions
         public void Perimeter_WithZeroDimensions_ShouldReturnZero()
         {
             Aabb aabb = new Aabb(Vector2F.Zero, Vector2F.Zero);
-            
+
             Assert.Equal(0.0f, aabb.Perimeter);
         }
 
@@ -422,12 +422,11 @@ namespace Alis.Core.Physic.Test.Collisions
         {
             Aabb aabb1 = new Aabb(new Vector2F(1.0f, 2.0f), new Vector2F(5.0f, 6.0f));
             Aabb aabb2 = new Aabb(new Vector2F(1.0f, 2.0f), new Vector2F(5.0f, 6.0f));
-            
+
             aabb1.Combine(ref aabb2);
-            
+
             Assert.Equal(new Vector2F(1.0f, 2.0f), aabb1.LowerBound);
             Assert.Equal(new Vector2F(5.0f, 6.0f), aabb1.UpperBound);
         }
     }
 }
-

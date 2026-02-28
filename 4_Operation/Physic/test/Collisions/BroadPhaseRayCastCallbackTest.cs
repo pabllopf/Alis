@@ -50,16 +50,16 @@ namespace Alis.Core.Physic.Test.Collisions
                 invoked = true;
                 return 1.0f;
             };
-            
+
             RayCastInput rayCastInput = new RayCastInput
             {
                 Point1 = Vector2F.Zero,
                 Point2 = new Vector2F(10, 10),
                 MaxFraction = 1.0f
             };
-            
+
             float result = callback(ref rayCastInput, 0);
-            
+
             Assert.True(invoked);
             Assert.Equal(1.0f, result);
         }
@@ -70,22 +70,22 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void Callback_ShouldReceiveRayCastInputByReference()
         {
-            RayCastInput capturedInput = default;
+            RayCastInput capturedInput = default(RayCastInput);
             BroadPhaseRayCastCallback callback = (ref RayCastInput input, int proxyId) =>
             {
                 capturedInput = input;
                 return 1.0f;
             };
-            
+
             RayCastInput rayCastInput = new RayCastInput
             {
                 Point1 = new Vector2F(1, 2),
                 Point2 = new Vector2F(3, 4),
                 MaxFraction = 0.5f
             };
-            
+
             callback(ref rayCastInput, 0);
-            
+
             Assert.Equal(new Vector2F(1, 2), capturedInput.Point1);
             Assert.Equal(new Vector2F(3, 4), capturedInput.Point2);
         }
@@ -102,10 +102,10 @@ namespace Alis.Core.Physic.Test.Collisions
                 capturedProxyId = proxyId;
                 return 1.0f;
             };
-            
+
             RayCastInput rayCastInput = new RayCastInput();
             callback(ref rayCastInput, 99);
-            
+
             Assert.Equal(99, capturedProxyId);
         }
 
@@ -116,10 +116,10 @@ namespace Alis.Core.Physic.Test.Collisions
         public void Callback_ShouldReturnNegativeOne_ToIgnoreProxy()
         {
             BroadPhaseRayCastCallback callback = (ref RayCastInput input, int proxyId) => -1.0f;
-            
+
             RayCastInput rayCastInput = new RayCastInput();
             float result = callback(ref rayCastInput, 0);
-            
+
             Assert.Equal(-1.0f, result);
         }
 
@@ -130,10 +130,10 @@ namespace Alis.Core.Physic.Test.Collisions
         public void Callback_ShouldReturnZero_ToTerminateRayCast()
         {
             BroadPhaseRayCastCallback callback = (ref RayCastInput input, int proxyId) => 0.0f;
-            
+
             RayCastInput rayCastInput = new RayCastInput();
             float result = callback(ref rayCastInput, 0);
-            
+
             Assert.Equal(0.0f, result);
         }
 
@@ -144,10 +144,10 @@ namespace Alis.Core.Physic.Test.Collisions
         public void Callback_ShouldReturnFraction_ToClipRay()
         {
             BroadPhaseRayCastCallback callback = (ref RayCastInput input, int proxyId) => input.MaxFraction;
-            
-            RayCastInput rayCastInput = new RayCastInput { MaxFraction = 0.75f };
+
+            RayCastInput rayCastInput = new RayCastInput {MaxFraction = 0.75f};
             float result = callback(ref rayCastInput, 0);
-            
+
             Assert.Equal(0.75f, result);
         }
 
@@ -158,14 +158,22 @@ namespace Alis.Core.Physic.Test.Collisions
         public void Callback_ShouldBeChainable()
         {
             int callCount = 0;
-            BroadPhaseRayCastCallback callback1 = (ref RayCastInput input, int id) => { callCount++; return 1.0f; };
-            BroadPhaseRayCastCallback callback2 = (ref RayCastInput input, int id) => { callCount++; return 1.0f; };
-            
+            BroadPhaseRayCastCallback callback1 = (ref RayCastInput input, int id) =>
+            {
+                callCount++;
+                return 1.0f;
+            };
+            BroadPhaseRayCastCallback callback2 = (ref RayCastInput input, int id) =>
+            {
+                callCount++;
+                return 1.0f;
+            };
+
             BroadPhaseRayCastCallback combined = callback1 + callback2;
-            
+
             RayCastInput rayCastInput = new RayCastInput();
             combined(ref rayCastInput, 0);
-            
+
             Assert.Equal(2, callCount);
         }
 
@@ -176,15 +184,23 @@ namespace Alis.Core.Physic.Test.Collisions
         public void Callback_ShouldBeRemovable()
         {
             int callCount = 0;
-            BroadPhaseRayCastCallback callback1 = (ref RayCastInput input, int id) => { callCount++; return 1.0f; };
-            BroadPhaseRayCastCallback callback2 = (ref RayCastInput input, int id) => { callCount++; return 1.0f; };
-            
+            BroadPhaseRayCastCallback callback1 = (ref RayCastInput input, int id) =>
+            {
+                callCount++;
+                return 1.0f;
+            };
+            BroadPhaseRayCastCallback callback2 = (ref RayCastInput input, int id) =>
+            {
+                callCount++;
+                return 1.0f;
+            };
+
             BroadPhaseRayCastCallback combined = callback1 + callback2;
             combined -= callback1;
-            
+
             RayCastInput rayCastInput = new RayCastInput();
             combined(ref rayCastInput, 0);
-            
+
             Assert.Equal(1, callCount);
         }
 
@@ -200,10 +216,10 @@ namespace Alis.Core.Physic.Test.Collisions
                 capturedId = proxyId;
                 return 1.0f;
             };
-            
+
             RayCastInput rayCastInput = new RayCastInput();
             callback(ref rayCastInput, int.MaxValue);
-            
+
             Assert.Equal(int.MaxValue, capturedId);
         }
 
@@ -218,10 +234,10 @@ namespace Alis.Core.Physic.Test.Collisions
                 input.MaxFraction = 0.5f;
                 return 1.0f;
             };
-            
-            RayCastInput rayCastInput = new RayCastInput { MaxFraction = 1.0f };
+
+            RayCastInput rayCastInput = new RayCastInput {MaxFraction = 1.0f};
             callback(ref rayCastInput, 0);
-            
+
             Assert.Equal(0.5f, rayCastInput.MaxFraction);
         }
 
@@ -237,15 +253,14 @@ namespace Alis.Core.Physic.Test.Collisions
                 count++;
                 return 1.0f;
             };
-            
-            RayCastInput input1 = new RayCastInput { Point1 = Vector2F.Zero };
-            RayCastInput input2 = new RayCastInput { Point1 = new Vector2F(10, 10) };
-            
+
+            RayCastInput input1 = new RayCastInput {Point1 = Vector2F.Zero};
+            RayCastInput input2 = new RayCastInput {Point1 = new Vector2F(10, 10)};
+
             callback(ref input1, 0);
             callback(ref input2, 1);
-            
+
             Assert.Equal(2, count);
         }
     }
 }
-

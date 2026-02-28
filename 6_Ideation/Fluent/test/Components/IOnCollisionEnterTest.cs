@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IOnCollisionEnterTest.cs
+//  File:IOnCollisionEnterTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Fluent.Components;
 using Xunit;
 
@@ -38,28 +39,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
     /// </summary>
     public class IOnCollisionEnterTest
     {
-        
-
-        /// <summary>
-        ///     Helper implementation for testing IOnCollisionEnter.
-        /// </summary>
-        private class CollisionEnterHandler : IOnCollisionEnter
-        {
-            public int CollisionCount { get; private set; }
-            public IGameObject LastCollider { get; private set; }
-
-            public void OnCollisionEnter(IGameObject self, IGameObject collision)
-            {
-                CollisionCount++;
-                LastCollider = collision;
-            }
-
-            public void OnCollisionEnter(IGameObject other)
-            {
-                throw new System.NotImplementedException();
-            }
-        }
-
         /// <summary>
         ///     Tests that IOnCollisionEnter can be implemented.
         /// </summary>
@@ -112,6 +91,26 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
             Assert.Equal(2, handler.CollisionCount);
             Assert.Same(collision2, handler.LastCollider);
         }
+
+
+        /// <summary>
+        ///     Helper implementation for testing IOnCollisionEnter.
+        /// </summary>
+        private class CollisionEnterHandler : IOnCollisionEnter
+        {
+            public int CollisionCount { get; private set; }
+            public IGameObject LastCollider { get; private set; }
+
+            public void OnCollisionEnter(IGameObject other)
+            {
+                throw new NotImplementedException();
+            }
+
+            public void OnCollisionEnter(IGameObject self, IGameObject collision)
+            {
+                CollisionCount++;
+                LastCollider = collision;
+            }
+        }
     }
 }
-

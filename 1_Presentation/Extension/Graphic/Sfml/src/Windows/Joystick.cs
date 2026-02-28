@@ -163,8 +163,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// </summary>
         /// <param name="joystick">The joystick</param>
         /// <returns>The bool</returns>
-        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern bool sfJoystick_isConnected(uint joystick);
 
         /// <summary>
@@ -172,8 +171,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// </summary>
         /// <param name="joystick">The joystick</param>
         /// <returns>The uint</returns>
-        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern uint sfJoystick_getButtonCount(uint joystick);
 
         /// <summary>
@@ -182,8 +180,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// <param name="joystick">The joystick</param>
         /// <param name="axis">The axis</param>
         /// <returns>The bool</returns>
-        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern bool sfJoystick_hasAxis(uint joystick, Axis axis);
 
         /// <summary>
@@ -192,8 +189,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// <param name="joystick">The joystick</param>
         /// <param name="button">The button</param>
         /// <returns>The bool</returns>
-        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern bool sfJoystick_isButtonPressed(uint joystick, uint button);
 
         /// <summary>
@@ -202,15 +198,13 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// <param name="joystick">The joystick</param>
         /// <param name="axis">The axis</param>
         /// <returns>The float</returns>
-        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern float sfJoystick_getAxisPosition(uint joystick, Axis axis);
 
         /// <summary>
         ///     Sfs the joystick update
         /// </summary>
-        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern void sfJoystick_update();
 
         /// <summary>
@@ -218,8 +212,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// </summary>
         /// <param name="joystick">The joystick</param>
         /// <returns>The identification marshal data</returns>
-        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern IdentificationMarshalData sfJoystick_getIdentification(uint joystick);
 
 

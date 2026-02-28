@@ -46,7 +46,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void DefaultConstructor_ShouldInitializeWithDefaultValues()
         {
             ShapeData data = new ShapeData();
-            
+
             Assert.Null(data.Body);
             Assert.Equal(0.0f, data.Max);
             Assert.Equal(0.0f, data.Min);
@@ -60,12 +60,12 @@ namespace Alis.Core.Physic.Test.Common.Logic
         {
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body body = world.CreateBody();
-            
+
             ShapeData data = new ShapeData
             {
                 Body = body
             };
-            
+
             Assert.Equal(body, data.Body);
         }
 
@@ -79,7 +79,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
             {
                 Max = 45.0f
             };
-            
+
             Assert.Equal(45.0f, data.Max);
         }
 
@@ -93,7 +93,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
             {
                 Min = -30.0f
             };
-            
+
             Assert.Equal(-30.0f, data.Min);
         }
 
@@ -103,11 +103,11 @@ namespace Alis.Core.Physic.Test.Common.Logic
         [Fact]
         public void ShapeData_ShouldBeValueType()
         {
-            ShapeData data1 = new ShapeData { Max = 10.0f };
+            ShapeData data1 = new ShapeData {Max = 10.0f};
             ShapeData data2 = data1;
-            
+
             data2.Max = 20.0f;
-            
+
             Assert.NotEqual(data1.Max, data2.Max);
         }
 
@@ -119,14 +119,14 @@ namespace Alis.Core.Physic.Test.Common.Logic
         {
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body body = world.CreateBody();
-            
+
             ShapeData data = new ShapeData
             {
                 Body = body,
                 Max = 90.0f,
                 Min = -90.0f
             };
-            
+
             Assert.Equal(body, data.Body);
             Assert.Equal(90.0f, data.Max);
             Assert.Equal(-90.0f, data.Min);
@@ -143,7 +143,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
                 Max = -10.0f,
                 Min = -45.0f
             };
-            
+
             Assert.Equal(-10.0f, data.Max);
             Assert.Equal(-45.0f, data.Min);
         }
@@ -159,7 +159,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
                 Max = 0.0f,
                 Min = 0.0f
             };
-            
+
             Assert.Equal(0.0f, data.Max);
             Assert.Equal(0.0f, data.Min);
         }
@@ -175,7 +175,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
                 Max = 360.0f,
                 Min = -360.0f
             };
-            
+
             Assert.Equal(360.0f, data.Max);
             Assert.Equal(-360.0f, data.Min);
         }
@@ -192,7 +192,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
                 Max = 10.0f,
                 Min = 5.0f
             };
-            
+
             Assert.Null(data.Body);
         }
 
@@ -207,9 +207,8 @@ namespace Alis.Core.Physic.Test.Common.Logic
                 Max = 10.0f,
                 Min = 20.0f
             };
-            
+
             Assert.True(data.Min > data.Max);
         }
     }
 }
-

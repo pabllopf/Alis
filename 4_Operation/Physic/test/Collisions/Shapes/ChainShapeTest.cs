@@ -46,7 +46,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         public void DefaultConstructor_ShouldInitializeCorrectly()
         {
             ChainShape chain = new ChainShape();
-            
+
             Assert.Equal(ShapeType.Chain, chain.ShapeType);
         }
 
@@ -62,9 +62,9 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 new Vector2F(1, 0),
                 new Vector2F(2, 0)
             };
-            
+
             ChainShape chain = new ChainShape(vertices);
-            
+
             Assert.NotNull(chain.Vertices);
             Assert.Equal(3, chain.Vertices.Count);
         }
@@ -82,9 +82,9 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 new Vector2F(1, 1),
                 new Vector2F(0, 1)
             };
-            
+
             ChainShape chain = new ChainShape(vertices, true);
-            
+
             Assert.Equal(5, chain.Vertices.Count); // Should have added first vertex at end
         }
 
@@ -101,9 +101,9 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 new Vector2F(2, 0)
             };
             ChainShape chain = new ChainShape(vertices);
-            
+
             int childCount = chain.ChildCount;
-            
+
             Assert.Equal(2, childCount);
         }
 
@@ -115,9 +115,9 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         {
             ChainShape chain = new ChainShape();
             Vector2F prevVertex = new Vector2F(-1, 0);
-            
+
             chain.PrevVertex = prevVertex;
-            
+
             Assert.Equal(prevVertex, chain.PrevVertex);
         }
 
@@ -129,9 +129,9 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         {
             ChainShape chain = new ChainShape();
             Vector2F nextVertex = new Vector2F(10, 0);
-            
+
             chain.NextVertex = nextVertex;
-            
+
             Assert.Equal(nextVertex, chain.NextVertex);
         }
 
@@ -148,9 +148,9 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 new Vector2F(2, 0)
             };
             ChainShape chain = new ChainShape(vertices);
-            
+
             EdgeShape edge = chain.GetChildEdge(0);
-            
+
             Assert.NotNull(edge);
             Assert.Equal(ShapeType.Edge, edge.ShapeType);
         }
@@ -168,9 +168,9 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 new Vector2F(2, 0)
             };
             ChainShape chain = new ChainShape(vertices);
-            
+
             EdgeShape edge = chain.GetChildEdge(0);
-            
+
             Assert.Equal(vertices[0], edge.Vertex1);
             Assert.Equal(vertices[1], edge.Vertex2);
         }
@@ -186,9 +186,9 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 new Vector2F(0, 0),
                 new Vector2F(10, 0)
             };
-            
+
             ChainShape chain = new ChainShape(vertices);
-            
+
             Assert.Equal(1, chain.ChildCount);
         }
 
@@ -205,9 +205,9 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 new Vector2F(2, 0),
                 new Vector2F(3, 1)
             };
-            
+
             ChainShape chain = new ChainShape(vertices);
-            
+
             Assert.Equal(3, chain.ChildCount);
         }
 
@@ -218,7 +218,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         public void ChainShape_ShouldInheritFromShape()
         {
             ChainShape chain = new ChainShape();
-            
+
             Assert.IsAssignableFrom<Shape>(chain);
         }
 
@@ -235,9 +235,9 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 new Vector2F(2, 0)
             };
             ChainShape chain = new ChainShape(vertices);
-            
+
             EdgeShape edge = chain.GetChildEdge(0);
-            
+
             Assert.False(edge.HasVertex0);
         }
 
@@ -254,11 +254,10 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 new Vector2F(2, 0)
             };
             ChainShape chain = new ChainShape(vertices);
-            
+
             EdgeShape edge = chain.GetChildEdge(1);
-            
+
             Assert.False(edge.HasVertex3);
         }
     }
 }
-

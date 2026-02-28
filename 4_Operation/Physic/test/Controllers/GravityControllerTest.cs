@@ -46,9 +46,9 @@ namespace Alis.Core.Physic.Test.Controllers
         public void ConstructorWithStrength_ShouldInitializeCorrectly()
         {
             float strength = 10.0f;
-            
+
             GravityController controller = new GravityController(strength);
-            
+
             Assert.Equal(strength, controller.Strength);
             Assert.Equal(float.MaxValue, controller.MaxRadius);
             Assert.Equal(GravityType.DistanceSquared, controller.GravityType);
@@ -65,9 +65,9 @@ namespace Alis.Core.Physic.Test.Controllers
             float strength = 10.0f;
             float maxRadius = 100.0f;
             float minRadius = 5.0f;
-            
+
             GravityController controller = new GravityController(strength, maxRadius, minRadius);
-            
+
             Assert.Equal(strength, controller.Strength);
             Assert.Equal(maxRadius, controller.MaxRadius);
             Assert.Equal(minRadius, controller.MinRadius);
@@ -80,9 +80,9 @@ namespace Alis.Core.Physic.Test.Controllers
         public void StrengthProperty_ShouldSetAndGetCorrectly()
         {
             GravityController controller = new GravityController(10.0f);
-            
+
             controller.Strength = 20.0f;
-            
+
             Assert.Equal(20.0f, controller.Strength);
         }
 
@@ -93,9 +93,9 @@ namespace Alis.Core.Physic.Test.Controllers
         public void MinRadiusProperty_ShouldSetAndGetCorrectly()
         {
             GravityController controller = new GravityController(10.0f);
-            
+
             controller.MinRadius = 5.0f;
-            
+
             Assert.Equal(5.0f, controller.MinRadius);
         }
 
@@ -106,9 +106,9 @@ namespace Alis.Core.Physic.Test.Controllers
         public void MaxRadiusProperty_ShouldSetAndGetCorrectly()
         {
             GravityController controller = new GravityController(10.0f);
-            
+
             controller.MaxRadius = 50.0f;
-            
+
             Assert.Equal(50.0f, controller.MaxRadius);
         }
 
@@ -119,9 +119,9 @@ namespace Alis.Core.Physic.Test.Controllers
         public void GravityTypeProperty_ShouldSetAndGetCorrectly()
         {
             GravityController controller = new GravityController(10.0f);
-            
+
             controller.GravityType = GravityType.Linear;
-            
+
             Assert.Equal(GravityType.Linear, controller.GravityType);
         }
 
@@ -134,9 +134,9 @@ namespace Alis.Core.Physic.Test.Controllers
             GravityController controller = new GravityController(10.0f);
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body body = world.CreateBody();
-            
+
             controller.Bodies.Add(body);
-            
+
             Assert.Single(controller.Bodies);
         }
 
@@ -148,9 +148,9 @@ namespace Alis.Core.Physic.Test.Controllers
         {
             GravityController controller = new GravityController(10.0f);
             Vector2F point = new Vector2F(10, 20);
-            
+
             controller.Points.Add(point);
-            
+
             Assert.Single(controller.Points);
             Assert.Equal(point, controller.Points[0]);
         }
@@ -164,9 +164,9 @@ namespace Alis.Core.Physic.Test.Controllers
             GravityController controller = new GravityController(10.0f);
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             controller.WorldPhysic = world;
-            
+
             controller.Update(0.016f);
-            
+
             Assert.True(true); // No exception thrown
         }
 
@@ -177,7 +177,7 @@ namespace Alis.Core.Physic.Test.Controllers
         public void GravityController_ShouldHandleNegativeStrength()
         {
             GravityController controller = new GravityController(-10.0f);
-            
+
             Assert.Equal(-10.0f, controller.Strength);
         }
 
@@ -188,7 +188,7 @@ namespace Alis.Core.Physic.Test.Controllers
         public void GravityController_ShouldHandleZeroStrength()
         {
             GravityController controller = new GravityController(0.0f);
-            
+
             Assert.Equal(0.0f, controller.Strength);
         }
 
@@ -199,7 +199,7 @@ namespace Alis.Core.Physic.Test.Controllers
         public void GravityController_ShouldInheritFromController()
         {
             GravityController controller = new GravityController(10.0f);
-            
+
             Assert.IsAssignableFrom<Controller>(controller);
         }
 
@@ -213,11 +213,10 @@ namespace Alis.Core.Physic.Test.Controllers
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             controller.WorldPhysic = world;
             Body body = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
-            
+
             controller.Update(0.016f);
-            
+
             Assert.True(true); // No exception thrown
         }
     }
 }
-

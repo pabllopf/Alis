@@ -5,29 +5,28 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: Filters/LogLevelFilterEdgeCasesTest.cs
+//  File:LogLevelFilterEdgeCasesTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program. If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Logging.Abstractions;
 using Alis.Core.Aspect.Logging.Core;
 using Alis.Core.Aspect.Logging.Filters;
@@ -67,7 +66,7 @@ namespace Alis.Core.Aspect.Logging.Test.Filters
             // Arrange & Act & Assert
             for (byte i = 0; i <= 5; i++)
             {
-                LogLevel level = (LogLevel)i;
+                LogLevel level = (LogLevel) i;
                 LogLevelFilter filter = new LogLevelFilter(level);
                 Assert.NotNull(filter);
                 Assert.True(filter.ShouldLog(CreateEntry(level)));
@@ -78,12 +77,12 @@ namespace Alis.Core.Aspect.Logging.Test.Filters
         public void LogLevelFilter_ByteComparison_ShouldBeDirect()
         {
             // Arrange
-            LogLevelFilter filter = new LogLevelFilter((LogLevel)3); // Warning
+            LogLevelFilter filter = new LogLevelFilter((LogLevel) 3); // Warning
 
             // Act & Assert
-            Assert.True(filter.ShouldLog(CreateEntry((LogLevel)3)));
-            Assert.True(filter.ShouldLog(CreateEntry((LogLevel)4)));
-            Assert.False(filter.ShouldLog(CreateEntry((LogLevel)2)));
+            Assert.True(filter.ShouldLog(CreateEntry((LogLevel) 3)));
+            Assert.True(filter.ShouldLog(CreateEntry((LogLevel) 4)));
+            Assert.False(filter.ShouldLog(CreateEntry((LogLevel) 2)));
         }
 
         [Fact]
@@ -115,10 +114,6 @@ namespace Alis.Core.Aspect.Logging.Test.Filters
             }
         }
 
-        private static ILogEntry CreateEntry(LogLevel level)
-        {
-            return new LogEntry(level, "Test", "Logger");
-        }
+        private static ILogEntry CreateEntry(LogLevel level) => new LogEntry(level, "Test", "Logger");
     }
 }
-

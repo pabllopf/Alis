@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Ecs.Systems;
-using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
 
@@ -293,7 +292,7 @@ namespace Alis.Core.Ecs.Test
             // Assert
             Assert.False(entity.Has<Disable>());
         }
-        
+
 
         /// <summary>
         ///     Tests that many entities can be tagged
@@ -352,4 +351,3 @@ namespace Alis.Core.Ecs.Test
         public struct TestSelectedTag;
     }
 }
-

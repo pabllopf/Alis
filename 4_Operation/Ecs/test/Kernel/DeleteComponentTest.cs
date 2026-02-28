@@ -36,7 +36,7 @@ namespace Alis.Core.Ecs.Test.Kernel
     ///     The delete component test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="DeleteComponent"/> record struct which represents
+    ///     Tests the <see cref="DeleteComponent" /> record struct which represents
     ///     a command to remove a component from an entity.
     /// </remarks>
     public class DeleteComponentTest
@@ -80,7 +80,7 @@ namespace Alis.Core.Ecs.Test.Kernel
 
             // Assert
             Assert.Equal(99, deleteComp.Entity.ID);
-            Assert.Equal((ushort)10, deleteComp.Entity.Version);
+            Assert.Equal((ushort) 10, deleteComp.Entity.Version);
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace Alis.Core.Ecs.Test.Kernel
             DeleteComponent deleteComp = new DeleteComponent(entity, componentId);
 
             // Assert
-            Assert.Equal((ushort)42, deleteComp.ComponentId.RawIndex);
+            Assert.Equal((ushort) 42, deleteComp.ComponentId.RawIndex);
         }
 
         /// <summary>
@@ -169,4 +169,3 @@ namespace Alis.Core.Ecs.Test.Kernel
         }
     }
 }
-

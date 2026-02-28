@@ -83,7 +83,7 @@ namespace Alis.Core.Aspect.Time
         ///     Gets the value of the elapsed ticks
         /// </summary>
         public long ElapsedTicks => Elapsed.Ticks;
-        
+
         /// <summary>
         ///     Starts this instance
         /// </summary>

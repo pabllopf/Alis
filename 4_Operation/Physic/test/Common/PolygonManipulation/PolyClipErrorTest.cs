@@ -43,7 +43,7 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
         [Fact]
         public void None_ShouldHaveValueZero()
         {
-            Assert.Equal(0, (int)PolyClipError.None);
+            Assert.Equal(0, (int) PolyClipError.None);
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
         [Fact]
         public void DegeneratedOutput_ShouldHaveValueOne()
         {
-            Assert.Equal(1, (int)PolyClipError.DegeneratedOutput);
+            Assert.Equal(1, (int) PolyClipError.DegeneratedOutput);
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
         [Fact]
         public void NonSimpleInput_ShouldHaveValueTwo()
         {
-            Assert.Equal(2, (int)PolyClipError.NonSimpleInput);
+            Assert.Equal(2, (int) PolyClipError.NonSimpleInput);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
         [Fact]
         public void BrokenResult_ShouldHaveValueThree()
         {
-            Assert.Equal(3, (int)PolyClipError.BrokenResult);
+            Assert.Equal(3, (int) PolyClipError.BrokenResult);
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
                 PolyClipError.NonSimpleInput,
                 PolyClipError.BrokenResult
             };
-            
+
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = i + 1; j < values.Length; j++)
@@ -102,11 +102,10 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
         [Fact]
         public void Values_ShouldBeSequential()
         {
-            Assert.Equal(0, (int)PolyClipError.None);
-            Assert.Equal(1, (int)PolyClipError.DegeneratedOutput);
-            Assert.Equal(2, (int)PolyClipError.NonSimpleInput);
-            Assert.Equal(3, (int)PolyClipError.BrokenResult);
+            Assert.Equal(0, (int) PolyClipError.None);
+            Assert.Equal(1, (int) PolyClipError.DegeneratedOutput);
+            Assert.Equal(2, (int) PolyClipError.NonSimpleInput);
+            Assert.Equal(3, (int) PolyClipError.BrokenResult);
         }
     }
 }
-

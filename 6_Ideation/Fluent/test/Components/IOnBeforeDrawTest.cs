@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IOnBeforeDrawTest.cs
+//  File:IOnBeforeDrawTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,21 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
     /// </summary>
     public class IOnBeforeDrawTest
     {
-        
-
-        /// <summary>
-        ///     Helper implementation for testing IOnBeforeDraw.
-        /// </summary>
-        private class BeforeDrawHandler : IOnBeforeDraw
-        {
-            public int CallCount { get; private set; }
-
-            public void OnBeforeDraw(IGameObject self)
-            {
-                CallCount++;
-            }
-        }
-
         /// <summary>
         ///     Tests that IOnBeforeDraw can be implemented.
         /// </summary>
@@ -88,8 +73,22 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
             {
                 handler.OnBeforeDraw(gameObject);
             }
+
             Assert.Equal(60, handler.CallCount);
+        }
+
+
+        /// <summary>
+        ///     Helper implementation for testing IOnBeforeDraw.
+        /// </summary>
+        private class BeforeDrawHandler : IOnBeforeDraw
+        {
+            public int CallCount { get; private set; }
+
+            public void OnBeforeDraw(IGameObject self)
+            {
+                CallCount++;
+            }
         }
     }
 }
-

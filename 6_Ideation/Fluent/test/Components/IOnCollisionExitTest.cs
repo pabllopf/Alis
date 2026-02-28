@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IOnCollisionExitTest.cs
+//  File:IOnCollisionExitTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -39,26 +39,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
     /// </summary>
     public class IOnCollisionExitTest
     {
-        
-
-        /// <summary>
-        ///     Helper implementation for testing IOnCollisionExit.
-        /// </summary>
-        private class CollisionExitHandler : IOnCollisionExit
-        {
-            public int ExitCount { get; private set; }
-
-            public void OnCollisionExit(IGameObject self, IGameObject collision)
-            {
-                ExitCount++;
-            }
-
-            public void OnCollisionExit(IGameObject other)
-            {
-                throw new NotImplementedException();
-            }
-        }
-
         /// <summary>
         ///     Tests that IOnCollisionExit can be implemented.
         /// </summary>
@@ -96,6 +76,24 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
             handler.OnCollisionExit(self, collision);
             Assert.Equal(2, handler.ExitCount);
         }
+
+
+        /// <summary>
+        ///     Helper implementation for testing IOnCollisionExit.
+        /// </summary>
+        private class CollisionExitHandler : IOnCollisionExit
+        {
+            public int ExitCount { get; private set; }
+
+            public void OnCollisionExit(IGameObject other)
+            {
+                throw new NotImplementedException();
+            }
+
+            public void OnCollisionExit(IGameObject self, IGameObject collision)
+            {
+                ExitCount++;
+            }
+        }
     }
 }
-

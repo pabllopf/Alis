@@ -28,108 +28,108 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Xunit;
 using Alis.Core.Graphic.OpenGL.Enums;
+using Xunit;
 
 namespace Alis.Core.Graphic.Test.Enums
 {
     /// <summary>
-    /// Tests for the EnableCap enum validating all OpenGL capability flags.
+    ///     Tests for the EnableCap enum validating all OpenGL capability flags.
     /// </summary>
     public class EnableCapTest
     {
         /// <summary>
-        /// Tests that LineSmooth has correct value.
+        ///     Tests that LineSmooth has correct value.
         /// </summary>
         [Fact]
         public void LineSmooth_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x0B20, (int)EnableCap.LineSmooth);
+            Assert.Equal(0x0B20, (int) EnableCap.LineSmooth);
         }
 
         /// <summary>
-        /// Tests that PolygonSmooth has correct value.
+        ///     Tests that PolygonSmooth has correct value.
         /// </summary>
         [Fact]
         public void PolygonSmooth_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x0B41, (int)EnableCap.PolygonSmooth);
+            Assert.Equal(0x0B41, (int) EnableCap.PolygonSmooth);
         }
 
         /// <summary>
-        /// Tests that CullFace has correct value.
+        ///     Tests that CullFace has correct value.
         /// </summary>
         [Fact]
         public void CullFace_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x0B44, (int)EnableCap.CullFace);
+            Assert.Equal(0x0B44, (int) EnableCap.CullFace);
         }
 
         /// <summary>
-        /// Tests that DepthTest has correct value.
+        ///     Tests that DepthTest has correct value.
         /// </summary>
         [Fact]
         public void DepthTest_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x0B71, (int)EnableCap.DepthTest);
+            Assert.Equal(0x0B71, (int) EnableCap.DepthTest);
         }
 
         /// <summary>
-        /// Tests that StencilTest has correct value.
+        ///     Tests that StencilTest has correct value.
         /// </summary>
         [Fact]
         public void StencilTest_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x0B90, (int)EnableCap.StencilTest);
+            Assert.Equal(0x0B90, (int) EnableCap.StencilTest);
         }
 
         /// <summary>
-        /// Tests that Dither has correct value.
+        ///     Tests that Dither has correct value.
         /// </summary>
         [Fact]
         public void Dither_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x0BD0, (int)EnableCap.Dither);
+            Assert.Equal(0x0BD0, (int) EnableCap.Dither);
         }
 
         /// <summary>
-        /// Tests that Blend has correct value.
+        ///     Tests that Blend has correct value.
         /// </summary>
         [Fact]
         public void Blend_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x0BE2, (int)EnableCap.Blend);
+            Assert.Equal(0x0BE2, (int) EnableCap.Blend);
         }
 
         /// <summary>
-        /// Tests that IndexLogicOp has correct value.
+        ///     Tests that IndexLogicOp has correct value.
         /// </summary>
         [Fact]
         public void IndexLogicOp_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x0BF1, (int)EnableCap.IndexLogicOp);
+            Assert.Equal(0x0BF1, (int) EnableCap.IndexLogicOp);
         }
 
         /// <summary>
-        /// Tests that ColorLogicOp has correct value.
+        ///     Tests that ColorLogicOp has correct value.
         /// </summary>
         [Fact]
         public void ColorLogicOp_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x0BF2, (int)EnableCap.ColorLogicOp);
+            Assert.Equal(0x0BF2, (int) EnableCap.ColorLogicOp);
         }
 
         /// <summary>
-        /// Tests that ScissorTest has correct value.
+        ///     Tests that ScissorTest has correct value.
         /// </summary>
         [Fact]
         public void ScissorTest_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x0C11, (int)EnableCap.ScissorTest);
+            Assert.Equal(0x0C11, (int) EnableCap.ScissorTest);
         }
 
         /// <summary>
-        /// Tests that EnableCap is an enum type.
+        ///     Tests that EnableCap is an enum type.
         /// </summary>
         [Fact]
         public void EnableCap_IsEnum_TypeIsCorrect()
@@ -138,7 +138,7 @@ namespace Alis.Core.Graphic.Test.Enums
         }
 
         /// <summary>
-        /// Tests that EnableCap enum is public.
+        ///     Tests that EnableCap enum is public.
         /// </summary>
         [Fact]
         public void EnableCap_IsPublic_CanBeAccessed()
@@ -147,28 +147,28 @@ namespace Alis.Core.Graphic.Test.Enums
         }
 
         /// <summary>
-        /// Tests that EnableCap has multiple defined values.
+        ///     Tests that EnableCap has multiple defined values.
         /// </summary>
         [Fact]
         public void EnableCap_HasMultipleValues_CountIsNotZero()
         {
-            Array enumValues = System.Enum.GetValues(typeof(EnableCap));
+            Array enumValues = Enum.GetValues(typeof(EnableCap));
             Assert.NotEmpty(enumValues);
             Assert.True(enumValues.Length > 10);
         }
 
         /// <summary>
-        /// Tests that EnableCap can be cast to int.
+        ///     Tests that EnableCap can be cast to int.
         /// </summary>
         [Fact]
         public void EnableCap_CanCastToInt_ConversionIsValid()
         {
-            int value = (int)EnableCap.Blend;
+            int value = (int) EnableCap.Blend;
             Assert.IsType<int>(value);
         }
 
         /// <summary>
-        /// Tests that EnableCap values can be compared.
+        ///     Tests that EnableCap values can be compared.
         /// </summary>
         [Fact]
         public void EnableCap_CanCompareValues_EqualityWorks()
@@ -179,7 +179,7 @@ namespace Alis.Core.Graphic.Test.Enums
         }
 
         /// <summary>
-        /// Tests that different EnableCap values are not equal.
+        ///     Tests that different EnableCap values are not equal.
         /// </summary>
         [Fact]
         public void EnableCap_DifferentValues_AreNotEqual()
@@ -188,7 +188,7 @@ namespace Alis.Core.Graphic.Test.Enums
         }
 
         /// <summary>
-        /// Tests that EnableCap contains common capabilities.
+        ///     Tests that EnableCap contains common capabilities.
         /// </summary>
         [Fact]
         public void EnableCap_ContainsCommonCapabilities_AllPresent()
@@ -206,4 +206,3 @@ namespace Alis.Core.Graphic.Test.Enums
         }
     }
 }
-

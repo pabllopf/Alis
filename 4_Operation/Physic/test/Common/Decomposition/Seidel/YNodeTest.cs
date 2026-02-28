@@ -50,9 +50,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             Trapezoid rightTrap = CreateTestTrapezoid();
             Sink leftChild = Sink.Isink(leftTrap);
             Sink rightChild = Sink.Isink(rightTrap);
-            
+
             YNode yNode = new YNode(edge, leftChild, rightChild);
-            
+
             Assert.NotNull(yNode);
         }
 
@@ -70,13 +70,13 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             Sink leftChild = Sink.Isink(leftTrap);
             Sink rightChild = Sink.Isink(rightTrap);
             YNode yNode = new YNode(splitEdge, leftChild, rightChild);
-            
+
             Point testStart = new Point(5, 0);
             Point testEnd = new Point(6, 1);
             Edge testEdge = new Edge(testStart, testEnd);
-            
+
             Sink result = yNode.Locate(testEdge);
-            
+
             Assert.Equal(rightChild, result);
         }
 
@@ -94,13 +94,13 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             Sink leftChild = Sink.Isink(leftTrap);
             Sink rightChild = Sink.Isink(rightTrap);
             YNode yNode = new YNode(splitEdge, leftChild, rightChild);
-            
+
             Point testStart = new Point(5, 10);
             Point testEnd = new Point(6, 11);
             Edge testEdge = new Edge(testStart, testEnd);
-            
+
             Sink result = yNode.Locate(testEdge);
-            
+
             Assert.Equal(leftChild, result);
         }
 
@@ -118,13 +118,13 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             Sink leftChild = Sink.Isink(leftTrap);
             Sink rightChild = Sink.Isink(rightTrap);
             YNode yNode = new YNode(splitEdge, leftChild, rightChild);
-            
+
             Point testStart = new Point(0, 0);
             Point testEnd = new Point(10, 5);
             Edge testEdge = new Edge(testStart, testEnd);
-            
+
             Sink result = yNode.Locate(testEdge);
-            
+
             Assert.NotNull(result);
         }
 
@@ -141,9 +141,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             Trapezoid rightTrap = CreateTestTrapezoid();
             Sink leftChild = Sink.Isink(leftTrap);
             Sink rightChild = Sink.Isink(rightTrap);
-            
+
             YNode yNode = new YNode(edge, leftChild, rightChild);
-            
+
             Assert.IsAssignableFrom<Node>(yNode);
         }
 
@@ -160,9 +160,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             Trapezoid rightTrap = CreateTestTrapezoid();
             Sink leftChild = Sink.Isink(leftTrap);
             Sink rightChild = Sink.Isink(rightTrap);
-            
+
             YNode yNode = new YNode(splitEdge, leftChild, rightChild);
-            
+
             Assert.NotNull(yNode);
         }
 
@@ -179,9 +179,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             Trapezoid rightTrap = CreateTestTrapezoid();
             Sink leftChild = Sink.Isink(leftTrap);
             Sink rightChild = Sink.Isink(rightTrap);
-            
+
             YNode yNode = new YNode(splitEdge, leftChild, rightChild);
-            
+
             Assert.NotNull(yNode);
         }
 
@@ -199,4 +199,3 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         }
     }
 }
-

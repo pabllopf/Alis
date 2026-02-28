@@ -53,7 +53,7 @@ namespace Alis.Core.Ecs.Test
             const int entityCount = 100;
             for (int i = 0; i < entityCount; i++)
             {
-                scene.Create(new Position { X = i, Y = i * 2 });
+                scene.Create(new Position {X = i, Y = i * 2});
             }
 
             // Act
@@ -76,10 +76,10 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position { X = 1 });
-            scene.Create(new Position { X = 2 }, new Health { Value = 100 });
-            scene.Create(new Health { Value = 50 });
-            scene.Create(new Position { X = 3 }, new Health { Value = 75 }, new Velocity { VX = 1, VY = 1 });
+            scene.Create(new Position {X = 1});
+            scene.Create(new Position {X = 2}, new Health {Value = 100});
+            scene.Create(new Health {Value = 50});
+            scene.Create(new Position {X = 3}, new Health {Value = 75}, new Velocity {VX = 1, VY = 1});
 
             // Act
             Query positionOnly = scene.Query<With<Position>>();
@@ -88,15 +88,21 @@ namespace Alis.Core.Ecs.Test
 
             int pos = 0;
             foreach (Ecs.Systems.GameObjectRefTuple<Position> _ in positionOnly.EnumerateWithEntities<Position>())
+            {
                 pos++;
+            }
 
             int posHealth = 0;
             foreach (GameObjectRefTuple<Position, Health> _ in positionAndHealth.EnumerateWithEntities<Position, Health>())
+            {
                 posHealth++;
+            }
 
             int posHealthVel = 0;
             foreach (GameObjectRefTuple<Position, Health, Velocity> _ in positionHealthVelocity.EnumerateWithEntities<Position, Health, Velocity>())
+            {
                 posHealthVel++;
+            }
 
             // Assert
             Assert.Equal(3, pos);
@@ -112,22 +118,26 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(new Position { X = 1 });
-            GameObject entity2 = scene.Create(new Position { X = 2 });
+            GameObject entity1 = scene.Create(new Position {X = 1});
+            GameObject entity2 = scene.Create(new Position {X = 2});
 
             Query query = scene.Query<With<Position>, With<Health>>();
 
             // Act - Initially no entities with both
             int count1 = 0;
             foreach (GameObjectRefTuple<Position, Health> _ in query.EnumerateWithEntities<Position, Health>())
+            {
                 count1++;
+            }
 
-            entity1.Add(new Health { Value = 100 });
+            entity1.Add(new Health {Value = 100});
 
             // Assert - Now one entity has both
             int count2 = 0;
             foreach (GameObjectRefTuple<Position, Health> _ in query.EnumerateWithEntities<Position, Health>())
+            {
                 count2++;
+            }
 
             Assert.Equal(0, count1);
             Assert.Equal(1, count2);
@@ -147,7 +157,7 @@ namespace Alis.Core.Ecs.Test
             GameObject[] entities = new GameObject[operationCount];
             for (int i = 0; i < operationCount; i++)
             {
-                entities[i] = scene.Create(new Position { X = i });
+                entities[i] = scene.Create(new Position {X = i});
             }
 
             for (int i = 0; i < operationCount / 2; i++)
@@ -159,7 +169,9 @@ namespace Alis.Core.Ecs.Test
             Query query = scene.Query<With<Position>>();
             int count = 0;
             foreach (Ecs.Systems.GameObjectRefTuple<Position> _ in query.EnumerateWithEntities<Position>())
+            {
                 count++;
+            }
 
             Assert.Equal(operationCount / 2, count);
         }
@@ -172,13 +184,13 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position { X = 10, Y = 20 });
-            scene.Create(new Position { X = 30, Y = 40 });
+            scene.Create(new Position {X = 10, Y = 20});
+            scene.Create(new Position {X = 30, Y = 40});
 
             // Act
             Query query = scene.Query<With<Position>>();
             int count = 0;
-            
+
             foreach (var (_, _) in query.EnumerateWithEntities<Position>())
             {
                 count++;
@@ -199,27 +211,35 @@ namespace Alis.Core.Ecs.Test
             for (int i = 0; i < 50; i++)
             {
                 if (i % 2 == 0)
-                    scene.Create(new Position { X = i });
+                {
+                    scene.Create(new Position {X = i});
+                }
                 else
-                    scene.Create(new Health { Value = i });
+                {
+                    scene.Create(new Health {Value = i});
+                }
             }
 
             // Act
             Query query = scene.Query<With<Position>>();
             int[] counts = new int[5];
-            
+
             for (int iteration = 0; iteration < 5; iteration++)
             {
                 int count = 0;
                 foreach (Ecs.Systems.GameObjectRefTuple<Position> _ in query.EnumerateWithEntities<Position>())
+                {
                     count++;
+                }
+
                 counts[iteration] = count;
             }
 
             // Assert - All iterations should have same count
             for (int i = 0; i < 5; i++)
+            {
                 Assert.Equal(25, counts[i]);
+            }
         }
     }
 }
-

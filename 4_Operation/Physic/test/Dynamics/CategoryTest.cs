@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Physic.Dynamics;
 using Xunit;
 
@@ -44,9 +45,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void NoneEnumValue_ShouldBeZero()
         {
             Category category = Category.None;
-            
+
             Assert.Equal(Category.None, category);
-            Assert.Equal(0x00000000, (int)category);
+            Assert.Equal(0x00000000, (int) category);
         }
 
         /// <summary>
@@ -56,8 +57,8 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Cat1EnumValue_ShouldBeDefined()
         {
             Category category = Category.Cat1;
-            
-            Assert.Equal(0x00000001, (int)category);
+
+            Assert.Equal(0x00000001, (int) category);
         }
 
         /// <summary>
@@ -67,8 +68,8 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Cat2EnumValue_ShouldBeDefined()
         {
             Category category = Category.Cat2;
-            
-            Assert.Equal(0x00000002, (int)category);
+
+            Assert.Equal(0x00000002, (int) category);
         }
 
         /// <summary>
@@ -78,7 +79,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Cat31EnumValue_ShouldBeDefined()
         {
             Category category = Category.Cat31;
-            
+
             Assert.Equal(Category.Cat31, category);
         }
 
@@ -89,9 +90,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void AllEnumValue_ShouldBeMaxValue()
         {
             Category category = Category.All;
-            
+
             Assert.Equal(Category.All, category);
-            Assert.Equal(int.MaxValue, (int)category);
+            Assert.Equal(int.MaxValue, (int) category);
         }
 
         /// <summary>
@@ -101,8 +102,8 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Category_ShouldSupportBitwiseOrOperation()
         {
             Category combined = Category.Cat1 | Category.Cat2;
-            
-            Assert.Equal(0x00000003, (int)combined);
+
+            Assert.Equal(0x00000003, (int) combined);
         }
 
         /// <summary>
@@ -113,7 +114,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             Category combined = Category.Cat1 | Category.Cat2;
             Category result = combined & Category.Cat1;
-            
+
             Assert.Equal(Category.Cat1, result);
         }
 
@@ -125,7 +126,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             Category combined = Category.Cat1 | Category.Cat2;
             Category result = combined ^ Category.Cat1;
-            
+
             Assert.Equal(Category.Cat2, result);
         }
 
@@ -136,7 +137,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Category_ShouldSupportMultipleFlags()
         {
             Category multi = Category.Cat1 | Category.Cat5 | Category.Cat10;
-            
+
             Assert.True((multi & Category.Cat1) != 0);
             Assert.True((multi & Category.Cat5) != 0);
             Assert.True((multi & Category.Cat10) != 0);
@@ -150,7 +151,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Category_ShouldSupportHasFlagCheck()
         {
             Category multi = Category.Cat1 | Category.Cat2;
-            
+
             Assert.True(multi.HasFlag(Category.Cat1));
             Assert.True(multi.HasFlag(Category.Cat2));
             Assert.False(multi.HasFlag(Category.Cat3));
@@ -163,7 +164,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void AllCategory_ShouldContainAllOtherCategories()
         {
             Category all = Category.All;
-            
+
             Assert.True(all.HasFlag(Category.Cat1));
             Assert.True(all.HasFlag(Category.Cat15));
             Assert.True(all.HasFlag(Category.Cat31));
@@ -175,8 +176,8 @@ namespace Alis.Core.Physic.Test.Dynamics
         [Fact]
         public void Category_ShouldBeFlagsEnum()
         {
-            object[] attributes = typeof(Category).GetCustomAttributes(typeof(System.FlagsAttribute), false);
-            
+            object[] attributes = typeof(Category).GetCustomAttributes(typeof(FlagsAttribute), false);
+
             Assert.NotEmpty(attributes);
         }
 
@@ -188,9 +189,8 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             Category cat = Category.Cat1;
             Category inverted = ~cat;
-            
+
             Assert.False(inverted.HasFlag(Category.Cat1));
         }
     }
 }
-

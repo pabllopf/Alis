@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IGraphicTest.cs
+//  File:IGraphicTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,28 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
     /// </summary>
     public class IGraphicTest
     {
-        /// <summary>
-        ///     Helper builder class for graphics.
-        /// </summary>
-        private class GraphicBuilder
-        {
-            public string GraphicType { get; set; }
-        }
-
-        /// <summary>
-        ///     Helper implementation of IGraphic.
-        /// </summary>
-        private class GraphicBuilderImpl : IGraphic<GraphicBuilder, string>
-        {
-            private readonly GraphicBuilder _builder = new GraphicBuilder();
-
-            public GraphicBuilder Graphic(string value)
-            {
-                _builder.GraphicType = value;
-                return _builder;
-            }
-        }
-
         /// <summary>
         ///     Tests that IGraphic can be implemented.
         /// </summary>
@@ -97,17 +75,34 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Tests Graphic with various types.
         /// </summary>
-        [Theory]
-        [InlineData("Sprite")]
-        [InlineData("Mesh")]
-        [InlineData("Particle")]
-        [InlineData("Trail")]
+        [Theory, InlineData("Sprite"), InlineData("Mesh"), InlineData("Particle"), InlineData("Trail")]
         public void Graphic_WithVariousTypes(string type)
         {
             GraphicBuilderImpl builder = new GraphicBuilderImpl();
             GraphicBuilder result = builder.Graphic(type);
             Assert.Equal(type, result.GraphicType);
         }
+
+        /// <summary>
+        ///     Helper builder class for graphics.
+        /// </summary>
+        private class GraphicBuilder
+        {
+            public string GraphicType { get; set; }
+        }
+
+        /// <summary>
+        ///     Helper implementation of IGraphic.
+        /// </summary>
+        private class GraphicBuilderImpl : IGraphic<GraphicBuilder, string>
+        {
+            private readonly GraphicBuilder _builder = new GraphicBuilder();
+
+            public GraphicBuilder Graphic(string value)
+            {
+                _builder.GraphicType = value;
+                return _builder;
+            }
+        }
     }
 }
-

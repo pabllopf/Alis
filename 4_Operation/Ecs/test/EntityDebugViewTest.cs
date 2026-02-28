@@ -37,7 +37,7 @@ using Xunit;
 namespace Alis.Core.Ecs.Test
 {
     /// <summary>
-    ///     Tests the <see cref="EntityDebugView"/> class.
+    ///     Tests the <see cref="EntityDebugView" /> class.
     /// </summary>
     public class EntityDebugViewTest
     {
@@ -52,19 +52,19 @@ namespace Alis.Core.Ecs.Test
             GameObject entity = world.Create();
             entity.Add(new Position());
             entity.Add(new Velocity());
-            
+
             // Act
             EntityDebugView debugView = new EntityDebugView(entity);
-            
+
             // Assert
             Assert.NotNull(debugView);
             Assert.NotNull(debugView.ComponentTypes);
             Assert.NotNull(debugView.Tags);
             Assert.NotNull(debugView.Components);
-            
+
             world.Dispose();
         }
-        
+
         /// <summary>
         ///     Tests that component types returns correct component types for entity.
         /// </summary>
@@ -76,19 +76,19 @@ namespace Alis.Core.Ecs.Test
             GameObject entity = world.Create();
             entity.Add(new Position());
             entity.Add(new Velocity());
-            
+
             // Act
             EntityDebugView debugView = new EntityDebugView(entity);
             FastImmutableArray<ComponentId> componentTypes = debugView.ComponentTypes;
-            
+
             // Assert
             Assert.Equal(2, componentTypes.Length);
             Assert.Contains(componentTypes, c => c.Type == typeof(Position));
             Assert.Contains(componentTypes, c => c.Type == typeof(Velocity));
-            
+
             world.Dispose();
         }
-        
+
         /// <summary>
         ///     Tests that tags returns correct tag types for entity.
         /// </summary>
@@ -99,18 +99,18 @@ namespace Alis.Core.Ecs.Test
             Scene world = new Scene();
             GameObject entity = world.Create();
             entity.Tag<PlayerTag>();
-            
+
             // Act
             EntityDebugView debugView = new EntityDebugView(entity);
             FastImmutableArray<TagId> tags = debugView.Tags;
-            
+
             // Assert
             Assert.Single(tags);
             Assert.Equal(typeof(PlayerTag), tags[0].Type);
-            
+
             world.Dispose();
         }
-        
+
         /// <summary>
         ///     Tests that components returns dictionary with all components.
         /// </summary>
@@ -120,23 +120,23 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             Scene world = new Scene();
             GameObject entity = world.Create();
-            Position position = new Position { X = 10, Y = 20 };
-            Velocity velocity = new Velocity { VX = 1, VY = 2 };
+            Position position = new Position {X = 10, Y = 20};
+            Velocity velocity = new Velocity {VX = 1, VY = 2};
             entity.Add(position);
             entity.Add(velocity);
-            
+
             // Act
             EntityDebugView debugView = new EntityDebugView(entity);
             Dictionary<Type, object> components = debugView.Components;
-            
+
             // Assert
             Assert.Equal(2, components.Count);
             Assert.True(components.ContainsKey(typeof(Position)));
             Assert.True(components.ContainsKey(typeof(Velocity)));
-            
+
             world.Dispose();
         }
-        
+
         /// <summary>
         ///     Tests that components with dead entity should return empty dictionary.
         /// </summary>
@@ -148,17 +148,17 @@ namespace Alis.Core.Ecs.Test
             GameObject entity = world.Create();
             entity.Add(new Position());
             entity.Delete();
-            
+
             // Act
             EntityDebugView debugView = new EntityDebugView(entity);
             Dictionary<Type, object> components = debugView.Components;
-            
+
             // Assert
             Assert.Empty(components);
-            
+
             world.Dispose();
         }
-        
+
         /// <summary>
         ///     Tests that components with no components should return empty dictionary.
         /// </summary>
@@ -168,16 +168,15 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             Scene world = new Scene();
             GameObject entity = world.Create();
-            
+
             // Act
             EntityDebugView debugView = new EntityDebugView(entity);
             Dictionary<Type, object> components = debugView.Components;
-            
+
             // Assert
             Assert.Empty(components);
-            
+
             world.Dispose();
         }
     }
 }
-

@@ -27,10 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.Systems;
-using Alis.Core.Ecs.Test.Models;
-using Xunit;
-
 namespace Alis.Core.Ecs.Test.Systems
 {
     /// <summary>
@@ -42,7 +38,5 @@ namespace Alis.Core.Ecs.Test.Systems
     /// </remarks>
     public class QueryAdvancedTest
     {
-       
     }
 }
-

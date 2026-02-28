@@ -48,7 +48,7 @@ namespace Alis.Core.Ecs.Test
         public void GameObject_DefaultIsNull()
         {
             // Arrange & Act
-            GameObject defaultEntity = default;
+            GameObject defaultEntity = default(GameObject);
 
             // Assert
             Assert.True(defaultEntity.IsNull);
@@ -149,7 +149,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject nullEntity = default;
+            GameObject nullEntity = default(GameObject);
             GameObject validEntity = scene.Create();
 
             // Act & Assert
@@ -169,8 +169,8 @@ namespace Alis.Core.Ecs.Test
             int originalId = entity.EntityID;
 
             // Act
-            entity.Add(new Position { X = 1 });
-            entity.Add(new Health { Value = 100 });
+            entity.Add(new Position {X = 1});
+            entity.Add(new Health {Value = 100});
             entity.Remove<Position>();
 
             // Assert
@@ -178,4 +178,3 @@ namespace Alis.Core.Ecs.Test
         }
     }
 }
-

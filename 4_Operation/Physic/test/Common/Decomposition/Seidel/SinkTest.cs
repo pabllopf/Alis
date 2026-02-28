@@ -44,9 +44,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         public void Isink_ShouldCreateNewSink_WhenTrapezoidHasNoSink()
         {
             Trapezoid trapezoid = CreateTestTrapezoid();
-            
+
             Sink sink = Sink.Isink(trapezoid);
-            
+
             Assert.NotNull(sink);
             Assert.Equal(trapezoid, sink.Trapezoid);
         }
@@ -59,9 +59,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         {
             Trapezoid trapezoid = CreateTestTrapezoid();
             Sink firstSink = Sink.Isink(trapezoid);
-            
+
             Sink secondSink = Sink.Isink(trapezoid);
-            
+
             Assert.Same(firstSink, secondSink);
         }
 
@@ -73,7 +73,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         {
             Trapezoid trapezoid = CreateTestTrapezoid();
             Sink sink = Sink.Isink(trapezoid);
-            
+
             Assert.Equal(trapezoid, sink.Trapezoid);
         }
 
@@ -88,9 +88,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             Point p1 = new Point(0, 0);
             Point p2 = new Point(10, 10);
             Edge edge = new Edge(p1, p2);
-            
+
             Sink result = sink.Locate(edge);
-            
+
             Assert.Equal(sink, result);
         }
 
@@ -102,7 +102,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         {
             Trapezoid trapezoid = CreateTestTrapezoid();
             Sink sink = Sink.Isink(trapezoid);
-            
+
             Assert.IsAssignableFrom<Node>(sink);
         }
 
@@ -113,9 +113,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         public void Isink_ShouldLinkTrapezoidToSink()
         {
             Trapezoid trapezoid = CreateTestTrapezoid();
-            
+
             Sink sink = Sink.Isink(trapezoid);
-            
+
             Assert.Equal(sink, trapezoid.Sink);
         }
 
@@ -126,11 +126,11 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         public void MultipleCalls_ToIsink_ShouldReturnSameInstance()
         {
             Trapezoid trapezoid = CreateTestTrapezoid();
-            
+
             Sink sink1 = Sink.Isink(trapezoid);
             Sink sink2 = Sink.Isink(trapezoid);
             Sink sink3 = Sink.Isink(trapezoid);
-            
+
             Assert.Same(sink1, sink2);
             Assert.Same(sink2, sink3);
         }
@@ -146,9 +146,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             Point p1 = new Point(100, 200);
             Point p2 = new Point(300, 400);
             Edge edge = new Edge(p1, p2);
-            
+
             Sink result = sink.Locate(edge);
-            
+
             Assert.NotNull(result);
         }
 
@@ -166,4 +166,3 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         }
     }
 }
-

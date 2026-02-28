@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Extension.Thread.Configuration;
 using Alis.Extension.Thread.Integration;
 
@@ -46,10 +45,7 @@ namespace Alis.Extension.Thread.Builder
         /// <summary>
         ///     Initializes a new instance of the <see cref="ParallelExtensionBuilder" /> class
         /// </summary>
-        public ParallelExtensionBuilder()
-        {
-            configBuilder = new ParallelExtensionConfigurationBuilder();
-        }
+        public ParallelExtensionBuilder() => configBuilder = new ParallelExtensionConfigurationBuilder();
 
         /// <summary>
         ///     Creates a new builder instance
@@ -92,11 +88,9 @@ namespace Alis.Extension.Thread.Builder
         ///     Uses automatic thread count based on processor count
         /// </summary>
         /// <returns>This builder</returns>
-        public ParallelExtensionBuilder WithAutoThreadCount()
-        {
+        public ParallelExtensionBuilder WithAutoThreadCount() =>
             // Don't set max degree, let it use default based on processor count
-            return this;
-        }
+            this;
 
         /// <summary>
         ///     Sets the minimum batch size per thread
@@ -131,4 +125,3 @@ namespace Alis.Extension.Thread.Builder
         }
     }
 }
-

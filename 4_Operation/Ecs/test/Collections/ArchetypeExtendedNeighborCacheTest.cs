@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ArchetypeNeighborCacheTest.cs
+//  File:ArchetypeExtendedNeighborCacheTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -36,7 +36,7 @@ namespace Alis.Core.Ecs.Test.Collections
     ///     The archetype neighbor cache test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="ArchetypeNeighborCache"/> struct which maintains
+    ///     Tests the <see cref="ArchetypeNeighborCache" /> struct which maintains
     ///     a fast cache for frequently accessed adjacent archetypes.
     /// </remarks>
     public class ArchetypeExtendedNeighborCacheTest
@@ -103,7 +103,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void ArchetypeNeighborCache_CanBeDefaultInitialized()
         {
             // Act
-            ArchetypeNeighborCache cache = default;
+            ArchetypeNeighborCache cache = default(ArchetypeNeighborCache);
 
             // Assert
             Assert.NotNull(cache);
@@ -128,4 +128,3 @@ namespace Alis.Core.Ecs.Test.Collections
         }
     }
 }
-

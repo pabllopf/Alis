@@ -97,4 +97,3 @@ namespace Alis.Extension.Language.Dialogue.Core
         }
     }
 }
-

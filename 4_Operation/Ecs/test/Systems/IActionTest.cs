@@ -73,7 +73,7 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             // Arrange
             StructModifyAction action = new StructModifyAction();
-            TestStruct testStruct = new TestStruct { Value = 10 };
+            TestStruct testStruct = new TestStruct {Value = 10};
 
             // Act
             action.Run(ref testStruct);
@@ -208,7 +208,7 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             // Arrange
             ComplexStructAction action = new ComplexStructAction();
-            ComplexStruct complex = new ComplexStruct { A = 5, B = 10, C = 15 };
+            ComplexStruct complex = new ComplexStruct {A = 5, B = 10, C = 15};
 
             // Act
             action.Run(ref complex);
@@ -326,7 +326,7 @@ namespace Alis.Core.Ecs.Test.Systems
         private struct IntIncrementAction : IAction<int>
         {
             /// <summary>
-            /// Runs the arg
+            ///     Runs the arg
             /// </summary>
             /// <param name="arg">The arg</param>
             public void Run(ref int arg)
@@ -341,21 +341,18 @@ namespace Alis.Core.Ecs.Test.Systems
         private struct IntMultiplyAction : IAction<int>
         {
             /// <summary>
-            /// The multiplier
+            ///     The multiplier
             /// </summary>
             private readonly int _multiplier;
 
             /// <summary>
-            /// Initializes a new instance of the <see cref="IntMultiplyAction"/> class
+            ///     Initializes a new instance of the <see cref="IntMultiplyAction" /> class
             /// </summary>
             /// <param name="multiplier">The multiplier</param>
-            public IntMultiplyAction(int multiplier)
-            {
-                _multiplier = multiplier;
-            }
+            public IntMultiplyAction(int multiplier) => _multiplier = multiplier;
 
             /// <summary>
-            /// Runs the arg
+            ///     Runs the arg
             /// </summary>
             /// <param name="arg">The arg</param>
             public void Run(ref int arg)
@@ -370,7 +367,7 @@ namespace Alis.Core.Ecs.Test.Systems
         private struct StructModifyAction : IAction<TestStruct>
         {
             /// <summary>
-            /// Runs the arg
+            ///     Runs the arg
             /// </summary>
             /// <param name="arg">The arg</param>
             public void Run(ref TestStruct arg)
@@ -385,12 +382,12 @@ namespace Alis.Core.Ecs.Test.Systems
         private class CountingAction : IAction<int>
         {
             /// <summary>
-            /// Gets or sets the value of the call count
+            ///     Gets or sets the value of the call count
             /// </summary>
             public int CallCount { get; private set; }
 
             /// <summary>
-            /// Runs the arg
+            ///     Runs the arg
             /// </summary>
             /// <param name="arg">The arg</param>
             public void Run(ref int arg)
@@ -405,7 +402,7 @@ namespace Alis.Core.Ecs.Test.Systems
         private struct ComplexStructAction : IAction<ComplexStruct>
         {
             /// <summary>
-            /// Runs the arg
+            ///     Runs the arg
             /// </summary>
             /// <param name="arg">The arg</param>
             public void Run(ref ComplexStruct arg)
@@ -422,7 +419,7 @@ namespace Alis.Core.Ecs.Test.Systems
         private struct TestStruct
         {
             /// <summary>
-            /// The value
+            ///     The value
             /// </summary>
             public int Value;
         }
@@ -433,15 +430,17 @@ namespace Alis.Core.Ecs.Test.Systems
         private struct ComplexStruct
         {
             /// <summary>
-            /// The 
+            ///     The
             /// </summary>
             public int A;
+
             /// <summary>
-            /// The 
+            ///     The
             /// </summary>
             public int B;
+
             /// <summary>
-            /// The 
+            ///     The
             /// </summary>
             public int C;
         }
@@ -449,4 +448,3 @@ namespace Alis.Core.Ecs.Test.Systems
         #endregion
     }
 }
-

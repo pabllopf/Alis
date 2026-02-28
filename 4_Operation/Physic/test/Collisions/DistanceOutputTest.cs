@@ -45,7 +45,7 @@ namespace Alis.Core.Physic.Test.Collisions
         public void Constructor_ShouldInitializeWithDefaultValues()
         {
             DistanceOutput output = new DistanceOutput();
-            
+
             Assert.Equal(0.0f, output.Distance);
             Assert.Equal(0, output.Iterations);
             Assert.Equal(Vector2F.Zero, output.PointA);
@@ -62,7 +62,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 Distance = 5.0f
             };
-            
+
             Assert.Equal(5.0f, output.Distance);
         }
 
@@ -76,7 +76,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 Iterations = 10
             };
-            
+
             Assert.Equal(10, output.Iterations);
         }
 
@@ -90,7 +90,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 PointA = new Vector2F(1.0f, 2.0f)
             };
-            
+
             Assert.Equal(new Vector2F(1.0f, 2.0f), output.PointA);
         }
 
@@ -104,7 +104,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 PointB = new Vector2F(3.0f, 4.0f)
             };
-            
+
             Assert.Equal(new Vector2F(3.0f, 4.0f), output.PointB);
         }
 
@@ -121,7 +121,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 PointA = new Vector2F(1.0f, 2.0f),
                 PointB = new Vector2F(3.0f, 4.0f)
             };
-            
+
             Assert.Equal(7.5f, output.Distance);
             Assert.Equal(15, output.Iterations);
             Assert.Equal(new Vector2F(1.0f, 2.0f), output.PointA);
@@ -138,7 +138,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 Distance = -1.0f
             };
-            
+
             Assert.Equal(-1.0f, output.Distance);
         }
 
@@ -152,9 +152,8 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 Iterations = 0
             };
-            
+
             Assert.Equal(0, output.Iterations);
         }
     }
 }
-

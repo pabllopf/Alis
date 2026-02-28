@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IUpdateTest.cs
+//  File:IUpdateTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Fluent.Words;
 using Xunit;
 
@@ -39,23 +40,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
     public class IUpdateTest
     {
         /// <summary>
-        ///     Helper implementation of IUpdate.
-        /// </summary>
-        private class UpdateHandler : IUpdate<int,int>
-        {
-            public int UpdateCount { get; private set; }
-            public bool WasUpdated { get; private set; }
-
-            public void Update()
-            {
-                WasUpdated = true;
-                UpdateCount++;
-            }
-
-            public int Update(int obj) => throw new System.NotImplementedException();
-        }
-
-        /// <summary>
         ///     Tests that IUpdate can be implemented.
         /// </summary>
         [Fact]
@@ -63,7 +47,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         {
             UpdateHandler handler = new UpdateHandler();
             Assert.NotNull(handler);
-            Assert.IsAssignableFrom<IUpdate<int,int>>(handler);
+            Assert.IsAssignableFrom<IUpdate<int, int>>(handler);
         }
 
         /// <summary>
@@ -101,8 +85,25 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
             {
                 handler.Update();
             }
+
             Assert.Equal(10, handler.UpdateCount);
+        }
+
+        /// <summary>
+        ///     Helper implementation of IUpdate.
+        /// </summary>
+        private class UpdateHandler : IUpdate<int, int>
+        {
+            public int UpdateCount { get; private set; }
+            public bool WasUpdated { get; private set; }
+
+            public int Update(int obj) => throw new NotImplementedException();
+
+            public void Update()
+            {
+                WasUpdated = true;
+                UpdateCount++;
+            }
         }
     }
 }
-

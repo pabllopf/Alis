@@ -235,7 +235,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
 
             // Assert
             // Nullable<T> is a struct but implementation may vary
-            Assert.True(result == true || result == false);
+            Assert.True(result || !result);
         }
 
         /// <summary>
@@ -313,10 +313,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         /// <summary>
         ///     Helper method for generic type testing
         /// </summary>
-        private bool CheckType<T>()
-        {
-            return RuntimeHelpers.IsReferenceOrContainsReferences<T>();
-        }
+        private bool CheckType<T>() => RuntimeHelpers.IsReferenceOrContainsReferences<T>();
 
         /// <summary>
         ///     Tests caching behavior of IsReferenceOrContainsReferences
@@ -341,133 +338,144 @@ namespace Alis.Core.Ecs.Test.Redifinition
         #region Test Helper Types
 
         /// <summary>
-        /// The test class
+        ///     The test class
         /// </summary>
         private class TestClass
         {
             /// <summary>
-            /// Gets or sets the value of the value
+            ///     Gets or sets the value of the value
             /// </summary>
             public int Value { get; set; }
         }
 
         /// <summary>
-        /// The pure value struct
+        ///     The pure value struct
         /// </summary>
         private struct PureValueStruct
         {
             /// <summary>
-            /// The 
+            ///     The
             /// </summary>
             public int X;
+
             /// <summary>
-            /// The 
+            ///     The
             /// </summary>
             public int Y;
+
             /// <summary>
-            /// The 
+            ///     The
             /// </summary>
             public float Z;
         }
 
         /// <summary>
-        /// The struct with reference
+        ///     The struct with reference
         /// </summary>
         private struct StructWithReference
         {
             /// <summary>
-            /// The value
+            ///     The value
             /// </summary>
             public int Value;
+
             /// <summary>
-            /// The name
+            ///     The name
             /// </summary>
             public string Name;
         }
 
         /// <summary>
-        /// The nested struct with reference
+        ///     The nested struct with reference
         /// </summary>
         private struct NestedStructWithReference
         {
             /// <summary>
-            /// The value
+            ///     The value
             /// </summary>
             public int Value;
+
             /// <summary>
-            /// The inner
+            ///     The inner
             /// </summary>
             public StructWithReference Inner;
         }
 
         /// <summary>
-        /// The struct with array
+        ///     The struct with array
         /// </summary>
         private struct StructWithArray
         {
             /// <summary>
-            /// The value
+            ///     The value
             /// </summary>
             public int Value;
+
             /// <summary>
-            /// The numbers
+            ///     The numbers
             /// </summary>
             public int[] Numbers;
         }
 
         /// <summary>
-        /// The complex pure value struct
+        ///     The complex pure value struct
         /// </summary>
         private struct ComplexPureValueStruct
         {
             /// <summary>
-            /// The 
+            ///     The
             /// </summary>
             public int A;
+
             /// <summary>
-            /// The 
+            ///     The
             /// </summary>
             public PureValueStruct B;
+
             /// <summary>
-            /// The 
+            ///     The
             /// </summary>
             public float C;
         }
 
         /// <summary>
-        /// The complex mixed struct
+        ///     The complex mixed struct
         /// </summary>
         private struct ComplexMixedStruct
         {
             /// <summary>
-            /// The 
+            ///     The
             /// </summary>
             public int A;
+
             /// <summary>
-            /// The 
+            ///     The
             /// </summary>
             public PureValueStruct B;
+
             /// <summary>
-            /// The 
+            ///     The
             /// </summary>
             public StructWithReference C;
         }
 
         /// <summary>
-        /// The test enum enum
+        ///     The test enum enum
         /// </summary>
         private enum TestEnum
         {
             /// <summary>
-            /// The value test enum
+            ///     The value test enum
             /// </summary>
             Value1,
+
             /// <summary>
-            /// The value test enum
+            ///     The value test enum
             /// </summary>
             Value2,
+
             /// <summary>
-            /// The value test enum
+            ///     The value test enum
             /// </summary>
             Value3
         }
@@ -475,4 +483,3 @@ namespace Alis.Core.Ecs.Test.Redifinition
         #endregion
     }
 }
-

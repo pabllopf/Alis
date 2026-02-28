@@ -34,7 +34,7 @@ using Xunit;
 
 namespace Alis.Extension.Thread.Test
 {
-    [ParallelSafe(minBatchSize: 256)]
+    [ParallelSafe(256)]
     public struct TestComponentWithAttribute
     {
         public float Value;
@@ -154,4 +154,3 @@ namespace Alis.Extension.Thread.Test
         }
     }
 }
-

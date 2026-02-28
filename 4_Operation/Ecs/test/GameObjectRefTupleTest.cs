@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:GameObjectRefTuple.cs
+//  File:GameObjectRefTupleTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -34,7 +34,7 @@ using Xunit;
 namespace Alis.Core.Ecs.Test
 {
     /// <summary>
-    ///     Tests the <see cref="GameObjectRefTuple{T1}"/> struct with a single component.
+    ///     Tests the <see cref="GameObjectRefTuple{T1}" /> struct with a single component.
     /// </summary>
     public partial class GameObjectRefTupleTest
     {
@@ -47,22 +47,22 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             Scene world = new Scene();
             GameObject entity = world.Create();
-            entity.Add(new Position { X = 10, Y = 20 });
-            
+            entity.Add(new Position {X = 10, Y = 20});
+
             // Act
             GameObjectRefTuple<Position> refTuple = new GameObjectRefTuple<Position>
             {
                 GameObject = entity,
-                Item1 = new Ref<Position>(new[] { new Position { X = 10, Y = 20 } }, 0)
+                Item1 = new Ref<Position>(new[] {new Position {X = 10, Y = 20}}, 0)
             };
-            
+
             // Assert
             Assert.Equal(entity, refTuple.GameObject);
             Assert.NotNull(refTuple.Item1);
-            
+
             world.Dispose();
         }
-        
+
         /// <summary>
         ///     Tests that game object ref tuple deconstruction works correctly.
         /// </summary>
@@ -72,26 +72,26 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             Scene world = new Scene();
             GameObject entity = world.Create();
-            Position pos = new Position { X = 5, Y = 15 };
+            Position pos = new Position {X = 5, Y = 15};
             entity.Add(pos);
-            
+
             GameObjectRefTuple<Position> tuple = new GameObjectRefTuple<Position>
             {
                 GameObject = entity,
-                Item1 = new Ref<Position>(new[] { pos }, 0)
+                Item1 = new Ref<Position>(new[] {pos}, 0)
             };
-            
+
             // Act
             (GameObject go, Ref<Position> posRef) = tuple;
-            
+
             // Assert
             Assert.Equal(entity, go);
             Assert.Equal(5, posRef.Value.X);
             Assert.Equal(15, posRef.Value.Y);
-            
+
             world.Dispose();
         }
-        
+
         /// <summary>
         ///     Tests that multiple tuples with different game objects work independently.
         /// </summary>
@@ -102,23 +102,23 @@ namespace Alis.Core.Ecs.Test
             Scene world = new Scene();
             GameObject entity1 = world.Create();
             GameObject entity2 = world.Create();
-            Position pos1 = new Position { X = 1, Y = 2 };
-            Position pos2 = new Position { X = 3, Y = 4 };
+            Position pos1 = new Position {X = 1, Y = 2};
+            Position pos2 = new Position {X = 3, Y = 4};
             entity1.Add(pos1);
             entity2.Add(pos2);
-            
+
             // Act
-            GameObjectRefTuple<Position> tuple1 = new GameObjectRefTuple<Position> { GameObject = entity1, Item1 = new Ref<Position>(new[] { pos1 }, 0) };
-            GameObjectRefTuple<Position> tuple2 = new GameObjectRefTuple<Position> { GameObject = entity2, Item1 = new Ref<Position>(new[] { pos2 }, 0) };
-            
+            GameObjectRefTuple<Position> tuple1 = new GameObjectRefTuple<Position> {GameObject = entity1, Item1 = new Ref<Position>(new[] {pos1}, 0)};
+            GameObjectRefTuple<Position> tuple2 = new GameObjectRefTuple<Position> {GameObject = entity2, Item1 = new Ref<Position>(new[] {pos2}, 0)};
+
             // Assert
             Assert.NotEqual(tuple1.GameObject, tuple2.GameObject);
             Assert.Equal(1, tuple1.Item1.Value.X);
             Assert.Equal(3, tuple2.Item1.Value.X);
-            
+
             world.Dispose();
         }
-        
+
         /// <summary>
         ///     Tests that ref tuple with different component types work correctly.
         /// </summary>
@@ -128,22 +128,22 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             Scene world = new Scene();
             GameObject entity = world.Create();
-            Health health = new Health { Value = 100 };
+            Health health = new Health {Value = 100};
             entity.Add(health);
-            
+
             // Act
             GameObjectRefTuple<Health> tuple = new GameObjectRefTuple<Health>
             {
                 GameObject = entity,
-                Item1 = new Ref<Health>(new[] { health }, 0)
+                Item1 = new Ref<Health>(new[] {health}, 0)
             };
-            
+
             // Assert
             Assert.Equal(100, tuple.Item1.Value.Value);
-            
+
             world.Dispose();
         }
-        
+
         /// <summary>
         ///     Tests that game object field is properly accessible.
         /// </summary>
@@ -155,17 +155,17 @@ namespace Alis.Core.Ecs.Test
             GameObject entity = world.Create();
             Position pos = new Position();
             entity.Add(pos);
-            
+
             // Act
-            GameObjectRefTuple<Position> tuple = new GameObjectRefTuple<Position> { GameObject = entity, Item1 = new Ref<Position>(new[] { pos }, 0) };
+            GameObjectRefTuple<Position> tuple = new GameObjectRefTuple<Position> {GameObject = entity, Item1 = new Ref<Position>(new[] {pos}, 0)};
             GameObject retrieved = tuple.GameObject;
-            
+
             // Assert
             Assert.Equal(entity, retrieved);
-            
+
             world.Dispose();
         }
-        
+
         /// <summary>
         ///     Tests that item1 field can be accessed and used.
         /// </summary>
@@ -175,17 +175,17 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             Scene world = new Scene();
             GameObject entity = world.Create();
-            Position pos = new Position { X = 42, Y = 84 };
+            Position pos = new Position {X = 42, Y = 84};
             entity.Add(pos);
-            
+
             // Act
-            GameObjectRefTuple<Position> tuple = new GameObjectRefTuple<Position> { GameObject = entity, Item1 = new Ref<Position>(new[] { pos }, 0) };
+            GameObjectRefTuple<Position> tuple = new GameObjectRefTuple<Position> {GameObject = entity, Item1 = new Ref<Position>(new[] {pos}, 0)};
             Ref<Position> item = tuple.Item1;
-            
+
             // Assert
             Assert.Equal(42, item.Value.X);
             Assert.Equal(84, item.Value.Y);
-            
+
             world.Dispose();
         }
     }

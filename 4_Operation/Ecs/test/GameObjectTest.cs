@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
@@ -38,7 +37,7 @@ namespace Alis.Core.Ecs.Test
     ///     The game object test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="GameObject"/> struct which represents an entity reference
+    ///     Tests the <see cref="GameObject" /> struct which represents an entity reference
     ///     in the ECS system, containing a collection of components of unique types.
     /// </remarks>
     public class GameObjectTest
@@ -69,7 +68,7 @@ namespace Alis.Core.Ecs.Test
         public void DefaultGameObject_IsNull()
         {
             // Arrange
-            GameObject gameObject = default;
+            GameObject gameObject = default(GameObject);
 
             // Assert
             Assert.True(gameObject.IsNull);
@@ -86,7 +85,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             GameObject nullGameObject = GameObject.Null;
-            GameObject defaultGameObject = default;
+            GameObject defaultGameObject = default(GameObject);
 
             // Assert
             Assert.Equal(nullGameObject, defaultGameObject);
@@ -103,7 +102,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            TestComponent component = new TestComponent { Value = 42, Name = "Test" };
+            TestComponent component = new TestComponent {Value = 42, Name = "Test"};
 
             // Act
             GameObject gameObject = scene.Create(component);
@@ -123,7 +122,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            TestComponent component = new TestComponent { Value = 10 };
+            TestComponent component = new TestComponent {Value = 10};
 
             // Act
             GameObject gameObject = scene.Create(component);
@@ -131,7 +130,7 @@ namespace Alis.Core.Ecs.Test
             // Assert
             Assert.True(gameObject.IsAlive);
         }
-        
+
 
         /// <summary>
         ///     Tests that game object can check if has component
@@ -144,7 +143,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new TestComponent { Value = 30 });
+            GameObject gameObject = scene.Create(new TestComponent {Value = 30});
 
             // Assert
             Assert.True(gameObject.Has<TestComponent>());
@@ -161,7 +160,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new TestComponent { Value = 40 });
+            GameObject gameObject = scene.Create(new TestComponent {Value = 40});
 
             // Assert
             Assert.False(gameObject.Has<AnotherComponent>());
@@ -178,7 +177,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            TestComponent original = new TestComponent { Value = 100, Name = "Original" };
+            TestComponent original = new TestComponent {Value = 100, Name = "Original"};
             GameObject gameObject = scene.Create(original);
 
             // Act
@@ -200,7 +199,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new TestComponent { Value = 50 });
+            GameObject gameObject = scene.Create(new TestComponent {Value = 50});
 
             // Act
             ref TestComponent component = ref gameObject.Get<TestComponent>();
@@ -221,8 +220,8 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(new TestComponent { Value = 1 });
-            GameObject entity2 = scene.Create(new TestComponent { Value = 2 });
+            GameObject entity1 = scene.Create(new TestComponent {Value = 1});
+            GameObject entity2 = scene.Create(new TestComponent {Value = 2});
 
             // Assert
             Assert.True(entity1.Equals(entity1));
@@ -240,9 +239,9 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(new TestComponent { Value = 10 });
+            GameObject entity1 = scene.Create(new TestComponent {Value = 10});
             GameObject entity2 = entity1;
-            GameObject entity3 = scene.Create(new TestComponent { Value = 20 });
+            GameObject entity3 = scene.Create(new TestComponent {Value = 20});
 
             // Assert
             Assert.True(entity1 == entity2);
@@ -260,8 +259,8 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(new TestComponent { Value = 15 });
-            GameObject entity2 = scene.Create(new TestComponent { Value = 25 });
+            GameObject entity1 = scene.Create(new TestComponent {Value = 15});
+            GameObject entity2 = scene.Create(new TestComponent {Value = 25});
 
             // Assert
             Assert.True(entity1 != entity2);
@@ -278,7 +277,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new TestComponent { Value = 99 });
+            GameObject gameObject = scene.Create(new TestComponent {Value = 99});
 
             // Act
             int hashCode1 = gameObject.GetHashCode();
@@ -299,7 +298,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new TestComponent { Value = 5 });
+            GameObject gameObject = scene.Create(new TestComponent {Value = 5});
             GameObject nullGameObject = GameObject.Null;
 
             // Assert
@@ -334,7 +333,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new TestComponent { Value = 77 });
+            GameObject gameObject = scene.Create(new TestComponent {Value = 77});
 
             // Assert
             Assert.True(gameObject.TryHas<TestComponent>());
@@ -351,12 +350,12 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new TestComponent { Value = 88 });
+            GameObject gameObject = scene.Create(new TestComponent {Value = 88});
 
             // Assert
             Assert.False(gameObject.TryHas<AnotherComponent>());
         }
-        
+
 
         /// <summary>
         ///     Tests that game object is value type
@@ -369,7 +368,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(new TestComponent { Value = 1 });
+            GameObject entity1 = scene.Create(new TestComponent {Value = 1});
             GameObject entity2 = entity1;
 
             // Assert - Both should refer to the same entity (value equality)
@@ -387,12 +386,12 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            List<GameObject> entities = new System.Collections.Generic.List<GameObject>();
+            List<GameObject> entities = new List<GameObject>();
 
             // Act
             for (int i = 0; i < 5; i++)
             {
-                entities.Add(scene.Create(new TestComponent { Value = i }));
+                entities.Add(scene.Create(new TestComponent {Value = i}));
             }
 
             // Assert
@@ -414,7 +413,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new TestComponent { Value = 100 });
+            GameObject gameObject = scene.Create(new TestComponent {Value = 100});
             object differentType = "not a GameObject";
 
             // Assert
@@ -432,10 +431,10 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new TestComponent { Value = 50 });
+            GameObject gameObject = scene.Create(new TestComponent {Value = 50});
 
             // Act
-            gameObject.Add(new AnotherComponent { X = 1.0f, Y = 2.0f });
+            gameObject.Add(new AnotherComponent {X = 1.0f, Y = 2.0f});
 
             // Assert
             Assert.True(gameObject.Has<TestComponent>());
@@ -453,7 +452,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new TestComponent { Value = 60 });
+            GameObject gameObject = scene.Create(new TestComponent {Value = 60});
 
             // Act
             gameObject.Remove<TestComponent>();
@@ -473,8 +472,8 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            TestComponent comp1 = new TestComponent { Value = 123 };
-            AnotherComponent comp2 = new AnotherComponent { X = 4.5f, Y = 6.7f };
+            TestComponent comp1 = new TestComponent {Value = 123};
+            AnotherComponent comp2 = new AnotherComponent {X = 4.5f, Y = 6.7f};
 
             // Act
             GameObject gameObject = scene.Create(comp1, comp2);
@@ -485,4 +484,3 @@ namespace Alis.Core.Ecs.Test
         }
     }
 }
-

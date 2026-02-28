@@ -51,9 +51,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
                 new Point(10, 10),
                 new Point(0, 10)
             };
-            
+
             Triangulator triangulator = new Triangulator(polyLine, 0.001f);
-            
+
             Assert.NotNull(triangulator);
             Assert.NotNull(triangulator.Triangles);
             Assert.NotNull(triangulator.Trapezoids);
@@ -72,9 +72,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
                 new Point(10, 10),
                 new Point(0, 10)
             };
-            
+
             Triangulator triangulator = new Triangulator(polyLine, 0.001f);
-            
+
             Assert.NotEmpty(triangulator.Triangles);
         }
 
@@ -91,9 +91,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
                 new Point(10, 10),
                 new Point(0, 10)
             };
-            
+
             Triangulator triangulator = new Triangulator(polyLine, 0.001f);
-            
+
             Assert.NotNull(triangulator.Trapezoids);
         }
 
@@ -109,9 +109,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
                 new Point(10, 0),
                 new Point(5, 10)
             };
-            
+
             Triangulator triangulator = new Triangulator(polyLine, 0.001f);
-            
+
             Assert.NotNull(triangulator.Triangles);
         }
 
@@ -129,9 +129,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
                 new Point(5, 12),
                 new Point(-2, 5)
             };
-            
+
             Triangulator triangulator = new Triangulator(polyLine, 0.001f);
-            
+
             Assert.NotEmpty(triangulator.Triangles);
         }
 
@@ -148,9 +148,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
                 new Point(10, 10),
                 new Point(0, 10)
             };
-            
+
             Triangulator triangulator = new Triangulator(polyLine, 0.01f);
-            
+
             Assert.NotNull(triangulator);
         }
 
@@ -167,9 +167,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
                 new Point(10, 10),
                 new Point(0, 10)
             };
-            
+
             Triangulator triangulator = new Triangulator(polyLine, 0.0f);
-            
+
             Assert.NotNull(triangulator);
         }
 
@@ -186,9 +186,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
                 new Point(10, 10),
                 new Point(-10, 10)
             };
-            
+
             Triangulator triangulator = new Triangulator(polyLine, 0.001f);
-            
+
             Assert.NotEmpty(triangulator.Triangles);
         }
 
@@ -204,11 +204,11 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
                 new Point(5, 0),
                 new Point(5, 5)
             };
-            
+
             Triangulator triangulator = new Triangulator(polyLine, 0.001f);
-            
+
             List<List<Point>> triangles = triangulator.Triangles;
-            
+
             Assert.NotNull(triangles);
         }
 
@@ -224,13 +224,12 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
                 new Point(5, 0),
                 new Point(5, 5)
             };
-            
+
             Triangulator triangulator = new Triangulator(polyLine, 0.001f);
-            
+
             List<Trapezoid> trapezoids = triangulator.Trapezoids;
-            
+
             Assert.NotNull(trapezoids);
         }
     }
 }
-

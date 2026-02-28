@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test
@@ -47,7 +49,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             Verbosity verbosity = Verbosity.Quiet;
 
             // Assert
-            Assert.Equal(0, (int)verbosity);
+            Assert.Equal(0, (int) verbosity);
         }
 
         /// <summary>
@@ -60,7 +62,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             Verbosity verbosity = Verbosity.Info;
 
             // Assert
-            Assert.Equal(1, (int)verbosity);
+            Assert.Equal(1, (int) verbosity);
         }
 
         /// <summary>
@@ -73,7 +75,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             Verbosity verbosity = Verbosity.Verbose;
 
             // Assert
-            Assert.Equal(2, (int)verbosity);
+            Assert.Equal(2, (int) verbosity);
         }
 
         /// <summary>
@@ -86,7 +88,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             Verbosity verbosity = Verbosity.Debug;
 
             // Assert
-            Assert.Equal(3, (int)verbosity);
+            Assert.Equal(3, (int) verbosity);
         }
 
         /// <summary>
@@ -99,7 +101,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             Verbosity verbosity = Verbosity.Warning;
 
             // Assert
-            Assert.Equal(4, (int)verbosity);
+            Assert.Equal(4, (int) verbosity);
         }
 
         /// <summary>
@@ -112,7 +114,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             Verbosity verbosity = Verbosity.Error;
 
             // Assert
-            Assert.Equal(5, (int)verbosity);
+            Assert.Equal(5, (int) verbosity);
         }
 
         /// <summary>
@@ -125,7 +127,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             Verbosity verbosity = Verbosity.Fatal;
 
             // Assert
-            Assert.Equal(6, (int)verbosity);
+            Assert.Equal(6, (int) verbosity);
         }
 
         /// <summary>
@@ -135,7 +137,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         public void Verbosity_Enum_ShouldHaveSevenValues()
         {
             // Arrange & Act
-            Verbosity[] values = (Verbosity[])System.Enum.GetValues(typeof(Verbosity));
+            Verbosity[] values = (Verbosity[]) Enum.GetValues(typeof(Verbosity));
 
             // Assert
             Assert.Equal(7, values.Length);
@@ -170,9 +172,9 @@ namespace Alis.Extension.Media.FFmpeg.Test
         public void Verbosity_ShouldBeParseableFromString()
         {
             // Arrange & Act
-            Verbosity quiet = (Verbosity)System.Enum.Parse(typeof(Verbosity), "Quiet");
-            Verbosity error = (Verbosity)System.Enum.Parse(typeof(Verbosity), "Error");
-            Verbosity fatal = (Verbosity)System.Enum.Parse(typeof(Verbosity), "Fatal");
+            Verbosity quiet = (Verbosity) Enum.Parse(typeof(Verbosity), "Quiet");
+            Verbosity error = (Verbosity) Enum.Parse(typeof(Verbosity), "Error");
+            Verbosity fatal = (Verbosity) Enum.Parse(typeof(Verbosity), "Fatal");
 
             // Assert
             Assert.Equal(Verbosity.Quiet, quiet);
@@ -243,13 +245,13 @@ namespace Alis.Extension.Media.FFmpeg.Test
         public void Verbosity_AllValues_ShouldBeDefined()
         {
             // Arrange & Act & Assert
-            Assert.True(System.Enum.IsDefined(typeof(Verbosity), Verbosity.Quiet));
-            Assert.True(System.Enum.IsDefined(typeof(Verbosity), Verbosity.Info));
-            Assert.True(System.Enum.IsDefined(typeof(Verbosity), Verbosity.Verbose));
-            Assert.True(System.Enum.IsDefined(typeof(Verbosity), Verbosity.Debug));
-            Assert.True(System.Enum.IsDefined(typeof(Verbosity), Verbosity.Warning));
-            Assert.True(System.Enum.IsDefined(typeof(Verbosity), Verbosity.Error));
-            Assert.True(System.Enum.IsDefined(typeof(Verbosity), Verbosity.Fatal));
+            Assert.True(Enum.IsDefined(typeof(Verbosity), Verbosity.Quiet));
+            Assert.True(Enum.IsDefined(typeof(Verbosity), Verbosity.Info));
+            Assert.True(Enum.IsDefined(typeof(Verbosity), Verbosity.Verbose));
+            Assert.True(Enum.IsDefined(typeof(Verbosity), Verbosity.Debug));
+            Assert.True(Enum.IsDefined(typeof(Verbosity), Verbosity.Warning));
+            Assert.True(Enum.IsDefined(typeof(Verbosity), Verbosity.Error));
+            Assert.True(Enum.IsDefined(typeof(Verbosity), Verbosity.Fatal));
         }
 
         /// <summary>
@@ -259,19 +261,19 @@ namespace Alis.Extension.Media.FFmpeg.Test
         public void Verbosity_ShouldHaveUniqueValues()
         {
             // Arrange
-            int[] values = new int[]
+            int[] values = new[]
             {
-                (int)Verbosity.Quiet,
-                (int)Verbosity.Info,
-                (int)Verbosity.Verbose,
-                (int)Verbosity.Debug,
-                (int)Verbosity.Warning,
-                (int)Verbosity.Error,
-                (int)Verbosity.Fatal
+                (int) Verbosity.Quiet,
+                (int) Verbosity.Info,
+                (int) Verbosity.Verbose,
+                (int) Verbosity.Debug,
+                (int) Verbosity.Warning,
+                (int) Verbosity.Error,
+                (int) Verbosity.Fatal
             };
 
             // Act & Assert
-            Assert.Equal(values.Length, new System.Collections.Generic.HashSet<int>(values).Count);
+            Assert.Equal(values.Length, new HashSet<int>(values).Count);
         }
 
         /// <summary>
@@ -284,7 +286,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             Verbosity verbosity = Verbosity.Error;
 
             // Act
-            int value = (int)verbosity;
+            int value = (int) verbosity;
 
             // Assert
             Assert.Equal(5, value);
@@ -300,7 +302,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             int value = 3;
 
             // Act
-            Verbosity verbosity = (Verbosity)value;
+            Verbosity verbosity = (Verbosity) value;
 
             // Assert
             Assert.Equal(Verbosity.Debug, verbosity);
@@ -329,4 +331,3 @@ namespace Alis.Extension.Media.FFmpeg.Test
         }
     }
 }
-

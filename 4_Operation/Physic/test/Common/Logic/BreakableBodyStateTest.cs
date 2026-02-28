@@ -45,7 +45,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void UnbrokenEnumValue_ShouldBeDefined()
         {
             BreakableBodyState state = BreakableBodyState.Unbroken;
-            
+
             Assert.Equal(BreakableBodyState.Unbroken, state);
         }
 
@@ -56,7 +56,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void ShouldBreakEnumValue_ShouldBeDefined()
         {
             BreakableBodyState state = BreakableBodyState.ShouldBreak;
-            
+
             Assert.Equal(BreakableBodyState.ShouldBreak, state);
         }
 
@@ -67,7 +67,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void BrokenEnumValue_ShouldBeDefined()
         {
             BreakableBodyState state = BreakableBodyState.Broken;
-            
+
             Assert.Equal(BreakableBodyState.Broken, state);
         }
 
@@ -77,8 +77,8 @@ namespace Alis.Core.Physic.Test.Common.Logic
         [Fact]
         public void BreakableBodyState_ShouldHaveThreeValues()
         {
-            Array values = System.Enum.GetValues(typeof(BreakableBodyState));
-            
+            Array values = Enum.GetValues(typeof(BreakableBodyState));
+
             Assert.Equal(3, values.Length);
         }
 
@@ -88,10 +88,10 @@ namespace Alis.Core.Physic.Test.Common.Logic
         [Fact]
         public void BreakableBodyState_ShouldBeCastableToInt()
         {
-            int unbrokenValue = (int)BreakableBodyState.Unbroken;
-            int shouldBreakValue = (int)BreakableBodyState.ShouldBreak;
-            int brokenValue = (int)BreakableBodyState.Broken;
-            
+            int unbrokenValue = (int) BreakableBodyState.Unbroken;
+            int shouldBreakValue = (int) BreakableBodyState.ShouldBreak;
+            int brokenValue = (int) BreakableBodyState.Broken;
+
             Assert.Equal(0, unbrokenValue);
             Assert.Equal(1, shouldBreakValue);
             Assert.Equal(2, brokenValue);
@@ -105,7 +105,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         {
             BreakableBodyState state1 = BreakableBodyState.Unbroken;
             BreakableBodyState state2 = BreakableBodyState.Unbroken;
-            
+
             Assert.Equal(state1, state2);
         }
 
@@ -117,7 +117,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         {
             BreakableBodyState state1 = BreakableBodyState.Unbroken;
             BreakableBodyState state2 = BreakableBodyState.Broken;
-            
+
             Assert.NotEqual(state1, state2);
         }
 
@@ -129,7 +129,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         {
             BreakableBodyState state = BreakableBodyState.Unbroken;
             state = BreakableBodyState.ShouldBreak;
-            
+
             Assert.Equal(BreakableBodyState.ShouldBreak, state);
         }
 
@@ -141,9 +141,8 @@ namespace Alis.Core.Physic.Test.Common.Logic
         {
             BreakableBodyState state = BreakableBodyState.ShouldBreak;
             state = BreakableBodyState.Broken;
-            
+
             Assert.Equal(BreakableBodyState.Broken, state);
         }
     }
 }
-

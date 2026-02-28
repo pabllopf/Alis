@@ -79,10 +79,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Models
         /// <param name="left">The first position.</param>
         /// <param name="right">The second position.</param>
         /// <returns>A new position with the sum of coordinates.</returns>
-        public static Position operator +(Position left, Position right)
-        {
-            return new Position(left.X + right.X, left.Y + right.Y);
-        }
+        public static Position operator +(Position left, Position right) => new Position(left.X + right.X, left.Y + right.Y);
 
         /// <summary>
         ///     Subtracts one position from another.
@@ -90,10 +87,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Models
         /// <param name="left">The first position.</param>
         /// <param name="right">The second position.</param>
         /// <returns>A new position with the difference of coordinates.</returns>
-        public static Position operator -(Position left, Position right)
-        {
-            return new Position(left.X - right.X, left.Y - right.Y);
-        }
+        public static Position operator -(Position left, Position right) => new Position(left.X - right.X, left.Y - right.Y);
 
         /// <summary>
         ///     Determines whether two positions are equal.
@@ -101,10 +95,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Models
         /// <param name="left">The first position.</param>
         /// <param name="right">The second position.</param>
         /// <returns>True if both positions are equal; otherwise, false.</returns>
-        public static bool operator ==(Position left, Position right)
-        {
-            return left.Equals(right);
-        }
+        public static bool operator ==(Position left, Position right) => left.Equals(right);
 
         /// <summary>
         ///     Determines whether two positions are not equal.
@@ -112,48 +103,33 @@ namespace Alis.Extension.Math.ProceduralDungeon.Models
         /// <param name="left">The first position.</param>
         /// <param name="right">The second position.</param>
         /// <returns>True if positions are not equal; otherwise, false.</returns>
-        public static bool operator !=(Position left, Position right)
-        {
-            return !left.Equals(right);
-        }
+        public static bool operator !=(Position left, Position right) => !left.Equals(right);
 
         /// <summary>
         ///     Determines whether the specified position is equal to this instance.
         /// </summary>
         /// <param name="other">The other position to compare with this instance.</param>
         /// <returns>True if the specified position is equal to this instance; otherwise, false.</returns>
-        public bool Equals(Position other)
-        {
-            return X == other.X && Y == other.Y;
-        }
+        public bool Equals(Position other) => (X == other.X) && (Y == other.Y);
 
         /// <summary>
         ///     Determines whether the specified object is equal to this instance.
         /// </summary>
         /// <param name="obj">The object to compare with this instance.</param>
         /// <returns>True if the specified object is equal to this instance; otherwise, false.</returns>
-        public override bool Equals(object obj)
-        {
-            return obj is Position other && Equals(other);
-        }
+        public override bool Equals(object obj) => obj is Position other && Equals(other);
 
         /// <summary>
         ///     Returns a hash code for this instance.
         /// </summary>
         /// <returns>A hash code for this instance.</returns>
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(X, Y);
-        }
+        public override int GetHashCode() => HashCode.Combine(X, Y);
 
         /// <summary>
         ///     Returns a string representation of this position.
         /// </summary>
         /// <returns>A string in the format "(X, Y)".</returns>
-        public override string ToString()
-        {
-            return $"({X}, {Y})";
-        }
+        public override string ToString() => $"({X}, {Y})";
 
         /// <summary>
         ///     Calculates the Manhattan distance to another position.
@@ -164,10 +140,6 @@ namespace Alis.Extension.Math.ProceduralDungeon.Models
         ///     Manhattan distance is the sum of the absolute differences of the coordinates.
         ///     It represents the distance between two points if you can only move horizontally or vertically.
         /// </remarks>
-        public int ManhattanDistanceTo(Position other)
-        {
-            return System.Math.Abs(X - other.X) + System.Math.Abs(Y - other.Y);
-        }
+        public int ManhattanDistanceTo(Position other) => System.Math.Abs(X - other.X) + System.Math.Abs(Y - other.Y);
     }
 }
-

@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:WindowAttributeEnumTests.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,7 +39,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
     public class WindowAttributeEnumTests
     {
         /// <summary>
-        /// Tests that window attribute focused is defined
+        ///     Tests that window attribute focused is defined
         /// </summary>
         [Fact]
         public void WindowAttribute_Focused_IsDefined()
@@ -51,7 +52,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that window attribute resizable is defined
+        ///     Tests that window attribute resizable is defined
         /// </summary>
         [Fact]
         public void WindowAttribute_Resizable_IsDefined()
@@ -64,7 +65,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that window attribute visible is defined
+        ///     Tests that window attribute visible is defined
         /// </summary>
         [Fact]
         public void WindowAttribute_Visible_IsDefined()
@@ -77,7 +78,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that window attribute decorated is defined
+        ///     Tests that window attribute decorated is defined
         /// </summary>
         [Fact]
         public void WindowAttribute_Decorated_IsDefined()
@@ -90,7 +91,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that window attribute auto iconify is defined
+        ///     Tests that window attribute auto iconify is defined
         /// </summary>
         [Fact]
         public void WindowAttribute_AutoIconify_IsDefined()
@@ -103,7 +104,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that window attribute floating is defined
+        ///     Tests that window attribute floating is defined
         /// </summary>
         [Fact]
         public void WindowAttribute_Floating_IsDefined()
@@ -116,7 +117,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that window attribute maximized is defined
+        ///     Tests that window attribute maximized is defined
         /// </summary>
         [Fact]
         public void WindowAttribute_Maximized_IsDefined()
@@ -129,7 +130,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that window attribute can be cast to int
+        ///     Tests that window attribute can be cast to int
         /// </summary>
         [Fact]
         public void WindowAttribute_CanBeCastToInt()
@@ -138,27 +139,26 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
             WindowAttribute attribute = WindowAttribute.Visible;
 
             // Act
-            int value = (int)attribute;
+            int value = (int) attribute;
 
             // Assert
             Assert.True(value != 0);
         }
 
         /// <summary>
-        /// Tests that window attribute can be cast from int
+        ///     Tests that window attribute can be cast from int
         /// </summary>
         [Fact]
         public void WindowAttribute_CanBeCastFromInt()
         {
             // Arrange
-            int value = (int)WindowAttribute.Visible;
+            int value = (int) WindowAttribute.Visible;
 
             // Act
-            WindowAttribute attribute = (WindowAttribute)value;
+            WindowAttribute attribute = (WindowAttribute) value;
 
             // Assert
             Assert.Equal(WindowAttribute.Visible, attribute);
         }
     }
 }
-

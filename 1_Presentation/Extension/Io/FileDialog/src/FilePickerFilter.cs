@@ -39,16 +39,6 @@ namespace Alis.Extension.Io.FileDialog
     public class FilePickerFilter
     {
         /// <summary>
-        ///     Gets or sets the display name of the filter (e.g., "Text Files").
-        /// </summary>
-        public string DisplayName { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the file extensions without dot (e.g., "txt", "pdf").
-        /// </summary>
-        public List<string> Extensions { get; set; }
-
-        /// <summary>
         ///     Initializes a new instance of the FilePickerFilter class.
         /// </summary>
         /// <param name="displayName">The display name of the filter</param>
@@ -72,6 +62,16 @@ namespace Alis.Extension.Io.FileDialog
         }
 
         /// <summary>
+        ///     Gets or sets the display name of the filter (e.g., "Text Files").
+        /// </summary>
+        public string DisplayName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the file extensions without dot (e.g., "txt", "pdf").
+        /// </summary>
+        public List<string> Extensions { get; set; }
+
+        /// <summary>
         ///     Gets the extensions formatted for the platform (e.g., "*.txt;*.doc").
         /// </summary>
         /// <returns>The formatted extensions string</returns>
@@ -84,10 +84,6 @@ namespace Alis.Extension.Io.FileDialog
         ///     Gets the extensions formatted for macOS UTI format.
         /// </summary>
         /// <returns>The UTI formatted extensions string</returns>
-        public string GetUtiFormat()
-        {
-            return string.Join(",", Extensions);
-        }
+        public string GetUtiFormat() => string.Join(",", Extensions);
     }
 }
-

@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
 using Alis.Extension.Media.FFmpeg.Encoding.Builders;
 using Xunit;
 
@@ -48,7 +50,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Tune tune = Tune.Auto;
 
             // Assert
-            Assert.Equal(0, (int)tune);
+            Assert.Equal(0, (int) tune);
         }
 
         /// <summary>
@@ -61,7 +63,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Tune tune = Tune.Film;
 
             // Assert
-            Assert.Equal(1, (int)tune);
+            Assert.Equal(1, (int) tune);
         }
 
         /// <summary>
@@ -74,7 +76,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Tune tune = Tune.Animation;
 
             // Assert
-            Assert.Equal(2, (int)tune);
+            Assert.Equal(2, (int) tune);
         }
 
         /// <summary>
@@ -87,7 +89,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Tune tune = Tune.Grain;
 
             // Assert
-            Assert.Equal(3, (int)tune);
+            Assert.Equal(3, (int) tune);
         }
 
         /// <summary>
@@ -100,7 +102,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Tune tune = Tune.StillImage;
 
             // Assert
-            Assert.Equal(4, (int)tune);
+            Assert.Equal(4, (int) tune);
         }
 
         /// <summary>
@@ -113,7 +115,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Tune tune = Tune.FastDecode;
 
             // Assert
-            Assert.Equal(5, (int)tune);
+            Assert.Equal(5, (int) tune);
         }
 
         /// <summary>
@@ -126,7 +128,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Tune tune = Tune.ZeroLatency;
 
             // Assert
-            Assert.Equal(6, (int)tune);
+            Assert.Equal(6, (int) tune);
         }
 
         /// <summary>
@@ -136,7 +138,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         public void Tune_Enum_ShouldHaveSevenValues()
         {
             // Arrange & Act
-            Tune[] values = (Tune[])System.Enum.GetValues(typeof(Tune));
+            Tune[] values = (Tune[]) Enum.GetValues(typeof(Tune));
 
             // Assert
             Assert.Equal(7, values.Length);
@@ -171,8 +173,8 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         public void Tune_ShouldBeParseableFromString()
         {
             // Arrange & Act
-            Tune grain = (Tune)System.Enum.Parse(typeof(Tune), "Grain");
-            Tune zeroLatency = (Tune)System.Enum.Parse(typeof(Tune), "ZeroLatency");
+            Tune grain = (Tune) Enum.Parse(typeof(Tune), "Grain");
+            Tune zeroLatency = (Tune) Enum.Parse(typeof(Tune), "ZeroLatency");
 
             // Assert
             Assert.Equal(Tune.Grain, grain);
@@ -224,13 +226,13 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         public void Tune_AllValues_ShouldBeDefined()
         {
             // Arrange & Act & Assert
-            Assert.True(System.Enum.IsDefined(typeof(Tune), Tune.Auto));
-            Assert.True(System.Enum.IsDefined(typeof(Tune), Tune.Film));
-            Assert.True(System.Enum.IsDefined(typeof(Tune), Tune.Animation));
-            Assert.True(System.Enum.IsDefined(typeof(Tune), Tune.Grain));
-            Assert.True(System.Enum.IsDefined(typeof(Tune), Tune.StillImage));
-            Assert.True(System.Enum.IsDefined(typeof(Tune), Tune.FastDecode));
-            Assert.True(System.Enum.IsDefined(typeof(Tune), Tune.ZeroLatency));
+            Assert.True(Enum.IsDefined(typeof(Tune), Tune.Auto));
+            Assert.True(Enum.IsDefined(typeof(Tune), Tune.Film));
+            Assert.True(Enum.IsDefined(typeof(Tune), Tune.Animation));
+            Assert.True(Enum.IsDefined(typeof(Tune), Tune.Grain));
+            Assert.True(Enum.IsDefined(typeof(Tune), Tune.StillImage));
+            Assert.True(Enum.IsDefined(typeof(Tune), Tune.FastDecode));
+            Assert.True(Enum.IsDefined(typeof(Tune), Tune.ZeroLatency));
         }
 
         /// <summary>
@@ -240,19 +242,19 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         public void Tune_ShouldHaveUniqueValues()
         {
             // Arrange
-            int[] values = new int[]
+            int[] values = new[]
             {
-                (int)Tune.Auto,
-                (int)Tune.Film,
-                (int)Tune.Animation,
-                (int)Tune.Grain,
-                (int)Tune.StillImage,
-                (int)Tune.FastDecode,
-                (int)Tune.ZeroLatency
+                (int) Tune.Auto,
+                (int) Tune.Film,
+                (int) Tune.Animation,
+                (int) Tune.Grain,
+                (int) Tune.StillImage,
+                (int) Tune.FastDecode,
+                (int) Tune.ZeroLatency
             };
 
             // Act & Assert
-            Assert.Equal(values.Length, new System.Collections.Generic.HashSet<int>(values).Count);
+            Assert.Equal(values.Length, new HashSet<int>(values).Count);
         }
 
         /// <summary>
@@ -265,7 +267,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Tune tune = Tune.Animation;
 
             // Act
-            int value = (int)tune;
+            int value = (int) tune;
 
             // Assert
             Assert.Equal(2, value);
@@ -281,7 +283,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             int value = 5;
 
             // Act
-            Tune tune = (Tune)value;
+            Tune tune = (Tune) value;
 
             // Assert
             Assert.Equal(Tune.FastDecode, tune);
@@ -328,4 +330,3 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         }
     }
 }
-

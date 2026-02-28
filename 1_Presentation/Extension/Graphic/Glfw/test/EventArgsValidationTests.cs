@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:EventArgsValidationTests.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -27,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Drawing;
 using Alis.Extension.Graphic.Glfw.Enums;
 using Xunit;
 
@@ -111,11 +113,11 @@ namespace Alis.Extension.Graphic.Glfw.Test
             MouseMoveEventArgs args = new MouseMoveEventArgs(x, y);
 
             // Act
-            System.Drawing.PointF position = args.Position;
+            PointF position = args.Position;
 
             // Assert
-            Assert.Equal((float)x, position.X);
-            Assert.Equal((float)y, position.Y);
+            Assert.Equal((float) x, position.X);
+            Assert.Equal((float) y, position.Y);
         }
 
         /// <summary>
@@ -189,7 +191,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         public void FileDropEventArgsConstructor_ShouldSucceed()
         {
             // Arrange
-            string[] files = { "file1.txt", "file2.txt" };
+            string[] files = {"file1.txt", "file2.txt"};
 
             // Act
             FileDropEventArgs args = new FileDropEventArgs(files);
@@ -205,7 +207,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         public void FileDropEventArgsInHandler_ShouldWork()
         {
             // Arrange
-            string[] files = { "file1.txt", "file2.txt" };
+            string[] files = {"file1.txt", "file2.txt"};
             FileDropEventArgs args = new FileDropEventArgs(files);
 
             // Act & Assert
@@ -304,7 +306,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
                 InputState.Press,
                 ModifierKeys.Control);
             CharEventArgs charArgs = new CharEventArgs('A', ModifierKeys.Control);
-            FileDropEventArgs fileDropArgs = new FileDropEventArgs(new[] { "file.txt" });
+            FileDropEventArgs fileDropArgs = new FileDropEventArgs(new[] {"file.txt"});
             MaximizeEventArgs maximizeArgs = new MaximizeEventArgs(true);
             ContentScaleEventArgs contentScaleArgs = new ContentScaleEventArgs(1.5f, 1.5f);
 
@@ -320,4 +322,3 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
     }
 }
-

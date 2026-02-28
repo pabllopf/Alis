@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Ecs.Exceptions;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
@@ -55,7 +54,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            Position originalPos = new Position { X = 42, Y = 84 };
+            Position originalPos = new Position {X = 42, Y = 84};
             GameObject entity = scene.Create(originalPos);
 
             // Act
@@ -80,10 +79,7 @@ namespace Alis.Core.Ecs.Test
             GameObject entity = scene.Create();
 
             // Act & Assert
-            Assert.Throws<NullReferenceException>(() =>
-            {
-                entity.Deconstruct(out Ref<Position> pos);
-            });
+            Assert.Throws<NullReferenceException>(() => { entity.Deconstruct(out Ref<Position> pos); });
         }
 
         /// <summary>
@@ -97,7 +93,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 10, Y = 20 });
+            GameObject entity = scene.Create(new Position {X = 10, Y = 20});
 
             // Act
             entity.Deconstruct(out Ref<Position> pos);
@@ -105,7 +101,7 @@ namespace Alis.Core.Ecs.Test
             pos.Value.Y = 84;
 
             // Assert
-            Assert.True(entity.TryGet<Position>(out Ref<Position> modifiedPos));
+            Assert.True(entity.TryGet(out Ref<Position> modifiedPos));
             Assert.Equal(42, modifiedPos.Value.X);
             Assert.Equal(84, modifiedPos.Value.Y);
         }
@@ -121,14 +117,11 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 1, Y = 2 });
+            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
             entity.Delete();
 
             // Act & Assert
-            Assert.Throws<System.InvalidOperationException>(() =>
-            {
-                entity.Deconstruct(out Ref<Position> pos);
-            });
+            Assert.Throws<InvalidOperationException>(() => { entity.Deconstruct(out Ref<Position> pos); });
         }
 
         /// <summary>
@@ -142,8 +135,8 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(new Position { X = 1, Y = 2 });
-            GameObject entity2 = scene.Create(new Position { X = 3, Y = 4 });
+            GameObject entity1 = scene.Create(new Position {X = 1, Y = 2});
+            GameObject entity2 = scene.Create(new Position {X = 3, Y = 4});
 
             // Act
             entity1.Deconstruct(out Ref<Position> pos1);
@@ -165,18 +158,18 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 0, Y = 0 });
+            GameObject entity = scene.Create(new Position {X = 0, Y = 0});
 
             // Act
             entity.Deconstruct(out Ref<Position> pos);
-            int originalX = (int)pos.Value.X;
+            int originalX = (int) pos.Value.X;
             pos.Value.X = 100;
-            int newX = (int)pos.Value.X;
+            int newX = (int) pos.Value.X;
 
             // Assert
             Assert.Equal(0, originalX);
             Assert.Equal(100, newX);
-            Assert.True(entity.TryGet<Position>(out Ref<Position> stored));
+            Assert.True(entity.TryGet(out Ref<Position> stored));
             Assert.Equal(100, stored.Value.X);
         }
 
@@ -194,7 +187,7 @@ namespace Alis.Core.Ecs.Test
             GameObject[] entities = new GameObject[5];
             for (int i = 0; i < 5; i++)
             {
-                entities[i] = scene.Create(new Position { X = i, Y = i * 2 });
+                entities[i] = scene.Create(new Position {X = i, Y = i * 2});
             }
 
             // Act & Assert
@@ -217,14 +210,15 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            Position originalPos = new Position { X = 10, Y = 20 };
+            Position originalPos = new Position {X = 10, Y = 20};
             GameObject entity = scene.Create(originalPos);
 
             // Act
-            if (entity.TryGet<Position>(out Ref<Position> getPos))
+            if (entity.TryGet(out Ref<Position> getPos))
             {
                 getPos.Value.X = 50;
             }
+
             entity.Deconstruct(out Ref<Position> deconstructPos);
 
             // Assert
@@ -242,7 +236,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 42, Y = 84 });
+            GameObject entity = scene.Create(new Position {X = 42, Y = 84});
 
             // Act
             entity.Deconstruct(out Ref<Position> pos1);
@@ -266,10 +260,7 @@ namespace Alis.Core.Ecs.Test
             GameObject nullEntity = GameObject.Null;
 
             // Act & Assert
-            Assert.Throws<System.NullReferenceException>(() =>
-            {
-                nullEntity.Deconstruct(out Ref<Position> pos);
-            });
+            Assert.Throws<NullReferenceException>(() => { nullEntity.Deconstruct(out Ref<Position> pos); });
         }
 
         /// <summary>
@@ -286,7 +277,7 @@ namespace Alis.Core.Ecs.Test
             GameObject entity = scene.Create();
 
             // Act
-            entity.Add(new Position { X = 99, Y = 100 });
+            entity.Add(new Position {X = 99, Y = 100});
             entity.Deconstruct(out Ref<Position> pos);
 
             // Assert
@@ -305,17 +296,13 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 1, Y = 2 });
+            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
             // Act
             entity.Remove<Position>();
 
             // Assert
-            Assert.Throws<NullReferenceException>(() =>
-            {
-                entity.Deconstruct(out Ref<Position> pos);
-            });
+            Assert.Throws<NullReferenceException>(() => { entity.Deconstruct(out Ref<Position> pos); });
         }
     }
 }
-

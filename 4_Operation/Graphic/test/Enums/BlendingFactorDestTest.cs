@@ -28,117 +28,117 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Xunit;
 using Alis.Core.Graphic.OpenGL.Enums;
+using Xunit;
 
 namespace Alis.Core.Graphic.Test.Enums
 {
     /// <summary>
-    /// Tests for the BlendingFactorDest enum validating destination blending factor types.
+    ///     Tests for the BlendingFactorDest enum validating destination blending factor types.
     /// </summary>
     public class BlendingFactorDestTest
     {
         /// <summary>
-        /// Tests that Zero has correct value.
+        ///     Tests that Zero has correct value.
         /// </summary>
         [Fact]
         public void Zero_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0, (int)BlendingFactorDest.Zero);
+            Assert.Equal(0, (int) BlendingFactorDest.Zero);
         }
 
         /// <summary>
-        /// Tests that SrcColor has correct value.
+        ///     Tests that SrcColor has correct value.
         /// </summary>
         [Fact]
         public void SrcColor_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x0300, (int)BlendingFactorDest.SrcColor);
+            Assert.Equal(0x0300, (int) BlendingFactorDest.SrcColor);
         }
 
         /// <summary>
-        /// Tests that OneMinusSrcColor has correct value.
+        ///     Tests that OneMinusSrcColor has correct value.
         /// </summary>
         [Fact]
         public void OneMinusSrcColor_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x0301, (int)BlendingFactorDest.OneMinusSrcColor);
+            Assert.Equal(0x0301, (int) BlendingFactorDest.OneMinusSrcColor);
         }
 
         /// <summary>
-        /// Tests that SrcAlpha has correct value.
+        ///     Tests that SrcAlpha has correct value.
         /// </summary>
         [Fact]
         public void SrcAlpha_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x0302, (int)BlendingFactorDest.SrcAlpha);
+            Assert.Equal(0x0302, (int) BlendingFactorDest.SrcAlpha);
         }
 
         /// <summary>
-        /// Tests that OneMinusSrcAlpha has correct value.
+        ///     Tests that OneMinusSrcAlpha has correct value.
         /// </summary>
         [Fact]
         public void OneMinusSrcAlpha_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x0303, (int)BlendingFactorDest.OneMinusSrcAlpha);
+            Assert.Equal(0x0303, (int) BlendingFactorDest.OneMinusSrcAlpha);
         }
 
         /// <summary>
-        /// Tests that DstAlpha has correct value.
+        ///     Tests that DstAlpha has correct value.
         /// </summary>
         [Fact]
         public void DstAlpha_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x0304, (int)BlendingFactorDest.DstAlpha);
+            Assert.Equal(0x0304, (int) BlendingFactorDest.DstAlpha);
         }
 
         /// <summary>
-        /// Tests that OneMinusDstAlpha has correct value.
+        ///     Tests that OneMinusDstAlpha has correct value.
         /// </summary>
         [Fact]
         public void OneMinusDstAlpha_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x0305, (int)BlendingFactorDest.OneMinusDstAlpha);
+            Assert.Equal(0x0305, (int) BlendingFactorDest.OneMinusDstAlpha);
         }
 
         /// <summary>
-        /// Tests that DstColor has correct value.
+        ///     Tests that DstColor has correct value.
         /// </summary>
         [Fact]
         public void DstColor_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x0306, (int)BlendingFactorDest.DstColor);
+            Assert.Equal(0x0306, (int) BlendingFactorDest.DstColor);
         }
 
         /// <summary>
-        /// Tests that OneMinusDstColor has correct value.
+        ///     Tests that OneMinusDstColor has correct value.
         /// </summary>
         [Fact]
         public void OneMinusDstColor_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x0307, (int)BlendingFactorDest.OneMinusDstColor);
+            Assert.Equal(0x0307, (int) BlendingFactorDest.OneMinusDstColor);
         }
 
         /// <summary>
-        /// Tests that ConstantColor has correct value.
+        ///     Tests that ConstantColor has correct value.
         /// </summary>
         [Fact]
         public void ConstantColor_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x8001, (int)BlendingFactorDest.ConstantColor);
+            Assert.Equal(0x8001, (int) BlendingFactorDest.ConstantColor);
         }
 
         /// <summary>
-        /// Tests that OneMinusConstantColor has correct value.
+        ///     Tests that OneMinusConstantColor has correct value.
         /// </summary>
         [Fact]
         public void OneMinusConstantColor_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x8002, (int)BlendingFactorDest.OneMinusConstantColor);
+            Assert.Equal(0x8002, (int) BlendingFactorDest.OneMinusConstantColor);
         }
 
         /// <summary>
-        /// Tests that BlendingFactorDest is an enum type.
+        ///     Tests that BlendingFactorDest is an enum type.
         /// </summary>
         [Fact]
         public void BlendingFactorDest_IsEnum_TypeIsCorrect()
@@ -147,7 +147,7 @@ namespace Alis.Core.Graphic.Test.Enums
         }
 
         /// <summary>
-        /// Tests that BlendingFactorDest enum is public.
+        ///     Tests that BlendingFactorDest enum is public.
         /// </summary>
         [Fact]
         public void BlendingFactorDest_IsPublic_CanBeAccessed()
@@ -156,27 +156,27 @@ namespace Alis.Core.Graphic.Test.Enums
         }
 
         /// <summary>
-        /// Tests that BlendingFactorDest has expected number of values.
+        ///     Tests that BlendingFactorDest has expected number of values.
         /// </summary>
         [Fact]
         public void BlendingFactorDest_HasMultipleValues_CountIsCorrect()
         {
-            Array enumValues = System.Enum.GetValues(typeof(BlendingFactorDest));
+            Array enumValues = Enum.GetValues(typeof(BlendingFactorDest));
             Assert.NotEmpty(enumValues);
         }
 
         /// <summary>
-        /// Tests that BlendingFactorDest can be cast to int.
+        ///     Tests that BlendingFactorDest can be cast to int.
         /// </summary>
         [Fact]
         public void BlendingFactorDest_CanCastToInt_ConversionIsValid()
         {
-            int value = (int)BlendingFactorDest.SrcAlpha;
+            int value = (int) BlendingFactorDest.SrcAlpha;
             Assert.IsType<int>(value);
         }
 
         /// <summary>
-        /// Tests that BlendingFactorDest values can be compared.
+        ///     Tests that BlendingFactorDest values can be compared.
         /// </summary>
         [Fact]
         public void BlendingFactorDest_CanCompareValues_EqualityWorks()
@@ -187,7 +187,7 @@ namespace Alis.Core.Graphic.Test.Enums
         }
 
         /// <summary>
-        /// Tests that different BlendingFactorDest values are not equal.
+        ///     Tests that different BlendingFactorDest values are not equal.
         /// </summary>
         [Fact]
         public void BlendingFactorDest_DifferentValues_AreNotEqual()
@@ -196,22 +196,21 @@ namespace Alis.Core.Graphic.Test.Enums
         }
 
         /// <summary>
-        /// Tests that ConstantColorExt alias is equivalent to ConstantColor.
+        ///     Tests that ConstantColorExt alias is equivalent to ConstantColor.
         /// </summary>
         [Fact]
         public void ConstantColorExt_IsAlias_EqualsConstantColor()
         {
-            Assert.Equal((int)BlendingFactorDest.ConstantColor, (int)BlendingFactorDest.ConstantColorExt);
+            Assert.Equal((int) BlendingFactorDest.ConstantColor, (int) BlendingFactorDest.ConstantColorExt);
         }
 
         /// <summary>
-        /// Tests that OneMinusConstantColorExt alias is equivalent to OneMinusConstantColor.
+        ///     Tests that OneMinusConstantColorExt alias is equivalent to OneMinusConstantColor.
         /// </summary>
         [Fact]
         public void OneMinusConstantColorExt_IsAlias_EqualsOneMinusConstantColor()
         {
-            Assert.Equal((int)BlendingFactorDest.OneMinusConstantColor, (int)BlendingFactorDest.OneMinusConstantColorExt);
+            Assert.Equal((int) BlendingFactorDest.OneMinusConstantColor, (int) BlendingFactorDest.OneMinusConstantColorExt);
         }
     }
 }
-

@@ -66,7 +66,7 @@ namespace Alis.Extension.Language.Translator.Test
             TranslationManager translationManager = new TranslationManager();
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>(() => translationManager.SetLanguage((ILanguage)null));
+            Assert.Throws<ArgumentNullException>(() => translationManager.SetLanguage((ILanguage) null));
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace Alis.Extension.Language.Translator.Test
             TranslationManager translationManager = new TranslationManager();
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>(() => translationManager.AddLanguage((ILanguage)null));
+            Assert.Throws<ArgumentNullException>(() => translationManager.AddLanguage(null));
         }
 
         /// <summary>
@@ -226,7 +226,7 @@ namespace Alis.Extension.Language.Translator.Test
             TranslationManager translationManager = new TranslationManager();
             translationManager.SetLanguage("English", "en");
             translationManager.AddTranslation("en", "greeting", "Hello {name}!");
-            Dictionary<string, object> parameters = new Dictionary<string, object> { { "name", "John" } };
+            Dictionary<string, object> parameters = new Dictionary<string, object> {{"name", "John"}};
 
             // Act
             string result = translationManager.Translate("greeting", parameters);
@@ -385,20 +385,22 @@ namespace Alis.Extension.Language.Translator.Test
         private class TestTranslationObserver : ITranslationObserver
         {
             /// <summary>
-            /// Gets or sets the value of the language changed called
+            ///     Gets or sets the value of the language changed called
             /// </summary>
             public bool LanguageChangedCalled { get; set; }
+
             /// <summary>
-            /// Gets or sets the value of the translations updated called
+            ///     Gets or sets the value of the translations updated called
             /// </summary>
             public bool TranslationsUpdatedCalled { get; set; }
+
             /// <summary>
-            /// Gets or sets the value of the translation not found called
+            ///     Gets or sets the value of the translation not found called
             /// </summary>
             public bool TranslationNotFoundCalled { get; set; }
 
             /// <summary>
-            /// Ons the language changed using the specified language
+            ///     Ons the language changed using the specified language
             /// </summary>
             /// <param name="language">The language</param>
             public void OnLanguageChanged(ILanguage language)
@@ -407,7 +409,7 @@ namespace Alis.Extension.Language.Translator.Test
             }
 
             /// <summary>
-            /// Ons the translations updated using the specified language code
+            ///     Ons the translations updated using the specified language code
             /// </summary>
             /// <param name="languageCode">The language code</param>
             public void OnTranslationsUpdated(string languageCode)
@@ -416,7 +418,7 @@ namespace Alis.Extension.Language.Translator.Test
             }
 
             /// <summary>
-            /// Ons the translation not found using the specified language code
+            ///     Ons the translation not found using the specified language code
             /// </summary>
             /// <param name="languageCode">The language code</param>
             /// <param name="key">The key</param>

@@ -38,7 +38,7 @@ namespace Alis.Core.Ecs.Test.Systems
     ///     The query test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="Query"/> class which represents a set of entities
+    ///     Tests the <see cref="Query" /> class which represents a set of entities
     ///     from a scene that can be efficiently queried and iterated.
     /// </remarks>
     public class QueryTest
@@ -73,8 +73,8 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 2 });
-            scene.Create(new Position { X = 3, Y = 4 });
+            scene.Create(new Position {X = 1, Y = 2});
+            scene.Create(new Position {X = 3, Y = 4});
 
             // Act
             Query query = scene.Query<With<Position>>();
@@ -99,9 +99,9 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 2 }, new Velocity { VX = 0.5f, VY = 0.5f });
-            scene.Create(new Position { X = 3, Y = 4 }, new Velocity { VX = 1.0f, VY = 1.0f });
-            scene.Create(new Position { X = 5, Y = 6 }); // This entity should not match
+            scene.Create(new Position {X = 1, Y = 2}, new Velocity {VX = 0.5f, VY = 0.5f});
+            scene.Create(new Position {X = 3, Y = 4}, new Velocity {VX = 1.0f, VY = 1.0f});
+            scene.Create(new Position {X = 5, Y = 6}); // This entity should not match
 
             // Act
             Query query = scene.Query<With<Position>, With<Velocity>>();
@@ -126,7 +126,7 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position { X = 10, Y = 20 });
+            scene.Create(new Position {X = 10, Y = 20});
 
             // Act
             Query query = scene.Query<With<Position>>();
@@ -152,8 +152,8 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 2 });
-            scene.Create(new Velocity { VX = 1, VY = 1 });
+            scene.Create(new Position {X = 1, Y = 2});
+            scene.Create(new Velocity {VX = 1, VY = 1});
 
             // Act
             Query query = scene.Query<With<Position>, With<Velocity>>();
@@ -166,7 +166,7 @@ namespace Alis.Core.Ecs.Test.Systems
             // Assert
             Assert.Equal(0, count);
         }
-        
+
 
         /// <summary>
         ///     Tests that query excludes disabled entities by default
@@ -179,8 +179,8 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 2 });
-            GameObject disabledEntity = scene.Create(new Position { X = 3, Y = 4 });
+            scene.Create(new Position {X = 1, Y = 2});
+            GameObject disabledEntity = scene.Create(new Position {X = 3, Y = 4});
             disabledEntity.Tag<Disable>();
 
             // Act
@@ -206,8 +206,8 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 2 });
-            GameObject disabledEntity = scene.Create(new Position { X = 3, Y = 4 });
+            scene.Create(new Position {X = 1, Y = 2});
+            GameObject disabledEntity = scene.Create(new Position {X = 3, Y = 4});
             disabledEntity.Tag<Disable>();
 
             // Act
@@ -233,7 +233,7 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 2 });
+            scene.Create(new Position {X = 1, Y = 2});
 
             // Act
             Query query = scene.Query<With<Velocity>>();
@@ -259,9 +259,9 @@ namespace Alis.Core.Ecs.Test.Systems
             // Arrange
             using Scene scene = new Scene();
             scene.Create(
-                new Position { X = 1, Y = 2 }, 
-                new Velocity { VX = 0.5f, VY = 0.5f },
-                new Health { Value = 100 }
+                new Position {X = 1, Y = 2},
+                new Velocity {VX = 0.5f, VY = 0.5f},
+                new Health {Value = 100}
             );
 
             // Act
@@ -290,7 +290,7 @@ namespace Alis.Core.Ecs.Test.Systems
             using Scene scene = new Scene();
             for (int i = 0; i < 5; i++)
             {
-                scene.Create(new Position { X = i, Y = i * 2 });
+                scene.Create(new Position {X = i, Y = i * 2});
             }
 
             // Act
@@ -317,8 +317,8 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 2 });
-            scene.Create(new Position { X = 3, Y = 4 });
+            scene.Create(new Position {X = 1, Y = 2});
+            scene.Create(new Position {X = 3, Y = 4});
 
             // Act
             Query query = scene.Query<With<Position>>();
@@ -344,7 +344,7 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 2 });
+            scene.Create(new Position {X = 1, Y = 2});
 
             // Act
             Query query = scene.Query<With<Position>>();
@@ -354,7 +354,7 @@ namespace Alis.Core.Ecs.Test.Systems
                 firstCount++;
             }
 
-            scene.Create(new Position { X = 3, Y = 4 });
+            scene.Create(new Position {X = 3, Y = 4});
             int secondCount = 0;
             foreach (RefTuple<Position> _ in query.Enumerate<Position>())
             {
@@ -367,4 +367,3 @@ namespace Alis.Core.Ecs.Test.Systems
         }
     }
 }
-

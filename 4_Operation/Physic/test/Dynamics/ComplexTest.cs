@@ -45,7 +45,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Constructor_ShouldInitializeCorrectly()
         {
             Complex complex = new Complex(3.0f, 4.0f);
-            
+
             Assert.Equal(3.0f, complex.R);
             Assert.Equal(4.0f, complex.I);
         }
@@ -57,7 +57,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void One_ShouldHaveCorrectValues()
         {
             Complex one = Complex.One;
-            
+
             Assert.Equal(1.0f, one.R);
             Assert.Equal(0.0f, one.I);
         }
@@ -69,7 +69,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void ImaginaryOne_ShouldHaveCorrectValues()
         {
             Complex imaginaryOne = Complex.ImaginaryOne;
-            
+
             Assert.Equal(0.0f, imaginaryOne.R);
             Assert.Equal(1.0f, imaginaryOne.I);
         }
@@ -81,7 +81,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void FromAngle_ShouldCreateCorrectComplexNumber()
         {
             Complex complex = Complex.FromAngle(90.0f);
-            
+
             Assert.True(Math.Abs(complex.R) < 0.01f);
             Assert.True(Math.Abs(complex.I - 1.0f) < 0.01f);
         }
@@ -93,7 +93,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void FromAngle_Zero_ShouldReturnOne()
         {
             Complex complex = Complex.FromAngle(0.0f);
-            
+
             Assert.Equal(1.0f, complex.R, 5);
             Assert.Equal(0.0f, complex.I, 5);
         }
@@ -105,7 +105,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Magnitude_ShouldCalculateCorrectly()
         {
             Complex complex = new Complex(3.0f, 4.0f);
-            
+
             Assert.Equal(5.0f, complex.Magnitude, 5);
         }
 
@@ -116,7 +116,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void MagnitudeSquared_ShouldCalculateCorrectly()
         {
             Complex complex = new Complex(3.0f, 4.0f);
-            
+
             Assert.Equal(25.0f, complex.MagnitudeSquared(), 5);
         }
 
@@ -127,9 +127,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Conjugate_ShouldNegateImaginaryPart()
         {
             Complex complex = new Complex(3.0f, 4.0f);
-            
+
             complex.Conjugate();
-            
+
             Assert.Equal(3.0f, complex.R);
             Assert.Equal(-4.0f, complex.I);
         }
@@ -141,9 +141,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Negate_ShouldNegateBothParts()
         {
             Complex complex = new Complex(3.0f, 4.0f);
-            
+
             complex.Negate();
-            
+
             Assert.Equal(-3.0f, complex.R);
             Assert.Equal(-4.0f, complex.I);
         }
@@ -155,9 +155,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void ToAngle_ShouldConvertCorrectly()
         {
             Complex complex = Complex.FromAngle(45.0f);
-            
+
             float angle = complex.ToAngle();
-            
+
             Assert.Equal(45.0f, angle, 1);
         }
 
@@ -168,10 +168,10 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Phase_ShouldGetAndSetCorrectly()
         {
             Complex complex = new Complex(1.0f, 0.0f);
-            float expectedPhase = (float)Math.PI / 4;
-            
+            float expectedPhase = (float) Math.PI / 4;
+
             complex.Phase = expectedPhase;
-            
+
             Assert.Equal(expectedPhase, complex.Phase, 2);
         }
 
@@ -182,12 +182,11 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Phase_Zero_ShouldReturnOne()
         {
             Complex complex = new Complex(1.0f, 1.0f);
-            
+
             complex.Phase = 0.0f;
-            
+
             Assert.Equal(1.0f, complex.R);
             Assert.Equal(0.0f, complex.I);
         }
     }
 }
-

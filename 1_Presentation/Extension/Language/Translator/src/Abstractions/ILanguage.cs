@@ -62,4 +62,3 @@ namespace Alis.Extension.Language.Translator.Abstractions
         bool IsDefault { get; }
     }
 }
-

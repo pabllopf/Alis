@@ -60,4 +60,3 @@ namespace Alis.Extension.Language.Dialogue.Core
         OnStateChanged = 4
     }
 }
-

@@ -28,126 +28,127 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Xunit;
+using System.Collections.Generic;
 using Alis.Core.Graphic.OpenGL.Enums;
+using Xunit;
 
 namespace Alis.Core.Graphic.Test.Enums
 {
     /// <summary>
-    /// Tests for the BeginMode enum validating all drawing mode types.
+    ///     Tests for the BeginMode enum validating all drawing mode types.
     /// </summary>
     public class BeginModeTest
     {
         /// <summary>
-        /// Tests that Points mode has correct value.
+        ///     Tests that Points mode has correct value.
         /// </summary>
         [Fact]
         public void Points_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x0000, (int)BeginMode.Points);
+            Assert.Equal(0x0000, (int) BeginMode.Points);
         }
 
         /// <summary>
-        /// Tests that Lines mode has correct value.
+        ///     Tests that Lines mode has correct value.
         /// </summary>
         [Fact]
         public void Lines_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x0001, (int)BeginMode.Lines);
+            Assert.Equal(0x0001, (int) BeginMode.Lines);
         }
 
         /// <summary>
-        /// Tests that LineLoop mode has correct value.
+        ///     Tests that LineLoop mode has correct value.
         /// </summary>
         [Fact]
         public void LineLoop_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x0002, (int)BeginMode.LineLoop);
+            Assert.Equal(0x0002, (int) BeginMode.LineLoop);
         }
 
         /// <summary>
-        /// Tests that LineStrip mode has correct value.
+        ///     Tests that LineStrip mode has correct value.
         /// </summary>
         [Fact]
         public void LineStrip_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x0003, (int)BeginMode.LineStrip);
+            Assert.Equal(0x0003, (int) BeginMode.LineStrip);
         }
 
         /// <summary>
-        /// Tests that Triangles mode has correct value.
+        ///     Tests that Triangles mode has correct value.
         /// </summary>
         [Fact]
         public void Triangles_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x0004, (int)BeginMode.Triangles);
+            Assert.Equal(0x0004, (int) BeginMode.Triangles);
         }
 
         /// <summary>
-        /// Tests that TriangleStrip mode has correct value.
+        ///     Tests that TriangleStrip mode has correct value.
         /// </summary>
         [Fact]
         public void TriangleStrip_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x0005, (int)BeginMode.TriangleStrip);
+            Assert.Equal(0x0005, (int) BeginMode.TriangleStrip);
         }
 
         /// <summary>
-        /// Tests that TriangleFan mode has correct value.
+        ///     Tests that TriangleFan mode has correct value.
         /// </summary>
         [Fact]
         public void TriangleFan_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x0006, (int)BeginMode.TriangleFan);
+            Assert.Equal(0x0006, (int) BeginMode.TriangleFan);
         }
 
         /// <summary>
-        /// Tests that LinesAdjacency mode has correct value.
+        ///     Tests that LinesAdjacency mode has correct value.
         /// </summary>
         [Fact]
         public void LinesAdjacency_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0xA, (int)BeginMode.LinesAdjacency);
+            Assert.Equal(0xA, (int) BeginMode.LinesAdjacency);
         }
 
         /// <summary>
-        /// Tests that LineStripAdjacency mode has correct value.
+        ///     Tests that LineStripAdjacency mode has correct value.
         /// </summary>
         [Fact]
         public void LineStripAdjacency_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0xB, (int)BeginMode.LineStripAdjacency);
+            Assert.Equal(0xB, (int) BeginMode.LineStripAdjacency);
         }
 
         /// <summary>
-        /// Tests that TrianglesAdjacency mode has correct value.
+        ///     Tests that TrianglesAdjacency mode has correct value.
         /// </summary>
         [Fact]
         public void TrianglesAdjacency_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0xC, (int)BeginMode.TrianglesAdjacency);
+            Assert.Equal(0xC, (int) BeginMode.TrianglesAdjacency);
         }
 
         /// <summary>
-        /// Tests that TriangleStripAdjacency mode has correct value.
+        ///     Tests that TriangleStripAdjacency mode has correct value.
         /// </summary>
         [Fact]
         public void TriangleStripAdjacency_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0xD, (int)BeginMode.TriangleStripAdjacency);
+            Assert.Equal(0xD, (int) BeginMode.TriangleStripAdjacency);
         }
 
         /// <summary>
-        /// Tests that Patches mode has correct value.
+        ///     Tests that Patches mode has correct value.
         /// </summary>
         [Fact]
         public void Patches_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0xE, (int)BeginMode.Patches);
+            Assert.Equal(0xE, (int) BeginMode.Patches);
         }
 
         /// <summary>
-        /// Tests that BeginMode is an enum type.
+        ///     Tests that BeginMode is an enum type.
         /// </summary>
         [Fact]
         public void BeginMode_IsEnum_TypeIsCorrect()
@@ -156,7 +157,7 @@ namespace Alis.Core.Graphic.Test.Enums
         }
 
         /// <summary>
-        /// Tests that BeginMode enum is public.
+        ///     Tests that BeginMode enum is public.
         /// </summary>
         [Fact]
         public void BeginMode_IsPublic_CanBeAccessed()
@@ -165,53 +166,53 @@ namespace Alis.Core.Graphic.Test.Enums
         }
 
         /// <summary>
-        /// Tests that BeginMode has 13 defined values.
+        ///     Tests that BeginMode has 13 defined values.
         /// </summary>
         [Fact]
         public void BeginMode_HasThirteenValues_CountIsCorrect()
         {
-            Array enumValues = System.Enum.GetValues(typeof(BeginMode));
+            Array enumValues = Enum.GetValues(typeof(BeginMode));
             Assert.Equal(12, enumValues.Length);
         }
 
         /// <summary>
-        /// Tests that all BeginMode values are unique.
+        ///     Tests that all BeginMode values are unique.
         /// </summary>
         [Fact]
         public void AllValues_AreUnique_NoConflicts()
         {
             int[] values = new[]
             {
-                (int)BeginMode.Points,
-                (int)BeginMode.Lines,
-                (int)BeginMode.LineLoop,
-                (int)BeginMode.LineStrip,
-                (int)BeginMode.Triangles,
-                (int)BeginMode.TriangleStrip,
-                (int)BeginMode.TriangleFan,
-                (int)BeginMode.LinesAdjacency,
-                (int)BeginMode.LineStripAdjacency,
-                (int)BeginMode.TrianglesAdjacency,
-                (int)BeginMode.TriangleStripAdjacency,
-                (int)BeginMode.Patches
+                (int) BeginMode.Points,
+                (int) BeginMode.Lines,
+                (int) BeginMode.LineLoop,
+                (int) BeginMode.LineStrip,
+                (int) BeginMode.Triangles,
+                (int) BeginMode.TriangleStrip,
+                (int) BeginMode.TriangleFan,
+                (int) BeginMode.LinesAdjacency,
+                (int) BeginMode.LineStripAdjacency,
+                (int) BeginMode.TrianglesAdjacency,
+                (int) BeginMode.TriangleStripAdjacency,
+                (int) BeginMode.Patches
             };
 
-            int uniqueCount = new System.Collections.Generic.HashSet<int>(values).Count;
+            int uniqueCount = new HashSet<int>(values).Count;
             Assert.Equal(values.Length, uniqueCount);
         }
 
         /// <summary>
-        /// Tests that BeginMode can be cast to int.
+        ///     Tests that BeginMode can be cast to int.
         /// </summary>
         [Fact]
         public void BeginMode_CanCastToInt_ConversionIsValid()
         {
-            int value = (int)BeginMode.Triangles;
+            int value = (int) BeginMode.Triangles;
             Assert.IsType<int>(value);
         }
 
         /// <summary>
-        /// Tests that BeginMode values can be compared.
+        ///     Tests that BeginMode values can be compared.
         /// </summary>
         [Fact]
         public void BeginMode_CanCompareValues_EqualityWorks()
@@ -222,7 +223,7 @@ namespace Alis.Core.Graphic.Test.Enums
         }
 
         /// <summary>
-        /// Tests that different BeginMode values are not equal.
+        ///     Tests that different BeginMode values are not equal.
         /// </summary>
         [Fact]
         public void BeginMode_DifferentValues_AreNotEqual()
@@ -231,4 +232,3 @@ namespace Alis.Core.Graphic.Test.Enums
         }
     }
 }
-

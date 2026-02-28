@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: JsonParser.cs
+//  File:JsonParser.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program. If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -41,7 +41,7 @@ namespace Alis.Core.Aspect.Data.Json.Parsing
     public sealed class JsonParser : IJsonParser
     {
         /// <summary>
-        /// The escape sequence handler
+        ///     The escape sequence handler
         /// </summary>
         private readonly IEscapeSequenceHandler _escapeSequenceHandler;
 
@@ -50,10 +50,7 @@ namespace Alis.Core.Aspect.Data.Json.Parsing
         /// </summary>
         /// <param name="escapeSequenceHandler">The escape sequence handler.</param>
         /// <exception cref="ArgumentNullException">Thrown when escapeSequenceHandler is null.</exception>
-        public JsonParser(IEscapeSequenceHandler escapeSequenceHandler)
-        {
-            _escapeSequenceHandler = escapeSequenceHandler ?? throw new ArgumentNullException(nameof(escapeSequenceHandler));
-        }
+        public JsonParser(IEscapeSequenceHandler escapeSequenceHandler) => _escapeSequenceHandler = escapeSequenceHandler ?? throw new ArgumentNullException(nameof(escapeSequenceHandler));
 
         /// <summary>
         ///     Parses a JSON string into a dictionary of property names and their string values.
@@ -83,7 +80,7 @@ namespace Alis.Core.Aspect.Data.Json.Parsing
 
                 SkipWhitespace(json, ref position);
 
-                if (position < length && json[position] == '{')
+                if ((position < length) && (json[position] == '{'))
                 {
                     position++;
                 }
@@ -113,7 +110,7 @@ namespace Alis.Core.Aspect.Data.Json.Parsing
 
                     SkipWhitespace(json, ref position);
 
-                    if (position < length && json[position] == ',')
+                    if ((position < length) && (json[position] == ','))
                     {
                         position++;
                     }
@@ -167,13 +164,13 @@ namespace Alis.Core.Aspect.Data.Json.Parsing
             }
 
             position++;
-            StringBuilder result = new System.Text.StringBuilder();
+            StringBuilder result = new StringBuilder();
 
             while (position < json.Length)
             {
                 char current = json[position];
 
-                if (current == '"' && !_escapeSequenceHandler.IsEscaped(json, position))
+                if ((current == '"') && !_escapeSequenceHandler.IsEscaped(json, position))
                 {
                     position++;
                     return _escapeSequenceHandler.Unescape(result.ToString());
@@ -201,7 +198,7 @@ namespace Alis.Core.Aspect.Data.Json.Parsing
             {
                 char current = json[position];
 
-                if (current == '"' && !_escapeSequenceHandler.IsEscaped(json, position))
+                if ((current == '"') && !_escapeSequenceHandler.IsEscaped(json, position))
                 {
                     inString = !inString;
                     position++;
@@ -241,7 +238,7 @@ namespace Alis.Core.Aspect.Data.Json.Parsing
         {
             int start = position;
 
-            while (position < json.Length && json[position] != ',' && json[position] != '}' && json[position] != ']')
+            while ((position < json.Length) && (json[position] != ',') && (json[position] != '}') && (json[position] != ']'))
             {
                 position++;
             }
@@ -254,11 +251,10 @@ namespace Alis.Core.Aspect.Data.Json.Parsing
         /// </summary>
         private void SkipWhitespace(string json, ref int position)
         {
-            while (position < json.Length && char.IsWhiteSpace(json[position]))
+            while ((position < json.Length) && char.IsWhiteSpace(json[position]))
             {
                 position++;
             }
         }
     }
 }
-

@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:InputStateEnumTests.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,7 +39,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
     public class InputStateEnumTests
     {
         /// <summary>
-        /// Tests that input state release is defined
+        ///     Tests that input state release is defined
         /// </summary>
         [Fact]
         public void InputState_Release_IsDefined()
@@ -51,7 +52,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that input state press is defined
+        ///     Tests that input state press is defined
         /// </summary>
         [Fact]
         public void InputState_Press_IsDefined()
@@ -64,7 +65,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that input state repeat is defined
+        ///     Tests that input state repeat is defined
         /// </summary>
         [Fact]
         public void InputState_Repeat_IsDefined()
@@ -77,7 +78,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that input state can be cast to int
+        ///     Tests that input state can be cast to int
         /// </summary>
         [Fact]
         public void InputState_CanBeCastToInt()
@@ -86,30 +87,30 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
             InputState state = InputState.Press;
 
             // Act
-            int value = (int)state;
+            int value = (int) state;
 
             // Assert
             Assert.True(value >= 0);
         }
 
         /// <summary>
-        /// Tests that input state can be cast from int
+        ///     Tests that input state can be cast from int
         /// </summary>
         [Fact]
         public void InputState_CanBeCastFromInt()
         {
             // Arrange
-            int value = (int)InputState.Press;
+            int value = (int) InputState.Press;
 
             // Act
-            InputState state = (InputState)value;
+            InputState state = (InputState) value;
 
             // Assert
             Assert.Equal(InputState.Press, state);
         }
 
         /// <summary>
-        /// Tests that input state all states are different
+        ///     Tests that input state all states are different
         /// </summary>
         [Fact]
         public void InputState_AllStates_AreDifferent()
@@ -121,4 +122,3 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
     }
 }
-

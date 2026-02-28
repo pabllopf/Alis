@@ -45,7 +45,7 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
         public void IntersectEnumValue_ShouldBeDefined()
         {
             PolyClipType type = PolyClipType.Intersect;
-            
+
             Assert.Equal(PolyClipType.Intersect, type);
         }
 
@@ -56,7 +56,7 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
         public void UnionEnumValue_ShouldBeDefined()
         {
             PolyClipType type = PolyClipType.Union;
-            
+
             Assert.Equal(PolyClipType.Union, type);
         }
 
@@ -67,7 +67,7 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
         public void DifferenceEnumValue_ShouldBeDefined()
         {
             PolyClipType type = PolyClipType.Difference;
-            
+
             Assert.Equal(PolyClipType.Difference, type);
         }
 
@@ -77,8 +77,8 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
         [Fact]
         public void PolyClipType_ShouldHaveThreeValues()
         {
-            Array values = System.Enum.GetValues(typeof(PolyClipType));
-            
+            Array values = Enum.GetValues(typeof(PolyClipType));
+
             Assert.Equal(3, values.Length);
         }
 
@@ -88,10 +88,10 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
         [Fact]
         public void PolyClipType_ShouldBeCastableToInt()
         {
-            int intersectValue = (int)PolyClipType.Intersect;
-            int unionValue = (int)PolyClipType.Union;
-            int differenceValue = (int)PolyClipType.Difference;
-            
+            int intersectValue = (int) PolyClipType.Intersect;
+            int unionValue = (int) PolyClipType.Union;
+            int differenceValue = (int) PolyClipType.Difference;
+
             Assert.Equal(0, intersectValue);
             Assert.Equal(1, unionValue);
             Assert.Equal(2, differenceValue);
@@ -105,7 +105,7 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
         {
             PolyClipType type1 = PolyClipType.Union;
             PolyClipType type2 = PolyClipType.Union;
-            
+
             Assert.Equal(type1, type2);
         }
 
@@ -117,9 +117,8 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
         {
             PolyClipType type1 = PolyClipType.Intersect;
             PolyClipType type2 = PolyClipType.Difference;
-            
+
             Assert.NotEqual(type1, type2);
         }
     }
 }
-

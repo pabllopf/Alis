@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Extension.Language.Translator.Abstractions;
 
 namespace Alis.Extension.Language.Translator
@@ -41,6 +40,40 @@ namespace Alis.Extension.Language.Translator
     /// </remarks>
     public class Lang : ILanguage
     {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Lang" /> class
+        /// </summary>
+        public Lang() => IsDefault = false;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Lang" /> class with code and name
+        /// </summary>
+        /// <param name="code">The language code</param>
+        /// <param name="name">The display name</param>
+        public Lang(string code, string name)
+        {
+            Code = code;
+            Name = name;
+            IsDefault = false;
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Lang" /> class with all properties
+        /// </summary>
+        /// <param name="code">The language code</param>
+        /// <param name="name">The display name</param>
+        /// <param name="nativeName">The native name of the language</param>
+        /// <param name="cultureCode">The culture code</param>
+        /// <param name="isDefault">Whether this is the default language</param>
+        public Lang(string code, string name, string nativeName, string cultureCode, bool isDefault = false)
+        {
+            Code = code;
+            Name = name;
+            NativeName = nativeName;
+            CultureCode = cultureCode;
+            IsDefault = isDefault;
+        }
+
         /// <summary>
         ///     Gets or sets the display name of the language
         /// </summary>
@@ -67,43 +100,6 @@ namespace Alis.Extension.Language.Translator
         public bool IsDefault { get; set; }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Lang"/> class
-        /// </summary>
-        public Lang()
-        {
-            IsDefault = false;
-        }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Lang"/> class with code and name
-        /// </summary>
-        /// <param name="code">The language code</param>
-        /// <param name="name">The display name</param>
-        public Lang(string code, string name)
-        {
-            Code = code;
-            Name = name;
-            IsDefault = false;
-        }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Lang"/> class with all properties
-        /// </summary>
-        /// <param name="code">The language code</param>
-        /// <param name="name">The display name</param>
-        /// <param name="nativeName">The native name of the language</param>
-        /// <param name="cultureCode">The culture code</param>
-        /// <param name="isDefault">Whether this is the default language</param>
-        public Lang(string code, string name, string nativeName, string cultureCode, bool isDefault = false)
-        {
-            Code = code;
-            Name = name;
-            NativeName = nativeName;
-            CultureCode = cultureCode;
-            IsDefault = isDefault;
-        }
-
-        /// <summary>
         ///     Determines whether the specified language is equal to the current language
         /// </summary>
         /// <param name="other">The language to compare with</param>
@@ -115,7 +111,7 @@ namespace Alis.Extension.Language.Translator
                 return false;
             }
 
-            return Code == other.Code && Name == other.Name;
+            return (Code == other.Code) && (Name == other.Name);
         }
 
         /// <summary>
@@ -149,9 +145,6 @@ namespace Alis.Extension.Language.Translator
         ///     Returns a string representation of the language
         /// </summary>
         /// <returns>A string containing the language code and name</returns>
-        public override string ToString()
-        {
-            return $"{Code} - {Name}";
-        }
+        public override string ToString() => $"{Code} - {Name}";
     }
 }

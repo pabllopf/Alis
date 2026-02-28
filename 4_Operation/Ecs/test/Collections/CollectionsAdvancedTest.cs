@@ -201,4 +201,3 @@ namespace Alis.Core.Ecs.Test.Collections
         }
     }
 }
-

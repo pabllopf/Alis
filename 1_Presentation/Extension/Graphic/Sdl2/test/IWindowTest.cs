@@ -27,9 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Xunit;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Vector;
+using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
@@ -38,27 +38,6 @@ namespace Alis.Extension.Graphic.Sdl2.Test
     /// </summary>
     public class IWindowTest
     {
-        /// <summary>
-        ///     Mock implementation of IWindow for testing.
-        /// </summary>
-        private class MockWindow : IWindow
-        {
-            /// <summary>
-            ///     Gets or sets the background color.
-            /// </summary>
-            public Color Background { get; set; }
-
-            /// <summary>
-            ///     Gets or sets the resolution.
-            /// </summary>
-            public Vector2F Resolution { get; set; }
-
-            /// <summary>
-            ///     Gets or sets a value indicating whether the window is resizable.
-            /// </summary>
-            public bool IsWindowResizable { get; set; }
-        }
-
         /// <summary>
         ///     Tests that IWindow interface can be implemented.
         /// </summary>
@@ -189,11 +168,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests setting Resolution with various sizes.
         /// </summary>
-        [Theory]
-        [InlineData(640, 480)]
-        [InlineData(1024, 768)]
-        [InlineData(1920, 1080)]
-        [InlineData(2560, 1440)]
+        [Theory, InlineData(640, 480), InlineData(1024, 768), InlineData(1920, 1080), InlineData(2560, 1440)]
         public void IWindow_SetResolution_WithVariousSizes_StoresCorrectly(float width, float height)
         {
             // Arrange
@@ -241,6 +216,26 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             // Assert
             Assert.Equal(whiteColor, window.Background);
         }
+
+        /// <summary>
+        ///     Mock implementation of IWindow for testing.
+        /// </summary>
+        private class MockWindow : IWindow
+        {
+            /// <summary>
+            ///     Gets or sets the background color.
+            /// </summary>
+            public Color Background { get; set; }
+
+            /// <summary>
+            ///     Gets or sets the resolution.
+            /// </summary>
+            public Vector2F Resolution { get; set; }
+
+            /// <summary>
+            ///     Gets or sets a value indicating whether the window is resizable.
+            /// </summary>
+            public bool IsWindowResizable { get; set; }
+        }
     }
 }
-

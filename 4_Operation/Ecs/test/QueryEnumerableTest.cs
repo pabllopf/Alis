@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:QueryEnumerable.cs
+//  File:QueryEnumerableTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -38,7 +38,7 @@ namespace Alis.Core.Ecs.Test
     ///     The query enumerable test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="QueryEnumerable{T1}"/> struct which provides
+    ///     Tests the <see cref="QueryEnumerable{T1}" /> struct which provides
     ///     foreach enumeration support for single-component queries.
     /// </remarks>
     public partial class QueryEnumerableTest
@@ -75,8 +75,8 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 2 });
-            scene.Create(new Position { X = 3, Y = 4 });
+            scene.Create(new Position {X = 1, Y = 2});
+            scene.Create(new Position {X = 3, Y = 4});
             Query query = scene.Query<With<Position>>();
             QueryEnumerable<Position> enumerable = new QueryEnumerable<Position>(query);
 
@@ -102,7 +102,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position { X = 10, Y = 20 });
+            scene.Create(new Position {X = 10, Y = 20});
             Query query = scene.Query<With<Position>>();
             QueryEnumerable<Position> enumerable = new QueryEnumerable<Position>(query);
 
@@ -152,8 +152,8 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 1 });
-            scene.Create(new Position { X = 2, Y = 2 });
+            scene.Create(new Position {X = 1, Y = 1});
+            scene.Create(new Position {X = 2, Y = 2});
             Query query = scene.Query<With<Position>>();
             QueryEnumerable<Position> enumerable = new QueryEnumerable<Position>(query);
 
@@ -186,7 +186,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 0, Y = 0 });
+            GameObject entity = scene.Create(new Position {X = 0, Y = 0});
             Query query = scene.Query<With<Position>>();
             QueryEnumerable<Position> enumerable = new QueryEnumerable<Position>(query);
 
@@ -215,7 +215,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Health { Value = 100 });
+            scene.Create(new Health {Value = 100});
             Query query = scene.Query<With<Health>>();
             QueryEnumerable<Health> enumerable = new QueryEnumerable<Health>(query);
 
@@ -250,8 +250,8 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 1 });
-            GameObject disabled = scene.Create(new Position { X = 2, Y = 2 });
+            scene.Create(new Position {X = 1, Y = 1});
+            GameObject disabled = scene.Create(new Position {X = 2, Y = 2});
             disabled.Tag<Disable>();
 
             Query query = scene.Query<With<Position>>();
@@ -269,4 +269,3 @@ namespace Alis.Core.Ecs.Test
         }
     }
 }
-

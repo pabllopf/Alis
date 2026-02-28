@@ -353,7 +353,7 @@ namespace Alis.Core.Aspect.Memory
         }
 
         /// <summary>
-        /// Returns the lower hex using the specified bytes
+        ///     Returns the lower hex using the specified bytes
         /// </summary>
         /// <param name="bytes">The bytes</param>
         /// <returns>The string</returns>
@@ -470,6 +470,3 @@ namespace Alis.Core.Aspect.Memory
         }
     }
 }
-
-
-

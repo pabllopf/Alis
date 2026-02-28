@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ArchetypeNeighborCacheTest.cs
+//  File:ArchetypeNeighborCacheBasicTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -37,7 +37,7 @@ namespace Alis.Core.Ecs.Test.Collections
     ///     The archetype neighbor cache test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="ArchetypeNeighborCache"/> which caches
+    ///     Tests the <see cref="ArchetypeNeighborCache" /> which caches
     ///     neighboring archetypes to optimize archetype transitions in the ECS.
     ///     This is critical for performance when adding/removing components.
     /// </remarks>
@@ -139,10 +139,10 @@ namespace Alis.Core.Ecs.Test.Collections
             // Act
             GameObject e1 = scene.Create();
             e1.Add(new Position());
-            
+
             GameObject e2 = scene.Create();
             e2.Add(new Velocity());
-            
+
             GameObject e3 = scene.Create();
             e3.Add(new Position());
             e3.Add(new Velocity());
@@ -204,7 +204,7 @@ namespace Alis.Core.Ecs.Test.Collections
             {
                 entities[i] = scene.Create();
                 entities[i].Add(new Position());
-                
+
                 if (i % 2 == 0)
                 {
                     entities[i].Add(new Velocity());
@@ -215,13 +215,20 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.NotNull(cache);
             int positionCount = 0;
             int velocityCount = 0;
-            
+
             for (int i = 0; i < entityCount; i++)
             {
-                if (entities[i].Has<Position>()) positionCount++;
-                if (entities[i].Has<Velocity>()) velocityCount++;
+                if (entities[i].Has<Position>())
+                {
+                    positionCount++;
+                }
+
+                if (entities[i].Has<Velocity>())
+                {
+                    velocityCount++;
+                }
             }
-            
+
             Assert.Equal(entityCount, positionCount);
             Assert.Equal(entityCount / 2, velocityCount);
         }
@@ -245,7 +252,7 @@ namespace Alis.Core.Ecs.Test.Collections
             // Act
             GameObject e1 = scene1.Create();
             e1.Add(new Position());
-            
+
             GameObject e2 = scene2.Create();
             e2.Add(new Velocity());
 
@@ -276,23 +283,23 @@ namespace Alis.Core.Ecs.Test.Collections
             // Act & Assert
             entity.Add(new Position());
             Assert.True(entity.Has<Position>());
-            
+
             entity.Add(new Velocity());
             Assert.True(entity.Has<Velocity>());
-            
+
             entity.Remove<Position>();
             Assert.False(entity.Has<Position>());
             Assert.True(entity.Has<Velocity>());
-            
+
             entity.Add(new Health());
             Assert.True(entity.Has<Health>());
             Assert.True(entity.Has<Velocity>());
-            
+
             entity.Remove<Velocity>();
             entity.Remove<Health>();
             Assert.False(entity.Has<Velocity>());
             Assert.False(entity.Has<Health>());
-            
+
             Assert.NotNull(cache);
         }
     }

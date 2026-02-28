@@ -45,7 +45,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Constructor_ShouldInitializeWithDefaultValues()
         {
             FixtureProxy proxy = new FixtureProxy();
-            
+
             Assert.Equal(0, proxy.ChildIndex);
             Assert.Equal(0, proxy.ProxyId);
             Assert.Null(proxy.Fixture);
@@ -59,9 +59,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             FixtureProxy proxy = new FixtureProxy();
             Aabb aabb = new Aabb();
-            
+
             proxy.Aabb = aabb;
-            
+
             Assert.Equal(aabb, proxy.Aabb);
         }
 
@@ -75,7 +75,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             {
                 ChildIndex = 5
             };
-            
+
             Assert.Equal(5, proxy.ChildIndex);
         }
 
@@ -89,7 +89,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             {
                 ProxyId = 100
             };
-            
+
             Assert.Equal(100, proxy.ProxyId);
         }
 
@@ -105,7 +105,7 @@ namespace Alis.Core.Physic.Test.Dynamics
                 ChildIndex = 3,
                 ProxyId = 50
             };
-            
+
             Assert.NotNull(proxy.Aabb);
             Assert.Equal(3, proxy.ChildIndex);
             Assert.Equal(50, proxy.ProxyId);
@@ -121,7 +121,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             {
                 ProxyId = -1
             };
-            
+
             Assert.Equal(-1, proxy.ProxyId);
         }
 
@@ -135,9 +135,8 @@ namespace Alis.Core.Physic.Test.Dynamics
             {
                 ChildIndex = -1
             };
-            
+
             Assert.Equal(-1, proxy.ChildIndex);
         }
     }
 }
-

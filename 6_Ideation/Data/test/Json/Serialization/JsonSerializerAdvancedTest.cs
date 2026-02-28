@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: JsonSerializerAdvancedTest.cs
+//  File:JsonSerializerAdvancedTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program. If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -42,26 +42,58 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
     public class JsonSerializerAdvancedTest
     {
         /// <summary>
-        /// The json serializer
+        ///     The json serializer
         /// </summary>
         private readonly IJsonSerializer _serializer = new JsonSerializer();
+
+        #region Performance Tests
+
+        /// <summary>
+        ///     Tests that serialize large object completes in reasonable time
+        /// </summary>
+        [Fact]
+        public void Serialize_LargeObject_CompletesInReasonableTime()
+        {
+            // Arrange
+            TestDynamicObject obj = new TestDynamicObject(100);
+            Stopwatch stopwatch = Stopwatch.StartNew();
+
+            // Act
+            string json = _serializer.Serialize(obj);
+            stopwatch.Stop();
+
+            // Assert
+            Assert.NotEmpty(json);
+            Assert.True(stopwatch.ElapsedMilliseconds < 1000);
+        }
+
+        #endregion
+
+        #region Error Handling Tests
+
+        /// <summary>
+        ///     Tests that serialize null object throws argument null exception
+        /// </summary>
+        [Fact]
+        public void Serialize_NullObject_ThrowsArgumentNullException()
+        {
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>(() => _serializer.Serialize<TestStringObject>(null));
+        }
+
+        #endregion
 
         #region Value Type Tests
 
         /// <summary>
-        /// Tests that serialize integer property serializes correctly
+        ///     Tests that serialize integer property serializes correctly
         /// </summary>
         /// <param name="value">The value</param>
-        [Theory]
-        [InlineData(0)]
-        [InlineData(1)]
-        [InlineData(-1)]
-        [InlineData(int.MaxValue)]
-        [InlineData(int.MinValue)]
+        [Theory, InlineData(0), InlineData(1), InlineData(-1), InlineData(int.MaxValue), InlineData(int.MinValue)]
         public void Serialize_IntegerProperty_SerializesCorrectly(int value)
         {
             // Arrange
-            TestIntObject obj = new TestIntObject { Value = value };
+            TestIntObject obj = new TestIntObject {Value = value};
 
             // Act
             string json = _serializer.Serialize(obj);
@@ -71,16 +103,14 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         }
 
         /// <summary>
-        /// Tests that serialize boolean property serializes correctly
+        ///     Tests that serialize boolean property serializes correctly
         /// </summary>
         /// <param name="value">The value</param>
-        [Theory]
-        [InlineData(true)]
-        [InlineData(false)]
+        [Theory, InlineData(true), InlineData(false)]
         public void Serialize_BooleanProperty_SerializesCorrectly(bool value)
         {
             // Arrange
-            TestBoolObject obj = new TestBoolObject { Flag = value };
+            TestBoolObject obj = new TestBoolObject {Flag = value};
 
             // Act
             string json = _serializer.Serialize(obj);
@@ -90,18 +120,14 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         }
 
         /// <summary>
-        /// Tests that serialize double property serializes correctly
+        ///     Tests that serialize double property serializes correctly
         /// </summary>
         /// <param name="value">The value</param>
-        [Theory]
-        [InlineData(0.0)]
-        [InlineData(1.5)]
-        [InlineData(-3.14)]
-        [InlineData(double.MaxValue)]
+        [Theory, InlineData(0.0), InlineData(1.5), InlineData(-3.14), InlineData(double.MaxValue)]
         public void Serialize_DoubleProperty_SerializesCorrectly(double value)
         {
             // Arrange
-            TestDoubleObject obj = new TestDoubleObject { Number = value };
+            TestDoubleObject obj = new TestDoubleObject {Number = value};
 
             // Act
             string json = _serializer.Serialize(obj);
@@ -116,19 +142,14 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         #region String Tests
 
         /// <summary>
-        /// Tests that serialize string property serializes correctly
+        ///     Tests that serialize string property serializes correctly
         /// </summary>
         /// <param name="value">The value</param>
-        [Theory]
-        [InlineData("")]
-        [InlineData(" ")]
-        [InlineData("simple")]
-        [InlineData("with spaces")]
-        [InlineData("with\nnewline")]
+        [Theory, InlineData(""), InlineData(" "), InlineData("simple"), InlineData("with spaces"), InlineData("with\nnewline")]
         public void Serialize_StringProperty_SerializesCorrectly(string value)
         {
             // Arrange
-            TestStringObject obj = new TestStringObject { Text = value };
+            TestStringObject obj = new TestStringObject {Text = value};
 
             // Act
             string json = _serializer.Serialize(obj);
@@ -138,13 +159,13 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         }
 
         /// <summary>
-        /// Tests that serialize null string handles gracefully
+        ///     Tests that serialize null string handles gracefully
         /// </summary>
         [Fact]
         public void Serialize_NullString_HandlesGracefully()
         {
             // Arrange
-            TestStringObject obj = new TestStringObject { Text = null };
+            TestStringObject obj = new TestStringObject {Text = null};
 
             // Act
             string json = _serializer.Serialize(obj);
@@ -154,13 +175,13 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         }
 
         /// <summary>
-        /// Tests that serialize empty string includes empty string
+        ///     Tests that serialize empty string includes empty string
         /// </summary>
         [Fact]
         public void Serialize_EmptyString_IncludesEmptyString()
         {
             // Arrange
-            TestStringObject obj = new TestStringObject { Text = "" };
+            TestStringObject obj = new TestStringObject {Text = ""};
 
             // Act
             string json = _serializer.Serialize(obj);
@@ -174,14 +195,14 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         #region DateTime and Guid Tests
 
         /// <summary>
-        /// Tests that serialize date time property serializes correctly
+        ///     Tests that serialize date time property serializes correctly
         /// </summary>
         [Fact]
         public void Serialize_DateTimeProperty_SerializesCorrectly()
         {
             // Arrange
             DateTime now = DateTime.Now;
-            TestDateTimeObject obj = new TestDateTimeObject { Timestamp = now };
+            TestDateTimeObject obj = new TestDateTimeObject {Timestamp = now};
 
             // Act
             string json = _serializer.Serialize(obj);
@@ -191,14 +212,14 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         }
 
         /// <summary>
-        /// Tests that serialize guid property serializes correctly
+        ///     Tests that serialize guid property serializes correctly
         /// </summary>
         [Fact]
         public void Serialize_GuidProperty_SerializesCorrectly()
         {
             // Arrange
             Guid guid = Guid.NewGuid();
-            TestGuidObject obj = new TestGuidObject { Id = guid };
+            TestGuidObject obj = new TestGuidObject {Id = guid};
 
             // Act
             string json = _serializer.Serialize(obj);
@@ -208,13 +229,13 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         }
 
         /// <summary>
-        /// Tests that serialize empty guid serializes correctly
+        ///     Tests that serialize empty guid serializes correctly
         /// </summary>
         [Fact]
         public void Serialize_EmptyGuid_SerializesCorrectly()
         {
             // Arrange
-            TestGuidObject obj = new TestGuidObject { Id = Guid.Empty };
+            TestGuidObject obj = new TestGuidObject {Id = Guid.Empty};
 
             // Act
             string json = _serializer.Serialize(obj);
@@ -228,7 +249,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         #region Multiple Properties Tests
 
         /// <summary>
-        /// Tests that serialize multiple properties includes all properties
+        ///     Tests that serialize multiple properties includes all properties
         /// </summary>
         [Fact]
         public void Serialize_MultipleProperties_IncludesAllProperties()
@@ -251,14 +272,10 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         }
 
         /// <summary>
-        /// Tests that serialize object with many properties includes all
+        ///     Tests that serialize object with many properties includes all
         /// </summary>
         /// <param name="propertyCount">The property count</param>
-        [Theory]
-        [InlineData(1)]
-        [InlineData(2)]
-        [InlineData(5)]
-        [InlineData(10)]
+        [Theory, InlineData(1), InlineData(2), InlineData(5), InlineData(10)]
         public void Serialize_ObjectWithManyProperties_IncludesAll(int propertyCount)
         {
             // Arrange
@@ -278,13 +295,13 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         #region JSON Format Tests
 
         /// <summary>
-        /// Tests that serialize valid object starts with open brace
+        ///     Tests that serialize valid object starts with open brace
         /// </summary>
         [Fact]
         public void Serialize_ValidObject_StartsWithOpenBrace()
         {
             // Arrange
-            TestStringObject obj = new TestStringObject { Text = "test" };
+            TestStringObject obj = new TestStringObject {Text = "test"};
 
             // Act
             string json = _serializer.Serialize(obj);
@@ -294,13 +311,13 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         }
 
         /// <summary>
-        /// Tests that serialize valid object ends with close brace
+        ///     Tests that serialize valid object ends with close brace
         /// </summary>
         [Fact]
         public void Serialize_ValidObject_EndsWithCloseBrace()
         {
             // Arrange
-            TestStringObject obj = new TestStringObject { Text = "test" };
+            TestStringObject obj = new TestStringObject {Text = "test"};
 
             // Act
             string json = _serializer.Serialize(obj);
@@ -310,7 +327,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         }
 
         /// <summary>
-        /// Tests that serialize property with commas formats correctly
+        ///     Tests that serialize property with commas formats correctly
         /// </summary>
         [Fact]
         public void Serialize_PropertyWithCommas_FormatsCorrectly()
@@ -336,13 +353,13 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         #region Special Value Tests
 
         /// <summary>
-        /// Tests that serialize max int value serializes correctly
+        ///     Tests that serialize max int value serializes correctly
         /// </summary>
         [Fact]
         public void Serialize_MaxIntValue_SerializesCorrectly()
         {
             // Arrange
-            TestIntObject obj = new TestIntObject { Value = int.MaxValue };
+            TestIntObject obj = new TestIntObject {Value = int.MaxValue};
 
             // Act
             string json = _serializer.Serialize(obj);
@@ -352,13 +369,13 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         }
 
         /// <summary>
-        /// Tests that serialize min int value serializes correctly
+        ///     Tests that serialize min int value serializes correctly
         /// </summary>
         [Fact]
         public void Serialize_MinIntValue_SerializesCorrectly()
         {
             // Arrange
-            TestIntObject obj = new TestIntObject { Value = int.MinValue };
+            TestIntObject obj = new TestIntObject {Value = int.MinValue};
 
             // Act
             string json = _serializer.Serialize(obj);
@@ -369,58 +386,21 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
 
         #endregion
 
-        #region Performance Tests
-
-        /// <summary>
-        /// Tests that serialize large object completes in reasonable time
-        /// </summary>
-        [Fact]
-        public void Serialize_LargeObject_CompletesInReasonableTime()
-        {
-            // Arrange
-            TestDynamicObject obj = new TestDynamicObject(100);
-            Stopwatch stopwatch = System.Diagnostics.Stopwatch.StartNew();
-
-            // Act
-            string json = _serializer.Serialize(obj);
-            stopwatch.Stop();
-
-            // Assert
-            Assert.NotEmpty(json);
-            Assert.True(stopwatch.ElapsedMilliseconds < 1000);
-        }
-
-        #endregion
-
-        #region Error Handling Tests
-
-        /// <summary>
-        /// Tests that serialize null object throws argument null exception
-        /// </summary>
-        [Fact]
-        public void Serialize_NullObject_ThrowsArgumentNullException()
-        {
-            // Act & Assert
-            Assert.Throws<ArgumentNullException>(() => _serializer.Serialize<TestStringObject>(null));
-        }
-
-        #endregion
-
         #region Helper Test Classes
 
         /// <summary>
-        /// The test int object class
+        ///     The test int object class
         /// </summary>
-        /// <seealso cref="IJsonSerializable"/>
+        /// <seealso cref="IJsonSerializable" />
         private class TestIntObject : IJsonSerializable
         {
             /// <summary>
-            /// Gets or sets the value of the value
+            ///     Gets or sets the value of the value
             /// </summary>
             public int Value { get; set; }
 
             /// <summary>
-            /// Gets the serializable properties
+            ///     Gets the serializable properties
             /// </summary>
             /// <returns>An enumerable of string property name and string value</returns>
             public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
@@ -430,18 +410,18 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         }
 
         /// <summary>
-        /// The test bool object class
+        ///     The test bool object class
         /// </summary>
-        /// <seealso cref="IJsonSerializable"/>
+        /// <seealso cref="IJsonSerializable" />
         private class TestBoolObject : IJsonSerializable
         {
             /// <summary>
-            /// Gets or sets the value of the flag
+            ///     Gets or sets the value of the flag
             /// </summary>
             public bool Flag { get; set; }
 
             /// <summary>
-            /// Gets the serializable properties
+            ///     Gets the serializable properties
             /// </summary>
             /// <returns>An enumerable of string property name and string value</returns>
             public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
@@ -451,18 +431,18 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         }
 
         /// <summary>
-        /// The test double object class
+        ///     The test double object class
         /// </summary>
-        /// <seealso cref="IJsonSerializable"/>
+        /// <seealso cref="IJsonSerializable" />
         private class TestDoubleObject : IJsonSerializable
         {
             /// <summary>
-            /// Gets or sets the value of the number
+            ///     Gets or sets the value of the number
             /// </summary>
             public double Number { get; set; }
 
             /// <summary>
-            /// Gets the serializable properties
+            ///     Gets the serializable properties
             /// </summary>
             /// <returns>An enumerable of string property name and string value</returns>
             public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
@@ -472,18 +452,18 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         }
 
         /// <summary>
-        /// The test string object class
+        ///     The test string object class
         /// </summary>
-        /// <seealso cref="IJsonSerializable"/>
+        /// <seealso cref="IJsonSerializable" />
         private class TestStringObject : IJsonSerializable
         {
             /// <summary>
-            /// Gets or sets the value of the text
+            ///     Gets or sets the value of the text
             /// </summary>
             public string Text { get; set; }
 
             /// <summary>
-            /// Gets the serializable properties
+            ///     Gets the serializable properties
             /// </summary>
             /// <returns>An enumerable of string property name and string value</returns>
             public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
@@ -493,18 +473,18 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         }
 
         /// <summary>
-        /// The test date time object class
+        ///     The test date time object class
         /// </summary>
-        /// <seealso cref="IJsonSerializable"/>
+        /// <seealso cref="IJsonSerializable" />
         private class TestDateTimeObject : IJsonSerializable
         {
             /// <summary>
-            /// Gets or sets the value of the timestamp
+            ///     Gets or sets the value of the timestamp
             /// </summary>
             public DateTime Timestamp { get; set; }
 
             /// <summary>
-            /// Gets the serializable properties
+            ///     Gets the serializable properties
             /// </summary>
             /// <returns>An enumerable of string property name and string value</returns>
             public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
@@ -514,18 +494,18 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         }
 
         /// <summary>
-        /// The test guid object class
+        ///     The test guid object class
         /// </summary>
-        /// <seealso cref="IJsonSerializable"/>
+        /// <seealso cref="IJsonSerializable" />
         private class TestGuidObject : IJsonSerializable
         {
             /// <summary>
-            /// Gets or sets the value of the id
+            ///     Gets or sets the value of the id
             /// </summary>
             public Guid Id { get; set; }
 
             /// <summary>
-            /// Gets the serializable properties
+            ///     Gets the serializable properties
             /// </summary>
             /// <returns>An enumerable of string property name and string value</returns>
             public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
@@ -535,26 +515,28 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         }
 
         /// <summary>
-        /// The test multi object class
+        ///     The test multi object class
         /// </summary>
-        /// <seealso cref="IJsonSerializable"/>
+        /// <seealso cref="IJsonSerializable" />
         private class TestMultiObject : IJsonSerializable
         {
             /// <summary>
-            /// Gets or sets the value of the name
+            ///     Gets or sets the value of the name
             /// </summary>
             public string Name { get; set; }
+
             /// <summary>
-            /// Gets or sets the value of the age
+            ///     Gets or sets the value of the age
             /// </summary>
             public int Age { get; set; }
+
             /// <summary>
-            /// Gets or sets the value of the is active
+            ///     Gets or sets the value of the is active
             /// </summary>
             public bool IsActive { get; set; }
 
             /// <summary>
-            /// Gets the serializable properties
+            ///     Gets the serializable properties
             /// </summary>
             /// <returns>An enumerable of string property name and string value</returns>
             public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
@@ -566,27 +548,24 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         }
 
         /// <summary>
-        /// The test dynamic object class
+        ///     The test dynamic object class
         /// </summary>
-        /// <seealso cref="IJsonSerializable"/>
+        /// <seealso cref="IJsonSerializable" />
         private class TestDynamicObject : IJsonSerializable
         {
             /// <summary>
-            /// The property count
+            ///     The property count
             /// </summary>
             private readonly int _propertyCount;
 
             /// <summary>
-            /// Initializes a new instance of the <see cref="TestDynamicObject"/> class
+            ///     Initializes a new instance of the <see cref="TestDynamicObject" /> class
             /// </summary>
             /// <param name="propertyCount">The property count</param>
-            public TestDynamicObject(int propertyCount)
-            {
-                _propertyCount = propertyCount;
-            }
+            public TestDynamicObject(int propertyCount) => _propertyCount = propertyCount;
 
             /// <summary>
-            /// Gets the serializable properties
+            ///     Gets the serializable properties
             /// </summary>
             /// <returns>An enumerable of string property name and string value</returns>
             public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
@@ -601,4 +580,3 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         #endregion
     }
 }
-

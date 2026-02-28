@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
@@ -54,7 +53,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 0, Y = 0 });
+            GameObject entity = scene.Create(new Position {X = 0, Y = 0});
 
             // Act
             scene.Update();
@@ -74,9 +73,9 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(new Position { X = 1, Y = 1 });
-            GameObject entity2 = scene.Create(new Position { X = 2, Y = 2 });
-            GameObject entity3 = scene.Create(new Position { X = 3, Y = 3 });
+            GameObject entity1 = scene.Create(new Position {X = 1, Y = 1});
+            GameObject entity2 = scene.Create(new Position {X = 2, Y = 2});
+            GameObject entity3 = scene.Create(new Position {X = 3, Y = 3});
 
             // Act
             scene.Update();
@@ -98,7 +97,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 0, Y = 0 });
+            GameObject entity = scene.Create(new Position {X = 0, Y = 0});
             entity.Tag<Disable>();
 
             // Act
@@ -119,8 +118,8 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject enabledEntity = scene.Create(new Position { X = 1, Y = 1 });
-            GameObject disabledEntity = scene.Create(new Position { X = 2, Y = 2 });
+            GameObject enabledEntity = scene.Create(new Position {X = 1, Y = 1});
+            GameObject disabledEntity = scene.Create(new Position {X = 2, Y = 2});
             disabledEntity.Tag<Disable>();
 
             // Act
@@ -141,7 +140,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 0, Y = 0 });
+            GameObject entity = scene.Create(new Position {X = 0, Y = 0});
 
             // Act
             entity.Delete();
@@ -162,7 +161,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            Position initialPos = new Position { X = 5, Y = 10 };
+            Position initialPos = new Position {X = 5, Y = 10};
             GameObject entity = scene.Create(initialPos);
 
             // Act
@@ -170,7 +169,7 @@ namespace Alis.Core.Ecs.Test
 
             // Assert
             Assert.True(entity.IsAlive);
-            Assert.NotNull(entity.TryGet<Position>(out Ref<Position> pos) ? pos : null);
+            Assert.NotNull(entity.TryGet(out Ref<Position> pos) ? pos : null);
         }
 
         /// <summary>
@@ -185,8 +184,8 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
-                new Position { X = 1, Y = 2 },
-                new Velocity { VX = 3, VY = 4 }
+                new Position {X = 1, Y = 2},
+                new Velocity {VX = 3, VY = 4}
             );
 
             // Act
@@ -209,11 +208,11 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 42, Y = 84 });
+            GameObject entity = scene.Create(new Position {X = 42, Y = 84});
 
             // Act
             scene.Update();
-            bool hasComponent = entity.TryGet<Position>(out Ref<Position> pos);
+            bool hasComponent = entity.TryGet(out Ref<Position> pos);
 
             // Assert
             Assert.True(hasComponent);
@@ -232,7 +231,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 0, Y = 0 });
+            GameObject entity = scene.Create(new Position {X = 0, Y = 0});
 
             // Act
             scene.Update();
@@ -255,7 +254,7 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
-            entity.Add(new Position { X = 5, Y = 10 });
+            entity.Add(new Position {X = 5, Y = 10});
 
             // Act
             scene.Update();
@@ -277,8 +276,8 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
-                new Position { X = 1, Y = 2 },
-                new Velocity { VX = 3, VY = 4 }
+                new Position {X = 1, Y = 2},
+                new Velocity {VX = 3, VY = 4}
             );
 
             // Act
@@ -292,4 +291,3 @@ namespace Alis.Core.Ecs.Test
         }
     }
 }
-

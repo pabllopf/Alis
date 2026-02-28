@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:VulkanTests.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -37,7 +38,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
     public class VulkanTests
     {
         /// <summary>
-        /// Vulkans the is supported returns bool
+        ///     Vulkans the is supported returns bool
         /// </summary>
         [RequiresDisplay]
         public void Vulkan_IsSupported_ReturnsBool()
@@ -51,7 +52,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Vulkans the is supported does not throw
+        ///     Vulkans the is supported does not throw
         /// </summary>
         [RequiresDisplay]
         public void Vulkan_IsSupported_DoesNotThrow()
@@ -61,4 +62,3 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
     }
 }
-

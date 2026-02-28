@@ -44,4 +44,3 @@ namespace Alis.Extension.Math.ProceduralDungeon.Interfaces
         DungeonData Generate();
     }
 }
-

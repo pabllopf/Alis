@@ -37,7 +37,7 @@ namespace Alis.Core.Ecs.Test.Collections
     ///     The frugal stack test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="FrugalStack{T}"/> struct which is a lightweight
+    ///     Tests the <see cref="FrugalStack{T}" /> struct which is a lightweight
     ///     stack implementation designed for memory efficiency in the ECS system.
     /// </remarks>
     public class FrugalStackTest
@@ -146,6 +146,7 @@ namespace Alis.Core.Ecs.Test.Collections
             {
                 Assert.Equal(i, stack.Pop());
             }
+
             Assert.False(stack.Any);
         }
 
@@ -379,6 +380,7 @@ namespace Alis.Core.Ecs.Test.Collections
             {
                 Assert.Equal(i, stack.Pop());
             }
+
             Assert.False(stack.Any);
         }
 

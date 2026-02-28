@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Alis.Core.Audio.Interfaces;
@@ -603,7 +602,7 @@ namespace Alis.Core.Audio.Test.Players
                 // Assert
                 Assert.NotNull(player);
             }
-            
+
             // Assert - No exception thrown after disposal
             Assert.True(true);
         }
@@ -710,7 +709,7 @@ namespace Alis.Core.Audio.Test.Players
             player.PlaybackFinished += (sender, e) => eventRaised = true;
 
             // Act - Event would be raised internally
-            
+
             // Assert - Handler attached successfully
             Assert.NotNull(player);
         }
@@ -781,7 +780,7 @@ namespace Alis.Core.Audio.Test.Players
             {
                 await player.SetVolume(i);
             }
-            
+
             Assert.NotNull(player);
         }
 
@@ -910,4 +909,3 @@ namespace Alis.Core.Audio.Test.Players
         }
     }
 }
-

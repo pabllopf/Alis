@@ -82,10 +82,7 @@ namespace Alis.Extension.Language.Dialogue.Core
         /// </summary>
         /// <param name="context">The dialog context</param>
         /// <returns>Always true for callback actions</returns>
-        public bool IsValid(DialogContext context)
-        {
-            return context != null;
-        }
+        public bool IsValid(DialogContext context) => context != null;
 
         /// <summary>
         ///     Sets the callback to be invoked when action is executed
@@ -97,4 +94,3 @@ namespace Alis.Extension.Language.Dialogue.Core
         }
     }
 }
-

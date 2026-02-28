@@ -37,7 +37,7 @@ namespace Alis.Core.Ecs.Test.Collections
     ///     The short sparse set basic test class
     /// </summary>
     /// <remarks>
-    ///     Tests basic functionality of <see cref="ShortSparseSet{T}"/> which is a
+    ///     Tests basic functionality of <see cref="ShortSparseSet{T}" /> which is a
     ///     sparse array implementation optimized for ushort indices (16-bit IDs).
     ///     This is useful for component storage with limited component counts.
     /// </remarks>
@@ -113,8 +113,8 @@ namespace Alis.Core.Ecs.Test.Collections
         {
             // Arrange
             ShortSparseSet<Position> sparseSet = new ShortSparseSet<Position>();
-            Position pos1 = new Position { X = 10, Y = 20 };
-            Position pos2 = new Position { X = 30, Y = 40 };
+            Position pos1 = new Position {X = 10, Y = 20};
+            Position pos2 = new Position {X = 30, Y = 40};
 
             // Act
             sparseSet[0] = pos1;
@@ -158,7 +158,7 @@ namespace Alis.Core.Ecs.Test.Collections
             // Act
             for (int i = 0; i < initialCapacity * 2; i++)
             {
-                sparseSet[(ushort)i] = i;
+                sparseSet[(ushort) i] = i;
             }
 
             // Assert
@@ -206,15 +206,14 @@ namespace Alis.Core.Ecs.Test.Collections
             // Act
             for (int i = 0; i < 1000; i++)
             {
-                sparseSet[(ushort)i] = i * 2;
+                sparseSet[(ushort) i] = i * 2;
             }
 
             // Assert
             for (int i = 0; i < 1000; i++)
             {
-                Assert.Equal(i * 2, sparseSet[(ushort)i]);
+                Assert.Equal(i * 2, sparseSet[(ushort) i]);
             }
         }
     }
 }
-

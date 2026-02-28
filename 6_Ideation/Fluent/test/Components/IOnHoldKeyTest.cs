@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IOnHoldKeyTest.cs
+//  File:IOnHoldKeyTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -39,28 +39,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
     /// </summary>
     public class IOnHoldKeyTest
     {
-        
-
-        /// <summary>
-        ///     Helper implementation for testing IOnHoldKey.
-        /// </summary>
-        private class HoldKeyHandler : IOnHoldKey
-        {
-            public int HoldCount { get; private set; }
-            public System.TimeSpan TotalHoldTime { get; private set; }
-
-            public void OnHoldKey(IGameObject self, KeyEventInfo keyInfo)
-            {
-                HoldCount++;
-                TotalHoldTime += keyInfo.HoldDuration;
-            }
-
-            public void OnHoldKey(KeyEventInfo info)
-            {
-                    
-            }
-        }
-
         /// <summary>
         ///     Tests that IOnHoldKey can be implemented.
         /// </summary>
@@ -80,7 +58,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         {
             HoldKeyHandler handler = new HoldKeyHandler();
             MockGameObject self = new MockGameObject();
-            KeyEventInfo keyInfo = new KeyEventInfo(System.ConsoleKey.A, System.DateTime.UtcNow, System.TimeSpan.FromSeconds(1));
+            KeyEventInfo keyInfo = new KeyEventInfo(ConsoleKey.A, DateTime.UtcNow, TimeSpan.FromSeconds(1));
             handler.OnHoldKey(self, keyInfo);
             Assert.Equal(1, handler.HoldCount);
         }
@@ -93,13 +71,32 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         {
             HoldKeyHandler handler = new HoldKeyHandler();
             MockGameObject self = new MockGameObject();
-            KeyEventInfo keyInfo1 = new KeyEventInfo(System.ConsoleKey.D, System.DateTime.UtcNow, System.TimeSpan.FromSeconds(2));
-            KeyEventInfo keyInfo2 = new KeyEventInfo(System.ConsoleKey.D, System.DateTime.UtcNow, System.TimeSpan.FromSeconds(1));
+            KeyEventInfo keyInfo1 = new KeyEventInfo(ConsoleKey.D, DateTime.UtcNow, TimeSpan.FromSeconds(2));
+            KeyEventInfo keyInfo2 = new KeyEventInfo(ConsoleKey.D, DateTime.UtcNow, TimeSpan.FromSeconds(1));
             handler.OnHoldKey(self, keyInfo1);
             handler.OnHoldKey(self, keyInfo2);
             Assert.Equal(2, handler.HoldCount);
-            Assert.Equal(System.TimeSpan.FromSeconds(3), handler.TotalHoldTime);
+            Assert.Equal(TimeSpan.FromSeconds(3), handler.TotalHoldTime);
+        }
+
+
+        /// <summary>
+        ///     Helper implementation for testing IOnHoldKey.
+        /// </summary>
+        private class HoldKeyHandler : IOnHoldKey
+        {
+            public int HoldCount { get; private set; }
+            public TimeSpan TotalHoldTime { get; private set; }
+
+            public void OnHoldKey(KeyEventInfo info)
+            {
+            }
+
+            public void OnHoldKey(IGameObject self, KeyEventInfo keyInfo)
+            {
+                HoldCount++;
+                TotalHoldTime += keyInfo.HoldDuration;
+            }
         }
     }
 }
-

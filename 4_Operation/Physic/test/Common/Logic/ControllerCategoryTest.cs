@@ -43,7 +43,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         [Fact]
         public void None_ShouldHaveValueZero()
         {
-            Assert.Equal(0x00000000, (int)ControllerCategory.None);
+            Assert.Equal(0x00000000, (int) ControllerCategory.None);
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         [Fact]
         public void Cat01_ShouldHaveCorrectValue()
         {
-            Assert.Equal(0x00000001, (int)ControllerCategory.Cat01);
+            Assert.Equal(0x00000001, (int) ControllerCategory.Cat01);
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         [Fact]
         public void Cat02_ShouldHaveCorrectValue()
         {
-            Assert.Equal(0x00000002, (int)ControllerCategory.Cat02);
+            Assert.Equal(0x00000002, (int) ControllerCategory.Cat02);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         [Fact]
         public void Cat03_ShouldHaveCorrectValue()
         {
-            Assert.Equal(0x00000004, (int)ControllerCategory.Cat03);
+            Assert.Equal(0x00000004, (int) ControllerCategory.Cat03);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         [Fact]
         public void Cat04_ShouldHaveCorrectValue()
         {
-            Assert.Equal(0x00000008, (int)ControllerCategory.Cat04);
+            Assert.Equal(0x00000008, (int) ControllerCategory.Cat04);
         }
 
         /// <summary>
@@ -89,8 +89,8 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void Flags_CanBeCombined_WithBitwiseOr()
         {
             ControllerCategory combined = ControllerCategory.Cat01 | ControllerCategory.Cat02;
-            
-            Assert.Equal(0x00000003, (int)combined);
+
+            Assert.Equal(0x00000003, (int) combined);
         }
 
         /// <summary>
@@ -100,11 +100,11 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void Flags_CanBeChecked_WithBitwiseAnd()
         {
             ControllerCategory combined = ControllerCategory.Cat01 | ControllerCategory.Cat02;
-            
+
             Assert.True((combined & ControllerCategory.Cat01) == ControllerCategory.Cat01);
             Assert.True((combined & ControllerCategory.Cat02) == ControllerCategory.Cat02);
         }
-        
+
 
         /// <summary>
         ///     Tests that categories should be powers of two
@@ -112,11 +112,11 @@ namespace Alis.Core.Physic.Test.Common.Logic
         [Fact]
         public void Categories_ShouldBePowersOfTwo()
         {
-            Assert.Equal(1, (int)ControllerCategory.Cat01);
-            Assert.Equal(2, (int)ControllerCategory.Cat02);
-            Assert.Equal(4, (int)ControllerCategory.Cat03);
-            Assert.Equal(8, (int)ControllerCategory.Cat04);
-            Assert.Equal(16, (int)ControllerCategory.Cat05);
+            Assert.Equal(1, (int) ControllerCategory.Cat01);
+            Assert.Equal(2, (int) ControllerCategory.Cat02);
+            Assert.Equal(4, (int) ControllerCategory.Cat03);
+            Assert.Equal(8, (int) ControllerCategory.Cat04);
+            Assert.Equal(16, (int) ControllerCategory.Cat05);
         }
 
         /// <summary>
@@ -126,9 +126,8 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void None_CombinedWithAnyCategory_EqualsThatCategory()
         {
             ControllerCategory combined = ControllerCategory.None | ControllerCategory.Cat01;
-            
+
             Assert.Equal(ControllerCategory.Cat01, combined);
         }
     }
 }
-

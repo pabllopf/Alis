@@ -45,7 +45,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
         public void CwEnumValue_ShouldBeDefined()
         {
             Orientation orientation = Orientation.Cw;
-            
+
             Assert.Equal(Orientation.Cw, orientation);
         }
 
@@ -56,7 +56,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
         public void CcwEnumValue_ShouldBeDefined()
         {
             Orientation orientation = Orientation.Ccw;
-            
+
             Assert.Equal(Orientation.Ccw, orientation);
         }
 
@@ -67,7 +67,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
         public void CollinearEnumValue_ShouldBeDefined()
         {
             Orientation orientation = Orientation.Collinear;
-            
+
             Assert.Equal(Orientation.Collinear, orientation);
         }
 
@@ -77,8 +77,8 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
         [Fact]
         public void Orientation_ShouldHaveThreeValues()
         {
-            Array values = System.Enum.GetValues(typeof(Orientation));
-            
+            Array values = Enum.GetValues(typeof(Orientation));
+
             Assert.Equal(3, values.Length);
         }
 
@@ -88,10 +88,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
         [Fact]
         public void Orientation_ShouldBeCastableToInt()
         {
-            int cwValue = (int)Orientation.Cw;
-            int ccwValue = (int)Orientation.Ccw;
-            int collinearValue = (int)Orientation.Collinear;
-            
+            int cwValue = (int) Orientation.Cw;
+            int ccwValue = (int) Orientation.Ccw;
+            int collinearValue = (int) Orientation.Collinear;
+
             Assert.Equal(0, cwValue);
             Assert.Equal(1, ccwValue);
             Assert.Equal(2, collinearValue);
@@ -105,7 +105,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
         {
             Orientation orientation1 = Orientation.Ccw;
             Orientation orientation2 = Orientation.Ccw;
-            
+
             Assert.Equal(orientation1, orientation2);
         }
 
@@ -117,7 +117,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
         {
             Orientation orientation1 = Orientation.Cw;
             Orientation orientation2 = Orientation.Collinear;
-            
+
             Assert.NotEqual(orientation1, orientation2);
         }
 
@@ -135,9 +135,8 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
                 Orientation.Collinear => "Collinear",
                 _ => "Unknown"
             };
-            
+
             Assert.Equal("CounterClockwise", result);
         }
     }
 }
-

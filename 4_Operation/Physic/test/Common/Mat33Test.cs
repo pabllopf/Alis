@@ -47,9 +47,9 @@ namespace Alis.Core.Physic.Test.Common
             Vector3F c1 = new Vector3F(1.0f, 2.0f, 3.0f);
             Vector3F c2 = new Vector3F(4.0f, 5.0f, 6.0f);
             Vector3F c3 = new Vector3F(7.0f, 8.0f, 9.0f);
-            
+
             Mat33 mat = new Mat33(c1, c2, c3);
-            
+
             Assert.Equal(c1, mat.Ex);
             Assert.Equal(c2, mat.Ey);
             Assert.Equal(c3, mat.Ez);
@@ -66,9 +66,9 @@ namespace Alis.Core.Physic.Test.Common
                 new Vector3F(4.0f, 5.0f, 6.0f),
                 new Vector3F(7.0f, 8.0f, 9.0f)
             );
-            
+
             mat.SetZero();
-            
+
             Assert.Equal(Vector3F.Zero, mat.Ex);
             Assert.Equal(Vector3F.Zero, mat.Ey);
             Assert.Equal(Vector3F.Zero, mat.Ez);
@@ -86,9 +86,9 @@ namespace Alis.Core.Physic.Test.Common
                 new Vector3F(0.0f, 0.0f, 1.0f)
             );
             Vector3F b = new Vector3F(2.0f, 3.0f, 4.0f);
-            
+
             Vector3F x = mat.Solve33(b);
-            
+
             Assert.Equal(2.0f, x.X, 5);
             Assert.Equal(3.0f, x.Y, 5);
             Assert.Equal(4.0f, x.Z, 5);
@@ -106,9 +106,9 @@ namespace Alis.Core.Physic.Test.Common
                 new Vector3F(0.0f, 0.0f, 1.0f)
             );
             Vector2F b = new Vector2F(5.0f, 7.0f);
-            
+
             Vector2F x = mat.Solve22(b);
-            
+
             Assert.Equal(1.0f, x.X, 5);
             Assert.Equal(3.0f, x.Y, 5);
         }
@@ -125,9 +125,9 @@ namespace Alis.Core.Physic.Test.Common
                 new Vector3F(0.0f, 0.0f, 1.0f)
             );
             Mat33 inverse = new Mat33();
-            
+
             mat.GetInverse22(ref inverse);
-            
+
             Assert.Equal(-0.5f, inverse.Ex.X, 5);
             Assert.Equal(1.0f, inverse.Ex.Y, 5);
             Assert.Equal(1.5f, inverse.Ey.X, 5);
@@ -146,9 +146,9 @@ namespace Alis.Core.Physic.Test.Common
                 new Vector3F(0.0f, 0.0f, 1.0f)
             );
             Mat33 inverse = new Mat33();
-            
+
             mat.GetSymInverse33(ref inverse);
-            
+
             Assert.Equal(1.0f, inverse.Ex.X, 5);
             Assert.Equal(0.0f, inverse.Ex.Y, 5);
             Assert.Equal(0.0f, inverse.Ex.Z, 5);
@@ -161,7 +161,7 @@ namespace Alis.Core.Physic.Test.Common
         public void Constructor_WithZeroVectors_ShouldWork()
         {
             Mat33 mat = new Mat33(Vector3F.Zero, Vector3F.Zero, Vector3F.Zero);
-            
+
             Assert.Equal(Vector3F.Zero, mat.Ex);
             Assert.Equal(Vector3F.Zero, mat.Ey);
             Assert.Equal(Vector3F.Zero, mat.Ez);
@@ -179,9 +179,9 @@ namespace Alis.Core.Physic.Test.Common
                 new Vector3F(0.0f, 0.0f, 1.0f)
             );
             Vector3F b = new Vector3F(5.0f, 6.0f, 7.0f);
-            
+
             Vector3F x = identity.Solve33(b);
-            
+
             Assert.Equal(b.X, x.X, 5);
             Assert.Equal(b.Y, x.Y, 5);
             Assert.Equal(b.Z, x.Z, 5);
@@ -199,9 +199,9 @@ namespace Alis.Core.Physic.Test.Common
                 new Vector3F(0.0f, 0.0f, 1.0f)
             );
             Vector2F b = new Vector2F(3.0f, 4.0f);
-            
+
             Vector2F x = identity.Solve22(b);
-            
+
             Assert.Equal(b.X, x.X, 5);
             Assert.Equal(b.Y, x.Y, 5);
         }
@@ -217,10 +217,10 @@ namespace Alis.Core.Physic.Test.Common
                 new Vector3F(4.0f, 5.0f, 6.0f),
                 new Vector3F(7.0f, 8.0f, 9.0f)
             );
-            
+
             mat.SetZero();
             mat.SetZero();
-            
+
             Assert.Equal(Vector3F.Zero, mat.Ex);
             Assert.Equal(Vector3F.Zero, mat.Ey);
             Assert.Equal(Vector3F.Zero, mat.Ez);
@@ -235,13 +235,12 @@ namespace Alis.Core.Physic.Test.Common
             Vector3F c1 = new Vector3F(-1.0f, -2.0f, -3.0f);
             Vector3F c2 = new Vector3F(-4.0f, -5.0f, -6.0f);
             Vector3F c3 = new Vector3F(-7.0f, -8.0f, -9.0f);
-            
+
             Mat33 mat = new Mat33(c1, c2, c3);
-            
+
             Assert.Equal(c1, mat.Ex);
             Assert.Equal(c2, mat.Ey);
             Assert.Equal(c3, mat.Ez);
         }
     }
 }
-

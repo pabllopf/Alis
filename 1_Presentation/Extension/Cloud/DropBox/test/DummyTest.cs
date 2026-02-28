@@ -28,14 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Threading.Tasks;
-using Alis.Core.Ecs.Systems.Manager;
 using Alis.Core.Ecs.Systems.Scope;
-using Dropbox.Api.Files;
-using Moq;
 using Xunit;
 
 namespace Alis.Extension.Cloud.DropBox.Test
@@ -49,10 +44,7 @@ namespace Alis.Extension.Cloud.DropBox.Test
         ///     Creates a mock context for testing
         /// </summary>
         /// <returns>A mock context</returns>
-        private static Context CreateMockContext()
-        {
-            return new Context();
-        }
+        private static Context CreateMockContext() => new Context();
 
         /// <summary>
         ///     Tests that the manager can be instantiated
@@ -342,4 +334,3 @@ namespace Alis.Extension.Cloud.DropBox.Test
         }
     }
 }
-

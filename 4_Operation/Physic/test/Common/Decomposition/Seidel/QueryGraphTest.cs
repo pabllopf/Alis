@@ -50,9 +50,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             Point p4 = new Point(0, 1);
             Trapezoid trapezoid = new Trapezoid(p1, p2, new Edge(p1, p4), new Edge(p2, p3));
             Sink sink = new Sink(trapezoid);
-            
+
             QueryGraph graph = new QueryGraph(sink);
-            
+
             Assert.NotNull(graph);
         }
 
@@ -69,10 +69,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             Trapezoid trapezoid = new Trapezoid(p1, p2, new Edge(p1, p4), new Edge(p2, p3));
             Sink sink = new Sink(trapezoid);
             QueryGraph graph = new QueryGraph(sink);
-            
+
             Edge edge = new Edge(new Point(0, 5), new Point(5, 5));
             List<Trapezoid> trapezoids = graph.FollowEdge(edge);
-            
+
             Assert.NotNull(trapezoids);
             Assert.NotEmpty(trapezoids);
         }
@@ -90,7 +90,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             Trapezoid trapezoid = new Trapezoid(p1, p2, new Edge(p1, p4), new Edge(p2, p3));
             Sink sink = new Sink(trapezoid);
             QueryGraph graph = new QueryGraph(sink);
-            
+
             Point ep1 = new Point(2, 2);
             Point ep2 = new Point(8, 8);
             Edge edge = new Edge(ep1, ep2);
@@ -98,11 +98,11 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             Trapezoid t2 = new Trapezoid(ep1, ep2, edge, new Edge(p2, p3));
             Trapezoid t3 = new Trapezoid(ep1, ep2, new Edge(p1, p4), edge);
             Trapezoid t4 = new Trapezoid(ep2, p2, edge, new Edge(p2, p3));
-            
-            Trapezoid[] tList = { t1, t2, t3, t4 };
-            
+
+            Trapezoid[] tList = {t1, t2, t3, t4};
+
             graph.Case1(sink, edge, tList);
-            
+
             Assert.NotNull(graph);
         }
 
@@ -119,18 +119,18 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             Trapezoid trapezoid = new Trapezoid(p1, p2, new Edge(p1, p4), new Edge(p2, p3));
             Sink sink = new Sink(trapezoid);
             QueryGraph graph = new QueryGraph(sink);
-            
+
             Point ep1 = new Point(2, 2);
             Point ep2 = new Point(8, 8);
             Edge edge = new Edge(ep1, ep2);
             Trapezoid t1 = new Trapezoid(p1, ep1, new Edge(p1, p4), edge);
             Trapezoid t2 = new Trapezoid(ep1, ep2, edge, new Edge(p2, p3));
             Trapezoid t3 = new Trapezoid(ep1, ep2, new Edge(p1, p4), edge);
-            
-            Trapezoid[] tList = { t1, t2, t3 };
-            
+
+            Trapezoid[] tList = {t1, t2, t3};
+
             graph.Case2(sink, edge, tList);
-            
+
             Assert.NotNull(graph);
         }
 
@@ -147,17 +147,17 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             Trapezoid trapezoid = new Trapezoid(p1, p2, new Edge(p1, p4), new Edge(p2, p3));
             Sink sink = new Sink(trapezoid);
             QueryGraph graph = new QueryGraph(sink);
-            
+
             Point ep1 = new Point(2, 2);
             Point ep2 = new Point(8, 8);
             Edge edge = new Edge(ep1, ep2);
             Trapezoid t1 = new Trapezoid(ep1, ep2, edge, new Edge(p2, p3));
             Trapezoid t2 = new Trapezoid(ep1, ep2, new Edge(p1, p4), edge);
-            
-            Trapezoid[] tList = { t1, t2 };
-            
+
+            Trapezoid[] tList = {t1, t2};
+
             graph.Case3(sink, edge, tList);
-            
+
             Assert.NotNull(graph);
         }
 
@@ -174,18 +174,18 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             Trapezoid trapezoid = new Trapezoid(p1, p2, new Edge(p1, p4), new Edge(p2, p3));
             Sink sink = new Sink(trapezoid);
             QueryGraph graph = new QueryGraph(sink);
-            
+
             Point ep1 = new Point(2, 2);
             Point ep2 = new Point(8, 8);
             Edge edge = new Edge(ep1, ep2);
             Trapezoid t1 = new Trapezoid(ep1, ep2, edge, new Edge(p2, p3));
             Trapezoid t2 = new Trapezoid(ep1, ep2, new Edge(p1, p4), edge);
             Trapezoid t3 = new Trapezoid(ep2, p2, edge, new Edge(p2, p3));
-            
-            Trapezoid[] tList = { t1, t2, t3 };
-            
+
+            Trapezoid[] tList = {t1, t2, t3};
+
             graph.Case4(sink, edge, tList);
-            
+
             Assert.NotNull(graph);
         }
 
@@ -203,7 +203,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             Sink sink = new Sink(trapezoid);
             QueryGraph graph1 = new QueryGraph(sink);
             QueryGraph graph2 = graph1;
-            
+
             Assert.Same(graph1, graph2);
         }
 
@@ -220,10 +220,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             Trapezoid trapezoid = new Trapezoid(p1, p2, new Edge(p1, p4), new Edge(p2, p3));
             Sink sink = new Sink(trapezoid);
             QueryGraph graph = new QueryGraph(sink);
-            
+
             Edge edge = new Edge(new Point(1, 5), new Point(3, 5));
             List<Trapezoid> result = graph.FollowEdge(edge);
-            
+
             Assert.NotNull(result);
         }
 
@@ -240,9 +240,8 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             Trapezoid trapezoid = new Trapezoid(p1, p2, new Edge(p1, p4), new Edge(p2, p3));
             Sink sink = new Sink(trapezoid);
             QueryGraph graph = new QueryGraph(sink);
-            
+
             Assert.NotNull(graph);
         }
     }
 }
-

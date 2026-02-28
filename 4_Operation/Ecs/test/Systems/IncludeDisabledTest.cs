@@ -37,7 +37,7 @@ namespace Alis.Core.Ecs.Test.Systems
     ///     The include disabled test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="IncludeDisabled"/> struct which specifies that a query
+    ///     Tests the <see cref="IncludeDisabled" /> struct which specifies that a query
     ///     should include entities with the Disable tag (which are normally excluded).
     /// </remarks>
     public class IncludeDisabledTest
@@ -52,7 +52,7 @@ namespace Alis.Core.Ecs.Test.Systems
         public void IncludeDisabled_ImplementsRuleProvider()
         {
             // Arrange & Act
-            IncludeDisabled includeDisabled = default;
+            IncludeDisabled includeDisabled = default(IncludeDisabled);
 
             // Assert
             Assert.IsAssignableFrom<IRuleProvider>(includeDisabled);
@@ -68,7 +68,7 @@ namespace Alis.Core.Ecs.Test.Systems
         public void IncludeDisabled_RuleIsValid()
         {
             // Arrange
-            IncludeDisabled includeDisabled = default;
+            IncludeDisabled includeDisabled = default(IncludeDisabled);
 
             // Act
             Rule rule = includeDisabled.Rule;
@@ -88,8 +88,8 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 1 });
-            GameObject disabled = scene.Create(new Position { X = 2, Y = 2 });
+            scene.Create(new Position {X = 1, Y = 1});
+            GameObject disabled = scene.Create(new Position {X = 2, Y = 2});
             disabled.Tag<Disable>();
 
             // Act
@@ -115,8 +115,8 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 1 });
-            GameObject disabled = scene.Create(new Position { X = 2, Y = 2 });
+            scene.Create(new Position {X = 1, Y = 1});
+            GameObject disabled = scene.Create(new Position {X = 2, Y = 2});
             disabled.Tag<Disable>();
 
             // Act
@@ -142,9 +142,9 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 1 }, new Velocity { VX = 1, VY = 1 });
-            
-            GameObject disabled = scene.Create(new Position { X = 2, Y = 2 }, new Velocity { VX = 2, VY = 2 });
+            scene.Create(new Position {X = 1, Y = 1}, new Velocity {VX = 1, VY = 1});
+
+            GameObject disabled = scene.Create(new Position {X = 2, Y = 2}, new Velocity {VX = 2, VY = 2});
             disabled.Tag<Disable>();
 
             // Act
@@ -170,14 +170,14 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject player = scene.Create(new Position { X = 1, Y = 1 });
+            GameObject player = scene.Create(new Position {X = 1, Y = 1});
             player.Tag<PlayerTag>();
 
-            GameObject disabledPlayer = scene.Create(new Position { X = 2, Y = 2 });
+            GameObject disabledPlayer = scene.Create(new Position {X = 2, Y = 2});
             disabledPlayer.Tag<PlayerTag>();
             disabledPlayer.Tag<Disable>();
 
-            GameObject enemy = scene.Create(new Position { X = 3, Y = 3 });
+            GameObject enemy = scene.Create(new Position {X = 3, Y = 3});
             enemy.Tag<EnemyTag>();
 
             // Act
@@ -202,7 +202,7 @@ namespace Alis.Core.Ecs.Test.Systems
         public void IncludeDisabled_DefaultInstancesAreEqual()
         {
             // Arrange
-            IncludeDisabled disabled1 = default;
+            IncludeDisabled disabled1 = default(IncludeDisabled);
             IncludeDisabled disabled2 = new IncludeDisabled();
 
             // Act
@@ -224,12 +224,12 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 1 });
-            
-            GameObject disabledWithVel = scene.Create(new Position { X = 2, Y = 2 }, new Velocity { VX = 1, VY = 1 });
+            scene.Create(new Position {X = 1, Y = 1});
+
+            GameObject disabledWithVel = scene.Create(new Position {X = 2, Y = 2}, new Velocity {VX = 1, VY = 1});
             disabledWithVel.Tag<Disable>();
 
-            GameObject disabled = scene.Create(new Position { X = 3, Y = 3 });
+            GameObject disabled = scene.Create(new Position {X = 3, Y = 3});
             disabled.Tag<Disable>();
 
             // Act - Position + IncludeDisabled + Not Velocity
@@ -255,7 +255,7 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject disabled = scene.Create(new Position { X = 0, Y = 0 });
+            GameObject disabled = scene.Create(new Position {X = 0, Y = 0});
             disabled.Tag<Disable>();
 
             // Act
@@ -308,7 +308,7 @@ namespace Alis.Core.Ecs.Test.Systems
             using Scene scene = new Scene();
             for (int i = 0; i < 5; i++)
             {
-                GameObject entity = scene.Create(new Position { X = i, Y = i });
+                GameObject entity = scene.Create(new Position {X = i, Y = i});
                 entity.Tag<Disable>();
             }
 
@@ -325,4 +325,3 @@ namespace Alis.Core.Ecs.Test.Systems
         }
     }
 }
-

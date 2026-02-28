@@ -298,4 +298,3 @@ namespace Alis.Core.Ecs.Test
         }
     }
 }
-

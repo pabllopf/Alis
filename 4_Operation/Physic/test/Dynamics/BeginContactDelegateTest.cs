@@ -27,9 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
-using Alis.Core.Physic.Dynamics.Contacts;
 using Xunit;
 
 namespace Alis.Core.Physic.Test.Dynamics
@@ -46,11 +44,10 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void BeginContactDelegate_ShouldAcceptNull()
         {
             BeginContactDelegate callback = contact => contact != null;
-            
+
             bool result = callback(null);
-            
+
             Assert.False(result);
         }
     }
 }
-

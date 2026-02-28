@@ -51,10 +51,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
         /// </summary>
         /// <param name="randomNumberGenerator">The random number generator to use.</param>
         /// <exception cref="ArgumentNullException">Thrown when randomNumberGenerator is null.</exception>
-        public CorridorFactory(IRandomNumberGenerator randomNumberGenerator)
-        {
-            _randomNumberGenerator = randomNumberGenerator ?? throw new ArgumentNullException(nameof(randomNumberGenerator));
-        }
+        public CorridorFactory(IRandomNumberGenerator randomNumberGenerator) => _randomNumberGenerator = randomNumberGenerator ?? throw new ArgumentNullException(nameof(randomNumberGenerator));
 
         /// <summary>
         ///     Creates the first corridor connected to the starting room.
@@ -66,10 +63,10 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
         /// <exception cref="ArgumentException">Thrown when dimensions are invalid.</exception>
         public CorridorData CreateFirstCorridor(int width, int height, RoomData room)
         {
-            DimensionsValidator.ValidateDimensions(width, height, nameof(width), nameof(height));
-            
+            DimensionsValidator.ValidateDimensions(width, height);
+
             Direction direction = GetRandomDirection();
-            
+
             return CreateCorridorFromRoom(width, height, room, direction);
         }
 
@@ -83,10 +80,10 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
         /// <exception cref="ArgumentException">Thrown when dimensions are invalid.</exception>
         public CorridorData CreateCorridor(int width, int height, RoomData room)
         {
-            DimensionsValidator.ValidateDimensions(width, height, nameof(width), nameof(height));
-            
+            DimensionsValidator.ValidateDimensions(width, height);
+
             Direction direction = GetRandomDirectionAvoidingOpposite(room.Direction);
-            
+
             return CreateCorridorFromRoom(width, height, room, direction);
         }
 
@@ -146,7 +143,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
         private Direction GetRandomDirection()
         {
             int directionValue = _randomNumberGenerator.Next(1, 5);
-            return (Direction)directionValue;
+            return (Direction) directionValue;
         }
 
         /// <summary>
@@ -169,4 +166,3 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
         }
     }
 }
-

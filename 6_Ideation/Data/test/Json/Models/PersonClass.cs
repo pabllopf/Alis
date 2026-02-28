@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: TestDataModels.cs
+//  File:PersonClass.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program. If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -45,20 +45,48 @@ namespace Alis.Core.Aspect.Data.Test.Json.Models
     public class PersonClass : IJsonSerializable, IJsonDesSerializable<PersonClass>
     {
         /// <summary>
-        /// Gets or sets the value of the name
+        ///     Gets or sets the value of the name
         /// </summary>
         public string Name { get; set; }
+
         /// <summary>
-        /// Gets or sets the value of the age
+        ///     Gets or sets the value of the age
         /// </summary>
         public int Age { get; set; }
+
         /// <summary>
-        /// Gets or sets the value of the email
+        ///     Gets or sets the value of the email
         /// </summary>
         public string Email { get; set; }
 
         /// <summary>
-        /// Gets the serializable properties
+        ///     Creates the from properties using the specified properties
+        /// </summary>
+        /// <param name="properties">The properties</param>
+        /// <returns>The person</returns>
+        public PersonClass CreateFromProperties(Dictionary<string, string> properties)
+        {
+            PersonClass person = new PersonClass();
+            if (properties.TryGetValue(nameof(Name), out string name))
+            {
+                person.Name = name;
+            }
+
+            if (properties.TryGetValue(nameof(Age), out string age) && int.TryParse(age, out int ageValue))
+            {
+                person.Age = ageValue;
+            }
+
+            if (properties.TryGetValue(nameof(Email), out string email))
+            {
+                person.Email = email;
+            }
+
+            return person;
+        }
+
+        /// <summary>
+        ///     Gets the serializable properties
         /// </summary>
         /// <returns>An enumerable of string property name and string value</returns>
         public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
@@ -67,65 +95,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Models
             yield return (nameof(Age), Age.ToString());
             yield return (nameof(Email), Email);
         }
-
-        /// <summary>
-        /// Creates the from properties using the specified properties
-        /// </summary>
-        /// <param name="properties">The properties</param>
-        /// <returns>The person</returns>
-        public PersonClass CreateFromProperties(Dictionary<string, string> properties)
-        {
-            PersonClass person = new PersonClass();
-            if (properties.TryGetValue(nameof(Name), out string name))
-                person.Name = name;
-            if (properties.TryGetValue(nameof(Age), out string age) && int.TryParse(age, out int ageValue))
-                person.Age = ageValue;
-            if (properties.TryGetValue(nameof(Email), out string email))
-                person.Email = email;
-            return person;
-        }
     }
 
     #endregion
-
-    #region Numeric Types
-
-    #endregion
-
-    #region DateTime and Guid Types
-
-    #endregion
-
-    #region Enum Types
-
-    #endregion
-
-    #region Complex Nested Types
-
-    #endregion
-
-    #region Collection Types
-
-    #endregion
-
-    #region Point Types (Structs for coordinates)
-
-    #endregion
-
-    #region Product and Inventory Models
-
-    #endregion
-
-    #region Configuration Models
-
-    #endregion
-
-    #region Logging and Audit Models
-
-    #endregion
-
-    #region Minimal Types
-
-    #endregion
 }
-

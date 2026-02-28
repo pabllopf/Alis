@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common.ConvexHull;
 using Xunit;
@@ -47,9 +48,9 @@ namespace Alis.Core.Physic.Test.Common.ConvexHull
             PointComparer comparer = new PointComparer();
             Vector2F a = new Vector2F(1, 5);
             Vector2F b = new Vector2F(2, 5);
-            
+
             int result = comparer.Compare(a, b);
-            
+
             Assert.True(result < 0);
         }
 
@@ -62,9 +63,9 @@ namespace Alis.Core.Physic.Test.Common.ConvexHull
             PointComparer comparer = new PointComparer();
             Vector2F a = new Vector2F(5, 5);
             Vector2F b = new Vector2F(2, 5);
-            
+
             int result = comparer.Compare(a, b);
-            
+
             Assert.True(result > 0);
         }
 
@@ -77,9 +78,9 @@ namespace Alis.Core.Physic.Test.Common.ConvexHull
             PointComparer comparer = new PointComparer();
             Vector2F a = new Vector2F(5, 3);
             Vector2F b = new Vector2F(5, 7);
-            
+
             int result = comparer.Compare(a, b);
-            
+
             Assert.True(result < 0);
         }
 
@@ -92,9 +93,9 @@ namespace Alis.Core.Physic.Test.Common.ConvexHull
             PointComparer comparer = new PointComparer();
             Vector2F a = new Vector2F(5, 10);
             Vector2F b = new Vector2F(5, 10);
-            
+
             int result = comparer.Compare(a, b);
-            
+
             Assert.Equal(0, result);
         }
 
@@ -107,9 +108,9 @@ namespace Alis.Core.Physic.Test.Common.ConvexHull
             PointComparer comparer = new PointComparer();
             Vector2F a = new Vector2F(1, 100);
             Vector2F b = new Vector2F(2, 1);
-            
+
             int result = comparer.Compare(a, b);
-            
+
             Assert.True(result < 0); // Even though a.Y > b.Y, a.X < b.X determines result
         }
 
@@ -120,8 +121,8 @@ namespace Alis.Core.Physic.Test.Common.ConvexHull
         public void PointComparer_ShouldInheritFromComparer()
         {
             PointComparer comparer = new PointComparer();
-            
-            Assert.IsAssignableFrom<System.Collections.Generic.Comparer<Vector2F>>(comparer);
+
+            Assert.IsAssignableFrom<Comparer<Vector2F>>(comparer);
         }
 
         /// <summary>
@@ -133,9 +134,9 @@ namespace Alis.Core.Physic.Test.Common.ConvexHull
             PointComparer comparer = new PointComparer();
             Vector2F a = new Vector2F(-5, -10);
             Vector2F b = new Vector2F(-3, -8);
-            
+
             int result = comparer.Compare(a, b);
-            
+
             Assert.True(result < 0);
         }
 
@@ -148,9 +149,9 @@ namespace Alis.Core.Physic.Test.Common.ConvexHull
             PointComparer comparer = new PointComparer();
             Vector2F a = Vector2F.Zero;
             Vector2F b = new Vector2F(1, 1);
-            
+
             int result = comparer.Compare(a, b);
-            
+
             Assert.True(result < 0);
         }
 
@@ -163,10 +164,10 @@ namespace Alis.Core.Physic.Test.Common.ConvexHull
             PointComparer comparer = new PointComparer();
             Vector2F a = new Vector2F(3, 4);
             Vector2F b = new Vector2F(5, 6);
-            
+
             int result1 = comparer.Compare(a, b);
             int result2 = comparer.Compare(a, b);
-            
+
             Assert.Equal(result1, result2);
         }
 
@@ -180,15 +181,14 @@ namespace Alis.Core.Physic.Test.Common.ConvexHull
             Vector2F a = new Vector2F(1, 1);
             Vector2F b = new Vector2F(2, 2);
             Vector2F c = new Vector2F(3, 3);
-            
+
             int ab = comparer.Compare(a, b);
             int bc = comparer.Compare(b, c);
             int ac = comparer.Compare(a, c);
-            
+
             Assert.True(ab < 0);
             Assert.True(bc < 0);
             Assert.True(ac < 0);
         }
     }
 }
-

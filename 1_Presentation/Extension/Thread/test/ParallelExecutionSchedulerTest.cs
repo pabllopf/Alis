@@ -56,7 +56,7 @@ namespace Alis.Extension.Thread.Test
                 Interlocked.Increment(ref executionCount);
                 Assert.Equal(0, start);
                 Assert.Equal(10, length);
-            }, minBatchSize: 128);
+            }, 128);
 
             // Assert
             Assert.Equal(1, executionCount);
@@ -74,10 +74,7 @@ namespace Alis.Extension.Thread.Test
             int totalProcessed = 0;
 
             // Act
-            scheduler.ExecuteRange(0, 1000, (start, length) =>
-            {
-                Interlocked.Add(ref totalProcessed, length);
-            }, minBatchSize: 64);
+            scheduler.ExecuteRange(0, 1000, (start, length) => { Interlocked.Add(ref totalProcessed, length); }, 64);
 
             // Assert
             Assert.Equal(1000, totalProcessed);
@@ -101,7 +98,7 @@ namespace Alis.Extension.Thread.Test
                 {
                     data[i] = i * 2;
                 }
-            }, minBatchSize: 64);
+            }, 64);
 
             // Assert
             for (int i = 0; i < data.Length; i++)
@@ -128,4 +125,3 @@ namespace Alis.Extension.Thread.Test
         }
     }
 }
-

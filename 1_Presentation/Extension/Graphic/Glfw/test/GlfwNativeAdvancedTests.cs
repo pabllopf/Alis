@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:GlfwNativeAdvancedTests.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -27,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Text;
 using Alis.Extension.Graphic.Glfw.Enums;
 using Alis.Extension.Graphic.Glfw.Structs;
 using Alis.Extension.Graphic.Glfw.Test.Skipper;
@@ -40,7 +42,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
     public class GlfwNativeAdvancedTests
     {
         /// <summary>
-        /// Gets the window opacity with valid window returns value
+        ///     Gets the window opacity with valid window returns value
         /// </summary>
         [RequiresDisplay]
         public void GetWindowOpacity_WithValidWindow_ReturnsValue()
@@ -55,7 +57,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
                 float opacity = GlfwNative.GetWindowOpacity(window);
 
                 // Assert
-                Assert.True(opacity >= 0.0f && opacity <= 1.0f);
+                Assert.True((opacity >= 0.0f) && (opacity <= 1.0f));
             }
             finally
             {
@@ -64,7 +66,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Sets the window opacity with valid window sets opacity
+        ///     Sets the window opacity with valid window sets opacity
         /// </summary>
         [RequiresDisplay]
         public void SetWindowOpacity_WithValidWindow_SetsOpacity()
@@ -89,7 +91,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Gets the window content scale with valid window returns scale
+        ///     Gets the window content scale with valid window returns scale
         /// </summary>
         [RequiresDisplay]
         public void GetWindowContentScale_WithValidWindow_ReturnsScale()
@@ -114,7 +116,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Requests the window attention with valid window does not throw
+        ///     Requests the window attention with valid window does not throw
         /// </summary>
         [RequiresDisplay]
         public void RequestWindowAttention_WithValidWindow_DoesNotThrow()
@@ -135,7 +137,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Raws the mouse motion supported returns boolean
+        ///     Raws the mouse motion supported returns boolean
         /// </summary>
         [RequiresDisplay]
         public void RawMouseMotionSupported_ReturnsBoolean()
@@ -148,7 +150,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Gets the key scan code with valid key returns code
+        ///     Gets the key scan code with valid key returns code
         /// </summary>
         [RequiresDisplay]
         public void GetKeyScanCode_WithValidKey_ReturnsCode()
@@ -161,7 +163,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Gets the key scan code with unknown key returns negative one
+        ///     Gets the key scan code with unknown key returns negative one
         /// </summary>
         [RequiresDisplay]
         public void GetKeyScanCode_WithUnknownKey_ReturnsNegativeOne()
@@ -174,7 +176,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Sets the window attribute with resizable does not throw
+        ///     Sets the window attribute with resizable does not throw
         /// </summary>
         [RequiresDisplay]
         public void SetWindowAttribute_WithResizable_DoesNotThrow()
@@ -195,7 +197,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Sets the window attribute with decorated does not throw
+        ///     Sets the window attribute with decorated does not throw
         /// </summary>
         [RequiresDisplay]
         public void SetWindowAttribute_WithDecorated_DoesNotThrow()
@@ -216,7 +218,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Sets the window attribute with floating does not throw
+        ///     Sets the window attribute with floating does not throw
         /// </summary>
         [RequiresDisplay]
         public void SetWindowAttribute_WithFloating_DoesNotThrow()
@@ -237,7 +239,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Gets the window frame size with valid window returns frame size
+        ///     Gets the window frame size with valid window returns frame size
         /// </summary>
         [RequiresDisplay]
         public void GetWindowFrameSize_WithValidWindow_ReturnsFrameSize()
@@ -264,7 +266,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Maximizes the window with valid window does not throw
+        ///     Maximizes the window with valid window does not throw
         /// </summary>
         [RequiresDisplay]
         public void MaximizeWindow_WithValidWindow_DoesNotThrow()
@@ -285,7 +287,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Gets the window position with valid window returns position
+        ///     Gets the window position with valid window returns position
         /// </summary>
         [RequiresDisplay]
         public void GetWindowPosition_WithValidWindow_ReturnsPosition()
@@ -310,7 +312,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Sets the window position with valid window sets position
+        ///     Sets the window position with valid window sets position
         /// </summary>
         [RequiresDisplay]
         public void SetWindowPosition_WithValidWindow_SetsPosition()
@@ -336,7 +338,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Focuses the window with valid window does not throw
+        ///     Focuses the window with valid window does not throw
         /// </summary>
         [RequiresDisplay]
         public void FocusWindow_WithValidWindow_DoesNotThrow()
@@ -357,7 +359,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Sets the window position callback with valid callback sets callback
+        ///     Sets the window position callback with valid callback sets callback
         /// </summary>
         [RequiresDisplay]
         public void SetWindowPositionCallback_WithValidCallback_SetsCallback()
@@ -383,7 +385,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Sets the window size callback with valid callback sets callback
+        ///     Sets the window size callback with valid callback sets callback
         /// </summary>
         [RequiresDisplay]
         public void SetWindowSizeCallback_WithValidCallback_SetsCallback()
@@ -409,7 +411,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Sets the window focus callback with valid callback sets callback
+        ///     Sets the window focus callback with valid callback sets callback
         /// </summary>
         [RequiresDisplay]
         public void SetWindowFocusCallback_WithValidCallback_SetsCallback()
@@ -435,7 +437,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Sets the window maximize callback with valid callback sets callback
+        ///     Sets the window maximize callback with valid callback sets callback
         /// </summary>
         [RequiresDisplay]
         public void SetWindowMaximizeCallback_WithValidCallback_SetsCallback()
@@ -461,7 +463,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Sets the window content scale callback with valid callback sets callback
+        ///     Sets the window content scale callback with valid callback sets callback
         /// </summary>
         [RequiresDisplay]
         public void SetWindowContentScaleCallback_WithValidCallback_SetsCallback()
@@ -487,17 +489,17 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Windows the hint string with valid hint does not throw
+        ///     Windows the hint string with valid hint does not throw
         /// </summary>
         [RequiresDisplay]
         public void WindowHintString_WithValidHint_DoesNotThrow()
         {
             // Act & Assert
-            GlfwNative.WindowHintString(Hint.X11ClassName, System.Text.Encoding.UTF8.GetBytes("TestClass"));
+            GlfwNative.WindowHintString(Hint.X11ClassName, Encoding.UTF8.GetBytes("TestClass"));
         }
 
         /// <summary>
-        /// Inits the hint with valid hint does not throw
+        ///     Inits the hint with valid hint does not throw
         /// </summary>
         [RequiresDisplay]
         public void InitHint_WithValidHint_DoesNotThrow()
@@ -507,7 +509,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Gets the error after init returns none or error
+        ///     Gets the error after init returns none or error
         /// </summary>
         [RequiresDisplay]
         public void GetError_AfterInit_ReturnsNoneOrError()
@@ -520,4 +522,3 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
     }
 }
-

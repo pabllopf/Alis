@@ -38,7 +38,7 @@ namespace Alis.Core.Ecs.Test.Exceptions
     ///     The component already exists exception extended test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="ComponentAlreadyExistsException"/> exception class
+    ///     Tests the <see cref="ComponentAlreadyExistsException" /> exception class
     ///     with more comprehensive test cases.
     /// </remarks>
     public class ComponentAlreadyExistsExceptionExtendedTest
@@ -144,4 +144,3 @@ namespace Alis.Core.Ecs.Test.Exceptions
         }
     }
 }
-

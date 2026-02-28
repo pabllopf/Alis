@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IAction2Test.cs
+//  File:IAction2Test.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,21 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
     /// </summary>
     public class IAction2Test
     {
-        /// <summary>
-        ///     Helper implementation for testing two parameter action.
-        /// </summary>
-        private class TwoParamAction : IAction<int, string>
-        {
-            public int LastIntValue { get; private set; }
-            public string LastStringValue { get; private set; }
-
-            public void Run(ref int arg1, ref string arg2)
-            {
-                LastIntValue = arg1;
-                LastStringValue = arg2;
-            }
-        }
-
         /// <summary>
         ///     Tests that IAction with two parameters can be implemented.
         /// </summary>
@@ -107,6 +92,21 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         }
 
         /// <summary>
+        ///     Helper implementation for testing two parameter action.
+        /// </summary>
+        private class TwoParamAction : IAction<int, string>
+        {
+            public int LastIntValue { get; private set; }
+            public string LastStringValue { get; private set; }
+
+            public void Run(ref int arg1, ref string arg2)
+            {
+                LastIntValue = arg1;
+                LastStringValue = arg2;
+            }
+        }
+
+        /// <summary>
         ///     Helper implementation with same parameter types.
         /// </summary>
         private class SameTypeAction : IAction<int, int>
@@ -122,4 +122,3 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         }
     }
 }
-

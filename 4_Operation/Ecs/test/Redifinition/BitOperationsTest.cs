@@ -203,21 +203,21 @@ namespace Alis.Core.Ecs.Test.Redifinition
         public void Log2AndRoundUp_WorkConsistently()
         {
             // Arrange
-            uint[] testValues = { 1, 2, 3, 4, 5, 7, 8, 15, 16, 31, 32, 63, 64, 127, 128 };
+            uint[] testValues = {1, 2, 3, 4, 5, 7, 8, 15, 16, 31, 32, 63, 64, 127, 128};
 
             // Act & Assert
             foreach (uint value in testValues)
             {
                 uint rounded = BitOperations.RoundUpToPowerOf2(value);
                 int log2Result = BitOperations.Log2(rounded);
-                
+
                 // Rounded value should be power of 2
                 Assert.True((rounded & (rounded - 1)) == 0 || rounded == 0);
-                
+
                 // Log2 of power of 2 should equal the bit position
                 if (rounded > 0)
                 {
-                    Assert.True(log2Result >= 0 && log2Result < 32);
+                    Assert.True((log2Result >= 0) && (log2Result < 32));
                 }
             }
         }
@@ -232,7 +232,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         public void Log2_IsMonotonicallyIncreasing()
         {
             // Arrange
-            uint[] values = { 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024 };
+            uint[] values = {1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024};
 
             // Act & Assert
             int previousResult = -1;
@@ -258,13 +258,13 @@ namespace Alis.Core.Ecs.Test.Redifinition
             for (uint i = 1; i <= 64; i++)
             {
                 uint result = BitOperations.RoundUpToPowerOf2(i);
-                
+
                 // Result should be power of 2
                 Assert.True((result & (result - 1)) == 0);
-                
+
                 // Result should be >= input
                 Assert.True(result >= i);
-                
+
                 // Result should be < 2 * input (except for edge cases)
                 if (i > 1)
                 {
@@ -284,18 +284,17 @@ namespace Alis.Core.Ecs.Test.Redifinition
         public void RoundUpToPowerOf2_IsIdempotentForPowersOf2()
         {
             // Arrange
-            uint[] powersOf2 = { 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024 };
+            uint[] powersOf2 = {1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024};
 
             // Act & Assert
             foreach (uint value in powersOf2)
             {
                 uint once = BitOperations.RoundUpToPowerOf2(value);
                 uint twice = BitOperations.RoundUpToPowerOf2(once);
-                
+
                 Assert.Equal(once, twice);
                 Assert.Equal(value, once);
             }
         }
     }
 }
-

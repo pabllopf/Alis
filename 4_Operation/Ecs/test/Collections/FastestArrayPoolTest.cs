@@ -36,7 +36,7 @@ namespace Alis.Core.Ecs.Test.Collections
     ///     The fastest array pool test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="FastestArrayPool{T}"/> static class which provides
+    ///     Tests the <see cref="FastestArrayPool{T}" /> static class which provides
     ///     fast array pooling for memory-efficient allocation and reuse.
     /// </remarks>
     public class FastestArrayPoolTest
@@ -114,7 +114,7 @@ namespace Alis.Core.Ecs.Test.Collections
             // Act & Assert
             instance.Return(array);
         }
-        
+
         /// <summary>
         ///     Tests that fastest array pool rent and return cycle
         /// </summary>
@@ -225,4 +225,3 @@ namespace Alis.Core.Ecs.Test.Collections
         }
     }
 }
-

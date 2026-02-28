@@ -41,14 +41,14 @@ namespace Alis.Extension.Profile.Builders
     public class ProfilerServiceBuilder
     {
         /// <summary>
-        ///     The time tracker to use. Defaults to StopwatchTimeTracker if not specified.
-        /// </summary>
-        private ITimeTracker timeTracker;
-
-        /// <summary>
         ///     The resource monitor to use. Defaults to ProcessResourceMonitor if not specified.
         /// </summary>
         private IResourceMonitor resourceMonitor;
+
+        /// <summary>
+        ///     The time tracker to use. Defaults to StopwatchTimeTracker if not specified.
+        /// </summary>
+        private ITimeTracker timeTracker;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ProfilerServiceBuilder" /> class
@@ -109,10 +109,6 @@ namespace Alis.Extension.Profile.Builders
         /// <returns>
         ///     A <see cref="IProfilerService" /> with default configurations.
         /// </returns>
-        public static IProfilerService CreateDefault()
-        {
-            return new ProfilerServiceBuilder().Build();
-        }
+        public static IProfilerService CreateDefault() => new ProfilerServiceBuilder().Build();
     }
 }
-

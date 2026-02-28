@@ -42,24 +42,24 @@ namespace Alis.Extension.Profile
     public class ProfilerService : IProfilerService
     {
         /// <summary>
-        ///     The time tracker for measuring elapsed time during profiling.
-        /// </summary>
-        private readonly ITimeTracker timeTracker;
-
-        /// <summary>
         ///     The factory for creating resource metric snapshots.
         /// </summary>
         private readonly ResourceMetricsFactory metricsFactory;
 
         /// <summary>
-        ///     The initial resource metrics captured at the start of profiling.
+        ///     The time tracker for measuring elapsed time during profiling.
         /// </summary>
-        private ResourceMetrics startMetrics;
+        private readonly ITimeTracker timeTracker;
 
         /// <summary>
         ///     The start time of the current profiling session.
         /// </summary>
         private DateTime sessionStartTime;
+
+        /// <summary>
+        ///     The initial resource metrics captured at the start of profiling.
+        /// </summary>
+        private ResourceMetrics startMetrics;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ProfilerService" /> class.
@@ -117,11 +117,11 @@ namespace Alis.Extension.Profile
             DateTime sessionEndTime = DateTime.Now;
 
             return new ProfileSnapshot(
-                elapsedTime: timeTracker.GetElapsedTime(),
-                startMetrics: startMetrics,
-                endMetrics: endMetrics,
-                startTime: sessionStartTime,
-                endTime: sessionEndTime
+                timeTracker.GetElapsedTime(),
+                startMetrics,
+                endMetrics,
+                sessionStartTime,
+                sessionEndTime
             );
         }
 
@@ -138,11 +138,11 @@ namespace Alis.Extension.Profile
             DateTime currentTime = DateTime.Now;
 
             return new ProfileSnapshot(
-                elapsedTime: timeTracker.GetElapsedTime(),
-                startMetrics: startMetrics,
-                endMetrics: currentMetrics,
-                startTime: sessionStartTime,
-                endTime: currentTime
+                timeTracker.GetElapsedTime(),
+                startMetrics,
+                currentMetrics,
+                sessionStartTime,
+                currentTime
             );
         }
 
@@ -157,4 +157,3 @@ namespace Alis.Extension.Profile
         }
     }
 }
-

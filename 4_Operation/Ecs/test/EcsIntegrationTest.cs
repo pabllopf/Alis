@@ -54,12 +54,12 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange - Create scene and entities
             using Scene scene = new Scene();
-            
+
             // Create player
             GameObject player = scene.Create(
-                new Position { X = 0, Y = 0 },
-                new Velocity { VX = 1.0f, VY = 0.0f },
-                new Health { Value = 100 }
+                new Position {X = 0, Y = 0},
+                new Velocity {VX = 1.0f, VY = 0.0f},
+                new Health {Value = 100}
             );
             player.Tag<PlayerTag>();
 
@@ -67,8 +67,8 @@ namespace Alis.Core.Ecs.Test
             for (int i = 0; i < 5; i++)
             {
                 GameObject enemy = scene.Create(
-                    new Position { X = i * 10, Y = 10 },
-                    new Health { Value = 50 }
+                    new Position {X = i * 10, Y = 10},
+                    new Health {Value = 50}
                 );
                 enemy.Tag<EnemyTag>();
             }
@@ -97,12 +97,12 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             using Scene scene = new Scene();
             CommandBuffer commandBuffer = new CommandBuffer(scene);
-            
-            GameObject entity1 = scene.Create(new Position { X = 1, Y = 1 });
-            GameObject entity2 = scene.Create(new Position { X = 2, Y = 2 });
+
+            GameObject entity1 = scene.Create(new Position {X = 1, Y = 1});
+            GameObject entity2 = scene.Create(new Position {X = 2, Y = 2});
 
             // Act - Queue operations
-            commandBuffer.AddComponent(entity1, new Health { Value = 100 });
+            commandBuffer.AddComponent(entity1, new Health {Value = 100});
             commandBuffer.DeleteEntity(entity2);
 
             // Assert - Changes not applied yet
@@ -128,17 +128,17 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            
+
             // Create mixed entities
             for (int i = 0; i < 3; i++)
             {
-                GameObject player = scene.Create(new Position { X = i, Y = 0 });
+                GameObject player = scene.Create(new Position {X = i, Y = 0});
                 player.Tag<PlayerTag>();
             }
 
             for (int i = 0; i < 5; i++)
             {
-                GameObject enemy = scene.Create(new Position { X = i, Y = 10 });
+                GameObject enemy = scene.Create(new Position {X = i, Y = 10});
                 enemy.Tag<EnemyTag>();
             }
 
@@ -149,6 +149,7 @@ namespace Alis.Core.Ecs.Test
             {
                 allCount++;
             }
+
             Assert.Equal(8, allCount);
         }
 
@@ -166,12 +167,12 @@ namespace Alis.Core.Ecs.Test
             int createdCount = 0;
             int deletedCount = 0;
 
-            scene.EntityCreated += (entity) => createdCount++;
-            scene.EntityDeleted += (entity) => deletedCount++;
+            scene.EntityCreated += entity => createdCount++;
+            scene.EntityDeleted += entity => deletedCount++;
 
             // Act
-            GameObject entity1 = scene.Create(new Position { X = 1, Y = 1 });
-            GameObject entity2 = scene.Create(new Position { X = 2, Y = 2 });
+            GameObject entity1 = scene.Create(new Position {X = 1, Y = 1});
+            GameObject entity2 = scene.Create(new Position {X = 2, Y = 2});
             entity1.Delete();
 
             // Assert
@@ -193,8 +194,8 @@ namespace Alis.Core.Ecs.Test
             using Scene scene2 = new Scene();
 
             // Act
-            GameObject entity1 = scene1.Create(new Position { X = 1, Y = 1 });
-            GameObject entity2 = scene2.Create(new Position { X = 2, Y = 2 });
+            GameObject entity1 = scene1.Create(new Position {X = 1, Y = 1});
+            GameObject entity2 = scene2.Create(new Position {X = 2, Y = 2});
 
             // Assert
             Assert.Equal(1, scene1.EntityCount);
@@ -213,11 +214,11 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            
+
             // Create entities with different component combinations
-            scene.Create(new Position { X = 1, Y = 1 });
-            scene.Create(new Position { X = 2, Y = 2 }, new Velocity { VX = 1, VY = 1 });
-            scene.Create(new Position { X = 3, Y = 3 }, new Velocity { VX = 2, VY = 2 }, new Health { Value = 100 });
+            scene.Create(new Position {X = 1, Y = 1});
+            scene.Create(new Position {X = 2, Y = 2}, new Velocity {VX = 1, VY = 1});
+            scene.Create(new Position {X = 3, Y = 3}, new Velocity {VX = 2, VY = 2}, new Health {Value = 100});
 
             // Act & Assert - Query with 3 components
             Query fullQuery = scene.Query<With<Position>, With<Velocity>, With<Health>>();
@@ -226,6 +227,7 @@ namespace Alis.Core.Ecs.Test
             {
                 fullCount++;
             }
+
             Assert.Equal(1, fullCount);
 
             // Query with 2 components
@@ -235,6 +237,7 @@ namespace Alis.Core.Ecs.Test
             {
                 partialCount++;
             }
+
             Assert.Equal(2, partialCount);
         }
 
@@ -249,12 +252,12 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(new Position { X = 1, Y = 1 });
+            GameObject entity1 = scene.Create(new Position {X = 1, Y = 1});
             int originalEntityCount = scene.EntityCount;
 
             // Act - Delete and create new entity
             entity1.Delete();
-            GameObject entity2 = scene.Create(new Position { X = 2, Y = 2 });
+            GameObject entity2 = scene.Create(new Position {X = 2, Y = 2});
 
             // Assert
             Assert.Equal(originalEntityCount, scene.EntityCount);
@@ -273,9 +276,9 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            
-            GameObject activeEntity = scene.Create(new Position { X = 1, Y = 1 });
-            GameObject disabledEntity = scene.Create(new Position { X = 2, Y = 2 });
+
+            GameObject activeEntity = scene.Create(new Position {X = 1, Y = 1});
+            GameObject disabledEntity = scene.Create(new Position {X = 2, Y = 2});
             disabledEntity.Tag<Disable>();
 
             // Act
@@ -320,11 +323,11 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 1, Y = 1 });
+            GameObject entity = scene.Create(new Position {X = 1, Y = 1});
 
             // Act
-            entity.Add(new Health { Value = 50 });
-            entity.Add(new Velocity { VX = 1, VY = 1 });
+            entity.Add(new Health {Value = 50});
+            entity.Add(new Velocity {VX = 1, VY = 1});
             entity.Remove<Position>();
 
             // Assert
@@ -334,4 +337,3 @@ namespace Alis.Core.Ecs.Test
         }
     }
 }
-

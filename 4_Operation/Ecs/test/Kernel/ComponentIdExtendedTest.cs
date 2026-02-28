@@ -36,7 +36,7 @@ namespace Alis.Core.Ecs.Test.Kernel
     ///     The component id extended test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="ComponentId"/> struct which represents
+    ///     Tests the <see cref="ComponentId" /> struct which represents
     ///     a lightweight identifier for component types in the ECS system.
     ///     This is an extended test suite with more comprehensive coverage.
     /// </remarks>
@@ -71,7 +71,7 @@ namespace Alis.Core.Ecs.Test.Kernel
             ComponentId componentId = new ComponentId(42);
 
             // Assert
-            Assert.Equal((ushort)42, componentId.RawIndex);
+            Assert.Equal((ushort) 42, componentId.RawIndex);
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace Alis.Core.Ecs.Test.Kernel
             ComponentId componentId = new ComponentId(0);
 
             // Assert
-            Assert.Equal((ushort)0, componentId.RawIndex);
+            Assert.Equal((ushort) 0, componentId.RawIndex);
         }
 
         /// <summary>
@@ -212,11 +212,10 @@ namespace Alis.Core.Ecs.Test.Kernel
             ComponentId componentId3 = new ComponentId(6);
 
             // Assert
-            Assert.True(componentId1.Equals((object)componentId2));
-            Assert.False(componentId1.Equals((object)componentId3));
+            Assert.True(componentId1.Equals((object) componentId2));
+            Assert.False(componentId1.Equals((object) componentId3));
             Assert.False(componentId1.Equals(null));
             Assert.False(componentId1.Equals("string"));
         }
     }
 }
-

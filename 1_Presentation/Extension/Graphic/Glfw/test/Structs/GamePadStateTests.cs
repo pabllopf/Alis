@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:GamePadStateTests.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -26,10 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Extension.Graphic.Glfw.Enums;
-using Alis.Extension.Graphic.Glfw.Structs;
-using Xunit;
-
 namespace Alis.Extension.Graphic.Glfw.Test.Structs
 {
     /// <summary>
@@ -37,8 +34,5 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
     /// </summary>
     public class GamePadStateTests
     {
-
     }
-    
 }
-

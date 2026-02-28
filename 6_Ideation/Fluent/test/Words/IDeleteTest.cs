@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IDeleteTest.cs
+//  File:IDeleteTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,28 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
     /// </summary>
     public class IDeleteTest
     {
-        /// <summary>
-        ///     Helper builder class.
-        /// </summary>
-        private class Builder
-        {
-            public bool IsDeleted { get; set; }
-        }
-
-        /// <summary>
-        ///     Helper implementation of IDelete.
-        /// </summary>
-        private class DeleteBuilder : IDelete<Builder>
-        {
-            private readonly Builder _builder = new Builder();
-
-            public Builder Delete()
-            {
-                _builder.IsDeleted = true;
-                return _builder;
-            }
-        }
-
         /// <summary>
         ///     Tests that IDelete can be implemented.
         /// </summary>
@@ -104,6 +82,27 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
             Builder result1 = builder.Delete();
             Assert.True(result1.IsDeleted);
         }
+
+        /// <summary>
+        ///     Helper builder class.
+        /// </summary>
+        private class Builder
+        {
+            public bool IsDeleted { get; set; }
+        }
+
+        /// <summary>
+        ///     Helper implementation of IDelete.
+        /// </summary>
+        private class DeleteBuilder : IDelete<Builder>
+        {
+            private readonly Builder _builder = new Builder();
+
+            public Builder Delete()
+            {
+                _builder.IsDeleted = true;
+                return _builder;
+            }
+        }
     }
 }
-

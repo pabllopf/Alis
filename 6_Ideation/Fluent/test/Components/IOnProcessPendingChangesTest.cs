@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IProcessPendingChangesTest.cs
+//  File:IOnProcessPendingChangesTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Aspect.Fluent.Components;
 using Xunit;
 
@@ -39,21 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
     /// </summary>
     public class IOnProcessPendingChangesTest
     {
-        
-
-        /// <summary>
-        ///     Helper implementation for testing IOnProcessPendingChanges.
-        /// </summary>
-        private class ProcessChangesHandler : IOnProcessPendingChanges
-        {
-            public int ProcessCount { get; private set; }
-
-            public void OnProcessPendingChanges(IGameObject self)
-            {
-                ProcessCount++;
-            }
-        }
-
         /// <summary>
         ///     Tests that IOnProcessPendingChanges can be implemented.
         /// </summary>
@@ -89,8 +73,22 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
             {
                 handler.OnProcessPendingChanges(gameObject);
             }
+
             Assert.Equal(10, handler.ProcessCount);
+        }
+
+
+        /// <summary>
+        ///     Helper implementation for testing IOnProcessPendingChanges.
+        /// </summary>
+        private class ProcessChangesHandler : IOnProcessPendingChanges
+        {
+            public int ProcessCount { get; private set; }
+
+            public void OnProcessPendingChanges(IGameObject self)
+            {
+                ProcessCount++;
+            }
         }
     }
 }
-

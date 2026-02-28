@@ -48,7 +48,7 @@ namespace Alis.Core.Physic.Test.Common
             array[0] = 10;
             array[1] = 20;
             array[2] = 30;
-            
+
             Assert.Equal(10, array[0]);
             Assert.Equal(20, array[1]);
             Assert.Equal(30, array[2]);
@@ -61,11 +61,11 @@ namespace Alis.Core.Physic.Test.Common
         public void Indexer_Set_ShouldUpdateAllValues()
         {
             FixedArray3<int> array = new FixedArray3<int>();
-            
+
             array[0] = 100;
             array[1] = 200;
             array[2] = 300;
-            
+
             Assert.Equal(100, array[0]);
             Assert.Equal(200, array[1]);
             Assert.Equal(300, array[2]);
@@ -78,7 +78,7 @@ namespace Alis.Core.Physic.Test.Common
         public void Indexer_WithInvalidIndex_ShouldThrowException()
         {
             FixedArray3<int> array = new FixedArray3<int>();
-            
+
             Assert.Throws<CustomIndexOutOfRangeException>(() => array[3]);
         }
 
@@ -89,7 +89,7 @@ namespace Alis.Core.Physic.Test.Common
         public void Indexer_SetWithInvalidIndex_ShouldThrowException()
         {
             FixedArray3<int> array = new FixedArray3<int>();
-            
+
             Assert.Throws<CustomIndexOutOfRangeException>(() => array[3] = 100);
         }
 
@@ -100,7 +100,7 @@ namespace Alis.Core.Physic.Test.Common
         public void Indexer_WithNegativeIndex_ShouldThrowException()
         {
             FixedArray3<int> array = new FixedArray3<int>();
-            
+
             Assert.Throws<CustomIndexOutOfRangeException>(() => array[-1]);
         }
 
@@ -114,7 +114,7 @@ namespace Alis.Core.Physic.Test.Common
             array[0] = 1.5f;
             array[1] = 2.5f;
             array[2] = 3.5f;
-            
+
             Assert.Equal(1.5f, array[0]);
             Assert.Equal(2.5f, array[1]);
             Assert.Equal(3.5f, array[2]);
@@ -127,7 +127,7 @@ namespace Alis.Core.Physic.Test.Common
         public void DefaultValues_ShouldBeDefaultForType()
         {
             FixedArray3<int> array = new FixedArray3<int>();
-            
+
             Assert.Equal(0, array[0]);
             Assert.Equal(0, array[1]);
             Assert.Equal(0, array[2]);
@@ -140,15 +140,14 @@ namespace Alis.Core.Physic.Test.Common
         public void MultipleSetsOnSameIndex_ShouldUpdateCorrectly()
         {
             FixedArray3<int> array = new FixedArray3<int>();
-            
+
             array[0] = 10;
             array[0] = 20;
             array[1] = 30;
             array[1] = 40;
-            
+
             Assert.Equal(20, array[0]);
             Assert.Equal(40, array[1]);
         }
     }
 }
-

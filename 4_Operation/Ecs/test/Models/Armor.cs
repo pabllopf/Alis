@@ -43,4 +43,3 @@ namespace Alis.Core.Ecs.Test.Models
         public int Defense { get; set; }
     }
 }
-

@@ -53,8 +53,8 @@ namespace Alis.Core.Ecs.Test.Systems
         public void RuleTypes_HasExpectedValues()
         {
             // Assert
-            Assert.Equal(0, (int)RuleTypes.Have);
-            Assert.Equal(1, (int)RuleTypes.DoesNotHave);
+            Assert.Equal(0, (int) RuleTypes.Have);
+            Assert.Equal(1, (int) RuleTypes.DoesNotHave);
         }
 
         /// <summary>
@@ -117,8 +117,8 @@ namespace Alis.Core.Ecs.Test.Systems
         public void RuleTypes_CanBeCastFromInt()
         {
             // Act
-            RuleTypes have = (RuleTypes)0;
-            RuleTypes doesNotHave = (RuleTypes)1;
+            RuleTypes have = 0;
+            RuleTypes doesNotHave = (RuleTypes) 1;
 
             // Assert
             Assert.Equal(RuleTypes.Have, have);
@@ -174,11 +174,11 @@ namespace Alis.Core.Ecs.Test.Systems
         public void RuleTypes_DefaultValueIsHave()
         {
             // Act
-            RuleTypes defaultValue = default;
+            RuleTypes defaultValue = default(RuleTypes);
 
             // Assert
             Assert.Equal(RuleTypes.Have, defaultValue);
-            Assert.Equal(0, (int)defaultValue);
+            Assert.Equal(0, (int) defaultValue);
         }
 
         /// <summary>
@@ -191,7 +191,7 @@ namespace Alis.Core.Ecs.Test.Systems
         public void RuleTypes_CanBeUsedInCollections()
         {
             // Arrange
-            List<RuleTypes> list = new System.Collections.Generic.List<RuleTypes>
+            List<RuleTypes> list = new List<RuleTypes>
             {
                 RuleTypes.Have,
                 RuleTypes.DoesNotHave
@@ -213,10 +213,10 @@ namespace Alis.Core.Ecs.Test.Systems
         public void RuleTypes_CanBeUsedAsDictionaryKey()
         {
             // Arrange
-            Dictionary<RuleTypes, string> dict = new System.Collections.Generic.Dictionary<RuleTypes, string>
+            Dictionary<RuleTypes, string> dict = new Dictionary<RuleTypes, string>
             {
-                { RuleTypes.Have, "Must have component" },
-                { RuleTypes.DoesNotHave, "Must not have component" }
+                {RuleTypes.Have, "Must have component"},
+                {RuleTypes.DoesNotHave, "Must not have component"}
             };
 
             // Assert
@@ -235,7 +235,7 @@ namespace Alis.Core.Ecs.Test.Systems
         public void RuleTypes_HasExactlyTwoValues()
         {
             // Act
-            Array values = System.Enum.GetValues(typeof(RuleTypes));
+            Array values = Enum.GetValues(typeof(RuleTypes));
 
             // Assert
             Assert.Equal(2, values.Length);
@@ -251,7 +251,7 @@ namespace Alis.Core.Ecs.Test.Systems
         public void RuleTypes_IsPublic()
         {
             // Act
-            System.Type type = typeof(RuleTypes);
+            Type type = typeof(RuleTypes);
 
             // Assert
             Assert.True(type.IsPublic);
@@ -389,8 +389,8 @@ namespace Alis.Core.Ecs.Test.Systems
         public void RuleTypes_CanBeParsedFromString()
         {
             // Act
-            RuleTypes have = (RuleTypes)System.Enum.Parse(typeof(RuleTypes), "Have");
-            RuleTypes doesNotHave = (RuleTypes)System.Enum.Parse(typeof(RuleTypes), "DoesNotHave");
+            RuleTypes have = (RuleTypes) Enum.Parse(typeof(RuleTypes), "Have");
+            RuleTypes doesNotHave = (RuleTypes) Enum.Parse(typeof(RuleTypes), "DoesNotHave");
 
             // Assert
             Assert.Equal(RuleTypes.Have, have);
@@ -398,4 +398,3 @@ namespace Alis.Core.Ecs.Test.Systems
         }
     }
 }
-

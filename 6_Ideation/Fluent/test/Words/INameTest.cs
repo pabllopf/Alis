@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: INameTest.cs
+//  File:INameTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,28 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
     /// </summary>
     public class INameTest
     {
-        /// <summary>
-        ///     Helper builder class for naming.
-        /// </summary>
-        private class NamedBuilder
-        {
-            public string Name { get; set; }
-        }
-
-        /// <summary>
-        ///     Helper implementation of IName.
-        /// </summary>
-        private class NameBuilderImpl : IName<NamedBuilder, string>
-        {
-            private readonly NamedBuilder _builder = new NamedBuilder();
-
-            public NamedBuilder Name(string value)
-            {
-                _builder.Name = value;
-                return _builder;
-            }
-        }
-
         /// <summary>
         ///     Tests that IName can be implemented.
         /// </summary>
@@ -108,16 +86,34 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Tests Name with special characters.
         /// </summary>
-        [Theory]
-        [InlineData("Object_123")]
-        [InlineData("Player@Team")]
-        [InlineData("Enemy#1")]
+        [Theory, InlineData("Object_123"), InlineData("Player@Team"), InlineData("Enemy#1")]
         public void Name_WithSpecialCharacters(string name)
         {
             NameBuilderImpl builder = new NameBuilderImpl();
             NamedBuilder result = builder.Name(name);
             Assert.Equal(name, result.Name);
         }
+
+        /// <summary>
+        ///     Helper builder class for naming.
+        /// </summary>
+        private class NamedBuilder
+        {
+            public string Name { get; set; }
+        }
+
+        /// <summary>
+        ///     Helper implementation of IName.
+        /// </summary>
+        private class NameBuilderImpl : IName<NamedBuilder, string>
+        {
+            private readonly NamedBuilder _builder = new NamedBuilder();
+
+            public NamedBuilder Name(string value)
+            {
+                _builder.Name = value;
+                return _builder;
+            }
+        }
     }
 }
-

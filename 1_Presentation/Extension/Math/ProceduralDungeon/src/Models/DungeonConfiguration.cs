@@ -93,7 +93,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Models
             BossRoomHeight = bossRoomHeight;
             CorridorWidth = corridorWidth;
             CorridorHeight = corridorHeight;
-            
+
             Validate();
         }
 
@@ -159,26 +159,39 @@ namespace Alis.Extension.Math.ProceduralDungeon.Models
         public void Validate()
         {
             if (BoardWidth <= 0)
+            {
                 throw new ArgumentException("Board width must be greater than 0.", nameof(BoardWidth));
-            
+            }
+
             if (BoardHeight <= 0)
+            {
                 throw new ArgumentException("Board height must be greater than 0.", nameof(BoardHeight));
-            
+            }
+
             if (NumberOfRooms < 2)
+            {
                 throw new ArgumentException("Number of rooms must be at least 2.", nameof(NumberOfRooms));
-            
+            }
+
             if (FirstRoomWidth <= 0 || FirstRoomHeight <= 0)
+            {
                 throw new ArgumentException("First room dimensions must be greater than 0.");
-            
+            }
+
             if (RoomWidth <= 0 || RoomHeight <= 0)
+            {
                 throw new ArgumentException("Room dimensions must be greater than 0.");
-            
+            }
+
             if (BossRoomWidth <= 0 || BossRoomHeight <= 0)
+            {
                 throw new ArgumentException("Boss room dimensions must be greater than 0.");
-            
+            }
+
             if (CorridorWidth <= 0 || CorridorHeight <= 0)
+            {
                 throw new ArgumentException("Corridor dimensions must be greater than 0.");
+            }
         }
     }
 }
-

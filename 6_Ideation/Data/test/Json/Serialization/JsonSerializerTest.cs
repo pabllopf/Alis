@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: JsonSerializerTest.cs
+//  File:JsonSerializerTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program. If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -36,89 +36,27 @@ using Xunit;
 namespace Alis.Core.Aspect.Data.Test.Json.Serialization
 {
     /// <summary>
-    /// The json serializer test class
+    ///     The json serializer test class
     /// </summary>
     public class JsonSerializerTest
     {
         /// <summary>
-        /// The serializer
+        ///     The serializer
         /// </summary>
         private readonly JsonSerializer _serializer;
 
         /// <summary>
-        /// The simple test object class
+        ///     Initializes a new instance of the <see cref="JsonSerializerTest" /> class
         /// </summary>
-        /// <seealso cref="IJsonSerializable"/>
-        private class SimpleTestObject : IJsonSerializable
-        {
-            /// <summary>
-            /// Gets or sets the value of the name
-            /// </summary>
-            public string Name { get; set; }
-            /// <summary>
-            /// Gets or sets the value of the age
-            /// </summary>
-            public int Age { get; set; }
-
-            /// <summary>
-            /// Gets the serializable properties
-            /// </summary>
-            /// <returns>An enumerable of string property name and string value</returns>
-            public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
-            {
-                yield return ("Name", Name);
-                yield return ("Age", Age.ToString());
-            }
-        }
+        public JsonSerializerTest() => _serializer = new JsonSerializer();
 
         /// <summary>
-        /// The object with array class
-        /// </summary>
-        /// <seealso cref="IJsonSerializable"/>
-        private class ObjectWithArray : IJsonSerializable
-        {
-            /// <summary>
-            /// Gets the serializable properties
-            /// </summary>
-            /// <returns>An enumerable of string property name and string value</returns>
-            public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
-            {
-                yield return ("items", "[\"a\",\"b\",\"c\"]");
-            }
-        }
-
-        /// <summary>
-        /// The object with null property class
-        /// </summary>
-        /// <seealso cref="IJsonSerializable"/>
-        private class ObjectWithNullProperty : IJsonSerializable
-        {
-            /// <summary>
-            /// Gets the serializable properties
-            /// </summary>
-            /// <returns>An enumerable of string property name and string value</returns>
-            public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
-            {
-                yield return ("Name", "John");
-                yield return ("Email", null);
-            }
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="JsonSerializerTest"/> class
-        /// </summary>
-        public JsonSerializerTest()
-        {
-            _serializer = new JsonSerializer();
-        }
-
-        /// <summary>
-        /// Tests that serialize with simple object returns valid json
+        ///     Tests that serialize with simple object returns valid json
         /// </summary>
         [Fact]
         public void Serialize_WithSimpleObject_ReturnsValidJson()
         {
-            SimpleTestObject obj = new SimpleTestObject { Name = "John", Age = 30 };
+            SimpleTestObject obj = new SimpleTestObject {Name = "John", Age = 30};
             string result = _serializer.Serialize(obj);
 
             Assert.Contains("\"Name\"", result);
@@ -128,7 +66,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         }
 
         /// <summary>
-        /// Tests that serialize with null instance throws argument null exception
+        ///     Tests that serialize with null instance throws argument null exception
         /// </summary>
         [Fact]
         public void Serialize_WithNullInstance_ThrowsArgumentNullException()
@@ -137,7 +75,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         }
 
         /// <summary>
-        /// Tests that serialize with array property does not add quotes
+        ///     Tests that serialize with array property does not add quotes
         /// </summary>
         [Fact]
         public void Serialize_WithArrayProperty_DoesNotAddQuotes()
@@ -149,7 +87,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         }
 
         /// <summary>
-        /// Tests that serialize with null property excludes property
+        ///     Tests that serialize with null property excludes property
         /// </summary>
         [Fact]
         public void Serialize_WithNullProperty_ExcludesProperty()
@@ -162,31 +100,31 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         }
 
         /// <summary>
-        /// Tests that serialize result starts with open brace
+        ///     Tests that serialize result starts with open brace
         /// </summary>
         [Fact]
         public void Serialize_ResultStartsWithOpenBrace()
         {
-            SimpleTestObject obj = new SimpleTestObject { Name = "Test", Age = 25 };
+            SimpleTestObject obj = new SimpleTestObject {Name = "Test", Age = 25};
             string result = _serializer.Serialize(obj);
 
             Assert.StartsWith("{", result);
         }
 
         /// <summary>
-        /// Tests that serialize result ends with close brace
+        ///     Tests that serialize result ends with close brace
         /// </summary>
         [Fact]
         public void Serialize_ResultEndsWithCloseBrace()
         {
-            SimpleTestObject obj = new SimpleTestObject { Name = "Test", Age = 25 };
+            SimpleTestObject obj = new SimpleTestObject {Name = "Test", Age = 25};
             string result = _serializer.Serialize(obj);
 
             Assert.EndsWith("}", result);
         }
 
         /// <summary>
-        /// Tests that serialize with object property does not add quotes
+        ///     Tests that serialize with object property does not add quotes
         /// </summary>
         [Fact]
         public void Serialize_WithObjectProperty_DoesNotAddQuotes()
@@ -199,12 +137,12 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         }
 
         /// <summary>
-        /// Tests that serialize with multiple properties separated by commas
+        ///     Tests that serialize with multiple properties separated by commas
         /// </summary>
         [Fact]
         public void Serialize_WithMultipleProperties_SeparatedByCommas()
         {
-            SimpleTestObject obj = new SimpleTestObject { Name = "John", Age = 30 };
+            SimpleTestObject obj = new SimpleTestObject {Name = "John", Age = 30};
             string result = _serializer.Serialize(obj);
 
             int commaCount = result.Split(',').Length - 1;
@@ -212,7 +150,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         }
 
         /// <summary>
-        /// Tests that serialize with object with no properties returns empty object
+        ///     Tests that serialize with object with no properties returns empty object
         /// </summary>
         [Fact]
         public void Serialize_WithObjectWithNoProperties_ReturnsEmptyObject()
@@ -224,13 +162,73 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         }
 
         /// <summary>
-        /// The empty object class
+        ///     The simple test object class
         /// </summary>
-        /// <seealso cref="IJsonSerializable"/>
+        /// <seealso cref="IJsonSerializable" />
+        private class SimpleTestObject : IJsonSerializable
+        {
+            /// <summary>
+            ///     Gets or sets the value of the name
+            /// </summary>
+            public string Name { get; set; }
+
+            /// <summary>
+            ///     Gets or sets the value of the age
+            /// </summary>
+            public int Age { get; set; }
+
+            /// <summary>
+            ///     Gets the serializable properties
+            /// </summary>
+            /// <returns>An enumerable of string property name and string value</returns>
+            public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
+            {
+                yield return ("Name", Name);
+                yield return ("Age", Age.ToString());
+            }
+        }
+
+        /// <summary>
+        ///     The object with array class
+        /// </summary>
+        /// <seealso cref="IJsonSerializable" />
+        private class ObjectWithArray : IJsonSerializable
+        {
+            /// <summary>
+            ///     Gets the serializable properties
+            /// </summary>
+            /// <returns>An enumerable of string property name and string value</returns>
+            public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
+            {
+                yield return ("items", "[\"a\",\"b\",\"c\"]");
+            }
+        }
+
+        /// <summary>
+        ///     The object with null property class
+        /// </summary>
+        /// <seealso cref="IJsonSerializable" />
+        private class ObjectWithNullProperty : IJsonSerializable
+        {
+            /// <summary>
+            ///     Gets the serializable properties
+            /// </summary>
+            /// <returns>An enumerable of string property name and string value</returns>
+            public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
+            {
+                yield return ("Name", "John");
+                yield return ("Email", null);
+            }
+        }
+
+        /// <summary>
+        ///     The empty object class
+        /// </summary>
+        /// <seealso cref="IJsonSerializable" />
         private class EmptyObject : IJsonSerializable
         {
             /// <summary>
-            /// Gets the serializable properties
+            ///     Gets the serializable properties
             /// </summary>
             /// <returns>An enumerable of string property name and string value</returns>
             public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
@@ -240,4 +238,3 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         }
     }
 }
-

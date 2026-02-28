@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Extension.Media.FFmpeg.Encoding;
 using Alis.Extension.Media.FFmpeg.Encoding.Builders;
 using Xunit;
@@ -361,7 +362,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         public void Vp9Encoder_TuneEnum_ShouldHaveThreeValues()
         {
             // Arrange & Act
-            Vp9Encoder.Tune[] values = (Vp9Encoder.Tune[])System.Enum.GetValues(typeof(Vp9Encoder.Tune));
+            Vp9Encoder.Tune[] values = (Vp9Encoder.Tune[]) Enum.GetValues(typeof(Vp9Encoder.Tune));
 
             // Assert
             Assert.Equal(3, values.Length);
@@ -381,4 +382,3 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         }
     }
 }
-

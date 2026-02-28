@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Redifinition;
 using Xunit;
 
@@ -129,7 +130,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         public void RoundUpToNextMultipleOf16_WithMultiples_IsIdempotent()
         {
             // Arrange
-            int[] multiples = { 0, 16, 32, 48, 64, 128, 256, 512 };
+            int[] multiples = {0, 16, 32, 48, 64, 128, 256, 512};
 
             // Act & Assert
             foreach (int value in multiples)
@@ -150,7 +151,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         public void RoundDownToNextMultipleOf16_WithMultiples_IsIdempotent()
         {
             // Arrange
-            int[] multiples = { 0, 16, 32, 48, 64, 128, 256, 512 };
+            int[] multiples = {0, 16, 32, 48, 64, 128, 256, 512};
 
             // Act & Assert
             foreach (int value in multiples)
@@ -226,11 +227,11 @@ namespace Alis.Core.Ecs.Test.Redifinition
             // Just before multiple of 16
             Assert.Equal(0, MemoryHelpers.RoundDownToNextMultipleOf16(15));
             Assert.Equal(16, MemoryHelpers.RoundUpToNextMultipleOf16(15));
-            
+
             // Exactly at multiple of 16
             Assert.Equal(16, MemoryHelpers.RoundDownToNextMultipleOf16(16));
             Assert.Equal(16, MemoryHelpers.RoundUpToNextMultipleOf16(16));
-            
+
             // Just after multiple of 16
             Assert.Equal(16, MemoryHelpers.RoundDownToNextMultipleOf16(17));
             Assert.Equal(32, MemoryHelpers.RoundUpToNextMultipleOf16(17));
@@ -268,7 +269,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         public void Block2_HasCorrectSize()
         {
             // Arrange & Act
-            int size = System.Runtime.InteropServices.Marshal.SizeOf<MemoryHelpers.Block2>();
+            int size = Marshal.SizeOf<MemoryHelpers.Block2>();
 
             // Assert
             Assert.Equal(2, size);
@@ -284,7 +285,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         public void Block4_HasCorrectSize()
         {
             // Arrange & Act
-            int size = System.Runtime.InteropServices.Marshal.SizeOf<MemoryHelpers.Block4>();
+            int size = Marshal.SizeOf<MemoryHelpers.Block4>();
 
             // Assert
             Assert.Equal(4, size);
@@ -300,7 +301,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         public void Block8_HasCorrectSize()
         {
             // Arrange & Act
-            int size = System.Runtime.InteropServices.Marshal.SizeOf<MemoryHelpers.Block8>();
+            int size = Marshal.SizeOf<MemoryHelpers.Block8>();
 
             // Assert
             Assert.Equal(8, size);
@@ -316,7 +317,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         public void Block16_HasCorrectSize()
         {
             // Arrange & Act
-            int size = System.Runtime.InteropServices.Marshal.SizeOf<MemoryHelpers.Block16>();
+            int size = Marshal.SizeOf<MemoryHelpers.Block16>();
 
             // Assert
             Assert.Equal(16, size);
@@ -333,10 +334,10 @@ namespace Alis.Core.Ecs.Test.Redifinition
         public void GetOrAddNew_WithNewKey_CreatesNewValue()
         {
             // Arrange
-            Dictionary<int, TestClass> dict = new System.Collections.Generic.Dictionary<int, TestClass>();
+            Dictionary<int, TestClass> dict = new Dictionary<int, TestClass>();
 
             // Act
-            TestClass value = MemoryHelpers.GetOrAddNew(dict, 1);
+            TestClass value = dict.GetOrAddNew(1);
 
             // Assert
             Assert.NotNull(value);
@@ -355,12 +356,12 @@ namespace Alis.Core.Ecs.Test.Redifinition
         public void GetOrAddNew_WithExistingKey_ReturnsExistingValue()
         {
             // Arrange
-            Dictionary<int, TestClass> dict = new System.Collections.Generic.Dictionary<int, TestClass>();
+            Dictionary<int, TestClass> dict = new Dictionary<int, TestClass>();
             TestClass original = new TestClass();
             dict[1] = original;
 
             // Act
-            TestClass retrieved = MemoryHelpers.GetOrAddNew(dict, 1);
+            TestClass retrieved = dict.GetOrAddNew(1);
 
             // Assert
             Assert.Same(original, retrieved);
@@ -377,13 +378,13 @@ namespace Alis.Core.Ecs.Test.Redifinition
         public void GetOrAddNew_WithMultipleKeys_WorksCorrectly()
         {
             // Arrange
-            Dictionary<string, TestClass> dict = new System.Collections.Generic.Dictionary<string, TestClass>();
+            Dictionary<string, TestClass> dict = new Dictionary<string, TestClass>();
 
             // Act
-            TestClass value1 = MemoryHelpers.GetOrAddNew(dict, "key1");
-            TestClass value2 = MemoryHelpers.GetOrAddNew(dict, "key2");
-            TestClass value3 = MemoryHelpers.GetOrAddNew(dict, "key3");
-            TestClass value1Again = MemoryHelpers.GetOrAddNew(dict, "key1");
+            TestClass value1 = dict.GetOrAddNew("key1");
+            TestClass value2 = dict.GetOrAddNew("key2");
+            TestClass value3 = dict.GetOrAddNew("key3");
+            TestClass value1Again = dict.GetOrAddNew("key1");
 
             // Assert
             Assert.NotNull(value1);
@@ -486,10 +487,10 @@ namespace Alis.Core.Ecs.Test.Redifinition
             {
                 uint result = MemoryHelpers.RoundDownToPowerOfTwo(i);
                 Assert.True(result >= previousResult);
-                
+
                 // Result should be power of 2
                 Assert.True((result & (result - 1)) == 0 || result == 0);
-                
+
                 previousResult = result;
             }
         }
@@ -505,12 +506,12 @@ namespace Alis.Core.Ecs.Test.Redifinition
         public void GetOrAddNew_WithRapidCalls_WorksCorrectly()
         {
             // Arrange
-            Dictionary<int, TestClass> dict = new System.Collections.Generic.Dictionary<int, TestClass>();
+            Dictionary<int, TestClass> dict = new Dictionary<int, TestClass>();
 
             // Act
             for (int i = 0; i < 100; i++)
             {
-                TestClass value = MemoryHelpers.GetOrAddNew(dict, i % 10);
+                TestClass value = dict.GetOrAddNew(i % 10);
                 Assert.NotNull(value);
             }
 
@@ -540,10 +541,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
         private class TestClass
         {
             /// <summary>
-            /// Gets or sets the value of the value
+            ///     Gets or sets the value of the value
             /// </summary>
             public int Value { get; set; }
         }
     }
 }
-

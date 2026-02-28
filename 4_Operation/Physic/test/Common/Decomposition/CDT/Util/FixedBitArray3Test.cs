@@ -47,7 +47,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         public void DefaultConstructor_ShouldInitializeWithFalseValues()
         {
             FixedBitArray3 array = new FixedBitArray3();
-            
+
             Assert.False(array[0]);
             Assert.False(array[1]);
             Assert.False(array[2]);
@@ -60,9 +60,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         public void Indexer_ShouldSetAndGetValueAtIndexZero()
         {
             FixedBitArray3 array = new FixedBitArray3();
-            
+
             array[0] = true;
-            
+
             Assert.True(array[0]);
         }
 
@@ -73,9 +73,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         public void Indexer_ShouldSetAndGetValueAtIndexOne()
         {
             FixedBitArray3 array = new FixedBitArray3();
-            
+
             array[1] = true;
-            
+
             Assert.True(array[1]);
         }
 
@@ -86,9 +86,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         public void Indexer_ShouldSetAndGetValueAtIndexTwo()
         {
             FixedBitArray3 array = new FixedBitArray3();
-            
+
             array[2] = true;
-            
+
             Assert.True(array[2]);
         }
 
@@ -99,7 +99,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         public void Indexer_ShouldThrowException_ForNegativeIndex()
         {
             FixedBitArray3 array = new FixedBitArray3();
-            
+
             Assert.Throws<CustomIndexOutOfRangeException>(() => array[-1]);
         }
 
@@ -110,7 +110,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         public void Indexer_ShouldThrowException_ForIndexGreaterThanTwo()
         {
             FixedBitArray3 array = new FixedBitArray3();
-            
+
             Assert.Throws<CustomIndexOutOfRangeException>(() => array[3]);
         }
 
@@ -122,9 +122,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         {
             FixedBitArray3 array = new FixedBitArray3();
             array[0] = true;
-            
+
             bool result = array.Contains(true);
-            
+
             Assert.True(result);
         }
 
@@ -135,9 +135,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         public void Contains_ShouldReturnFalse_WhenValueNotPresent()
         {
             FixedBitArray3 array = new FixedBitArray3();
-            
+
             bool result = array.Contains(true);
-            
+
             Assert.False(result);
         }
 
@@ -149,9 +149,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         {
             FixedBitArray3 array = new FixedBitArray3();
             array[1] = true;
-            
+
             int index = array.IndexOf(true);
-            
+
             Assert.Equal(1, index);
         }
 
@@ -162,9 +162,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         public void IndexOf_ShouldReturnNegativeOne_WhenValueNotFound()
         {
             FixedBitArray3 array = new FixedBitArray3();
-            
+
             int index = array.IndexOf(true);
-            
+
             Assert.Equal(-1, index);
         }
 
@@ -178,9 +178,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
             array[0] = true;
             array[1] = true;
             array[2] = true;
-            
+
             array.Clear();
-            
+
             Assert.False(array[0]);
             Assert.False(array[1]);
             Assert.False(array[2]);
@@ -196,9 +196,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
             array[0] = true;
             array[1] = false;
             array[2] = true;
-            
+
             array.Clear(true);
-            
+
             Assert.False(array[0]);
             Assert.False(array[1]);
             Assert.False(array[2]);
@@ -214,9 +214,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
             array[0] = true;
             array[1] = false;
             array[2] = true;
-            
+
             List<bool> values = array.ToList();
-            
+
             Assert.Equal(3, values.Count);
             Assert.True(values[0]);
             Assert.False(values[1]);
@@ -232,9 +232,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
             FixedBitArray3 array1 = new FixedBitArray3();
             array1[0] = true;
             FixedBitArray3 array2 = array1;
-            
+
             array2[0] = false;
-            
+
             Assert.NotEqual(array1[0], array2[0]);
         }
 
@@ -248,13 +248,16 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
             array[0] = true;
             array[1] = false;
             array[2] = true;
-            
+
             int trueCount = 0;
             foreach (bool value in array)
             {
-                if (value) trueCount++;
+                if (value)
+                {
+                    trueCount++;
+                }
             }
-            
+
             Assert.Equal(2, trueCount);
         }
 
@@ -268,9 +271,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
             array[0] = false;
             array[1] = true;
             array[2] = true;
-            
+
             int index = array.IndexOf(true);
-            
+
             Assert.Equal(1, index);
         }
 
@@ -284,9 +287,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
             array[0] = true;
             array[1] = false;
             array[2] = true;
-            
+
             bool result = array.Contains(false);
-            
+
             Assert.True(result);
         }
 
@@ -300,9 +303,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
             array[0] = true;
             array[1] = false;
             array[2] = true;
-            
+
             array.Clear(false);
-            
+
             Assert.True(array[0]);
             Assert.False(array[1]);
             Assert.True(array[2]);
@@ -315,7 +318,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         public void IndexerSet_ShouldThrowException_ForInvalidIndex()
         {
             FixedBitArray3 array = new FixedBitArray3();
-            
+
             Assert.Throws<CustomIndexOutOfRangeException>(() => array[5] = true);
         }
 
@@ -326,9 +329,8 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         public void FixedBitArray_ShouldImplementIEnumerable()
         {
             FixedBitArray3 array = new FixedBitArray3();
-            
-            Assert.IsAssignableFrom<System.Collections.Generic.IEnumerable<bool>>(array);
+
+            Assert.IsAssignableFrom<IEnumerable<bool>>(array);
         }
     }
 }
-

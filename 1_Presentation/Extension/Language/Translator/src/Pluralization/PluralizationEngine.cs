@@ -43,17 +43,17 @@ namespace Alis.Extension.Language.Translator.Pluralization
     public class PluralizationEngine : IPluralizationEngine
     {
         /// <summary>
-        ///     Dictionary of pluralization rules by language code
-        /// </summary>
-        private readonly Dictionary<string, Func<int, int>> pluralRules = new Dictionary<string, Func<int, int>>();
-
-        /// <summary>
         ///     Dictionary of plural form counts by language code
         /// </summary>
         private readonly Dictionary<string, int> pluralFormCounts = new Dictionary<string, int>();
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="PluralizationEngine"/> class
+        ///     Dictionary of pluralization rules by language code
+        /// </summary>
+        private readonly Dictionary<string, Func<int, int>> pluralRules = new Dictionary<string, Func<int, int>>();
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="PluralizationEngine" /> class
         /// </summary>
         public PluralizationEngine()
         {
@@ -123,7 +123,7 @@ namespace Alis.Extension.Language.Translator.Pluralization
         private void InitializeDefaultRules()
         {
             // English, German, Dutch, etc. - 2 forms (singular, plural)
-            Func<int, int> englishRule = (int quantity) => quantity == 1 ? 0 : 1;
+            Func<int, int> englishRule = quantity => quantity == 1 ? 0 : 1;
             RegisterPluralizationRule("en", englishRule);
             pluralFormCounts["en"] = 2;
 
@@ -148,12 +148,12 @@ namespace Alis.Extension.Language.Translator.Pluralization
             pluralFormCounts["it"] = 2;
 
             // Russian - 3 forms (1, 21, 101...), (2-4, 22-24...), (0, 5-20, 25-30...)
-            Func<int, int> russianRule = (int quantity) =>
+            Func<int, int> russianRule = quantity =>
             {
                 quantity = Math.Abs(quantity) % 100;
                 int tens = quantity % 10;
 
-                if (quantity >= 11 && quantity <= 19)
+                if ((quantity >= 11) && (quantity <= 19))
                 {
                     return 2;
                 }
@@ -163,7 +163,7 @@ namespace Alis.Extension.Language.Translator.Pluralization
                     return 0;
                 }
 
-                if (tens >= 2 && tens <= 4)
+                if ((tens >= 2) && (tens <= 4))
                 {
                     return 1;
                 }
@@ -174,7 +174,7 @@ namespace Alis.Extension.Language.Translator.Pluralization
             pluralFormCounts["ru"] = 3;
 
             // Polish - 3 forms
-            Func<int, int> polishRule = (int quantity) =>
+            Func<int, int> polishRule = quantity =>
             {
                 if (quantity == 1)
                 {
@@ -182,7 +182,7 @@ namespace Alis.Extension.Language.Translator.Pluralization
                 }
 
                 int tens = Math.Abs(quantity) % 10;
-                if (tens >= 2 && tens <= 4)
+                if ((tens >= 2) && (tens <= 4))
                 {
                     return 1;
                 }
@@ -193,7 +193,7 @@ namespace Alis.Extension.Language.Translator.Pluralization
             pluralFormCounts["pl"] = 3;
 
             // Japanese, Korean, Chinese - 1 form (no pluralization)
-            Func<int, int> noPluralizationRule = (int quantity) => 0;
+            Func<int, int> noPluralizationRule = quantity => 0;
             RegisterPluralizationRule("ja", noPluralizationRule);
             pluralFormCounts["ja"] = 1;
 
@@ -205,4 +205,3 @@ namespace Alis.Extension.Language.Translator.Pluralization
         }
     }
 }
-

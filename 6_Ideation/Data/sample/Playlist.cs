@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: Playlist.cs
+//  File:Playlist.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program. If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -40,6 +40,16 @@ namespace Alis.Core.Aspect.Data.Sample
     [Serializable]
     public partial class Playlist : IJsonSerializable, IJsonDesSerializable<Playlist>
     {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Playlist" /> class.
+        /// </summary>
+        public Playlist()
+        {
+            PlaylistId = Guid.NewGuid();
+            CreatedDate = DateTime.Now;
+            SongTitles = new List<string>();
+        }
+
         /// <summary>
         ///     Gets or sets the unique identifier of the playlist.
         /// </summary>
@@ -76,16 +86,6 @@ namespace Alis.Core.Aspect.Data.Sample
         public bool IsPublic { get; set; }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Playlist" /> class.
-        /// </summary>
-        public Playlist()
-        {
-            PlaylistId = Guid.NewGuid();
-            CreatedDate = DateTime.Now;
-            SongTitles = new List<string>();
-        }
-
-        /// <summary>
         ///     Gets the serializable properties of this playlist.
         /// </summary>
         public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
@@ -106,30 +106,44 @@ namespace Alis.Core.Aspect.Data.Sample
         {
             Playlist playlist = new Playlist();
 
-            if (properties.TryGetValue("PlaylistId", out string playlistId) && 
+            if (properties.TryGetValue("PlaylistId", out string playlistId) &&
                 Guid.TryParse(playlistId, out Guid playlistIdValue))
+            {
                 playlist.PlaylistId = playlistIdValue;
+            }
 
             if (properties.TryGetValue("PlaylistName", out string name))
+            {
                 playlist.PlaylistName = name;
+            }
 
             if (properties.TryGetValue("CreatorName", out string creator))
+            {
                 playlist.CreatorName = creator;
+            }
 
-            if (properties.TryGetValue("CreatedDate", out string created) && 
+            if (properties.TryGetValue("CreatedDate", out string created) &&
                 DateTime.TryParse(created, out DateTime createdValue))
+            {
                 playlist.CreatedDate = createdValue;
+            }
 
             if (properties.TryGetValue("SongTitles", out string songs))
+            {
                 playlist.SongTitles = DeserializeSongs(songs);
+            }
 
-            if (properties.TryGetValue("SongCount", out string count) && 
+            if (properties.TryGetValue("SongCount", out string count) &&
                 int.TryParse(count, out int countValue))
+            {
                 playlist.SongCount = countValue;
+            }
 
-            if (properties.TryGetValue("IsPublic", out string isPublic) && 
+            if (properties.TryGetValue("IsPublic", out string isPublic) &&
                 bool.TryParse(isPublic, out bool isPublicValue))
+            {
                 playlist.IsPublic = isPublicValue;
+            }
 
             return playlist;
         }
@@ -140,7 +154,9 @@ namespace Alis.Core.Aspect.Data.Sample
         private string SerializeSongs()
         {
             if (SongTitles == null || SongTitles.Count == 0)
+            {
                 return "[]";
+            }
 
             string items = string.Join(",", SongTitles.Select(s => $"\"{s}\""));
             return $"[{items}]";
@@ -153,18 +169,21 @@ namespace Alis.Core.Aspect.Data.Sample
         {
             List<string> songs = new List<string>();
             if (string.IsNullOrEmpty(json) || json == "[]")
+            {
                 return songs;
+            }
 
             string[] items = json.Trim('[', ']').Split(',');
             foreach (string item in items)
             {
                 string song = item.Trim().Trim('"');
                 if (!string.IsNullOrEmpty(song))
+                {
                     songs.Add(song);
+                }
             }
 
             return songs;
         }
     }
 }
-

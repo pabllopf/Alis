@@ -44,7 +44,7 @@ namespace Alis.Core.Physic.Test.Collisions
         public void DefaultConstructor_ShouldInitializeWithZeroValues()
         {
             ContactFeature feature = new ContactFeature();
-            
+
             Assert.Equal(0, feature.IndexA);
             Assert.Equal(0, feature.IndexB);
             Assert.Equal(0, feature.TypeA);
@@ -61,7 +61,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 IndexA = 5
             };
-            
+
             Assert.Equal(5, feature.IndexA);
         }
 
@@ -75,7 +75,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 IndexB = 7
             };
-            
+
             Assert.Equal(7, feature.IndexB);
         }
 
@@ -89,7 +89,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 TypeA = 1
             };
-            
+
             Assert.Equal(1, feature.TypeA);
         }
 
@@ -103,7 +103,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 TypeB = 2
             };
-            
+
             Assert.Equal(2, feature.TypeB);
         }
 
@@ -120,7 +120,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 TypeA = byte.MaxValue,
                 TypeB = byte.MaxValue
             };
-            
+
             Assert.Equal(byte.MaxValue, feature.IndexA);
             Assert.Equal(byte.MaxValue, feature.IndexB);
             Assert.Equal(byte.MaxValue, feature.TypeA);
@@ -133,11 +133,11 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void ContactFeature_ShouldBeValueType()
         {
-            ContactFeature feature1 = new ContactFeature { IndexA = 1, IndexB = 2 };
+            ContactFeature feature1 = new ContactFeature {IndexA = 1, IndexB = 2};
             ContactFeature feature2 = feature1;
-            
+
             feature2.IndexA = 10;
-            
+
             Assert.NotEqual(feature1.IndexA, feature2.IndexA);
         }
 
@@ -154,7 +154,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 TypeA = 3,
                 TypeB = 4
             };
-            
+
             Assert.Equal(1, feature.IndexA);
             Assert.Equal(2, feature.IndexB);
             Assert.Equal(3, feature.TypeA);
@@ -169,13 +169,12 @@ namespace Alis.Core.Physic.Test.Collisions
         {
             ContactFeature feature = new ContactFeature
             {
-                TypeA = (byte)ContactFeatureType.Vertex,
-                TypeB = (byte)ContactFeatureType.Face
+                TypeA = (byte) ContactFeatureType.Vertex,
+                TypeB = (byte) ContactFeatureType.Face
             };
-            
-            Assert.Equal((byte)ContactFeatureType.Vertex, feature.TypeA);
-            Assert.Equal((byte)ContactFeatureType.Face, feature.TypeB);
+
+            Assert.Equal((byte) ContactFeatureType.Vertex, feature.TypeA);
+            Assert.Equal((byte) ContactFeatureType.Face, feature.TypeB);
         }
     }
 }
-

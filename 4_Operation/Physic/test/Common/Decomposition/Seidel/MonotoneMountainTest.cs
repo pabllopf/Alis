@@ -45,7 +45,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         public void Constructor_ShouldInitializeEmptyMountain()
         {
             MonotoneMountain mountain = new MonotoneMountain();
-            
+
             Assert.NotNull(mountain);
             Assert.NotNull(mountain.Triangles);
             Assert.Empty(mountain.Triangles);
@@ -59,9 +59,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         {
             MonotoneMountain mountain = new MonotoneMountain();
             Point point = new Point(0, 0);
-            
+
             mountain.Add(point);
-            
+
             Assert.NotNull(mountain);
         }
 
@@ -74,10 +74,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             MonotoneMountain mountain = new MonotoneMountain();
             Point point1 = new Point(0, 0);
             Point point2 = new Point(1, 1);
-            
+
             mountain.Add(point1);
             mountain.Add(point2);
-            
+
             Assert.NotNull(mountain);
         }
 
@@ -92,12 +92,12 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             Point point2 = new Point(1, 0);
             Point point3 = new Point(1, 1);
             Point point4 = new Point(0, 1);
-            
+
             mountain.Add(point1);
             mountain.Add(point2);
             mountain.Add(point3);
             mountain.Add(point4);
-            
+
             Assert.NotNull(mountain);
         }
 
@@ -111,12 +111,12 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             Point point1 = new Point(0, 0);
             Point point2 = new Point(1, 0);
             Point point3 = new Point(2, 0);
-            
+
             mountain.Add(point1);
             mountain.Add(point2);
             mountain.Add(point3);
             mountain.Remove(point2);
-            
+
             Assert.NotNull(mountain);
         }
 
@@ -130,13 +130,13 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             Point point1 = new Point(0, 0);
             Point point2 = new Point(2, 0);
             Point point3 = new Point(1, 1);
-            
+
             mountain.Add(point1);
             mountain.Add(point2);
             mountain.Add(point3);
-            
+
             mountain.Process();
-            
+
             Assert.NotEmpty(mountain.Triangles);
         }
 
@@ -150,11 +150,11 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             Point point1 = new Point(0, 0);
             Point point2 = new Point(1, 0);
             Point point3 = new Point(0.5f, 1);
-            
+
             mountain.Add(point1);
             mountain.Add(point2);
             mountain.Add(point3);
-            
+
             Assert.Empty(mountain.Triangles);
         }
 
@@ -169,14 +169,14 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             Point point2 = new Point(1, 0);
             Point point3 = new Point(2, 0);
             Point point4 = new Point(3, 0);
-            
+
             mountain.Add(point1);
             mountain.Add(point2);
             mountain.Add(point3);
             mountain.Add(point4);
-            
+
             mountain.Process();
-            
+
             Assert.NotNull(mountain);
         }
 
@@ -190,13 +190,13 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             Point point1 = new Point(0, 0);
             Point point2 = new Point(1, 0);
             Point point3 = new Point(0.5f, 1);
-            
+
             mountain.Add(point1);
             mountain.Add(point2);
             mountain.Add(point3);
-            
+
             mountain.Process();
-            
+
             Assert.NotNull(mountain.Triangles);
         }
 
@@ -208,7 +208,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         {
             MonotoneMountain mountain1 = new MonotoneMountain();
             MonotoneMountain mountain2 = mountain1;
-            
+
             Assert.Same(mountain1, mountain2);
         }
 
@@ -219,9 +219,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         public void TrianglesProperty_ShouldBeAccessible()
         {
             MonotoneMountain mountain = new MonotoneMountain();
-            
+
             List<List<Point>> triangles = mountain.Triangles;
-            
+
             Assert.NotNull(triangles);
             Assert.Empty(triangles);
         }
@@ -236,11 +236,11 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             Point point1 = new Point(0, 0);
             Point point2 = new Point(1, 0);
             Point point3 = new Point(2, 0);
-            
+
             mountain.Add(point1);
             mountain.Add(point2);
             mountain.Add(point3);
-            
+
             Assert.Equal(point2, point1.Next);
             Assert.Equal(point3, point2.Next);
         }
@@ -256,9 +256,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             mountain.Add(new Point(1, 0));
             mountain.Add(new Point(1, 1));
             mountain.Add(new Point(0, 1));
-            
+
             mountain.Process();
-            
+
             Assert.NotEmpty(mountain.Triangles);
         }
 
@@ -270,12 +270,11 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         {
             MonotoneMountain mountain1 = new MonotoneMountain();
             MonotoneMountain mountain2 = new MonotoneMountain();
-            
+
             mountain1.Add(new Point(0, 0));
             mountain2.Add(new Point(5, 5));
-            
+
             Assert.NotSame(mountain1, mountain2);
         }
     }
 }
-

@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IWhereTest.cs
+//  File:IWhereTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,25 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
     /// </summary>
     public class IWhereTest
     {
-        /// <summary>
-        ///     Helper builder class.
-        /// </summary>
-        private class QueryBuilder { public string Condition { get; set; } }
-
-        /// <summary>
-        ///     Helper implementation of IWhere.
-        /// </summary>
-        private class WhereBuilder : IWhere<QueryBuilder, string>
-        {
-            private readonly QueryBuilder _builder = new QueryBuilder();
-
-            public QueryBuilder Where(string value)
-            {
-                _builder.Condition = value;
-                return _builder;
-            }
-        }
-
         /// <summary>
         ///     Tests that IWhere can be implemented.
         /// </summary>
@@ -114,9 +95,34 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         }
 
         /// <summary>
+        ///     Helper builder class.
+        /// </summary>
+        private class QueryBuilder
+        {
+            public string Condition { get; set; }
+        }
+
+        /// <summary>
+        ///     Helper implementation of IWhere.
+        /// </summary>
+        private class WhereBuilder : IWhere<QueryBuilder, string>
+        {
+            private readonly QueryBuilder _builder = new QueryBuilder();
+
+            public QueryBuilder Where(string value)
+            {
+                _builder.Condition = value;
+                return _builder;
+            }
+        }
+
+        /// <summary>
         ///     Helper builder with integer.
         /// </summary>
-        private class IntQueryBuilder { public int MinValue { get; set; } }
+        private class IntQueryBuilder
+        {
+            public int MinValue { get; set; }
+        }
 
         /// <summary>
         ///     Helper implementation with integer condition.
@@ -133,4 +139,3 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         }
     }
 }
-

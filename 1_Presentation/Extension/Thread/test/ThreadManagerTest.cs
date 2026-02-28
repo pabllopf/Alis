@@ -151,7 +151,7 @@ namespace Alis.Extension.Thread.Test
                     {
                         data[i] = i * 2;
                     }
-                }, forceParallel: true, minBatchSize: 64);
+                }, true, 64);
 
                 // Assert
                 for (int i = 0; i < data.Length; i++)
@@ -212,4 +212,3 @@ namespace Alis.Extension.Thread.Test
         }
     }
 }
-

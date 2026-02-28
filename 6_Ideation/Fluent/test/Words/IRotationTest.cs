@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IRotationTest.cs
+//  File:IRotationTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,28 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
     /// </summary>
     public class IRotationTest
     {
-        /// <summary>
-        ///     Helper builder class for rotation.
-        /// </summary>
-        private class RotationBuilder
-        {
-            public float RotationValue { get; set; }
-        }
-
-        /// <summary>
-        ///     Helper implementation of IRotation.
-        /// </summary>
-        private class RotationBuilderImpl : IRotation<RotationBuilder, float>
-        {
-            private readonly RotationBuilder _builder = new RotationBuilder();
-
-            public RotationBuilder Rotation(float value)
-            {
-                _builder.RotationValue = value;
-                return _builder;
-            }
-        }
-
         /// <summary>
         ///     Tests that IRotation can be implemented.
         /// </summary>
@@ -97,12 +75,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Tests Rotation with full circle angle.
         /// </summary>
-        [Theory]
-        [InlineData(0f)]
-        [InlineData(90f)]
-        [InlineData(180f)]
-        [InlineData(270f)]
-        [InlineData(360f)]
+        [Theory, InlineData(0f), InlineData(90f), InlineData(180f), InlineData(270f), InlineData(360f)]
         public void Rotation_WithStandardAngles(float angle)
         {
             RotationBuilderImpl builder = new RotationBuilderImpl();
@@ -120,6 +93,27 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
             RotationBuilder result = builder.Rotation(-45f);
             Assert.Equal(-45f, result.RotationValue);
         }
+
+        /// <summary>
+        ///     Helper builder class for rotation.
+        /// </summary>
+        private class RotationBuilder
+        {
+            public float RotationValue { get; set; }
+        }
+
+        /// <summary>
+        ///     Helper implementation of IRotation.
+        /// </summary>
+        private class RotationBuilderImpl : IRotation<RotationBuilder, float>
+        {
+            private readonly RotationBuilder _builder = new RotationBuilder();
+
+            public RotationBuilder Rotation(float value)
+            {
+                _builder.RotationValue = value;
+                return _builder;
+            }
+        }
     }
 }
-

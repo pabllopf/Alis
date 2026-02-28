@@ -50,7 +50,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 10 });
+            GameObject entity = scene.Create(new Position {X = 10});
             Assert.True(entity.IsAlive);
 
             // Act
@@ -71,9 +71,9 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(new Position { X = 1 });
-            GameObject entity2 = scene.Create(new Position { X = 2 });
-            GameObject entity3 = scene.Create(new Position { X = 3 });
+            GameObject entity1 = scene.Create(new Position {X = 1});
+            GameObject entity2 = scene.Create(new Position {X = 2});
+            GameObject entity3 = scene.Create(new Position {X = 3});
 
             // Act
             entity2.Delete();
@@ -82,7 +82,9 @@ namespace Alis.Core.Ecs.Test
             Query query = scene.Query<With<Position>>();
             int count = 0;
             foreach (Ecs.Systems.GameObjectRefTuple<Position> _ in query.EnumerateWithEntities<Position>())
+            {
                 count++;
+            }
 
             Assert.Equal(2, count);
         }
@@ -95,10 +97,10 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(new Position { X = 1 });
-            GameObject entity2 = scene.Create(new Position { X = 2 });
-            GameObject entity3 = scene.Create(new Position { X = 3 });
-            GameObject entity4 = scene.Create(new Position { X = 4 });
+            GameObject entity1 = scene.Create(new Position {X = 1});
+            GameObject entity2 = scene.Create(new Position {X = 2});
+            GameObject entity3 = scene.Create(new Position {X = 3});
+            GameObject entity4 = scene.Create(new Position {X = 4});
 
             // Act
             entity1.Delete();
@@ -108,7 +110,9 @@ namespace Alis.Core.Ecs.Test
             Query query = scene.Query<With<Position>>();
             int count = 0;
             foreach (Ecs.Systems.GameObjectRefTuple<Position> _ in query.EnumerateWithEntities<Position>())
+            {
                 count++;
+            }
 
             Assert.Equal(2, count);
         }
@@ -142,7 +146,7 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position());
-            GameObject deletedEntity = default;
+            GameObject deletedEntity = default(GameObject);
 
             scene.EntityDeleted += go => deletedEntity = go;
 
@@ -174,10 +178,11 @@ namespace Alis.Core.Ecs.Test
             Query query = scene.Query<With<Position>>();
             int count = 0;
             foreach (Ecs.Systems.GameObjectRefTuple<Position> _ in query.EnumerateWithEntities<Position>())
+            {
                 count++;
+            }
 
             Assert.Equal(0, count);
         }
     }
 }
-

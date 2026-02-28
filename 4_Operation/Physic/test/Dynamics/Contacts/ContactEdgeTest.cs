@@ -44,7 +44,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         public void Constructor_ShouldCreateInstance()
         {
             ContactEdge edge = new ContactEdge();
-            
+
             Assert.NotNull(edge);
         }
 
@@ -55,7 +55,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         public void Contact_ShouldGetCorrectly()
         {
             ContactEdge edge = new ContactEdge();
-            
+
             Assert.Null(edge.Contact);
         }
 
@@ -66,7 +66,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         public void Other_ShouldGetCorrectly()
         {
             ContactEdge edge = new ContactEdge();
-            
+
             Assert.Null(edge.Other);
         }
 
@@ -77,7 +77,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         public void Next_ShouldGetCorrectly()
         {
             ContactEdge edge = new ContactEdge();
-            
+
             Assert.Null(edge.Next);
         }
 
@@ -88,7 +88,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         public void Prev_ShouldGetCorrectly()
         {
             ContactEdge edge = new ContactEdge();
-            
+
             Assert.Null(edge.Prev);
         }
 
@@ -99,7 +99,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         public void AllProperties_ShouldInitializeToNull()
         {
             ContactEdge edge = new ContactEdge();
-            
+
             Assert.Null(edge.Contact);
             Assert.Null(edge.Other);
             Assert.Null(edge.Next);
@@ -113,7 +113,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         public void ContactEdge_ShouldBeSealedClass()
         {
             ContactEdge edge = new ContactEdge();
-            
+
             Assert.IsType<ContactEdge>(edge);
         }
 
@@ -124,7 +124,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         public void Properties_ShouldHaveInternalSetters()
         {
             ContactEdge edge = new ContactEdge();
-            
+
             // Properties have internal setters, so we can only verify they exist and return null
             Assert.Null(edge.Contact);
             Assert.Null(edge.Other);
@@ -133,4 +133,3 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         }
     }
 }
-

@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IDensityTest.cs
+//  File:IDensityTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,28 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
     /// </summary>
     public class IDensityTest
     {
-        /// <summary>
-        ///     Helper builder class for density.
-        /// </summary>
-        private class DensityBuilder
-        {
-            public float DensityValue { get; set; }
-        }
-
-        /// <summary>
-        ///     Helper implementation of IDensity.
-        /// </summary>
-        private class DensityBuilderImpl : IDensity<DensityBuilder, float>
-        {
-            private readonly DensityBuilder _builder = new DensityBuilder();
-
-            public DensityBuilder Density(float value)
-            {
-                _builder.DensityValue = value;
-                return _builder;
-            }
-        }
-
         /// <summary>
         ///     Tests that IDensity can be implemented.
         /// </summary>
@@ -97,17 +75,34 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Tests Density with various material values.
         /// </summary>
-        [Theory]
-        [InlineData(100f)]
-        [InlineData(500f)]
-        [InlineData(1000f)]
-        [InlineData(2000f)]
+        [Theory, InlineData(100f), InlineData(500f), InlineData(1000f), InlineData(2000f)]
         public void Density_WithVariousMaterials(float density)
         {
             DensityBuilderImpl builder = new DensityBuilderImpl();
             DensityBuilder result = builder.Density(density);
             Assert.Equal(density, result.DensityValue);
         }
+
+        /// <summary>
+        ///     Helper builder class for density.
+        /// </summary>
+        private class DensityBuilder
+        {
+            public float DensityValue { get; set; }
+        }
+
+        /// <summary>
+        ///     Helper implementation of IDensity.
+        /// </summary>
+        private class DensityBuilderImpl : IDensity<DensityBuilder, float>
+        {
+            private readonly DensityBuilder _builder = new DensityBuilder();
+
+            public DensityBuilder Density(float value)
+            {
+                _builder.DensityValue = value;
+                return _builder;
+            }
+        }
     }
 }
-

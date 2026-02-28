@@ -38,7 +38,7 @@ using Xunit;
 
 namespace Alis.Extension.Thread.Test
 {
-    [ParallelSafe(minBatchSize: 64)]
+    [ParallelSafe(64)]
     public struct TestParallelComponent
     {
         public int Value;
@@ -113,6 +113,7 @@ namespace Alis.Extension.Thread.Test
             {
                 Assert.Equal(i * 2, data[i]);
             }
+
             Assert.True(executionCount > 1); // Multiple batches executed
         }
 
@@ -145,6 +146,7 @@ namespace Alis.Extension.Thread.Test
             {
                 Assert.Equal(i, data[i]);
             }
+
             Assert.Equal(1, executionCount); // Single execution
         }
 
@@ -160,7 +162,7 @@ namespace Alis.Extension.Thread.Test
             ParallelUpdateExecutor executor = new ParallelUpdateExecutor(context, strategy);
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>(() => 
+            Assert.Throws<ArgumentNullException>(() =>
                 executor.ExecuteUpdate(typeof(TestParallelComponent), 100, null));
         }
 
@@ -178,10 +180,7 @@ namespace Alis.Extension.Thread.Test
             int executionCount = 0;
 
             // Act
-            executor.ExecuteUpdate(typeof(TestParallelComponent), 0, (start, length) =>
-            {
-                Interlocked.Increment(ref executionCount);
-            });
+            executor.ExecuteUpdate(typeof(TestParallelComponent), 0, (start, length) => { Interlocked.Increment(ref executionCount); });
 
             // Assert
             Assert.Equal(0, executionCount);
@@ -201,10 +200,7 @@ namespace Alis.Extension.Thread.Test
             int executionCount = 0;
 
             // Act
-            executor.ExecuteUpdate(typeof(TestParallelComponent), -10, (start, length) =>
-            {
-                Interlocked.Increment(ref executionCount);
-            });
+            executor.ExecuteUpdate(typeof(TestParallelComponent), -10, (start, length) => { Interlocked.Increment(ref executionCount); });
 
             // Assert
             Assert.Equal(0, executionCount);
@@ -234,7 +230,7 @@ namespace Alis.Extension.Thread.Test
                 {
                     data[i] = i + 1;
                 }
-            }, forceParallel: true, minBatchSize: 64);
+            }, true, 64);
 
             // Assert
             for (int i = 0; i < data.Length; i++)
@@ -263,7 +259,7 @@ namespace Alis.Extension.Thread.Test
                 {
                     data[i] = i + 1;
                 }
-            }, forceParallel: false);
+            }, false);
 
             // Assert
             for (int i = 0; i < data.Length; i++)
@@ -291,4 +287,3 @@ namespace Alis.Extension.Thread.Test
         }
     }
 }
-

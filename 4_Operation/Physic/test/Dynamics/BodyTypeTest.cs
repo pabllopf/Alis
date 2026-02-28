@@ -43,7 +43,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         [Fact]
         public void Static_ShouldHaveValueZero()
         {
-            Assert.Equal(0, (int)BodyType.Static);
+            Assert.Equal(0, (int) BodyType.Static);
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         [Fact]
         public void Kinematic_ShouldHaveValueOne()
         {
-            Assert.Equal(1, (int)BodyType.Kinematic);
+            Assert.Equal(1, (int) BodyType.Kinematic);
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         [Fact]
         public void Dynamic_ShouldHaveValueTwo()
         {
-            Assert.Equal(2, (int)BodyType.Dynamic);
+            Assert.Equal(2, (int) BodyType.Dynamic);
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace Alis.Core.Physic.Test.Dynamics
                 BodyType.Kinematic,
                 BodyType.Dynamic
             };
-            
+
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = i + 1; j < values.Length; j++)
@@ -92,9 +92,8 @@ namespace Alis.Core.Physic.Test.Dynamics
         [Fact]
         public void Values_ShouldBeInOrder()
         {
-            Assert.True((int)BodyType.Static < (int)BodyType.Kinematic);
-            Assert.True((int)BodyType.Kinematic < (int)BodyType.Dynamic);
+            Assert.True((int) BodyType.Static < (int) BodyType.Kinematic);
+            Assert.True((int) BodyType.Kinematic < (int) BodyType.Dynamic);
         }
     }
 }
-

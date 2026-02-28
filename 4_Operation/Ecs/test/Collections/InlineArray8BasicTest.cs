@@ -37,7 +37,7 @@ namespace Alis.Core.Ecs.Test.Collections
     ///     The inline array 8 basic test class
     /// </summary>
     /// <remarks>
-    ///     Tests basic functionality of <see cref="InlineArray8{T}"/> which is a
+    ///     Tests basic functionality of <see cref="InlineArray8{T}" /> which is a
     ///     fixed-size array struct with 8 elements stored inline in memory.
     ///     This struct is optimized for cache locality and zero-allocation storage.
     /// </remarks>
@@ -126,8 +126,8 @@ namespace Alis.Core.Ecs.Test.Collections
         {
             // Arrange
             InlineArray8<Position> array = new InlineArray8<Position>();
-            Position p1 = new Position { X = 1, Y = 2 };
-            Position p2 = new Position { X = 3, Y = 4 };
+            Position p1 = new Position {X = 1, Y = 2};
+            Position p2 = new Position {X = 3, Y = 4};
 
             // Act
             array._0 = p1;
@@ -192,7 +192,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void InlineArray8_DefaultInitializes()
         {
             // Act
-            InlineArray8<int> array = default;
+            InlineArray8<int> array = default(InlineArray8<int>);
 
             // Assert
             Assert.Equal(0, array._0);
@@ -225,4 +225,3 @@ namespace Alis.Core.Ecs.Test.Collections
         }
     }
 }
-

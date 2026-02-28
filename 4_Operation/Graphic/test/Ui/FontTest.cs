@@ -30,19 +30,18 @@
 using System;
 using System.Linq;
 using System.Reflection;
-using Xunit;
 using Alis.Core.Graphic.Ui;
-using Alis.Core.Aspect.Math.Definition;
+using Xunit;
 
 namespace Alis.Core.Graphic.Test.Ui
 {
     /// <summary>
-    /// Tests for the Font class handling font rendering with OpenGL shaders.
+    ///     Tests for the Font class handling font rendering with OpenGL shaders.
     /// </summary>
     public class FontTest
     {
         /// <summary>
-        /// Tests that Font class can be instantiated with required parameters.
+        ///     Tests that Font class can be instantiated with required parameters.
         /// </summary>
         [Fact]
         public void Font_Constructor_CanBeCreated()
@@ -55,7 +54,7 @@ namespace Alis.Core.Graphic.Test.Ui
         }
 
         /// <summary>
-        /// Tests that Font class is public.
+        ///     Tests that Font class is public.
         /// </summary>
         [Fact]
         public void Font_IsPublic_CanBeAccessed()
@@ -68,7 +67,7 @@ namespace Alis.Core.Graphic.Test.Ui
         }
 
         /// <summary>
-        /// Tests that Font has NameFile property.
+        ///     Tests that Font has NameFile property.
         /// </summary>
         [Fact]
         public void Font_NameFile_PropertyExists()
@@ -82,7 +81,7 @@ namespace Alis.Core.Graphic.Test.Ui
         }
 
         /// <summary>
-        /// Tests that Font has Depth property.
+        ///     Tests that Font has Depth property.
         /// </summary>
         [Fact]
         public void Font_Depth_PropertyExists()
@@ -96,7 +95,7 @@ namespace Alis.Core.Graphic.Test.Ui
         }
 
         /// <summary>
-        /// Tests that Font has RenderText method.
+        ///     Tests that Font has RenderText method.
         /// </summary>
         [Fact]
         public void Font_RenderText_MethodExists()
@@ -107,37 +106,37 @@ namespace Alis.Core.Graphic.Test.Ui
             // Assert
             Assert.NotNull(renderMethod);
         }
-        
+
         /// <summary>
-        /// Tests that Font has LoadTexture internal method.
+        ///     Tests that Font has LoadTexture internal method.
         /// </summary>
         [Fact]
         public void Font_LoadTexture_MethodExists()
         {
             // Arrange & Act
-            MethodInfo loadTextureMethod = typeof(Font).GetMethod("LoadTexture", 
-                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            MethodInfo loadTextureMethod = typeof(Font).GetMethod("LoadTexture",
+                BindingFlags.NonPublic | BindingFlags.Instance);
 
             // Assert
             Assert.NotNull(loadTextureMethod);
         }
 
         /// <summary>
-        /// Tests that Font has SetupBuffers method for buffer initialization.
+        ///     Tests that Font has SetupBuffers method for buffer initialization.
         /// </summary>
         [Fact]
         public void Font_SetupBuffers_MethodExists()
         {
             // Arrange & Act
-            MethodInfo setupMethod = typeof(Font).GetMethod("SetupBuffers", 
-                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            MethodInfo setupMethod = typeof(Font).GetMethod("SetupBuffers",
+                BindingFlags.NonPublic | BindingFlags.Instance);
 
             // Assert
             Assert.NotNull(setupMethod);
         }
 
         /// <summary>
-        /// Tests that Font constructor accepts four parameters.
+        ///     Tests that Font constructor accepts four parameters.
         /// </summary>
         [Fact]
         public void Font_Constructor_ParametersAreCorrect()
@@ -153,13 +152,13 @@ namespace Alis.Core.Graphic.Test.Ui
             ParameterInfo[] parameters = constructor.GetParameters();
             Assert.Equal(4, parameters.Length);
             Assert.Equal(typeof(string), parameters[0].ParameterType); // NameFile
-            Assert.Equal(typeof(int), parameters[1].ParameterType);    // Depth
-            Assert.Equal(typeof(int), parameters[2].ParameterType);    // size
+            Assert.Equal(typeof(int), parameters[1].ParameterType); // Depth
+            Assert.Equal(typeof(int), parameters[2].ParameterType); // size
             Assert.Equal(typeof(string), parameters[3].ParameterType); // fullPath
         }
 
         /// <summary>
-        /// Tests that Font has private properties for shader management.
+        ///     Tests that Font has private properties for shader management.
         /// </summary>
         [Fact]
         public void Font_HasPrivateShaderProperties_ShaderManagementExists()
@@ -168,14 +167,14 @@ namespace Alis.Core.Graphic.Test.Ui
             Type fontType = typeof(Font);
 
             // Act
-            PropertyInfo shaderProgram = fontType.GetProperty("ShaderProgram", 
-                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-            PropertyInfo vao = fontType.GetProperty("Vao", 
-                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-            PropertyInfo vbo = fontType.GetProperty("Vbo", 
-                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-            PropertyInfo texture = fontType.GetProperty("Texture", 
-                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            PropertyInfo shaderProgram = fontType.GetProperty("ShaderProgram",
+                BindingFlags.NonPublic | BindingFlags.Instance);
+            PropertyInfo vao = fontType.GetProperty("Vao",
+                BindingFlags.NonPublic | BindingFlags.Instance);
+            PropertyInfo vbo = fontType.GetProperty("Vbo",
+                BindingFlags.NonPublic | BindingFlags.Instance);
+            PropertyInfo texture = fontType.GetProperty("Texture",
+                BindingFlags.NonPublic | BindingFlags.Instance);
 
             // Assert
             Assert.NotNull(shaderProgram);
@@ -185,35 +184,35 @@ namespace Alis.Core.Graphic.Test.Ui
         }
 
         /// <summary>
-        /// Tests that Font has private method InitializeShaders.
+        ///     Tests that Font has private method InitializeShaders.
         /// </summary>
         [Fact]
         public void Font_InitializeShaders_MethodExists()
         {
             // Arrange & Act
-            MethodInfo initShaders = typeof(Font).GetMethod("InitializeShaders", 
-                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            MethodInfo initShaders = typeof(Font).GetMethod("InitializeShaders",
+                BindingFlags.NonPublic | BindingFlags.Instance);
 
             // Assert
             Assert.NotNull(initShaders);
         }
 
         /// <summary>
-        /// Tests that Font has Size property for managing dimensions.
+        ///     Tests that Font has Size property for managing dimensions.
         /// </summary>
         [Fact]
         public void Font_Size_PropertyExists()
         {
             // Arrange & Act
-            PropertyInfo sizeProperty = typeof(Font).GetProperty("Size", 
-                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            PropertyInfo sizeProperty = typeof(Font).GetProperty("Size",
+                BindingFlags.NonPublic | BindingFlags.Instance);
 
             // Assert
             Assert.NotNull(sizeProperty);
         }
 
         /// <summary>
-        /// Tests that Font has CharacterRects dictionary for character positioning.
+        ///     Tests that Font has CharacterRects dictionary for character positioning.
         /// </summary>
         [Fact]
         public void Font_CharacterRects_DictionaryExists()
@@ -222,16 +221,16 @@ namespace Alis.Core.Graphic.Test.Ui
             Type fontType = typeof(Font);
 
             // Act
-            FieldInfo characterRectsField = fontType.GetField("CharacterRects", 
-                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            FieldInfo characterRectsField = fontType.GetField("CharacterRects",
+                BindingFlags.NonPublic | BindingFlags.Instance);
 
             // Assert
             Assert.NotNull(characterRectsField);
         }
-        
+
 
         /// <summary>
-        /// Tests that Font RenderText method returns void.
+        ///     Tests that Font RenderText method returns void.
         /// </summary>
         [Fact]
         public void Font_RenderText_ReturnsVoid()
@@ -245,7 +244,7 @@ namespace Alis.Core.Graphic.Test.Ui
         }
 
         /// <summary>
-        /// Tests that Font has GCHandle fields for memory management.
+        ///     Tests that Font has GCHandle fields for memory management.
         /// </summary>
         [Fact]
         public void Font_HasGCHandleFields_MemoryManagementExists()
@@ -254,12 +253,12 @@ namespace Alis.Core.Graphic.Test.Ui
             Type fontType = typeof(Font);
 
             // Act
-            FieldInfo imageHandle = fontType.GetField("imageHandle", 
-                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-            FieldInfo indicesHandle = fontType.GetField("indicesHandle", 
-                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-            FieldInfo verticesHandle = fontType.GetField("verticesHandle", 
-                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            FieldInfo imageHandle = fontType.GetField("imageHandle",
+                BindingFlags.NonPublic | BindingFlags.Instance);
+            FieldInfo indicesHandle = fontType.GetField("indicesHandle",
+                BindingFlags.NonPublic | BindingFlags.Instance);
+            FieldInfo verticesHandle = fontType.GetField("verticesHandle",
+                BindingFlags.NonPublic | BindingFlags.Instance);
 
             // Assert
             Assert.NotNull(imageHandle);
@@ -268,4 +267,3 @@ namespace Alis.Core.Graphic.Test.Ui
         }
     }
 }
-

@@ -38,12 +38,11 @@ namespace Alis.Core.Ecs.Test.Collections
     ///     The chunk test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="Chunk{TData}"/> struct which provides
+    ///     Tests the <see cref="Chunk{TData}" /> struct which provides
     ///     chunked memory storage for component data in the ECS system.
     /// </remarks>
     public class ChunkTest
     {
-
         /// <summary>
         ///     Tests that chunk can be created with length
         /// </summary>
@@ -206,7 +205,7 @@ namespace Alis.Core.Ecs.Test.Collections
             Chunk<TestStruct> chunk = new Chunk<TestStruct>(5);
 
             // Act
-            chunk[0] = new TestStruct { X = 10, Y = 20 };
+            chunk[0] = new TestStruct {X = 10, Y = 20};
 
             // Assert
             Assert.Equal(10, chunk[0].X);
@@ -278,6 +277,7 @@ namespace Alis.Core.Ecs.Test.Collections
             {
                 Assert.Equal(i * 2, chunk[i]);
             }
+
             chunk.Return();
         }
 
@@ -357,7 +357,7 @@ namespace Alis.Core.Ecs.Test.Collections
 
             // Assert
             Assert.NotNull(chunks[1].Buffer);
-            
+
             // Cleanup
             chunks[0].Return();
             chunks[1].Return();
@@ -382,11 +382,10 @@ namespace Alis.Core.Ecs.Test.Collections
 
             // Assert
             Assert.True(chunks.Length > originalLength);
-            
+
             // Cleanup
             chunks[0].Return();
             chunks[1].Return();
         }
     }
 }
-

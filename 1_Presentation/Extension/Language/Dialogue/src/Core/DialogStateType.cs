@@ -55,4 +55,3 @@ namespace Alis.Extension.Language.Dialogue.Core
         Completed = 3
     }
 }
-

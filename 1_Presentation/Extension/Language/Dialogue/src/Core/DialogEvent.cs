@@ -66,4 +66,3 @@ namespace Alis.Extension.Language.Dialogue.Core
         public bool IsHandled { get; set; }
     }
 }
-

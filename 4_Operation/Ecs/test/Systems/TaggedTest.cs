@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
@@ -38,7 +37,7 @@ namespace Alis.Core.Ecs.Test.Systems
     ///     The tagged test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="Tagged{T}"/> struct which specifies that a query
+    ///     Tests the <see cref="Tagged{T}" /> struct which specifies that a query
     ///     should only include entities that have a specific tag.
     /// </remarks>
     public class TaggedTest
@@ -53,7 +52,7 @@ namespace Alis.Core.Ecs.Test.Systems
         public void Tagged_ImplementsRuleProvider()
         {
             // Arrange & Act
-            Tagged<PlayerTag> tagged = default;
+            Tagged<PlayerTag> tagged = default(Tagged<PlayerTag>);
 
             // Assert
             Assert.IsAssignableFrom<IRuleProvider>(tagged);
@@ -69,7 +68,7 @@ namespace Alis.Core.Ecs.Test.Systems
         public void Tagged_RuleReturnsHasTagRule()
         {
             // Arrange
-            Tagged<PlayerTag> tagged = default;
+            Tagged<PlayerTag> tagged = default(Tagged<PlayerTag>);
 
             // Act
             Rule rule = tagged.Rule;
@@ -89,7 +88,7 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 1, Y = 1 });
+            GameObject entity = scene.Create(new Position {X = 1, Y = 1});
             entity.Tag<PlayerTag>();
 
             // Act
@@ -115,10 +114,10 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject player = scene.Create(new Position { X = 1, Y = 1 });
+            GameObject player = scene.Create(new Position {X = 1, Y = 1});
             player.Tag<PlayerTag>();
-            
-            GameObject enemy = scene.Create(new Position { X = 2, Y = 2 });
+
+            GameObject enemy = scene.Create(new Position {X = 2, Y = 2});
             enemy.Tag<EnemyTag>();
 
             // Act
@@ -144,11 +143,11 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(new Position { X = 1, Y = 1 });
+            GameObject entity1 = scene.Create(new Position {X = 1, Y = 1});
             entity1.Tag<PlayerTag>();
             entity1.Tag<TagComponent>();
 
-            GameObject entity2 = scene.Create(new Position { X = 2, Y = 2 });
+            GameObject entity2 = scene.Create(new Position {X = 2, Y = 2});
             entity2.Tag<PlayerTag>();
 
             // Act
@@ -174,9 +173,9 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject active = scene.Create(new Position { X = 1, Y = 1 });
-            
-            GameObject disabled = scene.Create(new Position { X = 2, Y = 2 });
+            GameObject active = scene.Create(new Position {X = 1, Y = 1});
+
+            GameObject disabled = scene.Create(new Position {X = 2, Y = 2});
             disabled.Tag<Disable>();
 
             // Act - Query specifically for disabled entities
@@ -201,7 +200,7 @@ namespace Alis.Core.Ecs.Test.Systems
         public void Tagged_DefaultInstanceHasValidRule()
         {
             // Arrange
-            Tagged<PlayerTag> tagged1 = default;
+            Tagged<PlayerTag> tagged1 = default(Tagged<PlayerTag>);
             Tagged<PlayerTag> tagged2 = new Tagged<PlayerTag>();
 
             // Act
@@ -222,8 +221,8 @@ namespace Alis.Core.Ecs.Test.Systems
         public void Tagged_ForDifferentTypes_CreatesDifferentRules()
         {
             // Arrange
-            Tagged<PlayerTag> taggedPlayer = default;
-            Tagged<EnemyTag> taggedEnemy = default;
+            Tagged<PlayerTag> taggedPlayer = default(Tagged<PlayerTag>);
+            Tagged<EnemyTag> taggedEnemy = default(Tagged<EnemyTag>);
 
             // Act
             Rule rulePlayer = taggedPlayer.Rule;
@@ -244,10 +243,10 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(new Position { X = 1, Y = 1 }, new Velocity { VX = 1, VY = 1 });
+            GameObject entity1 = scene.Create(new Position {X = 1, Y = 1}, new Velocity {VX = 1, VY = 1});
             entity1.Tag<PlayerTag>();
 
-            GameObject entity2 = scene.Create(new Position { X = 2, Y = 2 }, new Velocity { VX = 2, VY = 2 });
+            GameObject entity2 = scene.Create(new Position {X = 2, Y = 2}, new Velocity {VX = 2, VY = 2});
 
             // Act
             Query query = scene.Query<With<Position>, With<Velocity>, Tagged<PlayerTag>>();
@@ -262,4 +261,3 @@ namespace Alis.Core.Ecs.Test.Systems
         }
     }
 }
-

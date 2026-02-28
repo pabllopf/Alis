@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IOnAfterDrawTest.cs
+//  File:IOnAfterDrawTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,21 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
     /// </summary>
     public class IOnAfterDrawTest
     {
-        
-
-        /// <summary>
-        ///     Helper implementation for testing IOnAfterDraw.
-        /// </summary>
-        private class AfterDrawHandler : IOnAfterDraw
-        {
-            public int CallCount { get; private set; }
-
-            public void OnAfterDraw(IGameObject self)
-            {
-                CallCount++;
-            }
-        }
-
         /// <summary>
         ///     Tests that IOnAfterDraw can be implemented.
         /// </summary>
@@ -88,9 +73,22 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
             {
                 handler.OnAfterDraw(gameObject);
             }
+
             Assert.Equal(120, handler.CallCount);
         }
-        
+
+
+        /// <summary>
+        ///     Helper implementation for testing IOnAfterDraw.
+        /// </summary>
+        private class AfterDrawHandler : IOnAfterDraw
+        {
+            public int CallCount { get; private set; }
+
+            public void OnAfterDraw(IGameObject self)
+            {
+                CallCount++;
+            }
+        }
     }
 }
-

@@ -82,4 +82,3 @@ namespace Alis.Extension.Profile.Interfaces
         DateTime GetStartTime();
     }
 }
-

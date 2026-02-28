@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: ComplexIntegrationTest.cs
+//  File:ComplexIntegrationTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program. If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -33,6 +33,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Data.Test.Json.Models;
 using Xunit;
@@ -48,7 +49,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         #region Multi-Level Nesting Tests
 
         /// <summary>
-        /// Tests that integration three level nesting serializes and deserializes
+        ///     Tests that integration three level nesting serializes and deserializes
         /// </summary>
         [Fact]
         public void Integration_ThreeLevelNesting_SerializesAndDeserializes()
@@ -85,7 +86,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         #region Collection of Complex Objects Tests
 
         /// <summary>
-        /// Tests that integration list of complex objects serializes completely
+        ///     Tests that integration list of complex objects serializes completely
         /// </summary>
         [Fact]
         public void Integration_ListOfComplexObjects_SerializesCompletely()
@@ -93,9 +94,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             // Arrange
             List<ProductClass> products = new List<ProductClass>
             {
-                new ProductClass { ProductId = 1, ProductName = "Laptop", Price = 999.99m, InStock = true, AddedDate = DateTime.Now },
-                new ProductClass { ProductId = 2, ProductName = "Mouse", Price = 29.99m, InStock = true, AddedDate = DateTime.Now },
-                new ProductClass { ProductId = 3, ProductName = "Keyboard", Price = 79.99m, InStock = false, AddedDate = DateTime.Now }
+                new ProductClass {ProductId = 1, ProductName = "Laptop", Price = 999.99m, InStock = true, AddedDate = DateTime.Now},
+                new ProductClass {ProductId = 2, ProductName = "Mouse", Price = 29.99m, InStock = true, AddedDate = DateTime.Now},
+                new ProductClass {ProductId = 3, ProductName = "Keyboard", Price = 79.99m, InStock = false, AddedDate = DateTime.Now}
             };
 
             // Act - Serialize each individually
@@ -116,7 +117,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         #region Mixed Type Scenarios
 
         /// <summary>
-        /// Tests that integration mixed value and reference types all preserved
+        ///     Tests that integration mixed value and reference types all preserved
         /// </summary>
         [Fact]
         public void Integration_MixedValueAndReferenceTypes_AllPreserved()
@@ -160,7 +161,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         #region File Operations Integration
 
         /// <summary>
-        /// Tests that integration serialize to file and read back successful
+        ///     Tests that integration serialize to file and read back successful
         /// </summary>
         [Fact]
         public void Integration_SerializeToFile_AndReadBack_Successful()
@@ -196,22 +197,27 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
                 // Cleanup
                 string fullPath = Path.Combine(Directory.GetCurrentDirectory(), path, $"{fileName}.json");
                 if (File.Exists(fullPath))
+                {
                     File.Delete(fullPath);
+                }
+
                 string dir = Path.Combine(Directory.GetCurrentDirectory(), path);
                 if (Directory.Exists(dir) && !Directory.GetFiles(dir).Any())
+                {
                     Directory.Delete(dir);
+                }
             }
         }
 
         /// <summary>
-        /// Tests that integration multiple file operations no interference
+        ///     Tests that integration multiple file operations no interference
         /// </summary>
         [Fact]
         public void Integration_MultipleFileOperations_NoInterference()
         {
             // Arrange
-            PersonClass person = new PersonClass { Name = "File Test Person", Age = 25, Email = "test@file.com" };
-            ProductClass product = new ProductClass { ProductId = 999, ProductName = "File Test Product", Price = 99.99m, InStock = true, AddedDate = DateTime.Now };
+            PersonClass person = new PersonClass {Name = "File Test Person", Age = 25, Email = "test@file.com"};
+            ProductClass product = new ProductClass {ProductId = 999, ProductName = "File Test Product", Price = 99.99m, InStock = true, AddedDate = DateTime.Now};
 
             string fileName1 = $"test_person_{Guid.NewGuid()}";
             string fileName2 = $"test_product_{Guid.NewGuid()}";
@@ -236,10 +242,20 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
                 string dir = Path.Combine(Directory.GetCurrentDirectory(), path);
                 string file1 = Path.Combine(dir, $"{fileName1}.json");
                 string file2 = Path.Combine(dir, $"{fileName2}.json");
-                if (File.Exists(file1)) File.Delete(file1);
-                if (File.Exists(file2)) File.Delete(file2);
+                if (File.Exists(file1))
+                {
+                    File.Delete(file1);
+                }
+
+                if (File.Exists(file2))
+                {
+                    File.Delete(file2);
+                }
+
                 if (Directory.Exists(dir) && !Directory.GetFiles(dir).Any())
+                {
                     Directory.Delete(dir);
+                }
             }
         }
 
@@ -248,7 +264,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         #region Stress Tests
 
         /// <summary>
-        /// Tests that integration serialize deserialize 1000 times no errors
+        ///     Tests that integration serialize deserialize 1000 times no errors
         /// </summary>
         [Fact]
         public void Integration_SerializeDeserialize1000Times_NoErrors()
@@ -273,7 +289,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         }
 
         /// <summary>
-        /// Tests that integration parallel serialization thread safe
+        ///     Tests that integration parallel serialization thread safe
         /// </summary>
         [Fact]
         public void Integration_ParallelSerialization_ThreadSafe()
@@ -287,9 +303,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             }).ToList();
 
             // Act
-            ConcurrentBag<bool> results = new System.Collections.Concurrent.ConcurrentBag<bool>();
+            ConcurrentBag<bool> results = new ConcurrentBag<bool>();
 
-            System.Threading.Tasks.Parallel.ForEach(objects, obj =>
+            Parallel.ForEach(objects, obj =>
             {
                 try
                 {
@@ -313,7 +329,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         #region Complex Data Structures
 
         /// <summary>
-        /// Tests that integration complex struct with multiple types
+        ///     Tests that integration complex struct with multiple types
         /// </summary>
         [Fact]
         public void Integration_ComplexStruct_WithMultipleTypes()
@@ -337,7 +353,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         }
 
         /// <summary>
-        /// Tests that integration numeric types class all types round trip
+        ///     Tests that integration numeric types class all types round trip
         /// </summary>
         [Fact]
         public void Integration_NumericTypesClass_AllTypesRoundTrip()
@@ -375,7 +391,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         #region Edge Case Collections
 
         /// <summary>
-        /// Tests that integration empty collections handle gracefully
+        ///     Tests that integration empty collections handle gracefully
         /// </summary>
         [Fact]
         public void Integration_EmptyCollections_HandleGracefully()
@@ -408,7 +424,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         }
 
         /// <summary>
-        /// Tests that integration large collections handled efficiently
+        ///     Tests that integration large collections handled efficiently
         /// </summary>
         [Fact]
         public void Integration_LargeCollections_HandledEfficiently()
@@ -421,7 +437,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             };
 
             // Act
-            Stopwatch sw = System.Diagnostics.Stopwatch.StartNew();
+            Stopwatch sw = Stopwatch.StartNew();
             string json = JsonNativeAot.Serialize(tags);
             TagsClass restored = JsonNativeAot.Deserialize<TagsClass>(json);
             sw.Stop();
@@ -436,7 +452,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         #region Temporal Data Tests
 
         /// <summary>
-        /// Tests that integration multiple date time formats handle correctly
+        ///     Tests that integration multiple date time formats handle correctly
         /// </summary>
         [Fact]
         public void Integration_MultipleDateTimeFormats_HandleCorrectly()
@@ -470,7 +486,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         }
 
         /// <summary>
-        /// Tests that integration multiple guids all unique
+        ///     Tests that integration multiple guids all unique
         /// </summary>
         [Fact]
         public void Integration_MultipleGuids_AllUnique()
@@ -496,7 +512,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         #region Audit and Logging Integration
 
         /// <summary>
-        /// Tests that integration audit trail complete workflow
+        ///     Tests that integration audit trail complete workflow
         /// </summary>
         [Fact]
         public void Integration_AuditTrail_CompleteWorkflow()
@@ -504,9 +520,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             // Arrange
             AuditTrailStruct[] audits = new[]
             {
-                new AuditTrailStruct { Action = "CREATE", User = "admin", When = DateTime.Now, Success = true },
-                new AuditTrailStruct { Action = "UPDATE", User = "user1", When = DateTime.Now.AddMinutes(5), Success = true },
-                new AuditTrailStruct { Action = "DELETE", User = "admin", When = DateTime.Now.AddMinutes(10), Success = false }
+                new AuditTrailStruct {Action = "CREATE", User = "admin", When = DateTime.Now, Success = true},
+                new AuditTrailStruct {Action = "UPDATE", User = "user1", When = DateTime.Now.AddMinutes(5), Success = true},
+                new AuditTrailStruct {Action = "DELETE", User = "admin", When = DateTime.Now.AddMinutes(10), Success = false}
             };
 
             // Act
@@ -523,7 +539,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         }
 
         /// <summary>
-        /// Tests that integration log entries with different levels
+        ///     Tests that integration log entries with different levels
         /// </summary>
         [Fact]
         public void Integration_LogEntries_WithDifferentLevels()
@@ -531,9 +547,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             // Arrange
             LogEntry[] logs = new[]
             {
-                new LogEntry { LogId = Guid.NewGuid(), Timestamp = DateTime.Now, Level = "DEBUG", Message = "Debug message", Source = "App" },
-                new LogEntry { LogId = Guid.NewGuid(), Timestamp = DateTime.Now, Level = "INFO", Message = "Info message", Source = "Service" },
-                new LogEntry { LogId = Guid.NewGuid(), Timestamp = DateTime.Now, Level = "ERROR", Message = "Error occurred", Source = "Database" }
+                new LogEntry {LogId = Guid.NewGuid(), Timestamp = DateTime.Now, Level = "DEBUG", Message = "Debug message", Source = "App"},
+                new LogEntry {LogId = Guid.NewGuid(), Timestamp = DateTime.Now, Level = "INFO", Message = "Info message", Source = "Service"},
+                new LogEntry {LogId = Guid.NewGuid(), Timestamp = DateTime.Now, Level = "ERROR", Message = "Error occurred", Source = "Database"}
             };
 
             // Act
@@ -552,7 +568,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         #region Configuration Scenarios
 
         /// <summary>
-        /// Tests that integration app settings complete configuration
+        ///     Tests that integration app settings complete configuration
         /// </summary>
         [Fact]
         public void Integration_AppSettings_CompleteConfiguration()
@@ -582,7 +598,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         }
 
         /// <summary>
-        /// Tests that integration database connection multiple connections
+        ///     Tests that integration database connection multiple connections
         /// </summary>
         [Fact]
         public void Integration_DatabaseConnection_MultipleConnections()
@@ -590,9 +606,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             // Arrange
             DbConnectionStruct[] connections = new[]
             {
-                new DbConnectionStruct { Host = "localhost", Port = 5432, Database = "maindb", Timeout = 30 },
-                new DbConnectionStruct { Host = "remote.server.com", Port = 3306, Database = "backupdb", Timeout = 60 },
-                new DbConnectionStruct { Host = "127.0.0.1", Port = 27017, Database = "mongodb", Timeout = 45 }
+                new DbConnectionStruct {Host = "localhost", Port = 5432, Database = "maindb", Timeout = 30},
+                new DbConnectionStruct {Host = "remote.server.com", Port = 3306, Database = "backupdb", Timeout = 60},
+                new DbConnectionStruct {Host = "127.0.0.1", Port = 27017, Database = "mongodb", Timeout = 45}
             };
 
             // Act
@@ -612,7 +628,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         #region Point and Coordinate Tests
 
         /// <summary>
-        /// Tests that integration point 2 d multiple coordinates
+        ///     Tests that integration point 2 d multiple coordinates
         /// </summary>
         [Fact]
         public void Integration_Point2D_MultipleCoordinates()
@@ -639,7 +655,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         }
 
         /// <summary>
-        /// Tests that integration point 3 d with decimals
+        ///     Tests that integration point 3 d with decimals
         /// </summary>
         [Fact]
         public void Integration_Point3D_WithDecimals()
@@ -671,7 +687,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         #region Product and Order Integration
 
         /// <summary>
-        /// Tests that integration product catalog multiple products
+        ///     Tests that integration product catalog multiple products
         /// </summary>
         [Fact]
         public void Integration_ProductCatalog_MultipleProducts()
@@ -679,10 +695,10 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             // Arrange
             ProductClass[] products = new[]
             {
-                new ProductClass { ProductId = 1, ProductName = "Laptop", Price = 1299.99m, InStock = true, AddedDate = DateTime.Now },
-                new ProductClass { ProductId = 2, ProductName = "Mouse", Price = 29.99m, InStock = true, AddedDate = DateTime.Now.AddDays(-1) },
-                new ProductClass { ProductId = 3, ProductName = "Monitor", Price = 399.99m, InStock = false, AddedDate = DateTime.Now.AddDays(-2) },
-                new ProductClass { ProductId = 4, ProductName = "Keyboard", Price = 79.99m, InStock = true, AddedDate = DateTime.Now.AddDays(-3) }
+                new ProductClass {ProductId = 1, ProductName = "Laptop", Price = 1299.99m, InStock = true, AddedDate = DateTime.Now},
+                new ProductClass {ProductId = 2, ProductName = "Mouse", Price = 29.99m, InStock = true, AddedDate = DateTime.Now.AddDays(-1)},
+                new ProductClass {ProductId = 3, ProductName = "Monitor", Price = 399.99m, InStock = false, AddedDate = DateTime.Now.AddDays(-2)},
+                new ProductClass {ProductId = 4, ProductName = "Keyboard", Price = 79.99m, InStock = true, AddedDate = DateTime.Now.AddDays(-3)}
             };
 
             // Act
@@ -692,11 +708,11 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             // Assert
             Assert.Equal(4, restored.Count);
             Assert.All(restored, p => Assert.NotNull(p.ProductName));
-            Assert.Contains(restored, p => p.InStock == false);
+            Assert.Contains(restored, p => !p.InStock);
         }
 
         /// <summary>
-        /// Tests that integration order items complete order
+        ///     Tests that integration order items complete order
         /// </summary>
         [Fact]
         public void Integration_OrderItems_CompleteOrder()
@@ -704,9 +720,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             // Arrange
             OrderItemStruct[] orderItems = new[]
             {
-                new OrderItemStruct { ProductId = 101, Quantity = 2, UnitPrice = 19.99m },
-                new OrderItemStruct { ProductId = 102, Quantity = 1, UnitPrice = 49.99m },
-                new OrderItemStruct { ProductId = 103, Quantity = 5, UnitPrice = 9.99m }
+                new OrderItemStruct {ProductId = 101, Quantity = 2, UnitPrice = 19.99m},
+                new OrderItemStruct {ProductId = 102, Quantity = 1, UnitPrice = 49.99m},
+                new OrderItemStruct {ProductId = 103, Quantity = 5, UnitPrice = 9.99m}
             };
 
             // Act
@@ -727,31 +743,32 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         #region Performance Benchmarks
 
         /// <summary>
-        /// Tests that integration performance benchmark simple type
+        ///     Tests that integration performance benchmark simple type
         /// </summary>
         [Fact]
         public void Integration_PerformanceBenchmark_SimpleType()
         {
             // Arrange
-            MinimalClass obj = new MinimalClass { Value = "Performance Test" };
+            MinimalClass obj = new MinimalClass {Value = "Performance Test"};
             const int iterations = 10000;
 
             // Act
-            Stopwatch sw = System.Diagnostics.Stopwatch.StartNew();
+            Stopwatch sw = Stopwatch.StartNew();
             for (int i = 0; i < iterations; i++)
             {
                 string json = JsonNativeAot.Serialize(obj);
                 MinimalClass restored = JsonNativeAot.Deserialize<MinimalClass>(json);
             }
+
             sw.Stop();
 
             // Assert
-            double avgMs = sw.ElapsedMilliseconds / (double)iterations;
+            double avgMs = sw.ElapsedMilliseconds / (double) iterations;
             Assert.True(avgMs < 1.0, $"Average time per iteration: {avgMs}ms (should be < 1ms)");
         }
 
         /// <summary>
-        /// Tests that integration performance benchmark complex type
+        ///     Tests that integration performance benchmark complex type
         /// </summary>
         [Fact]
         public void Integration_PerformanceBenchmark_ComplexType()
@@ -768,20 +785,20 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             const int iterations = 5000;
 
             // Act
-            Stopwatch sw = System.Diagnostics.Stopwatch.StartNew();
+            Stopwatch sw = Stopwatch.StartNew();
             for (int i = 0; i < iterations; i++)
             {
                 string json = JsonNativeAot.Serialize(obj);
                 ProductClass restored = JsonNativeAot.Deserialize<ProductClass>(json);
             }
+
             sw.Stop();
 
             // Assert
-            double avgMs = sw.ElapsedMilliseconds / (double)iterations;
+            double avgMs = sw.ElapsedMilliseconds / (double) iterations;
             Assert.True(avgMs < 2.0, $"Average time per iteration: {avgMs}ms (should be < 2ms)");
         }
 
         #endregion
     }
 }
-

@@ -45,7 +45,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void ConstructorWithList_ShouldCreateSuccessfulResult()
         {
             // Arrange
-            List<string> paths = new List<string> { "/path/to/file.txt" };
+            List<string> paths = new List<string> {"/path/to/file.txt"};
 
             // Act
             FilePickerResult result = new FilePickerResult(paths);
@@ -81,7 +81,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void ConstructorWithNullList_ShouldThrowArgumentNullException()
         {
             // Act & Assert
-            Assert.Throws<ArgumentNullException>(() => new FilePickerResult((List<string>)null));
+            Assert.Throws<ArgumentNullException>(() => new FilePickerResult((List<string>) null));
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void ConstructorWithNullString_ShouldThrowArgumentException()
         {
             // Act & Assert
-            Assert.Throws<ArgumentException>(() => new FilePickerResult((string)null));
+            Assert.Throws<ArgumentException>(() => new FilePickerResult((string) null));
         }
 
         /// <summary>
@@ -174,7 +174,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void ConstructorWithMultiplePaths_ShouldStorePaths()
         {
             // Arrange
-            List<string> paths = new List<string> { "/path/one.txt", "/path/two.txt", "/path/three.txt" };
+            List<string> paths = new List<string> {"/path/one.txt", "/path/two.txt", "/path/three.txt"};
 
             // Act
             FilePickerResult result = new FilePickerResult(paths);
@@ -191,7 +191,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void SelectedPath_ShouldReturnFirstPath()
         {
             // Arrange
-            List<string> paths = new List<string> { "/path/one.txt", "/path/two.txt" };
+            List<string> paths = new List<string> {"/path/one.txt", "/path/two.txt"};
             FilePickerResult result = new FilePickerResult(paths);
 
             // Act
@@ -234,4 +234,3 @@ namespace Alis.Extension.Io.FileDialog.Test
         }
     }
 }
-

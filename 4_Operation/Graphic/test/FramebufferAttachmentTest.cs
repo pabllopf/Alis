@@ -28,18 +28,18 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Xunit;
 using Alis.Core.Graphic.OpenGL;
+using Xunit;
 
 namespace Alis.Core.Graphic.Test
 {
     /// <summary>
-    /// Tests for the FramebufferAttachment enum validating framebuffer attachment types.
+    ///     Tests for the FramebufferAttachment enum validating framebuffer attachment types.
     /// </summary>
     public class FramebufferAttachmentTest
     {
         /// <summary>
-        /// Tests that ColorAttachment0 has correct value.
+        ///     Tests that ColorAttachment0 has correct value.
         /// </summary>
         [Fact]
         public void ColorAttachment0_HasCorrectValue_EqualsExpected()
@@ -48,11 +48,11 @@ namespace Alis.Core.Graphic.Test
             const int expectedValue = 0x8CE0;
 
             // Assert
-            Assert.Equal(expectedValue, (int)FramebufferAttachment.ColorAttachment0);
+            Assert.Equal(expectedValue, (int) FramebufferAttachment.ColorAttachment0);
         }
 
         /// <summary>
-        /// Tests that FramebufferAttachment is an enum type.
+        ///     Tests that FramebufferAttachment is an enum type.
         /// </summary>
         [Fact]
         public void FramebufferAttachment_IsEnum_TypeIsCorrect()
@@ -65,7 +65,7 @@ namespace Alis.Core.Graphic.Test
         }
 
         /// <summary>
-        /// Tests that FramebufferAttachment enum is public.
+        ///     Tests that FramebufferAttachment enum is public.
         /// </summary>
         [Fact]
         public void FramebufferAttachment_IsPublic_CanBeAccessed()
@@ -78,26 +78,26 @@ namespace Alis.Core.Graphic.Test
         }
 
         /// <summary>
-        /// Tests that FramebufferAttachment has at least one defined value.
+        ///     Tests that FramebufferAttachment has at least one defined value.
         /// </summary>
         [Fact]
         public void FramebufferAttachment_HasValues_CountIsNotZero()
         {
             // Arrange
-            Array enumValues = System.Enum.GetValues(typeof(FramebufferAttachment));
+            Array enumValues = Enum.GetValues(typeof(FramebufferAttachment));
 
             // Act & Assert
             Assert.NotEmpty(enumValues);
         }
 
         /// <summary>
-        /// Tests that FramebufferAttachment can be cast to int.
+        ///     Tests that FramebufferAttachment can be cast to int.
         /// </summary>
         [Fact]
         public void FramebufferAttachment_CanCastToInt_ConversionIsValid()
         {
             // Arrange & Act
-            int value = (int)FramebufferAttachment.ColorAttachment0;
+            int value = (int) FramebufferAttachment.ColorAttachment0;
 
             // Assert
             Assert.IsType<int>(value);
@@ -105,7 +105,7 @@ namespace Alis.Core.Graphic.Test
         }
 
         /// <summary>
-        /// Tests that FramebufferAttachment values can be compared.
+        ///     Tests that FramebufferAttachment values can be compared.
         /// </summary>
         [Fact]
         public void FramebufferAttachment_CanCompareValues_EqualityWorks()
@@ -119,30 +119,29 @@ namespace Alis.Core.Graphic.Test
         }
 
         /// <summary>
-        /// Tests that FramebufferAttachment enum name is correct.
+        ///     Tests that FramebufferAttachment enum name is correct.
         /// </summary>
         [Fact]
         public void FramebufferAttachment_HasCorrectName_NamingConventionIsMaintained()
         {
             // Arrange & Act
-            string name = System.Enum.GetName(typeof(FramebufferAttachment), FramebufferAttachment.ColorAttachment0);
+            string name = Enum.GetName(typeof(FramebufferAttachment), FramebufferAttachment.ColorAttachment0);
 
             // Assert
             Assert.Equal("ColorAttachment0", name);
         }
 
         /// <summary>
-        /// Tests that ColorAttachment0 has the correct decimal value.
+        ///     Tests that ColorAttachment0 has the correct decimal value.
         /// </summary>
         [Fact]
         public void ColorAttachment0_HasCorrectDecimalValue_HexConversionIsAccurate()
         {
             // Arrange & Act
-            int decimalValue = (int)FramebufferAttachment.ColorAttachment0;
+            int decimalValue = (int) FramebufferAttachment.ColorAttachment0;
 
             // Assert
             Assert.Equal(36064, decimalValue); // 0x8CE0 in decimal
         }
     }
 }
-

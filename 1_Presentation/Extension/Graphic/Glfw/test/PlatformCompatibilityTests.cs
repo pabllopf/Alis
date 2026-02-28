@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:PlatformCompatibilityTests.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -26,10 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Runtime.InteropServices;
-using Alis.Extension.Graphic.Glfw.Enums;
-using Alis.Extension.Graphic.Glfw.Structs;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Glfw.Test
@@ -55,4 +53,3 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
     }
 }
-

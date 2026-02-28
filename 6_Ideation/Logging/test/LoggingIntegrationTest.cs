@@ -5,32 +5,31 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: LoggingIntegrationTest.cs
+//  File:LoggingIntegrationTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program. If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Logging.Abstractions;
 using Alis.Core.Aspect.Logging.Filters;
 using Alis.Core.Aspect.Logging.Formatters;
@@ -122,10 +121,10 @@ namespace Alis.Core.Aspect.Logging.Test
                 List<ILogFilter> filters = new List<ILogFilter>
                 {
                     new LogLevelFilter(LogLevel.Warning),
-                    new LoggerNameFilter(new[] { "Engine", "Physics" }, inclusive: true),
-                    new SamplingLogFilter(sampleRate: 2)
+                    new LoggerNameFilter(new[] {"Engine", "Physics"}, true),
+                    new SamplingLogFilter(2)
                 };
-                CompositeLogFilter composite = new CompositeLogFilter(filters, requireAll: false);
+                CompositeLogFilter composite = new CompositeLogFilter(filters, false);
                 factory.AddFilter(composite);
 
                 ILogger engineLogger = factory.CreateLogger("Engine");
@@ -153,7 +152,7 @@ namespace Alis.Core.Aspect.Logging.Test
             {
                 MemoryLogOutput memoryOutput = new MemoryLogOutput();
                 factory.AddOutput(memoryOutput)
-                       .SetFormatter(new JsonLogFormatter());
+                    .SetFormatter(new JsonLogFormatter());
 
                 ILogger logger = factory.CreateLogger("GameEngine");
                 logger.SetCorrelationId(Guid.NewGuid().ToString("N").Substring(0, 8));
@@ -163,9 +162,9 @@ namespace Alis.Core.Aspect.Logging.Test
                 {
                     Dictionary<string, object> playerData = new Dictionary<string, object>
                     {
-                        { "PlayerId", 1001 },
-                        { "PlayerName", "Hero" },
-                        { "Level", 50 }
+                        {"PlayerId", 1001},
+                        {"PlayerName", "Hero"},
+                        {"Level", 50}
                     };
                     logger.LogStructured(LogLevel.Info, "Player loaded", playerData);
                 }
@@ -213,7 +212,7 @@ namespace Alis.Core.Aspect.Logging.Test
             // Arrange
             using (LoggerFactory factory = new LoggerFactory())
             {
-                MemoryLogOutput memoryOutput = new MemoryLogOutput(maxEntries: 0);
+                MemoryLogOutput memoryOutput = new MemoryLogOutput(0);
                 factory.AddOutput(memoryOutput);
 
                 ILogger logger = factory.CreateLogger("ConcurrentTest");
@@ -260,7 +259,7 @@ namespace Alis.Core.Aspect.Logging.Test
                 {
                     MemoryLogOutput memoryOutput = new MemoryLogOutput();
                     factory.AddOutput(memoryOutput)
-                           .SetFormatter(formatter);
+                        .SetFormatter(formatter);
 
                     ILogger logger = factory.CreateLogger("FormatterTest");
                     logger.LogInfo("Test message");
@@ -319,9 +318,9 @@ namespace Alis.Core.Aspect.Logging.Test
             // Arrange
             using (LoggerFactory factory = new LoggerFactory())
             {
-                MemoryLogOutput memoryOutput = new MemoryLogOutput(maxEntries: 0);
+                MemoryLogOutput memoryOutput = new MemoryLogOutput(0);
                 factory.AddOutput(memoryOutput)
-                       .AddFilter(new SamplingLogFilter(sampleRate: 10)); // Log 1 in 10
+                    .AddFilter(new SamplingLogFilter(10)); // Log 1 in 10
 
                 ILogger engineLogger = factory.CreateLogger("Engine");
                 ILogger rendererLogger = factory.CreateLogger("Renderer");
@@ -340,9 +339,8 @@ namespace Alis.Core.Aspect.Logging.Test
 
                 // Assert
                 // With 1 in 10 sampling, should have approximately 30 entries (3 per frame × 10 frames)
-                Assert.True(memoryOutput.Count >= 25 && memoryOutput.Count <= 35);
+                Assert.True((memoryOutput.Count >= 25) && (memoryOutput.Count <= 35));
             }
         }
     }
 }
-

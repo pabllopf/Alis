@@ -30,6 +30,7 @@
 using System;
 using System.Collections.Concurrent;
 using System.Threading;
+using System.Threading.Tasks;
 using Alis.Extension.Thread.Core;
 using Alis.Extension.Thread.Scheduling;
 using Xunit;
@@ -57,7 +58,7 @@ namespace Alis.Extension.Thread.Test.Scheduling
             ConcurrentBag<int> results = new ConcurrentBag<int>();
 
             // Act
-            System.Threading.Tasks.Parallel.For(0, 10, i =>
+            Parallel.For(0, 10, i =>
             {
                 scheduler.ExecuteRange(0, 100, (start, length) =>
                 {
@@ -65,7 +66,7 @@ namespace Alis.Extension.Thread.Test.Scheduling
                     {
                         results.Add(j);
                     }
-                }, minBatchSize: 10);
+                }, 10);
             });
 
             // Assert
@@ -83,13 +84,7 @@ namespace Alis.Extension.Thread.Test.Scheduling
             ParallelExecutionScheduler scheduler = new ParallelExecutionScheduler(context);
 
             // Act & Assert
-            Assert.Throws<InvalidOperationException>(() =>
-            {
-                scheduler.ExecuteRange(0, 100, (start, length) =>
-                {
-                    throw new InvalidOperationException("Test exception");
-                }, minBatchSize: 10);
-            });
+            Assert.Throws<InvalidOperationException>(() => { scheduler.ExecuteRange(0, 100, (start, length) => { throw new InvalidOperationException("Test exception"); }, 10); });
         }
 
         /// <summary>
@@ -115,7 +110,7 @@ namespace Alis.Extension.Thread.Test.Scheduling
                 {
                     totalProcessed += length;
                 }
-            }, minBatchSize: 64);
+            }, 64);
 
             // Assert
             Assert.Equal(100000, totalProcessed);
@@ -147,7 +142,7 @@ namespace Alis.Extension.Thread.Test.Scheduling
                 {
                     data[i] = i;
                 }
-            }, minBatchSize: 128);
+            }, 128);
 
             // Assert
             for (int i = 0; i < data.Length; i++)
@@ -178,7 +173,7 @@ namespace Alis.Extension.Thread.Test.Scheduling
                 {
                     data[i] = i * 2;
                 }
-            }, minBatchSize: 64);
+            }, 64);
 
             // Assert
             for (int i = 0; i < data.Length; i++)
@@ -200,12 +195,13 @@ namespace Alis.Extension.Thread.Test.Scheduling
             // Act
             for (int i = 0; i < 10; i++)
             {
-                scheduler.ExecuteRange(0, 100, (start, length) => { }, minBatchSize: 10);
+                scheduler.ExecuteRange(0, 100, (start, length) => { }, 10);
             }
+
             scheduler.Clear();
 
             // Assert - should not throw
-            scheduler.ExecuteRange(0, 100, (start, length) => { }, minBatchSize: 10);
+            scheduler.ExecuteRange(0, 100, (start, length) => { }, 10);
         }
 
         /// <summary>
@@ -223,10 +219,7 @@ namespace Alis.Extension.Thread.Test.Scheduling
             ConcurrentBag<int> threadIds = new ConcurrentBag<int>();
 
             // Act
-            scheduler.ExecuteRange(0, 1000, (start, length) =>
-            {
-                threadIds.Add(System.Threading.Thread.CurrentThread.ManagedThreadId);
-            }, minBatchSize: 10);
+            scheduler.ExecuteRange(0, 1000, (start, length) => { threadIds.Add(System.Threading.Thread.CurrentThread.ManagedThreadId); }, 10);
 
             // Assert - should use only one thread
             Assert.Single(threadIds);
@@ -256,7 +249,7 @@ namespace Alis.Extension.Thread.Test.Scheduling
                     results[i] = i;
                     currentIndex++;
                 }
-            }, minBatchSize: 10);
+            }, 10);
 
             // Assert
             for (int i = 0; i < results.Length; i++)
@@ -282,7 +275,7 @@ namespace Alis.Extension.Thread.Test.Scheduling
                 executed = true;
                 Assert.Equal(0, start);
                 Assert.Equal(1, length);
-            }, minBatchSize: 128);
+            }, 128);
 
             // Assert
             Assert.True(executed);
@@ -301,7 +294,7 @@ namespace Alis.Extension.Thread.Test.Scheduling
             // Act & Assert
             for (int cycle = 0; cycle < 100; cycle++)
             {
-                scheduler.ExecuteRange(0, 50, (start, length) => { }, minBatchSize: 10);
+                scheduler.ExecuteRange(0, 50, (start, length) => { }, 10);
                 scheduler.Clear();
             }
         }
@@ -322,14 +315,10 @@ namespace Alis.Extension.Thread.Test.Scheduling
             int executionCount = 0;
 
             // Act
-            scheduler.ExecuteRange(0, 1000, (start, length) =>
-            {
-                Interlocked.Increment(ref executionCount);
-            }, minBatchSize: 64);
+            scheduler.ExecuteRange(0, 1000, (start, length) => { Interlocked.Increment(ref executionCount); }, 64);
 
             // Assert
             Assert.Equal(1, executionCount);
         }
     }
 }
-

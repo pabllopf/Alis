@@ -43,7 +43,7 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void Unknown_ShouldHaveValueZero()
         {
-            Assert.Equal(0, (int)EpAxisType.Unknown);
+            Assert.Equal(0, (int) EpAxisType.Unknown);
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void EdgeA_ShouldHaveValueOne()
         {
-            Assert.Equal(1, (int)EpAxisType.EdgeA);
+            Assert.Equal(1, (int) EpAxisType.EdgeA);
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void EdgeB_ShouldHaveValueTwo()
         {
-            Assert.Equal(2, (int)EpAxisType.EdgeB);
+            Assert.Equal(2, (int) EpAxisType.EdgeB);
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 EpAxisType.EdgeA,
                 EpAxisType.EdgeB
             };
-            
+
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = i + 1; j < values.Length; j++)
@@ -87,4 +87,3 @@ namespace Alis.Core.Physic.Test.Collisions
         }
     }
 }
-

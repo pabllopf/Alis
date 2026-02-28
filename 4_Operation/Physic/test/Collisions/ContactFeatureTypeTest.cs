@@ -44,7 +44,7 @@ namespace Alis.Core.Physic.Test.Collisions
         public void Vertex_ShouldHaveValueZero()
         {
             byte value = 0;
-            Assert.Equal(value, (byte)ContactFeatureType.Vertex);
+            Assert.Equal(value, (byte) ContactFeatureType.Vertex);
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Alis.Core.Physic.Test.Collisions
         public void Face_ShouldHaveValueOne()
         {
             byte value = 1;
-            Assert.Equal(value, (byte)ContactFeatureType.Face);
+            Assert.Equal(value, (byte) ContactFeatureType.Face);
         }
 
         /// <summary>
@@ -67,4 +67,3 @@ namespace Alis.Core.Physic.Test.Collisions
         }
     }
 }
-

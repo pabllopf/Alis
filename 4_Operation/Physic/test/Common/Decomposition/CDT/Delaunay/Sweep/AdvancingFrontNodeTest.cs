@@ -46,9 +46,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         public void Constructor_ShouldInitializeWithPoint()
         {
             TriangulationPoint point = new TriangulationPoint(5.0, 10.0);
-            
+
             AdvancingFrontNode node = new AdvancingFrontNode(point);
-            
+
             Assert.Equal(point, node.Point);
             Assert.Equal(point.X, node.Value);
             Assert.Null(node.Next);
@@ -63,9 +63,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         public void Value_ShouldEqualPointXCoordinate()
         {
             TriangulationPoint point = new TriangulationPoint(15.5, 20.0);
-            
+
             AdvancingFrontNode node = new AdvancingFrontNode(point);
-            
+
             Assert.Equal(15.5, node.Value);
         }
 
@@ -77,7 +77,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         {
             TriangulationPoint point = new TriangulationPoint(0, 0);
             AdvancingFrontNode node = new AdvancingFrontNode(point);
-            
+
             Assert.False(node.HasNext);
         }
 
@@ -89,7 +89,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         {
             TriangulationPoint point = new TriangulationPoint(0, 0);
             AdvancingFrontNode node = new AdvancingFrontNode(point);
-            
+
             Assert.False(node.HasPrev);
         }
 
@@ -101,9 +101,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         {
             AdvancingFrontNode node1 = new AdvancingFrontNode(new TriangulationPoint(0, 0));
             AdvancingFrontNode node2 = new AdvancingFrontNode(new TriangulationPoint(1, 1));
-            
+
             node1.Next = node2;
-            
+
             Assert.Equal(node2, node1.Next);
             Assert.True(node1.HasNext);
         }
@@ -116,9 +116,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         {
             AdvancingFrontNode node1 = new AdvancingFrontNode(new TriangulationPoint(0, 0));
             AdvancingFrontNode node2 = new AdvancingFrontNode(new TriangulationPoint(1, 1));
-            
+
             node2.Prev = node1;
-            
+
             Assert.Equal(node1, node2.Prev);
             Assert.True(node2.HasPrev);
         }
@@ -134,9 +134,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             TriangulationPoint p2 = new TriangulationPoint(1, 0);
             TriangulationPoint p3 = new TriangulationPoint(0, 1);
             DelaunayTriangle triangle = new DelaunayTriangle(p1, p2, p3);
-            
+
             node.Triangle = triangle;
-            
+
             Assert.Equal(triangle, node.Triangle);
         }
 
@@ -149,12 +149,12 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             AdvancingFrontNode node1 = new AdvancingFrontNode(new TriangulationPoint(0, 0));
             AdvancingFrontNode node2 = new AdvancingFrontNode(new TriangulationPoint(5, 0));
             AdvancingFrontNode node3 = new AdvancingFrontNode(new TriangulationPoint(10, 0));
-            
+
             node1.Next = node2;
             node2.Prev = node1;
             node2.Next = node3;
             node3.Prev = node2;
-            
+
             Assert.Equal(node2, node1.Next);
             Assert.Equal(node1, node2.Prev);
             Assert.Equal(node3, node2.Next);
@@ -168,9 +168,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         public void AdvancingFrontNode_ShouldHandleNegativeCoordinates()
         {
             TriangulationPoint point = new TriangulationPoint(-10.5, -20.5);
-            
+
             AdvancingFrontNode node = new AdvancingFrontNode(point);
-            
+
             Assert.Equal(-10.5, node.Value);
         }
 
@@ -181,11 +181,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         public void AdvancingFrontNode_ShouldHandleZeroCoordinates()
         {
             TriangulationPoint point = new TriangulationPoint(0, 0);
-            
+
             AdvancingFrontNode node = new AdvancingFrontNode(point);
-            
+
             Assert.Equal(0, node.Value);
         }
     }
 }
-

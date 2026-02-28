@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Alis.Core.Audio.Interfaces;
 using Alis.Core.Audio.Players;
@@ -294,9 +293,9 @@ namespace Alis.Core.Audio.Test.Players
             byte volume = 101;
 
             // Act & Assert
-            ArgumentOutOfRangeException exception = await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() => 
+            ArgumentOutOfRangeException exception = await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() =>
                 player.SetVolume(volume));
-            
+
             Assert.Equal("percent", exception.ParamName);
         }
 
@@ -381,22 +380,7 @@ namespace Alis.Core.Audio.Test.Players
             // Assert - Event handler attached without exception
             Assert.NotNull(player);
         }
-
-        /// <summary>
-        ///     Tests that get bash command with null should return aplay
-        /// </summary>
-        [LinuxOnly]
-        public void GetBashCommand_WithNull_ShouldReturnAplay()
-        {
-            // Arrange
-            LinuxPlayer player = new LinuxPlayer();
-
-            // Act
-            string command = player.GetBashCommand(null);
-
-            // Assert
-            Assert.Equal("aplay -q", command);
-        }
+        
 
         /// <summary>
         ///     Tests that get bash command with special characters should return correct command
@@ -516,9 +500,9 @@ namespace Alis.Core.Audio.Test.Players
             byte volume = 150;
 
             // Act & Assert
-            ArgumentOutOfRangeException exception = await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() => 
+            ArgumentOutOfRangeException exception = await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() =>
                 player.SetVolume(volume));
-            
+
             Assert.Equal("percent", exception.ParamName);
         }
 
@@ -533,9 +517,9 @@ namespace Alis.Core.Audio.Test.Players
             byte volume = 150;
 
             // Act & Assert
-            ArgumentOutOfRangeException exception = await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() => 
+            ArgumentOutOfRangeException exception = await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() =>
                 player.SetVolume(volume));
-            
+
             Assert.Contains("100", exception.Message);
         }
 

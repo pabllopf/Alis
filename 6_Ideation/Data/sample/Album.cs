@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: Album.cs
+//  File:Album.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program. If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -44,6 +44,16 @@ namespace Alis.Core.Aspect.Data.Sample
     [Serializable]
     public partial class Album : IJsonSerializable, IJsonDesSerializable<Album>
     {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Album" /> class.
+        /// </summary>
+        public Album()
+        {
+            AlbumId = Guid.NewGuid();
+            ReleaseDate = DateTime.Now;
+            Genres = new List<string>();
+        }
+
         /// <summary>
         ///     Gets or sets the unique identifier of the album.
         /// </summary>
@@ -80,16 +90,6 @@ namespace Alis.Core.Aspect.Data.Sample
         public bool IsAvailable { get; set; }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Album" /> class.
-        /// </summary>
-        public Album()
-        {
-            AlbumId = Guid.NewGuid();
-            ReleaseDate = DateTime.Now;
-            Genres = new List<string>();
-        }
-
-        /// <summary>
         ///     Gets the serializable properties of this album.
         /// </summary>
         public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
@@ -110,31 +110,45 @@ namespace Alis.Core.Aspect.Data.Sample
         {
             Album album = new Album();
 
-            if (properties.TryGetValue("AlbumId", out string albumId) && 
+            if (properties.TryGetValue("AlbumId", out string albumId) &&
                 Guid.TryParse(albumId, out Guid albumIdValue))
+            {
                 album.AlbumId = albumIdValue;
+            }
 
             if (properties.TryGetValue("Name", out string name))
+            {
                 album.Name = name;
+            }
 
-            if (properties.TryGetValue("ReleaseDate", out string releaseDate) && 
+            if (properties.TryGetValue("ReleaseDate", out string releaseDate) &&
                 DateTime.TryParse(releaseDate, out DateTime releaseDateValue))
+            {
                 album.ReleaseDate = releaseDateValue;
+            }
 
-            if (properties.TryGetValue("TrackCount", out string trackCount) && 
+            if (properties.TryGetValue("TrackCount", out string trackCount) &&
                 int.TryParse(trackCount, out int trackCountValue))
+            {
                 album.TrackCount = trackCountValue;
+            }
 
-            if (properties.TryGetValue("DurationSeconds", out string duration) && 
+            if (properties.TryGetValue("DurationSeconds", out string duration) &&
                 int.TryParse(duration, out int durationValue))
+            {
                 album.DurationSeconds = durationValue;
+            }
 
             if (properties.TryGetValue("Genres", out string genres))
+            {
                 album.Genres = DeserializeGenres(genres);
+            }
 
-            if (properties.TryGetValue("IsAvailable", out string available) && 
+            if (properties.TryGetValue("IsAvailable", out string available) &&
                 bool.TryParse(available, out bool availableValue))
+            {
                 album.IsAvailable = availableValue;
+            }
 
             return album;
         }
@@ -145,7 +159,9 @@ namespace Alis.Core.Aspect.Data.Sample
         private string SerializeGenres()
         {
             if (Genres == null || Genres.Count == 0)
+            {
                 return "[]";
+            }
 
             string items = string.Join(",", Genres.Select(g => $"\"{g}\""));
             return $"[{items}]";
@@ -158,18 +174,21 @@ namespace Alis.Core.Aspect.Data.Sample
         {
             List<string> genres = new List<string>();
             if (string.IsNullOrEmpty(json) || json == "[]")
+            {
                 return genres;
+            }
 
             string[] items = json.Trim('[', ']').Split(',');
             foreach (string item in items)
             {
                 string genre = item.Trim().Trim('"');
                 if (!string.IsNullOrEmpty(genre))
+                {
                     genres.Add(genre);
+                }
             }
 
             return genres;
         }
     }
 }
-

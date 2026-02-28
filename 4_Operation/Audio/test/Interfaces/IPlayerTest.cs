@@ -48,10 +48,10 @@ namespace Alis.Core.Audio.Test.Interfaces
         {
             // Arrange
             TestPlayer player = new TestPlayer();
-            
+
             // Act
             bool playing = player.Playing;
-            
+
             // Assert
             Assert.False(playing);
         }
@@ -64,10 +64,10 @@ namespace Alis.Core.Audio.Test.Interfaces
         {
             // Arrange
             TestPlayer player = new TestPlayer();
-            
+
             // Act
             bool paused = player.Paused;
-            
+
             // Assert
             Assert.False(paused);
         }
@@ -81,10 +81,10 @@ namespace Alis.Core.Audio.Test.Interfaces
             // Arrange
             TestPlayer player = new TestPlayer();
             string fileName = "test.wav";
-            
+
             // Act
             await player.Play(fileName);
-            
+
             // Assert
             Assert.True(player.Playing);
         }
@@ -99,10 +99,10 @@ namespace Alis.Core.Audio.Test.Interfaces
             TestPlayer player = new TestPlayer();
             string fileName = "test.wav";
             bool loop = true;
-            
+
             // Act
             await player.PlayLoop(fileName, loop);
-            
+
             // Assert
             Assert.True(player.Playing);
         }
@@ -116,10 +116,10 @@ namespace Alis.Core.Audio.Test.Interfaces
             // Arrange
             TestPlayer player = new TestPlayer();
             await player.Play("test.wav");
-            
+
             // Act
             await player.Pause();
-            
+
             // Assert
             Assert.True(player.Paused);
         }
@@ -134,10 +134,10 @@ namespace Alis.Core.Audio.Test.Interfaces
             TestPlayer player = new TestPlayer();
             await player.Play("test.wav");
             await player.Pause();
-            
+
             // Act
             await player.Resume();
-            
+
             // Assert
             Assert.False(player.Paused);
         }
@@ -151,10 +151,10 @@ namespace Alis.Core.Audio.Test.Interfaces
             // Arrange
             TestPlayer player = new TestPlayer();
             await player.Play("test.wav");
-            
+
             // Act
             await player.Stop();
-            
+
             // Assert
             Assert.False(player.Playing);
         }
@@ -168,10 +168,10 @@ namespace Alis.Core.Audio.Test.Interfaces
             // Arrange
             TestPlayer player = new TestPlayer();
             byte volume = 50;
-            
+
             // Act
             await player.SetVolume(volume);
-            
+
             // Assert - No exception thrown
             Assert.NotNull(player);
         }
@@ -186,10 +186,10 @@ namespace Alis.Core.Audio.Test.Interfaces
             TestPlayer player = new TestPlayer();
             bool eventRaised = false;
             player.PlaybackFinished += (sender, e) => eventRaised = true;
-            
+
             // Act
             player.RaisePlaybackFinished();
-            
+
             // Assert
             Assert.True(eventRaised);
         }
@@ -204,10 +204,10 @@ namespace Alis.Core.Audio.Test.Interfaces
             TestPlayer player = new TestPlayer();
             object eventSender = null;
             player.PlaybackFinished += (sender, e) => eventSender = sender;
-            
+
             // Act
             player.RaisePlaybackFinished();
-            
+
             // Assert
             Assert.Same(player, eventSender);
         }
@@ -221,10 +221,10 @@ namespace Alis.Core.Audio.Test.Interfaces
             // Arrange
             TestPlayer player = new TestPlayer();
             byte volume = 0;
-            
+
             // Act
             await player.SetVolume(volume);
-            
+
             // Assert - No exception thrown
             Assert.NotNull(player);
         }
@@ -238,10 +238,10 @@ namespace Alis.Core.Audio.Test.Interfaces
             // Arrange
             TestPlayer player = new TestPlayer();
             byte volume = 100;
-            
+
             // Act
             await player.SetVolume(volume);
-            
+
             // Assert - No exception thrown
             Assert.NotNull(player);
         }
@@ -256,10 +256,10 @@ namespace Alis.Core.Audio.Test.Interfaces
             TestPlayer player = new TestPlayer();
             string fileName = "test.wav";
             bool loop = false;
-            
+
             // Act
             await player.PlayLoop(fileName, loop);
-            
+
             // Assert
             Assert.True(player.Playing);
             Assert.False(player.Paused);
@@ -273,10 +273,10 @@ namespace Alis.Core.Audio.Test.Interfaces
         {
             // Arrange
             TestPlayer player = new TestPlayer();
-            
+
             // Act
             await player.Pause();
-            
+
             // Assert
             Assert.False(player.Paused);
         }
@@ -290,10 +290,10 @@ namespace Alis.Core.Audio.Test.Interfaces
             // Arrange
             TestPlayer player = new TestPlayer();
             await player.Play("test.wav");
-            
+
             // Act
             await player.Resume();
-            
+
             // Assert
             Assert.True(player.Playing);
             Assert.False(player.Paused);
@@ -307,12 +307,12 @@ namespace Alis.Core.Audio.Test.Interfaces
         {
             // Arrange
             TestPlayer player = new TestPlayer();
-            
+
             // Act
             await player.Play("test1.wav");
             await player.Play("test2.wav");
             await player.Play("test3.wav");
-            
+
             // Assert
             Assert.True(player.Playing);
         }
@@ -325,12 +325,12 @@ namespace Alis.Core.Audio.Test.Interfaces
         {
             // Arrange
             TestPlayer player = new TestPlayer();
-            
+
             // Act
             await player.Play("test1.wav");
             await player.Stop();
             await player.Play("test2.wav");
-            
+
             // Assert
             Assert.True(player.Playing);
         }
@@ -343,12 +343,12 @@ namespace Alis.Core.Audio.Test.Interfaces
         {
             // Arrange
             TestPlayer player = new TestPlayer();
-            
+
             // Act
             await player.Play("test.wav");
             await player.Pause();
             await player.Resume();
-            
+
             // Assert
             Assert.True(player.Playing);
             Assert.False(player.Paused);
@@ -362,12 +362,12 @@ namespace Alis.Core.Audio.Test.Interfaces
         {
             // Arrange
             TestPlayer player = new TestPlayer();
-            
+
             // Act
             await player.Play("test.wav");
             await player.Pause();
             await player.Stop();
-            
+
             // Assert
             Assert.False(player.Playing);
             Assert.False(player.Paused);
@@ -381,12 +381,12 @@ namespace Alis.Core.Audio.Test.Interfaces
         {
             // Arrange
             TestPlayer player = new TestPlayer();
-            
+
             // Act
             await player.SetVolume(0);
             await player.SetVolume(50);
             await player.SetVolume(100);
-            
+
             // Assert - No exception thrown
             Assert.NotNull(player);
         }
@@ -401,13 +401,13 @@ namespace Alis.Core.Audio.Test.Interfaces
             TestPlayer player = new TestPlayer();
             int handler1Count = 0;
             int handler2Count = 0;
-            
+
             player.PlaybackFinished += (sender, e) => handler1Count++;
             player.PlaybackFinished += (sender, e) => handler2Count++;
-            
+
             // Act
             player.RaisePlaybackFinished();
-            
+
             // Assert
             Assert.Equal(1, handler1Count);
             Assert.Equal(1, handler2Count);
@@ -423,14 +423,14 @@ namespace Alis.Core.Audio.Test.Interfaces
             TestPlayer player = new TestPlayer();
             int eventCount = 0;
             EventHandler handler = (sender, e) => eventCount++;
-            
+
             player.PlaybackFinished += handler;
             player.RaisePlaybackFinished();
-            
+
             // Act
             player.PlaybackFinished -= handler;
             player.RaisePlaybackFinished();
-            
+
             // Assert
             Assert.Equal(1, eventCount);
         }
@@ -443,10 +443,10 @@ namespace Alis.Core.Audio.Test.Interfaces
         {
             // Arrange
             TestPlayer player = new TestPlayer();
-            
+
             // Act
             player.RaisePlaybackFinished();
-            
+
             // Assert - No exception thrown
             Assert.NotNull(player);
         }
@@ -459,10 +459,10 @@ namespace Alis.Core.Audio.Test.Interfaces
         {
             // Arrange
             TestPlayer player = new TestPlayer();
-            
+
             // Act
             await player.Play(null);
-            
+
             // Assert
             Assert.True(player.Playing);
         }
@@ -475,10 +475,10 @@ namespace Alis.Core.Audio.Test.Interfaces
         {
             // Arrange
             TestPlayer player = new TestPlayer();
-            
+
             // Act
             await player.Play(string.Empty);
-            
+
             // Assert
             Assert.True(player.Playing);
         }
@@ -492,10 +492,10 @@ namespace Alis.Core.Audio.Test.Interfaces
             // Arrange
             TestPlayer player = new TestPlayer();
             byte volume = byte.MaxValue;
-            
+
             // Act
             await player.SetVolume(volume);
-            
+
             // Assert - No exception thrown
             Assert.NotNull(player);
         }
@@ -509,10 +509,10 @@ namespace Alis.Core.Audio.Test.Interfaces
             // Arrange
             TestPlayer player = new TestPlayer();
             byte volume = byte.MinValue;
-            
+
             // Act
             await player.SetVolume(volume);
-            
+
             // Assert - No exception thrown
             Assert.NotNull(player);
         }
@@ -525,12 +525,12 @@ namespace Alis.Core.Audio.Test.Interfaces
         {
             // Arrange
             TestPlayer player = new TestPlayer();
-            
+
             // Act
             await player.Pause();
             await player.Pause();
             await player.Pause();
-            
+
             // Assert
             Assert.False(player.Paused);
         }
@@ -543,12 +543,12 @@ namespace Alis.Core.Audio.Test.Interfaces
         {
             // Arrange
             TestPlayer player = new TestPlayer();
-            
+
             // Act
             await player.Resume();
             await player.Resume();
             await player.Resume();
-            
+
             // Assert
             Assert.False(player.Playing);
         }
@@ -561,12 +561,12 @@ namespace Alis.Core.Audio.Test.Interfaces
         {
             // Arrange
             TestPlayer player = new TestPlayer();
-            
+
             // Act
             await player.Stop();
             await player.Stop();
             await player.Stop();
-            
+
             // Assert
             Assert.False(player.Playing);
         }
@@ -579,11 +579,11 @@ namespace Alis.Core.Audio.Test.Interfaces
         {
             // Arrange
             TestPlayer player = new TestPlayer();
-            
+
             // Act
             await player.PlayLoop("test.wav", true);
             await player.Stop();
-            
+
             // Assert
             Assert.False(player.Playing);
         }
@@ -598,12 +598,12 @@ namespace Alis.Core.Audio.Test.Interfaces
             TestPlayer player = new TestPlayer();
             int eventCount = 0;
             player.PlaybackFinished += (sender, e) => eventCount++;
-            
+
             // Act
             player.RaisePlaybackFinished();
             player.RaisePlaybackFinished();
             player.RaisePlaybackFinished();
-            
+
             // Assert
             Assert.Equal(3, eventCount);
         }
@@ -616,14 +616,14 @@ namespace Alis.Core.Audio.Test.Interfaces
         {
             // Arrange
             TestPlayer player = new TestPlayer();
-            
+
             // Act & Assert
             await player.SetVolume(1);
             await player.SetVolume(25);
             await player.SetVolume(50);
             await player.SetVolume(75);
             await player.SetVolume(99);
-            
+
             Assert.NotNull(player);
         }
 
@@ -683,6 +683,7 @@ namespace Alis.Core.Audio.Test.Interfaces
                 {
                     Paused = true;
                 }
+
                 return Task.CompletedTask;
             }
 
@@ -696,6 +697,7 @@ namespace Alis.Core.Audio.Test.Interfaces
                 {
                     Paused = false;
                 }
+
                 return Task.CompletedTask;
             }
 
@@ -715,10 +717,7 @@ namespace Alis.Core.Audio.Test.Interfaces
             /// </summary>
             /// <param name="percent">The percent</param>
             /// <returns>A task containing the task</returns>
-            public Task SetVolume(byte percent)
-            {
-                return Task.CompletedTask;
-            }
+            public Task SetVolume(byte percent) => Task.CompletedTask;
 
             /// <summary>
             ///     Raises the playback finished
@@ -730,4 +729,3 @@ namespace Alis.Core.Audio.Test.Interfaces
         }
     }
 }
-

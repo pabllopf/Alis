@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
 
@@ -55,7 +54,7 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
 
             // Act
-            GameObject entity = scene.Create(new Position { X = 5, Y = 10 });
+            GameObject entity = scene.Create(new Position {X = 5, Y = 10});
 
             // Assert
             Assert.False(entity.IsNull);
@@ -74,7 +73,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 0, Y = 0 });
+            GameObject entity = scene.Create(new Position {X = 0, Y = 0});
 
             // Act
             entity.Delete();
@@ -97,12 +96,12 @@ namespace Alis.Core.Ecs.Test
 
             // Act
             int initialCount = scene.EntityCount;
-            scene.Create(new Position { X = 0, Y = 0 });
+            scene.Create(new Position {X = 0, Y = 0});
             int afterCreate = scene.EntityCount;
-            
-            GameObject entity = scene.Create(new Position { X = 1, Y = 1 });
+
+            GameObject entity = scene.Create(new Position {X = 1, Y = 1});
             int afterSecond = scene.EntityCount;
-            
+
             entity.Delete();
             int afterDelete = scene.EntityCount;
 
@@ -123,7 +122,7 @@ namespace Alis.Core.Ecs.Test
         public void Entity_DefaultIsNull()
         {
             // Act
-            GameObject entity = default;
+            GameObject entity = default(GameObject);
 
             // Assert
             Assert.True(entity.IsNull);
@@ -143,8 +142,8 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
 
             // Act
-            GameObject entity1 = scene.Create(new Position { X = 0, Y = 0 });
-            GameObject entity2 = scene.Create(new Position { X = 1, Y = 1 });
+            GameObject entity1 = scene.Create(new Position {X = 0, Y = 0});
+            GameObject entity2 = scene.Create(new Position {X = 1, Y = 1});
 
             // Assert
             Assert.NotEqual(entity1.EntityID, entity2.EntityID);
@@ -164,9 +163,9 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
 
             // Act
-            GameObject entity1 = scene.Create(new Position { X = 0, Y = 0 });
-            GameObject entity2 = scene.Create(new Position { X = 1, Y = 1 });
-            GameObject entity3 = scene.Create(new Position { X = 2, Y = 2 });
+            GameObject entity1 = scene.Create(new Position {X = 0, Y = 0});
+            GameObject entity2 = scene.Create(new Position {X = 1, Y = 1});
+            GameObject entity3 = scene.Create(new Position {X = 2, Y = 2});
 
             // Assert
             Assert.Equal(3, scene.EntityCount);
@@ -191,7 +190,7 @@ namespace Alis.Core.Ecs.Test
             // Act
             for (int i = 0; i < count; i++)
             {
-                scene.Create(new Position { X = i, Y = i });
+                scene.Create(new Position {X = i, Y = i});
             }
 
             // Assert
@@ -199,4 +198,3 @@ namespace Alis.Core.Ecs.Test
         }
     }
 }
-

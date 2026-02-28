@@ -38,7 +38,7 @@ namespace Alis.Core.Ecs.Test.Exceptions
     ///     The component not found exception extended test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="ComponentNotFoundException"/> exception class
+    ///     Tests the <see cref="ComponentNotFoundException" /> exception class
     ///     with more comprehensive test cases.
     /// </remarks>
     public class ComponentNotFoundExceptionExtendedTest
@@ -160,4 +160,3 @@ namespace Alis.Core.Ecs.Test.Exceptions
         }
     }
 }
-

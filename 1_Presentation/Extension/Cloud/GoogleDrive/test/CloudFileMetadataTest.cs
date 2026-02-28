@@ -204,11 +204,7 @@ namespace Alis.Extension.Cloud.GoogleDrive.Test
         /// <summary>
         ///     Tests metadata for different file types
         /// </summary>
-        [Theory]
-        [InlineData("document.pdf", 1024)]
-        [InlineData("image.png", 2048)]
-        [InlineData("video.mp4", 1073741824)]
-        [InlineData("data.csv", 512)]
+        [Theory, InlineData("document.pdf", 1024), InlineData("image.png", 2048), InlineData("video.mp4", 1073741824), InlineData("data.csv", 512)]
         public void CloudFileMetadata_DifferentFileTypes_WorksCorrectly(string filename, long filesize)
         {
             // Arrange & Act
@@ -236,9 +232,9 @@ namespace Alis.Extension.Cloud.GoogleDrive.Test
             // Arrange
             List<CloudFileMetadata> metadataList = new List<CloudFileMetadata>
             {
-                new CloudFileMetadata { Id = "1", Name = "file1.txt", Size = 100, Path = "/file1.txt", IsFolder = false },
-                new CloudFileMetadata { Id = "2", Name = "file2.txt", Size = 200, Path = "/file2.txt", IsFolder = false },
-                new CloudFileMetadata { Id = "3", Name = "folder1", Size = 0, Path = "/folder1", IsFolder = true }
+                new CloudFileMetadata {Id = "1", Name = "file1.txt", Size = 100, Path = "/file1.txt", IsFolder = false},
+                new CloudFileMetadata {Id = "2", Name = "file2.txt", Size = 200, Path = "/file2.txt", IsFolder = false},
+                new CloudFileMetadata {Id = "3", Name = "folder1", Size = 0, Path = "/folder1", IsFolder = true}
             };
 
             // Assert
@@ -250,4 +246,3 @@ namespace Alis.Extension.Cloud.GoogleDrive.Test
         }
     }
 }
-

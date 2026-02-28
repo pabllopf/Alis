@@ -28,45 +28,46 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Xunit;
+using System.Collections.Generic;
 using Alis.Core.Graphic.OpenGL.Enums;
+using Xunit;
 
 namespace Alis.Core.Graphic.Test.Enums
 {
     /// <summary>
-    /// Tests for the DrawElementsType enum validating index element data types.
+    ///     Tests for the DrawElementsType enum validating index element data types.
     /// </summary>
     public class DrawElementsTypeTest
     {
         /// <summary>
-        /// Tests that UnsignedByte has correct value.
+        ///     Tests that UnsignedByte has correct value.
         /// </summary>
         [Fact]
         public void UnsignedByte_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x1401, (int)DrawElementsType.UnsignedByte);
+            Assert.Equal(0x1401, (int) DrawElementsType.UnsignedByte);
         }
 
         /// <summary>
-        /// Tests that UnsignedShort has correct value.
+        ///     Tests that UnsignedShort has correct value.
         /// </summary>
         [Fact]
         public void UnsignedShort_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x1403, (int)DrawElementsType.UnsignedShort);
+            Assert.Equal(0x1403, (int) DrawElementsType.UnsignedShort);
         }
 
         /// <summary>
-        /// Tests that UnsignedInt has correct value.
+        ///     Tests that UnsignedInt has correct value.
         /// </summary>
         [Fact]
         public void UnsignedInt_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x1405, (int)DrawElementsType.UnsignedInt);
+            Assert.Equal(0x1405, (int) DrawElementsType.UnsignedInt);
         }
 
         /// <summary>
-        /// Tests that DrawElementsType is an enum type.
+        ///     Tests that DrawElementsType is an enum type.
         /// </summary>
         [Fact]
         public void DrawElementsType_IsEnum_TypeIsCorrect()
@@ -75,7 +76,7 @@ namespace Alis.Core.Graphic.Test.Enums
         }
 
         /// <summary>
-        /// Tests that DrawElementsType enum is public.
+        ///     Tests that DrawElementsType enum is public.
         /// </summary>
         [Fact]
         public void DrawElementsType_IsPublic_CanBeAccessed()
@@ -84,44 +85,44 @@ namespace Alis.Core.Graphic.Test.Enums
         }
 
         /// <summary>
-        /// Tests that DrawElementsType has three defined values.
+        ///     Tests that DrawElementsType has three defined values.
         /// </summary>
         [Fact]
         public void DrawElementsType_HasThreeValues_CountIsCorrect()
         {
-            Array enumValues = System.Enum.GetValues(typeof(DrawElementsType));
+            Array enumValues = Enum.GetValues(typeof(DrawElementsType));
             Assert.Equal(3, enumValues.Length);
         }
 
         /// <summary>
-        /// Tests that all DrawElementsType values are unique.
+        ///     Tests that all DrawElementsType values are unique.
         /// </summary>
         [Fact]
         public void AllValues_AreUnique_NoConflicts()
         {
             int[] values = new[]
             {
-                (int)DrawElementsType.UnsignedByte,
-                (int)DrawElementsType.UnsignedShort,
-                (int)DrawElementsType.UnsignedInt
+                (int) DrawElementsType.UnsignedByte,
+                (int) DrawElementsType.UnsignedShort,
+                (int) DrawElementsType.UnsignedInt
             };
 
-            int uniqueCount = new System.Collections.Generic.HashSet<int>(values).Count;
+            int uniqueCount = new HashSet<int>(values).Count;
             Assert.Equal(values.Length, uniqueCount);
         }
 
         /// <summary>
-        /// Tests that DrawElementsType can be cast to int.
+        ///     Tests that DrawElementsType can be cast to int.
         /// </summary>
         [Fact]
         public void DrawElementsType_CanCastToInt_ConversionIsValid()
         {
-            int value = (int)DrawElementsType.UnsignedInt;
+            int value = (int) DrawElementsType.UnsignedInt;
             Assert.IsType<int>(value);
         }
 
         /// <summary>
-        /// Tests that DrawElementsType values can be compared.
+        ///     Tests that DrawElementsType values can be compared.
         /// </summary>
         [Fact]
         public void DrawElementsType_CanCompareValues_EqualityWorks()
@@ -132,7 +133,7 @@ namespace Alis.Core.Graphic.Test.Enums
         }
 
         /// <summary>
-        /// Tests that different DrawElementsType values are not equal.
+        ///     Tests that different DrawElementsType values are not equal.
         /// </summary>
         [Fact]
         public void DrawElementsType_DifferentValues_AreNotEqual()
@@ -141,18 +142,17 @@ namespace Alis.Core.Graphic.Test.Enums
         }
 
         /// <summary>
-        /// Tests that UnsignedByte is the smallest data type.
+        ///     Tests that UnsignedByte is the smallest data type.
         /// </summary>
         [Fact]
         public void UnsignedByte_HasSmallestValue_ComparisonIsCorrect()
         {
-            int byteValue = (int)DrawElementsType.UnsignedByte;
-            int shortValue = (int)DrawElementsType.UnsignedShort;
-            int intValue = (int)DrawElementsType.UnsignedInt;
+            int byteValue = (int) DrawElementsType.UnsignedByte;
+            int shortValue = (int) DrawElementsType.UnsignedShort;
+            int intValue = (int) DrawElementsType.UnsignedInt;
 
             Assert.True(byteValue < shortValue);
             Assert.True(shortValue < intValue);
         }
     }
 }
-

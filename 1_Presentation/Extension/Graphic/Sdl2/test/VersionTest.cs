@@ -27,8 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Xunit;
 using Alis.Extension.Graphic.Sdl2.Structs;
+using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
@@ -52,9 +52,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Version version = new Version(major, minor, patch);
 
             // Assert
-            Assert.Equal((byte)major, version.major);
-            Assert.Equal((byte)minor, version.minor);
-            Assert.Equal((byte)patch, version.patch);
+            Assert.Equal((byte) major, version.major);
+            Assert.Equal((byte) minor, version.minor);
+            Assert.Equal((byte) patch, version.patch);
         }
 
         /// <summary>
@@ -95,20 +95,16 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests the Version constructor with different values.
         /// </summary>
-        [Theory]
-        [InlineData(1, 2, 3)]
-        [InlineData(5, 10, 15)]
-        [InlineData(100, 50, 25)]
+        [Theory, InlineData(1, 2, 3), InlineData(5, 10, 15), InlineData(100, 50, 25)]
         public void VersionConstructor_WithDifferentValues_InitializesProperly(int major, int minor, int patch)
         {
             // Act
             Version version = new Version(major, minor, patch);
 
             // Assert
-            Assert.Equal((byte)major, version.major);
-            Assert.Equal((byte)minor, version.minor);
-            Assert.Equal((byte)patch, version.patch);
+            Assert.Equal((byte) major, version.major);
+            Assert.Equal((byte) minor, version.minor);
+            Assert.Equal((byte) patch, version.patch);
         }
     }
 }
-

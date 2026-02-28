@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using Alis.Core.Aspect.Logging;
@@ -40,7 +40,6 @@ namespace Alis.Extension.Io.FileDialog
     /// </summary>
     public class MacFilePicker : IFilePicker
     {
-
         /// <summary>
         ///     Opens a file picker dialog with advanced options to select a single file.
         /// </summary>
@@ -53,7 +52,11 @@ namespace Alis.Extension.Io.FileDialog
             try
             {
                 FilePickerValidator.ValidateOptions(options);
-                if (options == null) throw new ArgumentNullException(nameof(options));
+                if (options == null)
+                {
+                    throw new ArgumentNullException(nameof(options));
+                }
+
                 options.AllowMultiple = false;
 
                 string script = BuildOpenFileScript(options, false);
@@ -80,7 +83,11 @@ namespace Alis.Extension.Io.FileDialog
             try
             {
                 FilePickerValidator.ValidateOptions(options);
-                if (options == null) throw new ArgumentNullException(nameof(options));
+                if (options == null)
+                {
+                    throw new ArgumentNullException(nameof(options));
+                }
+
                 options.AllowMultiple = true;
 
                 string script = BuildOpenFileScript(options, true);
@@ -107,7 +114,10 @@ namespace Alis.Extension.Io.FileDialog
             try
             {
                 FilePickerValidator.ValidateOptions(options);
-                if (options == null) throw new ArgumentNullException(nameof(options));
+                if (options == null)
+                {
+                    throw new ArgumentNullException(nameof(options));
+                }
 
                 string script = BuildFolderSelectScript(options);
                 string result = ExecuteAppleScript(script);
@@ -133,7 +143,7 @@ namespace Alis.Extension.Io.FileDialog
 
             // Build the choose file command with proper syntax
             StringBuilder chooseCmd = new StringBuilder("choose file");
-            
+
             // Add prompt if title is provided
             if (!string.IsNullOrEmpty(options.Title))
             {
@@ -179,7 +189,7 @@ namespace Alis.Extension.Io.FileDialog
 
             // Build the choose folder command with proper syntax
             StringBuilder chooseCmd = new StringBuilder("choose folder");
-            
+
             // Add prompt if title is provided
             if (!string.IsNullOrEmpty(options.Title))
             {
@@ -209,22 +219,22 @@ namespace Alis.Extension.Io.FileDialog
             try
             {
                 // Create temporary file for the script securely
-                string tmpFile = System.IO.Path.Combine(
-                    System.IO.Path.GetTempPath(),
-                    System.IO.Path.GetRandomFileName() + ".applescript");
-                
-                System.IO.File.WriteAllText(tmpFile, script);
+                string tmpFile = Path.Combine(
+                    Path.GetTempPath(),
+                    Path.GetRandomFileName() + ".applescript");
+
+                File.WriteAllText(tmpFile, script);
 
                 try
                 {
-                    string result = FilePickerExecutor.ExecuteCommand("osascript", tmpFile, 30000);
+                    string result = FilePickerExecutor.ExecuteCommand("osascript", tmpFile);
                     return result;
                 }
                 finally
                 {
                     try
                     {
-                        System.IO.File.Delete(tmpFile);
+                        File.Delete(tmpFile);
                     }
                     catch
                     {

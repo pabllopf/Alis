@@ -40,14 +40,9 @@ namespace Alis.Extension.Language.Dialogue
     public class DialogManager
     {
         /// <summary>
-        ///     The dialog dictionary
+        ///     The action executor
         /// </summary>
-        internal readonly Dictionary<string, Dialog> Dialogs = new Dictionary<string, Dialog>();
-
-        /// <summary>
-        ///     The event publisher
-        /// </summary>
-        private readonly DialogEventPublisher _eventPublisher = new DialogEventPublisher();
+        private readonly DialogActionExecutor _actionExecutor = new DialogActionExecutor();
 
         /// <summary>
         ///     The condition evaluator
@@ -55,9 +50,14 @@ namespace Alis.Extension.Language.Dialogue
         private readonly DialogConditionEvaluator _conditionEvaluator = new DialogConditionEvaluator();
 
         /// <summary>
-        ///     The action executor
+        ///     The event publisher
         /// </summary>
-        private readonly DialogActionExecutor _actionExecutor = new DialogActionExecutor();
+        private readonly DialogEventPublisher _eventPublisher = new DialogEventPublisher();
+
+        /// <summary>
+        ///     The dialog dictionary
+        /// </summary>
+        internal readonly Dictionary<string, Dialog> Dialogs = new Dictionary<string, Dialog>();
 
         /// <summary>
         ///     The current dialog context
@@ -199,7 +199,7 @@ namespace Alis.Extension.Language.Dialogue
         /// </summary>
         public void ResumeDialog()
         {
-            if (_currentContext != null && _currentContext.State == DialogStateType.Paused)
+            if ((_currentContext != null) && (_currentContext.State == DialogStateType.Paused))
             {
                 ChangeState(DialogStateType.Running);
             }
@@ -239,7 +239,7 @@ namespace Alis.Extension.Language.Dialogue
             DialogOption option = dialog.Options[optionIndex];
 
             // Validate conditions
-            if (option.Conditions.Count > 0 && !_conditionEvaluator.EvaluateAll(option.Conditions, _currentContext))
+            if ((option.Conditions.Count > 0) && !_conditionEvaluator.EvaluateAll(option.Conditions, _currentContext))
             {
                 return;
             }
@@ -305,19 +305,13 @@ namespace Alis.Extension.Language.Dialogue
         /// </summary>
         /// <param name="key">The variable key</param>
         /// <returns>The variable value or null</returns>
-        public object GetContextVariable(string key)
-        {
-            return _currentContext?.GetVariable(key);
-        }
+        public object GetContextVariable(string key) => _currentContext?.GetVariable(key);
 
         /// <summary>
         ///     Gets the current dialog
         /// </summary>
         /// <returns>The current dialog or null</returns>
-        public Dialog GetCurrentDialog()
-        {
-            return _currentContext != null ? GetDialog(_currentContext.DialogId) : null;
-        }
+        public Dialog GetCurrentDialog() => _currentContext != null ? GetDialog(_currentContext.DialogId) : null;
 
         /// <summary>
         ///     Changes the dialog state
@@ -325,7 +319,7 @@ namespace Alis.Extension.Language.Dialogue
         /// <param name="newState">The new state</param>
         private void ChangeState(DialogStateType newState)
         {
-            if (_currentContext != null && _currentContext.State != newState)
+            if ((_currentContext != null) && (_currentContext.State != newState))
             {
                 _currentContext.State = newState;
                 _lastState = newState;

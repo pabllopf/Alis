@@ -43,7 +43,7 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void Circles_ShouldHaveValueZero()
         {
-            Assert.Equal(0, (int)ManifoldType.Circles);
+            Assert.Equal(0, (int) ManifoldType.Circles);
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void FaceA_ShouldHaveValueOne()
         {
-            Assert.Equal(1, (int)ManifoldType.FaceA);
+            Assert.Equal(1, (int) ManifoldType.FaceA);
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void FaceB_ShouldHaveValueTwo()
         {
-            Assert.Equal(2, (int)ManifoldType.FaceB);
+            Assert.Equal(2, (int) ManifoldType.FaceB);
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 ManifoldType.FaceA,
                 ManifoldType.FaceB
             };
-            
+
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = i + 1; j < values.Length; j++)
@@ -87,4 +87,3 @@ namespace Alis.Core.Physic.Test.Collisions
         }
     }
 }
-

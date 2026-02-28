@@ -36,7 +36,7 @@ namespace Alis.Core.Ecs.Test
     ///     The game object flags test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="GameObjectFlags"/> enumeration which provides flag-based
+    ///     Tests the <see cref="GameObjectFlags" /> enumeration which provides flag-based
     ///     states for game objects in the ECS system.
     /// </remarks>
     public class GameObjectFlagsTest
@@ -51,7 +51,7 @@ namespace Alis.Core.Ecs.Test
         public void None_Flag_HasZeroValue()
         {
             // Assert
-            Assert.Equal(0, (int)GameObjectFlags.None);
+            Assert.Equal(0, (int) GameObjectFlags.None);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Alis.Core.Ecs.Test
         public void Tagged_Flag_HasCorrectBitPosition()
         {
             // Assert
-            Assert.Equal(1, (int)GameObjectFlags.Tagged);
+            Assert.Equal(1, (int) GameObjectFlags.Tagged);
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace Alis.Core.Ecs.Test
         public void Detach_Flag_HasCorrectBitPosition()
         {
             // Assert
-            Assert.Equal(2, (int)GameObjectFlags.Detach);
+            Assert.Equal(2, (int) GameObjectFlags.Detach);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Alis.Core.Ecs.Test
         public void AddComp_Flag_HasCorrectBitPosition()
         {
             // Assert
-            Assert.Equal(4, (int)GameObjectFlags.AddComp);
+            Assert.Equal(4, (int) GameObjectFlags.AddComp);
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace Alis.Core.Ecs.Test
             GameObjectFlags combined = GameObjectFlags.Tagged | GameObjectFlags.Detach;
 
             // Assert
-            Assert.Equal(3, (int)combined);
+            Assert.Equal(3, (int) combined);
             Assert.True(combined.HasFlag(GameObjectFlags.Tagged));
             Assert.True(combined.HasFlag(GameObjectFlags.Detach));
         }
@@ -181,7 +181,7 @@ namespace Alis.Core.Ecs.Test
         public void WorldCreate_Flag_HasCorrectValue()
         {
             // Assert
-            Assert.Equal(128, (int)GameObjectFlags.WorldCreate);
+            Assert.Equal(128, (int) GameObjectFlags.WorldCreate);
         }
 
         /// <summary>
@@ -194,7 +194,7 @@ namespace Alis.Core.Ecs.Test
         public void HasWorldCommandBufferRemove_Flag_HasCorrectValue()
         {
             // Assert
-            Assert.Equal(256, (int)GameObjectFlags.HasWorldCommandBufferRemove);
+            Assert.Equal(256, (int) GameObjectFlags.HasWorldCommandBufferRemove);
         }
 
         /// <summary>
@@ -207,7 +207,7 @@ namespace Alis.Core.Ecs.Test
         public void HasWorldCommandBufferAdd_Flag_HasCorrectValue()
         {
             // Assert
-            Assert.Equal(512, (int)GameObjectFlags.HasWorldCommandBufferAdd);
+            Assert.Equal(512, (int) GameObjectFlags.HasWorldCommandBufferAdd);
         }
 
         /// <summary>
@@ -239,11 +239,10 @@ namespace Alis.Core.Ecs.Test
         public void None_Flag_EqualsDefaultValue()
         {
             // Arrange
-            GameObjectFlags defaultValue = default;
+            GameObjectFlags defaultValue = default(GameObjectFlags);
 
             // Assert
             Assert.Equal(GameObjectFlags.None, defaultValue);
         }
     }
 }
-

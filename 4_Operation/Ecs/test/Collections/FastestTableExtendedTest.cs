@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:FastestTableExtendedTest.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -86,19 +87,19 @@ namespace Alis.Core.Ecs.Test.Collections
         {
             // Arrange
             FastestTable<long> table = new FastestTable<long>(10);
-            int[] sparseIndices = { 5, 50, 500, 5000 };
+            int[] sparseIndices = {5, 50, 500, 5000};
 
             // Act
             for (int i = 0; i < sparseIndices.Length; i++)
             {
                 ref long val = ref table[sparseIndices[i]];
-                val = (long)sparseIndices[i] * 100;
+                val = (long) sparseIndices[i] * 100;
             }
 
             // Assert
             for (int i = 0; i < sparseIndices.Length; i++)
             {
-                Assert.Equal((long)sparseIndices[i] * 100, table[sparseIndices[i]]);
+                Assert.Equal((long) sparseIndices[i] * 100, table[sparseIndices[i]]);
             }
         }
 
@@ -176,8 +177,8 @@ namespace Alis.Core.Ecs.Test.Collections
         {
             // Arrange
             FastestTable<object> table = new FastestTable<object>(10);
-            var obj1 = new { ID = 1 };
-            var obj2 = new { ID = 2 };
+            var obj1 = new {ID = 1};
+            var obj2 = new {ID = 2};
 
             // Act
             ref object ref1 = ref table[0];
@@ -233,10 +234,6 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Helper method to check if a number is power of 2.
         /// </summary>
-        private static bool IsPowerOfTwo(int value)
-        {
-            return value > 0 && (value & (value - 1)) == 0;
-        }
+        private static bool IsPowerOfTwo(int value) => (value > 0) && ((value & (value - 1)) == 0);
     }
 }
-

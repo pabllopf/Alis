@@ -45,7 +45,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
         public void EarclipEnumValue_ShouldBeDefined()
         {
             TriangulationAlgorithm algorithm = TriangulationAlgorithm.Earclip;
-            
+
             Assert.Equal(TriangulationAlgorithm.Earclip, algorithm);
         }
 
@@ -56,7 +56,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
         public void BayazitEnumValue_ShouldBeDefined()
         {
             TriangulationAlgorithm algorithm = TriangulationAlgorithm.Bayazit;
-            
+
             Assert.Equal(TriangulationAlgorithm.Bayazit, algorithm);
         }
 
@@ -67,7 +67,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
         public void FlipcodeEnumValue_ShouldBeDefined()
         {
             TriangulationAlgorithm algorithm = TriangulationAlgorithm.Flipcode;
-            
+
             Assert.Equal(TriangulationAlgorithm.Flipcode, algorithm);
         }
 
@@ -78,7 +78,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
         public void SeidelEnumValue_ShouldBeDefined()
         {
             TriangulationAlgorithm algorithm = TriangulationAlgorithm.Seidel;
-            
+
             Assert.Equal(TriangulationAlgorithm.Seidel, algorithm);
         }
 
@@ -89,7 +89,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
         public void SeidelTrapezoidsEnumValue_ShouldBeDefined()
         {
             TriangulationAlgorithm algorithm = TriangulationAlgorithm.SeidelTrapezoids;
-            
+
             Assert.Equal(TriangulationAlgorithm.SeidelTrapezoids, algorithm);
         }
 
@@ -100,7 +100,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
         public void DelaunyEnumValue_ShouldBeDefined()
         {
             TriangulationAlgorithm algorithm = TriangulationAlgorithm.Delauny;
-            
+
             Assert.Equal(TriangulationAlgorithm.Delauny, algorithm);
         }
 
@@ -110,8 +110,8 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
         [Fact]
         public void TriangulationAlgorithm_ShouldHaveSixValues()
         {
-            Array values = System.Enum.GetValues(typeof(TriangulationAlgorithm));
-            
+            Array values = Enum.GetValues(typeof(TriangulationAlgorithm));
+
             Assert.Equal(6, values.Length);
         }
 
@@ -121,10 +121,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
         [Fact]
         public void TriangulationAlgorithm_ShouldBeCastableToInt()
         {
-            int earclipValue = (int)TriangulationAlgorithm.Earclip;
-            int bayazitValue = (int)TriangulationAlgorithm.Bayazit;
-            int flipcodeValue = (int)TriangulationAlgorithm.Flipcode;
-            
+            int earclipValue = (int) TriangulationAlgorithm.Earclip;
+            int bayazitValue = (int) TriangulationAlgorithm.Bayazit;
+            int flipcodeValue = (int) TriangulationAlgorithm.Flipcode;
+
             Assert.Equal(0, earclipValue);
             Assert.Equal(1, bayazitValue);
             Assert.Equal(2, flipcodeValue);
@@ -138,7 +138,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
         {
             TriangulationAlgorithm algo1 = TriangulationAlgorithm.Bayazit;
             TriangulationAlgorithm algo2 = TriangulationAlgorithm.Bayazit;
-            
+
             Assert.Equal(algo1, algo2);
         }
 
@@ -150,7 +150,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
         {
             TriangulationAlgorithm algo1 = TriangulationAlgorithm.Earclip;
             TriangulationAlgorithm algo2 = TriangulationAlgorithm.Delauny;
-            
+
             Assert.NotEqual(algo1, algo2);
         }
 
@@ -171,9 +171,8 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
                 TriangulationAlgorithm.Delauny => "Delauny",
                 _ => "Unknown"
             };
-            
+
             Assert.Equal("Seidel", result);
         }
     }
 }
-

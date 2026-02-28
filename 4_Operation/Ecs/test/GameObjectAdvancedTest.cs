@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.Test.Models;
 using Xunit;
 
 namespace Alis.Core.Ecs.Test
@@ -41,7 +40,6 @@ namespace Alis.Core.Ecs.Test
     /// </remarks>
     public class GameObjectAdvancedTest
     {
-        
         /// <summary>
         ///     Tests game object equality comparison
         /// </summary>
@@ -105,7 +103,7 @@ namespace Alis.Core.Ecs.Test
             // Cleanup
             scene.Dispose();
         }
-        
+
         /// <summary>
         ///     Tests hash code consistency for game objects
         /// </summary>
@@ -156,4 +154,3 @@ namespace Alis.Core.Ecs.Test
         }
     }
 }
-

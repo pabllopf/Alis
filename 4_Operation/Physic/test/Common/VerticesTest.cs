@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collisions;
@@ -47,7 +48,7 @@ namespace Alis.Core.Physic.Test.Common
         public void DefaultConstructor_ShouldInitializeEmptyList()
         {
             Vertices vertices = new Vertices();
-            
+
             Assert.NotNull(vertices);
             Assert.Empty(vertices);
         }
@@ -59,7 +60,7 @@ namespace Alis.Core.Physic.Test.Common
         public void ConstructorWithCapacity_ShouldInitializeWithCapacity()
         {
             Vertices vertices = new Vertices(10);
-            
+
             Assert.NotNull(vertices);
             Assert.Empty(vertices);
             Assert.True(vertices.Capacity >= 10);
@@ -77,9 +78,9 @@ namespace Alis.Core.Physic.Test.Common
                 new Vector2F(1, 1),
                 new Vector2F(2, 0)
             };
-            
+
             Vertices vertices = new Vertices(points);
-            
+
             Assert.Equal(3, vertices.Count);
             Assert.Equal(points[0], vertices[0]);
         }
@@ -90,10 +91,10 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void NextIndex_ShouldReturnNextIndex()
         {
-            Vertices vertices = new Vertices { new Vector2F(0, 0), new Vector2F(1, 1), new Vector2F(2, 0) };
-            
+            Vertices vertices = new Vertices {new Vector2F(0, 0), new Vector2F(1, 1), new Vector2F(2, 0)};
+
             int next = vertices.NextIndex(0);
-            
+
             Assert.Equal(1, next);
         }
 
@@ -103,10 +104,10 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void NextIndex_ShouldWrapAround()
         {
-            Vertices vertices = new Vertices { new Vector2F(0, 0), new Vector2F(1, 1), new Vector2F(2, 0) };
-            
+            Vertices vertices = new Vertices {new Vector2F(0, 0), new Vector2F(1, 1), new Vector2F(2, 0)};
+
             int next = vertices.NextIndex(2);
-            
+
             Assert.Equal(0, next);
         }
 
@@ -116,15 +117,15 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void NextVertex_ShouldReturnNextVertex()
         {
-            Vertices vertices = new Vertices 
-            { 
-                new Vector2F(0, 0), 
-                new Vector2F(1, 1), 
-                new Vector2F(2, 0) 
+            Vertices vertices = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(1, 1),
+                new Vector2F(2, 0)
             };
-            
+
             Vector2F next = vertices.NextVertex(0);
-            
+
             Assert.Equal(new Vector2F(1, 1), next);
         }
 
@@ -134,10 +135,10 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void PreviousIndex_ShouldReturnPreviousIndex()
         {
-            Vertices vertices = new Vertices { new Vector2F(0, 0), new Vector2F(1, 1), new Vector2F(2, 0) };
-            
+            Vertices vertices = new Vertices {new Vector2F(0, 0), new Vector2F(1, 1), new Vector2F(2, 0)};
+
             int prev = vertices.PreviousIndex(1);
-            
+
             Assert.Equal(0, prev);
         }
 
@@ -147,10 +148,10 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void PreviousIndex_ShouldWrapAround()
         {
-            Vertices vertices = new Vertices { new Vector2F(0, 0), new Vector2F(1, 1), new Vector2F(2, 0) };
-            
+            Vertices vertices = new Vertices {new Vector2F(0, 0), new Vector2F(1, 1), new Vector2F(2, 0)};
+
             int prev = vertices.PreviousIndex(0);
-            
+
             Assert.Equal(2, prev);
         }
 
@@ -160,15 +161,15 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void PreviousVertex_ShouldReturnPreviousVertex()
         {
-            Vertices vertices = new Vertices 
-            { 
-                new Vector2F(0, 0), 
-                new Vector2F(1, 1), 
-                new Vector2F(2, 0) 
+            Vertices vertices = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(1, 1),
+                new Vector2F(2, 0)
             };
-            
+
             Vector2F prev = vertices.PreviousVertex(1);
-            
+
             Assert.Equal(new Vector2F(0, 0), prev);
         }
 
@@ -178,15 +179,15 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void GetSignedArea_ShouldReturnPositive_ForCcwPolygon()
         {
-            Vertices vertices = new Vertices 
-            { 
-                new Vector2F(0, 0), 
-                new Vector2F(1, 0), 
-                new Vector2F(0.5f, 1) 
+            Vertices vertices = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(1, 0),
+                new Vector2F(0.5f, 1)
             };
-            
+
             float area = vertices.GetSignedArea();
-            
+
             Assert.True(area > 0);
         }
 
@@ -196,10 +197,10 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void GetSignedArea_ShouldReturnZero_ForLessThanThreeVertices()
         {
-            Vertices vertices = new Vertices { new Vector2F(0, 0), new Vector2F(1, 1) };
-            
+            Vertices vertices = new Vertices {new Vector2F(0, 0), new Vector2F(1, 1)};
+
             float area = vertices.GetSignedArea();
-            
+
             Assert.Equal(0, area);
         }
 
@@ -209,15 +210,15 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void GetArea_ShouldReturnAbsoluteValue()
         {
-            Vertices vertices = new Vertices 
-            { 
-                new Vector2F(0, 0), 
-                new Vector2F(0, 1), 
-                new Vector2F(1, 0) 
+            Vertices vertices = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(0, 1),
+                new Vector2F(1, 0)
             };
-            
+
             float area = vertices.GetArea();
-            
+
             Assert.True(area >= 0);
         }
 
@@ -227,16 +228,16 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void GetCentroid_ShouldReturnCentroidOfTriangle()
         {
-            Vertices vertices = new Vertices 
-            { 
-                new Vector2F(0, 0), 
-                new Vector2F(3, 0), 
-                new Vector2F(0, 3) 
+            Vertices vertices = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(3, 0),
+                new Vector2F(0, 3)
             };
-            
+
             Vector2F centroid = vertices.GetCentroid();
-            
-            Assert.True(centroid.X > 0 && centroid.Y > 0);
+
+            Assert.True((centroid.X > 0) && (centroid.Y > 0));
         }
 
         /// <summary>
@@ -245,10 +246,10 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void GetCentroid_ShouldReturnNaN_ForLessThanThreeVertices()
         {
-            Vertices vertices = new Vertices { new Vector2F(0, 0) };
-            
+            Vertices vertices = new Vertices {new Vector2F(0, 0)};
+
             Vector2F centroid = vertices.GetCentroid();
-            
+
             Assert.True(float.IsNaN(centroid.X));
             Assert.True(float.IsNaN(centroid.Y));
         }
@@ -259,14 +260,14 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void Translate_ShouldMoveAllVertices()
         {
-            Vertices vertices = new Vertices 
-            { 
-                new Vector2F(0, 0), 
-                new Vector2F(1, 1) 
+            Vertices vertices = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(1, 1)
             };
-            
+
             vertices.Translate(new Vector2F(5, 5));
-            
+
             Assert.Equal(new Vector2F(5, 5), vertices[0]);
             Assert.Equal(new Vector2F(6, 6), vertices[1]);
         }
@@ -277,14 +278,14 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void Scale_ShouldScaleAllVertices()
         {
-            Vertices vertices = new Vertices 
-            { 
-                new Vector2F(1, 1), 
-                new Vector2F(2, 2) 
+            Vertices vertices = new Vertices
+            {
+                new Vector2F(1, 1),
+                new Vector2F(2, 2)
             };
-            
+
             vertices.Scale(new Vector2F(2, 2));
-            
+
             Assert.Equal(new Vector2F(2, 2), vertices[0]);
             Assert.Equal(new Vector2F(4, 4), vertices[1]);
         }
@@ -295,11 +296,11 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void Rotate_ShouldRotateAllVertices()
         {
-            Vertices vertices = new Vertices { new Vector2F(1, 0) };
-            
-            vertices.Rotate((float)System.Math.PI / 2);
-            
-            Assert.True(System.Math.Abs(vertices[0].X) < 0.001f);
+            Vertices vertices = new Vertices {new Vector2F(1, 0)};
+
+            vertices.Rotate((float) Math.PI / 2);
+
+            Assert.True(Math.Abs(vertices[0].X) < 0.001f);
         }
 
         /// <summary>
@@ -308,10 +309,10 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void IsConvex_ShouldReturnFalse_ForLessThanThreeVertices()
         {
-            Vertices vertices = new Vertices { new Vector2F(0, 0) };
-            
+            Vertices vertices = new Vertices {new Vector2F(0, 0)};
+
             bool isConvex = vertices.IsConvex();
-            
+
             Assert.False(isConvex);
         }
 
@@ -321,15 +322,15 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void IsConvex_ShouldReturnTrue_ForTriangle()
         {
-            Vertices vertices = new Vertices 
-            { 
-                new Vector2F(0, 0), 
-                new Vector2F(1, 0), 
-                new Vector2F(0, 1) 
+            Vertices vertices = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(1, 0),
+                new Vector2F(0, 1)
             };
-            
+
             bool isConvex = vertices.IsConvex();
-            
+
             Assert.True(isConvex);
         }
 
@@ -339,15 +340,15 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void IsCounterClockWise_ShouldReturnTrue_ForCcwPolygon()
         {
-            Vertices vertices = new Vertices 
-            { 
-                new Vector2F(0, 0), 
-                new Vector2F(1, 0), 
-                new Vector2F(0.5f, 1) 
+            Vertices vertices = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(1, 0),
+                new Vector2F(0.5f, 1)
             };
-            
+
             bool isCcw = vertices.IsCounterClockWise();
-            
+
             Assert.True(isCcw);
         }
 
@@ -357,15 +358,15 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void ForceCounterClockWise_ShouldReverseClockwisePolygon()
         {
-            Vertices vertices = new Vertices 
-            { 
-                new Vector2F(0, 0), 
-                new Vector2F(0, 1), 
-                new Vector2F(1, 0) 
+            Vertices vertices = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(0, 1),
+                new Vector2F(1, 0)
             };
-            
+
             vertices.ForceCounterClockWise();
-            
+
             Assert.True(vertices.IsCounterClockWise());
         }
 
@@ -375,16 +376,16 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void GetAabb_ShouldReturnValidAabb()
         {
-            Vertices vertices = new Vertices 
-            { 
-                new Vector2F(0, 0), 
-                new Vector2F(10, 5), 
-                new Vector2F(5, 10) 
+            Vertices vertices = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(10, 5),
+                new Vector2F(5, 10)
             };
-            
-            
+
+
             Aabb aabb = vertices.GetAabb();
-            
+
             Assert.True(aabb.LowerBound.X <= 0);
             Assert.True(aabb.UpperBound.X >= 10);
         }
@@ -397,11 +398,10 @@ namespace Alis.Core.Physic.Test.Common
         {
             Vertices vertices = new Vertices();
             List<Vertices> holes = new List<Vertices>();
-            
+
             vertices.Holes = holes;
-            
+
             Assert.NotNull(vertices.Holes);
         }
     }
 }
-

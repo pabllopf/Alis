@@ -99,7 +99,9 @@ namespace Alis.Extension.Math.ProceduralDungeon
         public Dungeon(DungeonConfiguration configuration)
         {
             if (configuration == null)
+            {
                 throw new ArgumentNullException(nameof(configuration));
+            }
 
             configuration.Validate();
 
@@ -123,6 +125,19 @@ namespace Alis.Extension.Math.ProceduralDungeon
         }
 
         /// <summary>
+        ///     Releases all resources used by this instance.
+        /// </summary>
+        /// <remarks>
+        ///     Disposes of the random number generator and other managed resources.
+        ///     After disposal, this instance should not be used.
+        /// </remarks>
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
         ///     Generates a new procedural dungeon with rooms, corridors, and complete board layout.
         /// </summary>
         /// <returns>
@@ -138,23 +153,7 @@ namespace Alis.Extension.Math.ProceduralDungeon
         ///     Each call to Generate() produces a unique dungeon layout.
         /// </remarks>
         /// <exception cref="ObjectDisposedException">Thrown when called after disposal.</exception>
-        public DungeonData Generate()
-        {
-            return _generator.Generate();
-        }
-
-        /// <summary>
-        ///     Releases all resources used by this instance.
-        /// </summary>
-        /// <remarks>
-        ///     Disposes of the random number generator and other managed resources.
-        ///     After disposal, this instance should not be used.
-        /// </remarks>
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
+        public DungeonData Generate() => _generator.Generate();
 
         /// <summary>
         ///     Creates a dungeon generator with all necessary dependencies.
@@ -177,7 +176,7 @@ namespace Alis.Extension.Math.ProceduralDungeon
         ///     Releases the unmanaged resources used by this instance and optionally releases the managed resources.
         /// </summary>
         /// <param name="disposing">
-        ///     True to release both managed and unmanaged resources; 
+        ///     True to release both managed and unmanaged resources;
         ///     false to release only unmanaged resources.
         /// </param>
         protected virtual void Dispose(bool disposing)
@@ -197,4 +196,3 @@ namespace Alis.Extension.Math.ProceduralDungeon
         }
     }
 }
-

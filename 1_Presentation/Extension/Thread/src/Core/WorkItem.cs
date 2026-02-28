@@ -62,4 +62,3 @@ namespace Alis.Extension.Thread.Core
         }
     }
 }
-

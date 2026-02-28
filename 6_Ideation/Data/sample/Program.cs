@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: Program.cs
+//  File:Program.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program. If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -42,7 +42,7 @@ namespace Alis.Core.Aspect.Data.Sample
         ///     Main entry point for the sample application.
         /// </summary>
         /// <param name="args">Command-line arguments (not used).</param>
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Console.WriteLine("╔═════════════════════════════════════════════════════════════╗");
             Console.WriteLine("║  Alis.Core.Aspect.Data.Generator - Sample Application      ║");
@@ -100,7 +100,7 @@ namespace Alis.Core.Aspect.Data.Sample
         /// <summary>
         ///     Demonstrates serialization of primitive types.
         /// </summary>
-        static void DemonstratePrimitiveTypes()
+        private static void DemonstratePrimitiveTypes()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("█ Testing Primitive Types");
@@ -147,7 +147,7 @@ namespace Alis.Core.Aspect.Data.Sample
         /// <summary>
         ///     Demonstrates serialization of special .NET types.
         /// </summary>
-        static void DemonstrateSpecialTypes()
+        private static void DemonstrateSpecialTypes()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("█ Testing Special Types (DateTime, TimeSpan, Guid, Uri, Version)");
@@ -178,7 +178,7 @@ namespace Alis.Core.Aspect.Data.Sample
         /// <summary>
         ///     Demonstrates serialization of array types.
         /// </summary>
-        static void DemonstrateArrayTypes()
+        private static void DemonstrateArrayTypes()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("█ Testing Array Types (1D and 2D)");
@@ -186,18 +186,18 @@ namespace Alis.Core.Aspect.Data.Sample
 
             ArrayTypesExample arrays = new ArrayTypesExample
             {
-                IntArray = new[] { 1, 2, 3, 4, 5 },
-                StringArray = new[] { "alpha", "beta", "gamma", "delta" },
-                DoubleArray = new[] { 1.1, 2.2, 3.3, 4.4, 5.5 },
-                Int2DArray = new[,] { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } },
-                String2DArray = new[,] { { "a", "b" }, { "c", "d" }, { "e", "f" } }
+                IntArray = new[] {1, 2, 3, 4, 5},
+                StringArray = new[] {"alpha", "beta", "gamma", "delta"},
+                DoubleArray = new[] {1.1, 2.2, 3.3, 4.4, 5.5},
+                Int2DArray = new[,] {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}},
+                String2DArray = new[,] {{"a", "b"}, {"c", "d"}, {"e", "f"}}
             };
 
             Console.WriteLine($"  Int Array:        [{string.Join(", ", arrays.IntArray)}]");
             Console.WriteLine($"  String Array:     [{string.Join(", ", arrays.StringArray)}]");
             Console.WriteLine($"  Double Array:     [{string.Join(", ", arrays.DoubleArray)}]");
-            Console.WriteLine($"  Int 2D Array:     3x3 matrix");
-            Console.WriteLine($"  String 2D Array:  3x2 matrix");
+            Console.WriteLine("  Int 2D Array:     3x3 matrix");
+            Console.WriteLine("  String 2D Array:  3x2 matrix");
 
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("  ✓ All array types serialized successfully");
@@ -207,7 +207,7 @@ namespace Alis.Core.Aspect.Data.Sample
         /// <summary>
         ///     Demonstrates serialization of collection types.
         /// </summary>
-        static void DemonstrateCollectionTypes()
+        private static void DemonstrateCollectionTypes()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("█ Testing Collection Types (List<T>)");
@@ -215,10 +215,10 @@ namespace Alis.Core.Aspect.Data.Sample
 
             CollectionTypesExample collections = new CollectionTypesExample
             {
-                IntList = new List<int> { 10, 20, 30, 40, 50 },
-                StringList = new List<string> { "apple", "banana", "cherry", "date" },
-                DecimalList = new List<decimal> { 10.5m, 20.75m, 30.25m, 40.0m },
-                BoolList = new List<bool> { true, false, true, true, false }
+                IntList = new List<int> {10, 20, 30, 40, 50},
+                StringList = new List<string> {"apple", "banana", "cherry", "date"},
+                DecimalList = new List<decimal> {10.5m, 20.75m, 30.25m, 40.0m},
+                BoolList = new List<bool> {true, false, true, true, false}
             };
 
             Console.WriteLine($"  Int List:         [{string.Join(", ", collections.IntList)}]");
@@ -234,7 +234,7 @@ namespace Alis.Core.Aspect.Data.Sample
         /// <summary>
         ///     Demonstrates serialization of dictionary types.
         /// </summary>
-        static void DemonstrateDictionaryTypes()
+        private static void DemonstrateDictionaryTypes()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("█ Testing Dictionary Types");
@@ -244,21 +244,21 @@ namespace Alis.Core.Aspect.Data.Sample
             {
                 StringDictionary = new Dictionary<string, string>
                 {
-                    { "key1", "value1" },
-                    { "key2", "value2" },
-                    { "key3", "value3" }
+                    {"key1", "value1"},
+                    {"key2", "value2"},
+                    {"key3", "value3"}
                 },
                 StringIntDictionary = new Dictionary<string, int>
                 {
-                    { "count", 42 },
-                    { "total", 100 },
-                    { "remaining", 58 }
+                    {"count", 42},
+                    {"total", 100},
+                    {"remaining", 58}
                 },
                 IntStringDictionary = new Dictionary<int, string>
                 {
-                    { 1, "first" },
-                    { 2, "second" },
-                    { 3, "third" }
+                    {1, "first"},
+                    {2, "second"},
+                    {3, "third"}
                 }
             };
 
@@ -274,7 +274,7 @@ namespace Alis.Core.Aspect.Data.Sample
         /// <summary>
         ///     Demonstrates serialization of enum types.
         /// </summary>
-        static void DemonstrateEnumTypes()
+        private static void DemonstrateEnumTypes()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("█ Testing Enumeration Types");
@@ -305,7 +305,7 @@ namespace Alis.Core.Aspect.Data.Sample
         /// <summary>
         ///     Demonstrates custom property names using attributes.
         /// </summary>
-        static void DemonstrateCustomPropertyNames()
+        private static void DemonstrateCustomPropertyNames()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("█ Testing Custom Property Names ([JsonNativePropertyName])");
@@ -317,14 +317,14 @@ namespace Alis.Core.Aspect.Data.Sample
                 Name = "Custom Example",
                 CreatedDate = DateTime.Now,
                 Status = StatusType.Active,
-                Labels = new List<string> { "sample", "demo", "test" }
+                Labels = new List<string> {"sample", "demo", "test"}
             };
 
-            Console.WriteLine($"  Identifier        -> JSON: 'id'");
-            Console.WriteLine($"  Name              -> JSON: 'displayName'");
-            Console.WriteLine($"  CreatedDate       -> JSON: 'createdDate'");
-            Console.WriteLine($"  Status            -> JSON: 'currentStatus'");
-            Console.WriteLine($"  Labels            -> JSON: 'tags'");
+            Console.WriteLine("  Identifier        -> JSON: 'id'");
+            Console.WriteLine("  Name              -> JSON: 'displayName'");
+            Console.WriteLine("  CreatedDate       -> JSON: 'createdDate'");
+            Console.WriteLine("  Status            -> JSON: 'currentStatus'");
+            Console.WriteLine("  Labels            -> JSON: 'tags'");
 
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("  ✓ Custom property names applied successfully");
@@ -334,7 +334,7 @@ namespace Alis.Core.Aspect.Data.Sample
         /// <summary>
         ///     Demonstrates ignoring properties from serialization.
         /// </summary>
-        static void DemonstrateIgnoredProperties()
+        private static void DemonstrateIgnoredProperties()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("█ Testing Ignored Properties ([JsonNativeIgnore])");
@@ -349,11 +349,11 @@ namespace Alis.Core.Aspect.Data.Sample
                 InternalFlag = true
             };
 
-            Console.WriteLine($"  Id                (SERIALIZED)");
-            Console.WriteLine($"  Name              (SERIALIZED)");
-            Console.WriteLine($"  CreatedAt         (SERIALIZED)");
-            Console.WriteLine($"  InternalNotes     (IGNORED)");
-            Console.WriteLine($"  InternalFlag      (IGNORED)");
+            Console.WriteLine("  Id                (SERIALIZED)");
+            Console.WriteLine("  Name              (SERIALIZED)");
+            Console.WriteLine("  CreatedAt         (SERIALIZED)");
+            Console.WriteLine("  InternalNotes     (IGNORED)");
+            Console.WriteLine("  InternalFlag      (IGNORED)");
 
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("  ✓ Properties marked with [JsonNativeIgnore] excluded from serialization");
@@ -363,7 +363,7 @@ namespace Alis.Core.Aspect.Data.Sample
         /// <summary>
         ///     Demonstrates complex nested types.
         /// </summary>
-        static void DemonstrateComplexNested()
+        private static void DemonstrateComplexNested()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("█ Testing Complex Nested Types");
@@ -375,12 +375,12 @@ namespace Alis.Core.Aspect.Data.Sample
                 ProjectName = "Advanced AI System",
                 StartDate = DateTime.Now.AddMonths(-6),
                 Duration = TimeSpan.FromDays(180),
-                TeamMembers = new List<string> { "Alice", "Bob", "Charlie", "Diana", "Eve" },
+                TeamMembers = new List<string> {"Alice", "Bob", "Charlie", "Diana", "Eve"},
                 Metadata = new Dictionary<string, string>
                 {
-                    { "priority", "high" },
-                    { "category", "research" },
-                    { "budget", "1000000" }
+                    {"priority", "high"},
+                    {"category", "research"},
+                    {"budget", "1000000"}
                 },
                 MilestoneDates = new[]
                 {
@@ -389,7 +389,7 @@ namespace Alis.Core.Aspect.Data.Sample
                     DateTime.Now
                 },
                 Status = StatusType.Completed,
-                BudgetAllocation = new[] { 250000m, 350000m, 200000m, 200000m }
+                BudgetAllocation = new[] {250000m, 350000m, 200000m, 200000m}
             };
 
             Console.WriteLine($"  Project ID:       {complex.ProjectId}");
@@ -410,7 +410,7 @@ namespace Alis.Core.Aspect.Data.Sample
         /// <summary>
         ///     Demonstrates a comprehensive example with all supported types.
         /// </summary>
-        static void DemonstrateComprehensive()
+        private static void DemonstrateComprehensive()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("█ Testing Comprehensive Example (All Types Combined)");
@@ -428,13 +428,13 @@ namespace Alis.Core.Aspect.Data.Sample
                 Duration = TimeSpan.FromHours(24),
                 Website = new Uri("https://www.example.com/"),
                 ApiVersion = new Version(2, 5, 1, 0),
-                IntArray = new[] { 1, 2, 3, 4, 5 },
-                StringArray = new[] { "one", "two", "three" },
-                Values2D = new decimal[,] { { 1.1m, 2.2m }, { 3.3m, 4.4m } },
-                Tags = new List<string> { "comprehensive", "test", "all-types" },
-                Numbers = new List<int> { 10, 20, 30, 40, 50 },
-                Metadata = new Dictionary<string, string> { { "type", "comprehensive" } },
-                Statistics = new Dictionary<string, int> { { "tests", 15 } },
+                IntArray = new[] {1, 2, 3, 4, 5},
+                StringArray = new[] {"one", "two", "three"},
+                Values2D = new[,] {{1.1m, 2.2m}, {3.3m, 4.4m}},
+                Tags = new List<string> {"comprehensive", "test", "all-types"},
+                Numbers = new List<int> {10, 20, 30, 40, 50},
+                Metadata = new Dictionary<string, string> {{"type", "comprehensive"}},
+                Statistics = new Dictionary<string, int> {{"tests", 15}},
                 Status = StatusType.Active,
                 InternalNotes = "This is not serialized"
             };
@@ -446,8 +446,8 @@ namespace Alis.Core.Aspect.Data.Sample
             Console.WriteLine($"  API Version:      {comprehensive.ApiVersion}");
             Console.WriteLine($"  Status:           {comprehensive.Status}");
             Console.WriteLine($"  Tags:             {comprehensive.Tags.Count}");
-            Console.WriteLine($"  2D Values:        2x2 matrix");
-            Console.WriteLine($"  Internal Notes:   (NOT SERIALIZED)");
+            Console.WriteLine("  2D Values:        2x2 matrix");
+            Console.WriteLine("  Internal Notes:   (NOT SERIALIZED)");
 
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("  ✓ Comprehensive example with all types completed successfully");
@@ -457,7 +457,7 @@ namespace Alis.Core.Aspect.Data.Sample
         /// <summary>
         ///     Demonstrates the Album example from previous samples.
         /// </summary>
-        static void DemonstrateAlbum()
+        private static void DemonstrateAlbum()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("█ Testing Album Example (Existing Sample)");
@@ -470,7 +470,7 @@ namespace Alis.Core.Aspect.Data.Sample
                 ReleaseDate = DateTime.Now,
                 TrackCount = 20,
                 DurationSeconds = 3600,
-                Genres = new List<string> { "Rock", "Alternative", "Progressive" },
+                Genres = new List<string> {"Rock", "Alternative", "Progressive"},
                 IsAvailable = true
             };
 

@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
 using Alis.Extension.Media.FFmpeg.Encoding.Builders;
 using Xunit;
 
@@ -48,7 +50,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Preset preset = Preset.UltraFast;
 
             // Assert
-            Assert.Equal(0, (int)preset);
+            Assert.Equal(0, (int) preset);
         }
 
         /// <summary>
@@ -61,7 +63,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Preset preset = Preset.SuperFast;
 
             // Assert
-            Assert.Equal(1, (int)preset);
+            Assert.Equal(1, (int) preset);
         }
 
         /// <summary>
@@ -74,7 +76,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Preset preset = Preset.VeryFast;
 
             // Assert
-            Assert.Equal(2, (int)preset);
+            Assert.Equal(2, (int) preset);
         }
 
         /// <summary>
@@ -87,7 +89,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Preset preset = Preset.Faster;
 
             // Assert
-            Assert.Equal(3, (int)preset);
+            Assert.Equal(3, (int) preset);
         }
 
         /// <summary>
@@ -100,7 +102,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Preset preset = Preset.Fast;
 
             // Assert
-            Assert.Equal(4, (int)preset);
+            Assert.Equal(4, (int) preset);
         }
 
         /// <summary>
@@ -113,7 +115,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Preset preset = Preset.Medium;
 
             // Assert
-            Assert.Equal(5, (int)preset);
+            Assert.Equal(5, (int) preset);
         }
 
         /// <summary>
@@ -126,7 +128,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Preset preset = Preset.Slow;
 
             // Assert
-            Assert.Equal(6, (int)preset);
+            Assert.Equal(6, (int) preset);
         }
 
         /// <summary>
@@ -139,7 +141,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Preset preset = Preset.Slower;
 
             // Assert
-            Assert.Equal(7, (int)preset);
+            Assert.Equal(7, (int) preset);
         }
 
         /// <summary>
@@ -152,7 +154,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Preset preset = Preset.VerySlow;
 
             // Assert
-            Assert.Equal(8, (int)preset);
+            Assert.Equal(8, (int) preset);
         }
 
         /// <summary>
@@ -162,7 +164,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         public void Preset_Enum_ShouldHaveNineValues()
         {
             // Arrange & Act
-            Preset[] values = (Preset[])System.Enum.GetValues(typeof(Preset));
+            Preset[] values = (Preset[]) Enum.GetValues(typeof(Preset));
 
             // Assert
             Assert.Equal(9, values.Length);
@@ -197,8 +199,8 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         public void Preset_ShouldBeParseableFromString()
         {
             // Arrange & Act
-            Preset fast = (Preset)System.Enum.Parse(typeof(Preset), "Fast");
-            Preset slow = (Preset)System.Enum.Parse(typeof(Preset), "Slow");
+            Preset fast = (Preset) Enum.Parse(typeof(Preset), "Fast");
+            Preset slow = (Preset) Enum.Parse(typeof(Preset), "Slow");
 
             // Assert
             Assert.Equal(Preset.Fast, fast);
@@ -250,15 +252,15 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         public void Preset_AllValues_ShouldBeDefined()
         {
             // Arrange & Act & Assert
-            Assert.True(System.Enum.IsDefined(typeof(Preset), Preset.UltraFast));
-            Assert.True(System.Enum.IsDefined(typeof(Preset), Preset.SuperFast));
-            Assert.True(System.Enum.IsDefined(typeof(Preset), Preset.VeryFast));
-            Assert.True(System.Enum.IsDefined(typeof(Preset), Preset.Faster));
-            Assert.True(System.Enum.IsDefined(typeof(Preset), Preset.Fast));
-            Assert.True(System.Enum.IsDefined(typeof(Preset), Preset.Medium));
-            Assert.True(System.Enum.IsDefined(typeof(Preset), Preset.Slow));
-            Assert.True(System.Enum.IsDefined(typeof(Preset), Preset.Slower));
-            Assert.True(System.Enum.IsDefined(typeof(Preset), Preset.VerySlow));
+            Assert.True(Enum.IsDefined(typeof(Preset), Preset.UltraFast));
+            Assert.True(Enum.IsDefined(typeof(Preset), Preset.SuperFast));
+            Assert.True(Enum.IsDefined(typeof(Preset), Preset.VeryFast));
+            Assert.True(Enum.IsDefined(typeof(Preset), Preset.Faster));
+            Assert.True(Enum.IsDefined(typeof(Preset), Preset.Fast));
+            Assert.True(Enum.IsDefined(typeof(Preset), Preset.Medium));
+            Assert.True(Enum.IsDefined(typeof(Preset), Preset.Slow));
+            Assert.True(Enum.IsDefined(typeof(Preset), Preset.Slower));
+            Assert.True(Enum.IsDefined(typeof(Preset), Preset.VerySlow));
         }
 
         /// <summary>
@@ -268,21 +270,21 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         public void Preset_ShouldHaveUniqueValues()
         {
             // Arrange
-            int[] values = new int[]
+            int[] values = new[]
             {
-                (int)Preset.UltraFast,
-                (int)Preset.SuperFast,
-                (int)Preset.VeryFast,
-                (int)Preset.Faster,
-                (int)Preset.Fast,
-                (int)Preset.Medium,
-                (int)Preset.Slow,
-                (int)Preset.Slower,
-                (int)Preset.VerySlow
+                (int) Preset.UltraFast,
+                (int) Preset.SuperFast,
+                (int) Preset.VeryFast,
+                (int) Preset.Faster,
+                (int) Preset.Fast,
+                (int) Preset.Medium,
+                (int) Preset.Slow,
+                (int) Preset.Slower,
+                (int) Preset.VerySlow
             };
 
             // Act & Assert
-            Assert.Equal(values.Length, new System.Collections.Generic.HashSet<int>(values).Count);
+            Assert.Equal(values.Length, new HashSet<int>(values).Count);
         }
 
         /// <summary>
@@ -295,7 +297,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Preset preset = Preset.Medium;
 
             // Act
-            int value = (int)preset;
+            int value = (int) preset;
 
             // Assert
             Assert.Equal(5, value);
@@ -311,7 +313,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             int value = 4;
 
             // Act
-            Preset preset = (Preset)value;
+            Preset preset = (Preset) value;
 
             // Assert
             Assert.Equal(Preset.Fast, preset);
@@ -324,7 +326,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         public void Preset_ShouldBeUsableInArrays()
         {
             // Arrange
-            Preset[] presets = new Preset[] { Preset.Fast, Preset.Medium, Preset.Slow };
+            Preset[] presets = new[] {Preset.Fast, Preset.Medium, Preset.Slow};
 
             // Act & Assert
             Assert.Equal(3, presets.Length);
@@ -334,4 +336,3 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         }
     }
 }
-

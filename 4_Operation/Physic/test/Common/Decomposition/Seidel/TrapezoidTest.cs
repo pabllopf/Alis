@@ -51,9 +51,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             Point bottomQ = new Point(10, -10);
             Edge top = new Edge(topP, topQ);
             Edge bottom = new Edge(bottomP, bottomQ);
-            
+
             Trapezoid trapezoid = new Trapezoid(leftPoint, rightPoint, top, bottom);
-            
+
             Assert.Equal(leftPoint, trapezoid.LeftPoint);
             Assert.Equal(rightPoint, trapezoid.RightPoint);
             Assert.Equal(top, trapezoid.Top);
@@ -71,9 +71,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             Point rightPoint = new Point(10, 0);
             Edge top = new Edge(new Point(0, 10), new Point(10, 10));
             Edge bottom = new Edge(new Point(0, -10), new Point(10, -10));
-            
+
             Trapezoid trapezoid = new Trapezoid(leftPoint, rightPoint, top, bottom);
-            
+
             Assert.Null(trapezoid.UpperLeft);
             Assert.Null(trapezoid.UpperRight);
             Assert.Null(trapezoid.LowerLeft);
@@ -90,9 +90,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             Trapezoid trapezoid = CreateTestTrapezoid();
             Trapezoid upperLeft = CreateTestTrapezoid();
             Trapezoid lowerLeft = CreateTestTrapezoid();
-            
+
             trapezoid.UpdateLeft(upperLeft, lowerLeft);
-            
+
             Assert.Equal(upperLeft, trapezoid.UpperLeft);
             Assert.Equal(lowerLeft, trapezoid.LowerLeft);
             Assert.Equal(trapezoid, upperLeft.UpperRight);
@@ -108,9 +108,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             Trapezoid trapezoid = CreateTestTrapezoid();
             Trapezoid upperRight = CreateTestTrapezoid();
             Trapezoid lowerRight = CreateTestTrapezoid();
-            
+
             trapezoid.UpdateRight(upperRight, lowerRight);
-            
+
             Assert.Equal(upperRight, trapezoid.UpperRight);
             Assert.Equal(lowerRight, trapezoid.LowerRight);
             Assert.Equal(trapezoid, upperRight.UpperLeft);
@@ -124,9 +124,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         public void UpdateLeft_WithNull_ShouldNotThrowException()
         {
             Trapezoid trapezoid = CreateTestTrapezoid();
-            
+
             trapezoid.UpdateLeft(null, null);
-            
+
             Assert.Null(trapezoid.UpperLeft);
             Assert.Null(trapezoid.LowerLeft);
         }
@@ -138,9 +138,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         public void UpdateRight_WithNull_ShouldNotThrowException()
         {
             Trapezoid trapezoid = CreateTestTrapezoid();
-            
+
             trapezoid.UpdateRight(null, null);
-            
+
             Assert.Null(trapezoid.UpperRight);
             Assert.Null(trapezoid.LowerRight);
         }
@@ -152,7 +152,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         public void InsideProperty_ShouldDefaultToTrue()
         {
             Trapezoid trapezoid = CreateTestTrapezoid();
-            
+
             Assert.True(trapezoid.Inside);
         }
 
@@ -163,12 +163,12 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         public void InsideProperty_ShouldSetAndGetCorrectly()
         {
             Trapezoid trapezoid = CreateTestTrapezoid();
-            
+
             trapezoid.Inside = false;
-            
+
             Assert.False(trapezoid.Inside);
         }
-        
+
 
         /// <summary>
         ///     Tests that right point property should set and get correctly
@@ -178,9 +178,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         {
             Trapezoid trapezoid = CreateTestTrapezoid();
             Point newRightPoint = new Point(20, 0);
-            
+
             trapezoid.RightPoint = newRightPoint;
-            
+
             Assert.Equal(newRightPoint, trapezoid.RightPoint);
         }
 
@@ -198,4 +198,3 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         }
     }
 }
-

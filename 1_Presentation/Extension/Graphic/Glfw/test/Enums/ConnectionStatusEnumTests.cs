@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:ConnectionStatusEnumTests.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,7 +39,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
     public class ConnectionStatusEnumTests
     {
         /// <summary>
-        /// Tests that connection status connected is defined
+        ///     Tests that connection status connected is defined
         /// </summary>
         [Fact]
         public void ConnectionStatus_Connected_IsDefined()
@@ -47,7 +48,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that connection status disconnected is defined
+        ///     Tests that connection status disconnected is defined
         /// </summary>
         [Fact]
         public void ConnectionStatus_Disconnected_IsDefined()
@@ -56,18 +57,18 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that connection status can be cast to int
+        ///     Tests that connection status can be cast to int
         /// </summary>
         [Fact]
         public void ConnectionStatus_CanBeCastToInt()
         {
             ConnectionStatus status = ConnectionStatus.Connected;
-            int value = (int)status;
+            int value = (int) status;
             Assert.True(value >= 0);
         }
 
         /// <summary>
-        /// Tests that connection status connected and disconnected are different
+        ///     Tests that connection status connected and disconnected are different
         /// </summary>
         [Fact]
         public void ConnectionStatus_Connected_And_Disconnected_AreDifferent()
@@ -76,4 +77,3 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
     }
 }
-

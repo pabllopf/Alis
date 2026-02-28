@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:GlfwNativeInputTests.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
     public class GlfwNativeInputTests
     {
         /// <summary>
-        /// Sets the cursor enter callback with valid callback sets callback
+        ///     Sets the cursor enter callback with valid callback sets callback
         /// </summary>
         [RequiresDisplay]
         public void SetCursorEnterCallback_WithValidCallback_SetsCallback()
@@ -66,7 +67,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Sets the mouse button callback with valid callback sets callback
+        ///     Sets the mouse button callback with valid callback sets callback
         /// </summary>
         [RequiresDisplay]
         public void SetMouseButtonCallback_WithValidCallback_SetsCallback()
@@ -92,7 +93,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Sets the scroll callback with valid callback sets callback
+        ///     Sets the scroll callback with valid callback sets callback
         /// </summary>
         [RequiresDisplay]
         public void SetScrollCallback_WithValidCallback_SetsCallback()
@@ -118,7 +119,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Sets the window user pointer with valid pointer sets pointer
+        ///     Sets the window user pointer with valid pointer sets pointer
         /// </summary>
         [RequiresDisplay]
         public void SetWindowUserPointer_WithValidPointer_SetsPointer()
@@ -144,7 +145,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Gets the window user pointer with no pointer set returns zero
+        ///     Gets the window user pointer with no pointer set returns zero
         /// </summary>
         [RequiresDisplay]
         public void GetWindowUserPointer_WithNoPointerSet_ReturnsZero()
@@ -168,7 +169,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Sets the window size limits with valid limits does not throw
+        ///     Sets the window size limits with valid limits does not throw
         /// </summary>
         [RequiresDisplay]
         public void SetWindowSizeLimits_WithValidLimits_DoesNotThrow()
@@ -189,7 +190,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Sets the window aspect ratio with valid ratio does not throw
+        ///     Sets the window aspect ratio with valid ratio does not throw
         /// </summary>
         [RequiresDisplay]
         public void SetWindowAspectRatio_WithValidRatio_DoesNotThrow()
@@ -210,7 +211,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Sets the char callback with valid callback sets callback
+        ///     Sets the char callback with valid callback sets callback
         /// </summary>
         [RequiresDisplay]
         public void SetCharCallback_WithValidCallback_SetsCallback()
@@ -236,7 +237,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Sets the char mods callback with valid callback sets callback
+        ///     Sets the char mods callback with valid callback sets callback
         /// </summary>
         [RequiresDisplay]
         public void SetCharModsCallback_WithValidCallback_SetsCallback()
@@ -262,7 +263,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Sets the framebuffer size callback with valid callback sets callback
+        ///     Sets the framebuffer size callback with valid callback sets callback
         /// </summary>
         [RequiresDisplay]
         public void SetFramebufferSizeCallback_WithValidCallback_SetsCallback()
@@ -288,7 +289,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Sets the window refresh callback with valid callback sets callback
+        ///     Sets the window refresh callback with valid callback sets callback
         /// </summary>
         [RequiresDisplay]
         public void SetWindowRefreshCallback_WithValidCallback_SetsCallback()
@@ -297,7 +298,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
             GlfwNative.WindowHint(Hint.Visible, false);
             Window window = GlfwNative.CreateWindow(800, 600, "Test Window", Monitor.None, Window.None);
             bool callbackInvoked = false;
-            WindowCallback callback = (w) => { callbackInvoked = true; };
+            WindowCallback callback = w => { callbackInvoked = true; };
 
             try
             {
@@ -314,7 +315,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Sets the key callback with valid callback sets callback
+        ///     Sets the key callback with valid callback sets callback
         /// </summary>
         [RequiresDisplay]
         public void SetKeyCallback_WithValidCallback_SetsCallback()
@@ -340,7 +341,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Sets the window iconify callback with valid callback sets callback
+        ///     Sets the window iconify callback with valid callback sets callback
         /// </summary>
         [RequiresDisplay]
         public void SetWindowIconifyCallback_WithValidCallback_SetsCallback()
@@ -366,7 +367,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Sets the input mode with valid mode does not throw
+        ///     Sets the input mode with valid mode does not throw
         /// </summary>
         [RequiresDisplay]
         public void SetInputMode_WithValidMode_DoesNotThrow()
@@ -378,7 +379,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
             try
             {
                 // Act & Assert
-                GlfwNative.SetInputMode(window, InputMode.Cursor, (int)CursorMode.Normal);
+                GlfwNative.SetInputMode(window, InputMode.Cursor, (int) CursorMode.Normal);
             }
             finally
             {
@@ -387,7 +388,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Gets the input mode with valid mode returns value
+        ///     Gets the input mode with valid mode returns value
         /// </summary>
         [RequiresDisplay]
         public void GetInputMode_WithValidMode_ReturnsValue()
@@ -411,7 +412,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Joysticks the present with valid joystick returns boolean
+        ///     Joysticks the present with valid joystick returns boolean
         /// </summary>
         [RequiresDisplay]
         public void JoystickPresent_WithValidJoystick_ReturnsBoolean()
@@ -424,7 +425,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Sets the joystick callback with valid callback returns null
+        ///     Sets the joystick callback with valid callback returns null
         /// </summary>
         [RequiresDisplay]
         public void SetJoystickCallback_WithValidCallback_ReturnsNull()
@@ -444,7 +445,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Sets the monitor callback with valid callback returns null
+        ///     Sets the monitor callback with valid callback returns null
         /// </summary>
         [RequiresDisplay]
         public void SetMonitorCallback_WithValidCallback_ReturnsNull()
@@ -464,14 +465,17 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Gets the monitor physical size with valid monitor returns size
+        ///     Gets the monitor physical size with valid monitor returns size
         /// </summary>
         [RequiresDisplay]
         public void GetMonitorPhysicalSize_WithValidMonitor_ReturnsSize()
         {
             // Arrange
             Monitor monitor = GlfwNative.PrimaryMonitor;
-            if (monitor == Monitor.None) return;
+            if (monitor == Monitor.None)
+            {
+                return;
+            }
 
             // Act
             GlfwNative.GetMonitorPhysicalSize(monitor, out int width, out int height);
@@ -482,14 +486,17 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Gets the monitor position with valid monitor returns position
+        ///     Gets the monitor position with valid monitor returns position
         /// </summary>
         [RequiresDisplay]
         public void GetMonitorPosition_WithValidMonitor_ReturnsPosition()
         {
             // Arrange
             Monitor monitor = GlfwNative.PrimaryMonitor;
-            if (monitor == Monitor.None) return;
+            if (monitor == Monitor.None)
+            {
+                return;
+            }
 
             // Act
             GlfwNative.GetMonitorPosition(monitor, out int x, out int y);
@@ -500,14 +507,17 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Gets the monitor work area with valid monitor returns work area
+        ///     Gets the monitor work area with valid monitor returns work area
         /// </summary>
         [RequiresDisplay]
         public void GetMonitorWorkArea_WithValidMonitor_ReturnsWorkArea()
         {
             // Arrange
             Monitor monitor = GlfwNative.PrimaryMonitor;
-            if (monitor == Monitor.None) return;
+            if (monitor == Monitor.None)
+            {
+                return;
+            }
 
             // Act
             GlfwNative.GetMonitorWorkArea(monitor, out int x, out int y, out int width, out int height);
@@ -518,4 +528,3 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
     }
 }
-

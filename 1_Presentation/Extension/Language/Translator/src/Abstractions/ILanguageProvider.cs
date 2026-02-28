@@ -74,4 +74,3 @@ namespace Alis.Extension.Language.Translator.Abstractions
         bool LanguageExists(string code);
     }
 }
-

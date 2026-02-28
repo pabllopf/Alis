@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:GamePadAxisEnumTests.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,7 +39,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
     public class GamePadAxisEnumTests
     {
         /// <summary>
-        /// Tests that game pad axis left x is defined
+        ///     Tests that game pad axis left x is defined
         /// </summary>
         [Fact]
         public void GamePadAxis_LeftX_IsDefined()
@@ -47,7 +48,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that game pad axis left y is defined
+        ///     Tests that game pad axis left y is defined
         /// </summary>
         [Fact]
         public void GamePadAxis_LeftY_IsDefined()
@@ -56,7 +57,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that game pad axis right x is defined
+        ///     Tests that game pad axis right x is defined
         /// </summary>
         [Fact]
         public void GamePadAxis_RightX_IsDefined()
@@ -65,7 +66,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that game pad axis right y is defined
+        ///     Tests that game pad axis right y is defined
         /// </summary>
         [Fact]
         public void GamePadAxis_RightY_IsDefined()
@@ -74,7 +75,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that game pad axis left trigger is defined
+        ///     Tests that game pad axis left trigger is defined
         /// </summary>
         [Fact]
         public void GamePadAxis_LeftTrigger_IsDefined()
@@ -83,7 +84,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that game pad axis right trigger is defined
+        ///     Tests that game pad axis right trigger is defined
         /// </summary>
         [Fact]
         public void GamePadAxis_RightTrigger_IsDefined()
@@ -92,18 +93,18 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that game pad axis can be cast to int
+        ///     Tests that game pad axis can be cast to int
         /// </summary>
         [Fact]
         public void GamePadAxis_CanBeCastToInt()
         {
             GamePadAxis axis = GamePadAxis.LeftX;
-            int value = (int)axis;
+            int value = (int) axis;
             Assert.True(value >= 0);
         }
 
         /// <summary>
-        /// Tests that game pad axis all axes are different
+        ///     Tests that game pad axis all axes are different
         /// </summary>
         [Fact]
         public void GamePadAxis_AllAxes_AreDifferent()
@@ -114,4 +115,3 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
     }
 }
-

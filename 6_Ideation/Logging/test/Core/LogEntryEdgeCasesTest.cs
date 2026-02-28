@@ -5,31 +5,30 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: Core/LogEntryEdgeCasesTest.cs
+//  File:LogEntryEdgeCasesTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program. If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System;
 using System.Collections.Generic;
-using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Logging.Abstractions;
 using Alis.Core.Aspect.Logging.Core;
 using Alis.Core.Aspect.Logging.Test.Attributes;
@@ -73,7 +72,7 @@ namespace Alis.Core.Aspect.Logging.Test.Core
         public void LogEntry_VeryLongLoggerName_ShouldBeStored()
         {
             // Arrange
-            string longName = "Namespace." + string.Join(".", new[] { "Class" }.Length is 1 ? new string('x', 1000) : new string('x', 1000));
+            string longName = "Namespace." + string.Join(".", new[] {"Class"}.Length is 1 ? new string('x', 1000) : new string('x', 1000));
 
             // Act
             LogEntry entry = new LogEntry(LogLevel.Info, "Message", longName);
@@ -135,8 +134,8 @@ namespace Alis.Core.Aspect.Logging.Test.Core
             // Arrange
             Dictionary<string, object> properties = new Dictionary<string, object>
             {
-                { "NullValue", null },
-                { "ValidValue", "test" }
+                {"NullValue", null},
+                {"ValidValue", "test"}
             };
 
             // Act
@@ -151,7 +150,7 @@ namespace Alis.Core.Aspect.Logging.Test.Core
         public void LogEntry_NullObjectInScopes_ShouldBeHandled()
         {
             // Arrange
-            List<object> scopes = new List<object> { "ValidScope", null, "AnotherScope" };
+            List<object> scopes = new List<object> {"ValidScope", null, "AnotherScope"};
 
             // Act
             LogEntry entry = new LogEntry(LogLevel.Info, "Message", "Logger", scopes: scopes);
@@ -209,12 +208,12 @@ namespace Alis.Core.Aspect.Logging.Test.Core
             // Arrange
             Dictionary<string, object> properties = new Dictionary<string, object>
             {
-                { "String", "value" },
-                { "Int", 42 },
-                { "Double", 3.14 },
-                { "Bool", true },
-                { "DateTime", DateTime.Now },
-                { "Object", new { nested = "value" } }
+                {"String", "value"},
+                {"Int", 42},
+                {"Double", 3.14},
+                {"Bool", true},
+                {"DateTime", DateTime.Now},
+                {"Object", new {nested = "value"}}
             };
 
             // Act
@@ -232,7 +231,7 @@ namespace Alis.Core.Aspect.Logging.Test.Core
             // Arrange
             Dictionary<string, object> properties = new Dictionary<string, object>
             {
-                { "Key", "FirstValue" }
+                {"Key", "FirstValue"}
             };
             properties["Key"] = "SecondValue";
 
@@ -257,4 +256,3 @@ namespace Alis.Core.Aspect.Logging.Test.Core
         }
     }
 }
-

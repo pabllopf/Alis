@@ -36,7 +36,7 @@ namespace Alis.Core.Ecs.Test.Kernel
     ///     The tag command test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="TagCommand"/> record struct which represents
+    ///     Tests the <see cref="TagCommand" /> record struct which represents
     ///     a command to attach or detach a tag from an entity.
     /// </remarks>
     public class TagCommandTest
@@ -80,7 +80,7 @@ namespace Alis.Core.Ecs.Test.Kernel
 
             // Assert
             Assert.Equal(42, command.Entity.ID);
-            Assert.Equal((ushort)5, command.Entity.Version);
+            Assert.Equal((ushort) 5, command.Entity.Version);
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace Alis.Core.Ecs.Test.Kernel
             TagCommand command = new TagCommand(entity, tagId);
 
             // Assert
-            Assert.Equal((ushort)25, command.TagId.RawValue);
+            Assert.Equal((ushort) 25, command.TagId.RawValue);
         }
 
         /// <summary>
@@ -169,4 +169,3 @@ namespace Alis.Core.Ecs.Test.Kernel
         }
     }
 }
-

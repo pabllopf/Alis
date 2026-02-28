@@ -52,14 +52,14 @@ namespace Alis.Extension.Cloud.GoogleDrive
     public class GoogleDriveCloudManager : AManager, ICloudManager, IDisposable
     {
         /// <summary>
+        ///     The scopes required for Google Drive API
+        /// </summary>
+        private static readonly string[] Scopes = {DriveService.Scope.Drive};
+
+        /// <summary>
         ///     The Google Drive service
         /// </summary>
         private DriveService _driveService;
-
-        /// <summary>
-        ///     The scopes required for Google Drive API
-        /// </summary>
-        private static readonly string[] Scopes = { DriveService.Scope.Drive };
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="GoogleDriveCloudManager" /> class
@@ -104,7 +104,7 @@ namespace Alis.Extension.Cloud.GoogleDrive
             {
                 GoogleCredential credential = GoogleCredential.FromAccessToken(accessToken);
 
-                _driveService = new DriveService(new BaseClientService.Initializer()
+                _driveService = new DriveService(new BaseClientService.Initializer
                 {
                     HttpClientInitializer = credential,
                     ApplicationName = "Alis-GoogleDrive-Manager"
@@ -141,10 +141,10 @@ namespace Alis.Extension.Cloud.GoogleDrive
 
             try
             {
-                Google.Apis.Drive.v3.Data.File fileMetadata = new Google.Apis.Drive.v3.Data.File()
+                Google.Apis.Drive.v3.Data.File fileMetadata = new Google.Apis.Drive.v3.Data.File
                 {
                     Name = Path.GetFileName(cloudPath),
-                    Parents = new List<string> { GetOrCreateFolderId(Path.GetDirectoryName(cloudPath) ?? "root").Result }
+                    Parents = new List<string> {GetOrCreateFolderId(Path.GetDirectoryName(cloudPath) ?? "root").Result}
                 };
 
                 using (FileStream stream = new FileStream(localFilePath, FileMode.Open, FileAccess.Read))
@@ -152,11 +152,12 @@ namespace Alis.Extension.Cloud.GoogleDrive
                     FilesResource.CreateMediaUpload request = _driveService.Files.Create(fileMetadata, stream, "application/octet-stream");
                     request.Fields = "id";
                     IUploadProgress response = await request.UploadAsync();
-                    if (response.Status == Google.Apis.Upload.UploadStatus.Completed)
+                    if (response.Status == UploadStatus.Completed)
                     {
                         Logger.Info($"File uploaded successfully to Google Drive: {cloudPath}");
                         return fileMetadata.Id ?? "unknown";
                     }
+
                     throw new Exception($"Upload failed with status: {response.Status}");
                 }
             }
@@ -320,11 +321,20 @@ namespace Alis.Extension.Cloud.GoogleDrive
         }
 
         /// <summary>
+        ///     Disposes the manager
+        /// </summary>
+        public void Dispose()
+        {
+            GC.SuppressFinalize(this);
+            OnDestroy();
+        }
+
+        /// <summary>
         ///     Gets the file ID by path
         /// </summary>
         private async Task<string> GetFileIdByPathAsync(string path)
         {
-            string[] parts = path.Split(new[] { '/' }, System.StringSplitOptions.RemoveEmptyEntries);
+            string[] parts = path.Split(new[] {'/'}, StringSplitOptions.RemoveEmptyEntries);
             string currentFolderId = "root";
 
             for (int i = 0; i < parts.Length - 1; i++)
@@ -362,7 +372,7 @@ namespace Alis.Extension.Cloud.GoogleDrive
                 return "root";
             }
 
-            string[] parts = path.Split(new[] { '/' }, System.StringSplitOptions.RemoveEmptyEntries);
+            string[] parts = path.Split(new[] {'/'}, StringSplitOptions.RemoveEmptyEntries);
             string currentFolderId = "root";
 
             foreach (string part in parts)
@@ -394,7 +404,7 @@ namespace Alis.Extension.Cloud.GoogleDrive
                 return "root";
             }
 
-            string[] parts = path.Split(new[] { '/' }, System.StringSplitOptions.RemoveEmptyEntries);
+            string[] parts = path.Split(new[] {'/'}, StringSplitOptions.RemoveEmptyEntries);
             string currentFolderId = "root";
 
             foreach (string part in parts)
@@ -411,11 +421,11 @@ namespace Alis.Extension.Cloud.GoogleDrive
                 }
                 else
                 {
-                    Google.Apis.Drive.v3.Data.File fileMetadata = new Google.Apis.Drive.v3.Data.File()
+                    Google.Apis.Drive.v3.Data.File fileMetadata = new Google.Apis.Drive.v3.Data.File
                     {
                         Name = part,
                         MimeType = "application/vnd.google-apps.folder",
-                        Parents = new List<string> { currentFolderId }
+                        Parents = new List<string> {currentFolderId}
                     };
 
                     FilesResource.CreateRequest createRequest = _driveService.Files.Create(fileMetadata);
@@ -441,15 +451,6 @@ namespace Alis.Extension.Cloud.GoogleDrive
             }
 
             base.OnDestroy();
-        }
-
-        /// <summary>
-        ///     Disposes the manager
-        /// </summary>
-        public void Dispose()
-        {
-            GC.SuppressFinalize(this);
-            OnDestroy();
         }
     }
 }

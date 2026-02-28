@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:IDTableExtendedTest.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -102,7 +103,7 @@ namespace Alis.Core.Ecs.Test.Collections
             // Arrange
             IdTable<long> table = new IdTable<long>();
             int[] indices = new int[4];
-            long[] values = { 10, 100, 500, 1000 };
+            long[] values = {10, 100, 500, 1000};
 
             // Act
             for (int i = 0; i < values.Length; i++)
@@ -152,8 +153,8 @@ namespace Alis.Core.Ecs.Test.Collections
         {
             // Arrange
             IdTable<object> table = new IdTable<object>();
-            var obj1 = new { ID = 1 };
-            var obj2 = new { ID = 2 };
+            var obj1 = new {ID = 1};
+            var obj2 = new {ID = 2};
 
             // Act
             ref object ref1 = ref table.Create(out int index1);
@@ -180,10 +181,10 @@ namespace Alis.Core.Ecs.Test.Collections
             // Act
             ref int intVal = ref intTable.Create(out int intIdx);
             intVal = 42;
-            
+
             ref string strVal = ref stringTable.Create(out int strIdx);
             strVal = "test";
-            
+
             ref double dblVal = ref doubleTable.Create(out int dblIdx);
             dblVal = 3.14;
 
@@ -194,4 +195,3 @@ namespace Alis.Core.Ecs.Test.Collections
         }
     }
 }
-

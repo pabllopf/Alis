@@ -49,7 +49,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
             BoardSquare[,] board = new BoardSquare[10, 10];
             List<RoomData> rooms = new List<RoomData>
             {
-                new RoomData(5, 5, 3, 3, Direction.North, false)
+                new RoomData(5, 5, 3, 3, Direction.North)
             };
             List<CorridorData> corridors = new List<CorridorData>
             {
@@ -160,7 +160,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
             BoardSquare[,] board = new BoardSquare[10, 10];
             List<RoomData> rooms = new List<RoomData>
             {
-                new RoomData(5, 5, 3, 3, Direction.North, false),
+                new RoomData(5, 5, 3, 3, Direction.North),
                 new RoomData(8, 8, 4, 4, Direction.South, true)
             };
             List<CorridorData> corridors = new List<CorridorData>();
@@ -218,4 +218,3 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
         }
     }
 }
-

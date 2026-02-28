@@ -38,18 +38,18 @@ namespace Alis.Extension.Thread.Test.Interfaces
     /// </summary>
     internal class MockParallelExecutionStrategy : IParallelExecutionStrategy
     {
-        private readonly bool returnValue;
         private readonly int batchSize;
-
-        public int CanExecuteCallCount { get; private set; }
-        public int GetBatchSizeCallCount { get; private set; }
-        public Type LastCheckedType { get; private set; }
+        private readonly bool returnValue;
 
         public MockParallelExecutionStrategy(bool returnValue = true, int batchSize = 128)
         {
             this.returnValue = returnValue;
             this.batchSize = batchSize;
         }
+
+        public int CanExecuteCallCount { get; private set; }
+        public int GetBatchSizeCallCount { get; private set; }
+        public Type LastCheckedType { get; private set; }
 
         public bool CanExecuteInParallel(Type componentType)
         {
@@ -136,7 +136,7 @@ namespace Alis.Extension.Thread.Test.Interfaces
         public void MockStrategy_CanExecuteInParallel_Works()
         {
             // Arrange
-            IParallelExecutionStrategy strategy = new MockParallelExecutionStrategy(true);
+            IParallelExecutionStrategy strategy = new MockParallelExecutionStrategy();
 
             // Act
             bool result = strategy.CanExecuteInParallel(typeof(int));
@@ -371,4 +371,3 @@ namespace Alis.Extension.Thread.Test.Interfaces
         }
     }
 }
-

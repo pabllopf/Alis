@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using Alis.Core.Ecs.Exceptions;
 using Xunit;
 
@@ -37,7 +38,7 @@ namespace Alis.Core.Ecs.Test.Exceptions
     ///     The component not found exception test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="ComponentNotFoundException"/> which is thrown
+    ///     Tests the <see cref="ComponentNotFoundException" /> which is thrown
     ///     when attempting to access a component that doesn't exist on an entity.
     /// </remarks>
     public class ComponentNotFoundExceptionTest
@@ -164,7 +165,7 @@ namespace Alis.Core.Ecs.Test.Exceptions
         public void Exception_WithComplexType_ShowsCorrectName()
         {
             // Arrange
-            Type testType = typeof(System.Collections.Generic.Dictionary<string, int>);
+            Type testType = typeof(Dictionary<string, int>);
 
             // Act
             ComponentNotFoundException exception = new ComponentNotFoundException(testType);
@@ -263,4 +264,3 @@ namespace Alis.Core.Ecs.Test.Exceptions
         }
     }
 }
-

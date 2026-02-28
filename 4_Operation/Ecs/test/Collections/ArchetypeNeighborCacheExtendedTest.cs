@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:ArchetypeNeighborCacheExtendedTest.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -27,8 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Ecs.Collections;
-using Alis.Core.Ecs.Kernel;
-using Alis.Core.Ecs.Kernel.Archetypes;
 using Xunit;
 
 namespace Alis.Core.Ecs.Test.Collections
@@ -107,11 +106,19 @@ namespace Alis.Core.Ecs.Test.Collections
             int index3 = cache.Traverse(3);
 
             if (index1 != 32)
-                Assert.Equal((ushort)100, cache.Lookup(index1));
+            {
+                Assert.Equal((ushort) 100, cache.Lookup(index1));
+            }
+
             if (index2 != 32)
-                Assert.Equal((ushort)200, cache.Lookup(index2));
+            {
+                Assert.Equal((ushort) 200, cache.Lookup(index2));
+            }
+
             if (index3 != 32)
-                Assert.Equal((ushort)300, cache.Lookup(index3));
+            {
+                Assert.Equal((ushort) 300, cache.Lookup(index3));
+            }
         }
 
         /// <summary>
@@ -132,7 +139,9 @@ namespace Alis.Core.Ecs.Test.Collections
             // Assert - Verify stored values
             int idx1 = cache.Traverse(1);
             if (idx1 != 32)
-                Assert.Equal((ushort)10, cache.Lookup(idx1));
+            {
+                Assert.Equal((ushort) 10, cache.Lookup(idx1));
+            }
         }
 
         /// <summary>
@@ -172,7 +181,9 @@ namespace Alis.Core.Ecs.Test.Collections
             int idx2 = cache.Traverse(ushort.MaxValue);
 
             if (idx1 != 32)
-                Assert.Equal((ushort)1, cache.Lookup(idx1));
+            {
+                Assert.Equal((ushort) 1, cache.Lookup(idx1));
+            }
         }
 
         /// <summary>
@@ -187,7 +198,7 @@ namespace Alis.Core.Ecs.Test.Collections
             // Act - Fill capacity and overwrite
             for (int i = 0; i < 8; i++)
             {
-                cache.Set((ushort)i, (ushort)(i * 10));
+                cache.Set((ushort) i, (ushort) (i * 10));
             }
 
             // Assert - Verify structure doesn't crash
@@ -196,4 +207,3 @@ namespace Alis.Core.Ecs.Test.Collections
         }
     }
 }
-

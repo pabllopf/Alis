@@ -45,7 +45,7 @@ namespace Alis.Core.Physic.Test.Collisions
         public void Constructor_ShouldInitializeWithDefaultValues()
         {
             RayCastInput input = new RayCastInput();
-            
+
             Assert.Equal(0.0f, input.MaxFraction);
             Assert.Equal(Vector2F.Zero, input.Point1);
             Assert.Equal(Vector2F.Zero, input.Point2);
@@ -61,7 +61,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 MaxFraction = 0.75f
             };
-            
+
             Assert.Equal(0.75f, input.MaxFraction);
         }
 
@@ -76,7 +76,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 Point1 = point
             };
-            
+
             Assert.Equal(point, input.Point1);
         }
 
@@ -91,7 +91,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 Point2 = point
             };
-            
+
             Assert.Equal(point, input.Point2);
         }
 
@@ -107,7 +107,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 Point2 = new Vector2F(10.0f, 10.0f),
                 MaxFraction = 1.0f
             };
-            
+
             Assert.Equal(new Vector2F(0.0f, 0.0f), input.Point1);
             Assert.Equal(new Vector2F(10.0f, 10.0f), input.Point2);
             Assert.Equal(1.0f, input.MaxFraction);
@@ -123,7 +123,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 MaxFraction = 0.0f
             };
-            
+
             Assert.Equal(0.0f, input.MaxFraction);
         }
 
@@ -137,7 +137,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 MaxFraction = 1.0f
             };
-            
+
             Assert.Equal(1.0f, input.MaxFraction);
         }
 
@@ -152,10 +152,9 @@ namespace Alis.Core.Physic.Test.Collisions
                 Point1 = new Vector2F(-5.0f, -10.0f),
                 Point2 = new Vector2F(-1.0f, -2.0f)
             };
-            
+
             Assert.Equal(new Vector2F(-5.0f, -10.0f), input.Point1);
             Assert.Equal(new Vector2F(-1.0f, -2.0f), input.Point2);
         }
     }
 }
-

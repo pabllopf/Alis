@@ -47,7 +47,7 @@ namespace Alis.Core.Physic.Test.Common
         public void DefaultConstructor_ShouldInitializeEmptyControlPoints()
         {
             Path path = new Path();
-            
+
             Assert.NotNull(path.ControlPoints);
             Assert.Empty(path.ControlPoints);
             Assert.False(path.Closed);
@@ -59,15 +59,15 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void ConstructorWithArray_ShouldInitializeControlPoints()
         {
-            Vector2F[] vertices = new Vector2F[]
+            Vector2F[] vertices = new[]
             {
                 new Vector2F(0, 0),
                 new Vector2F(1, 1),
                 new Vector2F(2, 0)
             };
-            
+
             Path path = new Path(vertices);
-            
+
             Assert.Equal(3, path.ControlPoints.Count);
             Assert.Equal(vertices[0], path.ControlPoints[0]);
         }
@@ -83,9 +83,9 @@ namespace Alis.Core.Physic.Test.Common
                 new Vector2F(0, 0),
                 new Vector2F(1, 1)
             };
-            
+
             Path path = new Path(vertices);
-            
+
             Assert.Equal(2, path.ControlPoints.Count);
         }
 
@@ -97,9 +97,9 @@ namespace Alis.Core.Physic.Test.Common
         {
             Path path = new Path();
             Vector2F point = new Vector2F(5, 10);
-            
+
             path.Add(point);
-            
+
             Assert.Single(path.ControlPoints);
             Assert.Equal(point, path.ControlPoints[0]);
         }
@@ -113,9 +113,9 @@ namespace Alis.Core.Physic.Test.Common
             Path path = new Path();
             Vector2F point = new Vector2F(5, 10);
             path.Add(point);
-            
+
             path.Remove(point);
-            
+
             Assert.Empty(path.ControlPoints);
         }
 
@@ -128,9 +128,9 @@ namespace Alis.Core.Physic.Test.Common
             Path path = new Path();
             path.Add(new Vector2F(1, 1));
             path.Add(new Vector2F(2, 2));
-            
+
             path.RemoveAt(0);
-            
+
             Assert.Single(path.ControlPoints);
             Assert.Equal(new Vector2F(2, 2), path.ControlPoints[0]);
         }
@@ -141,10 +141,10 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void NextIndex_ShouldReturnCorrectIndex()
         {
-            Path path = new Path(new Vector2F[] { new Vector2F(0, 0), new Vector2F(1, 1), new Vector2F(2, 2) });
-            
+            Path path = new Path(new[] {new Vector2F(0, 0), new Vector2F(1, 1), new Vector2F(2, 2)});
+
             int nextIndex = path.NextIndex(1);
-            
+
             Assert.Equal(2, nextIndex);
         }
 
@@ -154,10 +154,10 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void NextIndex_ShouldWrapAroundToZero()
         {
-            Path path = new Path(new Vector2F[] { new Vector2F(0, 0), new Vector2F(1, 1), new Vector2F(2, 2) });
-            
+            Path path = new Path(new[] {new Vector2F(0, 0), new Vector2F(1, 1), new Vector2F(2, 2)});
+
             int nextIndex = path.NextIndex(2);
-            
+
             Assert.Equal(0, nextIndex);
         }
 
@@ -167,10 +167,10 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void PreviousIndex_ShouldReturnCorrectIndex()
         {
-            Path path = new Path(new Vector2F[] { new Vector2F(0, 0), new Vector2F(1, 1), new Vector2F(2, 2) });
-            
+            Path path = new Path(new[] {new Vector2F(0, 0), new Vector2F(1, 1), new Vector2F(2, 2)});
+
             int prevIndex = path.PreviousIndex(1);
-            
+
             Assert.Equal(0, prevIndex);
         }
 
@@ -180,10 +180,10 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void PreviousIndex_ShouldWrapAroundToLast()
         {
-            Path path = new Path(new Vector2F[] { new Vector2F(0, 0), new Vector2F(1, 1), new Vector2F(2, 2) });
-            
+            Path path = new Path(new[] {new Vector2F(0, 0), new Vector2F(1, 1), new Vector2F(2, 2)});
+
             int prevIndex = path.PreviousIndex(0);
-            
+
             Assert.Equal(2, prevIndex);
         }
 
@@ -193,11 +193,11 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void Translate_ShouldMoveAllControlPoints()
         {
-            Path path = new Path(new Vector2F[] { new Vector2F(0, 0), new Vector2F(1, 1) });
+            Path path = new Path(new[] {new Vector2F(0, 0), new Vector2F(1, 1)});
             Vector2F translation = new Vector2F(5, 5);
-            
+
             path.Translate(ref translation);
-            
+
             Assert.Equal(new Vector2F(5, 5), path.ControlPoints[0]);
             Assert.Equal(new Vector2F(6, 6), path.ControlPoints[1]);
         }
@@ -208,11 +208,11 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void Scale_ShouldScaleAllControlPoints()
         {
-            Path path = new Path(new Vector2F[] { new Vector2F(1, 1), new Vector2F(2, 2) });
+            Path path = new Path(new[] {new Vector2F(1, 1), new Vector2F(2, 2)});
             Vector2F scale = new Vector2F(2, 2);
-            
+
             path.Scale(ref scale);
-            
+
             Assert.Equal(new Vector2F(2, 2), path.ControlPoints[0]);
             Assert.Equal(new Vector2F(4, 4), path.ControlPoints[1]);
         }
@@ -223,11 +223,11 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void Rotate_ShouldRotateAllControlPoints()
         {
-            Path path = new Path(new Vector2F[] { new Vector2F(1, 0) });
-            float angle = (float)Math.PI / 2; // 90 degrees
-            
+            Path path = new Path(new[] {new Vector2F(1, 0)});
+            float angle = (float) Math.PI / 2; // 90 degrees
+
             path.Rotate(angle);
-            
+
             Assert.False(Math.Abs(path.ControlPoints[0].X) < 0.001f);
             Assert.False(Math.Abs(path.ControlPoints[0].Y - 1.0f) < 0.001f);
         }
@@ -239,9 +239,9 @@ namespace Alis.Core.Physic.Test.Common
         public void ClosedProperty_ShouldSetAndGetCorrectly()
         {
             Path path = new Path();
-            
+
             path.Closed = true;
-            
+
             Assert.True(path.Closed);
         }
 
@@ -253,7 +253,7 @@ namespace Alis.Core.Physic.Test.Common
         {
             Path path = new Path();
             path.Add(new Vector2F(0, 0));
-            
+
             Assert.Throws<Exception>(() => path.GetPosition(0.5f));
         }
 
@@ -263,10 +263,10 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void GetPosition_ShouldReturnValidPosition_WithTwoControlPoints()
         {
-            Path path = new Path(new Vector2F[] { new Vector2F(0, 0), new Vector2F(10, 10) });
-            
+            Path path = new Path(new[] {new Vector2F(0, 0), new Vector2F(10, 10)});
+
             Vector2F position = path.GetPosition(0.5f);
-            
+
             Assert.NotEqual(Vector2F.Zero, position);
         }
 
@@ -276,10 +276,10 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void GetVertices_ShouldReturnVerticesWithSpecifiedDivisions()
         {
-            Path path = new Path(new Vector2F[] { new Vector2F(0, 0), new Vector2F(10, 10) });
-            
+            Path path = new Path(new[] {new Vector2F(0, 0), new Vector2F(10, 10)});
+
             Vertices vertices = path.GetVertices(10);
-            
+
             Assert.NotNull(vertices);
             Assert.NotEmpty(vertices);
         }
@@ -290,10 +290,10 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void GetPositionNormal_ShouldReturnNormalizedVector()
         {
-            Path path = new Path(new Vector2F[] { new Vector2F(0, 0), new Vector2F(10, 0), new Vector2F(10, 10) });
-            
+            Path path = new Path(new[] {new Vector2F(0, 0), new Vector2F(10, 0), new Vector2F(10, 10)});
+
             Vector2F normal = path.GetPositionNormal(0.5f);
-            
+
             Assert.True(Math.Abs(normal.Length() - 1.0f) < 0.01f);
         }
 
@@ -303,15 +303,15 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void SubdivideEvenly_ShouldReturnListOfSubdivisions()
         {
-            Path path = new Path(new Vector2F[] 
-            { 
-                new Vector2F(0, 0), 
-                new Vector2F(5, 5), 
-                new Vector2F(10, 0) 
+            Path path = new Path(new[]
+            {
+                new Vector2F(0, 0),
+                new Vector2F(5, 5),
+                new Vector2F(10, 0)
             });
-            
+
             List<Vector3F> subdivisions = path.SubdivideEvenly(5);
-            
+
             Assert.NotNull(subdivisions);
         }
 
@@ -321,10 +321,10 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void ToString_ShouldReturnFormattedString()
         {
-            Path path = new Path(new Vector2F[] { new Vector2F(1, 2), new Vector2F(3, 4) });
-            
+            Path path = new Path(new[] {new Vector2F(1, 2), new Vector2F(3, 4)});
+
             string result = path.ToString();
-            
+
             Assert.NotNull(result);
             Assert.NotEmpty(result);
         }
@@ -335,10 +335,10 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void GetLength_ShouldReturnPositiveValue()
         {
-            Path path = new Path(new Vector2F[] { new Vector2F(0, 0), new Vector2F(10, 0) });
-            
+            Path path = new Path(new[] {new Vector2F(0, 0), new Vector2F(10, 0)});
+
             float length = path.GetLength();
-            
+
             Assert.True(length > 0);
         }
 
@@ -348,18 +348,17 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void ClosedPath_ShouldHandleGetPositionCorrectly()
         {
-            Path path = new Path(new Vector2F[] 
-            { 
-                new Vector2F(0, 0), 
-                new Vector2F(10, 0), 
-                new Vector2F(10, 10) 
+            Path path = new Path(new[]
+            {
+                new Vector2F(0, 0),
+                new Vector2F(10, 0),
+                new Vector2F(10, 10)
             });
             path.Closed = true;
-            
+
             Vector2F position = path.GetPosition(0.5f);
-            
+
             Assert.NotEqual(Vector2F.Zero, position);
         }
     }
 }
-

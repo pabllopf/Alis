@@ -34,7 +34,6 @@ namespace Alis.Extension.Io.FileDialog
     /// </summary>
     public interface IFilePicker
     {
-
         /// <summary>
         ///     Opens a file picker dialog with advanced options.
         /// </summary>

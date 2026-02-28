@@ -28,8 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Threading;
 using Alis.Extension.Profile.Factories;
-using Alis.Extension.Profile.Interfaces;
 using Alis.Extension.Profile.Models;
 using Alis.Extension.Profile.Test.Mocks;
 using Xunit;
@@ -148,7 +148,7 @@ namespace Alis.Extension.Profile.Test.Factories
 
             // Act
             ResourceMetrics first = factory.CreateSnapshot();
-            System.Threading.Thread.Sleep(10); // Ensure time difference
+            Thread.Sleep(10); // Ensure time difference
             ResourceMetrics second = factory.CreateSnapshot();
 
             // Assert
@@ -156,4 +156,3 @@ namespace Alis.Extension.Profile.Test.Factories
         }
     }
 }
-

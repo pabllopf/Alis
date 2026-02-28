@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IRunTest.cs
+//  File:IRunTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,21 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
     /// </summary>
     public class IRunTest
     {
-        /// <summary>
-        ///     Helper implementation of IRun.
-        /// </summary>
-        private class TestRunner : IRun
-        {
-            public bool HasRun { get; private set; }
-            public int RunCount { get; private set; }
-
-            public void Run()
-            {
-                HasRun = true;
-                RunCount++;
-            }
-        }
-
         /// <summary>
         ///     Tests that IRun can be implemented.
         /// </summary>
@@ -91,10 +76,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Tests Run can be called multiple times.
         /// </summary>
-        [Theory]
-        [InlineData(1)]
-        [InlineData(5)]
-        [InlineData(100)]
+        [Theory, InlineData(1), InlineData(5), InlineData(100)]
         public void Run_SupportsMultipleCalls(int callCount)
         {
             TestRunner runner = new TestRunner();
@@ -102,8 +84,23 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
             {
                 runner.Run();
             }
+
             Assert.Equal(callCount, runner.RunCount);
+        }
+
+        /// <summary>
+        ///     Helper implementation of IRun.
+        /// </summary>
+        private class TestRunner : IRun
+        {
+            public bool HasRun { get; private set; }
+            public int RunCount { get; private set; }
+
+            public void Run()
+            {
+                HasRun = true;
+                RunCount++;
+            }
         }
     }
 }
-

@@ -37,15 +37,9 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
     /// </summary>
     public class MockGameObject : IGameObject
     {
-        public ref T Get<T>()
-        {
-            throw new System.NotImplementedException();
-        }
+        public ref T Get<T>() => throw new NotImplementedException();
 
-        public bool Has<T>()
-        {
-            throw new System.NotImplementedException();
-        }
+        public bool Has<T>() => throw new NotImplementedException();
 
         public bool Has(Type type) => throw new NotImplementedException();
 

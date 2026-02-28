@@ -42,4 +42,3 @@ namespace Alis.Extension.Language.Dialogue.Core
         bool Evaluate(DialogContext context);
     }
 }
-

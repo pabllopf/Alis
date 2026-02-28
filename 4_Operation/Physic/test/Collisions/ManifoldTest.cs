@@ -45,7 +45,7 @@ namespace Alis.Core.Physic.Test.Collisions
         public void Constructor_ShouldInitializeWithDefaultValues()
         {
             Manifold manifold = new Manifold();
-            
+
             Assert.Equal(Vector2F.Zero, manifold.LocalNormal);
             Assert.Equal(Vector2F.Zero, manifold.LocalPoint);
             Assert.Equal(0, manifold.PointCount);
@@ -62,7 +62,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 LocalNormal = new Vector2F(1.0f, 0.0f)
             };
-            
+
             Assert.Equal(new Vector2F(1.0f, 0.0f), manifold.LocalNormal);
         }
 
@@ -76,7 +76,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 LocalPoint = new Vector2F(2.0f, 3.0f)
             };
-            
+
             Assert.Equal(new Vector2F(2.0f, 3.0f), manifold.LocalPoint);
         }
 
@@ -90,7 +90,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 PointCount = 2
             };
-            
+
             Assert.Equal(2, manifold.PointCount);
         }
 
@@ -104,7 +104,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 Type = ManifoldType.FaceA
             };
-            
+
             Assert.Equal(ManifoldType.FaceA, manifold.Type);
         }
 
@@ -121,7 +121,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 PointCount = 2,
                 Type = ManifoldType.FaceB
             };
-            
+
             Assert.Equal(new Vector2F(1.0f, 0.0f), manifold.LocalNormal);
             Assert.Equal(new Vector2F(2.0f, 3.0f), manifold.LocalPoint);
             Assert.Equal(2, manifold.PointCount);
@@ -138,9 +138,8 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 PointCount = SettingEnv.MaxManifoldPoints
             };
-            
+
             Assert.Equal(SettingEnv.MaxManifoldPoints, manifold.PointCount);
         }
     }
 }
-

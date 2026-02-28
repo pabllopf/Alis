@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
 using Alis.Extension.Media.FFmpeg.Encoding.Builders;
 using Xunit;
 
@@ -48,7 +50,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             FFmpegProfile profile = FFmpegProfile.Auto;
 
             // Assert
-            Assert.Equal(0, (int)profile);
+            Assert.Equal(0, (int) profile);
         }
 
         /// <summary>
@@ -61,7 +63,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             FFmpegProfile profile = FFmpegProfile.Baseline;
 
             // Assert
-            Assert.Equal(1, (int)profile);
+            Assert.Equal(1, (int) profile);
         }
 
         /// <summary>
@@ -74,7 +76,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             FFmpegProfile profile = FFmpegProfile.Main;
 
             // Assert
-            Assert.Equal(2, (int)profile);
+            Assert.Equal(2, (int) profile);
         }
 
         /// <summary>
@@ -87,7 +89,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             FFmpegProfile profile = FFmpegProfile.High;
 
             // Assert
-            Assert.Equal(3, (int)profile);
+            Assert.Equal(3, (int) profile);
         }
 
         /// <summary>
@@ -100,7 +102,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             FFmpegProfile profile = FFmpegProfile.High10;
 
             // Assert
-            Assert.Equal(4, (int)profile);
+            Assert.Equal(4, (int) profile);
         }
 
         /// <summary>
@@ -113,7 +115,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             FFmpegProfile profile = FFmpegProfile.High442;
 
             // Assert
-            Assert.Equal(5, (int)profile);
+            Assert.Equal(5, (int) profile);
         }
 
         /// <summary>
@@ -126,7 +128,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             FFmpegProfile profile = FFmpegProfile.High444;
 
             // Assert
-            Assert.Equal(6, (int)profile);
+            Assert.Equal(6, (int) profile);
         }
 
         /// <summary>
@@ -136,7 +138,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         public void FFmpegProfile_Enum_ShouldHaveSevenValues()
         {
             // Arrange & Act
-            FFmpegProfile[] values = (FFmpegProfile[])System.Enum.GetValues(typeof(FFmpegProfile));
+            FFmpegProfile[] values = (FFmpegProfile[]) Enum.GetValues(typeof(FFmpegProfile));
 
             // Assert
             Assert.Equal(7, values.Length);
@@ -171,8 +173,8 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         public void FFmpegProfile_ShouldBeParseableFromString()
         {
             // Arrange & Act
-            FFmpegProfile main = (FFmpegProfile)System.Enum.Parse(typeof(FFmpegProfile), "Main");
-            FFmpegProfile high10 = (FFmpegProfile)System.Enum.Parse(typeof(FFmpegProfile), "High10");
+            FFmpegProfile main = (FFmpegProfile) Enum.Parse(typeof(FFmpegProfile), "Main");
+            FFmpegProfile high10 = (FFmpegProfile) Enum.Parse(typeof(FFmpegProfile), "High10");
 
             // Assert
             Assert.Equal(FFmpegProfile.Main, main);
@@ -224,13 +226,13 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         public void FFmpegProfile_AllValues_ShouldBeDefined()
         {
             // Arrange & Act & Assert
-            Assert.True(System.Enum.IsDefined(typeof(FFmpegProfile), FFmpegProfile.Auto));
-            Assert.True(System.Enum.IsDefined(typeof(FFmpegProfile), FFmpegProfile.Baseline));
-            Assert.True(System.Enum.IsDefined(typeof(FFmpegProfile), FFmpegProfile.Main));
-            Assert.True(System.Enum.IsDefined(typeof(FFmpegProfile), FFmpegProfile.High));
-            Assert.True(System.Enum.IsDefined(typeof(FFmpegProfile), FFmpegProfile.High10));
-            Assert.True(System.Enum.IsDefined(typeof(FFmpegProfile), FFmpegProfile.High442));
-            Assert.True(System.Enum.IsDefined(typeof(FFmpegProfile), FFmpegProfile.High444));
+            Assert.True(Enum.IsDefined(typeof(FFmpegProfile), FFmpegProfile.Auto));
+            Assert.True(Enum.IsDefined(typeof(FFmpegProfile), FFmpegProfile.Baseline));
+            Assert.True(Enum.IsDefined(typeof(FFmpegProfile), FFmpegProfile.Main));
+            Assert.True(Enum.IsDefined(typeof(FFmpegProfile), FFmpegProfile.High));
+            Assert.True(Enum.IsDefined(typeof(FFmpegProfile), FFmpegProfile.High10));
+            Assert.True(Enum.IsDefined(typeof(FFmpegProfile), FFmpegProfile.High442));
+            Assert.True(Enum.IsDefined(typeof(FFmpegProfile), FFmpegProfile.High444));
         }
 
         /// <summary>
@@ -240,19 +242,19 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         public void FFmpegProfile_ShouldHaveUniqueValues()
         {
             // Arrange
-            int[] values = new int[]
+            int[] values = new[]
             {
-                (int)FFmpegProfile.Auto,
-                (int)FFmpegProfile.Baseline,
-                (int)FFmpegProfile.Main,
-                (int)FFmpegProfile.High,
-                (int)FFmpegProfile.High10,
-                (int)FFmpegProfile.High442,
-                (int)FFmpegProfile.High444
+                (int) FFmpegProfile.Auto,
+                (int) FFmpegProfile.Baseline,
+                (int) FFmpegProfile.Main,
+                (int) FFmpegProfile.High,
+                (int) FFmpegProfile.High10,
+                (int) FFmpegProfile.High442,
+                (int) FFmpegProfile.High444
             };
 
             // Act & Assert
-            Assert.Equal(values.Length, new System.Collections.Generic.HashSet<int>(values).Count);
+            Assert.Equal(values.Length, new HashSet<int>(values).Count);
         }
 
         /// <summary>
@@ -265,7 +267,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             FFmpegProfile profile = FFmpegProfile.High10;
 
             // Act
-            int value = (int)profile;
+            int value = (int) profile;
 
             // Assert
             Assert.Equal(4, value);
@@ -281,7 +283,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             int value = 3;
 
             // Act
-            FFmpegProfile profile = (FFmpegProfile)value;
+            FFmpegProfile profile = (FFmpegProfile) value;
 
             // Assert
             Assert.Equal(FFmpegProfile.High, profile);
@@ -328,4 +330,3 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         }
     }
 }
-

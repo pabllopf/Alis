@@ -5,31 +5,30 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: LoggerFactoryTest.cs
+//  File:LoggerFactoryTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program. If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System;
 using System.Collections.Generic;
-using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Logging.Abstractions;
 using Alis.Core.Aspect.Logging.Filters;
 using Alis.Core.Aspect.Logging.Formatters;
@@ -160,7 +159,7 @@ namespace Alis.Core.Aspect.Logging.Test
             // Arrange
             using (LoggerFactory factory = new LoggerFactory())
 
-            // Act
+                // Act
             {
                 LoggerFactory result = factory.SetMinimumLevel(LogLevel.Warning);
 
@@ -174,10 +173,10 @@ namespace Alis.Core.Aspect.Logging.Test
         {
             // Arrange & Act
             using (LoggerFactory factory = new LoggerFactory()
-                .AddOutput(new MemoryLogOutput())
-                .AddFilter(new LogLevelFilter(LogLevel.Info))
-                .SetMinimumLevel(LogLevel.Debug)
-                .SetFormatter(new SimpleLogFormatter()))
+                       .AddOutput(new MemoryLogOutput())
+                       .AddFilter(new LogLevelFilter(LogLevel.Info))
+                       .SetMinimumLevel(LogLevel.Debug)
+                       .SetFormatter(new SimpleLogFormatter()))
             {
                 ILogger logger = factory.CreateLogger("TestLogger");
 
@@ -356,7 +355,7 @@ namespace Alis.Core.Aspect.Logging.Test
             // Assert
             Assert.True(disposableOutput.IsDisposed);
         }
-        
+
 
         [Fact]
         public void LoggerFactory_DisposedFactory_ShouldNotThrowOnSecondDispose()
@@ -393,7 +392,7 @@ namespace Alis.Core.Aspect.Logging.Test
             {
                 factory.AddOutput(memoryOutput);
                 factory.AddFilter(new LogLevelFilter(LogLevel.Info));
-                factory.AddFilter(new LoggerNameFilter(new[] { "TestLogger" }, inclusive: true));
+                factory.AddFilter(new LoggerNameFilter(new[] {"TestLogger"}, true));
                 ILogger logger = factory.CreateLogger("TestLogger");
 
                 // Act
@@ -434,9 +433,9 @@ namespace Alis.Core.Aspect.Logging.Test
         /// </summary>
         private sealed class DisposableLogOutput : ILogOutput
         {
+            public bool IsDisposed { get; private set; }
             public string Name => "DisposableOutput";
             public bool IsEnabled { get; set; } = true;
-            public bool IsDisposed { get; private set; }
 
             public void Write(ILogEntry entry)
             {
@@ -453,4 +452,3 @@ namespace Alis.Core.Aspect.Logging.Test
         }
     }
 }
-

@@ -33,8 +33,6 @@ using Alis.Core.Audio.Interfaces;
 using Alis.Core.Audio.Players;
 using Alis.Core.Audio.Test.Players.Attributes;
 using Xunit;
-using Alis.Core.Audio.Test.Players.Attributes;
-using Xunit;
 
 namespace Alis.Core.Audio.Test.Players
 {
@@ -602,7 +600,7 @@ namespace Alis.Core.Audio.Test.Players
 
             // Act
             await player.Stop();
-            
+
             // Try to play (will fail with non-existent file)
             try
             {
@@ -628,7 +626,7 @@ namespace Alis.Core.Audio.Test.Players
 
             // Act
             await player.Stop();
-            
+
             // Try to play (will fail with non-existent file)
             try
             {
@@ -803,4 +801,3 @@ namespace Alis.Core.Audio.Test.Players
         }
     }
 }
-

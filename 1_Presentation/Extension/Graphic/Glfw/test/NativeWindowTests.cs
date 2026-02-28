@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:NativeWindowTests.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -41,12 +42,12 @@ namespace Alis.Extension.Graphic.Glfw.Test
     public class NativeWindowTests : IDisposable
     {
         /// <summary>
-        /// The window
+        ///     The window
         /// </summary>
         private NativeWindow window;
 
         /// <summary>
-        /// Disposes this instance
+        ///     Disposes this instance
         /// </summary>
         public void Dispose()
         {
@@ -54,7 +55,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Natives the window default constructor creates window
+        ///     Natives the window default constructor creates window
         /// </summary>
         [RequiresDisplay]
         public void NativeWindow_DefaultConstructor_CreatesWindow()
@@ -69,7 +70,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Natives the window constructor with parameters creates window
+        ///     Natives the window constructor with parameters creates window
         /// </summary>
         [RequiresDisplay]
         public void NativeWindow_ConstructorWithParameters_CreatesWindow()
@@ -84,7 +85,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Natives the window constructor with all parameters creates window
+        ///     Natives the window constructor with all parameters creates window
         /// </summary>
         [RequiresDisplay]
         public void NativeWindow_ConstructorWithAllParameters_CreatesWindow()
@@ -99,7 +100,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Natives the window size can get size
+        ///     Natives the window size can get size
         /// </summary>
         [RequiresDisplay]
         public void NativeWindow_Size_CanGetSize()
@@ -117,7 +118,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Natives the window size can set size
+        ///     Natives the window size can set size
         /// </summary>
         [RequiresDisplay]
         public void NativeWindow_Size_CanSetSize()
@@ -136,7 +137,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Natives the window title can get title
+        ///     Natives the window title can get title
         /// </summary>
         [RequiresDisplay]
         public void NativeWindow_Title_CanGetTitle()
@@ -154,7 +155,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Natives the window title can set title
+        ///     Natives the window title can set title
         /// </summary>
         [RequiresDisplay]
         public void NativeWindow_Title_CanSetTitle()
@@ -172,7 +173,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Natives the window position can get position
+        ///     Natives the window position can get position
         /// </summary>
         [RequiresDisplay]
         public void NativeWindow_Position_CanGetPosition()
@@ -190,7 +191,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Natives the window position can set position
+        ///     Natives the window position can set position
         /// </summary>
         [RequiresDisplay]
         public void NativeWindow_Position_CanSetPosition()
@@ -205,7 +206,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Natives the window bounds can get bounds
+        ///     Natives the window bounds can get bounds
         /// </summary>
         [RequiresDisplay]
         public void NativeWindow_Bounds_CanGetBounds()
@@ -223,7 +224,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Natives the window bounds can set bounds
+        ///     Natives the window bounds can set bounds
         /// </summary>
         [RequiresDisplay]
         public void NativeWindow_Bounds_CanSetBounds()
@@ -242,7 +243,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Natives the window close does not throw
+        ///     Natives the window close does not throw
         /// </summary>
         [RequiresDisplay]
         public void NativeWindow_Close_DoesNotThrow()
@@ -256,7 +257,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Natives the window focus does not throw
+        ///     Natives the window focus does not throw
         /// </summary>
         [RequiresDisplay]
         public void NativeWindow_Focus_DoesNotThrow()
@@ -268,10 +269,10 @@ namespace Alis.Extension.Graphic.Glfw.Test
             // Act & Assert
             window.Focus();
         }
-        
+
 
         /// <summary>
-        /// Natives the window maximize does not throw
+        ///     Natives the window maximize does not throw
         /// </summary>
         [RequiresDisplay]
         public void NativeWindow_Maximize_DoesNotThrow()
@@ -285,7 +286,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Natives the window minimize does not throw
+        ///     Natives the window minimize does not throw
         /// </summary>
         [RequiresDisplay]
         public void NativeWindow_Minimize_DoesNotThrow()
@@ -299,7 +300,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Natives the window restore does not throw
+        ///     Natives the window restore does not throw
         /// </summary>
         [RequiresDisplay]
         public void NativeWindow_Restore_DoesNotThrow()
@@ -313,7 +314,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Natives the window content scale returns valid scale
+        ///     Natives the window content scale returns valid scale
         /// </summary>
         [RequiresDisplay]
         public void NativeWindow_ContentScale_ReturnsValidScale()
@@ -329,10 +330,10 @@ namespace Alis.Extension.Graphic.Glfw.Test
             Assert.True(contentScale.X > 0);
             Assert.True(contentScale.Y > 0);
         }
-        
+
 
         /// <summary>
-        /// Natives the window equals with same window returns true
+        ///     Natives the window equals with same window returns true
         /// </summary>
         [RequiresDisplay]
         public void NativeWindow_Equals_WithSameWindow_ReturnsTrue()
@@ -349,7 +350,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Natives the window get hash code returns consistent value
+        ///     Natives the window get hash code returns consistent value
         /// </summary>
         [RequiresDisplay]
         public void NativeWindow_GetHashCode_ReturnsConsistentValue()
@@ -367,7 +368,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Natives the window make current does not throw
+        ///     Natives the window make current does not throw
         /// </summary>
         [RequiresDisplay]
         public void NativeWindow_MakeCurrent_DoesNotThrow()
@@ -381,7 +382,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Natives the window swap buffers does not throw
+        ///     Natives the window swap buffers does not throw
         /// </summary>
         [RequiresDisplay]
         public void NativeWindow_SwapBuffers_DoesNotThrow()
@@ -395,4 +396,3 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
     }
 }
-

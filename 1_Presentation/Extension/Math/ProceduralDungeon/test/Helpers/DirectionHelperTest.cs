@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Extension.Math.ProceduralDungeon;
 using Alis.Extension.Math.ProceduralDungeon.Helpers;
 using Xunit;
 
@@ -120,11 +119,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         /// <summary>
         ///     Tests that IsValid returns true for valid directions.
         /// </summary>
-        [Theory]
-        [InlineData(Direction.North)]
-        [InlineData(Direction.South)]
-        [InlineData(Direction.East)]
-        [InlineData(Direction.West)]
+        [Theory, InlineData(Direction.North), InlineData(Direction.South), InlineData(Direction.East), InlineData(Direction.West)]
         public void IsValid_WithValidDirection_ReturnsTrue(Direction direction)
         {
             // Act
@@ -157,7 +152,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         public void IsValid_WithInvalidValue_ReturnsFalse()
         {
             // Arrange
-            Direction direction = (Direction)999;
+            Direction direction = (Direction) 999;
 
             // Act
             bool isValid = DirectionHelper.IsValid(direction);
@@ -220,11 +215,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         /// <summary>
         ///     Tests that AreOpposite returns false for non-opposite directions.
         /// </summary>
-        [Theory]
-        [InlineData(Direction.North, Direction.East)]
-        [InlineData(Direction.North, Direction.West)]
-        [InlineData(Direction.South, Direction.East)]
-        [InlineData(Direction.South, Direction.West)]
+        [Theory, InlineData(Direction.North, Direction.East), InlineData(Direction.North, Direction.West), InlineData(Direction.South, Direction.East), InlineData(Direction.South, Direction.West)]
         public void AreOpposite_WithNonOppositeDirections_ReturnsFalse(Direction first, Direction second)
         {
             // Act
@@ -378,9 +369,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         /// <summary>
         ///     Tests that IsHorizontal returns false for vertical directions.
         /// </summary>
-        [Theory]
-        [InlineData(Direction.North)]
-        [InlineData(Direction.South)]
+        [Theory, InlineData(Direction.North), InlineData(Direction.South)]
         public void IsHorizontal_WithVerticalDirection_ReturnsFalse(Direction direction)
         {
             // Act
@@ -438,9 +427,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         /// <summary>
         ///     Tests that IsVertical returns false for horizontal directions.
         /// </summary>
-        [Theory]
-        [InlineData(Direction.East)]
-        [InlineData(Direction.West)]
+        [Theory, InlineData(Direction.East), InlineData(Direction.West)]
         public void IsVertical_WithHorizontalDirection_ReturnsFalse(Direction direction)
         {
             // Act
@@ -464,4 +451,3 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         }
     }
 }
-

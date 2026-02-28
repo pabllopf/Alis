@@ -50,39 +50,9 @@ namespace Alis.Extension.Language.Translator
     public class TranslationManager
     {
         /// <summary>
-        ///     The language provider
-        /// </summary>
-        private readonly ILanguageProvider languageProvider;
-
-        /// <summary>
-        ///     The translation provider
-        /// </summary>
-        private readonly ITranslationProvider translationProvider;
-
-        /// <summary>
         ///     The translation cache
         /// </summary>
         private readonly ITranslationCache cache;
-
-        /// <summary>
-        ///     The pluralization engine
-        /// </summary>
-        private readonly IPluralizationEngine pluralizationEngine;
-
-        /// <summary>
-        ///     List of observers to notify on translation events
-        /// </summary>
-        private readonly List<ITranslationObserver> observers = new List<ITranslationObserver>();
-
-        /// <summary>
-        ///     The lock object for thread-safe operations
-        /// </summary>
-        private readonly object syncLock = new object();
-
-        /// <summary>
-        ///     The current language
-        /// </summary>
-        private ILanguage currentLanguage;
 
         /// <summary>
         ///     The fallback language codes (e.g., "en-US" -> ["en-US", "en"])
@@ -90,39 +60,66 @@ namespace Alis.Extension.Language.Translator
         private readonly List<string> fallbackLanguages = new List<string>();
 
         /// <summary>
-        ///     Gets the current language
+        ///     The language provider
         /// </summary>
-        public ILanguage Lang
-        {
-            get => currentLanguage;
-        }
+        private readonly ILanguageProvider languageProvider;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="TranslationManager"/> class with default providers
+        ///     List of observers to notify on translation events
+        /// </summary>
+        private readonly List<ITranslationObserver> observers = new List<ITranslationObserver>();
+
+        /// <summary>
+        ///     The pluralization engine
+        /// </summary>
+        private readonly IPluralizationEngine pluralizationEngine;
+
+        /// <summary>
+        ///     The lock object for thread-safe operations
+        /// </summary>
+        private readonly object syncLock = new object();
+
+        /// <summary>
+        ///     The translation provider
+        /// </summary>
+        private readonly ITranslationProvider translationProvider;
+
+        /// <summary>
+        ///     The current language
+        /// </summary>
+        private ILanguage currentLanguage;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="TranslationManager" /> class with default providers
         /// </summary>
         public TranslationManager()
-            : this(new LanguageProvider(), new MemoryTranslationProvider(), 
-                   new MemoryTranslationCache(), new PluralizationEngine())
+            : this(new LanguageProvider(), new MemoryTranslationProvider(),
+                new MemoryTranslationCache(), new PluralizationEngine())
         {
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="TranslationManager"/> class with custom providers
+        ///     Initializes a new instance of the <see cref="TranslationManager" /> class with custom providers
         /// </summary>
         /// <param name="languageProvider">The language provider</param>
         /// <param name="translationProvider">The translation provider</param>
         /// <param name="cache">The translation cache</param>
         /// <param name="pluralizationEngine">The pluralization engine</param>
-        public TranslationManager(ILanguageProvider languageProvider, 
-                                 ITranslationProvider translationProvider,
-                                 ITranslationCache cache,
-                                 IPluralizationEngine pluralizationEngine)
+        public TranslationManager(ILanguageProvider languageProvider,
+            ITranslationProvider translationProvider,
+            ITranslationCache cache,
+            IPluralizationEngine pluralizationEngine)
         {
             this.languageProvider = languageProvider ?? throw new ArgumentNullException(nameof(languageProvider));
             this.translationProvider = translationProvider ?? throw new ArgumentNullException(nameof(translationProvider));
             this.cache = cache ?? throw new ArgumentNullException(nameof(cache));
             this.pluralizationEngine = pluralizationEngine ?? throw new ArgumentNullException(nameof(pluralizationEngine));
         }
+
+        /// <summary>
+        ///     Gets the current language
+        /// </summary>
+        public ILanguage Lang => currentLanguage;
 
         /// <summary>
         ///     Sets the current language using a language object
@@ -165,7 +162,7 @@ namespace Alis.Extension.Language.Translator
             lock (syncLock)
             {
                 ILanguage language = languageProvider.GetLanguageByCode(languageCode);
-                
+
                 if (language == null)
                 {
                     throw new LanguageNotFound($"Language not found for code: {languageCode}");
@@ -428,10 +425,7 @@ namespace Alis.Extension.Language.Translator
         ///     Gets all available languages
         /// </summary>
         /// <returns>A read-only list of available languages</returns>
-        public IReadOnlyList<ILanguage> GetAvailableLanguages()
-        {
-            return languageProvider.GetAvailableLanguages();
-        }
+        public IReadOnlyList<ILanguage> GetAvailableLanguages() => languageProvider.GetAvailableLanguages();
 
         /// <summary>
         ///     Sets up fallback languages for missing translations

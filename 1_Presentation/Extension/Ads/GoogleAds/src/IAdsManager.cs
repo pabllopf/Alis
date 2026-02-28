@@ -43,6 +43,21 @@ namespace Alis.Extension.Ads.GoogleAds
         bool IsInitialized { get; }
 
         /// <summary>
+        ///     Gets a value indicating whether a banner ad is loaded
+        /// </summary>
+        bool IsBannerAdLoaded { get; }
+
+        /// <summary>
+        ///     Gets a value indicating whether an interstitial ad is loaded
+        /// </summary>
+        bool IsInterstitialAdLoaded { get; }
+
+        /// <summary>
+        ///     Gets a value indicating whether a rewarded video ad is loaded
+        /// </summary>
+        bool IsRewardedVideoAdLoaded { get; }
+
+        /// <summary>
         ///     Initializes the ads manager with the given configuration
         /// </summary>
         /// <param name="configuration">The ads configuration</param>
@@ -89,21 +104,6 @@ namespace Alis.Extension.Ads.GoogleAds
         ///     Shows the loaded rewarded video ad
         /// </summary>
         void ShowRewardedVideoAd();
-
-        /// <summary>
-        ///     Gets a value indicating whether a banner ad is loaded
-        /// </summary>
-        bool IsBannerAdLoaded { get; }
-
-        /// <summary>
-        ///     Gets a value indicating whether an interstitial ad is loaded
-        /// </summary>
-        bool IsInterstitialAdLoaded { get; }
-
-        /// <summary>
-        ///     Gets a value indicating whether a rewarded video ad is loaded
-        /// </summary>
-        bool IsRewardedVideoAdLoaded { get; }
 
         /// <summary>
         ///     Event triggered when a banner ad is loaded

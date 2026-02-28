@@ -52,7 +52,7 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             using Scene scene = new Scene();
             int eventCount = 0;
-            GameObject createdEntity = default;
+            GameObject createdEntity = default(GameObject);
 
             scene.EntityCreated += entity =>
             {
@@ -98,7 +98,7 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
             int eventCount = 0;
-            ComponentId firedComponentId = default;
+            ComponentId firedComponentId = default(ComponentId);
 
             scene.ComponentAdded += (go, componentId) =>
             {
@@ -110,7 +110,7 @@ namespace Alis.Core.Ecs.Test
             };
 
             // Act
-            entity.Add(new Position { X = 10 });
+            entity.Add(new Position {X = 10});
 
             // Assert
             Assert.Equal(1, eventCount);
@@ -125,9 +125,9 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 10 });
+            GameObject entity = scene.Create(new Position {X = 10});
             int eventCount = 0;
-            ComponentId firedComponentId = default;
+            ComponentId firedComponentId = default(ComponentId);
 
             scene.ComponentRemoved += (go, componentId) =>
             {
@@ -246,4 +246,3 @@ namespace Alis.Core.Ecs.Test
         }
     }
 }
-

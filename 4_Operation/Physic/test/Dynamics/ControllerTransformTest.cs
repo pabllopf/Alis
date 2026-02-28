@@ -46,9 +46,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             Vector2F position = new Vector2F(1.0f, 2.0f);
             Complex rotation = Complex.One;
-            
+
             ControllerTransform transform = new ControllerTransform(position, rotation);
-            
+
             Assert.Equal(position, transform.Position);
             Assert.Equal(rotation, transform.Rotation);
             Assert.Equal(Vector2F.One, transform.Scale);
@@ -63,9 +63,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Vector2F position = new Vector2F(1.0f, 2.0f);
             Complex rotation = Complex.One;
             Vector2F scale = new Vector2F(2.0f, 2.0f);
-            
+
             ControllerTransform transform = new ControllerTransform(position, rotation, scale);
-            
+
             Assert.Equal(position, transform.Position);
             Assert.Equal(rotation, transform.Rotation);
             Assert.Equal(scale, transform.Scale);
@@ -79,9 +79,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             Vector2F position = new Vector2F(1.0f, 2.0f);
             float angle = 0.5f;
-            
+
             ControllerTransform transform = new ControllerTransform(position, angle);
-            
+
             Assert.Equal(position, transform.Position);
             Assert.NotEqual(Complex.One, transform.Rotation);
         }
@@ -93,7 +93,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Identity_ShouldReturnDefaultTransform()
         {
             ControllerTransform identity = ControllerTransform.Identity;
-            
+
             Assert.Equal(Vector2F.Zero, identity.Position);
             Assert.Equal(Complex.One, identity.Rotation);
         }
@@ -106,9 +106,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             ControllerTransform transform = new ControllerTransform();
             Vector2F position = new Vector2F(5.0f, 10.0f);
-            
+
             transform.Position = position;
-            
+
             Assert.Equal(position, transform.Position);
         }
 
@@ -120,9 +120,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             ControllerTransform transform = new ControllerTransform();
             Complex rotation = new Complex(0.5f, 0.5f);
-            
+
             transform.Rotation = rotation;
-            
+
             Assert.Equal(rotation, transform.Rotation);
         }
 
@@ -134,9 +134,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             ControllerTransform transform = new ControllerTransform();
             Vector2F scale = new Vector2F(2.0f, 3.0f);
-            
+
             transform.Scale = scale;
-            
+
             Assert.Equal(scale, transform.Scale);
         }
 
@@ -147,7 +147,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Transform_WithZeroPosition_ShouldWork()
         {
             ControllerTransform transform = new ControllerTransform(Vector2F.Zero, Complex.One);
-            
+
             Assert.Equal(Vector2F.Zero, transform.Position);
         }
 
@@ -159,9 +159,8 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             Vector2F scale = new Vector2F(-1.0f, -1.0f);
             ControllerTransform transform = new ControllerTransform(Vector2F.Zero, Complex.One, scale);
-            
+
             Assert.Equal(scale, transform.Scale);
         }
     }
 }
-

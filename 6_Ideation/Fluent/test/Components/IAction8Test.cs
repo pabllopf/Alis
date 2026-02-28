@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IAction8Test.cs
+//  File:IAction8Test.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,26 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
     /// </summary>
     public class IAction8Test
     {
-        /// <summary>
-        ///     Helper implementation for testing eight parameter action.
-        /// </summary>
-        private class EightParamAction : IAction<int, int, int, int, int, int, int, int>
-        {
-            public int[] Values { get; } = new int[8];
-
-            public void Run(ref int arg1, ref int arg2, ref int arg3, ref int arg4, ref int arg5, ref int arg6, ref int arg7, ref int arg8)
-            {
-                Values[0] = arg1;
-                Values[1] = arg2;
-                Values[2] = arg3;
-                Values[3] = arg4;
-                Values[4] = arg5;
-                Values[5] = arg6;
-                Values[6] = arg7;
-                Values[7] = arg8;
-            }
-        }
-
         /// <summary>
         ///     Tests that IAction with eight parameters can be implemented.
         /// </summary>
@@ -95,6 +75,25 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
             action.Run(ref v1, ref v2, ref v3, ref v4, ref v5, ref v6, ref v7, ref v8);
             Assert.All(action.Values, val => Assert.Equal(100, val));
         }
+
+        /// <summary>
+        ///     Helper implementation for testing eight parameter action.
+        /// </summary>
+        private class EightParamAction : IAction<int, int, int, int, int, int, int, int>
+        {
+            public int[] Values { get; } = new int[8];
+
+            public void Run(ref int arg1, ref int arg2, ref int arg3, ref int arg4, ref int arg5, ref int arg6, ref int arg7, ref int arg8)
+            {
+                Values[0] = arg1;
+                Values[1] = arg2;
+                Values[2] = arg3;
+                Values[3] = arg4;
+                Values[4] = arg5;
+                Values[5] = arg6;
+                Values[6] = arg7;
+                Values[7] = arg8;
+            }
+        }
     }
 }
-

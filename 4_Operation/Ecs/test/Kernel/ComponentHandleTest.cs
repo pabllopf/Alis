@@ -35,7 +35,7 @@ using Xunit;
 namespace Alis.Core.Ecs.Test.Kernel
 {
     /// <summary>
-    ///     Tests the <see cref="ComponentHandle"/> struct.
+    ///     Tests the <see cref="ComponentHandle" /> struct.
     /// </summary>
     public class ComponentHandleTest
     {
@@ -46,16 +46,16 @@ namespace Alis.Core.Ecs.Test.Kernel
         public void Create_WithComponent_ShouldReturnValidHandle()
         {
             // Arrange
-            Position position = new Position { X = 10, Y = 20 };
-            
+            Position position = new Position {X = 10, Y = 20};
+
             // Act
             ComponentHandle handle = ComponentHandle.Create(position);
-            
+
             // Assert
             Assert.Equal(typeof(Position), handle.Type);
             Assert.Equal(Component<Position>.Id, handle.ComponentId);
         }
-        
+
         /// <summary>
         ///     Tests that retrieve returns correct component value.
         /// </summary>
@@ -63,17 +63,17 @@ namespace Alis.Core.Ecs.Test.Kernel
         public void Retrieve_WithValidHandle_ShouldReturnCorrectValue()
         {
             // Arrange
-            Position position = new Position { X = 10, Y = 20 };
+            Position position = new Position {X = 10, Y = 20};
             ComponentHandle handle = ComponentHandle.Create(position);
-            
+
             // Act
             Position retrieved = handle.Retrieve<Position>();
-            
+
             // Assert
             Assert.Equal(10, retrieved.X);
             Assert.Equal(20, retrieved.Y);
         }
-        
+
         /// <summary>
         ///     Tests that retrieve boxed returns component as object.
         /// </summary>
@@ -81,20 +81,20 @@ namespace Alis.Core.Ecs.Test.Kernel
         public void RetrieveBoxed_WithValidHandle_ShouldReturnBoxedComponent()
         {
             // Arrange
-            Position position = new Position { X = 10, Y = 20 };
+            Position position = new Position {X = 10, Y = 20};
             ComponentHandle handle = ComponentHandle.Create(position);
-            
+
             // Act
             object retrieved = handle.RetrieveBoxed();
-            
+
             // Assert
             Assert.NotNull(retrieved);
             Assert.IsType<Position>(retrieved);
-            Position pos = (Position)retrieved;
+            Position pos = (Position) retrieved;
             Assert.Equal(10, pos.X);
             Assert.Equal(20, pos.Y);
         }
-        
+
         /// <summary>
         ///     Tests that create from boxed with component id works correctly.
         /// </summary>
@@ -102,17 +102,17 @@ namespace Alis.Core.Ecs.Test.Kernel
         public void CreateFromBoxed_WithComponentId_ShouldCreateValidHandle()
         {
             // Arrange
-            object position = new Position { X = 10, Y = 20 };
+            object position = new Position {X = 10, Y = 20};
             ComponentId typeId = Component<Position>.Id;
-            
+
             // Act
             ComponentHandle handle = ComponentHandle.CreateFromBoxed(typeId, position);
-            
+
             // Assert
             Assert.Equal(typeof(Position), handle.Type);
             Assert.Equal(typeId, handle.ComponentId);
         }
-        
+
         /// <summary>
         ///     Tests that create from boxed without component id works correctly.
         /// </summary>
@@ -120,15 +120,15 @@ namespace Alis.Core.Ecs.Test.Kernel
         public void CreateFromBoxed_WithoutComponentId_ShouldCreateValidHandle()
         {
             // Arrange
-            object velocity = new Velocity { VX = 1, VY = 2 };
-            
+            object velocity = new Velocity {VX = 1, VY = 2};
+
             // Act
             ComponentHandle handle = ComponentHandle.CreateFromBoxed(velocity);
-            
+
             // Assert
             Assert.Equal(typeof(Velocity), handle.Type);
         }
-        
+
         /// <summary>
         ///     Tests that type property returns correct component type.
         /// </summary>
@@ -136,16 +136,16 @@ namespace Alis.Core.Ecs.Test.Kernel
         public void Type_ShouldReturnCorrectComponentType()
         {
             // Arrange
-            Health health = new Health { Value = 100 };
+            Health health = new Health {Value = 100};
             ComponentHandle handle = ComponentHandle.Create(health);
-            
+
             // Act
             Type type = handle.Type;
-            
+
             // Assert
             Assert.Equal(typeof(Health), type);
         }
-        
+
         /// <summary>
         ///     Tests that component id property returns correct id.
         /// </summary>
@@ -155,14 +155,14 @@ namespace Alis.Core.Ecs.Test.Kernel
             // Arrange
             Position position = new Position();
             ComponentHandle handle = ComponentHandle.Create(position);
-            
+
             // Act
             ComponentId componentId = handle.ComponentId;
-            
+
             // Assert
             Assert.Equal(Component<Position>.Id, componentId);
         }
-        
+
         /// <summary>
         ///     Tests that equals with same handle returns true.
         /// </summary>
@@ -170,17 +170,17 @@ namespace Alis.Core.Ecs.Test.Kernel
         public void Equals_WithSameHandle_ShouldReturnTrue()
         {
             // Arrange
-            Position position = new Position { X = 10, Y = 20 };
+            Position position = new Position {X = 10, Y = 20};
             ComponentHandle handle1 = ComponentHandle.Create(position);
             ComponentHandle handle2 = handle1;
-            
+
             // Act
             bool equals = handle1.Equals(handle2);
-            
+
             // Assert
             Assert.True(equals);
         }
-        
+
         /// <summary>
         ///     Tests that equals with different handles returns false.
         /// </summary>
@@ -188,18 +188,18 @@ namespace Alis.Core.Ecs.Test.Kernel
         public void Equals_WithDifferentHandles_ShouldReturnFalse()
         {
             // Arrange
-            Position position1 = new Position { X = 10, Y = 20 };
-            Position position2 = new Position { X = 30, Y = 40 };
+            Position position1 = new Position {X = 10, Y = 20};
+            Position position2 = new Position {X = 30, Y = 40};
             ComponentHandle handle1 = ComponentHandle.Create(position1);
             ComponentHandle handle2 = ComponentHandle.Create(position2);
-            
+
             // Act
             bool equals = handle1.Equals(handle2);
-            
+
             // Assert
             Assert.False(equals);
         }
-        
+
         /// <summary>
         ///     Tests that operator equals works correctly.
         /// </summary>
@@ -210,14 +210,14 @@ namespace Alis.Core.Ecs.Test.Kernel
             Position position = new Position();
             ComponentHandle handle1 = ComponentHandle.Create(position);
             ComponentHandle handle2 = handle1;
-            
+
             // Act
             bool equals = handle1 == handle2;
-            
+
             // Assert
             Assert.True(equals);
         }
-        
+
         /// <summary>
         ///     Tests that operator not equals works correctly.
         /// </summary>
@@ -229,14 +229,14 @@ namespace Alis.Core.Ecs.Test.Kernel
             Position position2 = new Position();
             ComponentHandle handle1 = ComponentHandle.Create(position1);
             ComponentHandle handle2 = ComponentHandle.Create(position2);
-            
+
             // Act
             bool notEquals = handle1 != handle2;
-            
+
             // Assert
             Assert.True(notEquals);
         }
-        
+
         /// <summary>
         ///     Tests that get hash code returns consistent value.
         /// </summary>
@@ -246,15 +246,15 @@ namespace Alis.Core.Ecs.Test.Kernel
             // Arrange
             Position position = new Position();
             ComponentHandle handle = ComponentHandle.Create(position);
-            
+
             // Act
             int hashCode1 = handle.GetHashCode();
             int hashCode2 = handle.GetHashCode();
-            
+
             // Assert
             Assert.Equal(hashCode1, hashCode2);
         }
-        
+
         /// <summary>
         ///     Tests that dispose does not throw exception.
         /// </summary>
@@ -264,11 +264,11 @@ namespace Alis.Core.Ecs.Test.Kernel
             // Arrange
             Position position = new Position();
             ComponentHandle handle = ComponentHandle.Create(position);
-            
+
             // Act & Assert
             handle.Dispose();
         }
-        
+
         /// <summary>
         ///     Tests that handle works with reference type components.
         /// </summary>
@@ -278,14 +278,14 @@ namespace Alis.Core.Ecs.Test.Kernel
             // Arrange
             string text = "test";
             ComponentHandle handle = ComponentHandle.Create(text);
-            
+
             // Act
             string retrieved = handle.Retrieve<string>();
-            
+
             // Assert
             Assert.Equal("test", retrieved);
         }
-        
+
         /// <summary>
         ///     Tests that multiple create and retrieve operations work correctly.
         /// </summary>
@@ -293,29 +293,29 @@ namespace Alis.Core.Ecs.Test.Kernel
         public void MultipleCreateAndRetrieve_ShouldWorkCorrectly()
         {
             // Arrange
-            Position pos1 = new Position { X = 1, Y = 2 };
-            Position pos2 = new Position { X = 3, Y = 4 };
-            Position pos3 = new Position { X = 5, Y = 6 };
-            
+            Position pos1 = new Position {X = 1, Y = 2};
+            Position pos2 = new Position {X = 3, Y = 4};
+            Position pos3 = new Position {X = 5, Y = 6};
+
             // Act
             ComponentHandle handle1 = ComponentHandle.Create(pos1);
             ComponentHandle handle2 = ComponentHandle.Create(pos2);
             ComponentHandle handle3 = ComponentHandle.Create(pos3);
-            
+
             Position retrieved1 = handle1.Retrieve<Position>();
             Position retrieved2 = handle2.Retrieve<Position>();
             Position retrieved3 = handle3.Retrieve<Position>();
-            
+
             // Assert
             Assert.Equal(1, retrieved1.X);
             Assert.Equal(3, retrieved2.X);
             Assert.Equal(5, retrieved3.X);
-            
+
             handle1.Dispose();
             handle2.Dispose();
             handle3.Dispose();
         }
-        
+
         /// <summary>
         ///     Tests that equals with object returns correct result.
         /// </summary>
@@ -326,14 +326,14 @@ namespace Alis.Core.Ecs.Test.Kernel
             Position position = new Position();
             ComponentHandle handle = ComponentHandle.Create(position);
             object handleObj = handle;
-            
+
             // Act
             bool equals = handle.Equals(handleObj);
-            
+
             // Assert
             Assert.True(equals);
         }
-        
+
         /// <summary>
         ///     Tests that equals with null object returns false.
         /// </summary>
@@ -343,13 +343,12 @@ namespace Alis.Core.Ecs.Test.Kernel
             // Arrange
             Position position = new Position();
             ComponentHandle handle = ComponentHandle.Create(position);
-            
+
             // Act
             bool equals = handle.Equals(null);
-            
+
             // Assert
             Assert.False(equals);
         }
     }
 }
-

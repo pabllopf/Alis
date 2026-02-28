@@ -33,7 +33,6 @@ using Alis.Extension.Media.FFmpeg.BaseClasses;
 
 namespace Alis.Extension.Media.FFmpeg.Audio
 {
-    
     /// <summary>
     ///     Audio frame containing multiple audio samples in signed PCM format with given bit depth.
     /// </summary>

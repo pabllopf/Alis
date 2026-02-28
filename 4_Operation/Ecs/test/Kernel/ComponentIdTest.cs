@@ -39,7 +39,7 @@ namespace Alis.Core.Ecs.Test.Kernel
     ///     The component id test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="ComponentId"/> struct which represents a lightweight
+    ///     Tests the <see cref="ComponentId" /> struct which represents a lightweight
     ///     component type identifier used for fast lookups in the ECS system.
     /// </remarks>
     public class ComponentIdTest
@@ -184,7 +184,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         public void ComponentId_CanBeUsedInDictionary()
         {
             // Arrange
-            Dictionary<ComponentId, string> dict = new System.Collections.Generic.Dictionary<ComponentId, string>();
+            Dictionary<ComponentId, string> dict = new Dictionary<ComponentId, string>();
             ComponentId posId = Component<Position>.Id;
             ComponentId velId = Component<Velocity>.Id;
 
@@ -272,4 +272,3 @@ namespace Alis.Core.Ecs.Test.Kernel
         }
     }
 }
-

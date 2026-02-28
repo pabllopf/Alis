@@ -35,7 +35,7 @@ namespace Alis.Core.Ecs.Test
     ///     The disable test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="Disable"/> tag which is used to disable entities in the ECS system.
+    ///     Tests the <see cref="Disable" /> tag which is used to disable entities in the ECS system.
     ///     Entities with this tag should not be updated during normal scene updates.
     /// </remarks>
     public class DisableTest
@@ -68,7 +68,7 @@ namespace Alis.Core.Ecs.Test
         public void Disable_AllInstancesAreEqual()
         {
             // Arrange
-            Disable disable1 = default;
+            Disable disable1 = default(Disable);
             Disable disable2 = new Disable();
 
             // Assert
@@ -115,4 +115,3 @@ namespace Alis.Core.Ecs.Test
         }
     }
 }
-

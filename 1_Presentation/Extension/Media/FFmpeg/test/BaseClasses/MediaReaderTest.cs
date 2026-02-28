@@ -27,9 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Extension.Media.FFmpeg.BaseClasses;
-using Xunit;
-
 namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
 {
     /// <summary>
@@ -38,7 +35,5 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
     /// <seealso cref="MediaReader" />
     public class MediaReaderTest
     {
-       
     }
 }
-

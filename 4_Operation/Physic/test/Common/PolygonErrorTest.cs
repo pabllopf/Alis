@@ -43,7 +43,7 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void NoError_ShouldHaveValueZero()
         {
-            Assert.Equal(0, (int)PolygonError.NoError);
+            Assert.Equal(0, (int) PolygonError.NoError);
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void InvalidAmountOfVertices_ShouldHaveValueOne()
         {
-            Assert.Equal(1, (int)PolygonError.InvalidAmountOfVertices);
+            Assert.Equal(1, (int) PolygonError.InvalidAmountOfVertices);
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void NotSimple_ShouldHaveValueTwo()
         {
-            Assert.Equal(2, (int)PolygonError.NotSimple);
+            Assert.Equal(2, (int) PolygonError.NotSimple);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void NotCounterClockWise_ShouldHaveValueThree()
         {
-            Assert.Equal(3, (int)PolygonError.NotCounterClockWise);
+            Assert.Equal(3, (int) PolygonError.NotCounterClockWise);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void NotConvex_ShouldHaveValueFour()
         {
-            Assert.Equal(4, (int)PolygonError.NotConvex);
+            Assert.Equal(4, (int) PolygonError.NotConvex);
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void AreaTooSmall_ShouldHaveValueFive()
         {
-            Assert.Equal(5, (int)PolygonError.AreaTooSmall);
+            Assert.Equal(5, (int) PolygonError.AreaTooSmall);
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void SideTooSmall_ShouldHaveValueSix()
         {
-            Assert.Equal(6, (int)PolygonError.SideTooSmall);
+            Assert.Equal(6, (int) PolygonError.SideTooSmall);
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace Alis.Core.Physic.Test.Common
                 PolygonError.AreaTooSmall,
                 PolygonError.SideTooSmall
             };
-            
+
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = i + 1; j < values.Length; j++)
@@ -132,14 +132,13 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void Values_ShouldBeSequential()
         {
-            Assert.Equal(0, (int)PolygonError.NoError);
-            Assert.Equal(1, (int)PolygonError.InvalidAmountOfVertices);
-            Assert.Equal(2, (int)PolygonError.NotSimple);
-            Assert.Equal(3, (int)PolygonError.NotCounterClockWise);
-            Assert.Equal(4, (int)PolygonError.NotConvex);
-            Assert.Equal(5, (int)PolygonError.AreaTooSmall);
-            Assert.Equal(6, (int)PolygonError.SideTooSmall);
+            Assert.Equal(0, (int) PolygonError.NoError);
+            Assert.Equal(1, (int) PolygonError.InvalidAmountOfVertices);
+            Assert.Equal(2, (int) PolygonError.NotSimple);
+            Assert.Equal(3, (int) PolygonError.NotCounterClockWise);
+            Assert.Equal(4, (int) PolygonError.NotConvex);
+            Assert.Equal(5, (int) PolygonError.AreaTooSmall);
+            Assert.Equal(6, (int) PolygonError.SideTooSmall);
         }
     }
 }
-

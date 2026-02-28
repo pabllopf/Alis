@@ -28,99 +28,99 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Xunit;
 using Alis.Core.Graphic.OpenGL.Enums;
+using Xunit;
 
 namespace Alis.Core.Graphic.Test.Enums
 {
     /// <summary>
-    /// Tests for the ProgramParameter enum validating shader program query parameters.
+    ///     Tests for the ProgramParameter enum validating shader program query parameters.
     /// </summary>
     public class ProgramParameterTest
     {
         /// <summary>
-        /// Tests that DeleteStatus has correct value.
+        ///     Tests that DeleteStatus has correct value.
         /// </summary>
         [Fact]
         public void DeleteStatus_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x8B80, (int)ProgramParameter.DeleteStatus);
+            Assert.Equal(0x8B80, (int) ProgramParameter.DeleteStatus);
         }
 
         /// <summary>
-        /// Tests that LinkStatus has correct value.
+        ///     Tests that LinkStatus has correct value.
         /// </summary>
         [Fact]
         public void LinkStatus_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x8B82, (int)ProgramParameter.LinkStatus);
+            Assert.Equal(0x8B82, (int) ProgramParameter.LinkStatus);
         }
 
         /// <summary>
-        /// Tests that ValidateStatus has correct value.
+        ///     Tests that ValidateStatus has correct value.
         /// </summary>
         [Fact]
         public void ValidateStatus_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x8B83, (int)ProgramParameter.ValidateStatus);
+            Assert.Equal(0x8B83, (int) ProgramParameter.ValidateStatus);
         }
 
         /// <summary>
-        /// Tests that InfoLogLength has correct value.
+        ///     Tests that InfoLogLength has correct value.
         /// </summary>
         [Fact]
         public void InfoLogLength_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x8B84, (int)ProgramParameter.InfoLogLength);
+            Assert.Equal(0x8B84, (int) ProgramParameter.InfoLogLength);
         }
 
         /// <summary>
-        /// Tests that AttachedShaders has correct value.
+        ///     Tests that AttachedShaders has correct value.
         /// </summary>
         [Fact]
         public void AttachedShaders_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x8B85, (int)ProgramParameter.AttachedShaders);
+            Assert.Equal(0x8B85, (int) ProgramParameter.AttachedShaders);
         }
 
         /// <summary>
-        /// Tests that ActiveUniforms has correct value.
+        ///     Tests that ActiveUniforms has correct value.
         /// </summary>
         [Fact]
         public void ActiveUniforms_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x8B86, (int)ProgramParameter.ActiveUniforms);
+            Assert.Equal(0x8B86, (int) ProgramParameter.ActiveUniforms);
         }
 
         /// <summary>
-        /// Tests that ActiveUniformMaxLength has correct value.
+        ///     Tests that ActiveUniformMaxLength has correct value.
         /// </summary>
         [Fact]
         public void ActiveUniformMaxLength_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x8B87, (int)ProgramParameter.ActiveUniformMaxLength);
+            Assert.Equal(0x8B87, (int) ProgramParameter.ActiveUniformMaxLength);
         }
 
         /// <summary>
-        /// Tests that ActiveAttributes has correct value.
+        ///     Tests that ActiveAttributes has correct value.
         /// </summary>
         [Fact]
         public void ActiveAttributes_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x8B89, (int)ProgramParameter.ActiveAttributes);
+            Assert.Equal(0x8B89, (int) ProgramParameter.ActiveAttributes);
         }
 
         /// <summary>
-        /// Tests that ActiveAttributeMaxLength has correct value.
+        ///     Tests that ActiveAttributeMaxLength has correct value.
         /// </summary>
         [Fact]
         public void ActiveAttributeMaxLength_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x8B8A, (int)ProgramParameter.ActiveAttributeMaxLength);
+            Assert.Equal(0x8B8A, (int) ProgramParameter.ActiveAttributeMaxLength);
         }
 
         /// <summary>
-        /// Tests that ProgramParameter is an enum type.
+        ///     Tests that ProgramParameter is an enum type.
         /// </summary>
         [Fact]
         public void ProgramParameter_IsEnum_TypeIsCorrect()
@@ -129,7 +129,7 @@ namespace Alis.Core.Graphic.Test.Enums
         }
 
         /// <summary>
-        /// Tests that ProgramParameter enum is public.
+        ///     Tests that ProgramParameter enum is public.
         /// </summary>
         [Fact]
         public void ProgramParameter_IsPublic_CanBeAccessed()
@@ -138,27 +138,27 @@ namespace Alis.Core.Graphic.Test.Enums
         }
 
         /// <summary>
-        /// Tests that ProgramParameter has multiple defined values.
+        ///     Tests that ProgramParameter has multiple defined values.
         /// </summary>
         [Fact]
         public void ProgramParameter_HasMultipleValues_CountIsNotZero()
         {
-            Array enumValues = System.Enum.GetValues(typeof(ProgramParameter));
+            Array enumValues = Enum.GetValues(typeof(ProgramParameter));
             Assert.NotEmpty(enumValues);
         }
 
         /// <summary>
-        /// Tests that ProgramParameter can be cast to int.
+        ///     Tests that ProgramParameter can be cast to int.
         /// </summary>
         [Fact]
         public void ProgramParameter_CanCastToInt_ConversionIsValid()
         {
-            int value = (int)ProgramParameter.LinkStatus;
+            int value = (int) ProgramParameter.LinkStatus;
             Assert.IsType<int>(value);
         }
 
         /// <summary>
-        /// Tests that ProgramParameter values can be compared.
+        ///     Tests that ProgramParameter values can be compared.
         /// </summary>
         [Fact]
         public void ProgramParameter_CanCompareValues_EqualityWorks()
@@ -169,7 +169,7 @@ namespace Alis.Core.Graphic.Test.Enums
         }
 
         /// <summary>
-        /// Tests that different ProgramParameter values are not equal.
+        ///     Tests that different ProgramParameter values are not equal.
         /// </summary>
         [Fact]
         public void ProgramParameter_DifferentValues_AreNotEqual()
@@ -178,7 +178,7 @@ namespace Alis.Core.Graphic.Test.Enums
         }
 
         /// <summary>
-        /// Tests that ProgramParameter contains common query parameters.
+        ///     Tests that ProgramParameter contains common query parameters.
         /// </summary>
         [Fact]
         public void ProgramParameter_ContainsCommonParameters_AllPresent()
@@ -193,4 +193,3 @@ namespace Alis.Core.Graphic.Test.Enums
         }
     }
 }
-

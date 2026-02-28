@@ -43,7 +43,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         [Fact]
         public void Unknown_ShouldHaveValueZero()
         {
-            Assert.Equal(0, (int)JointType.Unknown);
+            Assert.Equal(0, (int) JointType.Unknown);
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         [Fact]
         public void Revolute_ShouldHaveValueOne()
         {
-            Assert.Equal(1, (int)JointType.Revolute);
+            Assert.Equal(1, (int) JointType.Revolute);
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         [Fact]
         public void Prismatic_ShouldHaveValueTwo()
         {
-            Assert.Equal(2, (int)JointType.Prismatic);
+            Assert.Equal(2, (int) JointType.Prismatic);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         [Fact]
         public void Distance_ShouldHaveValueThree()
         {
-            Assert.Equal(3, (int)JointType.Distance);
+            Assert.Equal(3, (int) JointType.Distance);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         [Fact]
         public void Pulley_ShouldHaveValueFour()
         {
-            Assert.Equal(4, (int)JointType.Pulley);
+            Assert.Equal(4, (int) JointType.Pulley);
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         [Fact]
         public void Gear_ShouldHaveValueFive()
         {
-            Assert.Equal(5, (int)JointType.Gear);
+            Assert.Equal(5, (int) JointType.Gear);
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         [Fact]
         public void Wheel_ShouldHaveValueSix()
         {
-            Assert.Equal(6, (int)JointType.Wheel);
+            Assert.Equal(6, (int) JointType.Wheel);
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         [Fact]
         public void Weld_ShouldHaveValueSeven()
         {
-            Assert.Equal(7, (int)JointType.Weld);
+            Assert.Equal(7, (int) JointType.Weld);
         }
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         [Fact]
         public void Friction_ShouldHaveValueEight()
         {
-            Assert.Equal(8, (int)JointType.Friction);
+            Assert.Equal(8, (int) JointType.Friction);
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         [Fact]
         public void Rope_ShouldHaveValueNine()
         {
-            Assert.Equal(9, (int)JointType.Rope);
+            Assert.Equal(9, (int) JointType.Rope);
         }
 
         /// <summary>
@@ -133,7 +133,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         [Fact]
         public void Motor_ShouldHaveValueTen()
         {
-            Assert.Equal(10, (int)JointType.Motor);
+            Assert.Equal(10, (int) JointType.Motor);
         }
 
         /// <summary>
@@ -142,7 +142,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         [Fact]
         public void Angle_ShouldHaveValueEleven()
         {
-            Assert.Equal(11, (int)JointType.Angle);
+            Assert.Equal(11, (int) JointType.Angle);
         }
 
         /// <summary>
@@ -151,7 +151,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         [Fact]
         public void FixedMouse_ShouldHaveValueTwelve()
         {
-            Assert.Equal(12, (int)JointType.FixedMouse);
+            Assert.Equal(12, (int) JointType.FixedMouse);
         }
 
         /// <summary>
@@ -176,7 +176,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
                 JointType.Angle,
                 JointType.FixedMouse
             };
-            
+
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = i + 1; j < values.Length; j++)
@@ -187,4 +187,3 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         }
     }
 }
-

@@ -83,7 +83,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         {
             // Arrange
             bool callbackCalled = false;
-            
+
             Gen2GcCallback.Register(() =>
             {
                 callbackCalled = true;
@@ -116,15 +116,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
         {
             // Arrange
             object targetObject = new object();
-            
+
             // Act
-            Exception exception = Record.Exception(() =>
-            {
-                Gen2GcCallback.Register((obj) =>
-                {
-                    return false;
-                }, targetObject);
-            });
+            Exception exception = Record.Exception(() => { Gen2GcCallback.Register(obj => { return false; }, targetObject); });
 
             // Assert
             Assert.Null(exception);
@@ -142,7 +136,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         {
             // Arrange
             int callCount = 0;
-            
+
             Gen2GcCallback.Register(() =>
             {
                 callCount++;
@@ -174,14 +168,11 @@ namespace Alis.Core.Ecs.Test.Redifinition
             // Arrange
             bool eventFired = false;
             Action originalHandler = Gen2GcCallback.Gen2CollectionOccured;
-            
+
             try
             {
                 // Act
-                Gen2GcCallback.Gen2CollectionOccured = () =>
-                {
-                    eventFired = true;
-                };
+                Gen2GcCallback.Gen2CollectionOccured = () => { eventFired = true; };
 
                 // Force GC
                 GC.Collect();
@@ -256,23 +247,23 @@ namespace Alis.Core.Ecs.Test.Redifinition
         {
             // Arrange
             WeakReference weakRef;
-            
+
             void CreateAndRegisterCallback()
             {
                 object targetObj = new object();
                 weakRef = new WeakReference(targetObj);
-                
-                Gen2GcCallback.Register((obj) =>
+
+                Gen2GcCallback.Register(obj =>
                 {
                     return true; // Try to keep alive
                 }, targetObj);
-                
+
                 // targetObj goes out of scope here
             }
 
             // Act
             CreateAndRegisterCallback();
-            
+
             // Force GC to collect the target object
             for (int i = 0; i < 5; i++)
             {
@@ -296,13 +287,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         public void Gen2GcCallback_WithNullTargetObject_HandlesGracefully()
         {
             // Act
-            Exception exception = Record.Exception(() =>
-            {
-                Gen2GcCallback.Register((obj) =>
-                {
-                    return false;
-                }, null);
-            });
+            Exception exception = Record.Exception(() => { Gen2GcCallback.Register(obj => { return false; }, null); });
 
             // Assert - Should handle null gracefully
             Assert.Null(exception);
@@ -329,11 +314,10 @@ namespace Alis.Core.Ecs.Test.Redifinition
 
             // Assert
             Assert.Null(exception);
-            
+
             // Cleanup with GC
             GC.Collect();
             GC.WaitForPendingFinalizers();
         }
     }
 }
-

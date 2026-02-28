@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:SizeChangeEventArgsTests.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -37,7 +38,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
     public class SizeChangeEventArgsTests
     {
         /// <summary>
-        /// Tests that constructor with width and height sets size
+        ///     Tests that constructor with width and height sets size
         /// </summary>
         [Fact]
         public void Constructor_WithWidthAndHeight_SetsSize()
@@ -55,7 +56,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that constructor with size object sets size
+        ///     Tests that constructor with size object sets size
         /// </summary>
         [Fact]
         public void Constructor_WithSizeObject_SetsSize()
@@ -71,7 +72,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that size property returns correct value
+        ///     Tests that size property returns correct value
         /// </summary>
         [Fact]
         public void Size_Property_ReturnsCorrectValue()
@@ -88,7 +89,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that constructor with zero size sets size
+        ///     Tests that constructor with zero size sets size
         /// </summary>
         [Fact]
         public void Constructor_WithZeroSize_SetsSize()
@@ -106,7 +107,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that constructor with large size sets size
+        ///     Tests that constructor with large size sets size
         /// </summary>
         [Fact]
         public void Constructor_WithLargeSize_SetsSize()
@@ -124,7 +125,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that constructor with different values creates distinct objects
+        ///     Tests that constructor with different values creates distinct objects
         /// </summary>
         [Fact]
         public void Constructor_WithDifferentValues_CreatesDistinctObjects()
@@ -138,4 +139,3 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
     }
 }
-

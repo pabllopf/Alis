@@ -105,10 +105,7 @@ namespace Alis.Extension.Profile.Implementations
         ///     A <see cref="TimeSpan" /> representing the total elapsed time.
         ///     Returns <see cref="TimeSpan.Zero" /> if the tracker has not been started.
         /// </returns>
-        public TimeSpan GetElapsedTime()
-        {
-            return stopwatch.Elapsed;
-        }
+        public TimeSpan GetElapsedTime() => stopwatch.Elapsed;
 
         /// <summary>
         ///     Gets the start time when the tracker was initiated.
@@ -117,10 +114,6 @@ namespace Alis.Extension.Profile.Implementations
         ///     A <see cref="DateTime" /> representing when tracking started.
         ///     Returns <see cref="DateTime.MinValue" /> if the tracker has not been started.
         /// </returns>
-        public DateTime GetStartTime()
-        {
-            return startTime;
-        }
+        public DateTime GetStartTime() => startTime;
     }
 }
-

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:QueryEnumerable.2.cs
+//  File:QueryEnumerableTest.4.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -59,7 +59,7 @@ namespace Alis.Core.Ecs.Test
             QueryEnumerator<Position, Velocity, Health, Transform>.QueryEnumerable enumerable = query.Enumerate<Position, Velocity, Health, Transform>();
 
             // Assert
-            Assert.NotEqual(default, enumerable);
+            Assert.NotEqual(default(QueryEnumerator<Position, Velocity, Health, Transform>.QueryEnumerable), enumerable);
         }
 
 
@@ -75,10 +75,10 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             using Scene scene = new Scene();
             scene.Create(
-                new Position { X = 10, Y = 20 },
-                new Velocity { VX = 5, VY = 10 },
-                new Health { Value = 150 },
-                new Transform { X = 1, Y = 2, Rotation = 45 }
+                new Position {X = 10, Y = 20},
+                new Velocity {VX = 5, VY = 10},
+                new Health {Value = 150},
+                new Transform {X = 1, Y = 2, Rotation = 45}
             );
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>>();
 
@@ -104,14 +104,14 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             using Scene scene = new Scene();
             scene.Create(
-                new Position { X = 1, Y = 1 },
-                new Velocity { VX = 1, VY = 1 },
-                new Health { Value = 100 },
-                new Transform { X = 0, Y = 0, Rotation = 0 }
+                new Position {X = 1, Y = 1},
+                new Velocity {VX = 1, VY = 1},
+                new Health {Value = 100},
+                new Transform {X = 0, Y = 0, Rotation = 0}
             );
-            scene.Create(new Position { X = 2, Y = 2 }, new Velocity { VX = 2, VY = 2 }, new Health { Value = 50 }); // Missing Transform
+            scene.Create(new Position {X = 2, Y = 2}, new Velocity {VX = 2, VY = 2}, new Health {Value = 50}); // Missing Transform
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>>();
-                new QueryEnumerable<Position, Velocity, Health, Transform>(query);
+            new QueryEnumerable<Position, Velocity, Health, Transform>(query);
 
             // Act
             int count = 0;
@@ -136,13 +136,13 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
-                new Position { X = 0, Y = 0 },
-                new Velocity { VX = 0, VY = 0 },
-                new Health { Value = 0 },
-                new Transform { X = 0, Y = 0, Rotation = 0 }
+                new Position {X = 0, Y = 0},
+                new Velocity {VX = 0, VY = 0},
+                new Health {Value = 0},
+                new Transform {X = 0, Y = 0, Rotation = 0}
             );
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>>();
-                new QueryEnumerable<Position, Velocity, Health, Transform>(query);
+            new QueryEnumerable<Position, Velocity, Health, Transform>(query);
 
             // Act
             foreach ((Ref<Position> pos, Ref<Velocity> vel, Ref<Health> health, Ref<Transform> trans) in query.Enumerate<Position, Velocity, Health, Transform>())
@@ -185,14 +185,15 @@ namespace Alis.Core.Ecs.Test
             for (int i = 0; i < 3; i++)
             {
                 scene.Create(
-                    new Position { X = i, Y = i * 2 },
-                    new Velocity { VX = i * 0.5f, VY = i * 0.3f },
-                    new Health { Value = i * 10 },
-                    new Transform { X = i, Y = i, Rotation = i * 45 }
+                    new Position {X = i, Y = i * 2},
+                    new Velocity {VX = i * 0.5f, VY = i * 0.3f},
+                    new Health {Value = i * 10},
+                    new Transform {X = i, Y = i, Rotation = i * 45}
                 );
             }
+
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>>();
-                new QueryEnumerable<Position, Velocity, Health, Transform>(query);
+            new QueryEnumerable<Position, Velocity, Health, Transform>(query);
 
             // Act
             int count = 0;
@@ -219,4 +220,3 @@ namespace Alis.Core.Ecs.Test
         }
     }
 }
-

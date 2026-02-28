@@ -36,7 +36,7 @@ namespace Alis.Core.Ecs.Test.Kernel
     ///     The create command test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="CreateCommand"/> record struct which represents
+    ///     Tests the <see cref="CreateCommand" /> record struct which represents
     ///     a command to create a new entity with specific components.
     /// </remarks>
     public class CreateCommandTest
@@ -154,4 +154,3 @@ namespace Alis.Core.Ecs.Test.Kernel
         }
     }
 }
-

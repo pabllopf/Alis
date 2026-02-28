@@ -27,9 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math.Collections;
 using Alis.Core.Ecs.Systems;
-using Alis.Core.Ecs.Test.Models;
 using Xunit;
 
 namespace Alis.Core.Ecs.Test.Systems
@@ -102,11 +100,10 @@ namespace Alis.Core.Ecs.Test.Systems
         public void QueryHash_DefaultValue_HasValidHash()
         {
             // Arrange & Act
-            QueryHash defaultHash = default;
+            QueryHash defaultHash = default(QueryHash);
 
             // Assert
             Assert.Equal(0, defaultHash.ToHashCode());
         }
     }
 }
-

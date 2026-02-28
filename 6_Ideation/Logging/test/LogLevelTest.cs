@@ -5,29 +5,28 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: LogLevelTest.cs
+//  File:LogLevelTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program. If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Logging.Abstractions;
 using Xunit;
 
@@ -43,49 +42,49 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LogLevel_Trace_HasValue0()
         {
             // Assert
-            Assert.Equal(0, (byte)LogLevel.Trace);
+            Assert.Equal(0, (byte) LogLevel.Trace);
         }
 
         [Fact]
         public void LogLevel_Debug_HasValue1()
         {
             // Assert
-            Assert.Equal(1, (byte)LogLevel.Debug);
+            Assert.Equal(1, (byte) LogLevel.Debug);
         }
 
         [Fact]
         public void LogLevel_Info_HasValue2()
         {
             // Assert
-            Assert.Equal(2, (byte)LogLevel.Info);
+            Assert.Equal(2, (byte) LogLevel.Info);
         }
 
         [Fact]
         public void LogLevel_Warning_HasValue3()
         {
             // Assert
-            Assert.Equal(3, (byte)LogLevel.Warning);
+            Assert.Equal(3, (byte) LogLevel.Warning);
         }
 
         [Fact]
         public void LogLevel_Error_HasValue4()
         {
             // Assert
-            Assert.Equal(4, (byte)LogLevel.Error);
+            Assert.Equal(4, (byte) LogLevel.Error);
         }
 
         [Fact]
         public void LogLevel_Critical_HasValue5()
         {
             // Assert
-            Assert.Equal(5, (byte)LogLevel.Critical);
+            Assert.Equal(5, (byte) LogLevel.Critical);
         }
 
         [Fact]
         public void LogLevel_None_HasValue255()
         {
             // Assert
-            Assert.Equal(255, (byte)LogLevel.None);
+            Assert.Equal(255, (byte) LogLevel.None);
         }
 
         [Fact]
@@ -125,23 +124,23 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LogLevel_CanBeCastFromByte()
         {
             // Assert
-            Assert.Equal(LogLevel.Info, (LogLevel)2);
-            Assert.Equal(LogLevel.Warning, (LogLevel)3);
+            Assert.Equal(LogLevel.Info, (LogLevel) 2);
+            Assert.Equal(LogLevel.Warning, (LogLevel) 3);
         }
 
         [Fact]
         public void LogLevel_CanBeCastToByte()
         {
             // Assert
-            Assert.Equal(2, (byte)LogLevel.Info);
-            Assert.Equal(3, (byte)LogLevel.Warning);
+            Assert.Equal(2, (byte) LogLevel.Info);
+            Assert.Equal(3, (byte) LogLevel.Warning);
         }
 
         [Fact]
         public void LogLevel_OrderingIsMonotonic()
         {
             // Arrange
-            LogLevel[] levels = new[] { LogLevel.Trace, LogLevel.Debug, LogLevel.Info, LogLevel.Warning, LogLevel.Error, LogLevel.Critical, LogLevel.None };
+            LogLevel[] levels = new[] {LogLevel.Trace, LogLevel.Debug, LogLevel.Info, LogLevel.Warning, LogLevel.Error, LogLevel.Critical, LogLevel.None};
 
             // Assert
             for (int i = 0; i < levels.Length - 1; i++)
@@ -154,7 +153,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LogLevel_HasSevenValues()
         {
             // Arrange
-            LogLevel[] values = new[] { LogLevel.Trace, LogLevel.Debug, LogLevel.Info, LogLevel.Warning, LogLevel.Error, LogLevel.Critical, LogLevel.None };
+            LogLevel[] values = new[] {LogLevel.Trace, LogLevel.Debug, LogLevel.Info, LogLevel.Warning, LogLevel.Error, LogLevel.Critical, LogLevel.None};
 
             // Assert
             Assert.Equal(7, values.Length);
@@ -165,7 +164,7 @@ namespace Alis.Core.Aspect.Logging.Test
         {
             // Assert - None should be the highest value (255)
             Assert.True(LogLevel.None > LogLevel.Critical);
-            Assert.Equal(255, (byte)LogLevel.None);
+            Assert.Equal(255, (byte) LogLevel.None);
         }
 
         [Fact]
@@ -187,4 +186,3 @@ namespace Alis.Core.Aspect.Logging.Test
         }
     }
 }
-

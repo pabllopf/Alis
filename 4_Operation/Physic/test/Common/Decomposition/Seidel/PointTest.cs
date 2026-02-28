@@ -45,9 +45,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         {
             float x = 5.0f;
             float y = 10.0f;
-            
+
             Point point = new Point(x, y);
-            
+
             Assert.Equal(x, point.X);
             Assert.Equal(y, point.Y);
             Assert.Null(point.Next);
@@ -62,9 +62,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         {
             Point p1 = new Point(10, 20);
             Point p2 = new Point(3, 5);
-            
+
             Point result = p1 - p2;
-            
+
             Assert.Equal(7, result.X);
             Assert.Equal(15, result.Y);
         }
@@ -77,9 +77,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         {
             Point p1 = new Point(5, 10);
             Point p2 = new Point(3, 7);
-            
+
             Point result = p1 + p2;
-            
+
             Assert.Equal(8, result.X);
             Assert.Equal(17, result.Y);
         }
@@ -91,9 +91,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         public void OperatorMinusWithFloat_ShouldSubtractFromBothCoordinates()
         {
             Point p = new Point(10, 20);
-            
+
             Point result = p - 5.0f;
-            
+
             Assert.Equal(5, result.X);
             Assert.Equal(15, result.Y);
         }
@@ -105,9 +105,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         public void OperatorPlusWithFloat_ShouldAddToBothCoordinates()
         {
             Point p = new Point(10, 20);
-            
+
             Point result = p + 5.0f;
-            
+
             Assert.Equal(15, result.X);
             Assert.Equal(25, result.Y);
         }
@@ -120,9 +120,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         {
             Point p1 = new Point(1, 0);
             Point p2 = new Point(0, 1);
-            
+
             float cross = p1.Cross(p2);
-            
+
             Assert.Equal(1.0f, cross);
         }
 
@@ -134,9 +134,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         {
             Point p1 = new Point(3, 4);
             Point p2 = new Point(2, 1);
-            
+
             float dot = p1.Dot(p2);
-            
+
             Assert.Equal(10.0f, dot);
         }
 
@@ -148,9 +148,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         {
             Point p1 = new Point(1, 1);
             Point p2 = new Point(2, 2);
-            
+
             bool notEqual = p1.Neq(p2);
-            
+
             Assert.True(notEqual);
         }
 
@@ -162,9 +162,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         {
             Point p1 = new Point(1, 1);
             Point p2 = new Point(1, 1);
-            
+
             bool notEqual = p1.Neq(p2);
-            
+
             Assert.False(notEqual);
         }
 
@@ -177,9 +177,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             Point pa = new Point(0, 0);
             Point pb = new Point(1, 0);
             Point pc = new Point(0, 1);
-            
+
             float orientation = pa.Orient2D(pb, pc);
-            
+
             Assert.NotEqual(0, orientation);
         }
 
@@ -192,12 +192,12 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             Point p1 = new Point(0, 0);
             Point p2 = new Point(1, 1);
             Point p3 = new Point(2, 2);
-            
+
             p1.Next = p2;
             p2.Prev = p1;
             p2.Next = p3;
             p3.Prev = p2;
-            
+
             Assert.Equal(p2, p1.Next);
             Assert.Equal(p1, p2.Prev);
             Assert.Equal(p3, p2.Next);
@@ -212,9 +212,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         {
             Point p1 = new Point(1, 1);
             Point p2 = new Point(2, 2);
-            
+
             float cross = p1.Cross(p2);
-            
+
             Assert.Equal(0.0f, cross);
         }
 
@@ -226,12 +226,11 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         {
             Point p1 = new Point(-5, -10);
             Point p2 = new Point(3, 7);
-            
+
             Point result = p1 + p2;
-            
+
             Assert.Equal(-2, result.X);
             Assert.Equal(-3, result.Y);
         }
     }
 }
-

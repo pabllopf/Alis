@@ -46,7 +46,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Interfaces
         /// <param name="height">The height of the room.</param>
         /// <returns>A room data instance.</returns>
         RoomData CreateFirstRoom(int xPos, int yPos, int width, int height);
-        
+
         /// <summary>
         ///     Creates a standard room connected to a corridor.
         /// </summary>
@@ -55,7 +55,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Interfaces
         /// <param name="corridor">The corridor to connect the room to.</param>
         /// <returns>A room data instance.</returns>
         RoomData CreateRoom(int width, int height, CorridorData corridor);
-        
+
         /// <summary>
         ///     Creates a boss room connected to a corridor.
         /// </summary>
@@ -66,4 +66,3 @@ namespace Alis.Extension.Math.ProceduralDungeon.Interfaces
         RoomData CreateBossRoom(int width, int height, CorridorData corridor);
     }
 }
-

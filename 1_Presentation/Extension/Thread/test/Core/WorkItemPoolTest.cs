@@ -150,11 +150,11 @@ namespace Alis.Extension.Thread.Test.Core
             {
                 WorkItem item = pool.Rent();
                 Assert.NotNull(item);
-                
+
                 item.Action = (s, l) => { };
                 item.StartIndex = i;
                 item.Length = i * 2;
-                
+
                 pool.Return(item);
             }
 
@@ -227,11 +227,11 @@ namespace Alis.Extension.Thread.Test.Core
             pool.Return(item1);
             WorkItem item3 = pool.Rent();
             Assert.Same(item1, item3);
-            
+
             pool.Return(item2);
             pool.Return(item3);
             pool.Clear();
-            
+
             WorkItem item4 = pool.Rent();
             Assert.NotNull(item4);
         }
@@ -255,6 +255,7 @@ namespace Alis.Extension.Thread.Test.Core
                 {
                     rentedItems.Add(item);
                 }
+
                 item.StartIndex = i;
                 item.Length = i * 2;
                 pool.Return(item);
@@ -262,7 +263,7 @@ namespace Alis.Extension.Thread.Test.Core
 
             // Assert
             Assert.Equal(100, rentedItems.Count);
-            
+
             // Verify pool still works
             WorkItem finalItem = pool.Rent();
             Assert.NotNull(finalItem);
@@ -279,12 +280,12 @@ namespace Alis.Extension.Thread.Test.Core
 
             // Act & Assert
             pool.Clear();
-            
+
             // Should still work after clear
             WorkItem item = pool.Rent();
             Assert.NotNull(item);
         }
-        
+
         /// <summary>
         ///     Tests that pool maintains fifo order
         /// </summary>
@@ -337,4 +338,3 @@ namespace Alis.Extension.Thread.Test.Core
         }
     }
 }
-

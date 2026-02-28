@@ -32,11 +32,10 @@ using Xunit;
 namespace Alis.Extension.Math.ProceduralDungeon.Test
 {
     /// <summary>
-    ///     Test class for <see cref="BoardSquare"/> struct.
+    ///     Test class for <see cref="BoardSquare" /> struct.
     /// </summary>
     public class BoardSquareTest
     {
-
         /// <summary>
         ///     Tests that board square can be created with specific type.
         /// </summary>
@@ -44,7 +43,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         public void Constructor_WithType_ShouldSetType()
         {
             // Arrange & Act
-            BoardSquare square = new BoardSquare { Type = BoardSquareType.Floor };
+            BoardSquare square = new BoardSquare {Type = BoardSquareType.Floor};
 
             // Assert
             Assert.Equal(BoardSquareType.Floor, square.Type);
@@ -57,7 +56,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         public void Type_CanBeModified()
         {
             // Arrange
-            BoardSquare square = new BoardSquare { Type = BoardSquareType.Empty };
+            BoardSquare square = new BoardSquare {Type = BoardSquareType.Empty};
 
             // Act
             square.Type = BoardSquareType.WallTop;
@@ -73,7 +72,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         public void Floor_ShouldBeWalkable()
         {
             // Arrange
-            BoardSquare square = new BoardSquare { Type = BoardSquareType.Floor };
+            BoardSquare square = new BoardSquare {Type = BoardSquareType.Floor};
 
             // Assert
             Assert.Equal(BoardSquareType.Floor, square.Type);
@@ -86,7 +85,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         public void Wall_ShouldNotBeFloor()
         {
             // Arrange
-            BoardSquare square = new BoardSquare { Type = BoardSquareType.WallTop };
+            BoardSquare square = new BoardSquare {Type = BoardSquareType.WallTop};
 
             // Assert
             Assert.NotEqual(BoardSquareType.Floor, square.Type);
@@ -95,19 +94,12 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         /// <summary>
         ///     Tests that board square can be set to all corner types.
         /// </summary>
-        [Theory]
-        [InlineData(BoardSquareType.CornerLeftUp)]
-        [InlineData(BoardSquareType.CornerLeftDown)]
-        [InlineData(BoardSquareType.CornerRightUp)]
-        [InlineData(BoardSquareType.CornerRightDown)]
-        [InlineData(BoardSquareType.CornerInternalLeftUp)]
-        [InlineData(BoardSquareType.CornerInternalLeftDown)]
-        [InlineData(BoardSquareType.CornerInternalRightUp)]
-        [InlineData(BoardSquareType.CornerInternalRightDown)]
+        [Theory, InlineData(BoardSquareType.CornerLeftUp), InlineData(BoardSquareType.CornerLeftDown), InlineData(BoardSquareType.CornerRightUp), InlineData(BoardSquareType.CornerRightDown), InlineData(BoardSquareType.CornerInternalLeftUp), InlineData(BoardSquareType.CornerInternalLeftDown), InlineData(BoardSquareType.CornerInternalRightUp),
+         InlineData(BoardSquareType.CornerInternalRightDown)]
         public void CornerTypes_CanBeSet(BoardSquareType cornerType)
         {
             // Arrange & Act
-            BoardSquare square = new BoardSquare { Type = cornerType };
+            BoardSquare square = new BoardSquare {Type = cornerType};
 
             // Assert
             Assert.Equal(cornerType, square.Type);
@@ -116,15 +108,11 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         /// <summary>
         ///     Tests that board square can be set to all wall types.
         /// </summary>
-        [Theory]
-        [InlineData(BoardSquareType.WallTop)]
-        [InlineData(BoardSquareType.WallDown)]
-        [InlineData(BoardSquareType.WallLeft)]
-        [InlineData(BoardSquareType.WallRight)]
+        [Theory, InlineData(BoardSquareType.WallTop), InlineData(BoardSquareType.WallDown), InlineData(BoardSquareType.WallLeft), InlineData(BoardSquareType.WallRight)]
         public void WallTypes_CanBeSet(BoardSquareType wallType)
         {
             // Arrange & Act
-            BoardSquare square = new BoardSquare { Type = wallType };
+            BoardSquare square = new BoardSquare {Type = wallType};
 
             // Assert
             Assert.Equal(wallType, square.Type);
@@ -137,8 +125,8 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         public void Equals_WithSameType_ShouldReturnTrue()
         {
             // Arrange
-            BoardSquare square1 = new BoardSquare { Type = BoardSquareType.Floor };
-            BoardSquare square2 = new BoardSquare { Type = BoardSquareType.Floor };
+            BoardSquare square1 = new BoardSquare {Type = BoardSquareType.Floor};
+            BoardSquare square2 = new BoardSquare {Type = BoardSquareType.Floor};
 
             // Act & Assert
             Assert.Equal(square1.Type, square2.Type);
@@ -151,8 +139,8 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         public void Equals_WithDifferentType_ShouldReturnFalse()
         {
             // Arrange
-            BoardSquare square1 = new BoardSquare { Type = BoardSquareType.Floor };
-            BoardSquare square2 = new BoardSquare { Type = BoardSquareType.Empty };
+            BoardSquare square1 = new BoardSquare {Type = BoardSquareType.Floor};
+            BoardSquare square2 = new BoardSquare {Type = BoardSquareType.Empty};
 
             // Act & Assert
             Assert.NotEqual(square1.Type, square2.Type);
@@ -165,7 +153,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         public void Type_CanChangeFromEmptyToFloor()
         {
             // Arrange
-            BoardSquare square = new BoardSquare { Type = BoardSquareType.Empty };
+            BoardSquare square = new BoardSquare {Type = BoardSquareType.Empty};
 
             // Act
             square.Type = BoardSquareType.Floor;
@@ -181,7 +169,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         public void Type_CanChangeFromFloorToWall()
         {
             // Arrange
-            BoardSquare square = new BoardSquare { Type = BoardSquareType.Floor };
+            BoardSquare square = new BoardSquare {Type = BoardSquareType.Floor};
 
             // Act
             square.Type = BoardSquareType.WallTop;
@@ -191,4 +179,3 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         }
     }
 }
-

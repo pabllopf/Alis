@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:GameWindowTests.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -41,12 +42,12 @@ namespace Alis.Extension.Graphic.Glfw.Test
     public class GameWindowTests : IDisposable
     {
         /// <summary>
-        /// The window
+        ///     The window
         /// </summary>
         private GameWindow window;
 
         /// <summary>
-        /// Disposes this instance
+        ///     Disposes this instance
         /// </summary>
         public void Dispose()
         {
@@ -54,7 +55,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Games the window default constructor creates window
+        ///     Games the window default constructor creates window
         /// </summary>
         [RequiresDisplay]
         public void GameWindow_DefaultConstructor_CreatesWindow()
@@ -69,7 +70,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Games the window constructor with parameters creates window
+        ///     Games the window constructor with parameters creates window
         /// </summary>
         [RequiresDisplay]
         public void GameWindow_ConstructorWithParameters_CreatesWindow()
@@ -84,7 +85,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Games the window constructor with all parameters creates window
+        ///     Games the window constructor with all parameters creates window
         /// </summary>
         [RequiresDisplay]
         public void GameWindow_ConstructorWithAllParameters_CreatesWindow()
@@ -99,7 +100,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Games the window inherits from native window
+        ///     Games the window inherits from native window
         /// </summary>
         [RequiresDisplay]
         public void GameWindow_InheritsFromNativeWindow()
@@ -113,7 +114,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Games the window can be disposed
+        ///     Games the window can be disposed
         /// </summary>
         [RequiresDisplay]
         public void GameWindow_CanBeDisposed()
@@ -127,7 +128,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Games the window with custom size has correct size
+        ///     Games the window with custom size has correct size
         /// </summary>
         [RequiresDisplay]
         public void GameWindow_WithCustomSize_HasCorrectSize()
@@ -147,4 +148,3 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
     }
 }
-

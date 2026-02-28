@@ -28,18 +28,18 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Xunit;
 using Alis.Core.Graphic.OpenGL;
+using Xunit;
 
 namespace Alis.Core.Graphic.Test
 {
     /// <summary>
-    /// Tests for the FramebufferTarget enum validating framebuffer target types.
+    ///     Tests for the FramebufferTarget enum validating framebuffer target types.
     /// </summary>
     public class FramebufferTargetTest
     {
         /// <summary>
-        /// Tests that Framebuffer target has correct OpenGL value.
+        ///     Tests that Framebuffer target has correct OpenGL value.
         /// </summary>
         [Fact]
         public void Framebuffer_HasCorrectValue_EqualsGlFramebuffer()
@@ -48,11 +48,11 @@ namespace Alis.Core.Graphic.Test
             const int expectedValue = 0x8D40;
 
             // Assert
-            Assert.Equal(expectedValue, (int)FramebufferTarget.Framebuffer);
+            Assert.Equal(expectedValue, (int) FramebufferTarget.Framebuffer);
         }
 
         /// <summary>
-        /// Tests that FramebufferTarget is an enum type.
+        ///     Tests that FramebufferTarget is an enum type.
         /// </summary>
         [Fact]
         public void FramebufferTarget_IsEnum_TypeIsCorrect()
@@ -65,7 +65,7 @@ namespace Alis.Core.Graphic.Test
         }
 
         /// <summary>
-        /// Tests that FramebufferTarget enum is public.
+        ///     Tests that FramebufferTarget enum is public.
         /// </summary>
         [Fact]
         public void FramebufferTarget_IsPublic_CanBeAccessed()
@@ -78,26 +78,26 @@ namespace Alis.Core.Graphic.Test
         }
 
         /// <summary>
-        /// Tests that FramebufferTarget has exactly one defined value.
+        ///     Tests that FramebufferTarget has exactly one defined value.
         /// </summary>
         [Fact]
         public void FramebufferTarget_HasOneValue_CountIsCorrect()
         {
             // Arrange
-            Array enumValues = System.Enum.GetValues(typeof(FramebufferTarget));
+            Array enumValues = Enum.GetValues(typeof(FramebufferTarget));
 
             // Act & Assert
             Assert.Single(enumValues);
         }
 
         /// <summary>
-        /// Tests that FramebufferTarget can be cast to int.
+        ///     Tests that FramebufferTarget can be cast to int.
         /// </summary>
         [Fact]
         public void FramebufferTarget_CanCastToInt_ConversionIsValid()
         {
             // Arrange & Act
-            int value = (int)FramebufferTarget.Framebuffer;
+            int value = (int) FramebufferTarget.Framebuffer;
 
             // Assert
             Assert.IsType<int>(value);
@@ -105,7 +105,7 @@ namespace Alis.Core.Graphic.Test
         }
 
         /// <summary>
-        /// Tests that FramebufferTarget values can be compared.
+        ///     Tests that FramebufferTarget values can be compared.
         /// </summary>
         [Fact]
         public void FramebufferTarget_CanCompareValues_EqualityWorks()
@@ -119,30 +119,29 @@ namespace Alis.Core.Graphic.Test
         }
 
         /// <summary>
-        /// Tests that Framebuffer has the correct hexadecimal representation.
+        ///     Tests that Framebuffer has the correct hexadecimal representation.
         /// </summary>
         [Fact]
         public void Framebuffer_HasCorrectHexValue_HexRepresentationIsAccurate()
         {
             // Arrange & Act
-            int hexValue = (int)FramebufferTarget.Framebuffer;
+            int hexValue = (int) FramebufferTarget.Framebuffer;
 
             // Assert
             Assert.Equal(36160, hexValue); // 0x8D40 in decimal
         }
 
         /// <summary>
-        /// Tests that FramebufferTarget enum name is correct.
+        ///     Tests that FramebufferTarget enum name is correct.
         /// </summary>
         [Fact]
         public void FramebufferTarget_HasCorrectName_NamingConventionIsMaintained()
         {
             // Arrange & Act
-            string name = System.Enum.GetName(typeof(FramebufferTarget), FramebufferTarget.Framebuffer);
+            string name = Enum.GetName(typeof(FramebufferTarget), FramebufferTarget.Framebuffer);
 
             // Assert
             Assert.Equal("Framebuffer", name);
         }
     }
 }
-

@@ -38,12 +38,10 @@ namespace Alis.Core.Aspect.Data.Json
     /// <remarks>
     ///     Types implementing this interface can reconstruct themselves from a property dictionary
     ///     created by the JSON parser.
-    ///     
     ///     Usage Pattern:
     ///     Classes should implement this interface to support JSON deserialization through the
     ///     JsonNativeAot.Deserialize&lt;T&gt; method. For complete bidirectional support,
     ///     also implement IJsonSerializable.
-    ///     
     ///     The class must have a parameterless constructor as required by the generic constraint.
     /// </remarks>
     public interface IJsonDesSerializable<out T>

@@ -29,21 +29,20 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using Xunit;
 using Alis.Core.Graphic.Platforms.Osx.Native;
+using Xunit;
 
 namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
 {
     /// <summary>
-    /// Tests for the NsPoint struct validating OSX native coordinate representation.
+    ///     Tests for the NsPoint struct validating OSX native coordinate representation.
     /// </summary>
     public class NsPointTest
     {
         /// <summary>
-        /// Tests that NsPoint is a struct type.
+        ///     Tests that NsPoint is a struct type.
         /// </summary>
         [Fact]
         public void NsPoint_IsStruct_TypeIsCorrect()
@@ -56,7 +55,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
         }
 
         /// <summary>
-        /// Tests that NsPoint is public.
+        ///     Tests that NsPoint is public.
         /// </summary>
         [Fact]
         public void NsPoint_IsPublic_CanBeAccessed()
@@ -70,7 +69,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
 
 
         /// <summary>
-        /// Tests that NsPoint has X field.
+        ///     Tests that NsPoint has X field.
         /// </summary>
         [Fact]
         public void NsPoint_X_FieldExists()
@@ -84,7 +83,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
         }
 
         /// <summary>
-        /// Tests that NsPoint has Y field.
+        ///     Tests that NsPoint has Y field.
         /// </summary>
         [Fact]
         public void NsPoint_Y_FieldExists()
@@ -98,7 +97,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
         }
 
         /// <summary>
-        /// Tests that NsPoint X and Y fields are public.
+        ///     Tests that NsPoint X and Y fields are public.
         /// </summary>
         [Fact]
         public void NsPoint_Fields_ArePublic()
@@ -113,13 +112,13 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
         }
 
         /// <summary>
-        /// Tests that NsPoint can be instantiated.
+        ///     Tests that NsPoint can be instantiated.
         /// </summary>
         [Fact]
         public void NsPoint_CanBeInstantiated_StructCreationIsValid()
         {
             // Arrange & Act
-            NsPoint point = new NsPoint { X = 10.5, Y = 20.5 };
+            NsPoint point = new NsPoint {X = 10.5, Y = 20.5};
 
             // Assert
             Assert.Equal(10.5, point.X);
@@ -127,13 +126,13 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
         }
 
         /// <summary>
-        /// Tests that NsPoint X and Y can be modified after creation.
+        ///     Tests that NsPoint X and Y can be modified after creation.
         /// </summary>
         [Fact]
         public void NsPoint_CanModifyFields_ValuesCanBeChanged()
         {
             // Arrange
-            NsPoint point = new NsPoint { X = 0, Y = 0 };
+            NsPoint point = new NsPoint {X = 0, Y = 0};
 
             // Act
             point.X = 5.0;
@@ -145,13 +144,13 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
         }
 
         /// <summary>
-        /// Tests that NsPoint fields are double precision.
+        ///     Tests that NsPoint fields are double precision.
         /// </summary>
         [Fact]
         public void NsPoint_Fields_AreDoublePrecision()
         {
             // Arrange
-            NsPoint point = new NsPoint { X = 3.14159265358979, Y = 2.71828182845905 };
+            NsPoint point = new NsPoint {X = 3.14159265358979, Y = 2.71828182845905};
 
             // Act & Assert
             Assert.Equal(3.14159265358979, point.X);
@@ -159,7 +158,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
         }
 
         /// <summary>
-        /// Tests that NsPoint supports default value initialization.
+        ///     Tests that NsPoint supports default value initialization.
         /// </summary>
         [Fact]
         public void NsPoint_DefaultInitialization_CreatesZeroCoordinates()
@@ -173,17 +172,17 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
         }
 
         /// <summary>
-        /// Tests that NsPoint struct can be used in collections.
+        ///     Tests that NsPoint struct can be used in collections.
         /// </summary>
         [Fact]
         public void NsPoint_CanBeStoredInCollections_ListSupport()
         {
             // Arrange
-            List<NsPoint> points = new System.Collections.Generic.List<NsPoint>
+            List<NsPoint> points = new List<NsPoint>
             {
-                new NsPoint { X = 0, Y = 0 },
-                new NsPoint { X = 10, Y = 10 },
-                new NsPoint { X = 20, Y = 20 }
+                new NsPoint {X = 0, Y = 0},
+                new NsPoint {X = 10, Y = 10},
+                new NsPoint {X = 20, Y = 20}
             };
 
             // Act & Assert
@@ -192,7 +191,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
         }
 
         /// <summary>
-        /// Tests that NsPoint can be used in native P/Invoke calls.
+        ///     Tests that NsPoint can be used in native P/Invoke calls.
         /// </summary>
         [Fact]
         public void NsPoint_IsMarshallable_InteropIsSupported()
@@ -208,4 +207,3 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
         }
     }
 }
-

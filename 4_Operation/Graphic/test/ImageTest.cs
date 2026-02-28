@@ -28,19 +28,18 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.IO;
 using System.Reflection;
 using Xunit;
 
 namespace Alis.Core.Graphic.Test
 {
     /// <summary>
-    /// Tests for the Image class validating image loading, dimensions, and data handling.
+    ///     Tests for the Image class validating image loading, dimensions, and data handling.
     /// </summary>
     public class ImageTest
     {
         /// <summary>
-        /// Tests that Width property is properly set during image creation.
+        ///     Tests that Width property is properly set during image creation.
         /// </summary>
         [Fact]
         public void Width_WhenImageIsCreated_ReturnsExpectedWidth()
@@ -57,7 +56,7 @@ namespace Alis.Core.Graphic.Test
         }
 
         /// <summary>
-        /// Tests that Height property is properly set during image creation.
+        ///     Tests that Height property is properly set during image creation.
         /// </summary>
         [Fact]
         public void Height_WhenImageIsCreated_ReturnsExpectedHeight()
@@ -67,7 +66,7 @@ namespace Alis.Core.Graphic.Test
         }
 
         /// <summary>
-        /// Tests that Data property is properly set during image creation.
+        ///     Tests that Data property is properly set during image creation.
         /// </summary>
         [Fact]
         public void Data_WhenImageIsCreated_ReturnsExpectedData()
@@ -77,39 +76,39 @@ namespace Alis.Core.Graphic.Test
         }
 
         /// <summary>
-        /// Tests that Load method exists and is publicly accessible.
+        ///     Tests that Load method exists and is publicly accessible.
         /// </summary>
         [Fact]
         public void Load_MethodExists_CanBeInvoked()
         {
             // Arrange & Act
-            MethodInfo loadMethod = typeof(Image).GetMethod("Load", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
-            
+            MethodInfo loadMethod = typeof(Image).GetMethod("Load", BindingFlags.Public | BindingFlags.Static);
+
             // Assert
             Assert.NotNull(loadMethod);
         }
 
         /// <summary>
-        /// Tests that LoadImageFromResources method exists and is publicly accessible.
+        ///     Tests that LoadImageFromResources method exists and is publicly accessible.
         /// </summary>
         [Fact]
         public void LoadImageFromResources_MethodExists_CanBeInvoked()
         {
             // Arrange & Act
-            MethodInfo method = typeof(Image).GetMethod("LoadImageFromResources", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
-            
+            MethodInfo method = typeof(Image).GetMethod("LoadImageFromResources", BindingFlags.Public | BindingFlags.Static);
+
             // Assert
             Assert.NotNull(method);
         }
 
         /// <summary>
-        /// Tests that Load method parameter accepts string path.
+        ///     Tests that Load method parameter accepts string path.
         /// </summary>
         [Fact]
         public void Load_AcceptsStringPath_ParameterIsValid()
         {
             // Arrange
-            MethodInfo loadMethod = typeof(Image).GetMethod("Load", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
+            MethodInfo loadMethod = typeof(Image).GetMethod("Load", BindingFlags.Public | BindingFlags.Static);
             ParameterInfo[] parameters = loadMethod?.GetParameters();
 
             // Act & Assert
@@ -119,13 +118,13 @@ namespace Alis.Core.Graphic.Test
         }
 
         /// <summary>
-        /// Tests that LoadImageFromResources method parameter accepts string resource name.
+        ///     Tests that LoadImageFromResources method parameter accepts string resource name.
         /// </summary>
         [Fact]
         public void LoadImageFromResources_AcceptsStringResourceName_ParameterIsValid()
         {
             // Arrange
-            MethodInfo method = typeof(Image).GetMethod("LoadImageFromResources", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
+            MethodInfo method = typeof(Image).GetMethod("LoadImageFromResources", BindingFlags.Public | BindingFlags.Static);
             ParameterInfo[] parameters = method?.GetParameters();
 
             // Act & Assert
@@ -135,7 +134,7 @@ namespace Alis.Core.Graphic.Test
         }
 
         /// <summary>
-        /// Tests that Image class is public and can be instantiated.
+        ///     Tests that Image class is public and can be instantiated.
         /// </summary>
         [Fact]
         public void ImageClass_IsPublic_CanBeAccessed()
@@ -148,7 +147,7 @@ namespace Alis.Core.Graphic.Test
         }
 
         /// <summary>
-        /// Tests that Width property is read-only after initialization.
+        ///     Tests that Width property is read-only after initialization.
         /// </summary>
         [Fact]
         public void Width_IsReadOnly_CannotBeModified()
@@ -163,7 +162,7 @@ namespace Alis.Core.Graphic.Test
         }
 
         /// <summary>
-        /// Tests that Height property is read-only after initialization.
+        ///     Tests that Height property is read-only after initialization.
         /// </summary>
         [Fact]
         public void Height_IsReadOnly_CannotBeModified()
@@ -178,7 +177,7 @@ namespace Alis.Core.Graphic.Test
         }
 
         /// <summary>
-        /// Tests that Data property is read-only after initialization.
+        ///     Tests that Data property is read-only after initialization.
         /// </summary>
         [Fact]
         public void Data_IsReadOnly_CannotBeModified()
@@ -193,13 +192,13 @@ namespace Alis.Core.Graphic.Test
         }
 
         /// <summary>
-        /// Tests that Load method returns an Image instance.
+        ///     Tests that Load method returns an Image instance.
         /// </summary>
         [Fact]
         public void Load_ReturnsImage_ReturnTypeIsCorrect()
         {
             // Arrange
-            MethodInfo loadMethod = typeof(Image).GetMethod("Load", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
+            MethodInfo loadMethod = typeof(Image).GetMethod("Load", BindingFlags.Public | BindingFlags.Static);
 
             // Act & Assert
             Assert.NotNull(loadMethod);
@@ -207,13 +206,13 @@ namespace Alis.Core.Graphic.Test
         }
 
         /// <summary>
-        /// Tests that LoadImageFromResources method returns an Image instance.
+        ///     Tests that LoadImageFromResources method returns an Image instance.
         /// </summary>
         [Fact]
         public void LoadImageFromResources_ReturnsImage_ReturnTypeIsCorrect()
         {
             // Arrange
-            MethodInfo method = typeof(Image).GetMethod("LoadImageFromResources", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
+            MethodInfo method = typeof(Image).GetMethod("LoadImageFromResources", BindingFlags.Public | BindingFlags.Static);
 
             // Act & Assert
             Assert.NotNull(method);
@@ -221,20 +220,20 @@ namespace Alis.Core.Graphic.Test
         }
 
         /// <summary>
-        /// Tests that Image class has required private constructors.
+        ///     Tests that Image class has required private constructors.
         /// </summary>
         [Fact]
         public void ImageConstructor_IsPrivate_CannotBeDirectlyInstantiated()
         {
             // Arrange
-            ConstructorInfo[] constructors = typeof(Image).GetConstructors(System.Reflection.BindingFlags.Public);
+            ConstructorInfo[] constructors = typeof(Image).GetConstructors(BindingFlags.Public);
 
             // Act & Assert
             Assert.Empty(constructors);
         }
 
         /// <summary>
-        /// Tests that Width property getter is public and accessible.
+        ///     Tests that Width property getter is public and accessible.
         /// </summary>
         [Fact]
         public void Width_GetterIsPublic_CanBeRead()
@@ -248,7 +247,7 @@ namespace Alis.Core.Graphic.Test
         }
 
         /// <summary>
-        /// Tests that Height property getter is public and accessible.
+        ///     Tests that Height property getter is public and accessible.
         /// </summary>
         [Fact]
         public void Height_GetterIsPublic_CanBeRead()
@@ -262,7 +261,7 @@ namespace Alis.Core.Graphic.Test
         }
 
         /// <summary>
-        /// Tests that Data property getter is public and accessible.
+        ///     Tests that Data property getter is public and accessible.
         /// </summary>
         [Fact]
         public void Data_GetterIsPublic_CanBeRead()
@@ -276,7 +275,7 @@ namespace Alis.Core.Graphic.Test
         }
 
         /// <summary>
-        /// Tests that Image class contains methods for loading different BMP formats.
+        ///     Tests that Image class contains methods for loading different BMP formats.
         /// </summary>
         [Fact]
         public void ImageClass_ContainsLoadMethods_AllRequiredMethodsPresent()
@@ -285,7 +284,7 @@ namespace Alis.Core.Graphic.Test
             Type imageType = typeof(Image);
 
             // Act
-            MethodInfo[] methods = imageType.GetMethods(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
+            MethodInfo[] methods = imageType.GetMethods(BindingFlags.Public | BindingFlags.Static);
 
             // Assert
             Assert.NotEmpty(methods);
@@ -294,4 +293,3 @@ namespace Alis.Core.Graphic.Test
         }
     }
 }
-

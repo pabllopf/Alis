@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: JsonNativePropertyNameAttributeTest.cs
+//  File:JsonNativePropertyNameAttributeTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program. If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -128,9 +128,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void Name_Property_IsReadOnly()
         {
             // Act & Assert
-            PropertyInfo propertyInfo = typeof(JsonNativePropertyNameAttribute).GetProperty("Name", 
+            PropertyInfo propertyInfo = typeof(JsonNativePropertyNameAttribute).GetProperty("Name",
                 BindingFlags.Public | BindingFlags.Instance);
-            
+
             Assert.NotNull(propertyInfo);
             Assert.NotNull(propertyInfo.GetGetMethod());
             Assert.Null(propertyInfo.GetSetMethod());
@@ -300,7 +300,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         private class TestClassWithAttribute
         {
             /// <summary>
-            /// Gets or sets the value of the custom name property
+            ///     Gets or sets the value of the custom name property
             /// </summary>
             [JsonNativePropertyName("customJsonName")]
             public string CustomNameProperty { get; set; }
@@ -312,24 +312,22 @@ namespace Alis.Core.Aspect.Data.Test.Json
         private class TestClassWithMultipleAttributes
         {
             /// <summary>
-            /// Gets or sets the value of the property 1
+            ///     Gets or sets the value of the property 1
             /// </summary>
             [JsonNativePropertyName("firstName")]
             public string Property1 { get; set; }
 
             /// <summary>
-            /// Gets or sets the value of the property 2
+            ///     Gets or sets the value of the property 2
             /// </summary>
             [JsonNativePropertyName("lastName")]
             public string Property2 { get; set; }
 
             /// <summary>
-            /// Gets or sets the value of the property 3
+            ///     Gets or sets the value of the property 3
             /// </summary>
             [JsonNativePropertyName("emailAddress")]
             public string Property3 { get; set; }
         }
     }
 }
-
-

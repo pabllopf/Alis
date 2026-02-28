@@ -27,8 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Xunit;
 using Alis.Extension.Graphic.Sdl2.Structs;
+using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
@@ -116,12 +116,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests the Button method with different values.
         /// </summary>
-        [Theory]
-        [InlineData(1u, 1u)]
-        [InlineData(2u, 2u)]
-        [InlineData(3u, 4u)]
-        [InlineData(4u, 8u)]
-        [InlineData(5u, 16u)]
+        [Theory, InlineData(1u, 1u), InlineData(2u, 2u), InlineData(3u, 4u), InlineData(4u, 8u), InlineData(5u, 16u)]
         public void Button_WithDifferentValues_CalculatesButtonMask(uint input, uint expected)
         {
             // Act
@@ -138,31 +133,29 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         public void Fourcc_WithValidAsciiCharacters_ReturnsCorrectValue()
         {
             // Arrange
-            byte a = (byte)'Y';
-            byte b = (byte)'V';
-            byte c = (byte)'1';
-            byte d = (byte)'2';
+            byte a = (byte) 'Y';
+            byte b = (byte) 'V';
+            byte c = (byte) '1';
+            byte d = (byte) '2';
 
             // Act
             uint result = Sdl.Fourcc(a, b, c, d);
 
             // Assert
-            Assert.Equal((uint)(a | (b << 8) | (c << 16) | (d << 24)), result);
+            Assert.Equal((uint) (a | (b << 8) | (c << 16) | (d << 24)), result);
         }
 
         /// <summary>
         ///     Tests the Fourcc method with different values.
         /// </summary>
-        [Theory]
-        [InlineData((byte)'I', (byte)'Y', (byte)'U', (byte)'V')]
-        [InlineData(0, 1, 2, 3)]
+        [Theory, InlineData((byte) 'I', (byte) 'Y', (byte) 'U', (byte) 'V'), InlineData(0, 1, 2, 3)]
         public void Fourcc_WithDifferentValues_ReturnsCorrectCombination(byte a, byte b, byte c, byte d)
         {
             // Act
             uint result = Sdl.Fourcc(a, b, c, d);
 
             // Assert
-            uint expected = (uint)(a | (b << 8) | (c << 16) | (d << 24));
+            uint expected = (uint) (a | (b << 8) | (c << 16) | (d << 24));
             Assert.Equal(expected, result);
         }
 
@@ -371,7 +364,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             // Assert
             Assert.Equal(0x02, Sdl.AndroidExternalStorageWrite);
         }
-        
+
 
         /// <summary>
         ///     Tests SdlAudioBitSize helper function.
@@ -494,11 +487,10 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         public void SdlDefinePixelFourcc_WithValidCharacters_ReturnsFourccValue()
         {
             // Act
-            uint fourcc = Sdl.SdlDefinePixelFourcc((byte)'Y', (byte)'V', (byte)'1', (byte)'2');
+            uint fourcc = Sdl.SdlDefinePixelFourcc((byte) 'Y', (byte) 'V', (byte) '1', (byte) '2');
 
             // Assert
             Assert.Equal(Sdl.PixelFormatYv12, fourcc);
         }
     }
 }
-

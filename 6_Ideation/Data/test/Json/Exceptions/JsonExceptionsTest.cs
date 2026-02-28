@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: JsonExceptionsTest.cs
+//  File:JsonExceptionsTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program. If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Data.Test.Json.Exceptions
 {
     /// <summary>
-    /// The json exceptions test class
+    ///     The json exceptions test class
     /// </summary>
     public class JsonExceptionsTest
     {
         /// <summary>
-        /// Tests that json parsing exception with message stores message
+        ///     Tests that json parsing exception with message stores message
         /// </summary>
         [Fact]
         public void JsonParsingException_WithMessage_StoresMessage()
@@ -51,7 +51,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Exceptions
         }
 
         /// <summary>
-        /// Tests that json parsing exception with message and inner exception stores data
+        ///     Tests that json parsing exception with message and inner exception stores data
         /// </summary>
         [Fact]
         public void JsonParsingException_WithMessageAndInnerException_StoresData()
@@ -65,7 +65,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Exceptions
         }
 
         /// <summary>
-        /// Tests that json deserialization exception with message stores message
+        ///     Tests that json deserialization exception with message stores message
         /// </summary>
         [Fact]
         public void JsonDeserializationException_WithMessage_StoresMessage()
@@ -77,7 +77,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Exceptions
         }
 
         /// <summary>
-        /// Tests that json deserialization exception with message and inner exception stores data
+        ///     Tests that json deserialization exception with message and inner exception stores data
         /// </summary>
         [Fact]
         public void JsonDeserializationException_WithMessageAndInnerException_StoresData()
@@ -91,7 +91,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Exceptions
         }
 
         /// <summary>
-        /// Tests that json serialization exception with message stores message
+        ///     Tests that json serialization exception with message stores message
         /// </summary>
         [Fact]
         public void JsonSerializationException_WithMessage_StoresMessage()
@@ -103,7 +103,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Exceptions
         }
 
         /// <summary>
-        /// Tests that json serialization exception with message and inner exception stores data
+        ///     Tests that json serialization exception with message and inner exception stores data
         /// </summary>
         [Fact]
         public void JsonSerializationException_WithMessageAndInnerException_StoresData()
@@ -117,7 +117,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Exceptions
         }
 
         /// <summary>
-        /// Tests that json parsing exception is exception
+        ///     Tests that json parsing exception is exception
         /// </summary>
         [Fact]
         public void JsonParsingException_IsException()
@@ -127,7 +127,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Exceptions
         }
 
         /// <summary>
-        /// Tests that json deserialization exception is exception
+        ///     Tests that json deserialization exception is exception
         /// </summary>
         [Fact]
         public void JsonDeserializationException_IsException()
@@ -137,7 +137,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Exceptions
         }
 
         /// <summary>
-        /// Tests that json serialization exception is exception
+        ///     Tests that json serialization exception is exception
         /// </summary>
         [Fact]
         public void JsonSerializationException_IsException()
@@ -147,4 +147,3 @@ namespace Alis.Core.Aspect.Data.Test.Json.Exceptions
         }
     }
 }
-

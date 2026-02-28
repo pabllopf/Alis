@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IHasTest.cs
+//  File:IHasTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,25 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
     /// </summary>
     public class IHasTest
     {
-        /// <summary>
-        ///     Helper builder class.
-        /// </summary>
-        private class Builder { public string HasProperty { get; set; } }
-
-        /// <summary>
-        ///     Helper implementation of IHas.
-        /// </summary>
-        private class HasBuilder : IHas<Builder, string>
-        {
-            private readonly Builder _builder = new Builder();
-
-            public Builder Has(string obj)
-            {
-                _builder.HasProperty = obj;
-                return _builder;
-            }
-        }
-
         /// <summary>
         ///     Tests that IHas can be implemented.
         /// </summary>
@@ -104,9 +85,34 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         }
 
         /// <summary>
+        ///     Helper builder class.
+        /// </summary>
+        private class Builder
+        {
+            public string HasProperty { get; set; }
+        }
+
+        /// <summary>
+        ///     Helper implementation of IHas.
+        /// </summary>
+        private class HasBuilder : IHas<Builder, string>
+        {
+            private readonly Builder _builder = new Builder();
+
+            public Builder Has(string obj)
+            {
+                _builder.HasProperty = obj;
+                return _builder;
+            }
+        }
+
+        /// <summary>
         ///     Helper builder with object.
         /// </summary>
-        private class ObjectBuilder { public object HasObject { get; set; } }
+        private class ObjectBuilder
+        {
+            public object HasObject { get; set; }
+        }
 
         /// <summary>
         ///     Helper implementation with object.
@@ -123,4 +129,3 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         }
     }
 }
-

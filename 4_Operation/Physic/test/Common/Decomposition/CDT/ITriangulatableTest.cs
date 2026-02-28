@@ -41,6 +41,134 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
     public class ITriangulatableTest
     {
         /// <summary>
+        ///     Tests that i triangulatable should be interface
+        /// </summary>
+        [Fact]
+        public void ITriangulatable_ShouldBeInterface()
+        {
+            Type type = typeof(ITriangulatable);
+
+            Assert.True(type.IsInterface);
+        }
+
+        /// <summary>
+        ///     Tests that test triangulatable should implement interface
+        /// </summary>
+        [Fact]
+        public void TestTriangulatable_ShouldImplementInterface()
+        {
+            TestTriangulatable triangulatable = new TestTriangulatable();
+
+            Assert.IsAssignableFrom<ITriangulatable>(triangulatable);
+        }
+
+        /// <summary>
+        ///     Tests that get points should return collection
+        /// </summary>
+        [Fact]
+        public void GetPoints_ShouldReturnCollection()
+        {
+            TestTriangulatable triangulatable = new TestTriangulatable();
+
+            IList<TriangulationPoint> points = triangulatable.GetPoints;
+
+            Assert.NotNull(points);
+        }
+
+        /// <summary>
+        ///     Tests that get triangles should return collection
+        /// </summary>
+        [Fact]
+        public void GetTriangles_ShouldReturnCollection()
+        {
+            TestTriangulatable triangulatable = new TestTriangulatable();
+
+            IList<DelaunayTriangle> triangles = triangulatable.GetTriangles;
+
+            Assert.NotNull(triangles);
+        }
+
+        /// <summary>
+        ///     Tests that add triangle should add to collection
+        /// </summary>
+        [Fact]
+        public void AddTriangle_ShouldAddToCollection()
+        {
+            TestTriangulatable triangulatable = new TestTriangulatable();
+            TriangulationPoint p1 = new TriangulationPoint(0, 0);
+            TriangulationPoint p2 = new TriangulationPoint(1, 0);
+            TriangulationPoint p3 = new TriangulationPoint(0, 1);
+            DelaunayTriangle triangle = new DelaunayTriangle(p1, p2, p3);
+
+            triangulatable.AddTriangle(triangle);
+
+            Assert.Single(triangulatable.GetTriangles);
+        }
+
+        /// <summary>
+        ///     Tests that add triangles should add multiple triangles
+        /// </summary>
+        [Fact]
+        public void AddTriangles_ShouldAddMultipleTriangles()
+        {
+            TestTriangulatable triangulatable = new TestTriangulatable();
+            List<DelaunayTriangle> triangles = new List<DelaunayTriangle>
+            {
+                new DelaunayTriangle(new TriangulationPoint(0, 0), new TriangulationPoint(1, 0), new TriangulationPoint(0, 1)),
+                new DelaunayTriangle(new TriangulationPoint(1, 0), new TriangulationPoint(1, 1), new TriangulationPoint(0, 1))
+            };
+
+            triangulatable.AddTriangles(triangles);
+
+            Assert.Equal(2, triangulatable.GetTriangles.Count);
+        }
+
+        /// <summary>
+        ///     Tests that clear triangles should empty collection
+        /// </summary>
+        [Fact]
+        public void ClearTriangles_ShouldEmptyCollection()
+        {
+            TestTriangulatable triangulatable = new TestTriangulatable();
+            TriangulationPoint p1 = new TriangulationPoint(0, 0);
+            TriangulationPoint p2 = new TriangulationPoint(1, 0);
+            TriangulationPoint p3 = new TriangulationPoint(0, 1);
+            DelaunayTriangle triangle = new DelaunayTriangle(p1, p2, p3);
+            triangulatable.AddTriangle(triangle);
+
+            triangulatable.ClearTriangles();
+
+            Assert.Empty(triangulatable.GetTriangles);
+        }
+
+        /// <summary>
+        ///     Tests that triangulation mode should be accessible
+        /// </summary>
+        [Fact]
+        public void TriangulationMode_ShouldBeAccessible()
+        {
+            TestTriangulatable triangulatable = new TestTriangulatable();
+
+            TriangulationMode mode = triangulatable.TriangulationMode;
+
+            Assert.Equal(TriangulationMode.Polygon, mode);
+        }
+
+        /// <summary>
+        ///     Tests that prepare triangulation should be callable
+        /// </summary>
+        [Fact]
+        public void PrepareTriangulation_ShouldBeCallable()
+        {
+            TestTriangulatable triangulatable = new TestTriangulatable();
+            TriangulationContext context = null;
+
+            triangulatable.PrepareTriangulation(context);
+
+            Assert.NotNull(triangulatable);
+        }
+
+        /// <summary>
         ///     The test triangulatable class
         /// </summary>
         /// <seealso cref="ITriangulatable" />
@@ -75,7 +203,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
             ///     Prepares the triangulation using the specified tcx
             /// </summary>
             /// <param name="tcx">The tcx</param>
-            public void PrepareTriangulation(TriangulationContext tcx) { }
+            public void PrepareTriangulation(TriangulationContext tcx)
+            {
+            }
 
             /// <summary>
             ///     Adds the triangle using the specified t
@@ -103,134 +233,5 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
                 triangles.Clear();
             }
         }
-
-        /// <summary>
-        ///     Tests that i triangulatable should be interface
-        /// </summary>
-        [Fact]
-        public void ITriangulatable_ShouldBeInterface()
-        {
-            Type type = typeof(ITriangulatable);
-            
-            Assert.True(type.IsInterface);
-        }
-
-        /// <summary>
-        ///     Tests that test triangulatable should implement interface
-        /// </summary>
-        [Fact]
-        public void TestTriangulatable_ShouldImplementInterface()
-        {
-            TestTriangulatable triangulatable = new TestTriangulatable();
-            
-            Assert.IsAssignableFrom<ITriangulatable>(triangulatable);
-        }
-
-        /// <summary>
-        ///     Tests that get points should return collection
-        /// </summary>
-        [Fact]
-        public void GetPoints_ShouldReturnCollection()
-        {
-            TestTriangulatable triangulatable = new TestTriangulatable();
-            
-            IList<TriangulationPoint> points = triangulatable.GetPoints;
-            
-            Assert.NotNull(points);
-        }
-
-        /// <summary>
-        ///     Tests that get triangles should return collection
-        /// </summary>
-        [Fact]
-        public void GetTriangles_ShouldReturnCollection()
-        {
-            TestTriangulatable triangulatable = new TestTriangulatable();
-            
-            IList<DelaunayTriangle> triangles = triangulatable.GetTriangles;
-            
-            Assert.NotNull(triangles);
-        }
-
-        /// <summary>
-        ///     Tests that add triangle should add to collection
-        /// </summary>
-        [Fact]
-        public void AddTriangle_ShouldAddToCollection()
-        {
-            TestTriangulatable triangulatable = new TestTriangulatable();
-            TriangulationPoint p1 = new TriangulationPoint(0, 0);
-            TriangulationPoint p2 = new TriangulationPoint(1, 0);
-            TriangulationPoint p3 = new TriangulationPoint(0, 1);
-            DelaunayTriangle triangle = new DelaunayTriangle(p1, p2, p3);
-            
-            triangulatable.AddTriangle(triangle);
-            
-            Assert.Single(triangulatable.GetTriangles);
-        }
-
-        /// <summary>
-        ///     Tests that add triangles should add multiple triangles
-        /// </summary>
-        [Fact]
-        public void AddTriangles_ShouldAddMultipleTriangles()
-        {
-            TestTriangulatable triangulatable = new TestTriangulatable();
-            List<DelaunayTriangle> triangles = new List<DelaunayTriangle>
-            {
-                new DelaunayTriangle(new TriangulationPoint(0, 0), new TriangulationPoint(1, 0), new TriangulationPoint(0, 1)),
-                new DelaunayTriangle(new TriangulationPoint(1, 0), new TriangulationPoint(1, 1), new TriangulationPoint(0, 1))
-            };
-            
-            triangulatable.AddTriangles(triangles);
-            
-            Assert.Equal(2, triangulatable.GetTriangles.Count);
-        }
-
-        /// <summary>
-        ///     Tests that clear triangles should empty collection
-        /// </summary>
-        [Fact]
-        public void ClearTriangles_ShouldEmptyCollection()
-        {
-            TestTriangulatable triangulatable = new TestTriangulatable();
-            TriangulationPoint p1 = new TriangulationPoint(0, 0);
-            TriangulationPoint p2 = new TriangulationPoint(1, 0);
-            TriangulationPoint p3 = new TriangulationPoint(0, 1);
-            DelaunayTriangle triangle = new DelaunayTriangle(p1, p2, p3);
-            triangulatable.AddTriangle(triangle);
-            
-            triangulatable.ClearTriangles();
-            
-            Assert.Empty(triangulatable.GetTriangles);
-        }
-
-        /// <summary>
-        ///     Tests that triangulation mode should be accessible
-        /// </summary>
-        [Fact]
-        public void TriangulationMode_ShouldBeAccessible()
-        {
-            TestTriangulatable triangulatable = new TestTriangulatable();
-            
-            TriangulationMode mode = triangulatable.TriangulationMode;
-            
-            Assert.Equal(TriangulationMode.Polygon, mode);
-        }
-
-        /// <summary>
-        ///     Tests that prepare triangulation should be callable
-        /// </summary>
-        [Fact]
-        public void PrepareTriangulation_ShouldBeCallable()
-        {
-            TestTriangulatable triangulatable = new TestTriangulatable();
-            TriangulationContext context = null;
-            
-            triangulatable.PrepareTriangulation(context);
-            
-            Assert.NotNull(triangulatable);
-        }
     }
 }
-

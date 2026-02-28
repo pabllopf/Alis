@@ -37,11 +37,9 @@ namespace Alis.Core.Aspect.Data.Json
     /// <remarks>
     ///     Types implementing this interface can provide their own serialization logic by defining
     ///     which properties should be included and how their values should be represented.
-    ///     
     ///     Usage Pattern:
     ///     Classes should implement this interface to support JSON serialization through the
     ///     JsonNativeAot.Serialize&lt;T&gt; method.
-    ///     
     ///     Note: For complete bidirectional serialization support, also implement
     ///     IJsonDesSerializable&lt;T&gt; to enable deserialization.
     /// </remarks>
@@ -60,9 +58,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     - Primitive values should be converted to strings (e.g., number.ToString())
         ///     - Complex values (objects/arrays) should return raw JSON strings
         ///     - Null or empty values are allowed and will be handled by the serializer
-        ///     
         ///     Time Complexity: Should be O(n) where n is the number of properties.
-        ///     
         ///     Example:
         ///     <code>
         ///     public class Person : IJsonSerializable

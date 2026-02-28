@@ -52,4 +52,3 @@ namespace Alis.Extension.Language.Dialogue.Core
         void OnExit(DialogContext context);
     }
 }
-

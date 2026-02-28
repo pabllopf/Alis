@@ -78,7 +78,7 @@ namespace Alis.Core.Audio.Test.Players
             {
                 // Arrange & Act
                 BrowserPlayer player = new BrowserPlayer();
-                
+
                 // Assert - If we get here, OpenAL was available
                 Assert.NotNull(player);
             }
@@ -163,12 +163,10 @@ namespace Alis.Core.Audio.Test.Players
         ///     Tests that play should throw exception when invalid wav format
         /// </summary>
         [BrowserOnly]
-        public async Task Play_ShouldThrowException_WhenInvalidWavFormat()
-        {
+        public async Task Play_ShouldThrowException_WhenInvalidWavFormat() =>
             // This test verifies that Play method handles invalid WAV formats correctly
             // When a file is not a valid WAV or has unsupported format, it should throw
             Assert.True(true); // Placeholder for browser-specific test
-        }
 
         /// <summary>
         ///     Tests that play loop should call play method
@@ -530,7 +528,7 @@ namespace Alis.Core.Audio.Test.Players
                 // Act
                 await player.Pause();
                 Assert.True(player.Paused);
-                
+
                 await player.Resume();
 
                 // Assert
@@ -565,7 +563,7 @@ namespace Alis.Core.Audio.Test.Players
                 {
                     // Expected
                 }
-                
+
                 await player.Stop();
 
                 // Assert
@@ -822,10 +820,10 @@ namespace Alis.Core.Audio.Test.Players
                 // Act
                 await player.Pause();
                 Assert.True(player.Paused);
-                
+
                 await player.Resume();
                 Assert.False(player.Paused);
-                
+
                 await player.Pause();
 
                 // Assert
@@ -899,7 +897,7 @@ namespace Alis.Core.Audio.Test.Players
             {
                 // Arrange & Act
                 BrowserPlayer player = new BrowserPlayer();
-                
+
                 // Assert - If no exception, OpenAL was available
                 Assert.NotNull(player);
             }
@@ -907,7 +905,7 @@ namespace Alis.Core.Audio.Test.Players
             {
                 // Assert - Expected exception message
                 Assert.True(
-                    ex.Message.Contains("OpenAL") || 
+                    ex.Message.Contains("OpenAL") ||
                     ex.Message.Contains("dispositivo") ||
                     ex.Message.Contains("device"),
                     "Exception message should mention OpenAL device issue");
@@ -926,7 +924,7 @@ namespace Alis.Core.Audio.Test.Players
             {
                 // Arrange & Act
                 BrowserPlayer player = new BrowserPlayer();
-                
+
                 // Assert - If no exception, OpenAL was available
                 Assert.NotNull(player);
             }
@@ -934,7 +932,7 @@ namespace Alis.Core.Audio.Test.Players
             {
                 // Assert - Expected exception message
                 Assert.True(
-                    ex.Message.Contains("OpenAL") || 
+                    ex.Message.Contains("OpenAL") ||
                     ex.Message.Contains("contexto") ||
                     ex.Message.Contains("context"),
                     "Exception message should mention OpenAL context issue");
@@ -1175,4 +1173,3 @@ namespace Alis.Core.Audio.Test.Players
         }
     }
 }
-

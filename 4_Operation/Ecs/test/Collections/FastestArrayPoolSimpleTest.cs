@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:FastestArrayPoolSimpleTest.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -81,7 +82,7 @@ namespace Alis.Core.Ecs.Test.Collections
         {
             // Arrange
             FastestArrayPool<long> pool = FastestArrayPool<long>.Instance;
-            int[] sizes = { 16, 32, 64, 128, 256, 512, 1024 };
+            int[] sizes = {16, 32, 64, 128, 256, 512, 1024};
 
             // Act & Assert
             foreach (int size in sizes)
@@ -100,8 +101,8 @@ namespace Alis.Core.Ecs.Test.Collections
         {
             // Arrange
             FastestArrayPool<int> pool = FastestArrayPool<int>.Instance;
-            int[] arr = { 1, 2, 3, 4, 5 };
-            int[] originalCopy = (int[])arr.Clone();
+            int[] arr = {1, 2, 3, 4, 5};
+            int[] originalCopy = (int[]) arr.Clone();
 
             // Act
             FastestArrayPool<int>.ResizeArrayFromPool(ref arr, 200);
@@ -127,7 +128,7 @@ namespace Alis.Core.Ecs.Test.Collections
             array[0] = "test";
 
             // Act
-            pool.Return(array, clearArray: true);
+            pool.Return(array, true);
 
             // Assert
             Assert.Null(array[0]);
@@ -182,4 +183,3 @@ namespace Alis.Core.Ecs.Test.Collections
         }
     }
 }
-

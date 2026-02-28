@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:ShortSparseSetExtendedTest.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -48,12 +49,12 @@ namespace Alis.Core.Ecs.Test.Collections
             ShortSparseSet<int> set = new ShortSparseSet<int>();
 
             // Act
-            set[(ushort)5] = 50;
-            set[(ushort)10] = 100;
+            set[5] = 50;
+            set[10] = 100;
 
             // Assert
-            Assert.Equal(50, set[(ushort)5]);
-            Assert.Equal(100, set[(ushort)10]);
+            Assert.Equal(50, set[5]);
+            Assert.Equal(100, set[10]);
         }
 
         /// <summary>
@@ -68,13 +69,13 @@ namespace Alis.Core.Ecs.Test.Collections
             // Act
             for (int i = 0; i < 20; i++)
             {
-                set[(ushort)i] = i * 10;
+                set[(ushort) i] = i * 10;
             }
 
             // Assert
             for (int i = 0; i < 20; i++)
             {
-                Assert.Equal(i * 10, set[(ushort)i]);
+                Assert.Equal(i * 10, set[(ushort) i]);
             }
         }
 
@@ -86,8 +87,8 @@ namespace Alis.Core.Ecs.Test.Collections
         {
             // Arrange
             ShortSparseSet<int> set = new ShortSparseSet<int>();
-            set[(ushort)10] = 100;
-            set[(ushort)20] = 200;
+            set[10] = 100;
+            set[20] = 200;
 
             // Act & Assert
             Assert.True(set.Has(10));
@@ -103,8 +104,8 @@ namespace Alis.Core.Ecs.Test.Collections
         {
             // Arrange
             ShortSparseSet<int> set = new ShortSparseSet<int>();
-            set[(ushort)5] = 50;
-            set[(ushort)10] = 100;
+            set[5] = 50;
+            set[10] = 100;
 
             // Act
             bool removed = set.Remove(5);
@@ -125,7 +126,7 @@ namespace Alis.Core.Ecs.Test.Collections
             ShortSparseSet<int> set = new ShortSparseSet<int>();
             for (int i = 0; i < 10; i++)
             {
-                set[(ushort)i] = i;
+                set[(ushort) i] = i;
             }
 
             // Act
@@ -145,9 +146,9 @@ namespace Alis.Core.Ecs.Test.Collections
             ShortSparseSet<int> set = new ShortSparseSet<int>();
 
             // Act
-            set[(ushort)100] = 1000;
-            set[(ushort)500] = 5000;
-            set[(ushort)1000] = 10000;
+            set[100] = 1000;
+            set[500] = 5000;
+            set[1000] = 10000;
 
             // Assert
             Assert.True(set.Has(100));
@@ -167,10 +168,10 @@ namespace Alis.Core.Ecs.Test.Collections
             // Act & Assert
             Assert.Equal(0, set.Count);
 
-            set[(ushort)1] = 10;
+            set[1] = 10;
             Assert.Equal(1, set.Count);
 
-            set[(ushort)2] = 20;
+            set[2] = 20;
             Assert.Equal(2, set.Count);
 
             set.Remove(1);
@@ -185,12 +186,12 @@ namespace Alis.Core.Ecs.Test.Collections
         {
             // Arrange
             ShortSparseSet<int> set = new ShortSparseSet<int>();
-            int[] values = { 10, 20, 30, 40, 50 };
+            int[] values = {10, 20, 30, 40, 50};
 
             // Act
             foreach (int val in values)
             {
-                set[(ushort)val] = val;
+                set[(ushort) val] = val;
             }
 
             // Assert
@@ -206,13 +207,13 @@ namespace Alis.Core.Ecs.Test.Collections
         {
             // Arrange
             ShortSparseSet<int> set = new ShortSparseSet<int>();
-            set[(ushort)5] = 50;
+            set[5] = 50;
 
             // Act
-            set[(ushort)5] = 500;
+            set[5] = 500;
 
             // Assert
-            Assert.Equal(500, set[(ushort)5]);
+            Assert.Equal(500, set[5]);
             Assert.Equal(1, set.Count); // Still only one element
         }
 
@@ -226,15 +227,14 @@ namespace Alis.Core.Ecs.Test.Collections
             ShortSparseSet<string> set = new ShortSparseSet<string>();
 
             // Act
-            set[(ushort)0] = "apple";
-            set[(ushort)1] = "banana";
-            set[(ushort)2] = "cherry";
+            set[0] = "apple";
+            set[1] = "banana";
+            set[2] = "cherry";
 
             // Assert
-            Assert.Equal("apple", set[(ushort)0]);
-            Assert.Equal("banana", set[(ushort)1]);
-            Assert.Equal("cherry", set[(ushort)2]);
+            Assert.Equal("apple", set[0]);
+            Assert.Equal("banana", set[1]);
+            Assert.Equal("cherry", set[2]);
         }
     }
 }
-

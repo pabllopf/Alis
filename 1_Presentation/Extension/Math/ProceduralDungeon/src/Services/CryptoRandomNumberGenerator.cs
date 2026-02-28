@@ -52,9 +52,15 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
         /// <summary>
         ///     Initializes a new instance of the <see cref="CryptoRandomNumberGenerator" /> class.
         /// </summary>
-        public CryptoRandomNumberGenerator()
+        public CryptoRandomNumberGenerator() => _rng = RandomNumberGenerator.Create();
+
+        /// <summary>
+        ///     Releases all resources used by this instance.
+        /// </summary>
+        public void Dispose()
         {
-            _rng = RandomNumberGenerator.Create();
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
 
         /// <summary>
@@ -67,13 +73,15 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
         public int Next(int minValue, int maxValue)
         {
             if (minValue >= maxValue)
+            {
                 throw new ArgumentOutOfRangeException(nameof(minValue), "minValue must be less than maxValue.");
+            }
 
-            long range = (long)maxValue - minValue;
+            long range = (long) maxValue - minValue;
             byte[] randomBytes = new byte[4];
             _rng.GetBytes(randomBytes);
             uint randomValue = BitConverter.ToUInt32(randomBytes, 0);
-            return (int)(minValue + (randomValue % range));
+            return (int) (minValue + randomValue % range);
         }
 
         /// <summary>
@@ -85,7 +93,9 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
         public int Next(int maxValue)
         {
             if (maxValue <= 0)
+            {
                 throw new ArgumentOutOfRangeException(nameof(maxValue), "maxValue must be greater than 0.");
+            }
 
             return Next(0, maxValue);
         }
@@ -102,18 +112,12 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
         }
 
         /// <summary>
-        ///     Releases all resources used by this instance.
-        /// </summary>
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        /// <summary>
         ///     Releases the unmanaged resources used by this instance and optionally releases the managed resources.
         /// </summary>
-        /// <param name="disposing">True to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
+        /// <param name="disposing">
+        ///     True to release both managed and unmanaged resources; false to release only unmanaged
+        ///     resources.
+        /// </param>
         protected virtual void Dispose(bool disposing)
         {
             if (!_disposed)
@@ -128,4 +132,3 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
         }
     }
 }
-

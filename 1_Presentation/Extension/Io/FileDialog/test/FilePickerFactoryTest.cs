@@ -117,7 +117,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void CreateFilePickerWithOptions_WithEmptyTitle_ShouldThrowArgumentException()
         {
             // Arrange
-            FilePickerOptions options = new FilePickerOptions { Title = "" };
+            FilePickerOptions options = new FilePickerOptions {Title = ""};
 
             // Act & Assert
             Assert.Throws<ArgumentException>(() => FilePickerFactory.CreateFilePickerWithOptions(options));

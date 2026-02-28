@@ -37,12 +37,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Memory.Test
 {
     /// <summary>
-    /// The asset registry test class
+    ///     The asset registry test class
     /// </summary>
     public class AssetRegistryTest
     {
         /// <summary>
-        /// Helper method to create a simple ZIP in memory with test data
+        ///     Helper method to create a simple ZIP in memory with test data
         /// </summary>
         private static byte[] CreateTestZipBytes(Dictionary<string, string> entries)
         {
@@ -62,7 +62,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that register assembly valid assembly and loader registers
+        ///     Tests that register assembly valid assembly and loader registers
         /// </summary>
         [Fact]
         public void RegisterAssembly_ValidAssemblyAndLoader_Registers()
@@ -82,7 +82,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that register assembly multiple assemblies both registered
+        ///     Tests that register assembly multiple assemblies both registered
         /// </summary>
         [Fact]
         public void RegisterAssembly_MultipleAssemblies_BothRegistered()
@@ -103,7 +103,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that register assembly same assembly twice second registration overrides
+        ///     Tests that register assembly same assembly twice second registration overrides
         /// </summary>
         [Fact]
         public void RegisterAssembly_SameAssemblyTwice_SecondRegistrationOverrides()
@@ -126,7 +126,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that get resource memory stream by name with null resource name throws argument exception
+        ///     Tests that get resource memory stream by name with null resource name throws argument exception
         /// </summary>
         [Fact]
         public void GetResourceMemoryStreamByName_WithNullResourceName_ThrowsArgumentException()
@@ -143,7 +143,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that get resource memory stream by name with empty resource name throws argument exception
+        ///     Tests that get resource memory stream by name with empty resource name throws argument exception
         /// </summary>
         [Fact]
         public void GetResourceMemoryStreamByName_WithEmptyResourceName_ThrowsArgumentException()
@@ -160,7 +160,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that get resource memory stream by name with whitespace resource name throws argument exception
+        ///     Tests that get resource memory stream by name with whitespace resource name throws argument exception
         /// </summary>
         [Fact]
         public void GetResourceMemoryStreamByName_WithWhitespaceResourceName_ThrowsArgumentException()
@@ -177,7 +177,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that get resource memory stream by name no active assembly throws invalid operation exception
+        ///     Tests that get resource memory stream by name no active assembly throws invalid operation exception
         /// </summary>
         [Fact]
         public void GetResourceMemoryStreamByName_NoActiveAssembly_ThrowsInvalidOperationException()
@@ -188,7 +188,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that get resource memory stream by name active assembly not registered throws invalid operation exception
+        ///     Tests that get resource memory stream by name active assembly not registered throws invalid operation exception
         /// </summary>
         [Fact]
         public void GetResourceMemoryStreamByName_ActiveAssemblyNotRegistered_ThrowsInvalidOperationException()
@@ -207,7 +207,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that get resource memory stream by name existing resource returns memory stream
+        ///     Tests that get resource memory stream by name existing resource returns memory stream
         /// </summary>
         [Fact]
         public void GetResourceMemoryStreamByName_ExistingResource_ReturnsMemoryStream()
@@ -229,7 +229,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that get resource memory stream by name non existent resource throws file not found exception
+        ///     Tests that get resource memory stream by name non existent resource throws file not found exception
         /// </summary>
         [Fact]
         public void GetResourceMemoryStreamByName_NonExistentResource_ThrowsFileNotFoundException()
@@ -247,7 +247,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that get resource memory stream by name with path separators finds resource
+        ///     Tests that get resource memory stream by name with path separators finds resource
         /// </summary>
         [Fact]
         public void GetResourceMemoryStreamByName_WithPathSeparators_FindsResource()
@@ -275,7 +275,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that get resource memory stream by name resource name with backslashes finds resource
+        ///     Tests that get resource memory stream by name resource name with backslashes finds resource
         /// </summary>
         [Fact]
         public void GetResourceMemoryStreamByName_ResourceNameWithBackslashes_FindsResource()
@@ -303,7 +303,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that get resource memory stream by name large resource returns correctly
+        ///     Tests that get resource memory stream by name large resource returns correctly
         /// </summary>
         [Fact]
         public void GetResourceMemoryStreamByName_LargeResource_ReturnsCorrectly()
@@ -326,7 +326,7 @@ namespace Alis.Core.Aspect.Memory.Test
 
 
         /// <summary>
-        /// Tests that get resource path by name with null resource name throws argument exception
+        ///     Tests that get resource path by name with null resource name throws argument exception
         /// </summary>
         [Fact]
         public void GetResourcePathByName_WithNullResourceName_ThrowsArgumentException()
@@ -343,7 +343,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that get resource path by name with empty resource name throws argument exception
+        ///     Tests that get resource path by name with empty resource name throws argument exception
         /// </summary>
         [Fact]
         public void GetResourcePathByName_WithEmptyResourceName_ThrowsArgumentException()
@@ -361,7 +361,7 @@ namespace Alis.Core.Aspect.Memory.Test
 
 
         /// <summary>
-        /// Tests that get resource path by name existing resource returns valid path
+        ///     Tests that get resource path by name existing resource returns valid path
         /// </summary>
         [Fact]
         public void GetResourcePathByName_ExistingResource_ReturnsValidPath()
@@ -384,7 +384,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that get resource path by name non existent resource throws file not found exception
+        ///     Tests that get resource path by name non existent resource throws file not found exception
         /// </summary>
         [Fact]
         public void GetResourcePathByName_NonExistentResource_ThrowsFileNotFoundException()
@@ -400,11 +400,10 @@ namespace Alis.Core.Aspect.Memory.Test
             FileNotFoundException ex = Assert.Throws<FileNotFoundException>(() => AssetRegistry.GetResourcePathByName("nonexistent.txt"));
             Assert.Contains("not found in `assets.pack`", ex.Message);
         }
-   
-       
+
 
         /// <summary>
-        /// Tests that get resource memory stream by name empty file returns empty stream
+        ///     Tests that get resource memory stream by name empty file returns empty stream
         /// </summary>
         [Fact]
         public void GetResourceMemoryStreamByName_EmptyFile_ReturnsEmptyStream()
@@ -422,9 +421,9 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.NotNull(result);
             Assert.Equal(0, result.Length);
         }
-        
+
         /// <summary>
-        /// Tests that get resource memory stream by name case insensitive search works
+        ///     Tests that get resource memory stream by name case insensitive search works
         /// </summary>
         [Fact]
         public void GetResourceMemoryStreamByName_CaseInsensitiveSearch_Works()
@@ -448,9 +447,9 @@ namespace Alis.Core.Aspect.Memory.Test
             string content = reader.ReadToEnd();
             Assert.Contains("Testing mixed case file names", content);
         }
-        
+
         /// <summary>
-        /// Tests that get resource path by name called twice returns same path
+        ///     Tests that get resource path by name called twice returns same path
         /// </summary>
         [Fact]
         public void GetResourcePathByName_CalledTwice_ReturnsSamePath()
@@ -470,7 +469,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that register assembly with null loader throws when trying to get resource
+        ///     Tests that register assembly with null loader throws when trying to get resource
         /// </summary>
         [Fact]
         public void RegisterAssembly_WithNullLoader_ThrowsWhenTryingToGetResource()
@@ -480,15 +479,14 @@ namespace Alis.Core.Aspect.Memory.Test
             AssetRegistry.RegisterAssembly(assemblyName, () => null);
 
             // Act & Assert
-            FileNotFoundException ex = Assert.Throws<FileNotFoundException>(() => 
+            FileNotFoundException ex = Assert.Throws<FileNotFoundException>(() =>
                 AssetRegistry.GetResourceMemoryStreamByName("any.txt"));
             Assert.Contains("not found", ex.Message);
         }
-        
-        
+
 
         /// <summary>
-        /// Tests that get resource memory stream by name partial path match works
+        ///     Tests that get resource memory stream by name partial path match works
         /// </summary>
         [Fact]
         public void GetResourceMemoryStreamByName_PartialPathMatch_Works()
@@ -512,7 +510,5 @@ namespace Alis.Core.Aspect.Memory.Test
             string content = reader.ReadToEnd();
             Assert.Contains("BM", content);
         }
-        
     }
 }
-

@@ -147,8 +147,8 @@ namespace Alis.Extension.Language.Translator.Sample
             // Create parameters
             Dictionary<string, object> parameters = new Dictionary<string, object>
             {
-                { "name", "Alice" },
-                { "count", 5 }
+                {"name", "Alice"},
+                {"count", 5}
             };
 
             // Translate with parameters

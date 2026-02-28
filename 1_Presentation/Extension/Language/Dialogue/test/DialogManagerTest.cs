@@ -472,12 +472,12 @@ namespace Alis.Extension.Language.Dialogue.Test
         {
             DialogManager manager = new DialogManager();
             Dialog dialog = new Dialog("testDialog", "Test Dialog");
-            
+
             DialogOption option1 = new DialogOption("Option 1", () => { });
             DialogOption option2 = new DialogOption("Option 2", () => { });
             option1.AddCondition(new LambdaDialogCondition(_ => true));
             option2.AddCondition(new LambdaDialogCondition(_ => false));
-            
+
             dialog.AddOption(option1);
             dialog.AddOption(option2);
             manager.AddDialog(dialog);
@@ -498,7 +498,7 @@ namespace Alis.Extension.Language.Dialogue.Test
             DialogManager manager = new DialogManager();
             Dialog dialog1 = new Dialog("dialog1", "Dialog 1");
             Dialog dialog2 = new Dialog("dialog2", "Dialog 2");
-            
+
             manager.AddDialog(dialog1);
             manager.AddDialog(dialog2);
 
@@ -581,7 +581,7 @@ namespace Alis.Extension.Language.Dialogue.Test
         {
             DialogManager manager = new DialogManager();
             bool callbackExecuted = false;
-            
+
             Dialog dialog = new Dialog("testDialog", "Test Dialog");
             dialog.AddOption(new DialogOption("Option", () => callbackExecuted = true));
             manager.AddDialog(dialog);
@@ -598,12 +598,12 @@ namespace Alis.Extension.Language.Dialogue.Test
         private class MockDialogEventObserver : IDialogEventObserver
         {
             /// <summary>
-            /// Gets or sets the value of the events received
+            ///     Gets or sets the value of the events received
             /// </summary>
             public int EventsReceived { get; private set; }
 
             /// <summary>
-            /// Ons the dialog event using the specified dialog event
+            ///     Ons the dialog event using the specified dialog event
             /// </summary>
             /// <param name="dialogEvent">The dialog event</param>
             public void OnDialogEvent(DialogEvent dialogEvent)
@@ -613,5 +613,3 @@ namespace Alis.Extension.Language.Dialogue.Test
         }
     }
 }
-
-

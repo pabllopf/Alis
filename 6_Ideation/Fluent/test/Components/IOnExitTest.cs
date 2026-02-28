@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IOnExitTest.cs
+//  File:IOnExitTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Aspect.Fluent.Components;
 using Xunit;
 
@@ -39,23 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
     /// </summary>
     public class IOnExitTest
     {
-        
-
-        /// <summary>
-        ///     Helper implementation for testing IOnExit.
-        /// </summary>
-        private class ExitHandler : IOnExit
-        {
-            public bool WasExitCalled { get; private set; }
-            public int ExitCount { get; private set; }
-
-            public void OnExit(IGameObject self)
-            {
-                WasExitCalled = true;
-                ExitCount++;
-            }
-        }
-
         /// <summary>
         ///     Tests that IOnExit can be implemented.
         /// </summary>
@@ -92,6 +74,21 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
             handler.OnExit(gameObject);
             Assert.Equal(2, handler.ExitCount);
         }
+
+
+        /// <summary>
+        ///     Helper implementation for testing IOnExit.
+        /// </summary>
+        private class ExitHandler : IOnExit
+        {
+            public bool WasExitCalled { get; private set; }
+            public int ExitCount { get; private set; }
+
+            public void OnExit(IGameObject self)
+            {
+                WasExitCalled = true;
+                ExitCount++;
+            }
+        }
     }
 }
-

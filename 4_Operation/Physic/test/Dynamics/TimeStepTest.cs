@@ -44,7 +44,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Constructor_ShouldInitializeWithDefaultValues()
         {
             TimeStep step = new TimeStep();
-            
+
             Assert.Equal(0.0f, step.Dt);
             Assert.Equal(0.0f, step.InvDt);
             Assert.Equal(0.0f, step.DtRatio);
@@ -62,7 +62,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             {
                 Dt = 0.016f
             };
-            
+
             Assert.Equal(0.016f, step.Dt);
         }
 
@@ -76,7 +76,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             {
                 InvDt = 60.0f
             };
-            
+
             Assert.Equal(60.0f, step.InvDt);
         }
 
@@ -90,7 +90,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             {
                 DtRatio = 1.0f
             };
-            
+
             Assert.Equal(1.0f, step.DtRatio);
         }
 
@@ -104,7 +104,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             {
                 VelocityIterations = 8
             };
-            
+
             Assert.Equal(8, step.VelocityIterations);
         }
 
@@ -118,7 +118,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             {
                 PositionIterations = 3
             };
-            
+
             Assert.Equal(3, step.PositionIterations);
         }
 
@@ -136,7 +136,7 @@ namespace Alis.Core.Physic.Test.Dynamics
                 VelocityIterations = 8,
                 PositionIterations = 3
             };
-            
+
             Assert.Equal(0.016f, step.Dt);
             Assert.Equal(60.0f, step.InvDt);
             Assert.Equal(1.0f, step.DtRatio);
@@ -154,7 +154,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             {
                 Dt = 0.0f
             };
-            
+
             Assert.Equal(0.0f, step.Dt);
         }
 
@@ -169,10 +169,9 @@ namespace Alis.Core.Physic.Test.Dynamics
                 Dt = 1.0f / 60.0f,
                 InvDt = 60.0f
             };
-            
+
             Assert.InRange(step.Dt, 0.016f, 0.017f);
             Assert.Equal(60.0f, step.InvDt);
         }
     }
 }
-

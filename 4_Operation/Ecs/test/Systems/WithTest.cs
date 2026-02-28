@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
@@ -38,7 +37,7 @@ namespace Alis.Core.Ecs.Test.Systems
     ///     The with test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="With{T}"/> struct which specifies that a query
+    ///     Tests the <see cref="With{T}" /> struct which specifies that a query
     ///     should include entities that have a specific component type.
     /// </remarks>
     public class WithTest
@@ -53,7 +52,7 @@ namespace Alis.Core.Ecs.Test.Systems
         public void With_ImplementsRuleProvider()
         {
             // Arrange & Act
-            With<Position> with = default;
+            With<Position> with = default(With<Position>);
 
             // Assert
             Assert.IsAssignableFrom<IRuleProvider>(with);
@@ -69,7 +68,7 @@ namespace Alis.Core.Ecs.Test.Systems
         public void With_RuleReturnsHasComponentRule()
         {
             // Arrange
-            With<Position> with = default;
+            With<Position> with = default(With<Position>);
 
             // Act
             Rule rule = with.Rule;
@@ -89,7 +88,7 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 1 });
+            scene.Create(new Position {X = 1, Y = 1});
 
             // Act
             Query query = scene.Query<With<Position>>();
@@ -114,8 +113,8 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 1 });
-            scene.Create(new Velocity { VX = 1, VY = 1 }); // No Position
+            scene.Create(new Position {X = 1, Y = 1});
+            scene.Create(new Velocity {VX = 1, VY = 1}); // No Position
 
             // Act
             Query query = scene.Query<With<Position>>();
@@ -140,8 +139,8 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 1 }, new Velocity { VX = 1, VY = 1 });
-            scene.Create(new Position { X = 2, Y = 2 });
+            scene.Create(new Position {X = 1, Y = 1}, new Velocity {VX = 1, VY = 1});
+            scene.Create(new Position {X = 2, Y = 2});
 
             // Act
             Query query = scene.Query<With<Position>, With<Velocity>>();
@@ -165,7 +164,7 @@ namespace Alis.Core.Ecs.Test.Systems
         public void With_DefaultInstanceHasValidRule()
         {
             // Arrange
-            With<Position> with1 = default;
+            With<Position> with1 = default(With<Position>);
             With<Position> with2 = new With<Position>();
 
             // Act
@@ -186,8 +185,8 @@ namespace Alis.Core.Ecs.Test.Systems
         public void With_ForDifferentTypes_CreatesDifferentRules()
         {
             // Arrange
-            With<Position> withPos = default;
-            With<Velocity> withVel = default;
+            With<Position> withPos = default(With<Position>);
+            With<Velocity> withVel = default(With<Velocity>);
 
             // Act
             Rule rulePos = withPos.Rule;
@@ -198,4 +197,3 @@ namespace Alis.Core.Ecs.Test.Systems
         }
     }
 }
-

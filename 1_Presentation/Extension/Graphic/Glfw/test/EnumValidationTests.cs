@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:EnumValidationTests.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -27,8 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Xunit;
 using Alis.Extension.Graphic.Glfw.Enums;
+using Xunit;
 
 namespace Alis.Extension.Graphic.Glfw.Test
 {
@@ -276,7 +277,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
             CursorMode mode = CursorMode.Hidden;
 
             // Act
-            int value = (int)mode;
+            int value = (int) mode;
 
             // Assert
             Assert.True(value >= 0);
@@ -292,7 +293,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
             InputState state = InputState.Press;
 
             // Act
-            int value = (int)state;
+            int value = (int) state;
 
             // Assert
             Assert.True(value >= 0);
@@ -310,9 +311,9 @@ namespace Alis.Extension.Graphic.Glfw.Test
             MouseButton button3 = MouseButton.Button3;
 
             // Act
-            int val1 = (int)button1;
-            int val2 = (int)button2;
-            int val3 = (int)button3;
+            int val1 = (int) button1;
+            int val2 = (int) button2;
+            int val3 = (int) button3;
 
             // Assert
             Assert.True(val1 != val2);
@@ -326,7 +327,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         public void AllEnumTypesShouldBeDefined_ShouldPass()
         {
             // Arrange
-            Type[] enums = new Type[]
+            Type[] enums = new[]
             {
                 typeof(CursorMode),
                 typeof(InputMode),
@@ -355,4 +356,3 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
     }
 }
-

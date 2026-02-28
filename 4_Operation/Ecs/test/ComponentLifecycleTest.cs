@@ -27,8 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Ecs.Kernel;
-using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
 
@@ -54,10 +54,10 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 0, Y = 0 });
+            GameObject entity = scene.Create(new Position {X = 0, Y = 0});
 
             // Act
-            entity.Add(new Health { Value = 100 });
+            entity.Add(new Health {Value = 100});
 
             // Assert
             Assert.True(entity.Has<Health>());
@@ -75,7 +75,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 0, Y = 0 }, new Health { Value = 100 });
+            GameObject entity = scene.Create(new Position {X = 0, Y = 0}, new Health {Value = 100});
 
             // Act
             entity.Remove<Health>();
@@ -96,7 +96,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 10, Y = 20 });
+            GameObject entity = scene.Create(new Position {X = 10, Y = 20});
 
             // Act
             Position pos = entity.Get<Position>();
@@ -118,7 +118,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 5, Y = 10 });
+            GameObject entity = scene.Create(new Position {X = 5, Y = 10});
 
             // Act
             bool hasPos = entity.TryGet(out Ref<Position> posRef);
@@ -142,9 +142,9 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
-                new Position { X = 1, Y = 2 },
-                new Health { Value = 75 },
-                new Velocity { VX = 1.5f, VY = 2.5f }
+                new Position {X = 1, Y = 2},
+                new Health {Value = 75},
+                new Velocity {VX = 1.5f, VY = 2.5f}
             );
 
             // Assert
@@ -164,14 +164,13 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 0, Y = 0 });
+            GameObject entity = scene.Create(new Position {X = 0, Y = 0});
 
             // Act
             entity.Delete();
 
             // Assert
-            Assert.ThrowsAny<System.InvalidOperationException>(() => entity.Get<Position>());
+            Assert.ThrowsAny<InvalidOperationException>(() => entity.Get<Position>());
         }
     }
 }
-

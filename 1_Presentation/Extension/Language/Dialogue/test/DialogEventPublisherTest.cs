@@ -39,32 +39,6 @@ namespace Alis.Extension.Language.Dialogue.Test
     public class DialogEventPublisherTest
     {
         /// <summary>
-        ///     Mock observer for testing
-        /// </summary>
-        private class MockObserver : IDialogEventObserver
-        {
-            /// <summary>
-            /// Gets or sets the value of the last received event
-            /// </summary>
-            public DialogEvent LastReceivedEvent { get; set; }
-
-            /// <summary>
-            /// Gets or sets the value of the event count
-            /// </summary>
-            public int EventCount { get; set; }
-
-            /// <summary>
-            /// Ons the dialog event using the specified dialog event
-            /// </summary>
-            /// <param name="dialogEvent">The dialog event</param>
-            public void OnDialogEvent(DialogEvent dialogEvent)
-            {
-                LastReceivedEvent = dialogEvent;
-                EventCount++;
-            }
-        }
-
-        /// <summary>
         ///     Tests that subscribe adds observer correctly
         /// </summary>
         [Fact]
@@ -159,6 +133,31 @@ namespace Alis.Extension.Language.Dialogue.Test
 
             Assert.Equal(0, publisher.GetObserverCount());
         }
+
+        /// <summary>
+        ///     Mock observer for testing
+        /// </summary>
+        private class MockObserver : IDialogEventObserver
+        {
+            /// <summary>
+            ///     Gets or sets the value of the last received event
+            /// </summary>
+            public DialogEvent LastReceivedEvent { get; set; }
+
+            /// <summary>
+            ///     Gets or sets the value of the event count
+            /// </summary>
+            public int EventCount { get; set; }
+
+            /// <summary>
+            ///     Ons the dialog event using the specified dialog event
+            /// </summary>
+            /// <param name="dialogEvent">The dialog event</param>
+            public void OnDialogEvent(DialogEvent dialogEvent)
+            {
+                LastReceivedEvent = dialogEvent;
+                EventCount++;
+            }
+        }
     }
 }
-

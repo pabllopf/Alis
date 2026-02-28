@@ -41,28 +41,15 @@ namespace Alis.Core.Physic.Test.Common.Logic
     public class PhysicsLogicTest
     {
         /// <summary>
-        ///     The test physics logic class
-        /// </summary>
-        /// <seealso cref="PhysicsLogic" />
-        private class TestPhysicsLogic : PhysicsLogic
-        {
-            /// <summary>
-            ///     Initializes a new instance of the <see cref="TestPhysicsLogic" /> class
-            /// </summary>
-            /// <param name="worldPhysic">The world physic</param>
-            public TestPhysicsLogic(WorldPhysic worldPhysic) : base(worldPhysic) { }
-        }
-
-        /// <summary>
         ///     Tests that constructor should initialize with world
         /// </summary>
         [Fact]
         public void Constructor_ShouldInitializeWithWorld()
         {
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
-            
+
             TestPhysicsLogic logic = new TestPhysicsLogic(world);
-            
+
             Assert.Equal(world, logic.WorldPhysic);
             Assert.Equal(ControllerCategory.Cat01, logic.ControllerCategory);
         }
@@ -75,7 +62,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         {
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             TestPhysicsLogic logic = new TestPhysicsLogic(world);
-            
+
             Assert.Equal(world, logic.WorldPhysic);
         }
 
@@ -87,7 +74,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         {
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             TestPhysicsLogic logic = new TestPhysicsLogic(world);
-            
+
             Assert.Equal(ControllerCategory.Cat01, logic.ControllerCategory);
         }
 
@@ -100,11 +87,11 @@ namespace Alis.Core.Physic.Test.Common.Logic
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             TestPhysicsLogic logic = new TestPhysicsLogic(world);
             Body body = world.CreateBody();
-            
+
             body.ControllerFilter.IgnoreController(ControllerCategory.Cat01);
-            
+
             bool isActive = logic.IsActiveOn(body);
-            
+
             Assert.False(isActive);
         }
 
@@ -117,9 +104,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             TestPhysicsLogic logic = new TestPhysicsLogic(world);
             Body body = world.CreateBody();
-            
+
             bool isActive = logic.IsActiveOn(body);
-            
+
             Assert.False(isActive);
         }
 
@@ -131,7 +118,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         {
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             TestPhysicsLogic logic = new TestPhysicsLogic(world);
-            
+
             Assert.IsAssignableFrom<FilterData>(logic);
         }
 
@@ -142,7 +129,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void PhysicsLogic_ShouldBeAbstractClass()
         {
             Type type = typeof(PhysicsLogic);
-            
+
             Assert.True(type.IsAbstract);
         }
 
@@ -156,9 +143,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             TestPhysicsLogic logic = new TestPhysicsLogic(world);
             Body body = world.CreateBody();
             body.Enabled = false;
-            
+
             bool isActive = logic.IsActiveOn(body);
-            
+
             Assert.False(isActive);
         }
 
@@ -169,12 +156,26 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void PhysicsLogic_ShouldAllowMultipleInstances()
         {
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
-            
+
             TestPhysicsLogic logic1 = new TestPhysicsLogic(world);
             TestPhysicsLogic logic2 = new TestPhysicsLogic(world);
-            
+
             Assert.NotSame(logic1, logic2);
+        }
+
+        /// <summary>
+        ///     The test physics logic class
+        /// </summary>
+        /// <seealso cref="PhysicsLogic" />
+        private class TestPhysicsLogic : PhysicsLogic
+        {
+            /// <summary>
+            ///     Initializes a new instance of the <see cref="TestPhysicsLogic" /> class
+            /// </summary>
+            /// <param name="worldPhysic">The world physic</param>
+            public TestPhysicsLogic(WorldPhysic worldPhysic) : base(worldPhysic)
+            {
+            }
         }
     }
 }
-

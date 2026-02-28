@@ -45,7 +45,7 @@ namespace Alis.Core.Physic.Test.Collisions
         public void Constructor_ShouldInitializeWithDefaultValues()
         {
             DistanceInput input = new DistanceInput();
-            
+
             Assert.False(input.UseRadii);
         }
 
@@ -59,7 +59,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 UseRadii = true
             };
-            
+
             Assert.True(input.UseRadii);
         }
 
@@ -71,9 +71,9 @@ namespace Alis.Core.Physic.Test.Collisions
         {
             DistanceInput input = new DistanceInput();
             DistanceProxy proxy = new DistanceProxy();
-            
+
             input.ProxyA = proxy;
-            
+
             Assert.Equal(proxy, input.ProxyA);
         }
 
@@ -85,9 +85,9 @@ namespace Alis.Core.Physic.Test.Collisions
         {
             DistanceInput input = new DistanceInput();
             DistanceProxy proxy = new DistanceProxy();
-            
+
             input.ProxyB = proxy;
-            
+
             Assert.Equal(proxy, input.ProxyB);
         }
 
@@ -99,9 +99,9 @@ namespace Alis.Core.Physic.Test.Collisions
         {
             DistanceInput input = new DistanceInput();
             ControllerTransform transform = ControllerTransform.Identity;
-            
+
             input.ControllerTransformA = transform;
-            
+
             Assert.Equal(transform, input.ControllerTransformA);
         }
 
@@ -113,9 +113,9 @@ namespace Alis.Core.Physic.Test.Collisions
         {
             DistanceInput input = new DistanceInput();
             ControllerTransform transform = ControllerTransform.Identity;
-            
+
             input.ControllerTransformB = transform;
-            
+
             Assert.Equal(transform, input.ControllerTransformB);
         }
 
@@ -133,9 +133,8 @@ namespace Alis.Core.Physic.Test.Collisions
                 ControllerTransformB = ControllerTransform.Identity,
                 UseRadii = true
             };
-            
+
             Assert.True(input.UseRadii);
         }
     }
 }
-

@@ -34,13 +34,13 @@ using Xunit;
 namespace Alis.Extension.Graphic.Glfw.Test.Skipper
 {
     /// <summary>
-    /// The requires display attribute class
+    ///     The requires display attribute class
     /// </summary>
-    /// <seealso cref="FactAttribute"/>
+    /// <seealso cref="FactAttribute" />
     public class RequiresDisplayAttribute : FactAttribute
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RequiresDisplayAttribute"/> class
+        ///     Initializes a new instance of the <see cref="RequiresDisplayAttribute" /> class
         /// </summary>
         public RequiresDisplayAttribute()
         {
@@ -49,83 +49,83 @@ namespace Alis.Extension.Graphic.Glfw.Test.Skipper
                 Skip = "Test requires a graphical display environment, but none was detected.";
             }
         }
-    
-       /// <summary>
-       /// Hases the display
-       /// </summary>
-       /// <returns>The bool</returns>
-       private static bool HasDisplay()
-       {
-           try
-           {
-               if (OperatingSystem.IsWindows())
-               {
-                   // Windows puede fallar en ambientes CI/CD sin GPU (WGL: The driver does not appear to support OpenGL)
-                   // Omitir tests en Windows por defecto
-                   return false;
-               }
-               
-               if (OperatingSystem.IsLinux())
-               {
-                   // Verificar X11
-                   string display = Environment.GetEnvironmentVariable("DISPLAY");
-                   if (!string.IsNullOrEmpty(display))
-                   {
-                       return true;
-                   }
-                   
-                   // Verificar Wayland
-                   string waylandDisplay = Environment.GetEnvironmentVariable("WAYLAND_DISPLAY");
-                   if (!string.IsNullOrEmpty(waylandDisplay))
-                   {
-                       return true;
-                   }
-                   
-                   // Verificar XDG_SESSION_TYPE
-                   string sessionType = Environment.GetEnvironmentVariable("XDG_SESSION_TYPE");
-                   if (sessionType == "x11" || sessionType == "wayland")
-                   {
-                       return true;
-                   }
-                   
-                   return false;
-               }
-               
-               if (OperatingSystem.IsMacOS())
-               {
-                   // En macOS, verificar si hay WindowServer activo
-                   // WindowServer es el proceso que gestiona el entorno gráfico
-                   try
-                   {
-                       ProcessStartInfo processStartInfo = new System.Diagnostics.ProcessStartInfo
-                       {
-                           FileName = "pgrep",
-                           Arguments = "WindowServer",
-                           RedirectStandardOutput = true,
-                           UseShellExecute = false,
-                           CreateNoWindow = true
-                       };
-               
-                       using Process process = System.Diagnostics.Process.Start(processStartInfo);
-                       if (process != null)
-                       {
-                           process.WaitForExit();
-                           return false; // 0 significa que WindowServer está corriendo
-                       }
-                   }
-                   catch
-                   {
-                       // Si falla, asumir que hay display en macOS por defecto
-                       return false;
-                   }
-               }
-               
-               return false;
-           }
-           catch
-           {
-               return false;
-           }
-       }
+
+        /// <summary>
+        ///     Hases the display
+        /// </summary>
+        /// <returns>The bool</returns>
+        private static bool HasDisplay()
+        {
+            try
+            {
+                if (OperatingSystem.IsWindows())
+                {
+                    // Windows puede fallar en ambientes CI/CD sin GPU (WGL: The driver does not appear to support OpenGL)
+                    // Omitir tests en Windows por defecto
+                    return false;
+                }
+
+                if (OperatingSystem.IsLinux())
+                {
+                    // Verificar X11
+                    string display = Environment.GetEnvironmentVariable("DISPLAY");
+                    if (!string.IsNullOrEmpty(display))
+                    {
+                        return true;
+                    }
+
+                    // Verificar Wayland
+                    string waylandDisplay = Environment.GetEnvironmentVariable("WAYLAND_DISPLAY");
+                    if (!string.IsNullOrEmpty(waylandDisplay))
+                    {
+                        return true;
+                    }
+
+                    // Verificar XDG_SESSION_TYPE
+                    string sessionType = Environment.GetEnvironmentVariable("XDG_SESSION_TYPE");
+                    if (sessionType == "x11" || sessionType == "wayland")
+                    {
+                        return true;
+                    }
+
+                    return false;
+                }
+
+                if (OperatingSystem.IsMacOS())
+                {
+                    // En macOS, verificar si hay WindowServer activo
+                    // WindowServer es el proceso que gestiona el entorno gráfico
+                    try
+                    {
+                        ProcessStartInfo processStartInfo = new ProcessStartInfo
+                        {
+                            FileName = "pgrep",
+                            Arguments = "WindowServer",
+                            RedirectStandardOutput = true,
+                            UseShellExecute = false,
+                            CreateNoWindow = true
+                        };
+
+                        using Process process = Process.Start(processStartInfo);
+                        if (process != null)
+                        {
+                            process.WaitForExit();
+                            return false; // 0 significa que WindowServer está corriendo
+                        }
+                    }
+                    catch
+                    {
+                        // Si falla, asumir que hay display en macOS por defecto
+                        return false;
+                    }
+                }
+
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

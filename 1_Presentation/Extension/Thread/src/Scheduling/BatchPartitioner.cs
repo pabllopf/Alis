@@ -114,7 +114,7 @@ namespace Alis.Extension.Thread.Scheduling
         {
             if (totalCount < minPartitionSize)
             {
-                return new[] { new BatchPartition(0, totalCount) };
+                return new[] {new BatchPartition(0, totalCount)};
             }
 
             int actualPartitions = Math.Min(maxPartitionCount, totalCount / minPartitionSize);
@@ -124,4 +124,3 @@ namespace Alis.Extension.Thread.Scheduling
         }
     }
 }
-

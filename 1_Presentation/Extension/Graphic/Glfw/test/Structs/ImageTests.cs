@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:ImageTests.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -26,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Extension.Graphic.Glfw.Structs;
 using Xunit;
 
@@ -37,15 +39,14 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
     public class ImageTests
     {
         /// <summary>
-        /// Tests that image load with non bitmap file returns null
+        ///     Tests that image load with non bitmap file returns null
         /// </summary>
         [Fact]
         public void Image_Load_WithNonBitmapFile_ReturnsNull()
         {
             // This test would need a real test file
             // For now, just testing the method exists
-            Assert.NotNull((System.Func<string, Image>)Image.Load);
+            Assert.NotNull((Func<string, Image>) Image.Load);
         }
     }
 }
-

@@ -48,11 +48,8 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void PreSolveDelegate_ShouldBeInvokable()
         {
             bool invoked = false;
-            PreSolveDelegate callback = (Contact contact, ref Manifold oldManifold) =>
-            {
-                invoked = true;
-            };
-            
+            PreSolveDelegate callback = (Contact contact, ref Manifold oldManifold) => { invoked = true; };
+
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body bodyA = world.CreateBody();
             Body bodyB = world.CreateBody();
@@ -62,9 +59,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Fixture fixtureB = bodyB.CreateFixture(shapeB);
             Contact contact = new Contact(fixtureA, 0, fixtureB, 0);
             Manifold manifold = new Manifold();
-            
+
             callback(contact, ref manifold);
-            
+
             Assert.True(invoked);
         }
 
@@ -75,11 +72,8 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void PreSolveDelegate_ShouldReceiveContactParameter()
         {
             Contact capturedContact = null;
-            PreSolveDelegate callback = (Contact contact, ref Manifold oldManifold) =>
-            {
-                capturedContact = contact;
-            };
-            
+            PreSolveDelegate callback = (Contact contact, ref Manifold oldManifold) => { capturedContact = contact; };
+
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body bodyA = world.CreateBody();
             Body bodyB = world.CreateBody();
@@ -89,9 +83,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Fixture fixtureB = bodyB.CreateFixture(shapeB);
             Contact contact = new Contact(fixtureA, 0, fixtureB, 0);
             Manifold manifold = new Manifold();
-            
+
             callback(contact, ref manifold);
-            
+
             Assert.Equal(contact, capturedContact);
         }
 
@@ -101,11 +95,8 @@ namespace Alis.Core.Physic.Test.Dynamics
         [Fact]
         public void PreSolveDelegate_ShouldAllowModifyingManifold()
         {
-            PreSolveDelegate callback = (Contact contact, ref Manifold oldManifold) =>
-            {
-                oldManifold.Type = ManifoldType.FaceA;
-            };
-            
+            PreSolveDelegate callback = (Contact contact, ref Manifold oldManifold) => { oldManifold.Type = ManifoldType.FaceA; };
+
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body bodyA = world.CreateBody();
             Body bodyB = world.CreateBody();
@@ -115,9 +106,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Fixture fixtureB = bodyB.CreateFixture(shapeB);
             Contact contact = new Contact(fixtureA, 0, fixtureB, 0);
             Manifold manifold = new Manifold();
-            
+
             callback(contact, ref manifold);
-            
+
             Assert.Equal(ManifoldType.FaceA, manifold.Type);
         }
 
@@ -130,9 +121,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             int callCount = 0;
             PreSolveDelegate callback1 = (Contact contact, ref Manifold oldManifold) => callCount++;
             PreSolveDelegate callback2 = (Contact contact, ref Manifold oldManifold) => callCount++;
-            
+
             PreSolveDelegate combined = callback1 + callback2;
-            
+
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body bodyA = world.CreateBody();
             Body bodyB = world.CreateBody();
@@ -142,9 +133,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Fixture fixtureB = bodyB.CreateFixture(shapeB);
             Contact contact = new Contact(fixtureA, 0, fixtureB, 0);
             Manifold manifold = new Manifold();
-            
+
             combined(contact, ref manifold);
-            
+
             Assert.Equal(2, callCount);
         }
 
@@ -157,10 +148,10 @@ namespace Alis.Core.Physic.Test.Dynamics
             int callCount = 0;
             PreSolveDelegate callback1 = (Contact contact, ref Manifold oldManifold) => callCount++;
             PreSolveDelegate callback2 = (Contact contact, ref Manifold oldManifold) => callCount++;
-            
+
             PreSolveDelegate combined = callback1 + callback2;
             combined -= callback1;
-            
+
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body bodyA = world.CreateBody();
             Body bodyB = world.CreateBody();
@@ -170,9 +161,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Fixture fixtureB = bodyB.CreateFixture(shapeB);
             Contact contact = new Contact(fixtureA, 0, fixtureB, 0);
             Manifold manifold = new Manifold();
-            
+
             combined(contact, ref manifold);
-            
+
             Assert.Equal(1, callCount);
         }
 
@@ -183,14 +174,11 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void PreSolveDelegate_ShouldHandleNullContact()
         {
             bool invoked = false;
-            PreSolveDelegate callback = (Contact contact, ref Manifold oldManifold) =>
-            {
-                invoked = true;
-            };
-            
+            PreSolveDelegate callback = (Contact contact, ref Manifold oldManifold) => { invoked = true; };
+
             Manifold manifold = new Manifold();
             callback(null, ref manifold);
-            
+
             Assert.True(invoked);
         }
 
@@ -202,7 +190,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             int count = 0;
             PreSolveDelegate callback = (Contact contact, ref Manifold oldManifold) => count++;
-            
+
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body bodyA = world.CreateBody();
             Body bodyB = world.CreateBody();
@@ -212,13 +200,12 @@ namespace Alis.Core.Physic.Test.Dynamics
             Fixture fixtureB = bodyB.CreateFixture(shapeB);
             Contact contact = new Contact(fixtureA, 0, fixtureB, 0);
             Manifold manifold = new Manifold();
-            
+
             callback(contact, ref manifold);
             callback(contact, ref manifold);
             callback(contact, ref manifold);
-            
+
             Assert.Equal(3, count);
         }
     }
 }
-

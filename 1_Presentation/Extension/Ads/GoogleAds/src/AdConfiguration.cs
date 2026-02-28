@@ -35,6 +35,28 @@ namespace Alis.Extension.Ads.GoogleAds
     public class AdConfiguration
     {
         /// <summary>
+        ///     Initializes a new instance of the <see cref="AdConfiguration" /> class
+        /// </summary>
+        public AdConfiguration()
+        {
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="AdConfiguration" /> class
+        /// </summary>
+        /// <param name="appId">The app ID</param>
+        /// <param name="bannerAdUnitId">The banner ad unit ID</param>
+        /// <param name="interstitialAdUnitId">The interstitial ad unit ID</param>
+        /// <param name="rewardedVideoAdUnitId">The rewarded video ad unit ID</param>
+        public AdConfiguration(string appId, string bannerAdUnitId, string interstitialAdUnitId, string rewardedVideoAdUnitId)
+        {
+            AppId = appId;
+            DefaultBannerAdUnitId = bannerAdUnitId;
+            DefaultInterstitialAdUnitId = interstitialAdUnitId;
+            DefaultRewardedVideoAdUnitId = rewardedVideoAdUnitId;
+        }
+
+        /// <summary>
         ///     Gets or sets the Google Mobile Ads App ID
         /// </summary>
         public string AppId { get; set; }
@@ -68,28 +90,6 @@ namespace Alis.Extension.Ads.GoogleAds
         ///     Gets or sets the logging level for ads
         /// </summary>
         public AdLoggingLevel LoggingLevel { get; set; } = AdLoggingLevel.Info;
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="AdConfiguration" /> class
-        /// </summary>
-        public AdConfiguration()
-        {
-        }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="AdConfiguration" /> class
-        /// </summary>
-        /// <param name="appId">The app ID</param>
-        /// <param name="bannerAdUnitId">The banner ad unit ID</param>
-        /// <param name="interstitialAdUnitId">The interstitial ad unit ID</param>
-        /// <param name="rewardedVideoAdUnitId">The rewarded video ad unit ID</param>
-        public AdConfiguration(string appId, string bannerAdUnitId, string interstitialAdUnitId, string rewardedVideoAdUnitId)
-        {
-            AppId = appId;
-            DefaultBannerAdUnitId = bannerAdUnitId;
-            DefaultInterstitialAdUnitId = interstitialAdUnitId;
-            DefaultRewardedVideoAdUnitId = rewardedVideoAdUnitId;
-        }
     }
 
     /// <summary>
@@ -118,4 +118,3 @@ namespace Alis.Extension.Ads.GoogleAds
         Verbose = 3
     }
 }
-

@@ -44,7 +44,7 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void Pi_ShouldHaveCorrectValue()
         {
-            Assert.Equal((float)Math.PI, Constant.Pi, 5);
+            Assert.Equal((float) Math.PI, Constant.Pi, 5);
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void Tau_ShouldBeTwoTimesPi()
         {
-            Assert.Equal((float)(Math.PI * 2.0), Constant.Tau, 5);
+            Assert.Equal((float) (Math.PI * 2.0), Constant.Tau, 5);
         }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void Tau_ShouldBeApproximatelySixPointTwoEight()
         {
-            Assert.True(Constant.Tau > 6.28f && Constant.Tau < 6.29f);
+            Assert.True((Constant.Tau > 6.28f) && (Constant.Tau < 6.29f));
         }
 
         /// <summary>
@@ -71,8 +71,7 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void Pi_ShouldBeApproximatelyThreePointOneFour()
         {
-            Assert.True(Constant.Pi > 3.14f && Constant.Pi < 3.15f);
+            Assert.True((Constant.Pi > 3.14f) && (Constant.Pi < 3.15f));
         }
     }
 }
-

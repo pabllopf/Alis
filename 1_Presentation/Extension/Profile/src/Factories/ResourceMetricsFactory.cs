@@ -52,10 +52,7 @@ namespace Alis.Extension.Profile.Factories
         /// <exception cref="ArgumentNullException">
         ///     Thrown when resourceMonitor is null.
         /// </exception>
-        public ResourceMetricsFactory(IResourceMonitor resourceMonitor)
-        {
-            this.resourceMonitor = resourceMonitor ?? throw new ArgumentNullException(nameof(resourceMonitor));
-        }
+        public ResourceMetricsFactory(IResourceMonitor resourceMonitor) => this.resourceMonitor = resourceMonitor ?? throw new ArgumentNullException(nameof(resourceMonitor));
 
         /// <summary>
         ///     Creates a new <see cref="ResourceMetrics" /> instance by capturing
@@ -64,16 +61,13 @@ namespace Alis.Extension.Profile.Factories
         /// <returns>
         ///     A <see cref="ResourceMetrics" /> struct containing current resource data.
         /// </returns>
-        public ResourceMetrics CreateSnapshot()
-        {
-            return new ResourceMetrics(
-                cpuUsageMilliseconds: resourceMonitor.GetCpuUsage(),
-                memoryUsageBytes: resourceMonitor.GetMemoryUsage(),
-                garbageCollectionCount: resourceMonitor.GetGarbageCollectionCount(),
-                threadCount: resourceMonitor.GetThreadCount(),
-                timestamp: DateTime.Now
-            );
-        }
+        public ResourceMetrics CreateSnapshot() => new ResourceMetrics(
+            resourceMonitor.GetCpuUsage(),
+            resourceMonitor.GetMemoryUsage(),
+            resourceMonitor.GetGarbageCollectionCount(),
+            resourceMonitor.GetThreadCount(),
+            DateTime.Now
+        );
 
         /// <summary>
         ///     Creates a new empty <see cref="ResourceMetrics" /> instance.
@@ -81,10 +75,6 @@ namespace Alis.Extension.Profile.Factories
         /// <returns>
         ///     An empty <see cref="ResourceMetrics" /> struct with default values.
         /// </returns>
-        public ResourceMetrics CreateEmpty()
-        {
-            return ResourceMetrics.Empty;
-        }
+        public ResourceMetrics CreateEmpty() => ResourceMetrics.Empty;
     }
 }
-

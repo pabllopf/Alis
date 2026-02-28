@@ -57,13 +57,15 @@ namespace Alis.Extension.Math.ProceduralDungeon.Helpers
         public static Direction GetOpposite(Direction direction)
         {
             if (direction == Direction.None)
+            {
                 throw new ArgumentOutOfRangeException(nameof(direction), "Cannot get opposite of Direction.None");
+            }
 
             // Calculate opposite: North (1) -> South (3), East (2) -> West (4)
             // Formula: ((value + 2 - 1) % 4) + 1
-            int value = (int)direction;
-            int oppositeValue = ((value + 2 - 1) % 4) + 1;
-            return (Direction)oppositeValue;
+            int value = (int) direction;
+            int oppositeValue = (value + 2 - 1) % 4 + 1;
+            return (Direction) oppositeValue;
         }
 
         /// <summary>
@@ -77,10 +79,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Helpers
         ///     bool isInvalid = DirectionHelper.IsValid(Direction.None); // false
         ///     </code>
         /// </example>
-        public static bool IsValid(Direction direction)
-        {
-            return direction != Direction.None && Enum.IsDefined(typeof(Direction), direction);
-        }
+        public static bool IsValid(Direction direction) => (direction != Direction.None) && Enum.IsDefined(typeof(Direction), direction);
 
         /// <summary>
         ///     Determines whether two directions are opposite to each other.
@@ -98,7 +97,9 @@ namespace Alis.Extension.Math.ProceduralDungeon.Helpers
         public static bool AreOpposite(Direction first, Direction second)
         {
             if (first == Direction.None || second == Direction.None)
+            {
                 throw new ArgumentOutOfRangeException("Neither direction can be Direction.None");
+            }
 
             return GetOpposite(first) == second;
         }
@@ -149,7 +150,9 @@ namespace Alis.Extension.Math.ProceduralDungeon.Helpers
         public static bool IsHorizontal(Direction direction)
         {
             if (direction == Direction.None)
+            {
                 throw new ArgumentOutOfRangeException(nameof(direction), "Direction cannot be None");
+            }
 
             return direction == Direction.East || direction == Direction.West;
         }
@@ -169,10 +172,11 @@ namespace Alis.Extension.Math.ProceduralDungeon.Helpers
         public static bool IsVertical(Direction direction)
         {
             if (direction == Direction.None)
+            {
                 throw new ArgumentOutOfRangeException(nameof(direction), "Direction cannot be None");
+            }
 
             return direction == Direction.North || direction == Direction.South;
         }
     }
 }
-

@@ -45,7 +45,7 @@ namespace Alis.Core.Physic.Test.Collisions
         public void DefaultConstructor_ShouldInitializeWithDefaultValues()
         {
             SimplexVertex vertex = new SimplexVertex();
-            
+
             Assert.Equal(0.0f, vertex.A);
             Assert.Equal(0, vertex.IndexA);
             Assert.Equal(0, vertex.IndexB);
@@ -64,7 +64,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 A = 0.75f
             };
-            
+
             Assert.Equal(0.75f, vertex.A);
         }
 
@@ -78,7 +78,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 IndexA = 5
             };
-            
+
             Assert.Equal(5, vertex.IndexA);
         }
 
@@ -92,7 +92,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 IndexB = 10
             };
-            
+
             Assert.Equal(10, vertex.IndexB);
         }
 
@@ -106,7 +106,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 W = new Vector2F(1.5f, 2.5f)
             };
-            
+
             Assert.Equal(1.5f, vertex.W.X);
             Assert.Equal(2.5f, vertex.W.Y);
         }
@@ -121,7 +121,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 Wa = new Vector2F(3.0f, 4.0f)
             };
-            
+
             Assert.Equal(3.0f, vertex.Wa.X);
             Assert.Equal(4.0f, vertex.Wa.Y);
         }
@@ -136,7 +136,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 Wb = new Vector2F(5.0f, 6.0f)
             };
-            
+
             Assert.Equal(5.0f, vertex.Wb.X);
             Assert.Equal(6.0f, vertex.Wb.Y);
         }
@@ -152,7 +152,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 IndexA = -1,
                 IndexB = -5
             };
-            
+
             Assert.Equal(-1, vertex.IndexA);
             Assert.Equal(-5, vertex.IndexB);
         }
@@ -167,9 +167,9 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 A = 1.0f
             };
-            
+
             Assert.Equal(1.0f, vertex.A);
-            Assert.True(vertex.A >= 0.0f && vertex.A <= 1.0f);
+            Assert.True((vertex.A >= 0.0f) && (vertex.A <= 1.0f));
         }
 
         /// <summary>
@@ -178,11 +178,11 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void SimplexVertex_ShouldBeValueType()
         {
-            SimplexVertex vertex1 = new SimplexVertex { A = 0.5f };
+            SimplexVertex vertex1 = new SimplexVertex {A = 0.5f};
             SimplexVertex vertex2 = vertex1;
-            
+
             vertex2.A = 0.75f;
-            
+
             Assert.NotEqual(vertex1.A, vertex2.A);
         }
 
@@ -197,14 +197,13 @@ namespace Alis.Core.Physic.Test.Collisions
                 Wa = new Vector2F(10.0f, 20.0f),
                 Wb = new Vector2F(5.0f, 8.0f)
             };
-            
+
             Vector2F expectedW = vertex.Wb - vertex.Wa;
             vertex.W = expectedW;
-            
+
             Assert.Equal(expectedW, vertex.W);
             Assert.Equal(-5.0f, vertex.W.X);
             Assert.Equal(-12.0f, vertex.W.Y);
         }
     }
 }
-

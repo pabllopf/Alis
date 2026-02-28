@@ -100,7 +100,7 @@ namespace Alis.Extension.Profile.Models
         /// <value>
         ///     An <see cref="int" /> representing the GC count during profiling.
         /// </value>
-        public int GarbageCollectionsDuringProfiling => 
+        public int GarbageCollectionsDuringProfiling =>
             EndMetrics.GarbageCollectionCount - StartMetrics.GarbageCollectionCount;
 
         /// <summary>
@@ -158,14 +158,11 @@ namespace Alis.Extension.Profile.Models
         /// <returns>
         ///     <c>true</c> if the specified snapshot is equal to the current instance; otherwise, <c>false</c>.
         /// </returns>
-        public bool Equals(ProfileSnapshot other)
-        {
-            return ElapsedTime.Equals(other.ElapsedTime) &&
-                   StartMetrics.Equals(other.StartMetrics) &&
-                   EndMetrics.Equals(other.EndMetrics) &&
-                   StartTime.Equals(other.StartTime) &&
-                   EndTime.Equals(other.EndTime);
-        }
+        public bool Equals(ProfileSnapshot other) => ElapsedTime.Equals(other.ElapsedTime) &&
+                                                     StartMetrics.Equals(other.StartMetrics) &&
+                                                     EndMetrics.Equals(other.EndMetrics) &&
+                                                     StartTime.Equals(other.StartTime) &&
+                                                     EndTime.Equals(other.EndTime);
 
         /// <summary>
         ///     Determines whether the specified object is equal to the current instance.
@@ -174,10 +171,7 @@ namespace Alis.Extension.Profile.Models
         /// <returns>
         ///     <c>true</c> if the specified object is equal to the current instance; otherwise, <c>false</c>.
         /// </returns>
-        public override bool Equals(object obj)
-        {
-            return obj is ProfileSnapshot other && Equals(other);
-        }
+        public override bool Equals(object obj) => obj is ProfileSnapshot other && Equals(other);
 
         /// <summary>
         ///     Returns a hash code for this instance.
@@ -207,10 +201,7 @@ namespace Alis.Extension.Profile.Models
         /// <returns>
         ///     <c>true</c> if the snapshots are equal; otherwise, <c>false</c>.
         /// </returns>
-        public static bool operator ==(ProfileSnapshot left, ProfileSnapshot right)
-        {
-            return left.Equals(right);
-        }
+        public static bool operator ==(ProfileSnapshot left, ProfileSnapshot right) => left.Equals(right);
 
         /// <summary>
         ///     Determines whether two <see cref="ProfileSnapshot" /> instances are not equal.
@@ -220,10 +211,7 @@ namespace Alis.Extension.Profile.Models
         /// <returns>
         ///     <c>true</c> if the snapshots are not equal; otherwise, <c>false</c>.
         /// </returns>
-        public static bool operator !=(ProfileSnapshot left, ProfileSnapshot right)
-        {
-            return !left.Equals(right);
-        }
+        public static bool operator !=(ProfileSnapshot left, ProfileSnapshot right) => !left.Equals(right);
 
         /// <summary>
         ///     Returns a string representation of the profile snapshot.
@@ -231,14 +219,10 @@ namespace Alis.Extension.Profile.Models
         /// <returns>
         ///     A formatted string containing all snapshot information.
         /// </returns>
-        public override string ToString()
-        {
-            return $"ProfileSnapshot[Elapsed: {ElapsedTime.TotalMilliseconds:F2}ms, " +
-                   $"CPU Delta: {CpuUsageDelta:F2}ms, " +
-                   $"Memory Delta: {MemoryUsageDelta:N0} bytes, " +
-                   $"GC During Session: {GarbageCollectionsDuringProfiling}, " +
-                   $"Period: {StartTime:HH:mm:ss.fff} - {EndTime:HH:mm:ss.fff}]";
-        }
+        public override string ToString() => $"ProfileSnapshot[Elapsed: {ElapsedTime.TotalMilliseconds:F2}ms, " +
+                                             $"CPU Delta: {CpuUsageDelta:F2}ms, " +
+                                             $"Memory Delta: {MemoryUsageDelta:N0} bytes, " +
+                                             $"GC During Session: {GarbageCollectionsDuringProfiling}, " +
+                                             $"Period: {StartTime:HH:mm:ss.fff} - {EndTime:HH:mm:ss.fff}]";
     }
 }
-

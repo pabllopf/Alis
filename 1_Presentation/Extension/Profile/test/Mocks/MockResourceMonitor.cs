@@ -38,6 +38,17 @@ namespace Alis.Extension.Profile.Test.Mocks
     public class MockResourceMonitor : IResourceMonitor
     {
         /// <summary>
+        ///     Initializes a new instance of the <see cref="MockResourceMonitor" /> class.
+        /// </summary>
+        public MockResourceMonitor()
+        {
+            CpuUsage = 0;
+            MemoryUsage = 0;
+            GarbageCollectionCount = 0;
+            ThreadCount = 0;
+        }
+
+        /// <summary>
         ///     Gets or sets the CPU usage value to return.
         /// </summary>
         public double CpuUsage { get; set; }
@@ -76,17 +87,6 @@ namespace Alis.Extension.Profile.Test.Mocks
         ///     Gets a value indicating whether GetThreadCount was called.
         /// </summary>
         public bool GetThreadCountCalled { get; private set; }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="MockResourceMonitor" /> class.
-        /// </summary>
-        public MockResourceMonitor()
-        {
-            CpuUsage = 0;
-            MemoryUsage = 0;
-            GarbageCollectionCount = 0;
-            ThreadCount = 0;
-        }
 
         /// <summary>
         ///     Gets the configured CPU usage value and marks the method as called.
@@ -140,4 +140,3 @@ namespace Alis.Extension.Profile.Test.Mocks
         }
     }
 }
-

@@ -27,8 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Extension.Media.FFmpeg.Audio;
-using Alis.Extension.Media.FFmpeg.BaseClasses;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Audio
@@ -51,7 +51,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             // Assert
             Assert.NotNull(player);
         }
-        
+
         /// <summary>
         ///     Tests that audio player should be disposable
         /// </summary>
@@ -62,9 +62,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             AudioPlayer player = new AudioPlayer();
 
             // Assert
-            Assert.IsAssignableFrom<System.IDisposable>(player);
+            Assert.IsAssignableFrom<IDisposable>(player);
         }
-        
+
         /// <summary>
         ///     Tests that audio player should be disposabl multiple times
         /// </summary>
@@ -81,4 +81,3 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         }
     }
 }
-

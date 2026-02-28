@@ -44,13 +44,10 @@ namespace Alis.Core.Physic.Test.Collisions
         public void BroadphaseDelegate_ShouldBeInvokable()
         {
             bool invoked = false;
-            BroadphaseDelegate callback = (proxyIdA, proxyIdB) =>
-            {
-                invoked = true;
-            };
-            
+            BroadphaseDelegate callback = (proxyIdA, proxyIdB) => { invoked = true; };
+
             callback(0, 1);
-            
+
             Assert.True(invoked);
         }
 
@@ -61,13 +58,10 @@ namespace Alis.Core.Physic.Test.Collisions
         public void BroadphaseDelegate_ShouldReceiveProxyIdA()
         {
             int capturedProxyIdA = -1;
-            BroadphaseDelegate callback = (proxyIdA, proxyIdB) =>
-            {
-                capturedProxyIdA = proxyIdA;
-            };
-            
+            BroadphaseDelegate callback = (proxyIdA, proxyIdB) => { capturedProxyIdA = proxyIdA; };
+
             callback(42, 0);
-            
+
             Assert.Equal(42, capturedProxyIdA);
         }
 
@@ -78,13 +72,10 @@ namespace Alis.Core.Physic.Test.Collisions
         public void BroadphaseDelegate_ShouldReceiveProxyIdB()
         {
             int capturedProxyIdB = -1;
-            BroadphaseDelegate callback = (proxyIdA, proxyIdB) =>
-            {
-                capturedProxyIdB = proxyIdB;
-            };
-            
+            BroadphaseDelegate callback = (proxyIdA, proxyIdB) => { capturedProxyIdB = proxyIdB; };
+
             callback(0, 99);
-            
+
             Assert.Equal(99, capturedProxyIdB);
         }
 
@@ -97,11 +88,11 @@ namespace Alis.Core.Physic.Test.Collisions
             int callCount = 0;
             BroadphaseDelegate callback1 = (a, b) => callCount++;
             BroadphaseDelegate callback2 = (a, b) => callCount++;
-            
+
             BroadphaseDelegate combined = callback1 + callback2;
-            
+
             combined(0, 1);
-            
+
             Assert.Equal(2, callCount);
         }
 
@@ -114,12 +105,12 @@ namespace Alis.Core.Physic.Test.Collisions
             int callCount = 0;
             BroadphaseDelegate callback1 = (a, b) => callCount++;
             BroadphaseDelegate callback2 = (a, b) => callCount++;
-            
+
             BroadphaseDelegate combined = callback1 + callback2;
             combined -= callback1;
-            
+
             combined(0, 1);
-            
+
             Assert.Equal(1, callCount);
         }
 
@@ -130,13 +121,10 @@ namespace Alis.Core.Physic.Test.Collisions
         public void BroadphaseDelegate_ShouldHandleNegativeProxyIds()
         {
             bool invoked = false;
-            BroadphaseDelegate callback = (proxyIdA, proxyIdB) =>
-            {
-                invoked = true;
-            };
-            
+            BroadphaseDelegate callback = (proxyIdA, proxyIdB) => { invoked = true; };
+
             callback(-1, -1);
-            
+
             Assert.True(invoked);
         }
 
@@ -147,13 +135,10 @@ namespace Alis.Core.Physic.Test.Collisions
         public void BroadphaseDelegate_ShouldHandleZeroProxyIds()
         {
             bool invoked = false;
-            BroadphaseDelegate callback = (proxyIdA, proxyIdB) =>
-            {
-                invoked = true;
-            };
-            
+            BroadphaseDelegate callback = (proxyIdA, proxyIdB) => { invoked = true; };
+
             callback(0, 0);
-            
+
             Assert.True(invoked);
         }
 
@@ -165,11 +150,11 @@ namespace Alis.Core.Physic.Test.Collisions
         {
             int count = 0;
             BroadphaseDelegate callback = (a, b) => count++;
-            
+
             callback(0, 1);
             callback(1, 2);
             callback(2, 3);
-            
+
             Assert.Equal(3, count);
         }
 
@@ -186,9 +171,9 @@ namespace Alis.Core.Physic.Test.Collisions
                 capturedA = proxyIdA;
                 capturedB = proxyIdB;
             };
-            
+
             callback(10, 20);
-            
+
             Assert.Equal(10, capturedA);
             Assert.Equal(20, capturedB);
         }
@@ -200,15 +185,11 @@ namespace Alis.Core.Physic.Test.Collisions
         public void BroadphaseDelegate_ShouldHandleLargeProxyIds()
         {
             bool invoked = false;
-            BroadphaseDelegate callback = (proxyIdA, proxyIdB) =>
-            {
-                invoked = true;
-            };
-            
+            BroadphaseDelegate callback = (proxyIdA, proxyIdB) => { invoked = true; };
+
             callback(int.MaxValue, int.MaxValue);
-            
+
             Assert.True(invoked);
         }
     }
 }
-

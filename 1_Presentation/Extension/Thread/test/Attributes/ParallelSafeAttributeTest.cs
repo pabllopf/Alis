@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Linq;
 using Alis.Extension.Thread.Attributes;
 using Xunit;
 
@@ -40,13 +39,13 @@ namespace Alis.Extension.Thread.Test.Attributes
         public int Value;
     }
 
-    [ParallelSafe(minBatchSize: 256)]
+    [ParallelSafe(256)]
     internal struct TestComponentWithCustomBatchSize
     {
         public int Value;
     }
 
-    [ParallelSafe(minBatchSize: 64)]
+    [ParallelSafe(64)]
     internal class TestClassWithAttribute
     {
         public int Value { get; set; }
@@ -126,7 +125,7 @@ namespace Alis.Extension.Thread.Test.Attributes
             Type type = typeof(TestComponentWithDefaultBatchSize);
 
             // Act
-            ParallelSafeAttribute attribute = (ParallelSafeAttribute)Attribute.GetCustomAttribute(type, typeof(ParallelSafeAttribute));
+            ParallelSafeAttribute attribute = (ParallelSafeAttribute) Attribute.GetCustomAttribute(type, typeof(ParallelSafeAttribute));
 
             // Assert
             Assert.NotNull(attribute);
@@ -143,7 +142,7 @@ namespace Alis.Extension.Thread.Test.Attributes
             Type type = typeof(TestComponentWithCustomBatchSize);
 
             // Act
-            ParallelSafeAttribute attribute = (ParallelSafeAttribute)Attribute.GetCustomAttribute(type, typeof(ParallelSafeAttribute));
+            ParallelSafeAttribute attribute = (ParallelSafeAttribute) Attribute.GetCustomAttribute(type, typeof(ParallelSafeAttribute));
 
             // Assert
             Assert.NotNull(attribute);
@@ -160,7 +159,7 @@ namespace Alis.Extension.Thread.Test.Attributes
             Type type = typeof(TestComponentWithoutAttribute);
 
             // Act
-            ParallelSafeAttribute attribute = (ParallelSafeAttribute)Attribute.GetCustomAttribute(type, typeof(ParallelSafeAttribute));
+            ParallelSafeAttribute attribute = (ParallelSafeAttribute) Attribute.GetCustomAttribute(type, typeof(ParallelSafeAttribute));
 
             // Assert
             Assert.Null(attribute);
@@ -176,7 +175,7 @@ namespace Alis.Extension.Thread.Test.Attributes
             Type attributeType = typeof(ParallelSafeAttribute);
 
             // Act
-            AttributeUsageAttribute usage = (AttributeUsageAttribute)Attribute.GetCustomAttribute(attributeType, typeof(AttributeUsageAttribute));
+            AttributeUsageAttribute usage = (AttributeUsageAttribute) Attribute.GetCustomAttribute(attributeType, typeof(AttributeUsageAttribute));
 
             // Assert
             Assert.NotNull(usage);
@@ -194,7 +193,7 @@ namespace Alis.Extension.Thread.Test.Attributes
             Type attributeType = typeof(ParallelSafeAttribute);
 
             // Act
-            AttributeUsageAttribute usage = (AttributeUsageAttribute)Attribute.GetCustomAttribute(attributeType, typeof(AttributeUsageAttribute));
+            AttributeUsageAttribute usage = (AttributeUsageAttribute) Attribute.GetCustomAttribute(attributeType, typeof(AttributeUsageAttribute));
 
             // Assert
             Assert.NotNull(usage);
@@ -211,7 +210,7 @@ namespace Alis.Extension.Thread.Test.Attributes
             Type attributeType = typeof(ParallelSafeAttribute);
 
             // Act
-            AttributeUsageAttribute usage = (AttributeUsageAttribute)Attribute.GetCustomAttribute(attributeType, typeof(AttributeUsageAttribute));
+            AttributeUsageAttribute usage = (AttributeUsageAttribute) Attribute.GetCustomAttribute(attributeType, typeof(AttributeUsageAttribute));
 
             // Assert
             Assert.NotNull(usage);
@@ -232,7 +231,7 @@ namespace Alis.Extension.Thread.Test.Attributes
 
             // Assert
             Assert.Equal(512, batchSize);
-            
+
             // Verify property is read-only by checking if setter exists
             var property = typeof(ParallelSafeAttribute).GetProperty(nameof(ParallelSafeAttribute.MinBatchSize));
             Assert.NotNull(property);
@@ -308,7 +307,7 @@ namespace Alis.Extension.Thread.Test.Attributes
             // Assert
             Assert.Single(attributes);
             Assert.IsType<ParallelSafeAttribute>(attributes[0]);
-            ParallelSafeAttribute attr = (ParallelSafeAttribute)attributes[0];
+            ParallelSafeAttribute attr = (ParallelSafeAttribute) attributes[0];
             Assert.Equal(64, attr.MinBatchSize);
         }
 
@@ -324,9 +323,9 @@ namespace Alis.Extension.Thread.Test.Attributes
             Type type3 = typeof(TestClassWithAttribute);
 
             // Act
-            ParallelSafeAttribute attr1 = (ParallelSafeAttribute)Attribute.GetCustomAttribute(type1, typeof(ParallelSafeAttribute));
-            ParallelSafeAttribute attr2 = (ParallelSafeAttribute)Attribute.GetCustomAttribute(type2, typeof(ParallelSafeAttribute));
-            ParallelSafeAttribute attr3 = (ParallelSafeAttribute)Attribute.GetCustomAttribute(type3, typeof(ParallelSafeAttribute));
+            ParallelSafeAttribute attr1 = (ParallelSafeAttribute) Attribute.GetCustomAttribute(type1, typeof(ParallelSafeAttribute));
+            ParallelSafeAttribute attr2 = (ParallelSafeAttribute) Attribute.GetCustomAttribute(type2, typeof(ParallelSafeAttribute));
+            ParallelSafeAttribute attr3 = (ParallelSafeAttribute) Attribute.GetCustomAttribute(type3, typeof(ParallelSafeAttribute));
 
             // Assert
             Assert.Equal(128, attr1.MinBatchSize);
@@ -335,4 +334,3 @@ namespace Alis.Extension.Thread.Test.Attributes
         }
     }
 }
-

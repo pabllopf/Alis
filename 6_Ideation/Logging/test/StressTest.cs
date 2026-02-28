@@ -5,32 +5,31 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: StressTest.cs
+//  File:StressTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program. If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
-using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Logging.Abstractions;
 using Alis.Core.Aspect.Logging.Core;
 using Alis.Core.Aspect.Logging.Filters;
@@ -52,7 +51,7 @@ namespace Alis.Core.Aspect.Logging.Test
             // Arrange
             using (LoggerFactory factory = new LoggerFactory())
             {
-                MemoryLogOutput memoryOutput = new MemoryLogOutput(maxEntries: 0);
+                MemoryLogOutput memoryOutput = new MemoryLogOutput(0);
                 factory.AddOutput(memoryOutput);
                 ILogger logger = factory.CreateLogger("StressTest");
 
@@ -78,7 +77,7 @@ namespace Alis.Core.Aspect.Logging.Test
             // Arrange
             using (LoggerFactory factory = new LoggerFactory())
             {
-                MemoryLogOutput memoryOutput = new MemoryLogOutput(maxEntries: 0);
+                MemoryLogOutput memoryOutput = new MemoryLogOutput(0);
                 factory.AddOutput(memoryOutput);
 
                 Task[] tasks = new Task[10];
@@ -113,7 +112,7 @@ namespace Alis.Core.Aspect.Logging.Test
             // Arrange
             using (LoggerFactory factory = new LoggerFactory())
             {
-                MemoryLogOutput memoryOutput = new MemoryLogOutput(maxEntries: 0);
+                MemoryLogOutput memoryOutput = new MemoryLogOutput(0);
                 factory.AddOutput(memoryOutput);
                 ILogger logger = factory.CreateLogger("StressTest");
 
@@ -141,7 +140,7 @@ namespace Alis.Core.Aspect.Logging.Test
             // Arrange
             using (LoggerFactory factory = new LoggerFactory())
             {
-                MemoryLogOutput memoryOutput = new MemoryLogOutput(maxEntries: 0);
+                MemoryLogOutput memoryOutput = new MemoryLogOutput(0);
                 factory.AddOutput(memoryOutput);
 
                 Stopwatch stopwatch = Stopwatch.StartNew();
@@ -172,7 +171,7 @@ namespace Alis.Core.Aspect.Logging.Test
             // Arrange
             using (LoggerFactory factory = new LoggerFactory())
             {
-                MemoryLogOutput memoryOutput = new MemoryLogOutput(maxEntries: 0);
+                MemoryLogOutput memoryOutput = new MemoryLogOutput(0);
                 factory.AddOutput(memoryOutput);
                 ILogger logger = factory.CreateLogger("StressTest");
 
@@ -180,7 +179,7 @@ namespace Alis.Core.Aspect.Logging.Test
 
                 // Act - Create deeply nested scopes
                 Action<int> logAtDepth = null;
-                logAtDepth = (depth) =>
+                logAtDepth = depth =>
                 {
                     if (depth == 0)
                     {
@@ -211,7 +210,7 @@ namespace Alis.Core.Aspect.Logging.Test
             // Arrange
             using (LoggerFactory factory = new LoggerFactory())
             {
-                MemoryLogOutput memoryOutput = new MemoryLogOutput(maxEntries: 0);
+                MemoryLogOutput memoryOutput = new MemoryLogOutput(0);
                 factory.AddOutput(memoryOutput);
 
                 // Add many filters
@@ -265,7 +264,7 @@ namespace Alis.Core.Aspect.Logging.Test
                 stopwatch.Stop();
 
                 // Assert - Each formatter should handle 10K formats in reasonable time
-                Assert.True(stopwatch.Elapsed.TotalSeconds < 5, 
+                Assert.True(stopwatch.Elapsed.TotalSeconds < 5,
                     $"{formatter.Name} took {stopwatch.Elapsed.TotalSeconds}s for {iterations} iterations");
             }
         }
@@ -276,7 +275,7 @@ namespace Alis.Core.Aspect.Logging.Test
             // Arrange
             using (LoggerFactory factory = new LoggerFactory())
             {
-                MemoryLogOutput memoryOutput = new MemoryLogOutput(maxEntries: 10000);
+                MemoryLogOutput memoryOutput = new MemoryLogOutput(10000);
                 factory.AddOutput(memoryOutput);
                 ILogger logger = factory.CreateLogger("StressTest");
 
@@ -303,7 +302,7 @@ namespace Alis.Core.Aspect.Logging.Test
             // Arrange
             using (LoggerFactory factory = new LoggerFactory())
             {
-                MemoryLogOutput memoryOutput = new MemoryLogOutput(maxEntries: 0);
+                MemoryLogOutput memoryOutput = new MemoryLogOutput(0);
                 factory.AddOutput(memoryOutput);
                 ILogger logger = factory.CreateLogger("StressTest");
 
@@ -336,9 +335,9 @@ namespace Alis.Core.Aspect.Logging.Test
             // Arrange
             using (LoggerFactory factory = new LoggerFactory())
             {
-                MemoryLogOutput memoryOutput = new MemoryLogOutput(maxEntries: 0);
+                MemoryLogOutput memoryOutput = new MemoryLogOutput(0);
                 factory.AddOutput(memoryOutput);
-                factory.AddFilter(new SamplingLogFilter(sampleRate: 10)); // Log 1 in 10
+                factory.AddFilter(new SamplingLogFilter(10)); // Log 1 in 10
 
                 ILogger logger = factory.CreateLogger("StressTest");
 
@@ -359,4 +358,3 @@ namespace Alis.Core.Aspect.Logging.Test
         }
     }
 }
-

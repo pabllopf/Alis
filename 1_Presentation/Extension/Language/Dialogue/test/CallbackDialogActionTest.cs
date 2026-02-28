@@ -126,4 +126,3 @@ namespace Alis.Extension.Language.Dialogue.Test
         }
     }
 }
-

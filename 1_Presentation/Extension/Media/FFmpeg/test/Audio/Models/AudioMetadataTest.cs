@@ -248,8 +248,8 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         {
             // Arrange
             AudioMetadata metadata = new AudioMetadata();
-            MediaStream audioStream = new MediaStream { CodecType = "audio" };
-            metadata.Streams = new List<MediaStream> { audioStream };
+            MediaStream audioStream = new MediaStream {CodecType = "audio"};
+            metadata.Streams = new List<MediaStream> {audioStream};
 
             // Act
             MediaStream result = metadata.GetFirstAudioStream();
@@ -266,8 +266,8 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         {
             // Arrange
             AudioMetadata metadata = new AudioMetadata();
-            MediaStream videoStream = new MediaStream { CodecType = "video" };
-            metadata.Streams = new List<MediaStream> { videoStream };
+            MediaStream videoStream = new MediaStream {CodecType = "video"};
+            metadata.Streams = new List<MediaStream> {videoStream};
 
             // Act
             MediaStream result = metadata.GetFirstVideoStream();
@@ -284,8 +284,8 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         {
             // Arrange
             AudioMetadata metadata = new AudioMetadata();
-            MediaStream videoStream = new MediaStream { CodecType = "video" };
-            metadata.Streams = new List<MediaStream> { videoStream };
+            MediaStream videoStream = new MediaStream {CodecType = "video"};
+            metadata.Streams = new List<MediaStream> {videoStream};
 
             // Act
             MediaStream result = metadata.GetFirstAudioStream();
@@ -301,9 +301,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         public void AudioMetadata_ShouldSupportCommonSampleRates()
         {
             // Arrange & Act
-            AudioMetadata metadata22050 = new AudioMetadata { SampleRate = 22050 };
-            AudioMetadata metadata44100 = new AudioMetadata { SampleRate = 44100 };
-            AudioMetadata metadata48000 = new AudioMetadata { SampleRate = 48000 };
+            AudioMetadata metadata22050 = new AudioMetadata {SampleRate = 22050};
+            AudioMetadata metadata44100 = new AudioMetadata {SampleRate = 44100};
+            AudioMetadata metadata48000 = new AudioMetadata {SampleRate = 48000};
 
             // Assert
             Assert.Equal(22050, metadata22050.SampleRate);
@@ -318,9 +318,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         public void AudioMetadata_ShouldSupportCommonBitRates()
         {
             // Arrange & Act
-            AudioMetadata metadata128k = new AudioMetadata { BitRate = 128000 };
-            AudioMetadata metadata192k = new AudioMetadata { BitRate = 192000 };
-            AudioMetadata metadata320k = new AudioMetadata { BitRate = 320000 };
+            AudioMetadata metadata128k = new AudioMetadata {BitRate = 128000};
+            AudioMetadata metadata192k = new AudioMetadata {BitRate = 192000};
+            AudioMetadata metadata320k = new AudioMetadata {BitRate = 320000};
 
             // Assert
             Assert.Equal(128000, metadata128k.BitRate);
@@ -335,9 +335,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         public void AudioMetadata_ShouldSupportCommonChannelConfigurations()
         {
             // Arrange & Act
-            AudioMetadata monoMetadata = new AudioMetadata { Channels = 1 };
-            AudioMetadata stereoMetadata = new AudioMetadata { Channels = 2 };
-            AudioMetadata surroundMetadata = new AudioMetadata { Channels = 6 };
+            AudioMetadata monoMetadata = new AudioMetadata {Channels = 1};
+            AudioMetadata stereoMetadata = new AudioMetadata {Channels = 2};
+            AudioMetadata surroundMetadata = new AudioMetadata {Channels = 6};
 
             // Assert
             Assert.Equal(1, monoMetadata.Channels);
@@ -346,4 +346,3 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         }
     }
 }
-

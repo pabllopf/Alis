@@ -5,32 +5,31 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: LogEntryTest.cs
+//  File:LogEntryTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program. If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System;
 using System.Collections.Generic;
 using System.Threading;
-using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Logging.Abstractions;
 using Alis.Core.Aspect.Logging.Core;
 using Xunit;
@@ -53,8 +52,8 @@ namespace Alis.Core.Aspect.Logging.Test
             string loggerName = "TestLogger";
             InvalidOperationException exception = new InvalidOperationException("Test");
             string correlationId = "CORR-123";
-            Dictionary<string, object> properties = new Dictionary<string, object> { { "key", "value" } };
-            List<object> scopes = new List<object> { "scope1" };
+            Dictionary<string, object> properties = new Dictionary<string, object> {{"key", "value"}};
+            List<object> scopes = new List<object> {"scope1"};
 
             // Act
             LogEntry entry = new LogEntry(level, message, loggerName, exception, correlationId, properties, scopes);
@@ -141,7 +140,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LogEntry_AllLogLevels_ShouldStoreCorrectly()
         {
             // Arrange
-            LogLevel[] levels = new[] { LogLevel.Trace, LogLevel.Debug, LogLevel.Info, LogLevel.Warning, LogLevel.Error, LogLevel.Critical, LogLevel.None };
+            LogLevel[] levels = new[] {LogLevel.Trace, LogLevel.Debug, LogLevel.Info, LogLevel.Warning, LogLevel.Error, LogLevel.Critical, LogLevel.None};
 
             foreach (LogLevel level in levels)
             {
@@ -207,9 +206,9 @@ namespace Alis.Core.Aspect.Logging.Test
             // Arrange
             Dictionary<string, object> properties = new Dictionary<string, object>
             {
-                { "UserId", 123 },
-                { "Action", "Login" },
-                { "Timestamp", DateTime.Now }
+                {"UserId", 123},
+                {"Action", "Login"},
+                {"Timestamp", DateTime.Now}
             };
 
             // Act
@@ -225,7 +224,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LogEntry_WithScopes_ShouldContainAllScopes()
         {
             // Arrange
-            List<object> scopes = new List<object> { "Scope1", "Scope2", 42, new object() };
+            List<object> scopes = new List<object> {"Scope1", "Scope2", 42, new object()};
 
             // Act
             LogEntry entry = new LogEntry(LogLevel.Info, "Message", "Logger", scopes: scopes);
@@ -316,7 +315,7 @@ namespace Alis.Core.Aspect.Logging.Test
 
             // Assert - IReadOnlyDictionary should not have Add method
             Assert.True(typeof(IReadOnlyDictionary<string, object>).IsAssignableFrom(entry.Properties.GetType())
-                || entry.Properties.GetType().Name.Contains("ReadOnly"));
+                        || entry.Properties.GetType().Name.Contains("ReadOnly"));
         }
 
         [Fact]
@@ -327,7 +326,7 @@ namespace Alis.Core.Aspect.Logging.Test
 
             // Assert - IReadOnlyList should not have Add method
             Assert.True(typeof(IReadOnlyList<object>).IsAssignableFrom(entry.Scopes.GetType())
-                || entry.Scopes.GetType().Name.Contains("ReadOnly"));
+                        || entry.Scopes.GetType().Name.Contains("ReadOnly"));
         }
 
         [Fact]
@@ -338,7 +337,7 @@ namespace Alis.Core.Aspect.Logging.Test
             string originalMessage = entry.Message;
 
             // Act - Try to modify (should not affect entry)
-            Dictionary<string, object> properties = new Dictionary<string, object> { { "key", "value" } };
+            Dictionary<string, object> properties = new Dictionary<string, object> {{"key", "value"}};
             LogEntry entry2 = new LogEntry(LogLevel.Warning, "Modified", "Logger", properties: properties);
 
             // Assert
@@ -350,8 +349,8 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LogEntry_ComplexObject_ShouldStoreAsScopeElement()
         {
             // Arrange
-            var complexScope = new { Id = 1, Name = "Test" };
-            List<object> scopes = new List<object> { complexScope };
+            var complexScope = new {Id = 1, Name = "Test"};
+            List<object> scopes = new List<object> {complexScope};
 
             // Act
             LogEntry entry = new LogEntry(LogLevel.Info, "Message", "Logger", scopes: scopes);
@@ -362,4 +361,3 @@ namespace Alis.Core.Aspect.Logging.Test
         }
     }
 }
-

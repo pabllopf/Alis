@@ -28,9 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Media.FFmpeg.Audio;
-using Alis.Extension.Media.FFmpeg.BaseClasses;
-using Alis.Extension.Media.FFmpeg.Encoding;
-using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Audio
 {
@@ -40,7 +37,5 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
     /// <seealso cref="AudioWriter" />
     public class AudioWriterTest
     {
-   
     }
 }
-

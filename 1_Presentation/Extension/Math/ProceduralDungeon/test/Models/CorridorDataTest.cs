@@ -190,10 +190,10 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
         {
             // Arrange
             CorridorData original = new CorridorData(15, 25, 4, 6, Direction.West);
-            
+
             // Act - Cannot modify properties as they are readonly
             // This test verifies that the struct is properly designed as immutable
-            
+
             // Assert
             Assert.Equal(15, original.XPos);
             Assert.Equal(25, original.YPos);
@@ -218,4 +218,3 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
         }
     }
 }
-

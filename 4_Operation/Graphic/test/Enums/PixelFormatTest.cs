@@ -28,99 +28,99 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Xunit;
 using Alis.Core.Graphic.OpenGL.Enums;
+using Xunit;
 
 namespace Alis.Core.Graphic.Test.Enums
 {
     /// <summary>
-    /// Tests for the PixelFormat enum validating pixel format specifications.
+    ///     Tests for the PixelFormat enum validating pixel format specifications.
     /// </summary>
     public class PixelFormatTest
     {
         /// <summary>
-        /// Tests that ColorIndex has correct value.
+        ///     Tests that ColorIndex has correct value.
         /// </summary>
         [Fact]
         public void ColorIndex_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x1900, (int)PixelFormat.ColorIndex);
+            Assert.Equal(0x1900, (int) PixelFormat.ColorIndex);
         }
 
         /// <summary>
-        /// Tests that StencilIndex has correct value.
+        ///     Tests that StencilIndex has correct value.
         /// </summary>
         [Fact]
         public void StencilIndex_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x1901, (int)PixelFormat.StencilIndex);
+            Assert.Equal(0x1901, (int) PixelFormat.StencilIndex);
         }
 
         /// <summary>
-        /// Tests that DepthComponent has correct value.
+        ///     Tests that DepthComponent has correct value.
         /// </summary>
         [Fact]
         public void DepthComponent_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x1902, (int)PixelFormat.DepthComponent);
+            Assert.Equal(0x1902, (int) PixelFormat.DepthComponent);
         }
 
         /// <summary>
-        /// Tests that Red has correct value.
+        ///     Tests that Red has correct value.
         /// </summary>
         [Fact]
         public void Red_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x1903, (int)PixelFormat.Red);
+            Assert.Equal(0x1903, (int) PixelFormat.Red);
         }
 
         /// <summary>
-        /// Tests that Green has correct value.
+        ///     Tests that Green has correct value.
         /// </summary>
         [Fact]
         public void Green_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x1904, (int)PixelFormat.Green);
+            Assert.Equal(0x1904, (int) PixelFormat.Green);
         }
 
         /// <summary>
-        /// Tests that Blue has correct value.
+        ///     Tests that Blue has correct value.
         /// </summary>
         [Fact]
         public void Blue_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x1905, (int)PixelFormat.Blue);
+            Assert.Equal(0x1905, (int) PixelFormat.Blue);
         }
 
         /// <summary>
-        /// Tests that Alpha has correct value.
+        ///     Tests that Alpha has correct value.
         /// </summary>
         [Fact]
         public void Alpha_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x1906, (int)PixelFormat.Alpha);
+            Assert.Equal(0x1906, (int) PixelFormat.Alpha);
         }
 
         /// <summary>
-        /// Tests that Rgb has correct value.
+        ///     Tests that Rgb has correct value.
         /// </summary>
         [Fact]
         public void Rgb_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x1907, (int)PixelFormat.Rgb);
+            Assert.Equal(0x1907, (int) PixelFormat.Rgb);
         }
 
         /// <summary>
-        /// Tests that Rgba has correct value.
+        ///     Tests that Rgba has correct value.
         /// </summary>
         [Fact]
         public void Rgba_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x1908, (int)PixelFormat.Rgba);
+            Assert.Equal(0x1908, (int) PixelFormat.Rgba);
         }
 
         /// <summary>
-        /// Tests that PixelFormat is an enum type.
+        ///     Tests that PixelFormat is an enum type.
         /// </summary>
         [Fact]
         public void PixelFormat_IsEnum_TypeIsCorrect()
@@ -129,7 +129,7 @@ namespace Alis.Core.Graphic.Test.Enums
         }
 
         /// <summary>
-        /// Tests that PixelFormat enum is public.
+        ///     Tests that PixelFormat enum is public.
         /// </summary>
         [Fact]
         public void PixelFormat_IsPublic_CanBeAccessed()
@@ -138,27 +138,27 @@ namespace Alis.Core.Graphic.Test.Enums
         }
 
         /// <summary>
-        /// Tests that PixelFormat has multiple defined values.
+        ///     Tests that PixelFormat has multiple defined values.
         /// </summary>
         [Fact]
         public void PixelFormat_HasMultipleValues_CountIsNotZero()
         {
-            Array enumValues = System.Enum.GetValues(typeof(PixelFormat));
+            Array enumValues = Enum.GetValues(typeof(PixelFormat));
             Assert.NotEmpty(enumValues);
         }
 
         /// <summary>
-        /// Tests that PixelFormat can be cast to int.
+        ///     Tests that PixelFormat can be cast to int.
         /// </summary>
         [Fact]
         public void PixelFormat_CanCastToInt_ConversionIsValid()
         {
-            int value = (int)PixelFormat.Rgba;
+            int value = (int) PixelFormat.Rgba;
             Assert.IsType<int>(value);
         }
 
         /// <summary>
-        /// Tests that PixelFormat values can be compared.
+        ///     Tests that PixelFormat values can be compared.
         /// </summary>
         [Fact]
         public void PixelFormat_CanCompareValues_EqualityWorks()
@@ -169,7 +169,7 @@ namespace Alis.Core.Graphic.Test.Enums
         }
 
         /// <summary>
-        /// Tests that different PixelFormat values are not equal.
+        ///     Tests that different PixelFormat values are not equal.
         /// </summary>
         [Fact]
         public void PixelFormat_DifferentValues_AreNotEqual()
@@ -178,7 +178,7 @@ namespace Alis.Core.Graphic.Test.Enums
         }
 
         /// <summary>
-        /// Tests that PixelFormat contains common color formats.
+        ///     Tests that PixelFormat contains common color formats.
         /// </summary>
         [Fact]
         public void PixelFormat_ContainsCommonFormats_AllPresent()
@@ -193,4 +193,3 @@ namespace Alis.Core.Graphic.Test.Enums
         }
     }
 }
-

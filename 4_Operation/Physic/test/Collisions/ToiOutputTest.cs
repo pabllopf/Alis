@@ -44,7 +44,7 @@ namespace Alis.Core.Physic.Test.Collisions
         public void Constructor_ShouldInitializeWithDefaultValues()
         {
             ToiOutput output = new ToiOutput();
-            
+
             Assert.Equal(ToiOutputState.Unknown, output.State);
             Assert.Equal(0.0f, output.T);
         }
@@ -59,7 +59,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 State = ToiOutputState.Touching
             };
-            
+
             Assert.Equal(ToiOutputState.Touching, output.State);
         }
 
@@ -73,7 +73,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 T = 0.5f
             };
-            
+
             Assert.Equal(0.5f, output.T);
         }
 
@@ -88,7 +88,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 State = ToiOutputState.Overlapped,
                 T = 0.75f
             };
-            
+
             Assert.Equal(ToiOutputState.Overlapped, output.State);
             Assert.Equal(0.75f, output.T);
         }
@@ -103,7 +103,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 T = 0.0f
             };
-            
+
             Assert.Equal(0.0f, output.T);
         }
 
@@ -117,7 +117,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 T = 1.0f
             };
-            
+
             Assert.Equal(1.0f, output.T);
         }
 
@@ -131,7 +131,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 State = ToiOutputState.Failed
             };
-            
+
             Assert.Equal(ToiOutputState.Failed, output.State);
         }
 
@@ -145,9 +145,8 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 State = ToiOutputState.Seperated
             };
-            
+
             Assert.Equal(ToiOutputState.Seperated, output.State);
         }
     }
 }
-

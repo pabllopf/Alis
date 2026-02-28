@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: Outputs/FileLogOutputPlatformTest.cs
+//  File:FileLogOutputPlatformTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program. If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -31,7 +31,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Logging.Abstractions;
 using Alis.Core.Aspect.Logging.Core;
 using Alis.Core.Aspect.Logging.Outputs;
@@ -157,7 +156,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
             // Cleanup
             if (Directory.Exists(dir))
             {
-                Directory.Delete(dir, recursive: true);
+                Directory.Delete(dir, true);
             }
         }
 
@@ -205,10 +204,10 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
             Directory.CreateDirectory(tempDir);
 
             // Act
-            List<Task> tasks = new System.Collections.Generic.List<System.Threading.Tasks.Task>();
+            List<Task> tasks = new List<Task>();
             for (int i = 0; i < 5; i++)
             {
-                Task task = System.Threading.Tasks.Task.Run(() =>
+                Task task = Task.Run(() =>
                 {
                     using (FileLogOutput output = new FileLogOutput(filePath, append: true))
                     {
@@ -218,7 +217,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
                 tasks.Add(task);
             }
 
-            System.Threading.Tasks.Task.WaitAll(tasks.ToArray());
+            Task.WaitAll(tasks.ToArray());
 
             // Assert
             Assert.True(File.Exists(filePath));
@@ -235,7 +234,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
             {
                 if (Directory.Exists(path))
                 {
-                    Directory.Delete(path, recursive: true);
+                    Directory.Delete(path, true);
                 }
             }
             catch
@@ -245,4 +244,3 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         }
     }
 }
-

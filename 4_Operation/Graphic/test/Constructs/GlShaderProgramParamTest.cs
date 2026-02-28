@@ -30,18 +30,18 @@
 using System;
 using System.Linq;
 using System.Reflection;
-using Xunit;
 using Alis.Core.Graphic.OpenGL.Constructs;
+using Xunit;
 
 namespace Alis.Core.Graphic.Test.Constructs
 {
     /// <summary>
-    /// Tests for the GlShaderProgramParam class handling shader program parameters.
+    ///     Tests for the GlShaderProgramParam class handling shader program parameters.
     /// </summary>
     public class GlShaderProgramParamTest
     {
         /// <summary>
-        /// Tests that GlShaderProgramParam class is sealed.
+        ///     Tests that GlShaderProgramParam class is sealed.
         /// </summary>
         [Fact]
         public void GlShaderProgramParam_IsSealed_CannotBeInherited()
@@ -54,7 +54,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         }
 
         /// <summary>
-        /// Tests that GlShaderProgramParam class is public.
+        ///     Tests that GlShaderProgramParam class is public.
         /// </summary>
         [Fact]
         public void GlShaderProgramParam_IsPublic_CanBeAccessed()
@@ -67,13 +67,13 @@ namespace Alis.Core.Graphic.Test.Constructs
         }
 
         /// <summary>
-        /// Tests that GlShaderProgramParam has Name readonly field.
+        ///     Tests that GlShaderProgramParam has Name readonly field.
         /// </summary>
         [Fact]
         public void GlShaderProgramParam_Name_FieldExists()
         {
             // Arrange & Act
-            FieldInfo nameField = typeof(GlShaderProgramParam).GetField("Name", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
+            FieldInfo nameField = typeof(GlShaderProgramParam).GetField("Name", BindingFlags.Public | BindingFlags.Instance);
 
             // Assert
             Assert.NotNull(nameField);
@@ -81,13 +81,13 @@ namespace Alis.Core.Graphic.Test.Constructs
         }
 
         /// <summary>
-        /// Tests that GlShaderProgramParam has ParamType readonly field.
+        ///     Tests that GlShaderProgramParam has ParamType readonly field.
         /// </summary>
         [Fact]
         public void GlShaderProgramParam_ParamType_FieldExists()
         {
             // Arrange & Act
-            FieldInfo paramTypeField = typeof(GlShaderProgramParam).GetField("ParamType", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
+            FieldInfo paramTypeField = typeof(GlShaderProgramParam).GetField("ParamType", BindingFlags.Public | BindingFlags.Instance);
 
             // Assert
             Assert.NotNull(paramTypeField);
@@ -95,13 +95,13 @@ namespace Alis.Core.Graphic.Test.Constructs
         }
 
         /// <summary>
-        /// Tests that GlShaderProgramParam has Type readonly field.
+        ///     Tests that GlShaderProgramParam has Type readonly field.
         /// </summary>
         [Fact]
         public void GlShaderProgramParam_Type_FieldExists()
         {
             // Arrange & Act
-            FieldInfo typeField = typeof(GlShaderProgramParam).GetField("Type", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
+            FieldInfo typeField = typeof(GlShaderProgramParam).GetField("Type", BindingFlags.Public | BindingFlags.Instance);
 
             // Assert
             Assert.NotNull(typeField);
@@ -109,7 +109,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         }
 
         /// <summary>
-        /// Tests that GlShaderProgramParam has Location property.
+        ///     Tests that GlShaderProgramParam has Location property.
         /// </summary>
         [Fact]
         public void GlShaderProgramParam_Location_PropertyExists()
@@ -125,7 +125,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         }
 
         /// <summary>
-        /// Tests that GlShaderProgramParam has Program property.
+        ///     Tests that GlShaderProgramParam has Program property.
         /// </summary>
         [Fact]
         public void GlShaderProgramParam_Program_PropertyExists()
@@ -141,7 +141,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         }
 
         /// <summary>
-        /// Tests that GlShaderProgramParam has ProgramId property.
+        ///     Tests that GlShaderProgramParam has ProgramId property.
         /// </summary>
         [Fact]
         public void GlShaderProgramParam_ProgramId_PropertyExists()
@@ -157,7 +157,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         }
 
         /// <summary>
-        /// Tests that GlShaderProgramParam has two constructors.
+        ///     Tests that GlShaderProgramParam has two constructors.
         /// </summary>
         [Fact]
         public void GlShaderProgramParam_HasTwoConstructors_OverloadsExist()
@@ -170,7 +170,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         }
 
         /// <summary>
-        /// Tests that first constructor accepts Type, ParamType, and Name.
+        ///     Tests that first constructor accepts Type, ParamType, and Name.
         /// </summary>
         [Fact]
         public void GlShaderProgramParam_FirstConstructor_ParametersAreCorrect()
@@ -191,7 +191,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         }
 
         /// <summary>
-        /// Tests that second constructor accepts Type, ParamType, Name, Program, and Location.
+        ///     Tests that second constructor accepts Type, ParamType, Name, Program, and Location.
         /// </summary>
         [Fact]
         public void GlShaderProgramParam_SecondConstructor_ParametersAreCorrect()
@@ -214,28 +214,28 @@ namespace Alis.Core.Graphic.Test.Constructs
         }
 
         /// <summary>
-        /// Tests that GlShaderProgramParam has readonly fields that cannot be modified.
+        ///     Tests that GlShaderProgramParam has readonly fields that cannot be modified.
         /// </summary>
         [Fact]
         public void GlShaderProgramParam_ReadonlyFields_CannotBeModified()
         {
             // Arrange
-            FieldInfo nameField = typeof(GlShaderProgramParam).GetField("Name", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
-            FieldInfo paramTypeField = typeof(GlShaderProgramParam).GetField("ParamType", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
-            FieldInfo typeField = typeof(GlShaderProgramParam).GetField("Type", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
+            FieldInfo nameField = typeof(GlShaderProgramParam).GetField("Name", BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo paramTypeField = typeof(GlShaderProgramParam).GetField("ParamType", BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo typeField = typeof(GlShaderProgramParam).GetField("Type", BindingFlags.Public | BindingFlags.Instance);
 
             // Act & Assert
             Assert.NotNull(nameField);
             Assert.NotNull(paramTypeField);
             Assert.NotNull(typeField);
             // Readonly fields should be InitOnly
-            Assert.True((nameField.Attributes & System.Reflection.FieldAttributes.InitOnly) != 0);
-            Assert.True((paramTypeField.Attributes & System.Reflection.FieldAttributes.InitOnly) != 0);
-            Assert.True((typeField.Attributes & System.Reflection.FieldAttributes.InitOnly) != 0);
+            Assert.True((nameField.Attributes & FieldAttributes.InitOnly) != 0);
+            Assert.True((paramTypeField.Attributes & FieldAttributes.InitOnly) != 0);
+            Assert.True((typeField.Attributes & FieldAttributes.InitOnly) != 0);
         }
 
         /// <summary>
-        /// Tests that GlShaderProgramParam parameter properties can be modified.
+        ///     Tests that GlShaderProgramParam parameter properties can be modified.
         /// </summary>
         [Fact]
         public void GlShaderProgramParam_ModifiableProperties_CanBeChanged()
@@ -252,7 +252,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         }
 
         /// <summary>
-        /// Tests that GlShaderProgramParam has methods for parameter value management.
+        ///     Tests that GlShaderProgramParam has methods for parameter value management.
         /// </summary>
         [Fact]
         public void GlShaderProgramParam_HasParameterMethods_ValueManagementExists()
@@ -261,20 +261,20 @@ namespace Alis.Core.Graphic.Test.Constructs
             Type paramType = typeof(GlShaderProgramParam);
 
             // Act
-            MethodInfo[] methods = paramType.GetMethods(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
+            MethodInfo[] methods = paramType.GetMethods(BindingFlags.Public | BindingFlags.Instance);
 
             // Assert
             Assert.NotEmpty(methods);
         }
 
         /// <summary>
-        /// Tests that GlShaderProgramParam maintains type safety with Type field.
+        ///     Tests that GlShaderProgramParam maintains type safety with Type field.
         /// </summary>
         [Fact]
         public void GlShaderProgramParam_Type_IsSystemType()
         {
             // Arrange
-            FieldInfo typeField = typeof(GlShaderProgramParam).GetField("Type", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
+            FieldInfo typeField = typeof(GlShaderProgramParam).GetField("Type", BindingFlags.Public | BindingFlags.Instance);
 
             // Act & Assert
             Assert.NotNull(typeField);
@@ -282,4 +282,3 @@ namespace Alis.Core.Graphic.Test.Constructs
         }
     }
 }
-

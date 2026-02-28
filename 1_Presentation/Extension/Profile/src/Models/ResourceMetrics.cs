@@ -129,14 +129,11 @@ namespace Alis.Extension.Profile.Models
         /// <returns>
         ///     <c>true</c> if the specified metrics are equal to the current instance; otherwise, <c>false</c>.
         /// </returns>
-        public bool Equals(ResourceMetrics other)
-        {
-            return CpuUsageMilliseconds.Equals(other.CpuUsageMilliseconds) &&
-                   MemoryUsageBytes == other.MemoryUsageBytes &&
-                   GarbageCollectionCount == other.GarbageCollectionCount &&
-                   ThreadCount == other.ThreadCount &&
-                   Timestamp.Equals(other.Timestamp);
-        }
+        public bool Equals(ResourceMetrics other) => CpuUsageMilliseconds.Equals(other.CpuUsageMilliseconds) &&
+                                                     (MemoryUsageBytes == other.MemoryUsageBytes) &&
+                                                     (GarbageCollectionCount == other.GarbageCollectionCount) &&
+                                                     (ThreadCount == other.ThreadCount) &&
+                                                     Timestamp.Equals(other.Timestamp);
 
         /// <summary>
         ///     Determines whether the specified object is equal to the current instance.
@@ -145,10 +142,7 @@ namespace Alis.Extension.Profile.Models
         /// <returns>
         ///     <c>true</c> if the specified object is equal to the current instance; otherwise, <c>false</c>.
         /// </returns>
-        public override bool Equals(object obj)
-        {
-            return obj is ResourceMetrics other && Equals(other);
-        }
+        public override bool Equals(object obj) => obj is ResourceMetrics other && Equals(other);
 
         /// <summary>
         ///     Returns a hash code for this instance.
@@ -178,10 +172,7 @@ namespace Alis.Extension.Profile.Models
         /// <returns>
         ///     <c>true</c> if the metrics are equal; otherwise, <c>false</c>.
         /// </returns>
-        public static bool operator ==(ResourceMetrics left, ResourceMetrics right)
-        {
-            return left.Equals(right);
-        }
+        public static bool operator ==(ResourceMetrics left, ResourceMetrics right) => left.Equals(right);
 
         /// <summary>
         ///     Determines whether two <see cref="ResourceMetrics" /> instances are not equal.
@@ -191,10 +182,7 @@ namespace Alis.Extension.Profile.Models
         /// <returns>
         ///     <c>true</c> if the metrics are not equal; otherwise, <c>false</c>.
         /// </returns>
-        public static bool operator !=(ResourceMetrics left, ResourceMetrics right)
-        {
-            return !left.Equals(right);
-        }
+        public static bool operator !=(ResourceMetrics left, ResourceMetrics right) => !left.Equals(right);
 
         /// <summary>
         ///     Returns a string representation of the resource metrics.
@@ -202,11 +190,7 @@ namespace Alis.Extension.Profile.Models
         /// <returns>
         ///     A formatted string containing all metric values.
         /// </returns>
-        public override string ToString()
-        {
-            return $"CPU: {CpuUsageMilliseconds:F2}ms, Memory: {MemoryUsageBytes:N0} bytes, " +
-                   $"GC: {GarbageCollectionCount}, Threads: {ThreadCount}, Timestamp: {Timestamp:yyyy-MM-dd HH:mm:ss.fff}";
-        }
+        public override string ToString() => $"CPU: {CpuUsageMilliseconds:F2}ms, Memory: {MemoryUsageBytes:N0} bytes, " +
+                                             $"GC: {GarbageCollectionCount}, Threads: {ThreadCount}, Timestamp: {Timestamp:yyyy-MM-dd HH:mm:ss.fff}";
     }
 }
-

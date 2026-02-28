@@ -28,8 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Media.FFmpeg.Audio;
-using Alis.Extension.Media.FFmpeg.BaseClasses;
-using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Audio
 {
@@ -39,7 +37,5 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
     /// <seealso cref="AudioReader" />
     public class AudioReaderTest
     {
-     
     }
 }
-

@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IFrictionTest.cs
+//  File:IFrictionTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,28 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
     /// </summary>
     public class IFrictionTest
     {
-        /// <summary>
-        ///     Helper builder class for friction.
-        /// </summary>
-        private class FrictionBuilder
-        {
-            public float FrictionValue { get; set; }
-        }
-
-        /// <summary>
-        ///     Helper implementation of IFriction.
-        /// </summary>
-        private class FrictionBuilderImpl : IFriction<FrictionBuilder, float>
-        {
-            private readonly FrictionBuilder _builder = new FrictionBuilder();
-
-            public FrictionBuilder Friction(float value)
-            {
-                _builder.FrictionValue = value;
-                return _builder;
-            }
-        }
-
         /// <summary>
         ///     Tests that IFriction can be implemented.
         /// </summary>
@@ -97,17 +75,34 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Tests Friction with typical physics values.
         /// </summary>
-        [Theory]
-        [InlineData(0f)]
-        [InlineData(0.3f)]
-        [InlineData(0.5f)]
-        [InlineData(1f)]
+        [Theory, InlineData(0f), InlineData(0.3f), InlineData(0.5f), InlineData(1f)]
         public void Friction_WithTypicalPhysicsValues(float friction)
         {
             FrictionBuilderImpl builder = new FrictionBuilderImpl();
             FrictionBuilder result = builder.Friction(friction);
             Assert.Equal(friction, result.FrictionValue);
         }
+
+        /// <summary>
+        ///     Helper builder class for friction.
+        /// </summary>
+        private class FrictionBuilder
+        {
+            public float FrictionValue { get; set; }
+        }
+
+        /// <summary>
+        ///     Helper implementation of IFriction.
+        /// </summary>
+        private class FrictionBuilderImpl : IFriction<FrictionBuilder, float>
+        {
+            private readonly FrictionBuilder _builder = new FrictionBuilder();
+
+            public FrictionBuilder Friction(float value)
+            {
+                _builder.FrictionValue = value;
+                return _builder;
+            }
+        }
     }
 }
-

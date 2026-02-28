@@ -83,8 +83,8 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
         public void Equals_ShouldReturnTrue_WhenComparingEqualRoomData()
         {
             // Arrange
-            RoomData roomData1 = new RoomData(10, 20, 5, 7, Direction.North, false);
-            RoomData roomData2 = new RoomData(10, 20, 5, 7, Direction.North, false);
+            RoomData roomData1 = new RoomData(10, 20, 5, 7, Direction.North);
+            RoomData roomData2 = new RoomData(10, 20, 5, 7, Direction.North);
 
             // Act
             bool result = roomData1.Equals(roomData2);
@@ -100,7 +100,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
         public void Equals_ShouldReturnFalse_WhenComparingDifferentRoomData()
         {
             // Arrange
-            RoomData roomData1 = new RoomData(10, 20, 5, 7, Direction.North, false);
+            RoomData roomData1 = new RoomData(10, 20, 5, 7, Direction.North);
             RoomData roomData2 = new RoomData(15, 25, 6, 8, Direction.South, true);
 
             // Act
@@ -117,8 +117,8 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
         public void EqualityOperator_ShouldReturnTrue_ForEqualRoomData()
         {
             // Arrange
-            RoomData roomData1 = new RoomData(10, 20, 5, 7, Direction.East, false);
-            RoomData roomData2 = new RoomData(10, 20, 5, 7, Direction.East, false);
+            RoomData roomData1 = new RoomData(10, 20, 5, 7, Direction.East);
+            RoomData roomData2 = new RoomData(10, 20, 5, 7, Direction.East);
 
             // Act
             bool result = roomData1 == roomData2;
@@ -134,8 +134,8 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
         public void InequalityOperator_ShouldReturnTrue_ForDifferentRoomData()
         {
             // Arrange
-            RoomData roomData1 = new RoomData(10, 20, 5, 7, Direction.West, false);
-            RoomData roomData2 = new RoomData(10, 20, 5, 7, Direction.East, false);
+            RoomData roomData1 = new RoomData(10, 20, 5, 7, Direction.West);
+            RoomData roomData2 = new RoomData(10, 20, 5, 7, Direction.East);
 
             // Act
             bool result = roomData1 != roomData2;
@@ -169,7 +169,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
         public void GetHashCode_ShouldReturnDifferentHash_ForDifferentRoomData()
         {
             // Arrange
-            RoomData roomData1 = new RoomData(10, 20, 5, 7, Direction.North, false);
+            RoomData roomData1 = new RoomData(10, 20, 5, 7, Direction.North);
             RoomData roomData2 = new RoomData(30, 40, 8, 9, Direction.South, true);
 
             // Act
@@ -187,7 +187,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
         public void Equals_ShouldReturnFalse_WhenComparingWithDifferentType()
         {
             // Arrange
-            RoomData roomData = new RoomData(10, 20, 5, 7, Direction.North, false);
+            RoomData roomData = new RoomData(10, 20, 5, 7, Direction.North);
             object other = "not a room";
 
             // Act
@@ -204,11 +204,11 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
         public void Struct_ShouldBeImmutable()
         {
             // Arrange
-            RoomData original = new RoomData(10, 20, 5, 7, Direction.North, false);
-            
+            RoomData original = new RoomData(10, 20, 5, 7, Direction.North);
+
             // Act - Cannot modify properties as they are readonly
             // This test verifies that the struct is properly designed as immutable
-            
+
             // Assert
             Assert.Equal(10, original.XPos);
             Assert.Equal(20, original.YPos);
@@ -217,4 +217,3 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
         }
     }
 }
-

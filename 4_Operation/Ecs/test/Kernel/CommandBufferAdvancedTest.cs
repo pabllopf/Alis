@@ -104,7 +104,7 @@ namespace Alis.Core.Ecs.Test.Kernel
             GameObject entity = scene.Create();
 
             // Act
-            entity.Add<Position>(new Position());
+            entity.Add(new Position());
 
             // Assert
             Assert.True(entity.Has<Position>());
@@ -126,10 +126,10 @@ namespace Alis.Core.Ecs.Test.Kernel
             // Arrange
             Scene scene = new Scene();
             GameObject e1 = scene.Create();
-            e1.Add<Position>(new Position());
+            e1.Add(new Position());
 
             // Act
-            e1.Add<Velocity>(new Velocity());
+            e1.Add(new Velocity());
             Query query = scene.Query<With<Position>>();
 
             int count = 0;
@@ -193,7 +193,7 @@ namespace Alis.Core.Ecs.Test.Kernel
             // Cleanup
             scene.Dispose();
         }
-        
+
 
         /// <summary>
         ///     Tests command buffer handles mixed operations
@@ -210,12 +210,12 @@ namespace Alis.Core.Ecs.Test.Kernel
 
             // Act
             GameObject e1 = scene.Create();
-            e1.Add<Position>(new Position());
+            e1.Add(new Position());
 
             GameObject e2 = scene.Create();
-            e2.Add<Health>(new Health());
+            e2.Add(new Health());
 
-            e1.Add<Velocity>(new Velocity());
+            e1.Add(new Velocity());
 
             // Assert
             Assert.True(e1.Has<Position>());
@@ -227,4 +227,3 @@ namespace Alis.Core.Ecs.Test.Kernel
         }
     }
 }
-

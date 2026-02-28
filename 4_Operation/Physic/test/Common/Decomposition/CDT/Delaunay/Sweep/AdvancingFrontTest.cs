@@ -48,9 +48,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             TriangulationPoint tailPoint = new TriangulationPoint(10, 0);
             AdvancingFrontNode head = new AdvancingFrontNode(headPoint);
             AdvancingFrontNode tail = new AdvancingFrontNode(tailPoint);
-            
+
             AdvancingFront front = new AdvancingFront(head, tail);
-            
+
             Assert.Equal(head, front.Head);
             Assert.Equal(tail, front.Tail);
         }
@@ -66,12 +66,12 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             AdvancingFrontNode head = new AdvancingFrontNode(headPoint);
             AdvancingFrontNode tail = new AdvancingFrontNode(tailPoint);
             AdvancingFront front = new AdvancingFront(head, tail);
-            
+
             TriangulationPoint newPoint = new TriangulationPoint(5, 5);
             AdvancingFrontNode newNode = new AdvancingFrontNode(newPoint);
-            
+
             front.AddNode(newNode);
-            
+
             Assert.NotNull(front);
         }
 
@@ -86,16 +86,16 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             AdvancingFrontNode head = new AdvancingFrontNode(headPoint);
             AdvancingFrontNode tail = new AdvancingFrontNode(tailPoint);
             AdvancingFront front = new AdvancingFront(head, tail);
-            
+
             TriangulationPoint newPoint = new TriangulationPoint(5, 5);
             AdvancingFrontNode newNode = new AdvancingFrontNode(newPoint);
             front.AddNode(newNode);
-            
+
             front.RemoveNode(newNode);
-            
+
             Assert.NotNull(front);
         }
-        
+
 
         /// <summary>
         ///     Tests that to string should return string representation
@@ -110,9 +110,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             head.Next = tail;
             tail.Prev = head;
             AdvancingFront front = new AdvancingFront(head, tail);
-            
+
             string result = front.ToString();
-            
+
             Assert.NotNull(result);
             Assert.Contains("0", result);
             Assert.Contains("10", result);
@@ -130,7 +130,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             AdvancingFrontNode tail = new AdvancingFrontNode(tailPoint);
             AdvancingFront front1 = new AdvancingFront(head, tail);
             AdvancingFront front2 = front1;
-            
+
             Assert.Same(front1, front2);
         }
 
@@ -145,9 +145,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             AdvancingFrontNode head = new AdvancingFrontNode(headPoint);
             AdvancingFrontNode tail = new AdvancingFrontNode(tailPoint);
             AdvancingFront front = new AdvancingFront(head, tail);
-            
+
             AdvancingFrontNode headNode = front.Head;
-            
+
             Assert.Equal(head, headNode);
         }
 
@@ -162,9 +162,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             AdvancingFrontNode head = new AdvancingFrontNode(headPoint);
             AdvancingFrontNode tail = new AdvancingFrontNode(tailPoint);
             AdvancingFront front = new AdvancingFront(head, tail);
-            
+
             AdvancingFrontNode tailNode = front.Tail;
-            
+
             Assert.Equal(tail, tailNode);
         }
 
@@ -178,19 +178,16 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             TriangulationPoint tailPoint1 = new TriangulationPoint(10, 0);
             AdvancingFrontNode head1 = new AdvancingFrontNode(headPoint1);
             AdvancingFrontNode tail1 = new AdvancingFrontNode(tailPoint1);
-            
+
             TriangulationPoint headPoint2 = new TriangulationPoint(5, 5);
             TriangulationPoint tailPoint2 = new TriangulationPoint(15, 5);
             AdvancingFrontNode head2 = new AdvancingFrontNode(headPoint2);
             AdvancingFrontNode tail2 = new AdvancingFrontNode(tailPoint2);
-            
+
             AdvancingFront front1 = new AdvancingFront(head1, tail1);
             AdvancingFront front2 = new AdvancingFront(head2, tail2);
-            
+
             Assert.NotSame(front1, front2);
         }
-
-
     }
 }
-

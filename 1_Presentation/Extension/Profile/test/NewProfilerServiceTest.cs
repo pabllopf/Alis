@@ -29,7 +29,6 @@
 
 using System;
 using Alis.Extension.Profile.Factories;
-using Alis.Extension.Profile.Interfaces;
 using Alis.Extension.Profile.Models;
 using Alis.Extension.Profile.Test.Mocks;
 using Xunit;
@@ -256,7 +255,7 @@ namespace Alis.Extension.Profile.Test
             Assert.True(mockMonitor.GetMemoryUsageCalled);
             Assert.NotEqual(DateTime.MinValue, snapshot.EndTime);
         }
-        
+
 
         /// <summary>
         ///     Tests that is active reflects time tracker state
@@ -281,4 +280,3 @@ namespace Alis.Extension.Profile.Test
         }
     }
 }
-

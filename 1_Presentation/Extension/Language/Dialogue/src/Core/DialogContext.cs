@@ -111,7 +111,7 @@ namespace Alis.Extension.Language.Dialogue.Core
         public T GetVariable<T>(string key)
         {
             object value = GetVariable(key);
-            return value is T typedValue ? typedValue : default;
+            return value is T typedValue ? typedValue : default(T);
         }
 
         /// <summary>
@@ -149,10 +149,7 @@ namespace Alis.Extension.Language.Dialogue.Core
         ///     Gets the last visited dialog, if available
         /// </summary>
         /// <returns>The last visited dialog id or null if no dialogs have been visited</returns>
-        public string GetLastVisitedDialog()
-        {
-            return VisitedDialogs.Count > 0 ? VisitedDialogs.Peek() : null;
-        }
+        public string GetLastVisitedDialog() => VisitedDialogs.Count > 0 ? VisitedDialogs.Peek() : null;
 
         /// <summary>
         ///     Clears the dialog context
@@ -165,4 +162,3 @@ namespace Alis.Extension.Language.Dialogue.Core
         }
     }
 }
-

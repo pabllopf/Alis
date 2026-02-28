@@ -45,7 +45,7 @@ namespace Alis.Core.Audio.Test.Players.Attributes
         /// </summary>
         public BrowserOnlyAttribute()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Create("WEBASSEMBLY")) && 
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Create("WEBASSEMBLY")) &&
                 !RuntimeInformation.IsOSPlatform(OSPlatform.Create("BROWSER")))
             {
                 Skip = "Only running in browser/webassembly mode";
@@ -53,4 +53,3 @@ namespace Alis.Core.Audio.Test.Players.Attributes
         }
     }
 }
-

@@ -97,10 +97,7 @@ namespace Alis.Extension.Language.Dialogue.Core
         ///     Gets the number of subscribed observers
         /// </summary>
         /// <returns>The count of observers</returns>
-        public int GetObserverCount()
-        {
-            return _observers.Count;
-        }
+        public int GetObserverCount() => _observers.Count;
 
         /// <summary>
         ///     Clears all subscribed observers
@@ -111,4 +108,3 @@ namespace Alis.Extension.Language.Dialogue.Core
         }
     }
 }
-

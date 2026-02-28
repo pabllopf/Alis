@@ -76,7 +76,7 @@ namespace Alis.Extension.Thread.Test
             TestComponent[] components = new TestComponent[500];
             for (int i = 0; i < components.Length; i++)
             {
-                components[i] = new TestComponent { X = i, Y = i * 2 };
+                components[i] = new TestComponent {X = i, Y = i * 2};
             }
 
             Span<TestComponent> span = components.AsSpan();
@@ -108,7 +108,7 @@ namespace Alis.Extension.Thread.Test
             ComponentUpdateParallelizer parallelizer = new ComponentUpdateParallelizer(executor);
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>(() => 
+            Assert.Throws<ArgumentNullException>(() =>
                 parallelizer.ExecuteRangeUpdate<TestComponent>(100, null));
         }
 
@@ -168,7 +168,7 @@ namespace Alis.Extension.Thread.Test
                 {
                     data[i] = i * 3;
                 }
-            }, forceParallel: true, minBatchSize: 64);
+            }, true, 64);
 
             // Assert
             for (int i = 0; i < data.Length; i++)
@@ -197,7 +197,7 @@ namespace Alis.Extension.Thread.Test
                 {
                     data[i] = i + 5;
                 }
-            }, forceParallel: false);
+            }, false);
 
             // Assert
             for (int i = 0; i < data.Length; i++)
@@ -223,14 +223,10 @@ namespace Alis.Extension.Thread.Test
             int executionCount = 0;
 
             // Act
-            parallelizer.ExecuteComponentUpdate(span, index =>
-            {
-                executionCount++;
-            });
+            parallelizer.ExecuteComponentUpdate(span, index => { executionCount++; });
 
             // Assert
             Assert.Equal(0, executionCount);
         }
     }
 }
-

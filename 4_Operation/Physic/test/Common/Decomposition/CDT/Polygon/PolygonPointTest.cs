@@ -46,9 +46,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Polygon
         {
             double x = 5.0;
             double y = 10.0;
-            
+
             PolygonPoint point = new PolygonPoint(x, y);
-            
+
             Assert.Equal(x, point.X);
             Assert.Equal(y, point.Y);
             Assert.Null(point.Next);
@@ -62,7 +62,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Polygon
         public void PolygonPoint_ShouldInheritFromTriangulationPoint()
         {
             PolygonPoint point = new PolygonPoint(0, 0);
-            
+
             Assert.IsAssignableFrom<TriangulationPoint>(point);
         }
 
@@ -74,9 +74,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Polygon
         {
             PolygonPoint point1 = new PolygonPoint(0, 0);
             PolygonPoint point2 = new PolygonPoint(5, 5);
-            
+
             point1.Next = point2;
-            
+
             Assert.Equal(point2, point1.Next);
         }
 
@@ -88,9 +88,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Polygon
         {
             PolygonPoint point1 = new PolygonPoint(0, 0);
             PolygonPoint point2 = new PolygonPoint(5, 5);
-            
+
             point2.Previous = point1;
-            
+
             Assert.Equal(point1, point2.Previous);
         }
 
@@ -103,12 +103,12 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Polygon
             PolygonPoint point1 = new PolygonPoint(0, 0);
             PolygonPoint point2 = new PolygonPoint(5, 5);
             PolygonPoint point3 = new PolygonPoint(10, 10);
-            
+
             point1.Next = point2;
             point2.Previous = point1;
             point2.Next = point3;
             point3.Previous = point2;
-            
+
             Assert.Equal(point2, point1.Next);
             Assert.Equal(point1, point2.Previous);
             Assert.Equal(point3, point2.Next);
@@ -122,7 +122,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Polygon
         public void PolygonPoint_ShouldHandleNegativeCoordinates()
         {
             PolygonPoint point = new PolygonPoint(-10.5, -20.5);
-            
+
             Assert.Equal(-10.5, point.X);
             Assert.Equal(-20.5, point.Y);
         }
@@ -134,7 +134,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Polygon
         public void PolygonPoint_ShouldHandleZeroCoordinates()
         {
             PolygonPoint point = new PolygonPoint(0, 0);
-            
+
             Assert.Equal(0, point.X);
             Assert.Equal(0, point.Y);
         }
@@ -147,12 +147,12 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Polygon
         {
             PolygonPoint point1 = new PolygonPoint(0, 0);
             PolygonPoint point2 = new PolygonPoint(5, 5);
-            
+
             point1.Next = point2;
             point2.Next = point1;
             point1.Previous = point2;
             point2.Previous = point1;
-            
+
             Assert.Equal(point2, point1.Next);
             Assert.Equal(point1, point2.Next);
         }
@@ -165,9 +165,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Polygon
         {
             PolygonPoint point = new PolygonPoint(5, 5);
             point.Next = new PolygonPoint(10, 10);
-            
+
             point.Next = null;
-            
+
             Assert.Null(point.Next);
         }
 
@@ -179,9 +179,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Polygon
         {
             PolygonPoint point = new PolygonPoint(5, 5);
             point.Previous = new PolygonPoint(0, 0);
-            
+
             point.Previous = null;
-            
+
             Assert.Null(point.Previous);
         }
 
@@ -192,10 +192,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Polygon
         public void PolygonPoint_ShouldSupportLargeCoordinateValues()
         {
             PolygonPoint point = new PolygonPoint(100000.0, 200000.0);
-            
+
             Assert.Equal(100000.0, point.X);
             Assert.Equal(200000.0, point.Y);
         }
     }
 }
-

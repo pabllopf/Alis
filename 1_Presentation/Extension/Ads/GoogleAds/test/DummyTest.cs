@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AdsManagerTest.cs
+//  File:DummyTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,9 +29,9 @@
 
 using System;
 using System.Threading.Tasks;
+using Alis.Core.Ecs.Systems.Scope;
 using Moq;
 using Xunit;
-using Alis.Core.Ecs.Systems.Scope;
 
 namespace Alis.Extension.Ads.GoogleAds.Test
 {
@@ -105,7 +105,7 @@ namespace Alis.Extension.Ads.GoogleAds.Test
             await manager.InitializeAsync(config);
 
             bool eventTriggered = false;
-            manager.OnBannerAdLoaded += (unitId) => { eventTriggered = true; };
+            manager.OnBannerAdLoaded += unitId => { eventTriggered = true; };
 
             // Act
             await manager.LoadBannerAdAsync("banner-id");
@@ -183,7 +183,7 @@ namespace Alis.Extension.Ads.GoogleAds.Test
             await manager.InitializeAsync(config);
 
             bool eventTriggered = false;
-            manager.OnInterstitialAdLoaded += (unitId) => { eventTriggered = true; };
+            manager.OnInterstitialAdLoaded += unitId => { eventTriggered = true; };
 
             // Act
             await manager.LoadInterstitialAdAsync("interstitial-id");
@@ -207,7 +207,7 @@ namespace Alis.Extension.Ads.GoogleAds.Test
             await manager.LoadInterstitialAdAsync("interstitial-id");
 
             bool clickEventTriggered = false;
-            manager.OnAdClicked += (adType) => { clickEventTriggered = true; };
+            manager.OnAdClicked += adType => { clickEventTriggered = true; };
 
             // Act
             manager.ShowInterstitialAd();
@@ -230,7 +230,7 @@ namespace Alis.Extension.Ads.GoogleAds.Test
             await manager.InitializeAsync(config);
 
             bool eventTriggered = false;
-            manager.OnRewardedVideoAdLoaded += (unitId) => { eventTriggered = true; };
+            manager.OnRewardedVideoAdLoaded += unitId => { eventTriggered = true; };
 
             // Act
             await manager.LoadRewardedVideoAdAsync("rewarded-id");
@@ -255,7 +255,7 @@ namespace Alis.Extension.Ads.GoogleAds.Test
 
             bool rewardEventTriggered = false;
             AdRewardEventArgs rewardArgs = null;
-            manager.OnAdRewarded += (args) =>
+            manager.OnAdRewarded += args =>
             {
                 rewardEventTriggered = true;
                 rewardArgs = args;
@@ -306,7 +306,7 @@ namespace Alis.Extension.Ads.GoogleAds.Test
             await manager.InitializeAsync(config);
 
             bool failureEventTriggered = false;
-            manager.OnBannerAdFailedToLoad += (unitId) => { failureEventTriggered = true; };
+            manager.OnBannerAdFailedToLoad += unitId => { failureEventTriggered = true; };
 
             // Act
             await manager.LoadBannerAdAsync("banner-id");
@@ -354,8 +354,8 @@ namespace Alis.Extension.Ads.GoogleAds.Test
             bool subscriber1Triggered = false;
             bool subscriber2Triggered = false;
 
-            manager.OnBannerAdLoaded += (unitId) => { subscriber1Triggered = true; };
-            manager.OnBannerAdLoaded += (unitId) => { subscriber2Triggered = true; };
+            manager.OnBannerAdLoaded += unitId => { subscriber1Triggered = true; };
+            manager.OnBannerAdLoaded += unitId => { subscriber2Triggered = true; };
 
             // Act
             await manager.LoadBannerAdAsync("banner-id");

@@ -27,9 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Xunit;
-using Alis.Extension.Graphic.Sdl2.Structs;
 using System;
+using Alis.Extension.Graphic.Sdl2.Structs;
+using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
@@ -79,16 +79,11 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests AudioSpec with various frequency values.
         /// </summary>
-        [Theory]
-        [InlineData(8000)]
-        [InlineData(16000)]
-        [InlineData(22050)]
-        [InlineData(44100)]
-        [InlineData(48000)]
+        [Theory, InlineData(8000), InlineData(16000), InlineData(22050), InlineData(44100), InlineData(48000)]
         public void AudioSpec_WithDifferentFrequencies_StoresValueCorrectly(int frequency)
         {
             // Arrange & Act
-            AudioSpec audioSpec = new AudioSpec { Freq = frequency };
+            AudioSpec audioSpec = new AudioSpec {Freq = frequency};
 
             // Assert
             Assert.Equal(frequency, audioSpec.Freq);
@@ -97,14 +92,11 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests AudioSpec with various channel counts.
         /// </summary>
-        [Theory]
-        [InlineData(1)]
-        [InlineData(2)]
-        [InlineData(6)]
+        [Theory, InlineData(1), InlineData(2), InlineData(6)]
         public void AudioSpec_WithDifferentChannels_StoresValueCorrectly(byte channels)
         {
             // Arrange & Act
-            AudioSpec audioSpec = new AudioSpec { Channels = channels };
+            AudioSpec audioSpec = new AudioSpec {Channels = channels};
 
             // Assert
             Assert.Equal(channels, audioSpec.Channels);
@@ -117,7 +109,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         public void AudioSpec_WithDifferentFormats_StoresFormatCorrectly()
         {
             // Arrange & Act
-            AudioSpec audioSpec = new AudioSpec { Format = Sdl.AudioF32Lsb };
+            AudioSpec audioSpec = new AudioSpec {Format = Sdl.AudioF32Lsb};
 
             // Assert
             Assert.Equal(Sdl.AudioF32Lsb, audioSpec.Format);
@@ -147,7 +139,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         public void AudioSpec_IsValueType_CanBeCopied()
         {
             // Arrange
-            AudioSpec original = new AudioSpec { Freq = 44100, Channels = 2 };
+            AudioSpec original = new AudioSpec {Freq = 44100, Channels = 2};
 
             // Act
             AudioSpec copy = original;
@@ -164,7 +156,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         public void AudioSpec_CopyIsIndependent_ModifyingCopyDoesNotAffectOriginal()
         {
             // Arrange
-            AudioSpec original = new AudioSpec { Freq = 44100, Channels = 2 };
+            AudioSpec original = new AudioSpec {Freq = 44100, Channels = 2};
             AudioSpec copy = original;
 
             // Act
@@ -176,4 +168,3 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         }
     }
 }
-

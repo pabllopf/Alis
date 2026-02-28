@@ -110,7 +110,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
         public void Constructor_ShouldValidateConfiguration()
         {
             // Arrange
-            DungeonConfiguration config = new DungeonConfiguration { BoardWidth = -1 };
+            DungeonConfiguration config = new DungeonConfiguration {BoardWidth = -1};
             MockRandomNumberGenerator mockRng = new MockRandomNumberGenerator();
             RoomFactory roomFactory = new RoomFactory();
             CorridorFactory corridorFactory = new CorridorFactory(mockRng);
@@ -128,7 +128,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
         {
             // Arrange
             DungeonConfiguration config = new DungeonConfiguration();
-            MockRandomNumberGenerator mockRng = new MockRandomNumberGenerator(1);
+            MockRandomNumberGenerator mockRng = new MockRandomNumberGenerator();
             RoomFactory roomFactory = new RoomFactory();
             CorridorFactory corridorFactory = new CorridorFactory(mockRng);
             BoardBuilder boardBuilder = new BoardBuilder();
@@ -151,8 +151,8 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
         public void Generate_ShouldCreateCorrectNumberOfRooms()
         {
             // Arrange
-            DungeonConfiguration config = new DungeonConfiguration { NumberOfRooms = 5 };
-            MockRandomNumberGenerator mockRng = new MockRandomNumberGenerator(1);
+            DungeonConfiguration config = new DungeonConfiguration {NumberOfRooms = 5};
+            MockRandomNumberGenerator mockRng = new MockRandomNumberGenerator();
             RoomFactory roomFactory = new RoomFactory();
             CorridorFactory corridorFactory = new CorridorFactory(mockRng);
             BoardBuilder boardBuilder = new BoardBuilder();
@@ -177,7 +177,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
                 BoardWidth = 100,
                 BoardHeight = 120
             };
-            MockRandomNumberGenerator mockRng = new MockRandomNumberGenerator(1);
+            MockRandomNumberGenerator mockRng = new MockRandomNumberGenerator();
             RoomFactory roomFactory = new RoomFactory();
             CorridorFactory corridorFactory = new CorridorFactory(mockRng);
             BoardBuilder boardBuilder = new BoardBuilder();
@@ -205,7 +205,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
                 FirstRoomWidth = 8,
                 FirstRoomHeight = 8
             };
-            MockRandomNumberGenerator mockRng = new MockRandomNumberGenerator(1);
+            MockRandomNumberGenerator mockRng = new MockRandomNumberGenerator();
             RoomFactory roomFactory = new RoomFactory();
             CorridorFactory corridorFactory = new CorridorFactory(mockRng);
             BoardBuilder boardBuilder = new BoardBuilder();
@@ -227,8 +227,8 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
         public void Generate_ShouldCreateBossRoomAsLastRoom()
         {
             // Arrange
-            DungeonConfiguration config = new DungeonConfiguration { NumberOfRooms = 4 };
-            MockRandomNumberGenerator mockRng = new MockRandomNumberGenerator(1);
+            DungeonConfiguration config = new DungeonConfiguration {NumberOfRooms = 4};
+            MockRandomNumberGenerator mockRng = new MockRandomNumberGenerator();
             RoomFactory roomFactory = new RoomFactory();
             CorridorFactory corridorFactory = new CorridorFactory(mockRng);
             BoardBuilder boardBuilder = new BoardBuilder();
@@ -250,7 +250,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
         {
             // Arrange
             DungeonConfiguration config = new DungeonConfiguration();
-            MockRandomNumberGenerator mockRng = new MockRandomNumberGenerator(1);
+            MockRandomNumberGenerator mockRng = new MockRandomNumberGenerator();
             RoomFactory roomFactory = new RoomFactory();
             CorridorFactory corridorFactory = new CorridorFactory(mockRng);
             BoardBuilder boardBuilder = new BoardBuilder();
@@ -261,9 +261,9 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
 
             // Assert - Check that some floor squares exist
             bool hasFloorSquares = false;
-            for (int x = 0; x < dungeon.Width && !hasFloorSquares; x++)
+            for (int x = 0; (x < dungeon.Width) && !hasFloorSquares; x++)
             {
-                for (int y = 0; y < dungeon.Height && !hasFloorSquares; y++)
+                for (int y = 0; (y < dungeon.Height) && !hasFloorSquares; y++)
                 {
                     if (dungeon.Board[x, y].Type == BoardSquareType.Floor)
                     {
@@ -271,6 +271,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
                     }
                 }
             }
+
             Assert.True(hasFloorSquares);
         }
 
@@ -282,7 +283,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
         {
             // Arrange
             DungeonConfiguration config = new DungeonConfiguration();
-            MockRandomNumberGenerator mockRng = new MockRandomNumberGenerator(1);
+            MockRandomNumberGenerator mockRng = new MockRandomNumberGenerator();
             RoomFactory roomFactory = new RoomFactory();
             CorridorFactory corridorFactory = new CorridorFactory(mockRng);
             BoardBuilder boardBuilder = new BoardBuilder();
@@ -293,17 +294,18 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
 
             // Assert - Check that wall types exist
             bool hasWalls = false;
-            for (int x = 0; x < dungeon.Width && !hasWalls; x++)
+            for (int x = 0; (x < dungeon.Width) && !hasWalls; x++)
             {
-                for (int y = 0; y < dungeon.Height && !hasWalls; y++)
+                for (int y = 0; (y < dungeon.Height) && !hasWalls; y++)
                 {
                     BoardSquareType type = dungeon.Board[x, y].Type;
-                    if (type != BoardSquareType.Empty && type != BoardSquareType.Floor)
+                    if ((type != BoardSquareType.Empty) && (type != BoardSquareType.Floor))
                     {
                         hasWalls = true;
                     }
                 }
             }
+
             Assert.True(hasWalls);
         }
 
@@ -315,14 +317,14 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
         {
             // Arrange
             DungeonConfiguration config = new DungeonConfiguration();
-            MockRandomNumberGenerator mockRng1 = new MockRandomNumberGenerator(1);
+            MockRandomNumberGenerator mockRng1 = new MockRandomNumberGenerator();
             MockRandomNumberGenerator mockRng2 = new MockRandomNumberGenerator(2);
-            
+
             RoomFactory roomFactory = new RoomFactory();
             CorridorFactory corridorFactory1 = new CorridorFactory(mockRng1);
             CorridorFactory corridorFactory2 = new CorridorFactory(mockRng2);
             BoardBuilder boardBuilder = new BoardBuilder();
-            
+
             DungeonGenerator generator1 = new DungeonGenerator(config, roomFactory, corridorFactory1, boardBuilder);
             DungeonGenerator generator2 = new DungeonGenerator(config, roomFactory, corridorFactory2, boardBuilder);
 
@@ -340,8 +342,8 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
                     break;
                 }
             }
+
             Assert.True(hasDifference);
         }
     }
 }
-

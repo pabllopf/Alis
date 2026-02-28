@@ -28,108 +28,108 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Xunit;
 using Alis.Core.Graphic.OpenGL.Enums;
+using Xunit;
 
 namespace Alis.Core.Graphic.Test.Enums
 {
     /// <summary>
-    /// Tests for the BufferTarget enum validating buffer binding target types.
+    ///     Tests for the BufferTarget enum validating buffer binding target types.
     /// </summary>
     public class BufferTargetTest
     {
         /// <summary>
-        /// Tests that ArrayBuffer has correct value.
+        ///     Tests that ArrayBuffer has correct value.
         /// </summary>
         [Fact]
         public void ArrayBuffer_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x8892, (int)BufferTarget.ArrayBuffer);
+            Assert.Equal(0x8892, (int) BufferTarget.ArrayBuffer);
         }
 
         /// <summary>
-        /// Tests that ElementArrayBuffer has correct value.
+        ///     Tests that ElementArrayBuffer has correct value.
         /// </summary>
         [Fact]
         public void ElementArrayBuffer_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x8893, (int)BufferTarget.ElementArrayBuffer);
+            Assert.Equal(0x8893, (int) BufferTarget.ElementArrayBuffer);
         }
 
         /// <summary>
-        /// Tests that PackBuffer has correct value.
+        ///     Tests that PackBuffer has correct value.
         /// </summary>
         [Fact]
         public void PackBuffer_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x88EB, (int)BufferTarget.PackBuffer);
+            Assert.Equal(0x88EB, (int) BufferTarget.PackBuffer);
         }
 
         /// <summary>
-        /// Tests that UnpackBuffer has correct value.
+        ///     Tests that UnpackBuffer has correct value.
         /// </summary>
         [Fact]
         public void UnpackBuffer_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x88EC, (int)BufferTarget.UnpackBuffer);
+            Assert.Equal(0x88EC, (int) BufferTarget.UnpackBuffer);
         }
 
         /// <summary>
-        /// Tests that UniformBuffer has correct value.
+        ///     Tests that UniformBuffer has correct value.
         /// </summary>
         [Fact]
         public void UniformBuffer_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x8A11, (int)BufferTarget.UniformBuffer);
+            Assert.Equal(0x8A11, (int) BufferTarget.UniformBuffer);
         }
 
         /// <summary>
-        /// Tests that TextureBuffer has correct value.
+        ///     Tests that TextureBuffer has correct value.
         /// </summary>
         [Fact]
         public void TextureBuffer_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x8C2A, (int)BufferTarget.TextureBuffer);
+            Assert.Equal(0x8C2A, (int) BufferTarget.TextureBuffer);
         }
 
         /// <summary>
-        /// Tests that TransformFeedbackBuffer has correct value.
+        ///     Tests that TransformFeedbackBuffer has correct value.
         /// </summary>
         [Fact]
         public void TransformFeedbackBuffer_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x8C8E, (int)BufferTarget.TransformFeedbackBuffer);
+            Assert.Equal(0x8C8E, (int) BufferTarget.TransformFeedbackBuffer);
         }
 
         /// <summary>
-        /// Tests that CopyReadBuffer has correct value.
+        ///     Tests that CopyReadBuffer has correct value.
         /// </summary>
         [Fact]
         public void CopyReadBuffer_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x8F36, (int)BufferTarget.CopyReadBuffer);
+            Assert.Equal(0x8F36, (int) BufferTarget.CopyReadBuffer);
         }
 
         /// <summary>
-        /// Tests that CopyWriteBuffer has correct value.
+        ///     Tests that CopyWriteBuffer has correct value.
         /// </summary>
         [Fact]
         public void CopyWriteBuffer_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x8F37, (int)BufferTarget.CopyWriteBuffer);
+            Assert.Equal(0x8F37, (int) BufferTarget.CopyWriteBuffer);
         }
 
         /// <summary>
-        /// Tests that DrawIndirectBuffer has correct value.
+        ///     Tests that DrawIndirectBuffer has correct value.
         /// </summary>
         [Fact]
         public void DrawIndirectBuffer_HasCorrectValue_EqualsExpected()
         {
-            Assert.Equal(0x8F3F, (int)BufferTarget.DrawIndirectBuffer);
+            Assert.Equal(0x8F3F, (int) BufferTarget.DrawIndirectBuffer);
         }
 
         /// <summary>
-        /// Tests that BufferTarget is an enum type.
+        ///     Tests that BufferTarget is an enum type.
         /// </summary>
         [Fact]
         public void BufferTarget_IsEnum_TypeIsCorrect()
@@ -138,7 +138,7 @@ namespace Alis.Core.Graphic.Test.Enums
         }
 
         /// <summary>
-        /// Tests that BufferTarget enum is public.
+        ///     Tests that BufferTarget enum is public.
         /// </summary>
         [Fact]
         public void BufferTarget_IsPublic_CanBeAccessed()
@@ -147,28 +147,28 @@ namespace Alis.Core.Graphic.Test.Enums
         }
 
         /// <summary>
-        /// Tests that BufferTarget has multiple defined values.
+        ///     Tests that BufferTarget has multiple defined values.
         /// </summary>
         [Fact]
         public void BufferTarget_HasMultipleValues_CountIsNotZero()
         {
-            Array enumValues = System.Enum.GetValues(typeof(BufferTarget));
+            Array enumValues = Enum.GetValues(typeof(BufferTarget));
             Assert.NotEmpty(enumValues);
             Assert.True(enumValues.Length > 5);
         }
 
         /// <summary>
-        /// Tests that BufferTarget can be cast to int.
+        ///     Tests that BufferTarget can be cast to int.
         /// </summary>
         [Fact]
         public void BufferTarget_CanCastToInt_ConversionIsValid()
         {
-            int value = (int)BufferTarget.ArrayBuffer;
+            int value = (int) BufferTarget.ArrayBuffer;
             Assert.IsType<int>(value);
         }
 
         /// <summary>
-        /// Tests that BufferTarget values can be compared.
+        ///     Tests that BufferTarget values can be compared.
         /// </summary>
         [Fact]
         public void BufferTarget_CanCompareValues_EqualityWorks()
@@ -179,7 +179,7 @@ namespace Alis.Core.Graphic.Test.Enums
         }
 
         /// <summary>
-        /// Tests that different BufferTarget values are not equal.
+        ///     Tests that different BufferTarget values are not equal.
         /// </summary>
         [Fact]
         public void BufferTarget_DifferentValues_AreNotEqual()
@@ -188,7 +188,7 @@ namespace Alis.Core.Graphic.Test.Enums
         }
 
         /// <summary>
-        /// Tests that BufferTarget contains common buffer targets.
+        ///     Tests that BufferTarget contains common buffer targets.
         /// </summary>
         [Fact]
         public void BufferTarget_ContainsCommonTargets_AllPresent()
@@ -203,4 +203,3 @@ namespace Alis.Core.Graphic.Test.Enums
         }
     }
 }
-

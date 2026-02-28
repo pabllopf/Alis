@@ -54,9 +54,9 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 1 });
-            scene.Create(new Position { X = 2, Y = 2 });
-            scene.Create(new Velocity { VX = 1, VY = 1 }); // Should not match
+            scene.Create(new Position {X = 1, Y = 1});
+            scene.Create(new Position {X = 2, Y = 2});
+            scene.Create(new Velocity {VX = 1, VY = 1}); // Should not match
 
             // Act
             Query query = scene.Query<With<Position>>();
@@ -81,9 +81,9 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 1 }, new Velocity { VX = 1, VY = 1 });
-            scene.Create(new Position { X = 2, Y = 2 }); // Missing Velocity
-            scene.Create(new Velocity { VX = 2, VY = 2 }); // Missing Position
+            scene.Create(new Position {X = 1, Y = 1}, new Velocity {VX = 1, VY = 1});
+            scene.Create(new Position {X = 2, Y = 2}); // Missing Velocity
+            scene.Create(new Velocity {VX = 2, VY = 2}); // Missing Position
 
             // Act
             Query query = scene.Query<With<Position>, With<Velocity>>();
@@ -108,8 +108,8 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 1 }, new Velocity { VX = 1, VY = 1 }, new Health { Value = 100 });
-            scene.Create(new Position { X = 2, Y = 2 }, new Velocity { VX = 2, VY = 2 }); // Missing Health
+            scene.Create(new Position {X = 1, Y = 1}, new Velocity {VX = 1, VY = 1}, new Health {Value = 100});
+            scene.Create(new Position {X = 2, Y = 2}, new Velocity {VX = 2, VY = 2}); // Missing Health
 
             // Act
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>>();
@@ -135,12 +135,12 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             using Scene scene = new Scene();
             scene.Create(
-                new Position { X = 1, Y = 1 },
-                new Velocity { VX = 1, VY = 1 },
-                new Health { Value = 100 },
-                new Transform { X = 0, Y = 0, Rotation = 0 }
+                new Position {X = 1, Y = 1},
+                new Velocity {VX = 1, VY = 1},
+                new Health {Value = 100},
+                new Transform {X = 0, Y = 0, Rotation = 0}
             );
-            scene.Create(new Position { X = 2, Y = 2 }, new Velocity { VX = 2, VY = 2 }, new Health { Value = 50 }); // Missing Transform
+            scene.Create(new Position {X = 2, Y = 2}, new Velocity {VX = 2, VY = 2}, new Health {Value = 50}); // Missing Transform
 
             // Act
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>>();
@@ -313,8 +313,8 @@ namespace Alis.Core.Ecs.Test
             Query query = scene.Query<With<Position>>();
 
             // Act - Create query before entities exist
-            scene.Create(new Position { X = 1, Y = 1 });
-            scene.Create(new Position { X = 2, Y = 2 });
+            scene.Create(new Position {X = 1, Y = 1});
+            scene.Create(new Position {X = 2, Y = 2});
 
             int count = 0;
             foreach (RefTuple<Position> _ in query.Enumerate<Position>())
@@ -337,8 +337,8 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(new Position { X = 1, Y = 1 });
-            GameObject entity2 = scene.Create(new Position { X = 2, Y = 2 });
+            GameObject entity1 = scene.Create(new Position {X = 1, Y = 1});
+            GameObject entity2 = scene.Create(new Position {X = 2, Y = 2});
             Query query = scene.Query<With<Position>>();
 
             // Act
@@ -365,9 +365,9 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 1 });
-            scene.Create(new Velocity { VX = 1, VY = 1 });
-            scene.Create(new Position { X = 2, Y = 2 }, new Velocity { VX = 2, VY = 2 });
+            scene.Create(new Position {X = 1, Y = 1});
+            scene.Create(new Velocity {VX = 1, VY = 1});
+            scene.Create(new Position {X = 2, Y = 2}, new Velocity {VX = 2, VY = 2});
 
             // Act
             Query posQuery = scene.Query<With<Position>>();
@@ -429,7 +429,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 1 }, new Velocity { VX = 1, VY = 1 }, new Health { Value = 100 });
+            scene.Create(new Position {X = 1, Y = 1}, new Velocity {VX = 1, VY = 1}, new Health {Value = 100});
 
             // Act - Query for subset of components
             Query query = scene.Query<With<Position>, With<Velocity>>();
@@ -455,9 +455,9 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             using Scene scene1 = new Scene();
             using Scene scene2 = new Scene();
-            scene1.Create(new Position { X = 1, Y = 1 });
-            scene2.Create(new Position { X = 2, Y = 2 });
-            scene2.Create(new Position { X = 3, Y = 3 });
+            scene1.Create(new Position {X = 1, Y = 1});
+            scene2.Create(new Position {X = 2, Y = 2});
+            scene2.Create(new Position {X = 3, Y = 3});
 
             // Act
             Query query1 = scene1.Query<With<Position>>();
@@ -492,11 +492,11 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             using Scene scene = new Scene();
             scene.Create(
-                new Position { X = 1, Y = 1 },
-                new Velocity { VX = 1, VY = 1 },
-                new Health { Value = 100 },
-                new Transform { X = 0, Y = 0, Rotation = 0 },
-                new TestComponent { Value = 1, Name = "Test" }
+                new Position {X = 1, Y = 1},
+                new Velocity {VX = 1, VY = 1},
+                new Health {Value = 100},
+                new Transform {X = 0, Y = 0, Rotation = 0},
+                new TestComponent {Value = 1, Name = "Test"}
             );
 
             // Act
@@ -523,12 +523,12 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             using Scene scene = new Scene();
             scene.Create(
-                new Position { X = 1, Y = 1 },
-                new Velocity { VX = 1, VY = 1 },
-                new Health { Value = 100 },
-                new Transform { X = 0, Y = 0, Rotation = 0 },
-                new TestComponent { Value = 1, Name = "Test" },
-                new AnotherComponent { X = 1, Y = 1 }
+                new Position {X = 1, Y = 1},
+                new Velocity {VX = 1, VY = 1},
+                new Health {Value = 100},
+                new Transform {X = 0, Y = 0, Rotation = 0},
+                new TestComponent {Value = 1, Name = "Test"},
+                new AnotherComponent {X = 1, Y = 1}
             );
 
             // Act
@@ -554,10 +554,10 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(new Position { X = 1, Y = 1 }, new Velocity { VX = 1, VY = 1 });
+            GameObject entity1 = scene.Create(new Position {X = 1, Y = 1}, new Velocity {VX = 1, VY = 1});
             entity1.Tag<PlayerTag>();
 
-            GameObject entity2 = scene.Create(new Position { X = 2, Y = 2 }, new Velocity { VX = 2, VY = 2 });
+            GameObject entity2 = scene.Create(new Position {X = 2, Y = 2}, new Velocity {VX = 2, VY = 2});
 
             // Act - Query for Position, Velocity with PlayerTag
             Query query = scene.Query<With<Position>, With<Velocity>, Tagged<PlayerTag>>();
@@ -582,8 +582,8 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 1 }, new Velocity { VX = 1, VY = 1 });
-            scene.Create(new Position { X = 2, Y = 2 }); // No Velocity
+            scene.Create(new Position {X = 1, Y = 1}, new Velocity {VX = 1, VY = 1});
+            scene.Create(new Position {X = 2, Y = 2}); // No Velocity
 
             // Act - Query for Position but NOT Velocity
             Query query = scene.Query<With<Position>, Not<Velocity>>();
@@ -608,8 +608,8 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 1 });
-            GameObject disabled = scene.Create(new Position { X = 2, Y = 2 });
+            scene.Create(new Position {X = 1, Y = 1});
+            GameObject disabled = scene.Create(new Position {X = 2, Y = 2});
             disabled.Tag<Disable>();
 
             // Act - Query with IncludeDisabled
@@ -657,26 +657,26 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            
+
             // Create entity with 7 components
             GameObject entity1 = scene.Create(
-                new Position { X = 1, Y = 1 },
-                new Velocity { VX = 1, VY = 1 },
-                new Health { Value = 100 },
-                new Transform { X = 0, Y = 0, Rotation = 0 },
-                new TestComponent { Value = 1, Name = "Test" },
-                new AnotherComponent { X = 1, Y = 1 }
+                new Position {X = 1, Y = 1},
+                new Velocity {VX = 1, VY = 1},
+                new Health {Value = 100},
+                new Transform {X = 0, Y = 0, Rotation = 0},
+                new TestComponent {Value = 1, Name = "Test"},
+                new AnotherComponent {X = 1, Y = 1}
             );
             entity1.Tag<PlayerTag>();
 
             // Create entity with only 6 components (missing PlayerTag)
             scene.Create(
-                new Position { X = 2, Y = 2 },
-                new Velocity { VX = 2, VY = 2 },
-                new Health { Value = 50 },
-                new Transform { X = 1, Y = 1, Rotation = 0 },
-                new TestComponent { Value = 2, Name = "Test2" },
-                new AnotherComponent { X = 2, Y = 2 }
+                new Position {X = 2, Y = 2},
+                new Velocity {VX = 2, VY = 2},
+                new Health {Value = 50},
+                new Transform {X = 1, Y = 1, Rotation = 0},
+                new TestComponent {Value = 2, Name = "Test2"},
+                new AnotherComponent {X = 2, Y = 2}
             );
 
             // Act
@@ -722,27 +722,27 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            
+
             // Create entity with 8 filters (6 components + 2 tags)
             GameObject entity1 = scene.Create(
-                new Position { X = 1, Y = 1 },
-                new Velocity { VX = 1, VY = 1 },
-                new Health { Value = 100 },
-                new Transform { X = 0, Y = 0, Rotation = 0 },
-                new TestComponent { Value = 1, Name = "Test" },
-                new AnotherComponent { X = 1, Y = 1 }
+                new Position {X = 1, Y = 1},
+                new Velocity {VX = 1, VY = 1},
+                new Health {Value = 100},
+                new Transform {X = 0, Y = 0, Rotation = 0},
+                new TestComponent {Value = 1, Name = "Test"},
+                new AnotherComponent {X = 1, Y = 1}
             );
             entity1.Tag<PlayerTag>();
             entity1.Tag<TagComponent>();
 
             // Create entity missing TagComponent
             GameObject entity2 = scene.Create(
-                new Position { X = 2, Y = 2 },
-                new Velocity { VX = 2, VY = 2 },
-                new Health { Value = 50 },
-                new Transform { X = 1, Y = 1, Rotation = 0 },
-                new TestComponent { Value = 2, Name = "Test2" },
-                new AnotherComponent { X = 2, Y = 2 }
+                new Position {X = 2, Y = 2},
+                new Velocity {VX = 2, VY = 2},
+                new Health {Value = 50},
+                new Transform {X = 1, Y = 1, Rotation = 0},
+                new TestComponent {Value = 2, Name = "Test2"},
+                new AnotherComponent {X = 2, Y = 2}
             );
             entity2.Tag<PlayerTag>();
 
@@ -789,10 +789,10 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(new Position { X = 1, Y = 1 });
+            GameObject entity1 = scene.Create(new Position {X = 1, Y = 1});
             entity1.Tag<PlayerTag>();
-            
-            GameObject entity2 = scene.Create(new Position { X = 2, Y = 2 });
+
+            GameObject entity2 = scene.Create(new Position {X = 2, Y = 2});
 
             // Act - Query for Position but NOT PlayerTag
             Query query = scene.Query<With<Position>, Untagged<PlayerTag>>();
@@ -817,9 +817,9 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 1 }); // No Velocity, No Health
-            scene.Create(new Position { X = 2, Y = 2 }, new Velocity { VX = 1, VY = 1 }); // Has Velocity
-            scene.Create(new Position { X = 3, Y = 3 }, new Health { Value = 100 }); // Has Health
+            scene.Create(new Position {X = 1, Y = 1}); // No Velocity, No Health
+            scene.Create(new Position {X = 2, Y = 2}, new Velocity {VX = 1, VY = 1}); // Has Velocity
+            scene.Create(new Position {X = 3, Y = 3}, new Health {Value = 100}); // Has Health
 
             // Act - Query for Position but NOT Velocity and NOT Health
             Query query = scene.Query<With<Position>, Not<Velocity>, Not<Health>>();
@@ -845,18 +845,18 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             using Scene scene = new Scene();
             GameObject entity1 = scene.Create(
-                new Position { X = 1, Y = 1 },
-                new Velocity { VX = 1, VY = 1 },
-                new Health { Value = 100 },
-                new Transform { X = 0, Y = 0, Rotation = 0 }
+                new Position {X = 1, Y = 1},
+                new Velocity {VX = 1, VY = 1},
+                new Health {Value = 100},
+                new Transform {X = 0, Y = 0, Rotation = 0}
             );
             entity1.Tag<PlayerTag>();
 
             GameObject entity2 = scene.Create(
-                new Position { X = 2, Y = 2 },
-                new Velocity { VX = 2, VY = 2 },
-                new Health { Value = 50 },
-                new Transform { X = 1, Y = 1, Rotation = 0 }
+                new Position {X = 2, Y = 2},
+                new Velocity {VX = 2, VY = 2},
+                new Health {Value = 50},
+                new Transform {X = 1, Y = 1, Rotation = 0}
             );
 
             // Act - Query with 4 components + Tagged
@@ -883,20 +883,20 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             using Scene scene = new Scene();
             scene.Create(
-                new Position { X = 1, Y = 1 },
-                new Velocity { VX = 1, VY = 1 },
-                new Health { Value = 100 },
-                new Transform { X = 0, Y = 0, Rotation = 0 },
-                new TestComponent { Value = 1, Name = "Test" }
+                new Position {X = 1, Y = 1},
+                new Velocity {VX = 1, VY = 1},
+                new Health {Value = 100},
+                new Transform {X = 0, Y = 0, Rotation = 0},
+                new TestComponent {Value = 1, Name = "Test"}
             ); // Missing AnotherComponent - should match
 
             scene.Create(
-                new Position { X = 2, Y = 2 },
-                new Velocity { VX = 2, VY = 2 },
-                new Health { Value = 50 },
-                new Transform { X = 1, Y = 1, Rotation = 0 },
-                new TestComponent { Value = 2, Name = "Test2" },
-                new AnotherComponent { X = 2, Y = 2 }
+                new Position {X = 2, Y = 2},
+                new Velocity {VX = 2, VY = 2},
+                new Health {Value = 50},
+                new Transform {X = 1, Y = 1, Rotation = 0},
+                new TestComponent {Value = 2, Name = "Test2"},
+                new AnotherComponent {X = 2, Y = 2}
             ); // Has AnotherComponent - should NOT match
 
             // Act - Query for 5 components but NOT AnotherComponent
@@ -922,7 +922,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 1 }); // Only has Position
+            scene.Create(new Position {X = 1, Y = 1}); // Only has Position
 
             // Act - Query for 8 complex filters
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>, With<AnotherComponent>, Tagged<PlayerTag>, Tagged<TagComponent>>();
@@ -991,12 +991,12 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            
-            GameObject entity1 = scene.Create(new Position { X = 1, Y = 1 }, new Velocity { VX = 1, VY = 1 });
+
+            GameObject entity1 = scene.Create(new Position {X = 1, Y = 1}, new Velocity {VX = 1, VY = 1});
             entity1.Tag<PlayerTag>();
             entity1.Tag<Disable>();
 
-            GameObject entity2 = scene.Create(new Position { X = 2, Y = 2 }, new Velocity { VX = 2, VY = 2 }, new Health { Value = 100 });
+            GameObject entity2 = scene.Create(new Position {X = 2, Y = 2}, new Velocity {VX = 2, VY = 2}, new Health {Value = 100});
             entity2.Tag<PlayerTag>();
 
             // Act - Position + Velocity + PlayerTag + NOT Health + IncludeDisabled
@@ -1025,9 +1025,9 @@ namespace Alis.Core.Ecs.Test
             for (int i = 0; i < 5; i++)
             {
                 scene.Create(
-                    new Position { X = i, Y = i },
-                    new Velocity { VX = i, VY = i },
-                    new Health { Value = i * 10 }
+                    new Position {X = i, Y = i},
+                    new Velocity {VX = i, VY = i},
+                    new Health {Value = i * 10}
                 );
             }
 
@@ -1055,8 +1055,8 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 1 }, new Velocity { VX = 1, VY = 1 }, new Health { Value = 100 });
-            scene.Create(new Position { X = 2, Y = 2 }, new Velocity { VX = 2, VY = 2 }, new Health { Value = 50 });
+            scene.Create(new Position {X = 1, Y = 1}, new Velocity {VX = 1, VY = 1}, new Health {Value = 100});
+            scene.Create(new Position {X = 2, Y = 2}, new Velocity {VX = 2, VY = 2}, new Health {Value = 50});
 
             // Act
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>>();
@@ -1073,4 +1073,3 @@ namespace Alis.Core.Ecs.Test
         }
     }
 }
-

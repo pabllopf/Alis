@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Extension.Math.ProceduralDungeon;
 using Alis.Extension.Math.ProceduralDungeon.Helpers;
 using Xunit;
 
@@ -42,11 +41,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         /// <summary>
         ///     Tests that IsWall returns true for all wall types.
         /// </summary>
-        [Theory]
-        [InlineData(BoardSquareType.WallDown)]
-        [InlineData(BoardSquareType.WallLeft)]
-        [InlineData(BoardSquareType.WallRight)]
-        [InlineData(BoardSquareType.WallTop)]
+        [Theory, InlineData(BoardSquareType.WallDown), InlineData(BoardSquareType.WallLeft), InlineData(BoardSquareType.WallRight), InlineData(BoardSquareType.WallTop)]
         public void IsWall_WithWallType_ReturnsTrue(BoardSquareType type)
         {
             // Act
@@ -59,11 +54,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         /// <summary>
         ///     Tests that IsWall returns false for non-wall types.
         /// </summary>
-        [Theory]
-        [InlineData(BoardSquareType.Empty)]
-        [InlineData(BoardSquareType.Floor)]
-        [InlineData(BoardSquareType.CornerLeftUp)]
-        [InlineData(BoardSquareType.CornerInternalLeftUp)]
+        [Theory, InlineData(BoardSquareType.Empty), InlineData(BoardSquareType.Floor), InlineData(BoardSquareType.CornerLeftUp), InlineData(BoardSquareType.CornerInternalLeftUp)]
         public void IsWall_WithNonWallType_ReturnsFalse(BoardSquareType type)
         {
             // Act
@@ -76,15 +67,8 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         /// <summary>
         ///     Tests that IsCorner returns true for all corner types.
         /// </summary>
-        [Theory]
-        [InlineData(BoardSquareType.CornerLeftUp)]
-        [InlineData(BoardSquareType.CornerRightUp)]
-        [InlineData(BoardSquareType.CornerLeftDown)]
-        [InlineData(BoardSquareType.CornerRightDown)]
-        [InlineData(BoardSquareType.CornerInternalLeftUp)]
-        [InlineData(BoardSquareType.CornerInternalRightUp)]
-        [InlineData(BoardSquareType.CornerInternalLeftDown)]
-        [InlineData(BoardSquareType.CornerInternalRightDown)]
+        [Theory, InlineData(BoardSquareType.CornerLeftUp), InlineData(BoardSquareType.CornerRightUp), InlineData(BoardSquareType.CornerLeftDown), InlineData(BoardSquareType.CornerRightDown), InlineData(BoardSquareType.CornerInternalLeftUp), InlineData(BoardSquareType.CornerInternalRightUp), InlineData(BoardSquareType.CornerInternalLeftDown),
+         InlineData(BoardSquareType.CornerInternalRightDown)]
         public void IsCorner_WithCornerType_ReturnsTrue(BoardSquareType type)
         {
             // Act
@@ -97,10 +81,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         /// <summary>
         ///     Tests that IsCorner returns false for non-corner types.
         /// </summary>
-        [Theory]
-        [InlineData(BoardSquareType.Empty)]
-        [InlineData(BoardSquareType.Floor)]
-        [InlineData(BoardSquareType.WallTop)]
+        [Theory, InlineData(BoardSquareType.Empty), InlineData(BoardSquareType.Floor), InlineData(BoardSquareType.WallTop)]
         public void IsCorner_WithNonCornerType_ReturnsFalse(BoardSquareType type)
         {
             // Act
@@ -113,11 +94,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         /// <summary>
         ///     Tests that IsOuterCorner returns true for outer corner types.
         /// </summary>
-        [Theory]
-        [InlineData(BoardSquareType.CornerLeftUp)]
-        [InlineData(BoardSquareType.CornerRightUp)]
-        [InlineData(BoardSquareType.CornerLeftDown)]
-        [InlineData(BoardSquareType.CornerRightDown)]
+        [Theory, InlineData(BoardSquareType.CornerLeftUp), InlineData(BoardSquareType.CornerRightUp), InlineData(BoardSquareType.CornerLeftDown), InlineData(BoardSquareType.CornerRightDown)]
         public void IsOuterCorner_WithOuterCornerType_ReturnsTrue(BoardSquareType type)
         {
             // Act
@@ -130,11 +107,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         /// <summary>
         ///     Tests that IsOuterCorner returns false for non-outer corner types.
         /// </summary>
-        [Theory]
-        [InlineData(BoardSquareType.Empty)]
-        [InlineData(BoardSquareType.Floor)]
-        [InlineData(BoardSquareType.WallTop)]
-        [InlineData(BoardSquareType.CornerInternalLeftUp)]
+        [Theory, InlineData(BoardSquareType.Empty), InlineData(BoardSquareType.Floor), InlineData(BoardSquareType.WallTop), InlineData(BoardSquareType.CornerInternalLeftUp)]
         public void IsOuterCorner_WithNonOuterCornerType_ReturnsFalse(BoardSquareType type)
         {
             // Act
@@ -147,11 +120,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         /// <summary>
         ///     Tests that IsInnerCorner returns true for inner corner types.
         /// </summary>
-        [Theory]
-        [InlineData(BoardSquareType.CornerInternalLeftUp)]
-        [InlineData(BoardSquareType.CornerInternalRightUp)]
-        [InlineData(BoardSquareType.CornerInternalLeftDown)]
-        [InlineData(BoardSquareType.CornerInternalRightDown)]
+        [Theory, InlineData(BoardSquareType.CornerInternalLeftUp), InlineData(BoardSquareType.CornerInternalRightUp), InlineData(BoardSquareType.CornerInternalLeftDown), InlineData(BoardSquareType.CornerInternalRightDown)]
         public void IsInnerCorner_WithInnerCornerType_ReturnsTrue(BoardSquareType type)
         {
             // Act
@@ -164,11 +133,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         /// <summary>
         ///     Tests that IsInnerCorner returns false for non-inner corner types.
         /// </summary>
-        [Theory]
-        [InlineData(BoardSquareType.Empty)]
-        [InlineData(BoardSquareType.Floor)]
-        [InlineData(BoardSquareType.WallTop)]
-        [InlineData(BoardSquareType.CornerLeftUp)]
+        [Theory, InlineData(BoardSquareType.Empty), InlineData(BoardSquareType.Floor), InlineData(BoardSquareType.WallTop), InlineData(BoardSquareType.CornerLeftUp)]
         public void IsInnerCorner_WithNonInnerCornerType_ReturnsFalse(BoardSquareType type)
         {
             // Act
@@ -197,10 +162,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         /// <summary>
         ///     Tests that IsWalkable returns false for non-floor types.
         /// </summary>
-        [Theory]
-        [InlineData(BoardSquareType.Empty)]
-        [InlineData(BoardSquareType.WallTop)]
-        [InlineData(BoardSquareType.CornerLeftUp)]
+        [Theory, InlineData(BoardSquareType.Empty), InlineData(BoardSquareType.WallTop), InlineData(BoardSquareType.CornerLeftUp)]
         public void IsWalkable_WithNonFloorType_ReturnsFalse(BoardSquareType type)
         {
             // Act
@@ -229,10 +191,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         /// <summary>
         ///     Tests that IsEmpty returns false for non-empty types.
         /// </summary>
-        [Theory]
-        [InlineData(BoardSquareType.Floor)]
-        [InlineData(BoardSquareType.WallTop)]
-        [InlineData(BoardSquareType.CornerLeftUp)]
+        [Theory, InlineData(BoardSquareType.Floor), InlineData(BoardSquareType.WallTop), InlineData(BoardSquareType.CornerLeftUp)]
         public void IsEmpty_WithNonEmptyType_ReturnsFalse(BoardSquareType type)
         {
             // Act
@@ -245,13 +204,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         /// <summary>
         ///     Tests that IsSolid returns true for walls and corners.
         /// </summary>
-        [Theory]
-        [InlineData(BoardSquareType.WallTop)]
-        [InlineData(BoardSquareType.WallDown)]
-        [InlineData(BoardSquareType.WallLeft)]
-        [InlineData(BoardSquareType.WallRight)]
-        [InlineData(BoardSquareType.CornerLeftUp)]
-        [InlineData(BoardSquareType.CornerInternalLeftUp)]
+        [Theory, InlineData(BoardSquareType.WallTop), InlineData(BoardSquareType.WallDown), InlineData(BoardSquareType.WallLeft), InlineData(BoardSquareType.WallRight), InlineData(BoardSquareType.CornerLeftUp), InlineData(BoardSquareType.CornerInternalLeftUp)]
         public void IsSolid_WithSolidType_ReturnsTrue(BoardSquareType type)
         {
             // Act
@@ -264,9 +217,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         /// <summary>
         ///     Tests that IsSolid returns false for non-solid types.
         /// </summary>
-        [Theory]
-        [InlineData(BoardSquareType.Empty)]
-        [InlineData(BoardSquareType.Floor)]
+        [Theory, InlineData(BoardSquareType.Empty), InlineData(BoardSquareType.Floor)]
         public void IsSolid_WithNonSolidType_ReturnsFalse(BoardSquareType type)
         {
             // Act
@@ -311,11 +262,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         /// <summary>
         ///     Tests that GetDisplayCharacter returns correct character for walls.
         /// </summary>
-        [Theory]
-        [InlineData(BoardSquareType.WallDown)]
-        [InlineData(BoardSquareType.WallLeft)]
-        [InlineData(BoardSquareType.WallRight)]
-        [InlineData(BoardSquareType.WallTop)]
+        [Theory, InlineData(BoardSquareType.WallDown), InlineData(BoardSquareType.WallLeft), InlineData(BoardSquareType.WallRight), InlineData(BoardSquareType.WallTop)]
         public void GetDisplayCharacter_WithWall_ReturnsHash(BoardSquareType type)
         {
             // Act
@@ -328,15 +275,8 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         /// <summary>
         ///     Tests that GetDisplayCharacter returns correct character for corners.
         /// </summary>
-        [Theory]
-        [InlineData(BoardSquareType.CornerLeftUp)]
-        [InlineData(BoardSquareType.CornerRightUp)]
-        [InlineData(BoardSquareType.CornerLeftDown)]
-        [InlineData(BoardSquareType.CornerRightDown)]
-        [InlineData(BoardSquareType.CornerInternalLeftUp)]
-        [InlineData(BoardSquareType.CornerInternalRightUp)]
-        [InlineData(BoardSquareType.CornerInternalLeftDown)]
-        [InlineData(BoardSquareType.CornerInternalRightDown)]
+        [Theory, InlineData(BoardSquareType.CornerLeftUp), InlineData(BoardSquareType.CornerRightUp), InlineData(BoardSquareType.CornerLeftDown), InlineData(BoardSquareType.CornerRightDown), InlineData(BoardSquareType.CornerInternalLeftUp), InlineData(BoardSquareType.CornerInternalRightUp), InlineData(BoardSquareType.CornerInternalLeftDown),
+         InlineData(BoardSquareType.CornerInternalRightDown)]
         public void GetDisplayCharacter_WithCorner_ReturnsPlus(BoardSquareType type)
         {
             // Act
@@ -353,7 +293,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         public void GetDisplayCharacter_WithUnknownType_ReturnsQuestionMark()
         {
             // Arrange
-            BoardSquareType type = (BoardSquareType)999;
+            BoardSquareType type = (BoardSquareType) 999;
 
             // Act
             char character = BoardSquareTypeHelper.GetDisplayCharacter(type);
@@ -363,4 +303,3 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         }
     }
 }
-

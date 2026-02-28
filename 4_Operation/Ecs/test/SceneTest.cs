@@ -38,12 +38,11 @@ namespace Alis.Core.Ecs.Test
     ///     The scene test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="Scene"/> class which represents a collection of entities
+    ///     Tests the <see cref="Scene" /> class which represents a collection of entities
     ///     that can be updated and queried in the ECS system.
     /// </remarks>
     public class SceneTest
     {
-
         /// <summary>
         ///     Tests that scene can be created
         /// </summary>
@@ -104,7 +103,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            TestComponent component = new TestComponent { Value = 42 };
+            TestComponent component = new TestComponent {Value = 42};
 
             // Act
             GameObject entity = scene.Create(component);
@@ -127,9 +126,9 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
 
             // Act
-            scene.Create(new TestComponent { Value = 1 });
-            scene.Create(new TestComponent { Value = 2 });
-            scene.Create(new TestComponent { Value = 3 });
+            scene.Create(new TestComponent {Value = 1});
+            scene.Create(new TestComponent {Value = 2});
+            scene.Create(new TestComponent {Value = 3});
 
             // Assert
             Assert.Equal(3, scene.EntityCount);
@@ -153,7 +152,7 @@ namespace Alis.Core.Ecs.Test
             // Assert
             Assert.Equal(5, scene.EntityCount);
         }
-        
+
 
         /// <summary>
         ///     Tests that scene has default archetype
@@ -231,16 +230,16 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             using Scene scene = new Scene();
             bool eventInvoked = false;
-            scene.EntityCreated += (entity) => eventInvoked = true;
+            scene.EntityCreated += entity => eventInvoked = true;
 
             // Act
-            scene.Create(new TestComponent { Value = 99 });
+            scene.Create(new TestComponent {Value = 99});
 
             // Assert
             Assert.True(eventInvoked);
         }
-        
-        
+
+
         /// <summary>
         ///     Tests that scene recycled entity ids stack exists
         /// </summary>
@@ -348,8 +347,8 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            TestComponent comp1 = new TestComponent { Value = 100 };
-            AnotherComponent comp2 = new AnotherComponent { Name = "Test" };
+            TestComponent comp1 = new TestComponent {Value = 100};
+            AnotherComponent comp2 = new AnotherComponent {Name = "Test"};
 
             // Act
             GameObject entity = scene.Create(comp1, comp2);
@@ -407,7 +406,7 @@ namespace Alis.Core.Ecs.Test
             // Act
             for (int i = 0; i < entityCount; i++)
             {
-                scene.Create(new TestComponent { Value = i });
+                scene.Create(new TestComponent {Value = i});
             }
 
             // Assert
@@ -427,9 +426,8 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
 
             // Assert - The flags should be None or some default value
-            Assert.True(scene.WorldEventFlags == GameObjectFlags.None || 
-                       scene.WorldEventFlags != (GameObjectFlags)(-1));
+            Assert.True(scene.WorldEventFlags == GameObjectFlags.None ||
+                        scene.WorldEventFlags != (GameObjectFlags) (-1));
         }
     }
 }
-

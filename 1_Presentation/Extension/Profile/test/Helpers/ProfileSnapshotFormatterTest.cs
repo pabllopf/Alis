@@ -178,4 +178,3 @@ namespace Alis.Extension.Profile.Test.Helpers
         }
     }
 }
-

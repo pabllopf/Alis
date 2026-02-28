@@ -46,9 +46,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         {
             TriangulationPoint p1 = new TriangulationPoint(5, 10);
             TriangulationPoint p2 = new TriangulationPoint(5, 5);
-            
+
             DtSweepConstraint constraint = new DtSweepConstraint(p1, p2);
-            
+
             Assert.Equal(p2, constraint.P);
             Assert.Equal(p1, constraint.Q);
         }
@@ -61,9 +61,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         {
             TriangulationPoint p1 = new TriangulationPoint(10, 5);
             TriangulationPoint p2 = new TriangulationPoint(5, 5);
-            
+
             DtSweepConstraint constraint = new DtSweepConstraint(p1, p2);
-            
+
             Assert.Equal(p2, constraint.P);
             Assert.Equal(p1, constraint.Q);
         }
@@ -76,9 +76,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         {
             TriangulationPoint p1 = new TriangulationPoint(5, 5);
             TriangulationPoint p2 = new TriangulationPoint(10, 10);
-            
+
             DtSweepConstraint constraint = new DtSweepConstraint(p1, p2);
-            
+
             Assert.Equal(p1, constraint.P);
             Assert.Equal(p2, constraint.Q);
         }
@@ -91,9 +91,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         {
             TriangulationPoint p1 = new TriangulationPoint(0, 0);
             TriangulationPoint p2 = new TriangulationPoint(10, 10);
-            
+
             DtSweepConstraint constraint = new DtSweepConstraint(p1, p2);
-            
+
             Assert.IsAssignableFrom<TriangulationConstraint>(constraint);
         }
 
@@ -105,9 +105,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         {
             TriangulationPoint p1 = new TriangulationPoint(5, 5);
             TriangulationPoint p2 = new TriangulationPoint(5, 5);
-            
+
             DtSweepConstraint constraint = new DtSweepConstraint(p1, p2);
-            
+
             Assert.NotNull(constraint);
         }
 
@@ -119,9 +119,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         {
             TriangulationPoint p1 = new TriangulationPoint(5, 0);
             TriangulationPoint p2 = new TriangulationPoint(5, 10);
-            
+
             DtSweepConstraint constraint = new DtSweepConstraint(p1, p2);
-            
+
             Assert.Equal(0, constraint.P.Y);
             Assert.Equal(10, constraint.Q.Y);
         }
@@ -134,9 +134,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         {
             TriangulationPoint p1 = new TriangulationPoint(0, 5);
             TriangulationPoint p2 = new TriangulationPoint(10, 5);
-            
+
             DtSweepConstraint constraint = new DtSweepConstraint(p1, p2);
-            
+
             Assert.Equal(0, constraint.P.X);
             Assert.Equal(10, constraint.Q.X);
         }
@@ -149,9 +149,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         {
             TriangulationPoint p1 = new TriangulationPoint(-10, -5);
             TriangulationPoint p2 = new TriangulationPoint(-5, -10);
-            
+
             DtSweepConstraint constraint = new DtSweepConstraint(p1, p2);
-            
+
             Assert.NotNull(constraint);
         }
 
@@ -163,9 +163,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         {
             TriangulationPoint p1 = new TriangulationPoint(0, 0);
             TriangulationPoint p2 = new TriangulationPoint(10, 10);
-            
+
             DtSweepConstraint constraint = new DtSweepConstraint(p1, p2);
-            
+
             Assert.NotNull(constraint.Q);
         }
 
@@ -179,9 +179,8 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             TriangulationPoint p2 = new TriangulationPoint(10, 10);
             DtSweepConstraint constraint1 = new DtSweepConstraint(p1, p2);
             DtSweepConstraint constraint2 = constraint1;
-            
+
             Assert.Same(constraint1, constraint2);
         }
     }
 }
-

@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:ContextOperationsTests.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -26,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Xunit;
-
 namespace Alis.Extension.Graphic.Glfw.Test
 {
     /// <summary>
@@ -37,4 +36,3 @@ namespace Alis.Extension.Graphic.Glfw.Test
     {
     }
 }
-

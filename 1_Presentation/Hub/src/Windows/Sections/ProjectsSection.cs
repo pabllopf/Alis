@@ -354,7 +354,7 @@ namespace Alis.App.Hub.Windows.Sections
                     {
                         Title = "Select Project Folder",
                         DefaultPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-                        AllowMultiple = false,
+                        AllowMultiple = false
                     };
                     FilePickerResult selectedFile = filePicker.PickFile(options);
 

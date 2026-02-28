@@ -39,9 +39,14 @@ namespace Alis.Extension.Profile.Test.Mocks
     public class MockTimeTracker : ITimeTracker
     {
         /// <summary>
-        ///     Gets or sets a value indicating whether the tracker is running.
+        ///     Initializes a new instance of the <see cref="MockTimeTracker" /> class.
         /// </summary>
-        public bool IsRunning { get; set; }
+        public MockTimeTracker()
+        {
+            IsRunning = false;
+            StartTime = DateTime.MinValue;
+            ElapsedTime = TimeSpan.Zero;
+        }
 
         /// <summary>
         ///     Gets or sets the start time to return.
@@ -79,14 +84,9 @@ namespace Alis.Extension.Profile.Test.Mocks
         public bool GetStartTimeCalled { get; private set; }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="MockTimeTracker" /> class.
+        ///     Gets or sets a value indicating whether the tracker is running.
         /// </summary>
-        public MockTimeTracker()
-        {
-            IsRunning = false;
-            StartTime = DateTime.MinValue;
-            ElapsedTime = TimeSpan.Zero;
-        }
+        public bool IsRunning { get; set; }
 
         /// <summary>
         ///     Simulates starting the tracker.
@@ -151,4 +151,3 @@ namespace Alis.Extension.Profile.Test.Mocks
         }
     }
 }
-

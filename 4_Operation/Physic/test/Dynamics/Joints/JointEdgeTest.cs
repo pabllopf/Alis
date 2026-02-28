@@ -45,7 +45,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void Constructor_ShouldCreateInstance()
         {
             JointEdge edge = new JointEdge();
-            
+
             Assert.NotNull(edge);
         }
 
@@ -57,9 +57,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             JointEdge edge = new JointEdge();
             Joint joint = null; // Cannot create concrete Joint instance without body
-            
+
             edge.Joint = joint;
-            
+
             Assert.Equal(joint, edge.Joint);
         }
 
@@ -71,9 +71,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             JointEdge edge = new JointEdge();
             Body other = null; // Cannot create Body instance without World
-            
+
             edge.Other = other;
-            
+
             Assert.Equal(other, edge.Other);
         }
 
@@ -85,9 +85,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             JointEdge edge = new JointEdge();
             JointEdge next = new JointEdge();
-            
+
             edge.Next = next;
-            
+
             Assert.Equal(next, edge.Next);
         }
 
@@ -99,9 +99,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             JointEdge edge = new JointEdge();
             JointEdge prev = new JointEdge();
-            
+
             edge.Prev = prev;
-            
+
             Assert.Equal(prev, edge.Prev);
         }
 
@@ -112,7 +112,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void AllProperties_ShouldInitializeToNull()
         {
             JointEdge edge = new JointEdge();
-            
+
             Assert.Null(edge.Joint);
             Assert.Null(edge.Other);
             Assert.Null(edge.Next);
@@ -128,12 +128,12 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             JointEdge edge1 = new JointEdge();
             JointEdge edge2 = new JointEdge();
             JointEdge edge3 = new JointEdge();
-            
+
             edge1.Next = edge2;
             edge2.Prev = edge1;
             edge2.Next = edge3;
             edge3.Prev = edge2;
-            
+
             Assert.Equal(edge2, edge1.Next);
             Assert.Equal(edge1, edge2.Prev);
             Assert.Equal(edge3, edge2.Next);
@@ -141,4 +141,3 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         }
     }
 }
-

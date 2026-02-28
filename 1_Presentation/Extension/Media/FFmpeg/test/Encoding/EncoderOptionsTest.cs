@@ -197,9 +197,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding
         public void EncoderOptions_ShouldSupportCommonVideoFormats()
         {
             // Arrange
-            EncoderOptions mp4Options = new EncoderOptions { Format = "mp4" };
-            EncoderOptions webmOptions = new EncoderOptions { Format = "webm" };
-            EncoderOptions mkvOptions = new EncoderOptions { Format = "mkv" };
+            EncoderOptions mp4Options = new EncoderOptions {Format = "mp4"};
+            EncoderOptions webmOptions = new EncoderOptions {Format = "webm"};
+            EncoderOptions mkvOptions = new EncoderOptions {Format = "mkv"};
 
             // Act & Assert
             Assert.Equal("mp4", mp4Options.Format);
@@ -214,9 +214,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding
         public void EncoderOptions_ShouldSupportCommonAudioFormats()
         {
             // Arrange
-            EncoderOptions mp3Options = new EncoderOptions { Format = "mp3" };
-            EncoderOptions oggOptions = new EncoderOptions { Format = "ogg" };
-            EncoderOptions m4aOptions = new EncoderOptions { Format = "m4a" };
+            EncoderOptions mp3Options = new EncoderOptions {Format = "mp3"};
+            EncoderOptions oggOptions = new EncoderOptions {Format = "ogg"};
+            EncoderOptions m4aOptions = new EncoderOptions {Format = "m4a"};
 
             // Act & Assert
             Assert.Equal("mp3", mp3Options.Format);
@@ -231,9 +231,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding
         public void EncoderOptions_ShouldSupportCommonVideoEncoders()
         {
             // Arrange
-            EncoderOptions h264Options = new EncoderOptions { EncoderName = "libx264" };
-            EncoderOptions h265Options = new EncoderOptions { EncoderName = "libx265" };
-            EncoderOptions vp9Options = new EncoderOptions { EncoderName = "libvpx-vp9" };
+            EncoderOptions h264Options = new EncoderOptions {EncoderName = "libx264"};
+            EncoderOptions h265Options = new EncoderOptions {EncoderName = "libx265"};
+            EncoderOptions vp9Options = new EncoderOptions {EncoderName = "libvpx-vp9"};
 
             // Act & Assert
             Assert.Equal("libx264", h264Options.EncoderName);
@@ -248,9 +248,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding
         public void EncoderOptions_ShouldSupportCommonAudioEncoders()
         {
             // Arrange
-            EncoderOptions mp3Options = new EncoderOptions { EncoderName = "libmp3lame" };
-            EncoderOptions aacOptions = new EncoderOptions { EncoderName = "aac" };
-            EncoderOptions vorbisOptions = new EncoderOptions { EncoderName = "libvorbis" };
+            EncoderOptions mp3Options = new EncoderOptions {EncoderName = "libmp3lame"};
+            EncoderOptions aacOptions = new EncoderOptions {EncoderName = "aac"};
+            EncoderOptions vorbisOptions = new EncoderOptions {EncoderName = "libvorbis"};
 
             // Act & Assert
             Assert.Equal("libmp3lame", mp3Options.EncoderName);
@@ -321,4 +321,3 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding
         }
     }
 }
-

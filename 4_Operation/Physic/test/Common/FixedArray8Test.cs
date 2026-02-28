@@ -49,7 +49,7 @@ namespace Alis.Core.Physic.Test.Common
             {
                 array[i] = (i + 1) * 10;
             }
-            
+
             for (int i = 0; i < 8; i++)
             {
                 Assert.Equal((i + 1) * 10, array[i]);
@@ -63,7 +63,7 @@ namespace Alis.Core.Physic.Test.Common
         public void Indexer_Set_ShouldUpdateAllValues()
         {
             FixedArray8<int> array = new FixedArray8<int>();
-            
+
             array[0] = 100;
             array[1] = 200;
             array[2] = 300;
@@ -72,7 +72,7 @@ namespace Alis.Core.Physic.Test.Common
             array[5] = 600;
             array[6] = 700;
             array[7] = 800;
-            
+
             Assert.Equal(100, array[0]);
             Assert.Equal(200, array[1]);
             Assert.Equal(300, array[2]);
@@ -90,7 +90,7 @@ namespace Alis.Core.Physic.Test.Common
         public void Indexer_WithInvalidIndex_ShouldThrowException()
         {
             FixedArray8<int> array = new FixedArray8<int>();
-            
+
             Assert.Throws<CustomIndexOutOfRangeException>(() => array[8]);
         }
 
@@ -101,7 +101,7 @@ namespace Alis.Core.Physic.Test.Common
         public void Indexer_SetWithInvalidIndex_ShouldThrowException()
         {
             FixedArray8<int> array = new FixedArray8<int>();
-            
+
             Assert.Throws<CustomIndexOutOfRangeException>(() => array[8] = 100);
         }
 
@@ -112,7 +112,7 @@ namespace Alis.Core.Physic.Test.Common
         public void Indexer_WithNegativeIndex_ShouldThrowException()
         {
             FixedArray8<int> array = new FixedArray8<int>();
-            
+
             Assert.Throws<CustomIndexOutOfRangeException>(() => array[-1]);
         }
 
@@ -127,7 +127,7 @@ namespace Alis.Core.Physic.Test.Common
             {
                 array[i] = (i + 1) * 1.5f;
             }
-            
+
             for (int i = 0; i < 8; i++)
             {
                 Assert.Equal((i + 1) * 1.5f, array[i]);
@@ -141,7 +141,7 @@ namespace Alis.Core.Physic.Test.Common
         public void DefaultValues_ShouldBeDefaultForType()
         {
             FixedArray8<int> array = new FixedArray8<int>();
-            
+
             for (int i = 0; i < 8; i++)
             {
                 Assert.Equal(0, array[i]);
@@ -155,10 +155,10 @@ namespace Alis.Core.Physic.Test.Common
         public void FirstAndLastIndices_ShouldWorkCorrectly()
         {
             FixedArray8<int> array = new FixedArray8<int>();
-            
+
             array[0] = 1;
             array[7] = 8;
-            
+
             Assert.Equal(1, array[0]);
             Assert.Equal(8, array[7]);
         }
@@ -170,10 +170,10 @@ namespace Alis.Core.Physic.Test.Common
         public void MiddleIndices_ShouldWorkCorrectly()
         {
             FixedArray8<int> array = new FixedArray8<int>();
-            
+
             array[3] = 30;
             array[4] = 40;
-            
+
             Assert.Equal(30, array[3]);
             Assert.Equal(40, array[4]);
         }
@@ -185,13 +185,12 @@ namespace Alis.Core.Physic.Test.Common
         public void Indexer_WithComplexType_ShouldWork()
         {
             FixedArray8<string> array = new FixedArray8<string>();
-            
+
             array[0] = "Zero";
             array[7] = "Seven";
-            
+
             Assert.Equal("Zero", array[0]);
             Assert.Equal("Seven", array[7]);
         }
     }
 }
-

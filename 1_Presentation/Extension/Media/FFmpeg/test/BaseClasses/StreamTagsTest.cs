@@ -152,9 +152,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         public void StreamTags_ShouldSupportCommonLanguageCodes()
         {
             // Arrange & Act
-            StreamTags engTags = new StreamTags { Language = "eng" };
-            StreamTags espTags = new StreamTags { Language = "spa" };
-            StreamTags freTags = new StreamTags { Language = "fre" };
+            StreamTags engTags = new StreamTags {Language = "eng"};
+            StreamTags espTags = new StreamTags {Language = "spa"};
+            StreamTags freTags = new StreamTags {Language = "fre"};
 
             // Assert
             Assert.Equal("eng", engTags.Language);
@@ -238,4 +238,3 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         }
     }
 }
-

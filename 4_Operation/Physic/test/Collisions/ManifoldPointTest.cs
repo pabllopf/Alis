@@ -45,7 +45,7 @@ namespace Alis.Core.Physic.Test.Collisions
         public void Constructor_ShouldInitializeWithDefaultValues()
         {
             ManifoldPoint point = new ManifoldPoint();
-            
+
             Assert.Equal(Vector2F.Zero, point.LocalPoint);
             Assert.Equal(0.0f, point.NormalImpulse);
             Assert.Equal(0.0f, point.TangentImpulse);
@@ -61,7 +61,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 LocalPoint = new Vector2F(1.0f, 2.0f)
             };
-            
+
             Assert.Equal(new Vector2F(1.0f, 2.0f), point.LocalPoint);
         }
 
@@ -75,7 +75,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 NormalImpulse = 5.0f
             };
-            
+
             Assert.Equal(5.0f, point.NormalImpulse);
         }
 
@@ -89,7 +89,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 TangentImpulse = 3.0f
             };
-            
+
             Assert.Equal(3.0f, point.TangentImpulse);
         }
 
@@ -101,9 +101,9 @@ namespace Alis.Core.Physic.Test.Collisions
         {
             ManifoldPoint point = new ManifoldPoint();
             ContactId id = new ContactId();
-            
+
             point.Id = id;
-            
+
             Assert.Equal(id, point.Id);
         }
 
@@ -120,7 +120,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 TangentImpulse = 3.0f,
                 Id = new ContactId()
             };
-            
+
             Assert.Equal(new Vector2F(1.0f, 2.0f), point.LocalPoint);
             Assert.Equal(5.0f, point.NormalImpulse);
             Assert.Equal(3.0f, point.TangentImpulse);
@@ -137,7 +137,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 NormalImpulse = -1.0f,
                 TangentImpulse = -2.0f
             };
-            
+
             Assert.Equal(-1.0f, point.NormalImpulse);
             Assert.Equal(-2.0f, point.TangentImpulse);
         }
@@ -153,10 +153,9 @@ namespace Alis.Core.Physic.Test.Collisions
                 NormalImpulse = 0.0f,
                 TangentImpulse = 0.0f
             };
-            
+
             Assert.Equal(0.0f, point.NormalImpulse);
             Assert.Equal(0.0f, point.TangentImpulse);
         }
     }
 }
-

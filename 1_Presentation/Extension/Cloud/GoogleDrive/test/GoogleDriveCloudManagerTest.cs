@@ -121,7 +121,7 @@ namespace Alis.Extension.Cloud.GoogleDrive.Test
             GoogleDriveCloudManager manager = new GoogleDriveCloudManager(context);
 
             // Act & Assert
-            await Assert.ThrowsAsync<InvalidOperationException>(() => 
+            await Assert.ThrowsAsync<InvalidOperationException>(() =>
                 manager.UploadFileAsync("test.txt", "/cloud/test.txt"));
         }
 
@@ -136,7 +136,7 @@ namespace Alis.Extension.Cloud.GoogleDrive.Test
             GoogleDriveCloudManager manager = new GoogleDriveCloudManager(context);
 
             // Act & Assert
-            await Assert.ThrowsAsync<InvalidOperationException>(() => 
+            await Assert.ThrowsAsync<InvalidOperationException>(() =>
                 manager.DownloadFileAsync("/cloud/test.txt", "test.txt"));
         }
 
@@ -151,7 +151,7 @@ namespace Alis.Extension.Cloud.GoogleDrive.Test
             GoogleDriveCloudManager manager = new GoogleDriveCloudManager(context);
 
             // Act & Assert
-            await Assert.ThrowsAsync<InvalidOperationException>(() => 
+            await Assert.ThrowsAsync<InvalidOperationException>(() =>
                 manager.ListFilesAsync("/"));
         }
 
@@ -166,7 +166,7 @@ namespace Alis.Extension.Cloud.GoogleDrive.Test
             GoogleDriveCloudManager manager = new GoogleDriveCloudManager(context);
 
             // Act & Assert
-            await Assert.ThrowsAsync<InvalidOperationException>(() => 
+            await Assert.ThrowsAsync<InvalidOperationException>(() =>
                 manager.DeleteAsync("/cloud/test.txt"));
         }
 
@@ -181,7 +181,7 @@ namespace Alis.Extension.Cloud.GoogleDrive.Test
             GoogleDriveCloudManager manager = new GoogleDriveCloudManager(context);
 
             // Act & Assert
-            await Assert.ThrowsAsync<InvalidOperationException>(() => 
+            await Assert.ThrowsAsync<InvalidOperationException>(() =>
                 manager.GetMetadataAsync("/cloud/test.txt"));
         }
 
@@ -281,4 +281,3 @@ namespace Alis.Extension.Cloud.GoogleDrive.Test
         }
     }
 }
-

@@ -36,8 +36,12 @@ namespace Alis.Core.Ecs.Test
     ///     Tests for accessing and modifying components on entities
     /// </summary>
     /// <remarks>
-    ///     Validates that Get<T>() and Has<T>() methods work correctly,
-    ///     and that component data can be accessed and modified through references.
+    ///     Validates that Get
+    ///     <T>
+    ///         () and Has
+    ///         <T>
+    ///             () methods work correctly,
+    ///             and that component data can be accessed and modified through references.
     /// </remarks>
     public class ComponentAccessTest
     {
@@ -49,7 +53,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 10 });
+            GameObject entity = scene.Create(new Position {X = 10});
 
             // Act & Assert
             Assert.True(entity.Has<Position>());
@@ -64,7 +68,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 10, Y = 20 });
+            GameObject entity = scene.Create(new Position {X = 10, Y = 20});
 
             // Act
             ref Position pos = ref entity.Get<Position>();
@@ -82,7 +86,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 10, Y = 20 });
+            GameObject entity = scene.Create(new Position {X = 10, Y = 20});
 
             // Act
             ref Position pos = ref entity.Get<Position>();
@@ -103,7 +107,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Health { Value = 100 });
+            GameObject entity = scene.Create(new Health {Value = 100});
 
             // Act
             bool hasHealth = entity.TryHas<Health>();
@@ -123,9 +127,9 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
-                new Position { X = 1, Y = 2 },
-                new Health { Value = 100 },
-                new Velocity { VX = 3, VY = 4 });
+                new Position {X = 1, Y = 2},
+                new Health {Value = 100},
+                new Velocity {VX = 3, VY = 4});
 
             // Act & Assert
             ref Position pos = ref entity.Get<Position>();
@@ -146,7 +150,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Health { Value = 100 });
+            GameObject entity = scene.Create(new Health {Value = 100});
 
             // Act
             ref Health health = ref entity.Get<Health>();
@@ -165,7 +169,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 10, Y = 20 });
+            GameObject entity = scene.Create(new Position {X = 10, Y = 20});
 
             // Act
             ref Position pos1 = ref entity.Get<Position>();
@@ -179,4 +183,3 @@ namespace Alis.Core.Ecs.Test
         }
     }
 }
-

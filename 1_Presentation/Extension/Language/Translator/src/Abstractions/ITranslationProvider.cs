@@ -92,4 +92,3 @@ namespace Alis.Extension.Language.Translator.Abstractions
         Task<IEnumerable<string>> GetKeysAsync(string languageCode);
     }
 }
-

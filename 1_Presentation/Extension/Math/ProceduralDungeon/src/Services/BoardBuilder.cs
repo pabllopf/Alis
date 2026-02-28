@@ -50,10 +50,14 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
         public BoardSquare[,] CreateEmptyBoard(int width, int height)
         {
             if (width <= 0)
+            {
                 throw new ArgumentException("Width must be greater than 0.", nameof(width));
-            
+            }
+
             if (height <= 0)
+            {
                 throw new ArgumentException("Height must be greater than 0.", nameof(height));
+            }
 
             BoardSquare[,] board = new BoardSquare[width, height];
 
@@ -61,7 +65,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
             {
                 for (int y = 0; y < height; y++)
                 {
-                    board[x, y] = new BoardSquare { Type = BoardSquareType.Empty };
+                    board[x, y] = new BoardSquare {Type = BoardSquareType.Empty};
                 }
             }
 
@@ -77,10 +81,14 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
         public void PlaceRooms(BoardSquare[,] board, IReadOnlyList<RoomData> rooms)
         {
             if (board == null)
+            {
                 throw new ArgumentNullException(nameof(board));
-            
+            }
+
             if (rooms == null)
+            {
                 throw new ArgumentNullException(nameof(rooms));
+            }
 
             foreach (RoomData room in rooms)
             {
@@ -97,10 +105,14 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
         public void PlaceCorridors(BoardSquare[,] board, IReadOnlyList<CorridorData> corridors)
         {
             if (board == null)
+            {
                 throw new ArgumentNullException(nameof(board));
-            
+            }
+
             if (corridors == null)
+            {
                 throw new ArgumentNullException(nameof(corridors));
+            }
 
             foreach (CorridorData corridor in corridors)
             {
@@ -117,7 +129,9 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
         public void GenerateWallsAndCorners(BoardSquare[,] board)
         {
             if (board == null)
+            {
                 throw new ArgumentNullException(nameof(board));
+            }
 
             int width = board.GetLength(0);
             int height = board.GetLength(1);
@@ -128,10 +142,10 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
                 {
                     // Generate walls
                     GenerateWalls(board, x, y);
-                    
+
                     // Generate outer corners
                     GenerateOuterCorners(board, x, y);
-                    
+
                     // Generate inner corners
                     GenerateInnerCorners(board, x, y);
                 }
@@ -151,11 +165,11 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
             int boardWidth = board.GetLength(0);
             int boardHeight = board.GetLength(1);
 
-            for (int x = xPos; x < xPos + width && x < boardWidth; x++)
+            for (int x = xPos; (x < xPos + width) && (x < boardWidth); x++)
             {
-                for (int y = yPos; y < yPos + height && y < boardHeight; y++)
+                for (int y = yPos; (y < yPos + height) && (y < boardHeight); y++)
                 {
-                    if (x >= 0 && y >= 0)
+                    if ((x >= 0) && (y >= 0))
                     {
                         board[x, y].Type = BoardSquareType.Floor;
                     }
@@ -176,7 +190,9 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
         private void GenerateWalls(BoardSquare[,] board, int x, int y)
         {
             if (board[x, y].Type != BoardSquareType.Floor)
+            {
                 return;
+            }
 
             // Check and set walls in all four directions
             // Priority: Down -> Left -> Right -> Top (to ensure consistent results)
@@ -211,22 +227,24 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
         private void GenerateOuterCorners(BoardSquare[,] board, int x, int y)
         {
             if (board[x, y].Type == BoardSquareType.Empty)
+            {
                 return;
+            }
 
             // Check and set outer corners with priority order
-            if (board[x - 1, y].Type == BoardSquareType.Empty && board[x, y - 1].Type == BoardSquareType.Empty)
+            if ((board[x - 1, y].Type == BoardSquareType.Empty) && (board[x, y - 1].Type == BoardSquareType.Empty))
             {
                 board[x, y].Type = BoardSquareType.CornerLeftDown;
             }
-            else if (board[x + 1, y].Type == BoardSquareType.Empty && board[x, y - 1].Type == BoardSquareType.Empty)
+            else if ((board[x + 1, y].Type == BoardSquareType.Empty) && (board[x, y - 1].Type == BoardSquareType.Empty))
             {
                 board[x, y].Type = BoardSquareType.CornerRightDown;
             }
-            else if (board[x - 1, y].Type == BoardSquareType.Empty && board[x, y + 1].Type == BoardSquareType.Empty)
+            else if ((board[x - 1, y].Type == BoardSquareType.Empty) && (board[x, y + 1].Type == BoardSquareType.Empty))
             {
                 board[x, y].Type = BoardSquareType.CornerLeftUp;
             }
-            else if (board[x + 1, y].Type == BoardSquareType.Empty && board[x, y + 1].Type == BoardSquareType.Empty)
+            else if ((board[x + 1, y].Type == BoardSquareType.Empty) && (board[x, y + 1].Type == BoardSquareType.Empty))
             {
                 board[x, y].Type = BoardSquareType.CornerRightUp;
             }
@@ -246,7 +264,9 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
         private void GenerateInnerCorners(BoardSquare[,] board, int x, int y)
         {
             if (board[x, y].Type != BoardSquareType.Floor)
+            {
                 return;
+            }
 
             // Check and set inner corners with priority order
             if (board[x - 1, y - 1].Type == BoardSquareType.Empty)
@@ -268,4 +288,3 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
         }
     }
 }
-

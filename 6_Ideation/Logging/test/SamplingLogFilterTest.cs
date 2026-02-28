@@ -5,30 +5,29 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: SamplingLogFilterTest.cs
+//  File:SamplingLogFilterTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program. If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Logging.Abstractions;
 using Alis.Core.Aspect.Logging.Core;
 using Alis.Core.Aspect.Logging.Filters;
@@ -46,7 +45,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void SamplingLogFilter_SampleRate1_ShouldAllowAll()
         {
             // Arrange
-            SamplingLogFilter filter = new SamplingLogFilter(sampleRate: 1);
+            SamplingLogFilter filter = new SamplingLogFilter(1);
 
             // Act & Assert - With sample rate 1, every entry passes (1 % 1 = 0)
             for (int i = 0; i < 100; i++)
@@ -59,7 +58,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void SamplingLogFilter_SampleRate2_ShouldAlternate()
         {
             // Arrange
-            SamplingLogFilter filter = new SamplingLogFilter(sampleRate: 2);
+            SamplingLogFilter filter = new SamplingLogFilter(2);
 
             // Act & Assert
             bool[] results = new bool[10];
@@ -77,6 +76,7 @@ namespace Alis.Core.Aspect.Logging.Test
                     passCount++;
                 }
             }
+
             Assert.Equal(5, passCount);
         }
 
@@ -84,7 +84,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void SamplingLogFilter_SampleRate10_ShouldPassEveryTenth()
         {
             // Arrange
-            SamplingLogFilter filter = new SamplingLogFilter(sampleRate: 10);
+            SamplingLogFilter filter = new SamplingLogFilter(10);
 
             // Act
             int passCount = 0;
@@ -104,7 +104,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void SamplingLogFilter_SampleRate3_ShouldPassEveryThird()
         {
             // Arrange
-            SamplingLogFilter filter = new SamplingLogFilter(sampleRate: 3);
+            SamplingLogFilter filter = new SamplingLogFilter(3);
 
             // Act
             int passCount = 0;
@@ -124,15 +124,15 @@ namespace Alis.Core.Aspect.Logging.Test
         public void SamplingLogFilter_InvalidSampleRate_ShouldThrow()
         {
             // Act & Assert
-            Assert.Throws<ArgumentException>(() => new SamplingLogFilter(sampleRate: 0));
-            Assert.Throws<ArgumentException>(() => new SamplingLogFilter(sampleRate: -1));
+            Assert.Throws<ArgumentException>(() => new SamplingLogFilter(0));
+            Assert.Throws<ArgumentException>(() => new SamplingLogFilter(-1));
         }
 
         [Fact]
         public void SamplingLogFilter_LargeSampleRate_ShouldRarelyPass()
         {
             // Arrange
-            SamplingLogFilter filter = new SamplingLogFilter(sampleRate: 1000);
+            SamplingLogFilter filter = new SamplingLogFilter(1000);
 
             // Act
             int passCount = 0;
@@ -152,7 +152,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void SamplingLogFilter_NullEntry_ShouldReturnFalse()
         {
             // Arrange
-            SamplingLogFilter filter = new SamplingLogFilter(sampleRate: 1);
+            SamplingLogFilter filter = new SamplingLogFilter(1);
 
             // Act & Assert
             Assert.False(filter.ShouldLog(null));
@@ -162,7 +162,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void SamplingLogFilter_HasName()
         {
             // Arrange
-            SamplingLogFilter filter = new SamplingLogFilter(sampleRate: 10);
+            SamplingLogFilter filter = new SamplingLogFilter(10);
 
             // Act & Assert
             Assert.NotNull(filter.Name);
@@ -174,7 +174,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void SamplingLogFilter_CounterIncrementsCorrectly()
         {
             // Arrange
-            SamplingLogFilter filter = new SamplingLogFilter(sampleRate: 5);
+            SamplingLogFilter filter = new SamplingLogFilter(5);
 
             // Act & Assert - The counter should increment each call
             bool[] results = new bool[15];
@@ -208,8 +208,8 @@ namespace Alis.Core.Aspect.Logging.Test
         public void SamplingLogFilter_MultipleInstances_ShouldIndependentlySample()
         {
             // Arrange
-            SamplingLogFilter filter1 = new SamplingLogFilter(sampleRate: 2);
-            SamplingLogFilter filter2 = new SamplingLogFilter(sampleRate: 2);
+            SamplingLogFilter filter1 = new SamplingLogFilter(2);
+            SamplingLogFilter filter2 = new SamplingLogFilter(2);
 
             // Act
             bool[] f1Results = new bool[10];
@@ -232,7 +232,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void SamplingLogFilter_HighVolume_ShouldMaintainRatio()
         {
             // Arrange
-            SamplingLogFilter filter = new SamplingLogFilter(sampleRate: 100);
+            SamplingLogFilter filter = new SamplingLogFilter(100);
             const int totalEntries = 10000;
 
             // Act
@@ -253,7 +253,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void SamplingLogFilter_SampleRate1_Name_ShouldIndicatePassAll()
         {
             // Arrange
-            SamplingLogFilter filter = new SamplingLogFilter(sampleRate: 1);
+            SamplingLogFilter filter = new SamplingLogFilter(1);
 
             // Act & Assert
             Assert.Contains("1", filter.Name);
@@ -263,25 +263,21 @@ namespace Alis.Core.Aspect.Logging.Test
         public void SamplingLogFilter_ConsecutiveCalls_ShouldProgressively()
         {
             // Arrange
-            SamplingLogFilter filter = new SamplingLogFilter(sampleRate: 5);
+            SamplingLogFilter filter = new SamplingLogFilter(5);
 
             // Act & Assert
             Assert.False(filter.ShouldLog(CreateEntry())); // 1st
             Assert.False(filter.ShouldLog(CreateEntry())); // 2nd
             Assert.False(filter.ShouldLog(CreateEntry())); // 3rd
             Assert.False(filter.ShouldLog(CreateEntry())); // 4th
-            Assert.True(filter.ShouldLog(CreateEntry()));  // 5th - Pass
+            Assert.True(filter.ShouldLog(CreateEntry())); // 5th - Pass
             Assert.False(filter.ShouldLog(CreateEntry())); // 6th
             Assert.False(filter.ShouldLog(CreateEntry())); // 7th
             Assert.False(filter.ShouldLog(CreateEntry())); // 8th
             Assert.False(filter.ShouldLog(CreateEntry())); // 9th
-            Assert.True(filter.ShouldLog(CreateEntry()));  // 10th - Pass
+            Assert.True(filter.ShouldLog(CreateEntry())); // 10th - Pass
         }
 
-        private static ILogEntry CreateEntry(LogLevel level = LogLevel.Info)
-        {
-            return new LogEntry(level, "Test message", "TestLogger");
-        }
+        private static ILogEntry CreateEntry(LogLevel level = LogLevel.Info) => new LogEntry(level, "Test message", "TestLogger");
     }
 }
-

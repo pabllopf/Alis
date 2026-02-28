@@ -156,7 +156,7 @@ namespace Alis.Extension.Cloud.GoogleDrive.Test
             Assert.Equal("Cloud", manager.Tag);
             Assert.True(manager.IsEnable);
         }
-        
+
 
         /// <summary>
         ///     Tests directory creation for downloads
@@ -234,4 +234,3 @@ namespace Alis.Extension.Cloud.GoogleDrive.Test
         }
     }
 }
-

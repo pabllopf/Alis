@@ -165,13 +165,13 @@ namespace Alis.Extension.Language.Translator.Test
                 {
                     "en", new Dictionary<string, string>
                     {
-                        { "greeting", "Hello" }
+                        {"greeting", "Hello"}
                     }
                 },
                 {
                     "es", new Dictionary<string, string>
                     {
-                        { "greeting", "Hola" }
+                        {"greeting", "Hola"}
                     }
                 }
             };
@@ -196,7 +196,7 @@ namespace Alis.Extension.Language.Translator.Test
             MemoryTranslationProvider provider = new MemoryTranslationProvider();
 
             // Act & Assert
-            await Assert.ThrowsAsync<ArgumentNullException>(async () => 
+            await Assert.ThrowsAsync<ArgumentNullException>(async () =>
                 await provider.SaveTranslationsAsync(null));
         }
 
@@ -241,4 +241,3 @@ namespace Alis.Extension.Language.Translator.Test
         }
     }
 }
-

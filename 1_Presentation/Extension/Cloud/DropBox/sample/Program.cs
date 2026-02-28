@@ -259,7 +259,7 @@ namespace Alis.Extension.Cloud.DropBox.Sample
                 Logger.Info($"Found {files.Count} items in Dropbox:");
                 foreach (Metadata file in files)
                 {
-                    string fileType = file is Dropbox.Api.Files.FileMetadata ? "File" : "Folder";
+                    string fileType = file is FileMetadata ? "File" : "Folder";
                     Logger.Info($"  - {file.Name} ({fileType})");
                 }
             }
@@ -297,7 +297,7 @@ namespace Alis.Extension.Cloud.DropBox.Sample
 
                 // Example: Get metadata for a specific file
                 Metadata metadata = await manager.GetMetadataAsync("/sample-upload.txt");
-                Logger.Info($"File metadata retrieved:");
+                Logger.Info("File metadata retrieved:");
                 Logger.Info($"  - Name: {metadata.Name}");
                 Logger.Info($"  - Path: {metadata.PathDisplay}");
             }
@@ -350,4 +350,3 @@ namespace Alis.Extension.Cloud.DropBox.Sample
         }
     }
 }
-

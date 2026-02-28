@@ -75,4 +75,3 @@ namespace Alis.Extension.Language.Translator.Abstractions
         void Clear();
     }
 }
-

@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
+using System.IO;
 using Alis.Core.Aspect.Logging;
 
 namespace Alis.Extension.Io.FileDialog.Sample
@@ -93,8 +93,8 @@ namespace Alis.Extension.Io.FileDialog.Sample
 
             try
             {
-                FilePickerOptions options = new FilePickerOptions("Select a File", FileDialogType.OpenFile)
-                    .WithDefaultPath(System.IO.Path.GetTempPath());
+                FilePickerOptions options = new FilePickerOptions("Select a File")
+                    .WithDefaultPath(Path.GetTempPath());
 
                 Logger.Info("Opening file dialog...");
                 FilePickerResult result = filePicker.PickFile(options);
@@ -127,8 +127,8 @@ namespace Alis.Extension.Io.FileDialog.Sample
 
             try
             {
-                FilePickerOptions options = new FilePickerOptions("Select Multiple Files", FileDialogType.OpenFile)
-                    .WithDefaultPath(System.IO.Path.GetTempPath())
+                FilePickerOptions options = new FilePickerOptions("Select Multiple Files")
+                    .WithDefaultPath(Path.GetTempPath())
                     .WithMultipleSelection();
 
                 Logger.Info("Opening multiple file dialog...");
@@ -167,7 +167,7 @@ namespace Alis.Extension.Io.FileDialog.Sample
             try
             {
                 FilePickerOptions options = new FilePickerOptions("Select a Folder", FileDialogType.SelectFolder)
-                    .WithDefaultPath(System.IO.Path.GetTempPath());
+                    .WithDefaultPath(Path.GetTempPath());
 
                 Logger.Info("Opening folder dialog...");
                 FilePickerResult result = filePicker.PickFolder(options);
@@ -200,8 +200,8 @@ namespace Alis.Extension.Io.FileDialog.Sample
 
             try
             {
-                FilePickerOptions options = new FilePickerOptions("Select a Text or Document File", FileDialogType.OpenFile)
-                    .WithDefaultPath(System.IO.Path.GetTempPath())
+                FilePickerOptions options = new FilePickerOptions("Select a Text or Document File")
+                    .WithDefaultPath(Path.GetTempPath())
                     .WithFilter(new FilePickerFilter("Text Files", "txt", "log"))
                     .WithFilter(new FilePickerFilter("Document Files", "doc", "docx", "pdf"))
                     .WithFilter(new FilePickerFilter("All Files", "*"));
@@ -218,7 +218,7 @@ namespace Alis.Extension.Io.FileDialog.Sample
                 if (result.IsSuccess)
                 {
                     Logger.Info($"File selected: {result.SelectedPath}");
-                    
+
                     // Validate the result
                     bool isValid = FilePickerValidator.IsResultValid(result, options);
                     Logger.Info($"Result validation: {(isValid ? "PASSED" : "FAILED")}");
@@ -239,4 +239,3 @@ namespace Alis.Extension.Io.FileDialog.Sample
         }
     }
 }
-

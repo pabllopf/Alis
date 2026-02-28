@@ -38,10 +38,10 @@ namespace Alis.Extension.Graphic.Glfw.Enums
     public enum ModifierKeys
     {
         /// <summary>
-        /// The none modifier keys
+        ///     The none modifier keys
         /// </summary>
         None = 0x0000,
-        
+
         /// <summary>
         ///     Either of the Shift keys.
         /// </summary>

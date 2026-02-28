@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Logging;
 using Alis.Extension.Language.Dialogue.Core;
@@ -52,31 +51,31 @@ namespace Alis.Extension.Language.Dialogue.Sample
             // Example 1: Basic Functionality
             Logger.Info("[EXAMPLE 1] Basic Dialog Management");
             DemonstrateBasicDialogs();
-            
+
             Logger.Info("\n========================================\n");
 
             // Example 2: Advanced Features with State Management
             Logger.Info("[EXAMPLE 2] Advanced State Machine & Events");
             DemonstrateAdvancedStateManagement();
-            
+
             Logger.Info("\n========================================\n");
 
             // Example 3: Conditions and Available Options
             Logger.Info("[EXAMPLE 3] Conditional Options");
             DemonstrateConditionalOptions();
-            
+
             Logger.Info("\n========================================\n");
 
             // Example 4: Context Variables and Actions
             Logger.Info("[EXAMPLE 4] Context Variables & Actions");
             DemonstrateContextAndActions();
-            
+
             Logger.Info("\n========================================\n");
 
             // Example 5: Event Observation
             Logger.Info("[EXAMPLE 5] Event Observation Pattern");
             DemonstrateEventObservation();
-            
+
             Logger.Info("\n========================================\n");
 
             // Example 6: Complex Game Dialogue Tree
@@ -214,6 +213,7 @@ namespace Alis.Extension.Language.Dialogue.Sample
             {
                 Logger.Info($"     • {option.Text}");
             }
+
             manager.EndDialog();
 
             // Scenario 2: Rich player with completed quest
@@ -228,6 +228,7 @@ namespace Alis.Extension.Language.Dialogue.Sample
             {
                 Logger.Info($"     • {option.Text}");
             }
+
             manager.EndDialog();
         }
 
@@ -245,19 +246,13 @@ namespace Alis.Extension.Language.Dialogue.Sample
             DialogOption swordOption = new DialogOption("Train Sword Combat", () =>
                 Logger.Info("   ✓ You spend 2 hours training sword techniques!")
             );
-            swordOption.AddDialogAction(new CallbackDialogAction("increaseSwordSkill", () =>
-            {
-                Logger.Info("   [Action] Sword skill +5");
-            }));
+            swordOption.AddDialogAction(new CallbackDialogAction("increaseSwordSkill", () => { Logger.Info("   [Action] Sword skill +5"); }));
             trainingDialog.AddOption(swordOption);
 
             DialogOption magicOption = new DialogOption("Study Magic", () =>
                 Logger.Info("   ✓ You study ancient spell books!")
             );
-            magicOption.AddDialogAction(new CallbackDialogAction("increaseMagicSkill", () =>
-            {
-                Logger.Info("   [Action] Magic skill +5");
-            }));
+            magicOption.AddDialogAction(new CallbackDialogAction("increaseMagicSkill", () => { Logger.Info("   [Action] Magic skill +5"); }));
             trainingDialog.AddOption(magicOption);
 
             manager.AddDialog(trainingDialog);
@@ -303,7 +298,7 @@ namespace Alis.Extension.Language.Dialogue.Sample
             manager.EndDialog();
 
             Logger.Info($"\n   Total events received: {observer.EventCount}");
-            Logger.Info($"   Event types tracked:");
+            Logger.Info("   Event types tracked:");
             foreach (DialogEventType eventType in observer.EventTypes)
             {
                 Logger.Info($"     • {eventType}");
@@ -398,16 +393,17 @@ namespace Alis.Extension.Language.Dialogue.Sample
         private class DialogEventObserver : IDialogEventObserver
         {
             /// <summary>
-            /// Gets or sets the value of the event count
+            ///     Gets or sets the value of the event count
             /// </summary>
             public int EventCount { get; private set; }
+
             /// <summary>
-            /// Gets the value of the event types
+            ///     Gets the value of the event types
             /// </summary>
             public List<DialogEventType> EventTypes { get; } = new List<DialogEventType>();
 
             /// <summary>
-            /// Ons the dialog event using the specified dialog event
+            ///     Ons the dialog event using the specified dialog event
             /// </summary>
             /// <param name="dialogEvent">The dialog event</param>
             public void OnDialogEvent(DialogEvent dialogEvent)

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SceneQueryExtensionsTest.2.cs
+//  File:SceneQueryExtensionsTest.3.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -72,9 +72,9 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 1 }, new Velocity { VX = 1, VY = 1 }, new Health { Value = 100 });
-            scene.Create(new Position { X = 2, Y = 2 }, new Velocity { VX = 2, VY = 2 }); // Missing Health
-            scene.Create(new Position { X = 3, Y = 3 }); // Missing Velocity and Health
+            scene.Create(new Position {X = 1, Y = 1}, new Velocity {VX = 1, VY = 1}, new Health {Value = 100});
+            scene.Create(new Position {X = 2, Y = 2}, new Velocity {VX = 2, VY = 2}); // Missing Health
+            scene.Create(new Position {X = 3, Y = 3}); // Missing Velocity and Health
 
             // Act
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>>();
@@ -100,9 +100,9 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             using Scene scene = new Scene();
             scene.Create(
-                new Position { X = 10, Y = 20 },
-                new Velocity { VX = 5, VY = 10 },
-                new Health { Value = 150 }
+                new Position {X = 10, Y = 20},
+                new Velocity {VX = 5, VY = 10},
+                new Health {Value = 150}
             );
 
             // Act
@@ -176,9 +176,9 @@ namespace Alis.Core.Ecs.Test
             for (int i = 0; i < 5; i++)
             {
                 scene.Create(
-                    new Position { X = i, Y = i },
-                    new Velocity { VX = i, VY = i },
-                    new Health { Value = i * 10 }
+                    new Position {X = i, Y = i},
+                    new Velocity {VX = i, VY = i},
+                    new Health {Value = i * 10}
                 );
             }
 
@@ -206,9 +206,9 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             using Scene scene = new Scene();
             scene.Create(
-                new Position { X = 1, Y = 1 },
-                new Velocity { VX = 1, VY = 1 },
-                new Health { Value = 100 }
+                new Position {X = 1, Y = 1},
+                new Velocity {VX = 1, VY = 1},
+                new Health {Value = 100}
             );
 
             // Act
@@ -238,9 +238,9 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
-                new Position { X = 0, Y = 0 },
-                new Velocity { VX = 0, VY = 0 },
-                new Health { Value = 0 }
+                new Position {X = 0, Y = 0},
+                new Velocity {VX = 0, VY = 0},
+                new Health {Value = 0}
             );
 
             // Act
@@ -282,10 +282,10 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             using Scene scene = new Scene();
             scene.Create(
-                new Position { X = 1, Y = 1 },
-                new Velocity { VX = 1, VY = 1 },
-                new Health { Value = 100 },
-                new Transform { X = 0, Y = 0, Rotation = 0 }
+                new Position {X = 1, Y = 1},
+                new Velocity {VX = 1, VY = 1},
+                new Health {Value = 100},
+                new Transform {X = 0, Y = 0, Rotation = 0}
             );
 
             // Act
@@ -311,11 +311,11 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position { X = 1, Y = 1 }, new Velocity { VX = 1, VY = 1 }, new Health { Value = 100 });
+            scene.Create(new Position {X = 1, Y = 1}, new Velocity {VX = 1, VY = 1}, new Health {Value = 100});
             GameObject disabled = scene.Create(
-                new Position { X = 2, Y = 2 },
-                new Velocity { VX = 2, VY = 2 },
-                new Health { Value = 50 }
+                new Position {X = 2, Y = 2},
+                new Velocity {VX = 2, VY = 2},
+                new Health {Value = 50}
             );
             disabled.Tag<Disable>();
 
@@ -332,4 +332,3 @@ namespace Alis.Core.Ecs.Test
         }
     }
 }
-

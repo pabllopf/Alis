@@ -38,7 +38,7 @@ namespace Alis.Core.Ecs.Test.Systems
     ///     The rule test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="Rule"/> class which provides static methods
+    ///     Tests the <see cref="Rule" /> class which provides static methods
     ///     for constructing query rules with component and tag requirements.
     /// </remarks>
     public class RuleTest
@@ -67,7 +67,7 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             // Act
             MethodInfo[] methods = typeof(Rule).GetMethods(
-                System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
+                BindingFlags.Public | BindingFlags.Static);
 
             // Assert
             Assert.NotEmpty(methods);
@@ -83,7 +83,7 @@ namespace Alis.Core.Ecs.Test.Systems
         public void Rule_WithMethodExists()
         {
             // Act
-            MethodInfo method = typeof(Rule).GetMethod("With", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
+            MethodInfo method = typeof(Rule).GetMethod("With", BindingFlags.Public | BindingFlags.Static);
 
             // Assert
             Assert.Null(method);
@@ -99,7 +99,7 @@ namespace Alis.Core.Ecs.Test.Systems
         public void Rule_WithoutMethodExists()
         {
             // Act
-            MethodInfo method = typeof(Rule).GetMethod("Without", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
+            MethodInfo method = typeof(Rule).GetMethod("Without", BindingFlags.Public | BindingFlags.Static);
 
             // Assert
             Assert.Null(method);
@@ -115,7 +115,7 @@ namespace Alis.Core.Ecs.Test.Systems
         public void Rule_TaggedMethodExists()
         {
             // Act
-            MethodInfo method = typeof(Rule).GetMethod("Tagged", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
+            MethodInfo method = typeof(Rule).GetMethod("Tagged", BindingFlags.Public | BindingFlags.Static);
 
             // Assert
             Assert.Null(method);
@@ -131,7 +131,7 @@ namespace Alis.Core.Ecs.Test.Systems
         public void Rule_UntaggedMethodExists()
         {
             // Act
-            MethodInfo method = typeof(Rule).GetMethod("Untagged", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
+            MethodInfo method = typeof(Rule).GetMethod("Untagged", BindingFlags.Public | BindingFlags.Static);
 
             // Assert
             Assert.Null(method);
@@ -154,4 +154,3 @@ namespace Alis.Core.Ecs.Test.Systems
         }
     }
 }
-

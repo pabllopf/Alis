@@ -40,11 +40,12 @@ namespace Alis.Extension.Io.FileDialog
     public class LinuxFilePicker : IFilePicker
     {
         /// <summary>
-        /// The default dialog tool
+        ///     The default dialog tool
         /// </summary>
         private const string DefaultDialogTool = "zenity";
+
         /// <summary>
-        /// The fallback dialog tool
+        ///     The fallback dialog tool
         /// </summary>
         private const string FallbackDialogTool = "kdialog";
 
@@ -61,7 +62,11 @@ namespace Alis.Extension.Io.FileDialog
             try
             {
                 FilePickerValidator.ValidateOptions(options);
-                if (options == null) throw new ArgumentNullException(nameof(options));
+                if (options == null)
+                {
+                    throw new ArgumentNullException(nameof(options));
+                }
+
                 options.AllowMultiple = false;
 
                 string result = ExecuteFileDialog(options, false);
@@ -86,7 +91,11 @@ namespace Alis.Extension.Io.FileDialog
             try
             {
                 FilePickerValidator.ValidateOptions(options);
-                if (options == null) throw new ArgumentNullException(nameof(options));
+                if (options == null)
+                {
+                    throw new ArgumentNullException(nameof(options));
+                }
+
                 options.AllowMultiple = true;
 
                 string result = ExecuteFileDialog(options, true);
@@ -111,7 +120,10 @@ namespace Alis.Extension.Io.FileDialog
             try
             {
                 FilePickerValidator.ValidateOptions(options);
-                if (options == null) throw new ArgumentNullException(nameof(options));
+                if (options == null)
+                {
+                    throw new ArgumentNullException(nameof(options));
+                }
 
                 string result = ExecuteFolderDialog(options);
                 return ParseResult(result, options, false);
@@ -139,7 +151,7 @@ namespace Alis.Extension.Io.FileDialog
             Logger.Info($"Using {tool} for file dialog.");
 
             string arguments = BuildFileDialogArguments(tool, options, allowMultiple);
-            return FilePickerExecutor.ExecuteCommand(tool, arguments, 30000);
+            return FilePickerExecutor.ExecuteCommand(tool, arguments);
         }
 
         /// <summary>
@@ -158,7 +170,7 @@ namespace Alis.Extension.Io.FileDialog
             Logger.Info($"Using {tool} for folder dialog.");
 
             string arguments = BuildFolderDialogArguments(tool, options);
-            return FilePickerExecutor.ExecuteCommand(tool, arguments, 30000);
+            return FilePickerExecutor.ExecuteCommand(tool, arguments);
         }
 
         /// <summary>
@@ -213,12 +225,13 @@ namespace Alis.Extension.Io.FileDialog
                     args.Add("--separator=|");
                 }
 
-                if (options.Filters != null && options.Filters.Count > 0)
+                if ((options.Filters != null) && (options.Filters.Count > 0))
                 {
                     foreach (FilePickerFilter filter in options.Filters)
                     {
                         args.Add($"--file-filter=\"{EscapeShellString(filter.DisplayName)} | {filter.GetFormattedExtensions()}\"");
                     }
+
                     args.Add("--file-filter=\"All files | *\"");
                 }
             }
@@ -242,7 +255,7 @@ namespace Alis.Extension.Io.FileDialog
                     args.Add("~/");
                 }
 
-                if (options.Filters != null && options.Filters.Count > 0)
+                if ((options.Filters != null) && (options.Filters.Count > 0))
                 {
                     string filterStr = string.Join(" ", options.Filters.Select(f => $"{f.DisplayName} ({f.GetFormattedExtensions()})"));
                     args.Add($"\"{EscapeShellString(filterStr)}\"");
@@ -323,14 +336,14 @@ namespace Alis.Extension.Io.FileDialog
                 if (allowMultiple)
                 {
                     // For zenity, multiple paths are separated by |
-                    paths = output.Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries)
+                    paths = output.Split(new[] {'|'}, StringSplitOptions.RemoveEmptyEntries)
                         .Select(p => FilePickerPathConverter.NormalizePath(p))
                         .Where(p => !string.IsNullOrEmpty(p))
                         .ToArray();
                 }
                 else
                 {
-                    paths = new[] { FilePickerPathConverter.NormalizePath(output) };
+                    paths = new[] {FilePickerPathConverter.NormalizePath(output)};
                 }
 
                 if (paths.Length == 0)

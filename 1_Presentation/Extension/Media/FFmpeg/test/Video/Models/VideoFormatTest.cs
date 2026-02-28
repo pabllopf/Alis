@@ -292,9 +292,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         public void VideoFormat_ShouldSupportCommonVideoFormats()
         {
             // Arrange & Act
-            VideoFormat mp4 = new VideoFormat { FormatName = "mp4" };
-            VideoFormat mkv = new VideoFormat { FormatName = "matroska" };
-            VideoFormat webm = new VideoFormat { FormatName = "webm" };
+            VideoFormat mp4 = new VideoFormat {FormatName = "mp4"};
+            VideoFormat mkv = new VideoFormat {FormatName = "matroska"};
+            VideoFormat webm = new VideoFormat {FormatName = "webm"};
 
             // Assert
             Assert.Equal("mp4", mp4.FormatName);
@@ -309,9 +309,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         public void VideoFormat_ProbeScore_ShouldSupportValidRange()
         {
             // Arrange & Act
-            VideoFormat lowScore = new VideoFormat { ProbeScore = 0 };
-            VideoFormat mediumScore = new VideoFormat { ProbeScore = 50 };
-            VideoFormat highScore = new VideoFormat { ProbeScore = 100 };
+            VideoFormat lowScore = new VideoFormat {ProbeScore = 0};
+            VideoFormat mediumScore = new VideoFormat {ProbeScore = 50};
+            VideoFormat highScore = new VideoFormat {ProbeScore = 100};
 
             // Assert
             Assert.Equal(0, lowScore.ProbeScore);
@@ -320,4 +320,3 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         }
     }
 }
-

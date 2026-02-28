@@ -36,7 +36,7 @@ namespace Alis.Core.Ecs.Test.Kernel
     ///     The tag id extended test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="TagId"/> struct which represents
+    ///     Tests the <see cref="TagId" /> struct which represents
     ///     a lightweight identifier for tag types in the ECS system.
     ///     This is an extended test suite with more comprehensive coverage.
     /// </remarks>
@@ -71,7 +71,7 @@ namespace Alis.Core.Ecs.Test.Kernel
             TagId tagId = new TagId(42);
 
             // Assert
-            Assert.Equal((ushort)42, tagId.RawValue);
+            Assert.Equal((ushort) 42, tagId.RawValue);
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace Alis.Core.Ecs.Test.Kernel
             TagId tagId = new TagId(0);
 
             // Assert
-            Assert.Equal((ushort)0, tagId.RawValue);
+            Assert.Equal((ushort) 0, tagId.RawValue);
         }
 
         /// <summary>
@@ -198,4 +198,3 @@ namespace Alis.Core.Ecs.Test.Kernel
         }
     }
 }
-

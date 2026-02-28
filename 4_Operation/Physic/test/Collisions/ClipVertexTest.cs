@@ -45,7 +45,7 @@ namespace Alis.Core.Physic.Test.Collisions
         public void DefaultConstructor_ShouldInitializeWithDefaultValues()
         {
             ClipVertex clipVertex = new ClipVertex();
-            
+
             Assert.Equal(default(ContactId), clipVertex.Id);
             Assert.Equal(Vector2F.Zero, clipVertex.V);
         }
@@ -59,9 +59,9 @@ namespace Alis.Core.Physic.Test.Collisions
             ClipVertex clipVertex = new ClipVertex();
             ContactId contactId = new ContactId();
             contactId.Key = 12345;
-            
+
             clipVertex.Id = contactId;
-            
+
             Assert.Equal(contactId.Key, clipVertex.Id.Key);
         }
 
@@ -73,9 +73,9 @@ namespace Alis.Core.Physic.Test.Collisions
         {
             ClipVertex clipVertex = new ClipVertex();
             Vector2F vector = new Vector2F(3.5f, 4.5f);
-            
+
             clipVertex.V = vector;
-            
+
             Assert.Equal(vector, clipVertex.V);
         }
 
@@ -89,7 +89,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 V = new Vector2F(10.5f, 20.3f)
             };
-            
+
             Assert.Equal(10.5f, clipVertex.V.X);
             Assert.Equal(20.3f, clipVertex.V.Y);
         }
@@ -104,7 +104,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 V = new Vector2F(-5.2f, -8.7f)
             };
-            
+
             Assert.Equal(-5.2f, clipVertex.V.X);
             Assert.Equal(-8.7f, clipVertex.V.Y);
         }
@@ -119,7 +119,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 V = Vector2F.Zero
             };
-            
+
             Assert.Equal(0.0f, clipVertex.V.X);
             Assert.Equal(0.0f, clipVertex.V.Y);
         }
@@ -130,11 +130,11 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void ClipVertex_ShouldBeValueType()
         {
-            ClipVertex vertex1 = new ClipVertex { V = new Vector2F(1.0f, 2.0f) };
+            ClipVertex vertex1 = new ClipVertex {V = new Vector2F(1.0f, 2.0f)};
             ClipVertex vertex2 = vertex1;
-            
+
             vertex2.V = new Vector2F(3.0f, 4.0f);
-            
+
             Assert.NotEqual(vertex1.V, vertex2.V);
         }
 
@@ -148,7 +148,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 V = new Vector2F(float.MaxValue / 2, float.MaxValue / 2)
             };
-            
+
             Assert.True(clipVertex.V.X > 0);
             Assert.True(clipVertex.V.Y > 0);
         }
@@ -163,10 +163,9 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 V = new Vector2F(float.Epsilon, float.Epsilon)
             };
-            
+
             Assert.Equal(float.Epsilon, clipVertex.V.X);
             Assert.Equal(float.Epsilon, clipVertex.V.Y);
         }
     }
 }
-

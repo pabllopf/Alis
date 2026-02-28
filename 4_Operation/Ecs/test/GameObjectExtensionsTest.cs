@@ -51,7 +51,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 1, Y = 2 });
+            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
             // Act
             entity.Tag<PlayerTag>();
@@ -71,7 +71,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 1, Y = 2 });
+            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
             // Act
             entity.Tag<PlayerTag>();
@@ -93,10 +93,10 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 5, Y = 10 });
+            GameObject entity = scene.Create(new Position {X = 5, Y = 10});
 
             // Act
-            entity.Add(new Velocity { VX = 1.0f, VY = 2.0f });
+            entity.Add(new Velocity {VX = 1.0f, VY = 2.0f});
 
             // Assert
             Assert.True(entity.Has<Velocity>());
@@ -113,7 +113,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 5, Y = 10 }, new Velocity { VX = 1.0f, VY = 2.0f });
+            GameObject entity = scene.Create(new Position {X = 5, Y = 10}, new Velocity {VX = 1.0f, VY = 2.0f});
 
             // Act
             entity.Remove<Velocity>();
@@ -121,7 +121,7 @@ namespace Alis.Core.Ecs.Test
             // Assert
             Assert.False(entity.Has<Velocity>());
         }
-        
+
         /// <summary>
         ///     Tests that add with generic component works
         /// </summary>
@@ -133,10 +133,10 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 10, Y = 20 });
+            GameObject entity = scene.Create(new Position {X = 10, Y = 20});
 
             // Act
-            entity.Add(new Health { Value = 100 });
+            entity.Add(new Health {Value = 100});
 
             // Assert
             Assert.True(entity.Has<Health>());
@@ -154,16 +154,16 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 5, Y = 5 });
+            GameObject entity = scene.Create(new Position {X = 5, Y = 5});
 
             // Act & Assert
-            entity.Add(new Health { Value = 50 });
+            entity.Add(new Health {Value = 50});
             Assert.True(entity.Has<Health>());
 
             entity.Remove<Health>();
             Assert.False(entity.Has<Health>());
 
-            entity.Add(new Health { Value = 75 });
+            entity.Add(new Health {Value = 75});
             Assert.True(entity.Has<Health>());
             Assert.Equal(75, entity.Get<Health>().Value);
         }
@@ -179,7 +179,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 100, Y = 200 });
+            GameObject entity = scene.Create(new Position {X = 100, Y = 200});
 
             // Act
             entity.Tag<PlayerTag>();
@@ -202,8 +202,8 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(new Position { X = 1, Y = 2 });
-            GameObject entity2 = scene.Create(new Position { X = 3, Y = 4 });
+            GameObject entity1 = scene.Create(new Position {X = 1, Y = 2});
+            GameObject entity2 = scene.Create(new Position {X = 3, Y = 4});
 
             // Act
             entity1.Tag<PlayerTag>();
@@ -213,7 +213,5 @@ namespace Alis.Core.Ecs.Test
             Assert.True(entity1.Tagged<PlayerTag>());
             Assert.True(entity2.Tagged<PlayerTag>());
         }
-        
     }
 }
-

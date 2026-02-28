@@ -37,7 +37,7 @@ namespace Alis.Core.Ecs.Test.Collections
     ///     The sparse set test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="SparseSet{T}"/> collection which provides
+    ///     Tests the <see cref="SparseSet{T}" /> collection which provides
     ///     efficient sparse array storage for the ECS system.
     /// </remarks>
     public class SparseSetTest
@@ -154,7 +154,7 @@ namespace Alis.Core.Ecs.Test.Collections
             SparseSet<TestStruct> sparseSet = new SparseSet<TestStruct>();
 
             // Act
-            sparseSet[0] = new TestStruct { X = 10, Y = 20 };
+            sparseSet[0] = new TestStruct {X = 10, Y = 20};
 
             // Assert
             Assert.Equal(10, sparseSet[0].X);
@@ -350,11 +350,11 @@ namespace Alis.Core.Ecs.Test.Collections
             SparseSet<ComplexType> sparseSet = new SparseSet<ComplexType>();
 
             // Act
-            sparseSet[0] = new ComplexType 
-            { 
-                Id = 1, 
-                Name = "Test", 
-                Values = new[] { 1.0, 2.0, 3.0 } 
+            sparseSet[0] = new ComplexType
+            {
+                Id = 1,
+                Name = "Test",
+                Values = new[] {1.0, 2.0, 3.0}
             };
 
             // Assert
@@ -364,4 +364,3 @@ namespace Alis.Core.Ecs.Test.Collections
         }
     }
 }
-

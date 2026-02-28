@@ -45,7 +45,7 @@ namespace Alis.Core.Physic.Test.Collisions
         public void Constructor_ShouldCreateInstance()
         {
             ToiInput input = new ToiInput();
-            
+
             Assert.NotNull(input);
         }
 
@@ -57,9 +57,9 @@ namespace Alis.Core.Physic.Test.Collisions
         {
             ToiInput input = new ToiInput();
             DistanceProxy proxy = new DistanceProxy();
-            
+
             input.ProxyA = proxy;
-            
+
             Assert.Equal(proxy, input.ProxyA);
         }
 
@@ -71,9 +71,9 @@ namespace Alis.Core.Physic.Test.Collisions
         {
             ToiInput input = new ToiInput();
             DistanceProxy proxy = new DistanceProxy();
-            
+
             input.ProxyB = proxy;
-            
+
             Assert.Equal(proxy, input.ProxyB);
         }
 
@@ -85,9 +85,9 @@ namespace Alis.Core.Physic.Test.Collisions
         {
             ToiInput input = new ToiInput();
             Sweep sweep = new Sweep();
-            
+
             input.SweepA = sweep;
-            
+
             Assert.Equal(sweep, input.SweepA);
         }
 
@@ -99,9 +99,9 @@ namespace Alis.Core.Physic.Test.Collisions
         {
             ToiInput input = new ToiInput();
             Sweep sweep = new Sweep();
-            
+
             input.SweepB = sweep;
-            
+
             Assert.Equal(sweep, input.SweepB);
         }
 
@@ -115,7 +115,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 TMax = 1.5f
             };
-            
+
             Assert.Equal(1.5f, input.TMax);
         }
 
@@ -133,7 +133,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 SweepB = new Sweep(),
                 TMax = 2.0f
             };
-            
+
             Assert.NotNull(input.ProxyA);
             Assert.NotNull(input.ProxyB);
             Assert.Equal(2.0f, input.TMax);
@@ -149,7 +149,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 TMax = 0.0f
             };
-            
+
             Assert.Equal(0.0f, input.TMax);
         }
 
@@ -163,9 +163,8 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 TMax = -1.0f
             };
-            
+
             Assert.Equal(-1.0f, input.TMax);
         }
     }
 }
-

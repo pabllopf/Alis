@@ -5,32 +5,33 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: Program.cs
+//  File:Program.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program. If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
-using Alis.Core.Aspect.Logging;
+using System.Threading;
 using Alis.Core.Aspect.Logging.Abstractions;
 using Alis.Core.Aspect.Logging.Core;
 using Alis.Core.Aspect.Logging.Filters;
@@ -193,11 +194,11 @@ namespace Alis.Core.Aspect.Logging.Sample
                 // Log with structured data
                 Dictionary<string, object> playerProperties = new Dictionary<string, object>
                 {
-                    { "PlayerId", 12345 },
-                    { "PlayerName", "Hero" },
-                    { "Level", 42 },
-                    { "Experience", 500000 },
-                    { "Health", 100 }
+                    {"PlayerId", 12345},
+                    {"PlayerName", "Hero"},
+                    {"Level", 42},
+                    {"Experience", 500000},
+                    {"Health", 100}
                 };
 
                 logger.LogStructured(LogLevel.Info, "Player logged in", playerProperties);
@@ -205,10 +206,10 @@ namespace Alis.Core.Aspect.Logging.Sample
                 // Another structured log
                 Dictionary<string, object> attackProperties = new Dictionary<string, object>
                 {
-                    { "Attacker", "Hero" },
-                    { "Defender", "Goblin" },
-                    { "Damage", 25 },
-                    { "Critical", true }
+                    {"Attacker", "Hero"},
+                    {"Defender", "Goblin"},
+                    {"Damage", 25},
+                    {"Critical", true}
                 };
 
                 logger.LogStructured(LogLevel.Info, "Attack executed", attackProperties);
@@ -228,7 +229,7 @@ namespace Alis.Core.Aspect.Logging.Sample
                 factory.AddOutput(new ConsoleLogOutput(new SimpleLogFormatter()));
 
                 // Add memory output for inspection
-                MemoryLogOutput memoryOutput = new MemoryLogOutput(maxEntries: 1000);
+                MemoryLogOutput memoryOutput = new MemoryLogOutput();
                 factory.AddOutput(memoryOutput);
 
                 ILogger logger = factory.CreateLogger("MyGame.Physics");
@@ -263,8 +264,7 @@ namespace Alis.Core.Aspect.Logging.Sample
 
                 // Only allow specific loggers
                 factory.AddFilter(new LoggerNameFilter(
-                    new[] { "MyGame.Critical", "MyGame.Security" },
-                    inclusive: true
+                    new[] {"MyGame.Critical", "MyGame.Security"}
                 ));
 
                 ILogger criticalLogger = factory.CreateLogger("MyGame.Critical");
@@ -458,7 +458,7 @@ namespace Alis.Core.Aspect.Logging.Sample
 
                 // General application log
                 factory.AddOutput(new FileLogOutput(appLogPath, new SimpleLogFormatter()));
-                
+
                 // Error-only log with JSON format
                 factory.AddOutput(new FileLogOutput(errorLogPath, new JsonLogFormatter()));
                 factory.AddFilter(new LogLevelFilter(LogLevel.Error));
@@ -473,7 +473,7 @@ namespace Alis.Core.Aspect.Logging.Sample
                 logger.LogDebug("This is a debug message");
                 logger.LogWarning("This is a warning");
                 logger.LogError("This is an error - written to both logs");
-                
+
                 Console.WriteLine($"Logs written to: {logsDir}");
                 Console.WriteLine($"  - {Path.GetFileName(appLogPath)} (all levels)");
                 Console.WriteLine($"  - {Path.GetFileName(errorLogPath)} (errors only, JSON format)");
@@ -492,8 +492,8 @@ namespace Alis.Core.Aspect.Logging.Sample
                 // Wrap file output in async wrapper for better performance
                 string logPath = Path.Combine(Directory.GetCurrentDirectory(), "logs", "async.log");
                 FileLogOutput fileOutput = new FileLogOutput(logPath, new SimpleLogFormatter());
-                AsyncLogOutput asyncOutput = new AsyncLogOutput(fileOutput, maxQueueSize: 1000);
-                
+                AsyncLogOutput asyncOutput = new AsyncLogOutput(fileOutput, 1000);
+
                 factory.AddOutput(asyncOutput);
                 factory.AddOutput(new ConsoleLogOutput(new CompactLogFormatter()));
 
@@ -506,7 +506,7 @@ namespace Alis.Core.Aspect.Logging.Sample
                 {
                     logger.LogTrace($"Frame {i}: Update started");
                     logger.LogDebug($"Frame {i}: Objects processed");
-                    
+
                     if (i % 10 == 0)
                     {
                         logger.LogInfo($"Checkpoint: Frame {i} completed");
@@ -514,7 +514,7 @@ namespace Alis.Core.Aspect.Logging.Sample
                 }
 
                 logger.LogInfo("High-frequency logging completed");
-                
+
                 // Flush ensures all queued entries are written
                 asyncOutput.Flush();
                 Console.WriteLine("All async logs flushed to disk");
@@ -540,7 +540,7 @@ namespace Alis.Core.Aspect.Logging.Sample
                 logger.LogWarning("Check your IDE's debug/output window");
                 logger.LogError("Debug output is perfect for development");
 
-                if (System.Diagnostics.Debugger.IsAttached)
+                if (Debugger.IsAttached)
                 {
                     Console.WriteLine("Debugger detected - messages sent to debug output");
                 }
@@ -561,14 +561,14 @@ namespace Alis.Core.Aspect.Logging.Sample
             using (LoggerFactory factory = new LoggerFactory())
             {
                 factory.AddOutput(new ConsoleLogOutput(new CompactLogFormatter()));
-                
+
                 // Only log 1 out of every 5 entries
-                factory.AddFilter(new SamplingLogFilter(sampleRate: 5));
+                factory.AddFilter(new SamplingLogFilter(5));
 
                 ILogger logger = factory.CreateLogger("Sampling.HighFrequency");
 
                 logger.LogInfo("Simulating high-frequency logging...");
-                
+
                 // Log 25 messages, but only ~5 should appear
                 for (int i = 1; i <= 25; i++)
                 {
@@ -624,10 +624,10 @@ namespace Alis.Core.Aspect.Logging.Sample
                 List<ILogFilter> filters = new List<ILogFilter>
                 {
                     new LogLevelFilter(LogLevel.Warning), // Must be Warning or above
-                    new LoggerNameFilter(new[] { "Critical" }, inclusive: true) // Must be from Critical logger
+                    new LoggerNameFilter(new[] {"Critical"}) // Must be from Critical logger
                 };
-                
-                factory.AddFilter(new CompositeLogFilter(filters, requireAll: true));
+
+                factory.AddFilter(new CompositeLogFilter(filters));
 
                 ILogger criticalLogger = factory.CreateLogger("Critical.System");
                 ILogger normalLogger = factory.CreateLogger("Normal.System");
@@ -650,10 +650,10 @@ namespace Alis.Core.Aspect.Logging.Sample
                 List<ILogFilter> filters = new List<ILogFilter>
                 {
                     new LogLevelFilter(LogLevel.Error), // Errors from anyone
-                    new LoggerNameFilter(new[] { "Important" }, inclusive: true) // Or anything from Important
+                    new LoggerNameFilter(new[] {"Important"}) // Or anything from Important
                 };
-                
-                factory.AddFilter(new CompositeLogFilter(filters, requireAll: false));
+
+                factory.AddFilter(new CompositeLogFilter(filters, false));
 
                 ILogger importantLogger = factory.CreateLogger("Important.Module");
                 ILogger normalLogger = factory.CreateLogger("Normal.Module");
@@ -722,22 +722,22 @@ namespace Alis.Core.Aspect.Logging.Sample
                 // Complex game event with many properties
                 Dictionary<string, object> gameSessionData = new Dictionary<string, object>
                 {
-                    { "SessionId", Guid.NewGuid() },
-                    { "PlayerId", 12345 },
-                    { "PlayerName", "HeroWarrior" },
-                    { "Level", 42 },
-                    { "Class", "Warrior" },
-                    { "Health", 850 },
-                    { "MaxHealth", 1000 },
-                    { "Mana", 200 },
-                    { "Experience", 500000 },
-                    { "Gold", 15750 },
-                    { "PlayTime", TimeSpan.FromHours(25.5).ToString() },
-                    { "QuestsCompleted", 87 },
-                    { "AchievementsUnlocked", 23 },
-                    { "Deaths", 5 },
-                    { "LastLocation", "Dragon's Lair" },
-                    { "Timestamp", DateTime.UtcNow }
+                    {"SessionId", Guid.NewGuid()},
+                    {"PlayerId", 12345},
+                    {"PlayerName", "HeroWarrior"},
+                    {"Level", 42},
+                    {"Class", "Warrior"},
+                    {"Health", 850},
+                    {"MaxHealth", 1000},
+                    {"Mana", 200},
+                    {"Experience", 500000},
+                    {"Gold", 15750},
+                    {"PlayTime", TimeSpan.FromHours(25.5).ToString()},
+                    {"QuestsCompleted", 87},
+                    {"AchievementsUnlocked", 23},
+                    {"Deaths", 5},
+                    {"LastLocation", "Dragon's Lair"},
+                    {"Timestamp", DateTime.UtcNow}
                 };
 
                 logger.LogStructured(LogLevel.Info, "Game session snapshot", gameSessionData);
@@ -745,18 +745,18 @@ namespace Alis.Core.Aspect.Logging.Sample
                 // Combat event
                 Dictionary<string, object> combatData = new Dictionary<string, object>
                 {
-                    { "EventType", "Combat" },
-                    { "Attacker", "HeroWarrior" },
-                    { "AttackerLevel", 42 },
-                    { "Defender", "Ancient Dragon" },
-                    { "DefenderLevel", 50 },
-                    { "AttackType", "Power Strike" },
-                    { "BaseDamage", 150 },
-                    { "CriticalHit", true },
-                    { "CriticalMultiplier", 2.5 },
-                    { "FinalDamage", 375 },
-                    { "DefenderHealthRemaining", 2125 },
-                    { "CombatDuration", TimeSpan.FromSeconds(45).ToString() }
+                    {"EventType", "Combat"},
+                    {"Attacker", "HeroWarrior"},
+                    {"AttackerLevel", 42},
+                    {"Defender", "Ancient Dragon"},
+                    {"DefenderLevel", 50},
+                    {"AttackType", "Power Strike"},
+                    {"BaseDamage", 150},
+                    {"CriticalHit", true},
+                    {"CriticalMultiplier", 2.5},
+                    {"FinalDamage", 375},
+                    {"DefenderHealthRemaining", 2125},
+                    {"CombatDuration", TimeSpan.FromSeconds(45).ToString()}
                 };
 
                 logger.LogStructured(LogLevel.Info, "Combat event recorded", combatData);
@@ -787,13 +787,13 @@ namespace Alis.Core.Aspect.Logging.Sample
                     using (logger.BeginScope("System:Graphics"))
                     {
                         logger.LogInfo("Initializing renderer");
-                        
+
                         using (logger.BeginScope("Module:Shaders"))
                         {
                             logger.LogDebug("Compiling vertex shaders");
                             logger.LogDebug("Compiling fragment shaders");
                         }
-                        
+
                         using (logger.BeginScope("Module:Textures"))
                         {
                             logger.LogDebug("Loading texture atlas");
@@ -804,12 +804,12 @@ namespace Alis.Core.Aspect.Logging.Sample
                     using (logger.BeginScope("System:Audio"))
                     {
                         logger.LogInfo("Initializing audio engine");
-                        
+
                         using (logger.BeginScope("Module:SoundEffects"))
                         {
                             logger.LogDebug("Loading sound bank");
                         }
-                        
+
                         using (logger.BeginScope("Module:Music"))
                         {
                             logger.LogDebug("Streaming background music");
@@ -842,7 +842,7 @@ namespace Alis.Core.Aspect.Logging.Sample
                 factory.AddFilter(new LogLevelFilter(LogLevel.Info));
 
                 // Memory captures everything for debugging
-                MemoryLogOutput memoryOutput = new MemoryLogOutput(maxEntries: 100);
+                MemoryLogOutput memoryOutput = new MemoryLogOutput(100);
 
                 ILogger logger = factory.CreateLogger("Mixed.Levels");
 
@@ -855,7 +855,7 @@ namespace Alis.Core.Aspect.Logging.Sample
 
                 // Now add memory output and re-test
                 factory.AddOutput(memoryOutput);
-                
+
                 ILogger logger2 = factory.CreateLogger("Mixed.Levels2");
                 logger2.LogTrace("This trace goes to memory");
                 logger2.LogInfo("This info goes everywhere");
@@ -875,14 +875,14 @@ namespace Alis.Core.Aspect.Logging.Sample
             using (LoggerFactory factory = new LoggerFactory())
             {
                 // Use memory output to avoid I/O overhead
-                MemoryLogOutput memoryOutput = new MemoryLogOutput(maxEntries: 10000);
+                MemoryLogOutput memoryOutput = new MemoryLogOutput(10000);
                 factory.AddOutput(memoryOutput);
 
                 ILogger logger = factory.CreateLogger("Performance.Test");
 
                 logger.LogInfo("Starting performance test");
 
-                System.Diagnostics.Stopwatch stopwatch = System.Diagnostics.Stopwatch.StartNew();
+                Stopwatch stopwatch = Stopwatch.StartNew();
 
                 // Log 1000 messages
                 for (int i = 0; i < 1000; i++)
@@ -902,16 +902,16 @@ namespace Alis.Core.Aspect.Logging.Sample
 
             // Test with sampling
             Console.WriteLine("\nWith sampling (1:10):");
-            
+
             using (LoggerFactory factory = new LoggerFactory())
             {
-                MemoryLogOutput memoryOutput = new MemoryLogOutput(maxEntries: 10000);
+                MemoryLogOutput memoryOutput = new MemoryLogOutput(10000);
                 factory.AddOutput(memoryOutput);
-                factory.AddFilter(new SamplingLogFilter(10));
+                factory.AddFilter(new SamplingLogFilter());
 
                 ILogger logger = factory.CreateLogger("Performance.Sampled");
 
-                System.Diagnostics.Stopwatch stopwatch = System.Diagnostics.Stopwatch.StartNew();
+                Stopwatch stopwatch = Stopwatch.StartNew();
 
                 for (int i = 0; i < 1000; i++)
                 {
@@ -943,16 +943,16 @@ namespace Alis.Core.Aspect.Logging.Sample
                 // Log with custom properties for business logic
                 Dictionary<string, object> userActionProps = new Dictionary<string, object>
                 {
-                    { "ActionType", "Login" },
-                    { "UserId", "user_12345" },
-                    { "IPAddress", "192.168.1.100" },
-                    { "UserAgent", "Mozilla/5.0" },
-                    { "SessionId", Guid.NewGuid().ToString() },
-                    { "LoginMethod", "OAuth" },
-                    { "Provider", "Google" },
-                    { "Success", true },
-                    { "Duration", 1250 },
-                    { "Timestamp", DateTime.UtcNow.ToString("o") }
+                    {"ActionType", "Login"},
+                    {"UserId", "user_12345"},
+                    {"IPAddress", "192.168.1.100"},
+                    {"UserAgent", "Mozilla/5.0"},
+                    {"SessionId", Guid.NewGuid().ToString()},
+                    {"LoginMethod", "OAuth"},
+                    {"Provider", "Google"},
+                    {"Success", true},
+                    {"Duration", 1250},
+                    {"Timestamp", DateTime.UtcNow.ToString("o")}
                 };
 
                 logger.LogStructured(LogLevel.Info, "User login event", userActionProps);
@@ -960,16 +960,16 @@ namespace Alis.Core.Aspect.Logging.Sample
                 // E-commerce transaction
                 Dictionary<string, object> transactionProps = new Dictionary<string, object>
                 {
-                    { "TransactionId", "TXN_67890" },
-                    { "UserId", "user_12345" },
-                    { "Amount", 149.99m },
-                    { "Currency", "USD" },
-                    { "PaymentMethod", "CreditCard" },
-                    { "CardLast4", "4242" },
-                    { "ItemCount", 3 },
-                    { "ShippingAddress", "123 Main St" },
-                    { "Status", "Completed" },
-                    { "ProcessingTime", 3421 }
+                    {"TransactionId", "TXN_67890"},
+                    {"UserId", "user_12345"},
+                    {"Amount", 149.99m},
+                    {"Currency", "USD"},
+                    {"PaymentMethod", "CreditCard"},
+                    {"CardLast4", "4242"},
+                    {"ItemCount", 3},
+                    {"ShippingAddress", "123 Main St"},
+                    {"Status", "Completed"},
+                    {"ProcessingTime", 3421}
                 };
 
                 logger.LogStructured(LogLevel.Info, "Transaction completed", transactionProps);
@@ -987,19 +987,19 @@ namespace Alis.Core.Aspect.Logging.Sample
 
             Dictionary<string, object> props = new Dictionary<string, object>
             {
-                { "PlayerId", 12345 },
-                { "Health", 75 },
-                { "Location", "Boss Arena" }
+                {"PlayerId", 12345},
+                {"Health", 75},
+                {"Location", "Boss Arena"}
             };
 
             LogEntry sampleEntry = new LogEntry(
                 LogLevel.Warning,
                 "Sample warning message with important data",
                 "Game.CombatSystem",
-                exception: null,
-                correlationId: "CORR-ABC123",
-                properties: props,
-                scopes: new List<object> { "Combat", "BossArena" }
+                null,
+                "CORR-ABC123",
+                props,
+                new List<object> {"Combat", "BossArena"}
             );
 
             Console.WriteLine("═══ SimpleLogFormatter ═══");
@@ -1031,16 +1031,16 @@ namespace Alis.Core.Aspect.Logging.Sample
             {
                 // Setup comprehensive logging for a game
                 string logsDir = Path.Combine(Directory.GetCurrentDirectory(), "logs");
-                
+
                 // Console for development
                 factory.AddOutput(new ConsoleLogOutput(new CompactLogFormatter()));
-                
+
                 // General game log
                 factory.AddOutput(new FileLogOutput(
                     Path.Combine(logsDir, "game.log"),
                     new SimpleLogFormatter()
                 ));
-                
+
                 // Analytics in JSON
                 factory.AddOutput(new FileLogOutput(
                     Path.Combine(logsDir, "analytics.json"),
@@ -1048,7 +1048,7 @@ namespace Alis.Core.Aspect.Logging.Sample
                 ));
 
                 // Memory for in-game debugging
-                MemoryLogOutput memoryOutput = new MemoryLogOutput(maxEntries: 500);
+                MemoryLogOutput memoryOutput = new MemoryLogOutput(500);
                 factory.AddOutput(memoryOutput);
 
                 factory.SetMinimumLevel(LogLevel.Debug);
@@ -1074,10 +1074,10 @@ namespace Alis.Core.Aspect.Logging.Sample
                 {
                     renderLogger.LogInfo("Graphics engine initialized");
                     renderLogger.LogDebug("Resolution: 1920x1080, VSync: ON");
-                    
+
                     physicsLogger.LogInfo("Physics engine initialized");
                     physicsLogger.LogDebug("Gravity: -9.81, Fixed timestep: 0.02s");
-                    
+
                     networkLogger.LogInfo("Connecting to multiplayer server...");
                     networkLogger.LogWarning("Server latency: 85ms (acceptable)");
                 }
@@ -1085,32 +1085,32 @@ namespace Alis.Core.Aspect.Logging.Sample
                 using (gameplayLogger.BeginScope("Level:BossFight"))
                 {
                     gameplayLogger.LogInfo("Level loaded: Boss Arena");
-                    
+
                     // Simulate combat
                     for (int turn = 1; turn <= 3; turn++)
                     {
                         Dictionary<string, object> combatData = new Dictionary<string, object>
                         {
-                            { "Turn", turn },
-                            { "PlayerHealth", 100 - (turn * 15) },
-                            { "BossHealth", 500 - (turn * 80) },
-                            { "DamageDealt", 80 },
-                            { "DamageTaken", 15 }
+                            {"Turn", turn},
+                            {"PlayerHealth", 100 - turn * 15},
+                            {"BossHealth", 500 - turn * 80},
+                            {"DamageDealt", 80},
+                            {"DamageTaken", 15}
                         };
-                        
+
                         gameplayLogger.LogStructured(LogLevel.Info, $"Combat turn {turn}", combatData);
                     }
-                    
+
                     gameplayLogger.LogInfo("Boss defeated!");
                 }
 
                 engineLogger.LogInfo("Game session ended normally");
-                
-                Console.WriteLine($"\nSession summary:");
+
+                Console.WriteLine("\nSession summary:");
                 Console.WriteLine($"  • Session ID: {sessionId}");
                 Console.WriteLine($"  • Logs directory: {logsDir}");
                 Console.WriteLine($"  • Memory buffer: {memoryOutput.GetEntries().Count} entries");
-                Console.WriteLine($"  • Systems logged: Engine, Renderer, Physics, Gameplay, Network");
+                Console.WriteLine("  • Systems logged: Engine, Renderer, Physics, Gameplay, Network");
             }
         }
 
@@ -1146,16 +1146,16 @@ namespace Alis.Core.Aspect.Logging.Sample
                 catch (Exception ex)
                 {
                     logger.LogCritical("Critical system failure", ex);
-                    
+
                     // Log recovery attempt
                     Dictionary<string, object> recoveryInfo = new Dictionary<string, object>
                     {
-                        { "ErrorType", ex.GetType().Name },
-                        { "RecoveryAction", "Restart subsystem" },
-                        { "RecoveryStatus", "Initiated" },
-                        { "Timestamp", DateTime.UtcNow }
+                        {"ErrorType", ex.GetType().Name},
+                        {"RecoveryAction", "Restart subsystem"},
+                        {"RecoveryStatus", "Initiated"},
+                        {"Timestamp", DateTime.UtcNow}
                     };
-                    
+
                     logger.LogStructured(LogLevel.Warning, "Attempting recovery", recoveryInfo);
                 }
 
@@ -1167,7 +1167,7 @@ namespace Alis.Core.Aspect.Logging.Sample
                 catch (Exception ex)
                 {
                     logger.LogError("Nested exception chain detected", ex);
-                    
+
                     Exception inner = ex.InnerException;
                     int depth = 1;
                     while (inner != null)
@@ -1190,7 +1190,7 @@ namespace Alis.Core.Aspect.Logging.Sample
         private static string ComputeExpensiveDebugInfo()
         {
             // Simulate expensive operation
-            System.Threading.Thread.Sleep(10);
+            Thread.Sleep(10);
             return $"Expensive debug data: {Guid.NewGuid()}";
         }
 
@@ -1233,4 +1233,3 @@ namespace Alis.Core.Aspect.Logging.Sample
         }
     }
 }
-

@@ -112,16 +112,14 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         ///     Sfs the context create
         /// </summary>
         /// <returns>The int ptr</returns>
-        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern IntPtr sfContext_create();
 
         /// <summary>
         ///     Sfs the context destroy using the specified view
         /// </summary>
         /// <param name="view">The view</param>
-        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern void sfContext_destroy(IntPtr view);
 
         /// <summary>
@@ -130,8 +128,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// <param name="view">The view</param>
         /// <param name="active">The active</param>
         /// <returns>The bool</returns>
-        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern bool sfContext_setActive(IntPtr view, bool active);
 
         /// <summary>
@@ -139,8 +136,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// </summary>
         /// <param name="view">The view</param>
         /// <returns>The context settings</returns>
-        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern ContextSettings sfContext_getSettings(IntPtr view);
     }
 }

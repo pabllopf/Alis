@@ -48,9 +48,9 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         {
             float radius = 2.0f;
             float density = 1.5f;
-            
+
             CircleShape circle = new CircleShape(radius, density);
-            
+
             Assert.Equal(radius, circle.GetRadius);
             Assert.Equal(density, circle.GetDensity);
             Assert.Equal(ShapeType.Circle, circle.ShapeType);
@@ -64,9 +64,9 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         {
             CircleShape circle = new CircleShape(1.0f, 1.0f);
             Vector2F newPosition = new Vector2F(5.0f, 10.0f);
-            
+
             circle.Position = newPosition;
-            
+
             Assert.Equal(newPosition, circle.Position);
         }
 
@@ -77,7 +77,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         public void ChildCount_ShouldReturnOne()
         {
             CircleShape circle = new CircleShape(1.0f, 1.0f);
-            
+
             Assert.Equal(1, circle.ChildCount);
         }
 
@@ -94,9 +94,9 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 Rotation = Complex.One
             };
             Vector2F point = new Vector2F(12.0f, 10.0f);
-            
+
             bool result = circle.TestPoint(ref transform, ref point);
-            
+
             Assert.True(result);
         }
 
@@ -113,9 +113,9 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 Rotation = Complex.One
             };
             Vector2F point = new Vector2F(10.0f, 10.0f);
-            
+
             bool result = circle.TestPoint(ref transform, ref point);
-            
+
             Assert.False(result);
         }
 
@@ -131,9 +131,9 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 Position = new Vector2F(5.0f, 5.0f),
                 Rotation = Complex.One
             };
-            
+
             circle.ComputeAabb(out Aabb aabb, ref transform, 0);
-            
+
             Assert.Equal(3.0f, aabb.LowerBound.X, 5);
             Assert.Equal(3.0f, aabb.LowerBound.Y, 5);
             Assert.Equal(7.0f, aabb.UpperBound.X, 5);
@@ -149,7 +149,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
             float radius = 2.0f;
             float density = 1.0f;
             CircleShape circle = new CircleShape(radius, density);
-            
+
             Assert.True(circle.MassData.Mass > 0);
             Assert.True(circle.MassData.Area > 0);
             Assert.True(circle.MassData.Inertia > 0);
@@ -163,9 +163,9 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         {
             CircleShape circle = new CircleShape(2.0f, 1.0f);
             float originalMass = circle.MassData.Mass;
-            
+
             circle.GetDensity = 2.0f;
-            
+
             Assert.True(circle.MassData.Mass > originalMass);
         }
 
@@ -177,9 +177,9 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         {
             CircleShape circle = new CircleShape(1.0f, 1.0f);
             float originalMass = circle.MassData.Mass;
-            
+
             circle.GetRadius = 2.0f;
-            
+
             Assert.True(circle.MassData.Mass > originalMass);
         }
 
@@ -196,9 +196,9 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 Rotation = Complex.One
             };
             Vector2F point = new Vector2F(10.0f, 10.0f);
-            
+
             bool result = circle.TestPoint(ref transform, ref point);
-            
+
             Assert.True(result);
         }
 
@@ -209,7 +209,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         public void Constructor_WithZeroRadius_ShouldWork()
         {
             CircleShape circle = new CircleShape(0.0f, 1.0f);
-            
+
             Assert.Equal(0.0f, circle.GetRadius);
         }
 
@@ -220,7 +220,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         public void Constructor_WithZeroDensity_ShouldWork()
         {
             CircleShape circle = new CircleShape(1.0f, 0.0f);
-            
+
             Assert.Equal(0.0f, circle.GetDensity);
         }
 
@@ -237,11 +237,10 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 Position = new Vector2F(5.0f, 5.0f),
                 Rotation = Complex.One
             };
-            
+
             circle.ComputeAabb(out Aabb aabb, ref transform, 0);
-            
+
             Assert.NotNull(aabb);
         }
     }
 }
-

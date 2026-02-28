@@ -186,6 +186,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
                     break;
                 }
             }
+
             Assert.True(hasBossRoom);
         }
 
@@ -207,7 +208,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
             Assert.NotSame(data1.Rooms, data2.Rooms);
             Assert.NotSame(data1.Corridors, data2.Corridors);
         }
-        
+
 
         /// <summary>
         ///     Tests that Dispose can be called multiple times safely.
@@ -293,10 +294,14 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
                         break;
                     }
                 }
-                if (hasFloor) break;
+
+                if (hasFloor)
+                {
+                    break;
+                }
             }
+
             Assert.True(hasFloor);
         }
     }
 }
-

@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: ICreateTest.cs
+//  File:ICreateTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,25 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
     /// </summary>
     public class ICreateTest
     {
-        /// <summary>
-        ///     Helper builder class.
-        /// </summary>
-        private class TestBuilder { public string CreatedValue { get; set; } }
-
-        /// <summary>
-        ///     Helper implementation of ICreate.
-        /// </summary>
-        private class CreateBuilder : ICreate<TestBuilder, string>
-        {
-            private readonly TestBuilder _builder = new TestBuilder();
-
-            public TestBuilder Create(string obj)
-            {
-                _builder.CreatedValue = obj;
-                return _builder;
-            }
-        }
-
         /// <summary>
         ///     Tests that ICreate can be implemented.
         /// </summary>
@@ -116,9 +97,34 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         }
 
         /// <summary>
+        ///     Helper builder class.
+        /// </summary>
+        private class TestBuilder
+        {
+            public string CreatedValue { get; set; }
+        }
+
+        /// <summary>
+        ///     Helper implementation of ICreate.
+        /// </summary>
+        private class CreateBuilder : ICreate<TestBuilder, string>
+        {
+            private readonly TestBuilder _builder = new TestBuilder();
+
+            public TestBuilder Create(string obj)
+            {
+                _builder.CreatedValue = obj;
+                return _builder;
+            }
+        }
+
+        /// <summary>
         ///     Helper builder with integer.
         /// </summary>
-        private class IntTestBuilder { public int Value { get; set; } }
+        private class IntTestBuilder
+        {
+            public int Value { get; set; }
+        }
 
         /// <summary>
         ///     Helper implementation with integer.
@@ -135,4 +141,3 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         }
     }
 }
-

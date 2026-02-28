@@ -35,7 +35,7 @@ namespace Alis.Core.Ecs.Test
     ///     The world archetype table item extended test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="WorldArchetypeTableItem"/> struct which stores
+    ///     Tests the <see cref="WorldArchetypeTableItem" /> struct which stores
     ///     archetype and temporary creation archetype references with extended test cases.
     /// </remarks>
     public class WorldArchetypeTableItemExtendedTest
@@ -114,4 +114,3 @@ namespace Alis.Core.Ecs.Test
         }
     }
 }
-

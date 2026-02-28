@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using Alis.Core.Physic.Common.Decomposition.CDT;
 using Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep;
@@ -48,9 +49,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             DtSweepPointComparator comparator = new DtSweepPointComparator();
             TriangulationPoint p1 = new TriangulationPoint(5, 5);
             TriangulationPoint p2 = new TriangulationPoint(5, 10);
-            
+
             int result = comparator.Compare(p1, p2);
-            
+
             Assert.Equal(-1, result);
         }
 
@@ -63,9 +64,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             DtSweepPointComparator comparator = new DtSweepPointComparator();
             TriangulationPoint p1 = new TriangulationPoint(5, 15);
             TriangulationPoint p2 = new TriangulationPoint(5, 10);
-            
+
             int result = comparator.Compare(p1, p2);
-            
+
             Assert.Equal(1, result);
         }
 
@@ -78,9 +79,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             DtSweepPointComparator comparator = new DtSweepPointComparator();
             TriangulationPoint p1 = new TriangulationPoint(5, 10);
             TriangulationPoint p2 = new TriangulationPoint(10, 10);
-            
+
             int result = comparator.Compare(p1, p2);
-            
+
             Assert.Equal(-1, result);
         }
 
@@ -93,9 +94,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             DtSweepPointComparator comparator = new DtSweepPointComparator();
             TriangulationPoint p1 = new TriangulationPoint(15, 10);
             TriangulationPoint p2 = new TriangulationPoint(10, 10);
-            
+
             int result = comparator.Compare(p1, p2);
-            
+
             Assert.Equal(1, result);
         }
 
@@ -108,9 +109,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             DtSweepPointComparator comparator = new DtSweepPointComparator();
             TriangulationPoint p1 = new TriangulationPoint(10, 10);
             TriangulationPoint p2 = new TriangulationPoint(10, 10);
-            
+
             int result = comparator.Compare(p1, p2);
-            
+
             Assert.Equal(0, result);
         }
 
@@ -121,7 +122,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         public void Comparator_ShouldImplementIComparer()
         {
             DtSweepPointComparator comparator = new DtSweepPointComparator();
-            
+
             Assert.IsAssignableFrom<IComparer<TriangulationPoint>>(comparator);
         }
 
@@ -134,9 +135,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             DtSweepPointComparator comparator = new DtSweepPointComparator();
             TriangulationPoint p1 = new TriangulationPoint(100, 5);
             TriangulationPoint p2 = new TriangulationPoint(1, 10);
-            
+
             int result = comparator.Compare(p1, p2);
-            
+
             Assert.Equal(-1, result);
         }
 
@@ -149,9 +150,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             DtSweepPointComparator comparator = new DtSweepPointComparator();
             TriangulationPoint p1 = new TriangulationPoint(-10, -10);
             TriangulationPoint p2 = new TriangulationPoint(-5, -5);
-            
+
             int result = comparator.Compare(p1, p2);
-            
+
             Assert.Equal(-1, result);
         }
 
@@ -169,9 +170,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
                 new TriangulationPoint(8, 15),
                 new TriangulationPoint(1, 3)
             };
-            
-            System.Array.Sort(points, comparator);
-            
+
+            Array.Sort(points, comparator);
+
             Assert.Equal(3, points[0].Y);
             Assert.Equal(5, points[1].Y);
             Assert.Equal(10, points[2].Y);
@@ -187,10 +188,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             DtSweepPointComparator comparator = new DtSweepPointComparator();
             TriangulationPoint p1 = new TriangulationPoint(5, 5);
             TriangulationPoint p2 = new TriangulationPoint(10, 10);
-            
+
             int result1 = comparator.Compare(p1, p2);
             int result2 = comparator.Compare(p1, p2);
-            
+
             Assert.Equal(result1, result2);
         }
 
@@ -203,10 +204,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             DtSweepPointComparator comparator = new DtSweepPointComparator();
             TriangulationPoint p1 = new TriangulationPoint(5, 5);
             TriangulationPoint p2 = new TriangulationPoint(10, 10);
-            
+
             int resultAB = comparator.Compare(p1, p2);
             int resultBA = comparator.Compare(p2, p1);
-            
+
             Assert.Equal(-resultAB, resultBA);
         }
 
@@ -219,11 +220,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             DtSweepPointComparator comparator = new DtSweepPointComparator();
             TriangulationPoint p1 = new TriangulationPoint(0, 0);
             TriangulationPoint p2 = new TriangulationPoint(0, 0);
-            
+
             int result = comparator.Compare(p1, p2);
-            
+
             Assert.Equal(0, result);
         }
     }
 }
-

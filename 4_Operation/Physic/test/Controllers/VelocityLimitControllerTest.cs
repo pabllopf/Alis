@@ -46,7 +46,7 @@ namespace Alis.Core.Physic.Test.Controllers
         public void DefaultConstructor_ShouldInitializeWithDefaultLimits()
         {
             VelocityLimitController controller = new VelocityLimitController();
-            
+
             Assert.True(controller.MaxLinearVelocity > 0);
             Assert.True(controller.MaxAngularVelocity > 0);
             Assert.True(controller.LimitLinearVelocity);
@@ -61,9 +61,9 @@ namespace Alis.Core.Physic.Test.Controllers
         {
             float maxLinear = 50.0f;
             float maxAngular = 10.0f;
-            
+
             VelocityLimitController controller = new VelocityLimitController(maxLinear, maxAngular);
-            
+
             Assert.Equal(maxLinear, controller.MaxLinearVelocity);
             Assert.Equal(maxAngular, controller.MaxAngularVelocity);
         }
@@ -75,7 +75,7 @@ namespace Alis.Core.Physic.Test.Controllers
         public void ConstructorWithZeroLinearVelocity_ShouldDisableLinearLimit()
         {
             VelocityLimitController controller = new VelocityLimitController(0.0f, 10.0f);
-            
+
             Assert.False(controller.LimitLinearVelocity);
         }
 
@@ -86,7 +86,7 @@ namespace Alis.Core.Physic.Test.Controllers
         public void ConstructorWithZeroAngularVelocity_ShouldDisableAngularLimit()
         {
             VelocityLimitController controller = new VelocityLimitController(50.0f, 0.0f);
-            
+
             Assert.False(controller.LimitAngularVelocity);
         }
 
@@ -97,7 +97,7 @@ namespace Alis.Core.Physic.Test.Controllers
         public void ConstructorWithMaxFloatValues_ShouldDisableLimits()
         {
             VelocityLimitController controller = new VelocityLimitController(float.MaxValue, float.MaxValue);
-            
+
             Assert.False(controller.LimitLinearVelocity);
             Assert.False(controller.LimitAngularVelocity);
         }
@@ -109,9 +109,9 @@ namespace Alis.Core.Physic.Test.Controllers
         public void MaxLinearVelocityProperty_ShouldSetAndGetCorrectly()
         {
             VelocityLimitController controller = new VelocityLimitController();
-            
+
             controller.MaxLinearVelocity = 100.0f;
-            
+
             Assert.Equal(100.0f, controller.MaxLinearVelocity);
         }
 
@@ -122,9 +122,9 @@ namespace Alis.Core.Physic.Test.Controllers
         public void MaxAngularVelocityProperty_ShouldSetAndGetCorrectly()
         {
             VelocityLimitController controller = new VelocityLimitController();
-            
+
             controller.MaxAngularVelocity = 20.0f;
-            
+
             Assert.Equal(20.0f, controller.MaxAngularVelocity);
         }
 
@@ -137,9 +137,9 @@ namespace Alis.Core.Physic.Test.Controllers
             VelocityLimitController controller = new VelocityLimitController();
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             controller.WorldPhysic = world;
-            
+
             controller.Update(0.016f);
-            
+
             Assert.True(true); // No exception thrown
         }
 
@@ -150,7 +150,7 @@ namespace Alis.Core.Physic.Test.Controllers
         public void VelocityLimitController_ShouldInheritFromController()
         {
             VelocityLimitController controller = new VelocityLimitController();
-            
+
             Assert.IsAssignableFrom<Controller>(controller);
         }
 
@@ -161,10 +161,9 @@ namespace Alis.Core.Physic.Test.Controllers
         public void VelocityLimitController_ShouldHandleNegativeVelocities()
         {
             VelocityLimitController controller = new VelocityLimitController(-50.0f, -10.0f);
-            
+
             Assert.Equal(-50.0f, controller.MaxLinearVelocity);
             Assert.Equal(-10.0f, controller.MaxAngularVelocity);
         }
     }
 }
-

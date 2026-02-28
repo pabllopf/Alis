@@ -37,12 +37,11 @@ namespace Alis.Core.Ecs.Test.Collections
     ///     The fastest table test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="FastestTable{T}"/> collection which provides
+    ///     Tests the <see cref="FastestTable{T}" /> collection which provides
     ///     fast table-based storage for the ECS system.
     /// </remarks>
     public class FastestTableTest
     {
-
         /// <summary>
         ///     Tests that fastest table can be created with capacity
         /// </summary>
@@ -135,7 +134,7 @@ namespace Alis.Core.Ecs.Test.Collections
             FastestTable<TestStruct> table = new FastestTable<TestStruct>(10);
 
             // Act
-            table[0] = new TestStruct { X = 10, Y = 20 };
+            table[0] = new TestStruct {X = 10, Y = 20};
 
             // Assert
             Assert.Equal(10, table[0].X);
@@ -280,11 +279,11 @@ namespace Alis.Core.Ecs.Test.Collections
             FastestTable<ComplexType> table = new FastestTable<ComplexType>(10);
 
             // Act
-            table[0] = new ComplexType 
-            { 
-                Id = 1, 
-                Name = "Test", 
-                Values = new[] { 1.0, 2.0, 3.0 } 
+            table[0] = new ComplexType
+            {
+                Id = 1,
+                Name = "Test",
+                Values = new[] {1.0, 2.0, 3.0}
             };
 
             // Assert
@@ -353,4 +352,3 @@ namespace Alis.Core.Ecs.Test.Collections
         }
     }
 }
-

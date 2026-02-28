@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Linq;
 using Alis.Extension.Thread.Interfaces;
 using Xunit;
 
@@ -52,7 +51,10 @@ namespace Alis.Extension.Thread.Test.Interfaces
     internal struct ComponentWithMultipleInterfaces : IParallelCapable, IDisposable
     {
         public int Value;
-        public void Dispose() { }
+
+        public void Dispose()
+        {
+        }
     }
 
     /// <summary>
@@ -93,7 +95,7 @@ namespace Alis.Extension.Thread.Test.Interfaces
         public void Struct_ImplementingInterface_CanBeInstantiated()
         {
             // Act
-            ComponentWithInterface component = new ComponentWithInterface { Value = 42 };
+            ComponentWithInterface component = new ComponentWithInterface {Value = 42};
 
             // Assert
             Assert.Equal(42, component.Value);
@@ -107,7 +109,7 @@ namespace Alis.Extension.Thread.Test.Interfaces
         public void Class_ImplementingInterface_CanBeInstantiated()
         {
             // Act
-            ClassWithInterface component = new ClassWithInterface { Value = 42 };
+            ClassWithInterface component = new ClassWithInterface {Value = 42};
 
             // Assert
             Assert.Equal(42, component.Value);
@@ -175,7 +177,7 @@ namespace Alis.Extension.Thread.Test.Interfaces
         public void Interface_CanBeCheckedAtRuntime()
         {
             // Arrange
-            object component = new ComponentWithInterface { Value = 10 };
+            object component = new ComponentWithInterface {Value = 10};
 
             // Act
             bool isParallelCapable = component is IParallelCapable;
@@ -191,7 +193,7 @@ namespace Alis.Extension.Thread.Test.Interfaces
         public void Interface_CanBeCast()
         {
             // Arrange
-            ComponentWithInterface component = new ComponentWithInterface { Value = 20 };
+            ComponentWithInterface component = new ComponentWithInterface {Value = 20};
 
             // Act
             IParallelCapable parallelCapable = component;
@@ -270,7 +272,7 @@ namespace Alis.Extension.Thread.Test.Interfaces
         public void Interface_CanBeUsedAsTypeConstraint()
         {
             // Act
-            var result = ProcessParallelCapable(new ComponentWithInterface { Value = 100 });
+            var result = ProcessParallelCapable(new ComponentWithInterface {Value = 100});
 
             // Assert
             Assert.Equal(100, result);
@@ -282,6 +284,7 @@ namespace Alis.Extension.Thread.Test.Interfaces
             {
                 return comp.Value;
             }
+
             return 0;
         }
 
@@ -325,4 +328,3 @@ namespace Alis.Extension.Thread.Test.Interfaces
         }
     }
 }
-

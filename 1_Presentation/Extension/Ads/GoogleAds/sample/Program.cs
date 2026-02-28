@@ -84,10 +84,10 @@ namespace Alis.Extension.Ads.GoogleAds.Sample
 
             // Create configuration
             AdConfiguration config = new AdConfiguration(
-                appId: "ca-app-pub-xxxxxxxxxxxxxxxx~yyyyyyyyyy",
-                bannerAdUnitId: "ca-app-pub-3940256099942544/6300978111",
-                interstitialAdUnitId: "ca-app-pub-3940256099942544/1033173712",
-                rewardedVideoAdUnitId: "ca-app-pub-3940256099942544/5224354917"
+                "ca-app-pub-xxxxxxxxxxxxxxxx~yyyyyyyyyy",
+                "ca-app-pub-3940256099942544/6300978111",
+                "ca-app-pub-3940256099942544/1033173712",
+                "ca-app-pub-3940256099942544/5224354917"
             )
             {
                 IsTestMode = true, // Always use test mode in development
@@ -107,22 +107,16 @@ namespace Alis.Extension.Ads.GoogleAds.Sample
             }
 
             // Subscribe to banner ad events
-            adsManager.OnBannerAdLoaded += (unitId) =>
-            {
-                Logger.Info($"✓ Banner ad loaded: {unitId}");
-            };
+            adsManager.OnBannerAdLoaded += unitId => { Logger.Info($"✓ Banner ad loaded: {unitId}"); };
 
-            adsManager.OnBannerAdFailedToLoad += (unitId) =>
-            {
-                Logger.Warning($"✗ Banner ad failed to load: {unitId}");
-            };
+            adsManager.OnBannerAdFailedToLoad += unitId => { Logger.Warning($"✗ Banner ad failed to load: {unitId}"); };
 
             // Load banner ad
             Logger.Info("Loading banner ad...");
             try
             {
                 await adsManager.LoadBannerAdAsync(config.DefaultBannerAdUnitId);
-                
+
                 // Show the banner ad
                 adsManager.ShowBannerAd();
                 Logger.Info("✓ Banner ad displayed");
@@ -149,10 +143,10 @@ namespace Alis.Extension.Ads.GoogleAds.Sample
             AdsManager adsManager = new AdsManager(mockContext);
 
             AdConfiguration config = new AdConfiguration(
-                appId: "ca-app-pub-xxxxxxxxxxxxxxxx~yyyyyyyyyy",
-                bannerAdUnitId: "ca-app-pub-3940256099942544/6300978111",
-                interstitialAdUnitId: "ca-app-pub-3940256099942544/1033173712",
-                rewardedVideoAdUnitId: "ca-app-pub-3940256099942544/5224354917"
+                "ca-app-pub-xxxxxxxxxxxxxxxx~yyyyyyyyyy",
+                "ca-app-pub-3940256099942544/6300978111",
+                "ca-app-pub-3940256099942544/1033173712",
+                "ca-app-pub-3940256099942544/5224354917"
             )
             {
                 IsTestMode = true,
@@ -162,25 +156,13 @@ namespace Alis.Extension.Ads.GoogleAds.Sample
             await adsManager.InitializeAsync(config);
 
             // Subscribe to interstitial ad events
-            adsManager.OnInterstitialAdLoaded += (unitId) =>
-            {
-                Logger.Info($"✓ Interstitial ad loaded: {unitId}");
-            };
+            adsManager.OnInterstitialAdLoaded += unitId => { Logger.Info($"✓ Interstitial ad loaded: {unitId}"); };
 
-            adsManager.OnInterstitialAdFailedToLoad += (unitId) =>
-            {
-                Logger.Warning($"✗ Interstitial ad failed to load: {unitId}");
-            };
+            adsManager.OnInterstitialAdFailedToLoad += unitId => { Logger.Warning($"✗ Interstitial ad failed to load: {unitId}"); };
 
-            adsManager.OnAdClicked += (adType) =>
-            {
-                Logger.Info($"✓ Ad clicked: {adType}");
-            };
+            adsManager.OnAdClicked += adType => { Logger.Info($"✓ Ad clicked: {adType}"); };
 
-            adsManager.OnAdClosed += (adType) =>
-            {
-                Logger.Info($"✓ Ad closed: {adType}");
-            };
+            adsManager.OnAdClosed += adType => { Logger.Info($"✓ Ad closed: {adType}"); };
 
             // Load interstitial ad (typically shown between game levels)
             Logger.Info("Loading interstitial ad...");
@@ -213,10 +195,10 @@ namespace Alis.Extension.Ads.GoogleAds.Sample
             AdsManager adsManager = new AdsManager(mockContext);
 
             AdConfiguration config = new AdConfiguration(
-                appId: "ca-app-pub-xxxxxxxxxxxxxxxx~yyyyyyyyyy",
-                bannerAdUnitId: "ca-app-pub-3940256099942544/6300978111",
-                interstitialAdUnitId: "ca-app-pub-3940256099942544/1033173712",
-                rewardedVideoAdUnitId: "ca-app-pub-3940256099942544/5224354917"
+                "ca-app-pub-xxxxxxxxxxxxxxxx~yyyyyyyyyy",
+                "ca-app-pub-3940256099942544/6300978111",
+                "ca-app-pub-3940256099942544/1033173712",
+                "ca-app-pub-3940256099942544/5224354917"
             )
             {
                 IsTestMode = true,
@@ -226,20 +208,14 @@ namespace Alis.Extension.Ads.GoogleAds.Sample
             await adsManager.InitializeAsync(config);
 
             // Subscribe to rewarded video events
-            adsManager.OnRewardedVideoAdLoaded += (unitId) =>
-            {
-                Logger.Info($"✓ Rewarded video ad loaded: {unitId}");
-            };
+            adsManager.OnRewardedVideoAdLoaded += unitId => { Logger.Info($"✓ Rewarded video ad loaded: {unitId}"); };
 
-            adsManager.OnRewardedVideoAdFailedToLoad += (unitId) =>
-            {
-                Logger.Warning($"✗ Rewarded video ad failed to load: {unitId}");
-            };
+            adsManager.OnRewardedVideoAdFailedToLoad += unitId => { Logger.Warning($"✗ Rewarded video ad failed to load: {unitId}"); };
 
             // This is the key event - when the user completes watching the ad
-            adsManager.OnAdRewarded += (rewardArgs) =>
+            adsManager.OnAdRewarded += rewardArgs =>
             {
-                Logger.Info($"✓ User earned reward!");
+                Logger.Info("✓ User earned reward!");
                 Logger.Info($"  Reward Type: {rewardArgs.RewardType}");
                 Logger.Info($"  Reward Amount: {rewardArgs.RewardAmount}");
                 Logger.Info($"  Ad Unit: {rewardArgs.AdUnitId}");
@@ -280,10 +256,10 @@ namespace Alis.Extension.Ads.GoogleAds.Sample
 
             // Configure ads based on game settings
             AdConfiguration config = new AdConfiguration(
-                appId: "ca-app-pub-xxxxxxxxxxxxxxxx~yyyyyyyyyy",
-                bannerAdUnitId: "ca-app-pub-3940256099942544/6300978111",
-                interstitialAdUnitId: "ca-app-pub-3940256099942544/1033173712",
-                rewardedVideoAdUnitId: "ca-app-pub-3940256099942544/5224354917"
+                "ca-app-pub-xxxxxxxxxxxxxxxx~yyyyyyyyyy",
+                "ca-app-pub-3940256099942544/6300978111",
+                "ca-app-pub-3940256099942544/1033173712",
+                "ca-app-pub-3940256099942544/5224354917"
             )
             {
                 IsTestMode = true,
@@ -293,16 +269,13 @@ namespace Alis.Extension.Ads.GoogleAds.Sample
             await adsManager.InitializeAsync(config);
 
             // Setup event handlers that integrate with game
-            adsManager.OnAdRewarded += (rewardArgs) =>
+            adsManager.OnAdRewarded += rewardArgs =>
             {
                 gameState.AddCoins(rewardArgs.RewardAmount);
                 Logger.Info($"Player now has {gameState.Coins} coins");
             };
 
-            adsManager.OnInterstitialAdLoaded += (unitId) =>
-            {
-                Logger.Info("Ready to show interstitial between levels");
-            };
+            adsManager.OnInterstitialAdLoaded += unitId => { Logger.Info("Ready to show interstitial between levels"); };
 
             // Simulate game flow
             Logger.Info($"Game started - Player is Premium: {gameState.IsPremium}");

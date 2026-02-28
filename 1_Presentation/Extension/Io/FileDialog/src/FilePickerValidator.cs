@@ -67,13 +67,13 @@ namespace Alis.Extension.Io.FileDialog
                 throw new ArgumentException($"Default path does not exist: {options.DefaultPath}", nameof(options.DefaultPath));
             }
 
-            if (options.DialogType == FileDialogType.SaveFile && options.AllowMultiple)
+            if ((options.DialogType == FileDialogType.SaveFile) && options.AllowMultiple)
             {
                 Logger.Warning("SaveFile dialog cannot allow multiple selections.");
                 throw new ArgumentException("SaveFile dialog cannot allow multiple selections.");
             }
 
-            if (options.DialogType != FileDialogType.SelectFolder && options.AllowDirectories)
+            if ((options.DialogType != FileDialogType.SelectFolder) && options.AllowDirectories)
             {
                 Logger.Warning("AllowDirectories can only be true for SelectFolder dialog type.");
                 throw new ArgumentException("AllowDirectories can only be true for SelectFolder dialog type.");
@@ -220,7 +220,7 @@ namespace Alis.Extension.Io.FileDialog
                 return false;
             }
 
-            if (!options.AllowMultiple && result.SelectedPaths.Count > 1)
+            if (!options.AllowMultiple && (result.SelectedPaths.Count > 1))
             {
                 Logger.Warning("Result has multiple paths but AllowMultiple is false.");
                 return false;
@@ -257,4 +257,3 @@ namespace Alis.Extension.Io.FileDialog
         }
     }
 }
-

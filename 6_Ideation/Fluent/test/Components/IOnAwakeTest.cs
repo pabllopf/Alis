@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IOnAwakeTest.cs
+//  File:IOnAwakeTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,23 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
     /// </summary>
     public class IOnAwakeTest
     {
-        
-
-        /// <summary>
-        ///     Helper implementation for testing IOnAwake.
-        /// </summary>
-        private class AwakeHandler : IOnAwake
-        {
-            public bool WasAwakeCalled { get; private set; }
-            public IGameObject LastGameObject { get; private set; }
-
-            public void OnAwake(IGameObject self)
-            {
-                WasAwakeCalled = true;
-                LastGameObject = self;
-            }
-        }
-
         /// <summary>
         ///     Tests that IOnAwake can be implemented.
         /// </summary>
@@ -104,6 +87,21 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
             Assert.True(handler.WasAwakeCalled);
             Assert.Same(gameObject2, handler.LastGameObject);
         }
+
+
+        /// <summary>
+        ///     Helper implementation for testing IOnAwake.
+        /// </summary>
+        private class AwakeHandler : IOnAwake
+        {
+            public bool WasAwakeCalled { get; private set; }
+            public IGameObject LastGameObject { get; private set; }
+
+            public void OnAwake(IGameObject self)
+            {
+                WasAwakeCalled = true;
+                LastGameObject = self;
+            }
+        }
     }
 }
-

@@ -48,7 +48,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         public void AudioFrame_ShouldImplementIMediaFrame()
         {
             // Arrange
-            AudioFrame frame = new AudioFrame(2, 1024, 16);
+            AudioFrame frame = new AudioFrame(2);
 
             // Act & Assert
             Assert.IsAssignableFrom<IMediaFrame>(frame);
@@ -74,7 +74,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         public void IMediaFrame_RawDataShouldNotBeNullForAudioFrame()
         {
             // Arrange
-            IMediaFrame frame = new AudioFrame(2, 1024, 16);
+            IMediaFrame frame = new AudioFrame(2);
 
             // Act
             byte[] rawData = frame.RawData;
@@ -106,7 +106,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         public void IMediaFrame_LoadShouldWorkWithEmptyStreamForAudioFrame()
         {
             // Arrange
-            IMediaFrame frame = new AudioFrame(2, 1024, 16);
+            IMediaFrame frame = new AudioFrame(2);
             MemoryStream emptyStream = new MemoryStream();
 
             // Act
@@ -140,7 +140,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         public void IMediaFrame_LoadShouldWorkWithDataStreamForAudioFrame()
         {
             // Arrange
-            IMediaFrame frame = new AudioFrame(2, 100, 16);
+            IMediaFrame frame = new AudioFrame(2, 100);
             byte[] testData = new byte[400];
             MemoryStream stream = new MemoryStream(testData);
 
@@ -170,4 +170,3 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         }
     }
 }
-

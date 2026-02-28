@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: ITransformTest.cs
+//  File:ITransformTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,28 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
     /// </summary>
     public class ITransformTest
     {
-        /// <summary>
-        ///     Helper builder class for transform.
-        /// </summary>
-        private class TransformBuilder
-        {
-            public string TransformOperation { get; set; }
-        }
-
-        /// <summary>
-        ///     Helper implementation of ITransform.
-        /// </summary>
-        private class TransformBuilderImpl : ITransform<TransformBuilder, string>
-        {
-            private readonly TransformBuilder _builder = new TransformBuilder();
-
-            public TransformBuilder Transform(string value)
-            {
-                _builder.TransformOperation = value;
-                return _builder;
-            }
-        }
-
         /// <summary>
         ///     Tests that ITransform can be implemented.
         /// </summary>
@@ -97,17 +75,34 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Tests Transform with various operations.
         /// </summary>
-        [Theory]
-        [InlineData("Translate")]
-        [InlineData("Rotate")]
-        [InlineData("Scale")]
-        [InlineData("Shear")]
+        [Theory, InlineData("Translate"), InlineData("Rotate"), InlineData("Scale"), InlineData("Shear")]
         public void Transform_WithVariousOperations(string operation)
         {
             TransformBuilderImpl builder = new TransformBuilderImpl();
             TransformBuilder result = builder.Transform(operation);
             Assert.Equal(operation, result.TransformOperation);
         }
+
+        /// <summary>
+        ///     Helper builder class for transform.
+        /// </summary>
+        private class TransformBuilder
+        {
+            public string TransformOperation { get; set; }
+        }
+
+        /// <summary>
+        ///     Helper implementation of ITransform.
+        /// </summary>
+        private class TransformBuilderImpl : ITransform<TransformBuilder, string>
+        {
+            private readonly TransformBuilder _builder = new TransformBuilder();
+
+            public TransformBuilder Transform(string value)
+            {
+                _builder.TransformOperation = value;
+                return _builder;
+            }
+        }
     }
 }
-

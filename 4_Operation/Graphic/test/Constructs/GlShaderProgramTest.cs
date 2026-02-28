@@ -30,19 +30,18 @@
 using System;
 using System.Linq;
 using System.Reflection;
-using Xunit;
 using Alis.Core.Graphic.OpenGL.Constructs;
-using Alis.Core.Graphic.OpenGL.Enums;
+using Xunit;
 
 namespace Alis.Core.Graphic.Test.Constructs
 {
     /// <summary>
-    /// Tests for the GlShaderProgram class handling shader compilation and linking.
+    ///     Tests for the GlShaderProgram class handling shader compilation and linking.
     /// </summary>
     public class GlShaderProgramTest
     {
         /// <summary>
-        /// Tests that GlShaderProgram class is sealed.
+        ///     Tests that GlShaderProgram class is sealed.
         /// </summary>
         [Fact]
         public void GlShaderProgram_IsSealed_CannotBeInherited()
@@ -55,7 +54,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         }
 
         /// <summary>
-        /// Tests that GlShaderProgram class is public.
+        ///     Tests that GlShaderProgram class is public.
         /// </summary>
         [Fact]
         public void GlShaderProgram_IsPublic_CanBeAccessed()
@@ -68,7 +67,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         }
 
         /// <summary>
-        /// Tests that GlShaderProgram implements IDisposable interface.
+        ///     Tests that GlShaderProgram implements IDisposable interface.
         /// </summary>
         [Fact]
         public void GlShaderProgram_ImplementsIDisposable_InterfaceIsCorrect()
@@ -81,7 +80,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         }
 
         /// <summary>
-        /// Tests that GlShaderProgram has ProgramId property.
+        ///     Tests that GlShaderProgram has ProgramId property.
         /// </summary>
         [Fact]
         public void GlShaderProgram_ProgramId_PropertyExists()
@@ -95,22 +94,22 @@ namespace Alis.Core.Graphic.Test.Constructs
         }
 
         /// <summary>
-        /// Tests that GlShaderProgram has indexer for shader parameters.
+        ///     Tests that GlShaderProgram has indexer for shader parameters.
         /// </summary>
         [Fact]
         public void GlShaderProgram_Indexer_CanAccessParameters()
         {
             // Arrange & Act
-            PropertyInfo indexerProperty = typeof(GlShaderProgram).GetProperty("Item", 
-                System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance,
-                null, null, new[] { typeof(string) }, null);
+            PropertyInfo indexerProperty = typeof(GlShaderProgram).GetProperty("Item",
+                BindingFlags.Public | BindingFlags.Instance,
+                null, null, new[] {typeof(string)}, null);
 
             // Assert
             Assert.NotNull(indexerProperty);
         }
 
         /// <summary>
-        /// Tests that GlShaderProgram has two constructor overloads.
+        ///     Tests that GlShaderProgram has two constructor overloads.
         /// </summary>
         [Fact]
         public void GlShaderProgram_HasTwoConstructors_OverloadsExist()
@@ -123,7 +122,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         }
 
         /// <summary>
-        /// Tests that GlShaderProgram first constructor accepts two GlShader parameters.
+        ///     Tests that GlShaderProgram first constructor accepts two GlShader parameters.
         /// </summary>
         [Fact]
         public void GlShaderProgram_FirstConstructor_AcceptsShaders()
@@ -141,7 +140,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         }
 
         /// <summary>
-        /// Tests that GlShaderProgram second constructor accepts two string parameters.
+        ///     Tests that GlShaderProgram second constructor accepts two string parameters.
         /// </summary>
         [Fact]
         public void GlShaderProgram_SecondConstructor_AcceptsSourceCode()
@@ -159,7 +158,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         }
 
         /// <summary>
-        /// Tests that GlShaderProgram has ProgramLog property.
+        ///     Tests that GlShaderProgram has ProgramLog property.
         /// </summary>
         [Fact]
         public void GlShaderProgram_ProgramLog_PropertyExists()
@@ -173,7 +172,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         }
 
         /// <summary>
-        /// Tests that GlShaderProgram ProgramLog is read-only.
+        ///     Tests that GlShaderProgram ProgramLog is read-only.
         /// </summary>
         [Fact]
         public void GlShaderProgram_ProgramLog_IsReadOnly()
@@ -188,7 +187,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         }
 
         /// <summary>
-        /// Tests that GlShaderProgram has methods for parameter management.
+        ///     Tests that GlShaderProgram has methods for parameter management.
         /// </summary>
         [Fact]
         public void GlShaderProgram_HasParameterMethods_ParameterManagementExists()
@@ -197,14 +196,14 @@ namespace Alis.Core.Graphic.Test.Constructs
             Type programType = typeof(GlShaderProgram);
 
             // Act
-            MethodInfo[] methods = programType.GetMethods(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
+            MethodInfo[] methods = programType.GetMethods(BindingFlags.Public | BindingFlags.Instance);
 
             // Assert
             Assert.NotEmpty(methods);
         }
 
         /// <summary>
-        /// Tests that GlShaderProgram ProgramId property is public.
+        ///     Tests that GlShaderProgram ProgramId property is public.
         /// </summary>
         [Fact]
         public void GlShaderProgram_ProgramId_IsPublic()

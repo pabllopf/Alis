@@ -46,9 +46,9 @@ namespace Alis.Core.Physic.Test.Common
         {
             Vector2F c1 = new Vector2F(1.0f, 2.0f);
             Vector2F c2 = new Vector2F(3.0f, 4.0f);
-            
+
             Mat22 mat = new Mat22(c1, c2);
-            
+
             Assert.Equal(c1, mat.Ex);
             Assert.Equal(c2, mat.Ey);
         }
@@ -60,7 +60,7 @@ namespace Alis.Core.Physic.Test.Common
         public void Constructor_WithScalars_ShouldInitializeCorrectly()
         {
             Mat22 mat = new Mat22(1.0f, 2.0f, 3.0f, 4.0f);
-            
+
             Assert.Equal(1.0f, mat.Ex.X);
             Assert.Equal(3.0f, mat.Ex.Y);
             Assert.Equal(2.0f, mat.Ey.X);
@@ -74,9 +74,9 @@ namespace Alis.Core.Physic.Test.Common
         public void Inverse_ShouldReturnCorrectMatrix()
         {
             Mat22 mat = new Mat22(4.0f, 3.0f, 2.0f, 1.0f);
-            
+
             Mat22 inverse = mat.Inverse;
-            
+
             Assert.Equal(-0.5f, inverse.Ex.X, 5);
             Assert.Equal(1.0f, inverse.Ex.Y, 5);
             Assert.Equal(1.5f, inverse.Ey.X, 5);
@@ -90,9 +90,9 @@ namespace Alis.Core.Physic.Test.Common
         public void Inverse_OfIdentity_ShouldReturnIdentity()
         {
             Mat22 identity = new Mat22(1.0f, 0.0f, 0.0f, 1.0f);
-            
+
             Mat22 inverse = identity.Inverse;
-            
+
             Assert.Equal(1.0f, inverse.Ex.X, 5);
             Assert.Equal(0.0f, inverse.Ex.Y, 5);
             Assert.Equal(0.0f, inverse.Ey.X, 5);
@@ -108,9 +108,9 @@ namespace Alis.Core.Physic.Test.Common
             Mat22 mat = new Mat22();
             Vector2F c1 = new Vector2F(1.0f, 2.0f);
             Vector2F c2 = new Vector2F(3.0f, 4.0f);
-            
+
             mat.Set(c1, c2);
-            
+
             Assert.Equal(c1, mat.Ex);
             Assert.Equal(c2, mat.Ey);
         }
@@ -122,9 +122,9 @@ namespace Alis.Core.Physic.Test.Common
         public void SetIdentity_ShouldCreateIdentityMatrix()
         {
             Mat22 mat = new Mat22(1.0f, 2.0f, 3.0f, 4.0f);
-            
+
             mat.SetIdentity();
-            
+
             Assert.Equal(1.0f, mat.Ex.X);
             Assert.Equal(0.0f, mat.Ex.Y);
             Assert.Equal(0.0f, mat.Ey.X);
@@ -138,9 +138,9 @@ namespace Alis.Core.Physic.Test.Common
         public void SetZero_ShouldCreateZeroMatrix()
         {
             Mat22 mat = new Mat22(1.0f, 2.0f, 3.0f, 4.0f);
-            
+
             mat.SetZero();
-            
+
             Assert.Equal(0.0f, mat.Ex.X);
             Assert.Equal(0.0f, mat.Ex.Y);
             Assert.Equal(0.0f, mat.Ey.X);
@@ -155,9 +155,9 @@ namespace Alis.Core.Physic.Test.Common
         {
             Mat22 mat = new Mat22(2.0f, 1.0f, 1.0f, 2.0f);
             Vector2F b = new Vector2F(5.0f, 7.0f);
-            
+
             Vector2F x = mat.Solve(b);
-            
+
             Assert.Equal(1.0f, x.X, 5);
             Assert.Equal(3.0f, x.Y, 5);
         }
@@ -170,9 +170,9 @@ namespace Alis.Core.Physic.Test.Common
         {
             Mat22 identity = new Mat22(1.0f, 0.0f, 0.0f, 1.0f);
             Vector2F b = new Vector2F(3.0f, 4.0f);
-            
+
             Vector2F x = identity.Solve(b);
-            
+
             Assert.Equal(b.X, x.X, 5);
             Assert.Equal(b.Y, x.Y, 5);
         }
@@ -185,9 +185,9 @@ namespace Alis.Core.Physic.Test.Common
         {
             Mat22 a = new Mat22(1.0f, 2.0f, 3.0f, 4.0f);
             Mat22 b = new Mat22(5.0f, 6.0f, 7.0f, 8.0f);
-            
+
             Mat22.Add(ref a, ref b, out Mat22 result);
-            
+
             Assert.Equal(6.0f, result.Ex.X);
             Assert.Equal(10.0f, result.Ex.Y);
             Assert.Equal(8.0f, result.Ey.X);
@@ -202,9 +202,9 @@ namespace Alis.Core.Physic.Test.Common
         {
             Mat22 a = new Mat22(1.0f, 2.0f, 3.0f, 4.0f);
             Mat22 zero = new Mat22(0.0f, 0.0f, 0.0f, 0.0f);
-            
+
             Mat22.Add(ref a, ref zero, out Mat22 result);
-            
+
             Assert.Equal(a.Ex, result.Ex);
             Assert.Equal(a.Ey, result.Ey);
         }
@@ -216,7 +216,7 @@ namespace Alis.Core.Physic.Test.Common
         public void Constructor_WithZeroValues_ShouldWork()
         {
             Mat22 mat = new Mat22(0.0f, 0.0f, 0.0f, 0.0f);
-            
+
             Assert.Equal(0.0f, mat.Ex.X);
             Assert.Equal(0.0f, mat.Ex.Y);
             Assert.Equal(0.0f, mat.Ey.X);
@@ -230,9 +230,9 @@ namespace Alis.Core.Physic.Test.Common
         public void Inverse_WithSingularMatrix_ShouldHandleGracefully()
         {
             Mat22 singular = new Mat22(1.0f, 2.0f, 2.0f, 4.0f);
-            
+
             Mat22 inverse = singular.Inverse;
-            
+
             // Determinant is zero, should handle with epsilon check
             Assert.NotNull(inverse);
         }
@@ -245,9 +245,9 @@ namespace Alis.Core.Physic.Test.Common
         {
             Mat22 singular = new Mat22(1.0f, 2.0f, 2.0f, 4.0f);
             Vector2F b = new Vector2F(1.0f, 2.0f);
-            
+
             Vector2F result = singular.Solve(b);
-            
+
             Assert.NotNull(result);
         }
 
@@ -258,7 +258,7 @@ namespace Alis.Core.Physic.Test.Common
         public void Constructor_WithNegativeValues_ShouldWork()
         {
             Mat22 mat = new Mat22(-1.0f, -2.0f, -3.0f, -4.0f);
-            
+
             Assert.Equal(-1.0f, mat.Ex.X);
             Assert.Equal(-3.0f, mat.Ex.Y);
             Assert.Equal(-2.0f, mat.Ey.X);
@@ -266,4 +266,3 @@ namespace Alis.Core.Physic.Test.Common
         }
     }
 }
-

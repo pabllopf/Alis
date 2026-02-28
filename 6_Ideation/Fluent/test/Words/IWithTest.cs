@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IWithTest.cs
+//  File:IWithTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,25 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
     /// </summary>
     public class IWithTest
     {
-        /// <summary>
-        ///     Helper builder class.
-        /// </summary>
-        private class Builder { public string WithValue { get; set; } }
-
-        /// <summary>
-        ///     Helper implementation of IWith.
-        /// </summary>
-        private class WithBuilder : IWith<Builder, string>
-        {
-            private readonly Builder _builder = new Builder();
-
-            public Builder With(string value)
-            {
-                _builder.WithValue = value;
-                return _builder;
-            }
-        }
-
         /// <summary>
         ///     Tests that IWith can be implemented.
         /// </summary>
@@ -114,9 +95,34 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         }
 
         /// <summary>
+        ///     Helper builder class.
+        /// </summary>
+        private class Builder
+        {
+            public string WithValue { get; set; }
+        }
+
+        /// <summary>
+        ///     Helper implementation of IWith.
+        /// </summary>
+        private class WithBuilder : IWith<Builder, string>
+        {
+            private readonly Builder _builder = new Builder();
+
+            public Builder With(string value)
+            {
+                _builder.WithValue = value;
+                return _builder;
+            }
+        }
+
+        /// <summary>
         ///     Helper builder with integer.
         /// </summary>
-        private class IntBuilder { public int Value { get; set; } }
+        private class IntBuilder
+        {
+            public int Value { get; set; }
+        }
 
         /// <summary>
         ///     Helper implementation with integer.
@@ -133,4 +139,3 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         }
     }
 }
-

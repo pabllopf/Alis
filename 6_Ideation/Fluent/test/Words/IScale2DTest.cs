@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IScale2DTest.cs
+//  File:IScale2DTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,30 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
     /// </summary>
     public class IScale2DTest
     {
-        /// <summary>
-        ///     Helper builder class for scale.
-        /// </summary>
-        private class ScaleBuilder
-        {
-            public float ScaleX { get; set; }
-            public float ScaleY { get; set; }
-        }
-
-        /// <summary>
-        ///     Helper implementation of IScale2D.
-        /// </summary>
-        private class Scale2DBuilder : IScale2D<ScaleBuilder, float>
-        {
-            private readonly ScaleBuilder _builder = new ScaleBuilder();
-
-            public ScaleBuilder Scale(float x, float y)
-            {
-                _builder.ScaleX = x;
-                _builder.ScaleY = y;
-                return _builder;
-            }
-        }
-
         /// <summary>
         ///     Tests that IScale2D can be implemented.
         /// </summary>
@@ -112,10 +88,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Tests Scale with extreme values.
         /// </summary>
-        [Theory]
-        [InlineData(0.1f, 0.1f)]
-        [InlineData(10f, 10f)]
-        [InlineData(0.5f, 2f)]
+        [Theory, InlineData(0.1f, 0.1f), InlineData(10f, 10f), InlineData(0.5f, 2f)]
         public void Scale_WithVariousScaleValues(float x, float y)
         {
             Scale2DBuilder builder = new Scale2DBuilder();
@@ -123,6 +96,29 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
             Assert.Equal(x, result.ScaleX);
             Assert.Equal(y, result.ScaleY);
         }
+
+        /// <summary>
+        ///     Helper builder class for scale.
+        /// </summary>
+        private class ScaleBuilder
+        {
+            public float ScaleX { get; set; }
+            public float ScaleY { get; set; }
+        }
+
+        /// <summary>
+        ///     Helper implementation of IScale2D.
+        /// </summary>
+        private class Scale2DBuilder : IScale2D<ScaleBuilder, float>
+        {
+            private readonly ScaleBuilder _builder = new ScaleBuilder();
+
+            public ScaleBuilder Scale(float x, float y)
+            {
+                _builder.ScaleX = x;
+                _builder.ScaleY = y;
+                return _builder;
+            }
+        }
     }
 }
-

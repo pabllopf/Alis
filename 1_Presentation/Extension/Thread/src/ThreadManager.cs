@@ -114,4 +114,3 @@ namespace Alis.Extension.Thread
         }
     }
 }
-

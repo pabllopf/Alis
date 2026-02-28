@@ -27,10 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Extension.Media.FFmpeg.BaseClasses;
-using Alis.Extension.Media.FFmpeg.Encoding;
-using Xunit;
-
 namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
 {
     /// <summary>
@@ -41,4 +37,3 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
     {
     }
 }
-

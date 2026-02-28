@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using Alis.Core.Ecs.Exceptions;
 using Xunit;
 
@@ -37,7 +38,7 @@ namespace Alis.Core.Ecs.Test.Exceptions
     ///     The component already exists exception test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="ComponentAlreadyExistsException"/> which is thrown
+    ///     Tests the <see cref="ComponentAlreadyExistsException" /> which is thrown
     ///     when attempting to add a component that already exists on an entity.
     /// </remarks>
     public class ComponentAlreadyExistsExceptionTest
@@ -164,7 +165,7 @@ namespace Alis.Core.Ecs.Test.Exceptions
         public void Exception_WithComplexType_ShowsCorrectName()
         {
             // Arrange
-            Type testType = typeof(System.Collections.Generic.List<int>);
+            Type testType = typeof(List<int>);
 
             // Act
             ComponentAlreadyExistsException exception = new ComponentAlreadyExistsException(testType);
@@ -235,4 +236,3 @@ namespace Alis.Core.Ecs.Test.Exceptions
         }
     }
 }
-

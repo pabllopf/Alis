@@ -44,7 +44,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
         public void DefaultConstructor_ShouldInitializeWithNullValues()
         {
             TriangulationConstraint constraint = new TriangulationConstraint();
-            
+
             Assert.Null(constraint.P);
             Assert.Null(constraint.Q);
         }
@@ -57,9 +57,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
         {
             TriangulationConstraint constraint = new TriangulationConstraint();
             TriangulationPoint point = new TriangulationPoint(5.0, 10.0);
-            
+
             constraint.P = point;
-            
+
             Assert.Equal(point, constraint.P);
         }
 
@@ -71,9 +71,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
         {
             TriangulationConstraint constraint = new TriangulationConstraint();
             TriangulationPoint point = new TriangulationPoint(15.0, 20.0);
-            
+
             constraint.Q = point;
-            
+
             Assert.Equal(point, constraint.Q);
         }
 
@@ -86,10 +86,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
             TriangulationConstraint constraint = new TriangulationConstraint();
             TriangulationPoint p = new TriangulationPoint(0, 0);
             TriangulationPoint q = new TriangulationPoint(10, 10);
-            
+
             constraint.P = p;
             constraint.Q = q;
-            
+
             Assert.Equal(p, constraint.P);
             Assert.Equal(q, constraint.Q);
         }
@@ -103,10 +103,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
             TriangulationConstraint constraint = new TriangulationConstraint();
             constraint.P = new TriangulationPoint(5, 5);
             constraint.Q = new TriangulationPoint(10, 10);
-            
+
             constraint.P = null;
             constraint.Q = null;
-            
+
             Assert.Null(constraint.P);
             Assert.Null(constraint.Q);
         }
@@ -120,10 +120,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
             TriangulationConstraint constraint = new TriangulationConstraint();
             TriangulationPoint p1 = new TriangulationPoint(0, 0);
             TriangulationPoint p2 = new TriangulationPoint(5, 5);
-            
+
             constraint.P = p1;
             constraint.P = p2;
-            
+
             Assert.Equal(p2, constraint.P);
         }
 
@@ -136,9 +136,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
             TriangulationConstraint constraint1 = new TriangulationConstraint();
             TriangulationPoint point = new TriangulationPoint(5, 5);
             constraint1.P = point;
-            
+
             TriangulationConstraint constraint2 = constraint1;
-            
+
             Assert.Same(constraint1, constraint2);
         }
 
@@ -150,10 +150,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
         {
             TriangulationConstraint constraint = new TriangulationConstraint();
             TriangulationPoint point = new TriangulationPoint(5, 5);
-            
+
             constraint.P = point;
             constraint.Q = point;
-            
+
             Assert.Same(constraint.P, constraint.Q);
         }
 
@@ -165,12 +165,11 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
         {
             TriangulationConstraint constraint1 = new TriangulationConstraint();
             TriangulationConstraint constraint2 = new TriangulationConstraint();
-            
+
             constraint1.P = new TriangulationPoint(0, 0);
             constraint2.P = new TriangulationPoint(10, 10);
-            
+
             Assert.NotEqual(constraint1.P, constraint2.P);
         }
     }
 }
-

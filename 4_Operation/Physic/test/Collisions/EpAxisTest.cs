@@ -44,7 +44,7 @@ namespace Alis.Core.Physic.Test.Collisions
         public void Constructor_ShouldInitializeWithDefaultValues()
         {
             EpAxis axis = new EpAxis();
-            
+
             Assert.Equal(0, axis.Index);
             Assert.Equal(0.0f, axis.Separation);
             Assert.Equal(EpAxisType.Unknown, axis.Type);
@@ -60,7 +60,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 Index = 5
             };
-            
+
             Assert.Equal(5, axis.Index);
         }
 
@@ -74,7 +74,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 Separation = 3.5f
             };
-            
+
             Assert.Equal(3.5f, axis.Separation);
         }
 
@@ -88,7 +88,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 Type = EpAxisType.EdgeA
             };
-            
+
             Assert.Equal(EpAxisType.EdgeA, axis.Type);
         }
 
@@ -104,7 +104,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 Separation = 2.5f,
                 Type = EpAxisType.EdgeB
             };
-            
+
             Assert.Equal(10, axis.Index);
             Assert.Equal(2.5f, axis.Separation);
             Assert.Equal(EpAxisType.EdgeB, axis.Type);
@@ -120,7 +120,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 Separation = -1.5f
             };
-            
+
             Assert.Equal(-1.5f, axis.Separation);
         }
 
@@ -134,9 +134,8 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 Index = -1
             };
-            
+
             Assert.Equal(-1, axis.Index);
         }
     }
 }
-

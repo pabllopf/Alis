@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: ILinearVelocityTest.cs
+//  File:ILinearVelocityTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,30 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
     /// </summary>
     public class ILinearVelocityTest
     {
-        /// <summary>
-        ///     Helper builder class for velocity.
-        /// </summary>
-        private class VelocityBuilder
-        {
-            public float VelocityX { get; set; }
-            public float VelocityY { get; set; }
-        }
-
-        /// <summary>
-        ///     Helper implementation of ILinearVelocity.
-        /// </summary>
-        private class LinearVelocityBuilderImpl : ILinearVelocity<VelocityBuilder, float>
-        {
-            private readonly VelocityBuilder _builder = new VelocityBuilder();
-
-            public VelocityBuilder LinearVelocity(float x, float y)
-            {
-                _builder.VelocityX = x;
-                _builder.VelocityY = y;
-                return _builder;
-            }
-        }
-
         /// <summary>
         ///     Tests that ILinearVelocity can be implemented.
         /// </summary>
@@ -100,11 +76,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Tests LinearVelocity with various values.
         /// </summary>
-        [Theory]
-        [InlineData(0f, 0f)]
-        [InlineData(5f, 5f)]
-        [InlineData(-10f, 10f)]
-        [InlineData(20f, -20f)]
+        [Theory, InlineData(0f, 0f), InlineData(5f, 5f), InlineData(-10f, 10f), InlineData(20f, -20f)]
         public void LinearVelocity_WithVariousValues(float x, float y)
         {
             LinearVelocityBuilderImpl builder = new LinearVelocityBuilderImpl();
@@ -112,6 +84,29 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
             Assert.Equal(x, result.VelocityX);
             Assert.Equal(y, result.VelocityY);
         }
+
+        /// <summary>
+        ///     Helper builder class for velocity.
+        /// </summary>
+        private class VelocityBuilder
+        {
+            public float VelocityX { get; set; }
+            public float VelocityY { get; set; }
+        }
+
+        /// <summary>
+        ///     Helper implementation of ILinearVelocity.
+        /// </summary>
+        private class LinearVelocityBuilderImpl : ILinearVelocity<VelocityBuilder, float>
+        {
+            private readonly VelocityBuilder _builder = new VelocityBuilder();
+
+            public VelocityBuilder LinearVelocity(float x, float y)
+            {
+                _builder.VelocityX = x;
+                _builder.VelocityY = y;
+                return _builder;
+            }
+        }
     }
 }
-

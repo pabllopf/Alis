@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:WindowTests.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,7 +39,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
     public class WindowTests
     {
         /// <summary>
-        /// Tests that window none is default value
+        ///     Tests that window none is default value
         /// </summary>
         [Fact]
         public void Window_None_IsDefaultValue()
@@ -51,7 +52,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
         }
 
         /// <summary>
-        /// Tests that window constructor with int ptr creates window
+        ///     Tests that window constructor with int ptr creates window
         /// </summary>
         [Fact]
         public void Window_Constructor_WithIntPtr_CreatesWindow()
@@ -67,7 +68,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
         }
 
         /// <summary>
-        /// Tests that window implicit conversion to int ptr works
+        ///     Tests that window implicit conversion to int ptr works
         /// </summary>
         [Fact]
         public void Window_ImplicitConversion_ToIntPtr_Works()
@@ -84,7 +85,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
         }
 
         /// <summary>
-        /// Tests that window explicit conversion from int ptr works
+        ///     Tests that window explicit conversion from int ptr works
         /// </summary>
         [Fact]
         public void Window_ExplicitConversion_FromIntPtr_Works()
@@ -93,7 +94,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             IntPtr handle = new IntPtr(12345);
 
             // Act
-            Window window = (Window)handle;
+            Window window = (Window) handle;
 
             // Assert
             IntPtr result = window;
@@ -101,7 +102,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
         }
 
         /// <summary>
-        /// Tests that window to string returns handle string
+        ///     Tests that window to string returns handle string
         /// </summary>
         [Fact]
         public void Window_ToString_ReturnsHandleString()
@@ -118,7 +119,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
         }
 
         /// <summary>
-        /// Tests that window equals with same window returns true
+        ///     Tests that window equals with same window returns true
         /// </summary>
         [Fact]
         public void Window_Equals_WithSameWindow_ReturnsTrue()
@@ -136,7 +137,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
         }
 
         /// <summary>
-        /// Tests that window equals with object returns correct result
+        ///     Tests that window equals with object returns correct result
         /// </summary>
         [Fact]
         public void Window_Equals_WithObject_ReturnsCorrectResult()
@@ -154,7 +155,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
         }
 
         /// <summary>
-        /// Tests that window equals with non window object returns false
+        ///     Tests that window equals with non window object returns false
         /// </summary>
         [Fact]
         public void Window_Equals_WithNonWindowObject_ReturnsFalse()
@@ -171,7 +172,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
         }
 
         /// <summary>
-        /// Tests that window get hash code returns same for equal windows
+        ///     Tests that window get hash code returns same for equal windows
         /// </summary>
         [Fact]
         public void Window_GetHashCode_ReturnsSameForEqualWindows()
@@ -190,7 +191,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
         }
 
         /// <summary>
-        /// Tests that window equality operator with same windows returns true
+        ///     Tests that window equality operator with same windows returns true
         /// </summary>
         [Fact]
         public void Window_EqualityOperator_WithSameWindows_ReturnsTrue()
@@ -208,7 +209,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
         }
 
         /// <summary>
-        /// Tests that window inequality operator with different windows returns true
+        ///     Tests that window inequality operator with different windows returns true
         /// </summary>
         [Fact]
         public void Window_InequalityOperator_WithDifferentWindows_ReturnsTrue()
@@ -225,7 +226,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
         }
 
         /// <summary>
-        /// Tests that window equals with i equatable interface works
+        ///     Tests that window equals with i equatable interface works
         /// </summary>
         [Fact]
         public void Window_Equals_WithIEquatableInterface_Works()
@@ -243,4 +244,3 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
         }
     }
 }
-

@@ -35,7 +35,7 @@ namespace Alis.Core.Ecs.Test
     ///     The entity data test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="EntityData"/> struct which stores internal entity metadata
+    ///     Tests the <see cref="EntityData" /> struct which stores internal entity metadata
     ///     including entity ID, version, and world ID.
     /// </remarks>
     public class EntityDataTest
@@ -50,12 +50,12 @@ namespace Alis.Core.Ecs.Test
         public void EntityData_CanBeCreatedWithDefaultValues()
         {
             // Act
-            EntityData entityData = default;
+            EntityData entityData = default(EntityData);
 
             // Assert
             Assert.Equal(0, entityData.EntityID);
-            Assert.Equal((ushort)0, entityData.EntityVersion);
-            Assert.Equal((ushort)0, entityData.WorldID);
+            Assert.Equal((ushort) 0, entityData.EntityVersion);
+            Assert.Equal((ushort) 0, entityData.WorldID);
         }
 
         /// <summary>
@@ -77,8 +77,8 @@ namespace Alis.Core.Ecs.Test
 
             // Assert
             Assert.Equal(123, entityData.EntityID);
-            Assert.Equal((ushort)5, entityData.EntityVersion);
-            Assert.Equal((ushort)10, entityData.WorldID);
+            Assert.Equal((ushort) 5, entityData.EntityVersion);
+            Assert.Equal((ushort) 10, entityData.WorldID);
         }
 
         /// <summary>
@@ -148,7 +148,7 @@ namespace Alis.Core.Ecs.Test
         public void EntityData_IsValueType()
         {
             // Arrange
-            EntityData entityData1 = new EntityData { EntityID = 100 };
+            EntityData entityData1 = new EntityData {EntityID = 100};
             EntityData entityData2 = entityData1;
 
             // Act
@@ -175,7 +175,7 @@ namespace Alis.Core.Ecs.Test
                 EntityVersion = 3,
                 WorldID = 7
             };
-            
+
             EntityData entityData2 = new EntityData
             {
                 EntityID = 42,
@@ -199,8 +199,8 @@ namespace Alis.Core.Ecs.Test
         public void EntityData_WithDifferentValuesAreNotEqual()
         {
             // Arrange
-            EntityData entityData1 = new EntityData { EntityID = 42 };
-            EntityData entityData2 = new EntityData { EntityID = 43 };
+            EntityData entityData1 = new EntityData {EntityID = 42};
+            EntityData entityData2 = new EntityData {EntityID = 43};
 
             // Assert
             Assert.NotEqual(entityData1.EntityID, entityData2.EntityID);
@@ -253,4 +253,3 @@ namespace Alis.Core.Ecs.Test
         }
     }
 }
-

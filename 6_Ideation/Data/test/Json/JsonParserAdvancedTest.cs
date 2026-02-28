@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: JsonParserAdvancedTest.cs
+//  File:JsonParserAdvancedTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program. If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -41,14 +41,91 @@ namespace Alis.Core.Aspect.Data.Test.Json
     public class JsonParserAdvancedTest
     {
         /// <summary>
-        /// The escape sequence handler
+        ///     The escape sequence handler
         /// </summary>
         private readonly IJsonParser _parser = new JsonParser(new EscapeSequenceHandler());
+
+        #region Property Count Tests
+
+        /// <summary>
+        ///     Tests that parse to dictionary with multiple properties returns correct count
+        /// </summary>
+        /// <param name="count">The count</param>
+        [Theory, InlineData(1), InlineData(2), InlineData(3), InlineData(5), InlineData(10)]
+        public void ParseToDictionary_WithMultipleProperties_ReturnsCorrectCount(int count)
+        {
+            // Arrange
+            List<string> properties = new List<string>();
+            for (int i = 0; i < count; i++)
+            {
+                properties.Add($"\"prop{i}\":\"value{i}\"");
+            }
+
+            string json = "{" + string.Join(",", properties) + "}";
+
+            // Act
+            Dictionary<string, string> dict = _parser.ParseToDictionary(json);
+
+            // Assert
+            Assert.Equal(count, dict.Count);
+        }
+
+        #endregion
+
+        #region Boolean Value Tests
+
+        /// <summary>
+        ///     Tests that parse to dictionary with boolean value returns as string
+        /// </summary>
+        /// <param name="boolValue">The bool value</param>
+        [Theory, InlineData("true"), InlineData("false")]
+        public void ParseToDictionary_WithBooleanValue_ReturnsAsString(string boolValue)
+        {
+            // Arrange
+            string json = $"{{\"flag\":\"{boolValue}\"}}";
+
+            // Act
+            Dictionary<string, string> dict = _parser.ParseToDictionary(json);
+
+            // Assert
+            Assert.Equal(boolValue, dict["flag"]);
+        }
+
+        #endregion
+
+        #region Performance Tests
+
+        /// <summary>
+        ///     Tests that parse to dictionary with large json completes in reasonable time
+        /// </summary>
+        [Fact]
+        public void ParseToDictionary_WithLargeJson_CompletesInReasonableTime()
+        {
+            // Arrange
+            List<string> properties = new List<string>();
+            for (int i = 0; i < 1000; i++)
+            {
+                properties.Add($"\"prop{i}\":\"value{i}\"");
+            }
+
+            string json = "{" + string.Join(",", properties) + "}";
+
+            // Act
+            Stopwatch stopwatch = Stopwatch.StartNew();
+            Dictionary<string, string> dict = _parser.ParseToDictionary(json);
+            stopwatch.Stop();
+
+            // Assert
+            Assert.Equal(1000, dict.Count);
+            Assert.True(stopwatch.ElapsedMilliseconds < 1000, "Parsing should complete in less than 1 second");
+        }
+
+        #endregion
 
         #region Whitespace Handling Tests
 
         /// <summary>
-        /// Tests that parse to dictionary with leading whitespace parses correctly
+        ///     Tests that parse to dictionary with leading whitespace parses correctly
         /// </summary>
         [Fact]
         public void ParseToDictionary_WithLeadingWhitespace_ParsesCorrectly()
@@ -65,7 +142,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that parse to dictionary with trailing whitespace parses correctly
+        ///     Tests that parse to dictionary with trailing whitespace parses correctly
         /// </summary>
         [Fact]
         public void ParseToDictionary_WithTrailingWhitespace_ParsesCorrectly()
@@ -81,7 +158,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that parse to dictionary with multiple spaces parses correctly
+        ///     Tests that parse to dictionary with multiple spaces parses correctly
         /// </summary>
         [Fact]
         public void ParseToDictionary_WithMultipleSpaces_ParsesCorrectly()
@@ -97,7 +174,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that parse to dictionary with newlines parses correctly
+        ///     Tests that parse to dictionary with newlines parses correctly
         /// </summary>
         [Fact]
         public void ParseToDictionary_WithNewlines_ParsesCorrectly()
@@ -113,7 +190,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that parse to dictionary with tabs parses correctly
+        ///     Tests that parse to dictionary with tabs parses correctly
         /// </summary>
         [Fact]
         public void ParseToDictionary_WithTabs_ParsesCorrectly()
@@ -133,7 +210,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         #region Complex Value Tests
 
         /// <summary>
-        /// Tests that parse to dictionary with nested object returns raw json
+        ///     Tests that parse to dictionary with nested object returns raw json
         /// </summary>
         [Fact]
         public void ParseToDictionary_WithNestedObject_ReturnsRawJson()
@@ -150,7 +227,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that parse to dictionary with nested array returns raw json
+        ///     Tests that parse to dictionary with nested array returns raw json
         /// </summary>
         [Fact]
         public void ParseToDictionary_WithNestedArray_ReturnsRawJson()
@@ -167,7 +244,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that parse to dictionary with empty array returns empty array string
+        ///     Tests that parse to dictionary with empty array returns empty array string
         /// </summary>
         [Fact]
         public void ParseToDictionary_WithEmptyArray_ReturnsEmptyArrayString()
@@ -183,7 +260,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that parse to dictionary with empty nested object returns empty object string
+        ///     Tests that parse to dictionary with empty nested object returns empty object string
         /// </summary>
         [Fact]
         public void ParseToDictionary_WithEmptyNestedObject_ReturnsEmptyObjectString()
@@ -199,7 +276,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that parse to dictionary with deeply nested returns correct structure
+        ///     Tests that parse to dictionary with deeply nested returns correct structure
         /// </summary>
         [Fact]
         public void ParseToDictionary_WithDeeplyNested_ReturnsCorrectStructure()
@@ -217,48 +294,13 @@ namespace Alis.Core.Aspect.Data.Test.Json
 
         #endregion
 
-        #region Property Count Tests
-
-        /// <summary>
-        /// Tests that parse to dictionary with multiple properties returns correct count
-        /// </summary>
-        /// <param name="count">The count</param>
-        [Theory]
-        [InlineData(1)]
-        [InlineData(2)]
-        [InlineData(3)]
-        [InlineData(5)]
-        [InlineData(10)]
-        public void ParseToDictionary_WithMultipleProperties_ReturnsCorrectCount(int count)
-        {
-            // Arrange
-            List<string> properties = new List<string>();
-            for (int i = 0; i < count; i++)
-            {
-                properties.Add($"\"prop{i}\":\"value{i}\"");
-            }
-            string json = "{" + string.Join(",", properties) + "}";
-
-            // Act
-            Dictionary<string, string> dict = _parser.ParseToDictionary(json);
-
-            // Assert
-            Assert.Equal(count, dict.Count);
-        }
-
-        #endregion
-
         #region Special Characters Tests
 
         /// <summary>
-        /// Tests that parse to dictionary with special chars in value parses correctly
+        ///     Tests that parse to dictionary with special chars in value parses correctly
         /// </summary>
         /// <param name="value">The value</param>
-        [Theory]
-        [InlineData("test@email.com")]
-        [InlineData("test#value")]
-        [InlineData("test$value")]
-        [InlineData("test%value")]
+        [Theory, InlineData("test@email.com"), InlineData("test#value"), InlineData("test$value"), InlineData("test%value")]
         public void ParseToDictionary_WithSpecialCharsInValue_ParsesCorrectly(string value)
         {
             // Arrange
@@ -272,7 +314,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that parse to dictionary with unicode characters parses correctly
+        ///     Tests that parse to dictionary with unicode characters parses correctly
         /// </summary>
         [Fact]
         public void ParseToDictionary_WithUnicodeCharacters_ParsesCorrectly()
@@ -288,7 +330,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that parse to dictionary with emojis parses correctly
+        ///     Tests that parse to dictionary with emojis parses correctly
         /// </summary>
         [Fact]
         public void ParseToDictionary_WithEmojis_ParsesCorrectly()
@@ -308,14 +350,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
         #region Escape Sequence Tests
 
         /// <summary>
-        /// Tests that parse to dictionary with escape sequences unescapes correctly
+        ///     Tests that parse to dictionary with escape sequences unescapes correctly
         /// </summary>
         /// <param name="escaped">The escaped</param>
         /// <param name="expected">The expected</param>
-        [Theory]
-        [InlineData("\\n", "\n")]
-        [InlineData("\\t", "\t")]
-        [InlineData("\\r", "\r")]
+        [Theory, InlineData("\\n", "\n"), InlineData("\\t", "\t"), InlineData("\\r", "\r")]
         public void ParseToDictionary_WithEscapeSequences_UnescapesCorrectly(string escaped, string expected)
         {
             // Arrange
@@ -329,7 +368,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that parse to dictionary with quoted value parses correctly
+        ///     Tests that parse to dictionary with quoted value parses correctly
         /// </summary>
         [Fact]
         public void ParseToDictionary_WithQuotedValue_ParsesCorrectly()
@@ -345,7 +384,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that parse to dictionary with backslash parses correctly
+        ///     Tests that parse to dictionary with backslash parses correctly
         /// </summary>
         [Fact]
         public void ParseToDictionary_WithBackslash_ParsesCorrectly()
@@ -365,15 +404,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
         #region Number Value Tests
 
         /// <summary>
-        /// Tests that parse to dictionary with integer value returns as string
+        ///     Tests that parse to dictionary with integer value returns as string
         /// </summary>
         /// <param name="number">The number</param>
-        [Theory]
-        [InlineData("0")]
-        [InlineData("1")]
-        [InlineData("-1")]
-        [InlineData("123")]
-        [InlineData("999999")]
+        [Theory, InlineData("0"), InlineData("1"), InlineData("-1"), InlineData("123"), InlineData("999999")]
         public void ParseToDictionary_WithIntegerValue_ReturnsAsString(string number)
         {
             // Arrange
@@ -387,14 +421,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that parse to dictionary with double value returns as string
+        ///     Tests that parse to dictionary with double value returns as string
         /// </summary>
         /// <param name="number">The number</param>
-        [Theory]
-        [InlineData("0.0")]
-        [InlineData("1.5")]
-        [InlineData("-3.14")]
-        [InlineData("999.999")]
+        [Theory, InlineData("0.0"), InlineData("1.5"), InlineData("-3.14"), InlineData("999.999")]
         public void ParseToDictionary_WithDoubleValue_ReturnsAsString(string number)
         {
             // Arrange
@@ -409,33 +439,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
 
         #endregion
 
-        #region Boolean Value Tests
-
-        /// <summary>
-        /// Tests that parse to dictionary with boolean value returns as string
-        /// </summary>
-        /// <param name="boolValue">The bool value</param>
-        [Theory]
-        [InlineData("true")]
-        [InlineData("false")]
-        public void ParseToDictionary_WithBooleanValue_ReturnsAsString(string boolValue)
-        {
-            // Arrange
-            string json = $"{{\"flag\":\"{boolValue}\"}}";
-
-            // Act
-            Dictionary<string, string> dict = _parser.ParseToDictionary(json);
-
-            // Assert
-            Assert.Equal(boolValue, dict["flag"]);
-        }
-
-        #endregion
-
         #region Empty and Null Tests
 
         /// <summary>
-        /// Tests that parse to dictionary with empty string returns empty
+        ///     Tests that parse to dictionary with empty string returns empty
         /// </summary>
         [Fact]
         public void ParseToDictionary_WithEmptyString_ReturnsEmpty()
@@ -451,7 +458,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that parse to dictionary with only whitespace parses correctly
+        ///     Tests that parse to dictionary with only whitespace parses correctly
         /// </summary>
         [Fact]
         public void ParseToDictionary_WithOnlyWhitespace_ParsesCorrectly()
@@ -471,7 +478,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         #region Multiple Properties Tests
 
         /// <summary>
-        /// Tests that parse to dictionary with mixed types parses all correctly
+        ///     Tests that parse to dictionary with mixed types parses all correctly
         /// </summary>
         [Fact]
         public void ParseToDictionary_WithMixedTypes_ParsesAllCorrectly()
@@ -491,7 +498,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that parse to dictionary with repeated keys uses last value
+        ///     Tests that parse to dictionary with repeated keys uses last value
         /// </summary>
         [Fact]
         public void ParseToDictionary_WithRepeatedKeys_UsesLastValue()
@@ -508,38 +515,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
 
         #endregion
 
-        #region Performance Tests
-
-        /// <summary>
-        /// Tests that parse to dictionary with large json completes in reasonable time
-        /// </summary>
-        [Fact]
-        public void ParseToDictionary_WithLargeJson_CompletesInReasonableTime()
-        {
-            // Arrange
-            List<string> properties = new List<string>();
-            for (int i = 0; i < 1000; i++)
-            {
-                properties.Add($"\"prop{i}\":\"value{i}\"");
-            }
-            string json = "{" + string.Join(",", properties) + "}";
-
-            // Act
-            Stopwatch stopwatch = System.Diagnostics.Stopwatch.StartNew();
-            Dictionary<string, string> dict = _parser.ParseToDictionary(json);
-            stopwatch.Stop();
-
-            // Assert
-            Assert.Equal(1000, dict.Count);
-            Assert.True(stopwatch.ElapsedMilliseconds < 1000, "Parsing should complete in less than 1 second");
-        }
-
-        #endregion
-
         #region Edge Case Tests
 
         /// <summary>
-        /// Tests that parse to dictionary with long property name parses correctly
+        ///     Tests that parse to dictionary with long property name parses correctly
         /// </summary>
         [Fact]
         public void ParseToDictionary_WithLongPropertyName_ParsesCorrectly()
@@ -556,7 +535,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that parse to dictionary with long value parses correctly
+        ///     Tests that parse to dictionary with long value parses correctly
         /// </summary>
         [Fact]
         public void ParseToDictionary_WithLongValue_ParsesCorrectly()
@@ -573,7 +552,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that parse to dictionary with consecutive commas parses correctly
+        ///     Tests that parse to dictionary with consecutive commas parses correctly
         /// </summary>
         [Fact]
         public void ParseToDictionary_WithConsecutiveCommas_ParsesCorrectly()
@@ -591,4 +570,3 @@ namespace Alis.Core.Aspect.Data.Test.Json
         #endregion
     }
 }
-

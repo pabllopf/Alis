@@ -38,21 +38,21 @@ namespace Alis.Extension.Language.Dialogue.Test
     /// </summary>
     public class DialogTest
     {
-    /// <summary>
-    ///     Tests that dialog constructor should initialize properties
-    /// </summary>
-    [Fact]
-    public void Dialog_Constructor_ShouldInitializeProperties()
-    {
-        string id = "testId";
-        string text = "Test Text";
-        Dialog dialog = new Dialog(id, text);
+        /// <summary>
+        ///     Tests that dialog constructor should initialize properties
+        /// </summary>
+        [Fact]
+        public void Dialog_Constructor_ShouldInitializeProperties()
+        {
+            string id = "testId";
+            string text = "Test Text";
+            Dialog dialog = new Dialog(id, text);
 
-        Assert.Equal(id, dialog.Id);
-        Assert.Equal(text, dialog.Text);
-        Assert.Empty(dialog.Options);
-        Assert.Empty(dialog.Branches);
-    }
+            Assert.Equal(id, dialog.Id);
+            Assert.Equal(text, dialog.Text);
+            Assert.Empty(dialog.Options);
+            Assert.Empty(dialog.Branches);
+        }
 
         /// <summary>
         ///     Tests that add option should add option to list

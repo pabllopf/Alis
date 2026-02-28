@@ -50,4 +50,3 @@ namespace Alis.Extension.Io.FileDialog
         SelectFolder = 2
     }
 }
-

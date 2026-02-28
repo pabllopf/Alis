@@ -43,7 +43,7 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void Null_ShouldHaveValueZero()
         {
-            Assert.Equal(0, (int)PointState.Null);
+            Assert.Equal(0, (int) PointState.Null);
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void Add_ShouldHaveValueOne()
         {
-            Assert.Equal(1, (int)PointState.Add);
+            Assert.Equal(1, (int) PointState.Add);
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void Persist_ShouldHaveValueTwo()
         {
-            Assert.Equal(2, (int)PointState.Persist);
+            Assert.Equal(2, (int) PointState.Persist);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void Remove_ShouldHaveValueThree()
         {
-            Assert.Equal(3, (int)PointState.Remove);
+            Assert.Equal(3, (int) PointState.Remove);
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 PointState.Persist,
                 PointState.Remove
             };
-            
+
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = i + 1; j < values.Length; j++)
@@ -102,11 +102,10 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void Values_ShouldBeSequential()
         {
-            Assert.Equal(0, (int)PointState.Null);
-            Assert.Equal(1, (int)PointState.Add);
-            Assert.Equal(2, (int)PointState.Persist);
-            Assert.Equal(3, (int)PointState.Remove);
+            Assert.Equal(0, (int) PointState.Null);
+            Assert.Equal(1, (int) PointState.Add);
+            Assert.Equal(2, (int) PointState.Persist);
+            Assert.Equal(3, (int) PointState.Remove);
         }
     }
 }
-

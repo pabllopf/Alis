@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IActionTest.cs
+//  File:IActionTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -39,19 +39,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
     public class IActionTest
     {
         /// <summary>
-        ///     Helper implementation for testing single parameter action.
-        /// </summary>
-        private class SingleParamAction : IAction<int>
-        {
-            public int LastValue { get; private set; }
-
-            public void Run(ref int arg1)
-            {
-                LastValue = arg1;
-            }
-        }
-
-        /// <summary>
         ///     Tests that IAction can be implemented with a single parameter.
         /// </summary>
         [Fact]
@@ -77,12 +64,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// <summary>
         ///     Tests Run method with different parameter values.
         /// </summary>
-        [Theory]
-        [InlineData(0)]
-        [InlineData(1)]
-        [InlineData(-1)]
-        [InlineData(int.MaxValue)]
-        [InlineData(int.MinValue)]
+        [Theory, InlineData(0), InlineData(1), InlineData(-1), InlineData(int.MaxValue), InlineData(int.MinValue)]
         public void Run_WorksWithVariousParameterValues(int paramValue)
         {
             SingleParamAction action = new SingleParamAction();
@@ -103,6 +85,19 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         }
 
         /// <summary>
+        ///     Helper implementation for testing single parameter action.
+        /// </summary>
+        private class SingleParamAction : IAction<int>
+        {
+            public int LastValue { get; private set; }
+
+            public void Run(ref int arg1)
+            {
+                LastValue = arg1;
+            }
+        }
+
+        /// <summary>
         ///     Helper implementation for string parameter.
         /// </summary>
         private class StringParamAction : IAction<string>
@@ -116,4 +111,3 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         }
     }
 }
-

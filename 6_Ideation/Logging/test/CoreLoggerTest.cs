@@ -5,33 +5,31 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: CoreLoggerTest.cs
+//  File:CoreLoggerTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program. If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System;
 using System.Collections.Generic;
-using System.Threading;
 using System.Threading.Tasks;
-using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Logging.Abstractions;
 using Alis.Core.Aspect.Logging.Core;
 using Alis.Core.Aspect.Logging.Filters;
@@ -68,7 +66,7 @@ namespace Alis.Core.Aspect.Logging.Test
         {
             // Arrange
             MemoryLogOutput memoryOutput = new MemoryLogOutput();
-            List<ILogOutput> outputs = new List<ILogOutput> { memoryOutput };
+            List<ILogOutput> outputs = new List<ILogOutput> {memoryOutput};
             List<ILogFilter> filters = new List<ILogFilter>();
             SimpleLogFormatter formatter = new SimpleLogFormatter();
             CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
@@ -88,7 +86,7 @@ namespace Alis.Core.Aspect.Logging.Test
         {
             // Arrange
             MemoryLogOutput memoryOutput = new MemoryLogOutput();
-            List<ILogOutput> outputs = new List<ILogOutput> { memoryOutput };
+            List<ILogOutput> outputs = new List<ILogOutput> {memoryOutput};
             List<ILogFilter> filters = new List<ILogFilter>();
             SimpleLogFormatter formatter = new SimpleLogFormatter();
             CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
@@ -107,7 +105,7 @@ namespace Alis.Core.Aspect.Logging.Test
         {
             // Arrange
             MemoryLogOutput memoryOutput = new MemoryLogOutput();
-            List<ILogOutput> outputs = new List<ILogOutput> { memoryOutput };
+            List<ILogOutput> outputs = new List<ILogOutput> {memoryOutput};
             List<ILogFilter> filters = new List<ILogFilter>();
             SimpleLogFormatter formatter = new SimpleLogFormatter();
             CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
@@ -126,7 +124,7 @@ namespace Alis.Core.Aspect.Logging.Test
         {
             // Arrange
             MemoryLogOutput memoryOutput = new MemoryLogOutput();
-            List<ILogOutput> outputs = new List<ILogOutput> { memoryOutput };
+            List<ILogOutput> outputs = new List<ILogOutput> {memoryOutput};
             List<ILogFilter> filters = new List<ILogFilter>();
             SimpleLogFormatter formatter = new SimpleLogFormatter();
             CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
@@ -145,7 +143,7 @@ namespace Alis.Core.Aspect.Logging.Test
         {
             // Arrange
             MemoryLogOutput memoryOutput = new MemoryLogOutput();
-            List<ILogOutput> outputs = new List<ILogOutput> { memoryOutput };
+            List<ILogOutput> outputs = new List<ILogOutput> {memoryOutput};
             List<ILogFilter> filters = new List<ILogFilter>();
             SimpleLogFormatter formatter = new SimpleLogFormatter();
             CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
@@ -164,7 +162,7 @@ namespace Alis.Core.Aspect.Logging.Test
         {
             // Arrange
             MemoryLogOutput memoryOutput = new MemoryLogOutput();
-            List<ILogOutput> outputs = new List<ILogOutput> { memoryOutput };
+            List<ILogOutput> outputs = new List<ILogOutput> {memoryOutput};
             List<ILogFilter> filters = new List<ILogFilter>();
             SimpleLogFormatter formatter = new SimpleLogFormatter();
             CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
@@ -183,7 +181,7 @@ namespace Alis.Core.Aspect.Logging.Test
         {
             // Arrange
             MemoryLogOutput memoryOutput = new MemoryLogOutput();
-            List<ILogOutput> outputs = new List<ILogOutput> { memoryOutput };
+            List<ILogOutput> outputs = new List<ILogOutput> {memoryOutput};
             List<ILogFilter> filters = new List<ILogFilter>();
             SimpleLogFormatter formatter = new SimpleLogFormatter();
             CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
@@ -204,7 +202,7 @@ namespace Alis.Core.Aspect.Logging.Test
         {
             // Arrange
             MemoryLogOutput memoryOutput = new MemoryLogOutput();
-            List<ILogOutput> outputs = new List<ILogOutput> { memoryOutput };
+            List<ILogOutput> outputs = new List<ILogOutput> {memoryOutput};
             List<ILogFilter> filters = new List<ILogFilter>();
             SimpleLogFormatter formatter = new SimpleLogFormatter();
             CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
@@ -224,7 +222,7 @@ namespace Alis.Core.Aspect.Logging.Test
         {
             // Arrange
             MemoryLogOutput memoryOutput = new MemoryLogOutput();
-            List<ILogOutput> outputs = new List<ILogOutput> { memoryOutput };
+            List<ILogOutput> outputs = new List<ILogOutput> {memoryOutput};
             List<ILogFilter> filters = new List<ILogFilter>();
             SimpleLogFormatter formatter = new SimpleLogFormatter();
             CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
@@ -243,7 +241,7 @@ namespace Alis.Core.Aspect.Logging.Test
         {
             // Arrange
             MemoryLogOutput memoryOutput = new MemoryLogOutput();
-            List<ILogOutput> outputs = new List<ILogOutput> { memoryOutput };
+            List<ILogOutput> outputs = new List<ILogOutput> {memoryOutput};
             List<ILogFilter> filters = new List<ILogFilter>();
             SimpleLogFormatter formatter = new SimpleLogFormatter();
             CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
@@ -264,14 +262,14 @@ namespace Alis.Core.Aspect.Logging.Test
         {
             // Arrange
             MemoryLogOutput memoryOutput = new MemoryLogOutput();
-            List<ILogOutput> outputs = new List<ILogOutput> { memoryOutput };
+            List<ILogOutput> outputs = new List<ILogOutput> {memoryOutput};
             List<ILogFilter> filters = new List<ILogFilter>();
             SimpleLogFormatter formatter = new SimpleLogFormatter();
             CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
             Dictionary<string, object> properties = new Dictionary<string, object>
             {
-                { "UserId", 123 },
-                { "Action", "Login" }
+                {"UserId", 123},
+                {"Action", "Login"}
             };
 
             // Act
@@ -289,7 +287,7 @@ namespace Alis.Core.Aspect.Logging.Test
         {
             // Arrange
             MemoryLogOutput memoryOutput = new MemoryLogOutput();
-            List<ILogOutput> outputs = new List<ILogOutput> { memoryOutput };
+            List<ILogOutput> outputs = new List<ILogOutput> {memoryOutput};
             List<ILogFilter> filters = new List<ILogFilter>();
             SimpleLogFormatter formatter = new SimpleLogFormatter();
             CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
@@ -307,7 +305,7 @@ namespace Alis.Core.Aspect.Logging.Test
         {
             // Arrange
             MemoryLogOutput memoryOutput = new MemoryLogOutput();
-            List<ILogOutput> outputs = new List<ILogOutput> { memoryOutput };
+            List<ILogOutput> outputs = new List<ILogOutput> {memoryOutput};
             List<ILogFilter> filters = new List<ILogFilter>();
             SimpleLogFormatter formatter = new SimpleLogFormatter();
             CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
@@ -346,7 +344,7 @@ namespace Alis.Core.Aspect.Logging.Test
         {
             // Arrange
             MemoryLogOutput memoryOutput = new MemoryLogOutput();
-            List<ILogOutput> outputs = new List<ILogOutput> { memoryOutput };
+            List<ILogOutput> outputs = new List<ILogOutput> {memoryOutput};
             List<ILogFilter> filters = new List<ILogFilter>();
             SimpleLogFormatter formatter = new SimpleLogFormatter();
             CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
@@ -369,7 +367,7 @@ namespace Alis.Core.Aspect.Logging.Test
         {
             // Arrange
             MemoryLogOutput memoryOutput = new MemoryLogOutput();
-            List<ILogOutput> outputs = new List<ILogOutput> { memoryOutput };
+            List<ILogOutput> outputs = new List<ILogOutput> {memoryOutput};
             List<ILogFilter> filters = new List<ILogFilter>();
             SimpleLogFormatter formatter = new SimpleLogFormatter();
             CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
@@ -396,7 +394,7 @@ namespace Alis.Core.Aspect.Logging.Test
             List<ILogOutput> outputs = new List<ILogOutput>();
             List<ILogFilter> filters = new List<ILogFilter>();
             SimpleLogFormatter formatter = new SimpleLogFormatter();
-            CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter, LogLevel.Trace);
+            CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
 
             // Act & Assert
             Assert.True(logger.IsEnabled(LogLevel.Trace));
@@ -436,7 +434,7 @@ namespace Alis.Core.Aspect.Logging.Test
         {
             // Arrange
             MemoryLogOutput memoryOutput = new MemoryLogOutput();
-            List<ILogOutput> outputs = new List<ILogOutput> { memoryOutput };
+            List<ILogOutput> outputs = new List<ILogOutput> {memoryOutput};
             List<ILogFilter> filters = new List<ILogFilter>();
             SimpleLogFormatter formatter = new SimpleLogFormatter();
             CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter, LogLevel.Warning);
@@ -457,8 +455,8 @@ namespace Alis.Core.Aspect.Logging.Test
         {
             // Arrange
             MemoryLogOutput memoryOutput = new MemoryLogOutput();
-            List<ILogOutput> outputs = new List<ILogOutput> { memoryOutput };
-            List<ILogFilter> filters = new List<ILogFilter> { new LogLevelFilter(LogLevel.Error) };
+            List<ILogOutput> outputs = new List<ILogOutput> {memoryOutput};
+            List<ILogFilter> filters = new List<ILogFilter> {new LogLevelFilter(LogLevel.Error)};
             SimpleLogFormatter formatter = new SimpleLogFormatter();
             CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
 
@@ -478,11 +476,11 @@ namespace Alis.Core.Aspect.Logging.Test
         {
             // Arrange
             MemoryLogOutput memoryOutput = new MemoryLogOutput();
-            List<ILogOutput> outputs = new List<ILogOutput> { memoryOutput };
+            List<ILogOutput> outputs = new List<ILogOutput> {memoryOutput};
             List<ILogFilter> filters = new List<ILogFilter>
             {
                 new LogLevelFilter(LogLevel.Info),
-                new LoggerNameFilter(new[] { "TestLogger" }, inclusive: true)
+                new LoggerNameFilter(new[] {"TestLogger"})
             };
             SimpleLogFormatter formatter = new SimpleLogFormatter();
             CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
@@ -502,7 +500,7 @@ namespace Alis.Core.Aspect.Logging.Test
             // Arrange
             MemoryLogOutput memory1 = new MemoryLogOutput();
             MemoryLogOutput memory2 = new MemoryLogOutput();
-            List<ILogOutput> outputs = new List<ILogOutput> { memory1, memory2 };
+            List<ILogOutput> outputs = new List<ILogOutput> {memory1, memory2};
             List<ILogFilter> filters = new List<ILogFilter>();
             SimpleLogFormatter formatter = new SimpleLogFormatter();
             CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
@@ -519,8 +517,8 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CoreLogger_ConcurrentLogging_ShouldBeThreadSafe()
         {
             // Arrange
-            MemoryLogOutput memoryOutput = new MemoryLogOutput(maxEntries: 0);
-            List<ILogOutput> outputs = new List<ILogOutput> { memoryOutput };
+            MemoryLogOutput memoryOutput = new MemoryLogOutput(0);
+            List<ILogOutput> outputs = new List<ILogOutput> {memoryOutput};
             List<ILogFilter> filters = new List<ILogFilter>();
             SimpleLogFormatter formatter = new SimpleLogFormatter();
             CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
@@ -538,6 +536,7 @@ namespace Alis.Core.Aspect.Logging.Test
                 });
                 tasks.Add(task);
             }
+
             Task.WaitAll(tasks.ToArray());
 
             // Assert
@@ -548,8 +547,8 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CoreLogger_ConcurrentCorrelationId_ShouldBeThreadSafe()
         {
             // Arrange
-            MemoryLogOutput memoryOutput = new MemoryLogOutput(maxEntries: 0);
-            List<ILogOutput> outputs = new List<ILogOutput> { memoryOutput };
+            MemoryLogOutput memoryOutput = new MemoryLogOutput(0);
+            List<ILogOutput> outputs = new List<ILogOutput> {memoryOutput};
             List<ILogFilter> filters = new List<ILogFilter>();
             SimpleLogFormatter formatter = new SimpleLogFormatter();
             CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
@@ -566,6 +565,7 @@ namespace Alis.Core.Aspect.Logging.Test
                 });
                 tasks.Add(task);
             }
+
             Task.WaitAll(tasks.ToArray());
 
             // Assert
@@ -577,7 +577,7 @@ namespace Alis.Core.Aspect.Logging.Test
         {
             // Arrange
             FaultyLogOutput faultyOutput = new FaultyLogOutput();
-            List<ILogOutput> outputs = new List<ILogOutput> { faultyOutput };
+            List<ILogOutput> outputs = new List<ILogOutput> {faultyOutput};
             List<ILogFilter> filters = new List<ILogFilter>();
             SimpleLogFormatter formatter = new SimpleLogFormatter();
             CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
@@ -622,4 +622,3 @@ namespace Alis.Core.Aspect.Logging.Test
         }
     }
 }
-

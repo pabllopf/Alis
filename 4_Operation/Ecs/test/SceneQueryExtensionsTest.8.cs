@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SceneQueryExtensionsTest.2.cs
+//  File:SceneQueryExtensionsTest.8.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -72,23 +72,23 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             using Scene scene = new Scene();
             GameObject entity1 = scene.Create(
-                new Position { X = 1, Y = 1 },
-                new Velocity { VX = 1, VY = 1 },
-                new Health { Value = 100 },
-                new Transform { X = 0, Y = 0, Rotation = 0 },
-                new TestComponent { Value = 42, Name = "Test" },
-                new AnotherComponent { X = 5, Y = 10 }
+                new Position {X = 1, Y = 1},
+                new Velocity {VX = 1, VY = 1},
+                new Health {Value = 100},
+                new Transform {X = 0, Y = 0, Rotation = 0},
+                new TestComponent {Value = 42, Name = "Test"},
+                new AnotherComponent {X = 5, Y = 10}
             );
             entity1.Tag<PlayerTag>();
             entity1.Tag<TagComponent>();
 
             GameObject entity2 = scene.Create(
-                new Position { X = 2, Y = 2 },
-                new Velocity { VX = 2, VY = 2 },
-                new Health { Value = 50 },
-                new Transform { X = 1, Y = 1, Rotation = 0 },
-                new TestComponent { Value = 1, Name = "Test2" },
-                new AnotherComponent { X = 10, Y = 20 }
+                new Position {X = 2, Y = 2},
+                new Velocity {VX = 2, VY = 2},
+                new Health {Value = 50},
+                new Transform {X = 1, Y = 1, Rotation = 0},
+                new TestComponent {Value = 1, Name = "Test2"},
+                new AnotherComponent {X = 10, Y = 20}
             );
             entity2.Tag<PlayerTag>(); // Missing TagComponent
 
@@ -156,22 +156,22 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             using Scene scene = new Scene();
             GameObject entity1 = scene.Create(
-                new Position { X = 1, Y = 1 },
-                new Velocity { VX = 1, VY = 1 },
-                new Health { Value = 100 },
-                new Transform { X = 0, Y = 0, Rotation = 0 },
-                new TestComponent { Value = 1, Name = "Test" },
-                new AnotherComponent { X = 5, Y = 10 }
+                new Position {X = 1, Y = 1},
+                new Velocity {VX = 1, VY = 1},
+                new Health {Value = 100},
+                new Transform {X = 0, Y = 0, Rotation = 0},
+                new TestComponent {Value = 1, Name = "Test"},
+                new AnotherComponent {X = 5, Y = 10}
             );
             entity1.Tag<PlayerTag>();
 
             GameObject entity2 = scene.Create(
-                new Position { X = 2, Y = 2 },
-                new Velocity { VX = 2, VY = 2 },
-                new Health { Value = 50 },
-                new Transform { X = 1, Y = 1, Rotation = 0 },
-                new TestComponent { Value = 2, Name = "Test2" },
-                new AnotherComponent { X = 10, Y = 20 }
+                new Position {X = 2, Y = 2},
+                new Velocity {VX = 2, VY = 2},
+                new Health {Value = 50},
+                new Transform {X = 1, Y = 1, Rotation = 0},
+                new TestComponent {Value = 2, Name = "Test2"},
+                new AnotherComponent {X = 10, Y = 20}
             );
             entity2.Tag<PlayerTag>();
             entity2.Tag<TagComponent>();
@@ -200,22 +200,22 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             using Scene scene = new Scene();
             GameObject entity1 = scene.Create(
-                new Position { X = 1, Y = 1 },
-                new Velocity { VX = 1, VY = 1 },
-                new Health { Value = 100 },
-                new Transform { X = 0, Y = 0, Rotation = 0 },
-                new TestComponent { Value = 1, Name = "Test" },
-                new AnotherComponent { X = 5, Y = 10 }
+                new Position {X = 1, Y = 1},
+                new Velocity {VX = 1, VY = 1},
+                new Health {Value = 100},
+                new Transform {X = 0, Y = 0, Rotation = 0},
+                new TestComponent {Value = 1, Name = "Test"},
+                new AnotherComponent {X = 5, Y = 10}
             );
             entity1.Tag<PlayerTag>();
 
             GameObject entity2 = scene.Create(
-                new Position { X = 2, Y = 2 },
-                new Velocity { VX = 2, VY = 2 },
-                new Health { Value = 50 },
-                new Transform { X = 1, Y = 1, Rotation = 0 },
-                new TestComponent { Value = 2, Name = "Test2" },
-                new AnotherComponent { X = 10, Y = 20 }
+                new Position {X = 2, Y = 2},
+                new Velocity {VX = 2, VY = 2},
+                new Health {Value = 50},
+                new Transform {X = 1, Y = 1, Rotation = 0},
+                new TestComponent {Value = 2, Name = "Test2"},
+                new AnotherComponent {X = 10, Y = 20}
             );
             entity2.Tag<PlayerTag>();
             entity2.Tag<EnemyTag>();
@@ -244,27 +244,27 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             using Scene scene = new Scene();
             GameObject entity1 = scene.Create(
-                new Position { X = 1, Y = 1 },
-                new Velocity { VX = 1, VY = 1 },
-                new Health { Value = 100 },
-                new TestComponent { Value = 1, Name = "Test" }
+                new Position {X = 1, Y = 1},
+                new Velocity {VX = 1, VY = 1},
+                new Health {Value = 100},
+                new TestComponent {Value = 1, Name = "Test"}
             );
             entity1.Tag<PlayerTag>();
 
             GameObject entity2 = scene.Create(
-                new Position { X = 2, Y = 2 },
-                new Velocity { VX = 2, VY = 2 },
-                new Health { Value = 50 },
-                new TestComponent { Value = 2, Name = "Test2" },
-                new Transform { X = 0, Y = 0, Rotation = 0 }
+                new Position {X = 2, Y = 2},
+                new Velocity {VX = 2, VY = 2},
+                new Health {Value = 50},
+                new TestComponent {Value = 2, Name = "Test2"},
+                new Transform {X = 0, Y = 0, Rotation = 0}
             );
             entity2.Tag<PlayerTag>();
 
             GameObject entity3 = scene.Create(
-                new Position { X = 3, Y = 3 },
-                new Velocity { VX = 3, VY = 3 },
-                new Health { Value = 75 },
-                new TestComponent { Value = 3, Name = "Test3" }
+                new Position {X = 3, Y = 3},
+                new Velocity {VX = 3, VY = 3},
+                new Health {Value = 75},
+                new TestComponent {Value = 3, Name = "Test3"}
             );
             entity3.Tag<PlayerTag>();
             entity3.Tag<EnemyTag>();
@@ -306,4 +306,3 @@ namespace Alis.Core.Ecs.Test
         }
     }
 }
-

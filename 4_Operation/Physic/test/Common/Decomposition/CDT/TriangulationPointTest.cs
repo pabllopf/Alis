@@ -46,9 +46,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
         {
             double x = 5.0;
             double y = 10.0;
-            
+
             TriangulationPoint point = new TriangulationPoint(x, y);
-            
+
             Assert.Equal(x, point.X);
             Assert.Equal(y, point.Y);
         }
@@ -60,9 +60,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
         public void XfProperty_ShouldGetAndSetCorrectly()
         {
             TriangulationPoint point = new TriangulationPoint(5.0, 10.0);
-            
+
             point.Xf = 15.0f;
-            
+
             Assert.Equal(15.0f, point.Xf);
             Assert.Equal(15.0, point.X);
         }
@@ -74,9 +74,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
         public void YfProperty_ShouldGetAndSetCorrectly()
         {
             TriangulationPoint point = new TriangulationPoint(5.0, 10.0);
-            
+
             point.Yf = 20.0f;
-            
+
             Assert.Equal(20.0f, point.Yf);
             Assert.Equal(20.0, point.Y);
         }
@@ -88,7 +88,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
         public void HasEdges_ShouldReturnFalseInitially()
         {
             TriangulationPoint point = new TriangulationPoint(0, 0);
-            
+
             Assert.False(point.HasEdges);
         }
 
@@ -102,9 +102,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
             TriangulationPoint p1 = new TriangulationPoint(1, 0);
             TriangulationPoint p2 = new TriangulationPoint(0, 1);
             DtSweepConstraint edge = new DtSweepConstraint(p1, p2);
-            
+
             point.AddEdge(edge);
-            
+
             Assert.True(point.HasEdges);
             Assert.NotNull(point.Edges);
             Assert.Single(point.Edges);
@@ -121,10 +121,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
             TriangulationPoint p2 = new TriangulationPoint(0, 1);
             DtSweepConstraint edge1 = new DtSweepConstraint(p1, p2);
             DtSweepConstraint edge2 = new DtSweepConstraint(p2, p1);
-            
+
             point.AddEdge(edge1);
             point.AddEdge(edge2);
-            
+
             Assert.Equal(2, point.Edges.Count);
         }
 
@@ -135,9 +135,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
         public void ToString_ShouldReturnFormattedString()
         {
             TriangulationPoint point = new TriangulationPoint(5.5, 10.5);
-            
+
             string result = point.ToString();
-            
+
             Assert.Contains("5", result);
             Assert.Contains("10", result);
         }
@@ -149,7 +149,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
         public void TriangulationPoint_ShouldHandleNegativeCoordinates()
         {
             TriangulationPoint point = new TriangulationPoint(-5.0, -10.0);
-            
+
             Assert.Equal(-5.0, point.X);
             Assert.Equal(-10.0, point.Y);
         }
@@ -161,7 +161,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
         public void TriangulationPoint_ShouldHandleZeroCoordinates()
         {
             TriangulationPoint point = new TriangulationPoint(0, 0);
-            
+
             Assert.Equal(0, point.X);
             Assert.Equal(0, point.Y);
         }
@@ -173,7 +173,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
         public void TriangulationPoint_ShouldHandleLargeCoordinates()
         {
             TriangulationPoint point = new TriangulationPoint(10000.0, 20000.0);
-            
+
             Assert.Equal(10000.0, point.X);
             Assert.Equal(20000.0, point.Y);
         }
@@ -185,10 +185,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
         public void XfAndYf_ShouldConvertBetweenDoubleAndFloat()
         {
             TriangulationPoint point = new TriangulationPoint(5.5, 10.5);
-            
+
             float xf = point.Xf;
             float yf = point.Yf;
-            
+
             Assert.Equal(5.5f, xf);
             Assert.Equal(10.5f, yf);
         }
@@ -200,9 +200,8 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
         public void EdgesProperty_ShouldBeNullInitially()
         {
             TriangulationPoint point = new TriangulationPoint(0, 0);
-            
+
             Assert.Null(point.Edges);
         }
     }
 }
-

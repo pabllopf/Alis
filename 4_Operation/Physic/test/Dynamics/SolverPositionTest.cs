@@ -45,7 +45,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void DefaultConstructor_ShouldInitializeWithDefaultValues()
         {
             SolverPosition position = new SolverPosition();
-            
+
             Assert.Equal(Vector2F.Zero, position.C);
             Assert.Equal(0.0f, position.A);
         }
@@ -60,7 +60,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             {
                 C = new Vector2F(5.0f, 10.0f)
             };
-            
+
             Assert.Equal(5.0f, position.C.X);
             Assert.Equal(10.0f, position.C.Y);
         }
@@ -75,7 +75,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             {
                 A = 1.5707f // ~PI/2
             };
-            
+
             Assert.Equal(1.5707f, position.A);
         }
 
@@ -89,7 +89,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             {
                 A = -3.14159f
             };
-            
+
             Assert.Equal(-3.14159f, position.A);
         }
 
@@ -103,7 +103,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             {
                 C = new Vector2F(-10.0f, -20.0f)
             };
-            
+
             Assert.Equal(-10.0f, position.C.X);
             Assert.Equal(-20.0f, position.C.Y);
         }
@@ -114,11 +114,11 @@ namespace Alis.Core.Physic.Test.Dynamics
         [Fact]
         public void SolverPosition_ShouldBeValueType()
         {
-            SolverPosition position1 = new SolverPosition { A = 1.0f };
+            SolverPosition position1 = new SolverPosition {A = 1.0f};
             SolverPosition position2 = position1;
-            
+
             position2.A = 2.0f;
-            
+
             Assert.NotEqual(position1.A, position2.A);
         }
 
@@ -133,7 +133,7 @@ namespace Alis.Core.Physic.Test.Dynamics
                 C = Vector2F.Zero,
                 A = 0.0f
             };
-            
+
             Assert.Equal(Vector2F.Zero, position.C);
             Assert.Equal(0.0f, position.A);
         }
@@ -149,7 +149,7 @@ namespace Alis.Core.Physic.Test.Dynamics
                 C = new Vector2F(1000.0f, 2000.0f),
                 A = 10.0f
             };
-            
+
             Assert.Equal(1000.0f, position.C.X);
             Assert.Equal(2000.0f, position.C.Y);
             Assert.Equal(10.0f, position.A);
@@ -165,9 +165,8 @@ namespace Alis.Core.Physic.Test.Dynamics
             {
                 A = 6.28318f // 2*PI
             };
-            
+
             Assert.True(position.A > 0);
         }
     }
 }
-

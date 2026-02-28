@@ -49,7 +49,7 @@ namespace Alis.Core.Physic.Test.Common
             array[1] = 20;
             array[2] = 30;
             array[3] = 40;
-            
+
             Assert.Equal(10, array[0]);
             Assert.Equal(20, array[1]);
             Assert.Equal(30, array[2]);
@@ -63,12 +63,12 @@ namespace Alis.Core.Physic.Test.Common
         public void Indexer_Set_ShouldUpdateAllValues()
         {
             FixedArray4<int> array = new FixedArray4<int>();
-            
+
             array[0] = 100;
             array[1] = 200;
             array[2] = 300;
             array[3] = 400;
-            
+
             Assert.Equal(100, array[0]);
             Assert.Equal(200, array[1]);
             Assert.Equal(300, array[2]);
@@ -82,7 +82,7 @@ namespace Alis.Core.Physic.Test.Common
         public void Indexer_WithInvalidIndex_ShouldThrowException()
         {
             FixedArray4<int> array = new FixedArray4<int>();
-            
+
             Assert.Throws<CustomIndexOutOfRangeException>(() => array[4]);
         }
 
@@ -93,7 +93,7 @@ namespace Alis.Core.Physic.Test.Common
         public void Indexer_SetWithInvalidIndex_ShouldThrowException()
         {
             FixedArray4<int> array = new FixedArray4<int>();
-            
+
             Assert.Throws<CustomIndexOutOfRangeException>(() => array[4] = 100);
         }
 
@@ -104,7 +104,7 @@ namespace Alis.Core.Physic.Test.Common
         public void Indexer_WithNegativeIndex_ShouldThrowException()
         {
             FixedArray4<int> array = new FixedArray4<int>();
-            
+
             Assert.Throws<CustomIndexOutOfRangeException>(() => array[-1]);
         }
 
@@ -119,7 +119,7 @@ namespace Alis.Core.Physic.Test.Common
             array[1] = 2.2;
             array[2] = 3.3;
             array[3] = 4.4;
-            
+
             Assert.Equal(1.1, array[0]);
             Assert.Equal(2.2, array[1]);
             Assert.Equal(3.3, array[2]);
@@ -133,7 +133,7 @@ namespace Alis.Core.Physic.Test.Common
         public void DefaultValues_ShouldBeDefaultForType()
         {
             FixedArray4<int> array = new FixedArray4<int>();
-            
+
             Assert.Equal(0, array[0]);
             Assert.Equal(0, array[1]);
             Assert.Equal(0, array[2]);
@@ -147,12 +147,12 @@ namespace Alis.Core.Physic.Test.Common
         public void UpdatingAllIndices_ShouldWorkCorrectly()
         {
             FixedArray4<string> array = new FixedArray4<string>();
-            
+
             array[0] = "One";
             array[1] = "Two";
             array[2] = "Three";
             array[3] = "Four";
-            
+
             Assert.Equal("One", array[0]);
             Assert.Equal("Two", array[1]);
             Assert.Equal("Three", array[2]);
@@ -160,4 +160,3 @@ namespace Alis.Core.Physic.Test.Common
         }
     }
 }
-

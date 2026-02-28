@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:HatEnumTests.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,7 +39,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
     public class HatEnumTests
     {
         /// <summary>
-        /// Tests that hat centered is defined
+        ///     Tests that hat centered is defined
         /// </summary>
         [Fact]
         public void Hat_Centered_IsDefined()
@@ -47,7 +48,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that hat up is defined
+        ///     Tests that hat up is defined
         /// </summary>
         [Fact]
         public void Hat_Up_IsDefined()
@@ -56,7 +57,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that hat right is defined
+        ///     Tests that hat right is defined
         /// </summary>
         [Fact]
         public void Hat_Right_IsDefined()
@@ -65,7 +66,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that hat down is defined
+        ///     Tests that hat down is defined
         /// </summary>
         [Fact]
         public void Hat_Down_IsDefined()
@@ -74,7 +75,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that hat left is defined
+        ///     Tests that hat left is defined
         /// </summary>
         [Fact]
         public void Hat_Left_IsDefined()
@@ -83,7 +84,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that hat right up is defined
+        ///     Tests that hat right up is defined
         /// </summary>
         [Fact]
         public void Hat_RightUp_IsDefined()
@@ -92,7 +93,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that hat right down is defined
+        ///     Tests that hat right down is defined
         /// </summary>
         [Fact]
         public void Hat_RightDown_IsDefined()
@@ -101,7 +102,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that hat left up is defined
+        ///     Tests that hat left up is defined
         /// </summary>
         [Fact]
         public void Hat_LeftUp_IsDefined()
@@ -110,7 +111,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that hat left down is defined
+        ///     Tests that hat left down is defined
         /// </summary>
         [Fact]
         public void Hat_LeftDown_IsDefined()
@@ -119,7 +120,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that hat can be combined with bitwise or
+        ///     Tests that hat can be combined with bitwise or
         /// </summary>
         [Fact]
         public void Hat_CanBeCombinedWithBitwiseOr()
@@ -131,24 +132,23 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that hat centered has zero value
+        ///     Tests that hat centered has zero value
         /// </summary>
         [Fact]
         public void Hat_Centered_HasZeroValue()
         {
-            Assert.Equal(0, (int)Hat.Centered);
+            Assert.Equal(0, (int) Hat.Centered);
         }
 
         /// <summary>
-        /// Tests that hat can be cast to int
+        ///     Tests that hat can be cast to int
         /// </summary>
         [Fact]
         public void Hat_CanBeCastToInt()
         {
             Hat hat = Hat.Up;
-            int value = (int)hat;
+            int value = (int) hat;
             Assert.True(value > 0);
         }
     }
 }
-

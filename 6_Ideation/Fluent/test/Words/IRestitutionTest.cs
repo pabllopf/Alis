@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IRestitutionTest.cs
+//  File:IRestitutionTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,28 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
     /// </summary>
     public class IRestitutionTest
     {
-        /// <summary>
-        ///     Helper builder class for restitution.
-        /// </summary>
-        private class RestitutionBuilder
-        {
-            public float RestitutionValue { get; set; }
-        }
-
-        /// <summary>
-        ///     Helper implementation of IRestitution.
-        /// </summary>
-        private class RestitutionBuilderImpl : IRestitution<RestitutionBuilder, float>
-        {
-            private readonly RestitutionBuilder _builder = new RestitutionBuilder();
-
-            public RestitutionBuilder Restitution(float value)
-            {
-                _builder.RestitutionValue = value;
-                return _builder;
-            }
-        }
-
         /// <summary>
         ///     Tests that IRestitution can be implemented.
         /// </summary>
@@ -97,18 +75,34 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Tests Restitution with valid bounce values.
         /// </summary>
-        [Theory]
-        [InlineData(0f)]
-        [InlineData(0.25f)]
-        [InlineData(0.5f)]
-        [InlineData(0.75f)]
-        [InlineData(1f)]
+        [Theory, InlineData(0f), InlineData(0.25f), InlineData(0.5f), InlineData(0.75f), InlineData(1f)]
         public void Restitution_WithValidBounceValues(float restitution)
         {
             RestitutionBuilderImpl builder = new RestitutionBuilderImpl();
             RestitutionBuilder result = builder.Restitution(restitution);
             Assert.Equal(restitution, result.RestitutionValue);
         }
+
+        /// <summary>
+        ///     Helper builder class for restitution.
+        /// </summary>
+        private class RestitutionBuilder
+        {
+            public float RestitutionValue { get; set; }
+        }
+
+        /// <summary>
+        ///     Helper implementation of IRestitution.
+        /// </summary>
+        private class RestitutionBuilderImpl : IRestitution<RestitutionBuilder, float>
+        {
+            private readonly RestitutionBuilder _builder = new RestitutionBuilder();
+
+            public RestitutionBuilder Restitution(float value)
+            {
+                _builder.RestitutionValue = value;
+                return _builder;
+            }
+        }
     }
 }
-

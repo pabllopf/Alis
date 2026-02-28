@@ -44,7 +44,7 @@ namespace Alis.Core.Physic.Test.Collisions
         public void DefaultConstructor_ShouldInitializeWithDefaultValues()
         {
             Pair pair = new Pair();
-            
+
             Assert.Equal(0, pair.ProxyIdA);
             Assert.Equal(0, pair.ProxyIdB);
         }
@@ -59,7 +59,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 ProxyIdA = 100
             };
-            
+
             Assert.Equal(100, pair.ProxyIdA);
         }
 
@@ -73,7 +73,7 @@ namespace Alis.Core.Physic.Test.Collisions
             {
                 ProxyIdB = 200
             };
-            
+
             Assert.Equal(200, pair.ProxyIdB);
         }
 
@@ -83,11 +83,11 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void CompareTo_ShouldReturnNegative_WhenProxyIdBIsLess()
         {
-            Pair pair1 = new Pair { ProxyIdA = 1, ProxyIdB = 5 };
-            Pair pair2 = new Pair { ProxyIdA = 1, ProxyIdB = 10 };
-            
+            Pair pair1 = new Pair {ProxyIdA = 1, ProxyIdB = 5};
+            Pair pair2 = new Pair {ProxyIdA = 1, ProxyIdB = 10};
+
             int result = pair1.CompareTo(pair2);
-            
+
             Assert.True(result < 0);
         }
 
@@ -97,11 +97,11 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void CompareTo_ShouldReturnPositive_WhenProxyIdBIsGreater()
         {
-            Pair pair1 = new Pair { ProxyIdA = 1, ProxyIdB = 15 };
-            Pair pair2 = new Pair { ProxyIdA = 1, ProxyIdB = 10 };
-            
+            Pair pair1 = new Pair {ProxyIdA = 1, ProxyIdB = 15};
+            Pair pair2 = new Pair {ProxyIdA = 1, ProxyIdB = 10};
+
             int result = pair1.CompareTo(pair2);
-            
+
             Assert.True(result > 0);
         }
 
@@ -111,11 +111,11 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void CompareTo_ShouldReturnNegative_WhenProxyIdAIsLessAndProxyIdBIsEqual()
         {
-            Pair pair1 = new Pair { ProxyIdA = 5, ProxyIdB = 10 };
-            Pair pair2 = new Pair { ProxyIdA = 8, ProxyIdB = 10 };
-            
+            Pair pair1 = new Pair {ProxyIdA = 5, ProxyIdB = 10};
+            Pair pair2 = new Pair {ProxyIdA = 8, ProxyIdB = 10};
+
             int result = pair1.CompareTo(pair2);
-            
+
             Assert.True(result < 0);
         }
 
@@ -125,11 +125,11 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void CompareTo_ShouldReturnZero_WhenBothPairsAreEqual()
         {
-            Pair pair1 = new Pair { ProxyIdA = 5, ProxyIdB = 10 };
-            Pair pair2 = new Pair { ProxyIdA = 5, ProxyIdB = 10 };
-            
+            Pair pair1 = new Pair {ProxyIdA = 5, ProxyIdB = 10};
+            Pair pair2 = new Pair {ProxyIdA = 5, ProxyIdB = 10};
+
             int result = pair1.CompareTo(pair2);
-            
+
             Assert.Equal(0, result);
         }
 
@@ -139,11 +139,11 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void CompareTo_ShouldReturnPositive_WhenProxyIdAIsGreaterAndProxyIdBIsEqual()
         {
-            Pair pair1 = new Pair { ProxyIdA = 15, ProxyIdB = 10 };
-            Pair pair2 = new Pair { ProxyIdA = 8, ProxyIdB = 10 };
-            
+            Pair pair1 = new Pair {ProxyIdA = 15, ProxyIdB = 10};
+            Pair pair2 = new Pair {ProxyIdA = 8, ProxyIdB = 10};
+
             int result = pair1.CompareTo(pair2);
-            
+
             Assert.True(result > 0);
         }
 
@@ -158,7 +158,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 ProxyIdA = -5,
                 ProxyIdB = -10
             };
-            
+
             Assert.Equal(-5, pair.ProxyIdA);
             Assert.Equal(-10, pair.ProxyIdB);
         }
@@ -169,11 +169,11 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void Pair_ShouldBeValueType()
         {
-            Pair pair1 = new Pair { ProxyIdA = 1, ProxyIdB = 2 };
+            Pair pair1 = new Pair {ProxyIdA = 1, ProxyIdB = 2};
             Pair pair2 = pair1;
-            
+
             pair2.ProxyIdA = 10;
-            
+
             Assert.NotEqual(pair1.ProxyIdA, pair2.ProxyIdA);
         }
 
@@ -183,13 +183,12 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void CompareTo_ShouldHandleZeroValues()
         {
-            Pair pair1 = new Pair { ProxyIdA = 0, ProxyIdB = 0 };
-            Pair pair2 = new Pair { ProxyIdA = 0, ProxyIdB = 0 };
-            
+            Pair pair1 = new Pair {ProxyIdA = 0, ProxyIdB = 0};
+            Pair pair2 = new Pair {ProxyIdA = 0, ProxyIdB = 0};
+
             int result = pair1.CompareTo(pair2);
-            
+
             Assert.Equal(0, result);
         }
     }
 }
-

@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IOnReleaseKeyTest.cs
+//  File:IOnReleaseKeyTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -39,26 +39,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
     /// </summary>
     public class IOnReleaseKeyTest
     {
-        
-
-        /// <summary>
-        ///     Helper implementation for testing IOnReleaseKey.
-        /// </summary>
-        private class ReleaseKeyHandler : IOnReleaseKey
-        {
-            public int ReleaseCount { get; private set; }
-
-            public void OnReleaseKey(IGameObject self, KeyEventInfo keyInfo)
-            {
-                ReleaseCount++;
-            }
-
-            public void OnReleaseKey(KeyEventInfo info)
-            {
-                throw new NotImplementedException();
-            }
-        }
-
         /// <summary>
         ///     Tests that IOnReleaseKey can be implemented.
         /// </summary>
@@ -78,7 +58,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         {
             ReleaseKeyHandler handler = new ReleaseKeyHandler();
             MockGameObject self = new MockGameObject();
-            KeyEventInfo keyInfo = new KeyEventInfo(System.ConsoleKey.Spacebar, System.DateTime.UtcNow, System.TimeSpan.FromMilliseconds(50));
+            KeyEventInfo keyInfo = new KeyEventInfo(ConsoleKey.Spacebar, DateTime.UtcNow, TimeSpan.FromMilliseconds(50));
             handler.OnReleaseKey(self, keyInfo);
             Assert.Equal(1, handler.ReleaseCount);
         }
@@ -91,11 +71,29 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         {
             ReleaseKeyHandler handler = new ReleaseKeyHandler();
             MockGameObject self = new MockGameObject();
-            KeyEventInfo keyInfo = new KeyEventInfo(System.ConsoleKey.W, System.DateTime.UtcNow, System.TimeSpan.FromMilliseconds(200));
+            KeyEventInfo keyInfo = new KeyEventInfo(ConsoleKey.W, DateTime.UtcNow, TimeSpan.FromMilliseconds(200));
             handler.OnReleaseKey(self, keyInfo);
             handler.OnReleaseKey(self, keyInfo);
             Assert.Equal(2, handler.ReleaseCount);
         }
+
+
+        /// <summary>
+        ///     Helper implementation for testing IOnReleaseKey.
+        /// </summary>
+        private class ReleaseKeyHandler : IOnReleaseKey
+        {
+            public int ReleaseCount { get; private set; }
+
+            public void OnReleaseKey(KeyEventInfo info)
+            {
+                throw new NotImplementedException();
+            }
+
+            public void OnReleaseKey(IGameObject self, KeyEventInfo keyInfo)
+            {
+                ReleaseCount++;
+            }
+        }
     }
 }
-

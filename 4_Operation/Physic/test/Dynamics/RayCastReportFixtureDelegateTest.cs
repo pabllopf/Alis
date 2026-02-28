@@ -51,14 +51,14 @@ namespace Alis.Core.Physic.Test.Dynamics
                 invoked = true;
                 return 1.0f;
             };
-            
+
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body body = world.CreateBody();
             CircleShape shape = new CircleShape(1.0f, 1.0f);
             Fixture fixture = body.CreateFixture(shape);
-            
+
             float result = callback(fixture, Vector2F.Zero, Vector2F.UnitY, 0.5f);
-            
+
             Assert.True(invoked);
             Assert.Equal(1.0f, result);
         }
@@ -70,14 +70,14 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Delegate_ShouldReturnNegativeOne_ToIgnoreFixture()
         {
             RayCastReportFixtureDelegate callback = (fixture, point, normal, fraction) => -1.0f;
-            
+
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body body = world.CreateBody();
             CircleShape shape = new CircleShape(1.0f, 1.0f);
             Fixture fixture = body.CreateFixture(shape);
-            
+
             float result = callback(fixture, Vector2F.Zero, Vector2F.UnitY, 0.5f);
-            
+
             Assert.Equal(-1.0f, result);
         }
 
@@ -88,14 +88,14 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Delegate_ShouldReturnZero_ToTerminateRaycast()
         {
             RayCastReportFixtureDelegate callback = (fixture, point, normal, fraction) => 0.0f;
-            
+
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body body = world.CreateBody();
             CircleShape shape = new CircleShape(1.0f, 1.0f);
             Fixture fixture = body.CreateFixture(shape);
-            
+
             float result = callback(fixture, Vector2F.Zero, Vector2F.UnitY, 0.5f);
-            
+
             Assert.Equal(0.0f, result);
         }
 
@@ -106,14 +106,14 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Delegate_ShouldReturnFraction_ToClipRay()
         {
             RayCastReportFixtureDelegate callback = (fixture, point, normal, fraction) => fraction;
-            
+
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body body = world.CreateBody();
             CircleShape shape = new CircleShape(1.0f, 1.0f);
             Fixture fixture = body.CreateFixture(shape);
-            
+
             float result = callback(fixture, Vector2F.Zero, Vector2F.UnitY, 0.75f);
-            
+
             Assert.Equal(0.75f, result);
         }
 
@@ -123,13 +123,10 @@ namespace Alis.Core.Physic.Test.Dynamics
         [Fact]
         public void Delegate_ShouldHandleNullFixture()
         {
-            RayCastReportFixtureDelegate callback = (fixture, point, normal, fraction) =>
-            {
-                return fixture == null ? -1.0f : 1.0f;
-            };
-            
+            RayCastReportFixtureDelegate callback = (fixture, point, normal, fraction) => { return fixture == null ? -1.0f : 1.0f; };
+
             float result = callback(null, Vector2F.Zero, Vector2F.UnitY, 0.5f);
-            
+
             Assert.Equal(-1.0f, result);
         }
 
@@ -140,18 +137,26 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Delegate_ShouldBeChainable()
         {
             int callCount = 0;
-            RayCastReportFixtureDelegate callback1 = (f, p, n, fr) => { callCount++; return 1.0f; };
-            RayCastReportFixtureDelegate callback2 = (f, p, n, fr) => { callCount++; return 1.0f; };
-            
+            RayCastReportFixtureDelegate callback1 = (f, p, n, fr) =>
+            {
+                callCount++;
+                return 1.0f;
+            };
+            RayCastReportFixtureDelegate callback2 = (f, p, n, fr) =>
+            {
+                callCount++;
+                return 1.0f;
+            };
+
             RayCastReportFixtureDelegate combined = callback1 + callback2;
-            
+
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body body = world.CreateBody();
             CircleShape shape = new CircleShape(1.0f, 1.0f);
             Fixture fixture = body.CreateFixture(shape);
-            
+
             combined(fixture, Vector2F.Zero, Vector2F.UnitY, 0.5f);
-            
+
             Assert.Equal(2, callCount);
         }
 
@@ -167,15 +172,15 @@ namespace Alis.Core.Physic.Test.Dynamics
                 capturedPoint = point;
                 return 1.0f;
             };
-            
+
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body body = world.CreateBody();
             CircleShape shape = new CircleShape(1.0f, 1.0f);
             Fixture fixture = body.CreateFixture(shape);
             Vector2F testPoint = new Vector2F(5, 10);
-            
+
             callback(fixture, testPoint, Vector2F.UnitY, 0.5f);
-            
+
             Assert.Equal(testPoint, capturedPoint);
         }
 
@@ -191,15 +196,15 @@ namespace Alis.Core.Physic.Test.Dynamics
                 capturedNormal = normal;
                 return 1.0f;
             };
-            
+
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body body = world.CreateBody();
             CircleShape shape = new CircleShape(1.0f, 1.0f);
             Fixture fixture = body.CreateFixture(shape);
             Vector2F testNormal = new Vector2F(0, 1);
-            
+
             callback(fixture, Vector2F.Zero, testNormal, 0.5f);
-            
+
             Assert.Equal(testNormal, capturedNormal);
         }
 
@@ -215,16 +220,15 @@ namespace Alis.Core.Physic.Test.Dynamics
                 capturedFraction = fraction;
                 return 1.0f;
             };
-            
+
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body body = world.CreateBody();
             CircleShape shape = new CircleShape(1.0f, 1.0f);
             Fixture fixture = body.CreateFixture(shape);
-            
+
             callback(fixture, Vector2F.Zero, Vector2F.UnitY, 0.8f);
-            
+
             Assert.Equal(0.8f, capturedFraction);
         }
     }
 }
-

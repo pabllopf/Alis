@@ -37,7 +37,7 @@ namespace Alis.Core.Ecs.Test.Updating
     ///     The update order attribute test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="UpdateOrderAttribute"/> attribute class which is used
+    ///     Tests the <see cref="UpdateOrderAttribute" /> attribute class which is used
     ///     to specify the execution order of component update methods.
     /// </remarks>
     public class UpdateOrderAttributeTest
@@ -162,4 +162,3 @@ namespace Alis.Core.Ecs.Test.Updating
         }
     }
 }
-

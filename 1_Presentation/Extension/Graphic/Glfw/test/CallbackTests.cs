@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:CallbackTests.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,7 +39,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
     public class CallbackTests
     {
         /// <summary>
-        /// Tests that char callback can be instantiated
+        ///     Tests that char callback can be instantiated
         /// </summary>
         [Fact]
         public void CharCallback_CanBeInstantiated()
@@ -51,7 +52,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that char callback can be invoked
+        ///     Tests that char callback can be invoked
         /// </summary>
         [Fact]
         public void CharCallback_CanBeInvoked()
@@ -68,7 +69,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that key callback can be instantiated
+        ///     Tests that key callback can be instantiated
         /// </summary>
         [Fact]
         public void KeyCallback_CanBeInstantiated()
@@ -81,7 +82,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that key callback can be invoked
+        ///     Tests that key callback can be invoked
         /// </summary>
         [Fact]
         public void KeyCallback_CanBeInvoked()
@@ -98,7 +99,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that mouse button callback can be instantiated
+        ///     Tests that mouse button callback can be instantiated
         /// </summary>
         [Fact]
         public void MouseButtonCallback_CanBeInstantiated()
@@ -111,7 +112,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that mouse button callback can be invoked
+        ///     Tests that mouse button callback can be invoked
         /// </summary>
         [Fact]
         public void MouseButtonCallback_CanBeInvoked()
@@ -128,7 +129,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that mouse callback can be instantiated
+        ///     Tests that mouse callback can be instantiated
         /// </summary>
         [Fact]
         public void MouseCallback_CanBeInstantiated()
@@ -141,7 +142,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that mouse callback can be invoked
+        ///     Tests that mouse callback can be invoked
         /// </summary>
         [Fact]
         public void MouseCallback_CanBeInvoked()
@@ -164,27 +165,27 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that window callback can be instantiated
+        ///     Tests that window callback can be instantiated
         /// </summary>
         [Fact]
         public void WindowCallback_CanBeInstantiated()
         {
             // Arrange & Act
-            WindowCallback callback = (window) => { };
+            WindowCallback callback = window => { };
 
             // Assert
             Assert.NotNull(callback);
         }
 
         /// <summary>
-        /// Tests that window callback can be invoked
+        ///     Tests that window callback can be invoked
         /// </summary>
         [Fact]
         public void WindowCallback_CanBeInvoked()
         {
             // Arrange
             bool wasCalled = false;
-            WindowCallback callback = (window) => { wasCalled = true; };
+            WindowCallback callback = window => { wasCalled = true; };
 
             // Act
             callback(Window.None);
@@ -194,7 +195,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that size callback can be instantiated
+        ///     Tests that size callback can be instantiated
         /// </summary>
         [Fact]
         public void SizeCallback_CanBeInstantiated()
@@ -207,7 +208,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that size callback can be invoked
+        ///     Tests that size callback can be invoked
         /// </summary>
         [Fact]
         public void SizeCallback_CanBeInvoked()
@@ -230,7 +231,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that error callback can be instantiated
+        ///     Tests that error callback can be instantiated
         /// </summary>
         [Fact]
         public void ErrorCallback_CanBeInstantiated()
@@ -243,7 +244,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that file drop callback can be instantiated
+        ///     Tests that file drop callback can be instantiated
         /// </summary>
         [Fact]
         public void FileDropCallback_CanBeInstantiated()
@@ -256,7 +257,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that monitor callback can be instantiated
+        ///     Tests that monitor callback can be instantiated
         /// </summary>
         [Fact]
         public void MonitorCallback_CanBeInstantiated()
@@ -269,7 +270,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that joystick callback can be instantiated
+        ///     Tests that joystick callback can be instantiated
         /// </summary>
         [Fact]
         public void JoystickCallback_CanBeInstantiated()
@@ -282,4 +283,3 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
     }
 }
-

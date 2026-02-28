@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: JsonNativeAotIntegrationTest.cs
+//  File:JsonNativeAotIntegrationTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program. If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -34,65 +34,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Data.Test.Json
 {
     /// <summary>
-    /// The json native aot integration test class
+    ///     The json native aot integration test class
     /// </summary>
     public class JsonNativeAotIntegrationTest
     {
         /// <summary>
-        /// The user profile class
-        /// </summary>
-        /// <seealso cref="IJsonSerializable"/>
-        /// <seealso cref="IJsonDesSerializable{UserProfile}"/>
-        private class UserProfile : IJsonSerializable, IJsonDesSerializable<UserProfile>
-        {
-            /// <summary>
-            /// Gets or sets the value of the username
-            /// </summary>
-            public string Username { get; set; }
-            /// <summary>
-            /// Gets or sets the value of the email
-            /// </summary>
-            public string Email { get; set; }
-            /// <summary>
-            /// Gets or sets the value of the age
-            /// </summary>
-            public int Age { get; set; }
-            /// <summary>
-            /// Gets or sets the value of the is active
-            /// </summary>
-            public bool IsActive { get; set; }
-
-            /// <summary>
-            /// Gets the serializable properties
-            /// </summary>
-            /// <returns>An enumerable of string property name and string value</returns>
-            public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
-            {
-                yield return ("Username", Username);
-                yield return ("Email", Email);
-                yield return ("Age", Age.ToString());
-                yield return ("IsActive", IsActive.ToString());
-            }
-
-            /// <summary>
-            /// Creates the from properties using the specified properties
-            /// </summary>
-            /// <param name="properties">The properties</param>
-            /// <returns>The user profile</returns>
-            public UserProfile CreateFromProperties(Dictionary<string, string> properties)
-            {
-                return new UserProfile
-                {
-                    Username = properties.TryGetValue("Username", out string username) ? username : null,
-                    Email = properties.TryGetValue("Email", out string email) ? email : null,
-                    Age = properties.TryGetValue("Age", out string age) && int.TryParse(age, out int ageValue) ? ageValue : 0,
-                    IsActive = properties.TryGetValue("IsActive", out string isActive) && bool.TryParse(isActive, out bool isActiveValue) ? isActiveValue : false
-                };
-            }
-        }
-
-        /// <summary>
-        /// Tests that serialize deserialize round trip preserves data
+        ///     Tests that serialize deserialize round trip preserves data
         /// </summary>
         [Fact]
         public void Serialize_Deserialize_RoundTrip_PreservesData()
@@ -115,7 +62,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that parse json to dictionary with simple json returns dictionary
+        ///     Tests that parse json to dictionary with simple json returns dictionary
         /// </summary>
         [Fact]
         public void ParseJsonToDictionary_WithSimpleJson_ReturnsDictionary()
@@ -129,7 +76,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that serialize create valid json format
+        ///     Tests that serialize create valid json format
         /// </summary>
         [Fact]
         public void Serialize_CreateValidJsonFormat()
@@ -151,7 +98,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that deserialize with complete json creates complete object
+        ///     Tests that deserialize with complete json creates complete object
         /// </summary>
         [Fact]
         public void Deserialize_WithCompleteJson_CreatesCompleteObject()
@@ -166,7 +113,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that deserialize with partial json fills available properties
+        ///     Tests that deserialize with partial json fills available properties
         /// </summary>
         [Fact]
         public void Deserialize_WithPartialJson_FillsAvailableProperties()
@@ -181,7 +128,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that serialize with whitespace in values escapes correctly
+        ///     Tests that serialize with whitespace in values escapes correctly
         /// </summary>
         [Fact]
         public void Serialize_WithWhitespaceInValues_EscapesCorrectly()
@@ -201,19 +148,71 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that serialize multiple objects produced different json
+        ///     Tests that serialize multiple objects produced different json
         /// </summary>
         [Fact]
         public void Serialize_MultipleObjects_ProducedDifferentJson()
         {
-            UserProfile obj1 = new UserProfile { Username = "user1", Email = "user1@test.com", Age = 25, IsActive = true };
-            UserProfile obj2 = new UserProfile { Username = "user2", Email = "user2@test.com", Age = 30, IsActive = false };
+            UserProfile obj1 = new UserProfile {Username = "user1", Email = "user1@test.com", Age = 25, IsActive = true};
+            UserProfile obj2 = new UserProfile {Username = "user2", Email = "user2@test.com", Age = 30, IsActive = false};
 
             string json1 = JsonNativeAot.Serialize(obj1);
             string json2 = JsonNativeAot.Serialize(obj2);
 
             Assert.NotEqual(json1, json2);
         }
+
+        /// <summary>
+        ///     The user profile class
+        /// </summary>
+        /// <seealso cref="IJsonSerializable" />
+        /// <seealso cref="IJsonDesSerializable{UserProfile}" />
+        private class UserProfile : IJsonSerializable, IJsonDesSerializable<UserProfile>
+        {
+            /// <summary>
+            ///     Gets or sets the value of the username
+            /// </summary>
+            public string Username { get; set; }
+
+            /// <summary>
+            ///     Gets or sets the value of the email
+            /// </summary>
+            public string Email { get; set; }
+
+            /// <summary>
+            ///     Gets or sets the value of the age
+            /// </summary>
+            public int Age { get; set; }
+
+            /// <summary>
+            ///     Gets or sets the value of the is active
+            /// </summary>
+            public bool IsActive { get; set; }
+
+            /// <summary>
+            ///     Creates the from properties using the specified properties
+            /// </summary>
+            /// <param name="properties">The properties</param>
+            /// <returns>The user profile</returns>
+            public UserProfile CreateFromProperties(Dictionary<string, string> properties) => new UserProfile
+            {
+                Username = properties.TryGetValue("Username", out string username) ? username : null,
+                Email = properties.TryGetValue("Email", out string email) ? email : null,
+                Age = properties.TryGetValue("Age", out string age) && int.TryParse(age, out int ageValue) ? ageValue : 0,
+                IsActive = properties.TryGetValue("IsActive", out string isActive) && bool.TryParse(isActive, out bool isActiveValue) ? isActiveValue : false
+            };
+
+            /// <summary>
+            ///     Gets the serializable properties
+            /// </summary>
+            /// <returns>An enumerable of string property name and string value</returns>
+            public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
+            {
+                yield return ("Username", Username);
+                yield return ("Email", Email);
+                yield return ("Age", Age.ToString());
+                yield return ("IsActive", IsActive.ToString());
+            }
+        }
     }
 }
-

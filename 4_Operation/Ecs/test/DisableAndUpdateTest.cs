@@ -27,9 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.Test.Models;
-using Xunit;
-
 namespace Alis.Core.Ecs.Test
 {
     /// <summary>
@@ -42,7 +39,5 @@ namespace Alis.Core.Ecs.Test
     /// </remarks>
     public class DisableAndUpdateTest
     {
-        
     }
 }
-

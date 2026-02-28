@@ -67,7 +67,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            Position position = new Position { X = 10, Y = 20 };
+            Position position = new Position {X = 10, Y = 20};
 
             // Act
             GameObject entity = scene.Create(position);
@@ -88,8 +88,8 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            Position position = new Position { X = 5, Y = 15 };
-            Health health = new Health { Value = 100 };
+            Position position = new Position {X = 5, Y = 15};
+            Health health = new Health {Value = 100};
 
             // Act
             GameObject entity = scene.Create(position, health);
@@ -111,9 +111,9 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
 
             // Act
-            GameObject entity1 = scene.Create(new Position { X = 1, Y = 2 });
-            GameObject entity2 = scene.Create(new Position { X = 3, Y = 4 });
-            GameObject entity3 = scene.Create(new Position { X = 5, Y = 6 });
+            GameObject entity1 = scene.Create(new Position {X = 1, Y = 2});
+            GameObject entity2 = scene.Create(new Position {X = 3, Y = 4});
+            GameObject entity3 = scene.Create(new Position {X = 5, Y = 6});
 
             // Assert
             Assert.True(entity1.IsAlive);
@@ -169,9 +169,9 @@ namespace Alis.Core.Ecs.Test
 
             // Act
             GameObject entity = scene.Create(
-                new Position { X = 1, Y = 2 },
-                new Health { Value = 50 },
-                new Velocity { VX = 3, VY = 4 });
+                new Position {X = 1, Y = 2},
+                new Health {Value = 50},
+                new Velocity {VX = 3, VY = 4});
 
             // Assert
             Assert.True(entity.Has<Position>());
@@ -200,4 +200,3 @@ namespace Alis.Core.Ecs.Test
         }
     }
 }
-

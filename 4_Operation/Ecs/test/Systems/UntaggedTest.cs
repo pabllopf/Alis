@@ -37,7 +37,7 @@ namespace Alis.Core.Ecs.Test.Systems
     ///     The untagged test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="Untagged{T}"/> struct which specifies that a query
+    ///     Tests the <see cref="Untagged{T}" /> struct which specifies that a query
     ///     should exclude entities that have a specific tag.
     /// </remarks>
     public class UntaggedTest
@@ -52,7 +52,7 @@ namespace Alis.Core.Ecs.Test.Systems
         public void Untagged_ImplementsRuleProvider()
         {
             // Arrange & Act
-            Untagged<PlayerTag> untagged = default;
+            Untagged<PlayerTag> untagged = default(Untagged<PlayerTag>);
 
             // Assert
             Assert.IsAssignableFrom<IRuleProvider>(untagged);
@@ -68,7 +68,7 @@ namespace Alis.Core.Ecs.Test.Systems
         public void Untagged_RuleReturnsLacksTagRule()
         {
             // Arrange
-            Untagged<PlayerTag> untagged = default;
+            Untagged<PlayerTag> untagged = default(Untagged<PlayerTag>);
 
             // Act
             Rule rule = untagged.Rule;
@@ -88,7 +88,7 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 1, Y = 1 });
+            GameObject entity = scene.Create(new Position {X = 1, Y = 1});
 
             // Act
             Query query = scene.Query<With<Position>, Untagged<PlayerTag>>();
@@ -113,10 +113,10 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject player = scene.Create(new Position { X = 1, Y = 1 });
+            GameObject player = scene.Create(new Position {X = 1, Y = 1});
             player.Tag<PlayerTag>();
-            
-            GameObject noTag = scene.Create(new Position { X = 2, Y = 2 });
+
+            GameObject noTag = scene.Create(new Position {X = 2, Y = 2});
 
             // Act
             Query query = scene.Query<With<Position>, Untagged<PlayerTag>>();
@@ -141,12 +141,12 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(new Position { X = 1, Y = 1 }); // No tags
+            GameObject entity1 = scene.Create(new Position {X = 1, Y = 1}); // No tags
 
-            GameObject entity2 = scene.Create(new Position { X = 2, Y = 2 });
+            GameObject entity2 = scene.Create(new Position {X = 2, Y = 2});
             entity2.Tag<PlayerTag>();
 
-            GameObject entity3 = scene.Create(new Position { X = 3, Y = 3 });
+            GameObject entity3 = scene.Create(new Position {X = 3, Y = 3});
             entity3.Tag<EnemyTag>();
 
             // Act - Untagged PlayerTag AND Untagged EnemyTag
@@ -172,10 +172,10 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(new Position { X = 1, Y = 1 });
+            GameObject entity1 = scene.Create(new Position {X = 1, Y = 1});
             entity1.Tag<PlayerTag>();
 
-            GameObject entity2 = scene.Create(new Position { X = 2, Y = 2 });
+            GameObject entity2 = scene.Create(new Position {X = 2, Y = 2});
             entity2.Tag<PlayerTag>();
             entity2.Tag<EnemyTag>();
 
@@ -201,7 +201,7 @@ namespace Alis.Core.Ecs.Test.Systems
         public void Untagged_DefaultInstanceHasValidRule()
         {
             // Arrange
-            Untagged<PlayerTag> untagged1 = default;
+            Untagged<PlayerTag> untagged1 = default(Untagged<PlayerTag>);
             Untagged<PlayerTag> untagged2 = new Untagged<PlayerTag>();
 
             // Act
@@ -222,8 +222,8 @@ namespace Alis.Core.Ecs.Test.Systems
         public void Untagged_ForDifferentTypes_CreatesDifferentRules()
         {
             // Arrange
-            Untagged<PlayerTag> untaggedPlayer = default;
-            Untagged<EnemyTag> untaggedEnemy = default;
+            Untagged<PlayerTag> untaggedPlayer = default(Untagged<PlayerTag>);
+            Untagged<EnemyTag> untaggedEnemy = default(Untagged<EnemyTag>);
 
             // Act
             Rule rulePlayer = untaggedPlayer.Rule;
@@ -244,9 +244,9 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject active = scene.Create(new Position { X = 1, Y = 1 });
-            
-            GameObject disabled = scene.Create(new Position { X = 2, Y = 2 });
+            GameObject active = scene.Create(new Position {X = 1, Y = 1});
+
+            GameObject disabled = scene.Create(new Position {X = 2, Y = 2});
             disabled.Tag<Disable>();
 
             // Act - Query for entities untagged with Disable
@@ -272,9 +272,9 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(new Position { X = 1, Y = 1 }, new Velocity { VX = 1, VY = 1 });
+            GameObject entity1 = scene.Create(new Position {X = 1, Y = 1}, new Velocity {VX = 1, VY = 1});
 
-            GameObject entity2 = scene.Create(new Position { X = 2, Y = 2 }, new Velocity { VX = 2, VY = 2 });
+            GameObject entity2 = scene.Create(new Position {X = 2, Y = 2}, new Velocity {VX = 2, VY = 2});
             entity2.Tag<PlayerTag>();
 
             // Act
@@ -290,4 +290,3 @@ namespace Alis.Core.Ecs.Test.Systems
         }
     }
 }
-

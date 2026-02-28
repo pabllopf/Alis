@@ -28,15 +28,13 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Kernel.Events;
-using Alis.Core.Ecs.Test.Models;
 using Xunit;
 
 namespace Alis.Core.Ecs.Test.Kernel.Events
 {
     /// <summary>
-    ///     Tests the <see cref="Event{T}"/> struct.
+    ///     Tests the <see cref="Event{T}" /> struct.
     /// </summary>
     /// <remarks>
     ///     The Event{T} is a generic event system that allows listeners to be added and removed,
@@ -92,7 +90,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
             @event.Add(action);
 
             // Act
-            @event.Invoke(default, 42);
+            @event.Invoke(default(GameObject), 42);
 
             // Assert
             Assert.True(invoked);
@@ -117,7 +115,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
             @event.Add(action3);
 
             // Act
-            @event.Invoke(default, 0);
+            @event.Invoke(default(GameObject), 0);
 
             // Assert
             Assert.Equal(3, callCount);
@@ -140,7 +138,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
 
             // Act
             @event.Remove(action1);
-            @event.Invoke(default, 0);
+            @event.Invoke(default(GameObject), 0);
 
             // Assert
             Assert.Equal(1, callCount);
@@ -183,7 +181,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
 
             // Act
             @event.Remove(action1);
-            @event.Invoke(default, 0);
+            @event.Invoke(default(GameObject), 0);
 
             // Assert
             Assert.Equal(2, callCount);
@@ -207,7 +205,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
 
             // Act
             @event.Remove(action3);
-            @event.Invoke(default, 0);
+            @event.Invoke(default(GameObject), 0);
 
             // Assert
             Assert.Equal(2, callCount);
@@ -228,7 +226,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
             @event.Add(action);
             @event.Add(action);
             @event.Add(action);
-            @event.Invoke(default, 0);
+            @event.Invoke(default(GameObject), 0);
 
             // Assert
             Assert.Equal(3, callCount);
@@ -244,12 +242,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
             Scene scene = new();
             GameObject gameObject = scene.Create();
             Event<int> @event = new();
-            GameObject passedGameObject = default;
+            GameObject passedGameObject = default(GameObject);
 
-            Action<GameObject, int> action = (go, _) =>
-            {
-                passedGameObject = go;
-            };
+            Action<GameObject, int> action = (go, _) => { passedGameObject = go; };
             @event.Add(action);
 
             // Act
@@ -257,7 +252,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
 
             // Assert
             Assert.Equal(gameObject, passedGameObject);
-            
+
             // Cleanup
             scene.Dispose();
         }
@@ -272,14 +267,11 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
             Event<string> @event = new();
             string passedValue = null;
 
-            Action<GameObject, string> action = (_, value) =>
-            {
-                passedValue = value;
-            };
+            Action<GameObject, string> action = (_, value) => { passedValue = value; };
             @event.Add(action);
 
             // Act
-            @event.Invoke(default, "test");
+            @event.Invoke(default(GameObject), "test");
 
             // Assert
             Assert.Equal("test", passedValue);
@@ -303,11 +295,10 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
 
             // Act
             @event.Add(action1);
-            @event.Invoke(default, 0);
+            @event.Invoke(default(GameObject), 0);
 
             // Assert
             Assert.Equal(2, callCount);
         }
     }
 }
-

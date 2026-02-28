@@ -29,26 +29,26 @@
 
 using System;
 using System.Reflection;
-using Xunit;
-using Alis.Core.Graphic.Ui;
 using Alis.Core.Aspect.Math.Definition;
+using Alis.Core.Graphic.Ui;
+using Xunit;
 
 namespace Alis.Core.Graphic.Test.Ui
 {
     /// <summary>
-    /// Tests for the FontManager static class managing font rendering operations.
+    ///     Tests for the FontManager static class managing font rendering operations.
     /// </summary>
     public class FontManagerTest
     {
         /// <summary>
-        /// Tests that DefaultFont property is static and accessible.
+        ///     Tests that DefaultFont property is static and accessible.
         /// </summary>
         [Fact]
         public void DefaultFont_IsStatic_CanBeAccessed()
         {
             // Arrange & Act
-            PropertyInfo defaultFontProperty = typeof(FontManager).GetProperty("DefaultFont", 
-                System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
+            PropertyInfo defaultFontProperty = typeof(FontManager).GetProperty("DefaultFont",
+                BindingFlags.Public | BindingFlags.Static);
 
             // Assert
             Assert.NotNull(defaultFontProperty);
@@ -56,14 +56,14 @@ namespace Alis.Core.Graphic.Test.Ui
         }
 
         /// <summary>
-        /// Tests that DefaultFont returns a Font instance.
+        ///     Tests that DefaultFont returns a Font instance.
         /// </summary>
         [Fact]
         public void DefaultFont_ReturnsFont_TypeIsCorrect()
         {
             // Arrange & Act
-            PropertyInfo defaultFontProperty = typeof(FontManager).GetProperty("DefaultFont", 
-                System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
+            PropertyInfo defaultFontProperty = typeof(FontManager).GetProperty("DefaultFont",
+                BindingFlags.Public | BindingFlags.Static);
 
             // Assert
             Assert.NotNull(defaultFontProperty);
@@ -71,14 +71,14 @@ namespace Alis.Core.Graphic.Test.Ui
         }
 
         /// <summary>
-        /// Tests that DefaultFont property is read-only.
+        ///     Tests that DefaultFont property is read-only.
         /// </summary>
         [Fact]
         public void DefaultFont_IsReadOnly_CannotBeModified()
         {
             // Arrange & Act
-            PropertyInfo defaultFontProperty = typeof(FontManager).GetProperty("DefaultFont", 
-                System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
+            PropertyInfo defaultFontProperty = typeof(FontManager).GetProperty("DefaultFont",
+                BindingFlags.Public | BindingFlags.Static);
 
             // Assert
             Assert.NotNull(defaultFontProperty);
@@ -86,37 +86,37 @@ namespace Alis.Core.Graphic.Test.Ui
         }
 
         /// <summary>
-        /// Tests that RenderText method exists with text and coordinates parameters.
+        ///     Tests that RenderText method exists with text and coordinates parameters.
         /// </summary>
         [Fact]
         public void RenderText_MethodWithCoordinatesExists_CanBeInvoked()
         {
             // Arrange & Act
-            MethodInfo method = typeof(FontManager).GetMethod("RenderText", 
-                System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static,
-                null, new[] { typeof(string), typeof(int), typeof(int) }, null);
+            MethodInfo method = typeof(FontManager).GetMethod("RenderText",
+                BindingFlags.Public | BindingFlags.Static,
+                null, new[] {typeof(string), typeof(int), typeof(int)}, null);
 
             // Assert
             Assert.NotNull(method);
         }
 
         /// <summary>
-        /// Tests that RenderText method exists with color parameters.
+        ///     Tests that RenderText method exists with color parameters.
         /// </summary>
         [Fact]
         public void RenderText_MethodWithColorsExists_CanBeInvoked()
         {
             // Arrange & Act
-            MethodInfo method = typeof(FontManager).GetMethod("RenderText", 
-                System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static,
-                null, new[] { typeof(string), typeof(int), typeof(int), typeof(Color), typeof(Color) }, null);
+            MethodInfo method = typeof(FontManager).GetMethod("RenderText",
+                BindingFlags.Public | BindingFlags.Static,
+                null, new[] {typeof(string), typeof(int), typeof(int), typeof(Color), typeof(Color)}, null);
 
             // Assert
             Assert.NotNull(method);
         }
 
         /// <summary>
-        /// Tests that FontManager is a static class (sealed and all members static).
+        ///     Tests that FontManager is a static class (sealed and all members static).
         /// </summary>
         [Fact]
         public void FontManager_IsStatic_ClassIsCorrectlyStructured()
@@ -130,7 +130,7 @@ namespace Alis.Core.Graphic.Test.Ui
         }
 
         /// <summary>
-        /// Tests that FontManager class is public.
+        ///     Tests that FontManager class is public.
         /// </summary>
         [Fact]
         public void FontManager_IsPublic_CanBeAccessed()
@@ -143,15 +143,15 @@ namespace Alis.Core.Graphic.Test.Ui
         }
 
         /// <summary>
-        /// Tests that RenderText with colors method accepts correct parameter types.
+        ///     Tests that RenderText with colors method accepts correct parameter types.
         /// </summary>
         [Fact]
         public void RenderText_WithColors_ParametersAreCorrect()
         {
             // Arrange
-            MethodInfo method = typeof(FontManager).GetMethod("RenderText", 
-                System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static,
-                null, new[] { typeof(string), typeof(int), typeof(int), typeof(Color), typeof(Color) }, null);
+            MethodInfo method = typeof(FontManager).GetMethod("RenderText",
+                BindingFlags.Public | BindingFlags.Static,
+                null, new[] {typeof(string), typeof(int), typeof(int), typeof(Color), typeof(Color)}, null);
 
             // Act
             ParameterInfo[] parameters = method?.GetParameters();
@@ -167,15 +167,15 @@ namespace Alis.Core.Graphic.Test.Ui
         }
 
         /// <summary>
-        /// Tests that RenderText with coordinates method accepts correct parameter types.
+        ///     Tests that RenderText with coordinates method accepts correct parameter types.
         /// </summary>
         [Fact]
         public void RenderText_WithCoordinates_ParametersAreCorrect()
         {
             // Arrange
-            MethodInfo method = typeof(FontManager).GetMethod("RenderText", 
-                System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static,
-                null, new[] { typeof(string), typeof(int), typeof(int) }, null);
+            MethodInfo method = typeof(FontManager).GetMethod("RenderText",
+                BindingFlags.Public | BindingFlags.Static,
+                null, new[] {typeof(string), typeof(int), typeof(int)}, null);
 
             // Act
             ParameterInfo[] parameters = method?.GetParameters();
@@ -189,18 +189,18 @@ namespace Alis.Core.Graphic.Test.Ui
         }
 
         /// <summary>
-        /// Tests that both RenderText methods return void.
+        ///     Tests that both RenderText methods return void.
         /// </summary>
         [Fact]
         public void RenderText_Methods_ReturnVoid()
         {
             // Arrange
-            MethodInfo method1 = typeof(FontManager).GetMethod("RenderText", 
-                System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static,
-                null, new[] { typeof(string), typeof(int), typeof(int) }, null);
-            MethodInfo method2 = typeof(FontManager).GetMethod("RenderText", 
-                System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static,
-                null, new[] { typeof(string), typeof(int), typeof(int), typeof(Color), typeof(Color) }, null);
+            MethodInfo method1 = typeof(FontManager).GetMethod("RenderText",
+                BindingFlags.Public | BindingFlags.Static,
+                null, new[] {typeof(string), typeof(int), typeof(int)}, null);
+            MethodInfo method2 = typeof(FontManager).GetMethod("RenderText",
+                BindingFlags.Public | BindingFlags.Static,
+                null, new[] {typeof(string), typeof(int), typeof(int), typeof(Color), typeof(Color)}, null);
 
             // Act & Assert
             Assert.NotNull(method1);
@@ -210,15 +210,15 @@ namespace Alis.Core.Graphic.Test.Ui
         }
 
         /// <summary>
-        /// Tests that FontManager has only static members.
+        ///     Tests that FontManager has only static members.
         /// </summary>
         [Fact]
         public void FontManager_AllMembers_AreStatic()
         {
             // Arrange
             Type fontManagerType = typeof(FontManager);
-            PropertyInfo[] properties = fontManagerType.GetProperties(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
-            MethodInfo[] methods = fontManagerType.GetMethods(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.DeclaredOnly);
+            PropertyInfo[] properties = fontManagerType.GetProperties(BindingFlags.Public | BindingFlags.Static);
+            MethodInfo[] methods = fontManagerType.GetMethods(BindingFlags.Public | BindingFlags.Static | BindingFlags.DeclaredOnly);
 
             // Act & Assert
             Assert.NotEmpty(properties);
@@ -226,4 +226,3 @@ namespace Alis.Core.Graphic.Test.Ui
         }
     }
 }
-

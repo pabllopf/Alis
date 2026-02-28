@@ -174,7 +174,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void Constructor_WithManyExtensions_ShouldWork()
         {
             // Arrange
-            string[] extensions = new[] { "jpg", "png", "gif", "bmp", "ico" };
+            string[] extensions = new[] {"jpg", "png", "gif", "bmp", "ico"};
 
             // Act
             FilePickerFilter filter = new FilePickerFilter("Image Files", extensions);
@@ -188,4 +188,3 @@ namespace Alis.Extension.Io.FileDialog.Test
         }
     }
 }
-

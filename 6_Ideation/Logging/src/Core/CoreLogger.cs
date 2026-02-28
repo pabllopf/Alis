@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: CoreLogger.cs
+//  File:CoreLogger.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program. If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -41,14 +41,14 @@ namespace Alis.Core.Aspect.Logging.Core
     /// </summary>
     internal sealed class CoreLogger : ILogger
     {
-        private readonly List<ILogOutput> _outputs;
+        private readonly object _correlationLock = new object();
         private readonly List<ILogFilter> _filters;
         private readonly ILogFormatter _formatter;
-        private readonly Stack<object> _scopeStack;
+        private readonly LogLevel _minimumLevel;
+        private readonly List<ILogOutput> _outputs;
         private readonly object _scopeLock = new object();
-        private readonly object _correlationLock = new object();
+        private readonly Stack<object> _scopeStack;
         private string _correlationId;
-        private LogLevel _minimumLevel;
 
         /// <summary>
         ///     Initializes a new instance of the CoreLogger class.
@@ -186,11 +186,8 @@ namespace Alis.Core.Aspect.Logging.Core
         }
 
         /// <inheritdoc />
-        public bool IsEnabled(LogLevel level)
-        {
-            return level >= _minimumLevel && level != LogLevel.None;
-        }
-        
+        public bool IsEnabled(LogLevel level) => (level >= _minimumLevel) && (level != LogLevel.None);
+
         /// <summary>
         ///     Gets the current scope stack as a read-only list.
         /// </summary>
@@ -252,4 +249,3 @@ namespace Alis.Core.Aspect.Logging.Core
         }
     }
 }
-

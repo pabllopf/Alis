@@ -45,9 +45,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
         {
             MarchingSquares.GeomPoly geomPoly = new MarchingSquares.GeomPoly();
             int key = 42;
-            
+
             GeomPolyVal geomPolyVal = new GeomPolyVal(geomPoly, key);
-            
+
             Assert.NotNull(geomPolyVal);
             Assert.Equal(key, geomPolyVal.Key);
             Assert.Equal(geomPoly, geomPolyVal.GeomP);
@@ -61,7 +61,7 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
         {
             int key = 100;
             GeomPolyVal geomPolyVal = new GeomPolyVal(new MarchingSquares.GeomPoly(), key);
-            
+
             Assert.Equal(100, geomPolyVal.Key);
         }
 
@@ -74,9 +74,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             MarchingSquares.GeomPoly geomPoly1 = new MarchingSquares.GeomPoly();
             MarchingSquares.GeomPoly geomPoly2 = new MarchingSquares.GeomPoly();
             GeomPolyVal geomPolyVal = new GeomPolyVal(geomPoly1, 1);
-            
+
             geomPolyVal.GeomP = geomPoly2;
-            
+
             Assert.Equal(geomPoly2, geomPolyVal.GeomP);
         }
 
@@ -87,7 +87,7 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
         public void Constructor_ShouldHandleNullGeomPoly()
         {
             GeomPolyVal geomPolyVal = new GeomPolyVal(null, 5);
-            
+
             Assert.Null(geomPolyVal.GeomP);
             Assert.Equal(5, geomPolyVal.Key);
         }
@@ -99,7 +99,7 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
         public void Constructor_ShouldHandleNegativeKey()
         {
             GeomPolyVal geomPolyVal = new GeomPolyVal(new MarchingSquares.GeomPoly(), -10);
-            
+
             Assert.Equal(-10, geomPolyVal.Key);
         }
 
@@ -110,7 +110,7 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
         public void Constructor_ShouldHandleZeroKey()
         {
             GeomPolyVal geomPolyVal = new GeomPolyVal(new MarchingSquares.GeomPoly(), 0);
-            
+
             Assert.Equal(0, geomPolyVal.Key);
         }
 
@@ -123,12 +123,11 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             MarchingSquares.GeomPoly geomPoly1 = new MarchingSquares.GeomPoly();
             MarchingSquares.GeomPoly geomPoly2 = new MarchingSquares.GeomPoly();
             GeomPolyVal geomPolyVal = new GeomPolyVal(geomPoly1, 1);
-            
+
             geomPolyVal.GeomP = geomPoly2;
             geomPolyVal.GeomP = null;
-            
+
             Assert.Null(geomPolyVal.GeomP);
         }
     }
 }
-

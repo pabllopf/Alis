@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:InlineArray8ExtendedTest.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -171,15 +172,14 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Get_ValueTypeGuid_StoresAndRetrieves()
         {
             // Arrange
-            InlineArray8<Guid> array = new InlineArray8<System.Guid>();
-            Guid guid = System.Guid.NewGuid();
+            InlineArray8<Guid> array = new InlineArray8<Guid>();
+            Guid guid = Guid.NewGuid();
 
             // Act
-            InlineArray8<System.Guid>.Get(ref array, 0) = guid;
+            InlineArray8<Guid>.Get(ref array, 0) = guid;
 
             // Assert
-            Assert.Equal(guid, InlineArray8<System.Guid>.Get(ref array, 0));
+            Assert.Equal(guid, InlineArray8<Guid>.Get(ref array, 0));
         }
     }
 }
-

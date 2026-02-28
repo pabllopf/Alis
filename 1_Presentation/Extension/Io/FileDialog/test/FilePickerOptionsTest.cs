@@ -64,7 +64,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void ConstructorWithParameters_ShouldCreateInstance()
         {
             // Act
-            FilePickerOptions options = new FilePickerOptions("Open File", FileDialogType.OpenFile);
+            FilePickerOptions options = new FilePickerOptions("Open File");
 
             // Assert
             Assert.Equal("Open File", options.Title);
@@ -78,7 +78,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void ConstructorWithNullTitle_ShouldThrowArgumentException()
         {
             // Act & Assert
-            Assert.Throws<ArgumentException>(() => new FilePickerOptions(null, FileDialogType.OpenFile));
+            Assert.Throws<ArgumentException>(() => new FilePickerOptions(null));
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void ConstructorWithEmptyTitle_ShouldThrowArgumentException()
         {
             // Act & Assert
-            Assert.Throws<ArgumentException>(() => new FilePickerOptions("", FileDialogType.OpenFile));
+            Assert.Throws<ArgumentException>(() => new FilePickerOptions(""));
         }
 
         /// <summary>
@@ -227,7 +227,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void IsDirectoryDialog_WithOpenFileType_ShouldReturnFalse()
         {
             // Arrange
-            FilePickerOptions options = new FilePickerOptions("Select", FileDialogType.OpenFile);
+            FilePickerOptions options = new FilePickerOptions("Select");
 
             // Act
             bool result = options.IsDirectoryDialog();
@@ -255,4 +255,3 @@ namespace Alis.Extension.Io.FileDialog.Test
         }
     }
 }
-

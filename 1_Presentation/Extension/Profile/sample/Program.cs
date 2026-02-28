@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Threading;
 using Alis.Core.Aspect.Logging;
 using Alis.Extension.Profile.Builders;
 using Alis.Extension.Profile.Helpers;
@@ -105,10 +106,10 @@ namespace Alis.Extension.Profile.Sample
 
             // Use using statement for automatic profiling
             using (new ProfilerScope(profilerService, snapshot =>
-            {
-                Logger.Info("Profiling completed automatically!");
-                Logger.Info(ProfileSnapshotFormatter.FormatCompact(snapshot));
-            }))
+                   {
+                       Logger.Info("Profiling completed automatically!");
+                       Logger.Info(ProfileSnapshotFormatter.FormatCompact(snapshot));
+                   }))
             {
                 // Execute work to profile
                 PerformMemoryIntensiveOperation();
@@ -169,7 +170,7 @@ namespace Alis.Extension.Profile.Sample
         /// </summary>
         private static void PerformWork()
         {
-            System.Threading.Thread.Sleep(100);
+            Thread.Sleep(100);
             for (int i = 0; i < 100000; i++)
             {
                 _ = Math.Sqrt(i);
@@ -177,4 +178,3 @@ namespace Alis.Extension.Profile.Sample
         }
     }
 }
-

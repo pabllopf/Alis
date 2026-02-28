@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:ClientApiEnumTests.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,7 +39,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
     public class ClientApiEnumTests
     {
         /// <summary>
-        /// Tests that client api open gl is defined
+        ///     Tests that client api open gl is defined
         /// </summary>
         [Fact]
         public void ClientApi_OpenGl_IsDefined()
@@ -51,7 +52,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that client api open gl es is defined
+        ///     Tests that client api open gl es is defined
         /// </summary>
         [Fact]
         public void ClientApi_OpenGlEs_IsDefined()
@@ -64,7 +65,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that client api none is defined
+        ///     Tests that client api none is defined
         /// </summary>
         [Fact]
         public void ClientApi_None_IsDefined()
@@ -77,7 +78,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
 
         /// <summary>
-        /// Tests that client api can be cast to int
+        ///     Tests that client api can be cast to int
         /// </summary>
         [Fact]
         public void ClientApi_CanBeCastToInt()
@@ -86,14 +87,14 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
             ClientApi api = ClientApi.OpenGl;
 
             // Act
-            int value = (int)api;
+            int value = (int) api;
 
             // Assert
             Assert.True(value != 0);
         }
 
         /// <summary>
-        /// Tests that client api all apis are different
+        ///     Tests that client api all apis are different
         /// </summary>
         [Fact]
         public void ClientApi_AllApis_AreDifferent()
@@ -105,4 +106,3 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         }
     }
 }
-

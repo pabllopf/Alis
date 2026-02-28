@@ -5,31 +5,30 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: Core/LoggerScopeEdgeCasesTest.cs
+//  File:LoggerScopeEdgeCasesTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program. If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System;
 using System.Collections.Generic;
-using System.Threading;
 using System.Threading.Tasks;
 using Alis.Core.Aspect.Logging.Core;
 using Xunit;
@@ -105,10 +104,7 @@ namespace Alis.Core.Aspect.Logging.Test.Core
             for (int i = 0; i < 10; i++)
             {
                 int index = i;
-                tasks[i] = Task.Run(() =>
-                {
-                    scopes[index] = new LoggerScope($"Scope{index}", stacks[index], () => { });
-                });
+                tasks[i] = Task.Run(() => { scopes[index] = new LoggerScope($"Scope{index}", stacks[index], () => { }); });
             }
 
             Task.WaitAll(tasks);
@@ -132,7 +128,7 @@ namespace Alis.Core.Aspect.Logging.Test.Core
                 UserId = 12345,
                 Action = "ProcessPayment",
                 Timestamp = DateTime.UtcNow,
-                Data = new { Amount = 99.99m, Currency = "USD" }
+                Data = new {Amount = 99.99m, Currency = "USD"}
             };
 
             // Act
@@ -260,7 +256,7 @@ namespace Alis.Core.Aspect.Logging.Test.Core
             scope1.Dispose(); // Should call callback(1)
 
             // Assert
-            Assert.Equal(new[] { 3, 2, 1 }, callOrder);
+            Assert.Equal(new[] {3, 2, 1}, callOrder);
         }
 
         [Fact]
@@ -310,4 +306,3 @@ namespace Alis.Core.Aspect.Logging.Test.Core
         }
     }
 }
-

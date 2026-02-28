@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:FastestStackExtendedTest.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -59,7 +60,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Constructor_NegativeCapacity_ThrowsArgumentOutOfRange()
         {
             // Act & Assert
-            Assert.Throws<System.ArgumentOutOfRangeException>(() => new FastestStack<int>(-1));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new FastestStack<int>(-1));
         }
 
         /// <summary>
@@ -156,7 +157,7 @@ namespace Alis.Core.Ecs.Test.Collections
 
             // Assert
             Assert.Equal(0, stack.Count);
-            Assert.True(stack.TryPop(out _) == false);
+            Assert.True(!stack.TryPop(out _));
         }
 
         /// <summary>
@@ -228,9 +229,9 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Push_ValueTypes_StoresAndRetrievesCorrectly()
         {
             // Arrange
-            FastestStack<Guid> stack = new FastestStack<System.Guid>();
-            Guid guid1 = System.Guid.NewGuid();
-            Guid guid2 = System.Guid.NewGuid();
+            FastestStack<Guid> stack = new FastestStack<Guid>();
+            Guid guid1 = Guid.NewGuid();
+            Guid guid2 = Guid.NewGuid();
 
             // Act
             stack.Push(guid1);
@@ -261,4 +262,3 @@ namespace Alis.Core.Ecs.Test.Collections
         }
     }
 }
-

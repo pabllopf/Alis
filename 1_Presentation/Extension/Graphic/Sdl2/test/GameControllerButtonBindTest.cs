@@ -27,10 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Xunit;
-using Alis.Extension.Graphic.Sdl2.Structs;
-using Alis.Extension.Graphic.Sdl2.Enums;
-
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
     /// <summary>
@@ -38,7 +34,5 @@ namespace Alis.Extension.Graphic.Sdl2.Test
     /// </summary>
     public class GameControllerButtonBindTest
     {
-      
     }
 }
-

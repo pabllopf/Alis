@@ -36,110 +36,110 @@ namespace Alis.Core.Ecs.Test.Kernel
     ///     The component handle extended test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="ComponentHandle"/> struct which stores
+    ///     Tests the <see cref="ComponentHandle" /> struct which stores
     ///     information needed to handle component instances (index and archetype).
     ///     This is an extended test suite with more comprehensive cases.
     /// </remarks>
     public class ComponentHandleExtendedTest
     {
-    /// <summary>
-    ///     Tests that component handle can be created with parameters
-    /// </summary>
-    /// <remarks>
-    ///     Verifies that ComponentHandle can be instantiated with valid parameters.
-    /// </remarks>
-    [Fact]
-    public void ComponentHandle_CanBeCreatedWithParameters()
-    {
-        // Arrange
-        ComponentId id = new ComponentId(5);
+        /// <summary>
+        ///     Tests that component handle can be created with parameters
+        /// </summary>
+        /// <remarks>
+        ///     Verifies that ComponentHandle can be instantiated with valid parameters.
+        /// </remarks>
+        [Fact]
+        public void ComponentHandle_CanBeCreatedWithParameters()
+        {
+            // Arrange
+            ComponentId id = new ComponentId(5);
 
-        // Act
-        ComponentHandle handle = new ComponentHandle(5, id);
+            // Act
+            ComponentHandle handle = new ComponentHandle(5, id);
 
-        // Assert
-        Assert.Equal(5, handle.Index);
-        Assert.Equal(id, handle.ComponentId);
-    }
+            // Assert
+            Assert.Equal(5, handle.Index);
+            Assert.Equal(id, handle.ComponentId);
+        }
 
-    /// <summary>
-    ///     Tests that component handle component index is preserved
-    /// </summary>
-    /// <remarks>
-    ///     Validates that the Index field is correctly stored.
-    /// </remarks>
-    [Fact]
-    public void ComponentHandle_ComponentIndexIsPreserved()
-    {
-        // Arrange
-        ComponentId id = new ComponentId(10);
+        /// <summary>
+        ///     Tests that component handle component index is preserved
+        /// </summary>
+        /// <remarks>
+        ///     Validates that the Index field is correctly stored.
+        /// </remarks>
+        [Fact]
+        public void ComponentHandle_ComponentIndexIsPreserved()
+        {
+            // Arrange
+            ComponentId id = new ComponentId(10);
 
-        // Act
-        ComponentHandle handle = new ComponentHandle(42, id);
+            // Act
+            ComponentHandle handle = new ComponentHandle(42, id);
 
-        // Assert
-        Assert.Equal(42, handle.Index);
-    }
+            // Assert
+            Assert.Equal(42, handle.Index);
+        }
 
-    /// <summary>
-    ///     Tests that component handle archetype id is preserved
-    /// </summary>
-    /// <remarks>
-    ///     Validates that the ComponentId field is correctly stored.
-    /// </remarks>
-    [Fact]
-    public void ComponentHandle_ComponentIdIsPreserved()
-    {
-        // Arrange
-        ComponentId id = new ComponentId(25);
+        /// <summary>
+        ///     Tests that component handle archetype id is preserved
+        /// </summary>
+        /// <remarks>
+        ///     Validates that the ComponentId field is correctly stored.
+        /// </remarks>
+        [Fact]
+        public void ComponentHandle_ComponentIdIsPreserved()
+        {
+            // Arrange
+            ComponentId id = new ComponentId(25);
 
-        // Act
-        ComponentHandle handle = new ComponentHandle(5, id);
+            // Act
+            ComponentHandle handle = new ComponentHandle(5, id);
 
-        // Assert
-        Assert.Equal(id, handle.ComponentId);
-        Assert.Equal((ushort)25, handle.ComponentId.RawIndex);
-    }
+            // Assert
+            Assert.Equal(id, handle.ComponentId);
+            Assert.Equal((ushort) 25, handle.ComponentId.RawIndex);
+        }
 
-    /// <summary>
-    ///     Tests that component handle with zero indices
-    /// </summary>
-    /// <remarks>
-    ///     Tests creation with zero component index and component ID.
-    /// </remarks>
-    [Fact]
-    public void ComponentHandle_WithZeroIndices()
-    {
-        // Arrange
-        ComponentId id = new ComponentId(0);
+        /// <summary>
+        ///     Tests that component handle with zero indices
+        /// </summary>
+        /// <remarks>
+        ///     Tests creation with zero component index and component ID.
+        /// </remarks>
+        [Fact]
+        public void ComponentHandle_WithZeroIndices()
+        {
+            // Arrange
+            ComponentId id = new ComponentId(0);
 
-        // Act
-        ComponentHandle handle = new ComponentHandle(0, id);
+            // Act
+            ComponentHandle handle = new ComponentHandle(0, id);
 
-        // Assert
-        Assert.Equal(0, handle.Index);
-        Assert.Equal((ushort)0, handle.ComponentId.RawIndex);
-    }
+            // Assert
+            Assert.Equal(0, handle.Index);
+            Assert.Equal((ushort) 0, handle.ComponentId.RawIndex);
+        }
 
-    /// <summary>
-    ///     Tests that component handle with max values
-    /// </summary>
-    /// <remarks>
-    ///     Tests creation with maximum component index and component ID.
-    /// </remarks>
-    [Fact]
-    public void ComponentHandle_WithMaxValues()
-    {
-        // Arrange
-        ComponentId id = new ComponentId(ushort.MaxValue);
+        /// <summary>
+        ///     Tests that component handle with max values
+        /// </summary>
+        /// <remarks>
+        ///     Tests creation with maximum component index and component ID.
+        /// </remarks>
+        [Fact]
+        public void ComponentHandle_WithMaxValues()
+        {
+            // Arrange
+            ComponentId id = new ComponentId(ushort.MaxValue);
 
-        // Act
-        ComponentHandle handle = new ComponentHandle(int.MaxValue, id);
+            // Act
+            ComponentHandle handle = new ComponentHandle(int.MaxValue, id);
 
-        // Assert
-        Assert.Equal(int.MaxValue, handle.Index);
-        Assert.Equal(ushort.MaxValue, handle.ComponentId.RawIndex);
-    }
+            // Assert
+            Assert.Equal(int.MaxValue, handle.Index);
+            Assert.Equal(ushort.MaxValue, handle.ComponentId.RawIndex);
+        }
 
         /// <summary>
         ///     Tests that component handle equality

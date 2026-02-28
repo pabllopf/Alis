@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Memory.Test
 {
     /// <summary>
-    /// The zip entry info test class
+    ///     The zip entry info test class
     /// </summary>
     public class ZipEntryInfoTest
     {
         /// <summary>
-        /// Tests that full name get set works correctly
+        ///     Tests that full name get set works correctly
         /// </summary>
         [Fact]
         public void FullName_GetSet_WorksCorrectly()
@@ -57,7 +57,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that full name default value is empty string
+        ///     Tests that full name default value is empty string
         /// </summary>
         [Fact]
         public void FullName_DefaultValue_IsEmptyString()
@@ -70,7 +70,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that length get set works correctly
+        ///     Tests that length get set works correctly
         /// </summary>
         [Fact]
         public void Length_GetSet_WorksCorrectly()
@@ -88,7 +88,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that length with large value works correctly
+        ///     Tests that length with large value works correctly
         /// </summary>
         [Fact]
         public void Length_WithLargeValue_WorksCorrectly()
@@ -106,7 +106,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that last write time utc get set works correctly
+        ///     Tests that last write time utc get set works correctly
         /// </summary>
         [Fact]
         public void LastWriteTimeUtc_GetSet_WorksCorrectly()
@@ -124,7 +124,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that multiple properties set and retrieve all values correct
+        ///     Tests that multiple properties set and retrieve all values correct
         /// </summary>
         [Fact]
         public void MultipleProperties_SetAndRetrieve_AllValuesCorrect()
@@ -147,7 +147,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that length can be zero
+        ///     Tests that length can be zero
         /// </summary>
         [Fact]
         public void Length_CanBeZero()
@@ -163,7 +163,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that length can be very large
+        ///     Tests that length can be very large
         /// </summary>
         [Fact]
         public void Length_CanBeVeryLarge()
@@ -180,7 +180,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that last write time utc can be set to past date
+        ///     Tests that last write time utc can be set to past date
         /// </summary>
         [Fact]
         public void LastWriteTimeUtc_CanBeSetToPastDate()
@@ -197,7 +197,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that last write time utc can be set to future date
+        ///     Tests that last write time utc can be set to future date
         /// </summary>
         [Fact]
         public void LastWriteTimeUtc_CanBeSetToFutureDate()
@@ -214,7 +214,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that full name with special characters can be set
+        ///     Tests that full name with special characters can be set
         /// </summary>
         [Fact]
         public void FullName_WithSpecialCharacters_CanBeSet()
@@ -231,7 +231,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that full name with backslashes can be set
+        ///     Tests that full name with backslashes can be set
         /// </summary>
         [Fact]
         public void FullName_WithBackslashes_CanBeSet()
@@ -248,7 +248,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that full name with very long path can be set
+        ///     Tests that full name with very long path can be set
         /// </summary>
         [Fact]
         public void FullName_WithVeryLongPath_CanBeSet()
@@ -265,7 +265,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that all properties can be null or default
+        ///     Tests that all properties can be null or default
         /// </summary>
         [Fact]
         public void AllProperties_CanBeNullOrDefault()
@@ -280,7 +280,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that multiple instances can have different values
+        ///     Tests that multiple instances can have different values
         /// </summary>
         [Fact]
         public void MultipleInstances_CanHaveDifferentValues()
@@ -307,7 +307,7 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        /// Tests that full name with unicode characters can be set
+        ///     Tests that full name with unicode characters can be set
         /// </summary>
         [Fact]
         public void FullName_WithUnicodeCharacters_CanBeSet()

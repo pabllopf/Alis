@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Collisions;
 using Alis.Core.Physic.Collisions.Shapes;
 using Alis.Core.Physic.Dynamics;
 using Xunit;
@@ -48,9 +47,9 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         {
             Vector2F start = new Vector2F(0, 0);
             Vector2F end = new Vector2F(10, 0);
-            
+
             EdgeShape edge = new EdgeShape(start, end);
-            
+
             Assert.Equal(ShapeType.Edge, edge.ShapeType);
             Assert.Equal(start, edge.Vertex1);
             Assert.Equal(end, edge.Vertex2);
@@ -63,7 +62,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         public void ChildCount_ShouldReturnOne()
         {
             EdgeShape edge = new EdgeShape(Vector2F.Zero, new Vector2F(1, 0));
-            
+
             Assert.Equal(1, edge.ChildCount);
         }
 
@@ -76,9 +75,9 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
             EdgeShape edge = new EdgeShape(Vector2F.Zero, Vector2F.One);
             Vector2F newStart = new Vector2F(5, 5);
             Vector2F newEnd = new Vector2F(10, 10);
-            
+
             edge.Set(newStart, newEnd);
-            
+
             Assert.Equal(newStart, edge.Vertex1);
             Assert.Equal(newEnd, edge.Vertex2);
         }
@@ -91,9 +90,9 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         {
             EdgeShape edge = new EdgeShape(Vector2F.Zero, Vector2F.One);
             Vector2F newVertex = new Vector2F(3, 4);
-            
+
             edge.Vertex1 = newVertex;
-            
+
             Assert.Equal(newVertex, edge.Vertex1);
         }
 
@@ -105,9 +104,9 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         {
             EdgeShape edge = new EdgeShape(Vector2F.Zero, Vector2F.One);
             Vector2F newVertex = new Vector2F(5, 6);
-            
+
             edge.Vertex2 = newVertex;
-            
+
             Assert.Equal(newVertex, edge.Vertex2);
         }
 
@@ -118,9 +117,9 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         public void HasVertex0Property_ShouldSetAndGetCorrectly()
         {
             EdgeShape edge = new EdgeShape(Vector2F.Zero, Vector2F.One);
-            
+
             edge.HasVertex0 = true;
-            
+
             Assert.True(edge.HasVertex0);
         }
 
@@ -131,9 +130,9 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         public void HasVertex3Property_ShouldSetAndGetCorrectly()
         {
             EdgeShape edge = new EdgeShape(Vector2F.Zero, Vector2F.One);
-            
+
             edge.HasVertex3 = true;
-            
+
             Assert.True(edge.HasVertex3);
         }
 
@@ -145,9 +144,9 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         {
             EdgeShape edge = new EdgeShape(Vector2F.Zero, Vector2F.One);
             Vector2F vertex0 = new Vector2F(-1, 0);
-            
+
             edge.Vertex0 = vertex0;
-            
+
             Assert.Equal(vertex0, edge.Vertex0);
         }
 
@@ -159,9 +158,9 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         {
             EdgeShape edge = new EdgeShape(Vector2F.Zero, Vector2F.One);
             Vector2F vertex3 = new Vector2F(2, 1);
-            
+
             edge.Vertex3 = vertex3;
-            
+
             Assert.Equal(vertex3, edge.Vertex3);
         }
 
@@ -174,9 +173,9 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
             EdgeShape edge = new EdgeShape(Vector2F.Zero, new Vector2F(10, 0));
             ControllerTransform transform = ControllerTransform.Identity;
             Vector2F point = new Vector2F(5, 0);
-            
+
             bool result = edge.TestPoint(ref transform, ref point);
-            
+
             Assert.False(result);
         }
 
@@ -187,7 +186,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         public void EdgeShape_ShouldHandleVerticalEdges()
         {
             EdgeShape edge = new EdgeShape(new Vector2F(5, 0), new Vector2F(5, 10));
-            
+
             Assert.Equal(5, edge.Vertex1.X);
             Assert.Equal(5, edge.Vertex2.X);
             Assert.NotEqual(edge.Vertex1.Y, edge.Vertex2.Y);
@@ -200,7 +199,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         public void EdgeShape_ShouldHandleHorizontalEdges()
         {
             EdgeShape edge = new EdgeShape(new Vector2F(0, 5), new Vector2F(10, 5));
-            
+
             Assert.Equal(5, edge.Vertex1.Y);
             Assert.Equal(5, edge.Vertex2.Y);
             Assert.NotEqual(edge.Vertex1.X, edge.Vertex2.X);
@@ -213,7 +212,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         public void EdgeShape_ShouldHandleDiagonalEdges()
         {
             EdgeShape edge = new EdgeShape(new Vector2F(0, 0), new Vector2F(10, 10));
-            
+
             Assert.Equal(0, edge.Vertex1.X);
             Assert.Equal(10, edge.Vertex2.X);
         }
@@ -229,7 +228,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
             edge.HasVertex3 = true;
             edge.Vertex0 = new Vector2F(-10, 0);
             edge.Vertex3 = new Vector2F(20, 0);
-            
+
             Assert.True(edge.HasVertex0);
             Assert.True(edge.HasVertex3);
             Assert.Equal(new Vector2F(-10, 0), edge.Vertex0);
@@ -243,7 +242,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         public void EdgeShape_ShouldInheritFromShape()
         {
             EdgeShape edge = new EdgeShape(Vector2F.Zero, Vector2F.One);
-            
+
             Assert.IsAssignableFrom<Shape>(edge);
         }
 
@@ -256,12 +255,11 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
             EdgeShape edge = new EdgeShape(Vector2F.Zero, Vector2F.One);
             edge.HasVertex0 = true;
             edge.HasVertex3 = true;
-            
+
             edge.Set(new Vector2F(5, 5), new Vector2F(10, 10));
-            
+
             Assert.False(edge.HasVertex0);
             Assert.False(edge.HasVertex3);
         }
     }
 }
-

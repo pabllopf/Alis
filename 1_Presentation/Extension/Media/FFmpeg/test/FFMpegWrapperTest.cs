@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test
@@ -125,7 +126,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             try
             {
                 // Act & Assert
-                foreach (Verbosity verbosity in System.Enum.GetValues(typeof(Verbosity)))
+                foreach (Verbosity verbosity in Enum.GetValues(typeof(Verbosity)))
                 {
                     FfMpegWrapper.LogLevel = verbosity;
                     Assert.Equal(verbosity, FfMpegWrapper.LogLevel);
@@ -232,7 +233,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             Verbosity logLevel = FfMpegWrapper.LogLevel;
 
             // Assert
-            Assert.True(logLevel >= Verbosity.Quiet && logLevel <= Verbosity.Fatal);
+            Assert.True((logLevel >= Verbosity.Quiet) && (logLevel <= Verbosity.Fatal));
         }
 
         /// <summary>
@@ -249,4 +250,3 @@ namespace Alis.Extension.Media.FFmpeg.Test
         }
     }
 }
-

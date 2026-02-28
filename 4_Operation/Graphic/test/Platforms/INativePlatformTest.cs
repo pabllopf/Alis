@@ -28,20 +28,19 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Linq;
 using System.Reflection;
-using Xunit;
 using Alis.Core.Graphic.Platforms;
+using Xunit;
 
 namespace Alis.Core.Graphic.Test.Platforms
 {
     /// <summary>
-    /// Tests for the INativePlatform interface validating cross-platform window management.
+    ///     Tests for the INativePlatform interface validating cross-platform window management.
     /// </summary>
     public class INativePlatformTest
     {
         /// <summary>
-        /// Tests that INativePlatform is an interface type.
+        ///     Tests that INativePlatform is an interface type.
         /// </summary>
         [Fact]
         public void INativePlatform_IsInterface_TypeIsCorrect()
@@ -54,7 +53,7 @@ namespace Alis.Core.Graphic.Test.Platforms
         }
 
         /// <summary>
-        /// Tests that INativePlatform is public.
+        ///     Tests that INativePlatform is public.
         /// </summary>
         [Fact]
         public void INativePlatform_IsPublic_CanBeAccessed()
@@ -65,14 +64,10 @@ namespace Alis.Core.Graphic.Test.Platforms
             // Assert
             Assert.True(interfaceType.IsPublic);
         }
-        
 
-   
-
-      
 
         /// <summary>
-        /// Tests that INativePlatform ShowWindow returns void.
+        ///     Tests that INativePlatform ShowWindow returns void.
         /// </summary>
         [Fact]
         public void INativePlatform_ShowWindow_ReturnsVoid()
@@ -86,7 +81,7 @@ namespace Alis.Core.Graphic.Test.Platforms
         }
 
         /// <summary>
-        /// Tests that INativePlatform HideWindow returns void.
+        ///     Tests that INativePlatform HideWindow returns void.
         /// </summary>
         [Fact]
         public void INativePlatform_HideWindow_ReturnsVoid()
@@ -100,7 +95,7 @@ namespace Alis.Core.Graphic.Test.Platforms
         }
 
         /// <summary>
-        /// Tests that INativePlatform SetTitle returns void.
+        ///     Tests that INativePlatform SetTitle returns void.
         /// </summary>
         [Fact]
         public void INativePlatform_SetTitle_ReturnsVoid()
@@ -114,7 +109,7 @@ namespace Alis.Core.Graphic.Test.Platforms
         }
 
         /// <summary>
-        /// Tests that INativePlatform SetSize returns void.
+        ///     Tests that INativePlatform SetSize returns void.
         /// </summary>
         [Fact]
         public void INativePlatform_SetSize_ReturnsVoid()
@@ -128,7 +123,7 @@ namespace Alis.Core.Graphic.Test.Platforms
         }
 
         /// <summary>
-        /// Tests that INativePlatform IsWindowVisible returns bool.
+        ///     Tests that INativePlatform IsWindowVisible returns bool.
         /// </summary>
         [Fact]
         public void INativePlatform_IsWindowVisible_ReturnsBoolean()
@@ -142,7 +137,7 @@ namespace Alis.Core.Graphic.Test.Platforms
         }
 
         /// <summary>
-        /// Tests that INativePlatform PollEvents returns bool.
+        ///     Tests that INativePlatform PollEvents returns bool.
         /// </summary>
         [Fact]
         public void INativePlatform_PollEvents_ReturnsBoolean()
@@ -154,7 +149,5 @@ namespace Alis.Core.Graphic.Test.Platforms
             Assert.NotNull(method);
             Assert.Equal(typeof(bool), method.ReturnType);
         }
-        
     }
 }
-

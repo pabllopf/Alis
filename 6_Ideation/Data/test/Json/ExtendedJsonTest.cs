@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: ExtendedJsonTest.cs
+//  File:ExtendedJsonTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program. If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -44,19 +44,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
         #region Serialization Tests
 
         /// <summary>
-        /// Tests that serialize with various integers serializes correctly
+        ///     Tests that serialize with various integers serializes correctly
         /// </summary>
         /// <param name="value">The value</param>
-        [Theory]
-        [InlineData(0)]
-        [InlineData(1)]
-        [InlineData(-1)]
-        [InlineData(int.MaxValue)]
-        [InlineData(int.MinValue)]
+        [Theory, InlineData(0), InlineData(1), InlineData(-1), InlineData(int.MaxValue), InlineData(int.MinValue)]
         public void Serialize_WithVariousIntegers_SerializesCorrectly(int value)
         {
             // Arrange
-            TestObject obj = new TestObject { IntValue = value };
+            TestObject obj = new TestObject {IntValue = value};
 
             // Act
             string json = JsonNativeAot.Serialize(obj);
@@ -66,19 +61,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that serialize with various doubles serializes correctly
+        ///     Tests that serialize with various doubles serializes correctly
         /// </summary>
         /// <param name="value">The value</param>
-        [Theory]
-        [InlineData(0.0)]
-        [InlineData(1.5)]
-        [InlineData(-3.14159)]
-        [InlineData(double.MaxValue)]
-        [InlineData(double.MinValue)]
+        [Theory, InlineData(0.0), InlineData(1.5), InlineData(-3.14159), InlineData(double.MaxValue), InlineData(double.MinValue)]
         public void Serialize_WithVariousDoubles_SerializesCorrectly(double value)
         {
             // Arrange
-            TestObject obj = new TestObject { DoubleValue = value };
+            TestObject obj = new TestObject {DoubleValue = value};
 
             // Act
             string json = JsonNativeAot.Serialize(obj);
@@ -88,22 +78,17 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Contains("{", json);
             Assert.Contains("}", json);
         }
-        
+
 
         /// <summary>
-        /// Tests that serialize with various strings serializes correctly
+        ///     Tests that serialize with various strings serializes correctly
         /// </summary>
         /// <param name="value">The value</param>
-        [Theory]
-        [InlineData("")]
-        [InlineData(" ")]
-        [InlineData("Test")]
-        [InlineData("String with \"quotes\"")]
-        [InlineData("String\nwith\nnewlines")]
+        [Theory, InlineData(""), InlineData(" "), InlineData("Test"), InlineData("String with \"quotes\""), InlineData("String\nwith\nnewlines")]
         public void Serialize_WithVariousStrings_SerializesCorrectly(string value)
         {
             // Arrange
-            TestObject obj = new TestObject { StringValue = value };
+            TestObject obj = new TestObject {StringValue = value};
 
             // Act
             string json = JsonNativeAot.Serialize(obj);
@@ -113,13 +98,13 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that serialize with null reference completes without error
+        ///     Tests that serialize with null reference completes without error
         /// </summary>
         [Fact]
         public void Serialize_WithNullReference_CompletesWithoutError()
         {
             // Arrange
-            TestObject obj = new TestObject { StringValue = null };
+            TestObject obj = new TestObject {StringValue = null};
 
             // Act
             string json = JsonNativeAot.Serialize(obj);
@@ -127,21 +112,16 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Assert
             Assert.NotEmpty(json);
         }
-        
 
         #endregion
 
         #region Deserialization Tests
 
         /// <summary>
-        /// Tests that deserialize with integer values parses correctly
+        ///     Tests that deserialize with integer values parses correctly
         /// </summary>
         /// <param name="value">The value</param>
-        [Theory]
-        [InlineData(0)]
-        [InlineData(1)]
-        [InlineData(-1)]
-        [InlineData(100)]
+        [Theory, InlineData(0), InlineData(1), InlineData(-1), InlineData(100)]
         public void Deserialize_WithIntegerValues_ParsesCorrectly(int value)
         {
             // Arrange
@@ -155,13 +135,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that deserialize with string values parses correctly
+        ///     Tests that deserialize with string values parses correctly
         /// </summary>
         /// <param name="value">The value</param>
-        [Theory]
-        [InlineData("")]
-        [InlineData("Test")]
-        [InlineData("Multi word string")]
+        [Theory, InlineData(""), InlineData("Test"), InlineData("Multi word string")]
         public void Deserialize_WithStringValues_ParsesCorrectly(string value)
         {
             // Arrange
@@ -175,12 +152,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that deserialize with boolean values parses correctly
+        ///     Tests that deserialize with boolean values parses correctly
         /// </summary>
         /// <param name="value">The value</param>
-        [Theory]
-        [InlineData("true")]
-        [InlineData("false")]
+        [Theory, InlineData("true"), InlineData("false")]
         public void Deserialize_WithBooleanValues_ParsesCorrectly(string value)
         {
             // Arrange
@@ -194,7 +169,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that deserialize with missing property uses default value
+        ///     Tests that deserialize with missing property uses default value
         /// </summary>
         [Fact]
         public void Deserialize_WithMissingProperty_UsesDefaultValue()
@@ -211,7 +186,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that deserialize with extra property ignores extra
+        ///     Tests that deserialize with extra property ignores extra
         /// </summary>
         [Fact]
         public void Deserialize_WithExtraProperty_IgnoresExtra()
@@ -231,7 +206,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         #region Round-Trip Tests
 
         /// <summary>
-        /// Tests that round trip simple object preserves data
+        ///     Tests that round trip simple object preserves data
         /// </summary>
         [Fact]
         public void RoundTrip_SimpleObject_PreservesData()
@@ -253,7 +228,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that round trip multiple properties preserves all data
+        ///     Tests that round trip multiple properties preserves all data
         /// </summary>
         [Fact]
         public void RoundTrip_MultipleProperties_PreservesAllData()
@@ -282,7 +257,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         #region Parsing Tests
 
         /// <summary>
-        /// Tests that parse json to dictionary with simple json returns all properties
+        ///     Tests that parse json to dictionary with simple json returns all properties
         /// </summary>
         [Fact]
         public void ParseJsonToDictionary_WithSimpleJson_ReturnsAllProperties()
@@ -300,7 +275,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that parse json to dictionary with empty json returns empty dictionary
+        ///     Tests that parse json to dictionary with empty json returns empty dictionary
         /// </summary>
         [Fact]
         public void ParseJsonToDictionary_WithEmptyJson_ReturnsEmptyDictionary()
@@ -316,7 +291,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that parse json to dictionary with numbers returned as strings
+        ///     Tests that parse json to dictionary with numbers returned as strings
         /// </summary>
         [Fact]
         public void ParseJsonToDictionary_WithNumbers_ReturnedAsStrings()
@@ -332,7 +307,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that parse json to dictionary with whitespace parses correctly
+        ///     Tests that parse json to dictionary with whitespace parses correctly
         /// </summary>
         [Fact]
         public void ParseJsonToDictionary_WithWhitespace_ParsesCorrectly()
@@ -352,13 +327,13 @@ namespace Alis.Core.Aspect.Data.Test.Json
         #region Edge Case Tests
 
         /// <summary>
-        /// Tests that serialize with empty string handles correctly
+        ///     Tests that serialize with empty string handles correctly
         /// </summary>
         [Fact]
         public void Serialize_WithEmptyString_HandlesCorrectly()
         {
             // Arrange
-            TestObject obj = new TestObject { StringValue = "" };
+            TestObject obj = new TestObject {StringValue = ""};
 
             // Act
             string json = JsonNativeAot.Serialize(obj);
@@ -368,13 +343,13 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that serialize with special characters handles correctly
+        ///     Tests that serialize with special characters handles correctly
         /// </summary>
         [Fact]
         public void Serialize_WithSpecialCharacters_HandlesCorrectly()
         {
             // Arrange
-            TestObject obj = new TestObject { StringValue = "!@#$%^&*()" };
+            TestObject obj = new TestObject {StringValue = "!@#$%^&*()"};
 
             // Act
             string json = JsonNativeAot.Serialize(obj);
@@ -384,7 +359,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that deserialize with unicode characters parses correctly
+        ///     Tests that deserialize with unicode characters parses correctly
         /// </summary>
         [Fact]
         public void Deserialize_WithUnicodeCharacters_ParsesCorrectly()
@@ -400,7 +375,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that parse json to dictionary with nested structure returns raw json
+        ///     Tests that parse json to dictionary with nested structure returns raw json
         /// </summary>
         [Fact]
         public void ParseJsonToDictionary_WithNestedStructure_ReturnsRawJson()
@@ -417,7 +392,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that parse json to dictionary with array returns raw json
+        ///     Tests that parse json to dictionary with array returns raw json
         /// </summary>
         [Fact]
         public void ParseJsonToDictionary_WithArray_ReturnsRawJson()
@@ -438,7 +413,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         #region Error Handling Tests
 
         /// <summary>
-        /// Tests that parse json to dictionary with null input throws argument null exception
+        ///     Tests that parse json to dictionary with null input throws argument null exception
         /// </summary>
         [Fact]
         public void ParseJsonToDictionary_WithNullInput_ThrowsArgumentNullException()
@@ -448,7 +423,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that serialize with null instance throws argument null exception
+        ///     Tests that serialize with null instance throws argument null exception
         /// </summary>
         [Fact]
         public void Serialize_WithNullInstance_ThrowsArgumentNullException()
@@ -456,20 +431,20 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Act & Assert
             Assert.Throws<ArgumentNullException>(() => JsonNativeAot.Serialize<TestObject>(null));
         }
-        
+
         #endregion
 
         #region Complex Type Tests
 
         /// <summary>
-        /// Tests that serialize with guid serializes as string
+        ///     Tests that serialize with guid serializes as string
         /// </summary>
         [Fact]
         public void Serialize_WithGuid_SerializesAsString()
         {
             // Arrange
             Guid guid = Guid.NewGuid();
-            ComplexTestObject obj = new ComplexTestObject { GuidValue = guid };
+            ComplexTestObject obj = new ComplexTestObject {GuidValue = guid};
 
             // Act
             string json = JsonNativeAot.Serialize(obj);
@@ -479,14 +454,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that serialize with date time serializes as string
+        ///     Tests that serialize with date time serializes as string
         /// </summary>
         [Fact]
         public void Serialize_WithDateTime_SerializesAsString()
         {
             // Arrange
             DateTime now = DateTime.Now;
-            ComplexTestObject obj = new ComplexTestObject { DateTimeValue = now };
+            ComplexTestObject obj = new ComplexTestObject {DateTimeValue = now};
 
             // Act
             string json = JsonNativeAot.Serialize(obj);
@@ -496,7 +471,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
 
         /// <summary>
-        /// Tests that deserialize with guid parses correctly
+        ///     Tests that deserialize with guid parses correctly
         /// </summary>
         [Fact]
         public void Deserialize_WithGuid_ParsesCorrectly()
@@ -517,31 +492,67 @@ namespace Alis.Core.Aspect.Data.Test.Json
         #region Helper Classes
 
         /// <summary>
-        /// The test object class
+        ///     The test object class
         /// </summary>
-        /// <seealso cref="IJsonSerializable"/>
-        /// <seealso cref="IJsonDesSerializable{TestObject}"/>
+        /// <seealso cref="IJsonSerializable" />
+        /// <seealso cref="IJsonDesSerializable{TestObject}" />
         private class TestObject : IJsonSerializable, IJsonDesSerializable<TestObject>
         {
             /// <summary>
-            /// Gets or sets the value of the string value
+            ///     Gets or sets the value of the string value
             /// </summary>
             public string StringValue { get; set; }
+
             /// <summary>
-            /// Gets or sets the value of the int value
+            ///     Gets or sets the value of the int value
             /// </summary>
             public int IntValue { get; set; }
+
             /// <summary>
-            /// Gets or sets the value of the bool value
+            ///     Gets or sets the value of the bool value
             /// </summary>
             public bool BoolValue { get; set; }
+
             /// <summary>
-            /// Gets or sets the value of the double value
+            ///     Gets or sets the value of the double value
             /// </summary>
             public double DoubleValue { get; set; }
 
             /// <summary>
-            /// Gets the serializable properties
+            ///     Creates the from properties using the specified properties
+            /// </summary>
+            /// <param name="properties">The properties</param>
+            /// <returns>The obj</returns>
+            public TestObject CreateFromProperties(Dictionary<string, string> properties)
+            {
+                TestObject obj = new TestObject();
+
+                if (properties.TryGetValue("StringValue", out string str))
+                {
+                    obj.StringValue = str;
+                }
+
+                if (properties.TryGetValue("IntValue", out string intStr) && int.TryParse(intStr, out int intVal))
+                {
+                    obj.IntValue = intVal;
+                }
+
+                if (properties.TryGetValue("BoolValue", out string boolStr) && bool.TryParse(boolStr, out bool boolVal))
+                {
+                    obj.BoolValue = boolVal;
+                }
+
+                if (properties.TryGetValue("DoubleValue", out string doubleStr) &&
+                    double.TryParse(doubleStr, NumberStyles.Float, CultureInfo.InvariantCulture, out double doubleVal))
+                {
+                    obj.DoubleValue = doubleVal;
+                }
+
+                return obj;
+            }
+
+            /// <summary>
+            ///     Gets the serializable properties
             /// </summary>
             /// <returns>An enumerable of string property name and string value</returns>
             public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
@@ -551,61 +562,27 @@ namespace Alis.Core.Aspect.Data.Test.Json
                 yield return ("BoolValue", BoolValue.ToString());
                 yield return ("DoubleValue", DoubleValue.ToString(CultureInfo.InvariantCulture));
             }
-
-            /// <summary>
-            /// Creates the from properties using the specified properties
-            /// </summary>
-            /// <param name="properties">The properties</param>
-            /// <returns>The obj</returns>
-            public TestObject CreateFromProperties(Dictionary<string, string> properties)
-            {
-                TestObject obj = new TestObject();
-
-                if (properties.TryGetValue("StringValue", out string str))
-                    obj.StringValue = str;
-
-                if (properties.TryGetValue("IntValue", out string intStr) && int.TryParse(intStr, out int intVal))
-                    obj.IntValue = intVal;
-
-                if (properties.TryGetValue("BoolValue", out string boolStr) && bool.TryParse(boolStr, out bool boolVal))
-                    obj.BoolValue = boolVal;
-
-                if (properties.TryGetValue("DoubleValue", out string doubleStr) && 
-                    double.TryParse(doubleStr, NumberStyles.Float, CultureInfo.InvariantCulture, out double doubleVal))
-                    obj.DoubleValue = doubleVal;
-
-                return obj;
-            }
         }
 
         /// <summary>
-        /// The complex test object class
+        ///     The complex test object class
         /// </summary>
-        /// <seealso cref="IJsonSerializable"/>
-        /// <seealso cref="IJsonDesSerializable{ComplexTestObject}"/>
+        /// <seealso cref="IJsonSerializable" />
+        /// <seealso cref="IJsonDesSerializable{ComplexTestObject}" />
         private class ComplexTestObject : IJsonSerializable, IJsonDesSerializable<ComplexTestObject>
         {
             /// <summary>
-            /// Gets or sets the value of the guid value
+            ///     Gets or sets the value of the guid value
             /// </summary>
             public Guid GuidValue { get; set; }
+
             /// <summary>
-            /// Gets or sets the value of the date time value
+            ///     Gets or sets the value of the date time value
             /// </summary>
             public DateTime DateTimeValue { get; set; }
 
             /// <summary>
-            /// Gets the serializable properties
-            /// </summary>
-            /// <returns>An enumerable of string property name and string value</returns>
-            public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
-            {
-                yield return ("GuidValue", GuidValue.ToString());
-                yield return ("DateTimeValue", DateTimeValue.ToString("O"));
-            }
-
-            /// <summary>
-            /// Creates the from properties using the specified properties
+            ///     Creates the from properties using the specified properties
             /// </summary>
             /// <param name="properties">The properties</param>
             /// <returns>The obj</returns>
@@ -614,16 +591,29 @@ namespace Alis.Core.Aspect.Data.Test.Json
                 ComplexTestObject obj = new ComplexTestObject();
 
                 if (properties.TryGetValue("GuidValue", out string guidStr) && Guid.TryParse(guidStr, out Guid guid))
+                {
                     obj.GuidValue = guid;
+                }
 
                 if (properties.TryGetValue("DateTimeValue", out string dtStr) && DateTime.TryParse(dtStr, out DateTime dt))
+                {
                     obj.DateTimeValue = dt;
+                }
 
                 return obj;
+            }
+
+            /// <summary>
+            ///     Gets the serializable properties
+            /// </summary>
+            /// <returns>An enumerable of string property name and string value</returns>
+            public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
+            {
+                yield return ("GuidValue", GuidValue.ToString());
+                yield return ("DateTimeValue", DateTimeValue.ToString("O"));
             }
         }
 
         #endregion
     }
 }
-

@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Extension.Media.FFmpeg.Encoding;
 using Alis.Extension.Media.FFmpeg.Encoding.Builders;
 using Xunit;
@@ -313,7 +314,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         public void OpusEncoder_ApplicationEnum_ShouldHaveThreeValues()
         {
             // Arrange & Act
-            OpusEncoder.Application[] values = (OpusEncoder.Application[])System.Enum.GetValues(typeof(OpusEncoder.Application));
+            OpusEncoder.Application[] values = (OpusEncoder.Application[]) Enum.GetValues(typeof(OpusEncoder.Application));
 
             // Assert
             Assert.Equal(3, values.Length);
@@ -350,4 +351,3 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         }
     }
 }
-

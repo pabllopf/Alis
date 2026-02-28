@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test
@@ -47,7 +48,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             MuxingSupport support = MuxingSupport.MuxDemux;
 
             // Assert
-            Assert.Equal(0, (int)support);
+            Assert.Equal(0, (int) support);
         }
 
         /// <summary>
@@ -60,7 +61,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             MuxingSupport support = MuxingSupport.Mux;
 
             // Assert
-            Assert.Equal(1, (int)support);
+            Assert.Equal(1, (int) support);
         }
 
         /// <summary>
@@ -73,7 +74,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             MuxingSupport support = MuxingSupport.Demux;
 
             // Assert
-            Assert.Equal(2, (int)support);
+            Assert.Equal(2, (int) support);
         }
 
         /// <summary>
@@ -83,7 +84,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         public void MuxingSupport_Enum_ShouldHaveThreeValues()
         {
             // Arrange & Act
-            MuxingSupport[] values = (MuxingSupport[])System.Enum.GetValues(typeof(MuxingSupport));
+            MuxingSupport[] values = (MuxingSupport[]) Enum.GetValues(typeof(MuxingSupport));
 
             // Assert
             Assert.Equal(3, values.Length);
@@ -118,9 +119,9 @@ namespace Alis.Extension.Media.FFmpeg.Test
         public void MuxingSupport_ShouldBeParseableFromString()
         {
             // Arrange & Act
-            MuxingSupport muxDemux = (MuxingSupport)System.Enum.Parse(typeof(MuxingSupport), "MuxDemux");
-            MuxingSupport mux = (MuxingSupport)System.Enum.Parse(typeof(MuxingSupport), "Mux");
-            MuxingSupport demux = (MuxingSupport)System.Enum.Parse(typeof(MuxingSupport), "Demux");
+            MuxingSupport muxDemux = (MuxingSupport) Enum.Parse(typeof(MuxingSupport), "MuxDemux");
+            MuxingSupport mux = (MuxingSupport) Enum.Parse(typeof(MuxingSupport), "Mux");
+            MuxingSupport demux = (MuxingSupport) Enum.Parse(typeof(MuxingSupport), "Demux");
 
             // Assert
             Assert.Equal(MuxingSupport.MuxDemux, muxDemux);
@@ -179,9 +180,9 @@ namespace Alis.Extension.Media.FFmpeg.Test
         public void MuxingSupport_ShouldHaveUniqueValues()
         {
             // Arrange
-            int muxDemuxValue = (int)MuxingSupport.MuxDemux;
-            int muxValue = (int)MuxingSupport.Mux;
-            int demuxValue = (int)MuxingSupport.Demux;
+            int muxDemuxValue = (int) MuxingSupport.MuxDemux;
+            int muxValue = (int) MuxingSupport.Mux;
+            int demuxValue = (int) MuxingSupport.Demux;
 
             // Act & Assert
             Assert.NotEqual(muxDemuxValue, muxValue);
@@ -199,7 +200,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             MuxingSupport support = MuxingSupport.Demux;
 
             // Act
-            int value = (int)support;
+            int value = (int) support;
 
             // Assert
             Assert.Equal(2, value);
@@ -215,7 +216,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             int value = 1;
 
             // Act
-            MuxingSupport support = (MuxingSupport)value;
+            MuxingSupport support = (MuxingSupport) value;
 
             // Assert
             Assert.Equal(MuxingSupport.Mux, support);
@@ -228,10 +229,9 @@ namespace Alis.Extension.Media.FFmpeg.Test
         public void MuxingSupport_AllValues_ShouldBeDefined()
         {
             // Arrange & Act & Assert
-            Assert.True(System.Enum.IsDefined(typeof(MuxingSupport), MuxingSupport.MuxDemux));
-            Assert.True(System.Enum.IsDefined(typeof(MuxingSupport), MuxingSupport.Mux));
-            Assert.True(System.Enum.IsDefined(typeof(MuxingSupport), MuxingSupport.Demux));
+            Assert.True(Enum.IsDefined(typeof(MuxingSupport), MuxingSupport.MuxDemux));
+            Assert.True(Enum.IsDefined(typeof(MuxingSupport), MuxingSupport.Mux));
+            Assert.True(Enum.IsDefined(typeof(MuxingSupport), MuxingSupport.Demux));
         }
     }
 }
-

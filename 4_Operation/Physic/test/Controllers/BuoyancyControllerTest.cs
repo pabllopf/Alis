@@ -51,9 +51,9 @@ namespace Alis.Core.Physic.Test.Controllers
             float linearDrag = 2.0f;
             float angularDrag = 1.0f;
             Vector2F gravity = new Vector2F(0, -10);
-            
+
             BuoyancyController controller = new BuoyancyController(container, density, linearDrag, angularDrag, gravity);
-            
+
             Assert.NotNull(controller);
             Assert.Equal(density, controller.Density);
             Assert.Equal(linearDrag, controller.LinearDragCoefficient);
@@ -68,10 +68,10 @@ namespace Alis.Core.Physic.Test.Controllers
         {
             Aabb container = new Aabb(new Vector2F(0, 0), new Vector2F(10, 10));
             BuoyancyController controller = new BuoyancyController(container, 1.0f, 1.0f, 1.0f, new Vector2F(0, -10));
-            
+
             Aabb newContainer = new Aabb(new Vector2F(-5, -5), new Vector2F(15, 15));
             controller.Container = newContainer;
-            
+
             Assert.Equal(newContainer.LowerBound, controller.Container.LowerBound);
             Assert.Equal(newContainer.UpperBound, controller.Container.UpperBound);
         }
@@ -84,9 +84,9 @@ namespace Alis.Core.Physic.Test.Controllers
         {
             Aabb container = new Aabb(new Vector2F(0, 0), new Vector2F(10, 10));
             BuoyancyController controller = new BuoyancyController(container, 1.0f, 1.0f, 1.0f, new Vector2F(0, -10));
-            
+
             controller.Velocity = new Vector2F(5, 0);
-            
+
             Assert.Equal(new Vector2F(5, 0), controller.Velocity);
         }
 
@@ -100,9 +100,9 @@ namespace Alis.Core.Physic.Test.Controllers
             BuoyancyController controller = new BuoyancyController(container, 1.0f, 1.0f, 1.0f, new Vector2F(0, -10));
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             controller.WorldPhysic = world;
-            
+
             controller.Update(0.016f);
-            
+
             Assert.True(true); // No exception thrown
         }
 
@@ -114,7 +114,7 @@ namespace Alis.Core.Physic.Test.Controllers
         {
             Aabb container = new Aabb(new Vector2F(0, 0), new Vector2F(10, 10));
             BuoyancyController controller = new BuoyancyController(container, 0.0f, 1.0f, 1.0f, new Vector2F(0, -10));
-            
+
             Assert.Equal(0.0f, controller.Density);
         }
 
@@ -126,7 +126,7 @@ namespace Alis.Core.Physic.Test.Controllers
         {
             Aabb container = new Aabb(new Vector2F(0, 0), new Vector2F(10, 10));
             BuoyancyController controller = new BuoyancyController(container, 1.0f, -1.0f, -1.0f, new Vector2F(0, -10));
-            
+
             Assert.Equal(-1.0f, controller.LinearDragCoefficient);
             Assert.Equal(-1.0f, controller.AngularDragCoefficient);
         }
@@ -139,7 +139,7 @@ namespace Alis.Core.Physic.Test.Controllers
         {
             Aabb container = new Aabb(new Vector2F(0, 0), new Vector2F(10, 10));
             BuoyancyController controller = new BuoyancyController(container, 1000.0f, 1.0f, 1.0f, new Vector2F(0, -10));
-            
+
             Assert.Equal(1000.0f, controller.Density);
         }
 
@@ -153,9 +153,9 @@ namespace Alis.Core.Physic.Test.Controllers
             BuoyancyController controller = new BuoyancyController(container, 1.0f, 1.0f, 1.0f, new Vector2F(0, -10));
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             controller.WorldPhysic = world;
-            
+
             controller.Update(0.016f);
-            
+
             Assert.True(true); // No exception thrown
         }
 
@@ -167,9 +167,8 @@ namespace Alis.Core.Physic.Test.Controllers
         {
             Aabb container = new Aabb(new Vector2F(0, 0), new Vector2F(10, 10));
             BuoyancyController controller = new BuoyancyController(container, 1.0f, 1.0f, 1.0f, new Vector2F(0, -10));
-            
+
             Assert.IsAssignableFrom<Controller>(controller);
         }
     }
 }
-

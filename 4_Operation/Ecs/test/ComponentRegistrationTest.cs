@@ -102,9 +102,8 @@ namespace Alis.Core.Ecs.Test
             ComponentId healthId = Component<Health>.Id;
 
             // Assert
-            Assert.NotEqual(default, posId);
-            Assert.NotEqual(default, healthId);
+            Assert.NotEqual(default(ComponentId), posId);
+            Assert.NotEqual(default(ComponentId), healthId);
         }
     }
 }
-

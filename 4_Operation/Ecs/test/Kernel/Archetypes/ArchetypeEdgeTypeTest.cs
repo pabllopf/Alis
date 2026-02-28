@@ -33,7 +33,7 @@ using Xunit;
 namespace Alis.Core.Ecs.Test.Kernel.Archetypes
 {
     /// <summary>
-    ///     Tests the <see cref="ArchetypeEdgeType"/> enum.
+    ///     Tests the <see cref="ArchetypeEdgeType" /> enum.
     /// </summary>
     public class ArchetypeEdgeTypeTest
     {
@@ -45,11 +45,11 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         {
             // Arrange & Act
             ArchetypeEdgeType edgeType = ArchetypeEdgeType.AddComponent;
-            
+
             // Assert
-            Assert.Equal((ushort)49157, (ushort)edgeType);
+            Assert.Equal((ushort) 49157, (ushort) edgeType);
         }
-        
+
         /// <summary>
         ///     Tests that remove component has correct value.
         /// </summary>
@@ -58,11 +58,11 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         {
             // Arrange & Act
             ArchetypeEdgeType edgeType = ArchetypeEdgeType.RemoveComponent;
-            
+
             // Assert
-            Assert.Equal((ushort)24593, (ushort)edgeType);
+            Assert.Equal((ushort) 24593, (ushort) edgeType);
         }
-        
+
         /// <summary>
         ///     Tests that add tag has correct value.
         /// </summary>
@@ -71,11 +71,11 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         {
             // Arrange & Act
             ArchetypeEdgeType edgeType = ArchetypeEdgeType.AddTag;
-            
+
             // Assert
-            Assert.Equal((ushort)12289, (ushort)edgeType);
+            Assert.Equal((ushort) 12289, (ushort) edgeType);
         }
-        
+
         /// <summary>
         ///     Tests that remove tag has correct value.
         /// </summary>
@@ -84,11 +84,11 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         {
             // Arrange & Act
             ArchetypeEdgeType edgeType = ArchetypeEdgeType.RemoveTag;
-            
+
             // Assert
-            Assert.Equal((ushort)6151, (ushort)edgeType);
+            Assert.Equal((ushort) 6151, (ushort) edgeType);
         }
-        
+
         /// <summary>
         ///     Tests that all edge types have unique values.
         /// </summary>
@@ -96,11 +96,11 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         public void AllEdgeTypes_ShouldHaveUniqueValues()
         {
             // Arrange
-            ushort Add = (ushort)ArchetypeEdgeType.AddComponent;
-            ushort removeComponent = (ushort)ArchetypeEdgeType.RemoveComponent;
-            ushort addTag = (ushort)ArchetypeEdgeType.AddTag;
-            ushort removeTag = (ushort)ArchetypeEdgeType.RemoveTag;
-            
+            ushort Add = (ushort) ArchetypeEdgeType.AddComponent;
+            ushort removeComponent = (ushort) ArchetypeEdgeType.RemoveComponent;
+            ushort addTag = (ushort) ArchetypeEdgeType.AddTag;
+            ushort removeTag = (ushort) ArchetypeEdgeType.RemoveTag;
+
             // Assert
             Assert.NotEqual(Add, removeComponent);
             Assert.NotEqual(Add, addTag);
@@ -109,7 +109,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.NotEqual(removeComponent, removeTag);
             Assert.NotEqual(addTag, removeTag);
         }
-        
+
         /// <summary>
         ///     Tests that edge type can be compared.
         /// </summary>
@@ -120,12 +120,12 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             ArchetypeEdgeType type1 = ArchetypeEdgeType.AddComponent;
             ArchetypeEdgeType type2 = ArchetypeEdgeType.AddComponent;
             ArchetypeEdgeType type3 = ArchetypeEdgeType.RemoveComponent;
-            
+
             // Act & Assert
             Assert.Equal(type1, type2);
             Assert.NotEqual(type1, type3);
         }
-        
+
         /// <summary>
         ///     Tests that edge type can be cast to ushort.
         /// </summary>
@@ -134,14 +134,14 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         {
             // Arrange
             ArchetypeEdgeType edgeType = ArchetypeEdgeType.AddComponent;
-            
+
             // Act
-            ushort value = (ushort)edgeType;
-            
+            ushort value = (ushort) edgeType;
+
             // Assert
-            Assert.Equal((ushort)49157, value);
+            Assert.Equal((ushort) 49157, value);
         }
-        
+
         /// <summary>
         ///     Tests that ushort can be cast to edge type.
         /// </summary>
@@ -150,14 +150,14 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         {
             // Arrange
             ushort value = 49157;
-            
+
             // Act
-            ArchetypeEdgeType edgeType = (ArchetypeEdgeType)value;
-            
+            ArchetypeEdgeType edgeType = (ArchetypeEdgeType) value;
+
             // Assert
             Assert.Equal(ArchetypeEdgeType.AddComponent, edgeType);
         }
-        
+
         /// <summary>
         ///     Tests that edge type values are within ushort range.
         /// </summary>
@@ -165,17 +165,16 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         public void EdgeTypeValues_ShouldBeWithinUShortRange()
         {
             // Arrange & Act
-            ushort Add = (ushort)ArchetypeEdgeType.AddComponent;
-            ushort removeComponent = (ushort)ArchetypeEdgeType.RemoveComponent;
-            ushort addTag = (ushort)ArchetypeEdgeType.AddTag;
-            ushort removeTag = (ushort)ArchetypeEdgeType.RemoveTag;
-            
+            ushort Add = (ushort) ArchetypeEdgeType.AddComponent;
+            ushort removeComponent = (ushort) ArchetypeEdgeType.RemoveComponent;
+            ushort addTag = (ushort) ArchetypeEdgeType.AddTag;
+            ushort removeTag = (ushort) ArchetypeEdgeType.RemoveTag;
+
             // Assert
-            Assert.True(Add >= ushort.MinValue && Add <= ushort.MaxValue);
-            Assert.True(removeComponent >= ushort.MinValue && removeComponent <= ushort.MaxValue);
-            Assert.True(addTag >= ushort.MinValue && addTag <= ushort.MaxValue);
-            Assert.True(removeTag >= ushort.MinValue && removeTag <= ushort.MaxValue);
+            Assert.True((Add >= ushort.MinValue) && (Add <= ushort.MaxValue));
+            Assert.True((removeComponent >= ushort.MinValue) && (removeComponent <= ushort.MaxValue));
+            Assert.True((addTag >= ushort.MinValue) && (addTag <= ushort.MaxValue));
+            Assert.True((removeTag >= ushort.MinValue) && (removeTag <= ushort.MaxValue));
         }
     }
 }
-

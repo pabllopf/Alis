@@ -37,7 +37,7 @@ namespace Alis.Core.Ecs.Test.Collections
     ///     The id table test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="IdTable{T}"/> generic class which provides
+    ///     Tests the <see cref="IdTable{T}" /> generic class which provides
     ///     ID-indexed access to stored elements.
     /// </remarks>
     public class IdTableTest
@@ -139,7 +139,7 @@ namespace Alis.Core.Ecs.Test.Collections
         {
             // Arrange
             IdTable<Position> table = new IdTable<Position>();
-            Position pos = new Position { X = 1.5f, Y = 2.5f };
+            Position pos = new Position {X = 1.5f, Y = 2.5f};
 
             // Act
             ref Position slot = ref table.Create(out int index);
@@ -285,8 +285,8 @@ namespace Alis.Core.Ecs.Test.Collections
         {
             // Arrange
             IdTable<Position> table = new IdTable<Position>();
-            Position pos1 = new Position { X = 10.5f, Y = 20.5f };
-            Position pos2 = new Position { X = 30.5f, Y = 40.5f };
+            Position pos1 = new Position {X = 10.5f, Y = 20.5f};
+            Position pos2 = new Position {X = 30.5f, Y = 40.5f};
 
             // Act
             ref Position slot1 = ref table.Create(out int idx1);
@@ -397,4 +397,3 @@ namespace Alis.Core.Ecs.Test.Collections
         }
     }
 }
-

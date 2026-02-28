@@ -58,4 +58,3 @@ namespace Alis.Extension.Language.Translator.Abstractions
         void OnTranslationNotFound(string languageCode, string key);
     }
 }
-

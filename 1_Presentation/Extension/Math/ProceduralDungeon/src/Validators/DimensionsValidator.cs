@@ -58,10 +58,14 @@ namespace Alis.Extension.Math.ProceduralDungeon.Validators
         public static void ValidateDimensions(int width, int height, string widthParamName = "width", string heightParamName = "height")
         {
             if (width <= 0)
+            {
                 throw new ArgumentException("Width must be greater than 0.", widthParamName);
-            
+            }
+
             if (height <= 0)
+            {
                 throw new ArgumentException("Height must be greater than 0.", heightParamName);
+            }
         }
 
         /// <summary>
@@ -80,10 +84,14 @@ namespace Alis.Extension.Math.ProceduralDungeon.Validators
         public static void ValidatePosition(int x, int y, string xParamName = "x", string yParamName = "y")
         {
             if (x < 0)
+            {
                 throw new ArgumentException("X position must be non-negative.", xParamName);
-            
+            }
+
             if (y < 0)
+            {
                 throw new ArgumentException("Y position must be non-negative.", yParamName);
+            }
         }
 
         /// <summary>
@@ -100,7 +108,9 @@ namespace Alis.Extension.Math.ProceduralDungeon.Validators
         public static void ValidatePositive(int value, string paramName)
         {
             if (value <= 0)
+            {
                 throw new ArgumentException($"{paramName} must be greater than 0.", paramName);
+            }
         }
 
         /// <summary>
@@ -119,8 +129,10 @@ namespace Alis.Extension.Math.ProceduralDungeon.Validators
         public static void ValidateRange(int value, int min, int max, string paramName)
         {
             if (value < min || value > max)
-                throw new ArgumentOutOfRangeException(paramName, value, 
+            {
+                throw new ArgumentOutOfRangeException(paramName, value,
                     $"{paramName} must be between {min} and {max}.");
+            }
         }
 
         /// <summary>
@@ -141,14 +153,19 @@ namespace Alis.Extension.Math.ProceduralDungeon.Validators
         public static void ValidateWithinBounds(int x, int y, int width, int height, int boardWidth, int boardHeight)
         {
             if (x < 0 || y < 0)
+            {
                 throw new ArgumentException("Position must be non-negative.");
+            }
 
             if (x + width > boardWidth)
+            {
                 throw new ArgumentException($"Element exceeds board width. Position: {x}, Width: {width}, Board Width: {boardWidth}");
+            }
 
             if (y + height > boardHeight)
+            {
                 throw new ArgumentException($"Element exceeds board height. Position: {y}, Height: {height}, Board Height: {boardHeight}");
+            }
         }
     }
 }
-

@@ -36,7 +36,7 @@ namespace Alis.Core.Ecs.Test.Updating
     ///     The archetype deferred update record test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="ArchetypeDeferredUpdateRecord"/> record struct which stores
+    ///     Tests the <see cref="ArchetypeDeferredUpdateRecord" /> record struct which stores
     ///     information about deferred archetype updates (original archetype, temporary buffers, entity count).
     /// </remarks>
     public class ArchetypeDeferredUpdateRecordTest
@@ -160,4 +160,3 @@ namespace Alis.Core.Ecs.Test.Updating
         }
     }
 }
-

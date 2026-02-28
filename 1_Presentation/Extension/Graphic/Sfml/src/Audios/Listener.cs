@@ -101,64 +101,56 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         ///     Sfs the listener set global volume using the specified volume
         /// </summary>
         /// <param name="volume">The volume</param>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern void sfListener_setGlobalVolume(float volume);
 
         /// <summary>
         ///     Sfs the listener get global volume
         /// </summary>
         /// <returns>The float</returns>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern float sfListener_getGlobalVolume();
 
         /// <summary>
         ///     Sfs the listener set position using the specified position
         /// </summary>
         /// <param name="position">The position</param>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern void sfListener_setPosition(Vector3F position);
 
         /// <summary>
         ///     Sfs the listener get position
         /// </summary>
         /// <returns>The vector 3f</returns>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern Vector3F sfListener_getPosition();
 
         /// <summary>
         ///     Sfs the listener set direction using the specified direction
         /// </summary>
         /// <param name="direction">The direction</param>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern void sfListener_setDirection(Vector3F direction);
 
         /// <summary>
         ///     Sfs the listener get direction
         /// </summary>
         /// <returns>The vector 3f</returns>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern Vector3F sfListener_getDirection();
 
         /// <summary>
         ///     Sfs the listener set up vector using the specified up vector
         /// </summary>
         /// <param name="upVector">The up vector</param>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern void sfListener_setUpVector(Vector3F upVector);
 
         /// <summary>
         ///     Sfs the listener get up vector
         /// </summary>
         /// <returns>The vector 3f</returns>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        [ExcludeFromCodeCoverage]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, ExcludeFromCodeCoverage]
         private static extern Vector3F sfListener_getUpVector();
     }
 }

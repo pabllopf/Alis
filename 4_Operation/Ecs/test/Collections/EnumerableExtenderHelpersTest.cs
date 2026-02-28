@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:EnumerableHelpersTest.cs
+//  File:EnumerableExtenderHelpersTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using Alis.Core.Ecs.Collections;
 using Xunit;
@@ -38,7 +37,7 @@ namespace Alis.Core.Ecs.Test.Collections
     ///     The enumerable helpers test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="EnumerableHelpers"/> static utility methods
+    ///     Tests the <see cref="EnumerableHelpers" /> static utility methods
     ///     for working with enumerables and enumerators.
     /// </remarks>
     public class EnumerableExtenderHelpersTest
@@ -70,14 +69,14 @@ namespace Alis.Core.Ecs.Test.Collections
         public void EnumerableHelpers_ToArrayWithCollectionInterface()
         {
             // Arrange
-            List<int> source = new List<int> { 1, 2, 3, 4, 5 };
+            List<int> source = new List<int> {1, 2, 3, 4, 5};
 
             // Act
             int[] result = EnumerableHelpers.ToArray(source, out int length);
 
             // Assert
             Assert.Equal(5, length);
-            Assert.Equal(new[] { 1, 2, 3, 4, 5 }, result[..length]);
+            Assert.Equal(new[] {1, 2, 3, 4, 5}, result[..length]);
         }
 
         /// <summary>
@@ -117,7 +116,7 @@ namespace Alis.Core.Ecs.Test.Collections
 
             // Assert
             Assert.Equal(5, length);
-            Assert.Equal(new[] { 1, 2, 3, 4, 5 }, result[..length]);
+            Assert.Equal(new[] {1, 2, 3, 4, 5}, result[..length]);
         }
 
         /// <summary>
@@ -130,7 +129,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void EnumerableHelpers_ToArrayWithSingleElement()
         {
             // Arrange
-            int[] source = new[] { 42 };
+            int[] source = new[] {42};
 
             // Act
             int[] result = EnumerableHelpers.ToArray(source, out int length);
@@ -173,7 +172,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void EnumerableHelpers_ResetEnumerator()
         {
             // Arrange
-            List<int> source = new List<int> { 1, 2, 3 };
+            List<int> source = new List<int> {1, 2, 3};
             IEnumerator<int> enumerator = source.GetEnumerator();
             enumerator.MoveNext();
             Assert.Equal(1, enumerator.Current);
@@ -196,7 +195,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void EnumerableHelpers_ToArrayPreservesOrder()
         {
             // Arrange
-            List<string> source = new List<string> { "a", "b", "c", "d" };
+            List<string> source = new List<string> {"a", "b", "c", "d"};
 
             // Act
             string[] result = EnumerableHelpers.ToArray(source, out int length);
@@ -236,4 +235,3 @@ namespace Alis.Core.Ecs.Test.Collections
         }
     }
 }
-

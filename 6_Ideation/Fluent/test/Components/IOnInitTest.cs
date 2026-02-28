@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IOnInitTest.cs
+//  File:IOnInitTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,23 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
     /// </summary>
     public class IOnInitTest
     {
-        
-
-        /// <summary>
-        ///     Helper implementation for testing IOnInit.
-        /// </summary>
-        private class InitHandler : IOnInit
-        {
-            public bool WasInitialized { get; private set; }
-            public int InitCount { get; private set; }
-
-            public void OnInit(IGameObject self)
-            {
-                WasInitialized = true;
-                InitCount++;
-            }
-        }
-
         /// <summary>
         ///     Tests that IOnInit can be implemented.
         /// </summary>
@@ -91,6 +74,21 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
             handler.OnInit(gameObject);
             Assert.Equal(2, handler.InitCount);
         }
+
+
+        /// <summary>
+        ///     Helper implementation for testing IOnInit.
+        /// </summary>
+        private class InitHandler : IOnInit
+        {
+            public bool WasInitialized { get; private set; }
+            public int InitCount { get; private set; }
+
+            public void OnInit(IGameObject self)
+            {
+                WasInitialized = true;
+                InitCount++;
+            }
+        }
     }
 }
-

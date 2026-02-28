@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IDepthTest.cs
+//  File:IDepthTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,28 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
     /// </summary>
     public class IDepthTest
     {
-        /// <summary>
-        ///     Helper builder class for depth.
-        /// </summary>
-        private class DepthBuilder
-        {
-            public int DepthValue { get; set; }
-        }
-
-        /// <summary>
-        ///     Helper implementation of IDepth.
-        /// </summary>
-        private class DepthBuilderImpl : IDepth<DepthBuilder, int>
-        {
-            private readonly DepthBuilder _builder = new DepthBuilder();
-
-            public DepthBuilder Depth(int value)
-            {
-                _builder.DepthValue = value;
-                return _builder;
-            }
-        }
-
         /// <summary>
         ///     Tests that IDepth can be implemented.
         /// </summary>
@@ -97,17 +75,34 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Tests Depth with various values.
         /// </summary>
-        [Theory]
-        [InlineData(0)]
-        [InlineData(1)]
-        [InlineData(100)]
-        [InlineData(-10)]
+        [Theory, InlineData(0), InlineData(1), InlineData(100), InlineData(-10)]
         public void Depth_WithVariousValues(int depth)
         {
             DepthBuilderImpl builder = new DepthBuilderImpl();
             DepthBuilder result = builder.Depth(depth);
             Assert.Equal(depth, result.DepthValue);
         }
+
+        /// <summary>
+        ///     Helper builder class for depth.
+        /// </summary>
+        private class DepthBuilder
+        {
+            public int DepthValue { get; set; }
+        }
+
+        /// <summary>
+        ///     Helper implementation of IDepth.
+        /// </summary>
+        private class DepthBuilderImpl : IDepth<DepthBuilder, int>
+        {
+            private readonly DepthBuilder _builder = new DepthBuilder();
+
+            public DepthBuilder Depth(int value)
+            {
+                _builder.DepthValue = value;
+                return _builder;
+            }
+        }
     }
 }
-

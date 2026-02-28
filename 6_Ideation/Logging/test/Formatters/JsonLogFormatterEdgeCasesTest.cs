@@ -5,32 +5,31 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: Formatters/JsonLogFormatterEdgeCasesTest.cs
+//  File:JsonLogFormatterEdgeCasesTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program. If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Logging.Abstractions;
 using Alis.Core.Aspect.Logging.Core;
 using Alis.Core.Aspect.Logging.Formatters;
@@ -115,7 +114,7 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
             // Arrange
             JsonLogFormatter formatter = new JsonLogFormatter();
             string longValue = new string('y', 100000);
-            Dictionary<string, object> properties = new Dictionary<string, object> { { "LongKey", longValue } };
+            Dictionary<string, object> properties = new Dictionary<string, object> {{"LongKey", longValue}};
             LogEntry entry = new LogEntry(LogLevel.Info, "Message", "Logger", properties: properties);
 
             // Act
@@ -135,6 +134,7 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
             {
                 properties[$"Prop{i}"] = $"Value{i}";
             }
+
             LogEntry entry = new LogEntry(LogLevel.Info, "Message", "Logger", properties: properties);
 
             // Act
@@ -158,6 +158,7 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
             {
                 scopes.Add($"Scope{i}");
             }
+
             LogEntry entry = new LogEntry(LogLevel.Info, "Message", "Logger", scopes: scopes);
 
             // Act
@@ -204,8 +205,8 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
             JsonLogFormatter formatter = new JsonLogFormatter();
             Dictionary<string, object> properties = new Dictionary<string, object>
             {
-                { "key\"with\"quotes", "value" },
-                { "key\\with\\backslash", "value" }
+                {"key\"with\"quotes", "value"},
+                {"key\\with\\backslash", "value"}
             };
             LogEntry entry = new LogEntry(LogLevel.Info, "Message", "Logger", properties: properties);
 
@@ -224,8 +225,8 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
             JsonLogFormatter formatter = new JsonLogFormatter();
             Dictionary<string, object> properties = new Dictionary<string, object>
             {
-                { "NullValue", null },
-                { "StringValue", "test" }
+                {"NullValue", null},
+                {"StringValue", "test"}
             };
             LogEntry entry = new LogEntry(LogLevel.Info, "Message", "Logger", properties: properties);
 
@@ -247,8 +248,8 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
                 "ComplexLogger",
                 new InvalidOperationException("Test"),
                 "CORR-123",
-                new Dictionary<string, object> { { "key", "value" } },
-                new List<object> { "scope1", "scope2" }
+                new Dictionary<string, object> {{"key", "value"}},
+                new List<object> {"scope1", "scope2"}
             );
 
             // Act
@@ -257,7 +258,7 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
             // Assert
             Assert.StartsWith("{", formatted);
             Assert.EndsWith("}", formatted);
-            
+
             // Count braces
             int openCount = formatted.Count(c => c == '{');
             int closeCount = formatted.Count(c => c == '}');
@@ -265,4 +266,3 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
         }
     }
 }
-

@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IAction3Test.cs
+//  File:IAction3Test.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,23 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
     /// </summary>
     public class IAction3Test
     {
-        /// <summary>
-        ///     Helper implementation for testing three parameter action.
-        /// </summary>
-        private class ThreeParamAction : IAction<int, string, double>
-        {
-            public int IntValue { get; private set; }
-            public string StringValue { get; private set; }
-            public double DoubleValue { get; private set; }
-
-            public void Run(ref int arg1, ref string arg2, ref double arg3)
-            {
-                IntValue = arg1;
-                StringValue = arg2;
-                DoubleValue = arg3;
-            }
-        }
-
         /// <summary>
         ///     Tests that IAction with three parameters can be implemented.
         /// </summary>
@@ -97,6 +80,22 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
             Assert.Equal(string.Empty, action.StringValue);
             Assert.Equal(double.MinValue, action.DoubleValue);
         }
+
+        /// <summary>
+        ///     Helper implementation for testing three parameter action.
+        /// </summary>
+        private class ThreeParamAction : IAction<int, string, double>
+        {
+            public int IntValue { get; private set; }
+            public string StringValue { get; private set; }
+            public double DoubleValue { get; private set; }
+
+            public void Run(ref int arg1, ref string arg2, ref double arg3)
+            {
+                IntValue = arg1;
+                StringValue = arg2;
+                DoubleValue = arg3;
+            }
+        }
     }
 }
-

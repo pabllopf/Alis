@@ -181,10 +181,6 @@ namespace Alis.Extension.Thread.Configuration
         ///     Builds the configuration
         /// </summary>
         /// <returns>The built configuration</returns>
-        public ParallelExtensionConfiguration Build()
-        {
-            return configuration;
-        }
+        public ParallelExtensionConfiguration Build() => configuration;
     }
 }
-

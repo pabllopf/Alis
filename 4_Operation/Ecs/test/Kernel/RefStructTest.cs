@@ -37,7 +37,7 @@ namespace Alis.Core.Ecs.Test.Kernel
     ///     The ref struct test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="Ref{T}"/> ref struct which provides a wrapper
+    ///     Tests the <see cref="Ref{T}" /> ref struct which provides a wrapper
     ///     over references to values for safe component access.
     /// </remarks>
     public class RefStructTest
@@ -52,7 +52,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         public void Ref_CanBeCreatedFromArray()
         {
             // Arrange
-            int[] arr = { 1, 2, 3, 4, 5 };
+            int[] arr = {1, 2, 3, 4, 5};
 
             // Act
             Ref<int> refValue = new Ref<int>(arr, 0);
@@ -71,7 +71,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         public void Ref_CanAccessDifferentIndices()
         {
             // Arrange
-            int[] arr = { 10, 20, 30, 40, 50 };
+            int[] arr = {10, 20, 30, 40, 50};
 
             // Act
             Ref<int> ref0 = new Ref<int>(arr, 0);
@@ -94,7 +94,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         public void Ref_CanModifyValue()
         {
             // Arrange
-            int[] arr = { 1, 2, 3 };
+            int[] arr = {1, 2, 3};
             Ref<int> refValue = new Ref<int>(arr, 1);
 
             // Act
@@ -114,7 +114,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         public void Ref_ImplicitConversionToValue()
         {
             // Arrange
-            int[] arr = { 42 };
+            int[] arr = {42};
             Ref<int> refValue = new Ref<int>(arr, 0);
 
             // Act
@@ -134,7 +134,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         public void Ref_ToStringReturnsValueStringRepresentation()
         {
             // Arrange
-            int[] arr = { 123 };
+            int[] arr = {123};
             Ref<int> refValue = new Ref<int>(arr, 0);
 
             // Act
@@ -154,7 +154,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         public void Ref_WithStringType()
         {
             // Arrange
-            string[] arr = { "hello", "world" };
+            string[] arr = {"hello", "world"};
             Ref<string> refValue = new Ref<string>(arr, 0);
 
             // Act & Assert
@@ -171,7 +171,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         public void Ref_CanBeCreatedFromSpan()
         {
             // Arrange
-            int[] arr = { 1, 2, 3, 4, 5 };
+            int[] arr = {1, 2, 3, 4, 5};
             Span<int> span = arr.AsSpan();
 
             // Act
@@ -191,7 +191,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         public void Ref_WithNullValue()
         {
             // Arrange
-            string[] arr = { null, "test" };
+            string[] arr = {null, "test"};
             Ref<string> refValue = new Ref<string>(arr, 0);
 
             // Act & Assert
@@ -208,7 +208,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         public void Ref_MultipleModifications()
         {
             // Arrange
-            int[] arr = { 0 };
+            int[] arr = {0};
             Ref<int> refValue = new Ref<int>(arr, 0);
 
             // Act
@@ -221,4 +221,3 @@ namespace Alis.Core.Ecs.Test.Kernel
         }
     }
 }
-

@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
 
@@ -43,7 +42,6 @@ namespace Alis.Core.Ecs.Test
     /// </remarks>
     public class EcsStressTest
     {
-
         /// <summary>
         ///     Tests rapid component addition and removal cycles
         /// </summary>
@@ -76,4 +74,3 @@ namespace Alis.Core.Ecs.Test
         }
     }
 }
-

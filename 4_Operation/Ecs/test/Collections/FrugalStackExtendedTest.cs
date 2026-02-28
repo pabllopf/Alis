@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:FrugalStackExtendedTest.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -160,10 +161,10 @@ namespace Alis.Core.Ecs.Test.Collections
 
             // Act & Assert
             Assert.False(stack.Any);
-            
+
             stack.Push(42);
             Assert.True(stack.Any);
-            
+
             stack.Pop();
             Assert.False(stack.Any);
         }
@@ -176,8 +177,8 @@ namespace Alis.Core.Ecs.Test.Collections
         {
             // Arrange
             FrugalStack<object> stack = new FrugalStack<object>();
-            var obj1 = new { Value = 1 };
-            var obj2 = new { Value = 2 };
+            var obj1 = new {Value = 1};
+            var obj2 = new {Value = 2};
 
             // Act
             stack.Push(obj1);
@@ -200,14 +201,14 @@ namespace Alis.Core.Ecs.Test.Collections
             // Act & Assert
             stack.Push(1);
             Assert.True(stack.Any);
-            
+
             stack.Push(2);
             Assert.True(stack.Any);
-            
+
             int val = stack.Pop();
             Assert.Equal(2, val);
             Assert.True(stack.Any);
-            
+
             stack.Pop();
             Assert.False(stack.Any);
         }
@@ -246,15 +247,14 @@ namespace Alis.Core.Ecs.Test.Collections
             // Act & Assert - First cycle
             stack.Push(10);
             Assert.Equal(10, stack.Pop());
-            
+
             // Second cycle
             stack.Push(20);
             Assert.Equal(20, stack.Pop());
-            
+
             // Third cycle
             stack.Push(30);
             Assert.Equal(30, stack.Pop());
         }
     }
 }
-

@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Extension.Thread.Core;
 using Xunit;
 
@@ -324,4 +323,3 @@ namespace Alis.Extension.Thread.Test.Core
         }
     }
 }
-

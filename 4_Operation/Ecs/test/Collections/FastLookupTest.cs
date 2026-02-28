@@ -37,7 +37,7 @@ namespace Alis.Core.Ecs.Test.Collections
     ///     The fast lookup test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="FastLookup"/> struct which provides fast
+    ///     Tests the <see cref="FastLookup" /> struct which provides fast
     ///     archetype lookup for component and tag operations.
     /// </remarks>
     public class FastLookupTest
@@ -77,7 +77,7 @@ namespace Alis.Core.Ecs.Test.Collections
 
             // Assert
             Assert.NotEqual(0u, key);
-            Assert.Equal((uint)((id << 16) | archetypeId.RawIndex), key);
+            Assert.Equal((uint) ((id << 16) | archetypeId.RawIndex), key);
         }
 
         /// <summary>
@@ -195,9 +195,8 @@ namespace Alis.Core.Ecs.Test.Collections
             FastLookup lookup1 = new FastLookup();
             FastLookup lookup2 = lookup1;
             lookup2.Archetypes[0] = null;
-            
+
             Assert.Null(lookup2.Archetypes[0]);
         }
     }
 }
-

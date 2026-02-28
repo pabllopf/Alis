@@ -38,7 +38,7 @@ namespace Alis.Core.Ecs.Test.Kernel
     ///     The ref test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="Ref{T}"/> ref struct which provides
+    ///     Tests the <see cref="Ref{T}" /> ref struct which provides
     ///     a wrapper over a reference to a component of type T.
     /// </remarks>
     public class RefTest
@@ -54,7 +54,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new TestComponent { Value = 42, Name = "Test" });
+            GameObject entity = scene.Create(new TestComponent {Value = 42, Name = "Test"});
 
             // Act
             ref TestComponent component = ref entity.Get<TestComponent>();
@@ -75,7 +75,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new TestComponent { Value = 10 });
+            GameObject entity = scene.Create(new TestComponent {Value = 10});
 
             // Act
             ref TestComponent component = ref entity.Get<TestComponent>();
@@ -96,7 +96,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new TestComponent { Value = 5, Name = "Initial" });
+            GameObject entity = scene.Create(new TestComponent {Value = 5, Name = "Initial"});
 
             // Act
             ref TestComponent comp1 = ref entity.Get<TestComponent>();
@@ -144,7 +144,7 @@ namespace Alis.Core.Ecs.Test.Kernel
             using Scene scene = new Scene();
             for (int i = 0; i < 5; i++)
             {
-                scene.Create(new TestComponent { Value = i });
+                scene.Create(new TestComponent {Value = i});
             }
 
             // Act
@@ -174,7 +174,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new TestComponent { Value = 123, Name = "FieldTest" });
+            GameObject entity = scene.Create(new TestComponent {Value = 123, Name = "FieldTest"});
 
             // Act
             ref TestComponent component = ref entity.Get<TestComponent>();
@@ -197,7 +197,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new TestComponent { Value = 77 });
+            GameObject entity = scene.Create(new TestComponent {Value = 77});
 
             // Act
             ref TestComponent ref1 = ref entity.Get<TestComponent>();
@@ -237,4 +237,3 @@ namespace Alis.Core.Ecs.Test.Kernel
         }
     }
 }
-

@@ -296,10 +296,10 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         public void AudioFormat_ShouldSupportCommonAudioFormats()
         {
             // Arrange & Act
-            AudioFormat mp3Format = new AudioFormat { FormatName = "mp3" };
-            AudioFormat wavFormat = new AudioFormat { FormatName = "wav" };
-            AudioFormat oggFormat = new AudioFormat { FormatName = "ogg" };
-            AudioFormat flacFormat = new AudioFormat { FormatName = "flac" };
+            AudioFormat mp3Format = new AudioFormat {FormatName = "mp3"};
+            AudioFormat wavFormat = new AudioFormat {FormatName = "wav"};
+            AudioFormat oggFormat = new AudioFormat {FormatName = "ogg"};
+            AudioFormat flacFormat = new AudioFormat {FormatName = "flac"};
 
             // Assert
             Assert.Equal("mp3", mp3Format.FormatName);
@@ -315,8 +315,8 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         public void AudioFormat_NbStreams_ShouldSupportMultipleStreams()
         {
             // Arrange & Act
-            AudioFormat singleStream = new AudioFormat { NbStreams = 1 };
-            AudioFormat multipleStreams = new AudioFormat { NbStreams = 3 };
+            AudioFormat singleStream = new AudioFormat {NbStreams = 1};
+            AudioFormat multipleStreams = new AudioFormat {NbStreams = 3};
 
             // Assert
             Assert.Equal(1, singleStream.NbStreams);
@@ -330,9 +330,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         public void AudioFormat_ProbeScore_ShouldSupportValidRange()
         {
             // Arrange & Act
-            AudioFormat lowScore = new AudioFormat { ProbeScore = 0 };
-            AudioFormat mediumScore = new AudioFormat { ProbeScore = 50 };
-            AudioFormat highScore = new AudioFormat { ProbeScore = 100 };
+            AudioFormat lowScore = new AudioFormat {ProbeScore = 0};
+            AudioFormat mediumScore = new AudioFormat {ProbeScore = 50};
+            AudioFormat highScore = new AudioFormat {ProbeScore = 100};
 
             // Assert
             Assert.Equal(0, lowScore.ProbeScore);
@@ -341,4 +341,3 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         }
     }
 }
-

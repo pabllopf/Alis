@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:OpenALTest.cs
+//  File:OpenAlTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -50,10 +50,10 @@ namespace Alis.Core.Audio.Test.Players
             {
                 // Arrange & Act
                 IntPtr device = OpenAl.alcOpenDevice(null);
-                
+
                 // Assert - Method callable without exception
                 Assert.True(true);
-                
+
                 // Cleanup if device was opened
                 if (device != IntPtr.Zero)
                 {
@@ -77,13 +77,13 @@ namespace Alis.Core.Audio.Test.Players
             {
                 // Arrange
                 string deviceName = "TestDevice";
-                
+
                 // Act
                 IntPtr device = OpenAl.alcOpenDevice(deviceName);
-                
+
                 // Assert - Method callable with parameter
                 Assert.True(true);
-                
+
                 // Cleanup if device was opened
                 if (device != IntPtr.Zero)
                 {
@@ -107,15 +107,15 @@ namespace Alis.Core.Audio.Test.Players
             {
                 // Arrange
                 IntPtr device = OpenAl.alcOpenDevice(null);
-                
+
                 if (device != IntPtr.Zero)
                 {
                     // Act
                     IntPtr context = OpenAl.alcCreateContext(device, IntPtr.Zero);
-                    
+
                     // Assert - Method callable
                     Assert.True(true);
-                    
+
                     // Cleanup
                     OpenAl.alcCloseDevice(device);
                 }
@@ -137,17 +137,17 @@ namespace Alis.Core.Audio.Test.Players
             {
                 // Arrange
                 IntPtr device = OpenAl.alcOpenDevice(null);
-                
+
                 if (device != IntPtr.Zero)
                 {
                     IntPtr context = OpenAl.alcCreateContext(device, IntPtr.Zero);
-                    
+
                     // Act
                     bool result = OpenAl.alcMakeContextCurrent(context);
-                    
+
                     // Assert - Method callable
                     Assert.True(true);
-                    
+
                     // Cleanup
                     OpenAl.alcCloseDevice(device);
                 }
@@ -169,12 +169,12 @@ namespace Alis.Core.Audio.Test.Players
             {
                 // Arrange
                 IntPtr device = OpenAl.alcOpenDevice(null);
-                
+
                 if (device != IntPtr.Zero)
                 {
                     // Act
                     bool result = OpenAl.alcCloseDevice(device);
-                    
+
                     // Assert - Method callable
                     Assert.True(true);
                 }
@@ -196,23 +196,24 @@ namespace Alis.Core.Audio.Test.Players
             {
                 // Arrange
                 IntPtr device = OpenAl.alcOpenDevice(null);
-                
+
                 if (device != IntPtr.Zero)
                 {
                     IntPtr context = OpenAl.alcCreateContext(device, IntPtr.Zero);
                     OpenAl.alcMakeContextCurrent(context);
-                    
+
                     // Act
                     OpenAl.alGenSources(1, out uint source);
-                    
+
                     // Assert - Method callable and generates source
                     Assert.True(true);
-                    
+
                     // Cleanup
                     if (source != 0)
                     {
                         OpenAl.alDeleteSources(1, ref source);
                     }
+
                     OpenAl.alcCloseDevice(device);
                 }
             }
@@ -233,19 +234,19 @@ namespace Alis.Core.Audio.Test.Players
             {
                 // Arrange
                 IntPtr device = OpenAl.alcOpenDevice(null);
-                
+
                 if (device != IntPtr.Zero)
                 {
                     IntPtr context = OpenAl.alcCreateContext(device, IntPtr.Zero);
                     OpenAl.alcMakeContextCurrent(context);
                     OpenAl.alGenSources(1, out uint source);
-                    
+
                     // Act
                     OpenAl.alDeleteSources(1, ref source);
-                    
+
                     // Assert - Method callable
                     Assert.True(true);
-                    
+
                     // Cleanup
                     OpenAl.alcCloseDevice(device);
                 }
@@ -267,19 +268,19 @@ namespace Alis.Core.Audio.Test.Players
             {
                 // Arrange
                 IntPtr device = OpenAl.alcOpenDevice(null);
-                
+
                 if (device != IntPtr.Zero)
                 {
                     IntPtr context = OpenAl.alcCreateContext(device, IntPtr.Zero);
                     OpenAl.alcMakeContextCurrent(context);
                     OpenAl.alGenSources(1, out uint source);
-                    
+
                     // Act
                     OpenAl.alSourcePlay(source);
-                    
+
                     // Assert - Method callable
                     Assert.True(true);
-                    
+
                     // Cleanup
                     OpenAl.alDeleteSources(1, ref source);
                     OpenAl.alcCloseDevice(device);
@@ -302,19 +303,19 @@ namespace Alis.Core.Audio.Test.Players
             {
                 // Arrange
                 IntPtr device = OpenAl.alcOpenDevice(null);
-                
+
                 if (device != IntPtr.Zero)
                 {
                     IntPtr context = OpenAl.alcCreateContext(device, IntPtr.Zero);
                     OpenAl.alcMakeContextCurrent(context);
                     OpenAl.alGenSources(1, out uint source);
-                    
+
                     // Act
                     OpenAl.alSourceStop(source);
-                    
+
                     // Assert - Method callable
                     Assert.True(true);
-                    
+
                     // Cleanup
                     OpenAl.alDeleteSources(1, ref source);
                     OpenAl.alcCloseDevice(device);
@@ -337,23 +338,24 @@ namespace Alis.Core.Audio.Test.Players
             {
                 // Arrange
                 IntPtr device = OpenAl.alcOpenDevice(null);
-                
+
                 if (device != IntPtr.Zero)
                 {
                     IntPtr context = OpenAl.alcCreateContext(device, IntPtr.Zero);
                     OpenAl.alcMakeContextCurrent(context);
-                    
+
                     // Act
                     OpenAl.alGenBuffers(1, out uint buffer);
-                    
+
                     // Assert - Method callable and generates buffer
                     Assert.True(true);
-                    
+
                     // Cleanup
                     if (buffer != 0)
                     {
                         OpenAl.alDeleteBuffers(1, ref buffer);
                     }
+
                     OpenAl.alcCloseDevice(device);
                 }
             }
@@ -374,19 +376,19 @@ namespace Alis.Core.Audio.Test.Players
             {
                 // Arrange
                 IntPtr device = OpenAl.alcOpenDevice(null);
-                
+
                 if (device != IntPtr.Zero)
                 {
                     IntPtr context = OpenAl.alcCreateContext(device, IntPtr.Zero);
                     OpenAl.alcMakeContextCurrent(context);
                     OpenAl.alGenBuffers(1, out uint buffer);
-                    
+
                     // Act
                     OpenAl.alDeleteBuffers(1, ref buffer);
-                    
+
                     // Assert - Method callable
                     Assert.True(true);
-                    
+
                     // Cleanup
                     OpenAl.alcCloseDevice(device);
                 }
@@ -408,25 +410,25 @@ namespace Alis.Core.Audio.Test.Players
             {
                 // Arrange
                 IntPtr device = OpenAl.alcOpenDevice(null);
-                
+
                 if (device != IntPtr.Zero)
                 {
                     IntPtr context = OpenAl.alcCreateContext(device, IntPtr.Zero);
                     OpenAl.alcMakeContextCurrent(context);
                     OpenAl.alGenBuffers(1, out uint buffer);
-                    
+
                     // Act
                     byte[] data = new byte[100];
-                    IntPtr dataPtr = System.Runtime.InteropServices.Marshal.AllocHGlobal(data.Length);
-                    System.Runtime.InteropServices.Marshal.Copy(data, 0, dataPtr, data.Length);
-                    
+                    IntPtr dataPtr = Marshal.AllocHGlobal(data.Length);
+                    Marshal.Copy(data, 0, dataPtr, data.Length);
+
                     OpenAl.alBufferData(buffer, 0x1101, dataPtr, data.Length, 44100);
-                    
+
                     // Assert - Method callable
                     Assert.True(true);
-                    
+
                     // Cleanup
-                    System.Runtime.InteropServices.Marshal.FreeHGlobal(dataPtr);
+                    Marshal.FreeHGlobal(dataPtr);
                     OpenAl.alDeleteBuffers(1, ref buffer);
                     OpenAl.alcCloseDevice(device);
                 }
@@ -448,20 +450,20 @@ namespace Alis.Core.Audio.Test.Players
             {
                 // Arrange
                 IntPtr device = OpenAl.alcOpenDevice(null);
-                
+
                 if (device != IntPtr.Zero)
                 {
                     IntPtr context = OpenAl.alcCreateContext(device, IntPtr.Zero);
                     OpenAl.alcMakeContextCurrent(context);
                     OpenAl.alGenSources(1, out uint source);
                     OpenAl.alGenBuffers(1, out uint buffer);
-                    
+
                     // Act
-                    OpenAl.alSourcei(source, 0x1009, (int)buffer);
-                    
+                    OpenAl.alSourcei(source, 0x1009, (int) buffer);
+
                     // Assert - Method callable
                     Assert.True(true);
-                    
+
                     // Cleanup
                     OpenAl.alDeleteSources(1, ref source);
                     OpenAl.alDeleteBuffers(1, ref buffer);
@@ -485,20 +487,20 @@ namespace Alis.Core.Audio.Test.Players
             {
                 // Arrange
                 IntPtr device = OpenAl.alcOpenDevice(null);
-                
+
                 if (device != IntPtr.Zero)
                 {
                     IntPtr context = OpenAl.alcCreateContext(device, IntPtr.Zero);
                     OpenAl.alcMakeContextCurrent(context);
                     OpenAl.alGenSources(1, out uint source);
                     OpenAl.alGenBuffers(1, out uint buffer);
-                    
+
                     // Act
                     OpenAl.alSourceQueueBuffers(source, 1, ref buffer);
-                    
+
                     // Assert - Method callable
                     Assert.True(true);
-                    
+
                     // Cleanup
                     OpenAl.alDeleteSources(1, ref source);
                     OpenAl.alDeleteBuffers(1, ref buffer);
@@ -522,28 +524,30 @@ namespace Alis.Core.Audio.Test.Players
             {
                 // Arrange
                 IntPtr device = OpenAl.alcOpenDevice(null);
-                
+
                 if (device != IntPtr.Zero)
                 {
                     IntPtr context = OpenAl.alcCreateContext(device, IntPtr.Zero);
                     OpenAl.alcMakeContextCurrent(context);
-                    
+
                     // Act
                     OpenAl.alGenSources(1, out uint source1);
                     OpenAl.alGenSources(1, out uint source2);
-                    
+
                     // Assert - Method callable multiple times
                     Assert.True(true);
-                    
+
                     // Cleanup
                     if (source1 != 0)
                     {
                         OpenAl.alDeleteSources(1, ref source1);
                     }
+
                     if (source2 != 0)
                     {
                         OpenAl.alDeleteSources(1, ref source2);
                     }
+
                     OpenAl.alcCloseDevice(device);
                 }
             }
@@ -564,28 +568,30 @@ namespace Alis.Core.Audio.Test.Players
             {
                 // Arrange
                 IntPtr device = OpenAl.alcOpenDevice(null);
-                
+
                 if (device != IntPtr.Zero)
                 {
                     IntPtr context = OpenAl.alcCreateContext(device, IntPtr.Zero);
                     OpenAl.alcMakeContextCurrent(context);
-                    
+
                     // Act
                     OpenAl.alGenBuffers(1, out uint buffer1);
                     OpenAl.alGenBuffers(1, out uint buffer2);
-                    
+
                     // Assert - Method callable multiple times
                     Assert.True(true);
-                    
+
                     // Cleanup
                     if (buffer1 != 0)
                     {
                         OpenAl.alDeleteBuffers(1, ref buffer1);
                     }
+
                     if (buffer2 != 0)
                     {
                         OpenAl.alDeleteBuffers(1, ref buffer2);
                     }
+
                     OpenAl.alcCloseDevice(device);
                 }
             }
@@ -606,10 +612,10 @@ namespace Alis.Core.Audio.Test.Players
             {
                 // Arrange & Act
                 IntPtr device = OpenAl.alcOpenDevice(null);
-                
+
                 // Assert - Method callable with null
                 Assert.True(true);
-                
+
                 // Cleanup if device was opened
                 if (device != IntPtr.Zero)
                 {
@@ -633,10 +639,10 @@ namespace Alis.Core.Audio.Test.Players
             {
                 // Arrange & Act
                 IntPtr device = OpenAl.alcOpenDevice(string.Empty);
-                
+
                 // Assert - Method callable
                 Assert.True(true);
-                
+
                 // Cleanup if device was opened
                 if (device != IntPtr.Zero)
                 {
@@ -660,15 +666,15 @@ namespace Alis.Core.Audio.Test.Players
             {
                 // Arrange
                 IntPtr device = OpenAl.alcOpenDevice(null);
-                
+
                 if (device != IntPtr.Zero)
                 {
                     // Act
                     IntPtr context = OpenAl.alcCreateContext(device, IntPtr.Zero);
-                    
+
                     // Assert
                     Assert.True(true);
-                    
+
                     // Cleanup
                     OpenAl.alcCloseDevice(device);
                 }
@@ -690,7 +696,7 @@ namespace Alis.Core.Audio.Test.Players
             {
                 // Arrange & Act
                 bool result = OpenAl.alcMakeContextCurrent(IntPtr.Zero);
-                
+
                 // Assert - Method callable
                 Assert.True(true);
             }
@@ -711,7 +717,7 @@ namespace Alis.Core.Audio.Test.Players
             {
                 // Arrange & Act
                 bool result = OpenAl.alcCloseDevice(IntPtr.Zero);
-                
+
                 // Assert - Method callable
                 Assert.True(true);
             }
@@ -732,18 +738,18 @@ namespace Alis.Core.Audio.Test.Players
             {
                 // Arrange
                 IntPtr device = OpenAl.alcOpenDevice(null);
-                
+
                 if (device != IntPtr.Zero)
                 {
                     IntPtr context = OpenAl.alcCreateContext(device, IntPtr.Zero);
                     OpenAl.alcMakeContextCurrent(context);
-                    
+
                     // Act
                     OpenAl.alGenSources(0, out uint source);
-                    
+
                     // Assert - Method callable
                     Assert.True(true);
-                    
+
                     // Cleanup
                     OpenAl.alcCloseDevice(device);
                 }
@@ -765,18 +771,18 @@ namespace Alis.Core.Audio.Test.Players
             {
                 // Arrange
                 IntPtr device = OpenAl.alcOpenDevice(null);
-                
+
                 if (device != IntPtr.Zero)
                 {
                     IntPtr context = OpenAl.alcCreateContext(device, IntPtr.Zero);
                     OpenAl.alcMakeContextCurrent(context);
-                    
+
                     // Act
                     OpenAl.alGenBuffers(0, out uint buffer);
-                    
+
                     // Assert - Method callable
                     Assert.True(true);
-                    
+
                     // Cleanup
                     OpenAl.alcCloseDevice(device);
                 }
@@ -798,18 +804,18 @@ namespace Alis.Core.Audio.Test.Players
             {
                 // Arrange
                 IntPtr device = OpenAl.alcOpenDevice(null);
-                
+
                 if (device != IntPtr.Zero)
                 {
                     IntPtr context = OpenAl.alcCreateContext(device, IntPtr.Zero);
                     OpenAl.alcMakeContextCurrent(context);
-                    
+
                     // Act
                     OpenAl.alSourcePlay(0);
-                    
+
                     // Assert - Method callable
                     Assert.True(true);
-                    
+
                     // Cleanup
                     OpenAl.alcCloseDevice(device);
                 }
@@ -831,18 +837,18 @@ namespace Alis.Core.Audio.Test.Players
             {
                 // Arrange
                 IntPtr device = OpenAl.alcOpenDevice(null);
-                
+
                 if (device != IntPtr.Zero)
                 {
                     IntPtr context = OpenAl.alcCreateContext(device, IntPtr.Zero);
                     OpenAl.alcMakeContextCurrent(context);
-                    
+
                     // Act
                     OpenAl.alSourceStop(0);
-                    
+
                     // Assert - Method callable
                     Assert.True(true);
-                    
+
                     // Cleanup
                     OpenAl.alcCloseDevice(device);
                 }
@@ -864,19 +870,19 @@ namespace Alis.Core.Audio.Test.Players
             {
                 // Arrange
                 IntPtr device = OpenAl.alcOpenDevice(null);
-                
+
                 if (device != IntPtr.Zero)
                 {
                     IntPtr context = OpenAl.alcCreateContext(device, IntPtr.Zero);
                     OpenAl.alcMakeContextCurrent(context);
                     uint source = 0;
-                    
+
                     // Act
                     OpenAl.alDeleteSources(1, ref source);
-                    
+
                     // Assert - Method callable
                     Assert.True(true);
-                    
+
                     // Cleanup
                     OpenAl.alcCloseDevice(device);
                 }
@@ -898,19 +904,19 @@ namespace Alis.Core.Audio.Test.Players
             {
                 // Arrange
                 IntPtr device = OpenAl.alcOpenDevice(null);
-                
+
                 if (device != IntPtr.Zero)
                 {
                     IntPtr context = OpenAl.alcCreateContext(device, IntPtr.Zero);
                     OpenAl.alcMakeContextCurrent(context);
                     uint buffer = 0;
-                    
+
                     // Act
                     OpenAl.alDeleteBuffers(1, ref buffer);
-                    
+
                     // Assert - Method callable
                     Assert.True(true);
-                    
+
                     // Cleanup
                     OpenAl.alcCloseDevice(device);
                 }
@@ -932,19 +938,19 @@ namespace Alis.Core.Audio.Test.Players
             {
                 // Arrange
                 IntPtr device = OpenAl.alcOpenDevice(null);
-                
+
                 if (device != IntPtr.Zero)
                 {
                     IntPtr context = OpenAl.alcCreateContext(device, IntPtr.Zero);
                     OpenAl.alcMakeContextCurrent(context);
                     OpenAl.alGenBuffers(1, out uint buffer);
-                    
+
                     // Act
                     OpenAl.alBufferData(buffer, 0x1101, IntPtr.Zero, 0, 44100);
-                    
+
                     // Assert - Method callable
                     Assert.True(true);
-                    
+
                     // Cleanup
                     OpenAl.alDeleteBuffers(1, ref buffer);
                     OpenAl.alcCloseDevice(device);
@@ -967,20 +973,20 @@ namespace Alis.Core.Audio.Test.Players
             {
                 // Arrange
                 IntPtr device = OpenAl.alcOpenDevice(null);
-                
+
                 if (device != IntPtr.Zero)
                 {
                     IntPtr context = OpenAl.alcCreateContext(device, IntPtr.Zero);
                     OpenAl.alcMakeContextCurrent(context);
                     OpenAl.alGenSources(1, out uint source);
-                    
+
                     // Act - Test with different param values
                     OpenAl.alSourcei(source, 0x1009, 0); // AL_BUFFER
                     OpenAl.alSourcei(source, 0x1007, 1); // AL_LOOPING
-                    
+
                     // Assert - Method callable
                     Assert.True(true);
-                    
+
                     // Cleanup
                     OpenAl.alDeleteSources(1, ref source);
                     OpenAl.alcCloseDevice(device);
@@ -1003,20 +1009,20 @@ namespace Alis.Core.Audio.Test.Players
             {
                 // Arrange
                 IntPtr device = OpenAl.alcOpenDevice(null);
-                
+
                 if (device != IntPtr.Zero)
                 {
                     IntPtr context = OpenAl.alcCreateContext(device, IntPtr.Zero);
                     OpenAl.alcMakeContextCurrent(context);
                     OpenAl.alGenSources(1, out uint source);
                     uint buffer = 0;
-                    
+
                     // Act
                     OpenAl.alSourceQueueBuffers(source, 0, ref buffer);
-                    
+
                     // Assert - Method callable
                     Assert.True(true);
-                    
+
                     // Cleanup
                     OpenAl.alDeleteSources(1, ref source);
                     OpenAl.alcCloseDevice(device);
@@ -1039,7 +1045,7 @@ namespace Alis.Core.Audio.Test.Players
             {
                 // Arrange
                 IntPtr device = OpenAl.alcOpenDevice(null);
-                
+
                 if (device != IntPtr.Zero)
                 {
                     // Act - Full initialization sequence
@@ -1047,10 +1053,10 @@ namespace Alis.Core.Audio.Test.Players
                     bool contextSet = OpenAl.alcMakeContextCurrent(context);
                     OpenAl.alGenSources(1, out uint source);
                     OpenAl.alGenBuffers(1, out uint buffer);
-                    
+
                     // Assert - All methods callable
                     Assert.True(true);
-                    
+
                     // Cleanup
                     OpenAl.alDeleteSources(1, ref source);
                     OpenAl.alDeleteBuffers(1, ref buffer);
@@ -1074,26 +1080,26 @@ namespace Alis.Core.Audio.Test.Players
             {
                 // Arrange
                 IntPtr device = OpenAl.alcOpenDevice(null);
-                
+
                 if (device != IntPtr.Zero)
                 {
                     IntPtr context = OpenAl.alcCreateContext(device, IntPtr.Zero);
                     OpenAl.alcMakeContextCurrent(context);
                     OpenAl.alGenBuffers(1, out uint buffer);
-                    
+
                     byte[] data = new byte[100];
                     IntPtr dataPtr = Marshal.AllocHGlobal(data.Length);
                     Marshal.Copy(data, 0, dataPtr, data.Length);
-                    
+
                     // Act - Test different formats
                     OpenAl.alBufferData(buffer, 0x1100, dataPtr, data.Length, 44100); // AL_FORMAT_MONO8
                     OpenAl.alBufferData(buffer, 0x1101, dataPtr, data.Length, 44100); // AL_FORMAT_MONO16
                     OpenAl.alBufferData(buffer, 0x1102, dataPtr, data.Length, 44100); // AL_FORMAT_STEREO8
                     OpenAl.alBufferData(buffer, 0x1103, dataPtr, data.Length, 44100); // AL_FORMAT_STEREO16
-                    
+
                     // Assert - Method callable
                     Assert.True(true);
-                    
+
                     // Cleanup
                     Marshal.FreeHGlobal(dataPtr);
                     OpenAl.alDeleteBuffers(1, ref buffer);
@@ -1117,25 +1123,25 @@ namespace Alis.Core.Audio.Test.Players
             {
                 // Arrange
                 IntPtr device = OpenAl.alcOpenDevice(null);
-                
+
                 if (device != IntPtr.Zero)
                 {
                     IntPtr context = OpenAl.alcCreateContext(device, IntPtr.Zero);
                     OpenAl.alcMakeContextCurrent(context);
                     OpenAl.alGenBuffers(1, out uint buffer);
-                    
+
                     byte[] data = new byte[100];
                     IntPtr dataPtr = Marshal.AllocHGlobal(data.Length);
                     Marshal.Copy(data, 0, dataPtr, data.Length);
-                    
+
                     // Act - Test different frequencies
                     OpenAl.alBufferData(buffer, 0x1101, dataPtr, data.Length, 22050);
                     OpenAl.alBufferData(buffer, 0x1101, dataPtr, data.Length, 44100);
                     OpenAl.alBufferData(buffer, 0x1101, dataPtr, data.Length, 48000);
-                    
+
                     // Assert - Method callable
                     Assert.True(true);
-                    
+
                     // Cleanup
                     Marshal.FreeHGlobal(dataPtr);
                     OpenAl.alDeleteBuffers(1, ref buffer);
@@ -1159,22 +1165,22 @@ namespace Alis.Core.Audio.Test.Players
             {
                 // Arrange
                 IntPtr device = OpenAl.alcOpenDevice(null);
-                
+
                 if (device != IntPtr.Zero)
                 {
                     IntPtr context = OpenAl.alcCreateContext(device, IntPtr.Zero);
                     OpenAl.alcMakeContextCurrent(context);
                     OpenAl.alGenSources(1, out uint source);
-                    
+
                     // Act
                     OpenAl.alSourcePlay(source);
                     OpenAl.alSourceStop(source);
                     OpenAl.alSourcePlay(source);
                     OpenAl.alSourceStop(source);
-                    
+
                     // Assert - Method callable multiple times
                     Assert.True(true);
-                    
+
                     // Cleanup
                     OpenAl.alDeleteSources(1, ref source);
                     OpenAl.alcCloseDevice(device);
@@ -1197,19 +1203,19 @@ namespace Alis.Core.Audio.Test.Players
             {
                 // Arrange
                 IntPtr device = OpenAl.alcOpenDevice(null);
-                
+
                 if (device != IntPtr.Zero)
                 {
                     IntPtr context = OpenAl.alcCreateContext(device, IntPtr.Zero);
                     OpenAl.alcMakeContextCurrent(context);
                     OpenAl.alGenSources(1, out uint source);
-                    
+
                     // Act
                     OpenAl.alSourcei(source, 0x1009, 0);
-                    
+
                     // Assert - Method callable
                     Assert.True(true);
-                    
+
                     // Cleanup
                     OpenAl.alDeleteSources(1, ref source);
                     OpenAl.alcCloseDevice(device);
@@ -1232,20 +1238,20 @@ namespace Alis.Core.Audio.Test.Players
             {
                 // Arrange
                 IntPtr device = OpenAl.alcOpenDevice(null);
-                
+
                 if (device != IntPtr.Zero)
                 {
                     IntPtr context = OpenAl.alcCreateContext(device, IntPtr.Zero);
                     OpenAl.alcMakeContextCurrent(context);
                     OpenAl.alGenSources(1, out uint source);
-                    
+
                     // Act - Set looping
                     OpenAl.alSourcei(source, 0x1007, 1); // AL_LOOPING = true
                     OpenAl.alSourcei(source, 0x1007, 0); // AL_LOOPING = false
-                    
+
                     // Assert - Method callable
                     Assert.True(true);
-                    
+
                     // Cleanup
                     OpenAl.alDeleteSources(1, ref source);
                     OpenAl.alcCloseDevice(device);
@@ -1268,22 +1274,22 @@ namespace Alis.Core.Audio.Test.Players
             {
                 // Arrange
                 IntPtr device = OpenAl.alcOpenDevice(null);
-                
+
                 if (device != IntPtr.Zero)
                 {
                     IntPtr context = OpenAl.alcCreateContext(device, IntPtr.Zero);
                     OpenAl.alcMakeContextCurrent(context);
-                    
+
                     // Act
                     for (int i = 0; i < 5; i++)
                     {
                         OpenAl.alGenSources(1, out uint source);
                         OpenAl.alDeleteSources(1, ref source);
                     }
-                    
+
                     // Assert - Operations successful
                     Assert.True(true);
-                    
+
                     // Cleanup
                     OpenAl.alcCloseDevice(device);
                 }
@@ -1305,22 +1311,22 @@ namespace Alis.Core.Audio.Test.Players
             {
                 // Arrange
                 IntPtr device = OpenAl.alcOpenDevice(null);
-                
+
                 if (device != IntPtr.Zero)
                 {
                     IntPtr context = OpenAl.alcCreateContext(device, IntPtr.Zero);
                     OpenAl.alcMakeContextCurrent(context);
-                    
+
                     // Act
                     for (int i = 0; i < 5; i++)
                     {
                         OpenAl.alGenBuffers(1, out uint buffer);
                         OpenAl.alDeleteBuffers(1, ref buffer);
                     }
-                    
+
                     // Assert - Operations successful
                     Assert.True(true);
-                    
+
                     // Cleanup
                     OpenAl.alcCloseDevice(device);
                 }
@@ -1342,23 +1348,23 @@ namespace Alis.Core.Audio.Test.Players
             {
                 // Arrange
                 IntPtr device = OpenAl.alcOpenDevice(null);
-                
+
                 if (device != IntPtr.Zero)
                 {
                     IntPtr context = OpenAl.alcCreateContext(device, IntPtr.Zero);
                     OpenAl.alcMakeContextCurrent(context);
                     OpenAl.alGenBuffers(1, out uint buffer);
-                    
+
                     // Act
                     byte[] data = new byte[10000];
                     IntPtr dataPtr = Marshal.AllocHGlobal(data.Length);
                     Marshal.Copy(data, 0, dataPtr, data.Length);
-                    
+
                     OpenAl.alBufferData(buffer, 0x1101, dataPtr, data.Length, 44100);
-                    
+
                     // Assert - Method callable
                     Assert.True(true);
-                    
+
                     // Cleanup
                     Marshal.FreeHGlobal(dataPtr);
                     OpenAl.alDeleteBuffers(1, ref buffer);
@@ -1389,7 +1395,7 @@ namespace Alis.Core.Audio.Test.Players
                         OpenAl.alcCloseDevice(device);
                     }
                 }
-                
+
                 // Assert - Operations successful
                 Assert.True(true);
             }
@@ -1401,4 +1407,3 @@ namespace Alis.Core.Audio.Test.Players
         }
     }
 }
-

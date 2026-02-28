@@ -56,7 +56,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void ValidateOptions_WithNullTitle_ShouldThrowArgumentException()
         {
             // Arrange
-            FilePickerOptions options = new FilePickerOptions { Title = null };
+            FilePickerOptions options = new FilePickerOptions {Title = null};
 
             // Act & Assert
             Assert.Throws<ArgumentException>(() => FilePickerValidator.ValidateOptions(options));
@@ -69,7 +69,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void ValidateOptions_WithEmptyTitle_ShouldThrowArgumentException()
         {
             // Arrange
-            FilePickerOptions options = new FilePickerOptions { Title = "" };
+            FilePickerOptions options = new FilePickerOptions {Title = ""};
 
             // Act & Assert
             Assert.Throws<ArgumentException>(() => FilePickerValidator.ValidateOptions(options));
@@ -82,7 +82,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void ValidateOptions_WithInvalidDefaultPath_ShouldThrowArgumentException()
         {
             // Arrange
-            FilePickerOptions options = new FilePickerOptions("Test") { DefaultPath = "/nonexistent/path/that/does/not/exist" };
+            FilePickerOptions options = new FilePickerOptions("Test") {DefaultPath = "/nonexistent/path/that/does/not/exist"};
 
             // Act & Assert
             Assert.Throws<ArgumentException>(() => FilePickerValidator.ValidateOptions(options));
@@ -111,7 +111,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void ValidateOptions_WithAllowDirectoriesOnOpenFile_ShouldThrowArgumentException()
         {
             // Arrange
-            FilePickerOptions options = new FilePickerOptions("Open", FileDialogType.OpenFile)
+            FilePickerOptions options = new FilePickerOptions("Open")
             {
                 AllowDirectories = true
             };
@@ -342,7 +342,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         {
             // Arrange
             FilePickerOptions options = new FilePickerOptions("Test");
-            FilePickerResult result = new FilePickerResult(new List<string> { "/path/one.txt", "/path/two.txt" });
+            FilePickerResult result = new FilePickerResult(new List<string> {"/path/one.txt", "/path/two.txt"});
 
             // Act
             bool isValid = FilePickerValidator.IsResultValid(result, options);
@@ -352,4 +352,3 @@ namespace Alis.Extension.Io.FileDialog.Test
         }
     }
 }
-

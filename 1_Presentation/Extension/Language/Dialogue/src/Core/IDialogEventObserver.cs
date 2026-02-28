@@ -41,4 +41,3 @@ namespace Alis.Extension.Language.Dialogue.Core
         void OnDialogEvent(DialogEvent dialogEvent);
     }
 }
-

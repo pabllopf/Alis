@@ -42,14 +42,14 @@ namespace Alis.Extension.Math.ProceduralDungeon.Interfaces
         /// <param name="maxValue">The exclusive upper bound of the random number returned.</param>
         /// <returns>A random integer between minValue (inclusive) and maxValue (exclusive).</returns>
         int Next(int minValue, int maxValue);
-        
+
         /// <summary>
         ///     Generates a random integer between 0 and maxValue.
         /// </summary>
         /// <param name="maxValue">The exclusive upper bound of the random number returned.</param>
         /// <returns>A random integer between 0 (inclusive) and maxValue (exclusive).</returns>
         int Next(int maxValue);
-        
+
         /// <summary>
         ///     Generates a random byte value.
         /// </summary>
@@ -57,4 +57,3 @@ namespace Alis.Extension.Math.ProceduralDungeon.Interfaces
         byte NextByte();
     }
 }
-

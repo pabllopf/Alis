@@ -51,4 +51,3 @@ namespace Alis.Extension.Thread.Interfaces
         int GetMinimumBatchSize(Type componentType);
     }
 }
-

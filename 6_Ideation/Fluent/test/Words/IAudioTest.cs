@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IAudioTest.cs
+//  File:IAudioTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -38,28 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
     /// </summary>
     public class IAudioTest
     {
-        /// <summary>
-        ///     Helper builder class for audio.
-        /// </summary>
-        private class AudioBuilder
-        {
-            public string AudioConfig { get; set; }
-        }
-
-        /// <summary>
-        ///     Helper implementation of IAudio.
-        /// </summary>
-        private class AudioBuilderImpl : IAudio<AudioBuilder, string>
-        {
-            private readonly AudioBuilder _builder = new AudioBuilder();
-
-            public AudioBuilder Audio(string value)
-            {
-                _builder.AudioConfig = value;
-                return _builder;
-            }
-        }
-
         /// <summary>
         ///     Tests that IAudio can be implemented.
         /// </summary>
@@ -97,17 +75,34 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Tests Audio with various configurations.
         /// </summary>
-        [Theory]
-        [InlineData("Mono")]
-        [InlineData("Stereo")]
-        [InlineData("Surround")]
-        [InlineData("Spatial")]
+        [Theory, InlineData("Mono"), InlineData("Stereo"), InlineData("Surround"), InlineData("Spatial")]
         public void Audio_WithVariousConfigurations(string config)
         {
             AudioBuilderImpl builder = new AudioBuilderImpl();
             AudioBuilder result = builder.Audio(config);
             Assert.Equal(config, result.AudioConfig);
         }
+
+        /// <summary>
+        ///     Helper builder class for audio.
+        /// </summary>
+        private class AudioBuilder
+        {
+            public string AudioConfig { get; set; }
+        }
+
+        /// <summary>
+        ///     Helper implementation of IAudio.
+        /// </summary>
+        private class AudioBuilderImpl : IAudio<AudioBuilder, string>
+        {
+            private readonly AudioBuilder _builder = new AudioBuilder();
+
+            public AudioBuilder Audio(string value)
+            {
+                _builder.AudioConfig = value;
+                return _builder;
+            }
+        }
     }
 }
-

@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IOnDrawTest.cs
+//  File:IOnDrawTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Aspect.Fluent.Components;
 using Xunit;
 
@@ -39,21 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
     /// </summary>
     public class IOnDrawTest
     {
-        
-
-        /// <summary>
-        ///     Helper implementation for testing IOnDraw.
-        /// </summary>
-        private class DrawHandler : IOnDraw
-        {
-            public int DrawCallCount { get; private set; }
-
-            public void OnDraw(IGameObject self)
-            {
-                DrawCallCount++;
-            }
-        }
-
         /// <summary>
         ///     Tests that IOnDraw can be implemented.
         /// </summary>
@@ -89,8 +73,22 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
             {
                 handler.OnDraw(gameObject);
             }
+
             Assert.Equal(120, handler.DrawCallCount);
+        }
+
+
+        /// <summary>
+        ///     Helper implementation for testing IOnDraw.
+        /// </summary>
+        private class DrawHandler : IOnDraw
+        {
+            public int DrawCallCount { get; private set; }
+
+            public void OnDraw(IGameObject self)
+            {
+                DrawCallCount++;
+            }
         }
     }
 }
-

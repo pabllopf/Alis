@@ -37,7 +37,7 @@ namespace Alis.Core.Ecs.Test.Kernel
     ///     The command buffer test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="CommandBuffer"/> class which stores a set of structural
+    ///     Tests the <see cref="CommandBuffer" /> class which stores a set of structural
     ///     changes that can be applied to a Scene for deferred entity operations.
     /// </remarks>
     public class CommandBufferTest
@@ -92,7 +92,7 @@ namespace Alis.Core.Ecs.Test.Kernel
             // Arrange
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
-            GameObject entity = scene.Create(new TestComponent { Value = 42 });
+            GameObject entity = scene.Create(new TestComponent {Value = 42});
 
             // Act
             buffer.DeleteEntity(entity);
@@ -113,10 +113,10 @@ namespace Alis.Core.Ecs.Test.Kernel
             // Arrange
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
-            GameObject entity = scene.Create(new TestComponent { Value = 10 });
+            GameObject entity = scene.Create(new TestComponent {Value = 10});
 
             // Act
-            buffer.AddComponent(entity, new AnotherComponent { Name = "Test" });
+            buffer.AddComponent(entity, new AnotherComponent {Name = "Test"});
 
             // Assert
             Assert.True(buffer.HasBufferItems);
@@ -134,7 +134,7 @@ namespace Alis.Core.Ecs.Test.Kernel
             // Arrange
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
-            GameObject entity = scene.Create(new TestComponent { Value = 20 });
+            GameObject entity = scene.Create(new TestComponent {Value = 20});
 
             // Act
             buffer.RemoveComponent<TestComponent>(entity);
@@ -155,7 +155,7 @@ namespace Alis.Core.Ecs.Test.Kernel
             // Arrange
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
-            GameObject entity = scene.Create(new TestComponent { Value = 30 });
+            GameObject entity = scene.Create(new TestComponent {Value = 30});
             buffer.DeleteEntity(entity);
 
             // Act
@@ -177,7 +177,7 @@ namespace Alis.Core.Ecs.Test.Kernel
             // Arrange
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
-            GameObject entity = scene.Create(new TestComponent { Value = 40 });
+            GameObject entity = scene.Create(new TestComponent {Value = 40});
             buffer.DeleteEntity(entity);
 
             // Act
@@ -199,8 +199,8 @@ namespace Alis.Core.Ecs.Test.Kernel
             // Arrange
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
-            GameObject entity = scene.Create(new TestComponent { Value = 50 });
-            buffer.AddComponent(entity, new AnotherComponent { Name = "Added" });
+            GameObject entity = scene.Create(new TestComponent {Value = 50});
+            buffer.AddComponent(entity, new AnotherComponent {Name = "Added"});
 
             // Act
             buffer.Playback();
@@ -221,7 +221,7 @@ namespace Alis.Core.Ecs.Test.Kernel
             // Arrange
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
-            GameObject entity = scene.Create(new TestComponent { Value = 60 }, new AnotherComponent { Name = "ToRemove" });
+            GameObject entity = scene.Create(new TestComponent {Value = 60}, new AnotherComponent {Name = "ToRemove"});
             buffer.RemoveComponent<AnotherComponent>(entity);
 
             // Act
@@ -243,7 +243,7 @@ namespace Alis.Core.Ecs.Test.Kernel
             // Arrange
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
-            GameObject entity = scene.Create(new TestComponent { Value = 70 });
+            GameObject entity = scene.Create(new TestComponent {Value = 70});
             buffer.DeleteEntity(entity);
 
             // Act
@@ -285,12 +285,12 @@ namespace Alis.Core.Ecs.Test.Kernel
             // Arrange
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
-            GameObject entity1 = scene.Create(new TestComponent { Value = 1 });
-            GameObject entity2 = scene.Create(new TestComponent { Value = 2 });
+            GameObject entity1 = scene.Create(new TestComponent {Value = 1});
+            GameObject entity2 = scene.Create(new TestComponent {Value = 2});
 
             // Act
             buffer.DeleteEntity(entity1);
-            buffer.AddComponent(entity2, new AnotherComponent { Name = "Test" });
+            buffer.AddComponent(entity2, new AnotherComponent {Name = "Test"});
             buffer.Playback();
 
             // Assert
@@ -310,7 +310,7 @@ namespace Alis.Core.Ecs.Test.Kernel
             // Arrange
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
-            GameObject entity = scene.Create(new TestComponent { Value = 80 });
+            GameObject entity = scene.Create(new TestComponent {Value = 80});
             buffer.DeleteEntity(entity);
 
             // Act
@@ -332,7 +332,7 @@ namespace Alis.Core.Ecs.Test.Kernel
             // Arrange
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
-            GameObject entity = scene.Create(new TestComponent { Value = 90 });
+            GameObject entity = scene.Create(new TestComponent {Value = 90});
 
             // Act
             buffer.RemoveComponent(entity, Component<TestComponent>.Id);
@@ -354,10 +354,10 @@ namespace Alis.Core.Ecs.Test.Kernel
             // Arrange
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
-            GameObject entity = scene.Create(new TestComponent { Value = 100 });
+            GameObject entity = scene.Create(new TestComponent {Value = 100});
 
             // Act
-            buffer.AddComponent(entity, new AnotherComponent { Name = "First" });
+            buffer.AddComponent(entity, new AnotherComponent {Name = "First"});
             buffer.RemoveComponent<TestComponent>(entity);
             buffer.Playback();
 
@@ -378,7 +378,7 @@ namespace Alis.Core.Ecs.Test.Kernel
             // Arrange
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
-            GameObject entity = scene.Create(new TestComponent { Value = 110 });
+            GameObject entity = scene.Create(new TestComponent {Value = 110});
             int initialCount = scene.EntityCount;
 
             // Act
@@ -401,8 +401,8 @@ namespace Alis.Core.Ecs.Test.Kernel
             // Arrange
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
-            GameObject entity = scene.Create(new TestComponent { Value = 120 });
-            AnotherComponent component2 = new AnotherComponent { Name = "TypeTest" };
+            GameObject entity = scene.Create(new TestComponent {Value = 120});
+            AnotherComponent component2 = new AnotherComponent {Name = "TypeTest"};
 
             // Act
             buffer.AddComponent(entity, typeof(AnotherComponent), component2);
@@ -413,4 +413,3 @@ namespace Alis.Core.Ecs.Test.Kernel
         }
     }
 }
-

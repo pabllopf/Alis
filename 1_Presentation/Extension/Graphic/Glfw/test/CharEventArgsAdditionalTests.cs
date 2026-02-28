@@ -5,9 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:CharEventArgsTests.cs
+//  File:CharEventArgsAdditionalTests.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -37,16 +38,16 @@ namespace Alis.Extension.Graphic.Glfw.Test
     public class CharEventArgsAdditionalTests
     {
         /// <summary>
-        /// Tests that char event args with ascii characters returns correct char
+        ///     Tests that char event args with ascii characters returns correct char
         /// </summary>
         /// <param name="codePoint">The code point</param>
         /// <param name="expectedChar">The expected char</param>
-        [Theory]
-        [InlineData(32, " ")] // Space
-        [InlineData(65, "A")] // A
-        [InlineData(97, "a")] // a
-        [InlineData(48, "0")] // 0
-        [InlineData(126, "~")] // ~
+        [Theory, InlineData(32, " "), InlineData(65, "A"), InlineData(97, "a"), InlineData(48, "0"), InlineData(126, "~")]
+        // Space
+        // A
+        // a
+        // 0
+        // ~
         public void CharEventArgs_WithAsciiCharacters_ReturnsCorrectChar(uint codePoint, string expectedChar)
         {
             // Arrange & Act
@@ -57,15 +58,10 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that char event args with different modifiers stores modifiers correctly
+        ///     Tests that char event args with different modifiers stores modifiers correctly
         /// </summary>
         /// <param name="modifier">The modifier</param>
-        [Theory]
-        [InlineData(ModifierKeys.None)]
-        [InlineData(ModifierKeys.Shift)]
-        [InlineData(ModifierKeys.Control)]
-        [InlineData(ModifierKeys.Alt)]
-        [InlineData(ModifierKeys.Super)]
+        [Theory, InlineData(ModifierKeys.None), InlineData(ModifierKeys.Shift), InlineData(ModifierKeys.Control), InlineData(ModifierKeys.Alt), InlineData(ModifierKeys.Super)]
         public void CharEventArgs_WithDifferentModifiers_StoresModifiersCorrectly(ModifierKeys modifier)
         {
             // Arrange & Act
@@ -76,7 +72,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that char event args with combined modifiers stores all modifiers
+        ///     Tests that char event args with combined modifiers stores all modifiers
         /// </summary>
         [Fact]
         public void CharEventArgs_WithCombinedModifiers_StoresAllModifiers()
@@ -95,7 +91,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that char event args with special unicode characters handles correctly
+        ///     Tests that char event args with special unicode characters handles correctly
         /// </summary>
         [Fact]
         public void CharEventArgs_WithSpecialUnicodeCharacters_HandlesCorrectly()
@@ -112,7 +108,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that char event args code point property is read only
+        ///     Tests that char event args code point property is read only
         /// </summary>
         [Fact]
         public void CharEventArgs_CodePoint_Property_IsReadOnly()
@@ -129,7 +125,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that char event args modifier keys property is read only
+        ///     Tests that char event args modifier keys property is read only
         /// </summary>
         [Fact]
         public void CharEventArgs_ModifierKeys_Property_IsReadOnly()
@@ -146,4 +142,3 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
     }
 }
-

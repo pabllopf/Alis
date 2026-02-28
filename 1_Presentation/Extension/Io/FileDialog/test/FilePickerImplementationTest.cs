@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Xunit;
@@ -39,74 +38,6 @@ namespace Alis.Extension.Io.FileDialog.Test
     /// </summary>
     public class FilePickerImplementationTest
     {
-        /// <summary>
-        ///     Mock implementation of IFilePicker for testing purposes.
-        ///     This prevents actual system dialogs from opening during tests.
-        /// </summary>
-        private class MockFilePicker : IFilePicker
-        {
-            /// <summary>
-            /// The should succeed
-            /// </summary>
-            private readonly bool _shouldSucceed;
-            /// <summary>
-            /// The mock path
-            /// </summary>
-            private readonly string _mockPath;
-
-            /// <summary>
-            /// Initializes a new instance of the <see cref="MockFilePicker"/> class
-            /// </summary>
-            /// <param name="shouldSucceed">The should succeed</param>
-            /// <param name="mockPath">The mock path</param>
-            public MockFilePicker(bool shouldSucceed = true, string mockPath = "/mock/path/file.txt")
-            {
-                _shouldSucceed = shouldSucceed;
-                _mockPath = mockPath;
-            }
-
-            /// <summary>
-            /// Picks the file using the specified options
-            /// </summary>
-            /// <param name="options">The options</param>
-            /// <returns>The file picker result</returns>
-            public FilePickerResult PickFile(FilePickerOptions options)
-            {
-                if (!_shouldSucceed)
-                {
-                    return FilePickerResult.CreateError("Mock error");
-                }
-                return new FilePickerResult(new List<string> { _mockPath });
-            }
-
-            /// <summary>
-            /// Picks the files using the specified options
-            /// </summary>
-            /// <param name="options">The options</param>
-            /// <returns>The file picker result</returns>
-            public FilePickerResult PickFiles(FilePickerOptions options)
-            {
-                if (!_shouldSucceed)
-                {
-                    return FilePickerResult.CreateError("Mock error");
-                }
-                return new FilePickerResult(new List<string> { _mockPath, _mockPath + ".bak" });
-            }
-
-            /// <summary>
-            /// Picks the folder using the specified options
-            /// </summary>
-            /// <param name="options">The options</param>
-            /// <returns>The file picker result</returns>
-            public FilePickerResult PickFolder(FilePickerOptions options)
-            {
-                if (!_shouldSucceed)
-                {
-                    return FilePickerResult.CreateError("Mock error");
-                }
-                return new FilePickerResult(new List<string> { "/mock/path/folder" });
-            }
-        }
         /// <summary>
         ///     Tests that WindowsFilePicker implements IFilePicker.
         /// </summary>
@@ -168,8 +99,8 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void WindowsFilePicker_PickFile_WithInvalidOptions_ShouldReturnError()
         {
             // Arrange
-            MockFilePicker picker = new MockFilePicker(shouldSucceed: false);
-            FilePickerOptions options = new FilePickerOptions { Title = "" }; // Invalid: empty title
+            MockFilePicker picker = new MockFilePicker(false);
+            FilePickerOptions options = new FilePickerOptions {Title = ""}; // Invalid: empty title
 
             // Act
             FilePickerResult result = picker.PickFile(options);
@@ -186,8 +117,8 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void MacFilePicker_PickFile_WithInvalidOptions_ShouldReturnError()
         {
             // Arrange
-            MockFilePicker picker = new MockFilePicker(shouldSucceed: false);
-            FilePickerOptions options = new FilePickerOptions { Title = "" }; // Invalid: empty title
+            MockFilePicker picker = new MockFilePicker(false);
+            FilePickerOptions options = new FilePickerOptions {Title = ""}; // Invalid: empty title
 
             // Act
             FilePickerResult result = picker.PickFile(options);
@@ -204,8 +135,8 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void LinuxFilePicker_PickFile_WithInvalidOptions_ShouldReturnError()
         {
             // Arrange
-            MockFilePicker picker = new MockFilePicker(shouldSucceed: false);
-            FilePickerOptions options = new FilePickerOptions { Title = "" }; // Invalid: empty title
+            MockFilePicker picker = new MockFilePicker(false);
+            FilePickerOptions options = new FilePickerOptions {Title = ""}; // Invalid: empty title
 
             // Act
             FilePickerResult result = picker.PickFile(options);
@@ -222,8 +153,8 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void WindowsFilePicker_PickFolder_WithInvalidOptions_ShouldReturnError()
         {
             // Arrange
-            MockFilePicker picker = new MockFilePicker(shouldSucceed: false);
-            FilePickerOptions options = new FilePickerOptions { Title = "" }; // Invalid: empty title
+            MockFilePicker picker = new MockFilePicker(false);
+            FilePickerOptions options = new FilePickerOptions {Title = ""}; // Invalid: empty title
 
             // Act
             FilePickerResult result = picker.PickFolder(options);
@@ -240,8 +171,8 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void MacFilePicker_PickFolder_WithInvalidOptions_ShouldReturnError()
         {
             // Arrange
-            MockFilePicker picker = new MockFilePicker(shouldSucceed: false);
-            FilePickerOptions options = new FilePickerOptions { Title = "" }; // Invalid: empty title
+            MockFilePicker picker = new MockFilePicker(false);
+            FilePickerOptions options = new FilePickerOptions {Title = ""}; // Invalid: empty title
 
             // Act
             FilePickerResult result = picker.PickFolder(options);
@@ -258,8 +189,8 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void LinuxFilePicker_PickFolder_WithInvalidOptions_ShouldReturnError()
         {
             // Arrange
-            MockFilePicker picker = new MockFilePicker(shouldSucceed: false);
-            FilePickerOptions options = new FilePickerOptions { Title = "" }; // Invalid: empty title
+            MockFilePicker picker = new MockFilePicker(false);
+            FilePickerOptions options = new FilePickerOptions {Title = ""}; // Invalid: empty title
 
             // Act
             FilePickerResult result = picker.PickFolder(options);
@@ -276,7 +207,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void WindowsFilePicker_PickFiles_WithInvalidOptions_ShouldReturnError()
         {
             // Arrange
-            MockFilePicker picker = new MockFilePicker(shouldSucceed: false);
+            MockFilePicker picker = new MockFilePicker(false);
             FilePickerOptions invalidOptions = new FilePickerOptions("Save", FileDialogType.SaveFile)
             {
                 AllowMultiple = true // Invalid: SaveFile cannot allow multiple
@@ -297,7 +228,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void MacFilePicker_PickFiles_WithInvalidOptions_ShouldReturnError()
         {
             // Arrange
-            MockFilePicker picker = new MockFilePicker(shouldSucceed: false);
+            MockFilePicker picker = new MockFilePicker(false);
             FilePickerOptions invalidOptions = new FilePickerOptions("Save", FileDialogType.SaveFile)
             {
                 AllowMultiple = true // Invalid: SaveFile cannot allow multiple
@@ -318,7 +249,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void LinuxFilePicker_PickFiles_WithInvalidOptions_ShouldReturnError()
         {
             // Arrange
-            MockFilePicker picker = new MockFilePicker(shouldSucceed: false);
+            MockFilePicker picker = new MockFilePicker(false);
             FilePickerOptions invalidOptions = new FilePickerOptions("Save", FileDialogType.SaveFile)
             {
                 AllowMultiple = true // Invalid: SaveFile cannot allow multiple
@@ -340,7 +271,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         {
             // Arrange
             FilePickerOptions options = new FilePickerOptions("Test");
-            IFilePicker[] pickers = new IFilePicker[] { new MockFilePicker(), new MockFilePicker(), new MockFilePicker() };
+            IFilePicker[] pickers = new IFilePicker[] {new MockFilePicker(), new MockFilePicker(), new MockFilePicker()};
 
             // Act & Assert
             foreach (IFilePicker picker in pickers)
@@ -358,7 +289,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         {
             // Arrange
             FilePickerOptions options = new FilePickerOptions("Test");
-            IFilePicker[] pickers = new IFilePicker[] { new MockFilePicker(), new MockFilePicker(), new MockFilePicker() };
+            IFilePicker[] pickers = new IFilePicker[] {new MockFilePicker(), new MockFilePicker(), new MockFilePicker()};
 
             // Act & Assert
             foreach (IFilePicker picker in pickers)
@@ -376,7 +307,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         {
             // Arrange
             FilePickerOptions options = new FilePickerOptions("Test", FileDialogType.SelectFolder);
-            IFilePicker[] pickers = new IFilePicker[] { new MockFilePicker(), new MockFilePicker(), new MockFilePicker() };
+            IFilePicker[] pickers = new IFilePicker[] {new MockFilePicker(), new MockFilePicker(), new MockFilePicker()};
 
             // Act & Assert
             foreach (IFilePicker picker in pickers)
@@ -385,6 +316,78 @@ namespace Alis.Extension.Io.FileDialog.Test
                 Assert.NotNull(result);
             }
         }
+
+        /// <summary>
+        ///     Mock implementation of IFilePicker for testing purposes.
+        ///     This prevents actual system dialogs from opening during tests.
+        /// </summary>
+        private class MockFilePicker : IFilePicker
+        {
+            /// <summary>
+            ///     The mock path
+            /// </summary>
+            private readonly string _mockPath;
+
+            /// <summary>
+            ///     The should succeed
+            /// </summary>
+            private readonly bool _shouldSucceed;
+
+            /// <summary>
+            ///     Initializes a new instance of the <see cref="MockFilePicker" /> class
+            /// </summary>
+            /// <param name="shouldSucceed">The should succeed</param>
+            /// <param name="mockPath">The mock path</param>
+            public MockFilePicker(bool shouldSucceed = true, string mockPath = "/mock/path/file.txt")
+            {
+                _shouldSucceed = shouldSucceed;
+                _mockPath = mockPath;
+            }
+
+            /// <summary>
+            ///     Picks the file using the specified options
+            /// </summary>
+            /// <param name="options">The options</param>
+            /// <returns>The file picker result</returns>
+            public FilePickerResult PickFile(FilePickerOptions options)
+            {
+                if (!_shouldSucceed)
+                {
+                    return FilePickerResult.CreateError("Mock error");
+                }
+
+                return new FilePickerResult(new List<string> {_mockPath});
+            }
+
+            /// <summary>
+            ///     Picks the files using the specified options
+            /// </summary>
+            /// <param name="options">The options</param>
+            /// <returns>The file picker result</returns>
+            public FilePickerResult PickFiles(FilePickerOptions options)
+            {
+                if (!_shouldSucceed)
+                {
+                    return FilePickerResult.CreateError("Mock error");
+                }
+
+                return new FilePickerResult(new List<string> {_mockPath, _mockPath + ".bak"});
+            }
+
+            /// <summary>
+            ///     Picks the folder using the specified options
+            /// </summary>
+            /// <param name="options">The options</param>
+            /// <returns>The file picker result</returns>
+            public FilePickerResult PickFolder(FilePickerOptions options)
+            {
+                if (!_shouldSucceed)
+                {
+                    return FilePickerResult.CreateError("Mock error");
+                }
+
+                return new FilePickerResult(new List<string> {"/mock/path/folder"});
+            }
+        }
     }
 }
-

@@ -32,7 +32,7 @@ using Xunit;
 namespace Alis.Core.Ecs.Test
 {
     /// <summary>
-    ///     Tests the <see cref="EntityHighLow"/> struct.
+    ///     Tests the <see cref="EntityHighLow" /> struct.
     /// </summary>
     public class EntityHighLowTest
     {
@@ -44,14 +44,14 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             EntityHighLow entityHighLow = new EntityHighLow();
-            
+
             // Act
             entityHighLow.EntityID = 42;
-            
+
             // Assert
             Assert.Equal(42, entityHighLow.EntityID);
         }
-        
+
         /// <summary>
         ///     Tests that entity low can be set and retrieved correctly.
         /// </summary>
@@ -60,14 +60,14 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             EntityHighLow entityHighLow = new EntityHighLow();
-            
+
             // Act
             entityHighLow.EntityLow = 123456;
-            
+
             // Assert
             Assert.Equal(123456, entityHighLow.EntityLow);
         }
-        
+
         /// <summary>
         ///     Tests that both fields can be set independently.
         /// </summary>
@@ -76,16 +76,16 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             EntityHighLow entityHighLow = new EntityHighLow();
-            
+
             // Act
             entityHighLow.EntityID = 100;
             entityHighLow.EntityLow = 200;
-            
+
             // Assert
             Assert.Equal(100, entityHighLow.EntityID);
             Assert.Equal(200, entityHighLow.EntityLow);
         }
-        
+
         /// <summary>
         ///     Tests that default values are zero.
         /// </summary>
@@ -94,12 +94,12 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange & Act
             EntityHighLow entityHighLow = new EntityHighLow();
-            
+
             // Assert
             Assert.Equal(0, entityHighLow.EntityID);
             Assert.Equal(0, entityHighLow.EntityLow);
         }
-        
+
         /// <summary>
         ///     Tests that negative values can be stored.
         /// </summary>
@@ -108,16 +108,16 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             EntityHighLow entityHighLow = new EntityHighLow();
-            
+
             // Act
             entityHighLow.EntityID = -1;
             entityHighLow.EntityLow = -1000;
-            
+
             // Assert
             Assert.Equal(-1, entityHighLow.EntityID);
             Assert.Equal(-1000, entityHighLow.EntityLow);
         }
-        
+
         /// <summary>
         ///     Tests that maximum int values can be stored.
         /// </summary>
@@ -126,16 +126,16 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             EntityHighLow entityHighLow = new EntityHighLow();
-            
+
             // Act
             entityHighLow.EntityID = int.MaxValue;
             entityHighLow.EntityLow = int.MaxValue;
-            
+
             // Assert
             Assert.Equal(int.MaxValue, entityHighLow.EntityID);
             Assert.Equal(int.MaxValue, entityHighLow.EntityLow);
         }
-        
+
         /// <summary>
         ///     Tests that minimum int values can be stored.
         /// </summary>
@@ -144,15 +144,14 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             EntityHighLow entityHighLow = new EntityHighLow();
-            
+
             // Act
             entityHighLow.EntityID = int.MinValue;
             entityHighLow.EntityLow = int.MinValue;
-            
+
             // Assert
             Assert.Equal(int.MinValue, entityHighLow.EntityID);
             Assert.Equal(int.MinValue, entityHighLow.EntityLow);
         }
     }
 }
-

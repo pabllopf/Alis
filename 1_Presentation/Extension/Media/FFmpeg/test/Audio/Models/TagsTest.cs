@@ -123,7 +123,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         public void Tags_EncoderProperty_ShouldBeMutable()
         {
             // Arrange
-            Tags tags = new Tags { Encoder = "Lavf58.29.100" };
+            Tags tags = new Tags {Encoder = "Lavf58.29.100"};
 
             // Act
             tags.Encoder = "Lavf59.27.100";
@@ -139,9 +139,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         public void Tags_ShouldSupportCommonEncoderStrings()
         {
             // Arrange & Act
-            Tags lavfTags = new Tags { Encoder = "Lavf58.29.100" };
-            Tags ffmpegTags = new Tags { Encoder = "FFmpeg" };
-            Tags customTags = new Tags { Encoder = "Custom Encoder 1.0" };
+            Tags lavfTags = new Tags {Encoder = "Lavf58.29.100"};
+            Tags ffmpegTags = new Tags {Encoder = "FFmpeg"};
+            Tags customTags = new Tags {Encoder = "Custom Encoder 1.0"};
 
             // Assert
             Assert.Equal("Lavf58.29.100", lavfTags.Encoder);
@@ -150,4 +150,3 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         }
     }
 }
-

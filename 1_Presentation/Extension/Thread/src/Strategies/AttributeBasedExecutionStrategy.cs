@@ -40,9 +40,9 @@ namespace Alis.Extension.Thread.Strategies
     public sealed class AttributeBasedExecutionStrategy : IParallelExecutionStrategy
     {
         /// <summary>
-        ///     Cache for parallel capability checks
+        ///     Default minimum batch size
         /// </summary>
-        private readonly ConcurrentDictionary<Type, bool> parallelCapabilityCache = new ConcurrentDictionary<Type, bool>();
+        private const int DefaultMinBatchSize = 128;
 
         /// <summary>
         ///     Cache for minimum batch sizes
@@ -50,9 +50,9 @@ namespace Alis.Extension.Thread.Strategies
         private readonly ConcurrentDictionary<Type, int> minBatchSizeCache = new ConcurrentDictionary<Type, int>();
 
         /// <summary>
-        ///     Default minimum batch size
+        ///     Cache for parallel capability checks
         /// </summary>
-        private const int DefaultMinBatchSize = 128;
+        private readonly ConcurrentDictionary<Type, bool> parallelCapabilityCache = new ConcurrentDictionary<Type, bool>();
 
         /// <summary>
         ///     Determines if the given type can be executed in parallel
@@ -98,7 +98,7 @@ namespace Alis.Extension.Thread.Strategies
 
             return minBatchSizeCache.GetOrAdd(componentType, type =>
             {
-                ParallelSafeAttribute attr = (ParallelSafeAttribute)Attribute.GetCustomAttribute(type, typeof(ParallelSafeAttribute));
+                ParallelSafeAttribute attr = (ParallelSafeAttribute) Attribute.GetCustomAttribute(type, typeof(ParallelSafeAttribute));
                 return attr?.MinBatchSize ?? DefaultMinBatchSize;
             });
         }
@@ -113,4 +113,3 @@ namespace Alis.Extension.Thread.Strategies
         }
     }
 }
-

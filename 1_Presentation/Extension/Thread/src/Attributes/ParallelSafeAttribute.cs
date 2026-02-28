@@ -35,7 +35,7 @@ namespace Alis.Extension.Thread.Attributes
     ///     Marks a component as safe for parallel execution.
     ///     Components marked with this attribute can be processed simultaneously across multiple threads.
     /// </summary>
-    [AttributeUsage(AttributeTargets.Struct | AttributeTargets.Class, AllowMultiple = false, Inherited = true)]
+    [AttributeUsage(AttributeTargets.Struct | AttributeTargets.Class)]
     public sealed class ParallelSafeAttribute : Attribute
     {
         /// <summary>
@@ -49,10 +49,7 @@ namespace Alis.Extension.Thread.Attributes
         ///     Initializes a new instance of the <see cref="ParallelSafeAttribute" /> class
         /// </summary>
         /// <param name="minBatchSize">The minimum batch size for parallel execution</param>
-        public ParallelSafeAttribute(int minBatchSize)
-        {
-            MinBatchSize = minBatchSize;
-        }
+        public ParallelSafeAttribute(int minBatchSize) => MinBatchSize = minBatchSize;
 
         /// <summary>
         ///     Gets the minimum batch size for parallel execution.
@@ -61,4 +58,3 @@ namespace Alis.Extension.Thread.Attributes
         public int MinBatchSize { get; } = 128;
     }
 }
-

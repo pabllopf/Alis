@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IOnUpdate1Test.cs
+//  File:IOnUpdate1Test.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Aspect.Fluent.Components;
 using Xunit;
 
@@ -39,24 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
     /// </summary>
     public class IOnUpdate1Test
     {
-        
-
-        /// <summary>
-        ///     Helper implementation for testing IOnUpdate with one parameter.
-        /// </summary>
-        private class Update1Handler : IOnUpdate<int>
-        {
-            public bool IsComponentBase => true;
-            public int LastValue { get; private set; }
-            public int CallCount { get; private set; }
-
-            public void Update(IGameObject self, ref int arg)
-            {
-                LastValue = arg;
-                CallCount++;
-            }
-        }
-
         /// <summary>
         ///     Tests that IOnUpdate can be implemented with one parameter.
         /// </summary>
@@ -108,6 +89,23 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
             Assert.Equal("test", handler.LastValue);
         }
 
+
+        /// <summary>
+        ///     Helper implementation for testing IOnUpdate with one parameter.
+        /// </summary>
+        private class Update1Handler : IOnUpdate<int>
+        {
+            public bool IsComponentBase => true;
+            public int LastValue { get; private set; }
+            public int CallCount { get; private set; }
+
+            public void Update(IGameObject self, ref int arg)
+            {
+                LastValue = arg;
+                CallCount++;
+            }
+        }
+
         /// <summary>
         ///     Helper implementation with string parameter.
         /// </summary>
@@ -122,4 +120,3 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         }
     }
 }
-

@@ -7,7 +7,8 @@
 //  --------------------------------------------------------------------------
 //  File:FileDropEventArgsTests.cs
 // 
-//  Author:GitHub Copilot
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -36,13 +37,13 @@ namespace Alis.Extension.Graphic.Glfw.Test
     public class FileDropEventArgsTests
     {
         /// <summary>
-        /// Tests that constructor with valid filenames sets property
+        ///     Tests that constructor with valid filenames sets property
         /// </summary>
         [Fact]
         public void Constructor_WithValidFilenames_SetsProperty()
         {
             // Arrange
-            string[] filenames = new[] { "file1.txt", "file2.png", "file3.jpg" };
+            string[] filenames = new[] {"file1.txt", "file2.png", "file3.jpg"};
 
             // Act
             FileDropEventArgs args = new FileDropEventArgs(filenames);
@@ -52,13 +53,13 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that filenames property returns correct array
+        ///     Tests that filenames property returns correct array
         /// </summary>
         [Fact]
         public void Filenames_Property_ReturnsCorrectArray()
         {
             // Arrange
-            string[] expectedFilenames = new[] { "document.pdf" };
+            string[] expectedFilenames = new[] {"document.pdf"};
             FileDropEventArgs args = new FileDropEventArgs(expectedFilenames);
 
             // Act
@@ -69,7 +70,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that constructor with empty array sets property
+        ///     Tests that constructor with empty array sets property
         /// </summary>
         [Fact]
         public void Constructor_WithEmptyArray_SetsProperty()
@@ -85,13 +86,13 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that constructor with single file sets property
+        ///     Tests that constructor with single file sets property
         /// </summary>
         [Fact]
         public void Constructor_WithSingleFile_SetsProperty()
         {
             // Arrange
-            string[] filenames = new[] { "single_file.txt" };
+            string[] filenames = new[] {"single_file.txt"};
 
             // Act
             FileDropEventArgs args = new FileDropEventArgs(filenames);
@@ -102,13 +103,13 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that constructor with multiple files preserves order
+        ///     Tests that constructor with multiple files preserves order
         /// </summary>
         [Fact]
         public void Constructor_WithMultipleFiles_PreservesOrder()
         {
             // Arrange
-            string[] filenames = new[] { "first.txt", "second.png", "third.jpg" };
+            string[] filenames = new[] {"first.txt", "second.png", "third.jpg"};
 
             // Act
             FileDropEventArgs args = new FileDropEventArgs(filenames);
@@ -121,13 +122,13 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that constructor with paths containing spaces sets property
+        ///     Tests that constructor with paths containing spaces sets property
         /// </summary>
         [Fact]
         public void Constructor_WithPathsContainingSpaces_SetsProperty()
         {
             // Arrange
-            string[] filenames = new[] { "my document.txt", "another file.png" };
+            string[] filenames = new[] {"my document.txt", "another file.png"};
 
             // Act
             FileDropEventArgs args = new FileDropEventArgs(filenames);
@@ -137,13 +138,13 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        /// Tests that constructor with absolute paths sets property
+        ///     Tests that constructor with absolute paths sets property
         /// </summary>
         [Fact]
         public void Constructor_WithAbsolutePaths_SetsProperty()
         {
             // Arrange
-            string[] filenames = new[] { "/usr/local/bin/file.txt", "C:\\Users\\file.txt" };
+            string[] filenames = new[] {"/usr/local/bin/file.txt", "C:\\Users\\file.txt"};
 
             // Act
             FileDropEventArgs args = new FileDropEventArgs(filenames);
@@ -153,4 +154,3 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
     }
 }
-

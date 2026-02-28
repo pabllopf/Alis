@@ -53,4 +53,3 @@ namespace Alis.Extension.Language.Dialogue.Core
         bool IsValid(DialogContext context);
     }
 }
-

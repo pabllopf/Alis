@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: IOnStartTest.cs
+//  File:IOnStartTest.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Aspect.Fluent.Components;
 using Xunit;
 
@@ -39,23 +38,6 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
     /// </summary>
     public class IOnStartTest
     {
-        
-
-        /// <summary>
-        ///     Helper implementation for testing IOnStart.
-        /// </summary>
-        private class StartHandler : IOnStart
-        {
-            public bool WasStartCalled { get; private set; }
-            public int CallCount { get; private set; }
-
-            public void OnStart(IGameObject self)
-            {
-                WasStartCalled = true;
-                CallCount++;
-            }
-        }
-
         /// <summary>
         ///     Tests that IOnStart can be implemented.
         /// </summary>
@@ -104,6 +86,21 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
             handler.OnStart(gameObject);
             Assert.True(handler.WasStartCalled);
         }
+
+
+        /// <summary>
+        ///     Helper implementation for testing IOnStart.
+        /// </summary>
+        private class StartHandler : IOnStart
+        {
+            public bool WasStartCalled { get; private set; }
+            public int CallCount { get; private set; }
+
+            public void OnStart(IGameObject self)
+            {
+                WasStartCalled = true;
+                CallCount++;
+            }
+        }
     }
 }
-
