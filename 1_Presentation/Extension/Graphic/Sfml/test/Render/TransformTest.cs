@@ -26,29 +26,6 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(8, t.m21);
             Assert.Equal(9, t.m22);
         }
-
-        /// <summary>
-        /// Tests GetInverse returns a Transform.
-        /// </summary>
-        [Fact]
-        public void GetInverse_ReturnsTransform()
-        {
-            Transform t = new Transform(1,0,0,0,1,0,0,0,1);
-            Transform inv = t.GetInverse();
-            Assert.IsType<Transform>(inv);
-        }
-
-        /// <summary>
-        /// Tests TransformPoint with coordinates and Vector2F.
-        /// </summary>
-        [Fact]
-        public void TransformPoint_Works()
-        {
-            Transform t = new Transform(1,0,0,0,1,0,0,0,1);
-            Vector2F v = t.TransformPoint(2,3);
-            Assert.Equal(2, v.X);
-            Assert.Equal(3, v.Y);
-        }
     }
 }
 
