@@ -42,8 +42,11 @@ namespace Alis.Extension.Graphic.Sfml.Sample
         /// </summary>
         public void Run()
         {
-            VideoMode mode = new VideoMode(800, 600);
-            RenderWindow window = new RenderWindow(mode, "SFML works!");
+            VideoMode mode = new VideoMode(800, 600 );
+            // ContextSettings: profundidad 24, stencil 8, sin antialiasing, OpenGL 2.1, sin flags especiales, sin sRGB
+            // Prueba máxima compatibilidad: todos los valores a 0 salvo versión
+            var settings = new ContextSettings(0, 0, 0, 2, 1, ContextSettings.Attribute.Default, false);
+            RenderWindow window = new RenderWindow(mode, "SFML works!", Alis.Extension.Graphic.Sfml.Windows.Styles.Default, settings);
             window.KeyPressed += Window_KeyPressed;
 
             CircleShape circle = new CircleShape(100f)
