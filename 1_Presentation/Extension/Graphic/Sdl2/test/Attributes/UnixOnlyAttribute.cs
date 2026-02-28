@@ -31,7 +31,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using Xunit;
 
-namespace Alis.Core.Audio.Test.Players.Attributes
+namespace Alis.Extension.Graphic.Sdl2.Test.Attributes
 {
     /// <summary>
     ///     The unix only attribute class

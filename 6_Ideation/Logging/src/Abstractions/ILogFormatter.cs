@@ -5,52 +5,48 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:BrowserOnlyAttribute.cs
+//  File: ILogFormatter.cs
 // 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
+//  Author: Pablo Perdomo Falcón
+//  Web: https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software:you can redistribute it and/or modify
+//  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+//  along with this program. If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
-using System.Runtime.InteropServices;
-using Xunit;
-
-namespace Alis.Extension.Graphic.Sdl2.Test.Attributes
+namespace Alis.Core.Aspect.Logging.Abstractions
 {
     /// <summary>
-    ///     The browser only attribute class
+    ///     Formats log entries into a string representation suitable for output.
+    ///     Different formatters can produce different output styles (JSON, plain text, etc.).
+    ///     AOT-compatible: Uses StringBuilder, no reflection.
     /// </summary>
-    /// <seealso cref="FactAttribute" />
-    [ExcludeFromCodeCoverage]
-    public class BrowserOnlyAttribute : FactAttribute
+    public interface ILogFormatter
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="BrowserOnlyAttribute" /> class
+        ///     Gets a human-readable name for this formatter.
         /// </summary>
-        public BrowserOnlyAttribute()
-        {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Create("WEBASSEMBLY")) && 
-                !RuntimeInformation.IsOSPlatform(OSPlatform.Create("BROWSER")))
-            {
-                Skip = "Only running in browser/webassembly mode";
-            }
-        }
+        string Name { get; }
+
+        /// <summary>
+        ///     Formats the given log entry into a string.
+        /// </summary>
+        /// <param name="entry">The log entry to format.</param>
+        /// <returns>A formatted string representation of the log entry.</returns>
+        string Format(ILogEntry entry);
     }
 }
 

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AlisException.cs
+//  File:MacOsOnlyAttribute.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,38 +27,28 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
+using System.Diagnostics.CodeAnalysis;
+using System.Runtime.InteropServices;
+using Xunit;
 
-namespace Alis.Core.Aspect.Logging
+namespace Alis.Core.Aspect.Logging.Test.Attributes
 {
     /// <summary>
-    ///     The alis exception class
+    ///     The mac os only attribute class
     /// </summary>
-    /// <seealso cref="Exception" />
-    public class AlisException : Exception
+    /// <seealso cref="FactAttribute" />
+    [ExcludeFromCodeCoverage]
+    public class MacOsOnlyAttribute : FactAttribute
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="AlisException" /> class
+        ///     Initializes a new instance of the <see cref="MacOsOnlyAttribute" /> class
         /// </summary>
-        public AlisException()
+        public MacOsOnlyAttribute()
         {
-        }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="AlisException" /> class
-        /// </summary>
-        /// <param name="message">The message</param>
-        /// <param name="innerException">The inner exception</param>
-        public AlisException(string message, Exception innerException) : base(message, innerException)
-        {
-        }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="AlisException" /> class
-        /// </summary>
-        /// <param name="message">The message</param>
-        public AlisException(string message) : base(message)
-        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                Skip = "Only running in macos mode";
+            }
         }
     }
 }

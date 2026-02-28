@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:BrowserOnlyAttribute.cs
+//  File:UnixOnlyAttribute.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -31,26 +31,24 @@ using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using Xunit;
 
-namespace Alis.Extension.Graphic.Sdl2.Test.Attributes
+namespace Alis.Core.Aspect.Logging.Test.Attributes
 {
     /// <summary>
-    ///     The browser only attribute class
+    ///     The unix only attribute class
     /// </summary>
     /// <seealso cref="FactAttribute" />
     [ExcludeFromCodeCoverage]
-    public class BrowserOnlyAttribute : FactAttribute
+    public class UnixOnlyAttribute : FactAttribute
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="BrowserOnlyAttribute" /> class
+        ///     Initializes a new instance of the <see cref="UnixOnlyAttribute" /> class
         /// </summary>
-        public BrowserOnlyAttribute()
+        public UnixOnlyAttribute()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Create("WEBASSEMBLY")) && 
-                !RuntimeInformation.IsOSPlatform(OSPlatform.Create("BROWSER")))
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.OSX) && !RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-                Skip = "Only running in browser/webassembly mode";
+                Skip = "Only running on unix systems mode";
             }
         }
     }
 }
-

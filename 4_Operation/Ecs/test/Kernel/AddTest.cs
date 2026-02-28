@@ -36,7 +36,7 @@ namespace Alis.Core.Ecs.Test.Kernel
     ///     The add component test class
     /// </summary>
     /// <remarks>
-    ///     Tests the <see cref="Add"/> record struct which represents
+    ///     Tests the <see cref="GameObject.NeighborCache{T}.Add"/> record struct which represents
     ///     a command to add a component to an entity.
     /// </remarks>
     public class AddTest
