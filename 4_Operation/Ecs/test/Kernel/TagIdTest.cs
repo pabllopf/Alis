@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
@@ -165,7 +167,7 @@ namespace Alis.Core.Ecs.Test.Kernel
             TagId id = Tag<PlayerTag>.Id;
 
             // Act
-            var type = id.Type;
+            Type type = id.Type;
 
             // Assert
             Assert.NotNull(type);
@@ -182,7 +184,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         public void TagId_CanBeUsedInDictionary()
         {
             // Arrange
-            var dict = new System.Collections.Generic.Dictionary<TagId, string>();
+            Dictionary<TagId, string> dict = new System.Collections.Generic.Dictionary<TagId, string>();
             TagId playerId = Tag<PlayerTag>.Id;
             TagId enemyId = Tag<EnemyTag>.Id;
 

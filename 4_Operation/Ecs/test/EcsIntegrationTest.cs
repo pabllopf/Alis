@@ -75,7 +75,7 @@ namespace Alis.Core.Ecs.Test
 
             // Act - Simulate update loop
             Query movementQuery = scene.Query<With<Position>, With<Velocity>>();
-            foreach (var (positionRef, velocityRef) in movementQuery.Enumerate<Position, Velocity>())
+            foreach ((Ref<Position> positionRef, Ref<Velocity> velocityRef) in movementQuery.Enumerate<Position, Velocity>())
             {
                 positionRef.Value.X += 1.0f;
             }
@@ -145,7 +145,7 @@ namespace Alis.Core.Ecs.Test
             // Act & Assert - Count all positions
             Query allQuery = scene.Query<With<Position>>();
             int allCount = 0;
-            foreach (var _ in allQuery.Enumerate<Position>())
+            foreach (RefTuple<Position> _ in allQuery.Enumerate<Position>())
             {
                 allCount++;
             }
@@ -222,7 +222,7 @@ namespace Alis.Core.Ecs.Test
             // Act & Assert - Query with 3 components
             Query fullQuery = scene.Query<With<Position>, With<Velocity>, With<Health>>();
             int fullCount = 0;
-            foreach (var _ in fullQuery.Enumerate<Position, Velocity, Health>())
+            foreach (RefTuple<Position, Velocity, Health> _ in fullQuery.Enumerate<Position, Velocity, Health>())
             {
                 fullCount++;
             }
@@ -231,7 +231,7 @@ namespace Alis.Core.Ecs.Test
             // Query with 2 components
             Query partialQuery = scene.Query<With<Position>, With<Velocity>>();
             int partialCount = 0;
-            foreach (var _ in partialQuery.Enumerate<Position, Velocity>())
+            foreach (RefTuple<Position, Velocity> _ in partialQuery.Enumerate<Position, Velocity>())
             {
                 partialCount++;
             }
@@ -281,7 +281,7 @@ namespace Alis.Core.Ecs.Test
             // Act
             Query query = scene.Query<With<Position>>();
             int count = 0;
-            foreach (var _ in query.Enumerate<Position>())
+            foreach (RefTuple<Position> _ in query.Enumerate<Position>())
             {
                 count++;
             }
@@ -303,7 +303,7 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
 
             // Act
-            var chunkTuple = scene.CreateMany<Position>(100);
+            ChunkTuple<Position> chunkTuple = scene.CreateMany<Position>(100);
 
             // Assert
             Assert.Equal(100, scene.EntityCount);

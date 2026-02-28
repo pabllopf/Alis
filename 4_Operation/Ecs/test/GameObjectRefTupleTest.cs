@@ -50,7 +50,7 @@ namespace Alis.Core.Ecs.Test
             entity.Add(new Position { X = 10, Y = 20 });
             
             // Act
-            var refTuple = new GameObjectRefTuple<Position>
+            GameObjectRefTuple<Position> refTuple = new GameObjectRefTuple<Position>
             {
                 GameObject = entity,
                 Item1 = new Ref<Position>(new[] { new Position { X = 10, Y = 20 } }, 0)
@@ -82,7 +82,7 @@ namespace Alis.Core.Ecs.Test
             };
             
             // Act
-            var (go, posRef) = tuple;
+            (GameObject go, Ref<Position> posRef) = tuple;
             
             // Assert
             Assert.Equal(entity, go);
@@ -108,8 +108,8 @@ namespace Alis.Core.Ecs.Test
             entity2.Add(pos2);
             
             // Act
-            var tuple1 = new GameObjectRefTuple<Position> { GameObject = entity1, Item1 = new Ref<Position>(new[] { pos1 }, 0) };
-            var tuple2 = new GameObjectRefTuple<Position> { GameObject = entity2, Item1 = new Ref<Position>(new[] { pos2 }, 0) };
+            GameObjectRefTuple<Position> tuple1 = new GameObjectRefTuple<Position> { GameObject = entity1, Item1 = new Ref<Position>(new[] { pos1 }, 0) };
+            GameObjectRefTuple<Position> tuple2 = new GameObjectRefTuple<Position> { GameObject = entity2, Item1 = new Ref<Position>(new[] { pos2 }, 0) };
             
             // Assert
             Assert.NotEqual(tuple1.GameObject, tuple2.GameObject);
@@ -132,7 +132,7 @@ namespace Alis.Core.Ecs.Test
             entity.Add(health);
             
             // Act
-            var tuple = new GameObjectRefTuple<Health>
+            GameObjectRefTuple<Health> tuple = new GameObjectRefTuple<Health>
             {
                 GameObject = entity,
                 Item1 = new Ref<Health>(new[] { health }, 0)
@@ -157,7 +157,7 @@ namespace Alis.Core.Ecs.Test
             entity.Add(pos);
             
             // Act
-            var tuple = new GameObjectRefTuple<Position> { GameObject = entity, Item1 = new Ref<Position>(new[] { pos }, 0) };
+            GameObjectRefTuple<Position> tuple = new GameObjectRefTuple<Position> { GameObject = entity, Item1 = new Ref<Position>(new[] { pos }, 0) };
             GameObject retrieved = tuple.GameObject;
             
             // Assert
@@ -179,8 +179,8 @@ namespace Alis.Core.Ecs.Test
             entity.Add(pos);
             
             // Act
-            var tuple = new GameObjectRefTuple<Position> { GameObject = entity, Item1 = new Ref<Position>(new[] { pos }, 0) };
-            var item = tuple.Item1;
+            GameObjectRefTuple<Position> tuple = new GameObjectRefTuple<Position> { GameObject = entity, Item1 = new Ref<Position>(new[] { pos }, 0) };
+            Ref<Position> item = tuple.Item1;
             
             // Assert
             Assert.Equal(42, item.Value.X);

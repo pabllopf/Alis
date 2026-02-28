@@ -89,7 +89,7 @@ namespace Alis.Core.Ecs.Test
         ///     Tests that Add extension method can add a new component to an entity.
         /// </remarks>
         [Fact]
-        public void GameObject_AddComponent_AddsNewComponent()
+        public void GameObject_Add_AddsNewComponent()
         {
             // Arrange
             using Scene scene = new Scene();

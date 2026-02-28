@@ -105,10 +105,10 @@ namespace Alis.Core.Ecs.Test.Kernel
         ///     Tests that add component adds to buffer
         /// </summary>
         /// <remarks>
-        ///     Tests that AddComponent method adds the operation to the buffer.
+        ///     Tests that Add method adds the operation to the buffer.
         /// </remarks>
         [Fact]
-        public void AddComponent_AddsToBuffer()
+        public void Add_AddsToBuffer()
         {
             // Arrange
             using Scene scene = new Scene();
@@ -191,10 +191,10 @@ namespace Alis.Core.Ecs.Test.Kernel
         ///     Tests that playback applies add component command
         /// </summary>
         /// <remarks>
-        ///     Tests that Playback method applies the AddComponent command to the scene.
+        ///     Tests that Playback method applies the Add command to the scene.
         /// </remarks>
         [Fact]
-        public void Playback_AppliesAddComponentCommand()
+        public void Playback_AppliesAddCommand()
         {
             // Arrange
             using Scene scene = new Scene();
@@ -393,10 +393,10 @@ namespace Alis.Core.Ecs.Test.Kernel
         ///     Tests that add component with type parameter works
         /// </summary>
         /// <remarks>
-        ///     Tests that AddComponent overload with Type parameter works correctly.
+        ///     Tests that Add overload with Type parameter works correctly.
         /// </remarks>
         [Fact]
-        public void AddComponent_WithTypeParameter_Works()
+        public void Add_WithTypeParameter_Works()
         {
             // Arrange
             using Scene scene = new Scene();

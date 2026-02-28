@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
 
@@ -386,7 +387,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            var entities = new System.Collections.Generic.List<GameObject>();
+            List<GameObject> entities = new System.Collections.Generic.List<GameObject>();
 
             // Act
             for (int i = 0; i < 5; i++)
@@ -396,7 +397,7 @@ namespace Alis.Core.Ecs.Test
 
             // Assert
             Assert.Equal(5, entities.Count);
-            foreach (var entity in entities)
+            foreach (GameObject entity in entities)
             {
                 Assert.False(entity.IsNull);
             }
@@ -427,7 +428,7 @@ namespace Alis.Core.Ecs.Test
         ///     Tests that components can be added to a GameObject after its creation.
         /// </remarks>
         [Fact]
-        public void GameObject_CanAddComponentAfterCreation()
+        public void GameObject_CanAddAfterCreation()
         {
             // Arrange
             using Scene scene = new Scene();

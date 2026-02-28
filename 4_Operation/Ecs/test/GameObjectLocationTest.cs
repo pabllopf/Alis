@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Kernel.Archetypes;
 using Xunit;
 
@@ -92,7 +93,7 @@ namespace Alis.Core.Ecs.Test
             GameObjectLocation location = new GameObjectLocation(archetype, 0);
             
             // Act
-            var archetypeId = location.ArchetypeId;
+            GameObjectType archetypeId = location.ArchetypeId;
             
             // Assert
             Assert.Equal(archetype.Id, archetypeId);

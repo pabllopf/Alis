@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
 
@@ -147,7 +148,7 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
 
             // Act
-            var chunkTuple = scene.CreateMany<TestComponent>(5);
+            ChunkTuple<TestComponent> chunkTuple = scene.CreateMany<TestComponent>(5);
 
             // Assert
             Assert.Equal(5, scene.EntityCount);
