@@ -381,7 +381,6 @@ namespace Alis.Core.Audio.Test.Players
             Assert.NotNull(player);
         }
         
-
         /// <summary>
         ///     Tests that get bash command with special characters should return correct command
         /// </summary>
