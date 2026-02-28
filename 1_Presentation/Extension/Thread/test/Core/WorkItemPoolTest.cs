@@ -284,7 +284,6 @@ namespace Alis.Extension.Thread.Test.Core
             WorkItem item = pool.Rent();
             Assert.NotNull(item);
         }
-
         
         /// <summary>
         ///     Tests that pool maintains fifo order
