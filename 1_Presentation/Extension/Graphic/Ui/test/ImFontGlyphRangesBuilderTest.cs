@@ -27,59 +27,107 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Reflection;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
 {
     /// <summary>
-    ///     The im font glyph ranges builder test class
+    /// Provides unit coverage for <see cref="ImFontGlyphRangesBuilder"/> contracts.
     /// </summary>
     public class ImFontGlyphRangesBuilderTest
     {
         /// <summary>
-        ///     Tests that used chars should be initialized
+        /// Verifies that the builder is implemented as a value type.
         /// </summary>
         [Fact]
-        public void UsedChars_ShouldBeInitialized()
+        public void Type_ShouldBeStruct()
+        {
+            Type type = typeof(ImFontGlyphRangesBuilder);
+
+            Assert.True(type.IsValueType);
+            Assert.False(type.IsClass);
+        }
+
+        /// <summary>
+        /// Verifies that <see cref="ImFontGlyphRangesBuilder.UsedChars"/> starts with default value.
+        /// </summary>
+        [Fact]
+        public void UsedChars_ShouldBeDefaultOnNewInstance()
         {
             ImFontGlyphRangesBuilder builder = new ImFontGlyphRangesBuilder();
+
             Assert.Equal(default(ImVector), builder.UsedChars);
         }
 
         /// <summary>
-        ///     Tests that add char should not throw
+        /// Verifies that <see cref="ImFontGlyphRangesBuilder.UsedChars"/> can be assigned and read back.
         /// </summary>
         [Fact]
-        public void AddChar_ShouldNotThrow()
+        public void UsedChars_ShouldRoundTripAssignedValue()
         {
             ImFontGlyphRangesBuilder builder = new ImFontGlyphRangesBuilder();
+            ImVector usedChars = new ImVector
+            {
+                Size = 2,
+                Capacity = 4,
+                Data = IntPtr.Zero
+            };
+
+            builder.UsedChars = usedChars;
+
+            Assert.Equal(usedChars.Size, builder.UsedChars.Size);
+            Assert.Equal(usedChars.Capacity, builder.UsedChars.Capacity);
+            Assert.Equal(usedChars.Data, builder.UsedChars.Data);
         }
 
         /// <summary>
-        ///     Tests that clear should not throw
+        /// Verifies method signatures for native-backed operations remain stable.
         /// </summary>
         [Fact]
-        public void Clear_ShouldNotThrow()
+        public void NativeBackedMethods_ShouldKeepExpectedSignatures()
         {
-            ImFontGlyphRangesBuilder builder = new ImFontGlyphRangesBuilder();
+            AssertMethod("AddChar", typeof(void), typeof(ushort));
+            AssertMethod("Clear", typeof(void));
+            AssertMethod("GetBit", typeof(bool), typeof(uint));
+            AssertMethod("SetBit", typeof(void), typeof(uint));
         }
 
         /// <summary>
-        ///     Tests that get bit should return bool
+        /// Verifies that all API methods in the builder are public instance members.
         /// </summary>
         [Fact]
-        public void GetBit_ShouldReturnBool()
+        public void ApiMethods_ShouldBePublicInstanceMethods()
         {
-            ImFontGlyphRangesBuilder builder = new ImFontGlyphRangesBuilder();
+            MethodInfo addChar = typeof(ImFontGlyphRangesBuilder).GetMethod("AddChar");
+            MethodInfo clear = typeof(ImFontGlyphRangesBuilder).GetMethod("Clear");
+            MethodInfo getBit = typeof(ImFontGlyphRangesBuilder).GetMethod("GetBit");
+            MethodInfo setBit = typeof(ImFontGlyphRangesBuilder).GetMethod("SetBit");
+
+            Assert.NotNull(addChar);
+            Assert.NotNull(clear);
+            Assert.NotNull(getBit);
+            Assert.NotNull(setBit);
+
+            Assert.True(addChar.IsPublic && !addChar.IsStatic);
+            Assert.True(clear.IsPublic && !clear.IsStatic);
+            Assert.True(getBit.IsPublic && !getBit.IsStatic);
+            Assert.True(setBit.IsPublic && !setBit.IsStatic);
         }
 
         /// <summary>
-        ///     Tests that set bit should not throw
+        /// Resolves and validates a method by exact signature.
         /// </summary>
-        [Fact]
-        public void SetBit_ShouldNotThrow()
+        /// <param name="name">The target method name.</param>
+        /// <param name="returnType">The expected return type.</param>
+        /// <param name="parameterTypes">The expected parameter types.</param>
+        private static void AssertMethod(string name, Type returnType, params Type[] parameterTypes)
         {
-            ImFontGlyphRangesBuilder builder = new ImFontGlyphRangesBuilder();
+            MethodInfo method = typeof(ImFontGlyphRangesBuilder).GetMethod(name, BindingFlags.Public | BindingFlags.Instance, null, parameterTypes, null);
+
+            Assert.NotNull(method);
+            Assert.Equal(returnType, method.ReturnType);
         }
     }
 }

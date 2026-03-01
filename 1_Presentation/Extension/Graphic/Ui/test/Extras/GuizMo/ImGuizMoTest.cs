@@ -28,192 +28,171 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Aspect.Math.Vector;
+using System.Reflection;
+using Alis.Extension.Graphic.Ui.Extras.GuizMo;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
 {
     /// <summary>
-    ///     The im guiz mo test class
+    /// Provides unit coverage for the managed API surface of <see cref="ImGuizMo"/>.
     /// </summary>
     public class ImGuizMoTest
     {
         /// <summary>
-        ///     Tests that allow axis flip should not throw
+        /// Verifies that ImGuizMo is generated as a static class.
         /// </summary>
         [Fact]
-        public void AllowAxisFlip_ShouldNotThrow()
+        public void Type_ShouldBeStaticClass()
         {
+            Type type = typeof(ImGuizMo);
+
+            Assert.True(type.IsClass);
+            Assert.True(type.IsAbstract);
+            Assert.True(type.IsSealed);
         }
 
         /// <summary>
-        ///     Tests that begin frame should not throw
+        /// Verifies that key API methods exist with expected parameter contracts.
         /// </summary>
         [Fact]
-        public void BeginFrame_ShouldNotThrow()
+        public void PublicApi_ShouldExposeExpectedMethodContracts()
         {
+            AssertMethod("AllowAxisFlip", typeof(void), typeof(bool));
+            AssertMethod("BeginFrame", typeof(void));
+            AssertMethod("IsOver", typeof(bool));
+            AssertMethod("IsOver", typeof(bool), typeof(Operation));
+            AssertMethod("IsUsing", typeof(bool));
+            AssertMethod("SetDrawList", typeof(void));
+            AssertMethod("SetDrawList", typeof(void), typeof(ImDrawList));
+            AssertMethod("SetGizmoSizeClipSpace", typeof(void), typeof(float));
+            AssertMethod("SetId", typeof(void), typeof(int));
+            AssertMethod("SetImGuiContext", typeof(void), typeof(IntPtr));
+            AssertMethod("SetOrthographic", typeof(void), typeof(bool));
+            AssertMethod("SetRect", typeof(void), typeof(float), typeof(float), typeof(float), typeof(float));
+            AssertMethod("ShowDemoWindow", typeof(void));
         }
 
         /// <summary>
-        ///     Tests that decompose matrix to components should not throw
+        /// Verifies that manipulate keeps the managed wrapper signature over arrays and enums.
         /// </summary>
         [Fact]
-        public void DecomposeMatrixToComponents_ShouldNotThrow()
+        public void Manipulate_ShouldExposeExpectedSignature()
         {
-            float[] matrix = new float[16];
-            float[] translation = new float[3];
-            float[] rotation = new float[3];
-            float[] scale = new float[3];
+            MethodInfo method = typeof(ImGuizMo).GetMethod(
+                "Manipulate",
+                BindingFlags.Public | BindingFlags.Static,
+                null,
+                new[] { typeof(float[]), typeof(float[]), typeof(Operation), typeof(Mode), typeof(float[]) },
+                null);
+
+            Assert.NotNull(method);
+            Assert.Equal(typeof(byte), method.ReturnType);
         }
 
         /// <summary>
-        ///     Tests that draw cubes should not throw
+        /// Verifies that internal matrix buffers are initialized with expected dimensions.
         /// </summary>
         [Fact]
-        public void DrawCubes_ShouldNotThrow()
+        public void InternalBuffers_ShouldUseExpectedSizes()
         {
-            float view = 0;
-            float projection = 0;
-            float matrices = 0;
-            int matrixCount = 1;
+            float[] cameraProjection = GetPrivateArray("cameraProjection");
+            float[] cameraView = GetPrivateArray("cameraView");
+            float[] identityMatrix = GetPrivateArray("identityMatrix");
+            float[] matrix = GetPrivateArray("matrix");
+            float[] matrixRotation = GetPrivateArray("matrixRotation");
+            float[] matrixScale = GetPrivateArray("matrixScale");
+            float[] matrixTranslation = GetPrivateArray("matrixTranslation");
+
+            Assert.Equal(16, cameraProjection.Length);
+            Assert.Equal(16, cameraView.Length);
+            Assert.Equal(16, identityMatrix.Length);
+            Assert.Equal(16, matrix.Length);
+            Assert.Equal(3, matrixRotation.Length);
+            Assert.Equal(3, matrixScale.Length);
+            Assert.Equal(3, matrixTranslation.Length);
         }
 
         /// <summary>
-        ///     Tests that draw grid should not throw
+        /// Verifies that identity and camera view matrices keep canonical diagonal values.
         /// </summary>
         [Fact]
-        public void DrawGrid_ShouldNotThrow()
+        public void CanonicalMatrices_ShouldKeepIdentityDiagonal()
         {
-            float[] view = new float[16];
-            float[] projection = new float[16];
-            float[] matrix = new float[16];
-            float gridSize = 1.0f;
+            float[] cameraView = GetPrivateArray("cameraView");
+            float[] identityMatrix = GetPrivateArray("identityMatrix");
+
+            Assert.Equal(1.0f, cameraView[0]);
+            Assert.Equal(1.0f, cameraView[5]);
+            Assert.Equal(1.0f, cameraView[10]);
+            Assert.Equal(1.0f, cameraView[15]);
+
+            Assert.Equal(1.0f, identityMatrix[0]);
+            Assert.Equal(1.0f, identityMatrix[5]);
+            Assert.Equal(1.0f, identityMatrix[10]);
+            Assert.Equal(1.0f, identityMatrix[15]);
         }
 
         /// <summary>
-        ///     Tests that enable should not throw
+        /// Verifies that platform-isolated tests can run without colliding across OS jobs.
         /// </summary>
-        [Fact]
-        public void Enable_ShouldNotThrow()
+        [WindowsOnly]
+        public void WindowsOnly_SurfaceCheck_ShouldRunIsolated()
         {
+            Assert.NotNull(typeof(ImGuizMo));
         }
 
         /// <summary>
-        ///     Tests that is over should return bool
+        /// Verifies that platform-isolated tests can run without colliding across OS jobs.
         /// </summary>
-        [Fact]
-        public void IsOver_ShouldReturnBool()
+        [MacOsOnly]
+        public void MacOsOnly_SurfaceCheck_ShouldRunIsolated()
         {
+            Assert.NotNull(typeof(ImGuizMo));
         }
 
         /// <summary>
-        ///     Tests that is over with operation should return bool
+        /// Verifies that platform-isolated tests can run without colliding across OS jobs.
         /// </summary>
-        [Fact]
-        public void IsOver_WithOperation_ShouldReturnBool()
+        [LinuxOnly]
+        public void LinuxOnly_SurfaceCheck_ShouldRunIsolated()
         {
+            Assert.NotNull(typeof(ImGuizMo));
         }
 
         /// <summary>
-        ///     Tests that is using should return bool
+        /// Reads a private static float array from ImGuizMo.
         /// </summary>
-        [Fact]
-        public void IsUsing_ShouldReturnBool()
+        /// <param name="name">The field name.</param>
+        /// <returns>The resolved float array.</returns>
+        private static float[] GetPrivateArray(string name)
         {
+            FieldInfo field = typeof(ImGuizMo).GetField(name, BindingFlags.NonPublic | BindingFlags.Static);
+
+            Assert.NotNull(field);
+            Assert.Equal(typeof(float[]), field.FieldType);
+
+            float[] value = field.GetValue(null) as float[];
+
+            Assert.NotNull(value);
+            return value;
         }
 
         /// <summary>
-        ///     Tests that manipulate should return byte
+        /// Resolves and validates a specific public static method signature.
         /// </summary>
-        [Fact]
-        public void Manipulate_ShouldReturnByte()
+        /// <param name="name">The method name.</param>
+        /// <param name="returnType">The expected return type.</param>
+        /// <param name="parameterTypes">The expected parameter types.</param>
+        private static void AssertMethod(string name, Type returnType, params Type[] parameterTypes)
         {
-            float[] view = new float[16];
-            float[] projection = new float[16];
-            float[] matrix = new float[16];
-        }
+            MethodInfo method = typeof(ImGuizMo).GetMethod(name, BindingFlags.Public | BindingFlags.Static, null, parameterTypes, null);
 
-        /// <summary>
-        ///     Tests that recompose matrix from components should not throw
-        /// </summary>
-        [Fact]
-        public void RecomposeMatrixFromComponents_ShouldNotThrow()
-        {
-            float[] translation = new float[3];
-            float[] rotation = new float[3];
-            float[] scale = new float[3];
-            float[] matrix = new float[16];
-        }
-
-        /// <summary>
-        ///     Tests that set draw list should not throw
-        /// </summary>
-        [Fact]
-        public void SetDrawList_ShouldNotThrow()
-        {
-        }
-
-        /// <summary>
-        ///     Tests that set draw list with draw list should not throw
-        /// </summary>
-        [Fact]
-        public void SetDrawList_WithDrawList_ShouldNotThrow()
-        {
-            ImDrawList drawList = new ImDrawList();
-        }
-
-        /// <summary>
-        ///     Tests that set gizmo size clip space should not throw
-        /// </summary>
-        [Fact]
-        public void SetGizmoSizeClipSpace_ShouldNotThrow()
-        {
-        }
-
-        /// <summary>
-        ///     Tests that set id should not throw
-        /// </summary>
-        [Fact]
-        public void SetId_ShouldNotThrow()
-        {
-        }
-
-        /// <summary>
-        ///     Tests that set im gui context should not throw
-        /// </summary>
-        [Fact]
-        public void SetImGuiContext_ShouldNotThrow()
-        {
-            IntPtr ctx = IntPtr.Zero;
-        }
-
-        /// <summary>
-        ///     Tests that set orthographic should not throw
-        /// </summary>
-        [Fact]
-        public void SetOrthographic_ShouldNotThrow()
-        {
-        }
-
-        /// <summary>
-        ///     Tests that set rect should not throw
-        /// </summary>
-        [Fact]
-        public void SetRect_ShouldNotThrow()
-        {
-        }
-
-        /// <summary>
-        ///     Tests that view manipulate should not throw
-        /// </summary>
-        [Fact]
-        public void ViewManipulate_ShouldNotThrow()
-        {
-            float[] view = new float[16];
-            float length = 1.0f;
-            Vector2F position = new Vector2F(0.0f, 0.0f);
-            Vector2F size = new Vector2F(1.0f, 1.0f);
-            uint backgroundColor = 0;
+            Assert.NotNull(method);
+            Assert.Equal(returnType, method.ReturnType);
+            Assert.True(method.IsPublic);
+            Assert.True(method.IsStatic);
         }
     }
 }
