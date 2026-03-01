@@ -1,0 +1,43 @@
+using System.Threading;
+using System.Threading.Tasks;
+using Alis.Core.Ecs.Systems.Scope;
+using Moq;
+using Xunit;
+
+namespace Alis.Extension.Payment.Stripe.Test
+{
+    /// <summary>
+    ///     High-volume theory tests for StoreManager payment status mapping.
+    /// </summary>
+    public class PaymentStatusBulkTheoryTest
+    {
+        [Theory]
+        [MemberData(nameof(StripeTheoryData.PaymentStatusMappingCases), MemberType = typeof(StripeTheoryData))]
+        public async Task GetPaymentStatusAsync_BulkMappings_ShouldMapExpectedStatus(string stripeStatus, PaymentStatus expected)
+        {
+            Mock<IStripeGatewayClient> gateway = new Mock<IStripeGatewayClient>();
+            gateway
+                .Setup(x => x.GetPaymentIntentAsync("pi_bulk", It.IsAny<CancellationToken>()))
+                .ReturnsAsync(new StripePaymentIntentResponse
+                {
+                    PaymentIntentId = "pi_bulk",
+                    ClientSecret = "pi_bulk_secret",
+                    Status = stripeStatus
+                });
+
+            StoreManager manager = new StoreManager(new Context(), gateway.Object);
+            await manager.InitializeAsync(new StoreConfiguration
+            {
+                SecretApiKey = "sk_test_bulk_status",
+                DefaultCurrency = "usd",
+                SuccessUrl = "https://example.com/success",
+                CancelUrl = "https://example.com/cancel"
+            });
+
+            PaymentStatus result = await manager.GetPaymentStatusAsync("pi_bulk");
+
+            Assert.Equal(expected, result);
+        }
+    }
+}
+

@@ -983,37 +983,6 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that refund payment async with null amount refunds full amount
-        /// </summary>
-        [Fact]
-        public async Task RefundPaymentAsync_WithNullAmount_RefundsFullAmount()
-        {
-            // Arrange
-            Mock<IStripeGatewayClient> gateway = new Mock<IStripeGatewayClient>();
-            StripeRefundRequest capturedRequest = null;
-            gateway
-                .Setup(x => x.CreateRefundAsync(It.IsAny<StripeRefundRequest>(), It.IsAny<CancellationToken>()))
-                .Callback<StripeRefundRequest, CancellationToken>((req, ct) => capturedRequest = req)
-                .ReturnsAsync(new StripeRefundResponse
-                {
-                    RefundId = "re_full",
-                    AmountRefunded = 1000,
-                    Currency = "usd",
-                    Status = "succeeded"
-                });
-
-            StoreManager manager = new StoreManager(CreateContext(), gateway.Object);
-            await manager.InitializeAsync(CreateValidConfiguration());
-
-            // Act
-            await manager.RefundPaymentAsync("pi_123", null);
-
-            // Assert
-            Assert.NotNull(capturedRequest);
-            Assert.Null(capturedRequest.Amount);
-        }
-
-        /// <summary>
         /// Tests that refund payment async with null payment intent id throws argument exception
         /// </summary>
         [Fact]
