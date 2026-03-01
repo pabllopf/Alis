@@ -27,11 +27,23 @@ LOCAL_COMMITS=$(git rev-list "$BASE"..HEAD)
 if [ -z "$LOCAL_COMMITS" ]; then
   echo "ℹ No new commits to rewrite."
 else
-  echo "ℹ Rewriting $(echo "$LOCAL_COMMITS" | wc -l) new commits..."
-  for commit in $(echo "$LOCAL_COMMITS" | tac); do
+  NUM_COMMITS=$(echo "$LOCAL_COMMITS" | wc -l)
+  echo "ℹ Rewriting $NUM_COMMITS new commit(s)..."
+
+  # Loop through commits from oldest to newest using tail -r (reverse)
+  echo "$LOCAL_COMMITS" | tail -r | while read commit; do
+    MESSAGE=$(git log --format=%s -n 1 "$commit")
+    echo "✏️ Rewriting commit $commit: $MESSAGE"
+    
     GIT_COMMITTER_DATE="$COMMIT_TIMESTAMP" \
     GIT_AUTHOR_DATE="$COMMIT_TIMESTAMP" \
     git commit --amend -S --no-edit "$commit" >/dev/null 2>&1
+    
+    if [ $? -eq 0 ]; then
+      echo "✅ Commit $commit updated."
+    else
+      echo "❌ Failed to update commit $commit."
+    fi
   done
 fi
 
