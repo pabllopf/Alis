@@ -41,6 +41,9 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
     /// </summary>
     public class ILoggerTest
     {
+        /// <summary>
+        /// Tests that i logger implementation should have name property
+        /// </summary>
         [Fact]
         public void ILogger_Implementation_ShouldHaveNameProperty()
         {
@@ -55,6 +58,9 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
             }
         }
 
+        /// <summary>
+        /// Tests that i logger all logging methods should be defined
+        /// </summary>
         [Fact]
         public void ILogger_AllLoggingMethods_ShouldBeDefined()
         {
@@ -87,6 +93,9 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
             }
         }
 
+        /// <summary>
+        /// Tests that i logger correlation id methods should exist
+        /// </summary>
         [Fact]
         public void ILogger_CorrelationIdMethods_ShouldExist()
         {
@@ -104,6 +113,9 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
             }
         }
 
+        /// <summary>
+        /// Tests that i logger scope methods should exist
+        /// </summary>
         [Fact]
         public void ILogger_ScopeMethods_ShouldExist()
         {
@@ -119,6 +131,9 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
             }
         }
 
+        /// <summary>
+        /// Tests that i logger is enabled method should exist
+        /// </summary>
         [Fact]
         public void ILogger_IsEnabledMethod_ShouldExist()
         {
@@ -132,6 +147,9 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
             }
         }
 
+        /// <summary>
+        /// Tests that i logger implementation can be stored
+        /// </summary>
         [Fact]
         public void ILogger_ImplementationCanBeStored()
         {
@@ -146,6 +164,9 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
             }
         }
 
+        /// <summary>
+        /// Tests that i logger multiple implementations should coexist
+        /// </summary>
         [Fact]
         public void ILogger_MultipleImplementations_ShouldCoexist()
         {

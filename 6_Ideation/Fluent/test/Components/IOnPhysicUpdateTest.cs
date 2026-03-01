@@ -83,8 +83,15 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// </summary>
         private class PhysicUpdateHandler : IOnPhysicUpdate
         {
+            /// <summary>
+            /// Gets or sets the value of the update count
+            /// </summary>
             public int UpdateCount { get; private set; }
 
+            /// <summary>
+            /// Ons the physic update using the specified self
+            /// </summary>
+            /// <param name="self">The self</param>
             public void OnPhysicUpdate(IGameObject self)
             {
                 UpdateCount++;

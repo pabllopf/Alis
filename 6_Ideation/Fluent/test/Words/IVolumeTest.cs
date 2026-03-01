@@ -101,6 +101,9 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// </summary>
         private class VolumeBuilder
         {
+            /// <summary>
+            /// Gets or sets the value of the volume level
+            /// </summary>
             public float VolumeLevel { get; set; }
         }
 
@@ -109,8 +112,16 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// </summary>
         private class VolumeBuilderImpl : IVolume<VolumeBuilder, float>
         {
+            /// <summary>
+            /// The volume builder
+            /// </summary>
             private readonly VolumeBuilder _builder = new VolumeBuilder();
 
+            /// <summary>
+            /// Volumes the value
+            /// </summary>
+            /// <param name="value">The value</param>
+            /// <returns>The builder</returns>
             public VolumeBuilder Volume(float value)
             {
                 _builder.VolumeLevel = value;

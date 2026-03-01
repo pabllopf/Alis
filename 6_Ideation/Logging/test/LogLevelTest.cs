@@ -38,6 +38,9 @@ namespace Alis.Core.Aspect.Logging.Test
     /// </summary>
     public class LogLevelTest
     {
+        /// <summary>
+        /// Tests that log level trace has value 0
+        /// </summary>
         [Fact]
         public void LogLevel_Trace_HasValue0()
         {
@@ -45,6 +48,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(0, (byte) LogLevel.Trace);
         }
 
+        /// <summary>
+        /// Tests that log level debug has value 1
+        /// </summary>
         [Fact]
         public void LogLevel_Debug_HasValue1()
         {
@@ -52,6 +58,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(1, (byte) LogLevel.Debug);
         }
 
+        /// <summary>
+        /// Tests that log level info has value 2
+        /// </summary>
         [Fact]
         public void LogLevel_Info_HasValue2()
         {
@@ -59,6 +68,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(2, (byte) LogLevel.Info);
         }
 
+        /// <summary>
+        /// Tests that log level warning has value 3
+        /// </summary>
         [Fact]
         public void LogLevel_Warning_HasValue3()
         {
@@ -66,6 +78,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(3, (byte) LogLevel.Warning);
         }
 
+        /// <summary>
+        /// Tests that log level error has value 4
+        /// </summary>
         [Fact]
         public void LogLevel_Error_HasValue4()
         {
@@ -73,6 +88,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(4, (byte) LogLevel.Error);
         }
 
+        /// <summary>
+        /// Tests that log level critical has value 5
+        /// </summary>
         [Fact]
         public void LogLevel_Critical_HasValue5()
         {
@@ -80,6 +98,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(5, (byte) LogLevel.Critical);
         }
 
+        /// <summary>
+        /// Tests that log level none has value 255
+        /// </summary>
         [Fact]
         public void LogLevel_None_HasValue255()
         {
@@ -87,6 +108,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(255, (byte) LogLevel.None);
         }
 
+        /// <summary>
+        /// Tests that log level comparison should work correctly
+        /// </summary>
         [Fact]
         public void LogLevel_Comparison_ShouldWorkCorrectly()
         {
@@ -99,6 +123,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(LogLevel.Critical < LogLevel.None);
         }
 
+        /// <summary>
+        /// Tests that log level equality should work
+        /// </summary>
         [Fact]
         public void LogLevel_Equality_ShouldWork()
         {
@@ -107,6 +134,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.False(LogLevel.Info == LogLevel.Warning);
         }
 
+        /// <summary>
+        /// Tests that log level to string should return name
+        /// </summary>
         [Fact]
         public void LogLevel_ToString_ShouldReturnName()
         {
@@ -120,6 +150,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal("None", LogLevel.None.ToString());
         }
 
+        /// <summary>
+        /// Tests that log level can be cast from byte
+        /// </summary>
         [Fact]
         public void LogLevel_CanBeCastFromByte()
         {
@@ -128,6 +161,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(LogLevel.Warning, (LogLevel) 3);
         }
 
+        /// <summary>
+        /// Tests that log level can be cast to byte
+        /// </summary>
         [Fact]
         public void LogLevel_CanBeCastToByte()
         {
@@ -136,6 +172,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(3, (byte) LogLevel.Warning);
         }
 
+        /// <summary>
+        /// Tests that log level ordering is monotonic
+        /// </summary>
         [Fact]
         public void LogLevel_OrderingIsMonotonic()
         {
@@ -149,6 +188,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that log level has seven values
+        /// </summary>
         [Fact]
         public void LogLevel_HasSevenValues()
         {
@@ -159,6 +201,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(7, values.Length);
         }
 
+        /// <summary>
+        /// Tests that log level none is special
+        /// </summary>
         [Fact]
         public void LogLevel_NoneIsSpecial()
         {
@@ -167,6 +212,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(255, (byte) LogLevel.None);
         }
 
+        /// <summary>
+        /// Tests that log level greater than or equal should work
+        /// </summary>
         [Fact]
         public void LogLevel_GreaterThanOrEqual_ShouldWork()
         {
@@ -176,6 +224,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.False(LogLevel.Warning >= LogLevel.Error);
         }
 
+        /// <summary>
+        /// Tests that log level less than or equal should work
+        /// </summary>
         [Fact]
         public void LogLevel_LessThanOrEqual_ShouldWork()
         {

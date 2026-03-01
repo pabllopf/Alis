@@ -44,6 +44,9 @@ namespace Alis.Core.Aspect.Logging.Test
     /// </summary>
     public class LoggingIntegrationTest
     {
+        /// <summary>
+        /// Tests that integration complete workflow should succeed
+        /// </summary>
         [Fact]
         public void Integration_CompleteWorkflow_ShouldSucceed()
         {
@@ -84,6 +87,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that integration multiple loggers multiple outputs should succeed
+        /// </summary>
         [Fact]
         public void Integration_MultipleLoggersMultipleOutputs_ShouldSucceed()
         {
@@ -109,6 +115,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that integration complex filtering should succeed
+        /// </summary>
         [Fact]
         public void Integration_ComplexFiltering_ShouldSucceed()
         {
@@ -144,6 +153,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that integration structured logging with contexts should succeed
+        /// </summary>
         [Fact]
         public void Integration_StructuredLoggingWithContexts_ShouldSucceed()
         {
@@ -177,6 +189,10 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that integration exception handling should succeed
+        /// </summary>
+        /// <exception cref="InvalidOperationException">Critical operation failed</exception>
         [Fact]
         public void Integration_ExceptionHandling_ShouldSucceed()
         {
@@ -206,6 +222,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that integration concurrent logging from multiple threads should succeed
+        /// </summary>
         [Fact]
         public void Integration_ConcurrentLoggingFromMultipleThreads_ShouldSucceed()
         {
@@ -242,6 +261,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that integration formatter and output combinations should succeed
+        /// </summary>
         [Fact]
         public void Integration_FormatterAndOutputCombinations_ShouldSucceed()
         {
@@ -270,6 +292,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that integration scoped contexts with multiple levels should succeed
+        /// </summary>
         [Fact]
         public void Integration_ScopedContextsWithMultipleLevels_ShouldSucceed()
         {
@@ -312,6 +337,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that integration game loop simulation should succeed
+        /// </summary>
         [Fact]
         public void Integration_GameLoopSimulation_ShouldSucceed()
         {

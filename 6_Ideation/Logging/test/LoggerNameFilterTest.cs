@@ -41,6 +41,9 @@ namespace Alis.Core.Aspect.Logging.Test
     /// </summary>
     public class LoggerNameFilterTest
     {
+        /// <summary>
+        /// Tests that logger name filter inclusive should allow only specified names
+        /// </summary>
         [Fact]
         public void LoggerNameFilter_Inclusive_ShouldAllowOnlySpecifiedNames()
         {
@@ -54,6 +57,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.False(filter.ShouldLog(CreateEntry("Logger3")));
         }
 
+        /// <summary>
+        /// Tests that logger name filter exclusive should block specified names
+        /// </summary>
         [Fact]
         public void LoggerNameFilter_Exclusive_ShouldBlockSpecifiedNames()
         {
@@ -67,6 +73,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(filter.ShouldLog(CreateEntry("Logger3")));
         }
 
+        /// <summary>
+        /// Tests that logger name filter empty name list should allow all
+        /// </summary>
         [Fact]
         public void LoggerNameFilter_EmptyNameList_ShouldAllowAll()
         {
@@ -77,6 +86,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(filter.ShouldLog(CreateEntry("Any")));
         }
 
+        /// <summary>
+        /// Tests that logger name filter single name should filter correctly
+        /// </summary>
         [Fact]
         public void LoggerNameFilter_SingleName_ShouldFilterCorrectly()
         {
@@ -88,6 +100,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.False(filter.ShouldLog(CreateEntry("OtherLogger")));
         }
 
+        /// <summary>
+        /// Tests that logger name filter case sensitive should distinguish case
+        /// </summary>
         [Fact]
         public void LoggerNameFilter_CaseSensitive_ShouldDistinguishCase()
         {
@@ -100,6 +115,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.False(filter.ShouldLog(CreateEntry("LOGGER")));
         }
 
+        /// <summary>
+        /// Tests that logger name filter null entry should return true
+        /// </summary>
         [Fact]
         public void LoggerNameFilter_NullEntry_ShouldReturnTrue()
         {
@@ -110,6 +128,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(filter.ShouldLog(null));
         }
 
+        /// <summary>
+        /// Tests that logger name filter null name list should allow all
+        /// </summary>
         [Fact]
         public void LoggerNameFilter_NullNameList_ShouldAllowAll()
         {
@@ -120,6 +141,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(filter.ShouldLog(CreateEntry("Any")));
         }
 
+        /// <summary>
+        /// Tests that logger name filter empty logger name should filter correctly
+        /// </summary>
         [Fact]
         public void LoggerNameFilter_EmptyLoggerName_ShouldFilterCorrectly()
         {
@@ -131,6 +155,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.False(filter.ShouldLog(CreateEntry("Logger")));
         }
 
+        /// <summary>
+        /// Tests that logger name filter multiple names inclusive mode
+        /// </summary>
         [Fact]
         public void LoggerNameFilter_MultipleNames_InclusiveMode()
         {
@@ -146,6 +173,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.False(filter.ShouldLog(CreateEntry("Network")));
         }
 
+        /// <summary>
+        /// Tests that logger name filter multiple names exclusive mode
+        /// </summary>
         [Fact]
         public void LoggerNameFilter_MultipleNames_ExclusiveMode()
         {
@@ -160,6 +190,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(filter.ShouldLog(CreateEntry("Error")));
         }
 
+        /// <summary>
+        /// Tests that logger name filter has name
+        /// </summary>
         [Fact]
         public void LoggerNameFilter_HasName()
         {
@@ -171,6 +204,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("LoggerNameFilter", filter.Name);
         }
 
+        /// <summary>
+        /// Tests that logger name filter inclusive mode name should contain include
+        /// </summary>
         [Fact]
         public void LoggerNameFilter_InclusiveModeName_ShouldContainInclude()
         {
@@ -181,6 +217,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("Include", filter.Name);
         }
 
+        /// <summary>
+        /// Tests that logger name filter exclusive mode name should contain exclude
+        /// </summary>
         [Fact]
         public void LoggerNameFilter_ExclusiveModeName_ShouldContainExclude()
         {
@@ -191,6 +230,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("Exclude", filter.Name);
         }
 
+        /// <summary>
+        /// Tests that logger name filter whitespace in name should be preserved
+        /// </summary>
         [Fact]
         public void LoggerNameFilter_WhitespaceInName_ShouldBePreserved()
         {
@@ -202,6 +244,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.False(filter.ShouldLog(CreateEntry("MyLogger")));
         }
 
+        /// <summary>
+        /// Tests that logger name filter special characters in name should be matched
+        /// </summary>
         [Fact]
         public void LoggerNameFilter_SpecialCharactersInName_ShouldBeMatched()
         {
@@ -213,6 +258,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.False(filter.ShouldLog(CreateEntry("Logger123")));
         }
 
+        /// <summary>
+        /// Tests that logger name filter duplicate names should be handled
+        /// </summary>
         [Fact]
         public void LoggerNameFilter_DuplicateNames_ShouldBeHandled()
         {
@@ -224,6 +272,11 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(filter.ShouldLog(CreateEntry("Other")));
         }
 
+        /// <summary>
+        /// Creates the entry using the specified logger name
+        /// </summary>
+        /// <param name="loggerName">The logger name</param>
+        /// <returns>The log entry</returns>
         private static ILogEntry CreateEntry(string loggerName) => new LogEntry(LogLevel.Info, "Test", loggerName);
     }
 }

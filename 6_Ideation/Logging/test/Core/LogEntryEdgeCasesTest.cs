@@ -42,6 +42,9 @@ namespace Alis.Core.Aspect.Logging.Test.Core
     /// </summary>
     public class LogEntryEdgeCasesTest
     {
+        /// <summary>
+        /// Tests that log entry unicode should be preserved
+        /// </summary>
         [Fact]
         public void LogEntry_Unicode_ShouldBePreserved()
         {
@@ -55,6 +58,9 @@ namespace Alis.Core.Aspect.Logging.Test.Core
             Assert.Equal(unicodeMessage, entry.Message);
         }
 
+        /// <summary>
+        /// Tests that log entry very long message should be stored
+        /// </summary>
         [Fact]
         public void LogEntry_VeryLongMessage_ShouldBeStored()
         {
@@ -68,6 +74,9 @@ namespace Alis.Core.Aspect.Logging.Test.Core
             Assert.Equal(1000000, entry.Message.Length);
         }
 
+        /// <summary>
+        /// Tests that log entry very long logger name should be stored
+        /// </summary>
         [Fact]
         public void LogEntry_VeryLongLoggerName_ShouldBeStored()
         {
@@ -81,6 +90,9 @@ namespace Alis.Core.Aspect.Logging.Test.Core
             Assert.Equal(longName, entry.LoggerName);
         }
 
+        /// <summary>
+        /// Tests that log entry many properties should be stored
+        /// </summary>
         [Fact]
         public void LogEntry_ManyProperties_ShouldBeStored()
         {
@@ -98,6 +110,9 @@ namespace Alis.Core.Aspect.Logging.Test.Core
             Assert.Equal(1000, entry.Properties.Count);
         }
 
+        /// <summary>
+        /// Tests that log entry deep scope nesting should be stored
+        /// </summary>
         [Fact]
         public void LogEntry_DeepScopeNesting_ShouldBeStored()
         {
@@ -115,6 +130,9 @@ namespace Alis.Core.Aspect.Logging.Test.Core
             Assert.Equal(100, entry.Scopes.Count);
         }
 
+        /// <summary>
+        /// Tests that log entry whitespace only message should be stored
+        /// </summary>
         [Fact]
         public void LogEntry_WhitespaceOnlyMessage_ShouldBeStored()
         {
@@ -128,6 +146,9 @@ namespace Alis.Core.Aspect.Logging.Test.Core
             Assert.Equal(whitespaceMessage, entry.Message);
         }
 
+        /// <summary>
+        /// Tests that log entry null object in properties should be handled
+        /// </summary>
         [Fact]
         public void LogEntry_NullObjectInProperties_ShouldBeHandled()
         {
@@ -146,6 +167,9 @@ namespace Alis.Core.Aspect.Logging.Test.Core
             Assert.Null(entry.Properties["NullValue"]);
         }
 
+        /// <summary>
+        /// Tests that log entry null object in scopes should be handled
+        /// </summary>
         [Fact]
         public void LogEntry_NullObjectInScopes_ShouldBeHandled()
         {
@@ -160,6 +184,9 @@ namespace Alis.Core.Aspect.Logging.Test.Core
             Assert.Null(entry.Scopes[1]);
         }
 
+        /// <summary>
+        /// Tests that log entry exception with inner exception should preserve stack
+        /// </summary>
         [Fact]
         public void LogEntry_ExceptionWithInnerException_ShouldPreserveStack()
         {
@@ -176,6 +203,9 @@ namespace Alis.Core.Aspect.Logging.Test.Core
             Assert.Equal("Outer error", entry.Exception.Message);
         }
 
+        /// <summary>
+        /// Logs the entry windows paths in message should preserve
+        /// </summary>
         [WindowsOnly]
         public void LogEntry_WindowsPaths_InMessage_ShouldPreserve()
         {
@@ -189,6 +219,9 @@ namespace Alis.Core.Aspect.Logging.Test.Core
             Assert.Contains(windowsPath, entry.Message);
         }
 
+        /// <summary>
+        /// Logs the entry linux paths in message should preserve
+        /// </summary>
         [LinuxOnly]
         public void LogEntry_LinuxPaths_InMessage_ShouldPreserve()
         {
@@ -202,6 +235,9 @@ namespace Alis.Core.Aspect.Logging.Test.Core
             Assert.Contains(linuxPath, entry.Message);
         }
 
+        /// <summary>
+        /// Tests that log entry property values of different types
+        /// </summary>
         [Fact]
         public void LogEntry_PropertyValuesOfDifferentTypes()
         {
@@ -225,6 +261,9 @@ namespace Alis.Core.Aspect.Logging.Test.Core
             Assert.IsType<int>(entry.Properties["Int"]);
         }
 
+        /// <summary>
+        /// Tests that log entry repeated property names last value wins
+        /// </summary>
         [Fact]
         public void LogEntry_RepeatedPropertyNames_LastValueWins()
         {
@@ -242,6 +281,9 @@ namespace Alis.Core.Aspect.Logging.Test.Core
             Assert.Equal("SecondValue", entry.Properties["Key"]);
         }
 
+        /// <summary>
+        /// Tests that log entry correlation id with special characters
+        /// </summary>
         [Fact]
         public void LogEntry_CorrelationIdWithSpecialCharacters()
         {

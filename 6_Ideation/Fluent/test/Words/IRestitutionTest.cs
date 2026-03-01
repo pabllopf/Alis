@@ -88,6 +88,9 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// </summary>
         private class RestitutionBuilder
         {
+            /// <summary>
+            /// Gets or sets the value of the restitution value
+            /// </summary>
             public float RestitutionValue { get; set; }
         }
 
@@ -96,8 +99,16 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// </summary>
         private class RestitutionBuilderImpl : IRestitution<RestitutionBuilder, float>
         {
+            /// <summary>
+            /// The restitution builder
+            /// </summary>
             private readonly RestitutionBuilder _builder = new RestitutionBuilder();
 
+            /// <summary>
+            /// Restitutions the value
+            /// </summary>
+            /// <param name="value">The value</param>
+            /// <returns>The builder</returns>
             public RestitutionBuilder Restitution(float value)
             {
                 _builder.RestitutionValue = value;

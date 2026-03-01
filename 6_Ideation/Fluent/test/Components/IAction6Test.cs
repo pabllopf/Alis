@@ -81,8 +81,20 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// </summary>
         private class SixParamAction : IAction<int, int, int, int, int, int>
         {
+            /// <summary>
+            /// Gets the value of the values
+            /// </summary>
             public int[] Values { get; } = new int[6];
 
+            /// <summary>
+            /// Runs the arg 1
+            /// </summary>
+            /// <param name="arg1">The arg</param>
+            /// <param name="arg2">The arg</param>
+            /// <param name="arg3">The arg</param>
+            /// <param name="arg4">The arg</param>
+            /// <param name="arg5">The arg</param>
+            /// <param name="arg6">The arg</param>
             public void Run(ref int arg1, ref int arg2, ref int arg3, ref int arg4, ref int arg5, ref int arg6)
             {
                 Values[0] = arg1;

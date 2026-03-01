@@ -85,13 +85,28 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// </summary>
         private class HoldKeyHandler : IOnHoldKey
         {
+            /// <summary>
+            /// Gets or sets the value of the hold count
+            /// </summary>
             public int HoldCount { get; private set; }
+            /// <summary>
+            /// Gets or sets the value of the total hold time
+            /// </summary>
             public TimeSpan TotalHoldTime { get; private set; }
 
+            /// <summary>
+            /// Ons the hold key using the specified info
+            /// </summary>
+            /// <param name="info">The info</param>
             public void OnHoldKey(KeyEventInfo info)
             {
             }
 
+            /// <summary>
+            /// Ons the hold key using the specified self
+            /// </summary>
+            /// <param name="self">The self</param>
+            /// <param name="keyInfo">The key info</param>
             public void OnHoldKey(IGameObject self, KeyEventInfo keyInfo)
             {
                 HoldCount++;

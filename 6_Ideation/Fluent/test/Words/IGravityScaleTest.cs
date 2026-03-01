@@ -88,6 +88,9 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// </summary>
         private class GravityScaleBuilder
         {
+            /// <summary>
+            /// Gets or sets the value of the gravity scale value
+            /// </summary>
             public float GravityScaleValue { get; set; }
         }
 
@@ -96,8 +99,16 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// </summary>
         private class GravityScaleBuilderImpl : IGravityScale<GravityScaleBuilder, float>
         {
+            /// <summary>
+            /// The gravity scale builder
+            /// </summary>
             private readonly GravityScaleBuilder _builder = new GravityScaleBuilder();
 
+            /// <summary>
+            /// Gravities the scale using the specified value
+            /// </summary>
+            /// <param name="value">The value</param>
+            /// <returns>The builder</returns>
             public GravityScaleBuilder GravityScale(float value)
             {
                 _builder.GravityScaleValue = value;

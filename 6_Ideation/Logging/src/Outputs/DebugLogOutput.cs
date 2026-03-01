@@ -41,7 +41,13 @@ namespace Alis.Core.Aspect.Logging.Outputs
     /// </summary>
     public sealed class DebugLogOutput : ILogOutput
     {
+        /// <summary>
+        /// The formatter
+        /// </summary>
         private readonly ILogFormatter _formatter;
+        /// <summary>
+        /// The disposed
+        /// </summary>
         private bool _disposed;
 
         /// <summary>

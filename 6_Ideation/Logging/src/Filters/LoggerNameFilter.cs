@@ -39,7 +39,13 @@ namespace Alis.Core.Aspect.Logging.Filters
     /// </summary>
     public sealed class LoggerNameFilter : ILogFilter
     {
+        /// <summary>
+        /// The included names
+        /// </summary>
         private readonly HashSet<string> _includedNames;
+        /// <summary>
+        /// The inclusive
+        /// </summary>
         private readonly bool _inclusive;
 
         /// <summary>

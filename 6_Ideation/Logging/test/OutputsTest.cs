@@ -42,6 +42,9 @@ namespace Alis.Core.Aspect.Logging.Test
     /// </summary>
     public class OutputsTest
     {
+        /// <summary>
+        /// Tests that console log output write should not throw
+        /// </summary>
         [Fact]
         public void ConsoleLogOutput_Write_ShouldNotThrow()
         {
@@ -53,6 +56,9 @@ namespace Alis.Core.Aspect.Logging.Test
             output.Dispose();
         }
 
+        /// <summary>
+        /// Tests that console log output disable should not write
+        /// </summary>
         [Fact]
         public void ConsoleLogOutput_Disable_ShouldNotWrite()
         {
@@ -67,6 +73,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.False(consoleOutput.IsEnabled);
         }
 
+        /// <summary>
+        /// Tests that file log output write should create file
+        /// </summary>
         [Fact]
         public void FileLogOutput_Write_ShouldCreateFile()
         {
@@ -93,6 +102,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that file log output append mode should preserve existing content
+        /// </summary>
         [Fact]
         public void FileLogOutput_AppendMode_ShouldPreserveExistingContent()
         {
@@ -126,6 +138,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that file log output overwrite mode should replace content
+        /// </summary>
         [Fact]
         public void FileLogOutput_OverwriteMode_ShouldReplaceContent()
         {
@@ -159,6 +174,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that file log output creates directories as needed
+        /// </summary>
         [Fact]
         public void FileLogOutput_CreatesDirectoriesAsNeeded()
         {
@@ -183,6 +201,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that debug log output write when debugger attached should not throw
+        /// </summary>
         [Fact]
         public void DebugLogOutput_WriteWhenDebuggerAttached_ShouldNotThrow()
         {
@@ -194,6 +215,9 @@ namespace Alis.Core.Aspect.Logging.Test
             output.Dispose();
         }
 
+        /// <summary>
+        /// Tests that memory log output clear should remove all entries
+        /// </summary>
         [Fact]
         public void MemoryLogOutput_Clear_ShouldRemoveAllEntries()
         {
@@ -207,6 +231,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(0, output.Count);
         }
 
+        /// <summary>
+        /// Tests that memory log output disable should not store entries
+        /// </summary>
         [Fact]
         public void MemoryLogOutput_Disable_ShouldNotStoreEntries()
         {
@@ -217,6 +244,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(1, output.Count);
         }
 
+        /// <summary>
+        /// Tests that memory log output get entries copy should return snapshot
+        /// </summary>
         [Fact]
         public void MemoryLogOutput_GetEntriesCopy_ShouldReturnSnapshot()
         {

@@ -88,6 +88,9 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// </summary>
         private class TransformBuilder
         {
+            /// <summary>
+            /// Gets or sets the value of the transform operation
+            /// </summary>
             public string TransformOperation { get; set; }
         }
 
@@ -96,8 +99,16 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// </summary>
         private class TransformBuilderImpl : ITransform<TransformBuilder, string>
         {
+            /// <summary>
+            /// The transform builder
+            /// </summary>
             private readonly TransformBuilder _builder = new TransformBuilder();
 
+            /// <summary>
+            /// Transforms the value
+            /// </summary>
+            /// <param name="value">The value</param>
+            /// <returns>The builder</returns>
             public TransformBuilder Transform(string value)
             {
                 _builder.TransformOperation = value;

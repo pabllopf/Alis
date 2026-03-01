@@ -98,14 +98,30 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// </summary>
         private class CollisionEnterHandler : IOnCollisionEnter
         {
+            /// <summary>
+            /// Gets or sets the value of the collision count
+            /// </summary>
             public int CollisionCount { get; private set; }
+            /// <summary>
+            /// Gets or sets the value of the last collider
+            /// </summary>
             public IGameObject LastCollider { get; private set; }
 
+            /// <summary>
+            /// Ons the collision enter using the specified other
+            /// </summary>
+            /// <param name="other">The other</param>
+            /// <exception cref="NotImplementedException"></exception>
             public void OnCollisionEnter(IGameObject other)
             {
                 throw new NotImplementedException();
             }
 
+            /// <summary>
+            /// Ons the collision enter using the specified self
+            /// </summary>
+            /// <param name="self">The self</param>
+            /// <param name="collision">The collision</param>
             public void OnCollisionEnter(IGameObject self, IGameObject collision)
             {
                 CollisionCount++;

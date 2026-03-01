@@ -39,7 +39,13 @@ namespace Alis.Core.Aspect.Logging.Filters
     /// </summary>
     public sealed class CompositeLogFilter : ILogFilter
     {
+        /// <summary>
+        /// The filters
+        /// </summary>
         private readonly List<ILogFilter> _filters;
+        /// <summary>
+        /// The require all
+        /// </summary>
         private readonly bool _requireAll;
 
         /// <summary>

@@ -43,6 +43,9 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
     /// </summary>
     public class SimpleLogFormatterEdgeCasesTest
     {
+        /// <summary>
+        /// Tests that simple log formatter deeply nested exception chain
+        /// </summary>
         [Fact]
         public void SimpleLogFormatter_DeeplyNestedExceptionChain()
         {
@@ -62,6 +65,9 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
             Assert.Contains("Outermost", formatted);
         }
 
+        /// <summary>
+        /// Tests that simple log formatter very long exception message
+        /// </summary>
         [Fact]
         public void SimpleLogFormatter_VeryLongExceptionMessage()
         {
@@ -78,6 +84,9 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
             Assert.Contains("InvalidOperationException", formatted);
         }
 
+        /// <summary>
+        /// Tests that simple log formatter thirty deep scopes
+        /// </summary>
         [Fact]
         public void SimpleLogFormatter_ThirtyDeepScopes()
         {
@@ -100,6 +109,9 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
             Assert.Contains("Level29", formatted);
         }
 
+        /// <summary>
+        /// Tests that simple log formatter complex logger name
+        /// </summary>
         [Fact]
         public void SimpleLogFormatter_ComplexLoggerName()
         {
@@ -115,6 +127,9 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
             Assert.Contains(complexName, formatted);
         }
 
+        /// <summary>
+        /// Tests that simple log formatter correlation id length
+        /// </summary>
         [Fact]
         public void SimpleLogFormatter_CorrelationIdLength()
         {
@@ -130,6 +145,9 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
             Assert.Contains(longCorrId, formatted);
         }
 
+        /// <summary>
+        /// Tests that simple log formatter multiline message
+        /// </summary>
         [Fact]
         public void SimpleLogFormatter_MultilineMessage()
         {
@@ -147,6 +165,9 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
             Assert.Contains("Line 3", formatted);
         }
 
+        /// <summary>
+        /// Tests that simple log formatter performance with many scopes
+        /// </summary>
         [Fact]
         public void SimpleLogFormatter_PerformanceWithManyScopes()
         {
@@ -174,6 +195,9 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
             Assert.True(elapsed.TotalSeconds < 5);
         }
 
+        /// <summary>
+        /// Tests that simple log formatter consistent formatting
+        /// </summary>
         [Fact]
         public void SimpleLogFormatter_ConsistentFormatting()
         {

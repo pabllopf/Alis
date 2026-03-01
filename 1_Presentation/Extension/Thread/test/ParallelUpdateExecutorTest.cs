@@ -38,14 +38,26 @@ using Xunit;
 
 namespace Alis.Extension.Thread.Test
 {
+    /// <summary>
+    /// The test parallel component
+    /// </summary>
     [ParallelSafe(64)]
     public struct TestParallelComponent
     {
+        /// <summary>
+        /// The value
+        /// </summary>
         public int Value;
     }
 
+    /// <summary>
+    /// The test sequential component
+    /// </summary>
     public struct TestSequentialComponent
     {
+        /// <summary>
+        /// The value
+        /// </summary>
         public int Value;
     }
 

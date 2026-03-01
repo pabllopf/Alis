@@ -83,8 +83,15 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// </summary>
         private class ProcessChangesHandler : IOnProcessPendingChanges
         {
+            /// <summary>
+            /// Gets or sets the value of the process count
+            /// </summary>
             public int ProcessCount { get; private set; }
 
+            /// <summary>
+            /// Ons the process pending changes using the specified self
+            /// </summary>
+            /// <param name="self">The self</param>
             public void OnProcessPendingChanges(IGameObject self)
             {
                 ProcessCount++;

@@ -43,6 +43,9 @@ namespace Alis.Core.Aspect.Logging.Test
     /// </summary>
     public class LoggerFactoryAdvancedTest
     {
+        /// <summary>
+        /// Tests that logger factory large number of outputs
+        /// </summary>
         [Fact]
         public void LoggerFactory_LargeNumberOfOutputs()
         {
@@ -72,6 +75,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that logger factory large number of filters
+        /// </summary>
         [Fact]
         public void LoggerFactory_LargeNumberOfFilters()
         {
@@ -96,6 +102,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that logger factory switch formatter dynamically
+        /// </summary>
         [Fact]
         public void LoggerFactory_SwitchFormatterDynamically()
         {
@@ -119,6 +128,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that logger factory multiple factory instances
+        /// </summary>
         [Fact]
         public void LoggerFactory_MultipleFactoryInstances()
         {
@@ -146,6 +158,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that logger factory all log levels as minimum
+        /// </summary>
         [Fact]
         public void LoggerFactory_AllLogLevels_AsMinimum()
         {
@@ -180,6 +195,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that logger factory complex filter chain
+        /// </summary>
         [Fact]
         public void LoggerFactory_ComplexFilterChain()
         {
@@ -208,6 +226,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that logger factory creating many loggers
+        /// </summary>
         [Fact]
         public void LoggerFactory_CreatingManyLoggers()
         {
@@ -235,6 +256,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that logger factory reuse logger name
+        /// </summary>
         [Fact]
         public void LoggerFactory_ReuseLoggerName()
         {
@@ -258,6 +282,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that logger factory error recovery
+        /// </summary>
         [Fact]
         public void LoggerFactory_ErrorRecovery()
         {
@@ -287,6 +314,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that logger factory flush with multiple outputs
+        /// </summary>
         [Fact]
         public void LoggerFactory_FlushWithMultipleOutputs()
         {
@@ -310,21 +340,44 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// The flush counting output class
+        /// </summary>
+        /// <seealso cref="ILogOutput"/>
         private sealed class FlushCountingOutput : ILogOutput
         {
+            /// <summary>
+            /// Gets or sets the value of the flush count
+            /// </summary>
             public int FlushCount { get; set; }
+            /// <summary>
+            /// Gets the value of the name
+            /// </summary>
             public string Name => "FlushCounter";
+            /// <summary>
+            /// Gets or sets the value of the is enabled
+            /// </summary>
             public bool IsEnabled { get; set; } = true;
 
+            /// <summary>
+            /// Writes the entry
+            /// </summary>
+            /// <param name="entry">The entry</param>
             public void Write(ILogEntry entry)
             {
             }
 
+            /// <summary>
+            /// Flushes this instance
+            /// </summary>
             public void Flush()
             {
                 FlushCount++;
             }
 
+            /// <summary>
+            /// Disposes this instance
+            /// </summary>
             public void Dispose()
             {
             }

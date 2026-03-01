@@ -42,6 +42,9 @@ namespace Alis.Core.Aspect.Logging.Test
     /// </summary>
     public class MemoryLogOutputTest
     {
+        /// <summary>
+        /// Tests that memory log output constructor default max entries
+        /// </summary>
         [Fact]
         public void MemoryLogOutput_Constructor_DefaultMaxEntries()
         {
@@ -52,6 +55,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(0, output.Count);
         }
 
+        /// <summary>
+        /// Tests that memory log output write should store entry
+        /// </summary>
         [Fact]
         public void MemoryLogOutput_Write_ShouldStoreEntry()
         {
@@ -67,6 +73,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal("Test", output.GetEntries()[0].Message);
         }
 
+        /// <summary>
+        /// Tests that memory log output multiple writes should store all
+        /// </summary>
         [Fact]
         public void MemoryLogOutput_MultipleWrites_ShouldStoreAll()
         {
@@ -83,6 +92,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(100, output.Count);
         }
 
+        /// <summary>
+        /// Tests that memory log output max entries should enforce limit
+        /// </summary>
         [Fact]
         public void MemoryLogOutput_MaxEntries_ShouldEnforceLimit()
         {
@@ -103,6 +115,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal("Message 19", entries[9].Message);
         }
 
+        /// <summary>
+        /// Tests that memory log output unlimited max entries should allow any
+        /// </summary>
         [Fact]
         public void MemoryLogOutput_UnlimitedMaxEntries_ShouldAllowAny()
         {
@@ -119,6 +134,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(1000, output.Count);
         }
 
+        /// <summary>
+        /// Tests that memory log output get entries should return snapshot
+        /// </summary>
         [Fact]
         public void MemoryLogOutput_GetEntries_ShouldReturnSnapshot()
         {
@@ -136,6 +154,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(2, entries2.Count);
         }
 
+        /// <summary>
+        /// Tests that memory log output clear should remove all entries
+        /// </summary>
         [Fact]
         public void MemoryLogOutput_Clear_ShouldRemoveAllEntries()
         {
@@ -152,6 +173,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(0, output.Count);
         }
 
+        /// <summary>
+        /// Tests that memory log output null entry should not store
+        /// </summary>
         [Fact]
         public void MemoryLogOutput_NullEntry_ShouldNotStore()
         {
@@ -165,6 +189,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(0, output.Count);
         }
 
+        /// <summary>
+        /// Tests that memory log output disabled output should not store
+        /// </summary>
         [Fact]
         public void MemoryLogOutput_DisabledOutput_ShouldNotStore()
         {
@@ -179,6 +206,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(1, output.Count);
         }
 
+        /// <summary>
+        /// Tests that memory log output flush should not affect entries
+        /// </summary>
         [Fact]
         public void MemoryLogOutput_Flush_ShouldNotAffectEntries()
         {
@@ -193,6 +223,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Single(output.GetEntries());
         }
 
+        /// <summary>
+        /// Tests that memory log output dispose should clear entries
+        /// </summary>
         [Fact]
         public void MemoryLogOutput_Dispose_ShouldClearEntries()
         {
@@ -207,6 +240,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(0, output.Count);
         }
 
+        /// <summary>
+        /// Tests that memory log output has name
+        /// </summary>
         [Fact]
         public void MemoryLogOutput_HasName()
         {
@@ -218,6 +254,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal("MemoryOutput", output.Name);
         }
 
+        /// <summary>
+        /// Tests that memory log output concurrent writes should be thread safe
+        /// </summary>
         [Fact]
         public void MemoryLogOutput_ConcurrentWrites_ShouldBeThreadSafe()
         {
@@ -244,6 +283,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(1000, output.Count);
         }
 
+        /// <summary>
+        /// Tests that memory log output is enabled can be toggled
+        /// </summary>
         [Fact]
         public void MemoryLogOutput_IsEnabled_CanBeToggled()
         {
@@ -262,6 +304,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(3, output.GetEntries().Count);
         }
 
+        /// <summary>
+        /// Tests that memory log output max entries small should maintain fifo
+        /// </summary>
         [Fact]
         public void MemoryLogOutput_MaxEntriesSmall_ShouldMaintainFifo()
         {
@@ -282,6 +327,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal("Message 5", entries[2].Message);
         }
 
+        /// <summary>
+        /// Tests that memory log output after dispose should have no entries
+        /// </summary>
         [Fact]
         public void MemoryLogOutput_AfterDispose_ShouldHaveNoEntries()
         {

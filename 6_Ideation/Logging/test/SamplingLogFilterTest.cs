@@ -41,6 +41,9 @@ namespace Alis.Core.Aspect.Logging.Test
     /// </summary>
     public class SamplingLogFilterTest
     {
+        /// <summary>
+        /// Tests that sampling log filter sample rate 1 should allow all
+        /// </summary>
         [Fact]
         public void SamplingLogFilter_SampleRate1_ShouldAllowAll()
         {
@@ -54,6 +57,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that sampling log filter sample rate 2 should alternate
+        /// </summary>
         [Fact]
         public void SamplingLogFilter_SampleRate2_ShouldAlternate()
         {
@@ -80,6 +86,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(5, passCount);
         }
 
+        /// <summary>
+        /// Tests that sampling log filter sample rate 10 should pass every tenth
+        /// </summary>
         [Fact]
         public void SamplingLogFilter_SampleRate10_ShouldPassEveryTenth()
         {
@@ -100,6 +109,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(10, passCount); // 100 / 10 = 10
         }
 
+        /// <summary>
+        /// Tests that sampling log filter sample rate 3 should pass every third
+        /// </summary>
         [Fact]
         public void SamplingLogFilter_SampleRate3_ShouldPassEveryThird()
         {
@@ -120,6 +132,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(33, passCount); // 99 / 3 = 33
         }
 
+        /// <summary>
+        /// Tests that sampling log filter invalid sample rate should throw
+        /// </summary>
         [Fact]
         public void SamplingLogFilter_InvalidSampleRate_ShouldThrow()
         {
@@ -128,6 +143,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Throws<ArgumentException>(() => new SamplingLogFilter(-1));
         }
 
+        /// <summary>
+        /// Tests that sampling log filter large sample rate should rarely pass
+        /// </summary>
         [Fact]
         public void SamplingLogFilter_LargeSampleRate_ShouldRarelyPass()
         {
@@ -148,6 +166,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(1, passCount); // Only one should pass at position 1000
         }
 
+        /// <summary>
+        /// Tests that sampling log filter null entry should return false
+        /// </summary>
         [Fact]
         public void SamplingLogFilter_NullEntry_ShouldReturnFalse()
         {
@@ -158,6 +179,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.False(filter.ShouldLog(null));
         }
 
+        /// <summary>
+        /// Tests that sampling log filter has name
+        /// </summary>
         [Fact]
         public void SamplingLogFilter_HasName()
         {
@@ -170,6 +194,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("10", filter.Name);
         }
 
+        /// <summary>
+        /// Tests that sampling log filter counter increments correctly
+        /// </summary>
         [Fact]
         public void SamplingLogFilter_CounterIncrementsCorrectly()
         {
@@ -204,6 +231,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(15, passPositions[2]);
         }
 
+        /// <summary>
+        /// Tests that sampling log filter multiple instances should independently sample
+        /// </summary>
         [Fact]
         public void SamplingLogFilter_MultipleInstances_ShouldIndependentlySample()
         {
@@ -228,6 +258,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that sampling log filter high volume should maintain ratio
+        /// </summary>
         [Fact]
         public void SamplingLogFilter_HighVolume_ShouldMaintainRatio()
         {
@@ -249,6 +282,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(100, passCount);
         }
 
+        /// <summary>
+        /// Tests that sampling log filter sample rate 1 name should indicate pass all
+        /// </summary>
         [Fact]
         public void SamplingLogFilter_SampleRate1_Name_ShouldIndicatePassAll()
         {
@@ -259,6 +295,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("1", filter.Name);
         }
 
+        /// <summary>
+        /// Tests that sampling log filter consecutive calls should progressively
+        /// </summary>
         [Fact]
         public void SamplingLogFilter_ConsecutiveCalls_ShouldProgressively()
         {
@@ -278,6 +317,11 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(filter.ShouldLog(CreateEntry())); // 10th - Pass
         }
 
+        /// <summary>
+        /// Creates the entry using the specified level
+        /// </summary>
+        /// <param name="level">The level</param>
+        /// <returns>The log entry</returns>
         private static ILogEntry CreateEntry(LogLevel level = LogLevel.Info) => new LogEntry(level, "Test message", "TestLogger");
     }
 }

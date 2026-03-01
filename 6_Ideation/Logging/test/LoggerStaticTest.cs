@@ -41,6 +41,9 @@ namespace Alis.Core.Aspect.Logging.Test
     /// </summary>
     public class LoggerStaticTest
     {
+        /// <summary>
+        /// Tests that logger trace should not throw
+        /// </summary>
         [Fact]
         public void Logger_Trace_ShouldNotThrow()
         {
@@ -48,6 +51,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Logger.Trace("Trace message");
         }
 
+        /// <summary>
+        /// Tests that logger debug should not throw
+        /// </summary>
         [Fact]
         public void Logger_Debug_ShouldNotThrow()
         {
@@ -55,6 +61,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Logger.Debug("Debug message");
         }
 
+        /// <summary>
+        /// Tests that logger info should not throw
+        /// </summary>
         [Fact]
         public void Logger_Info_ShouldNotThrow()
         {
@@ -62,6 +71,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Logger.Info("Info message");
         }
 
+        /// <summary>
+        /// Tests that logger log should not throw
+        /// </summary>
         [Fact]
         public void Logger_Log_ShouldNotThrow()
         {
@@ -69,6 +81,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Logger.Log("Log message");
         }
 
+        /// <summary>
+        /// Tests that logger warning should not throw
+        /// </summary>
         [Fact]
         public void Logger_Warning_ShouldNotThrow()
         {
@@ -76,6 +91,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Logger.Warning("Warning message");
         }
 
+        /// <summary>
+        /// Tests that logger error should not throw
+        /// </summary>
         [Fact]
         public void Logger_Error_ShouldNotThrow()
         {
@@ -84,6 +102,9 @@ namespace Alis.Core.Aspect.Logging.Test
         }
         
 
+        /// <summary>
+        /// Tests that logger set default logger should accept custom logger
+        /// </summary>
         [Fact]
         public void Logger_SetDefaultLogger_ShouldAcceptCustomLogger()
         {
@@ -102,6 +123,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Single(entries);
         }
 
+        /// <summary>
+        /// Tests that logger set default logger null should reset to default
+        /// </summary>
         [Fact]
         public void Logger_SetDefaultLoggerNull_ShouldResetToDefault()
         {
@@ -112,6 +136,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Logger.Info("Test"); // Should not throw
         }
 
+        /// <summary>
+        /// Tests that logger multiple calls sequential should not throw
+        /// </summary>
         [Fact]
         public void Logger_MultipleCallsSequential_ShouldNotThrow()
         {
@@ -124,6 +151,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Logger.Error("6");
         }
 
+        /// <summary>
+        /// Tests that logger empty message should not throw
+        /// </summary>
         [Fact]
         public void Logger_EmptyMessage_ShouldNotThrow()
         {
@@ -133,6 +163,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Logger.Error(string.Empty);
         }
 
+        /// <summary>
+        /// Tests that logger long message should not throw
+        /// </summary>
         [Fact]
         public void Logger_LongMessage_ShouldNotThrow()
         {
@@ -143,6 +176,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Logger.Info(longMessage);
         }
 
+        /// <summary>
+        /// Tests that logger special characters should not throw
+        /// </summary>
         [Fact]
         public void Logger_SpecialCharacters_ShouldNotThrow()
         {

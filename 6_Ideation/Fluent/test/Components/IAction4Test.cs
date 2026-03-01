@@ -87,11 +87,30 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// </summary>
         private class FourParamAction : IAction<int, int, int, int>
         {
+            /// <summary>
+            /// Gets or sets the value of the arg 1
+            /// </summary>
             public int Arg1 { get; private set; }
+            /// <summary>
+            /// Gets or sets the value of the arg 2
+            /// </summary>
             public int Arg2 { get; private set; }
+            /// <summary>
+            /// Gets or sets the value of the arg 3
+            /// </summary>
             public int Arg3 { get; private set; }
+            /// <summary>
+            /// Gets or sets the value of the arg 4
+            /// </summary>
             public int Arg4 { get; private set; }
 
+            /// <summary>
+            /// Runs the arg 1
+            /// </summary>
+            /// <param name="arg1">The arg</param>
+            /// <param name="arg2">The arg</param>
+            /// <param name="arg3">The arg</param>
+            /// <param name="arg4">The arg</param>
             public void Run(ref int arg1, ref int arg2, ref int arg3, ref int arg4)
             {
                 Arg1 = arg1;

@@ -206,6 +206,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Payment", "Payment", "{26D7F535-4F92-7DAC-008B-06D64367C455}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Stripe", "Stripe", "{8BB361D6-7554-8580-321B-E80548BB0CBD}"
+	ProjectSection(SolutionItems) = preProject
+		1_Presentation\Extension\Payment\Stripe\readme.md = 1_Presentation\Extension\Payment\Stripe\readme.md
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Extension.Payment.Stripe.Test", "1_Presentation\Extension\Payment\Stripe\test\Alis.Extension.Payment.Stripe.Test.csproj", "{B299B704-EB5C-4092-9701-2BD3ABA1E945}"
 EndProject
@@ -250,9 +253,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Extension.Language.Translator.Sample", "1_Presentation\Extension\Language\Translator\sample\Alis.Extension.Language.Translator.Sample.csproj", "{CDAC76E0-11E2-46BF-BEA7-C572B55A9D41}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dialogue", "Dialogue", "{4BA67671-AE0B-6CB3-EB4D-56761639978C}"
-	ProjectSection(SolutionItems) = preProject
-		1_Presentation\Extension\Language\Dialogue\CAMBIOS.md = 1_Presentation\Extension\Language\Dialogue\CAMBIOS.md
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Extension.Language.Dialogue.Test", "1_Presentation\Extension\Language\Dialogue\test\Alis.Extension.Language.Dialogue.Test.csproj", "{569140FB-130B-4C1C-9910-CD23F54D812D}"
 EndProject

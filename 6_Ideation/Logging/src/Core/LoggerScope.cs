@@ -39,8 +39,17 @@ namespace Alis.Core.Aspect.Logging.Core
     /// </summary>
     internal sealed class LoggerScope : IDisposable
     {
+        /// <summary>
+        /// The on dispose
+        /// </summary>
         private readonly Action _onDispose;
+        /// <summary>
+        /// The scope stack
+        /// </summary>
         private readonly Stack<object> _scopeStack;
+        /// <summary>
+        /// The disposed
+        /// </summary>
         private bool _disposed;
 
         /// <summary>

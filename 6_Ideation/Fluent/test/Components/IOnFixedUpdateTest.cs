@@ -83,8 +83,15 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// </summary>
         private class FixedUpdateHandler : IOnFixedUpdate
         {
+            /// <summary>
+            /// Gets or sets the value of the call count
+            /// </summary>
             public int CallCount { get; private set; }
 
+            /// <summary>
+            /// Ons the fixed update using the specified self
+            /// </summary>
+            /// <param name="self">The self</param>
             public void OnFixedUpdate(IGameObject self)
             {
                 CallCount++;

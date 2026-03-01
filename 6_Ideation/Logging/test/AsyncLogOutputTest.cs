@@ -41,6 +41,9 @@ namespace Alis.Core.Aspect.Logging.Test
     /// </summary>
     public class AsyncLogOutputTest
     {
+        /// <summary>
+        /// Tests that async log output constructor with null inner should throw
+        /// </summary>
         [Fact]
         public void AsyncLogOutput_Constructor_WithNullInner_ShouldThrow()
         {
@@ -48,6 +51,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Throws<ArgumentNullException>(() => new AsyncLogOutput(null));
         }
 
+        /// <summary>
+        /// Tests that async log output write should queue entry
+        /// </summary>
         [Fact]
         public void AsyncLogOutput_Write_ShouldQueueEntry()
         {
@@ -64,6 +70,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Single(innerOutput.GetEntries());
         }
 
+        /// <summary>
+        /// Tests that async log output multiple writes should queue all
+        /// </summary>
         [Fact]
         public void AsyncLogOutput_MultipleWrites_ShouldQueueAll()
         {
@@ -84,6 +93,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(10, innerOutput.Count);
         }
 
+        /// <summary>
+        /// Tests that async log output flush should process queue
+        /// </summary>
         [Fact]
         public void AsyncLogOutput_Flush_ShouldProcessQueue()
         {
@@ -103,6 +115,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(2, innerOutput.GetEntries().Count);
         }
 
+        /// <summary>
+        /// Tests that async log output disable should not queue
+        /// </summary>
         [Fact]
         public void AsyncLogOutput_Disable_ShouldNotQueue()
         {
@@ -119,6 +134,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Empty(innerOutput.GetEntries());
         }
 
+        /// <summary>
+        /// Tests that async log output null entry should not queue
+        /// </summary>
         [Fact]
         public void AsyncLogOutput_NullEntry_ShouldNotQueue()
         {
@@ -134,6 +152,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Empty(innerOutput.GetEntries());
         }
 
+        /// <summary>
+        /// Tests that async log output max queue size should enforce limit
+        /// </summary>
         [Fact]
         public void AsyncLogOutput_MaxQueueSize_ShouldEnforceLimit()
         {
@@ -153,6 +174,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(innerOutput.Count <= 6); // Allow 1 extra due to race condition
         }
 
+        /// <summary>
+        /// Tests that async log output zero max queue size should be unlimited
+        /// </summary>
         [Fact]
         public void AsyncLogOutput_ZeroMaxQueueSize_ShouldBeUnlimited()
         {
@@ -172,6 +196,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(1000, innerOutput.Count);
         }
 
+        /// <summary>
+        /// Tests that async log output has name
+        /// </summary>
         [Fact]
         public void AsyncLogOutput_HasName()
         {
@@ -184,6 +211,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("Async", asyncOutput.Name);
         }
 
+        /// <summary>
+        /// Tests that async log output dispose should flush and dispose
+        /// </summary>
         [Fact]
         public void AsyncLogOutput_Dispose_ShouldFlushAndDispose()
         {
@@ -199,6 +229,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Empty(innerOutput.GetEntries());
         }
 
+        /// <summary>
+        /// Tests that async log output inner output exception should not propagate
+        /// </summary>
         [Fact]
         public void AsyncLogOutput_InnerOutputException_ShouldNotPropagate()
         {
@@ -211,20 +244,41 @@ namespace Alis.Core.Aspect.Logging.Test
             asyncOutput.Flush();
         }
 
+        /// <summary>
+        /// The faulty log output class
+        /// </summary>
+        /// <seealso cref="ILogOutput"/>
         private sealed class FaultyLogOutput : ILogOutput
         {
+            /// <summary>
+            /// Gets the value of the name
+            /// </summary>
             public string Name => "FaultyOutput";
+            /// <summary>
+            /// Gets or sets the value of the is enabled
+            /// </summary>
             public bool IsEnabled { get; set; } = true;
 
+            /// <summary>
+            /// Writes the entry
+            /// </summary>
+            /// <param name="entry">The entry</param>
+            /// <exception cref="InvalidOperationException">Faulty</exception>
             public void Write(ILogEntry entry)
             {
                 throw new InvalidOperationException("Faulty");
             }
 
+            /// <summary>
+            /// Flushes this instance
+            /// </summary>
             public void Flush()
             {
             }
 
+            /// <summary>
+            /// Disposes this instance
+            /// </summary>
             public void Dispose()
             {
             }

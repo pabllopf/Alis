@@ -89,6 +89,9 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// </summary>
         private class Builder
         {
+            /// <summary>
+            /// Gets or sets the value of the has property
+            /// </summary>
             public string HasProperty { get; set; }
         }
 
@@ -97,8 +100,16 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// </summary>
         private class HasBuilder : IHas<Builder, string>
         {
+            /// <summary>
+            /// The builder
+            /// </summary>
             private readonly Builder _builder = new Builder();
 
+            /// <summary>
+            /// Hases the obj
+            /// </summary>
+            /// <param name="obj">The obj</param>
+            /// <returns>The builder</returns>
             public Builder Has(string obj)
             {
                 _builder.HasProperty = obj;
@@ -111,6 +122,9 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// </summary>
         private class ObjectBuilder
         {
+            /// <summary>
+            /// Gets or sets the value of the has object
+            /// </summary>
             public object HasObject { get; set; }
         }
 
@@ -119,8 +133,16 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// </summary>
         private class ObjectHasBuilder : IHas<ObjectBuilder, object>
         {
+            /// <summary>
+            /// The object builder
+            /// </summary>
             private readonly ObjectBuilder _builder = new ObjectBuilder();
 
+            /// <summary>
+            /// Hases the obj
+            /// </summary>
+            /// <param name="obj">The obj</param>
+            /// <returns>The builder</returns>
             public ObjectBuilder Has(object obj)
             {
                 _builder.HasObject = obj;

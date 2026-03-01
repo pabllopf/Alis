@@ -83,13 +83,26 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// </summary>
         private class ReleaseKeyHandler : IOnReleaseKey
         {
+            /// <summary>
+            /// Gets or sets the value of the release count
+            /// </summary>
             public int ReleaseCount { get; private set; }
 
+            /// <summary>
+            /// Ons the release key using the specified info
+            /// </summary>
+            /// <param name="info">The info</param>
+            /// <exception cref="NotImplementedException"></exception>
             public void OnReleaseKey(KeyEventInfo info)
             {
                 throw new NotImplementedException();
             }
 
+            /// <summary>
+            /// Ons the release key using the specified self
+            /// </summary>
+            /// <param name="self">The self</param>
+            /// <param name="keyInfo">The key info</param>
             public void OnReleaseKey(IGameObject self, KeyEventInfo keyInfo)
             {
                 ReleaseCount++;

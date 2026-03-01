@@ -98,14 +98,30 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// </summary>
         private class PressKeyHandler : IOnPressKey
         {
+            /// <summary>
+            /// Gets or sets the value of the press count
+            /// </summary>
             public int PressCount { get; private set; }
+            /// <summary>
+            /// Gets or sets the value of the last key event
+            /// </summary>
             public KeyEventInfo LastKeyEvent { get; private set; }
 
+            /// <summary>
+            /// Ons the press key using the specified info
+            /// </summary>
+            /// <param name="info">The info</param>
+            /// <exception cref="NotImplementedException"></exception>
             public void OnPressKey(KeyEventInfo info)
             {
                 throw new NotImplementedException();
             }
 
+            /// <summary>
+            /// Ons the press key using the specified self
+            /// </summary>
+            /// <param name="self">The self</param>
+            /// <param name="keyInfo">The key info</param>
             public void OnPressKey(IGameObject self, KeyEventInfo keyInfo)
             {
                 PressCount++;

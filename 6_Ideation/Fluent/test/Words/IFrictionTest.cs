@@ -88,6 +88,9 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// </summary>
         private class FrictionBuilder
         {
+            /// <summary>
+            /// Gets or sets the value of the friction value
+            /// </summary>
             public float FrictionValue { get; set; }
         }
 
@@ -96,8 +99,16 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// </summary>
         private class FrictionBuilderImpl : IFriction<FrictionBuilder, float>
         {
+            /// <summary>
+            /// The friction builder
+            /// </summary>
             private readonly FrictionBuilder _builder = new FrictionBuilder();
 
+            /// <summary>
+            /// Frictions the value
+            /// </summary>
+            /// <param name="value">The value</param>
+            /// <returns>The builder</returns>
             public FrictionBuilder Friction(float value)
             {
                 _builder.FrictionValue = value;

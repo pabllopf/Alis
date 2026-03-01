@@ -40,9 +40,21 @@ namespace Alis.Core.Aspect.Logging.Outputs
     /// </summary>
     public sealed class MemoryLogOutput : ILogOutput
     {
+        /// <summary>
+        /// The entries
+        /// </summary>
         private readonly List<ILogEntry> _entries;
+        /// <summary>
+        /// The lock
+        /// </summary>
         private readonly object _lock = new object();
+        /// <summary>
+        /// The max entries
+        /// </summary>
         private readonly int _maxEntries;
+        /// <summary>
+        /// The disposed
+        /// </summary>
         private bool _disposed;
 
         /// <summary>

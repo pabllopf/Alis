@@ -39,7 +39,13 @@ namespace Alis.Core.Aspect.Logging.Filters
     /// </summary>
     public sealed class SamplingLogFilter : ILogFilter
     {
+        /// <summary>
+        /// The sample rate
+        /// </summary>
         private readonly int _sampleRate; // 1 in N entries pass through
+        /// <summary>
+        /// The counter
+        /// </summary>
         private long _counter;
 
         /// <summary>

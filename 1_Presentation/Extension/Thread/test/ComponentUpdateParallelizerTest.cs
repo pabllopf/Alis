@@ -37,10 +37,19 @@ using Xunit;
 
 namespace Alis.Extension.Thread.Test
 {
+    /// <summary>
+    /// The test component
+    /// </summary>
     [ParallelSafe]
     public struct TestComponent
     {
+        /// <summary>
+        /// The 
+        /// </summary>
         public float X;
+        /// <summary>
+        /// The 
+        /// </summary>
         public float Y;
     }
 

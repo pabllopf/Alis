@@ -83,8 +83,15 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// </summary>
         private class AfterDrawHandler : IOnAfterDraw
         {
+            /// <summary>
+            /// Gets or sets the value of the call count
+            /// </summary>
             public int CallCount { get; private set; }
 
+            /// <summary>
+            /// Ons the after draw using the specified self
+            /// </summary>
+            /// <param name="self">The self</param>
             public void OnAfterDraw(IGameObject self)
             {
                 CallCount++;

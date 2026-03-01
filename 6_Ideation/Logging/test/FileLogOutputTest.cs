@@ -43,8 +43,14 @@ namespace Alis.Core.Aspect.Logging.Test
     /// </summary>
     public class FileLogOutputTest
     {
+        /// <summary>
+        /// The new guid
+        /// </summary>
         private readonly string _testDir = Path.Combine(Path.GetTempPath(), $"logging_test_{Guid.NewGuid()}");
 
+        /// <summary>
+        /// Tests that file log output constructor null path should throw
+        /// </summary>
         [Fact]
         public void FileLogOutput_Constructor_NullPath_ShouldThrow()
         {
@@ -54,6 +60,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Throws<ArgumentException>(() => new FileLogOutput("   "));
         }
 
+        /// <summary>
+        /// Tests that file log output write should create file
+        /// </summary>
         [Fact]
         public void FileLogOutput_Write_ShouldCreateFile()
         {
@@ -76,6 +85,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Cleanup();
         }
 
+        /// <summary>
+        /// Tests that file log output append mode should preserve content
+        /// </summary>
         [Fact]
         public void FileLogOutput_AppendMode_ShouldPreserveContent()
         {
@@ -102,6 +114,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Cleanup();
         }
 
+        /// <summary>
+        /// Tests that file log output overwrite mode should replace content
+        /// </summary>
         [Fact]
         public void FileLogOutput_OverwriteMode_ShouldReplaceContent()
         {
@@ -129,6 +144,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Cleanup();
         }
 
+        /// <summary>
+        /// Tests that file log output creates directories
+        /// </summary>
         [Fact]
         public void FileLogOutput_CreatesDirectories()
         {
@@ -148,6 +166,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Cleanup();
         }
 
+        /// <summary>
+        /// Tests that file log output null entry should not write
+        /// </summary>
         [Fact]
         public void FileLogOutput_NullEntry_ShouldNotWrite()
         {
@@ -174,6 +195,9 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
 
+        /// <summary>
+        /// Tests that file log output dispose should close file
+        /// </summary>
         [Fact]
         public void FileLogOutput_Dispose_ShouldCloseFile()
         {
@@ -195,6 +219,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Cleanup();
         }
 
+        /// <summary>
+        /// Tests that file log output disabled output should not write
+        /// </summary>
         [Fact]
         public void FileLogOutput_DisabledOutput_ShouldNotWrite()
         {
@@ -218,6 +245,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Cleanup();
         }
 
+        /// <summary>
+        /// Tests that file log output has name
+        /// </summary>
         [Fact]
         public void FileLogOutput_HasName()
         {
@@ -238,6 +268,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Cleanup();
         }
 
+        /// <summary>
+        /// Tests that file log output multiple entries should append each line
+        /// </summary>
         [Fact]
         public void FileLogOutput_MultipleEntries_ShouldAppendEachLine()
         {
@@ -262,6 +295,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Cleanup();
         }
 
+        /// <summary>
+        /// Tests that file log output invalid path should disable output
+        /// </summary>
         [Fact]
         public void FileLogOutput_InvalidPath_ShouldDisableOutput()
         {
@@ -285,6 +321,9 @@ namespace Alis.Core.Aspect.Logging.Test
             output.Dispose();
         }
 
+        /// <summary>
+        /// Tests that file log output repeated dispose should not throw
+        /// </summary>
         [Fact]
         public void FileLogOutput_RepeatedDispose_ShouldNotThrow()
         {
@@ -301,6 +340,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Cleanup();
         }
 
+        /// <summary>
+        /// Cleanups this instance
+        /// </summary>
         private void Cleanup()
         {
             if (Directory.Exists(_testDir))

@@ -81,9 +81,19 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// </summary>
         private class ExitHandler : IOnExit
         {
+            /// <summary>
+            /// Gets or sets the value of the was exit called
+            /// </summary>
             public bool WasExitCalled { get; private set; }
+            /// <summary>
+            /// Gets or sets the value of the exit count
+            /// </summary>
             public int ExitCount { get; private set; }
 
+            /// <summary>
+            /// Ons the exit using the specified self
+            /// </summary>
+            /// <param name="self">The self</param>
             public void OnExit(IGameObject self)
             {
                 WasExitCalled = true;

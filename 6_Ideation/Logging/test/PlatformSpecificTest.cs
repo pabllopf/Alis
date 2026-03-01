@@ -44,6 +44,9 @@ namespace Alis.Core.Aspect.Logging.Test
     /// </summary>
     public class PlatformSpecificTest
     {
+        /// <summary>
+        /// Loggings the windows path with backslashes
+        /// </summary>
         [WindowsOnly]
         public void Logging_Windows_PathWithBackslashes()
         {
@@ -65,6 +68,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Loggings the linux path with forward slashes
+        /// </summary>
         [LinuxOnly]
         public void Logging_Linux_PathWithForwardSlashes()
         {
@@ -86,6 +92,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that logging current platform should be detected
+        /// </summary>
         [Fact]
         public void Logging_CurrentPlatform_ShouldBeDetected()
         {
@@ -99,6 +108,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(1, count);
         }
 
+        /// <summary>
+        /// Loggings the windows line endings
+        /// </summary>
         [WindowsOnly]
         public void Logging_Windows_LineEndings()
         {
@@ -118,6 +130,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Loggings the linux environment
+        /// </summary>
         [LinuxOnly]
         public void Logging_Linux_Environment()
         {
@@ -129,6 +144,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(homeDir.StartsWith("/"));
         }
 
+        /// <summary>
+        /// Tests that logging all platforms date time
+        /// </summary>
         [Fact]
         public void Logging_AllPlatforms_DateTime()
         {
@@ -149,6 +167,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Loggings the windows temp path
+        /// </summary>
         [WindowsOnly]
         public void Logging_Windows_TempPath()
         {
@@ -160,6 +181,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(Path.IsPathRooted(tempPath));
         }
 
+        /// <summary>
+        /// Tests that logging thread info should be valid
+        /// </summary>
         [Fact]
         public void Logging_ThreadInfo_ShouldBeValid()
         {
@@ -179,6 +203,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that logging unicode across all platforms
+        /// </summary>
         [Fact]
         public void Logging_Unicode_AcrossAllPlatforms()
         {
@@ -200,6 +227,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that logging process info should be available
+        /// </summary>
         [Fact]
         public void Logging_ProcessInfo_ShouldBeAvailable()
         {
@@ -210,6 +240,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(processId > 0);
         }
 
+        /// <summary>
+        /// Loggings the windows file system case
+        /// </summary>
         [WindowsOnly]
         public void Logging_Windows_FileSystemCase()
         {
@@ -225,6 +258,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(path1, path2, StringComparer.OrdinalIgnoreCase);
         }
 
+        /// <summary>
+        /// Loggings the linux file system case
+        /// </summary>
         [LinuxOnly]
         public void Logging_Linux_FileSystemCase()
         {

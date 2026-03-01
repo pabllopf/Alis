@@ -38,19 +38,44 @@ namespace Alis.Extension.Thread.Test.Interfaces
     /// </summary>
     internal class MockParallelExecutionStrategy : IParallelExecutionStrategy
     {
+        /// <summary>
+        /// The batch size
+        /// </summary>
         private readonly int batchSize;
+        /// <summary>
+        /// The return value
+        /// </summary>
         private readonly bool returnValue;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MockParallelExecutionStrategy"/> class
+        /// </summary>
+        /// <param name="returnValue">The return value</param>
+        /// <param name="batchSize">The batch size</param>
         public MockParallelExecutionStrategy(bool returnValue = true, int batchSize = 128)
         {
             this.returnValue = returnValue;
             this.batchSize = batchSize;
         }
 
+        /// <summary>
+        /// Gets or sets the value of the can execute call count
+        /// </summary>
         public int CanExecuteCallCount { get; private set; }
+        /// <summary>
+        /// Gets or sets the value of the get batch size call count
+        /// </summary>
         public int GetBatchSizeCallCount { get; private set; }
+        /// <summary>
+        /// Gets or sets the value of the last checked type
+        /// </summary>
         public Type LastCheckedType { get; private set; }
 
+        /// <summary>
+        /// Cans the execute in parallel using the specified component type
+        /// </summary>
+        /// <param name="componentType">The component type</param>
+        /// <returns>The return value</returns>
         public bool CanExecuteInParallel(Type componentType)
         {
             CanExecuteCallCount++;
@@ -58,6 +83,11 @@ namespace Alis.Extension.Thread.Test.Interfaces
             return returnValue;
         }
 
+        /// <summary>
+        /// Gets the minimum batch size using the specified component type
+        /// </summary>
+        /// <param name="componentType">The component type</param>
+        /// <returns>The batch size</returns>
         public int GetMinimumBatchSize(Type componentType)
         {
             GetBatchSizeCallCount++;
@@ -71,7 +101,17 @@ namespace Alis.Extension.Thread.Test.Interfaces
     /// </summary>
     internal class AlwaysFalseStrategy : IParallelExecutionStrategy
     {
+        /// <summary>
+        /// Cans the execute in parallel using the specified component type
+        /// </summary>
+        /// <param name="componentType">The component type</param>
+        /// <returns>The bool</returns>
         public bool CanExecuteInParallel(Type componentType) => false;
+        /// <summary>
+        /// Gets the minimum batch size using the specified component type
+        /// </summary>
+        /// <param name="componentType">The component type</param>
+        /// <returns>The int</returns>
         public int GetMinimumBatchSize(Type componentType) => 1;
     }
 
@@ -80,7 +120,17 @@ namespace Alis.Extension.Thread.Test.Interfaces
     /// </summary>
     internal class AlwaysTrueStrategy : IParallelExecutionStrategy
     {
+        /// <summary>
+        /// Cans the execute in parallel using the specified component type
+        /// </summary>
+        /// <param name="componentType">The component type</param>
+        /// <returns>The bool</returns>
         public bool CanExecuteInParallel(Type componentType) => true;
+        /// <summary>
+        /// Gets the minimum batch size using the specified component type
+        /// </summary>
+        /// <param name="componentType">The component type</param>
+        /// <returns>The int</returns>
         public int GetMinimumBatchSize(Type componentType) => 256;
     }
 

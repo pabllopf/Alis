@@ -41,6 +41,9 @@ namespace Alis.Core.Aspect.Logging.Test
     /// </summary>
     public class CompactLogFormatterTest
     {
+        /// <summary>
+        /// Tests that compact log formatter has name
+        /// </summary>
         [Fact]
         public void CompactLogFormatter_HasName()
         {
@@ -52,6 +55,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal("CompactFormatter", formatter.Name);
         }
 
+        /// <summary>
+        /// Tests that compact log formatter format should be short
+        /// </summary>
         [Fact]
         public void CompactLogFormatter_Format_ShouldBeShort()
         {
@@ -68,6 +74,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(compact.Length < simple.Length, "Compact should be shorter than simple format");
         }
 
+        /// <summary>
+        /// Tests that compact log formatter format contains level code
+        /// </summary>
         [Fact]
         public void CompactLogFormatter_Format_ContainsLevelCode()
         {
@@ -96,6 +105,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that compact log formatter format contains message
+        /// </summary>
         [Fact]
         public void CompactLogFormatter_Format_ContainsMessage()
         {
@@ -110,6 +122,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("Important message", formatted);
         }
 
+        /// <summary>
+        /// Tests that compact log formatter format with exception
+        /// </summary>
         [Fact]
         public void CompactLogFormatter_Format_WithException()
         {
@@ -126,6 +141,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("[E]", formatted);
         }
 
+        /// <summary>
+        /// Tests that compact log formatter format without exception
+        /// </summary>
         [Fact]
         public void CompactLogFormatter_Format_WithoutException()
         {
@@ -140,6 +158,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.DoesNotContain("[EXC:", formatted);
         }
 
+        /// <summary>
+        /// Tests that compact log formatter all levels
+        /// </summary>
         [Fact]
         public void CompactLogFormatter_AllLevels()
         {
@@ -159,6 +180,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that compact log formatter empty message
+        /// </summary>
         [Fact]
         public void CompactLogFormatter_EmptyMessage()
         {
@@ -174,6 +198,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("[I]", formatted);
         }
 
+        /// <summary>
+        /// Tests that compact log formatter long message
+        /// </summary>
         [Fact]
         public void CompactLogFormatter_LongMessage()
         {
@@ -189,6 +216,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains(longMessage, formatted);
         }
 
+        /// <summary>
+        /// Tests that compact log formatter does not include timestamp
+        /// </summary>
         [Fact]
         public void CompactLogFormatter_DoesNotIncludeTimestamp()
         {
@@ -204,6 +234,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.DoesNotMatch(@"\d{2}:\d{2}:\d{2}", formatted);
         }
 
+        /// <summary>
+        /// Tests that compact log formatter does not include logger name
+        /// </summary>
         [Fact]
         public void CompactLogFormatter_DoesNotIncludeLoggerName()
         {
@@ -219,6 +252,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.DoesNotContain("MySpecificLogger", formatted);
         }
 
+        /// <summary>
+        /// Tests that compact log formatter performance should be very fast
+        /// </summary>
         [Fact]
         public void CompactLogFormatter_Performance_ShouldBeVeryFast()
         {

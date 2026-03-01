@@ -50,13 +50,28 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
             Assert.Equal(123, builder.Value);
         }
 
+        /// <summary>
+        /// The dummy builder class
+        /// </summary>
         private class DummyBuilder
         {
+            /// <summary>
+            /// The value
+            /// </summary>
             public int Value;
         }
 
+        /// <summary>
+        /// The dummy add class
+        /// </summary>
+        /// <seealso cref="IAdd{DummyBuilder, int}"/>
         private class DummyAdd : IAdd<DummyBuilder, int>
         {
+            /// <summary>
+            /// Adds the value
+            /// </summary>
+            /// <param name="value">The value</param>
+            /// <returns>The dummy builder</returns>
             public DummyBuilder Add(int value) => new DummyBuilder {Value = value};
         }
     }

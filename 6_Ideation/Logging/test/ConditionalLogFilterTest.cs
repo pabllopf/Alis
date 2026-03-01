@@ -43,6 +43,9 @@ namespace Alis.Core.Aspect.Logging.Test
     /// </summary>
     public class ConditionalLogFilterTest
     {
+        /// <summary>
+        /// Tests that conditional log filter simple predicate should apply
+        /// </summary>
         [Fact]
         public void ConditionalLogFilter_SimplePredicate_ShouldApply()
         {
@@ -55,6 +58,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(filter.ShouldLog(CreateEntry(LogLevel.Error)));
         }
 
+        /// <summary>
+        /// Tests that conditional log filter message contains predicate should apply
+        /// </summary>
         [Fact]
         public void ConditionalLogFilter_MessageContainsPredicate_ShouldApply()
         {
@@ -66,6 +72,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.False(filter.ShouldLog(CreateEntry(LogLevel.Info, "Normal message")));
         }
 
+        /// <summary>
+        /// Tests that conditional log filter logger name predicate should apply
+        /// </summary>
         [Fact]
         public void ConditionalLogFilter_LoggerNamePredicate_ShouldApply()
         {
@@ -77,6 +86,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.False(filter.ShouldLog(CreateEntry(LogLevel.Info, "Test", "Audio.Mixer")));
         }
 
+        /// <summary>
+        /// Tests that conditional log filter multiple conditions should apply
+        /// </summary>
         [Fact]
         public void ConditionalLogFilter_MultipleConditions_ShouldApply()
         {
@@ -92,6 +104,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.False(filter.ShouldLog(CreateEntry(LogLevel.Info, "Critical info")));
         }
 
+        /// <summary>
+        /// Tests that conditional log filter exception check predicate should apply
+        /// </summary>
         [Fact]
         public void ConditionalLogFilter_ExceptionCheckPredicate_ShouldApply()
         {
@@ -106,6 +121,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.False(filter.ShouldLog(entryWithoutException));
         }
 
+        /// <summary>
+        /// Tests that conditional log filter correlation id predicate should apply
+        /// </summary>
         [Fact]
         public void ConditionalLogFilter_CorrelationIdPredicate_ShouldApply()
         {
@@ -120,6 +138,10 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.False(filter.ShouldLog(entryWithoutCorrelation));
         }
 
+        /// <summary>
+        /// Tests that conditional log filter predicate throws exception should return true
+        /// </summary>
+        /// <exception cref="InvalidOperationException">Test error</exception>
         [Fact]
         public void ConditionalLogFilter_PredicateThrowsException_ShouldReturnTrue()
         {
@@ -131,6 +153,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(filter.ShouldLog(entry));
         }
 
+        /// <summary>
+        /// Tests that conditional log filter null entry should be passed to predicate
+        /// </summary>
         [Fact]
         public void ConditionalLogFilter_NullEntry_ShouldBePassedToPredicate()
         {
@@ -150,6 +175,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that conditional log filter custom name should use provided name
+        /// </summary>
         [Fact]
         public void ConditionalLogFilter_CustomName_ShouldUseProvidedName()
         {
@@ -160,6 +188,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal("MyCustomFilter", filter.Name);
         }
 
+        /// <summary>
+        /// Tests that conditional log filter default name should be conditional filter
+        /// </summary>
         [Fact]
         public void ConditionalLogFilter_DefaultName_ShouldBeConditionalFilter()
         {
@@ -170,6 +201,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal("ConditionalFilter", filter.Name);
         }
 
+        /// <summary>
+        /// Tests that conditional log filter scope count predicate should apply
+        /// </summary>
         [Fact]
         public void ConditionalLogFilter_ScopeCountPredicate_ShouldApply()
         {
@@ -184,6 +218,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.False(filter.ShouldLog(entryWithoutScopes));
         }
 
+        /// <summary>
+        /// Tests that conditional log filter property count predicate should apply
+        /// </summary>
         [Fact]
         public void ConditionalLogFilter_PropertyCountPredicate_ShouldApply()
         {
@@ -200,6 +237,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.False(filter.ShouldLog(entryWithOneProperty));
         }
 
+        /// <summary>
+        /// Tests that conditional log filter thread id predicate should apply
+        /// </summary>
         [Fact]
         public void ConditionalLogFilter_ThreadIdPredicate_ShouldApply()
         {
@@ -212,6 +252,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(filter.ShouldLog(entry));
         }
 
+        /// <summary>
+        /// Tests that conditional log filter complex logic with all properties should apply
+        /// </summary>
         [Fact]
         public void ConditionalLogFilter_ComplexLogicWithAllProperties_ShouldApply()
         {
@@ -234,6 +277,13 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.False(filter.ShouldLog(invalidEntry3));
         }
 
+        /// <summary>
+        /// Creates the entry using the specified level
+        /// </summary>
+        /// <param name="level">The level</param>
+        /// <param name="message">The message</param>
+        /// <param name="loggerName">The logger name</param>
+        /// <returns>The log entry</returns>
         private static ILogEntry CreateEntry(LogLevel level, string message = "Test", string loggerName = "Logger") => new LogEntry(level, message, loggerName);
     }
 }

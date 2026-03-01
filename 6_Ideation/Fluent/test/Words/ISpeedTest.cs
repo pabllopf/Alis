@@ -88,6 +88,9 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// </summary>
         private class SpeedBuilder
         {
+            /// <summary>
+            /// Gets or sets the value of the speed value
+            /// </summary>
             public float SpeedValue { get; set; }
         }
 
@@ -96,8 +99,16 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// </summary>
         private class SpeedBuilderImpl : ISpeed<SpeedBuilder, float>
         {
+            /// <summary>
+            /// The speed builder
+            /// </summary>
             private readonly SpeedBuilder _builder = new SpeedBuilder();
 
+            /// <summary>
+            /// Speeds the value
+            /// </summary>
+            /// <param name="value">The value</param>
+            /// <returns>The builder</returns>
             public SpeedBuilder Speed(float value)
             {
                 _builder.SpeedValue = value;

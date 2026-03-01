@@ -88,6 +88,9 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// </summary>
         private class AngularVelocityBuilder
         {
+            /// <summary>
+            /// Gets or sets the value of the angular velocity value
+            /// </summary>
             public float AngularVelocityValue { get; set; }
         }
 
@@ -96,8 +99,16 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// </summary>
         private class AngularVelocityBuilderImpl : IAngularVelocity<AngularVelocityBuilder, float>
         {
+            /// <summary>
+            /// The angular velocity builder
+            /// </summary>
             private readonly AngularVelocityBuilder _builder = new AngularVelocityBuilder();
 
+            /// <summary>
+            /// Angulars the velocity using the specified value
+            /// </summary>
+            /// <param name="value">The value</param>
+            /// <returns>The builder</returns>
             public AngularVelocityBuilder AngularVelocity(float value)
             {
                 _builder.AngularVelocityValue = value;

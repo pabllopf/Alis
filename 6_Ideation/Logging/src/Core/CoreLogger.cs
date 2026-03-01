@@ -41,13 +41,37 @@ namespace Alis.Core.Aspect.Logging.Core
     /// </summary>
     internal sealed class CoreLogger : ILogger
     {
+        /// <summary>
+        /// The correlation lock
+        /// </summary>
         private readonly object _correlationLock = new object();
+        /// <summary>
+        /// The filters
+        /// </summary>
         private readonly List<ILogFilter> _filters;
+        /// <summary>
+        /// The formatter
+        /// </summary>
         private readonly ILogFormatter _formatter;
+        /// <summary>
+        /// The minimum level
+        /// </summary>
         private readonly LogLevel _minimumLevel;
+        /// <summary>
+        /// The outputs
+        /// </summary>
         private readonly List<ILogOutput> _outputs;
+        /// <summary>
+        /// The scope lock
+        /// </summary>
         private readonly object _scopeLock = new object();
+        /// <summary>
+        /// The scope stack
+        /// </summary>
         private readonly Stack<object> _scopeStack;
+        /// <summary>
+        /// The correlation id
+        /// </summary>
         private string _correlationId;
 
         /// <summary>

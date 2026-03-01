@@ -287,6 +287,9 @@ namespace Alis.Extension.Ads.GoogleAds
             _isRewardedVideoAdLoaded = false;
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             // Clean up any resources if necessary

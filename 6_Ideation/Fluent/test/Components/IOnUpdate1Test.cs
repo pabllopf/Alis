@@ -95,10 +95,24 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// </summary>
         private class Update1Handler : IOnUpdate<int>
         {
+            /// <summary>
+            /// Gets the value of the is component base
+            /// </summary>
             public bool IsComponentBase => true;
+            /// <summary>
+            /// Gets or sets the value of the last value
+            /// </summary>
             public int LastValue { get; private set; }
+            /// <summary>
+            /// Gets or sets the value of the call count
+            /// </summary>
             public int CallCount { get; private set; }
 
+            /// <summary>
+            /// Updates the self
+            /// </summary>
+            /// <param name="self">The self</param>
+            /// <param name="arg">The arg</param>
             public void Update(IGameObject self, ref int arg)
             {
                 LastValue = arg;
@@ -111,8 +125,16 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// </summary>
         private class UpdateStringHandler : IOnUpdate<string>
         {
+            /// <summary>
+            /// Gets or sets the value of the last value
+            /// </summary>
             public string LastValue { get; private set; }
 
+            /// <summary>
+            /// Updates the self
+            /// </summary>
+            /// <param name="self">The self</param>
+            /// <param name="arg">The arg</param>
             public void Update(IGameObject self, ref string arg)
             {
                 LastValue = arg;

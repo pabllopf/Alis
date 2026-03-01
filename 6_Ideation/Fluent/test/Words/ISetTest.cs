@@ -89,6 +89,9 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// </summary>
         private class Builder
         {
+            /// <summary>
+            /// Gets or sets the value of the set value
+            /// </summary>
             public string SetValue { get; set; }
         }
 
@@ -97,8 +100,17 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// </summary>
         private class SetBuilder : ISet<Builder, string>
         {
+            /// <summary>
+            /// The builder
+            /// </summary>
             private readonly Builder _builder = new Builder();
 
+            /// <summary>
+            /// Sets the value
+            /// </summary>
+            /// <typeparam name="T">The </typeparam>
+            /// <param name="value">The value</param>
+            /// <returns>The builder</returns>
             public Builder Set<T>(string value)
             {
                 _builder.SetValue = value;

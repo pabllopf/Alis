@@ -81,9 +81,19 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// </summary>
         private class InitHandler : IOnInit
         {
+            /// <summary>
+            /// Gets or sets the value of the was initialized
+            /// </summary>
             public bool WasInitialized { get; private set; }
+            /// <summary>
+            /// Gets or sets the value of the init count
+            /// </summary>
             public int InitCount { get; private set; }
 
+            /// <summary>
+            /// Ons the init using the specified self
+            /// </summary>
+            /// <param name="self">The self</param>
             public void OnInit(IGameObject self)
             {
                 WasInitialized = true;

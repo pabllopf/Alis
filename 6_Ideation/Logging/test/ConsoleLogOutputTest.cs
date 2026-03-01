@@ -41,6 +41,9 @@ namespace Alis.Core.Aspect.Logging.Test
     /// </summary>
     public class ConsoleLogOutputTest
     {
+        /// <summary>
+        /// Tests that console log output constructor default formatter
+        /// </summary>
         [Fact]
         public void ConsoleLogOutput_Constructor_DefaultFormatter()
         {
@@ -51,6 +54,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.NotNull(output);
         }
 
+        /// <summary>
+        /// Tests that console log output write should not throw
+        /// </summary>
         [Fact]
         public void ConsoleLogOutput_Write_ShouldNotThrow()
         {
@@ -62,6 +68,9 @@ namespace Alis.Core.Aspect.Logging.Test
             output.Write(entry);
         }
 
+        /// <summary>
+        /// Tests that console log output null entry should not throw
+        /// </summary>
         [Fact]
         public void ConsoleLogOutput_NullEntry_ShouldNotThrow()
         {
@@ -72,6 +81,9 @@ namespace Alis.Core.Aspect.Logging.Test
             output.Write(null);
         }
 
+        /// <summary>
+        /// Tests that console log output all levels should not throw
+        /// </summary>
         [Fact]
         public void ConsoleLogOutput_AllLevels_ShouldNotThrow()
         {
@@ -87,6 +99,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that console log output custom formatter should be used
+        /// </summary>
         [Fact]
         public void ConsoleLogOutput_CustomFormatter_ShouldBeUsed()
         {
@@ -98,6 +113,9 @@ namespace Alis.Core.Aspect.Logging.Test
             output.Write(new LogEntry(LogLevel.Info, "Test", "Logger"));
         }
 
+        /// <summary>
+        /// Tests that console log output null formatter should use default
+        /// </summary>
         [Fact]
         public void ConsoleLogOutput_NullFormatter_ShouldUseDefault()
         {
@@ -108,6 +126,9 @@ namespace Alis.Core.Aspect.Logging.Test
             output.Write(new LogEntry(LogLevel.Info, "Test", "Logger"));
         }
 
+        /// <summary>
+        /// Tests that console log output disable should not write
+        /// </summary>
         [Fact]
         public void ConsoleLogOutput_Disable_ShouldNotWrite()
         {
@@ -119,6 +140,9 @@ namespace Alis.Core.Aspect.Logging.Test
             output.Write(new LogEntry(LogLevel.Info, "Test", "Logger"));
         }
 
+        /// <summary>
+        /// Tests that console log output flush should not throw
+        /// </summary>
         [Fact]
         public void ConsoleLogOutput_Flush_ShouldNotThrow()
         {
@@ -129,6 +153,9 @@ namespace Alis.Core.Aspect.Logging.Test
             output.Flush();
         }
 
+        /// <summary>
+        /// Tests that console log output dispose should not throw
+        /// </summary>
         [Fact]
         public void ConsoleLogOutput_Dispose_ShouldNotThrow()
         {
@@ -139,6 +166,9 @@ namespace Alis.Core.Aspect.Logging.Test
             output.Dispose();
         }
 
+        /// <summary>
+        /// Tests that console log output repeated dispose should not throw
+        /// </summary>
         [Fact]
         public void ConsoleLogOutput_RepeatedDispose_ShouldNotThrow()
         {
@@ -150,6 +180,9 @@ namespace Alis.Core.Aspect.Logging.Test
             output.Dispose();
         }
 
+        /// <summary>
+        /// Tests that console log output has name
+        /// </summary>
         [Fact]
         public void ConsoleLogOutput_HasName()
         {
@@ -161,6 +194,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal("ConsoleOutput", output.Name);
         }
 
+        /// <summary>
+        /// Tests that console log output is enabled default true
+        /// </summary>
         [Fact]
         public void ConsoleLogOutput_IsEnabled_DefaultTrue()
         {
@@ -171,6 +207,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(output.IsEnabled);
         }
 
+        /// <summary>
+        /// Tests that console log output is enabled can be toggled
+        /// </summary>
         [Fact]
         public void ConsoleLogOutput_IsEnabled_CanBeToggled()
         {
@@ -188,6 +227,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(output.IsEnabled);
         }
 
+        /// <summary>
+        /// Tests that console log output long message should not throw
+        /// </summary>
         [Fact]
         public void ConsoleLogOutput_LongMessage_ShouldNotThrow()
         {
@@ -200,6 +242,9 @@ namespace Alis.Core.Aspect.Logging.Test
             output.Write(entry);
         }
 
+        /// <summary>
+        /// Tests that console log output special characters should not throw
+        /// </summary>
         [Fact]
         public void ConsoleLogOutput_SpecialCharacters_ShouldNotThrow()
         {

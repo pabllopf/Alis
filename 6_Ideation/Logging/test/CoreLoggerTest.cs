@@ -46,6 +46,9 @@ namespace Alis.Core.Aspect.Logging.Test
     /// </summary>
     public class CoreLoggerTest
     {
+        /// <summary>
+        /// Tests that core logger constructor should set name
+        /// </summary>
         [Fact]
         public void CoreLogger_Constructor_ShouldSetName()
         {
@@ -61,6 +64,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal("TestLogger", logger.Name);
         }
 
+        /// <summary>
+        /// Tests that core logger log trace should write to output
+        /// </summary>
         [Fact]
         public void CoreLogger_LogTrace_ShouldWriteToOutput()
         {
@@ -81,6 +87,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal("Trace message", entries[0].Message);
         }
 
+        /// <summary>
+        /// Tests that core logger log debug should write to output
+        /// </summary>
         [Fact]
         public void CoreLogger_LogDebug_ShouldWriteToOutput()
         {
@@ -100,6 +109,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(LogLevel.Debug, entries[0].Level);
         }
 
+        /// <summary>
+        /// Tests that core logger log info should write to output
+        /// </summary>
         [Fact]
         public void CoreLogger_LogInfo_ShouldWriteToOutput()
         {
@@ -119,6 +131,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(LogLevel.Info, entries[0].Level);
         }
 
+        /// <summary>
+        /// Tests that core logger log warning should write to output
+        /// </summary>
         [Fact]
         public void CoreLogger_LogWarning_ShouldWriteToOutput()
         {
@@ -138,6 +153,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(LogLevel.Warning, entries[0].Level);
         }
 
+        /// <summary>
+        /// Tests that core logger log error should write to output
+        /// </summary>
         [Fact]
         public void CoreLogger_LogError_ShouldWriteToOutput()
         {
@@ -157,6 +175,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(LogLevel.Error, entries[0].Level);
         }
 
+        /// <summary>
+        /// Tests that core logger log critical should write to output
+        /// </summary>
         [Fact]
         public void CoreLogger_LogCritical_ShouldWriteToOutput()
         {
@@ -176,6 +197,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(LogLevel.Critical, entries[0].Level);
         }
 
+        /// <summary>
+        /// Tests that core logger log error with exception should include exception
+        /// </summary>
         [Fact]
         public void CoreLogger_LogErrorWithException_ShouldIncludeException()
         {
@@ -197,6 +221,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal("Test exception", entries[0].Exception.Message);
         }
 
+        /// <summary>
+        /// Tests that core logger log critical with exception should include exception
+        /// </summary>
         [Fact]
         public void CoreLogger_LogCriticalWithException_ShouldIncludeException()
         {
@@ -217,6 +244,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.NotNull(entries[0].Exception);
         }
 
+        /// <summary>
+        /// Tests that core logger log should write with specified level
+        /// </summary>
         [Fact]
         public void CoreLogger_Log_ShouldWriteWithSpecifiedLevel()
         {
@@ -236,6 +266,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(LogLevel.Warning, entries[0].Level);
         }
 
+        /// <summary>
+        /// Tests that core logger log with exception should write with exception level
+        /// </summary>
         [Fact]
         public void CoreLogger_LogWithException_ShouldWriteWithExceptionLevel()
         {
@@ -257,6 +290,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.NotNull(entries[0].Exception);
         }
 
+        /// <summary>
+        /// Tests that core logger log structured should include properties
+        /// </summary>
         [Fact]
         public void CoreLogger_LogStructured_ShouldIncludeProperties()
         {
@@ -282,6 +318,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(123, entries[0].Properties["UserId"]);
         }
 
+        /// <summary>
+        /// Tests that core logger log structured with null properties should log as normal
+        /// </summary>
         [Fact]
         public void CoreLogger_LogStructuredWithNullProperties_ShouldLogAsNormal()
         {
@@ -300,6 +339,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Single(entries);
         }
 
+        /// <summary>
+        /// Tests that core logger set correlation id should include in entries
+        /// </summary>
         [Fact]
         public void CoreLogger_SetCorrelationId_ShouldIncludeInEntries()
         {
@@ -321,6 +363,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(correlationId, entries[0].CorrelationId);
         }
 
+        /// <summary>
+        /// Tests that core logger get correlation id should return set value
+        /// </summary>
         [Fact]
         public void CoreLogger_GetCorrelationId_ShouldReturnSetValue()
         {
@@ -339,6 +384,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(correlationId, retrieved);
         }
 
+        /// <summary>
+        /// Tests that core logger begin scope should include scope in entry
+        /// </summary>
         [Fact]
         public void CoreLogger_BeginScope_ShouldIncludeScopeInEntry()
         {
@@ -362,6 +410,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal("TestScope", entries[0].Scopes[0]);
         }
 
+        /// <summary>
+        /// Tests that core logger nested scopes should include all scopes
+        /// </summary>
         [Fact]
         public void CoreLogger_NestedScopes_ShouldIncludeAllScopes()
         {
@@ -387,6 +438,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(2, entries[0].Scopes.Count);
         }
 
+        /// <summary>
+        /// Tests that core logger is enabled trace should return true
+        /// </summary>
         [Fact]
         public void CoreLogger_IsEnabledTrace_ShouldReturnTrue()
         {
@@ -400,6 +454,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(logger.IsEnabled(LogLevel.Trace));
         }
 
+        /// <summary>
+        /// Tests that core logger is enabled below minimum should return false
+        /// </summary>
         [Fact]
         public void CoreLogger_IsEnabledBelowMinimum_ShouldReturnFalse()
         {
@@ -416,6 +473,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(logger.IsEnabled(LogLevel.Error));
         }
 
+        /// <summary>
+        /// Tests that core logger is enabled none should return false
+        /// </summary>
         [Fact]
         public void CoreLogger_IsEnabledNone_ShouldReturnFalse()
         {
@@ -429,6 +489,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.False(logger.IsEnabled(LogLevel.None));
         }
 
+        /// <summary>
+        /// Tests that core logger disabled level should not log disabled messages
+        /// </summary>
         [Fact]
         public void CoreLogger_DisabledLevel_ShouldNotLogDisabledMessages()
         {
@@ -450,6 +513,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.All(entries, e => Assert.True(e.Level >= LogLevel.Warning));
         }
 
+        /// <summary>
+        /// Tests that core logger filter blocks should not log
+        /// </summary>
         [Fact]
         public void CoreLogger_FilterBlocks_ShouldNotLog()
         {
@@ -471,6 +537,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(LogLevel.Error, entries[0].Level);
         }
 
+        /// <summary>
+        /// Tests that core logger multiple filters should apply all
+        /// </summary>
         [Fact]
         public void CoreLogger_MultipleFilters_ShouldApplyAll()
         {
@@ -494,6 +563,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(2, entries.Count);
         }
 
+        /// <summary>
+        /// Tests that core logger multiple outputs should write to all
+        /// </summary>
         [Fact]
         public void CoreLogger_MultipleOutputs_ShouldWriteToAll()
         {
@@ -513,6 +585,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Single(memory2.GetEntries());
         }
 
+        /// <summary>
+        /// Tests that core logger concurrent logging should be thread safe
+        /// </summary>
         [Fact]
         public void CoreLogger_ConcurrentLogging_ShouldBeThreadSafe()
         {
@@ -543,6 +618,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(1000, memoryOutput.Count);
         }
 
+        /// <summary>
+        /// Tests that core logger concurrent correlation id should be thread safe
+        /// </summary>
         [Fact]
         public void CoreLogger_ConcurrentCorrelationId_ShouldBeThreadSafe()
         {
@@ -572,6 +650,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(5, memoryOutput.Count);
         }
 
+        /// <summary>
+        /// Tests that core logger output exception should not propagate
+        /// </summary>
         [Fact]
         public void CoreLogger_OutputException_ShouldNotPropagate()
         {
@@ -586,6 +667,9 @@ namespace Alis.Core.Aspect.Logging.Test
             logger.LogInfo("Message");
         }
 
+        /// <summary>
+        /// Tests that core logger empty outputs list should not throw
+        /// </summary>
         [Fact]
         public void CoreLogger_EmptyOutputsList_ShouldNotThrow()
         {
@@ -604,18 +688,35 @@ namespace Alis.Core.Aspect.Logging.Test
         /// </summary>
         private sealed class FaultyLogOutput : ILogOutput
         {
+            /// <summary>
+            /// Gets the value of the name
+            /// </summary>
             public string Name => "FaultyOutput";
+            /// <summary>
+            /// Gets or sets the value of the is enabled
+            /// </summary>
             public bool IsEnabled { get; set; } = true;
 
+            /// <summary>
+            /// Writes the entry
+            /// </summary>
+            /// <param name="entry">The entry</param>
+            /// <exception cref="InvalidOperationException">Faulty output</exception>
             public void Write(ILogEntry entry)
             {
                 throw new InvalidOperationException("Faulty output");
             }
 
+            /// <summary>
+            /// Flushes this instance
+            /// </summary>
             public void Flush()
             {
             }
 
+            /// <summary>
+            /// Disposes this instance
+            /// </summary>
             public void Dispose()
             {
             }

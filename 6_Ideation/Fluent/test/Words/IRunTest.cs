@@ -93,9 +93,18 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// </summary>
         private class TestRunner : IRun
         {
+            /// <summary>
+            /// Gets or sets the value of the has run
+            /// </summary>
             public bool HasRun { get; private set; }
+            /// <summary>
+            /// Gets or sets the value of the run count
+            /// </summary>
             public int RunCount { get; private set; }
 
+            /// <summary>
+            /// Runs this instance
+            /// </summary>
             public void Run()
             {
                 HasRun = true;

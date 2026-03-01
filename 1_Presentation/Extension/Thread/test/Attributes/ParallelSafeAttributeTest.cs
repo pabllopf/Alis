@@ -33,26 +33,50 @@ using Xunit;
 
 namespace Alis.Extension.Thread.Test.Attributes
 {
+    /// <summary>
+    /// The test component with default batch size
+    /// </summary>
     [ParallelSafe]
     internal struct TestComponentWithDefaultBatchSize
     {
+        /// <summary>
+        /// The value
+        /// </summary>
         public int Value;
     }
 
+    /// <summary>
+    /// The test component with custom batch size
+    /// </summary>
     [ParallelSafe(256)]
     internal struct TestComponentWithCustomBatchSize
     {
+        /// <summary>
+        /// The value
+        /// </summary>
         public int Value;
     }
 
+    /// <summary>
+    /// The test class with attribute class
+    /// </summary>
     [ParallelSafe(64)]
     internal class TestClassWithAttribute
     {
+        /// <summary>
+        /// Gets or sets the value of the value
+        /// </summary>
         public int Value { get; set; }
     }
 
+    /// <summary>
+    /// The test component without attribute
+    /// </summary>
     internal struct TestComponentWithoutAttribute
     {
+        /// <summary>
+        /// The value
+        /// </summary>
         public int Value;
     }
 

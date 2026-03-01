@@ -41,6 +41,9 @@ namespace Alis.Core.Aspect.Logging.Test
     /// </summary>
     public class CompositeLogFilterTest
     {
+        /// <summary>
+        /// Tests that composite log filter and all filters must pass
+        /// </summary>
         [Fact]
         public void CompositeLogFilter_AND_AllFiltersMustPass()
         {
@@ -59,6 +62,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.False(compositeFilter.ShouldLog(CreateEntry(LogLevel.Debug, "BlockedLogger")));
         }
 
+        /// <summary>
+        /// Tests that composite log filter or any filter can pass
+        /// </summary>
         [Fact]
         public void CompositeLogFilter_OR_AnyFilterCanPass()
         {
@@ -77,6 +83,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.False(compositeFilter.ShouldLog(CreateEntry(LogLevel.Debug, "OtherLogger")));
         }
 
+        /// <summary>
+        /// Tests that composite log filter empty filter list should allow all
+        /// </summary>
         [Fact]
         public void CompositeLogFilter_EmptyFilterList_ShouldAllowAll()
         {
@@ -88,6 +97,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(compositeFilter.ShouldLog(CreateEntry(LogLevel.Trace, "Any")));
         }
 
+        /// <summary>
+        /// Tests that composite log filter null filter list should allow all
+        /// </summary>
         [Fact]
         public void CompositeLogFilter_NullFilterList_ShouldAllowAll()
         {
@@ -98,6 +110,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(compositeFilter.ShouldLog(CreateEntry(LogLevel.Info, "Any")));
         }
 
+        /// <summary>
+        /// Tests that composite log filter single filter and
+        /// </summary>
         [Fact]
         public void CompositeLogFilter_SingleFilter_AND()
         {
@@ -113,6 +128,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(compositeFilter.ShouldLog(CreateEntry(LogLevel.Warning, "Logger")));
         }
 
+        /// <summary>
+        /// Tests that composite log filter single filter or
+        /// </summary>
         [Fact]
         public void CompositeLogFilter_SingleFilter_OR()
         {
@@ -128,6 +146,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(compositeFilter.ShouldLog(CreateEntry(LogLevel.Warning, "Logger")));
         }
 
+        /// <summary>
+        /// Tests that composite log filter null entry should return true
+        /// </summary>
         [Fact]
         public void CompositeLogFilter_NullEntry_ShouldReturnTrue()
         {
@@ -142,6 +163,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(compositeFilter.ShouldLog(null));
         }
 
+        /// <summary>
+        /// Tests that composite log filter multiple filters and all must pass
+        /// </summary>
         [Fact]
         public void CompositeLogFilter_MultipleFilters_AND_AllMustPass()
         {
@@ -161,6 +185,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.False(compositeFilter.ShouldLog(CreateEntry(LogLevel.Warning, "Other", "Important")));
         }
 
+        /// <summary>
+        /// Tests that composite log filter multiple filters or any can pass
+        /// </summary>
         [Fact]
         public void CompositeLogFilter_MultipleFilters_OR_AnyCanPass()
         {
@@ -180,6 +207,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.False(compositeFilter.ShouldLog(CreateEntry(LogLevel.Info, "Other", "Normal")));
         }
 
+        /// <summary>
+        /// Tests that composite log filter has name
+        /// </summary>
         [Fact]
         public void CompositeLogFilter_HasName()
         {
@@ -195,6 +225,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("CompositeFilter", compositeFilter.Name);
         }
 
+        /// <summary>
+        /// Tests that composite log filter and has correct name suffix
+        /// </summary>
         [Fact]
         public void CompositeLogFilter_AND_HasCorrectNameSuffix()
         {
@@ -209,6 +242,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("AND", compositeFilter.Name);
         }
 
+        /// <summary>
+        /// Tests that composite log filter or has correct name suffix
+        /// </summary>
         [Fact]
         public void CompositeLogFilter_OR_HasCorrectNameSuffix()
         {
@@ -223,6 +259,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("OR", compositeFilter.Name);
         }
 
+        /// <summary>
+        /// Tests that composite log filter complex logic and
+        /// </summary>
         [Fact]
         public void CompositeLogFilter_ComplexLogic_AND()
         {
@@ -249,6 +288,13 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.False(compositeOuter.ShouldLog(CreateEntry(LogLevel.Info, "Any")));
         }
 
+        /// <summary>
+        /// Creates the entry using the specified level
+        /// </summary>
+        /// <param name="level">The level</param>
+        /// <param name="loggerName">The logger name</param>
+        /// <param name="message">The message</param>
+        /// <returns>The log entry</returns>
         private static ILogEntry CreateEntry(LogLevel level, string loggerName, string message = "Test") => new LogEntry(level, message, loggerName);
     }
 }

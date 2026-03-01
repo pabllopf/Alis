@@ -101,6 +101,9 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// </summary>
         private class Builder
         {
+            /// <summary>
+            /// Gets or sets the value of the is value
+            /// </summary>
             public string IsValue { get; set; }
         }
 
@@ -109,8 +112,17 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// </summary>
         private class IsBuilder : IIs<Builder, string>
         {
+            /// <summary>
+            /// The builder
+            /// </summary>
             private readonly Builder _builder = new Builder();
 
+            /// <summary>
+            /// Ises the value
+            /// </summary>
+            /// <typeparam name="T">The </typeparam>
+            /// <param name="value">The value</param>
+            /// <returns>The builder</returns>
             public Builder Is<T>(string value)
             {
                 _builder.IsValue = value;

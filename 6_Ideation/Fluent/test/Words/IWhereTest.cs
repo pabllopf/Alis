@@ -99,6 +99,9 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// </summary>
         private class QueryBuilder
         {
+            /// <summary>
+            /// Gets or sets the value of the condition
+            /// </summary>
             public string Condition { get; set; }
         }
 
@@ -107,8 +110,16 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// </summary>
         private class WhereBuilder : IWhere<QueryBuilder, string>
         {
+            /// <summary>
+            /// The query builder
+            /// </summary>
             private readonly QueryBuilder _builder = new QueryBuilder();
 
+            /// <summary>
+            /// Wheres the value
+            /// </summary>
+            /// <param name="value">The value</param>
+            /// <returns>The builder</returns>
             public QueryBuilder Where(string value)
             {
                 _builder.Condition = value;
@@ -121,6 +132,9 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// </summary>
         private class IntQueryBuilder
         {
+            /// <summary>
+            /// Gets or sets the value of the min value
+            /// </summary>
             public int MinValue { get; set; }
         }
 
@@ -129,8 +143,16 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// </summary>
         private class IntWhereBuilder : IWhere<IntQueryBuilder, int>
         {
+            /// <summary>
+            /// The int query builder
+            /// </summary>
             private readonly IntQueryBuilder _builder = new IntQueryBuilder();
 
+            /// <summary>
+            /// Wheres the value
+            /// </summary>
+            /// <param name="value">The value</param>
+            /// <returns>The builder</returns>
             public IntQueryBuilder Where(int value)
             {
                 _builder.MinValue = value;

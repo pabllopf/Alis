@@ -110,6 +110,10 @@ namespace Alis.Core.Aspect.Fluent.Test
         /// </summary>
         private class TestBuilderImpl : IHasBuilder<string>
         {
+            /// <summary>
+            /// Builders this instance
+            /// </summary>
+            /// <returns>The string</returns>
             public string Builder() => "test_value";
         }
 
@@ -118,6 +122,10 @@ namespace Alis.Core.Aspect.Fluent.Test
         /// </summary>
         private class IntBuilderImpl : IHasBuilder<int>
         {
+            /// <summary>
+            /// Builders this instance
+            /// </summary>
+            /// <returns>The int</returns>
             public int Builder() => 100;
         }
 
@@ -126,6 +134,9 @@ namespace Alis.Core.Aspect.Fluent.Test
         /// </summary>
         private class TestData
         {
+            /// <summary>
+            /// Gets or sets the value of the value
+            /// </summary>
             public string Value { get; set; }
         }
 
@@ -134,6 +145,10 @@ namespace Alis.Core.Aspect.Fluent.Test
         /// </summary>
         private class CustomBuilderImpl : IHasBuilder<TestData>
         {
+            /// <summary>
+            /// Builders this instance
+            /// </summary>
+            /// <returns>The test data</returns>
             public TestData Builder() => new TestData {Value = "data"};
         }
 
@@ -142,6 +157,10 @@ namespace Alis.Core.Aspect.Fluent.Test
         /// </summary>
         private class ObjectBuilderImpl : IHasBuilder<object>
         {
+            /// <summary>
+            /// Builders this instance
+            /// </summary>
+            /// <returns>The object</returns>
             public object Builder() => "covariant_object";
         }
     }

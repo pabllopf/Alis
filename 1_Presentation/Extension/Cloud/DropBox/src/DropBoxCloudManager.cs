@@ -298,6 +298,9 @@ namespace Alis.Extension.Cloud.DropBox
             }
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             GC.SuppressFinalize(this);

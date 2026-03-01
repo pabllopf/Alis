@@ -44,10 +44,23 @@ namespace Alis.Extension.Thread.Sample
     [ParallelSafe(64)]
     public struct VelocityComponent : IParallelCapable
     {
+        /// <summary>
+        /// The 
+        /// </summary>
         public float X;
+        /// <summary>
+        /// The 
+        /// </summary>
         public float Y;
+        /// <summary>
+        /// The 
+        /// </summary>
         public float Z;
 
+        /// <summary>
+        /// Applies the damping using the specified damping
+        /// </summary>
+        /// <param name="damping">The damping</param>
         public void ApplyDamping(float damping)
         {
             X *= damping;
@@ -62,10 +75,24 @@ namespace Alis.Extension.Thread.Sample
     [ParallelSafe(128)]
     public struct PositionComponent : IParallelCapable
     {
+        /// <summary>
+        /// The 
+        /// </summary>
         public float X;
+        /// <summary>
+        /// The 
+        /// </summary>
         public float Y;
+        /// <summary>
+        /// The 
+        /// </summary>
         public float Z;
 
+        /// <summary>
+        /// Applies the velocity using the specified velocity
+        /// </summary>
+        /// <param name="velocity">The velocity</param>
+        /// <param name="deltaTime">The delta time</param>
         public void ApplyVelocity(VelocityComponent velocity, float deltaTime)
         {
             X += velocity.X * deltaTime;
@@ -80,10 +107,24 @@ namespace Alis.Extension.Thread.Sample
     [ParallelSafe(32)]
     public struct PhysicsComponent : IParallelCapable
     {
+        /// <summary>
+        /// The mass
+        /// </summary>
         public float Mass;
+        /// <summary>
+        /// The friction
+        /// </summary>
         public float Friction;
+        /// <summary>
+        /// The restitution
+        /// </summary>
         public float Restitution;
 
+        /// <summary>
+        /// Calculates the force using the specified acceleration
+        /// </summary>
+        /// <param name="acceleration">The acceleration</param>
+        /// <returns>The float</returns>
         public float CalculateForce(float acceleration) => Mass * acceleration;
     }
 

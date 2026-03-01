@@ -40,6 +40,9 @@ namespace Alis.Core.Aspect.Logging.Test
     /// </summary>
     public class LogLevelFilterTest
     {
+        /// <summary>
+        /// Tests that log level filter should allow levels greater than or equal
+        /// </summary>
         [Fact]
         public void LogLevelFilter_ShouldAllowLevelsGreaterThanOrEqual()
         {
@@ -55,6 +58,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(filter.ShouldLog(CreateEntry(LogLevel.Critical)));
         }
 
+        /// <summary>
+        /// Tests that log level filter trace should allow all
+        /// </summary>
         [Fact]
         public void LogLevelFilter_Trace_ShouldAllowAll()
         {
@@ -70,6 +76,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(filter.ShouldLog(CreateEntry(LogLevel.Critical)));
         }
 
+        /// <summary>
+        /// Tests that log level filter critical should only allow critical
+        /// </summary>
         [Fact]
         public void LogLevelFilter_Critical_ShouldOnlyAllowCritical()
         {
@@ -85,6 +94,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(filter.ShouldLog(CreateEntry(LogLevel.Critical)));
         }
 
+        /// <summary>
+        /// Tests that log level filter none should reject all
+        /// </summary>
         [Fact]
         public void LogLevelFilter_None_ShouldRejectAll()
         {
@@ -96,6 +108,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.False(filter.ShouldLog(CreateEntry(LogLevel.Critical)));
         }
 
+        /// <summary>
+        /// Tests that log level filter null entry should return false
+        /// </summary>
         [Fact]
         public void LogLevelFilter_NullEntry_ShouldReturnFalse()
         {
@@ -106,6 +121,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.False(filter.ShouldLog(null));
         }
 
+        /// <summary>
+        /// Tests that log level filter all levels should produce expected results
+        /// </summary>
         [Fact]
         public void LogLevelFilter_AllLevels_ShouldProduceExpectedResults()
         {
@@ -130,6 +148,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that log level filter has name
+        /// </summary>
         [Fact]
         public void LogLevelFilter_HasName()
         {
@@ -142,6 +163,11 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("Warning", filter.Name);
         }
 
+        /// <summary>
+        /// Creates the entry using the specified level
+        /// </summary>
+        /// <param name="level">The level</param>
+        /// <returns>The log entry</returns>
         private static ILogEntry CreateEntry(LogLevel level) => new LogEntry(level, "Test", "Logger");
     }
 }

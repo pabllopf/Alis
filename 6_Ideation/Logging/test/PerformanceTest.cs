@@ -44,6 +44,9 @@ namespace Alis.Core.Aspect.Logging.Test
     /// </summary>
     public class PerformanceTest
     {
+        /// <summary>
+        /// Tests that performance simple logging 10 k messages under x seconds
+        /// </summary>
         [Fact]
         public void Performance_SimpleLogging_10KMessages_UnderXSeconds()
         {
@@ -71,6 +74,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that performance formatted logging 1 k messages under y seconds
+        /// </summary>
         [Fact]
         public void Performance_FormattedLogging_1KMessages_UnderYSeconds()
         {
@@ -99,6 +105,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that performance json formatted logging 1 k messages under y seconds
+        /// </summary>
         [Fact]
         public void Performance_JsonFormattedLogging_1KMessages_UnderYSeconds()
         {
@@ -127,6 +136,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that performance compact formatted logging 1 k messages under y seconds
+        /// </summary>
         [Fact]
         public void Performance_CompactFormattedLogging_1KMessages_UnderYSeconds()
         {
@@ -155,6 +167,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that performance with filtering 10 k messages under x seconds
+        /// </summary>
         [Fact]
         public void Performance_WithFiltering_10KMessages_UnderXSeconds()
         {
@@ -183,6 +198,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that performance with scopes logging 1 k messages under y seconds
+        /// </summary>
         [Fact]
         public void Performance_WithScopesLogging_1KMessages_UnderYSeconds()
         {
@@ -213,6 +231,10 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that performance exception logging 1 k messages under y seconds
+        /// </summary>
+        /// <exception cref="InvalidOperationException">Error {i}</exception>
         [Fact]
         public void Performance_ExceptionLogging_1KMessages_UnderYSeconds()
         {
@@ -247,6 +269,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that performance memory output storage limits
+        /// </summary>
         [Fact]
         public void Performance_MemoryOutputStorage_Limits()
         {

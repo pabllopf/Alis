@@ -40,6 +40,9 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
     /// </summary>
     public class ILogFormatterTest
     {
+        /// <summary>
+        /// Tests that i log formatter implementation can be created
+        /// </summary>
         [Fact]
         public void ILogFormatter_ImplementationCanBeCreated()
         {
@@ -50,6 +53,9 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
             Assert.NotNull(formatter);
         }
 
+        /// <summary>
+        /// Tests that i log formatter has name property
+        /// </summary>
         [Fact]
         public void ILogFormatter_HasNameProperty()
         {
@@ -61,6 +67,9 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
             Assert.NotEmpty(formatter.Name);
         }
 
+        /// <summary>
+        /// Tests that i log formatter format method can be called
+        /// </summary>
         [Fact]
         public void ILogFormatter_FormatMethod_CanBeCalled()
         {
@@ -76,6 +85,9 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
             Assert.NotEmpty(result);
         }
 
+        /// <summary>
+        /// Tests that i log formatter format returns string
+        /// </summary>
         [Fact]
         public void ILogFormatter_FormatReturnsString()
         {
@@ -90,6 +102,9 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
             Assert.IsType<string>(result);
         }
 
+        /// <summary>
+        /// Tests that i log formatter multiple implementations should work
+        /// </summary>
         [Fact]
         public void ILogFormatter_MultipleImplementations_ShouldWork()
         {
@@ -106,6 +121,9 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
             Assert.NotEqual(formatter2.Name, formatter3.Name);
         }
 
+        /// <summary>
+        /// Tests that i log formatter different implementations produce different output
+        /// </summary>
         [Fact]
         public void ILogFormatter_DifferentImplementations_ProduceDifferentOutput()
         {

@@ -43,6 +43,9 @@ namespace Alis.Core.Aspect.Logging.Test
     /// </summary>
     public class DefaultTest
     {
+        /// <summary>
+        /// Tests that logger factory create should return valid logger
+        /// </summary>
         [Fact]
         public void LoggerFactory_Create_ShouldReturnValidLogger()
         {
@@ -54,6 +57,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that logger log trace should write to memory output
+        /// </summary>
         [Fact]
         public void Logger_LogTrace_ShouldWriteToMemoryOutput()
         {
@@ -72,6 +78,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that logger log debug should write to memory output
+        /// </summary>
         [Fact]
         public void Logger_LogDebug_ShouldWriteToMemoryOutput()
         {
@@ -89,6 +98,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that logger log info should write to memory output
+        /// </summary>
         [Fact]
         public void Logger_LogInfo_ShouldWriteToMemoryOutput()
         {
@@ -106,6 +118,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that logger log warning should write to memory output
+        /// </summary>
         [Fact]
         public void Logger_LogWarning_ShouldWriteToMemoryOutput()
         {
@@ -123,6 +138,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that logger log error should write to memory output
+        /// </summary>
         [Fact]
         public void Logger_LogError_ShouldWriteToMemoryOutput()
         {
@@ -140,6 +158,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that logger log critical should write to memory output
+        /// </summary>
         [Fact]
         public void Logger_LogCritical_ShouldWriteToMemoryOutput()
         {
@@ -157,6 +178,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that logger log with exception should include exception in entry
+        /// </summary>
         [Fact]
         public void Logger_LogWithException_ShouldIncludeExceptionInEntry()
         {
@@ -176,6 +200,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that logger set correlation id should include in log entry
+        /// </summary>
         [Fact]
         public void Logger_SetCorrelationId_ShouldIncludeInLogEntry()
         {
@@ -195,6 +222,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that logger get correlation id should return set value
+        /// </summary>
         [Fact]
         public void Logger_GetCorrelationId_ShouldReturnSetValue()
         {
@@ -208,6 +238,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that logger begin scope should include scope in entry
+        /// </summary>
         [Fact]
         public void Logger_BeginScope_ShouldIncludeScopeInEntry()
         {
@@ -229,6 +262,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that logger nested scopes should include all scopes
+        /// </summary>
         [Fact]
         public void Logger_NestedScopes_ShouldIncludeAllScopes()
         {
@@ -252,6 +288,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that log level filter should filter by level
+        /// </summary>
         [Fact]
         public void LogLevelFilter_ShouldFilterByLevel()
         {
@@ -274,6 +313,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that logger name filter should filter by name
+        /// </summary>
         [Fact]
         public void LoggerNameFilter_ShouldFilterByName()
         {
@@ -295,6 +337,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that logger name filter exclusive should exclude names
+        /// </summary>
         [Fact]
         public void LoggerNameFilter_Exclusive_ShouldExcludeNames()
         {
@@ -316,6 +361,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that logger is enabled should return correct value
+        /// </summary>
         [Fact]
         public void Logger_IsEnabled_ShouldReturnCorrectValue()
         {
@@ -333,6 +381,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that log structured should include properties
+        /// </summary>
         [Fact]
         public void LogStructured_ShouldIncludeProperties()
         {
@@ -357,6 +408,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that simple log formatter should format correctly
+        /// </summary>
         [Fact]
         public void SimpleLogFormatter_ShouldFormatCorrectly()
         {
@@ -369,6 +423,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("TestLogger", formatted);
         }
 
+        /// <summary>
+        /// Tests that compact log formatter should format compactly
+        /// </summary>
         [Fact]
         public void CompactLogFormatter_ShouldFormatCompactly()
         {
@@ -380,6 +437,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("Test message", formatted);
         }
 
+        /// <summary>
+        /// Tests that json log formatter should format as json
+        /// </summary>
         [Fact]
         public void JsonLogFormatter_ShouldFormatAsJson()
         {
@@ -393,6 +453,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("\"message\":\"Test message\"", formatted);
         }
 
+        /// <summary>
+        /// Tests that memory log output max entries should limit storage
+        /// </summary>
         [Fact]
         public void MemoryLogOutput_MaxEntries_ShouldLimitStorage()
         {
@@ -407,6 +470,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(3, memoryOutput.Count);
         }
 
+        /// <summary>
+        /// Tests that composite log filter and should require all filters
+        /// </summary>
         [Fact]
         public void CompositeLogFilter_AND_ShouldRequireAllFilters()
         {
@@ -423,6 +489,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.False(composite.ShouldLog(entryFailsName));
         }
 
+        /// <summary>
+        /// Tests that composite log filter or should require any filter
+        /// </summary>
         [Fact]
         public void CompositeLogFilter_OR_ShouldRequireAnyFilter()
         {
@@ -439,6 +508,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.False(composite.ShouldLog(entryFailsBoth));
         }
 
+        /// <summary>
+        /// Tests that logger log entry should contain thread id
+        /// </summary>
         [Fact]
         public void Logger_LogEntry_ShouldContainThreadId()
         {
@@ -456,6 +528,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that logger factory fluent configuration should chain correctly
+        /// </summary>
         [Fact]
         public void LoggerFactory_FluentConfiguration_ShouldChainCorrectly()
         {

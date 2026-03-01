@@ -40,10 +40,25 @@ namespace Alis.Core.Aspect.Logging.Outputs
     /// </summary>
     public sealed class AsyncLogOutput : ILogOutput
     {
+        /// <summary>
+        /// The inner output
+        /// </summary>
         private readonly ILogOutput _innerOutput;
+        /// <summary>
+        /// The max queue size
+        /// </summary>
         private readonly int _maxQueueSize;
+        /// <summary>
+        /// The queue
+        /// </summary>
         private readonly Queue<ILogEntry> _queue;
+        /// <summary>
+        /// The queue lock
+        /// </summary>
         private readonly object _queueLock = new object();
+        /// <summary>
+        /// The disposed
+        /// </summary>
         private bool _disposed;
 
         /// <summary>

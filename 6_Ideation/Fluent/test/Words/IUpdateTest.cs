@@ -94,11 +94,25 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// </summary>
         private class UpdateHandler : IUpdate<int, int>
         {
+            /// <summary>
+            /// Gets or sets the value of the update count
+            /// </summary>
             public int UpdateCount { get; private set; }
+            /// <summary>
+            /// Gets or sets the value of the was updated
+            /// </summary>
             public bool WasUpdated { get; private set; }
 
+            /// <summary>
+            /// Updates the obj
+            /// </summary>
+            /// <param name="obj">The obj</param>
+            /// <returns>The int</returns>
             public int Update(int obj) => throw new NotImplementedException();
 
+            /// <summary>
+            /// Updates this instance
+            /// </summary>
             public void Update()
             {
                 WasUpdated = true;

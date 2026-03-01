@@ -88,6 +88,9 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// </summary>
         private class DensityBuilder
         {
+            /// <summary>
+            /// Gets or sets the value of the density value
+            /// </summary>
             public float DensityValue { get; set; }
         }
 
@@ -96,8 +99,16 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// </summary>
         private class DensityBuilderImpl : IDensity<DensityBuilder, float>
         {
+            /// <summary>
+            /// The density builder
+            /// </summary>
             private readonly DensityBuilder _builder = new DensityBuilder();
 
+            /// <summary>
+            /// Densities the value
+            /// </summary>
+            /// <param name="value">The value</param>
+            /// <returns>The builder</returns>
             public DensityBuilder Density(float value)
             {
                 _builder.DensityValue = value;

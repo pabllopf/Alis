@@ -39,6 +39,9 @@ namespace Alis.Core.Aspect.Logging.Filters
     /// </summary>
     public sealed class ConditionalLogFilter : ILogFilter
     {
+        /// <summary>
+        /// The predicate
+        /// </summary>
         private readonly Func<ILogEntry, bool> _predicate;
 
         /// <summary>

@@ -44,6 +44,9 @@ namespace Alis.Core.Aspect.Logging.Test
     /// </summary>
     public class ErrorHandlingTest
     {
+        /// <summary>
+        /// Tests that logger factory add null output should throw
+        /// </summary>
         [Fact]
         public void LoggerFactory_AddNullOutput_ShouldThrow()
         {
@@ -55,6 +58,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that logger factory add null filter should throw
+        /// </summary>
         [Fact]
         public void LoggerFactory_AddNullFilter_ShouldThrow()
         {
@@ -66,6 +72,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that logger factory set null formatter should throw
+        /// </summary>
         [Fact]
         public void LoggerFactory_SetNullFormatter_ShouldThrow()
         {
@@ -77,6 +86,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that file log output null path should throw
+        /// </summary>
         [Fact]
         public void FileLogOutput_NullPath_ShouldThrow()
         {
@@ -86,6 +98,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Throws<ArgumentException>(() => new FileLogOutput("   "));
         }
 
+        /// <summary>
+        /// Tests that sampling log filter invalid sample rate should throw
+        /// </summary>
         [Fact]
         public void SamplingLogFilter_InvalidSampleRate_ShouldThrow()
         {
@@ -94,6 +109,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Throws<ArgumentException>(() => new SamplingLogFilter(-1));
         }
 
+        /// <summary>
+        /// Tests that async log output null inner output should throw
+        /// </summary>
         [Fact]
         public void AsyncLogOutput_NullInnerOutput_ShouldThrow()
         {
@@ -101,6 +119,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Throws<ArgumentNullException>(() => new AsyncLogOutput(null));
         }
 
+        /// <summary>
+        /// Tests that logger log after dispose should handle gracefully
+        /// </summary>
         [Fact]
         public void Logger_LogAfterDispose_ShouldHandleGracefully()
         {
@@ -117,6 +138,9 @@ namespace Alis.Core.Aspect.Logging.Test
             // Assert - Behavior depends on implementation
         }
 
+        /// <summary>
+        /// Tests that file log output write after dispose should handle gracefully
+        /// </summary>
         [Fact]
         public void FileLogOutput_WriteAfterDispose_ShouldHandleGracefully()
         {
@@ -130,6 +154,9 @@ namespace Alis.Core.Aspect.Logging.Test
             // Assert - Should complete without error
         }
 
+        /// <summary>
+        /// Tests that log entry with null exception should handle gracefully
+        /// </summary>
         [Fact]
         public void LogEntry_WithNullException_ShouldHandleGracefully()
         {
@@ -140,6 +167,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Null(entry.Exception);
         }
 
+        /// <summary>
+        /// Tests that simple log formatter with null exception should work
+        /// </summary>
         [Fact]
         public void SimpleLogFormatter_WithNullException_ShouldWork()
         {
@@ -155,6 +185,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("Error", result);
         }
 
+        /// <summary>
+        /// Tests that json log formatter with null exception should not include exception
+        /// </summary>
         [Fact]
         public void JsonLogFormatter_WithNullException_ShouldNotIncludeException()
         {
@@ -169,6 +202,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.DoesNotContain("\"exception\":", result);
         }
 
+        /// <summary>
+        /// Tests that conditional log filter null entry should return false
+        /// </summary>
         [Fact]
         public void ConditionalLogFilter_NullEntry_ShouldReturnFalse()
         {
@@ -182,6 +218,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(result);
         }
 
+        /// <summary>
+        /// Tests that logger name filter empty name list should allow all
+        /// </summary>
         [Fact]
         public void LoggerNameFilter_EmptyNameList_ShouldAllowAll()
         {
@@ -196,6 +235,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(result);
         }
 
+        /// <summary>
+        /// Tests that composite log filter require all all must pass
+        /// </summary>
         [Fact]
         public void CompositeLogFilter_RequireAll_AllMustPass()
         {
@@ -212,6 +254,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(result);
         }
 
+        /// <summary>
+        /// Tests that composite log filter require any one must pass
+        /// </summary>
         [Fact]
         public void CompositeLogFilter_RequireAny_OneMustPass()
         {
@@ -228,6 +273,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(result);
         }
 
+        /// <summary>
+        /// Tests that memory log output is disabled after dispose
+        /// </summary>
         [Fact]
         public void MemoryLogOutput_IsDisabledAfterDispose()
         {

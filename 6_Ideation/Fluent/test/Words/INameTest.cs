@@ -99,6 +99,9 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// </summary>
         private class NamedBuilder
         {
+            /// <summary>
+            /// Gets or sets the value of the name
+            /// </summary>
             public string Name { get; set; }
         }
 
@@ -107,8 +110,16 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// </summary>
         private class NameBuilderImpl : IName<NamedBuilder, string>
         {
+            /// <summary>
+            /// The named builder
+            /// </summary>
             private readonly NamedBuilder _builder = new NamedBuilder();
 
+            /// <summary>
+            /// Names the value
+            /// </summary>
+            /// <param name="value">The value</param>
+            /// <returns>The builder</returns>
             public NamedBuilder Name(string value)
             {
                 _builder.Name = value;

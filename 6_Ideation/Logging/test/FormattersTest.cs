@@ -41,6 +41,9 @@ namespace Alis.Core.Aspect.Logging.Test
     /// </summary>
     public class FormattersTest
     {
+        /// <summary>
+        /// Tests that simple log formatter format should include all components
+        /// </summary>
         [Fact]
         public void SimpleLogFormatter_Format_ShouldIncludeAllComponents()
         {
@@ -64,6 +67,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("Test exception", formatted);
         }
 
+        /// <summary>
+        /// Tests that simple log formatter format with scopes should include scopes
+        /// </summary>
         [Fact]
         public void SimpleLogFormatter_Format_WithScopes_ShouldIncludeScopes()
         {
@@ -78,6 +84,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("Scope3", formatted);
         }
 
+        /// <summary>
+        /// Tests that compact log formatter format should be minimal
+        /// </summary>
         [Fact]
         public void CompactLogFormatter_Format_ShouldBeMinimal()
         {
@@ -91,6 +100,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.DoesNotContain("Logger", formatted); // Name not in compact
         }
 
+        /// <summary>
+        /// Tests that compact log formatter format with exception should include exception briefly
+        /// </summary>
         [Fact]
         public void CompactLogFormatter_Format_WithException_ShouldIncludeExceptionBriefly()
         {
@@ -105,6 +117,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("Operation failed", formatted);
         }
 
+        /// <summary>
+        /// Tests that json log formatter format should produce valid json
+        /// </summary>
         [Fact]
         public void JsonLogFormatter_Format_ShouldProduceValidJson()
         {
@@ -120,6 +135,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("\"logger\":", formatted);
         }
 
+        /// <summary>
+        /// Tests that json log formatter format with properties should include properties object
+        /// </summary>
         [Fact]
         public void JsonLogFormatter_Format_WithProperties_ShouldIncludePropertiesObject()
         {
@@ -141,6 +159,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("\"Login\"", formatted);
         }
 
+        /// <summary>
+        /// Tests that json log formatter format with exception should include exception object
+        /// </summary>
         [Fact]
         public void JsonLogFormatter_Format_WithException_ShouldIncludeExceptionObject()
         {
@@ -156,6 +177,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("\"stackTrace\":", formatted);
         }
 
+        /// <summary>
+        /// Tests that json log formatter format escapes special characters
+        /// </summary>
         [Fact]
         public void JsonLogFormatter_Format_EscapesSpecialCharacters()
         {
@@ -170,6 +194,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.DoesNotContain("unescaped \"quotes\"", formatted);
         }
 
+        /// <summary>
+        /// Tests that json log formatter format with correlation id should include correlation id
+        /// </summary>
         [Fact]
         public void JsonLogFormatter_Format_WithCorrelationId_ShouldIncludeCorrelationId()
         {
@@ -181,6 +208,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("\"correlationId\":\"CORR-123\"", formatted);
         }
 
+        /// <summary>
+        /// Tests that json log formatter format with thread id should include thread id
+        /// </summary>
         [Fact]
         public void JsonLogFormatter_Format_WithThreadId_ShouldIncludeThreadId()
         {
@@ -193,6 +223,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains(entry.ThreadId.ToString(), formatted);
         }
 
+        /// <summary>
+        /// Tests that simple log formatter format all log levels should produce output
+        /// </summary>
         [Fact]
         public void SimpleLogFormatter_Format_AllLogLevels_ShouldProduceOutput()
         {
@@ -209,6 +242,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that compact log formatter format all log levels should produce output
+        /// </summary>
         [Fact]
         public void CompactLogFormatter_Format_AllLogLevels_ShouldProduceOutput()
         {

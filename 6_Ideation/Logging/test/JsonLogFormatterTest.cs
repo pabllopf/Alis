@@ -43,6 +43,9 @@ namespace Alis.Core.Aspect.Logging.Test
     /// </summary>
     public class JsonLogFormatterTest
     {
+        /// <summary>
+        /// Tests that json log formatter has name
+        /// </summary>
         [Fact]
         public void JsonLogFormatter_HasName()
         {
@@ -54,6 +57,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal("JsonFormatter", formatter.Name);
         }
 
+        /// <summary>
+        /// Tests that json log formatter format should be valid json
+        /// </summary>
         [Fact]
         public void JsonLogFormatter_Format_ShouldBeValidJson()
         {
@@ -69,6 +75,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.EndsWith("}", formatted);
         }
 
+        /// <summary>
+        /// Tests that json log formatter format contains timestamp
+        /// </summary>
         [Fact]
         public void JsonLogFormatter_Format_ContainsTimestamp()
         {
@@ -83,6 +92,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("\"timestamp\":", formatted);
         }
 
+        /// <summary>
+        /// Tests that json log formatter format contains level
+        /// </summary>
         [Fact]
         public void JsonLogFormatter_Format_ContainsLevel()
         {
@@ -97,6 +109,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("\"level\":\"Warning\"", formatted);
         }
 
+        /// <summary>
+        /// Tests that json log formatter format contains message
+        /// </summary>
         [Fact]
         public void JsonLogFormatter_Format_ContainsMessage()
         {
@@ -111,6 +126,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("\"message\":\"Test message\"", formatted);
         }
 
+        /// <summary>
+        /// Tests that json log formatter format contains logger
+        /// </summary>
         [Fact]
         public void JsonLogFormatter_Format_ContainsLogger()
         {
@@ -125,6 +143,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("\"logger\":\"MyLogger\"", formatted);
         }
 
+        /// <summary>
+        /// Tests that json log formatter format contains thread id
+        /// </summary>
         [Fact]
         public void JsonLogFormatter_Format_ContainsThreadId()
         {
@@ -139,6 +160,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("\"threadId\":", formatted);
         }
 
+        /// <summary>
+        /// Tests that json log formatter format with exception
+        /// </summary>
         [Fact]
         public void JsonLogFormatter_Format_WithException()
         {
@@ -157,6 +181,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("\"stackTrace\":", formatted);
         }
 
+        /// <summary>
+        /// Tests that json log formatter format without exception
+        /// </summary>
         [Fact]
         public void JsonLogFormatter_Format_WithoutException()
         {
@@ -171,6 +198,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.DoesNotContain("\"exception\":", formatted);
         }
 
+        /// <summary>
+        /// Tests that json log formatter format with correlation id
+        /// </summary>
         [Fact]
         public void JsonLogFormatter_Format_WithCorrelationId()
         {
@@ -185,6 +215,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("\"correlationId\":\"CORR-123\"", formatted);
         }
 
+        /// <summary>
+        /// Tests that json log formatter format without correlation id
+        /// </summary>
         [Fact]
         public void JsonLogFormatter_Format_WithoutCorrelationId()
         {
@@ -199,6 +232,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.DoesNotContain("\"correlationId\":", formatted);
         }
 
+        /// <summary>
+        /// Tests that json log formatter format with properties
+        /// </summary>
         [Fact]
         public void JsonLogFormatter_Format_WithProperties()
         {
@@ -222,6 +258,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("\"Login\"", formatted);
         }
 
+        /// <summary>
+        /// Tests that json log formatter format without properties
+        /// </summary>
         [Fact]
         public void JsonLogFormatter_Format_WithoutProperties()
         {
@@ -236,6 +275,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.DoesNotContain("\"properties\":", formatted);
         }
 
+        /// <summary>
+        /// Tests that json log formatter format with scopes
+        /// </summary>
         [Fact]
         public void JsonLogFormatter_Format_WithScopes()
         {
@@ -253,6 +295,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("\"Scope2\"", formatted);
         }
 
+        /// <summary>
+        /// Tests that json log formatter format without scopes
+        /// </summary>
         [Fact]
         public void JsonLogFormatter_Format_WithoutScopes()
         {
@@ -267,6 +312,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.DoesNotContain("\"scopes\":", formatted);
         }
 
+        /// <summary>
+        /// Tests that json log formatter format escapes special characters
+        /// </summary>
         [Fact]
         public void JsonLogFormatter_Format_EscapesSpecialCharacters()
         {
@@ -282,6 +330,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("\\\\", formatted);
         }
 
+        /// <summary>
+        /// Tests that json log formatter format all levels
+        /// </summary>
         [Fact]
         public void JsonLogFormatter_Format_AllLevels()
         {
@@ -300,6 +351,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that json log formatter format complex properties
+        /// </summary>
         [Fact]
         public void JsonLogFormatter_Format_ComplexProperties()
         {
@@ -323,6 +377,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("42", formatted);
         }
 
+        /// <summary>
+        /// Tests that json log formatter format empty message
+        /// </summary>
         [Fact]
         public void JsonLogFormatter_Format_EmptyMessage()
         {
@@ -338,6 +395,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.EndsWith("}", formatted);
         }
 
+        /// <summary>
+        /// Tests that json log formatter format long message
+        /// </summary>
         [Fact]
         public void JsonLogFormatter_Format_LongMessage()
         {
@@ -353,6 +413,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains(longMessage, formatted);
         }
 
+        /// <summary>
+        /// Tests that json log formatter format valid json structure
+        /// </summary>
         [Fact]
         public void JsonLogFormatter_Format_ValidJsonStructure()
         {

@@ -43,7 +43,13 @@ namespace Alis.Core.Aspect.Logging
     /// </summary>
     public static class Logger
     {
+        /// <summary>
+        /// The default logger
+        /// </summary>
         private static ILogger _defaultLogger;
+        /// <summary>
+        /// The lock
+        /// </summary>
         private static readonly object _lock = new object();
 
         /// <summary>

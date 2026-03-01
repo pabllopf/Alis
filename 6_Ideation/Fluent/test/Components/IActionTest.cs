@@ -89,8 +89,15 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// </summary>
         private class SingleParamAction : IAction<int>
         {
+            /// <summary>
+            /// Gets or sets the value of the last value
+            /// </summary>
             public int LastValue { get; private set; }
 
+            /// <summary>
+            /// Runs the arg 1
+            /// </summary>
+            /// <param name="arg1">The arg</param>
             public void Run(ref int arg1)
             {
                 LastValue = arg1;
@@ -102,8 +109,15 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// </summary>
         private class StringParamAction : IAction<string>
         {
+            /// <summary>
+            /// Gets or sets the value of the last value
+            /// </summary>
             public string LastValue { get; private set; }
 
+            /// <summary>
+            /// Runs the arg 1
+            /// </summary>
+            /// <param name="arg1">The arg</param>
             public void Run(ref string arg1)
             {
                 LastValue = arg1;

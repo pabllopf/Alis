@@ -38,6 +38,9 @@ namespace Alis.Core.Aspect.Logging.Filters
     /// </summary>
     public sealed class LogLevelFilter : ILogFilter
     {
+        /// <summary>
+        /// The minimum level
+        /// </summary>
         private readonly LogLevel _minimumLevel;
 
         /// <summary>

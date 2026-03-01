@@ -41,6 +41,10 @@ namespace Alis.Core.Aspect.Logging.Test.Filters
     /// </summary>
     public class ConditionalLogFilterEdgeCasesTest
     {
+        /// <summary>
+        /// Tests that conditional log filter predicate throwing multiple times should always return true
+        /// </summary>
+        /// <exception cref="InvalidOperationException">Always fails</exception>
         [Fact]
         public void ConditionalLogFilter_PredicateThrowingMultipleTimes_ShouldAlwaysReturnTrue()
         {
@@ -62,6 +66,9 @@ namespace Alis.Core.Aspect.Logging.Test.Filters
             }
         }
 
+        /// <summary>
+        /// Tests that conditional log filter stateful predicate should maintain state
+        /// </summary>
         [Fact]
         public void ConditionalLogFilter_StatefulPredicate_ShouldMaintainState()
         {
@@ -80,6 +87,9 @@ namespace Alis.Core.Aspect.Logging.Test.Filters
             Assert.False(filter.ShouldLog(CreateEntry(LogLevel.Info))); // Call 4 - even
         }
 
+        /// <summary>
+        /// Tests that conditional log filter complex logic with message length
+        /// </summary>
         [Fact]
         public void ConditionalLogFilter_ComplexLogic_WithMessageLength()
         {
@@ -91,6 +101,9 @@ namespace Alis.Core.Aspect.Logging.Test.Filters
             Assert.True(filter.ShouldLog(CreateEntry(LogLevel.Info, "This is a longer message")));
         }
 
+        /// <summary>
+        /// Tests that conditional log filter regex like matching
+        /// </summary>
         [Fact]
         public void ConditionalLogFilter_RegexLikeMatching()
         {
@@ -105,6 +118,9 @@ namespace Alis.Core.Aspect.Logging.Test.Filters
             Assert.False(filter.ShouldLog(CreateEntry(LogLevel.Info, "ERROR occurred")));
         }
 
+        /// <summary>
+        /// Tests that conditional log filter custom name preservation
+        /// </summary>
         [Fact]
         public void ConditionalLogFilter_CustomNamePreservation()
         {
@@ -119,6 +135,9 @@ namespace Alis.Core.Aspect.Logging.Test.Filters
             }
         }
 
+        /// <summary>
+        /// Tests that conditional log filter always pass predicate
+        /// </summary>
         [Fact]
         public void ConditionalLogFilter_AlwaysPassPredicate()
         {
@@ -132,6 +151,9 @@ namespace Alis.Core.Aspect.Logging.Test.Filters
             }
         }
 
+        /// <summary>
+        /// Tests that conditional log filter never pass predicate
+        /// </summary>
         [Fact]
         public void ConditionalLogFilter_NeverPassPredicate()
         {
@@ -145,6 +167,9 @@ namespace Alis.Core.Aspect.Logging.Test.Filters
             }
         }
 
+        /// <summary>
+        /// Tests that conditional log filter performance with complex logic
+        /// </summary>
         [Fact]
         public void ConditionalLogFilter_PerformanceWithComplexLogic()
         {
@@ -171,6 +196,12 @@ namespace Alis.Core.Aspect.Logging.Test.Filters
             Assert.True(elapsed.TotalSeconds < 1);
         }
 
+        /// <summary>
+        /// Creates the entry using the specified level
+        /// </summary>
+        /// <param name="level">The level</param>
+        /// <param name="message">The message</param>
+        /// <returns>The log entry</returns>
         private static ILogEntry CreateEntry(LogLevel level, string message = "Test") => new LogEntry(level, message, "Logger");
     }
 }

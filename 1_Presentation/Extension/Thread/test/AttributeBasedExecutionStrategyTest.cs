@@ -34,19 +34,37 @@ using Xunit;
 
 namespace Alis.Extension.Thread.Test
 {
+    /// <summary>
+    /// The test component with attribute
+    /// </summary>
     [ParallelSafe(256)]
     public struct TestComponentWithAttribute
     {
+        /// <summary>
+        /// The value
+        /// </summary>
         public float Value;
     }
 
+    /// <summary>
+    /// The test component with interface
+    /// </summary>
     public struct TestComponentWithInterface : IParallelCapable
     {
+        /// <summary>
+        /// The value
+        /// </summary>
         public float Value;
     }
 
+    /// <summary>
+    /// The test component without markers
+    /// </summary>
     public struct TestComponentWithoutMarkers
     {
+        /// <summary>
+        /// The value
+        /// </summary>
         public float Value;
     }
 
