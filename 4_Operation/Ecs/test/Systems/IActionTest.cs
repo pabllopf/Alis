@@ -325,6 +325,10 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         private struct IntIncrementAction : IAction<int>
         {
+            /// <summary>
+            /// Runs the arg
+            /// </summary>
+            /// <param name="arg">The arg</param>
             public void Run(ref int arg)
             {
                 arg++;
@@ -336,13 +340,24 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         private struct IntMultiplyAction : IAction<int>
         {
+            /// <summary>
+            /// The multiplier
+            /// </summary>
             private readonly int _multiplier;
 
+            /// <summary>
+            /// Initializes a new instance of the <see cref="IntMultiplyAction"/> class
+            /// </summary>
+            /// <param name="multiplier">The multiplier</param>
             public IntMultiplyAction(int multiplier)
             {
                 _multiplier = multiplier;
             }
 
+            /// <summary>
+            /// Runs the arg
+            /// </summary>
+            /// <param name="arg">The arg</param>
             public void Run(ref int arg)
             {
                 arg *= _multiplier;
@@ -354,6 +369,10 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         private struct StructModifyAction : IAction<TestStruct>
         {
+            /// <summary>
+            /// Runs the arg
+            /// </summary>
+            /// <param name="arg">The arg</param>
             public void Run(ref TestStruct arg)
             {
                 arg.Value *= 2;
@@ -365,8 +384,15 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         private class CountingAction : IAction<int>
         {
+            /// <summary>
+            /// Gets or sets the value of the call count
+            /// </summary>
             public int CallCount { get; private set; }
 
+            /// <summary>
+            /// Runs the arg
+            /// </summary>
+            /// <param name="arg">The arg</param>
             public void Run(ref int arg)
             {
                 CallCount++;
@@ -378,6 +404,10 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         private struct ComplexStructAction : IAction<ComplexStruct>
         {
+            /// <summary>
+            /// Runs the arg
+            /// </summary>
+            /// <param name="arg">The arg</param>
             public void Run(ref ComplexStruct arg)
             {
                 arg.A *= 2;
@@ -391,6 +421,9 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         private struct TestStruct
         {
+            /// <summary>
+            /// The value
+            /// </summary>
             public int Value;
         }
 
@@ -399,8 +432,17 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         private struct ComplexStruct
         {
+            /// <summary>
+            /// The 
+            /// </summary>
             public int A;
+            /// <summary>
+            /// The 
+            /// </summary>
             public int B;
+            /// <summary>
+            /// The 
+            /// </summary>
             public int C;
         }
 
