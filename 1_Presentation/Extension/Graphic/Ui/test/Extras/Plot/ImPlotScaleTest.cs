@@ -18,6 +18,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(0, (int)scale);
         }
 
+        
         /// <summary>
         /// Verifies that different scale types have distinct values.
         /// </summary>
