@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Xunit;
 
 namespace Alis.Extension.Payment.Stripe.Test
@@ -47,8 +48,8 @@ namespace Alis.Extension.Payment.Stripe.Test
 
             // Assert
             Assert.Equal("usd", config.DefaultCurrency);
-            Assert.Equal("https://example.com/payment/success", config.SuccessUrl);
-            Assert.Equal("https://example.com/payment/cancel", config.CancelUrl);
+            Assert.Equal("https://example.com/payment/success", config.SuccessUrl.ToString());
+            Assert.Equal("https://example.com/payment/cancel", config.CancelUrl.ToString());
             Assert.True(config.EnableAutomaticPaymentMethods);
         }
 
@@ -96,10 +97,10 @@ namespace Alis.Extension.Payment.Stripe.Test
             string customUrl = "https://myapp.com/success";
 
             // Act
-            config.SuccessUrl = customUrl;
+            config.SuccessUrl = new Uri(customUrl);
 
             // Assert
-            Assert.Equal(customUrl, config.SuccessUrl);
+            Assert.Equal(customUrl, config.SuccessUrl.ToString());
         }
 
         /// <summary>
@@ -113,10 +114,10 @@ namespace Alis.Extension.Payment.Stripe.Test
             string customUrl = "https://myapp.com/cancel";
 
             // Act
-            config.CancelUrl = customUrl;
+            config.CancelUrl = new Uri(customUrl);
 
             // Assert
-            Assert.Equal(customUrl, config.CancelUrl);
+            Assert.Equal(customUrl, config.CancelUrl.ToString());
         }
 
         /// <summary>

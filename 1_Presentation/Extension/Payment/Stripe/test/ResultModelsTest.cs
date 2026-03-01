@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Xunit;
 
 namespace Alis.Extension.Payment.Stripe.Test
@@ -61,7 +62,7 @@ namespace Alis.Extension.Payment.Stripe.Test
             CheckoutSessionResult result = new CheckoutSessionResult
             {
                 SessionId = "cs_test_123",
-                Url = "https://checkout.stripe.com/c/pay/cs_test_123",
+                Url = new Uri("https://checkout.stripe.com/c/pay/cs_test_123"),
                 PaymentIntentId = "pi_test_456",
                 ProductId = "prod_001",
                 Quantity = 3,
@@ -71,7 +72,7 @@ namespace Alis.Extension.Payment.Stripe.Test
 
             // Assert
             Assert.Equal("cs_test_123", result.SessionId);
-            Assert.Equal("https://checkout.stripe.com/c/pay/cs_test_123", result.Url);
+            Assert.Equal("https://checkout.stripe.com/c/pay/cs_test_123", result.Url.ToString());
             Assert.Equal("pi_test_456", result.PaymentIntentId);
             Assert.Equal("prod_001", result.ProductId);
             Assert.Equal(3, result.Quantity);

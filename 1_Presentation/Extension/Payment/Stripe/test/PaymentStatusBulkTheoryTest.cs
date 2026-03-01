@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Alis.Core.Ecs.Systems.Scope;
@@ -30,8 +31,8 @@ namespace Alis.Extension.Payment.Stripe.Test
             {
                 SecretApiKey = "sk_test_bulk_status",
                 DefaultCurrency = "usd",
-                SuccessUrl = "https://example.com/success",
-                CancelUrl = "https://example.com/cancel"
+                SuccessUrl = new Uri("https://example.com/success"),
+                CancelUrl = new Uri("https://example.com/cancel")
             });
 
             PaymentStatus result = await manager.GetPaymentStatusAsync("pi_bulk");

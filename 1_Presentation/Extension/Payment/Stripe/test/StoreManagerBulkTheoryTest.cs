@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Alis.Core.Ecs.Systems.Scope;
 using Moq;
@@ -16,8 +17,8 @@ namespace Alis.Extension.Payment.Stripe.Test
             {
                 SecretApiKey = "sk_test_bulk",
                 DefaultCurrency = currency,
-                SuccessUrl = "https://example.com/success",
-                CancelUrl = "https://example.com/cancel",
+                SuccessUrl = new Uri("https://example.com/success"),
+                CancelUrl = new Uri("https://example.com/cancel"),
                 EnableAutomaticPaymentMethods = true
             };
         }

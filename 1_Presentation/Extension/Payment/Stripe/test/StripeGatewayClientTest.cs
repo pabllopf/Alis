@@ -84,8 +84,8 @@ namespace Alis.Extension.Payment.Stripe.Test
                 Currency = "usd",
                 UnitAmount = 999,
                 Quantity = 1,
-                SuccessUrl = "https://example.com/success",
-                CancelUrl = "https://example.com/cancel"
+                SuccessUrl = new Uri("https://example.com/success"),
+                CancelUrl = new Uri("https://example.com/cancel")
             };
 
             // Act & Assert
@@ -117,8 +117,8 @@ namespace Alis.Extension.Payment.Stripe.Test
                 Currency = "usd",
                 UnitAmount = 999,
                 Quantity = 1,
-                SuccessUrl = "https://example.com/success",
-                CancelUrl = "https://example.com/cancel"
+                SuccessUrl = new Uri("https://example.com/success"),
+                CancelUrl = new Uri("https://example.com/cancel")
             };
 
             // Act & Assert
@@ -138,8 +138,8 @@ namespace Alis.Extension.Payment.Stripe.Test
                 Currency = "usd",
                 UnitAmount = 0,
                 Quantity = 1,
-                SuccessUrl = "https://example.com/success",
-                CancelUrl = "https://example.com/cancel"
+                SuccessUrl = new Uri("https://example.com/success"),
+                CancelUrl = new Uri("https://example.com/cancel")
             };
 
             // Act & Assert
@@ -159,8 +159,8 @@ namespace Alis.Extension.Payment.Stripe.Test
                 Currency = "usd",
                 UnitAmount = 999,
                 Quantity = 0,
-                SuccessUrl = "https://example.com/success",
-                CancelUrl = "https://example.com/cancel"
+                SuccessUrl = new Uri("https://example.com/success"),
+                CancelUrl = new Uri("https://example.com/cancel")
             };
 
             // Act & Assert

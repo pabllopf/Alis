@@ -247,7 +247,7 @@ namespace Alis.Extension.Payment.Stripe
             return new CheckoutSessionResult
             {
                 SessionId = response.SessionId,
-                Url = response.Url,
+                Url = response.Url, 
                 PaymentIntentId = response.PaymentIntentId,
                 ProductId = product.Id,
                 Quantity = quantity,
@@ -480,10 +480,14 @@ namespace Alis.Extension.Payment.Stripe
         /// <exception cref="ObjectDisposedException"></exception>
         private void EnsureNotDisposed()
         {
-            if (_disposed)
-            {
-                throw new ObjectDisposedException(nameof(StoreManager));
-            }
+#if NET5_0_OR_GREATER
+            ObjectDisposedException.ThrowIf(_disposed, nameof(StoreManager));
+#else
+                if (_disposed)
+                {
+                    throw new ObjectDisposedException(nameof(StoreManager));
+                }
+#endif
         }
     }
 }

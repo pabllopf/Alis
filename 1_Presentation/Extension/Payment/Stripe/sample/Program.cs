@@ -57,8 +57,8 @@ namespace Alis.Extension.Payment.Stripe.Sample
             {
                 SecretApiKey = "",
                 DefaultCurrency = "eur",
-                SuccessUrl = "https://game.local/payment/success",
-                CancelUrl = "https://game.local/payment/cancel",
+                SuccessUrl = new Uri("https://game.local/payment/success"),
+                CancelUrl = new Uri("https://game.local/payment/cancel"),
                 EnableAutomaticPaymentMethods = true
             });
 
@@ -188,7 +188,7 @@ namespace Alis.Extension.Payment.Stripe.Sample
                 return Task.FromResult(new StripeCheckoutSessionResponse
                 {
                     SessionId = "cs_local_123",
-                    Url = "https://checkout.local/session/cs_local_123",
+                    Url = new Uri("https://checkout.local/session/cs_local_123"),
                     PaymentIntentId = "pi_local_123"
                 });
             }
