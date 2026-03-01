@@ -36,6 +36,9 @@ namespace Alis.Extension.Payment.Stripe.Test
     /// </summary>
     public class PaymentStatusTest
     {
+        /// <summary>
+        /// Tests that payment status has correct values
+        /// </summary>
         [Fact]
         public void PaymentStatus_HasCorrectValues()
         {
@@ -50,6 +53,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal(7, (int)PaymentStatus.Succeeded);
         }
 
+        /// <summary>
+        /// Tests that payment status can be compared
+        /// </summary>
         [Fact]
         public void PaymentStatus_CanBeCompared()
         {
@@ -63,6 +69,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.NotEqual(status1, status3);
         }
 
+        /// <summary>
+        /// Tests that payment status can be used in switch
+        /// </summary>
         [Fact]
         public void PaymentStatus_CanBeUsedInSwitch()
         {
@@ -103,6 +112,11 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal("succeeded", result);
         }
 
+        /// <summary>
+        /// Tests that payment status to string returns name
+        /// </summary>
+        /// <param name="status">The status</param>
+        /// <param name="expectedName">The expected name</param>
         [Theory]
         [InlineData(PaymentStatus.Unknown, "Unknown")]
         [InlineData(PaymentStatus.RequiresPaymentMethod, "RequiresPaymentMethod")]

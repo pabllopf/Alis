@@ -36,6 +36,9 @@ namespace Alis.Extension.Payment.Stripe.Test
     /// </summary>
     public class StoreConfigurationTest
     {
+        /// <summary>
+        /// Tests that constructor initializes with default values
+        /// </summary>
         [Fact]
         public void Constructor_InitializesWithDefaultValues()
         {
@@ -49,6 +52,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.True(config.EnableAutomaticPaymentMethods);
         }
 
+        /// <summary>
+        /// Tests that secret api key can be set and retrieved
+        /// </summary>
         [Fact]
         public void SecretApiKey_CanBeSetAndRetrieved()
         {
@@ -63,6 +69,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal(apiKey, config.SecretApiKey);
         }
 
+        /// <summary>
+        /// Tests that default currency can be overridden
+        /// </summary>
         [Fact]
         public void DefaultCurrency_CanBeOverridden()
         {
@@ -76,6 +85,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal("eur", config.DefaultCurrency);
         }
 
+        /// <summary>
+        /// Tests that success url can be customized
+        /// </summary>
         [Fact]
         public void SuccessUrl_CanBeCustomized()
         {
@@ -90,6 +102,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal(customUrl, config.SuccessUrl);
         }
 
+        /// <summary>
+        /// Tests that cancel url can be customized
+        /// </summary>
         [Fact]
         public void CancelUrl_CanBeCustomized()
         {
@@ -104,6 +119,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal(customUrl, config.CancelUrl);
         }
 
+        /// <summary>
+        /// Tests that enable automatic payment methods can be disabled
+        /// </summary>
         [Fact]
         public void EnableAutomaticPaymentMethods_CanBeDisabled()
         {

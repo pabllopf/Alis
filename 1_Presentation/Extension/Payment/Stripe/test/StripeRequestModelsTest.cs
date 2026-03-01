@@ -39,6 +39,9 @@ namespace Alis.Extension.Payment.Stripe.Test
     {
         #region StripeCheckoutSessionRequest Tests
 
+        /// <summary>
+        /// Tests that stripe checkout session request can be instantiated
+        /// </summary>
         [Fact]
         public void StripeCheckoutSessionRequest_CanBeInstantiated()
         {
@@ -49,6 +52,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.NotNull(request);
         }
 
+        /// <summary>
+        /// Tests that stripe checkout session request all properties can be set
+        /// </summary>
         [Fact]
         public void StripeCheckoutSessionRequest_AllPropertiesCanBeSet()
         {
@@ -91,6 +97,9 @@ namespace Alis.Extension.Payment.Stripe.Test
 
         #region StripeCheckoutSessionResponse Tests
 
+        /// <summary>
+        /// Tests that stripe checkout session response can be instantiated
+        /// </summary>
         [Fact]
         public void StripeCheckoutSessionResponse_CanBeInstantiated()
         {
@@ -101,6 +110,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.NotNull(response);
         }
 
+        /// <summary>
+        /// Tests that stripe checkout session response all properties can be set
+        /// </summary>
         [Fact]
         public void StripeCheckoutSessionResponse_AllPropertiesCanBeSet()
         {
@@ -122,6 +134,9 @@ namespace Alis.Extension.Payment.Stripe.Test
 
         #region StripePaymentIntentRequest Tests
 
+        /// <summary>
+        /// Tests that stripe payment intent request can be instantiated
+        /// </summary>
         [Fact]
         public void StripePaymentIntentRequest_CanBeInstantiated()
         {
@@ -132,6 +147,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.NotNull(request);
         }
 
+        /// <summary>
+        /// Tests that stripe payment intent request all properties can be set
+        /// </summary>
         [Fact]
         public void StripePaymentIntentRequest_AllPropertiesCanBeSet()
         {
@@ -168,6 +186,9 @@ namespace Alis.Extension.Payment.Stripe.Test
 
         #region StripePaymentIntentResponse Tests
 
+        /// <summary>
+        /// Tests that stripe payment intent response can be instantiated
+        /// </summary>
         [Fact]
         public void StripePaymentIntentResponse_CanBeInstantiated()
         {
@@ -178,6 +199,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.NotNull(response);
         }
 
+        /// <summary>
+        /// Tests that stripe payment intent response all properties can be set
+        /// </summary>
         [Fact]
         public void StripePaymentIntentResponse_AllPropertiesCanBeSet()
         {
@@ -199,6 +223,9 @@ namespace Alis.Extension.Payment.Stripe.Test
 
         #region StripeRefundRequest Tests
 
+        /// <summary>
+        /// Tests that stripe refund request can be instantiated
+        /// </summary>
         [Fact]
         public void StripeRefundRequest_CanBeInstantiated()
         {
@@ -209,6 +236,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.NotNull(request);
         }
 
+        /// <summary>
+        /// Tests that stripe refund request all properties can be set
+        /// </summary>
         [Fact]
         public void StripeRefundRequest_AllPropertiesCanBeSet()
         {
@@ -226,6 +256,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal("requested_by_customer", request.Reason);
         }
 
+        /// <summary>
+        /// Tests that stripe refund request amount can be null
+        /// </summary>
         [Fact]
         public void StripeRefundRequest_AmountCanBeNull()
         {
@@ -247,6 +280,9 @@ namespace Alis.Extension.Payment.Stripe.Test
 
         #region StripeRefundResponse Tests
 
+        /// <summary>
+        /// Tests that stripe refund response can be instantiated
+        /// </summary>
         [Fact]
         public void StripeRefundResponse_CanBeInstantiated()
         {
@@ -257,6 +293,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.NotNull(response);
         }
 
+        /// <summary>
+        /// Tests that stripe refund response all properties can be set
+        /// </summary>
         [Fact]
         public void StripeRefundResponse_AllPropertiesCanBeSet()
         {

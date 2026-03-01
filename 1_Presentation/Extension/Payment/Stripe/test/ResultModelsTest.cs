@@ -38,6 +38,9 @@ namespace Alis.Extension.Payment.Stripe.Test
     {
         #region CheckoutSessionResult Tests
 
+        /// <summary>
+        /// Tests that checkout session result can be instantiated
+        /// </summary>
         [Fact]
         public void CheckoutSessionResult_CanBeInstantiated()
         {
@@ -48,6 +51,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that checkout session result all properties can be set
+        /// </summary>
         [Fact]
         public void CheckoutSessionResult_AllPropertiesCanBeSet()
         {
@@ -77,6 +83,9 @@ namespace Alis.Extension.Payment.Stripe.Test
 
         #region PaymentIntentResult Tests
 
+        /// <summary>
+        /// Tests that payment intent result can be instantiated
+        /// </summary>
         [Fact]
         public void PaymentIntentResult_CanBeInstantiated()
         {
@@ -87,6 +96,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that payment intent result all properties can be set
+        /// </summary>
         [Fact]
         public void PaymentIntentResult_AllPropertiesCanBeSet()
         {
@@ -110,6 +122,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal(PaymentStatus.Succeeded, result.Status);
         }
 
+        /// <summary>
+        /// Tests that payment intent result status defaults to unknown
+        /// </summary>
         [Fact]
         public void PaymentIntentResult_StatusDefaultsToUnknown()
         {
@@ -124,6 +139,9 @@ namespace Alis.Extension.Payment.Stripe.Test
 
         #region RefundResult Tests
 
+        /// <summary>
+        /// Tests that refund result can be instantiated
+        /// </summary>
         [Fact]
         public void RefundResult_CanBeInstantiated()
         {
@@ -134,6 +152,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that refund result all properties can be set
+        /// </summary>
         [Fact]
         public void RefundResult_AllPropertiesCanBeSet()
         {
