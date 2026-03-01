@@ -20,7 +20,7 @@ fi
 YESTERDAY_DATE=$(date -v-1d +"%Y-%m-%d")
 COMMIT_TIMESTAMP="${YESTERDAY_DATE}T00:00:00 +0000"
 
-# Find commits not pushed yet
+# Check commits to rewrite (local only)
 BASE=$(git merge-base "$LOCAL_BRANCH" "$REMOTE_BRANCH")
 LOCAL_COMMITS=$(git rev-list "$BASE"..HEAD)
 
@@ -30,26 +30,17 @@ else
   NUM_COMMITS=$(echo "$LOCAL_COMMITS" | wc -l)
   echo "ℹ Rewriting $NUM_COMMITS new commit(s)..."
 
-  # Loop through commits from oldest to newest using tail -r (reverse)
-  echo "$LOCAL_COMMITS" | tail -r | while read commit; do
-    MESSAGE=$(git log --format=%s -n 1 "$commit")
-    echo "✏️ Rewriting commit $commit: $MESSAGE"
-    
-    GIT_COMMITTER_DATE="$COMMIT_TIMESTAMP" \
-    GIT_AUTHOR_DATE="$COMMIT_TIMESTAMP" \
-    git commit --amend -S --no-edit "$commit" >/dev/null 2>&1
-    
-    if [ $? -eq 0 ]; then
-      echo "✅ Commit $commit updated."
-    else
-      echo "❌ Failed to update commit $commit."
-    fi
-  done
+  # Non-interactive rebase of all local commits
+  git rebase --onto "$BASE" "$BASE" "$LOCAL_BRANCH" \
+    -x "GIT_AUTHOR_DATE='$COMMIT_TIMESTAMP' GIT_COMMITTER_DATE='$COMMIT_TIMESTAMP' git commit --amend -S --no-edit" || { 
+      echo "❌ Error during rebase."; 
+      exit 1; 
+    }
+
+  echo "✅ All new commits on $LOCAL_BRANCH are now dated $COMMIT_TIMESTAMP and signed."
 fi
 
-echo "✅ All new commits on $LOCAL_BRANCH are now dated $COMMIT_TIMESTAMP and signed."
-
-# Return to original branch
+# Return to original branch if needed
 if [ "$CURRENT_BRANCH" != "$LOCAL_BRANCH" ]; then
   git checkout "$CURRENT_BRANCH"
 fi
