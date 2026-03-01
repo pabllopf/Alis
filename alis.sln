@@ -60,6 +60,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "macos", "macos", "{CF7DBB5E
 		docs\scripts\macos\test_modules_size.sh = docs\scripts\macos\test_modules_size.sh
 		docs\scripts\macos\compress_wav.sh = docs\scripts\macos\compress_wav.sh
 		docs\scripts\macos\convert_to_bmp.sh = docs\scripts\macos\convert_to_bmp.sh
+		docs\scripts\macos\commit.sh = docs\scripts\macos\commit.sh
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux", "linux", "{020BC1B3-A88C-4938-AF9C-E35A4BEBDF72}"
@@ -206,9 +207,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Payment", "Payment", "{26D7F535-4F92-7DAC-008B-06D64367C455}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Stripe", "Stripe", "{8BB361D6-7554-8580-321B-E80548BB0CBD}"
-	ProjectSection(SolutionItems) = preProject
-		1_Presentation\Extension\Payment\Stripe\readme.md = 1_Presentation\Extension\Payment\Stripe\readme.md
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Extension.Payment.Stripe.Test", "1_Presentation\Extension\Payment\Stripe\test\Alis.Extension.Payment.Stripe.Test.csproj", "{B299B704-EB5C-4092-9701-2BD3ABA1E945}"
 EndProject

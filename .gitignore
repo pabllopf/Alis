@@ -10,6 +10,7 @@
 /**/.nuget/
 /**/.vscode/
 /**/.idea/
+/**/.venv/
 /**/.test/
 /**/.temp/
 
