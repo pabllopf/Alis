@@ -3,7 +3,6 @@
 # Clear console
 clear
 
-
 # Ensure we're in a Git repo
 if ! git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
   echo "❌ This is not a Git repository."
