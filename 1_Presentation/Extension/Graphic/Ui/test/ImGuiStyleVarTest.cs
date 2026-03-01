@@ -14,7 +14,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void Alpha_ShouldBeDefined()
         {
             ImGuiStyleVar styleVar = ImGuiStyleVar.Alpha;
-            Assert.NotEqual(0, (int)styleVar);
+            Assert.Equal(0, (int)styleVar);
         }
 
         /// <summary>

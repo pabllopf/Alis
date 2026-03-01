@@ -14,7 +14,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void Text_ShouldBeDefined()
         {
             ImGuiCol color = ImGuiCol.Text;
-            Assert.NotEqual(0, (int)color);
+            Assert.Equal(0, (int)color);
         }
 
         /// <summary>

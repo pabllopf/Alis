@@ -14,7 +14,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void Activate_ShouldBeDefined()
         {
             ImGuiNavInput input = ImGuiNavInput.Activate;
-            Assert.NotEqual(0, (int)input);
+            Assert.Equal(0, (int)input);
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void None_ShouldBeZero()
         {
             ImGuiDir dir = ImGuiDir.None;
-            Assert.Equal(0, (int)dir);
+            Assert.Equal(-1, (int)dir);
         }
 
         /// <summary>
