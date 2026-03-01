@@ -26,8 +26,6 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-
-        <PackageReference Include="Moq" Version="4.20.70"/>
     </ItemGroup>
 
     <ItemGroup Condition="$(AssemblyName.Contains('Alis.Extension.Payment.Stripe'))">
