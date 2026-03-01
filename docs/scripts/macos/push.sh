@@ -49,6 +49,9 @@ fi
 read -p "Do you want to merge $LOCAL_BRANCH into master and push? (y/n): " PUSH_CONFIRM
 if [[ "$PUSH_CONFIRM" =~ ^[Yy](es)?$ ]]; then
   git checkout master || exit 1
+  echo "ℹ Creating merge commit with date $COMMIT_TIMESTAMP..."
+  GIT_AUTHOR_DATE="$COMMIT_TIMESTAMP" \
+  GIT_COMMITTER_DATE="$COMMIT_TIMESTAMP" \
   git merge --no-ff "$LOCAL_BRANCH" -m "Merge $LOCAL_BRANCH into master" || exit 1
   git push || exit 1
   echo "✅ master updated and pushed."
