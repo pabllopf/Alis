@@ -46,6 +46,7 @@ namespace Alis.Core.Graphic.Test
             Assert.Equal(0x0000, (int) PrimitiveType.Points);
         }
 
+        
         /// <summary>
         ///     Tests that lines has value 0x 0001
         /// </summary>
