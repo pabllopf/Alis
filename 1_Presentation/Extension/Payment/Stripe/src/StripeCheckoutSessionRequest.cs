@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace Alis.Extension.Payment.Stripe
@@ -40,12 +41,12 @@ namespace Alis.Extension.Payment.Stripe
         /// <summary>
         /// Gets or sets the value of the success url
         /// </summary>
-        public string SuccessUrl { get; set; }
+        public Uri SuccessUrl { get; set; }
 
         /// <summary>
         /// Gets or sets the value of the cancel url
         /// </summary>
-        public string CancelUrl { get; set; }
+        public Uri CancelUrl { get; set; }
 
         /// <summary>
         /// Gets or sets the value of the customer email

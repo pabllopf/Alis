@@ -1,3 +1,5 @@
+using System;
+
 namespace Alis.Extension.Payment.Stripe
 {
     /// <summary>
@@ -13,7 +15,7 @@ namespace Alis.Extension.Payment.Stripe
         /// <summary>
         /// Gets or sets the value of the url
         /// </summary>
-        public string Url { get; set; }
+        public Uri Url { get; set; }
 
         /// <summary>
         /// Gets or sets the value of the payment intent id

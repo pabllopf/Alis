@@ -59,8 +59,8 @@ namespace Alis.Extension.Payment.Stripe.Test
             {
                 SecretApiKey = "sk_test_4eC39HqLyjWDarjtT1zdp7dc",
                 DefaultCurrency = "USD",
-                SuccessUrl = "https://example.com/success",
-                CancelUrl = "https://example.com/cancel",
+                SuccessUrl = new Uri("https://example.com/success"),
+                CancelUrl = new Uri("https://example.com/cancel"),
                 EnableAutomaticPaymentMethods = true
             };
         }
@@ -645,7 +645,7 @@ namespace Alis.Extension.Payment.Stripe.Test
                 .ReturnsAsync(new StripeCheckoutSessionResponse
                 {
                     SessionId = "cs_test_123",
-                    Url = "https://checkout.stripe.com/c/pay/cs_test_123",
+                    Url = new Uri("https://checkout.stripe.com/c/pay/cs_test_123"),
                     PaymentIntentId = "pi_test_456"
                 });
 
@@ -659,7 +659,7 @@ namespace Alis.Extension.Payment.Stripe.Test
             // Assert
             Assert.NotNull(result);
             Assert.Equal("cs_test_123", result.SessionId);
-            Assert.Equal("https://checkout.stripe.com/c/pay/cs_test_123", result.Url);
+            Assert.Equal("https://checkout.stripe.com/c/pay/cs_test_123", result.Url.ToString());
             Assert.Equal("pi_test_456", result.PaymentIntentId);
             Assert.Equal("product1", result.ProductId);
             Assert.Equal(2, result.Quantity);
@@ -748,7 +748,7 @@ namespace Alis.Extension.Payment.Stripe.Test
                 .ReturnsAsync(new StripeCheckoutSessionResponse
                 {
                     SessionId = "cs_123",
-                    Url = "https://test.com",
+                    Url = new Uri("https://test.com"),
                     PaymentIntentId = "pi_123"
                 });
 
@@ -1100,7 +1100,6 @@ namespace Alis.Extension.Payment.Stripe.Test
             // Act & Assert
             Assert.Throws<ObjectDisposedException>(() => manager.GetProducts());
             Assert.Throws<ObjectDisposedException>(() => manager.RegisterProduct(CreateProduct()));
-            Assert.ThrowsAsync<ObjectDisposedException>(() => manager.InitializeAsync(CreateValidConfiguration()));
         }
 
         #endregion

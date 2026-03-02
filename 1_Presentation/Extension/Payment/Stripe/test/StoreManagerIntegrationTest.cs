@@ -50,8 +50,8 @@ namespace Alis.Extension.Payment.Stripe.Test
             {
                 SecretApiKey = "sk_test_valid",
                 DefaultCurrency = "usd",
-                SuccessUrl = "https://example.com/success",
-                CancelUrl = "https://example.com/cancel",
+                SuccessUrl = new Uri("https://example.com/success"),
+                CancelUrl = new Uri("https://example.com/cancel"),
                 EnableAutomaticPaymentMethods = true
             };
         }
@@ -178,7 +178,7 @@ namespace Alis.Extension.Payment.Stripe.Test
                 .ReturnsAsync(new StripeCheckoutSessionResponse
                 {
                     SessionId = "cs_meta_test",
-                    Url = "https://test.com",
+                    Url = new Uri("https://test.com"),
                     PaymentIntentId = "pi_meta_test"
                 });
 
@@ -238,7 +238,7 @@ namespace Alis.Extension.Payment.Stripe.Test
                 .ReturnsAsync(new StripeCheckoutSessionResponse
                 {
                     SessionId = "cs_curr_test",
-                    Url = "https://test.com",
+                    Url = new Uri("https://test.com"),
                     PaymentIntentId = "pi_curr_test"
                 });
 

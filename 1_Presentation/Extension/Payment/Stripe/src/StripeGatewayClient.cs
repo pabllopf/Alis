@@ -50,8 +50,8 @@ namespace Alis.Extension.Payment.Stripe
             SessionCreateOptions options = new SessionCreateOptions
             {
                 Mode = "payment",
-                SuccessUrl = request.SuccessUrl,
-                CancelUrl = request.CancelUrl,
+                SuccessUrl = request.SuccessUrl.ToString(),
+                CancelUrl = request.CancelUrl.ToString(),
                 CustomerEmail = request.CustomerEmail,
                 Metadata = request.Metadata == null ? null : new Dictionary<string, string>(request.Metadata),
                 LineItems = new List<SessionLineItemOptions>
@@ -78,7 +78,7 @@ namespace Alis.Extension.Payment.Stripe
             return new StripeCheckoutSessionResponse
             {
                 SessionId = session.Id,
-                Url = session.Url,
+                Url = new Uri(session.Url),
                 PaymentIntentId = session.PaymentIntentId
             };
         }
@@ -262,7 +262,7 @@ namespace Alis.Extension.Payment.Stripe
                 throw new ArgumentOutOfRangeException(nameof(request), "Quantity must be greater than zero.");
             }
 
-            if (string.IsNullOrWhiteSpace(request.SuccessUrl) || string.IsNullOrWhiteSpace(request.CancelUrl))
+            if (string.IsNullOrWhiteSpace(request.SuccessUrl.ToString()) || string.IsNullOrWhiteSpace(request.CancelUrl.ToString()))
             {
                 throw new ArgumentException("SuccessUrl and CancelUrl are required.", nameof(request));
             }

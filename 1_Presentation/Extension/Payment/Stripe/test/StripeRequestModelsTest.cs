@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using Xunit;
 
@@ -74,8 +75,8 @@ namespace Alis.Extension.Payment.Stripe.Test
                 Currency = "usd",
                 UnitAmount = 2999,
                 Quantity = 1,
-                SuccessUrl = "https://app.example.com/success",
-                CancelUrl = "https://app.example.com/cancel",
+                SuccessUrl = new Uri("https://app.example.com/success"),
+                CancelUrl = new Uri("https://app.example.com/cancel"),
                 CustomerEmail = "customer@example.com",
                 Metadata = metadata
             };
@@ -87,8 +88,8 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal("usd", request.Currency);
             Assert.Equal(2999, request.UnitAmount);
             Assert.Equal(1, request.Quantity);
-            Assert.Equal("https://app.example.com/success", request.SuccessUrl);
-            Assert.Equal("https://app.example.com/cancel", request.CancelUrl);
+            Assert.Equal("https://app.example.com/success", request.SuccessUrl.ToString());
+            Assert.Equal("https://app.example.com/cancel", request.CancelUrl.ToString());
             Assert.Equal("customer@example.com", request.CustomerEmail);
             Assert.Equal(metadata, request.Metadata);
         }
@@ -120,13 +121,13 @@ namespace Alis.Extension.Payment.Stripe.Test
             StripeCheckoutSessionResponse response = new StripeCheckoutSessionResponse
             {
                 SessionId = "cs_test_session_123",
-                Url = "https://checkout.stripe.com/c/pay/cs_test_session_123",
+                Url = new Uri("https://checkout.stripe.com/c/pay/cs_test_session_123"),
                 PaymentIntentId = "pi_test_intent_456"
             };
 
             // Assert
             Assert.Equal("cs_test_session_123", response.SessionId);
-            Assert.Equal("https://checkout.stripe.com/c/pay/cs_test_session_123", response.Url);
+            Assert.Equal("https://checkout.stripe.com/c/pay/cs_test_session_123", response.Url.ToString());
             Assert.Equal("pi_test_intent_456", response.PaymentIntentId);
         }
 
