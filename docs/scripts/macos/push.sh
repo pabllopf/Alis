@@ -1,62 +1,57 @@
 #!/bin/bash
+# push_local_commits_yesterday.sh
+# Update only local commits not yet pushed, set date to yesterday 00:00, and optionally push.
 
+set -e
 clear
+set -x
 
-LOCAL_BRANCH="master-local"
 REMOTE_BRANCH="origin/master"
 CURRENT_BRANCH=$(git branch --show-current)
 
-# Switch/create master-local
-if [ "$CURRENT_BRANCH" != "$LOCAL_BRANCH" ]; then
-  if git show-ref --verify --quiet "refs/heads/$LOCAL_BRANCH"; then
-    git checkout "$LOCAL_BRANCH" || exit 1
-  else
-    echo "ℹ Creating branch $LOCAL_BRANCH from master..."
-    git checkout -b "$LOCAL_BRANCH" master || exit 1
-  fi
+# Ensure we are on master
+if [ "$CURRENT_BRANCH" != "master" ]; then
+  git checkout master
+fi
+
+# Ensure working tree is clean
+if ! git diff --quiet || ! git diff --cached --quiet; then
+  echo "⚠️ You have uncommitted changes. Stashing temporarily..."
+  git stash push -m "temp before rewriting local commits"
 fi
 
 # Get yesterday 00:00
 YESTERDAY_DATE=$(date -v-1d +"%Y-%m-%d")
 COMMIT_TIMESTAMP="${YESTERDAY_DATE}T00:00:00 +0000"
 
-# Check commits to rewrite (local only)
-BASE=$(git merge-base "$LOCAL_BRANCH" "$REMOTE_BRANCH")
+# Find commits that are local only
+BASE=$(git merge-base master "$REMOTE_BRANCH")
 LOCAL_COMMITS=$(git rev-list "$BASE"..HEAD)
 
 if [ -z "$LOCAL_COMMITS" ]; then
-  echo "ℹ No new commits to rewrite."
+  echo "ℹ No new local commits to rewrite."
 else
   NUM_COMMITS=$(echo "$LOCAL_COMMITS" | wc -l)
-  echo "ℹ Rewriting $NUM_COMMITS new commit(s)..."
+  echo "ℹ Rewriting $NUM_COMMITS local commit(s) with date $COMMIT_TIMESTAMP..."
 
-  # Non-interactive rebase of all local commits
-  git rebase --onto "$BASE" "$BASE" "$LOCAL_BRANCH" \
-    -x "GIT_AUTHOR_DATE='$COMMIT_TIMESTAMP' GIT_COMMITTER_DATE='$COMMIT_TIMESTAMP' git commit --amend -S --no-edit" || { 
-      echo "❌ Error during rebase."; 
-      exit 1; 
-    }
+  # Non-interactive rebase to update dates of local commits
+  # GIT_SEQUENCE_EDITOR=true avoids opening editor
+  GIT_SEQUENCE_EDITOR=true git rebase -i "$BASE" --exec \
+    "GIT_AUTHOR_DATE='$COMMIT_TIMESTAMP' GIT_COMMITTER_DATE='$COMMIT_TIMESTAMP' git commit --amend --no-edit" || {
+      echo "❌ Error during rebase."
+      exit 1
+  }
 
-  echo "✅ All new commits on $LOCAL_BRANCH are now dated $COMMIT_TIMESTAMP and signed."
+  echo "✅ Local commits updated with new date."
 fi
 
-# Return to original branch if needed
-if [ "$CURRENT_BRANCH" != "$LOCAL_BRANCH" ]; then
-  git checkout "$CURRENT_BRANCH"
-fi
-
-# Prompt for merge & push
-read -p "Do you want to merge $LOCAL_BRANCH into master and push? (y/n): " PUSH_CONFIRM
+# Push to master automatically
+read -p "Do you want to push updated master to origin? (y/n): " PUSH_CONFIRM
 if [[ "$PUSH_CONFIRM" =~ ^[Yy](es)?$ ]]; then
-  git checkout master || exit 1
-  echo "ℹ Creating merge commit with date $COMMIT_TIMESTAMP..."
-  GIT_AUTHOR_DATE="$COMMIT_TIMESTAMP" \
-  GIT_COMMITTER_DATE="$COMMIT_TIMESTAMP" \
-  git merge --no-ff "$LOCAL_BRANCH" -m "Merge $LOCAL_BRANCH into master" || exit 1
-  git push || exit 1
-  echo "✅ master updated and pushed."
+  git push origin master --force
+  echo "✅ master pushed to origin with updated commit dates."
 else
-  echo "ℹ Merge and push skipped."
+  echo "ℹ Push skipped."
 fi
 
 echo "Done."
