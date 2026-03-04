@@ -65,8 +65,8 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal("usd", request.Currency);
             Assert.Equal(1000, request.UnitAmount);
             Assert.Equal(2, request.Quantity);
-            Assert.Equal("https://success.com", request.SuccessUrl.ToString());
-            Assert.Equal("https://cancel.com", request.CancelUrl.ToString());
+            Assert.Equal("https://success.com/", request.SuccessUrl.ToString());
+            Assert.Equal("https://cancel.com/", request.CancelUrl.ToString());
             Assert.Equal("test@example.com", request.CustomerEmail);
             Assert.NotNull(request.Metadata);
         }
@@ -108,7 +108,7 @@ namespace Alis.Extension.Payment.Stripe.Test
 
             // Assert
             Assert.Equal("cs_test_123", response.SessionId);
-            Assert.Equal("https://checkout.stripe.com", response.Url.ToString());
+            Assert.Equal("https://checkout.stripe.com/", response.Url.ToString());
             Assert.Equal("pi_test_456", response.PaymentIntentId);
         }
 
