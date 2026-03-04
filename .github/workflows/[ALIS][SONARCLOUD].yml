@@ -1,4 +1,4 @@
-name: "[PRO][SONARCLOUD]"
+name: "[ALIS][SONARCLOUD]"
 
 on:
   push:

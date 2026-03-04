@@ -25,13 +25,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{6E10
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{CDB74D6E-4B2E-4FDA-8239-B8C6C1C47059}"
 	ProjectSection(SolutionItems) = preProject
-		.github\workflows\[PRO][CHECK][ISSUES].yml = .github\workflows\[PRO][CHECK][ISSUES].yml
-		.github\workflows\[PRO][CONTRIBUTORS].yml = .github\workflows\[PRO][CONTRIBUTORS].yml
-		.github\workflows\[PRO][DEPENDENCY][REVIEW].yml = .github\workflows\[PRO][DEPENDENCY][REVIEW].yml
-		.github\workflows\[PRO][NEW][CONTRIBUTORS].yml = .github\workflows\[PRO][NEW][CONTRIBUTORS].yml
-		.github\workflows\[PRO][PUBLISH].yml = .github\workflows\[PRO][PUBLISH].yml
-		.github\workflows\[PRO][SONARCLOUD].yml = .github\workflows\[PRO][SONARCLOUD].yml
-		.github\workflows\[PRO][TEST].yml = .github\workflows\[PRO][TEST].yml
+		.github\workflows\[ALIS][BENCHMARK].yml = .github\workflows\[ALIS][BENCHMARK].yml
+		.github\workflows\[ALIS][CHECK][ISSUES].yml = .github\workflows\[ALIS][CHECK][ISSUES].yml
+		.github\workflows\[ALIS][CONTRIBUTORS].yml = .github\workflows\[ALIS][CONTRIBUTORS].yml
+		.github\workflows\[ALIS][DEPENDENCY][REVIEW].yml = .github\workflows\[ALIS][DEPENDENCY][REVIEW].yml
+		.github\workflows\[ALIS][NEW][CONTRIBUTORS].yml = .github\workflows\[ALIS][NEW][CONTRIBUTORS].yml
+		.github\workflows\[ALIS][PUBLISH].yml = .github\workflows\[ALIS][PUBLISH].yml
+		.github\workflows\[ALIS][SONARCLOUD].yml = .github\workflows\[ALIS][SONARCLOUD].yml
+		.github\workflows\[ALIS][TEST].yml = .github\workflows\[ALIS][TEST].yml
+		.github\workflows\codeql.yml = .github\workflows\codeql.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "issue_template", "issue_template", "{063D29E8-51CF-4155-B23F-8510CA62512A}"

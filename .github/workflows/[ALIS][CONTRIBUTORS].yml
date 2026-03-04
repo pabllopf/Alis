@@ -1,11 +1,10 @@
-name: "[PRO][DEPENDENCY][REVIEW]"
-on: [ pull_request ]
-
-permissions:
-  contents: read
+name: "[ALIS][CONTRIBUTORS]"
+on:
+  schedule:
+    - cron: "0 0 * * *"
 
 jobs:
-  dependency-review:
+  CreateFiles:
     permissions:
       actions: write
       checks: write
@@ -21,10 +20,12 @@ jobs:
       statuses: write
     runs-on: ubuntu-latest
     steps:
-      - name: 'Checkout Repository'
-        uses: actions/checkout@v3
+      - name: "readme.md"
+        uses: akhilmhdh/contributors-readme-action@v2.3.10
         with:
-          ref: master
-
-      - name: 'Dependency Review'
-        uses: actions/dependency-review-action@v4
+          image_size: 75
+          readme_path: "readme.md"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+            
+          

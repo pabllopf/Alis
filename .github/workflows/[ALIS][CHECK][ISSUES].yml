@@ -1,10 +1,10 @@
-name: "[PRO][CONTRIBUTORS]"
+# Discover vulnerabilities of code.
+name: "[ALIS][CHECK][ISSUES]"
 on:
   schedule:
-    - cron: "0 0 * * *"
-
+    - cron: '30 1 * * *'
 jobs:
-  CreateFiles:
+  stale:
     permissions:
       actions: write
       checks: write
@@ -20,12 +20,11 @@ jobs:
       statuses: write
     runs-on: ubuntu-latest
     steps:
-      - name: "readme.md"
-        uses: akhilmhdh/contributors-readme-action@v2.3.10
+      - uses: actions/stale@v9
         with:
-          image_size: 75
-          readme_path: "readme.md"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
-            
-          
+          stale-issue-message: 'This issue is stale because it has been open 30 days with no activity. Remove stale label or comment or this will be closed in 5 days.'
+          days-before-stale: 30
+          days-before-close: 5
+
+
+
