@@ -40,6 +40,9 @@ namespace Alis.Extension.Payment.Stripe.Test
     {
         #region StripeCheckoutSessionRequest Tests
 
+        /// <summary>
+        /// Tests that stripe checkout session request properties initialize correctly
+        /// </summary>
         [Fact]
         public void StripeCheckoutSessionRequest_PropertiesInitializeCorrectly()
         {
@@ -70,7 +73,12 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal("test@example.com", request.CustomerEmail);
             Assert.NotNull(request.Metadata);
         }
-
+        
+        
+        
+        /// <summary>
+        /// Tests that stripe checkout session request metadata can be null
+        /// </summary>
         [Fact]
         public void StripeCheckoutSessionRequest_MetadataCanBeNull()
         {
@@ -95,6 +103,9 @@ namespace Alis.Extension.Payment.Stripe.Test
 
         #region StripeCheckoutSessionResponse Tests
 
+        /// <summary>
+        /// Tests that stripe checkout session response properties initialize correctly
+        /// </summary>
         [Fact]
         public void StripeCheckoutSessionResponse_PropertiesInitializeCorrectly()
         {
@@ -112,6 +123,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal("pi_test_456", response.PaymentIntentId);
         }
 
+        /// <summary>
+        /// Tests that stripe checkout session response supports null properties
+        /// </summary>
         [Fact]
         public void StripeCheckoutSessionResponse_SupportsNullProperties()
         {
@@ -133,6 +147,9 @@ namespace Alis.Extension.Payment.Stripe.Test
 
         #region StripePaymentIntentRequest Tests
 
+        /// <summary>
+        /// Tests that stripe payment intent request properties initialize correctly
+        /// </summary>
         [Fact]
         public void StripePaymentIntentRequest_PropertiesInitializeCorrectly()
         {
@@ -158,6 +175,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.True(request.EnableAutomaticPaymentMethods);
         }
 
+        /// <summary>
+        /// Tests that stripe payment intent request enable automatic payment methods defaults to false
+        /// </summary>
         [Fact]
         public void StripePaymentIntentRequest_EnableAutomaticPaymentMethodsDefaultsToFalse()
         {
@@ -172,6 +192,9 @@ namespace Alis.Extension.Payment.Stripe.Test
 
         #region StripePaymentIntentResponse Tests
 
+        /// <summary>
+        /// Tests that stripe payment intent response properties initialize correctly
+        /// </summary>
         [Fact]
         public void StripePaymentIntentResponse_PropertiesInitializeCorrectly()
         {
@@ -189,6 +212,10 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal("succeeded", response.Status);
         }
 
+        /// <summary>
+        /// Tests that stripe payment intent response status can be any valid status
+        /// </summary>
+        /// <param name="status">The status</param>
         [Theory]
         [InlineData("requires_payment_method")]
         [InlineData("requires_confirmation")]
@@ -215,6 +242,9 @@ namespace Alis.Extension.Payment.Stripe.Test
 
         #region StripeRefundRequest Tests
 
+        /// <summary>
+        /// Tests that stripe refund request properties initialize correctly
+        /// </summary>
         [Fact]
         public void StripeRefundRequest_PropertiesInitializeCorrectly()
         {
@@ -232,6 +262,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal("requested_by_customer", request.Reason);
         }
 
+        /// <summary>
+        /// Tests that stripe refund request amount can be null
+        /// </summary>
         [Fact]
         public void StripeRefundRequest_AmountCanBeNull()
         {
@@ -249,6 +282,10 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal("duplicate", request.Reason);
         }
 
+        /// <summary>
+        /// Tests that stripe refund request reason can be various values
+        /// </summary>
+        /// <param name="reason">The reason</param>
         [Theory]
         [InlineData("requested_by_customer")]
         [InlineData("duplicate")]
@@ -272,6 +309,9 @@ namespace Alis.Extension.Payment.Stripe.Test
 
         #region StripeRefundResponse Tests
 
+        /// <summary>
+        /// Tests that stripe refund response properties initialize correctly
+        /// </summary>
         [Fact]
         public void StripeRefundResponse_PropertiesInitializeCorrectly()
         {
@@ -291,6 +331,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal("succeeded", response.Status);
         }
 
+        /// <summary>
+        /// Tests that stripe refund response supports various statuses
+        /// </summary>
         [Fact]
         public void StripeRefundResponse_SupportsVariousStatuses()
         {
@@ -309,6 +352,9 @@ namespace Alis.Extension.Payment.Stripe.Test
 
         #region Cross-Model Tests
 
+        /// <summary>
+        /// Tests that all request models can be instantiated empty
+        /// </summary>
         [Fact]
         public void AllRequestModels_CanBeInstantiatedEmpty()
         {
@@ -323,6 +369,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.NotNull(refundRequest);
         }
 
+        /// <summary>
+        /// Tests that all response models can be instantiated empty
+        /// </summary>
         [Fact]
         public void AllResponseModels_CanBeInstantiatedEmpty()
         {
@@ -337,6 +386,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.NotNull(refundResponse);
         }
 
+        /// <summary>
+        /// Tests that metadata dictionaries are independent
+        /// </summary>
         [Fact]
         public void MetadataDictionaries_AreIndependent()
         {

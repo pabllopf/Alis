@@ -12,6 +12,11 @@ namespace Alis.Extension.Payment.Stripe.Test
     /// </summary>
     public class PaymentStatusBulkTheoryTest
     {
+        /// <summary>
+        /// Tests that get payment status async bulk mappings should map expected status
+        /// </summary>
+        /// <param name="stripeStatus">The stripe status</param>
+        /// <param name="expected">The expected</param>
         [Theory]
         [MemberData(nameof(StripeTheoryData.PaymentStatusMappingCases), MemberType = typeof(StripeTheoryData))]
         public async Task GetPaymentStatusAsync_BulkMappings_ShouldMapExpectedStatus(string stripeStatus, PaymentStatus expected)

@@ -11,6 +11,11 @@ namespace Alis.Extension.Payment.Stripe.Test
     /// </summary>
     public class StoreManagerBulkTheoryTest
     {
+        /// <summary>
+        /// Creates the configuration using the specified currency
+        /// </summary>
+        /// <param name="currency">The currency</param>
+        /// <returns>The store configuration</returns>
         private static StoreConfiguration CreateConfiguration(string currency)
         {
             return new StoreConfiguration
@@ -23,6 +28,13 @@ namespace Alis.Extension.Payment.Stripe.Test
             };
         }
 
+        /// <summary>
+        /// Tests that register product bulk cases should persist values
+        /// </summary>
+        /// <param name="productId">The product id</param>
+        /// <param name="productName">The product name</param>
+        /// <param name="priceInCents">The price in cents</param>
+        /// <param name="currency">The currency</param>
         [Theory]
         [MemberData(nameof(StripeTheoryData.ProductRegistrationCases), MemberType = typeof(StripeTheoryData))]
         public void RegisterProduct_BulkCases_ShouldPersistValues(string productId, string productName, long priceInCents, string currency)
@@ -53,6 +65,12 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.True(stored.IsEnabled);
         }
 
+        /// <summary>
+        /// Tests that register product bulk currency normalization should use normalized default
+        /// </summary>
+        /// <param name="caseId">The case id</param>
+        /// <param name="rawCurrency">The raw currency</param>
+        /// <param name="expectedCurrency">The expected currency</param>
         [Theory]
         [MemberData(nameof(StripeTheoryData.CurrencyNormalizationCases), MemberType = typeof(StripeTheoryData))]
         public async Task RegisterProduct_BulkCurrencyNormalization_ShouldUseNormalizedDefault(int caseId, string rawCurrency, string expectedCurrency)

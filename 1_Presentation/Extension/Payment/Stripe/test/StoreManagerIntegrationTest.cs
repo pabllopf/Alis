@@ -42,8 +42,16 @@ namespace Alis.Extension.Payment.Stripe.Test
     /// </summary>
     public class StoreManagerIntegrationTest
     {
+        /// <summary>
+        /// Creates the context
+        /// </summary>
+        /// <returns>The context</returns>
         private static Context CreateContext() => new Context();
 
+        /// <summary>
+        /// Creates the valid configuration
+        /// </summary>
+        /// <returns>The store configuration</returns>
         private static StoreConfiguration CreateValidConfiguration()
         {
             return new StoreConfiguration
@@ -56,6 +64,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             };
         }
 
+        /// <summary>
+        /// Tests that complete payment workflow payment intent succeeds
+        /// </summary>
         [Fact]
         public async Task CompletePaymentWorkflow_PaymentIntent_Succeeds()
         {
@@ -101,6 +112,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal(PaymentStatus.Succeeded, statusResult);
         }
 
+        /// <summary>
+        /// Tests that complete payment workflow refund succeeds
+        /// </summary>
         [Fact]
         public async Task CompletePaymentWorkflow_Refund_Succeeds()
         {
@@ -129,6 +143,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal("succeeded", result.Status);
         }
 
+        /// <summary>
+        /// Tests that multiple product workflow registers and queried succeeds
+        /// </summary>
         [Fact]
         public async Task MultipleProductWorkflow_RegistersAndQueried_Succeeds()
         {
@@ -164,6 +181,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Null(nonexistent);
         }
 
+        /// <summary>
+        /// Tests that complete workflow with metadata passes metadata correctly
+        /// </summary>
         [Fact]
         public async Task CompleteWorkflow_WithMetadata_PassesMetadataCorrectly()
         {
@@ -228,6 +248,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal("5", capturedPaymentRequest.Metadata["quantity"]);
         }
 
+        /// <summary>
+        /// Tests that currency handling defaults and overrides work correctly
+        /// </summary>
         [Fact]
         public async Task CurrencyHandling_DefaultsAndOverrides_WorkCorrectly()
         {
@@ -280,6 +303,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal("gbp", gbpProduct.Currency);
         }
 
+        /// <summary>
+        /// Tests that state management product disabling works correctly
+        /// </summary>
         [Fact]
         public async Task StateManagement_ProductDisabling_WorksCorrectly()
         {
@@ -313,6 +339,9 @@ namespace Alis.Extension.Payment.Stripe.Test
                 manager.CreateCheckoutSessionAsync("disableable"));
         }
 
+        /// <summary>
+        /// Tests that manager properties reflect configuration correctly
+        /// </summary>
         [Fact]
         public async Task ManagerProperties_ReflectConfiguration_Correctly()
         {

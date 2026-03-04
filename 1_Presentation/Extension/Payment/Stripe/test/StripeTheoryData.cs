@@ -7,6 +7,10 @@ namespace Alis.Extension.Payment.Stripe.Test
     /// </summary>
     public static class StripeTheoryData
     {
+        /// <summary>
+        /// Products the registration cases
+        /// </summary>
+        /// <returns>An enumerable of object array</returns>
         public static IEnumerable<object[]> ProductRegistrationCases()
         {
             string[] currencies = { "usd", "eur", "gbp", "jpy", "mxn", "ars" };
@@ -28,6 +32,10 @@ namespace Alis.Extension.Payment.Stripe.Test
             }
         }
 
+        /// <summary>
+        /// Currencies the normalization cases
+        /// </summary>
+        /// <returns>An enumerable of object array</returns>
         public static IEnumerable<object[]> CurrencyNormalizationCases()
         {
             string[] baseCurrencies = { "USD", "EUR", "GBP", "JPY", "MXN", "ARS", "BRL", "CAD", "AUD", "CHF" };
@@ -62,6 +70,10 @@ namespace Alis.Extension.Payment.Stripe.Test
             }
         }
 
+        /// <summary>
+        /// Payments the status mapping cases
+        /// </summary>
+        /// <returns>An enumerable of object array</returns>
         public static IEnumerable<object[]> PaymentStatusMappingCases()
         {
             string[] knownStatuses =
@@ -110,6 +122,11 @@ namespace Alis.Extension.Payment.Stripe.Test
             yield return new object[] { null, PaymentStatus.Unknown };
         }
 
+        /// <summary>
+        /// Capitalizes the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The string</returns>
         private static string Capitalize(string value)
         {
             if (string.IsNullOrEmpty(value))

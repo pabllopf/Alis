@@ -8,6 +8,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
     /// </summary>
     public class StyleVarTest
     {
+        /// <summary>
+        /// Tests that style var values should be as expected
+        /// </summary>
         [Fact]
         public void StyleVar_Values_Should_Be_As_Expected()
         {

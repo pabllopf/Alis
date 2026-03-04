@@ -39,6 +39,9 @@ namespace Alis.Extension.Payment.Stripe.Test
     /// </summary>
     public class IStoreManagerTest
     {
+        /// <summary>
+        /// Tests that i store manager is public interface
+        /// </summary>
         [Fact]
         public void IStoreManager_IsPublicInterface()
         {
@@ -50,6 +53,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.True(interfaceType.IsPublic);
         }
 
+        /// <summary>
+        /// Tests that i store manager has is initialized property
+        /// </summary>
         [Fact]
         public void IStoreManager_HasIsInitializedProperty()
         {
@@ -63,6 +69,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.False(property.CanWrite);
         }
 
+        /// <summary>
+        /// Tests that i store manager has initialize async method
+        /// </summary>
         [Fact]
         public void IStoreManager_HasInitializeAsyncMethod()
         {
@@ -76,6 +85,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal(typeof(StoreConfiguration), parameters[0].ParameterType);
         }
 
+        /// <summary>
+        /// Tests that i store manager has register product method
+        /// </summary>
         [Fact]
         public void IStoreManager_HasRegisterProductMethod()
         {
@@ -89,6 +101,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal(typeof(StoreProduct), parameters[0].ParameterType);
         }
 
+        /// <summary>
+        /// Tests that i store manager has register products method
+        /// </summary>
         [Fact]
         public void IStoreManager_HasRegisterProductsMethod()
         {
@@ -101,6 +116,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Single(parameters);
         }
 
+        /// <summary>
+        /// Tests that i store manager has try get product method
+        /// </summary>
         [Fact]
         public void IStoreManager_HasTryGetProductMethod()
         {
@@ -114,6 +132,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal(typeof(string), parameters[0].ParameterType);
         }
 
+        /// <summary>
+        /// Tests that i store manager has get products method
+        /// </summary>
         [Fact]
         public void IStoreManager_HasGetProductsMethod()
         {
@@ -126,6 +147,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Empty(parameters);
         }
 
+        /// <summary>
+        /// Tests that i store manager has create checkout session async method
+        /// </summary>
         [Fact]
         public void IStoreManager_HasCreateCheckoutSessionAsyncMethod()
         {
@@ -139,6 +163,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal(typeof(string), parameters[0].ParameterType);
         }
 
+        /// <summary>
+        /// Tests that i store manager has create payment intent async method
+        /// </summary>
         [Fact]
         public void IStoreManager_HasCreatePaymentIntentAsyncMethod()
         {
@@ -152,6 +179,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal(typeof(string), parameters[0].ParameterType);
         }
 
+        /// <summary>
+        /// Tests that i store manager has get payment status async method
+        /// </summary>
         [Fact]
         public void IStoreManager_HasGetPaymentStatusAsyncMethod()
         {
@@ -165,6 +195,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal(typeof(string), parameters[0].ParameterType);
         }
 
+        /// <summary>
+        /// Tests that i store manager has refund payment async method
+        /// </summary>
         [Fact]
         public void IStoreManager_HasRefundPaymentAsyncMethod()
         {
