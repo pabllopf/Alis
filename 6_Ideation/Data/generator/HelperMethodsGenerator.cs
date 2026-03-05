@@ -74,6 +74,7 @@ namespace Alis.Core.Aspect.Data.Generator
             sb.AppendLine("        /// </summary>");
             sb.AppendLine("        /// <param name=\"array\">The array to serialize.</param>");
             sb.AppendLine("        /// <returns>The JSON array string representation, or null if the array is null.</returns>");
+            sb.AppendLine("        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]");
             sb.AppendLine("        private static string SerializeArray(System.Array array)");
             sb.AppendLine("        {");
             sb.AppendLine("            if (array == null) return null;");
@@ -103,6 +104,7 @@ namespace Alis.Core.Aspect.Data.Generator
             sb.AppendLine("        /// <typeparam name=\"T\">The element type of the array.</typeparam>");
             sb.AppendLine("        /// <param name=\"array\">The two-dimensional array to serialize.</param>");
             sb.AppendLine("        /// <returns>The JSON nested array string representation, or null if the array is null.</returns>");
+            sb.AppendLine("        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]");
             sb.AppendLine("        private static string Serialize2DArray<T>(T[,] array)");
             sb.AppendLine("        {");
             sb.AppendLine("            if (array == null) return null;");
@@ -137,6 +139,7 @@ namespace Alis.Core.Aspect.Data.Generator
             sb.AppendLine("        /// </summary>");
             sb.AppendLine("        /// <param name=\"collection\">The collection to serialize.</param>");
             sb.AppendLine("        /// <returns>The JSON array string representation, or null if the collection is null.</returns>");
+            sb.AppendLine("        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]");
             sb.AppendLine("        private static string SerializeCollection(System.Collections.IEnumerable collection)");
             sb.AppendLine("        {");
             sb.AppendLine("            if (collection == null) return null;");
@@ -165,6 +168,7 @@ namespace Alis.Core.Aspect.Data.Generator
             sb.AppendLine("        /// </summary>");
             sb.AppendLine("        /// <param name=\"dictionary\">The dictionary to serialize.</param>");
             sb.AppendLine("        /// <returns>The JSON object string representation, or null if the dictionary is null.</returns>");
+            sb.AppendLine("        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]");
             sb.AppendLine("        private static string SerializeDictionary(System.Collections.IDictionary dictionary)");
             sb.AppendLine("        {");
             sb.AppendLine("            if (dictionary == null) return null;");
@@ -197,6 +201,7 @@ namespace Alis.Core.Aspect.Data.Generator
             sb.AppendLine("        /// <typeparam name=\"T\">The element type of the array.</typeparam>");
             sb.AppendLine("        /// <param name=\"json\">The JSON array string to deserialize.</param>");
             sb.AppendLine("        /// <returns>The deserialized array, or an empty array if the JSON is null or empty.</returns>");
+            sb.AppendLine("        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]");
             sb.AppendLine("        private static T[] DeserializeArray<T>(string json)");
             sb.AppendLine("        {");
             sb.AppendLine("            if (string.IsNullOrEmpty(json) || json == \"[]\") return new T[0];");
@@ -240,6 +245,7 @@ namespace Alis.Core.Aspect.Data.Generator
             sb.AppendLine("        /// <typeparam name=\"T\">The element type of the array.</typeparam>");
             sb.AppendLine("        /// <param name=\"json\">The JSON nested array string to deserialize.</param>");
             sb.AppendLine("        /// <returns>The deserialized two-dimensional array, or an empty array if the JSON is null or empty.</returns>");
+            sb.AppendLine("        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]");
             sb.AppendLine("        private static T[,] Deserialize2DArray<T>(string json)");
             sb.AppendLine("        {");
             sb.AppendLine("            if (string.IsNullOrEmpty(json) || json == \"[]\") return new T[0, 0];");
@@ -291,6 +297,7 @@ namespace Alis.Core.Aspect.Data.Generator
             sb.AppendLine("        /// <typeparam name=\"T\">The element type of the list.</typeparam>");
             sb.AppendLine("        /// <param name=\"json\">The JSON array string to deserialize.</param>");
             sb.AppendLine("        /// <returns>The deserialized list, or an empty list if the JSON is null or empty.</returns>");
+            sb.AppendLine("        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]");
             sb.AppendLine("        private static System.Collections.Generic.List<T> DeserializeList<T>(string json)");
             sb.AppendLine("        {");
             sb.AppendLine("            if (string.IsNullOrEmpty(json) || json == \"[]\") return new System.Collections.Generic.List<T>();");
@@ -312,6 +319,7 @@ namespace Alis.Core.Aspect.Data.Generator
             sb.AppendLine("        /// <typeparam name=\"TValue\">The value type of the dictionary.</typeparam>");
             sb.AppendLine("        /// <param name=\"json\">The JSON object string to deserialize.</param>");
             sb.AppendLine("        /// <returns>The deserialized dictionary, or an empty dictionary if the JSON is null or empty.</returns>");
+            sb.AppendLine("        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]");
             sb.AppendLine("        private static System.Collections.Generic.Dictionary<TKey, TValue> DeserializeDictionary<TKey, TValue>(string json)");
             sb.AppendLine("        {");
             sb.AppendLine("            var result = new System.Collections.Generic.Dictionary<TKey, TValue>();");

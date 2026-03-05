@@ -312,5 +312,171 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
             // Assert
             Assert.Equal(0, distance);
         }
+
+        /// <summary>
+        ///     Tests addition operator.
+        /// </summary>
+        [Fact]
+        public void AdditionOperator_WithTwoPositions_ReturnsCorrectSum()
+        {
+            // Arrange
+            Position pos1 = new Position(5, 10);
+            Position pos2 = new Position(3, 7);
+
+            // Act
+            Position result = pos1 + pos2;
+
+            // Assert
+            Assert.Equal(8, result.X);
+            Assert.Equal(17, result.Y);
+        }
+
+        /// <summary>
+        ///     Tests addition operator with negative coordinates.
+        /// </summary>
+        [Fact]
+        public void AdditionOperator_WithNegativeCoordinates_ReturnsCorrectSum()
+        {
+            // Arrange
+            Position pos1 = new Position(-5, 10);
+            Position pos2 = new Position(3, -7);
+
+            // Act
+            Position result = pos1 + pos2;
+
+            // Assert
+            Assert.Equal(-2, result.X);
+            Assert.Equal(3, result.Y);
+        }
+
+        /// <summary>
+        ///     Tests subtraction operator.
+        /// </summary>
+        [Fact]
+        public void SubtractionOperator_WithTwoPositions_ReturnsCorrectDifference()
+        {
+            // Arrange
+            Position pos1 = new Position(10, 20);
+            Position pos2 = new Position(3, 7);
+
+            // Act
+            Position result = pos1 - pos2;
+
+            // Assert
+            Assert.Equal(7, result.X);
+            Assert.Equal(13, result.Y);
+        }
+
+        /// <summary>
+        ///     Tests subtraction operator resulting in negative coordinates.
+        /// </summary>
+        [Fact]
+        public void SubtractionOperator_WithResultInNegativeValues_ReturnsCorrectDifference()
+        {
+            // Arrange
+            Position pos1 = new Position(3, 7);
+            Position pos2 = new Position(10, 20);
+
+            // Act
+            Position result = pos1 - pos2;
+
+            // Assert
+            Assert.Equal(-7, result.X);
+            Assert.Equal(-13, result.Y);
+        }
+
+        /// <summary>
+        ///     Tests Zero property returns correct origin.
+        /// </summary>
+        [Fact]
+        public void Zero_ShouldReturnOriginPosition()
+        {
+            // Act
+            Position zero = Position.Zero;
+
+            // Assert
+            Assert.Equal(0, zero.X);
+            Assert.Equal(0, zero.Y);
+        }
+
+        /// <summary>
+        ///     Tests ManhattanDistanceTo with various coordinate combinations.
+        /// </summary>
+        [Theory]
+        [InlineData(0, 0, 1, 1, 2)]  // Simple case
+        [InlineData(0, 0, 0, 0, 0)]  // Same position
+        [InlineData(0, 0, 10, 0, 10)]  // Only horizontal distance
+        [InlineData(0, 0, 0, 10, 10)]  // Only vertical distance
+        [InlineData(5, 5, 10, 10, 10)]  // Positive quadrant
+        [InlineData(-5, -5, 5, 5, 20)]  // Cross quadrants
+        public void ManhattanDistanceTo_WithVariousPositions_ReturnsCorrectDistance(int x1, int y1, int x2, int y2, int expected)
+        {
+            // Arrange
+            Position pos1 = new Position(x1, y1);
+            Position pos2 = new Position(x2, y2);
+
+            // Act
+            int distance = pos1.ManhattanDistanceTo(pos2);
+
+            // Assert
+            Assert.Equal(expected, distance);
+        }
+
+        /// <summary>
+        ///     Tests GetHashCode with various positions.
+        /// </summary>
+        [Fact]
+        public void GetHashCode_WithDifferentPositions_ReturnsDifferentValues()
+        {
+            // Arrange
+            Position pos1 = new Position(5, 10);
+            Position pos2 = new Position(5, 11);
+            Position pos3 = new Position(6, 10);
+
+            // Act
+            int hash1 = pos1.GetHashCode();
+            int hash2 = pos2.GetHashCode();
+            int hash3 = pos3.GetHashCode();
+
+            // Assert
+            Assert.NotEqual(hash1, hash2);
+            Assert.NotEqual(hash1, hash3);
+        }
+
+        /// <summary>
+        ///     Tests constructor with negative coordinates.
+        /// </summary>
+        [Fact]
+        public void Constructor_WithNegativeCoordinates_SetsPropertiesCorrectly()
+        {
+            // Arrange
+            int x = -100;
+            int y = -200;
+
+            // Act
+            Position position = new Position(x, y);
+
+            // Assert
+            Assert.Equal(x, position.X);
+            Assert.Equal(y, position.Y);
+        }
+
+        /// <summary>
+        ///     Tests with maximum and minimum integer values.
+        /// </summary>
+        [Fact]
+        public void Constructor_WithExtremeLargeValues_SetsPropertiesCorrectly()
+        {
+            // Arrange
+            int x = int.MaxValue;
+            int y = int.MinValue;
+
+            // Act
+            Position position = new Position(x, y);
+
+            // Assert
+            Assert.Equal(x, position.X);
+            Assert.Equal(y, position.Y);
+        }
     }
 }

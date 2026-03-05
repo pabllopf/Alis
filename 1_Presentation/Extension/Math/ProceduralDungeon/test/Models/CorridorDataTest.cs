@@ -216,5 +216,72 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
             Assert.Equal(0, corridorData.Width);
             Assert.Equal(0, corridorData.Height);
         }
+
+        /// <summary>
+        ///     Tests equality operator with equal dimensions but different position.
+        /// </summary>
+        [Fact]
+        public void EqualityOperator_WithDifferentXPos_ReturnsFalse()
+        {
+            // Arrange
+            CorridorData corridorData1 = new CorridorData(10, 25, 4, 6, Direction.North);
+            CorridorData corridorData2 = new CorridorData(15, 25, 4, 6, Direction.North);
+
+            // Act
+            bool result = corridorData1 == corridorData2;
+
+            // Assert
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests equality operator with different YPos.
+        /// </summary>
+        [Fact]
+        public void EqualityOperator_WithDifferentYPos_ReturnsFalse()
+        {
+            // Arrange
+            CorridorData corridorData1 = new CorridorData(15, 20, 4, 6, Direction.East);
+            CorridorData corridorData2 = new CorridorData(15, 25, 4, 6, Direction.East);
+
+            // Act
+            bool result = corridorData1 == corridorData2;
+
+            // Assert
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests with negative coordinates.
+        /// </summary>
+        [Fact]
+        public void Constructor_ShouldAcceptNegativeValues()
+        {
+            // Arrange & Act
+            CorridorData corridorData = new CorridorData(-10, -20, 5, 10, Direction.South);
+
+            // Assert
+            Assert.Equal(-10, corridorData.XPos);
+            Assert.Equal(-20, corridorData.YPos);
+            Assert.Equal(5, corridorData.Width);
+            Assert.Equal(10, corridorData.Height);
+        }
+
+        /// <summary>
+        ///     Tests with all four directions.
+        /// </summary>
+        [Theory]
+        [InlineData(Direction.North)]
+        [InlineData(Direction.South)]
+        [InlineData(Direction.East)]
+        [InlineData(Direction.West)]
+        public void Constructor_WithAllDirections_StoresCorrectly(Direction direction)
+        {
+            // Arrange & Act
+            CorridorData corridorData = new CorridorData(5, 10, 3, 4, direction);
+
+            // Assert
+            Assert.Equal(direction, corridorData.Direction);
+        }
     }
 }

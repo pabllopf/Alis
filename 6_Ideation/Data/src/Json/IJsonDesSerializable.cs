@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alis.Core.Aspect.Data.Json
 {
@@ -52,6 +53,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="properties">A dictionary containing property names and their string values.</param>
         /// <returns>A fully initialized instance of type T.</returns>
         /// <exception cref="System.ArgumentException">May be thrown if properties are invalid.</exception>
+        [ExcludeFromCodeCoverage]
         T CreateFromProperties(Dictionary<string, string> properties);
     }
 }

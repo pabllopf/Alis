@@ -30,6 +30,7 @@
 using System.Linq;
 using System.Text;
 using Microsoft.CodeAnalysis;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alis.Core.Aspect.Data.Generator
 {
@@ -88,6 +89,7 @@ namespace Alis.Core.Aspect.Data.Generator
             _stringBuilder.AppendLine("#pragma warning disable CS8604 // Possible null reference argument");
             _stringBuilder.AppendLine("#pragma warning disable CS8618 // Non-nullable field is uninitialized");
             _stringBuilder.AppendLine("using System;");
+            _stringBuilder.AppendLine("using System.Diagnostics.CodeAnalysis;");
             _stringBuilder.AppendLine("using System.Linq;");
             _stringBuilder.AppendLine("using System.Collections.Generic;");
             _stringBuilder.AppendLine("using Alis.Core.Aspect.Data.Json;");
@@ -125,6 +127,7 @@ namespace Alis.Core.Aspect.Data.Generator
             _stringBuilder.AppendLine("        ///     Gets the serializable properties of this instance.");
             _stringBuilder.AppendLine("        /// </summary>");
             _stringBuilder.AppendLine("        /// <returns>An enumerable of tuples containing property names and their serialized values.</returns>");
+            _stringBuilder.AppendLine("        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]");
             _stringBuilder.AppendLine("        IEnumerable<(string PropertyName, string Value)> IJsonSerializable.GetSerializableProperties()");
             _stringBuilder.AppendLine("        {");
 
@@ -163,6 +166,7 @@ namespace Alis.Core.Aspect.Data.Generator
             _stringBuilder.AppendLine("        /// </summary>");
             _stringBuilder.AppendLine("        /// <param name=\"properties\">The property dictionary.</param>");
             _stringBuilder.AppendLine("        /// <returns>A new instance with properties set from the dictionary.</returns>");
+            _stringBuilder.AppendLine("        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]");
             _stringBuilder.AppendLine($"        {_typeSymbol.Name} IJsonDesSerializable<{_typeSymbol.Name}>.CreateFromProperties(Dictionary<string, string> properties)");
             _stringBuilder.AppendLine("        {");
             _stringBuilder.AppendLine($"            return new {_typeSymbol.Name}");
@@ -203,6 +207,7 @@ namespace Alis.Core.Aspect.Data.Generator
             _stringBuilder.AppendLine("        ///     Converts this instance to its JSON string representation.");
             _stringBuilder.AppendLine("        /// </summary>");
             _stringBuilder.AppendLine("        /// <returns>The JSON string representation of this instance.</returns>");
+            _stringBuilder.AppendLine("        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]");
             _stringBuilder.AppendLine("        public string ToJson() => JsonNativeAot.Serialize(this);");
             _stringBuilder.AppendLine("");
             _stringBuilder.AppendLine("        /// <summary>");
@@ -210,6 +215,7 @@ namespace Alis.Core.Aspect.Data.Generator
             _stringBuilder.AppendLine("        /// </summary>");
             _stringBuilder.AppendLine("        /// <param name=\"json\">The JSON string to deserialize.</param>");
             _stringBuilder.AppendLine($"        /// <returns>A new instance of {_typeSymbol.Name} deserialized from the JSON string.</returns>");
+            _stringBuilder.AppendLine("        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]");
             _stringBuilder.AppendLine($"        public static {_typeSymbol.Name} FromJson(string json) => JsonNativeAot.Deserialize<{_typeSymbol.Name}>(json);");
             _stringBuilder.AppendLine("");
         }

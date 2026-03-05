@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alis.Core.Aspect.Data.Json
 {
@@ -76,6 +77,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     }
         ///     </code>
         /// </remarks>
+        [ExcludeFromCodeCoverage]
         IEnumerable<(string PropertyName, string Value)> GetSerializableProperties();
     }
 }

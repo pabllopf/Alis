@@ -268,5 +268,196 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
             Assert.Equal(300, config.BoardHeight);
             Assert.Equal(8, config.NumberOfRooms);
         }
+
+        /// <summary>
+        ///     Tests that validate should throw exception when board height is negative.
+        /// </summary>
+        [Fact]
+        public void Validate_ShouldThrowException_WhenBoardHeightIsNegative()
+        {
+            // Arrange
+            DungeonConfiguration config = new DungeonConfiguration {BoardHeight = -5};
+
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => config.Validate());
+        }
+
+        /// <summary>
+        ///     Tests that validate should throw exception when number of rooms is zero.
+        /// </summary>
+        [Fact]
+        public void Validate_ShouldThrowException_WhenNumberOfRoomsIsZero()
+        {
+            // Arrange
+            DungeonConfiguration config = new DungeonConfiguration {NumberOfRooms = 0};
+
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => config.Validate());
+        }
+
+        /// <summary>
+        ///     Tests that validate should throw exception when first room width is negative.
+        /// </summary>
+        [Fact]
+        public void Validate_ShouldThrowException_WhenFirstRoomWidthIsNegative()
+        {
+            // Arrange
+            DungeonConfiguration config = new DungeonConfiguration {FirstRoomWidth = -3};
+
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => config.Validate());
+        }
+
+        /// <summary>
+        ///     Tests that validate should throw exception when room height is zero.
+        /// </summary>
+        [Fact]
+        public void Validate_ShouldThrowException_WhenRoomHeightIsZero()
+        {
+            // Arrange
+            DungeonConfiguration config = new DungeonConfiguration {RoomHeight = 0};
+
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => config.Validate());
+        }
+
+        /// <summary>
+        ///     Tests that validate should throw exception when room height is negative.
+        /// </summary>
+        [Fact]
+        public void Validate_ShouldThrowException_WhenRoomHeightIsNegative()
+        {
+            // Arrange
+            DungeonConfiguration config = new DungeonConfiguration {RoomHeight = -2};
+
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => config.Validate());
+        }
+
+        /// <summary>
+        ///     Tests that validate should throw exception when boss room height is zero.
+        /// </summary>
+        [Fact]
+        public void Validate_ShouldThrowException_WhenBossRoomHeightIsZero()
+        {
+            // Arrange
+            DungeonConfiguration config = new DungeonConfiguration {BossRoomHeight = 0};
+
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => config.Validate());
+        }
+
+        /// <summary>
+        ///     Tests that validate should throw exception when boss room height is negative.
+        /// </summary>
+        [Fact]
+        public void Validate_ShouldThrowException_WhenBossRoomHeightIsNegative()
+        {
+            // Arrange
+            DungeonConfiguration config = new DungeonConfiguration {BossRoomHeight = -2};
+
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => config.Validate());
+        }
+
+        /// <summary>
+        ///     Tests that validate should throw exception when corridor height is zero.
+        /// </summary>
+        [Fact]
+        public void Validate_ShouldThrowException_WhenCorridorHeightIsZero()
+        {
+            // Arrange
+            DungeonConfiguration config = new DungeonConfiguration {CorridorHeight = 0};
+
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => config.Validate());
+        }
+
+        /// <summary>
+        ///     Tests that validate should throw exception when corridor height is negative.
+        /// </summary>
+        [Fact]
+        public void Validate_ShouldThrowException_WhenCorridorHeightIsNegative()
+        {
+            // Arrange
+            DungeonConfiguration config = new DungeonConfiguration {CorridorHeight = -1};
+
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => config.Validate());
+        }
+
+        /// <summary>
+        ///     Tests that all properties can be mutated independently.
+        /// </summary>
+        [Fact]
+        public void AllProperties_ShouldBeMutableIndependently()
+        {
+            // Arrange
+            DungeonConfiguration config = new DungeonConfiguration();
+
+            // Act
+            config.BoardWidth = 100;
+            config.BoardHeight = 100;
+            config.NumberOfRooms = 5;
+            config.FirstRoomWidth = 10;
+            config.FirstRoomHeight = 10;
+            config.RoomWidth = 6;
+            config.RoomHeight = 6;
+            config.BossRoomWidth = 8;
+            config.BossRoomHeight = 8;
+            config.CorridorWidth = 3;
+            config.CorridorHeight = 3;
+
+            // Assert
+            Assert.Equal(100, config.BoardWidth);
+            Assert.Equal(100, config.BoardHeight);
+            Assert.Equal(5, config.NumberOfRooms);
+            Assert.Equal(10, config.FirstRoomWidth);
+            Assert.Equal(10, config.FirstRoomHeight);
+            Assert.Equal(6, config.RoomWidth);
+            Assert.Equal(6, config.RoomHeight);
+            Assert.Equal(8, config.BossRoomWidth);
+            Assert.Equal(8, config.BossRoomHeight);
+            Assert.Equal(3, config.CorridorWidth);
+            Assert.Equal(3, config.CorridorHeight);
+        }
+
+        /// <summary>
+        ///     Tests that validate called after each property modification works correctly.
+        /// </summary>
+        [Fact]
+        public void Validate_WithMultiplePropertyChanges_WorksCorrectly()
+        {
+            // Arrange
+            DungeonConfiguration config = new DungeonConfiguration();
+
+            // Act - Change one property to invalid value and validate
+            config.CorridorWidth = 0;
+
+            // Assert
+            Assert.Throws<ArgumentException>(() => config.Validate());
+
+            // Act - Fix the property and validate should pass
+            config.CorridorWidth = 4;
+
+            // Assert - No exception should be thrown
+            Exception exception = Record.Exception(() => config.Validate());
+            Assert.Null(exception);
+        }
+
+        /// <summary>
+        ///     Tests with minimum valid values.
+        /// </summary>
+        [Fact]
+        public void ParameterizedConstructor_WithMinimumValidValues_ShouldWork()
+        {
+            // Arrange & Act
+            DungeonConfiguration config = new DungeonConfiguration(1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1);
+
+            // Assert
+            Assert.Equal(1, config.BoardWidth);
+            Assert.Equal(1, config.BoardHeight);
+            Assert.Equal(2, config.NumberOfRooms);
+        }
     }
 }

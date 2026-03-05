@@ -369,5 +369,84 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
             // Assert
             Assert.False(result);
         }
+
+        /// <summary>
+        ///     Tests GetHashCode returns different hash for different dimensions.
+        /// </summary>
+        [Fact]
+        public void GetHashCode_WithDifferentDimensions_ReturnsDifferentHash()
+        {
+            // Arrange
+            Dimensions dim1 = new Dimensions(10, 20);
+            Dimensions dim2 = new Dimensions(20, 30);
+
+            // Act
+            int hash1 = dim1.GetHashCode();
+            int hash2 = dim2.GetHashCode();
+
+            // Assert
+            Assert.NotEqual(hash1, hash2);
+        }
+
+        /// <summary>
+        ///     Tests with large dimension values.
+        /// </summary>
+        [Fact]
+        public void Constructor_WithLargeValues_SetsPropertiesCorrectly()
+        {
+            // Arrange
+            int width = int.MaxValue;
+            int height = int.MaxValue;
+
+            // Act
+            Dimensions dimensions = new Dimensions(width, height);
+
+            // Assert
+            Assert.Equal(width, dimensions.Width);
+            Assert.Equal(height, dimensions.Height);
+        }
+
+        /// <summary>
+        ///     Tests Area property with large dimensions.
+        /// </summary>
+        [Fact]
+        public void Area_WithLargeDimensions_CalculatesCorrectly()
+        {
+            // Arrange
+            Dimensions dimensions = new Dimensions(1000, 1000);
+
+            // Act
+            int area = dimensions.Area;
+
+            // Assert
+            Assert.Equal(1000000, area);
+        }
+
+        /// <summary>
+        ///     Tests CanContain with edge case dimensions.
+        /// </summary>
+        [Theory]
+        [InlineData(1, 1, 1, 1)]  // Both equal to 1
+        [InlineData(100, 100, 1, 1)]  // Large can contain tiny
+        [InlineData(1, 1, 100, 100)]  // Tiny cannot contain large
+        public void CanContain_WithVariousDimensions_ReturnsCorrectResult(int width1, int height1, int width2, int height2)
+        {
+            // Arrange
+            Dimensions dim1 = new Dimensions(width1, height1);
+            Dimensions dim2 = new Dimensions(width2, height2);
+
+            // Act
+            bool result = dim1.CanContain(dim2);
+
+            // Assert
+            if (width1 >= width2 && height1 >= height2)
+            {
+                Assert.True(result);
+            }
+            else
+            {
+                Assert.False(result);
+            }
+        }
     }
 }

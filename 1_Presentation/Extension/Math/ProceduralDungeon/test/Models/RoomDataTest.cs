@@ -215,5 +215,117 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
             Assert.Equal(5, original.Width);
             Assert.Equal(7, original.Height);
         }
+
+        /// <summary>
+        ///     Tests that IsBossRoom property distinguishes correctly between boss and regular rooms.
+        /// </summary>
+        [Fact]
+        public void IsBossRoom_ShouldDifferentiateCorrectly()
+        {
+            // Arrange
+            RoomData regularRoom = new RoomData(10, 20, 5, 7, Direction.North);
+            RoomData bossRoom = new RoomData(10, 20, 5, 7, Direction.North, true);
+
+            // Assert
+            Assert.False(regularRoom.IsBossRoom);
+            Assert.True(bossRoom.IsBossRoom);
+        }
+
+        /// <summary>
+        ///     Tests equality when IsBossRoom property differs.
+        /// </summary>
+        [Fact]
+        public void Equals_ShouldReturnFalse_WhenIsBossRoomDiffers()
+        {
+            // Arrange
+            RoomData room1 = new RoomData(10, 20, 5, 7, Direction.North, true);
+            RoomData room2 = new RoomData(10, 20, 5, 7, Direction.North);
+
+            // Act
+            bool result = room1.Equals(room2);
+
+            // Assert
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests inequality operator with same dimensions but different IsBossRoom.
+        /// </summary>
+        [Fact]
+        public void InequalityOperator_ShouldReturnTrue_WhenIsBossRoomDiffers()
+        {
+            // Arrange
+            RoomData room1 = new RoomData(10, 20, 5, 7, Direction.North, true);
+            RoomData room2 = new RoomData(10, 20, 5, 7, Direction.North);
+
+            // Act
+            bool result = room1 != room2;
+
+            // Assert
+            Assert.True(result);
+        }
+
+        /// <summary>
+        ///     Tests with negative coordinates.
+        /// </summary>
+        [Fact]
+        public void Constructor_ShouldAcceptNegativeCoordinates()
+        {
+            // Arrange & Act
+            RoomData roomData = new RoomData(-5, -10, 3, 4, Direction.South);
+
+            // Assert
+            Assert.Equal(-5, roomData.XPos);
+            Assert.Equal(-10, roomData.YPos);
+        }
+
+        /// <summary>
+        ///     Tests with zero dimensions.
+        /// </summary>
+        [Fact]
+        public void Constructor_ShouldAcceptZeroDimensions()
+        {
+            // Arrange & Act
+            RoomData roomData = new RoomData(0, 0, 0, 0, Direction.East);
+
+            // Assert
+            Assert.Equal(0, roomData.Width);
+            Assert.Equal(0, roomData.Height);
+        }
+
+        /// <summary>
+        ///     Tests with all four directions.
+        /// </summary>
+        [Theory]
+        [InlineData(Direction.North)]
+        [InlineData(Direction.South)]
+        [InlineData(Direction.East)]
+        [InlineData(Direction.West)]
+        public void Constructor_WithAllDirections_StoresCorrectly(Direction direction)
+        {
+            // Arrange & Act
+            RoomData roomData = new RoomData(5, 10, 3, 4, direction);
+
+            // Assert
+            Assert.Equal(direction, roomData.Direction);
+        }
+
+        /// <summary>
+        ///     Tests hash code stability with IsBossRoom property.
+        /// </summary>
+        [Fact]
+        public void GetHashCode_ShouldDiffer_WhenIsBossRoomDiffers()
+        {
+            // Arrange
+            RoomData room1 = new RoomData(10, 20, 5, 7, Direction.North, true);
+            RoomData room2 = new RoomData(10, 20, 5, 7, Direction.North);
+
+            // Act
+            int hash1 = room1.GetHashCode();
+            int hash2 = room2.GetHashCode();
+
+            // Assert
+            Assert.NotEqual(hash1, hash2);
+        }
     }
 }
