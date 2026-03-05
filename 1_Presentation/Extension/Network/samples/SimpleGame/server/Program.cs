@@ -28,9 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
-using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Logging;
 using Alis.Extension.Network.Core;
 using Alis.Extension.Network.Server;
@@ -269,9 +268,13 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
                     if (input.Equals("/players", StringComparison.OrdinalIgnoreCase))
                     {
                         var players = _serverManager.GetConnectedPlayers();
-                        Logger.Info($"Connected players: {players.Count}/{_serverManager.Config.MaxPlayers}");
                         
-                        foreach (var connectedPlayer in players)
+                        // Filter out server player if in pure server mode
+                        var clientPlayers = players.Where(p => !_serverIsPlayer || p.PlayerId != "server_player").ToList();
+                        
+                        Logger.Info($"Connected players: {clientPlayers.Count}/{_serverManager.Config.MaxPlayers}");
+                        
+                        foreach (var connectedPlayer in clientPlayers)
                         {
                             if (_gameState.Players.TryGetValue(connectedPlayer.PlayerId, out var state))
                             {
@@ -284,8 +287,11 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
 
                     if (input.Equals("/status", StringComparison.OrdinalIgnoreCase))
                     {
+                        var allConnected = _serverManager.GetConnectedPlayers();
+                        var clientCount = allConnected.Where(p => !_serverIsPlayer || p.PlayerId != "server_player").Count();
+                        
                         Logger.Info("═ GAME STATUS ═");
-                        Logger.Log($"Active Players: {_serverManager.GetConnectedPlayers().Count}");
+                        Logger.Log($"Active Players (Clients): {clientCount}");
                         Logger.Log($"Active Sessions: {_serverManager.GetActiveSessions().Count}");
                         Logger.Log($"Game State Entries: {_gameState.Players.Count}");
                         Logger.Log($"Tick: {_gameState.CurrentTick}");
@@ -469,32 +475,6 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
             }
 
             await Task.CompletedTask;
-        }
-    }
-
-    /// <summary>
-    /// Game message for network communication
-    /// </summary>
-    public class GameMessage : IJsonSerializable
-    {
-        /// <summary>
-        /// Gets or sets the message type
-        /// </summary>
-        public string MessageType { get; set; }
-        
-        /// <summary>
-        /// Gets or sets the content
-        /// </summary>
-        public string Content { get; set; }
-
-        /// <summary>
-        /// Gets the serializable properties
-        /// </summary>
-        /// <returns>A system collections generic enumerable of string and string</returns>
-        public IEnumerable<(string, string)> GetSerializableProperties()
-        {
-            yield return (nameof(MessageType), MessageType ?? "");
-            yield return (nameof(Content), Content ?? "");
         }
     }
 }

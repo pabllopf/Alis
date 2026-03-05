@@ -511,7 +511,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SimpleChat", "SimpleChat", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SimpleGame", "SimpleGame", "{2899036A-E562-41B8-A146-EAD1599520BB}"
 	ProjectSection(SolutionItems) = preProject
-		1_Presentation\Extension\Network\samples\SimpleGame\UPDATE_SUMMARY.md = 1_Presentation\Extension\Network\samples\SimpleGame\UPDATE_SUMMARY.md
+		1_Presentation\Extension\Network\samples\SimpleGame\TESTING_GUIDE.md = 1_Presentation\Extension\Network\samples\SimpleGame\TESTING_GUIDE.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Extension.Network.Sample.SimpleGame.Client", "1_Presentation\Extension\Network\samples\SimpleGame\client\Alis.Extension.Network.Sample.SimpleGame.Client.csproj", "{97FBF4E2-7572-4790-866C-C361C60B1123}"
