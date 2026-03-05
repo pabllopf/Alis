@@ -24,7 +24,7 @@
         <NameTest>$([System.Text.RegularExpressions.Regex]::Replace('$(AssemblyName)', '.[^.]*Sample[^*]*', ''))</NameTest>
     </PropertyGroup>
 
-    <ItemGroup>
+     <ItemGroup>
         <ProjectReference
             Condition="Exists('$(ProjectDir)../src/$(NameTest).csproj') == True"
             Include="$(ProjectDir)../src/$(NameTest).csproj"/>
@@ -32,6 +32,10 @@
         <ProjectReference
             Condition="Exists('$(ProjectDir)../src/$(NameTest).csproj') == False AND Exists('$(ProjectDir)../../src/$(NameTest).csproj') == True"
             Include="$(ProjectDir)../../src/$(NameTest).csproj"/>
+
+        <ProjectReference
+            Condition="Exists('$(ProjectDir)../src/$(NameTest).csproj') == False AND Exists('$(ProjectDir)../../src/$(NameTest).csproj') == False AND Exists('$(ProjectDir)../../../src/$(NameTest).csproj') == True"
+            Include="$(ProjectDir)../../../src/$(NameTest).csproj"/>
         
         <ProjectReference
             Condition="Exists('$(ProjectDir)../generator/$(NameTest).Generator.csproj')"
