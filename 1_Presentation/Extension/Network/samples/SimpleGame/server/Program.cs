@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Alis.Core.Aspect.Logging;
 using Alis.Extension.Network.Core;
@@ -36,86 +37,263 @@ using Alis.Extension.Network.Server;
 namespace Alis.Extension.Network.Sample.SimpleGame.Server
 {
     /// <summary>
-    ///     The server sample program
+    ///     Simple multiplayer game server (console-based arena)
     /// </summary>
     public static class Program
     {
         /// <summary>
-        ///     Main entry point
+        /// The server manager
+        /// </summary>
+        private static NetworkServerManager _serverManager;
+        /// <summary>
+        /// The player state
+        /// </summary>
+        private static Dictionary<string, PlayerState> _playerStates = new Dictionary<string, PlayerState>();
+
+        /// <summary>
+        /// Main the args
         /// </summary>
         /// <param name="args">The args</param>
         public static async Task Main(string[] args)
         {
             try
             {
-                Logger.Info("═══════════════════════════════════════════════════════");
-                Logger.Info("   ALIS MULTIPLAYER NETWORK SERVER SAMPLE");
-                Logger.Info("═══════════════════════════════════════════════════════");
+                Console.Clear();
+                Logger.Info("╔══════════════════════════════════════════════════════╗");
+                Logger.Info("║     ALIS NETWORK - SIMPLE GAME SERVER SAMPLE         ║");
+                Logger.Info("║     Console-Based Arena Battle System                ║");
+                Logger.Info("╚══════════════════════════════════════════════════════╝");
+                Logger.Info("");
 
-                using (var serverManager = new NetworkServerManager())
+                _serverManager = new NetworkServerManager();
+
+                var config = new NetworkConfig
                 {
-                    var config = new NetworkConfig
-                    {
-                        MaxPlayers = 32,
-                        TickRate = 60,
-                        ServerAuthoritative = true
-                    };
+                    MaxPlayers = 8,
+                    TickRate = 60,
+                    ServerAuthoritative = true
+                };
 
-                    await serverManager.InitializeAsync(config);
-                    Logger.Info("✓ Server initialized");
+                await _serverManager.InitializeAsync(config);
+                Logger.Info("✓ Server initialized");
 
-                    // Create a session
-                    var session = await serverManager.CreateSessionAsync("Main Game", 8);
-                    Logger.Info($"✓ Session created: {session.SessionName} (ID: {session.SessionId})");
+                var session = await _serverManager.CreateSessionAsync("Battle Arena", 8);
+                Logger.Info($"✓ Session created: {session.SessionName}");
+                Logger.Info("");
 
-                    // Register message handlers
-                    serverManager.RegisterMessageHandler("game.update", OnGameUpdate);
-                    serverManager.RegisterMessageHandler("chat", OnChatMessage);
+                RegisterHandlers();
+                RegisterEvents();
 
-                    // Register events
-                    serverManager.PlayerJoined += (s, e) => Logger.Info($"→ Player joined: {e.Player.PlayerName}");
-                    serverManager.PlayerLeft += (s, e) => Logger.Info($"← Player left: {e.Player.PlayerName}");
-                    serverManager.Error += (s, e) => Logger.Error($"⚠ Error: {e.Message}");
+                var listenUri = new Uri("ws://127.0.0.1:8889/");
+                await _serverManager.StartAsync();
+                await _serverManager.ListenAsync(listenUri);
 
-                    // Start listening
-                    var listenUri = new Uri("ws://127.0.0.1:8888/");
+                Logger.Info($"✓ Server listening on {listenUri}");
+                Logger.Info("");
+                Logger.Info("═══════════════════════════════════════════════════════");
+                Logger.Info("Game Server Commands:");
+                Logger.Info("  /players   - Show connected players");
+                Logger.Info("  /status    - Show game status");
+                Logger.Info("  /reset     - Reset game state");
+                Logger.Info("  /quit      - Stop server");
+                Logger.Info("═══════════════════════════════════════════════════════");
+                Logger.Info("");
 
-                    await serverManager.StartAsync();
-                    await serverManager.ListenAsync(listenUri);
-                    Logger.Info($"✓ Server listening on {listenUri}");
+                await GameLoopAsync();
 
-                    // Keep server running
-                    Logger.Info("Press Enter to stop server...");
-                    Console.ReadLine();
-
-                    Logger.Info("Stopping server...");
-                    await serverManager.StopAsync();
-                    Logger.Info("✓ Server stopped");
-                }
+                Logger.Info("Stopping server...");
+                await _serverManager.StopAsync();
+                Logger.Info("✓ Server stopped");
             }
             catch (Exception ex)
             {
                 Logger.Exception($"Fatal error: {ex.Message}");
-                Logger.Exception(ex.StackTrace);
             }
         }
 
         /// <summary>
-        ///     Handles game update messages
+        /// Games the loop
         /// </summary>
-        private static async Task OnGameUpdate(string senderId, string payload)
+        private static async Task GameLoopAsync()
         {
-            Logger.Log($"Game update from {senderId}: {payload.Substring(0, Math.Min(50, payload.Length))}...");
+            while (true)
+            {
+                string input = Console.ReadLine();
+                if (string.IsNullOrEmpty(input))
+                    continue;
+
+                if (input.Equals("/quit", StringComparison.OrdinalIgnoreCase))
+                    break;
+
+                if (input.Equals("/players", StringComparison.OrdinalIgnoreCase))
+                {
+                    var players = _serverManager.GetConnectedPlayers();
+                    Logger.Info($"Connected players: {players.Count}/{_serverManager.Config.MaxPlayers}");
+                    foreach (var player in players)
+                    {
+                        if (_playerStates.TryGetValue(player.PlayerId, out var state))
+                        {
+                            Logger.Log($"  {player.PlayerName}: HP={state.Health}/100, Score={state.Score}, Lvl={state.Level}");
+                        }
+                    }
+                    Logger.Info("");
+                }
+
+                if (input.Equals("/status", StringComparison.OrdinalIgnoreCase))
+                {
+                    Logger.Info("═ GAME STATUS ═");
+                    Logger.Log($"Active Players: {_serverManager.GetConnectedPlayers().Count}");
+                    Logger.Log($"Active Sessions: {_serverManager.GetActiveSessions().Count}");
+                    Logger.Log($"State Entries: {_playerStates.Count}");
+                    Logger.Info("");
+                }
+
+                if (input.Equals("/reset", StringComparison.OrdinalIgnoreCase))
+                {
+                    _playerStates.Clear();
+                    Logger.Info("✓ Game state reset");
+                }
+
+                await Task.Delay(10);
+            }
+        }
+
+        /// <summary>
+        /// Registers the handlers
+        /// </summary>
+        private static void RegisterHandlers()
+        {
+            _serverManager.RegisterMessageHandler("game.move", OnPlayerMove);
+            _serverManager.RegisterMessageHandler("game.attack", OnPlayerAttack);
+            _serverManager.RegisterMessageHandler("game.spawn", OnPlayerSpawn);
+            _serverManager.RegisterMessageHandler("game.chat", OnGameChat);
+        }
+
+        /// <summary>
+        /// Registers the events
+        /// </summary>
+        private static void RegisterEvents()
+        {
+            _serverManager.PlayerJoined += (s, e) =>
+            {
+                Logger.Info($"→ {e.Player.PlayerName} joined!");
+                InitializePlayerState(e.Player.PlayerId, e.Player.PlayerName);
+            };
+
+            _serverManager.PlayerLeft += (s, e) =>
+            {
+                Logger.Info($"← {e.Player.PlayerName} left");
+                _playerStates.Remove(e.Player.PlayerId);
+            };
+
+            _serverManager.Error += (s, e) =>
+                Logger.Error($"⚠ Error: {e.Message}");
+        }
+
+        /// <summary>
+        /// Initializes the player state using the specified player id
+        /// </summary>
+        /// <param name="playerId">The player id</param>
+        /// <param name="playerName">The player name</param>
+        private static void InitializePlayerState(string playerId, string playerName)
+        {
+            if (!_playerStates.ContainsKey(playerId))
+            {
+                _playerStates[playerId] = new PlayerState
+                {
+                    PlayerId = playerId,
+                    PlayerName = playerName,
+                    Health = 100,
+                    Score = 0,
+                    Level = 1,
+                    X = new Random().Next(0, 50),
+                    Y = new Random().Next(0, 50)
+                };
+            }
+        }
+
+        /// <summary>
+        /// Ons the player move using the specified sender id
+        /// </summary>
+        /// <param name="senderId">The sender id</param>
+        /// <param name="payload">The payload</param>
+        private static async Task OnPlayerMove(string senderId, string payload)
+        {
+            Logger.Log($"[MOVE] {senderId}: {payload.Substring(0, Math.Min(30, payload.Length))}");
             await Task.CompletedTask;
         }
 
         /// <summary>
-        ///     Handles chat messages
+        /// Ons the player attack using the specified sender id
         /// </summary>
-        private static async Task OnChatMessage(string senderId, string payload)
+        /// <param name="senderId">The sender id</param>
+        /// <param name="payload">The payload</param>
+        private static async Task OnPlayerAttack(string senderId, string payload)
         {
-            Logger.Log($"Chat from {senderId}: {payload}");
+            Logger.Log($"[ATTACK] {senderId}");
+            if (_playerStates.TryGetValue(senderId, out var state))
+                state.Score += 10;
             await Task.CompletedTask;
         }
+
+        /// <summary>
+        /// Ons the player spawn using the specified sender id
+        /// </summary>
+        /// <param name="senderId">The sender id</param>
+        /// <param name="payload">The payload</param>
+        private static async Task OnPlayerSpawn(string senderId, string payload)
+        {
+            Logger.Log($"[SPAWN] {senderId}");
+            if (_playerStates.TryGetValue(senderId, out var state))
+                state.Health = 100;
+            await Task.CompletedTask;
+        }
+
+        /// <summary>
+        /// Ons the game chat using the specified sender id
+        /// </summary>
+        /// <param name="senderId">The sender id</param>
+        /// <param name="payload">The payload</param>
+        private static async Task OnGameChat(string senderId, string payload)
+        {
+            if (_playerStates.TryGetValue(senderId, out var state))
+                Logger.Log($"[{state.PlayerName}]: {payload}");
+            await Task.CompletedTask;
+        }
+    }
+
+    /// <summary>
+    /// The player state class
+    /// </summary>
+    public class PlayerState
+    {
+        /// <summary>
+        /// Gets or sets the value of the player id
+        /// </summary>
+        public string PlayerId { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the player name
+        /// </summary>
+        public string PlayerName { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the health
+        /// </summary>
+        public int Health { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the score
+        /// </summary>
+        public int Score { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the level
+        /// </summary>
+        public int Level { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the x
+        /// </summary>
+        public int X { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the y
+        /// </summary>
+        public int Y { get; set; }
     }
 }

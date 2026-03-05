@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Alis.Core.Aspect.Logging;
 using Alis.Extension.Network.Client;
@@ -36,98 +37,234 @@ using Alis.Extension.Network.Core;
 namespace Alis.Extension.Network.Sample.SimpleChat.Client
 {
     /// <summary>
-    ///     The client sample program
+    ///     Simple chat client sample
     /// </summary>
     public static class Program
     {
         /// <summary>
+        /// The client manager
+        /// </summary>
+        private static NetworkClientManager _clientManager;
+        /// <summary>
+        /// The player name
+        /// </summary>
+        private static string _playerName;
+        /// <summary>
+        /// The connected
+        /// </summary>
+        private static bool _connected = false;
+
+        /// <summary>
         ///     Main entry point
         /// </summary>
-        /// <param name="args">The args</param>
         public static async Task Main(string[] args)
         {
             try
             {
-                Logger.Info("═══════════════════════════════════════════════════════");
-                Logger.Info("   ALIS MULTIPLAYER NETWORK CLIENT SAMPLE");
-                Logger.Info("═══════════════════════════════════════════════════════");
+                Console.Clear();
+                Logger.Info("╔══════════════════════════════════════════════════════╗");
+                Logger.Info("║     ALIS NETWORK - SIMPLE CHAT CLIENT SAMPLE         ║");
+                Logger.Info("╚══════════════════════════════════════════════════════╝");
+                Logger.Info("");
 
-                using (var clientManager = new NetworkClientManager())
+                _clientManager = new NetworkClientManager();
+
+                var config = new NetworkConfig
                 {
-                    var config = new NetworkConfig
-                    {
-                        MaxPlayers = 32,
-                        TickRate = 60,
-                        ServerAuthoritative = true
-                    };
+                    MaxPlayers = 32,
+                    TickRate = 60,
+                    ServerAuthoritative = true
+                };
 
-                    await clientManager.InitializeAsync(config);
-                    Logger.Info("✓ Client initialized");
+                await _clientManager.InitializeAsync(config);
+                Logger.Info("✓ Client initialized");
 
-                    // Register message handlers
-                    clientManager.RegisterMessageHandler("game.update", OnGameUpdate);
-                    clientManager.RegisterMessageHandler("chat", OnChatMessage);
+                RegisterHandlers();
+                RegisterEvents();
 
-                    // Register events
-                    clientManager.PlayerJoined += (s, e) => Logger.Info($"→ Player joined: {e.Player.PlayerName}");
-                    clientManager.PlayerLeft += (s, e) => Logger.Info($"← Player left: {e.Player.PlayerName}");
-                    clientManager.Connected += (s, e) => Logger.Info("✓ Connected to server");
-                    clientManager.Disconnected += (s, e) => Logger.Info("✗ Disconnected from server");
-                    clientManager.Error += (s, e) => Logger.Error($"⚠ Error: {e.Message}");
-                    clientManager.ServerMessageReceived += (s, e) => Logger.Log($"Message on channel '{e.Channel}': {e.Message}");
+                await _clientManager.StartAsync();
 
-                    await clientManager.StartAsync();
+                // Get player name
+                Logger.Log("Enter your player name: ");
+                _playerName = Console.ReadLine();
+                if (string.IsNullOrEmpty(_playerName))
+                    _playerName = $"Player_{Guid.NewGuid().ToString().Substring(0, 8)}";
 
-                    // Connect to server
-                    var serverUri = new Uri("ws://127.0.0.1:8888/");
-                    const string playerName = "TestPlayer";
+                // Connect to server
+                var serverUri = new Uri("ws://127.0.0.1:8888/");
+                Logger.Info($"Connecting to {serverUri} as '{_playerName}'...");
 
-                    Logger.Info($"Connecting to {serverUri}...");
-                    await clientManager.ConnectAsync(serverUri, playerName);
-                    Logger.Info("✓ Connected!");
+                try
+                {
+                    await _clientManager.ConnectAsync(serverUri, _playerName);
+                    _connected = true;
+                    Logger.Info("✓ Connected to server!");
+                    Logger.Info("");
+                    Logger.Info("═══════════════════════════════════════════════════════");
+                    Logger.Info("Type messages and press Enter to send");
+                    Logger.Info("Type '/quit' to exit");
+                    Logger.Info("═══════════════════════════════════════════════════════");
+                    Logger.Info("");
 
-                    // Send test message
-                    var testMessage = new GameMessage
-                    {
-                        MessageType = "greeting",
-                        Content = "Hello Server!"
-                    };
-
-                    await clientManager.BroadcastMessageAsync("chat", testMessage);
-                    Logger.Info("✓ Test message sent");
-
-                    // Keep client running
-                    Logger.Info("Press Enter to disconnect...");
-                    Console.ReadLine();
-
-                    Logger.Info("Disconnecting...");
-                    await clientManager.DisconnectAsync();
-                    Logger.Info("✓ Disconnected");
+                    await ChatLoopAsync();
                 }
+                catch (Exception ex)
+                {
+                    Logger.Error($"Failed to connect: {ex.Message}");
+                }
+
+                if (_connected)
+                {
+                    await _clientManager.DisconnectAsync();
+                }
+
+                Logger.Info("✓ Client closed");
             }
             catch (Exception ex)
             {
                 Logger.Exception($"Fatal error: {ex.Message}");
-                Logger.Exception(ex.StackTrace);
             }
         }
 
         /// <summary>
-        ///     Handles game update messages
+        ///     Chat loop - handles user input
         /// </summary>
-        private static async Task OnGameUpdate(string senderId, string payload)
+        private static async Task ChatLoopAsync()
         {
-            Logger.Log($"Game update from {senderId}: {payload.Substring(0, Math.Min(50, payload.Length))}...");
+            while (_connected)
+            {
+                try
+                {
+                    Logger.Log($"[{_playerName}]: ");
+                    string message = Console.ReadLine();
+
+                    if (string.IsNullOrEmpty(message))
+                        continue;
+
+                    if (message.Equals("/quit", StringComparison.OrdinalIgnoreCase))
+                    {
+                        _connected = false;
+                        break;
+                    }
+
+                    var chatMessage = new ChatMessage
+                    {
+                        SenderName = _playerName,
+                        Content = message,
+                        Timestamp = DateTime.Now.ToString("HH:mm:ss")
+                    };
+
+                    await _clientManager.BroadcastMessageAsync("chat.message", chatMessage);
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error($"Error sending message: {ex.Message}");
+                    _connected = false;
+                }
+
+                await Task.Delay(10);
+            }
+        }
+
+        /// <summary>
+        ///     Register message handlers
+        /// </summary>
+        private static void RegisterHandlers()
+        {
+            _clientManager.RegisterMessageHandler("chat.message", OnChatMessage);
+            _clientManager.RegisterMessageHandler("chat.notification", OnNotification);
+        }
+
+        /// <summary>
+        ///     Register events
+        /// </summary>
+        private static void RegisterEvents()
+        {
+            _clientManager.PlayerJoined += (s, e) =>
+                Logger.Info($"→ {e.Player.PlayerName} joined the chat");
+
+            _clientManager.PlayerLeft += (s, e) =>
+                Logger.Info($"← {e.Player.PlayerName} left the chat");
+
+            _clientManager.Connected += (s, e) =>
+                Logger.Info("✓ Connected to server");
+
+            _clientManager.Disconnected += (s, e) =>
+            {
+                Logger.Info("✗ Disconnected from server");
+                _connected = false;
+            };
+
+            _clientManager.Error += (s, e) =>
+                Logger.Error($"⚠ Error: {e.Message}");
+        }
+
+        /// <summary>
+        ///     Handle incoming chat messages
+        /// </summary>
+        private static async Task OnChatMessage(string senderId, string payload)
+        {
+            try
+            {
+                // Try to parse JSON to extract message details
+                // Format: {"SenderName":"name","Content":"message","Timestamp":"HH:mm:ss"}
+                
+                // Simple JSON parsing to extract fields
+                string senderName = ExtractJsonField(payload, "SenderName");
+                string content = ExtractJsonField(payload, "Content");
+                string timestamp = ExtractJsonField(payload, "Timestamp");
+
+                if (!string.IsNullOrEmpty(senderName) && !string.IsNullOrEmpty(content))
+                {
+                    Logger.Info($"[{senderName}] ({timestamp ?? ""}): {content}");
+                }
+                else
+                {
+                    // Fallback if parsing fails
+                    Logger.Log($"[MESSAGE] {payload}");
+                }
+            }
+            catch
+            {
+                // Fallback display
+                Logger.Log($"[MESSAGE] {payload}");
+            }
             await Task.CompletedTask;
         }
 
         /// <summary>
-        ///     Handles chat messages
+        ///     Extract value from JSON field
         /// </summary>
-        private static async Task OnChatMessage(string senderId, string payload)
+        private static string ExtractJsonField(string json, string fieldName)
         {
-            Logger.Log($"Chat from {senderId}: {payload}");
+            try
+            {
+                string search = $"\"{fieldName}\":\"";
+                int startIndex = json.IndexOf(search);
+                if (startIndex == -1)
+                    return null;
+
+                startIndex += search.Length;
+                int endIndex = json.IndexOf("\"", startIndex);
+                if (endIndex == -1)
+                    return null;
+
+                return json.Substring(startIndex, endIndex - startIndex);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        ///     Handle notifications
+        /// </summary>
+        private static async Task OnNotification(string senderId, string payload)
+        {
+            Logger.Info($"[NOTIFICATION] {payload}");
             await Task.CompletedTask;
         }
     }
 }
+

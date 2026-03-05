@@ -394,12 +394,12 @@ namespace Alis.Extension.Network.Server
         }
 
         /// <summary>
-        ///     Broadcasts message
+        ///     Broadcasts message to all players
         /// </summary>
         public async Task BroadcastMessageAsync<T>(string channel, T message, bool reliable = true, string exceptPlayerId = null) where T : IJsonSerializable
         {
             string payload = _serializer.Serialize(message);
-            var envelope = new Core.NetworkMessageEnvelope
+            var envelope = new NetworkMessageEnvelope
             {
                 MessageId = Guid.NewGuid().ToString(),
                 MessageType = typeof(T).Name,
@@ -412,13 +412,33 @@ namespace Alis.Extension.Network.Server
                 SequenceNumber = (uint)(DateTime.UtcNow.Ticks % uint.MaxValue)
             };
 
-            string exceptClientId = null;
-            if (exceptPlayerId != null)
-            {
-                _clientToSessionMap.TryGetValue(exceptPlayerId, out exceptClientId);
-            }
+            // Broadcast to all connected clients through transport
+            await _transport.BroadcastAsync(envelope, null);
+        }
 
-            await _transport.BroadcastAsync(envelope, exceptClientId);
+        /// <summary>
+        ///     Registers a player in the session
+        /// </summary>
+        public void RegisterPlayerInSession(string playerId, string playerName)
+        {
+            if (_currentSession != null)
+            {
+                var player = new NetworkPlayer
+                {
+                    PlayerId = playerId,
+                    PlayerName = playerName,
+                    ConnectionState = Core.PlayerConnectionState.Connected,
+                    JoinedAt = DateTimeOffset.UtcNow.ToUnixTimeSeconds()
+                };
+
+                if (!_currentSession.Players.Exists(p => p.PlayerId == playerId))
+                {
+                    _currentSession.Players.Add(player);
+                    _currentSession.PlayerCount = _currentSession.Players.Count;
+                }
+
+                PlayerJoined?.Invoke(this, new PlayerEventArgs(player));
+            }
         }
 
         /// <summary>

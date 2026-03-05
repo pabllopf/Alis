@@ -36,86 +36,206 @@ using Alis.Extension.Network.Server;
 namespace Alis.Extension.Network.Sample.SimpleChat.Server
 {
     /// <summary>
-    ///     The server sample program
+    ///     Simple chat server sample
     /// </summary>
     public static class Program
     {
         /// <summary>
+        /// The server manager
+        /// </summary>
+        private static NetworkServerManager _serverManager;
+
+        /// <summary>
         ///     Main entry point
         /// </summary>
-        /// <param name="args">The args</param>
         public static async Task Main(string[] args)
         {
             try
             {
-                Logger.Info("═══════════════════════════════════════════════════════");
-                Logger.Info("   ALIS MULTIPLAYER NETWORK SERVER SAMPLE");
-                Logger.Info("═══════════════════════════════════════════════════════");
+                Console.Clear();
+                Logger.Info("╔══════════════════════════════════════════════════════╗");
+                Logger.Info("║     ALIS NETWORK - SIMPLE CHAT SERVER SAMPLE         ║");
+                Logger.Info("╚══════════════════════════════════════════════════════╝");
+                Logger.Info("");
 
-                using (var serverManager = new NetworkServerManager())
+                _serverManager = new NetworkServerManager();
+
+                var config = new NetworkConfig
                 {
-                    var config = new NetworkConfig
+                    MaxPlayers = 32,
+                    TickRate = 60,
+                    ServerAuthoritative = true
+                };
+
+                await _serverManager.InitializeAsync(config);
+                Logger.Info("✓ Server initialized");
+
+                var session = await _serverManager.CreateSessionAsync("Chat Room", 32);
+                Logger.Info($"✓ Session created: {session.SessionName} (Max: {session.MaxPlayers} players)");
+                Logger.Info("");
+
+                RegisterHandlers();
+                RegisterEvents();
+
+                var listenUri = new Uri("ws://127.0.0.1:8888/");
+                await _serverManager.StartAsync();
+                await _serverManager.ListenAsync(listenUri);
+
+                Logger.Info($"✓ Server listening on {listenUri}");
+                Logger.Info("");
+                Logger.Info("═══════════════════════════════════════════════════════");
+                Logger.Info("Server running. Type '/quit' to stop");
+                Logger.Info("═══════════════════════════════════════════════════════");
+                Logger.Info("");
+
+                // Interactive server loop
+                while (true)
+                {
+                    string input = Console.ReadLine();
+                    if (input?.Equals("/quit", StringComparison.OrdinalIgnoreCase) ?? false)
+                        break;
+
+                    if (input?.Equals("/players", StringComparison.OrdinalIgnoreCase) ?? false)
                     {
-                        MaxPlayers = 32,
-                        TickRate = 60,
-                        ServerAuthoritative = true
-                    };
+                        var players = _serverManager.GetConnectedPlayers();
+                        Logger.Info($"Connected players: {players.Count}");
+                        foreach (var player in players)
+                        {
+                            Logger.Log($"  - {player.PlayerName} ({player.PlayerId})");
+                        }
+                    }
 
-                    await serverManager.InitializeAsync(config);
-                    Logger.Info("✓ Server initialized");
+                    if (input?.Equals("/sessions", StringComparison.OrdinalIgnoreCase) ?? false)
+                    {
+                        var sessions = _serverManager.GetActiveSessions();
+                        Logger.Info($"Active sessions: {sessions.Count}");
+                        foreach (var s in sessions)
+                        {
+                            Logger.Log($"  - {s.SessionName}: {s.Players.Count}/{s.MaxPlayers} players");
+                        }
+                    }
 
-                    // Create a session
-                    var session = await serverManager.CreateSessionAsync("Main Game", 8);
-                    Logger.Info($"✓ Session created: {session.SessionName} (ID: {session.SessionId})");
-
-                    // Register message handlers
-                    serverManager.RegisterMessageHandler("game.update", OnGameUpdate);
-                    serverManager.RegisterMessageHandler("chat", OnChatMessage);
-
-                    // Register events
-                    serverManager.PlayerJoined += (s, e) => Logger.Info($"→ Player joined: {e.Player.PlayerName}");
-                    serverManager.PlayerLeft += (s, e) => Logger.Info($"← Player left: {e.Player.PlayerName}");
-                    serverManager.Error += (s, e) => Logger.Error($"⚠ Error: {e.Message}");
-
-                    // Start listening
-                    var listenUri = new Uri("ws://127.0.0.1:8888/");
-
-                    await serverManager.StartAsync();
-                    await serverManager.ListenAsync(listenUri);
-                    Logger.Info($"✓ Server listening on {listenUri}");
-
-                    // Keep server running
-                    Logger.Info("Press Enter to stop server...");
-                    Console.ReadLine();
-
-                    Logger.Info("Stopping server...");
-                    await serverManager.StopAsync();
-                    Logger.Info("✓ Server stopped");
+                    await Task.Delay(10);
                 }
+
+                Logger.Info("Stopping server...");
+                await _serverManager.StopAsync();
+                Logger.Info("✓ Server stopped");
             }
             catch (Exception ex)
             {
                 Logger.Exception($"Fatal error: {ex.Message}");
-                Logger.Exception(ex.StackTrace);
             }
         }
 
         /// <summary>
-        ///     Handles game update messages
+        ///     Register message handlers
         /// </summary>
-        private static async Task OnGameUpdate(string senderId, string payload)
+        private static void RegisterHandlers()
         {
-            Logger.Log($"Game update from {senderId}: {payload.Substring(0, Math.Min(50, payload.Length))}...");
+            _serverManager.RegisterMessageHandler("chat.message", OnChatMessage);
+            _serverManager.RegisterMessageHandler("system.join", OnPlayerJoin);
+        }
+
+        /// <summary>
+        ///     Register events
+        /// </summary>
+        private static void RegisterEvents()
+        {
+            _serverManager.PlayerJoined += (s, e) =>
+            {
+                Logger.Info($"→ {e.Player.PlayerName} joined the chat");
+                Logger.Log($"   Total players: {_serverManager.GetConnectedPlayers().Count}");
+            };
+
+            _serverManager.PlayerLeft += (s, e) =>
+            {
+                Logger.Info($"← {e.Player.PlayerName} left the chat");
+                Logger.Log($"   Total players: {_serverManager.GetConnectedPlayers().Count}");
+            };
+
+            _serverManager.Error += (s, e) =>
+                Logger.Error($"⚠ Error: {e.Message}");
+        }
+
+        /// <summary>
+        ///     Handle chat messages and broadcast
+        /// </summary>
+        private static async Task OnChatMessage(string senderId, string payload)
+        {
+            try
+            {
+                Logger.Log($"[CHAT] {payload}");
+                
+                // Get the sender player
+                var sender = _serverManager.GetPlayer(senderId);
+                if (sender != null)
+                {
+                    // We need to create a new envelope with the sender's info
+                    // Since we're receiving raw payload, we need to reconstruct the message
+                    var chatMessage = new ChatMessage
+                    {
+                        SenderName = sender.PlayerName,
+                        Content = payload,
+                        Timestamp = System.DateTime.Now.ToString("HH:mm:ss")
+                    };
+
+                    // Broadcast to all connected players
+                    await _serverManager.BroadcastMessageAsync("chat.message", chatMessage);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error($"Error processing message: {ex.Message}");
+            }
+        }
+
+        /// <summary>
+        ///     Handle player join
+        /// </summary>
+        private static async Task OnPlayerJoin(string senderId, string payload)
+        {
+            try
+            {
+                // Extract player ID and name from handshake payload
+                string playerId = ExtractJsonField(payload, "playerId");
+                string playerName = ExtractJsonField(payload, "playerName");
+                
+                if (!string.IsNullOrEmpty(playerId) && !string.IsNullOrEmpty(playerName))
+                {
+                    _serverManager.RegisterPlayerInSession(playerId, playerName);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error($"Error processing join: {ex.Message}");
+            }
             await Task.CompletedTask;
         }
 
         /// <summary>
-        ///     Handles chat messages
+        ///     Extract JSON field value
         /// </summary>
-        private static async Task OnChatMessage(string senderId, string payload)
+        private static string ExtractJsonField(string json, string fieldName)
         {
-            Logger.Log($"Chat from {senderId}: {payload}");
-            await Task.CompletedTask;
+            try
+            {
+                string search = $"\"{fieldName}\":\"";
+                int startIndex = json.IndexOf(search);
+                if (startIndex == -1)
+                    return null;
+
+                startIndex += search.Length;
+                int endIndex = json.IndexOf("\"", startIndex);
+                if (endIndex == -1)
+                    return null;
+
+                return json.Substring(startIndex, endIndex - startIndex);
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }

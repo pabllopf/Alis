@@ -238,6 +238,29 @@ namespace Alis.Extension.Network.Client
                     _state = NetworkManagerState.Connected;
                 }
 
+                // Send handshake to register on server
+                var handshakeMsg = new System.Collections.Generic.Dictionary<string, string>
+                {
+                    { "action", "join" },
+                    { "playerId", _localPlayer.PlayerId },
+                    { "playerName", _localPlayer.PlayerName }
+                };
+                var handshakePayload = $"{{\"action\":\"join\",\"playerId\":\"{_localPlayer.PlayerId}\",\"playerName\":\"{_localPlayer.PlayerName}\"}}";
+                var handshakeEnvelope = new NetworkMessageEnvelope
+                {
+                    MessageId = Guid.NewGuid().ToString(),
+                    MessageType = "system",
+                    SenderId = _localPlayer.PlayerId,
+                    Channel = "system.join",
+                    Payload = handshakePayload,
+                    ClientTimestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds(),
+                    IsReliable = true,
+                    SequenceNumber = 0
+                };
+                string handshakeJson = _serializer.SerializeEnvelope(handshakeEnvelope);
+                byte[] handshakeBuffer = Encoding.UTF8.GetBytes(handshakeJson);
+                await _serverSocket.SendAsync(new ArraySegment<byte>(handshakeBuffer), WebSocketMessageType.Text, true, CancellationToken.None);
+
                 Connected?.Invoke(this, EventArgs.Empty);
             }
             catch (Exception ex)
