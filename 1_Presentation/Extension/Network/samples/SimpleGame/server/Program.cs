@@ -112,6 +112,14 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
 
                 var session = await _serverManager.CreateSessionAsync("Battle Arena", 8);
                 Logger.Info($"✓ Session created: {session.SessionName}");
+
+                if (!_serverIsPlayer)
+                {
+                    // Dedicated mode: keep session/player counts client-only.
+                    session.Players.RemoveAll(p => p.IsHost || p.PlayerId == _serverManager.LocalPlayer?.PlayerId);
+                    session.PlayerCount = session.Players.Count;
+                }
+
                 Logger.Info("");
 
                 RegisterHandlers();
@@ -203,11 +211,7 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
             {
                 string eventData = $"{evt.EventType}|{evt.SourcePlayer}|{evt.TargetPlayer ?? ""}|{evt.Description}";
                 var msg = new GameMessage { MessageType = evt.EventType, Content = eventData };
-                
-                foreach (var player in _serverManager.GetConnectedPlayers())
-                {
-                    await _serverManager.SendMessageAsync(player.PlayerId, $"game.{evt.EventType}", msg);
-                }
+                await _serverManager.BroadcastMessageAsync($"game.{evt.EventType}", msg);
             }
             catch (Exception ex)
             {
@@ -253,11 +257,7 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
 
                 string stateData = string.Join("|", segments);
                 var msg = new GameMessage { MessageType = "state", Content = stateData };
-
-                foreach (var player in _serverManager.GetConnectedPlayers())
-                {
-                    await _serverManager.SendMessageAsync(player.PlayerId, "game.update", msg);
-                }
+                await _serverManager.BroadcastMessageAsync("game.update", msg);
             }
             catch (Exception ex)
             {
@@ -291,9 +291,9 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
                     if (input.Equals("/players", StringComparison.OrdinalIgnoreCase))
                     {
                         var players = _serverManager.GetConnectedPlayers();
-                        
-                        // Filter out server player if in pure server mode
-                        var clientPlayers = players.Where(p => !_serverIsPlayer || p.PlayerId != "server_player").ToList();
+                        var clientPlayers = players
+                            .Where(p => !p.IsHost && p.PlayerId != _serverManager.LocalPlayer?.PlayerId)
+                            .ToList();
                         
                         Logger.Info($"Connected players: {clientPlayers.Count}/{_serverManager.Config.MaxPlayers}");
                         
@@ -311,7 +311,9 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
                     if (input.Equals("/status", StringComparison.OrdinalIgnoreCase))
                     {
                         var allConnected = _serverManager.GetConnectedPlayers();
-                        var clientCount = allConnected.Where(p => !_serverIsPlayer || p.PlayerId != "server_player").Count();
+                        var clientCount = allConnected
+                            .Where(p => !p.IsHost && p.PlayerId != _serverManager.LocalPlayer?.PlayerId)
+                            .Count();
                         
                         Logger.Info("═ GAME STATUS ═");
                         Logger.Log($"Active Players (Clients): {clientCount}");
@@ -326,20 +328,28 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
                     {
                         string message = input.Substring(11);
                         var msg = new GameMessage { MessageType = "server_broadcast", Content = message };
-                        
-                        foreach (var player in _serverManager.GetConnectedPlayers())
-                        {
-                            await _serverManager.SendMessageAsync(player.PlayerId, "game.chat", msg);
-                        }
-                        
+                        await _serverManager.BroadcastMessageAsync("game.chat", msg);
                         Logger.Info($"✓ Broadcast: {message}");
                     }
 
                     if (input.Equals("/reset", StringComparison.OrdinalIgnoreCase))
                     {
-                        _gameState.Players.Clear();
-                        _gameState.Events.Clear();
-                        Logger.Info("✓ Game state reset");
+                        _gameState = new GameState();
+                        _tickCounter = 0;
+
+                        foreach (var connected in _serverManager.GetConnectedPlayers())
+                        {
+                            if (!_serverIsPlayer && (connected.IsHost || connected.PlayerId == _serverManager.LocalPlayer?.PlayerId))
+                            {
+                                continue;
+                            }
+
+                            _gameState.AddPlayer(connected.PlayerId, connected.PlayerName);
+                        }
+
+                        _gameState.UpdateTurn(_tickCounter);
+                        await BroadcastGameStateAsync();
+                        Logger.Info("✓ Game state reset and synchronized");
                     }
 
                     await Task.Delay(10);
@@ -373,7 +383,7 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
                 _gameState.AddPlayer(e.Player.PlayerId, e.Player.PlayerName);
 
                 Logger.Info($"→ {e.Player.PlayerName} connected ({e.Player.PlayerId})");
-                Logger.Log($"   Connected players: {_serverManager.GetConnectedPlayers().Count}");
+                Logger.Log($"   Connected players: {_serverManager.GetConnectedPlayers().Where(p => !p.IsHost && p.PlayerId != _serverManager.LocalPlayer?.PlayerId).Count()}");
 
                 _gameState.AddEvent(new GameEvent
                 {
@@ -387,7 +397,7 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
             {
                 Logger.Info($"← {e.Player.PlayerName} disconnected ({e.Player.PlayerId})");
                 _gameState.RemovePlayer(e.Player.PlayerId);
-                Logger.Log($"   Connected players: {_serverManager.GetConnectedPlayers().Count}");
+                Logger.Log($"   Connected players: {_serverManager.GetConnectedPlayers().Where(p => !p.IsHost && p.PlayerId != _serverManager.LocalPlayer?.PlayerId).Count()}");
 
                 _gameState.AddEvent(new GameEvent
                 {
@@ -442,7 +452,8 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
 
                 if (!string.IsNullOrWhiteSpace(_gameState.CurrentTurnPlayerId) && _gameState.CurrentTurnPlayerId != senderId)
                 {
-                    string turnName = _gameState.Players.TryGetValue(_gameState.CurrentTurnPlayerId, out var turnPlayer)
+                    string turnName = !string.IsNullOrEmpty(_gameState.CurrentTurnPlayerId)
+                        && _gameState.Players.TryGetValue(_gameState.CurrentTurnPlayerId, out var turnPlayer)
                         ? turnPlayer.PlayerName
                         : "Unknown";
 
@@ -452,7 +463,7 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
                         Content = $"Server: Wait for your turn. Current turn: {turnName}."
                     };
 
-                    await _serverManager.SendMessageAsync(senderId, "game.chat", notice);
+                    await _serverManager.BroadcastMessageAsync("game.chat", notice);
                     return;
                 }
 
@@ -506,10 +517,7 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
                     Logger.Log($"[CHAT] {state.PlayerName}: {content}");
 
                     var msg = new GameMessage { MessageType = "chat", Content = $"{state.PlayerName}:{content}" };
-                    foreach (var player in _serverManager.GetConnectedPlayers())
-                    {
-                        await _serverManager.SendMessageAsync(player.PlayerId, "game.chat", msg);
-                    }
+                    await _serverManager.BroadcastMessageAsync("game.chat", msg);
                 }
             }
             catch (Exception ex)
