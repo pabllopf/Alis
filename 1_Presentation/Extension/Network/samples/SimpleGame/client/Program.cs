@@ -78,9 +78,9 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
         /// </summary>
         private static long _lastRenderTick;
         /// <summary>
-        /// True while the user is entering a command.
+        /// Current input buffer being typed
         /// </summary>
-        private static bool _isTyping;
+        private static string _currentInput = "";
 
         /// <summary>
         /// Main the args
@@ -176,15 +176,14 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
             {
                 try
                 {
-                    // Never redraw while the player is typing in the same console.
-                    if (!_isTyping && (_needsRender || _gameState.LastUpdateTick > _lastRenderTick))
+                    if (_needsRender || _gameState.LastUpdateTick > _lastRenderTick)
                     {
-                        _renderer?.Render();
+                        _renderer?.Render(_currentInput);
                         _needsRender = false;
                         _lastRenderTick = _gameState.LastUpdateTick;
                     }
 
-                    await Task.Delay(80);
+                    await Task.Delay(100);
                 }
                 catch (Exception ex)
                 {
@@ -200,162 +199,182 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
 
         private static async Task GameLoopAsync()
         {
+            _currentInput = "";
+            
             while (_connected)
             {
                 try
                 {
-                    _isTyping = true;
-                    Logger.Log($"[{_playerName}]> ");
-                    string input = Console.ReadLine();
-                    _isTyping = false;
-
-                    if (string.IsNullOrEmpty(input))
+                    // Non-blocking input: check if key is available
+                    if (Console.KeyAvailable)
                     {
-                        TriggerRender();
-                        continue;
-                    }
-
-                    if (input.Equals("/quit", StringComparison.OrdinalIgnoreCase))
-                    {
-                        _connected = false;
-                        break;
-                    }
-
-                    if (input.Equals("/help", StringComparison.OrdinalIgnoreCase))
-                    {
-                        Logger.Info("═══════════════════════════════════════════════════════");
-                        Logger.Info("Available Commands:");
-                        Logger.Info("  /move <x> <y>  - Move to coordinates (0-39, 0-24)");
-                        Logger.Info("  /attack <name> - Attack a player by name (your turn)");
-                        Logger.Info("  /spawn         - Respawn in arena");
-                        Logger.Info("  /endturn       - End your turn (skip to next player)");
-                        Logger.Info("  /chat <msg>    - Send message to all players");
-                        Logger.Info("  /stats         - Show your stats");
-                        Logger.Info("  /players       - List known players from server state");
-                        Logger.Info("  /help          - Show this help");
-                        Logger.Info("  /quit          - Leave the game");
-                        Logger.Info("═══════════════════════════════════════════════════════");
-                        Logger.Info("");
-                        TriggerRender();
-                        continue;
-                    }
-
-                    if (input.StartsWith("/move "))
-                    {
-                        var parts = input.Substring(6).Split(' ');
-                        if (parts.Length == 2 && int.TryParse(parts[0], out int x) && int.TryParse(parts[1], out int y))
+                        ConsoleKeyInfo keyInfo = Console.ReadKey(intercept: true);
+                        
+                        if (keyInfo.Key == ConsoleKey.Enter)
                         {
-                            if (MoveSystem.IsValidMove(x, y))
+                            string input = _currentInput;
+                            _currentInput = "";
+                            TriggerRender();
+                            
+                            // Process command
+                            await ProcessCommandAsync(input);
+                        }
+                        else if (keyInfo.Key == ConsoleKey.Backspace)
+                        {
+                            if (_currentInput.Length > 0)
                             {
-                                _gameState.UpdatePlayerPosition(_playerId, x, y);
-                                var moveMsg = new GameMessage { MessageType = "move", Content = $"{x},{y}" };
-                                await _clientManager.BroadcastMessageAsync("game.move", moveMsg);
-                            }
-                            else
-                            {
-                                Logger.Error("✗ Invalid coordinates!");
+                                _currentInput = _currentInput.Substring(0, _currentInput.Length - 1);
+                                TriggerRender();
                             }
                         }
-                        else
+                        else if (keyInfo.KeyChar >= ' ' && keyInfo.KeyChar < '\x7F')
                         {
-                            Logger.Error("✗ Usage: /move <x> <y>");
+                            _currentInput += keyInfo.KeyChar;
+                            TriggerRender();
                         }
                     }
-
-                    if (input.StartsWith("/attack "))
-                    {
-                        if (!IsLocalPlayerTurn())
-                        {
-                            string turnName = string.IsNullOrEmpty(_gameState.CurrentTurnPlayerName) ? "Unknown" : _gameState.CurrentTurnPlayerName;
-                            Logger.Error($"✗ It is not your turn. Current turn: {turnName}");
-                        }
-                        else
-                        {
-                            var targetName = input.Substring(8);
-                            if (_gameState.Players.Values.Any(p => p.PlayerName == targetName && p.IsAlive))
-                            {
-                                var attackMsg = new GameMessage { MessageType = "attack", Content = targetName };
-                                await _clientManager.BroadcastMessageAsync("game.attack", attackMsg);
-                            }
-                            else
-                            {
-                                Logger.Error($"✗ Player '{targetName}' not found or is dead!");
-                            }
-                        }
-                    }
-
-                    if (input.Equals("/spawn", StringComparison.OrdinalIgnoreCase))
-                    {
-                        if (_gameState.Players.TryGetValue(_playerId, out var player) && !player.IsAlive)
-                        {
-                            var spawnMsg = new GameMessage { MessageType = "spawn", Content = "respawning" };
-                            await _clientManager.BroadcastMessageAsync("game.spawn", spawnMsg);
-                        }
-                        else
-                        {
-                            Logger.Error("✗ You are already alive!");
-                        }
-                    }
-
-                    if (input.Equals("/endturn", StringComparison.OrdinalIgnoreCase))
-                    {
-                        if (IsLocalPlayerTurn())
-                        {
-                            var endTurnMsg = new GameMessage { MessageType = "endturn", Content = "" };
-                            await _clientManager.BroadcastMessageAsync("game.endturn", endTurnMsg);
-                            Logger.Log("→ Turn ended, waiting for next turn...");
-                        }
-                        else
-                        {
-                            Logger.Error("✗ It is not your turn!");
-                        }
-                    }
-
-                    if (input.StartsWith("/chat "))
-                    {
-                        var message = input.Substring(6);
-                        var chatMsg = new GameMessage { MessageType = "chat", Content = message };
-                        await _clientManager.BroadcastMessageAsync("game.chat", chatMsg);
-                    }
-
-                    if (input.Equals("/stats", StringComparison.OrdinalIgnoreCase))
-                    {
-                        if (_gameState.Players.TryGetValue(_playerId, out var player))
-                        {
-                            Logger.Info("═ YOUR STATS ═");
-                            Logger.Log($"Name: {player.PlayerName}");
-                            Logger.Log($"Position: ({player.X}, {player.Y})");
-                            Logger.Log($"Health: {player.Health}/{player.MaxHealth}");
-                            Logger.Log($"Level: {player.Level} | XP: {player.Experience}");
-                            Logger.Log($"Score: {player.Score} | Kills: {player.Kills} | Deaths: {player.Deaths}");
-                            Logger.Log($"Status: {(player.IsAlive ? "✓ Alive" : "✕ Dead")}");
-                            Logger.Log($"Turn: {_gameState.CurrentTurnPlayerName}");
-                            Logger.Info("");
-                        }
-                    }
-
-                    if (input.Equals("/players", StringComparison.OrdinalIgnoreCase))
-                    {
-                        Logger.Info($"═ PLAYERS ({_gameState.Players.Count}) ═");
-                        foreach (var player in _gameState.Players.Values.OrderByDescending(p => p.Score))
-                        {
-                            string status = player.IsAlive ? "✓" : "✕";
-                            string turn = player.PlayerId == _gameState.CurrentTurnPlayerId ? " <- TURN" : string.Empty;
-                            Logger.Log($"{status} {player.PlayerName,-15} HP:{player.Health}/{player.MaxHealth} Score:{player.Score} Lvl:{player.Level}{turn}");
-                        }
-                        Logger.Info("");
-                    }
-
-                    TriggerRender();
+                    
+                    await Task.Delay(10);
                 }
                 catch (Exception ex)
                 {
-                    _isTyping = false;
                     Logger.Error($"Error: {ex.Message}");
+                    _currentInput = "";
                 }
-
-                await Task.Delay(10);
             }
+        }
+
+        private static async Task ProcessCommandAsync(string input)
+        {
+            if (string.IsNullOrEmpty(input))
+            {
+                TriggerRender();
+                return;
+            }
+
+            if (input.Equals("/quit", StringComparison.OrdinalIgnoreCase))
+            {
+                _connected = false;
+                return;
+            }
+
+            if (input.Equals("/help", StringComparison.OrdinalIgnoreCase))
+            {
+                Logger.Info("═══════════════════════════════════════════════════════");
+                Logger.Info("Available Commands:");
+                Logger.Info("  /move <x> <y>  - Move to coordinates (0-39, 0-24)");
+                Logger.Info("  /attack <name> - Attack a player by name (your turn)");
+                Logger.Info("  /spawn         - Respawn in arena");
+                Logger.Info("  /endturn       - End your turn (skip to next player)");
+                Logger.Info("  /chat <msg>    - Send message to all players");
+                Logger.Info("  /stats         - Show your stats");
+                Logger.Info("  /players       - List known players from server state");
+                Logger.Info("  /help          - Show this help");
+                Logger.Info("  /quit          - Leave the game");
+                Logger.Info("═══════════════════════════════════════════════════════");
+                Logger.Info("");
+                TriggerRender();
+                return;
+            }
+
+            if (input.StartsWith("/move "))
+            {
+                var parts = input.Substring(6).Split(' ');
+                if (parts.Length == 2 && int.TryParse(parts[0], out int x) && int.TryParse(parts[1], out int y))
+                {
+                    if (MoveSystem.IsValidMove(x, y))
+                    {
+                        _gameState.UpdatePlayerPosition(_playerId, x, y);
+                        var moveMsg = new GameMessage { MessageType = "move", Content = $"{x},{y}" };
+                        await _clientManager.BroadcastMessageAsync("game.move", moveMsg);
+                    }
+                    else
+                    {
+                        Logger.Error("✗ Invalid coordinates!");
+                    }
+                }
+                else
+                {
+                    Logger.Error("✗ Usage: /move <x> <y>");
+                }
+            }
+
+            if (input.StartsWith("/attack "))
+            {
+                if (!IsLocalPlayerTurn())
+                {
+                    string turnName = string.IsNullOrEmpty(_gameState.CurrentTurnPlayerName) ? "Unknown" : _gameState.CurrentTurnPlayerName;
+                    Logger.Error($"✗ It is not your turn. Current turn: {turnName}");
+                }
+                else
+                {
+                    var targetName = input.Substring(8);
+                    if (_gameState.Players.Values.Any(p => p.PlayerName == targetName && p.IsAlive))
+                    {
+                        var attackMsg = new GameMessage { MessageType = "attack", Content = targetName };
+                        await _clientManager.BroadcastMessageAsync("game.attack", attackMsg);
+                    }
+                    else
+                    {
+                        Logger.Error($"✗ Player '{targetName}' not found or is dead!");
+                    }
+                }
+            }
+
+            if (input.Equals("/spawn", StringComparison.OrdinalIgnoreCase))
+            {
+                if (_gameState.Players.TryGetValue(_playerId, out var player) && !player.IsAlive)
+                {
+                    var spawnMsg = new GameMessage { MessageType = "spawn", Content = "respawning" };
+                    await _clientManager.BroadcastMessageAsync("game.spawn", spawnMsg);
+                }
+                else
+                {
+                    Logger.Error("✗ You are already alive!");
+                }
+            }
+
+            if (input.Equals("/endturn", StringComparison.OrdinalIgnoreCase))
+            {
+                if (IsLocalPlayerTurn())
+                {
+                    var endTurnMsg = new GameMessage { MessageType = "endturn", Content = "" };
+                    await _clientManager.BroadcastMessageAsync("game.endturn", endTurnMsg);
+                    Logger.Log("→ Turn ended, waiting for next turn...");
+                }
+                else
+                {
+                    Logger.Error("✗ It is not your turn!");
+                }
+            }
+
+            if (input.StartsWith("/chat "))
+            {
+                var message = input.Substring(6);
+                var chatMsg = new GameMessage { MessageType = "chat", Content = message };
+                await _clientManager.BroadcastMessageAsync("game.chat", chatMsg);
+            }
+
+            if (input.Equals("/stats", StringComparison.OrdinalIgnoreCase))
+            {
+                // Stats are already displayed in the UI, no need for separate command
+                Logger.Info("Stats are displayed at the top of the screen!");
+                return;
+            }
+
+            if (input.Equals("/players", StringComparison.OrdinalIgnoreCase))
+            {
+                Logger.Info($"═ PLAYERS ({_gameState.Players.Count}) ═");
+                foreach (var player in _gameState.Players.Values.OrderByDescending(p => p.Score))
+                {
+                    string status = player.IsAlive ? "✓" : "✕";
+                    string turn = player.PlayerId == _gameState.CurrentTurnPlayerId ? " <- TURN" : string.Empty;
+                    Logger.Log($"{status} {player.PlayerName,-15} HP:{player.Health}/{player.MaxHealth} Score:{player.Score} Lvl:{player.Level}{turn}");
+                }
+                Logger.Info("");
+            }
+
+            TriggerRender();
         }
 
         private static void RegisterHandlers()
@@ -367,6 +386,8 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
             _clientManager.RegisterMessageHandler("game.chat", OnGameChat);
             _clientManager.RegisterMessageHandler("game.join", OnGameEvent);
             _clientManager.RegisterMessageHandler("game.leave", OnGameEvent);
+            _clientManager.RegisterMessageHandler("game.death", OnGameEvent);
+            _clientManager.RegisterMessageHandler("game.levelup", OnGameEvent);
         }
 
         private static void RegisterEvents()
@@ -553,9 +574,25 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
             try
             {
                 string content = ExtractGameMessageContent(payload);
-                var parts = content.Split(':', 2);
-                string playerName = parts.Length > 0 ? parts[0] : "Unknown";
-                string message = parts.Length > 1 ? parts[1] : content;
+                
+                // Server messages are formatted as "Server: message"
+                string playerName = "Unknown";
+                string message = content;
+                
+                if (content.StartsWith("Server:"))
+                {
+                    playerName = "Server";
+                    message = content.Substring(7).Trim();
+                    _gameState.LastServerMessage = message;
+                    _gameState.LastServerMessageTime = DateTime.UtcNow.Ticks / TimeSpan.TicksPerMillisecond;
+                }
+                else
+                {
+                    // Regular player chat: "PlayerName:message"
+                    var parts = content.Split(':', 2);
+                    playerName = parts.Length > 0 ? parts[0] : "Unknown";
+                    message = parts.Length > 1 ? parts[1] : content;
+                }
 
                 _gameState.AddEvent(new GameEvent
                 {

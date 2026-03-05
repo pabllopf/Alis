@@ -450,7 +450,14 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
             try
             {
                 string targetName = ExtractGameMessageContent(payload);
+                
+                if (!_gameState.Players.TryGetValue(senderId, out var attacker) || !attacker.IsAlive)
+                {
+                    Logger.Error($"[ATTACK] {senderId} is not alive or not found!");
+                    return;
+                }
 
+                // Check if it's player's turn
                 if (!string.IsNullOrWhiteSpace(_gameState.CurrentTurnPlayerId) && _gameState.CurrentTurnPlayerId != senderId)
                 {
                     string turnName = !string.IsNullOrEmpty(_gameState.CurrentTurnPlayerId)
@@ -458,22 +465,125 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
                         ? turnPlayer.PlayerName
                         : "Unknown";
 
+                    Logger.Log($"[ATTACK] {attacker.PlayerName} tried to attack but it's {turnName}'s turn!");
+                    
                     var notice = new GameMessage
                     {
                         MessageType = "chat",
-                        Content = $"Server: Wait for your turn. Current turn: {turnName}."
+                        Content = $"Server: Not your turn! Current turn: {turnName}."
                     };
-
                     await _serverManager.BroadcastMessageAsync("game.chat", notice);
                     return;
                 }
 
-                int damage = _gameState.ProcessAttack(senderId, targetName);
-                if (damage > 0)
+                // Find target by name
+                PlayerData target = null;
+                foreach (var player in _gameState.Players.Values)
                 {
-                    _gameState.AdvanceTurn(_tickCounter);
-                    Logger.Log($"[ATTACK] {senderId} -> {targetName}: {damage} damage!");
+                    if (player.PlayerName == targetName && player.PlayerId != senderId && player.IsAlive)
+                    {
+                        target = player;
+                        break;
+                    }
                 }
+                
+                if (target == null)
+                {
+                    Logger.Log($"[ATTACK] {attacker.PlayerName} tried to attack {targetName} but target not found!");
+                    
+                    var msg = new GameMessage
+                    {
+                        MessageType = "chat",
+                        Content = $"Server: Target '{targetName}' not found or is dead!"
+                    };
+                    await _serverManager.BroadcastMessageAsync("game.chat", msg);
+                    return;
+                }
+
+                // Check range
+                float distance = MoveSystem.GetDistance(attacker.X, attacker.Y, target.X, target.Y);
+                if (distance > CombatSystem.MaxAttackDistance)
+                {
+                    Logger.Log($"[ATTACK] {attacker.PlayerName} too far from {target.PlayerName} (distance: {distance})!");
+                    
+                    var msg = new GameMessage
+                    {
+                        MessageType = "chat",
+                        Content = $"Server: {target.PlayerName} is too far away!"
+                    };
+                    await _serverManager.BroadcastMessageAsync("game.chat", msg);
+                    return;
+                }
+
+                // Calculate and apply damage
+                int damage = CombatSystem.CalculateDamage(attacker, target);
+                if (damage <= 0)
+                {
+                    Logger.Log($"[ATTACK] {attacker.PlayerName} vs {target.PlayerName}: No damage!");
+                    return;
+                }
+
+                // Apply damage
+                target.Health = Math.Max(0, target.Health - damage);
+                attacker.Score += damage;
+                
+                _gameState.AddEvent(new GameEvent
+                {
+                    EventType = "attack",
+                    SourcePlayer = senderId,
+                    TargetPlayer = target.PlayerId,
+                    Description = $"{attacker.PlayerName} dealt {damage} damage to {target.PlayerName}!"
+                });
+
+                Logger.Log($"[ATTACK] {attacker.PlayerName} -> {target.PlayerName}: {damage} damage! (HP: {target.Health}/{target.MaxHealth})");
+
+                // Check if target died
+                if (target.Health == 0)
+                {
+                    target.IsAlive = false;
+                    target.Deaths++;
+                    attacker.Kills++;
+                    attacker.Score += 50;
+                    
+                    int xp = CombatSystem.GetExperienceReward(target.Level);
+                    attacker.Experience += xp;
+                    
+                    // Level up check
+                    if (attacker.Experience >= attacker.Level * 100)
+                    {
+                        attacker.Level++;
+                        attacker.MaxHealth = 100 + (attacker.Level * 10);
+                        attacker.Health = attacker.MaxHealth;
+                        
+                        _gameState.AddEvent(new GameEvent
+                        {
+                            EventType = "levelup",
+                            SourcePlayer = senderId,
+                            Description = $"{attacker.PlayerName} leveled up to {attacker.Level}!"
+                        });
+                    }
+                    
+                    _gameState.AddEvent(new GameEvent
+                    {
+                        EventType = "death",
+                        SourcePlayer = senderId,
+                        TargetPlayer = target.PlayerId,
+                        Description = $"{target.PlayerName} was defeated by {attacker.PlayerName}!"
+                    });
+                    
+                    Logger.Log($"[DEATH] {target.PlayerName} killed by {attacker.PlayerName}!");
+                }
+
+                // Advance turn after attack
+                _gameState.AdvanceTurn(_tickCounter);
+                
+                // Broadcast result to all clients
+                var result = new GameMessage
+                {
+                    MessageType = "chat",
+                    Content = $"Server: {attacker.PlayerName} attacked {target.PlayerName} for {damage} damage!"
+                };
+                await _serverManager.BroadcastMessageAsync("game.chat", result);
             }
             catch (Exception ex)
             {

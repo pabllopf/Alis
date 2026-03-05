@@ -63,7 +63,7 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
         /// <summary>
         /// Renders the game screen (compact version for 800x600)
         /// </summary>
-        public void Render()
+        public void Render(string currentInput = "")
         {
             _displayBuffer.Clear();
             
@@ -72,10 +72,12 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
 
             string turnName = string.IsNullOrEmpty(_gameState.CurrentTurnPlayerName) ? "No one" : _gameState.CurrentTurnPlayerName;
             int turnSeconds = Math.Max(0, _gameState.TurnTicksRemaining / 30);
-            _displayBuffer.Add($"Turn: {turnName} ({turnSeconds}s left)");
+            bool isMyTurn = _gameState.CurrentTurnPlayerId != null && _gameState.Players.TryGetValue(_gameState.CurrentTurnPlayerId, out var turnPlayer) && turnPlayer.PlayerId == _localPlayerId;
+            string turnIndicator = isMyTurn ? "🎮 YOUR TURN!" : $"Waiting for {turnName}";
+            _displayBuffer.Add($"╔ Turn: {turnName} ({turnSeconds}s) - {turnIndicator} ╗");
             _displayBuffer.Add("");
             
-            // Draw compact arena (30x12)
+            // Draw compact arena (30x12) with player initials
             _displayBuffer.Add("┌" + new string('─', CompactWidth * 2) + "┐");
             
             for (int y = 0; y < CompactHeight; y++)
@@ -90,18 +92,27 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
                     int arenaX = (int)((float)x / CompactWidth * Arena.Width);
                     int arenaY = (int)((float)y / CompactHeight * Arena.Height);
                     
-                    foreach (var player in _gameState.Players.Values)
+                    // Find exact player at this position
+                    var playersAtPosition = _gameState.Players.Values
+                        .Where(p => p.X == arenaX && p.Y == arenaY && p.IsAlive)
+                        .ToList();
+                    
+                    if (playersAtPosition.Count > 0)
                     {
-                        if (Math.Abs(player.X - arenaX) < 2 && Math.Abs(player.Y - arenaY) < 2)
-                        {
-                            if (player.PlayerId == _localPlayerId)
-                                cell = "●";
-                            else if (!player.IsAlive)
-                                cell = "✕";
-                            else
-                                cell = "○";
-                            break;
-                        }
+                        var player = playersAtPosition[0];
+                        if (player.PlayerId == _localPlayerId)
+                            cell = char.ToUpper(player.PlayerName[0]).ToString();
+                        else
+                            cell = char.ToLower(player.PlayerName[0]).ToString();
+                    }
+                    else
+                    {
+                        // Check for dead players
+                        var deadPlayers = _gameState.Players.Values
+                            .Where(p => p.X == arenaX && p.Y == arenaY && !p.IsAlive)
+                            .ToList();
+                        if (deadPlayers.Count > 0)
+                            cell = "✕";
                     }
                     
                     line += cell + " ";
@@ -114,32 +125,77 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
             _displayBuffer.Add("└" + new string('─', CompactWidth * 2) + "┘");
             _displayBuffer.Add("");
             
-            // Compact stats on one line
+            // Your stats on multiple lines
             if (_gameState.Players.TryGetValue(_localPlayerId, out var localPlayer))
             {
                 string healthBar = GetSmallHealthBar(localPlayer.Health, localPlayer.MaxHealth);
-                _displayBuffer.Add($"[{localPlayer.PlayerName}] HP:{healthBar} Lvl:{localPlayer.Level} Score:{localPlayer.Score} Kills:{localPlayer.Kills} Pos:({localPlayer.X},{localPlayer.Y})");
+                _displayBuffer.Add($"╭─ YOU: {localPlayer.PlayerName} ─────────────────────────────────╮");
+                _displayBuffer.Add($"│ HP: {healthBar} {localPlayer.Health}/{localPlayer.MaxHealth}  |  Lvl: {localPlayer.Level}  |  Score: {localPlayer.Score}");
+                _displayBuffer.Add($"│ Kills: {localPlayer.Kills}  |  Deaths: {localPlayer.Deaths}  |  XP: {localPlayer.Experience}  |  Pos: ({localPlayer.X},{localPlayer.Y})");
+                _displayBuffer.Add($"╰────────────────────────────────────────────────────────────────╯");
             }
             
             _displayBuffer.Add("");
             
-            // Compact player list (top 5)
-            _displayBuffer.Add("Players: " + string.Join(" | ", 
-                _gameState.Players.Values
-                    .OrderByDescending(p => p.Score)
-                    .Take(5)
-                    .Select(p => $"{(p.IsAlive ? "✓" : "✕")} {p.PlayerName}:{p.Score}")));
+            // All players ranking
+            _displayBuffer.Add("╭─ PLAYERS RANKING ───────────────────────────────────────────╮");
+            var allPlayers = _gameState.Players.Values
+                .OrderByDescending(p => p.Score)
+                .ToList();
+            
+            foreach (var player in allPlayers)
+            {
+                string status = player.IsAlive ? "✓" : "✕";
+                string isTurn = player.PlayerId == _gameState.CurrentTurnPlayerId ? " ◄─ ACTIVE" : "";
+                string healthBar = GetSmallHealthBar(player.Health, player.MaxHealth);
+                _displayBuffer.Add($"│ {status} {player.PlayerName,-10} HP:{healthBar} Lvl:{player.Level,2} Score:{player.Score,3}{isTurn}");
+            }
+            _displayBuffer.Add($"╰────────────────────────────────────────────────────────────────╯");
             
             _displayBuffer.Add("");
             
-            // Last 3 events only
-            _displayBuffer.Add("Events: " + string.Join(" > ", 
-                _gameState.EventLog
-                    .Skip(Math.Max(0, _gameState.EventLog.Count - 3))
-                    .Select(e => e.Description)));
+            // Recent events (last 5 with full descriptions)
+            _displayBuffer.Add("╭─ RECENT EVENTS ─────────────────────────────────────────────╮");
+            var recentEvents = _gameState.EventLog
+                .Skip(Math.Max(0, _gameState.EventLog.Count - 5))
+                .ToList();
+            
+            if (recentEvents.Count == 0)
+            {
+                _displayBuffer.Add("│ [Waiting for events...]");
+            }
+            else
+            {
+                foreach (var evt in recentEvents)
+                {
+                    string eventLine = evt.Description.Length > 60 
+                        ? evt.Description.Substring(0, 57) + "..." 
+                        : evt.Description;
+                    _displayBuffer.Add($"│ {eventLine}");
+                }
+            }
+            _displayBuffer.Add($"╰────────────────────────────────────────────────────────────────╯");
             
             _displayBuffer.Add("");
-            _displayBuffer.Add("Commands: /move X Y | /attack NAME | /spawn | /chat MSG | /stats | /help | /quit");
+            
+            // Server feedback message (if recent)
+            long currentTime = DateTime.UtcNow.Ticks / TimeSpan.TicksPerMillisecond;
+            if (!string.IsNullOrEmpty(_gameState.LastServerMessage) && (currentTime - _gameState.LastServerMessageTime) < 3000)
+            {
+                _displayBuffer.Add($"╔ SERVER: {_gameState.LastServerMessage.Substring(0, Math.Min(58, _gameState.LastServerMessage.Length))} ╗");
+                _displayBuffer.Add("");
+            }
+            _displayBuffer.Add("");
+            _displayBuffer.Add("Commands: /move X Y | /attack NAME | /spawn | /endturn | /chat | /stats | /help | /quit");
+            _displayBuffer.Add("");
+            
+            // Show current input with player name
+            string playerName = "Unknown";
+            if (_gameState.Players.TryGetValue(_localPlayerId, out var localData))
+            {
+                playerName = localData.PlayerName;
+            }
+            _displayBuffer.Add($"[{playerName}]> {currentInput}");
             
             // Render all
             foreach (var line in _displayBuffer)

@@ -76,6 +76,16 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
         /// Gets or sets remaining ticks for the current turn.
         /// </summary>
         public int TurnTicksRemaining { get; set; }
+
+        /// <summary>
+        /// Gets or sets the last server message (feedback/errors)
+        /// </summary>
+        public string LastServerMessage { get; set; } = "";
+        
+        /// <summary>
+        /// Gets or sets the last server message timestamp
+        /// </summary>
+        public long LastServerMessageTime { get; set; } = 0;
         
         /// <summary>
         /// Initializes a new instance of the GameState class
