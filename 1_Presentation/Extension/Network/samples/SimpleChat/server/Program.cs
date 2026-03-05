@@ -42,6 +42,7 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Server
     {
         private static NetworkServerManager _serverManager;
         private static bool _serverIsClient = false;
+        private static string _serverPlayerName = null;
 
         /// <summary>
         ///     Main entry point
@@ -62,6 +63,16 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Server
                 _serverIsClient = answer.Equals("y") || answer.Equals("yes");
                 Logger.Info("");
 
+                // If server is client, ask for player name
+                if (_serverIsClient)
+                {
+                    Logger.Log("Enter server player name: ");
+                    _serverPlayerName = Console.ReadLine();
+                    if (string.IsNullOrEmpty(_serverPlayerName))
+                        _serverPlayerName = $"Player_{Guid.NewGuid().ToString().Substring(0, 8)}";
+                    Logger.Info("");
+                }
+
                 _serverManager = new NetworkServerManager();
 
                 var config = new NetworkConfig
@@ -79,7 +90,9 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Server
                 
                 if (_serverIsClient)
                 {
-                    Logger.Info("📡 Server mode: SERVER + CLIENT (dedicated server with participation)");
+                    // Change server name to the player name
+                    _serverManager.LocalPlayer.PlayerName = _serverPlayerName;
+                    Logger.Info($"📡 Server mode: SERVER + CLIENT (Server nickname: '{_serverPlayerName}')");
                 }
                 else
                 {
@@ -121,7 +134,7 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Server
                 // Interactive server loop
                 while (true)
                 {
-                    Logger.Log(_serverIsClient ? "[SERVER]: " : "> ");
+                    Logger.Log(_serverIsClient ? $"[{_serverPlayerName}]: " : "> ");
                     string input = Console.ReadLine();
                     if (input?.Equals("/quit", StringComparison.OrdinalIgnoreCase) ?? false)
                         break;
@@ -157,7 +170,7 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Server
                         {
                             var chatMessage = new ChatMessage
                             {
-                                SenderName = "[SERVER]",
+                                SenderName = _serverPlayerName,
                                 Content = input,
                                 Timestamp = DateTime.Now.ToString("HH:mm:ss")
                             };
