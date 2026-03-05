@@ -469,6 +469,40 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
                         {
                             _gameState.LastUpdateTick = tick;
                         }
+                        else if (field.StartsWith("event_") && !field.Equals("event_count"))
+                        {
+                            // Parse event: "eventType|sourceId|targetId|description"
+                            var eventParts = value.Split('|');
+                            if (eventParts.Length >= 4)
+                            {
+                                string eventType = eventParts[0];
+                                string sourceId = eventParts[1];
+                                string targetId = eventParts[2];
+                                string description = eventParts[3];
+                                
+                                // Try to get player names
+                                string sourceName = sourceId;
+                                if (!string.IsNullOrEmpty(sourceId) && _gameState.Players.TryGetValue(sourceId, out var sourcePlayer))
+                                {
+                                    sourceName = sourcePlayer.PlayerName;
+                                }
+                                
+                                // Clean description if it contains IDs
+                                if (!string.IsNullOrEmpty(sourceId) && description.Contains(sourceId))
+                                    description = description.Replace(sourceId, sourceName);
+                                
+                                // Add event if not already present
+                                if (!_gameState.EventLog.Any(e => e.Description == description))
+                                {
+                                    _gameState.AddEvent(new GameEvent
+                                    {
+                                        EventType = eventType,
+                                        Description = description
+                                    });
+                                    stateChanged = true;
+                                }
+                            }
+                        }
 
                         continue;
                     }
@@ -554,11 +588,54 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
             try
             {
                 string content = ExtractGameMessageContent(payload);
-                _gameState.AddEvent(new GameEvent
+                
+                // Events are formatted as: "eventType|sourcePlayerId|targetPlayerId|description"
+                var parts = content.Split('|');
+                
+                if (parts.Length >= 4)
                 {
-                    EventType = "game_event",
-                    Description = content.Length > 70 ? content.Substring(0, 70) + "..." : content
-                });
+                    string eventType = parts[0];
+                    string sourceId = parts[1];
+                    string targetId = parts[2];
+                    string description = parts[3];
+                    
+                    // Try to get player names from game state instead of using IDs
+                    string sourceName = sourceId;
+                    string targetName = targetId;
+                    
+                    if (_gameState.Players.TryGetValue(sourceId, out var sourcePlayer))
+                    {
+                        sourceName = sourcePlayer.PlayerName;
+                    }
+                    
+                    if (!string.IsNullOrEmpty(targetId) && _gameState.Players.TryGetValue(targetId, out var targetPlayer))
+                    {
+                        targetName = targetPlayer.PlayerName;
+                    }
+                    
+                    // Clean description and replace IDs with names if needed
+                    string cleanDescription = description;
+                    if (description.Contains(sourceId))
+                        cleanDescription = cleanDescription.Replace(sourceId, sourceName);
+                    if (!string.IsNullOrEmpty(targetId) && description.Contains(targetId))
+                        cleanDescription = cleanDescription.Replace(targetId, targetName);
+                    
+                    _gameState.AddEvent(new GameEvent
+                    {
+                        EventType = eventType,
+                        Description = cleanDescription.Length > 65 ? cleanDescription.Substring(0, 62) + "..." : cleanDescription
+                    });
+                }
+                else
+                {
+                    // Fallback for chat and other messages
+                    _gameState.AddEvent(new GameEvent
+                    {
+                        EventType = "event",
+                        Description = content.Length > 65 ? content.Substring(0, 62) + "..." : content
+                    });
+                }
+                
                 TriggerRender();
             }
             catch (Exception ex)
@@ -588,16 +665,31 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
                 }
                 else
                 {
-                    // Regular player chat: "PlayerName:message"
+                    // Regular player chat: "PlayerName:message" (NOT UUID:message)
                     var parts = content.Split(':', 2);
-                    playerName = parts.Length > 0 ? parts[0] : "Unknown";
-                    message = parts.Length > 1 ? parts[1] : content;
+                    if (parts.Length >= 2)
+                    {
+                        playerName = parts[0].Trim();
+                        message = parts[1].Trim();
+                    }
+                    else
+                    {
+                        // If format is unexpected, try to extract from current game state
+                        if (_gameState.Players.TryGetValue(senderId, out var player))
+                        {
+                            playerName = player.PlayerName;
+                            message = content;
+                        }
+                    }
                 }
 
+                // Add event with clean name
                 _gameState.AddEvent(new GameEvent
                 {
                     EventType = "chat",
-                    Description = $"{playerName}: {message}"
+                    Description = $"{playerName}: {message}".Length > 65 
+                        ? $"{playerName}: {message}".Substring(0, 62) + "..."
+                        : $"{playerName}: {message}"
                 });
                 TriggerRender();
             }

@@ -125,32 +125,26 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
             _displayBuffer.Add("└" + new string('─', CompactWidth * 2) + "┘");
             _displayBuffer.Add("");
             
-            // Your stats on multiple lines
+            // Compact your stats on one line
             if (_gameState.Players.TryGetValue(_localPlayerId, out var localPlayer))
             {
                 string healthBar = GetSmallHealthBar(localPlayer.Health, localPlayer.MaxHealth);
-                _displayBuffer.Add($"╭─ YOU: {localPlayer.PlayerName} ─────────────────────────────────╮");
-                _displayBuffer.Add($"│ HP: {healthBar} {localPlayer.Health}/{localPlayer.MaxHealth}  |  Lvl: {localPlayer.Level}  |  Score: {localPlayer.Score}");
-                _displayBuffer.Add($"│ Kills: {localPlayer.Kills}  |  Deaths: {localPlayer.Deaths}  |  XP: {localPlayer.Experience}  |  Pos: ({localPlayer.X},{localPlayer.Y})");
-                _displayBuffer.Add($"╰────────────────────────────────────────────────────────────────╯");
+                _displayBuffer.Add($"YOU: {localPlayer.PlayerName} | HP:{healthBar} {localPlayer.Health}/{localPlayer.MaxHealth} | Lvl:{localPlayer.Level} | Score:{localPlayer.Score} | Kills:{localPlayer.Kills}/{localPlayer.Deaths} | Pos:({localPlayer.X},{localPlayer.Y})");
             }
             
             _displayBuffer.Add("");
             
-            // All players ranking
-            _displayBuffer.Add("╭─ PLAYERS RANKING ───────────────────────────────────────────╮");
-            var allPlayers = _gameState.Players.Values
-                .OrderByDescending(p => p.Score)
-                .ToList();
-            
-            foreach (var player in allPlayers)
-            {
-                string status = player.IsAlive ? "✓" : "✕";
-                string isTurn = player.PlayerId == _gameState.CurrentTurnPlayerId ? " ◄─ ACTIVE" : "";
-                string healthBar = GetSmallHealthBar(player.Health, player.MaxHealth);
-                _displayBuffer.Add($"│ {status} {player.PlayerName,-10} HP:{healthBar} Lvl:{player.Level,2} Score:{player.Score,3}{isTurn}");
-            }
-            _displayBuffer.Add($"╰────────────────────────────────────────────────────────────────╯");
+            // Compact all players in ranking (one line each)
+            _displayBuffer.Add("PLAYERS: " + string.Join(" | ",
+                _gameState.Players.Values
+                    .OrderByDescending(p => p.Score)
+                    .Select(p =>
+                    {
+                        string healthBar = GetSmallHealthBar(p.Health, p.MaxHealth);
+                        string turn = p.PlayerId == _gameState.CurrentTurnPlayerId ? " ◄" : "";
+                        string status = p.IsAlive ? "✓" : "✕";
+                        return $"{status} {p.PlayerName}({p.Score}){turn}";
+                    })));
             
             _displayBuffer.Add("");
             
@@ -168,9 +162,23 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
             {
                 foreach (var evt in recentEvents)
                 {
-                    string eventLine = evt.Description.Length > 60 
-                        ? evt.Description.Substring(0, 57) + "..." 
-                        : evt.Description;
+                    // Clean event display: extract just the useful part
+                    string eventLine = evt.Description;
+                    
+                    // If it contains pipes (|), it's formatted as eventType|sourceId|targetId|description
+                    // Extract just the description part
+                    if (eventLine.Contains("|"))
+                    {
+                        var parts = eventLine.Split('|');
+                        if (parts.Length >= 4)
+                        {
+                            eventLine = parts[3]; // description
+                        }
+                    }
+                    
+                    if (eventLine.Length > 62)
+                        eventLine = eventLine.Substring(0, 59) + "...";
+                    
                     _displayBuffer.Add($"│ {eventLine}");
                 }
             }
@@ -178,15 +186,32 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
             
             _displayBuffer.Add("");
             
+            // Compact recent events (show up to 4)
+            _displayBuffer.Add("EVENTS: " + string.Join(" | ",
+                _gameState.EventLog
+                    .Skip(Math.Max(0, _gameState.EventLog.Count - 4))
+                    .Select(e =>
+                    {
+                        string desc = e.Description;
+                        if (desc.Contains("|"))
+                        {
+                            var evtParts = desc.Split('|');
+                            if (evtParts.Length >= 4)
+                                desc = evtParts[3];
+                        }
+                        return desc.Length > 35 ? desc.Substring(0, 32) + "..." : desc;
+                    })));
+            
+            _displayBuffer.Add("");
+            
             // Server feedback message (if recent)
             long currentTime = DateTime.UtcNow.Ticks / TimeSpan.TicksPerMillisecond;
             if (!string.IsNullOrEmpty(_gameState.LastServerMessage) && (currentTime - _gameState.LastServerMessageTime) < 3000)
             {
-                _displayBuffer.Add($"╔ SERVER: {_gameState.LastServerMessage.Substring(0, Math.Min(58, _gameState.LastServerMessage.Length))} ╗");
-                _displayBuffer.Add("");
+                _displayBuffer.Add($"SERVER: {_gameState.LastServerMessage.Substring(0, Math.Min(58, _gameState.LastServerMessage.Length))}");
             }
-            _displayBuffer.Add("");
-            _displayBuffer.Add("Commands: /move X Y | /attack NAME | /spawn | /endturn | /chat | /stats | /help | /quit");
+            
+            _displayBuffer.Add("Commands: /move X Y | /attack NAME | /spawn | /endturn | /chat | /help | /quit");
             _displayBuffer.Add("");
             
             // Show current input with player name

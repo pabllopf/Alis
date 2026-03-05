@@ -183,7 +183,8 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
                     {
                         if (!string.IsNullOrEmpty(evt.SourcePlayer))
                         {
-                            await BroadcastGameEventAsync(evt);
+                            // Events are propagated via game.update, no need to broadcast individually
+                            // await BroadcastGameEventAsync(evt);
                         }
                     }
 
@@ -202,24 +203,6 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
             }
         }
 
-        /// <summary>
-        /// Broadcasts game event to all players
-        /// </summary>
-        private static async Task BroadcastGameEventAsync(GameEvent evt)
-        {
-            try
-            {
-                string eventData = $"{evt.EventType}|{evt.SourcePlayer}|{evt.TargetPlayer ?? ""}|{evt.Description}";
-                var msg = new GameMessage { MessageType = evt.EventType, Content = eventData };
-                await _serverManager.BroadcastMessageAsync($"game.{evt.EventType}", msg);
-            }
-            catch (Exception ex)
-            {
-                Logger.Error($"Error broadcasting event: {ex.Message}");
-            }
-
-            await Task.CompletedTask;
-        }
 
         /// <summary>
         /// Broadcasts full game state to all players
@@ -254,6 +237,21 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
                 segments.Add($"__meta__:turn_name:{turnName}");
                 segments.Add($"__meta__:turn_ticks:{turnTicksRemaining}");
                 segments.Add($"__meta__:tick:{_tickCounter}");
+                
+                // Include recent events in state broadcast
+                var recentEvents = _gameState.Events.ToList();
+                if (recentEvents.Count > 0)
+                {
+                    // Send last 5 events
+                    for (int i = Math.Max(0, recentEvents.Count - 5); i < recentEvents.Count; i++)
+                    {
+                        var evt = recentEvents[i];
+                        string eventKey = $"event_{i}";
+                        string eventValue = $"{evt.EventType}|{evt.SourcePlayer ?? ""}|{evt.TargetPlayer ?? ""}|{evt.Description}";
+                        segments.Add($"__meta__:{eventKey}:{eventValue}");
+                    }
+                    segments.Add($"__meta__:event_count:{recentEvents.Count}");
+                }
 
                 string stateData = string.Join("|", segments);
                 var msg = new GameMessage { MessageType = "state", Content = stateData };
