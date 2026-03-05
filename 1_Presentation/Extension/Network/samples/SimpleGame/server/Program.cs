@@ -240,7 +240,8 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
                     segments.Add($"{player.PlayerId}:alive:{player.IsAlive}");
                 }
 
-                string turnName = _gameState.Players.TryGetValue(_gameState.CurrentTurnPlayerId, out var turnPlayer)
+                string turnName = !string.IsNullOrEmpty(_gameState.CurrentTurnPlayerId)
+                    && _gameState.Players.TryGetValue(_gameState.CurrentTurnPlayerId, out var turnPlayer)
                     ? turnPlayer.PlayerName
                     : "No one";
 
