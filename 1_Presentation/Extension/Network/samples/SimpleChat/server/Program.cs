@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Alis.Core.Aspect.Logging;
 using Alis.Extension.Network.Core;
@@ -75,7 +76,7 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Server
 
                 _serverManager = new NetworkServerManager();
 
-                var config = new NetworkConfig
+                NetworkConfig config = new NetworkConfig
                 {
                     MaxPlayers = 32,
                     TickRate = 60,
@@ -85,7 +86,7 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Server
                 await _serverManager.InitializeAsync(config);
                 Logger.Info("✓ Server initialized");
 
-                var session = await _serverManager.CreateSessionAsync("Chat Room", 32);
+                NetworkSession session = await _serverManager.CreateSessionAsync("Chat Room", 32);
                 Logger.Info($"✓ Session created: {session.SessionName} (Max: {session.MaxPlayers} players)");
                 
                 if (_serverIsClient)
@@ -106,7 +107,7 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Server
                 RegisterHandlers();
                 RegisterEvents();
 
-                var listenUri = new Uri("ws://127.0.0.1:8888/");
+                Uri listenUri = new Uri("ws://127.0.0.1:8888/");
                 await _serverManager.StartAsync();
                 await _serverManager.ListenAsync(listenUri);
 
@@ -141,9 +142,9 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Server
 
                     if (input?.Equals("/players", StringComparison.OrdinalIgnoreCase) ?? false)
                     {
-                        var players = _serverManager.GetConnectedPlayers();
+                        IReadOnlyList<NetworkPlayer> players = _serverManager.GetConnectedPlayers();
                         Logger.Info($"Connected players: {players.Count}");
-                        foreach (var player in players)
+                        foreach (NetworkPlayer player in players)
                         {
                             Logger.Log($"  - {player.PlayerName} ({(player.IsHost ? "HOST/SERVER" : "CLIENT")})");
                         }
@@ -153,9 +154,9 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Server
 
                     if (input?.Equals("/sessions", StringComparison.OrdinalIgnoreCase) ?? false)
                     {
-                        var sessions = _serverManager.GetActiveSessions();
+                        IReadOnlyList<NetworkSession> sessions = _serverManager.GetActiveSessions();
                         Logger.Info($"Active sessions: {sessions.Count}");
-                        foreach (var s in sessions)
+                        foreach (NetworkSession s in sessions)
                         {
                             Logger.Log($"  - {s.SessionName}: {s.Players.Count}/{s.MaxPlayers} players");
                         }
@@ -168,7 +169,7 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Server
                     {
                         try
                         {
-                            var chatMessage = new ChatMessage
+                            ChatMessage chatMessage = new ChatMessage
                             {
                                 SenderName = _serverPlayerName,
                                 Content = input,
@@ -235,12 +236,12 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Server
                 Logger.Log($"[CHAT] {payload}");
                 
                 // Get the sender player
-                var sender = _serverManager.GetPlayer(senderId);
+                NetworkPlayer sender = _serverManager.GetPlayer(senderId);
                 if (sender != null)
                 {
                     // We need to create a new envelope with the sender's info
                     // Since we're receiving raw payload, we need to reconstruct the message
-                    var chatMessage = new ChatMessage
+                    ChatMessage chatMessage = new ChatMessage
                     {
                         SenderName = sender.PlayerName,
                         Content = payload,

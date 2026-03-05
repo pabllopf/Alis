@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -60,7 +61,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         public void IStoreManager_HasIsInitializedProperty()
         {
             // Arrange & Act
-            var property = typeof(IStoreManager).GetProperty("IsInitialized");
+            PropertyInfo property = typeof(IStoreManager).GetProperty("IsInitialized");
 
             // Assert
             Assert.NotNull(property);
@@ -76,11 +77,11 @@ namespace Alis.Extension.Payment.Stripe.Test
         public void IStoreManager_HasInitializeAsyncMethod()
         {
             // Arrange & Act
-            var method = typeof(IStoreManager).GetMethod("InitializeAsync");
+            MethodInfo method = typeof(IStoreManager).GetMethod("InitializeAsync");
 
             // Assert
             Assert.NotNull(method);
-            var parameters = method.GetParameters();
+            ParameterInfo[] parameters = method.GetParameters();
             Assert.Equal(2, parameters.Length);
             Assert.Equal(typeof(StoreConfiguration), parameters[0].ParameterType);
         }
@@ -92,11 +93,11 @@ namespace Alis.Extension.Payment.Stripe.Test
         public void IStoreManager_HasRegisterProductMethod()
         {
             // Arrange & Act
-            var method = typeof(IStoreManager).GetMethod("RegisterProduct");
+            MethodInfo method = typeof(IStoreManager).GetMethod("RegisterProduct");
 
             // Assert
             Assert.NotNull(method);
-            var parameters = method.GetParameters();
+            ParameterInfo[] parameters = method.GetParameters();
             Assert.Single(parameters);
             Assert.Equal(typeof(StoreProduct), parameters[0].ParameterType);
         }
@@ -108,11 +109,11 @@ namespace Alis.Extension.Payment.Stripe.Test
         public void IStoreManager_HasRegisterProductsMethod()
         {
             // Arrange & Act
-            var method = typeof(IStoreManager).GetMethod("RegisterProducts");
+            MethodInfo method = typeof(IStoreManager).GetMethod("RegisterProducts");
 
             // Assert
             Assert.NotNull(method);
-            var parameters = method.GetParameters();
+            ParameterInfo[] parameters = method.GetParameters();
             Assert.Single(parameters);
         }
 
@@ -123,11 +124,11 @@ namespace Alis.Extension.Payment.Stripe.Test
         public void IStoreManager_HasTryGetProductMethod()
         {
             // Arrange & Act
-            var method = typeof(IStoreManager).GetMethod("TryGetProduct");
+            MethodInfo method = typeof(IStoreManager).GetMethod("TryGetProduct");
 
             // Assert
             Assert.NotNull(method);
-            var parameters = method.GetParameters();
+            ParameterInfo[] parameters = method.GetParameters();
             Assert.Equal(2, parameters.Length);
             Assert.Equal(typeof(string), parameters[0].ParameterType);
         }
@@ -139,11 +140,11 @@ namespace Alis.Extension.Payment.Stripe.Test
         public void IStoreManager_HasGetProductsMethod()
         {
             // Arrange & Act
-            var method = typeof(IStoreManager).GetMethod("GetProducts");
+            MethodInfo method = typeof(IStoreManager).GetMethod("GetProducts");
 
             // Assert
             Assert.NotNull(method);
-            var parameters = method.GetParameters();
+            ParameterInfo[] parameters = method.GetParameters();
             Assert.Empty(parameters);
         }
 
@@ -154,11 +155,11 @@ namespace Alis.Extension.Payment.Stripe.Test
         public void IStoreManager_HasCreateCheckoutSessionAsyncMethod()
         {
             // Arrange & Act
-            var method = typeof(IStoreManager).GetMethod("CreateCheckoutSessionAsync");
+            MethodInfo method = typeof(IStoreManager).GetMethod("CreateCheckoutSessionAsync");
 
             // Assert
             Assert.NotNull(method);
-            var parameters = method.GetParameters();
+            ParameterInfo[] parameters = method.GetParameters();
             Assert.True(parameters.Length >= 2);
             Assert.Equal(typeof(string), parameters[0].ParameterType);
         }
@@ -170,11 +171,11 @@ namespace Alis.Extension.Payment.Stripe.Test
         public void IStoreManager_HasCreatePaymentIntentAsyncMethod()
         {
             // Arrange & Act
-            var method = typeof(IStoreManager).GetMethod("CreatePaymentIntentAsync");
+            MethodInfo method = typeof(IStoreManager).GetMethod("CreatePaymentIntentAsync");
 
             // Assert
             Assert.NotNull(method);
-            var parameters = method.GetParameters();
+            ParameterInfo[] parameters = method.GetParameters();
             Assert.True(parameters.Length >= 2);
             Assert.Equal(typeof(string), parameters[0].ParameterType);
         }
@@ -186,11 +187,11 @@ namespace Alis.Extension.Payment.Stripe.Test
         public void IStoreManager_HasGetPaymentStatusAsyncMethod()
         {
             // Arrange & Act
-            var method = typeof(IStoreManager).GetMethod("GetPaymentStatusAsync");
+            MethodInfo method = typeof(IStoreManager).GetMethod("GetPaymentStatusAsync");
 
             // Assert
             Assert.NotNull(method);
-            var parameters = method.GetParameters();
+            ParameterInfo[] parameters = method.GetParameters();
             Assert.True(parameters.Length >= 1);
             Assert.Equal(typeof(string), parameters[0].ParameterType);
         }
@@ -202,11 +203,11 @@ namespace Alis.Extension.Payment.Stripe.Test
         public void IStoreManager_HasRefundPaymentAsyncMethod()
         {
             // Arrange & Act
-            var method = typeof(IStoreManager).GetMethod("RefundPaymentAsync");
+            MethodInfo method = typeof(IStoreManager).GetMethod("RefundPaymentAsync");
 
             // Assert
             Assert.NotNull(method);
-            var parameters = method.GetParameters();
+            ParameterInfo[] parameters = method.GetParameters();
             Assert.True(parameters.Length >= 1);
             Assert.Equal(typeof(string), parameters[0].ParameterType);
         }

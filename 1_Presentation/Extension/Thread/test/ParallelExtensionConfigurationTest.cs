@@ -30,6 +30,7 @@
 using System;
 using Alis.Extension.Thread.Configuration;
 using Alis.Extension.Thread.Core;
+using Alis.Extension.Thread.Execution;
 using Alis.Extension.Thread.Strategies;
 using Xunit;
 
@@ -91,7 +92,7 @@ namespace Alis.Extension.Thread.Test
             ParallelExtensionConfiguration config = new ParallelExtensionConfiguration();
 
             // Act
-            var executor = config.CreateExecutor();
+            ParallelUpdateExecutor executor = config.CreateExecutor();
 
             // Assert
             Assert.NotNull(executor);
@@ -110,7 +111,7 @@ namespace Alis.Extension.Thread.Test
             };
 
             // Act
-            var executor = config.CreateExecutor();
+            ParallelUpdateExecutor executor = config.CreateExecutor();
 
             // Assert
             Assert.NotNull(executor);

@@ -359,9 +359,9 @@ namespace Alis.Extension.Payment.Stripe.Test
         public void AllRequestModels_CanBeInstantiatedEmpty()
         {
             // Act
-            var checkoutRequest = new StripeCheckoutSessionRequest();
-            var paymentRequest = new StripePaymentIntentRequest();
-            var refundRequest = new StripeRefundRequest();
+            StripeCheckoutSessionRequest checkoutRequest = new StripeCheckoutSessionRequest();
+            StripePaymentIntentRequest paymentRequest = new StripePaymentIntentRequest();
+            StripeRefundRequest refundRequest = new StripeRefundRequest();
 
             // Assert
             Assert.NotNull(checkoutRequest);
@@ -376,9 +376,9 @@ namespace Alis.Extension.Payment.Stripe.Test
         public void AllResponseModels_CanBeInstantiatedEmpty()
         {
             // Act
-            var checkoutResponse = new StripeCheckoutSessionResponse();
-            var paymentResponse = new StripePaymentIntentResponse();
-            var refundResponse = new StripeRefundResponse();
+            StripeCheckoutSessionResponse checkoutResponse = new StripeCheckoutSessionResponse();
+            StripePaymentIntentResponse paymentResponse = new StripePaymentIntentResponse();
+            StripeRefundResponse refundResponse = new StripeRefundResponse();
 
             // Assert
             Assert.NotNull(checkoutResponse);
@@ -393,11 +393,11 @@ namespace Alis.Extension.Payment.Stripe.Test
         public void MetadataDictionaries_AreIndependent()
         {
             // Arrange
-            var metadata1 = new Dictionary<string, string> { { "key1", "value1" } };
-            var metadata2 = new Dictionary<string, string> { { "key2", "value2" } };
+            Dictionary<string, string> metadata1 = new Dictionary<string, string> { { "key1", "value1" } };
+            Dictionary<string, string> metadata2 = new Dictionary<string, string> { { "key2", "value2" } };
 
-            var request1 = new StripeCheckoutSessionRequest { Metadata = metadata1 };
-            var request2 = new StripePaymentIntentRequest { Metadata = metadata2 };
+            StripeCheckoutSessionRequest request1 = new StripeCheckoutSessionRequest { Metadata = metadata1 };
+            StripePaymentIntentRequest request2 = new StripePaymentIntentRequest { Metadata = metadata2 };
 
             // Act
             metadata1["key1"] = "modified";

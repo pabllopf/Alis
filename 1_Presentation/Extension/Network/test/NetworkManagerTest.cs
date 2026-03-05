@@ -46,9 +46,9 @@ namespace Alis.Extension.Network.Test
         [Fact]
         public async Task ServerManager_Initializes()
         {
-            using (var manager = new NetworkServerManager())
+            using (NetworkServerManager manager = new NetworkServerManager())
             {
-                var config = new NetworkConfig();
+                NetworkConfig config = new NetworkConfig();
                 await manager.InitializeAsync(config);
 
                 Assert.Equal(NetworkManagerState.Idle, manager.State);
@@ -63,9 +63,9 @@ namespace Alis.Extension.Network.Test
         [Fact]
         public async Task ClientManager_Initializes()
         {
-            using (var manager = new NetworkClientManager())
+            using (NetworkClientManager manager = new NetworkClientManager())
             {
-                var config = new NetworkConfig();
+                NetworkConfig config = new NetworkConfig();
                 await manager.InitializeAsync(config);
 
                 Assert.Equal(NetworkManagerState.Idle, manager.State);
@@ -79,12 +79,12 @@ namespace Alis.Extension.Network.Test
         [Fact]
         public async Task ServerManager_CreatesSession()
         {
-            using (var manager = new NetworkServerManager())
+            using (NetworkServerManager manager = new NetworkServerManager())
             {
-                var config = new NetworkConfig { MaxPlayers = 8 };
+                NetworkConfig config = new NetworkConfig { MaxPlayers = 8 };
                 await manager.InitializeAsync(config);
 
-                var session = await manager.CreateSessionAsync("Test Session", 8);
+                NetworkSession session = await manager.CreateSessionAsync("Test Session", 8);
 
                 Assert.NotNull(session);
                 Assert.Equal("Test Session", session.SessionName);
@@ -99,7 +99,7 @@ namespace Alis.Extension.Network.Test
         [Fact]
         public void NetworkConfig_HasDefaults()
         {
-            var config = new NetworkConfig();
+            NetworkConfig config = new NetworkConfig();
 
             Assert.Equal(32, config.MaxPlayers);
             Assert.Equal(60, config.TickRate);
@@ -112,7 +112,7 @@ namespace Alis.Extension.Network.Test
         [Fact]
         public void MessageEnvelope_Serializes()
         {
-            var envelope = new NetworkMessageEnvelope
+            NetworkMessageEnvelope envelope = new NetworkMessageEnvelope
             {
                 MessageId = "test-123",
                 MessageType = "chat",
@@ -121,7 +121,7 @@ namespace Alis.Extension.Network.Test
                 Payload = "Hello"
             };
 
-            var serializer = new NetworkSerializer();
+            NetworkSerializer serializer = new NetworkSerializer();
             string json = serializer.SerializeEnvelope(envelope);
 
             Assert.NotEmpty(json);
@@ -135,7 +135,7 @@ namespace Alis.Extension.Network.Test
         [Fact]
         public void MessageEnvelope_Deserializes()
         {
-            var original = new NetworkMessageEnvelope
+            NetworkMessageEnvelope original = new NetworkMessageEnvelope
             {
                 MessageId = "test-456",
                 MessageType = "game",
@@ -144,9 +144,9 @@ namespace Alis.Extension.Network.Test
                 Payload = "Test payload"
             };
 
-            var serializer = new NetworkSerializer();
+            NetworkSerializer serializer = new NetworkSerializer();
             string json = serializer.SerializeEnvelope(original);
-            var deserialized = serializer.DeserializeEnvelope(json);
+            NetworkMessageEnvelope deserialized = serializer.DeserializeEnvelope(json);
 
             Assert.Equal(original.MessageId, deserialized.MessageId);
             Assert.Equal(original.MessageType, deserialized.MessageType);
@@ -159,7 +159,7 @@ namespace Alis.Extension.Network.Test
         [Fact]
         public void NetworkPlayer_HasValidState()
         {
-            var player = new NetworkPlayer
+            NetworkPlayer player = new NetworkPlayer
             {
                 PlayerId = "test-player",
                 PlayerName = "TestPlayer",

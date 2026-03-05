@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Extension.Thread.Configuration;
+using Alis.Extension.Thread.Execution;
 using Xunit;
 
 namespace Alis.Extension.Thread.Test
@@ -94,7 +95,7 @@ namespace Alis.Extension.Thread.Test
             using (ThreadManager manager = new ThreadManager())
             {
                 // Act
-                var executor = manager.ParallelExecutor;
+                ParallelUpdateExecutor executor = manager.ParallelExecutor;
 
                 // Assert
                 Assert.NotNull(executor);
@@ -201,7 +202,7 @@ namespace Alis.Extension.Thread.Test
         {
             // Arrange
             ThreadManager manager = new ThreadManager();
-            var executor = manager.ParallelExecutor; // Access before dispose
+            ParallelUpdateExecutor executor = manager.ParallelExecutor; // Access before dispose
 
             // Act
             manager.Dispose();

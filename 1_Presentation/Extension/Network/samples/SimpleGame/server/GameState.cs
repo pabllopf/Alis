@@ -135,7 +135,7 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
         /// <returns>True if successful</returns>
         public bool ProcessMove(string playerId, int x, int y)
         {
-            if (!Players.TryGetValue(playerId, out var player))
+            if (!Players.TryGetValue(playerId, out PlayerData player))
                 return false;
 
             if (!MoveSystem.IsValidMove(x, y))
@@ -165,12 +165,12 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
         /// <returns>The damage dealt</returns>
         public int ProcessAttack(string attackerId, string targetName)
         {
-            if (!Players.TryGetValue(attackerId, out var attacker) || !attacker.IsAlive)
+            if (!Players.TryGetValue(attackerId, out PlayerData attacker) || !attacker.IsAlive)
                 return 0;
             
             // Find target by name
             PlayerData target = null;
-            foreach (var player in Players.Values)
+            foreach (PlayerData player in Players.Values)
             {
                 if (player.PlayerName == targetName && player.PlayerId != attackerId)
                 {
@@ -236,7 +236,7 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
         /// <param name="playerId">The player id</param>
         public void ProcessSpawn(string playerId)
         {
-            if (Players.TryGetValue(playerId, out var player))
+            if (Players.TryGetValue(playerId, out PlayerData player))
             {
                 player.X = Random.Next(0, Arena.Width);
                 player.Y = Random.Next(0, Arena.Height);
@@ -276,7 +276,7 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
         /// </summary>
         public void AdvanceTurn(long currentTick)
         {
-            var alivePlayers = Players.Values
+            List<PlayerData> alivePlayers = Players.Values
                 .Where(p => p.IsAlive)
                 .OrderBy(p => p.PlayerId)
                 .ToList();
@@ -297,7 +297,7 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
 
         private void EnsureTurnAssigned(long currentTick)
         {
-            if (!string.IsNullOrEmpty(CurrentTurnPlayerId) && Players.TryGetValue(CurrentTurnPlayerId, out var current) && current.IsAlive)
+            if (!string.IsNullOrEmpty(CurrentTurnPlayerId) && Players.TryGetValue(CurrentTurnPlayerId, out PlayerData current) && current.IsAlive)
             {
                 if (TurnEndsAtTick <= 0)
                 {
@@ -324,7 +324,7 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
         /// <returns>The list of events</returns>
         public List<GameEvent> GetPendingEvents()
         {
-            var result = new List<GameEvent>();
+            List<GameEvent> result = new List<GameEvent>();
             while (Events.Count > 0)
             {
                 result.Add(Events.Dequeue());

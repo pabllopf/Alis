@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Reflection;
 using Alis.Extension.Thread.Scheduling;
 using Xunit;
 
@@ -270,9 +271,9 @@ namespace Alis.Extension.Thread.Test.Scheduling
             int endIndex = partition.EndIndex;
 
             // Assert - properties should not have setters
-            var startProperty = typeof(BatchPartition).GetProperty(nameof(BatchPartition.StartIndex));
-            var lengthProperty = typeof(BatchPartition).GetProperty(nameof(BatchPartition.Length));
-            var endProperty = typeof(BatchPartition).GetProperty(nameof(BatchPartition.EndIndex));
+            PropertyInfo startProperty = typeof(BatchPartition).GetProperty(nameof(BatchPartition.StartIndex));
+            PropertyInfo lengthProperty = typeof(BatchPartition).GetProperty(nameof(BatchPartition.Length));
+            PropertyInfo endProperty = typeof(BatchPartition).GetProperty(nameof(BatchPartition.EndIndex));
 
             Assert.NotNull(startProperty);
             Assert.NotNull(lengthProperty);
@@ -319,7 +320,7 @@ namespace Alis.Extension.Thread.Test.Scheduling
 
             // Act
             int coveredItems = 0;
-            foreach (var partition in partitions)
+            foreach (BatchPartition partition in partitions)
             {
                 coveredItems += partition.Length;
             }

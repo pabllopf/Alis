@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Reflection;
 using Xunit;
 
 namespace Alis.Extension.Payment.Stripe.Test
@@ -58,11 +59,11 @@ namespace Alis.Extension.Payment.Stripe.Test
         public void IStripeGatewayClient_HasConfigureMethod()
         {
             // Arrange & Act
-            var method = typeof(IStripeGatewayClient).GetMethod("Configure");
+            MethodInfo method = typeof(IStripeGatewayClient).GetMethod("Configure");
 
             // Assert
             Assert.NotNull(method);
-            var parameters = method.GetParameters();
+            ParameterInfo[] parameters = method.GetParameters();
             Assert.Single(parameters);
             Assert.Equal(typeof(string), parameters[0].ParameterType);
             Assert.Equal(typeof(void), method.ReturnType);
@@ -75,11 +76,11 @@ namespace Alis.Extension.Payment.Stripe.Test
         public void IStripeGatewayClient_HasCreateCheckoutSessionAsyncMethod()
         {
             // Arrange & Act
-            var method = typeof(IStripeGatewayClient).GetMethod("CreateCheckoutSessionAsync");
+            MethodInfo method = typeof(IStripeGatewayClient).GetMethod("CreateCheckoutSessionAsync");
 
             // Assert
             Assert.NotNull(method);
-            var parameters = method.GetParameters();
+            ParameterInfo[] parameters = method.GetParameters();
             Assert.Equal(2, parameters.Length);
             Assert.Equal(typeof(StripeCheckoutSessionRequest), parameters[0].ParameterType);
         }
@@ -91,11 +92,11 @@ namespace Alis.Extension.Payment.Stripe.Test
         public void IStripeGatewayClient_HasCreatePaymentIntentAsyncMethod()
         {
             // Arrange & Act
-            var method = typeof(IStripeGatewayClient).GetMethod("CreatePaymentIntentAsync");
+            MethodInfo method = typeof(IStripeGatewayClient).GetMethod("CreatePaymentIntentAsync");
 
             // Assert
             Assert.NotNull(method);
-            var parameters = method.GetParameters();
+            ParameterInfo[] parameters = method.GetParameters();
             Assert.Equal(2, parameters.Length);
             Assert.Equal(typeof(StripePaymentIntentRequest), parameters[0].ParameterType);
         }
@@ -107,11 +108,11 @@ namespace Alis.Extension.Payment.Stripe.Test
         public void IStripeGatewayClient_HasGetPaymentIntentAsyncMethod()
         {
             // Arrange & Act
-            var method = typeof(IStripeGatewayClient).GetMethod("GetPaymentIntentAsync");
+            MethodInfo method = typeof(IStripeGatewayClient).GetMethod("GetPaymentIntentAsync");
 
             // Assert
             Assert.NotNull(method);
-            var parameters = method.GetParameters();
+            ParameterInfo[] parameters = method.GetParameters();
             Assert.Equal(2, parameters.Length);
             Assert.Equal(typeof(string), parameters[0].ParameterType);
         }
@@ -123,11 +124,11 @@ namespace Alis.Extension.Payment.Stripe.Test
         public void IStripeGatewayClient_HasCreateRefundAsyncMethod()
         {
             // Arrange & Act
-            var method = typeof(IStripeGatewayClient).GetMethod("CreateRefundAsync");
+            MethodInfo method = typeof(IStripeGatewayClient).GetMethod("CreateRefundAsync");
 
             // Assert
             Assert.NotNull(method);
-            var parameters = method.GetParameters();
+            ParameterInfo[] parameters = method.GetParameters();
             Assert.Equal(2, parameters.Length);
             Assert.Equal(typeof(StripeRefundRequest), parameters[0].ParameterType);
         }

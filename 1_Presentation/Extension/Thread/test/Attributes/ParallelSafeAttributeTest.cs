@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Reflection;
 using Alis.Extension.Thread.Attributes;
 using Xunit;
 
@@ -257,7 +258,7 @@ namespace Alis.Extension.Thread.Test.Attributes
             Assert.Equal(512, batchSize);
 
             // Verify property is read-only by checking if setter exists
-            var property = typeof(ParallelSafeAttribute).GetProperty(nameof(ParallelSafeAttribute.MinBatchSize));
+            PropertyInfo property = typeof(ParallelSafeAttribute).GetProperty(nameof(ParallelSafeAttribute.MinBatchSize));
             Assert.NotNull(property);
             Assert.Null(property.SetMethod);
         }

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Reflection;
 using Alis.Extension.Thread.Interfaces;
 using Xunit;
 
@@ -149,12 +150,12 @@ namespace Alis.Extension.Thread.Test.Interfaces
             Type interfaceType = typeof(IParallelExecutionStrategy);
 
             // Act
-            var method = interfaceType.GetMethod(nameof(IParallelExecutionStrategy.CanExecuteInParallel));
+            MethodInfo method = interfaceType.GetMethod(nameof(IParallelExecutionStrategy.CanExecuteInParallel));
 
             // Assert
             Assert.NotNull(method);
             Assert.Equal(typeof(bool), method.ReturnType);
-            var parameters = method.GetParameters();
+            ParameterInfo[] parameters = method.GetParameters();
             Assert.Single(parameters);
             Assert.Equal(typeof(Type), parameters[0].ParameterType);
         }
@@ -169,12 +170,12 @@ namespace Alis.Extension.Thread.Test.Interfaces
             Type interfaceType = typeof(IParallelExecutionStrategy);
 
             // Act
-            var method = interfaceType.GetMethod(nameof(IParallelExecutionStrategy.GetMinimumBatchSize));
+            MethodInfo method = interfaceType.GetMethod(nameof(IParallelExecutionStrategy.GetMinimumBatchSize));
 
             // Assert
             Assert.NotNull(method);
             Assert.Equal(typeof(int), method.ReturnType);
-            var parameters = method.GetParameters();
+            ParameterInfo[] parameters = method.GetParameters();
             Assert.Single(parameters);
             Assert.Equal(typeof(Type), parameters[0].ParameterType);
         }
@@ -345,7 +346,7 @@ namespace Alis.Extension.Thread.Test.Interfaces
         public void Interface_HasExactlyTwoMethods()
         {
             // Act
-            var methods = typeof(IParallelExecutionStrategy).GetMethods();
+            MethodInfo[] methods = typeof(IParallelExecutionStrategy).GetMethods();
 
             // Assert
             Assert.Equal(2, methods.Length);
@@ -385,7 +386,7 @@ namespace Alis.Extension.Thread.Test.Interfaces
             };
 
             // Act & Assert
-            foreach (var strategy in strategies)
+            foreach (IParallelExecutionStrategy strategy in strategies)
             {
                 bool canExecute = strategy.CanExecuteInParallel(typeof(int));
                 int batchSize = strategy.GetMinimumBatchSize(typeof(int));

@@ -119,7 +119,7 @@ namespace Alis.Extension.Network.Core
             if (properties == null)
                 return new NetworkMessageEnvelope();
 
-            var envelope = new NetworkMessageEnvelope
+            NetworkMessageEnvelope envelope = new NetworkMessageEnvelope
             {
                 MessageId = properties.ContainsKey(nameof(MessageId)) ? properties[nameof(MessageId)] : null,
                 MessageType = properties.ContainsKey(nameof(MessageType)) ? properties[nameof(MessageType)] : null,

@@ -239,14 +239,14 @@ namespace Alis.Extension.Network.Client
                 }
 
                 // Send handshake to register on server
-                var handshakeMsg = new System.Collections.Generic.Dictionary<string, string>
+                Dictionary<string, string> handshakeMsg = new System.Collections.Generic.Dictionary<string, string>
                 {
                     { "action", "join" },
                     { "playerId", _localPlayer.PlayerId },
                     { "playerName", _localPlayer.PlayerName }
                 };
-                var handshakePayload = $"{{\"action\":\"join\",\"playerId\":\"{_localPlayer.PlayerId}\",\"playerName\":\"{_localPlayer.PlayerName}\"}}";
-                var handshakeEnvelope = new NetworkMessageEnvelope
+                string handshakePayload = $"{{\"action\":\"join\",\"playerId\":\"{_localPlayer.PlayerId}\",\"playerName\":\"{_localPlayer.PlayerName}\"}}";
+                NetworkMessageEnvelope handshakeEnvelope = new NetworkMessageEnvelope
                 {
                     MessageId = Guid.NewGuid().ToString(),
                     MessageType = "system",
@@ -324,7 +324,7 @@ namespace Alis.Extension.Network.Client
                 throw new InvalidOperationException("Not connected to server");
 
             string payload = _serializer.Serialize(message);
-            var envelope = new Core.NetworkMessageEnvelope
+            NetworkMessageEnvelope envelope = new Core.NetworkMessageEnvelope
             {
                 MessageId = Guid.NewGuid().ToString(),
                 MessageType = typeof(T).Name,
@@ -352,7 +352,7 @@ namespace Alis.Extension.Network.Client
                 throw new InvalidOperationException("Not connected to server");
 
             string payload = _serializer.Serialize(message);
-            var envelope = new Core.NetworkMessageEnvelope
+            NetworkMessageEnvelope envelope = new Core.NetworkMessageEnvelope
             {
                 MessageId = Guid.NewGuid().ToString(),
                 MessageType = typeof(T).Name,
@@ -423,9 +423,9 @@ namespace Alis.Extension.Network.Client
                     }
 
                     string json = Encoding.UTF8.GetString(buffer, 0, result.Count);
-                    var envelope = _serializer.DeserializeEnvelope(json);
+                    NetworkMessageEnvelope envelope = _serializer.DeserializeEnvelope(json);
 
-                    if (_messageHandlers.TryGetValue(envelope.Channel, out var handler))
+                    if (_messageHandlers.TryGetValue(envelope.Channel, out Func<string, string, Task> handler))
                     {
                         await handler(envelope.SenderId, envelope.Payload);
                     }

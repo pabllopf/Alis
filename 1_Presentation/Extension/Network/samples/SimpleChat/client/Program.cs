@@ -69,7 +69,7 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Client
 
                 _clientManager = new NetworkClientManager();
 
-                var config = new NetworkConfig
+                NetworkConfig config = new NetworkConfig
                 {
                     MaxPlayers = 32,
                     TickRate = 60,
@@ -91,7 +91,7 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Client
                     _playerName = $"Player_{Guid.NewGuid().ToString().Substring(0, 8)}";
 
                 // Connect to server
-                var serverUri = new Uri("ws://127.0.0.1:8888/");
+                Uri serverUri = new Uri("ws://127.0.0.1:8888/");
                 Logger.Info($"Connecting to {serverUri} as '{_playerName}'...");
 
                 try
@@ -147,7 +147,7 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Client
                         break;
                     }
 
-                    var chatMessage = new ChatMessage
+                    ChatMessage chatMessage = new ChatMessage
                     {
                         SenderName = _playerName,
                         Content = message,

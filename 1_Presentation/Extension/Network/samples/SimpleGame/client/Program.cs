@@ -100,7 +100,7 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
                 _clientManager = new NetworkClientManager();
                 _gameState = new GameState();
 
-                var config = new NetworkConfig
+                NetworkConfig config = new NetworkConfig
                 {
                     MaxPlayers = 8,
                     TickRate = 60,
@@ -120,7 +120,7 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
                 if (string.IsNullOrEmpty(_playerName))
                     _playerName = $"Warrior_{Guid.NewGuid().ToString().Substring(0, 8)}";
 
-                var serverUri = new Uri("ws://127.0.0.1:8889/");
+                Uri serverUri = new Uri("ws://127.0.0.1:8889/");
                 Logger.Info($"Joining battle at {serverUri}...");
 
                 try
@@ -279,13 +279,13 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
 
             if (input.StartsWith("/move "))
             {
-                var parts = input.Substring(6).Split(' ');
+                string[] parts = input.Substring(6).Split(' ');
                 if (parts.Length == 2 && int.TryParse(parts[0], out int x) && int.TryParse(parts[1], out int y))
                 {
                     if (MoveSystem.IsValidMove(x, y))
                     {
                         _gameState.UpdatePlayerPosition(_playerId, x, y);
-                        var moveMsg = new GameMessage { MessageType = "move", Content = $"{x},{y}" };
+                        GameMessage moveMsg = new GameMessage { MessageType = "move", Content = $"{x},{y}" };
                         await _clientManager.BroadcastMessageAsync("game.move", moveMsg);
                     }
                     else
@@ -308,10 +308,10 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
                 }
                 else
                 {
-                    var targetName = input.Substring(8);
+                    string targetName = input.Substring(8);
                     if (_gameState.Players.Values.Any(p => p.PlayerName == targetName && p.IsAlive))
                     {
-                        var attackMsg = new GameMessage { MessageType = "attack", Content = targetName };
+                        GameMessage attackMsg = new GameMessage { MessageType = "attack", Content = targetName };
                         await _clientManager.BroadcastMessageAsync("game.attack", attackMsg);
                     }
                     else
@@ -323,9 +323,9 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
 
             if (input.Equals("/spawn", StringComparison.OrdinalIgnoreCase))
             {
-                if (_gameState.Players.TryGetValue(_playerId, out var player) && !player.IsAlive)
+                if (_gameState.Players.TryGetValue(_playerId, out PlayerData player) && !player.IsAlive)
                 {
-                    var spawnMsg = new GameMessage { MessageType = "spawn", Content = "respawning" };
+                    GameMessage spawnMsg = new GameMessage { MessageType = "spawn", Content = "respawning" };
                     await _clientManager.BroadcastMessageAsync("game.spawn", spawnMsg);
                 }
                 else
@@ -338,7 +338,7 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
             {
                 if (IsLocalPlayerTurn())
                 {
-                    var endTurnMsg = new GameMessage { MessageType = "endturn", Content = "" };
+                    GameMessage endTurnMsg = new GameMessage { MessageType = "endturn", Content = "" };
                     await _clientManager.BroadcastMessageAsync("game.endturn", endTurnMsg);
                     Logger.Log("→ Turn ended, waiting for next turn...");
                 }
@@ -350,8 +350,8 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
 
             if (input.StartsWith("/chat "))
             {
-                var message = input.Substring(6);
-                var chatMsg = new GameMessage { MessageType = "chat", Content = message };
+                string message = input.Substring(6);
+                GameMessage chatMsg = new GameMessage { MessageType = "chat", Content = message };
                 await _clientManager.BroadcastMessageAsync("game.chat", chatMsg);
             }
 
@@ -365,7 +365,7 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
             if (input.Equals("/players", StringComparison.OrdinalIgnoreCase))
             {
                 Logger.Info($"═ PLAYERS ({_gameState.Players.Count}) ═");
-                foreach (var player in _gameState.Players.Values.OrderByDescending(p => p.Score))
+                foreach (PlayerData player in _gameState.Players.Values.OrderByDescending(p => p.Score))
                 {
                     string status = player.IsAlive ? "✓" : "✕";
                     string turn = player.PlayerId == _gameState.CurrentTurnPlayerId ? " <- TURN" : string.Empty;
@@ -432,15 +432,15 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
             try
             {
                 string content = ExtractGameMessageContent(payload);
-                var parts = content.Split('|');
+                string[] parts = content.Split('|');
                 bool stateChanged = false;
 
-                foreach (var part in parts)
+                foreach (string part in parts)
                 {
                     if (string.IsNullOrWhiteSpace(part))
                         continue;
 
-                    var kvp = part.Split(':');
+                    string[] kvp = part.Split(':');
                     if (kvp.Length < 3)
                         continue;
 
@@ -472,7 +472,7 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
                         else if (field.StartsWith("event_") && !field.Equals("event_count"))
                         {
                             // Parse event: "eventType|sourceId|targetId|description"
-                            var eventParts = value.Split('|');
+                            string[] eventParts = value.Split('|');
                             if (eventParts.Length >= 4)
                             {
                                 string eventType = eventParts[0];
@@ -482,7 +482,7 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
                                 
                                 // Try to get player names
                                 string sourceName = sourceId;
-                                if (!string.IsNullOrEmpty(sourceId) && _gameState.Players.TryGetValue(sourceId, out var sourcePlayer))
+                                if (!string.IsNullOrEmpty(sourceId) && _gameState.Players.TryGetValue(sourceId, out PlayerData sourcePlayer))
                                 {
                                     sourceName = sourcePlayer.PlayerName;
                                 }
@@ -507,7 +507,7 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
                         continue;
                     }
 
-                    if (!_gameState.Players.TryGetValue(entityId, out var player))
+                    if (!_gameState.Players.TryGetValue(entityId, out PlayerData player))
                     {
                         player = new PlayerData { PlayerId = entityId, PlayerName = entityId };
                         _gameState.Players[entityId] = player;
@@ -590,7 +590,7 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
                 string content = ExtractGameMessageContent(payload);
                 
                 // Events are formatted as: "eventType|sourcePlayerId|targetPlayerId|description"
-                var parts = content.Split('|');
+                string[] parts = content.Split('|');
                 
                 if (parts.Length >= 4)
                 {
@@ -603,12 +603,12 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
                     string sourceName = sourceId;
                     string targetName = targetId;
                     
-                    if (_gameState.Players.TryGetValue(sourceId, out var sourcePlayer))
+                    if (_gameState.Players.TryGetValue(sourceId, out PlayerData sourcePlayer))
                     {
                         sourceName = sourcePlayer.PlayerName;
                     }
                     
-                    if (!string.IsNullOrEmpty(targetId) && _gameState.Players.TryGetValue(targetId, out var targetPlayer))
+                    if (!string.IsNullOrEmpty(targetId) && _gameState.Players.TryGetValue(targetId, out PlayerData targetPlayer))
                     {
                         targetName = targetPlayer.PlayerName;
                     }
@@ -666,7 +666,7 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
                 else
                 {
                     // Regular player chat: "PlayerName:message" (NOT UUID:message)
-                    var parts = content.Split(':', 2);
+                    string[] parts = content.Split(':', 2);
                     if (parts.Length >= 2)
                     {
                         playerName = parts[0].Trim();
@@ -675,7 +675,7 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
                     else
                     {
                         // If format is unexpected, try to extract from current game state
-                        if (_gameState.Players.TryGetValue(senderId, out var player))
+                        if (_gameState.Players.TryGetValue(senderId, out PlayerData player))
                         {
                             playerName = player.PlayerName;
                             message = content;
@@ -708,7 +708,7 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
 
         private static void EnsurePlayerExists(string playerId, string playerName)
         {
-            if (!_gameState.Players.TryGetValue(playerId, out var player))
+            if (!_gameState.Players.TryGetValue(playerId, out PlayerData player))
             {
                 _gameState.Players[playerId] = new PlayerData
                 {

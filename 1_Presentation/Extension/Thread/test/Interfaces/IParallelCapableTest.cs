@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Reflection;
 using Alis.Extension.Thread.Interfaces;
 using Xunit;
 
@@ -164,7 +165,7 @@ namespace Alis.Extension.Thread.Test.Interfaces
         public void Interface_IsMarkerInterfaceWithNoMethods()
         {
             // Act
-            var methods = typeof(IParallelCapable).GetMethods();
+            MethodInfo[] methods = typeof(IParallelCapable).GetMethods();
 
             // Assert
             Assert.Empty(methods);
@@ -177,7 +178,7 @@ namespace Alis.Extension.Thread.Test.Interfaces
         public void Interface_IsMarkerInterfaceWithNoProperties()
         {
             // Act
-            var properties = typeof(IParallelCapable).GetProperties();
+            PropertyInfo[] properties = typeof(IParallelCapable).GetProperties();
 
             // Assert
             Assert.Empty(properties);
@@ -300,7 +301,7 @@ namespace Alis.Extension.Thread.Test.Interfaces
         public void Interface_CanBeUsedAsTypeConstraint()
         {
             // Act
-            var result = ProcessParallelCapable(new ComponentWithInterface {Value = 100});
+            int result = ProcessParallelCapable(new ComponentWithInterface {Value = 100});
 
             // Assert
             Assert.Equal(100, result);

@@ -72,7 +72,7 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
 
             string turnName = string.IsNullOrEmpty(_gameState.CurrentTurnPlayerName) ? "No one" : _gameState.CurrentTurnPlayerName;
             int turnSeconds = Math.Max(0, _gameState.TurnTicksRemaining / 30);
-            bool isMyTurn = _gameState.CurrentTurnPlayerId != null && _gameState.Players.TryGetValue(_gameState.CurrentTurnPlayerId, out var turnPlayer) && turnPlayer.PlayerId == _localPlayerId;
+            bool isMyTurn = _gameState.CurrentTurnPlayerId != null && _gameState.Players.TryGetValue(_gameState.CurrentTurnPlayerId, out PlayerData turnPlayer) && turnPlayer.PlayerId == _localPlayerId;
             string turnIndicator = isMyTurn ? "🎮 YOUR TURN!" : $"Waiting for {turnName}";
             _displayBuffer.Add($"╔ Turn: {turnName} ({turnSeconds}s) - {turnIndicator} ╗");
             _displayBuffer.Add("");
@@ -93,13 +93,13 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
                     int arenaY = (int)((float)y / CompactHeight * Arena.Height);
                     
                     // Find exact player at this position
-                    var playersAtPosition = _gameState.Players.Values
+                    List<PlayerData> playersAtPosition = _gameState.Players.Values
                         .Where(p => p.X == arenaX && p.Y == arenaY && p.IsAlive)
                         .ToList();
                     
                     if (playersAtPosition.Count > 0)
                     {
-                        var player = playersAtPosition[0];
+                        PlayerData player = playersAtPosition[0];
                         if (player.PlayerId == _localPlayerId)
                             cell = char.ToUpper(player.PlayerName[0]).ToString();
                         else
@@ -108,7 +108,7 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
                     else
                     {
                         // Check for dead players
-                        var deadPlayers = _gameState.Players.Values
+                        List<PlayerData> deadPlayers = _gameState.Players.Values
                             .Where(p => p.X == arenaX && p.Y == arenaY && !p.IsAlive)
                             .ToList();
                         if (deadPlayers.Count > 0)
@@ -126,7 +126,7 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
             _displayBuffer.Add("");
             
             // Compact your stats on one line
-            if (_gameState.Players.TryGetValue(_localPlayerId, out var localPlayer))
+            if (_gameState.Players.TryGetValue(_localPlayerId, out PlayerData localPlayer))
             {
                 string healthBar = GetSmallHealthBar(localPlayer.Health, localPlayer.MaxHealth);
                 _displayBuffer.Add($"YOU: {localPlayer.PlayerName} | HP:{healthBar} {localPlayer.Health}/{localPlayer.MaxHealth} | Lvl:{localPlayer.Level} | Score:{localPlayer.Score} | Kills:{localPlayer.Kills}/{localPlayer.Deaths} | Pos:({localPlayer.X},{localPlayer.Y})");
@@ -150,7 +150,7 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
             
             // Recent events (last 5 with full descriptions)
             _displayBuffer.Add("╭─ RECENT EVENTS ─────────────────────────────────────────────╮");
-            var recentEvents = _gameState.EventLog
+            List<GameEvent> recentEvents = _gameState.EventLog
                 .Skip(Math.Max(0, _gameState.EventLog.Count - 5))
                 .ToList();
             
@@ -160,7 +160,7 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
             }
             else
             {
-                foreach (var evt in recentEvents)
+                foreach (GameEvent evt in recentEvents)
                 {
                     // Clean event display: extract just the useful part
                     string eventLine = evt.Description;
@@ -169,7 +169,7 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
                     // Extract just the description part
                     if (eventLine.Contains("|"))
                     {
-                        var parts = eventLine.Split('|');
+                        string[] parts = eventLine.Split('|');
                         if (parts.Length >= 4)
                         {
                             eventLine = parts[3]; // description
@@ -195,7 +195,7 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
                         string desc = e.Description;
                         if (desc.Contains("|"))
                         {
-                            var evtParts = desc.Split('|');
+                            string[] evtParts = desc.Split('|');
                             if (evtParts.Length >= 4)
                                 desc = evtParts[3];
                         }
@@ -216,14 +216,14 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
             
             // Show current input with player name
             string playerName = "Unknown";
-            if (_gameState.Players.TryGetValue(_localPlayerId, out var localData))
+            if (_gameState.Players.TryGetValue(_localPlayerId, out PlayerData localData))
             {
                 playerName = localData.PlayerName;
             }
             _displayBuffer.Add($"[{playerName}]> {currentInput}");
             
             // Render all
-            foreach (var line in _displayBuffer)
+            foreach (string line in _displayBuffer)
             {
                 Console.WriteLine(line);
             }

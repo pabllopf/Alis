@@ -109,7 +109,7 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
         /// <param name="y">The y coordinate</param>
         public void UpdatePlayerPosition(string playerId, int x, int y)
         {
-            if (Players.TryGetValue(playerId, out var player))
+            if (Players.TryGetValue(playerId, out PlayerData player))
             {
                 player.X = x;
                 player.Y = y;
@@ -123,7 +123,7 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
         /// <param name="health">The health</param>
         public void UpdatePlayerHealth(string playerId, int health)
         {
-            if (Players.TryGetValue(playerId, out var player))
+            if (Players.TryGetValue(playerId, out PlayerData player))
             {
                 player.Health = Math.Max(0, health);
                 if (player.Health == 0)

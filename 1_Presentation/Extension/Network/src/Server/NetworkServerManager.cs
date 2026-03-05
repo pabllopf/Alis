@@ -302,7 +302,7 @@ namespace Alis.Extension.Network.Server
         /// </summary>
         public async Task<Core.NetworkSession> CreateSessionAsync(string sessionName, int maxPlayers, CancellationToken cancellationToken = default)
         {
-            var session = new Core.NetworkSession
+            NetworkSession session = new Core.NetworkSession
             {
                 SessionId = Guid.NewGuid().ToString(),
                 SessionName = sessionName,
@@ -325,7 +325,7 @@ namespace Alis.Extension.Network.Server
         /// </summary>
         public Core.NetworkSession GetSession(string sessionId)
         {
-            _sessions.TryGetValue(sessionId, out var session);
+            _sessions.TryGetValue(sessionId, out NetworkSession session);
             return session;
         }
 
@@ -342,7 +342,7 @@ namespace Alis.Extension.Network.Server
         /// </summary>
         public async Task CloseSessionAsync(string sessionId, CancellationToken cancellationToken = default)
         {
-            if (_sessions.TryGetValue(sessionId, out var session))
+            if (_sessions.TryGetValue(sessionId, out NetworkSession session))
             {
                 session.State = Core.SessionState.Closed;
             }
@@ -355,9 +355,9 @@ namespace Alis.Extension.Network.Server
         /// </summary>
         public async Task KickPlayerAsync(string playerId, string sessionId, string reason = null, CancellationToken cancellationToken = default)
         {
-            if (_sessions.TryGetValue(sessionId, out var session))
+            if (_sessions.TryGetValue(sessionId, out NetworkSession session))
             {
-                var player = session.Players.FirstOrDefault(p => p.PlayerId == playerId);
+                NetworkPlayer player = session.Players.FirstOrDefault(p => p.PlayerId == playerId);
                 if (player != null)
                 {
                     session.Players.Remove(player);
@@ -374,7 +374,7 @@ namespace Alis.Extension.Network.Server
         public async Task SendMessageAsync<T>(string targetPlayerId, string channel, T message, bool reliable = true) where T : IJsonSerializable
         {
             string payload = _serializer.Serialize(message);
-            var envelope = new Core.NetworkMessageEnvelope
+            NetworkMessageEnvelope envelope = new Core.NetworkMessageEnvelope
             {
                 MessageId = Guid.NewGuid().ToString(),
                 MessageType = typeof(T).Name,
@@ -399,7 +399,7 @@ namespace Alis.Extension.Network.Server
         public async Task BroadcastMessageAsync<T>(string channel, T message, bool reliable = true, string exceptPlayerId = null) where T : IJsonSerializable
         {
             string payload = _serializer.Serialize(message);
-            var envelope = new NetworkMessageEnvelope
+            NetworkMessageEnvelope envelope = new NetworkMessageEnvelope
             {
                 MessageId = Guid.NewGuid().ToString(),
                 MessageType = typeof(T).Name,
@@ -423,7 +423,7 @@ namespace Alis.Extension.Network.Server
         {
             if (_currentSession != null)
             {
-                var player = new NetworkPlayer
+                NetworkPlayer player = new NetworkPlayer
                 {
                     PlayerId = playerId,
                     PlayerName = playerName,
@@ -482,9 +482,9 @@ namespace Alis.Extension.Network.Server
             {
                 while (!cancellationToken.IsCancellationRequested)
                 {
-                    var (clientId, message) = await _transport.ReceiveAsync(cancellationToken);
+                    (string clientId, NetworkMessageEnvelope message) = await _transport.ReceiveAsync(cancellationToken);
 
-                    if (_messageHandlers.TryGetValue(message.Channel, out var handler))
+                    if (_messageHandlers.TryGetValue(message.Channel, out Func<string, string, Task> handler))
                     {
                         await handler(message.SenderId, message.Payload);
                     }

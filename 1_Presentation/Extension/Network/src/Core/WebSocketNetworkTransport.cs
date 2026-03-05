@@ -129,9 +129,9 @@ namespace Alis.Extension.Network.Core
             string json = _serializer.SerializeEnvelope(message);
             byte[] buffer = Encoding.UTF8.GetBytes(json);
 
-            var tasks = new List<Task>();
+            List<Task> tasks = new List<Task>();
 
-            foreach (var kvp in _clientSockets)
+            foreach (KeyValuePair<string, WebSocket> kvp in _clientSockets)
             {
                 if (kvp.Key == exceptClientId || kvp.Value.State != WebSocketState.Open)
                     continue;
@@ -149,7 +149,7 @@ namespace Alis.Extension.Network.Core
         {
             while (!cancellationToken.IsCancellationRequested)
             {
-                if (_messageQueue.TryDequeue(out var message))
+                if (_messageQueue.TryDequeue(out (string ClientId, NetworkMessageEnvelope Message) message))
                     return message;
 
                 await Task.Delay(10, cancellationToken);
@@ -205,8 +205,8 @@ namespace Alis.Extension.Network.Core
             {
                 _tcpListener?.Stop();
 
-                var tasks = new List<Task>();
-                foreach (var socket in _clientSockets.Values)
+                List<Task> tasks = new List<Task>();
+                foreach (WebSocket socket in _clientSockets.Values)
                 {
                     if (socket.State == WebSocketState.Open)
                     {
@@ -296,7 +296,7 @@ namespace Alis.Extension.Network.Core
                     }
 
                     string json = Encoding.UTF8.GetString(buffer, 0, result.Count);
-                    var envelope = _serializer.DeserializeEnvelope(json);
+                    NetworkMessageEnvelope envelope = _serializer.DeserializeEnvelope(json);
                     _messageQueue.Enqueue((clientId, envelope));
                 }
             }
@@ -332,7 +332,7 @@ namespace Alis.Extension.Network.Core
 
             _tcpListener?.Stop();
 
-            foreach (var socket in _clientSockets.Values)
+            foreach (WebSocket socket in _clientSockets.Values)
             {
                 socket?.Dispose();
             }
