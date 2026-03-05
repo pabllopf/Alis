@@ -111,6 +111,7 @@
                 </Properties>
         </ProjectReference>
     </ItemGroup>
+    
 
     <PropertyGroup Condition="'$(Configuration)'=='Release'">
         <!-- app.manifest file to use when building the project -->
