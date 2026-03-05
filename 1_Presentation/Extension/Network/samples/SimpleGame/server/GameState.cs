@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Alis.Extension.Network.Sample.SimpleGame.Server
 {
@@ -56,6 +57,19 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
         /// Gets or sets the events
         /// </summary>
         public Queue<GameEvent> Events { get; set; }
+
+        private static readonly Random Random = new Random();
+        private const long TurnDurationTicks = 180;
+
+        /// <summary>
+        /// Gets the player id that can currently act.
+        /// </summary>
+        public string CurrentTurnPlayerId { get; private set; }
+
+        /// <summary>
+        /// Gets the tick when the current turn expires.
+        /// </summary>
+        public long TurnEndsAtTick { get; private set; }
         
         /// <summary>
         /// Initializes a new instance of the GameState class
@@ -77,13 +91,12 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
         {
             if (!Players.ContainsKey(playerId))
             {
-                Random rand = new Random();
                 Players[playerId] = new PlayerData
                 {
                     PlayerId = playerId,
                     PlayerName = playerName,
-                    X = rand.Next(0, Arena.Width),
-                    Y = rand.Next(0, Arena.Height),
+                    X = Random.Next(0, Arena.Width),
+                    Y = Random.Next(0, Arena.Height),
                     Health = 100,
                     MaxHealth = 100,
                     Level = 1,
@@ -93,6 +106,8 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
                     IsAlive = true
                 };
             }
+
+            EnsureTurnAssigned(CurrentTick);
         }
         
         /// <summary>
@@ -102,6 +117,13 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
         public void RemovePlayer(string playerId)
         {
             Players.Remove(playerId);
+
+            if (CurrentTurnPlayerId == playerId)
+            {
+                CurrentTurnPlayerId = null;
+            }
+
+            EnsureTurnAssigned(CurrentTick);
         }
         
         /// <summary>
@@ -115,20 +137,23 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
         {
             if (!Players.TryGetValue(playerId, out var player))
                 return false;
-            
+
             if (!MoveSystem.IsValidMove(x, y))
                 return false;
-            
+
+            if (!player.IsAlive)
+                return false;
+
             player.X = x;
             player.Y = y;
-            
+
             AddEvent(new GameEvent
             {
                 EventType = "move",
                 SourcePlayer = playerId,
                 Description = $"{player.PlayerName} moved to ({x}, {y})"
             });
-            
+
             return true;
         }
         
@@ -213,19 +238,75 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
         {
             if (Players.TryGetValue(playerId, out var player))
             {
-                Random rand = new Random();
-                player.X = rand.Next(0, Arena.Width);
-                player.Y = rand.Next(0, Arena.Height);
+                player.X = Random.Next(0, Arena.Width);
+                player.Y = Random.Next(0, Arena.Height);
                 player.Health = player.MaxHealth;
                 player.IsAlive = true;
-                
+
                 AddEvent(new GameEvent
                 {
                     EventType = "spawn",
                     SourcePlayer = playerId,
                     Description = $"{player.PlayerName} respawned!"
                 });
+
+                EnsureTurnAssigned(CurrentTick);
             }
+        }
+
+        /// <summary>
+        /// Updates the active turn based on current tick and alive players.
+        /// </summary>
+        public void UpdateTurn(long currentTick)
+        {
+            CurrentTick = currentTick;
+            EnsureTurnAssigned(currentTick);
+
+            if (string.IsNullOrEmpty(CurrentTurnPlayerId))
+                return;
+
+            if (currentTick >= TurnEndsAtTick)
+            {
+                AdvanceTurn(currentTick);
+            }
+        }
+
+        /// <summary>
+        /// Advances the turn to the next alive player.
+        /// </summary>
+        public void AdvanceTurn(long currentTick)
+        {
+            var alivePlayers = Players.Values
+                .Where(p => p.IsAlive)
+                .OrderBy(p => p.PlayerId)
+                .ToList();
+
+            if (alivePlayers.Count == 0)
+            {
+                CurrentTurnPlayerId = null;
+                TurnEndsAtTick = 0;
+                return;
+            }
+
+            int currentIndex = alivePlayers.FindIndex(p => p.PlayerId == CurrentTurnPlayerId);
+            int nextIndex = currentIndex < 0 ? 0 : (currentIndex + 1) % alivePlayers.Count;
+
+            CurrentTurnPlayerId = alivePlayers[nextIndex].PlayerId;
+            TurnEndsAtTick = currentTick + TurnDurationTicks;
+        }
+
+        private void EnsureTurnAssigned(long currentTick)
+        {
+            if (!string.IsNullOrEmpty(CurrentTurnPlayerId) && Players.TryGetValue(CurrentTurnPlayerId, out var current) && current.IsAlive)
+            {
+                if (TurnEndsAtTick <= 0)
+                {
+                    TurnEndsAtTick = currentTick + TurnDurationTicks;
+                }
+                return;
+            }
+
+            AdvanceTurn(currentTick);
         }
         
         /// <summary>

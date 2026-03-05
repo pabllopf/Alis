@@ -69,6 +69,11 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
             
             // Clear console
             Console.Clear();
+
+            string turnName = string.IsNullOrEmpty(_gameState.CurrentTurnPlayerName) ? "No one" : _gameState.CurrentTurnPlayerName;
+            int turnSeconds = Math.Max(0, _gameState.TurnTicksRemaining / 30);
+            _displayBuffer.Add($"Turn: {turnName} ({turnSeconds}s left)");
+            _displayBuffer.Add("");
             
             // Draw compact arena (30x12)
             _displayBuffer.Add("┌" + new string('─', CompactWidth * 2) + "┐");

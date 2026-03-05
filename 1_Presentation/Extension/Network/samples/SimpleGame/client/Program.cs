@@ -77,6 +77,10 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
         /// Last render tick
         /// </summary>
         private static long _lastRenderTick;
+        /// <summary>
+        /// True while the user is entering a command.
+        /// </summary>
+        private static bool _isTyping;
 
         /// <summary>
         /// Main the args
@@ -123,7 +127,7 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
                 {
                     await _clientManager.ConnectAsync(serverUri, _playerName);
                     _connected = true;
-                    _playerId = _playerName; // Use player name as ID
+                    _playerId = _clientManager.LocalPlayer?.PlayerId ?? _playerName;
                     
                     // Initialize local player
                     _gameState.LocalPlayerId = _playerId;
@@ -137,15 +141,12 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
 
                     Logger.Info("✓ Joined the battle!");
                     Logger.Info("Starting game...");
-                    await Task.Delay(1000);
+                    await Task.Delay(400);
 
                     _renderer = new ConsoleRenderer(_gameState, _playerId);
                     _renderRunning = true;
 
-                    // Start render task in background
                     _ = RenderLoopAsync();
-
-                    // Run game loop
                     await GameLoopAsync();
 
                     _renderRunning = false;
@@ -169,26 +170,21 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
             }
         }
 
-        /// <summary>
-        /// Render loop for updating the screen only when needed
-        /// </summary>
         private static async Task RenderLoopAsync()
         {
-            int frameCounter = 0;
             while (_renderRunning && _connected)
             {
                 try
                 {
-                    // Render every 5 frames (roughly every 500ms) or on demand
-                    if (_needsRender || frameCounter % 5 == 0)
+                    // Never redraw while the player is typing in the same console.
+                    if (!_isTyping && (_needsRender || _gameState.LastUpdateTick > _lastRenderTick))
                     {
                         _renderer?.Render();
                         _needsRender = false;
                         _lastRenderTick = _gameState.LastUpdateTick;
                     }
-                    
-                    frameCounter++;
-                    await Task.Delay(100);
+
+                    await Task.Delay(80);
                 }
                 catch (Exception ex)
                 {
@@ -197,29 +193,27 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
             }
         }
         
-        /// <summary>
-        /// Trigger a screen refresh
-        /// </summary>
         private static void TriggerRender()
         {
             _needsRender = true;
         }
 
-        /// <summary>
-        /// Games the loop
-        /// </summary>
         private static async Task GameLoopAsync()
         {
             while (_connected)
             {
                 try
                 {
-                    Console.SetCursorPosition(0, Console.CursorTop);
+                    _isTyping = true;
                     Logger.Log($"[{_playerName}]> ");
                     string input = Console.ReadLine();
+                    _isTyping = false;
 
                     if (string.IsNullOrEmpty(input))
+                    {
+                        TriggerRender();
                         continue;
+                    }
 
                     if (input.Equals("/quit", StringComparison.OrdinalIgnoreCase))
                     {
@@ -232,15 +226,16 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
                         Logger.Info("═══════════════════════════════════════════════════════");
                         Logger.Info("Available Commands:");
                         Logger.Info("  /move <x> <y>  - Move to coordinates (0-39, 0-24)");
-                        Logger.Info("  /attack <name> - Attack a player by name");
-                        Logger.Info("  /spawn          - Respawn in arena");
-                        Logger.Info("  /chat <msg>     - Send message to all players");
-                        Logger.Info("  /stats          - Show your stats");
-                        Logger.Info("  /players        - List all connected players");
-                        Logger.Info("  /help           - Show this help");
-                        Logger.Info("  /quit           - Leave the game");
+                        Logger.Info("  /attack <name> - Attack a player by name (your turn)");
+                        Logger.Info("  /spawn         - Respawn in arena");
+                        Logger.Info("  /chat <msg>    - Send message to all players");
+                        Logger.Info("  /stats         - Show your stats");
+                        Logger.Info("  /players       - List known players from server state");
+                        Logger.Info("  /help          - Show this help");
+                        Logger.Info("  /quit          - Leave the game");
                         Logger.Info("═══════════════════════════════════════════════════════");
                         Logger.Info("");
+                        TriggerRender();
                         continue;
                     }
 
@@ -254,7 +249,6 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
                                 _gameState.UpdatePlayerPosition(_playerId, x, y);
                                 var moveMsg = new GameMessage { MessageType = "move", Content = $"{x},{y}" };
                                 await _clientManager.BroadcastMessageAsync("game.move", moveMsg);
-                                Logger.Log("→ Moved to position");
                             }
                             else
                             {
@@ -269,16 +263,23 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
 
                     if (input.StartsWith("/attack "))
                     {
-                        var targetName = input.Substring(8);
-                        if (_gameState.Players.Values.Any(p => p.PlayerName == targetName && p.IsAlive))
+                        if (!IsLocalPlayerTurn())
                         {
-                            var attackMsg = new GameMessage { MessageType = "attack", Content = targetName };
-                            await _clientManager.BroadcastMessageAsync("game.attack", attackMsg);
-                            Logger.Log("→ Attacking...");
+                            string turnName = string.IsNullOrEmpty(_gameState.CurrentTurnPlayerName) ? "Unknown" : _gameState.CurrentTurnPlayerName;
+                            Logger.Error($"✗ It is not your turn. Current turn: {turnName}");
                         }
                         else
                         {
-                            Logger.Error($"✗ Player '{targetName}' not found or is dead!");
+                            var targetName = input.Substring(8);
+                            if (_gameState.Players.Values.Any(p => p.PlayerName == targetName && p.IsAlive))
+                            {
+                                var attackMsg = new GameMessage { MessageType = "attack", Content = targetName };
+                                await _clientManager.BroadcastMessageAsync("game.attack", attackMsg);
+                            }
+                            else
+                            {
+                                Logger.Error($"✗ Player '{targetName}' not found or is dead!");
+                            }
                         }
                     }
 
@@ -288,7 +289,6 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
                         {
                             var spawnMsg = new GameMessage { MessageType = "spawn", Content = "respawning" };
                             await _clientManager.BroadcastMessageAsync("game.spawn", spawnMsg);
-                            Logger.Log("→ Respawning...");
                         }
                         else
                         {
@@ -314,23 +314,28 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
                             Logger.Log($"Level: {player.Level} | XP: {player.Experience}");
                             Logger.Log($"Score: {player.Score} | Kills: {player.Kills} | Deaths: {player.Deaths}");
                             Logger.Log($"Status: {(player.IsAlive ? "✓ Alive" : "✕ Dead")}");
+                            Logger.Log($"Turn: {_gameState.CurrentTurnPlayerName}");
                             Logger.Info("");
                         }
                     }
 
                     if (input.Equals("/players", StringComparison.OrdinalIgnoreCase))
                     {
-                        Logger.Info("═ CONNECTED PLAYERS ═");
+                        Logger.Info($"═ PLAYERS ({_gameState.Players.Count}) ═");
                         foreach (var player in _gameState.Players.Values.OrderByDescending(p => p.Score))
                         {
                             string status = player.IsAlive ? "✓" : "✕";
-                            Logger.Log($"{status} {player.PlayerName,-15} HP:{player.Health}/{player.MaxHealth} Score:{player.Score} Lvl:{player.Level}");
+                            string turn = player.PlayerId == _gameState.CurrentTurnPlayerId ? " <- TURN" : string.Empty;
+                            Logger.Log($"{status} {player.PlayerName,-15} HP:{player.Health}/{player.MaxHealth} Score:{player.Score} Lvl:{player.Level}{turn}");
                         }
                         Logger.Info("");
                     }
+
+                    TriggerRender();
                 }
                 catch (Exception ex)
                 {
+                    _isTyping = false;
                     Logger.Error($"Error: {ex.Message}");
                 }
 
@@ -338,9 +343,6 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
             }
         }
 
-        /// <summary>
-        /// Registers the handlers
-        /// </summary>
         private static void RegisterHandlers()
         {
             _clientManager.RegisterMessageHandler("game.update", OnGameUpdate);
@@ -350,24 +352,11 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
             _clientManager.RegisterMessageHandler("game.chat", OnGameChat);
         }
 
-        /// <summary>
-        /// Registers the events
-        /// </summary>
         private static void RegisterEvents()
         {
             _clientManager.PlayerJoined += (_, e) =>
             {
-                if (e.Player.PlayerId != _playerId)
-                {
-                    _gameState.Players[e.Player.PlayerId] = new PlayerData
-                    {
-                        PlayerId = e.Player.PlayerId,
-                        PlayerName = e.Player.PlayerName,
-                        X = 20,
-                        Y = 12
-                    };
-                }
-                Logger.Info($"→ {e.Player.PlayerName} entered the arena");
+                EnsurePlayerExists(e.Player.PlayerId, e.Player.PlayerName);
                 _gameState.AddEvent(new GameEvent
                 {
                     EventType = "join",
@@ -379,7 +368,6 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
             _clientManager.PlayerLeft += (_, e) =>
             {
                 _gameState.Players.Remove(e.Player.PlayerId);
-                Logger.Info($"← {e.Player.PlayerName} left the arena");
                 _gameState.AddEvent(new GameEvent
                 {
                     EventType = "leave",
@@ -401,57 +389,115 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
                 Logger.Error($"⚠ Error: {e.Message}");
         }
 
-        /// <summary>
-        /// On game update message
-        /// </summary>
         private static async Task OnGameUpdate(string senderId, string payload)
         {
             try
             {
-                // Parse state update from server
-                var parts = payload.Split('|');
+                string content = ExtractGameMessageContent(payload);
+                var parts = content.Split('|');
                 bool stateChanged = false;
-                
+
                 foreach (var part in parts)
                 {
-                    var kvp = part.Split(':');
-                    if (kvp.Length >= 3)
-                    {
-                        string playerId = kvp[0];
-                        string field = kvp[1];
-                        string value = kvp[2];
+                    if (string.IsNullOrWhiteSpace(part))
+                        continue;
 
-                        if (_gameState.Players.TryGetValue(playerId, out var player))
+                    var kvp = part.Split(':');
+                    if (kvp.Length < 3)
+                        continue;
+
+                    string entityId = kvp[0];
+                    string field = kvp[1];
+                    string value = string.Join(":", kvp.Skip(2));
+
+                    if (entityId == "__meta__")
+                    {
+                        if (field == "turn")
                         {
-                            if (field == "x" && int.TryParse(value, out int x))
-                            {
-                                player.X = x;
-                                stateChanged = true;
-                            }
-                            else if (field == "y" && int.TryParse(value, out int y))
-                            {
-                                player.Y = y;
-                                stateChanged = true;
-                            }
-                            else if (field == "health" && int.TryParse(value, out int health))
-                            {
-                                player.Health = health;
-                                stateChanged = true;
-                            }
-                            else if (field == "score" && int.TryParse(value, out int score))
-                            {
-                                player.Score = score;
-                                stateChanged = true;
-                            }
-                            else if (field == "alive" && bool.TryParse(value, out bool alive))
-                            {
-                                player.IsAlive = alive;
-                                stateChanged = true;
-                            }
+                            _gameState.CurrentTurnPlayerId = value;
+                            stateChanged = true;
                         }
+                        else if (field == "turn_name")
+                        {
+                            _gameState.CurrentTurnPlayerName = value;
+                            stateChanged = true;
+                        }
+                        else if (field == "turn_ticks" && int.TryParse(value, out int turnTicks))
+                        {
+                            _gameState.TurnTicksRemaining = turnTicks;
+                            stateChanged = true;
+                        }
+                        else if (field == "tick" && long.TryParse(value, out long tick))
+                        {
+                            _gameState.LastUpdateTick = tick;
+                        }
+
+                        continue;
+                    }
+
+                    if (!_gameState.Players.TryGetValue(entityId, out var player))
+                    {
+                        player = new PlayerData { PlayerId = entityId, PlayerName = entityId };
+                        _gameState.Players[entityId] = player;
+                    }
+
+                    if (field == "name")
+                    {
+                        player.PlayerName = value;
+                        stateChanged = true;
+                    }
+                    else if (field == "x" && int.TryParse(value, out int x))
+                    {
+                        player.X = x;
+                        stateChanged = true;
+                    }
+                    else if (field == "y" && int.TryParse(value, out int y))
+                    {
+                        player.Y = y;
+                        stateChanged = true;
+                    }
+                    else if (field == "health" && int.TryParse(value, out int health))
+                    {
+                        player.Health = health;
+                        stateChanged = true;
+                    }
+                    else if (field == "maxhealth" && int.TryParse(value, out int maxHealth))
+                    {
+                        player.MaxHealth = maxHealth;
+                        stateChanged = true;
+                    }
+                    else if (field == "score" && int.TryParse(value, out int score))
+                    {
+                        player.Score = score;
+                        stateChanged = true;
+                    }
+                    else if (field == "level" && int.TryParse(value, out int level))
+                    {
+                        player.Level = level;
+                        stateChanged = true;
+                    }
+                    else if (field == "kills" && int.TryParse(value, out int kills))
+                    {
+                        player.Kills = kills;
+                        stateChanged = true;
+                    }
+                    else if (field == "deaths" && int.TryParse(value, out int deaths))
+                    {
+                        player.Deaths = deaths;
+                        stateChanged = true;
+                    }
+                    else if (field == "alive" && bool.TryParse(value, out bool alive))
+                    {
+                        player.IsAlive = alive;
+                        stateChanged = true;
                     }
                 }
-                
+
+                if (_gameState.LastUpdateTick == 0)
+                {
+                    _gameState.LastUpdateTick = DateTime.UtcNow.Ticks;
+                }
+
                 if (stateChanged)
                 {
                     TriggerRender();
@@ -465,18 +511,15 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
             await Task.CompletedTask;
         }
 
-
-        /// <summary>
-        /// Ons the game event using the specified sender id
-        /// </summary>
         private static async Task OnGameEvent(string senderId, string payload)
         {
             try
             {
+                string content = ExtractGameMessageContent(payload);
                 _gameState.AddEvent(new GameEvent
                 {
                     EventType = "game_event",
-                    Description = payload.Length > 50 ? payload.Substring(0, 50) + "..." : payload
+                    Description = content.Length > 70 ? content.Substring(0, 70) + "..." : content
                 });
                 TriggerRender();
             }
@@ -488,18 +531,15 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
             await Task.CompletedTask;
         }
 
-        /// <summary>
-        /// Ons the game chat using the specified sender id
-        /// </summary>
         private static async Task OnGameChat(string senderId, string payload)
         {
             try
             {
-                var parts = payload.Split(':', 2);
+                string content = ExtractGameMessageContent(payload);
+                var parts = content.Split(':', 2);
                 string playerName = parts.Length > 0 ? parts[0] : "Unknown";
-                string message = parts.Length > 1 ? parts[1] : payload;
+                string message = parts.Length > 1 ? parts[1] : content;
 
-                Logger.Log($"[CHAT] {playerName}: {message}");
                 _gameState.AddEvent(new GameEvent
                 {
                     EventType = "chat",
@@ -514,6 +554,64 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
 
             await Task.CompletedTask;
         }
+
+        private static bool IsLocalPlayerTurn()
+        {
+            return !string.IsNullOrEmpty(_playerId) && _playerId == _gameState.CurrentTurnPlayerId;
+        }
+
+        private static void EnsurePlayerExists(string playerId, string playerName)
+        {
+            if (!_gameState.Players.TryGetValue(playerId, out var player))
+            {
+                _gameState.Players[playerId] = new PlayerData
+                {
+                    PlayerId = playerId,
+                    PlayerName = string.IsNullOrEmpty(playerName) ? playerId : playerName,
+                    X = 20,
+                    Y = 12
+                };
+                return;
+            }
+
+            if (!string.IsNullOrEmpty(playerName))
+            {
+                player.PlayerName = playerName;
+            }
+        }
+
+        private static string ExtractGameMessageContent(string payload)
+        {
+            if (string.IsNullOrWhiteSpace(payload))
+                return string.Empty;
+
+            string content = ExtractJsonField(payload, "Content") ?? ExtractJsonField(payload, "content");
+            return string.IsNullOrEmpty(content) ? payload : content;
+        }
+
+        private static string ExtractJsonField(string json, string fieldName)
+        {
+            try
+            {
+                string search = $"\"{fieldName}\":\"";
+                int startIndex = json.IndexOf(search, StringComparison.Ordinal);
+                if (startIndex == -1)
+                    return null;
+
+                startIndex += search.Length;
+                int endIndex = json.IndexOf("\"", startIndex, StringComparison.Ordinal);
+                if (endIndex == -1)
+                    return null;
+
+                return json.Substring(startIndex, endIndex - startIndex)
+                    .Replace("\\\"", "\"")
+                    .Replace("\\n", "\n")
+                    .Replace("\\r", "\r");
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }
-

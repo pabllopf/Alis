@@ -167,12 +167,12 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
                 {
                     _tickCounter++;
                     _gameState.CurrentTick = _tickCounter;
+                    _gameState.UpdateTurn(_tickCounter);
 
                     // Process any pending game events
                     var events = _gameState.GetPendingEvents();
                     foreach (var evt in events)
                     {
-                        // Broadcast event to all connected players
                         if (!string.IsNullOrEmpty(evt.SourcePlayer))
                         {
                             await BroadcastGameEventAsync(evt);
@@ -224,13 +224,35 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
         {
             try
             {
-                string stateData = "";
+                var segments = new System.Collections.Generic.List<string>();
+
                 foreach (var player in _gameState.Players.Values)
                 {
-                    stateData += $"{player.PlayerId}:x:{player.X}|{player.PlayerId}:y:{player.Y}|{player.PlayerId}:health:{player.Health}|{player.PlayerId}:score:{player.Score}|{player.PlayerId}:alive:{player.IsAlive}|";
+                    segments.Add($"{player.PlayerId}:name:{player.PlayerName}");
+                    segments.Add($"{player.PlayerId}:x:{player.X}");
+                    segments.Add($"{player.PlayerId}:y:{player.Y}");
+                    segments.Add($"{player.PlayerId}:health:{player.Health}");
+                    segments.Add($"{player.PlayerId}:maxhealth:{player.MaxHealth}");
+                    segments.Add($"{player.PlayerId}:score:{player.Score}");
+                    segments.Add($"{player.PlayerId}:level:{player.Level}");
+                    segments.Add($"{player.PlayerId}:kills:{player.Kills}");
+                    segments.Add($"{player.PlayerId}:deaths:{player.Deaths}");
+                    segments.Add($"{player.PlayerId}:alive:{player.IsAlive}");
                 }
 
+                string turnName = _gameState.Players.TryGetValue(_gameState.CurrentTurnPlayerId, out var turnPlayer)
+                    ? turnPlayer.PlayerName
+                    : "No one";
+
+                int turnTicksRemaining = Math.Max(0, (int)(_gameState.TurnEndsAtTick - _tickCounter));
+                segments.Add($"__meta__:turn:{_gameState.CurrentTurnPlayerId ?? string.Empty}");
+                segments.Add($"__meta__:turn_name:{turnName}");
+                segments.Add($"__meta__:turn_ticks:{turnTicksRemaining}");
+                segments.Add($"__meta__:tick:{_tickCounter}");
+
+                string stateData = string.Join("|", segments);
                 var msg = new GameMessage { MessageType = "state", Content = stateData };
+
                 foreach (var player in _serverManager.GetConnectedPlayers())
                 {
                     await _serverManager.SendMessageAsync(player.PlayerId, "game.update", msg);
@@ -333,6 +355,7 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
         /// </summary>
         private static void RegisterHandlers()
         {
+            _serverManager.RegisterMessageHandler("system.join", OnSystemJoin);
             _serverManager.RegisterMessageHandler("game.move", OnPlayerMove);
             _serverManager.RegisterMessageHandler("game.attack", OnPlayerAttack);
             _serverManager.RegisterMessageHandler("game.spawn", OnPlayerSpawn);
@@ -346,9 +369,11 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
         {
             _serverManager.PlayerJoined += (_, e) =>
             {
-                Logger.Info($"→ {e.Player.PlayerName} joined!");
                 _gameState.AddPlayer(e.Player.PlayerId, e.Player.PlayerName);
-                
+
+                Logger.Info($"→ {e.Player.PlayerName} connected ({e.Player.PlayerId})");
+                Logger.Log($"   Connected players: {_serverManager.GetConnectedPlayers().Count}");
+
                 _gameState.AddEvent(new GameEvent
                 {
                     EventType = "join",
@@ -359,9 +384,10 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
 
             _serverManager.PlayerLeft += (_, e) =>
             {
-                Logger.Info($"← {e.Player.PlayerName} left");
+                Logger.Info($"← {e.Player.PlayerName} disconnected ({e.Player.PlayerId})");
                 _gameState.RemovePlayer(e.Player.PlayerId);
-                
+                Logger.Log($"   Connected players: {_serverManager.GetConnectedPlayers().Count}");
+
                 _gameState.AddEvent(new GameEvent
                 {
                     EventType = "leave",
@@ -381,16 +407,18 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
         {
             try
             {
-                var parts = payload.Split('|');
-                if (parts.Length > 0)
+                string content = ExtractGameMessageContent(payload);
+                var moveParts = content.Split(',');
+
+                if (moveParts.Length == 2 && int.TryParse(moveParts[0], out int x) && int.TryParse(moveParts[1], out int y))
                 {
-                    var moveParts = parts[0].Split(',');
-                    if (moveParts.Length == 2 && int.TryParse(moveParts[0], out int x) && int.TryParse(moveParts[1], out int y))
+                    if (_gameState.ProcessMove(senderId, x, y))
                     {
-                        if (_gameState.ProcessMove(senderId, x, y))
+                        if (_gameState.CurrentTurnPlayerId == senderId)
                         {
-                            Logger.Log($"[MOVE] {senderId} → ({x}, {y})");
+                            _gameState.AdvanceTurn(_tickCounter);
                         }
+                        Logger.Log($"[MOVE] {senderId} -> ({x}, {y})");
                     }
                 }
             }
@@ -409,16 +437,29 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
         {
             try
             {
-                var parts = payload.Split('|');
-                if (parts.Length > 0)
+                string targetName = ExtractGameMessageContent(payload);
+
+                if (!string.IsNullOrWhiteSpace(_gameState.CurrentTurnPlayerId) && _gameState.CurrentTurnPlayerId != senderId)
                 {
-                    string targetName = parts[0];
-                    int damage = _gameState.ProcessAttack(senderId, targetName);
-                    
-                    if (damage > 0)
+                    string turnName = _gameState.Players.TryGetValue(_gameState.CurrentTurnPlayerId, out var turnPlayer)
+                        ? turnPlayer.PlayerName
+                        : "Unknown";
+
+                    var notice = new GameMessage
                     {
-                        Logger.Log($"[ATTACK] {senderId} → {targetName}: {damage} damage!");
-                    }
+                        MessageType = "chat",
+                        Content = $"Server: Wait for your turn. Current turn: {turnName}."
+                    };
+
+                    await _serverManager.SendMessageAsync(senderId, "game.chat", notice);
+                    return;
+                }
+
+                int damage = _gameState.ProcessAttack(senderId, targetName);
+                if (damage > 0)
+                {
+                    _gameState.AdvanceTurn(_tickCounter);
+                    Logger.Log($"[ATTACK] {senderId} -> {targetName}: {damage} damage!");
                 }
             }
             catch (Exception ex)
@@ -457,12 +498,13 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
         {
             try
             {
+                string content = ExtractGameMessageContent(payload);
+
                 if (_gameState.Players.TryGetValue(senderId, out var state))
                 {
-                    Logger.Log($"[CHAT] {state.PlayerName}: {payload}");
-                    
-                    // Broadcast chat to all players
-                    var msg = new GameMessage { MessageType = "chat", Content = $"{state.PlayerName}:{payload}" };
+                    Logger.Log($"[CHAT] {state.PlayerName}: {content}");
+
+                    var msg = new GameMessage { MessageType = "chat", Content = $"{state.PlayerName}:{content}" };
                     foreach (var player in _serverManager.GetConnectedPlayers())
                     {
                         await _serverManager.SendMessageAsync(player.PlayerId, "game.chat", msg);
@@ -475,6 +517,65 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
             }
 
             await Task.CompletedTask;
+        }
+
+        private static async Task OnSystemJoin(string senderId, string payload)
+        {
+            try
+            {
+                string playerId = ExtractJsonField(payload, "playerId") ?? senderId;
+                string playerName = ExtractJsonField(payload, "playerName");
+
+                if (string.IsNullOrEmpty(playerName))
+                {
+                    playerName = _serverManager.GetPlayer(senderId)?.PlayerName ?? senderId;
+                }
+
+                _serverManager.RegisterPlayerInSession(playerId, playerName);
+                _gameState.AddPlayer(playerId, playerName);
+
+                Logger.Log($"[JOIN] Registered {playerName} ({playerId})");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error($"Join error: {ex.Message}");
+            }
+
+            await Task.CompletedTask;
+        }
+
+        private static string ExtractGameMessageContent(string payload)
+        {
+            if (string.IsNullOrWhiteSpace(payload))
+                return string.Empty;
+
+            string content = ExtractJsonField(payload, "Content") ?? ExtractJsonField(payload, "content");
+            return string.IsNullOrEmpty(content) ? payload : content;
+        }
+
+        private static string ExtractJsonField(string json, string fieldName)
+        {
+            try
+            {
+                string search = $"\"{fieldName}\":\"";
+                int startIndex = json.IndexOf(search, StringComparison.Ordinal);
+                if (startIndex == -1)
+                    return null;
+
+                startIndex += search.Length;
+                int endIndex = json.IndexOf("\"", startIndex, StringComparison.Ordinal);
+                if (endIndex == -1)
+                    return null;
+
+                return json.Substring(startIndex, endIndex - startIndex)
+                    .Replace("\\\"", "\"")
+                    .Replace("\\n", "\n")
+                    .Replace("\\r", "\r");
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }

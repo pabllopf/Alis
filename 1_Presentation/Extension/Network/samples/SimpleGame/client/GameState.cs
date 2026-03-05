@@ -61,6 +61,21 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
         /// Gets or sets the last update tick
         /// </summary>
         public long LastUpdateTick { get; set; }
+
+        /// <summary>
+        /// Gets or sets the player id that currently has the turn.
+        /// </summary>
+        public string CurrentTurnPlayerId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the player name that currently has the turn.
+        /// </summary>
+        public string CurrentTurnPlayerName { get; set; }
+
+        /// <summary>
+        /// Gets or sets remaining ticks for the current turn.
+        /// </summary>
+        public int TurnTicksRemaining { get; set; }
         
         /// <summary>
         /// Initializes a new instance of the GameState class
@@ -71,6 +86,9 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
             Players = new Dictionary<string, PlayerData>();
             EventLog = new List<GameEvent>();
             LastUpdateTick = 0;
+            CurrentTurnPlayerId = string.Empty;
+            CurrentTurnPlayerName = "No one";
+            TurnTicksRemaining = 0;
         }
         
         /// <summary>
@@ -119,4 +137,3 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
         }
     }
 }
-
