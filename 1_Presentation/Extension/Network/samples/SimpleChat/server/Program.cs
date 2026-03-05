@@ -40,10 +40,8 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Server
     /// </summary>
     public static class Program
     {
-        /// <summary>
-        /// The server manager
-        /// </summary>
         private static NetworkServerManager _serverManager;
+        private static bool _serverIsClient = false;
 
         /// <summary>
         ///     Main entry point
@@ -56,6 +54,12 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Server
                 Logger.Info("╔══════════════════════════════════════════════════════╗");
                 Logger.Info("║     ALIS NETWORK - SIMPLE CHAT SERVER SAMPLE         ║");
                 Logger.Info("╚══════════════════════════════════════════════════════╝");
+                Logger.Info("");
+
+                // Ask if server should participate as a client
+                Logger.Log("Should the server also participate in chat? (y/n) [default: n]: ");
+                string answer = Console.ReadLine()?.ToLower() ?? "n";
+                _serverIsClient = answer.Equals("y") || answer.Equals("yes");
                 Logger.Info("");
 
                 _serverManager = new NetworkServerManager();
@@ -72,6 +76,18 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Server
 
                 var session = await _serverManager.CreateSessionAsync("Chat Room", 32);
                 Logger.Info($"✓ Session created: {session.SessionName} (Max: {session.MaxPlayers} players)");
+                
+                if (_serverIsClient)
+                {
+                    Logger.Info("📡 Server mode: SERVER + CLIENT (dedicated server with participation)");
+                }
+                else
+                {
+                    // Remove server from session if it's not participating as a client
+                    session.Players.RemoveAll(p => p.IsHost);
+                    session.PlayerCount = session.Players.Count;
+                    Logger.Info("📡 Server mode: SERVER ONLY (pure dedicated server)");
+                }
                 Logger.Info("");
 
                 RegisterHandlers();
@@ -84,13 +100,28 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Server
                 Logger.Info($"✓ Server listening on {listenUri}");
                 Logger.Info("");
                 Logger.Info("═══════════════════════════════════════════════════════");
-                Logger.Info("Server running. Type '/quit' to stop");
+                if (_serverIsClient)
+                {
+                    Logger.Info("Server Commands:");
+                    Logger.Info("  /players  - Show connected players");
+                    Logger.Info("  /sessions - Show active sessions");
+                    Logger.Info("  /quit     - Stop server");
+                    Logger.Info("  Or type a message to broadcast to all clients");
+                }
+                else
+                {
+                    Logger.Info("Server Commands:");
+                    Logger.Info("  /players  - Show connected players");
+                    Logger.Info("  /sessions - Show active sessions");
+                    Logger.Info("  /quit     - Stop server");
+                }
                 Logger.Info("═══════════════════════════════════════════════════════");
                 Logger.Info("");
 
                 // Interactive server loop
                 while (true)
                 {
+                    Logger.Log(_serverIsClient ? "[SERVER]: " : "> ");
                     string input = Console.ReadLine();
                     if (input?.Equals("/quit", StringComparison.OrdinalIgnoreCase) ?? false)
                         break;
@@ -101,8 +132,10 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Server
                         Logger.Info($"Connected players: {players.Count}");
                         foreach (var player in players)
                         {
-                            Logger.Log($"  - {player.PlayerName} ({player.PlayerId})");
+                            Logger.Log($"  - {player.PlayerName} ({(player.IsHost ? "HOST/SERVER" : "CLIENT")})");
                         }
+                        Logger.Info("");
+                        continue;
                     }
 
                     if (input?.Equals("/sessions", StringComparison.OrdinalIgnoreCase) ?? false)
@@ -112,6 +145,27 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Server
                         foreach (var s in sessions)
                         {
                             Logger.Log($"  - {s.SessionName}: {s.Players.Count}/{s.MaxPlayers} players");
+                        }
+                        Logger.Info("");
+                        continue;
+                    }
+
+                    // If server is in client mode and input is a message, broadcast it
+                    if (_serverIsClient && !string.IsNullOrEmpty(input) && !input.StartsWith("/"))
+                    {
+                        try
+                        {
+                            var chatMessage = new ChatMessage
+                            {
+                                SenderName = "[SERVER]",
+                                Content = input,
+                                Timestamp = DateTime.Now.ToString("HH:mm:ss")
+                            };
+                            await _serverManager.BroadcastMessageAsync("chat.message", chatMessage);
+                        }
+                        catch (Exception ex)
+                        {
+                            Logger.Error($"Error broadcasting message: {ex.Message}");
                         }
                     }
 
