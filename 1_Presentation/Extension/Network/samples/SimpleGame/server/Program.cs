@@ -371,6 +371,7 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
             _serverManager.RegisterMessageHandler("game.attack", OnPlayerAttack);
             _serverManager.RegisterMessageHandler("game.spawn", OnPlayerSpawn);
             _serverManager.RegisterMessageHandler("game.chat", OnGameChat);
+            _serverManager.RegisterMessageHandler("game.endturn", OnPlayerEndTurn);
         }
 
         /// <summary>
@@ -518,6 +519,13 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
 
                     var msg = new GameMessage { MessageType = "chat", Content = $"{state.PlayerName}:{content}" };
                     await _serverManager.BroadcastMessageAsync("game.chat", msg);
+
+                    _gameState.AddEvent(new GameEvent
+                    {
+                        EventType = "chat",
+                        SourcePlayer = senderId,
+                        Description = $"{state.PlayerName}: {content}"
+                    });
                 }
             }
             catch (Exception ex)
@@ -548,6 +556,24 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
             catch (Exception ex)
             {
                 Logger.Error($"Join error: {ex.Message}");
+            }
+
+            await Task.CompletedTask;
+        }
+
+        private static async Task OnPlayerEndTurn(string senderId, string payload)
+        {
+            try
+            {
+                if (_gameState.CurrentTurnPlayerId == senderId)
+                {
+                    Logger.Log($"[ENDTURN] {senderId} ended their turn");
+                    _gameState.AdvanceTurn(_tickCounter);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error($"EndTurn error: {ex.Message}");
             }
 
             await Task.CompletedTask;

@@ -228,6 +228,7 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
                         Logger.Info("  /move <x> <y>  - Move to coordinates (0-39, 0-24)");
                         Logger.Info("  /attack <name> - Attack a player by name (your turn)");
                         Logger.Info("  /spawn         - Respawn in arena");
+                        Logger.Info("  /endturn       - End your turn (skip to next player)");
                         Logger.Info("  /chat <msg>    - Send message to all players");
                         Logger.Info("  /stats         - Show your stats");
                         Logger.Info("  /players       - List known players from server state");
@@ -296,6 +297,20 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
                         }
                     }
 
+                    if (input.Equals("/endturn", StringComparison.OrdinalIgnoreCase))
+                    {
+                        if (IsLocalPlayerTurn())
+                        {
+                            var endTurnMsg = new GameMessage { MessageType = "endturn", Content = "" };
+                            await _clientManager.BroadcastMessageAsync("game.endturn", endTurnMsg);
+                            Logger.Log("→ Turn ended, waiting for next turn...");
+                        }
+                        else
+                        {
+                            Logger.Error("✗ It is not your turn!");
+                        }
+                    }
+
                     if (input.StartsWith("/chat "))
                     {
                         var message = input.Substring(6);
@@ -350,6 +365,8 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
             _clientManager.RegisterMessageHandler("game.attack", OnGameEvent);
             _clientManager.RegisterMessageHandler("game.spawn", OnGameEvent);
             _clientManager.RegisterMessageHandler("game.chat", OnGameChat);
+            _clientManager.RegisterMessageHandler("game.join", OnGameEvent);
+            _clientManager.RegisterMessageHandler("game.leave", OnGameEvent);
         }
 
         private static void RegisterEvents()

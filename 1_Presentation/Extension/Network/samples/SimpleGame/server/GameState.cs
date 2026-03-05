@@ -59,7 +59,7 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
         public Queue<GameEvent> Events { get; set; }
 
         private static readonly Random Random = new Random();
-        private const long TurnDurationTicks = 180;
+        private const long TurnDurationTicks = 1800;  // 60 segundos a 30 ticks/segundo
 
         /// <summary>
         /// Gets the player id that can currently act.
