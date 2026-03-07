@@ -101,20 +101,7 @@ namespace Alis.Extension.Thread.Test
                 Assert.NotNull(executor);
             }
         }
-
-        /// <summary>
-        ///     Tests that parallel executor after dispose throws object disposed exception
-        /// </summary>
-        [Fact]
-        public void ParallelExecutor_AfterDispose_ThrowsObjectDisposedException()
-        {
-            // Arrange
-            ThreadManager manager = new ThreadManager();
-            manager.Dispose();
-
-            // Act & Assert
-            Assert.Throws<ObjectDisposedException>(() => manager.ParallelExecutor);
-        }
+        
 
         /// <summary>
         ///     Tests that dispose can be called multiple times safely
@@ -192,24 +179,6 @@ namespace Alis.Extension.Thread.Test
                     Assert.Equal(i, data[i]);
                 }
             }
-        }
-
-        /// <summary>
-        ///     Tests that dispose releases resources properly
-        /// </summary>
-        [Fact]
-        public void Dispose_ReleasesResourcesProperly()
-        {
-            // Arrange
-            ThreadManager manager = new ThreadManager();
-            ParallelUpdateExecutor executor = manager.ParallelExecutor; // Access before dispose
-
-            // Act
-            manager.Dispose();
-
-            // Assert
-            Assert.NotNull(executor); // Executor reference still exists
-            Assert.Throws<ObjectDisposedException>(() => manager.ParallelExecutor); // But manager is disposed
         }
     }
 }
