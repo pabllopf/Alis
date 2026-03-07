@@ -7,7 +7,6 @@ namespace Alis.Extension.Payment.Stripe
     /// </summary>
     public class CheckoutSessionResult
     {
-        
         /// <summary>
         /// Gets or sets the value of the session id
         /// </summary>
