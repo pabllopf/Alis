@@ -2,7 +2,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <Import Project="$(SolutionDir).config/Config.props"/>
     <PropertyGroup>
+        <SonarQubeExclude>true</SonarQubeExclude>
+        <ExcludeFromCodeCoverage>true</ExcludeFromCodeCoverage>
+        <CodeCoverageEnabled>false</CodeCoverageEnabled>
         <OutDir>bin/$(Configuration)/$(RuntimeIdentifier)/lib/$(TargetFramework)/</OutDir>
         <OutDir Condition="($(AssemblyName.Contains('Sample')) OR $(AssemblyName.Contains('App'))) AND $(AssemblyName.Contains('Test')) == false">bin/$(Configuration)/$(RuntimeIdentifier)/lib/</OutDir>
     </PropertyGroup>
+
+    <ItemGroup Condition="$(TargetFramework.StartsWith('net5.0')) Or $(TargetFramework.StartsWith('net6.0')) Or $(TargetFramework.StartsWith('net7.0')) Or $(TargetFramework.StartsWith('net8.0')) Or $(TargetFramework.StartsWith('net9.0')) Or $(TargetFramework.StartsWith('net10.0'))">
+        <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute" />
+    </ItemGroup>
 </Project>
