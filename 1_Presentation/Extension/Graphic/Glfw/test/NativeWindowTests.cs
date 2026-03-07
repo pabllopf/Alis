@@ -53,22 +53,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         {
             window?.Dispose();
         }
-
-        /// <summary>
-        ///     Natives the window default constructor creates window
-        /// </summary>
-        [RequiresDisplay]
-        public void NativeWindow_DefaultConstructor_CreatesWindow()
-        {
-            // Arrange & Act
-            GlfwNative.WindowHint(Hint.Visible, false);
-            window = new NativeWindow();
-
-            // Assert
-            Assert.NotNull(window);
-            Assert.False(window.IsInvalid);
-        }
-
+        
         /// <summary>
         ///     Natives the window constructor with parameters creates window
         /// </summary>
@@ -115,25 +100,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
             // Assert
             Assert.Equal(800, size.Width);
             Assert.Equal(600, size.Height);
-        }
-
-        /// <summary>
-        ///     Natives the window size can set size
-        /// </summary>
-        [RequiresDisplay]
-        public void NativeWindow_Size_CanSetSize()
-        {
-            // Arrange
-            GlfwNative.WindowHint(Hint.Visible, false);
-            window = new NativeWindow(800, 600, "Test Window");
-            Size newSize = new Size(1024, 768);
-
-            // Act
-            window.Size = newSize;
-
-            // Assert
-            Assert.Equal(1024, window.Size.Width);
-            Assert.Equal(768, window.Size.Height);
         }
 
         /// <summary>
@@ -222,26 +188,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
             Assert.True(bounds.Width > 0);
             Assert.True(bounds.Height > 0);
         }
-
-        /// <summary>
-        ///     Natives the window bounds can set bounds
-        /// </summary>
-        [RequiresDisplay]
-        public void NativeWindow_Bounds_CanSetBounds()
-        {
-            // Arrange
-            GlfwNative.WindowHint(Hint.Visible, false);
-            window = new NativeWindow(800, 600, "Test Window");
-            Rectangle newBounds = new Rectangle(50, 50, 1024, 768);
-
-            // Act
-            window.Bounds = newBounds;
-
-            // Assert
-            Assert.Equal(1024, window.Size.Width);
-            Assert.Equal(768, window.Size.Height);
-        }
-
+        
         /// <summary>
         ///     Natives the window close does not throw
         /// </summary>

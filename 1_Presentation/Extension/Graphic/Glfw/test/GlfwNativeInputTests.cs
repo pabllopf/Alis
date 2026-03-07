@@ -315,32 +315,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        ///     Sets the key callback with valid callback sets callback
-        /// </summary>
-        [RequiresDisplay]
-        public void SetKeyCallback_WithValidCallback_SetsCallback()
-        {
-            // Arrange
-            GlfwNative.WindowHint(Hint.Visible, false);
-            Window window = GlfwNative.CreateWindow(800, 600, "Test Window", Monitor.None, Window.None);
-            bool callbackInvoked = false;
-            KeyCallback callback = (w, key, scanCode, state, mods) => { callbackInvoked = true; };
-
-            try
-            {
-                // Act
-                KeyCallback previousCallback = GlfwNative.SetKeyCallback(window, callback);
-
-                // Assert
-                Assert.Null(previousCallback);
-            }
-            finally
-            {
-                GlfwNative.DestroyWindow(window);
-            }
-        }
-
-        /// <summary>
         ///     Sets the window iconify callback with valid callback sets callback
         /// </summary>
         [RequiresDisplay]

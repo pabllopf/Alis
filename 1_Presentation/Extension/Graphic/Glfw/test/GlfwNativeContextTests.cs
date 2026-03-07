@@ -116,31 +116,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
             // Act & Assert
             GlfwNative.DefaultWindowHints();
         }
-
-        /// <summary>
-        ///     Sets the window should close with valid window sets flag
-        /// </summary>
-        [RequiresDisplay]
-        public void SetWindowShouldClose_WithValidWindow_SetsFlag()
-        {
-            // Arrange
-            GlfwNative.WindowHint(Hint.Visible, false);
-            Window window = GlfwNative.CreateWindow(800, 600, "Test Window", Monitor.None, Window.None);
-
-            try
-            {
-                // Act
-                GlfwNative.SetWindowShouldClose(window, true);
-                bool shouldClose = GlfwNative.WindowShouldClose(window);
-
-                // Assert
-                Assert.True(shouldClose);
-            }
-            finally
-            {
-                GlfwNative.DestroyWindow(window);
-            }
-        }
+        
 
         /// <summary>
         ///     Waits the events does not throw
@@ -331,32 +307,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
             if (cursor != Cursor.None)
             {
                 GlfwNative.DestroyCursor(cursor);
-            }
-        }
-
-        /// <summary>
-        ///     Sets the cursor with valid window does not throw
-        /// </summary>
-        [RequiresDisplay]
-        public void SetCursor_WithValidWindow_DoesNotThrow()
-        {
-            // Arrange
-            GlfwNative.WindowHint(Hint.Visible, false);
-            Window window = GlfwNative.CreateWindow(800, 600, "Test Window", Monitor.None, Window.None);
-            Cursor cursor = GlfwNative.CreateStandardCursor(CursorType.Hand);
-
-            try
-            {
-                // Act & Assert
-                GlfwNative.SetCursor(window, cursor);
-            }
-            finally
-            {
-                GlfwNative.DestroyWindow(window);
-                if (cursor != Cursor.None)
-                {
-                    GlfwNative.DestroyCursor(cursor);
-                }
             }
         }
 

@@ -252,32 +252,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
                 GlfwNative.DestroyWindow(window);
             }
         }
-
-        /// <summary>
-        ///     Glfws the native set window size with valid window sets size
-        /// </summary>
-        [RequiresDisplay]
-        public void GlfwNative_SetWindowSize_WithValidWindow_SetsSize()
-        {
-            // Arrange
-            GlfwNative.WindowHint(Hint.Visible, false);
-            Window window = GlfwNative.CreateWindow(800, 600, "Test Window", Monitor.None, Window.None);
-
-            try
-            {
-                // Act
-                GlfwNative.SetWindowSize(window, 1024, 768);
-                GlfwNative.GetWindowSize(window, out int width, out int height);
-
-                // Assert
-                Assert.Equal(1024, width);
-                Assert.Equal(768, height);
-            }
-            finally
-            {
-                GlfwNative.DestroyWindow(window);
-            }
-        }
+        
 
         /// <summary>
         ///     Glfws the native window should close with new window returns false

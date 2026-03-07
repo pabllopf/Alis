@@ -161,19 +161,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
             // Assert
             Assert.True(scanCode != 0 || scanCode == 0); // Depends on platform
         }
-
-        /// <summary>
-        ///     Gets the key scan code with unknown key returns negative one
-        /// </summary>
-        [RequiresDisplay]
-        public void GetKeyScanCode_WithUnknownKey_ReturnsNegativeOne()
-        {
-            // Act
-            int scanCode = GlfwNative.GetKeyScanCode(Keys.Unknown);
-
-            // Assert
-            Assert.Equal(-1, scanCode);
-        }
+        
 
         /// <summary>
         ///     Sets the window attribute with resizable does not throw

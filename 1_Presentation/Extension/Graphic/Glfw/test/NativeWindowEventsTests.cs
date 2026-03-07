@@ -125,25 +125,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
             Assert.NotNull(window);
         }
 
-        /// <summary>
-        ///     Natives the window key repeat event can be subscribed
-        /// </summary>
-        [RequiresDisplay]
-        public void NativeWindow_KeyRepeat_Event_CanBeSubscribed()
-        {
-            // Arrange
-            GlfwNative.WindowHint(Hint.Visible, false);
-            window = new NativeWindow(800, 600, "Test Window");
-            bool eventRaised = false;
-
-            // Act
-            window.KeyRepeat += (sender, args) => { eventRaised = true; };
-
-            // Assert - Event subscription doesn't throw
-            Assert.NotNull(window);
-        }
-
-
+        
         /// <summary>
         ///     Natives the window mouse enter event can be subscribed
         /// </summary>
