@@ -299,7 +299,7 @@ jobs:
     runs-on: macos-15
     strategy:
       matrix:
-        framework: [ net10.0 ]
+        framework: [ net8.0 ]
     steps:
 
       - name: Limpiar entorno
