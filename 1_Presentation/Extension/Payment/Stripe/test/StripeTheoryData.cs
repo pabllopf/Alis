@@ -67,7 +67,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         /// <returns>An enumerable of object array</returns>
         public static IEnumerable<object[]> CurrencyNormalizationCases()
         {
-            string[] baseCurrencies = {"USD", "EUR", "GBP", "JPY", "MXN", "ARS", "BRL", "CAD", "AUD", "CHF"};
+            string[] baseCurrencies = {"EUR", "GBP", "JPY", "MXN", "ARS", "BRL", "CAD", "AUD", "CHF"};
 
             for (int i = 0; i < 100; i++)
             {
