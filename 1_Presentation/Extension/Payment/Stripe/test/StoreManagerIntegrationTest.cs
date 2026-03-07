@@ -181,6 +181,7 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Null(nonexistent);
         }
         
+        
         /// <summary>
         /// Tests that currency handling defaults and overrides work correctly
         /// </summary>
