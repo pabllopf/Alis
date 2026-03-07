@@ -5,6 +5,95 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.9.7] - 2026-03-07
+### :sparkles: New Features
+- [`05f7a3d`](https://github.com/pabllopf/Alis/commit/05f7a3da142e8299569854f0f5093aa5318fa4ef) - new module of logging with modern patterns *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d4aaaba`](https://github.com/pabllopf/Alis/commit/d4aaabae02675e942837da14ad2202addbe0c98f) - add DropBoxCloudManager *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ad7dded`](https://github.com/pabllopf/Alis/commit/ad7dded1881d7174187eb1103805b2cc37a5db53) - Add Google Drive cloud manager and tests *(commit by [@cannt](https://github.com/cannt))*
+- [`d656578`](https://github.com/pabllopf/Alis/commit/d65657811190b6bccee0930039ef6cb660e9574b) - add new adds of google *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`389c278`](https://github.com/pabllopf/Alis/commit/389c278fd0b78969cccea0a3342f869c43e9509a) - add new module to control parallel tasks *(commit by [@RaulLozanoPonce](https://github.com/RaulLozanoPonce))*
+- [`7ce12f1`](https://github.com/pabllopf/Alis/commit/7ce12f1d8daf5de6b8a23761239e8b7220965b22) - add stripe platform page *(commit by [@GabrielRT01](https://github.com/GabrielRT01))*
+- [`0ba3bb2`](https://github.com/pabllopf/Alis/commit/0ba3bb24f62427c1ea0a089092e80559db30f084) - Add macOS script to delete GitHub workflow runs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bb8c70b`](https://github.com/pabllopf/Alis/commit/bb8c70b82539014e9d89da98c2ac1dec9ac176ea) - Add Network SimpleChat samples and network core *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`641fde4`](https://github.com/pabllopf/Alis/commit/641fde4fc4d7fd5393c71d1ae9182251d439bac0) - add simple samples of server *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`71d30cf`](https://github.com/pabllopf/Alis/commit/71d30cfb001a8d69947863ebd76b0c9a8629a170) - Add SimpleGame network sample (client & server) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5f7c5fd`](https://github.com/pabllopf/Alis/commit/5f7c5fd4bf871126f19c9aa170ede80608f55668) - Add turn-based mechanics and client/server sync *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4fcec5c`](https://github.com/pabllopf/Alis/commit/4fcec5cf1e5376058ba77c96eec74b66e912ae04) - add end turn on samples of network *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`041dd72`](https://github.com/pabllopf/Alis/commit/041dd724a4c035f62a0ebbb9d4de475f32b39a7c) - Add ConsoleGame sample and update workflow permissions *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`1b80105`](https://github.com/pabllopf/Alis/commit/1b80105b43c0896fe5c0ab4a97dd4a86e7101335) - add more 40 test to fluent module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`979ded8`](https://github.com/pabllopf/Alis/commit/979ded85e377469e03743ea8cad9390d5ec20c46) - add more of 300 test to fluent module *(commit by [@Chgv99](https://github.com/Chgv99))*
+- [`d044474`](https://github.com/pabllopf/Alis/commit/d0444740641ea5e27c0c77f37542e5006d982607) - delete var usings *(commit by [@Chgv99](https://github.com/Chgv99))*
+- [`b20780c`](https://github.com/pabllopf/Alis/commit/b20780c4a158d5f68090b425db02c4e19ea2dd5b) - add new test to translator *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5944dcc`](https://github.com/pabllopf/Alis/commit/5944dcc6b387c3b59eea07bd919e0d035b750427) - add 200 test to ffmpeg *(commit by [@RaulLozanoPonce](https://github.com/RaulLozanoPonce))*
+- [`1c061c6`](https://github.com/pabllopf/Alis/commit/1c061c6f8769f4035c168955ffa289b67b75f200) - add new 500 test to fmepg module *(commit by [@GabrielRT01](https://github.com/GabrielRT01))*
+- [`48d95f9`](https://github.com/pabllopf/Alis/commit/48d95f9104e08b8cab71835fc6c8bde9ce4659ec) - add ne simples test to sdl2 module *(commit by [@RaulLozanoPonce](https://github.com/RaulLozanoPonce))*
+- [`78660a6`](https://github.com/pabllopf/Alis/commit/78660a643394ef09a9752ef0d335c6974d34cb91) - var explicit *(commit by [@Chgv99](https://github.com/Chgv99))*
+- [`2c7179b`](https://github.com/pabllopf/Alis/commit/2c7179bf27a3bb59c99e060f85db063ce1e1a4c6) - the samples *(commit by [@RicardoVillarta](https://github.com/RicardoVillarta))*
+- [`3eec134`](https://github.com/pabllopf/Alis/commit/3eec13492ab02043763a27f2a79d16ae5fe17c3c) - Extract GameStateExample, remove Moq usage *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d7bfd75`](https://github.com/pabllopf/Alis/commit/d7bfd75457b617d20e0b079ff17d8a2ac4826051) - update sfml bilings *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ad7aa80`](https://github.com/pabllopf/Alis/commit/ad7aa807de281c90b54934ce241082e47ca99fd6) - unit tests of SoundTest *(commit by [@RicardoVillarta](https://github.com/RicardoVillarta))*
+- [`51c17c3`](https://github.com/pabllopf/Alis/commit/51c17c3295c256ad47cc517b891656ba91d941bc) - all spaces and tabs *(commit by [@GabrielRT01](https://github.com/GabrielRT01))*
+- [`f4e8a7b`](https://github.com/pabllopf/Alis/commit/f4e8a7be21c86c20f78298fc2215cd4c95475dad) - Update multiple extensions, samples, and tests *(commit by [@cannt](https://github.com/cannt))*
+- [`2cc0f10`](https://github.com/pabllopf/Alis/commit/2cc0f108f71c5e6de3f392faff17bdab66a83f1a) - add more unit test on ui module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d8c9f6b`](https://github.com/pabllopf/Alis/commit/d8c9f6b176eb4e774e2b8ad47c6b68f551e81b9f) - xmls files *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b944498`](https://github.com/pabllopf/Alis/commit/b944498f0f8292e14809832605adea27e2dc9e95) - commit script *(commit by [@RicardoVillarta](https://github.com/RicardoVillarta))*
+- [`fe428a2`](https://github.com/pabllopf/Alis/commit/fe428a2d4f5175624b69f6f65990196c4a050747) - ppush script *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d4045c8`](https://github.com/pabllopf/Alis/commit/d4045c8a381e790f6f1859b8faafca136419a4b9) - .gitignore *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2199e2d`](https://github.com/pabllopf/Alis/commit/2199e2d135b3388bc258eb1a9c1bd1b12525003b) - Add macOS push.sh and improve commit.sh *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`35edfa0`](https://github.com/pabllopf/Alis/commit/35edfa0f99fe861e3825dfb03a63047889699b93) - the paymanent system with Uri object. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`008f318`](https://github.com/pabllopf/Alis/commit/008f3184514f27d4fe5b805dd71d8d8c72135480) - add simple control of commits *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7fda764`](https://github.com/pabllopf/Alis/commit/7fda76460f067e4192714977f2799c5010b4a829) - the commits script without verification *(commit by [@GabrielRT01](https://github.com/GabrielRT01))*
+- [`1e35f0a`](https://github.com/pabllopf/Alis/commit/1e35f0ab3ee3172791e743baee424898ed93a511) - Rename workflows from [PRO] to [ALIS] *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`dd51c8d`](https://github.com/pabllopf/Alis/commit/dd51c8d8210340b48d91b92905aa6f8ff6ef5319) - Rename CodeQL workflow to [ALIS][CODE] *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5340f34`](https://github.com/pabllopf/Alis/commit/5340f34bdd453d98c2e3685c47dc5d7e1b6c4829) - Expect trailing slashes in Stripe tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7c6e7eb`](https://github.com/pabllopf/Alis/commit/7c6e7eb7d19fb5803e5fcf09e2b57a42dad41d2b) - Add model unit tests; clean sample web files *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a62f7be`](https://github.com/pabllopf/Alis/commit/a62f7be0b3fc1f12335f7fd8033a9ad71dbdb275) - Move sample to samples/client and add server samples *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ed89148`](https://github.com/pabllopf/Alis/commit/ed891488bf1d730d1c1bdc05aa16102dd6782e47) - Add chat and game samples, handshake *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`eada1d8`](https://github.com/pabllopf/Alis/commit/eada1d8aab541393490ddfdeff3886031fd9a373) - Refactor SimpleGame: extract models & rename systems *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5381fb4`](https://github.com/pabllopf/Alis/commit/5381fb4699886770dacc95020cada3f7fddaf2fd) - Enhance client UI/input and server combat logic *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c2c23c9`](https://github.com/pabllopf/Alis/commit/c2c23c90307a3d941bae7291fe10973b7aa54671) - Compact console UI and unify event handling *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ecddde0`](https://github.com/pabllopf/Alis/commit/ecddde013c56784e0c092531449db6d0728b3db9) - Use explicit types across network and samples *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`cceddef`](https://github.com/pabllopf/Alis/commit/cceddef42bdd306e14c38c964fccc781c2d8b7b5) - Remove extra blank line in workflow YAML *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2ffef64`](https://github.com/pabllopf/Alis/commit/2ffef644c7c15fb10c365a3f1656b884e67d6128) - unreal unit tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`33bd816`](https://github.com/pabllopf/Alis/commit/33bd81652df7d4a577e4363adaa45920fe587800) - Add ConsoleGame projects; remove sample assets *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`dbf970c`](https://github.com/pabllopf/Alis/commit/dbf970ca9c8fb0f8cb34ec1272ffae128c65c69c) - Generate macOS Info.plist and .app bundle *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`79117e0`](https://github.com/pabllopf/Alis/commit/79117e0bec9306da54bb136e97dbe149ca6b6d12) - Normalize project paths & update csproj configs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0aad58e`](https://github.com/pabllopf/Alis/commit/0aad58e639d0119e4ea8392dcd774c9c37e4719e) - ExcludeFromCodeCoverageAttribute from some modules *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4f3d3c5`](https://github.com/pabllopf/Alis/commit/4f3d3c597457f0ce00557e51f8d8fbe0ac68621e) - exlude the current module of ExcludeFromCodeCoverageAttribute *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c4bcd7a`](https://github.com/pabllopf/Alis/commit/c4bcd7a03de8774cf3e9e2a6563adb783df6c8d6) - Add ExcludeFromCodeCoverage attribute to projects *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`73461b2`](https://github.com/pabllopf/Alis/commit/73461b2a1c6f4ece149bc0e63530c04b78e5de3f) - generator builds *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`35d505d`](https://github.com/pabllopf/Alis/commit/35d505d89d2db3d4fea1e624bcead9b0e065b232) - Remove explicit ObjectDisposedException checks *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`52d8089`](https://github.com/pabllopf/Alis/commit/52d8089834546a7f688aea9308e04a9211ddd195) - pro add 300 test to unit *(commit by [@Claudia2000pf](https://github.com/Claudia2000pf))*
+- [`479c2bf`](https://github.com/pabllopf/Alis/commit/479c2bf2f1b0ed11cf796c9637c14c2efe53369b) - pro add sounds tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1f6ab07`](https://github.com/pabllopf/Alis/commit/1f6ab079357186f402e518a38f0f88d65cd9a242) - pro add new tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`59e1e01`](https://github.com/pabllopf/Alis/commit/59e1e014795b072a99c4924424619899513a9cd5) - pro check 400 test on fmepg module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`db10b8d`](https://github.com/pabllopf/Alis/commit/db10b8d851795a12f7c183391803b83fbebd9cb9) - pro check all platforms *(commit by [@RaulLozanoPonce](https://github.com/RaulLozanoPonce))*
+- [`91b9b50`](https://github.com/pabllopf/Alis/commit/91b9b504a90088f23609e97f26d30f666baad62d) - pro fexed the linux unit tests *(commit by [@Claudia2000pf](https://github.com/Claudia2000pf))*
+- [`05d7fa8`](https://github.com/pabllopf/Alis/commit/05d7fa8061201e83e0f8f529c5e0bb48d9ac14ad) - pro check all *(commit by [@RaulLozanoPonce](https://github.com/RaulLozanoPonce))*
+- [`eb59569`](https://github.com/pabllopf/Alis/commit/eb595698353f147f5b21f5f287458b788a79a3b0) - pro add more of 300 unit test *(commit by [@SPEEDCROW98](https://github.com/SPEEDCROW98))*
+- [`8ca575d`](https://github.com/pabllopf/Alis/commit/8ca575d3b433777371bde3853fb5f42115ef2be8) - pro add more unit test on ui module *(commit by [@RaulLozanoPonce](https://github.com/RaulLozanoPonce))*
+- [`89435c6`](https://github.com/pabllopf/Alis/commit/89435c67a9b6fd8f7cd3c0c5fe03cb3c0bed8871) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`baed5d9`](https://github.com/pabllopf/Alis/commit/baed5d974ed529496c7c3d5a92ac5f2af6eab0dc) - pro add new tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f09d054`](https://github.com/pabllopf/Alis/commit/f09d054f3ce69480ac4c58742e14636fc17d6724) - pro check all *(commit by [@GabrielRT01](https://github.com/GabrielRT01))*
+- [`223c05b`](https://github.com/pabllopf/Alis/commit/223c05b620bce871f01859de0b539ac79f0488cd) - pro add new tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`07c53ee`](https://github.com/pabllopf/Alis/commit/07c53eede7af392032902b9f3458d5a025f63d90) - pro add new tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4eadfdc`](https://github.com/pabllopf/Alis/commit/4eadfdc6f270d9e2b4c61c1a61e1ac7a92f2b0ac) - pro add new tests to imgui *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d98ae3f`](https://github.com/pabllopf/Alis/commit/d98ae3f9bf38bf90c40c85d5e0093af8c8e4e428) - new push v3 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`dd1e52c`](https://github.com/pabllopf/Alis/commit/dd1e52ce8a77c80cb59c1167ca0e008e87732a9c) - new push v3 *(commit by [@SPEEDCROW98](https://github.com/SPEEDCROW98))*
+- [`8c1d4d9`](https://github.com/pabllopf/Alis/commit/8c1d4d9600f655b32da77c1015a17e8afff21790) - pro add docs xmls commtnts to unit tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e2bd435`](https://github.com/pabllopf/Alis/commit/e2bd435137e3fdbf8a3291b40c05615cc118dd22) - pro check tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`25575dd`](https://github.com/pabllopf/Alis/commit/25575dd8191e371f4dfe11d2309ffd8cdbb3c681) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d6e1fc5`](https://github.com/pabllopf/Alis/commit/d6e1fc512bee4b441e92b4bf14c9097a050fe617) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5d9df84`](https://github.com/pabllopf/Alis/commit/5d9df847f518b62885956fe671fc4209576ccb7a) - pro chgeck all *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :memo: Documentation Changes
+- [`4145712`](https://github.com/pabllopf/Alis/commit/414571287b1384b7f9fb188d450fe64af9da253a) - add xmls comments to payment module *(commit by [@Claudia2000pf](https://github.com/Claudia2000pf))*
+
+
 ## [v0.9.6] - 2026-03-01
 ### :bug: Bug Fixes
 - [`0a3356f`](https://github.com/pabllopf/Alis/commit/0a3356f38b4a49ed2e2f3161a42600f7071a040a) - add full covert of comments on xmls files *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -5864,3 +5953,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.9.4]: https://github.com/pabllopf/Alis/compare/v0.9.3...v0.9.4
 [v0.9.5]: https://github.com/pabllopf/Alis/compare/v0.9.4...v0.9.5
 [v0.9.6]: https://github.com/pabllopf/Alis/compare/v0.9.5...v0.9.6
+[v0.9.7]: https://github.com/pabllopf/Alis/compare/v0.9.6...v0.9.7
