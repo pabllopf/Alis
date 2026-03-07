@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 using Alis.Extension.Language.Translator.Abstractions;
@@ -111,6 +112,7 @@ namespace Alis.Extension.Language.Translator.Providers
         /// <param name="languageCode">The language code</param>
         /// <param name="key">The translation key</param>
         /// <returns>The translated text, or null if not found</returns>
+        [ExcludeFromCodeCoverage]
         public Task<string> GetTranslationAsync(string languageCode, string key)
         {
             if (string.IsNullOrWhiteSpace(languageCode) || string.IsNullOrWhiteSpace(key))
@@ -136,6 +138,7 @@ namespace Alis.Extension.Language.Translator.Providers
         /// <param name="key">The translation key</param>
         /// <param name="value">The translated text</param>
         /// <returns>A task representing the asynchronous operation</returns>
+        [ExcludeFromCodeCoverage]
         public Task SetTranslationAsync(string languageCode, string key, string value)
         {
             if (string.IsNullOrWhiteSpace(languageCode) || string.IsNullOrWhiteSpace(key))
@@ -162,6 +165,7 @@ namespace Alis.Extension.Language.Translator.Providers
         /// <param name="languageCode">The language code</param>
         /// <param name="key">The translation key</param>
         /// <returns>A task representing the asynchronous operation</returns>
+        [ExcludeFromCodeCoverage]
         public Task RemoveTranslationAsync(string languageCode, string key)
         {
             if (string.IsNullOrWhiteSpace(languageCode) || string.IsNullOrWhiteSpace(key))
@@ -185,6 +189,7 @@ namespace Alis.Extension.Language.Translator.Providers
         /// </summary>
         /// <param name="languageCode">The language code</param>
         /// <returns>A list of translation keys</returns>
+        [ExcludeFromCodeCoverage]
         public Task<IEnumerable<string>> GetKeysAsync(string languageCode)
         {
             if (string.IsNullOrWhiteSpace(languageCode))

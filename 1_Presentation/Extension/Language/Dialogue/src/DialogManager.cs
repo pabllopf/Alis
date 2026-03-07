@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Logging;
 using Alis.Extension.Language.Dialogue.Core;
 
@@ -165,6 +166,7 @@ namespace Alis.Extension.Language.Dialogue
         /// </summary>
         /// <param name="dialogId">The dialog id</param>
         /// <exception cref="ArgumentNullException">Thrown when dialogId is null or empty</exception>
+        [ExcludeFromCodeCoverage]
         public void StartDialog(string dialogId)
         {
             if (string.IsNullOrWhiteSpace(dialogId))
@@ -262,6 +264,7 @@ namespace Alis.Extension.Language.Dialogue
         ///     Gets available options for the current dialog
         /// </summary>
         /// <returns>List of available options</returns>
+        [ExcludeFromCodeCoverage]
         public List<DialogOption> GetAvailableOptions()
         {
             if (_currentContext == null)

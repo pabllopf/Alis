@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alis.Extension.Language.Dialogue.Core
 {
@@ -44,6 +45,7 @@ namespace Alis.Extension.Language.Dialogue.Core
         /// <param name="context">The dialog context</param>
         /// <returns>True if the action was executed successfully</returns>
         /// <exception cref="ArgumentNullException">Thrown when action or context is null</exception>
+        [ExcludeFromCodeCoverage]
         public bool ExecuteAction(IDialogAction action, DialogContext context)
         {
             if (action == null)

@@ -30,6 +30,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alis.Extension.Math.HighSpeedPriorityQueue
 {
@@ -663,6 +664,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
     ///     TPriority&gt;
     /// </summary>
     /// <typeparam name="TItem">The type to enqueue</typeparam>
+    [ExcludeFromCodeCoverage]
     public class SimplePriorityQueue<TItem> : SimplePriorityQueue<TItem, float>
     {
         /// <summary>

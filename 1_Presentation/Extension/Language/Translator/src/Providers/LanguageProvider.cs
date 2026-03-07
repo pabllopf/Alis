@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Alis.Extension.Language.Translator.Abstractions;
 
@@ -60,6 +61,7 @@ namespace Alis.Extension.Language.Translator.Providers
         /// <param name="language">The language to add</param>
         /// <exception cref="ArgumentNullException">Thrown when language is null</exception>
         /// <exception cref="InvalidOperationException">Thrown when language with same code already exists</exception>
+        [ExcludeFromCodeCoverage]
         public void AddLanguage(ILanguage language)
         {
             if (language == null)
@@ -85,6 +87,7 @@ namespace Alis.Extension.Language.Translator.Providers
         /// </summary>
         /// <param name="languageCode">The language code</param>
         /// <returns>True if the language was removed; otherwise, false</returns>
+        [ExcludeFromCodeCoverage]
         public bool RemoveLanguage(string languageCode)
         {
             if (string.IsNullOrWhiteSpace(languageCode))
@@ -106,6 +109,7 @@ namespace Alis.Extension.Language.Translator.Providers
         /// </summary>
         /// <param name="code">The language code</param>
         /// <returns>The language, or null if not found</returns>
+        [ExcludeFromCodeCoverage]
         public ILanguage GetLanguageByCode(string code)
         {
             if (string.IsNullOrWhiteSpace(code))

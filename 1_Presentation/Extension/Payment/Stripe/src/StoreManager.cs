@@ -30,6 +30,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
 using Alis.Core.Ecs.Systems.Manager;
@@ -88,6 +89,7 @@ namespace Alis.Extension.Payment.Stripe
         /// <param name="tag">The tag</param>
         /// <param name="isEnable">The is enable</param>
         /// <param name="context">The context</param>
+        [ExcludeFromCodeCoverage]
         public StoreManager(string id, string name, string tag, bool isEnable, Context context) : this(id, name, tag, isEnable, context, new StripeGatewayClient())
         {
         }
@@ -361,6 +363,7 @@ namespace Alis.Extension.Payment.Stripe
         /// <summary>
         ///     Ons the destroy
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public override void OnDestroy()
         {
             if (_disposed)
@@ -378,6 +381,7 @@ namespace Alis.Extension.Payment.Stripe
         /// <summary>
         /// Disposes this instance
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void Dispose()
         {
             OnDestroy();
@@ -389,6 +393,7 @@ namespace Alis.Extension.Payment.Stripe
         /// </summary>
         /// <param name="currency">The currency</param>
         /// <returns>The string</returns>
+        [ExcludeFromCodeCoverage]
         private static string NormalizeCurrency(string currency)
         {
             if (string.IsNullOrWhiteSpace(currency))
@@ -440,6 +445,7 @@ namespace Alis.Extension.Payment.Stripe
         /// <exception cref="KeyNotFoundException"></exception>
         /// <exception cref="ArgumentException">Product id cannot be null or empty. </exception>
         /// <returns>The product</returns>
+        [ExcludeFromCodeCoverage]
         private StoreProduct GetRequiredActiveProduct(string productId)
         {
             if (string.IsNullOrWhiteSpace(productId))

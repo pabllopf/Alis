@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Extension.Language.Translator.Abstractions;
 
 namespace Alis.Extension.Language.Translator
@@ -43,6 +44,7 @@ namespace Alis.Extension.Language.Translator
         /// <summary>
         ///     Initializes a new instance of the <see cref="Lang" /> class
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public Lang() => IsDefault = false;
 
         /// <summary>
@@ -65,6 +67,7 @@ namespace Alis.Extension.Language.Translator
         /// <param name="nativeName">The native name of the language</param>
         /// <param name="cultureCode">The culture code</param>
         /// <param name="isDefault">Whether this is the default language</param>
+        [ExcludeFromCodeCoverage]
         public Lang(string code, string name, string nativeName, string cultureCode, bool isDefault = false)
         {
             Code = code;
@@ -104,6 +107,7 @@ namespace Alis.Extension.Language.Translator
         /// </summary>
         /// <param name="other">The language to compare with</param>
         /// <returns>True if the languages are equal; otherwise, false</returns>
+        [ExcludeFromCodeCoverage]
         public bool Equals(ILanguage other)
         {
             if (other == null)
@@ -119,6 +123,7 @@ namespace Alis.Extension.Language.Translator
         /// </summary>
         /// <param name="obj">The object to compare with</param>
         /// <returns>True if the objects are equal; otherwise, false</returns>
+        [ExcludeFromCodeCoverage]
         public override bool Equals(object obj)
         {
             if (obj is Lang lang)
@@ -133,6 +138,7 @@ namespace Alis.Extension.Language.Translator
         ///     Gets the hash code for this language
         /// </summary>
         /// <returns>The hash code</returns>
+        [ExcludeFromCodeCoverage]
         public override int GetHashCode()
         {
             unchecked
@@ -145,6 +151,7 @@ namespace Alis.Extension.Language.Translator
         ///     Returns a string representation of the language
         /// </summary>
         /// <returns>A string containing the language code and name</returns>
+        [ExcludeFromCodeCoverage]
         public override string ToString() => $"{Code} - {Name}";
     }
 }

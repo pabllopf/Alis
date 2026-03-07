@@ -30,6 +30,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alis.Extension.Math.HighSpeedPriorityQueue
 {
@@ -172,6 +173,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     If the node is not in the queue, the result is undefined.  If unsure, check Contains() first
         ///     O(log n)
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void Remove(T item)
         {
             //If the node is already the last node, we can remove it immediately
@@ -198,6 +200,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     If you need to do this, please call originalQueue.ResetNode(node) before attempting to add it in the new queue
         ///     If the node is currently in the queue or belongs to another queue, the result is undefined
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void ResetNode(T node)
         {
             node.QueueIndex = 0;
@@ -207,6 +210,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     Gets the enumerator
         /// </summary>
         /// <returns>An enumerator of t</returns>
+        [ExcludeFromCodeCoverage]
         public IEnumerator<T> GetEnumerator()
         {
             for (int i = 1; i <= _numNodes; i++)
@@ -219,6 +223,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     Gets the enumerator
         /// </summary>
         /// <returns>The enumerator</returns>
+        [ExcludeFromCodeCoverage]
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
 
@@ -226,6 +231,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     Cascades the up using the specified node
         /// </summary>
         /// <param name="node">The node</param>
+        [ExcludeFromCodeCoverage]
         private void CascadeUp(T node)
         {
             //aka Heapify-up
@@ -274,6 +280,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     Cascades the down using the specified node
         /// </summary>
         /// <param name="node">The node</param>
+        [ExcludeFromCodeCoverage]
         private void CascadeDown(T node)
         {
             int finalQueueIndex = node.QueueIndex;
@@ -313,6 +320,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         /// <param name="childLeft">The child left</param>
         /// <param name="childRight">The child right</param>
         /// <returns>The final queue index</returns>
+        [ExcludeFromCodeCoverage]
         private int GetSwapIndex(int finalQueueIndex, int childLeftIndex, int childRightIndex, T childLeft, T childRight)
         {
             bool isLeftHigherPriority = HasHigherPriority(childLeft, _nodes[finalQueueIndex]);
@@ -360,6 +368,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     Ons the node updated using the specified node
         /// </summary>
         /// <param name="node">The node</param>
+        [ExcludeFromCodeCoverage]
         private void OnNodeUpdated(T node)
         {
             //Bubble the updated node up or down as appropriate
@@ -380,6 +389,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     <b>Should not be called in production code.</b>
         ///     Checks to make sure the queue is still in a valid state.  Used for testing/debugging the queue.
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public bool IsValidQueue()
         {
             for (int i = 1; i < _nodes.Length; i++)

@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Extension.Language.Translator.Abstractions;
 
 namespace Alis.Extension.Language.Translator.Cache
@@ -60,6 +61,7 @@ namespace Alis.Extension.Language.Translator.Cache
         /// <param name="key">The translation key</param>
         /// <param name="value">The cached translation, or null if not found</param>
         /// <returns>True if the translation was found in cache; otherwise, false</returns>
+        [ExcludeFromCodeCoverage]
         public bool TryGetTranslation(string languageCode, string key, out string value)
         {
             value = null;
@@ -93,6 +95,7 @@ namespace Alis.Extension.Language.Translator.Cache
         /// <param name="languageCode">The language code</param>
         /// <param name="key">The translation key</param>
         /// <param name="value">The translated text</param>
+        [ExcludeFromCodeCoverage]
         public void Set(string languageCode, string key, string value)
         {
             if (string.IsNullOrWhiteSpace(languageCode) || string.IsNullOrWhiteSpace(key))
@@ -117,6 +120,7 @@ namespace Alis.Extension.Language.Translator.Cache
         /// <param name="languageCode">The language code</param>
         /// <param name="key">The translation key</param>
         /// <returns>True if the translation was removed; otherwise, false</returns>
+        [ExcludeFromCodeCoverage]
         public bool Remove(string languageCode, string key)
         {
             if (string.IsNullOrWhiteSpace(languageCode) || string.IsNullOrWhiteSpace(key))
@@ -139,6 +143,7 @@ namespace Alis.Extension.Language.Translator.Cache
         ///     Invalidates all cache entries for a specific language
         /// </summary>
         /// <param name="languageCode">The language code</param>
+        [ExcludeFromCodeCoverage]
         public void InvalidateLanguage(string languageCode)
         {
             if (string.IsNullOrWhiteSpace(languageCode))

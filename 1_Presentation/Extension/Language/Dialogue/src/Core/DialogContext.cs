@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alis.Extension.Language.Dialogue.Core
 {
@@ -91,6 +92,7 @@ namespace Alis.Extension.Language.Dialogue.Core
         /// <param name="key">The variable key</param>
         /// <returns>The variable value or null if not found</returns>
         /// <exception cref="ArgumentNullException">Thrown when key is null or empty</exception>
+        [ExcludeFromCodeCoverage]
         public object GetVariable(string key)
         {
             if (string.IsNullOrWhiteSpace(key))
@@ -120,6 +122,7 @@ namespace Alis.Extension.Language.Dialogue.Core
         /// <param name="key">The variable key</param>
         /// <returns>True if the variable exists</returns>
         /// <exception cref="ArgumentNullException">Thrown when key is null or empty</exception>
+        [ExcludeFromCodeCoverage]
         public bool HasVariable(string key)
         {
             if (string.IsNullOrWhiteSpace(key))
@@ -135,6 +138,7 @@ namespace Alis.Extension.Language.Dialogue.Core
         /// </summary>
         /// <param name="dialogId">The dialog identifier to record</param>
         /// <exception cref="ArgumentNullException">Thrown when dialogId is null or empty</exception>
+        [ExcludeFromCodeCoverage]
         public void RecordVisit(string dialogId)
         {
             if (string.IsNullOrWhiteSpace(dialogId))

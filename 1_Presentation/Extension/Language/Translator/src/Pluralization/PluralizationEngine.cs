@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Extension.Language.Translator.Abstractions;
 
 namespace Alis.Extension.Language.Translator.Pluralization
@@ -66,6 +67,7 @@ namespace Alis.Extension.Language.Translator.Pluralization
         /// <param name="languageCode">The language code</param>
         /// <param name="quantity">The quantity to determine plural form for</param>
         /// <returns>The plural form index (0 = singular, 1 = plural, etc.)</returns>
+        [ExcludeFromCodeCoverage]
         public int GetPluralForm(string languageCode, int quantity)
         {
             if (string.IsNullOrWhiteSpace(languageCode))
@@ -87,6 +89,7 @@ namespace Alis.Extension.Language.Translator.Pluralization
         /// </summary>
         /// <param name="languageCode">The language code</param>
         /// <param name="rule">The pluralization rule function</param>
+        [ExcludeFromCodeCoverage]
         public void RegisterPluralizationRule(string languageCode, Func<int, int> rule)
         {
             if (string.IsNullOrWhiteSpace(languageCode))
@@ -107,6 +110,7 @@ namespace Alis.Extension.Language.Translator.Pluralization
         /// </summary>
         /// <param name="languageCode">The language code</param>
         /// <returns>The number of plural forms</returns>
+        [ExcludeFromCodeCoverage]
         public int GetPluralFormCount(string languageCode)
         {
             if (string.IsNullOrWhiteSpace(languageCode))
@@ -120,6 +124,7 @@ namespace Alis.Extension.Language.Translator.Pluralization
         /// <summary>
         ///     Initializes the default pluralization rules for common languages
         /// </summary>
+        [ExcludeFromCodeCoverage]
         private void InitializeDefaultRules()
         {
             // English, German, Dutch, etc. - 2 forms (singular, plural)

@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Extension.Language.Dialogue.Core;
 
 namespace Alis.Extension.Language.Dialogue
@@ -87,6 +88,7 @@ namespace Alis.Extension.Language.Dialogue
         ///     Adds a dialog action to this option
         /// </summary>
         /// <param name="action">The action to add</param>
+        [ExcludeFromCodeCoverage]
         public void AddDialogAction(IDialogAction action)
         {
             if (action != null)

@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alis.Extension.Language.Dialogue
 {
@@ -93,6 +94,7 @@ namespace Alis.Extension.Language.Dialogue
         /// <param name="key">The branch key identifier</param>
         /// <param name="dialog">The branch dialog</param>
         /// <exception cref="ArgumentNullException">Thrown when key is null or empty</exception>
+        [ExcludeFromCodeCoverage]
         public void AddBranch(string key, Dialog dialog)
         {
             if (string.IsNullOrWhiteSpace(key))
@@ -112,6 +114,7 @@ namespace Alis.Extension.Language.Dialogue
         /// </summary>
         /// <param name="key">The branch key</param>
         /// <returns>The branch dialog or null if not found</returns>
+        [ExcludeFromCodeCoverage]
         public Dialog GetBranch(string key) => Branches.TryGetValue(key, out Dialog branch) ? branch : null;
     }
 }

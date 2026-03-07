@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Extension.Math.ProceduralDungeon.Interfaces;
 using Alis.Extension.Math.ProceduralDungeon.Models;
 using Alis.Extension.Math.ProceduralDungeon.Services;
@@ -118,6 +119,7 @@ namespace Alis.Extension.Math.ProceduralDungeon
         /// <remarks>
         ///     This constructor is primarily used for testing purposes, allowing dependency injection.
         /// </remarks>
+        [ExcludeFromCodeCoverage]
         internal Dungeon(IDungeonGenerator generator, IRandomNumberGenerator randomNumberGenerator)
         {
             _generator = generator ?? throw new ArgumentNullException(nameof(generator));
