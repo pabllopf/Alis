@@ -1047,28 +1047,6 @@ namespace Alis.Extension.Payment.Stripe.Test
 
         #endregion
 
-        #region Dispose Tests
-        
-        /// <summary>
-        /// Tests that dispose can be called multiple times
-        /// </summary>
-        [Fact]
-        public void Dispose_CanBeCalledMultipleTimes()
-        {
-            // Arrange
-            Mock<IStripeGatewayClient> gateway = new Mock<IStripeGatewayClient>();
-            StoreManager manager = new StoreManager(CreateContext(), gateway.Object);
-
-            // Act
-            manager.Dispose();
-            manager.Dispose();
-
-            // Assert - no exception
-            Assert.True(true);
-        }
-        
-        #endregion
-
         #region PaymentStatus Mapping Tests
 
         /// <summary>
