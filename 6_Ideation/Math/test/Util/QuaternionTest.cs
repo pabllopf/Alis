@@ -241,5 +241,48 @@ namespace Alis.Core.Aspect.Math.Test.Util
 
             Assert.Equal(expectedString, quaternion.ToString());
         }
+
+        /// <summary>
+        /// Tests that quaternion division by identity quaternion returns same quaternion
+        /// </summary>
+        [Fact]
+        public void Quaternion_Division_ByIdentityQuaternion_ReturnsSameQuaternion()
+        {
+            Quaternion value = new Quaternion(1f, 2f, 3f, 4f);
+            Quaternion identity = new Quaternion(0f, 0f, 0f, 1f);
+
+            Quaternion result = value / identity;
+
+            Assert.Equal(value.X, result.X, 3);
+            Assert.Equal(value.Y, result.Y, 3);
+            Assert.Equal(value.Z, result.Z, 3);
+            Assert.Equal(value.W, result.W, 3);
+        }
+
+        /// <summary>
+        /// Tests that quaternion operator equality uses tolerance but equals object uses exact values
+        /// </summary>
+        [Fact]
+        public void Quaternion_OperatorEquality_UsesToleranceButEqualsObjectUsesExactValues()
+        {
+            Quaternion left = new Quaternion(1f, 2f, 3f, 4f);
+            Quaternion right = new Quaternion(1.05f, 2.05f, 3.05f, 4.05f);
+
+            Assert.True(left == right);
+            Assert.False(left.Equals((object)right));
+        }
+
+        /// <summary>
+        /// Tests that quaternion operator equality at exact tolerance boundary returns false
+        /// </summary>
+        [Fact]
+        public void Quaternion_OperatorEquality_AtExactToleranceBoundary_ReturnsFalse()
+        {
+            Quaternion left = new Quaternion(1f, 2f, 3f, 4f);
+            Quaternion right = new Quaternion(1.1f, 2f, 3f, 4f);
+
+            Assert.False(left == right);
+            Assert.True(left != right);
+        }
     }
 }

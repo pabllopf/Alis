@@ -31,6 +31,17 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
+        /// Tests that sqrt with perfect square returns expected value
+        /// </summary>
+        [Fact]
+        public void Sqrt_WithPerfectSquare_ReturnsExpectedValue()
+        {
+            float result = CustomMathF.Sqrt(9f);
+
+            Assert.Equal(3f, result, 3);
+        }
+
+        /// <summary>
         /// Tests that sin and cos with canonical angles return expected values
         /// </summary>
         [Fact]
@@ -97,6 +108,41 @@ namespace Alis.Core.Aspect.Math.Test
             Assert.Equal(7.5f, CustomMathF.Max(7.5f, 7.4f));
             Assert.Equal(7.4f, CustomMathF.Min(7.5f, 7.4f));
         }
+
+        /// <summary>
+        /// Tests that abs with negative and positive values returns magnitude
+        /// </summary>
+        [Fact]
+        public void Abs_WithNegativeAndPositiveValues_ReturnsMagnitude()
+        {
+            Assert.Equal(10f, CustomMathF.Abs(-10f));
+            Assert.Equal(10f, CustomMathF.Abs(10f));
+        }
+
+        /// <summary>
+        /// Tests that acos with bounds returns finite angles
+        /// </summary>
+        [Fact]
+        public void Acos_WithBounds_ReturnsFiniteAngles()
+        {
+            float acosOne = CustomMathF.Acos(1f);
+            float acosMinusOne = CustomMathF.Acos(-1f);
+
+            Assert.True(float.IsFinite(acosOne));
+            Assert.True(float.IsFinite(acosMinusOne));
+        }
+
+        /// <summary>
+        /// Tests that sin and cos with full turn are approximately canonical
+        /// </summary>
+        [Fact]
+        public void SinAndCos_WithFullTurn_AreApproximatelyCanonical()
+        {
+            float sin = CustomMathF.Sin(CustomMathF.Tau);
+            float cos = CustomMathF.Cos(CustomMathF.Tau);
+
+            Assert.Equal(0f, sin, 2);
+            Assert.Equal(1f, cos, 2);
+        }
     }
 }
-

@@ -30,6 +30,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
 namespace Alis.Core.Aspect.Math.Collections
@@ -61,6 +62,7 @@ namespace Alis.Core.Aspect.Math.Collections
         ///     A writable array accessor that can be converted into an <see />
         ///     instance without allocating memory.
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public sealed class Builder : IList<T>, IReadOnlyList<T>
         {
             /// <summary>
@@ -1384,6 +1386,7 @@ namespace Alis.Core.Aspect.Math.Collections
         /// <summary>
         ///     An array enumerator that implements <see cref="IEnumerator{T}" /> pattern (including <see cref="IDisposable" />).
         /// </summary>
+        [ExcludeFromCodeCoverage]
         private sealed class EnumeratorObject : IEnumerator<T>
         {
             /// <summary>

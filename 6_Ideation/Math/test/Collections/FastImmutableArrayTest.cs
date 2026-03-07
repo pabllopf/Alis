@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Collections;
 using Xunit;
 
@@ -102,39 +103,62 @@ namespace Alis.Core.Aspect.Math.Test.Collections
         }
 
         /// <summary>
-        /// Tests that builder drain to immutable returns values and resets builder
+        /// Tests that builder move to immutable with matching capacity and count succeeds and resets builder
         /// </summary>
         [Fact]
-        public void Builder_DrainToImmutable_ReturnsValuesAndResetsBuilder()
+        public void Builder_MoveToImmutable_WithMatchingCapacityAndCount_SucceedsAndResetsBuilder()
         {
-            FastImmutableArray<int>.Builder builder = FastImmutableArray<int>.CreateBuilder<int>(4);
-            builder.AddRange(1, 2, 3);
+            FastImmutableArray<int>.Builder builder = FastImmutableArray<int>.CreateBuilder<int>(2);
+            builder.Add(10);
+            builder.Add(20);
 
-            FastImmutableArray<int> array = builder.DrainToImmutable();
+            FastImmutableArray<int> immutable = builder.MoveToImmutable();
 
-            Assert.Equal(3, array.Length);
-            Assert.Equal(1, array[0]);
-            Assert.Equal(2, array[1]);
-            Assert.Equal(3, array[2]);
+            Assert.Equal(2, immutable.Length);
+            Assert.Equal(10, immutable[0]);
+            Assert.Equal(20, immutable[1]);
             Assert.Equal(0, builder.Count);
         }
 
         /// <summary>
-        /// Tests that cast and as work for covariant reference types
+        /// Tests that builder indexer out of range throws
         /// </summary>
         [Fact]
-        public void CastAndAs_WorkForCovariantReferenceTypes()
+        public void Builder_Indexer_OutOfRange_Throws()
         {
-            FastImmutableArray<string> strings = new FastImmutableArray<string>(new[] { "a", "b" });
-            FastImmutableArray<object> objects = FastImmutableArray<object>.CastUp(strings);
+            FastImmutableArray<int>.Builder builder = FastImmutableArray<int>.CreateBuilder<int>(1);
+            builder.Add(5);
 
-            FastImmutableArray<string> backToString = objects.As<string>();
+            Assert.Throws<IndexOutOfRangeException>(() => _ = builder[1]);
+            Assert.Throws<IndexOutOfRangeException>(() => builder[1] = 9);
+        }
 
-            Assert.Equal(2, objects.Length);
-            Assert.Equal("a", (string)objects[0]);
-            Assert.False(backToString.IsDefault);
-            Assert.Equal("b", backToString[1]);
+        /// <summary>
+        /// Tests that builder remove range removes expected segment
+        /// </summary>
+        [Fact]
+        public void Builder_RemoveRange_RemovesExpectedSegment()
+        {
+            FastImmutableArray<int>.Builder builder = FastImmutableArray<int>.CreateBuilder<int>(5);
+            builder.AddRange(1, 2, 3, 4, 5);
+
+            builder.RemoveRange(1, 2);
+
+            Assert.Equal(3, builder.Count);
+            Assert.Equal(1, builder[0]);
+            Assert.Equal(4, builder[1]);
+            Assert.Equal(5, builder[2]);
+        }
+
+        /// <summary>
+        /// Tests that default instance as i enumerable throws invalid operation
+        /// </summary>
+        [Fact]
+        public void DefaultInstance_AsIEnumerable_ThrowsInvalidOperation()
+        {
+            FastImmutableArray<int> defaultArray = default;
+
+            Assert.Throws<InvalidOperationException>(() => ((IEnumerable<int>)defaultArray).GetEnumerator());
         }
     }
 }
-

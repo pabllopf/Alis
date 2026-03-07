@@ -86,5 +86,38 @@ namespace Alis.Core.Aspect.Math.Test.Util
 
             Assert.Throws<ArgumentException>(() => RandomUtils.GetInt32(value));
         }
+
+        /// <summary>
+        /// Tests that get int 32 with equal min and max returns that exact value
+        /// </summary>
+        [Fact]
+        public void GetInt32_WithEqualMinAndMax_ReturnsThatExactValue()
+        {
+            int result = RandomUtils.GetInt32(7, 7);
+
+            Assert.Equal(7, result);
+        }
+
+        /// <summary>
+        /// Tests that get int 32 with zero upper bound returns zero
+        /// </summary>
+        [Fact]
+        public void GetInt32_WithZeroUpperBound_ReturnsZero()
+        {
+            int result = RandomUtils.GetInt32(0);
+
+            Assert.Equal(0, result);
+        }
+
+        /// <summary>
+        /// Tests that get int 32 with negative and positive bounds returns within range
+        /// </summary>
+        [Fact]
+        public void GetInt32_WithNegativeAndPositiveBounds_ReturnsWithinRange()
+        {
+            int result = RandomUtils.GetInt32(-10, 10);
+
+            Assert.InRange(result, -10, 10);
+        }
     }
 }

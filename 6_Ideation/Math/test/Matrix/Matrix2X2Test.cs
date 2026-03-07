@@ -113,5 +113,64 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Assert.Equal(8.0f, result.Ey.X);
             Assert.Equal(12.0f, result.Ey.Y);
         }
+
+        /// <summary>
+        /// Tests that matrix 2 x 2 angle constructor and get angle are consistent
+        /// </summary>
+        [Fact]
+        public void Matrix2X2_AngleConstructor_AndGetAngle_AreConsistent()
+        {
+            float angle = 0.5f;
+            Matrix2X2 matrix = new Matrix2X2(angle);
+
+            Assert.Equal(-angle, matrix.GetAngle(), 3);
+        }
+
+        /// <summary>
+        /// Tests that matrix 2 x 2 get inverse returns expected values
+        /// </summary>
+        [Fact]
+        public void Matrix2X2_GetInverse_ReturnsExpectedValues()
+        {
+            Matrix2X2 matrix = new Matrix2X2(2f, 0f, 0f, 4f);
+
+            Matrix2X2 inverse = matrix.GetInverse();
+
+            Assert.Equal(0.5f, inverse.Ex.X, 4);
+            Assert.Equal(0f, inverse.Ex.Y, 4);
+            Assert.Equal(0f, inverse.Ey.X, 4);
+            Assert.Equal(0.25f, inverse.Ey.Y, 4);
+        }
+
+        /// <summary>
+        /// Tests that matrix 2 x 2 inverse property returns expected values
+        /// </summary>
+        [Fact]
+        public void Matrix2X2_InverseProperty_ReturnsExpectedValues()
+        {
+            Matrix2X2 matrix = new Matrix2X2(2f, 0f, 0f, 4f);
+
+            Matrix2X2 inverse = matrix.Inverse;
+
+            Assert.Equal(0.5f, inverse.Ex.X, 4);
+            Assert.Equal(0f, inverse.Ex.Y, 4);
+            Assert.Equal(0f, inverse.Ey.X, 4);
+            Assert.Equal(0.25f, inverse.Ey.Y, 4);
+        }
+
+        /// <summary>
+        /// Tests that matrix 2 x 2 solve returns expected vector
+        /// </summary>
+        [Fact]
+        public void Matrix2X2_Solve_ReturnsExpectedVector()
+        {
+            Matrix2X2 matrix = new Matrix2X2(2f, 0f, 0f, 4f);
+            Vector2F b = new Vector2F(4f, 8f);
+
+            Vector2F x = matrix.Solve(b);
+
+            Assert.Equal(2f, x.X, 4);
+            Assert.Equal(2f, x.Y, 4);
+        }
     }
 }

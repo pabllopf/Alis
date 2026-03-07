@@ -75,6 +75,49 @@ namespace Alis.Core.Aspect.Math.Test
 
             Assert.Equal(2u, rotated);
         }
+
+        /// <summary>
+        /// Tests that add changing order changes hash
+        /// </summary>
+        [Fact]
+        public void Add_ChangingOrder_ChangesHash()
+        {
+            HashCode first = new HashCode();
+            first.Add(1);
+            first.Add(2);
+            first.Add(3);
+
+            HashCode second = new HashCode();
+            second.Add(3);
+            second.Add(2);
+            second.Add(1);
+
+            Assert.NotEqual(first.ToHashCode(), second.ToHashCode());
+        }
+
+        /// <summary>
+        /// Tests that to hash code without adds is deterministic per process
+        /// </summary>
+        [Fact]
+        public void ToHashCode_WithoutAdds_IsDeterministicPerProcess()
+        {
+            HashCode first = new HashCode();
+            HashCode second = new HashCode();
+
+            Assert.Equal(first.ToHashCode(), second.ToHashCode());
+        }
+
+        /// <summary>
+        /// Tests that rotate left with edge offsets returns expected value
+        /// </summary>
+        [Fact]
+        public void RotateLeft_WithEdgeOffsets_ReturnsExpectedValue()
+        {
+            uint value = 0x80000001;
+
+            Assert.Equal(value, HashCode.RotateLeft(value, 0));
+            Assert.Equal(0xC0000000u, HashCode.RotateLeft(0x60000000u, 1));
+            Assert.Equal(0xC0000000u, HashCode.RotateLeft(0x80000001u, 31));
+        }
     }
 }
-

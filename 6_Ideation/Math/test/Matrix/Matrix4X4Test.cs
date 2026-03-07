@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math.Matrix;
+using Alis.Core.Aspect.Math.Vector;
 using Xunit;
 
 namespace Alis.Core.Aspect.Math.Test.Matrix
@@ -332,5 +333,68 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             // Assert
             Assert.Equal(expected, result);
         }
+
+        /// <summary>
+        /// Tests that indexer get and set works for valid coordinates
+        /// </summary>
+        [Fact]
+        public void Indexer_GetAndSet_WorksForValidCoordinates()
+        {
+            Matrix4X4 matrix = Matrix4X4.Identity;
+
+            matrix[2, 3] = 9f;
+
+            Assert.Equal(9f, matrix[2, 3]);
+            Assert.Equal(1f, matrix[0, 0]);
+        }
+
+        /// <summary>
+        /// Tests that indexer invalid coordinates throw custom index out of range exception
+        /// </summary>
+        [Fact]
+        public void Indexer_InvalidCoordinates_ThrowCustomIndexOutOfRangeException()
+        {
+            Matrix4X4 matrix = Matrix4X4.Identity;
+
+            Assert.Throws<CustomIndexOutOfRangeException>(() => _ = matrix[4, 0]);
+            Assert.Throws<CustomIndexOutOfRangeException>(() => matrix[0, 4] = 1f);
+        }
+
+        /// <summary>
+        /// Tests that create translation sets translation row
+        /// </summary>
+        [Fact]
+        public void CreateTranslation_SetsTranslationRow()
+        {
+            Matrix4X4 matrix = Matrix4X4.CreateTranslation(new Vector3F(3f, 4f, 5f));
+
+            Assert.Equal(3f, matrix.M41);
+            Assert.Equal(4f, matrix.M42);
+            Assert.Equal(5f, matrix.M43);
+            Assert.Equal(1f, matrix.M44);
+        }
+
+        /// <summary>
+        /// Tests that create perspective field of view computes expected entries
+        /// </summary>
+        [Fact]
+        public void CreatePerspectiveFieldOfView_ComputesExpectedEntries()
+        {
+            float fov = CustomMathF.Pi / 2f;
+            float aspect = 2f;
+            float near = 1f;
+            float far = 10f;
+
+            Matrix4X4 matrix = Matrix4X4.CreatePerspectiveFieldOfView(fov, aspect, near, far);
+
+            float expectedY = 1f / CustomMathF.Tan(fov / 2f);
+            float expectedX = expectedY / aspect;
+            Assert.Equal(expectedX, matrix.M11, 3);
+            Assert.Equal(expectedY, matrix.M22, 3);
+            Assert.Equal(far / (near - far), matrix.M33, 3);
+            Assert.Equal(-near * far / (near - far), matrix.M34, 3);
+            Assert.Equal(-1f, matrix.M43, 3);
+        }
     }
 }
+
