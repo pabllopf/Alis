@@ -37,7 +37,7 @@ namespace Alis.Extension.Payment.Stripe.Test
     /// </summary>
     public class ResultModelsTest
     {
-        #region CheckoutSessionResult Tests
+        
 
         /// <summary>
         /// Tests that checkout session result can be instantiated
@@ -80,9 +80,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal("usd", result.Currency);
         }
 
-        #endregion
+        
 
-        #region PaymentIntentResult Tests
+        
 
         /// <summary>
         /// Tests that payment intent result can be instantiated
@@ -136,9 +136,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal(PaymentStatus.Unknown, result.Status);
         }
 
-        #endregion
+        
 
-        #region RefundResult Tests
+        
 
         /// <summary>
         /// Tests that refund result can be instantiated
@@ -177,7 +177,7 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal("succeeded", result.Status);
         }
 
-        #endregion
+        
     }
 }
 

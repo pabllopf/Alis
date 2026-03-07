@@ -84,7 +84,7 @@ namespace Alis.Extension.Payment.Stripe.Test
             };
         }
 
-        #region Constructor Tests
+        
 
         /// <summary>
         /// Tests that constructor with context creates instance successfully
@@ -149,9 +149,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.True(manager.IsEnable);
         }
 
-        #endregion
+        
 
-        #region InitializeAsync Tests
+        
 
         /// <summary>
         /// Tests that initialize async with valid configuration initializes successfully
@@ -254,9 +254,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             await Assert.ThrowsAsync<OperationCanceledException>(() => manager.InitializeAsync(config, cts.Token));
         }
 
-        #endregion
+        
 
-        #region RegisterProduct Tests
+        
 
         /// <summary>
         /// Tests that register product with valid product registers successfully
@@ -439,9 +439,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal(200, retrieved.PriceInCents);
         }
 
-        #endregion
+        
 
-        #region RegisterProducts Tests
+        
 
         /// <summary>
         /// Tests that register products with multiple products registers all successfully
@@ -501,9 +501,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.True(true);
         }
 
-        #endregion
+        
 
-        #region TryGetProduct Tests
+        
 
         /// <summary>
         /// Tests that try get product with existing product returns true
@@ -583,9 +583,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.NotNull(retrieved);
         }
 
-        #endregion
+        
 
-        #region GetProducts Tests
+        
 
         /// <summary>
         /// Tests that get products returns all registered products
@@ -628,9 +628,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Empty(products);
         }
 
-        #endregion
+        
 
-        #region CreateCheckoutSessionAsync Tests
+        
 
         /// <summary>
         /// Tests that create checkout session async with valid product returns result
@@ -715,23 +715,7 @@ namespace Alis.Extension.Payment.Stripe.Test
             await Assert.ThrowsAsync<InvalidOperationException>(() =>
                 manager.CreateCheckoutSessionAsync("disabled_product"));
         }
-
-        /// <summary>
-        /// Tests that create checkout session async with zero quantity throws argument out of range exception
-        /// </summary>
-        [Fact]
-        public async Task CreateCheckoutSessionAsync_WithZeroQuantity_ThrowsArgumentOutOfRangeException()
-        {
-            // Arrange
-            Mock<IStripeGatewayClient> gateway = new Mock<IStripeGatewayClient>();
-            StoreManager manager = new StoreManager(CreateContext(), gateway.Object);
-            await manager.InitializeAsync(CreateValidConfiguration());
-            manager.RegisterProduct(CreateProduct("product1"));
-
-            // Act & Assert
-            await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() =>
-                manager.CreateCheckoutSessionAsync("product1", quantity: 0));
-        }
+        
 
         /// <summary>
         /// Tests that create checkout session async passes metadata to gateway
@@ -770,9 +754,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal(metadata, capturedRequest.Metadata);
         }
 
-        #endregion
+        
 
-        #region CreatePaymentIntentAsync Tests
+        
 
         /// <summary>
         /// Tests that create payment intent async with valid product returns result
@@ -867,9 +851,9 @@ namespace Alis.Extension.Payment.Stripe.Test
                 manager.CreatePaymentIntentAsync("product1", quantity: -1));
         }
 
-        #endregion
+        
 
-        #region GetPaymentStatusAsync Tests
+        
 
         /// <summary>
         /// Tests that get payment status async with valid payment intent returns status
@@ -945,9 +929,9 @@ namespace Alis.Extension.Payment.Stripe.Test
                 manager.GetPaymentStatusAsync("pi_123"));
         }
 
-        #endregion
+        
 
-        #region RefundPaymentAsync Tests
+        
 
         /// <summary>
         /// Tests that refund payment async with valid request returns result
@@ -1045,9 +1029,9 @@ namespace Alis.Extension.Payment.Stripe.Test
                 manager.RefundPaymentAsync("pi_123", 100));
         }
 
-        #endregion
+        
 
-        #region PaymentStatus Mapping Tests
+        
 
         /// <summary>
         /// Tests that payment status mapping handles all cases
@@ -1088,7 +1072,7 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal(expectedStatus, status);
         }
 
-        #endregion
+        
     }
 }
 

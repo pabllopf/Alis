@@ -52,7 +52,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
         /// </summary>
         public JsonParserUnitTest() => _parser = new JsonParser(new EscapeSequenceHandler());
 
-        #region Error Handling Tests
+        
 
         /// <summary>
         ///     Tests that parse to dictionary null input throws argument null exception
@@ -64,9 +64,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
             Assert.Throws<ArgumentNullException>(() => _parser.ParseToDictionary(null));
         }
 
-        #endregion
+        
 
-        #region Mixed Content Tests
+        
 
         /// <summary>
         ///     Tests that parse to dictionary mixed types parses all correctly
@@ -89,9 +89,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
             Assert.Equal("{}", result["obj"]);
         }
 
-        #endregion
+        
 
-        #region Case Sensitivity Tests
+        
 
         /// <summary>
         ///     Tests that parse to dictionary case sensitive keys treats as different
@@ -111,9 +111,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
             Assert.Equal("lower", result["key"]);
         }
 
-        #endregion
+        
 
-        #region Constructor Tests
+        
 
         /// <summary>
         ///     Tests that constructor with valid handler creates instance
@@ -138,9 +138,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
             Assert.Throws<ArgumentNullException>(() => new JsonParser(null));
         }
 
-        #endregion
+        
 
-        #region Basic Parsing Tests
+        
 
         /// <summary>
         ///     Tests that parse to dictionary empty json returns empty dictionary
@@ -217,9 +217,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
             Assert.Equal(count, result.Count);
         }
 
-        #endregion
+        
 
-        #region Whitespace Handling Tests
+        
 
         /// <summary>
         ///     Tests that parse to dictionary leading whitespace ignores whitespace
@@ -321,9 +321,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
             Assert.Single(result);
         }
 
-        #endregion
+        
 
-        #region String Value Tests
+        
 
         /// <summary>
         ///     Tests that parse to dictionary empty string value returns empty string
@@ -406,9 +406,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
             Assert.Equal(specialChar, result["char"]);
         }
 
-        #endregion
+        
 
-        #region Nested Structure Tests
+        
 
         /// <summary>
         ///     Tests that parse to dictionary nested object returns raw json
@@ -479,9 +479,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
             Assert.Contains("b", result["obj2"]);
         }
 
-        #endregion
+        
 
-        #region Array Tests
+        
 
         /// <summary>
         ///     Tests that parse to dictionary empty array returns empty brackets
@@ -569,9 +569,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
             Assert.Contains("Bob", result["users"]);
         }
 
-        #endregion
+        
 
-        #region Escape Sequence Tests
+        
 
         /// <summary>
         ///     Tests that parse to dictionary escaped quote unescapes correctly
@@ -655,9 +655,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
             Assert.Contains("\r", result["text"]);
         }
 
-        #endregion
+        
 
-        #region Unicode Tests
+        
 
         /// <summary>
         ///     Tests that parse to dictionary unicode characters parses correctly
@@ -702,9 +702,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
             Assert.Equal(emoji, result["emoji"]);
         }
 
-        #endregion
+        
 
-        #region Property Name Tests
+        
 
         /// <summary>
         ///     Tests that parse to dictionary various property names parses correctly
@@ -772,9 +772,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
             Assert.True(result.ContainsKey(longName));
         }
 
-        #endregion
+        
 
-        #region Value Type Tests
+        
 
         /// <summary>
         ///     Tests that parse to dictionary integer values returns as string
@@ -827,9 +827,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
             Assert.Equal(value, result["flag"]);
         }
 
-        #endregion
+        
 
-        #region Boundary Tests
+        
 
         /// <summary>
         ///     Tests that parse to dictionary very long value parses correctly
@@ -880,9 +880,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
             Assert.Equal(int.MinValue.ToString(), result["min"]);
         }
 
-        #endregion
+        
 
-        #region Performance Tests
+        
 
         /// <summary>
         ///     Tests that parse to dictionary large json completes reasonably
@@ -928,9 +928,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
             Assert.True(sw.ElapsedMilliseconds < 100);
         }
 
-        #endregion
+        
 
-        #region Duplicate Key Tests
+        
 
         /// <summary>
         ///     Tests that parse to dictionary duplicate keys uses last value
@@ -965,6 +965,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
             Assert.Equal("4", result["b"]);
         }
 
-        #endregion
+        
     }
 }

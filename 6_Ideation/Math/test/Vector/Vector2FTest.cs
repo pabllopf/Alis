@@ -41,7 +41,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
     /// </summary>
     public class Vector2FTest
     {
-        #region Constructors
+        
         
         /// <summary>
         /// Tests that constructor with single value initializes both components
@@ -67,9 +67,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(4f, v.Y);
         }
 
-        #endregion
+        
 
-        #region Static Properties
+        
 
         /// <summary>
         /// Tests that static property zero returns vector with zero components
@@ -119,9 +119,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(1f, v.Y);
         }
 
-        #endregion
+        
 
-        #region Arithmetic Operators
+        
 
         /// <summary>
         /// Tests that operator addition adds two vectors
@@ -242,9 +242,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(2, result.Y);
         }
 
-        #endregion
+        
 
-        #region Comparison Operators
+        
 
         /// <summary>
         /// Tests that operator equality with equal vectors returns true
@@ -306,9 +306,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.False(v1 != v2);
         }
 
-        #endregion
+        
 
-        #region Static Methods - Basic Operations
+        
 
         /// <summary>
         /// Tests that add static method adds two vectors
@@ -429,9 +429,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(-4, result.Y);
         }
 
-        #endregion
+        
 
-        #region Static Methods - Geometric Operations
+        
 
         /// <summary>
         /// Tests that distance calculates euclidean distance
@@ -637,9 +637,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(1, result.Y);
         }
 
-        #endregion
+        
 
-        #region Instance Methods
+        
 
         /// <summary>
         /// Tests that length calculates vector length
@@ -733,9 +733,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Throws<ArgumentException>(() => v.CopyTo(array, 1));
         }
 
-        #endregion
+        
 
-        #region Matrix Transformation
+        
 
         /// <summary>
         /// Tests that transform with matrix 3 x 2 transforms vector
@@ -819,9 +819,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(3f, result.Y);
         }
 
-        #endregion
+        
 
-        #region Ref Operations
+        
 
         /// <summary>
         /// Tests that dot ref method calculates dot product
@@ -970,9 +970,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(25, result);
         }
 
-        #endregion
+        
 
-        #region Equality and ToString
+        
 
         /// <summary>
         /// Tests that equals with same vector returns true
@@ -1077,9 +1077,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Contains("2.5", str);
         }
 
-        #endregion
+        
 
-        #region Serialization
+        
 
         /// <summary>
         /// Tests that get object data serializes vector
@@ -1096,7 +1096,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(4f, serializationInfo.GetSingle("y"));
         }
 
-        #endregion
+        
         
         /// <summary>
         /// Tests that vector 2 normalize

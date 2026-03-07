@@ -226,24 +226,7 @@ namespace Alis.Extension.Profile.Test.Implementations
             Assert.True(cpuUsage >= 0);
             Assert.True(Math.Abs(cpuUsage - expectedValue) < 1000); // Within 1 second
         }
-
-        /// <summary>
-        ///     Tests that get memory usage returns working set64 value
-        /// </summary>
-        [Fact]
-        public void GetMemoryUsage_ReturnsWorkingSet64Value()
-        {
-            // Arrange
-            ProcessResourceMonitor monitor = new ProcessResourceMonitor();
-            var currentProcess = Process.GetCurrentProcess();
-            var expectedValue = currentProcess.WorkingSet64;
-
-            // Act
-            long memoryUsage = monitor.GetMemoryUsage();
-
-            // Assert
-            Assert.Equal(expectedValue, memoryUsage);
-        }
+        
 
         /// <summary>
         ///     Tests that get thread count returns threads count

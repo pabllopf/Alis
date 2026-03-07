@@ -40,7 +40,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
     /// </summary>
     public class JsonNativeAotAdvancedTest
     {
-        #region Round-Trip Tests with Different Types
+        
 
         /// <summary>
         ///     Tests that round trip integer value preserves value
@@ -134,9 +134,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal(original.Timestamp.Day, restored.Timestamp.Day);
         }
 
-        #endregion
+        
 
-        #region ParseJsonToDictionary Tests
+        
 
         /// <summary>
         ///     Tests that parse json to dictionary with simple object returns all properties
@@ -228,9 +228,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal(count, dict.Count);
         }
 
-        #endregion
+        
 
-        #region File Operations Tests
+        
 
         /// <summary>
         ///     Tests that serialize to file and deserialize from file preserves data
@@ -294,9 +294,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             }
         }
 
-        #endregion
+        
 
-        #region Error Handling Tests
+        
 
         /// <summary>
         ///     Tests that serialize with null throws argument null exception
@@ -367,9 +367,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
                 JsonNativeAot.SerializeToFile(obj, "file", null));
         }
 
-        #endregion
+        
 
-        #region Helper Classes
+        
 
         /// <summary>
         ///     The test int class
@@ -561,6 +561,6 @@ namespace Alis.Core.Aspect.Data.Test.Json
             }
         }
 
-        #endregion
+        
     }
 }

@@ -37,7 +37,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Models
     ///     Includes structs, classes, and various implementations.
     /// </summary>
 
-    #region Simple Value Types
+    
 
     /// <summary>
     ///     Simple person class for basic testing
@@ -97,5 +97,5 @@ namespace Alis.Core.Aspect.Data.Test.Json.Models
         }
     }
 
-    #endregion
+    
 }

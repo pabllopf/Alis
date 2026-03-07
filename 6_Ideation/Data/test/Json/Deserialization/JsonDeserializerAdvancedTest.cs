@@ -58,7 +58,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             _deserializer = new JsonDeserializer(parser);
         }
 
-        #region Boolean Deserialization Tests
+        
 
         /// <summary>
         ///     Tests that deserialize boolean value parses correctly
@@ -78,9 +78,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             Assert.Equal(expected, obj.Flag);
         }
 
-        #endregion
+        
 
-        #region Double Deserialization Tests
+        
 
         /// <summary>
         ///     Tests that deserialize double value parses correctly
@@ -100,9 +100,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             Assert.Equal(expected, obj.Number, 0.001);
         }
 
-        #endregion
+        
 
-        #region Integer Deserialization Tests
+        
 
         /// <summary>
         ///     Tests that deserialize integer value parses correctly
@@ -138,9 +138,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             Assert.Equal(42, obj.Value);
         }
 
-        #endregion
+        
 
-        #region String Deserialization Tests
+        
 
         /// <summary>
         ///     Tests that deserialize string value parses correctly
@@ -175,9 +175,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             Assert.Equal("こんにちは", obj.Text);
         }
 
-        #endregion
+        
 
-        #region DateTime and Guid Deserialization Tests
+        
 
         /// <summary>
         ///     Tests that deserialize date time value parses correctly
@@ -215,9 +215,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             Assert.Equal(expected, obj.Id);
         }
 
-        #endregion
+        
 
-        #region Missing Property Tests
+        
 
         /// <summary>
         ///     Tests that deserialize missing int property uses default value
@@ -267,9 +267,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             Assert.False(obj.Flag);
         }
 
-        #endregion
+        
 
-        #region Invalid Value Tests
+        
 
         /// <summary>
         ///     Tests that deserialize invalid integer value uses default value
@@ -319,9 +319,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             Assert.Equal(Guid.Empty, obj.Id);
         }
 
-        #endregion
+        
 
-        #region Extra Properties Tests
+        
 
         /// <summary>
         ///     Tests that deserialize with extra properties ignores extra
@@ -355,9 +355,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             Assert.Equal(42, obj.Value);
         }
 
-        #endregion
+        
 
-        #region Helper Test Classes
+        
 
         /// <summary>
         ///     The test int object class
@@ -693,6 +693,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             }
         }
 
-        #endregion
+        
     }
 }

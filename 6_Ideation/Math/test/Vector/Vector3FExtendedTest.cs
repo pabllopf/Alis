@@ -39,7 +39,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
     /// </summary>
     public class Vector3FExtendedTest
     {
-        #region Constructors
+        
 
         /// <summary>
         /// Tests that constructor with three values initializes components correctly
@@ -71,9 +71,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         /// <summary>
         /// Tests that constructor with single value initializes all components
         /// </summary>
-        #endregion
+        
 
-        #region Static Properties
+        
 
         [Fact]
         public void StaticProperty_Zero_ReturnsVectorWithZeroComponents()
@@ -137,9 +137,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(1f, v.Z);
         }
 
-        #endregion
+        
 
-        #region Arithmetic Operators
+        
 
         /// <summary>
         /// Tests that operator addition adds two vectors
@@ -268,9 +268,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(4, result.Z);
         }
 
-        #endregion
+        
 
-        #region Comparison Operators
+        
 
         /// <summary>
         /// Tests that operator equality with equal vectors returns true
@@ -308,9 +308,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.True(v1 != v2);
         }
 
-        #endregion
+        
 
-        #region Static Methods - Core Operations
+        
 
         /// <summary>
         /// Tests that dot calculates dot product
@@ -373,9 +373,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(6f / 7f, result.Z, 3);
         }
 
-        #endregion
+        
 
-        #region Instance Methods
+        
 
         /// <summary>
         /// Tests that length calculates vector length
@@ -405,9 +405,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
 
         /// <summary>
 
-        #endregion
+        
 
-        #region Equality and ToString
+        
 
         /// <summary>
         /// Tests that equals with same vector returns true
@@ -485,9 +485,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Contains("3.89", str);
         }
 
-        #endregion
+        
 
-        #region Serialization
+        
 
         /// <summary>
         /// Tests that get object data serializes vector
@@ -505,7 +505,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(3f, serializationInfo.GetSingle("z"));
         }
 
-        #endregion
+        
     }
 }
 

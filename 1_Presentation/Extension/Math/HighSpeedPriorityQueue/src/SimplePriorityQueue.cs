@@ -511,6 +511,11 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
 
 
 
+        /// <summary>
+        /// Tries the first using the specified first
+        /// </summary>
+        /// <param name="first">The first</param>
+        /// <returns>The bool</returns>
         [ExcludeFromCodeCoverage]
         public bool TryFirst(out TItem first)
         {

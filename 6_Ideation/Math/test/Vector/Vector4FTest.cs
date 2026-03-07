@@ -183,7 +183,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(40f, serializationInfo.GetSingle("w"));
         }
 
-        #region Get Method - Comprehensive Tests
+        
 
         /// <summary>
         /// Tests that get with index 0 returns x component
@@ -468,9 +468,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(0f, result);
         }
 
-        #endregion
+        
 
-        #region Constructor Tests
+        
 
         /// <summary>
         /// Tests that constructor with four values initializes all components
@@ -514,9 +514,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(-4f, v.W);
         }
 
-        #endregion
+        
 
-        #region Property Tests
+        
 
         /// <summary>
         /// Tests that x property can be set and retrieved
@@ -589,9 +589,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(40f, v.W);
         }
 
-        #endregion
+        
 
-        #region Struct Behavior Tests
+        
 
         /// <summary>
         /// Tests that vector 4 f is value type
@@ -626,9 +626,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.True(typeof(Vector4F).IsLayoutSequential);
         }
 
-        #endregion
+        
 
-        #region Equality Tests
+        
 
         /// <summary>
         /// Tests that equality with same values returns true
@@ -666,9 +666,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(v1.GetHashCode(), v2.GetHashCode());
         }
 
-        #endregion
+        
 
-        #region Serialization Tests
+        
 
         /// <summary>
         /// Tests that get object data serializes all components
@@ -704,7 +704,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(8.5f, info.GetSingle("w"));
         }
 
-        #endregion
+        
     }
 }
 

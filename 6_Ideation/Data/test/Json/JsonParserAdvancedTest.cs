@@ -45,7 +45,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         /// </summary>
         private readonly IJsonParser _parser = new JsonParser(new EscapeSequenceHandler());
 
-        #region Property Count Tests
+        
 
         /// <summary>
         ///     Tests that parse to dictionary with multiple properties returns correct count
@@ -70,9 +70,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal(count, dict.Count);
         }
 
-        #endregion
+        
 
-        #region Boolean Value Tests
+        
 
         /// <summary>
         ///     Tests that parse to dictionary with boolean value returns as string
@@ -91,9 +91,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal(boolValue, dict["flag"]);
         }
 
-        #endregion
+        
 
-        #region Performance Tests
+        
 
         /// <summary>
         ///     Tests that parse to dictionary with large json completes in reasonable time
@@ -120,9 +120,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(stopwatch.ElapsedMilliseconds < 1000, "Parsing should complete in less than 1 second");
         }
 
-        #endregion
+        
 
-        #region Whitespace Handling Tests
+        
 
         /// <summary>
         ///     Tests that parse to dictionary with leading whitespace parses correctly
@@ -205,9 +205,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Single(dict);
         }
 
-        #endregion
+        
 
-        #region Complex Value Tests
+        
 
         /// <summary>
         ///     Tests that parse to dictionary with nested object returns raw json
@@ -292,9 +292,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Contains("level3", dict["level1"]);
         }
 
-        #endregion
+        
 
-        #region Special Characters Tests
+        
 
         /// <summary>
         ///     Tests that parse to dictionary with special chars in value parses correctly
@@ -345,9 +345,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal("😀", dict["emoji"]);
         }
 
-        #endregion
+        
 
-        #region Escape Sequence Tests
+        
 
         /// <summary>
         ///     Tests that parse to dictionary with escape sequences unescapes correctly
@@ -399,9 +399,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Contains("\\", dict["path"]);
         }
 
-        #endregion
+        
 
-        #region Number Value Tests
+        
 
         /// <summary>
         ///     Tests that parse to dictionary with integer value returns as string
@@ -437,9 +437,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal(number, dict["number"]);
         }
 
-        #endregion
+        
 
-        #region Empty and Null Tests
+        
 
         /// <summary>
         ///     Tests that parse to dictionary with empty string returns empty
@@ -473,9 +473,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal("   ", dict["key"]);
         }
 
-        #endregion
+        
 
-        #region Multiple Properties Tests
+        
 
         /// <summary>
         ///     Tests that parse to dictionary with mixed types parses all correctly
@@ -513,9 +513,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal("second", dict["key"]);
         }
 
-        #endregion
+        
 
-        #region Edge Case Tests
+        
 
         /// <summary>
         ///     Tests that parse to dictionary with long property name parses correctly
@@ -567,6 +567,6 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal(3, dict.Count);
         }
 
-        #endregion
+        
     }
 }

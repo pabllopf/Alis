@@ -344,13 +344,13 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.False(property.CanWrite);
         }
 
-        #region Helper Methods
+        
 
         /// <summary>
         ///     Helper method to extract rule from provider with generic constraint
         /// </summary>
         private Rule GetRuleFromProvider<T>(T provider) where T : IRuleProvider => provider.Rule;
 
-        #endregion
+        
     }
 }

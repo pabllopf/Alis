@@ -38,7 +38,7 @@ namespace Alis.Extension.Payment.Stripe.Test
     /// </summary>
     public class StripeRequestModelsTest
     {
-        #region StripeCheckoutSessionRequest Tests
+        
 
         /// <summary>
         /// Tests that stripe checkout session request can be instantiated
@@ -94,9 +94,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal(metadata, request.Metadata);
         }
 
-        #endregion
+        
 
-        #region StripeCheckoutSessionResponse Tests
+        
 
         /// <summary>
         /// Tests that stripe checkout session response can be instantiated
@@ -131,9 +131,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal("pi_test_intent_456", response.PaymentIntentId);
         }
 
-        #endregion
+        
 
-        #region StripePaymentIntentRequest Tests
+        
 
         /// <summary>
         /// Tests that stripe payment intent request can be instantiated
@@ -183,9 +183,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.True(request.EnableAutomaticPaymentMethods);
         }
 
-        #endregion
+        
 
-        #region StripePaymentIntentResponse Tests
+        
 
         /// <summary>
         /// Tests that stripe payment intent response can be instantiated
@@ -220,9 +220,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal("succeeded", response.Status);
         }
 
-        #endregion
+        
 
-        #region StripeRefundRequest Tests
+        
 
         /// <summary>
         /// Tests that stripe refund request can be instantiated
@@ -277,9 +277,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal("fraudulent", request.Reason);
         }
 
-        #endregion
+        
 
-        #region StripeRefundResponse Tests
+        
 
         /// <summary>
         /// Tests that stripe refund response can be instantiated
@@ -316,7 +316,7 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal("succeeded", response.Status);
         }
 
-        #endregion
+        
     }
 }
 

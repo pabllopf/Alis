@@ -335,7 +335,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Assert.True(true);
         }
 
-        #region Test Helper Types
+        
 
         /// <summary>
         ///     The test class
@@ -480,6 +480,6 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Value3
         }
 
-        #endregion
+        
     }
 }

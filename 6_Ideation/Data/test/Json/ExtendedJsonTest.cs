@@ -41,7 +41,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
     /// </summary>
     public class ExtendedJsonTest
     {
-        #region Serialization Tests
+        
 
         /// <summary>
         ///     Tests that serialize with various integers serializes correctly
@@ -113,9 +113,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.NotEmpty(json);
         }
 
-        #endregion
+        
 
-        #region Deserialization Tests
+        
 
         /// <summary>
         ///     Tests that deserialize with integer values parses correctly
@@ -201,9 +201,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal(42, obj.IntValue);
         }
 
-        #endregion
+        
 
-        #region Round-Trip Tests
+        
 
         /// <summary>
         ///     Tests that round trip simple object preserves data
@@ -252,9 +252,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal(original.BoolValue, restored.BoolValue);
         }
 
-        #endregion
+        
 
-        #region Parsing Tests
+        
 
         /// <summary>
         ///     Tests that parse json to dictionary with simple json returns all properties
@@ -322,9 +322,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal(2, dict.Count);
         }
 
-        #endregion
+        
 
-        #region Edge Case Tests
+        
 
         /// <summary>
         ///     Tests that serialize with empty string handles correctly
@@ -408,9 +408,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(dict["Items"].EndsWith("]"));
         }
 
-        #endregion
+        
 
-        #region Error Handling Tests
+        
 
         /// <summary>
         ///     Tests that parse json to dictionary with null input throws argument null exception
@@ -432,9 +432,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Throws<ArgumentNullException>(() => JsonNativeAot.Serialize<TestObject>(null));
         }
 
-        #endregion
+        
 
-        #region Complex Type Tests
+        
 
         /// <summary>
         ///     Tests that serialize with guid serializes as string
@@ -487,9 +487,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal(guid, obj.GuidValue);
         }
 
-        #endregion
+        
 
-        #region Helper Classes
+        
 
         /// <summary>
         ///     The test object class
@@ -614,6 +614,6 @@ namespace Alis.Core.Aspect.Data.Test.Json
             }
         }
 
-        #endregion
+        
     }
 }

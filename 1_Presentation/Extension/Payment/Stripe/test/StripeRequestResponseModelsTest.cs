@@ -38,7 +38,7 @@ namespace Alis.Extension.Payment.Stripe.Test
     /// </summary>
     public class StripeRequestResponseModelsTest
     {
-        #region StripeCheckoutSessionRequest Tests
+        
 
         /// <summary>
         /// Tests that stripe checkout session request properties initialize correctly
@@ -99,9 +99,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Null(request.Metadata);
         }
 
-        #endregion
+        
 
-        #region StripeCheckoutSessionResponse Tests
+        
 
         /// <summary>
         /// Tests that stripe checkout session response properties initialize correctly
@@ -143,9 +143,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Null(response.PaymentIntentId);
         }
 
-        #endregion
+        
 
-        #region StripePaymentIntentRequest Tests
+        
 
         /// <summary>
         /// Tests that stripe payment intent request properties initialize correctly
@@ -188,9 +188,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.False(request.EnableAutomaticPaymentMethods);
         }
 
-        #endregion
+        
 
-        #region StripePaymentIntentResponse Tests
+        
 
         /// <summary>
         /// Tests that stripe payment intent response properties initialize correctly
@@ -238,9 +238,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal(status, response.Status);
         }
 
-        #endregion
+        
 
-        #region StripeRefundRequest Tests
+        
 
         /// <summary>
         /// Tests that stripe refund request properties initialize correctly
@@ -305,9 +305,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal(reason, request.Reason);
         }
 
-        #endregion
+        
 
-        #region StripeRefundResponse Tests
+        
 
         /// <summary>
         /// Tests that stripe refund response properties initialize correctly
@@ -348,9 +348,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal("failed", response3.Status);
         }
 
-        #endregion
+        
 
-        #region Cross-Model Tests
+        
 
         /// <summary>
         /// Tests that all request models can be instantiated empty
@@ -408,7 +408,7 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.NotEqual(metadata1, metadata2);
         }
 
-        #endregion
+        
     }
 }
 
