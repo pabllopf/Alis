@@ -41,8 +41,17 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Server
     /// </summary>
     public static class Program
     {
+        /// <summary>
+        /// The server manager
+        /// </summary>
         private static NetworkServerManager _serverManager;
+        /// <summary>
+        /// The server is client
+        /// </summary>
         private static bool _serverIsClient = false;
+        /// <summary>
+        /// The server player name
+        /// </summary>
         private static string _serverPlayerName = null;
 
         /// <summary>

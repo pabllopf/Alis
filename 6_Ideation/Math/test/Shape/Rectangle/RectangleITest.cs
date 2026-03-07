@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math.Shapes.Rectangle;
+using System.Runtime.Serialization;
 using Xunit;
 
 namespace Alis.Core.Aspect.Math.Test.Shape.Rectangle
@@ -54,6 +55,23 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Rectangle
             Assert.Equal(y, rectangle.Y);
             Assert.Equal(w, rectangle.W);
             Assert.Equal(h, rectangle.H);
+        }
+
+        /// <summary>
+        ///     Tests that GetObjectData writes all fields
+        /// </summary>
+        [Fact]
+        public void GetObjectData_WritesAllFields()
+        {
+            RectangleI rectangle = new RectangleI(1, 2, 3, 4);
+            SerializationInfo info = new SerializationInfo(typeof(RectangleI), new FormatterConverter());
+
+            rectangle.GetObjectData(info, default);
+
+            Assert.Equal(1, info.GetInt32("x"));
+            Assert.Equal(2, info.GetInt32("y"));
+            Assert.Equal(3, info.GetInt32("w"));
+            Assert.Equal(4, info.GetInt32("h"));
         }
     }
 }

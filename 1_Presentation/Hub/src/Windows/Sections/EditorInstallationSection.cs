@@ -220,6 +220,10 @@ namespace Alis.App.Hub.Windows.Sections
             versions = availableVersions.ToArray();
         }
 
+        /// <summary>
+        /// Fetches the available versions
+        /// </summary>
+        /// <returns>The version list</returns>
         private async Task<List<string>> FetchAvailableVersionsAsync()
         {
             List<string> versionList = new List<string>();

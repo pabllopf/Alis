@@ -58,7 +58,13 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
         /// </summary>
         public Queue<GameEvent> Events { get; set; }
 
+        /// <summary>
+        /// The random
+        /// </summary>
         private static readonly Random Random = new Random();
+        /// <summary>
+        /// The turn duration ticks
+        /// </summary>
         private const long TurnDurationTicks = 1800;  // 60 segundos a 30 ticks/segundo
 
         /// <summary>
@@ -295,6 +301,10 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
             TurnEndsAtTick = currentTick + TurnDurationTicks;
         }
 
+        /// <summary>
+        /// Ensures the turn assigned using the specified current tick
+        /// </summary>
+        /// <param name="currentTick">The current tick</param>
         private void EnsureTurnAssigned(long currentTick)
         {
             if (!string.IsNullOrEmpty(CurrentTurnPlayerId) && Players.TryGetValue(CurrentTurnPlayerId, out PlayerData current) && current.IsAlive)

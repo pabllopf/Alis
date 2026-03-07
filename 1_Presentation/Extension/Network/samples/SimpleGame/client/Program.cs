@@ -170,6 +170,9 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
             }
         }
 
+        /// <summary>
+        /// Renders the loop
+        /// </summary>
         private static async Task RenderLoopAsync()
         {
             while (_renderRunning && _connected)
@@ -192,11 +195,17 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
             }
         }
         
+        /// <summary>
+        /// Triggers the render
+        /// </summary>
         private static void TriggerRender()
         {
             _needsRender = true;
         }
 
+        /// <summary>
+        /// Games the loop
+        /// </summary>
         private static async Task GameLoopAsync()
         {
             _currentInput = "";
@@ -244,6 +253,10 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
             }
         }
 
+        /// <summary>
+        /// Processes the command using the specified input
+        /// </summary>
+        /// <param name="input">The input</param>
         private static async Task ProcessCommandAsync(string input)
         {
             if (string.IsNullOrEmpty(input))
@@ -377,6 +390,9 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
             TriggerRender();
         }
 
+        /// <summary>
+        /// Registers the handlers
+        /// </summary>
         private static void RegisterHandlers()
         {
             _clientManager.RegisterMessageHandler("game.update", OnGameUpdate);
@@ -390,6 +406,9 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
             _clientManager.RegisterMessageHandler("game.levelup", OnGameEvent);
         }
 
+        /// <summary>
+        /// Registers the events
+        /// </summary>
         private static void RegisterEvents()
         {
             _clientManager.PlayerJoined += (_, e) =>
@@ -427,6 +446,11 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
                 Logger.Error($"⚠ Error: {e.Message}");
         }
 
+        /// <summary>
+        /// Ons the game update using the specified sender id
+        /// </summary>
+        /// <param name="senderId">The sender id</param>
+        /// <param name="payload">The payload</param>
         private static async Task OnGameUpdate(string senderId, string payload)
         {
             try
@@ -583,6 +607,11 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
             await Task.CompletedTask;
         }
 
+        /// <summary>
+        /// Ons the game event using the specified sender id
+        /// </summary>
+        /// <param name="senderId">The sender id</param>
+        /// <param name="payload">The payload</param>
         private static async Task OnGameEvent(string senderId, string payload)
         {
             try
@@ -646,6 +675,11 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
             await Task.CompletedTask;
         }
 
+        /// <summary>
+        /// Ons the game chat using the specified sender id
+        /// </summary>
+        /// <param name="senderId">The sender id</param>
+        /// <param name="payload">The payload</param>
         private static async Task OnGameChat(string senderId, string payload)
         {
             try
@@ -701,11 +735,20 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
             await Task.CompletedTask;
         }
 
+        /// <summary>
+        /// Ises the local player turn
+        /// </summary>
+        /// <returns>The bool</returns>
         private static bool IsLocalPlayerTurn()
         {
             return !string.IsNullOrEmpty(_playerId) && _playerId == _gameState.CurrentTurnPlayerId;
         }
 
+        /// <summary>
+        /// Ensures the player exists using the specified player id
+        /// </summary>
+        /// <param name="playerId">The player id</param>
+        /// <param name="playerName">The player name</param>
         private static void EnsurePlayerExists(string playerId, string playerName)
         {
             if (!_gameState.Players.TryGetValue(playerId, out PlayerData player))
@@ -726,6 +769,11 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
             }
         }
 
+        /// <summary>
+        /// Extracts the game message content using the specified payload
+        /// </summary>
+        /// <param name="payload">The payload</param>
+        /// <returns>The string</returns>
         private static string ExtractGameMessageContent(string payload)
         {
             if (string.IsNullOrWhiteSpace(payload))
@@ -735,6 +783,12 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
             return string.IsNullOrEmpty(content) ? payload : content;
         }
 
+        /// <summary>
+        /// Extracts the json field using the specified json
+        /// </summary>
+        /// <param name="json">The json</param>
+        /// <param name="fieldName">The field name</param>
+        /// <returns>The string</returns>
         private static string ExtractJsonField(string json, string fieldName)
         {
             try

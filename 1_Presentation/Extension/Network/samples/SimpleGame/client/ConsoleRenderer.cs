@@ -38,14 +38,26 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
     /// </summary>
     public class ConsoleRenderer
     {
+        /// <summary>
+        /// The game state
+        /// </summary>
         private readonly GameState _gameState;
+        /// <summary>
+        /// The local player id
+        /// </summary>
         private readonly string _localPlayerId;
+        /// <summary>
+        /// The display buffer
+        /// </summary>
         private List<string> _displayBuffer;
         
         /// <summary>
         /// Arena size for compact display
         /// </summary>
         private const int CompactWidth = 30;
+        /// <summary>
+        /// The compact height
+        /// </summary>
         private const int CompactHeight = 12;
         
         /// <summary>

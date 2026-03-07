@@ -645,6 +645,11 @@ namespace Alis.Extension.Network.Sample.ConsoleGame.Server
             await Task.CompletedTask;
         }
 
+        /// <summary>
+        /// Ons the system join using the specified sender id
+        /// </summary>
+        /// <param name="senderId">The sender id</param>
+        /// <param name="payload">The payload</param>
         private static async Task OnSystemJoin(string senderId, string payload)
         {
             try
@@ -670,6 +675,11 @@ namespace Alis.Extension.Network.Sample.ConsoleGame.Server
             await Task.CompletedTask;
         }
 
+        /// <summary>
+        /// Ons the player end turn using the specified sender id
+        /// </summary>
+        /// <param name="senderId">The sender id</param>
+        /// <param name="payload">The payload</param>
         private static async Task OnPlayerEndTurn(string senderId, string payload)
         {
             try
@@ -688,6 +698,11 @@ namespace Alis.Extension.Network.Sample.ConsoleGame.Server
             await Task.CompletedTask;
         }
 
+        /// <summary>
+        /// Extracts the game message content using the specified payload
+        /// </summary>
+        /// <param name="payload">The payload</param>
+        /// <returns>The string</returns>
         private static string ExtractGameMessageContent(string payload)
         {
             if (string.IsNullOrWhiteSpace(payload))
@@ -697,6 +712,12 @@ namespace Alis.Extension.Network.Sample.ConsoleGame.Server
             return string.IsNullOrEmpty(content) ? payload : content;
         }
 
+        /// <summary>
+        /// Extracts the json field using the specified json
+        /// </summary>
+        /// <param name="json">The json</param>
+        /// <param name="fieldName">The field name</param>
+        /// <returns>The string</returns>
         private static string ExtractJsonField(string json, string fieldName)
         {
             try
