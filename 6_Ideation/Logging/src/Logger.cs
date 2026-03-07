@@ -29,6 +29,7 @@
 
 using System;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Logging.Abstractions;
 using Alis.Core.Aspect.Logging.Formatters;
 using Alis.Core.Aspect.Logging.Outputs;
@@ -157,7 +158,7 @@ namespace Alis.Core.Aspect.Logging
         ///     Exceptions the to string
         /// </summary>
         /// <param name="toString">The to string</param>
-        
+        [ExcludeFromCodeCoverage]
         public static void Exception(string toString)
         {
             EnsureInitialized();
