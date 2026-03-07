@@ -5,7 +5,7 @@ using System;
                 using Alis.Core.Graphic.OpenGL;
                 using Alis.Core.Graphic.Platforms.Web;
                 
-                namespace Alis.Sample.Web
+                namespace Alis.Sample.SplitCamera.Web
                 {
                     /// <summary>
                     /// The entry point class
@@ -91,16 +91,16 @@ using System;
                         }
                         
                         /// <summary>
-                        /// Main the args
+                        /// Mains the args
                         /// </summary>
                         /// <param name="args">The args</param>
-                        /// <exception cref="Exception">BindApi() failed</exception>
-                        /// <exception cref="Exception">ChoseConfig() failed</exception>
-                        /// <exception cref="Exception">ChoseConfig() returned no configs</exception>
-                        /// <exception cref="Exception">CreateContext() failed</exception>
-                        /// <exception cref="Exception">CreateWindowSurface() failed</exception>
                         /// <exception cref="Exception">Display was null</exception>
                         /// <exception cref="Exception">Initialize() returned false.</exception>
+                        /// <exception cref="Exception">ChoseConfig() failed</exception>
+                        /// <exception cref="Exception">ChoseConfig() returned no configs</exception>
+                        /// <exception cref="Exception">BindApi() failed</exception>
+                        /// <exception cref="Exception">CreateContext() failed</exception>
+                        /// <exception cref="Exception">CreateWindowSurface() failed</exception>
                         /// <exception cref="Exception">MakeCurrent() failed</exception>
                         public async static Task Main(string[] args)
                         {

@@ -8,7 +8,7 @@
         <Nullable>disable</Nullable>
         <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
         <SonarQubeExclude>true</SonarQubeExclude>
-        <ApplicationIcon>Config/app.ico</ApplicationIcon>
+        <ApplicationIcon Condition="Exists('$(ProjectDir)Assets/app.ico')">Assets/app.ico</ApplicationIcon>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -24,7 +24,7 @@
         <NameTest>$([System.Text.RegularExpressions.Regex]::Replace('$(AssemblyName)', '.[^.]*Sample[^*]*', ''))</NameTest>
     </PropertyGroup>
 
-    <ItemGroup>
+     <ItemGroup>
         <ProjectReference
             Condition="Exists('$(ProjectDir)../src/$(NameTest).csproj') == True"
             Include="$(ProjectDir)../src/$(NameTest).csproj"/>
@@ -34,15 +34,68 @@
             Include="$(ProjectDir)../../src/$(NameTest).csproj"/>
 
         <ProjectReference
-            Condition="Exists('$(ProjectDir)../src/$(NameTest).csproj') == False AND Exists('$(ProjectDir)../../src/$(NameTest).csproj') == False"
+            Condition="Exists('$(ProjectDir)../src/$(NameTest).csproj') == False AND Exists('$(ProjectDir)../../src/$(NameTest).csproj') == False AND Exists('$(ProjectDir)../../../src/$(NameTest).csproj') == True"
             Include="$(ProjectDir)../../../src/$(NameTest).csproj"/>
-
+        
         <ProjectReference
             Condition="Exists('$(ProjectDir)../generator/$(NameTest).Generator.csproj')"
             Include="$(ProjectDir)../generator/$(NameTest).Generator.csproj"
             OutputItemType="Analyzer"
             PrivateAssets="all"
-            ReferenceOutputAssembly="false"/>
+            ReferenceOutputAssembly="false">
+            <Properties>
+                TargetFramework=netstandard2.0
+            </Properties>
+        </ProjectReference>
+    </ItemGroup>
+
+   <ItemGroup>
+        <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation')) OR $(ProjectDir.Contains('2_Application'))"
+                          Include="$(SolutionDir)2_Application/Alis/src/Alis.csproj"/>
+    </ItemGroup>
+
+    <!-- ========== PROPIEDADES DE ASSETS ========== -->
+    <PropertyGroup>
+        <!-- Carpeta de recursos -->
+        <AssetsDir>$(ProjectDir)Assets</AssetsDir>
+
+        <!-- Archivos generados intermedios -->
+        <AssetsZip>$(ProjectDir)obj/assets.zip</AssetsZip>
+        <AssetsOutput>$(ProjectDir)obj/assets.pack</AssetsOutput>
+    </PropertyGroup>
+
+
+    <!-- ========== TARGET PARA GENERAR EL ZIP ========== -->
+    <Target Name="ZipAssets" BeforeTargets="BeforeBuild;BeforePublish" Condition="Exists('$(ProjectDir)')">
+
+        <Message Text="ZipAssets: AssetsDir='$(AssetsDir)'; AssetsZip='$(AssetsZip)'; AssetsOutput='$(AssetsOutput)'" Importance="High"/>
+
+        <!-- Windows -->
+        <Exec Condition="Exists('$(AssetsDir)') AND '$(OS)' == 'Windows_NT'"
+              Command="powershell -NoLogo -Command &quot;Compress-Archive -Path '$(AssetsDir)\\*' -DestinationPath '$(AssetsZip)' -Force; [Convert]::ToBase64String([System.IO.File]::ReadAllBytes('$(AssetsZip)')) | Out-File -FilePath '$(AssetsOutput)' -Encoding ASCII&quot;"/>
+
+        <!-- macOS/Linux -->
+        <Exec Condition="Exists('$(AssetsDir)') AND '$(OS)' != 'Windows_NT'"
+              Command="sh -c &quot;zip -r -9 '$(AssetsZip)' '$(AssetsDir)' &amp;&amp; base64 &lt; '$(AssetsZip)' &gt; '$(AssetsOutput)'&quot;"/>
+
+        <!-- Si no hay AssetsDir -->
+        <Message Condition="!Exists('$(AssetsDir)')" Text="No existe el directorio '$(AssetsDir)'. Se genera '$(AssetsOutput)' vacío." Importance="High"/>
+
+        <Exec Condition="!Exists('$(AssetsDir)') AND '$(OS)' == 'Windows_NT'"
+              Command="powershell -NoLogo -Command &quot;Set-Content -Path '$(AssetsOutput)' -Value '' -Encoding ASCII&quot;"/>
+
+        <Exec Condition="!Exists('$(AssetsDir)') AND '$(OS)' != 'Windows_NT'"
+              Command="sh -c &quot;mkdir -p '$(ProjectDir)obj' &amp;&amp; : &gt; '$(AssetsOutput)'&quot;"/>
+
+    </Target>
+
+
+    <!-- ========== REGISTRO DEL OUTPUT ========== -->
+    <ItemGroup>
+        <AdditionalFiles Include="$(AssetsOutput)"
+                         CopyToOutputDirectory="Never"
+                         CopyToPublishDirectory="Never"
+                         Visible="false"/>
     </ItemGroup>
 
     <ItemGroup>
@@ -52,12 +105,14 @@
           $(SolutionDir)6_Ideation/**/**/generator/**/*Generator.csproj;"
                           OutputItemType="Analyzer"
                           PrivateAssets="all"
-                          ReferenceOutputAssembly="false"/>
+                          ReferenceOutputAssembly="false">
+                <Properties>
+                    TargetFramework=netstandard2.0
+                </Properties>
+        </ProjectReference>
     </ItemGroup>
 
     <PropertyGroup Condition="'$(Configuration)'=='Release'">
-        <!-- app.manifest file to use when building the project -->
-        <ApplicationManifest>$(ProjectDir)Config/app.manifest</ApplicationManifest>
 
         <!-- Enables Ahead-of-Time (AOT) compilation for maximum performance and smaller binaries. -->
         <PublishAot>true</PublishAot>
@@ -135,8 +190,6 @@
 
 
     <PropertyGroup Condition="'$(Configuration)'=='Debug'">
-        <!-- app.manifest file to use when building the project -->
-        <ApplicationManifest>$(ProjectDir)Config/app.manifest</ApplicationManifest>
 
         <!-- Enables Ahead-of-Time (AOT) compilation for maximum performance and smaller binaries. -->
         <PublishAot>true</PublishAot>
@@ -216,7 +269,7 @@
             <AppResourcesDir>$(AppBundleDir)/Resources</AppResourcesDir>
             <AppPlistSource>$(ProjectDir)obj/Info.plist</AppPlistSource>
             <AppPlist>$(AppBundleDir)/Info.plist</AppPlist>
-            <AppIconIco>$(ProjectDir)Config/app.ico</AppIconIco>
+            <AppIconIco>$(ProjectDir)Assets/app.ico</AppIconIco>
             <AppIconIcns>$(AppResourcesDir)/app.icns</AppIconIcns>
         </PropertyGroup>
 
@@ -239,19 +292,35 @@
         <Exec Command="chmod +x $(AppMacOSDir)/$(AppName)"/>
     </Target>
 
-    <Target Name="GenerateDynamicInfoPlist" BeforeTargets="Publish">
-        <PropertyGroup>
-            <DynamicPlistTemplate>$(ProjectDir)Config/Info.plist</DynamicPlistTemplate>
-            <DynamicPlistOutput>$(ProjectDir)obj/Info.plist</DynamicPlistOutput>
-        </PropertyGroup>
-        <ReadLinesFromFile File="$(DynamicPlistTemplate)">
-            <Output TaskParameter="Lines" ItemName="PlistLines"/>
-        </ReadLinesFromFile>
+    <Target Name="GenerateDynamicInfoPlist" BeforeTargets="Publish" Condition=" '$(RuntimeIdentifier)' == 'osx-x64' OR '$(RuntimeIdentifier)' == 'osx-arm64' ">
         <WriteLinesToFile
-            File="$(DynamicPlistOutput)"
-            Lines="@(PlistLines->Replace('Alis.Sample.Flappy.Bird', '$(AssemblyName)')->Replace('1.0', '$(Version)')->Replace('com.alis.flappybird', '$(ApplicationId)'))"
-            Overwrite="true"/>
+            File="$(ProjectDir)obj/Info.plist"
+            Lines='&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+ &lt;dict&gt;
+ &lt;key&gt;CFBundleName&lt;/key&gt;
+ &lt;string&gt;$(AssemblyName)&lt;/string&gt;
+ &lt;key&gt;CFBundleDisplayName&lt;/key&gt;
+ &lt;string&gt;$(AssemblyName)&lt;/string&gt;
+ &lt;key&gt;CFBundleExecutable&lt;/key&gt;
+ &lt;string&gt;$(AssemblyName)&lt;/string&gt;
+ &lt;key&gt;CFBundleIdentifier&lt;/key&gt;
+ &lt;string&gt;$(ApplicationId)&lt;/string&gt;
+ &lt;key&gt;CFBundleVersion&lt;/key&gt;
+ &lt;string&gt;$(Version)&lt;/string&gt;
+ &lt;key&gt;CFBundleShortVersionString&lt;/key&gt;
+ &lt;string&gt;$(Version)&lt;/string&gt;
+ &lt;key&gt;CFBundleIconFile&lt;/key&gt;
+ &lt;string&gt;app.icns&lt;/string&gt;
+ &lt;key&gt;CFBundlePackageType&lt;/key&gt;
+ &lt;string&gt;APPL&lt;/string&gt;
+ &lt;/dict&gt;
+&lt;/plist&gt;
+'
+            Overwrite="true" />
+
     </Target>
 
-    <Import Project="$(SolutionDir).config/target/alis.targets" />
+   
 </Project>

@@ -30,7 +30,7 @@
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Systems;
 
-namespace Alis.Sample.SplitCamera
+namespace Alis.Sample.SplitCamera.Desktop
 {
     /// <summary>
     ///     The program class

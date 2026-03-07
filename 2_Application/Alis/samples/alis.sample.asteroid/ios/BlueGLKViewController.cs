@@ -103,10 +103,10 @@ namespace Alis.Sample.Asteroid.IOS
         /// <summary>
         /// Gls the clear color using the specified r
         /// </summary>
-        /// <param name="r">The </param>
-        /// <param name="g">The </param>
-        /// <param name="b">The </param>
-        /// <param name="a">The </param>
+        /// <param name="r">The red component</param>
+        /// <param name="g">The green component</param>
+        /// <param name="b">The blue component</param>
+        /// <param name="a">The alpha component</param>
         [DllImport("__Internal")]
         [ExcludeFromCodeCoverage]
         private static extern void glClearColor(float r, float g, float b, float a);

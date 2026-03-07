@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>net10.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <OutputType>Exe</OutputType>
         <OutDir>bin/$(Configuration)/$(RuntimeIdentifier)/lib/</OutDir>
         <LangVersion>13</LangVersion>
@@ -12,24 +12,40 @@
     </PropertyGroup>
 
 
-    <ItemGroup Condition="$(AssemblyName.Contains('Test')) == true">
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.1"/>
-        <PackageReference Include="xunit.v3" Version="3.2.2"/>
-        <PackageReference Include="Xunit.StaFact" Version="3.0.13"/>
-        <PackageReference Include="xunit.runner.visualstudio" Version="3.1.5">
+       <ItemGroup Condition="$(AssemblyName.Contains('Test')) == true">
+         <!-- Test packs -->
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1"/>
+        <PackageReference Include="xunit" Version="2.6.6"/>
+        <PackageReference Include="Xunit.StaFact" Version="1.1.11"/>
+        <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
 
-        <PackageReference Include="coverlet.collector" Version="6.0.4">
+        <PackageReference Include="coverlet.collector" Version="6.0.0">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+
+        <PackageReference Include="Moq" Version="4.20.70"/>
+    </ItemGroup>
+    
+    <ItemGroup Condition="$(AssemblyName.Contains('Alis.Extension.Payment.Stripe'))">
+        <PackageReference Include="Stripe.net" Version="47.1.0"/>
     </ItemGroup>
 
-    <ItemGroup>
-        <PackageReference Include="coverlet.msbuild" Version="8.0.0" />
+    <ItemGroup Condition="$(AssemblyName.Contains('Alis.Extension.Ads.GoogleAds'))">
+        <PackageReference Include="Google.Ads.Common" Version="9.5.3"/>
     </ItemGroup>
+
+    <ItemGroup Condition="$(AssemblyName.Contains('Alis.Extension.Cloud.GoogleDrive'))">
+        <PackageReference Include="Google.Apis.Drive.v3" Version="1.68.0.3601"/>
+    </ItemGroup>
+
+    <ItemGroup Condition="$(AssemblyName.Contains('Alis.Extension.Cloud.DropBox'))">
+        <PackageReference Include="Dropbox.Api" Version="7.0.0"/>
+    </ItemGroup>
+    
 
     <ItemGroup>
         <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute"/>

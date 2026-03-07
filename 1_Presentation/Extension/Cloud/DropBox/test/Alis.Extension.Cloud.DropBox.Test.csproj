@@ -12,7 +12,7 @@
     </PropertyGroup>
 
 
-    <ItemGroup Condition="$(AssemblyName.Contains('Test')) == true">
+       <ItemGroup Condition="$(AssemblyName.Contains('Test')) == true">
          <!-- Test packs -->
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1"/>
         <PackageReference Include="xunit" Version="2.6.6"/>
@@ -29,7 +29,7 @@
 
         <PackageReference Include="Moq" Version="4.20.70"/>
     </ItemGroup>
-
+    
     <ItemGroup Condition="$(AssemblyName.Contains('Alis.Extension.Payment.Stripe'))">
         <PackageReference Include="Stripe.net" Version="47.1.0"/>
     </ItemGroup>
@@ -45,7 +45,6 @@
     <ItemGroup Condition="$(AssemblyName.Contains('Alis.Extension.Cloud.DropBox'))">
         <PackageReference Include="Dropbox.Api" Version="7.0.0"/>
     </ItemGroup>
-
     
 
     <ItemGroup>

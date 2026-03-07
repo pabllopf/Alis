@@ -36,18 +36,24 @@ select yn in "Yes" "No"; do
                  if [[ $i == *"Alis.Benchmark"* ]]; then
                      props="./.config/default/default_benchmark_csproj.props"
                   fi
+                   if [[ $i == *"Sample"* ]]; then
+                       props="./.config/default/default_sample_csproj.props"
+                   fi
+                   if [[ $i == *".Web"* ]]; then
+                      props="./.config/default/default_sample_web_csproj.props"
+                  fi
+                  if [[ $i == *".IOS"* ]]; then
+                      props="./.config/default/default_sample_ios_csproj.props"
+                  fi
+                  if [[ $i == *".Android"* ]]; then
+                      props="./.config/default/default_sample_android_csproj.props"
+                  fi
                  if [[ $i == *"Alis.App"* ]]; then
                      props="./.config/default/default_app_csproj.props"
                   fi
                  if [[ $i == *"Generator"* ]]; then
                      props="./.config/default/default_generator_csproj.props"
                   fi
-                 if [[ $i == *"Sample"* ]]; then
-                     props="./.config/default/default_sample_csproj.props"
-                 fi
-                 if [[ $i == *".Web"* ]]; then
-                    props="./.config/default/default_sample_web_csproj.props"
-                fi
                  if [[ $i == *"Test"* ]]; then
                      props="./.config/default/default_test_csproj.props"
                  fi

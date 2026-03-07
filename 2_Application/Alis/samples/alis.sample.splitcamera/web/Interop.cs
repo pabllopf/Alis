@@ -1,7 +1,7 @@
 using System;
                 using System.Runtime.InteropServices.JavaScript;
                 
-                namespace Alis.Sample.Web
+                namespace Alis.Sample.SplitCamera.Web
                 {
                     /// <summary>
                     /// The interop class
@@ -9,7 +9,7 @@ using System;
                     internal static partial class Interop
                     {
                         /// <summary>
-                        /// Initializes
+                        /// Initializes this instance
                         /// </summary>
                         [JSImport("initialize", "main.js")]
                         public static partial void Initialize();

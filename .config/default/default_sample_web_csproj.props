@@ -719,7 +719,7 @@ namespace $(RootNamespace)
 
 
     <ItemGroup>
-        <ProjectReference Include="$(SolutionDir)2_Application/alis/src/alis.csproj"/>
+        <ProjectReference Include="$(SolutionDir)2_Application/Alis/src/Alis.csproj"/>
     </ItemGroup>
 
 

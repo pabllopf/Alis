@@ -51,7 +51,7 @@
 
    <ItemGroup>
         <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation')) OR $(ProjectDir.Contains('2_Application'))"
-                          Include="$(SolutionDir)2_Application/alis/src/alis.csproj"/>
+                          Include="$(SolutionDir)2_Application/Alis/src/Alis.csproj"/>
     </ItemGroup>
 
     <!-- ========== PROPIEDADES DE ASSETS ========== -->
@@ -111,7 +111,6 @@
                 </Properties>
         </ProjectReference>
     </ItemGroup>
-    
 
     <PropertyGroup Condition="'$(Configuration)'=='Release'">
 

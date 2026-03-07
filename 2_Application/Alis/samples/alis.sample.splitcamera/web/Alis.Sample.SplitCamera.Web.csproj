@@ -1,15 +1,725 @@
 <Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
+      <PropertyGroup>
         <TargetFramework>net10.0</TargetFramework>
         <LangVersion>13</LangVersion>
         <OutputType>Exe</OutputType>
         <RuntimeIdentifier>browser-wasm</RuntimeIdentifier>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+          <NoAutoGenerateFiles>false</NoAutoGenerateFiles>
     </PropertyGroup>
+
+    <PropertyGroup>
+        <IsBrowserWasm Condition="'$(RuntimeIdentifier)' == 'browser-wasm'">true</IsBrowserWasm>
+        <IsBrowserWasm Condition="'$(RuntimeIdentifier)' != 'browser-wasm'">false</IsBrowserWasm>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute"/>
+    </ItemGroup>
+
+
+    <Target Name="GenerateGitattributesForBrowserWasm" BeforeTargets="CoreCompile" Condition="$(NoAutoGenerateFiles) != 'true'">
+        <WriteLinesToFile
+            Condition="'$(IsBrowserWasm)' == 'true'"
+            File="$(MSBuildProjectDirectory)/.gitattributes"
+            Lines="# put these in .gitattributes file
+                *.js binary
+                *.json binary
+                *.css binary
+                *.html binary"
+            Overwrite="true" />
+
+        <WriteLinesToFile
+            Condition="'$(IsBrowserWasm)' == 'true'"
+            File="$(MSBuildProjectDirectory)/.nojekyll"
+            Lines=""
+            Overwrite="true" />
+
+        <WriteLinesToFile
+            Condition="'$(IsBrowserWasm)' == 'true'"
+            File="$(MSBuildProjectDirectory)/Native/emscripten.c"
+            Lines='#include "emscripten.h"'
+            Overwrite="true" />
+
+        <WriteLinesToFile
+            Condition="'$(IsBrowserWasm)' == 'true'"
+            File="$(MSBuildProjectDirectory)/Native/libEGL.c"
+            Lines='#include &lt;EGL/egl.h&gt;'
+            Overwrite="true" />
+
+        <WriteLinesToFile
+            Condition="'$(IsBrowserWasm)' == 'true'"
+            File="$(MSBuildProjectDirectory)/Native/openal32.c"
+            Lines='
+            #include &lt;AL/al.h&gt; 
+            #include &lt;AL/alc.h&gt;'
+            Overwrite="true" />
+
+
+        <WriteLinesToFile
+            Condition="'$(IsBrowserWasm)' == 'true' AND !Exists('$(MSBuildProjectDirectory)/Game.cs')"
+            File="$(MSBuildProjectDirectory)/Game.cs"
+            Lines=
+                '
+using Alis.Core.Aspect.Math.Definition%3b
+using Alis.Core.Ecs%3b
+using Alis.Core.Ecs.Components.Collider%3b
+using Alis.Core.Ecs.Components.Render%3b
+using Alis.Core.Ecs.Systems%3b
+using Alis.Core.Physic.Dynamics%3b
+
+namespace $(RootNamespace)
+{
+    /// &lt;summary&gt;
+    /// The game class
+    /// &lt;/summary&gt;
+    public static class Game
+    {
+        /// &lt;summary&gt;
+        /// Creates this instance
+        /// &lt;/summary&gt;
+        /// &lt;returns&gt;The video game&lt;/returns&gt;
+        public static VideoGame Create()
+        {
+             return VideoGame.Create().Build()%3b
+        }
+    }
+}
+            '
+            Overwrite="true" />
+
+        <WriteLinesToFile
+            Condition="'$(IsBrowserWasm)' == 'true'"
+            File="$(MSBuildProjectDirectory)/EntryPoint.cs"
+            Lines=
+                '
+                using System%3b
+                using System.Runtime.InteropServices%3b
+                using System.Threading.Tasks%3b
+                using Alis.Core.Ecs.Systems%3b
+                using Alis.Core.Graphic.OpenGL%3b
+                using Alis.Core.Graphic.Platforms.Web%3b
+                
+                namespace $(RootNamespace)
+                {
+                    /// &lt;summary&gt;
+                    /// The entry point class
+                    /// &lt;/summary&gt;
+                    public static class EntryPoint
+                    {
+                        
+                        /// &lt;summary&gt;
+                        /// Gets or sets the value of the base address
+                        /// &lt;/summary&gt;
+                        public static Uri BaseAddress { get%3b internal set%3b }
+                        
+                        /// &lt;summary&gt;
+                        /// Gets or sets the value of the game alis
+                        /// &lt;/summary&gt;
+                        private static VideoGame GameAlis { get%3b set%3b }
+                        
+                        /// &lt;summary&gt;
+                        /// Frames the time
+                        /// &lt;/summary&gt;
+                        /// &lt;param name="time"&gt;The time&lt;/param&gt;
+                        /// &lt;param name="userData"&gt;The user data&lt;/param&gt;
+                        /// &lt;returns&gt;The int&lt;/returns&gt;
+                        [UnmanagedCallersOnly]
+                        public static int Frame(double time, nint userData)
+                        {
+                            GameAlis.Preview()%3b
+                            return 1%3b
+                        }
+                        
+                        /// &lt;summary&gt;
+                        /// Gets or sets the value of the canvas width
+                        /// &lt;/summary&gt;
+                        private static int CanvasWidth { get%3b set%3b }
+                
+                        /// &lt;summary&gt;
+                        /// Gets or sets the value of the canvas height
+                        /// &lt;/summary&gt;
+                        private static int CanvasHeight { get%3b set%3b }
+                
+                        /// &lt;summary&gt;
+                        /// Canvases the resized using the specified width
+                        /// &lt;/summary&gt;
+                        /// &lt;param name="width"&gt;The width&lt;/param&gt;
+                        /// &lt;param name="height"&gt;The height&lt;/param&gt;
+                        public static void CanvasResized(int width, int height)
+                        {
+                             CanvasWidth = width%3b
+                         CanvasHeight = height%3b
+                     
+                         if(GameAlis == null)
+                         {
+                             return%3b
+                         }
+                         
+                         // Resolución original del juego
+                         int gameWidth = (int)GameAlis.Context.Setting.Graphic.WindowSize.X%3b
+                         int gameHeight = (int)GameAlis.Context.Setting.Graphic.WindowSize.Y%3b
+                     
+                         float aspectGame = (float)gameWidth / gameHeight%3b
+                         float aspectCanvas = (float)width / height%3b
+                     
+                         int viewportWidth, viewportHeight, viewportX, viewportY%3b
+                     
+                         if (aspectCanvas > aspectGame)
+                         {
+                             // Canvas más ancho, barras laterales
+                             viewportHeight = height%3b
+                             viewportWidth = (int)(height * aspectGame)%3b
+                             viewportX = (width - viewportWidth) / 2%3b
+                             viewportY = 0%3b
+                         }
+                         else
+                         {
+                             // Canvas más alto, barras arriba y abajo
+                             viewportWidth = width%3b
+                             viewportHeight = (int)(width / aspectGame)%3b
+                             viewportX = 0%3b
+                             viewportY = (height - viewportHeight) / 2%3b
+                         }
+                     
+                         Gl.GlViewport(viewportX, viewportY, viewportWidth, viewportHeight)%3b
+                        }
+                        
+                        /// &lt;summary&gt;
+                        /// Mains the args
+                        /// &lt;/summary&gt;
+                        /// &lt;param name="args"&gt;The args&lt;/param&gt;
+                        /// &lt;exception cref="Exception"&gt;Display was null&lt;/exception&gt;
+                        /// &lt;exception cref="Exception"&gt;Initialize() returned false.&lt;/exception&gt;
+                        /// &lt;exception cref="Exception"&gt;ChoseConfig() failed&lt;/exception&gt;
+                        /// &lt;exception cref="Exception"&gt;ChoseConfig() returned no configs&lt;/exception&gt;
+                        /// &lt;exception cref="Exception"&gt;BindApi() failed&lt;/exception&gt;
+                        /// &lt;exception cref="Exception"&gt;CreateContext() failed&lt;/exception&gt;
+                        /// &lt;exception cref="Exception"&gt;CreateWindowSurface() failed&lt;/exception&gt;
+                        /// &lt;exception cref="Exception"&gt;MakeCurrent() failed&lt;/exception&gt;
+                        public async static Task Main(string[] args)
+                        {
+                            Console.WriteLine($"Hello from dotnet!")%3b
+                
+                            IntPtr display = EGL.GetDisplay(IntPtr.Zero)%3b
+                            if (display == IntPtr.Zero)
+                            {
+                                throw new Exception("Display was null")%3b
+                            }
+                
+                            if (!EGL.Initialize(display, out int major, out int minor))
+                            {
+                                throw new Exception("Initialize() returned false.")%3b
+                            }
+                
+                            int[] attributeList = new int[]
+                            {
+                                EGL.EGL_RED_SIZE  , 8,
+                                EGL.EGL_GREEN_SIZE, 8,
+                                EGL.EGL_BLUE_SIZE , 8,
+                                EGL.EGL_DEPTH_SIZE, 24,
+                                EGL.EGL_STENCIL_SIZE, 8,
+                                EGL.EGL_SURFACE_TYPE, EGL.EGL_WINDOW_BIT,
+                                EGL.EGL_RENDERABLE_TYPE, EGL.EGL_OPENGL_ES3_BIT,
+                                EGL.EGL_SAMPLES, 16, //MSAA, 16 samples
+                                EGL.EGL_NONE
+                            }%3b
+                
+                            IntPtr config = IntPtr.Zero%3b
+                            IntPtr numConfig = IntPtr.Zero%3b
+                            if (!EGL.ChooseConfig(display, attributeList, ref config, 1, ref numConfig))
+                            {
+                                throw new Exception("ChoseConfig() failed")%3b
+                            }
+                
+                            if (numConfig == IntPtr.Zero)
+                            {
+                                throw new Exception("ChoseConfig() returned no configs")%3b
+                            }
+                
+                            if (!EGL.BindApi(EGL.EGL_OPENGL_ES_API))
+                            {
+                                throw new Exception("BindApi() failed")%3b
+                            }
+                
+                            int[] ctxAttribs = new int[] { EGL.EGL_CONTEXT_CLIENT_VERSION, 3, EGL.EGL_NONE }%3b
+                            IntPtr context = EGL.CreateContext(display, config, EGL.EGL_NO_CONTEXT, ctxAttribs)%3b
+                            if (context == IntPtr.Zero)
+                            {
+                                throw new Exception("CreateContext() failed")%3b
+                            }
+                            
+                            IntPtr surface = EGL.CreateWindowSurface(display, config, IntPtr.Zero, IntPtr.Zero)%3b
+                            if (surface == IntPtr.Zero)
+                            {
+                                throw new Exception("CreateWindowSurface() failed")%3b
+                            }
+                
+                            if (!EGL.MakeCurrent(display, surface, surface, context))
+                            {
+                                throw new Exception("MakeCurrent() failed")%3b
+                            }
+                            
+                            Gl.Initialize(EGL.GetProcAddress)%3b
+                
+                            Interop.Initialize()%3b
+                            
+                            GameAlis = Game.Create()%3b
+                            
+                            GameAlis.InitPreview()%3b
+                            
+                          
+                            int gameWidth = (int)GameAlis.Context.Setting.Graphic.WindowSize.X%3b
+                            int gameHeight = (int)GameAlis.Context.Setting.Graphic.WindowSize.Y%3b
+                     
+                            float aspectGame = (float)gameWidth / gameHeight%3b
+                            float aspectCanvas = (float)CanvasWidth / CanvasHeight%3b
+                     
+                            int viewportWidth, viewportHeight, viewportX, viewportY%3b
+                     
+                            if (aspectCanvas > aspectGame)
+                            {
+                                // Canvas más ancho, barras laterales
+                                viewportHeight = CanvasHeight%3b
+                                viewportWidth = (int)(CanvasHeight * aspectGame)%3b
+                                viewportX = (CanvasWidth - viewportWidth) / 2%3b
+                                viewportY = 0%3b
+                            }
+                            else
+                            {
+                                // Canvas más alto, barras arriba y abajo
+                                viewportWidth = CanvasWidth%3b
+                                viewportHeight = (int)(CanvasWidth / aspectGame)%3b
+                                viewportX = 0%3b
+                                viewportY = (CanvasHeight - viewportHeight) / 2%3b
+                            }
+                     
+                            Gl.GlViewport(viewportX, viewportY, viewportWidth, viewportHeight)%3b
+                            
+                            unsafe
+                            {
+                               Emscripten.RequestAnimationFrameLoop((IntPtr)(delegate* unmanaged&lt;double, nint, int&gt;)&amp;Frame, nint.Zero)%3b
+                            }
+                        }
+                    }
+                }
+            '
+            Overwrite="true" />
+
+
+        <WriteLinesToFile
+            Condition="'$(IsBrowserWasm)' == 'true'"
+            File="$(MSBuildProjectDirectory)/Interop.cs"
+            Lines=
+                '
+                using System%3b
+                using System.Runtime.InteropServices.JavaScript%3b
+                
+                namespace $(RootNamespace)
+                {
+                    /// &lt;summary&gt;
+                    /// The interop class
+                    /// &lt;/summary&gt;
+                    internal static partial class Interop
+                    {
+                        /// &lt;summary&gt;
+                        /// Initializes this instance
+                        /// &lt;/summary&gt;
+                        [JSImport("initialize", "main.js")]
+                        public static partial void Initialize()%3b
+                        
+                        /// &lt;summary&gt;
+                        /// Ons the key down using the specified shift
+                        /// &lt;/summary&gt;
+                        /// &lt;param name="shift"&gt;The shift&lt;/param&gt;
+                        /// &lt;param name="ctrl"&gt;The ctrl&lt;/param&gt;
+                        /// &lt;param name="alt"&gt;The alt&lt;/param&gt;
+                        /// &lt;param name="repeat"&gt;The repeat&lt;/param&gt;
+                        /// &lt;param name="code"&gt;The code&lt;/param&gt;
+                        [JSExport]
+                        public static void OnKeyDown(bool shift, bool ctrl, bool alt, bool repeat, int code)
+                        {
+                        }
+                        
+                        /// &lt;summary&gt;
+                        /// Ons the key up using the specified shift
+                        /// &lt;/summary&gt;
+                        /// &lt;param name="shift"&gt;The shift&lt;/param&gt;
+                        /// &lt;param name="ctrl"&gt;The ctrl&lt;/param&gt;
+                        /// &lt;param name="alt"&gt;The alt&lt;/param&gt;
+                        /// &lt;param name="code"&gt;The code&lt;/param&gt;
+                        [JSExport]
+                        public static void OnKeyUp(bool shift, bool ctrl, bool alt, int code)
+                        {
+                        }
+                        
+                        /// &lt;summary&gt;
+                        /// Ons the mouse move using the specified x
+                        /// &lt;/summary&gt;
+                        /// &lt;param name="x"&gt;The &lt;/param&gt;
+                        /// &lt;param name="y"&gt;The &lt;/param&gt;
+                        [JSExport]
+                        public static void OnMouseMove(float x, float y)
+                        {
+                        }
+                        
+                        /// &lt;summary&gt;
+                        /// Ons the mouse down using the specified shift
+                        /// &lt;/summary&gt;
+                        /// &lt;param name="shift"&gt;The shift&lt;/param&gt;
+                        /// &lt;param name="ctrl"&gt;The ctrl&lt;/param&gt;
+                        /// &lt;param name="alt"&gt;The alt&lt;/param&gt;
+                        /// &lt;param name="button"&gt;The button&lt;/param&gt;
+                        [JSExport]
+                        public static void OnMouseDown(bool shift, bool ctrl, bool alt, int button)
+                        {
+                        }
+                        
+                        /// &lt;summary&gt;
+                        /// Ons the mouse up using the specified shift
+                        /// &lt;/summary&gt;
+                        /// &lt;param name="shift"&gt;The shift&lt;/param&gt;
+                        /// &lt;param name="ctrl"&gt;The ctrl&lt;/param&gt;
+                        /// &lt;param name="alt"&gt;The alt&lt;/param&gt;
+                        /// &lt;param name="button"&gt;The button&lt;/param&gt;
+                        [JSExport]
+                        public static void OnMouseUp(bool shift, bool ctrl, bool alt, int button)
+                        {
+                        }
+                        
+                        /// &lt;summary&gt;
+                        /// Ons the canvas resize using the specified width
+                        /// &lt;/summary&gt;
+                        /// &lt;param name="width"&gt;The width&lt;/param&gt;
+                        /// &lt;param name="height"&gt;The height&lt;/param&gt;
+                        /// &lt;param name="devicePixelRatio"&gt;The device pixel ratio&lt;/param&gt;
+                        [JSExport]
+                        public static void OnCanvasResize(float width, float height, float devicePixelRatio)
+                        {
+                            EntryPoint.CanvasResized((int)width, (int)height)%3b
+                        }
+                        
+                        /// &lt;summary&gt;
+                        /// Sets the root uri using the specified uri
+                        /// &lt;/summary&gt;
+                        /// &lt;param name="uri"&gt;The uri&lt;/param&gt;
+                        [JSExport]
+                        public static void SetRootUri(string uri)
+                        {
+                            EntryPoint.BaseAddress = new Uri(uri)%3b
+                        }
+                        
+                        /// &lt;summary&gt;
+                        /// Adds the locale using the specified locale
+                        /// &lt;/summary&gt;
+                        /// &lt;param name="locale"&gt;The locale&lt;/param&gt;
+                        [JSExport]
+                        public static void AddLocale(string locale)
+                        {
+                        }
+                    }
+                }
+            '
+            Overwrite="true" />
+
+
+        <WriteLinesToFile
+            Condition="'$(IsBrowserWasm)' == 'true'"
+            File="$(MSBuildProjectDirectory)/main.js"
+            Lines='
+        import { dotnet } from "./_framework/dotnet.js"
+
+    const { setModuleImports, getAssemblyExports, getConfig, runMain } = await dotnet
+    .withDiagnosticTracing(false)
+    .withApplicationArgumentsFromQuery()
+    .create()%3b
+
+    const config = getConfig()%3b
+    const exports = await getAssemblyExports(config.mainAssemblyName)%3b
+    const interop = exports.$(RootNamespace).Interop%3b
+
+    var canvas = globalThis.document.getElementById("canvas")%3b
+    dotnet.instance.Module["canvas"] = canvas%3b
+
+    setModuleImports("main.js", {
+    initialize: () =&gt; {
+
+    var checkCanvasResize = (dispatch) =&gt; {
+    var devicePixelRatio = window.devicePixelRatio || 1.0%3b
+    var displayWidth = canvas.clientWidth * devicePixelRatio%3b
+    var displayHeight = canvas.clientHeight * devicePixelRatio%3b
+
+    if (canvas.width != displayWidth || canvas.height != displayHeight) {
+    canvas.width = displayWidth%3b
+    canvas.height = displayHeight%3b
+    dispatch = true%3b
+    }
+
+    if (dispatch)
+    interop.OnCanvasResize(displayWidth, displayHeight, devicePixelRatio)%3b
+    }
+
+    function checkCanvasResizeFrame() {
+    checkCanvasResize(false)%3b
+    requestAnimationFrame(checkCanvasResizeFrame)%3b
+    }
+
+    var keyDown = (e) =&gt; {
+    e.stopPropagation()%3b
+    var shift = e.shiftKey%3b
+    var ctrl = e.ctrlKey%3b
+    var alt = e.altKey%3b
+    var repeat = e.repeat%3b
+    var code = e.keyCode%3b
+
+    interop.OnKeyDown(shift, ctrl, alt, repeat, code)%3b
+    }
+
+    var keyUp = (e) =&gt; {
+    e.stopPropagation()%3b
+    var shift = e.shiftKey%3b
+    var ctrl = e.ctrlKey%3b
+    var alt = e.altKey%3b
+    var code = e.keyCode%3b
+
+    interop.OnKeyUp(shift, ctrl, alt, code)%3b
+    }
+
+    var mouseMove = (e) =&gt; {
+    var x = e.offsetX%3b
+    var y = e.offsetY%3b
+    interop.OnMouseMove(x, y)%3b
+    }
+
+    var mouseDown = (e) =&gt; {
+    var shift = e.shiftKey%3b
+    var ctrl = e.ctrlKey%3b
+    var alt = e.altKey%3b
+    var button = e.button%3b
+
+    interop.OnMouseDown(shift, ctrl, alt, button)%3b
+    }
+
+    var mouseUp = (e) =&gt; {
+    var shift = e.shiftKey%3b
+    var ctrl = e.ctrlKey%3b
+    var alt = e.altKey%3b
+    var button = e.button%3b
+
+    interop.OnMouseUp(shift, ctrl, alt, button)%3b
+    }
+
+    var shouldIgnore = (e) =&gt; {
+    e.preventDefault()%3b
+    return e.touches.length &gt; 1 || e.type == "touchend" &amp;&amp; e.touches.length &gt; 0;
+    }
+
+    var touchStart = (e) =&gt; {
+    if (shouldIgnore(e))
+    return%3b
+
+    var shift = e.shiftKey%3b
+    var ctrl = e.ctrlKey%3b
+    var alt = e.altKey%3b
+    var button = 0%3b
+    var touch = e.changedTouches[0]%3b
+    var bcr = e.target.getBoundingClientRect()%3b
+    var x = touch.clientX - bcr.x%3b
+    var y = touch.clientY - bcr.y%3b
+
+    interop.OnMouseMove(x, y)%3b
+    interop.OnMouseDown(shift, ctrl, alt, button)%3b
+    }
+
+    var touchMove = (e) =&gt; {
+    if (shouldIgnore(e))
+    return%3b
+
+    var touch = e.changedTouches[0]%3b
+    var bcr = e.target.getBoundingClientRect()%3b
+    var x = touch.clientX - bcr.x%3b
+    var y = touch.clientY - bcr.y%3b
+
+    interop.OnMouseMove(x, y)%3b
+    }
+
+    var touchEnd = (e) =&gt; {
+    if (shouldIgnore(e))
+    return%3b
+
+    var shift = e.shiftKey%3b
+    var ctrl = e.ctrlKey%3b
+    var alt = e.altKey%3b
+    var button = 0%3b
+    var touch = e.changedTouches[0]%3b
+    var bcr = e.target.getBoundingClientRect()%3b
+    var x = touch.clientX - bcr.x%3b
+    var y = touch.clientY - bcr.y%3b
+
+    interop.OnMouseMove(x, y)%3b
+    interop.OnMouseUp(shift, ctrl, alt, button)%3b
+    }
+
+    //canvas.addEventListener("contextmenu", (e) =&gt; e.preventDefault(), false)%3b
+    canvas.addEventListener("keydown", keyDown, false)%3b
+    canvas.addEventListener("keyup", keyUp, false)%3b
+    canvas.addEventListener("mousemove", mouseMove, false)%3b
+    canvas.addEventListener("mousedown", mouseDown, false)%3b
+    canvas.addEventListener("mouseup", mouseUp, false)%3b
+    canvas.addEventListener("touchstart", touchStart, false)%3b
+    canvas.addEventListener("touchmove", touchMove, false)%3b
+    canvas.addEventListener("touchend", touchEnd, false)%3b
+    checkCanvasResize(true)%3b
+    checkCanvasResizeFrame()%3b
+
+    canvas.tabIndex = 1000%3b
+
+    interop.SetRootUri(window.location.toString())%3b
+
+    var langs = navigator.languages || []%3b
+    for (var i = 0%3b i &lt; langs.length%3b i++)
+    interop.AddLocale(langs[i])%3b
+    interop.AddLocale(navigator.language)%3b
+    interop.AddLocale(navigator.userLanguage)%3b
+    }
+    })%3b
+
+    await runMain()%3b
+
+    '
+            Overwrite="true" />
+
+        <WriteLinesToFile
+            Condition="'$(IsBrowserWasm)' == 'true'"
+            File="$(MSBuildProjectDirectory)/index.html"
+            Lines="
+                
+               &lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+	&lt;meta charset='utf-8' /&gt;
+	&lt;meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' /&gt;
+	&lt;link rel='modulepreload' href='./main.js' /&gt;
+	&lt;link rel='modulepreload' href='./_framework/dotnet.js' /&gt;
+	&lt;title&gt;Alis&lt;/title&gt;
+	&lt;style&gt;
+		body {
+			margin: 0 %3b
+			background-color: black%3b
+			overflow: hidden%3b
+		}
+
+		canvas#canvas {
+			width: 100vw%3b
+			height: 100vh%3b
+			outline: none%3b
+			margin: 0%3b
+			position: absolute%3b
+			left: 50%%3b
+			top: 50%%3b
+			transform: translate(-50%, -50%)%3b
+		}
+
+		@media (min-aspect-ratio: 16/9) {
+			canvas#canvas {
+				height: 100vh%3b
+				width: calc(100vh * (16 / 9))%3b
+			}
+		}
+
+		@media (max-aspect-ratio: 4/3) {
+			canvas#canvas {
+				width: 100vw%3b
+				height: calc(100vw / (4 / 3))%3b
+			}
+		}
+	&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	&lt;canvas id='canvas' width='16' height='9'&gt;&lt;/canvas&gt;
+	&lt;script type='module' src='./main.js'&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+            "
+            Overwrite="true" />
+
+
+        <WriteLinesToFile
+            Condition="'$(IsBrowserWasm)' == 'true'"
+            File="$(MSBuildProjectDirectory)/runtimeconfig.template.json"
+            Lines='
+    {
+    "wasmHostProperties": {
+        "perHostConfig": [
+            {
+                "name": "browser",
+                "html-path": "index.html",
+                "Host": "browser"
+            }
+        ]
+    }
+}
+'
+            Overwrite="true" />
+
+
+        <Delete Condition="'$(IsBrowserWasm)' == 'false'" Files="$(MSBuildProjectDirectory)/.gitattributes" />
+        <Delete Condition="'$(IsBrowserWasm)' == 'false'" Files="$(MSBuildProjectDirectory)/.nojekyll" />
+
+        <Delete Condition="'$(IsBrowserWasm)' == 'false'" Files="$(MSBuildProjectDirectory)/Native/emscripten.c" />
+        <Delete Condition="'$(IsBrowserWasm)' == 'false'" Files="$(MSBuildProjectDirectory)/Native/libEGL.c" />
+        <Delete Condition="'$(IsBrowserWasm)' == 'false'" Files="$(MSBuildProjectDirectory)/Native/openal32.c" />
+
+        <Delete Condition="'$(IsBrowserWasm)' == 'false'" Files="$(MSBuildProjectDirectory)/Interop.cs" />
+        <Delete Condition="'$(IsBrowserWasm)' == 'false'" Files="$(MSBuildProjectDirectory)/EntryPoint.cs" />
+
+        <Delete Condition="'$(IsBrowserWasm)' == 'false'" Files="$(MSBuildProjectDirectory)/main.js" />
+        <Delete Condition="'$(IsBrowserWasm)' == 'false'" Files="$(MSBuildProjectDirectory)/index.html" />
+        <Delete Condition="'$(IsBrowserWasm)' == 'false'" Files="$(MSBuildProjectDirectory)/runtimeconfig.template.json" />
+
+
+    </Target>
+
+    <PropertyGroup Condition="'$(IsBrowserWasm)' == 'true' AND $(NoAutoGenerateFiles) != 'true'">
+        <IsAotCompatible>true</IsAotCompatible>
+        <NoWarn>$(NoWarn);RCS1090</NoWarn>
+        <InvariantGlobalization>true</InvariantGlobalization>
+        <EmccFlags>-s FULL_ES3=1 -lopenal -lGL -s</EmccFlags>
+        <WasmMainJSPath>main.js</WasmMainJSPath>
+
+        <PublishTrimmed>true</PublishTrimmed>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <WasmBuildNative>true</WasmBuildNative>
+        <RunAOTCompilation>true</RunAOTCompilation>
+    </PropertyGroup>
+
+    <ItemGroup  Condition="'$(IsBrowserWasm)' == 'true' AND $(NoAutoGenerateFiles) != 'true'">
+        <None Include="$(MSBuildProjectDirectory)/.gitattributes" CopyToPublishDirectory="Always" CopyToOutputDirectory="Always" />
+        <None Include="$(MSBuildProjectDirectory)/.nojekyll" CopyToPublishDirectory="Always" CopyToOutputDirectory="Always" />
+
+        <WasmExtraFilesToDeploy Include="$(MSBuildProjectDirectory)/index.html" />
+        <WasmExtraFilesToDeploy Include="$(MSBuildProjectDirectory)/main.js" />
+
+        <NativeFileReference Include="$(MSBuildProjectDirectory)/Native/libEGL.c" ScanForPInvokes="true" />
+        <NativeFileReference Include="$(MSBuildProjectDirectory)/Native/openal32.c" ScanForPInvokes="true" />
+        <NativeFileReference Include="$(MSBuildProjectDirectory)/Native/emscripten.c" ScanForPInvokes="true" />
+
+        <WasmExtraFilesToDeploy Include="$(MSBuildProjectDirectory)/Assets/**" TargetPath="Assets/%(RecursiveDir)%(Filename)%(Extension)" />
+
+        <PackageReference Include="CoroutineScheduler" Version="0.3.0" />
+    </ItemGroup>
+
+
+
+   <ItemGroup Condition="'$(IsBrowserWasm)' == 'true' AND $(NoAutoGenerateFiles) != 'true'">
+        <Compile Condition="!Exists('$(MSBuildProjectDirectory)/EntryPoint.cs')" Include="$(MSBuildProjectDirectory)/EntryPoint.cs" Visible="false" />
+        <Compile Condition="!Exists('$(MSBuildProjectDirectory)/Interop.cs')" Include="$(MSBuildProjectDirectory)/Interop.cs" Visible="false" />
+        <Compile Condition="!Exists('$(MSBuildProjectDirectory)/Game.cs')" Include="$(MSBuildProjectDirectory)/Game.cs" Visible="false" />
+    </ItemGroup>
 
 
     <ItemGroup>
-        <ProjectReference Include="$(SolutionDir)2_Application/alis/src/alis.csproj"/>
+        <ProjectReference Include="$(SolutionDir)2_Application/Alis/src/Alis.csproj"/>
     </ItemGroup>
 
 
@@ -20,9 +730,57 @@
           $(SolutionDir)6_Ideation/**/**/generator/**/*Generator.csproj;"
                           OutputItemType="Analyzer"
                           PrivateAssets="all"
-                          ReferenceOutputAssembly="false"/>
+                          ReferenceOutputAssembly="false">
+                <Properties>
+                    TargetFramework=netstandard2.0
+                </Properties>
+        </ProjectReference>
     </ItemGroup>
-    <Import Project="$(SolutionDir).config/target/alis.targets" />
+
+    <!-- ========== PROPIEDADES DE ASSETS ========== -->
+    <PropertyGroup>
+        <!-- Carpeta de recursos -->
+        <AssetsDir>$(ProjectDir)Assets</AssetsDir>
+
+        <!-- Archivos generados intermedios -->
+        <AssetsZip>$(ProjectDir)obj/assets.zip</AssetsZip>
+        <AssetsOutput>$(ProjectDir)obj/assets.pack</AssetsOutput>
+    </PropertyGroup>
+
+
+    <!-- ========== TARGET PARA GENERAR EL ZIP ========== -->
+    <Target Name="ZipAssets" BeforeTargets="BeforeBuild;BeforePublish" Condition="Exists('$(ProjectDir)')">
+
+        <Message Text="ZipAssets: AssetsDir='$(AssetsDir)'; AssetsZip='$(AssetsZip)'; AssetsOutput='$(AssetsOutput)'" Importance="High"/>
+
+        <!-- Windows -->
+        <Exec Condition="Exists('$(AssetsDir)') AND '$(OS)' == 'Windows_NT'"
+              Command="powershell -NoLogo -Command &quot;Compress-Archive -Path '$(AssetsDir)\\*' -DestinationPath '$(AssetsZip)' -Force; [Convert]::ToBase64String([System.IO.File]::ReadAllBytes('$(AssetsZip)')) | Out-File -FilePath '$(AssetsOutput)' -Encoding ASCII&quot;"/>
+
+        <!-- macOS/Linux -->
+        <Exec Condition="Exists('$(AssetsDir)') AND '$(OS)' != 'Windows_NT'"
+              Command="sh -c &quot;zip -r -9 '$(AssetsZip)' '$(AssetsDir)' &amp;&amp; base64 &lt; '$(AssetsZip)' &gt; '$(AssetsOutput)'&quot;"/>
+
+        <!-- Si no hay AssetsDir -->
+        <Message Condition="!Exists('$(AssetsDir)')" Text="No existe el directorio '$(AssetsDir)'. Se genera '$(AssetsOutput)' vacío." Importance="High"/>
+
+        <Exec Condition="!Exists('$(AssetsDir)') AND '$(OS)' == 'Windows_NT'"
+              Command="powershell -NoLogo -Command &quot;Set-Content -Path '$(AssetsOutput)' -Value '' -Encoding ASCII&quot;"/>
+
+        <Exec Condition="!Exists('$(AssetsDir)') AND '$(OS)' != 'Windows_NT'"
+              Command="sh -c &quot;mkdir -p '$(ProjectDir)obj' &amp;&amp; : &gt; '$(AssetsOutput)'&quot;"/>
+
+    </Target>
+
+
+    <!-- ========== REGISTRO DEL OUTPUT ========== -->
+    <ItemGroup>
+        <AdditionalFiles Include="$(AssetsOutput)"
+                         CopyToOutputDirectory="Never"
+                         CopyToPublishDirectory="Never"
+                         Visible="false"/>
+    </ItemGroup>
+   
 
 
 </Project>

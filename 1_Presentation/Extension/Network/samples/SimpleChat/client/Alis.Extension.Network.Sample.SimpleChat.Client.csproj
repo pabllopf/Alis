@@ -24,7 +24,7 @@
         <NameTest>$([System.Text.RegularExpressions.Regex]::Replace('$(AssemblyName)', '.[^.]*Sample[^*]*', ''))</NameTest>
     </PropertyGroup>
 
-    <ItemGroup>
+     <ItemGroup>
         <ProjectReference
             Condition="Exists('$(ProjectDir)../src/$(NameTest).csproj') == True"
             Include="$(ProjectDir)../src/$(NameTest).csproj"/>
@@ -51,7 +51,7 @@
 
    <ItemGroup>
         <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation')) OR $(ProjectDir.Contains('2_Application'))"
-                          Include="$(SolutionDir)2_Application/alis/src/alis.csproj"/>
+                          Include="$(SolutionDir)2_Application/Alis/src/Alis.csproj"/>
     </ItemGroup>
 
     <!-- ========== PROPIEDADES DE ASSETS ========== -->
