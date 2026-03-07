@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
@@ -477,6 +478,7 @@ namespace Alis.Core.Aspect.Math.Vector
         ///     Standard Numeric Format
         ///     Strings
         /// </related>
+        [ExcludeFromCodeCoverage]
         public string ToString(string format, IFormatProvider formatProvider)
         {
             StringBuilder sb = new StringBuilder();

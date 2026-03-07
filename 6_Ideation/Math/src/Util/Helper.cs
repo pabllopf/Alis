@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
+
 namespace Alis.Core.Aspect.Math.Util
 {
     /// <summary>Contains commonly used precalculated values and mathematical operations.</summary>
@@ -171,6 +173,7 @@ namespace Alis.Core.Aspect.Math.Util
         /// <summary>Reduces a given angle to a value between π and -π.</summary>
         /// <param name="angle">The angle to reduce, in radians.</param>
         /// <returns>The new angle, in radians.</returns>
+        [ExcludeFromCodeCoverage]
         public static float WrapAngle(float angle)
         {
             if ((angle > -Constant.Pi) && (angle <= Constant.Pi))

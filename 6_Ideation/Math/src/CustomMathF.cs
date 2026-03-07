@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
+
 namespace Alis.Core.Aspect.Math
 {
     /// <summary>
@@ -116,6 +118,7 @@ namespace Alis.Core.Aspect.Math
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The result</returns>
+        [ExcludeFromCodeCoverage]
         public static float Sin(float x)
         {
             if (float.IsNaN(x) || float.IsInfinity(x))
@@ -153,6 +156,7 @@ namespace Alis.Core.Aspect.Math
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The angle</returns>
+        [ExcludeFromCodeCoverage]
         public static float Acos(float x)
         {
             if (x < -1f || x > 1f || float.IsNaN(x))
