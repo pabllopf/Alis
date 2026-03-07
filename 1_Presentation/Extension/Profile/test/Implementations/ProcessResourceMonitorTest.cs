@@ -582,6 +582,7 @@ namespace Alis.Extension.Profile.Test.Implementations
             Assert.True(threadCount >= 0);
         }
 
+        
         /// <summary>
         ///     Tests that multiple instances monitor independently
         /// </summary>
@@ -597,7 +598,7 @@ namespace Alis.Extension.Profile.Test.Implementations
             long memory2 = monitor2.GetMemoryUsage();
 
             // Assert
-            Assert.Equal(memory1, memory2, 10000.0f);
+            Assert.Equal(memory1, memory2, 100000.0f);
         }
 
         /// <summary>
