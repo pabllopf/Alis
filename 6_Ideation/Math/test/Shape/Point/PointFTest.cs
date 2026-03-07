@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Math.Shapes;
+using Alis.Core.Aspect.Math.Shapes;
 using Alis.Core.Aspect.Math.Shapes.Point;
 using Xunit;
 
@@ -61,6 +63,200 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
 
             Assert.Equal(x, point.X);
             Assert.Equal(y, point.Y);
+        }
+
+        [Fact]
+        public void Constructor_WithSingleValue_InitializesBothCoordinates()
+        {
+            PointF point = new PointF(5.5f);
+
+            Assert.Equal(5.5f, point.X);
+            Assert.Equal(5.5f, point.Y);
+        }
+
+        [Fact]
+        public void Constructor_WithTwoValues_InitializesCoordinatesCorrectly()
+        {
+            PointF point = new PointF(3.5f, 4.5f);
+
+            Assert.Equal(3.5f, point.X);
+            Assert.Equal(4.5f, point.Y);
+        }
+
+        [Fact]
+        public void Constructor_CopyConstructor_CopiesPointValues()
+        {
+            PointF original = new PointF(2.5f, 3.5f);
+            PointF copy = new PointF(original);
+
+            Assert.Equal(original.X, copy.X);
+            Assert.Equal(original.Y, copy.Y);
+        }
+
+        [Fact]
+        public void Constructor_WithZeroValue_InitializesCorrectly()
+        {
+            PointF point = new PointF(0f);
+
+            Assert.Equal(0f, point.X);
+            Assert.Equal(0f, point.Y);
+        }
+
+        [Fact]
+        public void Constructor_WithNegativeValues_InitializesCorrectly()
+        {
+            PointF point = new PointF(-1.5f, -2.5f);
+
+            Assert.Equal(-1.5f, point.X);
+            Assert.Equal(-2.5f, point.Y);
+        }
+
+        [Fact]
+        public void XProperty_CanBeSetAndRetrieved()
+        {
+            PointF point = new PointF(1f, 2f);
+
+            point.X = 5f;
+
+            Assert.Equal(5f, point.X);
+            Assert.Equal(2f, point.Y);
+        }
+
+        [Fact]
+        public void YProperty_CanBeSetAndRetrieved()
+        {
+            PointF point = new PointF(1f, 2f);
+
+            point.Y = 6f;
+
+            Assert.Equal(1f, point.X);
+            Assert.Equal(6f, point.Y);
+        }
+
+        [Fact]
+        public void Properties_CanBeSetIndependently()
+        {
+            PointF point = new PointF(1f, 2f);
+
+            point.X = 10f;
+            point.Y = 20f;
+
+            Assert.Equal(10f, point.X);
+            Assert.Equal(20f, point.Y);
+        }
+
+        [Fact]
+        public void PointF_IsValueType()
+        {
+            Assert.True(typeof(PointF).IsValueType);
+        }
+
+        [Fact]
+        public void CopyConstructor_CreatesIndependentCopy()
+        {
+            PointF original = new PointF(1f, 2f);
+            PointF copy = new PointF(original);
+
+            copy.X = 10f;
+            copy.Y = 20f;
+
+            Assert.Equal(1f, original.X);
+            Assert.Equal(2f, original.Y);
+            Assert.Equal(10f, copy.X);
+            Assert.Equal(20f, copy.Y);
+        }
+
+        [Fact]
+        public void Assignment_CreatesIndependentCopy()
+        {
+            PointF first = new PointF(5f, 6f);
+            PointF second = first;
+
+            second.X = 15f;
+
+            Assert.Equal(5f, first.X);
+            Assert.Equal(15f, second.X);
+        }
+
+        [Fact]
+        public void PointF_WithMaxValue_StoresCorrectly()
+        {
+            PointF point = new PointF(float.MaxValue, float.MaxValue);
+
+            Assert.Equal(float.MaxValue, point.X);
+            Assert.Equal(float.MaxValue, point.Y);
+        }
+
+        [Fact]
+        public void PointF_WithMinValue_StoresCorrectly()
+        {
+            PointF point = new PointF(float.MinValue, float.MinValue);
+
+            Assert.Equal(float.MinValue, point.X);
+            Assert.Equal(float.MinValue, point.Y);
+        }
+
+        [Fact]
+        public void PointF_WithNaN_StoresCorrectly()
+        {
+            PointF point = new PointF(float.NaN, float.NaN);
+
+            Assert.True(float.IsNaN(point.X));
+            Assert.True(float.IsNaN(point.Y));
+        }
+
+        [Fact]
+        public void PointF_WithInfinity_StoresCorrectly()
+        {
+            PointF point = new PointF(float.PositiveInfinity, float.NegativeInfinity);
+
+            Assert.True(float.IsPositiveInfinity(point.X));
+            Assert.True(float.IsNegativeInfinity(point.Y));
+        }
+
+        [Fact]
+        public void Equality_WithSameValues_ReturnsTrue()
+        {
+            PointF p1 = new PointF(5f, 6f);
+            PointF p2 = new PointF(5f, 6f);
+
+            Assert.Equal(p1, p2);
+        }
+
+        [Fact]
+        public void Equality_WithDifferentValues_ReturnsFalse()
+        {
+            PointF p1 = new PointF(5f, 6f);
+            PointF p2 = new PointF(5f, 7f);
+
+            Assert.NotEqual(p1, p2);
+        }
+
+        [Fact]
+        public void GetHashCode_WithSameValues_ReturnsSameHash()
+        {
+            PointF p1 = new PointF(5f, 6f);
+            PointF p2 = new PointF(5f, 6f);
+
+            Assert.Equal(p1.GetHashCode(), p2.GetHashCode());
+        }
+
+        [Fact]
+        public void ToString_ReturnsFormattedString()
+        {
+            PointF point = new PointF(3.5f, 4.5f);
+            string result = point.ToString();
+
+            Assert.NotNull(result);
+            Assert.NotEmpty(result);
+        }
+
+        [Fact]
+        public void PointF_ImplementsIShape()
+        {
+            PointF point = new PointF(1f, 2f);
+
+            Assert.IsAssignableFrom<IShape>(point);
         }
     }
 }

@@ -43,6 +43,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
     {
         #region Constructors
         
+        /// <summary>
+        /// Tests that constructor with single value initializes both components
+        /// </summary>
         [Fact]
         public void Constructor_WithSingleValue_InitializesBothComponents()
         {
@@ -52,6 +55,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(5f, v.Y);
         }
 
+        /// <summary>
+        /// Tests that constructor with two values initializes components correctly
+        /// </summary>
         [Fact]
         public void Constructor_WithTwoValues_InitializesComponentsCorrectly()
         {
@@ -65,6 +71,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
 
         #region Static Properties
 
+        /// <summary>
+        /// Tests that static property zero returns vector with zero components
+        /// </summary>
         [Fact]
         public void StaticProperty_Zero_ReturnsVectorWithZeroComponents()
         {
@@ -74,6 +83,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(0f, v.Y);
         }
 
+        /// <summary>
+        /// Tests that static property one returns vector with one components
+        /// </summary>
         [Fact]
         public void StaticProperty_One_ReturnsVectorWithOneComponents()
         {
@@ -83,6 +95,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(1f, v.Y);
         }
 
+        /// <summary>
+        /// Tests that static property unit x returns vector one zero
+        /// </summary>
         [Fact]
         public void StaticProperty_UnitX_ReturnsVectorOneZero()
         {
@@ -92,6 +107,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(0f, v.Y);
         }
 
+        /// <summary>
+        /// Tests that static property unit y returns vector zero one
+        /// </summary>
         [Fact]
         public void StaticProperty_UnitY_ReturnsVectorZeroOne()
         {
@@ -105,6 +123,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
 
         #region Arithmetic Operators
 
+        /// <summary>
+        /// Tests that operator addition adds two vectors
+        /// </summary>
         [Fact]
         public void OperatorAddition_AddsTwoVectors()
         {
@@ -117,6 +138,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(6, result.Y);
         }
 
+        /// <summary>
+        /// Tests that operator subtraction subtracts two vectors
+        /// </summary>
         [Fact]
         public void OperatorSubtraction_SubtractsTwoVectors()
         {
@@ -129,6 +153,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(2, result.Y);
         }
 
+        /// <summary>
+        /// Tests that operator negation negates vector
+        /// </summary>
         [Fact]
         public void OperatorNegation_NegatesVector()
         {
@@ -140,6 +167,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(-4, result.Y);
         }
 
+        /// <summary>
+        /// Tests that operator multiplication multiply vector by scalar
+        /// </summary>
         [Fact]
         public void OperatorMultiplication_MultiplyVectorByScalar()
         {
@@ -152,6 +182,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(6, result.Y);
         }
 
+        /// <summary>
+        /// Tests that operator multiplication multiply scalar by vector
+        /// </summary>
         [Fact]
         public void OperatorMultiplication_MultiplyScalarByVector()
         {
@@ -164,6 +197,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(6, result.Y);
         }
 
+        /// <summary>
+        /// Tests that operator multiplication multiply vector by vector
+        /// </summary>
         [Fact]
         public void OperatorMultiplication_MultiplyVectorByVector()
         {
@@ -176,6 +212,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(15, result.Y);
         }
 
+        /// <summary>
+        /// Tests that operator division divide vector by scalar
+        /// </summary>
         [Fact]
         public void OperatorDivision_DivideVectorByScalar()
         {
@@ -188,6 +227,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(4, result.Y);
         }
 
+        /// <summary>
+        /// Tests that operator division divide vector by vector
+        /// </summary>
         [Fact]
         public void OperatorDivision_DivideVectorByVector()
         {
@@ -204,6 +246,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
 
         #region Comparison Operators
 
+        /// <summary>
+        /// Tests that operator equality with equal vectors returns true
+        /// </summary>
         [Fact]
         public void OperatorEquality_WithEqualVectors_ReturnsTrue()
         {
@@ -213,6 +258,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.True(v1 == v2);
         }
 
+        /// <summary>
+        /// Tests that operator equality with different vectors returns false
+        /// </summary>
         [Fact]
         public void OperatorEquality_WithDifferentVectors_ReturnsFalse()
         {
@@ -222,6 +270,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.False(v1 == v2);
         }
 
+        /// <summary>
+        /// Tests that operator equality within tolerance returns true
+        /// </summary>
         [Fact]
         public void OperatorEquality_WithinTolerance_ReturnsTrue()
         {
@@ -231,6 +282,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.True(v1 == v2);
         }
 
+        /// <summary>
+        /// Tests that operator inequality with different vectors returns true
+        /// </summary>
         [Fact]
         public void OperatorInequality_WithDifferentVectors_ReturnsTrue()
         {
@@ -240,6 +294,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.True(v1 != v2);
         }
 
+        /// <summary>
+        /// Tests that operator inequality with equal vectors returns false
+        /// </summary>
         [Fact]
         public void OperatorInequality_WithEqualVectors_ReturnsFalse()
         {
@@ -253,6 +310,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
 
         #region Static Methods - Basic Operations
 
+        /// <summary>
+        /// Tests that add static method adds two vectors
+        /// </summary>
         [Fact]
         public void Add_StaticMethod_AddsTwoVectors()
         {
@@ -265,6 +325,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(6, result.Y);
         }
 
+        /// <summary>
+        /// Tests that subtract static method subtracts two vectors
+        /// </summary>
         [Fact]
         public void Subtract_StaticMethod_SubtractsTwoVectors()
         {
@@ -277,6 +340,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(5, result.Y);
         }
 
+        /// <summary>
+        /// Tests that multiply static method with two vectors multiply elementwise
+        /// </summary>
         [Fact]
         public void Multiply_StaticMethod_WithTwoVectors_MultiplyElementwise()
         {
@@ -289,6 +355,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(15, result.Y);
         }
 
+        /// <summary>
+        /// Tests that multiply static method with scalar scales vector
+        /// </summary>
         [Fact]
         public void Multiply_StaticMethod_WithScalar_ScalesVector()
         {
@@ -301,6 +370,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(6, result.Y);
         }
 
+        /// <summary>
+        /// Tests that multiply static method with scalar first scales vector
+        /// </summary>
         [Fact]
         public void Multiply_StaticMethod_WithScalarFirst_ScalesVector()
         {
@@ -313,6 +385,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(12, result.Y);
         }
 
+        /// <summary>
+        /// Tests that divide static method with two vectors divides elementwise
+        /// </summary>
         [Fact]
         public void Divide_StaticMethod_WithTwoVectors_DividesElementwise()
         {
@@ -325,6 +400,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(2, result.Y);
         }
 
+        /// <summary>
+        /// Tests that divide static method with scalar divides by scalar
+        /// </summary>
         [Fact]
         public void Divide_StaticMethod_WithScalar_DividesByScalar()
         {
@@ -337,6 +415,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(3, result.Y);
         }
 
+        /// <summary>
+        /// Tests that negate static method negates vector
+        /// </summary>
         [Fact]
         public void Negate_StaticMethod_NegatesVector()
         {
@@ -352,6 +433,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
 
         #region Static Methods - Geometric Operations
 
+        /// <summary>
+        /// Tests that distance calculates euclidean distance
+        /// </summary>
         [Fact]
         public void Distance_CalculatesEuclideanDistance()
         {
@@ -363,6 +447,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(5, distance);
         }
 
+        /// <summary>
+        /// Tests that distance squared calculates squared distance
+        /// </summary>
         [Fact]
         public void DistanceSquared_CalculatesSquaredDistance()
         {
@@ -374,6 +461,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(25, distanceSquared);
         }
 
+        /// <summary>
+        /// Tests that dot calculates dot product
+        /// </summary>
         [Fact]
         public void Dot_CalculatesDotProduct()
         {
@@ -385,6 +475,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(11, dot);
         }
 
+        /// <summary>
+        /// Tests that abs returns absolute values
+        /// </summary>
         [Fact]
         public void Abs_ReturnsAbsoluteValues()
         {
@@ -396,6 +489,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(4, result.Y);
         }
 
+        /// <summary>
+        /// Tests that normalize normalizes vector
+        /// </summary>
         [Fact]
         public void Normalize_NormalizesVector()
         {
@@ -407,6 +503,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(0.8f, result.Y, 1);
         }
 
+        /// <summary>
+        /// Tests that normalize zero vector returns na n
+        /// </summary>
         [Fact]
         public void Normalize_ZeroVector_ReturnsNaN()
         {
@@ -417,6 +516,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.True(float.IsNaN(result.X) || float.IsInfinity(result.X));
         }
 
+        /// <summary>
+        /// Tests that square root calculates component wise square root
+        /// </summary>
         [Fact]
         public void SquareRoot_CalculatesComponentWiseSquareRoot()
         {
@@ -428,6 +530,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(3, result.Y);
         }
 
+        /// <summary>
+        /// Tests that clamp restricts value between min and max
+        /// </summary>
         [Fact]
         public void Clamp_RestrictsValueBetweenMinAndMax()
         {
@@ -441,6 +546,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(3, result.Y);
         }
 
+        /// <summary>
+        /// Tests that min returns componentwise minimum
+        /// </summary>
         [Fact]
         public void Min_ReturnsComponentwiseMinimum()
         {
@@ -453,6 +561,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(2, result.Y);
         }
 
+        /// <summary>
+        /// Tests that max returns componentwise maximum
+        /// </summary>
         [Fact]
         public void Max_ReturnsComponentwiseMaximum()
         {
@@ -465,6 +576,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(4, result.Y);
         }
 
+        /// <summary>
+        /// Tests that ler p interpolates between vectors
+        /// </summary>
         [Fact]
         public void LerP_InterpolatesBetweenVectors()
         {
@@ -478,6 +592,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(10, result.Y);
         }
 
+        /// <summary>
+        /// Tests that ler p with amount zero returns first vector
+        /// </summary>
         [Fact]
         public void LerP_WithAmountZero_ReturnsFirstVector()
         {
@@ -490,6 +607,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(2, result.Y);
         }
 
+        /// <summary>
+        /// Tests that ler p with amount one returns second vector
+        /// </summary>
         [Fact]
         public void LerP_WithAmountOne_ReturnsSecondVector()
         {
@@ -502,6 +622,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(6, result.Y);
         }
 
+        /// <summary>
+        /// Tests that reflect reflects vector off normal
+        /// </summary>
         [Fact]
         public void Reflect_ReflectsVectorOffNormal()
         {
@@ -518,6 +641,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
 
         #region Instance Methods
 
+        /// <summary>
+        /// Tests that length calculates vector length
+        /// </summary>
         [Fact]
         public void Length_CalculatesVectorLength()
         {
@@ -528,6 +654,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(5, length);
         }
 
+        /// <summary>
+        /// Tests that length squared calculates squared length
+        /// </summary>
         [Fact]
         public void LengthSquared_CalculatesSquaredLength()
         {
@@ -538,6 +667,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(25, lengthSquared);
         }
 
+        /// <summary>
+        /// Tests that normalize instance normalizes this vector
+        /// </summary>
         [Fact]
         public void Normalize_Instance_NormalizesThisVector()
         {
@@ -549,6 +681,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(0.8f, v.Y, 1);
         }
 
+        /// <summary>
+        /// Tests that copy to copies components to array
+        /// </summary>
         [Fact]
         public void CopyTo_CopiesComponentsToArray()
         {
@@ -563,6 +698,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(0, array[3]);
         }
 
+        /// <summary>
+        /// Tests that copy to with null array throws null reference exception
+        /// </summary>
         [Fact]
         public void CopyTo_WithNullArray_ThrowsNullReferenceException()
         {
@@ -571,6 +709,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Throws<NullReferenceException>(() => v.CopyTo(null));
         }
 
+        /// <summary>
+        /// Tests that copy to with invalid index throws exception
+        /// </summary>
         [Fact]
         public void CopyTo_WithInvalidIndex_ThrowsException()
         {
@@ -580,6 +721,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Throws<ArgumentOutOfRangeException>(() => v.CopyTo(array, -1));
         }
 
+        /// <summary>
+        /// Tests that copy to with insufficient space throws exception
+        /// </summary>
         [Fact]
         public void CopyTo_WithInsufficientSpace_ThrowsException()
         {
@@ -593,6 +737,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
 
         #region Matrix Transformation
 
+        /// <summary>
+        /// Tests that transform with matrix 3 x 2 transforms vector
+        /// </summary>
         [Fact]
         public void Transform_WithMatrix3X2_TransformsVector()
         {
@@ -605,6 +752,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(6f, result.Y);
         }
 
+        /// <summary>
+        /// Tests that transform with matrix 4 x 4 transforms vector
+        /// </summary>
         [Fact]
         public void Transform_WithMatrix4X4_TransformsVector()
         {
@@ -621,6 +771,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(6f, result.Y);
         }
 
+        /// <summary>
+        /// Tests that transform with quaternion rotates vector
+        /// </summary>
         [Fact]
         public void Transform_WithQuaternion_RotatesVector()
         {
@@ -632,6 +785,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.False(System.Math.Abs(result.X - 0.9238f) < 0.01f);
         }
 
+        /// <summary>
+        /// Tests that transform normal with matrix 3 x 2 transforms normal
+        /// </summary>
         [Fact]
         public void TransformNormal_WithMatrix3X2_TransformsNormal()
         {
@@ -644,6 +800,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(0f, result.Y);
         }
 
+        /// <summary>
+        /// Tests that transform normal with matrix 4 x 4 transforms normal
+        /// </summary>
         [Fact]
         public void TransformNormal_WithMatrix4X4_TransformsNormal()
         {
@@ -664,6 +823,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
 
         #region Ref Operations
 
+        /// <summary>
+        /// Tests that dot ref method calculates dot product
+        /// </summary>
         [Fact]
         public void Dot_RefMethod_CalculatesDotProduct()
         {
@@ -675,6 +837,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(11, result);
         }
 
+        /// <summary>
+        /// Tests that add ref method adds vectors
+        /// </summary>
         [Fact]
         public void Add_RefMethod_AddsVectors()
         {
@@ -687,6 +852,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(6, result.Y);
         }
 
+        /// <summary>
+        /// Tests that subtract ref method subtracts vectors
+        /// </summary>
         [Fact]
         public void Subtract_RefMethod_SubtractsVectors()
         {
@@ -699,6 +867,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(5, result.Y);
         }
 
+        /// <summary>
+        /// Tests that multiply ref method with two vectors multiply elementwise
+        /// </summary>
         [Fact]
         public void Multiply_RefMethod_WithTwoVectors_MultiplyElementwise()
         {
@@ -711,6 +882,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(15, result.Y);
         }
 
+        /// <summary>
+        /// Tests that multiply ref method with scalar scales vector
+        /// </summary>
         [Fact]
         public void Multiply_RefMethod_WithScalar_ScalesVector()
         {
@@ -723,6 +897,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(6, result.Y);
         }
 
+        /// <summary>
+        /// Tests that divide ref method divides by scalar
+        /// </summary>
         [Fact]
         public void Divide_RefMethod_DividesByScalar()
         {
@@ -735,6 +912,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(3, result.Y);
         }
 
+        /// <summary>
+        /// Tests that min ref method returns componentwise minimum
+        /// </summary>
         [Fact]
         public void Min_RefMethod_ReturnsComponentwiseMinimum()
         {
@@ -747,6 +927,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(2, result.Y);
         }
 
+        /// <summary>
+        /// Tests that max ref method returns componentwise maximum
+        /// </summary>
         [Fact]
         public void Max_RefMethod_ReturnsComponentwiseMaximum()
         {
@@ -759,6 +942,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(4, result.Y);
         }
 
+        /// <summary>
+        /// Tests that distance ref method calculates distance
+        /// </summary>
         [Fact]
         public void Distance_RefMethod_CalculatesDistance()
         {
@@ -770,6 +956,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(5, result);
         }
 
+        /// <summary>
+        /// Tests that distance squared ref method calculates squared distance
+        /// </summary>
         [Fact]
         public void DistanceSquared_RefMethod_CalculatesSquaredDistance()
         {
@@ -785,6 +974,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
 
         #region Equality and ToString
 
+        /// <summary>
+        /// Tests that equals with same vector returns true
+        /// </summary>
         [Fact]
         public void Equals_WithSameVector_ReturnsTrue()
         {
@@ -794,6 +986,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.True(v1.Equals(v2));
         }
 
+        /// <summary>
+        /// Tests that equals with different vector returns false
+        /// </summary>
         [Fact]
         public void Equals_WithDifferentVector_ReturnsFalse()
         {
@@ -803,6 +998,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.False(v1.Equals(v2));
         }
 
+        /// <summary>
+        /// Tests that equals object override with vector returns true
+        /// </summary>
         [Fact]
         public void Equals_ObjectOverride_WithVector_ReturnsTrue()
         {
@@ -812,6 +1010,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.True(v1.Equals(v2));
         }
 
+        /// <summary>
+        /// Tests that equals object override with non vector returns false
+        /// </summary>
         [Fact]
         public void Equals_ObjectOverride_WithNonVector_ReturnsFalse()
         {
@@ -821,6 +1022,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.False(v.Equals(obj));
         }
 
+        /// <summary>
+        /// Tests that get hash code with same vector returns same hash
+        /// </summary>
         [Fact]
         public void GetHashCode_WithSameVector_ReturnsSameHash()
         {
@@ -830,6 +1034,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(v1.GetHashCode(), v2.GetHashCode());
         }
 
+        /// <summary>
+        /// Tests that to string override returns formatted string
+        /// </summary>
         [Fact]
         public void ToString_Override_ReturnsFormattedString()
         {
@@ -842,6 +1049,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Contains("2", str);
         }
 
+        /// <summary>
+        /// Tests that to string with format returns formatted string
+        /// </summary>
         [Fact]
         public void ToString_WithFormat_ReturnsFormattedString()
         {
@@ -852,6 +1062,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Contains("2.57", str);
         }
 
+        /// <summary>
+        /// Tests that to string with format and culture returns formatted string
+        /// </summary>
         [Fact]
         public void ToString_WithFormatAndCulture_ReturnsFormattedString()
         {
@@ -868,6 +1081,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
 
         #region Serialization
 
+        /// <summary>
+        /// Tests that get object data serializes vector
+        /// </summary>
         [Fact]
         public void GetObjectData_SerializesVector()
         {
@@ -882,6 +1098,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
 
         #endregion
         
+        /// <summary>
+        /// Tests that vector 2 normalize
+        /// </summary>
         [Fact]
         public void Vector2_Normalize()
         {

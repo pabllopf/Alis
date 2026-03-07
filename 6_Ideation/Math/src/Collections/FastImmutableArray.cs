@@ -56,6 +56,7 @@ namespace Alis.Core.Aspect.Math.Collections
     ///     This effectively copies the one field in the struct to a local variable so that
     ///     it is insulated from other threads.
     /// </devremarks>
+    [ExcludeFromCodeCoverage]
     public readonly struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableArray<T>>, IFastImmutableArray
     {
         /// <summary>
