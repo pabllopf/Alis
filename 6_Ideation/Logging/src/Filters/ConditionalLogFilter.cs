@@ -55,10 +55,18 @@ namespace Alis.Core.Aspect.Logging.Filters
             Name = name;
         }
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Gets the value of the name
+        /// </summary>
         public string Name { get; }
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Shoulds the log using the specified entry
+        /// </summary>
+        /// <param name="entry">The entry</param>
+        /// <returns>The bool</returns>
         public bool ShouldLog(ILogEntry entry)
         {
             try

@@ -71,31 +71,58 @@ namespace Alis.Core.Aspect.Logging.Core
             Scopes = scopes ?? new List<object>();
         }
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Gets the value of the level
+        /// </summary>
         public LogLevel Level { get; }
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Gets the value of the message
+        /// </summary>
         public string Message { get; }
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Gets the value of the timestamp
+        /// </summary>
         public DateTime Timestamp { get; }
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Gets the value of the logger name
+        /// </summary>
         public string LoggerName { get; }
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Gets the value of the exception
+        /// </summary>
         public Exception Exception { get; }
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Gets the value of the thread id
+        /// </summary>
         public int ThreadId { get; }
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Gets the value of the correlation id
+        /// </summary>
         public string CorrelationId { get; }
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Gets the value of the properties
+        /// </summary>
         public IReadOnlyDictionary<string, object> Properties { get; }
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Gets the value of the scopes
+        /// </summary>
         public IReadOnlyList<object> Scopes { get; }
     }
 }

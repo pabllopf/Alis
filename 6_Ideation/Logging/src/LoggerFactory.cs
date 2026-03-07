@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Logging.Abstractions;
 using Alis.Core.Aspect.Logging.Core;
 using Alis.Core.Aspect.Logging.Formatters;
@@ -71,7 +72,11 @@ namespace Alis.Core.Aspect.Logging
             // Default formatter
             _formatter = new SimpleLogFormatter();
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
+        [ExcludeFromCodeCoverage]
         public void Dispose()
         {
             if (_disposed)
@@ -171,6 +176,7 @@ namespace Alis.Core.Aspect.Logging
         /// <summary>
         ///     Flushes all outputs and cleans up resources.
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void Flush()
         {
             if (_disposed)

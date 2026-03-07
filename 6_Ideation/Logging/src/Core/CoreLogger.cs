@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Logging.Abstractions;
 
 namespace Alis.Core.Aspect.Logging.Core
@@ -97,40 +98,88 @@ namespace Alis.Core.Aspect.Logging.Core
             _scopeStack = new Stack<object>();
         }
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Gets the value of the name
+        /// </summary>
         public string Name { get; }
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Logs the trace using the specified message
+        /// </summary>
+        /// <param name="message">The message</param>
         public void LogTrace(string message) => Log(LogLevel.Trace, message);
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Logs the debug using the specified message
+        /// </summary>
+        /// <param name="message">The message</param>
         public void LogDebug(string message) => Log(LogLevel.Debug, message);
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Logs the info using the specified message
+        /// </summary>
+        /// <param name="message">The message</param>
         public void LogInfo(string message) => Log(LogLevel.Info, message);
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Logs the warning using the specified message
+        /// </summary>
+        /// <param name="message">The message</param>
         public void LogWarning(string message) => Log(LogLevel.Warning, message);
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Logs the error using the specified message
+        /// </summary>
+        /// <param name="message">The message</param>
         public void LogError(string message) => Log(LogLevel.Error, message);
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Logs the critical using the specified message
+        /// </summary>
+        /// <param name="message">The message</param>
         public void LogCritical(string message) => Log(LogLevel.Critical, message);
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Logs the error using the specified message
+        /// </summary>
+        /// <param name="message">The message</param>
+        /// <param name="exception">The exception</param>
         public void LogError(string message, Exception exception) => Log(LogLevel.Error, message, exception);
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Logs the critical using the specified message
+        /// </summary>
+        /// <param name="message">The message</param>
+        /// <param name="exception">The exception</param>
         public void LogCritical(string message, Exception exception) => Log(LogLevel.Critical, message, exception);
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Logs the level
+        /// </summary>
+        /// <param name="level">The level</param>
+        /// <param name="message">The message</param>
         public void Log(LogLevel level, string message)
         {
             Log(level, message, null);
         }
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Logs the level
+        /// </summary>
+        /// <param name="level">The level</param>
+        /// <param name="message">The message</param>
+        /// <param name="exception">The exception</param>
         public void Log(LogLevel level, string message, Exception exception)
         {
             if (!IsEnabled(level))
@@ -153,7 +202,13 @@ namespace Alis.Core.Aspect.Logging.Core
             ProcessEntry(entry);
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Logs the structured using the specified level
+        /// </summary>
+        /// <param name="level">The level</param>
+        /// <param name="message">The message</param>
+        /// <param name="properties">The properties</param>
+        [ExcludeFromCodeCoverage]
         public void LogStructured(LogLevel level, string message, IReadOnlyDictionary<string, object> properties)
         {
             if (!IsEnabled(level))
@@ -182,7 +237,11 @@ namespace Alis.Core.Aspect.Logging.Core
             ProcessEntry(entry);
         }
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Sets the correlation id using the specified correlation id
+        /// </summary>
+        /// <param name="correlationId">The correlation id</param>
         public void SetCorrelationId(string correlationId)
         {
             lock (_correlationLock)
@@ -191,7 +250,11 @@ namespace Alis.Core.Aspect.Logging.Core
             }
         }
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Gets the correlation id
+        /// </summary>
+        /// <returns>The string</returns>
         public string GetCorrelationId()
         {
             lock (_correlationLock)
@@ -200,7 +263,12 @@ namespace Alis.Core.Aspect.Logging.Core
             }
         }
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Begins the scope using the specified scope
+        /// </summary>
+        /// <param name="scope">The scope</param>
+        /// <returns>The disposable</returns>
         public IDisposable BeginScope(object scope)
         {
             lock (_scopeLock)
@@ -209,7 +277,12 @@ namespace Alis.Core.Aspect.Logging.Core
             }
         }
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Ises the enabled using the specified level
+        /// </summary>
+        /// <param name="level">The level</param>
+        /// <returns>The bool</returns>
         public bool IsEnabled(LogLevel level) => (level >= _minimumLevel) && (level != LogLevel.None);
 
         /// <summary>
@@ -237,6 +310,7 @@ namespace Alis.Core.Aspect.Logging.Core
         /// <summary>
         ///     Processes a log entry through filters and outputs.
         /// </summary>
+        [ExcludeFromCodeCoverage]
         private void ProcessEntry(ILogEntry entry)
         {
             try

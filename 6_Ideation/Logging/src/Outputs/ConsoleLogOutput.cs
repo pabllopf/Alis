@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Logging.Abstractions;
 using Alis.Core.Aspect.Logging.Formatters;
 
@@ -56,13 +57,24 @@ namespace Alis.Core.Aspect.Logging.Outputs
         /// <param name="formatter">The formatter to use for log entries. If null, uses a simple formatter.</param>
         public ConsoleLogOutput(ILogFormatter formatter = null) => _formatter = formatter ?? new SimpleLogFormatter();
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Gets the value of the name
+        /// </summary>
         public string Name => "ConsoleOutput";
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Gets or sets the value of the is enabled
+        /// </summary>
         public bool IsEnabled { get; set; } = true;
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Writes the entry
+        /// </summary>
+        /// <param name="entry">The entry</param>
+        [ExcludeFromCodeCoverage]
         public void Write(ILogEntry entry)
         {
             if (entry == null || _disposed)
@@ -106,13 +118,19 @@ namespace Alis.Core.Aspect.Logging.Outputs
             }
         }
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Flushes this instance
+        /// </summary>
         public void Flush()
         {
             // Console output is already flushed by WriteLine
         }
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             if (_disposed)

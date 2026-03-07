@@ -31,6 +31,7 @@ using System;
 using System.Buffers;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
@@ -81,6 +82,7 @@ namespace Alis.Core.Aspect.Memory
         /// </summary>
         /// <param name="assemblyName">The assembly name</param>
         /// <param name="assetLoader">The asset loader</param>
+        [ExcludeFromCodeCoverage]
         public static void RegisterAssembly(string assemblyName, Func<Stream> assetLoader)
         {
             lock (_globalLock)
@@ -122,6 +124,7 @@ namespace Alis.Core.Aspect.Memory
         /// <exception cref="FileNotFoundException">Resource '{resourceName}' not found in `assets.pack`.</exception>
         /// <exception cref="ArgumentException">resourceName no puede estar vacío. </exception>
         /// <returns>The memory stream</returns>
+        [ExcludeFromCodeCoverage]
         public static MemoryStream GetResourceMemoryStreamByName(string resourceName)
         {
             if (string.IsNullOrWhiteSpace(resourceName))
@@ -203,6 +206,7 @@ namespace Alis.Core.Aspect.Memory
         /// <exception cref="FileNotFoundException">Resource '{resourceName}' not found in `assets.pack`.</exception>
         /// <exception cref="ArgumentException">resourceName no puede estar vacío. </exception>
         /// <returns>The string</returns>
+        [ExcludeFromCodeCoverage]
         public static string GetResourcePathByName(string resourceName)
         {
             if (string.IsNullOrWhiteSpace(resourceName))
@@ -332,6 +336,7 @@ namespace Alis.Core.Aspect.Memory
         /// <param name="assemblyName">The assembly name</param>
         /// <param name="normalizedResourceKey">The normalized resource key</param>
         /// <returns>The string</returns>
+        [ExcludeFromCodeCoverage]
         private static string MakeSafeTempName(string assemblyName, string normalizedResourceKey)
         {
             string extension = Path.GetExtension(normalizedResourceKey) ?? string.Empty;
@@ -357,6 +362,7 @@ namespace Alis.Core.Aspect.Memory
         /// </summary>
         /// <param name="bytes">The bytes</param>
         /// <returns>The string</returns>
+        [ExcludeFromCodeCoverage]
         private static string ToLowerHex(byte[] bytes)
         {
             if (bytes == null || bytes.Length == 0)
@@ -381,6 +387,7 @@ namespace Alis.Core.Aspect.Memory
         ///     registrado.
         /// </exception>
         /// <exception cref="FileNotFoundException">Resource file `assets.pack` not found in embedded resources.</exception>
+        [ExcludeFromCodeCoverage]
         private static void EnsureZipCachedForActiveAssembly()
         {
             if (_zipCache.ContainsKey(ActiveAssemblyName))
@@ -442,6 +449,7 @@ namespace Alis.Core.Aspect.Memory
         /// <param name="cacheEntry">The cache entry</param>
         /// <param name="resourceName">The resource name</param>
         /// <returns>The match</returns>
+        [ExcludeFromCodeCoverage]
         private static ZipEntryInfo FindZipEntryInfo(ZipCacheEntry cacheEntry, string resourceName)
         {
             string normalized = NormalizeResourceKey(resourceName);

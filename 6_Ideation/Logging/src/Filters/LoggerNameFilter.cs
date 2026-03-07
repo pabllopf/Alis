@@ -59,10 +59,18 @@ namespace Alis.Core.Aspect.Logging.Filters
             _inclusive = inclusive;
         }
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Gets the value of the name
+        /// </summary>
         public string Name => $"LoggerNameFilter[{(_inclusive ? "Include" : "Exclude")}:{_includedNames.Count}]";
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Shoulds the log using the specified entry
+        /// </summary>
+        /// <param name="entry">The entry</param>
+        /// <returns>The bool</returns>
         public bool ShouldLog(ILogEntry entry)
         {
             if (entry == null || _includedNames.Count == 0)

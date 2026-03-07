@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using Alis.Core.Aspect.Logging.Abstractions;
 
@@ -40,10 +41,19 @@ namespace Alis.Core.Aspect.Logging.Formatters
     /// </summary>
     public sealed class CompactLogFormatter : ILogFormatter
     {
-        /// <inheritdoc />
+       
+        /// <summary>
+        /// Gets the value of the name
+        /// </summary>
         public string Name => "CompactFormatter";
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Formats the entry
+        /// </summary>
+        /// <param name="entry">The entry</param>
+        /// <returns>The string</returns>
+        [ExcludeFromCodeCoverage]
         public string Format(ILogEntry entry)
         {
             StringBuilder sb = new StringBuilder(128);

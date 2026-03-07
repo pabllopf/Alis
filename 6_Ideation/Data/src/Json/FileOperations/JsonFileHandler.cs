@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using Alis.Core.Aspect.Data.Json.Deserialization;
 using Alis.Core.Aspect.Data.Json.Serialization;
@@ -70,6 +71,7 @@ namespace Alis.Core.Aspect.Data.Json.FileOperations
         /// <param name="relativePath">The relative path where the file will be saved.</param>
         /// <exception cref="ArgumentNullException">Thrown when parameters are null.</exception>
         /// <exception cref="System.IO.IOException">Thrown when file operations fail.</exception>
+        [ExcludeFromCodeCoverage]
         public void SerializeToFile<T>(T instance, string fileName, string relativePath) where T : IJsonSerializable
         {
             if (instance == null)
@@ -116,6 +118,7 @@ namespace Alis.Core.Aspect.Data.Json.FileOperations
         /// <exception cref="System.IO.FileNotFoundException">Thrown when the file does not exist.</exception>
         /// <exception cref="ArgumentNullException">Thrown when parameters are null.</exception>
         /// <exception cref="System.IO.IOException">Thrown when file operations fail.</exception>
+        [ExcludeFromCodeCoverage]
         public T DeserializeFromFile<T>(string fileName, string relativePath) where T : IJsonSerializable, IJsonDesSerializable<T>, new()
         {
             if (fileName == null)

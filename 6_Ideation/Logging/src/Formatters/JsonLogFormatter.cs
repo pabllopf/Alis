@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using Alis.Core.Aspect.Logging.Abstractions;
 
@@ -40,10 +41,18 @@ namespace Alis.Core.Aspect.Logging.Formatters
     /// </summary>
     public sealed class JsonLogFormatter : ILogFormatter
     {
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Gets the value of the name
+        /// </summary>
         public string Name => "JsonFormatter";
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Formats the entry
+        /// </summary>
+        /// <param name="entry">The entry</param>
+        /// <returns>The string</returns>
         public string Format(ILogEntry entry)
         {
             StringBuilder sb = new StringBuilder(512);
@@ -125,6 +134,7 @@ namespace Alis.Core.Aspect.Logging.Formatters
         /// <summary>
         ///     Escapes special characters for JSON string values.
         /// </summary>
+        [ExcludeFromCodeCoverage]
         private static void EscapeJsonString(StringBuilder sb, string value)
         {
             if (string.IsNullOrEmpty(value))

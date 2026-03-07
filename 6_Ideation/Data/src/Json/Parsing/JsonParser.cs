@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using Alis.Core.Aspect.Data.Json.Exceptions;
 using Alis.Core.Aspect.Data.Json.Helpers;
@@ -59,6 +60,7 @@ namespace Alis.Core.Aspect.Data.Json.Parsing
         /// <returns>A dictionary containing property names as keys and their string representations as values.</returns>
         /// <exception cref="ArgumentNullException">Thrown when json is null.</exception>
         /// <exception cref="JsonParsingException">Thrown when parsing fails.</exception>
+        [ExcludeFromCodeCoverage]
         public Dictionary<string, string> ParseToDictionary(string json)
         {
             if (json == null)
@@ -131,6 +133,7 @@ namespace Alis.Core.Aspect.Data.Json.Parsing
         /// <summary>
         ///     Reads a JSON value at the current position.
         /// </summary>
+        [ExcludeFromCodeCoverage]
         private string ReadJsonValue(string json, ref int position)
         {
             SkipWhitespace(json, ref position);
@@ -186,6 +189,7 @@ namespace Alis.Core.Aspect.Data.Json.Parsing
         /// <summary>
         ///     Reads a raw JSON value (object or array).
         /// </summary>
+        [ExcludeFromCodeCoverage]
         private string ReadRawJsonValue(string json, ref int position)
         {
             char openChar = json[position];

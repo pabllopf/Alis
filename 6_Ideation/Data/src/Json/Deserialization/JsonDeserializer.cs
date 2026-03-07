@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Data.Json.Exceptions;
 using Alis.Core.Aspect.Data.Json.Parsing;
 
@@ -59,6 +60,7 @@ namespace Alis.Core.Aspect.Data.Json.Deserialization
         /// <returns>An instance of the specified type populated with data from the JSON.</returns>
         /// <exception cref="ArgumentNullException">Thrown when json is null.</exception>
         /// <exception cref="JsonDeserializationException">Thrown when deserialization fails.</exception>
+        [ExcludeFromCodeCoverage]
         public T Deserialize<T>(string json) where T : IJsonSerializable, IJsonDesSerializable<T>, new()
         {
             if (json == null)

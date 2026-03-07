@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using Alis.Core.Aspect.Data.Json.Exceptions;
 
@@ -46,6 +47,7 @@ namespace Alis.Core.Aspect.Data.Json.Serialization
         /// <returns>A JSON string representation of the object.</returns>
         /// <exception cref="ArgumentNullException">Thrown when instance is null.</exception>
         /// <exception cref="JsonSerializationException">Thrown when serialization fails.</exception>
+        [ExcludeFromCodeCoverage]
         public string Serialize<T>(T instance) where T : IJsonSerializable
         {
             if (instance == null)

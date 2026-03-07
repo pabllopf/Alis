@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Text;
 using Alis.Core.Aspect.Logging.Abstractions;
@@ -101,13 +102,24 @@ namespace Alis.Core.Aspect.Logging.Outputs
             }
         }
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Gets the value of the name
+        /// </summary>
         public string Name => $"FileOutput[{Path.GetFileName(_filePath)}]";
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Gets or sets the value of the is enabled
+        /// </summary>
         public bool IsEnabled { get; set; } = true;
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Writes the entry
+        /// </summary>
+        /// <param name="entry">The entry</param>
+        [ExcludeFromCodeCoverage]
         public void Write(ILogEntry entry)
         {
             if (entry == null || _disposed || _writer == null)
@@ -129,7 +141,11 @@ namespace Alis.Core.Aspect.Logging.Outputs
             }
         }
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Flushes this instance
+        /// </summary>
+        [ExcludeFromCodeCoverage]
         public void Flush()
         {
             if (_disposed || _writer == null)
@@ -150,7 +166,11 @@ namespace Alis.Core.Aspect.Logging.Outputs
             }
         }
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
+        [ExcludeFromCodeCoverage]
         public void Dispose()
         {
             if (_disposed)

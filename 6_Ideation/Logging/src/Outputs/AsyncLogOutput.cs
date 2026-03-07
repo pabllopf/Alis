@@ -73,13 +73,23 @@ namespace Alis.Core.Aspect.Logging.Outputs
             _maxQueueSize = maxQueueSize > 0 ? maxQueueSize : int.MaxValue;
         }
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Gets the value of the name
+        /// </summary>
         public string Name => $"Async[{_innerOutput.Name}]";
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Gets or sets the value of the is enabled
+        /// </summary>
         public bool IsEnabled { get; set; } = true;
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Writes the entry
+        /// </summary>
+        /// <param name="entry">The entry</param>
         public void Write(ILogEntry entry)
         {
             if (entry == null || _disposed || !IsEnabled)
@@ -106,7 +116,10 @@ namespace Alis.Core.Aspect.Logging.Outputs
             }
         }
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Flushes this instance
+        /// </summary>
         public void Flush()
         {
             lock (_queueLock)
@@ -128,7 +141,10 @@ namespace Alis.Core.Aspect.Logging.Outputs
             _innerOutput.Flush();
         }
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             if (_disposed)

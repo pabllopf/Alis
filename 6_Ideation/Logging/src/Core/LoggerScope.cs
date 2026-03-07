@@ -65,7 +65,10 @@ namespace Alis.Core.Aspect.Logging.Core
             _scopeStack.Push(scope);
         }
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             if (_disposed)

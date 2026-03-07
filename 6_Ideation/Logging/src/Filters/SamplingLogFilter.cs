@@ -63,10 +63,18 @@ namespace Alis.Core.Aspect.Logging.Filters
             _counter = 0;
         }
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Gets the value of the name
+        /// </summary>
         public string Name => $"SamplingFilter[1:{_sampleRate}]";
 
-        /// <inheritdoc />
+        
+        /// <summary>
+        /// Shoulds the log using the specified entry
+        /// </summary>
+        /// <param name="entry">The entry</param>
+        /// <returns>The bool</returns>
         public bool ShouldLog(ILogEntry entry)
         {
             if (entry == null)

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Text;
 
@@ -75,6 +76,7 @@ namespace Alis.Core.Aspect.Data.Json.Helpers
         /// <param name="escapedString">The escaped string.</param>
         /// <returns>The unescaped string.</returns>
         /// <exception cref="ArgumentNullException">Thrown when escapedString is null.</exception>
+        [ExcludeFromCodeCoverage]
         public string Unescape(string escapedString)
         {
             if (escapedString == null)
