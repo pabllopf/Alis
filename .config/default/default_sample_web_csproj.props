@@ -55,6 +55,7 @@
             #include &lt;AL/alc.h&gt;'
             Overwrite="true" />
 
+
         <WriteLinesToFile
             Condition="'$(IsBrowserWasm)' == 'true' AND !Exists('$(MSBuildProjectDirectory)/Game.cs')"
             File="$(MSBuildProjectDirectory)/Game.cs"
@@ -69,8 +70,15 @@ using Alis.Core.Physic.Dynamics%3b
 
 namespace $(RootNamespace)
 {
+    /// &lt;summary&gt;
+    /// The game class
+    /// &lt;/summary&gt;
     public static class Game
     {
+        /// &lt;summary&gt;
+        /// Creates this instance
+        /// &lt;/summary&gt;
+        /// &lt;returns&gt;The video game&lt;/returns&gt;
         public static VideoGame Create()
         {
              return VideoGame.Create().Build()%3b
@@ -94,13 +102,28 @@ namespace $(RootNamespace)
                 
                 namespace $(RootNamespace)
                 {
+                    /// &lt;summary&gt;
+                    /// The entry point class
+                    /// &lt;/summary&gt;
                     public static class EntryPoint
                     {
                         
+                        /// &lt;summary&gt;
+                        /// Gets or sets the value of the base address
+                        /// &lt;/summary&gt;
                         public static Uri BaseAddress { get%3b internal set%3b }
                         
+                        /// &lt;summary&gt;
+                        /// Gets or sets the value of the game alis
+                        /// &lt;/summary&gt;
                         private static VideoGame GameAlis { get%3b set%3b }
                         
+                        /// &lt;summary&gt;
+                        /// Frames the time
+                        /// &lt;/summary&gt;
+                        /// &lt;param name="time"&gt;The time&lt;/param&gt;
+                        /// &lt;param name="userData"&gt;The user data&lt;/param&gt;
+                        /// &lt;returns&gt;The int&lt;/returns&gt;
                         [UnmanagedCallersOnly]
                         public static int Frame(double time, nint userData)
                         {
@@ -108,10 +131,21 @@ namespace $(RootNamespace)
                             return 1%3b
                         }
                         
+                        /// &lt;summary&gt;
+                        /// Gets or sets the value of the canvas width
+                        /// &lt;/summary&gt;
                         private static int CanvasWidth { get%3b set%3b }
                 
+                        /// &lt;summary&gt;
+                        /// Gets or sets the value of the canvas height
+                        /// &lt;/summary&gt;
                         private static int CanvasHeight { get%3b set%3b }
                 
+                        /// &lt;summary&gt;
+                        /// Canvases the resized using the specified width
+                        /// &lt;/summary&gt;
+                        /// &lt;param name="width"&gt;The width&lt;/param&gt;
+                        /// &lt;param name="height"&gt;The height&lt;/param&gt;
                         public static void CanvasResized(int width, int height)
                         {
                              CanvasWidth = width%3b
@@ -151,6 +185,18 @@ namespace $(RootNamespace)
                          Gl.GlViewport(viewportX, viewportY, viewportWidth, viewportHeight)%3b
                         }
                         
+                        /// &lt;summary&gt;
+                        /// Mains the args
+                        /// &lt;/summary&gt;
+                        /// &lt;param name="args"&gt;The args&lt;/param&gt;
+                        /// &lt;exception cref="Exception"&gt;Display was null&lt;/exception&gt;
+                        /// &lt;exception cref="Exception"&gt;Initialize() returned false.&lt;/exception&gt;
+                        /// &lt;exception cref="Exception"&gt;ChoseConfig() failed&lt;/exception&gt;
+                        /// &lt;exception cref="Exception"&gt;ChoseConfig() returned no configs&lt;/exception&gt;
+                        /// &lt;exception cref="Exception"&gt;BindApi() failed&lt;/exception&gt;
+                        /// &lt;exception cref="Exception"&gt;CreateContext() failed&lt;/exception&gt;
+                        /// &lt;exception cref="Exception"&gt;CreateWindowSurface() failed&lt;/exception&gt;
+                        /// &lt;exception cref="Exception"&gt;MakeCurrent() failed&lt;/exception&gt;
                         public async static Task Main(string[] args)
                         {
                             Console.WriteLine($"Hello from dotnet!")%3b
@@ -271,48 +317,102 @@ namespace $(RootNamespace)
                 
                 namespace $(RootNamespace)
                 {
+                    /// &lt;summary&gt;
+                    /// The interop class
+                    /// &lt;/summary&gt;
                     internal static partial class Interop
                     {
+                        /// &lt;summary&gt;
+                        /// Initializes this instance
+                        /// &lt;/summary&gt;
                         [JSImport("initialize", "main.js")]
                         public static partial void Initialize()%3b
                         
+                        /// &lt;summary&gt;
+                        /// Ons the key down using the specified shift
+                        /// &lt;/summary&gt;
+                        /// &lt;param name="shift"&gt;The shift&lt;/param&gt;
+                        /// &lt;param name="ctrl"&gt;The ctrl&lt;/param&gt;
+                        /// &lt;param name="alt"&gt;The alt&lt;/param&gt;
+                        /// &lt;param name="repeat"&gt;The repeat&lt;/param&gt;
+                        /// &lt;param name="code"&gt;The code&lt;/param&gt;
                         [JSExport]
                         public static void OnKeyDown(bool shift, bool ctrl, bool alt, bool repeat, int code)
                         {
                         }
                         
+                        /// &lt;summary&gt;
+                        /// Ons the key up using the specified shift
+                        /// &lt;/summary&gt;
+                        /// &lt;param name="shift"&gt;The shift&lt;/param&gt;
+                        /// &lt;param name="ctrl"&gt;The ctrl&lt;/param&gt;
+                        /// &lt;param name="alt"&gt;The alt&lt;/param&gt;
+                        /// &lt;param name="code"&gt;The code&lt;/param&gt;
                         [JSExport]
                         public static void OnKeyUp(bool shift, bool ctrl, bool alt, int code)
                         {
                         }
                         
+                        /// &lt;summary&gt;
+                        /// Ons the mouse move using the specified x
+                        /// &lt;/summary&gt;
+                        /// &lt;param name="x"&gt;The &lt;/param&gt;
+                        /// &lt;param name="y"&gt;The &lt;/param&gt;
                         [JSExport]
                         public static void OnMouseMove(float x, float y)
                         {
                         }
                         
+                        /// &lt;summary&gt;
+                        /// Ons the mouse down using the specified shift
+                        /// &lt;/summary&gt;
+                        /// &lt;param name="shift"&gt;The shift&lt;/param&gt;
+                        /// &lt;param name="ctrl"&gt;The ctrl&lt;/param&gt;
+                        /// &lt;param name="alt"&gt;The alt&lt;/param&gt;
+                        /// &lt;param name="button"&gt;The button&lt;/param&gt;
                         [JSExport]
                         public static void OnMouseDown(bool shift, bool ctrl, bool alt, int button)
                         {
                         }
                         
+                        /// &lt;summary&gt;
+                        /// Ons the mouse up using the specified shift
+                        /// &lt;/summary&gt;
+                        /// &lt;param name="shift"&gt;The shift&lt;/param&gt;
+                        /// &lt;param name="ctrl"&gt;The ctrl&lt;/param&gt;
+                        /// &lt;param name="alt"&gt;The alt&lt;/param&gt;
+                        /// &lt;param name="button"&gt;The button&lt;/param&gt;
                         [JSExport]
                         public static void OnMouseUp(bool shift, bool ctrl, bool alt, int button)
                         {
                         }
                         
+                        /// &lt;summary&gt;
+                        /// Ons the canvas resize using the specified width
+                        /// &lt;/summary&gt;
+                        /// &lt;param name="width"&gt;The width&lt;/param&gt;
+                        /// &lt;param name="height"&gt;The height&lt;/param&gt;
+                        /// &lt;param name="devicePixelRatio"&gt;The device pixel ratio&lt;/param&gt;
                         [JSExport]
                         public static void OnCanvasResize(float width, float height, float devicePixelRatio)
                         {
                             EntryPoint.CanvasResized((int)width, (int)height)%3b
                         }
                         
+                        /// &lt;summary&gt;
+                        /// Sets the root uri using the specified uri
+                        /// &lt;/summary&gt;
+                        /// &lt;param name="uri"&gt;The uri&lt;/param&gt;
                         [JSExport]
                         public static void SetRootUri(string uri)
                         {
                             EntryPoint.BaseAddress = new Uri(uri)%3b
                         }
                         
+                        /// &lt;summary&gt;
+                        /// Adds the locale using the specified locale
+                        /// &lt;/summary&gt;
+                        /// &lt;param name="locale"&gt;The locale&lt;/param&gt;
                         [JSExport]
                         public static void AddLocale(string locale)
                         {
