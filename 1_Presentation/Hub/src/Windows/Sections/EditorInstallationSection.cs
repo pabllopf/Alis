@@ -32,6 +32,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Alis.App.Hub.Core;
 using Alis.App.Hub.Entity;
@@ -219,31 +220,38 @@ namespace Alis.App.Hub.Windows.Sections
             versions = availableVersions.ToArray();
         }
 
-        /// <summary>
-        ///     Fetches the available versions
-        /// </summary>
-        /// <returns>A task containing a list of string</returns>
         private async Task<List<string>> FetchAvailableVersionsAsync()
         {
             List<string> versionList = new List<string>();
 
-            using (HttpClient client = new HttpClient())
-            {
-                client.DefaultRequestHeaders.Add("User-Agent", "request");
-                string response = await client.GetStringAsync("https://api.github.com/repos/pabllopf/alis/releases");
-                ReleasesInfo releases = JsonNativeAot.Deserialize<ReleasesInfo>(response);
+            using HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.UserAgent.ParseAdd("Alis-Hub");
 
-                foreach (ReleaseElement release in releases.Releases)
+            using HttpResponseMessage response = await client.GetAsync("https://api.github.com/repos/pabllopf/Alis/releases");
+            response.EnsureSuccessStatusCode();
+
+            string json = await response.Content.ReadAsStringAsync();
+            using JsonDocument document = JsonDocument.Parse(json);
+
+            if (document.RootElement.ValueKind != JsonValueKind.Array)
+            {
+                return versionList;
+            }
+
+            foreach (JsonElement release in document.RootElement.EnumerateArray())
+            {
+                if (release.TryGetProperty("tag_name", out JsonElement tag) &&
+                    tag.ValueKind == JsonValueKind.String)
                 {
-                    string version = release.Element["tag_name"]?.ToString();
-                    if (!string.IsNullOrEmpty(version))
+                    string? version = tag.GetString();
+                    if (!string.IsNullOrWhiteSpace(version))
                     {
                         versionList.Add(version);
                     }
                 }
-
-                return versionList;
             }
+
+            return versionList;
         }
 
         /// <summary>
