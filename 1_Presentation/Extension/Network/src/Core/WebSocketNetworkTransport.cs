@@ -230,17 +230,10 @@ namespace Alis.Extension.Network.Core
         /// </summary>
         private async Task AcceptConnectionsAsync(CancellationToken cancellationToken)
         {
-            try
+            while (!cancellationToken.IsCancellationRequested && _state == NetworkTransportState.Connected)
             {
-                while (!cancellationToken.IsCancellationRequested && _state == NetworkTransportState.Connected)
-                {
-                    TcpClient tcpClient = await _tcpListener.AcceptTcpClientAsync();
-                    _ = HandleClientAsync(tcpClient, cancellationToken);
-                }
-            }
-            catch (ObjectDisposedException)
-            {
-                // Listener stopped
+                TcpClient tcpClient = await _tcpListener.AcceptTcpClientAsync();
+                _ = HandleClientAsync(tcpClient, cancellationToken);
             }
         }
 

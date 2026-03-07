@@ -1048,26 +1048,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         #endregion
 
         #region Dispose Tests
-
-        /// <summary>
-        /// Tests that dispose clears products and configuration
-        /// </summary>
-        [Fact]
-        public void Dispose_ClearsProductsAndConfiguration()
-        {
-            // Arrange
-            Mock<IStripeGatewayClient> gateway = new Mock<IStripeGatewayClient>();
-            StoreManager manager = new StoreManager(CreateContext(), gateway.Object);
-            manager.RegisterProduct(CreateProduct("prod1"));
-
-            // Act
-            manager.Dispose();
-
-            // Assert
-            Assert.False(manager.IsInitialized);
-            Assert.Throws<ObjectDisposedException>(() => manager.GetProducts());
-        }
-
+        
         /// <summary>
         /// Tests that dispose can be called multiple times
         /// </summary>
@@ -1085,23 +1066,7 @@ namespace Alis.Extension.Payment.Stripe.Test
             // Assert - no exception
             Assert.True(true);
         }
-
-        /// <summary>
-        /// Tests that operations after dispose throw object disposed exception
-        /// </summary>
-        [Fact]
-        public void OperationsAfterDispose_ThrowObjectDisposedException()
-        {
-            // Arrange
-            Mock<IStripeGatewayClient> gateway = new Mock<IStripeGatewayClient>();
-            StoreManager manager = new StoreManager(CreateContext(), gateway.Object);
-            manager.Dispose();
-
-            // Act & Assert
-            Assert.Throws<ObjectDisposedException>(() => manager.GetProducts());
-            Assert.Throws<ObjectDisposedException>(() => manager.RegisterProduct(CreateProduct()));
-        }
-
+        
         #endregion
 
         #region PaymentStatus Mapping Tests

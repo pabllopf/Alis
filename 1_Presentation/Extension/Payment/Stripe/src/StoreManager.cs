@@ -111,7 +111,7 @@ namespace Alis.Extension.Payment.Stripe
         /// </summary>
         public Task InitializeAsync(StoreConfiguration configuration, CancellationToken cancellationToken = default)
         {
-            EnsureNotDisposed();
+            
             cancellationToken.ThrowIfCancellationRequested();
 
             if (configuration == null)
@@ -136,7 +136,7 @@ namespace Alis.Extension.Payment.Stripe
         /// </summary>
         public void RegisterProduct(StoreProduct product)
         {
-            EnsureNotDisposed();
+            
 
             if (product == null)
             {
@@ -170,7 +170,7 @@ namespace Alis.Extension.Payment.Stripe
         /// </summary>
         public void RegisterProducts(IEnumerable<StoreProduct> products)
         {
-            EnsureNotDisposed();
+            
 
             if (products == null)
             {
@@ -188,7 +188,7 @@ namespace Alis.Extension.Payment.Stripe
         /// </summary>
         public bool TryGetProduct(string productId, out StoreProduct product)
         {
-            EnsureNotDisposed();
+            
 
             if (string.IsNullOrWhiteSpace(productId))
             {
@@ -204,7 +204,7 @@ namespace Alis.Extension.Payment.Stripe
         /// </summary>
         public IReadOnlyCollection<StoreProduct> GetProducts()
         {
-            EnsureNotDisposed();
+            
             return new ReadOnlyCollection<StoreProduct>(new List<StoreProduct>(_products.Values));
         }
 
@@ -466,28 +466,10 @@ namespace Alis.Extension.Payment.Stripe
         /// <exception cref="InvalidOperationException">StoreManager is not initialized. Call InitializeAsync first.</exception>
         private void EnsureInitialized()
         {
-            EnsureNotDisposed();
-
             if (!IsInitialized)
             {
                 throw new InvalidOperationException("StoreManager is not initialized. Call InitializeAsync first.");
             }
-        }
-
-        /// <summary>
-        /// Ensures the not disposed
-        /// </summary>
-        /// <exception cref="ObjectDisposedException"></exception>
-        private void EnsureNotDisposed()
-        {
-#if NET5_0_OR_GREATER
-            ObjectDisposedException.ThrowIf(_disposed, nameof(StoreManager));
-#else
-                if (_disposed)
-                {
-                    throw new ObjectDisposedException(nameof(StoreManager));
-                }
-#endif
         }
     }
 }

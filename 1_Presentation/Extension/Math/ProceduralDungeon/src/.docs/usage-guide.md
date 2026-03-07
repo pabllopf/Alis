@@ -307,27 +307,6 @@ var data = dungeon.Generate();
 
 1. **ArgumentNullException**: Configuration is null
 2. **ArgumentException**: Invalid configuration values
-3. **ObjectDisposedException**: Using disposed Dungeon instance
-
-```csharp
-try
-{
-    using var dungeon = new Dungeon(configuration);
-    var data = dungeon.Generate();
-}
-catch (ArgumentNullException ex)
-{
-    Console.WriteLine("Configuration cannot be null");
-}
-catch (ArgumentException ex)
-{
-    Console.WriteLine($"Invalid configuration: {ex.Message}");
-}
-catch (ObjectDisposedException ex)
-{
-    Console.WriteLine("Cannot use disposed dungeon instance");
-}
-```
 
 ## Performance Tips
 

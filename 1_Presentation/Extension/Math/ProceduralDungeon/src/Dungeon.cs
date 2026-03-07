@@ -140,19 +140,6 @@ namespace Alis.Extension.Math.ProceduralDungeon
         /// <summary>
         ///     Generates a new procedural dungeon with rooms, corridors, and complete board layout.
         /// </summary>
-        /// <returns>
-        ///     A <see cref="DungeonData" /> instance containing the complete dungeon structure,
-        ///     including board grid, room positions, and corridor connections.
-        /// </returns>
-        /// <remarks>
-        ///     The generation process includes:
-        ///     1. Creating rooms with appropriate spacing
-        ///     2. Connecting rooms with corridors
-        ///     3. Building the board grid
-        ///     4. Generating walls and corners
-        ///     Each call to Generate() produces a unique dungeon layout.
-        /// </remarks>
-        /// <exception cref="ObjectDisposedException">Thrown when called after disposal.</exception>
         public DungeonData Generate() => _generator.Generate();
 
         /// <summary>

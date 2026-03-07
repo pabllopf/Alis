@@ -195,10 +195,6 @@ namespace Alis.Extension.Network.Test.Samples
 
                 Logger.Info("Server: Connection closed");
             }
-            catch (ObjectDisposedException)
-            {
-                // do nothing. This will be thrown if the Listener has been stopped
-            }
             catch (Exception ex)
             {
                 Logger.Info(ex.ToString());

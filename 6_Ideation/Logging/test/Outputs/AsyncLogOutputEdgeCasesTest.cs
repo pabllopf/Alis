@@ -243,15 +243,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
             asyncOutput.Write(new LogEntry(LogLevel.Info, "Message", "Logger"));
             asyncOutput.Dispose();
 
-            // Act & Assert - Flush after dispose should handle gracefully
-            try
-            {
-                asyncOutput.Flush();
-            }
-            catch (ObjectDisposedException)
-            {
-                // This is acceptable behavior
-            }
+            asyncOutput.Flush();
         }
 
         /// <summary>

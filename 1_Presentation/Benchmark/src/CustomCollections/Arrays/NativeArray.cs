@@ -150,14 +150,8 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         ///     Reallocs the new size
         /// </summary>
         /// <param name="newSize">The new size</param>
-        /// <exception cref="ObjectDisposedException"></exception>
         public void Realloc(int newSize)
         {
-            if (IsInvalid)
-            {
-                throw new ObjectDisposedException(nameof(SafeMemoryHandle));
-            }
-
             SetHandle(Marshal.ReAllocHGlobal(handle, newSize));
         }
 
@@ -165,15 +159,9 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         ///     Gets the span using the specified size
         /// </summary>
         /// <param name="size">The size</param>
-        /// <exception cref="ObjectDisposedException"></exception>
         /// <returns>The temp array</returns>
         public Span<byte> GetSpan(int size)
         {
-            if (IsInvalid)
-            {
-                throw new ObjectDisposedException(nameof(SafeMemoryHandle));
-            }
-
             byte[] tempArray = new byte[size];
             Marshal.Copy(handle, tempArray, 0, size);
             return tempArray;
