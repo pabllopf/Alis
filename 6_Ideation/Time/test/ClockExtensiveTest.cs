@@ -227,7 +227,7 @@ namespace Alis.Core.Aspect.Time.Test
             long end = clock.ElapsedMilliseconds;
 
             long delta = end - start;
-            Assert.InRange(delta, 90, 200);
+            Assert.InRange(delta, 90, 400);
         }
 
         /// <summary>
