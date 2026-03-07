@@ -39,7 +39,7 @@ namespace Alis.Core.Test
         [InlineData(1000)]
         public void Stress_MemoryAllocation(int allocations)
         {
-            var objects = new List<object>();
+            List<object> objects = new List<object>();
             for (int i = 0; i < allocations; i++)
             {
                 objects.Add(new object());
@@ -82,7 +82,7 @@ namespace Alis.Core.Test
         [InlineData(10000)]
         public void Stress_StringOperations(int count)
         {
-            var strings = new List<string>();
+            List<string> strings = new List<string>();
             for (int i = 0; i < count; i++)
             {
                 strings.Add(i.ToString());
@@ -100,7 +100,7 @@ namespace Alis.Core.Test
         [InlineData(500)]
         public void Stress_DictionaryOperations(int count)
         {
-            var dict = new Dictionary<int, string>();
+            Dictionary<int, string> dict = new Dictionary<int, string>();
             for (int i = 0; i < count; i++)
             {
                 dict[i] = $"Value{i}";

@@ -17,9 +17,9 @@ namespace Alis.Core.Test
         {
             string[] modules = { "Math", "Physics", "Graphics", "Audio", "ECS", "Logging", "Time" };
             
-            foreach (var mod1 in modules)
+            foreach (string mod1 in modules)
             {
-                foreach (var mod2 in modules)
+                foreach (string mod2 in modules)
                 {
                     if (mod1 != mod2)
                     {

@@ -19,9 +19,9 @@ namespace Alis.Core.Audio.Test
             float[] volumes = { 0f, 0.25f, 0.5f, 0.75f, 1f };
             float[] pitches = { 0.5f, 0.75f, 1f, 1.25f, 2f };
             
-            foreach (var vol in volumes)
+            foreach (float vol in volumes)
             {
-                foreach (var pitch in pitches)
+                foreach (float pitch in pitches)
                 {
                     yield return new object[] { vol, pitch };
                 }

@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Runtime.Serialization;
 using Alis.Core.Aspect.Math.Vector;
 using Xunit;
 
@@ -156,7 +157,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         public void GetObjectData_SerializesVector()
         {
             Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
-            var serializationInfo = new System.Runtime.Serialization.SerializationInfo(typeof(Vector4F), new System.Runtime.Serialization.FormatterConverter());
+            SerializationInfo serializationInfo = new System.Runtime.Serialization.SerializationInfo(typeof(Vector4F), new System.Runtime.Serialization.FormatterConverter());
 
             v.GetObjectData(serializationInfo, default);
 
@@ -173,7 +174,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         public void GetObjectData_WithDifferentValues_SerializesCorrectly()
         {
             Vector4F v = new Vector4F(10f, 20f, 30f, 40f);
-            var serializationInfo = new System.Runtime.Serialization.SerializationInfo(typeof(Vector4F), new System.Runtime.Serialization.FormatterConverter());
+            SerializationInfo serializationInfo = new System.Runtime.Serialization.SerializationInfo(typeof(Vector4F), new System.Runtime.Serialization.FormatterConverter());
 
             v.GetObjectData(serializationInfo, default);
 
@@ -677,7 +678,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         public void GetObjectData_SerializesAllComponents()
         {
             Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
-            var info = new System.Runtime.Serialization.SerializationInfo(typeof(Vector4F), new System.Runtime.Serialization.FormatterConverter());
+            SerializationInfo info = new System.Runtime.Serialization.SerializationInfo(typeof(Vector4F), new System.Runtime.Serialization.FormatterConverter());
 
             v.GetObjectData(info, default);
 
@@ -694,7 +695,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         public void GetObjectData_WithDifferentValues_SerializesCorrectly_V2()
         {
             Vector4F v = new Vector4F(5.5f, 6.5f, 7.5f, 8.5f);
-            var info = new System.Runtime.Serialization.SerializationInfo(typeof(Vector4F), new System.Runtime.Serialization.FormatterConverter());
+            SerializationInfo info = new System.Runtime.Serialization.SerializationInfo(typeof(Vector4F), new System.Runtime.Serialization.FormatterConverter());
 
             v.GetObjectData(info, default);
 

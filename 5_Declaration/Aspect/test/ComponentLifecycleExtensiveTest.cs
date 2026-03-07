@@ -51,7 +51,7 @@ namespace Alis.Core.Aspect.Test
         [InlineData(100)]
         public void MultipleComponents_CanBeCreated(int count)
         {
-            var components = new List<object>();
+            List<object> components = new List<object>();
             for (int i = 0; i < count; i++)
             {
                 components.Add(new object());
@@ -174,7 +174,7 @@ namespace Alis.Core.Aspect.Test
         [InlineData(100)]
         public void MultipleEventSubscribers_CanBeAdded(int subscriberCount)
         {
-            var subscribers = new List<Action>();
+            List<Action> subscribers = new List<Action>();
             for (int i = 0; i < subscriberCount; i++)
             {
                 subscribers.Add(() => { });
@@ -231,7 +231,7 @@ namespace Alis.Core.Aspect.Test
         [InlineData(10)]
         public void Component_CanHaveDependencies(int dependencyCount)
         {
-            var dependencies = new List<object>();
+            List<object> dependencies = new List<object>();
             for (int i = 0; i < dependencyCount; i++)
             {
                 dependencies.Add(new object());

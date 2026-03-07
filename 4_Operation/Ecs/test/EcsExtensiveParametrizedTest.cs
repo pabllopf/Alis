@@ -59,9 +59,9 @@ namespace Alis.Core.Ecs.Test
         {
             string[] componentTypes = { "Transform", "Velocity", "Gravity", "Collider" };
             
-            foreach (var comp1 in componentTypes)
+            foreach (string comp1 in componentTypes)
             {
-                foreach (var comp2 in componentTypes)
+                foreach (string comp2 in componentTypes)
                 {
                     if (comp1 != comp2)
                     {

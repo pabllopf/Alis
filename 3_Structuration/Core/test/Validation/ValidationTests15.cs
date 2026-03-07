@@ -47,7 +47,7 @@ namespace Alis.Core.Test.Validation
         [Fact]
         public void ValidateCollection()
         {
-            var list = new List<int> { 1, 2, 3, 4, 5 };
+            List<int> list = new List<int> { 1, 2, 3, 4, 5 };
             Assert.Equal(5, list.Count);
         }
 

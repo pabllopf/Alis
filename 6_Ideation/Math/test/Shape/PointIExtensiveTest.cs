@@ -20,7 +20,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape
         [Fact]
         public void Constructor_Default_CreatesZeroPoint()
         {
-            var point = default(PointI);
+            PointI point = default(PointI);
             Assert.Equal(0, point.X);
             Assert.Equal(0, point.Y);
         }

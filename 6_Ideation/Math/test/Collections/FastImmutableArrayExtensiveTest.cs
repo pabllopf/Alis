@@ -21,8 +21,8 @@ namespace Alis.Core.Aspect.Math.Test.Collections
         [Fact]
         public void Create_FromEnumerable_Succeeds()
         {
-            var source = new[] { 1, 2, 3, 4, 5 };
-            var array = new FastImmutableArray<int>(source);
+            int[] source = new[] { 1, 2, 3, 4, 5 };
+            FastImmutableArray<int> array = new FastImmutableArray<int>(source);
             
             Assert.Equal(5, array.Length);
             Assert.Equal(source, array);
@@ -34,8 +34,8 @@ namespace Alis.Core.Aspect.Math.Test.Collections
         [Fact]
         public void Create_FromEnumerable_NullValues_Succeeds()
         {
-            var source = new string[] { "a", null, "c" };
-            var array = new FastImmutableArray<string>(source);
+            string[] source = new string[] { "a", null, "c" };
+            FastImmutableArray<string> array = new FastImmutableArray<string>(source);
             
             Assert.Equal(3, array.Length);
         }
@@ -52,8 +52,8 @@ namespace Alis.Core.Aspect.Math.Test.Collections
         [InlineData(1000)]
         public void Create_WithDifferentSizes(int size)
         {
-            var source = Enumerable.Range(0, size).ToArray();
-            var array = new FastImmutableArray<int>(source);
+            int[] source = Enumerable.Range(0, size).ToArray();
+            FastImmutableArray<int> array = new FastImmutableArray<int>(source);
             
             Assert.Equal(size, array.Length);
         }
@@ -70,11 +70,11 @@ namespace Alis.Core.Aspect.Math.Test.Collections
         [Fact]
         public void Enumeration_IteratesAllElements()
         {
-            var source = new[] { 1, 2, 3, 4, 5 };
-            var array = new FastImmutableArray<int>(source);
-            var result = new List<int>();
+            int[] source = new[] { 1, 2, 3, 4, 5 };
+            FastImmutableArray<int> array = new FastImmutableArray<int>(source);
+            List<int> result = new List<int>();
             
-            foreach (var item in array)
+            foreach (int item in array)
             {
                 result.Add(item);
             }
@@ -88,11 +88,11 @@ namespace Alis.Core.Aspect.Math.Test.Collections
         [Fact]
         public void Enumeration_MultipleEnumeration_Succeeds()
         {
-            var source = new[] { 1, 2, 3 };
-            var array = new FastImmutableArray<int>(source);
+            int[] source = new[] { 1, 2, 3 };
+            FastImmutableArray<int> array = new FastImmutableArray<int>(source);
             
-            var first = array.ToList();
-            var second = array.ToList();
+            List<int> first = array.ToList();
+            List<int> second = array.ToList();
             
             Assert.Equal(first, second);
         }
@@ -113,8 +113,8 @@ namespace Alis.Core.Aspect.Math.Test.Collections
         [InlineData(4, 5)]
         public void IndexAccess_ValidIndex_ReturnsElement(int index, int expected)
         {
-            var source = new[] { 1, 2, 3, 4, 5 };
-            var array = new FastImmutableArray<int>(source);
+            int[] source = new[] { 1, 2, 3, 4, 5 };
+            FastImmutableArray<int> array = new FastImmutableArray<int>(source);
             
             Assert.Equal(expected, array[index]);
         }
@@ -129,8 +129,8 @@ namespace Alis.Core.Aspect.Math.Test.Collections
         [InlineData(100)]
         public void IndexAccess_InvalidIndex_ThrowsException(int index)
         {
-            var source = new[] { 1, 2, 3, 4, 5 };
-            var array = new FastImmutableArray<int>(source);
+            int[] source = new[] { 1, 2, 3, 4, 5 };
+            FastImmutableArray<int> array = new FastImmutableArray<int>(source);
             
             Assert.Throws<IndexOutOfRangeException>(() => array[index]);
         }
@@ -150,8 +150,8 @@ namespace Alis.Core.Aspect.Math.Test.Collections
         [InlineData(100)]
         public void Count_ReturnsCorrectValue(int size)
         {
-            var source = Enumerable.Range(0, size).ToArray();
-            var array = new FastImmutableArray<int>(source);
+            int[] source = Enumerable.Range(0, size).ToArray();
+            FastImmutableArray<int> array = new FastImmutableArray<int>(source);
             
             Assert.Equal(size, array.Length);
         }
@@ -166,10 +166,10 @@ namespace Alis.Core.Aspect.Math.Test.Collections
         [Fact]
         public void Linq_Where_FilteredCorrectly()
         {
-            var source = new[] { 1, 2, 3, 4, 5 };
-            var array = new FastImmutableArray<int>(source);
+            int[] source = new[] { 1, 2, 3, 4, 5 };
+            FastImmutableArray<int> array = new FastImmutableArray<int>(source);
             
-            var result = array.Where(x => x > 2).ToList();
+            List<int> result = array.Where(x => x > 2).ToList();
             
             Assert.Equal(3, result.Count);
             Assert.Equal(new[] { 3, 4, 5 }, result);
@@ -181,10 +181,10 @@ namespace Alis.Core.Aspect.Math.Test.Collections
         [Fact]
         public void Linq_Select_TransformedCorrectly()
         {
-            var source = new[] { 1, 2, 3 };
-            var array = new FastImmutableArray<int>(source);
+            int[] source = new[] { 1, 2, 3 };
+            FastImmutableArray<int> array = new FastImmutableArray<int>(source);
             
-            var result = array.Select(x => x * 2).ToList();
+            List<int> result = array.Select(x => x * 2).ToList();
             
             Assert.Equal(new[] { 2, 4, 6 }, result);
         }
@@ -195,10 +195,10 @@ namespace Alis.Core.Aspect.Math.Test.Collections
         [Fact]
         public void Linq_FirstOrDefault_ReturnsElement()
         {
-            var source = new[] { 1, 2, 3 };
-            var array = new FastImmutableArray<int>(source);
+            int[] source = new[] { 1, 2, 3 };
+            FastImmutableArray<int> array = new FastImmutableArray<int>(source);
             
-            var result = array.FirstOrDefault();
+            int result = array.FirstOrDefault();
             
             Assert.Equal(1, result);
         }

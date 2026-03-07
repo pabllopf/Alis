@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using Alis.Extension.Profile.Implementations;
 using Xunit;
@@ -216,8 +217,8 @@ namespace Alis.Extension.Profile.Test.Implementations
         {
             // Arrange
             ProcessResourceMonitor monitor = new ProcessResourceMonitor();
-            var currentProcess = Process.GetCurrentProcess();
-            var expectedValue = currentProcess.TotalProcessorTime.TotalMilliseconds;
+            Process currentProcess = Process.GetCurrentProcess();
+            double expectedValue = currentProcess.TotalProcessorTime.TotalMilliseconds;
 
             // Act
             double cpuUsage = monitor.GetCpuUsage();
@@ -236,8 +237,8 @@ namespace Alis.Extension.Profile.Test.Implementations
         {
             // Arrange
             ProcessResourceMonitor monitor = new ProcessResourceMonitor();
-            var currentProcess = Process.GetCurrentProcess();
-            var expectedValue = currentProcess.Threads.Count;
+            Process currentProcess = Process.GetCurrentProcess();
+            int expectedValue = currentProcess.Threads.Count;
 
             // Act
             int threadCount = monitor.GetThreadCount();
@@ -549,7 +550,7 @@ namespace Alis.Extension.Profile.Test.Implementations
             ProcessResourceMonitor monitor = new ProcessResourceMonitor();
 
             // Act & Assert - Should not throw
-            var cpuUsage = monitor.GetCpuUsage();
+            double cpuUsage = monitor.GetCpuUsage();
             Assert.True(cpuUsage >= 0);
         }
 
@@ -563,7 +564,7 @@ namespace Alis.Extension.Profile.Test.Implementations
             ProcessResourceMonitor monitor = new ProcessResourceMonitor();
 
             // Act & Assert - Should not throw
-            var memoryUsage = monitor.GetMemoryUsage();
+            long memoryUsage = monitor.GetMemoryUsage();
             Assert.True(memoryUsage >= 0);
         }
 
@@ -577,7 +578,7 @@ namespace Alis.Extension.Profile.Test.Implementations
             ProcessResourceMonitor monitor = new ProcessResourceMonitor();
 
             // Act & Assert - Should not throw
-            var threadCount = monitor.GetThreadCount();
+            int threadCount = monitor.GetThreadCount();
             Assert.True(threadCount >= 0);
         }
 
@@ -627,7 +628,7 @@ namespace Alis.Extension.Profile.Test.Implementations
         {
             // Arrange
             ProcessResourceMonitor monitor = new ProcessResourceMonitor();
-            var results = new System.Collections.Generic.List<(double cpu, long memory, int threads, int gc)>();
+            List<(double cpu, long memory, int threads, int gc)> results = new System.Collections.Generic.List<(double cpu, long memory, int threads, int gc)>();
 
             // Act
             for (int i = 0; i < 3; i++)
@@ -642,7 +643,7 @@ namespace Alis.Extension.Profile.Test.Implementations
 
             // Assert
             Assert.Equal(3, results.Count);
-            foreach (var result in results)
+            foreach ((double cpu, long memory, int threads, int gc) result in results)
             {
                 Assert.True(result.cpu >= 0);
                 Assert.True(result.memory > 0);
@@ -659,7 +660,7 @@ namespace Alis.Extension.Profile.Test.Implementations
         {
             // Arrange
             ProcessResourceMonitor monitor = new ProcessResourceMonitor();
-            var memorySnapshots = new System.Collections.Generic.List<long>();
+            List<long> memorySnapshots = new System.Collections.Generic.List<long>();
 
             // Act
             for (int i = 0; i < 5; i++)

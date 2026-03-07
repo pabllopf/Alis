@@ -22,9 +22,9 @@ namespace Alis.Core.Aspect.Math.Test
             float[] floatValues = { 0f, 1f, 2f, 5f, 10f, 100f, 0.5f, -0.5f, -1f, -10f };
             
             int caseCount = 0;
-            foreach (var a in intValues)
+            foreach (int a in intValues)
             {
-                foreach (var b in intValues.Take(5))
+                foreach (int b in intValues.Take(5))
                 {
                     yield return new object[] { a, b, caseCount++ };
                 }

@@ -21,9 +21,9 @@ namespace Alis.Core.Test
             string[] states = { "Init", "Active", "Paused", "Stopped", "Error", "Cleanup" };
             
             int caseNum = 0;
-            foreach (var from in states)
+            foreach (string from in states)
             {
-                foreach (var to in states)
+                foreach (string to in states)
                 {
                     for (int i = 0; i < 5; i++)
                     {
@@ -65,7 +65,7 @@ namespace Alis.Core.Test
                 long.MaxValue - 1, long.MaxValue 
             };
 
-            foreach (var val in values)
+            foreach (long val in values)
             {
                 yield return new object[] { val };
             }
@@ -95,9 +95,9 @@ namespace Alis.Core.Test
             int[] sizes = { 0, 1, 5, 10, 50, 100, 500, 1000 };
             string[] operations = { "Add", "Remove", "Insert", "Clear", "Find", "Update" };
 
-            foreach (var size in sizes)
+            foreach (int size in sizes)
             {
-                foreach (var op in operations)
+                foreach (string op in operations)
                 {
                     for (int index = 0; index < Math.Min(3, size + 1); index++)
                     {
@@ -135,11 +135,11 @@ namespace Alis.Core.Test
             double[] operands = { -1000, -100, -10, -1, -0.5, 0, 0.5, 1, 10, 100, 1000 };
             string[] operations = { "+", "-", "*", "/", "%" };
 
-            foreach (var a in operands)
+            foreach (double a in operands)
             {
-                foreach (var b in operands)
+                foreach (double b in operands)
                 {
-                    foreach (var op in operations)
+                    foreach (string op in operations)
                     {
                         yield return new object[] { a, b, op };
                     }
@@ -184,9 +184,9 @@ namespace Alis.Core.Test
             string[] strings = { "", "a", "test", "Hello", "World", "XUnitTestFramework", "  ", "\n", "\t" };
             string[] operations = { "Length", "ToUpper", "ToLower", "Trim", "Contains", "StartsWith", "EndsWith" };
 
-            foreach (var str in strings)
+            foreach (string str in strings)
             {
-                foreach (var op in operations)
+                foreach (string op in operations)
                 {
                     for (int param = 0; param < 3; param++)
                     {
@@ -223,9 +223,9 @@ namespace Alis.Core.Test
             string[] operations = { "Start", "Wait", "Cancel", "Retry", "Timeout", "Callback" };
             int[] delays = { 0, 1, 10, 100, 1000 };
 
-            foreach (var op in operations)
+            foreach (string op in operations)
             {
-                foreach (var delay in delays)
+                foreach (int delay in delays)
                 {
                     for (int attempt = 1; attempt <= 3; attempt++)
                     {
@@ -263,9 +263,9 @@ namespace Alis.Core.Test
             object[] values = { null, "", 0, 1, -1, 0.0, 0.5, -0.5, true, false };
             string[] rules = { "NotNull", "NotEmpty", "Positive", "Negative", "Zero", "Range", "Pattern" };
 
-            foreach (var value in values)
+            foreach (object value in values)
             {
-                foreach (var rule in rules)
+                foreach (string rule in rules)
                 {
                     for (int strictness = 0; strictness < 3; strictness++)
                     {
@@ -309,9 +309,9 @@ namespace Alis.Core.Test
             string[] lifetimes = { "Singleton", "Scoped", "Transient" };
             
             int caseNum = 0;
-            foreach (var dep in dependencies)
+            foreach (string dep in dependencies)
             {
-                foreach (var lifetime in lifetimes)
+                foreach (string lifetime in lifetimes)
                 {
                     for (int injectionCount = 1; injectionCount <= 3; injectionCount++)
                     {
@@ -350,9 +350,9 @@ namespace Alis.Core.Test
             string[] errorTypes = { "NullReference", "IndexOutOfRange", "ArgumentException", "InvalidOperation", "TimeoutException", "IOException" };
             string[] handlers = { "Catch", "Finally", "Using", "Retry", "Log", "Rethrow" };
 
-            foreach (var errorType in errorTypes)
+            foreach (string errorType in errorTypes)
             {
-                foreach (var handler in handlers)
+                foreach (string handler in handlers)
                 {
                     for (int level = 0; level < 4; level++)
                     {
@@ -389,9 +389,9 @@ namespace Alis.Core.Test
             int[] dataSize = { 10, 100, 1000, 10000, 100000 };
             int[] iterations = { 1, 10, 100, 1000 };
 
-            foreach (var size in dataSize)
+            foreach (int size in dataSize)
             {
-                foreach (var iteration in iterations)
+                foreach (int iteration in iterations)
                 {
                     yield return new object[] { size, iteration };
                 }

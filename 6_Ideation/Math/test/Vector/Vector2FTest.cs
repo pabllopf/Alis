@@ -29,6 +29,7 @@
 
 using System;
 using System.Globalization;
+using System.Runtime.Serialization;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
@@ -1088,7 +1089,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         public void GetObjectData_SerializesVector()
         {
             Vector2F v = new Vector2F(3f, 4f);
-            var serializationInfo = new System.Runtime.Serialization.SerializationInfo(typeof(Vector2F), new System.Runtime.Serialization.FormatterConverter());
+            SerializationInfo serializationInfo = new System.Runtime.Serialization.SerializationInfo(typeof(Vector2F), new System.Runtime.Serialization.FormatterConverter());
             
             v.GetObjectData(serializationInfo, default);
             

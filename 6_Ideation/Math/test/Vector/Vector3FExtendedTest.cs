@@ -29,6 +29,7 @@
 
 using System;
 using System.Globalization;
+using System.Runtime.Serialization;
 using Alis.Core.Aspect.Math.Vector;
 using Xunit;
 
@@ -496,7 +497,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         public void GetObjectData_SerializesVector()
         {
             Vector3F v = new Vector3F(1f, 2f, 3f);
-            var serializationInfo = new System.Runtime.Serialization.SerializationInfo(typeof(Vector3F), new System.Runtime.Serialization.FormatterConverter());
+            SerializationInfo serializationInfo = new System.Runtime.Serialization.SerializationInfo(typeof(Vector3F), new System.Runtime.Serialization.FormatterConverter());
 
             v.GetObjectData(serializationInfo, default);
 

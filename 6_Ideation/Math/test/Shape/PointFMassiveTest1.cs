@@ -149,7 +149,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape
         [MemberData(nameof(GenerateTestCases))]
         public void PointF_Operation_1(float x, float y)
         {
-            var shape = new PointF(x, y);
+            PointF shape = new PointF(x, y);
             Assert.NotNull(shape);
         }
     }

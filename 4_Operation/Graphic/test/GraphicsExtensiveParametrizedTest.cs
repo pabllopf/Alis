@@ -19,9 +19,9 @@ namespace Alis.Core.Graphic.Test
             int[] widths = { 320, 640, 800, 1024, 1280, 1920 };
             int[] heights = { 240, 480, 600, 768, 720, 1080 };
             
-            foreach (var w in widths)
+            foreach (int w in widths)
             {
-                foreach (var h in heights.Take(3))
+                foreach (int h in heights.Take(3))
                 {
                     yield return new object[] { w, h };
                 }
@@ -49,11 +49,11 @@ namespace Alis.Core.Graphic.Test
         {
             byte[] channels = { 0, 64, 128, 192, 255 };
             
-            foreach (var r in channels)
+            foreach (byte r in channels)
             {
-                foreach (var g in channels.Take(3))
+                foreach (byte g in channels.Take(3))
                 {
-                    foreach (var b in channels.Take(3))
+                    foreach (byte b in channels.Take(3))
                     {
                         yield return new object[] { r, g, b };
                     }

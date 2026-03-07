@@ -18,9 +18,9 @@ namespace Alis.Core.Physic.Test
         {
             string[] shapeTypes = { "Circle", "Rectangle", "Triangle", "Polygon" };
             
-            foreach (var shape1 in shapeTypes)
+            foreach (string shape1 in shapeTypes)
             {
-                foreach (var shape2 in shapeTypes)
+                foreach (string shape2 in shapeTypes)
                 {
                     yield return new object[] { shape1, shape2 };
                 }
@@ -50,11 +50,11 @@ namespace Alis.Core.Physic.Test
             float[] velocities = { 0f, 1f, 5f, 10f };
             float[] forces = { 0f, 1f, 5f, 10f };
             
-            foreach (var m in masses)
+            foreach (float m in masses)
             {
-                foreach (var v in velocities.Take(2))
+                foreach (float v in velocities.Take(2))
                 {
-                    foreach (var f in forces.Take(2))
+                    foreach (float f in forces.Take(2))
                     {
                         yield return new object[] { m, v, f };
                     }

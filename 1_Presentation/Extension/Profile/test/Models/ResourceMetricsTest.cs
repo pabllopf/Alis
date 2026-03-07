@@ -216,7 +216,7 @@ namespace Alis.Extension.Profile.Test.Models
         public void Constructor_ThrowsException_WithCorrectParameterName_ForNegativeCpu()
         {
             // Act & Assert
-            var exception = Assert.Throws<ArgumentException>(() =>
+            ArgumentException exception = Assert.Throws<ArgumentException>(() =>
                 new ResourceMetrics(-0.1, 1024, 0, 1, DateTime.Now));
             Assert.Equal("cpuUsageMilliseconds", exception.ParamName);
         }
@@ -228,7 +228,7 @@ namespace Alis.Extension.Profile.Test.Models
         public void Constructor_ThrowsException_WithCorrectParameterName_ForNegativeMemory()
         {
             // Act & Assert
-            var exception = Assert.Throws<ArgumentException>(() =>
+            ArgumentException exception = Assert.Throws<ArgumentException>(() =>
                 new ResourceMetrics(100, -1, 0, 1, DateTime.Now));
             Assert.Equal("memoryUsageBytes", exception.ParamName);
         }

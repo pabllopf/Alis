@@ -36,7 +36,7 @@ namespace Alis.Core.Aspect.Data.Test
         [MemberData(nameof(GetListOperations))]
         public void List_Operations(int size, int element)
         {
-            var list = new List<int>();
+            List<int> list = new List<int>();
             for (int i = 0; i < size; i++)
             {
                 list.Add(i);
@@ -57,7 +57,7 @@ namespace Alis.Core.Aspect.Data.Test
         [InlineData(1000)]
         public void List_Add_Increases_Count(int count)
         {
-            var list = new List<int>();
+            List<int> list = new List<int>();
             for (int i = 0; i < count; i++)
             {
                 list.Add(i);
@@ -77,7 +77,7 @@ namespace Alis.Core.Aspect.Data.Test
         [InlineData(100)]
         public void List_Remove_Decreases_Count(int count)
         {
-            var list = new List<int>();
+            List<int> list = new List<int>();
             for (int i = 0; i < count; i++)
             {
                 list.Add(i);
@@ -101,7 +101,7 @@ namespace Alis.Core.Aspect.Data.Test
         [InlineData(500)]
         public void List_Clear_EmptiesList(int count)
         {
-            var list = new List<int>();
+            List<int> list = new List<int>();
             for (int i = 0; i < count; i++)
             {
                 list.Add(i);
@@ -126,7 +126,7 @@ namespace Alis.Core.Aspect.Data.Test
         [InlineData(100)]
         public void Dictionary_Add_IncreasesCount(int count)
         {
-            var dict = new Dictionary<int, string>();
+            Dictionary<int, string> dict = new Dictionary<int, string>();
             for (int i = 0; i < count; i++)
             {
                 dict[i] = i.ToString();
@@ -146,7 +146,7 @@ namespace Alis.Core.Aspect.Data.Test
         [InlineData("LongKey", "LongValue")]
         public void Dictionary_Get_ReturnsValue(string key, string value)
         {
-            var dict = new Dictionary<string, string>
+            Dictionary<string, string> dict = new Dictionary<string, string>
             {
                 { key, value }
             };
@@ -169,7 +169,7 @@ namespace Alis.Core.Aspect.Data.Test
         [InlineData(100)]
         public void Stack_Push_IncreasesCount(int count)
         {
-            var stack = new Stack<int>();
+            Stack<int> stack = new Stack<int>();
             for (int i = 0; i < count; i++)
             {
                 stack.Push(i);
@@ -184,7 +184,7 @@ namespace Alis.Core.Aspect.Data.Test
         [Fact]
         public void Stack_LIFO_Order()
         {
-            var stack = new Stack<int>();
+            Stack<int> stack = new Stack<int>();
             stack.Push(1);
             stack.Push(2);
             stack.Push(3);
@@ -209,7 +209,7 @@ namespace Alis.Core.Aspect.Data.Test
         [InlineData(100)]
         public void Queue_Enqueue_IncreasesCount(int count)
         {
-            var queue = new Queue<int>();
+            Queue<int> queue = new Queue<int>();
             for (int i = 0; i < count; i++)
             {
                 queue.Enqueue(i);
@@ -224,7 +224,7 @@ namespace Alis.Core.Aspect.Data.Test
         [Fact]
         public void Queue_FIFO_Order()
         {
-            var queue = new Queue<int>();
+            Queue<int> queue = new Queue<int>();
             queue.Enqueue(1);
             queue.Enqueue(2);
             queue.Enqueue(3);

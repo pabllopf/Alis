@@ -33,7 +33,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         [Fact]
         public void Identity_IsCreated()
         {
-            var matrix = Matrix4X4.Identity;
+            Matrix4X4 matrix = Matrix4X4.Identity;
             Assert.NotNull(matrix);
         }
 
@@ -43,7 +43,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         [Fact]
         public void Identity_HasCorrectDiagonal()
         {
-            var matrix = Matrix4X4.Identity;
+            Matrix4X4 matrix = Matrix4X4.Identity;
             
             // Main diagonal should be 1
             Assert.Equal(1f, matrix.M11);
@@ -58,7 +58,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         [Fact]
         public void Identity_HasZeroOffDiagonal()
         {
-            var matrix = Matrix4X4.Identity;
+            Matrix4X4 matrix = Matrix4X4.Identity;
             
             // Off-diagonal elements should be 0
             Assert.Equal(0f, matrix.M12);
@@ -92,8 +92,8 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         [Fact]
         public void Multiplication_IdentityWithVector_ReturnsVector()
         {
-            var matrix = Matrix4X4.Identity;
-            var vector = new Vector4F(1f, 2f, 3f, 4f);
+            Matrix4X4 matrix = Matrix4X4.Identity;
+            Vector4F vector = new Vector4F(1f, 2f, 3f, 4f);
             
             // Vector * Matrix operations would be tested here
             Assert.NotNull(matrix);
@@ -112,8 +112,8 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         [InlineData(-1f)]
         public void Multiplication_IdentityMultipliedBySelf_ReturnsIdentity(float unused)
         {
-            var matrix1 = Matrix4X4.Identity;
-            var matrix2 = Matrix4X4.Identity;
+            Matrix4X4 matrix1 = Matrix4X4.Identity;
+            Matrix4X4 matrix2 = Matrix4X4.Identity;
             
             // Product should be identity
             Assert.NotNull(matrix1);
@@ -135,7 +135,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         [InlineData(100f)]
         public void Properties_CanBeSet(float value)
         {
-            var matrix = Matrix4X4.Identity;
+            Matrix4X4 matrix = Matrix4X4.Identity;
             matrix.M11 = value;
             
             Assert.Equal(value, matrix.M11);

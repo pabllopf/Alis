@@ -35,8 +35,8 @@ namespace Alis.Core.Aspect.Math.Test.Collections
         [MemberData(nameof(GenerateArraySizeCombinations))]
         public void FastImmutableArray_VariousSizes(int size)
         {
-            var values = Enumerable.Range(0, size).ToArray();
-            var array = new FastImmutableArray<int>(values);
+            int[] values = Enumerable.Range(0, size).ToArray();
+            FastImmutableArray<int> array = new FastImmutableArray<int>(values);
             
             Assert.Equal(size, array.Length);
         }
@@ -65,11 +65,11 @@ namespace Alis.Core.Aspect.Math.Test.Collections
         [MemberData(nameof(GenerateEnumerationCombinations))]
         public void FastImmutableArray_EnumerateMultipleTimes(int size, int iterations)
         {
-            var array = new FastImmutableArray<int>(Enumerable.Range(0, size).ToArray());
+            FastImmutableArray<int> array = new FastImmutableArray<int>(Enumerable.Range(0, size).ToArray());
             
             for (int i = 0; i < iterations; i++)
             {
-                var list = array.ToList();
+                List<int> list = array.ToList();
                 Assert.Equal(size, list.Count);
             }
         }

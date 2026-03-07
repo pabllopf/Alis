@@ -19,9 +19,9 @@ namespace Alis.Core.Aspect.Logging.Test
             string[] messages = { "Test", "Error", "Warning", "Info", "Debug", "" };
             string[] categories = { "Game", "Engine", "Physics", "Rendering", "Audio" };
             
-            foreach (var msg in messages)
+            foreach (string msg in messages)
             {
-                foreach (var cat in categories)
+                foreach (string cat in categories)
                 {
                     yield return new object[] { msg, cat };
                 }

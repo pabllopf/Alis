@@ -74,7 +74,7 @@ namespace Alis.Core.Test
         [InlineData(-1)]
         public void EdgeCase_CollectionBoundaries(int size)
         {
-            var list = new List<int>();
+            List<int> list = new List<int>();
             for (int i = 0; i < Math.Abs(size); i++)
             {
                 list.Add(i);

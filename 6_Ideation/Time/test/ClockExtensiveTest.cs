@@ -20,7 +20,7 @@ namespace Alis.Core.Aspect.Time.Test
         [Fact]
         public void Clock_Creation_Succeeds()
         {
-            var clock = new Clock();
+            Clock clock = new Clock();
             Assert.NotNull(clock);
         }
 
@@ -30,9 +30,9 @@ namespace Alis.Core.Aspect.Time.Test
         [Fact]
         public void Clock_Creation_WithMultipleInstances()
         {
-            var clock1 = new Clock();
-            var clock2 = new Clock();
-            var clock3 = new Clock();
+            Clock clock1 = new Clock();
+            Clock clock2 = new Clock();
+            Clock clock3 = new Clock();
             
             Assert.NotNull(clock1);
             Assert.NotNull(clock2);
@@ -49,7 +49,7 @@ namespace Alis.Core.Aspect.Time.Test
         [Fact]
         public void DeltaTime_AfterInitialization_IsZeroOrSmall()
         {
-            var clock = new Clock();
+            Clock clock = new Clock();
             clock.Start();
             
             Assert.True(clock.ElapsedMilliseconds >= 0);
@@ -61,7 +61,7 @@ namespace Alis.Core.Aspect.Time.Test
         [Fact]
         public void DeltaTime_AfterDelay_IncreasesWith_Time()
         {
-            var clock = new Clock();
+            Clock clock = new Clock();
             clock.Start();
             
             Thread.Sleep(10);
@@ -75,12 +75,12 @@ namespace Alis.Core.Aspect.Time.Test
         [Fact]
         public void Elapsed_IncrementsOverTime()
         {
-            var clock = new Clock();
+            Clock clock = new Clock();
             clock.Start();
             
-            var elapsed1 = clock.ElapsedMilliseconds;
+            long elapsed1 = clock.ElapsedMilliseconds;
             Thread.Sleep(5);
-            var elapsed2 = clock.ElapsedMilliseconds;
+            long elapsed2 = clock.ElapsedMilliseconds;
             
             Assert.True(elapsed2 >= elapsed1);
         }
@@ -95,7 +95,7 @@ namespace Alis.Core.Aspect.Time.Test
         [Fact]
         public void Start_CanBeCalled()
         {
-            var clock = new Clock();
+            Clock clock = new Clock();
             clock.Start();
             
             Assert.NotNull(clock);
@@ -107,7 +107,7 @@ namespace Alis.Core.Aspect.Time.Test
         [Fact]
         public void Stop_CanBeCalled()
         {
-            var clock = new Clock();
+            Clock clock = new Clock();
             clock.Start();
             Thread.Sleep(5);
             clock.Stop();
@@ -121,18 +121,18 @@ namespace Alis.Core.Aspect.Time.Test
         [Fact]
         public void Start_Stop_Start_Works()
         {
-            var clock = new Clock();
+            Clock clock = new Clock();
             
             clock.Start();
             Thread.Sleep(5);
             clock.Stop();
             
-            var elapsed1 = clock.ElapsedMilliseconds;
+            long elapsed1 = clock.ElapsedMilliseconds;
             
             clock.Start();
             Thread.Sleep(5);
             
-            var elapsed2 = clock.ElapsedMilliseconds;
+            long elapsed2 = clock.ElapsedMilliseconds;
             
             Assert.True(elapsed2 > elapsed1);
         }
@@ -147,7 +147,7 @@ namespace Alis.Core.Aspect.Time.Test
         [Fact]
         public void Reset_ClearsTime()
         {
-            var clock = new Clock();
+            Clock clock = new Clock();
             clock.Start();
             Thread.Sleep(10);
             clock.Reset();
@@ -161,7 +161,7 @@ namespace Alis.Core.Aspect.Time.Test
         [Fact]
         public void Reset_MultipleTimer_Works()
         {
-            var clock = new Clock();
+            Clock clock = new Clock();
             
             clock.Start();
             Thread.Sleep(5);
@@ -186,8 +186,8 @@ namespace Alis.Core.Aspect.Time.Test
         [Fact]
         public void Multiple_Clocks_AreIndependent()
         {
-            var clock1 = new Clock();
-            var clock2 = new Clock();
+            Clock clock1 = new Clock();
+            Clock clock2 = new Clock();
             
             clock1.Start();
             Thread.Sleep(10);
@@ -195,8 +195,8 @@ namespace Alis.Core.Aspect.Time.Test
             clock2.Start();
             Thread.Sleep(5);
             
-            var elapsed1 = clock1.ElapsedMilliseconds;
-            var elapsed2 = clock2.ElapsedMilliseconds;
+            long elapsed1 = clock1.ElapsedMilliseconds;
+            long elapsed2 = clock2.ElapsedMilliseconds;
             
             Assert.True(elapsed1 > elapsed2);
         }
@@ -211,14 +211,14 @@ namespace Alis.Core.Aspect.Time.Test
         [Fact]
         public void Precision_MillisecondAccuracy()
         {
-            var clock = new Clock();
+            Clock clock = new Clock();
             clock.Start();
             
-            var start = clock.ElapsedMilliseconds;
+            long start = clock.ElapsedMilliseconds;
             Thread.Sleep(100);
-            var end = clock.ElapsedMilliseconds;
+            long end = clock.ElapsedMilliseconds;
             
-            var delta = end - start;
+            long delta = end - start;
             Assert.InRange(delta, 90, 200);
         }
 
@@ -228,11 +228,11 @@ namespace Alis.Core.Aspect.Time.Test
         [Fact]
         public void Precision_SubMillisecond_CanBeMeasured()
         {
-            var clock = new Clock();
+            Clock clock = new Clock();
             clock.Start();
             
-            var elapsed1 = clock.ElapsedMilliseconds;
-            var elapsed2 = clock.ElapsedMilliseconds;
+            long elapsed1 = clock.ElapsedMilliseconds;
+            long elapsed2 = clock.ElapsedMilliseconds;
             
             Assert.True(elapsed1 >= 0);
             Assert.True(elapsed2 >= 0);
@@ -248,11 +248,11 @@ namespace Alis.Core.Aspect.Time.Test
         [Fact]
         public void ExtremeLongDuration_StaysPositive()
         {
-            var clock = new Clock();
+            Clock clock = new Clock();
             clock.Start();
             
             Thread.Sleep(500);
-            var elapsed = clock.ElapsedMilliseconds;
+            long elapsed = clock.ElapsedMilliseconds;
             
             Assert.True(elapsed >= 0);
         }
@@ -267,7 +267,7 @@ namespace Alis.Core.Aspect.Time.Test
         [Fact]
         public void IsRunning_AfterStart_IsTrue()
         {
-            var clock = new Clock();
+            Clock clock = new Clock();
             clock.Start();
             
             Assert.True(clock.IsRunning);
@@ -279,7 +279,7 @@ namespace Alis.Core.Aspect.Time.Test
         [Fact]
         public void IsRunning_AfterStop_IsFalse()
         {
-            var clock = new Clock();
+            Clock clock = new Clock();
             clock.Start();
             clock.Stop();
             
@@ -296,11 +296,11 @@ namespace Alis.Core.Aspect.Time.Test
         [Fact]
         public void ElapsedTimespan_ReturnsValidTimespan()
         {
-            var clock = new Clock();
+            Clock clock = new Clock();
             clock.Start();
             Thread.Sleep(10);
             
-            var timespan = clock.Elapsed;
+            TimeSpan timespan = clock.Elapsed;
             Assert.NotNull(timespan);
         }
 
