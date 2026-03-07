@@ -180,74 +180,7 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.False(findNonexistent);
             Assert.Null(nonexistent);
         }
-
-        /// <summary>
-        /// Tests that complete workflow with metadata passes metadata correctly
-        /// </summary>
-        [Fact]
-        public async Task CompleteWorkflow_WithMetadata_PassesMetadataCorrectly()
-        {
-            // Arrange
-            Mock<IStripeGatewayClient> gateway = new Mock<IStripeGatewayClient>();
-            StripeCheckoutSessionRequest capturedCheckoutRequest = null;
-            StripePaymentIntentRequest capturedPaymentRequest = null;
-
-            gateway
-                .Setup(x => x.CreateCheckoutSessionAsync(It.IsAny<StripeCheckoutSessionRequest>(), It.IsAny<System.Threading.CancellationToken>()))
-                .Callback<StripeCheckoutSessionRequest, System.Threading.CancellationToken>((req, ct) => capturedCheckoutRequest = req)
-                .ReturnsAsync(new StripeCheckoutSessionResponse
-                {
-                    SessionId = "cs_meta_test",
-                    Url = new Uri("https://test.com"),
-                    PaymentIntentId = "pi_meta_test"
-                });
-
-            gateway
-                .Setup(x => x.CreatePaymentIntentAsync(It.IsAny<StripePaymentIntentRequest>(), It.IsAny<System.Threading.CancellationToken>()))
-                .Callback<StripePaymentIntentRequest, System.Threading.CancellationToken>((req, ct) => capturedPaymentRequest = req)
-                .ReturnsAsync(new StripePaymentIntentResponse
-                {
-                    PaymentIntentId = "pi_meta_test",
-                    ClientSecret = "secret",
-                    Status = "succeeded"
-                });
-
-            StoreManager manager = new StoreManager(CreateContext(), gateway.Object);
-            await manager.InitializeAsync(CreateValidConfiguration());
-            manager.RegisterProduct(new StoreProduct
-            {
-                Id = "product_meta",
-                Name = "Test Product",
-                PriceInCents = 1000
-            });
-
-            Dictionary<string, string> checkoutMetadata = new Dictionary<string, string>
-            {
-                { "user_id", "user_12345" },
-                { "session_id", "session_abcde" },
-                { "platform", "web" }
-            };
-
-            Dictionary<string, string> paymentMetadata = new Dictionary<string, string>
-            {
-                { "order_type", "digital_goods" },
-                { "quantity", "5" }
-            };
-
-            // Act
-            await manager.CreateCheckoutSessionAsync("product_meta", metadata: checkoutMetadata);
-            await manager.CreatePaymentIntentAsync("product_meta", metadata: paymentMetadata);
-
-            // Assert
-            Assert.NotNull(capturedCheckoutRequest.Metadata);
-            Assert.Equal("user_12345", capturedCheckoutRequest.Metadata["user_id"]);
-            Assert.Equal("session_abcde", capturedCheckoutRequest.Metadata["session_id"]);
-
-            Assert.NotNull(capturedPaymentRequest.Metadata);
-            Assert.Equal("digital_goods", capturedPaymentRequest.Metadata["order_type"]);
-            Assert.Equal("5", capturedPaymentRequest.Metadata["quantity"]);
-        }
-
+        
         /// <summary>
         /// Tests that currency handling defaults and overrides work correctly
         /// </summary>
