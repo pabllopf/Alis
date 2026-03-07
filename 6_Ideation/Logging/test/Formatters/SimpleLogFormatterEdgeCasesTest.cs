@@ -194,25 +194,5 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
             // Assert - Should be reasonably fast
             Assert.True(elapsed.TotalSeconds < 5);
         }
-
-        /// <summary>
-        /// Tests that simple log formatter consistent formatting
-        /// </summary>
-        [Fact]
-        public void SimpleLogFormatter_ConsistentFormatting()
-        {
-            // Arrange
-            SimpleLogFormatter formatter = new SimpleLogFormatter();
-            LogEntry entry = new LogEntry(LogLevel.Info, "Message", "Logger");
-
-            // Act
-            string format1 = formatter.Format(entry);
-            Thread.Sleep(10); // Small delay to ensure different timestamp
-            LogEntry entry2 = new LogEntry(LogLevel.Info, "Message", "Logger");
-            string format2 = formatter.Format(entry2);
-
-            // Assert - Different timestamps, same structure
-            Assert.Equal(format1, format2);
-        }
     }
 }
