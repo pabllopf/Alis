@@ -78,7 +78,6 @@ namespace Alis.Extension.Thread
         {
             get
             {
-                ThrowIfDisposed();
                 return parallelExecutor;
             }
         }
@@ -95,22 +94,6 @@ namespace Alis.Extension.Thread
 
             parallelExecutor?.Clear();
             disposed = true;
-        }
-
-        /// <summary>
-        ///     Throws if the manager has been disposed
-        /// </summary>
-        /// <exception cref="ObjectDisposedException">Thrown when the manager is disposed</exception>
-        private void ThrowIfDisposed()
-        {
-#if NET5_0_OR_GREATER
-            ObjectDisposedException.ThrowIf(disposed, this);
-#else
-            if (disposed)
-            {
-                throw new ObjectDisposedException(GetType().FullName);
-            }
-#endif
         }
     }
 }
