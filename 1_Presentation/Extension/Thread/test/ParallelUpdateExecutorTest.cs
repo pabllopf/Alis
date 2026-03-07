@@ -39,24 +39,24 @@ using Xunit;
 namespace Alis.Extension.Thread.Test
 {
     /// <summary>
-    /// The test parallel component
+    ///     The test parallel component
     /// </summary>
     [ParallelSafe(64)]
     public struct TestParallelComponent
     {
         /// <summary>
-        /// The value
+        ///     The value
         /// </summary>
         public int Value;
     }
 
     /// <summary>
-    /// The test sequential component
+    ///     The test sequential component
     /// </summary>
     public struct TestSequentialComponent
     {
         /// <summary>
-        /// The value
+        ///     The value
         /// </summary>
         public int Value;
     }
@@ -271,7 +271,7 @@ namespace Alis.Extension.Thread.Test
                 {
                     data[i] = i + 1;
                 }
-            }, false);
+            });
 
             // Assert
             for (int i = 0; i < data.Length; i++)

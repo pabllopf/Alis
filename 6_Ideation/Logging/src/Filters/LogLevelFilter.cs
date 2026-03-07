@@ -39,7 +39,7 @@ namespace Alis.Core.Aspect.Logging.Filters
     public sealed class LogLevelFilter : ILogFilter
     {
         /// <summary>
-        /// The minimum level
+        ///     The minimum level
         /// </summary>
         private readonly LogLevel _minimumLevel;
 
@@ -49,15 +49,15 @@ namespace Alis.Core.Aspect.Logging.Filters
         /// <param name="minimumLevel">The minimum level to accept.</param>
         public LogLevelFilter(LogLevel minimumLevel) => _minimumLevel = minimumLevel;
 
-        
+
         /// <summary>
-        /// Gets the value of the name
+        ///     Gets the value of the name
         /// </summary>
         public string Name => $"LogLevelFilter[{_minimumLevel}]";
 
-        
+
         /// <summary>
-        /// Shoulds the log using the specified entry
+        ///     Shoulds the log using the specified entry
         /// </summary>
         /// <param name="entry">The entry</param>
         /// <returns>The bool</returns>

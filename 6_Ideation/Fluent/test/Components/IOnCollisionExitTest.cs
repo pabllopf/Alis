@@ -84,12 +84,12 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         private class CollisionExitHandler : IOnCollisionExit
         {
             /// <summary>
-            /// Gets or sets the value of the exit count
+            ///     Gets or sets the value of the exit count
             /// </summary>
             public int ExitCount { get; private set; }
 
             /// <summary>
-            /// Ons the collision exit using the specified other
+            ///     Ons the collision exit using the specified other
             /// </summary>
             /// <param name="other">The other</param>
             /// <exception cref="NotImplementedException"></exception>
@@ -99,7 +99,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
             }
 
             /// <summary>
-            /// Ons the collision exit using the specified self
+            ///     Ons the collision exit using the specified self
             /// </summary>
             /// <param name="self">The self</param>
             /// <param name="collision">The collision</param>

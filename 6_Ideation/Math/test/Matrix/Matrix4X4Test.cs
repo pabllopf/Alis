@@ -335,7 +335,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that indexer get and set works for valid coordinates
+        ///     Tests that indexer get and set works for valid coordinates
         /// </summary>
         [Fact]
         public void Indexer_GetAndSet_WorksForValidCoordinates()
@@ -349,7 +349,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that indexer invalid coordinates throw custom index out of range exception
+        ///     Tests that indexer invalid coordinates throw custom index out of range exception
         /// </summary>
         [Fact]
         public void Indexer_InvalidCoordinates_ThrowCustomIndexOutOfRangeException()
@@ -361,7 +361,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that create translation sets translation row
+        ///     Tests that create translation sets translation row
         /// </summary>
         [Fact]
         public void CreateTranslation_SetsTranslationRow()
@@ -375,7 +375,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that create perspective field of view computes expected entries
+        ///     Tests that create perspective field of view computes expected entries
         /// </summary>
         [Fact]
         public void CreatePerspectiveFieldOfView_ComputesExpectedEntries()
@@ -397,4 +397,3 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
     }
 }
-

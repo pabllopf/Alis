@@ -36,7 +36,6 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Alis.App.Hub.Core;
 using Alis.App.Hub.Entity;
-using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui;
@@ -221,7 +220,7 @@ namespace Alis.App.Hub.Windows.Sections
         }
 
         /// <summary>
-        /// Fetches the available versions
+        ///     Fetches the available versions
         /// </summary>
         /// <returns>The version list</returns>
         private async Task<List<string>> FetchAvailableVersionsAsync()
@@ -245,7 +244,7 @@ namespace Alis.App.Hub.Windows.Sections
             foreach (JsonElement release in document.RootElement.EnumerateArray())
             {
                 if (release.TryGetProperty("tag_name", out JsonElement tag) &&
-                    tag.ValueKind == JsonValueKind.String)
+                    (tag.ValueKind == JsonValueKind.String))
                 {
                     string? version = tag.GetString();
                     if (!string.IsNullOrWhiteSpace(version))

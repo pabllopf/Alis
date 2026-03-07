@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:PointFExtensiveTest.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using Alis.Core.Aspect.Math.Shapes;
 using Alis.Core.Aspect.Math.Shapes.Point;
 using Xunit;
@@ -5,15 +34,13 @@ using Xunit;
 namespace Alis.Core.Aspect.Math.Test.Shape
 {
     /// <summary>
-    /// Extensive unit tests for PointF struct.
-    /// Tests all operators, methods, properties, and edge cases.
+    ///     Extensive unit tests for PointF struct.
+    ///     Tests all operators, methods, properties, and edge cases.
     /// </summary>
     public class PointFExtensiveTest
     {
-        
-
         /// <summary>
-        /// Tests that constructor single value sets x and y to same value
+        ///     Tests that constructor single value sets x and y to same value
         /// </summary>
         [Fact]
         public void Constructor_SingleValue_SetsXAndYToSameValue()
@@ -24,7 +51,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape
         }
 
         /// <summary>
-        /// Tests that constructor single value with zero
+        ///     Tests that constructor single value with zero
         /// </summary>
         [Fact]
         public void Constructor_SingleValue_WithZero()
@@ -35,7 +62,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape
         }
 
         /// <summary>
-        /// Tests that constructor single value with negative value
+        ///     Tests that constructor single value with negative value
         /// </summary>
         [Fact]
         public void Constructor_SingleValue_WithNegativeValue()
@@ -46,7 +73,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape
         }
 
         /// <summary>
-        /// Tests that constructor single value with large value
+        ///     Tests that constructor single value with large value
         /// </summary>
         [Fact]
         public void Constructor_SingleValue_WithLargeValue()
@@ -57,7 +84,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape
         }
 
         /// <summary>
-        /// Tests that constructor two values sets x and y correctly
+        ///     Tests that constructor two values sets x and y correctly
         /// </summary>
         [Fact]
         public void Constructor_TwoValues_SetsXAndYCorrectly()
@@ -68,7 +95,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape
         }
 
         /// <summary>
-        /// Tests that constructor two values with different signs
+        ///     Tests that constructor two values with different signs
         /// </summary>
         [Fact]
         public void Constructor_TwoValues_WithDifferentSigns()
@@ -79,7 +106,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape
         }
 
         /// <summary>
-        /// Tests that constructor two values with zeros
+        ///     Tests that constructor two values with zeros
         /// </summary>
         [Fact]
         public void Constructor_TwoValues_WithZeros()
@@ -90,7 +117,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape
         }
 
         /// <summary>
-        /// Tests that constructor copy constructor copies values
+        ///     Tests that constructor copy constructor copies values
         /// </summary>
         [Fact]
         public void Constructor_CopyConstructor_CopiesValues()
@@ -103,7 +130,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape
         }
 
         /// <summary>
-        /// Tests that constructor copy constructor with zero point
+        ///     Tests that constructor copy constructor with zero point
         /// </summary>
         [Fact]
         public void Constructor_CopyConstructor_WithZeroPoint()
@@ -116,7 +143,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape
         }
 
         /// <summary>
-        /// Tests that constructor copy constructor is independent
+        ///     Tests that constructor copy constructor is independent
         /// </summary>
         [Fact]
         public void Constructor_CopyConstructor_IsIndependent()
@@ -132,22 +159,19 @@ namespace Alis.Core.Aspect.Math.Test.Shape
         }
 
         /// <summary>
-        /// Tests that constructor default creates zero point
+        ///     Tests that constructor default creates zero point
         /// </summary>
         [Fact]
         public void Constructor_Default_CreatesZeroPoint()
         {
-            PointF point = default;
+            PointF point = default(PointF);
             Assert.Equal(0.0f, point.X);
             Assert.Equal(0.0f, point.Y);
         }
 
-        
-
-        
 
         /// <summary>
-        /// Tests that properties can be modified
+        ///     Tests that properties can be modified
         /// </summary>
         [Fact]
         public void Properties_CanBeModified()
@@ -161,7 +185,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape
         }
 
         /// <summary>
-        /// Tests that properties with negative values
+        ///     Tests that properties with negative values
         /// </summary>
         [Fact]
         public void Properties_WithNegativeValues()
@@ -173,7 +197,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape
         }
 
         /// <summary>
-        /// Tests that properties with very small values
+        ///     Tests that properties with very small values
         /// </summary>
         [Fact]
         public void Properties_WithVerySmallValues()
@@ -185,7 +209,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape
         }
 
         /// <summary>
-        /// Tests that properties with max value
+        ///     Tests that properties with max value
         /// </summary>
         [Fact]
         public void Properties_WithMaxValue()
@@ -197,7 +221,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape
         }
 
         /// <summary>
-        /// Tests that properties with min value
+        ///     Tests that properties with min value
         /// </summary>
         [Fact]
         public void Properties_WithMinValue()
@@ -208,12 +232,9 @@ namespace Alis.Core.Aspect.Math.Test.Shape
             Assert.Equal(float.MinValue, point.Y);
         }
 
-        
-
-        
 
         /// <summary>
-        /// Tests that i shape point f implements interface
+        ///     Tests that i shape point f implements interface
         /// </summary>
         [Fact]
         public void IShape_PointFImplementsInterface()
@@ -222,12 +243,9 @@ namespace Alis.Core.Aspect.Math.Test.Shape
             Assert.IsAssignableFrom<IShape>(point);
         }
 
-        
-
-        
 
         /// <summary>
-        /// Tests that struct is value type
+        ///     Tests that struct is value type
         /// </summary>
         [Fact]
         public void Struct_IsValueType()
@@ -237,7 +255,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape
 
 
         /// <summary>
-        /// Tests that value semantics copy is independent
+        ///     Tests that value semantics copy is independent
         /// </summary>
         [Fact]
         public void ValueSemantics_CopyIsIndependent()
@@ -250,12 +268,9 @@ namespace Alis.Core.Aspect.Math.Test.Shape
             Assert.Equal(10.0f, point2.X);
         }
 
-        
-
-        
 
         /// <summary>
-        /// Tests that constructor with positive infinity
+        ///     Tests that constructor with positive infinity
         /// </summary>
         [Fact]
         public void Constructor_WithPositiveInfinity()
@@ -267,7 +282,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape
         }
 
         /// <summary>
-        /// Tests that constructor with negative infinity
+        ///     Tests that constructor with negative infinity
         /// </summary>
         [Fact]
         public void Constructor_WithNegativeInfinity()
@@ -279,7 +294,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape
         }
 
         /// <summary>
-        /// Tests that constructor with na n
+        ///     Tests that constructor with na n
         /// </summary>
         [Fact]
         public void Constructor_WithNaN()
@@ -291,7 +306,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape
         }
 
         /// <summary>
-        /// Tests that constructor with mixed special values
+        ///     Tests that constructor with mixed special values
         /// </summary>
         [Fact]
         public void Constructor_WithMixedSpecialValues()
@@ -301,8 +316,5 @@ namespace Alis.Core.Aspect.Math.Test.Shape
             Assert.Equal(float.PositiveInfinity, point.X);
             Assert.Equal(float.NegativeInfinity, point.Y);
         }
-
-        
     }
 }
-

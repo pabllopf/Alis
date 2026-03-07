@@ -89,7 +89,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         private class MassBuilder
         {
             /// <summary>
-            /// Gets or sets the value of the mass value
+            ///     Gets or sets the value of the mass value
             /// </summary>
             public float MassValue { get; set; }
         }
@@ -100,12 +100,12 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         private class MassBuilderImpl : IMass<MassBuilder, float>
         {
             /// <summary>
-            /// The mass builder
+            ///     The mass builder
             /// </summary>
             private readonly MassBuilder _builder = new MassBuilder();
 
             /// <summary>
-            /// Masses the value
+            ///     Masses the value
             /// </summary>
             /// <param name="value">The value</param>
             /// <returns>The builder</returns>

@@ -41,7 +41,7 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
     public class ILogFormatterTest
     {
         /// <summary>
-        /// Tests that i log formatter implementation can be created
+        ///     Tests that i log formatter implementation can be created
         /// </summary>
         [Fact]
         public void ILogFormatter_ImplementationCanBeCreated()
@@ -54,7 +54,7 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
         }
 
         /// <summary>
-        /// Tests that i log formatter has name property
+        ///     Tests that i log formatter has name property
         /// </summary>
         [Fact]
         public void ILogFormatter_HasNameProperty()
@@ -68,7 +68,7 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
         }
 
         /// <summary>
-        /// Tests that i log formatter format method can be called
+        ///     Tests that i log formatter format method can be called
         /// </summary>
         [Fact]
         public void ILogFormatter_FormatMethod_CanBeCalled()
@@ -86,7 +86,7 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
         }
 
         /// <summary>
-        /// Tests that i log formatter format returns string
+        ///     Tests that i log formatter format returns string
         /// </summary>
         [Fact]
         public void ILogFormatter_FormatReturnsString()
@@ -103,7 +103,7 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
         }
 
         /// <summary>
-        /// Tests that i log formatter multiple implementations should work
+        ///     Tests that i log formatter multiple implementations should work
         /// </summary>
         [Fact]
         public void ILogFormatter_MultipleImplementations_ShouldWork()
@@ -122,7 +122,7 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
         }
 
         /// <summary>
-        /// Tests that i log formatter different implementations produce different output
+        ///     Tests that i log formatter different implementations produce different output
         /// </summary>
         [Fact]
         public void ILogFormatter_DifferentImplementations_ProduceDifferentOutput()

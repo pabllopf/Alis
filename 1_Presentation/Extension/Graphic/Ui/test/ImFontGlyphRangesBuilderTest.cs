@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.Ui.Test
 {
     /// <summary>
-    /// Provides unit coverage for <see cref="ImFontGlyphRangesBuilder"/> contracts.
+    ///     Provides unit coverage for <see cref="ImFontGlyphRangesBuilder" /> contracts.
     /// </summary>
     public class ImFontGlyphRangesBuilderTest
     {
         /// <summary>
-        /// Verifies that the builder is implemented as a value type.
+        ///     Verifies that the builder is implemented as a value type.
         /// </summary>
         [Fact]
         public void Type_ShouldBeStruct()
@@ -51,7 +51,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         }
 
         /// <summary>
-        /// Verifies that <see cref="ImFontGlyphRangesBuilder.UsedChars"/> starts with default value.
+        ///     Verifies that <see cref="ImFontGlyphRangesBuilder.UsedChars" /> starts with default value.
         /// </summary>
         [Fact]
         public void UsedChars_ShouldBeDefaultOnNewInstance()
@@ -62,7 +62,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         }
 
         /// <summary>
-        /// Verifies that <see cref="ImFontGlyphRangesBuilder.UsedChars"/> can be assigned and read back.
+        ///     Verifies that <see cref="ImFontGlyphRangesBuilder.UsedChars" /> can be assigned and read back.
         /// </summary>
         [Fact]
         public void UsedChars_ShouldRoundTripAssignedValue()
@@ -83,7 +83,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         }
 
         /// <summary>
-        /// Verifies method signatures for native-backed operations remain stable.
+        ///     Verifies method signatures for native-backed operations remain stable.
         /// </summary>
         [Fact]
         public void NativeBackedMethods_ShouldKeepExpectedSignatures()
@@ -95,7 +95,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         }
 
         /// <summary>
-        /// Verifies that all API methods in the builder are public instance members.
+        ///     Verifies that all API methods in the builder are public instance members.
         /// </summary>
         [Fact]
         public void ApiMethods_ShouldBePublicInstanceMethods()
@@ -117,7 +117,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         }
 
         /// <summary>
-        /// Resolves and validates a method by exact signature.
+        ///     Resolves and validates a method by exact signature.
         /// </summary>
         /// <param name="name">The target method name.</param>
         /// <param name="returnType">The expected return type.</param>

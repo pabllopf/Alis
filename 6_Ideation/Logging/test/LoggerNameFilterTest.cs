@@ -42,14 +42,14 @@ namespace Alis.Core.Aspect.Logging.Test
     public class LoggerNameFilterTest
     {
         /// <summary>
-        /// Tests that logger name filter inclusive should allow only specified names
+        ///     Tests that logger name filter inclusive should allow only specified names
         /// </summary>
         [Fact]
         public void LoggerNameFilter_Inclusive_ShouldAllowOnlySpecifiedNames()
         {
             // Arrange
             string[] names = new[] {"Logger1", "Logger2"};
-            LoggerNameFilter filter = new LoggerNameFilter(names, true);
+            LoggerNameFilter filter = new LoggerNameFilter(names);
 
             // Act & Assert
             Assert.True(filter.ShouldLog(CreateEntry("Logger1")));
@@ -58,7 +58,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger name filter exclusive should block specified names
+        ///     Tests that logger name filter exclusive should block specified names
         /// </summary>
         [Fact]
         public void LoggerNameFilter_Exclusive_ShouldBlockSpecifiedNames()
@@ -74,26 +74,26 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger name filter empty name list should allow all
+        ///     Tests that logger name filter empty name list should allow all
         /// </summary>
         [Fact]
         public void LoggerNameFilter_EmptyNameList_ShouldAllowAll()
         {
             // Arrange
-            LoggerNameFilter filter = new LoggerNameFilter(new List<string>(), true);
+            LoggerNameFilter filter = new LoggerNameFilter(new List<string>());
 
             // Act & Assert
             Assert.True(filter.ShouldLog(CreateEntry("Any")));
         }
 
         /// <summary>
-        /// Tests that logger name filter single name should filter correctly
+        ///     Tests that logger name filter single name should filter correctly
         /// </summary>
         [Fact]
         public void LoggerNameFilter_SingleName_ShouldFilterCorrectly()
         {
             // Arrange
-            LoggerNameFilter filter = new LoggerNameFilter(new[] {"MyLogger"}, true);
+            LoggerNameFilter filter = new LoggerNameFilter(new[] {"MyLogger"});
 
             // Act & Assert
             Assert.True(filter.ShouldLog(CreateEntry("MyLogger")));
@@ -101,13 +101,13 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger name filter case sensitive should distinguish case
+        ///     Tests that logger name filter case sensitive should distinguish case
         /// </summary>
         [Fact]
         public void LoggerNameFilter_CaseSensitive_ShouldDistinguishCase()
         {
             // Arrange
-            LoggerNameFilter filter = new LoggerNameFilter(new[] {"Logger"}, true);
+            LoggerNameFilter filter = new LoggerNameFilter(new[] {"Logger"});
 
             // Act & Assert
             Assert.True(filter.ShouldLog(CreateEntry("Logger")));
@@ -116,39 +116,39 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger name filter null entry should return true
+        ///     Tests that logger name filter null entry should return true
         /// </summary>
         [Fact]
         public void LoggerNameFilter_NullEntry_ShouldReturnTrue()
         {
             // Arrange
-            LoggerNameFilter filter = new LoggerNameFilter(new[] {"Logger"}, true);
+            LoggerNameFilter filter = new LoggerNameFilter(new[] {"Logger"});
 
             // Act & Assert
             Assert.True(filter.ShouldLog(null));
         }
 
         /// <summary>
-        /// Tests that logger name filter null name list should allow all
+        ///     Tests that logger name filter null name list should allow all
         /// </summary>
         [Fact]
         public void LoggerNameFilter_NullNameList_ShouldAllowAll()
         {
             // Arrange
-            LoggerNameFilter filter = new LoggerNameFilter(null, true);
+            LoggerNameFilter filter = new LoggerNameFilter(null);
 
             // Act & Assert
             Assert.True(filter.ShouldLog(CreateEntry("Any")));
         }
 
         /// <summary>
-        /// Tests that logger name filter empty logger name should filter correctly
+        ///     Tests that logger name filter empty logger name should filter correctly
         /// </summary>
         [Fact]
         public void LoggerNameFilter_EmptyLoggerName_ShouldFilterCorrectly()
         {
             // Arrange
-            LoggerNameFilter filter = new LoggerNameFilter(new[] {""}, true);
+            LoggerNameFilter filter = new LoggerNameFilter(new[] {""});
 
             // Act & Assert
             Assert.True(filter.ShouldLog(CreateEntry("")));
@@ -156,14 +156,14 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger name filter multiple names inclusive mode
+        ///     Tests that logger name filter multiple names inclusive mode
         /// </summary>
         [Fact]
         public void LoggerNameFilter_MultipleNames_InclusiveMode()
         {
             // Arrange
             string[] names = new[] {"Engine", "Physics", "Graphics"};
-            LoggerNameFilter filter = new LoggerNameFilter(names, true);
+            LoggerNameFilter filter = new LoggerNameFilter(names);
 
             // Act & Assert
             Assert.True(filter.ShouldLog(CreateEntry("Engine")));
@@ -174,7 +174,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger name filter multiple names exclusive mode
+        ///     Tests that logger name filter multiple names exclusive mode
         /// </summary>
         [Fact]
         public void LoggerNameFilter_MultipleNames_ExclusiveMode()
@@ -191,13 +191,13 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger name filter has name
+        ///     Tests that logger name filter has name
         /// </summary>
         [Fact]
         public void LoggerNameFilter_HasName()
         {
             // Arrange
-            LoggerNameFilter filter = new LoggerNameFilter(new[] {"Logger"}, true);
+            LoggerNameFilter filter = new LoggerNameFilter(new[] {"Logger"});
 
             // Act & Assert
             Assert.NotNull(filter.Name);
@@ -205,20 +205,20 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger name filter inclusive mode name should contain include
+        ///     Tests that logger name filter inclusive mode name should contain include
         /// </summary>
         [Fact]
         public void LoggerNameFilter_InclusiveModeName_ShouldContainInclude()
         {
             // Arrange
-            LoggerNameFilter filter = new LoggerNameFilter(new[] {"Logger"}, true);
+            LoggerNameFilter filter = new LoggerNameFilter(new[] {"Logger"});
 
             // Act & Assert
             Assert.Contains("Include", filter.Name);
         }
 
         /// <summary>
-        /// Tests that logger name filter exclusive mode name should contain exclude
+        ///     Tests that logger name filter exclusive mode name should contain exclude
         /// </summary>
         [Fact]
         public void LoggerNameFilter_ExclusiveModeName_ShouldContainExclude()
@@ -231,13 +231,13 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger name filter whitespace in name should be preserved
+        ///     Tests that logger name filter whitespace in name should be preserved
         /// </summary>
         [Fact]
         public void LoggerNameFilter_WhitespaceInName_ShouldBePreserved()
         {
             // Arrange
-            LoggerNameFilter filter = new LoggerNameFilter(new[] {"My Logger"}, true);
+            LoggerNameFilter filter = new LoggerNameFilter(new[] {"My Logger"});
 
             // Act & Assert
             Assert.True(filter.ShouldLog(CreateEntry("My Logger")));
@@ -245,13 +245,13 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger name filter special characters in name should be matched
+        ///     Tests that logger name filter special characters in name should be matched
         /// </summary>
         [Fact]
         public void LoggerNameFilter_SpecialCharactersInName_ShouldBeMatched()
         {
             // Arrange
-            LoggerNameFilter filter = new LoggerNameFilter(new[] {"Logger@123"}, true);
+            LoggerNameFilter filter = new LoggerNameFilter(new[] {"Logger@123"});
 
             // Act & Assert
             Assert.True(filter.ShouldLog(CreateEntry("Logger@123")));
@@ -259,13 +259,13 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger name filter duplicate names should be handled
+        ///     Tests that logger name filter duplicate names should be handled
         /// </summary>
         [Fact]
         public void LoggerNameFilter_DuplicateNames_ShouldBeHandled()
         {
             // Arrange
-            LoggerNameFilter filter = new LoggerNameFilter(new[] {"Logger", "Logger", "Other"}, true);
+            LoggerNameFilter filter = new LoggerNameFilter(new[] {"Logger", "Logger", "Other"});
 
             // Act & Assert
             Assert.True(filter.ShouldLog(CreateEntry("Logger")));
@@ -273,7 +273,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Creates the entry using the specified logger name
+        ///     Creates the entry using the specified logger name
         /// </summary>
         /// <param name="loggerName">The logger name</param>
         /// <returns>The log entry</returns>

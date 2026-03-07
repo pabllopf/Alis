@@ -53,7 +53,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         {
             window?.Dispose();
         }
-        
+
         /// <summary>
         ///     Natives the window constructor with parameters creates window
         /// </summary>
@@ -188,7 +188,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
             Assert.True(bounds.Width > 0);
             Assert.True(bounds.Height > 0);
         }
-        
+
         /// <summary>
         ///     Natives the window close does not throw
         /// </summary>

@@ -89,7 +89,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         private class Builder
         {
             /// <summary>
-            /// Gets or sets the value of the is deleted
+            ///     Gets or sets the value of the is deleted
             /// </summary>
             public bool IsDeleted { get; set; }
         }
@@ -100,12 +100,12 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         private class DeleteBuilder : IDelete<Builder>
         {
             /// <summary>
-            /// The builder
+            ///     The builder
             /// </summary>
             private readonly Builder _builder = new Builder();
 
             /// <summary>
-            /// Deletes this instance
+            ///     Deletes this instance
             /// </summary>
             /// <returns>The builder</returns>
             public Builder Delete()

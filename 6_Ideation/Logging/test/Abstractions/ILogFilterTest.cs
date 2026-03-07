@@ -41,7 +41,7 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
     public class ILogFilterTest
     {
         /// <summary>
-        /// Tests that i log filter implementation can be created
+        ///     Tests that i log filter implementation can be created
         /// </summary>
         [Fact]
         public void ILogFilter_ImplementationCanBeCreated()
@@ -54,7 +54,7 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
         }
 
         /// <summary>
-        /// Tests that i log filter has name property
+        ///     Tests that i log filter has name property
         /// </summary>
         [Fact]
         public void ILogFilter_HasNameProperty()
@@ -68,7 +68,7 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
         }
 
         /// <summary>
-        /// Tests that i log filter should log method can be called
+        ///     Tests that i log filter should log method can be called
         /// </summary>
         [Fact]
         public void ILogFilter_ShouldLogMethod_CanBeCalled()
@@ -85,14 +85,14 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
         }
 
         /// <summary>
-        /// Tests that i log filter multiple implementations should work
+        ///     Tests that i log filter multiple implementations should work
         /// </summary>
         [Fact]
         public void ILogFilter_MultipleImplementations_ShouldWork()
         {
             // Arrange
             ILogFilter filter1 = new LogLevelFilter(LogLevel.Info);
-            ILogFilter filter2 = new LoggerNameFilter(new[] {"Test"}, true);
+            ILogFilter filter2 = new LoggerNameFilter(new[] {"Test"});
 
             // Act & Assert
             Assert.NotNull(filter1);
@@ -101,7 +101,7 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
         }
 
         /// <summary>
-        /// Tests that i log filter can be combined
+        ///     Tests that i log filter can be combined
         /// </summary>
         [Fact]
         public void ILogFilter_CanBeCombined()

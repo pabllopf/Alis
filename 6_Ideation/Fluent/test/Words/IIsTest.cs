@@ -102,7 +102,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         private class Builder
         {
             /// <summary>
-            /// Gets or sets the value of the is value
+            ///     Gets or sets the value of the is value
             /// </summary>
             public string IsValue { get; set; }
         }
@@ -113,12 +113,12 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         private class IsBuilder : IIs<Builder, string>
         {
             /// <summary>
-            /// The builder
+            ///     The builder
             /// </summary>
             private readonly Builder _builder = new Builder();
 
             /// <summary>
-            /// Ises the value
+            ///     Ises the value
             /// </summary>
             /// <typeparam name="T">The </typeparam>
             /// <param name="value">The value</param>

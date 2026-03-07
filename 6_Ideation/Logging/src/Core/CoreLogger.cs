@@ -43,35 +43,42 @@ namespace Alis.Core.Aspect.Logging.Core
     internal sealed class CoreLogger : ILogger
     {
         /// <summary>
-        /// The correlation lock
+        ///     The correlation lock
         /// </summary>
         private readonly object _correlationLock = new object();
+
         /// <summary>
-        /// The filters
+        ///     The filters
         /// </summary>
         private readonly List<ILogFilter> _filters;
+
         /// <summary>
-        /// The formatter
+        ///     The formatter
         /// </summary>
         private readonly ILogFormatter _formatter;
+
         /// <summary>
-        /// The minimum level
+        ///     The minimum level
         /// </summary>
         private readonly LogLevel _minimumLevel;
+
         /// <summary>
-        /// The outputs
+        ///     The outputs
         /// </summary>
         private readonly List<ILogOutput> _outputs;
+
         /// <summary>
-        /// The scope lock
+        ///     The scope lock
         /// </summary>
         private readonly object _scopeLock = new object();
+
         /// <summary>
-        /// The scope stack
+        ///     The scope stack
         /// </summary>
         private readonly Stack<object> _scopeStack;
+
         /// <summary>
-        /// The correlation id
+        ///     The correlation id
         /// </summary>
         private string _correlationId;
 
@@ -98,73 +105,73 @@ namespace Alis.Core.Aspect.Logging.Core
             _scopeStack = new Stack<object>();
         }
 
-        
+
         /// <summary>
-        /// Gets the value of the name
+        ///     Gets the value of the name
         /// </summary>
         public string Name { get; }
 
-        
+
         /// <summary>
-        /// Logs the trace using the specified message
+        ///     Logs the trace using the specified message
         /// </summary>
         /// <param name="message">The message</param>
         public void LogTrace(string message) => Log(LogLevel.Trace, message);
 
-        
+
         /// <summary>
-        /// Logs the debug using the specified message
+        ///     Logs the debug using the specified message
         /// </summary>
         /// <param name="message">The message</param>
         public void LogDebug(string message) => Log(LogLevel.Debug, message);
 
-        
+
         /// <summary>
-        /// Logs the info using the specified message
+        ///     Logs the info using the specified message
         /// </summary>
         /// <param name="message">The message</param>
         public void LogInfo(string message) => Log(LogLevel.Info, message);
 
-        
+
         /// <summary>
-        /// Logs the warning using the specified message
+        ///     Logs the warning using the specified message
         /// </summary>
         /// <param name="message">The message</param>
         public void LogWarning(string message) => Log(LogLevel.Warning, message);
 
-        
+
         /// <summary>
-        /// Logs the error using the specified message
+        ///     Logs the error using the specified message
         /// </summary>
         /// <param name="message">The message</param>
         public void LogError(string message) => Log(LogLevel.Error, message);
 
-        
+
         /// <summary>
-        /// Logs the critical using the specified message
+        ///     Logs the critical using the specified message
         /// </summary>
         /// <param name="message">The message</param>
         public void LogCritical(string message) => Log(LogLevel.Critical, message);
 
-        
+
         /// <summary>
-        /// Logs the error using the specified message
+        ///     Logs the error using the specified message
         /// </summary>
         /// <param name="message">The message</param>
         /// <param name="exception">The exception</param>
         public void LogError(string message, Exception exception) => Log(LogLevel.Error, message, exception);
 
-        
+
         /// <summary>
-        /// Logs the critical using the specified message
+        ///     Logs the critical using the specified message
         /// </summary>
         /// <param name="message">The message</param>
         /// <param name="exception">The exception</param>
         public void LogCritical(string message, Exception exception) => Log(LogLevel.Critical, message, exception);
 
-        
+
         /// <summary>
-        /// Logs the level
+        ///     Logs the level
         /// </summary>
         /// <param name="level">The level</param>
         /// <param name="message">The message</param>
@@ -173,9 +180,9 @@ namespace Alis.Core.Aspect.Logging.Core
             Log(level, message, null);
         }
 
-        
+
         /// <summary>
-        /// Logs the level
+        ///     Logs the level
         /// </summary>
         /// <param name="level">The level</param>
         /// <param name="message">The message</param>
@@ -203,7 +210,7 @@ namespace Alis.Core.Aspect.Logging.Core
         }
 
         /// <summary>
-        /// Logs the structured using the specified level
+        ///     Logs the structured using the specified level
         /// </summary>
         /// <param name="level">The level</param>
         /// <param name="message">The message</param>
@@ -237,9 +244,9 @@ namespace Alis.Core.Aspect.Logging.Core
             ProcessEntry(entry);
         }
 
-        
+
         /// <summary>
-        /// Sets the correlation id using the specified correlation id
+        ///     Sets the correlation id using the specified correlation id
         /// </summary>
         /// <param name="correlationId">The correlation id</param>
         public void SetCorrelationId(string correlationId)
@@ -250,9 +257,9 @@ namespace Alis.Core.Aspect.Logging.Core
             }
         }
 
-        
+
         /// <summary>
-        /// Gets the correlation id
+        ///     Gets the correlation id
         /// </summary>
         /// <returns>The string</returns>
         public string GetCorrelationId()
@@ -263,9 +270,9 @@ namespace Alis.Core.Aspect.Logging.Core
             }
         }
 
-        
+
         /// <summary>
-        /// Begins the scope using the specified scope
+        ///     Begins the scope using the specified scope
         /// </summary>
         /// <param name="scope">The scope</param>
         /// <returns>The disposable</returns>
@@ -277,9 +284,9 @@ namespace Alis.Core.Aspect.Logging.Core
             }
         }
 
-        
+
         /// <summary>
-        /// Ises the enabled using the specified level
+        ///     Ises the enabled using the specified level
         /// </summary>
         /// <param name="level">The level</param>
         /// <returns>The bool</returns>

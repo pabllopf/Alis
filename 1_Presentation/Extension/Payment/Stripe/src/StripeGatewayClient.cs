@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:StripeGatewayClient.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -14,12 +43,12 @@ namespace Alis.Extension.Payment.Stripe
     public class StripeGatewayClient : IStripeGatewayClient
     {
         /// <summary>
-        /// The configured api key
+        ///     The configured api key
         /// </summary>
         private string _configuredApiKey;
 
         /// <summary>
-        /// Configures the secret api key
+        ///     Configures the secret api key
         /// </summary>
         /// <param name="secretApiKey">The secret api key</param>
         /// <exception cref="ArgumentException">Stripe secret API key cannot be null or empty. </exception>
@@ -35,7 +64,7 @@ namespace Alis.Extension.Payment.Stripe
         }
 
         /// <summary>
-        /// Creates the checkout session using the specified request
+        ///     Creates the checkout session using the specified request
         /// </summary>
         /// <param name="request">The request</param>
         /// <param name="cancellationToken">The cancellation token</param>
@@ -43,7 +72,7 @@ namespace Alis.Extension.Payment.Stripe
         [ExcludeFromCodeCoverage]
         public async Task<StripeCheckoutSessionResponse> CreateCheckoutSessionAsync(
             StripeCheckoutSessionRequest request,
-            CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default(CancellationToken))
         {
             EnsureConfigured();
             ValidateCheckoutRequest(request);
@@ -86,7 +115,7 @@ namespace Alis.Extension.Payment.Stripe
         }
 
         /// <summary>
-        /// Creates the payment intent using the specified request
+        ///     Creates the payment intent using the specified request
         /// </summary>
         /// <param name="request">The request</param>
         /// <param name="cancellationToken">The cancellation token</param>
@@ -94,7 +123,7 @@ namespace Alis.Extension.Payment.Stripe
         [ExcludeFromCodeCoverage]
         public async Task<StripePaymentIntentResponse> CreatePaymentIntentAsync(
             StripePaymentIntentRequest request,
-            CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default(CancellationToken))
         {
             EnsureConfigured();
             ValidatePaymentIntentRequest(request);
@@ -128,14 +157,14 @@ namespace Alis.Extension.Payment.Stripe
         }
 
         /// <summary>
-        /// Gets the payment intent using the specified payment intent id
+        ///     Gets the payment intent using the specified payment intent id
         /// </summary>
         /// <param name="paymentIntentId">The payment intent id</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <exception cref="ArgumentException">Payment intent id cannot be null or empty. </exception>
         /// <returns>A task containing the stripe payment intent response</returns>
         [ExcludeFromCodeCoverage]
-        public async Task<StripePaymentIntentResponse> GetPaymentIntentAsync(string paymentIntentId, CancellationToken cancellationToken = default)
+        public async Task<StripePaymentIntentResponse> GetPaymentIntentAsync(string paymentIntentId, CancellationToken cancellationToken = default(CancellationToken))
         {
             EnsureConfigured();
 
@@ -156,7 +185,7 @@ namespace Alis.Extension.Payment.Stripe
         }
 
         /// <summary>
-        /// Creates the refund using the specified request
+        ///     Creates the refund using the specified request
         /// </summary>
         /// <param name="request">The request</param>
         /// <param name="cancellationToken">The cancellation token</param>
@@ -164,7 +193,7 @@ namespace Alis.Extension.Payment.Stripe
         /// <exception cref="ArgumentException">Payment intent id cannot be null or empty. </exception>
         /// <returns>A task containing the stripe refund response</returns>
         [ExcludeFromCodeCoverage]
-        public async Task<StripeRefundResponse> CreateRefundAsync(StripeRefundRequest request, CancellationToken cancellationToken = default)
+        public async Task<StripeRefundResponse> CreateRefundAsync(StripeRefundRequest request, CancellationToken cancellationToken = default(CancellationToken))
         {
             EnsureConfigured();
 
@@ -198,7 +227,7 @@ namespace Alis.Extension.Payment.Stripe
         }
 
         /// <summary>
-        /// Maps the refund reason using the specified reason
+        ///     Maps the refund reason using the specified reason
         /// </summary>
         /// <param name="reason">The reason</param>
         /// <returns>The string</returns>
@@ -220,7 +249,7 @@ namespace Alis.Extension.Payment.Stripe
         }
 
         /// <summary>
-        /// Ensures the configured
+        ///     Ensures the configured
         /// </summary>
         /// <exception cref="InvalidOperationException">StripeGatewayClient is not configured. Call Configure first.</exception>
         private void EnsureConfigured()
@@ -232,7 +261,7 @@ namespace Alis.Extension.Payment.Stripe
         }
 
         /// <summary>
-        /// Validates the checkout request using the specified request
+        ///     Validates the checkout request using the specified request
         /// </summary>
         /// <param name="request">The request</param>
         /// <exception cref="ArgumentNullException"></exception>
@@ -276,7 +305,7 @@ namespace Alis.Extension.Payment.Stripe
         }
 
         /// <summary>
-        /// Validates the payment intent request using the specified request
+        ///     Validates the payment intent request using the specified request
         /// </summary>
         /// <param name="request">The request</param>
         /// <exception cref="ArgumentNullException"></exception>
@@ -302,4 +331,3 @@ namespace Alis.Extension.Payment.Stripe
         }
     }
 }
-

@@ -40,11 +40,12 @@ namespace Alis.Core.Aspect.Logging.Filters
     public sealed class SamplingLogFilter : ILogFilter
     {
         /// <summary>
-        /// The sample rate
+        ///     The sample rate
         /// </summary>
         private readonly int _sampleRate; // 1 in N entries pass through
+
         /// <summary>
-        /// The counter
+        ///     The counter
         /// </summary>
         private long _counter;
 
@@ -63,15 +64,15 @@ namespace Alis.Core.Aspect.Logging.Filters
             _counter = 0;
         }
 
-        
+
         /// <summary>
-        /// Gets the value of the name
+        ///     Gets the value of the name
         /// </summary>
         public string Name => $"SamplingFilter[1:{_sampleRate}]";
 
-        
+
         /// <summary>
-        /// Shoulds the log using the specified entry
+        ///     Shoulds the log using the specified entry
         /// </summary>
         /// <param name="entry">The entry</param>
         /// <returns>The bool</returns>

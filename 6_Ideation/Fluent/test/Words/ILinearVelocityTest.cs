@@ -91,11 +91,12 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         private class VelocityBuilder
         {
             /// <summary>
-            /// Gets or sets the value of the velocity x
+            ///     Gets or sets the value of the velocity x
             /// </summary>
             public float VelocityX { get; set; }
+
             /// <summary>
-            /// Gets or sets the value of the velocity y
+            ///     Gets or sets the value of the velocity y
             /// </summary>
             public float VelocityY { get; set; }
         }
@@ -106,12 +107,12 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         private class LinearVelocityBuilderImpl : ILinearVelocity<VelocityBuilder, float>
         {
             /// <summary>
-            /// The velocity builder
+            ///     The velocity builder
             /// </summary>
             private readonly VelocityBuilder _builder = new VelocityBuilder();
 
             /// <summary>
-            /// Linears the velocity using the specified x
+            ///     Linears the velocity using the specified x
             /// </summary>
             /// <param name="x">The </param>
             /// <param name="y">The </param>

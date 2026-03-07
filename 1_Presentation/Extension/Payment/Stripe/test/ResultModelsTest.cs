@@ -37,10 +37,8 @@ namespace Alis.Extension.Payment.Stripe.Test
     /// </summary>
     public class ResultModelsTest
     {
-        
-
         /// <summary>
-        /// Tests that checkout session result can be instantiated
+        ///     Tests that checkout session result can be instantiated
         /// </summary>
         [Fact]
         public void CheckoutSessionResult_CanBeInstantiated()
@@ -53,7 +51,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that checkout session result all properties can be set
+        ///     Tests that checkout session result all properties can be set
         /// </summary>
         [Fact]
         public void CheckoutSessionResult_AllPropertiesCanBeSet()
@@ -80,12 +78,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal("usd", result.Currency);
         }
 
-        
-
-        
 
         /// <summary>
-        /// Tests that payment intent result can be instantiated
+        ///     Tests that payment intent result can be instantiated
         /// </summary>
         [Fact]
         public void PaymentIntentResult_CanBeInstantiated()
@@ -98,7 +93,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that payment intent result all properties can be set
+        ///     Tests that payment intent result all properties can be set
         /// </summary>
         [Fact]
         public void PaymentIntentResult_AllPropertiesCanBeSet()
@@ -124,7 +119,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that payment intent result status defaults to unknown
+        ///     Tests that payment intent result status defaults to unknown
         /// </summary>
         [Fact]
         public void PaymentIntentResult_StatusDefaultsToUnknown()
@@ -136,12 +131,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal(PaymentStatus.Unknown, result.Status);
         }
 
-        
-
-        
 
         /// <summary>
-        /// Tests that refund result can be instantiated
+        ///     Tests that refund result can be instantiated
         /// </summary>
         [Fact]
         public void RefundResult_CanBeInstantiated()
@@ -154,7 +146,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that refund result all properties can be set
+        ///     Tests that refund result all properties can be set
         /// </summary>
         [Fact]
         public void RefundResult_AllPropertiesCanBeSet()
@@ -176,8 +168,5 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal("gbp", result.Currency);
             Assert.Equal("succeeded", result.Status);
         }
-
-        
     }
 }
-

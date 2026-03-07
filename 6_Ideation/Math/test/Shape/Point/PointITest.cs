@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math.Shapes;
-using Alis.Core.Aspect.Math.Shapes;
 using Alis.Core.Aspect.Math.Shapes.Point;
 using Xunit;
 
@@ -83,7 +82,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
         [Fact]
         public void Constructor_WithExplicitValues_InitializesCorrectly()
         {
-            PointI point = new PointI { X = 5, Y = 6 };
+            PointI point = new PointI {X = 5, Y = 6};
 
             Assert.Equal(5, point.X);
             Assert.Equal(6, point.Y);
@@ -95,7 +94,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
         [Fact]
         public void XProperty_CanBeSetAndRetrieved()
         {
-            PointI point = new PointI { X = 1, Y = 2 };
+            PointI point = new PointI {X = 1, Y = 2};
 
             point.X = 5;
 
@@ -109,7 +108,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
         [Fact]
         public void YProperty_CanBeSetAndRetrieved()
         {
-            PointI point = new PointI { X = 1, Y = 2 };
+            PointI point = new PointI {X = 1, Y = 2};
 
             point.Y = 6;
 
@@ -123,7 +122,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
         [Fact]
         public void Properties_CanBeSetIndependently()
         {
-            PointI point = new PointI { X = 1, Y = 2 };
+            PointI point = new PointI {X = 1, Y = 2};
 
             point.X = 10;
             point.Y = 20;
@@ -138,7 +137,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
         [Fact]
         public void Properties_CanBeSetToNegativeValues()
         {
-            PointI point = new PointI { X = -5, Y = -10 };
+            PointI point = new PointI {X = -5, Y = -10};
 
             Assert.Equal(-5, point.X);
             Assert.Equal(-10, point.Y);
@@ -159,7 +158,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
         [Fact]
         public void Assignment_CreatesIndependentCopy()
         {
-            PointI first = new PointI { X = 5, Y = 6 };
+            PointI first = new PointI {X = 5, Y = 6};
             PointI second = first;
 
             second.X = 15;
@@ -186,7 +185,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
         [Fact]
         public void PointI_WithMaxValue_StoresCorrectly()
         {
-            PointI point = new PointI { X = int.MaxValue, Y = int.MaxValue };
+            PointI point = new PointI {X = int.MaxValue, Y = int.MaxValue};
 
             Assert.Equal(int.MaxValue, point.X);
             Assert.Equal(int.MaxValue, point.Y);
@@ -198,7 +197,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
         [Fact]
         public void PointI_WithMinValue_StoresCorrectly()
         {
-            PointI point = new PointI { X = int.MinValue, Y = int.MinValue };
+            PointI point = new PointI {X = int.MinValue, Y = int.MinValue};
 
             Assert.Equal(int.MinValue, point.X);
             Assert.Equal(int.MinValue, point.Y);
@@ -210,7 +209,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
         [Fact]
         public void PointI_WithZeroValues_StoresCorrectly()
         {
-            PointI point = new PointI { X = 0, Y = 0 };
+            PointI point = new PointI {X = 0, Y = 0};
 
             Assert.Equal(0, point.X);
             Assert.Equal(0, point.Y);
@@ -222,7 +221,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
         [Fact]
         public void PointI_WithMixedSigns_StoresCorrectly()
         {
-            PointI point = new PointI { X = 100, Y = -100 };
+            PointI point = new PointI {X = 100, Y = -100};
 
             Assert.Equal(100, point.X);
             Assert.Equal(-100, point.Y);
@@ -234,8 +233,8 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
         [Fact]
         public void Equality_WithSameValues_ReturnsTrue()
         {
-            PointI p1 = new PointI { X = 5, Y = 6 };
-            PointI p2 = new PointI { X = 5, Y = 6 };
+            PointI p1 = new PointI {X = 5, Y = 6};
+            PointI p2 = new PointI {X = 5, Y = 6};
 
             Assert.Equal(p1, p2);
         }
@@ -246,8 +245,8 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
         [Fact]
         public void Equality_WithDifferentXValues_ReturnsFalse()
         {
-            PointI p1 = new PointI { X = 5, Y = 6 };
-            PointI p2 = new PointI { X = 4, Y = 6 };
+            PointI p1 = new PointI {X = 5, Y = 6};
+            PointI p2 = new PointI {X = 4, Y = 6};
 
             Assert.NotEqual(p1, p2);
         }
@@ -258,8 +257,8 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
         [Fact]
         public void Equality_WithDifferentYValues_ReturnsFalse()
         {
-            PointI p1 = new PointI { X = 5, Y = 6 };
-            PointI p2 = new PointI { X = 5, Y = 7 };
+            PointI p1 = new PointI {X = 5, Y = 6};
+            PointI p2 = new PointI {X = 5, Y = 7};
 
             Assert.NotEqual(p1, p2);
         }
@@ -270,8 +269,8 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
         [Fact]
         public void GetHashCode_WithSameValues_ReturnsSameHash()
         {
-            PointI p1 = new PointI { X = 5, Y = 6 };
-            PointI p2 = new PointI { X = 5, Y = 6 };
+            PointI p1 = new PointI {X = 5, Y = 6};
+            PointI p2 = new PointI {X = 5, Y = 6};
 
             Assert.Equal(p1.GetHashCode(), p2.GetHashCode());
         }
@@ -282,8 +281,8 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
         [Fact]
         public void GetHashCode_WithDifferentValues_ReturnsDifferentHashes()
         {
-            PointI p1 = new PointI { X = 5, Y = 6 };
-            PointI p2 = new PointI { X = 7, Y = 8 };
+            PointI p1 = new PointI {X = 5, Y = 6};
+            PointI p2 = new PointI {X = 7, Y = 8};
 
             Assert.NotEqual(p1.GetHashCode(), p2.GetHashCode());
         }
@@ -294,7 +293,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
         [Fact]
         public void ToString_ReturnsFormattedString()
         {
-            PointI point = new PointI { X = 3, Y = 4 };
+            PointI point = new PointI {X = 3, Y = 4};
             string result = point.ToString();
 
             Assert.NotNull(result);
@@ -307,7 +306,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
         [Fact]
         public void ToString_WithNegativeValues_ReturnsFormattedString()
         {
-            PointI point = new PointI { X = -3, Y = -4 };
+            PointI point = new PointI {X = -3, Y = -4};
             string result = point.ToString();
 
             Assert.NotNull(result);

@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Math.Test.Vector
 {
     /// <summary>
-    /// Comprehensive unit tests for Vector4F class
+    ///     Comprehensive unit tests for Vector4F class
     /// </summary>
     public class Vector4FTest
     {
         /// <summary>
-        /// Tests that constructor with four values initializes correctly
+        ///     Tests that constructor with four values initializes correctly
         /// </summary>
         [Fact]
         public void Constructor_WithFourValues_InitializesCorrectly()
@@ -53,7 +53,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that constructor default initializes to zero
+        ///     Tests that constructor default initializes to zero
         /// </summary>
         [Fact]
         public void Constructor_Default_InitializesToZero()
@@ -67,7 +67,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that properties can be set and retrieved
+        ///     Tests that properties can be set and retrieved
         /// </summary>
         [Fact]
         public void Properties_CanBeSetAndRetrieved()
@@ -86,7 +86,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that equals with same vector returns true
+        ///     Tests that equals with same vector returns true
         /// </summary>
         [Fact]
         public void Equals_WithSameVector_ReturnsTrue()
@@ -98,7 +98,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that equals with different vector returns false
+        ///     Tests that equals with different vector returns false
         /// </summary>
         [Fact]
         public void Equals_WithDifferentVector_ReturnsFalse()
@@ -110,7 +110,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that equals with object override works correctly
+        ///     Tests that equals with object override works correctly
         /// </summary>
         [Fact]
         public void Equals_WithObjectOverride_WorksCorrectly()
@@ -124,7 +124,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that get hash code with same vector returns same hash
+        ///     Tests that get hash code with same vector returns same hash
         /// </summary>
         [Fact]
         public void GetHashCode_WithSameVector_ReturnsSameHash()
@@ -138,7 +138,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that to string returns formatted string
+        ///     Tests that to string returns formatted string
         /// </summary>
         [Fact]
         public void ToString_ReturnsFormattedString()
@@ -151,15 +151,15 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that get object data serializes vector
+        ///     Tests that get object data serializes vector
         /// </summary>
         [Fact]
         public void GetObjectData_SerializesVector()
         {
             Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
-            SerializationInfo serializationInfo = new System.Runtime.Serialization.SerializationInfo(typeof(Vector4F), new System.Runtime.Serialization.FormatterConverter());
+            SerializationInfo serializationInfo = new SerializationInfo(typeof(Vector4F), new FormatterConverter());
 
-            v.GetObjectData(serializationInfo, default);
+            v.GetObjectData(serializationInfo, default(StreamingContext));
 
             Assert.Equal(1f, serializationInfo.GetSingle("x"));
             Assert.Equal(2f, serializationInfo.GetSingle("y"));
@@ -168,15 +168,15 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that get object data with different values serializes correctly
+        ///     Tests that get object data with different values serializes correctly
         /// </summary>
         [Fact]
         public void GetObjectData_WithDifferentValues_SerializesCorrectly()
         {
             Vector4F v = new Vector4F(10f, 20f, 30f, 40f);
-            SerializationInfo serializationInfo = new System.Runtime.Serialization.SerializationInfo(typeof(Vector4F), new System.Runtime.Serialization.FormatterConverter());
+            SerializationInfo serializationInfo = new SerializationInfo(typeof(Vector4F), new FormatterConverter());
 
-            v.GetObjectData(serializationInfo, default);
+            v.GetObjectData(serializationInfo, default(StreamingContext));
 
             Assert.Equal(10f, serializationInfo.GetSingle("x"));
             Assert.Equal(20f, serializationInfo.GetSingle("y"));
@@ -184,10 +184,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(40f, serializationInfo.GetSingle("w"));
         }
 
-        
 
         /// <summary>
-        /// Tests that get with index 0 returns x component
+        ///     Tests that get with index 0 returns x component
         /// </summary>
         [Fact]
         public void Get_WithIndex0_ReturnsXComponent()
@@ -200,7 +199,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that get with index 1 returns y component
+        ///     Tests that get with index 1 returns y component
         /// </summary>
         [Fact]
         public void Get_WithIndex1_ReturnsYComponent()
@@ -213,7 +212,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that get with index 2 returns z component
+        ///     Tests that get with index 2 returns z component
         /// </summary>
         [Fact]
         public void Get_WithIndex2_ReturnsZComponent()
@@ -226,7 +225,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that get with index 3 returns w component
+        ///     Tests that get with index 3 returns w component
         /// </summary>
         [Fact]
         public void Get_WithIndex3_ReturnsWComponent()
@@ -239,7 +238,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that get with negative index returns zero
+        ///     Tests that get with negative index returns zero
         /// </summary>
         [Fact]
         public void Get_WithNegativeIndex_ReturnsZero()
@@ -252,7 +251,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that get with index out of range returns zero
+        ///     Tests that get with index out of range returns zero
         /// </summary>
         [Fact]
         public void Get_WithIndexOutOfRange_ReturnsZero()
@@ -265,7 +264,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that get with large index out of range returns zero
+        ///     Tests that get with large index out of range returns zero
         /// </summary>
         [Fact]
         public void Get_WithLargeIndexOutOfRange_ReturnsZero()
@@ -278,7 +277,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that get with very large negative index returns zero
+        ///     Tests that get with very large negative index returns zero
         /// </summary>
         [Fact]
         public void Get_WithVeryLargeNegativeIndex_ReturnsZero()
@@ -291,7 +290,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that get with all zero vector returns zero for all indices
+        ///     Tests that get with all zero vector returns zero for all indices
         /// </summary>
         [Fact]
         public void Get_WithAllZeroVector_ReturnsZeroForAllIndices()
@@ -305,7 +304,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that get with negative components returns correct values
+        ///     Tests that get with negative components returns correct values
         /// </summary>
         [Fact]
         public void Get_WithNegativeComponents_ReturnsCorrectValues()
@@ -319,7 +318,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that get with max value components returns correct values
+        ///     Tests that get with max value components returns correct values
         /// </summary>
         [Fact]
         public void Get_WithMaxValueComponents_ReturnsCorrectValues()
@@ -333,7 +332,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that get with min value components returns correct values
+        ///     Tests that get with min value components returns correct values
         /// </summary>
         [Fact]
         public void Get_WithMinValueComponents_ReturnsCorrectValues()
@@ -347,7 +346,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that get with positive infinity components returns correct values
+        ///     Tests that get with positive infinity components returns correct values
         /// </summary>
         [Fact]
         public void Get_WithPositiveInfinityComponents_ReturnsCorrectValues()
@@ -361,7 +360,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that get with negative infinity components returns correct values
+        ///     Tests that get with negative infinity components returns correct values
         /// </summary>
         [Fact]
         public void Get_WithNegativeInfinityComponents_ReturnsCorrectValues()
@@ -375,7 +374,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that get with na n components returns correct values
+        ///     Tests that get with na n components returns correct values
         /// </summary>
         [Fact]
         public void Get_WithNaNComponents_ReturnsCorrectValues()
@@ -389,7 +388,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that get with mixed components returns correct values
+        ///     Tests that get with mixed components returns correct values
         /// </summary>
         [Fact]
         public void Get_WithMixedComponents_ReturnsCorrectValues()
@@ -403,7 +402,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that get with very small components returns correct values
+        ///     Tests that get with very small components returns correct values
         /// </summary>
         [Fact]
         public void Get_WithVerySmallComponents_ReturnsCorrectValues()
@@ -417,7 +416,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that get with very large components returns correct values
+        ///     Tests that get with very large components returns correct values
         /// </summary>
         [Fact]
         public void Get_WithVeryLargeComponents_ReturnsCorrectValues()
@@ -431,14 +430,10 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that get with valid indices returns correct component
+        ///     Tests that get with valid indices returns correct component
         /// </summary>
         /// <param name="index">The index</param>
-        [Theory]
-        [InlineData(0)]
-        [InlineData(1)]
-        [InlineData(2)]
-        [InlineData(3)]
+        [Theory, InlineData(0), InlineData(1), InlineData(2), InlineData(3)]
         public void Get_WithValidIndices_ReturnsCorrectComponent(int index)
         {
             Vector4F v = new Vector4F(10f, 20f, 30f, 40f);
@@ -450,16 +445,10 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that get with invalid indices returns zero
+        ///     Tests that get with invalid indices returns zero
         /// </summary>
         /// <param name="index">The index</param>
-        [Theory]
-        [InlineData(-1)]
-        [InlineData(-10)]
-        [InlineData(4)]
-        [InlineData(5)]
-        [InlineData(10)]
-        [InlineData(100)]
+        [Theory, InlineData(-1), InlineData(-10), InlineData(4), InlineData(5), InlineData(10), InlineData(100)]
         public void Get_WithInvalidIndices_ReturnsZero(int index)
         {
             Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
@@ -469,12 +458,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(0f, result);
         }
 
-        
-
-        
 
         /// <summary>
-        /// Tests that constructor with four values initializes all components
+        ///     Tests that constructor with four values initializes all components
         /// </summary>
         [Fact]
         public void Constructor_WithFourValues_InitializesAllComponents()
@@ -488,7 +474,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that constructor with zero values initializes correctly
+        ///     Tests that constructor with zero values initializes correctly
         /// </summary>
         [Fact]
         public void Constructor_WithZeroValues_InitializesCorrectly()
@@ -502,7 +488,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that constructor with negative values initializes correctly
+        ///     Tests that constructor with negative values initializes correctly
         /// </summary>
         [Fact]
         public void Constructor_WithNegativeValues_InitializesCorrectly()
@@ -515,12 +501,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(-4f, v.W);
         }
 
-        
-
-        
 
         /// <summary>
-        /// Tests that x property can be set and retrieved
+        ///     Tests that x property can be set and retrieved
         /// </summary>
         [Fact]
         public void XProperty_CanBeSetAndRetrieved()
@@ -533,7 +516,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that y property can be set and retrieved
+        ///     Tests that y property can be set and retrieved
         /// </summary>
         [Fact]
         public void YProperty_CanBeSetAndRetrieved()
@@ -546,7 +529,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that z property can be set and retrieved
+        ///     Tests that z property can be set and retrieved
         /// </summary>
         [Fact]
         public void ZProperty_CanBeSetAndRetrieved()
@@ -559,7 +542,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that w property can be set and retrieved
+        ///     Tests that w property can be set and retrieved
         /// </summary>
         [Fact]
         public void WProperty_CanBeSetAndRetrieved()
@@ -572,7 +555,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that all properties can be set independently
+        ///     Tests that all properties can be set independently
         /// </summary>
         [Fact]
         public void AllProperties_CanBeSetIndependently()
@@ -590,12 +573,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(40f, v.W);
         }
 
-        
-
-        
 
         /// <summary>
-        /// Tests that vector 4 f is value type
+        ///     Tests that vector 4 f is value type
         /// </summary>
         [Fact]
         public void Vector4F_IsValueType()
@@ -604,7 +584,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that assignment creates independent copy
+        ///     Tests that assignment creates independent copy
         /// </summary>
         [Fact]
         public void Assignment_CreatesIndependentCopy()
@@ -619,7 +599,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that struct layout is sequential
+        ///     Tests that struct layout is sequential
         /// </summary>
         [Fact]
         public void StructLayout_IsSequential()
@@ -627,12 +607,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.True(typeof(Vector4F).IsLayoutSequential);
         }
 
-        
-
-        
 
         /// <summary>
-        /// Tests that equality with same values returns true
+        ///     Tests that equality with same values returns true
         /// </summary>
         [Fact]
         public void Equality_WithSameValues_ReturnsTrue()
@@ -644,7 +621,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that equality with different values returns false
+        ///     Tests that equality with different values returns false
         /// </summary>
         [Fact]
         public void Equality_WithDifferentValues_ReturnsFalse()
@@ -656,7 +633,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that get hash code with same values returns same hash
+        ///     Tests that get hash code with same values returns same hash
         /// </summary>
         [Fact]
         public void GetHashCode_WithSameValues_ReturnsSameHash()
@@ -667,20 +644,17 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(v1.GetHashCode(), v2.GetHashCode());
         }
 
-        
-
-        
 
         /// <summary>
-        /// Tests that get object data serializes all components
+        ///     Tests that get object data serializes all components
         /// </summary>
         [Fact]
         public void GetObjectData_SerializesAllComponents()
         {
             Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
-            SerializationInfo info = new System.Runtime.Serialization.SerializationInfo(typeof(Vector4F), new System.Runtime.Serialization.FormatterConverter());
+            SerializationInfo info = new SerializationInfo(typeof(Vector4F), new FormatterConverter());
 
-            v.GetObjectData(info, default);
+            v.GetObjectData(info, default(StreamingContext));
 
             Assert.Equal(1f, info.GetSingle("x"));
             Assert.Equal(2f, info.GetSingle("y"));
@@ -689,23 +663,20 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that get object data with different values serializes correctly v 2
+        ///     Tests that get object data with different values serializes correctly v 2
         /// </summary>
         [Fact]
         public void GetObjectData_WithDifferentValues_SerializesCorrectly_V2()
         {
             Vector4F v = new Vector4F(5.5f, 6.5f, 7.5f, 8.5f);
-            SerializationInfo info = new System.Runtime.Serialization.SerializationInfo(typeof(Vector4F), new System.Runtime.Serialization.FormatterConverter());
+            SerializationInfo info = new SerializationInfo(typeof(Vector4F), new FormatterConverter());
 
-            v.GetObjectData(info, default);
+            v.GetObjectData(info, default(StreamingContext));
 
             Assert.Equal(5.5f, info.GetSingle("x"));
             Assert.Equal(6.5f, info.GetSingle("y"));
             Assert.Equal(7.5f, info.GetSingle("z"));
             Assert.Equal(8.5f, info.GetSingle("w"));
         }
-
-        
     }
 }
-

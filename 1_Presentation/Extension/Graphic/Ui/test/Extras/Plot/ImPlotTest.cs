@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:ImPlotTest.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Linq;
 using System.Reflection;
@@ -8,12 +37,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
 {
     /// <summary>
-    /// Provides API-surface unit coverage for the <see cref="ImPlot"/> static wrapper class.
+    ///     Provides API-surface unit coverage for the <see cref="ImPlot" /> static wrapper class.
     /// </summary>
     public class ImPlotTest
     {
         /// <summary>
-        /// Verifies that ImPlot is generated as a static class.
+        ///     Verifies that ImPlot is generated as a static class.
         /// </summary>
         [Fact]
         public void Type_ShouldBeStaticClass()
@@ -26,7 +55,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         }
 
         /// <summary>
-        /// Verifies that all public ImPlot methods are static API wrappers.
+        ///     Verifies that all public ImPlot methods are static API wrappers.
         /// </summary>
         [Fact]
         public void PublicMethods_ShouldBeStatic()
@@ -38,7 +67,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         }
 
         /// <summary>
-        /// Verifies that PlotStems exposes a broad set of overloads for different numeric types.
+        ///     Verifies that PlotStems exposes a broad set of overloads for different numeric types.
         /// </summary>
         [Fact]
         public void PlotStems_ShouldExposeMultipleNumericOverloads()
@@ -57,7 +86,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         }
 
         /// <summary>
-        /// Verifies that ShowDemoWindow includes both simple and ref-bool overloads.
+        ///     Verifies that ShowDemoWindow includes both simple and ref-bool overloads.
         /// </summary>
         [Fact]
         public void ShowDemoWindow_ShouldExposeExpectedOverloads()
@@ -66,11 +95,11 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
 
             Assert.Equal(2, overloads.Length);
             Assert.Contains(overloads, method => method.GetParameters().Length == 0);
-            Assert.Contains(overloads, method => method.GetParameters().Length == 1 && method.GetParameters()[0].ParameterType == typeof(bool).MakeByRefType());
+            Assert.Contains(overloads, method => (method.GetParameters().Length == 1) && (method.GetParameters()[0].ParameterType == typeof(bool).MakeByRefType()));
         }
 
         /// <summary>
-        /// Verifies that ShowMetricsWindow includes both simple and ref-bool overloads.
+        ///     Verifies that ShowMetricsWindow includes both simple and ref-bool overloads.
         /// </summary>
         [Fact]
         public void ShowMetricsWindow_ShouldExposeExpectedOverloads()
@@ -79,11 +108,11 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
 
             Assert.Equal(2, overloads.Length);
             Assert.Contains(overloads, method => method.GetParameters().Length == 0);
-            Assert.Contains(overloads, method => method.GetParameters().Length == 1 && method.GetParameters()[0].ParameterType == typeof(bool).MakeByRefType());
+            Assert.Contains(overloads, method => (method.GetParameters().Length == 1) && (method.GetParameters()[0].ParameterType == typeof(bool).MakeByRefType()));
         }
 
         /// <summary>
-        /// Verifies that SetupLegend supports both default and custom flag configurations.
+        ///     Verifies that SetupLegend supports both default and custom flag configurations.
         /// </summary>
         [Fact]
         public void SetupLegend_ShouldExposeDefaultAndFlagsOverloads()
@@ -96,7 +125,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         }
 
         /// <summary>
-        /// Verifies that SetupMouseText supports both default and custom flag configurations.
+        ///     Verifies that SetupMouseText supports both default and custom flag configurations.
         /// </summary>
         [Fact]
         public void SetupMouseText_ShouldExposeDefaultAndFlagsOverloads()
@@ -109,7 +138,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         }
 
         /// <summary>
-        /// Verifies that TagX includes bool and formatting-string overloads.
+        ///     Verifies that TagX includes bool and formatting-string overloads.
         /// </summary>
         [Fact]
         public void TagX_ShouldExposeBooleanAndStringOverloads()
@@ -122,7 +151,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         }
 
         /// <summary>
-        /// Verifies that TagY includes bool and formatting-string overloads.
+        ///     Verifies that TagY includes bool and formatting-string overloads.
         /// </summary>
         [Fact]
         public void TagY_ShouldExposeBooleanAndStringOverloads()
@@ -135,7 +164,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         }
 
         /// <summary>
-        /// Verifies that SetupAxisTicks includes the overload accepting labels.
+        ///     Verifies that SetupAxisTicks includes the overload accepting labels.
         /// </summary>
         [Fact]
         public void SetupAxisTicks_ShouldExposeLabelOverload()
@@ -146,7 +175,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         }
 
         /// <summary>
-        /// Verifies that Windows-only tests can be isolated when needed.
+        ///     Verifies that Windows-only tests can be isolated when needed.
         /// </summary>
         [WindowsOnly]
         public void WindowsOnly_SurfaceCheck_ShouldRunIsolated()
@@ -155,7 +184,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         }
 
         /// <summary>
-        /// Verifies that macOS-only tests can be isolated when needed.
+        ///     Verifies that macOS-only tests can be isolated when needed.
         /// </summary>
         [MacOsOnly]
         public void MacOsOnly_SurfaceCheck_ShouldRunIsolated()
@@ -164,7 +193,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         }
 
         /// <summary>
-        /// Verifies that Linux-only tests can be isolated when needed.
+        ///     Verifies that Linux-only tests can be isolated when needed.
         /// </summary>
         [LinuxOnly]
         public void LinuxOnly_SurfaceCheck_ShouldRunIsolated()
@@ -173,7 +202,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         }
 
         /// <summary>
-        /// Gets all public static methods with the specified name.
+        ///     Gets all public static methods with the specified name.
         /// </summary>
         /// <param name="name">The target method name.</param>
         /// <returns>An array of matching methods.</returns>
@@ -186,15 +215,14 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         }
 
         /// <summary>
-        /// Determines whether a method contains a by-reference parameter for a specific element type.
+        ///     Determines whether a method contains a by-reference parameter for a specific element type.
         /// </summary>
         /// <param name="method">The method to inspect.</param>
         /// <param name="elementType">The expected by-reference element type.</param>
         /// <returns><c>true</c> when a matching by-reference parameter exists; otherwise, <c>false</c>.</returns>
         private static bool HasByRefParameter(MethodInfo method, Type elementType)
         {
-            return method.GetParameters().Any(parameter => parameter.ParameterType.IsByRef && parameter.ParameterType.GetElementType() == elementType);
+            return method.GetParameters().Any(parameter => parameter.ParameterType.IsByRef && (parameter.ParameterType.GetElementType() == elementType));
         }
     }
 }
-

@@ -42,7 +42,7 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
     public class ILogOutputTest
     {
         /// <summary>
-        /// Tests that i log output implementation can be created
+        ///     Tests that i log output implementation can be created
         /// </summary>
         [Fact]
         public void ILogOutput_ImplementationCanBeCreated()
@@ -55,7 +55,7 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
         }
 
         /// <summary>
-        /// Tests that i log output has name property
+        ///     Tests that i log output has name property
         /// </summary>
         [Fact]
         public void ILogOutput_HasNameProperty()
@@ -69,7 +69,7 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
         }
 
         /// <summary>
-        /// Tests that i log output has is enabled property
+        ///     Tests that i log output has is enabled property
         /// </summary>
         [Fact]
         public void ILogOutput_HasIsEnabledProperty()
@@ -84,7 +84,7 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
         }
 
         /// <summary>
-        /// Tests that i log output write method can be called
+        ///     Tests that i log output write method can be called
         /// </summary>
         [Fact]
         public void ILogOutput_WriteMethod_CanBeCalled()
@@ -98,7 +98,7 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
         }
 
         /// <summary>
-        /// Tests that i log output flush method can be called
+        ///     Tests that i log output flush method can be called
         /// </summary>
         [Fact]
         public void ILogOutput_FlushMethod_CanBeCalled()
@@ -111,7 +111,7 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
         }
 
         /// <summary>
-        /// Tests that i log output dispose method can be called
+        ///     Tests that i log output dispose method can be called
         /// </summary>
         [Fact]
         public void ILogOutput_DisposeMethod_CanBeCalled()
@@ -124,7 +124,7 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
         }
 
         /// <summary>
-        /// Tests that i log output multiple implementations should work
+        ///     Tests that i log output multiple implementations should work
         /// </summary>
         [Fact]
         public void ILogOutput_MultipleImplementations_ShouldWork()
@@ -140,7 +140,7 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
         }
 
         /// <summary>
-        /// Tests that i log output can be disposable interface
+        ///     Tests that i log output can be disposable interface
         /// </summary>
         [Fact]
         public void ILogOutput_CanBeDisposableInterface()

@@ -42,7 +42,7 @@ namespace Alis.Core.Aspect.Logging.Test
     public class CompactLogFormatterTest
     {
         /// <summary>
-        /// Tests that compact log formatter has name
+        ///     Tests that compact log formatter has name
         /// </summary>
         [Fact]
         public void CompactLogFormatter_HasName()
@@ -56,7 +56,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that compact log formatter format should be short
+        ///     Tests that compact log formatter format should be short
         /// </summary>
         [Fact]
         public void CompactLogFormatter_Format_ShouldBeShort()
@@ -75,7 +75,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that compact log formatter format contains level code
+        ///     Tests that compact log formatter format contains level code
         /// </summary>
         [Fact]
         public void CompactLogFormatter_Format_ContainsLevelCode()
@@ -106,7 +106,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that compact log formatter format contains message
+        ///     Tests that compact log formatter format contains message
         /// </summary>
         [Fact]
         public void CompactLogFormatter_Format_ContainsMessage()
@@ -123,7 +123,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that compact log formatter format with exception
+        ///     Tests that compact log formatter format with exception
         /// </summary>
         [Fact]
         public void CompactLogFormatter_Format_WithException()
@@ -142,7 +142,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that compact log formatter format without exception
+        ///     Tests that compact log formatter format without exception
         /// </summary>
         [Fact]
         public void CompactLogFormatter_Format_WithoutException()
@@ -159,7 +159,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that compact log formatter all levels
+        ///     Tests that compact log formatter all levels
         /// </summary>
         [Fact]
         public void CompactLogFormatter_AllLevels()
@@ -181,7 +181,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that compact log formatter empty message
+        ///     Tests that compact log formatter empty message
         /// </summary>
         [Fact]
         public void CompactLogFormatter_EmptyMessage()
@@ -199,7 +199,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that compact log formatter long message
+        ///     Tests that compact log formatter long message
         /// </summary>
         [Fact]
         public void CompactLogFormatter_LongMessage()
@@ -217,7 +217,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that compact log formatter does not include timestamp
+        ///     Tests that compact log formatter does not include timestamp
         /// </summary>
         [Fact]
         public void CompactLogFormatter_DoesNotIncludeTimestamp()
@@ -235,7 +235,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that compact log formatter does not include logger name
+        ///     Tests that compact log formatter does not include logger name
         /// </summary>
         [Fact]
         public void CompactLogFormatter_DoesNotIncludeLoggerName()
@@ -253,7 +253,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that compact log formatter performance should be very fast
+        ///     Tests that compact log formatter performance should be very fast
         /// </summary>
         [Fact]
         public void CompactLogFormatter_Performance_ShouldBeVeryFast()

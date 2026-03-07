@@ -288,7 +288,7 @@ namespace Alis.Extension.Ads.GoogleAds
         }
 
         /// <summary>
-        /// Disposes this instance
+        ///     Disposes this instance
         /// </summary>
         public void Dispose()
         {

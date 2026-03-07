@@ -43,7 +43,7 @@ namespace Alis.Core.Aspect.Logging.Test
     public class DebugLogOutputTest
     {
         /// <summary>
-        /// Tests that debug log output constructor default formatter
+        ///     Tests that debug log output constructor default formatter
         /// </summary>
         [Fact]
         public void DebugLogOutput_Constructor_DefaultFormatter()
@@ -56,7 +56,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that debug log output write should not throw
+        ///     Tests that debug log output write should not throw
         /// </summary>
         [Fact]
         public void DebugLogOutput_Write_ShouldNotThrow()
@@ -70,7 +70,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that debug log output null entry should not throw
+        ///     Tests that debug log output null entry should not throw
         /// </summary>
         [Fact]
         public void DebugLogOutput_NullEntry_ShouldNotThrow()
@@ -83,7 +83,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that debug log output all levels should not throw
+        ///     Tests that debug log output all levels should not throw
         /// </summary>
         [Fact]
         public void DebugLogOutput_AllLevels_ShouldNotThrow()
@@ -101,7 +101,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that debug log output custom formatter should be used
+        ///     Tests that debug log output custom formatter should be used
         /// </summary>
         [Fact]
         public void DebugLogOutput_CustomFormatter_ShouldBeUsed()
@@ -115,7 +115,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that debug log output null formatter should use default
+        ///     Tests that debug log output null formatter should use default
         /// </summary>
         [Fact]
         public void DebugLogOutput_NullFormatter_ShouldUseDefault()
@@ -128,7 +128,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that debug log output disable should not write
+        ///     Tests that debug log output disable should not write
         /// </summary>
         [Fact]
         public void DebugLogOutput_Disable_ShouldNotWrite()
@@ -142,7 +142,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that debug log output flush should not throw
+        ///     Tests that debug log output flush should not throw
         /// </summary>
         [Fact]
         public void DebugLogOutput_Flush_ShouldNotThrow()
@@ -155,7 +155,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that debug log output dispose should not throw
+        ///     Tests that debug log output dispose should not throw
         /// </summary>
         [Fact]
         public void DebugLogOutput_Dispose_ShouldNotThrow()
@@ -168,7 +168,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that debug log output repeated dispose should not throw
+        ///     Tests that debug log output repeated dispose should not throw
         /// </summary>
         [Fact]
         public void DebugLogOutput_RepeatedDispose_ShouldNotThrow()
@@ -182,7 +182,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that debug log output has name
+        ///     Tests that debug log output has name
         /// </summary>
         [Fact]
         public void DebugLogOutput_HasName()
@@ -196,7 +196,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that debug log output is enabled default true
+        ///     Tests that debug log output is enabled default true
         /// </summary>
         [Fact]
         public void DebugLogOutput_IsEnabled_DefaultTrue()
@@ -209,7 +209,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that debug log output is enabled can be toggled
+        ///     Tests that debug log output is enabled can be toggled
         /// </summary>
         [Fact]
         public void DebugLogOutput_IsEnabled_CanBeToggled()
@@ -229,7 +229,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that debug log output with exception should not throw
+        ///     Tests that debug log output with exception should not throw
         /// </summary>
         [Fact]
         public void DebugLogOutput_WithException_ShouldNotThrow()
@@ -244,7 +244,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that debug log output with correlation id should not throw
+        ///     Tests that debug log output with correlation id should not throw
         /// </summary>
         [Fact]
         public void DebugLogOutput_WithCorrelationId_ShouldNotThrow()
@@ -258,7 +258,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that debug log output with scopes should not throw
+        ///     Tests that debug log output with scopes should not throw
         /// </summary>
         [Fact]
         public void DebugLogOutput_WithScopes_ShouldNotThrow()

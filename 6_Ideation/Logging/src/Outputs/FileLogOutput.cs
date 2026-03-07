@@ -45,23 +45,27 @@ namespace Alis.Core.Aspect.Logging.Outputs
     public sealed class FileLogOutput : ILogOutput
     {
         /// <summary>
-        /// The file path
+        ///     The file path
         /// </summary>
         private readonly string _filePath;
+
         /// <summary>
-        /// The formatter
+        ///     The formatter
         /// </summary>
         private readonly ILogFormatter _formatter;
+
         /// <summary>
-        /// The write lock
+        ///     The write lock
         /// </summary>
         private readonly object _writeLock = new object();
+
         /// <summary>
-        /// The disposed
+        ///     The disposed
         /// </summary>
         private bool _disposed;
+
         /// <summary>
-        /// The writer
+        ///     The writer
         /// </summary>
         private StreamWriter _writer;
 
@@ -102,21 +106,21 @@ namespace Alis.Core.Aspect.Logging.Outputs
             }
         }
 
-        
+
         /// <summary>
-        /// Gets the value of the name
+        ///     Gets the value of the name
         /// </summary>
         public string Name => $"FileOutput[{Path.GetFileName(_filePath)}]";
 
-        
+
         /// <summary>
-        /// Gets or sets the value of the is enabled
+        ///     Gets or sets the value of the is enabled
         /// </summary>
         public bool IsEnabled { get; set; } = true;
 
-        
+
         /// <summary>
-        /// Writes the entry
+        ///     Writes the entry
         /// </summary>
         /// <param name="entry">The entry</param>
         [ExcludeFromCodeCoverage]
@@ -141,9 +145,9 @@ namespace Alis.Core.Aspect.Logging.Outputs
             }
         }
 
-        
+
         /// <summary>
-        /// Flushes this instance
+        ///     Flushes this instance
         /// </summary>
         [ExcludeFromCodeCoverage]
         public void Flush()
@@ -166,9 +170,9 @@ namespace Alis.Core.Aspect.Logging.Outputs
             }
         }
 
-        
+
         /// <summary>
-        /// Disposes this instance
+        ///     Disposes this instance
         /// </summary>
         [ExcludeFromCodeCoverage]
         public void Dispose()

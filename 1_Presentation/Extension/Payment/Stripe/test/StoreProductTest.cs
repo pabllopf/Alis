@@ -37,7 +37,7 @@ namespace Alis.Extension.Payment.Stripe.Test
     public class StoreProductTest
     {
         /// <summary>
-        /// Tests that constructor initializes with default values
+        ///     Tests that constructor initializes with default values
         /// </summary>
         [Fact]
         public void Constructor_InitializesWithDefaultValues()
@@ -51,7 +51,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that id can be set and retrieved
+        ///     Tests that id can be set and retrieved
         /// </summary>
         [Fact]
         public void Id_CanBeSetAndRetrieved()
@@ -68,7 +68,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that name can be set and retrieved
+        ///     Tests that name can be set and retrieved
         /// </summary>
         [Fact]
         public void Name_CanBeSetAndRetrieved()
@@ -85,7 +85,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that description can be set and retrieved
+        ///     Tests that description can be set and retrieved
         /// </summary>
         [Fact]
         public void Description_CanBeSetAndRetrieved()
@@ -102,7 +102,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that price in cents can be set and retrieved
+        ///     Tests that price in cents can be set and retrieved
         /// </summary>
         [Fact]
         public void PriceInCents_CanBeSetAndRetrieved()
@@ -119,7 +119,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that currency can be overridden
+        ///     Tests that currency can be overridden
         /// </summary>
         [Fact]
         public void Currency_CanBeOverridden()
@@ -135,7 +135,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that is enabled can be disabled
+        ///     Tests that is enabled can be disabled
         /// </summary>
         [Fact]
         public void IsEnabled_CanBeDisabled()
@@ -151,7 +151,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that all properties can be set together
+        ///     Tests that all properties can be set together
         /// </summary>
         [Fact]
         public void AllProperties_CanBeSetTogether()
@@ -177,4 +177,3 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
     }
 }
-

@@ -43,7 +43,7 @@ namespace Alis.Core.Aspect.Logging.Test
     public class SimpleLogFormatterTest
     {
         /// <summary>
-        /// Tests that simple log formatter constructor
+        ///     Tests that simple log formatter constructor
         /// </summary>
         [Fact]
         public void SimpleLogFormatter_Constructor()
@@ -56,7 +56,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that simple log formatter has name
+        ///     Tests that simple log formatter has name
         /// </summary>
         [Fact]
         public void SimpleLogFormatter_HasName()
@@ -70,7 +70,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that simple log formatter format contains level
+        ///     Tests that simple log formatter format contains level
         /// </summary>
         [Fact]
         public void SimpleLogFormatter_Format_ContainsLevel()
@@ -87,7 +87,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that simple log formatter format contains message
+        ///     Tests that simple log formatter format contains message
         /// </summary>
         [Fact]
         public void SimpleLogFormatter_Format_ContainsMessage()
@@ -104,7 +104,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that simple log formatter format contains logger name
+        ///     Tests that simple log formatter format contains logger name
         /// </summary>
         [Fact]
         public void SimpleLogFormatter_Format_ContainsLoggerName()
@@ -121,7 +121,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that simple log formatter format with exception
+        ///     Tests that simple log formatter format with exception
         /// </summary>
         [Fact]
         public void SimpleLogFormatter_Format_WithException()
@@ -140,7 +140,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that simple log formatter format with correlation id
+        ///     Tests that simple log formatter format with correlation id
         /// </summary>
         [Fact]
         public void SimpleLogFormatter_Format_WithCorrelationId()
@@ -158,7 +158,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that simple log formatter format without correlation id
+        ///     Tests that simple log formatter format without correlation id
         /// </summary>
         [Fact]
         public void SimpleLogFormatter_Format_WithoutCorrelationId()
@@ -175,7 +175,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that simple log formatter format with scopes
+        ///     Tests that simple log formatter format with scopes
         /// </summary>
         [Fact]
         public void SimpleLogFormatter_Format_WithScopes()
@@ -196,7 +196,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that simple log formatter format without scopes
+        ///     Tests that simple log formatter format without scopes
         /// </summary>
         [Fact]
         public void SimpleLogFormatter_Format_WithoutScopes()
@@ -214,7 +214,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that simple log formatter all levels
+        ///     Tests that simple log formatter all levels
         /// </summary>
         [Fact]
         public void SimpleLogFormatter_AllLevels()
@@ -236,7 +236,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that simple log formatter empty message
+        ///     Tests that simple log formatter empty message
         /// </summary>
         [Fact]
         public void SimpleLogFormatter_EmptyMessage()
@@ -254,7 +254,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that simple log formatter long message
+        ///     Tests that simple log formatter long message
         /// </summary>
         [Fact]
         public void SimpleLogFormatter_LongMessage()
@@ -272,7 +272,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that simple log formatter special characters
+        ///     Tests that simple log formatter special characters
         /// </summary>
         [Fact]
         public void SimpleLogFormatter_SpecialCharacters()
@@ -290,7 +290,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that simple log formatter multiple scopes with arrows
+        ///     Tests that simple log formatter multiple scopes with arrows
         /// </summary>
         [Fact]
         public void SimpleLogFormatter_MultipleScopes_WithArrows()

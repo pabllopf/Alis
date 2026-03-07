@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Matrix3X2Test.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
 using Xunit;
@@ -5,12 +34,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Math.Test.Matrix
 {
     /// <summary>
-    /// The matrix test class
+    ///     The matrix test class
     /// </summary>
     public class Matrix3X2Test
     {
         /// <summary>
-        /// Tests that constructor sets all components
+        ///     Tests that constructor sets all components
         /// </summary>
         [Fact]
         public void Constructor_SetsAllComponents()
@@ -26,7 +55,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that translation setter updates m 31 and m 32
+        ///     Tests that translation setter updates m 31 and m 32
         /// </summary>
         [Fact]
         public void Translation_Setter_UpdatesM31AndM32()
@@ -41,7 +70,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that operators add subtract negate and scale return expected values
+        ///     Tests that operators add subtract negate and scale return expected values
         /// </summary>
         [Fact]
         public void Operators_AddSubtractNegateAndScale_ReturnExpectedValues()
@@ -65,7 +94,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that multiply matrix by matrix computes affine product
+        ///     Tests that multiply matrix by matrix computes affine product
         /// </summary>
         [Fact]
         public void Multiply_MatrixByMatrix_ComputesAffineProduct()
@@ -84,7 +113,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that equality uses tolerance
+        ///     Tests that equality uses tolerance
         /// </summary>
         [Fact]
         public void Equality_UsesTolerance()
@@ -99,7 +128,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that utility members return expected values
+        ///     Tests that utility members return expected values
         /// </summary>
         [Fact]
         public void UtilityMembers_ReturnExpectedValues()

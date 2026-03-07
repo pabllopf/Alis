@@ -46,7 +46,7 @@ namespace Alis.Core.Aspect.Logging.Test
     public class StressTest
     {
         /// <summary>
-        /// Tests that stress high frequency logging 100 k entries
+        ///     Tests that stress high frequency logging 100 k entries
         /// </summary>
         [Fact]
         public void Stress_HighFrequencyLogging_100K_Entries()
@@ -75,7 +75,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that stress concurrent logging 10 threads 1 k messages each
+        ///     Tests that stress concurrent logging 10 threads 1 k messages each
         /// </summary>
         [Fact]
         public void Stress_ConcurrentLogging_10Threads_1KMessagesEach()
@@ -113,7 +113,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that stress large message size 1 mb messages
+        ///     Tests that stress large message size 1 mb messages
         /// </summary>
         [Fact]
         public void Stress_LargeMessageSize_1MB_Messages()
@@ -144,7 +144,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that stress many loggers 1000 loggers
+        ///     Tests that stress many loggers 1000 loggers
         /// </summary>
         [Fact]
         public void Stress_ManyLoggers_1000_Loggers()
@@ -178,7 +178,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that stress deep scope nesting 100 levels
+        ///     Tests that stress deep scope nesting 100 levels
         /// </summary>
         [Fact]
         public void Stress_DeepScopeNesting_100_Levels()
@@ -220,7 +220,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that stress many filters 50 filters
+        ///     Tests that stress many filters 50 filters
         /// </summary>
         [Fact]
         public void Stress_ManyFilters_50_Filters()
@@ -256,7 +256,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that stress all formatter types performance
+        ///     Tests that stress all formatter types performance
         /// </summary>
         [Fact]
         public void Stress_AllFormatterTypes_Performance()
@@ -291,7 +291,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that stress high memory usage scenario
+        ///     Tests that stress high memory usage scenario
         /// </summary>
         [Fact]
         public void Stress_HighMemoryUsage_Scenario()
@@ -321,7 +321,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that stress exception logging with stack trace
+        ///     Tests that stress exception logging with stack trace
         /// </summary>
         /// <exception cref="InvalidOperationException">Error {i}</exception>
         [Fact]
@@ -358,7 +358,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that stress sampling filter performance
+        ///     Tests that stress sampling filter performance
         /// </summary>
         [Fact]
         public void Stress_Sampling_Filter_Performance()
@@ -368,7 +368,7 @@ namespace Alis.Core.Aspect.Logging.Test
             {
                 MemoryLogOutput memoryOutput = new MemoryLogOutput(0);
                 factory.AddOutput(memoryOutput);
-                factory.AddFilter(new SamplingLogFilter(10)); // Log 1 in 10
+                factory.AddFilter(new SamplingLogFilter()); // Log 1 in 10
 
                 ILogger logger = factory.CreateLogger("StressTest");
 

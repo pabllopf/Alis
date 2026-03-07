@@ -36,12 +36,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
 {
     /// <summary>
-    /// Provides unit coverage for the managed API surface of <see cref="ImGuizMo"/>.
+    ///     Provides unit coverage for the managed API surface of <see cref="ImGuizMo" />.
     /// </summary>
     public class ImGuizMoTest
     {
         /// <summary>
-        /// Verifies that ImGuizMo is generated as a static class.
+        ///     Verifies that ImGuizMo is generated as a static class.
         /// </summary>
         [Fact]
         public void Type_ShouldBeStaticClass()
@@ -54,7 +54,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         }
 
         /// <summary>
-        /// Verifies that key API methods exist with expected parameter contracts.
+        ///     Verifies that key API methods exist with expected parameter contracts.
         /// </summary>
         [Fact]
         public void PublicApi_ShouldExposeExpectedMethodContracts()
@@ -75,7 +75,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         }
 
         /// <summary>
-        /// Verifies that manipulate keeps the managed wrapper signature over arrays and enums.
+        ///     Verifies that manipulate keeps the managed wrapper signature over arrays and enums.
         /// </summary>
         [Fact]
         public void Manipulate_ShouldExposeExpectedSignature()
@@ -84,7 +84,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
                 "Manipulate",
                 BindingFlags.Public | BindingFlags.Static,
                 null,
-                new[] { typeof(float[]), typeof(float[]), typeof(Operation), typeof(Mode), typeof(float[]) },
+                new[] {typeof(float[]), typeof(float[]), typeof(Operation), typeof(Mode), typeof(float[])},
                 null);
 
             Assert.NotNull(method);
@@ -92,7 +92,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         }
 
         /// <summary>
-        /// Verifies that internal matrix buffers are initialized with expected dimensions.
+        ///     Verifies that internal matrix buffers are initialized with expected dimensions.
         /// </summary>
         [Fact]
         public void InternalBuffers_ShouldUseExpectedSizes()
@@ -115,7 +115,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         }
 
         /// <summary>
-        /// Verifies that identity and camera view matrices keep canonical diagonal values.
+        ///     Verifies that identity and camera view matrices keep canonical diagonal values.
         /// </summary>
         [Fact]
         public void CanonicalMatrices_ShouldKeepIdentityDiagonal()
@@ -135,7 +135,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         }
 
         /// <summary>
-        /// Verifies that platform-isolated tests can run without colliding across OS jobs.
+        ///     Verifies that platform-isolated tests can run without colliding across OS jobs.
         /// </summary>
         [WindowsOnly]
         public void WindowsOnly_SurfaceCheck_ShouldRunIsolated()
@@ -144,7 +144,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         }
 
         /// <summary>
-        /// Verifies that platform-isolated tests can run without colliding across OS jobs.
+        ///     Verifies that platform-isolated tests can run without colliding across OS jobs.
         /// </summary>
         [MacOsOnly]
         public void MacOsOnly_SurfaceCheck_ShouldRunIsolated()
@@ -153,7 +153,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         }
 
         /// <summary>
-        /// Verifies that platform-isolated tests can run without colliding across OS jobs.
+        ///     Verifies that platform-isolated tests can run without colliding across OS jobs.
         /// </summary>
         [LinuxOnly]
         public void LinuxOnly_SurfaceCheck_ShouldRunIsolated()
@@ -162,7 +162,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         }
 
         /// <summary>
-        /// Reads a private static float array from ImGuizMo.
+        ///     Reads a private static float array from ImGuizMo.
         /// </summary>
         /// <param name="name">The field name.</param>
         /// <returns>The resolved float array.</returns>
@@ -180,7 +180,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         }
 
         /// <summary>
-        /// Resolves and validates a specific public static method signature.
+        ///     Resolves and validates a specific public static method signature.
         /// </summary>
         /// <param name="name">The method name.</param>
         /// <param name="returnType">The expected return type.</param>

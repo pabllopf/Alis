@@ -88,7 +88,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that get int 32 with equal min and max returns that exact value
+        ///     Tests that get int 32 with equal min and max returns that exact value
         /// </summary>
         [Fact]
         public void GetInt32_WithEqualMinAndMax_ReturnsThatExactValue()
@@ -99,7 +99,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that get int 32 with zero upper bound returns zero
+        ///     Tests that get int 32 with zero upper bound returns zero
         /// </summary>
         [Fact]
         public void GetInt32_WithZeroUpperBound_ReturnsZero()
@@ -110,7 +110,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that get int 32 with negative and positive bounds returns within range
+        ///     Tests that get int 32 with negative and positive bounds returns within range
         /// </summary>
         [Fact]
         public void GetInt32_WithNegativeAndPositiveBounds_ReturnsWithinRange()

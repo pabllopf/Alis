@@ -102,7 +102,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         private class TestBuilder
         {
             /// <summary>
-            /// Gets or sets the value of the created value
+            ///     Gets or sets the value of the created value
             /// </summary>
             public string CreatedValue { get; set; }
         }
@@ -113,12 +113,12 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         private class CreateBuilder : ICreate<TestBuilder, string>
         {
             /// <summary>
-            /// The test builder
+            ///     The test builder
             /// </summary>
             private readonly TestBuilder _builder = new TestBuilder();
 
             /// <summary>
-            /// Creates the obj
+            ///     Creates the obj
             /// </summary>
             /// <param name="obj">The obj</param>
             /// <returns>The builder</returns>
@@ -135,7 +135,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         private class IntTestBuilder
         {
             /// <summary>
-            /// Gets or sets the value of the value
+            ///     Gets or sets the value of the value
             /// </summary>
             public int Value { get; set; }
         }
@@ -146,12 +146,12 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         private class IntCreateBuilder : ICreate<IntTestBuilder, int>
         {
             /// <summary>
-            /// The int test builder
+            ///     The int test builder
             /// </summary>
             private readonly IntTestBuilder _builder = new IntTestBuilder();
 
             /// <summary>
-            /// Creates the obj
+            ///     Creates the obj
             /// </summary>
             /// <param name="obj">The obj</param>
             /// <returns>The builder</returns>

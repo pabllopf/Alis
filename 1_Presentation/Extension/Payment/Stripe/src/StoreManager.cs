@@ -44,21 +44,24 @@ namespace Alis.Extension.Payment.Stripe
     public class StoreManager : AManager, IStoreManager, IDisposable
     {
         /// <summary>
-        /// The products
+        ///     The products
         /// </summary>
         private readonly Dictionary<string, StoreProduct> _products;
+
         /// <summary>
-        /// The stripe gateway client
+        ///     The stripe gateway client
         /// </summary>
         private readonly IStripeGatewayClient _stripeGatewayClient;
+
         /// <summary>
-        /// The disposed
-        /// </summary>
-        private bool _disposed;
-        /// <summary>
-        /// The configuration
+        ///     The configuration
         /// </summary>
         private StoreConfiguration _configuration;
+
+        /// <summary>
+        ///     The disposed
+        /// </summary>
+        private bool _disposed;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="StoreManager" /> class
@@ -104,6 +107,16 @@ namespace Alis.Extension.Payment.Stripe
         }
 
         /// <summary>
+        ///     Disposes this instance
+        /// </summary>
+        [ExcludeFromCodeCoverage]
+        public void Dispose()
+        {
+            OnDestroy();
+            GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
         ///     Gets a value indicating whether the manager is initialized with Stripe configuration
         /// </summary>
         public bool IsInitialized => _configuration != null;
@@ -111,9 +124,8 @@ namespace Alis.Extension.Payment.Stripe
         /// <summary>
         ///     Initializes the store manager and configures Stripe client
         /// </summary>
-        public Task InitializeAsync(StoreConfiguration configuration, CancellationToken cancellationToken = default)
+        public Task InitializeAsync(StoreConfiguration configuration, CancellationToken cancellationToken = default(CancellationToken))
         {
-            
             cancellationToken.ThrowIfCancellationRequested();
 
             if (configuration == null)
@@ -138,8 +150,6 @@ namespace Alis.Extension.Payment.Stripe
         /// </summary>
         public void RegisterProduct(StoreProduct product)
         {
-            
-
             if (product == null)
             {
                 throw new ArgumentNullException(nameof(product));
@@ -161,7 +171,7 @@ namespace Alis.Extension.Payment.Stripe
             }
 
             product.Currency = NormalizeCurrency(string.IsNullOrWhiteSpace(product.Currency)
-                ? (_configuration != null ? _configuration.DefaultCurrency : "usd")
+                ? _configuration != null ? _configuration.DefaultCurrency : "usd"
                 : product.Currency);
 
             _products[product.Id] = product;
@@ -172,8 +182,6 @@ namespace Alis.Extension.Payment.Stripe
         /// </summary>
         public void RegisterProducts(IEnumerable<StoreProduct> products)
         {
-            
-
             if (products == null)
             {
                 throw new ArgumentNullException(nameof(products));
@@ -190,8 +198,6 @@ namespace Alis.Extension.Payment.Stripe
         /// </summary>
         public bool TryGetProduct(string productId, out StoreProduct product)
         {
-            
-
             if (string.IsNullOrWhiteSpace(productId))
             {
                 product = null;
@@ -204,11 +210,7 @@ namespace Alis.Extension.Payment.Stripe
         /// <summary>
         ///     Gets all registered products
         /// </summary>
-        public IReadOnlyCollection<StoreProduct> GetProducts()
-        {
-            
-            return new ReadOnlyCollection<StoreProduct>(new List<StoreProduct>(_products.Values));
-        }
+        public IReadOnlyCollection<StoreProduct> GetProducts() => new ReadOnlyCollection<StoreProduct>(new List<StoreProduct>(_products.Values));
 
         /// <summary>
         ///     Creates a hosted Stripe checkout session for a product
@@ -218,7 +220,7 @@ namespace Alis.Extension.Payment.Stripe
             int quantity = 1,
             string customerEmail = null,
             IDictionary<string, string> metadata = null,
-            CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default(CancellationToken))
         {
             EnsureInitialized();
             cancellationToken.ThrowIfCancellationRequested();
@@ -249,7 +251,7 @@ namespace Alis.Extension.Payment.Stripe
             return new CheckoutSessionResult
             {
                 SessionId = response.SessionId,
-                Url = response.Url, 
+                Url = response.Url,
                 PaymentIntentId = response.PaymentIntentId,
                 ProductId = product.Id,
                 Quantity = quantity,
@@ -266,7 +268,7 @@ namespace Alis.Extension.Payment.Stripe
             int quantity = 1,
             string customerId = null,
             IDictionary<string, string> metadata = null,
-            CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default(CancellationToken))
         {
             EnsureInitialized();
             cancellationToken.ThrowIfCancellationRequested();
@@ -307,7 +309,7 @@ namespace Alis.Extension.Payment.Stripe
         /// <summary>
         ///     Gets the current status for a payment intent
         /// </summary>
-        public async Task<PaymentStatus> GetPaymentStatusAsync(string paymentIntentId, CancellationToken cancellationToken = default)
+        public async Task<PaymentStatus> GetPaymentStatusAsync(string paymentIntentId, CancellationToken cancellationToken = default(CancellationToken))
         {
             EnsureInitialized();
             cancellationToken.ThrowIfCancellationRequested();
@@ -328,7 +330,7 @@ namespace Alis.Extension.Payment.Stripe
             string paymentIntentId,
             long? amountToRefundInCents = null,
             string reason = null,
-            CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default(CancellationToken))
         {
             EnsureInitialized();
             cancellationToken.ThrowIfCancellationRequested();
@@ -338,7 +340,7 @@ namespace Alis.Extension.Payment.Stripe
                 throw new ArgumentException("Payment intent id cannot be null or empty.", nameof(paymentIntentId));
             }
 
-            if (amountToRefundInCents.HasValue && amountToRefundInCents.Value <= 0)
+            if (amountToRefundInCents.HasValue && (amountToRefundInCents.Value <= 0))
             {
                 throw new ArgumentOutOfRangeException(nameof(amountToRefundInCents), "Refund amount must be greater than zero.");
             }
@@ -379,17 +381,7 @@ namespace Alis.Extension.Payment.Stripe
         }
 
         /// <summary>
-        /// Disposes this instance
-        /// </summary>
-        [ExcludeFromCodeCoverage]
-        public void Dispose()
-        {
-            OnDestroy();
-            GC.SuppressFinalize(this);
-        }
-
-        /// <summary>
-        /// Normalizes the currency using the specified currency
+        ///     Normalizes the currency using the specified currency
         /// </summary>
         /// <param name="currency">The currency</param>
         /// <returns>The string</returns>
@@ -405,7 +397,7 @@ namespace Alis.Extension.Payment.Stripe
         }
 
         /// <summary>
-        /// Maps the payment status using the specified status
+        ///     Maps the payment status using the specified status
         /// </summary>
         /// <param name="status">The status</param>
         /// <returns>The payment status</returns>
@@ -438,7 +430,7 @@ namespace Alis.Extension.Payment.Stripe
         }
 
         /// <summary>
-        /// Gets the required active product using the specified product id
+        ///     Gets the required active product using the specified product id
         /// </summary>
         /// <param name="productId">The product id</param>
         /// <exception cref="InvalidOperationException"></exception>
@@ -467,7 +459,7 @@ namespace Alis.Extension.Payment.Stripe
         }
 
         /// <summary>
-        /// Ensures the initialized
+        ///     Ensures the initialized
         /// </summary>
         /// <exception cref="InvalidOperationException">StoreManager is not initialized. Call InitializeAsync first.</exception>
         private void EnsureInitialized()
@@ -479,4 +471,3 @@ namespace Alis.Extension.Payment.Stripe
         }
     }
 }
-

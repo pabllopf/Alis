@@ -38,10 +38,8 @@ namespace Alis.Extension.Payment.Stripe.Test
     /// </summary>
     public class StripeRequestResponseModelsTest
     {
-        
-
         /// <summary>
-        /// Tests that stripe checkout session request properties initialize correctly
+        ///     Tests that stripe checkout session request properties initialize correctly
         /// </summary>
         [Fact]
         public void StripeCheckoutSessionRequest_PropertiesInitializeCorrectly()
@@ -58,7 +56,7 @@ namespace Alis.Extension.Payment.Stripe.Test
                 SuccessUrl = new Uri("https://success.com"),
                 CancelUrl = new Uri("https://cancel.com"),
                 CustomerEmail = "test@example.com",
-                Metadata = new Dictionary<string, string> { { "key", "value" } }
+                Metadata = new Dictionary<string, string> {{"key", "value"}}
             };
 
             // Assert
@@ -73,11 +71,10 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal("test@example.com", request.CustomerEmail);
             Assert.NotNull(request.Metadata);
         }
-        
-        
-        
+
+
         /// <summary>
-        /// Tests that stripe checkout session request metadata can be null
+        ///     Tests that stripe checkout session request metadata can be null
         /// </summary>
         [Fact]
         public void StripeCheckoutSessionRequest_MetadataCanBeNull()
@@ -99,12 +96,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Null(request.Metadata);
         }
 
-        
-
-        
 
         /// <summary>
-        /// Tests that stripe checkout session response properties initialize correctly
+        ///     Tests that stripe checkout session response properties initialize correctly
         /// </summary>
         [Fact]
         public void StripeCheckoutSessionResponse_PropertiesInitializeCorrectly()
@@ -124,7 +118,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that stripe checkout session response supports null properties
+        ///     Tests that stripe checkout session response supports null properties
         /// </summary>
         [Fact]
         public void StripeCheckoutSessionResponse_SupportsNullProperties()
@@ -143,12 +137,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Null(response.PaymentIntentId);
         }
 
-        
-
-        
 
         /// <summary>
-        /// Tests that stripe payment intent request properties initialize correctly
+        ///     Tests that stripe payment intent request properties initialize correctly
         /// </summary>
         [Fact]
         public void StripePaymentIntentRequest_PropertiesInitializeCorrectly()
@@ -161,7 +152,7 @@ namespace Alis.Extension.Payment.Stripe.Test
                 Currency = "eur",
                 CustomerId = "cus_123",
                 Description = "Test Payment",
-                Metadata = new Dictionary<string, string> { { "order_id", "order_789" } },
+                Metadata = new Dictionary<string, string> {{"order_id", "order_789"}},
                 EnableAutomaticPaymentMethods = true
             };
 
@@ -176,7 +167,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that stripe payment intent request enable automatic payment methods defaults to false
+        ///     Tests that stripe payment intent request enable automatic payment methods defaults to false
         /// </summary>
         [Fact]
         public void StripePaymentIntentRequest_EnableAutomaticPaymentMethodsDefaultsToFalse()
@@ -188,12 +179,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.False(request.EnableAutomaticPaymentMethods);
         }
 
-        
-
-        
 
         /// <summary>
-        /// Tests that stripe payment intent response properties initialize correctly
+        ///     Tests that stripe payment intent response properties initialize correctly
         /// </summary>
         [Fact]
         public void StripePaymentIntentResponse_PropertiesInitializeCorrectly()
@@ -213,17 +201,10 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that stripe payment intent response status can be any valid status
+        ///     Tests that stripe payment intent response status can be any valid status
         /// </summary>
         /// <param name="status">The status</param>
-        [Theory]
-        [InlineData("requires_payment_method")]
-        [InlineData("requires_confirmation")]
-        [InlineData("requires_action")]
-        [InlineData("processing")]
-        [InlineData("requires_capture")]
-        [InlineData("canceled")]
-        [InlineData("succeeded")]
+        [Theory, InlineData("requires_payment_method"), InlineData("requires_confirmation"), InlineData("requires_action"), InlineData("processing"), InlineData("requires_capture"), InlineData("canceled"), InlineData("succeeded")]
         public void StripePaymentIntentResponse_StatusCanBeAnyValidStatus(string status)
         {
             // Arrange & Act
@@ -238,12 +219,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal(status, response.Status);
         }
 
-        
-
-        
 
         /// <summary>
-        /// Tests that stripe refund request properties initialize correctly
+        ///     Tests that stripe refund request properties initialize correctly
         /// </summary>
         [Fact]
         public void StripeRefundRequest_PropertiesInitializeCorrectly()
@@ -263,7 +241,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that stripe refund request amount can be null
+        ///     Tests that stripe refund request amount can be null
         /// </summary>
         [Fact]
         public void StripeRefundRequest_AmountCanBeNull()
@@ -283,14 +261,10 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that stripe refund request reason can be various values
+        ///     Tests that stripe refund request reason can be various values
         /// </summary>
         /// <param name="reason">The reason</param>
-        [Theory]
-        [InlineData("requested_by_customer")]
-        [InlineData("duplicate")]
-        [InlineData("fraudulent")]
-        [InlineData(null)]
+        [Theory, InlineData("requested_by_customer"), InlineData("duplicate"), InlineData("fraudulent"), InlineData(null)]
         public void StripeRefundRequest_ReasonCanBeVariousValues(string reason)
         {
             // Arrange & Act
@@ -305,12 +279,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal(reason, request.Reason);
         }
 
-        
-
-        
 
         /// <summary>
-        /// Tests that stripe refund response properties initialize correctly
+        ///     Tests that stripe refund response properties initialize correctly
         /// </summary>
         [Fact]
         public void StripeRefundResponse_PropertiesInitializeCorrectly()
@@ -332,15 +303,15 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that stripe refund response supports various statuses
+        ///     Tests that stripe refund response supports various statuses
         /// </summary>
         [Fact]
         public void StripeRefundResponse_SupportsVariousStatuses()
         {
             // Arrange & Act
-            StripeRefundResponse response1 = new StripeRefundResponse { Status = "succeeded" };
-            StripeRefundResponse response2 = new StripeRefundResponse { Status = "pending" };
-            StripeRefundResponse response3 = new StripeRefundResponse { Status = "failed" };
+            StripeRefundResponse response1 = new StripeRefundResponse {Status = "succeeded"};
+            StripeRefundResponse response2 = new StripeRefundResponse {Status = "pending"};
+            StripeRefundResponse response3 = new StripeRefundResponse {Status = "failed"};
 
             // Assert
             Assert.Equal("succeeded", response1.Status);
@@ -348,12 +319,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal("failed", response3.Status);
         }
 
-        
-
-        
 
         /// <summary>
-        /// Tests that all request models can be instantiated empty
+        ///     Tests that all request models can be instantiated empty
         /// </summary>
         [Fact]
         public void AllRequestModels_CanBeInstantiatedEmpty()
@@ -370,7 +338,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that all response models can be instantiated empty
+        ///     Tests that all response models can be instantiated empty
         /// </summary>
         [Fact]
         public void AllResponseModels_CanBeInstantiatedEmpty()
@@ -387,17 +355,17 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that metadata dictionaries are independent
+        ///     Tests that metadata dictionaries are independent
         /// </summary>
         [Fact]
         public void MetadataDictionaries_AreIndependent()
         {
             // Arrange
-            Dictionary<string, string> metadata1 = new Dictionary<string, string> { { "key1", "value1" } };
-            Dictionary<string, string> metadata2 = new Dictionary<string, string> { { "key2", "value2" } };
+            Dictionary<string, string> metadata1 = new Dictionary<string, string> {{"key1", "value1"}};
+            Dictionary<string, string> metadata2 = new Dictionary<string, string> {{"key2", "value2"}};
 
-            StripeCheckoutSessionRequest request1 = new StripeCheckoutSessionRequest { Metadata = metadata1 };
-            StripePaymentIntentRequest request2 = new StripePaymentIntentRequest { Metadata = metadata2 };
+            StripeCheckoutSessionRequest request1 = new StripeCheckoutSessionRequest {Metadata = metadata1};
+            StripePaymentIntentRequest request2 = new StripePaymentIntentRequest {Metadata = metadata2};
 
             // Act
             metadata1["key1"] = "modified";
@@ -407,8 +375,5 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal("value2", metadata2["key2"]);
             Assert.NotEqual(metadata1, metadata2);
         }
-
-        
     }
 }
-

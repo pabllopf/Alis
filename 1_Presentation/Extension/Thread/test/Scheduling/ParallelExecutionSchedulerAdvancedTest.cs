@@ -142,7 +142,7 @@ namespace Alis.Extension.Thread.Test.Scheduling
                 {
                     data[i] = i;
                 }
-            }, 128);
+            });
 
             // Assert
             for (int i = 0; i < data.Length; i++)
@@ -275,7 +275,7 @@ namespace Alis.Extension.Thread.Test.Scheduling
                 executed = true;
                 Assert.Equal(0, start);
                 Assert.Equal(1, length);
-            }, 128);
+            });
 
             // Assert
             Assert.True(executed);

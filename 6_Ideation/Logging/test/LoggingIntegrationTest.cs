@@ -45,7 +45,7 @@ namespace Alis.Core.Aspect.Logging.Test
     public class LoggingIntegrationTest
     {
         /// <summary>
-        /// Tests that integration complete workflow should succeed
+        ///     Tests that integration complete workflow should succeed
         /// </summary>
         [Fact]
         public void Integration_CompleteWorkflow_ShouldSucceed()
@@ -88,7 +88,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that integration multiple loggers multiple outputs should succeed
+        ///     Tests that integration multiple loggers multiple outputs should succeed
         /// </summary>
         [Fact]
         public void Integration_MultipleLoggersMultipleOutputs_ShouldSucceed()
@@ -116,7 +116,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that integration complex filtering should succeed
+        ///     Tests that integration complex filtering should succeed
         /// </summary>
         [Fact]
         public void Integration_ComplexFiltering_ShouldSucceed()
@@ -130,7 +130,7 @@ namespace Alis.Core.Aspect.Logging.Test
                 List<ILogFilter> filters = new List<ILogFilter>
                 {
                     new LogLevelFilter(LogLevel.Warning),
-                    new LoggerNameFilter(new[] {"Engine", "Physics"}, true),
+                    new LoggerNameFilter(new[] {"Engine", "Physics"}),
                     new SamplingLogFilter(2)
                 };
                 CompositeLogFilter composite = new CompositeLogFilter(filters, false);
@@ -154,7 +154,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that integration structured logging with contexts should succeed
+        ///     Tests that integration structured logging with contexts should succeed
         /// </summary>
         [Fact]
         public void Integration_StructuredLoggingWithContexts_ShouldSucceed()
@@ -190,7 +190,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that integration exception handling should succeed
+        ///     Tests that integration exception handling should succeed
         /// </summary>
         /// <exception cref="InvalidOperationException">Critical operation failed</exception>
         [Fact]
@@ -223,7 +223,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that integration concurrent logging from multiple threads should succeed
+        ///     Tests that integration concurrent logging from multiple threads should succeed
         /// </summary>
         [Fact]
         public void Integration_ConcurrentLoggingFromMultipleThreads_ShouldSucceed()
@@ -262,7 +262,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that integration formatter and output combinations should succeed
+        ///     Tests that integration formatter and output combinations should succeed
         /// </summary>
         [Fact]
         public void Integration_FormatterAndOutputCombinations_ShouldSucceed()
@@ -293,7 +293,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that integration scoped contexts with multiple levels should succeed
+        ///     Tests that integration scoped contexts with multiple levels should succeed
         /// </summary>
         [Fact]
         public void Integration_ScopedContextsWithMultipleLevels_ShouldSucceed()
@@ -338,7 +338,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that integration game loop simulation should succeed
+        ///     Tests that integration game loop simulation should succeed
         /// </summary>
         [Fact]
         public void Integration_GameLoopSimulation_ShouldSucceed()
@@ -348,7 +348,7 @@ namespace Alis.Core.Aspect.Logging.Test
             {
                 MemoryLogOutput memoryOutput = new MemoryLogOutput(0);
                 factory.AddOutput(memoryOutput)
-                    .AddFilter(new SamplingLogFilter(10)); // Log 1 in 10
+                    .AddFilter(new SamplingLogFilter()); // Log 1 in 10
 
                 ILogger engineLogger = factory.CreateLogger("Engine");
                 ILogger rendererLogger = factory.CreateLogger("Renderer");

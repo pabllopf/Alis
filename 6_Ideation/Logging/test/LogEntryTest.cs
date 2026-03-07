@@ -44,7 +44,7 @@ namespace Alis.Core.Aspect.Logging.Test
     public class LogEntryTest
     {
         /// <summary>
-        /// Tests that log entry constructor should initialize all properties
+        ///     Tests that log entry constructor should initialize all properties
         /// </summary>
         [Fact]
         public void LogEntry_Constructor_ShouldInitializeAllProperties()
@@ -73,7 +73,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that log entry null message should store empty string
+        ///     Tests that log entry null message should store empty string
         /// </summary>
         [Fact]
         public void LogEntry_NullMessage_ShouldStoreEmptyString()
@@ -86,7 +86,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that log entry null logger name should store empty string
+        ///     Tests that log entry null logger name should store empty string
         /// </summary>
         [Fact]
         public void LogEntry_NullLoggerName_ShouldStoreEmptyString()
@@ -99,7 +99,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that log entry null properties should store empty dictionary
+        ///     Tests that log entry null properties should store empty dictionary
         /// </summary>
         [Fact]
         public void LogEntry_NullProperties_ShouldStoreEmptyDictionary()
@@ -113,7 +113,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that log entry null scopes should store empty list
+        ///     Tests that log entry null scopes should store empty list
         /// </summary>
         [Fact]
         public void LogEntry_NullScopes_ShouldStoreEmptyList()
@@ -127,7 +127,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that log entry timestamp should be current
+        ///     Tests that log entry timestamp should be current
         /// </summary>
         [Fact]
         public void LogEntry_TimestampShouldBeCurrent()
@@ -145,7 +145,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that log entry thread id should match current thread
+        ///     Tests that log entry thread id should match current thread
         /// </summary>
         [Fact]
         public void LogEntry_ThreadIdShouldMatchCurrentThread()
@@ -158,7 +158,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that log entry all log levels should store correctly
+        ///     Tests that log entry all log levels should store correctly
         /// </summary>
         [Fact]
         public void LogEntry_AllLogLevels_ShouldStoreCorrectly()
@@ -177,7 +177,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that log entry with exception should store exception
+        ///     Tests that log entry with exception should store exception
         /// </summary>
         [Fact]
         public void LogEntry_WithException_ShouldStoreException()
@@ -195,7 +195,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that log entry without exception should have null exception
+        ///     Tests that log entry without exception should have null exception
         /// </summary>
         [Fact]
         public void LogEntry_WithoutException_ShouldHaveNullException()
@@ -208,7 +208,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that log entry with correlation id should store it
+        ///     Tests that log entry with correlation id should store it
         /// </summary>
         [Fact]
         public void LogEntry_WithCorrelationId_ShouldStoreIt()
@@ -224,7 +224,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that log entry without correlation id should be null
+        ///     Tests that log entry without correlation id should be null
         /// </summary>
         [Fact]
         public void LogEntry_WithoutCorrelationId_ShouldBeNull()
@@ -237,7 +237,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that log entry with properties should contain all properties
+        ///     Tests that log entry with properties should contain all properties
         /// </summary>
         [Fact]
         public void LogEntry_WithProperties_ShouldContainAllProperties()
@@ -260,7 +260,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that log entry with scopes should contain all scopes
+        ///     Tests that log entry with scopes should contain all scopes
         /// </summary>
         [Fact]
         public void LogEntry_WithScopes_ShouldContainAllScopes()
@@ -279,7 +279,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that log entry empty message should be allowed
+        ///     Tests that log entry empty message should be allowed
         /// </summary>
         [Fact]
         public void LogEntry_EmptyMessage_ShouldBeAllowed()
@@ -292,7 +292,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that log entry long message should be stored
+        ///     Tests that log entry long message should be stored
         /// </summary>
         [Fact]
         public void LogEntry_LongMessage_ShouldBeStored()
@@ -309,7 +309,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that log entry special characters in message should be preserved
+        ///     Tests that log entry special characters in message should be preserved
         /// </summary>
         [Fact]
         public void LogEntry_SpecialCharactersInMessage_ShouldBePreserved()
@@ -325,7 +325,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that log entry multiple threads should capture correct thread ids
+        ///     Tests that log entry multiple threads should capture correct thread ids
         /// </summary>
         [Fact]
         public void LogEntry_MultipleThreads_ShouldCaptureCorrectThreadIds()
@@ -362,7 +362,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that log entry properties are readonly
+        ///     Tests that log entry properties are readonly
         /// </summary>
         [Fact]
         public void LogEntry_PropertiesAreReadonly()
@@ -376,7 +376,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that log entry scopes are readonly
+        ///     Tests that log entry scopes are readonly
         /// </summary>
         [Fact]
         public void LogEntry_ScopesAreReadonly()
@@ -390,7 +390,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that log entry immutable after construction
+        ///     Tests that log entry immutable after construction
         /// </summary>
         [Fact]
         public void LogEntry_ImmutableAfterConstruction()
@@ -409,7 +409,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that log entry complex object should store as scope element
+        ///     Tests that log entry complex object should store as scope element
         /// </summary>
         [Fact]
         public void LogEntry_ComplexObject_ShouldStoreAsScopeElement()

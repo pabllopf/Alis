@@ -115,7 +115,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that matrix 2 x 2 angle constructor and get angle are consistent
+        ///     Tests that matrix 2 x 2 angle constructor and get angle are consistent
         /// </summary>
         [Fact]
         public void Matrix2X2_AngleConstructor_AndGetAngle_AreConsistent()
@@ -127,7 +127,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that matrix 2 x 2 get inverse returns expected values
+        ///     Tests that matrix 2 x 2 get inverse returns expected values
         /// </summary>
         [Fact]
         public void Matrix2X2_GetInverse_ReturnsExpectedValues()
@@ -143,7 +143,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that matrix 2 x 2 inverse property returns expected values
+        ///     Tests that matrix 2 x 2 inverse property returns expected values
         /// </summary>
         [Fact]
         public void Matrix2X2_InverseProperty_ReturnsExpectedValues()
@@ -159,7 +159,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         }
 
         /// <summary>
-        /// Tests that matrix 2 x 2 solve returns expected vector
+        ///     Tests that matrix 2 x 2 solve returns expected vector
         /// </summary>
         [Fact]
         public void Matrix2X2_Solve_ReturnsExpectedVector()

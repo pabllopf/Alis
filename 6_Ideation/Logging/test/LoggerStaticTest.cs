@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Logging.Abstractions;
 using Alis.Core.Aspect.Logging.Outputs;
@@ -42,7 +41,7 @@ namespace Alis.Core.Aspect.Logging.Test
     public class LoggerStaticTest
     {
         /// <summary>
-        /// Tests that logger trace should not throw
+        ///     Tests that logger trace should not throw
         /// </summary>
         [Fact]
         public void Logger_Trace_ShouldNotThrow()
@@ -52,7 +51,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger debug should not throw
+        ///     Tests that logger debug should not throw
         /// </summary>
         [Fact]
         public void Logger_Debug_ShouldNotThrow()
@@ -62,7 +61,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger info should not throw
+        ///     Tests that logger info should not throw
         /// </summary>
         [Fact]
         public void Logger_Info_ShouldNotThrow()
@@ -72,7 +71,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger log should not throw
+        ///     Tests that logger log should not throw
         /// </summary>
         [Fact]
         public void Logger_Log_ShouldNotThrow()
@@ -82,7 +81,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger warning should not throw
+        ///     Tests that logger warning should not throw
         /// </summary>
         [Fact]
         public void Logger_Warning_ShouldNotThrow()
@@ -92,7 +91,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger error should not throw
+        ///     Tests that logger error should not throw
         /// </summary>
         [Fact]
         public void Logger_Error_ShouldNotThrow()
@@ -100,10 +99,10 @@ namespace Alis.Core.Aspect.Logging.Test
             // Act & Assert - Should not throw
             Logger.Error("Error message");
         }
-        
+
 
         /// <summary>
-        /// Tests that logger set default logger should accept custom logger
+        ///     Tests that logger set default logger should accept custom logger
         /// </summary>
         [Fact]
         public void Logger_SetDefaultLogger_ShouldAcceptCustomLogger()
@@ -124,7 +123,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger set default logger null should reset to default
+        ///     Tests that logger set default logger null should reset to default
         /// </summary>
         [Fact]
         public void Logger_SetDefaultLoggerNull_ShouldResetToDefault()
@@ -137,7 +136,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger multiple calls sequential should not throw
+        ///     Tests that logger multiple calls sequential should not throw
         /// </summary>
         [Fact]
         public void Logger_MultipleCallsSequential_ShouldNotThrow()
@@ -152,7 +151,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger empty message should not throw
+        ///     Tests that logger empty message should not throw
         /// </summary>
         [Fact]
         public void Logger_EmptyMessage_ShouldNotThrow()
@@ -164,7 +163,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger long message should not throw
+        ///     Tests that logger long message should not throw
         /// </summary>
         [Fact]
         public void Logger_LongMessage_ShouldNotThrow()
@@ -177,7 +176,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger special characters should not throw
+        ///     Tests that logger special characters should not throw
         /// </summary>
         [Fact]
         public void Logger_SpecialCharacters_ShouldNotThrow()

@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Threading;
 using Alis.Core.Aspect.Logging.Abstractions;
 using Alis.Core.Aspect.Logging.Core;
 using Alis.Core.Aspect.Logging.Formatters;
@@ -44,7 +43,7 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
     public class SimpleLogFormatterEdgeCasesTest
     {
         /// <summary>
-        /// Tests that simple log formatter deeply nested exception chain
+        ///     Tests that simple log formatter deeply nested exception chain
         /// </summary>
         [Fact]
         public void SimpleLogFormatter_DeeplyNestedExceptionChain()
@@ -66,7 +65,7 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
         }
 
         /// <summary>
-        /// Tests that simple log formatter very long exception message
+        ///     Tests that simple log formatter very long exception message
         /// </summary>
         [Fact]
         public void SimpleLogFormatter_VeryLongExceptionMessage()
@@ -85,7 +84,7 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
         }
 
         /// <summary>
-        /// Tests that simple log formatter thirty deep scopes
+        ///     Tests that simple log formatter thirty deep scopes
         /// </summary>
         [Fact]
         public void SimpleLogFormatter_ThirtyDeepScopes()
@@ -110,7 +109,7 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
         }
 
         /// <summary>
-        /// Tests that simple log formatter complex logger name
+        ///     Tests that simple log formatter complex logger name
         /// </summary>
         [Fact]
         public void SimpleLogFormatter_ComplexLoggerName()
@@ -128,7 +127,7 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
         }
 
         /// <summary>
-        /// Tests that simple log formatter correlation id length
+        ///     Tests that simple log formatter correlation id length
         /// </summary>
         [Fact]
         public void SimpleLogFormatter_CorrelationIdLength()
@@ -146,7 +145,7 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
         }
 
         /// <summary>
-        /// Tests that simple log formatter multiline message
+        ///     Tests that simple log formatter multiline message
         /// </summary>
         [Fact]
         public void SimpleLogFormatter_MultilineMessage()
@@ -166,7 +165,7 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
         }
 
         /// <summary>
-        /// Tests that simple log formatter performance with many scopes
+        ///     Tests that simple log formatter performance with many scopes
         /// </summary>
         [Fact]
         public void SimpleLogFormatter_PerformanceWithManyScopes()

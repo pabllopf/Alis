@@ -43,11 +43,12 @@ namespace Alis.Core.Aspect.Logging.Outputs
     public sealed class DebugLogOutput : ILogOutput
     {
         /// <summary>
-        /// The formatter
+        ///     The formatter
         /// </summary>
         private readonly ILogFormatter _formatter;
+
         /// <summary>
-        /// The disposed
+        ///     The disposed
         /// </summary>
         private bool _disposed;
 
@@ -57,21 +58,21 @@ namespace Alis.Core.Aspect.Logging.Outputs
         /// <param name="formatter">The formatter to use. If null, uses a simple formatter.</param>
         public DebugLogOutput(ILogFormatter formatter = null) => _formatter = formatter ?? new SimpleLogFormatter();
 
-        
+
         /// <summary>
-        /// Gets the value of the name
+        ///     Gets the value of the name
         /// </summary>
         public string Name => "DebugOutput";
 
-        
+
         /// <summary>
-        /// Gets or sets the value of the is enabled
+        ///     Gets or sets the value of the is enabled
         /// </summary>
         public bool IsEnabled { get; set; } = true;
 
-        
+
         /// <summary>
-        /// Writes the entry
+        ///     Writes the entry
         /// </summary>
         /// <param name="entry">The entry</param>
         [ExcludeFromCodeCoverage]
@@ -93,18 +94,18 @@ namespace Alis.Core.Aspect.Logging.Outputs
             }
         }
 
-        
+
         /// <summary>
-        /// Flushes this instance
+        ///     Flushes this instance
         /// </summary>
         public void Flush()
         {
             // Debug output is already flushed
         }
 
-        
+
         /// <summary>
-        /// Disposes this instance
+        ///     Disposes this instance
         /// </summary>
         public void Dispose()
         {

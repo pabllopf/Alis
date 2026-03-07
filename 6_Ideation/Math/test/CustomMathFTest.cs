@@ -1,15 +1,43 @@
-using Alis.Core.Aspect.Math;
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:CustomMathFTest.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using Xunit;
 
 namespace Alis.Core.Aspect.Math.Test
 {
     /// <summary>
-    /// The custom math test class
+    ///     The custom math test class
     /// </summary>
     public class CustomMathFTest
     {
         /// <summary>
-        /// Tests that sqrt with negative value returns na n
+        ///     Tests that sqrt with negative value returns na n
         /// </summary>
         [Fact]
         public void Sqrt_WithNegativeValue_ReturnsNaN()
@@ -20,7 +48,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that sqrt with zero returns zero
+        ///     Tests that sqrt with zero returns zero
         /// </summary>
         [Fact]
         public void Sqrt_WithZero_ReturnsZero()
@@ -31,7 +59,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that sqrt with perfect square returns expected value
+        ///     Tests that sqrt with perfect square returns expected value
         /// </summary>
         [Fact]
         public void Sqrt_WithPerfectSquare_ReturnsExpectedValue()
@@ -42,7 +70,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that sin and cos with canonical angles return expected values
+        ///     Tests that sin and cos with canonical angles return expected values
         /// </summary>
         [Fact]
         public void SinAndCos_WithCanonicalAngles_ReturnExpectedValues()
@@ -55,7 +83,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that trigonometric functions with invalid values return na n
+        ///     Tests that trigonometric functions with invalid values return na n
         /// </summary>
         [Fact]
         public void TrigonometricFunctions_WithInvalidValues_ReturnNaN()
@@ -66,7 +94,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that tan with half pi returns positive infinity
+        ///     Tests that tan with half pi returns positive infinity
         /// </summary>
         [Fact]
         public void Tan_WithHalfPi_ReturnsPositiveInfinity()
@@ -77,7 +105,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that acos out of range returns na n
+        ///     Tests that acos out of range returns na n
         /// </summary>
         [Fact]
         public void Acos_OutOfRange_ReturnsNaN()
@@ -87,7 +115,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that clamp limits value to range
+        ///     Tests that clamp limits value to range
         /// </summary>
         [Fact]
         public void Clamp_LimitsValueToRange()
@@ -98,7 +126,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that max min for int and float return expected operand
+        ///     Tests that max min for int and float return expected operand
         /// </summary>
         [Fact]
         public void MaxMin_ForIntAndFloat_ReturnExpectedOperand()
@@ -110,7 +138,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that abs with negative and positive values returns magnitude
+        ///     Tests that abs with negative and positive values returns magnitude
         /// </summary>
         [Fact]
         public void Abs_WithNegativeAndPositiveValues_ReturnsMagnitude()
@@ -120,7 +148,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that acos with bounds returns finite angles
+        ///     Tests that acos with bounds returns finite angles
         /// </summary>
         [Fact]
         public void Acos_WithBounds_ReturnsFiniteAngles()
@@ -133,7 +161,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that sin and cos with full turn are approximately canonical
+        ///     Tests that sin and cos with full turn are approximately canonical
         /// </summary>
         [Fact]
         public void SinAndCos_WithFullTurn_AreApproximatelyCanonical()

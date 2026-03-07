@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:NetworkEventArgs.cs
+//  File:ServerMessageEventArgs.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -56,4 +56,3 @@ namespace Alis.Extension.Network.Core
         public string Message { get; }
     }
 }
-

@@ -38,17 +38,18 @@ using Xunit;
 namespace Alis.Extension.Thread.Test
 {
     /// <summary>
-    /// The test component
+    ///     The test component
     /// </summary>
     [ParallelSafe]
     public struct TestComponent
     {
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public float X;
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public float Y;
     }
@@ -206,7 +207,7 @@ namespace Alis.Extension.Thread.Test
                 {
                     data[i] = i + 5;
                 }
-            }, false);
+            });
 
             // Assert
             for (int i = 0; i < data.Length; i++)

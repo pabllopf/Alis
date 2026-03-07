@@ -89,7 +89,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         private class AudioBuilder
         {
             /// <summary>
-            /// Gets or sets the value of the audio config
+            ///     Gets or sets the value of the audio config
             /// </summary>
             public string AudioConfig { get; set; }
         }
@@ -100,12 +100,12 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         private class AudioBuilderImpl : IAudio<AudioBuilder, string>
         {
             /// <summary>
-            /// The audio builder
+            ///     The audio builder
             /// </summary>
             private readonly AudioBuilder _builder = new AudioBuilder();
 
             /// <summary>
-            /// Audioes the value
+            ///     Audioes the value
             /// </summary>
             /// <param name="value">The value</param>
             /// <returns>The builder</returns>

@@ -27,8 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math.Shapes.Rectangle;
 using System.Runtime.Serialization;
+using Alis.Core.Aspect.Math.Shapes.Rectangle;
 using Xunit;
 
 namespace Alis.Core.Aspect.Math.Test.Shape.Rectangle
@@ -66,7 +66,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Rectangle
             RectangleI rectangle = new RectangleI(1, 2, 3, 4);
             SerializationInfo info = new SerializationInfo(typeof(RectangleI), new FormatterConverter());
 
-            rectangle.GetObjectData(info, default);
+            rectangle.GetObjectData(info, default(StreamingContext));
 
             Assert.Equal(1, info.GetInt32("x"));
             Assert.Equal(2, info.GetInt32("y"));

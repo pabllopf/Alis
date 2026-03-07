@@ -27,8 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math.Definition;
 using System.Runtime.Serialization;
+using Alis.Core.Aspect.Math.Definition;
 using Xunit;
 
 namespace Alis.Core.Aspect.Math.Test.Definition
@@ -63,7 +63,7 @@ namespace Alis.Core.Aspect.Math.Test.Definition
             Depth depth = new Depth(42);
             SerializationInfo info = new SerializationInfo(typeof(Depth), new FormatterConverter());
 
-            depth.GetObjectData(info, default);
+            depth.GetObjectData(info, default(StreamingContext));
 
             Assert.Equal(42, info.GetInt32("value"));
         }

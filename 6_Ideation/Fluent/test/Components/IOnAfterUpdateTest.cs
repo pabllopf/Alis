@@ -84,12 +84,12 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         private class AfterUpdateHandler : IOnAfterUpdate
         {
             /// <summary>
-            /// Gets or sets the value of the call count
+            ///     Gets or sets the value of the call count
             /// </summary>
             public int CallCount { get; private set; }
 
             /// <summary>
-            /// Ons the after update using the specified self
+            ///     Ons the after update using the specified self
             /// </summary>
             /// <param name="self">The self</param>
             public void OnAfterUpdate(IGameObject self)

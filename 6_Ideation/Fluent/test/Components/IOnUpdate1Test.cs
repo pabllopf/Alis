@@ -96,20 +96,22 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         private class Update1Handler : IOnUpdate<int>
         {
             /// <summary>
-            /// Gets the value of the is component base
+            ///     Gets the value of the is component base
             /// </summary>
             public bool IsComponentBase => true;
+
             /// <summary>
-            /// Gets or sets the value of the last value
+            ///     Gets or sets the value of the last value
             /// </summary>
             public int LastValue { get; private set; }
+
             /// <summary>
-            /// Gets or sets the value of the call count
+            ///     Gets or sets the value of the call count
             /// </summary>
             public int CallCount { get; private set; }
 
             /// <summary>
-            /// Updates the self
+            ///     Updates the self
             /// </summary>
             /// <param name="self">The self</param>
             /// <param name="arg">The arg</param>
@@ -126,12 +128,12 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         private class UpdateStringHandler : IOnUpdate<string>
         {
             /// <summary>
-            /// Gets or sets the value of the last value
+            ///     Gets or sets the value of the last value
             /// </summary>
             public string LastValue { get; private set; }
 
             /// <summary>
-            /// Updates the self
+            ///     Updates the self
             /// </summary>
             /// <param name="self">The self</param>
             /// <param name="arg">The arg</param>

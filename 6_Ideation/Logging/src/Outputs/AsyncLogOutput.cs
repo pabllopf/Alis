@@ -41,23 +41,27 @@ namespace Alis.Core.Aspect.Logging.Outputs
     public sealed class AsyncLogOutput : ILogOutput
     {
         /// <summary>
-        /// The inner output
+        ///     The inner output
         /// </summary>
         private readonly ILogOutput _innerOutput;
+
         /// <summary>
-        /// The max queue size
+        ///     The max queue size
         /// </summary>
         private readonly int _maxQueueSize;
+
         /// <summary>
-        /// The queue
+        ///     The queue
         /// </summary>
         private readonly Queue<ILogEntry> _queue;
+
         /// <summary>
-        /// The queue lock
+        ///     The queue lock
         /// </summary>
         private readonly object _queueLock = new object();
+
         /// <summary>
-        /// The disposed
+        ///     The disposed
         /// </summary>
         private bool _disposed;
 
@@ -73,21 +77,21 @@ namespace Alis.Core.Aspect.Logging.Outputs
             _maxQueueSize = maxQueueSize > 0 ? maxQueueSize : int.MaxValue;
         }
 
-        
+
         /// <summary>
-        /// Gets the value of the name
+        ///     Gets the value of the name
         /// </summary>
         public string Name => $"Async[{_innerOutput.Name}]";
 
-        
+
         /// <summary>
-        /// Gets or sets the value of the is enabled
+        ///     Gets or sets the value of the is enabled
         /// </summary>
         public bool IsEnabled { get; set; } = true;
 
-        
+
         /// <summary>
-        /// Writes the entry
+        ///     Writes the entry
         /// </summary>
         /// <param name="entry">The entry</param>
         public void Write(ILogEntry entry)
@@ -116,9 +120,9 @@ namespace Alis.Core.Aspect.Logging.Outputs
             }
         }
 
-        
+
         /// <summary>
-        /// Flushes this instance
+        ///     Flushes this instance
         /// </summary>
         public void Flush()
         {
@@ -141,9 +145,9 @@ namespace Alis.Core.Aspect.Logging.Outputs
             _innerOutput.Flush();
         }
 
-        
+
         /// <summary>
-        /// Disposes this instance
+        ///     Disposes this instance
         /// </summary>
         public void Dispose()
         {

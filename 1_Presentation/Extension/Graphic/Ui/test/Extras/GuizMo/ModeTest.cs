@@ -1,30 +1,58 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:ModeTest.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using Alis.Extension.Graphic.Ui.Extras.GuizMo;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
 {
     /// <summary>
-    /// Provides unit coverage for <see cref="Mode"/> enum values.
+    ///     Provides unit coverage for <see cref="Mode" /> enum values.
     /// </summary>
     public class ModeTest
     {
         /// <summary>
-        /// Verifies that local mode uses value 0.
+        ///     Verifies that local mode uses value 0.
         /// </summary>
         [Fact]
         public void Local_ShouldBeZero()
         {
-            Assert.Equal(0, (int)Mode.Local);
+            Assert.Equal(0, (int) Mode.Local);
         }
 
         /// <summary>
-        /// Verifies that world mode uses value 1.
+        ///     Verifies that world mode uses value 1.
         /// </summary>
         [Fact]
         public void World_ShouldBeOne()
         {
-            Assert.Equal(1, (int)Mode.World);
+            Assert.Equal(1, (int) Mode.World);
         }
     }
 }
-

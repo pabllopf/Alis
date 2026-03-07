@@ -41,8 +41,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
     /// </summary>
     public class TestDataModelsSerializationTest
     {
-        
-
         /// <summary>
         ///     Tests that round trip temporal types struct preserves values
         /// </summary>
@@ -68,9 +66,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.Equal(original.Identifier, restored.Identifier);
         }
 
-        
-
-        
 
         /// <summary>
         ///     Tests that round trip config struct preserves values
@@ -96,9 +91,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.Equal(original.Value, restored.Value);
         }
 
-        
-
-        
 
         /// <summary>
         ///     Tests that serialize person class produces valid json
@@ -170,9 +162,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.Equal(original.Email, restored.Email);
         }
 
-        
-
-        
 
         /// <summary>
         ///     Tests that serialize person struct produces valid json
@@ -240,9 +229,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.Equal(original.IsActive, restored.IsActive);
         }
 
-        
-
-        
 
         /// <summary>
         ///     Tests that round trip numeric types class preserves all numeric types
@@ -331,9 +317,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.Equal(original.IntValue, restored.IntValue);
         }
 
-        
-
-        
 
         /// <summary>
         ///     Tests that round trip numeric types struct preserves values
@@ -389,9 +372,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.Equal(original.DecimalValue, restored.DecimalValue);
         }
 
-        
-
-        
 
         /// <summary>
         ///     Tests that round trip temporal types class preserves date time and guid
@@ -447,9 +427,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.Equal(Guid.Empty, restored.CorrelationId);
         }
 
-        
-
-        
 
         /// <summary>
         ///     Tests that round trip entity with enums preserves enum values
@@ -500,9 +477,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.Equal(original.Priority, restored.Priority);
         }
 
-        
-
-        
 
         /// <summary>
         ///     Tests that round trip address class preserves all fields
@@ -585,9 +559,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.Equal(original.UserId, restored.UserId);
         }
 
-        
-
-        
 
         /// <summary>
         ///     Tests that round trip point 2 d preserves coordinates
@@ -668,9 +639,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.Equal(original.Z, restored.Z, 5);
         }
 
-        
-
-        
 
         /// <summary>
         ///     Tests that round trip product class preserves all properties
@@ -724,9 +692,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.Equal(original.UnitPrice, restored.UnitPrice);
         }
 
-        
-
-        
 
         /// <summary>
         ///     Tests that round trip app settings preserves configuration
@@ -784,9 +749,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.Equal(original.Timeout, restored.Timeout);
         }
 
-        
-
-        
 
         /// <summary>
         ///     Tests that round trip log entry preserves log data
@@ -841,9 +803,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.Equal(original.Success, restored.Success);
         }
 
-        
-
-        
 
         /// <summary>
         ///     Tests that round trip minimal class preserves single property
@@ -915,9 +874,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.Equal(original.Value, restored.Value);
         }
 
-        
-
-        
 
         /// <summary>
         ///     Tests that round trip tags class preserves list of strings
@@ -967,7 +923,5 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.Contains(100, restored.Scores);
             Assert.Contains(95, restored.Scores);
         }
-
-        
     }
 }

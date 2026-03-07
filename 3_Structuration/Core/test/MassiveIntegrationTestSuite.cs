@@ -1,22 +1,51 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:MassiveIntegrationTestSuite.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System.Collections.Generic;
 using Xunit;
 
 namespace Alis.Core.Test
 {
     /// <summary>
-    /// Massive integration test suite - 500+ parametrized test cases.
-    /// Tests system-wide interactions and module dependencies.
+    ///     Massive integration test suite - 500+ parametrized test cases.
+    ///     Tests system-wide interactions and module dependencies.
     /// </summary>
     public class MassiveIntegrationTestSuite
     {
         /// <summary>
-        /// Generates the system scenarios
+        ///     Generates the system scenarios
         /// </summary>
         /// <returns>An enumerable of object array</returns>
         public static IEnumerable<object[]> GenerateSystemScenarios()
         {
             int caseIndex = 0;
-            
+
             // Generate 500+ test scenarios through combinations
             for (int module1 = 0; module1 < 7; module1++)
             {
@@ -24,21 +53,20 @@ namespace Alis.Core.Test
                 {
                     for (int scenario = 0; scenario < 10; scenario++)
                     {
-                        yield return new object[] { module1, module2, scenario, caseIndex++ };
+                        yield return new object[] {module1, module2, scenario, caseIndex++};
                     }
                 }
             }
         }
 
         /// <summary>
-        /// Tests that integration test system scenarios
+        ///     Tests that integration test system scenarios
         /// </summary>
         /// <param name="mod1">The mod</param>
         /// <param name="mod2">The mod</param>
         /// <param name="scenario">The scenario</param>
         /// <param name="caseIndex">The case index</param>
-        [Theory]
-        [MemberData(nameof(GenerateSystemScenarios))]
+        [Theory, MemberData(nameof(GenerateSystemScenarios))]
         public void IntegrationTest_SystemScenarios(int mod1, int mod2, int scenario, int caseIndex)
         {
             Assert.True(caseIndex >= 0);
@@ -46,7 +74,7 @@ namespace Alis.Core.Test
         }
 
         /// <summary>
-        /// Generates the data flow scenarios
+        ///     Generates the data flow scenarios
         /// </summary>
         /// <returns>An enumerable of object array</returns>
         public static IEnumerable<object[]> GenerateDataFlowScenarios()
@@ -58,27 +86,26 @@ namespace Alis.Core.Test
                 {
                     for (int dataType = 0; dataType < 10; dataType++)
                     {
-                        yield return new object[] { sourceModule, targetModule, dataType };
+                        yield return new object[] {sourceModule, targetModule, dataType};
                     }
                 }
             }
         }
 
         /// <summary>
-        /// Tests that integration test data flow
+        ///     Tests that integration test data flow
         /// </summary>
         /// <param name="source">The source</param>
         /// <param name="target">The target</param>
         /// <param name="dataType">The data type</param>
-        [Theory]
-        [MemberData(nameof(GenerateDataFlowScenarios))]
+        [Theory, MemberData(nameof(GenerateDataFlowScenarios))]
         public void IntegrationTest_DataFlow(int source, int target, int dataType)
         {
             Assert.True(dataType >= 0);
         }
 
         /// <summary>
-        /// Generates the event chain scenarios
+        ///     Generates the event chain scenarios
         /// </summary>
         /// <returns>An enumerable of object array</returns>
         public static IEnumerable<object[]> GenerateEventChainScenarios()
@@ -88,22 +115,20 @@ namespace Alis.Core.Test
             {
                 for (int listener = 0; listener < 20; listener++)
                 {
-                    yield return new object[] { eventType, listener };
+                    yield return new object[] {eventType, listener};
                 }
             }
         }
 
         /// <summary>
-        /// Tests that integration test event chain
+        ///     Tests that integration test event chain
         /// </summary>
         /// <param name="eventType">The event type</param>
         /// <param name="listener">The listener</param>
-        [Theory]
-        [MemberData(nameof(GenerateEventChainScenarios))]
+        [Theory, MemberData(nameof(GenerateEventChainScenarios))]
         public void IntegrationTest_EventChain(int eventType, int listener)
         {
-            Assert.True(eventType >= 0 && listener >= 0);
+            Assert.True((eventType >= 0) && (listener >= 0));
         }
     }
 }
-

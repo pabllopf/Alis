@@ -252,7 +252,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
                 GlfwNative.DestroyWindow(window);
             }
         }
-        
+
 
         /// <summary>
         ///     Glfws the native window should close with new window returns false

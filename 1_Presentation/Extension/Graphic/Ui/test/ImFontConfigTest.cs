@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:ImFontConfigTest.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Runtime.InteropServices;
 using Xunit;
@@ -5,12 +34,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.Ui.Test
 {
     /// <summary>
-    /// Provides unit coverage for <see cref="ImFontConfig"/> as a blittable interop struct.
+    ///     Provides unit coverage for <see cref="ImFontConfig" /> as a blittable interop struct.
     /// </summary>
     public class ImFontConfigTest
     {
         /// <summary>
-        /// Verifies that the name buffer can be assigned with 40 bytes.
+        ///     Verifies that the name buffer can be assigned with 40 bytes.
         /// </summary>
         [Fact]
         public void Name_ShouldAcceptFixedBufferSize()
@@ -24,7 +53,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         }
 
         /// <summary>
-        /// Verifies that marshal roundtrip keeps the configured field values.
+        ///     Verifies that marshal roundtrip keeps the configured field values.
         /// </summary>
         [Fact]
         public void MarshalRoundtrip_ShouldPreserveValues()
@@ -49,10 +78,10 @@ namespace Alis.Extension.Graphic.Ui.Test
                 Name = new byte[40],
                 DstFont = new IntPtr(44)
             };
-            expected.Name[0] = (byte)'A';
-            expected.Name[1] = (byte)'l';
-            expected.Name[2] = (byte)'i';
-            expected.Name[3] = (byte)'s';
+            expected.Name[0] = (byte) 'A';
+            expected.Name[1] = (byte) 'l';
+            expected.Name[2] = (byte) 'i';
+            expected.Name[3] = (byte) 's';
 
             IntPtr native = Marshal.AllocHGlobal(Marshal.SizeOf<ImFontConfig>());
             try
@@ -75,4 +104,3 @@ namespace Alis.Extension.Graphic.Ui.Test
         }
     }
 }
-

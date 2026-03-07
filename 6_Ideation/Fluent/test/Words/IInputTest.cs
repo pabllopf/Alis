@@ -89,7 +89,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         private class InputBuilder
         {
             /// <summary>
-            /// Gets or sets the value of the input mode
+            ///     Gets or sets the value of the input mode
             /// </summary>
             public string InputMode { get; set; }
         }
@@ -100,12 +100,12 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         private class InputBuilderImpl : IInput<InputBuilder, string>
         {
             /// <summary>
-            /// The input builder
+            ///     The input builder
             /// </summary>
             private readonly InputBuilder _builder = new InputBuilder();
 
             /// <summary>
-            /// Inputs the value
+            ///     Inputs the value
             /// </summary>
             /// <param name="value">The value</param>
             /// <returns>The builder</returns>

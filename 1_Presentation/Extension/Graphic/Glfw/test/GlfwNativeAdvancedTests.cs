@@ -161,7 +161,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
             // Assert
             Assert.True(scanCode != 0 || scanCode == 0); // Depends on platform
         }
-        
+
 
         /// <summary>
         ///     Sets the window attribute with resizable does not throw

@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:FontAwesome5Test.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Linq;
 using System.Reflection;
@@ -7,12 +36,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.Ui.Test.Fonts
 {
     /// <summary>
-    /// Provides unit coverage for <see cref="FontAwesome5"/> constants.
+    ///     Provides unit coverage for <see cref="FontAwesome5" /> constants.
     /// </summary>
     public class FontAwesome5Test
     {
         /// <summary>
-        /// Verifies that the type is generated as a static class.
+        ///     Verifies that the type is generated as a static class.
         /// </summary>
         [Fact]
         public void Type_ShouldBeStaticClass()
@@ -25,7 +54,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Fonts
         }
 
         /// <summary>
-        /// Verifies that font file names are set and end with .ttf.
+        ///     Verifies that font file names are set and end with .ttf.
         /// </summary>
         [Fact]
         public void FontNames_ShouldBeTtfFiles()
@@ -36,7 +65,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Fonts
         }
 
         /// <summary>
-        /// Verifies icon range constants are coherent.
+        ///     Verifies icon range constants are coherent.
         /// </summary>
         [Fact]
         public void IconRange_ShouldBeCoherent()
@@ -47,7 +76,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Fonts
         }
 
         /// <summary>
-        /// Verifies that icon string catalog remains broad and non-empty.
+        ///     Verifies that icon string catalog remains broad and non-empty.
         /// </summary>
         [Fact]
         public void IconCatalog_ShouldContainManyNonEmptyConstants()
@@ -70,7 +99,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Fonts
         }
 
         /// <summary>
-        /// Verifies a representative subset of known icon constants.
+        ///     Verifies a representative subset of known icon constants.
         /// </summary>
         [Fact]
         public void RepresentativeIcons_ShouldMatchExpectedGlyphs()

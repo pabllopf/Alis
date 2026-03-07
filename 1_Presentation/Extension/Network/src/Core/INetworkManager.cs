@@ -68,17 +68,17 @@ namespace Alis.Extension.Network.Core
         /// <summary>
         ///     Initializes manager
         /// </summary>
-        Task InitializeAsync(NetworkConfig config, CancellationToken cancellationToken = default);
+        Task InitializeAsync(NetworkConfig config, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         ///     Starts networking
         /// </summary>
-        Task StartAsync(CancellationToken cancellationToken = default);
+        Task StartAsync(CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         ///     Stops networking
         /// </summary>
-        Task StopAsync(CancellationToken cancellationToken = default);
+        Task StopAsync(CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         ///     Sends message to specific player
@@ -136,4 +136,3 @@ namespace Alis.Extension.Network.Core
         event EventHandler<NetworkErrorEventArgs> Error;
     }
 }
-

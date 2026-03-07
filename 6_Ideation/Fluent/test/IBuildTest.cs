@@ -99,7 +99,7 @@ namespace Alis.Core.Aspect.Fluent.Test
         private class TestBuilder : IBuild<string>
         {
             /// <summary>
-            /// Builds this instance
+            ///     Builds this instance
             /// </summary>
             /// <returns>The string</returns>
             public string Build() => "built";
@@ -111,7 +111,7 @@ namespace Alis.Core.Aspect.Fluent.Test
         private class IntBuilder : IBuild<int>
         {
             /// <summary>
-            /// Builds this instance
+            ///     Builds this instance
             /// </summary>
             /// <returns>The int</returns>
             public int Build() => 42;
@@ -123,7 +123,7 @@ namespace Alis.Core.Aspect.Fluent.Test
         private class ObjectBuilder : IBuild<object>
         {
             /// <summary>
-            /// Builds this instance
+            ///     Builds this instance
             /// </summary>
             /// <returns>The object</returns>
             public object Build() => new object();

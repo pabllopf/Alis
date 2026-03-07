@@ -1,15 +1,43 @@
-using Alis.Core.Aspect.Math;
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:HashCodeTest.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using Xunit;
 
 namespace Alis.Core.Aspect.Math.Test
 {
     /// <summary>
-    /// The hash code test class
+    ///     The hash code test class
     /// </summary>
     public class HashCodeTest
     {
         /// <summary>
-        /// Tests that combine with same inputs is deterministic
+        ///     Tests that combine with same inputs is deterministic
         /// </summary>
         [Fact]
         public void Combine_WithSameInputs_IsDeterministic()
@@ -21,7 +49,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that combine with null inputs does not throw
+        ///     Tests that combine with null inputs does not throw
         /// </summary>
         [Fact]
         public void Combine_WithNullInputs_DoesNotThrow()
@@ -32,7 +60,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that combine overloads from 1 to 8 are callable and stable
+        ///     Tests that combine overloads from 1 to 8 are callable and stable
         /// </summary>
         [Fact]
         public void Combine_OverloadsFrom1To8_AreCallableAndStable()
@@ -47,7 +75,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that add and to hash code with same sequence is deterministic
+        ///     Tests that add and to hash code with same sequence is deterministic
         /// </summary>
         [Fact]
         public void AddAndToHashCode_WithSameSequence_IsDeterministic()
@@ -66,7 +94,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that rotate left rotates bits as expected
+        ///     Tests that rotate left rotates bits as expected
         /// </summary>
         [Fact]
         public void RotateLeft_RotatesBitsAsExpected()
@@ -77,7 +105,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that add changing order changes hash
+        ///     Tests that add changing order changes hash
         /// </summary>
         [Fact]
         public void Add_ChangingOrder_ChangesHash()
@@ -96,7 +124,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that to hash code without adds is deterministic per process
+        ///     Tests that to hash code without adds is deterministic per process
         /// </summary>
         [Fact]
         public void ToHashCode_WithoutAdds_IsDeterministicPerProcess()
@@ -108,7 +136,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that rotate left with edge offsets returns expected value
+        ///     Tests that rotate left with edge offsets returns expected value
         /// </summary>
         [Fact]
         public void RotateLeft_WithEdgeOffsets_ReturnsExpectedValue()

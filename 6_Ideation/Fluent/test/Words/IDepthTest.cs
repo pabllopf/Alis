@@ -89,7 +89,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         private class DepthBuilder
         {
             /// <summary>
-            /// Gets or sets the value of the depth value
+            ///     Gets or sets the value of the depth value
             /// </summary>
             public int DepthValue { get; set; }
         }
@@ -100,12 +100,12 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         private class DepthBuilderImpl : IDepth<DepthBuilder, int>
         {
             /// <summary>
-            /// The depth builder
+            ///     The depth builder
             /// </summary>
             private readonly DepthBuilder _builder = new DepthBuilder();
 
             /// <summary>
-            /// Depths the value
+            ///     Depths the value
             /// </summary>
             /// <param name="value">The value</param>
             /// <returns>The builder</returns>

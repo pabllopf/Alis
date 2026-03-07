@@ -1,25 +1,49 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:BoundaryTests19.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using Xunit;
 
 namespace Alis.Core.Test.Boundary
 {
     /// <summary>
-    /// The boundary tests 19 class
+    ///     The boundary tests 19 class
     /// </summary>
     public class BoundaryTests19
     {
         /// <summary>
-        /// Tests that validate boundary
+        ///     Tests that validate boundary
         /// </summary>
         /// <param name="value">The value</param>
-        [Theory]
-        [InlineData(0)]
-        [InlineData(1)]
-        [InlineData(-1)]
-        [InlineData(int.MaxValue)]
-        [InlineData(int.MinValue)]
+        [Theory, InlineData(0), InlineData(1), InlineData(-1), InlineData(int.MaxValue), InlineData(int.MinValue)]
         public void ValidateBoundary(int value)
         {
-            Assert.True(int.MinValue <= value && value <= int.MaxValue);
+            Assert.True((int.MinValue <= value) && (value <= int.MaxValue));
         }
     }
 }

@@ -1,36 +1,68 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:CombatSystem.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 
 namespace Alis.Extension.Network.Sample.ConsoleGame.Server
 {
     /// <summary>
-    /// Combat system for server-side calculations
+    ///     Combat system for server-side calculations
     /// </summary>
     public class CombatSystem
     {
         /// <summary>
-        /// The base damage
+        ///     The base damage
         /// </summary>
         public const int BaseDamage = 10;
+
         /// <summary>
-        /// The critical hit chance (percent)
+        ///     The critical hit chance (percent)
         /// </summary>
         public const int CriticalChance = 20;
+
         /// <summary>
-        /// The critical multiplier
+        ///     The critical multiplier
         /// </summary>
         public const float CriticalMultiplier = 1.5f;
+
         /// <summary>
-        /// The max attack distance
+        ///     The max attack distance
         /// </summary>
         public const float MaxAttackDistance = 10f;
-        
+
         /// <summary>
-        /// The random generator
+        ///     The random generator
         /// </summary>
         private static readonly Random Random = new Random();
-        
+
         /// <summary>
-        /// Calculates damage for an attack
+        ///     Calculates damage for an attack
         /// </summary>
         /// <param name="attacker">The attacker</param>
         /// <param name="defender">The defender</param>
@@ -40,28 +72,27 @@ namespace Alis.Extension.Network.Sample.ConsoleGame.Server
             // Check range
             float distance = MoveSystem.GetDistance(attacker.X, attacker.Y, defender.X, defender.Y);
             if (distance > MaxAttackDistance)
+            {
                 return 0;
-            
+            }
+
             // Base damage with level scaling
-            int damage = BaseDamage + (attacker.Level * 2);
-            
+            int damage = BaseDamage + attacker.Level * 2;
+
             // Critical hit chance
             if (Random.Next(100) < CriticalChance)
             {
-                damage = (int)(damage * CriticalMultiplier);
+                damage = (int) (damage * CriticalMultiplier);
             }
-            
+
             return damage;
         }
-        
+
         /// <summary>
-        /// Gets experience reward
+        ///     Gets experience reward
         /// </summary>
         /// <param name="defenderLevel">The defender level</param>
         /// <returns>The experience</returns>
-        public static int GetExperienceReward(int defenderLevel)
-        {
-            return Math.Max(10, 50 * defenderLevel / 10);
-        }
+        public static int GetExperienceReward(int defenderLevel) => Math.Max(10, 50 * defenderLevel / 10);
     }
 }

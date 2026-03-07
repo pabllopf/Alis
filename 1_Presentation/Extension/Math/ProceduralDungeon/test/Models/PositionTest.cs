@@ -402,13 +402,13 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
         /// <summary>
         ///     Tests ManhattanDistanceTo with various coordinate combinations.
         /// </summary>
-        [Theory]
-        [InlineData(0, 0, 1, 1, 2)]  // Simple case
-        [InlineData(0, 0, 0, 0, 0)]  // Same position
-        [InlineData(0, 0, 10, 0, 10)]  // Only horizontal distance
-        [InlineData(0, 0, 0, 10, 10)]  // Only vertical distance
-        [InlineData(5, 5, 10, 10, 10)]  // Positive quadrant
-        [InlineData(-5, -5, 5, 5, 20)]  // Cross quadrants
+        [Theory, InlineData(0, 0, 1, 1, 2), InlineData(0, 0, 0, 0, 0), InlineData(0, 0, 10, 0, 10), InlineData(0, 0, 0, 10, 10), InlineData(5, 5, 10, 10, 10), InlineData(-5, -5, 5, 5, 20)]
+        // Simple case
+        // Same position
+        // Only horizontal distance
+        // Only vertical distance
+        // Positive quadrant
+        // Cross quadrants
         public void ManhattanDistanceTo_WithVariousPositions_ReturnsCorrectDistance(int x1, int y1, int x2, int y2, int expected)
         {
             // Arrange

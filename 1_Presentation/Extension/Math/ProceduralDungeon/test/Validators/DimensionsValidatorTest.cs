@@ -38,8 +38,6 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Validators
     /// </summary>
     public class DimensionsValidatorTest
     {
-        
-
         /// <summary>
         ///     Tests that validate dimensions with valid values does not throw.
         /// </summary>
@@ -100,9 +98,6 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Validators
             Assert.Contains("Height must be greater than 0", ex.Message);
         }
 
-        
-
-        
 
         /// <summary>
         ///     Tests that validate position with valid values does not throw.
@@ -140,9 +135,6 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Validators
             Assert.Contains("Y position must be non-negative", ex.Message);
         }
 
-        
-
-        
 
         /// <summary>
         ///     Tests that validate positive with positive value does not throw.
@@ -180,9 +172,6 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Validators
             Assert.Contains("testParam must be greater than 0", ex.Message);
         }
 
-        
-
-        
 
         /// <summary>
         ///     Tests that validate range with value in range does not throw.
@@ -220,9 +209,6 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Validators
             Assert.Contains("testParam must be between 1 and 10", ex.Message);
         }
 
-        
-
-        
 
         /// <summary>
         ///     Tests that validate within bounds with element inside board does not throw.
@@ -284,7 +270,5 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Validators
                 DimensionsValidator.ValidateWithinBounds(0, 0, 50, 50, 50, 50));
             Assert.Null(exception);
         }
-
-        
     }
 }

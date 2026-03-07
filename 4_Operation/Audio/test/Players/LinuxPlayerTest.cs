@@ -380,7 +380,7 @@ namespace Alis.Core.Audio.Test.Players
             // Assert - Event handler attached without exception
             Assert.NotNull(player);
         }
-        
+
         /// <summary>
         ///     Tests that get bash command with special characters should return correct command
         /// </summary>

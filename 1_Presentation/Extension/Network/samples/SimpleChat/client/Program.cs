@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Threading;
 using System.Threading.Tasks;
 using Alis.Core.Aspect.Logging;
 using Alis.Extension.Network.Client;
@@ -42,17 +41,19 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Client
     public static class Program
     {
         /// <summary>
-        /// The client manager
+        ///     The client manager
         /// </summary>
         private static NetworkClientManager _clientManager;
+
         /// <summary>
-        /// The player name
+        ///     The player name
         /// </summary>
         private static string _playerName;
+
         /// <summary>
-        /// The connected
+        ///     The connected
         /// </summary>
-        private static bool _connected = false;
+        private static bool _connected;
 
         /// <summary>
         ///     Main entry point
@@ -88,7 +89,9 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Client
                 Logger.Log("Enter your player name: ");
                 _playerName = Console.ReadLine();
                 if (string.IsNullOrEmpty(_playerName))
+                {
                     _playerName = $"Player_{Guid.NewGuid().ToString().Substring(0, 8)}";
+                }
 
                 // Connect to server
                 Uri serverUri = new Uri("ws://127.0.0.1:8888/");
@@ -139,7 +142,9 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Client
                     string message = Console.ReadLine();
 
                     if (string.IsNullOrEmpty(message))
+                    {
                         continue;
+                    }
 
                     if (message.Equals("/quit", StringComparison.OrdinalIgnoreCase))
                     {
@@ -208,7 +213,7 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Client
             {
                 // Try to parse JSON to extract message details
                 // Format: {"SenderName":"name","Content":"message","Timestamp":"HH:mm:ss"}
-                
+
                 // Simple JSON parsing to extract fields
                 string senderName = ExtractJsonField(payload, "SenderName");
                 string content = ExtractJsonField(payload, "Content");
@@ -229,6 +234,7 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Client
                 // Fallback display
                 Logger.Log($"[MESSAGE] {payload}");
             }
+
             await Task.CompletedTask;
         }
 
@@ -242,12 +248,16 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Client
                 string search = $"\"{fieldName}\":\"";
                 int startIndex = json.IndexOf(search);
                 if (startIndex == -1)
+                {
                     return null;
+                }
 
                 startIndex += search.Length;
                 int endIndex = json.IndexOf("\"", startIndex);
                 if (endIndex == -1)
+                {
                     return null;
+                }
 
                 return json.Substring(startIndex, endIndex - startIndex);
             }
@@ -267,4 +277,3 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Client
         }
     }
 }
-

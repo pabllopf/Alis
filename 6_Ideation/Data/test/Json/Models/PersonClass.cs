@@ -36,9 +36,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Models
     ///     Test data models for JSON serialization testing.
     ///     Includes structs, classes, and various implementations.
     /// </summary>
-
-    
-
     /// <summary>
     ///     Simple person class for basic testing
     /// </summary>
@@ -96,6 +93,4 @@ namespace Alis.Core.Aspect.Data.Test.Json.Models
             yield return (nameof(Email), Email);
         }
     }
-
-    
 }

@@ -89,7 +89,7 @@ namespace Alis.Extension.Payment.Stripe.Sample
         }
 
         /// <summary>
-        /// Samples the checkout session using the specified store manager
+        ///     Samples the checkout session using the specified store manager
         /// </summary>
         /// <param name="storeManager">The store manager</param>
         private static async Task SampleCheckoutSessionAsync(StoreManager storeManager)
@@ -98,12 +98,12 @@ namespace Alis.Extension.Payment.Stripe.Sample
 
             CheckoutSessionResult session = await storeManager.CreateCheckoutSessionAsync(
                 "coins_pack_1",
-                quantity: 2,
-                customerEmail: "player@example.com",
-                metadata: new Dictionary<string, string>
+                2,
+                "player@example.com",
+                new Dictionary<string, string>
                 {
-                    { "player_id", "player-42" },
-                    { "platform", "pc" }
+                    {"player_id", "player-42"},
+                    {"platform", "pc"}
                 });
 
             Logger.Info($"SessionId: {session.SessionId}");
@@ -112,7 +112,7 @@ namespace Alis.Extension.Payment.Stripe.Sample
         }
 
         /// <summary>
-        /// Samples the payment intent using the specified store manager
+        ///     Samples the payment intent using the specified store manager
         /// </summary>
         /// <param name="storeManager">The store manager</param>
         private static async Task SamplePaymentIntentAsync(StoreManager storeManager)
@@ -121,11 +121,11 @@ namespace Alis.Extension.Payment.Stripe.Sample
 
             PaymentIntentResult intent = await storeManager.CreatePaymentIntentAsync(
                 "starter_bundle",
-                quantity: 1,
-                customerId: "cus_local_001",
-                metadata: new Dictionary<string, string>
+                1,
+                "cus_local_001",
+                new Dictionary<string, string>
                 {
-                    { "order_type", "in_game" }
+                    {"order_type", "in_game"}
                 });
 
             Logger.Info($"IntentId: {intent.PaymentIntentId}");
@@ -137,7 +137,7 @@ namespace Alis.Extension.Payment.Stripe.Sample
         }
 
         /// <summary>
-        /// Samples the refund using the specified store manager
+        ///     Samples the refund using the specified store manager
         /// </summary>
         /// <param name="storeManager">The store manager</param>
         private static async Task SampleRefundAsync(StoreManager storeManager)
@@ -146,8 +146,8 @@ namespace Alis.Extension.Payment.Stripe.Sample
 
             RefundResult refund = await storeManager.RefundPaymentAsync(
                 "pi_local_123",
-                amountToRefundInCents: 499,
-                reason: "requested_by_customer");
+                499,
+                "requested_by_customer");
 
             Logger.Info($"RefundId: {refund.RefundId}");
             Logger.Info($"AmountRefunded: {refund.AmountRefunded}");
@@ -161,12 +161,12 @@ namespace Alis.Extension.Payment.Stripe.Sample
         private sealed class FakeStripeGatewayClient : IStripeGatewayClient
         {
             /// <summary>
-            /// The configured
+            ///     The configured
             /// </summary>
             private bool _configured;
 
             /// <summary>
-            /// Configures the secret api key
+            ///     Configures the secret api key
             /// </summary>
             /// <param name="secretApiKey">The secret api key</param>
             public void Configure(string secretApiKey)
@@ -175,12 +175,12 @@ namespace Alis.Extension.Payment.Stripe.Sample
             }
 
             /// <summary>
-            /// Creates the checkout session using the specified request
+            ///     Creates the checkout session using the specified request
             /// </summary>
             /// <param name="request">The request</param>
             /// <param name="cancellationToken">The cancellation token</param>
             /// <returns>A task containing the stripe checkout session response</returns>
-            public Task<StripeCheckoutSessionResponse> CreateCheckoutSessionAsync(StripeCheckoutSessionRequest request, CancellationToken cancellationToken = default)
+            public Task<StripeCheckoutSessionResponse> CreateCheckoutSessionAsync(StripeCheckoutSessionRequest request, CancellationToken cancellationToken = default(CancellationToken))
             {
                 EnsureConfigured();
                 cancellationToken.ThrowIfCancellationRequested();
@@ -194,12 +194,12 @@ namespace Alis.Extension.Payment.Stripe.Sample
             }
 
             /// <summary>
-            /// Creates the payment intent using the specified request
+            ///     Creates the payment intent using the specified request
             /// </summary>
             /// <param name="request">The request</param>
             /// <param name="cancellationToken">The cancellation token</param>
             /// <returns>A task containing the stripe payment intent response</returns>
-            public Task<StripePaymentIntentResponse> CreatePaymentIntentAsync(StripePaymentIntentRequest request, CancellationToken cancellationToken = default)
+            public Task<StripePaymentIntentResponse> CreatePaymentIntentAsync(StripePaymentIntentRequest request, CancellationToken cancellationToken = default(CancellationToken))
             {
                 EnsureConfigured();
                 cancellationToken.ThrowIfCancellationRequested();
@@ -213,12 +213,12 @@ namespace Alis.Extension.Payment.Stripe.Sample
             }
 
             /// <summary>
-            /// Gets the payment intent using the specified payment intent id
+            ///     Gets the payment intent using the specified payment intent id
             /// </summary>
             /// <param name="paymentIntentId">The payment intent id</param>
             /// <param name="cancellationToken">The cancellation token</param>
             /// <returns>A task containing the stripe payment intent response</returns>
-            public Task<StripePaymentIntentResponse> GetPaymentIntentAsync(string paymentIntentId, CancellationToken cancellationToken = default)
+            public Task<StripePaymentIntentResponse> GetPaymentIntentAsync(string paymentIntentId, CancellationToken cancellationToken = default(CancellationToken))
             {
                 EnsureConfigured();
                 cancellationToken.ThrowIfCancellationRequested();
@@ -232,12 +232,12 @@ namespace Alis.Extension.Payment.Stripe.Sample
             }
 
             /// <summary>
-            /// Creates the refund using the specified request
+            ///     Creates the refund using the specified request
             /// </summary>
             /// <param name="request">The request</param>
             /// <param name="cancellationToken">The cancellation token</param>
             /// <returns>A task containing the stripe refund response</returns>
-            public Task<StripeRefundResponse> CreateRefundAsync(StripeRefundRequest request, CancellationToken cancellationToken = default)
+            public Task<StripeRefundResponse> CreateRefundAsync(StripeRefundRequest request, CancellationToken cancellationToken = default(CancellationToken))
             {
                 EnsureConfigured();
                 cancellationToken.ThrowIfCancellationRequested();
@@ -252,7 +252,7 @@ namespace Alis.Extension.Payment.Stripe.Sample
             }
 
             /// <summary>
-            /// Ensures the configured
+            ///     Ensures the configured
             /// </summary>
             /// <exception cref="InvalidOperationException">Fake gateway not configured.</exception>
             private void EnsureConfigured()

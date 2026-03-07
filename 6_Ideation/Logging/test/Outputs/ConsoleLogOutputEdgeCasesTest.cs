@@ -42,7 +42,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
     public class ConsoleLogOutputEdgeCasesTest
     {
         /// <summary>
-        /// Tests that console log output very long message
+        ///     Tests that console log output very long message
         /// </summary>
         [Fact]
         public void ConsoleLogOutput_VeryLongMessage()
@@ -57,7 +57,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         }
 
         /// <summary>
-        /// Tests that console log output all color levels
+        ///     Tests that console log output all color levels
         /// </summary>
         [Fact]
         public void ConsoleLogOutput_AllColorLevels()
@@ -75,7 +75,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         }
 
         /// <summary>
-        /// Tests that console log output rapid sequence
+        ///     Tests that console log output rapid sequence
         /// </summary>
         [Fact]
         public void ConsoleLogOutput_RapidSequence()
@@ -98,7 +98,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         }
 
         /// <summary>
-        /// Tests that console log output unicode characters
+        ///     Tests that console log output unicode characters
         /// </summary>
         [Fact]
         public void ConsoleLogOutput_UnicodeCharacters()
@@ -112,7 +112,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         }
 
         /// <summary>
-        /// Tests that console log output control characters
+        ///     Tests that console log output control characters
         /// </summary>
         [Fact]
         public void ConsoleLogOutput_ControlCharacters()
@@ -126,7 +126,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         }
 
         /// <summary>
-        /// Tests that console log output enable disable toggle
+        ///     Tests that console log output enable disable toggle
         /// </summary>
         [Fact]
         public void ConsoleLogOutput_EnableDisableToggle()
@@ -144,7 +144,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         }
 
         /// <summary>
-        /// Tests that console log output very long logger name
+        ///     Tests that console log output very long logger name
         /// </summary>
         [Fact]
         public void ConsoleLogOutput_VeryLongLoggerName()
@@ -159,7 +159,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         }
 
         /// <summary>
-        /// Tests that console log output performance test
+        ///     Tests that console log output performance test
         /// </summary>
         [Fact]
         public void ConsoleLogOutput_PerformanceTest()

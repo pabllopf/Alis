@@ -42,17 +42,19 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Server
     public static class Program
     {
         /// <summary>
-        /// The server manager
+        ///     The server manager
         /// </summary>
         private static NetworkServerManager _serverManager;
+
         /// <summary>
-        /// The server is client
+        ///     The server is client
         /// </summary>
-        private static bool _serverIsClient = false;
+        private static bool _serverIsClient;
+
         /// <summary>
-        /// The server player name
+        ///     The server player name
         /// </summary>
-        private static string _serverPlayerName = null;
+        private static string _serverPlayerName;
 
         /// <summary>
         ///     Main entry point
@@ -79,7 +81,10 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Server
                     Logger.Log("Enter server player name: ");
                     _serverPlayerName = Console.ReadLine();
                     if (string.IsNullOrEmpty(_serverPlayerName))
+                    {
                         _serverPlayerName = $"Player_{Guid.NewGuid().ToString().Substring(0, 8)}";
+                    }
+
                     Logger.Info("");
                 }
 
@@ -97,7 +102,7 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Server
 
                 NetworkSession session = await _serverManager.CreateSessionAsync("Chat Room", 32);
                 Logger.Info($"✓ Session created: {session.SessionName} (Max: {session.MaxPlayers} players)");
-                
+
                 if (_serverIsClient)
                 {
                     // Change server name to the player name
@@ -111,6 +116,7 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Server
                     session.PlayerCount = session.Players.Count;
                     Logger.Info("📡 Server mode: SERVER ONLY (pure dedicated server)");
                 }
+
                 Logger.Info("");
 
                 RegisterHandlers();
@@ -138,6 +144,7 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Server
                     Logger.Info("  /sessions - Show active sessions");
                     Logger.Info("  /quit     - Stop server");
                 }
+
                 Logger.Info("═══════════════════════════════════════════════════════");
                 Logger.Info("");
 
@@ -147,7 +154,9 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Server
                     Logger.Log(_serverIsClient ? $"[{_serverPlayerName}]: " : "> ");
                     string input = Console.ReadLine();
                     if (input?.Equals("/quit", StringComparison.OrdinalIgnoreCase) ?? false)
+                    {
                         break;
+                    }
 
                     if (input?.Equals("/players", StringComparison.OrdinalIgnoreCase) ?? false)
                     {
@@ -157,6 +166,7 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Server
                         {
                             Logger.Log($"  - {player.PlayerName} ({(player.IsHost ? "HOST/SERVER" : "CLIENT")})");
                         }
+
                         Logger.Info("");
                         continue;
                     }
@@ -169,6 +179,7 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Server
                         {
                             Logger.Log($"  - {s.SessionName}: {s.Players.Count}/{s.MaxPlayers} players");
                         }
+
                         Logger.Info("");
                         continue;
                     }
@@ -243,7 +254,7 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Server
             try
             {
                 Logger.Log($"[CHAT] {payload}");
-                
+
                 // Get the sender player
                 NetworkPlayer sender = _serverManager.GetPlayer(senderId);
                 if (sender != null)
@@ -254,7 +265,7 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Server
                     {
                         SenderName = sender.PlayerName,
                         Content = payload,
-                        Timestamp = System.DateTime.Now.ToString("HH:mm:ss")
+                        Timestamp = DateTime.Now.ToString("HH:mm:ss")
                     };
 
                     // Broadcast to all connected players
@@ -277,7 +288,7 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Server
                 // Extract player ID and name from handshake payload
                 string playerId = ExtractJsonField(payload, "playerId");
                 string playerName = ExtractJsonField(payload, "playerName");
-                
+
                 if (!string.IsNullOrEmpty(playerId) && !string.IsNullOrEmpty(playerName))
                 {
                     _serverManager.RegisterPlayerInSession(playerId, playerName);
@@ -287,6 +298,7 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Server
             {
                 Logger.Error($"Error processing join: {ex.Message}");
             }
+
             await Task.CompletedTask;
         }
 
@@ -300,12 +312,16 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Server
                 string search = $"\"{fieldName}\":\"";
                 int startIndex = json.IndexOf(search);
                 if (startIndex == -1)
+                {
                     return null;
+                }
 
                 startIndex += search.Length;
                 int endIndex = json.IndexOf("\"", startIndex);
                 if (endIndex == -1)
+                {
                     return null;
+                }
 
                 return json.Substring(startIndex, endIndex - startIndex);
             }

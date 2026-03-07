@@ -1,20 +1,45 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Vector3FExtensiveTest.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using Alis.Core.Aspect.Math.Vector;
 using Xunit;
 
 namespace Alis.Core.Aspect.Math.Test.Vector
 {
     /// <summary>
-    /// Extensive unit tests for Vector3F struct.
-    /// Tests all operators, methods, properties, and edge cases.
+    ///     Extensive unit tests for Vector3F struct.
+    ///     Tests all operators, methods, properties, and edge cases.
     /// </summary>
     public class Vector3FExtensiveTest
     {
-
-
-        
-
         /// <summary>
-        /// Tests that zero returns vector with zero components
+        ///     Tests that zero returns vector with zero components
         /// </summary>
         [Fact]
         public void Zero_ReturnsVectorWithZeroComponents()
@@ -26,7 +51,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that one returns vector with one components
+        ///     Tests that one returns vector with one components
         /// </summary>
         [Fact]
         public void One_ReturnsVectorWithOneComponents()
@@ -38,7 +63,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that unit x returns vector with x one
+        ///     Tests that unit x returns vector with x one
         /// </summary>
         [Fact]
         public void UnitX_ReturnsVectorWithXOne()
@@ -50,7 +75,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that unit y returns vector with y one
+        ///     Tests that unit y returns vector with y one
         /// </summary>
         [Fact]
         public void UnitY_ReturnsVectorWithYOne()
@@ -62,7 +87,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that unit z returns vector with z one
+        ///     Tests that unit z returns vector with z one
         /// </summary>
         [Fact]
         public void UnitZ_ReturnsVectorWithZOne()
@@ -73,12 +98,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(1.0f, unitZ.Z);
         }
 
-        
-
-        
 
         /// <summary>
-        /// Tests that addition two vectors returns correct sum
+        ///     Tests that addition two vectors returns correct sum
         /// </summary>
         [Fact]
         public void Addition_TwoVectors_ReturnsCorrectSum()
@@ -93,7 +115,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that addition with zero vector returns original vector
+        ///     Tests that addition with zero vector returns original vector
         /// </summary>
         [Fact]
         public void Addition_WithZeroVector_ReturnsOriginalVector()
@@ -107,7 +129,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that addition negative vectors returns correct sum
+        ///     Tests that addition negative vectors returns correct sum
         /// </summary>
         [Fact]
         public void Addition_NegativeVectors_ReturnsCorrectSum()
@@ -122,7 +144,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that addition is commutative
+        ///     Tests that addition is commutative
         /// </summary>
         [Fact]
         public void Addition_IsCommutative()
@@ -138,12 +160,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(result1.Z, result2.Z);
         }
 
-        
-
-        
 
         /// <summary>
-        /// Tests that subtraction two vectors returns correct difference
+        ///     Tests that subtraction two vectors returns correct difference
         /// </summary>
         [Fact]
         public void Subtraction_TwoVectors_ReturnsCorrectDifference()
@@ -158,7 +177,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that subtraction vector from itself returns zero
+        ///     Tests that subtraction vector from itself returns zero
         /// </summary>
         [Fact]
         public void Subtraction_VectorFromItself_ReturnsZero()
@@ -171,12 +190,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(0.0f, result.Z, 5);
         }
 
-        
-
-        
 
         /// <summary>
-        /// Tests that multiplication vector two vectors returns element wise product
+        ///     Tests that multiplication vector two vectors returns element wise product
         /// </summary>
         [Fact]
         public void MultiplicationVector_TwoVectors_ReturnsElementWiseProduct()
@@ -191,7 +207,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that multiplication scalar vector by scalar returns scaled vector
+        ///     Tests that multiplication scalar vector by scalar returns scaled vector
         /// </summary>
         [Fact]
         public void MultiplicationScalar_VectorByScalar_ReturnsScaledVector()
@@ -206,7 +222,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that multiplication scalar vector by zero returns zero vector
+        ///     Tests that multiplication scalar vector by zero returns zero vector
         /// </summary>
         [Fact]
         public void MultiplicationScalar_VectorByZero_ReturnsZeroVector()
@@ -219,12 +235,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(0.0f, result.Z);
         }
 
-        
-
-        
 
         /// <summary>
-        /// Tests that division vector two vectors returns element wise division
+        ///     Tests that division vector two vectors returns element wise division
         /// </summary>
         [Fact]
         public void DivisionVector_TwoVectors_ReturnsElementWiseDivision()
@@ -239,7 +252,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that division scalar vector by scalar returns scaled vector
+        ///     Tests that division scalar vector by scalar returns scaled vector
         /// </summary>
         [Fact]
         public void DivisionScalar_VectorByScalar_ReturnsScaledVector()
@@ -253,12 +266,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(2.0f, result.Z);
         }
 
-        
-
-        
 
         /// <summary>
-        /// Tests that negation positive vector returns negative vector
+        ///     Tests that negation positive vector returns negative vector
         /// </summary>
         [Fact]
         public void Negation_PositiveVector_ReturnsNegativeVector()
@@ -272,7 +282,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that negation negative vector returns positive vector
+        ///     Tests that negation negative vector returns positive vector
         /// </summary>
         [Fact]
         public void Negation_NegativeVector_ReturnsPositiveVector()
@@ -285,12 +295,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(5.0f, result.Z);
         }
 
-        
-
-        
 
         /// <summary>
-        /// Tests that equality identical vectors returns true
+        ///     Tests that equality identical vectors returns true
         /// </summary>
         [Fact]
         public void Equality_IdenticalVectors_ReturnsTrue()
@@ -302,7 +309,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that equality different vectors returns false
+        ///     Tests that equality different vectors returns false
         /// </summary>
         [Fact]
         public void Equality_DifferentVectors_ReturnsFalse()
@@ -313,12 +320,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.False(left == right);
         }
 
-        
-
-        
 
         /// <summary>
-        /// Tests that inequality different vectors returns true
+        ///     Tests that inequality different vectors returns true
         /// </summary>
         [Fact]
         public void Inequality_DifferentVectors_ReturnsTrue()
@@ -330,7 +334,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that inequality identical vectors returns false
+        ///     Tests that inequality identical vectors returns false
         /// </summary>
         [Fact]
         public void Inequality_IdenticalVectors_ReturnsFalse()
@@ -340,8 +344,5 @@ namespace Alis.Core.Aspect.Math.Test.Vector
 
             Assert.False(left != right);
         }
-
-        
     }
 }
-

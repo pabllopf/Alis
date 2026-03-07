@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: GameState.cs
+//  File:GameState.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program. If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -34,51 +34,22 @@ using System.Linq;
 namespace Alis.Extension.Network.Sample.SimpleGame.Server
 {
     /// <summary>
-    /// Server-side game state
+    ///     Server-side game state
     /// </summary>
     public class GameState
     {
         /// <summary>
-        /// Gets or sets the arena
+        ///     The turn duration ticks
         /// </summary>
-        public Arena Arena { get; set; }
-        
-        /// <summary>
-        /// Gets or sets the players
-        /// </summary>
-        public Dictionary<string, PlayerData> Players { get; set; }
-        
-        /// <summary>
-        /// Gets or sets the current tick
-        /// </summary>
-        public long CurrentTick { get; set; }
-        
-        /// <summary>
-        /// Gets or sets the events
-        /// </summary>
-        public Queue<GameEvent> Events { get; set; }
+        private const long TurnDurationTicks = 1800; // 60 segundos a 30 ticks/segundo
 
         /// <summary>
-        /// The random
+        ///     The random
         /// </summary>
         private static readonly Random Random = new Random();
-        /// <summary>
-        /// The turn duration ticks
-        /// </summary>
-        private const long TurnDurationTicks = 1800;  // 60 segundos a 30 ticks/segundo
 
         /// <summary>
-        /// Gets the player id that can currently act.
-        /// </summary>
-        public string CurrentTurnPlayerId { get; private set; }
-
-        /// <summary>
-        /// Gets the tick when the current turn expires.
-        /// </summary>
-        public long TurnEndsAtTick { get; private set; }
-        
-        /// <summary>
-        /// Initializes a new instance of the GameState class
+        ///     Initializes a new instance of the GameState class
         /// </summary>
         public GameState()
         {
@@ -87,9 +58,39 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
             Events = new Queue<GameEvent>();
             CurrentTick = 0;
         }
-        
+
         /// <summary>
-        /// Adds or updates a player
+        ///     Gets or sets the arena
+        /// </summary>
+        public Arena Arena { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the players
+        /// </summary>
+        public Dictionary<string, PlayerData> Players { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the current tick
+        /// </summary>
+        public long CurrentTick { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the events
+        /// </summary>
+        public Queue<GameEvent> Events { get; set; }
+
+        /// <summary>
+        ///     Gets the player id that can currently act.
+        /// </summary>
+        public string CurrentTurnPlayerId { get; private set; }
+
+        /// <summary>
+        ///     Gets the tick when the current turn expires.
+        /// </summary>
+        public long TurnEndsAtTick { get; private set; }
+
+        /// <summary>
+        ///     Adds or updates a player
         /// </summary>
         /// <param name="playerId">The player id</param>
         /// <param name="playerName">The player name</param>
@@ -115,9 +116,9 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
 
             EnsureTurnAssigned(CurrentTick);
         }
-        
+
         /// <summary>
-        /// Removes a player
+        ///     Removes a player
         /// </summary>
         /// <param name="playerId">The player id</param>
         public void RemovePlayer(string playerId)
@@ -131,9 +132,9 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
 
             EnsureTurnAssigned(CurrentTick);
         }
-        
+
         /// <summary>
-        /// Processes a move command
+        ///     Processes a move command
         /// </summary>
         /// <param name="playerId">The player id</param>
         /// <param name="x">The x coordinate</param>
@@ -142,13 +143,19 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
         public bool ProcessMove(string playerId, int x, int y)
         {
             if (!Players.TryGetValue(playerId, out PlayerData player))
+            {
                 return false;
+            }
 
             if (!MoveSystem.IsValidMove(x, y))
+            {
                 return false;
+            }
 
             if (!player.IsAlive)
+            {
                 return false;
+            }
 
             player.X = x;
             player.Y = y;
@@ -162,9 +169,9 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
 
             return true;
         }
-        
+
         /// <summary>
-        /// Processes an attack command
+        ///     Processes an attack command
         /// </summary>
         /// <param name="attackerId">The attacker id</param>
         /// <param name="targetName">The target name</param>
@@ -172,31 +179,37 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
         public int ProcessAttack(string attackerId, string targetName)
         {
             if (!Players.TryGetValue(attackerId, out PlayerData attacker) || !attacker.IsAlive)
+            {
                 return 0;
-            
+            }
+
             // Find target by name
             PlayerData target = null;
             foreach (PlayerData player in Players.Values)
             {
-                if (player.PlayerName == targetName && player.PlayerId != attackerId)
+                if ((player.PlayerName == targetName) && (player.PlayerId != attackerId))
                 {
                     target = player;
                     break;
                 }
             }
-            
+
             if (target == null || !target.IsAlive)
+            {
                 return 0;
-            
+            }
+
             // Calculate damage
             int damage = CombatSystem.CalculateDamage(attacker, target);
             if (damage <= 0)
+            {
                 return 0;
-            
+            }
+
             // Apply damage
             target.Health = Math.Max(0, target.Health - damage);
             attacker.Score += damage;
-            
+
             AddEvent(new GameEvent
             {
                 EventType = "attack",
@@ -204,26 +217,26 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
                 TargetPlayer = target.PlayerId,
                 Description = $"{attacker.PlayerName} attacked {target.PlayerName} for {damage} damage!"
             });
-            
+
             if (target.Health == 0)
             {
                 target.IsAlive = false;
                 target.Deaths++;
                 attacker.Kills++;
                 attacker.Score += 50;
-                
+
                 // Award experience
                 int xp = CombatSystem.GetExperienceReward(target.Level);
                 attacker.Experience += xp;
-                
+
                 // Level up
                 if (attacker.Experience >= attacker.Level * 100)
                 {
                     attacker.Level++;
-                    attacker.MaxHealth = 100 + (attacker.Level * 10);
+                    attacker.MaxHealth = 100 + attacker.Level * 10;
                     attacker.Health = attacker.MaxHealth;
                 }
-                
+
                 AddEvent(new GameEvent
                 {
                     EventType = "death",
@@ -232,12 +245,12 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
                     Description = $"{target.PlayerName} was defeated!"
                 });
             }
-            
+
             return damage;
         }
-        
+
         /// <summary>
-        /// Processes a spawn command
+        ///     Processes a spawn command
         /// </summary>
         /// <param name="playerId">The player id</param>
         public void ProcessSpawn(string playerId)
@@ -261,7 +274,7 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
         }
 
         /// <summary>
-        /// Updates the active turn based on current tick and alive players.
+        ///     Updates the active turn based on current tick and alive players.
         /// </summary>
         public void UpdateTurn(long currentTick)
         {
@@ -269,7 +282,9 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
             EnsureTurnAssigned(currentTick);
 
             if (string.IsNullOrEmpty(CurrentTurnPlayerId))
+            {
                 return;
+            }
 
             if (currentTick >= TurnEndsAtTick)
             {
@@ -278,7 +293,7 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
         }
 
         /// <summary>
-        /// Advances the turn to the next alive player.
+        ///     Advances the turn to the next alive player.
         /// </summary>
         public void AdvanceTurn(long currentTick)
         {
@@ -302,7 +317,7 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
         }
 
         /// <summary>
-        /// Ensures the turn assigned using the specified current tick
+        ///     Ensures the turn assigned using the specified current tick
         /// </summary>
         /// <param name="currentTick">The current tick</param>
         private void EnsureTurnAssigned(long currentTick)
@@ -313,23 +328,24 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
                 {
                     TurnEndsAtTick = currentTick + TurnDurationTicks;
                 }
+
                 return;
             }
 
             AdvanceTurn(currentTick);
         }
-        
+
         /// <summary>
-        /// Adds an event
+        ///     Adds an event
         /// </summary>
         /// <param name="gameEvent">The game event</param>
         public void AddEvent(GameEvent gameEvent)
         {
             Events.Enqueue(gameEvent);
         }
-        
+
         /// <summary>
-        /// Gets all pending events
+        ///     Gets all pending events
         /// </summary>
         /// <returns>The list of events</returns>
         public List<GameEvent> GetPendingEvents()
@@ -339,8 +355,8 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
             {
                 result.Add(Events.Dequeue());
             }
+
             return result;
         }
     }
 }
-

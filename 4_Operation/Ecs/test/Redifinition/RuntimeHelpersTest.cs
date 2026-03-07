@@ -335,7 +335,6 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Assert.True(true);
         }
 
-        
 
         /// <summary>
         ///     The test class
@@ -479,7 +478,5 @@ namespace Alis.Core.Ecs.Test.Redifinition
             /// </summary>
             Value3
         }
-
-        
     }
 }

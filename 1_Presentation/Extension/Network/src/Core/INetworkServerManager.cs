@@ -40,19 +40,24 @@ namespace Alis.Extension.Network.Core
     public interface INetworkServerManager : INetworkManager
     {
         /// <summary>
+        ///     Gets listening URI
+        /// </summary>
+        Uri ListenUri { get; }
+
+        /// <summary>
         ///     Starts listening for connections
         /// </summary>
-        Task ListenAsync(Uri address, CancellationToken cancellationToken = default);
+        Task ListenAsync(Uri address, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         ///     Stops listening
         /// </summary>
-        Task StopListeningAsync(CancellationToken cancellationToken = default);
+        Task StopListeningAsync(CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         ///     Creates a session
         /// </summary>
-        Task<NetworkSession> CreateSessionAsync(string sessionName, int maxPlayers, CancellationToken cancellationToken = default);
+        Task<NetworkSession> CreateSessionAsync(string sessionName, int maxPlayers, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         ///     Gets session by ID
@@ -67,27 +72,21 @@ namespace Alis.Extension.Network.Core
         /// <summary>
         ///     Closes session
         /// </summary>
-        Task CloseSessionAsync(string sessionId, CancellationToken cancellationToken = default);
+        Task CloseSessionAsync(string sessionId, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         ///     Kicks player from session
         /// </summary>
-        Task KickPlayerAsync(string playerId, string sessionId, string reason = null, CancellationToken cancellationToken = default);
-
-        /// <summary>
-        ///     Gets listening URI
-        /// </summary>
-        Uri ListenUri { get; }
+        Task KickPlayerAsync(string playerId, string sessionId, string reason = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         ///     Occurs when client connects
         /// </summary>
-        event System.EventHandler<ClientConnectionEventArgs> ClientConnected;
+        event EventHandler<ClientConnectionEventArgs> ClientConnected;
 
         /// <summary>
         ///     Occurs when client disconnects
         /// </summary>
-        event System.EventHandler<ClientDisconnectionEventArgs> ClientDisconnected;
+        event EventHandler<ClientDisconnectionEventArgs> ClientDisconnected;
     }
 }
-

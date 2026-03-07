@@ -100,7 +100,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         private class RotationBuilder
         {
             /// <summary>
-            /// Gets or sets the value of the rotation value
+            ///     Gets or sets the value of the rotation value
             /// </summary>
             public float RotationValue { get; set; }
         }
@@ -111,12 +111,12 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         private class RotationBuilderImpl : IRotation<RotationBuilder, float>
         {
             /// <summary>
-            /// The rotation builder
+            ///     The rotation builder
             /// </summary>
             private readonly RotationBuilder _builder = new RotationBuilder();
 
             /// <summary>
-            /// Rotations the value
+            ///     Rotations the value
             /// </summary>
             /// <param name="value">The value</param>
             /// <returns>The builder</returns>

@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Globalization;
 using System.Runtime.Serialization;
 using Alis.Core.Aspect.Math.Vector;
@@ -36,14 +35,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Math.Test.Vector
 {
     /// <summary>
-    /// Extended unit tests for Vector3F class covering all available methods
+    ///     Extended unit tests for Vector3F class covering all available methods
     /// </summary>
     public class Vector3FExtendedTest
     {
-        
-
         /// <summary>
-        /// Tests that constructor with three values initializes components correctly
+        ///     Tests that constructor with three values initializes components correctly
         /// </summary>
         [Fact]
         public void Constructor_WithThreeValues_InitializesComponentsCorrectly()
@@ -56,7 +53,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that constructor with two values and vector 2 f initializes correctly
+        ///     Tests that constructor with two values and vector 2 f initializes correctly
         /// </summary>
         [Fact]
         public void Constructor_WithTwoValuesAndVector2F_InitializesCorrectly()
@@ -70,12 +67,8 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that constructor with single value initializes all components
+        ///     Tests that constructor with single value initializes all components
         /// </summary>
-        
-
-        
-
         [Fact]
         public void StaticProperty_Zero_ReturnsVectorWithZeroComponents()
         {
@@ -87,7 +80,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that static property one returns vector with one components
+        ///     Tests that static property one returns vector with one components
         /// </summary>
         [Fact]
         public void StaticProperty_One_ReturnsVectorWithOneComponents()
@@ -100,7 +93,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that static property unit x returns vector one zero zero
+        ///     Tests that static property unit x returns vector one zero zero
         /// </summary>
         [Fact]
         public void StaticProperty_UnitX_ReturnsVectorOneZeroZero()
@@ -113,7 +106,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that static property unit y returns vector zero one zero
+        ///     Tests that static property unit y returns vector zero one zero
         /// </summary>
         [Fact]
         public void StaticProperty_UnitY_ReturnsVectorZeroOneZero()
@@ -126,7 +119,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that static property unit z returns vector zero zero one
+        ///     Tests that static property unit z returns vector zero zero one
         /// </summary>
         [Fact]
         public void StaticProperty_UnitZ_ReturnsVectorZeroZeroOne()
@@ -138,12 +131,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(1f, v.Z);
         }
 
-        
-
-        
 
         /// <summary>
-        /// Tests that operator addition adds two vectors
+        ///     Tests that operator addition adds two vectors
         /// </summary>
         [Fact]
         public void OperatorAddition_AddsTwoVectors()
@@ -159,7 +149,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that operator subtraction subtracts two vectors
+        ///     Tests that operator subtraction subtracts two vectors
         /// </summary>
         [Fact]
         public void OperatorSubtraction_SubtractsTwoVectors()
@@ -175,7 +165,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that operator negation negates vector
+        ///     Tests that operator negation negates vector
         /// </summary>
         [Fact]
         public void OperatorNegation_NegatesVector()
@@ -190,7 +180,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that operator multiplication multiply vector by scalar
+        ///     Tests that operator multiplication multiply vector by scalar
         /// </summary>
         [Fact]
         public void OperatorMultiplication_MultiplyVectorByScalar()
@@ -206,7 +196,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that operator multiplication multiply scalar by vector
+        ///     Tests that operator multiplication multiply scalar by vector
         /// </summary>
         [Fact]
         public void OperatorMultiplication_MultiplyScalarByVector()
@@ -222,7 +212,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that operator multiplication multiply vector by vector
+        ///     Tests that operator multiplication multiply vector by vector
         /// </summary>
         [Fact]
         public void OperatorMultiplication_MultiplyVectorByVector()
@@ -238,7 +228,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that operator division divide vector by scalar
+        ///     Tests that operator division divide vector by scalar
         /// </summary>
         [Fact]
         public void OperatorDivision_DivideVectorByScalar()
@@ -254,7 +244,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that operator division divide vector by vector
+        ///     Tests that operator division divide vector by vector
         /// </summary>
         [Fact]
         public void OperatorDivision_DivideVectorByVector()
@@ -269,12 +259,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(4, result.Z);
         }
 
-        
-
-        
 
         /// <summary>
-        /// Tests that operator equality with equal vectors returns true
+        ///     Tests that operator equality with equal vectors returns true
         /// </summary>
         [Fact]
         public void OperatorEquality_WithEqualVectors_ReturnsTrue()
@@ -286,7 +273,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that operator equality with different vectors returns false
+        ///     Tests that operator equality with different vectors returns false
         /// </summary>
         [Fact]
         public void OperatorEquality_WithDifferentVectors_ReturnsFalse()
@@ -298,7 +285,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that operator inequality with different vectors returns true
+        ///     Tests that operator inequality with different vectors returns true
         /// </summary>
         [Fact]
         public void OperatorInequality_WithDifferentVectors_ReturnsTrue()
@@ -309,12 +296,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.True(v1 != v2);
         }
 
-        
-
-        
 
         /// <summary>
-        /// Tests that dot calculates dot product
+        ///     Tests that dot calculates dot product
         /// </summary>
         [Fact]
         public void Dot_CalculatesDotProduct()
@@ -328,7 +312,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that cross calculates cross product
+        ///     Tests that cross calculates cross product
         /// </summary>
         [Fact]
         public void Cross_CalculatesCrossProduct()
@@ -344,7 +328,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that cross with parallel vectors returns zero vector
+        ///     Tests that cross with parallel vectors returns zero vector
         /// </summary>
         [Fact]
         public void Cross_WithParallelVectors_ReturnsZeroVector()
@@ -360,7 +344,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that normalize normalizes vector
+        ///     Tests that normalize normalizes vector
         /// </summary>
         [Fact]
         public void Normalize_NormalizesVector()
@@ -374,12 +358,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(6f / 7f, result.Z, 3);
         }
 
-        
-
-        
 
         /// <summary>
-        /// Tests that length calculates vector length
+        ///     Tests that length calculates vector length
         /// </summary>
         [Fact]
         public void Length_CalculatesVectorLength()
@@ -392,7 +373,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that length squared calculates squared length
+        ///     Tests that length squared calculates squared length
         /// </summary>
         [Fact]
         public void LengthSquared_CalculatesSquaredLength()
@@ -405,14 +386,9 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-
-        
-
-        
-
-        /// <summary>
-        /// Tests that equals with same vector returns true
-        /// </summary>
+        ///     <summary>
+        ///         Tests that equals with same vector returns true
+        ///     </summary>
         [Fact]
         public void Equals_WithSameVector_ReturnsTrue()
         {
@@ -423,7 +399,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that equals with different vector returns false
+        ///     Tests that equals with different vector returns false
         /// </summary>
         [Fact]
         public void Equals_WithDifferentVector_ReturnsFalse()
@@ -435,7 +411,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that equals object override with vector returns true
+        ///     Tests that equals object override with vector returns true
         /// </summary>
         [Fact]
         public void Equals_ObjectOverride_WithVector_ReturnsTrue()
@@ -447,7 +423,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that get hash code with same vector returns same hash
+        ///     Tests that get hash code with same vector returns same hash
         /// </summary>
         [Fact]
         public void GetHashCode_WithSameVector_ReturnsSameHash()
@@ -459,7 +435,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that to string override returns formatted string
+        ///     Tests that to string override returns formatted string
         /// </summary>
         [Fact]
         public void ToString_Override_ReturnsFormattedString()
@@ -473,7 +449,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that to string with format returns formatted string
+        ///     Tests that to string with format returns formatted string
         /// </summary>
         [Fact]
         public void ToString_WithFormat_ReturnsFormattedString()
@@ -486,27 +462,21 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Contains("3.89", str);
         }
 
-        
-
-        
 
         /// <summary>
-        /// Tests that get object data serializes vector
+        ///     Tests that get object data serializes vector
         /// </summary>
         [Fact]
         public void GetObjectData_SerializesVector()
         {
             Vector3F v = new Vector3F(1f, 2f, 3f);
-            SerializationInfo serializationInfo = new System.Runtime.Serialization.SerializationInfo(typeof(Vector3F), new System.Runtime.Serialization.FormatterConverter());
+            SerializationInfo serializationInfo = new SerializationInfo(typeof(Vector3F), new FormatterConverter());
 
-            v.GetObjectData(serializationInfo, default);
+            v.GetObjectData(serializationInfo, default(StreamingContext));
 
             Assert.Equal(1f, serializationInfo.GetSingle("x"));
             Assert.Equal(2f, serializationInfo.GetSingle("y"));
             Assert.Equal(3f, serializationInfo.GetSingle("z"));
         }
-
-        
     }
 }
-

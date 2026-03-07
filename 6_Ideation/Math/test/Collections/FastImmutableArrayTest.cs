@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:FastImmutableArrayTest.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Collections;
@@ -6,12 +35,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Math.Test.Collections
 {
     /// <summary>
-    /// The fast immutable array test class
+    ///     The fast immutable array test class
     /// </summary>
     public class FastImmutableArrayTest
     {
         /// <summary>
-        /// Tests that empty has expected state
+        ///     Tests that empty has expected state
         /// </summary>
         [Fact]
         public void Empty_HasExpectedState()
@@ -25,12 +54,12 @@ namespace Alis.Core.Aspect.Math.Test.Collections
         }
 
         /// <summary>
-        /// Tests that indexer and item ref return expected element
+        ///     Tests that indexer and item ref return expected element
         /// </summary>
         [Fact]
         public void IndexerAndItemRef_ReturnExpectedElement()
         {
-            FastImmutableArray<int> array = new FastImmutableArray<int>(new[] { 3, 5, 8 });
+            FastImmutableArray<int> array = new FastImmutableArray<int>(new[] {3, 5, 8});
 
             ref readonly int itemRef = ref array.ItemRef(1);
 
@@ -39,15 +68,15 @@ namespace Alis.Core.Aspect.Math.Test.Collections
         }
 
         /// <summary>
-        /// Tests that equality uses underlying array reference
+        ///     Tests that equality uses underlying array reference
         /// </summary>
         [Fact]
         public void Equality_UsesUnderlyingArrayReference()
         {
-            int[] backing = { 1, 2, 3 };
+            int[] backing = {1, 2, 3};
             FastImmutableArray<int> first = new FastImmutableArray<int>(backing);
             FastImmutableArray<int> second = new FastImmutableArray<int>(backing);
-            FastImmutableArray<int> third = new FastImmutableArray<int>(new[] { 1, 2, 3 });
+            FastImmutableArray<int> third = new FastImmutableArray<int>(new[] {1, 2, 3});
 
             Assert.True(first == second);
             Assert.False(first != second);
@@ -57,21 +86,21 @@ namespace Alis.Core.Aspect.Math.Test.Collections
         }
 
         /// <summary>
-        /// Tests that copy to copies content in order
+        ///     Tests that copy to copies content in order
         /// </summary>
         [Fact]
         public void CopyTo_CopiesContentInOrder()
         {
-            FastImmutableArray<int> array = new FastImmutableArray<int>(new[] { 10, 20, 30 });
+            FastImmutableArray<int> array = new FastImmutableArray<int>(new[] {10, 20, 30});
             int[] destination = new int[5];
 
             array.CopyTo(destination, 1);
 
-            Assert.Equal(new[] { 0, 10, 20, 30, 0 }, destination);
+            Assert.Equal(new[] {0, 10, 20, 30, 0}, destination);
         }
 
         /// <summary>
-        /// Tests that builder add insert remove updates count and order
+        ///     Tests that builder add insert remove updates count and order
         /// </summary>
         [Fact]
         public void Builder_AddInsertRemove_UpdatesCountAndOrder()
@@ -90,7 +119,7 @@ namespace Alis.Core.Aspect.Math.Test.Collections
         }
 
         /// <summary>
-        /// Tests that builder move to immutable requires capacity equal count
+        ///     Tests that builder move to immutable requires capacity equal count
         /// </summary>
         [Fact]
         public void Builder_MoveToImmutable_RequiresCapacityEqualCount()
@@ -103,7 +132,7 @@ namespace Alis.Core.Aspect.Math.Test.Collections
         }
 
         /// <summary>
-        /// Tests that builder move to immutable with matching capacity and count succeeds and resets builder
+        ///     Tests that builder move to immutable with matching capacity and count succeeds and resets builder
         /// </summary>
         [Fact]
         public void Builder_MoveToImmutable_WithMatchingCapacityAndCount_SucceedsAndResetsBuilder()
@@ -121,7 +150,7 @@ namespace Alis.Core.Aspect.Math.Test.Collections
         }
 
         /// <summary>
-        /// Tests that builder indexer out of range throws
+        ///     Tests that builder indexer out of range throws
         /// </summary>
         [Fact]
         public void Builder_Indexer_OutOfRange_Throws()
@@ -134,7 +163,7 @@ namespace Alis.Core.Aspect.Math.Test.Collections
         }
 
         /// <summary>
-        /// Tests that builder remove range removes expected segment
+        ///     Tests that builder remove range removes expected segment
         /// </summary>
         [Fact]
         public void Builder_RemoveRange_RemovesExpectedSegment()
@@ -151,14 +180,14 @@ namespace Alis.Core.Aspect.Math.Test.Collections
         }
 
         /// <summary>
-        /// Tests that default instance as i enumerable throws invalid operation
+        ///     Tests that default instance as i enumerable throws invalid operation
         /// </summary>
         [Fact]
         public void DefaultInstance_AsIEnumerable_ThrowsInvalidOperation()
         {
-            FastImmutableArray<int> defaultArray = default;
+            FastImmutableArray<int> defaultArray = default(FastImmutableArray<int>);
 
-            Assert.Throws<InvalidOperationException>(() => ((IEnumerable<int>)defaultArray).GetEnumerator());
+            Assert.Throws<InvalidOperationException>(() => ((IEnumerable<int>) defaultArray).GetEnumerator());
         }
     }
 }

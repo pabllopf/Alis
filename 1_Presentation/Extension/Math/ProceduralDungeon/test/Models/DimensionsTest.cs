@@ -425,10 +425,10 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
         /// <summary>
         ///     Tests CanContain with edge case dimensions.
         /// </summary>
-        [Theory]
-        [InlineData(1, 1, 1, 1)]  // Both equal to 1
-        [InlineData(100, 100, 1, 1)]  // Large can contain tiny
-        [InlineData(1, 1, 100, 100)]  // Tiny cannot contain large
+        [Theory, InlineData(1, 1, 1, 1), InlineData(100, 100, 1, 1), InlineData(1, 1, 100, 100)]
+        // Both equal to 1
+        // Large can contain tiny
+        // Tiny cannot contain large
         public void CanContain_WithVariousDimensions_ReturnsCorrectResult(int width1, int height1, int width2, int height2)
         {
             // Arrange
@@ -439,7 +439,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
             bool result = dim1.CanContain(dim2);
 
             // Assert
-            if (width1 >= width2 && height1 >= height2)
+            if ((width1 >= width2) && (height1 >= height2))
             {
                 Assert.True(result);
             }

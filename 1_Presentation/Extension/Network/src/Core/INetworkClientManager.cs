@@ -39,24 +39,23 @@ namespace Alis.Extension.Network.Core
     public interface INetworkClientManager : INetworkManager
     {
         /// <summary>
-        ///     Connects to server
-        /// </summary>
-        Task ConnectAsync(Uri serverUri, string playerName, CancellationToken cancellationToken = default);
-
-        /// <summary>
-        ///     Disconnects from server
-        /// </summary>
-        Task DisconnectAsync(CancellationToken cancellationToken = default);
-
-        /// <summary>
         ///     Gets server URI
         /// </summary>
         Uri ServerUri { get; }
 
         /// <summary>
+        ///     Connects to server
+        /// </summary>
+        Task ConnectAsync(Uri serverUri, string playerName, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        ///     Disconnects from server
+        /// </summary>
+        Task DisconnectAsync(CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
         ///     Occurs on server message received
         /// </summary>
-        event System.EventHandler<ServerMessageEventArgs> ServerMessageReceived;
+        event EventHandler<ServerMessageEventArgs> ServerMessageReceived;
     }
 }
-

@@ -227,7 +227,7 @@ namespace Alis.Extension.Profile.Test.Implementations
             Assert.True(cpuUsage >= 0);
             Assert.True(Math.Abs(cpuUsage - expectedValue) < 1000); // Within 1 second
         }
-        
+
 
         /// <summary>
         ///     Tests that get thread count returns threads count
@@ -628,7 +628,7 @@ namespace Alis.Extension.Profile.Test.Implementations
         {
             // Arrange
             ProcessResourceMonitor monitor = new ProcessResourceMonitor();
-            List<(double cpu, long memory, int threads, int gc)> results = new System.Collections.Generic.List<(double cpu, long memory, int threads, int gc)>();
+            List<(double cpu, long memory, int threads, int gc)> results = new List<(double cpu, long memory, int threads, int gc)>();
 
             // Act
             for (int i = 0; i < 3; i++)
@@ -660,7 +660,7 @@ namespace Alis.Extension.Profile.Test.Implementations
         {
             // Arrange
             ProcessResourceMonitor monitor = new ProcessResourceMonitor();
-            List<long> memorySnapshots = new System.Collections.Generic.List<long>();
+            List<long> memorySnapshots = new List<long>();
 
             // Act
             for (int i = 0; i < 5; i++)

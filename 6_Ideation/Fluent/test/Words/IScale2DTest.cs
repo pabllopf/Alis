@@ -103,11 +103,12 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         private class ScaleBuilder
         {
             /// <summary>
-            /// Gets or sets the value of the scale x
+            ///     Gets or sets the value of the scale x
             /// </summary>
             public float ScaleX { get; set; }
+
             /// <summary>
-            /// Gets or sets the value of the scale y
+            ///     Gets or sets the value of the scale y
             /// </summary>
             public float ScaleY { get; set; }
         }
@@ -118,12 +119,12 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         private class Scale2DBuilder : IScale2D<ScaleBuilder, float>
         {
             /// <summary>
-            /// The scale builder
+            ///     The scale builder
             /// </summary>
             private readonly ScaleBuilder _builder = new ScaleBuilder();
 
             /// <summary>
-            /// Scales the x
+            ///     Scales the x
             /// </summary>
             /// <param name="x">The </param>
             /// <param name="y">The </param>

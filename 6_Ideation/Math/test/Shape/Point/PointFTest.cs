@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math.Shapes;
-using Alis.Core.Aspect.Math.Shapes;
 using Alis.Core.Aspect.Math.Shapes.Point;
 using Xunit;
 
@@ -66,7 +65,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
         }
 
         /// <summary>
-        /// Tests that constructor with single value initializes both coordinates
+        ///     Tests that constructor with single value initializes both coordinates
         /// </summary>
         [Fact]
         public void Constructor_WithSingleValue_InitializesBothCoordinates()
@@ -78,7 +77,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
         }
 
         /// <summary>
-        /// Tests that constructor with two values initializes coordinates correctly
+        ///     Tests that constructor with two values initializes coordinates correctly
         /// </summary>
         [Fact]
         public void Constructor_WithTwoValues_InitializesCoordinatesCorrectly()
@@ -90,7 +89,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
         }
 
         /// <summary>
-        /// Tests that constructor copy constructor copies point values
+        ///     Tests that constructor copy constructor copies point values
         /// </summary>
         [Fact]
         public void Constructor_CopyConstructor_CopiesPointValues()
@@ -103,7 +102,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
         }
 
         /// <summary>
-        /// Tests that constructor with zero value initializes correctly
+        ///     Tests that constructor with zero value initializes correctly
         /// </summary>
         [Fact]
         public void Constructor_WithZeroValue_InitializesCorrectly()
@@ -115,7 +114,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
         }
 
         /// <summary>
-        /// Tests that constructor with negative values initializes correctly
+        ///     Tests that constructor with negative values initializes correctly
         /// </summary>
         [Fact]
         public void Constructor_WithNegativeValues_InitializesCorrectly()
@@ -127,7 +126,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
         }
 
         /// <summary>
-        /// Tests that x property can be set and retrieved
+        ///     Tests that x property can be set and retrieved
         /// </summary>
         [Fact]
         public void XProperty_CanBeSetAndRetrieved()
@@ -141,7 +140,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
         }
 
         /// <summary>
-        /// Tests that y property can be set and retrieved
+        ///     Tests that y property can be set and retrieved
         /// </summary>
         [Fact]
         public void YProperty_CanBeSetAndRetrieved()
@@ -155,7 +154,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
         }
 
         /// <summary>
-        /// Tests that properties can be set independently
+        ///     Tests that properties can be set independently
         /// </summary>
         [Fact]
         public void Properties_CanBeSetIndependently()
@@ -170,7 +169,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
         }
 
         /// <summary>
-        /// Tests that point f is value type
+        ///     Tests that point f is value type
         /// </summary>
         [Fact]
         public void PointF_IsValueType()
@@ -179,7 +178,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
         }
 
         /// <summary>
-        /// Tests that copy constructor creates independent copy
+        ///     Tests that copy constructor creates independent copy
         /// </summary>
         [Fact]
         public void CopyConstructor_CreatesIndependentCopy()
@@ -197,7 +196,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
         }
 
         /// <summary>
-        /// Tests that assignment creates independent copy
+        ///     Tests that assignment creates independent copy
         /// </summary>
         [Fact]
         public void Assignment_CreatesIndependentCopy()
@@ -212,7 +211,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
         }
 
         /// <summary>
-        /// Tests that point f with max value stores correctly
+        ///     Tests that point f with max value stores correctly
         /// </summary>
         [Fact]
         public void PointF_WithMaxValue_StoresCorrectly()
@@ -224,7 +223,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
         }
 
         /// <summary>
-        /// Tests that point f with min value stores correctly
+        ///     Tests that point f with min value stores correctly
         /// </summary>
         [Fact]
         public void PointF_WithMinValue_StoresCorrectly()
@@ -236,7 +235,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
         }
 
         /// <summary>
-        /// Tests that point f with na n stores correctly
+        ///     Tests that point f with na n stores correctly
         /// </summary>
         [Fact]
         public void PointF_WithNaN_StoresCorrectly()
@@ -248,7 +247,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
         }
 
         /// <summary>
-        /// Tests that point f with infinity stores correctly
+        ///     Tests that point f with infinity stores correctly
         /// </summary>
         [Fact]
         public void PointF_WithInfinity_StoresCorrectly()
@@ -260,7 +259,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
         }
 
         /// <summary>
-        /// Tests that equality with same values returns true
+        ///     Tests that equality with same values returns true
         /// </summary>
         [Fact]
         public void Equality_WithSameValues_ReturnsTrue()
@@ -272,7 +271,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
         }
 
         /// <summary>
-        /// Tests that equality with different values returns false
+        ///     Tests that equality with different values returns false
         /// </summary>
         [Fact]
         public void Equality_WithDifferentValues_ReturnsFalse()
@@ -284,7 +283,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
         }
 
         /// <summary>
-        /// Tests that get hash code with same values returns same hash
+        ///     Tests that get hash code with same values returns same hash
         /// </summary>
         [Fact]
         public void GetHashCode_WithSameValues_ReturnsSameHash()
@@ -296,7 +295,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
         }
 
         /// <summary>
-        /// Tests that to string returns formatted string
+        ///     Tests that to string returns formatted string
         /// </summary>
         [Fact]
         public void ToString_ReturnsFormattedString()
@@ -309,7 +308,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
         }
 
         /// <summary>
-        /// Tests that point f implements i shape
+        ///     Tests that point f implements i shape
         /// </summary>
         [Fact]
         public void PointF_ImplementsIShape()

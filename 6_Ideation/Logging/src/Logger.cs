@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Logging.Abstractions;
 using Alis.Core.Aspect.Logging.Formatters;
@@ -45,11 +44,12 @@ namespace Alis.Core.Aspect.Logging
     public static class Logger
     {
         /// <summary>
-        /// The default logger
+        ///     The default logger
         /// </summary>
         private static ILogger _defaultLogger;
+
         /// <summary>
-        /// The lock
+        ///     The lock
         /// </summary>
         private static readonly object _lock = new object();
 
@@ -92,7 +92,6 @@ namespace Alis.Core.Aspect.Logging
         ///     Traces the message
         /// </summary>
         /// <param name="message">The message</param>
-        
         public static void Trace(string message)
         {
             EnsureInitialized();
@@ -103,7 +102,6 @@ namespace Alis.Core.Aspect.Logging
         ///     Infoes the message
         /// </summary>
         /// <param name="message">The message</param>
-        
         public static void Info(string message)
         {
             EnsureInitialized();
@@ -114,7 +112,6 @@ namespace Alis.Core.Aspect.Logging
         ///     Logs the message
         /// </summary>
         /// <param name="message">The message</param>
-        
         public static void Log(string message)
         {
             EnsureInitialized();
@@ -125,7 +122,6 @@ namespace Alis.Core.Aspect.Logging
         ///     Warnings the message
         /// </summary>
         /// <param name="message">The message</param>
-        
         public static void Warning(string message)
         {
             EnsureInitialized();
@@ -136,7 +132,6 @@ namespace Alis.Core.Aspect.Logging
         ///     Errors the message
         /// </summary>
         /// <param name="message">The message</param>
-        
         public static void Error(string message)
         {
             EnsureInitialized();
@@ -147,7 +142,6 @@ namespace Alis.Core.Aspect.Logging
         ///     Debugs the message
         /// </summary>
         /// <param name="message">The message</param>
-        
         public static void Debug(string message)
         {
             EnsureInitialized();

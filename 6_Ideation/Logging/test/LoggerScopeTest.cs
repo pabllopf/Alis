@@ -42,7 +42,7 @@ namespace Alis.Core.Aspect.Logging.Test
     public class LoggerScopeTest
     {
         /// <summary>
-        /// Tests that logger scope constructor should push scope onto stack
+        ///     Tests that logger scope constructor should push scope onto stack
         /// </summary>
         [Fact]
         public void LoggerScope_Constructor_ShouldPushScopeOntoStack()
@@ -59,7 +59,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger scope dispose should pop scope from stack
+        ///     Tests that logger scope dispose should pop scope from stack
         /// </summary>
         [Fact]
         public void LoggerScope_Dispose_ShouldPopScopeFromStack()
@@ -79,7 +79,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger scope dispose twice should not throw
+        ///     Tests that logger scope dispose twice should not throw
         /// </summary>
         [Fact]
         public void LoggerScope_DisposeTwice_ShouldNotThrow()
@@ -94,7 +94,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger scope on dispose callback should be invoked
+        ///     Tests that logger scope on dispose callback should be invoked
         /// </summary>
         [Fact]
         public void LoggerScope_OnDisposeCallback_ShouldBeInvoked()
@@ -112,7 +112,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger scope null stack should throw argument null exception
+        ///     Tests that logger scope null stack should throw argument null exception
         /// </summary>
         [Fact]
         public void LoggerScope_NullStack_ShouldThrowArgumentNullException()
@@ -122,7 +122,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger scope null callback should not throw
+        ///     Tests that logger scope null callback should not throw
         /// </summary>
         [Fact]
         public void LoggerScope_NullCallback_ShouldNotThrow()
@@ -136,7 +136,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger scope nested scopes should maintain stack order
+        ///     Tests that logger scope nested scopes should maintain stack order
         /// </summary>
         [Fact]
         public void LoggerScope_NestedScopes_ShouldMaintainStackOrder()
@@ -162,7 +162,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger scope using statement should automatically dispose
+        ///     Tests that logger scope using statement should automatically dispose
         /// </summary>
         [Fact]
         public void LoggerScope_UsingStatement_ShouldAutomaticallyDispose()
@@ -182,7 +182,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger scope multiple scopes should pop in lifo order
+        ///     Tests that logger scope multiple scopes should pop in lifo order
         /// </summary>
         [Fact]
         public void LoggerScope_MultipleScopes_ShouldPopInLifoOrder()
@@ -201,7 +201,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger scope dispose behavior should handle empty stack
+        ///     Tests that logger scope dispose behavior should handle empty stack
         /// </summary>
         [Fact]
         public void LoggerScope_DisposeBehavior_ShouldHandleEmptyStack()
@@ -216,7 +216,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger scope scope with object should store object
+        ///     Tests that logger scope scope with object should store object
         /// </summary>
         [Fact]
         public void LoggerScope_ScopeWithObject_ShouldStoreObject()
@@ -234,7 +234,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger scope scope with number should store number
+        ///     Tests that logger scope scope with number should store number
         /// </summary>
         [Fact]
         public void LoggerScope_ScopeWithNumber_ShouldStoreNumber()
@@ -252,7 +252,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger scope long scope chain should maintain order
+        ///     Tests that logger scope long scope chain should maintain order
         /// </summary>
         [Fact]
         public void LoggerScope_LongScopeChain_ShouldMaintainOrder()
@@ -279,7 +279,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger scope null scope should be allowed
+        ///     Tests that logger scope null scope should be allowed
         /// </summary>
         [Fact]
         public void LoggerScope_NullScope_ShouldBeAllowed()

@@ -43,7 +43,7 @@ namespace Alis.Core.Aspect.Logging.Test
     public class MemoryLogOutputTest
     {
         /// <summary>
-        /// Tests that memory log output constructor default max entries
+        ///     Tests that memory log output constructor default max entries
         /// </summary>
         [Fact]
         public void MemoryLogOutput_Constructor_DefaultMaxEntries()
@@ -56,7 +56,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that memory log output write should store entry
+        ///     Tests that memory log output write should store entry
         /// </summary>
         [Fact]
         public void MemoryLogOutput_Write_ShouldStoreEntry()
@@ -74,7 +74,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that memory log output multiple writes should store all
+        ///     Tests that memory log output multiple writes should store all
         /// </summary>
         [Fact]
         public void MemoryLogOutput_MultipleWrites_ShouldStoreAll()
@@ -93,7 +93,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that memory log output max entries should enforce limit
+        ///     Tests that memory log output max entries should enforce limit
         /// </summary>
         [Fact]
         public void MemoryLogOutput_MaxEntries_ShouldEnforceLimit()
@@ -116,7 +116,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that memory log output unlimited max entries should allow any
+        ///     Tests that memory log output unlimited max entries should allow any
         /// </summary>
         [Fact]
         public void MemoryLogOutput_UnlimitedMaxEntries_ShouldAllowAny()
@@ -135,7 +135,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that memory log output get entries should return snapshot
+        ///     Tests that memory log output get entries should return snapshot
         /// </summary>
         [Fact]
         public void MemoryLogOutput_GetEntries_ShouldReturnSnapshot()
@@ -155,7 +155,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that memory log output clear should remove all entries
+        ///     Tests that memory log output clear should remove all entries
         /// </summary>
         [Fact]
         public void MemoryLogOutput_Clear_ShouldRemoveAllEntries()
@@ -174,7 +174,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that memory log output null entry should not store
+        ///     Tests that memory log output null entry should not store
         /// </summary>
         [Fact]
         public void MemoryLogOutput_NullEntry_ShouldNotStore()
@@ -190,7 +190,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that memory log output disabled output should not store
+        ///     Tests that memory log output disabled output should not store
         /// </summary>
         [Fact]
         public void MemoryLogOutput_DisabledOutput_ShouldNotStore()
@@ -207,7 +207,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that memory log output flush should not affect entries
+        ///     Tests that memory log output flush should not affect entries
         /// </summary>
         [Fact]
         public void MemoryLogOutput_Flush_ShouldNotAffectEntries()
@@ -224,7 +224,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that memory log output dispose should clear entries
+        ///     Tests that memory log output dispose should clear entries
         /// </summary>
         [Fact]
         public void MemoryLogOutput_Dispose_ShouldClearEntries()
@@ -241,7 +241,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that memory log output has name
+        ///     Tests that memory log output has name
         /// </summary>
         [Fact]
         public void MemoryLogOutput_HasName()
@@ -255,7 +255,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that memory log output concurrent writes should be thread safe
+        ///     Tests that memory log output concurrent writes should be thread safe
         /// </summary>
         [Fact]
         public void MemoryLogOutput_ConcurrentWrites_ShouldBeThreadSafe()
@@ -284,7 +284,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that memory log output is enabled can be toggled
+        ///     Tests that memory log output is enabled can be toggled
         /// </summary>
         [Fact]
         public void MemoryLogOutput_IsEnabled_CanBeToggled()
@@ -305,7 +305,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that memory log output max entries small should maintain fifo
+        ///     Tests that memory log output max entries small should maintain fifo
         /// </summary>
         [Fact]
         public void MemoryLogOutput_MaxEntriesSmall_ShouldMaintainFifo()
@@ -328,7 +328,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that memory log output after dispose should have no entries
+        ///     Tests that memory log output after dispose should have no entries
         /// </summary>
         [Fact]
         public void MemoryLogOutput_AfterDispose_ShouldHaveNoEntries()

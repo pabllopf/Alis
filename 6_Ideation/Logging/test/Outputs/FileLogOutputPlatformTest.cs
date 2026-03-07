@@ -46,7 +46,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
     public class FileLogOutputPlatformTest
     {
         /// <summary>
-        /// Files the log output windows long path name
+        ///     Files the log output windows long path name
         /// </summary>
         [WindowsOnly]
         public void FileLogOutput_Windows_LongPathName()
@@ -70,7 +70,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         }
 
         /// <summary>
-        /// Files the log output windows file encoding
+        ///     Files the log output windows file encoding
         /// </summary>
         [WindowsOnly]
         public void FileLogOutput_Windows_FileEncoding()
@@ -95,7 +95,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         }
 
         /// <summary>
-        /// Files the log output linux unix permissions
+        ///     Files the log output linux unix permissions
         /// </summary>
         [LinuxOnly]
         public void FileLogOutput_Linux_UnixPermissions()
@@ -119,7 +119,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         }
 
         /// <summary>
-        /// Files the log output linux home directory path
+        ///     Files the log output linux home directory path
         /// </summary>
         [LinuxOnly]
         public void FileLogOutput_Linux_HomeDirectoryPath()
@@ -149,7 +149,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         }
 
         /// <summary>
-        /// Tests that file log output relative path should work across platforms
+        ///     Tests that file log output relative path should work across platforms
         /// </summary>
         [Fact]
         public void FileLogOutput_RelativePath_ShouldWorkAcrossPlatforms()
@@ -176,7 +176,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         }
 
         /// <summary>
-        /// Files the log output windows drive letter
+        ///     Files the log output windows drive letter
         /// </summary>
         [WindowsOnly]
         public void FileLogOutput_Windows_DriveLetter()
@@ -214,7 +214,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         }
 
         /// <summary>
-        /// Tests that file log output concurrent access across platforms
+        ///     Tests that file log output concurrent access across platforms
         /// </summary>
         [Fact]
         public void FileLogOutput_ConcurrentAccessAcrossPlatforms()
@@ -250,7 +250,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         }
 
         /// <summary>
-        /// Cleanups the path
+        ///     Cleanups the path
         /// </summary>
         /// <param name="path">The path</param>
         private void Cleanup(string path)

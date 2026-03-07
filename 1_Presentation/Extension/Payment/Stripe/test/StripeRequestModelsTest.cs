@@ -38,10 +38,8 @@ namespace Alis.Extension.Payment.Stripe.Test
     /// </summary>
     public class StripeRequestModelsTest
     {
-        
-
         /// <summary>
-        /// Tests that stripe checkout session request can be instantiated
+        ///     Tests that stripe checkout session request can be instantiated
         /// </summary>
         [Fact]
         public void StripeCheckoutSessionRequest_CanBeInstantiated()
@@ -54,7 +52,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that stripe checkout session request all properties can be set
+        ///     Tests that stripe checkout session request all properties can be set
         /// </summary>
         [Fact]
         public void StripeCheckoutSessionRequest_AllPropertiesCanBeSet()
@@ -62,8 +60,8 @@ namespace Alis.Extension.Payment.Stripe.Test
             // Arrange
             Dictionary<string, string> metadata = new Dictionary<string, string>
             {
-                { "user_id", "user_123" },
-                { "order_type", "digital" }
+                {"user_id", "user_123"},
+                {"order_type", "digital"}
             };
 
             // Act
@@ -94,12 +92,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal(metadata, request.Metadata);
         }
 
-        
-
-        
 
         /// <summary>
-        /// Tests that stripe checkout session response can be instantiated
+        ///     Tests that stripe checkout session response can be instantiated
         /// </summary>
         [Fact]
         public void StripeCheckoutSessionResponse_CanBeInstantiated()
@@ -112,7 +107,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that stripe checkout session response all properties can be set
+        ///     Tests that stripe checkout session response all properties can be set
         /// </summary>
         [Fact]
         public void StripeCheckoutSessionResponse_AllPropertiesCanBeSet()
@@ -131,12 +126,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal("pi_test_intent_456", response.PaymentIntentId);
         }
 
-        
-
-        
 
         /// <summary>
-        /// Tests that stripe payment intent request can be instantiated
+        ///     Tests that stripe payment intent request can be instantiated
         /// </summary>
         [Fact]
         public void StripePaymentIntentRequest_CanBeInstantiated()
@@ -149,7 +141,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that stripe payment intent request all properties can be set
+        ///     Tests that stripe payment intent request all properties can be set
         /// </summary>
         [Fact]
         public void StripePaymentIntentRequest_AllPropertiesCanBeSet()
@@ -157,8 +149,8 @@ namespace Alis.Extension.Payment.Stripe.Test
             // Arrange
             Dictionary<string, string> metadata = new Dictionary<string, string>
             {
-                { "product_category", "virtual_goods" },
-                { "transaction_type", "purchase" }
+                {"product_category", "virtual_goods"},
+                {"transaction_type", "purchase"}
             };
 
             // Act
@@ -183,12 +175,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.True(request.EnableAutomaticPaymentMethods);
         }
 
-        
-
-        
 
         /// <summary>
-        /// Tests that stripe payment intent response can be instantiated
+        ///     Tests that stripe payment intent response can be instantiated
         /// </summary>
         [Fact]
         public void StripePaymentIntentResponse_CanBeInstantiated()
@@ -201,7 +190,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that stripe payment intent response all properties can be set
+        ///     Tests that stripe payment intent response all properties can be set
         /// </summary>
         [Fact]
         public void StripePaymentIntentResponse_AllPropertiesCanBeSet()
@@ -220,12 +209,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal("succeeded", response.Status);
         }
 
-        
-
-        
 
         /// <summary>
-        /// Tests that stripe refund request can be instantiated
+        ///     Tests that stripe refund request can be instantiated
         /// </summary>
         [Fact]
         public void StripeRefundRequest_CanBeInstantiated()
@@ -238,7 +224,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that stripe refund request all properties can be set
+        ///     Tests that stripe refund request all properties can be set
         /// </summary>
         [Fact]
         public void StripeRefundRequest_AllPropertiesCanBeSet()
@@ -258,7 +244,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that stripe refund request amount can be null
+        ///     Tests that stripe refund request amount can be null
         /// </summary>
         [Fact]
         public void StripeRefundRequest_AmountCanBeNull()
@@ -277,12 +263,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal("fraudulent", request.Reason);
         }
 
-        
-
-        
 
         /// <summary>
-        /// Tests that stripe refund response can be instantiated
+        ///     Tests that stripe refund response can be instantiated
         /// </summary>
         [Fact]
         public void StripeRefundResponse_CanBeInstantiated()
@@ -295,7 +278,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that stripe refund response all properties can be set
+        ///     Tests that stripe refund response all properties can be set
         /// </summary>
         [Fact]
         public void StripeRefundResponse_AllPropertiesCanBeSet()
@@ -315,8 +298,5 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal("usd", response.Currency);
             Assert.Equal("succeeded", response.Status);
         }
-
-        
     }
 }
-

@@ -41,19 +41,22 @@ namespace Alis.Core.Aspect.Logging.Outputs
     public sealed class MemoryLogOutput : ILogOutput
     {
         /// <summary>
-        /// The entries
+        ///     The entries
         /// </summary>
         private readonly List<ILogEntry> _entries;
+
         /// <summary>
-        /// The lock
+        ///     The lock
         /// </summary>
         private readonly object _lock = new object();
+
         /// <summary>
-        /// The max entries
+        ///     The max entries
         /// </summary>
         private readonly int _maxEntries;
+
         /// <summary>
-        /// The disposed
+        ///     The disposed
         /// </summary>
         private bool _disposed;
 
@@ -81,21 +84,21 @@ namespace Alis.Core.Aspect.Logging.Outputs
             }
         }
 
-        
+
         /// <summary>
-        /// Gets the value of the name
+        ///     Gets the value of the name
         /// </summary>
         public string Name => "MemoryOutput";
 
-        
+
         /// <summary>
-        /// Gets or sets the value of the is enabled
+        ///     Gets or sets the value of the is enabled
         /// </summary>
         public bool IsEnabled { get; set; } = true;
 
-        
+
         /// <summary>
-        /// Writes the entry
+        ///     Writes the entry
         /// </summary>
         /// <param name="entry">The entry</param>
         public void Write(ILogEntry entry)
@@ -117,18 +120,18 @@ namespace Alis.Core.Aspect.Logging.Outputs
             }
         }
 
-        
+
         /// <summary>
-        /// Flushes this instance
+        ///     Flushes this instance
         /// </summary>
         public void Flush()
         {
             // Memory output is always flushed
         }
 
-        
+
         /// <summary>
-        /// Disposes this instance
+        ///     Disposes this instance
         /// </summary>
         public void Dispose()
         {

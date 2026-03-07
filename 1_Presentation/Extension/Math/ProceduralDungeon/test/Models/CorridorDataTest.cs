@@ -270,11 +270,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
         /// <summary>
         ///     Tests with all four directions.
         /// </summary>
-        [Theory]
-        [InlineData(Direction.North)]
-        [InlineData(Direction.South)]
-        [InlineData(Direction.East)]
-        [InlineData(Direction.West)]
+        [Theory, InlineData(Direction.North), InlineData(Direction.South), InlineData(Direction.East), InlineData(Direction.West)]
         public void Constructor_WithAllDirections_StoresCorrectly(Direction direction)
         {
             // Arrange & Act

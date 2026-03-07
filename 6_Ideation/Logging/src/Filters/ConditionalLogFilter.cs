@@ -40,7 +40,7 @@ namespace Alis.Core.Aspect.Logging.Filters
     public sealed class ConditionalLogFilter : ILogFilter
     {
         /// <summary>
-        /// The predicate
+        ///     The predicate
         /// </summary>
         private readonly Func<ILogEntry, bool> _predicate;
 
@@ -55,15 +55,15 @@ namespace Alis.Core.Aspect.Logging.Filters
             Name = name;
         }
 
-        
+
         /// <summary>
-        /// Gets the value of the name
+        ///     Gets the value of the name
         /// </summary>
         public string Name { get; }
 
-        
+
         /// <summary>
-        /// Shoulds the log using the specified entry
+        ///     Shoulds the log using the specified entry
         /// </summary>
         /// <param name="entry">The entry</param>
         /// <returns>The bool</returns>

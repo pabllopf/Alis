@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Alis.Core.Ecs.Systems.Scope;
@@ -44,50 +43,43 @@ namespace Alis.Extension.Payment.Stripe.Test
     public class StoreManagerTest
     {
         /// <summary>
-        /// Creates the context
+        ///     Creates the context
         /// </summary>
         /// <returns>The context</returns>
         private static Context CreateContext() => new Context();
 
         /// <summary>
-        /// Creates the valid configuration
+        ///     Creates the valid configuration
         /// </summary>
         /// <returns>The store configuration</returns>
-        private static StoreConfiguration CreateValidConfiguration()
+        private static StoreConfiguration CreateValidConfiguration() => new StoreConfiguration
         {
-            return new StoreConfiguration
-            {
-                SecretApiKey = "sk_test_4eC39HqLyjWDarjtT1zdp7dc",
-                DefaultCurrency = "USD",
-                SuccessUrl = new Uri("https://example.com/success"),
-                CancelUrl = new Uri("https://example.com/cancel"),
-                EnableAutomaticPaymentMethods = true
-            };
-        }
+            SecretApiKey = "sk_test_4eC39HqLyjWDarjtT1zdp7dc",
+            DefaultCurrency = "USD",
+            SuccessUrl = new Uri("https://example.com/success"),
+            CancelUrl = new Uri("https://example.com/cancel"),
+            EnableAutomaticPaymentMethods = true
+        };
 
         /// <summary>
-        /// Creates the product using the specified id
+        ///     Creates the product using the specified id
         /// </summary>
         /// <param name="id">The id</param>
         /// <param name="priceInCents">The price in cents</param>
         /// <returns>The store product</returns>
-        private static StoreProduct CreateProduct(string id = "test_product", long priceInCents = 999)
+        private static StoreProduct CreateProduct(string id = "test_product", long priceInCents = 999) => new StoreProduct
         {
-            return new StoreProduct
-            {
-                Id = id,
-                Name = "Test Product",
-                Description = "A test product description",
-                PriceInCents = priceInCents,
-                Currency = "usd",
-                IsEnabled = true
-            };
-        }
+            Id = id,
+            Name = "Test Product",
+            Description = "A test product description",
+            PriceInCents = priceInCents,
+            Currency = "usd",
+            IsEnabled = true
+        };
 
-        
 
         /// <summary>
-        /// Tests that constructor with context creates instance successfully
+        ///     Tests that constructor with context creates instance successfully
         /// </summary>
         [Fact]
         public void Constructor_WithContext_CreatesInstanceSuccessfully()
@@ -103,7 +95,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that constructor with context and gateway creates instance successfully
+        ///     Tests that constructor with context and gateway creates instance successfully
         /// </summary>
         [Fact]
         public void Constructor_WithContextAndGateway_CreatesInstanceSuccessfully()
@@ -118,9 +110,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.NotNull(manager);
             Assert.False(manager.IsInitialized);
         }
-        
+
         /// <summary>
-        /// Tests that constructor with null gateway throws argument null exception
+        ///     Tests that constructor with null gateway throws argument null exception
         /// </summary>
         [Fact]
         public void Constructor_WithNullGateway_ThrowsArgumentNullException()
@@ -130,7 +122,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that constructor with all parameters creates instance successfully
+        ///     Tests that constructor with all parameters creates instance successfully
         /// </summary>
         [Fact]
         public void Constructor_WithAllParameters_CreatesInstanceSuccessfully()
@@ -149,12 +141,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.True(manager.IsEnable);
         }
 
-        
-
-        
 
         /// <summary>
-        /// Tests that initialize async with valid configuration initializes successfully
+        ///     Tests that initialize async with valid configuration initializes successfully
         /// </summary>
         [Fact]
         public async Task InitializeAsync_WithValidConfiguration_InitializesSuccessfully()
@@ -173,7 +162,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that initialize async with null configuration throws argument null exception
+        ///     Tests that initialize async with null configuration throws argument null exception
         /// </summary>
         [Fact]
         public async Task InitializeAsync_WithNullConfiguration_ThrowsArgumentNullException()
@@ -187,7 +176,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that initialize async with null api key throws argument exception
+        ///     Tests that initialize async with null api key throws argument exception
         /// </summary>
         [Fact]
         public async Task InitializeAsync_WithNullApiKey_ThrowsArgumentException()
@@ -203,7 +192,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that initialize async with empty api key throws argument exception
+        ///     Tests that initialize async with empty api key throws argument exception
         /// </summary>
         [Fact]
         public async Task InitializeAsync_WithEmptyApiKey_ThrowsArgumentException()
@@ -219,7 +208,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that initialize async normalizes currency to lowercase
+        ///     Tests that initialize async normalizes currency to lowercase
         /// </summary>
         [Fact]
         public async Task InitializeAsync_NormalizesCurrencyToLowercase()
@@ -238,7 +227,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that initialize async with cancellation token respects cancellation
+        ///     Tests that initialize async with cancellation token respects cancellation
         /// </summary>
         [Fact]
         public async Task InitializeAsync_WithCancellationToken_RespectsCancellation()
@@ -254,12 +243,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             await Assert.ThrowsAsync<OperationCanceledException>(() => manager.InitializeAsync(config, cts.Token));
         }
 
-        
-
-        
 
         /// <summary>
-        /// Tests that register product with valid product registers successfully
+        ///     Tests that register product with valid product registers successfully
         /// </summary>
         [Fact]
         public async Task RegisterProduct_WithValidProduct_RegistersSuccessfully()
@@ -280,7 +266,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that register product with null product throws argument null exception
+        ///     Tests that register product with null product throws argument null exception
         /// </summary>
         [Fact]
         public void RegisterProduct_WithNullProduct_ThrowsArgumentNullException()
@@ -294,7 +280,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that register product with null id throws argument exception
+        ///     Tests that register product with null id throws argument exception
         /// </summary>
         [Fact]
         public void RegisterProduct_WithNullId_ThrowsArgumentException()
@@ -310,7 +296,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that register product with empty id throws argument exception
+        ///     Tests that register product with empty id throws argument exception
         /// </summary>
         [Fact]
         public void RegisterProduct_WithEmptyId_ThrowsArgumentException()
@@ -326,7 +312,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that register product with null name throws argument exception
+        ///     Tests that register product with null name throws argument exception
         /// </summary>
         [Fact]
         public void RegisterProduct_WithNullName_ThrowsArgumentException()
@@ -342,7 +328,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that register product with zero price throws argument exception
+        ///     Tests that register product with zero price throws argument exception
         /// </summary>
         [Fact]
         public void RegisterProduct_WithZeroPrice_ThrowsArgumentException()
@@ -358,7 +344,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that register product with negative price throws argument exception
+        ///     Tests that register product with negative price throws argument exception
         /// </summary>
         [Fact]
         public void RegisterProduct_WithNegativePrice_ThrowsArgumentException()
@@ -374,7 +360,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that register product without currency uses default from configuration
+        ///     Tests that register product without currency uses default from configuration
         /// </summary>
         [Fact]
         public async Task RegisterProduct_WithoutCurrency_UsesDefaultFromConfiguration()
@@ -396,7 +382,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that register product before initialization uses default usd currency
+        ///     Tests that register product before initialization uses default usd currency
         /// </summary>
         [Fact]
         public void RegisterProduct_BeforeInitialization_UsesDefaultUsdCurrency()
@@ -417,7 +403,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that register product overwrites existing product
+        ///     Tests that register product overwrites existing product
         /// </summary>
         [Fact]
         public async Task RegisterProduct_OverwritesExistingProduct()
@@ -439,12 +425,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal(200, retrieved.PriceInCents);
         }
 
-        
-
-        
 
         /// <summary>
-        /// Tests that register products with multiple products registers all successfully
+        ///     Tests that register products with multiple products registers all successfully
         /// </summary>
         [Fact]
         public async Task RegisterProducts_WithMultipleProducts_RegistersAllSuccessfully()
@@ -470,7 +453,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that register products with null collection throws argument null exception
+        ///     Tests that register products with null collection throws argument null exception
         /// </summary>
         [Fact]
         public void RegisterProducts_WithNullCollection_ThrowsArgumentNullException()
@@ -484,7 +467,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that register products with empty collection does not throw
+        ///     Tests that register products with empty collection does not throw
         /// </summary>
         [Fact]
         public async Task RegisterProducts_WithEmptyCollection_DoesNotThrow()
@@ -501,12 +484,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.True(true);
         }
 
-        
-
-        
 
         /// <summary>
-        /// Tests that try get product with existing product returns true
+        ///     Tests that try get product with existing product returns true
         /// </summary>
         [Fact]
         public async Task TryGetProduct_WithExistingProduct_ReturnsTrue()
@@ -528,7 +508,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that try get product with non existing product returns false
+        ///     Tests that try get product with non existing product returns false
         /// </summary>
         [Fact]
         public void TryGetProduct_WithNonExistingProduct_ReturnsFalse()
@@ -546,7 +526,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that try get product with null id returns false
+        ///     Tests that try get product with null id returns false
         /// </summary>
         [Fact]
         public void TryGetProduct_WithNullId_ReturnsFalse()
@@ -564,7 +544,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that try get product is case insensitive
+        ///     Tests that try get product is case insensitive
         /// </summary>
         [Fact]
         public void TryGetProduct_IsCaseInsensitive()
@@ -583,12 +563,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.NotNull(retrieved);
         }
 
-        
-
-        
 
         /// <summary>
-        /// Tests that get products returns all registered products
+        ///     Tests that get products returns all registered products
         /// </summary>
         [Fact]
         public async Task GetProducts_ReturnsAllRegisteredProducts()
@@ -612,7 +589,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that get products with no products returns empty collection
+        ///     Tests that get products with no products returns empty collection
         /// </summary>
         [Fact]
         public void GetProducts_WithNoProducts_ReturnsEmptyCollection()
@@ -628,12 +605,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Empty(products);
         }
 
-        
-
-        
 
         /// <summary>
-        /// Tests that create checkout session async with valid product returns result
+        ///     Tests that create checkout session async with valid product returns result
         /// </summary>
         [Fact]
         public async Task CreateCheckoutSessionAsync_WithValidProduct_ReturnsResult()
@@ -651,10 +625,10 @@ namespace Alis.Extension.Payment.Stripe.Test
 
             StoreManager manager = new StoreManager(CreateContext(), gateway.Object);
             await manager.InitializeAsync(CreateValidConfiguration());
-            manager.RegisterProduct(CreateProduct("product1", 999));
+            manager.RegisterProduct(CreateProduct("product1"));
 
             // Act
-            CheckoutSessionResult result = await manager.CreateCheckoutSessionAsync("product1", quantity: 2);
+            CheckoutSessionResult result = await manager.CreateCheckoutSessionAsync("product1", 2);
 
             // Assert
             Assert.NotNull(result);
@@ -667,7 +641,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that create checkout session async without initialization throws invalid operation exception
+        ///     Tests that create checkout session async without initialization throws invalid operation exception
         /// </summary>
         [Fact]
         public async Task CreateCheckoutSessionAsync_WithoutInitialization_ThrowsInvalidOperationException()
@@ -682,7 +656,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that create checkout session async with non existent product throws key not found exception
+        ///     Tests that create checkout session async with non existent product throws key not found exception
         /// </summary>
         [Fact]
         public async Task CreateCheckoutSessionAsync_WithNonExistentProduct_ThrowsKeyNotFoundException()
@@ -698,7 +672,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that create checkout session async with disabled product throws invalid operation exception
+        ///     Tests that create checkout session async with disabled product throws invalid operation exception
         /// </summary>
         [Fact]
         public async Task CreateCheckoutSessionAsync_WithDisabledProduct_ThrowsInvalidOperationException()
@@ -715,10 +689,10 @@ namespace Alis.Extension.Payment.Stripe.Test
             await Assert.ThrowsAsync<InvalidOperationException>(() =>
                 manager.CreateCheckoutSessionAsync("disabled_product"));
         }
-        
+
 
         /// <summary>
-        /// Tests that create checkout session async passes metadata to gateway
+        ///     Tests that create checkout session async passes metadata to gateway
         /// </summary>
         [Fact]
         public async Task CreateCheckoutSessionAsync_PassesMetadataToGateway()
@@ -742,8 +716,8 @@ namespace Alis.Extension.Payment.Stripe.Test
 
             Dictionary<string, string> metadata = new Dictionary<string, string>
             {
-                { "user_id", "user_123" },
-                { "order_type", "digital" }
+                {"user_id", "user_123"},
+                {"order_type", "digital"}
             };
 
             // Act
@@ -754,12 +728,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal(metadata, capturedRequest.Metadata);
         }
 
-        
-
-        
 
         /// <summary>
-        /// Tests that create payment intent async with valid product returns result
+        ///     Tests that create payment intent async with valid product returns result
         /// </summary>
         [Fact]
         public async Task CreatePaymentIntentAsync_WithValidProduct_ReturnsResult()
@@ -780,7 +751,7 @@ namespace Alis.Extension.Payment.Stripe.Test
             manager.RegisterProduct(CreateProduct("product2", 1500));
 
             // Act
-            PaymentIntentResult result = await manager.CreatePaymentIntentAsync("product2", quantity: 3);
+            PaymentIntentResult result = await manager.CreatePaymentIntentAsync("product2", 3);
 
             // Assert
             Assert.NotNull(result);
@@ -792,7 +763,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that create payment intent async with succeeded status maps correctly
+        ///     Tests that create payment intent async with succeeded status maps correctly
         /// </summary>
         [Fact]
         public async Task CreatePaymentIntentAsync_WithSucceededStatus_MapsCorrectly()
@@ -820,7 +791,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that create payment intent async without initialization throws invalid operation exception
+        ///     Tests that create payment intent async without initialization throws invalid operation exception
         /// </summary>
         [Fact]
         public async Task CreatePaymentIntentAsync_WithoutInitialization_ThrowsInvalidOperationException()
@@ -835,7 +806,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that create payment intent async with negative quantity throws argument out of range exception
+        ///     Tests that create payment intent async with negative quantity throws argument out of range exception
         /// </summary>
         [Fact]
         public async Task CreatePaymentIntentAsync_WithNegativeQuantity_ThrowsArgumentOutOfRangeException()
@@ -848,15 +819,12 @@ namespace Alis.Extension.Payment.Stripe.Test
 
             // Act & Assert
             await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() =>
-                manager.CreatePaymentIntentAsync("product1", quantity: -1));
+                manager.CreatePaymentIntentAsync("product1", -1));
         }
 
-        
-
-        
 
         /// <summary>
-        /// Tests that get payment status async with valid payment intent returns status
+        ///     Tests that get payment status async with valid payment intent returns status
         /// </summary>
         [Fact]
         public async Task GetPaymentStatusAsync_WithValidPaymentIntent_ReturnsStatus()
@@ -883,7 +851,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that get payment status async with null id throws argument exception
+        ///     Tests that get payment status async with null id throws argument exception
         /// </summary>
         [Fact]
         public async Task GetPaymentStatusAsync_WithNullId_ThrowsArgumentException()
@@ -899,7 +867,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that get payment status async with empty id throws argument exception
+        ///     Tests that get payment status async with empty id throws argument exception
         /// </summary>
         [Fact]
         public async Task GetPaymentStatusAsync_WithEmptyId_ThrowsArgumentException()
@@ -915,7 +883,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that get payment status async without initialization throws invalid operation exception
+        ///     Tests that get payment status async without initialization throws invalid operation exception
         /// </summary>
         [Fact]
         public async Task GetPaymentStatusAsync_WithoutInitialization_ThrowsInvalidOperationException()
@@ -929,12 +897,9 @@ namespace Alis.Extension.Payment.Stripe.Test
                 manager.GetPaymentStatusAsync("pi_123"));
         }
 
-        
-
-        
 
         /// <summary>
-        /// Tests that refund payment async with valid request returns result
+        ///     Tests that refund payment async with valid request returns result
         /// </summary>
         [Fact]
         public async Task RefundPaymentAsync_WithValidRequest_ReturnsResult()
@@ -967,7 +932,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that refund payment async with null payment intent id throws argument exception
+        ///     Tests that refund payment async with null payment intent id throws argument exception
         /// </summary>
         [Fact]
         public async Task RefundPaymentAsync_WithNullPaymentIntentId_ThrowsArgumentException()
@@ -983,7 +948,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that refund payment async with zero amount throws argument out of range exception
+        ///     Tests that refund payment async with zero amount throws argument out of range exception
         /// </summary>
         [Fact]
         public async Task RefundPaymentAsync_WithZeroAmount_ThrowsArgumentOutOfRangeException()
@@ -999,7 +964,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that refund payment async with negative amount throws argument out of range exception
+        ///     Tests that refund payment async with negative amount throws argument out of range exception
         /// </summary>
         [Fact]
         public async Task RefundPaymentAsync_WithNegativeAmount_ThrowsArgumentOutOfRangeException()
@@ -1015,7 +980,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that refund payment async without initialization throws invalid operation exception
+        ///     Tests that refund payment async without initialization throws invalid operation exception
         /// </summary>
         [Fact]
         public async Task RefundPaymentAsync_WithoutInitialization_ThrowsInvalidOperationException()
@@ -1029,26 +994,14 @@ namespace Alis.Extension.Payment.Stripe.Test
                 manager.RefundPaymentAsync("pi_123", 100));
         }
 
-        
-
-        
 
         /// <summary>
-        /// Tests that payment status mapping handles all cases
+        ///     Tests that payment status mapping handles all cases
         /// </summary>
         /// <param name="stripeStatus">The stripe status</param>
         /// <param name="expectedStatus">The expected status</param>
-        [Theory]
-        [InlineData("requires_payment_method", PaymentStatus.RequiresPaymentMethod)]
-        [InlineData("requires_confirmation", PaymentStatus.RequiresConfirmation)]
-        [InlineData("requires_action", PaymentStatus.RequiresAction)]
-        [InlineData("processing", PaymentStatus.Processing)]
-        [InlineData("requires_capture", PaymentStatus.RequiresCapture)]
-        [InlineData("canceled", PaymentStatus.Canceled)]
-        [InlineData("succeeded", PaymentStatus.Succeeded)]
-        [InlineData("unknown_status", PaymentStatus.Unknown)]
-        [InlineData("", PaymentStatus.Unknown)]
-        [InlineData(null, PaymentStatus.Unknown)]
+        [Theory, InlineData("requires_payment_method", PaymentStatus.RequiresPaymentMethod), InlineData("requires_confirmation", PaymentStatus.RequiresConfirmation), InlineData("requires_action", PaymentStatus.RequiresAction), InlineData("processing", PaymentStatus.Processing), InlineData("requires_capture", PaymentStatus.RequiresCapture), InlineData("canceled", PaymentStatus.Canceled),
+         InlineData("succeeded", PaymentStatus.Succeeded), InlineData("unknown_status", PaymentStatus.Unknown), InlineData("", PaymentStatus.Unknown), InlineData(null, PaymentStatus.Unknown)]
         public async Task PaymentStatusMapping_HandlesAllCases(string stripeStatus, PaymentStatus expectedStatus)
         {
             // Arrange
@@ -1071,8 +1024,5 @@ namespace Alis.Extension.Payment.Stripe.Test
             // Assert
             Assert.Equal(expectedStatus, status);
         }
-
-        
     }
 }
-

@@ -243,7 +243,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that quaternion division by identity quaternion returns same quaternion
+        ///     Tests that quaternion division by identity quaternion returns same quaternion
         /// </summary>
         [Fact]
         public void Quaternion_Division_ByIdentityQuaternion_ReturnsSameQuaternion()
@@ -260,7 +260,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
-        /// Tests that quaternion operator equality uses tolerance but equals object uses exact values
+        ///     Tests that quaternion operator equality uses tolerance but equals object uses exact values
         /// </summary>
         [Fact]
         public void Quaternion_OperatorEquality_UsesToleranceButEqualsObjectUsesExactValues()
@@ -269,11 +269,11 @@ namespace Alis.Core.Aspect.Math.Test.Util
             Quaternion right = new Quaternion(1.05f, 2.05f, 3.05f, 4.05f);
 
             Assert.True(left == right);
-            Assert.False(left.Equals((object)right));
+            Assert.False(left.Equals(right));
         }
 
         /// <summary>
-        /// Tests that quaternion operator equality at exact tolerance boundary returns false
+        ///     Tests that quaternion operator equality at exact tolerance boundary returns false
         /// </summary>
         [Fact]
         public void Quaternion_OperatorEquality_AtExactToleranceBoundary_ReturnsFalse()

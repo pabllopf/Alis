@@ -43,7 +43,7 @@ namespace Alis.Core.Aspect.Logging.Test
     public class ContextualLoggingTest
     {
         /// <summary>
-        /// Tests that correlation id set and get should match
+        ///     Tests that correlation id set and get should match
         /// </summary>
         [Fact]
         public void CorrelationId_SetAndGet_ShouldMatch()
@@ -64,7 +64,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that correlation id in log entry should be preserved
+        ///     Tests that correlation id in log entry should be preserved
         /// </summary>
         [Fact]
         public void CorrelationId_InLogEntry_ShouldBePreserved()
@@ -90,7 +90,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that scope begin and end should capture context
+        ///     Tests that scope begin and end should capture context
         /// </summary>
         [Fact]
         public void Scope_BeginAndEnd_ShouldCaptureContext()
@@ -119,7 +119,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that scope nested scopes should maintain stack
+        ///     Tests that scope nested scopes should maintain stack
         /// </summary>
         [Fact]
         public void Scope_NestedScopes_ShouldMaintainStack()
@@ -166,7 +166,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that scope outside scope should be empty
+        ///     Tests that scope outside scope should be empty
         /// </summary>
         [Fact]
         public void Scope_OutsideScope_ShouldBeEmpty()
@@ -189,7 +189,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that correlation id separate loggers should have separate ids
+        ///     Tests that correlation id separate loggers should have separate ids
         /// </summary>
         [Fact]
         public void CorrelationId_SeparateLoggers_ShouldHaveSeparateIds()
@@ -214,7 +214,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that scope with properties should maintain properties
+        ///     Tests that scope with properties should maintain properties
         /// </summary>
         [Fact]
         public void Scope_WithProperties_ShouldMaintainProperties()
@@ -247,7 +247,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that correlation id changing multiple times
+        ///     Tests that correlation id changing multiple times
         /// </summary>
         [Fact]
         public void CorrelationId_ChangingMultipleTimes()
@@ -279,7 +279,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that scope with formatted output should include in output
+        ///     Tests that scope with formatted output should include in output
         /// </summary>
         [Fact]
         public void Scope_WithFormattedOutput_ShouldIncludeInOutput()
@@ -306,7 +306,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that scope disposal should remove scope
+        ///     Tests that scope disposal should remove scope
         /// </summary>
         [Fact]
         public void Scope_Disposal_ShouldRemoveScope()
@@ -333,7 +333,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that correlation id default null
+        ///     Tests that correlation id default null
         /// </summary>
         [Fact]
         public void CorrelationId_DefaultNull()

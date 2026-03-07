@@ -125,7 +125,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
             Assert.NotNull(window);
         }
 
-        
+
         /// <summary>
         ///     Natives the window mouse enter event can be subscribed
         /// </summary>

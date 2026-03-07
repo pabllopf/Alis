@@ -35,51 +35,51 @@ using Xunit;
 namespace Alis.Extension.Thread.Test.Interfaces
 {
     /// <summary>
-    /// The component with interface
+    ///     The component with interface
     /// </summary>
     internal struct ComponentWithInterface : IParallelCapable
     {
         /// <summary>
-        /// The value
+        ///     The value
         /// </summary>
         public int Value;
     }
 
     /// <summary>
-    /// The class with interface class
+    ///     The class with interface class
     /// </summary>
-    /// <seealso cref="IParallelCapable"/>
+    /// <seealso cref="IParallelCapable" />
     internal class ClassWithInterface : IParallelCapable
     {
         /// <summary>
-        /// Gets or sets the value of the value
+        ///     Gets or sets the value of the value
         /// </summary>
         public int Value { get; set; }
     }
 
     /// <summary>
-    /// The component without interface
+    ///     The component without interface
     /// </summary>
     internal struct ComponentWithoutInterface
     {
         /// <summary>
-        /// The value
+        ///     The value
         /// </summary>
         public int Value;
     }
 
     /// <summary>
-    /// The component with multiple interfaces
+    ///     The component with multiple interfaces
     /// </summary>
     internal struct ComponentWithMultipleInterfaces : IParallelCapable, IDisposable
     {
         /// <summary>
-        /// The value
+        ///     The value
         /// </summary>
         public int Value;
 
         /// <summary>
-        /// Disposes this instance
+        ///     Disposes this instance
         /// </summary>
         public void Dispose()
         {
@@ -308,7 +308,7 @@ namespace Alis.Extension.Thread.Test.Interfaces
         }
 
         /// <summary>
-        /// Processes the parallel capable using the specified component
+        ///     Processes the parallel capable using the specified component
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="component">The component</param>

@@ -1,18 +1,45 @@
-using System;
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:ImGuiP1Test.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System.Linq;
 using System.Reflection;
-using Alis.Extension.Graphic.Ui;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
 {
     /// <summary>
-    /// Provides API-surface coverage for methods contributed by ImGuiP1 wrappers.
+    ///     Provides API-surface coverage for methods contributed by ImGuiP1 wrappers.
     /// </summary>
     public class ImGuiP1Test
     {
         /// <summary>
-        /// Verifies that docking and context API overloads are available on ImGui.
+        ///     Verifies that docking and context API overloads are available on ImGui.
         /// </summary>
         [Fact]
         public void DockingAndContextApi_ShouldExposeExpectedOverloads()
@@ -27,7 +54,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         }
 
         /// <summary>
-        /// Verifies that Combo overload family exists.
+        ///     Verifies that Combo overload family exists.
         /// </summary>
         [Fact]
         public void Combo_ShouldExposeMultipleOverloads()
@@ -40,4 +67,3 @@ namespace Alis.Extension.Graphic.Ui.Test
         }
     }
 }
-

@@ -84,12 +84,12 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         private class DrawHandler : IOnDraw
         {
             /// <summary>
-            /// Gets or sets the value of the draw call count
+            ///     Gets or sets the value of the draw call count
             /// </summary>
             public int DrawCallCount { get; private set; }
 
             /// <summary>
-            /// Ons the draw using the specified self
+            ///     Ons the draw using the specified self
             /// </summary>
             /// <param name="self">The self</param>
             public void OnDraw(IGameObject self)

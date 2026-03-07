@@ -1,24 +1,53 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:StripeCheckoutSessionResponse.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 
 namespace Alis.Extension.Payment.Stripe
 {
     /// <summary>
-    /// The stripe checkout session response class
+    ///     The stripe checkout session response class
     /// </summary>
     public class StripeCheckoutSessionResponse
     {
         /// <summary>
-        /// Gets or sets the value of the session id
+        ///     Gets or sets the value of the session id
         /// </summary>
         public string SessionId { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the url
+        ///     Gets or sets the value of the url
         /// </summary>
         public Uri Url { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the payment intent id
+        ///     Gets or sets the value of the payment intent id
         /// </summary>
         public string PaymentIntentId { get; set; }
     }

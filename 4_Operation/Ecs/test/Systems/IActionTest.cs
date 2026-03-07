@@ -306,7 +306,6 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.Equal(21, value2);
         }
 
-        
 
         /// <summary>
         ///     Processes an action
@@ -316,9 +315,6 @@ namespace Alis.Core.Ecs.Test.Systems
             action.Run(ref value);
         }
 
-        
-
-        
 
         /// <summary>
         ///     Test implementation that increments an integer
@@ -444,7 +440,5 @@ namespace Alis.Core.Ecs.Test.Systems
             /// </summary>
             public int C;
         }
-
-        
     }
 }

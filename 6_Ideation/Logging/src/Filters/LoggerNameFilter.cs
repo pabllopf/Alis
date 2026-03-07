@@ -40,11 +40,12 @@ namespace Alis.Core.Aspect.Logging.Filters
     public sealed class LoggerNameFilter : ILogFilter
     {
         /// <summary>
-        /// The included names
+        ///     The included names
         /// </summary>
         private readonly HashSet<string> _includedNames;
+
         /// <summary>
-        /// The inclusive
+        ///     The inclusive
         /// </summary>
         private readonly bool _inclusive;
 
@@ -59,15 +60,15 @@ namespace Alis.Core.Aspect.Logging.Filters
             _inclusive = inclusive;
         }
 
-        
+
         /// <summary>
-        /// Gets the value of the name
+        ///     Gets the value of the name
         /// </summary>
         public string Name => $"LoggerNameFilter[{(_inclusive ? "Include" : "Exclude")}:{_includedNames.Count}]";
 
-        
+
         /// <summary>
-        /// Shoulds the log using the specified entry
+        ///     Shoulds the log using the specified entry
         /// </summary>
         /// <param name="entry">The entry</param>
         /// <returns>The bool</returns>

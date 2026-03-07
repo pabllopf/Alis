@@ -30,7 +30,6 @@
 using System.Linq;
 using System.Text;
 using Microsoft.CodeAnalysis;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Alis.Core.Aspect.Data.Generator
 {

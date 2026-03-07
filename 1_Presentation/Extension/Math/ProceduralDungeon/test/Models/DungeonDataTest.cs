@@ -299,12 +299,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
         /// <summary>
         ///     Tests that Width and Height properties work correctly with various board sizes.
         /// </summary>
-        [Theory]
-        [InlineData(1, 1)]
-        [InlineData(100, 100)]
-        [InlineData(50, 75)]
-        [InlineData(1, 1000)]
-        [InlineData(1000, 1)]
+        [Theory, InlineData(1, 1), InlineData(100, 100), InlineData(50, 75), InlineData(1, 1000), InlineData(1000, 1)]
         public void Dimensions_ShouldReturnCorrectValuesForVariousBoardSizes(int boardWidth, int boardHeight)
         {
             // Arrange
@@ -328,8 +323,8 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
         {
             // Arrange
             BoardSquare[,] board = new BoardSquare[10, 10];
-            List<RoomData> rooms = new List<RoomData> { new RoomData(0, 0, 1, 1, Direction.North) };
-            List<CorridorData> corridors = new List<CorridorData> { new CorridorData(5, 5, 1, 1, Direction.East) };
+            List<RoomData> rooms = new List<RoomData> {new RoomData(0, 0, 1, 1, Direction.North)};
+            List<CorridorData> corridors = new List<CorridorData> {new CorridorData(5, 5, 1, 1, Direction.East)};
 
             // Act
             DungeonData dungeonData = new DungeonData(board, rooms, corridors);
@@ -352,8 +347,8 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
             DungeonData dungeonData = new DungeonData(originalBoard, originalRooms, originalCorridors);
 
             BoardSquare[,] newBoard = new BoardSquare[20, 20];
-            List<RoomData> newRooms = new List<RoomData> { new RoomData(0, 0, 1, 1, Direction.North) };
-            List<CorridorData> newCorridors = new List<CorridorData> { new CorridorData(0, 0, 1, 1, Direction.South) };
+            List<RoomData> newRooms = new List<RoomData> {new RoomData(0, 0, 1, 1, Direction.North)};
+            List<CorridorData> newCorridors = new List<CorridorData> {new CorridorData(0, 0, 1, 1, Direction.South)};
 
             // Act
             dungeonData.Board = newBoard;

@@ -45,23 +45,27 @@ namespace Alis.Core.Aspect.Logging
     public sealed class LoggerFactory : IDisposable
     {
         /// <summary>
-        /// The log filter
+        ///     The log filter
         /// </summary>
         private readonly List<ILogFilter> _filters = new List<ILogFilter>();
+
         /// <summary>
-        /// The log output
+        ///     The log output
         /// </summary>
         private readonly List<ILogOutput> _outputs = new List<ILogOutput>();
+
         /// <summary>
-        /// The disposed
+        ///     The disposed
         /// </summary>
         private bool _disposed;
+
         /// <summary>
-        /// The formatter
+        ///     The formatter
         /// </summary>
         private ILogFormatter _formatter;
+
         /// <summary>
-        /// The trace
+        ///     The trace
         /// </summary>
         private LogLevel _minimumLevel = LogLevel.Trace;
 
@@ -72,9 +76,9 @@ namespace Alis.Core.Aspect.Logging
             // Default formatter
             _formatter = new SimpleLogFormatter();
 
-        
+
         /// <summary>
-        /// Disposes this instance
+        ///     Disposes this instance
         /// </summary>
         [ExcludeFromCodeCoverage]
         public void Dispose()

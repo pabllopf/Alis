@@ -95,16 +95,17 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         private class AwakeHandler : IOnAwake
         {
             /// <summary>
-            /// Gets or sets the value of the was awake called
+            ///     Gets or sets the value of the was awake called
             /// </summary>
             public bool WasAwakeCalled { get; private set; }
+
             /// <summary>
-            /// Gets or sets the value of the last game object
+            ///     Gets or sets the value of the last game object
             /// </summary>
             public IGameObject LastGameObject { get; private set; }
 
             /// <summary>
-            /// Ons the awake using the specified self
+            ///     Ons the awake using the specified self
             /// </summary>
             /// <param name="self">The self</param>
             public void OnAwake(IGameObject self)

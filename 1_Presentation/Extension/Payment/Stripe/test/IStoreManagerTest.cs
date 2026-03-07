@@ -28,9 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Reflection;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Alis.Extension.Payment.Stripe.Test
@@ -41,7 +39,7 @@ namespace Alis.Extension.Payment.Stripe.Test
     public class IStoreManagerTest
     {
         /// <summary>
-        /// Tests that i store manager is public interface
+        ///     Tests that i store manager is public interface
         /// </summary>
         [Fact]
         public void IStoreManager_IsPublicInterface()
@@ -55,7 +53,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that i store manager has is initialized property
+        ///     Tests that i store manager has is initialized property
         /// </summary>
         [Fact]
         public void IStoreManager_HasIsInitializedProperty()
@@ -71,7 +69,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that i store manager has initialize async method
+        ///     Tests that i store manager has initialize async method
         /// </summary>
         [Fact]
         public void IStoreManager_HasInitializeAsyncMethod()
@@ -87,7 +85,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that i store manager has register product method
+        ///     Tests that i store manager has register product method
         /// </summary>
         [Fact]
         public void IStoreManager_HasRegisterProductMethod()
@@ -103,7 +101,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that i store manager has register products method
+        ///     Tests that i store manager has register products method
         /// </summary>
         [Fact]
         public void IStoreManager_HasRegisterProductsMethod()
@@ -118,7 +116,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that i store manager has try get product method
+        ///     Tests that i store manager has try get product method
         /// </summary>
         [Fact]
         public void IStoreManager_HasTryGetProductMethod()
@@ -134,7 +132,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that i store manager has get products method
+        ///     Tests that i store manager has get products method
         /// </summary>
         [Fact]
         public void IStoreManager_HasGetProductsMethod()
@@ -149,7 +147,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that i store manager has create checkout session async method
+        ///     Tests that i store manager has create checkout session async method
         /// </summary>
         [Fact]
         public void IStoreManager_HasCreateCheckoutSessionAsyncMethod()
@@ -165,7 +163,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that i store manager has create payment intent async method
+        ///     Tests that i store manager has create payment intent async method
         /// </summary>
         [Fact]
         public void IStoreManager_HasCreatePaymentIntentAsyncMethod()
@@ -181,7 +179,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that i store manager has get payment status async method
+        ///     Tests that i store manager has get payment status async method
         /// </summary>
         [Fact]
         public void IStoreManager_HasGetPaymentStatusAsyncMethod()
@@ -197,7 +195,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that i store manager has refund payment async method
+        ///     Tests that i store manager has refund payment async method
         /// </summary>
         [Fact]
         public void IStoreManager_HasRefundPaymentAsyncMethod()
@@ -213,4 +211,3 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
     }
 }
-

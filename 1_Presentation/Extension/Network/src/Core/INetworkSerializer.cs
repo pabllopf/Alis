@@ -57,4 +57,3 @@ namespace Alis.Extension.Network.Core
         NetworkMessageEnvelope DeserializeEnvelope(string json);
     }
 }
-

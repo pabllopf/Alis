@@ -27,8 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math.Definition;
 using System.Runtime.Serialization;
+using Alis.Core.Aspect.Math.Definition;
 using Xunit;
 
 namespace Alis.Core.Aspect.Math.Test.Definition
@@ -178,7 +178,7 @@ namespace Alis.Core.Aspect.Math.Test.Definition
         }
 
         /// <summary>
-        /// Tests that white and transparent return expected values
+        ///     Tests that white and transparent return expected values
         /// </summary>
         [Fact]
         public void WhiteAndTransparent_ReturnExpectedValues()
@@ -198,7 +198,7 @@ namespace Alis.Core.Aspect.Math.Test.Definition
         }
 
         /// <summary>
-        /// Tests that primary palette properties return expected values
+        ///     Tests that primary palette properties return expected values
         /// </summary>
         [Fact]
         public void PrimaryPaletteProperties_ReturnExpectedValues()
@@ -216,7 +216,7 @@ namespace Alis.Core.Aspect.Math.Test.Definition
         }
 
         /// <summary>
-        /// Tests that get object data writes all channels
+        ///     Tests that get object data writes all channels
         /// </summary>
         [Fact]
         public void GetObjectData_WritesAllChannels()
@@ -224,12 +224,12 @@ namespace Alis.Core.Aspect.Math.Test.Definition
             Color color = new Color(1, 2, 3, 4);
             SerializationInfo info = new SerializationInfo(typeof(Color), new FormatterConverter());
 
-            color.GetObjectData(info, default);
+            color.GetObjectData(info, default(StreamingContext));
 
-            Assert.Equal((byte)1, info.GetByte("r"));
-            Assert.Equal((byte)2, info.GetByte("g"));
-            Assert.Equal((byte)3, info.GetByte("b"));
-            Assert.Equal((byte)4, info.GetByte("a"));
+            Assert.Equal((byte) 1, info.GetByte("r"));
+            Assert.Equal((byte) 2, info.GetByte("g"));
+            Assert.Equal((byte) 3, info.GetByte("b"));
+            Assert.Equal((byte) 4, info.GetByte("a"));
         }
     }
 }

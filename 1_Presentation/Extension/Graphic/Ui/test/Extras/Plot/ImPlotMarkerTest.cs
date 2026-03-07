@@ -1,25 +1,54 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:ImPlotMarkerTest.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using Alis.Extension.Graphic.Ui.Extras.Plot;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
 {
     /// <summary>
-    /// Provides unit coverage for <see cref="ImPlotMarker"/> enum values.
+    ///     Provides unit coverage for <see cref="ImPlotMarker" /> enum values.
     /// </summary>
     public class ImPlotMarkerTest
     {
         /// <summary>
-        /// Verifies that marker types are defined.
+        ///     Verifies that marker types are defined.
         /// </summary>
         [Fact]
         public void Circle_ShouldBeDefined()
         {
             ImPlotMarker marker = ImPlotMarker.Circle;
-            Assert.Equal(0, (int)marker);
+            Assert.Equal(0, (int) marker);
         }
 
         /// <summary>
-        /// Verifies that different marker types have distinct values.
+        ///     Verifies that different marker types have distinct values.
         /// </summary>
         [Fact]
         public void EnumValues_ShouldBeDistinct()
@@ -28,9 +57,8 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             ImPlotMarker square = ImPlotMarker.Square;
             ImPlotMarker diamond = ImPlotMarker.Diamond;
 
-            Assert.NotEqual((int)circle, (int)square);
-            Assert.NotEqual((int)square, (int)diamond);
+            Assert.NotEqual((int) circle, (int) square);
+            Assert.NotEqual((int) square, (int) diamond);
         }
     }
 }
-

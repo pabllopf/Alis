@@ -39,7 +39,7 @@ namespace Alis.Extension.Payment.Stripe.Test
     public class IStripeGatewayClientTest
     {
         /// <summary>
-        /// Tests that i stripe gateway client is public interface
+        ///     Tests that i stripe gateway client is public interface
         /// </summary>
         [Fact]
         public void IStripeGatewayClient_IsPublicInterface()
@@ -53,7 +53,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that i stripe gateway client has configure method
+        ///     Tests that i stripe gateway client has configure method
         /// </summary>
         [Fact]
         public void IStripeGatewayClient_HasConfigureMethod()
@@ -70,7 +70,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that i stripe gateway client has create checkout session async method
+        ///     Tests that i stripe gateway client has create checkout session async method
         /// </summary>
         [Fact]
         public void IStripeGatewayClient_HasCreateCheckoutSessionAsyncMethod()
@@ -86,7 +86,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that i stripe gateway client has create payment intent async method
+        ///     Tests that i stripe gateway client has create payment intent async method
         /// </summary>
         [Fact]
         public void IStripeGatewayClient_HasCreatePaymentIntentAsyncMethod()
@@ -102,7 +102,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that i stripe gateway client has get payment intent async method
+        ///     Tests that i stripe gateway client has get payment intent async method
         /// </summary>
         [Fact]
         public void IStripeGatewayClient_HasGetPaymentIntentAsyncMethod()
@@ -118,7 +118,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that i stripe gateway client has create refund async method
+        ///     Tests that i stripe gateway client has create refund async method
         /// </summary>
         [Fact]
         public void IStripeGatewayClient_HasCreateRefundAsyncMethod()
@@ -134,4 +134,3 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
     }
 }
-

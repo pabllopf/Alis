@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: Program.cs
+//  File:Program.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program. If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -38,33 +38,37 @@ using Alis.Extension.Network.Server;
 namespace Alis.Extension.Network.Sample.ConsoleGame.Server
 {
     /// <summary>
-    /// Simple multiplayer game server (console-based arena)
+    ///     Simple multiplayer game server (console-based arena)
     /// </summary>
     public static class Program
     {
         /// <summary>
-        /// The server manager
+        ///     The server manager
         /// </summary>
         private static NetworkServerManager _serverManager;
+
         /// <summary>
-        /// The game state
+        ///     The game state
         /// </summary>
         private static GameState _gameState;
+
         /// <summary>
-        /// The tick counter
+        ///     The tick counter
         /// </summary>
         private static long _tickCounter;
+
         /// <summary>
-        /// The game running
+        ///     The game running
         /// </summary>
         private static bool _gameRunning;
+
         /// <summary>
-        /// Whether server is also a player
+        ///     Whether server is also a player
         /// </summary>
         private static bool _serverIsPlayer;
 
         /// <summary>
-        /// Main the args
+        ///     Main the args
         /// </summary>
         /// <param name="args">The args</param>
         public static async Task Main(string[] args)
@@ -87,15 +91,17 @@ namespace Alis.Extension.Network.Sample.ConsoleGame.Server
 
                 _serverManager = new NetworkServerManager();
                 _gameState = new GameState();
-                
+
                 // If server is also a player, add server as a player
                 if (_serverIsPlayer)
                 {
                     Logger.Log("Enter server player name: ");
                     string serverPlayerName = Console.ReadLine();
                     if (string.IsNullOrEmpty(serverPlayerName))
+                    {
                         serverPlayerName = $"ServerPlayer_{Guid.NewGuid().ToString().Substring(0, 4)}";
-                    
+                    }
+
                     _gameState.AddPlayer("server_player", serverPlayerName);
                     Logger.Info($"✓ Server player: {serverPlayerName}");
                     Logger.Info("");
@@ -164,7 +170,7 @@ namespace Alis.Extension.Network.Sample.ConsoleGame.Server
         }
 
         /// <summary>
-        /// Game tick loop that updates game state periodically
+        ///     Game tick loop that updates game state periodically
         /// </summary>
         private static async Task GameTickLoopAsync()
         {
@@ -206,13 +212,13 @@ namespace Alis.Extension.Network.Sample.ConsoleGame.Server
 
 
         /// <summary>
-        /// Broadcasts full game state to all players
+        ///     Broadcasts full game state to all players
         /// </summary>
         private static async Task BroadcastGameStateAsync()
         {
             try
             {
-                List<string> segments = new System.Collections.Generic.List<string>();
+                List<string> segments = new List<string>();
 
                 foreach (PlayerData player in _gameState.Players.Values)
                 {
@@ -229,16 +235,16 @@ namespace Alis.Extension.Network.Sample.ConsoleGame.Server
                 }
 
                 string turnName = !string.IsNullOrEmpty(_gameState.CurrentTurnPlayerId)
-                    && _gameState.Players.TryGetValue(_gameState.CurrentTurnPlayerId, out PlayerData turnPlayer)
+                                  && _gameState.Players.TryGetValue(_gameState.CurrentTurnPlayerId, out PlayerData turnPlayer)
                     ? turnPlayer.PlayerName
                     : "No one";
 
-                int turnTicksRemaining = Math.Max(0, (int)(_gameState.TurnEndsAtTick - _tickCounter));
+                int turnTicksRemaining = Math.Max(0, (int) (_gameState.TurnEndsAtTick - _tickCounter));
                 segments.Add($"__meta__:turn:{_gameState.CurrentTurnPlayerId ?? string.Empty}");
                 segments.Add($"__meta__:turn_name:{turnName}");
                 segments.Add($"__meta__:turn_ticks:{turnTicksRemaining}");
                 segments.Add($"__meta__:tick:{_tickCounter}");
-                
+
                 // Include recent events in state broadcast
                 List<GameEvent> recentEvents = _gameState.Events.ToList();
                 if (recentEvents.Count > 0)
@@ -251,11 +257,12 @@ namespace Alis.Extension.Network.Sample.ConsoleGame.Server
                         string eventValue = $"{evt.EventType}|{evt.SourcePlayer ?? ""}|{evt.TargetPlayer ?? ""}|{evt.Description}";
                         segments.Add($"__meta__:{eventKey}:{eventValue}");
                     }
+
                     segments.Add($"__meta__:event_count:{recentEvents.Count}");
                 }
 
                 string stateData = string.Join("|", segments);
-                GameMessage msg = new GameMessage { MessageType = "state", Content = stateData };
+                GameMessage msg = new GameMessage {MessageType = "state", Content = stateData};
                 await _serverManager.BroadcastMessageAsync("game.update", msg);
             }
             catch (Exception ex)
@@ -267,7 +274,7 @@ namespace Alis.Extension.Network.Sample.ConsoleGame.Server
         }
 
         /// <summary>
-        /// Commands the loop
+        ///     Commands the loop
         /// </summary>
         private static async Task CommandLoopAsync()
         {
@@ -277,9 +284,11 @@ namespace Alis.Extension.Network.Sample.ConsoleGame.Server
                 {
                     Logger.Log("server> ");
                     string input = Console.ReadLine();
-                    
+
                     if (string.IsNullOrEmpty(input))
+                    {
                         continue;
+                    }
 
                     if (input.Equals("/quit", StringComparison.OrdinalIgnoreCase))
                     {
@@ -291,11 +300,11 @@ namespace Alis.Extension.Network.Sample.ConsoleGame.Server
                     {
                         IReadOnlyList<NetworkPlayer> players = _serverManager.GetConnectedPlayers();
                         List<NetworkPlayer> clientPlayers = players
-                            .Where(p => !p.IsHost && p.PlayerId != _serverManager.LocalPlayer?.PlayerId)
+                            .Where(p => !p.IsHost && (p.PlayerId != _serverManager.LocalPlayer?.PlayerId))
                             .ToList();
-                        
+
                         Logger.Info($"Connected players: {clientPlayers.Count}/{_serverManager.Config.MaxPlayers}");
-                        
+
                         foreach (NetworkPlayer connectedPlayer in clientPlayers)
                         {
                             if (_gameState.Players.TryGetValue(connectedPlayer.PlayerId, out PlayerData state))
@@ -304,6 +313,7 @@ namespace Alis.Extension.Network.Sample.ConsoleGame.Server
                                 Logger.Log($"  {status} {state.PlayerName,-15} HP={state.Health}/{state.MaxHealth} Score={state.Score} Lvl={state.Level} Pos=({state.X},{state.Y})");
                             }
                         }
+
                         Logger.Info("");
                     }
 
@@ -311,9 +321,9 @@ namespace Alis.Extension.Network.Sample.ConsoleGame.Server
                     {
                         IReadOnlyList<NetworkPlayer> allConnected = _serverManager.GetConnectedPlayers();
                         int clientCount = allConnected
-                            .Where(p => !p.IsHost && p.PlayerId != _serverManager.LocalPlayer?.PlayerId)
+                            .Where(p => !p.IsHost && (p.PlayerId != _serverManager.LocalPlayer?.PlayerId))
                             .Count();
-                        
+
                         Logger.Info("═ GAME STATUS ═");
                         Logger.Log($"Active Players (Clients): {clientCount}");
                         Logger.Log($"Active Sessions: {_serverManager.GetActiveSessions().Count}");
@@ -326,7 +336,7 @@ namespace Alis.Extension.Network.Sample.ConsoleGame.Server
                     if (input.StartsWith("/broadcast "))
                     {
                         string message = input.Substring(11);
-                        GameMessage msg = new GameMessage { MessageType = "server_broadcast", Content = message };
+                        GameMessage msg = new GameMessage {MessageType = "server_broadcast", Content = message};
                         await _serverManager.BroadcastMessageAsync("game.chat", msg);
                         Logger.Info($"✓ Broadcast: {message}");
                     }
@@ -361,7 +371,7 @@ namespace Alis.Extension.Network.Sample.ConsoleGame.Server
         }
 
         /// <summary>
-        /// Registers the handlers
+        ///     Registers the handlers
         /// </summary>
         private static void RegisterHandlers()
         {
@@ -374,7 +384,7 @@ namespace Alis.Extension.Network.Sample.ConsoleGame.Server
         }
 
         /// <summary>
-        /// Registers the events
+        ///     Registers the events
         /// </summary>
         private static void RegisterEvents()
         {
@@ -383,7 +393,7 @@ namespace Alis.Extension.Network.Sample.ConsoleGame.Server
                 _gameState.AddPlayer(e.Player.PlayerId, e.Player.PlayerName);
 
                 Logger.Info($"→ {e.Player.PlayerName} connected ({e.Player.PlayerId})");
-                Logger.Log($"   Connected players: {_serverManager.GetConnectedPlayers().Where(p => !p.IsHost && p.PlayerId != _serverManager.LocalPlayer?.PlayerId).Count()}");
+                Logger.Log($"   Connected players: {_serverManager.GetConnectedPlayers().Where(p => !p.IsHost && (p.PlayerId != _serverManager.LocalPlayer?.PlayerId)).Count()}");
 
                 _gameState.AddEvent(new GameEvent
                 {
@@ -397,7 +407,7 @@ namespace Alis.Extension.Network.Sample.ConsoleGame.Server
             {
                 Logger.Info($"← {e.Player.PlayerName} disconnected ({e.Player.PlayerId})");
                 _gameState.RemovePlayer(e.Player.PlayerId);
-                Logger.Log($"   Connected players: {_serverManager.GetConnectedPlayers().Where(p => !p.IsHost && p.PlayerId != _serverManager.LocalPlayer?.PlayerId).Count()}");
+                Logger.Log($"   Connected players: {_serverManager.GetConnectedPlayers().Where(p => !p.IsHost && (p.PlayerId != _serverManager.LocalPlayer?.PlayerId)).Count()}");
 
                 _gameState.AddEvent(new GameEvent
                 {
@@ -412,7 +422,7 @@ namespace Alis.Extension.Network.Sample.ConsoleGame.Server
         }
 
         /// <summary>
-        /// Ons the player move using the specified sender id
+        ///     Ons the player move using the specified sender id
         /// </summary>
         private static async Task OnPlayerMove(string senderId, string payload)
         {
@@ -421,7 +431,7 @@ namespace Alis.Extension.Network.Sample.ConsoleGame.Server
                 string content = ExtractGameMessageContent(payload);
                 string[] moveParts = content.Split(',');
 
-                if (moveParts.Length == 2 && int.TryParse(moveParts[0], out int x) && int.TryParse(moveParts[1], out int y))
+                if ((moveParts.Length == 2) && int.TryParse(moveParts[0], out int x) && int.TryParse(moveParts[1], out int y))
                 {
                     if (_gameState.ProcessMove(senderId, x, y))
                     {
@@ -429,6 +439,7 @@ namespace Alis.Extension.Network.Sample.ConsoleGame.Server
                         {
                             _gameState.AdvanceTurn(_tickCounter);
                         }
+
                         Logger.Log($"[MOVE] {senderId} -> ({x}, {y})");
                     }
                 }
@@ -442,14 +453,14 @@ namespace Alis.Extension.Network.Sample.ConsoleGame.Server
         }
 
         /// <summary>
-        /// Ons the player attack using the specified sender id
+        ///     Ons the player attack using the specified sender id
         /// </summary>
         private static async Task OnPlayerAttack(string senderId, string payload)
         {
             try
             {
                 string targetName = ExtractGameMessageContent(payload);
-                
+
                 if (!_gameState.Players.TryGetValue(senderId, out PlayerData attacker) || !attacker.IsAlive)
                 {
                     Logger.Error($"[ATTACK] {senderId} is not alive or not found!");
@@ -457,15 +468,15 @@ namespace Alis.Extension.Network.Sample.ConsoleGame.Server
                 }
 
                 // Check if it's player's turn
-                if (!string.IsNullOrWhiteSpace(_gameState.CurrentTurnPlayerId) && _gameState.CurrentTurnPlayerId != senderId)
+                if (!string.IsNullOrWhiteSpace(_gameState.CurrentTurnPlayerId) && (_gameState.CurrentTurnPlayerId != senderId))
                 {
                     string turnName = !string.IsNullOrEmpty(_gameState.CurrentTurnPlayerId)
-                        && _gameState.Players.TryGetValue(_gameState.CurrentTurnPlayerId, out PlayerData turnPlayer)
+                                      && _gameState.Players.TryGetValue(_gameState.CurrentTurnPlayerId, out PlayerData turnPlayer)
                         ? turnPlayer.PlayerName
                         : "Unknown";
 
                     Logger.Log($"[ATTACK] {attacker.PlayerName} tried to attack but it's {turnName}'s turn!");
-                    
+
                     GameMessage notice = new GameMessage
                     {
                         MessageType = "chat",
@@ -479,17 +490,17 @@ namespace Alis.Extension.Network.Sample.ConsoleGame.Server
                 PlayerData target = null;
                 foreach (PlayerData player in _gameState.Players.Values)
                 {
-                    if (player.PlayerName == targetName && player.PlayerId != senderId && player.IsAlive)
+                    if ((player.PlayerName == targetName) && (player.PlayerId != senderId) && player.IsAlive)
                     {
                         target = player;
                         break;
                     }
                 }
-                
+
                 if (target == null)
                 {
                     Logger.Log($"[ATTACK] {attacker.PlayerName} tried to attack {targetName} but target not found!");
-                    
+
                     GameMessage msg = new GameMessage
                     {
                         MessageType = "chat",
@@ -504,7 +515,7 @@ namespace Alis.Extension.Network.Sample.ConsoleGame.Server
                 if (distance > CombatSystem.MaxAttackDistance)
                 {
                     Logger.Log($"[ATTACK] {attacker.PlayerName} too far from {target.PlayerName} (distance: {distance})!");
-                    
+
                     GameMessage msg = new GameMessage
                     {
                         MessageType = "chat",
@@ -525,7 +536,7 @@ namespace Alis.Extension.Network.Sample.ConsoleGame.Server
                 // Apply damage
                 target.Health = Math.Max(0, target.Health - damage);
                 attacker.Score += damage;
-                
+
                 _gameState.AddEvent(new GameEvent
                 {
                     EventType = "attack",
@@ -543,17 +554,17 @@ namespace Alis.Extension.Network.Sample.ConsoleGame.Server
                     target.Deaths++;
                     attacker.Kills++;
                     attacker.Score += 50;
-                    
+
                     int xp = CombatSystem.GetExperienceReward(target.Level);
                     attacker.Experience += xp;
-                    
+
                     // Level up check
                     if (attacker.Experience >= attacker.Level * 100)
                     {
                         attacker.Level++;
-                        attacker.MaxHealth = 100 + (attacker.Level * 10);
+                        attacker.MaxHealth = 100 + attacker.Level * 10;
                         attacker.Health = attacker.MaxHealth;
-                        
+
                         _gameState.AddEvent(new GameEvent
                         {
                             EventType = "levelup",
@@ -561,7 +572,7 @@ namespace Alis.Extension.Network.Sample.ConsoleGame.Server
                             Description = $"{attacker.PlayerName} leveled up to {attacker.Level}!"
                         });
                     }
-                    
+
                     _gameState.AddEvent(new GameEvent
                     {
                         EventType = "death",
@@ -569,13 +580,13 @@ namespace Alis.Extension.Network.Sample.ConsoleGame.Server
                         TargetPlayer = target.PlayerId,
                         Description = $"{target.PlayerName} was defeated by {attacker.PlayerName}!"
                     });
-                    
+
                     Logger.Log($"[DEATH] {target.PlayerName} killed by {attacker.PlayerName}!");
                 }
 
                 // Advance turn after attack
                 _gameState.AdvanceTurn(_tickCounter);
-                
+
                 // Broadcast result to all clients
                 GameMessage result = new GameMessage
                 {
@@ -593,7 +604,7 @@ namespace Alis.Extension.Network.Sample.ConsoleGame.Server
         }
 
         /// <summary>
-        /// Ons the player spawn using the specified sender id
+        ///     Ons the player spawn using the specified sender id
         /// </summary>
         private static async Task OnPlayerSpawn(string senderId, string payload)
         {
@@ -614,7 +625,7 @@ namespace Alis.Extension.Network.Sample.ConsoleGame.Server
         }
 
         /// <summary>
-        /// Ons the game chat using the specified sender id
+        ///     Ons the game chat using the specified sender id
         /// </summary>
         private static async Task OnGameChat(string senderId, string payload)
         {
@@ -626,7 +637,7 @@ namespace Alis.Extension.Network.Sample.ConsoleGame.Server
                 {
                     Logger.Log($"[CHAT] {state.PlayerName}: {content}");
 
-                    GameMessage msg = new GameMessage { MessageType = "chat", Content = $"{state.PlayerName}:{content}" };
+                    GameMessage msg = new GameMessage {MessageType = "chat", Content = $"{state.PlayerName}:{content}"};
                     await _serverManager.BroadcastMessageAsync("game.chat", msg);
 
                     _gameState.AddEvent(new GameEvent
@@ -646,7 +657,7 @@ namespace Alis.Extension.Network.Sample.ConsoleGame.Server
         }
 
         /// <summary>
-        /// Ons the system join using the specified sender id
+        ///     Ons the system join using the specified sender id
         /// </summary>
         /// <param name="senderId">The sender id</param>
         /// <param name="payload">The payload</param>
@@ -676,7 +687,7 @@ namespace Alis.Extension.Network.Sample.ConsoleGame.Server
         }
 
         /// <summary>
-        /// Ons the player end turn using the specified sender id
+        ///     Ons the player end turn using the specified sender id
         /// </summary>
         /// <param name="senderId">The sender id</param>
         /// <param name="payload">The payload</param>
@@ -699,21 +710,23 @@ namespace Alis.Extension.Network.Sample.ConsoleGame.Server
         }
 
         /// <summary>
-        /// Extracts the game message content using the specified payload
+        ///     Extracts the game message content using the specified payload
         /// </summary>
         /// <param name="payload">The payload</param>
         /// <returns>The string</returns>
         private static string ExtractGameMessageContent(string payload)
         {
             if (string.IsNullOrWhiteSpace(payload))
+            {
                 return string.Empty;
+            }
 
             string content = ExtractJsonField(payload, "Content") ?? ExtractJsonField(payload, "content");
             return string.IsNullOrEmpty(content) ? payload : content;
         }
 
         /// <summary>
-        /// Extracts the json field using the specified json
+        ///     Extracts the json field using the specified json
         /// </summary>
         /// <param name="json">The json</param>
         /// <param name="fieldName">The field name</param>
@@ -725,12 +738,16 @@ namespace Alis.Extension.Network.Sample.ConsoleGame.Server
                 string search = $"\"{fieldName}\":\"";
                 int startIndex = json.IndexOf(search, StringComparison.Ordinal);
                 if (startIndex == -1)
+                {
                     return null;
+                }
 
                 startIndex += search.Length;
                 int endIndex = json.IndexOf("\"", startIndex, StringComparison.Ordinal);
                 if (endIndex == -1)
+                {
                     return null;
+                }
 
                 return json.Substring(startIndex, endIndex - startIndex)
                     .Replace("\\\"", "\"")
@@ -744,4 +761,3 @@ namespace Alis.Extension.Network.Sample.ConsoleGame.Server
         }
     }
 }
-

@@ -100,16 +100,17 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         private class UpdateHandler : IOnUpdate
         {
             /// <summary>
-            /// Gets or sets the value of the was update called
+            ///     Gets or sets the value of the was update called
             /// </summary>
             public bool WasUpdateCalled { get; private set; }
+
             /// <summary>
-            /// Gets or sets the value of the update count
+            ///     Gets or sets the value of the update count
             /// </summary>
             public int UpdateCount { get; private set; }
 
             /// <summary>
-            /// Ons the update using the specified self
+            ///     Ons the update using the specified self
             /// </summary>
             /// <param name="self">The self</param>
             public void OnUpdate(IGameObject self)

@@ -44,7 +44,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
     public class FileLogOutputMacOSTest
     {
         /// <summary>
-        /// Tests that file log output mac os application support directory
+        ///     Tests that file log output mac os application support directory
         /// </summary>
         [Fact(Skip = "Only run on macOS")]
         public void FileLogOutput_MacOS_ApplicationSupportDirectory()
@@ -87,7 +87,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         }
 
         /// <summary>
-        /// Tests that file log output mac os unix line endings
+        ///     Tests that file log output mac os unix line endings
         /// </summary>
         [Fact(Skip = "Only run on macOS")]
         public void FileLogOutput_MacOS_UnixLineEndings()
@@ -121,7 +121,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         }
 
         /// <summary>
-        /// Tests that file log output mac os case sensitive file system
+        ///     Tests that file log output mac os case sensitive file system
         /// </summary>
         [Fact(Skip = "Only run on macOS")]
         public void FileLogOutput_MacOS_CaseSensitiveFileSystem()
@@ -153,7 +153,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         }
 
         /// <summary>
-        /// Tests that file log output cross platform path separator
+        ///     Tests that file log output cross platform path separator
         /// </summary>
         [Fact]
         public void FileLogOutput_CrossPlatformPathSeparator()

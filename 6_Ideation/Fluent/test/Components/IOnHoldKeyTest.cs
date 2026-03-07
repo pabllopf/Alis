@@ -86,16 +86,17 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         private class HoldKeyHandler : IOnHoldKey
         {
             /// <summary>
-            /// Gets or sets the value of the hold count
+            ///     Gets or sets the value of the hold count
             /// </summary>
             public int HoldCount { get; private set; }
+
             /// <summary>
-            /// Gets or sets the value of the total hold time
+            ///     Gets or sets the value of the total hold time
             /// </summary>
             public TimeSpan TotalHoldTime { get; private set; }
 
             /// <summary>
-            /// Ons the hold key using the specified info
+            ///     Ons the hold key using the specified info
             /// </summary>
             /// <param name="info">The info</param>
             public void OnHoldKey(KeyEventInfo info)
@@ -103,7 +104,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
             }
 
             /// <summary>
-            /// Ons the hold key using the specified self
+            ///     Ons the hold key using the specified self
             /// </summary>
             /// <param name="self">The self</param>
             /// <param name="keyInfo">The key info</param>

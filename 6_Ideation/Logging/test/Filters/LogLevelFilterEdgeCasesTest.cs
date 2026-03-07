@@ -41,7 +41,7 @@ namespace Alis.Core.Aspect.Logging.Test.Filters
     public class LogLevelFilterEdgeCasesTest
     {
         /// <summary>
-        /// Tests that log level filter boundary trace should be equal
+        ///     Tests that log level filter boundary trace should be equal
         /// </summary>
         [Fact]
         public void LogLevelFilter_BoundaryTrace_ShouldBeEqual()
@@ -54,7 +54,7 @@ namespace Alis.Core.Aspect.Logging.Test.Filters
         }
 
         /// <summary>
-        /// Tests that log level filter boundary none should reject none
+        ///     Tests that log level filter boundary none should reject none
         /// </summary>
         [Fact]
         public void LogLevelFilter_BoundaryNone_ShouldRejectNone()
@@ -67,7 +67,7 @@ namespace Alis.Core.Aspect.Logging.Test.Filters
         }
 
         /// <summary>
-        /// Tests that log level filter all boundaries should work
+        ///     Tests that log level filter all boundaries should work
         /// </summary>
         [Fact]
         public void LogLevelFilter_AllBoundaries_ShouldWork()
@@ -83,7 +83,7 @@ namespace Alis.Core.Aspect.Logging.Test.Filters
         }
 
         /// <summary>
-        /// Tests that log level filter byte comparison should be direct
+        ///     Tests that log level filter byte comparison should be direct
         /// </summary>
         [Fact]
         public void LogLevelFilter_ByteComparison_ShouldBeDirect()
@@ -98,7 +98,7 @@ namespace Alis.Core.Aspect.Logging.Test.Filters
         }
 
         /// <summary>
-        /// Tests that log level filter multiple filter instances should be independent
+        ///     Tests that log level filter multiple filter instances should be independent
         /// </summary>
         [Fact]
         public void LogLevelFilter_MultipleFilterInstances_ShouldBeIndependent()
@@ -116,7 +116,7 @@ namespace Alis.Core.Aspect.Logging.Test.Filters
         }
 
         /// <summary>
-        /// Tests that log level filter reusability should work multiple times
+        ///     Tests that log level filter reusability should work multiple times
         /// </summary>
         [Fact]
         public void LogLevelFilter_Reusability_ShouldWorkMultipleTimes()
@@ -133,7 +133,7 @@ namespace Alis.Core.Aspect.Logging.Test.Filters
         }
 
         /// <summary>
-        /// Creates the entry using the specified level
+        ///     Creates the entry using the specified level
         /// </summary>
         /// <param name="level">The level</param>
         /// <returns>The log entry</returns>

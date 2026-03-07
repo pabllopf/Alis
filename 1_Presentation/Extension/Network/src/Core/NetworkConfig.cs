@@ -82,4 +82,3 @@ namespace Alis.Extension.Network.Core
         public int MaxMessageSize { get; set; } = 1024 * 64; // 64KB
     }
 }
-

@@ -28,8 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Net.WebSockets;
 using System.Text;
 using System.Threading;
@@ -42,56 +42,67 @@ namespace Alis.Extension.Network.Client
     /// <summary>
     ///     Client-side network manager implementation
     /// </summary>
-    public class NetworkClientManager : Core.INetworkClientManager
+    public class NetworkClientManager : INetworkClientManager
     {
         /// <summary>
-        /// The id
+        ///     The id
         /// </summary>
-        private string _id;
+        private readonly string _id;
+
         /// <summary>
-        /// The uninitialized
-        /// </summary>
-        private NetworkManagerState _state = NetworkManagerState.Uninitialized;
-        /// <summary>
-        /// The config
-        /// </summary>
-        private NetworkConfig _config;
-        /// <summary>
-        /// The current session
-        /// </summary>
-        private NetworkSession _currentSession;
-        /// <summary>
-        /// The local player
-        /// </summary>
-        private NetworkPlayer _localPlayer;
-        /// <summary>
-        /// The serializer
-        /// </summary>
-        private INetworkSerializer _serializer;
-        /// <summary>
-        /// The server socket
-        /// </summary>
-        private WebSocket _serverSocket;
-        /// <summary>
-        /// The server uri
-        /// </summary>
-        private Uri _serverUri;
-        /// <summary>
-        /// The cancellation token source
-        /// </summary>
-        private CancellationTokenSource _cancellationTokenSource;
-        /// <summary>
-        /// The message handlers
-        /// </summary>
-        private readonly ConcurrentDictionary<string, Func<string, string, Task>> _messageHandlers;
-        /// <summary>
-        /// The lock object
+        ///     The lock object
         /// </summary>
         private readonly object _lockObject = new object();
+
         /// <summary>
-        /// The is disposed
+        ///     The message handlers
+        /// </summary>
+        private readonly ConcurrentDictionary<string, Func<string, string, Task>> _messageHandlers;
+
+        /// <summary>
+        ///     The cancellation token source
+        /// </summary>
+        private CancellationTokenSource _cancellationTokenSource;
+
+        /// <summary>
+        ///     The config
+        /// </summary>
+        private NetworkConfig _config;
+
+        /// <summary>
+        ///     The current session
+        /// </summary>
+        private NetworkSession _currentSession;
+
+        /// <summary>
+        ///     The is disposed
         /// </summary>
         private bool _isDisposed;
+
+        /// <summary>
+        ///     The local player
+        /// </summary>
+        private NetworkPlayer _localPlayer;
+
+        /// <summary>
+        ///     The serializer
+        /// </summary>
+        private INetworkSerializer _serializer;
+
+        /// <summary>
+        ///     The server socket
+        /// </summary>
+        private WebSocket _serverSocket;
+
+        /// <summary>
+        ///     The server uri
+        /// </summary>
+        private Uri _serverUri;
+
+        /// <summary>
+        ///     The uninitialized
+        /// </summary>
+        private NetworkManagerState _state = NetworkManagerState.Uninitialized;
 
         /// <summary>
         ///     Initializes client manager
@@ -135,12 +146,12 @@ namespace Alis.Extension.Network.Client
         /// <summary>
         ///     Player joined event
         /// </summary>
-        public event EventHandler<Core.PlayerEventArgs> PlayerJoined;
+        public event EventHandler<PlayerEventArgs> PlayerJoined;
 
         /// <summary>
         ///     Player left event
         /// </summary>
-        public event EventHandler<Core.PlayerEventArgs> PlayerLeft;
+        public event EventHandler<PlayerEventArgs> PlayerLeft;
 
         /// <summary>
         ///     Connected event
@@ -155,7 +166,7 @@ namespace Alis.Extension.Network.Client
         /// <summary>
         ///     Error event
         /// </summary>
-        public event EventHandler<Core.NetworkErrorEventArgs> Error;
+        public event EventHandler<NetworkErrorEventArgs> Error;
 
         /// <summary>
         ///     Server message received event
@@ -165,16 +176,18 @@ namespace Alis.Extension.Network.Client
         /// <summary>
         ///     Initializes manager
         /// </summary>
-        public async Task InitializeAsync(Core.NetworkConfig config, CancellationToken cancellationToken = default)
+        public async Task InitializeAsync(NetworkConfig config, CancellationToken cancellationToken = default(CancellationToken))
         {
             lock (_lockObject)
             {
-                if (_state != Core.NetworkManagerState.Uninitialized)
+                if (_state != NetworkManagerState.Uninitialized)
+                {
                     throw new InvalidOperationException("Already initialized");
+                }
 
-                _state = Core.NetworkManagerState.Idle;
-                _config = config ?? new Core.NetworkConfig();
-                _serializer = new Core.NetworkSerializer();
+                _state = NetworkManagerState.Idle;
+                _config = config ?? new NetworkConfig();
+                _serializer = new NetworkSerializer();
             }
 
             await Task.CompletedTask;
@@ -183,12 +196,14 @@ namespace Alis.Extension.Network.Client
         /// <summary>
         ///     Starts manager
         /// </summary>
-        public async Task StartAsync(CancellationToken cancellationToken = default)
+        public async Task StartAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             lock (_lockObject)
             {
-                if (_state != Core.NetworkManagerState.Idle && _state != Core.NetworkManagerState.Disconnected)
+                if ((_state != NetworkManagerState.Idle) && (_state != NetworkManagerState.Disconnected))
+                {
                     throw new InvalidOperationException("Cannot start in current state");
+                }
             }
 
             await Task.CompletedTask;
@@ -197,7 +212,7 @@ namespace Alis.Extension.Network.Client
         /// <summary>
         ///     Stops manager
         /// </summary>
-        public async Task StopAsync(CancellationToken cancellationToken = default)
+        public async Task StopAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             await DisconnectAsync(cancellationToken);
         }
@@ -205,12 +220,14 @@ namespace Alis.Extension.Network.Client
         /// <summary>
         ///     Connects to server
         /// </summary>
-        public async Task ConnectAsync(Uri serverUri, string playerName, CancellationToken cancellationToken = default)
+        public async Task ConnectAsync(Uri serverUri, string playerName, CancellationToken cancellationToken = default(CancellationToken))
         {
             lock (_lockObject)
             {
-                if (_state != NetworkManagerState.Idle && _state != NetworkManagerState.Disconnected)
+                if ((_state != NetworkManagerState.Idle) && (_state != NetworkManagerState.Disconnected))
+                {
                     throw new InvalidOperationException("Cannot connect in current state");
+                }
 
                 _state = NetworkManagerState.Connecting;
             }
@@ -239,11 +256,11 @@ namespace Alis.Extension.Network.Client
                 }
 
                 // Send handshake to register on server
-                Dictionary<string, string> handshakeMsg = new System.Collections.Generic.Dictionary<string, string>
+                Dictionary<string, string> handshakeMsg = new Dictionary<string, string>
                 {
-                    { "action", "join" },
-                    { "playerId", _localPlayer.PlayerId },
-                    { "playerName", _localPlayer.PlayerName }
+                    {"action", "join"},
+                    {"playerId", _localPlayer.PlayerId},
+                    {"playerName", _localPlayer.PlayerName}
                 };
                 string handshakePayload = $"{{\"action\":\"join\",\"playerId\":\"{_localPlayer.PlayerId}\",\"playerName\":\"{_localPlayer.PlayerName}\"}}";
                 NetworkMessageEnvelope handshakeEnvelope = new NetworkMessageEnvelope
@@ -278,21 +295,23 @@ namespace Alis.Extension.Network.Client
         /// <summary>
         ///     Disconnects from server
         /// </summary>
-        public async Task DisconnectAsync(CancellationToken cancellationToken = default)
+        public async Task DisconnectAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             lock (_lockObject)
             {
-                if (_state == Core.NetworkManagerState.Disconnected || _state == Core.NetworkManagerState.Uninitialized)
+                if (_state == NetworkManagerState.Disconnected || _state == NetworkManagerState.Uninitialized)
+                {
                     return;
+                }
 
-                _state = Core.NetworkManagerState.Disconnecting;
+                _state = NetworkManagerState.Disconnecting;
             }
 
             try
             {
                 _cancellationTokenSource?.Cancel();
 
-                if (_serverSocket != null && _serverSocket.State == WebSocketState.Open)
+                if ((_serverSocket != null) && (_serverSocket.State == WebSocketState.Open))
                 {
                     await _serverSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, null, cancellationToken);
                 }
@@ -304,14 +323,14 @@ namespace Alis.Extension.Network.Client
 
                 lock (_lockObject)
                 {
-                    _state = Core.NetworkManagerState.Disconnected;
+                    _state = NetworkManagerState.Disconnected;
                 }
 
                 Disconnected?.Invoke(this, EventArgs.Empty);
             }
             catch (Exception ex)
             {
-                Error?.Invoke(this, new Core.NetworkErrorEventArgs("Error during disconnect", ex));
+                Error?.Invoke(this, new NetworkErrorEventArgs("Error during disconnect", ex));
             }
         }
 
@@ -321,10 +340,12 @@ namespace Alis.Extension.Network.Client
         public async Task SendMessageAsync<T>(string targetPlayerId, string channel, T message, bool reliable = true) where T : IJsonSerializable
         {
             if (_serverSocket == null || _serverSocket.State != WebSocketState.Open)
+            {
                 throw new InvalidOperationException("Not connected to server");
+            }
 
             string payload = _serializer.Serialize(message);
-            NetworkMessageEnvelope envelope = new Core.NetworkMessageEnvelope
+            NetworkMessageEnvelope envelope = new NetworkMessageEnvelope
             {
                 MessageId = Guid.NewGuid().ToString(),
                 MessageType = typeof(T).Name,
@@ -334,7 +355,7 @@ namespace Alis.Extension.Network.Client
                 Payload = payload,
                 ClientTimestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds(),
                 IsReliable = reliable,
-                SequenceNumber = (uint)(DateTime.UtcNow.Ticks % uint.MaxValue)
+                SequenceNumber = (uint) (DateTime.UtcNow.Ticks % uint.MaxValue)
             };
 
             string json = _serializer.SerializeEnvelope(envelope);
@@ -349,10 +370,12 @@ namespace Alis.Extension.Network.Client
         public async Task BroadcastMessageAsync<T>(string channel, T message, bool reliable = true, string exceptPlayerId = null) where T : IJsonSerializable
         {
             if (_serverSocket == null || _serverSocket.State != WebSocketState.Open)
+            {
                 throw new InvalidOperationException("Not connected to server");
+            }
 
             string payload = _serializer.Serialize(message);
-            NetworkMessageEnvelope envelope = new Core.NetworkMessageEnvelope
+            NetworkMessageEnvelope envelope = new NetworkMessageEnvelope
             {
                 MessageId = Guid.NewGuid().ToString(),
                 MessageType = typeof(T).Name,
@@ -362,7 +385,7 @@ namespace Alis.Extension.Network.Client
                 Payload = payload,
                 ClientTimestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds(),
                 IsReliable = reliable,
-                SequenceNumber = (uint)(DateTime.UtcNow.Ticks % uint.MaxValue)
+                SequenceNumber = (uint) (DateTime.UtcNow.Ticks % uint.MaxValue)
             };
 
             string json = _serializer.SerializeEnvelope(envelope);
@@ -390,17 +413,40 @@ namespace Alis.Extension.Network.Client
         /// <summary>
         ///     Gets connected players
         /// </summary>
-        public IReadOnlyList<Core.NetworkPlayer> GetConnectedPlayers()
-        {
-            return _currentSession?.Players ?? new List<Core.NetworkPlayer>();
-        }
+        public IReadOnlyList<NetworkPlayer> GetConnectedPlayers() => _currentSession?.Players ?? new List<NetworkPlayer>();
 
         /// <summary>
         ///     Gets player by ID
         /// </summary>
-        public Core.NetworkPlayer GetPlayer(string playerId)
+        public NetworkPlayer GetPlayer(string playerId)
         {
             return _currentSession?.Players.Find(p => p.PlayerId == playerId);
+        }
+
+        /// <summary>
+        ///     Disposes manager
+        /// </summary>
+        public void Dispose()
+        {
+            if (_isDisposed)
+            {
+                return;
+            }
+
+            _isDisposed = true;
+
+            try
+            {
+                DisconnectAsync().Wait(TimeSpan.FromSeconds(5));
+            }
+            catch (Exception)
+            {
+                // Ignore disposal errors
+            }
+
+            _cancellationTokenSource?.Dispose();
+            _serverSocket?.Dispose();
+            GC.SuppressFinalize(this);
         }
 
         /// <summary>
@@ -412,7 +458,7 @@ namespace Alis.Extension.Network.Client
 
             try
             {
-                while (_serverSocket.State == WebSocketState.Open && !cancellationToken.IsCancellationRequested)
+                while ((_serverSocket.State == WebSocketState.Open) && !cancellationToken.IsCancellationRequested)
                 {
                     WebSocketReceiveResult result = await _serverSocket.ReceiveAsync(new ArraySegment<byte>(buffer), cancellationToken);
 
@@ -435,37 +481,12 @@ namespace Alis.Extension.Network.Client
             }
             catch (Exception ex)
             {
-                Error?.Invoke(this, new Core.NetworkErrorEventArgs("Error receiving messages", ex));
+                Error?.Invoke(this, new NetworkErrorEventArgs("Error receiving messages", ex));
             }
             finally
             {
                 await DisconnectAsync();
             }
         }
-
-        /// <summary>
-        ///     Disposes manager
-        /// </summary>
-        public void Dispose()
-        {
-            if (_isDisposed)
-                return;
-
-            _isDisposed = true;
-
-            try
-            {
-                DisconnectAsync().Wait(TimeSpan.FromSeconds(5));
-            }
-            catch (Exception)
-            {
-                // Ignore disposal errors
-            }
-
-            _cancellationTokenSource?.Dispose();
-            _serverSocket?.Dispose();
-            GC.SuppressFinalize(this);
-        }
     }
 }
-

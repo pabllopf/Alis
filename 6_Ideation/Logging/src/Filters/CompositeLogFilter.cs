@@ -40,11 +40,12 @@ namespace Alis.Core.Aspect.Logging.Filters
     public sealed class CompositeLogFilter : ILogFilter
     {
         /// <summary>
-        /// The filters
+        ///     The filters
         /// </summary>
         private readonly List<ILogFilter> _filters;
+
         /// <summary>
-        /// The require all
+        ///     The require all
         /// </summary>
         private readonly bool _requireAll;
 
@@ -59,15 +60,15 @@ namespace Alis.Core.Aspect.Logging.Filters
             _requireAll = requireAll;
         }
 
-        
+
         /// <summary>
-        /// Gets the value of the name
+        ///     Gets the value of the name
         /// </summary>
         public string Name => $"CompositeFilter[{(_requireAll ? "AND" : "OR")}:{_filters.Count}]";
 
-        
+
         /// <summary>
-        /// Shoulds the log using the specified entry
+        ///     Shoulds the log using the specified entry
         /// </summary>
         /// <param name="entry">The entry</param>
         /// <returns>The bool</returns>

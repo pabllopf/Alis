@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Data.Json;
 
@@ -94,30 +93,14 @@ namespace Alis.Extension.Network.Core
         public bool IsOrdered { get; set; } = true;
 
         /// <summary>
-        ///     Gets serializable properties
-        /// </summary>
-        public IEnumerable<(string, string)> GetSerializableProperties()
-        {
-            yield return (nameof(MessageId), MessageId);
-            yield return (nameof(MessageType), MessageType);
-            yield return (nameof(SenderId), SenderId);
-            yield return (nameof(TargetId), TargetId);
-            yield return (nameof(Channel), Channel);
-            yield return (nameof(Payload), Payload);
-            yield return (nameof(ServerTimestamp), ServerTimestamp.ToString());
-            yield return (nameof(ClientTimestamp), ClientTimestamp.ToString());
-            yield return (nameof(SequenceNumber), SequenceNumber.ToString());
-            yield return (nameof(IsReliable), IsReliable.ToString());
-            yield return (nameof(IsOrdered), IsOrdered.ToString());
-        }
-
-        /// <summary>
         ///     Creates instance from properties
         /// </summary>
         public NetworkMessageEnvelope CreateFromProperties(Dictionary<string, string> properties)
         {
             if (properties == null)
+            {
                 return new NetworkMessageEnvelope();
+            }
 
             NetworkMessageEnvelope envelope = new NetworkMessageEnvelope
             {
@@ -136,7 +119,23 @@ namespace Alis.Extension.Network.Core
 
             return envelope;
         }
+
+        /// <summary>
+        ///     Gets serializable properties
+        /// </summary>
+        public IEnumerable<(string, string)> GetSerializableProperties()
+        {
+            yield return (nameof(MessageId), MessageId);
+            yield return (nameof(MessageType), MessageType);
+            yield return (nameof(SenderId), SenderId);
+            yield return (nameof(TargetId), TargetId);
+            yield return (nameof(Channel), Channel);
+            yield return (nameof(Payload), Payload);
+            yield return (nameof(ServerTimestamp), ServerTimestamp.ToString());
+            yield return (nameof(ClientTimestamp), ClientTimestamp.ToString());
+            yield return (nameof(SequenceNumber), SequenceNumber.ToString());
+            yield return (nameof(IsReliable), IsReliable.ToString());
+            yield return (nameof(IsOrdered), IsOrdered.ToString());
+        }
     }
 }
-
-

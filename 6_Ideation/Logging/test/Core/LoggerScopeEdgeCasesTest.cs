@@ -42,7 +42,7 @@ namespace Alis.Core.Aspect.Logging.Test.Core
     public class LoggerScopeEdgeCasesTest
     {
         /// <summary>
-        /// Tests that logger scope thousand levels deep
+        ///     Tests that logger scope thousand levels deep
         /// </summary>
         [Fact]
         public void LoggerScope_ThousandLevelsDeep()
@@ -70,7 +70,7 @@ namespace Alis.Core.Aspect.Logging.Test.Core
         }
 
         /// <summary>
-        /// Tests that logger scope stack unwinding order
+        ///     Tests that logger scope stack unwinding order
         /// </summary>
         [Fact]
         public void LoggerScope_StackUnwindingOrder()
@@ -94,7 +94,7 @@ namespace Alis.Core.Aspect.Logging.Test.Core
         }
 
         /// <summary>
-        /// Tests that logger scope parallel scope creation
+        ///     Tests that logger scope parallel scope creation
         /// </summary>
         [Fact]
         public void LoggerScope_ParallelScopeCreation()
@@ -127,7 +127,7 @@ namespace Alis.Core.Aspect.Logging.Test.Core
         }
 
         /// <summary>
-        /// Tests that logger scope complex object as scope
+        ///     Tests that logger scope complex object as scope
         /// </summary>
         [Fact]
         public void LoggerScope_ComplexObjectAsScope()
@@ -155,7 +155,7 @@ namespace Alis.Core.Aspect.Logging.Test.Core
         }
 
         /// <summary>
-        /// Tests that logger scope callback throwing exception
+        ///     Tests that logger scope callback throwing exception
         /// </summary>
         /// <exception cref="InvalidOperationException">Callback error</exception>
         [Fact]
@@ -187,7 +187,7 @@ namespace Alis.Core.Aspect.Logging.Test.Core
         }
 
         /// <summary>
-        /// Tests that logger scope disposable behavior
+        ///     Tests that logger scope disposable behavior
         /// </summary>
         [Fact]
         public void LoggerScope_DisposableBehavior()
@@ -201,7 +201,7 @@ namespace Alis.Core.Aspect.Logging.Test.Core
         }
 
         /// <summary>
-        /// Tests that logger scope long scope name
+        ///     Tests that logger scope long scope name
         /// </summary>
         [Fact]
         public void LoggerScope_LongScopeName()
@@ -221,7 +221,7 @@ namespace Alis.Core.Aspect.Logging.Test.Core
         }
 
         /// <summary>
-        /// Tests that logger scope unicode in scope name
+        ///     Tests that logger scope unicode in scope name
         /// </summary>
         [Fact]
         public void LoggerScope_UnicodeInScopeName()
@@ -241,7 +241,7 @@ namespace Alis.Core.Aspect.Logging.Test.Core
         }
 
         /// <summary>
-        /// Tests that logger scope special characters in name
+        ///     Tests that logger scope special characters in name
         /// </summary>
         [Fact]
         public void LoggerScope_SpecialCharactersInName()
@@ -261,7 +261,7 @@ namespace Alis.Core.Aspect.Logging.Test.Core
         }
 
         /// <summary>
-        /// Tests that logger scope multiple callbacks in chain
+        ///     Tests that logger scope multiple callbacks in chain
         /// </summary>
         [Fact]
         public void LoggerScope_MultipleCallbacksInChain()
@@ -291,7 +291,7 @@ namespace Alis.Core.Aspect.Logging.Test.Core
         }
 
         /// <summary>
-        /// Tests that logger scope concurrent disposal
+        ///     Tests that logger scope concurrent disposal
         /// </summary>
         [Fact]
         public void LoggerScope_ConcurrentDisposal()
@@ -324,7 +324,7 @@ namespace Alis.Core.Aspect.Logging.Test.Core
         }
 
         /// <summary>
-        /// Tests that logger scope null object as scope
+        ///     Tests that logger scope null object as scope
         /// </summary>
         [Fact]
         public void LoggerScope_NullObjectAsScope()

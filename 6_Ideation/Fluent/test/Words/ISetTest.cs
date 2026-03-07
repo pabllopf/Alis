@@ -90,7 +90,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         private class Builder
         {
             /// <summary>
-            /// Gets or sets the value of the set value
+            ///     Gets or sets the value of the set value
             /// </summary>
             public string SetValue { get; set; }
         }
@@ -101,12 +101,12 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         private class SetBuilder : ISet<Builder, string>
         {
             /// <summary>
-            /// The builder
+            ///     The builder
             /// </summary>
             private readonly Builder _builder = new Builder();
 
             /// <summary>
-            /// Sets the value
+            ///     Sets the value
             /// </summary>
             /// <typeparam name="T">The </typeparam>
             /// <param name="value">The value</param>

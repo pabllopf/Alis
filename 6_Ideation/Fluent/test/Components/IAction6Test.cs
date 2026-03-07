@@ -82,12 +82,12 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         private class SixParamAction : IAction<int, int, int, int, int, int>
         {
             /// <summary>
-            /// Gets the value of the values
+            ///     Gets the value of the values
             /// </summary>
             public int[] Values { get; } = new int[6];
 
             /// <summary>
-            /// Runs the arg 1
+            ///     Runs the arg 1
             /// </summary>
             /// <param name="arg1">The arg</param>
             /// <param name="arg2">The arg</param>

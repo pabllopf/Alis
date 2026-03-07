@@ -1,36 +1,64 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:StoreConfiguration.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 
 namespace Alis.Extension.Payment.Stripe
 {
     /// <summary>
-    /// The store configuration class
+    ///     The store configuration class
     /// </summary>
     public class StoreConfiguration
     {
         /// <summary>
-        /// Gets or sets the value of the secret api key
+        ///     Gets or sets the value of the secret api key
         /// </summary>
         public string SecretApiKey { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the default currency
+        ///     Gets or sets the value of the default currency
         /// </summary>
         public string DefaultCurrency { get; set; } = "usd";
 
         /// <summary>
-        /// Gets or sets the value of the success url
+        ///     Gets or sets the value of the success url
         /// </summary>
         public Uri SuccessUrl { get; set; } = new Uri("https://example.com/payment/success");
 
         /// <summary>
-        /// Gets or sets the value of the cancel url
+        ///     Gets or sets the value of the cancel url
         /// </summary>
         public Uri CancelUrl { get; set; } = new Uri("https://example.com/payment/cancel");
 
         /// <summary>
-        /// Gets or sets the value of the enable automatic payment methods
+        ///     Gets or sets the value of the enable automatic payment methods
         /// </summary>
         public bool EnableAutomaticPaymentMethods { get; set; } = true;
     }
 }
-

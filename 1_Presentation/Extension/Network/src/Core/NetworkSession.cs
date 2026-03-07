@@ -88,7 +88,7 @@ namespace Alis.Extension.Network.Core
         public DateTime CreatedDateTime => UnixTimeStampToDateTime(CreatedAt);
 
         /// <summary>
-        /// Unixes the time stamp to date time using the specified unix time stamp
+        ///     Unixes the time stamp to date time using the specified unix time stamp
         /// </summary>
         /// <param name="unixTimeStamp">The unix time stamp</param>
         /// <returns>The date time</returns>
@@ -100,4 +100,3 @@ namespace Alis.Extension.Network.Core
         }
     }
 }
-

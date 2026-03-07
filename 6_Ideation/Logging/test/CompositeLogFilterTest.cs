@@ -42,7 +42,7 @@ namespace Alis.Core.Aspect.Logging.Test
     public class CompositeLogFilterTest
     {
         /// <summary>
-        /// Tests that composite log filter and all filters must pass
+        ///     Tests that composite log filter and all filters must pass
         /// </summary>
         [Fact]
         public void CompositeLogFilter_AND_AllFiltersMustPass()
@@ -51,9 +51,9 @@ namespace Alis.Core.Aspect.Logging.Test
             List<ILogFilter> filters = new List<ILogFilter>
             {
                 new LogLevelFilter(LogLevel.Info),
-                new LoggerNameFilter(new[] {"AllowedLogger"}, true)
+                new LoggerNameFilter(new[] {"AllowedLogger"})
             };
-            CompositeLogFilter compositeFilter = new CompositeLogFilter(filters, true);
+            CompositeLogFilter compositeFilter = new CompositeLogFilter(filters);
 
             // Act & Assert
             Assert.True(compositeFilter.ShouldLog(CreateEntry(LogLevel.Info, "AllowedLogger")));
@@ -63,7 +63,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that composite log filter or any filter can pass
+        ///     Tests that composite log filter or any filter can pass
         /// </summary>
         [Fact]
         public void CompositeLogFilter_OR_AnyFilterCanPass()
@@ -72,7 +72,7 @@ namespace Alis.Core.Aspect.Logging.Test
             List<ILogFilter> filters = new List<ILogFilter>
             {
                 new LogLevelFilter(LogLevel.Error),
-                new LoggerNameFilter(new[] {"SpecialLogger"}, true)
+                new LoggerNameFilter(new[] {"SpecialLogger"})
             };
             CompositeLogFilter compositeFilter = new CompositeLogFilter(filters, false);
 
@@ -84,34 +84,34 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that composite log filter empty filter list should allow all
+        ///     Tests that composite log filter empty filter list should allow all
         /// </summary>
         [Fact]
         public void CompositeLogFilter_EmptyFilterList_ShouldAllowAll()
         {
             // Arrange
             List<ILogFilter> filters = new List<ILogFilter>();
-            CompositeLogFilter compositeFilter = new CompositeLogFilter(filters, true);
+            CompositeLogFilter compositeFilter = new CompositeLogFilter(filters);
 
             // Act & Assert
             Assert.True(compositeFilter.ShouldLog(CreateEntry(LogLevel.Trace, "Any")));
         }
 
         /// <summary>
-        /// Tests that composite log filter null filter list should allow all
+        ///     Tests that composite log filter null filter list should allow all
         /// </summary>
         [Fact]
         public void CompositeLogFilter_NullFilterList_ShouldAllowAll()
         {
             // Arrange
-            CompositeLogFilter compositeFilter = new CompositeLogFilter(null, true);
+            CompositeLogFilter compositeFilter = new CompositeLogFilter(null);
 
             // Act & Assert
             Assert.True(compositeFilter.ShouldLog(CreateEntry(LogLevel.Info, "Any")));
         }
 
         /// <summary>
-        /// Tests that composite log filter single filter and
+        ///     Tests that composite log filter single filter and
         /// </summary>
         [Fact]
         public void CompositeLogFilter_SingleFilter_AND()
@@ -121,7 +121,7 @@ namespace Alis.Core.Aspect.Logging.Test
             {
                 new LogLevelFilter(LogLevel.Warning)
             };
-            CompositeLogFilter compositeFilter = new CompositeLogFilter(filters, true);
+            CompositeLogFilter compositeFilter = new CompositeLogFilter(filters);
 
             // Act & Assert
             Assert.False(compositeFilter.ShouldLog(CreateEntry(LogLevel.Info, "Logger")));
@@ -129,7 +129,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that composite log filter single filter or
+        ///     Tests that composite log filter single filter or
         /// </summary>
         [Fact]
         public void CompositeLogFilter_SingleFilter_OR()
@@ -147,7 +147,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that composite log filter null entry should return true
+        ///     Tests that composite log filter null entry should return true
         /// </summary>
         [Fact]
         public void CompositeLogFilter_NullEntry_ShouldReturnTrue()
@@ -157,14 +157,14 @@ namespace Alis.Core.Aspect.Logging.Test
             {
                 new LogLevelFilter(LogLevel.Info)
             };
-            CompositeLogFilter compositeFilter = new CompositeLogFilter(filters, true);
+            CompositeLogFilter compositeFilter = new CompositeLogFilter(filters);
 
             // Act & Assert
             Assert.True(compositeFilter.ShouldLog(null));
         }
 
         /// <summary>
-        /// Tests that composite log filter multiple filters and all must pass
+        ///     Tests that composite log filter multiple filters and all must pass
         /// </summary>
         [Fact]
         public void CompositeLogFilter_MultipleFilters_AND_AllMustPass()
@@ -173,10 +173,10 @@ namespace Alis.Core.Aspect.Logging.Test
             List<ILogFilter> filters = new List<ILogFilter>
             {
                 new LogLevelFilter(LogLevel.Warning),
-                new LoggerNameFilter(new[] {"Engine"}, true),
+                new LoggerNameFilter(new[] {"Engine"}),
                 new ConditionalLogFilter(e => !e.Message.Contains("Ignore"), "CustomFilter")
             };
-            CompositeLogFilter compositeFilter = new CompositeLogFilter(filters, true);
+            CompositeLogFilter compositeFilter = new CompositeLogFilter(filters);
 
             // Act & Assert
             Assert.True(compositeFilter.ShouldLog(CreateEntry(LogLevel.Warning, "Engine", "Important")));
@@ -186,7 +186,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that composite log filter multiple filters or any can pass
+        ///     Tests that composite log filter multiple filters or any can pass
         /// </summary>
         [Fact]
         public void CompositeLogFilter_MultipleFilters_OR_AnyCanPass()
@@ -195,7 +195,7 @@ namespace Alis.Core.Aspect.Logging.Test
             List<ILogFilter> filters = new List<ILogFilter>
             {
                 new LogLevelFilter(LogLevel.Critical),
-                new LoggerNameFilter(new[] {"Security"}, true),
+                new LoggerNameFilter(new[] {"Security"}),
                 new ConditionalLogFilter(e => e.Message.StartsWith("ERROR"), "ErrorPrefix")
             };
             CompositeLogFilter compositeFilter = new CompositeLogFilter(filters, false);
@@ -208,7 +208,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that composite log filter has name
+        ///     Tests that composite log filter has name
         /// </summary>
         [Fact]
         public void CompositeLogFilter_HasName()
@@ -218,7 +218,7 @@ namespace Alis.Core.Aspect.Logging.Test
             {
                 new LogLevelFilter(LogLevel.Info)
             };
-            CompositeLogFilter compositeFilter = new CompositeLogFilter(filters, true);
+            CompositeLogFilter compositeFilter = new CompositeLogFilter(filters);
 
             // Act & Assert
             Assert.NotNull(compositeFilter.Name);
@@ -226,7 +226,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that composite log filter and has correct name suffix
+        ///     Tests that composite log filter and has correct name suffix
         /// </summary>
         [Fact]
         public void CompositeLogFilter_AND_HasCorrectNameSuffix()
@@ -236,14 +236,14 @@ namespace Alis.Core.Aspect.Logging.Test
             {
                 new LogLevelFilter(LogLevel.Info)
             };
-            CompositeLogFilter compositeFilter = new CompositeLogFilter(filters, true);
+            CompositeLogFilter compositeFilter = new CompositeLogFilter(filters);
 
             // Act & Assert
             Assert.Contains("AND", compositeFilter.Name);
         }
 
         /// <summary>
-        /// Tests that composite log filter or has correct name suffix
+        ///     Tests that composite log filter or has correct name suffix
         /// </summary>
         [Fact]
         public void CompositeLogFilter_OR_HasCorrectNameSuffix()
@@ -260,7 +260,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that composite log filter complex logic and
+        ///     Tests that composite log filter complex logic and
         /// </summary>
         [Fact]
         public void CompositeLogFilter_ComplexLogic_AND()
@@ -269,15 +269,15 @@ namespace Alis.Core.Aspect.Logging.Test
             List<ILogFilter> innerFilters1 = new List<ILogFilter>
             {
                 new LogLevelFilter(LogLevel.Warning),
-                new LoggerNameFilter(new[] {"Critical"}, true)
+                new LoggerNameFilter(new[] {"Critical"})
             };
             List<ILogFilter> innerFilters2 = new List<ILogFilter>
             {
                 new LogLevelFilter(LogLevel.Error)
             };
 
-            CompositeLogFilter compositeInner1 = new CompositeLogFilter(innerFilters1, true);
-            CompositeLogFilter compositeInner2 = new CompositeLogFilter(innerFilters2, true);
+            CompositeLogFilter compositeInner1 = new CompositeLogFilter(innerFilters1);
+            CompositeLogFilter compositeInner2 = new CompositeLogFilter(innerFilters2);
 
             List<ILogFilter> outerFilters = new List<ILogFilter> {compositeInner1, compositeInner2};
             CompositeLogFilter compositeOuter = new CompositeLogFilter(outerFilters, false);
@@ -289,7 +289,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Creates the entry using the specified level
+        ///     Creates the entry using the specified level
         /// </summary>
         /// <param name="level">The level</param>
         /// <param name="loggerName">The logger name</param>

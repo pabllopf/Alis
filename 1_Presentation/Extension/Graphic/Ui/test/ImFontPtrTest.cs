@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:ImFontPtrTest.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Runtime.InteropServices;
 using Xunit;
@@ -5,12 +34,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.Ui.Test
 {
     /// <summary>
-    /// Provides unit coverage for managed behavior exposed by <see cref="ImFontPtr"/>.
+    ///     Provides unit coverage for managed behavior exposed by <see cref="ImFontPtr" />.
     /// </summary>
     public class ImFontPtrTest
     {
         /// <summary>
-        /// Verifies that the constructor from a native pointer preserves its value.
+        ///     Verifies that the constructor from a native pointer preserves its value.
         /// </summary>
         [Fact]
         public void Constructor_WithIntPtr_ShouldPreserveNativePointer()
@@ -22,7 +51,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         }
 
         /// <summary>
-        /// Verifies that the constructor from <see cref="ImFont"/> allocates an unmanaged block.
+        ///     Verifies that the constructor from <see cref="ImFont" /> allocates an unmanaged block.
         /// </summary>
         [Fact]
         public void Constructor_WithImFont_ShouldAllocateNativePointer()
@@ -56,7 +85,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         }
 
         /// <summary>
-        /// Verifies that setting <see cref="ImFontPtr.ConfigData"/> updates the underlying structure.
+        ///     Verifies that setting <see cref="ImFontPtr.ConfigData" /> updates the underlying structure.
         /// </summary>
         [Fact]
         public void ConfigData_Setter_ShouldPersistInNativeStructure()
@@ -81,4 +110,3 @@ namespace Alis.Extension.Graphic.Ui.Test
         }
     }
 }
-

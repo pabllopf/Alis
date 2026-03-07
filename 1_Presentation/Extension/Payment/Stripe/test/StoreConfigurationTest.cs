@@ -38,7 +38,7 @@ namespace Alis.Extension.Payment.Stripe.Test
     public class StoreConfigurationTest
     {
         /// <summary>
-        /// Tests that constructor initializes with default values
+        ///     Tests that constructor initializes with default values
         /// </summary>
         [Fact]
         public void Constructor_InitializesWithDefaultValues()
@@ -54,7 +54,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that secret api key can be set and retrieved
+        ///     Tests that secret api key can be set and retrieved
         /// </summary>
         [Fact]
         public void SecretApiKey_CanBeSetAndRetrieved()
@@ -71,7 +71,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that default currency can be overridden
+        ///     Tests that default currency can be overridden
         /// </summary>
         [Fact]
         public void DefaultCurrency_CanBeOverridden()
@@ -87,7 +87,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that success url can be customized
+        ///     Tests that success url can be customized
         /// </summary>
         [Fact]
         public void SuccessUrl_CanBeCustomized()
@@ -104,7 +104,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that cancel url can be customized
+        ///     Tests that cancel url can be customized
         /// </summary>
         [Fact]
         public void CancelUrl_CanBeCustomized()
@@ -121,7 +121,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that enable automatic payment methods can be disabled
+        ///     Tests that enable automatic payment methods can be disabled
         /// </summary>
         [Fact]
         public void EnableAutomaticPaymentMethods_CanBeDisabled()
@@ -137,4 +137,3 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
     }
 }
-

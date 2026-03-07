@@ -45,20 +45,22 @@ namespace Alis.Extension.Thread.Sample
     public struct VelocityComponent : IParallelCapable
     {
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public float X;
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public float Y;
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public float Z;
 
         /// <summary>
-        /// Applies the damping using the specified damping
+        ///     Applies the damping using the specified damping
         /// </summary>
         /// <param name="damping">The damping</param>
         public void ApplyDamping(float damping)
@@ -76,20 +78,22 @@ namespace Alis.Extension.Thread.Sample
     public struct PositionComponent : IParallelCapable
     {
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public float X;
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public float Y;
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public float Z;
 
         /// <summary>
-        /// Applies the velocity using the specified velocity
+        ///     Applies the velocity using the specified velocity
         /// </summary>
         /// <param name="velocity">The velocity</param>
         /// <param name="deltaTime">The delta time</param>
@@ -108,20 +112,22 @@ namespace Alis.Extension.Thread.Sample
     public struct PhysicsComponent : IParallelCapable
     {
         /// <summary>
-        /// The mass
+        ///     The mass
         /// </summary>
         public float Mass;
+
         /// <summary>
-        /// The friction
+        ///     The friction
         /// </summary>
         public float Friction;
+
         /// <summary>
-        /// The restitution
+        ///     The restitution
         /// </summary>
         public float Restitution;
 
         /// <summary>
-        /// Calculates the force using the specified acceleration
+        ///     Calculates the force using the specified acceleration
         /// </summary>
         /// <param name="acceleration">The acceleration</param>
         /// <returns>The float</returns>

@@ -74,13 +74,7 @@ namespace Alis.Extension.Thread
         /// <summary>
         ///     Gets the parallel update executor for executing component updates
         /// </summary>
-        public ParallelUpdateExecutor ParallelExecutor
-        {
-            get
-            {
-                return parallelExecutor;
-            }
-        }
+        public ParallelUpdateExecutor ParallelExecutor => parallelExecutor;
 
         /// <summary>
         ///     Disposes the thread manager and releases all resources

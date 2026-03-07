@@ -100,7 +100,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         private class Builder
         {
             /// <summary>
-            /// Gets or sets the value of the with value
+            ///     Gets or sets the value of the with value
             /// </summary>
             public string WithValue { get; set; }
         }
@@ -111,12 +111,12 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         private class WithBuilder : IWith<Builder, string>
         {
             /// <summary>
-            /// The builder
+            ///     The builder
             /// </summary>
             private readonly Builder _builder = new Builder();
 
             /// <summary>
-            /// Adds the value
+            ///     Adds the value
             /// </summary>
             /// <param name="value">The value</param>
             /// <returns>The builder</returns>
@@ -133,7 +133,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         private class IntBuilder
         {
             /// <summary>
-            /// Gets or sets the value of the value
+            ///     Gets or sets the value of the value
             /// </summary>
             public int Value { get; set; }
         }
@@ -144,12 +144,12 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         private class IntWithBuilder : IWith<IntBuilder, int>
         {
             /// <summary>
-            /// The int builder
+            ///     The int builder
             /// </summary>
             private readonly IntBuilder _builder = new IntBuilder();
 
             /// <summary>
-            /// Adds the value
+            ///     Adds the value
             /// </summary>
             /// <param name="value">The value</param>
             /// <returns>The builder</returns>

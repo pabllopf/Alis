@@ -29,7 +29,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Alis.Core.Ecs.Systems.Scope;
 using Moq;
@@ -43,29 +43,26 @@ namespace Alis.Extension.Payment.Stripe.Test
     public class StoreManagerIntegrationTest
     {
         /// <summary>
-        /// Creates the context
+        ///     Creates the context
         /// </summary>
         /// <returns>The context</returns>
         private static Context CreateContext() => new Context();
 
         /// <summary>
-        /// Creates the valid configuration
+        ///     Creates the valid configuration
         /// </summary>
         /// <returns>The store configuration</returns>
-        private static StoreConfiguration CreateValidConfiguration()
+        private static StoreConfiguration CreateValidConfiguration() => new StoreConfiguration
         {
-            return new StoreConfiguration
-            {
-                SecretApiKey = "sk_test_valid",
-                DefaultCurrency = "usd",
-                SuccessUrl = new Uri("https://example.com/success"),
-                CancelUrl = new Uri("https://example.com/cancel"),
-                EnableAutomaticPaymentMethods = true
-            };
-        }
+            SecretApiKey = "sk_test_valid",
+            DefaultCurrency = "usd",
+            SuccessUrl = new Uri("https://example.com/success"),
+            CancelUrl = new Uri("https://example.com/cancel"),
+            EnableAutomaticPaymentMethods = true
+        };
 
         /// <summary>
-        /// Tests that complete payment workflow payment intent succeeds
+        ///     Tests that complete payment workflow payment intent succeeds
         /// </summary>
         [Fact]
         public async Task CompletePaymentWorkflow_PaymentIntent_Succeeds()
@@ -73,7 +70,7 @@ namespace Alis.Extension.Payment.Stripe.Test
             // Arrange
             Mock<IStripeGatewayClient> gateway = new Mock<IStripeGatewayClient>();
             gateway
-                .Setup(x => x.CreatePaymentIntentAsync(It.IsAny<StripePaymentIntentRequest>(), It.IsAny<System.Threading.CancellationToken>()))
+                .Setup(x => x.CreatePaymentIntentAsync(It.IsAny<StripePaymentIntentRequest>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(new StripePaymentIntentResponse
                 {
                     PaymentIntentId = "pi_integration_test",
@@ -82,7 +79,7 @@ namespace Alis.Extension.Payment.Stripe.Test
                 });
 
             gateway
-                .Setup(x => x.GetPaymentIntentAsync("pi_integration_test", It.IsAny<System.Threading.CancellationToken>()))
+                .Setup(x => x.GetPaymentIntentAsync("pi_integration_test", It.IsAny<CancellationToken>()))
                 .ReturnsAsync(new StripePaymentIntentResponse
                 {
                     PaymentIntentId = "pi_integration_test",
@@ -113,7 +110,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that complete payment workflow refund succeeds
+        ///     Tests that complete payment workflow refund succeeds
         /// </summary>
         [Fact]
         public async Task CompletePaymentWorkflow_Refund_Succeeds()
@@ -121,7 +118,7 @@ namespace Alis.Extension.Payment.Stripe.Test
             // Arrange
             Mock<IStripeGatewayClient> gateway = new Mock<IStripeGatewayClient>();
             gateway
-                .Setup(x => x.CreateRefundAsync(It.IsAny<StripeRefundRequest>(), It.IsAny<System.Threading.CancellationToken>()))
+                .Setup(x => x.CreateRefundAsync(It.IsAny<StripeRefundRequest>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(new StripeRefundResponse
                 {
                     RefundId = "re_integration_test",
@@ -144,7 +141,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that multiple product workflow registers and queried succeeds
+        ///     Tests that multiple product workflow registers and queried succeeds
         /// </summary>
         [Fact]
         public async Task MultipleProductWorkflow_RegistersAndQueried_Succeeds()
@@ -156,10 +153,10 @@ namespace Alis.Extension.Payment.Stripe.Test
 
             List<StoreProduct> products = new List<StoreProduct>
             {
-                new StoreProduct { Id = "coins_500", Name = "500 Coins", PriceInCents = 499 },
-                new StoreProduct { Id = "coins_1000", Name = "1000 Coins", PriceInCents = 899 },
-                new StoreProduct { Id = "coins_5000", Name = "5000 Coins", PriceInCents = 3999 },
-                new StoreProduct { Id = "bundle_premium", Name = "Premium Bundle", PriceInCents = 9999 }
+                new StoreProduct {Id = "coins_500", Name = "500 Coins", PriceInCents = 499},
+                new StoreProduct {Id = "coins_1000", Name = "1000 Coins", PriceInCents = 899},
+                new StoreProduct {Id = "coins_5000", Name = "5000 Coins", PriceInCents = 3999},
+                new StoreProduct {Id = "bundle_premium", Name = "Premium Bundle", PriceInCents = 9999}
             };
 
             manager.RegisterProducts(products);
@@ -180,9 +177,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.False(findNonexistent);
             Assert.Null(nonexistent);
         }
-        
+
         /// <summary>
-        /// Tests that currency handling defaults and overrides work correctly
+        ///     Tests that currency handling defaults and overrides work correctly
         /// </summary>
         [Fact]
         public async Task CurrencyHandling_DefaultsAndOverrides_WorkCorrectly()
@@ -190,7 +187,7 @@ namespace Alis.Extension.Payment.Stripe.Test
             // Arrange
             Mock<IStripeGatewayClient> gateway = new Mock<IStripeGatewayClient>();
             gateway
-                .Setup(x => x.CreateCheckoutSessionAsync(It.IsAny<StripeCheckoutSessionRequest>(), It.IsAny<System.Threading.CancellationToken>()))
+                .Setup(x => x.CreateCheckoutSessionAsync(It.IsAny<StripeCheckoutSessionRequest>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(new StripeCheckoutSessionResponse
                 {
                     SessionId = "cs_curr_test",
@@ -199,7 +196,7 @@ namespace Alis.Extension.Payment.Stripe.Test
                 });
 
             StoreManager manager = new StoreManager(CreateContext(), gateway.Object);
-            
+
             StoreConfiguration eurConfig = CreateValidConfiguration();
             eurConfig.DefaultCurrency = "EUR";
             await manager.InitializeAsync(eurConfig);
@@ -237,7 +234,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that state management product disabling works correctly
+        ///     Tests that state management product disabling works correctly
         /// </summary>
         [Fact]
         public async Task StateManagement_ProductDisabling_WorksCorrectly()
@@ -265,7 +262,7 @@ namespace Alis.Extension.Payment.Stripe.Test
 
             // Act & Assert
             Assert.True(foundInitially);
-            Assert.True(initialProduct.IsEnabled == false);
+            Assert.True(!initialProduct.IsEnabled);
 
             // Trying to create checkout should fail
             await Assert.ThrowsAsync<InvalidOperationException>(() =>
@@ -273,7 +270,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that manager properties reflect configuration correctly
+        ///     Tests that manager properties reflect configuration correctly
         /// </summary>
         [Fact]
         public async Task ManagerProperties_ReflectConfiguration_Correctly()
@@ -297,4 +294,3 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
     }
 }
-

@@ -40,8 +40,6 @@ namespace Alis.Core.Aspect.Data.Test.Json
     /// </summary>
     public class JsonNativeAotAdvancedTest
     {
-        
-
         /// <summary>
         ///     Tests that round trip integer value preserves value
         /// </summary>
@@ -134,9 +132,6 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal(original.Timestamp.Day, restored.Timestamp.Day);
         }
 
-        
-
-        
 
         /// <summary>
         ///     Tests that parse json to dictionary with simple object returns all properties
@@ -228,9 +223,6 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal(count, dict.Count);
         }
 
-        
-
-        
 
         /// <summary>
         ///     Tests that serialize to file and deserialize from file preserves data
@@ -294,9 +286,6 @@ namespace Alis.Core.Aspect.Data.Test.Json
             }
         }
 
-        
-
-        
 
         /// <summary>
         ///     Tests that serialize with null throws argument null exception
@@ -367,9 +356,6 @@ namespace Alis.Core.Aspect.Data.Test.Json
                 JsonNativeAot.SerializeToFile(obj, "file", null));
         }
 
-        
-
-        
 
         /// <summary>
         ///     The test int class
@@ -560,7 +546,5 @@ namespace Alis.Core.Aspect.Data.Test.Json
                 yield return ("Timestamp", Timestamp.ToString("O"));
             }
         }
-
-        
     }
 }

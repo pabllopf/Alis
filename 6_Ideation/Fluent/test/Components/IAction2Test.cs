@@ -97,16 +97,17 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         private class TwoParamAction : IAction<int, string>
         {
             /// <summary>
-            /// Gets or sets the value of the last int value
+            ///     Gets or sets the value of the last int value
             /// </summary>
             public int LastIntValue { get; private set; }
+
             /// <summary>
-            /// Gets or sets the value of the last string value
+            ///     Gets or sets the value of the last string value
             /// </summary>
             public string LastStringValue { get; private set; }
 
             /// <summary>
-            /// Runs the arg 1
+            ///     Runs the arg 1
             /// </summary>
             /// <param name="arg1">The arg</param>
             /// <param name="arg2">The arg</param>
@@ -123,16 +124,17 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         private class SameTypeAction : IAction<int, int>
         {
             /// <summary>
-            /// Gets or sets the value of the first value
+            ///     Gets or sets the value of the first value
             /// </summary>
             public int FirstValue { get; private set; }
+
             /// <summary>
-            /// Gets or sets the value of the second value
+            ///     Gets or sets the value of the second value
             /// </summary>
             public int SecondValue { get; private set; }
 
             /// <summary>
-            /// Runs the arg 1
+            ///     Runs the arg 1
             /// </summary>
             /// <param name="arg1">The arg</param>
             /// <param name="arg2">The arg</param>

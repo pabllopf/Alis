@@ -89,7 +89,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         private class GraphicBuilder
         {
             /// <summary>
-            /// Gets or sets the value of the graphic type
+            ///     Gets or sets the value of the graphic type
             /// </summary>
             public string GraphicType { get; set; }
         }
@@ -100,12 +100,12 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         private class GraphicBuilderImpl : IGraphic<GraphicBuilder, string>
         {
             /// <summary>
-            /// The graphic builder
+            ///     The graphic builder
             /// </summary>
             private readonly GraphicBuilder _builder = new GraphicBuilder();
 
             /// <summary>
-            /// Graphics the value
+            ///     Graphics the value
             /// </summary>
             /// <param name="value">The value</param>
             /// <returns>The builder</returns>

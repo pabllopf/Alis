@@ -299,7 +299,7 @@ namespace Alis.Extension.Cloud.DropBox
         }
 
         /// <summary>
-        /// Disposes this instance
+        ///     Disposes this instance
         /// </summary>
         public void Dispose()
         {

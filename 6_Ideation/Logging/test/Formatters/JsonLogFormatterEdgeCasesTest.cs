@@ -45,7 +45,7 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
     public class JsonLogFormatterEdgeCasesTest
     {
         /// <summary>
-        /// Tests that json log formatter control characters should be escaped
+        ///     Tests that json log formatter control characters should be escaped
         /// </summary>
         [Fact]
         public void JsonLogFormatter_ControlCharacters_ShouldBeEscaped()
@@ -64,7 +64,7 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
         }
 
         /// <summary>
-        /// Tests that json log formatter quotes and backslashes should be escaped
+        ///     Tests that json log formatter quotes and backslashes should be escaped
         /// </summary>
         [Fact]
         public void JsonLogFormatter_QuotesAndBackslashes_ShouldBeEscaped()
@@ -82,7 +82,7 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
         }
 
         /// <summary>
-        /// Tests that json log formatter unicode characters should be preserved
+        ///     Tests that json log formatter unicode characters should be preserved
         /// </summary>
         [Fact]
         public void JsonLogFormatter_UnicodeCharacters_ShouldBePreserved()
@@ -101,7 +101,7 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
         }
 
         /// <summary>
-        /// Tests that json log formatter very long string in message
+        ///     Tests that json log formatter very long string in message
         /// </summary>
         [Fact]
         public void JsonLogFormatter_VeryLongStringInMessage()
@@ -121,7 +121,7 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
         }
 
         /// <summary>
-        /// Tests that json log formatter very long property value
+        ///     Tests that json log formatter very long property value
         /// </summary>
         [Fact]
         public void JsonLogFormatter_VeryLongPropertyValue()
@@ -140,7 +140,7 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
         }
 
         /// <summary>
-        /// Tests that json log formatter many properties
+        ///     Tests that json log formatter many properties
         /// </summary>
         [Fact]
         public void JsonLogFormatter_ManyProperties()
@@ -167,7 +167,7 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
         }
 
         /// <summary>
-        /// Tests that json log formatter many scopes
+        ///     Tests that json log formatter many scopes
         /// </summary>
         [Fact]
         public void JsonLogFormatter_ManyScopes()
@@ -192,7 +192,7 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
         }
 
         /// <summary>
-        /// Jsons the log formatter windows file path in message
+        ///     Jsons the log formatter windows file path in message
         /// </summary>
         [WindowsOnly]
         public void JsonLogFormatter_WindowsFilePathInMessage()
@@ -209,7 +209,7 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
         }
 
         /// <summary>
-        /// Jsons the log formatter linux file path in message
+        ///     Jsons the log formatter linux file path in message
         /// </summary>
         [LinuxOnly]
         public void JsonLogFormatter_LinuxFilePathInMessage()
@@ -226,7 +226,7 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
         }
 
         /// <summary>
-        /// Tests that json log formatter special json characters in property names
+        ///     Tests that json log formatter special json characters in property names
         /// </summary>
         [Fact]
         public void JsonLogFormatter_SpecialJsonCharactersInPropertyNames()
@@ -249,7 +249,7 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
         }
 
         /// <summary>
-        /// Tests that json log formatter null property values
+        ///     Tests that json log formatter null property values
         /// </summary>
         [Fact]
         public void JsonLogFormatter_NullPropertyValues()
@@ -271,7 +271,7 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
         }
 
         /// <summary>
-        /// Tests that json log formatter valid json with complex entry
+        ///     Tests that json log formatter valid json with complex entry
         /// </summary>
         [Fact]
         public void JsonLogFormatter_ValidJsonWithComplexEntry()

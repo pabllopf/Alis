@@ -56,7 +56,7 @@ namespace Alis.Extension.Thread.Test
                 Interlocked.Increment(ref executionCount);
                 Assert.Equal(0, start);
                 Assert.Equal(10, length);
-            }, 128);
+            });
 
             // Assert
             Assert.Equal(1, executionCount);

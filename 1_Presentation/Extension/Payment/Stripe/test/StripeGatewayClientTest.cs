@@ -28,8 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -41,7 +39,7 @@ namespace Alis.Extension.Payment.Stripe.Test
     public class StripeGatewayClientTest
     {
         /// <summary>
-        /// Tests that configure with valid api key sets configuration
+        ///     Tests that configure with valid api key sets configuration
         /// </summary>
         [Fact]
         public void Configure_WithValidApiKey_SetsConfiguration()
@@ -57,7 +55,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that configure with null api key throws argument exception
+        ///     Tests that configure with null api key throws argument exception
         /// </summary>
         [Fact]
         public void Configure_WithNullApiKey_ThrowsArgumentException()
@@ -70,7 +68,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that configure with empty api key throws argument exception
+        ///     Tests that configure with empty api key throws argument exception
         /// </summary>
         [Fact]
         public void Configure_WithEmptyApiKey_ThrowsArgumentException()
@@ -83,7 +81,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that create checkout session async without configuration throws invalid operation exception
+        ///     Tests that create checkout session async without configuration throws invalid operation exception
         /// </summary>
         [Fact]
         public async Task CreateCheckoutSessionAsync_WithoutConfiguration_ThrowsInvalidOperationException()
@@ -106,7 +104,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that create checkout session async with null request throws argument null exception
+        ///     Tests that create checkout session async with null request throws argument null exception
         /// </summary>
         [Fact]
         public async Task CreateCheckoutSessionAsync_WithNullRequest_ThrowsArgumentNullException()
@@ -121,7 +119,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that create checkout session async with null product name throws argument exception
+        ///     Tests that create checkout session async with null product name throws argument exception
         /// </summary>
         [Fact]
         public async Task CreateCheckoutSessionAsync_WithNullProductName_ThrowsArgumentException()
@@ -145,7 +143,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that create checkout session async with zero unit amount throws argument out of range exception
+        ///     Tests that create checkout session async with zero unit amount throws argument out of range exception
         /// </summary>
         [Fact]
         public async Task CreateCheckoutSessionAsync_WithZeroUnitAmount_ThrowsArgumentOutOfRangeException()
@@ -169,7 +167,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that create checkout session async with zero quantity throws argument out of range exception
+        ///     Tests that create checkout session async with zero quantity throws argument out of range exception
         /// </summary>
         [Fact]
         public async Task CreateCheckoutSessionAsync_WithZeroQuantity_ThrowsArgumentOutOfRangeException()
@@ -193,7 +191,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that create payment intent async without configuration throws invalid operation exception
+        ///     Tests that create payment intent async without configuration throws invalid operation exception
         /// </summary>
         [Fact]
         public async Task CreatePaymentIntentAsync_WithoutConfiguration_ThrowsInvalidOperationException()
@@ -212,7 +210,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that create payment intent async with null request throws argument null exception
+        ///     Tests that create payment intent async with null request throws argument null exception
         /// </summary>
         [Fact]
         public async Task CreatePaymentIntentAsync_WithNullRequest_ThrowsArgumentNullException()
@@ -227,7 +225,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that create payment intent async with zero amount throws argument out of range exception
+        ///     Tests that create payment intent async with zero amount throws argument out of range exception
         /// </summary>
         [Fact]
         public async Task CreatePaymentIntentAsync_WithZeroAmount_ThrowsArgumentOutOfRangeException()
@@ -247,7 +245,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that get payment intent async without configuration throws invalid operation exception
+        ///     Tests that get payment intent async without configuration throws invalid operation exception
         /// </summary>
         [Fact]
         public async Task GetPaymentIntentAsync_WithoutConfiguration_ThrowsInvalidOperationException()
@@ -261,7 +259,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that get payment intent async with null id throws argument exception
+        ///     Tests that get payment intent async with null id throws argument exception
         /// </summary>
         [Fact]
         public async Task GetPaymentIntentAsync_WithNullId_ThrowsArgumentException()
@@ -276,7 +274,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that create refund async without configuration throws invalid operation exception
+        ///     Tests that create refund async without configuration throws invalid operation exception
         /// </summary>
         [Fact]
         public async Task CreateRefundAsync_WithoutConfiguration_ThrowsInvalidOperationException()
@@ -294,7 +292,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that create refund async with null request throws argument null exception
+        ///     Tests that create refund async with null request throws argument null exception
         /// </summary>
         [Fact]
         public async Task CreateRefundAsync_WithNullRequest_ThrowsArgumentNullException()
@@ -309,7 +307,7 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
 
         /// <summary>
-        /// Tests that create refund async with null payment intent id throws argument exception
+        ///     Tests that create refund async with null payment intent id throws argument exception
         /// </summary>
         [Fact]
         public async Task CreateRefundAsync_WithNullPaymentIntentId_ThrowsArgumentException()
@@ -328,4 +326,3 @@ namespace Alis.Extension.Payment.Stripe.Test
         }
     }
 }
-

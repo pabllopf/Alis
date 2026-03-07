@@ -28,9 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System.Threading.Tasks;
+using Alis.Extension.Network.Client;
 using Alis.Extension.Network.Core;
 using Alis.Extension.Network.Server;
-using Alis.Extension.Network.Client;
 using Xunit;
 
 namespace Alis.Extension.Network.Test
@@ -81,7 +81,7 @@ namespace Alis.Extension.Network.Test
         {
             using (NetworkServerManager manager = new NetworkServerManager())
             {
-                NetworkConfig config = new NetworkConfig { MaxPlayers = 8 };
+                NetworkConfig config = new NetworkConfig {MaxPlayers = 8};
                 await manager.InitializeAsync(config);
 
                 NetworkSession session = await manager.CreateSessionAsync("Test Session", 8);
@@ -172,4 +172,3 @@ namespace Alis.Extension.Network.Test
         }
     }
 }
-

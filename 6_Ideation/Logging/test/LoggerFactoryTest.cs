@@ -45,7 +45,7 @@ namespace Alis.Core.Aspect.Logging.Test
     public class LoggerFactoryTest
     {
         /// <summary>
-        /// Tests that logger factory constructor should initialize with default formatter
+        ///     Tests that logger factory constructor should initialize with default formatter
         /// </summary>
         [Fact]
         public void LoggerFactory_Constructor_ShouldInitializeWithDefaultFormatter()
@@ -60,7 +60,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger factory create logger should return valid logger
+        ///     Tests that logger factory create logger should return valid logger
         /// </summary>
         [Fact]
         public void LoggerFactory_CreateLogger_ShouldReturnValidLogger()
@@ -78,7 +78,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger factory create logger with different names should return different instances
+        ///     Tests that logger factory create logger with different names should return different instances
         /// </summary>
         [Fact]
         public void LoggerFactory_CreateLoggerWithDifferentNames_ShouldReturnDifferentInstances()
@@ -98,7 +98,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger factory create logger with same name should return different instances
+        ///     Tests that logger factory create logger with same name should return different instances
         /// </summary>
         [Fact]
         public void LoggerFactory_CreateLoggerWithSameName_ShouldReturnDifferentInstances()
@@ -118,7 +118,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger factory add output should chain fluently
+        ///     Tests that logger factory add output should chain fluently
         /// </summary>
         [Fact]
         public void LoggerFactory_AddOutput_ShouldChainFluently()
@@ -137,7 +137,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger factory add filter should chain fluently
+        ///     Tests that logger factory add filter should chain fluently
         /// </summary>
         [Fact]
         public void LoggerFactory_AddFilter_ShouldChainFluently()
@@ -156,7 +156,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger factory set formatter should chain fluently
+        ///     Tests that logger factory set formatter should chain fluently
         /// </summary>
         [Fact]
         public void LoggerFactory_SetFormatter_ShouldChainFluently()
@@ -175,7 +175,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger factory set minimum level should chain fluently
+        ///     Tests that logger factory set minimum level should chain fluently
         /// </summary>
         [Fact]
         public void LoggerFactory_SetMinimumLevel_ShouldChainFluently()
@@ -193,7 +193,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger factory fluent configuration should chain multiple methods
+        ///     Tests that logger factory fluent configuration should chain multiple methods
         /// </summary>
         [Fact]
         public void LoggerFactory_FluentConfiguration_ShouldChainMultipleMethods()
@@ -213,7 +213,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger factory add null output should throw argument null exception
+        ///     Tests that logger factory add null output should throw argument null exception
         /// </summary>
         [Fact]
         public void LoggerFactory_AddNullOutput_ShouldThrowArgumentNullException()
@@ -227,7 +227,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger factory add null filter should throw argument null exception
+        ///     Tests that logger factory add null filter should throw argument null exception
         /// </summary>
         [Fact]
         public void LoggerFactory_AddNullFilter_ShouldThrowArgumentNullException()
@@ -241,7 +241,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger factory set null formatter should throw argument null exception
+        ///     Tests that logger factory set null formatter should throw argument null exception
         /// </summary>
         [Fact]
         public void LoggerFactory_SetNullFormatter_ShouldThrowArgumentNullException()
@@ -255,7 +255,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger factory configured output should be used by loggers
+        ///     Tests that logger factory configured output should be used by loggers
         /// </summary>
         [Fact]
         public void LoggerFactory_ConfiguredOutput_ShouldBeUsedByLoggers()
@@ -276,7 +276,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger factory configured filter should be applied by loggers
+        ///     Tests that logger factory configured filter should be applied by loggers
         /// </summary>
         [Fact]
         public void LoggerFactory_ConfiguredFilter_ShouldBeAppliedByLoggers()
@@ -302,7 +302,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger factory configured formatter should be used by outputs
+        ///     Tests that logger factory configured formatter should be used by outputs
         /// </summary>
         [Fact]
         public void LoggerFactory_ConfiguredFormatter_ShouldBeUsedByOutputs()
@@ -324,7 +324,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger factory minimum level should be applied to loggers
+        ///     Tests that logger factory minimum level should be applied to loggers
         /// </summary>
         [Fact]
         public void LoggerFactory_MinimumLevel_ShouldBeAppliedToLoggers()
@@ -350,7 +350,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger factory multiple outputs should all receive entries
+        ///     Tests that logger factory multiple outputs should all receive entries
         /// </summary>
         [Fact]
         public void LoggerFactory_MultipleOutputs_ShouldAllReceiveEntries()
@@ -374,7 +374,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger factory flush should flush all outputs
+        ///     Tests that logger factory flush should flush all outputs
         /// </summary>
         [Fact]
         public void LoggerFactory_Flush_ShouldFlushAllOutputs()
@@ -396,7 +396,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger factory dispose should call dispose on outputs
+        ///     Tests that logger factory dispose should call dispose on outputs
         /// </summary>
         [Fact]
         public void LoggerFactory_Dispose_ShouldCallDisposeOnOutputs()
@@ -415,7 +415,7 @@ namespace Alis.Core.Aspect.Logging.Test
 
 
         /// <summary>
-        /// Tests that logger factory disposed factory should not throw on second dispose
+        ///     Tests that logger factory disposed factory should not throw on second dispose
         /// </summary>
         [Fact]
         public void LoggerFactory_DisposedFactory_ShouldNotThrowOnSecondDispose()
@@ -429,7 +429,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger factory create logger with empty name should be allowed
+        ///     Tests that logger factory create logger with empty name should be allowed
         /// </summary>
         [Fact]
         public void LoggerFactory_CreateLoggerWithEmptyName_ShouldBeAllowed()
@@ -447,7 +447,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger factory add multiple same filters should apply all
+        ///     Tests that logger factory add multiple same filters should apply all
         /// </summary>
         [Fact]
         public void LoggerFactory_AddMultipleSameFilters_ShouldApplyAll()
@@ -458,7 +458,7 @@ namespace Alis.Core.Aspect.Logging.Test
             {
                 factory.AddOutput(memoryOutput);
                 factory.AddFilter(new LogLevelFilter(LogLevel.Info));
-                factory.AddFilter(new LoggerNameFilter(new[] {"TestLogger"}, true));
+                factory.AddFilter(new LoggerNameFilter(new[] {"TestLogger"}));
                 ILogger logger = factory.CreateLogger("TestLogger");
 
                 // Act
@@ -472,7 +472,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that logger factory change formatter should affect new loggers
+        ///     Tests that logger factory change formatter should affect new loggers
         /// </summary>
         [Fact]
         public void LoggerFactory_ChangeFormatter_ShouldAffectNewLoggers()
@@ -503,20 +503,22 @@ namespace Alis.Core.Aspect.Logging.Test
         private sealed class DisposableLogOutput : ILogOutput
         {
             /// <summary>
-            /// Gets or sets the value of the is disposed
+            ///     Gets or sets the value of the is disposed
             /// </summary>
             public bool IsDisposed { get; private set; }
+
             /// <summary>
-            /// Gets the value of the name
+            ///     Gets the value of the name
             /// </summary>
             public string Name => "DisposableOutput";
+
             /// <summary>
-            /// Gets or sets the value of the is enabled
+            ///     Gets or sets the value of the is enabled
             /// </summary>
             public bool IsEnabled { get; set; } = true;
 
             /// <summary>
-            /// Writes the entry
+            ///     Writes the entry
             /// </summary>
             /// <param name="entry">The entry</param>
             public void Write(ILogEntry entry)
@@ -524,14 +526,14 @@ namespace Alis.Core.Aspect.Logging.Test
             }
 
             /// <summary>
-            /// Flushes this instance
+            ///     Flushes this instance
             /// </summary>
             public void Flush()
             {
             }
 
             /// <summary>
-            /// Disposes this instance
+            ///     Disposes this instance
             /// </summary>
             public void Dispose()
             {

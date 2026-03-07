@@ -43,7 +43,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
     public class AsyncLogOutputEdgeCasesTest
     {
         /// <summary>
-        /// Tests that async log output high volume writes
+        ///     Tests that async log output high volume writes
         /// </summary>
         [Fact]
         public void AsyncLogOutput_HighVolumeWrites()
@@ -65,7 +65,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         }
 
         /// <summary>
-        /// Tests that async log output concurrent writes
+        ///     Tests that async log output concurrent writes
         /// </summary>
         [Fact]
         public void AsyncLogOutput_ConcurrentWrites()
@@ -96,7 +96,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         }
 
         /// <summary>
-        /// Tests that async log output flush multiple times
+        ///     Tests that async log output flush multiple times
         /// </summary>
         [Fact]
         public void AsyncLogOutput_FlushMultipleTimes()
@@ -122,7 +122,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         }
 
         /// <summary>
-        /// Tests that async log output disable then enable
+        ///     Tests that async log output disable then enable
         /// </summary>
         [Fact]
         public void AsyncLogOutput_DisableThenEnable()
@@ -144,7 +144,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         }
 
         /// <summary>
-        /// Tests that async log output large messages
+        ///     Tests that async log output large messages
         /// </summary>
         [Fact]
         public void AsyncLogOutput_LargeMessages()
@@ -167,7 +167,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         }
 
         /// <summary>
-        /// Tests that async log output queue filling
+        ///     Tests that async log output queue filling
         /// </summary>
         [Fact]
         public void AsyncLogOutput_QueueFilling()
@@ -192,7 +192,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         }
 
         /// <summary>
-        /// Tests that async log output dispose cleans up
+        ///     Tests that async log output dispose cleans up
         /// </summary>
         [Fact]
         public void AsyncLogOutput_DisposeCleansUp()
@@ -214,7 +214,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         }
 
         /// <summary>
-        /// Tests that async log output multiple disposes
+        ///     Tests that async log output multiple disposes
         /// </summary>
         [Fact]
         public void AsyncLogOutput_MultipleDisposes()
@@ -231,7 +231,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         }
 
         /// <summary>
-        /// Tests that async log output flush after dispose
+        ///     Tests that async log output flush after dispose
         /// </summary>
         [Fact]
         public void AsyncLogOutput_FlushAfterDispose()
@@ -247,7 +247,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         }
 
         /// <summary>
-        /// Tests that async log output all log levels
+        ///     Tests that async log output all log levels
         /// </summary>
         [Fact]
         public void AsyncLogOutput_AllLogLevels()
@@ -270,7 +270,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         }
 
         /// <summary>
-        /// Tests that async log output performance test
+        ///     Tests that async log output performance test
         /// </summary>
         [Fact]
         public void AsyncLogOutput_PerformanceTest()

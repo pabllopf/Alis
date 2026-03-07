@@ -116,7 +116,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
             // Act & Assert
             GlfwNative.DefaultWindowHints();
         }
-        
+
 
         /// <summary>
         ///     Waits the events does not throw

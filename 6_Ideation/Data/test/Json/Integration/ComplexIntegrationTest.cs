@@ -46,8 +46,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
     /// </summary>
     public class ComplexIntegrationTest
     {
-        
-
         /// <summary>
         ///     Tests that integration three level nesting serializes and deserializes
         /// </summary>
@@ -81,9 +79,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.Equal(original.Address.Country, restored.Address.Country);
         }
 
-        
-
-        
 
         /// <summary>
         ///     Tests that integration list of complex objects serializes completely
@@ -112,9 +107,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             }
         }
 
-        
-
-        
 
         /// <summary>
         ///     Tests that integration mixed value and reference types all preserved
@@ -156,9 +148,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.Equal(product.ProductName, restoredProduct.ProductName);
         }
 
-        
-
-        
 
         /// <summary>
         ///     Tests that integration serialize to file and read back successful
@@ -259,9 +248,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             }
         }
 
-        
-
-        
 
         /// <summary>
         ///     Tests that integration serialize deserialize 1000 times no errors
@@ -324,9 +310,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.Equal(100, results.Count);
         }
 
-        
-
-        
 
         /// <summary>
         ///     Tests that integration complex struct with multiple types
@@ -386,9 +369,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.Equal(original.DecimalValue, restored.DecimalValue);
         }
 
-        
-
-        
 
         /// <summary>
         ///     Tests that integration empty collections handle gracefully
@@ -447,9 +427,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.True(sw.ElapsedMilliseconds < 1000, "Should complete within 1 second");
         }
 
-        
-
-        
 
         /// <summary>
         ///     Tests that integration multiple date time formats handle correctly
@@ -507,9 +484,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.Equal(100, uniqueGuids);
         }
 
-        
-
-        
 
         /// <summary>
         ///     Tests that integration audit trail complete workflow
@@ -563,9 +537,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.Contains(restored, l => l.Level == "ERROR");
         }
 
-        
-
-        
 
         /// <summary>
         ///     Tests that integration app settings complete configuration
@@ -623,9 +594,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.Equal(3306, restored[1].Port);
         }
 
-        
-
-        
 
         /// <summary>
         ///     Tests that integration point 2 d multiple coordinates
@@ -682,9 +650,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             }
         }
 
-        
-
-        
 
         /// <summary>
         ///     Tests that integration product catalog multiple products
@@ -738,9 +703,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.Equal(originalTotal, restoredTotal);
         }
 
-        
-
-        
 
         /// <summary>
         ///     Tests that integration performance benchmark simple type
@@ -798,7 +760,5 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             double avgMs = sw.ElapsedMilliseconds / (double) iterations;
             Assert.True(avgMs < 2.0, $"Average time per iteration: {avgMs}ms (should be < 2ms)");
         }
-
-        
     }
 }

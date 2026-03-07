@@ -51,24 +51,24 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         }
 
         /// <summary>
-        /// The dummy builder class
+        ///     The dummy builder class
         /// </summary>
         private class DummyBuilder
         {
             /// <summary>
-            /// The value
+            ///     The value
             /// </summary>
             public int Value;
         }
 
         /// <summary>
-        /// The dummy add class
+        ///     The dummy add class
         /// </summary>
-        /// <seealso cref="IAdd{DummyBuilder, int}"/>
+        /// <seealso cref="IAdd{DummyBuilder,}" />
         private class DummyAdd : IAdd<DummyBuilder, int>
         {
             /// <summary>
-            /// Adds the value
+            ///     Adds the value
             /// </summary>
             /// <param name="value">The value</param>
             /// <returns>The dummy builder</returns>

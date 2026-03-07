@@ -89,7 +89,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         private class PhysicBuilder
         {
             /// <summary>
-            /// Gets or sets the value of the physics engine
+            ///     Gets or sets the value of the physics engine
             /// </summary>
             public string PhysicsEngine { get; set; }
         }
@@ -100,12 +100,12 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         private class PhysicBuilderImpl : IPhysic<PhysicBuilder, string>
         {
             /// <summary>
-            /// The physic builder
+            ///     The physic builder
             /// </summary>
             private readonly PhysicBuilder _builder = new PhysicBuilder();
 
             /// <summary>
-            /// Physics the value
+            ///     Physics the value
             /// </summary>
             /// <param name="value">The value</param>
             /// <returns>The builder</returns>

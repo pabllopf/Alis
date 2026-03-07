@@ -43,7 +43,7 @@ namespace Alis.Core.Aspect.Logging.Test
     public class ThreadSafetyTest
     {
         /// <summary>
-        /// Tests that logger concurrent logging should not corrupt entries
+        ///     Tests that logger concurrent logging should not corrupt entries
         /// </summary>
         [Fact]
         public void Logger_ConcurrentLogging_ShouldNotCorruptEntries()
@@ -87,7 +87,7 @@ namespace Alis.Core.Aspect.Logging.Test
 
 
         /// <summary>
-        /// Tests that logger concurrent correlation id setting should be thread safe
+        ///     Tests that logger concurrent correlation id setting should be thread safe
         /// </summary>
         [Fact]
         public void Logger_ConcurrentCorrelationIdSetting_ShouldBeThreadSafe()
@@ -125,7 +125,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that memory log output concurrent writes should preserve all entries
+        ///     Tests that memory log output concurrent writes should preserve all entries
         /// </summary>
         [Fact]
         public void MemoryLogOutput_ConcurrentWrites_ShouldPreserveAllEntries()

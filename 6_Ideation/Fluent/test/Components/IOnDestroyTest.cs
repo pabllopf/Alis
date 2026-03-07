@@ -97,16 +97,17 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         private class DestroyHandler : IOnDestroy
         {
             /// <summary>
-            /// Gets or sets the value of the was destroy called
+            ///     Gets or sets the value of the was destroy called
             /// </summary>
             public bool WasDestroyCalled { get; private set; }
+
             /// <summary>
-            /// Gets or sets the value of the destroy count
+            ///     Gets or sets the value of the destroy count
             /// </summary>
             public int DestroyCount { get; private set; }
 
             /// <summary>
-            /// Ons the destroy
+            ///     Ons the destroy
             /// </summary>
             /// <exception cref="NotImplementedException"></exception>
             public void OnDestroy()
@@ -115,7 +116,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
             }
 
             /// <summary>
-            /// Ons the destroy using the specified self
+            ///     Ons the destroy using the specified self
             /// </summary>
             /// <param name="self">The self</param>
             public void OnDestroy(IGameObject self)

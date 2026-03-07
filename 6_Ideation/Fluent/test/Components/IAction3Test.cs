@@ -87,20 +87,22 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         private class ThreeParamAction : IAction<int, string, double>
         {
             /// <summary>
-            /// Gets or sets the value of the int value
+            ///     Gets or sets the value of the int value
             /// </summary>
             public int IntValue { get; private set; }
+
             /// <summary>
-            /// Gets or sets the value of the string value
+            ///     Gets or sets the value of the string value
             /// </summary>
             public string StringValue { get; private set; }
+
             /// <summary>
-            /// Gets or sets the value of the double value
+            ///     Gets or sets the value of the double value
             /// </summary>
             public double DoubleValue { get; private set; }
 
             /// <summary>
-            /// Runs the arg 1
+            ///     Runs the arg 1
             /// </summary>
             /// <param name="arg1">The arg</param>
             /// <param name="arg2">The arg</param>

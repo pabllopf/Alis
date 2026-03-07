@@ -103,11 +103,12 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         private class PositionBuilder
         {
             /// <summary>
-            /// Gets or sets the value of the x
+            ///     Gets or sets the value of the x
             /// </summary>
             public float X { get; set; }
+
             /// <summary>
-            /// Gets or sets the value of the y
+            ///     Gets or sets the value of the y
             /// </summary>
             public float Y { get; set; }
         }
@@ -118,12 +119,12 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         private class Position2DBuilder : IPosition2D<PositionBuilder, float>
         {
             /// <summary>
-            /// The position builder
+            ///     The position builder
             /// </summary>
             private readonly PositionBuilder _builder = new PositionBuilder();
 
             /// <summary>
-            /// Positions the x
+            ///     Positions the x
             /// </summary>
             /// <param name="x">The </param>
             /// <param name="y">The </param>

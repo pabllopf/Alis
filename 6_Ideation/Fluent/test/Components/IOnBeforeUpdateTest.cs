@@ -84,12 +84,12 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         private class BeforeUpdateHandler : IOnBeforeUpdate
         {
             /// <summary>
-            /// Gets or sets the value of the call count
+            ///     Gets or sets the value of the call count
             /// </summary>
             public int CallCount { get; private set; }
 
             /// <summary>
-            /// Ons the before update using the specified self
+            ///     Ons the before update using the specified self
             /// </summary>
             /// <param name="self">The self</param>
             public void OnBeforeUpdate(IGameObject self)

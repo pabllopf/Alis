@@ -101,7 +101,7 @@ namespace Alis.Extension.Thread.Test
                 Assert.NotNull(executor);
             }
         }
-        
+
 
         /// <summary>
         ///     Tests that dispose can be called multiple times safely

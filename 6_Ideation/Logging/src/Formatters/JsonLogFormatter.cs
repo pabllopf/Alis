@@ -41,15 +41,14 @@ namespace Alis.Core.Aspect.Logging.Formatters
     /// </summary>
     public sealed class JsonLogFormatter : ILogFormatter
     {
-        
         /// <summary>
-        /// Gets the value of the name
+        ///     Gets the value of the name
         /// </summary>
         public string Name => "JsonFormatter";
 
-        
+
         /// <summary>
-        /// Formats the entry
+        ///     Formats the entry
         /// </summary>
         /// <param name="entry">The entry</param>
         /// <returns>The string</returns>
