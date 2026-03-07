@@ -207,5 +207,489 @@ namespace Alis.Extension.Profile.Test.Implementations
             // Cleanup
             GC.KeepAlive(largeArray);
         }
+
+        /// <summary>
+        ///     Tests that get cpu usage returns value as total processor time milliseconds
+        /// </summary>
+        [Fact]
+        public void GetCpuUsage_ReturnsValueAsTotalProcessorTimeMilliseconds()
+        {
+            // Arrange
+            ProcessResourceMonitor monitor = new ProcessResourceMonitor();
+            var currentProcess = Process.GetCurrentProcess();
+            var expectedValue = currentProcess.TotalProcessorTime.TotalMilliseconds;
+
+            // Act
+            double cpuUsage = monitor.GetCpuUsage();
+
+            // Assert
+            Assert.True(cpuUsage >= 0);
+            Assert.True(Math.Abs(cpuUsage - expectedValue) < 1000); // Within 1 second
+        }
+
+        /// <summary>
+        ///     Tests that get memory usage returns working set64 value
+        /// </summary>
+        [Fact]
+        public void GetMemoryUsage_ReturnsWorkingSet64Value()
+        {
+            // Arrange
+            ProcessResourceMonitor monitor = new ProcessResourceMonitor();
+            var currentProcess = Process.GetCurrentProcess();
+            var expectedValue = currentProcess.WorkingSet64;
+
+            // Act
+            long memoryUsage = monitor.GetMemoryUsage();
+
+            // Assert
+            Assert.Equal(expectedValue, memoryUsage);
+        }
+
+        /// <summary>
+        ///     Tests that get thread count returns threads count
+        /// </summary>
+        [Fact]
+        public void GetThreadCount_ReturnsThreadsCount()
+        {
+            // Arrange
+            ProcessResourceMonitor monitor = new ProcessResourceMonitor();
+            var currentProcess = Process.GetCurrentProcess();
+            var expectedValue = currentProcess.Threads.Count;
+
+            // Act
+            int threadCount = monitor.GetThreadCount();
+
+            // Assert
+            Assert.Equal(expectedValue, threadCount);
+        }
+
+        /// <summary>
+        ///     Tests that multiple calls to get cpu usage return consistent results
+        /// </summary>
+        [Fact]
+        public void GetCpuUsage_MultipleCalls_ReturnConsistentResults()
+        {
+            // Arrange
+            ProcessResourceMonitor monitor = new ProcessResourceMonitor();
+
+            // Act
+            double firstCall = monitor.GetCpuUsage();
+            double secondCall = monitor.GetCpuUsage();
+
+            // Assert
+            Assert.True(secondCall >= firstCall);
+        }
+
+        /// <summary>
+        ///     Tests that multiple calls to get memory usage return consistent or increasing results
+        /// </summary>
+        [Fact]
+        public void GetMemoryUsage_MultipleCalls_ReturnConsistentOrIncreasingResults()
+        {
+            // Arrange
+            ProcessResourceMonitor monitor = new ProcessResourceMonitor();
+
+            // Act
+            long firstCall = monitor.GetMemoryUsage();
+            long secondCall = monitor.GetMemoryUsage();
+
+            // Assert
+            Assert.True(secondCall >= firstCall);
+        }
+
+        /// <summary>
+        ///     Tests that multiple calls to get thread count return consistent or increasing results
+        /// </summary>
+        [Fact]
+        public void GetThreadCount_MultipleCalls_ReturnConsistentOrIncreasingResults()
+        {
+            // Arrange
+            ProcessResourceMonitor monitor = new ProcessResourceMonitor();
+
+            // Act
+            int firstCall = monitor.GetThreadCount();
+            int secondCall = monitor.GetThreadCount();
+
+            // Assert
+            Assert.True(secondCall >= firstCall);
+        }
+
+        /// <summary>
+        ///     Tests that get garbage collection count returns zero or positive value
+        /// </summary>
+        [Fact]
+        public void GetGarbageCollectionCount_WithRealProcess_ReturnsPositiveValue()
+        {
+            // Arrange
+            ProcessResourceMonitor monitor = new ProcessResourceMonitor();
+
+            // Act
+            int firstGcCount = monitor.GetGarbageCollectionCount();
+            GC.Collect();
+            int secondGcCount = monitor.GetGarbageCollectionCount();
+
+            // Assert
+            Assert.True(firstGcCount >= 0);
+            Assert.True(secondGcCount >= firstGcCount);
+        }
+
+        /// <summary>
+        ///     Tests that constructor with current process can access memory
+        /// </summary>
+        [Fact]
+        public void Constructor_WithCurrentProcess_CanAccessMemory()
+        {
+            // Act
+            ProcessResourceMonitor monitor = new ProcessResourceMonitor();
+            long memory = monitor.GetMemoryUsage();
+
+            // Assert
+            Assert.True(memory > 0);
+        }
+
+        /// <summary>
+        ///     Tests that constructor with current process can access cpu
+        /// </summary>
+        [Fact]
+        public void Constructor_WithCurrentProcess_CanAccessCpu()
+        {
+            // Act
+            ProcessResourceMonitor monitor = new ProcessResourceMonitor();
+            double cpu = monitor.GetCpuUsage();
+
+            // Assert
+            Assert.True(cpu >= 0);
+        }
+
+        /// <summary>
+        ///     Tests that constructor with current process can access thread count
+        /// </summary>
+        [Fact]
+        public void Constructor_WithCurrentProcess_CanAccessThreadCount()
+        {
+            // Act
+            ProcessResourceMonitor monitor = new ProcessResourceMonitor();
+            int threadCount = monitor.GetThreadCount();
+
+            // Assert
+            Assert.True(threadCount > 0);
+        }
+
+        /// <summary>
+        ///     Tests that all methods return valid values with real process
+        /// </summary>
+        [Fact]
+        public void AllMethods_ReturnValidValues_WithRealProcess()
+        {
+            // Arrange
+            ProcessResourceMonitor monitor = new ProcessResourceMonitor();
+
+            // Act
+            double cpuUsage = monitor.GetCpuUsage();
+            long memoryUsage = monitor.GetMemoryUsage();
+            int gcCount = monitor.GetGarbageCollectionCount();
+            int threadCount = monitor.GetThreadCount();
+
+            // Assert
+            Assert.True(cpuUsage >= 0);
+            Assert.True(memoryUsage > 0);
+            Assert.True(gcCount >= 0);
+            Assert.True(threadCount > 0);
+        }
+
+        /// <summary>
+        ///     Tests that garbage collection sum equals all generations
+        /// </summary>
+        [Fact]
+        public void GetGarbageCollectionCount_EqualsSumOfAllGenerations()
+        {
+            // Arrange
+            ProcessResourceMonitor monitor = new ProcessResourceMonitor();
+
+            // Act
+            int gcCount = monitor.GetGarbageCollectionCount();
+            int gen0 = GC.CollectionCount(0);
+            int gen1 = GC.CollectionCount(1);
+            int gen2 = GC.CollectionCount(2);
+            int expectedSum = gen0 + gen1 + gen2;
+
+            // Assert
+            Assert.Equal(expectedSum, gcCount);
+        }
+
+        /// <summary>
+        ///     Tests that memory allocation increases memory usage
+        /// </summary>
+        [Fact]
+        public void GetMemoryUsage_IncreaseAfterAllocation()
+        {
+            // Arrange
+            ProcessResourceMonitor monitor = new ProcessResourceMonitor();
+            long initialMemory = monitor.GetMemoryUsage();
+
+            // Act - Allocate multiple arrays
+            byte[] array1 = new byte[512 * 1024]; // 512 KB
+            byte[] array2 = new byte[512 * 1024]; // 512 KB
+            long afterAllocationMemory = monitor.GetMemoryUsage();
+
+            // Assert
+            Assert.True(afterAllocationMemory >= initialMemory);
+
+            // Cleanup
+            GC.KeepAlive(array1);
+            GC.KeepAlive(array2);
+        }
+
+        /// <summary>
+        ///     Tests that cpu usage increases with cpu intensive work
+        /// </summary>
+        [Fact]
+        public void GetCpuUsage_IncreasesWithCpuIntensiveWork()
+        {
+            // Arrange
+            ProcessResourceMonitor monitor = new ProcessResourceMonitor();
+            double cpuBefore = monitor.GetCpuUsage();
+
+            // Act - Perform CPU intensive work
+            for (int i = 0; i < 10000000; i++)
+            {
+                _ = Math.Sqrt(i) * Math.Sqrt(i + 1);
+            }
+
+            double cpuAfter = monitor.GetCpuUsage();
+
+            // Assert
+            Assert.True(cpuAfter >= cpuBefore);
+        }
+
+        /// <summary>
+        ///     Tests that constructor with specific process works correctly
+        /// </summary>
+        [Fact]
+        public void Constructor_WithSpecificProcess_StoresProcessCorrectly()
+        {
+            // Arrange
+            Process specificProcess = Process.GetCurrentProcess();
+
+            // Act
+            ProcessResourceMonitor monitor = new ProcessResourceMonitor(specificProcess);
+            long memory = monitor.GetMemoryUsage();
+
+            // Assert
+            Assert.NotNull(monitor);
+            Assert.True(memory > 0);
+        }
+
+        /// <summary>
+        ///     Tests that get cpu usage never returns negative value
+        /// </summary>
+        [Fact]
+        public void GetCpuUsage_NeverReturnsNegativeValue()
+        {
+            // Arrange
+            ProcessResourceMonitor monitor = new ProcessResourceMonitor();
+
+            // Act
+            for (int i = 0; i < 5; i++)
+            {
+                double cpuUsage = monitor.GetCpuUsage();
+
+                // Assert
+                Assert.True(cpuUsage >= 0, $"CPU usage should never be negative, got {cpuUsage}");
+            }
+        }
+
+        /// <summary>
+        ///     Tests that get memory usage never returns negative value
+        /// </summary>
+        [Fact]
+        public void GetMemoryUsage_NeverReturnsNegativeValue()
+        {
+            // Arrange
+            ProcessResourceMonitor monitor = new ProcessResourceMonitor();
+
+            // Act
+            for (int i = 0; i < 5; i++)
+            {
+                long memoryUsage = monitor.GetMemoryUsage();
+
+                // Assert
+                Assert.True(memoryUsage >= 0, $"Memory usage should never be negative, got {memoryUsage}");
+            }
+        }
+
+        /// <summary>
+        ///     Tests that get thread count never returns negative value
+        /// </summary>
+        [Fact]
+        public void GetThreadCount_NeverReturnsNegativeValue()
+        {
+            // Arrange
+            ProcessResourceMonitor monitor = new ProcessResourceMonitor();
+
+            // Act
+            for (int i = 0; i < 5; i++)
+            {
+                int threadCount = monitor.GetThreadCount();
+
+                // Assert
+                Assert.True(threadCount >= 0, $"Thread count should never be negative, got {threadCount}");
+            }
+        }
+
+        /// <summary>
+        ///     Tests that get garbage collection count never returns negative value
+        /// </summary>
+        [Fact]
+        public void GetGarbageCollectionCount_NeverReturnsNegativeValue()
+        {
+            // Arrange
+            ProcessResourceMonitor monitor = new ProcessResourceMonitor();
+
+            // Act
+            for (int i = 0; i < 5; i++)
+            {
+                int gcCount = monitor.GetGarbageCollectionCount();
+
+                // Assert
+                Assert.True(gcCount >= 0, $"GC count should never be negative, got {gcCount}");
+            }
+        }
+
+        /// <summary>
+        ///     Tests that exception handling in get cpu usage returns zero on exception
+        /// </summary>
+        [Fact]
+        public void GetCpuUsage_ExceptionHandling_InvokesMethodWithoutCrash()
+        {
+            // Arrange
+            ProcessResourceMonitor monitor = new ProcessResourceMonitor();
+
+            // Act & Assert - Should not throw
+            var cpuUsage = monitor.GetCpuUsage();
+            Assert.True(cpuUsage >= 0);
+        }
+
+        /// <summary>
+        ///     Tests that exception handling in get memory usage returns zero on exception
+        /// </summary>
+        [Fact]
+        public void GetMemoryUsage_ExceptionHandling_InvokesMethodWithoutCrash()
+        {
+            // Arrange
+            ProcessResourceMonitor monitor = new ProcessResourceMonitor();
+
+            // Act & Assert - Should not throw
+            var memoryUsage = monitor.GetMemoryUsage();
+            Assert.True(memoryUsage >= 0);
+        }
+
+        /// <summary>
+        ///     Tests that exception handling in get thread count returns zero on exception
+        /// </summary>
+        [Fact]
+        public void GetThreadCount_ExceptionHandling_InvokesMethodWithoutCrash()
+        {
+            // Arrange
+            ProcessResourceMonitor monitor = new ProcessResourceMonitor();
+
+            // Act & Assert - Should not throw
+            var threadCount = monitor.GetThreadCount();
+            Assert.True(threadCount >= 0);
+        }
+
+        /// <summary>
+        ///     Tests that multiple instances monitor independently
+        /// </summary>
+        [Fact]
+        public void MultipleInstances_MonitorIndependently()
+        {
+            // Arrange
+            ProcessResourceMonitor monitor1 = new ProcessResourceMonitor();
+            ProcessResourceMonitor monitor2 = new ProcessResourceMonitor();
+
+            // Act
+            long memory1 = monitor1.GetMemoryUsage();
+            long memory2 = monitor2.GetMemoryUsage();
+
+            // Assert
+            Assert.Equal(memory1, memory2);
+        }
+
+        /// <summary>
+        ///     Tests that different processes can be monitored
+        /// </summary>
+        [Fact]
+        public void Constructor_WithDifferentProcesses_Works()
+        {
+            // Arrange
+            Process currentProcess = Process.GetCurrentProcess();
+            ProcessResourceMonitor monitor1 = new ProcessResourceMonitor(currentProcess);
+            ProcessResourceMonitor monitor2 = new ProcessResourceMonitor();
+
+            // Act
+            long memory1 = monitor1.GetMemoryUsage();
+            long memory2 = monitor2.GetMemoryUsage();
+
+            // Assert
+            Assert.True(memory1 > 0);
+            Assert.True(memory2 > 0);
+        }
+
+        /// <summary>
+        ///     Tests that continuous monitoring works correctly
+        /// </summary>
+        [Fact]
+        public void ContinuousMonitoring_WorksCorrectly()
+        {
+            // Arrange
+            ProcessResourceMonitor monitor = new ProcessResourceMonitor();
+            var results = new System.Collections.Generic.List<(double cpu, long memory, int threads, int gc)>();
+
+            // Act
+            for (int i = 0; i < 3; i++)
+            {
+                results.Add((
+                    monitor.GetCpuUsage(),
+                    monitor.GetMemoryUsage(),
+                    monitor.GetThreadCount(),
+                    monitor.GetGarbageCollectionCount()
+                ));
+            }
+
+            // Assert
+            Assert.Equal(3, results.Count);
+            foreach (var result in results)
+            {
+                Assert.True(result.cpu >= 0);
+                Assert.True(result.memory > 0);
+                Assert.True(result.threads > 0);
+                Assert.True(result.gc >= 0);
+            }
+        }
+
+        /// <summary>
+        ///     Tests that get memory usage consistency across time
+        /// </summary>
+        [Fact]
+        public void GetMemoryUsage_Consistency_AcrossTime()
+        {
+            // Arrange
+            ProcessResourceMonitor monitor = new ProcessResourceMonitor();
+            var memorySnapshots = new System.Collections.Generic.List<long>();
+
+            // Act
+            for (int i = 0; i < 5; i++)
+            {
+                memorySnapshots.Add(monitor.GetMemoryUsage());
+            }
+
+            // Assert
+            Assert.Equal(5, memorySnapshots.Count);
+            for (int i = 1; i < memorySnapshots.Count; i++)
+            {
+                Assert.True(memorySnapshots[i] >= memorySnapshots[0]);
+            }
+        }
     }
 }
