@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Alis.Extension.Thread.Execution;
 
 namespace Alis.Extension.Thread.Integration
@@ -54,6 +55,7 @@ namespace Alis.Extension.Thread.Integration
         /// <typeparam name="TComponent">The component type</typeparam>
         /// <param name="components">The component span</param>
         /// <param name="updateAction">The update action for each component</param>
+        [ExcludeFromCodeCoverage]
         public void ExecuteComponentUpdate<TComponent>(Span<TComponent> components, Action<int> updateAction)
         {
             if (updateAction == null)

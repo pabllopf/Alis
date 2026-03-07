@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using Alis.Extension.Thread.Core;
 
@@ -65,6 +66,7 @@ namespace Alis.Extension.Thread.Scheduling
         /// <param name="count">The number of items to process</param>
         /// <param name="action">The action to execute for each range</param>
         /// <param name="minBatchSize">The minimum batch size for parallel execution</param>
+        [ExcludeFromCodeCoverage]
         public void ExecuteRange(int startIndex, int count, Action<int, int> action, int minBatchSize = 128)
         {
             if (action == null)
