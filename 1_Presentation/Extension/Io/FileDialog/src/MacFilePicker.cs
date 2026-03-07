@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -38,6 +39,7 @@ namespace Alis.Extension.Io.FileDialog
     /// <summary>
     ///     FilePicker implementation for macOS.
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class MacFilePicker : IFilePicker
     {
         /// <summary>

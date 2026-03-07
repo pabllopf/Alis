@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Logging;
 
@@ -36,6 +37,7 @@ namespace Alis.Extension.Io.FileDialog
     /// <summary>
     ///     Factory class for creating the appropriate file picker implementation based on the operating system.
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public static class FilePickerFactory
     {
         /// <summary>

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using Alis.Core.Aspect.Logging;
@@ -37,6 +38,7 @@ namespace Alis.Extension.Io.FileDialog
     /// <summary>
     ///     Provides path conversion and normalization methods for cross-platform file dialogs.
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public static class FilePickerPathConverter
     {
         /// <summary>

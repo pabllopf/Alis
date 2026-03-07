@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using Alis.Core.Aspect.Logging;
@@ -38,6 +39,7 @@ namespace Alis.Extension.Io.FileDialog
     /// <summary>
     ///     FilePicker implementation for Windows using PowerShell.
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class WindowsFilePicker : IFilePicker
     {
         /// <summary>

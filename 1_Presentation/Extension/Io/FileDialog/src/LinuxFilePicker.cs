@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Alis.Core.Aspect.Logging;
 
@@ -37,6 +38,7 @@ namespace Alis.Extension.Io.FileDialog
     /// <summary>
     ///     FilePicker implementation for Linux using zenity/kdialog.
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class LinuxFilePicker : IFilePicker
     {
         /// <summary>
