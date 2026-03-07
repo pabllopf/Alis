@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Vector;
 
@@ -114,6 +115,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         ///     Gets the hash code
         /// </summary>
         /// <returns>The int</returns>
+        [ExcludeFromCodeCoverage]
         public override int GetHashCode() => hashCode;
 
         /// <summary>
@@ -121,6 +123,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// </summary>
         /// <param name="other">The other</param>
         /// <returns>The bool</returns>
+        [ExcludeFromCodeCoverage]
         private bool Equals(Matrix3X2 other) => M11.Equals(other.M11) && M12.Equals(other.M12) && M21.Equals(other.M21) && M22.Equals(other.M22) && M31.Equals(other.M31) && M32.Equals(other.M32);
 
         /// <summary>
@@ -128,6 +131,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// </summary>
         /// <param name="obj">The obj</param>
         /// <returns>The bool</returns>
+        [ExcludeFromCodeCoverage]
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj))
@@ -290,6 +294,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <summary>Creates a scaling matrix from the specified vector scale.</summary>
         /// <param name="scales">The scale to use.</param>
         /// <returns>The scaling matrix.</returns>
+        [ExcludeFromCodeCoverage]
         public static Matrix3X2 CreateScale(Vector2F scales)
         {
             Matrix3X2 result = Identity;
@@ -304,6 +309,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <param name="xScale">The value to scale by on the X axis.</param>
         /// <param name="yScale">The value to scale by on the Y axis.</param>
         /// <returns>The scaling matrix.</returns>
+        [ExcludeFromCodeCoverage]
         public static Matrix3X2 CreateScale(float xScale, float yScale)
         {
             Matrix3X2 result = Identity;

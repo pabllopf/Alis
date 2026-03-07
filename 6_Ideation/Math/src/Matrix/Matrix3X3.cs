@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Vector;
 
@@ -100,6 +101,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// </summary>
         /// <param name="b">The </param>
         /// <returns>The vector</returns>
+        [ExcludeFromCodeCoverage]
         public Vector3F Solve33(Vector3F b)
         {
             float det = Vector3F.Dot(Ex, Vector3F.Cross(Ey, Ez));
@@ -136,6 +138,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         ///     Gets the inverse 22 using the specified m
         /// </summary>
         /// <param name="m">The </param>
+        [ExcludeFromCodeCoverage]
         public void GetInverse22(ref Matrix3X3 m)
         {
             float a = Ex.X, b = Ey.X, c = Ex.Y, d = Ey.Y;
@@ -169,6 +172,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         ///     Gets the sym inverse 33 using the specified m
         /// </summary>
         /// <param name="m">The </param>
+        [ExcludeFromCodeCoverage]
         public void GetSymInverse33(ref Matrix3X3 m)
         {
             float det = Dot(Ex, Cross(Ey, Ez));

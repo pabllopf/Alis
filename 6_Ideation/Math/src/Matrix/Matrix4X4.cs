@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Vector;
 
@@ -169,6 +170,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <summary>
         ///     The index out of range exception
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public float this[int row, int column]
         {
             get
@@ -341,6 +343,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
+        [ExcludeFromCodeCoverage]
         public static Matrix4X4 operator *(Matrix4X4 a, Matrix4X4 b)
         {
             // Implement the matrix multiplication logic here
