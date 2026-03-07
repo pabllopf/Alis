@@ -8,7 +8,7 @@
         <Nullable>disable</Nullable>
         <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
         <SonarQubeExclude>true</SonarQubeExclude>
-        <ApplicationIcon>Config/app.ico</ApplicationIcon>
+        <ApplicationIcon Condition="Exists('$(ProjectDir)Assets/app.ico')">Assets/app.ico</ApplicationIcon>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -113,8 +113,6 @@
     </ItemGroup>
 
     <PropertyGroup Condition="'$(Configuration)'=='Release'">
-        <!-- app.manifest file to use when building the project -->
-        <ApplicationManifest>$(ProjectDir)Config/app.manifest</ApplicationManifest>
 
         <!-- Enables Ahead-of-Time (AOT) compilation for maximum performance and smaller binaries. -->
         <PublishAot>true</PublishAot>
@@ -192,8 +190,6 @@
 
 
     <PropertyGroup Condition="'$(Configuration)'=='Debug'">
-        <!-- app.manifest file to use when building the project -->
-        <ApplicationManifest>$(ProjectDir)Config/app.manifest</ApplicationManifest>
 
         <!-- Enables Ahead-of-Time (AOT) compilation for maximum performance and smaller binaries. -->
         <PublishAot>true</PublishAot>
@@ -273,7 +269,7 @@
             <AppResourcesDir>$(AppBundleDir)/Resources</AppResourcesDir>
             <AppPlistSource>$(ProjectDir)obj/Info.plist</AppPlistSource>
             <AppPlist>$(AppBundleDir)/Info.plist</AppPlist>
-            <AppIconIco>$(ProjectDir)Config/app.ico</AppIconIco>
+            <AppIconIco>$(ProjectDir)Assets/app.ico</AppIconIco>
             <AppIconIcns>$(AppResourcesDir)/app.icns</AppIconIcns>
         </PropertyGroup>
 
@@ -296,18 +292,34 @@
         <Exec Command="chmod +x $(AppMacOSDir)/$(AppName)"/>
     </Target>
 
-    <Target Name="GenerateDynamicInfoPlist" BeforeTargets="Publish">
-        <PropertyGroup>
-            <DynamicPlistTemplate>$(ProjectDir)Config/Info.plist</DynamicPlistTemplate>
-            <DynamicPlistOutput>$(ProjectDir)obj/Info.plist</DynamicPlistOutput>
-        </PropertyGroup>
-        <ReadLinesFromFile File="$(DynamicPlistTemplate)">
-            <Output TaskParameter="Lines" ItemName="PlistLines"/>
-        </ReadLinesFromFile>
+    <Target Name="GenerateDynamicInfoPlist" BeforeTargets="Publish" Condition=" '$(RuntimeIdentifier)' == 'osx-x64' OR '$(RuntimeIdentifier)' == 'osx-arm64' ">
         <WriteLinesToFile
-            File="$(DynamicPlistOutput)"
-            Lines="@(PlistLines->Replace('Alis.Sample.Flappy.Bird', '$(AssemblyName)')->Replace('1.0', '$(Version)')->Replace('com.alis.flappybird', '$(ApplicationId)'))"
-            Overwrite="true"/>
+            File="$(ProjectDir)obj/Info.plist"
+            Lines='&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+ &lt;dict&gt;
+ &lt;key&gt;CFBundleName&lt;/key&gt;
+ &lt;string&gt;$(AssemblyName)&lt;/string&gt;
+ &lt;key&gt;CFBundleDisplayName&lt;/key&gt;
+ &lt;string&gt;$(AssemblyName)&lt;/string&gt;
+ &lt;key&gt;CFBundleExecutable&lt;/key&gt;
+ &lt;string&gt;$(AssemblyName)&lt;/string&gt;
+ &lt;key&gt;CFBundleIdentifier&lt;/key&gt;
+ &lt;string&gt;$(ApplicationId)&lt;/string&gt;
+ &lt;key&gt;CFBundleVersion&lt;/key&gt;
+ &lt;string&gt;$(Version)&lt;/string&gt;
+ &lt;key&gt;CFBundleShortVersionString&lt;/key&gt;
+ &lt;string&gt;$(Version)&lt;/string&gt;
+ &lt;key&gt;CFBundleIconFile&lt;/key&gt;
+ &lt;string&gt;app.icns&lt;/string&gt;
+ &lt;key&gt;CFBundlePackageType&lt;/key&gt;
+ &lt;string&gt;APPL&lt;/string&gt;
+ &lt;/dict&gt;
+&lt;/plist&gt;
+'
+            Overwrite="true" />
+
     </Target>
 
    

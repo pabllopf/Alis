@@ -91,7 +91,7 @@ namespace Alis.Core.Aspect.Logging
         ///     Traces the message
         /// </summary>
         /// <param name="message">The message</param>
-        [Conditional("DEBUG")]
+        
         public static void Trace(string message)
         {
             EnsureInitialized();
@@ -102,7 +102,7 @@ namespace Alis.Core.Aspect.Logging
         ///     Infoes the message
         /// </summary>
         /// <param name="message">The message</param>
-        [Conditional("DEBUG")]
+        
         public static void Info(string message)
         {
             EnsureInitialized();
@@ -113,7 +113,7 @@ namespace Alis.Core.Aspect.Logging
         ///     Logs the message
         /// </summary>
         /// <param name="message">The message</param>
-        [Conditional("DEBUG")]
+        
         public static void Log(string message)
         {
             EnsureInitialized();
@@ -124,7 +124,7 @@ namespace Alis.Core.Aspect.Logging
         ///     Warnings the message
         /// </summary>
         /// <param name="message">The message</param>
-        [Conditional("DEBUG")]
+        
         public static void Warning(string message)
         {
             EnsureInitialized();
@@ -135,7 +135,7 @@ namespace Alis.Core.Aspect.Logging
         ///     Errors the message
         /// </summary>
         /// <param name="message">The message</param>
-        [Conditional("DEBUG")]
+        
         public static void Error(string message)
         {
             EnsureInitialized();
@@ -146,7 +146,7 @@ namespace Alis.Core.Aspect.Logging
         ///     Debugs the message
         /// </summary>
         /// <param name="message">The message</param>
-        [Conditional("DEBUG")]
+        
         public static void Debug(string message)
         {
             EnsureInitialized();
@@ -157,7 +157,7 @@ namespace Alis.Core.Aspect.Logging
         ///     Exceptions the to string
         /// </summary>
         /// <param name="toString">The to string</param>
-        [Conditional("DEBUG")]
+        
         public static void Exception(string toString)
         {
             EnsureInitialized();
