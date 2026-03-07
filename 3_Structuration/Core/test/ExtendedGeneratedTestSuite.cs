@@ -162,7 +162,6 @@ namespace Alis.Core.Test
                 }
             }
         }
-        
     }
 
     /// <summary>
