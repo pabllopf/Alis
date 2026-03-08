@@ -40,6 +40,6 @@ namespace Alis.Sample.Empty.Web
         ///     Creates
         /// </summary>
         /// <returns>The video game</returns>
-        public static VideoGame Create() => VideoGame.Create().Build();
+        public static VideoGame Create(string[] args) => VideoGame.Create().Build();
     }
 }

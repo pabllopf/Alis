@@ -45,7 +45,7 @@ namespace Alis.Sample.Space.Simulator.Web
         ///     Creates
         /// </summary>
         /// <returns>The video game</returns>
-        public static VideoGame Create()
+        public static VideoGame Create(string[] args)
         {
             return VideoGame.Create()
                 .Settings(setting => setting

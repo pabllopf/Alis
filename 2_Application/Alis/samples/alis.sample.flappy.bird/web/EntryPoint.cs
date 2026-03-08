@@ -169,7 +169,7 @@ using System;
                 
                             Interop.Initialize();
                             
-                            GameAlis = Game.Create();
+                            GameAlis = Game.Create(args);
                             
                             GameAlis.InitPreview();
                             

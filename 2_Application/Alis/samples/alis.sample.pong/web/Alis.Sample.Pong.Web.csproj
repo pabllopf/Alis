@@ -1,11 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
-      <PropertyGroup>
+    <PropertyGroup>
         <TargetFramework>net10.0</TargetFramework>
         <LangVersion>13</LangVersion>
         <OutputType>Exe</OutputType>
         <RuntimeIdentifier>browser-wasm</RuntimeIdentifier>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-          <NoAutoGenerateFiles>false</NoAutoGenerateFiles>
+        <NoAutoGenerateFiles>false</NoAutoGenerateFiles>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -57,7 +57,7 @@
 
 
         <WriteLinesToFile
-            Condition="'$(IsBrowserWasm)' == 'true' AND !Exists('$(MSBuildProjectDirectory)/Game.cs')"
+            Condition="!Exists('$(MSBuildProjectDirectory)/Game.cs')"
             File="$(MSBuildProjectDirectory)/Game.cs"
             Lines=
                 '
@@ -79,7 +79,7 @@ namespace $(RootNamespace)
         /// Creates this instance
         /// &lt;/summary&gt;
         /// &lt;returns&gt;The video game&lt;/returns&gt;
-        public static VideoGame Create()
+        public static VideoGame Create(string[] args)
         {
              return VideoGame.Create().Build()%3b
         }
@@ -264,7 +264,7 @@ namespace $(RootNamespace)
                 
                             Interop.Initialize()%3b
                             
-                            GameAlis = Game.Create()%3b
+                            GameAlis = Game.Create(args)%3b
                             
                             GameAlis.InitPreview()%3b
                             
@@ -678,6 +678,27 @@ namespace $(RootNamespace)
         <Delete Condition="'$(IsBrowserWasm)' == 'false'" Files="$(MSBuildProjectDirectory)/runtimeconfig.template.json" />
 
 
+        <WriteLinesToFile
+            Condition="'$(IsBrowserWasm)' == 'false'"
+            File="$(MSBuildProjectDirectory)/EntryPoint.cs"
+            Lines=
+                '
+namespace $(RootNamespace)
+{
+    /// &lt;summary&gt;
+    /// The entry point class
+    /// &lt;/summary&gt;
+    public static class EntryPoint
+    {
+        /// &lt;summary&gt;
+        /// Mains the args
+        /// &lt;/summary&gt;
+        public static void Main(string[] args) => Game.Create(args).Run()%3b
+    }
+}
+            '
+            Overwrite="true" />
+
     </Target>
 
     <PropertyGroup Condition="'$(IsBrowserWasm)' == 'true' AND $(NoAutoGenerateFiles) != 'true'">
@@ -711,7 +732,7 @@ namespace $(RootNamespace)
 
 
 
-   <ItemGroup Condition="'$(IsBrowserWasm)' == 'true' AND $(NoAutoGenerateFiles) != 'true'">
+    <ItemGroup Condition="'$(IsBrowserWasm)' == 'true' AND $(NoAutoGenerateFiles) != 'true'">
         <Compile Condition="!Exists('$(MSBuildProjectDirectory)/EntryPoint.cs')" Include="$(MSBuildProjectDirectory)/EntryPoint.cs" Visible="false" />
         <Compile Condition="!Exists('$(MSBuildProjectDirectory)/Interop.cs')" Include="$(MSBuildProjectDirectory)/Interop.cs" Visible="false" />
         <Compile Condition="!Exists('$(MSBuildProjectDirectory)/Game.cs')" Include="$(MSBuildProjectDirectory)/Game.cs" Visible="false" />
@@ -731,9 +752,9 @@ namespace $(RootNamespace)
                           OutputItemType="Analyzer"
                           PrivateAssets="all"
                           ReferenceOutputAssembly="false">
-                <Properties>
-                    TargetFramework=netstandard2.0
-                </Properties>
+            <Properties>
+                TargetFramework=netstandard2.0
+            </Properties>
         </ProjectReference>
     </ItemGroup>
 
@@ -780,7 +801,7 @@ namespace $(RootNamespace)
                          CopyToPublishDirectory="Never"
                          Visible="false"/>
     </ItemGroup>
-   
+
 
 
 </Project>

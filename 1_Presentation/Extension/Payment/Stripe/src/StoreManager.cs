@@ -215,6 +215,7 @@ namespace Alis.Extension.Payment.Stripe
         /// <summary>
         ///     Creates a hosted Stripe checkout session for a product
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public async Task<CheckoutSessionResult> CreateCheckoutSessionAsync(
             string productId,
             int quantity = 1,

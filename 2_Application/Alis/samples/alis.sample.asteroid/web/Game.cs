@@ -45,8 +45,9 @@ namespace Alis.Sample.Asteroid.Web
         /// <summary>
         ///     Creates
         /// </summary>
+        /// <param name="args"></param>
         /// <returns>The video game</returns>
-        public static VideoGame Create()
+        public static VideoGame Create(string[] args)
         {
             return VideoGame
                 .Create()

@@ -57,7 +57,7 @@
 
 
         <WriteLinesToFile
-            Condition="'$(IsBrowserWasm)' == 'true' AND !Exists('$(MSBuildProjectDirectory)/Game.cs')"
+            Condition="!Exists('$(MSBuildProjectDirectory)/Game.cs')"
             File="$(MSBuildProjectDirectory)/Game.cs"
             Lines=
                 '
@@ -79,7 +79,7 @@ namespace $(RootNamespace)
         /// Creates this instance
         /// &lt;/summary&gt;
         /// &lt;returns&gt;The video game&lt;/returns&gt;
-        public static VideoGame Create()
+        public static VideoGame Create(string[] args)
         {
              return VideoGame.Create().Build()%3b
         }
@@ -264,7 +264,7 @@ namespace $(RootNamespace)
                 
                             Interop.Initialize()%3b
                             
-                            GameAlis = Game.Create()%3b
+                            GameAlis = Game.Create(args)%3b
                             
                             GameAlis.InitPreview()%3b
                             
@@ -677,6 +677,27 @@ namespace $(RootNamespace)
         <Delete Condition="'$(IsBrowserWasm)' == 'false'" Files="$(MSBuildProjectDirectory)/index.html" />
         <Delete Condition="'$(IsBrowserWasm)' == 'false'" Files="$(MSBuildProjectDirectory)/runtimeconfig.template.json" />
 
+
+        <WriteLinesToFile
+            Condition="'$(IsBrowserWasm)' == 'false'"
+            File="$(MSBuildProjectDirectory)/EntryPoint.cs"
+            Lines=
+                '
+namespace $(RootNamespace)
+{
+    /// &lt;summary&gt;
+    /// The entry point class
+    /// &lt;/summary&gt;
+    public static class EntryPoint
+    {
+        /// &lt;summary&gt;
+        /// Mains the args
+        /// &lt;/summary&gt;
+        public static void Main(string[] args) => Game.Create(args).Run()%3b
+    }
+}
+            '
+            Overwrite="true" />
 
     </Target>
 
