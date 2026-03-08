@@ -6,6 +6,9 @@
         <LangVersion>13</LangVersion>
         <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
         <Nullable>disable</Nullable>
+        <SonarQubeExclude>true</SonarQubeExclude>
+        <ExcludeFromCodeCoverage>true</ExcludeFromCodeCoverage>
+        <CodeCoverageEnabled>false</CodeCoverageEnabled>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.3.0" PrivateAssets="all"/>
