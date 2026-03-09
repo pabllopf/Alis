@@ -30,12 +30,9 @@
 using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Math.Collections;
-using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Kernel.Archetypes;
 using Alis.Core.Ecs.Kernel.Events;
-using Alis.Core.Ecs.Redifinition;
 using Alis.Core.Ecs.Updating;
 
 namespace Alis.Core.Ecs
@@ -360,106 +357,6 @@ namespace Alis.Core.Ecs
             events.Invoke(gameObject, Kernel.Tag<T4>.Id);
             events.Invoke(gameObject, Kernel.Tag<T5>.Id);
             events.Invoke(gameObject, Kernel.Tag<T6>.Id);
-        }
-
-        /// <summary>
-        ///     The neighbor cache
-        /// </summary>
-        public struct NeighborCache<T1, T2, T3, T4, T5, T6> : IArchetypeGraphEdge
-        {
-            /// <summary>
-            ///     Modifies the tags using the specified tags
-            /// </summary>
-            /// <param name="tags">The tags</param>
-            /// <param name="add">The add</param>
-            public void ModifyTags(ref FastImmutableArray<TagId> tags, bool add)
-            {
-                if (add)
-                {
-                    tags = MemoryHelpers.Concat(tags,
-                    [
-                        Kernel.Tag<T1>.Id, Kernel.Tag<T2>.Id, Kernel.Tag<T3>.Id, Kernel.Tag<T4>.Id, Kernel.Tag<T5>.Id, Kernel.Tag<T6>.Id
-                    ]);
-                }
-                else
-                {
-                    tags = MemoryHelpers.Remove(tags,
-                    [
-                        Kernel.Tag<T1>.Id, Kernel.Tag<T2>.Id, Kernel.Tag<T3>.Id, Kernel.Tag<T4>.Id, Kernel.Tag<T5>.Id, Kernel.Tag<T6>.Id
-                    ]);
-                }
-            }
-
-            /// <summary>
-            ///     Modifies the components using the specified components
-            /// </summary>
-            /// <param name="components">The components</param>
-            /// <param name="add">The add</param>
-            public void ModifyComponents(ref FastImmutableArray<ComponentId> components, bool add)
-            {
-                if (add)
-                {
-                    components = MemoryHelpers.Concat(components,
-                    [
-                        Component<T1>.Id, Component<T2>.Id, Component<T3>.Id, Component<T4>.Id, Component<T5>.Id,
-                        Component<T6>.Id
-                    ]);
-                }
-                else
-                {
-                    components = MemoryHelpers.Remove(components,
-                    [
-                        Component<T1>.Id, Component<T2>.Id, Component<T3>.Id, Component<T4>.Id, Component<T5>.Id,
-                        Component<T6>.Id
-                    ]);
-                }
-            }
-
-            //separate into individual classes to avoid creating uneccecary static classes.
-
-            /// <summary>
-            ///     The add class
-            /// </summary>
-            internal static class Add
-            {
-                /// <summary>
-                ///     The lookup
-                /// </summary>
-                internal static ArchetypeNeighborCache Lookup;
-            }
-
-            /// <summary>
-            ///     The remove class
-            /// </summary>
-            internal static class Remove
-            {
-                /// <summary>
-                ///     The lookup
-                /// </summary>
-                internal static ArchetypeNeighborCache Lookup;
-            }
-
-            /// <summary>
-            ///     The tag class
-            /// </summary>
-            internal static class Tag
-            {
-                /// <summary>
-                ///     The lookup
-                /// </summary>
-                internal static ArchetypeNeighborCache Lookup;
-            }
-
-            /// <summary>
-            ///     The detach class
-            /// </summary>
-            internal static class Detach
-            {
-                /// <summary>
-                ///     The lookup
-                /// </summary>
-                internal static ArchetypeNeighborCache Lookup;
-            }
         }
     }
 }
