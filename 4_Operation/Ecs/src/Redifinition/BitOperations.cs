@@ -39,6 +39,9 @@ namespace System.Numerics
     [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public static class BitOperations
     {
+        /// <summary>
+        /// The log de bruijn
+        /// </summary>
         private static readonly byte[] Log2DeBruijn =
         [
             00, 09, 01, 10, 13, 21, 02, 29,

@@ -543,6 +543,13 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         static Archetype() => Null = GetArchetypeId([Component.GetComponentId(typeof(void))]);
 
 
+        /// <summary>
+        /// Creates the or get existing archetype using the specified types
+        /// </summary>
+        /// <param name="types">The types</param>
+        /// <param name="scene">The scene</param>
+        /// <param name="typeArray">The type array</param>
+        /// <returns>The archetype</returns>
         internal static Archetype CreateOrGetExistingArchetype(ReadOnlySpan<ComponentId> types, Scene scene, FastImmutableArray<ComponentId>? typeArray = null)
         {
             GameObjectType id = GetArchetypeId(types, typeArray);
@@ -627,6 +634,14 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         }
 
 
+        /// <summary>
+        /// Gets the archetype id using the specified types
+        /// </summary>
+        /// <param name="types">The types</param>
+        /// <param name="typesArray">The types array</param>
+        /// <exception cref="InvalidOperationException">Entities can have a max of 127 components!</exception>
+        /// <exception cref="InvalidOperationException">Exceeded maximum unique archetype count of 65535</exception>
+        /// <returns>The game object type</returns>
         internal static GameObjectType GetArchetypeId(ReadOnlySpan<ComponentId> types, FastImmutableArray<ComponentId>? typesArray = null)
         {
             if (types.Length > MemoryHelpers.MaxComponentCount)
@@ -818,6 +833,13 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// </summary>
         static Archetype() => Null = GetArchetypeId([Component.GetComponentId(typeof(void))]);
         
+        /// <summary>
+        /// Creates the or get existing archetype using the specified types
+        /// </summary>
+        /// <param name="types">The types</param>
+        /// <param name="scene">The scene</param>
+        /// <param name="typeArray">The type array</param>
+        /// <returns>The archetype</returns>
         internal static Archetype CreateOrGetExistingArchetype(ReadOnlySpan<ComponentId> types, Scene scene, FastImmutableArray<ComponentId>? typeArray = null)
         {
             GameObjectType id = GetArchetypeId(types, typeArray);
@@ -902,6 +924,14 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         }
 
        
+        /// <summary>
+        /// Gets the archetype id using the specified types
+        /// </summary>
+        /// <param name="types">The types</param>
+        /// <param name="typesArray">The types array</param>
+        /// <exception cref="InvalidOperationException">Entities can have a max of 127 components!</exception>
+        /// <exception cref="InvalidOperationException">Exceeded maximum unique archetype count of 65535</exception>
+        /// <returns>The game object type</returns>
         internal static GameObjectType GetArchetypeId(ReadOnlySpan<ComponentId> types, FastImmutableArray<ComponentId>? typesArray = null)
         {
             if (types.Length > MemoryHelpers.MaxComponentCount)

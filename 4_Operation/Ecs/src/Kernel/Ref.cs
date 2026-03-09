@@ -41,25 +41,46 @@ namespace Alis.Core.Ecs.Kernel
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct Ref<T>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Ref"/> class
+        /// </summary>
+        /// <param name="compArr">The comp arr</param>
+        /// <param name="index">The index</param>
         internal Ref(T[] compArr, int index)
         {
             _data = compArr;
             _offset = index;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Ref"/> class
+        /// </summary>
+        /// <param name="compSpan">The comp span</param>
+        /// <param name="index">The index</param>
         internal Ref(Span<T> compSpan, int index)
         {
             _data = compSpan;
             _offset = index;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Ref"/> class
+        /// </summary>
+        /// <param name="compSpan">The comp span</param>
+        /// <param name="index">The index</param>
         internal Ref(ComponentStorage<T> compSpan, int index)
         {
             _data = compSpan.AsSpan();
             _offset = index;
         }
 
+        /// <summary>
+        /// The data
+        /// </summary>
         private readonly Span<T> _data;
+        /// <summary>
+        /// The offset
+        /// </summary>
         private readonly int _offset;
 
         /// <summary>

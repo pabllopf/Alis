@@ -40,6 +40,9 @@ namespace Alis.Core.Ecs.Test
     /// </summary>
     public class SceneInfrastructureTest
     {
+        /// <summary>
+        /// Tests that scene create from objects with single component creates entity with component
+        /// </summary>
         [Fact]
         public void Scene_CreateFromObjects_WithSingleComponent_CreatesEntityWithComponent()
         {
@@ -55,6 +58,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(11, p.Y);
         }
 
+        /// <summary>
+        /// Tests that scene create from objects with multiple components creates entity with all components
+        /// </summary>
         [Fact]
         public void Scene_CreateFromObjects_WithMultipleComponents_CreatesEntityWithAllComponents()
         {
@@ -68,6 +74,9 @@ namespace Alis.Core.Ecs.Test
             Assert.True(entity.Has<Health>());
         }
 
+        /// <summary>
+        /// Tests that scene create from objects with empty span creates alive entity
+        /// </summary>
         [Fact]
         public void Scene_CreateFromObjects_WithEmptySpan_CreatesAliveEntity()
         {
@@ -80,6 +89,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(1, scene.EntityCount);
         }
 
+        /// <summary>
+        /// Tests that scene create from objects with more than 127 components throws argument exception
+        /// </summary>
         [Fact]
         public void Scene_CreateFromObjects_WithMoreThan127Components_ThrowsArgumentException()
         {
@@ -93,6 +105,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Throws<ArgumentException>(() => scene.CreateFromObjects(components));
         }
 
+        /// <summary>
+        /// Tests that scene custom query with same rules returns cached query instance
+        /// </summary>
         [Fact]
         public void Scene_CustomQuery_WithSameRules_ReturnsCachedQueryInstance()
         {
@@ -106,6 +121,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Same(q1, q2);
         }
 
+        /// <summary>
+        /// Tests that scene custom query with different rules returns different query instances
+        /// </summary>
         [Fact]
         public void Scene_CustomQuery_WithDifferentRules_ReturnsDifferentQueryInstances()
         {
@@ -120,6 +138,9 @@ namespace Alis.Core.Ecs.Test
             Assert.NotSame(q1, q2);
         }
 
+        /// <summary>
+        /// Tests that scene invoke entity created invokes subscribers
+        /// </summary>
         [Fact]
         public void Scene_InvokeEntityCreated_InvokesSubscribers()
         {
@@ -133,6 +154,9 @@ namespace Alis.Core.Ecs.Test
             Assert.True(invoked);
         }
 
+        /// <summary>
+        /// Tests that scene update archetype table resizes backing array
+        /// </summary>
         [Fact]
         public void Scene_UpdateArchetypeTable_ResizesBackingArray()
         {
@@ -144,6 +168,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(initialLength + 8, scene.WorldArchetypeTable.Length);
         }
 
+        /// <summary>
+        /// Tests that scene enter and exit disallow state tracks allow structural changes
+        /// </summary>
         [Fact]
         public void Scene_EnterAndExitDisallowState_TracksAllowStructuralChanges()
         {
@@ -158,6 +185,9 @@ namespace Alis.Core.Ecs.Test
             Assert.True(scene.AllowStructualChanges);
         }
 
+        /// <summary>
+        /// Tests that scene enter disallow state is reentrant and requires matching exits
+        /// </summary>
         [Fact]
         public void Scene_EnterDisallowState_IsReentrantAndRequiresMatchingExits()
         {

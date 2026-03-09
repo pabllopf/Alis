@@ -290,8 +290,14 @@ namespace Alis.Core.Ecs.Redifinition
         public struct Block16;
 
 
+        /// <summary>
+        /// The component handle
+        /// </summary>
         [ThreadStatic] internal static readonly ComponentHandle[] SharedTempComponentHandleBuffer = new ComponentHandle[8];
 
+        /// <summary>
+        /// The component storage base
+        /// </summary>
         [ThreadStatic] internal static readonly Updating.ComponentStorageBase[] SharedTempComponentStorageBuffer = new Updating.ComponentStorageBase[8];
 
     }
