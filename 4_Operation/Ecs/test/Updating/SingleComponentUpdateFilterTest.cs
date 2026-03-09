@@ -131,8 +131,7 @@ namespace Alis.Core.Ecs.Test.Updating
 
             SingleComponentUpdateFilter filter = new SingleComponentUpdateFilter(scene, Component<UpdateComponent>.Id);
             filter.Update();
-
-            // No exception expected
+            Assert.True(true); // If we reach this point, no exception was thrown
         }
 
         /// <summary>
