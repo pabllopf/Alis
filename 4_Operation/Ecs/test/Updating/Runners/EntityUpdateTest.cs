@@ -38,6 +38,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
     /// </summary>
     public class EntityUpdateTest
     {
+        /// <summary>
+        /// Tests that entity update constructor creates instance
+        /// </summary>
         [Fact]
         public void EntityUpdate_Constructor_CreatesInstance()
         {
@@ -48,6 +51,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             Assert.Equal(8, update.Buffer.Length);
         }
 
+        /// <summary>
+        /// Tests that entity update scene update invokes component update and mutates all args
+        /// </summary>
         [Fact]
         public void EntityUpdate_SceneUpdate_InvokesComponentUpdateAndMutatesAllArgs()
         {
@@ -71,6 +77,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             Assert.Equal(7, entity.Get<Damage>().Amount);
         }
 
+        /// <summary>
+        /// Tests that entity update scene update two frames accumulates changes
+        /// </summary>
         [Fact]
         public void EntityUpdate_SceneUpdate_TwoFrames_AccumulatesChanges()
         {
@@ -95,6 +104,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             Assert.Equal(4, entity.Get<Damage>().Amount);
         }
 
+        /// <summary>
+        /// Tests that entity update scene update updates all matching entities
+        /// </summary>
         [Fact]
         public void EntityUpdate_SceneUpdate_UpdatesAllMatchingEntities()
         {
@@ -124,10 +136,25 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             Assert.Equal(4, e2.Get<Position>().X);
         }
 
+        /// <summary>
+        /// The entity update component
+        /// </summary>
         internal struct EntityUpdate5Component : IOnUpdate<Position, Velocity, Health, Armor, Damage>
         {
+            /// <summary>
+            /// The call count
+            /// </summary>
             public int CallCount;
 
+            /// <summary>
+            /// Updates the self
+            /// </summary>
+            /// <param name="self">The self</param>
+            /// <param name="arg1">The arg</param>
+            /// <param name="arg2">The arg</param>
+            /// <param name="arg3">The arg</param>
+            /// <param name="arg4">The arg</param>
+            /// <param name="arg5">The arg</param>
             public void Update(IGameObject self, ref Position arg1, ref Velocity arg2, ref Health arg3, ref Armor arg4,
                 ref Damage arg5)
             {

@@ -39,6 +39,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
     /// </summary>
     public class EventRecordTest
     {
+        /// <summary>
+        /// Tests that initalize when exists is false creates and initializes fields
+        /// </summary>
         [Fact]
         public void Initalize_WhenExistsIsFalse_CreatesAndInitializesFields()
         {
@@ -68,6 +71,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
             Assert.False(deleteAny);
         }
 
+        /// <summary>
+        /// Tests that initalize when exists is true leaves record reference unchanged
+        /// </summary>
         [Fact]
         public void Initalize_WhenExistsIsTrue_LeavesRecordReferenceUnchanged()
         {
@@ -79,6 +85,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
             Assert.Same(original, record);
         }
 
+        /// <summary>
+        /// Tests that initalize when exists is true and record is null keeps null
+        /// </summary>
         [Fact]
         public void Initalize_WhenExistsIsTrueAndRecordIsNull_KeepsNull()
         {
@@ -89,6 +98,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
             Assert.Null(record);
         }
 
+        /// <summary>
+        /// Tests that initalize can be called twice second call with exists true preserves initialized fields
+        /// </summary>
         [Fact]
         public void Initalize_CanBeCalledTwice_SecondCallWithExistsTruePreservesInitializedFields()
         {

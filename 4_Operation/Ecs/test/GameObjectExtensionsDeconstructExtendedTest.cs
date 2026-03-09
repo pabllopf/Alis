@@ -305,6 +305,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Throws<NullReferenceException>(() => { entity.Deconstruct(out Ref<Position> pos); });
         }
 
+        /// <summary>
+        /// Tests that game object extensions deconstruct two components works
+        /// </summary>
         [Fact]
         public void GameObjectExtensionsDeconstruct_TwoComponents_Works()
         {
@@ -319,6 +322,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(9, entity.Get<Velocity>().VX);
         }
 
+        /// <summary>
+        /// Tests that game object extensions deconstruct three components works
+        /// </summary>
         [Fact]
         public void GameObjectExtensionsDeconstruct_ThreeComponents_Works()
         {
@@ -335,6 +341,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(5, hp.Value.Value);
         }
 
+        /// <summary>
+        /// Tests that game object extensions deconstruct four components works
+        /// </summary>
         [Fact]
         public void GameObjectExtensionsDeconstruct_FourComponents_Works()
         {
@@ -353,6 +362,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(8, tr.Value.Rotation);
         }
 
+        /// <summary>
+        /// Tests that game object extensions deconstruct five components works
+        /// </summary>
         [Fact]
         public void GameObjectExtensionsDeconstruct_FiveComponents_Works()
         {
@@ -378,6 +390,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(9, tc.Value.Value);
         }
 
+        /// <summary>
+        /// Tests that game object extensions deconstruct six components works
+        /// </summary>
         [Fact]
         public void GameObjectExtensionsDeconstruct_SixComponents_Works()
         {
@@ -406,6 +421,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(10, ac.Value.X);
         }
 
+        /// <summary>
+        /// Tests that game object extensions deconstruct seven components works
+        /// </summary>
         [Fact]
         public void GameObjectExtensionsDeconstruct_SevenComponents_Works()
         {
@@ -437,6 +455,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(12, dmg.Value.Amount);
         }
 
+        /// <summary>
+        /// Tests that game object extensions deconstruct eight components works
+        /// </summary>
         [Fact]
         public void GameObjectExtensionsDeconstruct_EightComponents_Works()
         {

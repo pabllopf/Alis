@@ -39,6 +39,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
     /// </summary>
     public class GenericEventTest
     {
+        /// <summary>
+        /// Tests that generic event when created has no listeners
+        /// </summary>
         [Fact]
         public void GenericEvent_WhenCreated_HasNoListeners()
         {
@@ -47,6 +50,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
             Assert.False(GetHasListeners(e));
         }
 
+        /// <summary>
+        /// Tests that add with single action sets has listeners true
+        /// </summary>
         [Fact]
         public void Add_WithSingleAction_SetsHasListenersTrue()
         {
@@ -58,6 +64,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
             Assert.True(GetHasListeners(e));
         }
 
+        /// <summary>
+        /// Tests that invoke with single action invokes action with expected type
+        /// </summary>
         [Fact]
         public void Invoke_WithSingleAction_InvokesActionWithExpectedType()
         {
@@ -73,6 +82,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
             Assert.Equal(42, action.LastIntValue);
         }
 
+        /// <summary>
+        /// Tests that invoke with multiple actions invokes all registered actions
+        /// </summary>
         [Fact]
         public void Invoke_WithMultipleActions_InvokesAllRegisteredActions()
         {
@@ -93,6 +105,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
             Assert.Equal(1, a3.Calls);
         }
 
+        /// <summary>
+        /// Tests that remove with only action clears has listeners
+        /// </summary>
         [Fact]
         public void Remove_WithOnlyAction_ClearsHasListeners()
         {
@@ -105,6 +120,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
             Assert.False(GetHasListeners(e));
         }
 
+        /// <summary>
+        /// Tests that remove with first action from multiple keeps others invokable
+        /// </summary>
         [Fact]
         public void Remove_WithFirstActionFromMultiple_KeepsOthersInvokable()
         {
@@ -127,6 +145,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
             Assert.True(GetHasListeners(e));
         }
 
+        /// <summary>
+        /// Tests that remove with non existing action does not affect existing actions
+        /// </summary>
         [Fact]
         public void Remove_WithNonExistingAction_DoesNotAffectExistingActions()
         {
@@ -144,6 +165,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
             Assert.True(GetHasListeners(e));
         }
 
+        /// <summary>
+        /// Tests that operator plus minus with null left returns null
+        /// </summary>
         [Fact]
         public void OperatorPlusMinus_WithNullLeft_ReturnsNull()
         {
@@ -157,6 +181,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
             Assert.Null(removeResult);
         }
 
+        /// <summary>
+        /// Tests that operator plus minus with valid event adds and removes action
+        /// </summary>
         [Fact]
         public void OperatorPlusMinus_WithValidEvent_AddsAndRemovesAction()
         {
@@ -170,6 +197,10 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
             Assert.False(GetHasListeners(e));
         }
 
+        /// <summary>
+        /// Creates the generic event
+        /// </summary>
+        /// <returns>The generic event</returns>
         private static GenericEvent CreateGenericEvent()
         {
             ConstructorInfo ctor = typeof(GenericEvent).GetConstructor(BindingFlags.Instance | BindingFlags.NonPublic,
@@ -179,6 +210,11 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
             return (GenericEvent) ctor.Invoke(null);
         }
 
+        /// <summary>
+        /// Gets the has listeners using the specified e
+        /// </summary>
+        /// <param name="e">The </param>
+        /// <returns>The bool</returns>
         private static bool GetHasListeners(GenericEvent e)
         {
             PropertyInfo prop = typeof(GenericEvent).GetProperty("HasListeners",
@@ -186,18 +222,33 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
             return (bool) prop.GetValue(e)!;
         }
 
+        /// <summary>
+        /// Invokes the internal add using the specified e
+        /// </summary>
+        /// <param name="e">The </param>
+        /// <param name="action">The action</param>
         private static void InvokeInternalAdd(GenericEvent e, IGenericAction<GameObject> action)
         {
             MethodInfo method = typeof(GenericEvent).GetMethod("Add", BindingFlags.Instance | BindingFlags.NonPublic)!;
             method.Invoke(e, [action]);
         }
 
+        /// <summary>
+        /// Invokes the internal remove using the specified e
+        /// </summary>
+        /// <param name="e">The </param>
+        /// <param name="action">The action</param>
         private static void InvokeInternalRemove(GenericEvent e, IGenericAction<GameObject> action)
         {
             MethodInfo method = typeof(GenericEvent).GetMethod("Remove", BindingFlags.Instance | BindingFlags.NonPublic)!;
             method.Invoke(e, [action]);
         }
 
+        /// <summary>
+        /// Invokes the internal invoke of int using the specified e
+        /// </summary>
+        /// <param name="e">The </param>
+        /// <param name="value">The value</param>
         private static void InvokeInternalInvokeOfInt(GenericEvent e, int value)
         {
             MethodInfo method = typeof(GenericEvent).GetMethod("Invoke", BindingFlags.Instance | BindingFlags.NonPublic)!
@@ -206,12 +257,31 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
             method.Invoke(e, args);
         }
 
+        /// <summary>
+        /// The capture action class
+        /// </summary>
+        /// <seealso cref="IGenericAction{GameObject}"/>
         private sealed class CaptureAction : IGenericAction<GameObject>
         {
+            /// <summary>
+            /// The calls
+            /// </summary>
             internal int Calls;
+            /// <summary>
+            /// The last type
+            /// </summary>
             internal Type LastType;
+            /// <summary>
+            /// The last int value
+            /// </summary>
             internal int LastIntValue;
 
+            /// <summary>
+            /// Invokes the param
+            /// </summary>
+            /// <typeparam name="T">The </typeparam>
+            /// <param name="param">The param</param>
+            /// <param name="type">The type</param>
             public void Invoke<T>(GameObject param, ref T type)
             {
                 Calls++;
