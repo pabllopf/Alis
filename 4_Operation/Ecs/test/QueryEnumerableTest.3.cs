@@ -1,0 +1,204 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:QueryEnumerableTest.3.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+using Alis.Core.Ecs.Kernel;
+using Alis.Core.Ecs.Systems;
+using Alis.Core.Ecs.Test.Models;
+using Xunit;
+
+namespace Alis.Core.Ecs.Test
+{
+    /// <summary>
+    ///     The query enumerable test class
+    /// </summary>
+    /// <remarks>
+    ///     Tests for QueryEnumerable with 3 component types.
+    /// </remarks>
+    public partial class QueryEnumerableTest
+    {
+        /// <summary>
+        ///     Tests that query enumerable with three components can be created.
+        /// </summary>
+        [Fact]
+        public void QueryEnumerable_WithThreeComponents_CanBeCreated()
+        {
+            // Arrange
+            using Scene scene = new Scene();
+            Query query = scene.Query<With<Position>, With<Velocity>, With<Health>>();
+
+            // Act
+            QueryEnumerator<Position, Velocity, Health>.QueryEnumerable enumerable = query.Enumerate<Position, Velocity, Health>();
+
+            // Assert
+            Assert.NotEqual(default(QueryEnumerator<Position, Velocity, Health>.QueryEnumerable), enumerable);
+        }
+
+        /// <summary>
+        ///     Tests that query enumerable with three components provides access to all.
+        /// </summary>
+        [Fact]
+        public void QueryEnumerable_WithThreeComponents_ProvidesAccessToAll()
+        {
+            // Arrange
+            using Scene scene = new Scene();
+            scene.Create(
+                new Position {X = 10, Y = 20},
+                new Velocity {VX = 5, VY = 10},
+                new Health {Value = 150}
+            );
+            Query query = scene.Query<With<Position>, With<Velocity>, With<Health>>();
+
+            // Act & Assert
+            foreach ((Ref<Position> pos, Ref<Velocity> vel, Ref<Health> health) in query.Enumerate<Position, Velocity, Health>())
+            {
+                Assert.Equal(10, pos.Value.X);
+                Assert.Equal(5, vel.Value.VX);
+                Assert.Equal(150, health.Value.Value);
+            }
+        }
+
+        /// <summary>
+        ///     Tests that query enumerable with three components filters correctly.
+        /// </summary>
+        [Fact]
+        public void QueryEnumerable_WithThreeComponents_FiltersCorrectly()
+        {
+            // Arrange
+            using Scene scene = new Scene();
+            scene.Create(new Position {X = 1, Y = 1}, new Velocity {VX = 1, VY = 1}, new Health {Value = 100});
+            scene.Create(new Position {X = 2, Y = 2}, new Velocity {VX = 2, VY = 2}); // Missing Health
+            Query query = scene.Query<With<Position>, With<Velocity>, With<Health>>();
+
+            // Act
+            int count = 0;
+            foreach (RefTuple<Position, Velocity, Health> _ in query.Enumerate<Position, Velocity, Health>())
+            {
+                count++;
+            }
+
+            // Assert
+            Assert.Equal(1, count);
+        }
+
+        /// <summary>
+        ///     Tests that query enumerable with three components allows modification.
+        /// </summary>
+        [Fact]
+        public void QueryEnumerable_WithThreeComponents_AllowsModification()
+        {
+            // Arrange
+            using Scene scene = new Scene();
+            GameObject entity = scene.Create(
+                new Position {X = 0, Y = 0},
+                new Velocity {VX = 0, VY = 0},
+                new Health {Value = 0}
+            );
+            Query query = scene.Query<With<Position>, With<Velocity>, With<Health>>();
+
+            // Act
+            foreach ((Ref<Position> pos, Ref<Velocity> vel, Ref<Health> health) in query.Enumerate<Position, Velocity, Health>())
+            {
+                Position p = pos.Value;
+                p.X = 100;
+                pos.Value = p;
+
+                Velocity v = vel.Value;
+                v.VY = 50;
+                vel.Value = v;
+
+                Health h = health.Value;
+                h.Value = 75;
+                health.Value = h;
+            }
+
+            // Assert
+            Assert.Equal(100, entity.Get<Position>().X);
+            Assert.Equal(50, entity.Get<Velocity>().VY);
+            Assert.Equal(75, entity.Get<Health>().Value);
+        }
+
+        /// <summary>
+        ///     Tests that query enumerable with three components works with empty query.
+        /// </summary>
+        [Fact]
+        public void QueryEnumerable_WithThreeComponents_WorksWithEmptyQuery()
+        {
+            // Arrange
+            using Scene scene = new Scene();
+            Query query = scene.Query<With<Position>, With<Velocity>, With<Health>>();
+
+            // Act
+            int count = 0;
+            foreach (RefTuple<Position, Velocity, Health> _ in query.Enumerate<Position, Velocity, Health>())
+            {
+                count++;
+            }
+
+            // Assert
+            Assert.Equal(0, count);
+        }
+
+        /// <summary>
+        ///     Tests that query enumerable with three components provides entity access.
+        /// </summary>
+        [Fact]
+        public void QueryEnumerable_WithThreeComponents_ProvidesEntityAccess()
+        {
+            // Arrange
+            using Scene scene = new Scene();
+            scene.Create(new Position {X = 11, Y = 22}, new Velocity {VX = 33, VY = 44}, new Health {Value = 55});
+            Query query = scene.Query<With<Position>, With<Velocity>, With<Health>>();
+
+            // Act
+            int count = 0;
+            foreach ((GameObject entity, Ref<Position> pos, Ref<Velocity> vel, Ref<Health> health) in query.EnumerateWithEntities<Position, Velocity, Health>())
+            {
+                Assert.True(entity.IsAlive);
+                Assert.Equal(11, pos.Value.X);
+                Assert.Equal(33, vel.Value.VX);
+                Assert.Equal(55, health.Value.Value);
+                count++;
+            }
+
+            // Assert
+            Assert.Equal(1, count);
+        }
+
+        /// <summary>
+        ///     Tests that query enumerable with three components is struct type.
+        /// </summary>
+        [Fact]
+        public void QueryEnumerable_WithThreeComponents_IsStructType()
+        {
+            // Assert
+            Assert.True(typeof(QueryEnumerable<Position, Velocity, Health>).IsValueType);
+        }
+    }
+}
+
