@@ -46,7 +46,7 @@ namespace Alis.Core.Ecs
     /// <summary>
     ///     A collection of entities that can be updated and queried.
     /// </summary>
-    public partial class Scene : IDisposable
+    public class Scene : IDisposable
     {
         /// <summary>
         ///     The deferred gameObject operation recursion limit
@@ -728,6 +728,1226 @@ namespace Alis.Core.Ecs
 
             archetype.EnsureCapacity(count);
             EntityTable.EnsureCapacity(count + EntityCount);
+        }
+        
+        
+        /// <summary>
+        ///     Creates an <see cref="GameObject" /> with the given component(s)
+        /// </summary>
+        /// <returns>An <see cref="GameObject" /> that can be used to acsess the component data</returns>
+        public GameObject Create<T1, T2>(in T1 comp1, in T2 comp2)
+        {
+            WorldArchetypeTableItem archetypes = Archetype<T1, T2>.CreateNewOrGetExistingArchetypes(this);
+
+            ref GameObjectIdOnly entity = ref Unsafe.NullRef<GameObjectIdOnly>();
+            GameObjectLocation eloc = default(GameObjectLocation);
+
+            ComponentStorageBase[] components;
+
+            if (AllowStructualChanges)
+            {
+                components = archetypes.Archetype.Components;
+                entity = ref archetypes.Archetype.CreateEntityLocation(GameObjectFlags.None, out eloc);
+            }
+            else
+            {
+                // we don't need to manually set flags, they are already zeroed
+                entity = ref archetypes.Archetype.CreateDeferredEntityLocation(this, archetypes.DeferredCreationArchetype,
+                    ref eloc, out components);
+            }
+
+            //manually inlined from Scene.CreateEntityFromLocation
+            //The jit likes to inline the outer create function and not inline
+            //the inner functions - benchmarked to improve perf by 10-20%
+            (int id, ushort version) =
+                entity = RecycledEntityIds.CanPop() ? RecycledEntityIds.Pop() : new GameObjectIdOnly(NextEntityId++, 0);
+            eloc.Version = version;
+            EntityTable[id] = eloc;
+
+            //1x array lookup per component
+            ref T1 ref1 =
+                ref Unsafe.As<ComponentStorage<T1>>(
+                    Unsafe.Add(ref components[0], Archetype<T1, T2>.OfComponent<T1>.Index))[eloc.Index];
+            ref1 = comp1;
+            ref T2 ref2 =
+                ref Unsafe.As<ComponentStorage<T2>>(
+                    Unsafe.Add(ref components[0], Archetype<T1, T2>.OfComponent<T2>.Index))[eloc.Index];
+            ref2 = comp2;
+
+
+            GameObject concreteGameObject = new GameObject(Id, version, id);
+
+            Component<T1>.Initer?.Invoke(concreteGameObject, ref ref1);
+            Component<T2>.Initer?.Invoke(concreteGameObject, ref ref2);
+
+            EntityCreatedEvent.Invoke(concreteGameObject);
+
+            return concreteGameObject;
+        }
+
+
+        /// <summary>
+        ///     Creates the many using the specified count
+        /// </summary>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <param name="count">The count</param>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        /// <returns>A chunk tuple of t 1 and t 2</returns>
+        public ChunkTuple<T1, T2> CreateMany<T1, T2>(int count)
+        {
+            if ((uint) count == 0) // Efficient validation for non-positive values
+            {
+                throw new ArgumentOutOfRangeException(nameof(count));
+            }
+
+            WorldArchetypeTableItem archetype = Archetype<T1, T2>.CreateNewOrGetExistingArchetypes(this);
+            int entityCount = archetype.Archetype.EntityCount;
+
+            EntityTable.EnsureCapacity(EntityCount + count);
+
+            // Create gameObject locations directly in a Span
+            Span<GameObjectIdOnly> entityLocations = archetype.Archetype.CreateEntityLocations(count, this);
+
+            // Invoke events if listeners are present
+            if (EntityCreatedEvent.HasListeners)
+            {
+                foreach (ref GameObjectIdOnly entityId in entityLocations)
+                {
+                    EntityCreatedEvent.Invoke(entityId.ToEntity(this));
+                }
+            }
+
+            // Return the result with calculated spans
+            return new ChunkTuple<T1, T2>
+            {
+                Entities = new GameObjectEnumerator.EntityEnumerable(this, entityLocations),
+                Span1 = archetype.Archetype.GetComponentSpan<T1>().Slice(entityCount, count),
+                Span2 = archetype.Archetype.GetComponentSpan<T2>().Slice(entityCount, count)
+            };
+        }
+        
+        
+        /// <summary>
+        ///     Creates an <see cref="GameObject" /> with the given component(s)
+        /// </summary>
+        /// <returns>An <see cref="GameObject" /> that can be used to acsess the component data</returns>
+        public GameObject Create<T1, T2, T3>(in T1 comp1, in T2 comp2, in T3 comp3)
+        {
+            WorldArchetypeTableItem archetypes = Archetype<T1, T2, T3>.CreateNewOrGetExistingArchetypes(this);
+
+            ref GameObjectIdOnly entity = ref Unsafe.NullRef<GameObjectIdOnly>();
+            GameObjectLocation eloc = default(GameObjectLocation);
+
+            ComponentStorageBase[] components;
+
+            if (AllowStructualChanges)
+            {
+                components = archetypes.Archetype.Components;
+                entity = ref archetypes.Archetype.CreateEntityLocation(GameObjectFlags.None, out eloc);
+            }
+            else
+            {
+                // we don't need to manually set flags, they are already zeroed
+                entity = ref archetypes.Archetype.CreateDeferredEntityLocation(this, archetypes.DeferredCreationArchetype,
+                    ref eloc, out components);
+            }
+
+            //manually inlined from Scene.CreateEntityFromLocation
+            //The jit likes to inline the outer create function and not inline
+            //the inner functions - benchmarked to improve perf by 10-20%
+            (int id, ushort version) =
+                entity = RecycledEntityIds.CanPop() ? RecycledEntityIds.Pop() : new GameObjectIdOnly(NextEntityId++, 0);
+            eloc.Version = version;
+            EntityTable[id] = eloc;
+
+            //1x array lookup per component
+            ref T1 ref1 =
+                ref Unsafe.As<ComponentStorage<T1>>(
+                    Unsafe.Add(ref components[0], Archetype<T1, T2, T3>.OfComponent<T1>.Index))[eloc.Index];
+            ref1 = comp1;
+            ref T2 ref2 =
+                ref Unsafe.As<ComponentStorage<T2>>(
+                    Unsafe.Add(ref components[0], Archetype<T1, T2, T3>.OfComponent<T2>.Index))[eloc.Index];
+            ref2 = comp2;
+            ref T3 ref3 =
+                ref Unsafe.As<ComponentStorage<T3>>(
+                    Unsafe.Add(ref components[0], Archetype<T1, T2, T3>.OfComponent<T3>.Index))[eloc.Index];
+            ref3 = comp3;
+
+
+            GameObject concreteGameObject = new GameObject(Id, version, id);
+
+            Component<T1>.Initer?.Invoke(concreteGameObject, ref ref1);
+            Component<T2>.Initer?.Invoke(concreteGameObject, ref ref2);
+            Component<T3>.Initer?.Invoke(concreteGameObject, ref ref3);
+
+            EntityCreatedEvent.Invoke(concreteGameObject);
+
+            return concreteGameObject;
+        }
+
+        /// <summary>
+        ///     Creates a large amount of entities quickly
+        /// </summary>
+        /// <param name="count">The number of entities to create</param>
+        /// <returns>The entities created and their component spans</returns>
+        public ChunkTuple<T1, T2, T3> CreateMany<T1, T2, T3>(int count)
+        {
+            if ((uint) count == 0) // Efficient validation for non-positive values
+            {
+                throw new ArgumentOutOfRangeException(nameof(count));
+            }
+
+            WorldArchetypeTableItem archetype = Archetype<T1, T2, T3>.CreateNewOrGetExistingArchetypes(this);
+            int entityCount = archetype.Archetype.EntityCount;
+
+            EntityTable.EnsureCapacity(EntityCount + count);
+
+            // Create gameObject locations directly in a Span
+            Span<GameObjectIdOnly> entityLocations = archetype.Archetype.CreateEntityLocations(count, this);
+
+            // Invoke events if listeners are present
+            if (EntityCreatedEvent.HasListeners)
+            {
+                foreach (ref GameObjectIdOnly entityId in entityLocations)
+                {
+                    EntityCreatedEvent.Invoke(entityId.ToEntity(this));
+                }
+            }
+
+            // Return the result with calculated spans
+            return new ChunkTuple<T1, T2, T3>
+            {
+                Entities = new GameObjectEnumerator.EntityEnumerable(this, entityLocations),
+                Span1 = archetype.Archetype.GetComponentSpan<T1>().Slice(entityCount, count),
+                Span2 = archetype.Archetype.GetComponentSpan<T2>().Slice(entityCount, count),
+                Span3 = archetype.Archetype.GetComponentSpan<T3>().Slice(entityCount, count)
+            };
+        }
+        
+        /// <summary>
+        ///     Creates an <see cref="GameObject" /> with the given component(s)
+        /// </summary>
+        /// <returns>An <see cref="GameObject" /> that can be used to acsess the component data</returns>
+        public GameObject Create<T1, T2, T3, T4>(in T1 comp1, in T2 comp2, in T3 comp3, in T4 comp4)
+        {
+            WorldArchetypeTableItem archetypes = Archetype<T1, T2, T3, T4>.CreateNewOrGetExistingArchetypes(this);
+
+            ref GameObjectIdOnly entity = ref Unsafe.NullRef<GameObjectIdOnly>();
+            GameObjectLocation eloc = default(GameObjectLocation);
+
+            ComponentStorageBase[] components;
+
+            if (AllowStructualChanges)
+            {
+                components = archetypes.Archetype.Components;
+                entity = ref archetypes.Archetype.CreateEntityLocation(GameObjectFlags.None, out eloc);
+            }
+            else
+            {
+                // we don't need to manually set flags, they are already zeroed
+                entity = ref archetypes.Archetype.CreateDeferredEntityLocation(this, archetypes.DeferredCreationArchetype,
+                    ref eloc, out components);
+            }
+
+            //manually inlined from Scene.CreateEntityFromLocation
+            //The jit likes to inline the outer create function and not inline
+            //the inner functions - benchmarked to improve perf by 10-20%
+            (int id, ushort version) =
+                entity = RecycledEntityIds.CanPop() ? RecycledEntityIds.Pop() : new GameObjectIdOnly(NextEntityId++, 0);
+            eloc.Version = version;
+            EntityTable[id] = eloc;
+
+            //1x array lookup per component
+            ref T1 ref1 =
+                ref Unsafe.As<ComponentStorage<T1>>(
+                    Unsafe.Add(ref components[0], Archetype<T1, T2, T3, T4>.OfComponent<T1>.Index))[eloc.Index];
+            ref1 = comp1;
+            ref T2 ref2 =
+                ref Unsafe.As<ComponentStorage<T2>>(
+                    Unsafe.Add(ref components[0], Archetype<T1, T2, T3, T4>.OfComponent<T2>.Index))[eloc.Index];
+            ref2 = comp2;
+            ref T3 ref3 =
+                ref Unsafe.As<ComponentStorage<T3>>(
+                    Unsafe.Add(ref components[0], Archetype<T1, T2, T3, T4>.OfComponent<T3>.Index))[eloc.Index];
+            ref3 = comp3;
+            ref T4 ref4 =
+                ref Unsafe.As<ComponentStorage<T4>>(
+                    Unsafe.Add(ref components[0], Archetype<T1, T2, T3, T4>.OfComponent<T4>.Index))[eloc.Index];
+            ref4 = comp4;
+
+
+            GameObject concreteGameObject = new GameObject(Id, version, id);
+
+            Component<T1>.Initer?.Invoke(concreteGameObject, ref ref1);
+            Component<T2>.Initer?.Invoke(concreteGameObject, ref ref2);
+            Component<T3>.Initer?.Invoke(concreteGameObject, ref ref3);
+            Component<T4>.Initer?.Invoke(concreteGameObject, ref ref4);
+
+            EntityCreatedEvent.Invoke(concreteGameObject);
+
+            return concreteGameObject;
+        }
+
+        /// <summary>
+        ///     Creates a large amount of entities quickly
+        /// </summary>
+        /// <param name="count">The number of entities to create</param>
+        /// <returns>The entities created and their component spans</returns>
+        public ChunkTuple<T1, T2, T3, T4> CreateMany<T1, T2, T3, T4>(int count)
+        {
+            if ((uint) count == 0) // Efficient validation for non-positive values
+            {
+                throw new ArgumentOutOfRangeException(nameof(count));
+            }
+
+            WorldArchetypeTableItem archetype = Archetype<T1, T2, T3, T4>.CreateNewOrGetExistingArchetypes(this);
+            int entityCount = archetype.Archetype.EntityCount;
+
+            EntityTable.EnsureCapacity(EntityCount + count);
+
+            // Create gameObject locations directly in a Span
+            Span<GameObjectIdOnly> entityLocations = archetype.Archetype.CreateEntityLocations(count, this);
+
+            // Invoke events if listeners are present
+            if (EntityCreatedEvent.HasListeners)
+            {
+                foreach (ref GameObjectIdOnly entityId in entityLocations)
+                {
+                    EntityCreatedEvent.Invoke(entityId.ToEntity(this));
+                }
+            }
+
+            // Return the result with calculated spans
+            return new ChunkTuple<T1, T2, T3, T4>
+            {
+                Entities = new GameObjectEnumerator.EntityEnumerable(this, entityLocations),
+                Span1 = archetype.Archetype.GetComponentSpan<T1>().Slice(entityCount, count),
+                Span2 = archetype.Archetype.GetComponentSpan<T2>().Slice(entityCount, count),
+                Span3 = archetype.Archetype.GetComponentSpan<T3>().Slice(entityCount, count),
+                Span4 = archetype.Archetype.GetComponentSpan<T4>().Slice(entityCount, count)
+            };
+        }
+        
+        
+        /// <summary>
+        ///     Creates an <see cref="GameObject" /> with the given component(s)
+        /// </summary>
+        /// <returns>An <see cref="GameObject" /> that can be used to acsess the component data</returns>
+        public GameObject Create<T1, T2, T3, T4, T5>(in T1 comp1, in T2 comp2, in T3 comp3, in T4 comp4, in T5 comp5)
+        {
+            WorldArchetypeTableItem archetypes = Archetype<T1, T2, T3, T4, T5>.CreateNewOrGetExistingArchetypes(this);
+
+            ref GameObjectIdOnly entity = ref Unsafe.NullRef<GameObjectIdOnly>();
+            GameObjectLocation eloc = default(GameObjectLocation);
+
+            ComponentStorageBase[] components;
+
+            if (AllowStructualChanges)
+            {
+                components = archetypes.Archetype.Components;
+                entity = ref archetypes.Archetype.CreateEntityLocation(GameObjectFlags.None, out eloc);
+            }
+            else
+            {
+                // we don't need to manually set flags, they are already zeroed
+                entity = ref archetypes.Archetype.CreateDeferredEntityLocation(this, archetypes.DeferredCreationArchetype,
+                    ref eloc, out components);
+            }
+
+            //manually inlined from Scene.CreateEntityFromLocation
+            //The jit likes to inline the outer create function and not inline
+            //the inner functions - benchmarked to improve perf by 10-20%
+            (int id, ushort version) =
+                entity = RecycledEntityIds.CanPop() ? RecycledEntityIds.Pop() : new GameObjectIdOnly(NextEntityId++, 0);
+            eloc.Version = version;
+            EntityTable[id] = eloc;
+
+            //1x array lookup per component
+            ref T1 ref1 =
+                ref Unsafe.As<ComponentStorage<T1>>(
+                    Unsafe.Add(ref components[0], Archetype<T1, T2, T3, T4, T5>.OfComponent<T1>.Index))[eloc.Index];
+            ref1 = comp1;
+            ref T2 ref2 =
+                ref Unsafe.As<ComponentStorage<T2>>(
+                    Unsafe.Add(ref components[0], Archetype<T1, T2, T3, T4, T5>.OfComponent<T2>.Index))[eloc.Index];
+            ref2 = comp2;
+            ref T3 ref3 =
+                ref Unsafe.As<ComponentStorage<T3>>(
+                    Unsafe.Add(ref components[0], Archetype<T1, T2, T3, T4, T5>.OfComponent<T3>.Index))[eloc.Index];
+            ref3 = comp3;
+            ref T4 ref4 =
+                ref Unsafe.As<ComponentStorage<T4>>(
+                    Unsafe.Add(ref components[0], Archetype<T1, T2, T3, T4, T5>.OfComponent<T4>.Index))[eloc.Index];
+            ref4 = comp4;
+            ref T5 ref5 =
+                ref Unsafe.As<ComponentStorage<T5>>(
+                    Unsafe.Add(ref components[0], Archetype<T1, T2, T3, T4, T5>.OfComponent<T5>.Index))[eloc.Index];
+            ref5 = comp5;
+
+
+            GameObject concreteGameObject = new GameObject(Id, version, id);
+
+            Component<T1>.Initer?.Invoke(concreteGameObject, ref ref1);
+            Component<T2>.Initer?.Invoke(concreteGameObject, ref ref2);
+            Component<T3>.Initer?.Invoke(concreteGameObject, ref ref3);
+            Component<T4>.Initer?.Invoke(concreteGameObject, ref ref4);
+            Component<T5>.Initer?.Invoke(concreteGameObject, ref ref5);
+
+            EntityCreatedEvent.Invoke(concreteGameObject);
+
+            return concreteGameObject;
+        }
+
+
+        /// <summary>
+        ///     Creates the many using the specified count
+        /// </summary>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <typeparam name="T5">The </typeparam>
+        /// <param name="count">The count</param>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        /// <returns>A chunk tuple of t 1 and t 2 and t 3 and t 4 and t 5</returns>
+        public ChunkTuple<T1, T2, T3, T4, T5> CreateMany<T1, T2, T3, T4, T5>(int count)
+        {
+            if ((uint) count == 0) // Efficient validation for non-positive values
+            {
+                throw new ArgumentOutOfRangeException(nameof(count));
+            }
+
+            WorldArchetypeTableItem archetype = Archetype<T1, T2, T3, T4, T5>.CreateNewOrGetExistingArchetypes(this);
+            int entityCount = archetype.Archetype.EntityCount;
+
+            EntityTable.EnsureCapacity(EntityCount + count);
+
+            // Create gameObject locations directly in a Span
+            Span<GameObjectIdOnly> entityLocations = archetype.Archetype.CreateEntityLocations(count, this);
+
+            // Invoke events if listeners are present
+            if (EntityCreatedEvent.HasListeners)
+            {
+                foreach (ref GameObjectIdOnly entityId in entityLocations)
+                {
+                    EntityCreatedEvent.Invoke(entityId.ToEntity(this));
+                }
+            }
+
+            // Return the result with calculated spans
+            return new ChunkTuple<T1, T2, T3, T4, T5>
+            {
+                Entities = new GameObjectEnumerator.EntityEnumerable(this, entityLocations),
+                Span1 = archetype.Archetype.GetComponentSpan<T1>().Slice(entityCount, count),
+                Span2 = archetype.Archetype.GetComponentSpan<T2>().Slice(entityCount, count),
+                Span3 = archetype.Archetype.GetComponentSpan<T3>().Slice(entityCount, count),
+                Span4 = archetype.Archetype.GetComponentSpan<T4>().Slice(entityCount, count),
+                Span5 = archetype.Archetype.GetComponentSpan<T5>().Slice(entityCount, count)
+            };
+        }
+        
+          /// <summary>
+        ///     Creates an <see cref="GameObject" /> with the given component(s)
+        /// </summary>
+        /// <returns>An <see cref="GameObject" /> that can be used to acsess the component data</returns>
+        public GameObject Create<T1, T2, T3, T4, T5, T6>(in T1 comp1, in T2 comp2, in T3 comp3, in T4 comp4, in T5 comp5,
+            in T6 comp6)
+        {
+            WorldArchetypeTableItem archetypes = Archetype<T1, T2, T3, T4, T5, T6>.CreateNewOrGetExistingArchetypes(this);
+
+            ref GameObjectIdOnly entity = ref Unsafe.NullRef<GameObjectIdOnly>();
+            GameObjectLocation eloc = default(GameObjectLocation);
+
+            ComponentStorageBase[] components;
+
+            if (AllowStructualChanges)
+            {
+                components = archetypes.Archetype.Components;
+                entity = ref archetypes.Archetype.CreateEntityLocation(GameObjectFlags.None, out eloc);
+            }
+            else
+            {
+                // we don't need to manually set flags, they are already zeroed
+                entity = ref archetypes.Archetype.CreateDeferredEntityLocation(this, archetypes.DeferredCreationArchetype,
+                    ref eloc, out components);
+            }
+
+            //manually inlined from Scene.CreateEntityFromLocation
+            //The jit likes to inline the outer create function and not inline
+            //the inner functions - benchmarked to improve perf by 10-20%
+            (int id, ushort version) =
+                entity = RecycledEntityIds.CanPop() ? RecycledEntityIds.Pop() : new GameObjectIdOnly(NextEntityId++, 0);
+            eloc.Version = version;
+            EntityTable[id] = eloc;
+
+            //1x array lookup per component
+            ref T1 ref1 =
+                ref Unsafe.As<ComponentStorage<T1>>(
+                    Unsafe.Add(ref components[0], Archetype<T1, T2, T3, T4, T5, T6>.OfComponent<T1>.Index))[eloc.Index];
+            ref1 = comp1;
+            ref T2 ref2 =
+                ref Unsafe.As<ComponentStorage<T2>>(
+                    Unsafe.Add(ref components[0], Archetype<T1, T2, T3, T4, T5, T6>.OfComponent<T2>.Index))[eloc.Index];
+            ref2 = comp2;
+            ref T3 ref3 =
+                ref Unsafe.As<ComponentStorage<T3>>(
+                    Unsafe.Add(ref components[0], Archetype<T1, T2, T3, T4, T5, T6>.OfComponent<T3>.Index))[eloc.Index];
+            ref3 = comp3;
+            ref T4 ref4 =
+                ref Unsafe.As<ComponentStorage<T4>>(
+                    Unsafe.Add(ref components[0], Archetype<T1, T2, T3, T4, T5, T6>.OfComponent<T4>.Index))[eloc.Index];
+            ref4 = comp4;
+            ref T5 ref5 =
+                ref Unsafe.As<ComponentStorage<T5>>(
+                    Unsafe.Add(ref components[0], Archetype<T1, T2, T3, T4, T5, T6>.OfComponent<T5>.Index))[eloc.Index];
+            ref5 = comp5;
+            ref T6 ref6 =
+                ref Unsafe.As<ComponentStorage<T6>>(
+                    Unsafe.Add(ref components[0], Archetype<T1, T2, T3, T4, T5, T6>.OfComponent<T6>.Index))[eloc.Index];
+            ref6 = comp6;
+
+
+            GameObject concreteGameObject = new GameObject(Id, version, id);
+
+            Component<T1>.Initer?.Invoke(concreteGameObject, ref ref1);
+            Component<T2>.Initer?.Invoke(concreteGameObject, ref ref2);
+            Component<T3>.Initer?.Invoke(concreteGameObject, ref ref3);
+            Component<T4>.Initer?.Invoke(concreteGameObject, ref ref4);
+            Component<T5>.Initer?.Invoke(concreteGameObject, ref ref5);
+            Component<T6>.Initer?.Invoke(concreteGameObject, ref ref6);
+
+            EntityCreatedEvent.Invoke(concreteGameObject);
+
+            return concreteGameObject;
+        }
+
+
+        /// <summary>
+        ///     Creates the many using the specified count
+        /// </summary>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <typeparam name="T5">The </typeparam>
+        /// <typeparam name="T6">The </typeparam>
+        /// <param name="count">The count</param>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        /// <returns>A chunk tuple of t 1 and t 2 and t 3 and t 4 and t 5 and t 6</returns>
+        public ChunkTuple<T1, T2, T3, T4, T5, T6> CreateMany<T1, T2, T3, T4, T5, T6>(int count)
+        {
+            if ((uint) count == 0) // Efficient validation for non-positive values
+            {
+                throw new ArgumentOutOfRangeException(nameof(count));
+            }
+
+            WorldArchetypeTableItem archetype = Archetype<T1, T2, T3, T4, T5, T6>.CreateNewOrGetExistingArchetypes(this);
+            int entityCount = archetype.Archetype.EntityCount;
+
+            EntityTable.EnsureCapacity(EntityCount + count);
+
+            // Create gameObject locations directly in a Span
+            Span<GameObjectIdOnly> entityLocations = archetype.Archetype.CreateEntityLocations(count, this);
+
+            // Invoke events if listeners are present
+            if (EntityCreatedEvent.HasListeners)
+            {
+                foreach (ref GameObjectIdOnly entityId in entityLocations)
+                {
+                    EntityCreatedEvent.Invoke(entityId.ToEntity(this));
+                }
+            }
+
+            // Return the result with calculated spans
+            return new ChunkTuple<T1, T2, T3, T4, T5, T6>
+            {
+                Entities = new GameObjectEnumerator.EntityEnumerable(this, entityLocations),
+                Span1 = archetype.Archetype.GetComponentSpan<T1>().Slice(entityCount, count),
+                Span2 = archetype.Archetype.GetComponentSpan<T2>().Slice(entityCount, count),
+                Span3 = archetype.Archetype.GetComponentSpan<T3>().Slice(entityCount, count),
+                Span4 = archetype.Archetype.GetComponentSpan<T4>().Slice(entityCount, count),
+                Span5 = archetype.Archetype.GetComponentSpan<T5>().Slice(entityCount, count),
+                Span6 = archetype.Archetype.GetComponentSpan<T6>().Slice(entityCount, count)
+            };
+        }
+        
+          /// <summary>
+        ///     Creates an <see cref="GameObject" /> with the given component(s)
+        /// </summary>
+        /// <returns>An <see cref="GameObject" /> that can be used to acsess the component data</returns>
+        public GameObject Create<T1, T2, T3, T4, T5, T6, T7>(in T1 comp1, in T2 comp2, in T3 comp3, in T4 comp4, in T5 comp5,
+            in T6 comp6, in T7 comp7)
+        {
+            WorldArchetypeTableItem archetypes =
+                Archetype<T1, T2, T3, T4, T5, T6, T7>.CreateNewOrGetExistingArchetypes(this);
+
+            ref GameObjectIdOnly entity = ref Unsafe.NullRef<GameObjectIdOnly>();
+            GameObjectLocation eloc = default(GameObjectLocation);
+
+            ComponentStorageBase[] components;
+
+            if (AllowStructualChanges)
+            {
+                components = archetypes.Archetype.Components;
+                entity = ref archetypes.Archetype.CreateEntityLocation(GameObjectFlags.None, out eloc);
+            }
+            else
+            {
+                // we don't need to manually set flags, they are already zeroed
+                entity = ref archetypes.Archetype.CreateDeferredEntityLocation(this, archetypes.DeferredCreationArchetype,
+                    ref eloc, out components);
+            }
+
+            //manually inlined from Scene.CreateEntityFromLocation
+            //The jit likes to inline the outer create function and not inline
+            //the inner functions - benchmarked to improve perf by 10-20%
+            (int id, ushort version) =
+                entity = RecycledEntityIds.CanPop() ? RecycledEntityIds.Pop() : new GameObjectIdOnly(NextEntityId++, 0);
+            eloc.Version = version;
+            EntityTable[id] = eloc;
+
+            //1x array lookup per component
+            ref T1 ref1 =
+                ref Unsafe.As<ComponentStorage<T1>>(
+                    Unsafe.Add(ref components[0], Archetype<T1, T2, T3, T4, T5, T6, T7>.OfComponent<T1>.Index))[eloc.Index];
+            ref1 = comp1;
+            ref T2 ref2 =
+                ref Unsafe.As<ComponentStorage<T2>>(
+                    Unsafe.Add(ref components[0], Archetype<T1, T2, T3, T4, T5, T6, T7>.OfComponent<T2>.Index))[eloc.Index];
+            ref2 = comp2;
+            ref T3 ref3 =
+                ref Unsafe.As<ComponentStorage<T3>>(
+                    Unsafe.Add(ref components[0], Archetype<T1, T2, T3, T4, T5, T6, T7>.OfComponent<T3>.Index))[eloc.Index];
+            ref3 = comp3;
+            ref T4 ref4 =
+                ref Unsafe.As<ComponentStorage<T4>>(
+                    Unsafe.Add(ref components[0], Archetype<T1, T2, T3, T4, T5, T6, T7>.OfComponent<T4>.Index))[eloc.Index];
+            ref4 = comp4;
+            ref T5 ref5 =
+                ref Unsafe.As<ComponentStorage<T5>>(
+                    Unsafe.Add(ref components[0], Archetype<T1, T2, T3, T4, T5, T6, T7>.OfComponent<T5>.Index))[eloc.Index];
+            ref5 = comp5;
+            ref T6 ref6 =
+                ref Unsafe.As<ComponentStorage<T6>>(
+                    Unsafe.Add(ref components[0], Archetype<T1, T2, T3, T4, T5, T6, T7>.OfComponent<T6>.Index))[eloc.Index];
+            ref6 = comp6;
+            ref T7 ref7 =
+                ref Unsafe.As<ComponentStorage<T7>>(
+                    Unsafe.Add(ref components[0], Archetype<T1, T2, T3, T4, T5, T6, T7>.OfComponent<T7>.Index))[eloc.Index];
+            ref7 = comp7;
+
+
+            GameObject concreteGameObject = new GameObject(Id, version, id);
+
+            Component<T1>.Initer?.Invoke(concreteGameObject, ref ref1);
+            Component<T2>.Initer?.Invoke(concreteGameObject, ref ref2);
+            Component<T3>.Initer?.Invoke(concreteGameObject, ref ref3);
+            Component<T4>.Initer?.Invoke(concreteGameObject, ref ref4);
+            Component<T5>.Initer?.Invoke(concreteGameObject, ref ref5);
+            Component<T6>.Initer?.Invoke(concreteGameObject, ref ref6);
+            Component<T7>.Initer?.Invoke(concreteGameObject, ref ref7);
+
+            EntityCreatedEvent.Invoke(concreteGameObject);
+
+            return concreteGameObject;
+        }
+
+
+        /// <summary>
+        ///     Creates the many using the specified count
+        /// </summary>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <typeparam name="T5">The </typeparam>
+        /// <typeparam name="T6">The </typeparam>
+        /// <typeparam name="T7">The </typeparam>
+        /// <param name="count">The count</param>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        /// <returns>A chunk tuple of t 1 and t 2 and t 3 and t 4 and t 5 and t 6 and t 7</returns>
+        public ChunkTuple<T1, T2, T3, T4, T5, T6, T7> CreateMany<T1, T2, T3, T4, T5, T6, T7>(int count)
+        {
+            if ((uint) count == 0) // Efficient validation for non-positive values
+            {
+                throw new ArgumentOutOfRangeException(nameof(count));
+            }
+
+            WorldArchetypeTableItem archetype =
+                Archetype<T1, T2, T3, T4, T5, T6, T7>.CreateNewOrGetExistingArchetypes(this);
+            int entityCount = archetype.Archetype.EntityCount;
+
+            EntityTable.EnsureCapacity(EntityCount + count);
+
+            // Create gameObject locations directly in a Span
+            Span<GameObjectIdOnly> entityLocations = archetype.Archetype.CreateEntityLocations(count, this);
+
+            // Invoke events if listeners are present
+            if (EntityCreatedEvent.HasListeners)
+            {
+                foreach (ref GameObjectIdOnly entityId in entityLocations)
+                {
+                    EntityCreatedEvent.Invoke(entityId.ToEntity(this));
+                }
+            }
+
+            // Return the result with calculated spans
+            return new ChunkTuple<T1, T2, T3, T4, T5, T6, T7>
+            {
+                Entities = new GameObjectEnumerator.EntityEnumerable(this, entityLocations),
+                Span1 = archetype.Archetype.GetComponentSpan<T1>().Slice(entityCount, count),
+                Span2 = archetype.Archetype.GetComponentSpan<T2>().Slice(entityCount, count),
+                Span3 = archetype.Archetype.GetComponentSpan<T3>().Slice(entityCount, count),
+                Span4 = archetype.Archetype.GetComponentSpan<T4>().Slice(entityCount, count),
+                Span5 = archetype.Archetype.GetComponentSpan<T5>().Slice(entityCount, count),
+                Span6 = archetype.Archetype.GetComponentSpan<T6>().Slice(entityCount, count),
+                Span7 = archetype.Archetype.GetComponentSpan<T7>().Slice(entityCount, count)
+            };
+        }
+        
+          /// <summary>
+        ///     Creates an <see cref="GameObject" /> with the given component(s)
+        /// </summary>
+        /// <returns>An <see cref="GameObject" /> that can be used to acsess the component data</returns>
+        public GameObject Create<T1, T2, T3, T4, T5, T6, T7, T8>(in T1 comp1, in T2 comp2, in T3 comp3, in T4 comp4,
+            in T5 comp5, in T6 comp6, in T7 comp7, in T8 comp8)
+        {
+            WorldArchetypeTableItem archetypes =
+                Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.CreateNewOrGetExistingArchetypes(this);
+
+            ref GameObjectIdOnly entity = ref Unsafe.NullRef<GameObjectIdOnly>();
+            GameObjectLocation eloc = default(GameObjectLocation);
+
+            ComponentStorageBase[] components;
+
+            if (AllowStructualChanges)
+            {
+                components = archetypes.Archetype.Components;
+                entity = ref archetypes.Archetype.CreateEntityLocation(GameObjectFlags.None, out eloc);
+            }
+            else
+            {
+                // we don't need to manually set flags, they are already zeroed
+                entity = ref archetypes.Archetype.CreateDeferredEntityLocation(this, archetypes.DeferredCreationArchetype,
+                    ref eloc, out components);
+            }
+
+            //manually inlined from Scene.CreateEntityFromLocation
+            //The jit likes to inline the outer create function and not inline
+            //the inner functions - benchmarked to improve perf by 10-20%
+            (int id, ushort version) =
+                entity = RecycledEntityIds.CanPop() ? RecycledEntityIds.Pop() : new GameObjectIdOnly(NextEntityId++, 0);
+            eloc.Version = version;
+            EntityTable[id] = eloc;
+
+            //1x array lookup per component
+            ref T1 ref1 =
+                ref Unsafe.As<ComponentStorage<T1>>(
+                    Unsafe.Add(ref components[0], Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.OfComponent<T1>.Index))[
+                    eloc.Index];
+            ref1 = comp1;
+            ref T2 ref2 =
+                ref Unsafe.As<ComponentStorage<T2>>(
+                    Unsafe.Add(ref components[0], Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.OfComponent<T2>.Index))[
+                    eloc.Index];
+            ref2 = comp2;
+            ref T3 ref3 =
+                ref Unsafe.As<ComponentStorage<T3>>(
+                    Unsafe.Add(ref components[0], Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.OfComponent<T3>.Index))[
+                    eloc.Index];
+            ref3 = comp3;
+            ref T4 ref4 =
+                ref Unsafe.As<ComponentStorage<T4>>(
+                    Unsafe.Add(ref components[0], Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.OfComponent<T4>.Index))[
+                    eloc.Index];
+            ref4 = comp4;
+            ref T5 ref5 =
+                ref Unsafe.As<ComponentStorage<T5>>(
+                    Unsafe.Add(ref components[0], Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.OfComponent<T5>.Index))[
+                    eloc.Index];
+            ref5 = comp5;
+            ref T6 ref6 =
+                ref Unsafe.As<ComponentStorage<T6>>(
+                    Unsafe.Add(ref components[0], Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.OfComponent<T6>.Index))[
+                    eloc.Index];
+            ref6 = comp6;
+            ref T7 ref7 =
+                ref Unsafe.As<ComponentStorage<T7>>(
+                    Unsafe.Add(ref components[0], Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.OfComponent<T7>.Index))[
+                    eloc.Index];
+            ref7 = comp7;
+            ref T8 ref8 =
+                ref Unsafe.As<ComponentStorage<T8>>(
+                    Unsafe.Add(ref components[0], Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.OfComponent<T8>.Index))[
+                    eloc.Index];
+            ref8 = comp8;
+
+
+            GameObject concreteGameObject = new GameObject(Id, version, id);
+
+            Component<T1>.Initer?.Invoke(concreteGameObject, ref ref1);
+            Component<T2>.Initer?.Invoke(concreteGameObject, ref ref2);
+            Component<T3>.Initer?.Invoke(concreteGameObject, ref ref3);
+            Component<T4>.Initer?.Invoke(concreteGameObject, ref ref4);
+            Component<T5>.Initer?.Invoke(concreteGameObject, ref ref5);
+            Component<T6>.Initer?.Invoke(concreteGameObject, ref ref6);
+            Component<T7>.Initer?.Invoke(concreteGameObject, ref ref7);
+            Component<T8>.Initer?.Invoke(concreteGameObject, ref ref8);
+
+            EntityCreatedEvent.Invoke(concreteGameObject);
+
+            return concreteGameObject;
+        }
+
+
+        /// <summary>
+        ///     Creates the many using the specified count
+        /// </summary>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <typeparam name="T5">The </typeparam>
+        /// <typeparam name="T6">The </typeparam>
+        /// <typeparam name="T7">The </typeparam>
+        /// <typeparam name="T8">The </typeparam>
+        /// <param name="count">The count</param>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        /// <returns>A chunk tuple of t 1 and t 2 and t 3 and t 4 and t 5 and t 6 and t 7 and t 8</returns>
+        public ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8> CreateMany<T1, T2, T3, T4, T5, T6, T7, T8>(int count)
+        {
+            if ((uint) count == 0) // Efficient validation for non-positive values
+            {
+                throw new ArgumentOutOfRangeException(nameof(count));
+            }
+
+            WorldArchetypeTableItem archetype =
+                Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.CreateNewOrGetExistingArchetypes(this);
+            int entityCount = archetype.Archetype.EntityCount;
+
+            EntityTable.EnsureCapacity(EntityCount + count);
+
+            // Create gameObject locations directly in a Span
+            Span<GameObjectIdOnly> entityLocations = archetype.Archetype.CreateEntityLocations(count, this);
+
+            // Invoke events if listeners are present
+            if (EntityCreatedEvent.HasListeners)
+            {
+                foreach (ref GameObjectIdOnly entityId in entityLocations)
+                {
+                    EntityCreatedEvent.Invoke(entityId.ToEntity(this));
+                }
+            }
+
+            // Return the result with calculated spans
+            return new ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8>
+            {
+                Entities = new GameObjectEnumerator.EntityEnumerable(this, entityLocations),
+                Span1 = archetype.Archetype.GetComponentSpan<T1>().Slice(entityCount, count),
+                Span2 = archetype.Archetype.GetComponentSpan<T2>().Slice(entityCount, count),
+                Span3 = archetype.Archetype.GetComponentSpan<T3>().Slice(entityCount, count),
+                Span4 = archetype.Archetype.GetComponentSpan<T4>().Slice(entityCount, count),
+                Span5 = archetype.Archetype.GetComponentSpan<T5>().Slice(entityCount, count),
+                Span6 = archetype.Archetype.GetComponentSpan<T6>().Slice(entityCount, count),
+                Span7 = archetype.Archetype.GetComponentSpan<T7>().Slice(entityCount, count),
+                Span8 = archetype.Archetype.GetComponentSpan<T8>().Slice(entityCount, count)
+            };
+        }
+        
+        /// <summary>
+        ///     Creates an <see cref="GameObject" /> with the given component(s)
+        /// </summary>
+        /// <returns>An <see cref="GameObject" /> that can be used to acsess the component data</returns>
+        public GameObject Create<T>(in T comp)
+        {
+            WorldArchetypeTableItem archetypes = Archetype<T>.CreateNewOrGetExistingArchetypes(this);
+
+            ref GameObjectIdOnly entity = ref Unsafe.NullRef<GameObjectIdOnly>();
+            GameObjectLocation eloc = default(GameObjectLocation);
+
+            ComponentStorageBase[] components;
+
+            if (AllowStructualChanges)
+            {
+                components = archetypes.Archetype.Components;
+                entity = ref archetypes.Archetype.CreateEntityLocation(GameObjectFlags.None, out eloc);
+            }
+            else
+            {
+                // we don't need to manually set flags, they are already zeroed
+                entity = ref archetypes.Archetype.CreateDeferredEntityLocation(this, archetypes.DeferredCreationArchetype,
+                    ref eloc, out components);
+            }
+
+            //manually inlined from Scene.CreateEntityFromLocation
+            //The jit likes to inline the outer create function and not inline
+            //the inner functions - benchmarked to improve perf by 10-20%
+            (int id, ushort version) =
+                entity = RecycledEntityIds.CanPop() ? RecycledEntityIds.Pop() : new GameObjectIdOnly(NextEntityId++, 0);
+            eloc.Version = version;
+            EntityTable[id] = eloc;
+
+            //1x array lookup per component
+            ref T ref1 = ref Unsafe.As<ComponentStorage<T>>(Unsafe.Add(ref components[0], Archetype<T>.OfComponent<T>.Index))[eloc.Index];
+
+            ref1 = comp;
+
+            GameObject concreteGameObject = new GameObject(Id, version, id);
+
+            Component<T>.Initer?.Invoke(concreteGameObject, ref ref1);
+            EntityCreatedEvent.Invoke(concreteGameObject);
+
+            return concreteGameObject;
+        }
+
+
+        /// <summary>
+        ///     Creates the many using the specified count
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="count">The count</param>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        /// <returns>A chunk tuple of t</returns>
+        public ChunkTuple<T> CreateMany<T>(int count)
+        {
+            if ((uint) count == 0) // Efficient validation for non-positive values
+            {
+                throw new ArgumentOutOfRangeException(nameof(count));
+            }
+
+            WorldArchetypeTableItem archetype = Archetype<T>.CreateNewOrGetExistingArchetypes(this);
+            int initialEntityCount = archetype.Archetype.EntityCount;
+
+            EntityTable.EnsureCapacity(EntityCount + count);
+
+            // Create gameObject locations directly in a Span
+            Span<GameObjectIdOnly> entityLocations = archetype.Archetype.CreateEntityLocations(count, this);
+
+            // Invoke events if listeners are present
+            if (EntityCreatedEvent.HasListeners)
+            {
+                foreach (ref GameObjectIdOnly entityId in entityLocations)
+                {
+                    EntityCreatedEvent.Invoke(entityId.ToEntity(this));
+                }
+            }
+
+            // Return the result with calculated spans
+            return new ChunkTuple<T>
+            {
+                Entities = new GameObjectEnumerator.EntityEnumerable(this, entityLocations),
+                Span = archetype.Archetype.GetComponentSpan<T>().Slice(initialEntityCount, count)
+            };
+        }
+        
+        /// <summary>
+        ///     Removes the component using the specified gameObject
+        /// </summary>
+        /// <param name="gameObject">The gameObject</param>
+        /// <param name="lookup">The lookup</param>
+        /// <param name="componentId">The component id</param>
+        internal void RemoveComponent(GameObject gameObject, ref GameObjectLocation lookup, ComponentId componentId)
+        {
+            Archetype destination = RemoveComponentLookup
+                .FindAdjacentArchetypeId(componentId, lookup.ArchetypeId, this, ArchetypeEdgeType.RemoveComponent)
+                .Archetype(this);
+
+#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
+            MoveEntityToArchetypeRemove(MemoryHelpers.SharedTempComponentHandleBuffer.AsSpan(0, 1), gameObject, ref lookup, destination);
+#else
+            Unsafe.SkipInit(out ComponentHandle tmpHandle);
+            MemoryHelpers.Poison(ref tmpHandle);
+            MoveEntityToArchetypeRemove(MemoryMarshal.CreateSpan(ref tmpHandle, 1), gameObject, ref lookup, destination);
+#endif
+        }
+
+        /// <summary>
+        ///     Adds the component using the specified gameObject
+        /// </summary>
+        /// <param name="gameObject">The gameObject</param>
+        /// <param name="lookup">The lookup</param>
+        /// <param name="componentId">The component id</param>
+        /// <param name="runner">The runner</param>
+        /// <param name="gameObjectLocation">The gameObject location</param>
+        internal void AddComponent(GameObject gameObject, ref GameObjectLocation lookup, ComponentId componentId,
+            ref ComponentStorageBase runner, out GameObjectLocation gameObjectLocation)
+        {
+            Archetype destination = AddComponentLookup
+                .FindAdjacentArchetypeId(componentId, lookup.ArchetypeId, this, ArchetypeEdgeType.AddComponent)
+                .Archetype(this);
+#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
+            MoveEntityToArchetypeAdd(MemoryHelpers.SharedTempComponentStorageBuffer.AsSpan(0, 1), gameObject, ref lookup,
+                out gameObjectLocation, destination);
+            runner = MemoryHelpers.SharedTempComponentStorageBuffer[0];
+#else
+            MoveEntityToArchetypeAdd(MemoryMarshal.CreateSpan(ref runner, 1), gameObject, ref lookup, out gameObjectLocation, destination);
+#endif
+        }
+
+        /// <summary>
+        ///     Moves the gameObject to archetype add using the specified write to
+        /// </summary>
+        /// <param name="writeTo">The write to</param>
+        /// <param name="gameObject">The gameObject</param>
+        /// <param name="currentLookup">The current lookup</param>
+        /// <param name="nextLocation">The next location</param>
+        /// <param name="destination">The destination</param>
+        internal void MoveEntityToArchetypeAdd(Span<ComponentStorageBase> writeTo, GameObject gameObject,
+            ref GameObjectLocation currentLookup, out GameObjectLocation nextLocation, Archetype destination)
+        {
+            Archetype from = currentLookup.Archetype;
+
+            destination.CreateEntityLocation(currentLookup.Flags, out nextLocation).Init(gameObject);
+            nextLocation.Version = currentLookup.Version;
+
+            GameObjectIdOnly movedDown = from.DeleteEntityFromStorage(currentLookup.Index, out int deletedIndex);
+
+            ComponentStorageBase[] fromRunners = from.Components;
+            ComponentStorageBase[] destRunners = destination.Components;
+            byte[] fromMap = from.ComponentTagTable;
+
+            FastImmutableArray<ComponentId> destinationComponents = destination.ArchetypeTypeArray;
+
+            int writeToIndex = 0;
+            for (int i = 0; i < destinationComponents.Length;)
+            {
+                ComponentId componentToMove = destinationComponents[i];
+                int fromIndex = Unsafe.Add(ref fromMap[0], componentToMove.RawIndex) & GlobalWorldTables.IndexBits;
+
+                //index for dest is offset by one for hardware trap
+                i++;
+
+                if (fromIndex == 0)
+                {
+                    Unsafe.Add(ref MemoryMarshal.GetReference(writeTo), writeToIndex++) = destRunners[i];
+                }
+                else
+                {
+                    Unsafe.Add(ref destRunners[0], i).PullComponentFromAndClearTryDevirt(
+                        Unsafe.Add(ref fromRunners[0], fromIndex), nextLocation.Index, currentLookup.Index, deletedIndex);
+                }
+            }
+
+            ref GameObjectLocation displacedGameObjectLocation = ref EntityTable.UnsafeIndexNoResize(movedDown.ID);
+            displacedGameObjectLocation.Archetype = currentLookup.Archetype;
+            displacedGameObjectLocation.Index = currentLookup.Index;
+
+            currentLookup.Archetype = nextLocation.Archetype;
+            currentLookup.Index = nextLocation.Index;
+        }
+
+        /// <summary>
+        ///     Moves the gameObject to archetype remove using the specified component handles
+        /// </summary>
+        /// <param name="componentHandles">The component handles</param>
+        /// <param name="gameObject">The gameObject</param>
+        /// <param name="currentLookup">The current lookup</param>
+        /// <param name="destination">The destination</param>
+        internal void MoveEntityToArchetypeRemove(Span<ComponentHandle> componentHandles, GameObject gameObject,
+            ref GameObjectLocation currentLookup, Archetype destination)
+        {
+            //NOTE: when moving GameObjectLocation between archetypes, version and flags cannot change
+            Archetype from = currentLookup.Archetype;
+
+            destination.CreateEntityLocation(currentLookup.Flags, out GameObjectLocation nextLocation).Init(gameObject);
+            nextLocation.Version = currentLookup.Version;
+
+            GameObjectIdOnly movedDown = from.DeleteEntityFromStorage(currentLookup.Index, out int deletedIndex);
+
+            ComponentStorageBase[] fromRunners = from.Components;
+            ComponentStorageBase[] destRunners = destination.Components;
+            byte[] destMap = destination.ComponentTagTable;
+
+            FastImmutableArray<ComponentId> fromComponents = from.ArchetypeTypeArray;
+
+            bool hasGenericRemoveEvent = GameObjectLocation.HasEventFlag(currentLookup.Flags, GameObjectFlags.RemoveGenericComp);
+
+            int writeToIndex = 0;
+
+            DeleteComponentData deleteData = new DeleteComponentData(currentLookup.Index, deletedIndex);
+
+            for (int i = 0; i < fromComponents.Length;)
+            {
+                ComponentId componentToMoveFromFromToTo = fromComponents[i];
+                int toIndex = Unsafe.Add(ref destMap[0], componentToMoveFromFromToTo.RawIndex);
+
+                i++;
+
+                if (toIndex == 0)
+                {
+                    ComponentStorageBase runner = Unsafe.Add(ref fromRunners[0], i);
+                    ref ComponentHandle writeTo = ref Unsafe.Add(ref MemoryMarshal.GetReference(componentHandles), writeToIndex++);
+                    if (hasGenericRemoveEvent)
+                    {
+                        writeTo = runner.Store(currentLookup.Index);
+                    }
+                    else //kinda illegal but whatever
+                    {
+                        writeTo = new ComponentHandle(0, componentToMoveFromFromToTo);
+                    }
+
+                    runner.Delete(deleteData);
+                }
+                else
+                {
+                    Unsafe.Add(ref destRunners[0], toIndex).PullComponentFromAndClearTryDevirt(
+                        Unsafe.Add(ref fromRunners[0], i), nextLocation.Index, currentLookup.Index, deletedIndex);
+                }
+            }
+
+            //copy everything but 
+            ref GameObjectLocation displacedGameObjectLocation = ref EntityTable.UnsafeIndexNoResize(movedDown.ID);
+            displacedGameObjectLocation.Archetype = currentLookup.Archetype;
+            displacedGameObjectLocation.Index = currentLookup.Index;
+
+            currentLookup.Archetype = nextLocation.Archetype;
+            currentLookup.Index = nextLocation.Index;
+
+            if (GameObjectLocation.HasEventFlag(currentLookup.Flags | WorldEventFlags,
+                    GameObjectFlags.RemoveComp | GameObjectFlags.RemoveGenericComp))
+            {
+                if (ComponentRemovedEvent.HasListeners)
+                {
+                    foreach (ComponentHandle handle in componentHandles)
+                    {
+                        ComponentRemovedEvent.Invoke(gameObject, handle.ComponentId);
+                    }
+                }
+
+                if (GameObjectLocation.HasEventFlag(currentLookup.Flags,
+                        GameObjectFlags.RemoveComp | GameObjectFlags.RemoveGenericComp))
+                {
+#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
+                    EventRecord lookup = EventLookup[gameObject.EntityIdOnly];
+#else
+                    ref EventRecord lookup =
+                        ref CollectionsMarshal.GetValueRefOrNullRef(EventLookup, gameObject.EntityIdOnly);
+#endif
+
+                    if (hasGenericRemoveEvent)
+                    {
+                        foreach (ComponentHandle handle in componentHandles)
+                        {
+                            lookup.Remove.NormalEvent.Invoke(gameObject, handle.ComponentId);
+                            handle.InvokeComponentEventAndConsume(gameObject, lookup.Remove.GenericEvent);
+                        }
+                    }
+                    else
+                        //no need to dispose here, as they were never created
+                    {
+                        foreach (ComponentHandle handle in componentHandles)
+                        {
+                            lookup.Remove.NormalEvent.Invoke(gameObject, handle.ComponentId);
+                        }
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Moves the gameObject to archetype iso using the specified gameObject
+        /// </summary>
+        /// <param name="gameObject">The gameObject</param>
+        /// <param name="currentLookup">The current lookup</param>
+        /// <param name="destination">The destination</param>
+        internal void MoveEntityToArchetypeIso(GameObject gameObject, ref GameObjectLocation currentLookup, Archetype destination)
+        {
+            Archetype from = currentLookup.Archetype;
+
+            destination.CreateEntityLocation(currentLookup.Flags, out GameObjectLocation nextLocation).Init(gameObject);
+            nextLocation.Version = currentLookup.Version;
+
+            GameObjectIdOnly movedDown = from.DeleteEntityFromStorage(currentLookup.Index, out int deletedIndex);
+
+
+            ComponentStorageBase[] fromRunners = from.Components;
+            ComponentStorageBase[] destRunners = destination.Components;
+            byte[] destMap = destination.ComponentTagTable;
+
+            FastImmutableArray<ComponentId> fromComponents = from.ArchetypeTypeArray;
+
+            for (int i = 0; i < fromComponents.Length;)
+            {
+                int toIndex = Unsafe.Add(ref destMap[0], fromComponents[i].RawIndex) & GlobalWorldTables.IndexBits;
+
+                i++;
+
+                destRunners[toIndex].PullComponentFromAndClearTryDevirt(fromRunners[i], nextLocation.Index,
+                    currentLookup.Index, deletedIndex);
+            }
+
+            ref GameObjectLocation displacedGameObjectLocation = ref EntityTable.UnsafeIndexNoResize(movedDown.ID);
+            displacedGameObjectLocation.Archetype = currentLookup.Archetype;
+            displacedGameObjectLocation.Index = currentLookup.Index;
+
+            currentLookup.Archetype = nextLocation.Archetype;
+            currentLookup.Index = nextLocation.Index;
+        }
+
+
+        //Delete
+        /// <summary>
+        ///     Deletes the gameObject using the specified gameObject
+        /// </summary>
+        /// <param name="gameObject">The gameObject</param>
+        /// <param name="gameObjectLocation">The gameObject location</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal void DeleteEntity(GameObject gameObject, ref GameObjectLocation gameObjectLocation)
+        {
+            GameObjectFlags check = gameObjectLocation.Flags | WorldEventFlags;
+            if ((check & GameObjectFlags.Events) != 0)
+            {
+                InvokeDeleteEvents(gameObject, gameObjectLocation);
+            }
+
+            DeleteEntityWithoutEvents(gameObject, ref gameObjectLocation);
+        }
+
+        //let the jit decide whether or not to inline
+        /// <summary>
+        ///     Invokes the delete events using the specified gameObject
+        /// </summary>
+        /// <param name="gameObject">The gameObject</param>
+        /// <param name="gameObjectLocation">The gameObject location</param>
+        private void InvokeDeleteEvents(GameObject gameObject, GameObjectLocation gameObjectLocation)
+        {
+            EntityDeletedEvent.Invoke(gameObject);
+            if (gameObjectLocation.HasEvent(GameObjectFlags.OnDelete))
+            {
+                foreach (Action<GameObject> e in EventLookup[gameObject.EntityIdOnly].Delete.AsSpan())
+                {
+                    e.Invoke(gameObject);
+                }
+            }
+
+            EventLookup.Remove(gameObject.EntityIdOnly);
+        }
+
+        /// <summary>
+        ///     Deletes the gameObject without events using the specified gameObject
+        /// </summary>
+        /// <param name="gameObject">The gameObject</param>
+        /// <param name="currentLookup">The current lookup</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal void DeleteEntityWithoutEvents(GameObject gameObject, ref GameObjectLocation currentLookup)
+        {
+            //gameObject is guaranteed to be alive here
+            GameObjectIdOnly replacedEntity = currentLookup.Archetype.DeleteEntity(currentLookup.Index);
+
+            ref GameObjectLocation replaced = ref EntityTable.UnsafeIndexNoResize(replacedEntity.ID);
+            replaced = currentLookup;
+            replaced.Version = replacedEntity.Version;
+            currentLookup.Version = ushort.MaxValue;
+
+            if (gameObject.EntityVersion != ushort.MaxValue - 1)
+            {
+                // can't use max value as an ID, as it is used as a default value
+                GameObjectIdOnly id = gameObject.EntityIdOnly;
+                id.Version++;
+                RecycledEntityIds.Push(id);
+            }
         }
     }
 }
