@@ -79,7 +79,8 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     The current tuple of component references.
         /// </summary>
-        public RefTuple<T> Current => new()
+        public RefTuple<T> Current
+            => new RefTuple<T>
         {
             Item1 = new Ref<T>(_currentSpan1, _componentIndex)
         };

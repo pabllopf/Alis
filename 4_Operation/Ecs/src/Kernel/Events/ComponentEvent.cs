@@ -40,7 +40,7 @@ namespace Alis.Core.Ecs.Kernel.Events
         /// <summary>
         ///     The normal event
         /// </summary>
-        internal Event<ComponentId> NormalEvent = new();
+        internal Event<ComponentId> NormalEvent = new Event<ComponentId>();
 
         /// <summary>
         ///     The generic event

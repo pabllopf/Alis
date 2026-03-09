@@ -94,7 +94,8 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The current tuple of component references and the <see cref="GameObject" /> instance.
         /// </summary>
-        public GameObjectRefTuple<T1, T2, T3> Current => new()
+        public GameObjectRefTuple<T1, T2, T3> Current
+            => new GameObjectRefTuple<T1, T2, T3>
         {
             GameObject = _entityIds[_componentIndex].ToEntity(_scene),
             Item1 = new Ref<T1>(_currentSpan1, _componentIndex),

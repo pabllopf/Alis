@@ -64,7 +64,7 @@ namespace Alis.Core.Ecs.Collections
         /// <summary>
         ///     Gets the value of the instance
         /// </summary>
-        public static FastestArrayPool<T> Instance { get; } = new();
+        public static FastestArrayPool<T> Instance { get; } = new FastestArrayPool<T>();
 
         /// <summary>
         ///     Resizes the array from pool using the specified arr

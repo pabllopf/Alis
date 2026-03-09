@@ -38,21 +38,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
     /// </summary>
     internal static class GlobalWorldTables
     {
-        //each byte contains the data as follows:
-        // 1 bit Tag exists -> Lookup by tag ID
-        // 3 bits - nothing
-        // 4 bits - index of component (1111) -> Lookup by component ID
-
-        /// <summary>
-        ///     The has tag mask
-        /// </summary>
-        public const byte HasTagMask = 0b_1000_0000;
-
-        /// <summary>
-        ///     The default no tag
-        /// </summary>
-        public const byte DefaultNoTag = 0b_0000_0000;
-
         /// <summary>
         ///     The index bits
         /// </summary>
@@ -130,12 +115,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// <returns>The int</returns>
         public static int ComponentIndex(GameObjectType archetype, ComponentId component) => Unsafe.Add(ref ComponentTagLocationTable[archetype.RawIndex][0], component.RawIndex) & IndexBits;
 
-        /// <summary>
-        ///     Hases the tag using the specified archetype
-        /// </summary>
-        /// <param name="archetype">The archetype</param>
-        /// <param name="tag">The tag</param>
-        /// <returns>The bool</returns>
-        public static bool HasTag(GameObjectType archetype, TagId tag) => (Unsafe.Add(ref ComponentTagLocationTable[archetype.RawIndex][0], tag.RawValue) & HasTagMask) != 0;
+        public static bool Has(GameObjectType archetype) => (ComponentTagLocationTable[archetype.RawIndex][0]) != 0;
     }
 }

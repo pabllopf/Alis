@@ -48,7 +48,7 @@ namespace Alis.Core.Ecs.Collections
         /// <summary>
         ///     Gets the value of the empty
         /// </summary>
-        public static FastestTable<T> Empty => new() {_buffer = Array.Empty<T>()};
+        public static FastestTable<T> Empty => new FastestTable<T> {_buffer = Array.Empty<T>()};
 
         /// <summary>
         ///     Initializes a new instance of the  class

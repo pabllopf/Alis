@@ -215,10 +215,10 @@ namespace Alis.Core.Ecs.Redifinition
                 return value;
             }
 
-            return dictionary[key] = new();
+            return dictionary[key] = new TValue();
 #else
             ref TValue res = ref CollectionsMarshal.GetValueRefOrAddDefault(dictionary, key, out bool _);
-            return res ??= new();
+            return res ??= new TValue();
 #endif
         }
 
@@ -313,7 +313,7 @@ namespace Alis.Core.Ecs.Redifinition
         /// <summary>
         ///     The pool
         /// </summary>
-        private static readonly FastestArrayPool<T> _pool = new();
+        private static readonly FastestArrayPool<T> _pool = new FastestArrayPool<T>();
 
         /// <summary>
         ///     Gets the value of the pool

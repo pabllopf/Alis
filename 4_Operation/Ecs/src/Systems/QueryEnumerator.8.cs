@@ -114,7 +114,8 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     The current tuple of component references.
         /// </summary>
-        public RefTuple<T1, T2, T3, T4, T5, T6, T7, T8> Current => new()
+        public RefTuple<T1, T2, T3, T4, T5, T6, T7, T8> Current
+            => new RefTuple<T1, T2, T3, T4, T5, T6, T7, T8>
         {
             Item1 = new Ref<T1>(_currentSpan1, _componentIndex),
             Item2 = new Ref<T2>(_currentSpan2, _componentIndex),

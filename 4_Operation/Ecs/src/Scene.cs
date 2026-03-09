@@ -61,7 +61,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The shared countdown
         /// </summary>
-        private readonly CountdownEvent _sharedCountdown = new(0);
+        private readonly CountdownEvent _sharedCountdown = new CountdownEvent(0);
 
         /// <summary>
         ///     The single component updates
@@ -107,12 +107,12 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The add component lookup
         /// </summary>
-        public FastLookup AddComponentLookup = new();
+        public FastLookup AddComponentLookup = new FastLookup();
 
         /// <summary>
         ///     The add tag lookup
         /// </summary>
-        public FastLookup AddTagLookup = new();
+        public FastLookup AddTagLookup = new FastLookup();
 
         /// <summary>
         ///     The archetype graph edges
@@ -134,11 +134,6 @@ namespace Alis.Core.Ecs
         /// </summary>
         public FastestStack<ArchetypeDeferredUpdateRecord> DeferredCreationArchetypes =
             FastestStack<ArchetypeDeferredUpdateRecord>.Create(4);
-
-        /// <summary>
-        ///     The tag event
-        /// </summary>
-        public Event<TagId> Detached = new Event<TagId>();
 
         /// <summary>
         ///     The create
@@ -184,17 +179,12 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The remove component lookup
         /// </summary>
-        public FastLookup RemoveComponentLookup = new();
+        public FastLookup RemoveComponentLookup = new FastLookup();
 
         /// <summary>
         ///     The remove tag lookup
         /// </summary>
-        public FastLookup RemoveTagLookup = new();
-
-        /// <summary>
-        ///     The tag event
-        /// </summary>
-        public Event<TagId> Tagged = new Event<TagId>();
+        public FastLookup RemoveTagLookup = new FastLookup();
 
         //archetype ID -> Archetype?
         /// <summary>
@@ -226,8 +216,7 @@ namespace Alis.Core.Ecs
 
             WorldUpdateCommandBuffer = new CommandBuffer(this);
             DefaultWorldGameObject = new GameObject(Id, default(ushort), default(int));
-            DefaultArchetype = Archetype.CreateOrGetExistingArchetype([], [], this, FastImmutableArray<ComponentId>.Empty,
-                FastImmutableArray<TagId>.Empty);
+            DefaultArchetype = Archetype.CreateOrGetExistingArchetype([], this, FastImmutableArray<ComponentId>.Empty);
         }
 
         /// <summary>
@@ -326,23 +315,7 @@ namespace Alis.Core.Ecs
             remove => RemoveEvent(ref ComponentRemovedEvent, value, GameObjectFlags.RemoveComp);
         }
 
-        /// <summary>
-        ///     Invoked whenever a tag is added to an gameObject.
-        /// </summary>
-        public event Action<GameObject, TagId> TagTagged
-        {
-            add => AddEvent(ref Tagged, value, GameObjectFlags.Tagged);
-            remove => RemoveEvent(ref Tagged, value, GameObjectFlags.Tagged);
-        }
-
-        /// <summary>
-        ///     Invoked whenever a tag is removed from an gameObject.
-        /// </summary>
-        public event Action<GameObject, TagId> TagDetached
-        {
-            add => AddEvent(ref Detached, value, GameObjectFlags.Detach);
-            remove => RemoveEvent(ref Detached, value, GameObjectFlags.Detach);
-        }
+      
 
         /// <summary>
         ///     Adds the event using the specified event
@@ -453,11 +426,11 @@ namespace Alis.Core.Ecs
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
                 if (!_singleComponentUpdates.TryGetValue(componentType, out singleComponent))
                 {
-                    _singleComponentUpdates[componentType] = singleComponent = new(this, componentType);
+                    _singleComponentUpdates[componentType] = singleComponent = new SingleComponentUpdateFilter(this, componentType);
                 }
 #else
                 singleComponent =
-                    CollectionsMarshal.GetValueRefOrAddDefault(_singleComponentUpdates, componentType, out _) ??= new(this, componentType);
+                    CollectionsMarshal.GetValueRefOrAddDefault(_singleComponentUpdates, componentType, out _) ??= new SingleComponentUpdateFilter(this, componentType);
 #endif
 
                 singleComponent.Update();
@@ -498,7 +471,7 @@ namespace Alis.Core.Ecs
         /// <param name="temporaryCreationArchetype">The temporary creation archetype</param>
         public void ArchetypeAdded(Archetype archetype, Archetype temporaryCreationArchetype)
         {
-            if (!GlobalWorldTables.HasTag(archetype.Id, Tag<Disable>.Id))
+            if (!GlobalWorldTables.Has(archetype.Id))
             {
                 EnabledArchetypes.Push(archetype.Id);
             }
@@ -694,7 +667,7 @@ namespace Alis.Core.Ecs
                 types[i] = Component.GetComponentId(components[i].GetType());
             }
 
-            Archetype archetype = Archetype.CreateOrGetExistingArchetype(types!, [], this);
+            Archetype archetype = Archetype.CreateOrGetExistingArchetype(types!,  this);
 
             ref GameObjectIdOnly entityId = ref archetype.CreateEntityLocation(GameObjectFlags.None, out GameObjectLocation loc);
             GameObject gameObject = CreateEntityFromLocation(loc);

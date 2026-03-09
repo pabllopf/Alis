@@ -38,13 +38,6 @@ namespace Alis.Core.Ecs
     internal interface IArchetypeGraphEdge
     {
         /// <summary>
-        ///     Modifies the tags using the specified tags
-        /// </summary>
-        /// <param name="tags">The tags</param>
-        /// <param name="add">The add</param>
-        void ModifyTags(ref FastImmutableArray<TagId> tags, bool add);
-
-        /// <summary>
         ///     Modifies the components using the specified components
         /// </summary>
         /// <param name="components">The components</param>

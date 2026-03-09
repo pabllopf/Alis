@@ -62,40 +62,29 @@ namespace Alis.Core.Ecs.Collections
         /// </summary>
         private int index;
 
-        /// <summary>
-        ///     Finds the adjacent archetype id using the specified id
-        /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="id">The id</param>
-        /// <param name="archetype">The archetype</param>
-        /// <param name="scene">The world</param>
-        /// <param name="edgeType">The edge type</param>
-        /// <returns>The gameObject type</returns>
-        public ArchetypeID FindAdjacentArchetypeId<T>(T id, GameObjectType archetype, Scene scene, ArchetypeEdgeType edgeType)
-            where T : ITypeId
-        {
-            uint key = GetKey(id.Value, archetype);
-            ArchetypeEdgeKey edgeKey;
-            int index = LookupIndex(key);
-            if (index != 32)
-            {
-                return new GameObjectType(InlineArray8<ushort>.Get(ref _ids, index));
-            }
-
-            if (scene.ArchetypeGraphEdges.TryGetValue(
-                    edgeKey = typeof(T) == typeof(ComponentId)
-                        ? ArchetypeEdgeKey.Component(new(id.Value), archetype, edgeType)
-                        : ArchetypeEdgeKey.Tag(new(id.Value), archetype, edgeType), out Archetype destination))
-                //warm/cool depending on number of times they add/remove
-            {
-                return destination.Id;
-            }
-
-            //cold path
-            Archetype dest = Archetype.GetAdjacentArchetypeCold(scene, edgeKey);
-            scene.ArchetypeGraphEdges.Add(edgeKey, dest);
-            return dest.Id;
-        }
+       public ArchetypeID FindAdjacentArchetypeId<T>(T id, GameObjectType archetype, Scene scene, ArchetypeEdgeType edgeType)
+           where T : ITypeId
+       {
+           uint key = GetKey(id.Value, archetype);
+           ArchetypeEdgeKey edgeKey;
+           int index = LookupIndex(key);
+           if (index != 32)
+           {
+               return new GameObjectType(InlineArray8<ushort>.Get(ref _ids, index));
+           }
+       
+           if (scene.ArchetypeGraphEdges.TryGetValue(
+                   edgeKey = ArchetypeEdgeKey.Component(new(id.Value), archetype, edgeType), out Archetype destination))
+               //warm/cool depending on number of times they add/remove
+           {
+               return destination.Id;
+           }
+       
+           //cold path
+           Archetype dest = Archetype.GetAdjacentArchetypeCold(scene, edgeKey);
+           scene.ArchetypeGraphEdges.Add(edgeKey, dest);
+           return dest.Id;
+       }
 
         /// <summary>
         ///     Gets the key using the specified id

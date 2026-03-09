@@ -58,26 +58,13 @@ namespace Alis.Core.Ecs.Systems
         {
             Scene = scene;
             _rules = rules;
-            foreach (Rule rule in rules)
-            {
-                if (rule == Rule.IncludeDisabledRule)
-                {
-                    IncludeDisabled = true;
-                    break;
-                }
-            }
         }
 
         /// <summary>
         ///     Gets or inits the value of the scene
         /// </summary>
         internal Scene Scene { get; init; }
-
-        /// <summary>
-        ///     Gets or inits the value of the include disabled
-        /// </summary>
-        internal bool IncludeDisabled { get; init; }
-
+        
         /// <summary>
         ///     Converts the span
         /// </summary>
@@ -90,11 +77,6 @@ namespace Alis.Core.Ecs.Systems
         /// <param name="archetype">The archetype</param>
         internal void TryAttachArchetype(Archetype archetype)
         {
-            if (!IncludeDisabled && archetype.HasTag<Disable>())
-            {
-                return;
-            }
-
             if (ArchetypeSatisfiesQuery(archetype.Id))
             {
                 _archetypes.Push(archetype);

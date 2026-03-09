@@ -72,7 +72,7 @@ namespace Alis.Core.Ecs.Systems
             get
             {
                 Archetype cur = _archetypes[_archetypeIndex];
-                return new()
+                return new ChunkTuple<T>
                 {
                     Span = cur.GetComponentSpan<T>()
                 };

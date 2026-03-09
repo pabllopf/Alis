@@ -44,7 +44,7 @@ namespace Alis.Core.Ecs.Updating
         /// <summary>
         ///     The archetypes
         /// </summary>
-        private readonly ShortSparseSet<(Archetype Archetype, int Start, int Length)> _archetypes = new();
+        private readonly ShortSparseSet<(Archetype Archetype, int Start, int Length)> _archetypes = new ShortSparseSet<(Archetype Archetype, int Start, int Length)>();
 
         //its entirely possible that the HashSet<Type> for this filter in GenerationServices.TypeAttributeCache doesn't even exist yet
         /// <summary>
@@ -150,7 +150,7 @@ namespace Alis.Core.Ecs.Updating
 
             for (ref int i = ref _lastRegisteredComponentId; i < Component.ComponentTable.Count; i++)
             {
-                ComponentId thisId = new((ushort) i);
+                ComponentId thisId = new ComponentId((ushort) i);
 
                 if (_filter.Contains(thisId.Type))
                 {

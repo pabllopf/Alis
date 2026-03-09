@@ -44,22 +44,22 @@ namespace Alis.Core.Ecs.Updating
         ///     The user generated type map
         /// </summary>
         internal static readonly Dictionary<Type, (IComponentStorageBaseFactory Factory, int UpdateOrder)>
-            UserGeneratedTypeMap = new();
+            UserGeneratedTypeMap = new Dictionary<Type, (IComponentStorageBaseFactory Factory, int UpdateOrder)>();
 
         /// <summary>
         ///     The type attribute cache
         /// </summary>
-        internal static readonly Dictionary<Type, HashSet<Type>> TypeAttributeCache = new();
+        internal static readonly Dictionary<Type, HashSet<Type>> TypeAttributeCache = new Dictionary<Type, HashSet<Type>>();
 
         /// <summary>
         ///     The type initers
         /// </summary>
-        internal static readonly Dictionary<Type, Delegate> TypeIniters = new();
+        internal static readonly Dictionary<Type, Delegate> TypeIniters = new Dictionary<Type, Delegate>();
 
         /// <summary>
         ///     The type destroyers
         /// </summary>
-        internal static readonly Dictionary<Type, Delegate> TypeDestroyers = new();
+        internal static readonly Dictionary<Type, Delegate> TypeDestroyers = new Dictionary<Type, Delegate>();
 
         /// <summary>
         ///     Used only for source generation

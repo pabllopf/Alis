@@ -73,7 +73,7 @@ namespace Alis.Core.Ecs
             //The jit likes to inline the outer create function and not inline
             //the inner functions - benchmarked to improve perf by 10-20%
             (int id, ushort version) =
-                entity = RecycledEntityIds.CanPop() ? RecycledEntityIds.Pop() : new(NextEntityId++, 0);
+                entity = RecycledEntityIds.CanPop() ? RecycledEntityIds.Pop() : new GameObjectIdOnly(NextEntityId++, 0);
             eloc.Version = version;
             EntityTable[id] = eloc;
 

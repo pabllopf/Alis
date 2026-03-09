@@ -50,6 +50,7 @@ namespace Alis.Core.Ecs.Sample
             Console.WriteLine("4. Uniforms_And_Entities_initeable");
             Console.WriteLine("5. Simple_Game");
             Console.WriteLine("6. Queries");
+            Console.WriteLine("7. Entities");
             Console.Write("Ingrese el número de ejemplo (1-6): ");
             string input = Console.ReadLine();
             int opcion;
@@ -78,6 +79,9 @@ namespace Alis.Core.Ecs.Sample
                     break;
                 case 6:
                     Samples.Queries();
+                    break;
+                case 7:
+                    Samples.Entities();
                     break;
                 default:
                     Console.WriteLine("Opción fuera de rango. Debe ser un número entre 1 y 6.");
