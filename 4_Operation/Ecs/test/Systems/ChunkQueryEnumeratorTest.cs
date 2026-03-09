@@ -38,6 +38,9 @@ namespace Alis.Core.Ecs.Test.Systems
     /// </summary>
     public class ChunkQueryEnumeratorTest
     {
+        /// <summary>
+        /// Tests that chunk query enumerator arity 1 is ref struct
+        /// </summary>
         [Fact]
         public void ChunkQueryEnumerator_Arity1_IsRefStruct()
         {
@@ -45,6 +48,9 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.True(typeof(ChunkQueryEnumerator<Position>).IsValueType);
         }
 
+        /// <summary>
+        /// Tests that chunk query enumerator arity 1 move next across archetypes works
+        /// </summary>
         [Fact]
         public void ChunkQueryEnumerator_Arity1_MoveNextAcrossArchetypes_Works()
         {
@@ -71,6 +77,9 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.Equal(2, entityCount);
         }
 
+        /// <summary>
+        /// Tests that chunk query enumerator arity 2 current maps both spans
+        /// </summary>
         [Fact]
         public void ChunkQueryEnumerator_Arity2_CurrentMapsBothSpans()
         {
@@ -89,6 +98,9 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.Equal(30, current.Span2[0].VX);
         }
 
+        /// <summary>
+        /// Tests that chunk query enumerator arity 3 current maps all spans
+        /// </summary>
         [Fact]
         public void ChunkQueryEnumerator_Arity3_CurrentMapsAllSpans()
         {
@@ -106,6 +118,9 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.Equal(5, current.Span3[0].Value);
         }
 
+        /// <summary>
+        /// Tests that chunk query enumerator arity 4 current maps all spans
+        /// </summary>
         [Fact]
         public void ChunkQueryEnumerator_Arity4_CurrentMapsAllSpans()
         {
@@ -128,6 +143,9 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.Equal(8, current.Span4[0].Rotation);
         }
 
+        /// <summary>
+        /// Tests that chunk query enumerator arity 5 current maps all spans
+        /// </summary>
         [Fact]
         public void ChunkQueryEnumerator_Arity5_CurrentMapsAllSpans()
         {
@@ -152,6 +170,9 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.Equal(9, current.Span5[0].Value);
         }
 
+        /// <summary>
+        /// Tests that chunk query enumerator arity 6 current maps all spans
+        /// </summary>
         [Fact]
         public void ChunkQueryEnumerator_Arity6_CurrentMapsAllSpans()
         {
@@ -178,6 +199,9 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.Equal(10, current.Span6[0].X);
         }
 
+        /// <summary>
+        /// Tests that chunk query enumerator arity 7 current maps all spans
+        /// </summary>
         [Fact]
         public void ChunkQueryEnumerator_Arity7_CurrentMapsAllSpans()
         {
@@ -206,6 +230,9 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.Equal(12, current.Span7[0].Amount);
         }
 
+        /// <summary>
+        /// Tests that chunk query enumerator arity 8 current maps all spans and dispose restores structural state
+        /// </summary>
         [Fact]
         public void ChunkQueryEnumerator_Arity8_CurrentMapsAllSpans_AndDisposeRestoresStructuralState()
         {
