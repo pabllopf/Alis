@@ -47,7 +47,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         [Fact]
         public void UpdateRunnerFactory_Arity0_CreatesExpectedTypes()
         {
-            var factory = new UpdateRunnerFactory<UpdateComp0>();
+            UpdateRunnerFactory<UpdateComp0> factory = new UpdateRunnerFactory<UpdateComp0>();
             AssertFactoryMapping<UpdateComp0>(factory, factory, 6, typeof(Update<UpdateComp0>));
         }
 
@@ -57,7 +57,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         [Fact]
         public void UpdateRunnerFactory_Arity1_CreatesExpectedTypes()
         {
-            var factory = new UpdateRunnerFactory<UpdateComp1, Arg1>();
+            UpdateRunnerFactory<UpdateComp1, Arg1> factory = new UpdateRunnerFactory<UpdateComp1, Arg1>();
             AssertFactoryMapping<UpdateComp1>(factory, factory, 6, typeof(GameObjectUpdate<UpdateComp1, Arg1>));
         }
 
@@ -67,7 +67,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         [Fact]
         public void UpdateRunnerFactory_Arity2_CreatesExpectedTypes()
         {
-            var factory = new UpdateRunnerFactory<UpdateComp2, Arg1, Arg2>();
+            UpdateRunnerFactory<UpdateComp2, Arg1, Arg2> factory = new UpdateRunnerFactory<UpdateComp2, Arg1, Arg2>();
             AssertFactoryMapping<UpdateComp2>(factory, factory, 6, typeof(Update<UpdateComp2, Arg1, Arg2>));
         }
 
@@ -77,7 +77,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         [Fact]
         public void UpdateRunnerFactory_Arity3_CreatesExpectedTypes()
         {
-            var factory = new UpdateRunnerFactory<UpdateComp3, Arg1, Arg2, Arg3>();
+            UpdateRunnerFactory<UpdateComp3, Arg1, Arg2, Arg3> factory = new UpdateRunnerFactory<UpdateComp3, Arg1, Arg2, Arg3>();
             AssertFactoryMapping<UpdateComp3>(factory, factory, 6, typeof(Update<UpdateComp3, Arg1, Arg2, Arg3>));
         }
 
@@ -87,7 +87,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         [Fact]
         public void UpdateRunnerFactory_Arity4_CreatesExpectedTypes()
         {
-            var factory = new UpdateRunnerFactory<UpdateComp4, Arg1, Arg2, Arg3, Arg4>();
+            UpdateRunnerFactory<UpdateComp4, Arg1, Arg2, Arg3, Arg4> factory = new UpdateRunnerFactory<UpdateComp4, Arg1, Arg2, Arg3, Arg4>();
             AssertFactoryMapping<UpdateComp4>(factory, factory, 6, typeof(Update<UpdateComp4, Arg1, Arg2, Arg3, Arg4>));
         }
 
@@ -97,7 +97,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         [Fact]
         public void UpdateRunnerFactory_Arity5_CreatesExpectedTypes()
         {
-            var factory = new UpdateRunnerFactory<UpdateComp5, Arg1, Arg2, Arg3, Arg4, Arg5>();
+            UpdateRunnerFactory<UpdateComp5, Arg1, Arg2, Arg3, Arg4, Arg5> factory = new UpdateRunnerFactory<UpdateComp5, Arg1, Arg2, Arg3, Arg4, Arg5>();
             AssertFactoryMapping<UpdateComp5>(factory, factory, 6, typeof(EntityUpdate<UpdateComp5, Arg1, Arg2, Arg3, Arg4, Arg5>));
         }
 
@@ -107,7 +107,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         [Fact]
         public void UpdateRunnerFactory_Arity6_CreatesExpectedTypes()
         {
-            var factory = new UpdateRunnerFactory<UpdateComp6, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6>();
+            UpdateRunnerFactory<UpdateComp6, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6> factory = new UpdateRunnerFactory<UpdateComp6, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6>();
             AssertFactoryMapping<UpdateComp6>(factory, factory, 6, typeof(Update<UpdateComp6, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6>));
         }
 
@@ -117,7 +117,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         [Fact]
         public void UpdateRunnerFactory_Arity7_CreatesExpectedTypes()
         {
-            var factory = new UpdateRunnerFactory<UpdateComp7, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7>();
+            UpdateRunnerFactory<UpdateComp7, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7> factory = new UpdateRunnerFactory<UpdateComp7, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7>();
             AssertFactoryMapping<UpdateComp7>(factory, factory, 6, typeof(Update<UpdateComp7, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7>));
         }
 
@@ -127,7 +127,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         [Fact]
         public void UpdateRunnerFactory_Arity8_CreatesExpectedTypes()
         {
-            var factory = new UpdateRunnerFactory<UpdateComp8, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8>();
+            UpdateRunnerFactory<UpdateComp8, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8> factory = new UpdateRunnerFactory<UpdateComp8, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8>();
             AssertFactoryMapping<UpdateComp8>(factory, factory, 6, typeof(Update<UpdateComp8, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8>));
         }
 
@@ -141,7 +141,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         [InlineData(32)]
         public void UpdateRunnerFactory_Arity0_ForwardsCapacity(int capacity)
         {
-            var factory = new UpdateRunnerFactory<UpdateComp0>();
+            UpdateRunnerFactory<UpdateComp0> factory = new UpdateRunnerFactory<UpdateComp0>();
             IComponentStorageBaseFactory baseFactory = factory;
             IComponentStorageBaseFactory<UpdateComp0> typedFactory = factory;
 
@@ -162,7 +162,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         [InlineData(21)]
         public void UpdateRunnerFactory_Arity8_ForwardsCapacity(int capacity)
         {
-            var factory = new UpdateRunnerFactory<UpdateComp8, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8>();
+            UpdateRunnerFactory<UpdateComp8, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8> factory = new UpdateRunnerFactory<UpdateComp8, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8>();
             IComponentStorageBaseFactory baseFactory = factory;
             IComponentStorageBaseFactory<UpdateComp8> typedFactory = factory;
 

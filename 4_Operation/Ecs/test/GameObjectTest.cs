@@ -27,7 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
+using Alis.Core.Ecs.Kernel;
+using Alis.Core.Ecs.Kernel.Events;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
 
@@ -482,5 +485,214 @@ namespace Alis.Core.Ecs.Test
             Assert.True(gameObject.Has<TestComponent>());
             Assert.True(gameObject.Has<AnotherComponent>());
         }
+
+        /// <summary>
+        /// Tests that game object has and try has by type and component id work
+        /// </summary>
+        [Fact]
+        public void GameObject_HasAndTryHas_ByTypeAndComponentId_Work()
+        {
+            using Scene scene = new Scene();
+            GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
+
+            ComponentId posId = Component<Position>.Id;
+            ComponentId velId = Component<Velocity>.Id;
+
+            Assert.True(gameObject.Has(typeof(Position)));
+            Assert.True(gameObject.Has(posId));
+            Assert.True(gameObject.TryHas(typeof(Position)));
+            Assert.True(gameObject.TryHas(posId));
+
+            Assert.False(gameObject.Has(typeof(Velocity)));
+            Assert.False(gameObject.Has(velId));
+            Assert.False(gameObject.TryHas(typeof(Velocity)));
+            Assert.False(gameObject.TryHas(velId));
+        }
+
+        /// <summary>
+        /// Tests that game object get set and try get non generic overloads work
+        /// </summary>
+        [Fact]
+        public void GameObject_GetSetAndTryGet_NonGenericOverloads_Work()
+        {
+            using Scene scene = new Scene();
+            GameObject gameObject = scene.Create(new Position {X = 3, Y = 4});
+
+            object boxed = gameObject.Get(Component<Position>.Id);
+            Assert.IsType<Position>(boxed);
+            Assert.Equal(3, ((Position) boxed).X);
+
+            gameObject.Set(typeof(Position), new Position {X = 30, Y = 40});
+            Assert.Equal(30, gameObject.Get<Position>().X);
+
+            bool found = gameObject.TryGet(typeof(Position), out object value);
+            bool notFound = gameObject.TryGet(typeof(Velocity), out object missing);
+
+            Assert.True(found);
+            Assert.IsType<Position>(value);
+            Assert.False(notFound);
+            Assert.Null(missing);
+        }
+
+        /// <summary>
+        /// Tests that game object add boxed and add as can add components dynamically
+        /// </summary>
+        [Fact]
+        public void GameObject_AddBoxedAndAddAs_CanAddComponentsDynamically()
+        {
+            using Scene scene = new Scene();
+            GameObject gameObject = scene.Create();
+
+            gameObject.AddBoxed(new Position {X = 7, Y = 8});
+            gameObject.AddAs(typeof(TestComponent), new TestComponent {Value = 123});
+            gameObject.AddAs(Component<AnotherComponent2>.Id, new AnotherComponent2 {Name = "boxed"});
+
+            Assert.True(gameObject.Has<Position>());
+            Assert.True(gameObject.Has<TestComponent>());
+            Assert.True(gameObject.Has<AnotherComponent2>());
+            Assert.Equal(123, gameObject.Get<TestComponent>().Value);
+            Assert.Equal("boxed", gameObject.Get<AnotherComponent2>().Name);
+        }
+
+        /// <summary>
+        /// Tests that game object remove by type and component id work
+        /// </summary>
+        [Fact]
+        public void GameObject_Remove_ByTypeAndComponentId_Work()
+        {
+            using Scene scene = new Scene();
+            GameObject gameObject = scene.Create(new Position {X = 1, Y = 2}, new Velocity {VX = 3, VY = 4});
+
+            gameObject.Remove(typeof(Position));
+            Assert.False(gameObject.Has<Position>());
+
+            gameObject.Remove(Component<Velocity>.Id);
+            Assert.False(gameObject.Has<Velocity>());
+        }
+
+      
+
+        /// <summary>
+        /// Tests that game object generic component events are raised with concrete types
+        /// </summary>
+        [Fact]
+        public void GameObject_GenericComponentEvents_AreRaisedWithConcreteTypes()
+        {
+            using Scene scene = new Scene();
+            GameObject gameObject = scene.Create(new Position {X = 5, Y = 6});
+
+            GenericCaptureAction addCapture = new GenericCaptureAction();
+            GenericCaptureAction removeCapture = new GenericCaptureAction();
+
+            gameObject.OnComponentAddedGeneric += addCapture;
+            gameObject.OnComponentRemovedGeneric += removeCapture;
+
+            gameObject.Add(new Health {Value = 77});
+            gameObject.Remove<Position>();
+
+            Assert.Contains(typeof(Health), addCapture.SeenTypes);
+            Assert.Contains(typeof(Position), removeCapture.SeenTypes);
+        }
+
+        /// <summary>
+        /// Tests that game object enumerate components visits all components
+        /// </summary>
+        [Fact]
+        public void GameObject_EnumerateComponents_VisitsAllComponents()
+        {
+            using Scene scene = new Scene();
+            GameObject gameObject = scene.Create(
+                new Position {X = 1, Y = 1},
+                new Velocity {VX = 2, VY = 2},
+                new Health {Value = 3});
+
+            ComponentTypeCaptureAction capture = new ComponentTypeCaptureAction();
+            gameObject.EnumerateComponents(capture);
+
+            Assert.Equal(3, capture.Calls);
+            Assert.Contains(typeof(Position), capture.SeenTypes);
+            Assert.Contains(typeof(Velocity), capture.SeenTypes);
+            Assert.Contains(typeof(Health), capture.SeenTypes);
+        }
+
+        /// <summary>
+        /// Tests that game object metadata properties are consistent
+        /// </summary>
+        [Fact]
+        public void GameObject_MetadataProperties_AreConsistent()
+        {
+            using Scene scene = new Scene();
+            GameObject gameObject = scene.Create(new Position {X = 2, Y = 3});
+
+            Assert.Equal(scene, gameObject.Scene);
+            Assert.Equal(GameObject.EntityTypeOf([Component<Position>.Id]), gameObject.Type);
+            Assert.Contains(Component<Position>.Id, gameObject.ComponentTypes);
+        }
+
+        /// <summary>
+        /// Tests that game object try has on deleted entity returns false without throwing
+        /// </summary>
+        [Fact]
+        public void GameObject_TryHas_OnDeletedEntity_ReturnsFalseWithoutThrowing()
+        {
+            using Scene scene = new Scene();
+            GameObject gameObject = scene.Create(new Position {X = 1, Y = 1});
+            gameObject.Delete();
+
+            Assert.False(gameObject.TryHas<Position>());
+            Assert.False(gameObject.TryHas(typeof(Position)));
+            Assert.False(gameObject.TryHas(Component<Position>.Id));
+        }
+
+        /// <summary>
+        /// The component type capture action class
+        /// </summary>
+        /// <seealso cref="IGenericAction"/>
+        private sealed class ComponentTypeCaptureAction : IGenericAction
+        {
+            /// <summary>
+            /// The calls
+            /// </summary>
+            internal int Calls;
+            /// <summary>
+            /// Gets the value of the seen types
+            /// </summary>
+            internal HashSet<Type> SeenTypes { get; } = new HashSet<Type>();
+
+            /// <summary>
+            /// Invokes the type
+            /// </summary>
+            /// <typeparam name="T">The </typeparam>
+            /// <param name="type">The type</param>
+            public void Invoke<T>(ref T type)
+            {
+                Calls++;
+                SeenTypes.Add(typeof(T));
+            }
+        }
+
+        /// <summary>
+        /// The generic capture action class
+        /// </summary>
+        /// <seealso cref="IGenericAction{GameObject}"/>
+        private sealed class GenericCaptureAction : IGenericAction<GameObject>
+        {
+            /// <summary>
+            /// Gets the value of the seen types
+            /// </summary>
+            internal HashSet<Type> SeenTypes { get; } = new HashSet<Type>();
+
+            /// <summary>
+            /// Invokes the param
+            /// </summary>
+            /// <typeparam name="T">The </typeparam>
+            /// <param name="param">The param</param>
+            /// <param name="type">The type</param>
+            public void Invoke<T>(GameObject param, ref T type)
+            {
+                SeenTypes.Add(typeof(T));
+            }
+        }
     }
 }
+
