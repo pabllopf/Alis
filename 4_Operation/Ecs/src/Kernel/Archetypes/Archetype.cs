@@ -542,19 +542,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// </summary>
         static Archetype() => Null = GetArchetypeId([Component.GetComponentId(typeof(void))]);
 
-        //Deferred creation entities fully supported
-        ////this archetype exists only so that "GameObjectLocation"s of deferred archetypes have something to point to
-        ////disable so less overhead
-        //DeferredCreate = GetArchetypeID([], [Tag.GetTagID(typeof(DeferredCreate)), Tag.GetTagID(typeof(Disable))]);
-        /// <summary>
-        ///     Creates the or get existing archetype using the specified types
-        /// </summary>
-        /// <param name="types">The types</param>
-        /// <param name="tagTypes">The tag types</param>
-        /// <param name="scene">The scene</param>
-        /// <param name="typeArray">The type array</param>
-        /// <param name="tagTypesArray">The tag types array</param>
-        /// <returns>The archetype</returns>
+
         internal static Archetype CreateOrGetExistingArchetype(ReadOnlySpan<ComponentId> types, Scene scene, FastImmutableArray<ComponentId>? typeArray = null)
         {
             GameObjectType id = GetArchetypeId(types, typeArray);
@@ -638,16 +626,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
             return archetype;
         }
 
-        /// <summary>
-        ///     Gets the archetype id using the specified types
-        /// </summary>
-        /// <param name="types">The types</param>
-        /// <param name="tagTypes">The tag types</param>
-        /// <param name="typesArray">The types array</param>
-        /// <param name="tagTypesArray">The tag types array</param>
-        /// <exception cref="InvalidOperationException">Entities can have a max of 127 components!</exception>
-        /// <exception cref="InvalidOperationException">Exceeded maximum unique archetype count of 65535</exception>
-        /// <returns>The archetype id</returns>
+
         internal static GameObjectType GetArchetypeId(ReadOnlySpan<ComponentId> types, FastImmutableArray<ComponentId>? typesArray = null)
         {
             if (types.Length > MemoryHelpers.MaxComponentCount)
@@ -838,20 +817,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         ///     Initializes a new instance of the <see cref="Archetype" /> class
         /// </summary>
         static Archetype() => Null = GetArchetypeId([Component.GetComponentId(typeof(void))]);
-
-        //Deferred creation entities fully supported
-        ////this archetype exists only so that "GameObjectLocation"s of deferred archetypes have something to point to
-        ////disable so less overhead
-        //DeferredCreate = GetArchetypeID([], [Tag.GetTagID(typeof(DeferredCreate)), Tag.GetTagID(typeof(Disable))]);
-        /// <summary>
-        ///     Creates the or get existing archetype using the specified types
-        /// </summary>
-        /// <param name="types">The types</param>
-        /// <param name="tagTypes">The tag types</param>
-        /// <param name="scene">The scene</param>
-        /// <param name="typeArray">The type array</param>
-        /// <param name="tagTypesArray">The tag types array</param>
-        /// <returns>The archetype</returns>
+        
         internal static Archetype CreateOrGetExistingArchetype(ReadOnlySpan<ComponentId> types, Scene scene, FastImmutableArray<ComponentId>? typeArray = null)
         {
             GameObjectType id = GetArchetypeId(types, typeArray);
@@ -935,16 +901,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
             return archetype;
         }
 
-        /// <summary>
-        ///     Gets the archetype id using the specified types
-        /// </summary>
-        /// <param name="types">The types</param>
-        /// <param name="tagTypes">The tag types</param>
-        /// <param name="typesArray">The types array</param>
-        /// <param name="tagTypesArray">The tag types array</param>
-        /// <exception cref="InvalidOperationException">Entities can have a max of 127 components!</exception>
-        /// <exception cref="InvalidOperationException">Exceeded maximum unique archetype count of 65535</exception>
-        /// <returns>The archetype id</returns>
+       
         internal static GameObjectType GetArchetypeId(ReadOnlySpan<ComponentId> types, FastImmutableArray<ComponentId>? typesArray = null)
         {
             if (types.Length > MemoryHelpers.MaxComponentCount)
