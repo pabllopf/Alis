@@ -32,13 +32,52 @@ namespace Alis.Core.Ecs.Systems
     /// <summary>
     ///     Delegates for executing a functions on a <see cref="Query" />
     /// </summary>
-    public static partial class QueryDelegates
+    public static class QueryDelegates
     {
-        // Missing XML comment for publicly visible type or member
+        
         /// <summary>
         ///     The query
         /// </summary>
         public delegate void Query<T>(ref T comp1);
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
+
+        
+        /// <summary>
+        ///     The query
+        /// </summary>
+        public delegate void Query<T1, T2>(ref T1 comp1, ref T2 comp2);
+        
+        /// <summary>
+        ///     The query
+        /// </summary>
+        public delegate void Query<T1, T2, T3>(ref T1 comp1, ref T2 comp2, ref T3 comp3);
+        
+        /// <summary>
+        ///     The query
+        /// </summary>
+        public delegate void Query<T1, T2, T3, T4>(ref T1 comp1, ref T2 comp2, ref T3 comp3, ref T4 comp4);
+        
+        /// <summary>
+        ///     The query
+        /// </summary>
+        public delegate void
+            Query<T1, T2, T3, T4, T5>(ref T1 comp1, ref T2 comp2, ref T3 comp3, ref T4 comp4, ref T5 comp5);
+        
+        /// <summary>
+        ///     The query
+        /// </summary>
+        public delegate void Query<T1, T2, T3, T4, T5, T6>(ref T1 comp1, ref T2 comp2, ref T3 comp3, ref T4 comp4,
+            ref T5 comp5, ref T6 comp6);
+        
+        /// <summary>
+        ///     The query
+        /// </summary>
+        public delegate void Query<T1, T2, T3, T4, T5, T6, T7>(ref T1 comp1, ref T2 comp2, ref T3 comp3, ref T4 comp4,
+            ref T5 comp5, ref T6 comp6, ref T7 comp7);
+        
+        /// <summary>
+        ///     The query
+        /// </summary>
+        public delegate void Query<T1, T2, T3, T4, T5, T6, T7, T8>(ref T1 comp1, ref T2 comp2, ref T3 comp3, ref T4 comp4,
+            ref T5 comp5, ref T6 comp6, ref T7 comp7, ref T8 comp8);
     }
 }
