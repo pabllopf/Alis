@@ -304,5 +304,171 @@ namespace Alis.Core.Ecs.Test
             // Assert
             Assert.Throws<NullReferenceException>(() => { entity.Deconstruct(out Ref<Position> pos); });
         }
+
+        [Fact]
+        public void GameObjectExtensionsDeconstruct_TwoComponents_Works()
+        {
+            using Scene scene = new Scene();
+            GameObject entity = scene.Create(new Position {X = 1, Y = 2}, new Velocity {VX = 3, VY = 4});
+
+            entity.Deconstruct(out Ref<Position> pos, out Ref<Velocity> vel);
+
+            Assert.Equal(1, pos.Value.X);
+            Assert.Equal(4, vel.Value.VY);
+            vel.Value.VX = 9;
+            Assert.Equal(9, entity.Get<Velocity>().VX);
+        }
+
+        [Fact]
+        public void GameObjectExtensionsDeconstruct_ThreeComponents_Works()
+        {
+            using Scene scene = new Scene();
+            GameObject entity = scene.Create(
+                new Position {X = 1, Y = 2},
+                new Velocity {VX = 3, VY = 4},
+                new Health {Value = 5});
+
+            entity.Deconstruct(out Ref<Position> pos, out Ref<Velocity> vel, out Ref<Health> hp);
+
+            Assert.Equal(2, pos.Value.Y);
+            Assert.Equal(3, vel.Value.VX);
+            Assert.Equal(5, hp.Value.Value);
+        }
+
+        [Fact]
+        public void GameObjectExtensionsDeconstruct_FourComponents_Works()
+        {
+            using Scene scene = new Scene();
+            GameObject entity = scene.Create(
+                new Position {X = 1, Y = 2},
+                new Velocity {VX = 3, VY = 4},
+                new Health {Value = 5},
+                new Transform {X = 6, Y = 7, Rotation = 8});
+
+            entity.Deconstruct(out Ref<Position> pos, out Ref<Velocity> vel, out Ref<Health> hp, out Ref<Transform> tr);
+
+            Assert.Equal(1, pos.Value.X);
+            Assert.Equal(4, vel.Value.VY);
+            Assert.Equal(5, hp.Value.Value);
+            Assert.Equal(8, tr.Value.Rotation);
+        }
+
+        [Fact]
+        public void GameObjectExtensionsDeconstruct_FiveComponents_Works()
+        {
+            using Scene scene = new Scene();
+            GameObject entity = scene.Create(
+                new Position {X = 1, Y = 2},
+                new Velocity {VX = 3, VY = 4},
+                new Health {Value = 5},
+                new Transform {X = 6, Y = 7, Rotation = 8},
+                new TestComponent {Value = 9, Name = "a"});
+
+            entity.Deconstruct(
+                out Ref<Position> pos,
+                out Ref<Velocity> vel,
+                out Ref<Health> hp,
+                out Ref<Transform> tr,
+                out Ref<TestComponent> tc);
+
+            Assert.Equal(1, pos.Value.X);
+            Assert.Equal(3, vel.Value.VX);
+            Assert.Equal(5, hp.Value.Value);
+            Assert.Equal(6, tr.Value.X);
+            Assert.Equal(9, tc.Value.Value);
+        }
+
+        [Fact]
+        public void GameObjectExtensionsDeconstruct_SixComponents_Works()
+        {
+            using Scene scene = new Scene();
+            GameObject entity = scene.Create(
+                new Position {X = 1, Y = 2},
+                new Velocity {VX = 3, VY = 4},
+                new Health {Value = 5},
+                new Transform {X = 6, Y = 7, Rotation = 8},
+                new TestComponent {Value = 9, Name = "a"},
+                new AnotherComponent {X = 10, Y = 11, Name = "b"});
+
+            entity.Deconstruct(
+                out Ref<Position> pos,
+                out Ref<Velocity> vel,
+                out Ref<Health> hp,
+                out Ref<Transform> tr,
+                out Ref<TestComponent> tc,
+                out Ref<AnotherComponent> ac);
+
+            Assert.Equal(2, pos.Value.Y);
+            Assert.Equal(4, vel.Value.VY);
+            Assert.Equal(5, hp.Value.Value);
+            Assert.Equal(8, tr.Value.Rotation);
+            Assert.Equal("a", tc.Value.Name);
+            Assert.Equal(10, ac.Value.X);
+        }
+
+        [Fact]
+        public void GameObjectExtensionsDeconstruct_SevenComponents_Works()
+        {
+            using Scene scene = new Scene();
+            GameObject entity = scene.Create(
+                new Position {X = 1, Y = 2},
+                new Velocity {VX = 3, VY = 4},
+                new Health {Value = 5},
+                new Transform {X = 6, Y = 7, Rotation = 8},
+                new TestComponent {Value = 9, Name = "a"},
+                new AnotherComponent {X = 10, Y = 11, Name = "b"},
+                new Damage {Amount = 12});
+
+            entity.Deconstruct(
+                out Ref<Position> pos,
+                out Ref<Velocity> vel,
+                out Ref<Health> hp,
+                out Ref<Transform> tr,
+                out Ref<TestComponent> tc,
+                out Ref<AnotherComponent> ac,
+                out Ref<Damage> dmg);
+
+            Assert.Equal(1, pos.Value.X);
+            Assert.Equal(3, vel.Value.VX);
+            Assert.Equal(5, hp.Value.Value);
+            Assert.Equal(8, tr.Value.Rotation);
+            Assert.Equal(9, tc.Value.Value);
+            Assert.Equal(11, ac.Value.Y);
+            Assert.Equal(12, dmg.Value.Amount);
+        }
+
+        [Fact]
+        public void GameObjectExtensionsDeconstruct_EightComponents_Works()
+        {
+            using Scene scene = new Scene();
+            GameObject entity = scene.Create(
+                new Position {X = 1, Y = 2},
+                new Velocity {VX = 3, VY = 4},
+                new Health {Value = 5},
+                new Transform {X = 6, Y = 7, Rotation = 8},
+                new TestComponent {Value = 9, Name = "a"},
+                new AnotherComponent {X = 10, Y = 11, Name = "b"},
+                new Damage {Amount = 12},
+                new Armor {Defense = 13});
+
+            entity.Deconstruct(
+                out Ref<Position> pos,
+                out Ref<Velocity> vel,
+                out Ref<Health> hp,
+                out Ref<Transform> tr,
+                out Ref<TestComponent> tc,
+                out Ref<AnotherComponent> ac,
+                out Ref<Damage> dmg,
+                out Ref<Armor> armor);
+
+            Assert.Equal(2, pos.Value.Y);
+            Assert.Equal(4, vel.Value.VY);
+            Assert.Equal(5, hp.Value.Value);
+            Assert.Equal(7, tr.Value.Y);
+            Assert.Equal("a", tc.Value.Name);
+            Assert.Equal("b", ac.Value.Name);
+            Assert.Equal(12, dmg.Value.Amount);
+            Assert.Equal(13, armor.Value.Defense);
+        }
     }
 }
