@@ -134,6 +134,7 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.True(true); // If we reach this point, no exception was thrown
         }
 
+        
         /// <summary>
         /// Tests that archetype added with matching component adds archetype to filter
         /// </summary>
