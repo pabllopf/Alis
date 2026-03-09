@@ -102,7 +102,7 @@ namespace Alis.Core.Ecs.Test
             QueryEnumerable<Position> enumerable = new QueryEnumerable<Position>(query);
 
             int count = 0;
-            foreach (var _ in enumerable)
+            foreach (GameObjectRefTuple<Position> _ in enumerable)
             {
                 count++;
             }
@@ -119,7 +119,7 @@ namespace Alis.Core.Ecs.Test
             QueryEnumerable<Position, Velocity> enumerable = new QueryEnumerable<Position, Velocity>(query);
 
             int count = 0;
-            foreach (var _ in enumerable)
+            foreach (GameObjectRefTuple<Position, Velocity> _ in enumerable)
             {
                 count++;
             }
@@ -146,7 +146,7 @@ namespace Alis.Core.Ecs.Test
                 new QueryEnumerable<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>(query);
 
             int count = 0;
-            foreach (var _ in enumerable)
+            foreach (GameObjectRefTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor> _ in enumerable)
             {
                 count++;
             }

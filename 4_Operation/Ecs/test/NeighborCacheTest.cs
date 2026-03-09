@@ -121,7 +121,7 @@ namespace Alis.Core.Ecs.Test
         public void NeighborCache_HasAddAndRemoveNestedClasses()
         {
             // Arrange
-            var cacheType = typeof(NeighborCache<Position>);
+            Type cacheType = typeof(NeighborCache<Position>);
 
             // Assert
             Assert.NotNull(cacheType.GetNestedType("Add", System.Reflection.BindingFlags.NonPublic));
@@ -376,10 +376,10 @@ namespace Alis.Core.Ecs.Test
         public void NeighborCacheQuintuple_HasStructLayoutAttribute()
         {
             // Arrange
-            var cacheType = typeof(NeighborCache<Position, Velocity, Health, Armor, Damage>);
+            Type cacheType = typeof(NeighborCache<Position, Velocity, Health, Armor, Damage>);
 
             // Assert
-            var layoutAttr = cacheType.GetCustomAttributes(typeof(System.Runtime.InteropServices.StructLayoutAttribute), false);
+            object[] layoutAttr = cacheType.GetCustomAttributes(typeof(System.Runtime.InteropServices.StructLayoutAttribute), false);
             Assert.Empty(layoutAttr);
         }
     }
@@ -542,9 +542,9 @@ namespace Alis.Core.Ecs.Test
         public void NeighborCache_AddAndRemoveClasses_HaveLookupField()
         {
             // Arrange
-            var cacheType = typeof(NeighborCache<Position>);
-            var addType = cacheType.GetNestedType("Add", System.Reflection.BindingFlags.NonPublic);
-            var removeType = cacheType.GetNestedType("Remove", System.Reflection.BindingFlags.NonPublic);
+            Type cacheType = typeof(NeighborCache<Position>);
+            Type addType = cacheType.GetNestedType("Add", System.Reflection.BindingFlags.NonPublic);
+            Type removeType = cacheType.GetNestedType("Remove", System.Reflection.BindingFlags.NonPublic);
 
             // Assert
             Assert.NotNull(addType.GetField("Lookup", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static));
