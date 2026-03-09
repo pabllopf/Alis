@@ -423,16 +423,12 @@ namespace Alis.Core.Ecs
 
             try
             {
-#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
+
                 if (!_singleComponentUpdates.TryGetValue(componentType, out singleComponent))
                 {
                     _singleComponentUpdates[componentType] = singleComponent = new SingleComponentUpdateFilter(this, componentType);
                 }
-#else
-                singleComponent =
-                    CollectionsMarshal.GetValueRefOrAddDefault(_singleComponentUpdates, componentType, out _) ??= new SingleComponentUpdateFilter(this, componentType);
-#endif
-
+                
                 singleComponent.Update();
             }
             finally
@@ -1654,13 +1650,7 @@ namespace Alis.Core.Ecs
                 .FindAdjacentArchetypeId(componentId, lookup.ArchetypeId, this, ArchetypeEdgeType.RemoveComponent)
                 .Archetype(this);
 
-#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
             MoveEntityToArchetypeRemove(MemoryHelpers.SharedTempComponentHandleBuffer.AsSpan(0, 1), gameObject, ref lookup, destination);
-#else
-            Unsafe.SkipInit(out ComponentHandle tmpHandle);
-            MemoryHelpers.Poison(ref tmpHandle);
-            MoveEntityToArchetypeRemove(MemoryMarshal.CreateSpan(ref tmpHandle, 1), gameObject, ref lookup, destination);
-#endif
         }
 
         /// <summary>
@@ -1677,13 +1667,9 @@ namespace Alis.Core.Ecs
             Archetype destination = AddComponentLookup
                 .FindAdjacentArchetypeId(componentId, lookup.ArchetypeId, this, ArchetypeEdgeType.AddComponent)
                 .Archetype(this);
-#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
             MoveEntityToArchetypeAdd(MemoryHelpers.SharedTempComponentStorageBuffer.AsSpan(0, 1), gameObject, ref lookup,
                 out gameObjectLocation, destination);
             runner = MemoryHelpers.SharedTempComponentStorageBuffer[0];
-#else
-            MoveEntityToArchetypeAdd(MemoryMarshal.CreateSpan(ref runner, 1), gameObject, ref lookup, out gameObjectLocation, destination);
-#endif
         }
 
         /// <summary>
@@ -1819,12 +1805,7 @@ namespace Alis.Core.Ecs
                 if (GameObjectLocation.HasEventFlag(currentLookup.Flags,
                         GameObjectFlags.RemoveComp | GameObjectFlags.RemoveGenericComp))
                 {
-#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
                     EventRecord lookup = EventLookup[gameObject.EntityIdOnly];
-#else
-                    ref EventRecord lookup =
-                        ref CollectionsMarshal.GetValueRefOrNullRef(EventLookup, gameObject.EntityIdOnly);
-#endif
 
                     if (hasGenericRemoveEvent)
                     {

@@ -31,8 +31,6 @@ using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Kernel.Archetypes;
-#if NET7_0_OR_GREATER
-#endif
 
 namespace Alis.Core.Ecs.Collections
 {
@@ -132,18 +130,6 @@ namespace Alis.Core.Ecs.Collections
         /// <returns>The int</returns>
         public int LookupIndex(uint key)
         {
-#if NET6_0_OR_GREATER
-            ReadOnlySpan<uint> span = MemoryMarshal.CreateReadOnlySpan(ref _data._0, 8);
-            for (int i = 0; i < span.Length; i++)
-            {
-                if (span[i] == key)
-                {
-                    return i;
-                }
-            }
-
-            return 32;
-#else
             if (_data._0 == key)
             {
                 return 0;
@@ -185,7 +171,6 @@ namespace Alis.Core.Ecs.Collections
             }
 
             return 32;
-#endif
         }
     }
 }

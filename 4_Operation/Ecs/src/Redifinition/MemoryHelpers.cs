@@ -209,17 +209,13 @@ namespace Alis.Core.Ecs.Redifinition
             where TKey : notnull
             where TValue : new()
         {
-#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
+
             if (dictionary.TryGetValue(key, out TValue value))
             {
                 return value;
             }
 
             return dictionary[key] = new TValue();
-#else
-            ref TValue res = ref CollectionsMarshal.GetValueRefOrAddDefault(dictionary, key, out bool _);
-            return res ??= new TValue();
-#endif
         }
 
         /// <summary>
@@ -267,11 +263,6 @@ namespace Alis.Core.Ecs.Redifinition
             {
                 throw new NotSupportedException("Cleared anyways");
             }
-
-#if NET6_0_OR_GREATER
-            Span<byte> raw = MemoryMarshal.CreateSpan(ref Unsafe.As<T, byte>(ref item), Unsafe.SizeOf<T>());
-            raw.Fill(93);
-#endif
         }
 
         /// <summary>
@@ -298,11 +289,11 @@ namespace Alis.Core.Ecs.Redifinition
         [StructLayout(LayoutKind.Sequential, Size = 16)]
         public struct Block16;
 
-#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
+
         [ThreadStatic] internal static readonly ComponentHandle[] SharedTempComponentHandleBuffer = new ComponentHandle[8];
 
         [ThreadStatic] internal static readonly Updating.ComponentStorageBase[] SharedTempComponentStorageBuffer = new Updating.ComponentStorageBase[8];
-#endif
+
     }
 
     /// <summary>

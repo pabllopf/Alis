@@ -309,12 +309,7 @@ namespace Alis.Core.Ecs.Kernel
 
                     if (record.HasEvent(GameObjectFlags.AddComp))
                     {
-#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
                         EventRecord events = Scene.EventLookup[command.Entity];
-#else
-                        ref EventRecord events =
-                            ref CollectionsMarshal.GetValueRefOrNullRef(Scene.EventLookup, command.Entity);
-#endif
                         events.Add.NormalEvent.Invoke(concrete, command.ComponentHandle.ComponentId);
                         runner.InvokeGenericActionWith(events.Add.GenericEvent, concrete, location.Index);
                     }

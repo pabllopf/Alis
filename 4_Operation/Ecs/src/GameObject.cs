@@ -281,12 +281,8 @@ namespace Alis.Core.Ecs
 
                 if (GameObjectLocation.HasEventFlag(flags, GameObjectFlags.AddComp | GameObjectFlags.AddGenericComp))
                 {
-#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
                     EventRecord events = world.EventLookup[EntityIdOnly];
-#else
-                    ref EventRecord events =
-                        ref CollectionsMarshal.GetValueRefOrNullRef(world.EventLookup, EntityIdOnly);
-#endif
+                    
                     InvokePerEntityEvents(this, GameObjectLocation.HasEventFlag(thisLookup.Flags, GameObjectFlags.AddGenericComp),
                         ref events.Add, ref c1Ref);
                 }
@@ -451,12 +447,9 @@ namespace Alis.Core.Ecs
 
                 if (GameObjectLocation.HasEventFlag(flags, GameObjectFlags.AddComp | GameObjectFlags.AddGenericComp))
                 {
-#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
+
                     EventRecord events = world.EventLookup[EntityIdOnly];
-#else
-                    ref EventRecord events =
-                        ref CollectionsMarshal.GetValueRefOrNullRef(world.EventLookup, EntityIdOnly);
-#endif
+                    
                     InvokePerEntityEvents(this, GameObjectLocation.HasEventFlag(thisLookup.Flags, GameObjectFlags.AddGenericComp),
                         ref events.Add, ref c1Ref);
                 }
@@ -585,12 +578,8 @@ namespace Alis.Core.Ecs
 
                 if (GameObjectLocation.HasEventFlag(flags, GameObjectFlags.AddComp | GameObjectFlags.AddGenericComp))
                 {
-#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
                     EventRecord events = world.EventLookup[EntityIdOnly];
-#else
-                    ref EventRecord events =
-                        ref CollectionsMarshal.GetValueRefOrNullRef(world.EventLookup, EntityIdOnly);
-#endif
+
                     InvokePerEntityEvents(this, GameObjectLocation.HasEventFlag(thisLookup.Flags, GameObjectFlags.AddGenericComp),
                         ref events.Add, ref c1Ref);
                 }
@@ -728,12 +717,8 @@ namespace Alis.Core.Ecs
 
                 if (GameObjectLocation.HasEventFlag(flags, GameObjectFlags.AddComp | GameObjectFlags.AddGenericComp))
                 {
-#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
                     EventRecord events = world.EventLookup[EntityIdOnly];
-#else
-                    ref EventRecord events =
-                        ref CollectionsMarshal.GetValueRefOrNullRef(world.EventLookup, EntityIdOnly);
-#endif
+                    
                     InvokePerEntityEvents(this, GameObjectLocation.HasEventFlag(thisLookup.Flags, GameObjectFlags.AddGenericComp),
                         ref events.Add, ref c1Ref);
                 }
@@ -886,12 +871,7 @@ namespace Alis.Core.Ecs
 
                 if (GameObjectLocation.HasEventFlag(flags, GameObjectFlags.AddComp | GameObjectFlags.AddGenericComp))
                 {
-#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
                     EventRecord events = world.EventLookup[EntityIdOnly];
-#else
-                    ref EventRecord events =
-                        ref CollectionsMarshal.GetValueRefOrNullRef(world.EventLookup, EntityIdOnly);
-#endif
                     InvokePerEntityEvents(this, GameObjectLocation.HasEventFlag(thisLookup.Flags, GameObjectFlags.AddGenericComp),
                         ref events.Add, ref c1Ref);
                 }
@@ -1057,12 +1037,7 @@ namespace Alis.Core.Ecs
 
                 if (GameObjectLocation.HasEventFlag(flags, GameObjectFlags.AddComp | GameObjectFlags.AddGenericComp))
                 {
-#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
-                    EventRecord events = world.EventLookup[EntityIdOnly];
-#else
-                    ref EventRecord events =
-                        ref CollectionsMarshal.GetValueRefOrNullRef(world.EventLookup, EntityIdOnly);
-#endif
+EventRecord events = world.EventLookup[EntityIdOnly];
                     InvokePerEntityEvents(this, GameObjectLocation.HasEventFlag(thisLookup.Flags, GameObjectFlags.AddGenericComp),
                         ref events.Add, ref c1Ref);
                 }
@@ -1240,12 +1215,7 @@ namespace Alis.Core.Ecs
 
                 if (GameObjectLocation.HasEventFlag(flags, GameObjectFlags.AddComp | GameObjectFlags.AddGenericComp))
                 {
-#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
-                    EventRecord events = world.EventLookup[EntityIdOnly];
-#else
-                    ref EventRecord events =
-                        ref CollectionsMarshal.GetValueRefOrNullRef(world.EventLookup, EntityIdOnly);
-#endif
+EventRecord events = world.EventLookup[EntityIdOnly];
                     InvokePerEntityEvents(this, GameObjectLocation.HasEventFlag(thisLookup.Flags, GameObjectFlags.AddGenericComp),
                         ref events.Add, ref c1Ref);
                 }
@@ -1435,12 +1405,7 @@ namespace Alis.Core.Ecs
 
                 if (GameObjectLocation.HasEventFlag(flags, GameObjectFlags.AddComp | GameObjectFlags.AddGenericComp))
                 {
-#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
-                    EventRecord events = world.EventLookup[EntityIdOnly];
-#else
-                    ref EventRecord events =
-                        ref CollectionsMarshal.GetValueRefOrNullRef(world.EventLookup, EntityIdOnly);
-#endif
+EventRecord events = world.EventLookup[EntityIdOnly];
                     InvokePerEntityEvents(this, GameObjectLocation.HasEventFlag(thisLookup.Flags, GameObjectFlags.AddGenericComp),
                         ref events.Add, ref c1Ref);
                 }
@@ -1984,13 +1949,10 @@ namespace Alis.Core.Ecs
             {
                 return;
             }
-#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
+            
             bool exists = entityLocation.HasEvent(flag);
             EventRecord record = exists ? Scene.EventLookup[EntityIdOnly] : default;
-#else
-            ref EventRecord record =
-                ref CollectionsMarshal.GetValueRefOrAddDefault(Scene.EventLookup, EntityIdOnly, out bool exists);
-#endif
+            
             world.EntityTable[EntityID].Flags |= flag;
             EventRecord.Initalize(exists, ref record!);
 

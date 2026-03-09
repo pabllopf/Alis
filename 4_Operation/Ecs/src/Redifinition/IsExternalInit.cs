@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
 // ReSharper disable once CheckNamespace
 namespace System.Runtime.CompilerServices
 {
@@ -36,5 +35,3 @@ namespace System.Runtime.CompilerServices
     /// </summary>
     public class IsExternalInit : Attribute;
 }
-
-#endif

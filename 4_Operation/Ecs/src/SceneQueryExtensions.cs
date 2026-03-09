@@ -36,7 +36,7 @@ namespace Alis.Core.Ecs
     /// <summary>
     ///     Extensions to use query the scene.
     /// </summary>
-    public static partial class SceneQueryExtensions
+    public static class SceneQueryExtensions
     {
         /// <summary>
         ///     Gets a query specified by the given rules

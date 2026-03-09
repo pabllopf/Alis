@@ -41,14 +41,14 @@ namespace Alis.Core.Ecs.Updating
     ///     The component storage class
     /// </summary>
     /// <seealso cref="ComponentStorageBase" />
-    public abstract partial class ComponentStorage<TComponent> : ComponentStorageBase
+    public abstract class ComponentStorage<TComponent>(int length)
+        : ComponentStorageBase(length == 0 ? [] : new TComponent[length])
     {
         /// <summary>
         ///     Gets the value of the component id
         /// </summary>
         internal override ComponentId ComponentId => Component<TComponent>.Id;
-
-
+        
         /// <summary>
         ///     Trims the index
         /// </summary>
@@ -57,8 +57,7 @@ namespace Alis.Core.Ecs.Updating
         {
             Resize((int) BitOperations.RoundUpToPowerOf2((uint) index));
         }
-
-
+        
         /// <summary>
         ///     Resizes the buffer using the specified size
         /// </summary>
@@ -183,16 +182,8 @@ namespace Alis.Core.Ecs.Updating
             Component<TComponent>.GeneralComponentStorage.Create(out int stackIndex) = item;
             return new ComponentHandle(stackIndex, Component<TComponent>.Id);
         }
-    }
-
-    /// <summary>
-    ///     The component storage class
-    /// </summary>
-    /// <seealso cref="ComponentStorageBase" />
-    public abstract partial class ComponentStorage<TComponent>(int length)
-        : ComponentStorageBase(length == 0 ? [] : new TComponent[length])
-    {
-        /// <summary>
+        
+         /// <summary>
         ///     The index
         /// </summary>
         public ref TComponent this[int index]
@@ -214,9 +205,7 @@ namespace Alis.Core.Ecs.Updating
         {
             Array.Resize(ref TypedBuffer, size);
         }
-
-
-#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
+        
         /// <summary>
         /// 
         /// </summary>
@@ -244,27 +233,6 @@ namespace Alis.Core.Ecs.Updating
         {
             return ref TypedBuffer[0];
         }
-#else
-        /// <summary>
-        ///     Converts the span length using the specified length
-        /// </summary>
-        /// <param name="length">The length</param>
-        /// <returns>A span of t component</returns>
-        public Span<TComponent> AsSpanLength(int length) => MemoryMarshal.CreateSpan(ref MemoryMarshal.GetArrayDataReference(TypedBuffer), length);
-
-        /// <summary>
-        ///     Converts the span
-        /// </summary>
-        /// <returns>A span of t component</returns>
-        public Span<TComponent> AsSpan() => MemoryMarshal.CreateSpan(ref MemoryMarshal.GetArrayDataReference(TypedBuffer), TypedBuffer.Length);
-
-        /// <summary>
-        ///     Gets the component storage data reference
-        /// </summary>
-        /// <returns>The ref component</returns>
-        public ref TComponent GetComponentStorageDataReference() => ref MemoryMarshal.GetArrayDataReference(TypedBuffer);
-#endif
-
 
         /// <summary>
         ///     Disposes this instance
@@ -273,4 +241,5 @@ namespace Alis.Core.Ecs.Updating
         {
         }
     }
+
 }

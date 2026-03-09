@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
+
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -46,8 +46,7 @@ namespace System.Numerics
             08, 12, 20, 28, 15, 17, 24, 07,
             19, 27, 23, 06, 26, 05, 04, 31
         ];
-
-#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
+        
 
         /// <summary>
         /// 
@@ -69,28 +68,7 @@ namespace System.Numerics
                 // uint|long -> IntPtr cast on 32-bit platforms does expensive overflow checks not needed here
                 (IntPtr) (int) ((value * 0x07C4ACDDu) >> 27));
         }
-#else
-       /// <summary>
-        /// rounds up to the next highest power of 2.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-      public static int Log2(uint value)
-        {
-            value |= value >> 01;
-            value |= value >> 02;
-            value |= value >> 04;
-            value |= value >> 08;
-            value |= value >> 16;
 
-            // uint.MaxValue >> 27 is always in range [0 - 31] so we use Unsafe.AddByteOffset to avoid bounds check
-            return Unsafe.AddByteOffset(
-                // Using deBruijn sequence, k=2, n=5 (2^5=32) : 0b_0000_0111_1100_0100_1010_1100_1101_1101u
-                ref MemoryMarshal.GetArrayDataReference(Log2DeBruijn),
-                // uint|long -> IntPtr cast on 32-bit platforms does expensive overflow checks not needed here
-                (IntPtr)(int)((value * 0x07C4ACDDu) >> 27));
-        }
-#endif
 
         /// <summary>
         /// rounds up to the next highest power of 2.
@@ -119,5 +97,3 @@ namespace System.Numerics
         }
     }
 }
-
-#endif

@@ -107,11 +107,8 @@ namespace Alis.Core.Ecs.Collections
                 return arr!;
             }
 
-#if NET6_0_OR_GREATER
-            return GC.AllocateUninitializedArray<T>(1 << (bucketIndex + 4));
-#else
+
             return new T[1 << (bucketIndex + 4)];
-#endif
         }
 
         /// <summary>
@@ -150,9 +147,7 @@ namespace Alis.Core.Ecs.Collections
             }
 
             int log2;
-#if NET6_0_OR_GREATER
-            log2 = BitOperations.Log2((uint) size - 1) + 1;
-#else
+
             log2 = 0;
             int n = size - 1;
             if ((n & 0xFFFF0000) != 0)
@@ -185,8 +180,7 @@ namespace Alis.Core.Ecs.Collections
             }
 
             log2 += 1; // since we rounded down
-#endif
-
+            
             int index = log2 - 4;
             return (index >= 0) && (index < BucketCount) ? index : -1;
         }
