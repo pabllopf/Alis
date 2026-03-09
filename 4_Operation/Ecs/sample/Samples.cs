@@ -130,7 +130,7 @@ namespace Alis.Core.Ecs.Sample
             }
 
             Position finalPos = gameObject.Get<Position>();
-            Logger.Info($"Position: X: {finalPos.X} Y: {finalPos.Y}");
+            Console.WriteLine($"Position: X: {finalPos.X} Y: {finalPos.Y}");
         }
 
 
@@ -160,30 +160,30 @@ namespace Alis.Core.Ecs.Sample
             using Scene scene = new Scene();
             GameObject ent = scene.Create(69, 3.14, 2.71f);
             //true
-            Logger.Info(ent.IsAlive.ToString());
+            Console.WriteLine(ent.IsAlive.ToString());
             //true
-            Logger.Info(ent.Has<int>().ToString());
+            Console.WriteLine(ent.Has<int>().ToString());
             //false
-            Logger.Info(ent.Has<bool>().ToString());
+            Console.WriteLine(ent.Has<bool>().ToString());
             //You can also add and remove components
             ent.Add("I like Alis");
 
             if (ent.TryGet(out Ref<string> strRef))
             {
-                Logger.Info(strRef);
+                Console.WriteLine(strRef);
                 //reassign the string value
                 strRef.Value = "Do you like Alis?";
             }
 
             //If we didn't add a string earlier, this would throw instead
-            Logger.Info(ent.Get<string>());
+            Console.WriteLine(ent.Get<string>());
 
             //You can also deconstruct components from the gameObject to reassign many at once
             ent.Deconstruct(out Ref<double> d, out Ref<int> i, out Ref<float> f, out Ref<string> str);
             d.Value = 4;
             str.Value = "Hello, Scene!";
 
-            Logger.Info(str);
+            Console.WriteLine(str);
         }
 
         /// <summary>

@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Logging;
 
@@ -46,7 +47,7 @@ namespace Alis.Core.Ecs.Sample.Components
         public void OnInit(IGameObject self)
         {
             _gameObject = self;
-            Logger.Info("I am initialized!");
+            Console.WriteLine("I am initialized!");
         }
 
         /// <summary>
@@ -55,7 +56,7 @@ namespace Alis.Core.Ecs.Sample.Components
         /// <param name="self">The self</param>
         public void OnUpdate(IGameObject self)
         {
-            Logger.Info(_gameObject.Has<Vel2>() ? "I have velocity!" : "No velocity here!");
+            Console.WriteLine(_gameObject.Has<Vel2>() ? "I have velocity!" : "No velocity here!");
         }
     }
 }

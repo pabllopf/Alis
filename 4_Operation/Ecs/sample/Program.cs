@@ -43,19 +43,19 @@ namespace Alis.Core.Ecs.Sample
         /// <param name="args">The args</param>
         private static void Main(string[] args)
         {
-            Logger.Info("Seleccione un ejemplo para ejecutar:");
-            Logger.Info("1. Update_Component");
-            Logger.Info("2. Update_Systems");
-            Logger.Info("3. Uniforms_And_Entities");
-            Logger.Info("4. Uniforms_And_Entities_initeable");
-            Logger.Info("5. Simple_Game");
-            Logger.Info("6. Queries");
+            Console.WriteLine("Seleccione un ejemplo para ejecutar:");
+            Console.WriteLine("1. Update_Component");
+            Console.WriteLine("2. Update_Systems");
+            Console.WriteLine("3. Uniforms_And_Entities");
+            Console.WriteLine("4. Uniforms_And_Entities_initeable");
+            Console.WriteLine("5. Simple_Game");
+            Console.WriteLine("6. Queries");
             Console.Write("Ingrese el número de ejemplo (1-6): ");
             string input = Console.ReadLine();
             int opcion;
             if (!int.TryParse(input, out opcion))
             {
-                Logger.Info("Entrada inválida. Debe ser un número entre 1 y 6.");
+                Console.WriteLine("Entrada inválida. Debe ser un número entre 1 y 6.");
                 return;
             }
 
@@ -80,7 +80,7 @@ namespace Alis.Core.Ecs.Sample
                     Samples.Queries();
                     break;
                 default:
-                    Logger.Info("Opción fuera de rango. Debe ser un número entre 1 y 6.");
+                    Console.WriteLine("Opción fuera de rango. Debe ser un número entre 1 y 6.");
                     break;
             }
         }

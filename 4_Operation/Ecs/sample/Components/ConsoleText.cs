@@ -45,7 +45,7 @@ namespace Alis.Core.Ecs.Sample.Components
         public void Update(IGameObject self, ref string str)
         {
             Console.ForegroundColor = Color;
-            Logger.Info(str);
+            Console.WriteLine(str);
         }
     }
 }

@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Logging;
 
@@ -39,7 +40,7 @@ namespace Alis.Core.Ecs.Sample.Components
         /// </summary>
         public void OnUpdate(IGameObject gameObject)
         {
-            Logger.Info(gameObject.Has<Vel>() ? "I have velocity!" : "No velocity here!");
+            Console.WriteLine(gameObject.Has<Vel>() ? "I have velocity!" : "No velocity here!");
         }
     }
 }
