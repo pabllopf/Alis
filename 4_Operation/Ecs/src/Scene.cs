@@ -623,31 +623,7 @@ namespace Alis.Core.Ecs
             DeferredCreationArchetypes.Clear();
             Interlocked.Decrement(ref _allowStructuralChanges);
         }
-
-#if (!NETSTANDARD && !NETFRAMEWORK && !NETCOREAPP) || (NET6_0_OR_GREATER)
-        /// <summary>
-        ///     Tries the get event data using the specified gameObject location
-        /// </summary>
-        /// <param name="gameObjectLocation">The gameObject location</param>
-        /// <param name="gameObject">The gameObject</param>
-        /// <param name="eventType">The event type</param>
-        /// <param name="exists">The exists</param>
-        /// <returns>The ref event record</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public ref EventRecord TryGetEventData(GameObjectLocation gameObjectLocation, GameObjectIdOnly gameObject, GameObjectFlags eventType, out bool exists)
-        {
-            if (gameObjectLocation.HasEvent(eventType))
-            {
-                exists = true;
-                return ref CollectionsMarshal.GetValueRefOrNullRef(EventLookup, gameObject);
-            }
-
-
-            exists = false;
-            return ref Unsafe.NullRef<EventRecord>();
-        }
-#endif
-
+        
         /// <summary>
         ///     Creates an <see cref="GameObject" />
         /// </summary>

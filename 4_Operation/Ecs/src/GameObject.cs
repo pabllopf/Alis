@@ -1942,14 +1942,9 @@ namespace Alis.Core.Ecs
                 return;
             }
 
-#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
             bool exists = entityLocation.HasEvent(flag);
             EventRecord events = exists ? Scene.EventLookup[EntityIdOnly] : default;
-#else
-            ref EventRecord events = ref Scene.TryGetEventData(entityLocation, EntityIdOnly, flag, out bool exists);
-#endif
-
-
+            
             if (exists)
             {
                 bool removeFlags = false;
