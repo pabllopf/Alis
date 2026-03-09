@@ -95,7 +95,6 @@ namespace Alis.Core.Ecs.Kernel
         {
             return @ref.Value;
         }
-
         /// <summary>
         ///     Calls the wrapped <typeparamref name="T" />'s ToString() function, or returns null.
         /// </summary>
