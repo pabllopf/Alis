@@ -52,28 +52,4 @@ namespace Alis.Core.Ecs.Systems
             @ref = Item1;
         }
     }
-
-    /// <summary>
-    ///     A tuple of a chunk of entities and their components.
-    /// </summary>
-    public ref struct ChunkTuple<T>
-    {
-        /// <summary>
-        ///     An enumerator that can be used to enumerate individual <see cref="GameObject" /> instances.
-        /// </summary>
-        public GameObjectEnumerator.EntityEnumerable Entities;
-
-        /// <summary>
-        ///     The span
-        /// </summary>
-        public Span<T> Span;
-
-        /// <summary>
-        ///     Allows tuple deconstruction syntax to be used.
-        /// </summary>
-        public void Deconstruct(out Span<T> comp1)
-        {
-            comp1 = Span;
-        }
-    }
 }
