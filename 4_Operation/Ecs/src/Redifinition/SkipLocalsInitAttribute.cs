@@ -45,6 +45,7 @@ namespace System.Runtime.CompilerServices
     ///     assemblies. Use at the module level instead to apply to multiple type
     ///     declarations.
     /// </remarks>
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     [AttributeUsage(AttributeTargets.Module
                     | AttributeTargets.Class
                     | AttributeTargets.Struct

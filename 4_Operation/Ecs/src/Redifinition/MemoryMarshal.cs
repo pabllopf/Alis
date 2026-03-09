@@ -34,7 +34,8 @@ namespace System.Runtime.InteropServices
     /// <summary>
     /// Provides methods for accessing and manipulating memory in a low-level manner.
     /// </summary>
-    public static class MemoryMarshal
+[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]    
+public static class MemoryMarshal
     {
         /// <summary>
         /// Gets a reference to the first element of a <see cref="Span{T}"/>.

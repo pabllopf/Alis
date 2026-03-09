@@ -36,6 +36,7 @@ namespace System.Runtime.CompilerServices
     /// <summary>
     /// 
     /// </summary>
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public static class RuntimeHelpers
     {
         /// <summary>

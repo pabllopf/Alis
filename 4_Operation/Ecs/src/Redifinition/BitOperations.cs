@@ -37,6 +37,7 @@ namespace System.Numerics
     /// <summary>
     /// 
     /// </summary>
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public static class BitOperations
     {
         private static readonly byte[] Log2DeBruijn =
