@@ -37,12 +37,12 @@ namespace Alis.Core.Ecs.Kernel
     /// <summary>
     ///     A wrapper ref struct over a reference to a <typeparamref name="T" />
     /// </summary>
-    /// <typeparam name="T">The type this <see cref="Ref{T}" /> wraps over</typeparam>
+    /// <typeparam name="T">The type this  /> wraps over</typeparam>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct Ref<T>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Ref"/> class
+        /// Initializes a new instance of the  class
         /// </summary>
         /// <param name="compArr">The comp arr</param>
         /// <param name="index">The index</param>
@@ -53,7 +53,7 @@ namespace Alis.Core.Ecs.Kernel
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Ref"/> class
+        /// Initializes a new instance of the  class
         /// </summary>
         /// <param name="compSpan">The comp span</param>
         /// <param name="index">The index</param>
@@ -64,7 +64,7 @@ namespace Alis.Core.Ecs.Kernel
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Ref"/> class
+        /// Initializes a new instance of the  class
         /// </summary>
         /// <param name="compSpan">The comp span</param>
         /// <param name="index">The index</param>
@@ -89,7 +89,7 @@ namespace Alis.Core.Ecs.Kernel
         public readonly ref T Value => ref Unsafe.Add(ref _data[0], _offset);
 
         /// <summary>
-        ///     Extracts the wrapped <typeparamref name="T" /> from this <see cref="Ref{T}" />
+        ///     Extracts the wrapped <typeparamref name="T" /> from this  />
         /// </summary>
         public static implicit operator T(Ref<T> @ref)
         {
