@@ -31,7 +31,12 @@ using Alis.Core.Ecs.Collections;
 
 namespace Alis.Core.Ecs.Updating.Runners
 {
-    /// <inheritdoc cref="IComponentStorageBaseFactory" />
+    
+    /// <summary>
+    /// The none update runner factory class
+    /// </summary>
+    /// <seealso cref="IComponentStorageBaseFactory"/>
+    /// <seealso cref="IComponentStorageBaseFactory{T}"/>
     public class NoneUpdateRunnerFactory<T> : IComponentStorageBaseFactory, IComponentStorageBaseFactory<T>
     {
         /// <summary>

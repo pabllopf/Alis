@@ -155,6 +155,10 @@ namespace Alis.Core.Ecs.Updating.Runners
         }
     }
     
+    /// <summary>
+    /// The update class
+    /// </summary>
+    /// <seealso cref="ComponentStorage{TComp}"/>
     public class Update<TComp, TArg1, TArg2, TArg3>(int capacity) : ComponentStorage<TComp>(capacity)
         where TComp : IOnUpdate<TArg1, TArg2, TArg3>
     {
@@ -223,6 +227,10 @@ namespace Alis.Core.Ecs.Updating.Runners
         }
     }
     
+        /// <summary>
+        /// The update class
+        /// </summary>
+        /// <seealso cref="ComponentStorage{TComp}"/>
         public class Update<TComp, TArg1, TArg2, TArg3, TArg4>(int capacity) : ComponentStorage<TComp>(capacity)
         where TComp : IOnUpdate<TArg1, TArg2, TArg3, TArg4>
     {
@@ -294,6 +302,10 @@ namespace Alis.Core.Ecs.Updating.Runners
             }
         }
     }
+        /// <summary>
+        /// The update class
+        /// </summary>
+        /// <seealso cref="ComponentStorage{TComp}"/>
         public class Update<TComp, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>(int capacity)
         : ComponentStorage<TComp>(capacity)
         where TComp : IOnUpdate<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>
@@ -375,6 +387,10 @@ namespace Alis.Core.Ecs.Updating.Runners
         }
     }
         
+         /// <summary>
+         /// The update class
+         /// </summary>
+         /// <seealso cref="ComponentStorage{TComp}"/>
          public class Update<TComp, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7>(int capacity)
         : ComponentStorage<TComp>(capacity)
         where TComp : IOnUpdate<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7>
@@ -460,6 +476,10 @@ namespace Alis.Core.Ecs.Updating.Runners
         }
     }
          
+         /// <summary>
+         /// The update class
+         /// </summary>
+         /// <seealso cref="ComponentStorage{TComp}"/>
          public class Update<TComp, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8>(int capacity)
         : ComponentStorage<TComp>(capacity)
         where TComp : IOnUpdate<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8>
