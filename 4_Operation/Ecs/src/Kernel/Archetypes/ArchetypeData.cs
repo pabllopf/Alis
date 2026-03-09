@@ -38,7 +38,5 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
     /// <param name="ComponentTypes"></param>
     /// <param name="TagTypes"></param>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public record struct ArchetypeData(
-        GameObjectType Id,
-        FastImmutableArray<ComponentId> ComponentTypes);
+    public record struct ArchetypeData(GameObjectType Id, FastImmutableArray<ComponentId> ComponentTypes);
 }
