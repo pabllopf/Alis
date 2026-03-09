@@ -41,6 +41,12 @@ namespace Alis.Core.Ecs
     /// </summary>
     public static class GameObjectExtensions
     {
+        /// <summary>
+        /// Deconstructs the e
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="e">The </param>
+        /// <param name="comp">The comp</param>
         public static void Deconstruct<T>(this GameObject e, out Ref<T> comp)
         {
             GameObjectLocation eloc = e.AssertIsAlive(out _);
@@ -51,6 +57,14 @@ namespace Alis.Core.Ecs
             comp = GetComp<T>(archetypeTable, comps, eloc.Index);
         }
         
+        /// <summary>
+        /// Deconstructs the e
+        /// </summary>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <param name="e">The </param>
+        /// <param name="comp1">The comp</param>
+        /// <param name="comp2">The comp</param>
         public static void Deconstruct<T1, T2>(this GameObject e, out Ref<T1> comp1, out Ref<T2> comp2)
         {
             GameObjectLocation eloc = e.AssertIsAlive(out _);
@@ -62,6 +76,16 @@ namespace Alis.Core.Ecs
             comp2 = GetComp<T2>(archetypeTable, comps, eloc.Index);
         }
         
+        /// <summary>
+        /// Deconstructs the e
+        /// </summary>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <param name="e">The </param>
+        /// <param name="comp1">The comp</param>
+        /// <param name="comp2">The comp</param>
+        /// <param name="comp3">The comp</param>
         public static void Deconstruct<T1, T2, T3>(this GameObject e, out Ref<T1> comp1, out Ref<T2> comp2, out Ref<T3> comp3)
         {
             GameObjectLocation eloc = e.AssertIsAlive(out _);
@@ -74,6 +98,18 @@ namespace Alis.Core.Ecs
             comp3 = GetComp<T3>(archetypeTable, comps, eloc.Index);
         }
         
+        /// <summary>
+        /// Deconstructs the e
+        /// </summary>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <param name="e">The </param>
+        /// <param name="comp1">The comp</param>
+        /// <param name="comp2">The comp</param>
+        /// <param name="comp3">The comp</param>
+        /// <param name="comp4">The comp</param>
         public static void Deconstruct<T1, T2, T3, T4>(this GameObject e, out Ref<T1> comp1, out Ref<T2> comp2,
             out Ref<T3> comp3, out Ref<T4> comp4)
         {
@@ -88,6 +124,20 @@ namespace Alis.Core.Ecs
             comp4 = GetComp<T4>(archetypeTable, comps, eloc.Index);
         }
         
+        /// <summary>
+        /// Deconstructs the e
+        /// </summary>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <typeparam name="T5">The </typeparam>
+        /// <param name="e">The </param>
+        /// <param name="comp1">The comp</param>
+        /// <param name="comp2">The comp</param>
+        /// <param name="comp3">The comp</param>
+        /// <param name="comp4">The comp</param>
+        /// <param name="comp5">The comp</param>
         public static void Deconstruct<T1, T2, T3, T4, T5>(this GameObject e, out Ref<T1> comp1, out Ref<T2> comp2,
             out Ref<T3> comp3, out Ref<T4> comp4, out Ref<T5> comp5)
         {
@@ -103,6 +153,22 @@ namespace Alis.Core.Ecs
             comp5 = GetComp<T5>(archetypeTable, comps, eloc.Index);
         }
         
+        /// <summary>
+        /// Deconstructs the e
+        /// </summary>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <typeparam name="T5">The </typeparam>
+        /// <typeparam name="T6">The </typeparam>
+        /// <param name="e">The </param>
+        /// <param name="comp1">The comp</param>
+        /// <param name="comp2">The comp</param>
+        /// <param name="comp3">The comp</param>
+        /// <param name="comp4">The comp</param>
+        /// <param name="comp5">The comp</param>
+        /// <param name="comp6">The comp</param>
         public static void Deconstruct<T1, T2, T3, T4, T5, T6>(this GameObject e, out Ref<T1> comp1, out Ref<T2> comp2,
             out Ref<T3> comp3, out Ref<T4> comp4, out Ref<T5> comp5, out Ref<T6> comp6)
         {
@@ -119,6 +185,24 @@ namespace Alis.Core.Ecs
             comp6 = GetComp<T6>(archetypeTable, comps, eloc.Index);
         }
         
+        /// <summary>
+        /// Deconstructs the e
+        /// </summary>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <typeparam name="T5">The </typeparam>
+        /// <typeparam name="T6">The </typeparam>
+        /// <typeparam name="T7">The </typeparam>
+        /// <param name="e">The </param>
+        /// <param name="comp1">The comp</param>
+        /// <param name="comp2">The comp</param>
+        /// <param name="comp3">The comp</param>
+        /// <param name="comp4">The comp</param>
+        /// <param name="comp5">The comp</param>
+        /// <param name="comp6">The comp</param>
+        /// <param name="comp7">The comp</param>
         public static void Deconstruct<T1, T2, T3, T4, T5, T6, T7>(this GameObject e, out Ref<T1> comp1, out Ref<T2> comp2,
             out Ref<T3> comp3, out Ref<T4> comp4, out Ref<T5> comp5, out Ref<T6> comp6, out Ref<T7> comp7)
         {
@@ -136,6 +220,26 @@ namespace Alis.Core.Ecs
             comp7 = GetComp<T7>(archetypeTable, comps, eloc.Index);
         }
         
+        /// <summary>
+        /// Deconstructs the e
+        /// </summary>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <typeparam name="T5">The </typeparam>
+        /// <typeparam name="T6">The </typeparam>
+        /// <typeparam name="T7">The </typeparam>
+        /// <typeparam name="T8">The </typeparam>
+        /// <param name="e">The </param>
+        /// <param name="comp1">The comp</param>
+        /// <param name="comp2">The comp</param>
+        /// <param name="comp3">The comp</param>
+        /// <param name="comp4">The comp</param>
+        /// <param name="comp5">The comp</param>
+        /// <param name="comp6">The comp</param>
+        /// <param name="comp7">The comp</param>
+        /// <param name="comp8">The comp</param>
         public static void Deconstruct<T1, T2, T3, T4, T5, T6, T7, T8>(this GameObject e, out Ref<T1> comp1, out Ref<T2> comp2,
             out Ref<T3> comp3, out Ref<T4> comp4, out Ref<T5> comp5, out Ref<T6> comp6, out Ref<T7> comp7,
             out Ref<T8> comp8)

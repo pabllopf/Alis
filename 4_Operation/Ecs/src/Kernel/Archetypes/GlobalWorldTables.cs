@@ -115,6 +115,11 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// <returns>The int</returns>
         public static int ComponentIndex(GameObjectType archetype, ComponentId component) => Unsafe.Add(ref ComponentTagLocationTable[archetype.RawIndex][0], component.RawIndex) & IndexBits;
 
+        /// <summary>
+        /// Hases the archetype
+        /// </summary>
+        /// <param name="archetype">The archetype</param>
+        /// <returns>The bool</returns>
         public static bool Has(GameObjectType archetype) => (ComponentTagLocationTable[archetype.RawIndex][0]) != 0;
     }
 }

@@ -62,6 +62,15 @@ namespace Alis.Core.Ecs.Collections
         /// </summary>
         private int index;
 
+       /// <summary>
+       /// Finds the adjacent archetype id using the specified id
+       /// </summary>
+       /// <typeparam name="T">The </typeparam>
+       /// <param name="id">The id</param>
+       /// <param name="archetype">The archetype</param>
+       /// <param name="scene">The scene</param>
+       /// <param name="edgeType">The edge type</param>
+       /// <returns>The archetype id</returns>
        public ArchetypeID FindAdjacentArchetypeId<T>(T id, GameObjectType archetype, Scene scene, ArchetypeEdgeType edgeType)
            where T : ITypeId
        {
