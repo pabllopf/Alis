@@ -143,7 +143,7 @@ namespace Alis.Core.Ecs
         /// <typeparam name="T">The </typeparam>
         /// <param name="exists">The exists</param>
         /// <returns>A ref of t</returns>
-        private Ref<T> TryGetCore<T>(out bool exists)
+        public Ref<T> TryGetCore<T>(out bool exists)
         {
             if (!InternalIsAlive(out Scene _, out GameObjectLocation entityLocation))
             {
@@ -171,7 +171,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Throws the gameObject is dead
         /// </summary>
-        private static void Throw_EntityIsDead()
+        public static void Throw_EntityIsDead()
         {
             throw new InvalidOperationException(EntityIsDeadMessage);
         }
@@ -319,7 +319,7 @@ namespace Alis.Core.Ecs
         /// <typeparam name="T">The </typeparam>
         /// <param name="e">The event</param>
         /// <param name="gameObject">The gameObject</param>
-        private static void InvokeComponentWorldEvents<T>(ref Event<ComponentId> e, GameObject gameObject)
+        public static void InvokeComponentWorldEvents<T>(ref Event<ComponentId> e, GameObject gameObject)
         {
             e.InvokeInternal(gameObject, Component<T>.Id);
         }
@@ -332,7 +332,7 @@ namespace Alis.Core.Ecs
         /// <param name="hasGenericEvent">The has generic event</param>
         /// <param name="events">The events</param>
         /// <param name="component">The component</param>
-        private static void InvokePerEntityEvents<T>(GameObject gameObject, bool hasGenericEvent, ref ComponentEvent events,
+        public static void InvokePerEntityEvents<T>(GameObject gameObject, bool hasGenericEvent, ref ComponentEvent events,
             ref T component)
         {
             events.NormalEvent.Invoke(gameObject, Component<T>.Id);
@@ -492,7 +492,7 @@ namespace Alis.Core.Ecs
         /// <typeparam name="T2">The </typeparam>
         /// <param name="e">The event</param>
         /// <param name="gameObject">The gameObject</param>
-        private static void InvokeComponentWorldEvents<T1, T2>(ref Event<ComponentId> e, GameObject gameObject)
+        public static void InvokeComponentWorldEvents<T1, T2>(ref Event<ComponentId> e, GameObject gameObject)
         {
             e.InvokeInternal(gameObject, Component<T1>.Id);
             e.InvokeInternal(gameObject, Component<T2>.Id);
@@ -508,7 +508,7 @@ namespace Alis.Core.Ecs
         /// <param name="events">The events</param>
         /// <param name="component1">The component</param>
         /// <param name="component2">The component</param>
-        private static void InvokePerEntityEvents<T1, T2>(GameObject gameObject, bool hasGenericEvent, ref ComponentEvent events,
+        public static void InvokePerEntityEvents<T1, T2>(GameObject gameObject, bool hasGenericEvent, ref ComponentEvent events,
             ref T1 component1, ref T2 component2)
         {
             events.NormalEvent.Invoke(gameObject, Component<T1>.Id);
@@ -622,7 +622,7 @@ namespace Alis.Core.Ecs
         /// <typeparam name="T3">The </typeparam>
         /// <param name="e">The event</param>
         /// <param name="gameObject">The gameObject</param>
-        private static void InvokeComponentWorldEvents<T1, T2, T3>(ref Event<ComponentId> e, GameObject gameObject)
+        public static void InvokeComponentWorldEvents<T1, T2, T3>(ref Event<ComponentId> e, GameObject gameObject)
         {
             e.InvokeInternal(gameObject, Component<T1>.Id);
             e.InvokeInternal(gameObject, Component<T2>.Id);
@@ -641,7 +641,7 @@ namespace Alis.Core.Ecs
         /// <param name="component1">The component</param>
         /// <param name="component2">The component</param>
         /// <param name="component3">The component</param>
-        private static void InvokePerEntityEvents<T1, T2, T3>(GameObject gameObject, bool hasGenericEvent,
+        public static void InvokePerEntityEvents<T1, T2, T3>(GameObject gameObject, bool hasGenericEvent,
             ref ComponentEvent events, ref T1 component1, ref T2 component2, ref T3 component3)
         {
             events.NormalEvent.Invoke(gameObject, Component<T1>.Id);
@@ -765,7 +765,7 @@ namespace Alis.Core.Ecs
         /// <typeparam name="T4">The </typeparam>
         /// <param name="e">The event</param>
         /// <param name="gameObject">The gameObject</param>
-        private static void InvokeComponentWorldEvents<T1, T2, T3, T4>(ref Event<ComponentId> e, GameObject gameObject)
+        public static void InvokeComponentWorldEvents<T1, T2, T3, T4>(ref Event<ComponentId> e, GameObject gameObject)
         {
             e.InvokeInternal(gameObject, Component<T1>.Id);
             e.InvokeInternal(gameObject, Component<T2>.Id);
@@ -787,7 +787,7 @@ namespace Alis.Core.Ecs
         /// <param name="component2">The component</param>
         /// <param name="component3">The component</param>
         /// <param name="component4">The component</param>
-        private static void InvokePerEntityEvents<T1, T2, T3, T4>(GameObject gameObject, bool hasGenericEvent,
+        public static void InvokePerEntityEvents<T1, T2, T3, T4>(GameObject gameObject, bool hasGenericEvent,
             ref ComponentEvent events, ref T1 component1, ref T2 component2, ref T3 component3, ref T4 component4)
         {
             events.NormalEvent.Invoke(gameObject, Component<T1>.Id);
@@ -919,7 +919,7 @@ namespace Alis.Core.Ecs
         /// <typeparam name="T5">The </typeparam>
         /// <param name="e">The event</param>
         /// <param name="gameObject">The gameObject</param>
-        private static void InvokeComponentWorldEvents<T1, T2, T3, T4, T5>(ref Event<ComponentId> e, GameObject gameObject)
+        public static void InvokeComponentWorldEvents<T1, T2, T3, T4, T5>(ref Event<ComponentId> e, GameObject gameObject)
         {
             e.InvokeInternal(gameObject, Component<T1>.Id);
             e.InvokeInternal(gameObject, Component<T2>.Id);
@@ -944,7 +944,7 @@ namespace Alis.Core.Ecs
         /// <param name="component3">The component</param>
         /// <param name="component4">The component</param>
         /// <param name="component5">The component</param>
-        private static void InvokePerEntityEvents<T1, T2, T3, T4, T5>(GameObject gameObject, bool hasGenericEvent,
+        public static void InvokePerEntityEvents<T1, T2, T3, T4, T5>(GameObject gameObject, bool hasGenericEvent,
             ref ComponentEvent events, ref T1 component1, ref T2 component2, ref T3 component3, ref T4 component4,
             ref T5 component5)
         {
@@ -1087,7 +1087,7 @@ EventRecord events = world.EventLookup[EntityIdOnly];
         /// <typeparam name="T6">The </typeparam>
         /// <param name="e">The event</param>
         /// <param name="gameObject">The gameObject</param>
-        private static void InvokeComponentWorldEvents<T1, T2, T3, T4, T5, T6>(ref Event<ComponentId> e, GameObject gameObject)
+        public static void InvokeComponentWorldEvents<T1, T2, T3, T4, T5, T6>(ref Event<ComponentId> e, GameObject gameObject)
         {
             e.InvokeInternal(gameObject, Component<T1>.Id);
             e.InvokeInternal(gameObject, Component<T2>.Id);
@@ -1115,7 +1115,7 @@ EventRecord events = world.EventLookup[EntityIdOnly];
         /// <param name="component4">The component</param>
         /// <param name="component5">The component</param>
         /// <param name="component6">The component</param>
-        private static void InvokePerEntityEvents<T1, T2, T3, T4, T5, T6>(GameObject gameObject, bool hasGenericEvent,
+        public static void InvokePerEntityEvents<T1, T2, T3, T4, T5, T6>(GameObject gameObject, bool hasGenericEvent,
             ref ComponentEvent events, ref T1 component1, ref T2 component2, ref T3 component3, ref T4 component4,
             ref T5 component5, ref T6 component6)
         {
@@ -1266,7 +1266,7 @@ EventRecord events = world.EventLookup[EntityIdOnly];
         /// <typeparam name="T7">The </typeparam>
         /// <param name="e">The event</param>
         /// <param name="gameObject">The gameObject</param>
-        private static void InvokeComponentWorldEvents<T1, T2, T3, T4, T5, T6, T7>(ref Event<ComponentId> e,
+        public static void InvokeComponentWorldEvents<T1, T2, T3, T4, T5, T6, T7>(ref Event<ComponentId> e,
             GameObject gameObject)
         {
             e.InvokeInternal(gameObject, Component<T1>.Id);
@@ -1298,7 +1298,7 @@ EventRecord events = world.EventLookup[EntityIdOnly];
         /// <param name="component5">The component</param>
         /// <param name="component6">The component</param>
         /// <param name="component7">The component</param>
-        private static void InvokePerEntityEvents<T1, T2, T3, T4, T5, T6, T7>(GameObject gameObject, bool hasGenericEvent,
+        public static void InvokePerEntityEvents<T1, T2, T3, T4, T5, T6, T7>(GameObject gameObject, bool hasGenericEvent,
             ref ComponentEvent events, ref T1 component1, ref T2 component2, ref T3 component3, ref T4 component4,
             ref T5 component5, ref T6 component6, ref T7 component7)
         {
@@ -1459,7 +1459,7 @@ EventRecord events = world.EventLookup[EntityIdOnly];
         /// <typeparam name="T8">The </typeparam>
         /// <param name="e">The event</param>
         /// <param name="gameObject">The gameObject</param>
-        private static void InvokeComponentWorldEvents<T1, T2, T3, T4, T5, T6, T7, T8>(ref Event<ComponentId> e,
+        public static void InvokeComponentWorldEvents<T1, T2, T3, T4, T5, T6, T7, T8>(ref Event<ComponentId> e,
             GameObject gameObject)
         {
             e.InvokeInternal(gameObject, Component<T1>.Id);
@@ -1494,7 +1494,7 @@ EventRecord events = world.EventLookup[EntityIdOnly];
         /// <param name="component6">The component</param>
         /// <param name="component7">The component</param>
         /// <param name="component8">The component</param>
-        private static void InvokePerEntityEvents<T1, T2, T3, T4, T5, T6, T7, T8>(GameObject gameObject, bool hasGenericEvent,
+        public static void InvokePerEntityEvents<T1, T2, T3, T4, T5, T6, T7, T8>(GameObject gameObject, bool hasGenericEvent,
             ref ComponentEvent events, ref T1 component1, ref T2 component2, ref T3 component3, ref T4 component4,
             ref T5 component5, ref T6 component6, ref T7 component7, ref T8 component8)
         {
@@ -1900,7 +1900,7 @@ EventRecord events = world.EventLookup[EntityIdOnly];
         /// </summary>
         /// <param name="value">The value</param>
         /// <param name="flag">The flag</param>
-        private void UnsubscribeEvent(object value, GameObjectFlags flag)
+        public void UnsubscribeEvent(object value, GameObjectFlags flag)
         {
             if (value is null || !InternalIsAlive(out Scene world, out GameObjectLocation entityLocation))
             {
@@ -1943,7 +1943,7 @@ EventRecord events = world.EventLookup[EntityIdOnly];
         /// <param name="d">The delegate</param>
         /// <param name="flag">The flag</param>
         /// <param name="isGenericEvent">The is generic event</param>
-        private void InitalizeEventRecord(object d, GameObjectFlags flag, bool isGenericEvent = false)
+        public void InitalizeEventRecord(object d, GameObjectFlags flag, bool isGenericEvent = false)
         {
             if (d is null || !InternalIsAlive(out Scene world, out GameObjectLocation entityLocation))
             {
@@ -2080,7 +2080,6 @@ EventRecord events = world.EventLookup[EntityIdOnly];
         ///     Gets an <see cref="GameObjectType" /> without needing an <see cref="GameObject" /> of the specific type.
         /// </summary>
         /// <param name="components">The components the <see cref="GameObjectType" /> should have.</param>
-        /// <param name="tags">The tags the <see cref="GameObjectType" /> should have.</param>
         public static GameObjectType EntityTypeOf(ReadOnlySpan<ComponentId> components) => Archetype.GetArchetypeId(components);
     }
 }

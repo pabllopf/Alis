@@ -677,11 +677,11 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
             }
         }
 
+
         /// <summary>
-        ///     Modifies the component location table using the specified archetype types
+        /// Modifies the component location table using the specified archetype types
         /// </summary>
         /// <param name="archetypeTypes">The archetype types</param>
-        /// <param name="archetypeTags">The archetype tags</param>
         /// <param name="id">The id</param>
         private static void ModifyComponentLocationTable(FastImmutableArray<ComponentId> archetypeTypes, int id)
         {
@@ -717,7 +717,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         ///     Gets the hash using the specified types
         /// </summary>
         /// <param name="types">The types</param>
-        /// <param name="andMoreTypes">The and more types</param>
+
         /// <returns>The hash</returns>
         private static long GetHash(ReadOnlySpan<ComponentId> types)
         {
@@ -967,11 +967,11 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
             }
         }
 
+
         /// <summary>
-        ///     Modifies the component location table using the specified archetype types
+        /// Modifies the component location table using the specified archetype types
         /// </summary>
         /// <param name="archetypeTypes">The archetype types</param>
-        /// <param name="archetypeTags">The archetype tags</param>
         /// <param name="id">The id</param>
         private static void ModifyComponentLocationTable(FastImmutableArray<ComponentId> archetypeTypes, int id)
         {
@@ -1007,7 +1007,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         ///     Gets the hash using the specified types
         /// </summary>
         /// <param name="types">The types</param>
-        /// <param name="andMoreTypes">The and more types</param>
         /// <returns>The hash</returns>
         private static long GetHash(ReadOnlySpan<ComponentId> types)
         {

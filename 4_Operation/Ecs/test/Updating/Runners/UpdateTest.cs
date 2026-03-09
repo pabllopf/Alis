@@ -391,8 +391,15 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
     /// </summary>
     internal struct UpdateComponent : IOnUpdate
     {
+        /// <summary>
+        /// The call count
+        /// </summary>
         public int CallCount;
 
+        /// <summary>
+        /// Ons the update using the specified self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void OnUpdate(IGameObject self)
         {
             CallCount++;
@@ -404,8 +411,17 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
     /// </summary>
     internal struct Update2Component : IOnUpdate<Position, Velocity>
     {
+        /// <summary>
+        /// The call count
+        /// </summary>
         public int CallCount;
 
+        /// <summary>
+        /// Updates the self
+        /// </summary>
+        /// <param name="self">The self</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="vel">The vel</param>
         public void Update(IGameObject self, ref Position pos, ref Velocity vel)
         {
             CallCount++;
@@ -419,8 +435,18 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
     /// </summary>
     internal struct Update3Component : IOnUpdate<Position, Velocity, Health>
     {
+        /// <summary>
+        /// The call count
+        /// </summary>
         public int CallCount;
 
+        /// <summary>
+        /// Updates the self
+        /// </summary>
+        /// <param name="self">The self</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="vel">The vel</param>
+        /// <param name="health">The health</param>
         public void Update(IGameObject self, ref Position pos, ref Velocity vel, ref Health health)
         {
             CallCount++;
@@ -435,8 +461,19 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
     /// </summary>
     internal struct Update4Component : IOnUpdate<Position, Velocity, Health, Armor>
     {
+        /// <summary>
+        /// The call count
+        /// </summary>
         public int CallCount;
 
+        /// <summary>
+        /// Updates the self
+        /// </summary>
+        /// <param name="self">The self</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="vel">The vel</param>
+        /// <param name="health">The health</param>
+        /// <param name="armor">The armor</param>
         public void Update(IGameObject self, ref Position pos, ref Velocity vel, ref Health health, ref Armor armor)
         {
             CallCount++;
@@ -450,8 +487,21 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
     /// </summary>
     internal struct Update6Component : IOnUpdate<Position, Velocity, Health, Armor, Damage, Transform>
     {
+        /// <summary>
+        /// The call count
+        /// </summary>
         public int CallCount;
 
+        /// <summary>
+        /// Updates the self
+        /// </summary>
+        /// <param name="self">The self</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="vel">The vel</param>
+        /// <param name="health">The health</param>
+        /// <param name="armor">The armor</param>
+        /// <param name="damage">The damage</param>
+        /// <param name="transform">The transform</param>
         public void Update(IGameObject self, ref Position pos, ref Velocity vel, ref Health health, 
             ref Armor armor, ref Damage damage, ref Transform transform)
         {
@@ -464,8 +514,22 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
     /// </summary>
     internal struct Update7Component : IOnUpdate<Position, Velocity, Health, Armor, Damage, Transform, TestComponent>
     {
+        /// <summary>
+        /// The call count
+        /// </summary>
         public int CallCount;
 
+        /// <summary>
+        /// Updates the self
+        /// </summary>
+        /// <param name="self">The self</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="vel">The vel</param>
+        /// <param name="health">The health</param>
+        /// <param name="armor">The armor</param>
+        /// <param name="damage">The damage</param>
+        /// <param name="transform">The transform</param>
+        /// <param name="test">The test</param>
         public void Update(IGameObject self, ref Position pos, ref Velocity vel, ref Health health, 
             ref Armor armor, ref Damage damage, ref Transform transform, ref TestComponent test)
         {
@@ -478,8 +542,23 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
     /// </summary>
     internal struct Update8Component : IOnUpdate<Position, Velocity, Health, Armor, Damage, Transform, TestComponent, AnotherComponent>
     {
+        /// <summary>
+        /// The call count
+        /// </summary>
         public int CallCount;
 
+        /// <summary>
+        /// Updates the self
+        /// </summary>
+        /// <param name="self">The self</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="vel">The vel</param>
+        /// <param name="health">The health</param>
+        /// <param name="armor">The armor</param>
+        /// <param name="damage">The damage</param>
+        /// <param name="transform">The transform</param>
+        /// <param name="test">The test</param>
+        /// <param name="another">The another</param>
         public void Update(IGameObject self, ref Position pos, ref Velocity vel, ref Health health, 
             ref Armor armor, ref Damage damage, ref Transform transform, ref TestComponent test, ref AnotherComponent another)
         {
@@ -492,8 +571,15 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
     /// </summary>
     internal struct OrderTrackingComponent : IOnUpdate
     {
+        /// <summary>
+        /// The order
+        /// </summary>
         public int Order;
 
+        /// <summary>
+        /// Ons the update using the specified self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void OnUpdate(IGameObject self)
         {
             // Track order
