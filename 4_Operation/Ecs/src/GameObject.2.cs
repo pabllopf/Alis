@@ -45,11 +45,7 @@ namespace Alis.Core.Ecs
     /// </summary>
     partial struct GameObject
     {
-        // traversing archetype graph strategy:
-        //1. hit small & fast static per type cache - 1 branch
-        //2. dictionary lookup
-        //3. find existing archetype
-        //4. create new archetype
+
 
         /// <summary>
         ///     Adds a component to this <see cref="GameObject" />.
