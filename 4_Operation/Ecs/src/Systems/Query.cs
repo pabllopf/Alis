@@ -37,7 +37,7 @@ namespace Alis.Core.Ecs.Systems
     /// <summary>
     ///     Represents a set of entities from a scene which can have systems applied to
     /// </summary>
-    public partial class Query
+    public  class Query
     {
         /// <summary>
         ///     The rules
@@ -100,13 +100,7 @@ namespace Alis.Core.Ecs.Systems
 
             return true;
         }
-    }
-
-    /// <summary>
-    ///     The query class
-    /// </summary>
-    partial class Query
-    {
+        
         /// <summary>
         ///     Enumerates component references for all entities in this query. Intended for use in foreach loops.
         /// </summary>
@@ -123,16 +117,138 @@ namespace Alis.Core.Ecs.Systems
         ///     Enumerates component chunks for all entities in this query. Intended for use in foreach loops.
         /// </summary>
         public ChunkQueryEnumerator<T>.QueryEnumerable EnumerateChunks<T>() => new ChunkQueryEnumerator<T>.QueryEnumerable(this);
-    }
-
-    /// <summary>
-    ///     The query class
-    /// </summary>
-    partial class Query
-    {
+        
         /// <summary>
         ///     Enumerates <see cref="GameObject" /> instances for all entities in this query. Intended for use in foreach loops.
         /// </summary>
         public GameObjectQueryEnumerator.QueryEnumerable EnumerateWithEntities() => new GameObjectQueryEnumerator.QueryEnumerable(this);
+        
+        /// <summary>
+        ///     Enumerates component references for all entities in this query. Intended for use in foreach loops.
+        /// </summary>
+        public QueryEnumerator<T1, T2>.QueryEnumerable Enumerate<T1, T2>() => new QueryEnumerator<T1, T2>.QueryEnumerable(this);
+
+        /// <summary>
+        ///     Enumerates component references and <see cref="GameObject" /> instances for all entities in this query. Intended
+        ///     for
+        ///     use in foreach loops.
+        /// </summary>
+        public QueryEnumerable<T1, T2> EnumerateWithEntities<T1, T2>() => new QueryEnumerable<T1, T2>(this);
+
+        /// <summary>
+        ///     Enumerates component chunks for all entities in this query. Intended for use in foreach loops.
+        /// </summary>
+        public ChunkQueryEnumerator<T1, T2>.QueryEnumerable EnumerateChunks<T1, T2>() => new ChunkQueryEnumerator<T1, T2>.QueryEnumerable(this);
+        
+        /// <summary>
+        ///     Enumerates component references for all entities in this query. Intended for use in foreach loops.
+        /// </summary>
+        public QueryEnumerator<T1, T2, T3>.QueryEnumerable Enumerate<T1, T2, T3>() => new QueryEnumerator<T1, T2, T3>.QueryEnumerable(this);
+
+        /// <summary>
+        ///     Enumerates component references and <see cref="GameObject" /> instances for all entities in this query. Intended
+        ///     for
+        ///     use in foreach loops.
+        /// </summary>
+        public QueryEnumerable<T1, T2, T3> EnumerateWithEntities<T1, T2, T3>() => new QueryEnumerable<T1, T2, T3>(this);
+
+        /// <summary>
+        ///     Enumerates component chunks for all entities in this query. Intended for use in foreach loops.
+        /// </summary>
+        public ChunkQueryEnumerator<T1, T2, T3>.QueryEnumerable EnumerateChunks<T1, T2, T3>() => new ChunkQueryEnumerator<T1, T2, T3>.QueryEnumerable(this);
+        
+        /// <summary>
+        ///     Enumerates component references for all entities in this query. Intended for use in foreach loops.
+        /// </summary>
+        public QueryEnumerator<T1, T2, T3, T4>.QueryEnumerable Enumerate<T1, T2, T3, T4>() => new QueryEnumerator<T1, T2, T3, T4>.QueryEnumerable(this);
+
+        /// <summary>
+        ///     Enumerates component references and <see cref="GameObject" /> instances for all entities in this query. Intended
+        ///     for
+        ///     use in foreach loops.
+        /// </summary>
+        public QueryEnumerable<T1, T2, T3, T4> EnumerateWithEntities<T1, T2, T3, T4>() => new QueryEnumerable<T1, T2, T3, T4>(this);
+
+        /// <summary>
+        ///     Enumerates component chunks for all entities in this query. Intended for use in foreach loops.
+        /// </summary>
+        public ChunkQueryEnumerator<T1, T2, T3, T4>.QueryEnumerable EnumerateChunks<T1, T2, T3, T4>() => new ChunkQueryEnumerator<T1, T2, T3, T4>.QueryEnumerable(this);
+        
+        
+        /// <summary>
+        ///     Enumerates component references for all entities in this query. Intended for use in foreach loops.
+        /// </summary>
+        public QueryEnumerator<T1, T2, T3, T4, T5>.QueryEnumerable Enumerate<T1, T2, T3, T4, T5>() => new QueryEnumerator<T1, T2, T3, T4, T5>.QueryEnumerable(this);
+
+        /// <summary>
+        ///     Enumerates component references and <see cref="GameObject" /> instances for all entities in this query. Intended
+        ///     for
+        ///     use in foreach loops.
+        /// </summary>
+        public QueryEnumerable<T1, T2, T3, T4, T5> EnumerateWithEntities<T1, T2, T3, T4, T5>() => new QueryEnumerable<T1, T2, T3, T4, T5>(this);
+
+        /// <summary>
+        ///     Enumerates component chunks for all entities in this query. Intended for use in foreach loops.
+        /// </summary>
+        public ChunkQueryEnumerator<T1, T2, T3, T4, T5>.QueryEnumerable EnumerateChunks<T1, T2, T3, T4, T5>() => new ChunkQueryEnumerator<T1, T2, T3, T4, T5>.QueryEnumerable(this);
+        
+        /// <summary>
+        ///     Enumerates component references for all entities in this query. Intended for use in foreach loops.
+        /// </summary>
+        public QueryEnumerator<T1, T2, T3, T4, T5, T6>.QueryEnumerable Enumerate<T1, T2, T3, T4, T5, T6>() => new QueryEnumerator<T1, T2, T3, T4, T5, T6>.QueryEnumerable(this);
+
+        /// <summary>
+        ///     Enumerates component references and <see cref="GameObject" /> instances for all entities in this query. Intended
+        ///     for
+        ///     use in foreach loops.
+        /// </summary>
+        public QueryEnumerable<T1, T2, T3, T4, T5, T6> EnumerateWithEntities<T1, T2, T3, T4, T5, T6>() => new QueryEnumerable<T1, T2, T3, T4, T5, T6>(this);
+
+        /// <summary>
+        ///     Enumerates component chunks for all entities in this query. Intended for use in foreach loops.
+        /// </summary>
+        public ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6>.QueryEnumerable EnumerateChunks<T1, T2, T3, T4, T5, T6>() => new ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6>.QueryEnumerable(this);
+        
+        /// <summary>
+        ///     Enumerates component references for all entities in this query. Intended for use in foreach loops.
+        /// </summary>
+        public QueryEnumerator<T1, T2, T3, T4, T5, T6, T7>.QueryEnumerable Enumerate<T1, T2, T3, T4, T5, T6, T7>() => new QueryEnumerator<T1, T2, T3, T4, T5, T6, T7>.QueryEnumerable(this);
+
+        /// <summary>
+        ///     Enumerates component references and <see cref="GameObject" /> instances for all entities in this query. Intended
+        ///     for
+        ///     use in foreach loops.
+        /// </summary>
+        public QueryEnumerable<T1, T2, T3, T4, T5, T6, T7> EnumerateWithEntities<T1, T2, T3, T4, T5,
+            T6, T7>()
+            => new QueryEnumerable<T1, T2, T3, T4, T5, T6, T7>(this);
+
+        /// <summary>
+        ///     Enumerates component chunks for all entities in this query. Intended for use in foreach loops.
+        /// </summary>
+        public ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7>.QueryEnumerable
+            EnumerateChunks<T1, T2, T3, T4, T5, T6, T7>()
+            => new ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7>.QueryEnumerable(this);
+        
+        /// <summary>
+        ///     Enumerates component references for all entities in this query. Intended for use in foreach loops.
+        /// </summary>
+        public QueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8>.QueryEnumerable Enumerate<T1, T2, T3, T4, T5, T6, T7, T8>() => new QueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8>.QueryEnumerable(this);
+
+        /// <summary>
+        ///     Enumerates component references and <see cref="GameObject" /> instances for all entities in this query. Intended
+        ///     for
+        ///     use in foreach loops.
+        /// </summary>
+        public QueryEnumerable<T1, T2, T3, T4, T5, T6, T7, T8> EnumerateWithEntities<T1, T2, T3, T4,
+            T5, T6, T7, T8>()
+            => new QueryEnumerable<T1, T2, T3, T4, T5, T6, T7, T8>(this);
+
+        /// <summary>
+        ///     Enumerates component chunks for all entities in this query. Intended for use in foreach loops.
+        /// </summary>
+        public ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8>.QueryEnumerable EnumerateChunks<T1, T2, T3, T4, T5, T6,
+            T7, T8>()
+            => new ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8>.QueryEnumerable(this);
     }
 }
