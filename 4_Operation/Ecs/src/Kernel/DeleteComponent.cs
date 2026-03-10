@@ -32,9 +32,14 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Ecs.Kernel
 {
     /// <summary>
+    ///     Delete component command
     /// </summary>
-    /// <param name="Entity"></param>
-    /// <param name="ComponentId"></param>
+    /// <param name="Entity">The entity to delete component from</param>
+    /// <param name="ComponentId">The component ID to delete</param>
+    /// <remarks>
+    ///     Memory layout optimized: 8 bytes total (GameObjectIdOnly 6 bytes + ComponentId 2 bytes)
+    ///     Pack = 1 for minimal memory footprint
+    /// </remarks>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public record struct DeleteComponent(GameObjectIdOnly Entity, ComponentId ComponentId);
 }

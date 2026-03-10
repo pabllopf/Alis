@@ -915,10 +915,16 @@ namespace Alis.Core.Ecs.Systems
             public QueryEnumerator<T1, T2, T3, T4, T5, T6, T7> GetEnumerator() => new QueryEnumerator<T1, T2, T3, T4, T5, T6, T7>(query);
         }
     }
-                  
+    
                      /// <summary>
     ///     The query enumerator
     /// </summary>
+    /// <remarks>
+    ///     Memory layout optimized: Scene reference (8 bytes) + nine Spans (144 bytes) + two ints (8 bytes)
+    ///     Total: 160 bytes
+    ///     Pack = 4 for optimal alignment
+    /// </remarks>
+    [StructLayout(LayoutKind.Sequential, Pack = 4)]
     public ref struct QueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8>
     {
         /// <summary>
