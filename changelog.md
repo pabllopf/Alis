@@ -5,6 +5,91 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.9.8] - 2026-03-10
+### :sparkles: New Features
+- [`581d462`](https://github.com/pabllopf/Alis/commit/581d462d259e25484f5ce95e9b048d6892ed3c33) - Add comprehensive tests for resource monitoring *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`c01d872`](https://github.com/pabllopf/Alis/commit/c01d87285cd1bc5bcab0f1d2218faa1efa4ac429) - exclude unless tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`aea1014`](https://github.com/pabllopf/Alis/commit/aea1014cde7c8653ac99534c263c9fdc10c2b5db) - exlude the cloud methods to testing *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`54e3647`](https://github.com/pabllopf/Alis/commit/54e3647ac33d7d729ca29cb04ff8b8b30aba34cc) - delete unless files *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`aab8517`](https://github.com/pabllopf/Alis/commit/aab85178b27c1766080263740f3ddd7a228e7547) - Add coverage exclusions and extend Vector2F tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ed5e83b`](https://github.com/pabllopf/Alis/commit/ed5e83b9e3012707983377020f6b659974dc22ca) - Add Vector3F/Vector4F extended tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`354451c`](https://github.com/pabllopf/Alis/commit/354451c3ce0c176e43bf632b6985d58d95688014) - 100% cover the Aspect/s *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7323a38`](https://github.com/pabllopf/Alis/commit/7323a38ae83d08c80bcd046d43b501959eb18f90) - Add ExcludeFromCodeCoverage attributes *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ed50a7c`](https://github.com/pabllopf/Alis/commit/ed50a7cb7df1215efffbc7eb94d75fdfbaf7c266) - Exclude priority queue APIs from coverage *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b1ad362`](https://github.com/pabllopf/Alis/commit/b1ad36230adf1fdfe6fb07d1e065c618c47eee16) - Exclude file dialog classes from coverage *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d2bcf2d`](https://github.com/pabllopf/Alis/commit/d2bcf2dcc7a1404d7c110c206330ea41fb00e3d7) - Exclude projects and helper methods from coverage *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`802ea4f`](https://github.com/pabllopf/Alis/commit/802ea4fa421282a86b4689c2326b93a38403d881) - unit test CompleteWorkflow_WithMetadata_PassesMetadataCorrectly *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2c47365`](https://github.com/pabllopf/Alis/commit/2c473656eeb4b456126ade07e4de98f7af71cacc) - StoreManagerIntegrationTest *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`db5ae17`](https://github.com/pabllopf/Alis/commit/db5ae1773f41ffa87dbc218b48b420c3fae48dfb) - Add generated test suites and tidy tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6194952`](https://github.com/pabllopf/Alis/commit/6194952f007916bf48fe2b96b98b3f3f1fcd38ee) - Use explicit types in test files *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`52a8e3c`](https://github.com/pabllopf/Alis/commit/52a8e3c2c9ccbb0d73f32a4ae055a7640a4b2f1e) - unit testing *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f985dc5`](https://github.com/pabllopf/Alis/commit/f985dc555d852bfb14d66cb632d1de75f10d0821) - testings *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`157a561`](https://github.com/pabllopf/Alis/commit/157a561e3d30d74f224502c223b728f4005fffcf) - add xmls files *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`dbc328c`](https://github.com/pabllopf/Alis/commit/dbc328c650ff42cab1618d551cbba70f7fb41189) - add tolerance MultipleInstances_MonitorIndependently *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`cdb013f`](https://github.com/pabllopf/Alis/commit/cdb013f068b7a3d0d1dd4a162989462b6b1ccbef) - add tolerence to Assert.Equal(memory1, memory2, 100000.0f); *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0df31fd`](https://github.com/pabllopf/Alis/commit/0df31fdfc2aeac0c92541cb030ebfb7184b76a24) - generator exclude from code report *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d403f95`](https://github.com/pabllopf/Alis/commit/d403f95ae53eca5a303b37678f58178af4ad3faa) - Pass CLI args to Game.Create and update templates *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bf7cf76`](https://github.com/pabllopf/Alis/commit/bf7cf76287257ff7e9a004c04094c7562783017e) - Inline 2-type GameObject ops; add NeighborCaches *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c6e9fbe`](https://github.com/pabllopf/Alis/commit/c6e9fbe837a88b8da749a3ac3a89e00cf7ca4f93) - Consolidate GameObject partials into GameObject.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6700fbe`](https://github.com/pabllopf/Alis/commit/6700fbe9d97e867244ffb43ed264e465e4cc405f) - Use Console.WriteLine instead of Logger.Info *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ed102ed`](https://github.com/pabllopf/Alis/commit/ed102edc0fe225c3caf73542bcf87944dc829980) - Remove tag APIs and simplify archetype edges *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e41e720`](https://github.com/pabllopf/Alis/commit/e41e720f52e83577fc544005bac7b33823284343) - Merge GameObject.public into GameObject.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`98b054f`](https://github.com/pabllopf/Alis/commit/98b054f699bf4e2dfd6004d84587bc19180915e6) - Remove code coverage and SonarQube exclusions *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`489e789`](https://github.com/pabllopf/Alis/commit/489e789761ccb7dffcb65b99b77af36cdef11e7b) - Unify event lookup; remove TryGetEventData *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`06ae6a1`](https://github.com/pabllopf/Alis/commit/06ae6a1b3f62fce9384bab9720f9451023303d4f) - Consolidate Scene partial files into Scene.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5e291d4`](https://github.com/pabllopf/Alis/commit/5e291d4d1cd07da038bd3635dfff7f6acb66bbd3) - Consolidate QueryEnumerable generics into one file *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`49d6c05`](https://github.com/pabllopf/Alis/commit/49d6c0549e33f517427fd04dd62e1d20215afc51) - Consolidate SceneQueryExtensions into single file *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b813c64`](https://github.com/pabllopf/Alis/commit/b813c64de0cc142c43083c4782b2fa1bf2ebdec4) - Merge GameObjectRefTuple partial files *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`73218a4`](https://github.com/pabllopf/Alis/commit/73218a451db59145ceb35bd9cf1777135acb8edb) - Combine GameObjectExtensions deconstruct overloads *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6046bb1`](https://github.com/pabllopf/Alis/commit/6046bb1e62fcba0b53d9a675bdd2954237a96f5d) - Consolidate GameObjectQueryEnumerator types *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6e817ab`](https://github.com/pabllopf/Alis/commit/6e817abaf3d73a5f19936c7223bd64d11955bb3a) - Remove Disable tag and tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4ca8cc9`](https://github.com/pabllopf/Alis/commit/4ca8cc9033eb9971204555175e849d117c1ac431) - Consolidate Update runners into Update.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6da163e`](https://github.com/pabllopf/Alis/commit/6da163ee90330f2bfb82546d7f5e597550023726) - Consolidate UpdateRunnerFactory variants into single file *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`638d00c`](https://github.com/pabllopf/Alis/commit/638d00c17ce8b0a9f859255eced5c4d68bc26093) - Merge ChunkQueryEnumerator variants into one file *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d4a3f1a`](https://github.com/pabllopf/Alis/commit/d4a3f1af663f85f0133fddb89ca9f6af1bd7fe87) - Consolidate ChunkTuple types into one file *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`af5f13e`](https://github.com/pabllopf/Alis/commit/af5f13e53fe027d7735f06d2d5eead0610dca2c6) - Consolidate Query partials and add Enumerate APIs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5140bdc`](https://github.com/pabllopf/Alis/commit/5140bdcb8c509123ae81f2cf55de40127faa237c) - Unify Archetype generics and refactor storage *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ef52038`](https://github.com/pabllopf/Alis/commit/ef5203814fec31420f5c4e5133df7cf0c8cfb1bf) - Consolidate QueryDelegates into single file *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a935153`](https://github.com/pabllopf/Alis/commit/a93515305d00dc431d921c5ac8a0ce29e1ae2b30) - Consolidate QueryEnumerator partials into single file *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f1b5997`](https://github.com/pabllopf/Alis/commit/f1b59974a8ae64a65f4c5666e2542c33d675b23d) - Consolidate QueryHashCache variants into one file *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8c9e6f1`](https://github.com/pabllopf/Alis/commit/8c9e6f19c6ea3f89fde193fc7b50852534ee7058) - Consolidate QueryIterationExtensions into one file *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`be4f0f8`](https://github.com/pabllopf/Alis/commit/be4f0f8d6d1920cb4db81d7fa30c1e7f10f9c209) - Consolidate RefTuple types into RefTuple.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4bfaa93`](https://github.com/pabllopf/Alis/commit/4bfaa939ec41cd6ce3d2a3fdfc5532a532b4d8da) - Unify platform-specific code paths and simplify build targets *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f6d5021`](https://github.com/pabllopf/Alis/commit/f6d5021f8a9359d5a8a53186f60e14e2cae27018) - [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage] *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1e94f0e`](https://github.com/pabllopf/Alis/commit/1e94f0ef8d220eedc70c9600eb74b6cbb6bb032b) - check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c11e498`](https://github.com/pabllopf/Alis/commit/c11e498ebbd678d0ab230d2b94ebbb1a5ab1f50c) - Add update filter tests; annotate chunk tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`61851bd`](https://github.com/pabllopf/Alis/commit/61851bda94cfd019ea4dfbf5907e03c605b4a5ec) - Add unit tests for math library components *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`05b1eb0`](https://github.com/pabllopf/Alis/commit/05b1eb07eb2b8aa5afbf152eb55a7ce96f0534ab) - pro Add unit tests and exclude FastImmutableArray *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`29992bc`](https://github.com/pabllopf/Alis/commit/29992bcb1115a9f93bd702e5998ec4eb9648bfa8) - pro Add coverage exclusions and expand tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`dac77df`](https://github.com/pabllopf/Alis/commit/dac77dff4397a099bb751232009e7bbf54487e70) - pro Add ExcludeFromCodeCoverage and docs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e48b683`](https://github.com/pabllopf/Alis/commit/e48b6837ea166615e420f96104cd0a099a5cd155) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3d52e33`](https://github.com/pabllopf/Alis/commit/3d52e330177daf8892b0bd4da7fbc9ad86c15420) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`77e9ab1`](https://github.com/pabllopf/Alis/commit/77e9ab1909cdfcc35e0d8c06cd9f0e1fcb56546f) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b1d14d0`](https://github.com/pabllopf/Alis/commit/b1d14d0eacf763d47ca721e5a3a6a0ab4f4fb96c) - pro check all tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a9816b3`](https://github.com/pabllopf/Alis/commit/a9816b35f8812ef3fe25f65713a1b02343e3fca1) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`349ff24`](https://github.com/pabllopf/Alis/commit/349ff24397abd1ffbf7dcf23eec35baeb0fad66a) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ae98958`](https://github.com/pabllopf/Alis/commit/ae989584e4131e4bdd55490b98fc7cd9312b6bdf) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2cc0fd8`](https://github.com/pabllopf/Alis/commit/2cc0fd841b7f83abe2141ba0e9d2e8e4a30764ad) - pro add new test to ecs module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8fc85cb`](https://github.com/pabllopf/Alis/commit/8fc85cb92331b9adb219df143e85f8866ae4b762) - pro Add Scene tests for CreateMany and infrastructure *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3907711`](https://github.com/pabllopf/Alis/commit/3907711ae49993a277bbceb97e98c568a9ed9436) - pro fix tagTypes *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0e03afa`](https://github.com/pabllopf/Alis/commit/0e03afa7438233f9ba0f700be1bbbf360276478d) - Add GameObjectQueryEnumerator tests; minor test fixes *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fd6fc7e`](https://github.com/pabllopf/Alis/commit/fd6fc7e3b664a7bef380deb8daf5e35317105564) - pro add more tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3b5f21d`](https://github.com/pabllopf/Alis/commit/3b5f21dd116984117398be2da06078bfe5574e79) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`42d8f5a`](https://github.com/pabllopf/Alis/commit/42d8f5a9c5b0b32ac7f67485e4ae748f46b57654) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`93e9795`](https://github.com/pabllopf/Alis/commit/93e9795396fce57b0ad3a4d9f97191c2263b8fbb) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d618392`](https://github.com/pabllopf/Alis/commit/d6183923bfb15e5459d527547f9968409e9b1c20) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b76cd9b`](https://github.com/pabllopf/Alis/commit/b76cd9be3e27475fb4a986c6c3adffb81dd6f7d9) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :memo: Documentation Changes
+- [`0b98078`](https://github.com/pabllopf/Alis/commit/0b98078364af0a9aaeecc65b72f1eebb1059571c) - Add XML docs and Archetype Has helper *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c69b4e7`](https://github.com/pabllopf/Alis/commit/c69b4e76f0fe3f93d2259664ba8900b16826f91c) - add new test xmls *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`621b024`](https://github.com/pabllopf/Alis/commit/621b02443e07ce5641b3e241976839202e5fec80) - add xmls files *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.9.7] - 2026-03-07
 ### :sparkles: New Features
 - [`05f7a3d`](https://github.com/pabllopf/Alis/commit/05f7a3da142e8299569854f0f5093aa5318fa4ef) - new module of logging with modern patterns *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -5954,3 +6039,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.9.5]: https://github.com/pabllopf/Alis/compare/v0.9.4...v0.9.5
 [v0.9.6]: https://github.com/pabllopf/Alis/compare/v0.9.5...v0.9.6
 [v0.9.7]: https://github.com/pabllopf/Alis/compare/v0.9.6...v0.9.7
+[v0.9.8]: https://github.com/pabllopf/Alis/compare/v0.9.7...v0.9.8
