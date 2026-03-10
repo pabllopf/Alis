@@ -125,7 +125,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '10.0.x'
+          dotnet-version: '10.x.x'
           
       - name: Install Workloads
         run: dotnet workload install wasm-tools wasm-experimental android
@@ -244,7 +244,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '10.0.x'
+          dotnet-version: '10.x.x'
       
       - name: Install Workloads
         run: dotnet workload install wasm-tools wasm-experimental android
@@ -339,7 +339,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '10.0.x'
+          dotnet-version: '10.x.x'
 
       - name: Install Workloads
         run: dotnet workload install wasm-tools wasm-experimental android ios
@@ -446,7 +446,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '10.0.x'
+          dotnet-version: '10.x.x'
 
       - name: Install Workloads
         run: dotnet workload install wasm-tools wasm-experimental android
