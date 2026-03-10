@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.9.9] - 2026-03-10
+### :sparkles: New Features
+- [`20ef5d8`](https://github.com/pabllopf/Alis/commit/20ef5d830dc691af700fcd9d91267b766be4dbd3) - Annotate structs with explicit layout/packing *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9f6d65f`](https://github.com/pabllopf/Alis/commit/9f6d65fcb282ea26b0499ba6c5728a0d3afd784f) - Add StructLayout and docs for ECS structs *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`57d4763`](https://github.com/pabllopf/Alis/commit/57d4763a812d6f733addbd1dfbb74d171dca3fab) - Remove Tagged/Detach flags and update tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2f99a57`](https://github.com/pabllopf/Alis/commit/2f99a57e40b209ac288d4b5685838ba5acaa0d2b) - benchmark module errors on compilation *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2a81a32`](https://github.com/pabllopf/Alis/commit/2a81a327c9573324bede58f9aad0fe76f45790a1) - Restrict runtime Content includes to Alis.* *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ee49b67`](https://github.com/pabllopf/Alis/commit/ee49b677acedbf17cdbed2632058cda0ad48b922) - Reduce benchmark EntityCount and add results *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9ea662c`](https://github.com/pabllopf/Alis/commit/9ea662cf4692e8c2ce11e0b3f4070863d2dcf7a6) - Remove GPG signing from CI workflows *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f6da2df`](https://github.com/pabllopf/Alis/commit/f6da2dfead91eb91466e52e9392547fcc2b18621) - optimice space of nuget extensions *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a965e38`](https://github.com/pabllopf/Alis/commit/a965e38de7e79489036bd411141c640e5485e9ba) - dotnet-version: '10.x.x' *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`c72bd49`](https://github.com/pabllopf/Alis/commit/c72bd4917b85358e499d7c3d2187cd831a1826f3) - Remove coverage attribute; add Logger.Exception tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`29d0a1a`](https://github.com/pabllopf/Alis/commit/29d0a1a372bafde7c62c713b1f250d48ac2766bf) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0330757`](https://github.com/pabllopf/Alis/commit/0330757a1e6e01b72a39f3ae271cf8e0e0141907) - pro dotnet-version: '10.x.x' *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.9.8] - 2026-03-10
 ### :sparkles: New Features
 - [`581d462`](https://github.com/pabllopf/Alis/commit/581d462d259e25484f5ce95e9b048d6892ed3c33) - Add comprehensive tests for resource monitoring *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -6040,3 +6060,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.9.6]: https://github.com/pabllopf/Alis/compare/v0.9.5...v0.9.6
 [v0.9.7]: https://github.com/pabllopf/Alis/compare/v0.9.6...v0.9.7
 [v0.9.8]: https://github.com/pabllopf/Alis/compare/v0.9.7...v0.9.8
+[v0.9.9]: https://github.com/pabllopf/Alis/compare/v0.9.8...v0.9.9
