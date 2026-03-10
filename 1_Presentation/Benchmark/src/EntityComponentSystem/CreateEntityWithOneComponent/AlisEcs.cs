@@ -44,7 +44,7 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithOneComponent
         /// <summary>
         ///     The id
         /// </summary>
-        private static readonly GameObjectType _entityAlisType = GameObject.EntityTypeOf([Component<Component1>.Id], []);
+        private static readonly GameObjectType _entityAlisType = GameObject.EntityTypeOf([Component<Component1>.Id]);
 
         /// <summary>
         ///     The alis
