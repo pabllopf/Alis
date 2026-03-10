@@ -152,7 +152,6 @@ namespace Alis.Core.Aspect.Logging
         ///     Exceptions the to string
         /// </summary>
         /// <param name="toString">The to string</param>
-        [ExcludeFromCodeCoverage]
         public static void Exception(string toString)
         {
             EnsureInitialized();

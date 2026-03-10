@@ -187,5 +187,98 @@ namespace Alis.Core.Aspect.Logging.Test
             // Act & Assert
             Logger.Info(specialMessage);
         }
+
+        /// <summary>
+        ///     Tests that logger exception should throw exception with correct message
+        /// </summary>
+        [Fact]
+        public void Logger_Exception_ShouldThrowExceptionWithCorrectMessage()
+        {
+            // Arrange
+            string exceptionMessage = "Test exception message";
+
+            // Act & Assert
+            System.Exception thrownException = Assert.Throws<System.Exception>(() => Logger.Exception(exceptionMessage));
+            Assert.Equal(exceptionMessage, thrownException.Message);
+        }
+
+        /// <summary>
+        ///     Tests that logger exception should log critical before throwing
+        /// </summary>
+        [Fact]
+        public void Logger_Exception_ShouldLogCriticalBeforeThrowing()
+        {
+            // Arrange
+            MemoryLogOutput memoryOutput = new MemoryLogOutput();
+            LoggerFactory factory = new LoggerFactory();
+            factory.AddOutput(memoryOutput);
+            ILogger customLogger = factory.CreateLogger("ExceptionTestLogger");
+            Logger.SetDefaultLogger(customLogger);
+            string exceptionMessage = "Critical error occurred";
+
+            // Act & Assert
+            Assert.Throws<System.Exception>(() => Logger.Exception(exceptionMessage));
+            
+            // Verify critical log was created
+            IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
+            Assert.Single(entries);
+            Assert.Equal(LogLevel.Critical, entries[0].Level);
+            Assert.Contains(exceptionMessage, entries[0].Message);
+        }
+
+        /// <summary>
+        ///     Tests that logger exception with empty message should throw
+        /// </summary>
+        [Fact]
+        public void Logger_Exception_WithEmptyMessage_ShouldThrow()
+        {
+            // Arrange
+            string emptyMessage = string.Empty;
+
+            // Act & Assert
+            System.Exception thrownException = Assert.Throws<System.Exception>(() => Logger.Exception(emptyMessage));
+            Assert.Equal(emptyMessage, thrownException.Message);
+        }
+
+        /// <summary>
+        ///     Tests that logger exception with null message should throw
+        /// </summary>
+        [Fact]
+        public void Logger_Exception_WithNullMessage_ShouldThrow()
+        {
+            // Arrange
+            string nullMessage = null;
+
+            // Act & Assert
+            Assert.Throws<System.Exception>(() => Logger.Exception(nullMessage));
+        }
+
+        /// <summary>
+        ///     Tests that logger exception with long message should throw with full message
+        /// </summary>
+        [Fact]
+        public void Logger_Exception_WithLongMessage_ShouldThrowWithFullMessage()
+        {
+            // Arrange
+            string longMessage = new string('x', 1000);
+
+            // Act & Assert
+            System.Exception thrownException = Assert.Throws<System.Exception>(() => Logger.Exception(longMessage));
+            Assert.Equal(longMessage, thrownException.Message);
+        }
+
+        /// <summary>
+        ///     Tests that logger exception with special characters should preserve message
+        /// </summary>
+        [Fact]
+        public void Logger_Exception_WithSpecialCharacters_ShouldPreserveMessage()
+        {
+            // Arrange
+            string specialMessage = "Error: \n\t\"Value\" is 'invalid'\\path";
+
+            // Act & Assert
+            System.Exception thrownException = Assert.Throws<System.Exception>(() => Logger.Exception(specialMessage));
+            Assert.Equal(specialMessage, thrownException.Message);
+        }
     }
 }
