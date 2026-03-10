@@ -221,6 +221,7 @@
                           Include="$(SolutionDir)6_Ideation/**/src/**/Alis.*.csproj"/>
     </ItemGroup>
 
+    
     <ItemGroup>
         <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation'))"
                           Include="
