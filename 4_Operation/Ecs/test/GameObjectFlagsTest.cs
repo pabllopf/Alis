@@ -54,32 +54,7 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(0, (int) GameObjectFlags.None);
         }
 
-        /// <summary>
-        ///     Tests that tagged flag has correct bit position
-        /// </summary>
-        /// <remarks>
-        ///     Validates that the Tagged flag is set to the first bit position.
-        /// </remarks>
-        [Fact]
-        public void Tagged_Flag_HasCorrectBitPosition()
-        {
-            // Assert
-            Assert.Equal(1, (int) GameObjectFlags.Tagged);
-        }
-
-        /// <summary>
-        ///     Tests that detach flag has correct bit position
-        /// </summary>
-        /// <remarks>
-        ///     Validates that the Detach flag is set to the second bit position.
-        /// </remarks>
-        [Fact]
-        public void Detach_Flag_HasCorrectBitPosition()
-        {
-            // Assert
-            Assert.Equal(2, (int) GameObjectFlags.Detach);
-        }
-
+       
         /// <summary>
         ///     Tests that add comp flag has correct bit position
         /// </summary>
@@ -93,23 +68,7 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(4, (int) GameObjectFlags.AddComp);
         }
 
-        /// <summary>
-        ///     Tests that flags can be combined
-        /// </summary>
-        /// <remarks>
-        ///     Tests that multiple flags can be combined using bitwise OR operations.
-        /// </remarks>
-        [Fact]
-        public void Flags_CanBeCombined()
-        {
-            // Arrange & Act
-            GameObjectFlags combined = GameObjectFlags.Tagged | GameObjectFlags.Detach;
-
-            // Assert
-            Assert.Equal(3, (int) combined);
-            Assert.True(combined.HasFlag(GameObjectFlags.Tagged));
-            Assert.True(combined.HasFlag(GameObjectFlags.Detach));
-        }
+        
 
         /// <summary>
         ///     Tests that events flag combines multiple flags
@@ -124,8 +83,7 @@ namespace Alis.Core.Ecs.Test
             GameObjectFlags events = GameObjectFlags.Events;
 
             // Assert
-            Assert.True(events.HasFlag(GameObjectFlags.Tagged));
-            Assert.True(events.HasFlag(GameObjectFlags.Detach));
+
             Assert.True(events.HasFlag(GameObjectFlags.AddComp));
             Assert.True(events.HasFlag(GameObjectFlags.RemoveComp));
             Assert.True(events.HasFlag(GameObjectFlags.OnDelete));
@@ -147,30 +105,9 @@ namespace Alis.Core.Ecs.Test
             // Assert
             Assert.True(flags.HasFlag(GameObjectFlags.AddComp));
             Assert.True(flags.HasFlag(GameObjectFlags.RemoveComp));
-            Assert.False(flags.HasFlag(GameObjectFlags.Tagged));
         }
 
-        /// <summary>
-        ///     Tests that flags can be removed with bitwise and not
-        /// </summary>
-        /// <remarks>
-        ///     Tests that flags can be removed using bitwise AND with NOT operations.
-        /// </remarks>
-        [Fact]
-        public void Flags_CanBeRemovedWithBitwiseAndNot()
-        {
-            // Arrange
-            GameObjectFlags flags = GameObjectFlags.Tagged | GameObjectFlags.Detach | GameObjectFlags.AddComp;
-
-            // Act
-            flags &= ~GameObjectFlags.Detach;
-
-            // Assert
-            Assert.True(flags.HasFlag(GameObjectFlags.Tagged));
-            Assert.False(flags.HasFlag(GameObjectFlags.Detach));
-            Assert.True(flags.HasFlag(GameObjectFlags.AddComp));
-        }
-
+       
         /// <summary>
         ///     Tests that world create flag has correct value
         /// </summary>

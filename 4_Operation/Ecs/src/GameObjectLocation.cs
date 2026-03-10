@@ -39,7 +39,7 @@ namespace Alis.Core.Ecs
     [StructLayout(LayoutKind.Sequential, Pack = 2)]
     public struct GameObjectLocation
     {
-        //128 bits
+        
         /// <summary>
         ///     The archetype
         /// </summary>

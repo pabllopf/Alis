@@ -39,7 +39,7 @@ namespace Alis.Core.Ecs.Collections
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     internal struct ArchetypeNeighborCache
     {
-        //128 bits
+        
         /// <summary>
         ///     The keys and values
         /// </summary>

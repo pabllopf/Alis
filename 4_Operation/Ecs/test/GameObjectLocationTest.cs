@@ -236,25 +236,5 @@ namespace Alis.Core.Ecs.Test
 
             world.Dispose();
         }
-
-        /// <summary>
-        ///     Tests that flags can be modified after construction.
-        /// </summary>
-        [Fact]
-        public void Flags_CanBeModified_AfterConstruction()
-        {
-            // Arrange
-            Scene world = new Scene();
-            Archetype archetype = world.DefaultArchetype;
-            GameObjectLocation location = new GameObjectLocation(archetype, 0);
-
-            // Act
-            location.Flags = GameObjectFlags.Tagged;
-
-            // Assert
-            Assert.Equal(GameObjectFlags.Tagged, location.Flags);
-
-            world.Dispose();
-        }
     }
 }
