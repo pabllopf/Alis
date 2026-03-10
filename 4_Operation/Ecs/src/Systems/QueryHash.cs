@@ -35,6 +35,10 @@ namespace Alis.Core.Ecs.Systems
     /// <summary>
     ///     The query hash
     /// </summary>
+    /// <remarks>
+    ///     Memory layout optimized: 4 bytes total (single int)
+    ///     Pack = 1 for minimal memory footprint
+    /// </remarks>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct QueryHash
     {

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Kernel.Archetypes;
 using Alis.Core.Ecs.Systems;
@@ -134,6 +135,12 @@ namespace Alis.Core.Ecs
     /// <summary>
     ///     The gameObject query enumerator
     /// </summary>
+    /// <remarks>
+    ///     Memory layout optimized: Scene reference (8 bytes) + four Spans (64 bytes) + two ints (8 bytes)
+    ///     Total: 80 bytes
+    ///     Pack = 4 for optimal alignment
+    /// </remarks>
+    [StructLayout(LayoutKind.Sequential, Pack = 4)]
     public ref struct GameObjectQueryEnumerator<T1, T2>
     {
         /// <summary>
@@ -859,10 +866,16 @@ namespace Alis.Core.Ecs
             return true;
         }
     }
-          
-          /// <summary>
+    
+    /// <summary>
     ///     The gameObject query enumerator
     /// </summary>
+    /// <remarks>
+    ///     Memory layout optimized: Scene reference (8 bytes) + ten Spans (160 bytes) + two ints (8 bytes)
+    ///     Total: 176 bytes
+    ///     Pack = 4 for optimal alignment
+    /// </remarks>
+    [StructLayout(LayoutKind.Sequential, Pack = 4)]
     public ref struct GameObjectQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8>
     {
         /// <summary>

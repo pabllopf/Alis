@@ -135,6 +135,10 @@ namespace Alis.Core.Ecs.Systems
         ///     Proxy type for foreach syntax
         /// </summary>
         /// <param name="query">The query to wrap.</param>
+        /// <remarks>
+        ///     Memory layout optimized: Query reference (8 bytes) captured in primary constructor
+        ///     Pack = 1 for minimal memory footprint
+        /// </remarks>
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
         public readonly struct QueryEnumerable(Query query)
         {

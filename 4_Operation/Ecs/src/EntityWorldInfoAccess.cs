@@ -35,6 +35,10 @@ namespace Alis.Core.Ecs
     /// <summary>
     ///     The gameObject scene info access
     /// </summary>
+    /// <remarks>
+    ///     Memory layout optimized: 8 bytes total (GameObjectIdOnly 6 bytes + ushort 2 bytes)
+    ///     Pack = 1 for minimal memory footprint
+    /// </remarks>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct EntityWorldInfoAccess
     {

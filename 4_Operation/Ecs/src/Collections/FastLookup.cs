@@ -37,9 +37,19 @@ namespace Alis.Core.Ecs.Collections
     /// <summary>
     ///     The fast lookup
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    /// <remarks>
+    ///     Memory layout optimized: Archetype array reference (8 bytes) -> InlineArray8 structs (32 bytes + 16 bytes) -> int (4 bytes)
+    ///     Total: 60 bytes
+    ///     Pack = 8 for optimal alignment with reference types and large inline arrays
+    /// </remarks>
+    [StructLayout(LayoutKind.Sequential, Pack = 8)]
     public struct FastLookup()
     {
+        /// <summary>
+        ///     The archetype
+        /// </summary>
+        internal Archetype[] Archetypes = new Archetype[8];
+
         /// <summary>
         ///     The data
         /// </summary>
@@ -50,10 +60,6 @@ namespace Alis.Core.Ecs.Collections
         /// </summary>
         private InlineArray8<ushort> _ids;
 
-        /// <summary>
-        ///     The archetype
-        /// </summary>
-        internal Archetype[] Archetypes = new Archetype[8];
 
         /// <summary>
         ///     The index

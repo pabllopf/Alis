@@ -37,7 +37,11 @@ namespace Alis.Core.Ecs.Collections
     /// <summary>
     ///     The fastest table combining optimal performance traits, safe version.
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    /// <remarks>
+    ///     Memory layout optimized: 8 bytes total (T[] reference)
+    ///     Pack = 8 for optimal alignment with reference types on 64-bit architectures
+    /// </remarks>
+    [StructLayout(LayoutKind.Sequential, Pack = 8)]
     public struct FastestTable<T>
     {
         /// <summary>

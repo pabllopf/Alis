@@ -38,14 +38,14 @@ namespace Alis.Core.Ecs.Systems
     /// <summary>
     ///     Encapsulates a check for an gameObject, used to filter queries
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    /// <remarks>
+    ///     Memory layout optimized: Func reference (8 bytes) -> ComponentId (2 bytes) -> RuleState enum (4 bytes)
+    ///     Total: 14 bytes + 2 bytes padding = 16 bytes aligned
+    ///     Pack = 4 for better performance with reference types
+    /// </remarks>
+    [StructLayout(LayoutKind.Sequential, Pack = 4)]
     public struct Rule : IEquatable<Rule>
     {
-        /// <summary>
-        ///     The rule state
-        /// </summary>
-        private RuleState _ruleState;
-
         /// <summary>
         ///     The custom
         /// </summary>
@@ -55,6 +55,11 @@ namespace Alis.Core.Ecs.Systems
         ///     The comp id
         /// </summary>
         private ComponentId _compId;
+
+        /// <summary>
+        ///     The rule state
+        /// </summary>
+        private RuleState _ruleState;
 
         /// <summary>
         ///     Rules the applies using the specified archetype id

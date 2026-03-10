@@ -45,7 +45,12 @@ namespace Alis.Core.Ecs
     /// <summary>
     ///     An GameObject reference; refers to a collection of components of unqiue types.
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 2)]
+    /// <remarks>
+    ///     Memory layout optimized: 8 bytes total (int + ushort + ushort)
+    ///     Field order: int (4 bytes) -> ushort (2 bytes) -> ushort (2 bytes)
+    ///     Pack = 1 for minimal memory footprint, no padding between fields
+    /// </remarks>
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct GameObject : IEquatable<GameObject>, IGameObject
     {
         /// <summary>

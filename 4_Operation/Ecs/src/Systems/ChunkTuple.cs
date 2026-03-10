@@ -345,7 +345,11 @@ namespace Alis.Core.Ecs.Systems
     /// <summary>
     ///     The chunk tuple
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    /// <remarks>
+    ///     Memory layout optimized: EntityEnumerable + eight Spans (128 bytes for Spans)
+    ///     Pack = 4 for optimal alignment with Span structures
+    /// </remarks>
+    [StructLayout(LayoutKind.Sequential, Pack = 4)]
     public ref struct ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8>
     {
         /// <summary>

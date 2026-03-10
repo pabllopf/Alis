@@ -307,6 +307,11 @@ namespace Alis.Core.Ecs.Systems
     /// <summary>
     ///     The ref tuple
     /// </summary>
+    /// <remarks>
+    ///     Memory layout optimized: Eight Ref structs (192 bytes total: 8 × 24 bytes)
+    ///     Pack = 4 for optimal alignment
+    /// </remarks>
+    [StructLayout(LayoutKind.Sequential, Pack = 4)]
     public ref struct RefTuple<T1, T2, T3, T4, T5, T6, T7, T8>
     {
         /// <summary>

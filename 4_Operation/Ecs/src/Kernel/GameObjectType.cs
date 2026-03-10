@@ -40,6 +40,10 @@ namespace Alis.Core.Ecs.Kernel
     /// <summary>
     ///     Represents an gameObject's type, or set of component and tag types that make it up
     /// </summary>
+    /// <remarks>
+    ///     Memory layout optimized: 2 bytes total (single ushort)
+    ///     Pack = 1 for minimal memory footprint
+    /// </remarks>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct GameObjectType : IEquatable<ArchetypeID>
     {

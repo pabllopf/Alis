@@ -36,7 +36,12 @@ namespace Alis.Core.Ecs.Kernel.Events
     /// <summary>
     ///     The event
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    /// <remarks>
+    ///     Memory layout optimized: Action reference (8 bytes) + FrugalStack struct (12 bytes)
+    ///     Total: 20 bytes + 4 bytes padding = 24 bytes aligned
+    ///     Pack = 8 for optimal alignment with reference types
+    /// </remarks>
+    [StructLayout(LayoutKind.Sequential, Pack = 8)]
     public struct Event<T>()
     {
         /// <summary>

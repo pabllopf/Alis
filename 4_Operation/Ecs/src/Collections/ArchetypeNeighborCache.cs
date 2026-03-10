@@ -36,6 +36,10 @@ namespace Alis.Core.Ecs.Collections
     /// <summary>
     ///     The archetype neighbor cache
     /// </summary>
+    /// <remarks>
+    ///     Memory layout optimized: 20 bytes total (InlineArray8 of ushort = 16 bytes + int = 4 bytes)
+    ///     Pack = 1 for minimal memory footprint, tightly packed cache structure
+    /// </remarks>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     internal struct ArchetypeNeighborCache
     {

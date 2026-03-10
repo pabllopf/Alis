@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Kernel;
 
 namespace Alis.Core.Ecs.Systems
@@ -78,6 +79,12 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     Proxy struct used to get an <see cref="GameObjectEnumerator" />.
         /// </summary>
+        /// <remarks>
+        ///     Memory layout optimized: Scene reference (8 bytes) + Span (16 bytes)
+        ///     Total: 24 bytes
+        ///     Pack = 4 for optimal alignment
+        /// </remarks>
+        [StructLayout(LayoutKind.Sequential, Pack = 4)]
         public readonly ref struct EntityEnumerable
         {
             /// <summary>

@@ -36,9 +36,19 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
     /// <summary>
     ///     The archetype edge key
     /// </summary>
+    /// <remarks>
+    ///     Memory layout optimized: 8 bytes total (ArchetypeEdgeType enum 4 bytes + ComponentId 2 bytes + GameObjectType 2 bytes)
+    ///     Field order reordered for optimal packing: enum (4 bytes) -> ComponentId (2 bytes) -> GameObjectType (2 bytes)
+    ///     Pack = 1 for minimal memory footprint, fits in 8 bytes (long)
+    /// </remarks>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct ArchetypeEdgeKey : IEquatable<ArchetypeEdgeKey>
     {
+        /// <summary>
+        ///     The edge type
+        /// </summary>
+        internal ArchetypeEdgeType EdgeType;
+
         //could be tag type or component type
         /// <summary>
         ///     The component id
@@ -50,10 +60,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// </summary>
         internal GameObjectType ArchetypeFrom;
 
-        /// <summary>
-        ///     The edge type
-        /// </summary>
-        internal ArchetypeEdgeType EdgeType;
 
         /// <summary>
         ///     Components the component id

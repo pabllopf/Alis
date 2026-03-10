@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Kernel.Archetypes;
 
@@ -121,6 +122,11 @@ namespace Alis.Core.Ecs.Systems
         ///     Proxy type for foreach syntax
         /// </summary>
         /// <param name="query"></param>
+        /// <remarks>
+        ///     Memory layout optimized: Query reference (8 bytes) captured in primary constructor
+        ///     Pack = 1 for minimal memory footprint
+        /// </remarks>
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
         public readonly struct QueryEnumerable(Query query)
         {
             /// <summary>

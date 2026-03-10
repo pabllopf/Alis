@@ -35,6 +35,11 @@ namespace Alis.Core.Ecs.Collections
     /// <summary>
     ///     The inline array
     /// </summary>
+    /// <remarks>
+    ///     Memory layout optimized: 8 elements of type T laid out sequentially
+    ///     Pack = 1 for minimal memory footprint, tightly packed inline array
+    ///     Size depends on T: e.g., 32 bytes for uint, 16 bytes for ushort
+    /// </remarks>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     internal struct InlineArray8<T>
     {

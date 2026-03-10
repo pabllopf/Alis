@@ -37,7 +37,11 @@ namespace Alis.Core.Ecs.Collections
     /// <summary>
     ///     The frugal stack
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    /// <remarks>
+    ///     Memory layout optimized: 12 bytes total (T[] reference 8 bytes + int 4 bytes)
+    ///     Pack = 4 for optimal alignment with reference types
+    /// </remarks>
+    [StructLayout(LayoutKind.Sequential, Pack = 4)]
     public struct FrugalStack<T>()
     {
         /// <summary>

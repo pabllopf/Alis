@@ -7,7 +7,11 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
     /// <summary>
     ///     The fields
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    /// <remarks>
+    ///     Memory layout optimized: 16 bytes total (two array references, 8 bytes each)
+    ///     Pack = 8 for optimal alignment with reference types on 64-bit architectures
+    /// </remarks>
+    [StructLayout(LayoutKind.Sequential, Pack = 8)]
     public struct Fields
     {
         /// <summary>

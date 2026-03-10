@@ -347,7 +347,12 @@ namespace Alis.Core.Ecs
     /// <summary>
     ///     The gameObject ref tuple
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    /// <remarks>
+    ///     Memory layout optimized: GameObject struct (8 bytes) + eight Ref structs (192 bytes)
+    ///     Total: 200 bytes
+    ///     Pack = 4 for optimal alignment
+    /// </remarks>
+    [StructLayout(LayoutKind.Sequential, Pack = 4)]
     public ref struct GameObjectRefTuple<T1, T2, T3, T4, T5, T6, T7, T8>
     {
         /// <summary>

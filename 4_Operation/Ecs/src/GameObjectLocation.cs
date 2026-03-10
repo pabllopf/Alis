@@ -36,7 +36,12 @@ namespace Alis.Core.Ecs
     /// <summary>
     ///     The gameObject location
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 2)]
+    /// <remarks>
+    ///     Memory layout optimized: Archetype (reference, 8 bytes) -> Index (4 bytes) -> Flags (4 bytes enum) -> Version (2 bytes)
+    ///     Total: 18 bytes + 6 bytes padding = 24 bytes aligned
+    ///     Pack = 4 for optimal performance on 64-bit architectures while minimizing padding
+    /// </remarks>
+    [StructLayout(LayoutKind.Sequential, Pack = 4)]
     public struct GameObjectLocation
     {
         

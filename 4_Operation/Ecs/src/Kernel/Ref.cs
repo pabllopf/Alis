@@ -38,7 +38,12 @@ namespace Alis.Core.Ecs.Kernel
     ///     A wrapper ref struct over a reference to a <typeparamref name="T" />
     /// </summary>
     /// <typeparam name="T">The type this  /> wraps over</typeparam>
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    /// <remarks>
+    ///     Memory layout optimized: Span (16 bytes) + int (4 bytes)
+    ///     Total: 20 bytes + 4 bytes padding = 24 bytes aligned
+    ///     Pack = 4 for optimal alignment with Span structure
+    /// </remarks>
+    [StructLayout(LayoutKind.Sequential, Pack = 4)]
     public ref struct Ref<T>
     {
         /// <summary>

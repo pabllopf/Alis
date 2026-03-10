@@ -36,6 +36,10 @@ namespace Alis.Core.Ecs
     ///     Proxy type for foreach syntax
     /// </summary>
     /// <param name="query">The query to wrap.</param>
+    /// <remarks>
+    ///     Memory layout optimized: Query reference (8 bytes) captured in primary constructor
+    ///     Pack = 1 for minimal memory footprint
+    /// </remarks>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public readonly struct QueryEnumerable<T1>(Query query)
     {
@@ -49,6 +53,10 @@ namespace Alis.Core.Ecs
     ///     Proxy type for foreach syntax
     /// </summary>
     /// <param name="query">The query to wrap.</param>
+    /// <remarks>
+    ///     Memory layout optimized: Query reference (8 bytes) captured in primary constructor
+    ///     Pack = 1 for minimal memory footprint
+    /// </remarks>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public readonly struct QueryEnumerable<T1, T2>(Query query)
     {
@@ -62,6 +70,10 @@ namespace Alis.Core.Ecs
     ///     Proxy type for foreach syntax
     /// </summary>
     /// <param name="query">The query to wrap.</param>
+    /// <remarks>
+    ///     Memory layout optimized: Query reference (8 bytes) captured in primary constructor
+    ///     Pack = 1 for minimal memory footprint
+    /// </remarks>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public readonly struct QueryEnumerable<T1, T2, T3>(Query query)
     {
@@ -75,6 +87,10 @@ namespace Alis.Core.Ecs
     ///     Proxy type for foreach syntax
     /// </summary>
     /// <param name="query">The query to wrap.</param>
+    /// <remarks>
+    ///     Memory layout optimized: Query reference (8 bytes) captured in primary constructor
+    ///     Pack = 1 for minimal memory footprint
+    /// </remarks>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public readonly struct QueryEnumerable<T1, T2, T3, T4>(Query query)
     {
@@ -88,6 +104,10 @@ namespace Alis.Core.Ecs
     ///     Proxy type for foreach syntax
     /// </summary>
     /// <param name="query">The query to wrap.</param>
+    /// <remarks>
+    ///     Memory layout optimized: Query reference (8 bytes) captured in primary constructor
+    ///     Pack = 1 for minimal memory footprint
+    /// </remarks>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public readonly struct QueryEnumerable<T1, T2, T3, T4, T5>(Query query)
     {
@@ -101,6 +121,10 @@ namespace Alis.Core.Ecs
     ///     Proxy type for foreach syntax
     /// </summary>
     /// <param name="query">The query to wrap.</param>
+    /// <remarks>
+    ///     Memory layout optimized: Query reference (8 bytes) captured in primary constructor
+    ///     Pack = 1 for minimal memory footprint
+    /// </remarks>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public readonly struct QueryEnumerable<T1, T2, T3, T4, T5, T6>(Query query)
     {
@@ -114,6 +138,10 @@ namespace Alis.Core.Ecs
     ///     Proxy type for foreach syntax
     /// </summary>
     /// <param name="query">The query to wrap.</param>
+    /// <remarks>
+    ///     Memory layout optimized: Query reference (8 bytes) captured in primary constructor
+    ///     Pack = 1 for minimal memory footprint
+    /// </remarks>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public readonly struct QueryEnumerable<T1, T2, T3, T4, T5, T6, T7>(Query query)
     {
@@ -127,6 +155,10 @@ namespace Alis.Core.Ecs
     ///     Proxy type for foreach syntax
     /// </summary>
     /// <param name="query">The query to wrap.</param>
+    /// <remarks>
+    ///     Memory layout optimized: Query reference (8 bytes) captured in primary constructor
+    ///     Pack = 1 for minimal memory footprint
+    /// </remarks>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public readonly struct QueryEnumerable<T1, T2, T3, T4, T5, T6, T7, T8>(Query query)
     {

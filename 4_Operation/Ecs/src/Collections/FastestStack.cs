@@ -530,13 +530,22 @@ namespace Alis.Core.Ecs.Collections
         /// <summary>
         ///     The enumerator
         /// </summary>
-        [StructLayout(LayoutKind.Sequential, Pack = 1)]
+        /// <remarks>
+        ///     Memory layout optimized: FastestStack struct (16 bytes) + T generic (variable) + two ints (8 bytes)
+        ///     Pack = 4 for optimal alignment
+        /// </remarks>
+        [StructLayout(LayoutKind.Sequential, Pack = 4)]
         public struct Enumerator : IEnumerator<T>
         {
             /// <summary>
             ///     The fastest stack
             /// </summary>
             private readonly FastestStack<T> _fastestStack;
+
+            /// <summary>
+            ///     The current element
+            /// </summary>
+            private T _currentElement;
 
             /// <summary>
             ///     The version
@@ -548,10 +557,6 @@ namespace Alis.Core.Ecs.Collections
             /// </summary>
             private int _index;
 
-            /// <summary>
-            ///     The current element
-            /// </summary>
-            private T _currentElement;
 
             /// <summary>
             ///     Initializes a new instance of the <see cref="Enumerator" /> class

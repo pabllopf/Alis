@@ -38,7 +38,12 @@ namespace Alis.Core.Ecs.Kernel
     /// <summary>
     ///     A handle to a component of any type. Useful to avoid boxing.
     /// </summary>
-    /// <remarks>Must be disposed. The handle must also not be used afterwards.</remarks>
+    /// <remarks>
+    ///     Must be disposed. The handle must also not be used afterwards.
+    ///     Memory layout optimized: 6 bytes total (int 4 bytes + ComponentId 2 bytes)
+    ///     Pack = 1 for minimal memory footprint
+    ///     Readonly struct for immutability and potential compiler optimizations
+    /// </remarks>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public readonly struct ComponentHandle : IEquatable<ComponentHandle>, IDisposable
     {

@@ -36,7 +36,12 @@ namespace Alis.Core.Ecs.Kernel.Events
     /// <summary>
     ///     The gameObject only event
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    /// <remarks>
+    ///     Memory layout optimized: Two Action references (16 bytes) + FrugalStack struct (12 bytes)
+    ///     Total: 28 bytes + 4 bytes padding = 32 bytes aligned
+    ///     Pack = 8 for optimal alignment with reference types
+    /// </remarks>
+    [StructLayout(LayoutKind.Sequential, Pack = 8)]
     public struct GameObjectOnlyEvent()
     {
         /// <summary>

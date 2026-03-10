@@ -174,6 +174,10 @@ namespace Alis.Core.Ecs.Systems
         ///     Proxy type for foreach syntax
         /// </summary>
         /// <param name="query">The query to wrap.</param>
+        /// <remarks>
+        ///     Memory layout optimized: Query reference (8 bytes) captured in primary constructor
+        ///     Pack = 1 for minimal memory footprint
+        /// </remarks>
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
         public readonly struct QueryEnumerable(Query query)
         {
@@ -187,6 +191,12 @@ namespace Alis.Core.Ecs.Systems
           /// <summary>
     ///     The chunk query enumerator
     /// </summary>
+    /// <remarks>
+    ///     Memory layout optimized: Scene reference (8 bytes) + Span (16 bytes) + int (4 bytes)
+    ///     Total: 28 bytes + 4 bytes padding = 32 bytes aligned
+    ///     Pack = 4 for optimal alignment
+    /// </remarks>
+    [StructLayout(LayoutKind.Sequential, Pack = 4)]
     public ref struct ChunkQueryEnumerator<T1, T2, T3>
     {
         /// <summary>
@@ -343,6 +353,12 @@ namespace Alis.Core.Ecs.Systems
                /// <summary>
     ///     The chunk query enumerator
     /// </summary>
+    /// <remarks>
+    ///     Memory layout optimized: Scene reference (8 bytes) + Span (16 bytes) + int (4 bytes)
+    ///     Total: 28 bytes + 4 bytes padding = 32 bytes aligned
+    ///     Pack = 4 for optimal alignment
+    /// </remarks>
+    [StructLayout(LayoutKind.Sequential, Pack = 4)]
     public ref struct ChunkQueryEnumerator<T1, T2, T3, T4, T5>
     {
         /// <summary>
@@ -422,6 +438,12 @@ namespace Alis.Core.Ecs.Systems
                    /// <summary>
     ///     The chunk query enumerator
     /// </summary>
+    /// <remarks>
+    ///     Memory layout optimized: Scene reference (8 bytes) + Span (16 bytes) + int (4 bytes)
+    ///     Total: 28 bytes + 4 bytes padding = 32 bytes aligned
+    ///     Pack = 4 for optimal alignment
+    /// </remarks>
+    [StructLayout(LayoutKind.Sequential, Pack = 4)]
     public ref struct ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6>
     {
         /// <summary>
@@ -489,6 +511,11 @@ namespace Alis.Core.Ecs.Systems
         ///     Proxy type for foreach syntax
         /// </summary>
         /// <param name="query">The query to wrap.</param>
+        /// <remarks>
+        ///     Memory layout optimized: Query reference (8 bytes) captured in primary constructor
+        ///     Pack = 1 for minimal memory footprint
+        /// </remarks>
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
         public readonly struct QueryEnumerable(Query query)
         {
             /// <summary>
@@ -501,6 +528,12 @@ namespace Alis.Core.Ecs.Systems
                     /// <summary>
     ///     The chunk query enumerator
     /// </summary>
+    /// <remarks>
+    ///     Memory layout optimized: Scene reference (8 bytes) + Span (16 bytes) + int (4 bytes)
+    ///     Total: 28 bytes + 4 bytes padding = 32 bytes aligned
+    ///     Pack = 4 for optimal alignment
+    /// </remarks>
+    [StructLayout(LayoutKind.Sequential, Pack = 4)]
     public ref struct ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7>
     {
         /// <summary>
@@ -569,6 +602,11 @@ namespace Alis.Core.Ecs.Systems
         ///     Proxy type for foreach syntax
         /// </summary>
         /// <param name="query">The query to wrap.</param>
+        /// <remarks>
+        ///     Memory layout optimized: Query reference (8 bytes) captured in primary constructor
+        ///     Pack = 1 for minimal memory footprint
+        /// </remarks>
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
         public readonly struct QueryEnumerable(Query query)
         {
             /// <summary>
@@ -581,6 +619,12 @@ namespace Alis.Core.Ecs.Systems
                      /// <summary>
     ///     The chunk query enumerator
     /// </summary>
+    /// <remarks>
+    ///     Memory layout optimized: Scene reference (8 bytes) + Span (16 bytes) + int (4 bytes)
+    ///     Total: 28 bytes + 4 bytes padding = 32 bytes aligned
+    ///     Pack = 4 for optimal alignment
+    /// </remarks>
+    [StructLayout(LayoutKind.Sequential, Pack = 4)]
     public ref struct ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8>
     {
         /// <summary>

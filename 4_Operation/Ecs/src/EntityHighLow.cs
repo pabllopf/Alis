@@ -34,6 +34,10 @@ namespace Alis.Core.Ecs
     /// <summary>
     ///     The gameObject high low
     /// </summary>
+    /// <remarks>
+    ///     Memory layout optimized: 8 bytes total (two ints, 4 bytes each)
+    ///     Pack = 1 for minimal memory footprint, naturally aligned
+    /// </remarks>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct EntityHighLow
     {

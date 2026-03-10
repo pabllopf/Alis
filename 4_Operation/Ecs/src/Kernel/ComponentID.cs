@@ -35,6 +35,11 @@ namespace Alis.Core.Ecs.Kernel
     /// <summary>
     ///     A lightweight struct that represents a component type. Used for fast lookups.
     /// </summary>
+    /// <remarks>
+    ///     Memory layout optimized: 2 bytes total (single ushort)
+    ///     Pack = 1 for minimal memory footprint
+    ///     Readonly struct for immutability and potential compiler optimizations
+    /// </remarks>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public readonly struct ComponentId : ITypeId, IEquatable<ComponentId>
     {

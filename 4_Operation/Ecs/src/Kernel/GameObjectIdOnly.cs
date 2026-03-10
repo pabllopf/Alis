@@ -35,7 +35,11 @@ namespace Alis.Core.Ecs.Kernel
     /// <summary>
     ///     The gameObject id only
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 2)]
+    /// <remarks>
+    ///     Memory layout optimized: 6 bytes total (int + ushort)
+    ///     Pack = 1 for minimal memory footprint
+    /// </remarks>
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct GameObjectIdOnly(int id, ushort version)
     {
         /// <summary>

@@ -34,6 +34,10 @@ namespace Alis.Core.Ecs
     /// <summary>
     ///     The gameObject data
     /// </summary>
+    /// <remarks>
+    ///     Memory layout optimized: 8 bytes total (int + ushort + ushort)
+    ///     Pack = 1 for minimal memory footprint
+    /// </remarks>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct EntityData
     {

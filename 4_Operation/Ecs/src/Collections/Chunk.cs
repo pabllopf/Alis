@@ -29,6 +29,7 @@
 
 using System;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Redifinition;
 
 namespace Alis.Core.Ecs.Collections
@@ -36,6 +37,11 @@ namespace Alis.Core.Ecs.Collections
     /// <summary>
     ///     The chunk
     /// </summary>
+    /// <remarks>
+    ///     Memory layout optimized: 8 bytes total (TData[] reference)
+    ///     Pack = 8 for optimal alignment with reference types on 64-bit architectures
+    /// </remarks>
+    [StructLayout(LayoutKind.Sequential, Pack = 8)]
     internal struct Chunk<TData>
     {
         /// <summary>
