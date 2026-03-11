@@ -9,6 +9,12 @@ namespace Alis.Core.Ecs
     /// <summary>
     ///     The neighbor cache
     /// </summary>
+    /// <remarks>
+    ///     Memory layout optimized: Empty struct, 1 byte (C# minimum)
+    ///     Pack = 1 for minimal memory footprint
+    ///     All logic is in static nested classes
+    /// </remarks>
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct NeighborCache<T1, T2, T3, T4, T5, T6, T7, T8> : IArchetypeGraphEdge
     {
         /// <summary>
@@ -134,6 +140,12 @@ namespace Alis.Core.Ecs
     /// <summary>
     ///     The neighbor cache
     /// </summary>
+    /// <remarks>
+    ///     Memory layout optimized: Empty struct, 1 byte (C# minimum)
+    ///     Pack = 1 for minimal memory footprint
+    ///     All logic is in static nested classes
+    /// </remarks>
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct NeighborCache<T1, T2, T3, T4, T5, T6> : IArchetypeGraphEdge
     {
        
@@ -255,6 +267,12 @@ namespace Alis.Core.Ecs
     /// <summary>
     ///     The neighbor cache
     /// </summary>
+    /// <remarks>
+    ///     Memory layout optimized: Empty struct, 1 byte (C# minimum)
+    ///     Pack = 1 for minimal memory footprint
+    ///     All logic is in static nested classes
+    /// </remarks>
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct NeighborCache<T1, T2, T3, T4> : IArchetypeGraphEdge
     {
       
@@ -309,6 +327,12 @@ namespace Alis.Core.Ecs
     /// <summary>
     ///     The neighbor cache
     /// </summary>
+    /// <remarks>
+    ///     Memory layout optimized: Empty struct, 1 byte (C# minimum)
+    ///     Pack = 1 for minimal memory footprint
+    ///     All logic is in static nested classes
+    /// </remarks>
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct NeighborCache<T1, T2, T3> : IArchetypeGraphEdge
     {
      
@@ -362,6 +386,11 @@ namespace Alis.Core.Ecs
     /// <summary>
     ///     The neighbor cache
     /// </summary>
+    /// <remarks>
+    ///     Memory layout optimized: Empty struct, 1 byte (C# minimum)
+    ///     Pack = 1 for minimal memory footprint
+    ///     All logic is in static nested classes
+    /// </remarks>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct NeighborCache<T1, T2> : IArchetypeGraphEdge
     {
