@@ -33,6 +33,7 @@ using Alis.Benchmark.CustomCollections.Arrays;
 using Alis.Benchmark.CustomCollections.Lists;
 using Alis.Benchmark.CustomCollections.Stacks;
 using Alis.Benchmark.CustomEcs;
+using Alis.Benchmark.CustomNeighborCache;
 using Alis.Benchmark.EntityComponentSystem.CreateEntityWithOneComponent;
 using Alis.Benchmark.EntityComponentSystem.CreateEntityWithThreeComponents;
 using Alis.Benchmark.EntityComponentSystem.CreateEntityWithTwoComponents;
@@ -97,7 +98,8 @@ namespace Alis.Benchmark
 
                 typeof(LoopBenchmark),
 
-                typeof(AlisEcsBenchmark)
+                typeof(AlisEcsBenchmark),
+                typeof(CustomNeighborCacheBenchmark)
             });
 
             IConfig configuration = DefaultConfig.Instance;

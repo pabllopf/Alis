@@ -1,0 +1,37 @@
+```
+
+BenchmarkDotNet v0.14.0, macOS 26.3.1 (25D2128) [Darwin 25.3.0]
+Apple M3 Max, 1 CPU, 16 logical and 16 physical cores
+.NET SDK 10.0.103
+  [Host] : .NET 8.0.11 (8.0.1124.51707), Arm64 RyuJIT AdvSIMD
+
+Job=Release  Runtime=.NET 8.0  Force=True  
+Server=True  BuildConfiguration=Release  Toolchain=InProcessEmitToolchain  
+InvocationCount=1  UnrollFactor=1  
+
+```
+| Method                   | EntityCount | Arity | Mean     | Error    | StdDev   | Ratio | RatioSD | Allocated | Alloc Ratio |
+|------------------------- |------------ |------ |---------:|---------:|---------:|------:|--------:|----------:|------------:|
+| **Alis_Neighbor_AddRemove**  | **1000**        | **1**     | **248.3 μs** |  **4.89 μs** |  **8.31 μs** |  **0.81** |    **0.05** |   **1.38 KB** |        **1.02** |
+| Frent_Neighbor_AddRemove | 1000        | 1     | 307.0 μs |  6.12 μs | 15.13 μs |  1.00 |    0.07 |   1.35 KB |        1.00 |
+|                          |             |       |          |          |          |       |         |           |             |
+| **Alis_Neighbor_AddRemove**  | **1000**        | **2**     | **302.7 μs** |  **6.04 μs** | **14.46 μs** |  **0.88** |    **0.07** |   **1.47 KB** |        **1.02** |
+| Frent_Neighbor_AddRemove | 1000        | 2     | 343.5 μs |  7.19 μs | 20.85 μs |  1.00 |    0.09 |   1.45 KB |        1.00 |
+|                          |             |       |          |          |          |       |         |           |             |
+| **Alis_Neighbor_AddRemove**  | **1000**        | **3**     | **339.0 μs** |  **6.77 μs** | **13.21 μs** |  **0.88** |    **0.04** |   **1.56 KB** |        **1.02** |
+| Frent_Neighbor_AddRemove | 1000        | 3     | 387.4 μs |  7.41 μs |  9.10 μs |  1.00 |    0.03 |   1.54 KB |        1.00 |
+|                          |             |       |          |          |          |       |         |           |             |
+| **Alis_Neighbor_AddRemove**  | **1000**        | **4**     | **379.3 μs** |  **7.25 μs** | **13.07 μs** |  **0.80** |    **0.05** |   **1.66 KB** |        **1.01** |
+| Frent_Neighbor_AddRemove | 1000        | 4     | 474.1 μs |  9.36 μs | 23.48 μs |  1.00 |    0.07 |   1.63 KB |        1.00 |
+|                          |             |       |          |          |          |       |         |           |             |
+| **Alis_Neighbor_AddRemove**  | **1000**        | **5**     | **412.5 μs** |  **7.63 μs** |  **6.37 μs** |  **0.82** |    **0.02** |   **1.75 KB** |        **1.01** |
+| Frent_Neighbor_AddRemove | 1000        | 5     | 502.2 μs |  9.87 μs | 13.51 μs |  1.00 |    0.04 |   1.73 KB |        1.00 |
+|                          |             |       |          |          |          |       |         |           |             |
+| **Alis_Neighbor_AddRemove**  | **1000**        | **6**     | **461.4 μs** |  **9.10 μs** | **13.05 μs** |  **0.82** |    **0.03** |   **1.84 KB** |        **1.01** |
+| Frent_Neighbor_AddRemove | 1000        | 6     | 563.0 μs | 11.13 μs |  9.86 μs |  1.00 |    0.02 |   1.82 KB |        1.00 |
+|                          |             |       |          |          |          |       |         |           |             |
+| **Alis_Neighbor_AddRemove**  | **1000**        | **7**     | **503.2 μs** |  **9.76 μs** | **13.68 μs** |  **0.79** |    **0.03** |   **1.94 KB** |        **1.01** |
+| Frent_Neighbor_AddRemove | 1000        | 7     | 636.0 μs | 12.42 μs | 20.75 μs |  1.00 |    0.05 |   1.91 KB |        1.00 |
+|                          |             |       |          |          |          |       |         |           |             |
+| **Alis_Neighbor_AddRemove**  | **1000**        | **8**     | **592.8 μs** | **11.69 μs** | **26.15 μs** |  **0.82** |    **0.04** |   **2.03 KB** |        **1.01** |
+| Frent_Neighbor_AddRemove | 1000        | 8     | 724.7 μs | 14.45 μs | 18.27 μs |  1.00 |    0.04 |   2.01 KB |        1.00 |

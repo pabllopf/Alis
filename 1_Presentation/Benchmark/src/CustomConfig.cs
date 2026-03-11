@@ -28,6 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics;
+using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Diagnosers;
 using BenchmarkDotNet.Environments;
@@ -44,6 +46,10 @@ namespace Alis.Benchmark
     /// <seealso cref="ManualConfig" />
     internal class CustomConfig : ManualConfig
     {
+        
+        [GlobalSetup] public void Setup()
+            => Process.GetCurrentProcess().PriorityClass = ProcessPriorityClass.RealTime;
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="CustomConfig" /> class
         /// </summary>
