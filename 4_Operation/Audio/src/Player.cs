@@ -136,26 +136,17 @@ namespace Alis.Core.Audio
         /// <returns>The player</returns>
         internal static IPlayer CheckOs()
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return new WindowsPlayer();
-            }
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-            {
-                return new LinuxPlayer();
-            }
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            {
-                return new MacPlayer();
-            }
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Create("WEBASSEMBLY")) || RuntimeInformation.IsOSPlatform(OSPlatform.Create("BROWSER")))
-            {
-                return new BrowserPlayer();
-            }
-            
+#if osxarm64 || osxarm || osxx64 || osx || osxarm || osxx64 || osx
+            return new MacPlayer();
+#elif winx64 || winx86 || winarm64 || winarm || win
+            return new WindowsPlayer();
+#elif linuxx64 || linuxx86 || linuxarm64 || linuxarm || linux
+             return new LinuxPlayer();
+#elif webassembly || browser
+            return new WebPlayer();
+#else
+            return null;
+#endif
             throw new Exception("No implementation exist for the current OS");
         }
 
