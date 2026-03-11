@@ -155,8 +155,8 @@ namespace Alis.Core.Audio
             {
                 return new BrowserPlayer();
             }
-
-            return default(IPlayer);
+            
+            throw new Exception("No implementation exist for the current OS");
         }
 
         /// <summary>
