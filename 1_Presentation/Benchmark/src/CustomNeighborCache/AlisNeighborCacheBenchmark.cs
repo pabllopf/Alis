@@ -5,14 +5,29 @@ using BenchmarkDotNet.Attributes;
 
 namespace Alis.Benchmark.CustomNeighborCache
 {
+    /// <summary>
+    /// The custom neighbor cache benchmark class
+    /// </summary>
     public partial class CustomNeighborCacheBenchmark
     {
+        /// <summary>
+        /// The id
+        /// </summary>
         private static readonly GameObjectType _alisBaseType =
             GameObject.EntityTypeOf([Component<Component16>.Id]);
 
+        /// <summary>
+        /// The alis scene
+        /// </summary>
         private Scene _alisScene;
+        /// <summary>
+        /// The alis entities
+        /// </summary>
         private GameObject[] _alisEntities;
 
+        /// <summary>
+        /// Setup the alis
+        /// </summary>
         private void SetupAlis()
         {
             _alisScene = new Scene();
@@ -25,8 +40,14 @@ namespace Alis.Benchmark.CustomNeighborCache
             }
         }
 
+        /// <summary>
+        /// Disposes the alis
+        /// </summary>
         private void DisposeAlis() => _alisScene.Dispose();
 
+        /// <summary>
+        /// Alises the neighbor add remove
+        /// </summary>
         [Benchmark]
         public void Alis_Neighbor_AddRemove()
         {
@@ -43,6 +64,9 @@ namespace Alis.Benchmark.CustomNeighborCache
             }
         }
 
+        /// <summary>
+        /// Runs the alis 1
+        /// </summary>
         private void RunAlis1()
         {
             for (int i = 0; i < _alisEntities.Length; i++)
@@ -53,6 +77,9 @@ namespace Alis.Benchmark.CustomNeighborCache
             }
         }
 
+        /// <summary>
+        /// Runs the alis 2
+        /// </summary>
         private void RunAlis2()
         {
             for (int i = 0; i < _alisEntities.Length; i++)
@@ -63,6 +90,9 @@ namespace Alis.Benchmark.CustomNeighborCache
             }
         }
 
+        /// <summary>
+        /// Runs the alis 3
+        /// </summary>
         private void RunAlis3()
         {
             for (int i = 0; i < _alisEntities.Length; i++)
@@ -73,6 +103,9 @@ namespace Alis.Benchmark.CustomNeighborCache
             }
         }
 
+        /// <summary>
+        /// Runs the alis 4
+        /// </summary>
         private void RunAlis4()
         {
             for (int i = 0; i < _alisEntities.Length; i++)
@@ -83,6 +116,9 @@ namespace Alis.Benchmark.CustomNeighborCache
             }
         }
 
+        /// <summary>
+        /// Runs the alis 5
+        /// </summary>
         private void RunAlis5()
         {
             for (int i = 0; i < _alisEntities.Length; i++)
@@ -93,6 +129,9 @@ namespace Alis.Benchmark.CustomNeighborCache
             }
         }
 
+        /// <summary>
+        /// Runs the alis 6
+        /// </summary>
         private void RunAlis6()
         {
             for (int i = 0; i < _alisEntities.Length; i++)
@@ -104,6 +143,9 @@ namespace Alis.Benchmark.CustomNeighborCache
             }
         }
 
+        /// <summary>
+        /// Runs the alis 7
+        /// </summary>
         private void RunAlis7()
         {
             for (int i = 0; i < _alisEntities.Length; i++)
@@ -115,6 +157,9 @@ namespace Alis.Benchmark.CustomNeighborCache
             }
         }
 
+        /// <summary>
+        /// Runs the alis 8
+        /// </summary>
         private void RunAlis8()
         {
             for (int i = 0; i < _alisEntities.Length; i++)

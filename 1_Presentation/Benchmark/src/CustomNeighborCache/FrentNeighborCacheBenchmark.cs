@@ -5,14 +5,29 @@ using Frent.Core;
 
 namespace Alis.Benchmark.CustomNeighborCache
 {
+    /// <summary>
+    /// The custom neighbor cache benchmark class
+    /// </summary>
     public partial class CustomNeighborCacheBenchmark
     {
+        /// <summary>
+        /// The id
+        /// </summary>
         private static readonly EntityType _frentBaseType =
             Entity.EntityTypeOf([Component<Component16>.ID], []);
 
+        /// <summary>
+        /// The frent world
+        /// </summary>
         private World _frentWorld;
+        /// <summary>
+        /// The frent entities
+        /// </summary>
         private Entity[] _frentEntities;
 
+        /// <summary>
+        /// Setup the frent
+        /// </summary>
         private void SetupFrent()
         {
             _frentWorld = new World();
@@ -25,8 +40,14 @@ namespace Alis.Benchmark.CustomNeighborCache
             }
         }
 
+        /// <summary>
+        /// Disposes the frent
+        /// </summary>
         private void DisposeFrent() => _frentWorld.Dispose();
 
+        /// <summary>
+        /// Frents the neighbor add remove
+        /// </summary>
         [Benchmark(Baseline = true)]
         public void Frent_Neighbor_AddRemove()
         {
@@ -43,6 +64,9 @@ namespace Alis.Benchmark.CustomNeighborCache
             }
         }
 
+        /// <summary>
+        /// Runs the frent 1
+        /// </summary>
         private void RunFrent1()
         {
             for (int i = 0; i < _frentEntities.Length; i++)
@@ -53,6 +77,9 @@ namespace Alis.Benchmark.CustomNeighborCache
             }
         }
 
+        /// <summary>
+        /// Runs the frent 2
+        /// </summary>
         private void RunFrent2()
         {
             for (int i = 0; i < _frentEntities.Length; i++)
@@ -63,6 +90,9 @@ namespace Alis.Benchmark.CustomNeighborCache
             }
         }
 
+        /// <summary>
+        /// Runs the frent 3
+        /// </summary>
         private void RunFrent3()
         {
             for (int i = 0; i < _frentEntities.Length; i++)
@@ -73,6 +103,9 @@ namespace Alis.Benchmark.CustomNeighborCache
             }
         }
 
+        /// <summary>
+        /// Runs the frent 4
+        /// </summary>
         private void RunFrent4()
         {
             for (int i = 0; i < _frentEntities.Length; i++)
@@ -83,6 +116,9 @@ namespace Alis.Benchmark.CustomNeighborCache
             }
         }
 
+        /// <summary>
+        /// Runs the frent 5
+        /// </summary>
         private void RunFrent5()
         {
             for (int i = 0; i < _frentEntities.Length; i++)
@@ -93,6 +129,9 @@ namespace Alis.Benchmark.CustomNeighborCache
             }
         }
 
+        /// <summary>
+        /// Runs the frent 6
+        /// </summary>
         private void RunFrent6()
         {
             for (int i = 0; i < _frentEntities.Length; i++)
@@ -104,6 +143,9 @@ namespace Alis.Benchmark.CustomNeighborCache
             }
         }
 
+        /// <summary>
+        /// Runs the frent 7
+        /// </summary>
         private void RunFrent7()
         {
             for (int i = 0; i < _frentEntities.Length; i++)
@@ -115,6 +157,9 @@ namespace Alis.Benchmark.CustomNeighborCache
             }
         }
 
+        /// <summary>
+        /// Runs the frent 8
+        /// </summary>
         private void RunFrent8()
         {
             for (int i = 0; i < _frentEntities.Length; i++)

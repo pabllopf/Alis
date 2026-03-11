@@ -47,6 +47,9 @@ namespace Alis.Benchmark
     internal class CustomConfig : ManualConfig
     {
         
+        /// <summary>
+        /// Setup this instance
+        /// </summary>
         [GlobalSetup] public void Setup()
             => Process.GetCurrentProcess().PriorityClass = ProcessPriorityClass.RealTime;
         
