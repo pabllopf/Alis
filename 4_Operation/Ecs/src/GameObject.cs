@@ -261,7 +261,7 @@ namespace Alis.Core.Ecs
                 return;
             }
 
-            Archetype to = TraverseThroughCacheOrCreate<ComponentId, NeighborCache<T>>(
+            Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T>>(
                 world,
                 ref NeighborCache<T>.Add.Lookup,
                 ref thisLookup,
@@ -308,7 +308,7 @@ namespace Alis.Core.Ecs
                 return;
             }
 
-            Archetype to = TraverseThroughCacheOrCreate<ComponentId, NeighborCache<T>>(
+            Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T>>(
                 world,
                 ref NeighborCache<T>.Remove.Lookup,
                 ref thisLookup,
@@ -356,7 +356,6 @@ namespace Alis.Core.Ecs
          /// <summary>
         ///     Traverses the through cache or create using the specified scene
         /// </summary>
-        /// <typeparam name="T">The </typeparam>
         /// <typeparam name="TEdge">The edge</typeparam>
         /// <param name="scene">The scene</param>
         /// <param name="cache">The cache</param>
@@ -364,12 +363,11 @@ namespace Alis.Core.Ecs
         /// <param name="add">The add</param>
         /// <returns>The archetype</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static Archetype TraverseThroughCacheOrCreate<T, TEdge>(
+        internal static Archetype TraverseThroughCacheOrCreate<TEdge>(
             Scene scene,
             ref ArchetypeNeighborCache cache,
             ref GameObjectLocation currentLookup,
             bool add)
-            where T : ITypeId
             where TEdge : struct, IArchetypeGraphEdge
         {
             GameObjectType archetypeFromId = currentLookup.ArchetypeId;
@@ -387,10 +385,7 @@ namespace Alis.Core.Ecs
             {
                 FastImmutableArray<ComponentId> componentIDs = archetypeFromId.Types;
 
-                if (typeof(T) == typeof(ComponentId))
-                {
-                    default(TEdge).ModifyComponents(ref componentIDs, add);
-                }
+                default(TEdge).ModifyComponents(ref componentIDs, add);
 
                 Archetype archetype = Archetype.CreateOrGetExistingArchetype(
                     componentIDs.AsSpan(),
@@ -420,7 +415,7 @@ namespace Alis.Core.Ecs
                 return;
             }
 
-            Archetype to = TraverseThroughCacheOrCreate<ComponentId, NeighborCache<T1, T2>>(
+            Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T1, T2>>(
                 world,
                 ref NeighborCache<T1, T2>.Add.Lookup,
                 ref thisLookup,
@@ -477,7 +472,7 @@ namespace Alis.Core.Ecs
                 return;
             }
 
-            Archetype to = TraverseThroughCacheOrCreate<ComponentId, NeighborCache<T1, T2>>(
+            Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T1, T2>>(
                 world,
                 ref NeighborCache<T1, T2>.Remove.Lookup,
                 ref thisLookup,
@@ -547,7 +542,7 @@ namespace Alis.Core.Ecs
                 return;
             }
 
-            Archetype to = TraverseThroughCacheOrCreate<ComponentId, NeighborCache<T1, T2, T3>>(
+            Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T1, T2, T3>>(
                 world,
                 ref NeighborCache<T1, T2, T3>.Add.Lookup,
                 ref thisLookup,
@@ -608,7 +603,7 @@ namespace Alis.Core.Ecs
                 return;
             }
 
-            Archetype to = TraverseThroughCacheOrCreate<ComponentId, NeighborCache<T1, T2, T3>>(
+            Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T1, T2, T3>>(
                 world,
                 ref NeighborCache<T1, T2, T3>.Remove.Lookup,
                 ref thisLookup,
@@ -682,7 +677,7 @@ namespace Alis.Core.Ecs
                 return;
             }
 
-            Archetype to = TraverseThroughCacheOrCreate<ComponentId, NeighborCache<T1, T2, T3, T4>>(
+            Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T1, T2, T3, T4>>(
                 world,
                 ref NeighborCache<T1, T2, T3, T4>.Add.Lookup,
                 ref thisLookup,
@@ -748,7 +743,7 @@ namespace Alis.Core.Ecs
                 return;
             }
 
-            Archetype to = TraverseThroughCacheOrCreate<ComponentId, NeighborCache<T1, T2, T3, T4>>(
+            Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T1, T2, T3, T4>>(
                 world,
                 ref NeighborCache<T1, T2, T3, T4>.Remove.Lookup,
                 ref thisLookup,
@@ -832,7 +827,7 @@ namespace Alis.Core.Ecs
                 return;
             }
 
-            Archetype to = TraverseThroughCacheOrCreate<ComponentId, NeighborCache<T1, T2, T3, T4, T5>>(
+            Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T1, T2, T3, T4, T5>>(
                 world,
                 ref NeighborCache<T1, T2, T3, T4, T5>.Add.Lookup,
                 ref thisLookup,
@@ -902,7 +897,7 @@ namespace Alis.Core.Ecs
                 return;
             }
 
-            Archetype to = TraverseThroughCacheOrCreate<ComponentId, NeighborCache<T1, T2, T3, T4, T5>>(
+            Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T1, T2, T3, T4, T5>>(
                 world,
                 ref NeighborCache<T1, T2, T3, T4, T5>.Remove.Lookup,
                 ref thisLookup,
@@ -994,7 +989,7 @@ namespace Alis.Core.Ecs
                 return;
             }
 
-            Archetype to = TraverseThroughCacheOrCreate<ComponentId, NeighborCache<T1, T2, T3, T4, T5, T6>>(
+            Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T1, T2, T3, T4, T5, T6>>(
                 world,
                 ref NeighborCache<T1, T2, T3, T4, T5, T6>.Add.Lookup,
                 ref thisLookup,
@@ -1069,7 +1064,7 @@ EventRecord events = world.EventLookup[EntityIdOnly];
                 return;
             }
 
-            Archetype to = TraverseThroughCacheOrCreate<ComponentId, NeighborCache<T1, T2, T3, T4, T5, T6>>(
+            Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T1, T2, T3, T4, T5, T6>>(
                 world,
                 ref NeighborCache<T1, T2, T3, T4, T5, T6>.Remove.Lookup,
                 ref thisLookup,
@@ -1168,7 +1163,7 @@ EventRecord events = world.EventLookup[EntityIdOnly];
                 return;
             }
 
-            Archetype to = TraverseThroughCacheOrCreate<ComponentId, NeighborCache<T1, T2, T3, T4, T5, T6, T7>>(
+            Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T1, T2, T3, T4, T5, T6, T7>>(
                 world,
                 ref NeighborCache<T1, T2, T3, T4, T5, T6, T7>.Add.Lookup,
                 ref thisLookup,
@@ -1248,7 +1243,7 @@ EventRecord events = world.EventLookup[EntityIdOnly];
                 return;
             }
 
-            Archetype to = TraverseThroughCacheOrCreate<ComponentId, NeighborCache<T1, T2, T3, T4, T5, T6, T7>>(
+            Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T1, T2, T3, T4, T5, T6, T7>>(
                 world,
                 ref NeighborCache<T1, T2, T3, T4, T5, T6, T7>.Remove.Lookup,
                 ref thisLookup,
@@ -1354,7 +1349,7 @@ EventRecord events = world.EventLookup[EntityIdOnly];
                 return;
             }
 
-            Archetype to = TraverseThroughCacheOrCreate<ComponentId, NeighborCache<T1, T2, T3, T4, T5, T6, T7, T8>>(
+            Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T1, T2, T3, T4, T5, T6, T7, T8>>(
                 world,
                 ref NeighborCache<T1, T2, T3, T4, T5, T6, T7, T8>.Add.Lookup,
                 ref thisLookup,
@@ -1439,7 +1434,7 @@ EventRecord events = world.EventLookup[EntityIdOnly];
                 return;
             }
 
-            Archetype to = TraverseThroughCacheOrCreate<ComponentId, NeighborCache<T1, T2, T3, T4, T5, T6, T7, T8>>(
+            Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T1, T2, T3, T4, T5, T6, T7, T8>>(
                 world,
                 ref NeighborCache<T1, T2, T3, T4, T5, T6, T7, T8>.Remove.Lookup,
                 ref thisLookup,

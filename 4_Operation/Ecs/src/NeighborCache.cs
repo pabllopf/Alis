@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Collections;
 using Alis.Core.Ecs.Collections;
@@ -19,6 +20,7 @@ namespace Alis.Core.Ecs
         /// <param name="ids">The ids</param>
         /// <param name="add">The add</param>
         /// <returns>A fast immutable array of component id</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static FastImmutableArray<ComponentId> Modify(
             FastImmutableArray<ComponentId> components,
             ReadOnlySpan<ComponentId> ids,
@@ -26,17 +28,15 @@ namespace Alis.Core.Ecs
             => add
                 ? MemoryHelpers.Concat(components, ids)
                 : MemoryHelpers.Remove(components, ids);
-    }
 
-    /// <summary>
-    /// The neighbor cache component ids class
-    /// </summary>
-    internal static class NeighborCacheComponentIds<T1>
-    {
-        /// <summary>
-        /// The id
-        /// </summary>
-        internal static readonly ComponentId[] Values = [Component<T1>.Id];
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static FastImmutableArray<ComponentId> ModifySingle(
+            FastImmutableArray<ComponentId> components,
+            ComponentId id,
+            bool add)
+            => add
+                ? MemoryHelpers.Concat(components, id)
+                : MemoryHelpers.Remove(components, id);
     }
 
     /// <summary>
@@ -168,6 +168,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         /// <param name="components">The components</param>
         /// <param name="add">The add</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void ModifyComponents(ref FastImmutableArray<ComponentId> components, bool add)
             => components = NeighborCacheCore.Modify(components, NeighborCacheComponentIds<T1, T2, T3, T4, T5, T6, T7, T8>.Values, add);
     }
@@ -210,6 +211,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         /// <param name="components">The components</param>
         /// <param name="add">The add</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void ModifyComponents(ref FastImmutableArray<ComponentId> components, bool add)
             => components = NeighborCacheCore.Modify(components, NeighborCacheComponentIds<T1, T2, T3, T4, T5, T6, T7>.Values, add);
     }
@@ -252,6 +254,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         /// <param name="components">The components</param>
         /// <param name="add">The add</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void ModifyComponents(ref FastImmutableArray<ComponentId> components, bool add)
             => components = NeighborCacheCore.Modify(components, NeighborCacheComponentIds<T1, T2, T3, T4, T5, T6>.Values, add);
     }
@@ -294,6 +297,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         /// <param name="components">The components</param>
         /// <param name="add">The add</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void ModifyComponents(ref FastImmutableArray<ComponentId> components, bool add)
             => components = NeighborCacheCore.Modify(components, NeighborCacheComponentIds<T1, T2, T3, T4, T5>.Values, add);
     }
@@ -336,6 +340,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         /// <param name="components">The components</param>
         /// <param name="add">The add</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void ModifyComponents(ref FastImmutableArray<ComponentId> components, bool add)
             => components = NeighborCacheCore.Modify(components, NeighborCacheComponentIds<T1, T2, T3, T4>.Values, add);
     }
@@ -378,6 +383,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         /// <param name="components">The components</param>
         /// <param name="add">The add</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void ModifyComponents(ref FastImmutableArray<ComponentId> components, bool add)
             => components = NeighborCacheCore.Modify(components, NeighborCacheComponentIds<T1, T2, T3>.Values, add);
     }
@@ -420,6 +426,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         /// <param name="components">The components</param>
         /// <param name="add">The add</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void ModifyComponents(ref FastImmutableArray<ComponentId> components, bool add)
             => components = NeighborCacheCore.Modify(components, NeighborCacheComponentIds<T1, T2>.Values, add);
     }
@@ -462,7 +469,8 @@ namespace Alis.Core.Ecs
         /// </summary>
         /// <param name="components">The components</param>
         /// <param name="add">The add</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void ModifyComponents(ref FastImmutableArray<ComponentId> components, bool add)
-            => components = NeighborCacheCore.Modify(components, NeighborCacheComponentIds<T>.Values, add);
+            => components = NeighborCacheCore.ModifySingle(components, Component<T>.Id, add);
     }
 }
