@@ -114,487 +114,456 @@ namespace Alis.Core.Ecs.Test
             Assert.True(typeof(NeighborCache<Position>).IsValueType);
         }
 
-        /// <summary>
-        ///     Tests that add and remove static classes exist
-        /// </summary>
-        [Fact]
-        public void NeighborCache_HasAddAndRemoveNestedClasses()
-        {
-            // Arrange
-            Type cacheType = typeof(NeighborCache<Position>);
-
-            // Assert
-            Assert.NotNull(cacheType.GetNestedType("Add", System.Reflection.BindingFlags.NonPublic));
-            Assert.NotNull(cacheType.GetNestedType("Remove", System.Reflection.BindingFlags.NonPublic));
-        }
-    }
-
-    /// <summary>
-    ///     The neighbor cache test class for two generic parameters
-    /// </summary>
-    public class NeighborCacheDualTest
-    {
-        /// <summary>
-        ///     Tests that modify components adds both components when add flag is true
-        /// </summary>
-        [Fact]
-        public void ModifyComponents_AddsBothComponents_WhenAddFlagIsTrue()
-        {
-            // Arrange
-            NeighborCache<Position, Velocity> cache = default;
-            FastImmutableArray<ComponentId> components = FastImmutableArray<ComponentId>.Empty;
-
-            // Act
-            cache.ModifyComponents(ref components, add: true);
-
-            // Assert
-            Assert.Equal(2, components.Length);
-            Assert.Contains(Component<Position>.Id, components);
-            Assert.Contains(Component<Velocity>.Id, components);
-        }
 
         /// <summary>
-        ///     Tests that modify components removes both components when add flag is false
+        ///     The neighbor cache test class for two generic parameters
         /// </summary>
-        [Fact]
-        public void ModifyComponents_RemovesBothComponents_WhenAddFlagIsFalse()
+        public class NeighborCacheDualTest
         {
-            // Arrange
-            NeighborCache<Position, Velocity> cache = default;
-            FastImmutableArray<ComponentId>.Builder builder = FastImmutableArray<ComponentId>.CreateBuilder<ComponentId>(2);
-            builder.Add(Component<Position>.Id);
-            builder.Add(Component<Velocity>.Id);
-            FastImmutableArray<ComponentId> components = builder.ToImmutable();
+            /// <summary>
+            ///     Tests that modify components adds both components when add flag is true
+            /// </summary>
+            [Fact]
+            public void ModifyComponents_AddsBothComponents_WhenAddFlagIsTrue()
+            {
+                // Arrange
+                NeighborCache<Position, Velocity> cache = default;
+                FastImmutableArray<ComponentId> components = FastImmutableArray<ComponentId>.Empty;
 
-            // Act
-            cache.ModifyComponents(ref components, add: false);
+                // Act
+                cache.ModifyComponents(ref components, add: true);
 
-            // Assert
-            Assert.Empty(components);
-        }
+                // Assert
+                Assert.Equal(2, components.Length);
+                Assert.Contains(Component<Position>.Id, components);
+                Assert.Contains(Component<Velocity>.Id, components);
+            }
 
-        /// <summary>
-        ///     Tests that modify components preserves other components when adding
-        /// </summary>
-        [Fact]
-        public void ModifyComponents_PreservesOtherComponents_WhenAdding()
-        {
-            // Arrange
-            NeighborCache<Position, Velocity> cache = default;
-            FastImmutableArray<ComponentId>.Builder builder = FastImmutableArray<ComponentId>.CreateBuilder<ComponentId>(1);
-            builder.Add(Component<Health>.Id);
-            FastImmutableArray<ComponentId> components = builder.ToImmutable();
+            /// <summary>
+            ///     Tests that modify components removes both components when add flag is false
+            /// </summary>
+            [Fact]
+            public void ModifyComponents_RemovesBothComponents_WhenAddFlagIsFalse()
+            {
+                // Arrange
+                NeighborCache<Position, Velocity> cache = default;
+                FastImmutableArray<ComponentId>.Builder builder = FastImmutableArray<ComponentId>.CreateBuilder<ComponentId>(2);
+                builder.Add(Component<Position>.Id);
+                builder.Add(Component<Velocity>.Id);
+                FastImmutableArray<ComponentId> components = builder.ToImmutable();
 
-            // Act
-            cache.ModifyComponents(ref components, add: true);
+                // Act
+                cache.ModifyComponents(ref components, add: false);
 
-            // Assert
-            Assert.Equal(3, components.Length);
-            Assert.Contains(Component<Health>.Id, components);
-            Assert.Contains(Component<Position>.Id, components);
-            Assert.Contains(Component<Velocity>.Id, components);
-        }
-        
-    }
+                // Assert
+                Assert.Empty(components);
+            }
 
-    /// <summary>
-    ///     The neighbor cache test class for three generic parameters
-    /// </summary>
-    public class NeighborCacheTripletTest
-    {
-        /// <summary>
-        ///     Tests that modify components adds all three components when add flag is true
-        /// </summary>
-        [Fact]
-        public void ModifyComponents_AddsAllThreeComponents_WhenAddFlagIsTrue()
-        {
-            // Arrange
-            NeighborCache<Position, Velocity, Health> cache = default;
-            FastImmutableArray<ComponentId> components = FastImmutableArray<ComponentId>.Empty;
+            /// <summary>
+            ///     Tests that modify components preserves other components when adding
+            /// </summary>
+            [Fact]
+            public void ModifyComponents_PreservesOtherComponents_WhenAdding()
+            {
+                // Arrange
+                NeighborCache<Position, Velocity> cache = default;
+                FastImmutableArray<ComponentId>.Builder builder = FastImmutableArray<ComponentId>.CreateBuilder<ComponentId>(1);
+                builder.Add(Component<Health>.Id);
+                FastImmutableArray<ComponentId> components = builder.ToImmutable();
 
-            // Act
-            cache.ModifyComponents(ref components, add: true);
+                // Act
+                cache.ModifyComponents(ref components, add: true);
 
-            // Assert
-            Assert.Equal(3, components.Length);
-            Assert.Contains(Component<Position>.Id, components);
-            Assert.Contains(Component<Velocity>.Id, components);
-            Assert.Contains(Component<Health>.Id, components);
+                // Assert
+                Assert.Equal(3, components.Length);
+                Assert.Contains(Component<Health>.Id, components);
+                Assert.Contains(Component<Position>.Id, components);
+                Assert.Contains(Component<Velocity>.Id, components);
+            }
+
         }
 
         /// <summary>
-        ///     Tests that modify components removes all three components when add flag is false
+        ///     The neighbor cache test class for three generic parameters
         /// </summary>
-        [Fact]
-        public void ModifyComponents_RemovesAllThreeComponents_WhenAddFlagIsFalse()
+        public class NeighborCacheTripletTest
         {
-            // Arrange
-            NeighborCache<Position, Velocity, Health> cache = default;
-            FastImmutableArray<ComponentId>.Builder builder = FastImmutableArray<ComponentId>.CreateBuilder<ComponentId>(3);
-            builder.Add(Component<Position>.Id);
-            builder.Add(Component<Velocity>.Id);
-            builder.Add(Component<Health>.Id);
-            FastImmutableArray<ComponentId> components = builder.ToImmutable();
+            /// <summary>
+            ///     Tests that modify components adds all three components when add flag is true
+            /// </summary>
+            [Fact]
+            public void ModifyComponents_AddsAllThreeComponents_WhenAddFlagIsTrue()
+            {
+                // Arrange
+                NeighborCache<Position, Velocity, Health> cache = default;
+                FastImmutableArray<ComponentId> components = FastImmutableArray<ComponentId>.Empty;
 
-            // Act
-            cache.ModifyComponents(ref components, add: false);
+                // Act
+                cache.ModifyComponents(ref components, add: true);
 
-            // Assert
-            Assert.Empty(components);
+                // Assert
+                Assert.Equal(3, components.Length);
+                Assert.Contains(Component<Position>.Id, components);
+                Assert.Contains(Component<Velocity>.Id, components);
+                Assert.Contains(Component<Health>.Id, components);
+            }
+
+            /// <summary>
+            ///     Tests that modify components removes all three components when add flag is false
+            /// </summary>
+            [Fact]
+            public void ModifyComponents_RemovesAllThreeComponents_WhenAddFlagIsFalse()
+            {
+                // Arrange
+                NeighborCache<Position, Velocity, Health> cache = default;
+                FastImmutableArray<ComponentId>.Builder builder = FastImmutableArray<ComponentId>.CreateBuilder<ComponentId>(3);
+                builder.Add(Component<Position>.Id);
+                builder.Add(Component<Velocity>.Id);
+                builder.Add(Component<Health>.Id);
+                FastImmutableArray<ComponentId> components = builder.ToImmutable();
+
+                // Act
+                cache.ModifyComponents(ref components, add: false);
+
+                // Assert
+                Assert.Empty(components);
+            }
+
+            /// <summary>
+            ///     Tests that modify components handles partial removal correctly
+            /// </summary>
+            [Fact]
+            public void ModifyComponents_RemovesOnlySpecifiedComponents()
+            {
+                // Arrange
+                NeighborCache<Position, Velocity, Health> cache = default;
+                FastImmutableArray<ComponentId>.Builder builder = FastImmutableArray<ComponentId>.CreateBuilder<ComponentId>(4);
+                builder.Add(Component<Position>.Id);
+                builder.Add(Component<Velocity>.Id);
+                builder.Add(Component<Health>.Id);
+                builder.Add(Component<Armor>.Id);
+                FastImmutableArray<ComponentId> components = builder.ToImmutable();
+
+                // Act
+                cache.ModifyComponents(ref components, add: false);
+
+                // Assert
+                Assert.Single(components);
+                Assert.Contains(Component<Armor>.Id, components);
+                Assert.DoesNotContain(Component<Position>.Id, components);
+                Assert.DoesNotContain(Component<Velocity>.Id, components);
+                Assert.DoesNotContain(Component<Health>.Id, components);
+            }
         }
 
         /// <summary>
-        ///     Tests that modify components handles partial removal correctly
+        ///     The neighbor cache test class for four generic parameters
         /// </summary>
-        [Fact]
-        public void ModifyComponents_RemovesOnlySpecifiedComponents()
+        public class NeighborCacheQuadrupleTest
         {
-            // Arrange
-            NeighborCache<Position, Velocity, Health> cache = default;
-            FastImmutableArray<ComponentId>.Builder builder = FastImmutableArray<ComponentId>.CreateBuilder<ComponentId>(4);
-            builder.Add(Component<Position>.Id);
-            builder.Add(Component<Velocity>.Id);
-            builder.Add(Component<Health>.Id);
-            builder.Add(Component<Armor>.Id);
-            FastImmutableArray<ComponentId> components = builder.ToImmutable();
+            /// <summary>
+            ///     Tests that modify components adds all four components when add flag is true
+            /// </summary>
+            [Fact]
+            public void ModifyComponents_AddsFourComponents_WhenAddFlagIsTrue()
+            {
+                // Arrange
+                NeighborCache<Position, Velocity, Health, Armor> cache = default;
+                FastImmutableArray<ComponentId> components = FastImmutableArray<ComponentId>.Empty;
 
-            // Act
-            cache.ModifyComponents(ref components, add: false);
+                // Act
+                cache.ModifyComponents(ref components, add: true);
 
-            // Assert
-            Assert.Single(components);
-            Assert.Contains(Component<Armor>.Id, components);
-            Assert.DoesNotContain(Component<Position>.Id, components);
-            Assert.DoesNotContain(Component<Velocity>.Id, components);
-            Assert.DoesNotContain(Component<Health>.Id, components);
-        }
-    }
+                // Assert
+                Assert.Equal(4, components.Length);
+                Assert.Contains(Component<Position>.Id, components);
+                Assert.Contains(Component<Velocity>.Id, components);
+                Assert.Contains(Component<Health>.Id, components);
+                Assert.Contains(Component<Armor>.Id, components);
+            }
 
-    /// <summary>
-    ///     The neighbor cache test class for four generic parameters
-    /// </summary>
-    public class NeighborCacheQuadrupleTest
-    {
-        /// <summary>
-        ///     Tests that modify components adds all four components when add flag is true
-        /// </summary>
-        [Fact]
-        public void ModifyComponents_AddsFourComponents_WhenAddFlagIsTrue()
-        {
-            // Arrange
-            NeighborCache<Position, Velocity, Health, Armor> cache = default;
-            FastImmutableArray<ComponentId> components = FastImmutableArray<ComponentId>.Empty;
+            /// <summary>
+            ///     Tests that modify components removes four components when add flag is false
+            /// </summary>
+            [Fact]
+            public void ModifyComponents_RemovesFourComponents_WhenAddFlagIsFalse()
+            {
+                // Arrange
+                NeighborCache<Position, Velocity, Health, Armor> cache = default;
+                FastImmutableArray<ComponentId>.Builder builder = FastImmutableArray<ComponentId>.CreateBuilder<ComponentId>(4);
+                builder.Add(Component<Position>.Id);
+                builder.Add(Component<Velocity>.Id);
+                builder.Add(Component<Health>.Id);
+                builder.Add(Component<Armor>.Id);
+                FastImmutableArray<ComponentId> components = builder.ToImmutable();
 
-            // Act
-            cache.ModifyComponents(ref components, add: true);
+                // Act
+                cache.ModifyComponents(ref components, add: false);
 
-            // Assert
-            Assert.Equal(4, components.Length);
-            Assert.Contains(Component<Position>.Id, components);
-            Assert.Contains(Component<Velocity>.Id, components);
-            Assert.Contains(Component<Health>.Id, components);
-            Assert.Contains(Component<Armor>.Id, components);
+                // Assert
+                Assert.Empty(components);
+            }
         }
 
         /// <summary>
-        ///     Tests that modify components removes four components when add flag is false
+        ///     The neighbor cache test class for five generic parameters
         /// </summary>
-        [Fact]
-        public void ModifyComponents_RemovesFourComponents_WhenAddFlagIsFalse()
+        public class NeighborCacheQuintupleTest
         {
-            // Arrange
-            NeighborCache<Position, Velocity, Health, Armor> cache = default;
-            FastImmutableArray<ComponentId>.Builder builder = FastImmutableArray<ComponentId>.CreateBuilder<ComponentId>(4);
-            builder.Add(Component<Position>.Id);
-            builder.Add(Component<Velocity>.Id);
-            builder.Add(Component<Health>.Id);
-            builder.Add(Component<Armor>.Id);
-            FastImmutableArray<ComponentId> components = builder.ToImmutable();
+            /// <summary>
+            ///     Tests that modify components adds all five components when add flag is true
+            /// </summary>
+            [Fact]
+            public void ModifyComponents_AddsFiveComponents_WhenAddFlagIsTrue()
+            {
+                // Arrange
+                NeighborCache<Position, Velocity, Health, Armor, Damage> cache = default;
+                FastImmutableArray<ComponentId> components = FastImmutableArray<ComponentId>.Empty;
 
-            // Act
-            cache.ModifyComponents(ref components, add: false);
+                // Act
+                cache.ModifyComponents(ref components, add: true);
 
-            // Assert
-            Assert.Empty(components);
-        }
-    }
+                // Assert
+                Assert.Equal(5, components.Length);
+                Assert.Contains(Component<Position>.Id, components);
+                Assert.Contains(Component<Velocity>.Id, components);
+                Assert.Contains(Component<Health>.Id, components);
+                Assert.Contains(Component<Armor>.Id, components);
+                Assert.Contains(Component<Damage>.Id, components);
+            }
 
-    /// <summary>
-    ///     The neighbor cache test class for five generic parameters
-    /// </summary>
-    public class NeighborCacheQuintupleTest
-    {
-        /// <summary>
-        ///     Tests that modify components adds all five components when add flag is true
-        /// </summary>
-        [Fact]
-        public void ModifyComponents_AddsFiveComponents_WhenAddFlagIsTrue()
-        {
-            // Arrange
-            NeighborCache<Position, Velocity, Health, Armor, Damage> cache = default;
-            FastImmutableArray<ComponentId> components = FastImmutableArray<ComponentId>.Empty;
+            /// <summary>
+            ///     Tests that modify components removes five components when add flag is false
+            /// </summary>
+            [Fact]
+            public void ModifyComponents_RemovesFiveComponents_WhenAddFlagIsFalse()
+            {
+                // Arrange
+                NeighborCache<Position, Velocity, Health, Armor, Damage> cache = default;
+                FastImmutableArray<ComponentId>.Builder builder = FastImmutableArray<ComponentId>.CreateBuilder<ComponentId>(5);
+                builder.Add(Component<Position>.Id);
+                builder.Add(Component<Velocity>.Id);
+                builder.Add(Component<Health>.Id);
+                builder.Add(Component<Armor>.Id);
+                builder.Add(Component<Damage>.Id);
+                FastImmutableArray<ComponentId> components = builder.ToImmutable();
 
-            // Act
-            cache.ModifyComponents(ref components, add: true);
+                // Act
+                cache.ModifyComponents(ref components, add: false);
 
-            // Assert
-            Assert.Equal(5, components.Length);
-            Assert.Contains(Component<Position>.Id, components);
-            Assert.Contains(Component<Velocity>.Id, components);
-            Assert.Contains(Component<Health>.Id, components);
-            Assert.Contains(Component<Armor>.Id, components);
-            Assert.Contains(Component<Damage>.Id, components);
-        }
+                // Assert
+                Assert.Empty(components);
+            }
 
-        /// <summary>
-        ///     Tests that modify components removes five components when add flag is false
-        /// </summary>
-        [Fact]
-        public void ModifyComponents_RemovesFiveComponents_WhenAddFlagIsFalse()
-        {
-            // Arrange
-            NeighborCache<Position, Velocity, Health, Armor, Damage> cache = default;
-            FastImmutableArray<ComponentId>.Builder builder = FastImmutableArray<ComponentId>.CreateBuilder<ComponentId>(5);
-            builder.Add(Component<Position>.Id);
-            builder.Add(Component<Velocity>.Id);
-            builder.Add(Component<Health>.Id);
-            builder.Add(Component<Armor>.Id);
-            builder.Add(Component<Damage>.Id);
-            FastImmutableArray<ComponentId> components = builder.ToImmutable();
+            /// <summary>
+            ///     Tests that neighbor cache quintuple has correct struct layout
+            /// </summary>
+            [Fact]
+            public void NeighborCacheQuintuple_HasStructLayoutAttribute()
+            {
+                // Arrange
+                Type cacheType = typeof(NeighborCache<Position, Velocity, Health, Armor, Damage>);
 
-            // Act
-            cache.ModifyComponents(ref components, add: false);
-
-            // Assert
-            Assert.Empty(components);
+                // Assert
+                object[] layoutAttr = cacheType.GetCustomAttributes(typeof(System.Runtime.InteropServices.StructLayoutAttribute), false);
+                Assert.Empty(layoutAttr);
+            }
         }
 
         /// <summary>
-        ///     Tests that neighbor cache quintuple has correct struct layout
+        ///     The neighbor cache test class for six generic parameters
         /// </summary>
-        [Fact]
-        public void NeighborCacheQuintuple_HasStructLayoutAttribute()
+        public class NeighborCacheSextupleTest
         {
-            // Arrange
-            Type cacheType = typeof(NeighborCache<Position, Velocity, Health, Armor, Damage>);
+            /// <summary>
+            ///     Tests that modify components adds all six components when add flag is true
+            /// </summary>
+            [Fact]
+            public void ModifyComponents_AddsSixComponents_WhenAddFlagIsTrue()
+            {
+                // Arrange
+                NeighborCache<Position, Velocity, Health, Armor, Damage, TestComponent> cache = default;
+                FastImmutableArray<ComponentId> components = FastImmutableArray<ComponentId>.Empty;
 
-            // Assert
-            object[] layoutAttr = cacheType.GetCustomAttributes(typeof(System.Runtime.InteropServices.StructLayoutAttribute), false);
-            Assert.Empty(layoutAttr);
-        }
-    }
+                // Act
+                cache.ModifyComponents(ref components, add: true);
 
-    /// <summary>
-    ///     The neighbor cache test class for six generic parameters
-    /// </summary>
-    public class NeighborCacheSextupleTest
-    {
-        /// <summary>
-        ///     Tests that modify components adds all six components when add flag is true
-        /// </summary>
-        [Fact]
-        public void ModifyComponents_AddsSixComponents_WhenAddFlagIsTrue()
-        {
-            // Arrange
-            NeighborCache<Position, Velocity, Health, Armor, Damage, TestComponent> cache = default;
-            FastImmutableArray<ComponentId> components = FastImmutableArray<ComponentId>.Empty;
+                // Assert
+                Assert.Equal(6, components.Length);
+            }
 
-            // Act
-            cache.ModifyComponents(ref components, add: true);
+            /// <summary>
+            ///     Tests that modify components removes all six components when add flag is false
+            /// </summary>
+            [Fact]
+            public void ModifyComponents_RemovesSixComponents_WhenAddFlagIsFalse()
+            {
+                // Arrange
+                NeighborCache<Position, Velocity, Health, Armor, Damage, TestComponent> cache = default;
+                FastImmutableArray<ComponentId>.Builder builder = FastImmutableArray<ComponentId>.CreateBuilder<ComponentId>(6);
+                builder.Add(Component<Position>.Id);
+                builder.Add(Component<Velocity>.Id);
+                builder.Add(Component<Health>.Id);
+                builder.Add(Component<Armor>.Id);
+                builder.Add(Component<Damage>.Id);
+                builder.Add(Component<TestComponent>.Id);
+                FastImmutableArray<ComponentId> components = builder.ToImmutable();
 
-            // Assert
-            Assert.Equal(6, components.Length);
-        }
+                // Act
+                cache.ModifyComponents(ref components, add: false);
 
-        /// <summary>
-        ///     Tests that modify components removes all six components when add flag is false
-        /// </summary>
-        [Fact]
-        public void ModifyComponents_RemovesSixComponents_WhenAddFlagIsFalse()
-        {
-            // Arrange
-            NeighborCache<Position, Velocity, Health, Armor, Damage, TestComponent> cache = default;
-            FastImmutableArray<ComponentId>.Builder builder = FastImmutableArray<ComponentId>.CreateBuilder<ComponentId>(6);
-            builder.Add(Component<Position>.Id);
-            builder.Add(Component<Velocity>.Id);
-            builder.Add(Component<Health>.Id);
-            builder.Add(Component<Armor>.Id);
-            builder.Add(Component<Damage>.Id);
-            builder.Add(Component<TestComponent>.Id);
-            FastImmutableArray<ComponentId> components = builder.ToImmutable();
-
-            // Act
-            cache.ModifyComponents(ref components, add: false);
-
-            // Assert
-            Assert.Empty(components);
-        }
-    }
-
-    /// <summary>
-    ///     The neighbor cache test class for seven generic parameters
-    /// </summary>
-    public class NeighborCacheSeptupleTest
-    {
-        /// <summary>
-        ///     Tests that modify components adds all seven components when add flag is true
-        /// </summary>
-        [Fact]
-        public void ModifyComponents_AddsSevenComponents_WhenAddFlagIsTrue()
-        {
-            // Arrange
-            NeighborCache<Position, Velocity, Health, Armor, Damage, TestComponent, TestComponent2> cache = default;
-            FastImmutableArray<ComponentId> components = FastImmutableArray<ComponentId>.Empty;
-
-            // Act
-            cache.ModifyComponents(ref components, add: true);
-
-            // Assert
-            Assert.Equal(7, components.Length);
+                // Assert
+                Assert.Empty(components);
+            }
         }
 
         /// <summary>
-        ///     Tests that modify components removes all seven components when add flag is false
+        ///     The neighbor cache test class for seven generic parameters
         /// </summary>
-        [Fact]
-        public void ModifyComponents_RemovesSevenComponents_WhenAddFlagIsFalse()
+        public class NeighborCacheSeptupleTest
         {
-            // Arrange
-            NeighborCache<Position, Velocity, Health, Armor, Damage, TestComponent, TestComponent2> cache = default;
-            FastImmutableArray<ComponentId>.Builder builder = FastImmutableArray<ComponentId>.CreateBuilder<ComponentId>(7);
-            builder.Add(Component<Position>.Id);
-            builder.Add(Component<Velocity>.Id);
-            builder.Add(Component<Health>.Id);
-            builder.Add(Component<Armor>.Id);
-            builder.Add(Component<Damage>.Id);
-            builder.Add(Component<TestComponent>.Id);
-            builder.Add(Component<TestComponent2>.Id);
-            FastImmutableArray<ComponentId> components = builder.ToImmutable();
+            /// <summary>
+            ///     Tests that modify components adds all seven components when add flag is true
+            /// </summary>
+            [Fact]
+            public void ModifyComponents_AddsSevenComponents_WhenAddFlagIsTrue()
+            {
+                // Arrange
+                NeighborCache<Position, Velocity, Health, Armor, Damage, TestComponent, TestComponent2> cache = default;
+                FastImmutableArray<ComponentId> components = FastImmutableArray<ComponentId>.Empty;
 
-            // Act
-            cache.ModifyComponents(ref components, add: false);
+                // Act
+                cache.ModifyComponents(ref components, add: true);
 
-            // Assert
-            Assert.Empty(components);
-        }
-    }
+                // Assert
+                Assert.Equal(7, components.Length);
+            }
 
-    /// <summary>
-    ///     The neighbor cache test class for eight generic parameters
-    /// </summary>
-    public class NeighborCacheOctupleTest
-    {
-        /// <summary>
-        ///     Tests that modify components adds all eight components when add flag is true
-        /// </summary>
-        [Fact]
-        public void ModifyComponents_AddsEightComponents_WhenAddFlagIsTrue()
-        {
-            // Arrange
-            NeighborCache<Position, Velocity, Health, Armor, Damage, TestComponent, TestComponent2, AnotherComponent> cache = default;
-            FastImmutableArray<ComponentId> components = FastImmutableArray<ComponentId>.Empty;
+            /// <summary>
+            ///     Tests that modify components removes all seven components when add flag is false
+            /// </summary>
+            [Fact]
+            public void ModifyComponents_RemovesSevenComponents_WhenAddFlagIsFalse()
+            {
+                // Arrange
+                NeighborCache<Position, Velocity, Health, Armor, Damage, TestComponent, TestComponent2> cache = default;
+                FastImmutableArray<ComponentId>.Builder builder = FastImmutableArray<ComponentId>.CreateBuilder<ComponentId>(7);
+                builder.Add(Component<Position>.Id);
+                builder.Add(Component<Velocity>.Id);
+                builder.Add(Component<Health>.Id);
+                builder.Add(Component<Armor>.Id);
+                builder.Add(Component<Damage>.Id);
+                builder.Add(Component<TestComponent>.Id);
+                builder.Add(Component<TestComponent2>.Id);
+                FastImmutableArray<ComponentId> components = builder.ToImmutable();
 
-            // Act
-            cache.ModifyComponents(ref components, add: true);
+                // Act
+                cache.ModifyComponents(ref components, add: false);
 
-            // Assert
-            Assert.Equal(8, components.Length);
-        }
-
-        /// <summary>
-        ///     Tests that modify components removes all eight components when add flag is false
-        /// </summary>
-        [Fact]
-        public void ModifyComponents_RemovesEightComponents_WhenAddFlagIsFalse()
-        {
-            // Arrange
-            NeighborCache<Position, Velocity, Health, Armor, Damage, TestComponent, TestComponent2, AnotherComponent> cache = default;
-            FastImmutableArray<ComponentId>.Builder builder = FastImmutableArray<ComponentId>.CreateBuilder<ComponentId>(8);
-            builder.Add(Component<Position>.Id);
-            builder.Add(Component<Velocity>.Id);
-            builder.Add(Component<Health>.Id);
-            builder.Add(Component<Armor>.Id);
-            builder.Add(Component<Damage>.Id);
-            builder.Add(Component<TestComponent>.Id);
-            builder.Add(Component<TestComponent2>.Id);
-            builder.Add(Component<AnotherComponent>.Id);
-            FastImmutableArray<ComponentId> components = builder.ToImmutable();
-
-            // Act
-            cache.ModifyComponents(ref components, add: false);
-
-            // Assert
-            Assert.Empty(components);
-        }
-    }
-
-    /// <summary>
-    ///     Common test cases for all NeighborCache variants
-    /// </summary>
-    public class NeighborCacheCommonTest
-    {
-
-
-        /// <summary>
-        ///     Tests that add and remove nested classes have lookup field
-        /// </summary>
-        [Fact]
-        public void NeighborCache_AddAndRemoveClasses_HaveLookupField()
-        {
-            // Arrange
-            Type cacheType = typeof(NeighborCache<Position>);
-            Type addType = cacheType.GetNestedType("Add", System.Reflection.BindingFlags.NonPublic);
-            Type removeType = cacheType.GetNestedType("Remove", System.Reflection.BindingFlags.NonPublic);
-
-            // Assert
-            Assert.NotNull(addType.GetField("Lookup", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static));
-            Assert.NotNull(removeType.GetField("Lookup", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static));
+                // Assert
+                Assert.Empty(components);
+            }
         }
 
         /// <summary>
-        ///     Tests that components can be added and removed in sequence
+        ///     The neighbor cache test class for eight generic parameters
         /// </summary>
-        [Fact]
-        public void ModifyComponents_CanBeAppliedInSequence()
+        public class NeighborCacheOctupleTest
         {
-            // Arrange
-            NeighborCache<Position, Velocity> cache = default;
-            FastImmutableArray<ComponentId> components = FastImmutableArray<ComponentId>.Empty;
+            /// <summary>
+            ///     Tests that modify components adds all eight components when add flag is true
+            /// </summary>
+            [Fact]
+            public void ModifyComponents_AddsEightComponents_WhenAddFlagIsTrue()
+            {
+                // Arrange
+                NeighborCache<Position, Velocity, Health, Armor, Damage, TestComponent, TestComponent2, AnotherComponent> cache = default;
+                FastImmutableArray<ComponentId> components = FastImmutableArray<ComponentId>.Empty;
 
-            // Act - Add components
-            cache.ModifyComponents(ref components, add: true);
-            int addedCount = components.Length;
+                // Act
+                cache.ModifyComponents(ref components, add: true);
 
-            // Act - Remove components
-            cache.ModifyComponents(ref components, add: false);
-            int finalCount = components.Length;
+                // Assert
+                Assert.Equal(8, components.Length);
+            }
 
-            // Assert
-            Assert.Equal(2, addedCount);
-            Assert.Equal(0, finalCount);
+            /// <summary>
+            ///     Tests that modify components removes all eight components when add flag is false
+            /// </summary>
+            [Fact]
+            public void ModifyComponents_RemovesEightComponents_WhenAddFlagIsFalse()
+            {
+                // Arrange
+                NeighborCache<Position, Velocity, Health, Armor, Damage, TestComponent, TestComponent2, AnotherComponent> cache = default;
+                FastImmutableArray<ComponentId>.Builder builder = FastImmutableArray<ComponentId>.CreateBuilder<ComponentId>(8);
+                builder.Add(Component<Position>.Id);
+                builder.Add(Component<Velocity>.Id);
+                builder.Add(Component<Health>.Id);
+                builder.Add(Component<Armor>.Id);
+                builder.Add(Component<Damage>.Id);
+                builder.Add(Component<TestComponent>.Id);
+                builder.Add(Component<TestComponent2>.Id);
+                builder.Add(Component<AnotherComponent>.Id);
+                FastImmutableArray<ComponentId> components = builder.ToImmutable();
+
+                // Act
+                cache.ModifyComponents(ref components, add: false);
+
+                // Assert
+                Assert.Empty(components);
+            }
         }
 
         /// <summary>
-        ///     Tests that multiple components can coexist in the array
+        ///     Common test cases for all NeighborCache variants
         /// </summary>
-        [Fact]
-        public void ModifyComponents_AllowsMultipleComponentTypes()
+        public class NeighborCacheCommonTest
         {
-            // Arrange
-            NeighborCache<Position, Velocity> cacheA = default;
-            NeighborCache<Health, Armor> cacheB = default;
-            FastImmutableArray<ComponentId> components = FastImmutableArray<ComponentId>.Empty;
+            /// <summary>
+            ///     Tests that components can be added and removed in sequence
+            /// </summary>
+            [Fact]
+            public void ModifyComponents_CanBeAppliedInSequence()
+            {
+                // Arrange
+                NeighborCache<Position, Velocity> cache = default;
+                FastImmutableArray<ComponentId> components = FastImmutableArray<ComponentId>.Empty;
 
-            // Act
-            cacheA.ModifyComponents(ref components, add: true);
-            cacheB.ModifyComponents(ref components, add: true);
+                // Act - Add components
+                cache.ModifyComponents(ref components, add: true);
+                int addedCount = components.Length;
 
-            // Assert
-            Assert.Equal(4, components.Length);
-            Assert.Contains(Component<Position>.Id, components);
-            Assert.Contains(Component<Velocity>.Id, components);
-            Assert.Contains(Component<Health>.Id, components);
-            Assert.Contains(Component<Armor>.Id, components);
+                // Act - Remove components
+                cache.ModifyComponents(ref components, add: false);
+                int finalCount = components.Length;
+
+                // Assert
+                Assert.Equal(2, addedCount);
+                Assert.Equal(0, finalCount);
+            }
+
+            /// <summary>
+            ///     Tests that multiple components can coexist in the array
+            /// </summary>
+            [Fact]
+            public void ModifyComponents_AllowsMultipleComponentTypes()
+            {
+                // Arrange
+                NeighborCache<Position, Velocity> cacheA = default;
+                NeighborCache<Health, Armor> cacheB = default;
+                FastImmutableArray<ComponentId> components = FastImmutableArray<ComponentId>.Empty;
+
+                // Act
+                cacheA.ModifyComponents(ref components, add: true);
+                cacheB.ModifyComponents(ref components, add: true);
+
+                // Assert
+                Assert.Equal(4, components.Length);
+                Assert.Contains(Component<Position>.Id, components);
+                Assert.Contains(Component<Velocity>.Id, components);
+                Assert.Contains(Component<Health>.Id, components);
+                Assert.Contains(Component<Armor>.Id, components);
+            }
         }
     }
 
