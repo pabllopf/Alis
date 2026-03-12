@@ -150,7 +150,8 @@ namespace Alis.Core.Ecs
         /// <summary>
         /// The lookup
         /// </summary>
-#pragma warning disable CA1000
+#pragma warning disable CA1000 
+        // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
     }
@@ -161,7 +162,10 @@ namespace Alis.Core.Ecs
         /// <summary>
         /// The lookup
         /// </summary>
+        #pragma warning disable CA1000 
+        // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
+#pragma warning restore CA1000
     }
 
     /// <summary>Add-edge neighbor cache for arity 2.</summary>
@@ -170,7 +174,10 @@ namespace Alis.Core.Ecs
         /// <summary>
         /// The lookup
         /// </summary>
+        #pragma warning disable CA1000 
+        // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
+#pragma warning restore CA1000
     }
 
     /// <summary>Remove-edge neighbor cache for arity 2.</summary>
@@ -179,7 +186,10 @@ namespace Alis.Core.Ecs
         /// <summary>
         /// The lookup
         /// </summary>
+        #pragma warning disable CA1000 
+        // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
+#pragma warning restore CA1000
     }
 
     /// <summary>Add-edge neighbor cache for arity 3.</summary>
@@ -188,7 +198,10 @@ namespace Alis.Core.Ecs
         /// <summary>
         /// The lookup
         /// </summary>
+        #pragma warning disable CA1000 
+        // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
+#pragma warning restore CA1000
     }
 
     /// <summary>Remove-edge neighbor cache for arity 3.</summary>
@@ -197,7 +210,10 @@ namespace Alis.Core.Ecs
         /// <summary>
         /// The lookup
         /// </summary>
+        #pragma warning disable CA1000 
+        // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
+#pragma warning restore CA1000
     }
 
     /// <summary>Add-edge neighbor cache for arity 4.</summary>
@@ -206,7 +222,10 @@ namespace Alis.Core.Ecs
         /// <summary>
         /// The lookup
         /// </summary>
+        #pragma warning disable CA1000 
+        // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
+#pragma warning restore CA1000
     }
 
     /// <summary>Remove-edge neighbor cache for arity 4.</summary>
@@ -215,7 +234,10 @@ namespace Alis.Core.Ecs
         /// <summary>
         /// The lookup
         /// </summary>
+        #pragma warning disable CA1000 
+        // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
+#pragma warning restore CA1000
     }
 
     /// <summary>Add-edge neighbor cache for arity 5.</summary>
@@ -224,7 +246,10 @@ namespace Alis.Core.Ecs
         /// <summary>
         /// The lookup
         /// </summary>
+        #pragma warning disable CA1000 
+        // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
+#pragma warning restore CA1000
     }
 
     /// <summary>Remove-edge neighbor cache for arity 5.</summary>
@@ -233,7 +258,10 @@ namespace Alis.Core.Ecs
         /// <summary>
         /// The lookup
         /// </summary>
+        #pragma warning disable CA1000 
+        // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
+#pragma warning restore CA1000
     }
 
     /// <summary>Add-edge neighbor cache for arity 6.</summary>
@@ -242,7 +270,10 @@ namespace Alis.Core.Ecs
         /// <summary>
         /// The lookup
         /// </summary>
+        #pragma warning disable CA1000 
+        // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
+#pragma warning restore CA1000
     }
 
     /// <summary>Remove-edge neighbor cache for arity 6.</summary>
@@ -251,7 +282,10 @@ namespace Alis.Core.Ecs
         /// <summary>
         /// The lookup
         /// </summary>
+        #pragma warning disable CA1000 
+        // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
+#pragma warning restore CA1000
     }
 
     /// <summary>Add-edge neighbor cache for arity 7.</summary>
@@ -260,7 +294,10 @@ namespace Alis.Core.Ecs
         /// <summary>
         /// The lookup
         /// </summary>
+        #pragma warning disable CA1000 
+        // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
+#pragma warning restore CA1000
     }
 
     /// <summary>Remove-edge neighbor cache for arity 7.</summary>
@@ -269,7 +306,10 @@ namespace Alis.Core.Ecs
         /// <summary>
         /// The lookup
         /// </summary>
+        #pragma warning disable CA1000 
+        // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
+#pragma warning restore CA1000
     }
 
     /// <summary>Add-edge neighbor cache for arity 8.</summary>
@@ -278,7 +318,10 @@ namespace Alis.Core.Ecs
         /// <summary>
         /// The lookup
         /// </summary>
+        #pragma warning disable CA1000 
+        // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
+#pragma warning restore CA1000
     }
 
     /// <summary>Remove-edge neighbor cache for arity 8.</summary>
@@ -287,9 +330,11 @@ namespace Alis.Core.Ecs
         /// <summary>
         /// The lookup
         /// </summary>
+        #pragma warning disable CA1000 
+        // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
+        #pragma warning restore CA1000
     }
-#pragma warning restore CA1000
     
     // ---------------------------------------------------------------------------
     // IArchetypeGraphEdge implementations (lean structs – no nested classes)
