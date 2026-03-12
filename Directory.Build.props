@@ -11,6 +11,10 @@
         <VSTestLogger>trx%3bLogFileName=$(MSBuildProjectName).trx</VSTestLogger>
         <VSTestResultsDirectory>$(SolutionDir).test/$(TargetFramework)</VSTestResultsDirectory>
     </PropertyGroup>
+
+    <PropertyGroup>
+        <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+    </PropertyGroup>
     
     <PropertyGroup>
         <AssemblyVersion>0.9.9</AssemblyVersion>

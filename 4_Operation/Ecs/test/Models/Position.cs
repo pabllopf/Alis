@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Fluent.Components;
+using Alis.Core.Ecs.Updating;
 
 namespace Alis.Core.Ecs.Test.Models
 {
@@ -59,6 +60,7 @@ namespace Alis.Core.Ecs.Test.Models
         ///     Ons the update using the specified self
         /// </summary>
         /// <param name="self">The self</param>
+        [UpdateOrder(1)]
         public void OnUpdate(IGameObject self)
         {
         }

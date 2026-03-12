@@ -67,6 +67,7 @@ namespace Alis.Core.Ecs.Test.Updating
 
             SceneUpdateFilter filter = new SceneUpdateFilter(scene, typeof(UpdateOrderAttribute));
 
+            
             Assert.NotNull(filter);
         }
 
