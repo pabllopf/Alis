@@ -97,7 +97,7 @@
         </NoWarn> <!-- Errors -->
         <NoWarn>$(NoWarn);</NoWarn>
     </PropertyGroup>
-
+    
     <ItemGroup>
         <InternalsVisibleTo Include="$(AssemblyName).Test"/>
     </ItemGroup>

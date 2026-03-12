@@ -29,6 +29,10 @@
 
         <PackageReference Include="Moq" Version="4.20.70"/>
     </ItemGroup>
+
+    <PropertyGroup>
+        <NoWarn>$(NoWarn);ALIS009;ALIS010;ALIS001;</NoWarn>
+    </PropertyGroup>
     
     <ItemGroup>
         <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation')) OR $(ProjectDir.Contains('2_Application'))"
