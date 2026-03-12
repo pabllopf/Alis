@@ -17,7 +17,7 @@
 ![Total downloads](https://img.shields.io/badge/downloads-+1M-green)
 ![GitHub Stars](https://img.shields.io/github/stars/pabllopf/alis?style=social)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/pabllopf)
-
+![Commit activity](https://img.shields.io/github/commit-activity/m/pabllopf/Alis)
 
 > Develop the video games of your dreams 💯 free!! on Windows, MacOS, Linux, WEB, Android(soon), IOS(soon).
 

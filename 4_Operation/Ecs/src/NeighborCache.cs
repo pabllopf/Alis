@@ -143,13 +143,16 @@ namespace Alis.Core.Ecs
     // because each instantiation is intentionally a separate cache entry.
     // ---------------------------------------------------------------------------
 
+
     /// <summary>Add-edge neighbor cache for arity 1.</summary>
     internal static class NeighborCacheAdd<T1>
     {
         /// <summary>
         /// The lookup
         /// </summary>
+#pragma warning disable CA1000
         internal static ArchetypeNeighborCache Lookup;
+#pragma warning restore CA1000
     }
 
     /// <summary>Remove-edge neighbor cache for arity 1.</summary>
@@ -286,7 +289,8 @@ namespace Alis.Core.Ecs
         /// </summary>
         internal static ArchetypeNeighborCache Lookup;
     }
-
+#pragma warning restore CA1000
+    
     // ---------------------------------------------------------------------------
     // IArchetypeGraphEdge implementations (lean structs – no nested classes)
     // ---------------------------------------------------------------------------

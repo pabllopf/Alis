@@ -7,6 +7,7 @@ indent_style = space
 indent_size = 4
 
 
+
 # Microsoft .NET properties
 csharp_new_line_before_members_in_object_initializers = false
 csharp_preferred_modifier_order = public, private, protected, internal, new, static, abstract, virtual, sealed, readonly, override, extern, , volatile, async
@@ -15,7 +16,6 @@ csharp_style_namespace_declarations = block_scoped:suggestion
 csharp_style_var_elsewhere = false:suggestion
 csharp_style_var_for_built_in_types = false:suggestion
 csharp_style_var_when_type_is_apparent = false:suggestion
-dotnet_diagnostic.ALIS010.severity = error
 dotnet_naming_rule.private_constants_rule.import_to_resharper = as_predefined
 dotnet_naming_rule.private_constants_rule.severity = warning
 dotnet_naming_rule.private_constants_rule.style = upper_camel_case_style
@@ -118,6 +118,7 @@ resharper_web_config_wrong_module_highlighting = warning
 
 [*.{cs,csx,vb,vbx}]
 file_header_template = -------------------------------------------------------------------------- \n \n                              █▀▀█ ░█─── ▀█▀ ░█▀▀▀█  \n                             ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄ \n                             ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█ \n\n -------------------------------------------------------------------------- \n File:${File.FileName} \n \n Author:Pablo Perdomo Falcón \n Web:https://www.pabllopf.dev/  \n \n Copyright (c) 2021 GNU General Public License v3.0 \n \n This program is free software:you can redistribute it and/or modify \n it under the terms of the GNU General Public License as published by \n the Free Software Foundation, either version 3 of the License, or \n (at your option) any later version.\n \n This program is distributed in the hope that it will be useful, \n but WITHOUT ANY WARRANTY without even the implied warranty of \n MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the \n GNU General Public License for more details.\n \n You should have received a copy of the GNU General Public License \n along with this program.If not, see <http://www.gnu.org/licenses/>.\n \n --------------------------------------------------------------------------
+dotnet_diagnostic.CA1000.severity = none
 
 [{*.har,*.inputactions,*.jsb2,*.jsb3,*.json,.babelrc,.eslintrc,.stylelintrc,bowerrc,jest.config}]
 indent_style = space
