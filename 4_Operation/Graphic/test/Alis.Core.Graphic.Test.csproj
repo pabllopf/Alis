@@ -31,7 +31,7 @@
     </ItemGroup>
 
     <PropertyGroup>
-        <NoWarn>$(NoWarn);ALIS009;ALIS010;ALIS001;</NoWarn>
+        <NoWarn>$(NoWarn);ALIS009;ALIS010;ALIS001;ALIS003;ALIS002;ALIS005;ALIS006;ALIS007;ALIS008</NoWarn>
     </PropertyGroup>
 
 
