@@ -100,7 +100,7 @@ namespace Alis.Core.Ecs.Test
             // Act
             GameObject entity = scene.Create(
                 new Position {X = 1, Y = 2},
-                new Velocity {VX = 3, VY = 4}
+                new Velocity {X = 3, Y = 4}
             );
 
             // Assert
@@ -124,7 +124,7 @@ namespace Alis.Core.Ecs.Test
             // Act
             GameObject entity = scene.Create(
                 new Position {X = 1, Y = 2},
-                new Velocity {VX = 3, VY = 4},
+                new Velocity {X = 3, Y = 4},
                 new Health {Value = 100}
             );
 
@@ -150,7 +150,7 @@ namespace Alis.Core.Ecs.Test
             // Act
             GameObject entity = scene.Create(
                 new Position {X = 1, Y = 2},
-                new Velocity {VX = 3, VY = 4},
+                new Velocity {X = 3, Y = 4},
                 new Health {Value = 100},
                 new Transform {X = 5, Y = 6, Rotation = 45}
             );
@@ -178,7 +178,7 @@ namespace Alis.Core.Ecs.Test
             // Act
             GameObject entity = scene.Create(
                 new Position {X = 1, Y = 2},
-                new Velocity {VX = 3, VY = 4},
+                new Velocity {X = 3, Y = 4},
                 new Health {Value = 100},
                 new Transform {X = 5, Y = 6, Rotation = 45},
                 new TestComponent {Value = 999}
@@ -411,7 +411,7 @@ namespace Alis.Core.Ecs.Test
 
             // Act
             GameObject entity1 = scene.Create(new Position {X = 1, Y = 2});
-            GameObject entity2 = scene.Create(new Position {X = 3, Y = 4}, new Velocity {VX = 5, VY = 6});
+            GameObject entity2 = scene.Create(new Position {X = 3, Y = 4}, new Velocity {X = 5, Y = 6});
             GameObject entity3 = scene.Create();
 
             // Assert

@@ -56,7 +56,7 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             using Scene scene = new Scene();
             scene.Create(new Position {X = 1, Y = 2});
-            scene.Create(new Position {X = 3, Y = 4}, new Velocity {VX = 9, VY = 9});
+            scene.Create(new Position {X = 3, Y = 4}, new Velocity {X = 9, Y = 9});
             Query query = scene.Query<With<Position>>();
 
             var enumerable = query.EnumerateChunks<Position>();
@@ -84,7 +84,7 @@ namespace Alis.Core.Ecs.Test.Systems
         public void ChunkQueryEnumerator_Arity2_CurrentMapsBothSpans()
         {
             using Scene scene = new Scene();
-            scene.Create(new Position {X = 10, Y = 20}, new Velocity {VX = 30, VY = 40});
+            scene.Create(new Position {X = 10, Y = 20}, new Velocity {X = 30, Y = 40});
             Query query = scene.Query<With<Position>, With<Velocity>>();
 
             using var enumerator = query.EnumerateChunks<Position, Velocity>().GetEnumerator();
@@ -95,7 +95,7 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.Equal(1, current.Span1.Length);
             Assert.Equal(1, current.Span2.Length);
             Assert.Equal(10, current.Span1[0].X);
-            Assert.Equal(30, current.Span2[0].VX);
+            Assert.Equal(30, current.Span2[0].X);
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace Alis.Core.Ecs.Test.Systems
         public void ChunkQueryEnumerator_Arity3_CurrentMapsAllSpans()
         {
             using Scene scene = new Scene();
-            scene.Create(new Position {X = 1, Y = 2}, new Velocity {VX = 3, VY = 4}, new Health {Value = 5});
+            scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 5});
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>>();
 
             using var enumerator = query.EnumerateChunks<Position, Velocity, Health>().GetEnumerator();
@@ -114,7 +114,7 @@ namespace Alis.Core.Ecs.Test.Systems
             ChunkTuple<Position, Velocity, Health> current = enumerator.Current;
 
             Assert.Equal(1, current.Span1[0].X);
-            Assert.Equal(3, current.Span2[0].VX);
+            Assert.Equal(3, current.Span2[0].X);
             Assert.Equal(5, current.Span3[0].Value);
         }
 
@@ -127,7 +127,7 @@ namespace Alis.Core.Ecs.Test.Systems
             using Scene scene = new Scene();
             scene.Create(
                 new Position {X = 1, Y = 2},
-                new Velocity {VX = 3, VY = 4},
+                new Velocity {X = 3, Y = 4},
                 new Health {Value = 5},
                 new Transform {X = 6, Y = 7, Rotation = 8});
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>>();
@@ -138,7 +138,7 @@ namespace Alis.Core.Ecs.Test.Systems
             ChunkTuple<Position, Velocity, Health, Transform> current = enumerator.Current;
 
             Assert.Equal(1, current.Span1[0].X);
-            Assert.Equal(3, current.Span2[0].VX);
+            Assert.Equal(3, current.Span2[0].X);
             Assert.Equal(5, current.Span3[0].Value);
             Assert.Equal(8, current.Span4[0].Rotation);
         }
@@ -152,7 +152,7 @@ namespace Alis.Core.Ecs.Test.Systems
             using Scene scene = new Scene();
             scene.Create(
                 new Position {X = 1, Y = 2},
-                new Velocity {VX = 3, VY = 4},
+                new Velocity {X = 3, Y = 4},
                 new Health {Value = 5},
                 new Transform {X = 6, Y = 7, Rotation = 8},
                 new TestComponent {Value = 9, Name = "n"});
@@ -164,7 +164,7 @@ namespace Alis.Core.Ecs.Test.Systems
             ChunkTuple<Position, Velocity, Health, Transform, TestComponent> current = enumerator.Current;
 
             Assert.Equal(1, current.Span1[0].X);
-            Assert.Equal(3, current.Span2[0].VX);
+            Assert.Equal(3, current.Span2[0].X);
             Assert.Equal(5, current.Span3[0].Value);
             Assert.Equal(8, current.Span4[0].Rotation);
             Assert.Equal(9, current.Span5[0].Value);
@@ -179,11 +179,11 @@ namespace Alis.Core.Ecs.Test.Systems
             using Scene scene = new Scene();
             scene.Create(
                 new Position {X = 1, Y = 2},
-                new Velocity {VX = 3, VY = 4},
+                new Velocity {X = 3, Y = 4},
                 new Health {Value = 5},
                 new Transform {X = 6, Y = 7, Rotation = 8},
                 new TestComponent {Value = 9, Name = "n"},
-                new AnotherComponent {X = 10, Y = 11, Name = "a"});
+                new AnotherComponent {Data = 10, Y = 11, Name = "a"});
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>, With<AnotherComponent>>();
 
             using var enumerator = query.EnumerateChunks<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>().GetEnumerator();
@@ -192,11 +192,11 @@ namespace Alis.Core.Ecs.Test.Systems
             ChunkTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent> current = enumerator.Current;
 
             Assert.Equal(1, current.Span1[0].X);
-            Assert.Equal(3, current.Span2[0].VX);
+            Assert.Equal(3, current.Span2[0].X);
             Assert.Equal(5, current.Span3[0].Value);
             Assert.Equal(8, current.Span4[0].Rotation);
             Assert.Equal(9, current.Span5[0].Value);
-            Assert.Equal(10, current.Span6[0].X);
+            Assert.Equal(10, current.Span6[0].Data);
         }
 
         /// <summary>
@@ -208,12 +208,12 @@ namespace Alis.Core.Ecs.Test.Systems
             using Scene scene = new Scene();
             scene.Create(
                 new Position {X = 1, Y = 2},
-                new Velocity {VX = 3, VY = 4},
+                new Velocity {X = 3, Y = 4},
                 new Health {Value = 5},
                 new Transform {X = 6, Y = 7, Rotation = 8},
                 new TestComponent {Value = 9, Name = "n"},
-                new AnotherComponent {X = 10, Y = 11, Name = "a"},
-                new Damage {Amount = 12});
+                new AnotherComponent {Data = 10, Y = 11, Name = "a"},
+                new Damage {Value = 12});
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>, With<AnotherComponent>, With<Damage>>();
 
             using var enumerator = query.EnumerateChunks<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage>().GetEnumerator();
@@ -222,12 +222,12 @@ namespace Alis.Core.Ecs.Test.Systems
             ChunkTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage> current = enumerator.Current;
 
             Assert.Equal(1, current.Span1[0].X);
-            Assert.Equal(3, current.Span2[0].VX);
+            Assert.Equal(3, current.Span2[0].X);
             Assert.Equal(5, current.Span3[0].Value);
             Assert.Equal(8, current.Span4[0].Rotation);
             Assert.Equal(9, current.Span5[0].Value);
-            Assert.Equal(10, current.Span6[0].X);
-            Assert.Equal(12, current.Span7[0].Amount);
+            Assert.Equal(10, current.Span6[0].Data);
+            Assert.Equal(12, current.Span7[0].Value);
         }
 
         /// <summary>
@@ -239,13 +239,13 @@ namespace Alis.Core.Ecs.Test.Systems
             using Scene scene = new Scene();
             scene.Create(
                 new Position {X = 1, Y = 2},
-                new Velocity {VX = 3, VY = 4},
+                new Velocity {X = 3, Y = 4},
                 new Health {Value = 5},
                 new Transform {X = 6, Y = 7, Rotation = 8},
                 new TestComponent {Value = 9, Name = "n"},
-                new AnotherComponent {X = 10, Y = 11, Name = "a"},
-                new Damage {Amount = 12},
-                new Armor {Defense = 13});
+                new AnotherComponent {Data = 10, Y = 11, Name = "a"},
+                new Damage {Value = 12},
+                new Armor {Value = 13});
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>, With<AnotherComponent>, With<Damage>, With<Armor>>();
 
             Assert.True(scene.AllowStructualChanges);
@@ -257,13 +257,13 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.True(enumerator.MoveNext());
             ChunkTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor> current = enumerator.Current;
             Assert.Equal(1, current.Span1[0].X);
-            Assert.Equal(3, current.Span2[0].VX);
+            Assert.Equal(3, current.Span2[0].X);
             Assert.Equal(5, current.Span3[0].Value);
             Assert.Equal(8, current.Span4[0].Rotation);
             Assert.Equal(9, current.Span5[0].Value);
-            Assert.Equal(10, current.Span6[0].X);
-            Assert.Equal(12, current.Span7[0].Amount);
-            Assert.Equal(13, current.Span8[0].Defense);
+            Assert.Equal(10, current.Span6[0].Data);
+            Assert.Equal(12, current.Span7[0].Value);
+            Assert.Equal(13, current.Span8[0].Value);
 
             enumerator.Dispose();
             Assert.True(scene.AllowStructualChanges);

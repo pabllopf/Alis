@@ -55,12 +55,12 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             scene.Create(
                 new Position {X = 10, Y = 20},
-                new Velocity {VX = 5, VY = 10},
+                new Velocity {X = 5, Y = 10},
                 new Health {Value = 150},
                 new Transform {X = 1, Y = 2, Rotation = 45},
                 new TestComponent {Value = 999, Name = "Test"},
-                new AnotherComponent {X = 100, Y = 200},
-                new Damage {Amount = 25}
+                new AnotherComponent {Data = 100, Y = 200},
+                new Damage {Value = 25}
             );
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>, With<AnotherComponent>, With<Damage>>();
             new QueryEnumerable<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage>(query);
@@ -69,12 +69,12 @@ namespace Alis.Core.Ecs.Test
             foreach ((Ref<Position> pos, Ref<Velocity> vel, Ref<Health> health, Ref<Transform> trans, Ref<TestComponent> test, Ref<AnotherComponent> another, Ref<Damage> damage) in query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage>())
             {
                 Assert.Equal(10, pos.Value.X);
-                Assert.Equal(5, vel.Value.VX);
+                Assert.Equal(5, vel.Value.X);
                 Assert.Equal(150, health.Value.Value);
                 Assert.Equal(45, trans.Value.Rotation);
                 Assert.Equal(999, test.Value.Value);
-                Assert.Equal(100, another.Value.X);
-                Assert.Equal(25, damage.Value.Amount);
+                Assert.Equal(100, another.Value.Data);
+                Assert.Equal(25, damage.Value.Value);
             }
         }
 
@@ -91,20 +91,20 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             scene.Create(
                 new Position {X = 1, Y = 1},
-                new Velocity {VX = 1, VY = 1},
+                new Velocity {X = 1, Y = 1},
                 new Health {Value = 100},
                 new Transform {X = 0, Y = 0, Rotation = 0},
                 new TestComponent {Value = 1, Name = "Test"},
-                new AnotherComponent {X = 5, Y = 10},
-                new Damage {Amount = 10}
+                new AnotherComponent {Data = 5, Y = 10},
+                new Damage {Value = 10}
             );
             scene.Create(
                 new Position {X = 2, Y = 2},
-                new Velocity {VX = 2, VY = 2},
+                new Velocity {X = 2, Y = 2},
                 new Health {Value = 50},
                 new Transform {X = 1, Y = 1, Rotation = 0},
                 new TestComponent {Value = 2, Name = "Test2"},
-                new AnotherComponent {X = 10, Y = 20}
+                new AnotherComponent {Data = 10, Y = 20}
             ); // Missing Damage
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>, With<AnotherComponent>, With<Damage>>();
             new QueryEnumerable<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage>(query);
@@ -133,12 +133,12 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
                 new Position {X = 0, Y = 0},
-                new Velocity {VX = 0, VY = 0},
+                new Velocity {X = 0, Y = 0},
                 new Health {Value = 0},
                 new Transform {X = 0, Y = 0, Rotation = 0},
                 new TestComponent {Value = 0, Name = ""},
-                new AnotherComponent {X = 0, Y = 0},
-                new Damage {Amount = 0}
+                new AnotherComponent {Data = 0, Y = 0},
+                new Damage {Value = 0}
             );
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>, With<AnotherComponent>, With<Damage>>();
             new QueryEnumerable<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage>(query);
@@ -151,13 +151,13 @@ namespace Alis.Core.Ecs.Test
                 pos.Value = p;
 
                 Damage d = damage.Value;
-                d.Amount = 50;
+                d.Value = 50;
                 damage.Value = d;
             }
 
             // Assert
             Assert.Equal(100, entity.Get<Position>().X);
-            Assert.Equal(50, entity.Get<Damage>().Amount);
+            Assert.Equal(50, entity.Get<Damage>().Value);
         }
 
         /// <summary>

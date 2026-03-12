@@ -117,7 +117,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             GameObject entity1 = scene.Create(
                 new Update2Component {CallCount = 0},
                 new Position {X = 1, Y = 2},
-                new Velocity {VX = 10, VY = 20}
+                new Velocity {X = 10, Y = 20}
             );
 
             scene.Update();
@@ -135,7 +135,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             GameObject entity = scene.Create(
                 new Update2Component {CallCount = 0},
                 new Position {X = 5, Y = 10},
-                new Velocity {VX = 1, VY = 2}
+                new Velocity {X = 1, Y = 2}
             );
 
             scene.Update();
@@ -173,7 +173,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             GameObject entity1 = scene.Create(
                 new Update3Component {CallCount = 0},
                 new Position {X = 1, Y = 2},
-                new Velocity {VX = 10, VY = 20},
+                new Velocity {X = 10, Y = 20},
                 new Health {Value = 100}
             );
 
@@ -192,7 +192,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             GameObject entity = scene.Create(
                 new Update3Component {CallCount = 0},
                 new Position {X = 0, Y = 0},
-                new Velocity {VX = 5, VY = 10},
+                new Velocity {X = 5, Y = 10},
                 new Health {Value = 100}
             );
 
@@ -231,9 +231,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             GameObject entity = scene.Create(
                 new Update4Component {CallCount = 0},
                 new Position {X = 1, Y = 2},
-                new Velocity {VX = 5, VY = 10},
+                new Velocity {X = 5, Y = 10},
                 new Health {Value = 100},
-                new Armor {Defense = 50}
+                new Armor {Value = 50}
             );
 
             scene.Update();
@@ -269,10 +269,10 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             GameObject entity = scene.Create(
                 new Update6Component {CallCount = 0},
                 new Position {X = 1, Y = 2},
-                new Velocity {VX = 5, VY = 10},
+                new Velocity {X = 5, Y = 10},
                 new Health {Value = 100},
-                new Armor {Defense = 50},
-                new Damage {Amount = 10},
+                new Armor {Value = 50},
+                new Damage {Value = 10},
                 new Transform {X = 0, Y = 0, Rotation = 0}
             );
 
@@ -309,10 +309,10 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             GameObject entity = scene.Create(
                 new Update7Component {CallCount = 0},
                 new Position {X = 1, Y = 2},
-                new Velocity {VX = 5, VY = 10},
+                new Velocity {X = 5, Y = 10},
                 new Health {Value = 100},
-                new Armor {Defense = 50},
-                new Damage {Amount = 10},
+                new Armor {Value = 50},
+                new Damage {Value = 10},
                 new Transform {X = 0, Y = 0, Rotation = 0},
                 new TestComponent {Value = 42}
             );
@@ -425,8 +425,8 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         public void Update(IGameObject self, ref Position pos, ref Velocity vel)
         {
             CallCount++;
-            pos.X += vel.VX;
-            pos.Y += vel.VY;
+            pos.X += vel.X;
+            pos.Y += vel.Y;
         }
     }
 
@@ -450,8 +450,8 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         public void Update(IGameObject self, ref Position pos, ref Velocity vel, ref Health health)
         {
             CallCount++;
-            pos.X += vel.VX;
-            pos.Y += vel.VY;
+            pos.X += vel.X;
+            pos.Y += vel.Y;
             health.Value--;
         }
     }
@@ -477,8 +477,8 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         public void Update(IGameObject self, ref Position pos, ref Velocity vel, ref Health health, ref Armor armor)
         {
             CallCount++;
-            pos.X += vel.VX;
-            pos.Y += vel.VY;
+            pos.X += vel.X;
+            pos.Y += vel.Y;
         }
     }
 

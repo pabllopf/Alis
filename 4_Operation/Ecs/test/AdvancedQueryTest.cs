@@ -79,7 +79,7 @@ namespace Alis.Core.Ecs.Test
             scene.Create(new Position {X = 1});
             scene.Create(new Position {X = 2}, new Health {Value = 100});
             scene.Create(new Health {Value = 50});
-            scene.Create(new Position {X = 3}, new Health {Value = 75}, new Velocity {VX = 1, VY = 1});
+            scene.Create(new Position {X = 3}, new Health {Value = 75}, new Velocity {X = 1, Y = 1});
 
             // Act
             Query positionOnly = scene.Query<With<Position>>();

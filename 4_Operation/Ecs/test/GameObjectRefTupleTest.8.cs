@@ -48,13 +48,13 @@ namespace Alis.Core.Ecs.Test
             Scene world = new Scene();
             GameObject entity = world.Create();
             Position pos = new Position {X = 10, Y = 20};
-            Velocity vel = new Velocity {VX = 1, VY = 2};
+            Velocity vel = new Velocity {X = 1, Y = 2};
             Health health = new Health {Value = 100};
-            Armor armor = new Armor {Defense = 50};
+            Armor armor = new Armor {Value = 50};
             TestComponent test = new TestComponent {Value = 5};
             TestComponent2 test2 = new TestComponent2 {Value = 10};
             TestStruct testStruct = new TestStruct {X = 15, Y = 15};
-            AnotherComponent another = new AnotherComponent {X = 200, Y = 200};
+            AnotherComponent another = new AnotherComponent {Data = 200, Y = 200};
             entity.Add(pos);
             entity.Add(vel);
             entity.Add(health);
@@ -82,7 +82,7 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(entity, tuple.GameObject);
             Assert.Equal(10, tuple.Item1.Value.X);
             Assert.Equal(100, tuple.Item3.Value.Value);
-            Assert.Equal(200, tuple.Item8.Value.X);
+            Assert.Equal(200, tuple.Item8.Value.Data);
 
             world.Dispose();
         }
@@ -97,13 +97,13 @@ namespace Alis.Core.Ecs.Test
             Scene world = new Scene();
             GameObject entity = world.Create();
             Position pos = new Position {X = 5, Y = 10};
-            Velocity vel = new Velocity {VX = 2, VY = 3};
+            Velocity vel = new Velocity {X = 2, Y = 3};
             Health health = new Health {Value = 50};
-            Armor armor = new Armor {Defense = 25};
+            Armor armor = new Armor {Value = 25};
             TestComponent test = new TestComponent {Value = 3};
             TestComponent2 test2 = new TestComponent2 {Value = 6};
             TestStruct testStruct = new TestStruct {X = 9, Y = 9};
-            AnotherComponent another = new AnotherComponent {X = 100, Y = 100};
+            AnotherComponent another = new AnotherComponent {Data = 100, Y = 100};
             entity.Add(pos);
             entity.Add(vel);
             entity.Add(health);
@@ -132,7 +132,7 @@ namespace Alis.Core.Ecs.Test
             // Assert
             Assert.Equal(entity, go);
             Assert.Equal(5, posRef.Value.X);
-            Assert.Equal(100, anotherRef.Value.X);
+            Assert.Equal(100, anotherRef.Value.Data);
 
             world.Dispose();
         }
@@ -147,13 +147,13 @@ namespace Alis.Core.Ecs.Test
             Scene world = new Scene();
             GameObject entity = world.Create();
             Position pos = new Position {X = 1, Y = 2};
-            Velocity vel = new Velocity {VX = 0.5f, VY = 0.5f};
+            Velocity vel = new Velocity {X = 0.5f, Y = 0.5f};
             Health health = new Health {Value = 75};
-            Armor armor = new Armor {Defense = 10};
+            Armor armor = new Armor {Value = 10};
             TestComponent test = new TestComponent {Value = 1};
             TestComponent2 test2 = new TestComponent2 {Value = 2};
             TestStruct testStruct = new TestStruct {X = 3, Y = 3};
-            AnotherComponent another = new AnotherComponent {X = 50, Y = 50};
+            AnotherComponent another = new AnotherComponent {Data = 50, Y = 50};
             entity.Add(pos);
             entity.Add(vel);
             entity.Add(health);
@@ -177,10 +177,10 @@ namespace Alis.Core.Ecs.Test
             };
 
             // Act
-            tuple.Item8.Value.X = 999;
+            tuple.Item8.Value.Data = 999;
 
             // Assert
-            Assert.Equal(50, entity.Get<AnotherComponent>().X);
+            Assert.Equal(50, entity.Get<AnotherComponent>().Data);
 
             world.Dispose();
         }
@@ -195,13 +195,13 @@ namespace Alis.Core.Ecs.Test
             Scene world = new Scene();
             GameObject entity = world.Create();
             Position pos = new Position {X = 8, Y = 16};
-            Velocity vel = new Velocity {VX = 1.5f, VY = 2.5f};
+            Velocity vel = new Velocity {X = 1.5f, Y = 2.5f};
             Health health = new Health {Value = 150};
-            Armor armor = new Armor {Defense = 75};
+            Armor armor = new Armor {Value = 75};
             TestComponent test = new TestComponent {Value = 8};
             TestComponent2 test2 = new TestComponent2 {Value = 16};
             TestStruct testStruct = new TestStruct {X = 24, Y = 24};
-            AnotherComponent another = new AnotherComponent {X = 300, Y = 300};
+            AnotherComponent another = new AnotherComponent {Data = 300, Y = 300};
             entity.Add(pos);
             entity.Add(vel);
             entity.Add(health);
@@ -229,7 +229,7 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(entity, tuple.GameObject);
             Assert.Equal(8, tuple.Item1.Value.X);
             Assert.Equal(24, tuple.Item7.Value.X);
-            Assert.Equal(300, tuple.Item8.Value.X);
+            Assert.Equal(300, tuple.Item8.Value.Data);
 
             world.Dispose();
         }
@@ -246,13 +246,13 @@ namespace Alis.Core.Ecs.Test
             GameObject entity2 = world.Create();
 
             Position pos1 = new Position {X = 1, Y = 1};
-            Velocity vel1 = new Velocity {VX = 0.1f, VY = 0.1f};
+            Velocity vel1 = new Velocity {X = 0.1f, Y = 0.1f};
             Health health1 = new Health {Value = 100};
-            Armor armor1 = new Armor {Defense = 50};
+            Armor armor1 = new Armor {Value = 50};
             TestComponent test1 = new TestComponent {Value = 10};
             TestComponent2 test2a = new TestComponent2 {Value = 15};
             TestStruct struct1 = new TestStruct {X = 20, Y = 20};
-            AnotherComponent another1 = new AnotherComponent {X = 250, Y = 250};
+            AnotherComponent another1 = new AnotherComponent {Data = 250, Y = 250};
             entity1.Add(pos1);
             entity1.Add(vel1);
             entity1.Add(health1);
@@ -263,13 +263,13 @@ namespace Alis.Core.Ecs.Test
             entity1.Add(another1);
 
             Position pos2 = new Position {X = 2, Y = 2};
-            Velocity vel2 = new Velocity {VX = 0.2f, VY = 0.2f};
+            Velocity vel2 = new Velocity {X = 0.2f, Y = 0.2f};
             Health health2 = new Health {Value = 50};
-            Armor armor2 = new Armor {Defense = 25};
+            Armor armor2 = new Armor {Value = 25};
             TestComponent test2 = new TestComponent {Value = 20};
             TestComponent2 test2b = new TestComponent2 {Value = 25};
             TestStruct struct2 = new TestStruct {X = 30, Y = 30};
-            AnotherComponent another2 = new AnotherComponent {X = 350, Y = 350};
+            AnotherComponent another2 = new AnotherComponent {Data = 350, Y = 350};
             entity2.Add(pos2);
             entity2.Add(vel2);
             entity2.Add(health2);
@@ -308,8 +308,8 @@ namespace Alis.Core.Ecs.Test
 
             // Assert
             Assert.NotEqual(tuple1.GameObject, tuple2.GameObject);
-            Assert.Equal(250, tuple1.Item8.Value.X);
-            Assert.Equal(350, tuple2.Item8.Value.X);
+            Assert.Equal(250, tuple1.Item8.Value.Data);
+            Assert.Equal(350, tuple2.Item8.Value.Data);
 
             world.Dispose();
         }

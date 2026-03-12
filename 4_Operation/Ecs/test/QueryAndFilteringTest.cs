@@ -84,9 +84,9 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position {X = 0, Y = 0}, new Velocity {VX = 1, VY = 1});
+            scene.Create(new Position {X = 0, Y = 0}, new Velocity {X = 1, Y = 1});
             scene.Create(new Position {X = 1, Y = 1});
-            scene.Create(new Velocity {VX = 2, VY = 2});
+            scene.Create(new Velocity {X = 2, Y = 2});
 
             // Act
             Query query = scene.Query<With<Position>, With<Velocity>>();

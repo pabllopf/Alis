@@ -48,7 +48,7 @@ namespace Alis.Core.Ecs.Test
             Scene world = new Scene();
             GameObject entity = world.Create();
             Position pos = new Position {X = 10, Y = 20};
-            Velocity vel = new Velocity {VX = 1, VY = 2};
+            Velocity vel = new Velocity {X = 1, Y = 2};
             entity.Add(pos);
             entity.Add(vel);
 
@@ -63,7 +63,7 @@ namespace Alis.Core.Ecs.Test
             // Assert
             Assert.Equal(entity, tuple.GameObject);
             Assert.Equal(10, tuple.Item1.Value.X);
-            Assert.Equal(1, tuple.Item2.Value.VX);
+            Assert.Equal(1, tuple.Item2.Value.X);
 
             world.Dispose();
         }
@@ -78,7 +78,7 @@ namespace Alis.Core.Ecs.Test
             Scene world = new Scene();
             GameObject entity = world.Create();
             Position pos = new Position {X = 5, Y = 10};
-            Velocity vel = new Velocity {VX = 2, VY = 3};
+            Velocity vel = new Velocity {X = 2, Y = 3};
             entity.Add(pos);
             entity.Add(vel);
 
@@ -95,7 +95,7 @@ namespace Alis.Core.Ecs.Test
             // Assert
             Assert.Equal(entity, go);
             Assert.Equal(5, posRef.Value.X);
-            Assert.Equal(2, velRef.Value.VX);
+            Assert.Equal(2, velRef.Value.X);
 
             world.Dispose();
         }
@@ -110,7 +110,7 @@ namespace Alis.Core.Ecs.Test
             Scene world = new Scene();
             GameObject entity = world.Create();
             Position pos = new Position {X = 1, Y = 2};
-            Velocity vel = new Velocity {VX = 0.5f, VY = 0.5f};
+            Velocity vel = new Velocity {X = 0.5f, Y = 0.5f};
             entity.Add(pos);
             entity.Add(vel);
 
@@ -123,11 +123,11 @@ namespace Alis.Core.Ecs.Test
 
             // Act
             tuple.Item1.Value.X = 100;
-            tuple.Item2.Value.VX = 10;
+            tuple.Item2.Value.X = 10;
 
             // Assert
             Assert.Equal(1, entity.Get<Position>().X);
-            Assert.Equal(0.5, entity.Get<Velocity>().VX);
+            Assert.Equal(0.5, entity.Get<Velocity>().X);
 
             world.Dispose();
         }
@@ -144,12 +144,12 @@ namespace Alis.Core.Ecs.Test
             GameObject entity2 = world.Create();
 
             Position pos1 = new Position {X = 1, Y = 1};
-            Velocity vel1 = new Velocity {VX = 0.1f, VY = 0.1f};
+            Velocity vel1 = new Velocity {X = 0.1f, Y = 0.1f};
             entity1.Add(pos1);
             entity1.Add(vel1);
 
             Position pos2 = new Position {X = 2, Y = 2};
-            Velocity vel2 = new Velocity {VX = 0.2f, VY = 0.2f};
+            Velocity vel2 = new Velocity {X = 0.2f, Y = 0.2f};
             entity2.Add(pos2);
             entity2.Add(vel2);
 
@@ -186,7 +186,7 @@ namespace Alis.Core.Ecs.Test
             Scene world = new Scene();
             GameObject entity = world.Create();
             Position pos = new Position {X = 42, Y = 84};
-            Velocity vel = new Velocity {VX = 1.5f, VY = 2.5f};
+            Velocity vel = new Velocity {X = 1.5f, Y = 2.5f};
             entity.Add(pos);
             entity.Add(vel);
 
@@ -201,7 +201,7 @@ namespace Alis.Core.Ecs.Test
             // Assert
             Assert.Equal(entity, tuple.GameObject);
             Assert.Equal(42, tuple.Item1.Value.X);
-            Assert.Equal(1.5f, tuple.Item2.Value.VX);
+            Assert.Equal(1.5f, tuple.Item2.Value.X);
 
             world.Dispose();
         }
@@ -216,7 +216,7 @@ namespace Alis.Core.Ecs.Test
             Scene world = new Scene();
             GameObject entity = world.Create();
             Health health = new Health {Value = 100};
-            Armor armor = new Armor {Defense = 50};
+            Armor armor = new Armor {Value = 50};
             entity.Add(health);
             entity.Add(armor);
 
@@ -230,7 +230,7 @@ namespace Alis.Core.Ecs.Test
 
             // Assert
             Assert.Equal(100, tuple.Item1.Value.Value);
-            Assert.Equal(50, tuple.Item2.Value.Defense);
+            Assert.Equal(50, tuple.Item2.Value.Value);
 
             world.Dispose();
         }

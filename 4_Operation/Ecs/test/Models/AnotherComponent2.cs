@@ -40,6 +40,11 @@ namespace Alis.Core.Ecs.Test.Models
         ///     The name
         /// </summary>
         public string Name;
+        
+        /// <summary>
+        /// The data
+        /// </summary>
+        public int Data;   
 
         /// <summary>
         ///     Ons the init using the specified self

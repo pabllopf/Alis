@@ -115,7 +115,7 @@ namespace Alis.Core.Ecs.Test.Kernel
             Position originalPos = new Position {X = 42, Y = 84};
             GameObject entity = scene.Create(
                 originalPos,
-                new Velocity {VX = 5, VY = 10}
+                new Velocity {X = 5, Y = 10}
             );
 
             // Act
@@ -141,7 +141,7 @@ namespace Alis.Core.Ecs.Test.Kernel
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
                 new Position {X = 1, Y = 2},
-                new Velocity {VX = 3, VY = 4},
+                new Velocity {X = 3, Y = 4},
                 new Health {Value = 100}
             );
 
@@ -168,7 +168,7 @@ namespace Alis.Core.Ecs.Test.Kernel
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
                 new Position {X = 1, Y = 2},
-                new Velocity {VX = 3, VY = 4}
+                new Velocity {X = 3, Y = 4}
             );
 
             // Act
@@ -306,7 +306,7 @@ namespace Alis.Core.Ecs.Test.Kernel
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
                 new Position {X = 1, Y = 2},
-                new Velocity {VX = 3, VY = 4},
+                new Velocity {X = 3, Y = 4},
                 new Health {Value = 100},
                 new Transform {X = 5, Y = 6, Rotation = 45}
             );
@@ -359,9 +359,9 @@ namespace Alis.Core.Ecs.Test.Kernel
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(new Position {X = 1, Y = 2}, new Velocity {VX = 3, VY = 4});
+            GameObject entity1 = scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4});
             GameObject entity2 = scene.Create(new Position {X = 5, Y = 6});
-            GameObject entity3 = scene.Create(new Velocity {VX = 7, VY = 8});
+            GameObject entity3 = scene.Create(new Velocity {X = 7, Y = 8});
 
             // Act
             entity1.Remove<Position>();
@@ -388,7 +388,7 @@ namespace Alis.Core.Ecs.Test.Kernel
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
                 new Position {X = 1, Y = 2},
-                new Velocity {VX = 3, VY = 4}
+                new Velocity {X = 3, Y = 4}
             );
 
             // Act

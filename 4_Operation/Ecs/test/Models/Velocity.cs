@@ -39,12 +39,12 @@ namespace Alis.Core.Ecs.Test.Models
         /// <summary>
         ///     The vx
         /// </summary>
-        public float VX;
+        public float X;
 
         /// <summary>
         ///     The vy
         /// </summary>
-        public float VY;
+        public float Y;
 
 
         /// <summary>

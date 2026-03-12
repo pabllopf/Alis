@@ -185,8 +185,8 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             scene.Create(new Position {X = 1});
             scene.Create(new Position {X = 2}, new Health {Value = 100});
-            scene.Create(new Position {X = 3}, new Health {Value = 100}, new Velocity {VX = 1});
-            scene.Create(new Health {Value = 50}, new Velocity {VX = 2});
+            scene.Create(new Position {X = 3}, new Health {Value = 100}, new Velocity {X = 1});
+            scene.Create(new Health {Value = 50}, new Velocity {X = 2});
 
             // Act
             Query query = scene.Query<With<Position>, With<Health>, With<Velocity>>();

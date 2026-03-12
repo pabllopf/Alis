@@ -48,7 +48,7 @@ namespace Alis.Core.Ecs.Test
         public void Remove_Arity1_RemovesComponentSuccessfully()
         {
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2}, new Velocity {VX = 10, VY = 20});
+            GameObject entity = scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 10, Y = 20});
 
             Assert.True(entity.Has<Velocity>());
 
@@ -67,7 +67,7 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
                 new Position {X = 5, Y = 10},
-                new Velocity {VX = 1, VY = 2},
+                new Velocity {X = 1, Y = 2},
                 new Health {Value = 100}
             );
 
@@ -89,7 +89,7 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
                 new Position {X = 1, Y = 2},
-                new Velocity {VX = 5, VY = 10},
+                new Velocity {X = 5, Y = 10},
                 new Health {Value = 100}
             );
 
@@ -108,7 +108,7 @@ namespace Alis.Core.Ecs.Test
         public void Remove_Arity1_UpdatesEntityTypeCorrectly()
         {
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2}, new Velocity {VX = 5, VY = 10});
+            GameObject entity = scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 5, Y = 10});
 
             entity.Remove<Velocity>();
 
@@ -129,7 +129,7 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
                 new Position {X = 1, Y = 2},
-                new Velocity {VX = 5, VY = 10},
+                new Velocity {X = 5, Y = 10},
                 new Health {Value = 100}
             );
 
@@ -150,9 +150,9 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
                 new Position {X = 1, Y = 2},
-                new Velocity {VX = 5, VY = 10},
+                new Velocity {X = 5, Y = 10},
                 new Health {Value = 100},
-                new Armor {Defense = 50}
+                new Armor {Value = 50}
             );
 
             entity.Remove<Velocity>();
@@ -177,9 +177,9 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
                 new Position {X = 1, Y = 2},
-                new Velocity {VX = 5, VY = 10},
+                new Velocity {X = 5, Y = 10},
                 new Health {Value = 100},
-                new Armor {Defense = 50}
+                new Armor {Value = 50}
             );
 
             entity.Remove<Velocity>();
@@ -201,10 +201,10 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
                 new Position {X = 1, Y = 2},
-                new Velocity {VX = 5, VY = 10},
+                new Velocity {X = 5, Y = 10},
                 new Health {Value = 100},
-                new Armor {Defense = 50},
-                new Damage {Amount = 25}
+                new Armor {Value = 50},
+                new Damage {Value = 25}
             );
 
             entity.Remove<Velocity>();
@@ -234,10 +234,10 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
                 new Position {X = 1, Y = 2},
-                new Velocity {VX = 5, VY = 10},
+                new Velocity {X = 5, Y = 10},
                 new Health {Value = 100},
-                new Armor {Defense = 50},
-                new Damage {Amount = 25}
+                new Armor {Value = 50},
+                new Damage {Value = 25}
             );
 
             entity.Remove<Velocity>();
@@ -261,10 +261,10 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
                 new Position {X = 10, Y = 20},
-                new Velocity {VX = 1, VY = 2},
+                new Velocity {X = 1, Y = 2},
                 new Health {Value = 100},
-                new Armor {Defense = 50},
-                new Damage {Amount = 25}
+                new Armor {Value = 50},
+                new Damage {Value = 25}
             );
 
             entity.Remove<Velocity>();
@@ -290,10 +290,10 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
                 new Position {X = 1, Y = 2},
-                new Velocity {VX = 5, VY = 10},
+                new Velocity {X = 5, Y = 10},
                 new Health {Value = 100},
-                new Armor {Defense = 50},
-                new Damage {Amount = 25},
+                new Armor {Value = 50},
+                new Damage {Value = 25},
                 new Transform {X = 0, Y = 0, Rotation = 0}
             );
 
@@ -320,10 +320,10 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
                 new Position {X = 1, Y = 2},
-                new Velocity {VX = 5, VY = 10},
+                new Velocity {X = 5, Y = 10},
                 new Health {Value = 100},
-                new Armor {Defense = 50},
-                new Damage {Amount = 25},
+                new Armor {Value = 50},
+                new Damage {Value = 25},
                 new Transform {X = 0, Y = 0, Rotation = 0}
             );
 
@@ -353,10 +353,10 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
                 new Position {X = 1, Y = 2},
-                new Velocity {VX = 5, VY = 10},
+                new Velocity {X = 5, Y = 10},
                 new Health {Value = 100},
-                new Armor {Defense = 50},
-                new Damage {Amount = 25},
+                new Armor {Value = 50},
+                new Damage {Value = 25},
                 new Transform {X = 0, Y = 0, Rotation = 0},
                 new TestComponent {Value = 42}
             );
@@ -390,14 +390,14 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
                 new Position {X = 1, Y = 2},
-                new Velocity {VX = 5, VY = 10},
+                new Velocity {X = 5, Y = 10},
                 new Health {Value = 100},
-                new Armor {Defense = 50},
-                new Damage {Amount = 25},
+                new Armor {Value = 50},
+                new Damage {Value = 25},
                 new Transform {X = 0, Y = 0, Rotation = 0},
                 new TestComponent {Value = 42}
             );
-            entity.Add(new AnotherComponent {X = 1, Y = 1});
+            entity.Add(new AnotherComponent {Data = 1, Y = 1});
 
             entity.Remove<Velocity>();
             entity.Remove<Health>();
@@ -426,14 +426,14 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
                 new Position {X = 100, Y = 200},
-                new Velocity {VX = 5, VY = 10},
+                new Velocity {X = 5, Y = 10},
                 new Health {Value = 100},
-                new Armor {Defense = 50},
-                new Damage {Amount = 25},
+                new Armor {Value = 50},
+                new Damage {Value = 25},
                 new Transform {X = 0, Y = 0, Rotation = 0},
                 new TestComponent {Value = 42}
             );
-            entity.Add(new AnotherComponent {X = 1, Y = 1});
+            entity.Add(new AnotherComponent {Data = 1, Y = 1});
 
             entity.Remove<Velocity>();
             entity.Remove<Armor>();
@@ -460,14 +460,14 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
                 new Position {X = 1, Y = 2},
-                new Velocity {VX = 5, VY = 10},
+                new Velocity {X = 5, Y = 10},
                 new Health {Value = 100},
-                new Armor {Defense = 50},
-                new Damage {Amount = 25},
+                new Armor {Value = 50},
+                new Damage {Value = 25},
                 new Transform {X = 0, Y = 0, Rotation = 0},
                 new TestComponent {Value = 42}
             );
-            entity.Add(new AnotherComponent {X = 1, Y = 1});
+            entity.Add(new AnotherComponent {Data = 1, Y = 1});
             entity.Add(new AnotherComponent2 {Name = "test"});
 
             entity.Remove<Velocity>();
@@ -499,14 +499,14 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
                 new Position {X = 1, Y = 2},
-                new Velocity {VX = 5, VY = 10},
+                new Velocity {X = 5, Y = 10},
                 new Health {Value = 100},
-                new Armor {Defense = 50},
-                new Damage {Amount = 25},
+                new Armor {Value = 50},
+                new Damage {Value = 25},
                 new Transform {X = 0, Y = 0, Rotation = 0},
                 new TestComponent {Value = 42}
             );
-            entity.Add(new AnotherComponent {X = 1, Y = 1});
+            entity.Add(new AnotherComponent {Data = 1, Y = 1});
             entity.Add(new AnotherComponent2 {Name = "test"});
 
             // Remove every other component
@@ -539,7 +539,7 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
                 new Position {X = 1, Y = 2},
-                new Velocity {VX = 10, VY = 20}
+                new Velocity {X = 10, Y = 20}
             );
 
             entity.Remove(Component<Velocity>.Id);
@@ -557,7 +557,7 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
                 new Position {X = 1, Y = 2},
-                new Velocity {VX = 10, VY = 20},
+                new Velocity {X = 10, Y = 20},
                 new Health {Value = 100}
             );
 
@@ -578,7 +578,7 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
                 new Position {X = 50, Y = 100},
-                new Velocity {VX = 10, VY = 20},
+                new Velocity {X = 10, Y = 20},
                 new Health {Value = 75}
             );
 
@@ -601,7 +601,7 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
                 new Position {X = 1, Y = 2},
-                new Velocity {VX = 10, VY = 20}
+                new Velocity {X = 10, Y = 20}
             );
 
             entity.Remove(typeof(Velocity));
@@ -619,9 +619,9 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
                 new Position {X = 1, Y = 2},
-                new Velocity {VX = 10, VY = 20},
+                new Velocity {X = 10, Y = 20},
                 new Health {Value = 100},
-                new Armor {Defense = 50}
+                new Armor {Value = 50}
             );
 
             entity.Remove(typeof(Velocity));
@@ -642,7 +642,7 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
                 new Position {X = 99, Y = 88},
-                new Velocity {VX = 10, VY = 20},
+                new Velocity {X = 10, Y = 20},
                 new Health {Value = 150}
             );
 
@@ -666,7 +666,7 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            entity.Add(new Velocity {VX = 10, VY = 20});
+            entity.Add(new Velocity {X = 10, Y = 20});
             entity.Add(new Health {Value = 100});
 
             Assert.True(entity.Has<Velocity>());
@@ -686,15 +686,15 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
                 new Position {X = 1, Y = 2},
-                new Velocity {VX = 10, VY = 20}
+                new Velocity {X = 10, Y = 20}
             );
 
             entity.Remove<Velocity>();
             Assert.False(entity.Has<Velocity>());
 
-            entity.Add(new Velocity {VX = 5, VY = 15});
+            entity.Add(new Velocity {X = 5, Y = 15});
             Assert.True(entity.Has<Velocity>());
-            Assert.Equal(5, entity.Get<Velocity>().VX);
+            Assert.Equal(5, entity.Get<Velocity>().X);
         }
 
         /// <summary>
@@ -706,7 +706,7 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
                 new Position {X = 1, Y = 2},
-                new Velocity {VX = 10, VY = 20},
+                new Velocity {X = 10, Y = 20},
                 new Health {Value = 100}
             );
 
@@ -715,7 +715,7 @@ namespace Alis.Core.Ecs.Test
             Assert.False(entity.Has<Velocity>());
 
             // ComponentId remove
-            entity.Add(new Velocity {VX = 5, VY = 5});
+            entity.Add(new Velocity {X = 5, Y = 5});
             entity.Remove(Component<Velocity>.Id);
             Assert.False(entity.Has<Velocity>());
 
@@ -735,13 +735,13 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
                 new Position {X = 1, Y = 2},
-                new Velocity {VX = 5, VY = 10},
+                new Velocity {X = 5, Y = 10},
                 new Health {Value = 100}
             );
 
             for (int i = 0; i < 5; i++)
             {
-                entity.Add(new Armor {Defense = i * 10});
+                entity.Add(new Armor {Value = i * 10});
                 entity.Remove<Armor>();
             }
 
@@ -760,7 +760,7 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
                 new Position {X = 10, Y = 20},
-                new Velocity {VX = 5, VY = 10},
+                new Velocity {X = 5, Y = 10},
                 new Health {Value = 100}
             );
 
@@ -781,8 +781,8 @@ namespace Alis.Core.Ecs.Test
         public void Remove_UpdatesArchetypeCorrectly()
         {
             using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(new Position {X = 1, Y = 2}, new Velocity {VX = 5, VY = 10});
-            GameObject entity2 = scene.Create(new Position {X = 3, Y = 4}, new Velocity {VX = 15, VY = 20});
+            GameObject entity1 = scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 5, Y = 10});
+            GameObject entity2 = scene.Create(new Position {X = 3, Y = 4}, new Velocity {X = 15, Y = 20});
 
             entity1.Remove<Velocity>();
 

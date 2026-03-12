@@ -40,6 +40,6 @@ namespace Alis.Core.Ecs.Test.Models
         /// <summary>
         ///     Gets or sets the value of the defense
         /// </summary>
-        public int Defense { get; set; }
+        public int Value { get; set; }
     }
 }

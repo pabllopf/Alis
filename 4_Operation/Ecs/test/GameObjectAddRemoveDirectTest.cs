@@ -57,11 +57,11 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             GameObject go = CreateEntity(scene, new Position {X = 1, Y = 2});
 
-            go.Add(new Velocity {VX = 10, VY = 20});
+            go.Add(new Velocity {X = 10, Y = 20});
 
             Assert.True(go.Has<Velocity>());
-            Assert.Equal(10, go.Get<Velocity>().VX);
-            Assert.Equal(20, go.Get<Velocity>().VY);
+            Assert.Equal(10, go.Get<Velocity>().X);
+            Assert.Equal(20, go.Get<Velocity>().Y);
         }
 
         /// <summary>
@@ -97,14 +97,14 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             GameObject go = CreateEntity(scene, new Position {X = 1, Y = 2});
 
-            go.Add(new Velocity {VX = 5, VY = 10});
+            go.Add(new Velocity {X = 5, Y = 10});
             go.Add(new Health {Value = 100});
-            go.Add(new Armor {Defense = 50});
-            go.Add(new Damage {Amount = 25});
+            go.Add(new Armor {Value = 50});
+            go.Add(new Damage {Value = 25});
             go.Add(new Transform {X = 0, Y = 0, Rotation = 0});
 
             Assert.True(go.Has<Transform>());
-            Assert.Equal(5, go.Get<Velocity>().VX);
+            Assert.Equal(5, go.Get<Velocity>().X);
         }
 
         #endregion
@@ -120,10 +120,10 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             GameObject go = CreateEntity(scene, new Position {X = 1, Y = 2});
 
-            go.Add(new Velocity {VX = 5, VY = 10});
+            go.Add(new Velocity {X = 5, Y = 10});
             go.Add(new Health {Value = 100});
-            go.Add(new Armor {Defense = 50});
-            go.Add(new Damage {Amount = 25});
+            go.Add(new Armor {Value = 50});
+            go.Add(new Damage {Value = 25});
             go.Add(new Transform {X = 0, Y = 0, Rotation = 0});
             go.Add(new TestComponent {Value = 42});
 
@@ -144,16 +144,16 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             GameObject go = CreateEntity(scene, new Position {X = 1, Y = 2});
 
-            go.Add(new Velocity {VX = 5, VY = 10});
+            go.Add(new Velocity {X = 5, Y = 10});
             go.Add(new Health {Value = 100});
-            go.Add(new Armor {Defense = 50});
-            go.Add(new Damage {Amount = 25});
+            go.Add(new Armor {Value = 50});
+            go.Add(new Damage {Value = 25});
             go.Add(new Transform {X = 0, Y = 0, Rotation = 0});
             go.Add(new TestComponent {Value = 42});
-            go.Add(new AnotherComponent {X = 1, Y = 1});
+            go.Add(new AnotherComponent {Data = 1, Y = 1});
 
             Assert.True(go.Has<AnotherComponent>());
-            Assert.Equal(1, go.Get<AnotherComponent>().X);
+            Assert.Equal(1, go.Get<AnotherComponent>().Data);
         }
 
         #endregion
@@ -169,13 +169,13 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             GameObject go = CreateEntity(scene, new Position {X = 1, Y = 2});
 
-            go.Add(new Velocity {VX = 5, VY = 10});
+            go.Add(new Velocity {X = 5, Y = 10});
             go.Add(new Health {Value = 100});
-            go.Add(new Armor {Defense = 50});
-            go.Add(new Damage {Amount = 25});
+            go.Add(new Armor {Value = 50});
+            go.Add(new Damage {Value = 25});
             go.Add(new Transform {X = 0, Y = 0, Rotation = 0});
             go.Add(new TestComponent {Value = 42});
-            go.Add(new AnotherComponent {X = 1, Y = 1});
+            go.Add(new AnotherComponent {Data = 1, Y = 1});
             go.Add(new AnotherComponent2 {Name = "test"});
 
             Assert.True(go.Has<AnotherComponent2>());
@@ -195,10 +195,10 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             GameObject go = CreateEntity(scene, new Position {X = 1, Y = 2});
 
-            go.AddBoxed(new Velocity {VX = 10, VY = 20});
+            go.AddBoxed(new Velocity {X = 10, Y = 20});
 
             Assert.True(go.Has<Velocity>());
-            Assert.Equal(10, go.Get<Velocity>().VX);
+            Assert.Equal(10, go.Get<Velocity>().X);
         }
 
         /// <summary>
@@ -230,10 +230,10 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             GameObject go = CreateEntity(scene, new Position {X = 1, Y = 2});
 
-            go.AddAs(typeof(Velocity), new Velocity {VX = 15, VY = 25});
+            go.AddAs(typeof(Velocity), new Velocity {X = 15, Y = 25});
 
             Assert.True(go.Has<Velocity>());
-            Assert.Equal(15, go.Get<Velocity>().VX);
+            Assert.Equal(15, go.Get<Velocity>().X);
         }
 
         /// <summary>
@@ -263,10 +263,10 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             GameObject go = CreateEntity(scene, new Position {X = 1, Y = 2});
 
-            go.AddAs(Component<Velocity>.Id, new Velocity {VX = 20, VY = 30});
+            go.AddAs(Component<Velocity>.Id, new Velocity {X = 20, Y = 30});
 
             Assert.True(go.Has<Velocity>());
-            Assert.Equal(20, go.Get<Velocity>().VX);
+            Assert.Equal(20, go.Get<Velocity>().X);
         }
 
         /// <summary>
@@ -278,7 +278,7 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             GameObject go = CreateEntity(scene, new Position {X = 1, Y = 2});
 
-            go.AddAs(Component<Velocity>.Id, new Velocity {VX = 5, VY = 10});
+            go.AddAs(Component<Velocity>.Id, new Velocity {X = 5, Y = 10});
             go.AddAs(Component<Health>.Id, new Health {Value = 100});
 
             Assert.True(go.Has<Velocity>());
@@ -302,15 +302,15 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             GameObject go = CreateEntity(scene, new Position {X = 1, Y = 2});
 
-            go.Add(new Velocity {VX = 10, VY = 20});
+            go.Add(new Velocity {X = 10, Y = 20});
             Assert.True(go.Has<Velocity>());
 
             go.Remove<Velocity>();
             Assert.False(go.Has<Velocity>());
 
-            go.Add(new Velocity {VX = 5, VY = 15});
+            go.Add(new Velocity {X = 5, Y = 15});
             Assert.True(go.Has<Velocity>());
-            Assert.Equal(5, go.Get<Velocity>().VX);
+            Assert.Equal(5, go.Get<Velocity>().X);
         }
 
         /// <summary>
@@ -323,7 +323,7 @@ namespace Alis.Core.Ecs.Test
             GameObject go = CreateEntity(scene, new Position {X = 1, Y = 2});
 
             // Generic Add
-            go.Add(new Velocity {VX = 5, VY = 10});
+            go.Add(new Velocity {X = 5, Y = 10});
             Assert.True(go.Has<Velocity>());
 
             // AddBoxed
@@ -331,11 +331,11 @@ namespace Alis.Core.Ecs.Test
             Assert.True(go.Has<Health>());
 
             // AddAs(Type)
-            go.AddAs(typeof(Armor), new Armor {Defense = 50});
+            go.AddAs(typeof(Armor), new Armor {Value = 50});
             Assert.True(go.Has<Armor>());
 
             // AddAs(ComponentId)
-            go.AddAs(Component<Damage>.Id, new Damage {Amount = 25});
+            go.AddAs(Component<Damage>.Id, new Damage {Value = 25});
             Assert.True(go.Has<Damage>());
         }
 

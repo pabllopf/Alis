@@ -75,7 +75,7 @@ namespace Alis.Core.Ecs.Test
             CaptureGenericAction captureAction = new CaptureGenericAction();
             entity.OnComponentAddedGeneric += captureAction;
 
-            entity.Add(new Velocity {VX = 3, VY = 4});
+            entity.Add(new Velocity {X = 3, Y = 4});
             entity.Add(new Health {Value = 1});
 
             Assert.Contains(typeof(Velocity), captureAction.SeenTypes);

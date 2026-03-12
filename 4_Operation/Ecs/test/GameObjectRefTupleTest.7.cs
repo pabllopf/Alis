@@ -48,9 +48,9 @@ namespace Alis.Core.Ecs.Test
             Scene world = new Scene();
             GameObject entity = world.Create();
             Position pos = new Position {X = 10, Y = 20};
-            Velocity vel = new Velocity {VX = 1, VY = 2};
+            Velocity vel = new Velocity {X = 1, Y = 2};
             Health health = new Health {Value = 100};
-            Armor armor = new Armor {Defense = 50};
+            Armor armor = new Armor {Value = 50};
             TestComponent test = new TestComponent {Value = 5};
             TestComponent2 test2 = new TestComponent2 {Value = 10};
             TestStruct testStruct = new TestStruct {X = 15, Y = 15};
@@ -93,9 +93,9 @@ namespace Alis.Core.Ecs.Test
             Scene world = new Scene();
             GameObject entity = world.Create();
             Position pos = new Position {X = 5, Y = 10};
-            Velocity vel = new Velocity {VX = 2, VY = 3};
+            Velocity vel = new Velocity {X = 2, Y = 3};
             Health health = new Health {Value = 50};
-            Armor armor = new Armor {Defense = 25};
+            Armor armor = new Armor {Value = 25};
             TestComponent test = new TestComponent {Value = 3};
             TestComponent2 test2 = new TestComponent2 {Value = 6};
             TestStruct testStruct = new TestStruct {X = 9, Y = 9};
@@ -140,9 +140,9 @@ namespace Alis.Core.Ecs.Test
             Scene world = new Scene();
             GameObject entity = world.Create();
             Position pos = new Position {X = 1, Y = 2};
-            Velocity vel = new Velocity {VX = 0.5f, VY = 0.5f};
+            Velocity vel = new Velocity {X = 0.5f, Y = 0.5f};
             Health health = new Health {Value = 75};
-            Armor armor = new Armor {Defense = 10};
+            Armor armor = new Armor {Value = 10};
             TestComponent test = new TestComponent {Value = 1};
             TestComponent2 test2 = new TestComponent2 {Value = 2};
             TestStruct testStruct = new TestStruct {X = 3, Y = 3};
@@ -185,9 +185,9 @@ namespace Alis.Core.Ecs.Test
             Scene world = new Scene();
             GameObject entity = world.Create();
             Position pos = new Position {X = 7, Y = 14};
-            Velocity vel = new Velocity {VX = 1.5f, VY = 2.5f};
+            Velocity vel = new Velocity {X = 1.5f, Y = 2.5f};
             Health health = new Health {Value = 150};
-            Armor armor = new Armor {Defense = 75};
+            Armor armor = new Armor {Value = 75};
             TestComponent test = new TestComponent {Value = 7};
             TestComponent2 test2 = new TestComponent2 {Value = 14};
             TestStruct testStruct = new TestStruct {X = 21, Y = 21};

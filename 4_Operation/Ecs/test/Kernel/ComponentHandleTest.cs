@@ -120,7 +120,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         public void CreateFromBoxed_WithoutComponentId_ShouldCreateValidHandle()
         {
             // Arrange
-            object velocity = new Velocity {VX = 1, VY = 2};
+            object velocity = new Velocity {X = 1, Y = 2};
 
             // Act
             ComponentHandle handle = ComponentHandle.CreateFromBoxed(velocity);

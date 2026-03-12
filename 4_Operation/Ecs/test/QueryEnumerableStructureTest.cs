@@ -144,7 +144,7 @@ namespace Alis.Core.Ecs.Test
         public void QueryEnumerable_Arity2_DirectInstance_WorksInForeach()
         {
             using Scene scene = new Scene();
-            scene.Create(new Position {X = 1, Y = 2}, new Velocity {VX = 3, VY = 4});
+            scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4});
             Query query = scene.Query<With<Position>, With<Velocity>>();
             QueryEnumerable<Position, Velocity> enumerable = new QueryEnumerable<Position, Velocity>(query);
 
@@ -166,13 +166,13 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             scene.Create(
                 new Position {X = 1, Y = 2},
-                new Velocity {VX = 3, VY = 4},
+                new Velocity {X = 3, Y = 4},
                 new Health {Value = 5},
                 new Transform {X = 6, Y = 7, Rotation = 8},
                 new TestComponent {Value = 9, Name = "n"},
-                new AnotherComponent {X = 10, Y = 11},
-                new Damage {Amount = 12},
-                new Armor {Defense = 13}
+                new AnotherComponent {Data = 10, Y = 11},
+                new Damage {Value = 12},
+                new Armor {Value = 13}
             );
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>, With<AnotherComponent>, With<Damage>, With<Armor>>();
             QueryEnumerable<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor> enumerable =

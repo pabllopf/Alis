@@ -91,16 +91,16 @@ namespace Alis.Core.Ecs.Test
         public void GameObject_GetAndSet_ByType_Work()
         {
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Velocity {VX = 1, VY = 2});
+            GameObject entity = scene.Create(new Velocity {X = 1, Y = 2});
 
             object boxed = entity.Get(typeof(Velocity));
             Assert.IsType<Velocity>(boxed);
-            Assert.Equal(1, ((Velocity) boxed).VX);
+            Assert.Equal(1, ((Velocity) boxed).X);
 
-            entity.Set(typeof(Velocity), new Velocity {VX = 11, VY = 22});
+            entity.Set(typeof(Velocity), new Velocity {X = 11, Y = 22});
             Velocity updated = entity.Get<Velocity>();
-            Assert.Equal(11, updated.VX);
-            Assert.Equal(22, updated.VY);
+            Assert.Equal(11, updated.X);
+            Assert.Equal(22, updated.Y);
         }
 
         /// <summary>
@@ -176,7 +176,7 @@ namespace Alis.Core.Ecs.Test
         public void GameObject_Remove_ByTypeAndByComponentId_Work()
         {
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2}, new Velocity {VX = 3, VY = 4});
+            GameObject entity = scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4});
 
             entity.Remove(typeof(Position));
             Assert.False(entity.Has<Position>());
@@ -228,7 +228,7 @@ namespace Alis.Core.Ecs.Test
         public void GameObject_EnumerateComponents_InvokesActionForEachComponent()
         {
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 1}, new Velocity {VX = 2, VY = 2}, new Health {Value = 3});
+            GameObject entity = scene.Create(new Position {X = 1, Y = 1}, new Velocity {X = 2, Y = 2}, new Health {Value = 3});
             CaptureComponentTypesAction action = new CaptureComponentTypesAction();
 
             entity.EnumerateComponents(action);

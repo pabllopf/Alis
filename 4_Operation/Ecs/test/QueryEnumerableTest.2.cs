@@ -73,8 +73,8 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position {X = 1, Y = 2}, new Velocity {VX = 0.5f, VY = 1.0f});
-            scene.Create(new Position {X = 3, Y = 4}, new Velocity {VX = 1.5f, VY = 2.0f});
+            scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 0.5f, Y = 1.0f});
+            scene.Create(new Position {X = 3, Y = 4}, new Velocity {X = 1.5f, Y = 2.0f});
             Query query = scene.Query<With<Position>, With<Velocity>>();
 
             // Act
@@ -99,7 +99,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position {X = 10, Y = 20}, new Velocity {VX = 5, VY = 10});
+            scene.Create(new Position {X = 10, Y = 20}, new Velocity {X = 5, Y = 10});
             Query query = scene.Query<With<Position>, With<Velocity>>();
 
             // Act & Assert
@@ -107,8 +107,8 @@ namespace Alis.Core.Ecs.Test
             {
                 Assert.Equal(10, pos.Value.X);
                 Assert.Equal(20, pos.Value.Y);
-                Assert.Equal(5, vel.Value.VX);
-                Assert.Equal(10, vel.Value.VY);
+                Assert.Equal(5, vel.Value.X);
+                Assert.Equal(10, vel.Value.Y);
             }
         }
 
@@ -123,7 +123,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position {X = 1, Y = 1}, new Velocity {VX = 1, VY = 1});
+            scene.Create(new Position {X = 1, Y = 1}, new Velocity {X = 1, Y = 1});
             scene.Create(new Position {X = 2, Y = 2}); // Missing Velocity
             Query query = scene.Query<With<Position>, With<Velocity>>();
 
@@ -149,7 +149,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 0, Y = 0}, new Velocity {VX = 0, VY = 0});
+            GameObject entity = scene.Create(new Position {X = 0, Y = 0}, new Velocity {X = 0, Y = 0});
             Query query = scene.Query<With<Position>, With<Velocity>>();
 
             // Act
@@ -160,13 +160,13 @@ namespace Alis.Core.Ecs.Test
                 pos.Value = p;
 
                 Velocity v = vel.Value;
-                v.VX = 50;
+                v.X = 50;
                 vel.Value = v;
             }
 
             // Assert
             Assert.Equal(100, entity.Get<Position>().X);
-            Assert.Equal(50, entity.Get<Velocity>().VX);
+            Assert.Equal(50, entity.Get<Velocity>().X);
         }
 
         /// <summary>
@@ -182,7 +182,7 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             for (int i = 0; i < 5; i++)
             {
-                scene.Create(new Position {X = i, Y = i * 2}, new Velocity {VX = i * 0.5f, VY = i * 0.3f});
+                scene.Create(new Position {X = i, Y = i * 2}, new Velocity {X = i * 0.5f, Y = i * 0.3f});
             }
 
             Query query = scene.Query<With<Position>, With<Velocity>>();
@@ -233,7 +233,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            scene.Create(new Position {X = 5, Y = 10}, new Velocity {VX = 2, VY = 3});
+            scene.Create(new Position {X = 5, Y = 10}, new Velocity {X = 2, Y = 3});
             Query query = scene.Query<With<Position>, With<Velocity>>();
 
             // Act & Assert
@@ -242,7 +242,7 @@ namespace Alis.Core.Ecs.Test
                 Assert.False(entity.IsNull);
                 Assert.True(entity.IsAlive);
                 Assert.Equal(5, pos.Value.X);
-                Assert.Equal(2, vel.Value.VX);
+                Assert.Equal(2, vel.Value.X);
             }
         }
     }

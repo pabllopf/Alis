@@ -44,7 +44,7 @@ namespace Alis.Core.Ecs.Test.Models
         /// <summary>
         ///     The
         /// </summary>
-        public float X;
+        public float Data;
 
         /// <summary>
         ///     The

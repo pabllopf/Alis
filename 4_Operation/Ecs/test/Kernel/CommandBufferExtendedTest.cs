@@ -155,7 +155,7 @@ namespace Alis.Core.Ecs.Test.Kernel
             GameObject entity3 = scene.Create();
 
             entity1.Add(new Position {X = 1, Y = 2});
-            entity2.Add(new Velocity {VX = 3, VY = 4});
+            entity2.Add(new Velocity {X = 3, Y = 4});
             entity3.Add(new Health {Value = 100});
 
             // Assert
@@ -200,14 +200,14 @@ namespace Alis.Core.Ecs.Test.Kernel
             GameObject entity = scene.Create(new Position {X = 42, Y = 84});
 
             // Act
-            entity.Add(new Velocity {VX = 5, VY = 10});
+            entity.Add(new Velocity {X = 5, Y = 10});
             scene.Update();
 
             // Assert
             Assert.True(entity.TryGet(out Ref<Position> pos));
             Assert.Equal(42, pos.Value.X);
             Assert.True(entity.TryGet(out Ref<Velocity> vel));
-            Assert.Equal(5, vel.Value.VX);
+            Assert.Equal(5, vel.Value.X);
         }
 
         /// <summary>
@@ -252,7 +252,7 @@ namespace Alis.Core.Ecs.Test.Kernel
 
             // Act
             entity.Add(new Position {X = 1, Y = 2});
-            entity.Add(new Velocity {VX = 3, VY = 4});
+            entity.Add(new Velocity {X = 3, Y = 4});
             entity.Add(new Health {Value = 100});
 
             // Assert
@@ -275,9 +275,9 @@ namespace Alis.Core.Ecs.Test.Kernel
 
             // Act
             GameObject entity1 = scene.Create(new Position {X = 1, Y = 2});
-            GameObject entity2 = scene.Create(new Velocity {VX = 3, VY = 4});
+            GameObject entity2 = scene.Create(new Velocity {X = 3, Y = 4});
 
-            entity1.Add(new Velocity {VX = 5, VY = 6});
+            entity1.Add(new Velocity {X = 5, Y = 6});
             entity2.Add(new Position {X = 7, Y = 8});
             entity2.Add(new Health {Value = 100});
 

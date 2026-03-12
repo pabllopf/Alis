@@ -218,7 +218,7 @@ namespace Alis.Core.Ecs.Test
             for (int i = 0; i < chunk.Span1.Length; i++)
             {
                 chunk.Span1[i] = new Position {X = i + 10, Y = i + 20};
-                chunk.Span2[i] = new Velocity {VX = i + 1, VY = i + 2};
+                chunk.Span2[i] = new Velocity {X = i + 1, Y = i + 2};
             }
 
             int index = 0;
@@ -229,8 +229,8 @@ namespace Alis.Core.Ecs.Test
 
                 Assert.Equal(index + 10, p.X);
                 Assert.Equal(index + 20, p.Y);
-                Assert.Equal(index + 1, v.VX);
-                Assert.Equal(index + 2, v.VY);
+                Assert.Equal(index + 1, v.X);
+                Assert.Equal(index + 2, v.Y);
                 index++;
             }
         }

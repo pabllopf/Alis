@@ -140,14 +140,14 @@ namespace Alis.Core.Ecs.Test.Marshalling
             // Arrange
             Scene world = new Scene();
             GameObject entity = world.Create();
-            entity.Add(new Velocity {VX = 1, VY = 2});
+            entity.Add(new Velocity {X = 1, Y = 2});
 
             // Act
             ref Velocity retrieved = ref SceneMarshal.Get<Velocity>(world, entity.EntityID);
 
             // Assert
-            Assert.Equal(1, retrieved.VX);
-            Assert.Equal(2, retrieved.VY);
+            Assert.Equal(1, retrieved.X);
+            Assert.Equal(2, retrieved.Y);
 
             world.Dispose();
         }
@@ -161,17 +161,17 @@ namespace Alis.Core.Ecs.Test.Marshalling
             // Arrange
             Scene world = new Scene();
             GameObject entity = world.Create();
-            entity.Add(new Velocity {VX = 1, VY = 2});
+            entity.Add(new Velocity {X = 1, Y = 2});
 
             // Act
             ref Velocity retrieved = ref SceneMarshal.Get<Velocity>(world, entity.EntityID);
-            retrieved.VX = 10;
-            retrieved.VY = 20;
+            retrieved.X = 10;
+            retrieved.Y = 20;
 
             // Assert
             Velocity updated = entity.Get<Velocity>();
-            Assert.Equal(10, updated.VX);
-            Assert.Equal(20, updated.VY);
+            Assert.Equal(10, updated.X);
+            Assert.Equal(20, updated.Y);
 
             world.Dispose();
         }

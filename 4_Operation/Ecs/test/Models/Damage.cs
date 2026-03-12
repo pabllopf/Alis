@@ -42,7 +42,7 @@ namespace Alis.Core.Ecs.Test.Models
         /// <summary>
         ///     The damage amount
         /// </summary>
-        public int Amount;
+        public int Value;
 
 
         /// <summary>

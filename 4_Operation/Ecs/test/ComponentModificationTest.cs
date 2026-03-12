@@ -141,7 +141,7 @@ namespace Alis.Core.Ecs.Test
             // Act
             entity.Add(new Position {X = 1});
             entity.Add(new Health {Value = 100});
-            entity.Add(new Velocity {VX = 2});
+            entity.Add(new Velocity {X = 2});
 
             // Assert
             Assert.True(entity.Has<Position>());
@@ -160,7 +160,7 @@ namespace Alis.Core.Ecs.Test
             GameObject entity = scene.Create(
                 new Position {X = 1},
                 new Health {Value = 100},
-                new Velocity {VX = 2});
+                new Velocity {X = 2});
 
             // Act
             entity.Remove<Position>();

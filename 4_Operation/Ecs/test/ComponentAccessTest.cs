@@ -129,7 +129,7 @@ namespace Alis.Core.Ecs.Test
             GameObject entity = scene.Create(
                 new Position {X = 1, Y = 2},
                 new Health {Value = 100},
-                new Velocity {VX = 3, VY = 4});
+                new Velocity {X = 3, Y = 4});
 
             // Act & Assert
             ref Position pos = ref entity.Get<Position>();
@@ -139,7 +139,7 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(100, health.Value);
 
             ref Velocity vel = ref entity.Get<Velocity>();
-            Assert.Equal(3, vel.VX);
+            Assert.Equal(3, vel.X);
         }
 
         /// <summary>

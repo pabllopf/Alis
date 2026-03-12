@@ -62,7 +62,7 @@ namespace Alis.Core.Ecs.Test.Updating
         {
             using Scene scene = new Scene();
             scene.Create(new Position {X = 1, Y = 2});
-            scene.Create(new Position {X = 3, Y = 4}, new Velocity {VX = 5, VY = 6});
+            scene.Create(new Position {X = 3, Y = 4}, new Velocity {X = 5, Y = 6});
 
             SingleComponentUpdateFilter filter = new SingleComponentUpdateFilter(scene, Component<Position>.Id);
 
@@ -193,7 +193,7 @@ namespace Alis.Core.Ecs.Test.Updating
             using Scene scene = new Scene();
             GameObject e1 = scene.Create(new UpdateComponent {CallCount = 0});
             GameObject e2 = scene.Create(new Position {X = 1, Y = 2});
-            GameObject e3 = scene.Create(new UpdateComponent {CallCount = 0}, new Velocity {VX = 3, VY = 4});
+            GameObject e3 = scene.Create(new UpdateComponent {CallCount = 0}, new Velocity {X = 3, Y = 4});
 
             SingleComponentUpdateFilter filter = new SingleComponentUpdateFilter(scene, Component<UpdateComponent>.Id);
             filter.Update();

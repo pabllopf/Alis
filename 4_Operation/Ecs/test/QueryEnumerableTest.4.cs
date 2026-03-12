@@ -76,7 +76,7 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             scene.Create(
                 new Position {X = 10, Y = 20},
-                new Velocity {VX = 5, VY = 10},
+                new Velocity {X = 5, Y = 10},
                 new Health {Value = 150},
                 new Transform {X = 1, Y = 2, Rotation = 45}
             );
@@ -86,7 +86,7 @@ namespace Alis.Core.Ecs.Test
             foreach ((Ref<Position> pos, Ref<Velocity> vel, Ref<Health> health, Ref<Transform> trans) in query.Enumerate<Position, Velocity, Health, Transform>())
             {
                 Assert.Equal(10, pos.Value.X);
-                Assert.Equal(5, vel.Value.VX);
+                Assert.Equal(5, vel.Value.X);
                 Assert.Equal(150, health.Value.Value);
                 Assert.Equal(45, trans.Value.Rotation);
             }
@@ -105,11 +105,11 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             scene.Create(
                 new Position {X = 1, Y = 1},
-                new Velocity {VX = 1, VY = 1},
+                new Velocity {X = 1, Y = 1},
                 new Health {Value = 100},
                 new Transform {X = 0, Y = 0, Rotation = 0}
             );
-            scene.Create(new Position {X = 2, Y = 2}, new Velocity {VX = 2, VY = 2}, new Health {Value = 50}); // Missing Transform
+            scene.Create(new Position {X = 2, Y = 2}, new Velocity {X = 2, Y = 2}, new Health {Value = 50}); // Missing Transform
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>>();
             new QueryEnumerable<Position, Velocity, Health, Transform>(query);
 
@@ -137,7 +137,7 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
                 new Position {X = 0, Y = 0},
-                new Velocity {VX = 0, VY = 0},
+                new Velocity {X = 0, Y = 0},
                 new Health {Value = 0},
                 new Transform {X = 0, Y = 0, Rotation = 0}
             );
@@ -152,7 +152,7 @@ namespace Alis.Core.Ecs.Test
                 pos.Value = p;
 
                 Velocity v = vel.Value;
-                v.VX = 50;
+                v.X = 50;
                 vel.Value = v;
 
                 Health h = health.Value;
@@ -166,7 +166,7 @@ namespace Alis.Core.Ecs.Test
 
             // Assert
             Assert.Equal(100, entity.Get<Position>().X);
-            Assert.Equal(50, entity.Get<Velocity>().VX);
+            Assert.Equal(50, entity.Get<Velocity>().X);
             Assert.Equal(200, entity.Get<Health>().Value);
             Assert.Equal(90, entity.Get<Transform>().Rotation);
         }
@@ -186,7 +186,7 @@ namespace Alis.Core.Ecs.Test
             {
                 scene.Create(
                     new Position {X = i, Y = i * 2},
-                    new Velocity {VX = i * 0.5f, VY = i * 0.3f},
+                    new Velocity {X = i * 0.5f, Y = i * 0.3f},
                     new Health {Value = i * 10},
                     new Transform {X = i, Y = i, Rotation = i * 45}
                 );

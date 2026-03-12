@@ -65,7 +65,7 @@ namespace Alis.Core.Ecs.Test
         public void Scene_CreateFromObjects_WithMultipleComponents_CreatesEntityWithAllComponents()
         {
             using Scene scene = new Scene();
-            object[] components = [new Position {X = 1, Y = 2}, new Velocity {VX = 3, VY = 4}, new Health {Value = 5}];
+            object[] components = [new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 5}];
 
             GameObject entity = scene.CreateFromObjects(components);
 

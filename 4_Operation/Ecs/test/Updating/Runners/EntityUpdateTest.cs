@@ -61,10 +61,10 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             GameObject entity = scene.Create(
                 new EntityUpdate5Component {CallCount = 0},
                 new Position {X = 10, Y = 20},
-                new Velocity {VX = 1, VY = 2},
+                new Velocity {X = 1, Y = 2},
                 new Health {Value = 100},
-                new Armor {Defense = 50},
-                new Damage {Amount = 5}
+                new Armor {Value = 50},
+                new Damage {Value = 5}
             );
 
             scene.Update();
@@ -73,8 +73,8 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             Assert.Equal(11, entity.Get<Position>().X);
             Assert.Equal(22, entity.Get<Position>().Y);
             Assert.Equal(99, entity.Get<Health>().Value);
-            Assert.Equal(51, entity.Get<Armor>().Defense);
-            Assert.Equal(7, entity.Get<Damage>().Amount);
+            Assert.Equal(51, entity.Get<Armor>().Value);
+            Assert.Equal(7, entity.Get<Damage>().Value);
         }
 
         /// <summary>
@@ -87,10 +87,10 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             GameObject entity = scene.Create(
                 new EntityUpdate5Component {CallCount = 0},
                 new Position {X = 0, Y = 0},
-                new Velocity {VX = 2, VY = 3},
+                new Velocity {X = 2, Y = 3},
                 new Health {Value = 10},
-                new Armor {Defense = 1},
-                new Damage {Amount = 0}
+                new Armor {Value = 1},
+                new Damage {Value = 0}
             );
 
             scene.Update();
@@ -100,8 +100,8 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             Assert.Equal(4, entity.Get<Position>().X);
             Assert.Equal(6, entity.Get<Position>().Y);
             Assert.Equal(8, entity.Get<Health>().Value);
-            Assert.Equal(3, entity.Get<Armor>().Defense);
-            Assert.Equal(4, entity.Get<Damage>().Amount);
+            Assert.Equal(3, entity.Get<Armor>().Value);
+            Assert.Equal(4, entity.Get<Damage>().Value);
         }
 
         /// <summary>
@@ -114,18 +114,18 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             GameObject e1 = scene.Create(
                 new EntityUpdate5Component {CallCount = 0},
                 new Position {X = 1, Y = 1},
-                new Velocity {VX = 1, VY = 1},
+                new Velocity {X = 1, Y = 1},
                 new Health {Value = 5},
-                new Armor {Defense = 10},
-                new Damage {Amount = 1}
+                new Armor {Value = 10},
+                new Damage {Value = 1}
             );
             GameObject e2 = scene.Create(
                 new EntityUpdate5Component {CallCount = 0},
                 new Position {X = 2, Y = 2},
-                new Velocity {VX = 2, VY = 2},
+                new Velocity {X = 2, Y = 2},
                 new Health {Value = 6},
-                new Armor {Defense = 20},
-                new Damage {Amount = 2}
+                new Armor {Value = 20},
+                new Damage {Value = 2}
             );
 
             scene.Update();
@@ -159,11 +159,11 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
                 ref Damage arg5)
             {
                 CallCount++;
-                arg1.X += arg2.VX;
-                arg1.Y += arg2.VY;
+                arg1.X += arg2.X;
+                arg1.Y += arg2.Y;
                 arg3.Value -= 1;
-                arg4.Defense += 1;
-                arg5.Amount += 2;
+                arg4.Value += 1;
+                arg5.Value += 2;
             }
         }
     }

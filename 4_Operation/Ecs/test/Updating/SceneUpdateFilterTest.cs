@@ -63,7 +63,7 @@ namespace Alis.Core.Ecs.Test.Updating
         {
             using Scene scene = new Scene();
             scene.Create(new Position {X = 1, Y = 2});
-            scene.Create(new Velocity {VX = 3, VY = 4});
+            scene.Create(new Velocity {X = 3, Y = 4});
 
             SceneUpdateFilter filter = new SceneUpdateFilter(scene, typeof(UpdateOrderAttribute));
 
@@ -79,7 +79,7 @@ namespace Alis.Core.Ecs.Test.Updating
         {
             using Scene scene = new Scene();
             GameObject e1 = scene.Create(new Position {X = 1, Y = 2});
-            GameObject e2 = scene.Create(new Velocity {VX = 3, VY = 4});
+            GameObject e2 = scene.Create(new Velocity {X = 3, Y = 4});
 
             SceneUpdateFilter filter = new SceneUpdateFilter(scene, typeof(IOnUpdate));
             filter.Update();
@@ -95,7 +95,7 @@ namespace Alis.Core.Ecs.Test.Updating
         {
             using Scene scene = new Scene();
             scene.Create(new Position {X = 1, Y = 2});
-            scene.Create(new Position {X = 3, Y = 4}, new Velocity {VX = 5, VY = 6});
+            scene.Create(new Position {X = 3, Y = 4}, new Velocity {X = 5, Y = 6});
 
             SceneUpdateFilter filter = new SceneUpdateFilter(scene, typeof(IOnUpdate));
             filter.Update();
@@ -204,7 +204,7 @@ namespace Alis.Core.Ecs.Test.Updating
         public void Update_WithMultipleComponentsInSameArchetype_UpdatesAll()
         {
             using Scene scene = new Scene();
-            scene.Create(new Position {X = 1, Y = 2}, new Velocity {VX = 3, VY = 4});
+            scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4});
 
             SceneUpdateFilter filter = new SceneUpdateFilter(scene, typeof(IOnUpdate));
             filter.Update();

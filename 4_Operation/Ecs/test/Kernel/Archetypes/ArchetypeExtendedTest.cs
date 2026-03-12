@@ -116,7 +116,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
             // Act
-            entity.Add(new Velocity {VX = 3, VY = 4});
+            entity.Add(new Velocity {X = 3, Y = 4});
 
             // Assert
             Assert.True(entity.Has<Position>());
@@ -138,7 +138,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             GameObject entity = scene.Create(originalPos);
 
             // Act
-            entity.Add(new Velocity {VX = 5, VY = 10});
+            entity.Add(new Velocity {X = 5, Y = 10});
 
             // Assert
             Assert.True(entity.TryGet(out Ref<Position> pos));
@@ -210,7 +210,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
 
             // Act
             GameObject entity1 = scene.Create(new Position {X = 1, Y = 2});
-            GameObject entity2 = scene.Create(new Position {X = 3, Y = 4}, new Velocity {VX = 5, VY = 6});
+            GameObject entity2 = scene.Create(new Position {X = 3, Y = 4}, new Velocity {X = 5, Y = 6});
 
             // Assert
             Assert.True(entity1.IsAlive);
@@ -266,7 +266,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
                 new Position {X = 1, Y = 2},
-                new Velocity {VX = 3, VY = 4}
+                new Velocity {X = 3, Y = 4}
             );
 
             // Act
@@ -315,7 +315,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             GameObject entity2 = scene.Create(new Position {X = 3, Y = 4});
             GameObject entity3 = scene.Create(new Position {X = 5, Y = 6});
 
-            entity1.Add(new Velocity {VX = 7, VY = 8});
+            entity1.Add(new Velocity {X = 7, Y = 8});
             entity2.Remove<Position>();
             GameObject entity4 = scene.Create(new Position {X = 9, Y = 10});
 

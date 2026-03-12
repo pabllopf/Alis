@@ -144,7 +144,7 @@ namespace Alis.Core.Ecs.Test
             GameObject entity = scene.Create(
                 new Position {X = 1, Y = 2},
                 new Health {Value = 75},
-                new Velocity {VX = 1.5f, VY = 2.5f}
+                new Velocity {X = 1.5f, Y = 2.5f}
             );
 
             // Assert

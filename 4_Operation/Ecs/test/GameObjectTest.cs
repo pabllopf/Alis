@@ -437,7 +437,7 @@ namespace Alis.Core.Ecs.Test
             GameObject gameObject = scene.Create(new TestComponent {Value = 50});
 
             // Act
-            gameObject.Add(new AnotherComponent {X = 1.0f, Y = 2.0f});
+            gameObject.Add(new AnotherComponent {Data = 1.0f, Y = 2.0f});
 
             // Assert
             Assert.True(gameObject.Has<TestComponent>());
@@ -476,7 +476,7 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             using Scene scene = new Scene();
             TestComponent comp1 = new TestComponent {Value = 123};
-            AnotherComponent comp2 = new AnotherComponent {X = 4.5f, Y = 6.7f};
+            AnotherComponent comp2 = new AnotherComponent {Data = 4.5f, Y = 6.7f};
 
             // Act
             GameObject gameObject = scene.Create(comp1, comp2);
@@ -561,7 +561,7 @@ namespace Alis.Core.Ecs.Test
         public void GameObject_Remove_ByTypeAndComponentId_Work()
         {
             using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new Position {X = 1, Y = 2}, new Velocity {VX = 3, VY = 4});
+            GameObject gameObject = scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4});
 
             gameObject.Remove(typeof(Position));
             Assert.False(gameObject.Has<Position>());
@@ -603,7 +603,7 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(
                 new Position {X = 1, Y = 1},
-                new Velocity {VX = 2, VY = 2},
+                new Velocity {X = 2, Y = 2},
                 new Health {Value = 3});
 
             ComponentTypeCaptureAction capture = new ComponentTypeCaptureAction();
