@@ -54,7 +54,7 @@ namespace Alis.Benchmark.EntityComponentSystem.UpdateRunnerMicro
         [Params(0, 2, 8)]
         public int Arity { get; set; }
 
-        [Params(1_000, 100_000)]
+        [Params(1_0, 1_00)]
         public int EntityCount { get; set; }
 
         [GlobalSetup]

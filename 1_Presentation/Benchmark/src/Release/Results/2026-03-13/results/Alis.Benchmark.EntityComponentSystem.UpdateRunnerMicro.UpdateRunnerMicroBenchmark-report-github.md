@@ -1,0 +1,42 @@
+```
+
+BenchmarkDotNet v0.14.0, macOS 26.3.1 (25D2128) [Darwin 25.3.0]
+Apple M3 Max, 1 CPU, 16 logical and 16 physical cores
+.NET SDK 10.0.103
+  [Host] : .NET 8.0.11 (8.0.1124.51707), Arm64 RyuJIT AdvSIMD
+
+Job=Release  Runtime=.NET 8.0  Force=True  
+Server=True  BuildConfiguration=Release  Toolchain=InProcessEmitToolchain  
+
+```
+| Method                       | Arity | EntityCount | Mean       | Error     | StdDev    | Ratio | RatioSD | Allocated | Alloc Ratio |
+|----------------------------- |------ |------------ |-----------:|----------:|----------:|------:|--------:|----------:|------------:|
+| Alis_Update_Before_Synthetic | 0     | 10          |   3.494 ns | 0.0850 ns | 0.1219 ns |  0.31 |    0.01 |         - |          NA |
+| Alis_Update_After_Synthetic  | 0     | 10          |   4.381 ns | 0.1155 ns | 0.3404 ns |  0.39 |    0.03 |         - |          NA |
+| Frent_Update_Equivalent      | 0     | 10          |   6.338 ns | 0.0586 ns | 0.0489 ns |  0.57 |    0.01 |         - |          NA |
+| Alis_Update_After            | 0     | 10          |  11.209 ns | 0.0731 ns | 0.0683 ns |  1.00 |    0.01 |         - |          NA |
+|                              |       |             |            |           |           |       |         |           |             |
+| Alis_Update_After            | 0     | 100         |  11.236 ns | 0.0340 ns | 0.0302 ns |  1.00 |    0.00 |         - |          NA |
+| Alis_Update_After_Synthetic  | 0     | 100         |  33.717 ns | 0.4392 ns | 0.4108 ns |  3.00 |    0.04 |         - |          NA |
+| Alis_Update_Before_Synthetic | 0     | 100         |  34.846 ns | 0.5550 ns | 0.5191 ns |  3.10 |    0.05 |         - |          NA |
+| Frent_Update_Equivalent      | 0     | 100         |  62.044 ns | 0.4481 ns | 0.3742 ns |  5.52 |    0.04 |         - |          NA |
+|                              |       |             |            |           |           |       |         |           |             |
+| Alis_Update_After_Synthetic  | 2     | 10          |   6.969 ns | 0.0759 ns | 0.0710 ns |  0.46 |    0.01 |         - |          NA |
+| Alis_Update_Before_Synthetic | 2     | 10          |   7.542 ns | 0.0667 ns | 0.0624 ns |  0.49 |    0.00 |         - |          NA |
+| Frent_Update_Equivalent      | 2     | 10          |   7.885 ns | 0.0550 ns | 0.0515 ns |  0.52 |    0.00 |         - |          NA |
+| Alis_Update_After            | 2     | 10          |  15.292 ns | 0.0827 ns | 0.0773 ns |  1.00 |    0.01 |         - |          NA |
+|                              |       |             |            |           |           |       |         |           |             |
+| Alis_Update_After            | 2     | 100         |  15.279 ns | 0.0656 ns | 0.0582 ns |  1.00 |    0.01 |         - |          NA |
+| Frent_Update_Equivalent      | 2     | 100         |  44.496 ns | 0.2680 ns | 0.2375 ns |  2.91 |    0.02 |         - |          NA |
+| Alis_Update_After_Synthetic  | 2     | 100         |  60.947 ns | 0.5025 ns | 0.4196 ns |  3.99 |    0.03 |         - |          NA |
+| Alis_Update_Before_Synthetic | 2     | 100         |  62.214 ns | 0.7445 ns | 0.6964 ns |  4.07 |    0.05 |         - |          NA |
+|                              |       |             |            |           |           |       |         |           |             |
+| Alis_Update_After_Synthetic  | 8     | 10          |  11.917 ns | 0.1620 ns | 0.1436 ns |  0.36 |    0.01 |         - |          NA |
+| Alis_Update_Before_Synthetic | 8     | 10          |  12.020 ns | 0.1146 ns | 0.1016 ns |  0.36 |    0.00 |         - |          NA |
+| Frent_Update_Equivalent      | 8     | 10          |  14.868 ns | 0.1058 ns | 0.0990 ns |  0.45 |    0.01 |         - |          NA |
+| Alis_Update_After            | 8     | 10          |  33.211 ns | 0.3653 ns | 0.3239 ns |  1.00 |    0.01 |         - |          NA |
+|                              |       |             |            |           |           |       |         |           |             |
+| Alis_Update_After            | 8     | 100         |  33.332 ns | 0.2894 ns | 0.2707 ns |  1.00 |    0.01 |         - |          NA |
+| Frent_Update_Equivalent      | 8     | 100         | 100.553 ns | 0.7646 ns | 0.6778 ns |  3.02 |    0.03 |         - |          NA |
+| Alis_Update_Before_Synthetic | 8     | 100         | 105.933 ns | 1.2357 ns | 1.1559 ns |  3.18 |    0.04 |         - |          NA |
+| Alis_Update_After_Synthetic  | 8     | 100         | 106.163 ns | 1.8078 ns | 1.6910 ns |  3.19 |    0.06 |         - |          NA |
