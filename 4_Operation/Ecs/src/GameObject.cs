@@ -180,15 +180,7 @@ namespace Alis.Core.Ecs
         {
             throw new InvalidOperationException(EntityIsDeadMessage);
         }
-
-        //captial N null to distinguish between actual null and default
-        /// <summary>
-        ///     Gets the value of the debugger display string
-        /// </summary>
-        internal string DebuggerDisplayString => IsNull ? "Null" :
-            InternalIsAlive(out _, out _) ? $"Scene: {WorldID}, ID: {EntityID}, Version {EntityVersion}" :
-            EntityIsDeadMessage;
-
+        
         /// <summary>
         ///     The gameObject is dead message
         /// </summary>
