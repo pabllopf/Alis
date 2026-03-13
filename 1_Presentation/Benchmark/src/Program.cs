@@ -37,6 +37,7 @@ using Alis.Benchmark.CustomNeighborCache;
 using Alis.Benchmark.EntityComponentSystem.CreateEntityWithOneComponent;
 using Alis.Benchmark.EntityComponentSystem.CreateEntityWithThreeComponents;
 using Alis.Benchmark.EntityComponentSystem.CreateEntityWithTwoComponents;
+using Alis.Benchmark.EntityComponentSystem.UpdateRunnerMicro;
 using Alis.Benchmark.IDs;
 using Alis.Benchmark.InterfaceVsAbstract;
 using Alis.Benchmark.Iterators;
@@ -81,6 +82,7 @@ namespace Alis.Benchmark
                 typeof(SystemWithThreeComponents),
 
                 typeof(SystemWithTwoComponentsMultipleComposition),
+                typeof(UpdateRunnerMicroBenchmark),
 
                 typeof(StringManipulationBenchmark),
                 typeof(ClassVsStructBenchmark),
