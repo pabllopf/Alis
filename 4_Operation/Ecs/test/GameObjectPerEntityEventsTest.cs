@@ -10,6 +10,9 @@ namespace Alis.Core.Ecs.Test
     /// </summary>
     public class GameObjectPerEntityEventsTest
     {
+        /// <summary>
+        /// The no op generic action
+        /// </summary>
         private static readonly NoOpGenericAction NoOp = new NoOpGenericAction();
 
         /// <summary>
@@ -147,13 +150,27 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(0, calls);
         }
 
+        /// <summary>
+        /// Ensures the event record initialized using the specified entity
+        /// </summary>
+        /// <param name="entity">The entity</param>
         private static void EnsureEventRecordInitialized(GameObject entity)
         {
             entity.OnComponentAddedGeneric += NoOp;
         }
 
+        /// <summary>
+        /// The no op generic action class
+        /// </summary>
+        /// <seealso cref="IGenericAction{GameObject}"/>
         private sealed class NoOpGenericAction : IGenericAction<GameObject>
         {
+            /// <summary>
+            /// Invokes the param
+            /// </summary>
+            /// <typeparam name="T">The </typeparam>
+            /// <param name="param">The param</param>
+            /// <param name="type">The type</param>
             public void Invoke<T>(GameObject param, ref T type)
             {
             }

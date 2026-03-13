@@ -35,6 +35,353 @@ using Alis.Core.Ecs.Kernel.Archetypes;
 namespace Alis.Core.Ecs.Updating.Runners
 {
     /// <summary>
+    /// The update loop class
+    /// </summary>
+    internal static class UpdateLoop
+    {
+        /// <summary>
+        /// Runs the entity ids
+        /// </summary>
+        /// <typeparam name="TComp">The comp</typeparam>
+        /// <param name="entityIds">The entity ids</param>
+        /// <param name="comp">The comp</param>
+        /// <param name="length">The length</param>
+        /// <param name="gameObject">The game object</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal static void Run<TComp>(ref GameObjectIdOnly entityIds, ref TComp comp, int length, GameObject gameObject)
+            where TComp : IOnUpdate
+        {
+            if (length <= 0)
+            {
+                return;
+            }
+
+            do
+            {
+                entityIds.SetEntity(ref gameObject);
+                comp.OnUpdate(gameObject);
+
+                entityIds = ref Unsafe.Add(ref entityIds, 1);
+                comp = ref Unsafe.Add(ref comp, 1);
+            }
+            while (--length != 0);
+        }
+
+        /// <summary>
+        /// Runs the entity ids
+        /// </summary>
+        /// <typeparam name="TComp">The comp</typeparam>
+        /// <typeparam name="TArg1">The arg</typeparam>
+        /// <typeparam name="TArg2">The arg</typeparam>
+        /// <param name="entityIds">The entity ids</param>
+        /// <param name="comp">The comp</param>
+        /// <param name="arg1">The arg</param>
+        /// <param name="arg2">The arg</param>
+        /// <param name="length">The length</param>
+        /// <param name="gameObject">The game object</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal static void Run<TComp, TArg1, TArg2>(
+            ref GameObjectIdOnly entityIds,
+            ref TComp comp,
+            ref TArg1 arg1,
+            ref TArg2 arg2,
+            int length,
+            GameObject gameObject)
+            where TComp : IOnUpdate<TArg1, TArg2>
+        {
+            if (length <= 0)
+            {
+                return;
+            }
+
+            do
+            {
+                entityIds.SetEntity(ref gameObject);
+                comp.Update(gameObject, ref arg1, ref arg2);
+
+                entityIds = ref Unsafe.Add(ref entityIds, 1);
+                comp = ref Unsafe.Add(ref comp, 1);
+                arg1 = ref Unsafe.Add(ref arg1, 1);
+                arg2 = ref Unsafe.Add(ref arg2, 1);
+            }
+            while (--length != 0);
+        }
+
+        /// <summary>
+        /// Runs the entity ids
+        /// </summary>
+        /// <typeparam name="TComp">The comp</typeparam>
+        /// <typeparam name="TArg1">The arg</typeparam>
+        /// <typeparam name="TArg2">The arg</typeparam>
+        /// <typeparam name="TArg3">The arg</typeparam>
+        /// <param name="entityIds">The entity ids</param>
+        /// <param name="comp">The comp</param>
+        /// <param name="arg1">The arg</param>
+        /// <param name="arg2">The arg</param>
+        /// <param name="arg3">The arg</param>
+        /// <param name="length">The length</param>
+        /// <param name="gameObject">The game object</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal static void Run<TComp, TArg1, TArg2, TArg3>(
+            ref GameObjectIdOnly entityIds,
+            ref TComp comp,
+            ref TArg1 arg1,
+            ref TArg2 arg2,
+            ref TArg3 arg3,
+            int length,
+            GameObject gameObject)
+            where TComp : IOnUpdate<TArg1, TArg2, TArg3>
+        {
+            if (length <= 0)
+            {
+                return;
+            }
+
+            do
+            {
+                entityIds.SetEntity(ref gameObject);
+                comp.Update(gameObject, ref arg1, ref arg2, ref arg3);
+
+                entityIds = ref Unsafe.Add(ref entityIds, 1);
+                comp = ref Unsafe.Add(ref comp, 1);
+                arg1 = ref Unsafe.Add(ref arg1, 1);
+                arg2 = ref Unsafe.Add(ref arg2, 1);
+                arg3 = ref Unsafe.Add(ref arg3, 1);
+            }
+            while (--length != 0);
+        }
+
+        /// <summary>
+        /// Runs the entity ids
+        /// </summary>
+        /// <typeparam name="TComp">The comp</typeparam>
+        /// <typeparam name="TArg1">The arg</typeparam>
+        /// <typeparam name="TArg2">The arg</typeparam>
+        /// <typeparam name="TArg3">The arg</typeparam>
+        /// <typeparam name="TArg4">The arg</typeparam>
+        /// <param name="entityIds">The entity ids</param>
+        /// <param name="comp">The comp</param>
+        /// <param name="arg1">The arg</param>
+        /// <param name="arg2">The arg</param>
+        /// <param name="arg3">The arg</param>
+        /// <param name="arg4">The arg</param>
+        /// <param name="length">The length</param>
+        /// <param name="gameObject">The game object</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal static void Run<TComp, TArg1, TArg2, TArg3, TArg4>(
+            ref GameObjectIdOnly entityIds,
+            ref TComp comp,
+            ref TArg1 arg1,
+            ref TArg2 arg2,
+            ref TArg3 arg3,
+            ref TArg4 arg4,
+            int length,
+            GameObject gameObject)
+            where TComp : IOnUpdate<TArg1, TArg2, TArg3, TArg4>
+        {
+            if (length <= 0)
+            {
+                return;
+            }
+
+            do
+            {
+                entityIds.SetEntity(ref gameObject);
+                comp.Update(gameObject, ref arg1, ref arg2, ref arg3, ref arg4);
+
+                entityIds = ref Unsafe.Add(ref entityIds, 1);
+                comp = ref Unsafe.Add(ref comp, 1);
+                arg1 = ref Unsafe.Add(ref arg1, 1);
+                arg2 = ref Unsafe.Add(ref arg2, 1);
+                arg3 = ref Unsafe.Add(ref arg3, 1);
+                arg4 = ref Unsafe.Add(ref arg4, 1);
+            }
+            while (--length != 0);
+        }
+
+        /// <summary>
+        /// Runs the entity ids
+        /// </summary>
+        /// <typeparam name="TComp">The comp</typeparam>
+        /// <typeparam name="TArg1">The arg</typeparam>
+        /// <typeparam name="TArg2">The arg</typeparam>
+        /// <typeparam name="TArg3">The arg</typeparam>
+        /// <typeparam name="TArg4">The arg</typeparam>
+        /// <typeparam name="TArg5">The arg</typeparam>
+        /// <typeparam name="TArg6">The arg</typeparam>
+        /// <param name="entityIds">The entity ids</param>
+        /// <param name="comp">The comp</param>
+        /// <param name="arg1">The arg</param>
+        /// <param name="arg2">The arg</param>
+        /// <param name="arg3">The arg</param>
+        /// <param name="arg4">The arg</param>
+        /// <param name="arg5">The arg</param>
+        /// <param name="arg6">The arg</param>
+        /// <param name="length">The length</param>
+        /// <param name="gameObject">The game object</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal static void Run<TComp, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>(
+            ref GameObjectIdOnly entityIds,
+            ref TComp comp,
+            ref TArg1 arg1,
+            ref TArg2 arg2,
+            ref TArg3 arg3,
+            ref TArg4 arg4,
+            ref TArg5 arg5,
+            ref TArg6 arg6,
+            int length,
+            GameObject gameObject)
+            where TComp : IOnUpdate<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>
+        {
+            if (length <= 0)
+            {
+                return;
+            }
+
+            do
+            {
+                entityIds.SetEntity(ref gameObject);
+                comp.Update(gameObject, ref arg1, ref arg2, ref arg3, ref arg4, ref arg5, ref arg6);
+
+                entityIds = ref Unsafe.Add(ref entityIds, 1);
+                comp = ref Unsafe.Add(ref comp, 1);
+                arg1 = ref Unsafe.Add(ref arg1, 1);
+                arg2 = ref Unsafe.Add(ref arg2, 1);
+                arg3 = ref Unsafe.Add(ref arg3, 1);
+                arg4 = ref Unsafe.Add(ref arg4, 1);
+                arg5 = ref Unsafe.Add(ref arg5, 1);
+                arg6 = ref Unsafe.Add(ref arg6, 1);
+            }
+            while (--length != 0);
+        }
+
+        /// <summary>
+        /// Runs the entity ids
+        /// </summary>
+        /// <typeparam name="TComp">The comp</typeparam>
+        /// <typeparam name="TArg1">The arg</typeparam>
+        /// <typeparam name="TArg2">The arg</typeparam>
+        /// <typeparam name="TArg3">The arg</typeparam>
+        /// <typeparam name="TArg4">The arg</typeparam>
+        /// <typeparam name="TArg5">The arg</typeparam>
+        /// <typeparam name="TArg6">The arg</typeparam>
+        /// <typeparam name="TArg7">The arg</typeparam>
+        /// <param name="entityIds">The entity ids</param>
+        /// <param name="comp">The comp</param>
+        /// <param name="arg1">The arg</param>
+        /// <param name="arg2">The arg</param>
+        /// <param name="arg3">The arg</param>
+        /// <param name="arg4">The arg</param>
+        /// <param name="arg5">The arg</param>
+        /// <param name="arg6">The arg</param>
+        /// <param name="arg7">The arg</param>
+        /// <param name="length">The length</param>
+        /// <param name="gameObject">The game object</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal static void Run<TComp, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7>(
+            ref GameObjectIdOnly entityIds,
+            ref TComp comp,
+            ref TArg1 arg1,
+            ref TArg2 arg2,
+            ref TArg3 arg3,
+            ref TArg4 arg4,
+            ref TArg5 arg5,
+            ref TArg6 arg6,
+            ref TArg7 arg7,
+            int length,
+            GameObject gameObject)
+            where TComp : IOnUpdate<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7>
+        {
+            if (length <= 0)
+            {
+                return;
+            }
+
+            do
+            {
+                entityIds.SetEntity(ref gameObject);
+                comp.Update(gameObject, ref arg1, ref arg2, ref arg3, ref arg4, ref arg5, ref arg6, ref arg7);
+
+                entityIds = ref Unsafe.Add(ref entityIds, 1);
+                comp = ref Unsafe.Add(ref comp, 1);
+                arg1 = ref Unsafe.Add(ref arg1, 1);
+                arg2 = ref Unsafe.Add(ref arg2, 1);
+                arg3 = ref Unsafe.Add(ref arg3, 1);
+                arg4 = ref Unsafe.Add(ref arg4, 1);
+                arg5 = ref Unsafe.Add(ref arg5, 1);
+                arg6 = ref Unsafe.Add(ref arg6, 1);
+                arg7 = ref Unsafe.Add(ref arg7, 1);
+            }
+            while (--length != 0);
+        }
+
+        /// <summary>
+        /// Runs the entity ids
+        /// </summary>
+        /// <typeparam name="TComp">The comp</typeparam>
+        /// <typeparam name="TArg1">The arg</typeparam>
+        /// <typeparam name="TArg2">The arg</typeparam>
+        /// <typeparam name="TArg3">The arg</typeparam>
+        /// <typeparam name="TArg4">The arg</typeparam>
+        /// <typeparam name="TArg5">The arg</typeparam>
+        /// <typeparam name="TArg6">The arg</typeparam>
+        /// <typeparam name="TArg7">The arg</typeparam>
+        /// <typeparam name="TArg8">The arg</typeparam>
+        /// <param name="entityIds">The entity ids</param>
+        /// <param name="comp">The comp</param>
+        /// <param name="arg1">The arg</param>
+        /// <param name="arg2">The arg</param>
+        /// <param name="arg3">The arg</param>
+        /// <param name="arg4">The arg</param>
+        /// <param name="arg5">The arg</param>
+        /// <param name="arg6">The arg</param>
+        /// <param name="arg7">The arg</param>
+        /// <param name="arg8">The arg</param>
+        /// <param name="length">The length</param>
+        /// <param name="gameObject">The game object</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal static void Run<TComp, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8>(
+            ref GameObjectIdOnly entityIds,
+            ref TComp comp,
+            ref TArg1 arg1,
+            ref TArg2 arg2,
+            ref TArg3 arg3,
+            ref TArg4 arg4,
+            ref TArg5 arg5,
+            ref TArg6 arg6,
+            ref TArg7 arg7,
+            ref TArg8 arg8,
+            int length,
+            GameObject gameObject)
+            where TComp : IOnUpdate<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8>
+        {
+            if (length <= 0)
+            {
+                return;
+            }
+
+            do
+            {
+                entityIds.SetEntity(ref gameObject);
+                comp.Update(gameObject, ref arg1, ref arg2, ref arg3, ref arg4, ref arg5, ref arg6, ref arg7,
+                    ref arg8);
+
+                entityIds = ref Unsafe.Add(ref entityIds, 1);
+                comp = ref Unsafe.Add(ref comp, 1);
+                arg1 = ref Unsafe.Add(ref arg1, 1);
+                arg2 = ref Unsafe.Add(ref arg2, 1);
+                arg3 = ref Unsafe.Add(ref arg3, 1);
+                arg4 = ref Unsafe.Add(ref arg4, 1);
+                arg5 = ref Unsafe.Add(ref arg5, 1);
+                arg6 = ref Unsafe.Add(ref arg6, 1);
+                arg7 = ref Unsafe.Add(ref arg7, 1);
+                arg8 = ref Unsafe.Add(ref arg8, 1);
+            }
+            while (--length != 0);
+        }
+    }
+
+    /// <summary>
     ///     The gameObject update class
     /// </summary>
     /// <seealso cref="ComponentStorage{TComp}" />
@@ -49,17 +396,7 @@ namespace Alis.Core.Ecs.Updating.Runners
         {
             ref GameObjectIdOnly entityIds = ref b.GetEntityDataReference();
             ref TComp comp = ref GetComponentStorageDataReference();
-
-            GameObject gameObject = scene.DefaultWorldGameObject;
-
-            for (int i = b.EntityCount - 1; i >= 0; i--)
-            {
-                entityIds.SetEntity(ref gameObject);
-                comp.OnUpdate(gameObject);
-
-                entityIds = ref Unsafe.Add(ref entityIds, 1);
-                comp = ref Unsafe.Add(ref comp, 1);
-            }
+            UpdateLoop.Run(ref entityIds, ref comp, b.EntityCount, scene.DefaultWorldGameObject);
         }
 
         /// <summary>
@@ -73,17 +410,7 @@ namespace Alis.Core.Ecs.Updating.Runners
         {
             ref GameObjectIdOnly entityIds = ref Unsafe.Add(ref b.GetEntityDataReference(), start);
             ref TComp comp = ref Unsafe.Add(ref GetComponentStorageDataReference(), start);
-
-            GameObject gameObject = scene.DefaultWorldGameObject;
-
-            for (int i = length - 1; i >= 0; i--)
-            {
-                entityIds.SetEntity(ref gameObject);
-                comp.OnUpdate(gameObject);
-
-                entityIds = ref Unsafe.Add(ref entityIds, 1);
-                comp = ref Unsafe.Add(ref comp, 1);
-            }
+            UpdateLoop.Run(ref entityIds, ref comp, length, scene.DefaultWorldGameObject);
         }
     }
     
@@ -107,20 +434,7 @@ namespace Alis.Core.Ecs.Updating.Runners
             ref TArg1 arg1 = ref b.GetComponentDataReference<TArg1>();
             ref TArg2 arg2 = ref b.GetComponentDataReference<TArg2>();
 
-
-            GameObject gameObject = scene.DefaultWorldGameObject;
-
-            for (int i = b.EntityCount - 1; i >= 0; i--)
-            {
-                entityIds.SetEntity(ref gameObject);
-                comp.Update(gameObject, ref arg1, ref arg2);
-
-                entityIds = ref Unsafe.Add(ref entityIds, 1);
-                comp = ref Unsafe.Add(ref comp, 1);
-
-                arg1 = ref Unsafe.Add(ref arg1, 1);
-                arg2 = ref Unsafe.Add(ref arg2, 1);
-            }
+            UpdateLoop.Run(ref entityIds, ref comp, ref arg1, ref arg2, b.EntityCount, scene.DefaultWorldGameObject);
         }
 
         /// <summary>
@@ -138,20 +452,7 @@ namespace Alis.Core.Ecs.Updating.Runners
             ref TArg1 arg1 = ref Unsafe.Add(ref b.GetComponentDataReference<TArg1>(), start);
             ref TArg2 arg2 = ref Unsafe.Add(ref b.GetComponentDataReference<TArg2>(), start);
 
-
-            GameObject gameObject = scene.DefaultWorldGameObject;
-
-            for (int i = length - 1; i >= 0; i--)
-            {
-                entityIds.SetEntity(ref gameObject);
-                comp.Update(gameObject, ref arg1, ref arg2);
-
-                entityIds = ref Unsafe.Add(ref entityIds, 1);
-                comp = ref Unsafe.Add(ref comp, 1);
-
-                arg1 = ref Unsafe.Add(ref arg1, 1);
-                arg2 = ref Unsafe.Add(ref arg2, 1);
-            }
+            UpdateLoop.Run(ref entityIds, ref comp, ref arg1, ref arg2, length, scene.DefaultWorldGameObject);
         }
     }
     
@@ -177,20 +478,8 @@ namespace Alis.Core.Ecs.Updating.Runners
             ref TArg3 arg3 = ref b.GetComponentDataReference<TArg3>();
 
 
-            GameObject gameObject = scene.DefaultWorldGameObject;
-
-            for (int i = b.EntityCount - 1; i >= 0; i--)
-            {
-                entityIds.SetEntity(ref gameObject);
-                comp.Update(gameObject, ref arg1, ref arg2, ref arg3);
-
-                entityIds = ref Unsafe.Add(ref entityIds, 1);
-                comp = ref Unsafe.Add(ref comp, 1);
-
-                arg1 = ref Unsafe.Add(ref arg1, 1);
-                arg2 = ref Unsafe.Add(ref arg2, 1);
-                arg3 = ref Unsafe.Add(ref arg3, 1);
-            }
+            UpdateLoop.Run(ref entityIds, ref comp, ref arg1, ref arg2, ref arg3, b.EntityCount,
+                scene.DefaultWorldGameObject);
         }
 
         /// <summary>
@@ -210,20 +499,8 @@ namespace Alis.Core.Ecs.Updating.Runners
             ref TArg3 arg3 = ref Unsafe.Add(ref b.GetComponentDataReference<TArg3>(), start);
 
 
-            GameObject gameObject = scene.DefaultWorldGameObject;
-
-            for (int i = length - 1; i >= 0; i--)
-            {
-                entityIds.SetEntity(ref gameObject);
-                comp.Update(gameObject, ref arg1, ref arg2, ref arg3);
-
-                entityIds = ref Unsafe.Add(ref entityIds, 1);
-                comp = ref Unsafe.Add(ref comp, 1);
-
-                arg1 = ref Unsafe.Add(ref arg1, 1);
-                arg2 = ref Unsafe.Add(ref arg2, 1);
-                arg3 = ref Unsafe.Add(ref arg3, 1);
-            }
+            UpdateLoop.Run(ref entityIds, ref comp, ref arg1, ref arg2, ref arg3, length,
+                scene.DefaultWorldGameObject);
         }
     }
     
@@ -250,21 +527,8 @@ namespace Alis.Core.Ecs.Updating.Runners
             ref TArg4 arg4 = ref b.GetComponentDataReference<TArg4>();
 
 
-            GameObject gameObject = scene.DefaultWorldGameObject;
-
-            for (int i = b.EntityCount - 1; i >= 0; i--)
-            {
-                entityIds.SetEntity(ref gameObject);
-                comp.Update(gameObject, ref arg1, ref arg2, ref arg3, ref arg4);
-
-                entityIds = ref Unsafe.Add(ref entityIds, 1);
-                comp = ref Unsafe.Add(ref comp, 1);
-
-                arg1 = ref Unsafe.Add(ref arg1, 1);
-                arg2 = ref Unsafe.Add(ref arg2, 1);
-                arg3 = ref Unsafe.Add(ref arg3, 1);
-                arg4 = ref Unsafe.Add(ref arg4, 1);
-            }
+            UpdateLoop.Run(ref entityIds, ref comp, ref arg1, ref arg2, ref arg3, ref arg4, b.EntityCount,
+                scene.DefaultWorldGameObject);
         }
 
         /// <summary>
@@ -285,21 +549,8 @@ namespace Alis.Core.Ecs.Updating.Runners
             ref TArg4 arg4 = ref Unsafe.Add(ref b.GetComponentDataReference<TArg4>(), start);
 
 
-            GameObject gameObject = scene.DefaultWorldGameObject;
-
-            for (int i = length - 1; i >= 0; i--)
-            {
-                entityIds.SetEntity(ref gameObject);
-                comp.Update(gameObject, ref arg1, ref arg2, ref arg3, ref arg4);
-
-                entityIds = ref Unsafe.Add(ref entityIds, 1);
-                comp = ref Unsafe.Add(ref comp, 1);
-
-                arg1 = ref Unsafe.Add(ref arg1, 1);
-                arg2 = ref Unsafe.Add(ref arg2, 1);
-                arg3 = ref Unsafe.Add(ref arg3, 1);
-                arg4 = ref Unsafe.Add(ref arg4, 1);
-            }
+            UpdateLoop.Run(ref entityIds, ref comp, ref arg1, ref arg2, ref arg3, ref arg4, length,
+                scene.DefaultWorldGameObject);
         }
     }
         /// <summary>
@@ -328,23 +579,8 @@ namespace Alis.Core.Ecs.Updating.Runners
             ref TArg6 arg6 = ref b.GetComponentDataReference<TArg6>();
 
 
-            GameObject gameObject = scene.DefaultWorldGameObject;
-
-            for (int i = b.EntityCount - 1; i >= 0; i--)
-            {
-                entityIds.SetEntity(ref gameObject);
-                comp.Update(gameObject, ref arg1, ref arg2, ref arg3, ref arg4, ref arg5, ref arg6);
-
-                entityIds = ref Unsafe.Add(ref entityIds, 1);
-                comp = ref Unsafe.Add(ref comp, 1);
-
-                arg1 = ref Unsafe.Add(ref arg1, 1);
-                arg2 = ref Unsafe.Add(ref arg2, 1);
-                arg3 = ref Unsafe.Add(ref arg3, 1);
-                arg4 = ref Unsafe.Add(ref arg4, 1);
-                arg5 = ref Unsafe.Add(ref arg5, 1);
-                arg6 = ref Unsafe.Add(ref arg6, 1);
-            }
+            UpdateLoop.Run(ref entityIds, ref comp, ref arg1, ref arg2, ref arg3, ref arg4, ref arg5, ref arg6,
+                b.EntityCount, scene.DefaultWorldGameObject);
         }
 
         /// <summary>
@@ -367,23 +603,8 @@ namespace Alis.Core.Ecs.Updating.Runners
             ref TArg6 arg6 = ref Unsafe.Add(ref b.GetComponentDataReference<TArg6>(), start);
 
 
-            GameObject gameObject = scene.DefaultWorldGameObject;
-
-            for (int i = length - 1; i >= 0; i--)
-            {
-                entityIds.SetEntity(ref gameObject);
-                comp.Update(gameObject, ref arg1, ref arg2, ref arg3, ref arg4, ref arg5, ref arg6);
-
-                entityIds = ref Unsafe.Add(ref entityIds, 1);
-                comp = ref Unsafe.Add(ref comp, 1);
-
-                arg1 = ref Unsafe.Add(ref arg1, 1);
-                arg2 = ref Unsafe.Add(ref arg2, 1);
-                arg3 = ref Unsafe.Add(ref arg3, 1);
-                arg4 = ref Unsafe.Add(ref arg4, 1);
-                arg5 = ref Unsafe.Add(ref arg5, 1);
-                arg6 = ref Unsafe.Add(ref arg6, 1);
-            }
+            UpdateLoop.Run(ref entityIds, ref comp, ref arg1, ref arg2, ref arg3, ref arg4, ref arg5, ref arg6,
+                length, scene.DefaultWorldGameObject);
         }
     }
         
@@ -414,24 +635,8 @@ namespace Alis.Core.Ecs.Updating.Runners
             ref TArg7 arg7 = ref b.GetComponentDataReference<TArg7>();
 
 
-            GameObject gameObject = scene.DefaultWorldGameObject;
-
-            for (int i = b.EntityCount - 1; i >= 0; i--)
-            {
-                entityIds.SetEntity(ref gameObject);
-                comp.Update(gameObject, ref arg1, ref arg2, ref arg3, ref arg4, ref arg5, ref arg6, ref arg7);
-
-                entityIds = ref Unsafe.Add(ref entityIds, 1);
-                comp = ref Unsafe.Add(ref comp, 1);
-
-                arg1 = ref Unsafe.Add(ref arg1, 1);
-                arg2 = ref Unsafe.Add(ref arg2, 1);
-                arg3 = ref Unsafe.Add(ref arg3, 1);
-                arg4 = ref Unsafe.Add(ref arg4, 1);
-                arg5 = ref Unsafe.Add(ref arg5, 1);
-                arg6 = ref Unsafe.Add(ref arg6, 1);
-                arg7 = ref Unsafe.Add(ref arg7, 1);
-            }
+            UpdateLoop.Run(ref entityIds, ref comp, ref arg1, ref arg2, ref arg3, ref arg4, ref arg5, ref arg6,
+                ref arg7, b.EntityCount, scene.DefaultWorldGameObject);
         }
 
         /// <summary>
@@ -455,24 +660,8 @@ namespace Alis.Core.Ecs.Updating.Runners
             ref TArg7 arg7 = ref Unsafe.Add(ref b.GetComponentDataReference<TArg7>(), start);
 
 
-            GameObject gameObject = scene.DefaultWorldGameObject;
-
-            for (int i = length - 1; i >= 0; i--)
-            {
-                entityIds.SetEntity(ref gameObject);
-                comp.Update(gameObject, ref arg1, ref arg2, ref arg3, ref arg4, ref arg5, ref arg6, ref arg7);
-
-                entityIds = ref Unsafe.Add(ref entityIds, 1);
-                comp = ref Unsafe.Add(ref comp, 1);
-
-                arg1 = ref Unsafe.Add(ref arg1, 1);
-                arg2 = ref Unsafe.Add(ref arg2, 1);
-                arg3 = ref Unsafe.Add(ref arg3, 1);
-                arg4 = ref Unsafe.Add(ref arg4, 1);
-                arg5 = ref Unsafe.Add(ref arg5, 1);
-                arg6 = ref Unsafe.Add(ref arg6, 1);
-                arg7 = ref Unsafe.Add(ref arg7, 1);
-            }
+            UpdateLoop.Run(ref entityIds, ref comp, ref arg1, ref arg2, ref arg3, ref arg4, ref arg5, ref arg6,
+                ref arg7, length, scene.DefaultWorldGameObject);
         }
     }
          
@@ -504,25 +693,8 @@ namespace Alis.Core.Ecs.Updating.Runners
             ref TArg8 arg8 = ref b.GetComponentDataReference<TArg8>();
 
 
-            GameObject gameObject = scene.DefaultWorldGameObject;
-
-            for (int i = b.EntityCount - 1; i >= 0; i--)
-            {
-                entityIds.SetEntity(ref gameObject);
-                comp.Update(gameObject, ref arg1, ref arg2, ref arg3, ref arg4, ref arg5, ref arg6, ref arg7, ref arg8);
-
-                entityIds = ref Unsafe.Add(ref entityIds, 1);
-                comp = ref Unsafe.Add(ref comp, 1);
-
-                arg1 = ref Unsafe.Add(ref arg1, 1);
-                arg2 = ref Unsafe.Add(ref arg2, 1);
-                arg3 = ref Unsafe.Add(ref arg3, 1);
-                arg4 = ref Unsafe.Add(ref arg4, 1);
-                arg5 = ref Unsafe.Add(ref arg5, 1);
-                arg6 = ref Unsafe.Add(ref arg6, 1);
-                arg7 = ref Unsafe.Add(ref arg7, 1);
-                arg8 = ref Unsafe.Add(ref arg8, 1);
-            }
+            UpdateLoop.Run(ref entityIds, ref comp, ref arg1, ref arg2, ref arg3, ref arg4, ref arg5, ref arg6,
+                ref arg7, ref arg8, b.EntityCount, scene.DefaultWorldGameObject);
         }
 
         /// <summary>
@@ -547,25 +719,8 @@ namespace Alis.Core.Ecs.Updating.Runners
             ref TArg8 arg8 = ref Unsafe.Add(ref b.GetComponentDataReference<TArg8>(), start);
 
 
-            GameObject gameObject = scene.DefaultWorldGameObject;
-
-            for (int i = length - 1; i >= 0; i--)
-            {
-                entityIds.SetEntity(ref gameObject);
-                comp.Update(gameObject, ref arg1, ref arg2, ref arg3, ref arg4, ref arg5, ref arg6, ref arg7, ref arg8);
-
-                entityIds = ref Unsafe.Add(ref entityIds, 1);
-                comp = ref Unsafe.Add(ref comp, 1);
-
-                arg1 = ref Unsafe.Add(ref arg1, 1);
-                arg2 = ref Unsafe.Add(ref arg2, 1);
-                arg3 = ref Unsafe.Add(ref arg3, 1);
-                arg4 = ref Unsafe.Add(ref arg4, 1);
-                arg5 = ref Unsafe.Add(ref arg5, 1);
-                arg6 = ref Unsafe.Add(ref arg6, 1);
-                arg7 = ref Unsafe.Add(ref arg7, 1);
-                arg8 = ref Unsafe.Add(ref arg8, 1);
-            }
+            UpdateLoop.Run(ref entityIds, ref comp, ref arg1, ref arg2, ref arg3, ref arg4, ref arg5, ref arg6,
+                ref arg7, ref arg8, length, scene.DefaultWorldGameObject);
         }
     }
 }

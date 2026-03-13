@@ -279,6 +279,12 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             scene.Update();
 
             Assert.Equal(1, entity.Get<Update6Component>().CallCount);
+            Assert.Equal(6, entity.Get<Position>().X);
+            Assert.Equal(12, entity.Get<Position>().Y);
+            Assert.Equal(90, entity.Get<Health>().Value);
+            Assert.Equal(51, entity.Get<Armor>().Value);
+            Assert.Equal(12, entity.Get<Damage>().Value);
+            Assert.Equal(1, entity.Get<Transform>().Rotation);
         }
 
         #endregion
@@ -320,6 +326,12 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             scene.Update();
 
             Assert.Equal(1, entity.Get<Update7Component>().CallCount);
+            Assert.Equal(6, entity.Get<Position>().X);
+            Assert.Equal(12, entity.Get<Position>().Y);
+            Assert.Equal(99, entity.Get<Health>().Value);
+            Assert.Equal(60, entity.Get<Armor>().Value);
+            Assert.Equal(1, entity.Get<Transform>().X);
+            Assert.Equal(45, entity.Get<TestComponent>().Value);
         }
 
         #endregion
@@ -339,7 +351,6 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             // Assert
             Assert.NotNull(update);
         }
-
 
         #endregion
 
@@ -506,6 +517,12 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             ref Armor armor, ref Damage damage, ref Transform transform)
         {
             CallCount++;
+            pos.X += vel.X;
+            pos.Y += vel.Y;
+            health.Value -= damage.Value;
+            armor.Value = armor.Value + 1;
+            damage.Value += 2;
+            transform.Rotation += 1;
         }
     }
 
@@ -534,6 +551,12 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             ref Armor armor, ref Damage damage, ref Transform transform, ref TestComponent test)
         {
             CallCount++;
+            pos.X += vel.X;
+            pos.Y += vel.Y;
+            health.Value--;
+            armor.Value = armor.Value + damage.Value;
+            transform.X += 1;
+            test.Value += 3;
         }
     }
 
@@ -563,6 +586,15 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             ref Armor armor, ref Damage damage, ref Transform transform, ref TestComponent test, ref AnotherComponent another)
         {
             CallCount++;
+            pos.X += vel.X;
+            pos.Y += vel.Y;
+            health.Value--;
+            armor.Value = armor.Value + 2;
+            damage.Value++;
+            transform.Rotation += 2;
+            test.Value *= 2;
+            another.Data += 1;
+            another.Y += 1;
         }
     }
 
