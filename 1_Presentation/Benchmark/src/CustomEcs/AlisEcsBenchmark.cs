@@ -67,15 +67,17 @@ namespace Alis.Benchmark.CustomEcs
             Query = Scene.Query<With<Component1>>();
         }
 
-        /// <summary>
-        ///     Disposes this instance
-        /// </summary>
-        public void Dispose() => Scene.Dispose();
+        private void DisposeAlis()
+        {
+            Scene?.Dispose();
+            Scene = null;
+            Query = default;
+        }
 
         /// <summary>
         ///     Frents this instance
         /// </summary>
-        [Benchmark]
+        [BenchmarkCategory("Pair/Create/1"), Benchmark]
         public void Alis_Create_With_One_Component()
         {
             Scene scene = Scene;
@@ -90,7 +92,7 @@ namespace Alis.Benchmark.CustomEcs
         /// <summary>
         ///     Frents the bulk
         /// </summary>
-        [Benchmark]
+        [BenchmarkCategory("Pair/Bulk/1"), Benchmark]
         public void Alis_Create_Bulk_With_One_Component()
         {
             Scene scene = Scene;
@@ -105,7 +107,7 @@ namespace Alis.Benchmark.CustomEcs
         /// <summary>
         ///     Alises the create with two component
         /// </summary>
-        [Benchmark]
+        [BenchmarkCategory("Pair/Create/2"), Benchmark]
         public void Alis_Create_With_Two_Component()
         {
             Scene scene = Scene;
@@ -120,7 +122,7 @@ namespace Alis.Benchmark.CustomEcs
         /// <summary>
         ///     Frents the bulk
         /// </summary>
-        [Benchmark]
+        [BenchmarkCategory("Pair/Bulk/2"), Benchmark]
         public void Alis_Create_Bulk_With_Two_Component()
         {
             Scene scene = Scene;
@@ -137,7 +139,7 @@ namespace Alis.Benchmark.CustomEcs
         /// <summary>
         ///     Alises the create with three component
         /// </summary>
-        [Benchmark]
+        [BenchmarkCategory("Pair/Create/3"), Benchmark]
         public void Alis_Create_With_Three_Component()
         {
             Scene scene = Scene;
@@ -152,8 +154,8 @@ namespace Alis.Benchmark.CustomEcs
         /// <summary>
         ///     Frents the bulk
         /// </summary>
-        [Benchmark]
-        public void Alis_Create_Bulk_With_Thre_Component()
+        [BenchmarkCategory("Pair/Bulk/3"), Benchmark]
+        public void Alis_Create_Bulk_With_Three_Component()
         {
             Scene scene = Scene;
             ChunkTuple<Component1, Component2, Component3> chunks = scene.CreateMany<Component1, Component2, Component3>(EntityCount);
@@ -171,7 +173,7 @@ namespace Alis.Benchmark.CustomEcs
         /// <summary>
         ///     Alises the create with four component
         /// </summary>
-        [Benchmark]
+        [BenchmarkCategory("Pair/Create/4"), Benchmark]
         public void Alis_Create_With_Four_Component()
         {
             Scene scene = Scene;
@@ -186,7 +188,7 @@ namespace Alis.Benchmark.CustomEcs
         /// <summary>
         ///     Alises the create bulk with four component
         /// </summary>
-        [Benchmark]
+        [BenchmarkCategory("Pair/Bulk/4"), Benchmark]
         public void Alis_Create_Bulk_With_Four_Component()
         {
             Scene scene = Scene;
@@ -207,7 +209,7 @@ namespace Alis.Benchmark.CustomEcs
         /// <summary>
         ///     Alises the create with five component
         /// </summary>
-        [Benchmark]
+        [BenchmarkCategory("Pair/Create/5"), Benchmark]
         public void Alis_Create_With_Five_Component()
         {
             Scene scene = Scene;
@@ -222,7 +224,7 @@ namespace Alis.Benchmark.CustomEcs
         /// <summary>
         ///     Alises the create bulk with five component
         /// </summary>
-        [Benchmark]
+        [BenchmarkCategory("Pair/Bulk/5"), Benchmark]
         public void Alis_Create_Bulk_With_Five_Component()
         {
             Scene scene = Scene;
@@ -245,7 +247,7 @@ namespace Alis.Benchmark.CustomEcs
         /// <summary>
         ///     Alises the create with six component
         /// </summary>
-        [Benchmark]
+        [BenchmarkCategory("Pair/Create/6"), Benchmark]
         public void Alis_Create_With_Six_Component()
         {
             Scene scene = Scene;
@@ -260,7 +262,7 @@ namespace Alis.Benchmark.CustomEcs
         /// <summary>
         ///     Alises the create bulk with six component
         /// </summary>
-        [Benchmark]
+        [BenchmarkCategory("Pair/Bulk/6"), Benchmark]
         public void Alis_Create_Bulk_With_Six_Component()
         {
             Scene scene = Scene;
@@ -285,7 +287,7 @@ namespace Alis.Benchmark.CustomEcs
         /// <summary>
         ///     Alises the create with seven component
         /// </summary>
-        [Benchmark]
+        [BenchmarkCategory("Pair/Create/7"), Benchmark]
         public void Alis_Create_With_Seven_Component()
         {
             Scene scene = Scene;
@@ -300,7 +302,7 @@ namespace Alis.Benchmark.CustomEcs
         /// <summary>
         ///     Alises the create bulk with seven component
         /// </summary>
-        [Benchmark]
+        [BenchmarkCategory("Pair/Bulk/7"), Benchmark]
         public void Alis_Create_Bulk_With_Seven_Component()
         {
             Scene scene = Scene;
@@ -327,7 +329,7 @@ namespace Alis.Benchmark.CustomEcs
         /// <summary>
         ///     Alises the create with eight component
         /// </summary>
-        [Benchmark]
+        [BenchmarkCategory("Pair/Create/8"), Benchmark]
         public void Alis_Create_With_Eight_Component()
         {
             Scene scene = Scene;
@@ -342,7 +344,7 @@ namespace Alis.Benchmark.CustomEcs
         /// <summary>
         ///     Alises the create bulk with eight component
         /// </summary>
-        [Benchmark]
+        [BenchmarkCategory("Pair/Bulk/8"), Benchmark]
         public void Alis_Create_Bulk_With_Eight_Component()
         {
             Scene scene = Scene;
@@ -372,7 +374,7 @@ namespace Alis.Benchmark.CustomEcs
         /// <summary>
         ///     Alises the query inline
         /// </summary>
-        [Benchmark]
+        [BenchmarkCategory("Pair/System/Inline/P0"), Benchmark]
         public void Alis_SystemWithOneComponent_QueryInline_With_Padding_0()
         {
             for (int i = 0; i < EntityCount; i++)
@@ -387,7 +389,7 @@ namespace Alis.Benchmark.CustomEcs
         /// <summary>
         ///     Alises the query delegate
         /// </summary>
-        [Benchmark]
+        [BenchmarkCategory("Pair/System/Delegate/P0"), Benchmark]
         public void Alis_SystemWithOneComponent_QueryDelegate_With_Padding_0()
         {
             for (int i = 0; i < EntityCount; i++)
@@ -402,7 +404,7 @@ namespace Alis.Benchmark.CustomEcs
         /// <summary>
         ///     Alises the simd
         /// </summary>
-        [Benchmark]
+        [BenchmarkCategory("Pair/System/Simd/P0"), Benchmark]
         public void Alis_SystemWithOneComponent_Simd_With_Padding_0()
         {
             for (int i = 0; i < EntityCount; i++)
@@ -431,7 +433,7 @@ namespace Alis.Benchmark.CustomEcs
         /// <summary>
         ///     Alises the query inline
         /// </summary>
-        [Benchmark]
+        [BenchmarkCategory("Pair/System/Inline/P10"), Benchmark]
         public void Alis_SystemWithOneComponent_QueryInline_With_Padding_10()
         {
             for (int i = 0; i < EntityCount; i++)
@@ -450,7 +452,7 @@ namespace Alis.Benchmark.CustomEcs
         /// <summary>
         ///     Alises the query delegate
         /// </summary>
-        [Benchmark]
+        [BenchmarkCategory("Pair/System/Delegate/P10"), Benchmark]
         public void Alis_SystemWithOneComponent_QueryDelegate_With_Padding_10()
         {
             for (int i = 0; i < EntityCount; i++)
@@ -469,7 +471,7 @@ namespace Alis.Benchmark.CustomEcs
         /// <summary>
         ///     Alises the simd
         /// </summary>
-        [Benchmark]
+        [BenchmarkCategory("Pair/System/Simd/P10"), Benchmark]
         public void Alis_SystemWithOneComponent_Simd_With_Padding_10()
         {
             for (int i = 0; i < EntityCount; i++)

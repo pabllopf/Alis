@@ -40,7 +40,7 @@ namespace Alis.Benchmark.CustomEcs
         /// <summary>
         ///     Gets or sets the value of the gameObject count
         /// </summary>
-        [Params(1_00)]
+        [Params(1_000, 100_000)]
         public int EntityCount { get; set; }
 
 
@@ -53,5 +53,16 @@ namespace Alis.Benchmark.CustomEcs
             SetupAlis();
             SetupFrent();
         }
+
+        /// <summary>
+        /// Cleanup this instance
+        /// </summary>
+        [IterationCleanup]
+        public void Cleanup()
+        {
+            DisposeAlis();
+            DisposeFrent();
+        }
     }
 }
+

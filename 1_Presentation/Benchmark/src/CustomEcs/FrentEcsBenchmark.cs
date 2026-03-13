@@ -68,10 +68,17 @@ namespace Alis.Benchmark.CustomEcs
             QueryFrent = WorldFrent.Query<With<Component1>>();
         }
 
+        private void DisposeFrent()
+        {
+            WorldFrent?.Dispose();
+            WorldFrent = null;
+            QueryFrent = default;
+        }
+
         /// <summary>
         ///     Frents this instance
         /// </summary>
-        [Benchmark]
+        [BenchmarkCategory("Pair/Create/1"), Benchmark]
         public void Frent_Create_With_One_Component()
         {
             World world = WorldFrent;
@@ -86,7 +93,7 @@ namespace Alis.Benchmark.CustomEcs
         /// <summary>
         ///     Frents the bulk
         /// </summary>
-        [Benchmark]
+        [BenchmarkCategory("Pair/Bulk/1"), Benchmark]
         public void Frent_Create_Bulk_With_One_Component()
         {
             World world = WorldFrent;
@@ -101,7 +108,7 @@ namespace Alis.Benchmark.CustomEcs
         /// <summary>
         ///     Frents the create with two component
         /// </summary>
-        [Benchmark]
+        [BenchmarkCategory("Pair/Create/2"), Benchmark]
         public void Frent_Create_With_Two_Component()
         {
             World world = WorldFrent;
@@ -116,7 +123,7 @@ namespace Alis.Benchmark.CustomEcs
         /// <summary>
         ///     Frents the bulk
         /// </summary>
-        [Benchmark]
+        [BenchmarkCategory("Pair/Bulk/2"), Benchmark]
         public void Frent_Create_Bulk_With_Two_Component()
         {
             World world = WorldFrent;
@@ -133,7 +140,7 @@ namespace Alis.Benchmark.CustomEcs
         /// <summary>
         ///     Frents the create with three component
         /// </summary>
-        [Benchmark]
+        [BenchmarkCategory("Pair/Create/3"), Benchmark]
         public void Frent_Create_With_Three_Component()
         {
             World world = WorldFrent;
@@ -148,8 +155,8 @@ namespace Alis.Benchmark.CustomEcs
         /// <summary>
         ///     Frents the bulk
         /// </summary>
-        [Benchmark]
-        public void Frent_Create_Bulk_With_Thre_Component()
+        [BenchmarkCategory("Pair/Bulk/3"), Benchmark]
+        public void Frent_Create_Bulk_With_Three_Component()
         {
             World world = WorldFrent;
             ChunkTuple<Component1, Component2, Component3> chunks = world.CreateMany<Component1, Component2, Component3>(EntityCount);
@@ -167,7 +174,7 @@ namespace Alis.Benchmark.CustomEcs
         /// <summary>
         ///     Frents the create with four component
         /// </summary>
-        [Benchmark]
+        [BenchmarkCategory("Pair/Create/4"), Benchmark]
         public void Frent_Create_With_Four_Component()
         {
             World world = WorldFrent;
@@ -182,7 +189,7 @@ namespace Alis.Benchmark.CustomEcs
         /// <summary>
         ///     Frents the create bulk with four component
         /// </summary>
-        [Benchmark]
+        [BenchmarkCategory("Pair/Bulk/4"), Benchmark]
         public void Frent_Create_Bulk_With_Four_Component()
         {
             World world = WorldFrent;
@@ -203,7 +210,7 @@ namespace Alis.Benchmark.CustomEcs
         /// <summary>
         ///     Frents the create with five component
         /// </summary>
-        [Benchmark]
+        [BenchmarkCategory("Pair/Create/5"), Benchmark]
         public void Frent_Create_With_Five_Component()
         {
             World world = WorldFrent;
@@ -218,7 +225,7 @@ namespace Alis.Benchmark.CustomEcs
         /// <summary>
         ///     Frents the create bulk with five component
         /// </summary>
-        [Benchmark]
+        [BenchmarkCategory("Pair/Bulk/5"), Benchmark]
         public void Frent_Create_Bulk_With_Five_Component()
         {
             World world = WorldFrent;
@@ -241,7 +248,7 @@ namespace Alis.Benchmark.CustomEcs
         /// <summary>
         ///     Frents the create with six component
         /// </summary>
-        [Benchmark]
+        [BenchmarkCategory("Pair/Create/6"), Benchmark]
         public void Frent_Create_With_Six_Component()
         {
             World world = WorldFrent;
@@ -256,7 +263,7 @@ namespace Alis.Benchmark.CustomEcs
         /// <summary>
         ///     Frents the create bulk with six component
         /// </summary>
-        [Benchmark]
+        [BenchmarkCategory("Pair/Bulk/6"), Benchmark]
         public void Frent_Create_Bulk_With_Six_Component()
         {
             World world = WorldFrent;
@@ -281,7 +288,7 @@ namespace Alis.Benchmark.CustomEcs
         /// <summary>
         ///     Frents the create with seven component
         /// </summary>
-        [Benchmark]
+        [BenchmarkCategory("Pair/Create/7"), Benchmark]
         public void Frent_Create_With_Seven_Component()
         {
             World world = WorldFrent;
@@ -296,7 +303,7 @@ namespace Alis.Benchmark.CustomEcs
         /// <summary>
         ///     Frents the create bulk with seven component
         /// </summary>
-        [Benchmark]
+        [BenchmarkCategory("Pair/Bulk/7"), Benchmark]
         public void Frent_Create_Bulk_With_Seven_Component()
         {
             World world = WorldFrent;
@@ -323,8 +330,8 @@ namespace Alis.Benchmark.CustomEcs
         /// <summary>
         ///     Creates the with eight component
         /// </summary>
-        [Benchmark]
-        public void Create_With_Eight_Component()
+        [BenchmarkCategory("Pair/Create/8"), Benchmark]
+        public void Frent_Create_With_Eight_Component()
         {
             World world = WorldFrent;
             world.EnsureCapacity(_entityFrentType, EntityCount);
@@ -338,7 +345,7 @@ namespace Alis.Benchmark.CustomEcs
         /// <summary>
         ///     Frents the create bulk with eight component
         /// </summary>
-        [Benchmark]
+        [BenchmarkCategory("Pair/Bulk/8"), Benchmark]
         public void Frent_Create_Bulk_With_Eight_Component()
         {
             World world = WorldFrent;
@@ -363,422 +370,11 @@ namespace Alis.Benchmark.CustomEcs
                 chunks.Span8[i] = default(Component8);
             }
         }
-
-        /// <summary>
-        ///     Frents the create with nine component
-        /// </summary>
-        [Benchmark]
-        public void Frent_Create_With_Nine_Component()
-        {
-            World world = WorldFrent;
-            world.EnsureCapacity(_entityFrentType, EntityCount);
-
-            for (int i = 0; i < EntityCount; i++)
-            {
-                world.Create(default(Component1), default(Component2), default(Component3), default(Component4), default(Component5), default(Component6), default(Component7), default(Component8), default(Component9));
-            }
-        }
-
-        /// <summary>
-        ///     Frents the create bulk with nine component
-        /// </summary>
-        [Benchmark]
-        public void Frent_Create_Bulk_With_Nine_Component()
-        {
-            World world = WorldFrent;
-            ChunkTuple<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9> chunks = world.CreateMany<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9>(EntityCount);
-
-            chunks.Span2 = chunks.Span2[..chunks.Span1.Length];
-            chunks.Span3 = chunks.Span3[..chunks.Span1.Length];
-            chunks.Span4 = chunks.Span4[..chunks.Span1.Length];
-            chunks.Span5 = chunks.Span5[..chunks.Span1.Length];
-            chunks.Span6 = chunks.Span6[..chunks.Span1.Length];
-            chunks.Span7 = chunks.Span7[..chunks.Span1.Length];
-            chunks.Span8 = chunks.Span8[..chunks.Span1.Length];
-            chunks.Span9 = chunks.Span9[..chunks.Span1.Length];
-            for (int i = 0; i < chunks.Span1.Length; i++)
-            {
-                chunks.Span1[i] = default(Component1);
-                chunks.Span2[i] = default(Component2);
-                chunks.Span3[i] = default(Component3);
-                chunks.Span4[i] = default(Component4);
-                chunks.Span5[i] = default(Component5);
-                chunks.Span6[i] = default(Component6);
-                chunks.Span7[i] = default(Component7);
-                chunks.Span8[i] = default(Component8);
-                chunks.Span9[i] = default(Component9);
-            }
-        }
-
-        /// <summary>
-        ///     Frents the create with ten component
-        /// </summary>
-        [Benchmark]
-        public void Frent_Create_With_Ten_Component()
-        {
-            World world = WorldFrent;
-            world.EnsureCapacity(_entityFrentType, EntityCount);
-
-            for (int i = 0; i < EntityCount; i++)
-            {
-                world.Create(default(Component1), default(Component2), default(Component3), default(Component4), default(Component5), default(Component6), default(Component7), default(Component8), default(Component9), default(Component10));
-            }
-        }
-
-        /// <summary>
-        ///     Frents the create bulk with ten component
-        /// </summary>
-        [Benchmark]
-        public void Frent_Create_Bulk_With_Ten_Component()
-        {
-            World world = WorldFrent;
-            ChunkTuple<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9, Component10> chunks = world.CreateMany<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9, Component10>(EntityCount);
-
-            chunks.Span2 = chunks.Span2[..chunks.Span1.Length];
-            chunks.Span3 = chunks.Span3[..chunks.Span1.Length];
-            chunks.Span4 = chunks.Span4[..chunks.Span1.Length];
-            chunks.Span5 = chunks.Span5[..chunks.Span1.Length];
-            chunks.Span6 = chunks.Span6[..chunks.Span1.Length];
-            chunks.Span7 = chunks.Span7[..chunks.Span1.Length];
-            chunks.Span8 = chunks.Span8[..chunks.Span1.Length];
-            chunks.Span9 = chunks.Span9[..chunks.Span1.Length];
-            chunks.Span10 = chunks.Span10[..chunks.Span1.Length];
-            for (int i = 0; i < chunks.Span1.Length; i++)
-            {
-                chunks.Span1[i] = default(Component1);
-                chunks.Span2[i] = default(Component2);
-                chunks.Span3[i] = default(Component3);
-                chunks.Span4[i] = default(Component4);
-                chunks.Span5[i] = default(Component5);
-                chunks.Span6[i] = default(Component6);
-                chunks.Span7[i] = default(Component7);
-                chunks.Span8[i] = default(Component8);
-                chunks.Span9[i] = default(Component9);
-                chunks.Span10[i] = default(Component10);
-            }
-        }
-
-        /// <summary>
-        ///     Frents the create with eleven component
-        /// </summary>
-        [Benchmark]
-        public void Frent_Create_With_Eleven_Component()
-        {
-            World world = WorldFrent;
-            world.EnsureCapacity(_entityFrentType, EntityCount);
-
-            for (int i = 0; i < EntityCount; i++)
-            {
-                world.Create(default(Component1), default(Component2), default(Component3), default(Component4), default(Component5), default(Component6), default(Component7), default(Component8), default(Component9), default(Component10), default(Component11));
-            }
-        }
-
-        /// <summary>
-        ///     Frents the create bulk with eleven component
-        /// </summary>
-        [Benchmark]
-        public void Frent_Create_Bulk_With_Eleven_Component()
-        {
-            World world = WorldFrent;
-            ChunkTuple<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9, Component10, Component11> chunks = world.CreateMany<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9, Component10, Component11>(EntityCount);
-
-            chunks.Span2 = chunks.Span2[..chunks.Span1.Length];
-            chunks.Span3 = chunks.Span3[..chunks.Span1.Length];
-            chunks.Span4 = chunks.Span4[..chunks.Span1.Length];
-            chunks.Span5 = chunks.Span5[..chunks.Span1.Length];
-            chunks.Span6 = chunks.Span6[..chunks.Span1.Length];
-            chunks.Span7 = chunks.Span7[..chunks.Span1.Length];
-            chunks.Span8 = chunks.Span8[..chunks.Span1.Length];
-            chunks.Span9 = chunks.Span9[..chunks.Span1.Length];
-            chunks.Span10 = chunks.Span10[..chunks.Span1.Length];
-            for (int i = 0; i < chunks.Span1.Length; i++)
-            {
-                chunks.Span1[i] = default(Component1);
-                chunks.Span2[i] = default(Component2);
-                chunks.Span3[i] = default(Component3);
-                chunks.Span4[i] = default(Component4);
-                chunks.Span5[i] = default(Component5);
-                chunks.Span6[i] = default(Component6);
-                chunks.Span7[i] = default(Component7);
-                chunks.Span8[i] = default(Component8);
-                chunks.Span9[i] = default(Component9);
-                chunks.Span10[i] = default(Component10);
-                chunks.Span11[i] = default(Component11);
-            }
-        }
-
-        /// <summary>
-        ///     Frents the create with twelve component
-        /// </summary>
-        [Benchmark]
-        public void Frent_Create_With_Twelve_Component()
-        {
-            World world = WorldFrent;
-            world.EnsureCapacity(_entityFrentType, EntityCount);
-
-            for (int i = 0; i < EntityCount; i++)
-            {
-                world.Create(default(Component1), default(Component2), default(Component3), default(Component4), default(Component5), default(Component6), default(Component7), default(Component8), default(Component9), default(Component10), default(Component11), default(Component12));
-            }
-        }
-
-        /// <summary>
-        ///     Frents the create bulk with twelve component
-        /// </summary>
-        [Benchmark]
-        public void Frent_Create_Bulk_With_Twelve_Component()
-        {
-            World world = WorldFrent;
-            ChunkTuple<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9, Component10, Component11, Component12> chunks = world.CreateMany<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9, Component10, Component11, Component12>(EntityCount);
-
-            chunks.Span2 = chunks.Span2[..chunks.Span1.Length];
-            chunks.Span3 = chunks.Span3[..chunks.Span1.Length];
-            chunks.Span4 = chunks.Span4[..chunks.Span1.Length];
-            chunks.Span5 = chunks.Span5[..chunks.Span1.Length];
-            chunks.Span6 = chunks.Span6[..chunks.Span1.Length];
-            chunks.Span7 = chunks.Span7[..chunks.Span1.Length];
-            chunks.Span8 = chunks.Span8[..chunks.Span1.Length];
-            chunks.Span9 = chunks.Span9[..chunks.Span1.Length];
-            chunks.Span10 = chunks.Span10[..chunks.Span1.Length];
-            chunks.Span11 = chunks.Span11[..chunks.Span1.Length];
-            for (int i = 0; i < chunks.Span1.Length; i++)
-            {
-                chunks.Span1[i] = default(Component1);
-                chunks.Span2[i] = default(Component2);
-                chunks.Span3[i] = default(Component3);
-                chunks.Span4[i] = default(Component4);
-                chunks.Span5[i] = default(Component5);
-                chunks.Span6[i] = default(Component6);
-                chunks.Span7[i] = default(Component7);
-                chunks.Span8[i] = default(Component8);
-                chunks.Span9[i] = default(Component9);
-                chunks.Span10[i] = default(Component10);
-                chunks.Span11[i] = default(Component11);
-                chunks.Span12[i] = default(Component12);
-            }
-        }
-
-        /// <summary>
-        ///     Frents the create with thirteen component
-        /// </summary>
-        [Benchmark]
-        public void Frent_Create_With_Thirteen_Component()
-        {
-            World world = WorldFrent;
-            world.EnsureCapacity(_entityFrentType, EntityCount);
-
-            for (int i = 0; i < EntityCount; i++)
-            {
-                world.Create(default(Component1), default(Component2), default(Component3), default(Component4), default(Component5), default(Component6), default(Component7), default(Component8), default(Component9), default(Component10), default(Component11), default(Component12), default(Component13));
-            }
-        }
-
-        /// <summary>
-        ///     Frents the create bulk with thirteen component
-        /// </summary>
-        [Benchmark]
-        public void Frent_Create_Bulk_With_Thirteen_Component()
-        {
-            World world = WorldFrent;
-            ChunkTuple<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9, Component10, Component11, Component12, Component13> chunks = world.CreateMany<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9, Component10, Component11, Component12, Component13>(EntityCount);
-
-            chunks.Span2 = chunks.Span2[..chunks.Span1.Length];
-            chunks.Span3 = chunks.Span3[..chunks.Span1.Length];
-            chunks.Span4 = chunks.Span4[..chunks.Span1.Length];
-            chunks.Span5 = chunks.Span5[..chunks.Span1.Length];
-            chunks.Span6 = chunks.Span6[..chunks.Span1.Length];
-            chunks.Span7 = chunks.Span7[..chunks.Span1.Length];
-            chunks.Span8 = chunks.Span8[..chunks.Span1.Length];
-            chunks.Span9 = chunks.Span9[..chunks.Span1.Length];
-            chunks.Span10 = chunks.Span10[..chunks.Span1.Length];
-            chunks.Span11 = chunks.Span11[..chunks.Span1.Length];
-            for (int i = 0; i < chunks.Span1.Length; i++)
-            {
-                chunks.Span1[i] = default(Component1);
-                chunks.Span2[i] = default(Component2);
-                chunks.Span3[i] = default(Component3);
-                chunks.Span4[i] = default(Component4);
-                chunks.Span5[i] = default(Component5);
-                chunks.Span6[i] = default(Component6);
-                chunks.Span7[i] = default(Component7);
-                chunks.Span8[i] = default(Component8);
-                chunks.Span9[i] = default(Component9);
-                chunks.Span10[i] = default(Component10);
-                chunks.Span11[i] = default(Component11);
-                chunks.Span12[i] = default(Component12);
-                chunks.Span13[i] = default(Component13);
-            }
-        }
-
-        /// <summary>
-        ///     Frents the create with fourteen component
-        /// </summary>
-        [Benchmark]
-        public void Frent_Create_With_Fourteen_Component()
-        {
-            World world = WorldFrent;
-            world.EnsureCapacity(_entityFrentType, EntityCount);
-
-            for (int i = 0; i < EntityCount; i++)
-            {
-                world.Create(default(Component1), default(Component2), default(Component3), default(Component4), default(Component5), default(Component6), default(Component7), default(Component8), default(Component9), default(Component10), default(Component11), default(Component12), default(Component13), default(Component14));
-            }
-        }
-
-        /// <summary>
-        ///     Frents the create bulk with fourteen component
-        /// </summary>
-        [Benchmark]
-        public void Frent_Create_Bulk_With_Fourteen_Component()
-        {
-            World world = WorldFrent;
-            ChunkTuple<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9, Component10, Component11, Component12, Component13, Component14> chunks =
-                world.CreateMany<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9, Component10, Component11, Component12, Component13, Component14>(EntityCount);
-
-            chunks.Span2 = chunks.Span2[..chunks.Span1.Length];
-            chunks.Span3 = chunks.Span3[..chunks.Span1.Length];
-            chunks.Span4 = chunks.Span4[..chunks.Span1.Length];
-            chunks.Span5 = chunks.Span5[..chunks.Span1.Length];
-            chunks.Span6 = chunks.Span6[..chunks.Span1.Length];
-            chunks.Span7 = chunks.Span7[..chunks.Span1.Length];
-            chunks.Span8 = chunks.Span8[..chunks.Span1.Length];
-            chunks.Span9 = chunks.Span9[..chunks.Span1.Length];
-            chunks.Span10 = chunks.Span10[..chunks.Span1.Length];
-            chunks.Span11 = chunks.Span11[..chunks.Span1.Length];
-            for (int i = 0; i < chunks.Span1.Length; i++)
-            {
-                chunks.Span1[i] = default(Component1);
-                chunks.Span2[i] = default(Component2);
-                chunks.Span3[i] = default(Component3);
-                chunks.Span4[i] = default(Component4);
-                chunks.Span5[i] = default(Component5);
-                chunks.Span6[i] = default(Component6);
-                chunks.Span7[i] = default(Component7);
-                chunks.Span8[i] = default(Component8);
-                chunks.Span9[i] = default(Component9);
-                chunks.Span10[i] = default(Component10);
-                chunks.Span11[i] = default(Component11);
-                chunks.Span12[i] = default(Component12);
-                chunks.Span13[i] = default(Component13);
-                chunks.Span14[i] = default(Component14);
-            }
-        }
-
-        /// <summary>
-        ///     Frents the create with fifteen component
-        /// </summary>
-        [Benchmark]
-        public void Frent_Create_With_Fifteen_Component()
-        {
-            World world = WorldFrent;
-            world.EnsureCapacity(_entityFrentType, EntityCount);
-
-            for (int i = 0; i < EntityCount; i++)
-            {
-                world.Create(default(Component1), default(Component2), default(Component3), default(Component4), default(Component5), default(Component6), default(Component7), default(Component8), default(Component9), default(Component10), default(Component11), default(Component12), default(Component13), default(Component14), default(Component15));
-            }
-        }
-
-
-        /// <summary>
-        ///     Frents the create bulk with fifteen component
-        /// </summary>
-        [Benchmark]
-        public void Frent_Create_Bulk_With_Fifteen_Component()
-        {
-            World world = WorldFrent;
-            ChunkTuple<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9, Component10, Component11, Component12, Component13, Component14, Component15> chunks =
-                world.CreateMany<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9, Component10, Component11, Component12, Component13, Component14, Component15>(EntityCount);
-
-            chunks.Span2 = chunks.Span2[..chunks.Span1.Length];
-            chunks.Span3 = chunks.Span3[..chunks.Span1.Length];
-            chunks.Span4 = chunks.Span4[..chunks.Span1.Length];
-            chunks.Span5 = chunks.Span5[..chunks.Span1.Length];
-            chunks.Span6 = chunks.Span6[..chunks.Span1.Length];
-            chunks.Span7 = chunks.Span7[..chunks.Span1.Length];
-            chunks.Span8 = chunks.Span8[..chunks.Span1.Length];
-            chunks.Span9 = chunks.Span9[..chunks.Span1.Length];
-            chunks.Span10 = chunks.Span10[..chunks.Span1.Length];
-            for (int i = 0; i < chunks.Span1.Length; i++)
-            {
-                chunks.Span1[i] = default(Component1);
-                chunks.Span2[i] = default(Component2);
-                chunks.Span3[i] = default(Component3);
-                chunks.Span4[i] = default(Component4);
-                chunks.Span5[i] = default(Component5);
-                chunks.Span6[i] = default(Component6);
-                chunks.Span7[i] = default(Component7);
-                chunks.Span8[i] = default(Component8);
-                chunks.Span9[i] = default(Component9);
-                chunks.Span10[i] = default(Component10);
-                chunks.Span11[i] = default(Component11);
-                chunks.Span12[i] = default(Component12);
-                chunks.Span13[i] = default(Component13);
-                chunks.Span14[i] = default(Component14);
-                chunks.Span15[i] = default(Component15);
-            }
-        }
-
-        /// <summary>
-        ///     Frents the create with sixteen component
-        /// </summary>
-        [Benchmark]
-        public void Frent_Create_With_Sixteen_Component()
-        {
-            World world = WorldFrent;
-            world.EnsureCapacity(_entityFrentType, EntityCount);
-
-            for (int i = 0; i < EntityCount; i++)
-            {
-                world.Create(default(Component1), default(Component2), default(Component3), default(Component4), default(Component5), default(Component6), default(Component7), default(Component8), default(Component9), default(Component10), default(Component11), default(Component12), default(Component13), default(Component14), default(Component15), default(Component16));
-            }
-        }
-
-        /// <summary>
-        ///     Frents the create bulk with sixteen component
-        /// </summary>
-        [Benchmark]
-        public void Frent_Create_Bulk_With_Sixteen_Component()
-        {
-            World world = WorldFrent;
-            ChunkTuple<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9, Component10, Component11, Component12, Component13, Component14, Component15, Component16> chunks =
-                world.CreateMany<Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8, Component9, Component10, Component11, Component12, Component13, Component14, Component15, Component16>(EntityCount);
-
-            chunks.Span2 = chunks.Span2[..chunks.Span1.Length];
-            chunks.Span3 = chunks.Span3[..chunks.Span1.Length];
-            chunks.Span4 = chunks.Span4[..chunks.Span1.Length];
-            chunks.Span5 = chunks.Span5[..chunks.Span1.Length];
-            chunks.Span6 = chunks.Span6[..chunks.Span1.Length];
-            chunks.Span7 = chunks.Span7[..chunks.Span1.Length];
-            chunks.Span8 = chunks.Span8[..chunks.Span1.Length];
-            chunks.Span9 = chunks.Span9[..chunks.Span1.Length];
-            chunks.Span10 = chunks.Span10[..chunks.Span1.Length];
-            for (int i = 0; i < chunks.Span1.Length; i++)
-            {
-                chunks.Span1[i] = default(Component1);
-                chunks.Span2[i] = default(Component2);
-                chunks.Span3[i] = default(Component3);
-                chunks.Span4[i] = default(Component4);
-                chunks.Span5[i] = default(Component5);
-                chunks.Span6[i] = default(Component6);
-                chunks.Span7[i] = default(Component7);
-                chunks.Span8[i] = default(Component8);
-                chunks.Span9[i] = default(Component9);
-                chunks.Span10[i] = default(Component10);
-                chunks.Span11[i] = default(Component11);
-                chunks.Span12[i] = default(Component12);
-                chunks.Span13[i] = default(Component13);
-                chunks.Span14[i] = default(Component14);
-                chunks.Span15[i] = default(Component15);
-                chunks.Span16[i] = default(Component16);
-            }
-        }
-
-
+        
         /// <summary>
         ///     Frents the system with one component query inline with padding 0
         /// </summary>
-        [Benchmark]
+        [BenchmarkCategory("Pair/System/Inline/P0"), Benchmark]
         public void Frent_SystemWithOneComponent_QueryInline_With_Padding_0()
         {
             for (int i = 0; i < EntityCount; i++)
@@ -793,7 +389,7 @@ namespace Alis.Benchmark.CustomEcs
         /// <summary>
         ///     Frents the system with one component query delegate with padding 0
         /// </summary>
-        [Benchmark]
+        [BenchmarkCategory("Pair/System/Delegate/P0"), Benchmark]
         public void Frent_SystemWithOneComponent_QueryDelegate_With_Padding_0()
         {
             for (int i = 0; i < EntityCount; i++)
@@ -807,7 +403,7 @@ namespace Alis.Benchmark.CustomEcs
         /// <summary>
         ///     Frents the system with one component simd with padding 0
         /// </summary>
-        [Benchmark]
+        [BenchmarkCategory("Pair/System/Simd/P0"), Benchmark]
         public void Frent_SystemWithOneComponent_Simd_With_Padding_0()
         {
             for (int i = 0; i < EntityCount; i++)
@@ -836,7 +432,7 @@ namespace Alis.Benchmark.CustomEcs
         /// <summary>
         ///     Frents the system with one component query inline with padding 10
         /// </summary>
-        [Benchmark]
+        [BenchmarkCategory("Pair/System/Inline/P10"), Benchmark]
         public void Frent_SystemWithOneComponent_QueryInline_With_Padding_10()
         {
             for (int i = 0; i < EntityCount; i++)
@@ -855,7 +451,7 @@ namespace Alis.Benchmark.CustomEcs
         /// <summary>
         ///     Frents the system with one component query delegate with padding 10
         /// </summary>
-        [Benchmark]
+        [BenchmarkCategory("Pair/System/Delegate/P10"), Benchmark]
         public void Frent_SystemWithOneComponent_QueryDelegate_With_Padding_10()
         {
             for (int i = 0; i < EntityCount; i++)
@@ -873,7 +469,7 @@ namespace Alis.Benchmark.CustomEcs
         /// <summary>
         ///     Frents the system with one component simd with padding 10
         /// </summary>
-        [Benchmark]
+        [BenchmarkCategory("Pair/System/Simd/P10"), Benchmark]
         public void Frent_SystemWithOneComponent_Simd_With_Padding_10()
         {
             for (int i = 0; i < EntityCount; i++)
