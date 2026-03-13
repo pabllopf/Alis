@@ -11,6 +11,9 @@ namespace Alis.Core.Ecs.Test
     /// </summary>
     public class InvokeComponentWorldEventsTest
     {
+        /// <summary>
+        /// Tests that arity 1 invokes single component id for same entity
+        /// </summary>
         [Fact]
         public void Arity1_InvokesSingleComponentIdForSameEntity()
         {
@@ -34,6 +37,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(entity, entities[0]);
         }
 
+        /// <summary>
+        /// Tests that arity 2 invokes both component ids in order
+        /// </summary>
         [Fact]
         public void Arity2_InvokesBothComponentIdsInOrder()
         {
@@ -58,6 +64,9 @@ namespace Alis.Core.Ecs.Test
             Assert.All(entities, e => Assert.Equal(entity, e));
         }
 
+        /// <summary>
+        /// Tests that arity 3 invokes three component ids in order
+        /// </summary>
         [Fact]
         public void Arity3_InvokesThreeComponentIdsInOrder()
         {
@@ -76,6 +85,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(Component<Health>.Id, componentIds[2]);
         }
 
+        /// <summary>
+        /// Tests that arity 4 invokes four component ids in order
+        /// </summary>
         [Fact]
         public void Arity4_InvokesFourComponentIdsInOrder()
         {
@@ -95,6 +107,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(Component<Armor>.Id, componentIds[3]);
         }
 
+        /// <summary>
+        /// Tests that arity 5 invokes five component ids in order
+        /// </summary>
         [Fact]
         public void Arity5_InvokesFiveComponentIdsInOrder()
         {
@@ -117,6 +132,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(Component<Damage>.Id, componentIds[4]);
         }
 
+        /// <summary>
+        /// Tests that arity 6 invokes six component ids in order
+        /// </summary>
         [Fact]
         public void Arity6_InvokesSixComponentIdsInOrder()
         {
@@ -140,6 +158,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(Component<Transform>.Id, componentIds[5]);
         }
 
+        /// <summary>
+        /// Tests that arity 7 invokes seven component ids in order
+        /// </summary>
         [Fact]
         public void Arity7_InvokesSevenComponentIdsInOrder()
         {
@@ -164,6 +185,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(Component<TestComponent>.Id, componentIds[6]);
         }
 
+        /// <summary>
+        /// Tests that arity 8 invokes eight component ids in order
+        /// </summary>
         [Fact]
         public void Arity8_InvokesEightComponentIdsInOrder()
         {

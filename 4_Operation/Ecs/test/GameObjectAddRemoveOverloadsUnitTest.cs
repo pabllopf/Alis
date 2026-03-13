@@ -4,8 +4,14 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test
 {
+    /// <summary>
+    /// The game object add remove overloads unit test class
+    /// </summary>
     public class GameObjectAddRemoveOverloadsUnitTest
     {
+        /// <summary>
+        /// Tests that add arity 1 uses generic overload
+        /// </summary>
         [Fact]
         public void Add_Arity1_UsesGenericOverload()
         {
@@ -19,6 +25,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(2, entity.Get<Position>().Y);
         }
 
+        /// <summary>
+        /// Tests that add arity 2 uses generic overload
+        /// </summary>
         [Fact]
         public void Add_Arity2_UsesGenericOverload()
         {
@@ -32,6 +41,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(3, entity.Get<Velocity>().X);
         }
 
+        /// <summary>
+        /// Tests that add arity 3 uses generic overload
+        /// </summary>
         [Fact]
         public void Add_Arity3_UsesGenericOverload()
         {
@@ -49,6 +61,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(5, entity.Get<Health>().Value);
         }
 
+        /// <summary>
+        /// Tests that add arity 4 uses generic overload
+        /// </summary>
         [Fact]
         public void Add_Arity4_UsesGenericOverload()
         {
@@ -68,6 +83,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(6, entity.Get<Armor>().Value);
         }
 
+        /// <summary>
+        /// Tests that add arity 5 uses generic overload
+        /// </summary>
         [Fact]
         public void Add_Arity5_UsesGenericOverload()
         {
@@ -89,6 +107,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(7, entity.Get<Damage>().Value);
         }
 
+        /// <summary>
+        /// Tests that add arity 6 uses generic overload
+        /// </summary>
         [Fact]
         public void Add_Arity6_UsesGenericOverload()
         {
@@ -112,6 +133,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(10, entity.Get<Transform>().Rotation);
         }
 
+        /// <summary>
+        /// Tests that add arity 7 uses generic overload
+        /// </summary>
         [Fact]
         public void Add_Arity7_UsesGenericOverload()
         {
@@ -137,6 +161,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(11, entity.Get<TestComponent>().Value);
         }
 
+        /// <summary>
+        /// Tests that add arity 8 uses generic overload
+        /// </summary>
         [Fact]
         public void Add_Arity8_UsesGenericOverload()
         {
@@ -165,6 +192,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(12, entity.Get<AnotherComponent>().Data);
         }
 
+        /// <summary>
+        /// Tests that remove arity 1 uses generic overload
+        /// </summary>
         [Fact]
         public void Remove_Arity1_UsesGenericOverload()
         {
@@ -178,6 +208,9 @@ namespace Alis.Core.Ecs.Test
             Assert.True(entity.Has<AnotherComponent2>());
         }
 
+        /// <summary>
+        /// Tests that remove arity 2 uses generic overload
+        /// </summary>
         [Fact]
         public void Remove_Arity2_UsesGenericOverload()
         {
@@ -192,6 +225,9 @@ namespace Alis.Core.Ecs.Test
             Assert.True(entity.Has<AnotherComponent2>());
         }
 
+        /// <summary>
+        /// Tests that remove arity 3 uses generic overload
+        /// </summary>
         [Fact]
         public void Remove_Arity3_UsesGenericOverload()
         {
@@ -207,6 +243,9 @@ namespace Alis.Core.Ecs.Test
             Assert.True(entity.Has<AnotherComponent2>());
         }
 
+        /// <summary>
+        /// Tests that remove arity 4 uses generic overload
+        /// </summary>
         [Fact]
         public void Remove_Arity4_UsesGenericOverload()
         {
@@ -223,6 +262,9 @@ namespace Alis.Core.Ecs.Test
             Assert.True(entity.Has<AnotherComponent2>());
         }
 
+        /// <summary>
+        /// Tests that remove arity 5 uses generic overload
+        /// </summary>
         [Fact]
         public void Remove_Arity5_UsesGenericOverload()
         {
@@ -240,6 +282,9 @@ namespace Alis.Core.Ecs.Test
             Assert.True(entity.Has<AnotherComponent2>());
         }
 
+        /// <summary>
+        /// Tests that remove arity 6 uses generic overload
+        /// </summary>
         [Fact]
         public void Remove_Arity6_UsesGenericOverload()
         {
@@ -258,6 +303,9 @@ namespace Alis.Core.Ecs.Test
             Assert.True(entity.Has<AnotherComponent2>());
         }
 
+        /// <summary>
+        /// Tests that remove arity 7 uses generic overload
+        /// </summary>
         [Fact]
         public void Remove_Arity7_UsesGenericOverload()
         {
@@ -277,6 +325,9 @@ namespace Alis.Core.Ecs.Test
             Assert.True(entity.Has<AnotherComponent2>());
         }
 
+        /// <summary>
+        /// Tests that remove arity 8 uses generic overload
+        /// </summary>
         [Fact]
         public void Remove_Arity8_UsesGenericOverload()
         {
@@ -298,6 +349,11 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(99, entity.Get<AnotherComponent2>().Data);
         }
 
+        /// <summary>
+        /// Creates the entity with nine components using the specified scene
+        /// </summary>
+        /// <param name="scene">The scene</param>
+        /// <returns>The entity</returns>
         private static GameObject CreateEntityWithNineComponents(Scene scene)
         {
             GameObject entity = scene.Create();

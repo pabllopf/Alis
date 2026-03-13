@@ -51,6 +51,9 @@ namespace Alis.Core.Ecs.Test
         // Arity 1 — InvokePerEntityEvents<T>
         // ───────────────────────────────────────────────────────────────────
 
+        /// <summary>
+        /// Tests that arity 1 normal event is fired with correct component id
+        /// </summary>
         [Fact]
         public void Arity1_NormalEvent_IsFired_WithCorrectComponentId()
         {
@@ -68,6 +71,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(Component<Position>.Id, received[0]);
         }
 
+        /// <summary>
+        /// Tests that arity 1 normal event is fired when has generic event true
+        /// </summary>
         [Fact]
         public void Arity1_NormalEvent_IsFired_WhenHasGenericEventTrue()
         {
@@ -88,6 +94,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(Component<Position>.Id, received[0]);
         }
 
+        /// <summary>
+        /// Tests that arity 1 normal event passes correct entity
+        /// </summary>
         [Fact]
         public void Arity1_NormalEvent_PassesCorrectEntity()
         {
@@ -105,6 +114,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(entity, receivedEntities[0]);
         }
 
+        /// <summary>
+        /// Tests that arity 1 normal event multiple listeners all invoked
+        /// </summary>
         [Fact]
         public void Arity1_NormalEvent_MultipleListeners_AllInvoked()
         {
@@ -123,6 +135,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(3, count);
         }
 
+        /// <summary>
+        /// Tests that arity 1 generic event not invoked when has generic event false
+        /// </summary>
         [Fact]
         public void Arity1_GenericEvent_NotInvoked_WhenHasGenericEventFalse()
         {
@@ -142,6 +157,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(0, genericAction.CallCount);
         }
 
+        /// <summary>
+        /// Tests that arity 1 generic event invoked when has generic event true
+        /// </summary>
         [Fact]
         public void Arity1_GenericEvent_Invoked_WhenHasGenericEventTrue()
         {
@@ -161,6 +179,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Contains(typeof(Position), capture.SeenTypes);
         }
 
+        /// <summary>
+        /// Tests that arity 1 generic event receives correct entity
+        /// </summary>
         [Fact]
         public void Arity1_GenericEvent_ReceivesCorrectEntity()
         {
@@ -181,6 +202,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(entity, capture.SeenEntities[0]);
         }
 
+        /// <summary>
+        /// Tests that arity 1 generic event can mutate component
+        /// </summary>
         [Fact]
         public void Arity1_GenericEvent_CanMutateComponent()
         {
@@ -201,6 +225,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(99, pos.Y);
         }
 
+        /// <summary>
+        /// Tests that arity 1 generic event multiple listeners all invoked
+        /// </summary>
         [Fact]
         public void Arity1_GenericEvent_MultipleListeners_AllInvoked()
         {
@@ -226,6 +253,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(1, c3.CallCount);
         }
 
+        /// <summary>
+        /// Tests that arity 1 no listeners does not throw
+        /// </summary>
         [Fact]
         public void Arity1_NoListeners_DoesNotThrow()
         {
@@ -241,6 +271,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that arity 1 null generic event with has generic event false does not throw
+        /// </summary>
         [Fact]
         public void Arity1_NullGenericEvent_WithHasGenericEventFalse_DoesNotThrow()
         {
@@ -263,6 +296,9 @@ namespace Alis.Core.Ecs.Test
         // Arity 2 — InvokePerEntityEvents<T1, T2>
         // ───────────────────────────────────────────────────────────────────
 
+        /// <summary>
+        /// Tests that arity 2 normal event fired for both components
+        /// </summary>
         [Fact]
         public void Arity2_NormalEvent_FiredForBothComponents()
         {
@@ -282,6 +318,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Contains(Component<Health>.Id, received);
         }
 
+        /// <summary>
+        /// Tests that arity 2 normal event passes correct entity for both invocations
+        /// </summary>
         [Fact]
         public void Arity2_NormalEvent_PassesCorrectEntity_ForBothInvocations()
         {
@@ -300,6 +339,9 @@ namespace Alis.Core.Ecs.Test
             Assert.All(entities, e => Assert.Equal(entity, e));
         }
 
+        /// <summary>
+        /// Tests that arity 2 generic event not invoked when has generic event false
+        /// </summary>
         [Fact]
         public void Arity2_GenericEvent_NotInvoked_WhenHasGenericEventFalse()
         {
@@ -320,6 +362,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(0, counting.CallCount);
         }
 
+        /// <summary>
+        /// Tests that arity 2 generic event invoked twice when has generic event true
+        /// </summary>
         [Fact]
         public void Arity2_GenericEvent_InvokedTwice_WhenHasGenericEventTrue()
         {
@@ -342,6 +387,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(2, capture.TotalInvocations);
         }
 
+        /// <summary>
+        /// Tests that arity 2 generic event can mutate first component
+        /// </summary>
         [Fact]
         public void Arity2_GenericEvent_CanMutateFirstComponent()
         {
@@ -362,6 +410,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(99, pos.X);
         }
 
+        /// <summary>
+        /// Tests that arity 2 normal event fired exactly two times
+        /// </summary>
         [Fact]
         public void Arity2_NormalEvent_FiredExactlyTwoTimes()
         {
@@ -379,6 +430,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(2, count);
         }
 
+        /// <summary>
+        /// Tests that arity 2 no listeners does not throw
+        /// </summary>
         [Fact]
         public void Arity2_NoListeners_DoesNotThrow()
         {
@@ -395,6 +449,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that arity 2 multiple normal listeners all invoked
+        /// </summary>
         [Fact]
         public void Arity2_MultipleNormalListeners_AllInvoked()
         {
@@ -418,6 +475,9 @@ namespace Alis.Core.Ecs.Test
         // Arity 3 — InvokePerEntityEvents<T1, T2, T3>
         // ───────────────────────────────────────────────────────────────────
 
+        /// <summary>
+        /// Tests that arity 3 normal event fired for all three components
+        /// </summary>
         [Fact]
         public void Arity3_NormalEvent_FiredForAllThreeComponents()
         {
@@ -439,6 +499,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Contains(Component<Velocity>.Id, received);
         }
 
+        /// <summary>
+        /// Tests that arity 3 generic event not invoked when has generic event false
+        /// </summary>
         [Fact]
         public void Arity3_GenericEvent_NotInvoked_WhenHasGenericEventFalse()
         {
@@ -460,6 +523,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(0, counting.CallCount);
         }
 
+        /// <summary>
+        /// Tests that arity 3 generic event invoked three times when has generic event true
+        /// </summary>
         [Fact]
         public void Arity3_GenericEvent_InvokedThreeTimes_WhenHasGenericEventTrue()
         {
@@ -484,6 +550,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Contains(typeof(Velocity), capture.SeenTypes);
         }
 
+        /// <summary>
+        /// Tests that arity 3 normal event passes correct entity all three times
+        /// </summary>
         [Fact]
         public void Arity3_NormalEvent_PassesCorrectEntityAllThreeTimes()
         {
@@ -503,6 +572,9 @@ namespace Alis.Core.Ecs.Test
             Assert.All(entities, e => Assert.Equal(entity, e));
         }
 
+        /// <summary>
+        /// Tests that arity 3 no listeners does not throw
+        /// </summary>
         [Fact]
         public void Arity3_NoListeners_DoesNotThrow()
         {
@@ -520,6 +592,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that arity 3 generic event receives correct entity
+        /// </summary>
         [Fact]
         public void Arity3_GenericEvent_ReceivesCorrectEntity()
         {
@@ -546,6 +621,9 @@ namespace Alis.Core.Ecs.Test
         // Arity 4 — InvokePerEntityEvents<T1, T2, T3, T4>
         // ───────────────────────────────────────────────────────────────────
 
+        /// <summary>
+        /// Tests that arity 4 normal event fired for all four components
+        /// </summary>
         [Fact]
         public void Arity4_NormalEvent_FiredForAllFourComponents()
         {
@@ -569,6 +647,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Contains(Component<Transform>.Id, received);
         }
 
+        /// <summary>
+        /// Tests that arity 4 generic event not invoked when has generic event false
+        /// </summary>
         [Fact]
         public void Arity4_GenericEvent_NotInvoked_WhenHasGenericEventFalse()
         {
@@ -591,6 +672,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(0, counting.CallCount);
         }
 
+        /// <summary>
+        /// Tests that arity 4 generic event invoked four times when has generic event true
+        /// </summary>
         [Fact]
         public void Arity4_GenericEvent_InvokedFourTimes_WhenHasGenericEventTrue()
         {
@@ -617,6 +701,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Contains(typeof(Transform), capture.SeenTypes);
         }
 
+        /// <summary>
+        /// Tests that arity 4 no listeners does not throw
+        /// </summary>
         [Fact]
         public void Arity4_NoListeners_DoesNotThrow()
         {
@@ -635,6 +722,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that arity 4 normal event passes correct entity all four times
+        /// </summary>
         [Fact]
         public void Arity4_NormalEvent_PassesCorrectEntityAllFourTimes()
         {
@@ -659,6 +749,9 @@ namespace Alis.Core.Ecs.Test
         // Arity 5 — InvokePerEntityEvents<T1, T2, T3, T4, T5>
         // ───────────────────────────────────────────────────────────────────
 
+        /// <summary>
+        /// Tests that arity 5 normal event fired for all five components
+        /// </summary>
         [Fact]
         public void Arity5_NormalEvent_FiredForAllFiveComponents()
         {
@@ -685,6 +778,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Contains(Component<Damage>.Id, received);
         }
 
+        /// <summary>
+        /// Tests that arity 5 generic event not invoked when has generic event false
+        /// </summary>
         [Fact]
         public void Arity5_GenericEvent_NotInvoked_WhenHasGenericEventFalse()
         {
@@ -709,6 +805,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(0, counting.CallCount);
         }
 
+        /// <summary>
+        /// Tests that arity 5 generic event invoked five times when has generic event true
+        /// </summary>
         [Fact]
         public void Arity5_GenericEvent_InvokedFiveTimes_WhenHasGenericEventTrue()
         {
@@ -738,6 +837,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Contains(typeof(Damage), capture.SeenTypes);
         }
 
+        /// <summary>
+        /// Tests that arity 5 no listeners does not throw
+        /// </summary>
         [Fact]
         public void Arity5_NoListeners_DoesNotThrow()
         {
@@ -758,6 +860,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that arity 5 normal event passes correct entity all five times
+        /// </summary>
         [Fact]
         public void Arity5_NormalEvent_PassesCorrectEntityAllFiveTimes()
         {
@@ -784,6 +889,9 @@ namespace Alis.Core.Ecs.Test
         // Arity 6 — InvokePerEntityEvents<T1, T2, T3, T4, T5, T6>
         // ───────────────────────────────────────────────────────────────────
 
+        /// <summary>
+        /// Tests that arity 6 normal event fired for all six components
+        /// </summary>
         [Fact]
         public void Arity6_NormalEvent_FiredForAllSixComponents()
         {
@@ -812,6 +920,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Contains(Component<AnotherComponent>.Id, received);
         }
 
+        /// <summary>
+        /// Tests that arity 6 generic event not invoked when has generic event false
+        /// </summary>
         [Fact]
         public void Arity6_GenericEvent_NotInvoked_WhenHasGenericEventFalse()
         {
@@ -837,6 +948,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(0, counting.CallCount);
         }
 
+        /// <summary>
+        /// Tests that arity 6 generic event invoked six times when has generic event true
+        /// </summary>
         [Fact]
         public void Arity6_GenericEvent_InvokedSixTimes_WhenHasGenericEventTrue()
         {
@@ -864,6 +978,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Contains(typeof(AnotherComponent), capture.SeenTypes);
         }
 
+        /// <summary>
+        /// Tests that arity 6 no listeners does not throw
+        /// </summary>
         [Fact]
         public void Arity6_NoListeners_DoesNotThrow()
         {
@@ -889,6 +1006,9 @@ namespace Alis.Core.Ecs.Test
         // Arity 7 — InvokePerEntityEvents<T1, T2, T3, T4, T5, T6, T7>
         // ───────────────────────────────────────────────────────────────────
 
+        /// <summary>
+        /// Tests that arity 7 normal event fired for all seven components
+        /// </summary>
         [Fact]
         public void Arity7_NormalEvent_FiredForAllSevenComponents()
         {
@@ -919,6 +1039,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Contains(Component<AnotherComponent2>.Id, received);
         }
 
+        /// <summary>
+        /// Tests that arity 7 generic event not invoked when has generic event false
+        /// </summary>
         [Fact]
         public void Arity7_GenericEvent_NotInvoked_WhenHasGenericEventFalse()
         {
@@ -945,6 +1068,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(0, counting.CallCount);
         }
 
+        /// <summary>
+        /// Tests that arity 7 generic event invoked seven times when has generic event true
+        /// </summary>
         [Fact]
         public void Arity7_GenericEvent_InvokedSevenTimes_WhenHasGenericEventTrue()
         {
@@ -972,6 +1098,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Contains(typeof(AnotherComponent2), capture.SeenTypes);
         }
 
+        /// <summary>
+        /// Tests that arity 7 no listeners does not throw
+        /// </summary>
         [Fact]
         public void Arity7_NoListeners_DoesNotThrow()
         {
@@ -998,6 +1127,9 @@ namespace Alis.Core.Ecs.Test
         // Arity 8 — InvokePerEntityEvents<T1, T2, T3, T4, T5, T6, T7, T8>
         // ───────────────────────────────────────────────────────────────────
 
+        /// <summary>
+        /// Tests that arity 8 normal event fired for all eight components
+        /// </summary>
         [Fact]
         public void Arity8_NormalEvent_FiredForAllEightComponents()
         {
@@ -1030,6 +1162,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Contains(Component<Armor>.Id, received);
         }
 
+        /// <summary>
+        /// Tests that arity 8 generic event not invoked when has generic event false
+        /// </summary>
         [Fact]
         public void Arity8_GenericEvent_NotInvoked_WhenHasGenericEventFalse()
         {
@@ -1057,6 +1192,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(0, counting.CallCount);
         }
 
+        /// <summary>
+        /// Tests that arity 8 generic event invoked eight times when has generic event true
+        /// </summary>
         [Fact]
         public void Arity8_GenericEvent_InvokedEightTimes_WhenHasGenericEventTrue()
         {
@@ -1092,6 +1230,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Contains(typeof(Armor), capture.SeenTypes);
         }
 
+        /// <summary>
+        /// Tests that arity 8 normal event passes correct entity all eight times
+        /// </summary>
         [Fact]
         public void Arity8_NormalEvent_PassesCorrectEntityAllEightTimes()
         {
@@ -1117,6 +1258,9 @@ namespace Alis.Core.Ecs.Test
             Assert.All(entities, e => Assert.Equal(entity, e));
         }
 
+        /// <summary>
+        /// Tests that arity 8 no listeners does not throw
+        /// </summary>
         [Fact]
         public void Arity8_NoListeners_DoesNotThrow()
         {
@@ -1140,6 +1284,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that arity 8 multiple normal listeners all invoked
+        /// </summary>
         [Fact]
         public void Arity8_MultipleNormalListeners_AllInvoked()
         {
@@ -1170,6 +1317,10 @@ namespace Alis.Core.Ecs.Test
         // Cross-arity parametrized tests
         // ───────────────────────────────────────────────────────────────────
 
+        /// <summary>
+        /// Tests that arity 1 generic event presence correctly gated
+        /// </summary>
+        /// <param name="hasGenericEvent">The has generic event</param>
         [Theory]
         [InlineData(false)]
         [InlineData(true)]
@@ -1191,6 +1342,10 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(hasGenericEvent ? 1 : 0, counting.CallCount);
         }
 
+        /// <summary>
+        /// Tests that arity 2 generic event presence correctly gated
+        /// </summary>
+        /// <param name="hasGenericEvent">The has generic event</param>
         [Theory]
         [InlineData(false)]
         [InlineData(true)]
@@ -1213,6 +1368,10 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(hasGenericEvent ? 2 : 0, counting.CallCount);
         }
 
+        /// <summary>
+        /// Tests that arity 3 generic event presence correctly gated
+        /// </summary>
+        /// <param name="hasGenericEvent">The has generic event</param>
         [Theory]
         [InlineData(false)]
         [InlineData(true)]
@@ -1236,6 +1395,10 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(hasGenericEvent ? 3 : 0, counting.CallCount);
         }
 
+        /// <summary>
+        /// Tests that arity 4 generic event presence correctly gated
+        /// </summary>
+        /// <param name="hasGenericEvent">The has generic event</param>
         [Theory]
         [InlineData(false)]
         [InlineData(true)]
@@ -1261,6 +1424,10 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(hasGenericEvent ? 4 : 0, counting.CallCount);
         }
 
+        /// <summary>
+        /// Tests that arity 5 generic event presence correctly gated
+        /// </summary>
+        /// <param name="hasGenericEvent">The has generic event</param>
         [Theory]
         [InlineData(false)]
         [InlineData(true)]
@@ -1287,6 +1454,10 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(hasGenericEvent ? 5 : 0, counting.CallCount);
         }
 
+        /// <summary>
+        /// Tests that arity 6 generic event presence correctly gated
+        /// </summary>
+        /// <param name="hasGenericEvent">The has generic event</param>
         [Theory]
         [InlineData(false)]
         [InlineData(true)]
@@ -1314,6 +1485,10 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(hasGenericEvent ? 6 : 0, counting.CallCount);
         }
 
+        /// <summary>
+        /// Tests that arity 7 generic event presence correctly gated
+        /// </summary>
+        /// <param name="hasGenericEvent">The has generic event</param>
         [Theory]
         [InlineData(false)]
         [InlineData(true)]
@@ -1342,6 +1517,10 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(hasGenericEvent ? 7 : 0, counting.CallCount);
         }
 
+        /// <summary>
+        /// Tests that arity 8 generic event presence correctly gated
+        /// </summary>
+        /// <param name="hasGenericEvent">The has generic event</param>
         [Theory]
         [InlineData(false)]
         [InlineData(true)]
@@ -1375,6 +1554,9 @@ namespace Alis.Core.Ecs.Test
         // Integration tests via entity.OnComponentAdded / OnComponentAddedGeneric
         // ───────────────────────────────────────────────────────────────────
 
+        /// <summary>
+        /// Tests that integration arity 1 on component added fired when component added
+        /// </summary>
         [Fact]
         public void Integration_Arity1_OnComponentAdded_FiredWhenComponentAdded()
         {
@@ -1390,6 +1572,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Contains(typeof(Position), capture.SeenTypes);
         }
 
+        /// <summary>
+        /// Tests that integration arity 1 on component added generic fired when component added
+        /// </summary>
         [Fact]
         public void Integration_Arity1_OnComponentAddedGeneric_FiredWhenComponentAdded()
         {
@@ -1404,6 +1589,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Contains(typeof(Position), capture.SeenTypes);
         }
 
+        /// <summary>
+        /// Tests that integration on component added correct entity passed
+        /// </summary>
         [Fact]
         public void Integration_OnComponentAdded_CorrectEntityPassed()
         {
@@ -1419,6 +1607,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(entity, capture.SeenEntities[0]);
         }
 
+        /// <summary>
+        /// Tests that integration on component added generic multiple components all fired
+        /// </summary>
         [Fact]
         public void Integration_OnComponentAddedGeneric_MultipleComponents_AllFired()
         {
@@ -1435,6 +1626,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Contains(typeof(Health), capture.SeenTypes);
         }
 
+        /// <summary>
+        /// Tests that integration on component added fired correct number of times
+        /// </summary>
         [Fact]
         public void Integration_OnComponentAdded_FiredCorrectNumberOfTimes()
         {
@@ -1450,6 +1644,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(2, counting.CallCount);
         }
 
+        /// <summary>
+        /// Tests that integration unsubscribed handler not invoked
+        /// </summary>
         [Fact]
         public void Integration_UnsubscribedHandler_NotInvoked()
         {
@@ -1465,6 +1662,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(0, counting.CallCount);
         }
 
+        /// <summary>
+        /// Tests that integration on component removed fired when component removed
+        /// </summary>
         [Fact]
         public void Integration_OnComponentRemoved_FiredWhenComponentRemoved()
         {
@@ -1479,6 +1679,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Contains(typeof(Position), capture.SeenTypes);
         }
 
+        /// <summary>
+        /// Tests that integration multiple entity instances each receive own events
+        /// </summary>
         [Fact]
         public void Integration_MultipleEntityInstances_EachReceiveOwnEvents()
         {
@@ -1501,6 +1704,9 @@ namespace Alis.Core.Ecs.Test
             Assert.DoesNotContain(typeof(Position), capture2.SeenTypes);
         }
 
+        /// <summary>
+        /// Tests that integration on component added not fired for other entity
+        /// </summary>
         [Fact]
         public void Integration_OnComponentAdded_NotFiredForOtherEntity()
         {
@@ -1521,6 +1727,9 @@ namespace Alis.Core.Ecs.Test
         // NormalEvent fire order tests
         // ───────────────────────────────────────────────────────────────────
 
+        /// <summary>
+        /// Tests that arity 2 normal event component ids received in order t 1 then t 2
+        /// </summary>
         [Fact]
         public void Arity2_NormalEvent_ComponentIdsReceivedInOrder_T1_Then_T2()
         {
@@ -1539,6 +1748,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(Component<Health>.Id, received[1]);
         }
 
+        /// <summary>
+        /// Tests that arity 3 normal event component ids received in order
+        /// </summary>
         [Fact]
         public void Arity3_NormalEvent_ComponentIdsReceivedInOrder()
         {
@@ -1559,6 +1771,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(Component<Velocity>.Id, received[2]);
         }
 
+        /// <summary>
+        /// Tests that arity 4 normal event component ids received in order
+        /// </summary>
         [Fact]
         public void Arity4_NormalEvent_ComponentIdsReceivedInOrder()
         {
@@ -1581,6 +1796,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(Component<Transform>.Id, received[3]);
         }
 
+        /// <summary>
+        /// Tests that generic event invoked in order matching normal event arity 2
+        /// </summary>
         [Fact]
         public void GenericEvent_InvokedInOrderMatchingNormalEvent_Arity2()
         {
@@ -1609,8 +1827,17 @@ namespace Alis.Core.Ecs.Test
         /// <summary>Counts invocations without caring about type.</summary>
         private sealed class CountingGenericAction : IGenericAction<GameObject>
         {
+            /// <summary>
+            /// Gets or sets the value of the call count
+            /// </summary>
             public int CallCount { get; private set; }
 
+            /// <summary>
+            /// Invokes the param
+            /// </summary>
+            /// <typeparam name="T">The </typeparam>
+            /// <param name="param">The param</param>
+            /// <param name="type">The type</param>
             public void Invoke<T>(GameObject param, ref T type)
             {
                 CallCount++;
@@ -1620,10 +1847,25 @@ namespace Alis.Core.Ecs.Test
         /// <summary>Captures each unique type seen and total invocation count.</summary>
         private sealed class TypeCapturingAction : IGenericAction<GameObject>
         {
+            /// <summary>
+            /// Gets the value of the seen types
+            /// </summary>
             public HashSet<Type> SeenTypes { get; } = new HashSet<Type>();
+            /// <summary>
+            /// Gets the value of the invoked types
+            /// </summary>
             public List<Type> InvokedTypes { get; } = new List<Type>();
+            /// <summary>
+            /// Gets or sets the value of the total invocations
+            /// </summary>
             public int TotalInvocations { get; private set; }
 
+            /// <summary>
+            /// Invokes the param
+            /// </summary>
+            /// <typeparam name="T">The </typeparam>
+            /// <param name="param">The param</param>
+            /// <param name="type">The type</param>
             public void Invoke<T>(GameObject param, ref T type)
             {
                 TotalInvocations++;
@@ -1635,8 +1877,17 @@ namespace Alis.Core.Ecs.Test
         /// <summary>Captures the entities passed to generic event handlers.</summary>
         private sealed class EntityCapturingAction : IGenericAction<GameObject>
         {
+            /// <summary>
+            /// Gets the value of the seen entities
+            /// </summary>
             public List<GameObject> SeenEntities { get; } = new List<GameObject>();
 
+            /// <summary>
+            /// Invokes the param
+            /// </summary>
+            /// <typeparam name="T">The </typeparam>
+            /// <param name="param">The param</param>
+            /// <param name="type">The type</param>
             public void Invoke<T>(GameObject param, ref T type)
             {
                 SeenEntities.Add(param);
@@ -1646,6 +1897,12 @@ namespace Alis.Core.Ecs.Test
         /// <summary>Mutates Position components to X=99, Y=99 to verify ref pass-through.</summary>
         private sealed class MutatingPositionAction : IGenericAction<GameObject>
         {
+            /// <summary>
+            /// Invokes the param
+            /// </summary>
+            /// <typeparam name="T">The </typeparam>
+            /// <param name="param">The param</param>
+            /// <param name="type">The type</param>
             public void Invoke<T>(GameObject param, ref T type)
             {
                 if (type is Position)
