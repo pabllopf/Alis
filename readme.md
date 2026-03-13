@@ -305,7 +305,7 @@ socio-economic status, nationality, personal appearance, race, religion, or sexu
 
 |                                                                                                                                           | 
 |-------------------------------------------------------------------------------------------------------------------------------------------|
-| ![](https://avatars.githubusercontent.com/u/48176121?v=4&s=200)<br>**Pablo Perdomo Falcón**<br>([@pabllopf](https://github.com/pabllopf)) | 
+| ![](https://avatars.githubusercontent.com/u/48176121?v=4&s=200)**Pablo Perdomo Falcón**([@pabllopf](https://github.com/pabllopf)) | 
 
 ---
 
@@ -313,8 +313,8 @@ socio-economic status, nationality, personal appearance, race, religion, or sexu
 
 | | | | |
 |---|---|---|---|
-| ![](https://avatars.githubusercontent.com/u/43152062?v=4)<br>**Raúl Lozano Ponce**<br>([@RaulLozanoPonce](https://github.com/RaulLozanoPonce)) | ![](https://avatars.githubusercontent.com/u/45520663?v=4)<br>**Juan Ángel Trujillo Jiménez**<br>([@cannt](https://github.com/cannt)) | ![](https://avatars.githubusercontent.com/u/55676590?v=4)<br>**Christian García**<br>([@Chgv99](https://github.com/Chgv99)) | ![](https://avatars.githubusercontent.com/u/62963416?v=4)<br>**RicardoVillarta**<br>([@RicardoVillarta](https://github.com/RicardoVillarta)) |
-| ![](https://avatars.githubusercontent.com/u/75950686?v=4)<br>**Gabriel**<br>([@GabrielRT01](https://github.com/GabrielRT01)) | ![](https://avatars.githubusercontent.com/u/82670532?v=4)<br>**Pedro D.GR**<br>([@SPEEDCROW98](https://github.com/SPEEDCROW98)) | ![](https://avatars.githubusercontent.com/u/82757764?v=4)<br>**Claudia2000pf**<br>([@Claudia2000pf](https://github.com/Claudia2000pf)) | ![](https://avatars.githubusercontent.com/u/82760316?v=4)<br>**Carlos**<br>([@suarez0965](https://github.com/suarez0965)) |
+| ![](https://avatars.githubusercontent.com/u/43152062?v=4)**Raúl Lozano Ponce**([@RaulLozanoPonce](https://github.com/RaulLozanoPonce)) | ![](https://avatars.githubusercontent.com/u/45520663?v=4)**Juan Ángel Trujillo Jiménez**([@cannt](https://github.com/cannt)) | ![](https://avatars.githubusercontent.com/u/55676590?v=4)**Christian García**([@Chgv99](https://github.com/Chgv99)) | ![](https://avatars.githubusercontent.com/u/62963416?v=4)**RicardoVillarta**([@RicardoVillarta](https://github.com/RicardoVillarta)) |
+| ![](https://avatars.githubusercontent.com/u/75950686?v=4)**Gabriel**([@GabrielRT01](https://github.com/GabrielRT01)) | ![](https://avatars.githubusercontent.com/u/82670532?v=4)**Pedro D.GR**([@SPEEDCROW98](https://github.com/SPEEDCROW98)) | ![](https://avatars.githubusercontent.com/u/82757764?v=4)**Claudia2000pf**([@Claudia2000pf](https://github.com/Claudia2000pf)) | ![](https://avatars.githubusercontent.com/u/82760316?v=4)**Carlos**([@suarez0965](https://github.com/suarez0965)) |
 
 
 
