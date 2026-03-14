@@ -565,6 +565,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "aspect", "aspect", "{1D4E99A6-2564-4856-A3E1-330AF26E02A0}"
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\[ALIS][CORE][ASPECT][SONARCLOUD].yml = .github\workflows\[ALIS][CORE][ASPECT][SONARCLOUD].yml
+		.github\workflows\[ALIS][CORE][ASPECT][DATA][SONARCLOUD].yml = .github\workflows\[ALIS][CORE][ASPECT][DATA][SONARCLOUD].yml
+		.github\workflows\[ALIS][CORE][ASPECT][FLUENT][SONARCLOUD].yml = .github\workflows\[ALIS][CORE][ASPECT][FLUENT][SONARCLOUD].yml
+		.github\workflows\[ALIS][CORE][ASPECT][LOGGING][SONARCLOUD].yml = .github\workflows\[ALIS][CORE][ASPECT][LOGGING][SONARCLOUD].yml
+		.github\workflows\[ALIS][CORE][ASPECT][MATH][SONARCLOUD].yml = .github\workflows\[ALIS][CORE][ASPECT][MATH][SONARCLOUD].yml
+		.github\workflows\[ALIS][CORE][ASPECT][TIME][SONARCLOUD].yml = .github\workflows\[ALIS][CORE][ASPECT][TIME][SONARCLOUD].yml
+		.github\workflows\[ALIS][CORE][ASPECT][MEMORY][SONARCLOUD].yml = .github\workflows\[ALIS][CORE][ASPECT][MEMORY][SONARCLOUD].yml
 	EndProjectSection
 EndProject
 Global
