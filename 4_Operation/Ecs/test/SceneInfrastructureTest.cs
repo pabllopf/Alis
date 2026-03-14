@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Core.Ecs.Kernel;
+using Alis.Core.Ecs.Kernel.Archetypes;
 using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
@@ -202,6 +203,87 @@ namespace Alis.Core.Ecs.Test
 
             scene.ExitDisallowState(null, false);
             Assert.True(scene.AllowStructualChanges);
+        }
+
+        /// <summary>
+        /// Tests that move entity to archetype iso keeps moved entity component values.
+        /// </summary>
+        [Fact]
+        public void Scene_MoveEntityToArchetypeIso_PreservesMovedEntityComponents()
+        {
+            using Scene scene = new Scene();
+
+            Archetype destination = CreateDestinationArchetype(scene);
+
+            GameObject entity = scene.Create(
+                new Position {X = 10, Y = 20},
+                new Velocity {X = 3, Y = 4}
+            );
+
+            ref GameObjectLocation lookup = ref scene.EntityTable.UnsafeIndexNoResize(entity.EntityID);
+
+            scene.MoveEntityToArchetypeIso(entity, ref lookup, destination);
+
+            Position pos = entity.Get<Position>();
+            Velocity vel = entity.Get<Velocity>();
+
+            Assert.True(entity.IsAlive);
+            Assert.Equal(10, pos.X);
+            Assert.Equal(20, pos.Y);
+            Assert.Equal(3, vel.X);
+            Assert.Equal(4, vel.Y);
+            Assert.True(entity.Has<Health>());
+            Assert.Same(destination, lookup.Archetype);
+        }
+
+        /// <summary>
+        /// Tests that move entity to archetype iso keeps remaining source entities valid after compaction.
+        /// </summary>
+        [Fact]
+        public void Scene_MoveEntityToArchetypeIso_KeepsOtherEntitiesValidAfterSourceCompaction()
+        {
+            using Scene scene = new Scene();
+            Archetype destination = CreateDestinationArchetype(scene);
+
+            GameObject moved = scene.Create(
+                new Position {X = 1, Y = 2},
+                new Velocity {X = 5, Y = 6}
+            );
+
+            GameObject stays = scene.Create(
+                new Position {X = 100, Y = 200},
+                new Velocity {X = 7, Y = 8}
+            );
+
+            ref GameObjectLocation movedLookup = ref scene.EntityTable.UnsafeIndexNoResize(moved.EntityID);
+            Archetype sourceArchetype = movedLookup.Archetype;
+
+            scene.MoveEntityToArchetypeIso(moved, ref movedLookup, destination);
+
+            // Accessing the second entity validates that source archetype compaction updated its location correctly.
+            Position staysPos = stays.Get<Position>();
+            Velocity staysVel = stays.Get<Velocity>();
+
+            Assert.True(stays.IsAlive);
+            Assert.Equal(100, staysPos.X);
+            Assert.Equal(200, staysPos.Y);
+            Assert.Equal(7, staysVel.X);
+            Assert.Equal(8, staysVel.Y);
+            Assert.Same(sourceArchetype, scene.EntityTable.UnsafeIndexNoResize(stays.EntityID).Archetype);
+            Assert.Same(destination, scene.EntityTable.UnsafeIndexNoResize(moved.EntityID).Archetype);
+        }
+
+        private static Archetype CreateDestinationArchetype(Scene scene)
+        {
+            GameObject seed = scene.Create(
+                new Position {X = -1, Y = -1},
+                new Velocity {X = -1, Y = -1},
+                new Health {Value = -1}
+            );
+
+            Archetype destination = scene.EntityTable.UnsafeIndexNoResize(seed.EntityID).Archetype;
+            seed.Delete();
+            return destination;
         }
     }
 }
