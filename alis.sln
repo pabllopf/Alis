@@ -551,6 +551,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sonar", "sonar", "{FFC9978E
 		.github\workflows\[ALIS][SONARCLOUD].yml = .github\workflows\[ALIS][SONARCLOUD].yml
 		.github\workflows\[ALIS][CORE][SONARCLOUD].yml = .github\workflows\[ALIS][CORE][SONARCLOUD].yml
 		.github\workflows\[ALIS][CORE][ASPECT][SONARCLOUD].yml = .github\workflows\[ALIS][CORE][ASPECT][SONARCLOUD].yml
+		.github\workflows\[ALIS][CORE][ECS][SONARCLOUD].yml = .github\workflows\[ALIS][CORE][ECS][SONARCLOUD].yml
 	EndProjectSection
 EndProject
 Global

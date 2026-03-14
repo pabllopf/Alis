@@ -21,7 +21,20 @@ namespace Alis.Core.Ecs.Sample.Samples
             new EntityApiSample(),
             new AddAndRemoveComponentSample(),
             new EntityLifecycleSample(),
-            new MultiComponentQuerySample()
+            new MultiComponentQuerySample(),
+            new SceneEventsSample(),
+            new EntityEventsSample(),
+            new NotRuleQuerySample(),
+            new EnumerateWithEntitiesSample(),
+            new EnumerateEntitiesOnlySample(),
+            new ChunkEnumerationSample(),
+            new CreateManySample(),
+            new EnsureCapacitySample(),
+            new CommandBufferPlaybackSample(),
+            new SetByTypeSample(),
+            new BulkDeleteByQuerySample(),
+            new EmptyEntitySample(),
+            new EntityTypeInspectionSample()
         ];
     }
 }

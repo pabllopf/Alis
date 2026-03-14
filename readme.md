@@ -196,7 +196,24 @@ The following table contains all the available packages, their purpose, and thei
 | **Alis.Core** | ![Nuget](https://img.shields.io/nuget/v/alis.core?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis.core?label=nuget&color=green) | Core library for Alis. |
 
 
-### 🔷 Alis.Core.Submodules
+### 🔷 Alis.Core.Ecs
+
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-ecs&metric=coverage)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-ecs)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-ecs&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-ecs)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-ecs&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-ecs)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-ecs&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-ecs)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-ecs&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-ecs)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-ecs&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-ecs)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-ecs&metric=bugs)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-ecs)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-ecs&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-ecs)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-ecs&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-ecs)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-ecs&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-ecs)
+
+| Package Name          | Version                                                                        | Downloads                                                                            | Description           |
+| --------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | --------------------- |
+| **Alis.Core.Ecs**     | ![Nuget](https://img.shields.io/nuget/v/alis.core.ecs?label=&color=green)     | ![Nuget](https://img.shields.io/nuget/dt/alis.core.ecs?label=nuget&color=green)     | ECS module.           |
+
+
 
 | Package Name          | Version                                                                        | Downloads                                                                            | Description           |
 | --------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | --------------------- |
@@ -204,8 +221,6 @@ The following table contains all the available packages, their purpose, and thei
 | **Alis.Core.Audio**   | ![Nuget](https://img.shields.io/nuget/v/alis.core.audio?label=&color=green)   | ![Nuget](https://img.shields.io/nuget/dt/alis.core.audio?label=nuget&color=green)   | Audio module.         |
 | **Alis.Core.Physic**  | ![Nuget](https://img.shields.io/nuget/v/alis.core.physic?label=&color=green)  | ![Nuget](https://img.shields.io/nuget/dt/alis.core.physic?label=nuget&color=green)  | Physics module.       |
 | **Alis.Core.Ecs**     | ![Nuget](https://img.shields.io/nuget/v/alis.core.ecs?label=&color=green)     | ![Nuget](https://img.shields.io/nuget/dt/alis.core.ecs?label=nuget&color=green)     | ECS module.           |
-
-
 
 
 ## 🔷 Alis.Core.Aspect
@@ -237,11 +252,6 @@ The following table contains all the available packages, their purpose, and thei
 | **Alis.Core.Aspect.Math**    | ![Nuget](https://img.shields.io/nuget/v/alis.core.aspect.math?label=&color=green)    | ![Nuget](https://img.shields.io/nuget/dt/alis.core.aspect.math?label=nuget&color=green)    | Math AOP utilities.   |
 | **Alis.Core.Aspect.Memory**  | ![Nuget](https://img.shields.io/nuget/v/alis.core.aspect.memory?label=&color=green)  | ![Nuget](https://img.shields.io/nuget/dt/alis.core.aspect.memory?label=nuget&color=green)  | Memory AOP utilities. |
 | **Alis.Core.Aspect.Time**    | ![Nuget](https://img.shields.io/nuget/v/alis.core.aspect.time?label=&color=green)    | ![Nuget](https://img.shields.io/nuget/dt/alis.core.aspect.time?label=nuget&color=green)    | Time AOP utilities.   |
-
-
-
-
-
 
 
 ## 🔷 Main — Alis.Extensions
