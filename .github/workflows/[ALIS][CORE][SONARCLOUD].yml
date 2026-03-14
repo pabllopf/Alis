@@ -43,5 +43,5 @@ jobs:
           
           dotnet sonarscanner begin /k:"pabllopf_alis-core" /o:"pabllopf" /d:sonar.scanner.scanAll=false /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" /d:sonar.token="${{ secrets.SONAR_TOKEN_ALIS_CORE }}" /d:sonar.scanner.skipJreProvisioning=false /d:sonar.language=cs /d:sonar.dotnet.version=8.0 /d:sonar.verbose=false /d:sonar.cs.opencover.reportsPaths="./.test/**/*.opencover.xml"
           dotnet build -c Debug -f net8.0 ./3_Structuration/Core/src/Alis.Core.csproj
-          dotnet test --no-build -m:4 -f net8.0 -c Debug ./3_Structuration/Core/test/Alis.Core.Test.csproj --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
+          dotnet test --no-build -m:4 -f net8.0 -c Debug ./alis_design.sln --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
           dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN_ALIS_CORE }}"
