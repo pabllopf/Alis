@@ -42,5 +42,5 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
     ///     Pack = 4 for balanced alignment with mixed types
     /// </remarks>
     [StructLayout(LayoutKind.Sequential, Pack = 4)]
-    public record struct ArchetypeData(GameObjectType Id, FastImmutableArray<ComponentId> ComponentTypes);
+    public record struct ArchetypeData(ArchetypeID Id, FastImmutableArray<ComponentId> ComponentTypes);
 }
