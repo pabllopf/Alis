@@ -13,6 +13,9 @@
 /**/.test/
 /**/.temp/
 
+Release/
+Debug/
+
 /**/.vs/**
 /**/.nuget/**
 /**/.vscode/**
