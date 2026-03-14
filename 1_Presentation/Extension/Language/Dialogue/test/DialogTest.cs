@@ -81,5 +81,32 @@ namespace Alis.Extension.Language.Dialogue.Test
             Assert.Equal(text, option.Text);
             Assert.Equal(action, option.Action);
         }
+
+        /// <summary>
+        ///     Tests that parent dialog id can be assigned and read
+        /// </summary>
+        [Fact]
+        public void ParentDialogId_SetterGetter_ShouldPersistValue()
+        {
+            Dialog dialog = new Dialog("child", "Child dialog")
+            {
+                ParentDialogId = "root"
+            };
+
+            Assert.Equal("root", dialog.ParentDialogId);
+        }
+
+        /// <summary>
+        ///     Tests that adding a null option does not change the options collection
+        /// </summary>
+        [Fact]
+        public void AddOption_WithNull_ShouldNotModifyOptions()
+        {
+            Dialog dialog = new Dialog("testId", "Test Text");
+
+            dialog.AddOption(null);
+
+            Assert.Empty(dialog.Options);
+        }
     }
 }

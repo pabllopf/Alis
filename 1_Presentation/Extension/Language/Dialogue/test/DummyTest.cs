@@ -32,17 +32,34 @@ using Xunit;
 namespace Alis.Extension.Language.Dialogue.Test
 {
     /// <summary>
-    ///     The dummy test class
+    ///     Additional guard-clause tests for dialog lookups
     /// </summary>
-    public class DummyTest
+    public class DialogManagerLookupTest
     {
         /// <summary>
-        ///     Tests that default test
+        ///     Tests that GetDialog returns null for null ids
         /// </summary>
         [Fact]
-        public void DefaultTest()
+        public void GetDialog_WithNullId_ShouldReturnNull()
         {
-            Assert.True(true);
+            DialogManager manager = new DialogManager();
+
+            Dialog result = manager.GetDialog(null);
+
+            Assert.Null(result);
+        }
+
+        /// <summary>
+        ///     Tests that GetDialog returns null for whitespace ids
+        /// </summary>
+        [Fact]
+        public void GetDialog_WithWhitespaceId_ShouldReturnNull()
+        {
+            DialogManager manager = new DialogManager();
+
+            Dialog result = manager.GetDialog("   ");
+
+            Assert.Null(result);
         }
     }
 }

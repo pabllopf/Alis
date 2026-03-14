@@ -108,6 +108,42 @@ namespace Alis.Extension.Language.Translator.Test
         }
 
         /// <summary>
+        ///     Tests Russian teen-number edge cases that map to the many form
+        /// </summary>
+        [Theory]
+        [InlineData(11)]
+        [InlineData(12)]
+        [InlineData(19)]
+        [InlineData(111)]
+        public void GetPluralForm_RussianTeenValues_ShouldReturnMany(int quantity)
+        {
+            PluralizationEngine engine = new PluralizationEngine();
+
+            int form = engine.GetPluralForm("ru", quantity);
+
+            Assert.Equal(2, form);
+        }
+
+        /// <summary>
+        ///     Tests Polish pluralization branches including singular, few and many forms
+        /// </summary>
+        [Theory]
+        [InlineData(1, 0)]
+        [InlineData(2, 1)]
+        [InlineData(4, 1)]
+        [InlineData(5, 2)]
+        [InlineData(12, 1)]
+        [InlineData(0, 2)]
+        public void GetPluralForm_Polish_ShouldReturnExpectedForm(int quantity, int expected)
+        {
+            PluralizationEngine engine = new PluralizationEngine();
+
+            int form = engine.GetPluralForm("pl", quantity);
+
+            Assert.Equal(expected, form);
+        }
+
+        /// <summary>
         ///     Tests that Japanese has no pluralization
         /// </summary>
         [Theory, InlineData(0), InlineData(1), InlineData(100)]
