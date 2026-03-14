@@ -51,27 +51,27 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The deferred gameObject operation recursion limit
         /// </summary>
-        private const int DeferredEntityOperationRecursionLimit = 200;
+        internal  const int DeferredEntityOperationRecursionLimit = 200;
 
         /// <summary>
         ///     The next scene id
         /// </summary>
-        private static ushort _nextWorldId = 1;
+        internal  static ushort _nextWorldId = 1;
 
         /// <summary>
         ///     The shared countdown
         /// </summary>
-        private readonly CountdownEvent _sharedCountdown = new CountdownEvent(0);
+        internal  readonly CountdownEvent _sharedCountdown = new CountdownEvent(0);
 
         /// <summary>
         ///     The single component updates
         /// </summary>
-        private readonly Dictionary<ComponentId, SingleComponentUpdateFilter> _singleComponentUpdates = [];
+        internal  readonly Dictionary<ComponentId, SingleComponentUpdateFilter> _singleComponentUpdates = [];
 
         /// <summary>
         ///     The updates by attributes
         /// </summary>
-        private readonly Dictionary<Type, SceneUpdateFilter> _updatesByAttributes = [];
+        internal  readonly Dictionary<Type, SceneUpdateFilter> _updatesByAttributes = [];
 
         /// <summary>
         ///     The default archetype
@@ -94,12 +94,12 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The allow structural changes
         /// </summary>
-        private int _allowStructuralChanges = -1;
+        internal  int _allowStructuralChanges = -1;
 
         /// <summary>
         ///     The create
         /// </summary>
-        private FastestStack<ArchetypeDeferredUpdateRecord> _altDeferredCreationArchetypes =
+        internal  FastestStack<ArchetypeDeferredUpdateRecord> _altDeferredCreationArchetypes =
             FastestStack<ArchetypeDeferredUpdateRecord>.Create(4);
 
         //these lookups exists for programmical api optimization
@@ -324,7 +324,7 @@ namespace Alis.Core.Ecs
         /// <param name="e">The event</param>
         /// <param name="action">The action</param>
         /// <param name="flag">The flag</param>
-        private void AddEvent<T>(ref Event<T> e, Action<GameObject, T> action, GameObjectFlags flag)
+        internal void AddEvent<T>(ref Event<T> e, Action<GameObject, T> action, GameObjectFlags flag)
         {
             e.Add(action);
             WorldEventFlags |= flag;
@@ -337,7 +337,7 @@ namespace Alis.Core.Ecs
         /// <param name="e">The event</param>
         /// <param name="action">The action</param>
         /// <param name="flag">The flag</param>
-        private void RemoveEvent<T>(ref Event<T> e, Action<GameObject, T> action, GameObjectFlags flag)
+        internal void RemoveEvent<T>(ref Event<T> e, Action<GameObject, T> action, GameObjectFlags flag)
         {
             e.Remove(action);
             if (!e.HasListeners)
@@ -577,7 +577,7 @@ namespace Alis.Core.Ecs
         ///     Resolves the update deferred creation entities using the specified filter used
         /// </summary>
         /// <param name="filterUsed">The filter used</param>
-        private void ResolveUpdateDeferredCreationEntities(IComponentUpdateFilter filterUsed)
+        internal void ResolveUpdateDeferredCreationEntities(IComponentUpdateFilter filterUsed)
         {
             Span<ArchetypeDeferredUpdateRecord> resolveArchetypes = DeferredCreationArchetypes.AsSpan();
 
@@ -1892,7 +1892,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         /// <param name="gameObject">The gameObject</param>
         /// <param name="gameObjectLocation">The gameObject location</param>
-        private void InvokeDeleteEvents(GameObject gameObject, GameObjectLocation gameObjectLocation)
+        internal void InvokeDeleteEvents(GameObject gameObject, GameObjectLocation gameObjectLocation)
         {
             EntityDeletedEvent.Invoke(gameObject);
             if (gameObjectLocation.HasEvent(GameObjectFlags.OnDelete))
