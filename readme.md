@@ -179,11 +179,6 @@ The following table contains all the available packages, their purpose, and thei
 
 ## 🔷 Alis.Core
 
-| Package Name  | Version                                                                | Downloads                                                                    | Description            |
-| ------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------- |
-| **Alis.Core** | ![Nuget](https://img.shields.io/nuget/v/alis.core?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis.core?label=nuget&color=green) | Core library for Alis. |
-
-
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core&metric=coverage)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core)
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core)
@@ -194,6 +189,13 @@ The following table contains all the available packages, their purpose, and thei
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core)
 [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core)
+
+
+| Package Name  | Version                                                                | Downloads                                                                    | Description            |
+| ------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------- |
+| **Alis.Core** | ![Nuget](https://img.shields.io/nuget/v/alis.core?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis.core?label=nuget&color=green) | Core library for Alis. |
+
+
 
 
 ## 🔷 Alis.Core.Aspect
