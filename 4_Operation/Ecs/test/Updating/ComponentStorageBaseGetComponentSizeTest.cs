@@ -55,8 +55,17 @@ namespace Alis.Core.Ecs.Test.Updating
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
         private struct ThreeByteStruct
         {
+            /// <summary>
+            /// The 
+            /// </summary>
             public byte A;
+            /// <summary>
+            /// The 
+            /// </summary>
             public byte B;
+            /// <summary>
+            /// The 
+            /// </summary>
             public byte C;
         }
 
@@ -64,8 +73,17 @@ namespace Alis.Core.Ecs.Test.Updating
         [StructLayout(LayoutKind.Sequential)]
         private struct TwelveByteStruct
         {
+            /// <summary>
+            /// The 
+            /// </summary>
             public int A;
+            /// <summary>
+            /// The 
+            /// </summary>
             public int B;
+            /// <summary>
+            /// The 
+            /// </summary>
             public int C;
         }
 
@@ -73,7 +91,13 @@ namespace Alis.Core.Ecs.Test.Updating
         [StructLayout(LayoutKind.Sequential)]
         private struct TwoDecimalsStruct
         {
+            /// <summary>
+            /// The 
+            /// </summary>
             public decimal A;
+            /// <summary>
+            /// The 
+            /// </summary>
             public decimal B;
         }
 
@@ -81,6 +105,9 @@ namespace Alis.Core.Ecs.Test.Updating
         [StructLayout(LayoutKind.Sequential)]
         private struct StructContainingRef
         {
+            /// <summary>
+            /// The text
+            /// </summary>
             public string Text;
         }
 
@@ -88,6 +115,9 @@ namespace Alis.Core.Ecs.Test.Updating
         [StructLayout(LayoutKind.Sequential)]
         private struct TwoByteStruct
         {
+            /// <summary>
+            /// The value
+            /// </summary>
             public short Value;
         }
 
@@ -95,7 +125,13 @@ namespace Alis.Core.Ecs.Test.Updating
         [StructLayout(LayoutKind.Sequential)]
         private struct FourByteStruct
         {
+            /// <summary>
+            /// The 
+            /// </summary>
             public short A;
+            /// <summary>
+            /// The 
+            /// </summary>
             public short B;
         }
 
@@ -103,7 +139,13 @@ namespace Alis.Core.Ecs.Test.Updating
         [StructLayout(LayoutKind.Sequential)]
         private struct EightByteStruct
         {
+            /// <summary>
+            /// The 
+            /// </summary>
             public int A;
+            /// <summary>
+            /// The 
+            /// </summary>
             public int B;
         }
 
@@ -111,9 +153,21 @@ namespace Alis.Core.Ecs.Test.Updating
         [StructLayout(LayoutKind.Sequential)]
         private struct SixteenByteStruct
         {
+            /// <summary>
+            /// The 
+            /// </summary>
             public int A;
+            /// <summary>
+            /// The 
+            /// </summary>
             public int B;
+            /// <summary>
+            /// The 
+            /// </summary>
             public int C;
+            /// <summary>
+            /// The 
+            /// </summary>
             public int D;
         }
 

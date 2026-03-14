@@ -10,6 +10,9 @@ namespace Alis.Core.Ecs.Test
     /// </summary>
     public class GameObjectMissingCoverageTest
     {
+        /// <summary>
+        /// Tests that game object try get core when component exists returns writable reference
+        /// </summary>
         [Fact]
         public void GameObject_TryGetCore_WhenComponentExists_ReturnsWritableReference()
         {
@@ -25,6 +28,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(20, entity.Get<Position>().Y);
         }
 
+        /// <summary>
+        /// Tests that game object try get core when component missing returns exists false
+        /// </summary>
         [Fact]
         public void GameObject_TryGetCore_WhenComponentMissing_ReturnsExistsFalse()
         {
@@ -36,6 +42,9 @@ namespace Alis.Core.Ecs.Test
             Assert.False(exists);
         }
 
+        /// <summary>
+        /// Tests that game object try get core when entity deleted returns exists false
+        /// </summary>
         [Fact]
         public void GameObject_TryGetCore_WhenEntityDeleted_ReturnsExistsFalse()
         {
@@ -48,6 +57,9 @@ namespace Alis.Core.Ecs.Test
             Assert.False(exists);
         }
 
+        /// <summary>
+        /// Tests that game object throw entity is dead throws invalid operation exception with expected message
+        /// </summary>
         [Fact]
         public void GameObject_ThrowEntityIsDead_ThrowsInvalidOperationExceptionWithExpectedMessage()
         {
@@ -56,6 +68,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(GameObject.EntityIsDeadMessage, ex.Message);
         }
 
+        /// <summary>
+        /// Tests that game object initalize event record with on delete handler then delete throws key not found exception current behavior
+        /// </summary>
         [Fact]
         public void GameObject_InitalizeEventRecord_WithOnDeleteHandler_ThenDelete_ThrowsKeyNotFoundException_CurrentBehavior()
         {
@@ -70,6 +85,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Throws<System.Collections.Generic.KeyNotFoundException>(() => entity.Delete());
         }
 
+        /// <summary>
+        /// Tests that game object unsubscribe event when initialized directly without lookup throws key not found exception current behavior
+        /// </summary>
         [Fact]
         public void GameObject_UnsubscribeEvent_WhenInitializedDirectlyWithoutLookup_ThrowsKeyNotFoundException_CurrentBehavior()
         {
@@ -84,6 +102,9 @@ namespace Alis.Core.Ecs.Test
                 () => entity.UnsubscribeEvent(handler, GameObjectFlags.OnDelete));
         }
 
+        /// <summary>
+        /// Tests that game object unsubscribe event with null or dead entity does not throw
+        /// </summary>
         [Fact]
         public void GameObject_UnsubscribeEvent_WithNullOrDeadEntity_DoesNotThrow()
         {
@@ -99,6 +120,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Null(exDead);
         }
 
+        /// <summary>
+        /// Tests that game object initalize event record with null or dead entity does not throw
+        /// </summary>
         [Fact]
         public void GameObject_InitalizeEventRecord_WithNullOrDeadEntity_DoesNotThrow()
         {
@@ -114,6 +138,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Null(exDead);
         }
 
+        /// <summary>
+        /// Tests that game object on component generic properties on dead entity return null
+        /// </summary>
         [Fact]
         public void GameObject_OnComponentGenericProperties_OnDeadEntity_ReturnNull()
         {

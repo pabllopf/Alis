@@ -273,6 +273,11 @@ namespace Alis.Core.Ecs.Test
             Assert.Same(destination, scene.EntityTable.UnsafeIndexNoResize(moved.EntityID).Archetype);
         }
 
+        /// <summary>
+        /// Creates the destination archetype using the specified scene
+        /// </summary>
+        /// <param name="scene">The scene</param>
+        /// <returns>The destination</returns>
         private static Archetype CreateDestinationArchetype(Scene scene)
         {
             GameObject seed = scene.Create(

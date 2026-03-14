@@ -14,6 +14,9 @@ namespace Alis.Core.Ecs.Test
     /// </summary>
     public partial class SceneApiCoverageTest
     {
+        /// <summary>
+        /// Tests that scene shared countdown returns stable instance
+        /// </summary>
         [Fact]
         public void Scene_SharedCountdown_ReturnsStableInstance()
         {
@@ -23,6 +26,9 @@ namespace Alis.Core.Ecs.Test
             Assert.NotNull(scene.SharedCountdown);
         }
 
+        /// <summary>
+        /// Tests that scene entity created event toggles world event flag
+        /// </summary>
         [Fact]
         public void Scene_EntityCreatedEvent_TogglesWorldEventFlag()
         {
@@ -36,6 +42,9 @@ namespace Alis.Core.Ecs.Test
             Assert.True((scene.WorldEventFlags & GameObjectFlags.WorldCreate) == 0);
         }
 
+        /// <summary>
+        /// Tests that scene entity deleted event toggles world event flag
+        /// </summary>
         [Fact]
         public void Scene_EntityDeletedEvent_TogglesWorldEventFlag()
         {
@@ -49,6 +58,9 @@ namespace Alis.Core.Ecs.Test
             Assert.True((scene.WorldEventFlags & GameObjectFlags.OnDelete) == 0);
         }
 
+        /// <summary>
+        /// Tests that scene component added event toggles world event flag
+        /// </summary>
         [Fact]
         public void Scene_ComponentAddedEvent_TogglesWorldEventFlag()
         {
@@ -62,6 +74,9 @@ namespace Alis.Core.Ecs.Test
             Assert.True((scene.WorldEventFlags & GameObjectFlags.AddComp) == 0);
         }
 
+        /// <summary>
+        /// Tests that scene component removed event toggles world event flag
+        /// </summary>
         [Fact]
         public void Scene_ComponentRemovedEvent_TogglesWorldEventFlag()
         {
@@ -75,6 +90,9 @@ namespace Alis.Core.Ecs.Test
             Assert.True((scene.WorldEventFlags & GameObjectFlags.RemoveComp) == 0);
         }
 
+        /// <summary>
+        /// Tests that scene update generic attribute updates only components registered for attribute
+        /// </summary>
         [Fact]
         public void Scene_UpdateGenericAttribute_UpdatesOnlyComponentsRegisteredForAttribute()
         {
@@ -88,6 +106,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(1, tagged.Get<UpdateComponent>().CallCount);
         }
 
+        /// <summary>
+        /// Tests that scene update by type updates components registered for attribute
+        /// </summary>
         [Fact]
         public void Scene_UpdateByType_UpdatesComponentsRegisteredForAttribute()
         {
@@ -102,6 +123,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(2, tagged.Get<UpdateComponent>().CallCount);
         }
 
+        /// <summary>
+        /// Tests that scene update component updates only specified component type
+        /// </summary>
         [Fact]
         public void Scene_UpdateComponent_UpdatesOnlySpecifiedComponentType()
         {
@@ -120,6 +144,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(0, nonTarget.Get<Update3Component>().CallCount);
         }
 
+        /// <summary>
+        /// Tests that scene ensure capacity with zero or negative does nothing
+        /// </summary>
         [Fact]
         public void Scene_EnsureCapacity_WithZeroOrNegative_DoesNothing()
         {
@@ -133,6 +160,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(before, scene.EntityCount);
         }
 
+        /// <summary>
+        /// Tests that scene ensure capacity core with non positive count throws argument out of range exception
+        /// </summary>
         [Fact]
         public void Scene_EnsureCapacityCore_WithNonPositiveCount_ThrowsArgumentOutOfRangeException()
         {
@@ -142,6 +172,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Throws<ArgumentOutOfRangeException>(() => scene.EnsureCapacityCore(scene.DefaultArchetype, -1));
         }
 
+        /// <summary>
+        /// Tests that scene ensure capacity core with positive count does not throw
+        /// </summary>
         [Fact]
         public void Scene_EnsureCapacityCore_WithPositiveCount_DoesNotThrow()
         {
@@ -152,6 +185,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that scene create query and create query from span filter expected entities
+        /// </summary>
         [Fact]
         public void Scene_CreateQuery_AndCreateQueryFromSpan_FilterExpectedEntities()
         {
@@ -180,6 +216,11 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(2, immutableCount);
         }
 
+        /// <summary>
+        /// Returns the immutable using the specified rules
+        /// </summary>
+        /// <param name="rules">The rules</param>
+        /// <returns>A fast immutable array of rule</returns>
         private static FastImmutableArray<Rule> ToImmutable(params Rule[] rules)
         {
             FastImmutableArray<Rule>.Builder builder = FastImmutableArray<Rule>.CreateBuilder<Rule>(rules.Length);
@@ -191,6 +232,10 @@ namespace Alis.Core.Ecs.Test
             return builder.ToImmutable();
         }
 
+        /// <summary>
+        /// The scene api update attribute class
+        /// </summary>
+        /// <seealso cref="UpdateTypeAttribute"/>
         private sealed class SceneApiUpdateAttribute : UpdateTypeAttribute
         {
         }
