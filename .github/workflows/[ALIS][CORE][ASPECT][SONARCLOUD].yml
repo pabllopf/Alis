@@ -1,4 +1,4 @@
-name: "[ALIS][CORE][SONARCLOUD]"
+name: "[ALIS][CORE][ASPECT][SONARCLOUD]"
 
 on:
   push:
@@ -41,6 +41,6 @@ jobs:
           dotnet tool install --global coverlet.console --version 6.0.3
           dotnet tool install --global dotnet-sonarscanner --version 8.0.2
           
-          dotnet sonarscanner begin /k:"pabllopf_alis-core" /o:"pabllopf" /d:sonar.scanner.scanAll=false /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" /d:sonar.token="${{ secrets.SONAR_TOKEN_ALIS_CORE }}" /d:sonar.scanner.skipJreProvisioning=false /d:sonar.language=cs /d:sonar.dotnet.version=8.0 /d:sonar.verbose=false /d:sonar.cs.opencover.reportsPaths="./.test/**/*.opencover.xml"
-          dotnet build -c Debug -f net8.0 ./3_Structuration/Core/src/Alis.Core.csproj
-          dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN_ALIS_CORE }}"
+          dotnet sonarscanner begin /k:"pabllopf_alis-core-aspect" /o:"pabllopf" /d:sonar.scanner.scanAll=false /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" /d:sonar.token="${{ secrets.SONAR_TOKEN_ALIS_CORE_ASPECT }}" /d:sonar.scanner.skipJreProvisioning=false /d:sonar.language=cs /d:sonar.dotnet.version=8.0 /d:sonar.verbose=false /d:sonar.cs.opencover.reportsPaths="./.test/**/*.opencover.xml"
+          dotnet build -c Debug -f net8.0 ./5_Declaration/Aspect/src/Alis.Core.Aspect.csproj
+          dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN_ALIS_CORE_ASPECT }}"

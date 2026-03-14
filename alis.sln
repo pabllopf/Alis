@@ -32,9 +32,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 		.github\workflows\[ALIS][DEPENDENCY][REVIEW].yml = .github\workflows\[ALIS][DEPENDENCY][REVIEW].yml
 		.github\workflows\[ALIS][NEW][CONTRIBUTORS].yml = .github\workflows\[ALIS][NEW][CONTRIBUTORS].yml
 		.github\workflows\[ALIS][PUBLISH].yml = .github\workflows\[ALIS][PUBLISH].yml
-		.github\workflows\[ALIS][SONARCLOUD].yml = .github\workflows\[ALIS][SONARCLOUD].yml
 		.github\workflows\[ALIS][TEST].yml = .github\workflows\[ALIS][TEST].yml
-		.github\workflows\[ALIS][CORE][SONARCLOUD].yml = .github\workflows\[ALIS][CORE][SONARCLOUD].yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "issue_template", "issue_template", "{063D29E8-51CF-4155-B23F-8510CA62512A}"
@@ -547,6 +545,13 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Benchmark", "Benchmark", "{1FAE3B5F-905A-4080-867E-7681D062B782}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Benchmark", "1_Presentation\Benchmark\src\Alis.Benchmark.csproj", "{3ACF7096-3F6F-4D54-AA00-7C5BDED5F5C2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sonar", "sonar", "{FFC9978E-F56C-45BB-95FA-01D292791099}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\[ALIS][SONARCLOUD].yml = .github\workflows\[ALIS][SONARCLOUD].yml
+		.github\workflows\[ALIS][CORE][SONARCLOUD].yml = .github\workflows\[ALIS][CORE][SONARCLOUD].yml
+		.github\workflows\[ALIS][CORE][ASPECT][SONARCLOUD].yml = .github\workflows\[ALIS][CORE][ASPECT][SONARCLOUD].yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -3583,6 +3588,7 @@ Global
 		{7B0AE963-0AEA-44B9-B7DE-8A8C310044D3} = {33BF1025-FF7D-AD1D-0D92-B7ACD9995B3D}
 		{1FAE3B5F-905A-4080-867E-7681D062B782} = {C71EF7F6-79BE-6F0D-B0FA-66283F39CAE2}
 		{3ACF7096-3F6F-4D54-AA00-7C5BDED5F5C2} = {1FAE3B5F-905A-4080-867E-7681D062B782}
+		{FFC9978E-F56C-45BB-95FA-01D292791099} = {CDB74D6E-4B2E-4FDA-8239-B8C6C1C47059}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8C491FC8-E9B0-4689-BAA5-ED6F7C5F61A5}
