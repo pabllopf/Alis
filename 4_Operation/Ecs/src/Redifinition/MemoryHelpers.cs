@@ -116,8 +116,7 @@ namespace Alis.Core.Ecs.Redifinition
                 T t = span[i];
                 if (start.IndexOf<object>(t) != -1)
                 {
-                    throw new InvalidOperationException(
-                        $"This gameObject already has a component of type {t.Type.Name}");
+                    throw new InvalidOperationException("This gameObject already has a component of that type");
                 }
 
                 builder.Add(t);
@@ -139,7 +138,7 @@ namespace Alis.Core.Ecs.Redifinition
             if (types.IndexOf<object>(type) != -1)
             {
                 throw new InvalidOperationException(
-                    $"This gameObject already has a component of type {type.Type.Name}");
+                    "This gameObject already has a component of that type");
             }
 
             FastImmutableArray<T>.Builder builder = FastImmutableArray<T>.CreateBuilder<T>(types.Length + 1);

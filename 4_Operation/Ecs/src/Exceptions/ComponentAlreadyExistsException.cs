@@ -41,8 +41,8 @@ namespace Alis.Core.Ecs.Exceptions
         ///     Initializes a new instance of the <see cref="ComponentAlreadyExistsException" /> class
         /// </summary>
         /// <param name="t">The </param>
-        public ComponentAlreadyExistsException(Type t)
-            : base($"Component of type {t.FullName} already exists on gameObject!")
+        public ComponentAlreadyExistsException()
+            : base($"Component already exists on gameObject!")
         {
         }
 
