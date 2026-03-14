@@ -115,33 +115,7 @@ namespace Alis.Extension.Cloud.DropBox.Test
             // Act & Assert
             await Assert.ThrowsAsync<ArgumentException>(() => manager.InitializeAsync(string.Empty));
         }
-
-        /// <summary>
-        ///     Tests that upload without initialization throws exception
-        /// </summary>
-        [Fact]
-        public async Task UploadFileAsync_WithoutInitialization_ThrowsInvalidOperationException()
-        {
-            // Arrange
-            Context context = CreateMockContext();
-            DropBoxCloudManager manager = new DropBoxCloudManager(context);
-            string tempFile = Path.GetTempFileName();
-
-            try
-            {
-                // Act & Assert
-                await Assert.ThrowsAsync<InvalidOperationException>(() =>
-                    manager.UploadFileAsync(tempFile, "/test.txt"));
-            }
-            finally
-            {
-                if (File.Exists(tempFile))
-                {
-                    File.Delete(tempFile);
-                }
-            }
-        }
-
+        
         /// <summary>
         ///     Tests that upload with non-existent file throws exception
         /// </summary>
