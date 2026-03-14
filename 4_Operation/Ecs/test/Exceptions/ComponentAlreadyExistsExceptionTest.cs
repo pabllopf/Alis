@@ -56,30 +56,10 @@ namespace Alis.Core.Ecs.Test.Exceptions
             Type testType = typeof(int);
 
             // Act
-            ComponentAlreadyExistsException exception = new ComponentAlreadyExistsException(testType);
+            ComponentAlreadyExistsException exception = new ComponentAlreadyExistsException();
 
             // Assert
             Assert.NotNull(exception);
-            Assert.Contains(testType.Name, exception.Message);
-        }
-
-        /// <summary>
-        ///     Tests that exception message contains type name
-        /// </summary>
-        /// <remarks>
-        ///     Validates that the exception message includes the component type name.
-        /// </remarks>
-        [Fact]
-        public void Exception_MessageContainsTypeName()
-        {
-            // Arrange
-            Type testType = typeof(string);
-
-            // Act
-            ComponentAlreadyExistsException exception = new ComponentAlreadyExistsException(testType);
-
-            // Assert
-            Assert.Contains("String", exception.Message);
         }
 
         /// <summary>
@@ -95,7 +75,7 @@ namespace Alis.Core.Ecs.Test.Exceptions
             Type testType = typeof(object);
 
             // Act
-            ComponentAlreadyExistsException exception = new ComponentAlreadyExistsException(testType);
+            ComponentAlreadyExistsException exception = new ComponentAlreadyExistsException();
 
             // Assert
             Assert.IsAssignableFrom<Exception>(exception);
@@ -117,7 +97,7 @@ namespace Alis.Core.Ecs.Test.Exceptions
             // Act
             try
             {
-                throw new ComponentAlreadyExistsException(testType);
+                throw new ComponentAlreadyExistsException();
             }
             catch (Exception)
             {
@@ -144,7 +124,7 @@ namespace Alis.Core.Ecs.Test.Exceptions
             // Act
             try
             {
-                throw new ComponentAlreadyExistsException(testType);
+                throw new ComponentAlreadyExistsException();
             }
             catch (ComponentAlreadyExistsException)
             {
@@ -168,7 +148,7 @@ namespace Alis.Core.Ecs.Test.Exceptions
             Type testType = typeof(List<int>);
 
             // Act
-            ComponentAlreadyExistsException exception = new ComponentAlreadyExistsException(testType);
+            ComponentAlreadyExistsException exception = new ComponentAlreadyExistsException();
 
             // Assert
             Assert.NotNull(exception.Message);
@@ -188,7 +168,7 @@ namespace Alis.Core.Ecs.Test.Exceptions
             Type testType = typeof(bool);
 
             // Act
-            ComponentAlreadyExistsException exception = new ComponentAlreadyExistsException(testType);
+            ComponentAlreadyExistsException exception = new ComponentAlreadyExistsException();
 
             // Assert
             Assert.Null(exception.InnerException);
@@ -207,32 +187,11 @@ namespace Alis.Core.Ecs.Test.Exceptions
             Type testType = typeof(char);
 
             // Act
-            ComponentAlreadyExistsException exception1 = new ComponentAlreadyExistsException(testType);
-            ComponentAlreadyExistsException exception2 = new ComponentAlreadyExistsException(testType);
+            ComponentAlreadyExistsException exception1 = new ComponentAlreadyExistsException();
+            ComponentAlreadyExistsException exception2 = new ComponentAlreadyExistsException();
 
             // Assert
             Assert.Equal(exception1.Message, exception2.Message);
-        }
-
-        /// <summary>
-        ///     Tests that exceptions with different types have different messages
-        /// </summary>
-        /// <remarks>
-        ///     Validates that exceptions for different component types have different messages.
-        /// </remarks>
-        [Fact]
-        public void Exceptions_WithDifferentTypes_HaveDifferentMessages()
-        {
-            // Arrange
-            Type testType1 = typeof(int);
-            Type testType2 = typeof(string);
-
-            // Act
-            ComponentAlreadyExistsException exception1 = new ComponentAlreadyExistsException(testType1);
-            ComponentAlreadyExistsException exception2 = new ComponentAlreadyExistsException(testType2);
-
-            // Assert
-            Assert.NotEqual(exception1.Message, exception2.Message);
         }
     }
 }

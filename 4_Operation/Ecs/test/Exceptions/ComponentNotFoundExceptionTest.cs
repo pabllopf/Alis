@@ -44,45 +44,6 @@ namespace Alis.Core.Ecs.Test.Exceptions
     public class ComponentNotFoundExceptionTest
     {
         /// <summary>
-        ///     Tests that exception can be created with type parameter
-        /// </summary>
-        /// <remarks>
-        ///     Verifies that the exception can be instantiated with a Type parameter.
-        /// </remarks>
-        [Fact]
-        public void Exception_CanBeCreatedWithTypeParameter()
-        {
-            // Arrange
-            Type testType = typeof(int);
-
-            // Act
-            ComponentNotFoundException exception = new ComponentNotFoundException(testType);
-
-            // Assert
-            Assert.NotNull(exception);
-            Assert.Contains(testType.Name, exception.Message);
-        }
-
-        /// <summary>
-        ///     Tests that exception message contains type name
-        /// </summary>
-        /// <remarks>
-        ///     Validates that the exception message includes the component type name.
-        /// </remarks>
-        [Fact]
-        public void Exception_MessageContainsTypeName()
-        {
-            // Arrange
-            Type testType = typeof(string);
-
-            // Act
-            ComponentNotFoundException exception = new ComponentNotFoundException(testType);
-
-            // Assert
-            Assert.Contains("String", exception.Message);
-        }
-
-        /// <summary>
         ///     Tests that exception is instance of exception base class
         /// </summary>
         /// <remarks>
@@ -214,53 +175,5 @@ namespace Alis.Core.Ecs.Test.Exceptions
             Assert.Equal(exception1.Message, exception2.Message);
         }
 
-        /// <summary>
-        ///     Tests that exceptions with different types have different messages
-        /// </summary>
-        /// <remarks>
-        ///     Validates that exceptions for different component types have different messages.
-        /// </remarks>
-        [Fact]
-        public void Exceptions_WithDifferentTypes_HaveDifferentMessages()
-        {
-            // Arrange
-            Type testType1 = typeof(int);
-            Type testType2 = typeof(string);
-
-            // Act
-            ComponentNotFoundException exception1 = new ComponentNotFoundException(testType1);
-            ComponentNotFoundException exception2 = new ComponentNotFoundException(testType2);
-
-            // Assert
-            Assert.NotEqual(exception1.Message, exception2.Message);
-        }
-
-        /// <summary>
-        ///     Tests that exception can be thrown and caught in try catch
-        /// </summary>
-        /// <remarks>
-        ///     Validates the exception can be properly thrown and caught in a try-catch block.
-        /// </remarks>
-        [Fact]
-        public void Exception_CanBeThrownAndCaughtInTryCatch()
-        {
-            // Arrange
-            Type testType = typeof(decimal);
-            ComponentNotFoundException caughtException = null;
-
-            // Act
-            try
-            {
-                throw new ComponentNotFoundException(testType);
-            }
-            catch (ComponentNotFoundException ex)
-            {
-                caughtException = ex;
-            }
-
-            // Assert
-            Assert.NotNull(caughtException);
-            Assert.Contains(testType.Name, caughtException.Message);
-        }
     }
 }

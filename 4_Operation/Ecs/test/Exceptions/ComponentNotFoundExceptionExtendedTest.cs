@@ -59,27 +59,7 @@ namespace Alis.Core.Ecs.Test.Exceptions
             Assert.NotNull(ex);
             Assert.IsAssignableFrom<Exception>(ex);
         }
-
-        /// <summary>
-        ///     Tests that exception message contains type name
-        /// </summary>
-        /// <remarks>
-        ///     Validates that the exception message includes the type name.
-        /// </remarks>
-        [Fact]
-        public void ComponentNotFoundException_MessageContainsTypeName()
-        {
-            // Arrange
-            Type testType = typeof(Health);
-
-            // Act
-            ComponentNotFoundException ex = new ComponentNotFoundException(testType);
-
-            // Assert
-            Assert.Contains("Health", ex.Message);
-            Assert.Contains("not found", ex.Message);
-        }
-
+        
         /// <summary>
         ///     Tests that exception can be created with message
         /// </summary>
@@ -122,41 +102,6 @@ namespace Alis.Core.Ecs.Test.Exceptions
 
             Assert.NotNull(thrownException);
             Assert.IsAssignableFrom<ComponentNotFoundException>(thrownException);
-        }
-
-        /// <summary>
-        ///     Tests that exception with different types have different messages
-        /// </summary>
-        /// <remarks>
-        ///     Validates that different component types produce different exception messages.
-        /// </remarks>
-        [Fact]
-        public void ComponentNotFoundException_DifferentTypesDifferentMessages()
-        {
-            // Act
-            ComponentNotFoundException ex1 = new ComponentNotFoundException(typeof(TestComponent));
-            ComponentNotFoundException ex2 = new ComponentNotFoundException(typeof(Position));
-
-            // Assert
-            Assert.NotEqual(ex1.Message, ex2.Message);
-            Assert.Contains("TestComponent", ex1.Message);
-            Assert.Contains("Position", ex2.Message);
-        }
-
-        /// <summary>
-        ///     Tests that exception with full type name
-        /// </summary>
-        /// <remarks>
-        ///     Validates that the full type name is included in the message.
-        /// </remarks>
-        [Fact]
-        public void ComponentNotFoundException_ContainsFullTypeName()
-        {
-            // Act
-            ComponentNotFoundException ex = new ComponentNotFoundException(typeof(Position));
-
-            // Assert
-            Assert.Contains("Alis.Core.Ecs.Test.Models.Position", ex.Message);
         }
     }
 }
