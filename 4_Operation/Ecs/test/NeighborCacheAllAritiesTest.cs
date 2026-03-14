@@ -10,6 +10,11 @@ namespace Alis.Core.Ecs.Test
     /// </summary>
     public class NeighborCacheAllAritiesTest
     {
+        /// <summary>
+        /// Creates the components using the specified ids
+        /// </summary>
+        /// <param name="ids">The ids</param>
+        /// <returns>A fast immutable array of component id</returns>
         private static FastImmutableArray<ComponentId> CreateComponents(params ComponentId[] ids)
         {
             FastImmutableArray<ComponentId>.Builder builder = FastImmutableArray<ComponentId>.CreateBuilder<ComponentId>(ids.Length);
@@ -21,6 +26,11 @@ namespace Alis.Core.Ecs.Test
             return builder.ToImmutable();
         }
 
+        /// <summary>
+        /// Asserts the contains all using the specified components
+        /// </summary>
+        /// <param name="components">The components</param>
+        /// <param name="expectedIds">The expected ids</param>
         private static void AssertContainsAll(FastImmutableArray<ComponentId> components, params ComponentId[] expectedIds)
         {
             foreach (ComponentId id in expectedIds)
@@ -29,6 +39,9 @@ namespace Alis.Core.Ecs.Test
             }
         }
 
+        /// <summary>
+        /// Tests that neighbor cache arity 1 add and remove modifies expected components
+        /// </summary>
         [Fact]
         public void NeighborCacheArity1_AddAndRemove_ModifiesExpectedComponents()
         {
@@ -47,6 +60,9 @@ namespace Alis.Core.Ecs.Test
             AssertContainsAll(components, Component<AnotherComponent2>.Id);
         }
 
+        /// <summary>
+        /// Tests that neighbor cache arity 2 add and remove modifies expected components
+        /// </summary>
         [Fact]
         public void NeighborCacheArity2_AddAndRemove_ModifiesExpectedComponents()
         {
@@ -65,6 +81,9 @@ namespace Alis.Core.Ecs.Test
             AssertContainsAll(components, Component<AnotherComponent2>.Id);
         }
 
+        /// <summary>
+        /// Tests that neighbor cache arity 3 add and remove modifies expected components
+        /// </summary>
         [Fact]
         public void NeighborCacheArity3_AddAndRemove_ModifiesExpectedComponents()
         {
@@ -83,6 +102,9 @@ namespace Alis.Core.Ecs.Test
             AssertContainsAll(components, Component<AnotherComponent2>.Id);
         }
 
+        /// <summary>
+        /// Tests that neighbor cache arity 4 add and remove modifies expected components
+        /// </summary>
         [Fact]
         public void NeighborCacheArity4_AddAndRemove_ModifiesExpectedComponents()
         {
@@ -101,6 +123,9 @@ namespace Alis.Core.Ecs.Test
             AssertContainsAll(components, Component<AnotherComponent2>.Id);
         }
 
+        /// <summary>
+        /// Tests that neighbor cache arity 5 add and remove modifies expected components
+        /// </summary>
         [Fact]
         public void NeighborCacheArity5_AddAndRemove_ModifiesExpectedComponents()
         {
@@ -119,6 +144,9 @@ namespace Alis.Core.Ecs.Test
             AssertContainsAll(components, Component<AnotherComponent2>.Id);
         }
 
+        /// <summary>
+        /// Tests that neighbor cache arity 6 add and remove modifies expected components
+        /// </summary>
         [Fact]
         public void NeighborCacheArity6_AddAndRemove_ModifiesExpectedComponents()
         {
@@ -137,6 +165,9 @@ namespace Alis.Core.Ecs.Test
             AssertContainsAll(components, Component<AnotherComponent2>.Id);
         }
 
+        /// <summary>
+        /// Tests that neighbor cache arity 7 add and remove modifies expected components
+        /// </summary>
         [Fact]
         public void NeighborCacheArity7_AddAndRemove_ModifiesExpectedComponents()
         {
@@ -155,6 +186,9 @@ namespace Alis.Core.Ecs.Test
             AssertContainsAll(components, Component<AnotherComponent2>.Id);
         }
 
+        /// <summary>
+        /// Tests that neighbor cache arity 8 add and remove modifies expected components
+        /// </summary>
         [Fact]
         public void NeighborCacheArity8_AddAndRemove_ModifiesExpectedComponents()
         {

@@ -20,6 +20,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
     /// </summary>
     public class UpdateAllClassesTest
     {
+        /// <summary>
+        /// Tests that update arity 0 run updates every entity
+        /// </summary>
         [Fact]
         public void Update_Arity0_Run_UpdatesEveryEntity()
         {
@@ -33,6 +36,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             Assert.Equal(1, second.Get<UpdateComponent>().CallCount);
         }
 
+        /// <summary>
+        /// Tests that update arity 2 run mutates arguments by reference
+        /// </summary>
         [Fact]
         public void Update_Arity2_Run_MutatesArgumentsByReference()
         {
@@ -50,6 +56,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             Assert.Equal(8, entity.Get<Position>().Y);
         }
 
+        /// <summary>
+        /// Tests that update arity 3 run mutates all expected components
+        /// </summary>
         [Fact]
         public void Update_Arity3_Run_MutatesAllExpectedComponents()
         {
@@ -69,6 +78,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             Assert.Equal(49, entity.Get<Health>().Value);
         }
 
+        /// <summary>
+        /// Tests that update arity 4 run invokes component and keeps expected state
+        /// </summary>
         [Fact]
         public void Update_Arity4_Run_InvokesComponentAndKeepsExpectedState()
         {
@@ -90,6 +102,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             Assert.Equal(12, entity.Get<Armor>().Value);
         }
 
+        /// <summary>
+        /// Tests that update arity 6 run mutates all expected components
+        /// </summary>
         [Fact]
         public void Update_Arity6_Run_MutatesAllExpectedComponents()
         {
@@ -115,6 +130,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             Assert.Equal(1, entity.Get<Transform>().Rotation);
         }
 
+        /// <summary>
+        /// Tests that update arity 7 run mutates all expected components
+        /// </summary>
         [Fact]
         public void Update_Arity7_Run_MutatesAllExpectedComponents()
         {
@@ -141,6 +159,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             Assert.Equal(12, entity.Get<TestComponent>().Value);
         }
 
+        /// <summary>
+        /// Tests that update arity 8 run mutates all expected components
+        /// </summary>
         [Fact]
         public void Update_Arity8_Run_MutatesAllExpectedComponents()
         {

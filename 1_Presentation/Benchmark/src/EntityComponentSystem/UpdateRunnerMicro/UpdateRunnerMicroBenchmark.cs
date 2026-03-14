@@ -44,19 +44,46 @@ namespace Alis.Benchmark.EntityComponentSystem.UpdateRunnerMicro
     [BenchmarkCategory(Categories.System), Orderer(SummaryOrderPolicy.FastestToSlowest), Config(typeof(CustomConfig))]
     public partial class UpdateRunnerMicroBenchmark
     {
+        /// <summary>
+        /// The alis scene
+        /// </summary>
         private Scene _alisScene;
+        /// <summary>
+        /// The frent world
+        /// </summary>
         private World _frentWorld;
+        /// <summary>
+        /// The frent
+        /// </summary>
         private Query _frentQ0;
+        /// <summary>
+        /// The frent
+        /// </summary>
         private Query _frentQ2;
+        /// <summary>
+        /// The frent
+        /// </summary>
         private Query _frentQ8;
+        /// <summary>
+        /// The legacy
+        /// </summary>
         private LegacyLoopState _legacy;
 
+        /// <summary>
+        /// Gets or sets the value of the arity
+        /// </summary>
         [Params(0, 2, 8)]
         public int Arity { get; set; }
 
+        /// <summary>
+        /// Gets or sets the value of the entity count
+        /// </summary>
         [Params(1_0, 1_00)]
         public int EntityCount { get; set; }
 
+        /// <summary>
+        /// Setup this instance
+        /// </summary>
         [GlobalSetup]
         public void Setup()
         {
@@ -65,6 +92,9 @@ namespace Alis.Benchmark.EntityComponentSystem.UpdateRunnerMicro
             _legacy = new LegacyLoopState(EntityCount);
         }
 
+        /// <summary>
+        /// Cleanups this instance
+        /// </summary>
         [GlobalCleanup]
         public void Cleanup()
         {
@@ -72,9 +102,15 @@ namespace Alis.Benchmark.EntityComponentSystem.UpdateRunnerMicro
             _frentWorld?.Dispose();
         }
 
+        /// <summary>
+        /// Alises the update after
+        /// </summary>
         [BenchmarkCategory(Categories.Alis), Benchmark(Baseline = true)]
         public void Alis_Update_After() => _alisScene.Update();
 
+        /// <summary>
+        /// Alises the update before synthetic
+        /// </summary>
         [BenchmarkCategory(Categories.Alis), Benchmark]
         public void Alis_Update_Before_Synthetic()
         {
@@ -94,6 +130,9 @@ namespace Alis.Benchmark.EntityComponentSystem.UpdateRunnerMicro
             }
         }
 
+        /// <summary>
+        /// Alises the update after synthetic
+        /// </summary>
         [BenchmarkCategory(Categories.Alis), Benchmark]
         public void Alis_Update_After_Synthetic()
         {
@@ -113,6 +152,9 @@ namespace Alis.Benchmark.EntityComponentSystem.UpdateRunnerMicro
             }
         }
 
+        /// <summary>
+        /// Frents the update equivalent
+        /// </summary>
         [BenchmarkCategory(Categories.Frent), Benchmark]
         public void Frent_Update_Equivalent()
         {
@@ -139,6 +181,9 @@ namespace Alis.Benchmark.EntityComponentSystem.UpdateRunnerMicro
             }
         }
 
+        /// <summary>
+        /// Setup the alis
+        /// </summary>
         private void SetupAlis()
         {
             _alisScene = new Scene();
@@ -179,6 +224,9 @@ namespace Alis.Benchmark.EntityComponentSystem.UpdateRunnerMicro
             }
         }
 
+        /// <summary>
+        /// Setup the frent
+        /// </summary>
         private void SetupFrent()
         {
             _frentWorld = new World();
@@ -221,8 +269,16 @@ namespace Alis.Benchmark.EntityComponentSystem.UpdateRunnerMicro
             }
         }
 
+        /// <summary>
+        /// The legacy loops class
+        /// </summary>
         private static class LegacyLoops
         {
+            /// <summary>
+            /// Runs the before using the specified comp
+            /// </summary>
+            /// <param name="comp">The comp</param>
+            /// <param name="length">The length</param>
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             public static void RunBefore(ref LegacyComp0 comp, int length)
             {
@@ -233,6 +289,13 @@ namespace Alis.Benchmark.EntityComponentSystem.UpdateRunnerMicro
                 }
             }
 
+            /// <summary>
+            /// Runs the before using the specified comp
+            /// </summary>
+            /// <param name="comp">The comp</param>
+            /// <param name="a1">The </param>
+            /// <param name="a2">The </param>
+            /// <param name="length">The length</param>
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             public static void RunBefore(ref LegacyComp2 comp, ref Arg1 a1, ref Arg2 a2, int length)
             {
@@ -248,6 +311,19 @@ namespace Alis.Benchmark.EntityComponentSystem.UpdateRunnerMicro
                 }
             }
 
+            /// <summary>
+            /// Runs the before using the specified comp
+            /// </summary>
+            /// <param name="comp">The comp</param>
+            /// <param name="a1">The </param>
+            /// <param name="a2">The </param>
+            /// <param name="a3">The </param>
+            /// <param name="a4">The </param>
+            /// <param name="a5">The </param>
+            /// <param name="a6">The </param>
+            /// <param name="a7">The </param>
+            /// <param name="a8">The </param>
+            /// <param name="length">The length</param>
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             public static void RunBefore(ref LegacyComp8 comp, ref Arg1 a1, ref Arg2 a2, ref Arg3 a3, ref Arg4 a4,
                 ref Arg5 a5, ref Arg6 a6, ref Arg7 a7, ref Arg8 a8, int length)
@@ -270,6 +346,11 @@ namespace Alis.Benchmark.EntityComponentSystem.UpdateRunnerMicro
                 }
             }
 
+            /// <summary>
+            /// Runs the after using the specified comp
+            /// </summary>
+            /// <param name="comp">The comp</param>
+            /// <param name="length">The length</param>
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             public static void RunAfter(ref LegacyComp0 comp, int length)
             {
@@ -286,6 +367,13 @@ namespace Alis.Benchmark.EntityComponentSystem.UpdateRunnerMicro
                 while (--length != 0);
             }
 
+            /// <summary>
+            /// Runs the after using the specified comp
+            /// </summary>
+            /// <param name="comp">The comp</param>
+            /// <param name="a1">The </param>
+            /// <param name="a2">The </param>
+            /// <param name="length">The length</param>
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             public static void RunAfter(ref LegacyComp2 comp, ref Arg1 a1, ref Arg2 a2, int length)
             {
@@ -307,6 +395,19 @@ namespace Alis.Benchmark.EntityComponentSystem.UpdateRunnerMicro
                 while (--length != 0);
             }
 
+            /// <summary>
+            /// Runs the after using the specified comp
+            /// </summary>
+            /// <param name="comp">The comp</param>
+            /// <param name="a1">The </param>
+            /// <param name="a2">The </param>
+            /// <param name="a3">The </param>
+            /// <param name="a4">The </param>
+            /// <param name="a5">The </param>
+            /// <param name="a6">The </param>
+            /// <param name="a7">The </param>
+            /// <param name="a8">The </param>
+            /// <param name="length">The length</param>
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             public static void RunAfter(ref LegacyComp8 comp, ref Arg1 a1, ref Arg2 a2, ref Arg3 a3, ref Arg4 a4,
                 ref Arg5 a5, ref Arg6 a6, ref Arg7 a7, ref Arg8 a8, int length)
@@ -336,20 +437,60 @@ namespace Alis.Benchmark.EntityComponentSystem.UpdateRunnerMicro
             }
         }
 
+        /// <summary>
+        /// The legacy loop state class
+        /// </summary>
         private sealed class LegacyLoopState
         {
+            /// <summary>
+            /// The 
+            /// </summary>
             public readonly LegacyComp0[] C0;
+            /// <summary>
+            /// The 
+            /// </summary>
             public readonly LegacyComp2[] C2;
+            /// <summary>
+            /// The 
+            /// </summary>
             public readonly LegacyComp8[] C8;
+            /// <summary>
+            /// The 
+            /// </summary>
             public readonly Arg1[] A1;
+            /// <summary>
+            /// The 
+            /// </summary>
             public readonly Arg2[] A2;
+            /// <summary>
+            /// The 
+            /// </summary>
             public readonly Arg3[] A3;
+            /// <summary>
+            /// The 
+            /// </summary>
             public readonly Arg4[] A4;
+            /// <summary>
+            /// The 
+            /// </summary>
             public readonly Arg5[] A5;
+            /// <summary>
+            /// The 
+            /// </summary>
             public readonly Arg6[] A6;
+            /// <summary>
+            /// The 
+            /// </summary>
             public readonly Arg7[] A7;
+            /// <summary>
+            /// The 
+            /// </summary>
             public readonly Arg8[] A8;
 
+            /// <summary>
+            /// Initializes a new instance of the <see cref="LegacyLoopState"/> class
+            /// </summary>
+            /// <param name="entityCount">The entity count</param>
             public LegacyLoopState(int entityCount)
             {
                 C0 = new LegacyComp0[entityCount];
@@ -378,75 +519,163 @@ namespace Alis.Benchmark.EntityComponentSystem.UpdateRunnerMicro
             }
         }
 
+        /// <summary>
+        /// The legacy comp
+        /// </summary>
         private struct LegacyComp0
         {
+            /// <summary>
+            /// The counter
+            /// </summary>
             public int Counter;
         }
 
+        /// <summary>
+        /// The legacy comp
+        /// </summary>
         private struct LegacyComp2
         {
+            /// <summary>
+            /// The counter
+            /// </summary>
             public int Counter;
         }
 
+        /// <summary>
+        /// The legacy comp
+        /// </summary>
         private struct LegacyComp8
         {
+            /// <summary>
+            /// The counter
+            /// </summary>
             public int Counter;
         }
 
+        /// <summary>
+        /// The arg
+        /// </summary>
         private struct Arg1
         {
+            /// <summary>
+            /// The value
+            /// </summary>
             public int Value;
         }
 
+        /// <summary>
+        /// The arg
+        /// </summary>
         private struct Arg2
         {
+            /// <summary>
+            /// The value
+            /// </summary>
             public int Value;
         }
 
+        /// <summary>
+        /// The arg
+        /// </summary>
         private struct Arg3
         {
+            /// <summary>
+            /// The value
+            /// </summary>
             public int Value;
         }
 
+        /// <summary>
+        /// The arg
+        /// </summary>
         private struct Arg4
         {
+            /// <summary>
+            /// The value
+            /// </summary>
             public int Value;
         }
 
+        /// <summary>
+        /// The arg
+        /// </summary>
         private struct Arg5
         {
+            /// <summary>
+            /// The value
+            /// </summary>
             public int Value;
         }
 
+        /// <summary>
+        /// The arg
+        /// </summary>
         private struct Arg6
         {
+            /// <summary>
+            /// The value
+            /// </summary>
             public int Value;
         }
 
+        /// <summary>
+        /// The arg
+        /// </summary>
         private struct Arg7
         {
+            /// <summary>
+            /// The value
+            /// </summary>
             public int Value;
         }
 
+        /// <summary>
+        /// The arg
+        /// </summary>
         private struct Arg8
         {
+            /// <summary>
+            /// The value
+            /// </summary>
             public int Value;
         }
 
+        /// <summary>
+        /// The updater
+        /// </summary>
         private partial struct Updater0 : IOnUpdate
         {
+            /// <summary>
+            /// The counter
+            /// </summary>
             public int Counter;
 
+            /// <summary>
+            /// Ons the update using the specified self
+            /// </summary>
+            /// <param name="self">The self</param>
             public void OnUpdate(IGameObject self)
             {
                 Counter++;
             }
         }
 
+        /// <summary>
+        /// The updater
+        /// </summary>
         private partial struct Updater2 : IOnUpdate<Arg1, Arg2>
         {
+            /// <summary>
+            /// The counter
+            /// </summary>
             public int Counter;
 
+            /// <summary>
+            /// Updates the self
+            /// </summary>
+            /// <param name="self">The self</param>
+            /// <param name="arg1">The arg</param>
+            /// <param name="arg2">The arg</param>
             public void Update(IGameObject self, ref Arg1 arg1, ref Arg2 arg2)
             {
                 Counter += arg1.Value + arg2.Value;
@@ -455,10 +684,28 @@ namespace Alis.Benchmark.EntityComponentSystem.UpdateRunnerMicro
             }
         }
 
+        /// <summary>
+        /// The updater
+        /// </summary>
         private partial struct Updater8 : IOnUpdate<Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8>
         {
+            /// <summary>
+            /// The counter
+            /// </summary>
             public int Counter;
 
+            /// <summary>
+            /// Updates the self
+            /// </summary>
+            /// <param name="self">The self</param>
+            /// <param name="arg1">The arg</param>
+            /// <param name="arg2">The arg</param>
+            /// <param name="arg3">The arg</param>
+            /// <param name="arg4">The arg</param>
+            /// <param name="arg5">The arg</param>
+            /// <param name="arg6">The arg</param>
+            /// <param name="arg7">The arg</param>
+            /// <param name="arg8">The arg</param>
             public void Update(IGameObject self, ref Arg1 arg1, ref Arg2 arg2, ref Arg3 arg3, ref Arg4 arg4,
                 ref Arg5 arg5, ref Arg6 arg6, ref Arg7 arg7, ref Arg8 arg8)
             {
@@ -468,43 +715,91 @@ namespace Alis.Benchmark.EntityComponentSystem.UpdateRunnerMicro
             }
         }
 
+        /// <summary>
+        /// The arg
+        /// </summary>
         private struct FArg1
         {
+            /// <summary>
+            /// The value
+            /// </summary>
             public int Value;
         }
 
+        /// <summary>
+        /// The arg
+        /// </summary>
         private struct FArg2
         {
+            /// <summary>
+            /// The value
+            /// </summary>
             public int Value;
         }
 
+        /// <summary>
+        /// The arg
+        /// </summary>
         private struct FArg3
         {
+            /// <summary>
+            /// The value
+            /// </summary>
             public int Value;
         }
 
+        /// <summary>
+        /// The arg
+        /// </summary>
         private struct FArg4
         {
+            /// <summary>
+            /// The value
+            /// </summary>
             public int Value;
         }
 
+        /// <summary>
+        /// The arg
+        /// </summary>
         private struct FArg5
         {
+            /// <summary>
+            /// The value
+            /// </summary>
             public int Value;
         }
 
+        /// <summary>
+        /// The arg
+        /// </summary>
         private struct FArg6
         {
+            /// <summary>
+            /// The value
+            /// </summary>
             public int Value;
         }
 
+        /// <summary>
+        /// The arg
+        /// </summary>
         private struct FArg7
         {
+            /// <summary>
+            /// The value
+            /// </summary>
             public int Value;
         }
 
+        /// <summary>
+        /// The arg
+        /// </summary>
         private struct FArg8
         {
+            /// <summary>
+            /// The value
+            /// </summary>
             public int Value;
         }
     }

@@ -22,8 +22,14 @@ namespace Alis.Core.Ecs.Test.Updating
     /// </summary>
     public class SceneUpdateFilterSubsetTest
     {
+        /// <summary>
+        /// The scene update filter subset attribute
+        /// </summary>
         private static readonly Type FilterMarkerType = typeof(SceneUpdateFilterSubsetAttribute);
 
+        /// <summary>
+        /// Tests that update processes all matching archetypes
+        /// </summary>
         [Fact]
         public void Update_ProcessesAllMatchingArchetypes()
         {
@@ -41,6 +47,9 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.Equal(2, second.Get<UpdateComponent>().CallCount);
         }
 
+        /// <summary>
+        /// Tests that update subset when resolving deferred creation updates only new entities
+        /// </summary>
         [Fact]
         public void UpdateSubset_WhenResolvingDeferredCreation_UpdatesOnlyNewEntities()
         {
@@ -58,6 +67,10 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.Equal(1, deferred.Get<UpdateComponent>().CallCount);
         }
 
+        /// <summary>
+        /// The scene update filter subset attribute class
+        /// </summary>
+        /// <seealso cref="Attribute"/>
         private sealed class SceneUpdateFilterSubsetAttribute : Attribute
         {
         }

@@ -68,6 +68,9 @@ namespace Alis.Benchmark.CustomEcs
             QueryFrent = WorldFrent.Query<With<Component1>>();
         }
 
+        /// <summary>
+        /// Disposes the frent
+        /// </summary>
         private void DisposeFrent()
         {
             WorldFrent?.Dispose();

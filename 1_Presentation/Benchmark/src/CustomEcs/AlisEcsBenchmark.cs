@@ -67,6 +67,9 @@ namespace Alis.Benchmark.CustomEcs
             Query = Scene.Query<With<Component1>>();
         }
 
+        /// <summary>
+        /// Disposes the alis
+        /// </summary>
         private void DisposeAlis()
         {
             Scene?.Dispose();

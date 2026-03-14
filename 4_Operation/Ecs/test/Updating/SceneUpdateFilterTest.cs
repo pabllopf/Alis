@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Ecs.Test.Models;
 using Alis.Core.Ecs.Test.Updating.Runners;
 using Alis.Core.Ecs.Updating;
@@ -42,6 +41,15 @@ namespace Alis.Core.Ecs.Test.Updating
     public class SceneUpdateFilterTest
     {
         /// <summary>
+        /// The registered scene update filter attribute
+        /// </summary>
+        private static readonly Type RegisteredFilterType = typeof(RegisteredSceneUpdateFilterAttribute);
+        /// <summary>
+        /// The empty scene update filter attribute
+        /// </summary>
+        private static readonly Type EmptyFilterType = typeof(EmptySceneUpdateFilterAttribute);
+
+        /// <summary>
         /// Tests that constructor with valid scene and attribute type creates filter
         /// </summary>
         [Fact]
@@ -50,7 +58,7 @@ namespace Alis.Core.Ecs.Test.Updating
             using Scene scene = new Scene();
             scene.Create(new Position {X = 1, Y = 2});
 
-            SceneUpdateFilter filter = new SceneUpdateFilter(scene, typeof(UpdateOrderAttribute));
+            SceneUpdateFilter filter = new SceneUpdateFilter(scene, RegisteredFilterType);
 
             Assert.NotNull(filter);
         }
@@ -62,13 +70,16 @@ namespace Alis.Core.Ecs.Test.Updating
         public void Constructor_ProcessesExistingArchetypes()
         {
             using Scene scene = new Scene();
-            scene.Create(new Position {X = 1, Y = 2});
-            scene.Create(new Velocity {X = 3, Y = 4});
+            GenerationServices.RegisterUpdateMethodAttribute(RegisteredFilterType, typeof(UpdateComponent));
+            GameObject entityA = scene.Create(new UpdateComponent {CallCount = 0});
+            GameObject entityB = scene.Create(new UpdateComponent {CallCount = 0}, new Position {X = 3, Y = 4});
 
-            SceneUpdateFilter filter = new SceneUpdateFilter(scene, typeof(UpdateOrderAttribute));
+            SceneUpdateFilter filter = new SceneUpdateFilter(scene, RegisteredFilterType);
 
-            
-            Assert.NotNull(filter);
+            filter.Update();
+
+            Assert.Equal(1, entityA.Get<UpdateComponent>().CallCount);
+            Assert.Equal(1, entityB.Get<UpdateComponent>().CallCount);
         }
 
         /// <summary>
@@ -78,29 +89,15 @@ namespace Alis.Core.Ecs.Test.Updating
         public void Update_InvokesOnUpdateForAllComponentsWithAttribute()
         {
             using Scene scene = new Scene();
-            GameObject e1 = scene.Create(new Position {X = 1, Y = 2});
-            GameObject e2 = scene.Create(new Velocity {X = 3, Y = 4});
+            GenerationServices.RegisterUpdateMethodAttribute(RegisteredFilterType, typeof(UpdateComponent));
+            GameObject e1 = scene.Create(new UpdateComponent {CallCount = 0});
+            GameObject e2 = scene.Create(new UpdateComponent {CallCount = 0}, new Velocity {X = 3, Y = 4});
 
-            SceneUpdateFilter filter = new SceneUpdateFilter(scene, typeof(IOnUpdate));
+            SceneUpdateFilter filter = new SceneUpdateFilter(scene, RegisteredFilterType);
             filter.Update();
 
-            // Entities should be updated based on IOnUpdate interface
-        }
-
-        /// <summary>
-        /// Tests that update with multiple archetypes updates all matching
-        /// </summary>
-        [Fact]
-        public void Update_WithMultipleArchetypes_UpdatesAllMatching()
-        {
-            using Scene scene = new Scene();
-            scene.Create(new Position {X = 1, Y = 2});
-            scene.Create(new Position {X = 3, Y = 4}, new Velocity {X = 5, Y = 6});
-
-            SceneUpdateFilter filter = new SceneUpdateFilter(scene, typeof(IOnUpdate));
-            filter.Update();
-
-            // Both archetypes should be processed
+            Assert.Equal(1, e1.Get<UpdateComponent>().CallCount);
+            Assert.Equal(1, e2.Get<UpdateComponent>().CallCount);
         }
 
         /// <summary>
@@ -110,28 +107,14 @@ namespace Alis.Core.Ecs.Test.Updating
         public void Update_CalledMultipleTimes_ExecutesEachTime()
         {
             using Scene scene = new Scene();
-            scene.Create(new UpdateComponent {CallCount = 0});
+            GenerationServices.RegisterUpdateMethodAttribute(RegisteredFilterType, typeof(UpdateComponent));
+            GameObject entity = scene.Create(new UpdateComponent {CallCount = 0});
 
-            SceneUpdateFilter filter = new SceneUpdateFilter(scene, typeof(IOnUpdate));
+            SceneUpdateFilter filter = new SceneUpdateFilter(scene, RegisteredFilterType);
             filter.Update();
             filter.Update();
 
-            // Should execute twice
-        }
-
-        /// <summary>
-        /// Tests that archetype added after construction is handled correctly
-        /// </summary>
-        [Fact]
-        public void ArchetypeAdded_AfterConstruction_IsHandledCorrectly()
-        {
-            using Scene scene = new Scene();
-            SceneUpdateFilter filter = new SceneUpdateFilter(scene, typeof(IOnUpdate));
-
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
-            filter.Update();
-
-            // New archetype should be processed
+            Assert.Equal(2, entity.Get<UpdateComponent>().CallCount);
         }
 
         /// <summary>
@@ -143,10 +126,10 @@ namespace Alis.Core.Ecs.Test.Updating
             using Scene scene = new Scene();
             scene.Create(new TestComponent {Value = 1, Name = "test"});
 
-            SceneUpdateFilter filter = new SceneUpdateFilter(scene, typeof(IOnUpdate));
-            filter.Update();
+            SceneUpdateFilter filter = new SceneUpdateFilter(scene, EmptyFilterType);
+            Exception ex = Record.Exception(filter.Update);
 
-            // No exception expected
+            Assert.Null(ex);
         }
 
         /// <summary>
@@ -157,82 +140,44 @@ namespace Alis.Core.Ecs.Test.Updating
         {
             using Scene scene = new Scene();
 
-            SceneUpdateFilter filter = new SceneUpdateFilter(scene, typeof(IOnUpdate));
-            filter.Update();
+            SceneUpdateFilter filter = new SceneUpdateFilter(scene, EmptyFilterType);
+            Exception ex = Record.Exception(filter.Update);
 
-            // No exception expected
+            Assert.Null(ex);
         }
 
         /// <summary>
-        /// Tests that archetype added with matching components includes in filter
+        /// Tests that update subset through deferred creation updates only new entities
         /// </summary>
         [Fact]
-        public void ArchetypeAdded_WithMatchingComponents_IncludesInFilter()
+        public void UpdateSubset_ThroughDeferredCreation_UpdatesOnlyNewEntities()
         {
             using Scene scene = new Scene();
-            SceneUpdateFilter filter = new SceneUpdateFilter(scene, typeof(IOnUpdate));
+            GenerationServices.RegisterUpdateMethodAttribute(RegisteredFilterType, typeof(UpdateComponent));
+            GameObject existing = scene.Create(new UpdateComponent {CallCount = 0});
+            SceneUpdateFilter filter = new SceneUpdateFilter(scene, RegisteredFilterType);
 
-            scene.Create(new UpdateComponent {CallCount = 0});
-            scene.Create(new Position {X = 1, Y = 2});
+            scene.EnterDisallowState();
+            GameObject deferred = scene.Create(new UpdateComponent {CallCount = 0});
+            scene.ExitDisallowState(filter, updateDeferredEntities: true);
 
-            filter.Update();
-
-            // Archetypes with matching components should be included
+            Assert.Equal(0, existing.Get<UpdateComponent>().CallCount);
+            Assert.Equal(1, deferred.Get<UpdateComponent>().CallCount);
         }
 
         /// <summary>
-        /// Tests that archetype added with no matching components does not affect filter
-        /// </summary>
-        [Fact]
-        public void ArchetypeAdded_WithNoMatchingComponents_DoesNotAffectFilter()
-        {
-            using Scene scene = new Scene();
-            scene.Create(new UpdateComponent {CallCount = 0});
-
-            SceneUpdateFilter filter = new SceneUpdateFilter(scene, typeof(IOnUpdate));
-
-            scene.Create(new TestComponent {Value = 1, Name = "test"});
-            filter.Update();
-
-            // Only matching components should be updated
-        }
-
-        /// <summary>
-        /// Tests that update with multiple components in same archetype updates all
-        /// </summary>
-        [Fact]
-        public void Update_WithMultipleComponentsInSameArchetype_UpdatesAll()
-        {
-            using Scene scene = new Scene();
-            scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4});
-
-            SceneUpdateFilter filter = new SceneUpdateFilter(scene, typeof(IOnUpdate));
-            filter.Update();
-
-            // Both Position and Velocity should be updated if they implement IOnUpdate
-        }
-
-        /// <summary>
-        /// Tests that constructor with null attribute type handles gracefully
-        /// </summary>
-        [Fact]
-        public void Constructor_WithNullAttributeType_HandlesGracefully()
-        {
-            using Scene scene = new Scene();
-            scene.Create(new Position {X = 1, Y = 2});
-
-            // This tests that the filter handles null or missing attribute types
-            SceneUpdateFilter filter = new SceneUpdateFilter(scene, typeof(NonExistentAttribute));
-            filter.Update();
-
-            // Should handle gracefully without throwing
-        }
-
-        /// <summary>
-        /// The non existent attribute class
+        /// The registered scene update filter attribute class
         /// </summary>
         /// <seealso cref="Attribute"/>
-        private class NonExistentAttribute : Attribute
+        private sealed class RegisteredSceneUpdateFilterAttribute : Attribute
+        {
+        }
+
+        /// <summary>
+        /// The empty scene update filter attribute class
+        /// </summary>
+        /// <seealso cref="Attribute"/>
+        private sealed class EmptySceneUpdateFilterAttribute : Attribute
         {
         }
     }
