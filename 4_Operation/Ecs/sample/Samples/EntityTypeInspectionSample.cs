@@ -21,7 +21,7 @@ namespace Alis.Core.Ecs.Sample.Samples
 
             foreach (ComponentId componentType in entity.ComponentTypes)
             {
-                Console.WriteLine($"- {componentType.Type.Name}");
+                Console.WriteLine($"- {componentType.ToString()}");
             }
         }
     }

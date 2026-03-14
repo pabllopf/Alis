@@ -25,12 +25,12 @@ namespace Alis.Core.Ecs.Sample.Samples
             scene.ComponentAdded += (_, componentId) =>
             {
                 added++;
-                Console.WriteLine($"Component added: {componentId.Type.Name}");
+                Console.WriteLine($"Component added: {componentId.ToString()}");
             };
             scene.ComponentRemoved += (_, componentId) =>
             {
                 removed++;
-                Console.WriteLine($"Component removed: {componentId.Type.Name}");
+                Console.WriteLine($"Component removed: {componentId.ToString()}");
             };
 
             GameObject entity = scene.Create(7);
