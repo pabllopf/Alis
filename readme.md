@@ -184,6 +184,18 @@ The following table contains all the available packages, their purpose, and thei
 | **Alis.Core** | ![Nuget](https://img.shields.io/nuget/v/alis.core?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis.core?label=nuget&color=green) | Core library for Alis. |
 
 
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core&metric=coverage)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core&metric=bugs)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core)
+
+
 ## 🔷 Alis.Core.Aspect
 
 | Package Name                 | Version                                                                               | Downloads                                                                                   | Description           |
