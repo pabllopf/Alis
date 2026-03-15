@@ -268,17 +268,17 @@ ALIS is powered by a combination of open-source and licensed technologies that e
 
 ### 🎮 Game Development & Graphics
 
-| Logo                                      | Technology     | Description                                                                      | License    | Links                                                                       |
-| ----------------------------------------- | -------------- | -------------------------------------------------------------------------------- | ---------- | --------------------------------------------------------------------------- |
-| ![](https://cdn.simpleicons.org/sdl)      | **SDL2**       | Cross-platform low-level multimedia layer for graphics, input, and audio.        | Zlib       | [Web](https://www.libsdl.org) • [Repo](https://github.com/libsdl-org/SDL)   |
-| ![](https://cdn.simpleicons.org/sfml)     | **SFML**       | Modern C++ multimedia framework for graphics, audio, windowing, and networking.  | Zlib       | [Web](https://www.sfml-dev.org) • [Repo](https://github.com/SFML/SFML)      |
-| ![](https://cdn.simpleicons.org/glfw)     | **GLFW**       | Lightweight framework for OpenGL/Vulkan contexts, window creation, and input.    | Zlib       | [Web](https://www.glfw.org) • [Repo](https://github.com/glfw/glfw)          |
-| ![](https://cdn.simpleicons.org/opengl)   | **OpenGL**     | Cross-platform API for high-performance real-time 2D and 3D rendering.           | Open       | [Web](https://www.opengl.org)                                               |
-| ![](https://cdn.simpleicons.org/vulkan)   | **Vulkan**     | Modern explicit graphics and compute API delivering high-efficiency GPU control. | Apache 2.0 | [Web](https://www.vulkan.org)                                               |
-| ![](https://cdn.simpleicons.org/opengles) | **OpenGL ES**  | Embedded systems variant of OpenGL optimized for mobile and web platforms.       | Open       | [Web](https://www.khronos.org/opengles/)                                    |
-| ![](https://cdn.simpleicons.org/webgl)    | **WebGL**      | JavaScript API for GPU-accelerated rendering inside web browsers.                | Open       | [Web](https://www.khronos.org/webgl/)                                       |
-| ![](https://cdn.simpleicons.org/imgui)    | **Dear ImGui** | Immediate-mode GUI library for debug tools and in-engine interfaces.             | MIT        | [Repo](https://github.com/ocornut/imgui)                                    |
-| ![](https://cdn.simpleicons.org/blender)  | **Blender**    | 3D creation suite for modeling, animation, and asset production.                 | GPL        | [Web](https://www.blender.org) • [Repo](https://github.com/blender/blender) |
+| Logo                                               | Technology     | Description                                                                      | License    | Links                                                                       |
+|----------------------------------------------------| -------------- | -------------------------------------------------------------------------------- | ---------- | --------------------------------------------------------------------------- |
+| ![](https://cdn.simpleicons.org/sdl)               | **SDL2**       | Cross-platform low-level multimedia layer for graphics, input, and audio.        | Zlib       | [Web](https://www.libsdl.org) • [Repo](https://github.com/libsdl-org/SDL)   |
+| ![](https://cdn.simpleicons.org/sfml)              | **SFML**       | Modern C++ multimedia framework for graphics, audio, windowing, and networking.  | Zlib       | [Web](https://www.sfml-dev.org) • [Repo](https://github.com/SFML/SFML)      |
+| ![](https://cdn.simpleicons.org/glfw)              | **GLFW**       | Lightweight framework for OpenGL/Vulkan contexts, window creation, and input.    | Zlib       | [Web](https://www.glfw.org) • [Repo](https://github.com/glfw/glfw)          |
+| ![](https://cdn.simpleicons.org/opengl)            | **OpenGL**     | Cross-platform API for high-performance real-time 2D and 3D rendering.           | Open       | [Web](https://www.opengl.org)                                               |
+| ![](https://cdn.simpleicons.org/vulkan)            | **Vulkan**     | Modern explicit graphics and compute API delivering high-efficiency GPU control. | Apache 2.0 | [Web](https://www.vulkan.org)                                               |
+| ![](https://cdn.simpleicons.org/opengl)            | **OpenGL ES**  | Embedded systems variant of OpenGL optimized for mobile and web platforms.       | Open       | [Web](https://www.khronos.org/opengles/)                                    |
+| ![](https://cdn.simpleicons.org/webgl)             | **WebGL**      | JavaScript API for GPU-accelerated rendering inside web browsers.                | Open       | [Web](https://www.khronos.org/webgl/)                                       |
+| ![](https://cdn.simpleicons.org/heroui/black/ffff) | **Dear ImGui** | Immediate-mode GUI library for debug tools and in-engine interfaces.             | MIT        | [Repo](https://github.com/ocornut/imgui)                                    |
+| ![](https://cdn.simpleicons.org/blender)           | **Blender**    | 3D creation suite for modeling, animation, and asset production.                 | GPL        | [Web](https://www.blender.org) • [Repo](https://github.com/blender/blender) |
 
 ---
 
