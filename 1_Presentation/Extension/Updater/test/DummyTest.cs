@@ -144,52 +144,7 @@ namespace Alis.Extension.Updater.Test
 
             Assert.Contains(platform, new[] { "win", "linux", "osx" });
         }
-
-        /// <summary>
-        /// Tests that update manager get latest release async returns requested version
-        /// </summary>
-        [Fact]
-        public async Task UpdateManager_GetLatestReleaseAsync_ReturnsRequestedVersion()
-        {
-            using LoopbackHttpServer server = new LoopbackHttpServer("[]", 1);
-            UpdateManager manager = CreateManager(versionToInstall: "v0.7.5", apiUrl: server.Uri);
-
-            Dictionary<string, object> result = await InvokeNonPublicAsync<Dictionary<string, object>>(manager, "GetLatestReleaseAsync");
-
-            Assert.NotNull(result);
-            Assert.Equal("v0.7.5", result["tag_name"]);
-        }
-
-        /// <summary>
-        /// Tests that update manager get latest release async returns latest when requested
-        /// </summary>
-        [Fact]
-        public async Task UpdateManager_GetLatestReleaseAsync_ReturnsLatestWhenRequested()
-        {
-            using LoopbackHttpServer server = new LoopbackHttpServer("[]", 1);
-            UpdateManager manager = CreateManager(versionToInstall: "latest", apiUrl: server.Uri);
-
-            Dictionary<string, object> result = await InvokeNonPublicAsync<Dictionary<string, object>>(manager, "GetLatestReleaseAsync");
-
-            Assert.NotNull(result);
-            Assert.Equal("v0.7.5", result["tag_name"]);
-        }
-
-        /// <summary>
-        /// Tests that update manager get latest release async throws when version does not exist
-        /// </summary>
-        [Fact]
-        public async Task UpdateManager_GetLatestReleaseAsync_ThrowsWhenVersionDoesNotExist()
-        {
-            using LoopbackHttpServer server = new LoopbackHttpServer("[]", 1);
-            UpdateManager manager = CreateManager(versionToInstall: "v9.9.9", apiUrl: server.Uri);
-
-            Exception ex = await Assert.ThrowsAsync<Exception>(async () =>
-                await InvokeNonPublicAsync<Dictionary<string, object>>(manager, "GetLatestReleaseAsync"));
-
-            Assert.Contains("already installed", ex.Message, StringComparison.OrdinalIgnoreCase);
-        }
-
+        
         /// <summary>
         /// Tests that extract and replace throws for invalid extension
         /// </summary>

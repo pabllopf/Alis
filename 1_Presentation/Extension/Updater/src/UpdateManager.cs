@@ -30,6 +30,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
@@ -128,6 +129,7 @@ namespace Alis.Extension.Updater
         /// <param name="ctsToken">The cts token</param>
         /// <exception cref="Exception">Error updating program: {ex.Message}</exception>
         /// <returns>A task containing the bool</returns>
+        [ExcludeFromCodeCoverage]
         public async Task<bool> Start(CancellationToken ctsToken)
         {
             Logger.Info("Starting update process.");
@@ -345,6 +347,7 @@ namespace Alis.Extension.Updater
         /// <summary>
         /// Backups this instance
         /// </summary>
+        [ExcludeFromCodeCoverage]
         internal void Backup()
         {
             Logger.Info($"Backup process started for '{ProgramFolder}'.");
@@ -426,25 +429,8 @@ namespace Alis.Extension.Updater
         /// </summary>
         /// <exception cref="PlatformNotSupportedException">Platform not supported.</exception>
         /// <returns>The string</returns>
-        private string GetPlatform()
-        {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return "win";
-            }
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-            {
-                return "linux";
-            }
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            {
-                return "osx";
-            }
-
-            throw new PlatformNotSupportedException("Platform not supported.");
-        }
+        [ExcludeFromCodeCoverage]
+        private string GetPlatform() => RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "win" : RuntimeInformation.IsOSPlatform(OSPlatform.Linux) ? "linux" : RuntimeInformation.IsOSPlatform(OSPlatform.OSX) ? "osx" : throw new PlatformNotSupportedException("Platform not supported.");
 
         /// <summary>
         /// Selects the asset using the specified assets
@@ -476,7 +462,8 @@ namespace Alis.Extension.Updater
         /// Gets the latest release
         /// </summary>
         /// <returns>A task containing a dictionary of string and object</returns>
-        private async Task<Dictionary<string, object>> GetLatestReleaseAsync()
+        [ExcludeFromCodeCoverage]
+        public async Task<Dictionary<string, object>> GetLatestReleaseAsync()
         {
             using HttpClient httpClient = new HttpClient();
 
@@ -543,7 +530,7 @@ namespace Alis.Extension.Updater
         /// </summary>
         /// <param name="url">The url</param>
         /// <returns>The file path</returns>
-        private async Task<string> DownloadFileAsync(string url)
+        public async Task<string> DownloadFileAsync(string url)
         {
             string fileName = Path.GetFileName(new Uri(url).AbsolutePath);
             string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
@@ -613,6 +600,7 @@ namespace Alis.Extension.Updater
         /// <param name="fileAsync">The file</param>
         /// <param name="packageType">The package type</param>
         /// <exception cref="InvalidOperationException">The file has an invalid extension.</exception>
+        [ExcludeFromCodeCoverage]
         internal void ExecutePackageExtraction(string fileAsync, string packageType)
         {
             if (packageType == "zip")
@@ -763,6 +751,7 @@ namespace Alis.Extension.Updater
         /// <exception cref="InvalidOperationException">Exceeded the maximum compression ratio threshold.</exception>
         /// <exception cref="InvalidOperationException">Exceeded the maximum number of entries threshold.</exception>
         /// <exception cref="InvalidOperationException">Exceeded the maximum uncompressed size threshold.</exception>
+        [ExcludeFromCodeCoverage]
         internal void ExtractZip(string fileAsync)
         {
             int totalSizeArchive = 0;

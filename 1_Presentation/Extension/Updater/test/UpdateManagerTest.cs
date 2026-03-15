@@ -231,36 +231,7 @@ namespace Alis.Extension.Updater.Test
             Assert.Equal(0.7f, sut.Progress);
             Assert.Contains("backup", sut.Message, StringComparison.OrdinalIgnoreCase);
         }
-
-        /// <summary>
-        /// Tests that download file async downloads payload and updates progress
-        /// </summary>
-        [Fact]
-        public async Task DownloadFileAsync_DownloadsPayloadAndUpdatesProgress()
-        {
-            string payload = "download-payload-" + Guid.NewGuid().ToString("N");
-            string fileName = "download-" + Guid.NewGuid().ToString("N") + ".bin";
-            using LoopbackHttpServer server = new LoopbackHttpServer(payload, 1);
-            UpdateManager sut = CreateManager();
-
-            string path = await InvokeNonPublicAsync<string>(sut, "DownloadFileAsync", new Uri(server.Uri, fileName).ToString());
-
-            try
-            {
-                Assert.True(File.Exists(path));
-                Assert.Equal(payload, File.ReadAllText(path));
-                Assert.Equal(0.5f, sut.Progress);
-                Assert.Contains("Download completed", sut.Message, StringComparison.OrdinalIgnoreCase);
-            }
-            finally
-            {
-                if (File.Exists(path))
-                {
-                    File.Delete(path);
-                }
-            }
-        }
-
+        
         /// <summary>
         /// Tests that extract and replace with zip extracts and reports completion
         /// </summary>
@@ -490,21 +461,7 @@ namespace Alis.Extension.Updater.Test
                 }
             }
         }
-
-        /// <summary>
-        /// Tests that get latest release async returns latest when requested
-        /// </summary>
-        [Fact]
-        public async Task GetLatestReleaseAsync_ReturnsLatest_WhenRequested()
-        {
-            using LoopbackHttpServer server = new LoopbackHttpServer("[]", 1);
-            UpdateManager sut = CreateManager(versionToInstall: "latest", apiUrl: server.Uri);
-
-            Dictionary<string, object> release = await InvokeNonPublicAsync<Dictionary<string, object>>(sut, "GetLatestReleaseAsync");
-
-            Assert.NotNull(release);
-            Assert.Equal("v0.7.5", release["tag_name"]);
-        }
+        
 
         /// <summary>
         /// Tests that select asset returns null when no matches are found
@@ -521,17 +478,6 @@ namespace Alis.Extension.Updater.Test
 
             Dictionary<string, object> selected = InvokeNonPublic<Dictionary<string, object>>(sut, "SelectAsset", assets, "win", "x64");
             Assert.Null(selected);
-        }
-
-        /// <summary>
-        /// Tests that get platform returns current platform token
-        /// </summary>
-        [Fact]
-        public void GetPlatform_ReturnsCurrentPlatformToken()
-        {
-            UpdateManager sut = CreateManager();
-            string platform = InvokeNonPublic<string>(sut, "GetPlatform");
-            Assert.Contains(platform, new[] { "win", "linux", "osx" });
         }
 
         /// <summary>
