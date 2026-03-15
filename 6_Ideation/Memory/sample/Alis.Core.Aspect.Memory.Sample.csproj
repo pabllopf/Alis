@@ -65,29 +65,67 @@
     </PropertyGroup>
 
 
-    <!-- ========== TARGET PARA GENERAR EL ZIP ========== -->
-    <Target Name="ZipAssets" BeforeTargets="BeforeBuild;BeforePublish" Condition="Exists('$(ProjectDir)')">
+    <PropertyGroup Condition="'$(AssetsOutput)' != ''">
+        <AssetsIntermediateDir Condition="'$(AssetsIntermediateDir)' == ''">$([System.IO.Path]::GetDirectoryName('$(AssetsOutput)'))</AssetsIntermediateDir>
+        <AssetsManifest Condition="'$(AssetsManifest)' == ''">$(AssetsIntermediateDir)/assets.manifest</AssetsManifest>
+    </PropertyGroup>
 
-        <Message Text="ZipAssets: AssetsDir='$(AssetsDir)'; AssetsZip='$(AssetsZip)'; AssetsOutput='$(AssetsOutput)'" Importance="High"/>
+    <ItemGroup Condition="'$(AssetsDir)' != '' AND Exists('$(AssetsDir)')">
+        <AssetPackInput Include="$(AssetsDir)/**/*" />
+        <AssetPackManifestLine Include="@(AssetPackInput->'%(RecursiveDir)%(Filename)%(Extension)')" />
+    </ItemGroup>
 
-        <!-- Windows -->
-        <Exec Condition="Exists('$(AssetsDir)') AND '$(OS)' == 'Windows_NT'"
-              Command="powershell -NoLogo -Command &quot;Compress-Archive -Path '$(AssetsDir)\\*' -DestinationPath '$(AssetsZip)' -Force; [Convert]::ToBase64String([System.IO.File]::ReadAllBytes('$(AssetsZip)')) | Out-File -FilePath '$(AssetsOutput)' -Encoding ASCII&quot;"/>
+    <Target Name="_PrepareAssetPackManifest"
+            Condition="'$(AssetsOutput)' != '' AND Exists('$(ProjectDir)')">
+        <MakeDir Directories="$(AssetsIntermediateDir)" Condition="'$(AssetsIntermediateDir)' != ''" />
 
-        <!-- macOS/Linux -->
-        <Exec Condition="Exists('$(AssetsDir)') AND '$(OS)' != 'Windows_NT'"
-              Command="sh -c &quot;zip -r -9 '$(AssetsZip)' '$(AssetsDir)' &amp;&amp; base64 &lt; '$(AssetsZip)' &gt; '$(AssetsOutput)'&quot;"/>
+        <WriteLinesToFile File="$(AssetsManifest)"
+                          Lines="@(AssetPackManifestLine)"
+                          Overwrite="true"
+                          WriteOnlyWhenDifferent="true"
+                          Encoding="ASCII"
+                          Condition="Exists('$(AssetsDir)')" />
 
-        <!-- Si no hay AssetsDir -->
-        <Message Condition="!Exists('$(AssetsDir)')" Text="No existe el directorio '$(AssetsDir)'. Se genera '$(AssetsOutput)' vacío." Importance="High"/>
-
-        <Exec Condition="!Exists('$(AssetsDir)') AND '$(OS)' == 'Windows_NT'"
-              Command="powershell -NoLogo -Command &quot;Set-Content -Path '$(AssetsOutput)' -Value '' -Encoding ASCII&quot;"/>
-
-        <Exec Condition="!Exists('$(AssetsDir)') AND '$(OS)' != 'Windows_NT'"
-              Command="sh -c &quot;mkdir -p '$(ProjectDir)obj' &amp;&amp; : &gt; '$(AssetsOutput)'&quot;"/>
-
+        <WriteLinesToFile File="$(AssetsManifest)"
+                          Lines="__NO_ASSETS__"
+                          Overwrite="true"
+                          WriteOnlyWhenDifferent="true"
+                          Encoding="ASCII"
+                          Condition="!Exists('$(AssetsDir)')" />
     </Target>
+
+    <Target Name="ZipAssets"
+            DependsOnTargets="_PrepareAssetPackManifest"
+            BeforeTargets="BeforeBuild;BeforePublish"
+            Condition="'$(AssetsOutput)' != '' AND Exists('$(ProjectDir)')"
+            Inputs="$(AssetsManifest);@(AssetPackInput)"
+            Outputs="$(AssetsOutput)">
+
+        <Message Text="ZipAssets incremental: AssetsDir='$(AssetsDir)'; AssetsZip='$(AssetsZip)'; AssetsOutput='$(AssetsOutput)'; AssetsManifest='$(AssetsManifest)'"
+                 Importance="High"/>
+
+        <MakeDir Directories="$(AssetsIntermediateDir)" Condition="'$(AssetsIntermediateDir)' != ''" />
+
+        <Delete Files="$(AssetsZip)" Condition="Exists('$(AssetsZip)') AND Exists('$(AssetsDir)')" />
+
+        <ZipDirectory SourceDirectory="$(AssetsDir)"
+                      DestinationFile="$(AssetsZip)"
+                      Condition="Exists('$(AssetsDir)')" />
+
+        <Exec Condition="Exists('$(AssetsDir)') AND '$(OS)' == 'Windows_NT'"
+              Command="powershell -NoLogo -Command &quot;[Convert]::ToBase64String([System.IO.File]::ReadAllBytes('$(AssetsZip)')) | Out-File -FilePath '$(AssetsOutput)' -Encoding ASCII&quot;" />
+
+        <Exec Condition="Exists('$(AssetsDir)') AND '$(OS)' != 'Windows_NT'"
+              Command="sh -c &quot;base64 &lt; '$(AssetsZip)' &gt; '$(AssetsOutput)'&quot;" />
+
+        <WriteLinesToFile File="$(AssetsOutput)"
+                          Lines=""
+                          Overwrite="true"
+                          WriteOnlyWhenDifferent="true"
+                          Encoding="ASCII"
+                          Condition="!Exists('$(AssetsDir)')" />
+    </Target>
+
 
 
     <!-- ========== REGISTRO DEL OUTPUT ========== -->
