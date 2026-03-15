@@ -200,6 +200,10 @@ namespace Alis.Core.Ecs.Sample
             }
         }
 
+        /// <summary>
+        /// Writes the section title using the specified text
+        /// </summary>
+        /// <param name="text">The text</param>
         private static void WriteSectionTitle(string text)
         {
             ConsoleColor previousColor = Console.ForegroundColor;
@@ -208,6 +212,10 @@ namespace Alis.Core.Ecs.Sample
             Console.ForegroundColor = previousColor;
         }
 
+        /// <summary>
+        /// Writes the info using the specified text
+        /// </summary>
+        /// <param name="text">The text</param>
         private static void WriteInfo(string text)
         {
             ConsoleColor previousColor = Console.ForegroundColor;
@@ -216,6 +224,10 @@ namespace Alis.Core.Ecs.Sample
             Console.ForegroundColor = previousColor;
         }
 
+        /// <summary>
+        /// Writes the success using the specified text
+        /// </summary>
+        /// <param name="text">The text</param>
         private static void WriteSuccess(string text)
         {
             ConsoleColor previousColor = Console.ForegroundColor;
@@ -224,6 +236,10 @@ namespace Alis.Core.Ecs.Sample
             Console.ForegroundColor = previousColor;
         }
 
+        /// <summary>
+        /// Writes the error using the specified text
+        /// </summary>
+        /// <param name="text">The text</param>
         private static void WriteError(string text)
         {
             ConsoleColor previousColor = Console.ForegroundColor;

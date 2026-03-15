@@ -4,14 +4,30 @@ using Alis.Core.Ecs.Systems;
 
 namespace Alis.Core.Ecs.Sample.Samples
 {
+    /// <summary>
+    /// The chunk enumeration sample class
+    /// </summary>
+    /// <seealso cref="IEcsSample"/>
     internal sealed class ChunkEnumerationSample : IEcsSample
     {
+        /// <summary>
+        /// Gets the value of the key
+        /// </summary>
         public string Key => "chunk-query";
 
+        /// <summary>
+        /// Gets the value of the title
+        /// </summary>
         public string Title => "Chunk Enumeration";
 
+        /// <summary>
+        /// Gets the value of the description
+        /// </summary>
         public string Description => "Updates component data in chunks using EnumerateChunks.";
 
+        /// <summary>
+        /// Runs this instance
+        /// </summary>
         public void Run()
         {
             using Scene scene = new Scene();

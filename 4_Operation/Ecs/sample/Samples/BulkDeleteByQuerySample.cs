@@ -3,14 +3,30 @@ using Alis.Core.Ecs.Systems;
 
 namespace Alis.Core.Ecs.Sample.Samples
 {
+    /// <summary>
+    /// The bulk delete by query sample class
+    /// </summary>
+    /// <seealso cref="IEcsSample"/>
     internal sealed class BulkDeleteByQuerySample : IEcsSample
     {
+        /// <summary>
+        /// Gets the value of the key
+        /// </summary>
         public string Key => "bulk-delete-query";
 
+        /// <summary>
+        /// Gets the value of the title
+        /// </summary>
         public string Title => "Bulk Delete By Query";
 
+        /// <summary>
+        /// Gets the value of the description
+        /// </summary>
         public string Description => "Finds entities with a query and deletes a subset.";
 
+        /// <summary>
+        /// Runs this instance
+        /// </summary>
         public void Run()
         {
             using Scene scene = new Scene();

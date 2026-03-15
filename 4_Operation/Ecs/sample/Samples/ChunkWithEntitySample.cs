@@ -4,14 +4,30 @@ using Alis.Core.Ecs.Systems;
 
 namespace Alis.Core.Ecs.Sample.Samples
 {
+    /// <summary>
+    /// The chunk with entity sample class
+    /// </summary>
+    /// <seealso cref="IEcsSample"/>
     internal sealed class ChunkWithEntitySample : IEcsSample
     {
+        /// <summary>
+        /// Gets the value of the key
+        /// </summary>
         public string Key => "chunk-entities";
 
+        /// <summary>
+        /// Gets the value of the title
+        /// </summary>
         public string Title => "Chunk Enumeration By Index";
 
+        /// <summary>
+        /// Gets the value of the description
+        /// </summary>
         public string Description => "Processes paired chunk spans using index-based access.";
 
+        /// <summary>
+        /// Runs this instance
+        /// </summary>
         public void Run()
         {
             using Scene scene = new Scene();

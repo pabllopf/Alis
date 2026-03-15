@@ -3,14 +3,30 @@ using Alis.Core.Ecs.Kernel;
 
 namespace Alis.Core.Ecs.Sample.Samples
 {
+    /// <summary>
+    /// The command buffer clear sample class
+    /// </summary>
+    /// <seealso cref="IEcsSample"/>
     internal sealed class CommandBufferClearSample : IEcsSample
     {
+        /// <summary>
+        /// Gets the value of the key
+        /// </summary>
         public string Key => "command-buffer-clear";
 
+        /// <summary>
+        /// Gets the value of the title
+        /// </summary>
         public string Title => "Command Buffer Clear";
 
+        /// <summary>
+        /// Gets the value of the description
+        /// </summary>
         public string Description => "Queues commands, clears the buffer, and inspects playback behavior.";
 
+        /// <summary>
+        /// Runs this instance
+        /// </summary>
         public void Run()
         {
             using Scene scene = new Scene();

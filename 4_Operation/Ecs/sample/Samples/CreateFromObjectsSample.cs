@@ -2,14 +2,30 @@ using System;
 
 namespace Alis.Core.Ecs.Sample.Samples
 {
+    /// <summary>
+    /// The create from objects sample class
+    /// </summary>
+    /// <seealso cref="IEcsSample"/>
     internal sealed class CreateFromObjectsSample : IEcsSample
     {
+        /// <summary>
+        /// Gets the value of the key
+        /// </summary>
         public string Key => "create-from-objects";
 
+        /// <summary>
+        /// Gets the value of the title
+        /// </summary>
         public string Title => "Create From Objects";
 
+        /// <summary>
+        /// Gets the value of the description
+        /// </summary>
         public string Description => "Creates entities from a runtime object array using CreateFromObjects.";
 
+        /// <summary>
+        /// Runs this instance
+        /// </summary>
         public void Run()
         {
             using Scene scene = new Scene();

@@ -3,14 +3,30 @@ using Alis.Core.Ecs.Kernel;
 
 namespace Alis.Core.Ecs.Sample.Samples
 {
+    /// <summary>
+    /// The scene events sample class
+    /// </summary>
+    /// <seealso cref="IEcsSample"/>
     internal sealed class SceneEventsSample : IEcsSample
     {
+        /// <summary>
+        /// Gets the value of the key
+        /// </summary>
         public string Key => "scene-events";
 
+        /// <summary>
+        /// Gets the value of the title
+        /// </summary>
         public string Title => "Scene Events";
 
+        /// <summary>
+        /// Gets the value of the description
+        /// </summary>
         public string Description => "Subscribes to scene-level entity and component events.";
 
+        /// <summary>
+        /// Runs this instance
+        /// </summary>
         public void Run()
         {
             using Scene scene = new Scene();

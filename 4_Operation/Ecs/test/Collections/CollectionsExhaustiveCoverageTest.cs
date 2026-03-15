@@ -11,8 +11,14 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test.Collections
 {
+    /// <summary>
+    /// The collections exhaustive coverage test class
+    /// </summary>
     public class CollectionsExhaustiveCoverageTest
     {
+        /// <summary>
+        /// Tests that fastest array pool rent return resize and private paths work
+        /// </summary>
         [Fact]
         public void FastestArrayPool_RentReturnResizeAndPrivatePaths_Work()
         {
@@ -61,6 +67,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.NotSame(candidate, afterClear);
         }
 
+        /// <summary>
+        /// Tests that fastest stack all public members and enumerator branches work
+        /// </summary>
         [Fact]
         public void FastestStack_AllPublicMembersAndEnumeratorBranches_Work()
         {
@@ -190,6 +199,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(0, stack.Capacity);
         }
 
+        /// <summary>
+        /// Tests that archetype neighbor cache all slots and overloads work
+        /// </summary>
         [Fact]
         public void ArchetypeNeighborCache_AllSlotsAndOverloads_Work()
         {
@@ -221,6 +233,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(arch.Id.RawIndex, cache.Lookup(slot));
         }
 
+        /// <summary>
+        /// Tests that fast lookup set lookup and find adjacent archetype all paths work
+        /// </summary>
         [Fact]
         public void FastLookup_SetLookupAndFindAdjacentArchetype_AllPaths_Work()
         {
@@ -263,6 +278,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.NotEqual(default, coldId);
         }
 
+        /// <summary>
+        /// Tests that short sparse set all members and branches work
+        /// </summary>
         [Fact]
         public void ShortSparseSet_AllMembersAndBranches_Work()
         {
@@ -311,6 +329,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.False(set.Has(10));
         }
 
+        /// <summary>
+        /// Tests that enumerable helpers reset and to array all code paths work
+        /// </summary>
         [Fact]
         public void EnumerableHelpers_ResetAndToArray_AllCodePaths_Work()
         {
@@ -343,6 +364,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Empty(generatedEmptyArr);
         }
 
+        /// <summary>
+        /// Tests that chunk index span resize and return work
+        /// </summary>
         [Fact]
         public void Chunk_IndexSpanResizeAndReturn_Work()
         {
@@ -372,6 +396,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Null(chunk.Buffer);
         }
 
+        /// <summary>
+        /// Tests that id table generic and boxed paths work
+        /// </summary>
         [Fact]
         public void IdTable_GenericAndBoxedPaths_Work()
         {
@@ -407,6 +434,9 @@ namespace Alis.Core.Ecs.Test.Collections
             table.Dispose();
         }
 
+        /// <summary>
+        /// Tests that fastest table indexer unsafe and capacity work
+        /// </summary>
         [Fact]
         public void FastestTable_IndexerUnsafeAndCapacity_Work()
         {
@@ -433,6 +463,11 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(table.Length, span.Length);
         }
 
+        /// <summary>
+        /// Yields the sequence using the specified length
+        /// </summary>
+        /// <param name="length">The length</param>
+        /// <returns>An enumerable of int</returns>
         private static IEnumerable<int> YieldSequence(int length)
         {
             for (int i = 0; i < length; i++)
@@ -441,18 +476,47 @@ namespace Alis.Core.Ecs.Test.Collections
             }
         }
 
+        /// <summary>
+        /// The resettable enumerator
+        /// </summary>
         private struct ResettableEnumerator : IEnumerator
         {
+            /// <summary>
+            /// Gets or sets the value of the reset called
+            /// </summary>
             public bool ResetCalled { get; private set; }
+            /// <summary>
+            /// Gets the value of the current
+            /// </summary>
             public object Current => null;
+            /// <summary>
+            /// Moves the next
+            /// </summary>
+            /// <returns>The bool</returns>
             public bool MoveNext() => false;
+            /// <summary>
+            /// Resets this instance
+            /// </summary>
             public void Reset() => ResetCalled = true;
         }
 
+        /// <summary>
+        /// The tracking action class
+        /// </summary>
+        /// <seealso cref="IGenericAction{GameObject}"/>
         private sealed class TrackingAction : IGenericAction<GameObject>
         {
+            /// <summary>
+            /// Gets or sets the value of the call count
+            /// </summary>
             public int CallCount { get; private set; }
 
+            /// <summary>
+            /// Invokes the param
+            /// </summary>
+            /// <typeparam name="T">The </typeparam>
+            /// <param name="param">The param</param>
+            /// <param name="type">The type</param>
             public void Invoke<T>(GameObject param, ref T type)
             {
                 CallCount++;

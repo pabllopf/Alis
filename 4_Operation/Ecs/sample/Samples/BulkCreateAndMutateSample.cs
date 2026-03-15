@@ -3,14 +3,30 @@ using Alis.Core.Ecs.Systems;
 
 namespace Alis.Core.Ecs.Sample.Samples
 {
+    /// <summary>
+    /// The bulk create and mutate sample class
+    /// </summary>
+    /// <seealso cref="IEcsSample"/>
     internal sealed class BulkCreateAndMutateSample : IEcsSample
     {
+        /// <summary>
+        /// Gets the value of the key
+        /// </summary>
         public string Key => "bulk-create-mutate";
 
+        /// <summary>
+        /// Gets the value of the title
+        /// </summary>
         public string Title => "Bulk Create And Mutate";
 
+        /// <summary>
+        /// Gets the value of the description
+        /// </summary>
         public string Description => "Creates many entities quickly and mutates all of them with a query.";
 
+        /// <summary>
+        /// Runs this instance
+        /// </summary>
         public void Run()
         {
             using Scene scene = new Scene();

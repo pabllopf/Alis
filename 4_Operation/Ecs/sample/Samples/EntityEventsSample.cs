@@ -3,14 +3,30 @@ using Alis.Core.Ecs.Kernel;
 
 namespace Alis.Core.Ecs.Sample.Samples
 {
+    /// <summary>
+    /// The entity events sample class
+    /// </summary>
+    /// <seealso cref="IEcsSample"/>
     internal sealed class EntityEventsSample : IEcsSample
     {
+        /// <summary>
+        /// Gets the value of the key
+        /// </summary>
         public string Key => "entity-identity";
 
+        /// <summary>
+        /// Gets the value of the title
+        /// </summary>
         public string Title => "Entity Identity";
 
+        /// <summary>
+        /// Gets the value of the description
+        /// </summary>
         public string Description => "Compares live entities with GameObject.Null and checks liveness.";
 
+        /// <summary>
+        /// Runs this instance
+        /// </summary>
         public void Run()
         {
             using Scene scene = new Scene();
