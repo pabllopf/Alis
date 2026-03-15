@@ -259,53 +259,66 @@ license terms. Below is an explanation of how the license affects you as a devel
 ---
 
 
+
 ## 🙏 Acknowledgements
 
-ALIS is powered by a collection of outstanding open-source projects and industry-standard technologies that enable high-performance, cross-platform game development.
+ALIS is powered by a combination of open-source and licensed technologies that enable high-performance, cross-platform game development. Licenses for each technology are indicated in the tables below.
 
 ---
 
 ### 🎮 Game Development & Graphics
 
-| Logo | Project | Description | Links |
-|------|---------|-------------|-------|
-| ![](https://cdn.simpleicons.org/sdl) | **SDL2** | Low-level cross-platform layer providing hardware-accelerated graphics, input handling, and audio access. A common foundation for modern game engines. | [🌐 Web](https://www.libsdl.org) [📦 Repo](https://github.com/libsdl-org/SDL) |
-| ![](https://cdn.simpleicons.org/sfml) | **SFML** | High-level multimedia framework offering an elegant API for graphics, audio, windowing, and networking with strong performance and developer ergonomics. | [🌐 Web](https://www.sfml-dev.org) [📦 Repo](https://github.com/SFML/SFML) |
-| ![](https://cdn.simpleicons.org/glfw) | **GLFW** | Lightweight and portable framework for window creation, OpenGL/Vulkan context management, and advanced input handling. | [🌐 Web](https://www.glfw.org) [📦 Repo](https://github.com/glfw/glfw) |
-| ![](https://cdn.simpleicons.org/opengl) | **OpenGL** | Cross-language, cross-platform graphics API designed for high-performance real-time 2D and 3D rendering pipelines. | [🌐 Web](https://www.opengl.org) |
+| Logo                                      | Technology     | Description                                                                      | License    | Links                                                                       |
+| ----------------------------------------- | -------------- | -------------------------------------------------------------------------------- | ---------- | --------------------------------------------------------------------------- |
+| ![](https://cdn.simpleicons.org/sdl)      | **SDL2**       | Cross-platform low-level multimedia layer for graphics, input, and audio.        | Zlib       | [Web](https://www.libsdl.org) • [Repo](https://github.com/libsdl-org/SDL)   |
+| ![](https://cdn.simpleicons.org/sfml)     | **SFML**       | Modern C++ multimedia framework for graphics, audio, windowing, and networking.  | Zlib       | [Web](https://www.sfml-dev.org) • [Repo](https://github.com/SFML/SFML)      |
+| ![](https://cdn.simpleicons.org/glfw)     | **GLFW**       | Lightweight framework for OpenGL/Vulkan contexts, window creation, and input.    | Zlib       | [Web](https://www.glfw.org) • [Repo](https://github.com/glfw/glfw)          |
+| ![](https://cdn.simpleicons.org/opengl)   | **OpenGL**     | Cross-platform API for high-performance real-time 2D and 3D rendering.           | Open       | [Web](https://www.opengl.org)                                               |
+| ![](https://cdn.simpleicons.org/vulkan)   | **Vulkan**     | Modern explicit graphics and compute API delivering high-efficiency GPU control. | Apache 2.0 | [Web](https://www.vulkan.org)                                               |
+| ![](https://cdn.simpleicons.org/opengles) | **OpenGL ES**  | Embedded systems variant of OpenGL optimized for mobile and web platforms.       | Open       | [Web](https://www.khronos.org/opengles/)                                    |
+| ![](https://cdn.simpleicons.org/webgl)    | **WebGL**      | JavaScript API for GPU-accelerated rendering inside web browsers.                | Open       | [Web](https://www.khronos.org/webgl/)                                       |
+| ![](https://cdn.simpleicons.org/imgui)    | **Dear ImGui** | Immediate-mode GUI library for debug tools and in-engine interfaces.             | MIT        | [Repo](https://github.com/ocornut/imgui)                                    |
+| ![](https://cdn.simpleicons.org/blender)  | **Blender**    | 3D creation suite for modeling, animation, and asset production.                 | GPL        | [Web](https://www.blender.org) • [Repo](https://github.com/blender/blender) |
 
 ---
 
 ### 🎧 Media & Audio Technologies
 
-| Logo                                    | Project | Description | Links |
-|-----------------------------------------|---------|-------------|-------|
-| ![](https://cdn.simpleicons.org/ffmpeg) | **FFmpeg** | Comprehensive multimedia framework for decoding, encoding, transcoding, streaming, filtering, and processing audiovisual content. | [🌐 Web](https://ffmpeg.org) [📦 Repo](https://github.com/FFmpeg/FFmpeg) |
-| ![](https://cdn.simpleicons.org/openal) | **OpenAL** | Cross-platform 3D audio API designed for spatial sound rendering and realistic environmental audio simulation. | [🌐 Web](https://www.openal.org) |
-| ![](https://cdn.simpleicons.org/fmod/black/ffff)  | **FMOD** | Professional adaptive audio engine providing interactive music systems, real-time mixing, and dynamic sound design for games. | [🌐 Web](https://www.fmod.com) |
+| Logo                                      | Technology   | Description                                                              | License     | Links                                                                              |
+| ----------------------------------------- | ------------ | ------------------------------------------------------------------------ | ----------- | ---------------------------------------------------------------------------------- |
+| ![](https://cdn.simpleicons.org/ffmpeg)   | **FFmpeg**   | Multimedia framework for encoding, decoding, transcoding, and streaming. | LGPL/GPL    | [Web](https://ffmpeg.org) • [Repo](https://github.com/FFmpeg/FFmpeg)               |
+| ![](https://cdn.simpleicons.org/openal)   | **OpenAL**   | Cross-platform 3D audio API for spatial sound rendering.                 | LGPL        | [Web](https://www.openal.org)                                                      |
+| ![](https://cdn.simpleicons.org/fmod)     | **FMOD**     | Professional adaptive audio engine for interactive music and effects.    | Proprietary | [Web](https://www.fmod.com)                                                        |
+| ![](https://cdn.simpleicons.org/audacity) | **Audacity** | Digital audio editor and recording tool.                                 | GPL         | [Web](https://www.audacityteam.org) • [Repo](https://github.com/audacity/audacity) |
 
 ---
 
 ### ☁️ Cloud & Online Services
 
-| Logo | Service          | Description | Links |
-|------|------------------|-------------|-------|
-| ![](https://cdn.simpleicons.org/googledrive) | **Google Drive** | Secure cloud storage service enabling synchronization, backup pipelines, and distributed asset management. | [🌐 Web](https://drive.google.com) |
-| ![](https://cdn.simpleicons.org/dropbox) | **Dropbox**      | Secure cloud storage service enabling synchronization, backup pipelines, and distributed asset management. | [🌐 Web](https://www.dropbox.com) |
-| ![](https://cdn.simpleicons.org/googleads) | **Google Ads**   | Digital advertising ecosystem for monetization, user acquisition, audience targeting, and analytics. | [🌐 Web](https://ads.google.com) |
-| ![](https://cdn.simpleicons.org/stripe) | **Stripe**       | Developer-centric payment infrastructure supporting secure transactions, subscriptions, and global e-commerce systems. | [🌐 Web](https://stripe.com) [📦 Repo](https://github.com/stripe) |
+| Logo                                         | Service          | Description                                                                 | License     | Links                                                         |
+| -------------------------------------------- | ---------------- | --------------------------------------------------------------------------- | ----------- | ------------------------------------------------------------- |
+| ![](https://cdn.simpleicons.org/googleads)   | **Google Ads**   | Advertising and monetization platform for user acquisition and analytics.   | Proprietary | [Web](https://ads.google.com)                                 |
+| ![](https://cdn.simpleicons.org/googledrive) | **Google Drive** | Cloud storage service for synchronization and distributed asset management. | Proprietary | [Web](https://drive.google.com)                               |
+| ![](https://cdn.simpleicons.org/dropbox)     | **Dropbox**      | Cloud-based file hosting platform for backup and remote synchronization.    | Proprietary | [Web](https://www.dropbox.com)                                |
+| ![](https://cdn.simpleicons.org/stripe)      | **Stripe**       | Online payment infrastructure supporting secure global transactions.        | Proprietary | [Web](https://stripe.com) • [Repo](https://github.com/stripe) |
+| ![](https://cdn.simpleicons.org/cloudflare)  | **Cloudflare**   | Global CDN and edge security platform for performance and protection.       | Proprietary | [Web](https://www.cloudflare.com)                             |
 
 ---
 
 ### 🧠 Technology & Ecosystem
 
-| Logo                                               | Technology | Description | Links |
-|----------------------------------------------------|------------|-------------|-------|
-| ![](https://cdn.simpleicons.org/dotnet)            | **.NET** | High-performance managed runtime and cross-platform development framework enabling scalable, reliable, and maintainable software systems. | [🌐 Web](https://dotnet.microsoft.com) [📦 Repo](https://github.com/dotnet) |
-| ![](https://cdn.simpleicons.org/github/black/ffff) | **GitHub** | Industry-leading collaborative development platform providing distributed version control and open-source project hosting. | [🌐 Web](https://github.com) |
-| ![](https://cdn.simpleicons.org/sonarqubecloud)    | **SonarCloud** | Cloud-based continuous inspection platform for automated code quality analysis, security vulnerability detection, and technical debt management. | [🌐 Web](https://sonarcloud.io) |
-
----
+| Logo                                                  | Technology             | Description                                                               | License     | Links                                                                   |
+|-------------------------------------------------------| ---------------------- | ------------------------------------------------------------------------- | ----------- | ----------------------------------------------------------------------- |
+| ![](https://cdn.simpleicons.org/dotnet)               | **.NET**               | Cross-platform managed runtime and development framework.                 | MIT         | [Web](https://dotnet.microsoft.com) • [Repo](https://github.com/dotnet) |
+| ![](https://cdn.simpleicons.org/csharp)               | **C#**                 | Modern object-oriented programming language for scalable applications.    | Open        | [Web](https://learn.microsoft.com/dotnet/csharp/)                       |
+| ![](https://cdn.simpleicons.org/git)                  | **Git**                | Distributed version control system for source code management.            | GPL         | [Web](https://git-scm.com) • [Repo](https://github.com/git/git)         |
+| ![](https://cdn.simpleicons.org/github/black/ffff)               | **GitHub**             | Collaborative development and DevOps platform for hosting projects.       | Proprietary | [Web](https://github.com)                                               |
+| ![](https://cdn.simpleicons.org/githubactions)        | **GitHub Actions**     | CI/CD automation platform for build, test, and deployment workflows.      | Proprietary | [Web](https://github.com/features/actions)                              |
+| ![](https://cdn.simpleicons.org/nuget)                | **NuGet**              | Package manager for .NET enabling dependency distribution.                | MIT         | [Web](https://www.nuget.org) • [Repo](https://github.com/NuGet)         |
+| ![](https://cdn.simpleicons.org/sonarqubecloud)       | **SonarCloud**         | Cloud platform for continuous code quality and security inspection.       | Proprietary | [Web](https://sonarcloud.io)                                            |
+| ![](https://cdn.simpleicons.org/jetbrains/black/ffff) | **JetBrains Rider**    | Advanced cross-platform IDE for .NET and game development workflows.      | Proprietary | [Web](https://www.jetbrains.com/rider/)                                 |
+| ![](https://cdn.simpleicons.org/visualstudio/black/ffff)         | **Visual Studio**      | Integrated development environment for .NET and native applications.      | Proprietary | [Web](https://visualstudio.microsoft.com)                               |
+| ![](https://cdn.simpleicons.org/vscode/black/ffff)               | **Visual Studio Code** | Lightweight extensible source-code editor for multi-language development. | MIT         | [Web](https://code.visualstudio.com)                                    |
 
 
 
