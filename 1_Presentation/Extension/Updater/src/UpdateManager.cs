@@ -525,6 +525,7 @@ namespace Alis.Extension.Updater
             return null;
         }
 
+        
         /// <summary>
         /// Downloads the file using the specified url
         /// </summary>
