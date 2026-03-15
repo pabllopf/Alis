@@ -269,9 +269,9 @@ ALIS is powered by a collection of outstanding open-source projects and industry
 
 | Logo | Project | Description | Links |
 |------|---------|-------------|-------|
-| ![](https://cdn.simpleicons.org/sdl) | **SDL2** | Low-level cross-platform layer providing hardware-accelerated graphics, input handling, and audio access. A common foundation for modern game engines. | [🌐 Web](https://www.libsdl.org) • [📦 Repo](https://github.com/libsdl-org/SDL) |
-| ![](https://cdn.simpleicons.org/sfml) | **SFML** | High-level multimedia framework offering an elegant API for graphics, audio, windowing, and networking with strong performance and developer ergonomics. | [🌐 Web](https://www.sfml-dev.org) • [📦 Repo](https://github.com/SFML/SFML) |
-| ![](https://cdn.simpleicons.org/glfw) | **GLFW** | Lightweight and portable framework for window creation, OpenGL/Vulkan context management, and advanced input handling. | [🌐 Web](https://www.glfw.org) • [📦 Repo](https://github.com/glfw/glfw) |
+| ![](https://cdn.simpleicons.org/sdl) | **SDL2** | Low-level cross-platform layer providing hardware-accelerated graphics, input handling, and audio access. A common foundation for modern game engines. | [🌐 Web](https://www.libsdl.org) [📦 Repo](https://github.com/libsdl-org/SDL) |
+| ![](https://cdn.simpleicons.org/sfml) | **SFML** | High-level multimedia framework offering an elegant API for graphics, audio, windowing, and networking with strong performance and developer ergonomics. | [🌐 Web](https://www.sfml-dev.org) [📦 Repo](https://github.com/SFML/SFML) |
+| ![](https://cdn.simpleicons.org/glfw) | **GLFW** | Lightweight and portable framework for window creation, OpenGL/Vulkan context management, and advanced input handling. | [🌐 Web](https://www.glfw.org) [📦 Repo](https://github.com/glfw/glfw) |
 | ![](https://cdn.simpleicons.org/opengl) | **OpenGL** | Cross-language, cross-platform graphics API designed for high-performance real-time 2D and 3D rendering pipelines. | [🌐 Web](https://www.opengl.org) |
 
 ---
@@ -280,7 +280,7 @@ ALIS is powered by a collection of outstanding open-source projects and industry
 
 | Logo                                    | Project | Description | Links |
 |-----------------------------------------|---------|-------------|-------|
-| ![](https://cdn.simpleicons.org/ffmpeg) | **FFmpeg** | Comprehensive multimedia framework for decoding, encoding, transcoding, streaming, filtering, and processing audiovisual content. | [🌐 Web](https://ffmpeg.org) • [📦 Repo](https://github.com/FFmpeg/FFmpeg) |
+| ![](https://cdn.simpleicons.org/ffmpeg) | **FFmpeg** | Comprehensive multimedia framework for decoding, encoding, transcoding, streaming, filtering, and processing audiovisual content. | [🌐 Web](https://ffmpeg.org) [📦 Repo](https://github.com/FFmpeg/FFmpeg) |
 | ![](https://cdn.simpleicons.org/openal) | **OpenAL** | Cross-platform 3D audio API designed for spatial sound rendering and realistic environmental audio simulation. | [🌐 Web](https://www.openal.org) |
 | ![](https://cdn.simpleicons.org/fmod/black/ffff)  | **FMOD** | Professional adaptive audio engine providing interactive music systems, real-time mixing, and dynamic sound design for games. | [🌐 Web](https://www.fmod.com) |
 
@@ -293,7 +293,7 @@ ALIS is powered by a collection of outstanding open-source projects and industry
 | ![](https://cdn.simpleicons.org/googledrive) | **Google Drive** | Secure cloud storage service enabling synchronization, backup pipelines, and distributed asset management. | [🌐 Web](https://drive.google.com) |
 | ![](https://cdn.simpleicons.org/dropbox) | **Dropbox**      | Secure cloud storage service enabling synchronization, backup pipelines, and distributed asset management. | [🌐 Web](https://www.dropbox.com) |
 | ![](https://cdn.simpleicons.org/googleads) | **Google Ads**   | Digital advertising ecosystem for monetization, user acquisition, audience targeting, and analytics. | [🌐 Web](https://ads.google.com) |
-| ![](https://cdn.simpleicons.org/stripe) | **Stripe**       | Developer-centric payment infrastructure supporting secure transactions, subscriptions, and global e-commerce systems. | [🌐 Web](https://stripe.com) • [📦 Repo](https://github.com/stripe) |
+| ![](https://cdn.simpleicons.org/stripe) | **Stripe**       | Developer-centric payment infrastructure supporting secure transactions, subscriptions, and global e-commerce systems. | [🌐 Web](https://stripe.com) [📦 Repo](https://github.com/stripe) |
 
 ---
 
@@ -301,7 +301,7 @@ ALIS is powered by a collection of outstanding open-source projects and industry
 
 | Logo                                               | Technology | Description | Links |
 |----------------------------------------------------|------------|-------------|-------|
-| ![](https://cdn.simpleicons.org/dotnet)            | **.NET** | High-performance managed runtime and cross-platform development framework enabling scalable, reliable, and maintainable software systems. | [🌐 Web](https://dotnet.microsoft.com) • [📦 Repo](https://github.com/dotnet) |
+| ![](https://cdn.simpleicons.org/dotnet)            | **.NET** | High-performance managed runtime and cross-platform development framework enabling scalable, reliable, and maintainable software systems. | [🌐 Web](https://dotnet.microsoft.com) [📦 Repo](https://github.com/dotnet) |
 | ![](https://cdn.simpleicons.org/github/black/ffff) | **GitHub** | Industry-leading collaborative development platform providing distributed version control and open-source project hosting. | [🌐 Web](https://github.com) |
 | ![](https://cdn.simpleicons.org/sonarqubecloud)    | **SonarCloud** | Cloud-based continuous inspection platform for automated code quality analysis, security vulnerability detection, and technical debt management. | [🌐 Web](https://sonarcloud.io) |
 
