@@ -77,6 +77,7 @@
         <NoWarn>$(NoWarn);NU5128;</NoWarn> <!-- Error NU5128 : Warning As Error: The package contains a project reference -->
         <NoWarn>$(NoWarn);
             CS0067;
+            CA1054: <!-- StringUriOverloads; -->
             NU1904;
             MSB3245;
             CS1685;
