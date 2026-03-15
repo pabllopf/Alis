@@ -292,8 +292,7 @@
             </Properties>
         </ProjectReference>
     </ItemGroup>
-
-
+    
     <ItemGroup Condition="$(AssemblyName.Equals('Alis.Extension.Payment.Stripe'))">
         <PackageReference Include="Stripe.net" Version="49.2.0"/>
     </ItemGroup>
