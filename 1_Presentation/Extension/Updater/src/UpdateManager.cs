@@ -103,6 +103,11 @@ namespace Alis.Extension.Updater
         /// </summary>
         public string Message { get; private set; }
 
+        /// <summary>
+        /// Gets or sets the wait delay in milliseconds used by continuation checkpoints.
+        /// </summary>
+        internal int ContinueDelayMilliseconds { get; set; } = 1000;
+
         public event UpdateProgressEventHandler UpdateProgressChanged;
 
         /// <summary>
@@ -347,7 +352,7 @@ namespace Alis.Extension.Updater
             {
                 Logger.Info("Don't need to do backup.");
                 OnUpdateProgressChanged(0.7f, "Don't need to do backup.");
-                Thread.Sleep(1000);
+                WaitForContinue();
                 return;
             }
 
@@ -561,23 +566,91 @@ namespace Alis.Extension.Updater
         /// <exception cref="InvalidOperationException">The file has an invalid extension.</exception>
         internal void ExtractAndReplace(string fileAsync)
         {
-            if (fileAsync.Contains(".zip"))
+            Logger.Info($"Starting extract and replace for '{fileAsync}'.");
+            string packageType = GetPackageType(fileAsync);
+
+            ExecutePackageExtraction(fileAsync, packageType);
+            ReportPackageExtractionCompleted(packageType);
+        }
+
+        /// <summary>
+        /// Gets the package type using the specified file async
+        /// </summary>
+        /// <param name="fileAsync">The file</param>
+        /// <returns>The package type</returns>
+        internal string GetPackageType(string fileAsync)
+        {
+            if (IsZipPackage(fileAsync))
             {
+                return "zip";
+            }
+
+            if (IsDmgPackage(fileAsync))
+            {
+                return "dmg";
+            }
+
+            return "invalid";
+        }
+
+        /// <summary>
+        /// Ises the zip package using the specified file async
+        /// </summary>
+        /// <param name="fileAsync">The file</param>
+        /// <returns>The bool</returns>
+        internal bool IsZipPackage(string fileAsync) => fileAsync.Contains(".zip");
+
+        /// <summary>
+        /// Ises the dmg package using the specified file async
+        /// </summary>
+        /// <param name="fileAsync">The file</param>
+        /// <returns>The bool</returns>
+        internal bool IsDmgPackage(string fileAsync) => fileAsync.Contains(".dmg");
+
+        /// <summary>
+        /// Executes the package extraction using the specified file async
+        /// </summary>
+        /// <param name="fileAsync">The file</param>
+        /// <param name="packageType">The package type</param>
+        /// <exception cref="InvalidOperationException">The file has an invalid extension.</exception>
+        internal void ExecutePackageExtraction(string fileAsync, string packageType)
+        {
+            if (packageType == "zip")
+            {
+                Logger.Info("Zip package detected, running zip extraction.");
                 ExtractZip(fileAsync);
+                return;
+            }
+
+            if (packageType == "dmg")
+            {
+                Logger.Info("Dmg package detected, running dmg extraction.");
+                ExtractDmg(fileAsync);
+                return;
+            }
+
+            Logger.Info($"Invalid package type detected for '{fileAsync}'.");
+            throw new InvalidOperationException("The file has an invalid extension.");
+        }
+
+        /// <summary>
+        /// Reports the package extraction completed using the specified package type
+        /// </summary>
+        /// <param name="packageType">The package type</param>
+        internal void ReportPackageExtractionCompleted(string packageType)
+        {
+            if (packageType == "zip")
+            {
                 OnUpdateProgressChanged(0.8f, "Extracted and replaced .zip file.");
                 Logger.Info("Extracted and replaced .zip file.");
                 return;
             }
 
-            if (fileAsync.Contains(".dmg"))
+            if (packageType == "dmg")
             {
-                ExtractDmg(fileAsync);
                 OnUpdateProgressChanged(0.8f, "Extracted and replaced .dmg file.");
                 Logger.Info("Extracted and replaced .dmg file.");
-                return;
             }
-
-            throw new InvalidOperationException("The file has an invalid extension.");
         }
 
         /// <summary>
@@ -656,7 +729,10 @@ namespace Alis.Extension.Updater
         /// </summary>
         internal void WaitForContinue()
         {
-            Thread.Sleep(1000);
+            if (ContinueDelayMilliseconds > 0)
+            {
+                Thread.Sleep(ContinueDelayMilliseconds);
+            }
         }
 
         /// <summary>
