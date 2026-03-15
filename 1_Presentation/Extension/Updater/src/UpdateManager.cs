@@ -530,7 +530,9 @@ namespace Alis.Extension.Updater
         /// </summary>
         /// <param name="url">The url</param>
         /// <returns>The file path</returns>
+#pragma warning disable CA1054
         public async Task<string> DownloadFileAsync(string url)
+#pragma warning restore CA1054
         {
             string fileName = Path.GetFileName(new Uri(url).AbsolutePath);
             string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
