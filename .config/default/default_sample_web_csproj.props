@@ -758,49 +758,131 @@ namespace $(RootNamespace)
         </ProjectReference>
     </ItemGroup>
 
-    <!-- ========== PROPIEDADES DE ASSETS ========== -->
-    <PropertyGroup>
-        <!-- Carpeta de recursos -->
-        <AssetsDir>$(ProjectDir)Assets</AssetsDir>
+           <!-- ========== PROPIEDADES DE ASSETS ========== -->
+       <PropertyGroup>
+           <!-- Carpeta de recursos -->
+           <AssetsDir>$(ProjectDir)Assets</AssetsDir>
+   
+           <!-- Archivos generados intermedios -->
+           <AssetsZip>$(ProjectDir)obj/assets.zip</AssetsZip>
+           <AssetsOutput>$(ProjectDir)obj/assets.pack</AssetsOutput>
+   
+           <!-- Hash usado para detectar cambios reales de contenido -->
+           <AssetHashAlgorithm Condition="'$(AssetHashAlgorithm)' == ''">SHA256</AssetHashAlgorithm>
+       </PropertyGroup>
+   
+       <PropertyGroup Condition="'$(AssetsOutput)' != ''">
+           <AssetsIntermediateDir Condition="'$(AssetsIntermediateDir)' == ''">$([System.IO.Path]::GetDirectoryName('$(AssetsOutput)'))</AssetsIntermediateDir>
+           <AssetsManifest Condition="'$(AssetsManifest)' == ''">$(AssetsIntermediateDir)/assets.manifest</AssetsManifest>
+       </PropertyGroup>
+   
+       <ItemGroup Condition="'$(AssetsDir)' != '' AND Exists('$(AssetsDir)')">
+           <AssetPackInput Include="$(AssetsDir)/**/*" />
+       </ItemGroup>
+   
+       <Target Name="_PrepareAssetPackManifest"
+               Condition="'$(AssetsOutput)' != '' AND Exists('$(ProjectDir)')">
+           <Message Importance="High"
+                    Text="[Assets] _PrepareAssetPackManifest iniciado. AssetsDir='$(AssetsDir)' AssetsManifest='$(AssetsManifest)' Algoritmo='$(AssetHashAlgorithm)'" />
+   
+           <MakeDir Directories="$(AssetsIntermediateDir)" Condition="'$(AssetsIntermediateDir)' != ''" />
+   
+           <Message Importance="High"
+                    Text="[Assets] Ficheros detectados: @(AssetPackInput->Count())"
+                    Condition="Exists('$(AssetsDir)')" />
+   
+           <!-- Calcula hash por fichero y conserva metadatos (incluye FullPath) -->
+           <GetFileHash Files="@(AssetPackInput)"
+                        Algorithm="$(AssetHashAlgorithm)"
+                        Condition="Exists('$(AssetsDir)')">
+               <Output TaskParameter="Items" ItemName="AssetPackHashed" />
+           </GetFileHash>
+   
+           <!-- Log por fichero: ruta completa + hash -->
+           <Message Importance="Normal"
+                    Text="[Assets] HASH %(AssetPackHashed.FullPath) | %(AssetPackHashed.FileHash)"
+                    Condition="Exists('$(AssetsDir)')" />
+   
+           <!-- Manifiesto: FullPath|Hash -->
+           <WriteLinesToFile File="$(AssetsManifest)"
+                             Lines="@(AssetPackHashed->'%(FullPath)|%(FileHash)')"
+                             Overwrite="true"
+                             WriteOnlyWhenDifferent="true"
+                             Encoding="ASCII"
+                             Condition="Exists('$(AssetsDir)')" />
+   
+           <!-- Caso sin carpeta de assets -->
+           <WriteLinesToFile File="$(AssetsManifest)"
+                             Lines="__NO_ASSETS__"
+                             Overwrite="true"
+                             WriteOnlyWhenDifferent="true"
+                             Encoding="ASCII"
+                             Condition="!Exists('$(AssetsDir)')" />
+   
+           <Message Importance="High"
+                    Text="[Assets] Manifiesto generado en '$(AssetsManifest)'."
+                    Condition="Exists('$(AssetsDir)')" />
+   
+           <Message Importance="High"
+                    Text="[Assets] No existe AssetsDir. Se escribe marcador __NO_ASSETS__ en el manifiesto."
+                    Condition="!Exists('$(AssetsDir)')" />
+       </Target>
+   
+       <Target Name="ZipAssets"
+               DependsOnTargets="_PrepareAssetPackManifest"
+               BeforeTargets="BeforeBuild;BeforePublish"
+               Condition="'$(AssetsOutput)' != '' AND Exists('$(ProjectDir)')"
+               Inputs="$(AssetsManifest)"
+               Outputs="$(AssetsOutput)">
+   
+           <Message Text="[Assets] ZipAssets incremental: AssetsDir='$(AssetsDir)'; AssetsZip='$(AssetsZip)'; AssetsOutput='$(AssetsOutput)'; AssetsManifest='$(AssetsManifest)'"
+                    Importance="High" />
+   
+           <MakeDir Directories="$(AssetsIntermediateDir)" Condition="'$(AssetsIntermediateDir)' != ''" />
+   
+           <Delete Files="$(AssetsZip)" Condition="Exists('$(AssetsZip)') AND Exists('$(AssetsDir)')" />
+           <Message Importance="Normal"
+                    Text="[Assets] ZIP previo eliminado: $(AssetsZip)"
+                    Condition="Exists('$(AssetsDir)')" />
+   
+           <ZipDirectory SourceDirectory="$(AssetsDir)"
+                         DestinationFile="$(AssetsZip)"
+                         Condition="Exists('$(AssetsDir)')" />
+           <Message Importance="High"
+                    Text="[Assets] ZIP generado: $(AssetsZip)"
+                    Condition="Exists('$(AssetsDir)')" />
+   
+           <Exec Condition="Exists('$(AssetsDir)') AND '$(OS)' == 'Windows_NT'"
+                 Command="powershell -NoLogo -Command &quot;[Convert]::ToBase64String([System.IO.File]::ReadAllBytes('$(AssetsZip)')) | Out-File -FilePath '$(AssetsOutput)' -Encoding ASCII&quot;" />
+           <Message Importance="High"
+                    Text="[Assets] Base64 generado (Windows) en: $(AssetsOutput)"
+                    Condition="Exists('$(AssetsDir)') AND '$(OS)' == 'Windows_NT'" />
+   
+           <Exec Condition="Exists('$(AssetsDir)') AND '$(OS)' != 'Windows_NT'"
+                 Command="sh -c &quot;base64 &lt; '$(AssetsZip)' &gt; '$(AssetsOutput)'&quot;" />
+           <Message Importance="High"
+                    Text="[Assets] Base64 generado (Unix) en: $(AssetsOutput)"
+                    Condition="Exists('$(AssetsDir)') AND '$(OS)' != 'Windows_NT'" />
+   
+           <WriteLinesToFile File="$(AssetsOutput)"
+                             Lines=""
+                             Overwrite="true"
+                             WriteOnlyWhenDifferent="true"
+                             Encoding="ASCII"
+                             Condition="!Exists('$(AssetsDir)')" />
+           <Message Importance="High"
+                    Text="[Assets] Sin assets: se genera archivo vacío en $(AssetsOutput)"
+                    Condition="!Exists('$(AssetsDir)')" />
+       </Target>
+   
+       <!-- ========== REGISTRO DEL OUTPUT ========== -->
+       <ItemGroup>
+           <AdditionalFiles Include="$(AssetsOutput)"
+                            CopyToOutputDirectory="Never"
+                            CopyToPublishDirectory="Never"
+                            Visible="false" />
+       </ItemGroup>
 
-        <!-- Archivos generados intermedios -->
-        <AssetsZip>$(ProjectDir)obj/assets.zip</AssetsZip>
-        <AssetsOutput>$(ProjectDir)obj/assets.pack</AssetsOutput>
-    </PropertyGroup>
-
-
-    <!-- ========== TARGET PARA GENERAR EL ZIP ========== -->
-    <Target Name="ZipAssets" BeforeTargets="BeforeBuild;BeforePublish" Condition="Exists('$(ProjectDir)')">
-
-        <Message Text="ZipAssets: AssetsDir='$(AssetsDir)'; AssetsZip='$(AssetsZip)'; AssetsOutput='$(AssetsOutput)'" Importance="High"/>
-
-        <!-- Windows -->
-        <Exec Condition="Exists('$(AssetsDir)') AND '$(OS)' == 'Windows_NT'"
-              Command="powershell -NoLogo -Command &quot;Compress-Archive -Path '$(AssetsDir)\\*' -DestinationPath '$(AssetsZip)' -Force; [Convert]::ToBase64String([System.IO.File]::ReadAllBytes('$(AssetsZip)')) | Out-File -FilePath '$(AssetsOutput)' -Encoding ASCII&quot;"/>
-
-        <!-- macOS/Linux -->
-        <Exec Condition="Exists('$(AssetsDir)') AND '$(OS)' != 'Windows_NT'"
-              Command="sh -c &quot;zip -r -9 '$(AssetsZip)' '$(AssetsDir)' &amp;&amp; base64 &lt; '$(AssetsZip)' &gt; '$(AssetsOutput)'&quot;"/>
-
-        <!-- Si no hay AssetsDir -->
-        <Message Condition="!Exists('$(AssetsDir)')" Text="No existe el directorio '$(AssetsDir)'. Se genera '$(AssetsOutput)' vacío." Importance="High"/>
-
-        <Exec Condition="!Exists('$(AssetsDir)') AND '$(OS)' == 'Windows_NT'"
-              Command="powershell -NoLogo -Command &quot;Set-Content -Path '$(AssetsOutput)' -Value '' -Encoding ASCII&quot;"/>
-
-        <Exec Condition="!Exists('$(AssetsDir)') AND '$(OS)' != 'Windows_NT'"
-              Command="sh -c &quot;mkdir -p '$(ProjectDir)obj' &amp;&amp; : &gt; '$(AssetsOutput)'&quot;"/>
-
-    </Target>
-
-
-    <!-- ========== REGISTRO DEL OUTPUT ========== -->
-    <ItemGroup>
-        <AdditionalFiles Include="$(AssetsOutput)"
-                         CopyToOutputDirectory="Never"
-                         CopyToPublishDirectory="Never"
-                         Visible="false"/>
-    </ItemGroup>
 
 
 
