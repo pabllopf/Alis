@@ -168,263 +168,45 @@ requirements.
 
 
 
-The following table contains all the available packages, their purpose, and their download statistics.
+The table below groups all modules and their key stats in a single, compact view.
 
-## 🔷Alis
-
-| Package Name | Version                                                           | Downloads                                                               | Description                          |
-| ------------ | ----------------------------------------------------------------- | ----------------------------------------------------------------------- | ------------------------------------ |
-| **Alis**     | ![Nuget](https://img.shields.io/nuget/v/alis?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis?label=nuget&color=green) | Main package for the Alis framework. |
-
-
-## 🔷 Alis.Core
-
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core&metric=coverage)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core)
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core)
-[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core&metric=bugs)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core)
-[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core)
-
-
-| Package Name  | Version                                                                | Downloads                                                                    | Description            |
-| ------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------- |
-| **Alis.Core** | ![Nuget](https://img.shields.io/nuget/v/alis.core?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis.core?label=nuget&color=green) | Core library for Alis. |
-
-
-### 🔷 Alis.Core.Ecs
-
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-ecs&metric=coverage)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-ecs)
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-ecs&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-ecs)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-ecs&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-ecs)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-ecs&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-ecs)
-[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-ecs&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-ecs)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-ecs&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-ecs)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-ecs&metric=bugs)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-ecs)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-ecs&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-ecs)
-[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-ecs&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-ecs)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-ecs&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-ecs)
-
-| Package Name          | Version                                                                        | Downloads                                                                            | Description           |
-| --------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | --------------------- |
-| **Alis.Core.Ecs**     | ![Nuget](https://img.shields.io/nuget/v/alis.core.ecs?label=&color=green)     | ![Nuget](https://img.shields.io/nuget/dt/alis.core.ecs?label=nuget&color=green)     | ECS module.           |
-
-
-### 🔷 Alis.Core.Physic
-
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-physic&metric=coverage)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-physic)
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-physic&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-physic)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-physic&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-physic)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-physic&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-physic)
-[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-physic&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-physic)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-physic&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-physic)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-physic&metric=bugs)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-physic)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-physic&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-physic)
-[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-physic&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-physic)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-physic&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-physic)
-
-| Package Name          | Version                                                                        | Downloads                                                                            | Description           |
-| --------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | --------------------- |
-| **Alis.Core.Physic**  | ![Nuget](https://img.shields.io/nuget/v/alis.core.physic?label=&color=green)  | ![Nuget](https://img.shields.io/nuget/dt/alis.core.physic?label=nuget&color=green)  | Physics module.       |
-
-
-### 🔷 Alis.Core.Audio
-
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-audio&metric=coverage)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-audio)
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-audio&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-audio)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-audio&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-audio)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-audio&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-audio)
-[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-audio&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-audio)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-audio&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-audio)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-audio&metric=bugs)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-audio)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-audio&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-audio)
-[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-audio&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-audio)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-audio&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-audio)
-
-| Package Name          | Version                                                                        | Downloads                                                                            | Description           |
-| --------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | --------------------- |
-| **Alis.Core.Audio**   | ![Nuget](https://img.shields.io/nuget/v/alis.core.audio?label=&color=green)   | ![Nuget](https://img.shields.io/nuget/dt/alis.core.audio?label=nuget&color=green)   | Audio module.         |
-
-
-### 🔷 Alis.Core.Graphic
-
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-graphic&metric=coverage)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-graphic)
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-graphic&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-graphic)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-graphic&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-graphic)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-graphic&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-graphic)
-[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-graphic&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-graphic)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-graphic&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-graphic)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-graphic&metric=bugs)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-graphic)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-graphic&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-graphic)
-[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-graphic&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-graphic)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-graphic&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-graphic)
-
-| Package Name          | Version                                                                        | Downloads                                                                            | Description           |
-| --------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | --------------------- |
-| **Alis.Core.Graphic** | ![Nuget](https://img.shields.io/nuget/v/alis.core.graphic?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis.core.graphic?label=nuget&color=green) | Graphics core module. |
-
-
-## 🔷 Alis.Core.Aspect
-
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect&metric=coverage)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect)
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect)
-[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect&metric=bugs)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect)
-[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect)
-
-
-| Package Name                 | Version                                                                               | Downloads                                                                                   | Description           |
-| ---------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | --------------------- |
-| **Alis.Core.Aspect**         | ![Nuget](https://img.shields.io/nuget/v/alis.core.aspect?label=&color=green)         | ![Nuget](https://img.shields.io/nuget/dt/alis.core.aspect?label=nuget&color=green)         | Base AOP system.      |
-
-
-### 🔷 Alis.Core.Aspect.Data
-
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-data&metric=coverage)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-data)
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-data&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-data)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-data&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-data)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-data&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-data)
-[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-data&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-data)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-data&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-data)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-data&metric=bugs)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-data)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-data&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-data)
-[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-data&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-data)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-data&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-data)
-
-| Package Name                 | Version                                                                               | Downloads                                                                                   | Description           |
-| ---------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | --------------------- |
-| **Alis.Core.Aspect.Data**    | ![Nuget](https://img.shields.io/nuget/v/alis.core.aspect.data?label=&color=green)    | ![Nuget](https://img.shields.io/nuget/dt/alis.core.aspect.data?label=nuget&color=green)    | Data AOP extensions.  |
-
-
-### 🔷 Alis.Core.Aspect.Fluent
-
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-fluent&metric=coverage)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-fluent)
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-fluent&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-fluent)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-fluent&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-fluent)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-fluent&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-fluent)
-[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-fluent&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-fluent)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-fluent&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-fluent)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-fluent&metric=bugs)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-fluent)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-fluent&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-fluent)
-[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-fluent&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-fluent)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-fluent&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-fluent)
-
-
-| Package Name                 | Version                                                                               | Downloads                                                                                   | Description           |
-| ---------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | --------------------- |
-| **Alis.Core.Aspect.Fluent**  | ![Nuget](https://img.shields.io/nuget/v/alis.core.aspect.fluent?label=&color=green)  | ![Nuget](https://img.shields.io/nuget/dt/alis.core.aspect.fluent?label=nuget&color=green)  | Fluent AOP API.       |
-
-
-### 🔷 Alis.Core.Aspect.Logging
-
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-logging&metric=coverage)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-logging)
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-logging&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-logging)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-logging&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-logging)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-logging&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-logging)
-[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-logging&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-logging)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-logging&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-logging)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-logging&metric=bugs)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-logging)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-logging&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-logging)
-[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-logging&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-logging)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-logging&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-logging)
-
-| Package Name                 | Version                                                                               | Downloads                                                                                   | Description           |
-| ---------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | --------------------- |
-| **Alis.Core.Aspect.Logging** | ![Nuget](https://img.shields.io/nuget/v/alis.core.aspect.logging?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis.core.aspect.logging?label=nuget&color=green) | Logging aspects.      |
-
-
-
-### 🔷 Alis.Core.Aspect.Math
-
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-math&metric=coverage)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-math)
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-math&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-math)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-math&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-math)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-math&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-math)
-[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-math&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-math)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-math&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-math)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-math&metric=bugs)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-math)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-math&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-math)
-[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-math&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-math)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-math&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-math)
-
-| Package Name                 | Version                                                                               | Downloads                                                                                   | Description           |
-| ---------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | --------------------- |
-| **Alis.Core.Aspect.Math**    | ![Nuget](https://img.shields.io/nuget/v/alis.core.aspect.math?label=&color=green)    | ![Nuget](https://img.shields.io/nuget/dt/alis.core.aspect.math?label=nuget&color=green)    | Math AOP utilities.   |
-
-
-
-### 🔷 Alis.Core.Aspect.Memory
-
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-memory&metric=coverage)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-memory)
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-memory&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-memory)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-memory&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-memory)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-memory&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-memory)
-[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-memory&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-memory)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-memory&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-memory)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-memory&metric=bugs)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-memory)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-memory&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-memory)
-[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-memory&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-memory)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-memory&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-memory)  
-
-
-| Package Name                 | Version                                                                               | Downloads                                                                                   | Description           |
-| ---------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | --------------------- |
-| **Alis.Core.Aspect.Memory**  | ![Nuget](https://img.shields.io/nuget/v/alis.core.aspect.memory?label=&color=green)  | ![Nuget](https://img.shields.io/nuget/dt/alis.core.aspect.memory?label=nuget&color=green)  | Memory AOP utilities. |
-
-
-
-### 🔷 Alis.Core.Aspect.Time
-
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-time&metric=coverage)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-time)
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-time&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-time)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-time&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-time)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-time&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-time)
-[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-time&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-time)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-time&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-time)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-time&metric=bugs)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-time)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-time&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-time)
-[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-time&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-time)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-time&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-time)
-
-
-| Package Name                 | Version                                                                               | Downloads                                                                                   | Description           |
-| ---------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | --------------------- |
-| **Alis.Core.Aspect.Time**    | ![Nuget](https://img.shields.io/nuget/v/alis.core.aspect.time?label=&color=green)    | ![Nuget](https://img.shields.io/nuget/dt/alis.core.aspect.time?label=nuget&color=green)    | Time AOP utilities.   |
-
-
-
-## 🔷 Alis.Extensions
-
-| Package Name                                   | Version                                                                                                 | Downloads                                                                                                     | Description                    |
-| ---------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------ |
-| **Alis.Extension.Ads.GoogleAds**               | ![Nuget](https://img.shields.io/nuget/v/alis.extension.ads.googleads?label=&color=green)               | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.ads.googleads?label=nuget&color=green)               | Google Ads integration.        |
-| **Alis.Extension.Cloud.DropBox**               | ![Nuget](https://img.shields.io/nuget/v/alis.extension.cloud.dropbox?label=&color=green)               | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.cloud.dropbox?label=nuget&color=green)               | Dropbox integration.           |
-| **Alis.Extension.Cloud.GoogleDrive**           | ![Nuget](https://img.shields.io/nuget/v/alis.extension.cloud.googledrive?label=&color=green)           | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.cloud.googledrive?label=nuget&color=green)           | Google Drive integration.      |
-| **Alis.Extension.Profile**                     | ![Nuget](https://img.shields.io/nuget/v/alis.extension.profile?label=&color=green)                     | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.profile?label=nuget&color=green)                     | Profile system.                |
-| **Alis.Extension.Language.Translator**         | ![Nuget](https://img.shields.io/nuget/v/alis.extension.language.translator?label=&color=green)         | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.language.translator?label=nuget&color=green)         | Translation system.            |
-| **Alis.Extension.Language.Dialogue**           | ![Nuget](https://img.shields.io/nuget/v/alis.extension.language.dialogue?label=&color=green)           | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.language.dialogue?label=nuget&color=green)           | Dialogue system.               |
-| **Alis.Extension.Payment.Stripe**              | ![Nuget](https://img.shields.io/nuget/v/alis.extension.payment.stripe?label=&color=green)              | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.payment.stripe?label=nuget&color=green)              | Stripe integration.            |
-| **Alis.Extension.Math.HighSpeedPriorityQueue** | ![Nuget](https://img.shields.io/nuget/v/Alis.Extension.Math.HighSpeedPriorityQueue?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/Alis.Extension.Math.HighSpeedPriorityQueue?label=nuget&color=green) | High speed priority queue.     |
-| **Alis.Extension.Math.ProceduralDungeon**      | ![Nuget](https://img.shields.io/nuget/v/alis.extension.math.proceduraldungeon?label=&color=green)      | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.math.proceduraldungeon?label=nuget&color=green)      | Procedural dungeon generation. |
-| **Alis.Extension.Updater**                     | ![Nuget](https://img.shields.io/nuget/v/alis.extension.updater?label=&color=green)                     | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.updater?label=nuget&color=green)                     | Updater system.                |
-| **Alis.Extension.Io.FileDialog**               | ![Nuget](https://img.shields.io/nuget/v/alis.extension.io.filedialog?label=&color=green)               | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.io.filedialog?label=nuget&color=green)               | File dialog integration.       |
-| **Alis.Extension.Graphic.Sdl2**                | ![Nuget](https://img.shields.io/nuget/v/alis.extension.graphic.sdl2?label=&color=green)                | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.graphic.sdl2?label=nuget&color=green)                | SDL2 graphics backend.         |
-| **Alis.Extension.Graphic.Sfml**                | ![Nuget](https://img.shields.io/nuget/v/alis.extension.graphic.sfml?label=&color=green)                | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.graphic.sfml?label=nuget&color=green)                | SFML graphics backend.         |
-| **Alis.Extension.Graphic.Glfw**                | ![Nuget](https://img.shields.io/nuget/v/alis.extension.graphic.glfw?label=&color=green)                | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.graphic.glfw?label=nuget&color=green)                | GLFW graphics backend.         |
-| **Alis.Extension.Graphic.Ui**                  | ![Nuget](https://img.shields.io/nuget/v/alis.extension.graphic.ui?label=&color=green)                  | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.graphic.ui?label=nuget&color=green)                  | UI graphics helpers.           |
-| **Alis.Extension.Network**                     | ![Nuget](https://img.shields.io/nuget/v/alis.extension.network?label=&color=green)                     | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.network?label=nuget&color=green)                     | Networking extension.          |
-| **Alis.Extension.Security**                    | ![Nuget](https://img.shields.io/nuget/v/alis.extension.security?label=&color=green)                    | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.security?label=nuget&color=green)                    | Security extension.            |
-| **Alis.Extension.Thread**                      | ![Nuget](https://img.shields.io/nuget/v/alis.extension.thread?label=&color=green)                      | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.thread?label=nuget&color=green)                      | Thread utilities.              |
-| **Alis.Extension.Media.FFmpeg**                | ![Nuget](https://img.shields.io/nuget/v/alis.extension.media.ffmpeg?label=&color=green)                | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.media.ffmpeg?label=nuget&color=green)                | FFmpeg media processing.       |
+| Group | Package | Version | Downloads | Quality Metrics | Description |
+| ----- | ------- | ------- | --------- | --------------- | ----------- |
+| Alis | **Alis** | ![Nuget](https://img.shields.io/nuget/v/alis?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis?label=nuget&color=green) |  N/A<br> N/A<br> N/A | Full game development bundle that brings together the main ALIS runtime modules and entry points. |
+|  |  |  |  |  |  |
+| Alis.Core | **Alis.Core** | ![Nuget](https://img.shields.io/nuget/v/alis.core?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis.core?label=nuget&color=green) |  [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core&metric=coverage)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core)<br> [![Reliability](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core)<br> [![Security](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core) | Shared runtime foundations used across ALIS, including common abstractions, services, and utilities. |
+| Alis.Core | **Alis.Core.Ecs** | ![Nuget](https://img.shields.io/nuget/v/alis.core.ecs?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis.core.ecs?label=nuget&color=green) |  [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-ecs&metric=coverage)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-ecs)<br> [![Reliability](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-ecs&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-ecs)<br> [![Security](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-ecs&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-ecs) | Entity Component System architecture for high-performance composition and update of game objects. |
+| Alis.Core | **Alis.Core.Physic** | ![Nuget](https://img.shields.io/nuget/v/alis.core.physic?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis.core.physic?label=nuget&color=green) |  [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-physic&metric=coverage)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-physic)<br> [![Reliability](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-physic&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-physic)<br> [![Security](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-physic&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-physic) | Physics primitives and simulation helpers for collisions, movement, and world interaction rules. |
+| Alis.Core | **Alis.Core.Audio** | ![Nuget](https://img.shields.io/nuget/v/alis.core.audio?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis.core.audio?label=nuget&color=green) |  [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-audio&metric=coverage)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-audio)<br> [![Reliability](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-audio&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-audio)<br> [![Security](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-audio&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-audio) | Audio abstractions for playback, routing, and integration of music and sound effects. |
+| Alis.Core | **Alis.Core.Graphic** | ![Nuget](https://img.shields.io/nuget/v/alis.core.graphic?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis.core.graphic?label=nuget&color=green) |  [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-graphic&metric=coverage)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-graphic)<br> [![Reliability](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-graphic&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-graphic)<br> [![Security](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-graphic&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-graphic) | Rendering core with graphics abstractions and pipeline components to draw game scenes. |
+|  |  |  |  |  |  |
+| Alis.Core.Aspect | **Alis.Core.Aspect** | ![Nuget](https://img.shields.io/nuget/v/alis.core.aspect?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis.core.aspect?label=nuget&color=green) |  [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect&metric=coverage)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect)<br> [![Reliability](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect)<br> [![Security](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect) | Aspect-oriented foundation for implementing reusable cross-cutting behavior. |
+| Alis.Core.Aspect | **Alis.Core.Aspect.Data** | ![Nuget](https://img.shields.io/nuget/v/alis.core.aspect.data?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis.core.aspect.data?label=nuget&color=green) |  [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-data&metric=coverage)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-data)<br> [![Reliability](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-data&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-data)<br> [![Security](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-data&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-data) | Data-focused aspects that centralize validation, transformation, and data access concerns. |
+| Alis.Core.Aspect | **Alis.Core.Aspect.Fluent** | ![Nuget](https://img.shields.io/nuget/v/alis.core.aspect.fluent?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis.core.aspect.fluent?label=nuget&color=green) |  [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-fluent&metric=coverage)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-fluent)<br> [![Reliability](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-fluent&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-fluent)<br> [![Security](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-fluent&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-fluent) | Fluent API for configuring and composing aspects with readable, chainable syntax. |
+| Alis.Core.Aspect | **Alis.Core.Aspect.Logging** | ![Nuget](https://img.shields.io/nuget/v/alis.core.aspect.logging?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis.core.aspect.logging?label=nuget&color=green) |  [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-logging&metric=coverage)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-logging)<br> [![Reliability](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-logging&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-logging)<br> [![Security](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-logging&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-logging) | Logging aspects for tracing, diagnostics, and consistent observability across modules. |
+| Alis.Core.Aspect | **Alis.Core.Aspect.Math** | ![Nuget](https://img.shields.io/nuget/v/alis.core.aspect.math?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis.core.aspect.math?label=nuget&color=green) |  [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-math&metric=coverage)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-math)<br> [![Reliability](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-math&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-math)<br> [![Security](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-math&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-math) | Aspect helpers for math-intensive workflows, calculations, and numeric consistency checks. |
+| Alis.Core.Aspect | **Alis.Core.Aspect.Memory** | ![Nuget](https://img.shields.io/nuget/v/alis.core.aspect.memory?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis.core.aspect.memory?label=nuget&color=green) |  [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-memory&metric=coverage)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-memory)<br> [![Reliability](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-memory&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-memory)<br> [![Security](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-memory&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-memory) | Memory-oriented aspects to monitor allocations and improve runtime performance behavior. |
+| Alis.Core.Aspect | **Alis.Core.Aspect.Time** | ![Nuget](https://img.shields.io/nuget/v/alis.core.aspect.time?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis.core.aspect.time?label=nuget&color=green) |  [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-time&metric=coverage)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-time)<br> [![Reliability](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-time&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-time)<br> [![Security](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_alis-core-aspect-time&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf_alis-core-aspect-time) | Timing and profiling aspects for latency tracking, benchmarking, and execution monitoring. |
+|  |  |  |  |  |  |
+| Alis.Extensions | **Alis.Extension.Ads.GoogleAds** | ![Nuget](https://img.shields.io/nuget/v/alis.extension.ads.googleads?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.ads.googleads?label=nuget&color=green) |  N/A<br> N/A<br> N/A | Google Ads integration for ad monetization workflows in games and apps. |
+| Alis.Extensions | **Alis.Extension.Cloud.DropBox** | ![Nuget](https://img.shields.io/nuget/v/alis.extension.cloud.dropbox?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.cloud.dropbox?label=nuget&color=green) |  N/A<br> N/A<br> N/A | Dropbox connector for cloud file sync and remote asset access. |
+| Alis.Extensions | **Alis.Extension.Cloud.GoogleDrive** | ![Nuget](https://img.shields.io/nuget/v/alis.extension.cloud.googledrive?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.cloud.googledrive?label=nuget&color=green) |  N/A<br> N/A<br> N/A | Google Drive adapter for cloud persistence and content sharing scenarios. |
+| Alis.Extensions | **Alis.Extension.Profile** | ![Nuget](https://img.shields.io/nuget/v/alis.extension.profile?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.profile?label=nuget&color=green) |  N/A<br> N/A<br> N/A | Profile management features for player settings and user-related metadata. |
+| Alis.Extensions | **Alis.Extension.Language.Translator** | ![Nuget](https://img.shields.io/nuget/v/alis.extension.language.translator?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.language.translator?label=nuget&color=green) |  N/A<br> N/A<br> N/A | Translation utilities to support multilingual interfaces and localized game text. |
+| Alis.Extensions | **Alis.Extension.Language.Dialogue** | ![Nuget](https://img.shields.io/nuget/v/alis.extension.language.dialogue?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.language.dialogue?label=nuget&color=green) |  N/A<br> N/A<br> N/A | Dialogue systems for structured conversations, branching text, and narrative flows. |
+| Alis.Extensions | **Alis.Extension.Payment.Stripe** | ![Nuget](https://img.shields.io/nuget/v/alis.extension.payment.stripe?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.payment.stripe?label=nuget&color=green) |  N/A<br> N/A<br> N/A | Stripe integration for secure payment processing and commerce workflows. |
+| Alis.Extensions | **Alis.Extension.Math.HighSpeedPriorityQueue** | ![Nuget](https://img.shields.io/nuget/v/Alis.Extension.Math.HighSpeedPriorityQueue?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/Alis.Extension.Math.HighSpeedPriorityQueue?label=nuget&color=green) |  N/A<br> N/A<br> N/A | High-performance priority queue for scheduling, pathfinding, and order-sensitive tasks. |
+| Alis.Extensions | **Alis.Extension.Math.ProceduralDungeon** | ![Nuget](https://img.shields.io/nuget/v/alis.extension.math.proceduraldungeon?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.math.proceduraldungeon?label=nuget&color=green) |  N/A<br> N/A<br> N/A | Procedural dungeon generation toolkit for dynamic level layout creation. |
+| Alis.Extensions | **Alis.Extension.Updater** | ![Nuget](https://img.shields.io/nuget/v/alis.extension.updater?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.updater?label=nuget&color=green) |  N/A<br> N/A<br> N/A | Update helper for delivering and applying version upgrades to applications. |
+| Alis.Extensions | **Alis.Extension.Io.FileDialog** | ![Nuget](https://img.shields.io/nuget/v/alis.extension.io.filedialog?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.io.filedialog?label=nuget&color=green) |  N/A<br> N/A<br> N/A | Native file dialog integration for open/save workflows across platforms. |
+| Alis.Extensions | **Alis.Extension.Graphic.Sdl2** | ![Nuget](https://img.shields.io/nuget/v/alis.extension.graphic.sdl2?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.graphic.sdl2?label=nuget&color=green) |  N/A<br> N/A<br> N/A | SDL2 backend adapter for windowing, input handling, and graphics output. |
+| Alis.Extensions | **Alis.Extension.Graphic.Sfml** | ![Nuget](https://img.shields.io/nuget/v/alis.extension.graphic.sfml?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.graphic.sfml?label=nuget&color=green) |  N/A<br> N/A<br> N/A | SFML backend integration for 2D rendering and platform abstraction support. |
+| Alis.Extensions | **Alis.Extension.Graphic.Glfw** | ![Nuget](https://img.shields.io/nuget/v/alis.extension.graphic.glfw?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.graphic.glfw?label=nuget&color=green) |  N/A<br> N/A<br> N/A | GLFW backend for context creation, input processing, and rendering setup. |
+| Alis.Extensions | **Alis.Extension.Graphic.Ui** | ![Nuget](https://img.shields.io/nuget/v/alis.extension.graphic.ui?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.graphic.ui?label=nuget&color=green) |  N/A<br> N/A<br> N/A | UI rendering helpers for menus, overlays, and in-game interface composition. |
+| Alis.Extensions | **Alis.Extension.Network** | ![Nuget](https://img.shields.io/nuget/v/alis.extension.network?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.network?label=nuget&color=green) |  N/A<br> N/A<br> N/A | Networking utilities for client/server communication and multiplayer features. |
+| Alis.Extensions | **Alis.Extension.Security** | ![Nuget](https://img.shields.io/nuget/v/alis.extension.security?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.security?label=nuget&color=green) |  N/A<br> N/A<br> N/A | Security helpers for protection, hardening, and safer data handling practices. |
+| Alis.Extensions | **Alis.Extension.Thread** | ![Nuget](https://img.shields.io/nuget/v/alis.extension.thread?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.thread?label=nuget&color=green) |  N/A<br> N/A<br> N/A | Threading utilities for concurrency control and background task orchestration. |
+| Alis.Extensions | **Alis.Extension.Media.FFmpeg** | ![Nuget](https://img.shields.io/nuget/v/alis.extension.media.ffmpeg?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.media.ffmpeg?label=nuget&color=green) |  N/A<br> N/A<br> N/A | FFmpeg-based media processing for encoding, decoding, and stream handling workflows. |
 
 > **Note**: For the complete list of packages, visit the [NuGet Gallery](https://www.nuget.org/profiles/pabllopf).
 
