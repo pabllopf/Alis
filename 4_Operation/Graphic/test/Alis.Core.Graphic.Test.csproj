@@ -90,7 +90,7 @@
     </ItemGroup>
     
     <ItemGroup Condition="$(AssemblyName.Contains('Alis.Extension.Payment.Stripe'))">
-        <PackageReference Include="Stripe.net" Version="47.1.0"/>
+        <PackageReference Include="Stripe.net" Version="49.2.0"/>
     </ItemGroup>
 
     <ItemGroup Condition="$(AssemblyName.Contains('Alis.Extension.Ads.GoogleAds'))">
