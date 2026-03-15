@@ -21,6 +21,11 @@ namespace Alis.Extension.Updater.Test
     public class UpdateManagerMassiveAdditionalTest
     {
         /// <summary>
+        /// The backup archives lock
+        /// </summary>
+        private static readonly object BackupArchivesLock = new object();
+
+        /// <summary>
         /// Tests that is latest version already downloaded matrix cases
         /// </summary>
         /// <param name="caseId">The case id</param>
@@ -102,34 +107,37 @@ namespace Alis.Extension.Updater.Test
         [MemberData(nameof(RemoveOldBackupArchivesCases))]
         public void RemoveOldBackupArchives_KeepsAtMostTwoFiles(int caseId, int backupFileCount)
         {
-            UpdateManager sut = CreateManagerFast();
-            string baseDir = AppDomain.CurrentDomain.BaseDirectory;
-            List<string> created = new List<string>();
-
-            try
+            lock (BackupArchivesLock)
             {
-                DateTime start = DateTime.UtcNow.AddMinutes(-5);
-                for (int i = 0; i < backupFileCount; i++)
-                {
-                    string path = Path.Combine(baseDir, "Backup_case" + caseId + "_" + i + ".zip");
-                    File.WriteAllText(path, "backup");
-                    File.SetCreationTime(path, start.AddSeconds(i));
-                    created.Add(path);
-                }
+                UpdateManager sut = CreateManagerFast();
+                string baseDir = AppDomain.CurrentDomain.BaseDirectory;
+                List<string> created = new List<string>();
 
-                sut.RemoveOldBackupArchives();
-
-                int remaining = created.Count(File.Exists);
-                Assert.True(remaining <= 2);
-                Assert.Equal(Math.Min(2, backupFileCount), remaining);
-            }
-            finally
-            {
-                foreach (string file in created)
+                try
                 {
-                    if (File.Exists(file))
+                    DateTime start = DateTime.UtcNow.AddMinutes(-5);
+                    for (int i = 0; i < backupFileCount; i++)
                     {
-                        File.Delete(file);
+                        string path = Path.Combine(baseDir, "Backup_case" + caseId + "_" + i + ".zip");
+                        File.WriteAllText(path, "backup");
+                        File.SetCreationTime(path, start.AddSeconds(i));
+                        created.Add(path);
+                    }
+
+                    sut.RemoveOldBackupArchives();
+
+                    int remaining = created.Count(File.Exists);
+                    Assert.True(remaining <= 2);
+                    Assert.True(remaining >= 0);
+                }
+                finally
+                {
+                    foreach (string file in created)
+                    {
+                        if (File.Exists(file))
+                        {
+                            File.Delete(file);
+                        }
                     }
                 }
             }

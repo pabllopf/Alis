@@ -9,8 +9,17 @@ using Xunit;
 
 namespace Alis.Extension.Updater.Test
 {
+    /// <summary>
+    /// The update manager extract and replace test class
+    /// </summary>
     public class UpdateManagerExtractAndReplaceTest
     {
+        /// <summary>
+        /// Tests that is zip package matrix
+        /// </summary>
+        /// <param name="caseId">The case id</param>
+        /// <param name="fileName">The file name</param>
+        /// <param name="expected">The expected</param>
         [Theory]
         [MemberData(nameof(IsZipPackageCases))]
         public void IsZipPackage_Matrix(int caseId, string fileName, bool expected)
@@ -23,6 +32,12 @@ namespace Alis.Extension.Updater.Test
             Assert.True(caseId >= 0);
         }
 
+        /// <summary>
+        /// Tests that is dmg package matrix
+        /// </summary>
+        /// <param name="caseId">The case id</param>
+        /// <param name="fileName">The file name</param>
+        /// <param name="expected">The expected</param>
         [Theory]
         [MemberData(nameof(IsDmgPackageCases))]
         public void IsDmgPackage_Matrix(int caseId, string fileName, bool expected)
@@ -35,6 +50,12 @@ namespace Alis.Extension.Updater.Test
             Assert.True(caseId >= 0);
         }
 
+        /// <summary>
+        /// Tests that get package type matrix
+        /// </summary>
+        /// <param name="caseId">The case id</param>
+        /// <param name="fileName">The file name</param>
+        /// <param name="expected">The expected</param>
         [Theory]
         [MemberData(nameof(GetPackageTypeCases))]
         public void GetPackageType_Matrix(int caseId, string fileName, string expected)
@@ -47,6 +68,12 @@ namespace Alis.Extension.Updater.Test
             Assert.True(caseId >= 0);
         }
 
+        /// <summary>
+        /// Tests that report package extraction completed updates state for known types
+        /// </summary>
+        /// <param name="packageType">The package type</param>
+        /// <param name="expectedProgress">The expected progress</param>
+        /// <param name="expectedMessage">The expected message</param>
         [Theory]
         [InlineData("zip", 0.8f, "Extracted and replaced .zip file.")]
         [InlineData("dmg", 0.8f, "Extracted and replaced .dmg file.")]
@@ -60,6 +87,11 @@ namespace Alis.Extension.Updater.Test
             Assert.Equal(expectedMessage, sut.Message);
         }
 
+        /// <summary>
+        /// Tests that execute package extraction throws for unknown types
+        /// </summary>
+        /// <param name="caseId">The case id</param>
+        /// <param name="packageType">The package type</param>
         [Theory]
         [MemberData(nameof(UnknownPackageTypesCases))]
         public void ExecutePackageExtraction_Throws_ForUnknownTypes(int caseId, string packageType)
@@ -75,6 +107,11 @@ namespace Alis.Extension.Updater.Test
             Assert.True(caseId >= 0);
         }
 
+        /// <summary>
+        /// Tests that extract and replace throws for invalid extensions
+        /// </summary>
+        /// <param name="caseId">The case id</param>
+        /// <param name="fileName">The file name</param>
         [Theory]
         [MemberData(nameof(ExtractAndReplaceInvalidCases))]
         public void ExtractAndReplace_Throws_ForInvalidExtensions(int caseId, string fileName)
@@ -87,6 +124,9 @@ namespace Alis.Extension.Updater.Test
             Assert.True(caseId >= 0);
         }
 
+        /// <summary>
+        /// Tests that extract and replace throws for null input
+        /// </summary>
         [Fact]
         public void ExtractAndReplace_Throws_ForNullInput()
         {
@@ -95,6 +135,11 @@ namespace Alis.Extension.Updater.Test
             Assert.Throws<NullReferenceException>(() => sut.ExtractAndReplace(null));
         }
 
+        /// <summary>
+        /// Tests that extract and replace extracts zip and reports progress
+        /// </summary>
+        /// <param name="caseId">The case id</param>
+        /// <param name="zipName">The zip name</param>
         [Theory]
         [MemberData(nameof(ExtractAndReplaceZipCases))]
         public void ExtractAndReplace_ExtractsZip_AndReportsProgress(int caseId, string zipName)
@@ -118,6 +163,9 @@ namespace Alis.Extension.Updater.Test
             Assert.True(File.Exists(Path.Combine(programFolder, "content", "file-" + caseId + ".txt")));
         }
 
+        /// <summary>
+        /// Tests that extract and replace when name contains zip and dmg prioritizes zip
+        /// </summary>
         [Fact]
         public void ExtractAndReplace_WhenNameContainsZipAndDmg_PrioritizesZip()
         {
@@ -139,6 +187,10 @@ namespace Alis.Extension.Updater.Test
             Assert.True(File.Exists(Path.Combine(programFolder, "priority", "check.txt")));
         }
 
+        /// <summary>
+        /// Ises the zip package cases
+        /// </summary>
+        /// <returns>An enumerable of object array</returns>
         public static IEnumerable<object[]> IsZipPackageCases()
         {
             string[] names =
@@ -159,6 +211,10 @@ namespace Alis.Extension.Updater.Test
             }
         }
 
+        /// <summary>
+        /// Ises the dmg package cases
+        /// </summary>
+        /// <returns>An enumerable of object array</returns>
         public static IEnumerable<object[]> IsDmgPackageCases()
         {
             string[] names =
@@ -179,6 +235,10 @@ namespace Alis.Extension.Updater.Test
             }
         }
 
+        /// <summary>
+        /// Gets the package type cases
+        /// </summary>
+        /// <returns>An enumerable of object array</returns>
         public static IEnumerable<object[]> GetPackageTypeCases()
         {
             for (int i = 0; i < 60; i++)
@@ -218,6 +278,10 @@ namespace Alis.Extension.Updater.Test
             }
         }
 
+        /// <summary>
+        /// Unknowns the package types cases
+        /// </summary>
+        /// <returns>An enumerable of object array</returns>
         public static IEnumerable<object[]> UnknownPackageTypesCases()
         {
             string[] types = { "invalid", "unknown", "", "tar", "pkg", "null-like" };
@@ -227,6 +291,10 @@ namespace Alis.Extension.Updater.Test
             }
         }
 
+        /// <summary>
+        /// Extracts the and replace invalid cases
+        /// </summary>
+        /// <returns>An enumerable of object array</returns>
         public static IEnumerable<object[]> ExtractAndReplaceInvalidCases()
         {
             string[] invalidExtensions = { "txt", "tar", "7z", "rar", "pkg", "msi", "bin", "json", "gz", "iso" };
@@ -236,6 +304,10 @@ namespace Alis.Extension.Updater.Test
             }
         }
 
+        /// <summary>
+        /// Extracts the and replace zip cases
+        /// </summary>
+        /// <returns>An enumerable of object array</returns>
         public static IEnumerable<object[]> ExtractAndReplaceZipCases()
         {
             for (int i = 0; i < 20; i++)
@@ -245,6 +317,12 @@ namespace Alis.Extension.Updater.Test
             }
         }
 
+        /// <summary>
+        /// Creates the manager fast using the specified version to install
+        /// </summary>
+        /// <param name="versionToInstall">The version to install</param>
+        /// <param name="programFolder">The program folder</param>
+        /// <returns>The manager</returns>
         private static UpdateManager CreateManagerFast(string versionToInstall = "latest", string programFolder = null)
         {
             Mock<IGitHubApiService> api = new Mock<IGitHubApiService>();
@@ -261,15 +339,30 @@ namespace Alis.Extension.Updater.Test
             return manager;
         }
 
+        /// <summary>
+        /// The temp folder class
+        /// </summary>
+        /// <seealso cref="IDisposable"/>
         private sealed class TempFolder : IDisposable
         {
+            /// <summary>
+            /// Initializes a new instance of the <see cref="TempFolder"/> class
+            /// </summary>
+            /// <param name="path">The path</param>
             private TempFolder(string path)
             {
                 Path = path;
             }
 
+            /// <summary>
+            /// Gets the value of the path
+            /// </summary>
             public string Path { get; }
 
+            /// <summary>
+            /// Creates
+            /// </summary>
+            /// <returns>The temp folder</returns>
             public static TempFolder Create()
             {
                 string path = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "alis-updater-tests", Guid.NewGuid().ToString("N"));
@@ -277,6 +370,9 @@ namespace Alis.Extension.Updater.Test
                 return new TempFolder(path);
             }
 
+            /// <summary>
+            /// Disposes this instance
+            /// </summary>
             public void Dispose()
             {
                 if (Directory.Exists(Path))
