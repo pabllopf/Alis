@@ -300,7 +300,6 @@
 
     <ItemGroup Condition="$(AssemblyName.Equals('Alis.Extension.Ads.GoogleAds'))">
         <PackageReference Include="Google.Ads.Common" Version="9.5.3"/>
-        <PackageReference Include="System.Private.Uri" Version="4.3.2"/>
     </ItemGroup>
 
     <ItemGroup Condition="$(AssemblyName.Equals('Alis.Extension.Cloud.GoogleDrive'))">
