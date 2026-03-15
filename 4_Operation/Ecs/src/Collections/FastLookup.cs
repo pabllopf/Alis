@@ -53,18 +53,18 @@ namespace Alis.Core.Ecs.Collections
         /// <summary>
         ///     The data
         /// </summary>
-        private InlineArray8<uint> _data;
+        internal InlineArray8<uint> _data;
 
         /// <summary>
         ///     The ids
         /// </summary>
-        private InlineArray8<ushort> _ids;
+        internal InlineArray8<ushort> _ids;
 
 
         /// <summary>
         ///     The index
         /// </summary>
-        private int index;
+        internal int index;
 
        /// <summary>
        /// Finds the adjacent archetype id using the specified id

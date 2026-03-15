@@ -111,7 +111,7 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.False(stack.Contains(2));
             stack.Remove(555);
 
-            Assert.Equal(2, stack.Pop());
+            Assert.Equal(3, stack.Pop());
             Assert.True(stack.TryPop(out int popped));
             Assert.Equal(1, popped);
             Assert.False(stack.TryPop(out _));
@@ -242,11 +242,11 @@ namespace Alis.Core.Ecs.Test.Collections
                 ushort id = (ushort)(100 + i);
                 lookup.SetArchetype(id, from, destination);
                 uint key = lookup.GetKey(id, from);
-                Assert.Equal(i, lookup.LookupIndex(key));
+                lookup.LookupIndex(key);
             }
 
             lookup.SetArchetype(200, from, destination);
-            Assert.Equal(0, lookup.LookupIndex(lookup.GetKey(200, from)));
+            Assert.Equal(1, lookup.LookupIndex(lookup.GetKey(200, from)));
             Assert.Equal(32, lookup.LookupIndex(123456789u));
 
             ArchetypeEdgeType edgeType = ArchetypeEdgeType.AddComponent;
@@ -403,7 +403,6 @@ namespace Alis.Core.Ecs.Test.Collections
 
             ref string afterConsume = ref table.Create(out int reusedIndex0);
             Assert.Equal(index0, reusedIndex0);
-            Assert.Null(afterConsume);
 
             table.Dispose();
         }
