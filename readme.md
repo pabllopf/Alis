@@ -288,7 +288,6 @@ ALIS is powered by a combination of open-source and licensed technologies that e
 | ----------------------------------------- | ------------ | ------------------------------------------------------------------------ | ----------- | ---------------------------------------------------------------------------------- |
 | ![](https://cdn.simpleicons.org/ffmpeg)   | **FFmpeg**   | Multimedia framework for encoding, decoding, transcoding, and streaming. | LGPL/GPL    | [Web](https://ffmpeg.org) • [Repo](https://github.com/FFmpeg/FFmpeg)               |
 | ![](https://cdn.simpleicons.org/openal)   | **OpenAL**   | Cross-platform 3D audio API for spatial sound rendering.                 | LGPL        | [Web](https://www.openal.org)                                                      |
-| ![](https://cdn.simpleicons.org/fmod)     | **FMOD**     | Professional adaptive audio engine for interactive music and effects.    | Proprietary | [Web](https://www.fmod.com)                                                        |
 | ![](https://cdn.simpleicons.org/audacity) | **Audacity** | Digital audio editor and recording tool.                                 | GPL         | [Web](https://www.audacityteam.org) • [Repo](https://github.com/audacity/audacity) |
 
 ---
@@ -307,20 +306,16 @@ ALIS is powered by a combination of open-source and licensed technologies that e
 
 ### 🧠 Technology & Ecosystem
 
-| Logo                                                  | Technology             | Description                                                               | License     | Links                                                                   |
-|-------------------------------------------------------| ---------------------- | ------------------------------------------------------------------------- | ----------- | ----------------------------------------------------------------------- |
-| ![](https://cdn.simpleicons.org/dotnet)               | **.NET**               | Cross-platform managed runtime and development framework.                 | MIT         | [Web](https://dotnet.microsoft.com) • [Repo](https://github.com/dotnet) |
-| ![](https://cdn.simpleicons.org/csharp)               | **C#**                 | Modern object-oriented programming language for scalable applications.    | Open        | [Web](https://learn.microsoft.com/dotnet/csharp/)                       |
-| ![](https://cdn.simpleicons.org/git)                  | **Git**                | Distributed version control system for source code management.            | GPL         | [Web](https://git-scm.com) • [Repo](https://github.com/git/git)         |
-| ![](https://cdn.simpleicons.org/github/black/ffff)               | **GitHub**             | Collaborative development and DevOps platform for hosting projects.       | Proprietary | [Web](https://github.com)                                               |
-| ![](https://cdn.simpleicons.org/githubactions)        | **GitHub Actions**     | CI/CD automation platform for build, test, and deployment workflows.      | Proprietary | [Web](https://github.com/features/actions)                              |
-| ![](https://cdn.simpleicons.org/nuget)                | **NuGet**              | Package manager for .NET enabling dependency distribution.                | MIT         | [Web](https://www.nuget.org) • [Repo](https://github.com/NuGet)         |
-| ![](https://cdn.simpleicons.org/sonarqubecloud)       | **SonarCloud**         | Cloud platform for continuous code quality and security inspection.       | Proprietary | [Web](https://sonarcloud.io)                                            |
-| ![](https://cdn.simpleicons.org/jetbrains/black/ffff) | **JetBrains Rider**    | Advanced cross-platform IDE for .NET and game development workflows.      | Proprietary | [Web](https://www.jetbrains.com/rider/)                                 |
-| ![](https://cdn.simpleicons.org/visualstudio/black/ffff)         | **Visual Studio**      | Integrated development environment for .NET and native applications.      | Proprietary | [Web](https://visualstudio.microsoft.com)                               |
-| ![](https://cdn.simpleicons.org/vscode/black/ffff)               | **Visual Studio Code** | Lightweight extensible source-code editor for multi-language development. | MIT         | [Web](https://code.visualstudio.com)                                    |
-
-
+| Logo                                                  | Technology             | Description                                                               | License                 | Links                                                                   |
+|-------------------------------------------------------| ---------------------- | ------------------------------------------------------------------------- |-------------------------| ----------------------------------------------------------------------- |
+| ![](https://cdn.simpleicons.org/dotnet)               | **.NET**               | Cross-platform managed runtime and development framework.                 | MIT                     | [Web](https://dotnet.microsoft.com) • [Repo](https://github.com/dotnet) |
+| ![](https://cdn.simpleicons.org/csharp)               | **C#**                 | Modern object-oriented programming language for scalable applications.    | Open                    | [Web](https://learn.microsoft.com/dotnet/csharp/)                       |
+| ![](https://cdn.simpleicons.org/git)                  | **Git**                | Distributed version control system for source code management.            | GPL                     | [Web](https://git-scm.com) • [Repo](https://github.com/git/git)         |
+| ![](https://cdn.simpleicons.org/github/black/ffff)               | **GitHub**             | Collaborative development and DevOps platform for hosting projects.       | Proprietary With Open Source Use License             | [Web](https://github.com)                                               |
+| ![](https://cdn.simpleicons.org/githubactions)        | **GitHub Actions**     | CI/CD automation platform for build, test, and deployment workflows.      | Proprietary With Open Source Use License             | [Web](https://github.com/features/actions)                              |
+| ![](https://cdn.simpleicons.org/nuget)                | **NuGet**              | Package manager for .NET enabling dependency distribution.                | MIT                     | [Web](https://www.nuget.org) • [Repo](https://github.com/NuGet)         |
+| ![](https://cdn.simpleicons.org/sonarqubecloud)       | **SonarCloud**         | Cloud platform for continuous code quality and security inspection.       | Proprietary With Open Source Use License        | [Web](https://sonarcloud.io)                                            |
+| ![](https://cdn.simpleicons.org/jetbrains/black/ffff) | **JetBrains Rider**    | Advanced cross-platform IDE for .NET and game development workflows.      | Proprietary With Open Source Use License | [Web](https://www.jetbrains.com/rider/)                                 |
 
 ## Contributor Guide
 
