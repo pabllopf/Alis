@@ -295,13 +295,13 @@ ALIS is powered by a combination of open-source and licensed technologies that e
 
 ### ☁️ Cloud & Online Services
 
-| Logo                                         | Service          | Description                                                                 | License     | Links                                                         |
-| -------------------------------------------- | ---------------- | --------------------------------------------------------------------------- | ----------- | ------------------------------------------------------------- |
-| ![](https://cdn.simpleicons.org/googleads)   | **Google Ads**   | Advertising and monetization platform for user acquisition and analytics.   | Proprietary | [Web](https://ads.google.com)                                 |
-| ![](https://cdn.simpleicons.org/googledrive) | **Google Drive** | Cloud storage service for synchronization and distributed asset management. | Proprietary | [Web](https://drive.google.com)                               |
-| ![](https://cdn.simpleicons.org/dropbox)     | **Dropbox**      | Cloud-based file hosting platform for backup and remote synchronization.    | Proprietary | [Web](https://www.dropbox.com)                                |
-| ![](https://cdn.simpleicons.org/stripe)      | **Stripe**       | Online payment infrastructure supporting secure global transactions.        | Proprietary | [Web](https://stripe.com) • [Repo](https://github.com/stripe) |
-| ![](https://cdn.simpleicons.org/cloudflare)  | **Cloudflare**   | Global CDN and edge security platform for performance and protection.       | Proprietary | [Web](https://www.cloudflare.com)                             |
+| Logo                                         | Service            | Description                                                                 | License     | Links                                                         |
+| -------------------------------------------- |--------------------| --------------------------------------------------------------------------- | ----------- | ------------------------------------------------------------- |
+| ![](https://cdn.simpleicons.org/googleads)   | **Google Ads**     | Advertising and monetization platform for user acquisition and analytics.   | Proprietary | [Web](https://ads.google.com)                                 |
+| ![](https://cdn.simpleicons.org/googledrive) | **Google Drive**   | Cloud storage service for synchronization and distributed asset management. | Proprietary | [Web](https://drive.google.com)                               |
+| ![](https://cdn.simpleicons.org/dropbox)     | **Dropbox**        | Cloud-based file hosting platform for backup and remote synchronization.    | Proprietary | [Web](https://www.dropbox.com)                                |
+| ![](https://cdn.simpleicons.org/stripe)      | **Stripe**         | Online payment infrastructure supporting secure global transactions.        | Proprietary | [Web](https://stripe.com) • [Repo](https://github.com/stripe) |
+| ![](https://cdn.simpleicons.org/cloudflare)  | **Cloudflare**     | Global CDN and edge security platform for performance and protection.       | Proprietary | [Web](https://www.cloudflare.com)                             |
 
 ---
 
