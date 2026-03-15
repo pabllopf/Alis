@@ -269,7 +269,7 @@ ALIS is powered by a combination of open-source and licensed technologies that e
 ### 🎮 Game Development & Graphics
 
 | Logo                                                                                 | Technology     | Description                                                                      | License    | Links                                                                       |
-|--------------------------------------------------------------------------------------| -------------- | -------------------------------------------------------------------------------- | ---------- | --------------------------------------------------------------------------- |
+|--------------------------------------------------------------------------------------|----------------|----------------------------------------------------------------------------------| ---------- |-----------------------------------------------------------------------------|
 | ![](https://raw.githubusercontent.com/pabllopf/Alis/master/docs/logos/sdl2.svg)      | **SDL2**       | Cross-platform low-level multimedia layer for graphics, input, and audio.        | Zlib       | [Web](https://www.libsdl.org) • [Repo](https://github.com/libsdl-org/SDL)   |
 | ![](https://cdn.simpleicons.org/sfml)                                                | **SFML**       | Modern C++ multimedia framework for graphics, audio, windowing, and networking.  | Zlib       | [Web](https://www.sfml-dev.org) • [Repo](https://github.com/SFML/SFML)      |
 | ![](https://raw.githubusercontent.com/pabllopf/Alis/master/docs/logos/glfw.svg)      | **GLFW**       | Lightweight framework for OpenGL/Vulkan contexts, window creation, and input.    | Zlib       | [Web](https://www.glfw.org) • [Repo](https://github.com/glfw/glfw)          |
@@ -279,6 +279,8 @@ ALIS is powered by a combination of open-source and licensed technologies that e
 | ![](https://cdn.simpleicons.org/webgl)                                               | **WebGL**      | JavaScript API for GPU-accelerated rendering inside web browsers.                | Open       | [Web](https://www.khronos.org/webgl/)                                       |
 | ![](https://raw.githubusercontent.com/pabllopf/Alis/master/docs/logos/dearimgui.svg) | **Dear ImGui** | Immediate-mode GUI library for debug tools and in-engine interfaces.             | MIT        | [Repo](https://github.com/ocornut/imgui)                                    |
 | ![](https://cdn.simpleicons.org/blender)                                             | **Blender**    | 3D creation suite for modeling, animation, and asset production.                 | GPL        | [Web](https://www.blender.org) • [Repo](https://github.com/blender/blender) |
+| ![](https://cdn.simpleicons.org/gimp/black/ffff)                                     | **Gimp**       | 2D creation suite for modeling, animation, and asset production.                 | GPL        | [Web](https://www.gimp.org)                                                 |
+
 
 ---
 
@@ -287,7 +289,6 @@ ALIS is powered by a combination of open-source and licensed technologies that e
 | Logo                                      | Technology   | Description                                                              | License     | Links                                                                              |
 | ----------------------------------------- | ------------ | ------------------------------------------------------------------------ | ----------- | ---------------------------------------------------------------------------------- |
 | ![](https://cdn.simpleicons.org/ffmpeg)   | **FFmpeg**   | Multimedia framework for encoding, decoding, transcoding, and streaming. | LGPL/GPL    | [Web](https://ffmpeg.org) • [Repo](https://github.com/FFmpeg/FFmpeg)               |
-| ![](https://cdn.simpleicons.org/openal)   | **OpenAL**   | Cross-platform 3D audio API for spatial sound rendering.                 | LGPL        | [Web](https://www.openal.org)                                                      |
 | ![](https://cdn.simpleicons.org/audacity) | **Audacity** | Digital audio editor and recording tool.                                 | GPL         | [Web](https://www.audacityteam.org) • [Repo](https://github.com/audacity/audacity) |
 
 ---
