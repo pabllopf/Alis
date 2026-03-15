@@ -1,0 +1,47 @@
+name: "[ALIS][EXTENSION][SECURITY][SONARCLOUD]"
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [ opened, synchronize, reopened ]
+
+jobs:
+  build-and-analyze:
+    permissions:
+      actions: write
+      checks: write
+      contents: write
+      deployments: write
+      discussions: write
+      issues: write
+      pages: write
+      packages: write
+      pull-requests: write
+      repository-projects: write
+      security-events: write
+      statuses: write
+    if: contains(github.event.head_commit.message, 'scan:')
+    runs-on: macos-15-intel
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.x.x'
+
+      - name: SonarQube Scan
+        run: |
+          dotnet tool install --global coverlet.console --version 6.0.3
+          dotnet tool install --global dotnet-sonarscanner --version 8.0.2
+
+          dotnet sonarscanner begin /k:"pabllopf_alis-extension-security" /o:"pabllopf" /d:sonar.scanner.scanAll=false /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" /d:sonar.token="${{ secrets.SONAR_TOKEN_ALIS_EXTENSION_SECURITY }}" /d:sonar.scanner.skipJreProvisioning=false /d:sonar.language=cs /d:sonar.dotnet.version=8.0 /d:sonar.verbose=false /d:sonar.cs.opencover.reportsPaths="./.test/**/*.opencover.xml"
+          dotnet build -c Debug -f net8.0 ./1_Presentation/Extension/Security/src/Alis.Extension.Security.csproj
+          dotnet test -f net8.0 -c Debug ./1_Presentation/Extension/Security/test/Alis.Extension.Security.Test.csproj --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
+          dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN_ALIS_EXTENSION_SECURITY }}"
