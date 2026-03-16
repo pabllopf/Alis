@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:CollectionsExhaustiveCoverageTest.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,12 +41,12 @@ using Xunit;
 namespace Alis.Core.Ecs.Test.Collections
 {
     /// <summary>
-    /// The collections exhaustive coverage test class
+    ///     The collections exhaustive coverage test class
     /// </summary>
     public class CollectionsExhaustiveCoverageTest
     {
         /// <summary>
-        /// Tests that fastest array pool rent return resize and private paths work
+        ///     Tests that fastest array pool rent return resize and private paths work
         /// </summary>
         [Fact]
         public void FastestArrayPool_RentReturnResizeAndPrivatePaths_Work()
@@ -30,7 +59,7 @@ namespace Alis.Core.Ecs.Test.Collections
             string[] sixteen = pool.Rent(16);
             Assert.True(sixteen.Length >= 16);
             sixteen[0] = "keep";
-            pool.Return(sixteen, clearArray: true);
+            pool.Return(sixteen, true);
 
             string[] reused = pool.Rent(16);
             Assert.Same(sixteen, reused);
@@ -48,8 +77,8 @@ namespace Alis.Core.Ecs.Test.Collections
             MethodInfo getBucketIndex = typeof(FastestArrayPool<int>)
                 .GetMethod("GetBucketIndex", BindingFlags.Static | BindingFlags.NonPublic);
             Assert.NotNull(getBucketIndex);
-            Assert.Equal(-1, (int)getBucketIndex.Invoke(null, [15])!);
-            Assert.Equal(0, (int)getBucketIndex.Invoke(null, [16])!);
+            Assert.Equal(-1, (int) getBucketIndex.Invoke(null, [15])!);
+            Assert.Equal(0, (int) getBucketIndex.Invoke(null, [16])!);
 
             FastestArrayPool<int> intPool = new FastestArrayPool<int>();
             int[] candidate = intPool.Rent(32);
@@ -68,7 +97,7 @@ namespace Alis.Core.Ecs.Test.Collections
         }
 
         /// <summary>
-        /// Tests that fastest stack all public members and enumerator branches work
+        ///     Tests that fastest stack all public members and enumerator branches work
         /// </summary>
         [Fact]
         public void FastestStack_AllPublicMembersAndEnumeratorBranches_Work()
@@ -77,13 +106,13 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(0, stack.Count);
             Assert.Equal(0, stack.Capacity);
             Assert.False(stack.Any);
-            Assert.False(((ICollection)stack).IsSynchronized);
-            Assert.NotNull(((ICollection)stack).SyncRoot);
+            Assert.False(((ICollection) stack).IsSynchronized);
+            Assert.NotNull(((ICollection) stack).SyncRoot);
 
             Assert.Throws<ArgumentOutOfRangeException>(() => new FastestStack<int>(-1));
-            Assert.Throws<ArgumentNullException>(() => new FastestStack<int>((IEnumerable<int>)null));
+            Assert.Throws<ArgumentNullException>(() => new FastestStack<int>(null));
 
-            FastestStack<int> fromEnumerable = new FastestStack<int>(new[] { 1, 2, 3 });
+            FastestStack<int> fromEnumerable = new FastestStack<int>(new[] {1, 2, 3});
             Assert.Equal(3, fromEnumerable.Count);
 
             stack.Push(1);
@@ -156,15 +185,21 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Throws<InvalidOperationException>(() => { _ = enumerator.Current; });
             Assert.True(enumerator.MoveNext());
             Assert.Equal(stack.Peek(), enumerator.Current);
-            while (enumerator.MoveNext()) { }
+            while (enumerator.MoveNext())
+            {
+            }
+
             Assert.Throws<InvalidOperationException>(() => { _ = enumerator.Current; });
 
-            IEnumerator boxedEnumerator = ((IEnumerable<int>)stack).GetEnumerator();
+            IEnumerator boxedEnumerator = ((IEnumerable<int>) stack).GetEnumerator();
             Assert.NotNull(boxedEnumerator);
-            while (boxedEnumerator.MoveNext()) { }
+            while (boxedEnumerator.MoveNext())
+            {
+            }
+
             Assert.False(boxedEnumerator.MoveNext());
 
-            IEnumerator<int> emptyEnum = ((IEnumerable<int>)new FastestStack<int>()).GetEnumerator();
+            IEnumerator<int> emptyEnum = ((IEnumerable<int>) new FastestStack<int>()).GetEnumerator();
             Assert.False(emptyEnum.MoveNext());
 
             var mismatch = stack.GetEnumerator();
@@ -173,15 +208,15 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.NotNull(versionField);
             object boxedMismatch = mismatch;
             versionField.SetValue(boxedMismatch, -123);
-            mismatch = (FastestStack<int>.Enumerator)boxedMismatch;
+            mismatch = (FastestStack<int>.Enumerator) boxedMismatch;
             Assert.Throws<InvalidOperationException>(() => mismatch.MoveNext());
 
-            IEnumerator resetMismatch = ((IEnumerable<int>)stack).GetEnumerator();
+            IEnumerator resetMismatch = ((IEnumerable<int>) stack).GetEnumerator();
             object boxedReset = resetMismatch;
             FieldInfo resetVersionField = boxedReset.GetType().GetField("_version", BindingFlags.Instance | BindingFlags.NonPublic);
             Assert.NotNull(resetVersionField);
             resetVersionField.SetValue(boxedReset, -777);
-            resetMismatch = (IEnumerator)boxedReset;
+            resetMismatch = (IEnumerator) boxedReset;
             Assert.Throws<InvalidOperationException>(() => resetMismatch.Reset());
 
             FastestStack<string> refStack = new FastestStack<string>(4);
@@ -200,7 +235,7 @@ namespace Alis.Core.Ecs.Test.Collections
         }
 
         /// <summary>
-        /// Tests that archetype neighbor cache all slots and overloads work
+        ///     Tests that archetype neighbor cache all slots and overloads work
         /// </summary>
         [Fact]
         public void ArchetypeNeighborCache_AllSlotsAndOverloads_Work()
@@ -210,19 +245,19 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(32, cache.Traverse(99));
             Assert.Null(cache.TraverseArchetype(99));
 
-            cache.Set(1, (ushort)11);
-            cache.Set(2, (ushort)22);
-            cache.Set(3, (ushort)33);
-            cache.Set(4, (ushort)44);
+            cache.Set(1, 11);
+            cache.Set(2, 22);
+            cache.Set(3, 33);
+            cache.Set(4, 44);
 
             Assert.Equal(0, cache.Traverse(1));
             Assert.Equal(1, cache.Traverse(2));
             Assert.Equal(2, cache.Traverse(3));
             Assert.Equal(3, cache.Traverse(4));
-            Assert.Equal((ushort)11, cache.Lookup(0));
-            Assert.Equal((ushort)22, cache.Lookup(1));
-            Assert.Equal((ushort)33, cache.Lookup(2));
-            Assert.Equal((ushort)44, cache.Lookup(3));
+            Assert.Equal((ushort) 11, cache.Lookup(0));
+            Assert.Equal((ushort) 22, cache.Lookup(1));
+            Assert.Equal((ushort) 33, cache.Lookup(2));
+            Assert.Equal((ushort) 44, cache.Lookup(3));
 
             using Scene scene = new Scene();
             Archetype arch = scene.DefaultArchetype;
@@ -234,7 +269,7 @@ namespace Alis.Core.Ecs.Test.Collections
         }
 
         /// <summary>
-        /// Tests that fast lookup set lookup and find adjacent archetype all paths work
+        ///     Tests that fast lookup set lookup and find adjacent archetype all paths work
         /// </summary>
         [Fact]
         public void FastLookup_SetLookupAndFindAdjacentArchetype_AllPaths_Work()
@@ -254,7 +289,7 @@ namespace Alis.Core.Ecs.Test.Collections
 
             for (int i = 0; i < 8; i++)
             {
-                ushort id = (ushort)(100 + i);
+                ushort id = (ushort) (100 + i);
                 lookup.SetArchetype(id, from, destination);
                 uint key = lookup.GetKey(id, from);
                 lookup.LookupIndex(key);
@@ -275,11 +310,11 @@ namespace Alis.Core.Ecs.Test.Collections
             FastLookup coldLookup = new FastLookup();
             GameObjectType coldId = coldLookup.FindAdjacentArchetypeId(componentId, from, scene, edgeType);
             Assert.True(scene.ArchetypeGraphEdges.Count >= 1);
-            Assert.NotEqual(default, coldId);
+            Assert.NotEqual(default(GameObjectType), coldId);
         }
 
         /// <summary>
-        /// Tests that short sparse set all members and branches work
+        ///     Tests that short sparse set all members and branches work
         /// </summary>
         [Fact]
         public void ShortSparseSet_AllMembersAndBranches_Work()
@@ -330,7 +365,7 @@ namespace Alis.Core.Ecs.Test.Collections
         }
 
         /// <summary>
-        /// Tests that enumerable helpers reset and to array all code paths work
+        ///     Tests that enumerable helpers reset and to array all code paths work
         /// </summary>
         [Fact]
         public void EnumerableHelpers_ResetAndToArray_AllCodePaths_Work()
@@ -342,10 +377,10 @@ namespace Alis.Core.Ecs.Test.Collections
             IEnumerator<int> empty = EnumerableHelpers.GetEmptyEnumerator<int>();
             Assert.False(empty.MoveNext());
 
-            List<int> nonEmptyList = new List<int> { 1, 2, 3 };
+            List<int> nonEmptyList = new List<int> {1, 2, 3};
             int[] listArr = EnumerableHelpers.ToArray(nonEmptyList, out int listLength);
             Assert.Equal(3, listLength);
-            Assert.Equal(new[] { 1, 2, 3 }, listArr);
+            Assert.Equal(new[] {1, 2, 3}, listArr);
 
             List<int> emptyList = new List<int>();
             int[] emptyArr = EnumerableHelpers.ToArray(emptyList, out int emptyLen);
@@ -365,7 +400,7 @@ namespace Alis.Core.Ecs.Test.Collections
         }
 
         /// <summary>
-        /// Tests that chunk index span resize and return work
+        ///     Tests that chunk index span resize and return work
         /// </summary>
         [Fact]
         public void Chunk_IndexSpanResizeAndReturn_Work()
@@ -397,7 +432,7 @@ namespace Alis.Core.Ecs.Test.Collections
         }
 
         /// <summary>
-        /// Tests that id table generic and boxed paths work
+        ///     Tests that id table generic and boxed paths work
         /// </summary>
         [Fact]
         public void IdTable_GenericAndBoxedPaths_Work()
@@ -435,7 +470,7 @@ namespace Alis.Core.Ecs.Test.Collections
         }
 
         /// <summary>
-        /// Tests that fastest table indexer unsafe and capacity work
+        ///     Tests that fastest table indexer unsafe and capacity work
         /// </summary>
         [Fact]
         public void FastestTable_IndexerUnsafeAndCapacity_Work()
@@ -464,7 +499,7 @@ namespace Alis.Core.Ecs.Test.Collections
         }
 
         /// <summary>
-        /// Yields the sequence using the specified length
+        ///     Yields the sequence using the specified length
         /// </summary>
         /// <param name="length">The length</param>
         /// <returns>An enumerable of int</returns>
@@ -477,42 +512,45 @@ namespace Alis.Core.Ecs.Test.Collections
         }
 
         /// <summary>
-        /// The resettable enumerator
+        ///     The resettable enumerator
         /// </summary>
         private struct ResettableEnumerator : IEnumerator
         {
             /// <summary>
-            /// Gets or sets the value of the reset called
+            ///     Gets or sets the value of the reset called
             /// </summary>
             public bool ResetCalled { get; private set; }
+
             /// <summary>
-            /// Gets the value of the current
+            ///     Gets the value of the current
             /// </summary>
             public object Current => null;
+
             /// <summary>
-            /// Moves the next
+            ///     Moves the next
             /// </summary>
             /// <returns>The bool</returns>
             public bool MoveNext() => false;
+
             /// <summary>
-            /// Resets this instance
+            ///     Resets this instance
             /// </summary>
             public void Reset() => ResetCalled = true;
         }
 
         /// <summary>
-        /// The tracking action class
+        ///     The tracking action class
         /// </summary>
-        /// <seealso cref="IGenericAction{GameObject}"/>
+        /// <seealso cref="IGenericAction{GameObject}" />
         private sealed class TrackingAction : IGenericAction<GameObject>
         {
             /// <summary>
-            /// Gets or sets the value of the call count
+            ///     Gets or sets the value of the call count
             /// </summary>
             public int CallCount { get; private set; }
 
             /// <summary>
-            /// Invokes the param
+            ///     Invokes the param
             /// </summary>
             /// <typeparam name="T">The </typeparam>
             /// <param name="param">The param</param>
@@ -524,5 +562,3 @@ namespace Alis.Core.Ecs.Test.Collections
         }
     }
 }
-
-

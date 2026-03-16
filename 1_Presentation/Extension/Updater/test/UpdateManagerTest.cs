@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:UpdateManagerTest.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -9,20 +38,20 @@ using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Moq;
-using Xunit;
 using Alis.Extension.Updater.Services.Api;
 using Alis.Extension.Updater.Services.Files;
+using Moq;
+using Xunit;
 
 namespace Alis.Extension.Updater.Test
 {
     /// <summary>
-    /// The update manager test class
+    ///     The update manager test class
     /// </summary>
     public class UpdateManagerTest
     {
         /// <summary>
-        /// Tests that constructor stores dependencies
+        ///     Tests that constructor stores dependencies
         /// </summary>
         [Fact]
         public void Constructor_StoresDependencies()
@@ -40,7 +69,7 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Tests that on update progress changed updates state and raises event
+        ///     Tests that on update progress changed updates state and raises event
         /// </summary>
         [Fact]
         public void OnUpdateProgressChanged_UpdatesStateAndRaisesEvent()
@@ -64,7 +93,7 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Tests that start returns false when cancellation is requested
+        ///     Tests that start returns false when cancellation is requested
         /// </summary>
         [Fact]
         public async Task Start_ReturnsFalse_WhenCancellationIsRequested()
@@ -79,13 +108,13 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Tests that start wraps exception when release resolution fails
+        ///     Tests that start wraps exception when release resolution fails
         /// </summary>
         [Fact]
         public async Task Start_WrapsException_WhenReleaseResolutionFails()
         {
             using LoopbackHttpServer server = new LoopbackHttpServer("[]", 1);
-            UpdateManager sut = CreateManager(versionToInstall: "v9.9.9", apiUrl: server.Uri);
+            UpdateManager sut = CreateManager("v9.9.9", apiUrl: server.Uri);
 
             Exception ex = await Assert.ThrowsAsync<Exception>(async () => await sut.Start(CancellationToken.None));
 
@@ -93,7 +122,7 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Tests that handle cancellation request returns expected value
+        ///     Tests that handle cancellation request returns expected value
         /// </summary>
         [Fact]
         public void HandleCancellationRequest_ReturnsExpectedValue()
@@ -110,7 +139,7 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Tests that get architecture returns lowercase token
+        ///     Tests that get architecture returns lowercase token
         /// </summary>
         [Fact]
         public void GetArchitecture_ReturnsLowercaseToken()
@@ -124,7 +153,7 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Tests that get selected asset returns matching entry
+        ///     Tests that get selected asset returns matching entry
         /// </summary>
         [Fact]
         public void GetSelectedAsset_ReturnsMatchingEntry()
@@ -148,7 +177,7 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Tests that handle missing compatible package returns false and updates state
+        ///     Tests that handle missing compatible package returns false and updates state
         /// </summary>
         [Fact]
         public void HandleMissingCompatiblePackage_ReturnsFalseAndUpdatesState()
@@ -163,7 +192,7 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Tests that is latest version already downloaded returns false when url is null
+        ///     Tests that is latest version already downloaded returns false when url is null
         /// </summary>
         [Fact]
         public void IsLatestVersionAlreadyDownloaded_ReturnsFalse_WhenUrlIsNull()
@@ -176,7 +205,7 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Tests that is latest version already downloaded returns true when file exists
+        ///     Tests that is latest version already downloaded returns true when file exists
         /// </summary>
         [Fact]
         public void IsLatestVersionAlreadyDownloaded_ReturnsTrue_WhenFileExists()
@@ -203,7 +232,7 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Tests that handle download failure returns false and sets error progress
+        ///     Tests that handle download failure returns false and sets error progress
         /// </summary>
         [Fact]
         public void HandleDownloadFailure_ReturnsFalseAndSetsErrorProgress()
@@ -218,7 +247,7 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Tests that backup when program folder does not exist only reports progress
+        ///     Tests that backup when program folder does not exist only reports progress
         /// </summary>
         [Fact]
         public void Backup_WhenProgramFolderDoesNotExist_OnlyReportsProgress()
@@ -231,9 +260,9 @@ namespace Alis.Extension.Updater.Test
             Assert.Equal(0.7f, sut.Progress);
             Assert.Contains("backup", sut.Message, StringComparison.OrdinalIgnoreCase);
         }
-        
+
         /// <summary>
-        /// Tests that extract and replace with zip extracts and reports completion
+        ///     Tests that extract and replace with zip extracts and reports completion
         /// </summary>
         [Fact]
         public void ExtractAndReplace_WithZip_ExtractsAndReportsCompletion()
@@ -257,7 +286,7 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Tests that extract and replace throws when extension is invalid
+        ///     Tests that extract and replace throws when extension is invalid
         /// </summary>
         [Fact]
         public void ExtractAndReplace_Throws_WhenExtensionIsInvalid()
@@ -268,7 +297,7 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Tests that extract dmg creates program folder when missing
+        ///     Tests that extract dmg creates program folder when missing
         /// </summary>
         [Fact]
         public void ExtractDmg_CreatesProgramFolder_WhenMissing()
@@ -286,7 +315,7 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Tests that get dmg mount path returns expected volumes path
+        ///     Tests that get dmg mount path returns expected volumes path
         /// </summary>
         [Fact]
         public void GetDmgMountPath_ReturnsExpectedVolumesPath()
@@ -299,7 +328,7 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Tests that ensure program folder exists creates missing directory
+        ///     Tests that ensure program folder exists creates missing directory
         /// </summary>
         [Fact]
         public void EnsureProgramFolderExists_CreatesMissingDirectory()
@@ -314,7 +343,7 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Tests that wait for continue sleeps at least one second
+        ///     Tests that wait for continue sleeps at least one second
         /// </summary>
         [Fact]
         public void WaitForContinue_SleepsAtLeastOneSecond()
@@ -329,7 +358,7 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Tests that execute shell command executes without throwing
+        ///     Tests that execute shell command executes without throwing
         /// </summary>
         [Fact]
         public void ExecuteShellCommand_ExecutesWithoutThrowing()
@@ -352,7 +381,7 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Tests that extract zip throws when entry count exceeds threshold
+        ///     Tests that extract zip throws when entry count exceeds threshold
         /// </summary>
         [Fact]
         public void ExtractZip_Throws_WhenEntryCountExceedsThreshold()
@@ -374,7 +403,7 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Tests that clean temp file removes only non backup artifacts
+        ///     Tests that clean temp file removes only non backup artifacts
         /// </summary>
         [Fact]
         public void CleanTempFile_RemovesOnlyNonBackupArtifacts()
@@ -418,7 +447,7 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Tests that clean temporary files by pattern deletes only matching non backup files
+        ///     Tests that clean temporary files by pattern deletes only matching non backup files
         /// </summary>
         [Fact]
         public void CleanTemporaryFilesByPattern_DeletesOnlyMatchingNonBackupFiles()
@@ -461,10 +490,10 @@ namespace Alis.Extension.Updater.Test
                 }
             }
         }
-        
+
 
         /// <summary>
-        /// Tests that select asset returns null when no matches are found
+        ///     Tests that select asset returns null when no matches are found
         /// </summary>
         [Fact]
         public void SelectAsset_ReturnsNull_WhenNoMatchesAreFound()
@@ -481,7 +510,7 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Creates the manager using the specified version to install
+        ///     Creates the manager using the specified version to install
         /// </summary>
         /// <param name="versionToInstall">The version to install</param>
         /// <param name="programFolder">The program folder</param>
@@ -499,22 +528,19 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Assets the name
+        ///     Assets the name
         /// </summary>
         /// <param name="name">The name</param>
         /// <param name="url">The url</param>
         /// <returns>A dictionary of string and object</returns>
-        private static Dictionary<string, object> Asset(string name, string url)
+        private static Dictionary<string, object> Asset(string name, string url) => new Dictionary<string, object>
         {
-            return new Dictionary<string, object>
-            {
-                { "name", name },
-                { "browser_download_url", url }
-            };
-        }
+            {"name", name},
+            {"browser_download_url", url}
+        };
 
         /// <summary>
-        /// Invokes the non public using the specified manager
+        ///     Invokes the non public using the specified manager
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="manager">The manager</param>
@@ -524,11 +550,11 @@ namespace Alis.Extension.Updater.Test
         private static T InvokeNonPublic<T>(UpdateManager manager, string methodName, params object[] args)
         {
             object result = InvokeNonPublic(manager, methodName, args);
-            return (T)result;
+            return (T) result;
         }
 
         /// <summary>
-        /// Invokes the non public using the specified manager
+        ///     Invokes the non public using the specified manager
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="manager">The manager</param>
@@ -538,11 +564,11 @@ namespace Alis.Extension.Updater.Test
         private static Task<T> InvokeNonPublicAsync<T>(UpdateManager manager, string methodName, params object[] args)
         {
             object result = InvokeNonPublic(manager, methodName, args);
-            return (Task<T>)result;
+            return (Task<T>) result;
         }
 
         /// <summary>
-        /// Invokes the non public using the specified manager
+        ///     Invokes the non public using the specified manager
         /// </summary>
         /// <param name="manager">The manager</param>
         /// <param name="methodName">The method name</param>
@@ -556,38 +582,24 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// The temp folder class
+        ///     The temp folder class
         /// </summary>
-        /// <seealso cref="IDisposable"/>
+        /// <seealso cref="IDisposable" />
         private sealed class TempFolder : IDisposable
         {
             /// <summary>
-            /// Initializes a new instance of the <see cref="TempFolder"/> class
+            ///     Initializes a new instance of the <see cref="TempFolder" /> class
             /// </summary>
             /// <param name="path">The path</param>
-            private TempFolder(string path)
-            {
-                Path = path;
-            }
+            private TempFolder(string path) => Path = path;
 
             /// <summary>
-            /// Gets the value of the path
+            ///     Gets the value of the path
             /// </summary>
             public string Path { get; }
 
             /// <summary>
-            /// Creates
-            /// </summary>
-            /// <returns>The temp folder</returns>
-            public static TempFolder Create()
-            {
-                string path = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "alis-updater-tests", Guid.NewGuid().ToString("N"));
-                Directory.CreateDirectory(path);
-                return new TempFolder(path);
-            }
-
-            /// <summary>
-            /// Disposes this instance
+            ///     Disposes this instance
             /// </summary>
             public void Dispose()
             {
@@ -596,29 +608,42 @@ namespace Alis.Extension.Updater.Test
                     Directory.Delete(Path, true);
                 }
             }
+
+            /// <summary>
+            ///     Creates
+            /// </summary>
+            /// <returns>The temp folder</returns>
+            public static TempFolder Create()
+            {
+                string path = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "alis-updater-tests", Guid.NewGuid().ToString("N"));
+                Directory.CreateDirectory(path);
+                return new TempFolder(path);
+            }
         }
 
         /// <summary>
-        /// The loopback http server class
+        ///     The loopback http server class
         /// </summary>
-        /// <seealso cref="IDisposable"/>
+        /// <seealso cref="IDisposable" />
         private sealed class LoopbackHttpServer : IDisposable
         {
             /// <summary>
-            /// The cancellation
+            ///     The cancellation
             /// </summary>
             private readonly CancellationTokenSource _cancellation;
+
             /// <summary>
-            /// The listener
+            ///     The listener
             /// </summary>
             private readonly TcpListener _listener;
+
             /// <summary>
-            /// The worker
+            ///     The worker
             /// </summary>
             private readonly Task _worker;
 
             /// <summary>
-            /// Initializes a new instance of the <see cref="LoopbackHttpServer"/> class
+            ///     Initializes a new instance of the <see cref="LoopbackHttpServer" /> class
             /// </summary>
             /// <param name="responseBody">The response body</param>
             /// <param name="maxRequests">The max requests</param>
@@ -628,13 +653,13 @@ namespace Alis.Extension.Updater.Test
                 _listener = new TcpListener(IPAddress.Loopback, 0);
                 _listener.Start();
 
-                int port = ((IPEndPoint)_listener.LocalEndpoint).Port;
+                int port = ((IPEndPoint) _listener.LocalEndpoint).Port;
                 Uri = new Uri("http://127.0.0.1:" + port + "/");
 
                 _worker = Task.Run(async () =>
                 {
                     int handled = 0;
-                    while (!_cancellation.IsCancellationRequested && handled < maxRequests)
+                    while (!_cancellation.IsCancellationRequested && (handled < maxRequests))
                     {
                         TcpClient client;
                         try
@@ -677,12 +702,12 @@ namespace Alis.Extension.Updater.Test
             }
 
             /// <summary>
-            /// Gets the value of the uri
+            ///     Gets the value of the uri
             /// </summary>
             public Uri Uri { get; }
 
             /// <summary>
-            /// Disposes this instance
+            ///     Disposes this instance
             /// </summary>
             public void Dispose()
             {
@@ -702,4 +727,3 @@ namespace Alis.Extension.Updater.Test
         }
     }
 }
-

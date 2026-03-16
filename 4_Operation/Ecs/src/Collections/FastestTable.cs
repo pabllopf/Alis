@@ -58,14 +58,11 @@ namespace Alis.Core.Ecs.Collections
         ///     Initializes a new instance of the  class
         /// </summary>
         /// <param name="size">The size</param>
-        public FastestTable(int size)
-        {
-            _buffer = new T[(int) BitOperations.RoundUpToPowerOf2((uint) size)];
-        }
+        public FastestTable(int size) => _buffer = new T[(int) BitOperations.RoundUpToPowerOf2((uint) size)];
 
 
         /// <summary>
-        /// The index
+        ///     The index
         /// </summary>
         public ref T this[int index]
         {
@@ -81,7 +78,7 @@ namespace Alis.Core.Ecs.Collections
                 return ref Unsafe.Add(ref r0, index);
             }
         }
-        
+
         /// <summary>
         ///     Resizes the get using the specified index
         /// </summary>
@@ -92,9 +89,9 @@ namespace Alis.Core.Ecs.Collections
             FastestArrayPool<T>.ResizeArrayFromPool(ref _buffer, (int) BitOperations.RoundUpToPowerOf2((uint) (index + 1)));
             return ref Unsafe.Add(ref _buffer[0], index);
         }
-        
+
         /// <summary>
-        /// Unsafes the index no resize using the specified index
+        ///     Unsafes the index no resize using the specified index
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The ref</returns>
@@ -104,7 +101,7 @@ namespace Alis.Core.Ecs.Collections
             ref T r0 = ref _buffer[0];
             return ref Unsafe.Add(ref r0, index);
         }
-        
+
         /// <summary>
         ///     Ensures the capacity using the specified size
         /// </summary>
@@ -123,10 +120,7 @@ namespace Alis.Core.Ecs.Collections
         ///     Converts the span
         /// </summary>
         /// <returns>A span of t</returns>
-        public Span<T> AsSpan()
-        {
-            return _buffer.AsSpan();
-        }
+        public Span<T> AsSpan() => _buffer.AsSpan();
 
 
         /// <summary>
