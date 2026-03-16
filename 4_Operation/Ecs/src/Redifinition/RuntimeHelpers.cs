@@ -28,29 +28,24 @@
 //  --------------------------------------------------------------------------
 
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
 // ReSharper disable once CheckNamespace
 namespace System.Runtime.CompilerServices
 {
     /// <summary>
-    /// 
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    [ExcludeFromCodeCoverage]
     public static class RuntimeHelpers
     {
         /// <summary>
-        /// 
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static bool IsReferenceOrContainsReferences<T>()
-        {
-            return Cache<T>.Value;
-        }
+        public static bool IsReferenceOrContainsReferences<T>() => Cache<T>.Value;
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
@@ -79,7 +74,6 @@ namespace System.Runtime.CompilerServices
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <typeparam name="T"></typeparam>
         private static class Cache<T>
