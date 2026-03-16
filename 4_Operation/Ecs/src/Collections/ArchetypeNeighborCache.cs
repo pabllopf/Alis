@@ -37,61 +37,93 @@ namespace Alis.Core.Ecs.Collections
     /// </summary>
     /// <remarks>
     ///     Stores both the ushort destination archetype ID (backward-compat) and the direct
-    ///     <see cref="Archetype"/> reference so the hot hit-path skips the WorldArchetypeTable lookup entirely.
+    ///     <see cref="Archetype" /> reference so the hot hit-path skips the WorldArchetypeTable lookup entirely.
     ///     Round-robin (LRU-approx) eviction. Total size ~52 bytes (fits in one cache line).
     /// </remarks>
     internal struct ArchetypeNeighborCache
     {
         // 4 source archetype keys
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         private ushort _k0, _k1, _k2, _k3;
 
         // 4 destination archetype IDs (kept for backward-compat with Lookup)
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         private ushort _v0, _v1, _v2, _v3;
 
         // 4 direct Archetype references – zero-cost hit path (no WorldArchetypeTable lookup)
         /// <summary>
-        /// The arch
+        ///     The arch
         /// </summary>
         private Archetype _arch0, _arch1, _arch2, _arch3;
 
         // Round-robin insertion slot (0-3)
         /// <summary>
-        /// The next index
+        ///     The next index
         /// </summary>
         private int _nextIndex;
 
-        /// <summary>Returns the slot index (0-3) for <paramref name="value"/>, or 32 on miss.</summary>
+        /// <summary>Returns the slot index (0-3) for <paramref name="value" />, or 32 on miss.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public int Traverse(ushort value)
         {
-            if (value == _k0) return 0;
-            if (value == _k1) return 1;
-            if (value == _k2) return 2;
-            if (value == _k3) return 3;
+            if (value == _k0)
+            {
+                return 0;
+            }
+
+            if (value == _k1)
+            {
+                return 1;
+            }
+
+            if (value == _k2)
+            {
+                return 2;
+            }
+
+            if (value == _k3)
+            {
+                return 3;
+            }
+
             return 32;
         }
 
         /// <summary>
-        ///     Returns the cached <see cref="Archetype"/> for <paramref name="key"/> directly,
-        ///     or <see langword="null"/> on a miss. Eliminates the WorldArchetypeTable lookup on the hot path.
+        ///     Returns the cached <see cref="Archetype" /> for <paramref name="key" /> directly,
+        ///     or <see langword="null" /> on a miss. Eliminates the WorldArchetypeTable lookup on the hot path.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public Archetype TraverseArchetype(ushort key)
         {
-            if (key == _k0) return _arch0;
-            if (key == _k1) return _arch1;
-            if (key == _k2) return _arch2;
-            if (key == _k3) return _arch3;
+            if (key == _k0)
+            {
+                return _arch0;
+            }
+
+            if (key == _k1)
+            {
+                return _arch1;
+            }
+
+            if (key == _k2)
+            {
+                return _arch2;
+            }
+
+            if (key == _k3)
+            {
+                return _arch3;
+            }
+
             return null;
         }
 
-        /// <summary>Returns the destination archetype ID stored at <paramref name="index"/>.</summary>
+        /// <summary>Returns the destination archetype ID stored at <paramref name="index" />.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public ushort Lookup(int index)
         {
@@ -100,7 +132,7 @@ namespace Alis.Core.Ecs.Collections
                 0 => _v0,
                 1 => _v1,
                 2 => _v2,
-                _ => _v3,
+                _ => _v3
             };
         }
 
@@ -110,10 +142,26 @@ namespace Alis.Core.Ecs.Collections
             int slot = _nextIndex;
             switch (slot)
             {
-                case 0: _k0 = key; _v0 = value; _arch0 = null; break;
-                case 1: _k1 = key; _v1 = value; _arch1 = null; break;
-                case 2: _k2 = key; _v2 = value; _arch2 = null; break;
-                default: _k3 = key; _v3 = value; _arch3 = null; break;
+                case 0:
+                    _k0 = key;
+                    _v0 = value;
+                    _arch0 = null;
+                    break;
+                case 1:
+                    _k1 = key;
+                    _v1 = value;
+                    _arch1 = null;
+                    break;
+                case 2:
+                    _k2 = key;
+                    _v2 = value;
+                    _arch2 = null;
+                    break;
+                default:
+                    _k3 = key;
+                    _v3 = value;
+                    _arch3 = null;
+                    break;
             }
 
             _nextIndex = (slot + 1) & 3;
@@ -121,7 +169,7 @@ namespace Alis.Core.Ecs.Collections
 
         /// <summary>
         ///     Stores a key→archetype mapping. The destination archetype ID is derived from
-        ///     <paramref name="archetype"/> and the reference is cached for the fast hit path.
+        ///     <paramref name="archetype" /> and the reference is cached for the fast hit path.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Set(ushort key, Archetype archetype)
@@ -130,10 +178,26 @@ namespace Alis.Core.Ecs.Collections
             int slot = _nextIndex;
             switch (slot)
             {
-                case 0: _k0 = key; _v0 = value; _arch0 = archetype; break;
-                case 1: _k1 = key; _v1 = value; _arch1 = archetype; break;
-                case 2: _k2 = key; _v2 = value; _arch2 = archetype; break;
-                default: _k3 = key; _v3 = value; _arch3 = archetype; break;
+                case 0:
+                    _k0 = key;
+                    _v0 = value;
+                    _arch0 = archetype;
+                    break;
+                case 1:
+                    _k1 = key;
+                    _v1 = value;
+                    _arch1 = archetype;
+                    break;
+                case 2:
+                    _k2 = key;
+                    _v2 = value;
+                    _arch2 = archetype;
+                    break;
+                default:
+                    _k3 = key;
+                    _v3 = value;
+                    _arch3 = archetype;
+                    break;
             }
 
             _nextIndex = (slot + 1) & 3;

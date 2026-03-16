@@ -55,7 +55,7 @@ namespace Alis.Benchmark.CustomEcs
         }
 
         /// <summary>
-        /// Cleanup this instance
+        ///     Cleanup this instance
         /// </summary>
         [IterationCleanup]
         public void Cleanup()
@@ -65,4 +65,3 @@ namespace Alis.Benchmark.CustomEcs
         }
     }
 }
-

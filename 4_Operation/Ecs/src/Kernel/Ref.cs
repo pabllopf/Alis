@@ -47,7 +47,7 @@ namespace Alis.Core.Ecs.Kernel
     public ref struct Ref<T>
     {
         /// <summary>
-        /// Initializes a new instance of the  class
+        ///     Initializes a new instance of the  class
         /// </summary>
         /// <param name="compArr">The comp arr</param>
         /// <param name="index">The index</param>
@@ -58,7 +58,7 @@ namespace Alis.Core.Ecs.Kernel
         }
 
         /// <summary>
-        /// Initializes a new instance of the  class
+        ///     Initializes a new instance of the  class
         /// </summary>
         /// <param name="compSpan">The comp span</param>
         /// <param name="index">The index</param>
@@ -69,7 +69,7 @@ namespace Alis.Core.Ecs.Kernel
         }
 
         /// <summary>
-        /// Initializes a new instance of the  class
+        ///     Initializes a new instance of the  class
         /// </summary>
         /// <param name="compSpan">The comp span</param>
         /// <param name="index">The index</param>
@@ -80,11 +80,12 @@ namespace Alis.Core.Ecs.Kernel
         }
 
         /// <summary>
-        /// The data
+        ///     The data
         /// </summary>
         private readonly Span<T> _data;
+
         /// <summary>
-        /// The offset
+        ///     The offset
         /// </summary>
         private readonly int _offset;
 
@@ -96,17 +97,12 @@ namespace Alis.Core.Ecs.Kernel
         /// <summary>
         ///     Extracts the wrapped <typeparamref name="T" /> from this  />
         /// </summary>
-        public static implicit operator T(Ref<T> @ref)
-        {
-            return @ref.Value;
-        }
+        public static implicit operator T(Ref<T> @ref) => @ref.Value;
+
         /// <summary>
         ///     Calls the wrapped <typeparamref name="T" />'s ToString() function, or returns null.
         /// </summary>
         /// <returns>A string representation of the wrapped <typeparamref name="T" />'s</returns>
-        public readonly override string ToString()
-        {
-            return Value?.ToString();
-        }
+        public readonly override string ToString() => Value?.ToString();
     }
 }
