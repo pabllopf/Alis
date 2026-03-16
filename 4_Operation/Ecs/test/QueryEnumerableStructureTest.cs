@@ -42,10 +42,8 @@ namespace Alis.Core.Ecs.Test
     /// </summary>
     public class QueryEnumerableStructureTest
     {
-
-
         /// <summary>
-        /// Tests that query enumerable arity 1 get enumerator returns expected type
+        ///     Tests that query enumerable arity 1 get enumerator returns expected type
         /// </summary>
         [Fact]
         public void QueryEnumerable_Arity1_GetEnumerator_ReturnsExpectedType()
@@ -54,7 +52,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that query enumerable arity 2 get enumerator returns expected type
+        ///     Tests that query enumerable arity 2 get enumerator returns expected type
         /// </summary>
         [Fact]
         public void QueryEnumerable_Arity2_GetEnumerator_ReturnsExpectedType()
@@ -63,7 +61,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that query enumerable arity 3 get enumerator returns expected type
+        ///     Tests that query enumerable arity 3 get enumerator returns expected type
         /// </summary>
         [Fact]
         public void QueryEnumerable_Arity3_GetEnumerator_ReturnsExpectedType()
@@ -72,7 +70,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that query enumerable arity 4 get enumerator returns expected type
+        ///     Tests that query enumerable arity 4 get enumerator returns expected type
         /// </summary>
         [Fact]
         public void QueryEnumerable_Arity4_GetEnumerator_ReturnsExpectedType()
@@ -81,7 +79,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that query enumerable arity 5 get enumerator returns expected type
+        ///     Tests that query enumerable arity 5 get enumerator returns expected type
         /// </summary>
         [Fact]
         public void QueryEnumerable_Arity5_GetEnumerator_ReturnsExpectedType()
@@ -90,7 +88,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that query enumerable arity 6 get enumerator returns expected type
+        ///     Tests that query enumerable arity 6 get enumerator returns expected type
         /// </summary>
         [Fact]
         public void QueryEnumerable_Arity6_GetEnumerator_ReturnsExpectedType()
@@ -99,7 +97,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that query enumerable arity 7 get enumerator returns expected type
+        ///     Tests that query enumerable arity 7 get enumerator returns expected type
         /// </summary>
         [Fact]
         public void QueryEnumerable_Arity7_GetEnumerator_ReturnsExpectedType()
@@ -108,7 +106,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that query enumerable arity 8 get enumerator returns expected type
+        ///     Tests that query enumerable arity 8 get enumerator returns expected type
         /// </summary>
         [Fact]
         public void QueryEnumerable_Arity8_GetEnumerator_ReturnsExpectedType()
@@ -117,7 +115,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that query enumerable arity 1 direct instance works in foreach
+        ///     Tests that query enumerable arity 1 direct instance works in foreach
         /// </summary>
         [Fact]
         public void QueryEnumerable_Arity1_DirectInstance_WorksInForeach()
@@ -138,7 +136,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that query enumerable arity 2 direct instance works in foreach
+        ///     Tests that query enumerable arity 2 direct instance works in foreach
         /// </summary>
         [Fact]
         public void QueryEnumerable_Arity2_DirectInstance_WorksInForeach()
@@ -158,7 +156,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that query enumerable arity 8 direct instance works in foreach
+        ///     Tests that query enumerable arity 8 direct instance works in foreach
         /// </summary>
         [Fact]
         public void QueryEnumerable_Arity8_DirectInstance_WorksInForeach()
@@ -188,13 +186,13 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Asserts the query enumerable layout using the specified type
+        ///     Asserts the query enumerable layout using the specified type
         /// </summary>
         /// <param name="type">The type</param>
         private static void AssertQueryEnumerableLayout(Type type)
         {
             Assert.True(type.IsValueType);
-            Assert.True(type.IsDefined(typeof(IsReadOnlyAttribute), inherit: false));
+            Assert.True(type.IsDefined(typeof(IsReadOnlyAttribute), false));
 
             StructLayoutAttribute? attr = type.GetCustomAttribute<StructLayoutAttribute>();
             Assert.Equal(LayoutKind.Sequential, attr!.Value);
@@ -202,7 +200,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Asserts the get enumerator return type using the specified expected type
+        ///     Asserts the get enumerator return type using the specified expected type
         /// </summary>
         /// <typeparam name="TEnumerable">The enumerable</typeparam>
         /// <param name="expectedType">The expected type</param>

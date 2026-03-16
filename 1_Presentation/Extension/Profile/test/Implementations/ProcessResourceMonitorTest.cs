@@ -581,7 +581,7 @@ namespace Alis.Extension.Profile.Test.Implementations
             int threadCount = monitor.GetThreadCount();
             Assert.True(threadCount >= 0);
         }
-        
+
         /// <summary>
         ///     Tests that multiple instances monitor independently
         /// </summary>

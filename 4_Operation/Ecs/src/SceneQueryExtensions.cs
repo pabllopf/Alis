@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Redifinition;
 using Alis.Core.Ecs.Systems;
 
@@ -53,7 +52,7 @@ namespace Alis.Core.Ecs
             scene.QueryCache[QueryHashCache<T>.Value] = value;
             return value;
         }
-        
+
         /// <summary>
         ///     Gets a query specified by the given rules
         /// </summary>
@@ -72,7 +71,7 @@ namespace Alis.Core.Ecs
             scene.QueryCache[QueryHashCache<T1, T2>.Value] = value;
             return value;
         }
-        
+
         /// <summary>
         ///     Gets a query specified by the given rules
         /// </summary>
@@ -93,7 +92,7 @@ namespace Alis.Core.Ecs
             scene.QueryCache[QueryHashCache<T1, T2, T3>.Value] = value;
             return value;
         }
-        
+
         /// <summary>
         ///     Gets a query specified by the given rules
         /// </summary>
@@ -116,7 +115,7 @@ namespace Alis.Core.Ecs
             scene.QueryCache[QueryHashCache<T1, T2, T3, T4>.Value] = value;
             return value;
         }
-        
+
         /// <summary>
         ///     Gets a query specified by the given rules
         /// </summary>
@@ -140,7 +139,7 @@ namespace Alis.Core.Ecs
             scene.QueryCache[QueryHashCache<T1, T2, T3, T4, T5>.Value] = value;
             return value;
         }
-        
+
         /// <summary>
         ///     Gets a query specified by the given rules
         /// </summary>
@@ -165,7 +164,7 @@ namespace Alis.Core.Ecs
             scene.QueryCache[QueryHashCache<T1, T2, T3, T4, T5, T6>.Value] = value;
             return value;
         }
-        
+
         /// <summary>
         ///     Gets a query specified by the given rules
         /// </summary>
@@ -192,7 +191,7 @@ namespace Alis.Core.Ecs
             scene.QueryCache[QueryHashCache<T1, T2, T3, T4, T5, T6, T7>.Value] = value;
             return value;
         }
-        
+
         /// <summary>
         ///     Gets a query specified by the given rules
         /// </summary>

@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.IO;
 using System.Threading.Tasks;
 using Alis.Core.Ecs.Systems.Scope;
 using Xunit;
@@ -115,7 +114,7 @@ namespace Alis.Extension.Cloud.DropBox.Test
             // Act & Assert
             await Assert.ThrowsAsync<ArgumentException>(() => manager.InitializeAsync(string.Empty));
         }
-        
+
         /// <summary>
         ///     Tests that upload with non-existent file throws exception
         /// </summary>
