@@ -5,6 +5,75 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.0.0] - 2026-03-16
+### :sparkles: New Features
+- [`7c3b393`](https://github.com/pabllopf/Alis/commit/7c3b393387b911c13d582e399b88493b848bfeee) - Refactor neighbor cache internals and update benchmarks *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2a83f3d`](https://github.com/pabllopf/Alis/commit/2a83f3d3decb78999c534b03e6943eab64ba40bb) - Enable source generators in test projects *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`133e360`](https://github.com/pabllopf/Alis/commit/133e360cb582353c650324d610484222ab38df66) - Suppress ALIS analyzer warnings in tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`71477f8`](https://github.com/pabllopf/Alis/commit/71477f8022bf25dcf01fe69b320bf56a08536e29) - Add UpdateRunnerMicro ECS microbenchmark *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`84a77f2`](https://github.com/pabllopf/Alis/commit/84a77f2d235388a6cf4484e7518c450f55ea6fab) - Add benchmark categories, cleanup, prune Frent *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`52292a4`](https://github.com/pabllopf/Alis/commit/52292a4ef4a360991a25e9217b712b4dd6e7b94b) - Make ZipAssets incremental with manifest *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`93ec844`](https://github.com/pabllopf/Alis/commit/93ec84441188f7a9805d669b7ffd407526c5b235) - Add generator analyzer ProjectReferences to samples *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9d63a1f`](https://github.com/pabllopf/Alis/commit/9d63a1f6ffbabe3a979950668feedd5e7aa15418) - Add NoWarn lists; throw on missing Player *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`73917df`](https://github.com/pabllopf/Alis/commit/73917df0e16bffcfa640b28ebcb8c7c6b102f309) - Use compile-time OS checks in Player.CheckOs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a810775`](https://github.com/pabllopf/Alis/commit/a810775ca642071ba80af6ec45d8e9db12b84975) - Refactor NeighborCache component modification *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0d29269`](https://github.com/pabllopf/Alis/commit/0d292694daaadcee95e74918402101814da8a0d2) - Refactor TraverseThroughCacheOrCreate & NeighborCache *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f3047ad`](https://github.com/pabllopf/Alis/commit/f3047adda1642d6b14eb0cbcaeefd552301a1c69) - cache upgrade *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`589f77e`](https://github.com/pabllopf/Alis/commit/589f77e161eeaeda81e1ff592efb509c627088fa) - Add XML documentation to benchmark classes *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d323412`](https://github.com/pabllopf/Alis/commit/d323412f839e5f8d79ea65029b6b2bdb759c3c84) - Suppress CA1000 in NeighborCache and update config *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d6b06ba`](https://github.com/pabllopf/Alis/commit/d6b06ba56e64fdf048bfd95481632f6c78ec38ce) - Disable CA1000 for Lookup static fields *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`380b9ce`](https://github.com/pabllopf/Alis/commit/380b9cef6ac20558cac38226b5062a1ca2cf3493) - Suppress additional ALIS warnings in tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e211e2e`](https://github.com/pabllopf/Alis/commit/e211e2e5f2c4171149d1b49e869f20abb355cefc) - Add extensive ECS tests and minor fix *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b2b83e7`](https://github.com/pabllopf/Alis/commit/b2b83e7dd300c360b040ff8f0117b50dd506d807) - include new tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d3008b2`](https://github.com/pabllopf/Alis/commit/d3008b26bc07fa5b340adfa74ab64d1caaf0e3b2) - optimice render ecs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`219fabf`](https://github.com/pabllopf/Alis/commit/219fabf7dfe81dbdb76bba81f9e3e54583d49c7b) - Add XML docs and update-related tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c8e7dd6`](https://github.com/pabllopf/Alis/commit/c8e7dd679ee4b3a11e8bc997f30e871a12044164) - Add tests for MoveEntityToArchetypeIso *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7f785b7`](https://github.com/pabllopf/Alis/commit/7f785b756214dfc5518b6cf3806080a48da574c1) - Simplify component exception messages *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`483677a`](https://github.com/pabllopf/Alis/commit/483677a7595c9a8f74abd422636b703e260d42fd) - Simplify exception tests to use parameterless ctor *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b659306`](https://github.com/pabllopf/Alis/commit/b659306cabec60dc8d5c1eb4cbe9b1a5b47665ea) - analice custom Alis.Core *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`93be94f`](https://github.com/pabllopf/Alis/commit/93be94fe87f64449c72cf18dd300ddbceae8b725) - covert all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`da77d93`](https://github.com/pabllopf/Alis/commit/da77d930e9746642bf02cbc6330d01324b9ea25a) - analice aspects *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`70f363c`](https://github.com/pabllopf/Alis/commit/70f363c424baec5820bfb37a39dd490601268280) - Refactor ECS samples and update runner *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9d0ef7f`](https://github.com/pabllopf/Alis/commit/9d0ef7f35030e599202ef8fdad1ec9f86765eab5) - Add ECS samples, SonarCloud workflow & docs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f17cf9d`](https://github.com/pabllopf/Alis/commit/f17cf9de24bad09b374007c78e293087bed746c5) - Remove benchmark result files *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`db1714f`](https://github.com/pabllopf/Alis/commit/db1714f30c54add3eab944e4fa19117f024ec8cc) - Update workflow name to include ECS *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a70e9be`](https://github.com/pabllopf/Alis/commit/a70e9beb18a4aff0bf633cdd70f07fcee2afe3f0) - Add ECS sample suite and SonarCloud workflows *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fc96146`](https://github.com/pabllopf/Alis/commit/fc96146ee61a4075eb2eca114afbd2bf18b2c591) - Use ToString() when printing component IDs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b2a7372`](https://github.com/pabllopf/Alis/commit/b2a7372ebe791be667e08206b52191506821ac75) - all the spaces *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0a13582`](https://github.com/pabllopf/Alis/commit/0a135828b4a8653d390bb78b92ae366587f81903) - Expand unit tests for Hub and Alis modules *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9d9f108`](https://github.com/pabllopf/Alis/commit/9d9f108aa34c867127d51fc742d4fa8beaa9bd71) - the main sln *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`43bdded`](https://github.com/pabllopf/Alis/commit/43bdded61b284578c45b94c758320747a988dcbe) - Make FastLookup fields internal and adjust tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5a42cb0`](https://github.com/pabllopf/Alis/commit/5a42cb0e4f01409d361742ea9a65b7dc6fa569cb) - Enhance asset packaging with hashing and logging *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c34a3e6`](https://github.com/pabllopf/Alis/commit/c34a3e61e090bacb539e2d6b841f9778fc19b199) - Upgrade coverlet.collector; add System.Private.Uri *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`237f751`](https://github.com/pabllopf/Alis/commit/237f7514273945bfe6708ac52f4fddf044f37b0b) - Refactor Updater UpdateManager; add unit tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`692313a`](https://github.com/pabllopf/Alis/commit/692313a2a6ac6e5afe6f5547c3e7c9350ffe14fe) - Make continue delay configurable; add tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5fd05b5`](https://github.com/pabllopf/Alis/commit/5fd05b5f44ff94d62c6d5f3b6ab959f2987bb5a5) - Update Config.props *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4b485f6`](https://github.com/pabllopf/Alis/commit/4b485f6037a657711244ac080d9e4498b92c8074) - check all url CA1054 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b085498`](https://github.com/pabllopf/Alis/commit/b085498d06b193aa1d453a54e248f45ce34672c6) - Update Config.props *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a389067`](https://github.com/pabllopf/Alis/commit/a3890678381a070b33194da00d5d9a465585abfa) - the stripe version *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`37efe5b`](https://github.com/pabllopf/Alis/commit/37efe5b95e2b3bada2ffd57fb00619164bbe6225) - NU1904 warning *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`2ff8c28`](https://github.com/pabllopf/Alis/commit/2ff8c28418454d8be654c663ea41a55600a29b82) - Add XML docs and initialize per-entity event tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fd52a3d`](https://github.com/pabllopf/Alis/commit/fd52a3db993cdef35924511ae29283286a655051) - Add entity update identity and deferred tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c48d13e`](https://github.com/pabllopf/Alis/commit/c48d13e1062aa5d5b150cab18ad1e1929207e172) - pro Add Scene API coverage tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`207d94a`](https://github.com/pabllopf/Alis/commit/207d94a2fee6d751ec4b2dcb6f4aed1afbc2165f) - pro Add GameObject property and coverage unit tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7c305c7`](https://github.com/pabllopf/Alis/commit/7c305c79bf568ca12c47ea5f00600ad331a92505) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6720f74`](https://github.com/pabllopf/Alis/commit/6720f74bf3d33f1fbe04eef5f3f52dedaa66eb24) - pro Add XML docs and thread-safety to updater tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`042f0ac`](https://github.com/pabllopf/Alis/commit/042f0ac09a2a281653b90eba581d0effba1ac5eb) - pro Mark updater methods for coverage and trim tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f758797`](https://github.com/pabllopf/Alis/commit/f758797e7bf5eb51c97185888cd6040c2327bfa7) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9fbacb2`](https://github.com/pabllopf/Alis/commit/9fbacb2902798aa594d43c2fe80e4115d2428931) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d59c502`](https://github.com/pabllopf/Alis/commit/d59c502fa8c61e2810c92073319cf0a08805ed99) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`079c5e3`](https://github.com/pabllopf/Alis/commit/079c5e306e3ef1c44c3b208c11618d09a976bff8) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5353d6d`](https://github.com/pabllopf/Alis/commit/5353d6df2a0c30ebf463e9dcd73e3094d5d8d518) - pro check *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :memo: Documentation Changes
+- [`561abfe`](https://github.com/pabllopf/Alis/commit/561abfed79eba823067fb42d50044f009e7bf1eb) - Add benchmark results for AlisEcs (2026-03-11) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e55105d`](https://github.com/pabllopf/Alis/commit/e55105d17bd62c0d0e627165d2457118f2a62b87) - Add XML documentation to ECS tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.9.9] - 2026-03-10
 ### :sparkles: New Features
 - [`20ef5d8`](https://github.com/pabllopf/Alis/commit/20ef5d830dc691af700fcd9d91267b766be4dbd3) - Annotate structs with explicit layout/packing *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -6061,3 +6130,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.9.7]: https://github.com/pabllopf/Alis/compare/v0.9.6...v0.9.7
 [v0.9.8]: https://github.com/pabllopf/Alis/compare/v0.9.7...v0.9.8
 [v0.9.9]: https://github.com/pabllopf/Alis/compare/v0.9.8...v0.9.9
+[v1.0.0]: https://github.com/pabllopf/Alis/compare/v0.9.9...v1.0.0
