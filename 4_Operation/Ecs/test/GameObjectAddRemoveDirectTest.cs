@@ -39,57 +39,15 @@ namespace Alis.Core.Ecs.Test
     public class GameObjectAddRemoveDirectTest
     {
         /// <summary>
-        /// Helper method to create a GameObject with initial components using Scene
+        ///     Helper method to create a GameObject with initial components using Scene
         /// </summary>
-        private GameObject CreateEntity(Scene scene, params object[] components)
-        {
-            return scene.Create(components);
-        }
+        private GameObject CreateEntity(Scene scene, params object[] components) => scene.Create(components);
 
-        #region Add<T> Tests
-
-        /// <summary>
-        /// Tests that Add with 1 component works correctly
-        /// </summary>
-        [Fact]
-        public void GameObject_Add_Single_AddsComponentSuccessfully()
-        {
-            using Scene scene = new Scene();
-            GameObject go = CreateEntity(scene, new Position {X = 1, Y = 2});
-
-            go.Add(new Velocity {X = 10, Y = 20});
-
-            Assert.True(go.Has<Velocity>());
-            Assert.Equal(10, go.Get<Velocity>().X);
-            Assert.Equal(20, go.Get<Velocity>().Y);
-        }
-
-        /// <summary>
-        /// Tests that Add with 1 component updates component data correctly
-        /// </summary>
-        [Fact]
-        public void GameObject_Add_Single_UpdatesComponentDataCorrectly()
-        {
-            using Scene scene = new Scene();
-            GameObject go = CreateEntity(scene, new Position {X = 0, Y = 0});
-
-            go.Add(new Health {Value = 100});
-            
-            ref Health health = ref go.Get<Health>();
-            health.Value = 50;
-
-            Assert.Equal(50, go.Get<Health>().Value);
-        }
-
-        #endregion
-
-
-        
 
         #region Add<T1..T5> Tests
 
         /// <summary>
-        /// Tests that Add with 5 components works sequentially
+        ///     Tests that Add with 5 components works sequentially
         /// </summary>
         [Fact]
         public void GameObject_Add_FiveComponents_Sequential_WorksCorrectly()
@@ -112,7 +70,7 @@ namespace Alis.Core.Ecs.Test
         #region Add<T1..T6> Tests
 
         /// <summary>
-        /// Tests that Add with 6 components works sequentially
+        ///     Tests that Add with 6 components works sequentially
         /// </summary>
         [Fact]
         public void GameObject_Add_SixComponents_Sequential_WorksCorrectly()
@@ -136,7 +94,7 @@ namespace Alis.Core.Ecs.Test
         #region Add<T1..T7> Tests
 
         /// <summary>
-        /// Tests that Add with 7 components works sequentially
+        ///     Tests that Add with 7 components works sequentially
         /// </summary>
         [Fact]
         public void GameObject_Add_SevenComponents_Sequential_WorksCorrectly()
@@ -161,7 +119,7 @@ namespace Alis.Core.Ecs.Test
         #region Add<T1..T8> Tests
 
         /// <summary>
-        /// Tests that Add with 8 components works sequentially
+        ///     Tests that Add with 8 components works sequentially
         /// </summary>
         [Fact]
         public void GameObject_Add_EightComponents_Sequential_WorksCorrectly()
@@ -184,10 +142,47 @@ namespace Alis.Core.Ecs.Test
 
         #endregion
 
+        #region Add<T> Tests
+
+        /// <summary>
+        ///     Tests that Add with 1 component works correctly
+        /// </summary>
+        [Fact]
+        public void GameObject_Add_Single_AddsComponentSuccessfully()
+        {
+            using Scene scene = new Scene();
+            GameObject go = CreateEntity(scene, new Position {X = 1, Y = 2});
+
+            go.Add(new Velocity {X = 10, Y = 20});
+
+            Assert.True(go.Has<Velocity>());
+            Assert.Equal(10, go.Get<Velocity>().X);
+            Assert.Equal(20, go.Get<Velocity>().Y);
+        }
+
+        /// <summary>
+        ///     Tests that Add with 1 component updates component data correctly
+        /// </summary>
+        [Fact]
+        public void GameObject_Add_Single_UpdatesComponentDataCorrectly()
+        {
+            using Scene scene = new Scene();
+            GameObject go = CreateEntity(scene, new Position {X = 0, Y = 0});
+
+            go.Add(new Health {Value = 100});
+
+            ref Health health = ref go.Get<Health>();
+            health.Value = 50;
+
+            Assert.Equal(50, go.Get<Health>().Value);
+        }
+
+        #endregion
+
         #region AddBoxed Tests
 
         /// <summary>
-        /// Tests that AddBoxed adds component successfully
+        ///     Tests that AddBoxed adds component successfully
         /// </summary>
         [Fact]
         public void GameObject_AddBoxed_AddsComponentSuccessfully()
@@ -202,7 +197,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that AddBoxed works with boxed value types
+        ///     Tests that AddBoxed works with boxed value types
         /// </summary>
         [Fact]
         public void GameObject_AddBoxed_WorksWithBoxedValueTypes()
@@ -216,13 +211,13 @@ namespace Alis.Core.Ecs.Test
             Assert.True(go.Has<Health>());
             Assert.Equal(75, go.Get<Health>().Value);
         }
-        
+
         #endregion
 
         #region AddAs(Type) Tests
 
         /// <summary>
-        /// Tests that AddAs with Type adds component successfully
+        ///     Tests that AddAs with Type adds component successfully
         /// </summary>
         [Fact]
         public void GameObject_AddAs_WithType_AddsComponentSuccessfully()
@@ -237,7 +232,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that AddAs with Type preserves component data
+        ///     Tests that AddAs with Type preserves component data
         /// </summary>
         [Fact]
         public void GameObject_AddAs_WithType_PreservesComponentData()
@@ -255,7 +250,7 @@ namespace Alis.Core.Ecs.Test
         #region AddAs(ComponentId) Tests
 
         /// <summary>
-        /// Tests that AddAs with ComponentId adds component successfully
+        ///     Tests that AddAs with ComponentId adds component successfully
         /// </summary>
         [Fact]
         public void GameObject_AddAs_WithComponentId_AddsComponentSuccessfully()
@@ -270,7 +265,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that AddAs with ComponentId works with multiple adds
+        ///     Tests that AddAs with ComponentId works with multiple adds
         /// </summary>
         [Fact]
         public void GameObject_AddAs_WithComponentId_WorksWithMultipleAdds()
@@ -287,14 +282,11 @@ namespace Alis.Core.Ecs.Test
 
         #endregion
 
- 
-
-       
 
         #region Integration Tests
 
         /// <summary>
-        /// Tests that Add and Remove work together correctly
+        ///     Tests that Add and Remove work together correctly
         /// </summary>
         [Fact]
         public void GameObject_AddRemove_WorkTogetherCorrectly()
@@ -314,7 +306,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that all Add variants work correctly
+        ///     Tests that all Add variants work correctly
         /// </summary>
         [Fact]
         public void GameObject_AllAddVariants_WorkCorrectly()
@@ -339,10 +331,6 @@ namespace Alis.Core.Ecs.Test
             Assert.True(go.Has<Damage>());
         }
 
-  
-        
-
         #endregion
     }
 }
-
