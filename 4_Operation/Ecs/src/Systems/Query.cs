@@ -37,7 +37,7 @@ namespace Alis.Core.Ecs.Systems
     /// <summary>
     ///     Represents a set of entities from a scene which can have systems applied to
     /// </summary>
-    public  class Query
+    public class Query
     {
         /// <summary>
         ///     The rules
@@ -64,7 +64,7 @@ namespace Alis.Core.Ecs.Systems
         ///     Gets or inits the value of the scene
         /// </summary>
         internal Scene Scene { get; init; }
-        
+
         /// <summary>
         ///     Converts the span
         /// </summary>
@@ -100,7 +100,7 @@ namespace Alis.Core.Ecs.Systems
 
             return true;
         }
-        
+
         /// <summary>
         ///     Enumerates component references for all entities in this query. Intended for use in foreach loops.
         /// </summary>
@@ -117,12 +117,12 @@ namespace Alis.Core.Ecs.Systems
         ///     Enumerates component chunks for all entities in this query. Intended for use in foreach loops.
         /// </summary>
         public ChunkQueryEnumerator<T>.QueryEnumerable EnumerateChunks<T>() => new ChunkQueryEnumerator<T>.QueryEnumerable(this);
-        
+
         /// <summary>
         ///     Enumerates <see cref="GameObject" /> instances for all entities in this query. Intended for use in foreach loops.
         /// </summary>
         public GameObjectQueryEnumerator.QueryEnumerable EnumerateWithEntities() => new GameObjectQueryEnumerator.QueryEnumerable(this);
-        
+
         /// <summary>
         ///     Enumerates component references for all entities in this query. Intended for use in foreach loops.
         /// </summary>
@@ -139,7 +139,7 @@ namespace Alis.Core.Ecs.Systems
         ///     Enumerates component chunks for all entities in this query. Intended for use in foreach loops.
         /// </summary>
         public ChunkQueryEnumerator<T1, T2>.QueryEnumerable EnumerateChunks<T1, T2>() => new ChunkQueryEnumerator<T1, T2>.QueryEnumerable(this);
-        
+
         /// <summary>
         ///     Enumerates component references for all entities in this query. Intended for use in foreach loops.
         /// </summary>
@@ -156,7 +156,7 @@ namespace Alis.Core.Ecs.Systems
         ///     Enumerates component chunks for all entities in this query. Intended for use in foreach loops.
         /// </summary>
         public ChunkQueryEnumerator<T1, T2, T3>.QueryEnumerable EnumerateChunks<T1, T2, T3>() => new ChunkQueryEnumerator<T1, T2, T3>.QueryEnumerable(this);
-        
+
         /// <summary>
         ///     Enumerates component references for all entities in this query. Intended for use in foreach loops.
         /// </summary>
@@ -173,8 +173,8 @@ namespace Alis.Core.Ecs.Systems
         ///     Enumerates component chunks for all entities in this query. Intended for use in foreach loops.
         /// </summary>
         public ChunkQueryEnumerator<T1, T2, T3, T4>.QueryEnumerable EnumerateChunks<T1, T2, T3, T4>() => new ChunkQueryEnumerator<T1, T2, T3, T4>.QueryEnumerable(this);
-        
-        
+
+
         /// <summary>
         ///     Enumerates component references for all entities in this query. Intended for use in foreach loops.
         /// </summary>
@@ -191,7 +191,7 @@ namespace Alis.Core.Ecs.Systems
         ///     Enumerates component chunks for all entities in this query. Intended for use in foreach loops.
         /// </summary>
         public ChunkQueryEnumerator<T1, T2, T3, T4, T5>.QueryEnumerable EnumerateChunks<T1, T2, T3, T4, T5>() => new ChunkQueryEnumerator<T1, T2, T3, T4, T5>.QueryEnumerable(this);
-        
+
         /// <summary>
         ///     Enumerates component references for all entities in this query. Intended for use in foreach loops.
         /// </summary>
@@ -208,7 +208,7 @@ namespace Alis.Core.Ecs.Systems
         ///     Enumerates component chunks for all entities in this query. Intended for use in foreach loops.
         /// </summary>
         public ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6>.QueryEnumerable EnumerateChunks<T1, T2, T3, T4, T5, T6>() => new ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6>.QueryEnumerable(this);
-        
+
         /// <summary>
         ///     Enumerates component references for all entities in this query. Intended for use in foreach loops.
         /// </summary>
@@ -229,7 +229,7 @@ namespace Alis.Core.Ecs.Systems
         public ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7>.QueryEnumerable
             EnumerateChunks<T1, T2, T3, T4, T5, T6, T7>()
             => new ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7>.QueryEnumerable(this);
-        
+
         /// <summary>
         ///     Enumerates component references for all entities in this query. Intended for use in foreach loops.
         /// </summary>
