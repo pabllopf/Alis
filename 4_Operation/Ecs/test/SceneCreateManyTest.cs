@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
@@ -41,7 +40,7 @@ namespace Alis.Core.Ecs.Test
     public class SceneCreateManyTest
     {
         /// <summary>
-        /// Tests that scene create many one component returns expected spans and entities
+        ///     Tests that scene create many one component returns expected spans and entities
         /// </summary>
         [Fact]
         public void SceneCreateMany_OneComponent_ReturnsExpectedSpansAndEntities()
@@ -56,7 +55,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that scene create many two components returns expected spans and entities
+        ///     Tests that scene create many two components returns expected spans and entities
         /// </summary>
         [Fact]
         public void SceneCreateMany_TwoComponents_ReturnsExpectedSpansAndEntities()
@@ -72,7 +71,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that scene create many three components returns expected spans and entities
+        ///     Tests that scene create many three components returns expected spans and entities
         /// </summary>
         [Fact]
         public void SceneCreateMany_ThreeComponents_ReturnsExpectedSpansAndEntities()
@@ -89,7 +88,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that scene create many four components returns expected spans and entities
+        ///     Tests that scene create many four components returns expected spans and entities
         /// </summary>
         [Fact]
         public void SceneCreateMany_FourComponents_ReturnsExpectedSpansAndEntities()
@@ -106,7 +105,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that scene create many five components returns expected spans and entities
+        ///     Tests that scene create many five components returns expected spans and entities
         /// </summary>
         [Fact]
         public void SceneCreateMany_FiveComponents_ReturnsExpectedSpansAndEntities()
@@ -125,7 +124,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that scene create many six components returns expected spans and entities
+        ///     Tests that scene create many six components returns expected spans and entities
         /// </summary>
         [Fact]
         public void SceneCreateMany_SixComponents_ReturnsExpectedSpansAndEntities()
@@ -145,7 +144,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that scene create many seven components returns expected spans and entities
+        ///     Tests that scene create many seven components returns expected spans and entities
         /// </summary>
         [Fact]
         public void SceneCreateMany_SevenComponents_ReturnsExpectedSpansAndEntities()
@@ -166,7 +165,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that scene create many eight components returns expected spans and entities
+        ///     Tests that scene create many eight components returns expected spans and entities
         /// </summary>
         [Fact]
         public void SceneCreateMany_EightComponents_ReturnsExpectedSpansAndEntities()
@@ -188,7 +187,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that scene create many new entities contain requested components
+        ///     Tests that scene create many new entities contain requested components
         /// </summary>
         [Fact]
         public void SceneCreateMany_NewEntitiesContainRequestedComponents()
@@ -206,7 +205,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that scene create many can write to returned spans and read back from entities
+        ///     Tests that scene create many can write to returned spans and read back from entities
         /// </summary>
         [Fact]
         public void SceneCreateMany_CanWriteToReturnedSpans_AndReadBackFromEntities()
@@ -236,7 +235,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that scene create many zero or negative count throws argument out of range exception
+        ///     Tests that scene create many zero or negative count throws argument out of range exception
         /// </summary>
         [Fact]
         public void SceneCreateMany_ZeroOrNegativeCount_ThrowsArgumentOutOfRangeException()
@@ -250,7 +249,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Counts the entities using the specified entities
+        ///     Counts the entities using the specified entities
         /// </summary>
         /// <param name="entities">The entities</param>
         /// <returns>The count</returns>
@@ -266,4 +265,3 @@ namespace Alis.Core.Ecs.Test
         }
     }
 }
-
