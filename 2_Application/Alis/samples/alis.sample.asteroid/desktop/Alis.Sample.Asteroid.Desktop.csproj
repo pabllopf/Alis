@@ -10,7 +10,6 @@
         <SonarQubeExclude>true</SonarQubeExclude>
         <ApplicationIcon Condition="Exists('$(ProjectDir)Assets/app.ico')">Assets/app.ico</ApplicationIcon>
     </PropertyGroup>
-
     
     <PropertyGroup>
         <DefineConstants Condition="'$(RuntimeIdentifier)' != ''">$(DefineConstants);$([System.String]::Copy('$(RuntimeIdentifier)').Replace('-',''));</DefineConstants>
