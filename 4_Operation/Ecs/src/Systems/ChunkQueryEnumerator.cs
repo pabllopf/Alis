@@ -107,8 +107,8 @@ namespace Alis.Core.Ecs.Systems
             public ChunkQueryEnumerator<T> GetEnumerator() => new ChunkQueryEnumerator<T>(query);
         }
     }
-    
-      /// <summary>
+
+    /// <summary>
     ///     The chunk query enumerator
     /// </summary>
     public ref struct ChunkQueryEnumerator<T1, T2>
@@ -187,8 +187,8 @@ namespace Alis.Core.Ecs.Systems
             public ChunkQueryEnumerator<T1, T2> GetEnumerator() => new ChunkQueryEnumerator<T1, T2>(query);
         }
     }
-      
-          /// <summary>
+
+    /// <summary>
     ///     The chunk query enumerator
     /// </summary>
     /// <remarks>
@@ -270,8 +270,8 @@ namespace Alis.Core.Ecs.Systems
             public ChunkQueryEnumerator<T1, T2, T3> GetEnumerator() => new ChunkQueryEnumerator<T1, T2, T3>(query);
         }
     }
-          
-           /// <summary>
+
+    /// <summary>
     ///     The chunk query enumerator
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -349,8 +349,8 @@ namespace Alis.Core.Ecs.Systems
             public ChunkQueryEnumerator<T1, T2, T3, T4> GetEnumerator() => new ChunkQueryEnumerator<T1, T2, T3, T4>(query);
         }
     }
-           
-               /// <summary>
+
+    /// <summary>
     ///     The chunk query enumerator
     /// </summary>
     /// <remarks>
@@ -434,8 +434,8 @@ namespace Alis.Core.Ecs.Systems
             public ChunkQueryEnumerator<T1, T2, T3, T4, T5> GetEnumerator() => new ChunkQueryEnumerator<T1, T2, T3, T4, T5>(query);
         }
     }
-               
-                   /// <summary>
+
+    /// <summary>
     ///     The chunk query enumerator
     /// </summary>
     /// <remarks>
@@ -524,8 +524,8 @@ namespace Alis.Core.Ecs.Systems
             public ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6> GetEnumerator() => new ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6>(query);
         }
     }
-                   
-                    /// <summary>
+
+    /// <summary>
     ///     The chunk query enumerator
     /// </summary>
     /// <remarks>
@@ -615,8 +615,8 @@ namespace Alis.Core.Ecs.Systems
             public ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7> GetEnumerator() => new ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7>(query);
         }
     }
-                    
-                     /// <summary>
+
+    /// <summary>
     ///     The chunk query enumerator
     /// </summary>
     /// <remarks>

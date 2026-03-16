@@ -41,7 +41,7 @@ namespace Alis.Core.Ecs.Test.Updating
     public class SingleComponentUpdateFilterTest
     {
         /// <summary>
-        /// Tests that constructor with valid scene and component creates filter
+        ///     Tests that constructor with valid scene and component creates filter
         /// </summary>
         [Fact]
         public void Constructor_WithValidSceneAndComponent_CreatesFilter()
@@ -55,7 +55,7 @@ namespace Alis.Core.Ecs.Test.Updating
         }
 
         /// <summary>
-        /// Tests that constructor adds existing archetypes with matching component
+        ///     Tests that constructor adds existing archetypes with matching component
         /// </summary>
         [Fact]
         public void Constructor_AddsExistingArchetypesWithMatchingComponent()
@@ -70,7 +70,7 @@ namespace Alis.Core.Ecs.Test.Updating
         }
 
         /// <summary>
-        /// Tests that update invokes on update for all entities with component
+        ///     Tests that update invokes on update for all entities with component
         /// </summary>
         [Fact]
         public void Update_InvokesOnUpdateForAllEntitiesWithComponent()
@@ -87,7 +87,7 @@ namespace Alis.Core.Ecs.Test.Updating
         }
 
         /// <summary>
-        /// Tests that update with multiple archetypes updates all matching entities
+        ///     Tests that update with multiple archetypes updates all matching entities
         /// </summary>
         [Fact]
         public void Update_WithMultipleArchetypes_UpdatesAllMatchingEntities()
@@ -104,7 +104,7 @@ namespace Alis.Core.Ecs.Test.Updating
         }
 
         /// <summary>
-        /// Tests that update called multiple times accumulates call count
+        ///     Tests that update called multiple times accumulates call count
         /// </summary>
         [Fact]
         public void Update_CalledMultipleTimes_AccumulatesCallCount()
@@ -121,7 +121,7 @@ namespace Alis.Core.Ecs.Test.Updating
         }
 
         /// <summary>
-        /// Tests that update with no matching entities does not throw
+        ///     Tests that update with no matching entities does not throw
         /// </summary>
         [Fact]
         public void Update_WithNoMatchingEntities_DoesNotThrow()
@@ -134,9 +134,9 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.True(true); // If we reach this point, no exception was thrown
         }
 
-        
+
         /// <summary>
-        /// Tests that archetype added with matching component adds archetype to filter
+        ///     Tests that archetype added with matching component adds archetype to filter
         /// </summary>
         [Fact]
         public void ArchetypeAdded_WithMatchingComponent_AddsArchetypeToFilter()
@@ -151,7 +151,7 @@ namespace Alis.Core.Ecs.Test.Updating
         }
 
         /// <summary>
-        /// Tests that archetype added with non matching component does not affect filter
+        ///     Tests that archetype added with non matching component does not affect filter
         /// </summary>
         [Fact]
         public void ArchetypeAdded_WithNonMatchingComponent_DoesNotAffectFilter()
@@ -169,7 +169,7 @@ namespace Alis.Core.Ecs.Test.Updating
         }
 
         /// <summary>
-        /// Tests that update subset updates only specified range
+        ///     Tests that update subset updates only specified range
         /// </summary>
         [Fact]
         public void UpdateSubset_UpdatesOnlySpecifiedRange()
@@ -185,7 +185,7 @@ namespace Alis.Core.Ecs.Test.Updating
         }
 
         /// <summary>
-        /// Tests that update with mixed archetypes updates only matching component
+        ///     Tests that update with mixed archetypes updates only matching component
         /// </summary>
         [Fact]
         public void Update_WithMixedArchetypes_UpdatesOnlyMatchingComponent()
@@ -204,4 +204,3 @@ namespace Alis.Core.Ecs.Test.Updating
         }
     }
 }
-

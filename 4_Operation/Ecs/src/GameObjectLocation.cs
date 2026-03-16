@@ -37,14 +37,14 @@ namespace Alis.Core.Ecs
     ///     The gameObject location
     /// </summary>
     /// <remarks>
-    ///     Memory layout optimized: Archetype (reference, 8 bytes) -> Index (4 bytes) -> Flags (4 bytes enum) -> Version (2 bytes)
+    ///     Memory layout optimized: Archetype (reference, 8 bytes) -> Index (4 bytes) -> Flags (4 bytes enum) -> Version (2
+    ///     bytes)
     ///     Total: 18 bytes + 6 bytes padding = 24 bytes aligned
     ///     Pack = 4 for optimal performance on 64-bit architectures while minimizing padding
     /// </remarks>
     [StructLayout(LayoutKind.Sequential, Pack = 4)]
     public struct GameObjectLocation
     {
-        
         /// <summary>
         ///     The archetype
         /// </summary>

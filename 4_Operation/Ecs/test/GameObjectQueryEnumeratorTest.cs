@@ -40,7 +40,7 @@ namespace Alis.Core.Ecs.Test
     public class GameObjectQueryEnumeratorTest
     {
         /// <summary>
-        /// Tests that game object query enumerator arity 1 is value type and by ref like
+        ///     Tests that game object query enumerator arity 1 is value type and by ref like
         /// </summary>
         [Fact]
         public void GameObjectQueryEnumerator_Arity1_IsValueTypeAndByRefLike()
@@ -50,7 +50,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object query enumerator arity 8 is value type and by ref like
+        ///     Tests that game object query enumerator arity 8 is value type and by ref like
         /// </summary>
         [Fact]
         public void GameObjectQueryEnumerator_Arity8_IsValueTypeAndByRefLike()
@@ -58,9 +58,9 @@ namespace Alis.Core.Ecs.Test
             Assert.True(typeof(GameObjectQueryEnumerator<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>).IsValueType);
             Assert.True(typeof(GameObjectQueryEnumerator<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>).IsByRefLike);
         }
-        
+
         /// <summary>
-        /// Tests that game object query enumerator constructor and dispose toggle structural changes
+        ///     Tests that game object query enumerator constructor and dispose toggle structural changes
         /// </summary>
         [Fact]
         public void GameObjectQueryEnumerator_ConstructorAndDispose_ToggleStructuralChanges()
@@ -78,7 +78,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object query enumerator foreach completes exits disallow state
+        ///     Tests that game object query enumerator foreach completes exits disallow state
         /// </summary>
         [Fact]
         public void GameObjectQueryEnumerator_ForeachCompletes_ExitsDisallowState()
@@ -100,7 +100,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object query enumerator foreach break still exits disallow state
+        ///     Tests that game object query enumerator foreach break still exits disallow state
         /// </summary>
         [Fact]
         public void GameObjectQueryEnumerator_ForeachBreak_StillExitsDisallowState()
@@ -122,7 +122,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object query enumerator move next empty query returns false
+        ///     Tests that game object query enumerator move next empty query returns false
         /// </summary>
         [Fact]
         public void GameObjectQueryEnumerator_MoveNext_EmptyQuery_ReturnsFalse()
@@ -137,10 +137,10 @@ namespace Alis.Core.Ecs.Test
             Assert.False(moved);
             Assert.False(scene.AllowStructualChanges);
         }
-        
+
 
         /// <summary>
-        /// Tests that game object query enumerator move next and current arity 1 works as expected
+        ///     Tests that game object query enumerator move next and current arity 1 works as expected
         /// </summary>
         [Fact]
         public void GameObjectQueryEnumerator_MoveNextAndCurrent_Arity1_WorksAsExpected()
@@ -160,7 +160,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object query enumerator current arity 2 maps entity and refs
+        ///     Tests that game object query enumerator current arity 2 maps entity and refs
         /// </summary>
         [Fact]
         public void GameObjectQueryEnumerator_Current_Arity2_MapsEntityAndRefs()
@@ -178,7 +178,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object query enumerator arity 4 current contains all components
+        ///     Tests that game object query enumerator arity 4 current contains all components
         /// </summary>
         [Fact]
         public void GameObjectQueryEnumerator_Arity4_CurrentContainsAllComponents()
@@ -203,7 +203,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object query enumerator arity 5 can enumerate all components
+        ///     Tests that game object query enumerator arity 5 can enumerate all components
         /// </summary>
         [Fact]
         public void GameObjectQueryEnumerator_Arity5_CanEnumerateAllComponents()
@@ -229,7 +229,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object query enumerator arity 6 can enumerate all components
+        ///     Tests that game object query enumerator arity 6 can enumerate all components
         /// </summary>
         [Fact]
         public void GameObjectQueryEnumerator_Arity6_CanEnumerateAllComponents()
@@ -256,7 +256,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object query enumerator arity 7 can enumerate all components
+        ///     Tests that game object query enumerator arity 7 can enumerate all components
         /// </summary>
         [Fact]
         public void GameObjectQueryEnumerator_Arity7_CanEnumerateAllComponents()
@@ -284,7 +284,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object query enumerator arity 8 can enumerate all components
+        ///     Tests that game object query enumerator arity 8 can enumerate all components
         /// </summary>
         [Fact]
         public void GameObjectQueryEnumerator_Arity8_CanEnumerateAllComponents()
@@ -313,7 +313,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object query enumerator iterates across multiple archetypes
+        ///     Tests that game object query enumerator iterates across multiple archetypes
         /// </summary>
         [Fact]
         public void GameObjectQueryEnumerator_IteratesAcrossMultipleArchetypes()
@@ -336,4 +336,3 @@ namespace Alis.Core.Ecs.Test
         }
     }
 }
-
