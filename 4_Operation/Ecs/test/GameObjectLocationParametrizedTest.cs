@@ -40,14 +40,10 @@ namespace Alis.Core.Ecs.Test
     public class GameObjectLocationParametrizedTest
     {
         /// <summary>
-        /// Tests that game object location created entities have unique ids
+        ///     Tests that game object location created entities have unique ids
         /// </summary>
         /// <param name="entityCount">The entity count</param>
-        [Theory]
-        [InlineData(1)]
-        [InlineData(5)]
-        [InlineData(10)]
-        [InlineData(50)]
+        [Theory, InlineData(1), InlineData(5), InlineData(10), InlineData(50)]
         public void GameObjectLocation_CreatedEntities_HaveUniqueIds(int entityCount)
         {
             // Arrange
@@ -73,13 +69,10 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object location different scenes create different entities
+        ///     Tests that game object location different scenes create different entities
         /// </summary>
         /// <param name="entityCountPerScene">The entity count per scene</param>
-        [Theory]
-        [InlineData(1)]
-        [InlineData(5)]
-        [InlineData(10)]
+        [Theory, InlineData(1), InlineData(5), InlineData(10)]
         public void GameObjectLocation_DifferentScenes_CreateDifferentEntities(int entityCountPerScene)
         {
             // Arrange
@@ -104,12 +97,10 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object location query returns local entities only from scene
+        ///     Tests that game object location query returns local entities only from scene
         /// </summary>
         /// <param name="entityCount">The entity count</param>
-        [Theory]
-        [InlineData(10)]
-        [InlineData(50)]
+        [Theory, InlineData(10), InlineData(50)]
         public void GameObjectLocation_QueryReturnsLocalEntities_OnlyFromScene(int entityCount)
         {
             // Arrange
@@ -117,9 +108,13 @@ namespace Alis.Core.Ecs.Test
             for (int i = 0; i < entityCount; i++)
             {
                 if (i % 2 == 0)
-                    scene.Create(new Position { X = 1, Y = 1 });
+                {
+                    scene.Create(new Position {X = 1, Y = 1});
+                }
                 else
+                {
                     scene.Create();
+                }
             }
 
             // Act
@@ -134,18 +129,18 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object location entity identity persists across operations
+        ///     Tests that game object location entity identity persists across operations
         /// </summary>
         [Fact]
         public void GameObjectLocation_EntityIdentity_PersistsAcrossOperations()
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 10, Y = 20 });
+            GameObject entity = scene.Create(new Position {X = 10, Y = 20});
 
             // Act
             var id1 = entity;
-            entity.Add(new Health { Value = 100 });
+            entity.Add(new Health {Value = 100});
             var id2 = entity;
             ref Position pos = ref entity.Get<Position>();
             pos.X = 50;
@@ -157,12 +152,10 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object location entity can be stored and retrieved works
+        ///     Tests that game object location entity can be stored and retrieved works
         /// </summary>
         /// <param name="entityCount">The entity count</param>
-        [Theory]
-        [InlineData(10)]
-        [InlineData(50)]
+        [Theory, InlineData(10), InlineData(50)]
         public void GameObjectLocation_EntityCanBeStoredAndRetrieved_Works(int entityCount)
         {
             // Arrange
@@ -172,7 +165,7 @@ namespace Alis.Core.Ecs.Test
             // Act
             for (int i = 0; i < entityCount; i++)
             {
-                stored[i] = scene.Create(new Position { X = i, Y = i });
+                stored[i] = scene.Create(new Position {X = i, Y = i});
             }
 
             // Retrieve and verify
@@ -187,12 +180,10 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object location multiple references to same entity all valid
+        ///     Tests that game object location multiple references to same entity all valid
         /// </summary>
         /// <param name="entityCount">The entity count</param>
-        [Theory]
-        [InlineData(10)]
-        [InlineData(50)]
+        [Theory, InlineData(10), InlineData(50)]
         public void GameObjectLocation_MultipleReferencesToSameEntity_AllValid(int entityCount)
         {
             // Arrange
@@ -202,10 +193,10 @@ namespace Alis.Core.Ecs.Test
             // Act
             for (int i = 0; i < entityCount; i++)
             {
-                GameObject created = scene.Create(new Position { X = i, Y = i });
+                GameObject created = scene.Create(new Position {X = i, Y = i});
                 stored[i] = created;
                 var sameRef = created;
-                
+
                 // Verify they're the same
                 Assert.Equal(created, sameRef);
             }
@@ -215,7 +206,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object location entity location within scene accessible
+        ///     Tests that game object location entity location within scene accessible
         /// </summary>
         [Fact]
         public void GameObjectLocation_EntityLocationWithinScene_Accessible()
@@ -224,7 +215,7 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
 
             // Act
-            GameObject entity = scene.Create(new Position { X = 100, Y = 200 });
+            GameObject entity = scene.Create(new Position {X = 100, Y = 200});
 
             // Assert
             Assert.True(entity.IsAlive);
@@ -233,13 +224,10 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object location deleted entity location becomes invalid
+        ///     Tests that game object location deleted entity location becomes invalid
         /// </summary>
         /// <param name="count">The count</param>
-        [Theory]
-        [InlineData(1)]
-        [InlineData(5)]
-        [InlineData(10)]
+        [Theory, InlineData(1), InlineData(5), InlineData(10)]
         public void GameObjectLocation_DeletedEntityLocationBecomesInvalid(int count)
         {
             // Arrange
@@ -264,4 +252,3 @@ namespace Alis.Core.Ecs.Test
         }
     }
 }
-

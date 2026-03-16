@@ -59,7 +59,7 @@ namespace Alis.Core.Ecs.Sample
         }
 
         /// <summary>
-        /// Prints the menu
+        ///     Prints the menu
         /// </summary>
         private static void PrintMenu()
         {
@@ -80,7 +80,7 @@ namespace Alis.Core.Ecs.Sample
         }
 
         /// <summary>
-        /// Executes the selection using the specified selection
+        ///     Executes the selection using the specified selection
         /// </summary>
         /// <param name="selection">The selection</param>
         private static void ExecuteSelection(string selection)
@@ -98,14 +98,13 @@ namespace Alis.Core.Ecs.Sample
                 return;
             }
 
-            if (int.TryParse(selection, out int index) && index >= 1 && index <= SampleCatalog.All.Count)
+            if (int.TryParse(selection, out int index) && (index >= 1) && (index <= SampleCatalog.All.Count))
             {
                 RunOne(SampleCatalog.All[index - 1], index);
                 return;
             }
 
-            IEcsSample sampleByKey = SampleCatalog.All.FirstOrDefault(
-                sample => sample.Key.Equals(selection, StringComparison.OrdinalIgnoreCase));
+            IEcsSample sampleByKey = SampleCatalog.All.FirstOrDefault(sample => sample.Key.Equals(selection, StringComparison.OrdinalIgnoreCase));
 
             if (sampleByKey is not null)
             {
@@ -128,7 +127,7 @@ namespace Alis.Core.Ecs.Sample
         }
 
         /// <summary>
-        /// Runs the all
+        ///     Runs the all
         /// </summary>
         private static void RunAll()
         {
@@ -165,7 +164,7 @@ namespace Alis.Core.Ecs.Sample
         }
 
         /// <summary>
-        /// Runs the one using the specified sample
+        ///     Runs the one using the specified sample
         /// </summary>
         /// <param name="sample">The sample</param>
         /// <param name="index">The index</param>
@@ -201,7 +200,7 @@ namespace Alis.Core.Ecs.Sample
         }
 
         /// <summary>
-        /// Writes the section title using the specified text
+        ///     Writes the section title using the specified text
         /// </summary>
         /// <param name="text">The text</param>
         private static void WriteSectionTitle(string text)
@@ -213,7 +212,7 @@ namespace Alis.Core.Ecs.Sample
         }
 
         /// <summary>
-        /// Writes the info using the specified text
+        ///     Writes the info using the specified text
         /// </summary>
         /// <param name="text">The text</param>
         private static void WriteInfo(string text)
@@ -225,7 +224,7 @@ namespace Alis.Core.Ecs.Sample
         }
 
         /// <summary>
-        /// Writes the success using the specified text
+        ///     Writes the success using the specified text
         /// </summary>
         /// <param name="text">The text</param>
         private static void WriteSuccess(string text)
@@ -237,7 +236,7 @@ namespace Alis.Core.Ecs.Sample
         }
 
         /// <summary>
-        /// Writes the error using the specified text
+        ///     Writes the error using the specified text
         /// </summary>
         /// <param name="text">The text</param>
         private static void WriteError(string text)

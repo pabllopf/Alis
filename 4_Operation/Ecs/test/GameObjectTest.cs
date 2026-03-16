@@ -487,7 +487,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object has and try has by type and component id work
+        ///     Tests that game object has and try has by type and component id work
         /// </summary>
         [Fact]
         public void GameObject_HasAndTryHas_ByTypeAndComponentId_Work()
@@ -510,7 +510,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object get set and try get non generic overloads work
+        ///     Tests that game object get set and try get non generic overloads work
         /// </summary>
         [Fact]
         public void GameObject_GetSetAndTryGet_NonGenericOverloads_Work()
@@ -535,7 +535,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object add boxed and add as can add components dynamically
+        ///     Tests that game object add boxed and add as can add components dynamically
         /// </summary>
         [Fact]
         public void GameObject_AddBoxedAndAddAs_CanAddComponentsDynamically()
@@ -555,7 +555,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object remove by type and component id work
+        ///     Tests that game object remove by type and component id work
         /// </summary>
         [Fact]
         public void GameObject_Remove_ByTypeAndComponentId_Work()
@@ -570,10 +570,9 @@ namespace Alis.Core.Ecs.Test
             Assert.False(gameObject.Has<Velocity>());
         }
 
-      
 
         /// <summary>
-        /// Tests that game object generic component events are raised with concrete types
+        ///     Tests that game object generic component events are raised with concrete types
         /// </summary>
         [Fact]
         public void GameObject_GenericComponentEvents_AreRaisedWithConcreteTypes()
@@ -595,7 +594,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object enumerate components visits all components
+        ///     Tests that game object enumerate components visits all components
         /// </summary>
         [Fact]
         public void GameObject_EnumerateComponents_VisitsAllComponents()
@@ -616,7 +615,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object metadata properties are consistent
+        ///     Tests that game object metadata properties are consistent
         /// </summary>
         [Fact]
         public void GameObject_MetadataProperties_AreConsistent()
@@ -630,7 +629,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object try has on deleted entity returns false without throwing
+        ///     Tests that game object try has on deleted entity returns false without throwing
         /// </summary>
         [Fact]
         public void GameObject_TryHas_OnDeletedEntity_ReturnsFalseWithoutThrowing()
@@ -645,22 +644,23 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// The component type capture action class
+        ///     The component type capture action class
         /// </summary>
-        /// <seealso cref="IGenericAction"/>
+        /// <seealso cref="IGenericAction" />
         private sealed class ComponentTypeCaptureAction : IGenericAction
         {
             /// <summary>
-            /// The calls
+            ///     The calls
             /// </summary>
             internal int Calls;
+
             /// <summary>
-            /// Gets the value of the seen types
+            ///     Gets the value of the seen types
             /// </summary>
             internal HashSet<Type> SeenTypes { get; } = new HashSet<Type>();
 
             /// <summary>
-            /// Invokes the type
+            ///     Invokes the type
             /// </summary>
             /// <typeparam name="T">The </typeparam>
             /// <param name="type">The type</param>
@@ -672,18 +672,18 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// The generic capture action class
+        ///     The generic capture action class
         /// </summary>
-        /// <seealso cref="IGenericAction{GameObject}"/>
+        /// <seealso cref="IGenericAction{GameObject}" />
         private sealed class GenericCaptureAction : IGenericAction<GameObject>
         {
             /// <summary>
-            /// Gets the value of the seen types
+            ///     Gets the value of the seen types
             /// </summary>
             internal HashSet<Type> SeenTypes { get; } = new HashSet<Type>();
 
             /// <summary>
-            /// Invokes the param
+            ///     Invokes the param
             /// </summary>
             /// <typeparam name="T">The </typeparam>
             /// <param name="param">The param</param>
@@ -695,4 +695,3 @@ namespace Alis.Core.Ecs.Test
         }
     }
 }
-

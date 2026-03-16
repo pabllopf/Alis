@@ -180,7 +180,7 @@ namespace Alis.Core.Ecs
         {
             throw new InvalidOperationException(EntityIsDeadMessage);
         }
-        
+
         /// <summary>
         ///     The gameObject is dead message
         /// </summary>
@@ -236,10 +236,9 @@ namespace Alis.Core.Ecs
         /// </summary>
         /// <returns>A hash code for the current <see cref="GameObject" />.</returns>
         public override int GetHashCode() => PackedValue.GetHashCode();
-        
-        
-        
-         /// <summary>
+
+
+        /// <summary>
         ///     Adds a component to this <see cref="GameObject" />.
         /// </summary>
         /// <remarks>If the scene is being updated, changed are deffered to the end of the scene update.</remarks>
@@ -279,7 +278,7 @@ namespace Alis.Core.Ecs
                 if (GameObjectLocation.HasEventFlag(flags, GameObjectFlags.AddComp | GameObjectFlags.AddGenericComp))
                 {
                     EventRecord events = world.EventLookup[EntityIdOnly];
-                    
+
                     InvokePerEntityEvents(this, GameObjectLocation.HasEventFlag(thisLookup.Flags, GameObjectFlags.AddGenericComp),
                         ref events.Add, ref c1Ref);
                 }
@@ -309,7 +308,7 @@ namespace Alis.Core.Ecs
             Span<ComponentHandle> runners = stackalloc ComponentHandle[1];
             world.MoveEntityToArchetypeRemove(runners, this, ref thisLookup, to);
         }
-        
+
         /// <summary>
         ///     Invokes the component scene events using the specified event
         /// </summary>
@@ -342,10 +341,8 @@ namespace Alis.Core.Ecs
             events.GenericEvent!.Invoke(gameObject, ref component);
         }
 
-        
-        
-        
-         /// <summary>
+
+        /// <summary>
         ///     Traverses the through cache or create using the specified scene
         /// </summary>
         /// <typeparam name="TEdge">The edge</typeparam>
@@ -389,9 +386,9 @@ namespace Alis.Core.Ecs
                 return archetype;
             }
         }
-         
-         
-          /// <summary>
+
+
+        /// <summary>
         ///     Adds a component to this <see cref="GameObject" />.
         /// </summary>
         /// <remarks>If the scene is being updated, changed are deffered to the end of the scene update.</remarks>
@@ -439,9 +436,8 @@ namespace Alis.Core.Ecs
 
                 if (GameObjectLocation.HasEventFlag(flags, GameObjectFlags.AddComp | GameObjectFlags.AddGenericComp))
                 {
-
                     EventRecord events = world.EventLookup[EntityIdOnly];
-                    
+
                     InvokePerEntityEvents(this, GameObjectLocation.HasEventFlag(thisLookup.Flags, GameObjectFlags.AddGenericComp),
                         ref events.Add, ref c1Ref);
                 }
@@ -475,7 +471,6 @@ namespace Alis.Core.Ecs
             //scene.MoveEntityToArchetypeRemove invokes the events for us
         }
 
-        
 
         /// <summary>
         ///     Invokes the component scene events using the specified event
@@ -516,8 +511,8 @@ namespace Alis.Core.Ecs
             events.GenericEvent!.Invoke(gameObject, ref component2);
         }
 
-       
-          /// <summary>
+
+        /// <summary>
         ///     Adds a component to this <see cref="GameObject" />.
         /// </summary>
         /// <remarks>If the scene is being updated, changed are deffered to the end of the scene update.</remarks>
@@ -605,7 +600,7 @@ namespace Alis.Core.Ecs
             world.MoveEntityToArchetypeRemove(runners, this, ref thisLookup, to);
             //scene.MoveEntityToArchetypeRemove invokes the events for us
         }
-        
+
         /// <summary>
         ///     Invokes the component scene events using the specified event
         /// </summary>
@@ -650,7 +645,7 @@ namespace Alis.Core.Ecs
             events.GenericEvent!.Invoke(gameObject, ref component2);
             events.GenericEvent!.Invoke(gameObject, ref component3);
         }
-        
+
         /// <summary>
         ///     Adds a component to this <see cref="GameObject" />.
         /// </summary>
@@ -710,7 +705,7 @@ namespace Alis.Core.Ecs
                 if (GameObjectLocation.HasEventFlag(flags, GameObjectFlags.AddComp | GameObjectFlags.AddGenericComp))
                 {
                     EventRecord events = world.EventLookup[EntityIdOnly];
-                    
+
                     InvokePerEntityEvents(this, GameObjectLocation.HasEventFlag(thisLookup.Flags, GameObjectFlags.AddGenericComp),
                         ref events.Add, ref c1Ref);
                 }
@@ -746,7 +741,6 @@ namespace Alis.Core.Ecs
             //scene.MoveEntityToArchetypeRemove invokes the events for us
         }
 
-       
 
         /// <summary>
         ///     Invokes the component scene events using the specified event
@@ -799,7 +793,7 @@ namespace Alis.Core.Ecs
             events.GenericEvent!.Invoke(gameObject, ref component4);
         }
 
-       
+
         /// <summary>
         ///     Adds a component to this <see cref="GameObject" />.
         /// </summary>
@@ -900,7 +894,7 @@ namespace Alis.Core.Ecs
             //scene.MoveEntityToArchetypeRemove invokes the events for us
         }
 
-       
+
         /// <summary>
         ///     Invokes the component scene events using the specified event
         /// </summary>
@@ -959,9 +953,8 @@ namespace Alis.Core.Ecs
             events.GenericEvent!.Invoke(gameObject, ref component5);
         }
 
-        
-        
-         /// <summary>
+
+        /// <summary>
         ///     Adds a component to this <see cref="GameObject" />.
         /// </summary>
         /// <remarks>If the scene is being updated, changed are deffered to the end of the scene update.</remarks>
@@ -1029,7 +1022,7 @@ namespace Alis.Core.Ecs
 
                 if (GameObjectLocation.HasEventFlag(flags, GameObjectFlags.AddComp | GameObjectFlags.AddGenericComp))
                 {
-EventRecord events = world.EventLookup[EntityIdOnly];
+                    EventRecord events = world.EventLookup[EntityIdOnly];
                     InvokePerEntityEvents(this, GameObjectLocation.HasEventFlag(thisLookup.Flags, GameObjectFlags.AddGenericComp),
                         ref events.Add, ref c1Ref);
                 }
@@ -1132,8 +1125,7 @@ EventRecord events = world.EventLookup[EntityIdOnly];
             events.GenericEvent!.Invoke(gameObject, ref component6);
         }
 
-        
-        
+
         /// <summary>
         ///     Adds a component to this <see cref="GameObject" />.
         /// </summary>
@@ -1207,7 +1199,7 @@ EventRecord events = world.EventLookup[EntityIdOnly];
 
                 if (GameObjectLocation.HasEventFlag(flags, GameObjectFlags.AddComp | GameObjectFlags.AddGenericComp))
                 {
-EventRecord events = world.EventLookup[EntityIdOnly];
+                    EventRecord events = world.EventLookup[EntityIdOnly];
                     InvokePerEntityEvents(this, GameObjectLocation.HasEventFlag(thisLookup.Flags, GameObjectFlags.AddGenericComp),
                         ref events.Add, ref c1Ref);
                 }
@@ -1245,7 +1237,7 @@ EventRecord events = world.EventLookup[EntityIdOnly];
             world.MoveEntityToArchetypeRemove(runners, this, ref thisLookup, to);
             //scene.MoveEntityToArchetypeRemove invokes the events for us
         }
-        
+
         /// <summary>
         ///     Invokes the component scene events using the specified event
         /// </summary>
@@ -1317,7 +1309,7 @@ EventRecord events = world.EventLookup[EntityIdOnly];
             events.GenericEvent!.Invoke(gameObject, ref component7);
         }
 
-        
+
         /// <summary>
         ///     Adds a component to this <see cref="GameObject" />.
         /// </summary>
@@ -1397,7 +1389,7 @@ EventRecord events = world.EventLookup[EntityIdOnly];
 
                 if (GameObjectLocation.HasEventFlag(flags, GameObjectFlags.AddComp | GameObjectFlags.AddGenericComp))
                 {
-EventRecord events = world.EventLookup[EntityIdOnly];
+                    EventRecord events = world.EventLookup[EntityIdOnly];
                     InvokePerEntityEvents(this, GameObjectLocation.HasEventFlag(thisLookup.Flags, GameObjectFlags.AddGenericComp),
                         ref events.Add, ref c1Ref);
                 }
@@ -1437,7 +1429,7 @@ EventRecord events = world.EventLookup[EntityIdOnly];
             //scene.MoveEntityToArchetypeRemove invokes the events for us
         }
 
-        
+
         /// <summary>
         ///     Invokes the component scene events using the specified event
         /// </summary>
@@ -1514,9 +1506,8 @@ EventRecord events = world.EventLookup[EntityIdOnly];
             events.GenericEvent!.Invoke(gameObject, ref component7);
             events.GenericEvent!.Invoke(gameObject, ref component8);
         }
-        
-        
-        
+
+
         /// <summary>
         ///     Checks of this <see cref="GameObject" /> has a component specified by <paramref name="componentId" />.
         /// </summary>
@@ -1817,7 +1808,7 @@ EventRecord events = world.EventLookup[EntityIdOnly];
         {
             Remove(Component.GetComponentId(type));
         }
-        
+
         /// <summary>
         ///     Raised when the gameObject is deleted
         /// </summary>
@@ -1900,8 +1891,8 @@ EventRecord events = world.EventLookup[EntityIdOnly];
             }
 
             bool exists = entityLocation.HasEvent(flag);
-            EventRecord events = exists ? Scene.EventLookup[EntityIdOnly] : default;
-            
+            EventRecord events = exists ? Scene.EventLookup[EntityIdOnly] : default(EventRecord);
+
             if (exists)
             {
                 bool removeFlags = false;
@@ -1941,10 +1932,10 @@ EventRecord events = world.EventLookup[EntityIdOnly];
             {
                 return;
             }
-            
+
             bool exists = entityLocation.HasEvent(flag);
-            EventRecord record = exists ? Scene.EventLookup[EntityIdOnly] : default;
-            
+            EventRecord record = exists ? Scene.EventLookup[EntityIdOnly] : default(EventRecord);
+
             world.EntityTable[EntityID].Flags |= flag;
             EventRecord.Initalize(exists, ref record!);
 

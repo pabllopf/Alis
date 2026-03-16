@@ -41,16 +41,17 @@ namespace Alis.Core.Ecs.Test.Updating
     public class SceneUpdateFilterTest
     {
         /// <summary>
-        /// The registered scene update filter attribute
+        ///     The registered scene update filter attribute
         /// </summary>
         private static readonly Type RegisteredFilterType = typeof(RegisteredSceneUpdateFilterAttribute);
+
         /// <summary>
-        /// The empty scene update filter attribute
+        ///     The empty scene update filter attribute
         /// </summary>
         private static readonly Type EmptyFilterType = typeof(EmptySceneUpdateFilterAttribute);
 
         /// <summary>
-        /// Tests that constructor with valid scene and attribute type creates filter
+        ///     Tests that constructor with valid scene and attribute type creates filter
         /// </summary>
         [Fact]
         public void Constructor_WithValidSceneAndAttributeType_CreatesFilter()
@@ -64,7 +65,7 @@ namespace Alis.Core.Ecs.Test.Updating
         }
 
         /// <summary>
-        /// Tests that constructor processes existing archetypes
+        ///     Tests that constructor processes existing archetypes
         /// </summary>
         [Fact]
         public void Constructor_ProcessesExistingArchetypes()
@@ -83,7 +84,7 @@ namespace Alis.Core.Ecs.Test.Updating
         }
 
         /// <summary>
-        /// Tests that update invokes on update for all components with attribute
+        ///     Tests that update invokes on update for all components with attribute
         /// </summary>
         [Fact]
         public void Update_InvokesOnUpdateForAllComponentsWithAttribute()
@@ -101,7 +102,7 @@ namespace Alis.Core.Ecs.Test.Updating
         }
 
         /// <summary>
-        /// Tests that update called multiple times executes each time
+        ///     Tests that update called multiple times executes each time
         /// </summary>
         [Fact]
         public void Update_CalledMultipleTimes_ExecutesEachTime()
@@ -118,7 +119,7 @@ namespace Alis.Core.Ecs.Test.Updating
         }
 
         /// <summary>
-        /// Tests that update with no matching components does not throw
+        ///     Tests that update with no matching components does not throw
         /// </summary>
         [Fact]
         public void Update_WithNoMatchingComponents_DoesNotThrow()
@@ -133,7 +134,7 @@ namespace Alis.Core.Ecs.Test.Updating
         }
 
         /// <summary>
-        /// Tests that update with empty scene does not throw
+        ///     Tests that update with empty scene does not throw
         /// </summary>
         [Fact]
         public void Update_WithEmptyScene_DoesNotThrow()
@@ -147,7 +148,7 @@ namespace Alis.Core.Ecs.Test.Updating
         }
 
         /// <summary>
-        /// Tests that update subset through deferred creation updates only new entities
+        ///     Tests that update subset through deferred creation updates only new entities
         /// </summary>
         [Fact]
         public void UpdateSubset_ThroughDeferredCreation_UpdatesOnlyNewEntities()
@@ -159,27 +160,26 @@ namespace Alis.Core.Ecs.Test.Updating
 
             scene.EnterDisallowState();
             GameObject deferred = scene.Create(new UpdateComponent {CallCount = 0});
-            scene.ExitDisallowState(filter, updateDeferredEntities: true);
+            scene.ExitDisallowState(filter, true);
 
             Assert.Equal(0, existing.Get<UpdateComponent>().CallCount);
             Assert.Equal(1, deferred.Get<UpdateComponent>().CallCount);
         }
 
         /// <summary>
-        /// The registered scene update filter attribute class
+        ///     The registered scene update filter attribute class
         /// </summary>
-        /// <seealso cref="Attribute"/>
+        /// <seealso cref="Attribute" />
         private sealed class RegisteredSceneUpdateFilterAttribute : Attribute
         {
         }
 
         /// <summary>
-        /// The empty scene update filter attribute class
+        ///     The empty scene update filter attribute class
         /// </summary>
-        /// <seealso cref="Attribute"/>
+        /// <seealso cref="Attribute" />
         private sealed class EmptySceneUpdateFilterAttribute : Attribute
         {
         }
     }
 }
-

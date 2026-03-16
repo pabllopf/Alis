@@ -38,14 +38,14 @@ namespace Alis.Core.Ecs.Test.Kernel
     public class RefParametrizedTest
     {
         /// <summary>
-        /// Tests that ref create and access works
+        ///     Tests that ref create and access works
         /// </summary>
         [Fact]
         public void Ref_CreateAndAccess_Works()
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 10, Y = 20 });
+            GameObject entity = scene.Create(new Position {X = 10, Y = 20});
 
             // Act
             ref Position pos = ref entity.Get<Position>();
@@ -56,14 +56,14 @@ namespace Alis.Core.Ecs.Test.Kernel
         }
 
         /// <summary>
-        /// Tests that ref modify via ref changes are persisted
+        ///     Tests that ref modify via ref changes are persisted
         /// </summary>
         [Fact]
         public void Ref_ModifyViaRef_ChangesArePersisted()
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 10, Y = 20 });
+            GameObject entity = scene.Create(new Position {X = 10, Y = 20});
 
             // Act
             ref Position pos = ref entity.Get<Position>();
@@ -76,20 +76,16 @@ namespace Alis.Core.Ecs.Test.Kernel
         }
 
         /// <summary>
-        /// Tests that ref modify multiple times all changes apply
+        ///     Tests that ref modify multiple times all changes apply
         /// </summary>
         /// <param name="initialX">The initial</param>
         /// <param name="finalX">The final</param>
-        [Theory]
-        [InlineData(1, 1)]
-        [InlineData(5, 5)]
-        [InlineData(10, 10)]
-        [InlineData(100, 100)]
+        [Theory, InlineData(1, 1), InlineData(5, 5), InlineData(10, 10), InlineData(100, 100)]
         public void Ref_ModifyMultipleTimes_AllChangesApply(int initialX, int finalX)
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = initialX, Y = initialX });
+            GameObject entity = scene.Create(new Position {X = initialX, Y = initialX});
 
             // Act
             ref Position pos = ref entity.Get<Position>();
@@ -103,14 +99,10 @@ namespace Alis.Core.Ecs.Test.Kernel
         }
 
         /// <summary>
-        /// Tests that ref multiple entities independently works
+        ///     Tests that ref multiple entities independently works
         /// </summary>
         /// <param name="entityCount">The entity count</param>
-        [Theory]
-        [InlineData(1)]
-        [InlineData(5)]
-        [InlineData(10)]
-        [InlineData(50)]
+        [Theory, InlineData(1), InlineData(5), InlineData(10), InlineData(50)]
         public void Ref_MultipleEntitiesIndependently_Works(int entityCount)
         {
             // Arrange
@@ -118,7 +110,7 @@ namespace Alis.Core.Ecs.Test.Kernel
             var entities = new GameObject[entityCount];
             for (int i = 0; i < entityCount; i++)
             {
-                entities[i] = scene.Create(new Position { X = i, Y = i });
+                entities[i] = scene.Create(new Position {X = i, Y = i});
             }
 
             // Act
@@ -136,14 +128,14 @@ namespace Alis.Core.Ecs.Test.Kernel
         }
 
         /// <summary>
-        /// Tests that ref health modify value
+        ///     Tests that ref health modify value
         /// </summary>
         [Fact]
         public void Ref_Health_ModifyValue()
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Health { Value = 100 });
+            GameObject entity = scene.Create(new Health {Value = 100});
 
             // Act
             ref Health health = ref entity.Get<Health>();
@@ -154,14 +146,14 @@ namespace Alis.Core.Ecs.Test.Kernel
         }
 
         /// <summary>
-        /// Tests that ref velocity modify both components
+        ///     Tests that ref velocity modify both components
         /// </summary>
         [Fact]
         public void Ref_Velocity_ModifyBothComponents()
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Velocity { X = 1, Y = 1 });
+            GameObject entity = scene.Create(new Velocity {X = 1, Y = 1});
 
             // Act
             ref Velocity vel = ref entity.Get<Velocity>();
@@ -174,14 +166,14 @@ namespace Alis.Core.Ecs.Test.Kernel
         }
 
         /// <summary>
-        /// Tests that ref transform modify coordinates
+        ///     Tests that ref transform modify coordinates
         /// </summary>
         [Fact]
         public void Ref_Transform_ModifyCoordinates()
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Transform { X = 0, Y = 0 });
+            GameObject entity = scene.Create(new Transform {X = 0, Y = 0});
 
             // Act
             ref Transform transform = ref entity.Get<Transform>();
@@ -194,18 +186,15 @@ namespace Alis.Core.Ecs.Test.Kernel
         }
 
         /// <summary>
-        /// Tests that ref stress test many modifications
+        ///     Tests that ref stress test many modifications
         /// </summary>
         /// <param name="modificationCount">The modification count</param>
-        [Theory]
-        [InlineData(10)]
-        [InlineData(50)]
-        [InlineData(100)]
+        [Theory, InlineData(10), InlineData(50), InlineData(100)]
         public void Ref_StressTest_ManyModifications(int modificationCount)
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 0, Y = 0 });
+            GameObject entity = scene.Create(new Position {X = 0, Y = 0});
 
             // Act
             for (int i = 0; i < modificationCount; i++)
@@ -221,7 +210,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         }
 
         /// <summary>
-        /// Tests that ref chained modifications works
+        ///     Tests that ref chained modifications works
         /// </summary>
         [Fact]
         public void Ref_ChainedModifications_Works()
@@ -229,14 +218,14 @@ namespace Alis.Core.Ecs.Test.Kernel
             // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
-                new Position { X = 1, Y = 1 },
-                new Health { Value = 100 }
+                new Position {X = 1, Y = 1},
+                new Health {Value = 100}
             );
 
             // Act
             ref Position pos = ref entity.Get<Position>();
             pos.X = 5;
-            
+
             ref Health health = ref entity.Get<Health>();
             health.Value = 50;
 
@@ -246,4 +235,3 @@ namespace Alis.Core.Ecs.Test.Kernel
         }
     }
 }
-

@@ -32,12 +32,11 @@ using Alis.Core.Ecs.Collections;
 
 namespace Alis.Core.Ecs.Updating.Runners
 {
-    
     /// <summary>
-    /// The update runner factory class
+    ///     The update runner factory class
     /// </summary>
-    /// <seealso cref="IComponentStorageBaseFactory"/>
-    /// <seealso cref="IComponentStorageBaseFactory{TComp}"/>
+    /// <seealso cref="IComponentStorageBaseFactory" />
+    /// <seealso cref="IComponentStorageBaseFactory{TComp}" />
     public class UpdateRunnerFactory<TComp> : IComponentStorageBaseFactory, IComponentStorageBaseFactory<TComp>
         where TComp : IOnUpdate
     {
@@ -61,12 +60,12 @@ namespace Alis.Core.Ecs.Updating.Runners
         /// <returns>A component storage of t comp</returns>
         ComponentStorage<TComp> IComponentStorageBaseFactory<TComp>.CreateStronglyTyped(int capacity) => new Update<TComp>(capacity);
     }
-    
+
     /// <summary>
-    /// The update runner factory class
+    ///     The update runner factory class
     /// </summary>
-    /// <seealso cref="IComponentStorageBaseFactory"/>
-    /// <seealso cref="IComponentStorageBaseFactory{TComp}"/>
+    /// <seealso cref="IComponentStorageBaseFactory" />
+    /// <seealso cref="IComponentStorageBaseFactory{TComp}" />
     public class UpdateRunnerFactory<TComp, TArg> : IComponentStorageBaseFactory, IComponentStorageBaseFactory<TComp>
         where TComp : IOnUpdate<TArg>
     {
@@ -90,12 +89,12 @@ namespace Alis.Core.Ecs.Updating.Runners
         /// <returns>A component storage of t comp</returns>
         ComponentStorage<TComp> IComponentStorageBaseFactory<TComp>.CreateStronglyTyped(int capacity) => new GameObjectUpdate<TComp, TArg>(capacity);
     }
-    
+
     /// <summary>
-    /// The update runner factory class
+    ///     The update runner factory class
     /// </summary>
-    /// <seealso cref="IComponentStorageBaseFactory"/>
-    /// <seealso cref="IComponentStorageBaseFactory{TComp}"/>
+    /// <seealso cref="IComponentStorageBaseFactory" />
+    /// <seealso cref="IComponentStorageBaseFactory{TComp}" />
     public class UpdateRunnerFactory<TComp, TArg1, TArg2> : IComponentStorageBaseFactory,
         IComponentStorageBaseFactory<TComp>
         where TComp : IOnUpdate<TArg1, TArg2>
@@ -120,7 +119,7 @@ namespace Alis.Core.Ecs.Updating.Runners
         /// <returns>A component storage of t comp</returns>
         ComponentStorage<TComp> IComponentStorageBaseFactory<TComp>.CreateStronglyTyped(int capacity) => new Update<TComp, TArg1, TArg2>(capacity);
     }
-    
+
     /// <summary>
     ///     The gameObject update runner factory class
     /// </summary>
@@ -150,12 +149,12 @@ namespace Alis.Core.Ecs.Updating.Runners
         /// <returns>A component storage of t comp</returns>
         ComponentStorage<TComp> IComponentStorageBaseFactory<TComp>.CreateStronglyTyped(int capacity) => new Update<TComp, TArg1, TArg2, TArg3>(capacity);
     }
-    
+
     /// <summary>
-    /// The update runner factory class
+    ///     The update runner factory class
     /// </summary>
-    /// <seealso cref="IComponentStorageBaseFactory"/>
-    /// <seealso cref="IComponentStorageBaseFactory{TComp}"/>
+    /// <seealso cref="IComponentStorageBaseFactory" />
+    /// <seealso cref="IComponentStorageBaseFactory{TComp}" />
     public class UpdateRunnerFactory<TComp, TArg1, TArg2, TArg3, TArg4> : IComponentStorageBaseFactory,
         IComponentStorageBaseFactory<TComp>
         where TComp : IOnUpdate<TArg1, TArg2, TArg3, TArg4>
@@ -180,12 +179,12 @@ namespace Alis.Core.Ecs.Updating.Runners
         /// <returns>A component storage of t comp</returns>
         ComponentStorage<TComp> IComponentStorageBaseFactory<TComp>.CreateStronglyTyped(int capacity) => new Update<TComp, TArg1, TArg2, TArg3, TArg4>(capacity);
     }
-    
+
     /// <summary>
-    /// The update runner factory class
+    ///     The update runner factory class
     /// </summary>
-    /// <seealso cref="IComponentStorageBaseFactory"/>
-    /// <seealso cref="IComponentStorageBaseFactory{TComp}"/>
+    /// <seealso cref="IComponentStorageBaseFactory" />
+    /// <seealso cref="IComponentStorageBaseFactory{TComp}" />
     public class UpdateRunnerFactory<TComp, TArg1, TArg2, TArg3, TArg4, TArg5> : IComponentStorageBaseFactory,
         IComponentStorageBaseFactory<TComp>
         where TComp : IOnUpdate<TArg1, TArg2, TArg3, TArg4, TArg5>
@@ -210,12 +209,12 @@ namespace Alis.Core.Ecs.Updating.Runners
         /// <returns>A component storage of t comp</returns>
         ComponentStorage<TComp> IComponentStorageBaseFactory<TComp>.CreateStronglyTyped(int capacity) => new EntityUpdate<TComp, TArg1, TArg2, TArg3, TArg4, TArg5>(capacity);
     }
-    
+
     /// <summary>
-    /// The update runner factory class
+    ///     The update runner factory class
     /// </summary>
-    /// <seealso cref="IComponentStorageBaseFactory"/>
-    /// <seealso cref="IComponentStorageBaseFactory{TComp}"/>
+    /// <seealso cref="IComponentStorageBaseFactory" />
+    /// <seealso cref="IComponentStorageBaseFactory{TComp}" />
     public class UpdateRunnerFactory<TComp, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6> : IComponentStorageBaseFactory,
         IComponentStorageBaseFactory<TComp>
         where TComp : IOnUpdate<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>
@@ -240,12 +239,12 @@ namespace Alis.Core.Ecs.Updating.Runners
         /// <returns>A component storage of t comp</returns>
         ComponentStorage<TComp> IComponentStorageBaseFactory<TComp>.CreateStronglyTyped(int capacity) => new Update<TComp, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>(capacity);
     }
-    
+
     /// <summary>
-    /// The update runner factory class
+    ///     The update runner factory class
     /// </summary>
-    /// <seealso cref="IComponentStorageBaseFactory"/>
-    /// <seealso cref="IComponentStorageBaseFactory{TComp}"/>
+    /// <seealso cref="IComponentStorageBaseFactory" />
+    /// <seealso cref="IComponentStorageBaseFactory{TComp}" />
     public class UpdateRunnerFactory<TComp, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7> : IComponentStorageBaseFactory,
         IComponentStorageBaseFactory<TComp>
         where TComp : IOnUpdate<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7>
@@ -270,12 +269,12 @@ namespace Alis.Core.Ecs.Updating.Runners
         /// <returns>A component storage of t comp</returns>
         ComponentStorage<TComp> IComponentStorageBaseFactory<TComp>.CreateStronglyTyped(int capacity) => new Update<TComp, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7>(capacity);
     }
-    
+
     /// <summary>
-    /// The update runner factory class
+    ///     The update runner factory class
     /// </summary>
-    /// <seealso cref="IComponentStorageBaseFactory"/>
-    /// <seealso cref="IComponentStorageBaseFactory{TComp}"/>
+    /// <seealso cref="IComponentStorageBaseFactory" />
+    /// <seealso cref="IComponentStorageBaseFactory{TComp}" />
     public class UpdateRunnerFactory<TComp, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8> :
         IComponentStorageBaseFactory,
         IComponentStorageBaseFactory<TComp>

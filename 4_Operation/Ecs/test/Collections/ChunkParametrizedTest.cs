@@ -27,9 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.Collections;
-using Xunit;
-
 namespace Alis.Core.Ecs.Test.Collections
 {
     /// <summary>
@@ -37,7 +34,5 @@ namespace Alis.Core.Ecs.Test.Collections
     /// </summary>
     public class ChunkParametrizedTest
     {
-        
     }
 }
-

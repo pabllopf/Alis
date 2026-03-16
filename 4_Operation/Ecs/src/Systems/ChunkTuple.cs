@@ -47,7 +47,7 @@ namespace Alis.Core.Ecs.Systems
         ///     The span
         /// </summary>
         public Span<T1> Span;
-        
+
         /// <summary>
         ///     Allows tuple deconstruction syntax to be used.
         /// </summary>
@@ -56,7 +56,7 @@ namespace Alis.Core.Ecs.Systems
             comp1 = Span;
         }
     }
-    
+
     /// <summary>
     ///     The chunk tuple
     /// </summary>
@@ -88,7 +88,7 @@ namespace Alis.Core.Ecs.Systems
             comp2 = Span2;
         }
     }
-    
+
     /// <summary>
     ///     The chunk tuple
     /// </summary>
@@ -126,7 +126,7 @@ namespace Alis.Core.Ecs.Systems
             comp3 = Span3;
         }
     }
-    
+
     /// <summary>
     ///     The chunk tuple
     /// </summary>
@@ -170,7 +170,7 @@ namespace Alis.Core.Ecs.Systems
             comp4 = Span4;
         }
     }
-    
+
     /// <summary>
     ///     The chunk tuple
     /// </summary>
@@ -221,7 +221,7 @@ namespace Alis.Core.Ecs.Systems
             comp5 = Span5;
         }
     }
-    
+
     /// <summary>
     ///     The chunk tuple
     /// </summary>
@@ -278,7 +278,7 @@ namespace Alis.Core.Ecs.Systems
             comp6 = Span6;
         }
     }
-    
+
     /// <summary>
     ///     The chunk tuple
     /// </summary>
@@ -341,7 +341,7 @@ namespace Alis.Core.Ecs.Systems
             comp7 = Span7;
         }
     }
-    
+
     /// <summary>
     ///     The chunk tuple
     /// </summary>

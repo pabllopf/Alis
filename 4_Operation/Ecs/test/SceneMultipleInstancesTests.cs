@@ -39,18 +39,14 @@ namespace Alis.Core.Ecs.Test
     public class SceneMultipleInstancesTests
     {
         /// <summary>
-        /// Tests that multiple scenes create independent scenes all work
+        ///     Tests that multiple scenes create independent scenes all work
         /// </summary>
         /// <param name="sceneCount">The scene count</param>
-        [Theory]
-        [InlineData(1)]
-        [InlineData(2)]
-        [InlineData(5)]
-        [InlineData(10)]
+        [Theory, InlineData(1), InlineData(2), InlineData(5), InlineData(10)]
         public void MultipleScenes_CreateIndependentScenes_AllWork(int sceneCount)
         {
             var scenes = new Scene[sceneCount];
-            
+
             try
             {
                 for (int i = 0; i < sceneCount; i++)
@@ -58,7 +54,7 @@ namespace Alis.Core.Ecs.Test
                     scenes[i] = new Scene();
                     scenes[i].Create();
                 }
-                
+
                 for (int i = 0; i < sceneCount; i++)
                 {
                     Assert.NotNull(scenes[i]);
@@ -74,18 +70,15 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that multiple scenes create entities in multiple independent
+        ///     Tests that multiple scenes create entities in multiple independent
         /// </summary>
         /// <param name="sceneCount">The scene count</param>
         /// <param name="entitiesPerScene">The entities per scene</param>
-        [Theory]
-        [InlineData(2, 10)]
-        [InlineData(3, 10)]
-        [InlineData(5, 5)]
+        [Theory, InlineData(2, 10), InlineData(3, 10), InlineData(5, 5)]
         public void MultipleScenes_CreateEntitiesInMultiple_Independent(int sceneCount, int entitiesPerScene)
         {
             var scenes = new Scene[sceneCount];
-            
+
             try
             {
                 // Create scenes and entities
@@ -94,15 +87,19 @@ namespace Alis.Core.Ecs.Test
                     scenes[s] = new Scene();
                     for (int e = 0; e < entitiesPerScene; e++)
                     {
-                        scenes[s].Create(new Position { X = s * 100 + e, Y = e });
+                        scenes[s].Create(new Position {X = s * 100 + e, Y = e});
                     }
                 }
-                
+
                 // Verify each scene has correct entities
                 for (int s = 0; s < sceneCount; s++)
                 {
                     int count = 0;
-                    foreach (var go in scenes[s].Query<With<Position>>().EnumerateWithEntities()) count++;
+                    foreach (var go in scenes[s].Query<With<Position>>().EnumerateWithEntities())
+                    {
+                        count++;
+                    }
+
                     Assert.Equal(entitiesPerScene, count);
                 }
             }
@@ -116,18 +113,15 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that multiple scenes delete entities in each scene independent
+        ///     Tests that multiple scenes delete entities in each scene independent
         /// </summary>
         /// <param name="sceneCount">The scene count</param>
-        [Theory]
-        [InlineData(2)]
-        [InlineData(3)]
-        [InlineData(5)]
+        [Theory, InlineData(2), InlineData(3), InlineData(5)]
         public void MultipleScenes_DeleteEntitiesInEachScene_Independent(int sceneCount)
         {
             var scenes = new Scene[sceneCount];
             var entities = new GameObject[sceneCount][];
-            
+
             try
             {
                 // Create scenes and entities
@@ -140,7 +134,7 @@ namespace Alis.Core.Ecs.Test
                         entities[s][e] = scenes[s].Create();
                     }
                 }
-                
+
                 // Delete in each scene
                 for (int s = 0; s < sceneCount; s++)
                 {
@@ -149,7 +143,7 @@ namespace Alis.Core.Ecs.Test
                         entities[s][e].Delete();
                     }
                 }
-                
+
                 // Verify
                 Assert.True(true);
             }
@@ -163,18 +157,15 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that multiple scenes query from each scene correct
+        ///     Tests that multiple scenes query from each scene correct
         /// </summary>
         /// <param name="sceneCount">The scene count</param>
         /// <param name="entitiesPerScene">The entities per scene</param>
-        [Theory]
-        [InlineData(2, 10)]
-        [InlineData(3, 10)]
-        [InlineData(5, 5)]
+        [Theory, InlineData(2, 10), InlineData(3, 10), InlineData(5, 5)]
         public void MultipleScenes_QueryFromEachScene_Correct(int sceneCount, int entitiesPerScene)
         {
             var scenes = new Scene[sceneCount];
-            
+
             try
             {
                 // Setup
@@ -184,17 +175,25 @@ namespace Alis.Core.Ecs.Test
                     for (int e = 0; e < entitiesPerScene; e++)
                     {
                         if (e % 2 == 0)
-                            scenes[s].Create(new Position { X = e, Y = e });
+                        {
+                            scenes[s].Create(new Position {X = e, Y = e});
+                        }
                         else
+                        {
                             scenes[s].Create();
+                        }
                     }
                 }
-                
+
                 // Query each
                 for (int s = 0; s < sceneCount; s++)
                 {
                     int count = 0;
-                    foreach (var go in scenes[s].Query<With<Position>>().EnumerateWithEntities()) count++;
+                    foreach (var go in scenes[s].Query<With<Position>>().EnumerateWithEntities())
+                    {
+                        count++;
+                    }
+
                     Assert.Equal((entitiesPerScene + 1) / 2, count);
                 }
             }
@@ -208,32 +207,33 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that multiple scenes stress test many operations
+        ///     Tests that multiple scenes stress test many operations
         /// </summary>
         /// <param name="sceneCount">The scene count</param>
-        [Theory]
-        [InlineData(2)]
-        [InlineData(3)]
-        [InlineData(5)]
+        [Theory, InlineData(2), InlineData(3), InlineData(5)]
         public void MultipleScenes_StressTest_ManyOperations(int sceneCount)
         {
             var scenes = new Scene[sceneCount];
-            
+
             try
             {
                 for (int s = 0; s < sceneCount; s++)
                 {
                     scenes[s] = new Scene();
-                    
+
                     for (int op = 0; op < 50; op++)
                     {
                         if (op % 2 == 0)
-                            scenes[s].Create(new Position { X = op, Y = op });
+                        {
+                            scenes[s].Create(new Position {X = op, Y = op});
+                        }
                         else
+                        {
                             scenes[s].Create();
+                        }
                     }
                 }
-                
+
                 Assert.True(sceneCount > 0);
             }
             finally
@@ -246,4 +246,3 @@ namespace Alis.Core.Ecs.Test
         }
     }
 }
-

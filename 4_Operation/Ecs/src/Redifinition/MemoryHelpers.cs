@@ -37,6 +37,7 @@ using Alis.Core.Aspect.Math.Collections;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Exceptions;
 using Alis.Core.Ecs.Kernel;
+using Alis.Core.Ecs.Updating;
 
 namespace Alis.Core.Ecs.Redifinition
 {
@@ -49,6 +50,17 @@ namespace Alis.Core.Ecs.Redifinition
         ///     The max component count
         /// </summary>
         public const int MaxComponentCount = 127;
+
+
+        /// <summary>
+        ///     The component handle
+        /// </summary>
+        [ThreadStatic] internal static readonly ComponentHandle[] SharedTempComponentHandleBuffer = new ComponentHandle[8];
+
+        /// <summary>
+        ///     The component storage base
+        /// </summary>
+        [ThreadStatic] internal static readonly ComponentStorageBase[] SharedTempComponentStorageBuffer = new ComponentStorageBase[8];
 
         /// <summary>
         ///     Rounds the down to power of two using the specified value
@@ -208,7 +220,6 @@ namespace Alis.Core.Ecs.Redifinition
             where TKey : notnull
             where TValue : new()
         {
-
             if (dictionary.TryGetValue(key, out TValue value))
             {
                 return value;
@@ -287,18 +298,6 @@ namespace Alis.Core.Ecs.Redifinition
         /// </summary>
         [StructLayout(LayoutKind.Sequential, Size = 16)]
         public struct Block16;
-
-
-        /// <summary>
-        /// The component handle
-        /// </summary>
-        [ThreadStatic] internal static readonly ComponentHandle[] SharedTempComponentHandleBuffer = new ComponentHandle[8];
-
-        /// <summary>
-        /// The component storage base
-        /// </summary>
-        [ThreadStatic] internal static readonly Updating.ComponentStorageBase[] SharedTempComponentStorageBuffer = new Updating.ComponentStorageBase[8];
-
     }
 
     /// <summary>

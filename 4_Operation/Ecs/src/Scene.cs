@@ -51,27 +51,27 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The deferred gameObject operation recursion limit
         /// </summary>
-        internal  const int DeferredEntityOperationRecursionLimit = 200;
+        internal const int DeferredEntityOperationRecursionLimit = 200;
 
         /// <summary>
         ///     The next scene id
         /// </summary>
-        internal  static ushort _nextWorldId = 1;
+        internal static ushort _nextWorldId = 1;
 
         /// <summary>
         ///     The shared countdown
         /// </summary>
-        internal  readonly CountdownEvent _sharedCountdown = new CountdownEvent(0);
+        internal readonly CountdownEvent _sharedCountdown = new CountdownEvent(0);
 
         /// <summary>
         ///     The single component updates
         /// </summary>
-        internal  readonly Dictionary<ComponentId, SingleComponentUpdateFilter> _singleComponentUpdates = [];
+        internal readonly Dictionary<ComponentId, SingleComponentUpdateFilter> _singleComponentUpdates = [];
 
         /// <summary>
         ///     The updates by attributes
         /// </summary>
-        internal  readonly Dictionary<Type, SceneUpdateFilter> _updatesByAttributes = [];
+        internal readonly Dictionary<Type, SceneUpdateFilter> _updatesByAttributes = [];
 
         /// <summary>
         ///     The default archetype
@@ -94,12 +94,12 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The allow structural changes
         /// </summary>
-        internal  int _allowStructuralChanges = -1;
+        internal int _allowStructuralChanges = -1;
 
         /// <summary>
         ///     The create
         /// </summary>
-        internal  FastestStack<ArchetypeDeferredUpdateRecord> _altDeferredCreationArchetypes =
+        internal FastestStack<ArchetypeDeferredUpdateRecord> _altDeferredCreationArchetypes =
             FastestStack<ArchetypeDeferredUpdateRecord>.Create(4);
 
         //these lookups exists for programmical api optimization
@@ -315,7 +315,6 @@ namespace Alis.Core.Ecs
             remove => RemoveEvent(ref ComponentRemovedEvent, value, GameObjectFlags.RemoveComp);
         }
 
-      
 
         /// <summary>
         ///     Adds the event using the specified event
@@ -423,12 +422,11 @@ namespace Alis.Core.Ecs
 
             try
             {
-
                 if (!_singleComponentUpdates.TryGetValue(componentType, out singleComponent))
                 {
                     _singleComponentUpdates[componentType] = singleComponent = new SingleComponentUpdateFilter(this, componentType);
                 }
-                
+
                 singleComponent.Update();
             }
             finally
@@ -619,7 +617,7 @@ namespace Alis.Core.Ecs
             DeferredCreationArchetypes.Clear();
             Interlocked.Decrement(ref _allowStructuralChanges);
         }
-        
+
         /// <summary>
         ///     Creates an <see cref="GameObject" />
         /// </summary>
@@ -639,7 +637,7 @@ namespace Alis.Core.Ecs
                 types[i] = Component.GetComponentId(components[i].GetType());
             }
 
-            Archetype archetype = Archetype.CreateOrGetExistingArchetype(types!,  this);
+            Archetype archetype = Archetype.CreateOrGetExistingArchetype(types!, this);
 
             ref GameObjectIdOnly entityId = ref archetype.CreateEntityLocation(GameObjectFlags.None, out GameObjectLocation loc);
             GameObject gameObject = CreateEntityFromLocation(loc);
@@ -725,8 +723,8 @@ namespace Alis.Core.Ecs
             archetype.EnsureCapacity(count);
             EntityTable.EnsureCapacity(count + EntityCount);
         }
-        
-        
+
+
         /// <summary>
         ///     Creates an <see cref="GameObject" /> with the given component(s)
         /// </summary>
@@ -822,8 +820,8 @@ namespace Alis.Core.Ecs
                 Span2 = archetype.Archetype.GetComponentSpan<T2>().Slice(entityCount, count)
             };
         }
-        
-        
+
+
         /// <summary>
         ///     Creates an <see cref="GameObject" /> with the given component(s)
         /// </summary>
@@ -921,7 +919,7 @@ namespace Alis.Core.Ecs
                 Span3 = archetype.Archetype.GetComponentSpan<T3>().Slice(entityCount, count)
             };
         }
-        
+
         /// <summary>
         ///     Creates an <see cref="GameObject" /> with the given component(s)
         /// </summary>
@@ -1025,8 +1023,8 @@ namespace Alis.Core.Ecs
                 Span4 = archetype.Archetype.GetComponentSpan<T4>().Slice(entityCount, count)
             };
         }
-        
-        
+
+
         /// <summary>
         ///     Creates an <see cref="GameObject" /> with the given component(s)
         /// </summary>
@@ -1143,8 +1141,8 @@ namespace Alis.Core.Ecs
                 Span5 = archetype.Archetype.GetComponentSpan<T5>().Slice(entityCount, count)
             };
         }
-        
-          /// <summary>
+
+        /// <summary>
         ///     Creates an <see cref="GameObject" /> with the given component(s)
         /// </summary>
         /// <returns>An <see cref="GameObject" /> that can be used to acsess the component data</returns>
@@ -1268,8 +1266,8 @@ namespace Alis.Core.Ecs
                 Span6 = archetype.Archetype.GetComponentSpan<T6>().Slice(entityCount, count)
             };
         }
-        
-          /// <summary>
+
+        /// <summary>
         ///     Creates an <see cref="GameObject" /> with the given component(s)
         /// </summary>
         /// <returns>An <see cref="GameObject" /> that can be used to acsess the component data</returns>
@@ -1402,8 +1400,8 @@ namespace Alis.Core.Ecs
                 Span7 = archetype.Archetype.GetComponentSpan<T7>().Slice(entityCount, count)
             };
         }
-        
-          /// <summary>
+
+        /// <summary>
         ///     Creates an <see cref="GameObject" /> with the given component(s)
         /// </summary>
         /// <returns>An <see cref="GameObject" /> that can be used to acsess the component data</returns>
@@ -1551,7 +1549,7 @@ namespace Alis.Core.Ecs
                 Span8 = archetype.Archetype.GetComponentSpan<T8>().Slice(entityCount, count)
             };
         }
-        
+
         /// <summary>
         ///     Creates an <see cref="GameObject" /> with the given component(s)
         /// </summary>
@@ -1637,7 +1635,7 @@ namespace Alis.Core.Ecs
                 Span = archetype.Archetype.GetComponentSpan<T>().Slice(initialEntityCount, count)
             };
         }
-        
+
         /// <summary>
         ///     Removes the component using the specified gameObject
         /// </summary>

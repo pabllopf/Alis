@@ -27,9 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Runtime.CompilerServices;
-using Alis.Core.Ecs.Exceptions;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Kernel.Archetypes;
 using Alis.Core.Ecs.Updating;
@@ -42,7 +40,7 @@ namespace Alis.Core.Ecs
     public static class GameObjectExtensions
     {
         /// <summary>
-        /// Deconstructs the e
+        ///     Deconstructs the e
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="e">The </param>
@@ -56,9 +54,9 @@ namespace Alis.Core.Ecs
 
             comp = GetComp<T>(archetypeTable, comps, eloc.Index);
         }
-        
+
         /// <summary>
-        /// Deconstructs the e
+        ///     Deconstructs the e
         /// </summary>
         /// <typeparam name="T1">The </typeparam>
         /// <typeparam name="T2">The </typeparam>
@@ -75,9 +73,9 @@ namespace Alis.Core.Ecs
             comp1 = GetComp<T1>(archetypeTable, comps, eloc.Index);
             comp2 = GetComp<T2>(archetypeTable, comps, eloc.Index);
         }
-        
+
         /// <summary>
-        /// Deconstructs the e
+        ///     Deconstructs the e
         /// </summary>
         /// <typeparam name="T1">The </typeparam>
         /// <typeparam name="T2">The </typeparam>
@@ -97,9 +95,9 @@ namespace Alis.Core.Ecs
             comp2 = GetComp<T2>(archetypeTable, comps, eloc.Index);
             comp3 = GetComp<T3>(archetypeTable, comps, eloc.Index);
         }
-        
+
         /// <summary>
-        /// Deconstructs the e
+        ///     Deconstructs the e
         /// </summary>
         /// <typeparam name="T1">The </typeparam>
         /// <typeparam name="T2">The </typeparam>
@@ -123,9 +121,9 @@ namespace Alis.Core.Ecs
             comp3 = GetComp<T3>(archetypeTable, comps, eloc.Index);
             comp4 = GetComp<T4>(archetypeTable, comps, eloc.Index);
         }
-        
+
         /// <summary>
-        /// Deconstructs the e
+        ///     Deconstructs the e
         /// </summary>
         /// <typeparam name="T1">The </typeparam>
         /// <typeparam name="T2">The </typeparam>
@@ -152,9 +150,9 @@ namespace Alis.Core.Ecs
             comp4 = GetComp<T4>(archetypeTable, comps, eloc.Index);
             comp5 = GetComp<T5>(archetypeTable, comps, eloc.Index);
         }
-        
+
         /// <summary>
-        /// Deconstructs the e
+        ///     Deconstructs the e
         /// </summary>
         /// <typeparam name="T1">The </typeparam>
         /// <typeparam name="T2">The </typeparam>
@@ -184,9 +182,9 @@ namespace Alis.Core.Ecs
             comp5 = GetComp<T5>(archetypeTable, comps, eloc.Index);
             comp6 = GetComp<T6>(archetypeTable, comps, eloc.Index);
         }
-        
+
         /// <summary>
-        /// Deconstructs the e
+        ///     Deconstructs the e
         /// </summary>
         /// <typeparam name="T1">The </typeparam>
         /// <typeparam name="T2">The </typeparam>
@@ -219,9 +217,9 @@ namespace Alis.Core.Ecs
             comp6 = GetComp<T6>(archetypeTable, comps, eloc.Index);
             comp7 = GetComp<T7>(archetypeTable, comps, eloc.Index);
         }
-        
+
         /// <summary>
-        /// Deconstructs the e
+        ///     Deconstructs the e
         /// </summary>
         /// <typeparam name="T1">The </typeparam>
         /// <typeparam name="T2">The </typeparam>
@@ -258,7 +256,7 @@ namespace Alis.Core.Ecs
             comp7 = GetComp<T7>(archetypeTable, comps, eloc.Index);
             comp8 = GetComp<T8>(archetypeTable, comps, eloc.Index);
         }
-        
+
         /// <summary>
         ///     Gets the comp using the specified archetype table
         /// </summary>

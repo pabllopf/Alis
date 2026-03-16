@@ -46,13 +46,6 @@ namespace Alis.Benchmark
     /// <seealso cref="ManualConfig" />
     internal class CustomConfig : ManualConfig
     {
-        
-        /// <summary>
-        /// Setup this instance
-        /// </summary>
-        [GlobalSetup] public void Setup()
-            => Process.GetCurrentProcess().PriorityClass = ProcessPriorityClass.RealTime;
-        
         /// <summary>
         ///     Initializes a new instance of the <see cref="CustomConfig" /> class
         /// </summary>
@@ -93,5 +86,12 @@ namespace Alis.Benchmark
             AddJob(debugJob);
             AddDiagnoser(MemoryDiagnoser.Default);
         }
+
+        /// <summary>
+        ///     Setup this instance
+        /// </summary>
+        [GlobalSetup]
+        public void Setup()
+            => Process.GetCurrentProcess().PriorityClass = ProcessPriorityClass.RealTime;
     }
 }

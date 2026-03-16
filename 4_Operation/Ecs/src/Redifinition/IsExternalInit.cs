@@ -28,11 +28,13 @@
 //  --------------------------------------------------------------------------
 
 // ReSharper disable once CheckNamespace
+
+using System.Diagnostics.CodeAnalysis;
+
 namespace System.Runtime.CompilerServices
 {
     /// <summary>
-    /// 
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    [ExcludeFromCodeCoverage]
     public class IsExternalInit : Attribute;
 }

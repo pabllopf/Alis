@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Kernel;
 
@@ -54,7 +53,7 @@ namespace Alis.Core.Ecs.Systems
             @ref = Item1;
         }
     }
-    
+
     /// <summary>
     ///     The ref tuple
     /// </summary>
@@ -81,7 +80,7 @@ namespace Alis.Core.Ecs.Systems
             ref2 = Item2;
         }
     }
-    
+
     /// <summary>
     ///     The ref tuple
     /// </summary>
@@ -113,7 +112,7 @@ namespace Alis.Core.Ecs.Systems
             ref3 = Item3;
         }
     }
-    
+
     /// <summary>
     ///     The ref tuple
     /// </summary>
@@ -151,7 +150,7 @@ namespace Alis.Core.Ecs.Systems
             ref4 = Item4;
         }
     }
-    
+
     /// <summary>
     ///     The ref tuple
     /// </summary>
@@ -195,7 +194,7 @@ namespace Alis.Core.Ecs.Systems
             ref5 = Item5;
         }
     }
-    
+
     /// <summary>
     ///     The ref tuple
     /// </summary>
@@ -246,7 +245,7 @@ namespace Alis.Core.Ecs.Systems
             ref6 = Item6;
         }
     }
-    
+
     /// <summary>
     ///     The ref tuple
     /// </summary>
@@ -303,7 +302,7 @@ namespace Alis.Core.Ecs.Systems
             ref7 = Item7;
         }
     }
-    
+
     /// <summary>
     ///     The ref tuple
     /// </summary>

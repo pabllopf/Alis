@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
@@ -39,102 +38,10 @@ namespace Alis.Core.Ecs.Test
     /// </summary>
     public class GameObjectAddRemoveTest
     {
-        #region Add<T> (Arity 1) Tests
-
-        /// <summary>
-        /// Tests that Add with arity 1 adds component successfully
-        /// </summary>
-        [Fact]
-        public void Add_Arity1_AddsComponentSuccessfully()
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
-
-            entity.Add(new Velocity {X = 10, Y = 20});
-
-            Assert.True(entity.Has<Velocity>());
-            Assert.Equal(10, entity.Get<Velocity>().X);
-            Assert.Equal(20, entity.Get<Velocity>().Y);
-        }
-
-        /// <summary>
-        /// Tests that Add with arity 1 adds component and can be verified
-        /// </summary>
-        [Fact]
-        public void Add_Arity1_AddsComponentAndCanBeVerified()
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
-
-            entity.Add(new Velocity {X = 5, Y = 10});
-            entity.Add(new Health {Value = 100});
-
-            Assert.True(entity.Has<Velocity>());
-            Assert.True(entity.Has<Health>());
-            Assert.Equal(5, entity.Get<Velocity>().X);
-            Assert.Equal(100, entity.Get<Health>().Value);
-        }
-
-        /// <summary>
-        /// Tests that Add with arity 1 can modify existing component data
-        /// </summary>
-        [Fact]
-        public void Add_Arity1_CanModifyComponentData()
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
-
-            entity.Add(new Health {Value = 100});
-            ref Health health = ref entity.Get<Health>();
-            health.Value = 50;
-
-            Assert.Equal(50, entity.Get<Health>().Value);
-        }
-
-        #endregion
-
-        #region Add<T1, T2> (Arity 2) Tests
-
-        /// <summary>
-        /// Tests that Add with arity 2 adds both components successfully
-        /// </summary>
-        [Fact]
-        public void Add_Arity2_AddsBothComponentsSuccessfully()
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
-
-            entity.Add(new Velocity {X = 5, Y = 10});
-            entity.Add(new Health {Value = 100});
-
-            Assert.True(entity.Has<Velocity>());
-            Assert.True(entity.Has<Health>());
-        }
-
-        /// <summary>
-        /// Tests that Add with arity 2 adds components in sequence successfully
-        /// </summary>
-        [Fact]
-        public void Add_Arity2_AddsComponentsInSequenceSuccessfully()
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
-
-            entity.Add(new Velocity {X = 5, Y = 10});
-            entity.Add(new Health {Value = 100});
-            entity.Add(new Armor {Value = 50});
-
-            Assert.True(entity.Has<Velocity>());
-            Assert.True(entity.Has<Health>());
-            Assert.True(entity.Has<Armor>());
-        }
-
-        #endregion
-
         #region Add<T1, T2, T3> (Arity 3) Tests
 
         /// <summary>
-        /// Tests that Add with arity 3 adds all components successfully
+        ///     Tests that Add with arity 3 adds all components successfully
         /// </summary>
         [Fact]
         public void Add_Arity3_AddsAllComponentsSuccessfully()
@@ -156,7 +63,7 @@ namespace Alis.Core.Ecs.Test
         #region Add<T1..T4> (Arity 4) Tests
 
         /// <summary>
-        /// Tests that Add with arity 4 adds all components successfully
+        ///     Tests that Add with arity 4 adds all components successfully
         /// </summary>
         [Fact]
         public void Add_Arity4_AddsAllComponentsSuccessfully()
@@ -180,7 +87,7 @@ namespace Alis.Core.Ecs.Test
         #region Add<T1..T5> (Arity 5) Tests
 
         /// <summary>
-        /// Tests that Add with arity 5 adds all components successfully
+        ///     Tests that Add with arity 5 adds all components successfully
         /// </summary>
         [Fact]
         public void Add_Arity5_AddsAllComponentsSuccessfully()
@@ -206,7 +113,7 @@ namespace Alis.Core.Ecs.Test
         #region Add<T1..T6> (Arity 6) Tests
 
         /// <summary>
-        /// Tests that Add with arity 6 adds all components successfully
+        ///     Tests that Add with arity 6 adds all components successfully
         /// </summary>
         [Fact]
         public void Add_Arity6_AddsAllComponentsSuccessfully()
@@ -234,7 +141,7 @@ namespace Alis.Core.Ecs.Test
         #region Add<T1..T7> (Arity 7) Tests
 
         /// <summary>
-        /// Tests that Add with arity 7 adds all components successfully
+        ///     Tests that Add with arity 7 adds all components successfully
         /// </summary>
         [Fact]
         public void Add_Arity7_AddsAllComponentsSuccessfully()
@@ -264,7 +171,7 @@ namespace Alis.Core.Ecs.Test
         #region Add<T1..T8> (Arity 8) Tests
 
         /// <summary>
-        /// Tests that Add with arity 8 adds all components successfully
+        ///     Tests that Add with arity 8 adds all components successfully
         /// </summary>
         [Fact]
         public void Add_Arity8_AddsAllComponentsSuccessfully()
@@ -293,45 +200,10 @@ namespace Alis.Core.Ecs.Test
 
         #endregion
 
-        #region AddBoxed Tests
-
-        /// <summary>
-        /// Tests that AddBoxed adds component successfully
-        /// </summary>
-        [Fact]
-        public void AddBoxed_AddsComponentSuccessfully()
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
-
-            entity.AddBoxed(new Velocity {X = 10, Y = 20});
-
-            Assert.True(entity.Has<Velocity>());
-            Assert.Equal(10, entity.Get<Velocity>().X);
-        }
-
-        /// <summary>
-        /// Tests that AddBoxed with boxed value type works
-        /// </summary>
-        [Fact]
-        public void AddBoxed_WithBoxedValueType_Works()
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
-
-            object boxedHealth = new Health {Value = 75};
-            entity.AddBoxed(boxedHealth);
-
-            Assert.True(entity.Has<Health>());
-            Assert.Equal(75, entity.Get<Health>().Value);
-        }
-
-        #endregion
-
         #region AddAs(Type, object) Tests
 
         /// <summary>
-        /// Tests that AddAs with Type adds component successfully
+        ///     Tests that AddAs with Type adds component successfully
         /// </summary>
         [Fact]
         public void AddAs_WithType_AddsComponentSuccessfully()
@@ -350,7 +222,7 @@ namespace Alis.Core.Ecs.Test
         #region AddAs(ComponentId, object) Tests
 
         /// <summary>
-        /// Tests that AddAs with ComponentId adds component successfully
+        ///     Tests that AddAs with ComponentId adds component successfully
         /// </summary>
         [Fact]
         public void AddAs_WithComponentId_AddsComponentSuccessfully()
@@ -366,67 +238,10 @@ namespace Alis.Core.Ecs.Test
 
         #endregion
 
-        #region Remove<T> (Arity 1) Tests
-
-        /// <summary>
-        /// Tests that Remove with arity 1 removes component successfully
-        /// </summary>
-        [Fact]
-        public void Remove_Arity1_RemovesComponentSuccessfully()
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
-            entity.Add(new Velocity {X = 10, Y = 20});
-
-            entity.Remove<Velocity>();
-
-            Assert.False(entity.Has<Velocity>());
-        }
-
-        /// <summary>
-        /// Tests that Remove with arity 1 removes component and can be verified
-        /// </summary>
-        [Fact]
-        public void Remove_Arity1_RemovesComponentAndCanBeVerified()
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
-            entity.Add(new Velocity {X = 5, Y = 10});
-            entity.Add(new Health {Value = 100});
-
-            Assert.True(entity.Has<Velocity>());
-
-            entity.Remove<Velocity>();
-
-            Assert.False(entity.Has<Velocity>());
-            Assert.True(entity.Has<Position>());
-            Assert.True(entity.Has<Health>());
-        }
-
-        /// <summary>
-        /// Tests that Remove with arity 1 preserves other components
-        /// </summary>
-        [Fact]
-        public void Remove_Arity1_PreservesOtherComponents()
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
-            entity.Add(new Velocity {X = 10, Y = 20});
-            entity.Add(new Health {Value = 100});
-
-            entity.Remove<Velocity>();
-
-            Assert.True(entity.Has<Position>());
-            Assert.True(entity.Has<Health>());
-            Assert.False(entity.Has<Velocity>());
-        }
-
-        #endregion
-
         #region Remove<T1, T2> (Arity 2) Tests
 
         /// <summary>
-        /// Tests that Remove with arity 2 removes both components successfully
+        ///     Tests that Remove with arity 2 removes both components successfully
         /// </summary>
         [Fact]
         public void Remove_Arity2_RemovesBothComponentsSuccessfully()
@@ -448,7 +263,7 @@ namespace Alis.Core.Ecs.Test
         #region Remove<T1, T2, T3> (Arity 3) Tests
 
         /// <summary>
-        /// Tests that Remove with arity 3 removes all components successfully
+        ///     Tests that Remove with arity 3 removes all components successfully
         /// </summary>
         [Fact]
         public void Remove_Arity3_RemovesAllComponentsSuccessfully()
@@ -473,7 +288,7 @@ namespace Alis.Core.Ecs.Test
         #region Remove<T1..T4> (Arity 4) Tests
 
         /// <summary>
-        /// Tests that Remove with arity 4 removes all components successfully
+        ///     Tests that Remove with arity 4 removes all components successfully
         /// </summary>
         [Fact]
         public void Remove_Arity4_RemovesAllComponentsSuccessfully()
@@ -501,7 +316,7 @@ namespace Alis.Core.Ecs.Test
         #region Remove<T1..T5> (Arity 5) Tests
 
         /// <summary>
-        /// Tests that Remove with arity 5 removes all components successfully
+        ///     Tests that Remove with arity 5 removes all components successfully
         /// </summary>
         [Fact]
         public void Remove_Arity5_RemovesAllComponentsSuccessfully()
@@ -532,7 +347,7 @@ namespace Alis.Core.Ecs.Test
         #region Remove<T1..T6> (Arity 6) Tests
 
         /// <summary>
-        /// Tests that Remove with arity 6 removes all components successfully
+        ///     Tests that Remove with arity 6 removes all components successfully
         /// </summary>
         [Fact]
         public void Remove_Arity6_RemovesAllComponentsSuccessfully()
@@ -566,7 +381,7 @@ namespace Alis.Core.Ecs.Test
         #region Remove<T1..T7> (Arity 7) Tests
 
         /// <summary>
-        /// Tests that Remove with arity 7 removes all components successfully
+        ///     Tests that Remove with arity 7 removes all components successfully
         /// </summary>
         [Fact]
         public void Remove_Arity7_RemovesAllComponentsSuccessfully()
@@ -603,7 +418,7 @@ namespace Alis.Core.Ecs.Test
         #region Remove<T1..T8> (Arity 8) Tests
 
         /// <summary>
-        /// Tests that Remove with arity 8 removes all components successfully
+        ///     Tests that Remove with arity 8 removes all components successfully
         /// </summary>
         [Fact]
         public void Remove_Arity8_RemovesAllComponentsSuccessfully()
@@ -643,7 +458,7 @@ namespace Alis.Core.Ecs.Test
         #region Remove(ComponentId) Tests
 
         /// <summary>
-        /// Tests that Remove with ComponentId removes component successfully
+        ///     Tests that Remove with ComponentId removes component successfully
         /// </summary>
         [Fact]
         public void Remove_WithComponentId_RemovesComponentSuccessfully()
@@ -662,7 +477,7 @@ namespace Alis.Core.Ecs.Test
         #region Remove(Type) Tests
 
         /// <summary>
-        /// Tests that Remove with Type removes component successfully
+        ///     Tests that Remove with Type removes component successfully
         /// </summary>
         [Fact]
         public void Remove_WithType_RemovesComponentSuccessfully()
@@ -678,10 +493,194 @@ namespace Alis.Core.Ecs.Test
 
         #endregion
 
+        #region Add<T> (Arity 1) Tests
+
+        /// <summary>
+        ///     Tests that Add with arity 1 adds component successfully
+        /// </summary>
+        [Fact]
+        public void Add_Arity1_AddsComponentSuccessfully()
+        {
+            using Scene scene = new Scene();
+            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+
+            entity.Add(new Velocity {X = 10, Y = 20});
+
+            Assert.True(entity.Has<Velocity>());
+            Assert.Equal(10, entity.Get<Velocity>().X);
+            Assert.Equal(20, entity.Get<Velocity>().Y);
+        }
+
+        /// <summary>
+        ///     Tests that Add with arity 1 adds component and can be verified
+        /// </summary>
+        [Fact]
+        public void Add_Arity1_AddsComponentAndCanBeVerified()
+        {
+            using Scene scene = new Scene();
+            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+
+            entity.Add(new Velocity {X = 5, Y = 10});
+            entity.Add(new Health {Value = 100});
+
+            Assert.True(entity.Has<Velocity>());
+            Assert.True(entity.Has<Health>());
+            Assert.Equal(5, entity.Get<Velocity>().X);
+            Assert.Equal(100, entity.Get<Health>().Value);
+        }
+
+        /// <summary>
+        ///     Tests that Add with arity 1 can modify existing component data
+        /// </summary>
+        [Fact]
+        public void Add_Arity1_CanModifyComponentData()
+        {
+            using Scene scene = new Scene();
+            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+
+            entity.Add(new Health {Value = 100});
+            ref Health health = ref entity.Get<Health>();
+            health.Value = 50;
+
+            Assert.Equal(50, entity.Get<Health>().Value);
+        }
+
+        #endregion
+
+        #region Add<T1, T2> (Arity 2) Tests
+
+        /// <summary>
+        ///     Tests that Add with arity 2 adds both components successfully
+        /// </summary>
+        [Fact]
+        public void Add_Arity2_AddsBothComponentsSuccessfully()
+        {
+            using Scene scene = new Scene();
+            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+
+            entity.Add(new Velocity {X = 5, Y = 10});
+            entity.Add(new Health {Value = 100});
+
+            Assert.True(entity.Has<Velocity>());
+            Assert.True(entity.Has<Health>());
+        }
+
+        /// <summary>
+        ///     Tests that Add with arity 2 adds components in sequence successfully
+        /// </summary>
+        [Fact]
+        public void Add_Arity2_AddsComponentsInSequenceSuccessfully()
+        {
+            using Scene scene = new Scene();
+            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+
+            entity.Add(new Velocity {X = 5, Y = 10});
+            entity.Add(new Health {Value = 100});
+            entity.Add(new Armor {Value = 50});
+
+            Assert.True(entity.Has<Velocity>());
+            Assert.True(entity.Has<Health>());
+            Assert.True(entity.Has<Armor>());
+        }
+
+        #endregion
+
+        #region AddBoxed Tests
+
+        /// <summary>
+        ///     Tests that AddBoxed adds component successfully
+        /// </summary>
+        [Fact]
+        public void AddBoxed_AddsComponentSuccessfully()
+        {
+            using Scene scene = new Scene();
+            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+
+            entity.AddBoxed(new Velocity {X = 10, Y = 20});
+
+            Assert.True(entity.Has<Velocity>());
+            Assert.Equal(10, entity.Get<Velocity>().X);
+        }
+
+        /// <summary>
+        ///     Tests that AddBoxed with boxed value type works
+        /// </summary>
+        [Fact]
+        public void AddBoxed_WithBoxedValueType_Works()
+        {
+            using Scene scene = new Scene();
+            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+
+            object boxedHealth = new Health {Value = 75};
+            entity.AddBoxed(boxedHealth);
+
+            Assert.True(entity.Has<Health>());
+            Assert.Equal(75, entity.Get<Health>().Value);
+        }
+
+        #endregion
+
+        #region Remove<T> (Arity 1) Tests
+
+        /// <summary>
+        ///     Tests that Remove with arity 1 removes component successfully
+        /// </summary>
+        [Fact]
+        public void Remove_Arity1_RemovesComponentSuccessfully()
+        {
+            using Scene scene = new Scene();
+            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+            entity.Add(new Velocity {X = 10, Y = 20});
+
+            entity.Remove<Velocity>();
+
+            Assert.False(entity.Has<Velocity>());
+        }
+
+        /// <summary>
+        ///     Tests that Remove with arity 1 removes component and can be verified
+        /// </summary>
+        [Fact]
+        public void Remove_Arity1_RemovesComponentAndCanBeVerified()
+        {
+            using Scene scene = new Scene();
+            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+            entity.Add(new Velocity {X = 5, Y = 10});
+            entity.Add(new Health {Value = 100});
+
+            Assert.True(entity.Has<Velocity>());
+
+            entity.Remove<Velocity>();
+
+            Assert.False(entity.Has<Velocity>());
+            Assert.True(entity.Has<Position>());
+            Assert.True(entity.Has<Health>());
+        }
+
+        /// <summary>
+        ///     Tests that Remove with arity 1 preserves other components
+        /// </summary>
+        [Fact]
+        public void Remove_Arity1_PreservesOtherComponents()
+        {
+            using Scene scene = new Scene();
+            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
+            entity.Add(new Velocity {X = 10, Y = 20});
+            entity.Add(new Health {Value = 100});
+
+            entity.Remove<Velocity>();
+
+            Assert.True(entity.Has<Position>());
+            Assert.True(entity.Has<Health>());
+            Assert.False(entity.Has<Velocity>());
+        }
+
+        #endregion
+
         #region Add/Remove Integration Tests
 
         /// <summary>
-        /// Tests that Add and Remove can be used sequentially
+        ///     Tests that Add and Remove can be used sequentially
         /// </summary>
         [Fact]
         public void AddRemove_CanBeUsedSequentially()
@@ -701,7 +700,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that Add and Remove work with multiple components
+        ///     Tests that Add and Remove work with multiple components
         /// </summary>
         [Fact]
         public void AddRemove_WorksWithMultipleComponents()
@@ -725,7 +724,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that Remove only affects specified components
+        ///     Tests that Remove only affects specified components
         /// </summary>
         [Fact]
         public void Remove_OnlyAffectsSpecifiedComponents()
@@ -747,4 +746,3 @@ namespace Alis.Core.Ecs.Test
         #endregion
     }
 }
-

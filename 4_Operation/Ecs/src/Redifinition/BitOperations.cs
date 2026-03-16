@@ -27,20 +27,19 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 
 // ReSharper disable once CheckNamespace
 namespace System.Numerics
 {
     /// <summary>
-    /// 
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    [ExcludeFromCodeCoverage]
     public static class BitOperations
     {
         /// <summary>
-        /// The log de bruijn
+        ///     The log de bruijn
         /// </summary>
         private static readonly byte[] Log2DeBruijn =
         [
@@ -49,10 +48,9 @@ namespace System.Numerics
             08, 12, 20, 28, 15, 17, 24, 07,
             19, 27, 23, 06, 26, 05, 04, 31
         ];
-        
+
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -74,7 +72,7 @@ namespace System.Numerics
 
 
         /// <summary>
-        /// rounds up to the next highest power of 2.
+        ///     rounds up to the next highest power of 2.
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -94,9 +92,6 @@ namespace System.Numerics
         /// <param name="value">The value to rotate.</param>
         /// <param name="offset">The number of bits to rotate by.</param>
         /// <returns>The result of rotating <paramref name="value" /> left by <paramref name="offset" /> bits.</returns>
-        public static uint RotateLeft(uint value, int offset)
-        {
-            return (value << offset) | (value >> (32 - offset));
-        }
+        public static uint RotateLeft(uint value, int offset) => (value << offset) | (value >> (32 - offset));
     }
 }

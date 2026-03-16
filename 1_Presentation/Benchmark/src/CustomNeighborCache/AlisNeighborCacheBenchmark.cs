@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:AlisNeighborCacheBenchmark.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using Alis.Benchmark.CustomEcs.Components;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Kernel;
@@ -6,27 +35,28 @@ using BenchmarkDotNet.Attributes;
 namespace Alis.Benchmark.CustomNeighborCache
 {
     /// <summary>
-    /// The custom neighbor cache benchmark class
+    ///     The custom neighbor cache benchmark class
     /// </summary>
     public partial class CustomNeighborCacheBenchmark
     {
         /// <summary>
-        /// The id
+        ///     The id
         /// </summary>
         private static readonly GameObjectType _alisBaseType =
             GameObject.EntityTypeOf([Component<Component16>.Id]);
 
         /// <summary>
-        /// The alis scene
-        /// </summary>
-        private Scene _alisScene;
-        /// <summary>
-        /// The alis entities
+        ///     The alis entities
         /// </summary>
         private GameObject[] _alisEntities;
 
         /// <summary>
-        /// Setup the alis
+        ///     The alis scene
+        /// </summary>
+        private Scene _alisScene;
+
+        /// <summary>
+        ///     Setup the alis
         /// </summary>
         private void SetupAlis()
         {
@@ -41,12 +71,12 @@ namespace Alis.Benchmark.CustomNeighborCache
         }
 
         /// <summary>
-        /// Disposes the alis
+        ///     Disposes the alis
         /// </summary>
         private void DisposeAlis() => _alisScene.Dispose();
 
         /// <summary>
-        /// Alises the neighbor add remove
+        ///     Alises the neighbor add remove
         /// </summary>
         [Benchmark]
         public void Alis_Neighbor_AddRemove()
@@ -65,7 +95,7 @@ namespace Alis.Benchmark.CustomNeighborCache
         }
 
         /// <summary>
-        /// Runs the alis 1
+        ///     Runs the alis 1
         /// </summary>
         private void RunAlis1()
         {
@@ -78,7 +108,7 @@ namespace Alis.Benchmark.CustomNeighborCache
         }
 
         /// <summary>
-        /// Runs the alis 2
+        ///     Runs the alis 2
         /// </summary>
         private void RunAlis2()
         {
@@ -91,7 +121,7 @@ namespace Alis.Benchmark.CustomNeighborCache
         }
 
         /// <summary>
-        /// Runs the alis 3
+        ///     Runs the alis 3
         /// </summary>
         private void RunAlis3()
         {
@@ -104,7 +134,7 @@ namespace Alis.Benchmark.CustomNeighborCache
         }
 
         /// <summary>
-        /// Runs the alis 4
+        ///     Runs the alis 4
         /// </summary>
         private void RunAlis4()
         {
@@ -117,7 +147,7 @@ namespace Alis.Benchmark.CustomNeighborCache
         }
 
         /// <summary>
-        /// Runs the alis 5
+        ///     Runs the alis 5
         /// </summary>
         private void RunAlis5()
         {
@@ -130,7 +160,7 @@ namespace Alis.Benchmark.CustomNeighborCache
         }
 
         /// <summary>
-        /// Runs the alis 6
+        ///     Runs the alis 6
         /// </summary>
         private void RunAlis6()
         {
@@ -144,7 +174,7 @@ namespace Alis.Benchmark.CustomNeighborCache
         }
 
         /// <summary>
-        /// Runs the alis 7
+        ///     Runs the alis 7
         /// </summary>
         private void RunAlis7()
         {
@@ -158,7 +188,7 @@ namespace Alis.Benchmark.CustomNeighborCache
         }
 
         /// <summary>
-        /// Runs the alis 8
+        ///     Runs the alis 8
         /// </summary>
         private void RunAlis8()
         {
@@ -172,4 +202,3 @@ namespace Alis.Benchmark.CustomNeighborCache
         }
     }
 }
-

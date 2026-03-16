@@ -54,7 +54,7 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(0, (int) GameObjectFlags.None);
         }
 
-       
+
         /// <summary>
         ///     Tests that add comp flag has correct bit position
         /// </summary>
@@ -68,7 +68,6 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(4, (int) GameObjectFlags.AddComp);
         }
 
-        
 
         /// <summary>
         ///     Tests that events flag combines multiple flags
@@ -107,7 +106,7 @@ namespace Alis.Core.Ecs.Test
             Assert.True(flags.HasFlag(GameObjectFlags.RemoveComp));
         }
 
-       
+
         /// <summary>
         ///     Tests that world create flag has correct value
         /// </summary>

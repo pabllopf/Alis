@@ -306,7 +306,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object extensions deconstruct two components works
+        ///     Tests that game object extensions deconstruct two components works
         /// </summary>
         [Fact]
         public void GameObjectExtensionsDeconstruct_TwoComponents_Works()
@@ -323,7 +323,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object extensions deconstruct three components works
+        ///     Tests that game object extensions deconstruct three components works
         /// </summary>
         [Fact]
         public void GameObjectExtensionsDeconstruct_ThreeComponents_Works()
@@ -342,7 +342,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object extensions deconstruct four components works
+        ///     Tests that game object extensions deconstruct four components works
         /// </summary>
         [Fact]
         public void GameObjectExtensionsDeconstruct_FourComponents_Works()
@@ -363,7 +363,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object extensions deconstruct five components works
+        ///     Tests that game object extensions deconstruct five components works
         /// </summary>
         [Fact]
         public void GameObjectExtensionsDeconstruct_FiveComponents_Works()
@@ -391,7 +391,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object extensions deconstruct six components works
+        ///     Tests that game object extensions deconstruct six components works
         /// </summary>
         [Fact]
         public void GameObjectExtensionsDeconstruct_SixComponents_Works()
@@ -422,7 +422,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object extensions deconstruct seven components works
+        ///     Tests that game object extensions deconstruct seven components works
         /// </summary>
         [Fact]
         public void GameObjectExtensionsDeconstruct_SevenComponents_Works()
@@ -456,7 +456,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object extensions deconstruct eight components works
+        ///     Tests that game object extensions deconstruct eight components works
         /// </summary>
         [Fact]
         public void GameObjectExtensionsDeconstruct_EightComponents_Works()

@@ -57,7 +57,7 @@ namespace Alis.Core.Ecs
             ref1 = Item1;
         }
     }
-    
+
     /// <summary>
     ///     The gameObject ref tuple
     /// </summary>
@@ -90,7 +90,7 @@ namespace Alis.Core.Ecs
             ref2 = Item2;
         }
     }
-    
+
     /// <summary>
     ///     The gameObject ref tuple
     /// </summary>
@@ -128,7 +128,7 @@ namespace Alis.Core.Ecs
             ref3 = Item3;
         }
     }
-    
+
     /// <summary>
     ///     The gameObject ref tuple
     /// </summary>
@@ -172,7 +172,7 @@ namespace Alis.Core.Ecs
             ref4 = Item4;
         }
     }
-    
+
     /// <summary>
     ///     The gameObject ref tuple
     /// </summary>
@@ -223,7 +223,7 @@ namespace Alis.Core.Ecs
             ref5 = Item5;
         }
     }
-    
+
     /// <summary>
     ///     The gameObject ref tuple
     /// </summary>
@@ -280,7 +280,7 @@ namespace Alis.Core.Ecs
             ref6 = Item6;
         }
     }
-    
+
     /// <summary>
     ///     The gameObject ref tuple
     /// </summary>
@@ -343,7 +343,7 @@ namespace Alis.Core.Ecs
             ref7 = Item7;
         }
     }
-    
+
     /// <summary>
     ///     The gameObject ref tuple
     /// </summary>

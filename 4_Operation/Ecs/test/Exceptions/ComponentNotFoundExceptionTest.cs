@@ -174,6 +174,5 @@ namespace Alis.Core.Ecs.Test.Exceptions
             // Assert
             Assert.Equal(exception1.Message, exception2.Message);
         }
-
     }
 }

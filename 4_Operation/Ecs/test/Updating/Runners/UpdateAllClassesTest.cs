@@ -1,27 +1,44 @@
 // --------------------------------------------------------------------------
-//
+// 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-//
+// 
 //  --------------------------------------------------------------------------
 //  File:UpdateAllClassesTest.cs
-//
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
 
 namespace Alis.Core.Ecs.Test.Updating.Runners
 {
     /// <summary>
-    /// Covers every Update<T...> class implemented in Update.cs.
+    ///     Covers every Update<T...> class implemented in Update.cs.
     /// </summary>
     public class UpdateAllClassesTest
     {
         /// <summary>
-        /// Tests that update arity 0 run updates every entity
+        ///     Tests that update arity 0 run updates every entity
         /// </summary>
         [Fact]
         public void Update_Arity0_Run_UpdatesEveryEntity()
@@ -37,7 +54,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         }
 
         /// <summary>
-        /// Tests that update arity 2 run mutates arguments by reference
+        ///     Tests that update arity 2 run mutates arguments by reference
         /// </summary>
         [Fact]
         public void Update_Arity2_Run_MutatesArgumentsByReference()
@@ -57,7 +74,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         }
 
         /// <summary>
-        /// Tests that update arity 3 run mutates all expected components
+        ///     Tests that update arity 3 run mutates all expected components
         /// </summary>
         [Fact]
         public void Update_Arity3_Run_MutatesAllExpectedComponents()
@@ -79,7 +96,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         }
 
         /// <summary>
-        /// Tests that update arity 4 run invokes component and keeps expected state
+        ///     Tests that update arity 4 run invokes component and keeps expected state
         /// </summary>
         [Fact]
         public void Update_Arity4_Run_InvokesComponentAndKeepsExpectedState()
@@ -103,7 +120,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         }
 
         /// <summary>
-        /// Tests that update arity 6 run mutates all expected components
+        ///     Tests that update arity 6 run mutates all expected components
         /// </summary>
         [Fact]
         public void Update_Arity6_Run_MutatesAllExpectedComponents()
@@ -131,7 +148,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         }
 
         /// <summary>
-        /// Tests that update arity 7 run mutates all expected components
+        ///     Tests that update arity 7 run mutates all expected components
         /// </summary>
         [Fact]
         public void Update_Arity7_Run_MutatesAllExpectedComponents()
@@ -160,7 +177,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         }
 
         /// <summary>
-        /// Tests that update arity 8 run mutates all expected components
+        ///     Tests that update arity 8 run mutates all expected components
         /// </summary>
         [Fact]
         public void Update_Arity8_Run_MutatesAllExpectedComponents()
@@ -193,5 +210,3 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         }
     }
 }
-
-

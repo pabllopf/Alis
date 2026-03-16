@@ -51,7 +51,7 @@ namespace Alis.Core.Ecs.Kernel.Events
         ///     The remove
         /// </summary>
         internal ComponentEvent Remove;
-        
+
         /// <summary>
         ///     Initalizes the exists
         /// </summary>

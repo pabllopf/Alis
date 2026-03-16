@@ -29,7 +29,6 @@
 
 using System;
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Kernel.Archetypes;
 using Alis.Core.Ecs.Kernel.Events;
@@ -89,7 +88,7 @@ namespace Alis.Core.Ecs.Kernel
         ///     The scene
         /// </summary>
         internal Scene Scene;
-        
+
         /// <summary>
         ///     Creates a command buffer, which stores changes to a scene without directly applying them.
         /// </summary>
@@ -317,7 +316,7 @@ namespace Alis.Core.Ecs.Kernel
                     command.ComponentHandle.Dispose();
                 }
             }
-            
+
             IsInactive = true;
 
             return hasItems;
@@ -348,7 +347,7 @@ namespace Alis.Core.Ecs.Kernel
         {
             IsInactive = false;
         }
-        
+
         /// <summary>
         ///     Begins to create an gameObject, which will be resolved when <see cref="Playback" /> is called.
         /// </summary>

@@ -1,4 +1,34 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:GameObjectMissingCoverageTest.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
+using System.Collections.Generic;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
@@ -6,12 +36,12 @@ using Xunit;
 namespace Alis.Core.Ecs.Test
 {
     /// <summary>
-    /// Additional GameObject API coverage for methods that had no direct unit tests.
+    ///     Additional GameObject API coverage for methods that had no direct unit tests.
     /// </summary>
     public class GameObjectMissingCoverageTest
     {
         /// <summary>
-        /// Tests that game object try get core when component exists returns writable reference
+        ///     Tests that game object try get core when component exists returns writable reference
         /// </summary>
         [Fact]
         public void GameObject_TryGetCore_WhenComponentExists_ReturnsWritableReference()
@@ -29,7 +59,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object try get core when component missing returns exists false
+        ///     Tests that game object try get core when component missing returns exists false
         /// </summary>
         [Fact]
         public void GameObject_TryGetCore_WhenComponentMissing_ReturnsExistsFalse()
@@ -43,7 +73,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object try get core when entity deleted returns exists false
+        ///     Tests that game object try get core when entity deleted returns exists false
         /// </summary>
         [Fact]
         public void GameObject_TryGetCore_WhenEntityDeleted_ReturnsExistsFalse()
@@ -58,7 +88,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object throw entity is dead throws invalid operation exception with expected message
+        ///     Tests that game object throw entity is dead throws invalid operation exception with expected message
         /// </summary>
         [Fact]
         public void GameObject_ThrowEntityIsDead_ThrowsInvalidOperationExceptionWithExpectedMessage()
@@ -69,7 +99,8 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object initalize event record with on delete handler then delete throws key not found exception current behavior
+        ///     Tests that game object initalize event record with on delete handler then delete throws key not found exception
+        ///     current behavior
         /// </summary>
         [Fact]
         public void GameObject_InitalizeEventRecord_WithOnDeleteHandler_ThenDelete_ThrowsKeyNotFoundException_CurrentBehavior()
@@ -82,11 +113,12 @@ namespace Alis.Core.Ecs.Test
 
             Assert.True(scene.EntityTable[entity.EntityID].HasEvent(GameObjectFlags.OnDelete));
 
-            Assert.Throws<System.Collections.Generic.KeyNotFoundException>(() => entity.Delete());
+            Assert.Throws<KeyNotFoundException>(() => entity.Delete());
         }
 
         /// <summary>
-        /// Tests that game object unsubscribe event when initialized directly without lookup throws key not found exception current behavior
+        ///     Tests that game object unsubscribe event when initialized directly without lookup throws key not found exception
+        ///     current behavior
         /// </summary>
         [Fact]
         public void GameObject_UnsubscribeEvent_WhenInitializedDirectlyWithoutLookup_ThrowsKeyNotFoundException_CurrentBehavior()
@@ -98,12 +130,11 @@ namespace Alis.Core.Ecs.Test
             entity.InitalizeEventRecord(handler, GameObjectFlags.OnDelete);
             Assert.True(scene.EntityTable[entity.EntityID].HasEvent(GameObjectFlags.OnDelete));
 
-            Assert.Throws<System.Collections.Generic.KeyNotFoundException>(
-                () => entity.UnsubscribeEvent(handler, GameObjectFlags.OnDelete));
+            Assert.Throws<KeyNotFoundException>(() => entity.UnsubscribeEvent(handler, GameObjectFlags.OnDelete));
         }
 
         /// <summary>
-        /// Tests that game object unsubscribe event with null or dead entity does not throw
+        ///     Tests that game object unsubscribe event with null or dead entity does not throw
         /// </summary>
         [Fact]
         public void GameObject_UnsubscribeEvent_WithNullOrDeadEntity_DoesNotThrow()
@@ -121,7 +152,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object initalize event record with null or dead entity does not throw
+        ///     Tests that game object initalize event record with null or dead entity does not throw
         /// </summary>
         [Fact]
         public void GameObject_InitalizeEventRecord_WithNullOrDeadEntity_DoesNotThrow()
@@ -139,7 +170,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object on component generic properties on dead entity return null
+        ///     Tests that game object on component generic properties on dead entity return null
         /// </summary>
         [Fact]
         public void GameObject_OnComponentGenericProperties_OnDeadEntity_ReturnNull()
@@ -153,4 +184,3 @@ namespace Alis.Core.Ecs.Test
         }
     }
 }
-

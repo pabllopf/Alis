@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Generic;
-using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Kernel.Events;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
@@ -41,10 +40,8 @@ namespace Alis.Core.Ecs.Test
     /// </summary>
     public class GameObjectInvokePerEntityEventsTest
     {
-
-
         /// <summary>
-        /// Tests that invoke per entity events arity 1 invokes generic event
+        ///     Tests that invoke per entity events arity 1 invokes generic event
         /// </summary>
         [Fact]
         public void InvokePerEntityEvents_Arity1_InvokesGenericEvent()
@@ -62,9 +59,8 @@ namespace Alis.Core.Ecs.Test
         }
 
 
-
         /// <summary>
-        /// Tests that invoke per entity events arity 2 invokes generic events for both
+        ///     Tests that invoke per entity events arity 2 invokes generic events for both
         /// </summary>
         [Fact]
         public void InvokePerEntityEvents_Arity2_InvokesGenericEventsForBoth()
@@ -83,20 +79,18 @@ namespace Alis.Core.Ecs.Test
         }
 
 
-
-
         /// <summary>
-        /// The capture generic action class
+        ///     The capture generic action class
         /// </summary>
         private sealed class CaptureGenericAction : IGenericAction<GameObject>
         {
             /// <summary>
-            /// Gets the seen types
+            ///     Gets the seen types
             /// </summary>
             internal HashSet<Type> SeenTypes { get; } = new HashSet<Type>();
 
             /// <summary>
-            /// Invokes the specified param with generic type
+            ///     Invokes the specified param with generic type
             /// </summary>
             public void Invoke<T>(GameObject param, ref T type)
             {
@@ -105,4 +99,3 @@ namespace Alis.Core.Ecs.Test
         }
     }
 }
-

@@ -81,9 +81,9 @@ namespace Alis.Core.Ecs.Systems
         /// </summary>
         public RefTuple<T> Current
             => new RefTuple<T>
-        {
-            Item1 = new Ref<T>(_currentSpan1, _componentIndex)
-        };
+            {
+                Item1 = new Ref<T>(_currentSpan1, _componentIndex)
+            };
 
         /// <summary>
         ///     Indicates to the scene that this enumeration is finished; the scene might allow structual changes after this.
@@ -137,8 +137,8 @@ namespace Alis.Core.Ecs.Systems
             public QueryEnumerator<T> GetEnumerator() => new QueryEnumerator<T>(query);
         }
     }
-    
-     /// <summary>
+
+    /// <summary>
     ///     The query enumerator
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -191,10 +191,10 @@ namespace Alis.Core.Ecs.Systems
         /// </summary>
         public RefTuple<T1, T2> Current
             => new RefTuple<T1, T2>
-        {
-            Item1 = new Ref<T1>(_currentSpan1, _componentIndex),
-            Item2 = new Ref<T2>(_currentSpan2, _componentIndex)
-        };
+            {
+                Item1 = new Ref<T1>(_currentSpan1, _componentIndex),
+                Item2 = new Ref<T2>(_currentSpan2, _componentIndex)
+            };
 
         /// <summary>
         ///     Indicates to the scene that this enumeration is finished; the scene might allow structual changes after this.
@@ -250,8 +250,8 @@ namespace Alis.Core.Ecs.Systems
             public QueryEnumerator<T1, T2> GetEnumerator() => new QueryEnumerator<T1, T2>(query);
         }
     }
-     
-     /// <summary>
+
+    /// <summary>
     ///     The query enumerator
     /// </summary>
     public ref struct QueryEnumerator<T1, T2, T3>
@@ -308,11 +308,11 @@ namespace Alis.Core.Ecs.Systems
         /// </summary>
         public RefTuple<T1, T2, T3> Current
             => new RefTuple<T1, T2, T3>
-        {
-            Item1 = new Ref<T1>(_currentSpan1, _componentIndex),
-            Item2 = new Ref<T2>(_currentSpan2, _componentIndex),
-            Item3 = new Ref<T3>(_currentSpan3, _componentIndex)
-        };
+            {
+                Item1 = new Ref<T1>(_currentSpan1, _componentIndex),
+                Item2 = new Ref<T2>(_currentSpan2, _componentIndex),
+                Item3 = new Ref<T3>(_currentSpan3, _componentIndex)
+            };
 
         /// <summary>
         ///     Indicates to the scene that this enumeration is finished; the scene might allow structual changes after this.
@@ -369,8 +369,8 @@ namespace Alis.Core.Ecs.Systems
             public QueryEnumerator<T1, T2, T3> GetEnumerator() => new QueryEnumerator<T1, T2, T3>(query);
         }
     }
-     
-         /// <summary>
+
+    /// <summary>
     ///     The query enumerator
     /// </summary>
     public ref struct QueryEnumerator<T1, T2, T3, T4>
@@ -432,12 +432,12 @@ namespace Alis.Core.Ecs.Systems
         /// </summary>
         public RefTuple<T1, T2, T3, T4> Current
             => new RefTuple<T1, T2, T3, T4>
-        {
-            Item1 = new Ref<T1>(_currentSpan1, _componentIndex),
-            Item2 = new Ref<T2>(_currentSpan2, _componentIndex),
-            Item3 = new Ref<T3>(_currentSpan3, _componentIndex),
-            Item4 = new Ref<T4>(_currentSpan4, _componentIndex)
-        };
+            {
+                Item1 = new Ref<T1>(_currentSpan1, _componentIndex),
+                Item2 = new Ref<T2>(_currentSpan2, _componentIndex),
+                Item3 = new Ref<T3>(_currentSpan3, _componentIndex),
+                Item4 = new Ref<T4>(_currentSpan4, _componentIndex)
+            };
 
         /// <summary>
         ///     Indicates to the scene that this enumeration is finished; the scene might allow structual changes after this.
@@ -495,8 +495,8 @@ namespace Alis.Core.Ecs.Systems
             public QueryEnumerator<T1, T2, T3, T4> GetEnumerator() => new QueryEnumerator<T1, T2, T3, T4>(query);
         }
     }
-         
-             /// <summary>
+
+    /// <summary>
     ///     The query enumerator
     /// </summary>
     public ref struct QueryEnumerator<T1, T2, T3, T4, T5>
@@ -563,13 +563,13 @@ namespace Alis.Core.Ecs.Systems
         /// </summary>
         public RefTuple<T1, T2, T3, T4, T5> Current
             => new RefTuple<T1, T2, T3, T4, T5>
-        {
-            Item1 = new Ref<T1>(_currentSpan1, _componentIndex),
-            Item2 = new Ref<T2>(_currentSpan2, _componentIndex),
-            Item3 = new Ref<T3>(_currentSpan3, _componentIndex),
-            Item4 = new Ref<T4>(_currentSpan4, _componentIndex),
-            Item5 = new Ref<T5>(_currentSpan5, _componentIndex)
-        };
+            {
+                Item1 = new Ref<T1>(_currentSpan1, _componentIndex),
+                Item2 = new Ref<T2>(_currentSpan2, _componentIndex),
+                Item3 = new Ref<T3>(_currentSpan3, _componentIndex),
+                Item4 = new Ref<T4>(_currentSpan4, _componentIndex),
+                Item5 = new Ref<T5>(_currentSpan5, _componentIndex)
+            };
 
         /// <summary>
         ///     Indicates to the scene that this enumeration is finished; the scene might allow structual changes after this.
@@ -628,8 +628,8 @@ namespace Alis.Core.Ecs.Systems
             public QueryEnumerator<T1, T2, T3, T4, T5> GetEnumerator() => new QueryEnumerator<T1, T2, T3, T4, T5>(query);
         }
     }
-             
-                 /// <summary>
+
+    /// <summary>
     ///     The query enumerator
     /// </summary>
     public ref struct QueryEnumerator<T1, T2, T3, T4, T5, T6>
@@ -701,14 +701,14 @@ namespace Alis.Core.Ecs.Systems
         /// </summary>
         public RefTuple<T1, T2, T3, T4, T5, T6> Current
             => new RefTuple<T1, T2, T3, T4, T5, T6>
-        {
-            Item1 = new Ref<T1>(_currentSpan1, _componentIndex),
-            Item2 = new Ref<T2>(_currentSpan2, _componentIndex),
-            Item3 = new Ref<T3>(_currentSpan3, _componentIndex),
-            Item4 = new Ref<T4>(_currentSpan4, _componentIndex),
-            Item5 = new Ref<T5>(_currentSpan5, _componentIndex),
-            Item6 = new Ref<T6>(_currentSpan6, _componentIndex)
-        };
+            {
+                Item1 = new Ref<T1>(_currentSpan1, _componentIndex),
+                Item2 = new Ref<T2>(_currentSpan2, _componentIndex),
+                Item3 = new Ref<T3>(_currentSpan3, _componentIndex),
+                Item4 = new Ref<T4>(_currentSpan4, _componentIndex),
+                Item5 = new Ref<T5>(_currentSpan5, _componentIndex),
+                Item6 = new Ref<T6>(_currentSpan6, _componentIndex)
+            };
 
         /// <summary>
         ///     Indicates to the scene that this enumeration is finished; the scene might allow structual changes after this.
@@ -768,8 +768,8 @@ namespace Alis.Core.Ecs.Systems
             public QueryEnumerator<T1, T2, T3, T4, T5, T6> GetEnumerator() => new QueryEnumerator<T1, T2, T3, T4, T5, T6>(query);
         }
     }
-                 
-                  /// <summary>
+
+    /// <summary>
     ///     The query enumerator
     /// </summary>
     public ref struct QueryEnumerator<T1, T2, T3, T4, T5, T6, T7>
@@ -846,15 +846,15 @@ namespace Alis.Core.Ecs.Systems
         /// </summary>
         public RefTuple<T1, T2, T3, T4, T5, T6, T7> Current
             => new RefTuple<T1, T2, T3, T4, T5, T6, T7>
-        {
-            Item1 = new Ref<T1>(_currentSpan1, _componentIndex),
-            Item2 = new Ref<T2>(_currentSpan2, _componentIndex),
-            Item3 = new Ref<T3>(_currentSpan3, _componentIndex),
-            Item4 = new Ref<T4>(_currentSpan4, _componentIndex),
-            Item5 = new Ref<T5>(_currentSpan5, _componentIndex),
-            Item6 = new Ref<T6>(_currentSpan6, _componentIndex),
-            Item7 = new Ref<T7>(_currentSpan7, _componentIndex)
-        };
+            {
+                Item1 = new Ref<T1>(_currentSpan1, _componentIndex),
+                Item2 = new Ref<T2>(_currentSpan2, _componentIndex),
+                Item3 = new Ref<T3>(_currentSpan3, _componentIndex),
+                Item4 = new Ref<T4>(_currentSpan4, _componentIndex),
+                Item5 = new Ref<T5>(_currentSpan5, _componentIndex),
+                Item6 = new Ref<T6>(_currentSpan6, _componentIndex),
+                Item7 = new Ref<T7>(_currentSpan7, _componentIndex)
+            };
 
         /// <summary>
         ///     Indicates to the scene that this enumeration is finished; the scene might allow structual changes after this.
@@ -915,8 +915,8 @@ namespace Alis.Core.Ecs.Systems
             public QueryEnumerator<T1, T2, T3, T4, T5, T6, T7> GetEnumerator() => new QueryEnumerator<T1, T2, T3, T4, T5, T6, T7>(query);
         }
     }
-    
-                     /// <summary>
+
+    /// <summary>
     ///     The query enumerator
     /// </summary>
     /// <remarks>
@@ -1004,16 +1004,16 @@ namespace Alis.Core.Ecs.Systems
         /// </summary>
         public RefTuple<T1, T2, T3, T4, T5, T6, T7, T8> Current
             => new RefTuple<T1, T2, T3, T4, T5, T6, T7, T8>
-        {
-            Item1 = new Ref<T1>(_currentSpan1, _componentIndex),
-            Item2 = new Ref<T2>(_currentSpan2, _componentIndex),
-            Item3 = new Ref<T3>(_currentSpan3, _componentIndex),
-            Item4 = new Ref<T4>(_currentSpan4, _componentIndex),
-            Item5 = new Ref<T5>(_currentSpan5, _componentIndex),
-            Item6 = new Ref<T6>(_currentSpan6, _componentIndex),
-            Item7 = new Ref<T7>(_currentSpan7, _componentIndex),
-            Item8 = new Ref<T8>(_currentSpan8, _componentIndex)
-        };
+            {
+                Item1 = new Ref<T1>(_currentSpan1, _componentIndex),
+                Item2 = new Ref<T2>(_currentSpan2, _componentIndex),
+                Item3 = new Ref<T3>(_currentSpan3, _componentIndex),
+                Item4 = new Ref<T4>(_currentSpan4, _componentIndex),
+                Item5 = new Ref<T5>(_currentSpan5, _componentIndex),
+                Item6 = new Ref<T6>(_currentSpan6, _componentIndex),
+                Item7 = new Ref<T7>(_currentSpan7, _componentIndex),
+                Item8 = new Ref<T8>(_currentSpan8, _componentIndex)
+            };
 
         /// <summary>
         ///     Indicates to the scene that this enumeration is finished; the scene might allow structual changes after this.

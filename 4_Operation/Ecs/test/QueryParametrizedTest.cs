@@ -39,15 +39,10 @@ namespace Alis.Core.Ecs.Test
     public class QueryParametrizedTest
     {
         /// <summary>
-        /// Tests that query single component filter returns correct count
+        ///     Tests that query single component filter returns correct count
         /// </summary>
         /// <param name="entityCount">The entity count</param>
-        [Theory]
-        [InlineData(1)]
-        [InlineData(5)]
-        [InlineData(10)]
-        [InlineData(50)]
-        [InlineData(100)]
+        [Theory, InlineData(1), InlineData(5), InlineData(10), InlineData(50), InlineData(100)]
         public void Query_SingleComponentFilter_ReturnsCorrectCount(int entityCount)
         {
             // Arrange
@@ -55,9 +50,13 @@ namespace Alis.Core.Ecs.Test
             for (int i = 0; i < entityCount; i++)
             {
                 if (i % 2 == 0)
-                    scene.Create(new Position { X = 1, Y = 1 });
+                {
+                    scene.Create(new Position {X = 1, Y = 1});
+                }
                 else
+                {
                     scene.Create();
+                }
             }
 
             // Act
@@ -72,13 +71,10 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that query multi component filter only returns matching
+        ///     Tests that query multi component filter only returns matching
         /// </summary>
         /// <param name="entityCount">The entity count</param>
-        [Theory]
-        [InlineData(10)]
-        [InlineData(25)]
-        [InlineData(50)]
+        [Theory, InlineData(10), InlineData(25), InlineData(50)]
         public void Query_MultiComponentFilter_OnlyReturnsMatching(int entityCount)
         {
             // Arrange
@@ -86,8 +82,15 @@ namespace Alis.Core.Ecs.Test
             for (int i = 0; i < entityCount; i++)
             {
                 GameObject go = scene.Create();
-                if (i % 2 == 0) go.Add(new Position { X = 1, Y = 1 });
-                if (i % 3 == 0) go.Add(new Health { Value = 100 });
+                if (i % 2 == 0)
+                {
+                    go.Add(new Position {X = 1, Y = 1});
+                }
+
+                if (i % 3 == 0)
+                {
+                    go.Add(new Health {Value = 100});
+                }
             }
 
             // Act
@@ -102,20 +105,17 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that query modify components while iterating works
+        ///     Tests that query modify components while iterating works
         /// </summary>
         /// <param name="entityCount">The entity count</param>
-        [Theory]
-        [InlineData(10)]
-        [InlineData(25)]
-        [InlineData(50)]
+        [Theory, InlineData(10), InlineData(25), InlineData(50)]
         public void Query_ModifyComponentsWhileIterating_Works(int entityCount)
         {
             // Arrange
             using Scene scene = new Scene();
             for (int i = 0; i < entityCount; i++)
             {
-                scene.Create(new Position { X = i, Y = i });
+                scene.Create(new Position {X = i, Y = i});
             }
 
             // Act
@@ -133,17 +133,15 @@ namespace Alis.Core.Ecs.Test
                 verifyCount++;
                 Assert.True(entity.Get<Position>().X >= 1);
             }
+
             Assert.Equal(entityCount, verifyCount);
         }
 
         /// <summary>
-        /// Tests that query add component while not querying appears in next query
+        ///     Tests that query add component while not querying appears in next query
         /// </summary>
         /// <param name="entityCount">The entity count</param>
-        [Theory]
-        [InlineData(5)]
-        [InlineData(10)]
-        [InlineData(20)]
+        [Theory, InlineData(5), InlineData(10), InlineData(20)]
         public void Query_AddComponentWhileNotQuerying_AppearsInNextQuery(int entityCount)
         {
             // Arrange
@@ -156,17 +154,23 @@ namespace Alis.Core.Ecs.Test
 
             // Act - First query without Position
             int count1 = 0;
-            foreach (var entity in scene.Query<With<Position>>().EnumerateWithEntities()) count1++;
+            foreach (var entity in scene.Query<With<Position>>().EnumerateWithEntities())
+            {
+                count1++;
+            }
 
             // Add Position to all
             for (int i = 0; i < entityCount; i++)
             {
-                entities[i].Add(new Position { X = 1, Y = 1 });
+                entities[i].Add(new Position {X = 1, Y = 1});
             }
 
             // Query again
             int count2 = 0;
-            foreach (var entity in scene.Query<With<Position>>().EnumerateWithEntities()) count2++;
+            foreach (var entity in scene.Query<With<Position>>().EnumerateWithEntities())
+            {
+                count2++;
+            }
 
             // Assert
             Assert.Equal(0, count1);
@@ -174,13 +178,10 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that query remove component while querying entity not in future queries
+        ///     Tests that query remove component while querying entity not in future queries
         /// </summary>
         /// <param name="entityCount">The entity count</param>
-        [Theory]
-        [InlineData(10)]
-        [InlineData(25)]
-        [InlineData(50)]
+        [Theory, InlineData(10), InlineData(25), InlineData(50)]
         public void Query_RemoveComponentWhileQuerying_EntityNotInFutureQueries(int entityCount)
         {
             // Arrange
@@ -188,7 +189,7 @@ namespace Alis.Core.Ecs.Test
             var entities = new GameObject[entityCount];
             for (int i = 0; i < entityCount; i++)
             {
-                entities[i] = scene.Create(new Position { X = 1, Y = 1 });
+                entities[i] = scene.Create(new Position {X = 1, Y = 1});
             }
 
             // Act - Remove components
@@ -199,20 +200,20 @@ namespace Alis.Core.Ecs.Test
 
             // Query again
             int count = 0;
-            foreach (var entity in scene.Query<With<Position>>().EnumerateWithEntities()) count++;
+            foreach (var entity in scene.Query<With<Position>>().EnumerateWithEntities())
+            {
+                count++;
+            }
 
             // Assert
-            Assert.Equal(entityCount - (entityCount / 2), count);
+            Assert.Equal(entityCount - entityCount / 2, count);
         }
 
         /// <summary>
-        /// Tests that query delete entity while querying does not appear in results
+        ///     Tests that query delete entity while querying does not appear in results
         /// </summary>
         /// <param name="entityCount">The entity count</param>
-        [Theory]
-        [InlineData(10)]
-        [InlineData(25)]
-        [InlineData(50)]
+        [Theory, InlineData(10), InlineData(25), InlineData(50)]
         public void Query_DeleteEntityWhileQuerying_DoesNotAppearInResults(int entityCount)
         {
             // Arrange
@@ -220,7 +221,7 @@ namespace Alis.Core.Ecs.Test
             var entities = new GameObject[entityCount];
             for (int i = 0; i < entityCount; i++)
             {
-                entities[i] = scene.Create(new Position { X = 1, Y = 1 });
+                entities[i] = scene.Create(new Position {X = 1, Y = 1});
             }
 
             // Act - Delete half
@@ -233,7 +234,10 @@ namespace Alis.Core.Ecs.Test
             int count = 0;
             foreach (var entity in scene.Query<With<Position>>().EnumerateWithEntities())
             {
-                if (entity.IsAlive) count++;
+                if (entity.IsAlive)
+                {
+                    count++;
+                }
             }
 
             // Assert
@@ -241,13 +245,10 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that query chained queries work correctly
+        ///     Tests that query chained queries work correctly
         /// </summary>
         /// <param name="entityCount">The entity count</param>
-        [Theory]
-        [InlineData(5)]
-        [InlineData(10)]
-        [InlineData(20)]
+        [Theory, InlineData(5), InlineData(10), InlineData(20)]
         public void Query_ChainedQueries_WorkCorrectly(int entityCount)
         {
             // Arrange
@@ -255,19 +256,41 @@ namespace Alis.Core.Ecs.Test
             for (int i = 0; i < entityCount; i++)
             {
                 GameObject go = scene.Create();
-                if (i % 2 == 0) go.Add(new Position { X = 1, Y = 1 });
-                if (i % 3 == 0) go.Add(new Health { Value = 100 });
-                if (i % 5 == 0) go.Add(new Velocity { X = 1, Y = 1 });
+                if (i % 2 == 0)
+                {
+                    go.Add(new Position {X = 1, Y = 1});
+                }
+
+                if (i % 3 == 0)
+                {
+                    go.Add(new Health {Value = 100});
+                }
+
+                if (i % 5 == 0)
+                {
+                    go.Add(new Velocity {X = 1, Y = 1});
+                }
             }
 
             // Act
             int posCount = 0;
             int healthCount = 0;
             int velCount = 0;
-            
-            foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities()) posCount++;
-            foreach (var go in scene.Query<With<Health>>().EnumerateWithEntities()) healthCount++;
-            foreach (var go in scene.Query<With<Velocity>>().EnumerateWithEntities()) velCount++;
+
+            foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities())
+            {
+                posCount++;
+            }
+
+            foreach (var go in scene.Query<With<Health>>().EnumerateWithEntities())
+            {
+                healthCount++;
+            }
+
+            foreach (var go in scene.Query<With<Velocity>>().EnumerateWithEntities())
+            {
+                velCount++;
+            }
 
             // Assert
             Assert.True(posCount > 0);
@@ -276,13 +299,10 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that query empty scene returns no entities
+        ///     Tests that query empty scene returns no entities
         /// </summary>
         /// <param name="unused">The unused</param>
-        [Theory]
-        [InlineData(10)]
-        [InlineData(50)]
-        [InlineData(100)]
+        [Theory, InlineData(10), InlineData(50), InlineData(100)]
         public void Query_EmptyScene_ReturnsNoEntities(int unused)
         {
             // Arrange
@@ -290,21 +310,21 @@ namespace Alis.Core.Ecs.Test
 
             // Act
             int count = 0;
-            foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities()) count++;
+            foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities())
+            {
+                count++;
+            }
 
             // Assert
             Assert.Equal(0, count);
         }
 
         /// <summary>
-        /// Tests that query partial matches only returns exact
+        ///     Tests that query partial matches only returns exact
         /// </summary>
         /// <param name="entityCount">The entity count</param>
         /// <param name="matchingCount">The matching count</param>
-        [Theory]
-        [InlineData(10, 1)]
-        [InlineData(20, 2)]
-        [InlineData(50, 5)]
+        [Theory, InlineData(10, 1), InlineData(20, 2), InlineData(50, 5)]
         public void Query_PartialMatches_OnlyReturnsExact(int entityCount, int matchingCount)
         {
             // Arrange
@@ -314,22 +334,24 @@ namespace Alis.Core.Ecs.Test
                 GameObject go = scene.Create();
                 if (i < matchingCount)
                 {
-                    go.Add(new Position { X = 1, Y = 1 });
-                    go.Add(new Health { Value = 100 });
+                    go.Add(new Position {X = 1, Y = 1});
+                    go.Add(new Health {Value = 100});
                 }
                 else
                 {
-                    go.Add(new Position { X = 1, Y = 1 });
+                    go.Add(new Position {X = 1, Y = 1});
                 }
             }
 
             // Act
             int count = 0;
-            foreach (var go in scene.Query<With<Position>, With<Health>>().EnumerateWithEntities()) count++;
+            foreach (var go in scene.Query<With<Position>, With<Health>>().EnumerateWithEntities())
+            {
+                count++;
+            }
 
             // Assert
             Assert.Equal(matchingCount, count);
         }
     }
 }
-

@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:UpdateManagerMassiveAdditionalTest.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -16,24 +45,23 @@ using Xunit;
 namespace Alis.Extension.Updater.Test
 {
     /// <summary>
-    /// The update manager massive additional test class
+    ///     The update manager massive additional test class
     /// </summary>
     public class UpdateManagerMassiveAdditionalTest
     {
         /// <summary>
-        /// The backup archives lock
+        ///     The backup archives lock
         /// </summary>
         private static readonly object BackupArchivesLock = new object();
 
         /// <summary>
-        /// Tests that is latest version already downloaded matrix cases
+        ///     Tests that is latest version already downloaded matrix cases
         /// </summary>
         /// <param name="caseId">The case id</param>
         /// <param name="useNullUrl">The use null url</param>
         /// <param name="createFile">The create file</param>
         /// <param name="expected">The expected</param>
-        [Theory]
-        [MemberData(nameof(IsLatestVersionAlreadyDownloadedCases))]
+        [Theory, MemberData(nameof(IsLatestVersionAlreadyDownloadedCases))]
         public void IsLatestVersionAlreadyDownloaded_MatrixCases(int caseId, bool useNullUrl, bool createFile, bool expected)
         {
             UpdateManager sut = CreateManagerFast();
@@ -61,11 +89,10 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Tests that handle download failure matrix cases
+        ///     Tests that handle download failure matrix cases
         /// </summary>
         /// <param name="caseId">The case id</param>
-        [Theory]
-        [MemberData(nameof(HandleDownloadFailureCases))]
+        [Theory, MemberData(nameof(HandleDownloadFailureCases))]
         public void HandleDownloadFailure_MatrixCases(int caseId)
         {
             UpdateManager sut = CreateManagerFast();
@@ -79,13 +106,12 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Tests that handle missing compatible package matrix cases
+        ///     Tests that handle missing compatible package matrix cases
         /// </summary>
         /// <param name="caseId">The case id</param>
         /// <param name="platform">The platform</param>
         /// <param name="architecture">The architecture</param>
-        [Theory]
-        [MemberData(nameof(HandleMissingCompatiblePackageCases))]
+        [Theory, MemberData(nameof(HandleMissingCompatiblePackageCases))]
         public void HandleMissingCompatiblePackage_MatrixCases(int caseId, string platform, string architecture)
         {
             UpdateManager sut = CreateManagerFast();
@@ -99,12 +125,11 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Tests that remove old backup archives keeps at most two files
+        ///     Tests that remove old backup archives keeps at most two files
         /// </summary>
         /// <param name="caseId">The case id</param>
         /// <param name="backupFileCount">The backup file count</param>
-        [Theory]
-        [MemberData(nameof(RemoveOldBackupArchivesCases))]
+        [Theory, MemberData(nameof(RemoveOldBackupArchivesCases))]
         public void RemoveOldBackupArchives_KeepsAtMostTwoFiles(int caseId, int backupFileCount)
         {
             lock (BackupArchivesLock)
@@ -144,7 +169,7 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Tests that finish already downloaded flow returns true and preserves backup files
+        ///     Tests that finish already downloaded flow returns true and preserves backup files
         /// </summary>
         [Fact]
         public void FinishAlreadyDownloadedFlow_ReturnsTrue_AndPreservesBackupFiles()
@@ -190,7 +215,7 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Tests that move program folder to backup moves directory
+        ///     Tests that move program folder to backup moves directory
         /// </summary>
         [Fact]
         public void MoveProgramFolderToBackup_MovesDirectory()
@@ -220,7 +245,7 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Tests that compress backup folder creates zip and deletes source
+        ///     Tests that compress backup folder creates zip and deletes source
         /// </summary>
         [Fact]
         public void CompressBackupFolder_CreatesZipAndDeletesSource()
@@ -248,7 +273,7 @@ namespace Alis.Extension.Updater.Test
             }
             finally
             {
-                if (createdZip != null && File.Exists(createdZip))
+                if ((createdZip != null) && File.Exists(createdZip))
                 {
                     File.Delete(createdZip);
                 }
@@ -256,7 +281,7 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Tests that install latest version with zip package returns true and extracts
+        ///     Tests that install latest version with zip package returns true and extracts
         /// </summary>
         [Fact]
         public void InstallLatestVersion_WithZipPackage_ReturnsTrueAndExtracts()
@@ -282,7 +307,7 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Tests that download latest version async downloads and returns path
+        ///     Tests that download latest version async downloads and returns path
         /// </summary>
         [Fact]
         public async Task DownloadLatestVersionAsync_DownloadsAndReturnsPath()
@@ -310,7 +335,7 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Ises the latest version already downloaded cases
+        ///     Ises the latest version already downloaded cases
         /// </summary>
         /// <returns>An enumerable of object array</returns>
         public static IEnumerable<object[]> IsLatestVersionAlreadyDownloadedCases()
@@ -320,39 +345,39 @@ namespace Alis.Extension.Updater.Test
                 bool useNullUrl = i % 6 == 0;
                 bool createFile = i % 2 == 0;
                 bool expected = !useNullUrl && createFile;
-                yield return new object[] { i, useNullUrl, createFile, expected };
+                yield return new object[] {i, useNullUrl, createFile, expected};
             }
         }
 
         /// <summary>
-        /// Handles the download failure cases
+        ///     Handles the download failure cases
         /// </summary>
         /// <returns>An enumerable of object array</returns>
         public static IEnumerable<object[]> HandleDownloadFailureCases()
         {
             for (int i = 0; i < 60; i++)
             {
-                yield return new object[] { i };
+                yield return new object[] {i};
             }
         }
 
         /// <summary>
-        /// Handles the missing compatible package cases
+        ///     Handles the missing compatible package cases
         /// </summary>
         /// <returns>An enumerable of object array</returns>
         public static IEnumerable<object[]> HandleMissingCompatiblePackageCases()
         {
-            string[] platforms = { "win", "linux", "osx", "android", "ios" };
-            string[] arch = { "x64", "x86", "arm64", "arm", "wasm" };
+            string[] platforms = {"win", "linux", "osx", "android", "ios"};
+            string[] arch = {"x64", "x86", "arm64", "arm", "wasm"};
 
             for (int i = 0; i < 60; i++)
             {
-                yield return new object[] { i, platforms[i % platforms.Length], arch[(i / platforms.Length) % arch.Length] };
+                yield return new object[] {i, platforms[i % platforms.Length], arch[i / platforms.Length % arch.Length]};
             }
         }
 
         /// <summary>
-        /// Removes the old backup archives cases
+        ///     Removes the old backup archives cases
         /// </summary>
         /// <returns>An enumerable of object array</returns>
         public static IEnumerable<object[]> RemoveOldBackupArchivesCases()
@@ -360,12 +385,12 @@ namespace Alis.Extension.Updater.Test
             for (int i = 0; i < 40; i++)
             {
                 int backupCount = i % 7;
-                yield return new object[] { i, backupCount };
+                yield return new object[] {i, backupCount};
             }
         }
 
         /// <summary>
-        /// Creates the manager fast using the specified version to install
+        ///     Creates the manager fast using the specified version to install
         /// </summary>
         /// <param name="versionToInstall">The version to install</param>
         /// <param name="programFolder">The program folder</param>
@@ -385,38 +410,24 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// The temp folder class
+        ///     The temp folder class
         /// </summary>
-        /// <seealso cref="IDisposable"/>
+        /// <seealso cref="IDisposable" />
         private sealed class TempFolder : IDisposable
         {
             /// <summary>
-            /// Initializes a new instance of the <see cref="TempFolder"/> class
+            ///     Initializes a new instance of the <see cref="TempFolder" /> class
             /// </summary>
             /// <param name="path">The path</param>
-            private TempFolder(string path)
-            {
-                Path = path;
-            }
+            private TempFolder(string path) => Path = path;
 
             /// <summary>
-            /// Gets the value of the path
+            ///     Gets the value of the path
             /// </summary>
             public string Path { get; }
 
             /// <summary>
-            /// Creates
-            /// </summary>
-            /// <returns>The temp folder</returns>
-            public static TempFolder Create()
-            {
-                string path = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "alis-updater-tests", Guid.NewGuid().ToString("N"));
-                Directory.CreateDirectory(path);
-                return new TempFolder(path);
-            }
-
-            /// <summary>
-            /// Disposes this instance
+            ///     Disposes this instance
             /// </summary>
             public void Dispose()
             {
@@ -425,29 +436,42 @@ namespace Alis.Extension.Updater.Test
                     Directory.Delete(Path, true);
                 }
             }
+
+            /// <summary>
+            ///     Creates
+            /// </summary>
+            /// <returns>The temp folder</returns>
+            public static TempFolder Create()
+            {
+                string path = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "alis-updater-tests", Guid.NewGuid().ToString("N"));
+                Directory.CreateDirectory(path);
+                return new TempFolder(path);
+            }
         }
 
         /// <summary>
-        /// The loopback http server class
+        ///     The loopback http server class
         /// </summary>
-        /// <seealso cref="IDisposable"/>
+        /// <seealso cref="IDisposable" />
         private sealed class LoopbackHttpServer : IDisposable
         {
             /// <summary>
-            /// The cancellation
+            ///     The cancellation
             /// </summary>
             private readonly CancellationTokenSource _cancellation;
+
             /// <summary>
-            /// The listener
+            ///     The listener
             /// </summary>
             private readonly TcpListener _listener;
+
             /// <summary>
-            /// The worker
+            ///     The worker
             /// </summary>
             private readonly Task _worker;
 
             /// <summary>
-            /// Initializes a new instance of the <see cref="LoopbackHttpServer"/> class
+            ///     Initializes a new instance of the <see cref="LoopbackHttpServer" /> class
             /// </summary>
             /// <param name="responseBody">The response body</param>
             /// <param name="maxRequests">The max requests</param>
@@ -457,13 +481,13 @@ namespace Alis.Extension.Updater.Test
                 _listener = new TcpListener(IPAddress.Loopback, 0);
                 _listener.Start();
 
-                int port = ((IPEndPoint)_listener.LocalEndpoint).Port;
+                int port = ((IPEndPoint) _listener.LocalEndpoint).Port;
                 Uri = new Uri("http://127.0.0.1:" + port + "/");
 
                 _worker = Task.Run(async () =>
                 {
                     int handled = 0;
-                    while (!_cancellation.IsCancellationRequested && handled < maxRequests)
+                    while (!_cancellation.IsCancellationRequested && (handled < maxRequests))
                     {
                         TcpClient client;
                         try
@@ -506,12 +530,12 @@ namespace Alis.Extension.Updater.Test
             }
 
             /// <summary>
-            /// Gets the value of the uri
+            ///     Gets the value of the uri
             /// </summary>
             public Uri Uri { get; }
 
             /// <summary>
-            /// Disposes this instance
+            ///     Disposes this instance
             /// </summary>
             public void Dispose()
             {
@@ -530,4 +554,3 @@ namespace Alis.Extension.Updater.Test
         }
     }
 }
-

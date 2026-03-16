@@ -35,12 +35,12 @@ using Alis.Core.Ecs.Kernel.Archetypes;
 namespace Alis.Core.Ecs.Updating.Runners
 {
     /// <summary>
-    /// The update loop class
+    ///     The update loop class
     /// </summary>
     internal static class UpdateLoop
     {
         /// <summary>
-        /// Runs the entity ids
+        ///     Runs the entity ids
         /// </summary>
         /// <typeparam name="TComp">The comp</typeparam>
         /// <param name="entityIds">The entity ids</param>
@@ -63,12 +63,11 @@ namespace Alis.Core.Ecs.Updating.Runners
 
                 entityIds = ref Unsafe.Add(ref entityIds, 1);
                 comp = ref Unsafe.Add(ref comp, 1);
-            }
-            while (--length != 0);
+            } while (--length != 0);
         }
 
         /// <summary>
-        /// Runs the entity ids
+        ///     Runs the entity ids
         /// </summary>
         /// <typeparam name="TComp">The comp</typeparam>
         /// <typeparam name="TArg1">The arg</typeparam>
@@ -103,12 +102,11 @@ namespace Alis.Core.Ecs.Updating.Runners
                 comp = ref Unsafe.Add(ref comp, 1);
                 arg1 = ref Unsafe.Add(ref arg1, 1);
                 arg2 = ref Unsafe.Add(ref arg2, 1);
-            }
-            while (--length != 0);
+            } while (--length != 0);
         }
 
         /// <summary>
-        /// Runs the entity ids
+        ///     Runs the entity ids
         /// </summary>
         /// <typeparam name="TComp">The comp</typeparam>
         /// <typeparam name="TArg1">The arg</typeparam>
@@ -147,12 +145,11 @@ namespace Alis.Core.Ecs.Updating.Runners
                 arg1 = ref Unsafe.Add(ref arg1, 1);
                 arg2 = ref Unsafe.Add(ref arg2, 1);
                 arg3 = ref Unsafe.Add(ref arg3, 1);
-            }
-            while (--length != 0);
+            } while (--length != 0);
         }
 
         /// <summary>
-        /// Runs the entity ids
+        ///     Runs the entity ids
         /// </summary>
         /// <typeparam name="TComp">The comp</typeparam>
         /// <typeparam name="TArg1">The arg</typeparam>
@@ -195,12 +192,11 @@ namespace Alis.Core.Ecs.Updating.Runners
                 arg2 = ref Unsafe.Add(ref arg2, 1);
                 arg3 = ref Unsafe.Add(ref arg3, 1);
                 arg4 = ref Unsafe.Add(ref arg4, 1);
-            }
-            while (--length != 0);
+            } while (--length != 0);
         }
 
         /// <summary>
-        /// Runs the entity ids
+        ///     Runs the entity ids
         /// </summary>
         /// <typeparam name="TComp">The comp</typeparam>
         /// <typeparam name="TArg1">The arg</typeparam>
@@ -251,12 +247,11 @@ namespace Alis.Core.Ecs.Updating.Runners
                 arg4 = ref Unsafe.Add(ref arg4, 1);
                 arg5 = ref Unsafe.Add(ref arg5, 1);
                 arg6 = ref Unsafe.Add(ref arg6, 1);
-            }
-            while (--length != 0);
+            } while (--length != 0);
         }
 
         /// <summary>
-        /// Runs the entity ids
+        ///     Runs the entity ids
         /// </summary>
         /// <typeparam name="TComp">The comp</typeparam>
         /// <typeparam name="TArg1">The arg</typeparam>
@@ -311,12 +306,11 @@ namespace Alis.Core.Ecs.Updating.Runners
                 arg5 = ref Unsafe.Add(ref arg5, 1);
                 arg6 = ref Unsafe.Add(ref arg6, 1);
                 arg7 = ref Unsafe.Add(ref arg7, 1);
-            }
-            while (--length != 0);
+            } while (--length != 0);
         }
 
         /// <summary>
-        /// Runs the entity ids
+        ///     Runs the entity ids
         /// </summary>
         /// <typeparam name="TComp">The comp</typeparam>
         /// <typeparam name="TArg1">The arg</typeparam>
@@ -376,8 +370,7 @@ namespace Alis.Core.Ecs.Updating.Runners
                 arg6 = ref Unsafe.Add(ref arg6, 1);
                 arg7 = ref Unsafe.Add(ref arg7, 1);
                 arg8 = ref Unsafe.Add(ref arg8, 1);
-            }
-            while (--length != 0);
+            } while (--length != 0);
         }
     }
 
@@ -413,7 +406,7 @@ namespace Alis.Core.Ecs.Updating.Runners
             UpdateLoop.Run(ref entityIds, ref comp, length, scene.DefaultWorldGameObject);
         }
     }
-    
+
     /// <summary>
     ///     The gameObject update class
     /// </summary>
@@ -455,11 +448,11 @@ namespace Alis.Core.Ecs.Updating.Runners
             UpdateLoop.Run(ref entityIds, ref comp, ref arg1, ref arg2, length, scene.DefaultWorldGameObject);
         }
     }
-    
+
     /// <summary>
-    /// The update class
+    ///     The update class
     /// </summary>
-    /// <seealso cref="ComponentStorage{TComp}"/>
+    /// <seealso cref="ComponentStorage{TComp}" />
     public class Update<TComp, TArg1, TArg2, TArg3>(int capacity) : ComponentStorage<TComp>(capacity)
         where TComp : IOnUpdate<TArg1, TArg2, TArg3>
     {
@@ -503,12 +496,12 @@ namespace Alis.Core.Ecs.Updating.Runners
                 scene.DefaultWorldGameObject);
         }
     }
-    
-        /// <summary>
-        /// The update class
-        /// </summary>
-        /// <seealso cref="ComponentStorage{TComp}"/>
-        public class Update<TComp, TArg1, TArg2, TArg3, TArg4>(int capacity) : ComponentStorage<TComp>(capacity)
+
+    /// <summary>
+    ///     The update class
+    /// </summary>
+    /// <seealso cref="ComponentStorage{TComp}" />
+    public class Update<TComp, TArg1, TArg2, TArg3, TArg4>(int capacity) : ComponentStorage<TComp>(capacity)
         where TComp : IOnUpdate<TArg1, TArg2, TArg3, TArg4>
     {
         /// <summary>
@@ -553,11 +546,12 @@ namespace Alis.Core.Ecs.Updating.Runners
                 scene.DefaultWorldGameObject);
         }
     }
-        /// <summary>
-        /// The update class
-        /// </summary>
-        /// <seealso cref="ComponentStorage{TComp}"/>
-        public class Update<TComp, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>(int capacity)
+
+    /// <summary>
+    ///     The update class
+    /// </summary>
+    /// <seealso cref="ComponentStorage{TComp}" />
+    public class Update<TComp, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>(int capacity)
         : ComponentStorage<TComp>(capacity)
         where TComp : IOnUpdate<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>
     {
@@ -607,12 +601,12 @@ namespace Alis.Core.Ecs.Updating.Runners
                 length, scene.DefaultWorldGameObject);
         }
     }
-        
-         /// <summary>
-         /// The update class
-         /// </summary>
-         /// <seealso cref="ComponentStorage{TComp}"/>
-         public class Update<TComp, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7>(int capacity)
+
+    /// <summary>
+    ///     The update class
+    /// </summary>
+    /// <seealso cref="ComponentStorage{TComp}" />
+    public class Update<TComp, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7>(int capacity)
         : ComponentStorage<TComp>(capacity)
         where TComp : IOnUpdate<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7>
     {
@@ -664,12 +658,12 @@ namespace Alis.Core.Ecs.Updating.Runners
                 ref arg7, length, scene.DefaultWorldGameObject);
         }
     }
-         
-         /// <summary>
-         /// The update class
-         /// </summary>
-         /// <seealso cref="ComponentStorage{TComp}"/>
-         public class Update<TComp, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8>(int capacity)
+
+    /// <summary>
+    ///     The update class
+    /// </summary>
+    /// <seealso cref="ComponentStorage{TComp}" />
+    public class Update<TComp, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8>(int capacity)
         : ComponentStorage<TComp>(capacity)
         where TComp : IOnUpdate<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8>
     {

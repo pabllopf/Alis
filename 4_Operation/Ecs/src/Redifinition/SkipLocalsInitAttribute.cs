@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
+
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
 // ReSharper disable once CheckNamespace
 namespace System.Runtime.CompilerServices
@@ -45,15 +47,14 @@ namespace System.Runtime.CompilerServices
     ///     assemblies. Use at the module level instead to apply to multiple type
     ///     declarations.
     /// </remarks>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
-    [AttributeUsage(AttributeTargets.Module
-                    | AttributeTargets.Class
-                    | AttributeTargets.Struct
-                    | AttributeTargets.Interface
-                    | AttributeTargets.Constructor
-                    | AttributeTargets.Method
-                    | AttributeTargets.Property
-                    | AttributeTargets.Event, Inherited = false)]
+    [ExcludeFromCodeCoverage, AttributeUsage(AttributeTargets.Module
+                                             | AttributeTargets.Class
+                                             | AttributeTargets.Struct
+                                             | AttributeTargets.Interface
+                                             | AttributeTargets.Constructor
+                                             | AttributeTargets.Method
+                                             | AttributeTargets.Property
+                                             | AttributeTargets.Event, Inherited = false)]
     public sealed class SkipLocalsInitAttribute : Attribute
     {
     }

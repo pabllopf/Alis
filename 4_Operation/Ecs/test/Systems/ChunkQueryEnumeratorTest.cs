@@ -1,30 +1,30 @@
 // --------------------------------------------------------------------------
-//
+// 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-//
+// 
 //  --------------------------------------------------------------------------
 //  File:ChunkQueryEnumeratorTest.cs
-//
+// 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
-//
+// 
 //  Copyright (c) 2021 GNU General Public License v3.0
-//
+// 
 //  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//
+// 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
-//
+// 
 //  You should have received a copy of the GNU General Public License
 //  along with this program.If not, see <http://www.gnu.org/licenses/>.
-//
+// 
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Ecs.Systems;
@@ -39,7 +39,7 @@ namespace Alis.Core.Ecs.Test.Systems
     public class ChunkQueryEnumeratorTest
     {
         /// <summary>
-        /// Tests that chunk query enumerator arity 1 is ref struct
+        ///     Tests that chunk query enumerator arity 1 is ref struct
         /// </summary>
         [Fact]
         public void ChunkQueryEnumerator_Arity1_IsRefStruct()
@@ -49,7 +49,7 @@ namespace Alis.Core.Ecs.Test.Systems
         }
 
         /// <summary>
-        /// Tests that chunk query enumerator arity 1 move next across archetypes works
+        ///     Tests that chunk query enumerator arity 1 move next across archetypes works
         /// </summary>
         [Fact]
         public void ChunkQueryEnumerator_Arity1_MoveNextAcrossArchetypes_Works()
@@ -78,7 +78,7 @@ namespace Alis.Core.Ecs.Test.Systems
         }
 
         /// <summary>
-        /// Tests that chunk query enumerator arity 2 current maps both spans
+        ///     Tests that chunk query enumerator arity 2 current maps both spans
         /// </summary>
         [Fact]
         public void ChunkQueryEnumerator_Arity2_CurrentMapsBothSpans()
@@ -99,7 +99,7 @@ namespace Alis.Core.Ecs.Test.Systems
         }
 
         /// <summary>
-        /// Tests that chunk query enumerator arity 3 current maps all spans
+        ///     Tests that chunk query enumerator arity 3 current maps all spans
         /// </summary>
         [Fact]
         public void ChunkQueryEnumerator_Arity3_CurrentMapsAllSpans()
@@ -119,7 +119,7 @@ namespace Alis.Core.Ecs.Test.Systems
         }
 
         /// <summary>
-        /// Tests that chunk query enumerator arity 4 current maps all spans
+        ///     Tests that chunk query enumerator arity 4 current maps all spans
         /// </summary>
         [Fact]
         public void ChunkQueryEnumerator_Arity4_CurrentMapsAllSpans()
@@ -144,7 +144,7 @@ namespace Alis.Core.Ecs.Test.Systems
         }
 
         /// <summary>
-        /// Tests that chunk query enumerator arity 5 current maps all spans
+        ///     Tests that chunk query enumerator arity 5 current maps all spans
         /// </summary>
         [Fact]
         public void ChunkQueryEnumerator_Arity5_CurrentMapsAllSpans()
@@ -171,7 +171,7 @@ namespace Alis.Core.Ecs.Test.Systems
         }
 
         /// <summary>
-        /// Tests that chunk query enumerator arity 6 current maps all spans
+        ///     Tests that chunk query enumerator arity 6 current maps all spans
         /// </summary>
         [Fact]
         public void ChunkQueryEnumerator_Arity6_CurrentMapsAllSpans()
@@ -200,7 +200,7 @@ namespace Alis.Core.Ecs.Test.Systems
         }
 
         /// <summary>
-        /// Tests that chunk query enumerator arity 7 current maps all spans
+        ///     Tests that chunk query enumerator arity 7 current maps all spans
         /// </summary>
         [Fact]
         public void ChunkQueryEnumerator_Arity7_CurrentMapsAllSpans()
@@ -231,7 +231,7 @@ namespace Alis.Core.Ecs.Test.Systems
         }
 
         /// <summary>
-        /// Tests that chunk query enumerator arity 8 current maps all spans and dispose restores structural state
+        ///     Tests that chunk query enumerator arity 8 current maps all spans and dispose restores structural state
         /// </summary>
         [Fact]
         public void ChunkQueryEnumerator_Arity8_CurrentMapsAllSpans_AndDisposeRestoresStructuralState()

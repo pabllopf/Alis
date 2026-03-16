@@ -105,7 +105,6 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(1, count);
         }
 
-  
 
         /// <summary>
         ///     Tests that query enumerable with one component works with empty query.

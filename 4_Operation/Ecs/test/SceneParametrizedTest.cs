@@ -39,15 +39,10 @@ namespace Alis.Core.Ecs.Test
     public class SceneParametrizedTest
     {
         /// <summary>
-        /// Tests that scene create multiple entities count matches
+        ///     Tests that scene create multiple entities count matches
         /// </summary>
         /// <param name="entityCount">The entity count</param>
-        [Theory]
-        [InlineData(1)]
-        [InlineData(5)]
-        [InlineData(10)]
-        [InlineData(50)]
-        [InlineData(100)]
+        [Theory, InlineData(1), InlineData(5), InlineData(10), InlineData(50), InlineData(100)]
         public void Scene_CreateMultipleEntities_CountMatches(int entityCount)
         {
             // Arrange
@@ -68,14 +63,10 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that scene delete entities becomes null
+        ///     Tests that scene delete entities becomes null
         /// </summary>
         /// <param name="entityCount">The entity count</param>
-        [Theory]
-        [InlineData(1)]
-        [InlineData(5)]
-        [InlineData(10)]
-        [InlineData(20)]
+        [Theory, InlineData(1), InlineData(5), InlineData(10), InlineData(20)]
         public void Scene_DeleteEntities_BecomesNull(int entityCount)
         {
             // Arrange
@@ -100,14 +91,10 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that scene add components to multiple entities all have components
+        ///     Tests that scene add components to multiple entities all have components
         /// </summary>
         /// <param name="entityCount">The entity count</param>
-        [Theory]
-        [InlineData(1)]
-        [InlineData(3)]
-        [InlineData(5)]
-        [InlineData(10)]
+        [Theory, InlineData(1), InlineData(3), InlineData(5), InlineData(10)]
         public void Scene_AddComponentsToMultipleEntities_AllHaveComponents(int entityCount)
         {
             // Arrange
@@ -118,7 +105,7 @@ namespace Alis.Core.Ecs.Test
             for (int i = 0; i < entityCount; i++)
             {
                 entities[i] = scene.Create();
-                entities[i].Add(new Position { X = i, Y = i * 2 });
+                entities[i].Add(new Position {X = i, Y = i * 2});
             }
 
             // Assert
@@ -131,15 +118,11 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that scene remove components from entities components gone
+        ///     Tests that scene remove components from entities components gone
         /// </summary>
         /// <param name="entityCount">The entity count</param>
         /// <param name="removeCount">The remove count</param>
-        [Theory]
-        [InlineData(10, 1)]
-        [InlineData(20, 2)]
-        [InlineData(50, 5)]
-        [InlineData(100, 10)]
+        [Theory, InlineData(10, 1), InlineData(20, 2), InlineData(50, 5), InlineData(100, 10)]
         public void Scene_RemoveComponentsFromEntities_ComponentsGone(int entityCount, int removeCount)
         {
             // Arrange
@@ -148,29 +131,27 @@ namespace Alis.Core.Ecs.Test
             for (int i = 0; i < entityCount; i++)
             {
                 entities[i] = scene.Create();
-                entities[i].Add(new Position { X = 1, Y = 1 });
+                entities[i].Add(new Position {X = 1, Y = 1});
             }
 
             // Act
-            for (int i = 0; i < removeCount && i < entityCount; i++)
+            for (int i = 0; (i < removeCount) && (i < entityCount); i++)
             {
                 entities[i].Remove<Position>();
             }
 
             // Assert
-            for (int i = 0; i < removeCount && i < entityCount; i++)
+            for (int i = 0; (i < removeCount) && (i < entityCount); i++)
             {
                 Assert.False(entities[i].Has<Position>());
             }
         }
 
         /// <summary>
-        /// Tests that scene query entities with component returns correct count
+        ///     Tests that scene query entities with component returns correct count
         /// </summary>
         /// <param name="entityCount">The entity count</param>
-        [Theory]
-        [InlineData(10)]
-        [InlineData(50)]
+        [Theory, InlineData(10), InlineData(50)]
         public void Scene_QueryEntitiesWithComponent_ReturnsCorrectCount(int entityCount)
         {
             // Arrange
@@ -178,9 +159,13 @@ namespace Alis.Core.Ecs.Test
             for (int i = 0; i < entityCount; i++)
             {
                 if (i % 2 == 0)
-                    scene.Create(new Position { X = 1, Y = 1 });
+                {
+                    scene.Create(new Position {X = 1, Y = 1});
+                }
                 else
+                {
                     scene.Create();
+                }
             }
 
             // Act
@@ -195,13 +180,10 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that scene mixed components on entities query works
+        ///     Tests that scene mixed components on entities query works
         /// </summary>
         /// <param name="entityCount">The entity count</param>
-        [Theory]
-        [InlineData(5)]
-        [InlineData(10)]
-        [InlineData(20)]
+        [Theory, InlineData(5), InlineData(10), InlineData(20)]
         public void Scene_MixedComponentsOnEntities_QueryWorks(int entityCount)
         {
             // Arrange
@@ -209,15 +191,29 @@ namespace Alis.Core.Ecs.Test
             for (int i = 0; i < entityCount; i++)
             {
                 GameObject go = scene.Create();
-                if (i % 2 == 0) go.Add(new Position { X = 1, Y = 1 });
-                if (i % 3 == 0) go.Add(new Health { Value = 100 });
+                if (i % 2 == 0)
+                {
+                    go.Add(new Position {X = 1, Y = 1});
+                }
+
+                if (i % 3 == 0)
+                {
+                    go.Add(new Health {Value = 100});
+                }
             }
 
             // Act
             int countPosition = 0;
             int countHealth = 0;
-            foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities()) countPosition++;
-            foreach (var go in scene.Query<With<Health>>().EnumerateWithEntities()) countHealth++;
+            foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities())
+            {
+                countPosition++;
+            }
+
+            foreach (var go in scene.Query<With<Health>>().EnumerateWithEntities())
+            {
+                countHealth++;
+            }
 
             // Assert
             Assert.True(countPosition > 0);
@@ -225,14 +221,10 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that scene create with initial components has all components
+        ///     Tests that scene create with initial components has all components
         /// </summary>
         /// <param name="initialComponentCount">The initial component count</param>
-        [Theory]
-        [InlineData(1)]
-        [InlineData(5)]
-        [InlineData(10)]
-        [InlineData(15)]
+        [Theory, InlineData(1), InlineData(5), InlineData(10), InlineData(15)]
         public void Scene_CreateWithInitialComponents_HasAllComponents(int initialComponentCount)
         {
             // Arrange
@@ -243,19 +235,19 @@ namespace Alis.Core.Ecs.Test
             switch (initialComponentCount)
             {
                 case 1:
-                    entity = scene.Create(new Position { X = 1, Y = 1 });
+                    entity = scene.Create(new Position {X = 1, Y = 1});
                     Assert.True(entity.Has<Position>());
                     break;
                 case 2:
-                    entity = scene.Create(new Position { X = 1, Y = 1 }, new Health { Value = 100 });
+                    entity = scene.Create(new Position {X = 1, Y = 1}, new Health {Value = 100});
                     Assert.True(entity.Has<Position>());
                     Assert.True(entity.Has<Health>());
                     break;
                 case 3:
                     entity = scene.Create(
-                        new Position { X = 1, Y = 1 },
-                        new Health { Value = 100 },
-                        new Velocity { X = 1, Y = 1 });
+                        new Position {X = 1, Y = 1},
+                        new Health {Value = 100},
+                        new Velocity {X = 1, Y = 1});
                     Assert.True(entity.Has<Position>());
                     Assert.True(entity.Has<Health>());
                     Assert.True(entity.Has<Velocity>());
@@ -268,13 +260,10 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that scene create and delete cyclic stable
+        ///     Tests that scene create and delete cyclic stable
         /// </summary>
         /// <param name="cycleCount">The cycle count</param>
-        [Theory]
-        [InlineData(10)]
-        [InlineData(50)]
-        [InlineData(100)]
+        [Theory, InlineData(10), InlineData(50), InlineData(100)]
         public void Scene_CreateAndDeleteCyclic_Stable(int cycleCount)
         {
             // Arrange
@@ -291,13 +280,10 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that scene multiple component operations consistent
+        ///     Tests that scene multiple component operations consistent
         /// </summary>
         /// <param name="operationCount">The operation count</param>
-        [Theory]
-        [InlineData(5)]
-        [InlineData(10)]
-        [InlineData(20)]
+        [Theory, InlineData(5), InlineData(10), InlineData(20)]
         public void Scene_MultipleComponentOperations_Consistent(int operationCount)
         {
             // Arrange
@@ -307,7 +293,7 @@ namespace Alis.Core.Ecs.Test
             // Act
             for (int i = 0; i < operationCount; i++)
             {
-                entity.Add(new Position { X = i, Y = i });
+                entity.Add(new Position {X = i, Y = i});
                 Assert.True(entity.Has<Position>());
                 Assert.Equal(i, entity.Get<Position>().X);
                 entity.Remove<Position>();
@@ -319,4 +305,3 @@ namespace Alis.Core.Ecs.Test
         }
     }
 }
-

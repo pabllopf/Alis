@@ -38,15 +38,10 @@ namespace Alis.Core.Ecs.Test.Collections
     public class FastestStackParametrizedTest
     {
         /// <summary>
-        /// Tests that fastest stack push elements count increases
+        ///     Tests that fastest stack push elements count increases
         /// </summary>
         /// <param name="count">The count</param>
-        [Theory]
-        [InlineData(1)]
-        [InlineData(5)]
-        [InlineData(10)]
-        [InlineData(50)]
-        [InlineData(100)]
+        [Theory, InlineData(1), InlineData(5), InlineData(10), InlineData(50), InlineData(100)]
         public void FastestStack_PushElements_CountIncreases(int count)
         {
             // Arrange
@@ -63,14 +58,10 @@ namespace Alis.Core.Ecs.Test.Collections
         }
 
         /// <summary>
-        /// Tests that fastest stack push and pop lifo order
+        ///     Tests that fastest stack push and pop lifo order
         /// </summary>
         /// <param name="count">The count</param>
-        [Theory]
-        [InlineData(1)]
-        [InlineData(5)]
-        [InlineData(10)]
-        [InlineData(50)]
+        [Theory, InlineData(1), InlineData(5), InlineData(10), InlineData(50)]
         public void FastestStack_PushAndPop_LifoOrder(int count)
         {
             // Arrange
@@ -85,23 +76,23 @@ namespace Alis.Core.Ecs.Test.Collections
             {
                 Assert.Equal(i, stack.Pop());
             }
+
             Assert.Equal(0, stack.Count);
         }
 
         /// <summary>
-        /// Tests that fastest stack peek does not remove
+        ///     Tests that fastest stack peek does not remove
         /// </summary>
         /// <param name="count">The count</param>
-        [Theory]
-        [InlineData(10)]
-        [InlineData(50)]
-        [InlineData(100)]
+        [Theory, InlineData(10), InlineData(50), InlineData(100)]
         public void FastestStack_Peek_DoesNotRemove(int count)
         {
             // Arrange
             FastestStack<int> stack = new();
             for (int i = 0; i < count; i++)
+            {
                 stack.Push(i);
+            }
 
             // Act
             int peeked = stack.Peek();
@@ -112,19 +103,18 @@ namespace Alis.Core.Ecs.Test.Collections
         }
 
         /// <summary>
-        /// Tests that fastest stack clear empties stack
+        ///     Tests that fastest stack clear empties stack
         /// </summary>
         /// <param name="initialCount">The initial count</param>
-        [Theory]
-        [InlineData(10)]
-        [InlineData(50)]
-        [InlineData(100)]
+        [Theory, InlineData(10), InlineData(50), InlineData(100)]
         public void FastestStack_Clear_EmptiesStack(int initialCount)
         {
             // Arrange
             FastestStack<int> stack = new();
             for (int i = 0; i < initialCount; i++)
+            {
                 stack.Push(i);
+            }
 
             // Act
             stack.Clear();
@@ -134,19 +124,18 @@ namespace Alis.Core.Ecs.Test.Collections
         }
 
         /// <summary>
-        /// Tests that fastest stack try pop succeeds when not empty
+        ///     Tests that fastest stack try pop succeeds when not empty
         /// </summary>
         /// <param name="count">The count</param>
-        [Theory]
-        [InlineData(1)]
-        [InlineData(5)]
-        [InlineData(10)]
+        [Theory, InlineData(1), InlineData(5), InlineData(10)]
         public void FastestStack_TryPop_SucceedsWhenNotEmpty(int count)
         {
             // Arrange
             FastestStack<int> stack = new();
             for (int i = 0; i < count; i++)
+            {
                 stack.Push(i);
+            }
 
             // Act
             bool success = stack.TryPop(out int result);
@@ -157,7 +146,7 @@ namespace Alis.Core.Ecs.Test.Collections
         }
 
         /// <summary>
-        /// Tests that fastest stack try pop fails when empty
+        ///     Tests that fastest stack try pop fails when empty
         /// </summary>
         [Fact]
         public void FastestStack_TryPop_FailsWhenEmpty()
@@ -173,19 +162,18 @@ namespace Alis.Core.Ecs.Test.Collections
         }
 
         /// <summary>
-        /// Tests that fastest stack try peek succeeds when not empty
+        ///     Tests that fastest stack try peek succeeds when not empty
         /// </summary>
         /// <param name="count">The count</param>
-        [Theory]
-        [InlineData(5)]
-        [InlineData(10)]
-        [InlineData(20)]
+        [Theory, InlineData(5), InlineData(10), InlineData(20)]
         public void FastestStack_TryPeek_SucceedsWhenNotEmpty(int count)
         {
             // Arrange
             FastestStack<int> stack = new();
             for (int i = 0; i < count; i++)
+            {
                 stack.Push(i);
+            }
 
             // Act
             bool success = stack.TryPeek(out int result);
@@ -196,7 +184,7 @@ namespace Alis.Core.Ecs.Test.Collections
         }
 
         /// <summary>
-        /// Tests that fastest stack try peek fails when empty
+        ///     Tests that fastest stack try peek fails when empty
         /// </summary>
         [Fact]
         public void FastestStack_TryPeek_FailsWhenEmpty()
@@ -212,12 +200,10 @@ namespace Alis.Core.Ecs.Test.Collections
         }
 
         /// <summary>
-        /// Tests that fastest stack stress test many push pop
+        ///     Tests that fastest stack stress test many push pop
         /// </summary>
         /// <param name="operationCount">The operation count</param>
-        [Theory]
-        [InlineData(10)]
-        [InlineData(50)]
+        [Theory, InlineData(10), InlineData(50)]
         public void FastestStack_StressTest_ManyPushPop(int operationCount)
         {
             // Arrange
@@ -228,6 +214,7 @@ namespace Alis.Core.Ecs.Test.Collections
             {
                 stack.Push(i);
             }
+
             for (int i = 0; i < operationCount; i++)
             {
                 stack.Pop();
@@ -238,13 +225,10 @@ namespace Alis.Core.Ecs.Test.Collections
         }
 
         /// <summary>
-        /// Tests that fastest stack is empty matches count
+        ///     Tests that fastest stack is empty matches count
         /// </summary>
         /// <param name="count">The count</param>
-        [Theory]
-        [InlineData(10)]
-        [InlineData(50)]
-        [InlineData(100)]
+        [Theory, InlineData(10), InlineData(50), InlineData(100)]
         public void FastestStack_IsEmpty_MatchesCount(int count)
         {
             // Arrange
@@ -256,8 +240,8 @@ namespace Alis.Core.Ecs.Test.Collections
             {
                 stack.Push(i);
             }
+
             Assert.True(stack.Count > 0);
         }
     }
 }
-

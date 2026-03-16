@@ -29,7 +29,6 @@
 
 using System;
 using System.Buffers;
-using System.Numerics;
 using System.Runtime.CompilerServices;
 using Alis.Core.Ecs.Redifinition;
 
@@ -180,7 +179,7 @@ namespace Alis.Core.Ecs.Collections
             }
 
             log2 += 1; // since we rounded down
-            
+
             int index = log2 - 4;
             return (index >= 0) && (index < BucketCount) ? index : -1;
         }

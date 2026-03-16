@@ -37,7 +37,8 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
     ///     The archetype edge key
     /// </summary>
     /// <remarks>
-    ///     Memory layout optimized: 8 bytes total (ArchetypeEdgeType enum 4 bytes + ComponentId 2 bytes + GameObjectType 2 bytes)
+    ///     Memory layout optimized: 8 bytes total (ArchetypeEdgeType enum 4 bytes + ComponentId 2 bytes + GameObjectType 2
+    ///     bytes)
     ///     Field order reordered for optimal packing: enum (4 bytes) -> ComponentId (2 bytes) -> GameObjectType (2 bytes)
     ///     Pack = 1 for minimal memory footprint, fits in 8 bytes (long)
     /// </remarks>
@@ -54,7 +55,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         ///     The component id
         /// </summary>
         internal ComponentId ComponentID;
-        
+
         /// <summary>
         ///     The archetype from
         /// </summary>
@@ -81,7 +82,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         ///     Gets the value of the packed
         /// </summary>
         internal long Packed => Unsafe.As<ArchetypeEdgeKey, long>(ref this);
-        
+
         /// <summary>
         ///     Equalses the other
         /// </summary>

@@ -38,7 +38,7 @@ namespace Alis.Core.Ecs.Test
     public class GameObjectFlagsParametrizedTest
     {
         /// <summary>
-        /// Tests that game object flags new entity is alive
+        ///     Tests that game object flags new entity is alive
         /// </summary>
         [Fact]
         public void GameObjectFlags_NewEntity_IsAlive()
@@ -54,7 +54,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object flags new entity is not null
+        ///     Tests that game object flags new entity is not null
         /// </summary>
         [Fact]
         public void GameObjectFlags_NewEntity_IsNotNull()
@@ -70,7 +70,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object flags deleted entity is not alive
+        ///     Tests that game object flags deleted entity is not alive
         /// </summary>
         [Fact]
         public void GameObjectFlags_DeletedEntity_IsNotAlive()
@@ -85,16 +85,13 @@ namespace Alis.Core.Ecs.Test
             // Assert
             Assert.False(entity.IsAlive);
         }
-        
+
 
         /// <summary>
-        /// Tests that game object flags multiple entities alive all are alive
+        ///     Tests that game object flags multiple entities alive all are alive
         /// </summary>
         /// <param name="entityCount">The entity count</param>
-        [Theory]
-        [InlineData(1)]
-        [InlineData(5)]
-        [InlineData(10)]
+        [Theory, InlineData(1), InlineData(5), InlineData(10)]
         public void GameObjectFlags_MultipleEntitiesAlive_AllAreAlive(int entityCount)
         {
             // Arrange
@@ -116,13 +113,10 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object flags delete multiple entities all are null
+        ///     Tests that game object flags delete multiple entities all are null
         /// </summary>
         /// <param name="entityCount">The entity count</param>
-        [Theory]
-        [InlineData(1)]
-        [InlineData(5)]
-        [InlineData(10)]
+        [Theory, InlineData(1), InlineData(5), InlineData(10)]
         public void GameObjectFlags_DeleteMultipleEntities_AllAreNull(int entityCount)
         {
             // Arrange
@@ -147,7 +141,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object flags null constant is null
+        ///     Tests that game object flags null constant is null
         /// </summary>
         [Fact]
         public void GameObjectFlags_NullConstant_IsNull()
@@ -161,7 +155,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object flags default game object is null
+        ///     Tests that game object flags default game object is null
         /// </summary>
         [Fact]
         public void GameObjectFlags_DefaultGameObject_IsNull()
@@ -174,12 +168,10 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object flags flags consistent after component operations
+        ///     Tests that game object flags flags consistent after component operations
         /// </summary>
         /// <param name="entityCount">The entity count</param>
-        [Theory]
-        [InlineData(10)]
-        [InlineData(50)]
+        [Theory, InlineData(10), InlineData(50)]
         public void GameObjectFlags_FlagsConsistent_AfterComponentOperations(int entityCount)
         {
             // Arrange
@@ -193,7 +185,7 @@ namespace Alis.Core.Ecs.Test
             // Act - Add components
             for (int i = 0; i < entityCount; i++)
             {
-                entities[i].Add(new Position { X = 1, Y = 1 });
+                entities[i].Add(new Position {X = 1, Y = 1});
             }
 
             // Assert
@@ -205,13 +197,10 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object flags delete partially and check works
+        ///     Tests that game object flags delete partially and check works
         /// </summary>
         /// <param name="totalCount">The total count</param>
-        [Theory]
-        [InlineData(1)]
-        [InlineData(5)]
-        [InlineData(10)]
+        [Theory, InlineData(1), InlineData(5), InlineData(10)]
         public void GameObjectFlags_DeletePartiallyAndCheck_Works(int totalCount)
         {
             // Arrange
@@ -233,6 +222,7 @@ namespace Alis.Core.Ecs.Test
             {
                 Assert.False(entities[i].IsAlive);
             }
+
             for (int i = totalCount / 2; i < totalCount; i++)
             {
                 Assert.True(entities[i].IsAlive);
@@ -240,7 +230,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object flags compare deleted with null both not alive
+        ///     Tests that game object flags compare deleted with null both not alive
         /// </summary>
         [Fact]
         public void GameObjectFlags_CompareDeletedWithNull_BothNotAlive()
@@ -259,12 +249,10 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object flags stress test many creates and deletes
+        ///     Tests that game object flags stress test many creates and deletes
         /// </summary>
         /// <param name="count">The count</param>
-        [Theory]
-        [InlineData(10)]
-        [InlineData(50)]
+        [Theory, InlineData(10), InlineData(50)]
         public void GameObjectFlags_StressTest_ManyCreatesAndDeletes(int count)
         {
             // Arrange
@@ -284,4 +272,3 @@ namespace Alis.Core.Ecs.Test
         }
     }
 }
-

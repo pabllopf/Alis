@@ -48,7 +48,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         public GameObjectQueryEnumerator<T1> GetEnumerator() => new GameObjectQueryEnumerator<T1>(query);
     }
-    
+
     /// <summary>
     ///     Proxy type for foreach syntax
     /// </summary>
@@ -65,7 +65,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         public GameObjectQueryEnumerator<T1, T2> GetEnumerator() => new GameObjectQueryEnumerator<T1, T2>(query);
     }
-    
+
     /// <summary>
     ///     Proxy type for foreach syntax
     /// </summary>
@@ -82,7 +82,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         public GameObjectQueryEnumerator<T1, T2, T3> GetEnumerator() => new GameObjectQueryEnumerator<T1, T2, T3>(query);
     }
-    
+
     /// <summary>
     ///     Proxy type for foreach syntax
     /// </summary>
@@ -99,7 +99,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         public GameObjectQueryEnumerator<T1, T2, T3, T4> GetEnumerator() => new GameObjectQueryEnumerator<T1, T2, T3, T4>(query);
     }
-    
+
     /// <summary>
     ///     Proxy type for foreach syntax
     /// </summary>
@@ -116,7 +116,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         public GameObjectQueryEnumerator<T1, T2, T3, T4, T5> GetEnumerator() => new GameObjectQueryEnumerator<T1, T2, T3, T4, T5>(query);
     }
-    
+
     /// <summary>
     ///     Proxy type for foreach syntax
     /// </summary>
@@ -133,7 +133,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         public GameObjectQueryEnumerator<T1, T2, T3, T4, T5, T6> GetEnumerator() => new GameObjectQueryEnumerator<T1, T2, T3, T4, T5, T6>(query);
     }
-    
+
     /// <summary>
     ///     Proxy type for foreach syntax
     /// </summary>
@@ -150,7 +150,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         public GameObjectQueryEnumerator<T1, T2, T3, T4, T5, T6, T7> GetEnumerator() => new GameObjectQueryEnumerator<T1, T2, T3, T4, T5, T6, T7>(query);
     }
-    
+
     /// <summary>
     ///     Proxy type for foreach syntax
     /// </summary>

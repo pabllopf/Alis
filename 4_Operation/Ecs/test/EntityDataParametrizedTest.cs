@@ -39,15 +39,10 @@ namespace Alis.Core.Ecs.Test
     public class EntityDataParametrizedTest
     {
         /// <summary>
-        /// Tests that entity data create many with single component all valid
+        ///     Tests that entity data create many with single component all valid
         /// </summary>
         /// <param name="entityCount">The entity count</param>
-        [Theory]
-        [InlineData(1)]
-        [InlineData(5)]
-        [InlineData(10)]
-        [InlineData(50)]
-        [InlineData(100)]
+        [Theory, InlineData(1), InlineData(5), InlineData(10), InlineData(50), InlineData(100)]
         public void EntityData_CreateManyWithSingleComponent_AllValid(int entityCount)
         {
             // Arrange
@@ -56,24 +51,24 @@ namespace Alis.Core.Ecs.Test
             // Act
             for (int i = 0; i < entityCount; i++)
             {
-                scene.Create(new Position { X = i, Y = i });
+                scene.Create(new Position {X = i, Y = i});
             }
 
             // Assert
             int count = 0;
-            foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities()) count++;
+            foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities())
+            {
+                count++;
+            }
+
             Assert.Equal(entityCount, count);
         }
 
         /// <summary>
-        /// Tests that entity data create with multiple components all accessible
+        ///     Tests that entity data create with multiple components all accessible
         /// </summary>
         /// <param name="entityCount">The entity count</param>
-        [Theory]
-        [InlineData(1)]
-        [InlineData(5)]
-        [InlineData(10)]
-        [InlineData(25)]
+        [Theory, InlineData(1), InlineData(5), InlineData(10), InlineData(25)]
         public void EntityData_CreateWithMultipleComponents_AllAccessible(int entityCount)
         {
             // Arrange
@@ -83,9 +78,9 @@ namespace Alis.Core.Ecs.Test
             for (int i = 0; i < entityCount; i++)
             {
                 scene.Create(
-                    new Position { X = i, Y = i },
-                    new Health { Value = 100 + i },
-                    new Velocity { X = 1 + i, Y = 1 + i }
+                    new Position {X = i, Y = i},
+                    new Health {Value = 100 + i},
+                    new Velocity {X = 1 + i, Y = 1 + i}
                 );
             }
 
@@ -93,10 +88,21 @@ namespace Alis.Core.Ecs.Test
             int posCount = 0;
             int healthCount = 0;
             int velCount = 0;
-            
-            foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities()) posCount++;
-            foreach (var go in scene.Query<With<Health>>().EnumerateWithEntities()) healthCount++;
-            foreach (var go in scene.Query<With<Velocity>>().EnumerateWithEntities()) velCount++;
+
+            foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities())
+            {
+                posCount++;
+            }
+
+            foreach (var go in scene.Query<With<Health>>().EnumerateWithEntities())
+            {
+                healthCount++;
+            }
+
+            foreach (var go in scene.Query<With<Velocity>>().EnumerateWithEntities())
+            {
+                velCount++;
+            }
 
             Assert.Equal(entityCount, posCount);
             Assert.Equal(entityCount, healthCount);
@@ -104,15 +110,11 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that entity data add components progressively all present
+        ///     Tests that entity data add components progressively all present
         /// </summary>
         /// <param name="entityCount">The entity count</param>
         /// <param name="componentsPerEntity">The components per entity</param>
-        [Theory]
-        [InlineData(10, 1)]
-        [InlineData(10, 2)]
-        [InlineData(10, 5)]
-        [InlineData(25, 5)]
+        [Theory, InlineData(10, 1), InlineData(10, 2), InlineData(10, 5), InlineData(25, 5)]
         public void EntityData_AddComponentsProgressively_AllPresent(int entityCount, int componentsPerEntity)
         {
             // Arrange
@@ -127,30 +129,50 @@ namespace Alis.Core.Ecs.Test
 
             for (int i = 0; i < entityCount; i++)
             {
-                if (componentsPerEntity >= 1) entities[i].Add(new Position { X = i, Y = i });
-                if (componentsPerEntity >= 2) entities[i].Add(new Health { Value = 100 });
-                if (componentsPerEntity >= 3) entities[i].Add(new Velocity { X = 1, Y = 1 });
-                if (componentsPerEntity >= 4) entities[i].Add(new Transform { X = 0, Y = 0 });
-                if (componentsPerEntity >= 5) entities[i].Add(new Damage { Value = 10 });
+                if (componentsPerEntity >= 1)
+                {
+                    entities[i].Add(new Position {X = i, Y = i});
+                }
+
+                if (componentsPerEntity >= 2)
+                {
+                    entities[i].Add(new Health {Value = 100});
+                }
+
+                if (componentsPerEntity >= 3)
+                {
+                    entities[i].Add(new Velocity {X = 1, Y = 1});
+                }
+
+                if (componentsPerEntity >= 4)
+                {
+                    entities[i].Add(new Transform {X = 0, Y = 0});
+                }
+
+                if (componentsPerEntity >= 5)
+                {
+                    entities[i].Add(new Damage {Value = 10});
+                }
             }
 
             // Assert
             if (componentsPerEntity >= 1)
             {
                 int count = 0;
-                foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities()) count++;
+                foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities())
+                {
+                    count++;
+                }
+
                 Assert.Equal(entityCount, count);
             }
         }
 
         /// <summary>
-        /// Tests that entity data modify component values changes are reflected
+        ///     Tests that entity data modify component values changes are reflected
         /// </summary>
         /// <param name="entityCount">The entity count</param>
-        [Theory]
-        [InlineData(10)]
-        [InlineData(50)]
-        [InlineData(100)]
+        [Theory, InlineData(10), InlineData(50), InlineData(100)]
         public void EntityData_ModifyComponentValues_ChangesAreReflected(int entityCount)
         {
             // Arrange
@@ -158,7 +180,7 @@ namespace Alis.Core.Ecs.Test
             var entities = new GameObject[entityCount];
             for (int i = 0; i < entityCount; i++)
             {
-                entities[i] = scene.Create(new Position { X = 0, Y = 0 });
+                entities[i] = scene.Create(new Position {X = 0, Y = 0});
             }
 
             // Act
@@ -178,12 +200,10 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that entity data delete and recreate works
+        ///     Tests that entity data delete and recreate works
         /// </summary>
         /// <param name="entityCount">The entity count</param>
-        [Theory]
-        [InlineData(10)]
-        [InlineData(50)]
+        [Theory, InlineData(10), InlineData(50)]
         public void EntityData_DeleteAndRecreate_Works(int entityCount)
         {
             // Arrange
@@ -193,7 +213,7 @@ namespace Alis.Core.Ecs.Test
             var entities = new GameObject[entityCount];
             for (int i = 0; i < entityCount; i++)
             {
-                entities[i] = scene.Create(new Position { X = i, Y = i });
+                entities[i] = scene.Create(new Position {X = i, Y = i});
             }
 
             // Delete half
@@ -205,23 +225,24 @@ namespace Alis.Core.Ecs.Test
             // Recreate
             for (int i = 0; i < entityCount / 2; i++)
             {
-                entities[i] = scene.Create(new Position { X = i + 1000, Y = i + 1000 });
+                entities[i] = scene.Create(new Position {X = i + 1000, Y = i + 1000});
             }
 
             // Assert
             int count = 0;
-            foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities()) count++;
+            foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities())
+            {
+                count++;
+            }
+
             Assert.Equal(entityCount, count);
         }
 
         /// <summary>
-        /// Tests that entity data query different components correct
+        ///     Tests that entity data query different components correct
         /// </summary>
         /// <param name="entityCount">The entity count</param>
-        [Theory]
-        [InlineData(1)]
-        [InlineData(5)]
-        [InlineData(10)]
+        [Theory, InlineData(1), InlineData(5), InlineData(10)]
         public void EntityData_QueryDifferentComponents_Correct(int entityCount)
         {
             // Arrange
@@ -229,16 +250,38 @@ namespace Alis.Core.Ecs.Test
             for (int i = 0; i < entityCount; i++)
             {
                 GameObject go = scene.Create();
-                if (i % 2 == 0) go.Add(new Position { X = 1, Y = 1 });
-                if (i % 3 == 0) go.Add(new Health { Value = 100 });
-                if (i % 5 == 0) go.Add(new Velocity { X = 1, Y = 1 });
+                if (i % 2 == 0)
+                {
+                    go.Add(new Position {X = 1, Y = 1});
+                }
+
+                if (i % 3 == 0)
+                {
+                    go.Add(new Health {Value = 100});
+                }
+
+                if (i % 5 == 0)
+                {
+                    go.Add(new Velocity {X = 1, Y = 1});
+                }
             }
 
             // Act & Assert - Basic queries work
             int posCount = 0, healthCount = 0, velCount = 0;
-            foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities()) posCount++;
-            foreach (var go in scene.Query<With<Health>>().EnumerateWithEntities()) healthCount++;
-            foreach (var go in scene.Query<With<Velocity>>().EnumerateWithEntities()) velCount++;
+            foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities())
+            {
+                posCount++;
+            }
+
+            foreach (var go in scene.Query<With<Health>>().EnumerateWithEntities())
+            {
+                healthCount++;
+            }
+
+            foreach (var go in scene.Query<With<Velocity>>().EnumerateWithEntities())
+            {
+                velCount++;
+            }
 
             Assert.True(posCount >= 0);
             Assert.True(healthCount >= 0);
@@ -246,12 +289,10 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that entity data stress test large operations
+        ///     Tests that entity data stress test large operations
         /// </summary>
         /// <param name="testSize">The test size</param>
-        [Theory]
-        [InlineData(10)]
-        [InlineData(50)]
+        [Theory, InlineData(10), InlineData(50)]
         public void EntityData_StressTest_LargeOperations(int testSize)
         {
             // Arrange
@@ -261,16 +302,19 @@ namespace Alis.Core.Ecs.Test
             for (int i = 0; i < testSize; i++)
             {
                 scene.Create(
-                    new Position { X = i, Y = i },
-                    new Health { Value = 100 }
+                    new Position {X = i, Y = i},
+                    new Health {Value = 100}
                 );
             }
 
             // Assert
             int count = 0;
-            foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities()) count++;
+            foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities())
+            {
+                count++;
+            }
+
             Assert.Equal(testSize, count);
         }
     }
 }
-

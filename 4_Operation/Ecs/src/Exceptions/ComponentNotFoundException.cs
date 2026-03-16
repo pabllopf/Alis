@@ -42,7 +42,7 @@ namespace Alis.Core.Ecs.Exceptions
         /// </summary>
         /// <param name="t">The </param>
         public ComponentNotFoundException(Type t)
-            : base($"Component not found")
+            : base("Component not found")
         {
         }
 

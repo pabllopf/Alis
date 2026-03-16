@@ -34,14 +34,14 @@ using Android.Runtime;
 namespace Alis.Sample.Asteroid.Android
 {
     /// <summary>
-    /// The main activity class
+    ///     The main activity class
     /// </summary>
-    /// <seealso cref="Activity"/>
+    /// <seealso cref="Activity" />
     [Activity(Label = "Alis.Sample.Asteroid.Android", MainLauncher = true, Theme = "@android:style/Theme.NoTitleBar"), Register("crc647600d30597f44ece.MainActivity")]
     public class MainActivity : Activity
     {
         /// <summary>
-        /// Ons the create using the specified saved instance state
+        ///     Ons the create using the specified saved instance state
         /// </summary>
         /// <param name="savedInstanceState">The saved instance state</param>
         protected override void OnCreate(Bundle? savedInstanceState)

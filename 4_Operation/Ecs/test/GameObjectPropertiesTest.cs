@@ -54,7 +54,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new Position { X = 1, Y = 2 });
+            GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
 
             // Assert
             Assert.True(gameObject.IsAlive);
@@ -68,7 +68,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new Position { X = 3, Y = 4 });
+            GameObject gameObject = scene.Create(new Position {X = 3, Y = 4});
 
             // Act
             gameObject.Delete();
@@ -112,10 +112,10 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new Position { X = 0, Y = 0 });
+            GameObject gameObject = scene.Create(new Position {X = 0, Y = 0});
 
             // Act
-            gameObject.Add(new Velocity { X = 1, Y = 1 });
+            gameObject.Add(new Velocity {X = 1, Y = 1});
             gameObject.Remove<Velocity>();
 
             // Assert
@@ -170,7 +170,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new TestComponent { Value = 5 });
+            GameObject gameObject = scene.Create(new TestComponent {Value = 5});
 
             // Assert
             Assert.False(gameObject.IsNull);
@@ -185,7 +185,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new TestComponent { Value = 7 });
+            GameObject gameObject = scene.Create(new TestComponent {Value = 7});
 
             // Act
             gameObject.Delete();
@@ -206,7 +206,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new Position { X = 1, Y = 1 });
+            GameObject gameObject = scene.Create(new Position {X = 1, Y = 1});
 
             // Assert
             Assert.Equal(scene, gameObject.Scene);
@@ -233,7 +233,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new Velocity { X = 2, Y = 3 });
+            GameObject gameObject = scene.Create(new Velocity {X = 2, Y = 3});
 
             // Assert
             Assert.NotNull(gameObject.Scene);
@@ -251,7 +251,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new Position { X = 10, Y = 20 });
+            GameObject gameObject = scene.Create(new Position {X = 10, Y = 20});
 
             // Act
             var types = gameObject.ComponentTypes;
@@ -269,9 +269,9 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(
-                new Position { X = 0, Y = 0 },
-                new Velocity { X = 1, Y = 1 },
-                new Health { Value = 100 });
+                new Position {X = 0, Y = 0},
+                new Velocity {X = 1, Y = 1},
+                new Health {Value = 100});
 
             // Act
             var types = gameObject.ComponentTypes;
@@ -290,10 +290,10 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new Position { X = 5, Y = 5 });
+            GameObject gameObject = scene.Create(new Position {X = 5, Y = 5});
 
             // Act
-            gameObject.Add(new Velocity { X = 1, Y = 1 });
+            gameObject.Add(new Velocity {X = 1, Y = 1});
 
             // Assert
             Assert.Contains(Component<Velocity>.Id, gameObject.ComponentTypes);
@@ -308,8 +308,8 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(
-                new Position { X = 1, Y = 2 },
-                new Velocity { X = 3, Y = 4 });
+                new Position {X = 1, Y = 2},
+                new Velocity {X = 3, Y = 4});
 
             // Act
             gameObject.Remove<Velocity>();
@@ -327,7 +327,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new Position { X = 1, Y = 1 });
+            GameObject gameObject = scene.Create(new Position {X = 1, Y = 1});
             gameObject.Delete();
 
             // Act & Assert
@@ -346,7 +346,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new Position { X = 0, Y = 0 });
+            GameObject gameObject = scene.Create(new Position {X = 0, Y = 0});
 
             GameObjectType expected = GameObject.EntityTypeOf([Component<Position>.Id]);
 
@@ -362,8 +362,8 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject a = scene.Create(new Velocity { X = 1, Y = 1 });
-            GameObject b = scene.Create(new Velocity { X = 2, Y = 2 });
+            GameObject a = scene.Create(new Velocity {X = 1, Y = 1});
+            GameObject b = scene.Create(new Velocity {X = 2, Y = 2});
 
             // Assert
             Assert.Equal(a.Type, b.Type);
@@ -377,8 +377,8 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject a = scene.Create(new Position { X = 1, Y = 1 });
-            GameObject b = scene.Create(new Velocity { X = 1, Y = 1 });
+            GameObject a = scene.Create(new Position {X = 1, Y = 1});
+            GameObject b = scene.Create(new Velocity {X = 1, Y = 1});
 
             // Assert
             Assert.NotEqual(a.Type, b.Type);
@@ -392,11 +392,11 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new Position { X = 0, Y = 0 });
+            GameObject gameObject = scene.Create(new Position {X = 0, Y = 0});
             GameObjectType typeBefore = gameObject.Type;
 
             // Act
-            gameObject.Add(new Velocity { X = 1, Y = 1 });
+            gameObject.Add(new Velocity {X = 1, Y = 1});
 
             // Assert
             Assert.NotEqual(typeBefore, gameObject.Type);
@@ -411,8 +411,8 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(
-                new Position { X = 0, Y = 0 },
-                new Velocity { X = 1, Y = 1 });
+                new Position {X = 0, Y = 0},
+                new Velocity {X = 1, Y = 1});
 
             GameObjectType typeBefore = gameObject.Type;
 
@@ -431,7 +431,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new Position { X = 1, Y = 1 });
+            GameObject gameObject = scene.Create(new Position {X = 1, Y = 1});
             gameObject.Delete();
 
             // Act & Assert
@@ -439,4 +439,3 @@ namespace Alis.Core.Ecs.Test
         }
     }
 }
-

@@ -63,7 +63,7 @@ namespace Alis.Core.Ecs.Kernel
         /// </summary>
         public readonly FastImmutableArray<ComponentId> Types =>
             Archetypes.Archetype.ArchetypeTable[RawIndex].ComponentTypes;
-        
+
         /// <summary>
         ///     Checks if this <see cref="GameObjectType" /> has a component represented by a <see cref="ComponentId" />
         /// </summary>
@@ -109,7 +109,7 @@ namespace Alis.Core.Ecs.Kernel
         /// <param name="right">The second EntityType</param>
         /// <returns><see langword="true" /> if they represent different IDs, <see langword="false" /> otherwise</returns>
         public static bool operator !=(GameObjectType left, GameObjectType right) => !left.Equals(right);
-        
+
         /// <summary>
         ///     Archetypes the context
         /// </summary>

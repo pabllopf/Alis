@@ -38,7 +38,7 @@ namespace Alis.Core.Ecs.Test
     public class GameObjectComprehensiveTest
     {
         /// <summary>
-        /// Tests that game object null static is null
+        ///     Tests that game object null static is null
         /// </summary>
         [Fact]
         public void GameObject_NullStatic_IsNull()
@@ -52,7 +52,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object create sets correct properties
+        ///     Tests that game object create sets correct properties
         /// </summary>
         [Fact]
         public void GameObject_Create_SetsCorrectProperties()
@@ -70,14 +70,14 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object create with component stores component
+        ///     Tests that game object create with component stores component
         /// </summary>
         [Fact]
         public void GameObject_CreateWithComponent_StoresComponent()
         {
             // Arrange
             using Scene scene = new Scene();
-            Position pos = new Position { X = 10, Y = 20 };
+            Position pos = new Position {X = 10, Y = 20};
 
             // Act
             GameObject go = scene.Create(pos);
@@ -89,13 +89,10 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object create multiple entities all are independent
+        ///     Tests that game object create multiple entities all are independent
         /// </summary>
         /// <param name="count">The count</param>
-        [Theory]
-        [InlineData(1)]
-        [InlineData(5)]
-        [InlineData(10)]
+        [Theory, InlineData(1), InlineData(5), InlineData(10)]
         public void GameObject_CreateMultipleEntities_AllAreIndependent(int count)
         {
             // Arrange
@@ -119,9 +116,9 @@ namespace Alis.Core.Ecs.Test
                 }
             }
         }
-        
+
         /// <summary>
-        /// Tests that game object add component component exists
+        ///     Tests that game object add component component exists
         /// </summary>
         [Fact]
         public void GameObject_AddComponent_ComponentExists()
@@ -129,7 +126,7 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             using Scene scene = new Scene();
             GameObject go = scene.Create();
-            Position pos = new Position { X = 5, Y = 15 };
+            Position pos = new Position {X = 5, Y = 15};
 
             // Act
             go.Add(pos);
@@ -140,7 +137,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object add multiple components all exist
+        ///     Tests that game object add multiple components all exist
         /// </summary>
         [Fact]
         public void GameObject_AddMultipleComponents_AllExist()
@@ -150,9 +147,9 @@ namespace Alis.Core.Ecs.Test
             GameObject go = scene.Create();
 
             // Act
-            go.Add(new Position { X = 1, Y = 2 });
-            go.Add(new Health { Value = 100 });
-            go.Add(new Velocity { X = 10, Y = 20 });
+            go.Add(new Position {X = 1, Y = 2});
+            go.Add(new Health {Value = 100});
+            go.Add(new Velocity {X = 10, Y = 20});
 
             // Assert
             Assert.True(go.Has<Position>());
@@ -161,14 +158,14 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object remove component component no longer exists
+        ///     Tests that game object remove component component no longer exists
         /// </summary>
         [Fact]
         public void GameObject_RemoveComponent_ComponentNoLongerExists()
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject go = scene.Create(new Position { X = 1, Y = 2 });
+            GameObject go = scene.Create(new Position {X = 1, Y = 2});
 
             // Act
             go.Remove<Position>();
@@ -178,14 +175,14 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object get component returns correct value
+        ///     Tests that game object get component returns correct value
         /// </summary>
         [Fact]
         public void GameObject_GetComponent_ReturnsCorrectValue()
         {
             // Arrange
             using Scene scene = new Scene();
-            Position expected = new Position { X = 42, Y = 84 };
+            Position expected = new Position {X = 42, Y = 84};
             GameObject go = scene.Create(expected);
 
             // Act
@@ -197,14 +194,14 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object modify component via ref changes are persisted
+        ///     Tests that game object modify component via ref changes are persisted
         /// </summary>
         [Fact]
         public void GameObject_ModifyComponentViaRef_ChangesArePersisted()
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject go = scene.Create(new Position { X = 10, Y = 20 });
+            GameObject go = scene.Create(new Position {X = 10, Y = 20});
 
             // Act
             ref Position pos = ref go.Get<Position>();
@@ -217,14 +214,10 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object delete with various component counts succeeds
+        ///     Tests that game object delete with various component counts succeeds
         /// </summary>
         /// <param name="componentCount">The component count</param>
-        [Theory]
-        [InlineData(0)]
-        [InlineData(1)]
-        [InlineData(5)]
-        [InlineData(10)]
+        [Theory, InlineData(0), InlineData(1), InlineData(5), InlineData(10)]
         public void GameObject_DeleteWithVariousComponentCounts_Succeeds(int componentCount)
         {
             // Arrange
@@ -232,16 +225,55 @@ namespace Alis.Core.Ecs.Test
             GameObject go = scene.Create();
 
             // Act
-            if (componentCount >= 1) go.Add(new Position { X = 1, Y = 1 });
-            if (componentCount >= 2) go.Add(new Health { Value = 50 });
-            if (componentCount >= 3) go.Add(new Velocity { X = 1, Y = 1 });
-            if (componentCount >= 4) go.Add(new Transform { X = 0, Y = 0 });
-            if (componentCount >= 5) go.Add(new Damage { Value = 10 });
-            if (componentCount >= 6) go.Add(new AnotherComponent { Data = 42 });
-            if (componentCount >= 7) go.Add(new AnotherComponent2 { Data = 100 });
-            if (componentCount >= 8) go.Add(new Armor { Value = 25 });
-            if (componentCount >= 9) go.Add(new TagComponent());
-            if (componentCount >= 10) go.Add(new TestComponent { Value = 999 });
+            if (componentCount >= 1)
+            {
+                go.Add(new Position {X = 1, Y = 1});
+            }
+
+            if (componentCount >= 2)
+            {
+                go.Add(new Health {Value = 50});
+            }
+
+            if (componentCount >= 3)
+            {
+                go.Add(new Velocity {X = 1, Y = 1});
+            }
+
+            if (componentCount >= 4)
+            {
+                go.Add(new Transform {X = 0, Y = 0});
+            }
+
+            if (componentCount >= 5)
+            {
+                go.Add(new Damage {Value = 10});
+            }
+
+            if (componentCount >= 6)
+            {
+                go.Add(new AnotherComponent {Data = 42});
+            }
+
+            if (componentCount >= 7)
+            {
+                go.Add(new AnotherComponent2 {Data = 100});
+            }
+
+            if (componentCount >= 8)
+            {
+                go.Add(new Armor {Value = 25});
+            }
+
+            if (componentCount >= 9)
+            {
+                go.Add(new TagComponent());
+            }
+
+            if (componentCount >= 10)
+            {
+                go.Add(new TestComponent {Value = 999});
+            }
 
             // Assert - should not throw
             Assert.True(go.IsAlive);
@@ -250,7 +282,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object equals operator compares two entities
+        ///     Tests that game object equals operator compares two entities
         /// </summary>
         [Fact]
         public void GameObject_EqualsOperator_ComparesTwoEntities()
@@ -267,7 +299,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object not equals operator differentiate entities
+        ///     Tests that game object not equals operator differentiate entities
         /// </summary>
         [Fact]
         public void GameObject_NotEqualsOperator_DifferentiateEntities()
@@ -283,7 +315,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object get hash code consistent for same entity
+        ///     Tests that game object get hash code consistent for same entity
         /// </summary>
         [Fact]
         public void GameObject_GetHashCode_ConsistentForSameEntity()
@@ -301,7 +333,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object to string returns valid string
+        ///     Tests that game object to string returns valid string
         /// </summary>
         [Fact]
         public void GameObject_ToString_ReturnsValidString()
@@ -319,23 +351,19 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object create multiple with same components independent data
+        ///     Tests that game object create multiple with same components independent data
         /// </summary>
         /// <param name="first">The first</param>
         /// <param name="second">The second</param>
-        [Theory]
-        [InlineData(1, 1)]
-        [InlineData(2, 2)]
-        [InlineData(5, 5)]
-        [InlineData(10, 10)]
+        [Theory, InlineData(1, 1), InlineData(2, 2), InlineData(5, 5), InlineData(10, 10)]
         public void GameObject_CreateMultipleWithSameComponents_IndependentData(int first, int second)
         {
             // Arrange
             using Scene scene = new Scene();
 
             // Act
-            GameObject go1 = scene.Create(new Position { X = first, Y = first });
-            GameObject go2 = scene.Create(new Position { X = second, Y = second });
+            GameObject go1 = scene.Create(new Position {X = first, Y = first});
+            GameObject go2 = scene.Create(new Position {X = second, Y = second});
 
             // Assert
             Assert.Equal(first, go1.Get<Position>().X);
@@ -343,14 +371,14 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object remove all components entity still alive
+        ///     Tests that game object remove all components entity still alive
         /// </summary>
         [Fact]
         public void GameObject_RemoveAllComponents_EntityStillAlive()
         {
             // Arrange
             using Scene scene = new Scene();
-            GameObject go = scene.Create(new Position { X = 1, Y = 1 }, new Health { Value = 100 });
+            GameObject go = scene.Create(new Position {X = 1, Y = 1}, new Health {Value = 100});
 
             // Act
             go.Remove<Position>();
@@ -362,7 +390,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that game object get component count reflects added components
+        ///     Tests that game object get component count reflects added components
         /// </summary>
         [Fact]
         public void GameObject_GetComponentCount_ReflectsAddedComponents()
@@ -372,8 +400,8 @@ namespace Alis.Core.Ecs.Test
             GameObject go = scene.Create();
 
             // Act
-            go.Add(new Position { X = 1, Y = 1 });
-            go.Add(new Health { Value = 50 });
+            go.Add(new Position {X = 1, Y = 1});
+            go.Add(new Health {Value = 50});
 
             // Assert - GetComponentCount may be available
             Assert.True(go.Has<Position>());
@@ -381,4 +409,3 @@ namespace Alis.Core.Ecs.Test
         }
     }
 }
-

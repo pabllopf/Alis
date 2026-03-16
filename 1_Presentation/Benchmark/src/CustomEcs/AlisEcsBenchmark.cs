@@ -68,13 +68,13 @@ namespace Alis.Benchmark.CustomEcs
         }
 
         /// <summary>
-        /// Disposes the alis
+        ///     Disposes the alis
         /// </summary>
         private void DisposeAlis()
         {
             Scene?.Dispose();
             Scene = null;
-            Query = default;
+            Query = default(Query);
         }
 
         /// <summary>

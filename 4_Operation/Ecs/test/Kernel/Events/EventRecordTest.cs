@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Reflection;
 using Alis.Core.Ecs.Kernel.Events;
 using Xunit;
@@ -40,7 +39,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
     public class EventRecordTest
     {
         /// <summary>
-        /// Tests that initalize when exists is false creates and initializes fields
+        ///     Tests that initalize when exists is false creates and initializes fields
         /// </summary>
         [Fact]
         public void Initalize_WhenExistsIsFalse_CreatesAndInitializesFields()
@@ -72,7 +71,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         }
 
         /// <summary>
-        /// Tests that initalize when exists is true leaves record reference unchanged
+        ///     Tests that initalize when exists is true leaves record reference unchanged
         /// </summary>
         [Fact]
         public void Initalize_WhenExistsIsTrue_LeavesRecordReferenceUnchanged()
@@ -86,7 +85,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         }
 
         /// <summary>
-        /// Tests that initalize when exists is true and record is null keeps null
+        ///     Tests that initalize when exists is true and record is null keeps null
         /// </summary>
         [Fact]
         public void Initalize_WhenExistsIsTrueAndRecordIsNull_KeepsNull()
@@ -99,7 +98,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         }
 
         /// <summary>
-        /// Tests that initalize can be called twice second call with exists true preserves initialized fields
+        ///     Tests that initalize can be called twice second call with exists true preserves initialized fields
         /// </summary>
         [Fact]
         public void Initalize_CanBeCalledTwice_SecondCallWithExistsTruePreservesInitializedFields()
@@ -125,4 +124,3 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         }
     }
 }
-

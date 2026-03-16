@@ -87,10 +87,10 @@ namespace Alis.Core.Ecs
         /// </summary>
         public GameObjectRefTuple<T1> Current
             => new GameObjectRefTuple<T1>
-        {
-            GameObject = _entityIds[_componentIndex].ToEntity(_scene),
-            Item1 = new Ref<T1>(_currentSpan1, _componentIndex)
-        };
+            {
+                GameObject = _entityIds[_componentIndex].ToEntity(_scene),
+                Item1 = new Ref<T1>(_currentSpan1, _componentIndex)
+            };
 
         /// <summary>
         ///     Indicates to the scene that this enumeration is finished; the scene might allow structual changes after this.
@@ -131,7 +131,7 @@ namespace Alis.Core.Ecs
             return true;
         }
     }
-    
+
     /// <summary>
     ///     The gameObject query enumerator
     /// </summary>
@@ -195,11 +195,11 @@ namespace Alis.Core.Ecs
         /// </summary>
         public GameObjectRefTuple<T1, T2> Current
             => new GameObjectRefTuple<T1, T2>
-        {
-            GameObject = _entityIds[_componentIndex].ToEntity(_scene),
-            Item1 = new Ref<T1>(_currentSpan1, _componentIndex),
-            Item2 = new Ref<T2>(_currentSpan2, _componentIndex)
-        };
+            {
+                GameObject = _entityIds[_componentIndex].ToEntity(_scene),
+                Item1 = new Ref<T1>(_currentSpan1, _componentIndex),
+                Item2 = new Ref<T2>(_currentSpan2, _componentIndex)
+            };
 
         /// <summary>
         ///     Indicates to the scene that this enumeration is finished; the scene might allow structual changes after this.
@@ -241,8 +241,8 @@ namespace Alis.Core.Ecs
             return true;
         }
     }
-    
-       /// <summary>
+
+    /// <summary>
     ///     The gameObject query enumerator
     /// </summary>
     public ref struct GameObjectQueryEnumerator<T1, T2, T3>
@@ -304,12 +304,12 @@ namespace Alis.Core.Ecs
         /// </summary>
         public GameObjectRefTuple<T1, T2, T3> Current
             => new GameObjectRefTuple<T1, T2, T3>
-        {
-            GameObject = _entityIds[_componentIndex].ToEntity(_scene),
-            Item1 = new Ref<T1>(_currentSpan1, _componentIndex),
-            Item2 = new Ref<T2>(_currentSpan2, _componentIndex),
-            Item3 = new Ref<T3>(_currentSpan3, _componentIndex)
-        };
+            {
+                GameObject = _entityIds[_componentIndex].ToEntity(_scene),
+                Item1 = new Ref<T1>(_currentSpan1, _componentIndex),
+                Item2 = new Ref<T2>(_currentSpan2, _componentIndex),
+                Item3 = new Ref<T3>(_currentSpan3, _componentIndex)
+            };
 
         /// <summary>
         ///     Indicates to the scene that this enumeration is finished; the scene might allow structual changes after this.
@@ -352,8 +352,8 @@ namespace Alis.Core.Ecs
             return true;
         }
     }
-       
-        /// <summary>
+
+    /// <summary>
     ///     The gameObject query enumerator
     /// </summary>
     public ref struct GameObjectQueryEnumerator<T1, T2, T3, T4>
@@ -420,13 +420,13 @@ namespace Alis.Core.Ecs
         /// </summary>
         public GameObjectRefTuple<T1, T2, T3, T4> Current
             => new GameObjectRefTuple<T1, T2, T3, T4>
-        {
-            GameObject = _entityIds[_componentIndex].ToEntity(_scene),
-            Item1 = new Ref<T1>(_currentSpan1, _componentIndex),
-            Item2 = new Ref<T2>(_currentSpan2, _componentIndex),
-            Item3 = new Ref<T3>(_currentSpan3, _componentIndex),
-            Item4 = new Ref<T4>(_currentSpan4, _componentIndex)
-        };
+            {
+                GameObject = _entityIds[_componentIndex].ToEntity(_scene),
+                Item1 = new Ref<T1>(_currentSpan1, _componentIndex),
+                Item2 = new Ref<T2>(_currentSpan2, _componentIndex),
+                Item3 = new Ref<T3>(_currentSpan3, _componentIndex),
+                Item4 = new Ref<T4>(_currentSpan4, _componentIndex)
+            };
 
         /// <summary>
         ///     Indicates to the scene that this enumeration is finished; the scene might allow structual changes after this.
@@ -470,8 +470,8 @@ namespace Alis.Core.Ecs
             return true;
         }
     }
-        
-        /// <summary>
+
+    /// <summary>
     ///     The gameObject query enumerator
     /// </summary>
     public ref struct GameObjectQueryEnumerator<T1, T2, T3, T4, T5>
@@ -543,14 +543,14 @@ namespace Alis.Core.Ecs
         /// </summary>
         public GameObjectRefTuple<T1, T2, T3, T4, T5> Current
             => new GameObjectRefTuple<T1, T2, T3, T4, T5>
-        {
-            GameObject = _entityIds[_componentIndex].ToEntity(_scene),
-            Item1 = new Ref<T1>(_currentSpan1, _componentIndex),
-            Item2 = new Ref<T2>(_currentSpan2, _componentIndex),
-            Item3 = new Ref<T3>(_currentSpan3, _componentIndex),
-            Item4 = new Ref<T4>(_currentSpan4, _componentIndex),
-            Item5 = new Ref<T5>(_currentSpan5, _componentIndex)
-        };
+            {
+                GameObject = _entityIds[_componentIndex].ToEntity(_scene),
+                Item1 = new Ref<T1>(_currentSpan1, _componentIndex),
+                Item2 = new Ref<T2>(_currentSpan2, _componentIndex),
+                Item3 = new Ref<T3>(_currentSpan3, _componentIndex),
+                Item4 = new Ref<T4>(_currentSpan4, _componentIndex),
+                Item5 = new Ref<T5>(_currentSpan5, _componentIndex)
+            };
 
         /// <summary>
         ///     Indicates to the scene that this enumeration is finished; the scene might allow structual changes after this.
@@ -595,8 +595,8 @@ namespace Alis.Core.Ecs
             return true;
         }
     }
-        
-        /// <summary>
+
+    /// <summary>
     ///     The gameObject query enumerator
     /// </summary>
     public ref struct GameObjectQueryEnumerator<T1, T2, T3, T4, T5, T6>
@@ -673,15 +673,15 @@ namespace Alis.Core.Ecs
         /// </summary>
         public GameObjectRefTuple<T1, T2, T3, T4, T5, T6> Current
             => new GameObjectRefTuple<T1, T2, T3, T4, T5, T6>
-        {
-            GameObject = _entityIds[_componentIndex].ToEntity(_scene),
-            Item1 = new Ref<T1>(_currentSpan1, _componentIndex),
-            Item2 = new Ref<T2>(_currentSpan2, _componentIndex),
-            Item3 = new Ref<T3>(_currentSpan3, _componentIndex),
-            Item4 = new Ref<T4>(_currentSpan4, _componentIndex),
-            Item5 = new Ref<T5>(_currentSpan5, _componentIndex),
-            Item6 = new Ref<T6>(_currentSpan6, _componentIndex)
-        };
+            {
+                GameObject = _entityIds[_componentIndex].ToEntity(_scene),
+                Item1 = new Ref<T1>(_currentSpan1, _componentIndex),
+                Item2 = new Ref<T2>(_currentSpan2, _componentIndex),
+                Item3 = new Ref<T3>(_currentSpan3, _componentIndex),
+                Item4 = new Ref<T4>(_currentSpan4, _componentIndex),
+                Item5 = new Ref<T5>(_currentSpan5, _componentIndex),
+                Item6 = new Ref<T6>(_currentSpan6, _componentIndex)
+            };
 
         /// <summary>
         ///     Indicates to the scene that this enumeration is finished; the scene might allow structual changes after this.
@@ -727,8 +727,8 @@ namespace Alis.Core.Ecs
             return true;
         }
     }
-        
-          /// <summary>
+
+    /// <summary>
     ///     The gameObject query enumerator
     /// </summary>
     public ref struct GameObjectQueryEnumerator<T1, T2, T3, T4, T5, T6, T7>
@@ -810,16 +810,16 @@ namespace Alis.Core.Ecs
         /// </summary>
         public GameObjectRefTuple<T1, T2, T3, T4, T5, T6, T7> Current
             => new GameObjectRefTuple<T1, T2, T3, T4, T5, T6, T7>
-        {
-            GameObject = _entityIds[_componentIndex].ToEntity(_scene),
-            Item1 = new Ref<T1>(_currentSpan1, _componentIndex),
-            Item2 = new Ref<T2>(_currentSpan2, _componentIndex),
-            Item3 = new Ref<T3>(_currentSpan3, _componentIndex),
-            Item4 = new Ref<T4>(_currentSpan4, _componentIndex),
-            Item5 = new Ref<T5>(_currentSpan5, _componentIndex),
-            Item6 = new Ref<T6>(_currentSpan6, _componentIndex),
-            Item7 = new Ref<T7>(_currentSpan7, _componentIndex)
-        };
+            {
+                GameObject = _entityIds[_componentIndex].ToEntity(_scene),
+                Item1 = new Ref<T1>(_currentSpan1, _componentIndex),
+                Item2 = new Ref<T2>(_currentSpan2, _componentIndex),
+                Item3 = new Ref<T3>(_currentSpan3, _componentIndex),
+                Item4 = new Ref<T4>(_currentSpan4, _componentIndex),
+                Item5 = new Ref<T5>(_currentSpan5, _componentIndex),
+                Item6 = new Ref<T6>(_currentSpan6, _componentIndex),
+                Item7 = new Ref<T7>(_currentSpan7, _componentIndex)
+            };
 
         /// <summary>
         ///     Indicates to the scene that this enumeration is finished; the scene might allow structual changes after this.
@@ -866,7 +866,7 @@ namespace Alis.Core.Ecs
             return true;
         }
     }
-    
+
     /// <summary>
     ///     The gameObject query enumerator
     /// </summary>
@@ -960,17 +960,17 @@ namespace Alis.Core.Ecs
         /// </summary>
         public GameObjectRefTuple<T1, T2, T3, T4, T5, T6, T7, T8> Current
             => new GameObjectRefTuple<T1, T2, T3, T4, T5, T6, T7, T8>
-        {
-            GameObject = _entityIds[_componentIndex].ToEntity(_scene),
-            Item1 = new Ref<T1>(_currentSpan1, _componentIndex),
-            Item2 = new Ref<T2>(_currentSpan2, _componentIndex),
-            Item3 = new Ref<T3>(_currentSpan3, _componentIndex),
-            Item4 = new Ref<T4>(_currentSpan4, _componentIndex),
-            Item5 = new Ref<T5>(_currentSpan5, _componentIndex),
-            Item6 = new Ref<T6>(_currentSpan6, _componentIndex),
-            Item7 = new Ref<T7>(_currentSpan7, _componentIndex),
-            Item8 = new Ref<T8>(_currentSpan8, _componentIndex)
-        };
+            {
+                GameObject = _entityIds[_componentIndex].ToEntity(_scene),
+                Item1 = new Ref<T1>(_currentSpan1, _componentIndex),
+                Item2 = new Ref<T2>(_currentSpan2, _componentIndex),
+                Item3 = new Ref<T3>(_currentSpan3, _componentIndex),
+                Item4 = new Ref<T4>(_currentSpan4, _componentIndex),
+                Item5 = new Ref<T5>(_currentSpan5, _componentIndex),
+                Item6 = new Ref<T6>(_currentSpan6, _componentIndex),
+                Item7 = new Ref<T7>(_currentSpan7, _componentIndex),
+                Item8 = new Ref<T8>(_currentSpan8, _componentIndex)
+            };
 
         /// <summary>
         ///     Indicates to the scene that this enumeration is finished; the scene might allow structual changes after this.

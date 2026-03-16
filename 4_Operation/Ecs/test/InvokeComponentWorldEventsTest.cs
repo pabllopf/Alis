@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:InvokeComponentWorldEventsTest.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System.Collections.Generic;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Kernel.Events;
@@ -7,12 +36,12 @@ using Xunit;
 namespace Alis.Core.Ecs.Test
 {
     /// <summary>
-    /// Unit tests for all GameObject.InvokeComponentWorldEvents overloads (arity 1..8).
+    ///     Unit tests for all GameObject.InvokeComponentWorldEvents overloads (arity 1..8).
     /// </summary>
     public class InvokeComponentWorldEventsTest
     {
         /// <summary>
-        /// Tests that arity 1 invokes single component id for same entity
+        ///     Tests that arity 1 invokes single component id for same entity
         /// </summary>
         [Fact]
         public void Arity1_InvokesSingleComponentIdForSameEntity()
@@ -38,7 +67,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 2 invokes both component ids in order
+        ///     Tests that arity 2 invokes both component ids in order
         /// </summary>
         [Fact]
         public void Arity2_InvokesBothComponentIdsInOrder()
@@ -65,7 +94,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 3 invokes three component ids in order
+        ///     Tests that arity 3 invokes three component ids in order
         /// </summary>
         [Fact]
         public void Arity3_InvokesThreeComponentIdsInOrder()
@@ -86,7 +115,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 4 invokes four component ids in order
+        ///     Tests that arity 4 invokes four component ids in order
         /// </summary>
         [Fact]
         public void Arity4_InvokesFourComponentIdsInOrder()
@@ -108,7 +137,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 5 invokes five component ids in order
+        ///     Tests that arity 5 invokes five component ids in order
         /// </summary>
         [Fact]
         public void Arity5_InvokesFiveComponentIdsInOrder()
@@ -133,7 +162,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 6 invokes six component ids in order
+        ///     Tests that arity 6 invokes six component ids in order
         /// </summary>
         [Fact]
         public void Arity6_InvokesSixComponentIdsInOrder()
@@ -159,7 +188,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 7 invokes seven component ids in order
+        ///     Tests that arity 7 invokes seven component ids in order
         /// </summary>
         [Fact]
         public void Arity7_InvokesSevenComponentIdsInOrder()
@@ -186,7 +215,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 8 invokes eight component ids in order
+        ///     Tests that arity 8 invokes eight component ids in order
         /// </summary>
         [Fact]
         public void Arity8_InvokesEightComponentIdsInOrder()
@@ -220,4 +249,3 @@ namespace Alis.Core.Ecs.Test
         }
     }
 }
-

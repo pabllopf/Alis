@@ -27,9 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Ecs.Test.Models;
-using System.Collections.Generic;
 using Xunit;
 
 namespace Alis.Core.Ecs.Test.Updating.Runners
@@ -40,7 +40,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
     public class EntityUpdateTest
     {
         /// <summary>
-        /// Tests that entity update constructor creates instance
+        ///     Tests that entity update constructor creates instance
         /// </summary>
         [Fact]
         public void EntityUpdate_Constructor_CreatesInstance()
@@ -53,7 +53,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         }
 
         /// <summary>
-        /// Tests that entity update scene update invokes component update and mutates all args
+        ///     Tests that entity update scene update invokes component update and mutates all args
         /// </summary>
         [Fact]
         public void EntityUpdate_SceneUpdate_InvokesComponentUpdateAndMutatesAllArgs()
@@ -79,7 +79,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         }
 
         /// <summary>
-        /// Tests that entity update scene update two frames accumulates changes
+        ///     Tests that entity update scene update two frames accumulates changes
         /// </summary>
         [Fact]
         public void EntityUpdate_SceneUpdate_TwoFrames_AccumulatesChanges()
@@ -106,7 +106,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         }
 
         /// <summary>
-        /// Tests that entity update scene update updates all matching entities
+        ///     Tests that entity update scene update updates all matching entities
         /// </summary>
         [Fact]
         public void EntityUpdate_SceneUpdate_UpdatesAllMatchingEntities()
@@ -138,7 +138,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         }
 
         /// <summary>
-        /// Tests that update runner wires the correct gameObject into each update invocation.
+        ///     Tests that update runner wires the correct gameObject into each update invocation.
         /// </summary>
         [Fact]
         public void EntityUpdate_SceneUpdate_PassesCorrectEntityIdentityToEachComponent()
@@ -170,7 +170,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         }
 
         /// <summary>
-        /// Tests that deferred creations are processed through the subset range and existing entities are not re-updated.
+        ///     Tests that deferred creations are processed through the subset range and existing entities are not re-updated.
         /// </summary>
         [Fact]
         public void EntityUpdate_SceneUpdate_DeferredCreation_UpdatesOnlyDeferredRange()
@@ -220,7 +220,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         }
 
         /// <summary>
-        /// Tests deferred path edge case where no entity is created and subset length is effectively zero.
+        ///     Tests deferred path edge case where no entity is created and subset length is effectively zero.
         /// </summary>
         [Fact]
         public void EntityUpdate_SceneUpdate_NoDeferredCreation_DoesNotPerformExtraCalls()
@@ -246,17 +246,17 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         }
 
         /// <summary>
-        /// The entity update component
+        ///     The entity update component
         /// </summary>
         internal struct EntityUpdate5Component : IOnUpdate<Position, Velocity, Health, Armor, Damage>
         {
             /// <summary>
-            /// The call count
+            ///     The call count
             /// </summary>
             public int CallCount;
 
             /// <summary>
-            /// Updates the self
+            ///     Updates the self
             /// </summary>
             /// <param name="self">The self</param>
             /// <param name="arg1">The arg</param>
@@ -277,21 +277,22 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         }
 
         /// <summary>
-        /// Update component used to validate that SetEntity wires the right entity in the loop.
+        ///     Update component used to validate that SetEntity wires the right entity in the loop.
         /// </summary>
         internal struct EntityUpdate5IdentityComponent : IOnUpdate<Position, Velocity, Health, Armor, Damage>
         {
             /// <summary>
-            /// The call count
+            ///     The call count
             /// </summary>
             public int CallCount;
+
             /// <summary>
-            /// The last seen entity id
+            ///     The last seen entity id
             /// </summary>
             public int LastSeenEntityId;
 
             /// <summary>
-            /// Updates the self
+            ///     Updates the self
             /// </summary>
             /// <param name="self">The self</param>
             /// <param name="arg1">The arg</param>
@@ -308,34 +309,37 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         }
 
         /// <summary>
-        /// Update component that can spawn deferred entities to force execution of subset range updates.
+        ///     Update component that can spawn deferred entities to force execution of subset range updates.
         /// </summary>
         internal struct EntityUpdate5SpawnerComponent : IOnUpdate<Position, Velocity, Health, Armor, Damage>
         {
             /// <summary>
-            /// The total calls
+            ///     The total calls
             /// </summary>
             public static int TotalCalls;
+
             /// <summary>
-            /// The total spawned
+            ///     The total spawned
             /// </summary>
             public static int TotalSpawned;
+
             /// <summary>
-            /// The spawned entities
+            ///     The spawned entities
             /// </summary>
             public static readonly List<GameObject> SpawnedEntities = [];
 
             /// <summary>
-            /// The call count
+            ///     The call count
             /// </summary>
             public int CallCount;
+
             /// <summary>
-            /// The spawn count
+            ///     The spawn count
             /// </summary>
             public int SpawnCount;
 
             /// <summary>
-            /// Resets the tracking
+            ///     Resets the tracking
             /// </summary>
             public static void ResetTracking()
             {
@@ -345,7 +349,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             }
 
             /// <summary>
-            /// Updates the self
+            ///     Updates the self
             /// </summary>
             /// <param name="self">The self</param>
             /// <param name="arg1">The arg</param>
@@ -389,4 +393,3 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         }
     }
 }
-

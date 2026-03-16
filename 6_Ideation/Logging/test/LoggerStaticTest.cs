@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Logging.Abstractions;
 using Alis.Core.Aspect.Logging.Outputs;
@@ -198,7 +199,7 @@ namespace Alis.Core.Aspect.Logging.Test
             string exceptionMessage = "Test exception message";
 
             // Act & Assert
-            System.Exception thrownException = Assert.Throws<System.Exception>(() => Logger.Exception(exceptionMessage));
+            Exception thrownException = Assert.Throws<Exception>(() => Logger.Exception(exceptionMessage));
             Assert.Equal(exceptionMessage, thrownException.Message);
         }
 
@@ -217,8 +218,8 @@ namespace Alis.Core.Aspect.Logging.Test
             string exceptionMessage = "Critical error occurred";
 
             // Act & Assert
-            Assert.Throws<System.Exception>(() => Logger.Exception(exceptionMessage));
-            
+            Assert.Throws<Exception>(() => Logger.Exception(exceptionMessage));
+
             // Verify critical log was created
             IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
             Assert.Single(entries);
@@ -236,7 +237,7 @@ namespace Alis.Core.Aspect.Logging.Test
             string emptyMessage = string.Empty;
 
             // Act & Assert
-            System.Exception thrownException = Assert.Throws<System.Exception>(() => Logger.Exception(emptyMessage));
+            Exception thrownException = Assert.Throws<Exception>(() => Logger.Exception(emptyMessage));
             Assert.Equal(emptyMessage, thrownException.Message);
         }
 
@@ -250,7 +251,7 @@ namespace Alis.Core.Aspect.Logging.Test
             string nullMessage = null;
 
             // Act & Assert
-            Assert.Throws<System.Exception>(() => Logger.Exception(nullMessage));
+            Assert.Throws<Exception>(() => Logger.Exception(nullMessage));
         }
 
         /// <summary>
@@ -263,7 +264,7 @@ namespace Alis.Core.Aspect.Logging.Test
             string longMessage = new string('x', 1000);
 
             // Act & Assert
-            System.Exception thrownException = Assert.Throws<System.Exception>(() => Logger.Exception(longMessage));
+            Exception thrownException = Assert.Throws<Exception>(() => Logger.Exception(longMessage));
             Assert.Equal(longMessage, thrownException.Message);
         }
 
@@ -277,7 +278,7 @@ namespace Alis.Core.Aspect.Logging.Test
             string specialMessage = "Error: \n\t\"Value\" is 'invalid'\\path";
 
             // Act & Assert
-            System.Exception thrownException = Assert.Throws<System.Exception>(() => Logger.Exception(specialMessage));
+            Exception thrownException = Assert.Throws<Exception>(() => Logger.Exception(specialMessage));
             Assert.Equal(specialMessage, thrownException.Message);
         }
     }

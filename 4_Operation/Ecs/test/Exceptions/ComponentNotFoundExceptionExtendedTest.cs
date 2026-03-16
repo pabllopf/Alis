@@ -59,7 +59,7 @@ namespace Alis.Core.Ecs.Test.Exceptions
             Assert.NotNull(ex);
             Assert.IsAssignableFrom<Exception>(ex);
         }
-        
+
         /// <summary>
         ///     Tests that exception can be created with message
         /// </summary>
