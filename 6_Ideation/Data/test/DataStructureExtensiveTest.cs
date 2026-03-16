@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using Alis.Core.Aspect.Data.Json.Helpers;
 using Xunit;
 
 namespace Alis.Core.Aspect.Data.Test
@@ -221,6 +222,34 @@ namespace Alis.Core.Aspect.Data.Test
             Assert.Equal(1, queue.Dequeue());
             Assert.Equal(2, queue.Dequeue());
             Assert.Equal(3, queue.Dequeue());
+        }
+
+        /// <summary>
+        ///     Gets the escape sequence stress cases
+        /// </summary>
+        /// <returns>An enumerable of object array</returns>
+        public static IEnumerable<object[]> GetEscapeSequenceStressCases()
+        {
+            for (int slashCount = 0; slashCount < 2000; slashCount++)
+            {
+                yield return new object[] {slashCount};
+            }
+        }
+
+        /// <summary>
+        ///     Tests that escape sequence handler backslash parity is correct
+        /// </summary>
+        /// <param name="slashCount">The slash count</param>
+        [Theory, MemberData(nameof(GetEscapeSequenceStressCases))]
+        public void EscapeSequenceHandler_IsEscaped_BackslashParity_IsCorrect(int slashCount)
+        {
+            EscapeSequenceHandler handler = new EscapeSequenceHandler();
+            string text = new string('\\', slashCount) + "\"";
+
+            bool result = handler.IsEscaped(text, slashCount);
+            bool expected = (slashCount % 2) == 1;
+
+            Assert.Equal(expected, result);
         }
     }
 }

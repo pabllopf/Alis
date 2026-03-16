@@ -64,5 +64,34 @@ namespace Alis.Core.Aspect.Fluent.Test
             Assert.Equal(DateTime.MinValue, info.Timestamp);
             Assert.Equal(TimeSpan.Zero, info.HoldDuration);
         }
+
+        public static System.Collections.Generic.IEnumerable<object[]> GetMassiveConstructorCases()
+        {
+            ConsoleKey[] keys =
+            {
+                ConsoleKey.A, ConsoleKey.B, ConsoleKey.C, ConsoleKey.D, ConsoleKey.E,
+                ConsoleKey.F, ConsoleKey.G, ConsoleKey.H, ConsoleKey.I, ConsoleKey.J
+            };
+
+            for (int i = 0; i < 2000; i++)
+            {
+                yield return new object[]
+                {
+                    keys[i % keys.Length],
+                    DateTime.UnixEpoch.AddMilliseconds(i * 17L),
+                    TimeSpan.FromMilliseconds(i - 1000)
+                };
+            }
+        }
+
+        [Theory, MemberData(nameof(GetMassiveConstructorCases))]
+        public void Constructor_Massive_NormalAndExtremeCases_AssignsFields(ConsoleKey key, DateTime timestamp, TimeSpan holdDuration)
+        {
+            KeyEventInfo info = new KeyEventInfo(key, timestamp, holdDuration);
+
+            Assert.Equal(key, info.Key);
+            Assert.Equal(timestamp, info.Timestamp);
+            Assert.Equal(holdDuration, info.HoldDuration);
+        }
     }
 }

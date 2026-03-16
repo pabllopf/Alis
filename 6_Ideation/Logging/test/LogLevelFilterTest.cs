@@ -169,5 +169,40 @@ namespace Alis.Core.Aspect.Logging.Test
         /// <param name="level">The level</param>
         /// <returns>The log entry</returns>
         private static ILogEntry CreateEntry(LogLevel level) => new LogEntry(level, "Test", "Logger");
+
+        public static System.Collections.Generic.IEnumerable<object[]> GetMassiveLevelCombinations()
+        {
+            LogLevel[] levels =
+            {
+                LogLevel.Trace,
+                LogLevel.Debug,
+                LogLevel.Info,
+                LogLevel.Warning,
+                LogLevel.Error,
+                LogLevel.Critical,
+                LogLevel.None
+            };
+
+            for (int repeat = 0; repeat < 41; repeat++)
+            {
+                for (int i = 0; i < levels.Length; i++)
+                {
+                    for (int j = 0; j < levels.Length; j++)
+                    {
+                        yield return new object[] {repeat, levels[i], levels[j]};
+                    }
+                }
+            }
+        }
+
+        [Theory, MemberData(nameof(GetMassiveLevelCombinations))]
+        public void LogLevelFilter_MassiveLevelCombinations_AreDeterministic(int repeat, LogLevel minimum, LogLevel current)
+        {
+            LogLevelFilter filter = new LogLevelFilter(minimum);
+            bool expected = current >= minimum;
+
+            Assert.True(repeat >= 0);
+            Assert.Equal(expected, filter.ShouldLog(CreateEntry(current)));
+        }
     }
 }

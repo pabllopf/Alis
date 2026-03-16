@@ -349,5 +349,43 @@ namespace Alis.Core.Aspect.Math.Test
             Assert.True(absB >= 0);
             Assert.True((maxAB >= a) && (maxAB >= b));
         }
+
+        /// <summary>
+        ///     Gets the clamp massive cases
+        /// </summary>
+        /// <returns>An enumerable of object array</returns>
+        public static IEnumerable<object[]> GetClampMassiveCases()
+        {
+            for (int i = 0; i < 2000; i++)
+            {
+                float min = -250f + (i % 100);
+                float max = min + 1f + (i % 23);
+                float value = ((i * 37) % 1200 - 600) / 3f;
+
+                if (i == 0)
+                {
+                    value = float.MinValue;
+                }
+                else if (i == 1999)
+                {
+                    value = float.MaxValue;
+                }
+
+                yield return new object[] {value, min, max};
+            }
+        }
+
+        /// <summary>
+        ///     Tests that clamp with massive normal and extreme cases returns expected value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <param name="min">The min</param>
+        /// <param name="max">The max</param>
+        [Theory, MemberData(nameof(GetClampMassiveCases))]
+        public void Clamp_Massive_NormalAndExtremeCases_ReturnExpected(float value, float min, float max)
+        {
+            float expected = value < min ? min : value > max ? max : value;
+            Assert.Equal(expected, CustomMathF.Clamp(value, min, max));
+        }
     }
 }

@@ -303,5 +303,35 @@ namespace Alis.Core.Aspect.Time.Test
             TimeSpan timespan = clock.Elapsed;
             Assert.NotNull(timespan);
         }
+
+        public static System.Collections.Generic.IEnumerable<object[]> GetMassiveLifecycleCases()
+        {
+            for (int cycleCount = 1; cycleCount <= 2000; cycleCount++)
+            {
+                yield return new object[] {cycleCount};
+            }
+        }
+
+        [Theory, MemberData(nameof(GetMassiveLifecycleCases))]
+        public void Lifecycle_MassiveCycles_RemainsStable(int cycleCount)
+        {
+            Clock clock = new Clock();
+
+            for (int i = 0; i < cycleCount; i++)
+            {
+                clock.Start();
+                clock.Stop();
+            }
+
+            Assert.False(clock.IsRunning);
+            Assert.True(clock.ElapsedMilliseconds >= 0);
+
+            clock.Restart();
+            Assert.True(clock.IsRunning);
+
+            clock.Reset();
+            Assert.False(clock.IsRunning);
+            Assert.Equal(0L, clock.ElapsedMilliseconds);
+        }
     }
 }
