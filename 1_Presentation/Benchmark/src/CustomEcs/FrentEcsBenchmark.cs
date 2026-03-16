@@ -69,13 +69,13 @@ namespace Alis.Benchmark.CustomEcs
         }
 
         /// <summary>
-        /// Disposes the frent
+        ///     Disposes the frent
         /// </summary>
         private void DisposeFrent()
         {
             WorldFrent?.Dispose();
             WorldFrent = null;
-            QueryFrent = default;
+            QueryFrent = default(Query);
         }
 
         /// <summary>
@@ -373,7 +373,7 @@ namespace Alis.Benchmark.CustomEcs
                 chunks.Span8[i] = default(Component8);
             }
         }
-        
+
         /// <summary>
         ///     Frents the system with one component query inline with padding 0
         /// </summary>
