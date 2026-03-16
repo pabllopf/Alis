@@ -1,16 +1,44 @@
- using Alis.Core.Ecs.Kernel;
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:GameObjectAddRemoveOverloadsUnitTest.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
 
 namespace Alis.Core.Ecs.Test
 {
     /// <summary>
-    /// The game object add remove overloads unit test class
+    ///     The game object add remove overloads unit test class
     /// </summary>
     public class GameObjectAddRemoveOverloadsUnitTest
     {
         /// <summary>
-        /// Tests that add arity 1 uses generic overload
+        ///     Tests that add arity 1 uses generic overload
         /// </summary>
         [Fact]
         public void Add_Arity1_UsesGenericOverload()
@@ -18,7 +46,7 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
 
-            entity.Add(new Position { X = 1, Y = 2 });
+            entity.Add(new Position {X = 1, Y = 2});
 
             Assert.True(entity.Has<Position>());
             Assert.Equal(1, entity.Get<Position>().X);
@@ -26,7 +54,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that add arity 2 uses generic overload
+        ///     Tests that add arity 2 uses generic overload
         /// </summary>
         [Fact]
         public void Add_Arity2_UsesGenericOverload()
@@ -34,7 +62,7 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
 
-            entity.Add(new Position { X = 1, Y = 2 }, new Velocity { X = 3, Y = 4 });
+            entity.Add(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4});
 
             Assert.True(entity.Has<Position>());
             Assert.True(entity.Has<Velocity>());
@@ -42,7 +70,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that add arity 3 uses generic overload
+        ///     Tests that add arity 3 uses generic overload
         /// </summary>
         [Fact]
         public void Add_Arity3_UsesGenericOverload()
@@ -51,9 +79,9 @@ namespace Alis.Core.Ecs.Test
             GameObject entity = scene.Create();
 
             entity.Add(
-                new Position { X = 1, Y = 2 },
-                new Velocity { X = 3, Y = 4 },
-                new Health { Value = 5 });
+                new Position {X = 1, Y = 2},
+                new Velocity {X = 3, Y = 4},
+                new Health {Value = 5});
 
             Assert.True(entity.Has<Position>());
             Assert.True(entity.Has<Velocity>());
@@ -62,7 +90,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that add arity 4 uses generic overload
+        ///     Tests that add arity 4 uses generic overload
         /// </summary>
         [Fact]
         public void Add_Arity4_UsesGenericOverload()
@@ -71,10 +99,10 @@ namespace Alis.Core.Ecs.Test
             GameObject entity = scene.Create();
 
             entity.Add(
-                new Position { X = 1, Y = 2 },
-                new Velocity { X = 3, Y = 4 },
-                new Health { Value = 5 },
-                new Armor { Value = 6 });
+                new Position {X = 1, Y = 2},
+                new Velocity {X = 3, Y = 4},
+                new Health {Value = 5},
+                new Armor {Value = 6});
 
             Assert.True(entity.Has<Position>());
             Assert.True(entity.Has<Velocity>());
@@ -84,7 +112,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that add arity 5 uses generic overload
+        ///     Tests that add arity 5 uses generic overload
         /// </summary>
         [Fact]
         public void Add_Arity5_UsesGenericOverload()
@@ -93,11 +121,11 @@ namespace Alis.Core.Ecs.Test
             GameObject entity = scene.Create();
 
             entity.Add(
-                new Position { X = 1, Y = 2 },
-                new Velocity { X = 3, Y = 4 },
-                new Health { Value = 5 },
-                new Armor { Value = 6 },
-                new Damage { Value = 7 });
+                new Position {X = 1, Y = 2},
+                new Velocity {X = 3, Y = 4},
+                new Health {Value = 5},
+                new Armor {Value = 6},
+                new Damage {Value = 7});
 
             Assert.True(entity.Has<Position>());
             Assert.True(entity.Has<Velocity>());
@@ -108,7 +136,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that add arity 6 uses generic overload
+        ///     Tests that add arity 6 uses generic overload
         /// </summary>
         [Fact]
         public void Add_Arity6_UsesGenericOverload()
@@ -117,12 +145,12 @@ namespace Alis.Core.Ecs.Test
             GameObject entity = scene.Create();
 
             entity.Add(
-                new Position { X = 1, Y = 2 },
-                new Velocity { X = 3, Y = 4 },
-                new Health { Value = 5 },
-                new Armor { Value = 6 },
-                new Damage { Value = 7 },
-                new Transform { X = 8, Y = 9, Rotation = 10 });
+                new Position {X = 1, Y = 2},
+                new Velocity {X = 3, Y = 4},
+                new Health {Value = 5},
+                new Armor {Value = 6},
+                new Damage {Value = 7},
+                new Transform {X = 8, Y = 9, Rotation = 10});
 
             Assert.True(entity.Has<Position>());
             Assert.True(entity.Has<Velocity>());
@@ -134,7 +162,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that add arity 7 uses generic overload
+        ///     Tests that add arity 7 uses generic overload
         /// </summary>
         [Fact]
         public void Add_Arity7_UsesGenericOverload()
@@ -143,13 +171,13 @@ namespace Alis.Core.Ecs.Test
             GameObject entity = scene.Create();
 
             entity.Add(
-                new Position { X = 1, Y = 2 },
-                new Velocity { X = 3, Y = 4 },
-                new Health { Value = 5 },
-                new Armor { Value = 6 },
-                new Damage { Value = 7 },
-                new Transform { X = 8, Y = 9, Rotation = 10 },
-                new TestComponent { Value = 11 });
+                new Position {X = 1, Y = 2},
+                new Velocity {X = 3, Y = 4},
+                new Health {Value = 5},
+                new Armor {Value = 6},
+                new Damage {Value = 7},
+                new Transform {X = 8, Y = 9, Rotation = 10},
+                new TestComponent {Value = 11});
 
             Assert.True(entity.Has<Position>());
             Assert.True(entity.Has<Velocity>());
@@ -162,7 +190,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that add arity 8 uses generic overload
+        ///     Tests that add arity 8 uses generic overload
         /// </summary>
         [Fact]
         public void Add_Arity8_UsesGenericOverload()
@@ -171,14 +199,14 @@ namespace Alis.Core.Ecs.Test
             GameObject entity = scene.Create();
 
             entity.Add(
-                new Position { X = 1, Y = 2 },
-                new Velocity { X = 3, Y = 4 },
-                new Health { Value = 5 },
-                new Armor { Value = 6 },
-                new Damage { Value = 7 },
-                new Transform { X = 8, Y = 9, Rotation = 10 },
-                new TestComponent { Value = 11 },
-                new AnotherComponent { Name = "eight", Data = 12, Y = 13 });
+                new Position {X = 1, Y = 2},
+                new Velocity {X = 3, Y = 4},
+                new Health {Value = 5},
+                new Armor {Value = 6},
+                new Damage {Value = 7},
+                new Transform {X = 8, Y = 9, Rotation = 10},
+                new TestComponent {Value = 11},
+                new AnotherComponent {Name = "eight", Data = 12, Y = 13});
 
             Assert.True(entity.Has<Position>());
             Assert.True(entity.Has<Velocity>());
@@ -193,7 +221,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that remove arity 1 uses generic overload
+        ///     Tests that remove arity 1 uses generic overload
         /// </summary>
         [Fact]
         public void Remove_Arity1_UsesGenericOverload()
@@ -209,7 +237,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that remove arity 2 uses generic overload
+        ///     Tests that remove arity 2 uses generic overload
         /// </summary>
         [Fact]
         public void Remove_Arity2_UsesGenericOverload()
@@ -226,7 +254,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that remove arity 3 uses generic overload
+        ///     Tests that remove arity 3 uses generic overload
         /// </summary>
         [Fact]
         public void Remove_Arity3_UsesGenericOverload()
@@ -244,7 +272,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that remove arity 4 uses generic overload
+        ///     Tests that remove arity 4 uses generic overload
         /// </summary>
         [Fact]
         public void Remove_Arity4_UsesGenericOverload()
@@ -263,7 +291,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that remove arity 5 uses generic overload
+        ///     Tests that remove arity 5 uses generic overload
         /// </summary>
         [Fact]
         public void Remove_Arity5_UsesGenericOverload()
@@ -283,7 +311,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that remove arity 6 uses generic overload
+        ///     Tests that remove arity 6 uses generic overload
         /// </summary>
         [Fact]
         public void Remove_Arity6_UsesGenericOverload()
@@ -304,7 +332,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that remove arity 7 uses generic overload
+        ///     Tests that remove arity 7 uses generic overload
         /// </summary>
         [Fact]
         public void Remove_Arity7_UsesGenericOverload()
@@ -326,7 +354,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that remove arity 8 uses generic overload
+        ///     Tests that remove arity 8 uses generic overload
         /// </summary>
         [Fact]
         public void Remove_Arity8_UsesGenericOverload()
@@ -350,7 +378,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Creates the entity with nine components using the specified scene
+        ///     Creates the entity with nine components using the specified scene
         /// </summary>
         /// <param name="scene">The scene</param>
         /// <returns>The entity</returns>
@@ -358,18 +386,17 @@ namespace Alis.Core.Ecs.Test
         {
             GameObject entity = scene.Create();
 
-            entity.Add(new Position { X = 1, Y = 2 });
-            entity.Add(new Velocity { X = 3, Y = 4 });
-            entity.Add(new Health { Value = 5 });
-            entity.Add(new Armor { Value = 6 });
-            entity.Add(new Damage { Value = 7 });
-            entity.Add(new Transform { X = 8, Y = 9, Rotation = 10 });
-            entity.Add(new TestComponent { Value = 11 });
-            entity.Add(new AnotherComponent { Name = "payload", Data = 12, Y = 13 });
-            entity.Add(new AnotherComponent2 { Name = "marker", Data = 99 });
+            entity.Add(new Position {X = 1, Y = 2});
+            entity.Add(new Velocity {X = 3, Y = 4});
+            entity.Add(new Health {Value = 5});
+            entity.Add(new Armor {Value = 6});
+            entity.Add(new Damage {Value = 7});
+            entity.Add(new Transform {X = 8, Y = 9, Rotation = 10});
+            entity.Add(new TestComponent {Value = 11});
+            entity.Add(new AnotherComponent {Name = "payload", Data = 12, Y = 13});
+            entity.Add(new AnotherComponent2 {Name = "marker", Data = 99});
 
             return entity;
         }
     }
 }
-

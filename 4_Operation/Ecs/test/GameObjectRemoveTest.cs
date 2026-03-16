@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
@@ -39,313 +38,10 @@ namespace Alis.Core.Ecs.Test
     /// </summary>
     public class GameObjectRemoveTest
     {
-        #region Remove<T> (Arity 1) Tests
-
-        /// <summary>
-        /// Tests that Remove with arity 1 removes the component successfully
-        /// </summary>
-        [Fact]
-        public void Remove_Arity1_RemovesComponentSuccessfully()
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 10, Y = 20});
-
-            Assert.True(entity.Has<Velocity>());
-
-            entity.Remove<Velocity>();
-
-            Assert.False(entity.Has<Velocity>());
-            Assert.True(entity.Has<Position>());
-        }
-
-        /// <summary>
-        /// Tests that Remove with arity 1 preserves other components
-        /// </summary>
-        [Fact]
-        public void Remove_Arity1_PreservesOtherComponents()
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(
-                new Position {X = 5, Y = 10},
-                new Velocity {X = 1, Y = 2},
-                new Health {Value = 100}
-            );
-
-            entity.Remove<Velocity>();
-
-            Assert.True(entity.Has<Position>());
-            Assert.False(entity.Has<Velocity>());
-            Assert.True(entity.Has<Health>());
-            Assert.Equal(5, entity.Get<Position>().X);
-            Assert.Equal(100, entity.Get<Health>().Value);
-        }
-
-        /// <summary>
-        /// Tests that Remove with arity 1 can be called multiple times
-        /// </summary>
-        [Fact]
-        public void Remove_Arity1_CanBeCalledMultipleTimes()
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 5, Y = 10},
-                new Health {Value = 100}
-            );
-
-            entity.Remove<Velocity>();
-            entity.Remove<Health>();
-
-            Assert.True(entity.Has<Position>());
-            Assert.False(entity.Has<Velocity>());
-            Assert.False(entity.Has<Health>());
-        }
-
-        /// <summary>
-        /// Tests that Remove with arity 1 updates entity type correctly
-        /// </summary>
-        [Fact]
-        public void Remove_Arity1_UpdatesEntityTypeCorrectly()
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 5, Y = 10});
-
-            entity.Remove<Velocity>();
-
-            Assert.True(entity.Has<Position>());
-            Assert.False(entity.Has<Velocity>());
-        }
-
-        #endregion
-
-        #region Remove<T1, T2> (Arity 2) Tests
-
-        /// <summary>
-        /// Tests that Remove with arity 2 removes both components successfully
-        /// </summary>
-        [Fact]
-        public void Remove_Arity2_RemovesBothComponentsSuccessfully()
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 5, Y = 10},
-                new Health {Value = 100}
-            );
-
-            entity.Remove<Velocity>();
-            entity.Remove<Health>();
-
-            Assert.True(entity.Has<Position>());
-            Assert.False(entity.Has<Velocity>());
-            Assert.False(entity.Has<Health>());
-        }
-
-        /// <summary>
-        /// Tests that Remove with arity 2 preserves remaining components
-        /// </summary>
-        [Fact]
-        public void Remove_Arity2_PreservesRemainingComponents()
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 5, Y = 10},
-                new Health {Value = 100},
-                new Armor {Value = 50}
-            );
-
-            entity.Remove<Velocity>();
-            entity.Remove<Health>();
-
-            Assert.True(entity.Has<Position>());
-            Assert.True(entity.Has<Armor>());
-            Assert.False(entity.Has<Velocity>());
-            Assert.False(entity.Has<Health>());
-        }
-
-        #endregion
-
-        #region Remove<T1, T2, T3> (Arity 3) Tests
-
-        /// <summary>
-        /// Tests that Remove with arity 3 removes all three components successfully
-        /// </summary>
-        [Fact]
-        public void Remove_Arity3_RemovesAllThreeComponentsSuccessfully()
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 5, Y = 10},
-                new Health {Value = 100},
-                new Armor {Value = 50}
-            );
-
-            entity.Remove<Velocity>();
-            entity.Remove<Health>();
-            entity.Remove<Armor>();
-
-            Assert.True(entity.Has<Position>());
-            Assert.False(entity.Has<Velocity>());
-            Assert.False(entity.Has<Health>());
-            Assert.False(entity.Has<Armor>());
-        }
-
-        /// <summary>
-        /// Tests that Remove with arity 3 works with sequential removals
-        /// </summary>
-        [Fact]
-        public void Remove_Arity3_WorksWithSequentialRemovals()
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 5, Y = 10},
-                new Health {Value = 100},
-                new Armor {Value = 50},
-                new Damage {Value = 25}
-            );
-
-            entity.Remove<Velocity>();
-            Assert.False(entity.Has<Velocity>());
-            Assert.True(entity.Has<Health>());
-
-            entity.Remove<Health>();
-            Assert.False(entity.Has<Health>());
-            Assert.True(entity.Has<Armor>());
-
-            entity.Remove<Armor>();
-            Assert.False(entity.Has<Armor>());
-            Assert.True(entity.Has<Position>());
-            Assert.True(entity.Has<Damage>());
-        }
-
-        #endregion
-
-        #region Remove<T1, T2, T3, T4> (Arity 4) Tests
-
-        /// <summary>
-        /// Tests that Remove with arity 4 removes all four components successfully
-        /// </summary>
-        [Fact]
-        public void Remove_Arity4_RemovesAllFourComponentsSuccessfully()
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 5, Y = 10},
-                new Health {Value = 100},
-                new Armor {Value = 50},
-                new Damage {Value = 25}
-            );
-
-            entity.Remove<Velocity>();
-            entity.Remove<Health>();
-            entity.Remove<Armor>();
-            entity.Remove<Damage>();
-
-            Assert.True(entity.Has<Position>());
-            Assert.False(entity.Has<Velocity>());
-            Assert.False(entity.Has<Health>());
-            Assert.False(entity.Has<Armor>());
-            Assert.False(entity.Has<Damage>());
-        }
-
-        /// <summary>
-        /// Tests that Remove with arity 4 maintains entity integrity
-        /// </summary>
-        [Fact]
-        public void Remove_Arity4_MaintainsEntityIntegrity()
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(
-                new Position {X = 10, Y = 20},
-                new Velocity {X = 1, Y = 2},
-                new Health {Value = 100},
-                new Armor {Value = 50},
-                new Damage {Value = 25}
-            );
-
-            entity.Remove<Velocity>();
-            entity.Remove<Armor>();
-
-            Assert.True(entity.Has<Position>());
-            Assert.True(entity.Has<Health>());
-            Assert.True(entity.Has<Damage>());
-            Assert.Equal(10, entity.Get<Position>().X);
-            Assert.Equal(100, entity.Get<Health>().Value);
-        }
-
-        #endregion
-
-        #region Remove<T1..T5> (Arity 5) Tests
-
-        /// <summary>
-        /// Tests that Remove with arity 5 removes all five components successfully
-        /// </summary>
-        [Fact]
-        public void Remove_Arity5_RemovesAllFiveComponentsSuccessfully()
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 5, Y = 10},
-                new Health {Value = 100},
-                new Armor {Value = 50},
-                new Damage {Value = 25},
-                new Transform {X = 0, Y = 0, Rotation = 0}
-            );
-
-            entity.Remove<Velocity>();
-            entity.Remove<Health>();
-            entity.Remove<Armor>();
-            entity.Remove<Damage>();
-            entity.Remove<Transform>();
-
-            Assert.True(entity.Has<Position>());
-            Assert.False(entity.Has<Velocity>());
-            Assert.False(entity.Has<Health>());
-            Assert.False(entity.Has<Armor>());
-            Assert.False(entity.Has<Damage>());
-            Assert.False(entity.Has<Transform>());
-        }
-
-        /// <summary>
-        /// Tests that Remove with arity 5 works in different orders
-        /// </summary>
-        [Fact]
-        public void Remove_Arity5_WorksInDifferentOrders()
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(
-                new Position {X = 1, Y = 2},
-                new Velocity {X = 5, Y = 10},
-                new Health {Value = 100},
-                new Armor {Value = 50},
-                new Damage {Value = 25},
-                new Transform {X = 0, Y = 0, Rotation = 0}
-            );
-
-            // Remove in different order
-            entity.Remove<Transform>();
-            entity.Remove<Armor>();
-            entity.Remove<Velocity>();
-
-            Assert.True(entity.Has<Position>());
-            Assert.True(entity.Has<Health>());
-            Assert.True(entity.Has<Damage>());
-            Assert.False(entity.Has<Velocity>());
-            Assert.False(entity.Has<Armor>());
-            Assert.False(entity.Has<Transform>());
-        }
-
-        #endregion
-
         #region Remove<T1..T6> (Arity 6) Tests
 
         /// <summary>
-        /// Tests that Remove with arity 6 removes all six components successfully
+        ///     Tests that Remove with arity 6 removes all six components successfully
         /// </summary>
         [Fact]
         public void Remove_Arity6_RemovesAllSixComponentsSuccessfully()
@@ -379,10 +75,313 @@ namespace Alis.Core.Ecs.Test
 
         #endregion
 
+        #region Remove<T> (Arity 1) Tests
+
+        /// <summary>
+        ///     Tests that Remove with arity 1 removes the component successfully
+        /// </summary>
+        [Fact]
+        public void Remove_Arity1_RemovesComponentSuccessfully()
+        {
+            using Scene scene = new Scene();
+            GameObject entity = scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 10, Y = 20});
+
+            Assert.True(entity.Has<Velocity>());
+
+            entity.Remove<Velocity>();
+
+            Assert.False(entity.Has<Velocity>());
+            Assert.True(entity.Has<Position>());
+        }
+
+        /// <summary>
+        ///     Tests that Remove with arity 1 preserves other components
+        /// </summary>
+        [Fact]
+        public void Remove_Arity1_PreservesOtherComponents()
+        {
+            using Scene scene = new Scene();
+            GameObject entity = scene.Create(
+                new Position {X = 5, Y = 10},
+                new Velocity {X = 1, Y = 2},
+                new Health {Value = 100}
+            );
+
+            entity.Remove<Velocity>();
+
+            Assert.True(entity.Has<Position>());
+            Assert.False(entity.Has<Velocity>());
+            Assert.True(entity.Has<Health>());
+            Assert.Equal(5, entity.Get<Position>().X);
+            Assert.Equal(100, entity.Get<Health>().Value);
+        }
+
+        /// <summary>
+        ///     Tests that Remove with arity 1 can be called multiple times
+        /// </summary>
+        [Fact]
+        public void Remove_Arity1_CanBeCalledMultipleTimes()
+        {
+            using Scene scene = new Scene();
+            GameObject entity = scene.Create(
+                new Position {X = 1, Y = 2},
+                new Velocity {X = 5, Y = 10},
+                new Health {Value = 100}
+            );
+
+            entity.Remove<Velocity>();
+            entity.Remove<Health>();
+
+            Assert.True(entity.Has<Position>());
+            Assert.False(entity.Has<Velocity>());
+            Assert.False(entity.Has<Health>());
+        }
+
+        /// <summary>
+        ///     Tests that Remove with arity 1 updates entity type correctly
+        /// </summary>
+        [Fact]
+        public void Remove_Arity1_UpdatesEntityTypeCorrectly()
+        {
+            using Scene scene = new Scene();
+            GameObject entity = scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 5, Y = 10});
+
+            entity.Remove<Velocity>();
+
+            Assert.True(entity.Has<Position>());
+            Assert.False(entity.Has<Velocity>());
+        }
+
+        #endregion
+
+        #region Remove<T1, T2> (Arity 2) Tests
+
+        /// <summary>
+        ///     Tests that Remove with arity 2 removes both components successfully
+        /// </summary>
+        [Fact]
+        public void Remove_Arity2_RemovesBothComponentsSuccessfully()
+        {
+            using Scene scene = new Scene();
+            GameObject entity = scene.Create(
+                new Position {X = 1, Y = 2},
+                new Velocity {X = 5, Y = 10},
+                new Health {Value = 100}
+            );
+
+            entity.Remove<Velocity>();
+            entity.Remove<Health>();
+
+            Assert.True(entity.Has<Position>());
+            Assert.False(entity.Has<Velocity>());
+            Assert.False(entity.Has<Health>());
+        }
+
+        /// <summary>
+        ///     Tests that Remove with arity 2 preserves remaining components
+        /// </summary>
+        [Fact]
+        public void Remove_Arity2_PreservesRemainingComponents()
+        {
+            using Scene scene = new Scene();
+            GameObject entity = scene.Create(
+                new Position {X = 1, Y = 2},
+                new Velocity {X = 5, Y = 10},
+                new Health {Value = 100},
+                new Armor {Value = 50}
+            );
+
+            entity.Remove<Velocity>();
+            entity.Remove<Health>();
+
+            Assert.True(entity.Has<Position>());
+            Assert.True(entity.Has<Armor>());
+            Assert.False(entity.Has<Velocity>());
+            Assert.False(entity.Has<Health>());
+        }
+
+        #endregion
+
+        #region Remove<T1, T2, T3> (Arity 3) Tests
+
+        /// <summary>
+        ///     Tests that Remove with arity 3 removes all three components successfully
+        /// </summary>
+        [Fact]
+        public void Remove_Arity3_RemovesAllThreeComponentsSuccessfully()
+        {
+            using Scene scene = new Scene();
+            GameObject entity = scene.Create(
+                new Position {X = 1, Y = 2},
+                new Velocity {X = 5, Y = 10},
+                new Health {Value = 100},
+                new Armor {Value = 50}
+            );
+
+            entity.Remove<Velocity>();
+            entity.Remove<Health>();
+            entity.Remove<Armor>();
+
+            Assert.True(entity.Has<Position>());
+            Assert.False(entity.Has<Velocity>());
+            Assert.False(entity.Has<Health>());
+            Assert.False(entity.Has<Armor>());
+        }
+
+        /// <summary>
+        ///     Tests that Remove with arity 3 works with sequential removals
+        /// </summary>
+        [Fact]
+        public void Remove_Arity3_WorksWithSequentialRemovals()
+        {
+            using Scene scene = new Scene();
+            GameObject entity = scene.Create(
+                new Position {X = 1, Y = 2},
+                new Velocity {X = 5, Y = 10},
+                new Health {Value = 100},
+                new Armor {Value = 50},
+                new Damage {Value = 25}
+            );
+
+            entity.Remove<Velocity>();
+            Assert.False(entity.Has<Velocity>());
+            Assert.True(entity.Has<Health>());
+
+            entity.Remove<Health>();
+            Assert.False(entity.Has<Health>());
+            Assert.True(entity.Has<Armor>());
+
+            entity.Remove<Armor>();
+            Assert.False(entity.Has<Armor>());
+            Assert.True(entity.Has<Position>());
+            Assert.True(entity.Has<Damage>());
+        }
+
+        #endregion
+
+        #region Remove<T1, T2, T3, T4> (Arity 4) Tests
+
+        /// <summary>
+        ///     Tests that Remove with arity 4 removes all four components successfully
+        /// </summary>
+        [Fact]
+        public void Remove_Arity4_RemovesAllFourComponentsSuccessfully()
+        {
+            using Scene scene = new Scene();
+            GameObject entity = scene.Create(
+                new Position {X = 1, Y = 2},
+                new Velocity {X = 5, Y = 10},
+                new Health {Value = 100},
+                new Armor {Value = 50},
+                new Damage {Value = 25}
+            );
+
+            entity.Remove<Velocity>();
+            entity.Remove<Health>();
+            entity.Remove<Armor>();
+            entity.Remove<Damage>();
+
+            Assert.True(entity.Has<Position>());
+            Assert.False(entity.Has<Velocity>());
+            Assert.False(entity.Has<Health>());
+            Assert.False(entity.Has<Armor>());
+            Assert.False(entity.Has<Damage>());
+        }
+
+        /// <summary>
+        ///     Tests that Remove with arity 4 maintains entity integrity
+        /// </summary>
+        [Fact]
+        public void Remove_Arity4_MaintainsEntityIntegrity()
+        {
+            using Scene scene = new Scene();
+            GameObject entity = scene.Create(
+                new Position {X = 10, Y = 20},
+                new Velocity {X = 1, Y = 2},
+                new Health {Value = 100},
+                new Armor {Value = 50},
+                new Damage {Value = 25}
+            );
+
+            entity.Remove<Velocity>();
+            entity.Remove<Armor>();
+
+            Assert.True(entity.Has<Position>());
+            Assert.True(entity.Has<Health>());
+            Assert.True(entity.Has<Damage>());
+            Assert.Equal(10, entity.Get<Position>().X);
+            Assert.Equal(100, entity.Get<Health>().Value);
+        }
+
+        #endregion
+
+        #region Remove<T1..T5> (Arity 5) Tests
+
+        /// <summary>
+        ///     Tests that Remove with arity 5 removes all five components successfully
+        /// </summary>
+        [Fact]
+        public void Remove_Arity5_RemovesAllFiveComponentsSuccessfully()
+        {
+            using Scene scene = new Scene();
+            GameObject entity = scene.Create(
+                new Position {X = 1, Y = 2},
+                new Velocity {X = 5, Y = 10},
+                new Health {Value = 100},
+                new Armor {Value = 50},
+                new Damage {Value = 25},
+                new Transform {X = 0, Y = 0, Rotation = 0}
+            );
+
+            entity.Remove<Velocity>();
+            entity.Remove<Health>();
+            entity.Remove<Armor>();
+            entity.Remove<Damage>();
+            entity.Remove<Transform>();
+
+            Assert.True(entity.Has<Position>());
+            Assert.False(entity.Has<Velocity>());
+            Assert.False(entity.Has<Health>());
+            Assert.False(entity.Has<Armor>());
+            Assert.False(entity.Has<Damage>());
+            Assert.False(entity.Has<Transform>());
+        }
+
+        /// <summary>
+        ///     Tests that Remove with arity 5 works in different orders
+        /// </summary>
+        [Fact]
+        public void Remove_Arity5_WorksInDifferentOrders()
+        {
+            using Scene scene = new Scene();
+            GameObject entity = scene.Create(
+                new Position {X = 1, Y = 2},
+                new Velocity {X = 5, Y = 10},
+                new Health {Value = 100},
+                new Armor {Value = 50},
+                new Damage {Value = 25},
+                new Transform {X = 0, Y = 0, Rotation = 0}
+            );
+
+            // Remove in different order
+            entity.Remove<Transform>();
+            entity.Remove<Armor>();
+            entity.Remove<Velocity>();
+
+            Assert.True(entity.Has<Position>());
+            Assert.True(entity.Has<Health>());
+            Assert.True(entity.Has<Damage>());
+            Assert.False(entity.Has<Velocity>());
+            Assert.False(entity.Has<Armor>());
+            Assert.False(entity.Has<Transform>());
+        }
+
+        #endregion
+
         #region Remove<T1..T7> (Arity 7) Tests
 
         /// <summary>
-        /// Tests that Remove with arity 7 removes all seven components successfully
+        ///     Tests that Remove with arity 7 removes all seven components successfully
         /// </summary>
         [Fact]
         public void Remove_Arity7_RemovesAllSevenComponentsSuccessfully()
@@ -418,7 +417,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that Remove with arity 7 preserves entity after partial removal
+        ///     Tests that Remove with arity 7 preserves entity after partial removal
         /// </summary>
         [Fact]
         public void Remove_Arity7_PreservesEntityAfterPartialRemoval()
@@ -452,7 +451,7 @@ namespace Alis.Core.Ecs.Test
         #region Remove<T1..T8> (Arity 8) Tests
 
         /// <summary>
-        /// Tests that Remove with arity 8 removes all eight components successfully
+        ///     Tests that Remove with arity 8 removes all eight components successfully
         /// </summary>
         [Fact]
         public void Remove_Arity8_RemovesAllEightComponentsSuccessfully()
@@ -491,7 +490,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that Remove with arity 8 works with complex removal patterns
+        ///     Tests that Remove with arity 8 works with complex removal patterns
         /// </summary>
         [Fact]
         public void Remove_Arity8_WorksWithComplexRemovalPatterns()
@@ -531,7 +530,7 @@ namespace Alis.Core.Ecs.Test
         #region Remove(ComponentId) Tests
 
         /// <summary>
-        /// Tests that Remove with ComponentId removes component successfully
+        ///     Tests that Remove with ComponentId removes component successfully
         /// </summary>
         [Fact]
         public void Remove_WithComponentId_RemovesComponentSuccessfully()
@@ -549,7 +548,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that Remove with ComponentId works with multiple components
+        ///     Tests that Remove with ComponentId works with multiple components
         /// </summary>
         [Fact]
         public void Remove_WithComponentId_WorksWithMultipleComponents()
@@ -570,7 +569,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that Remove with ComponentId preserves component data for remaining components
+        ///     Tests that Remove with ComponentId preserves component data for remaining components
         /// </summary>
         [Fact]
         public void Remove_WithComponentId_PreservesRemainingComponentData()
@@ -593,7 +592,7 @@ namespace Alis.Core.Ecs.Test
         #region Remove(Type) Tests
 
         /// <summary>
-        /// Tests that Remove with Type removes component successfully
+        ///     Tests that Remove with Type removes component successfully
         /// </summary>
         [Fact]
         public void Remove_WithType_RemovesComponentSuccessfully()
@@ -611,7 +610,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that Remove with Type works with multiple removals
+        ///     Tests that Remove with Type works with multiple removals
         /// </summary>
         [Fact]
         public void Remove_WithType_WorksWithMultipleRemovals()
@@ -634,7 +633,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that Remove with Type maintains data integrity
+        ///     Tests that Remove with Type maintains data integrity
         /// </summary>
         [Fact]
         public void Remove_WithType_MaintainsDataIntegrity()
@@ -658,7 +657,7 @@ namespace Alis.Core.Ecs.Test
         #region Integration and Edge Cases Tests
 
         /// <summary>
-        /// Tests that Remove works after Add operations
+        ///     Tests that Remove works after Add operations
         /// </summary>
         [Fact]
         public void Remove_WorksAfterAddOperations()
@@ -678,7 +677,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that Remove can be followed by Add with same component type
+        ///     Tests that Remove can be followed by Add with same component type
         /// </summary>
         [Fact]
         public void Remove_CanBeFollowedByAddWithSameComponentType()
@@ -698,7 +697,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that Remove works with all non-generic variants
+        ///     Tests that Remove works with all non-generic variants
         /// </summary>
         [Fact]
         public void Remove_WorksWithAllNonGenericVariants()
@@ -727,7 +726,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that Remove maintains entity stability with multiple operations
+        ///     Tests that Remove maintains entity stability with multiple operations
         /// </summary>
         [Fact]
         public void Remove_MaintainsEntityStabilityWithMultipleOperations()
@@ -752,7 +751,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that Remove works correctly when leaving only one component
+        ///     Tests that Remove works correctly when leaving only one component
         /// </summary>
         [Fact]
         public void Remove_WorksCorrectlyWhenLeavingOnlyOneComponent()
@@ -775,7 +774,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that Remove updates archetype correctly
+        ///     Tests that Remove updates archetype correctly
         /// </summary>
         [Fact]
         public void Remove_UpdatesArchetypeCorrectly()
@@ -793,4 +792,3 @@ namespace Alis.Core.Ecs.Test
         #endregion
     }
 }
-

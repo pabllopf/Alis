@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Updating;
 using Xunit;
@@ -47,130 +48,6 @@ namespace Alis.Core.Ecs.Test.Updating
     /// </summary>
     public class ComponentStorageBaseGetComponentSizeTest
     {
-        // ─────────────────────────────────────────────────────────────────────
-        // Helper types used only in this test class
-        // ─────────────────────────────────────────────────────────────────────
-
-        /// <summary>3-byte struct (not a power of two → must return -1).</summary>
-        [StructLayout(LayoutKind.Sequential, Pack = 1)]
-        private struct ThreeByteStruct
-        {
-            /// <summary>
-            /// The 
-            /// </summary>
-            public byte A;
-            /// <summary>
-            /// The 
-            /// </summary>
-            public byte B;
-            /// <summary>
-            /// The 
-            /// </summary>
-            public byte C;
-        }
-
-        /// <summary>12-byte struct (3 × int, not a power of two → must return -1).</summary>
-        [StructLayout(LayoutKind.Sequential)]
-        private struct TwelveByteStruct
-        {
-            /// <summary>
-            /// The 
-            /// </summary>
-            public int A;
-            /// <summary>
-            /// The 
-            /// </summary>
-            public int B;
-            /// <summary>
-            /// The 
-            /// </summary>
-            public int C;
-        }
-
-        /// <summary>32-byte struct (2 × decimal, power of two but &gt; 16 → must return -1).</summary>
-        [StructLayout(LayoutKind.Sequential)]
-        private struct TwoDecimalsStruct
-        {
-            /// <summary>
-            /// The 
-            /// </summary>
-            public decimal A;
-            /// <summary>
-            /// The 
-            /// </summary>
-            public decimal B;
-        }
-
-        /// <summary>Struct that contains a managed reference (string) → must return -1.</summary>
-        [StructLayout(LayoutKind.Sequential)]
-        private struct StructContainingRef
-        {
-            /// <summary>
-            /// The text
-            /// </summary>
-            public string Text;
-        }
-
-        /// <summary>Custom 2-byte struct (should return 2).</summary>
-        [StructLayout(LayoutKind.Sequential)]
-        private struct TwoByteStruct
-        {
-            /// <summary>
-            /// The value
-            /// </summary>
-            public short Value;
-        }
-
-        /// <summary>Custom 4-byte struct (two shorts → should return 4).</summary>
-        [StructLayout(LayoutKind.Sequential)]
-        private struct FourByteStruct
-        {
-            /// <summary>
-            /// The 
-            /// </summary>
-            public short A;
-            /// <summary>
-            /// The 
-            /// </summary>
-            public short B;
-        }
-
-        /// <summary>Custom 8-byte struct (two ints → should return 8).</summary>
-        [StructLayout(LayoutKind.Sequential)]
-        private struct EightByteStruct
-        {
-            /// <summary>
-            /// The 
-            /// </summary>
-            public int A;
-            /// <summary>
-            /// The 
-            /// </summary>
-            public int B;
-        }
-
-        /// <summary>Custom 16-byte struct (four ints → should return 16).</summary>
-        [StructLayout(LayoutKind.Sequential)]
-        private struct SixteenByteStruct
-        {
-            /// <summary>
-            /// The 
-            /// </summary>
-            public int A;
-            /// <summary>
-            /// The 
-            /// </summary>
-            public int B;
-            /// <summary>
-            /// The 
-            /// </summary>
-            public int C;
-            /// <summary>
-            /// The 
-            /// </summary>
-            public int D;
-        }
-
         // ─────────────────────────────────────────────────────────────────────
         // BRANCH 1 – Valid sizes: 2, 4, 8, 16
         // ─────────────────────────────────────────────────────────────────────
@@ -380,21 +257,8 @@ namespace Alis.Core.Ecs.Test.Updating
         // ─────────────────────────────────────────────────────────────────────
 
         /// <summary>The method must never return 0 for any primitive numeric type.</summary>
-        [Theory]
-        [InlineData(typeof(byte))]
-        [InlineData(typeof(sbyte))]
-        [InlineData(typeof(short))]
-        [InlineData(typeof(ushort))]
-        [InlineData(typeof(int))]
-        [InlineData(typeof(uint))]
-        [InlineData(typeof(long))]
-        [InlineData(typeof(ulong))]
-        [InlineData(typeof(float))]
-        [InlineData(typeof(double))]
-        [InlineData(typeof(decimal))]
-        [InlineData(typeof(char))]
-        [InlineData(typeof(bool))]
-        public void GetComponentSize_PrimitiveTypes_NeverReturnsZero(System.Type _)
+        [Theory, InlineData(typeof(byte)), InlineData(typeof(sbyte)), InlineData(typeof(short)), InlineData(typeof(ushort)), InlineData(typeof(int)), InlineData(typeof(uint)), InlineData(typeof(long)), InlineData(typeof(ulong)), InlineData(typeof(float)), InlineData(typeof(double)), InlineData(typeof(decimal)), InlineData(typeof(char)), InlineData(typeof(bool))]
+        public void GetComponentSize_PrimitiveTypes_NeverReturnsZero(Type _)
         {
             // We cannot call the generic method via reflection easily in a parameterised
             // theory, so we assert the full set individually and use this theory just to
@@ -508,6 +372,138 @@ namespace Alis.Core.Ecs.Test.Updating
         {
             Assert.Equal(16, ComponentStorageBase.GetComponentSize<decimal>());
         }
+        // ─────────────────────────────────────────────────────────────────────
+        // Helper types used only in this test class
+        // ─────────────────────────────────────────────────────────────────────
+
+        /// <summary>3-byte struct (not a power of two → must return -1).</summary>
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
+        private struct ThreeByteStruct
+        {
+            /// <summary>
+            ///     The
+            /// </summary>
+            public byte A;
+
+            /// <summary>
+            ///     The
+            /// </summary>
+            public byte B;
+
+            /// <summary>
+            ///     The
+            /// </summary>
+            public byte C;
+        }
+
+        /// <summary>12-byte struct (3 × int, not a power of two → must return -1).</summary>
+        [StructLayout(LayoutKind.Sequential)]
+        private struct TwelveByteStruct
+        {
+            /// <summary>
+            ///     The
+            /// </summary>
+            public int A;
+
+            /// <summary>
+            ///     The
+            /// </summary>
+            public int B;
+
+            /// <summary>
+            ///     The
+            /// </summary>
+            public int C;
+        }
+
+        /// <summary>32-byte struct (2 × decimal, power of two but &gt; 16 → must return -1).</summary>
+        [StructLayout(LayoutKind.Sequential)]
+        private struct TwoDecimalsStruct
+        {
+            /// <summary>
+            ///     The
+            /// </summary>
+            public decimal A;
+
+            /// <summary>
+            ///     The
+            /// </summary>
+            public decimal B;
+        }
+
+        /// <summary>Struct that contains a managed reference (string) → must return -1.</summary>
+        [StructLayout(LayoutKind.Sequential)]
+        private struct StructContainingRef
+        {
+            /// <summary>
+            ///     The text
+            /// </summary>
+            public string Text;
+        }
+
+        /// <summary>Custom 2-byte struct (should return 2).</summary>
+        [StructLayout(LayoutKind.Sequential)]
+        private struct TwoByteStruct
+        {
+            /// <summary>
+            ///     The value
+            /// </summary>
+            public short Value;
+        }
+
+        /// <summary>Custom 4-byte struct (two shorts → should return 4).</summary>
+        [StructLayout(LayoutKind.Sequential)]
+        private struct FourByteStruct
+        {
+            /// <summary>
+            ///     The
+            /// </summary>
+            public short A;
+
+            /// <summary>
+            ///     The
+            /// </summary>
+            public short B;
+        }
+
+        /// <summary>Custom 8-byte struct (two ints → should return 8).</summary>
+        [StructLayout(LayoutKind.Sequential)]
+        private struct EightByteStruct
+        {
+            /// <summary>
+            ///     The
+            /// </summary>
+            public int A;
+
+            /// <summary>
+            ///     The
+            /// </summary>
+            public int B;
+        }
+
+        /// <summary>Custom 16-byte struct (four ints → should return 16).</summary>
+        [StructLayout(LayoutKind.Sequential)]
+        private struct SixteenByteStruct
+        {
+            /// <summary>
+            ///     The
+            /// </summary>
+            public int A;
+
+            /// <summary>
+            ///     The
+            /// </summary>
+            public int B;
+
+            /// <summary>
+            ///     The
+            /// </summary>
+            public int C;
+
+            /// <summary>
+            ///     The
+            /// </summary>
+            public int D;
+        }
     }
 }
-

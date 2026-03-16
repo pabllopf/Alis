@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:NeighborCache.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -9,12 +38,12 @@ using Alis.Core.Ecs.Redifinition;
 namespace Alis.Core.Ecs
 {
     /// <summary>
-    /// The neighbor cache core class
+    ///     The neighbor cache core class
     /// </summary>
     internal static class NeighborCacheCore
     {
         /// <summary>
-        /// Modifies the components
+        ///     Modifies the components
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static FastImmutableArray<ComponentId> Modify(
@@ -26,7 +55,7 @@ namespace Alis.Core.Ecs
                 : MemoryHelpers.Remove(components, ids);
 
         /// <summary>
-        /// Modifies the single using the specified components
+        ///     Modifies the single using the specified components
         /// </summary>
         /// <param name="components">The components</param>
         /// <param name="id">The id</param>
@@ -47,58 +76,58 @@ namespace Alis.Core.Ecs
     // ---------------------------------------------------------------------------
 
     /// <summary>
-    /// The neighbor cache component ids class
+    ///     The neighbor cache component ids class
     /// </summary>
     internal static class NeighborCacheComponentIds<T1, T2>
     {
         /// <summary>
-        /// The id
+        ///     The id
         /// </summary>
         internal static readonly ComponentId[] Values = [Component<T1>.Id, Component<T2>.Id];
     }
 
     /// <summary>
-    /// The neighbor cache component ids class
+    ///     The neighbor cache component ids class
     /// </summary>
     internal static class NeighborCacheComponentIds<T1, T2, T3>
     {
         /// <summary>
-        /// The id
+        ///     The id
         /// </summary>
         internal static readonly ComponentId[] Values = [Component<T1>.Id, Component<T2>.Id, Component<T3>.Id];
     }
 
     /// <summary>
-    /// The neighbor cache component ids class
+    ///     The neighbor cache component ids class
     /// </summary>
     internal static class NeighborCacheComponentIds<T1, T2, T3, T4>
     {
         /// <summary>
-        /// The id
+        ///     The id
         /// </summary>
         internal static readonly ComponentId[] Values =
             [Component<T1>.Id, Component<T2>.Id, Component<T3>.Id, Component<T4>.Id];
     }
 
     /// <summary>
-    /// The neighbor cache component ids class
+    ///     The neighbor cache component ids class
     /// </summary>
     internal static class NeighborCacheComponentIds<T1, T2, T3, T4, T5>
     {
         /// <summary>
-        /// The id
+        ///     The id
         /// </summary>
         internal static readonly ComponentId[] Values =
             [Component<T1>.Id, Component<T2>.Id, Component<T3>.Id, Component<T4>.Id, Component<T5>.Id];
     }
 
     /// <summary>
-    /// The neighbor cache component ids class
+    ///     The neighbor cache component ids class
     /// </summary>
     internal static class NeighborCacheComponentIds<T1, T2, T3, T4, T5, T6>
     {
         /// <summary>
-        /// The id
+        ///     The id
         /// </summary>
         internal static readonly ComponentId[] Values =
         [
@@ -108,12 +137,12 @@ namespace Alis.Core.Ecs
     }
 
     /// <summary>
-    /// The neighbor cache component ids class
+    ///     The neighbor cache component ids class
     /// </summary>
     internal static class NeighborCacheComponentIds<T1, T2, T3, T4, T5, T6, T7>
     {
         /// <summary>
-        /// The id
+        ///     The id
         /// </summary>
         internal static readonly ComponentId[] Values =
         [
@@ -123,12 +152,12 @@ namespace Alis.Core.Ecs
     }
 
     /// <summary>
-    /// The neighbor cache component ids class
+    ///     The neighbor cache component ids class
     /// </summary>
     internal static class NeighborCacheComponentIds<T1, T2, T3, T4, T5, T6, T7, T8>
     {
         /// <summary>
-        /// The id
+        ///     The id
         /// </summary>
         internal static readonly ComponentId[] Values =
         [
@@ -148,9 +177,9 @@ namespace Alis.Core.Ecs
     internal static class NeighborCacheAdd<T1>
     {
         /// <summary>
-        /// The lookup
+        ///     The lookup
         /// </summary>
-#pragma warning disable CA1000 
+#pragma warning disable CA1000
         // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
@@ -160,9 +189,9 @@ namespace Alis.Core.Ecs
     internal static class NeighborCacheRemove<T1>
     {
         /// <summary>
-        /// The lookup
+        ///     The lookup
         /// </summary>
-        #pragma warning disable CA1000 
+#pragma warning disable CA1000
         // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
@@ -172,9 +201,9 @@ namespace Alis.Core.Ecs
     internal static class NeighborCacheAdd<T1, T2>
     {
         /// <summary>
-        /// The lookup
+        ///     The lookup
         /// </summary>
-        #pragma warning disable CA1000 
+#pragma warning disable CA1000
         // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
@@ -184,9 +213,9 @@ namespace Alis.Core.Ecs
     internal static class NeighborCacheRemove<T1, T2>
     {
         /// <summary>
-        /// The lookup
+        ///     The lookup
         /// </summary>
-        #pragma warning disable CA1000 
+#pragma warning disable CA1000
         // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
@@ -196,9 +225,9 @@ namespace Alis.Core.Ecs
     internal static class NeighborCacheAdd<T1, T2, T3>
     {
         /// <summary>
-        /// The lookup
+        ///     The lookup
         /// </summary>
-        #pragma warning disable CA1000 
+#pragma warning disable CA1000
         // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
@@ -208,9 +237,9 @@ namespace Alis.Core.Ecs
     internal static class NeighborCacheRemove<T1, T2, T3>
     {
         /// <summary>
-        /// The lookup
+        ///     The lookup
         /// </summary>
-        #pragma warning disable CA1000 
+#pragma warning disable CA1000
         // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
@@ -220,9 +249,9 @@ namespace Alis.Core.Ecs
     internal static class NeighborCacheAdd<T1, T2, T3, T4>
     {
         /// <summary>
-        /// The lookup
+        ///     The lookup
         /// </summary>
-        #pragma warning disable CA1000 
+#pragma warning disable CA1000
         // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
@@ -232,9 +261,9 @@ namespace Alis.Core.Ecs
     internal static class NeighborCacheRemove<T1, T2, T3, T4>
     {
         /// <summary>
-        /// The lookup
+        ///     The lookup
         /// </summary>
-        #pragma warning disable CA1000 
+#pragma warning disable CA1000
         // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
@@ -244,9 +273,9 @@ namespace Alis.Core.Ecs
     internal static class NeighborCacheAdd<T1, T2, T3, T4, T5>
     {
         /// <summary>
-        /// The lookup
+        ///     The lookup
         /// </summary>
-        #pragma warning disable CA1000 
+#pragma warning disable CA1000
         // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
@@ -256,9 +285,9 @@ namespace Alis.Core.Ecs
     internal static class NeighborCacheRemove<T1, T2, T3, T4, T5>
     {
         /// <summary>
-        /// The lookup
+        ///     The lookup
         /// </summary>
-        #pragma warning disable CA1000 
+#pragma warning disable CA1000
         // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
@@ -268,9 +297,9 @@ namespace Alis.Core.Ecs
     internal static class NeighborCacheAdd<T1, T2, T3, T4, T5, T6>
     {
         /// <summary>
-        /// The lookup
+        ///     The lookup
         /// </summary>
-        #pragma warning disable CA1000 
+#pragma warning disable CA1000
         // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
@@ -280,9 +309,9 @@ namespace Alis.Core.Ecs
     internal static class NeighborCacheRemove<T1, T2, T3, T4, T5, T6>
     {
         /// <summary>
-        /// The lookup
+        ///     The lookup
         /// </summary>
-        #pragma warning disable CA1000 
+#pragma warning disable CA1000
         // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
@@ -292,9 +321,9 @@ namespace Alis.Core.Ecs
     internal static class NeighborCacheAdd<T1, T2, T3, T4, T5, T6, T7>
     {
         /// <summary>
-        /// The lookup
+        ///     The lookup
         /// </summary>
-        #pragma warning disable CA1000 
+#pragma warning disable CA1000
         // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
@@ -304,9 +333,9 @@ namespace Alis.Core.Ecs
     internal static class NeighborCacheRemove<T1, T2, T3, T4, T5, T6, T7>
     {
         /// <summary>
-        /// The lookup
+        ///     The lookup
         /// </summary>
-        #pragma warning disable CA1000 
+#pragma warning disable CA1000
         // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
@@ -316,9 +345,9 @@ namespace Alis.Core.Ecs
     internal static class NeighborCacheAdd<T1, T2, T3, T4, T5, T6, T7, T8>
     {
         /// <summary>
-        /// The lookup
+        ///     The lookup
         /// </summary>
-        #pragma warning disable CA1000 
+#pragma warning disable CA1000
         // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
@@ -328,14 +357,14 @@ namespace Alis.Core.Ecs
     internal static class NeighborCacheRemove<T1, T2, T3, T4, T5, T6, T7, T8>
     {
         /// <summary>
-        /// The lookup
+        ///     The lookup
         /// </summary>
-        #pragma warning disable CA1000 
+#pragma warning disable CA1000
         // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
-        #pragma warning restore CA1000
+#pragma warning restore CA1000
     }
-    
+
     // ---------------------------------------------------------------------------
     // IArchetypeGraphEdge implementations (lean structs – no nested classes)
     // ---------------------------------------------------------------------------
@@ -420,4 +449,3 @@ namespace Alis.Core.Ecs
             => components = NeighborCacheCore.ModifySingle(components, Component<T>.Id, add);
     }
 }
-

@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:FrentNeighborCacheBenchmark.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using Alis.Benchmark.CustomEcs.Components;
 using BenchmarkDotNet.Attributes;
 using Frent;
@@ -6,27 +35,28 @@ using Frent.Core;
 namespace Alis.Benchmark.CustomNeighborCache
 {
     /// <summary>
-    /// The custom neighbor cache benchmark class
+    ///     The custom neighbor cache benchmark class
     /// </summary>
     public partial class CustomNeighborCacheBenchmark
     {
         /// <summary>
-        /// The id
+        ///     The id
         /// </summary>
         private static readonly EntityType _frentBaseType =
             Entity.EntityTypeOf([Component<Component16>.ID], []);
 
         /// <summary>
-        /// The frent world
-        /// </summary>
-        private World _frentWorld;
-        /// <summary>
-        /// The frent entities
+        ///     The frent entities
         /// </summary>
         private Entity[] _frentEntities;
 
         /// <summary>
-        /// Setup the frent
+        ///     The frent world
+        /// </summary>
+        private World _frentWorld;
+
+        /// <summary>
+        ///     Setup the frent
         /// </summary>
         private void SetupFrent()
         {
@@ -41,12 +71,12 @@ namespace Alis.Benchmark.CustomNeighborCache
         }
 
         /// <summary>
-        /// Disposes the frent
+        ///     Disposes the frent
         /// </summary>
         private void DisposeFrent() => _frentWorld.Dispose();
 
         /// <summary>
-        /// Frents the neighbor add remove
+        ///     Frents the neighbor add remove
         /// </summary>
         [Benchmark(Baseline = true)]
         public void Frent_Neighbor_AddRemove()
@@ -65,7 +95,7 @@ namespace Alis.Benchmark.CustomNeighborCache
         }
 
         /// <summary>
-        /// Runs the frent 1
+        ///     Runs the frent 1
         /// </summary>
         private void RunFrent1()
         {
@@ -78,7 +108,7 @@ namespace Alis.Benchmark.CustomNeighborCache
         }
 
         /// <summary>
-        /// Runs the frent 2
+        ///     Runs the frent 2
         /// </summary>
         private void RunFrent2()
         {
@@ -91,7 +121,7 @@ namespace Alis.Benchmark.CustomNeighborCache
         }
 
         /// <summary>
-        /// Runs the frent 3
+        ///     Runs the frent 3
         /// </summary>
         private void RunFrent3()
         {
@@ -104,7 +134,7 @@ namespace Alis.Benchmark.CustomNeighborCache
         }
 
         /// <summary>
-        /// Runs the frent 4
+        ///     Runs the frent 4
         /// </summary>
         private void RunFrent4()
         {
@@ -117,7 +147,7 @@ namespace Alis.Benchmark.CustomNeighborCache
         }
 
         /// <summary>
-        /// Runs the frent 5
+        ///     Runs the frent 5
         /// </summary>
         private void RunFrent5()
         {
@@ -130,7 +160,7 @@ namespace Alis.Benchmark.CustomNeighborCache
         }
 
         /// <summary>
-        /// Runs the frent 6
+        ///     Runs the frent 6
         /// </summary>
         private void RunFrent6()
         {
@@ -144,7 +174,7 @@ namespace Alis.Benchmark.CustomNeighborCache
         }
 
         /// <summary>
-        /// Runs the frent 7
+        ///     Runs the frent 7
         /// </summary>
         private void RunFrent7()
         {
@@ -158,7 +188,7 @@ namespace Alis.Benchmark.CustomNeighborCache
         }
 
         /// <summary>
-        /// Runs the frent 8
+        ///     Runs the frent 8
         /// </summary>
         private void RunFrent8()
         {
@@ -172,4 +202,3 @@ namespace Alis.Benchmark.CustomNeighborCache
         }
     }
 }
-

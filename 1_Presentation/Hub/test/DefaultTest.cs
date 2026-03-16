@@ -27,10 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Xunit;
 using System.Collections.Generic;
 using Alis.App.Hub.Entity;
 using Alis.App.Hub.Windows.Sections;
+using Xunit;
 
 namespace Alis.App.Hub.Test
 {
@@ -114,7 +114,7 @@ namespace Alis.App.Hub.Test
         {
             List<ReleaseElement> releases = new List<ReleaseElement>
             {
-                new ReleaseElement(new Dictionary<object, object> { {"version", "1.0.0"} })
+                new ReleaseElement(new Dictionary<object, object> {{"version", "1.0.0"}})
             };
 
             ReleasesInfo info = new ReleasesInfo(releases);
