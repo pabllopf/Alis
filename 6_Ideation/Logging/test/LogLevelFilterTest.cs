@@ -170,6 +170,10 @@ namespace Alis.Core.Aspect.Logging.Test
         /// <returns>The log entry</returns>
         private static ILogEntry CreateEntry(LogLevel level) => new LogEntry(level, "Test", "Logger");
 
+        /// <summary>
+        /// Gets the massive level combinations
+        /// </summary>
+        /// <returns>A system collections generic enumerable of object array</returns>
         public static System.Collections.Generic.IEnumerable<object[]> GetMassiveLevelCombinations()
         {
             LogLevel[] levels =
@@ -195,6 +199,12 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that log level filter massive level combinations are deterministic
+        /// </summary>
+        /// <param name="repeat">The repeat</param>
+        /// <param name="minimum">The minimum</param>
+        /// <param name="current">The current</param>
         [Theory, MemberData(nameof(GetMassiveLevelCombinations))]
         public void LogLevelFilter_MassiveLevelCombinations_AreDeterministic(int repeat, LogLevel minimum, LogLevel current)
         {

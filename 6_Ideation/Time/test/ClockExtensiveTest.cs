@@ -304,6 +304,10 @@ namespace Alis.Core.Aspect.Time.Test
             Assert.NotNull(timespan);
         }
 
+        /// <summary>
+        /// Gets the massive lifecycle cases
+        /// </summary>
+        /// <returns>A system collections generic enumerable of object array</returns>
         public static System.Collections.Generic.IEnumerable<object[]> GetMassiveLifecycleCases()
         {
             for (int cycleCount = 1; cycleCount <= 2000; cycleCount++)
@@ -312,6 +316,10 @@ namespace Alis.Core.Aspect.Time.Test
             }
         }
 
+        /// <summary>
+        /// Tests that lifecycle massive cycles remains stable
+        /// </summary>
+        /// <param name="cycleCount">The cycle count</param>
         [Theory, MemberData(nameof(GetMassiveLifecycleCases))]
         public void Lifecycle_MassiveCycles_RemainsStable(int cycleCount)
         {

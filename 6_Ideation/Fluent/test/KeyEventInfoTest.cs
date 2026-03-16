@@ -65,6 +65,10 @@ namespace Alis.Core.Aspect.Fluent.Test
             Assert.Equal(TimeSpan.Zero, info.HoldDuration);
         }
 
+        /// <summary>
+        /// Gets the massive constructor cases
+        /// </summary>
+        /// <returns>A system collections generic enumerable of object array</returns>
         public static System.Collections.Generic.IEnumerable<object[]> GetMassiveConstructorCases()
         {
             ConsoleKey[] keys =
@@ -84,6 +88,12 @@ namespace Alis.Core.Aspect.Fluent.Test
             }
         }
 
+        /// <summary>
+        /// Tests that constructor massive normal and extreme cases assigns fields
+        /// </summary>
+        /// <param name="key">The key</param>
+        /// <param name="timestamp">The timestamp</param>
+        /// <param name="holdDuration">The hold duration</param>
         [Theory, MemberData(nameof(GetMassiveConstructorCases))]
         public void Constructor_Massive_NormalAndExtremeCases_AssignsFields(ConsoleKey key, DateTime timestamp, TimeSpan holdDuration)
         {

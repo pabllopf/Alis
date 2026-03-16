@@ -323,6 +323,10 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.Equal(unicodeName, zipEntryInfo.FullName);
         }
 
+        /// <summary>
+        /// Gets the massive zip entry cases
+        /// </summary>
+        /// <returns>A system collections generic enumerable of object array</returns>
         public static System.Collections.Generic.IEnumerable<object[]> GetMassiveZipEntryCases()
         {
             DateTimeOffset baseTime = new DateTimeOffset(2020, 1, 1, 0, 0, 0, TimeSpan.Zero);
@@ -340,6 +344,12 @@ namespace Alis.Core.Aspect.Memory.Test
             }
         }
 
+        /// <summary>
+        /// Tests that zip entry info massive normal and extreme cases round trip metadata
+        /// </summary>
+        /// <param name="fullName">The full name</param>
+        /// <param name="length">The length</param>
+        /// <param name="timestamp">The timestamp</param>
         [Theory, MemberData(nameof(GetMassiveZipEntryCases))]
         public void ZipEntryInfo_MassiveNormalAndExtremeCases_RoundTripMetadata(string fullName, long length, DateTimeOffset timestamp)
         {
