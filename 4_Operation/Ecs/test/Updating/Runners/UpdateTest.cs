@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Fluent.Components;
-using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Test.Models;
 using Alis.Core.Ecs.Updating.Runners;
 using Xunit;
@@ -40,10 +39,28 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
     /// </summary>
     public class UpdateTest
     {
+        #region Update<TComp, TArg1..TArg8> (Arity 8) Tests
+
+        /// <summary>
+        ///     Tests that Update with arity 8 can be constructed with capacity
+        /// </summary>
+        [Fact]
+        public void Update_Arity8_Constructor_CreatesInstanceWithCapacity()
+        {
+            // Act
+            Update<Update8Component, Position, Velocity, Health, Armor, Damage, Transform, TestComponent, AnotherComponent> update =
+                new Update<Update8Component, Position, Velocity, Health, Armor, Damage, Transform, TestComponent, AnotherComponent>(10);
+
+            // Assert
+            Assert.NotNull(update);
+        }
+
+        #endregion
+
         #region Update<TComp> (Arity 0) Tests
 
         /// <summary>
-        /// Tests that Update with arity 0 can be constructed with capacity
+        ///     Tests that Update with arity 0 can be constructed with capacity
         /// </summary>
         [Fact]
         public void Update_Arity0_Constructor_CreatesInstanceWithCapacity()
@@ -56,7 +73,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         }
 
         /// <summary>
-        /// Tests that Update with arity 0 Run method invokes OnUpdate for all entities
+        ///     Tests that Update with arity 0 Run method invokes OnUpdate for all entities
         /// </summary>
         [Fact]
         public void Update_Arity0_Run_InvokesOnUpdateForAllEntities()
@@ -72,7 +89,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         }
 
         /// <summary>
-        /// Tests that Update with arity 0 Run with range invokes OnUpdate for specified entities
+        ///     Tests that Update with arity 0 Run with range invokes OnUpdate for specified entities
         /// </summary>
         [Fact]
         public void Update_Arity0_RunWithRange_InvokesOnUpdateForSpecifiedRange()
@@ -95,7 +112,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         #region Update<TComp, TArg1, TArg2> (Arity 2) Tests
 
         /// <summary>
-        /// Tests that Update with arity 2 can be constructed with capacity
+        ///     Tests that Update with arity 2 can be constructed with capacity
         /// </summary>
         [Fact]
         public void Update_Arity2_Constructor_CreatesInstanceWithCapacity()
@@ -108,7 +125,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         }
 
         /// <summary>
-        /// Tests that Update with arity 2 Run method invokes Update for all entities
+        ///     Tests that Update with arity 2 Run method invokes Update for all entities
         /// </summary>
         [Fact]
         public void Update_Arity2_Run_InvokesUpdateForAllEntities()
@@ -126,7 +143,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         }
 
         /// <summary>
-        /// Tests that Update with arity 2 passes correct component references
+        ///     Tests that Update with arity 2 passes correct component references
         /// </summary>
         [Fact]
         public void Update_Arity2_Run_PassesCorrectComponentReferences()
@@ -150,13 +167,13 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         #region Update<TComp, TArg1, TArg2, TArg3> (Arity 3) Tests
 
         /// <summary>
-        /// Tests that Update with arity 3 can be constructed with capacity
+        ///     Tests that Update with arity 3 can be constructed with capacity
         /// </summary>
         [Fact]
         public void Update_Arity3_Constructor_CreatesInstanceWithCapacity()
         {
             // Act
-            Update<Update3Component, Position, Velocity, Health> update = 
+            Update<Update3Component, Position, Velocity, Health> update =
                 new Update<Update3Component, Position, Velocity, Health>(10);
 
             // Assert
@@ -164,7 +181,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         }
 
         /// <summary>
-        /// Tests that Update with arity 3 Run method invokes Update for all entities
+        ///     Tests that Update with arity 3 Run method invokes Update for all entities
         /// </summary>
         [Fact]
         public void Update_Arity3_Run_InvokesUpdateForAllEntities()
@@ -183,7 +200,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         }
 
         /// <summary>
-        /// Tests that Update with arity 3 passes correct component references
+        ///     Tests that Update with arity 3 passes correct component references
         /// </summary>
         [Fact]
         public void Update_Arity3_Run_PassesCorrectComponentReferences()
@@ -208,13 +225,13 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         #region Update<TComp, TArg1, TArg2, TArg3, TArg4> (Arity 4) Tests
 
         /// <summary>
-        /// Tests that Update with arity 4 can be constructed with capacity
+        ///     Tests that Update with arity 4 can be constructed with capacity
         /// </summary>
         [Fact]
         public void Update_Arity4_Constructor_CreatesInstanceWithCapacity()
         {
             // Act
-            Update<Update4Component, Position, Velocity, Health, Armor> update = 
+            Update<Update4Component, Position, Velocity, Health, Armor> update =
                 new Update<Update4Component, Position, Velocity, Health, Armor>(10);
 
             // Assert
@@ -222,7 +239,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         }
 
         /// <summary>
-        /// Tests that Update with arity 4 Run method invokes Update for all entities
+        ///     Tests that Update with arity 4 Run method invokes Update for all entities
         /// </summary>
         [Fact]
         public void Update_Arity4_Run_InvokesUpdateForAllEntities()
@@ -246,13 +263,13 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         #region Update<TComp, TArg1..TArg6> (Arity 6) Tests
 
         /// <summary>
-        /// Tests that Update with arity 6 can be constructed with capacity
+        ///     Tests that Update with arity 6 can be constructed with capacity
         /// </summary>
         [Fact]
         public void Update_Arity6_Constructor_CreatesInstanceWithCapacity()
         {
             // Act
-            Update<Update6Component, Position, Velocity, Health, Armor, Damage, Transform> update = 
+            Update<Update6Component, Position, Velocity, Health, Armor, Damage, Transform> update =
                 new Update<Update6Component, Position, Velocity, Health, Armor, Damage, Transform>(10);
 
             // Assert
@@ -260,7 +277,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         }
 
         /// <summary>
-        /// Tests that Update with arity 6 Run method invokes Update for all entities
+        ///     Tests that Update with arity 6 Run method invokes Update for all entities
         /// </summary>
         [Fact]
         public void Update_Arity6_Run_InvokesUpdateForAllEntities()
@@ -292,13 +309,13 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         #region Update<TComp, TArg1..TArg7> (Arity 7) Tests
 
         /// <summary>
-        /// Tests that Update with arity 7 can be constructed with capacity
+        ///     Tests that Update with arity 7 can be constructed with capacity
         /// </summary>
         [Fact]
         public void Update_Arity7_Constructor_CreatesInstanceWithCapacity()
         {
             // Act
-            Update<Update7Component, Position, Velocity, Health, Armor, Damage, Transform, TestComponent> update = 
+            Update<Update7Component, Position, Velocity, Health, Armor, Damage, Transform, TestComponent> update =
                 new Update<Update7Component, Position, Velocity, Health, Armor, Damage, Transform, TestComponent>(10);
 
             // Assert
@@ -306,7 +323,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         }
 
         /// <summary>
-        /// Tests that Update with arity 7 Run method invokes Update for all entities
+        ///     Tests that Update with arity 7 Run method invokes Update for all entities
         /// </summary>
         [Fact]
         public void Update_Arity7_Run_InvokesUpdateForAllEntities()
@@ -336,28 +353,10 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
 
         #endregion
 
-        #region Update<TComp, TArg1..TArg8> (Arity 8) Tests
-
-        /// <summary>
-        /// Tests that Update with arity 8 can be constructed with capacity
-        /// </summary>
-        [Fact]
-        public void Update_Arity8_Constructor_CreatesInstanceWithCapacity()
-        {
-            // Act
-            Update<Update8Component, Position, Velocity, Health, Armor, Damage, Transform, TestComponent, AnotherComponent> update = 
-                new Update<Update8Component, Position, Velocity, Health, Armor, Damage, Transform, TestComponent, AnotherComponent>(10);
-
-            // Assert
-            Assert.NotNull(update);
-        }
-
-        #endregion
-
         #region Multiple Entities Tests
 
         /// <summary>
-        /// Tests that Update processes multiple entities correctly
+        ///     Tests that Update processes multiple entities correctly
         /// </summary>
         [Fact]
         public void Update_Run_ProcessesMultipleEntitiesCorrectly()
@@ -376,7 +375,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         }
 
         /// <summary>
-        /// Tests that Update processes entities in reverse order
+        ///     Tests that Update processes entities in reverse order
         /// </summary>
         [Fact]
         public void Update_Run_ProcessesEntitiesInReverseOrder()
@@ -398,17 +397,17 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
     #region Test Components
 
     /// <summary>
-    /// Component for testing Update with arity 0
+    ///     Component for testing Update with arity 0
     /// </summary>
     internal struct UpdateComponent : IOnUpdate
     {
         /// <summary>
-        /// The call count
+        ///     The call count
         /// </summary>
         public int CallCount;
 
         /// <summary>
-        /// Ons the update using the specified self
+        ///     Ons the update using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         public void OnUpdate(IGameObject self)
@@ -418,17 +417,17 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
     }
 
     /// <summary>
-    /// Component for testing Update with arity 2
+    ///     Component for testing Update with arity 2
     /// </summary>
     internal struct Update2Component : IOnUpdate<Position, Velocity>
     {
         /// <summary>
-        /// The call count
+        ///     The call count
         /// </summary>
         public int CallCount;
 
         /// <summary>
-        /// Updates the self
+        ///     Updates the self
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="pos">The pos</param>
@@ -442,17 +441,17 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
     }
 
     /// <summary>
-    /// Component for testing Update with arity 3
+    ///     Component for testing Update with arity 3
     /// </summary>
     internal struct Update3Component : IOnUpdate<Position, Velocity, Health>
     {
         /// <summary>
-        /// The call count
+        ///     The call count
         /// </summary>
         public int CallCount;
 
         /// <summary>
-        /// Updates the self
+        ///     Updates the self
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="pos">The pos</param>
@@ -468,17 +467,17 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
     }
 
     /// <summary>
-    /// Component for testing Update with arity 4
+    ///     Component for testing Update with arity 4
     /// </summary>
     internal struct Update4Component : IOnUpdate<Position, Velocity, Health, Armor>
     {
         /// <summary>
-        /// The call count
+        ///     The call count
         /// </summary>
         public int CallCount;
 
         /// <summary>
-        /// Updates the self
+        ///     Updates the self
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="pos">The pos</param>
@@ -494,17 +493,17 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
     }
 
     /// <summary>
-    /// Component for testing Update with arity 6
+    ///     Component for testing Update with arity 6
     /// </summary>
     internal struct Update6Component : IOnUpdate<Position, Velocity, Health, Armor, Damage, Transform>
     {
         /// <summary>
-        /// The call count
+        ///     The call count
         /// </summary>
         public int CallCount;
 
         /// <summary>
-        /// Updates the self
+        ///     Updates the self
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="pos">The pos</param>
@@ -513,7 +512,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         /// <param name="armor">The armor</param>
         /// <param name="damage">The damage</param>
         /// <param name="transform">The transform</param>
-        public void Update(IGameObject self, ref Position pos, ref Velocity vel, ref Health health, 
+        public void Update(IGameObject self, ref Position pos, ref Velocity vel, ref Health health,
             ref Armor armor, ref Damage damage, ref Transform transform)
         {
             CallCount++;
@@ -527,17 +526,17 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
     }
 
     /// <summary>
-    /// Component for testing Update with arity 7
+    ///     Component for testing Update with arity 7
     /// </summary>
     internal struct Update7Component : IOnUpdate<Position, Velocity, Health, Armor, Damage, Transform, TestComponent>
     {
         /// <summary>
-        /// The call count
+        ///     The call count
         /// </summary>
         public int CallCount;
 
         /// <summary>
-        /// Updates the self
+        ///     Updates the self
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="pos">The pos</param>
@@ -547,7 +546,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         /// <param name="damage">The damage</param>
         /// <param name="transform">The transform</param>
         /// <param name="test">The test</param>
-        public void Update(IGameObject self, ref Position pos, ref Velocity vel, ref Health health, 
+        public void Update(IGameObject self, ref Position pos, ref Velocity vel, ref Health health,
             ref Armor armor, ref Damage damage, ref Transform transform, ref TestComponent test)
         {
             CallCount++;
@@ -561,17 +560,17 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
     }
 
     /// <summary>
-    /// Component for testing Update with arity 8
+    ///     Component for testing Update with arity 8
     /// </summary>
     internal struct Update8Component : IOnUpdate<Position, Velocity, Health, Armor, Damage, Transform, TestComponent, AnotherComponent>
     {
         /// <summary>
-        /// The call count
+        ///     The call count
         /// </summary>
         public int CallCount;
 
         /// <summary>
-        /// Updates the self
+        ///     Updates the self
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="pos">The pos</param>
@@ -582,7 +581,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         /// <param name="transform">The transform</param>
         /// <param name="test">The test</param>
         /// <param name="another">The another</param>
-        public void Update(IGameObject self, ref Position pos, ref Velocity vel, ref Health health, 
+        public void Update(IGameObject self, ref Position pos, ref Velocity vel, ref Health health,
             ref Armor armor, ref Damage damage, ref Transform transform, ref TestComponent test, ref AnotherComponent another)
         {
             CallCount++;
@@ -599,17 +598,17 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
     }
 
     /// <summary>
-    /// Component for tracking execution order
+    ///     Component for tracking execution order
     /// </summary>
     internal struct OrderTrackingComponent : IOnUpdate
     {
         /// <summary>
-        /// The order
+        ///     The order
         /// </summary>
         public int Order;
 
         /// <summary>
-        /// Ons the update using the specified self
+        ///     Ons the update using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         public void OnUpdate(IGameObject self)
@@ -620,4 +619,3 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
 
     #endregion
 }
-
