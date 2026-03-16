@@ -51,37 +51,42 @@ namespace Alis.Extension.Updater
     public sealed class UpdateManager
     {
         /// <summary>
-        /// The threshold entries
+        ///     The threshold entries
         /// </summary>
         private const int ThresholdEntries = 10000;
+
         /// <summary>
-        /// The threshold size
+        ///     The threshold size
         /// </summary>
         private const int ThresholdSize = 1000000000; // 1 GB
+
         /// <summary>
-        /// The threshold ratio
+        ///     The threshold ratio
         /// </summary>
         private const double ThresholdRatio = 70.0; // Compression ratio threshold
 
         /// <summary>
-        /// The file service
+        ///     The file service
         /// </summary>
         public readonly IFileService FileService;
+
         /// <summary>
-        /// The git hub api service
+        ///     The git hub api service
         /// </summary>
         public readonly IGitHubApiService GitHubApiService;
+
         /// <summary>
-        /// The program folder
+        ///     The program folder
         /// </summary>
         public readonly string ProgramFolder;
+
         /// <summary>
-        /// The version to install
+        ///     The version to install
         /// </summary>
         public readonly string VersionToInstall;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UpdateManager"/> class
+        ///     Initializes a new instance of the <see cref="UpdateManager" /> class
         /// </summary>
         /// <param name="gitHubApiService">The git hub api service</param>
         /// <param name="versionToInstall">The version to install</param>
@@ -96,23 +101,24 @@ namespace Alis.Extension.Updater
         }
 
         /// <summary>
-        /// Gets or sets the value of the progress
+        ///     Gets or sets the value of the progress
         /// </summary>
         public float Progress { get; private set; }
+
         /// <summary>
-        /// Gets or sets the value of the message
+        ///     Gets or sets the value of the message
         /// </summary>
         public string Message { get; private set; }
 
         /// <summary>
-        /// Gets or sets the wait delay in milliseconds used by continuation checkpoints.
+        ///     Gets or sets the wait delay in milliseconds used by continuation checkpoints.
         /// </summary>
         internal int ContinueDelayMilliseconds { get; set; } = 1000;
 
         public event UpdateProgressEventHandler UpdateProgressChanged;
 
         /// <summary>
-        /// Ons the update progress changed using the specified progress
+        ///     Ons the update progress changed using the specified progress
         /// </summary>
         /// <param name="progress">The progress</param>
         /// <param name="message">The message</param>
@@ -124,7 +130,7 @@ namespace Alis.Extension.Updater
         }
 
         /// <summary>
-        /// Starts the cts token
+        ///     Starts the cts token
         /// </summary>
         /// <param name="ctsToken">The cts token</param>
         /// <exception cref="Exception">Error updating program: {ex.Message}</exception>
@@ -181,7 +187,7 @@ namespace Alis.Extension.Updater
         }
 
         /// <summary>
-        /// Handles the cancellation request using the specified cts token
+        ///     Handles the cancellation request using the specified cts token
         /// </summary>
         /// <param name="ctsToken">The cts token</param>
         /// <returns>The bool</returns>
@@ -197,13 +203,13 @@ namespace Alis.Extension.Updater
         }
 
         /// <summary>
-        /// Gets the architecture
+        ///     Gets the architecture
         /// </summary>
         /// <returns>The string</returns>
         internal string GetArchitecture() => RuntimeInformation.OSArchitecture.ToString().ToLower();
 
         /// <summary>
-        /// Reports the platform detection using the specified platform
+        ///     Reports the platform detection using the specified platform
         /// </summary>
         /// <param name="platform">The platform</param>
         /// <param name="architecture">The architecture</param>
@@ -215,7 +221,7 @@ namespace Alis.Extension.Updater
         }
 
         /// <summary>
-        /// Gets the selected asset using the specified latest release
+        ///     Gets the selected asset using the specified latest release
         /// </summary>
         /// <param name="latestRelease">The latest release</param>
         /// <param name="platform">The platform</param>
@@ -223,12 +229,12 @@ namespace Alis.Extension.Updater
         /// <returns>A dictionary of string and object</returns>
         internal Dictionary<string, object> GetSelectedAsset(Dictionary<string, object> latestRelease, string platform, string architecture)
         {
-            object[] assets = (object[])latestRelease["assets"];
+            object[] assets = (object[]) latestRelease["assets"];
             return SelectAsset(assets, platform, architecture);
         }
 
         /// <summary>
-        /// Handles the missing compatible package using the specified platform
+        ///     Handles the missing compatible package using the specified platform
         /// </summary>
         /// <param name="platform">The platform</param>
         /// <param name="architecture">The architecture</param>
@@ -241,7 +247,7 @@ namespace Alis.Extension.Updater
         }
 
         /// <summary>
-        /// Reports the download preparation using the specified platform
+        ///     Reports the download preparation using the specified platform
         /// </summary>
         /// <param name="platform">The platform</param>
         /// <param name="architecture">The architecture</param>
@@ -258,7 +264,7 @@ namespace Alis.Extension.Updater
         }
 
         /// <summary>
-        /// Ises the latest version already downloaded using the specified download url
+        ///     Ises the latest version already downloaded using the specified download url
         /// </summary>
         /// <param name="downloadUrl">The download url</param>
         /// <returns>The exists</returns>
@@ -284,7 +290,7 @@ namespace Alis.Extension.Updater
         }
 
         /// <summary>
-        /// Finishes the already downloaded flow
+        ///     Finishes the already downloaded flow
         /// </summary>
         /// <returns>The bool</returns>
         internal bool FinishAlreadyDownloadedFlow()
@@ -297,7 +303,7 @@ namespace Alis.Extension.Updater
         }
 
         /// <summary>
-        /// Downloads the latest version using the specified download url
+        ///     Downloads the latest version using the specified download url
         /// </summary>
         /// <param name="downloadUrl">The download url</param>
         /// <param name="version">The version</param>
@@ -311,7 +317,7 @@ namespace Alis.Extension.Updater
         }
 
         /// <summary>
-        /// Handles the download failure
+        ///     Handles the download failure
         /// </summary>
         /// <returns>The bool</returns>
         internal bool HandleDownloadFailure()
@@ -323,7 +329,7 @@ namespace Alis.Extension.Updater
         }
 
         /// <summary>
-        /// Installs the latest version using the specified file async
+        ///     Installs the latest version using the specified file async
         /// </summary>
         /// <param name="fileAsync">The file</param>
         /// <param name="version">The version</param>
@@ -345,7 +351,7 @@ namespace Alis.Extension.Updater
         }
 
         /// <summary>
-        /// Backups this instance
+        ///     Backups this instance
         /// </summary>
         [ExcludeFromCodeCoverage]
         internal void Backup()
@@ -365,7 +371,7 @@ namespace Alis.Extension.Updater
         }
 
         /// <summary>
-        /// Moves the program folder to backup
+        ///     Moves the program folder to backup
         /// </summary>
         /// <returns>The backup path</returns>
         internal string MoveProgramFolderToBackup()
@@ -385,7 +391,7 @@ namespace Alis.Extension.Updater
         }
 
         /// <summary>
-        /// Compresses the backup folder using the specified backup path
+        ///     Compresses the backup folder using the specified backup path
         /// </summary>
         /// <param name="backupPath">The backup path</param>
         internal void CompressBackupFolder(string backupPath)
@@ -400,7 +406,7 @@ namespace Alis.Extension.Updater
         }
 
         /// <summary>
-        /// Removes the old backup archives
+        ///     Removes the old backup archives
         /// </summary>
         internal void RemoveOldBackupArchives()
         {
@@ -425,7 +431,7 @@ namespace Alis.Extension.Updater
         }
 
         /// <summary>
-        /// Gets the platform
+        ///     Gets the platform
         /// </summary>
         /// <exception cref="PlatformNotSupportedException">Platform not supported.</exception>
         /// <returns>The string</returns>
@@ -433,7 +439,7 @@ namespace Alis.Extension.Updater
         private string GetPlatform() => RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "win" : RuntimeInformation.IsOSPlatform(OSPlatform.Linux) ? "linux" : RuntimeInformation.IsOSPlatform(OSPlatform.OSX) ? "osx" : throw new PlatformNotSupportedException("Platform not supported.");
 
         /// <summary>
-        /// Selects the asset using the specified assets
+        ///     Selects the asset using the specified assets
         /// </summary>
         /// <param name="assets">The assets</param>
         /// <param name="platform">The platform</param>
@@ -459,7 +465,7 @@ namespace Alis.Extension.Updater
         }
 
         /// <summary>
-        /// Gets the latest release
+        ///     Gets the latest release
         /// </summary>
         /// <returns>A task containing a dictionary of string and object</returns>
         [ExcludeFromCodeCoverage]
@@ -525,9 +531,9 @@ namespace Alis.Extension.Updater
             return null;
         }
 
-        
+
         /// <summary>
-        /// Downloads the file using the specified url
+        ///     Downloads the file using the specified url
         /// </summary>
         /// <param name="url">The url</param>
         /// <returns>The file path</returns>
@@ -550,7 +556,7 @@ namespace Alis.Extension.Updater
         }
 
         /// <summary>
-        /// Extracts the and replace using the specified file async
+        ///     Extracts the and replace using the specified file async
         /// </summary>
         /// <param name="fileAsync">The file</param>
         /// <exception cref="InvalidOperationException">The file has an invalid extension.</exception>
@@ -564,7 +570,7 @@ namespace Alis.Extension.Updater
         }
 
         /// <summary>
-        /// Gets the package type using the specified file async
+        ///     Gets the package type using the specified file async
         /// </summary>
         /// <param name="fileAsync">The file</param>
         /// <returns>The package type</returns>
@@ -584,21 +590,21 @@ namespace Alis.Extension.Updater
         }
 
         /// <summary>
-        /// Ises the zip package using the specified file async
+        ///     Ises the zip package using the specified file async
         /// </summary>
         /// <param name="fileAsync">The file</param>
         /// <returns>The bool</returns>
         internal bool IsZipPackage(string fileAsync) => fileAsync.Contains(".zip");
 
         /// <summary>
-        /// Ises the dmg package using the specified file async
+        ///     Ises the dmg package using the specified file async
         /// </summary>
         /// <param name="fileAsync">The file</param>
         /// <returns>The bool</returns>
         internal bool IsDmgPackage(string fileAsync) => fileAsync.Contains(".dmg");
 
         /// <summary>
-        /// Executes the package extraction using the specified file async
+        ///     Executes the package extraction using the specified file async
         /// </summary>
         /// <param name="fileAsync">The file</param>
         /// <param name="packageType">The package type</param>
@@ -625,7 +631,7 @@ namespace Alis.Extension.Updater
         }
 
         /// <summary>
-        /// Reports the package extraction completed using the specified package type
+        ///     Reports the package extraction completed using the specified package type
         /// </summary>
         /// <param name="packageType">The package type</param>
         internal void ReportPackageExtractionCompleted(string packageType)
@@ -645,7 +651,7 @@ namespace Alis.Extension.Updater
         }
 
         /// <summary>
-        /// Extracts the dmg using the specified file async
+        ///     Extracts the dmg using the specified file async
         /// </summary>
         /// <param name="fileAsync">The file</param>
         internal void ExtractDmg(string fileAsync)
@@ -659,14 +665,14 @@ namespace Alis.Extension.Updater
         }
 
         /// <summary>
-        /// Gets the dmg mount path using the specified file async
+        ///     Gets the dmg mount path using the specified file async
         /// </summary>
         /// <param name="fileAsync">The file</param>
         /// <returns>The string</returns>
         internal string GetDmgMountPath(string fileAsync) => Path.Combine("/Volumes", Path.GetFileNameWithoutExtension(fileAsync));
 
         /// <summary>
-        /// Mounts the dmg using the specified file async
+        ///     Mounts the dmg using the specified file async
         /// </summary>
         /// <param name="fileAsync">The file</param>
         /// <param name="mountPath">The mount path</param>
@@ -679,7 +685,7 @@ namespace Alis.Extension.Updater
         }
 
         /// <summary>
-        /// Ensures the program folder exists
+        ///     Ensures the program folder exists
         /// </summary>
         internal void EnsureProgramFolderExists()
         {
@@ -693,7 +699,7 @@ namespace Alis.Extension.Updater
         }
 
         /// <summary>
-        /// Copies the mounted dmg to program folder using the specified mount path
+        ///     Copies the mounted dmg to program folder using the specified mount path
         /// </summary>
         /// <param name="mountPath">The mount path</param>
         internal void CopyMountedDmgToProgramFolder(string mountPath)
@@ -705,7 +711,7 @@ namespace Alis.Extension.Updater
         }
 
         /// <summary>
-        /// Unmounts the dmg using the specified mount path
+        ///     Unmounts the dmg using the specified mount path
         /// </summary>
         /// <param name="mountPath">The mount path</param>
         internal void UnmountDmg(string mountPath)
@@ -716,7 +722,7 @@ namespace Alis.Extension.Updater
         }
 
         /// <summary>
-        /// Waits the for continue
+        ///     Waits the for continue
         /// </summary>
         internal void WaitForContinue()
         {
@@ -727,7 +733,7 @@ namespace Alis.Extension.Updater
         }
 
         /// <summary>
-        /// Executes the shell command using the specified command
+        ///     Executes the shell command using the specified command
         /// </summary>
         /// <param name="command">The command</param>
         internal void ExecuteShellCommand(string command)
@@ -748,7 +754,7 @@ namespace Alis.Extension.Updater
         }
 
         /// <summary>
-        /// Extracts the zip using the specified file async
+        ///     Extracts the zip using the specified file async
         /// </summary>
         /// <param name="fileAsync">The file</param>
         /// <exception cref="InvalidOperationException">Exceeded the maximum compression ratio threshold.</exception>
@@ -783,7 +789,7 @@ namespace Alis.Extension.Updater
                             totalSizeEntry += numBytesRead;
                             totalSizeArchive += numBytesRead;
 
-                            double compressionRatio = (double)totalSizeEntry / entry.CompressedLength;
+                            double compressionRatio = (double) totalSizeEntry / entry.CompressedLength;
                             if (compressionRatio > ThresholdRatio)
                             {
                                 throw new InvalidOperationException("Exceeded the maximum compression ratio threshold.");
@@ -804,7 +810,7 @@ namespace Alis.Extension.Updater
         }
 
         /// <summary>
-        /// Cleans the temp file
+        ///     Cleans the temp file
         /// </summary>
         internal void CleanTempFile()
         {
@@ -817,7 +823,7 @@ namespace Alis.Extension.Updater
         }
 
         /// <summary>
-        /// Cleans the temporary files by pattern using the specified pattern
+        ///     Cleans the temporary files by pattern using the specified pattern
         /// </summary>
         /// <param name="pattern">The pattern</param>
         internal void CleanTemporaryFilesByPattern(string pattern)
@@ -839,4 +845,3 @@ namespace Alis.Extension.Updater
         }
     }
 }
-

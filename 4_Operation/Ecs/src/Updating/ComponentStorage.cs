@@ -30,7 +30,6 @@
 using System;
 using System.Numerics;
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Kernel.Events;
@@ -48,7 +47,21 @@ namespace Alis.Core.Ecs.Updating
         ///     Gets the value of the component id
         /// </summary>
         internal override ComponentId ComponentId => Component<TComponent>.Id;
-        
+
+        /// <summary>
+        ///     The index
+        /// </summary>
+        public ref TComponent this[int index]
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => ref Unsafe.Add(ref TypedBuffer[0], index);
+        }
+
+        /// <summary>
+        ///     Gets the value of the typed buffer
+        /// </summary>
+        private ref TComponent[] TypedBuffer => ref Unsafe.As<Array, TComponent[]>(ref Buffer);
+
         /// <summary>
         ///     Trims the index
         /// </summary>
@@ -57,7 +70,7 @@ namespace Alis.Core.Ecs.Updating
         {
             Resize((int) BitOperations.RoundUpToPowerOf2((uint) index));
         }
-        
+
         /// <summary>
         ///     Resizes the buffer using the specified size
         /// </summary>
@@ -182,20 +195,6 @@ namespace Alis.Core.Ecs.Updating
             Component<TComponent>.GeneralComponentStorage.Create(out int stackIndex) = item;
             return new ComponentHandle(stackIndex, Component<TComponent>.Id);
         }
-        
-         /// <summary>
-        ///     The index
-        /// </summary>
-        public ref TComponent this[int index]
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => ref Unsafe.Add(ref TypedBuffer[0], index);
-        }
-
-        /// <summary>
-        ///     Gets the value of the typed buffer
-        /// </summary>
-        private ref TComponent[] TypedBuffer => ref Unsafe.As<Array, TComponent[]>(ref Buffer);
 
         /// <summary>
         ///     Resizes the size
@@ -205,34 +204,23 @@ namespace Alis.Core.Ecs.Updating
         {
             Array.Resize(ref TypedBuffer, size);
         }
-        
+
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="length"></param>
         /// <returns></returns>
-        public Span<TComponent> AsSpanLength(int length)
-        {
-            return TypedBuffer.AsSpan(0, length);
-        }
+        public Span<TComponent> AsSpanLength(int length) => TypedBuffer.AsSpan(0, length);
 
         /// <summary>
-        /// 
         /// </summary>
         /// <returns></returns>
-        public Span<TComponent> AsSpan()
-        {
-            return TypedBuffer;
-        }
+        public Span<TComponent> AsSpan() => TypedBuffer;
 
         /// <summary>
         ///     Obtiene la referencia de datos de almacenamiento del componente
         /// </summary>
         /// <returns>La referencia al componente</returns>
-        public ref TComponent GetComponentStorageDataReference()
-        {
-            return ref TypedBuffer[0];
-        }
+        public ref TComponent GetComponentStorageDataReference() => ref TypedBuffer[0];
 
         /// <summary>
         ///     Disposes this instance
@@ -241,5 +229,4 @@ namespace Alis.Core.Ecs.Updating
         {
         }
     }
-
 }
