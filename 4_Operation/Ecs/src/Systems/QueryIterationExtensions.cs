@@ -36,7 +36,7 @@ namespace Alis.Core.Ecs.Systems
     /// <summary>
     ///     The query iteration extensions class
     /// </summary>
-    public static  class QueryIterationExtensions
+    public static class QueryIterationExtensions
     {
         /// <summary>
         ///     Executes a delegate for every gameObject in a query, using the specified component types.
@@ -81,8 +81,8 @@ namespace Alis.Core.Ecs.Systems
                 }
             }
         }
-        
-          /// <summary>
+
+        /// <summary>
         ///     Executes a delegate for every gameObject in a query, using the specified component types.
         /// </summary>
         /// <param name="query">The query to iterate over.</param>
@@ -131,7 +131,7 @@ namespace Alis.Core.Ecs.Systems
                 }
             }
         }
-        
+
         /// <summary>
         ///     Executes a delegate for every gameObject in a query, using the specified component types.
         /// </summary>
@@ -185,7 +185,7 @@ namespace Alis.Core.Ecs.Systems
                 }
             }
         }
-        
+
         /// <summary>
         ///     Executes a delegate for every gameObject in a query, using the specified component types.
         /// </summary>
@@ -243,7 +243,7 @@ namespace Alis.Core.Ecs.Systems
                 }
             }
         }
-        
+
         /// <summary>
         ///     Executes a delegate for every gameObject in a query, using the specified component types.
         /// </summary>
@@ -305,8 +305,8 @@ namespace Alis.Core.Ecs.Systems
                 }
             }
         }
-        
-         /// <summary>
+
+        /// <summary>
         ///     Executes a delegate for every gameObject in a query, using the specified component types.
         /// </summary>
         /// <param name="query">The query to iterate over.</param>
@@ -371,7 +371,7 @@ namespace Alis.Core.Ecs.Systems
                 }
             }
         }
-        
+
         /// <summary>
         ///     Executes a delegate for every gameObject in a query, using the specified component types.
         /// </summary>
@@ -441,7 +441,7 @@ namespace Alis.Core.Ecs.Systems
                 }
             }
         }
-        
+
         /// <summary>
         ///     Executes a delegate for every gameObject in a query, using the specified component types.
         /// </summary>

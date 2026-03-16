@@ -42,7 +42,7 @@ namespace Alis.Core.Ecs.Systems
             .AddRule(default(T).Rule)
             .ToHashCode();
     }
-    
+
     /// <summary>
     ///     The query hash cache class
     /// </summary>
@@ -59,7 +59,7 @@ namespace Alis.Core.Ecs.Systems
             .AddRule(default(T2).Rule)
             .ToHashCode();
     }
-    
+
     /// <summary>
     ///     The query hash cache class
     /// </summary>
@@ -78,7 +78,7 @@ namespace Alis.Core.Ecs.Systems
             .AddRule(default(T3).Rule)
             .ToHashCode();
     }
-    
+
     /// <summary>
     ///     The query hash cache class
     /// </summary>
@@ -99,7 +99,7 @@ namespace Alis.Core.Ecs.Systems
             .AddRule(default(T4).Rule)
             .ToHashCode();
     }
-    
+
     /// <summary>
     ///     The query hash cache class
     /// </summary>
@@ -122,7 +122,7 @@ namespace Alis.Core.Ecs.Systems
             .AddRule(default(T5).Rule)
             .ToHashCode();
     }
-    
+
     /// <summary>
     ///     The query hash cache class
     /// </summary>
@@ -147,7 +147,7 @@ namespace Alis.Core.Ecs.Systems
             .AddRule(default(T6).Rule)
             .ToHashCode();
     }
-    
+
     /// <summary>
     ///     The query hash cache class
     /// </summary>
@@ -174,7 +174,7 @@ namespace Alis.Core.Ecs.Systems
             .AddRule(default(T7).Rule)
             .ToHashCode();
     }
-    
+
     /// <summary>
     ///     The query hash cache class
     /// </summary>
