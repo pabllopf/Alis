@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:SceneApiCoverageTest.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using Alis.Core.Aspect.Math.Collections;
 using Alis.Core.Ecs.Kernel;
@@ -10,12 +39,12 @@ using Xunit;
 namespace Alis.Core.Ecs.Test
 {
     /// <summary>
-    /// Broad API coverage for Scene public methods, properties and events.
+    ///     Broad API coverage for Scene public methods, properties and events.
     /// </summary>
-    public partial class SceneApiCoverageTest
+    public class SceneApiCoverageTest
     {
         /// <summary>
-        /// Tests that scene shared countdown returns stable instance
+        ///     Tests that scene shared countdown returns stable instance
         /// </summary>
         [Fact]
         public void Scene_SharedCountdown_ReturnsStableInstance()
@@ -27,7 +56,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that scene entity created event toggles world event flag
+        ///     Tests that scene entity created event toggles world event flag
         /// </summary>
         [Fact]
         public void Scene_EntityCreatedEvent_TogglesWorldEventFlag()
@@ -43,7 +72,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that scene entity deleted event toggles world event flag
+        ///     Tests that scene entity deleted event toggles world event flag
         /// </summary>
         [Fact]
         public void Scene_EntityDeletedEvent_TogglesWorldEventFlag()
@@ -59,7 +88,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that scene component added event toggles world event flag
+        ///     Tests that scene component added event toggles world event flag
         /// </summary>
         [Fact]
         public void Scene_ComponentAddedEvent_TogglesWorldEventFlag()
@@ -75,7 +104,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that scene component removed event toggles world event flag
+        ///     Tests that scene component removed event toggles world event flag
         /// </summary>
         [Fact]
         public void Scene_ComponentRemovedEvent_TogglesWorldEventFlag()
@@ -91,7 +120,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that scene update generic attribute updates only components registered for attribute
+        ///     Tests that scene update generic attribute updates only components registered for attribute
         /// </summary>
         [Fact]
         public void Scene_UpdateGenericAttribute_UpdatesOnlyComponentsRegisteredForAttribute()
@@ -107,7 +136,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that scene update by type updates components registered for attribute
+        ///     Tests that scene update by type updates components registered for attribute
         /// </summary>
         [Fact]
         public void Scene_UpdateByType_UpdatesComponentsRegisteredForAttribute()
@@ -124,7 +153,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that scene update component updates only specified component type
+        ///     Tests that scene update component updates only specified component type
         /// </summary>
         [Fact]
         public void Scene_UpdateComponent_UpdatesOnlySpecifiedComponentType()
@@ -145,7 +174,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that scene ensure capacity with zero or negative does nothing
+        ///     Tests that scene ensure capacity with zero or negative does nothing
         /// </summary>
         [Fact]
         public void Scene_EnsureCapacity_WithZeroOrNegative_DoesNothing()
@@ -161,7 +190,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that scene ensure capacity core with non positive count throws argument out of range exception
+        ///     Tests that scene ensure capacity core with non positive count throws argument out of range exception
         /// </summary>
         [Fact]
         public void Scene_EnsureCapacityCore_WithNonPositiveCount_ThrowsArgumentOutOfRangeException()
@@ -173,7 +202,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that scene ensure capacity core with positive count does not throw
+        ///     Tests that scene ensure capacity core with positive count does not throw
         /// </summary>
         [Fact]
         public void Scene_EnsureCapacityCore_WithPositiveCount_DoesNotThrow()
@@ -186,7 +215,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that scene create query and create query from span filter expected entities
+        ///     Tests that scene create query and create query from span filter expected entities
         /// </summary>
         [Fact]
         public void Scene_CreateQuery_AndCreateQueryFromSpan_FilterExpectedEntities()
@@ -217,7 +246,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Returns the immutable using the specified rules
+        ///     Returns the immutable using the specified rules
         /// </summary>
         /// <param name="rules">The rules</param>
         /// <returns>A fast immutable array of rule</returns>
@@ -233,9 +262,9 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// The scene api update attribute class
+        ///     The scene api update attribute class
         /// </summary>
-        /// <seealso cref="UpdateTypeAttribute"/>
+        /// <seealso cref="UpdateTypeAttribute" />
         private sealed class SceneApiUpdateAttribute : UpdateTypeAttribute
         {
         }
@@ -244,7 +273,3 @@ namespace Alis.Core.Ecs.Test
         // existing generated test components from Updating/Runners for stable behavior.
     }
 }
-
-
-
-
