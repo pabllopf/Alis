@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:UpdateManagerTargetedMethodsMatrixTest.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using Alis.Extension.Updater.Services.Api;
@@ -8,18 +37,17 @@ using Xunit;
 namespace Alis.Extension.Updater.Test
 {
     /// <summary>
-    /// The update manager targeted methods matrix test class
+    ///     The update manager targeted methods matrix test class
     /// </summary>
     public class UpdateManagerTargetedMethodsMatrixTest
     {
         /// <summary>
-        /// Tests that report platform detection sets expected progress and message
+        ///     Tests that report platform detection sets expected progress and message
         /// </summary>
         /// <param name="caseId">The case id</param>
         /// <param name="platform">The platform</param>
         /// <param name="architecture">The architecture</param>
-        [Theory]
-        [MemberData(nameof(ReportPlatformDetectionCases))]
+        [Theory, MemberData(nameof(ReportPlatformDetectionCases))]
         public void ReportPlatformDetection_SetsExpectedProgressAndMessage(int caseId, string platform, string architecture)
         {
             UpdateManager sut = CreateManagerFast();
@@ -45,7 +73,7 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Tests that get selected asset returns expected entry
+        ///     Tests that get selected asset returns expected entry
         /// </summary>
         /// <param name="caseId">The case id</param>
         /// <param name="platform">The platform</param>
@@ -54,8 +82,7 @@ namespace Alis.Extension.Updater.Test
         /// <param name="includeMatch">The include match</param>
         /// <param name="nullEntries">The null entries</param>
         /// <param name="unrelatedEntries">The unrelated entries</param>
-        [Theory]
-        [MemberData(nameof(GetSelectedAssetCases))]
+        [Theory, MemberData(nameof(GetSelectedAssetCases))]
         public void GetSelectedAsset_ReturnsExpectedEntry(
             int caseId,
             string platform,
@@ -68,7 +95,7 @@ namespace Alis.Extension.Updater.Test
             UpdateManager sut = CreateManagerFast();
             Dictionary<string, object> release = new Dictionary<string, object>
             {
-                { "assets", BuildAssets(caseId, platform, architecture, matchingName, includeMatch, nullEntries, unrelatedEntries) }
+                {"assets", BuildAssets(caseId, platform, architecture, matchingName, includeMatch, nullEntries, unrelatedEntries)}
             };
 
             Dictionary<string, object> selected = sut.GetSelectedAsset(release, platform, architecture);
@@ -85,13 +112,12 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Tests that handle missing compatible package always returns false and sets state
+        ///     Tests that handle missing compatible package always returns false and sets state
         /// </summary>
         /// <param name="caseId">The case id</param>
         /// <param name="platform">The platform</param>
         /// <param name="architecture">The architecture</param>
-        [Theory]
-        [MemberData(nameof(HandleMissingCompatiblePackageCases))]
+        [Theory, MemberData(nameof(HandleMissingCompatiblePackageCases))]
         public void HandleMissingCompatiblePackage_AlwaysReturnsFalseAndSetsState(int caseId, string platform, string architecture)
         {
             UpdateManager sut = CreateManagerFast();
@@ -109,14 +135,13 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Tests that report download preparation emits expected final progress and message
+        ///     Tests that report download preparation emits expected final progress and message
         /// </summary>
         /// <param name="caseId">The case id</param>
         /// <param name="platform">The platform</param>
         /// <param name="architecture">The architecture</param>
         /// <param name="version">The version</param>
-        [Theory]
-        [MemberData(nameof(ReportDownloadPreparationCases))]
+        [Theory, MemberData(nameof(ReportDownloadPreparationCases))]
         public void ReportDownloadPreparation_EmitsExpectedFinalProgressAndMessage(int caseId, string platform, string architecture, string version)
         {
             UpdateManager sut = CreateManagerFast();
@@ -142,13 +167,13 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Reports the platform detection cases
+        ///     Reports the platform detection cases
         /// </summary>
         /// <returns>An enumerable of object array</returns>
         public static IEnumerable<object[]> ReportPlatformDetectionCases()
         {
-            string[] platforms = { "win", "linux", "osx", "android", "ios" };
-            string[] architectures = { "x64", "x86", "arm64", "arm", "wasm" };
+            string[] platforms = {"win", "linux", "osx", "android", "ios"};
+            string[] architectures = {"x64", "x86", "arm64", "arm", "wasm"};
 
             for (int i = 0; i < 20; i++)
             {
@@ -156,27 +181,27 @@ namespace Alis.Extension.Updater.Test
                 {
                     i,
                     platforms[i % platforms.Length],
-                    architectures[(i / platforms.Length) % architectures.Length]
+                    architectures[i / platforms.Length % architectures.Length]
                 };
             }
         }
 
         /// <summary>
-        /// Gets the selected asset cases
+        ///     Gets the selected asset cases
         /// </summary>
         /// <returns>An enumerable of object array</returns>
         public static IEnumerable<object[]> GetSelectedAssetCases()
         {
-            string[] platforms = { "win", "linux", "osx", "android", "ios" };
-            string[] architectures = { "x64", "x86", "arm64", "arm", "wasm" };
+            string[] platforms = {"win", "linux", "osx", "android", "ios"};
+            string[] architectures = {"x64", "x86", "arm64", "arm", "wasm"};
 
             for (int i = 0; i < 50; i++)
             {
                 string platform = platforms[i % platforms.Length];
-                string architecture = architectures[(i / platforms.Length) % architectures.Length];
+                string architecture = architectures[i / platforms.Length % architectures.Length];
                 bool includeMatch = i % 5 != 0;
                 int nullEntries = i % 4;
-                int unrelatedEntries = 2 + (i % 3);
+                int unrelatedEntries = 2 + i % 3;
                 string matchingName = "alis-" + platform + "-stable-" + architecture + "-" + i + ".zip";
 
                 yield return new object[]
@@ -193,13 +218,13 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Handles the missing compatible package cases
+        ///     Handles the missing compatible package cases
         /// </summary>
         /// <returns>An enumerable of object array</returns>
         public static IEnumerable<object[]> HandleMissingCompatiblePackageCases()
         {
-            string[] platforms = { "win", "linux", "osx", "android", "ios" };
-            string[] architectures = { "x64", "x86", "arm64", "arm", "wasm" };
+            string[] platforms = {"win", "linux", "osx", "android", "ios"};
+            string[] architectures = {"x64", "x86", "arm64", "arm", "wasm"};
 
             for (int i = 0; i < 25; i++)
             {
@@ -207,20 +232,20 @@ namespace Alis.Extension.Updater.Test
                 {
                     i,
                     platforms[i % platforms.Length],
-                    architectures[(i / platforms.Length) % architectures.Length]
+                    architectures[i / platforms.Length % architectures.Length]
                 };
             }
         }
 
         /// <summary>
-        /// Reports the download preparation cases
+        ///     Reports the download preparation cases
         /// </summary>
         /// <returns>An enumerable of object array</returns>
         public static IEnumerable<object[]> ReportDownloadPreparationCases()
         {
-            string[] platforms = { "win", "linux", "osx", "android", "ios" };
-            string[] architectures = { "x64", "x86", "arm64", "arm", "wasm" };
-            string[] versions = { "latest", "v1.0.0", "v2.1.5", "nightly", "preview-20260315" };
+            string[] platforms = {"win", "linux", "osx", "android", "ios"};
+            string[] architectures = {"x64", "x86", "arm64", "arm", "wasm"};
+            string[] versions = {"latest", "v1.0.0", "v2.1.5", "nightly", "preview-20260315"};
 
             for (int i = 0; i < 25; i++)
             {
@@ -228,14 +253,14 @@ namespace Alis.Extension.Updater.Test
                 {
                     i,
                     platforms[i % platforms.Length],
-                    architectures[(i / platforms.Length) % architectures.Length],
+                    architectures[i / platforms.Length % architectures.Length],
                     versions[i % versions.Length]
                 };
             }
         }
 
         /// <summary>
-        /// Builds the assets using the specified case id
+        ///     Builds the assets using the specified case id
         /// </summary>
         /// <param name="caseId">The case id</param>
         /// <param name="platform">The platform</param>
@@ -276,22 +301,19 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Assets the name
+        ///     Assets the name
         /// </summary>
         /// <param name="name">The name</param>
         /// <param name="url">The url</param>
         /// <returns>A dictionary of string and object</returns>
-        private static Dictionary<string, object> Asset(string name, string url)
+        private static Dictionary<string, object> Asset(string name, string url) => new Dictionary<string, object>
         {
-            return new Dictionary<string, object>
-            {
-                { "name", name },
-                { "browser_download_url", url }
-            };
-        }
+            {"name", name},
+            {"browser_download_url", url}
+        };
 
         /// <summary>
-        /// Creates the manager fast using the specified version to install
+        ///     Creates the manager fast using the specified version to install
         /// </summary>
         /// <param name="versionToInstall">The version to install</param>
         /// <returns>The manager</returns>
@@ -312,4 +334,3 @@ namespace Alis.Extension.Updater.Test
         }
     }
 }
-

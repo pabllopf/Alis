@@ -31,7 +31,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Reflection;
@@ -46,12 +45,12 @@ using Xunit;
 namespace Alis.Extension.Updater.Test
 {
     /// <summary>
-    /// The updater module test class
+    ///     The updater module test class
     /// </summary>
     public class UpdaterModuleTest
     {
         /// <summary>
-        /// Tests that constructor assigns all dependencies
+        ///     Tests that constructor assigns all dependencies
         /// </summary>
         [Fact]
         public void Constructor_AssignsAllDependencies()
@@ -69,7 +68,7 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Tests that on update progress changed updates state and raises event
+        ///     Tests that on update progress changed updates state and raises event
         /// </summary>
         [Fact]
         public void OnUpdateProgressChanged_UpdatesState_AndRaisesEvent()
@@ -96,7 +95,7 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Tests that select asset returns null when no asset matches
+        ///     Tests that select asset returns null when no asset matches
         /// </summary>
         [Fact]
         public void SelectAsset_ReturnsNull_WhenNoAssetMatches()
@@ -114,7 +113,7 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Tests that select asset ignores null asset name and finds match
+        ///     Tests that select asset ignores null asset name and finds match
         /// </summary>
         [Fact]
         public void SelectAsset_IgnoresNullAssetName_AndFindsMatch()
@@ -134,7 +133,7 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Tests that get platform returns expected current platform token
+        ///     Tests that get platform returns expected current platform token
         /// </summary>
         [Fact]
         public void GetPlatform_ReturnsExpectedCurrentPlatformToken()
@@ -142,11 +141,11 @@ namespace Alis.Extension.Updater.Test
             UpdateManager manager = CreateManager();
             string platform = InvokeNonPublic<string>(manager, "GetPlatform");
 
-            Assert.Contains(platform, new[] { "win", "linux", "osx" });
+            Assert.Contains(platform, new[] {"win", "linux", "osx"});
         }
-        
+
         /// <summary>
-        /// Tests that extract and replace throws for invalid extension
+        ///     Tests that extract and replace throws for invalid extension
         /// </summary>
         [Fact]
         public void ExtractAndReplace_ThrowsForInvalidExtension()
@@ -160,7 +159,7 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Tests that extract zip extracts safe archive
+        ///     Tests that extract zip extracts safe archive
         /// </summary>
         [Fact]
         public void ExtractZip_ExtractsSafeArchive()
@@ -184,7 +183,7 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Tests that extract zip throws when too many entries
+        ///     Tests that extract zip throws when too many entries
         /// </summary>
         [Fact]
         public void ExtractZip_ThrowsWhenTooManyEntries()
@@ -209,7 +208,7 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Tests that extract zip throws when compression ratio is suspicious
+        ///     Tests that extract zip throws when compression ratio is suspicious
         /// </summary>
         [Fact]
         public void ExtractZip_ThrowsWhenCompressionRatioIsSuspicious()
@@ -233,7 +232,7 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Tests that clean temp file deletes non backup artifacts only
+        ///     Tests that clean temp file deletes non backup artifacts only
         /// </summary>
         [Fact]
         public void CleanTempFile_DeletesNonBackupArtifactsOnly()
@@ -278,7 +277,7 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Tests that git hub api service get latest release async returns response dictionary
+        ///     Tests that git hub api service get latest release async returns response dictionary
         /// </summary>
         [Fact]
         public async Task GitHubApiService_GetLatestReleaseAsync_ReturnsResponseDictionary()
@@ -295,7 +294,7 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Tests that git hub api service constructor assigns api url
+        ///     Tests that git hub api service constructor assigns api url
         /// </summary>
         [Fact]
         public void GitHubApiService_Constructor_AssignsApiUrl()
@@ -307,7 +306,7 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Tests that file service methods throw not implemented exception
+        ///     Tests that file service methods throw not implemented exception
         /// </summary>
         [Fact]
         public void FileService_Methods_ThrowNotImplementedException()
@@ -321,15 +320,14 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Tests that select asset massive coverage
+        ///     Tests that select asset massive coverage
         /// </summary>
         /// <param name="caseId">The case id</param>
         /// <param name="platform">The platform</param>
         /// <param name="architecture">The architecture</param>
         /// <param name="shouldMatch">The should match</param>
         /// <param name="nullNameEntries">The null name entries</param>
-        [Theory]
-        [MemberData(nameof(SelectAssetMassiveCases))]
+        [Theory, MemberData(nameof(SelectAssetMassiveCases))]
         public void SelectAsset_MassiveCoverage(int caseId, string platform, string architecture, bool shouldMatch, int nullNameEntries)
         {
             UpdateManager manager = CreateManager();
@@ -351,11 +349,10 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Tests that extract and replace invalid extensions always throw
+        ///     Tests that extract and replace invalid extensions always throw
         /// </summary>
         /// <param name="fileName">The file name</param>
-        [Theory]
-        [MemberData(nameof(InvalidExtensionCases))]
+        [Theory, MemberData(nameof(InvalidExtensionCases))]
         public void ExtractAndReplace_InvalidExtensions_AlwaysThrow(string fileName)
         {
             UpdateManager manager = CreateManager();
@@ -367,41 +364,41 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Selects the asset massive cases
+        ///     Selects the asset massive cases
         /// </summary>
         /// <returns>An enumerable of object array</returns>
         public static IEnumerable<object[]> SelectAssetMassiveCases()
         {
-            string[] platforms = { "win", "linux", "osx" };
-            string[] architectures = { "x64", "arm64", "x86", "arm" };
+            string[] platforms = {"win", "linux", "osx"};
+            string[] architectures = {"x64", "arm64", "x86", "arm"};
 
             for (int i = 0; i < 1200; i++)
             {
                 string platform = platforms[i % platforms.Length];
-                string architecture = architectures[(i / platforms.Length) % architectures.Length];
+                string architecture = architectures[i / platforms.Length % architectures.Length];
                 bool shouldMatch = i % 3 != 0;
                 int nullNameEntries = i % 4;
-                yield return new object[] { i, platform, architecture, shouldMatch, nullNameEntries };
+                yield return new object[] {i, platform, architecture, shouldMatch, nullNameEntries};
             }
         }
 
         /// <summary>
-        /// Invalids the extension cases
+        ///     Invalids the extension cases
         /// </summary>
         /// <returns>An enumerable of object array</returns>
         public static IEnumerable<object[]> InvalidExtensionCases()
         {
-            string[] extensions = { "tar", "7z", "rar", "pkg", "bin", "msi", "txt", "json", "gz", "iso" };
+            string[] extensions = {"tar", "7z", "rar", "pkg", "bin", "msi", "txt", "json", "gz", "iso"};
 
             for (int i = 0; i < 350; i++)
             {
                 string ext = extensions[i % extensions.Length];
-                yield return new object[] { $"update-package-{i}.{ext}" };
+                yield return new object[] {$"update-package-{i}.{ext}"};
             }
         }
 
         /// <summary>
-        /// Builds the assets for case using the specified case id
+        ///     Builds the assets for case using the specified case id
         /// </summary>
         /// <param name="caseId">The case id</param>
         /// <param name="platform">The platform</param>
@@ -432,22 +429,19 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Assets the name
+        ///     Assets the name
         /// </summary>
         /// <param name="name">The name</param>
         /// <param name="url">The url</param>
         /// <returns>A dictionary of string and object</returns>
-        private static Dictionary<string, object> Asset(string name, string url)
+        private static Dictionary<string, object> Asset(string name, string url) => new Dictionary<string, object>
         {
-            return new Dictionary<string, object>
-            {
-                { "name", name },
-                { "browser_download_url", url }
-            };
-        }
+            {"name", name},
+            {"browser_download_url", url}
+        };
 
         /// <summary>
-        /// Creates the manager using the specified version to install
+        ///     Creates the manager using the specified version to install
         /// </summary>
         /// <param name="versionToInstall">The version to install</param>
         /// <param name="programFolder">The program folder</param>
@@ -464,7 +458,7 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Invokes the non public using the specified manager
+        ///     Invokes the non public using the specified manager
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="manager">The manager</param>
@@ -474,11 +468,11 @@ namespace Alis.Extension.Updater.Test
         private static T InvokeNonPublic<T>(UpdateManager manager, string methodName, params object[] args)
         {
             object result = InvokeNonPublic(manager, methodName, args);
-            return (T)result;
+            return (T) result;
         }
 
         /// <summary>
-        /// Invokes the non public using the specified manager
+        ///     Invokes the non public using the specified manager
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="manager">The manager</param>
@@ -488,11 +482,11 @@ namespace Alis.Extension.Updater.Test
         private static Task<T> InvokeNonPublicAsync<T>(UpdateManager manager, string methodName, params object[] args)
         {
             object result = InvokeNonPublic(manager, methodName, args);
-            return (Task<T>)result;
+            return (Task<T>) result;
         }
 
         /// <summary>
-        /// Invokes the non public void using the specified manager
+        ///     Invokes the non public void using the specified manager
         /// </summary>
         /// <param name="manager">The manager</param>
         /// <param name="methodName">The method name</param>
@@ -503,7 +497,7 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// Invokes the non public using the specified manager
+        ///     Invokes the non public using the specified manager
         /// </summary>
         /// <param name="manager">The manager</param>
         /// <param name="methodName">The method name</param>
@@ -517,38 +511,24 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        /// The temp folder class
+        ///     The temp folder class
         /// </summary>
-        /// <seealso cref="IDisposable"/>
+        /// <seealso cref="IDisposable" />
         private sealed class TempFolder : IDisposable
         {
             /// <summary>
-            /// Initializes a new instance of the <see cref="TempFolder"/> class
+            ///     Initializes a new instance of the <see cref="TempFolder" /> class
             /// </summary>
             /// <param name="path">The path</param>
-            private TempFolder(string path)
-            {
-                Path = path;
-            }
+            private TempFolder(string path) => Path = path;
 
             /// <summary>
-            /// Gets the value of the path
+            ///     Gets the value of the path
             /// </summary>
             public string Path { get; }
 
             /// <summary>
-            /// Creates
-            /// </summary>
-            /// <returns>The temp folder</returns>
-            public static TempFolder Create()
-            {
-                string path = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "alis-updater-tests", Guid.NewGuid().ToString("N"));
-                Directory.CreateDirectory(path);
-                return new TempFolder(path);
-            }
-
-            /// <summary>
-            /// Disposes this instance
+            ///     Disposes this instance
             /// </summary>
             public void Dispose()
             {
@@ -557,29 +537,42 @@ namespace Alis.Extension.Updater.Test
                     Directory.Delete(Path, true);
                 }
             }
+
+            /// <summary>
+            ///     Creates
+            /// </summary>
+            /// <returns>The temp folder</returns>
+            public static TempFolder Create()
+            {
+                string path = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "alis-updater-tests", Guid.NewGuid().ToString("N"));
+                Directory.CreateDirectory(path);
+                return new TempFolder(path);
+            }
         }
 
         /// <summary>
-        /// The loopback http server class
+        ///     The loopback http server class
         /// </summary>
-        /// <seealso cref="IDisposable"/>
+        /// <seealso cref="IDisposable" />
         private sealed class LoopbackHttpServer : IDisposable
         {
             /// <summary>
-            /// The cancellation
+            ///     The cancellation
             /// </summary>
             private readonly CancellationTokenSource _cancellation;
+
             /// <summary>
-            /// The listener
+            ///     The listener
             /// </summary>
             private readonly TcpListener _listener;
+
             /// <summary>
-            /// The worker
+            ///     The worker
             /// </summary>
             private readonly Task _worker;
 
             /// <summary>
-            /// Initializes a new instance of the <see cref="LoopbackHttpServer"/> class
+            ///     Initializes a new instance of the <see cref="LoopbackHttpServer" /> class
             /// </summary>
             /// <param name="responseBody">The response body</param>
             /// <param name="maxRequests">The max requests</param>
@@ -589,13 +582,13 @@ namespace Alis.Extension.Updater.Test
                 _listener = new TcpListener(IPAddress.Loopback, 0);
                 _listener.Start();
 
-                int port = ((IPEndPoint)_listener.LocalEndpoint).Port;
+                int port = ((IPEndPoint) _listener.LocalEndpoint).Port;
                 Uri = new Uri($"http://127.0.0.1:{port}/");
 
                 _worker = Task.Run(async () =>
                 {
                     int handled = 0;
-                    while (!_cancellation.IsCancellationRequested && handled < maxRequests)
+                    while (!_cancellation.IsCancellationRequested && (handled < maxRequests))
                     {
                         TcpClient client;
                         try
@@ -638,12 +631,12 @@ namespace Alis.Extension.Updater.Test
             }
 
             /// <summary>
-            /// Gets the value of the uri
+            ///     Gets the value of the uri
             /// </summary>
             public Uri Uri { get; }
 
             /// <summary>
-            /// Disposes this instance
+            ///     Disposes this instance
             /// </summary>
             public void Dispose()
             {
@@ -664,4 +657,3 @@ namespace Alis.Extension.Updater.Test
         }
     }
 }
-
