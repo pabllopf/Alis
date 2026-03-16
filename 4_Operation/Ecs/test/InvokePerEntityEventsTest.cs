@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Kernel.Events;
 using Alis.Core.Ecs.Test.Models;
@@ -37,7 +38,7 @@ using Xunit;
 namespace Alis.Core.Ecs.Test
 {
     /// <summary>
-    ///     Comprehensive unit tests for all overloads of <see cref="GameObject.InvokePerEntityEvents{T}"/>.
+    ///     Comprehensive unit tests for all overloads of <see cref="GameObject.InvokePerEntityEvents{T}" />.
     ///     Tests cover arities 1 through 8, verifying:
     ///     - NormalEvent is always invoked with the correct ComponentId
     ///     - GenericEvent is only invoked when hasGenericEvent = true
@@ -52,7 +53,7 @@ namespace Alis.Core.Ecs.Test
         // ───────────────────────────────────────────────────────────────────
 
         /// <summary>
-        /// Tests that arity 1 normal event is fired with correct component id
+        ///     Tests that arity 1 normal event is fired with correct component id
         /// </summary>
         [Fact]
         public void Arity1_NormalEvent_IsFired_WithCorrectComponentId()
@@ -64,7 +65,7 @@ namespace Alis.Core.Ecs.Test
             List<ComponentId> received = new List<ComponentId>();
             events.NormalEvent.Add((go, id) => received.Add(id));
 
-            Position pos = new Position { X = 1, Y = 2 };
+            Position pos = new Position {X = 1, Y = 2};
             GameObject.InvokePerEntityEvents(entity, false, ref events, ref pos);
 
             Assert.Single(received);
@@ -72,7 +73,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 1 normal event is fired when has generic event true
+        ///     Tests that arity 1 normal event is fired when has generic event true
         /// </summary>
         [Fact]
         public void Arity1_NormalEvent_IsFired_WhenHasGenericEventTrue()
@@ -87,7 +88,7 @@ namespace Alis.Core.Ecs.Test
             List<ComponentId> received = new List<ComponentId>();
             events.NormalEvent.Add((go, id) => received.Add(id));
 
-            Position pos = new Position { X = 5, Y = 10 };
+            Position pos = new Position {X = 5, Y = 10};
             GameObject.InvokePerEntityEvents(entity, true, ref events, ref pos);
 
             Assert.Single(received);
@@ -95,7 +96,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 1 normal event passes correct entity
+        ///     Tests that arity 1 normal event passes correct entity
         /// </summary>
         [Fact]
         public void Arity1_NormalEvent_PassesCorrectEntity()
@@ -107,7 +108,7 @@ namespace Alis.Core.Ecs.Test
             List<GameObject> receivedEntities = new List<GameObject>();
             events.NormalEvent.Add((go, id) => receivedEntities.Add(go));
 
-            Position pos = new Position { X = 1, Y = 2 };
+            Position pos = new Position {X = 1, Y = 2};
             GameObject.InvokePerEntityEvents(entity, false, ref events, ref pos);
 
             Assert.Single(receivedEntities);
@@ -115,7 +116,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 1 normal event multiple listeners all invoked
+        ///     Tests that arity 1 normal event multiple listeners all invoked
         /// </summary>
         [Fact]
         public void Arity1_NormalEvent_MultipleListeners_AllInvoked()
@@ -129,14 +130,14 @@ namespace Alis.Core.Ecs.Test
             events.NormalEvent.Add((go, id) => count++);
             events.NormalEvent.Add((go, id) => count++);
 
-            Position pos = new Position { X = 1, Y = 2 };
+            Position pos = new Position {X = 1, Y = 2};
             GameObject.InvokePerEntityEvents(entity, false, ref events, ref pos);
 
             Assert.Equal(3, count);
         }
 
         /// <summary>
-        /// Tests that arity 1 generic event not invoked when has generic event false
+        ///     Tests that arity 1 generic event not invoked when has generic event false
         /// </summary>
         [Fact]
         public void Arity1_GenericEvent_NotInvoked_WhenHasGenericEventFalse()
@@ -151,14 +152,14 @@ namespace Alis.Core.Ecs.Test
             events.GenericEvent = new GenericEvent();
             events.GenericEvent.Add(genericAction);
 
-            Position pos = new Position { X = 1, Y = 2 };
+            Position pos = new Position {X = 1, Y = 2};
             GameObject.InvokePerEntityEvents(entity, false, ref events, ref pos);
 
             Assert.Equal(0, genericAction.CallCount);
         }
 
         /// <summary>
-        /// Tests that arity 1 generic event invoked when has generic event true
+        ///     Tests that arity 1 generic event invoked when has generic event true
         /// </summary>
         [Fact]
         public void Arity1_GenericEvent_Invoked_WhenHasGenericEventTrue()
@@ -173,14 +174,14 @@ namespace Alis.Core.Ecs.Test
             events.GenericEvent = new GenericEvent();
             events.GenericEvent.Add(capture);
 
-            Position pos = new Position { X = 5, Y = 10 };
+            Position pos = new Position {X = 5, Y = 10};
             GameObject.InvokePerEntityEvents(entity, true, ref events, ref pos);
 
             Assert.Contains(typeof(Position), capture.SeenTypes);
         }
 
         /// <summary>
-        /// Tests that arity 1 generic event receives correct entity
+        ///     Tests that arity 1 generic event receives correct entity
         /// </summary>
         [Fact]
         public void Arity1_GenericEvent_ReceivesCorrectEntity()
@@ -195,7 +196,7 @@ namespace Alis.Core.Ecs.Test
             events.GenericEvent = new GenericEvent();
             events.GenericEvent.Add(capture);
 
-            Position pos = new Position { X = 1, Y = 2 };
+            Position pos = new Position {X = 1, Y = 2};
             GameObject.InvokePerEntityEvents(entity, true, ref events, ref pos);
 
             Assert.Single(capture.SeenEntities);
@@ -203,7 +204,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 1 generic event can mutate component
+        ///     Tests that arity 1 generic event can mutate component
         /// </summary>
         [Fact]
         public void Arity1_GenericEvent_CanMutateComponent()
@@ -218,7 +219,7 @@ namespace Alis.Core.Ecs.Test
             events.GenericEvent = new GenericEvent();
             events.GenericEvent.Add(mutator);
 
-            Position pos = new Position { X = 0, Y = 0 };
+            Position pos = new Position {X = 0, Y = 0};
             GameObject.InvokePerEntityEvents(entity, true, ref events, ref pos);
 
             Assert.Equal(99, pos.X);
@@ -226,7 +227,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 1 generic event multiple listeners all invoked
+        ///     Tests that arity 1 generic event multiple listeners all invoked
         /// </summary>
         [Fact]
         public void Arity1_GenericEvent_MultipleListeners_AllInvoked()
@@ -245,7 +246,7 @@ namespace Alis.Core.Ecs.Test
             events.GenericEvent.Add(c2);
             events.GenericEvent.Add(c3);
 
-            Position pos = new Position { X = 1, Y = 2 };
+            Position pos = new Position {X = 1, Y = 2};
             GameObject.InvokePerEntityEvents(entity, true, ref events, ref pos);
 
             Assert.Equal(1, c1.CallCount);
@@ -254,7 +255,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 1 no listeners does not throw
+        ///     Tests that arity 1 no listeners does not throw
         /// </summary>
         [Fact]
         public void Arity1_NoListeners_DoesNotThrow()
@@ -263,7 +264,7 @@ namespace Alis.Core.Ecs.Test
             GameObject entity = scene.Create();
 
             ComponentEvent events = new ComponentEvent();
-            Position pos = new Position { X = 1, Y = 2 };
+            Position pos = new Position {X = 1, Y = 2};
 
             Exception ex = Record.Exception(() =>
                 GameObject.InvokePerEntityEvents(entity, false, ref events, ref pos));
@@ -272,7 +273,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 1 null generic event with has generic event false does not throw
+        ///     Tests that arity 1 null generic event with has generic event false does not throw
         /// </summary>
         [Fact]
         public void Arity1_NullGenericEvent_WithHasGenericEventFalse_DoesNotThrow()
@@ -284,7 +285,7 @@ namespace Alis.Core.Ecs.Test
             events.NormalEvent.Add((go, id) => { });
             // GenericEvent remains null
 
-            Position pos = new Position { X = 1, Y = 2 };
+            Position pos = new Position {X = 1, Y = 2};
 
             Exception ex = Record.Exception(() =>
                 GameObject.InvokePerEntityEvents(entity, false, ref events, ref pos));
@@ -297,7 +298,7 @@ namespace Alis.Core.Ecs.Test
         // ───────────────────────────────────────────────────────────────────
 
         /// <summary>
-        /// Tests that arity 2 normal event fired for both components
+        ///     Tests that arity 2 normal event fired for both components
         /// </summary>
         [Fact]
         public void Arity2_NormalEvent_FiredForBothComponents()
@@ -309,8 +310,8 @@ namespace Alis.Core.Ecs.Test
             List<ComponentId> received = new List<ComponentId>();
             events.NormalEvent.Add((go, id) => received.Add(id));
 
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
             GameObject.InvokePerEntityEvents(entity, false, ref events, ref pos, ref health);
 
             Assert.Equal(2, received.Count);
@@ -319,7 +320,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 2 normal event passes correct entity for both invocations
+        ///     Tests that arity 2 normal event passes correct entity for both invocations
         /// </summary>
         [Fact]
         public void Arity2_NormalEvent_PassesCorrectEntity_ForBothInvocations()
@@ -331,8 +332,8 @@ namespace Alis.Core.Ecs.Test
             List<GameObject> entities = new List<GameObject>();
             events.NormalEvent.Add((go, id) => entities.Add(go));
 
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
             GameObject.InvokePerEntityEvents(entity, false, ref events, ref pos, ref health);
 
             Assert.Equal(2, entities.Count);
@@ -340,7 +341,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 2 generic event not invoked when has generic event false
+        ///     Tests that arity 2 generic event not invoked when has generic event false
         /// </summary>
         [Fact]
         public void Arity2_GenericEvent_NotInvoked_WhenHasGenericEventFalse()
@@ -355,15 +356,15 @@ namespace Alis.Core.Ecs.Test
             events.GenericEvent = new GenericEvent();
             events.GenericEvent.Add(counting);
 
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
             GameObject.InvokePerEntityEvents(entity, false, ref events, ref pos, ref health);
 
             Assert.Equal(0, counting.CallCount);
         }
 
         /// <summary>
-        /// Tests that arity 2 generic event invoked twice when has generic event true
+        ///     Tests that arity 2 generic event invoked twice when has generic event true
         /// </summary>
         [Fact]
         public void Arity2_GenericEvent_InvokedTwice_WhenHasGenericEventTrue()
@@ -378,8 +379,8 @@ namespace Alis.Core.Ecs.Test
             events.GenericEvent = new GenericEvent();
             events.GenericEvent.Add(capture);
 
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
             GameObject.InvokePerEntityEvents(entity, true, ref events, ref pos, ref health);
 
             Assert.Contains(typeof(Position), capture.SeenTypes);
@@ -388,7 +389,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 2 generic event can mutate first component
+        ///     Tests that arity 2 generic event can mutate first component
         /// </summary>
         [Fact]
         public void Arity2_GenericEvent_CanMutateFirstComponent()
@@ -403,15 +404,15 @@ namespace Alis.Core.Ecs.Test
             events.GenericEvent = new GenericEvent();
             events.GenericEvent.Add(mutator);
 
-            Position pos = new Position { X = 0, Y = 0 };
-            Health health = new Health { Value = 100 };
+            Position pos = new Position {X = 0, Y = 0};
+            Health health = new Health {Value = 100};
             GameObject.InvokePerEntityEvents(entity, true, ref events, ref pos, ref health);
 
             Assert.Equal(99, pos.X);
         }
 
         /// <summary>
-        /// Tests that arity 2 normal event fired exactly two times
+        ///     Tests that arity 2 normal event fired exactly two times
         /// </summary>
         [Fact]
         public void Arity2_NormalEvent_FiredExactlyTwoTimes()
@@ -423,15 +424,15 @@ namespace Alis.Core.Ecs.Test
             int count = 0;
             events.NormalEvent.Add((go, id) => count++);
 
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
             GameObject.InvokePerEntityEvents(entity, false, ref events, ref pos, ref health);
 
             Assert.Equal(2, count);
         }
 
         /// <summary>
-        /// Tests that arity 2 no listeners does not throw
+        ///     Tests that arity 2 no listeners does not throw
         /// </summary>
         [Fact]
         public void Arity2_NoListeners_DoesNotThrow()
@@ -440,8 +441,8 @@ namespace Alis.Core.Ecs.Test
             GameObject entity = scene.Create();
 
             ComponentEvent events = new ComponentEvent();
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
 
             Exception ex = Record.Exception(() =>
                 GameObject.InvokePerEntityEvents(entity, false, ref events, ref pos, ref health));
@@ -450,7 +451,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 2 multiple normal listeners all invoked
+        ///     Tests that arity 2 multiple normal listeners all invoked
         /// </summary>
         [Fact]
         public void Arity2_MultipleNormalListeners_AllInvoked()
@@ -463,8 +464,8 @@ namespace Alis.Core.Ecs.Test
             events.NormalEvent.Add((go, id) => count++);
             events.NormalEvent.Add((go, id) => count++);
 
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
             GameObject.InvokePerEntityEvents(entity, false, ref events, ref pos, ref health);
 
             // 2 listeners × 2 components = 4
@@ -476,7 +477,7 @@ namespace Alis.Core.Ecs.Test
         // ───────────────────────────────────────────────────────────────────
 
         /// <summary>
-        /// Tests that arity 3 normal event fired for all three components
+        ///     Tests that arity 3 normal event fired for all three components
         /// </summary>
         [Fact]
         public void Arity3_NormalEvent_FiredForAllThreeComponents()
@@ -488,9 +489,9 @@ namespace Alis.Core.Ecs.Test
             List<ComponentId> received = new List<ComponentId>();
             events.NormalEvent.Add((go, id) => received.Add(id));
 
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
-            Velocity vel = new Velocity { X = 3, Y = 4 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
+            Velocity vel = new Velocity {X = 3, Y = 4};
             GameObject.InvokePerEntityEvents(entity, false, ref events, ref pos, ref health, ref vel);
 
             Assert.Equal(3, received.Count);
@@ -500,7 +501,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 3 generic event not invoked when has generic event false
+        ///     Tests that arity 3 generic event not invoked when has generic event false
         /// </summary>
         [Fact]
         public void Arity3_GenericEvent_NotInvoked_WhenHasGenericEventFalse()
@@ -515,16 +516,16 @@ namespace Alis.Core.Ecs.Test
             events.GenericEvent = new GenericEvent();
             events.GenericEvent.Add(counting);
 
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
-            Velocity vel = new Velocity { X = 3, Y = 4 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
+            Velocity vel = new Velocity {X = 3, Y = 4};
             GameObject.InvokePerEntityEvents(entity, false, ref events, ref pos, ref health, ref vel);
 
             Assert.Equal(0, counting.CallCount);
         }
 
         /// <summary>
-        /// Tests that arity 3 generic event invoked three times when has generic event true
+        ///     Tests that arity 3 generic event invoked three times when has generic event true
         /// </summary>
         [Fact]
         public void Arity3_GenericEvent_InvokedThreeTimes_WhenHasGenericEventTrue()
@@ -539,9 +540,9 @@ namespace Alis.Core.Ecs.Test
             events.GenericEvent = new GenericEvent();
             events.GenericEvent.Add(capture);
 
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
-            Velocity vel = new Velocity { X = 3, Y = 4 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
+            Velocity vel = new Velocity {X = 3, Y = 4};
             GameObject.InvokePerEntityEvents(entity, true, ref events, ref pos, ref health, ref vel);
 
             Assert.Equal(3, capture.TotalInvocations);
@@ -551,7 +552,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 3 normal event passes correct entity all three times
+        ///     Tests that arity 3 normal event passes correct entity all three times
         /// </summary>
         [Fact]
         public void Arity3_NormalEvent_PassesCorrectEntityAllThreeTimes()
@@ -563,9 +564,9 @@ namespace Alis.Core.Ecs.Test
             List<GameObject> entities = new List<GameObject>();
             events.NormalEvent.Add((go, id) => entities.Add(go));
 
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
-            Velocity vel = new Velocity { X = 3, Y = 4 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
+            Velocity vel = new Velocity {X = 3, Y = 4};
             GameObject.InvokePerEntityEvents(entity, false, ref events, ref pos, ref health, ref vel);
 
             Assert.Equal(3, entities.Count);
@@ -573,7 +574,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 3 no listeners does not throw
+        ///     Tests that arity 3 no listeners does not throw
         /// </summary>
         [Fact]
         public void Arity3_NoListeners_DoesNotThrow()
@@ -582,9 +583,9 @@ namespace Alis.Core.Ecs.Test
             GameObject entity = scene.Create();
 
             ComponentEvent events = new ComponentEvent();
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
-            Velocity vel = new Velocity { X = 3, Y = 4 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
+            Velocity vel = new Velocity {X = 3, Y = 4};
 
             Exception ex = Record.Exception(() =>
                 GameObject.InvokePerEntityEvents(entity, false, ref events, ref pos, ref health, ref vel));
@@ -593,7 +594,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 3 generic event receives correct entity
+        ///     Tests that arity 3 generic event receives correct entity
         /// </summary>
         [Fact]
         public void Arity3_GenericEvent_ReceivesCorrectEntity()
@@ -608,9 +609,9 @@ namespace Alis.Core.Ecs.Test
             events.GenericEvent = new GenericEvent();
             events.GenericEvent.Add(capture);
 
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
-            Velocity vel = new Velocity { X = 3, Y = 4 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
+            Velocity vel = new Velocity {X = 3, Y = 4};
             GameObject.InvokePerEntityEvents(entity, true, ref events, ref pos, ref health, ref vel);
 
             Assert.Equal(3, capture.SeenEntities.Count);
@@ -622,7 +623,7 @@ namespace Alis.Core.Ecs.Test
         // ───────────────────────────────────────────────────────────────────
 
         /// <summary>
-        /// Tests that arity 4 normal event fired for all four components
+        ///     Tests that arity 4 normal event fired for all four components
         /// </summary>
         [Fact]
         public void Arity4_NormalEvent_FiredForAllFourComponents()
@@ -634,10 +635,10 @@ namespace Alis.Core.Ecs.Test
             List<ComponentId> received = new List<ComponentId>();
             events.NormalEvent.Add((go, id) => received.Add(id));
 
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
-            Velocity vel = new Velocity { X = 3, Y = 4 };
-            Transform transform = new Transform { X = 5, Y = 6 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
+            Velocity vel = new Velocity {X = 3, Y = 4};
+            Transform transform = new Transform {X = 5, Y = 6};
             GameObject.InvokePerEntityEvents(entity, false, ref events, ref pos, ref health, ref vel, ref transform);
 
             Assert.Equal(4, received.Count);
@@ -648,7 +649,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 4 generic event not invoked when has generic event false
+        ///     Tests that arity 4 generic event not invoked when has generic event false
         /// </summary>
         [Fact]
         public void Arity4_GenericEvent_NotInvoked_WhenHasGenericEventFalse()
@@ -663,17 +664,17 @@ namespace Alis.Core.Ecs.Test
             events.GenericEvent = new GenericEvent();
             events.GenericEvent.Add(counting);
 
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
-            Velocity vel = new Velocity { X = 3, Y = 4 };
-            Transform transform = new Transform { X = 5, Y = 6 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
+            Velocity vel = new Velocity {X = 3, Y = 4};
+            Transform transform = new Transform {X = 5, Y = 6};
             GameObject.InvokePerEntityEvents(entity, false, ref events, ref pos, ref health, ref vel, ref transform);
 
             Assert.Equal(0, counting.CallCount);
         }
 
         /// <summary>
-        /// Tests that arity 4 generic event invoked four times when has generic event true
+        ///     Tests that arity 4 generic event invoked four times when has generic event true
         /// </summary>
         [Fact]
         public void Arity4_GenericEvent_InvokedFourTimes_WhenHasGenericEventTrue()
@@ -688,10 +689,10 @@ namespace Alis.Core.Ecs.Test
             events.GenericEvent = new GenericEvent();
             events.GenericEvent.Add(capture);
 
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
-            Velocity vel = new Velocity { X = 3, Y = 4 };
-            Transform transform = new Transform { X = 5, Y = 6 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
+            Velocity vel = new Velocity {X = 3, Y = 4};
+            Transform transform = new Transform {X = 5, Y = 6};
             GameObject.InvokePerEntityEvents(entity, true, ref events, ref pos, ref health, ref vel, ref transform);
 
             Assert.Equal(4, capture.TotalInvocations);
@@ -702,7 +703,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 4 no listeners does not throw
+        ///     Tests that arity 4 no listeners does not throw
         /// </summary>
         [Fact]
         public void Arity4_NoListeners_DoesNotThrow()
@@ -711,10 +712,10 @@ namespace Alis.Core.Ecs.Test
             GameObject entity = scene.Create();
 
             ComponentEvent events = new ComponentEvent();
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
-            Velocity vel = new Velocity { X = 3, Y = 4 };
-            Transform transform = new Transform { X = 5, Y = 6 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
+            Velocity vel = new Velocity {X = 3, Y = 4};
+            Transform transform = new Transform {X = 5, Y = 6};
 
             Exception ex = Record.Exception(() =>
                 GameObject.InvokePerEntityEvents(entity, false, ref events, ref pos, ref health, ref vel, ref transform));
@@ -723,7 +724,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 4 normal event passes correct entity all four times
+        ///     Tests that arity 4 normal event passes correct entity all four times
         /// </summary>
         [Fact]
         public void Arity4_NormalEvent_PassesCorrectEntityAllFourTimes()
@@ -735,10 +736,10 @@ namespace Alis.Core.Ecs.Test
             List<GameObject> entities = new List<GameObject>();
             events.NormalEvent.Add((go, id) => entities.Add(go));
 
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
-            Velocity vel = new Velocity { X = 3, Y = 4 };
-            Transform transform = new Transform { X = 5, Y = 6 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
+            Velocity vel = new Velocity {X = 3, Y = 4};
+            Transform transform = new Transform {X = 5, Y = 6};
             GameObject.InvokePerEntityEvents(entity, false, ref events, ref pos, ref health, ref vel, ref transform);
 
             Assert.Equal(4, entities.Count);
@@ -750,7 +751,7 @@ namespace Alis.Core.Ecs.Test
         // ───────────────────────────────────────────────────────────────────
 
         /// <summary>
-        /// Tests that arity 5 normal event fired for all five components
+        ///     Tests that arity 5 normal event fired for all five components
         /// </summary>
         [Fact]
         public void Arity5_NormalEvent_FiredForAllFiveComponents()
@@ -762,11 +763,11 @@ namespace Alis.Core.Ecs.Test
             List<ComponentId> received = new List<ComponentId>();
             events.NormalEvent.Add((go, id) => received.Add(id));
 
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
-            Velocity vel = new Velocity { X = 3, Y = 4 };
-            Transform transform = new Transform { X = 5, Y = 6 };
-            Damage damage = new Damage { Value = 10 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
+            Velocity vel = new Velocity {X = 3, Y = 4};
+            Transform transform = new Transform {X = 5, Y = 6};
+            Damage damage = new Damage {Value = 10};
             GameObject.InvokePerEntityEvents(entity, false, ref events,
                 ref pos, ref health, ref vel, ref transform, ref damage);
 
@@ -779,7 +780,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 5 generic event not invoked when has generic event false
+        ///     Tests that arity 5 generic event not invoked when has generic event false
         /// </summary>
         [Fact]
         public void Arity5_GenericEvent_NotInvoked_WhenHasGenericEventFalse()
@@ -794,11 +795,11 @@ namespace Alis.Core.Ecs.Test
             events.GenericEvent = new GenericEvent();
             events.GenericEvent.Add(counting);
 
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
-            Velocity vel = new Velocity { X = 3, Y = 4 };
-            Transform transform = new Transform { X = 5, Y = 6 };
-            Damage damage = new Damage { Value = 10 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
+            Velocity vel = new Velocity {X = 3, Y = 4};
+            Transform transform = new Transform {X = 5, Y = 6};
+            Damage damage = new Damage {Value = 10};
             GameObject.InvokePerEntityEvents(entity, false, ref events,
                 ref pos, ref health, ref vel, ref transform, ref damage);
 
@@ -806,7 +807,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 5 generic event invoked five times when has generic event true
+        ///     Tests that arity 5 generic event invoked five times when has generic event true
         /// </summary>
         [Fact]
         public void Arity5_GenericEvent_InvokedFiveTimes_WhenHasGenericEventTrue()
@@ -821,11 +822,11 @@ namespace Alis.Core.Ecs.Test
             events.GenericEvent = new GenericEvent();
             events.GenericEvent.Add(capture);
 
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
-            Velocity vel = new Velocity { X = 3, Y = 4 };
-            Transform transform = new Transform { X = 5, Y = 6 };
-            Damage damage = new Damage { Value = 10 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
+            Velocity vel = new Velocity {X = 3, Y = 4};
+            Transform transform = new Transform {X = 5, Y = 6};
+            Damage damage = new Damage {Value = 10};
             GameObject.InvokePerEntityEvents(entity, true, ref events,
                 ref pos, ref health, ref vel, ref transform, ref damage);
 
@@ -838,7 +839,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 5 no listeners does not throw
+        ///     Tests that arity 5 no listeners does not throw
         /// </summary>
         [Fact]
         public void Arity5_NoListeners_DoesNotThrow()
@@ -847,11 +848,11 @@ namespace Alis.Core.Ecs.Test
             GameObject entity = scene.Create();
 
             ComponentEvent events = new ComponentEvent();
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
-            Velocity vel = new Velocity { X = 3, Y = 4 };
-            Transform transform = new Transform { X = 5, Y = 6 };
-            Damage damage = new Damage { Value = 10 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
+            Velocity vel = new Velocity {X = 3, Y = 4};
+            Transform transform = new Transform {X = 5, Y = 6};
+            Damage damage = new Damage {Value = 10};
 
             Exception ex = Record.Exception(() =>
                 GameObject.InvokePerEntityEvents(entity, false, ref events,
@@ -861,7 +862,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 5 normal event passes correct entity all five times
+        ///     Tests that arity 5 normal event passes correct entity all five times
         /// </summary>
         [Fact]
         public void Arity5_NormalEvent_PassesCorrectEntityAllFiveTimes()
@@ -873,11 +874,11 @@ namespace Alis.Core.Ecs.Test
             List<GameObject> entities = new List<GameObject>();
             events.NormalEvent.Add((go, id) => entities.Add(go));
 
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
-            Velocity vel = new Velocity { X = 3, Y = 4 };
-            Transform transform = new Transform { X = 5, Y = 6 };
-            Damage damage = new Damage { Value = 10 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
+            Velocity vel = new Velocity {X = 3, Y = 4};
+            Transform transform = new Transform {X = 5, Y = 6};
+            Damage damage = new Damage {Value = 10};
             GameObject.InvokePerEntityEvents(entity, false, ref events,
                 ref pos, ref health, ref vel, ref transform, ref damage);
 
@@ -890,7 +891,7 @@ namespace Alis.Core.Ecs.Test
         // ───────────────────────────────────────────────────────────────────
 
         /// <summary>
-        /// Tests that arity 6 normal event fired for all six components
+        ///     Tests that arity 6 normal event fired for all six components
         /// </summary>
         [Fact]
         public void Arity6_NormalEvent_FiredForAllSixComponents()
@@ -902,12 +903,12 @@ namespace Alis.Core.Ecs.Test
             List<ComponentId> received = new List<ComponentId>();
             events.NormalEvent.Add((go, id) => received.Add(id));
 
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
-            Velocity vel = new Velocity { X = 3, Y = 4 };
-            Transform transform = new Transform { X = 5, Y = 6 };
-            Damage damage = new Damage { Value = 10 };
-            AnotherComponent another = new AnotherComponent { Data = 42 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
+            Velocity vel = new Velocity {X = 3, Y = 4};
+            Transform transform = new Transform {X = 5, Y = 6};
+            Damage damage = new Damage {Value = 10};
+            AnotherComponent another = new AnotherComponent {Data = 42};
             GameObject.InvokePerEntityEvents(entity, false, ref events,
                 ref pos, ref health, ref vel, ref transform, ref damage, ref another);
 
@@ -921,7 +922,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 6 generic event not invoked when has generic event false
+        ///     Tests that arity 6 generic event not invoked when has generic event false
         /// </summary>
         [Fact]
         public void Arity6_GenericEvent_NotInvoked_WhenHasGenericEventFalse()
@@ -936,12 +937,12 @@ namespace Alis.Core.Ecs.Test
             events.GenericEvent = new GenericEvent();
             events.GenericEvent.Add(counting);
 
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
-            Velocity vel = new Velocity { X = 3, Y = 4 };
-            Transform transform = new Transform { X = 5, Y = 6 };
-            Damage damage = new Damage { Value = 10 };
-            AnotherComponent another = new AnotherComponent { Data = 42 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
+            Velocity vel = new Velocity {X = 3, Y = 4};
+            Transform transform = new Transform {X = 5, Y = 6};
+            Damage damage = new Damage {Value = 10};
+            AnotherComponent another = new AnotherComponent {Data = 42};
             GameObject.InvokePerEntityEvents(entity, false, ref events,
                 ref pos, ref health, ref vel, ref transform, ref damage, ref another);
 
@@ -949,7 +950,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 6 generic event invoked six times when has generic event true
+        ///     Tests that arity 6 generic event invoked six times when has generic event true
         /// </summary>
         [Fact]
         public void Arity6_GenericEvent_InvokedSixTimes_WhenHasGenericEventTrue()
@@ -964,12 +965,12 @@ namespace Alis.Core.Ecs.Test
             events.GenericEvent = new GenericEvent();
             events.GenericEvent.Add(capture);
 
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
-            Velocity vel = new Velocity { X = 3, Y = 4 };
-            Transform transform = new Transform { X = 5, Y = 6 };
-            Damage damage = new Damage { Value = 10 };
-            AnotherComponent another = new AnotherComponent { Data = 42 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
+            Velocity vel = new Velocity {X = 3, Y = 4};
+            Transform transform = new Transform {X = 5, Y = 6};
+            Damage damage = new Damage {Value = 10};
+            AnotherComponent another = new AnotherComponent {Data = 42};
             GameObject.InvokePerEntityEvents(entity, true, ref events,
                 ref pos, ref health, ref vel, ref transform, ref damage, ref another);
 
@@ -979,7 +980,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 6 no listeners does not throw
+        ///     Tests that arity 6 no listeners does not throw
         /// </summary>
         [Fact]
         public void Arity6_NoListeners_DoesNotThrow()
@@ -988,12 +989,12 @@ namespace Alis.Core.Ecs.Test
             GameObject entity = scene.Create();
 
             ComponentEvent events = new ComponentEvent();
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
-            Velocity vel = new Velocity { X = 3, Y = 4 };
-            Transform transform = new Transform { X = 5, Y = 6 };
-            Damage damage = new Damage { Value = 10 };
-            AnotherComponent another = new AnotherComponent { Data = 42 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
+            Velocity vel = new Velocity {X = 3, Y = 4};
+            Transform transform = new Transform {X = 5, Y = 6};
+            Damage damage = new Damage {Value = 10};
+            AnotherComponent another = new AnotherComponent {Data = 42};
 
             Exception ex = Record.Exception(() =>
                 GameObject.InvokePerEntityEvents(entity, false, ref events,
@@ -1007,7 +1008,7 @@ namespace Alis.Core.Ecs.Test
         // ───────────────────────────────────────────────────────────────────
 
         /// <summary>
-        /// Tests that arity 7 normal event fired for all seven components
+        ///     Tests that arity 7 normal event fired for all seven components
         /// </summary>
         [Fact]
         public void Arity7_NormalEvent_FiredForAllSevenComponents()
@@ -1019,13 +1020,13 @@ namespace Alis.Core.Ecs.Test
             List<ComponentId> received = new List<ComponentId>();
             events.NormalEvent.Add((go, id) => received.Add(id));
 
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
-            Velocity vel = new Velocity { X = 3, Y = 4 };
-            Transform transform = new Transform { X = 5, Y = 6 };
-            Damage damage = new Damage { Value = 10 };
-            AnotherComponent another = new AnotherComponent { Data = 42 };
-            AnotherComponent2 another2 = new AnotherComponent2 { Data = 99 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
+            Velocity vel = new Velocity {X = 3, Y = 4};
+            Transform transform = new Transform {X = 5, Y = 6};
+            Damage damage = new Damage {Value = 10};
+            AnotherComponent another = new AnotherComponent {Data = 42};
+            AnotherComponent2 another2 = new AnotherComponent2 {Data = 99};
             GameObject.InvokePerEntityEvents(entity, false, ref events,
                 ref pos, ref health, ref vel, ref transform, ref damage, ref another, ref another2);
 
@@ -1040,7 +1041,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 7 generic event not invoked when has generic event false
+        ///     Tests that arity 7 generic event not invoked when has generic event false
         /// </summary>
         [Fact]
         public void Arity7_GenericEvent_NotInvoked_WhenHasGenericEventFalse()
@@ -1055,13 +1056,13 @@ namespace Alis.Core.Ecs.Test
             events.GenericEvent = new GenericEvent();
             events.GenericEvent.Add(counting);
 
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
-            Velocity vel = new Velocity { X = 3, Y = 4 };
-            Transform transform = new Transform { X = 5, Y = 6 };
-            Damage damage = new Damage { Value = 10 };
-            AnotherComponent another = new AnotherComponent { Data = 42 };
-            AnotherComponent2 another2 = new AnotherComponent2 { Data = 99 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
+            Velocity vel = new Velocity {X = 3, Y = 4};
+            Transform transform = new Transform {X = 5, Y = 6};
+            Damage damage = new Damage {Value = 10};
+            AnotherComponent another = new AnotherComponent {Data = 42};
+            AnotherComponent2 another2 = new AnotherComponent2 {Data = 99};
             GameObject.InvokePerEntityEvents(entity, false, ref events,
                 ref pos, ref health, ref vel, ref transform, ref damage, ref another, ref another2);
 
@@ -1069,7 +1070,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 7 generic event invoked seven times when has generic event true
+        ///     Tests that arity 7 generic event invoked seven times when has generic event true
         /// </summary>
         [Fact]
         public void Arity7_GenericEvent_InvokedSevenTimes_WhenHasGenericEventTrue()
@@ -1084,13 +1085,13 @@ namespace Alis.Core.Ecs.Test
             events.GenericEvent = new GenericEvent();
             events.GenericEvent.Add(capture);
 
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
-            Velocity vel = new Velocity { X = 3, Y = 4 };
-            Transform transform = new Transform { X = 5, Y = 6 };
-            Damage damage = new Damage { Value = 10 };
-            AnotherComponent another = new AnotherComponent { Data = 42 };
-            AnotherComponent2 another2 = new AnotherComponent2 { Data = 99 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
+            Velocity vel = new Velocity {X = 3, Y = 4};
+            Transform transform = new Transform {X = 5, Y = 6};
+            Damage damage = new Damage {Value = 10};
+            AnotherComponent another = new AnotherComponent {Data = 42};
+            AnotherComponent2 another2 = new AnotherComponent2 {Data = 99};
             GameObject.InvokePerEntityEvents(entity, true, ref events,
                 ref pos, ref health, ref vel, ref transform, ref damage, ref another, ref another2);
 
@@ -1099,7 +1100,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 7 no listeners does not throw
+        ///     Tests that arity 7 no listeners does not throw
         /// </summary>
         [Fact]
         public void Arity7_NoListeners_DoesNotThrow()
@@ -1108,13 +1109,13 @@ namespace Alis.Core.Ecs.Test
             GameObject entity = scene.Create();
 
             ComponentEvent events = new ComponentEvent();
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
-            Velocity vel = new Velocity { X = 3, Y = 4 };
-            Transform transform = new Transform { X = 5, Y = 6 };
-            Damage damage = new Damage { Value = 10 };
-            AnotherComponent another = new AnotherComponent { Data = 42 };
-            AnotherComponent2 another2 = new AnotherComponent2 { Data = 99 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
+            Velocity vel = new Velocity {X = 3, Y = 4};
+            Transform transform = new Transform {X = 5, Y = 6};
+            Damage damage = new Damage {Value = 10};
+            AnotherComponent another = new AnotherComponent {Data = 42};
+            AnotherComponent2 another2 = new AnotherComponent2 {Data = 99};
 
             Exception ex = Record.Exception(() =>
                 GameObject.InvokePerEntityEvents(entity, false, ref events,
@@ -1128,7 +1129,7 @@ namespace Alis.Core.Ecs.Test
         // ───────────────────────────────────────────────────────────────────
 
         /// <summary>
-        /// Tests that arity 8 normal event fired for all eight components
+        ///     Tests that arity 8 normal event fired for all eight components
         /// </summary>
         [Fact]
         public void Arity8_NormalEvent_FiredForAllEightComponents()
@@ -1140,14 +1141,14 @@ namespace Alis.Core.Ecs.Test
             List<ComponentId> received = new List<ComponentId>();
             events.NormalEvent.Add((go, id) => received.Add(id));
 
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
-            Velocity vel = new Velocity { X = 3, Y = 4 };
-            Transform transform = new Transform { X = 5, Y = 6 };
-            Damage damage = new Damage { Value = 10 };
-            AnotherComponent another = new AnotherComponent { Data = 42 };
-            AnotherComponent2 another2 = new AnotherComponent2 { Data = 99 };
-            Armor armor = new Armor { Value = 25 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
+            Velocity vel = new Velocity {X = 3, Y = 4};
+            Transform transform = new Transform {X = 5, Y = 6};
+            Damage damage = new Damage {Value = 10};
+            AnotherComponent another = new AnotherComponent {Data = 42};
+            AnotherComponent2 another2 = new AnotherComponent2 {Data = 99};
+            Armor armor = new Armor {Value = 25};
             GameObject.InvokePerEntityEvents(entity, false, ref events,
                 ref pos, ref health, ref vel, ref transform, ref damage, ref another, ref another2, ref armor);
 
@@ -1163,7 +1164,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 8 generic event not invoked when has generic event false
+        ///     Tests that arity 8 generic event not invoked when has generic event false
         /// </summary>
         [Fact]
         public void Arity8_GenericEvent_NotInvoked_WhenHasGenericEventFalse()
@@ -1178,14 +1179,14 @@ namespace Alis.Core.Ecs.Test
             events.GenericEvent = new GenericEvent();
             events.GenericEvent.Add(counting);
 
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
-            Velocity vel = new Velocity { X = 3, Y = 4 };
-            Transform transform = new Transform { X = 5, Y = 6 };
-            Damage damage = new Damage { Value = 10 };
-            AnotherComponent another = new AnotherComponent { Data = 42 };
-            AnotherComponent2 another2 = new AnotherComponent2 { Data = 99 };
-            Armor armor = new Armor { Value = 25 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
+            Velocity vel = new Velocity {X = 3, Y = 4};
+            Transform transform = new Transform {X = 5, Y = 6};
+            Damage damage = new Damage {Value = 10};
+            AnotherComponent another = new AnotherComponent {Data = 42};
+            AnotherComponent2 another2 = new AnotherComponent2 {Data = 99};
+            Armor armor = new Armor {Value = 25};
             GameObject.InvokePerEntityEvents(entity, false, ref events,
                 ref pos, ref health, ref vel, ref transform, ref damage, ref another, ref another2, ref armor);
 
@@ -1193,7 +1194,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 8 generic event invoked eight times when has generic event true
+        ///     Tests that arity 8 generic event invoked eight times when has generic event true
         /// </summary>
         [Fact]
         public void Arity8_GenericEvent_InvokedEightTimes_WhenHasGenericEventTrue()
@@ -1208,14 +1209,14 @@ namespace Alis.Core.Ecs.Test
             events.GenericEvent = new GenericEvent();
             events.GenericEvent.Add(capture);
 
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
-            Velocity vel = new Velocity { X = 3, Y = 4 };
-            Transform transform = new Transform { X = 5, Y = 6 };
-            Damage damage = new Damage { Value = 10 };
-            AnotherComponent another = new AnotherComponent { Data = 42 };
-            AnotherComponent2 another2 = new AnotherComponent2 { Data = 99 };
-            Armor armor = new Armor { Value = 25 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
+            Velocity vel = new Velocity {X = 3, Y = 4};
+            Transform transform = new Transform {X = 5, Y = 6};
+            Damage damage = new Damage {Value = 10};
+            AnotherComponent another = new AnotherComponent {Data = 42};
+            AnotherComponent2 another2 = new AnotherComponent2 {Data = 99};
+            Armor armor = new Armor {Value = 25};
             GameObject.InvokePerEntityEvents(entity, true, ref events,
                 ref pos, ref health, ref vel, ref transform, ref damage, ref another, ref another2, ref armor);
 
@@ -1231,7 +1232,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 8 normal event passes correct entity all eight times
+        ///     Tests that arity 8 normal event passes correct entity all eight times
         /// </summary>
         [Fact]
         public void Arity8_NormalEvent_PassesCorrectEntityAllEightTimes()
@@ -1243,14 +1244,14 @@ namespace Alis.Core.Ecs.Test
             List<GameObject> entities = new List<GameObject>();
             events.NormalEvent.Add((go, id) => entities.Add(go));
 
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
-            Velocity vel = new Velocity { X = 3, Y = 4 };
-            Transform transform = new Transform { X = 5, Y = 6 };
-            Damage damage = new Damage { Value = 10 };
-            AnotherComponent another = new AnotherComponent { Data = 42 };
-            AnotherComponent2 another2 = new AnotherComponent2 { Data = 99 };
-            Armor armor = new Armor { Value = 25 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
+            Velocity vel = new Velocity {X = 3, Y = 4};
+            Transform transform = new Transform {X = 5, Y = 6};
+            Damage damage = new Damage {Value = 10};
+            AnotherComponent another = new AnotherComponent {Data = 42};
+            AnotherComponent2 another2 = new AnotherComponent2 {Data = 99};
+            Armor armor = new Armor {Value = 25};
             GameObject.InvokePerEntityEvents(entity, false, ref events,
                 ref pos, ref health, ref vel, ref transform, ref damage, ref another, ref another2, ref armor);
 
@@ -1259,7 +1260,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 8 no listeners does not throw
+        ///     Tests that arity 8 no listeners does not throw
         /// </summary>
         [Fact]
         public void Arity8_NoListeners_DoesNotThrow()
@@ -1268,14 +1269,14 @@ namespace Alis.Core.Ecs.Test
             GameObject entity = scene.Create();
 
             ComponentEvent events = new ComponentEvent();
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
-            Velocity vel = new Velocity { X = 3, Y = 4 };
-            Transform transform = new Transform { X = 5, Y = 6 };
-            Damage damage = new Damage { Value = 10 };
-            AnotherComponent another = new AnotherComponent { Data = 42 };
-            AnotherComponent2 another2 = new AnotherComponent2 { Data = 99 };
-            Armor armor = new Armor { Value = 25 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
+            Velocity vel = new Velocity {X = 3, Y = 4};
+            Transform transform = new Transform {X = 5, Y = 6};
+            Damage damage = new Damage {Value = 10};
+            AnotherComponent another = new AnotherComponent {Data = 42};
+            AnotherComponent2 another2 = new AnotherComponent2 {Data = 99};
+            Armor armor = new Armor {Value = 25};
 
             Exception ex = Record.Exception(() =>
                 GameObject.InvokePerEntityEvents(entity, false, ref events,
@@ -1285,7 +1286,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 8 multiple normal listeners all invoked
+        ///     Tests that arity 8 multiple normal listeners all invoked
         /// </summary>
         [Fact]
         public void Arity8_MultipleNormalListeners_AllInvoked()
@@ -1298,14 +1299,14 @@ namespace Alis.Core.Ecs.Test
             events.NormalEvent.Add((go, id) => count++);
             events.NormalEvent.Add((go, id) => count++);
 
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
-            Velocity vel = new Velocity { X = 3, Y = 4 };
-            Transform transform = new Transform { X = 5, Y = 6 };
-            Damage damage = new Damage { Value = 10 };
-            AnotherComponent another = new AnotherComponent { Data = 42 };
-            AnotherComponent2 another2 = new AnotherComponent2 { Data = 99 };
-            Armor armor = new Armor { Value = 25 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
+            Velocity vel = new Velocity {X = 3, Y = 4};
+            Transform transform = new Transform {X = 5, Y = 6};
+            Damage damage = new Damage {Value = 10};
+            AnotherComponent another = new AnotherComponent {Data = 42};
+            AnotherComponent2 another2 = new AnotherComponent2 {Data = 99};
+            Armor armor = new Armor {Value = 25};
             GameObject.InvokePerEntityEvents(entity, false, ref events,
                 ref pos, ref health, ref vel, ref transform, ref damage, ref another, ref another2, ref armor);
 
@@ -1318,12 +1319,10 @@ namespace Alis.Core.Ecs.Test
         // ───────────────────────────────────────────────────────────────────
 
         /// <summary>
-        /// Tests that arity 1 generic event presence correctly gated
+        ///     Tests that arity 1 generic event presence correctly gated
         /// </summary>
         /// <param name="hasGenericEvent">The has generic event</param>
-        [Theory]
-        [InlineData(false)]
-        [InlineData(true)]
+        [Theory, InlineData(false), InlineData(true)]
         public void Arity1_GenericEventPresence_CorrectlyGated(bool hasGenericEvent)
         {
             using Scene scene = new Scene();
@@ -1336,19 +1335,17 @@ namespace Alis.Core.Ecs.Test
             events.GenericEvent = new GenericEvent();
             events.GenericEvent.Add(counting);
 
-            Position pos = new Position { X = 1, Y = 2 };
+            Position pos = new Position {X = 1, Y = 2};
             GameObject.InvokePerEntityEvents(entity, hasGenericEvent, ref events, ref pos);
 
             Assert.Equal(hasGenericEvent ? 1 : 0, counting.CallCount);
         }
 
         /// <summary>
-        /// Tests that arity 2 generic event presence correctly gated
+        ///     Tests that arity 2 generic event presence correctly gated
         /// </summary>
         /// <param name="hasGenericEvent">The has generic event</param>
-        [Theory]
-        [InlineData(false)]
-        [InlineData(true)]
+        [Theory, InlineData(false), InlineData(true)]
         public void Arity2_GenericEventPresence_CorrectlyGated(bool hasGenericEvent)
         {
             using Scene scene = new Scene();
@@ -1361,20 +1358,18 @@ namespace Alis.Core.Ecs.Test
             events.GenericEvent = new GenericEvent();
             events.GenericEvent.Add(counting);
 
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
             GameObject.InvokePerEntityEvents(entity, hasGenericEvent, ref events, ref pos, ref health);
 
             Assert.Equal(hasGenericEvent ? 2 : 0, counting.CallCount);
         }
 
         /// <summary>
-        /// Tests that arity 3 generic event presence correctly gated
+        ///     Tests that arity 3 generic event presence correctly gated
         /// </summary>
         /// <param name="hasGenericEvent">The has generic event</param>
-        [Theory]
-        [InlineData(false)]
-        [InlineData(true)]
+        [Theory, InlineData(false), InlineData(true)]
         public void Arity3_GenericEventPresence_CorrectlyGated(bool hasGenericEvent)
         {
             using Scene scene = new Scene();
@@ -1387,21 +1382,19 @@ namespace Alis.Core.Ecs.Test
             events.GenericEvent = new GenericEvent();
             events.GenericEvent.Add(counting);
 
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
-            Velocity vel = new Velocity { X = 3, Y = 4 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
+            Velocity vel = new Velocity {X = 3, Y = 4};
             GameObject.InvokePerEntityEvents(entity, hasGenericEvent, ref events, ref pos, ref health, ref vel);
 
             Assert.Equal(hasGenericEvent ? 3 : 0, counting.CallCount);
         }
 
         /// <summary>
-        /// Tests that arity 4 generic event presence correctly gated
+        ///     Tests that arity 4 generic event presence correctly gated
         /// </summary>
         /// <param name="hasGenericEvent">The has generic event</param>
-        [Theory]
-        [InlineData(false)]
-        [InlineData(true)]
+        [Theory, InlineData(false), InlineData(true)]
         public void Arity4_GenericEventPresence_CorrectlyGated(bool hasGenericEvent)
         {
             using Scene scene = new Scene();
@@ -1414,10 +1407,10 @@ namespace Alis.Core.Ecs.Test
             events.GenericEvent = new GenericEvent();
             events.GenericEvent.Add(counting);
 
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
-            Velocity vel = new Velocity { X = 3, Y = 4 };
-            Transform transform = new Transform { X = 5, Y = 6 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
+            Velocity vel = new Velocity {X = 3, Y = 4};
+            Transform transform = new Transform {X = 5, Y = 6};
             GameObject.InvokePerEntityEvents(entity, hasGenericEvent, ref events,
                 ref pos, ref health, ref vel, ref transform);
 
@@ -1425,12 +1418,10 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 5 generic event presence correctly gated
+        ///     Tests that arity 5 generic event presence correctly gated
         /// </summary>
         /// <param name="hasGenericEvent">The has generic event</param>
-        [Theory]
-        [InlineData(false)]
-        [InlineData(true)]
+        [Theory, InlineData(false), InlineData(true)]
         public void Arity5_GenericEventPresence_CorrectlyGated(bool hasGenericEvent)
         {
             using Scene scene = new Scene();
@@ -1443,11 +1434,11 @@ namespace Alis.Core.Ecs.Test
             events.GenericEvent = new GenericEvent();
             events.GenericEvent.Add(counting);
 
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
-            Velocity vel = new Velocity { X = 3, Y = 4 };
-            Transform transform = new Transform { X = 5, Y = 6 };
-            Damage damage = new Damage { Value = 10 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
+            Velocity vel = new Velocity {X = 3, Y = 4};
+            Transform transform = new Transform {X = 5, Y = 6};
+            Damage damage = new Damage {Value = 10};
             GameObject.InvokePerEntityEvents(entity, hasGenericEvent, ref events,
                 ref pos, ref health, ref vel, ref transform, ref damage);
 
@@ -1455,12 +1446,10 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 6 generic event presence correctly gated
+        ///     Tests that arity 6 generic event presence correctly gated
         /// </summary>
         /// <param name="hasGenericEvent">The has generic event</param>
-        [Theory]
-        [InlineData(false)]
-        [InlineData(true)]
+        [Theory, InlineData(false), InlineData(true)]
         public void Arity6_GenericEventPresence_CorrectlyGated(bool hasGenericEvent)
         {
             using Scene scene = new Scene();
@@ -1473,12 +1462,12 @@ namespace Alis.Core.Ecs.Test
             events.GenericEvent = new GenericEvent();
             events.GenericEvent.Add(counting);
 
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
-            Velocity vel = new Velocity { X = 3, Y = 4 };
-            Transform transform = new Transform { X = 5, Y = 6 };
-            Damage damage = new Damage { Value = 10 };
-            AnotherComponent another = new AnotherComponent { Data = 42 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
+            Velocity vel = new Velocity {X = 3, Y = 4};
+            Transform transform = new Transform {X = 5, Y = 6};
+            Damage damage = new Damage {Value = 10};
+            AnotherComponent another = new AnotherComponent {Data = 42};
             GameObject.InvokePerEntityEvents(entity, hasGenericEvent, ref events,
                 ref pos, ref health, ref vel, ref transform, ref damage, ref another);
 
@@ -1486,12 +1475,10 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 7 generic event presence correctly gated
+        ///     Tests that arity 7 generic event presence correctly gated
         /// </summary>
         /// <param name="hasGenericEvent">The has generic event</param>
-        [Theory]
-        [InlineData(false)]
-        [InlineData(true)]
+        [Theory, InlineData(false), InlineData(true)]
         public void Arity7_GenericEventPresence_CorrectlyGated(bool hasGenericEvent)
         {
             using Scene scene = new Scene();
@@ -1504,13 +1491,13 @@ namespace Alis.Core.Ecs.Test
             events.GenericEvent = new GenericEvent();
             events.GenericEvent.Add(counting);
 
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
-            Velocity vel = new Velocity { X = 3, Y = 4 };
-            Transform transform = new Transform { X = 5, Y = 6 };
-            Damage damage = new Damage { Value = 10 };
-            AnotherComponent another = new AnotherComponent { Data = 42 };
-            AnotherComponent2 another2 = new AnotherComponent2 { Data = 99 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
+            Velocity vel = new Velocity {X = 3, Y = 4};
+            Transform transform = new Transform {X = 5, Y = 6};
+            Damage damage = new Damage {Value = 10};
+            AnotherComponent another = new AnotherComponent {Data = 42};
+            AnotherComponent2 another2 = new AnotherComponent2 {Data = 99};
             GameObject.InvokePerEntityEvents(entity, hasGenericEvent, ref events,
                 ref pos, ref health, ref vel, ref transform, ref damage, ref another, ref another2);
 
@@ -1518,12 +1505,10 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 8 generic event presence correctly gated
+        ///     Tests that arity 8 generic event presence correctly gated
         /// </summary>
         /// <param name="hasGenericEvent">The has generic event</param>
-        [Theory]
-        [InlineData(false)]
-        [InlineData(true)]
+        [Theory, InlineData(false), InlineData(true)]
         public void Arity8_GenericEventPresence_CorrectlyGated(bool hasGenericEvent)
         {
             using Scene scene = new Scene();
@@ -1536,14 +1521,14 @@ namespace Alis.Core.Ecs.Test
             events.GenericEvent = new GenericEvent();
             events.GenericEvent.Add(counting);
 
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
-            Velocity vel = new Velocity { X = 3, Y = 4 };
-            Transform transform = new Transform { X = 5, Y = 6 };
-            Damage damage = new Damage { Value = 10 };
-            AnotherComponent another = new AnotherComponent { Data = 42 };
-            AnotherComponent2 another2 = new AnotherComponent2 { Data = 99 };
-            Armor armor = new Armor { Value = 25 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
+            Velocity vel = new Velocity {X = 3, Y = 4};
+            Transform transform = new Transform {X = 5, Y = 6};
+            Damage damage = new Damage {Value = 10};
+            AnotherComponent another = new AnotherComponent {Data = 42};
+            AnotherComponent2 another2 = new AnotherComponent2 {Data = 99};
+            Armor armor = new Armor {Value = 25};
             GameObject.InvokePerEntityEvents(entity, hasGenericEvent, ref events,
                 ref pos, ref health, ref vel, ref transform, ref damage, ref another, ref another2, ref armor);
 
@@ -1555,121 +1540,121 @@ namespace Alis.Core.Ecs.Test
         // ───────────────────────────────────────────────────────────────────
 
         /// <summary>
-        /// Tests that integration arity 1 on component added fired when component added
+        ///     Tests that integration arity 1 on component added fired when component added
         /// </summary>
         [Fact]
         public void Integration_Arity1_OnComponentAdded_FiredWhenComponentAdded()
         {
             // OnComponentAddedGeneric uses GetOrAddNew which correctly initialises EventLookup.
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Velocity { X = 0, Y = 0 });
+            GameObject entity = scene.Create(new Velocity {X = 0, Y = 0});
 
             TypeCapturingAction capture = new TypeCapturingAction();
             entity.OnComponentAddedGeneric += capture;
 
-            entity.Add(new Position { X = 1, Y = 2 });
+            entity.Add(new Position {X = 1, Y = 2});
 
             Assert.Contains(typeof(Position), capture.SeenTypes);
         }
 
         /// <summary>
-        /// Tests that integration arity 1 on component added generic fired when component added
+        ///     Tests that integration arity 1 on component added generic fired when component added
         /// </summary>
         [Fact]
         public void Integration_Arity1_OnComponentAddedGeneric_FiredWhenComponentAdded()
         {
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Velocity { X = 0, Y = 0 });
+            GameObject entity = scene.Create(new Velocity {X = 0, Y = 0});
 
             TypeCapturingAction capture = new TypeCapturingAction();
             entity.OnComponentAddedGeneric += capture;
 
-            entity.Add(new Position { X = 5, Y = 10 });
+            entity.Add(new Position {X = 5, Y = 10});
 
             Assert.Contains(typeof(Position), capture.SeenTypes);
         }
 
         /// <summary>
-        /// Tests that integration on component added correct entity passed
+        ///     Tests that integration on component added correct entity passed
         /// </summary>
         [Fact]
         public void Integration_OnComponentAdded_CorrectEntityPassed()
         {
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Velocity { X = 0, Y = 0 });
+            GameObject entity = scene.Create(new Velocity {X = 0, Y = 0});
 
             EntityCapturingAction capture = new EntityCapturingAction();
             entity.OnComponentAddedGeneric += capture;
 
-            entity.Add(new Health { Value = 100 });
+            entity.Add(new Health {Value = 100});
 
             Assert.Single(capture.SeenEntities);
             Assert.Equal(entity, capture.SeenEntities[0]);
         }
 
         /// <summary>
-        /// Tests that integration on component added generic multiple components all fired
+        ///     Tests that integration on component added generic multiple components all fired
         /// </summary>
         [Fact]
         public void Integration_OnComponentAddedGeneric_MultipleComponents_AllFired()
         {
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Velocity { X = 0, Y = 0 });
+            GameObject entity = scene.Create(new Velocity {X = 0, Y = 0});
 
             TypeCapturingAction capture = new TypeCapturingAction();
             entity.OnComponentAddedGeneric += capture;
 
-            entity.Add(new Position { X = 1, Y = 1 });
-            entity.Add(new Health { Value = 100 });
+            entity.Add(new Position {X = 1, Y = 1});
+            entity.Add(new Health {Value = 100});
 
             Assert.Contains(typeof(Position), capture.SeenTypes);
             Assert.Contains(typeof(Health), capture.SeenTypes);
         }
 
         /// <summary>
-        /// Tests that integration on component added fired correct number of times
+        ///     Tests that integration on component added fired correct number of times
         /// </summary>
         [Fact]
         public void Integration_OnComponentAdded_FiredCorrectNumberOfTimes()
         {
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Velocity { X = 0, Y = 0 });
+            GameObject entity = scene.Create(new Velocity {X = 0, Y = 0});
 
             CountingGenericAction counting = new CountingGenericAction();
             entity.OnComponentAddedGeneric += counting;
 
-            entity.Add(new Position { X = 1, Y = 1 });
-            entity.Add(new Health { Value = 100 });
+            entity.Add(new Position {X = 1, Y = 1});
+            entity.Add(new Health {Value = 100});
 
             Assert.Equal(2, counting.CallCount);
         }
 
         /// <summary>
-        /// Tests that integration unsubscribed handler not invoked
+        ///     Tests that integration unsubscribed handler not invoked
         /// </summary>
         [Fact]
         public void Integration_UnsubscribedHandler_NotInvoked()
         {
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Velocity { X = 0, Y = 0 });
+            GameObject entity = scene.Create(new Velocity {X = 0, Y = 0});
 
             CountingGenericAction counting = new CountingGenericAction();
             entity.OnComponentAddedGeneric += counting;
             entity.OnComponentAddedGeneric -= counting;
 
-            entity.Add(new Position { X = 1, Y = 1 });
+            entity.Add(new Position {X = 1, Y = 1});
 
             Assert.Equal(0, counting.CallCount);
         }
 
         /// <summary>
-        /// Tests that integration on component removed fired when component removed
+        ///     Tests that integration on component removed fired when component removed
         /// </summary>
         [Fact]
         public void Integration_OnComponentRemoved_FiredWhenComponentRemoved()
         {
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 1, Y = 2 });
+            GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
             TypeCapturingAction capture = new TypeCapturingAction();
             entity.OnComponentRemovedGeneric += capture;
@@ -1680,14 +1665,14 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that integration multiple entity instances each receive own events
+        ///     Tests that integration multiple entity instances each receive own events
         /// </summary>
         [Fact]
         public void Integration_MultipleEntityInstances_EachReceiveOwnEvents()
         {
             using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(new Velocity { X = 0, Y = 0 });
-            GameObject entity2 = scene.Create(new Velocity { X = 0, Y = 0 });
+            GameObject entity1 = scene.Create(new Velocity {X = 0, Y = 0});
+            GameObject entity2 = scene.Create(new Velocity {X = 0, Y = 0});
 
             TypeCapturingAction capture1 = new TypeCapturingAction();
             TypeCapturingAction capture2 = new TypeCapturingAction();
@@ -1695,8 +1680,8 @@ namespace Alis.Core.Ecs.Test
             entity1.OnComponentAddedGeneric += capture1;
             entity2.OnComponentAddedGeneric += capture2;
 
-            entity1.Add(new Position { X = 1, Y = 1 });
-            entity2.Add(new Health { Value = 100 });
+            entity1.Add(new Position {X = 1, Y = 1});
+            entity2.Add(new Health {Value = 100});
 
             Assert.Contains(typeof(Position), capture1.SeenTypes);
             Assert.DoesNotContain(typeof(Health), capture1.SeenTypes);
@@ -1705,20 +1690,20 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that integration on component added not fired for other entity
+        ///     Tests that integration on component added not fired for other entity
         /// </summary>
         [Fact]
         public void Integration_OnComponentAdded_NotFiredForOtherEntity()
         {
             using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(new Velocity { X = 0, Y = 0 });
+            GameObject entity1 = scene.Create(new Velocity {X = 0, Y = 0});
             GameObject entity2 = scene.Create();
 
             CountingGenericAction counting = new CountingGenericAction();
             entity1.OnComponentAddedGeneric += counting;
 
             // Add component to entity2, not entity1
-            entity2.Add(new Position { X = 1, Y = 1 });
+            entity2.Add(new Position {X = 1, Y = 1});
 
             Assert.Equal(0, counting.CallCount);
         }
@@ -1728,7 +1713,7 @@ namespace Alis.Core.Ecs.Test
         // ───────────────────────────────────────────────────────────────────
 
         /// <summary>
-        /// Tests that arity 2 normal event component ids received in order t 1 then t 2
+        ///     Tests that arity 2 normal event component ids received in order t 1 then t 2
         /// </summary>
         [Fact]
         public void Arity2_NormalEvent_ComponentIdsReceivedInOrder_T1_Then_T2()
@@ -1740,8 +1725,8 @@ namespace Alis.Core.Ecs.Test
             List<ComponentId> received = new List<ComponentId>();
             events.NormalEvent.Add((go, id) => received.Add(id));
 
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
             GameObject.InvokePerEntityEvents(entity, false, ref events, ref pos, ref health);
 
             Assert.Equal(Component<Position>.Id, received[0]);
@@ -1749,7 +1734,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 3 normal event component ids received in order
+        ///     Tests that arity 3 normal event component ids received in order
         /// </summary>
         [Fact]
         public void Arity3_NormalEvent_ComponentIdsReceivedInOrder()
@@ -1761,9 +1746,9 @@ namespace Alis.Core.Ecs.Test
             List<ComponentId> received = new List<ComponentId>();
             events.NormalEvent.Add((go, id) => received.Add(id));
 
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
-            Velocity vel = new Velocity { X = 3, Y = 4 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
+            Velocity vel = new Velocity {X = 3, Y = 4};
             GameObject.InvokePerEntityEvents(entity, false, ref events, ref pos, ref health, ref vel);
 
             Assert.Equal(Component<Position>.Id, received[0]);
@@ -1772,7 +1757,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that arity 4 normal event component ids received in order
+        ///     Tests that arity 4 normal event component ids received in order
         /// </summary>
         [Fact]
         public void Arity4_NormalEvent_ComponentIdsReceivedInOrder()
@@ -1784,10 +1769,10 @@ namespace Alis.Core.Ecs.Test
             List<ComponentId> received = new List<ComponentId>();
             events.NormalEvent.Add((go, id) => received.Add(id));
 
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
-            Velocity vel = new Velocity { X = 3, Y = 4 };
-            Transform transform = new Transform { X = 5, Y = 6 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
+            Velocity vel = new Velocity {X = 3, Y = 4};
+            Transform transform = new Transform {X = 5, Y = 6};
             GameObject.InvokePerEntityEvents(entity, false, ref events, ref pos, ref health, ref vel, ref transform);
 
             Assert.Equal(Component<Position>.Id, received[0]);
@@ -1797,7 +1782,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        /// Tests that generic event invoked in order matching normal event arity 2
+        ///     Tests that generic event invoked in order matching normal event arity 2
         /// </summary>
         [Fact]
         public void GenericEvent_InvokedInOrderMatchingNormalEvent_Arity2()
@@ -1812,8 +1797,8 @@ namespace Alis.Core.Ecs.Test
             events.GenericEvent = new GenericEvent();
             events.GenericEvent.Add(capture);
 
-            Position pos = new Position { X = 1, Y = 2 };
-            Health health = new Health { Value = 100 };
+            Position pos = new Position {X = 1, Y = 2};
+            Health health = new Health {Value = 100};
             GameObject.InvokePerEntityEvents(entity, true, ref events, ref pos, ref health);
 
             Assert.Equal(typeof(Position), capture.InvokedTypes[0]);
@@ -1828,12 +1813,12 @@ namespace Alis.Core.Ecs.Test
         private sealed class CountingGenericAction : IGenericAction<GameObject>
         {
             /// <summary>
-            /// Gets or sets the value of the call count
+            ///     Gets or sets the value of the call count
             /// </summary>
             public int CallCount { get; private set; }
 
             /// <summary>
-            /// Invokes the param
+            ///     Invokes the param
             /// </summary>
             /// <typeparam name="T">The </typeparam>
             /// <param name="param">The param</param>
@@ -1848,20 +1833,22 @@ namespace Alis.Core.Ecs.Test
         private sealed class TypeCapturingAction : IGenericAction<GameObject>
         {
             /// <summary>
-            /// Gets the value of the seen types
+            ///     Gets the value of the seen types
             /// </summary>
             public HashSet<Type> SeenTypes { get; } = new HashSet<Type>();
+
             /// <summary>
-            /// Gets the value of the invoked types
+            ///     Gets the value of the invoked types
             /// </summary>
             public List<Type> InvokedTypes { get; } = new List<Type>();
+
             /// <summary>
-            /// Gets or sets the value of the total invocations
+            ///     Gets or sets the value of the total invocations
             /// </summary>
             public int TotalInvocations { get; private set; }
 
             /// <summary>
-            /// Invokes the param
+            ///     Invokes the param
             /// </summary>
             /// <typeparam name="T">The </typeparam>
             /// <param name="param">The param</param>
@@ -1878,12 +1865,12 @@ namespace Alis.Core.Ecs.Test
         private sealed class EntityCapturingAction : IGenericAction<GameObject>
         {
             /// <summary>
-            /// Gets the value of the seen entities
+            ///     Gets the value of the seen entities
             /// </summary>
             public List<GameObject> SeenEntities { get; } = new List<GameObject>();
 
             /// <summary>
-            /// Invokes the param
+            ///     Invokes the param
             /// </summary>
             /// <typeparam name="T">The </typeparam>
             /// <param name="param">The param</param>
@@ -1898,7 +1885,7 @@ namespace Alis.Core.Ecs.Test
         private sealed class MutatingPositionAction : IGenericAction<GameObject>
         {
             /// <summary>
-            /// Invokes the param
+            ///     Invokes the param
             /// </summary>
             /// <typeparam name="T">The </typeparam>
             /// <param name="param">The param</param>
@@ -1913,7 +1900,7 @@ namespace Alis.Core.Ecs.Test
 
                 if (typeof(T) == typeof(Position))
                 {
-                    ref Position pos = ref System.Runtime.CompilerServices.Unsafe.As<T, Position>(ref type);
+                    ref Position pos = ref Unsafe.As<T, Position>(ref type);
                     pos.X = 99;
                     pos.Y = 99;
                 }
@@ -1921,4 +1908,3 @@ namespace Alis.Core.Ecs.Test
         }
     }
 }
-
