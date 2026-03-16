@@ -42,103 +42,100 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
     public class UpdateRunnerFactoryTest
     {
         /// <summary>
-        /// Tests that update runner factory arity 0 creates expected types
+        ///     Tests that update runner factory arity 0 creates expected types
         /// </summary>
         [Fact]
         public void UpdateRunnerFactory_Arity0_CreatesExpectedTypes()
         {
             UpdateRunnerFactory<UpdateComp0> factory = new UpdateRunnerFactory<UpdateComp0>();
-            AssertFactoryMapping<UpdateComp0>(factory, factory, 6, typeof(Update<UpdateComp0>));
+            AssertFactoryMapping(factory, factory, 6, typeof(Update<UpdateComp0>));
         }
 
         /// <summary>
-        /// Tests that update runner factory arity 1 creates expected types
+        ///     Tests that update runner factory arity 1 creates expected types
         /// </summary>
         [Fact]
         public void UpdateRunnerFactory_Arity1_CreatesExpectedTypes()
         {
             UpdateRunnerFactory<UpdateComp1, Arg1> factory = new UpdateRunnerFactory<UpdateComp1, Arg1>();
-            AssertFactoryMapping<UpdateComp1>(factory, factory, 6, typeof(GameObjectUpdate<UpdateComp1, Arg1>));
+            AssertFactoryMapping(factory, factory, 6, typeof(GameObjectUpdate<UpdateComp1, Arg1>));
         }
 
         /// <summary>
-        /// Tests that update runner factory arity 2 creates expected types
+        ///     Tests that update runner factory arity 2 creates expected types
         /// </summary>
         [Fact]
         public void UpdateRunnerFactory_Arity2_CreatesExpectedTypes()
         {
             UpdateRunnerFactory<UpdateComp2, Arg1, Arg2> factory = new UpdateRunnerFactory<UpdateComp2, Arg1, Arg2>();
-            AssertFactoryMapping<UpdateComp2>(factory, factory, 6, typeof(Update<UpdateComp2, Arg1, Arg2>));
+            AssertFactoryMapping(factory, factory, 6, typeof(Update<UpdateComp2, Arg1, Arg2>));
         }
 
         /// <summary>
-        /// Tests that update runner factory arity 3 creates expected types
+        ///     Tests that update runner factory arity 3 creates expected types
         /// </summary>
         [Fact]
         public void UpdateRunnerFactory_Arity3_CreatesExpectedTypes()
         {
             UpdateRunnerFactory<UpdateComp3, Arg1, Arg2, Arg3> factory = new UpdateRunnerFactory<UpdateComp3, Arg1, Arg2, Arg3>();
-            AssertFactoryMapping<UpdateComp3>(factory, factory, 6, typeof(Update<UpdateComp3, Arg1, Arg2, Arg3>));
+            AssertFactoryMapping(factory, factory, 6, typeof(Update<UpdateComp3, Arg1, Arg2, Arg3>));
         }
 
         /// <summary>
-        /// Tests that update runner factory arity 4 creates expected types
+        ///     Tests that update runner factory arity 4 creates expected types
         /// </summary>
         [Fact]
         public void UpdateRunnerFactory_Arity4_CreatesExpectedTypes()
         {
             UpdateRunnerFactory<UpdateComp4, Arg1, Arg2, Arg3, Arg4> factory = new UpdateRunnerFactory<UpdateComp4, Arg1, Arg2, Arg3, Arg4>();
-            AssertFactoryMapping<UpdateComp4>(factory, factory, 6, typeof(Update<UpdateComp4, Arg1, Arg2, Arg3, Arg4>));
+            AssertFactoryMapping(factory, factory, 6, typeof(Update<UpdateComp4, Arg1, Arg2, Arg3, Arg4>));
         }
 
         /// <summary>
-        /// Tests that update runner factory arity 5 creates expected types
+        ///     Tests that update runner factory arity 5 creates expected types
         /// </summary>
         [Fact]
         public void UpdateRunnerFactory_Arity5_CreatesExpectedTypes()
         {
             UpdateRunnerFactory<UpdateComp5, Arg1, Arg2, Arg3, Arg4, Arg5> factory = new UpdateRunnerFactory<UpdateComp5, Arg1, Arg2, Arg3, Arg4, Arg5>();
-            AssertFactoryMapping<UpdateComp5>(factory, factory, 6, typeof(EntityUpdate<UpdateComp5, Arg1, Arg2, Arg3, Arg4, Arg5>));
+            AssertFactoryMapping(factory, factory, 6, typeof(EntityUpdate<UpdateComp5, Arg1, Arg2, Arg3, Arg4, Arg5>));
         }
 
         /// <summary>
-        /// Tests that update runner factory arity 6 creates expected types
+        ///     Tests that update runner factory arity 6 creates expected types
         /// </summary>
         [Fact]
         public void UpdateRunnerFactory_Arity6_CreatesExpectedTypes()
         {
             UpdateRunnerFactory<UpdateComp6, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6> factory = new UpdateRunnerFactory<UpdateComp6, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6>();
-            AssertFactoryMapping<UpdateComp6>(factory, factory, 6, typeof(Update<UpdateComp6, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6>));
+            AssertFactoryMapping(factory, factory, 6, typeof(Update<UpdateComp6, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6>));
         }
 
         /// <summary>
-        /// Tests that update runner factory arity 7 creates expected types
+        ///     Tests that update runner factory arity 7 creates expected types
         /// </summary>
         [Fact]
         public void UpdateRunnerFactory_Arity7_CreatesExpectedTypes()
         {
             UpdateRunnerFactory<UpdateComp7, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7> factory = new UpdateRunnerFactory<UpdateComp7, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7>();
-            AssertFactoryMapping<UpdateComp7>(factory, factory, 6, typeof(Update<UpdateComp7, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7>));
+            AssertFactoryMapping(factory, factory, 6, typeof(Update<UpdateComp7, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7>));
         }
 
         /// <summary>
-        /// Tests that update runner factory arity 8 creates expected types
+        ///     Tests that update runner factory arity 8 creates expected types
         /// </summary>
         [Fact]
         public void UpdateRunnerFactory_Arity8_CreatesExpectedTypes()
         {
             UpdateRunnerFactory<UpdateComp8, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8> factory = new UpdateRunnerFactory<UpdateComp8, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8>();
-            AssertFactoryMapping<UpdateComp8>(factory, factory, 6, typeof(Update<UpdateComp8, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8>));
+            AssertFactoryMapping(factory, factory, 6, typeof(Update<UpdateComp8, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8>));
         }
 
         /// <summary>
-        /// Tests that update runner factory arity 0 forwards capacity
+        ///     Tests that update runner factory arity 0 forwards capacity
         /// </summary>
         /// <param name="capacity">The capacity</param>
-        [Theory]
-        [InlineData(0)]
-        [InlineData(1)]
-        [InlineData(32)]
+        [Theory, InlineData(0), InlineData(1), InlineData(32)]
         public void UpdateRunnerFactory_Arity0_ForwardsCapacity(int capacity)
         {
             UpdateRunnerFactory<UpdateComp0> factory = new UpdateRunnerFactory<UpdateComp0>();
@@ -153,13 +150,10 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         }
 
         /// <summary>
-        /// Tests that update runner factory arity 8 forwards capacity
+        ///     Tests that update runner factory arity 8 forwards capacity
         /// </summary>
         /// <param name="capacity">The capacity</param>
-        [Theory]
-        [InlineData(0)]
-        [InlineData(5)]
-        [InlineData(21)]
+        [Theory, InlineData(0), InlineData(5), InlineData(21)]
         public void UpdateRunnerFactory_Arity8_ForwardsCapacity(int capacity)
         {
             UpdateRunnerFactory<UpdateComp8, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8> factory = new UpdateRunnerFactory<UpdateComp8, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8>();
@@ -174,7 +168,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         }
 
         /// <summary>
-        /// Asserts the factory mapping using the specified base factory
+        ///     Asserts the factory mapping using the specified base factory
         /// </summary>
         /// <typeparam name="TComp">The comp</typeparam>
         /// <param name="baseFactory">The base factory</param>
@@ -201,115 +195,132 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         }
 
         /// <summary>
-        /// The arg
+        ///     The arg
         /// </summary>
         public struct Arg1;
+
         /// <summary>
-        /// The arg
+        ///     The arg
         /// </summary>
         public struct Arg2;
+
         /// <summary>
-        /// The arg
+        ///     The arg
         /// </summary>
         public struct Arg3;
+
         /// <summary>
-        /// The arg
+        ///     The arg
         /// </summary>
         public struct Arg4;
+
         /// <summary>
-        /// The arg
+        ///     The arg
         /// </summary>
         public struct Arg5;
+
         /// <summary>
-        /// The arg
+        ///     The arg
         /// </summary>
         public struct Arg6;
+
         /// <summary>
-        /// The arg
+        ///     The arg
         /// </summary>
         public struct Arg7;
+
         /// <summary>
-        /// The arg
+        ///     The arg
         /// </summary>
         public struct Arg8;
 
         /// <summary>
-        /// The update comp
+        ///     The update comp
         /// </summary>
         public struct UpdateComp0 : IOnUpdate
         {
             /// <summary>
-            /// Ons the update using the specified self
+            ///     Ons the update using the specified self
             /// </summary>
             /// <param name="self">The self</param>
-            public void OnUpdate(IGameObject self) { }
+            public void OnUpdate(IGameObject self)
+            {
+            }
         }
 
         /// <summary>
-        /// The update comp
+        ///     The update comp
         /// </summary>
         public struct UpdateComp1 : IOnUpdate<Arg1>
         {
             /// <summary>
-            /// Updates the self
+            ///     Updates the self
             /// </summary>
             /// <param name="self">The self</param>
             /// <param name="arg">The arg</param>
-            public void Update(IGameObject self, ref Arg1 arg) { }
+            public void Update(IGameObject self, ref Arg1 arg)
+            {
+            }
         }
 
         /// <summary>
-        /// The update comp
+        ///     The update comp
         /// </summary>
         public struct UpdateComp2 : IOnUpdate<Arg1, Arg2>
         {
             /// <summary>
-            /// Updates the self
+            ///     Updates the self
             /// </summary>
             /// <param name="self">The self</param>
             /// <param name="arg1">The arg</param>
             /// <param name="arg2">The arg</param>
-            public void Update(IGameObject self, ref Arg1 arg1, ref Arg2 arg2) { }
+            public void Update(IGameObject self, ref Arg1 arg1, ref Arg2 arg2)
+            {
+            }
         }
 
         /// <summary>
-        /// The update comp
+        ///     The update comp
         /// </summary>
         public struct UpdateComp3 : IOnUpdate<Arg1, Arg2, Arg3>
         {
             /// <summary>
-            /// Updates the self
+            ///     Updates the self
             /// </summary>
             /// <param name="self">The self</param>
             /// <param name="arg1">The arg</param>
             /// <param name="arg2">The arg</param>
             /// <param name="arg3">The arg</param>
-            public void Update(IGameObject self, ref Arg1 arg1, ref Arg2 arg2, ref Arg3 arg3) { }
+            public void Update(IGameObject self, ref Arg1 arg1, ref Arg2 arg2, ref Arg3 arg3)
+            {
+            }
         }
 
         /// <summary>
-        /// The update comp
+        ///     The update comp
         /// </summary>
         public struct UpdateComp4 : IOnUpdate<Arg1, Arg2, Arg3, Arg4>
         {
             /// <summary>
-            /// Updates the self
+            ///     Updates the self
             /// </summary>
             /// <param name="self">The self</param>
             /// <param name="arg1">The arg</param>
             /// <param name="arg2">The arg</param>
             /// <param name="arg3">The arg</param>
             /// <param name="arg4">The arg</param>
-            public void Update(IGameObject self, ref Arg1 arg1, ref Arg2 arg2, ref Arg3 arg3, ref Arg4 arg4) { }
+            public void Update(IGameObject self, ref Arg1 arg1, ref Arg2 arg2, ref Arg3 arg3, ref Arg4 arg4)
+            {
+            }
         }
 
         /// <summary>
-        /// The update comp
+        ///     The update comp
         /// </summary>
         public struct UpdateComp5 : IOnUpdate<Arg1, Arg2, Arg3, Arg4, Arg5>
         {
             /// <summary>
-            /// Updates the self
+            ///     Updates the self
             /// </summary>
             /// <param name="self">The self</param>
             /// <param name="arg1">The arg</param>
@@ -317,16 +328,18 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             /// <param name="arg3">The arg</param>
             /// <param name="arg4">The arg</param>
             /// <param name="arg5">The arg</param>
-            public void Update(IGameObject self, ref Arg1 arg1, ref Arg2 arg2, ref Arg3 arg3, ref Arg4 arg4, ref Arg5 arg5) { }
+            public void Update(IGameObject self, ref Arg1 arg1, ref Arg2 arg2, ref Arg3 arg3, ref Arg4 arg4, ref Arg5 arg5)
+            {
+            }
         }
 
         /// <summary>
-        /// The update comp
+        ///     The update comp
         /// </summary>
         public struct UpdateComp6 : IOnUpdate<Arg1, Arg2, Arg3, Arg4, Arg5, Arg6>
         {
             /// <summary>
-            /// Updates the self
+            ///     Updates the self
             /// </summary>
             /// <param name="self">The self</param>
             /// <param name="arg1">The arg</param>
@@ -335,16 +348,18 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             /// <param name="arg4">The arg</param>
             /// <param name="arg5">The arg</param>
             /// <param name="arg6">The arg</param>
-            public void Update(IGameObject self, ref Arg1 arg1, ref Arg2 arg2, ref Arg3 arg3, ref Arg4 arg4, ref Arg5 arg5, ref Arg6 arg6) { }
+            public void Update(IGameObject self, ref Arg1 arg1, ref Arg2 arg2, ref Arg3 arg3, ref Arg4 arg4, ref Arg5 arg5, ref Arg6 arg6)
+            {
+            }
         }
 
         /// <summary>
-        /// The update comp
+        ///     The update comp
         /// </summary>
         public struct UpdateComp7 : IOnUpdate<Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7>
         {
             /// <summary>
-            /// Updates the self
+            ///     Updates the self
             /// </summary>
             /// <param name="self">The self</param>
             /// <param name="arg1">The arg</param>
@@ -354,16 +369,18 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             /// <param name="arg5">The arg</param>
             /// <param name="arg6">The arg</param>
             /// <param name="arg7">The arg</param>
-            public void Update(IGameObject self, ref Arg1 arg1, ref Arg2 arg2, ref Arg3 arg3, ref Arg4 arg4, ref Arg5 arg5, ref Arg6 arg6, ref Arg7 arg7) { }
+            public void Update(IGameObject self, ref Arg1 arg1, ref Arg2 arg2, ref Arg3 arg3, ref Arg4 arg4, ref Arg5 arg5, ref Arg6 arg6, ref Arg7 arg7)
+            {
+            }
         }
 
         /// <summary>
-        /// The update comp
+        ///     The update comp
         /// </summary>
         public struct UpdateComp8 : IOnUpdate<Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8>
         {
             /// <summary>
-            /// Updates the self
+            ///     Updates the self
             /// </summary>
             /// <param name="self">The self</param>
             /// <param name="arg1">The arg</param>
@@ -374,8 +391,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             /// <param name="arg6">The arg</param>
             /// <param name="arg7">The arg</param>
             /// <param name="arg8">The arg</param>
-            public void Update(IGameObject self, ref Arg1 arg1, ref Arg2 arg2, ref Arg3 arg3, ref Arg4 arg4, ref Arg5 arg5, ref Arg6 arg6, ref Arg7 arg7, ref Arg8 arg8) { }
+            public void Update(IGameObject self, ref Arg1 arg1, ref Arg2 arg2, ref Arg3 arg3, ref Arg4 arg4, ref Arg5 arg5, ref Arg6 arg6, ref Arg7 arg7, ref Arg8 arg8)
+            {
+            }
         }
     }
 }
-
