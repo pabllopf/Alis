@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Xunit;
 using System.Collections.Generic;
 using System.Linq;
 using Alis.Core.Aspect.Data.Json;
@@ -35,6 +34,7 @@ using Alis.Core.Ecs.Systems.Configuration.General;
 using Alis.Core.Ecs.Systems.Configuration.Network;
 using Alis.Core.Ecs.Systems.Configuration.Time;
 using Alis.Core.Ecs.Systems.Manager.Scene;
+using Xunit;
 
 namespace Alis.Test
 {
@@ -67,13 +67,13 @@ namespace Alis.Test
         public void GeneralSetting_GetSerializableProperties_ShouldIncludeAllValues()
         {
             GeneralSetting setting = new GeneralSetting(
-                debug: true,
-                name: "Game",
-                description: "Description",
-                version: "1.2.3",
-                author: "Author",
-                license: "MIT",
-                icon: "icon.png");
+                true,
+                "Game",
+                "Description",
+                "1.2.3",
+                "Author",
+                "MIT",
+                "icon.png");
 
             Dictionary<string, string> properties = ((IJsonSerializable) setting)
                 .GetSerializableProperties()

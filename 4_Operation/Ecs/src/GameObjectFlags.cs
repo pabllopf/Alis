@@ -41,7 +41,7 @@ namespace Alis.Core.Ecs
         ///     The none gameObject flags
         /// </summary>
         None = 0,
-        
+
         /// <summary>
         ///     The add comp gameObject flags
         /// </summary>
@@ -70,7 +70,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The events gameObject flags
         /// </summary>
-        Events =  AddComp | RemoveComp | OnDelete | WorldCreate,
+        Events = AddComp | RemoveComp | OnDelete | WorldCreate,
 
         /// <summary>
         ///     The scene create gameObject flags
