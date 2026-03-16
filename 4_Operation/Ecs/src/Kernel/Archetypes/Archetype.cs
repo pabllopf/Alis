@@ -46,6 +46,74 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
     public class Archetype(GameObjectType archetypeId, ComponentStorageBase[] components, bool isTempCreateArchetype)
     {
         /// <summary>
+        ///     The null
+        /// </summary>
+        internal static readonly GameObjectType Null;
+
+        /// <summary>
+        ///     The create
+        /// </summary>
+        internal static FastestStack<ArchetypeData> ArchetypeTable = FastestStack<ArchetypeData>.Create(16);
+
+        /// <summary>
+        ///     The next archetype id
+        /// </summary>
+        internal static int NextArchetypeId = -1;
+
+        /// <summary>
+        ///     The existing archetypes
+        /// </summary>
+        private static readonly Dictionary<long, ArchetypeData> ExistingArchetypes = [];
+
+        //2
+        /// <summary>
+        ///     The archetype id
+        /// </summary>
+        private readonly GameObjectType _archetypeId = archetypeId;
+
+
+        /// <summary>
+        ///     The components
+        /// </summary>
+        internal readonly ComponentStorageBase[] Components = components;
+
+
+        //we include version
+        //this is so we dont need to lookup
+        //the scene table every time
+        /// <summary>
+        ///     The gameObject id only
+        /// </summary>
+        private GameObjectIdOnly[] _entities = isTempCreateArchetype ? Array.Empty<GameObjectIdOnly>() : new GameObjectIdOnly[1];
+
+        //4
+        /// <summary>
+        ///     The next component index or deferred gameObject count
+        /// </summary>
+        /// <remarks>
+        ///     You can think of this as a discrimminated union. Next component index is the non-deferred count of a normal
+        ///     archetype.
+        ///     Deferred gameObject count is the total number of deferred entities, some of which may be stored directly on the
+        ///     normal
+        ///     archetype.
+        /// </remarks>
+        private int _nextComponentIndexOrDeferredEntityCount;
+
+
+        //information for tag existence & component index per id
+        //updated by static methods
+        //saves a lookup on hot paths
+        /// <summary>
+        ///     The raw index
+        /// </summary>
+        internal byte[] ComponentTagTable = GlobalWorldTables.ComponentTagLocationTable[archetypeId.RawIndex];
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Archetype" /> class
+        /// </summary>
+        static Archetype() => Null = GetArchetypeId([Component.GetComponentId(typeof(void))]);
+
+        /// <summary>
         ///     Gets the value of the id
         /// </summary>
         internal GameObjectType Id => _archetypeId;
@@ -68,6 +136,16 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
             Map = ComponentTagTable,
             Components = Components
         };
+
+        /// <summary>
+        ///     Gets the value of the next component index
+        /// </summary>
+        private ref int NextComponentIndex => ref _nextComponentIndexOrDeferredEntityCount;
+
+        /// <summary>
+        ///     Gets the value of the deferred gameObject count
+        /// </summary>
+        private ref int DeferredEntityCount => ref _nextComponentIndexOrDeferredEntityCount;
 
         /// <summary>
         ///     Gets the component span
@@ -325,9 +403,9 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
             NextComponentIndex--;
 
             DeleteComponentData args = new DeleteComponentData(index, NextComponentIndex);
-            
+
             ref ComponentStorageBase first = ref Components[0];
-            
+
             switch (Components.Length)
             {
                 case 1: goto end;
@@ -443,108 +521,22 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// <returns>The int</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal int GetComponentIndex(ComponentId component) => Unsafe.Add(ref ComponentTagTable[0], component.RawIndex) & GlobalWorldTables.IndexBits;
-        
+
         /// <summary>
         ///     Gets the gameObject span
         /// </summary>
         /// <returns>A span of gameObject id only</returns>
-        internal Span<GameObjectIdOnly> GetEntitySpan()
-        {
-            return _entities.AsSpan(0, NextComponentIndex);
-        }
-        
+        internal Span<GameObjectIdOnly> GetEntitySpan() => _entities.AsSpan(0, NextComponentIndex);
+
         /// <summary>
         ///     Gets the gameObject data reference
         /// </summary>
         /// <returns>The ref gameObject id only</returns>
-        internal ref GameObjectIdOnly GetEntityDataReference()
-        {
-            return ref _entities[0];
-        }
-        
-        
-        
-        /// <summary>
-        ///     The components
-        /// </summary>
-        internal readonly ComponentStorageBase[] Components = components;
-
-        
-        //we include version
-        //this is so we dont need to lookup
-        //the scene table every time
-        /// <summary>
-        ///     The gameObject id only
-        /// </summary>
-        private GameObjectIdOnly[] _entities = isTempCreateArchetype ? Array.Empty<GameObjectIdOnly>() : new GameObjectIdOnly[1];
-
-        
-        //information for tag existence & component index per id
-        //updated by static methods
-        //saves a lookup on hot paths
-        /// <summary>
-        ///     The raw index
-        /// </summary>
-        internal byte[] ComponentTagTable = GlobalWorldTables.ComponentTagLocationTable[archetypeId.RawIndex];
-
-        //2
-        /// <summary>
-        ///     The archetype id
-        /// </summary>
-        private readonly GameObjectType _archetypeId = archetypeId;
-
-        //4
-        /// <summary>
-        ///     The next component index or deferred gameObject count
-        /// </summary>
-        /// <remarks>
-        ///     You can think of this as a discrimminated union. Next component index is the non-deferred count of a normal
-        ///     archetype.
-        ///     Deferred gameObject count is the total number of deferred entities, some of which may be stored directly on the
-        ///     normal
-        ///     archetype.
-        /// </remarks>
-        private int _nextComponentIndexOrDeferredEntityCount;
-        
-        /// <summary>
-        ///     Gets the value of the next component index
-        /// </summary>
-        private ref int NextComponentIndex => ref _nextComponentIndexOrDeferredEntityCount;
-
-        /// <summary>
-        ///     Gets the value of the deferred gameObject count
-        /// </summary>
-        private ref int DeferredEntityCount => ref _nextComponentIndexOrDeferredEntityCount;
-
-        
-        /// <summary>
-        ///     The null
-        /// </summary>
-        internal static readonly GameObjectType Null;
-
-        /// <summary>
-        ///     The create
-        /// </summary>
-        internal static FastestStack<ArchetypeData> ArchetypeTable = FastestStack<ArchetypeData>.Create(16);
-
-        /// <summary>
-        ///     The next archetype id
-        /// </summary>
-        internal static int NextArchetypeId = -1;
-
-        /// <summary>
-        ///     The existing archetypes
-        /// </summary>
-        private static readonly Dictionary<long, ArchetypeData> ExistingArchetypes = [];
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Archetype" /> class
-        /// </summary>
-        static Archetype() => Null = GetArchetypeId([Component.GetComponentId(typeof(void))]);
+        internal ref GameObjectIdOnly GetEntityDataReference() => ref _entities[0];
 
 
         /// <summary>
-        /// Creates the or get existing archetype using the specified types
+        ///     Creates the or get existing archetype using the specified types
         /// </summary>
         /// <param name="types">The types</param>
         /// <param name="scene">The scene</param>
@@ -635,7 +627,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
 
 
         /// <summary>
-        /// Gets the archetype id using the specified types
+        ///     Gets the archetype id using the specified types
         /// </summary>
         /// <param name="types">The types</param>
         /// <param name="typesArray">The types array</param>
@@ -679,7 +671,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
 
 
         /// <summary>
-        /// Modifies the component location table using the specified archetype types
+        ///     Modifies the component location table using the specified archetype types
         /// </summary>
         /// <param name="archetypeTypes">The archetype types</param>
         /// <param name="id">The id</param>
@@ -717,7 +709,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         ///     Gets the hash using the specified types
         /// </summary>
         /// <param name="types">The types</param>
-
         /// <returns>The hash</returns>
         private static long GetHash(ReadOnlySpan<ComponentId> types)
         {
@@ -729,7 +720,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
             {
                 h1.Add(types[i]);
             }
-            
+
             for (; i < types.Length; i++)
             {
                 h2.Add(types[i]);
@@ -740,7 +731,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
             return hash;
         }
     }
-    
+
     /// <summary>
     ///     The archetype class
     /// </summary>
@@ -757,6 +748,32 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         ///     The empty
         /// </summary>
         public static readonly GameObjectType Id = Archetype.GetArchetypeId(ArchetypeComponentIDs.AsSpan(), ArchetypeComponentIDs);
+
+
+        /// <summary>
+        ///     The null
+        /// </summary>
+        internal static readonly GameObjectType Null;
+
+        /// <summary>
+        ///     The create
+        /// </summary>
+        internal static FastestStack<ArchetypeData> ArchetypeTable = FastestStack<ArchetypeData>.Create(16);
+
+        /// <summary>
+        ///     The next archetype id
+        /// </summary>
+        internal static int NextArchetypeId = -1;
+
+        /// <summary>
+        ///     The existing archetypes
+        /// </summary>
+        private static readonly Dictionary<long, ArchetypeData> ExistingArchetypes = [];
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Archetype" /> class
+        /// </summary>
+        static Archetype() => Null = GetArchetypeId([Component.GetComponentId(typeof(void))]);
 
         /// <summary>
         ///     Creates the new or get existing archetypes using the specified scene
@@ -797,44 +814,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         }
 
         /// <summary>
-        ///     The of component class
-        /// </summary>
-        internal static class OfComponent<TC>
-        {
-            /// <summary>
-            ///     The id
-            /// </summary>
-            public static readonly int Index = GlobalWorldTables.ComponentIndex(Id, Component<TC>.Id);
-        }
-        
-        
-        /// <summary>
-        ///     The null
-        /// </summary>
-        internal static readonly GameObjectType Null;
-
-        /// <summary>
-        ///     The create
-        /// </summary>
-        internal static FastestStack<ArchetypeData> ArchetypeTable = FastestStack<ArchetypeData>.Create(16);
-
-        /// <summary>
-        ///     The next archetype id
-        /// </summary>
-        internal static int NextArchetypeId = -1;
-
-        /// <summary>
-        ///     The existing archetypes
-        /// </summary>
-        private static readonly Dictionary<long, ArchetypeData> ExistingArchetypes = [];
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Archetype" /> class
-        /// </summary>
-        static Archetype() => Null = GetArchetypeId([Component.GetComponentId(typeof(void))]);
-        
-        /// <summary>
-        /// Creates the or get existing archetype using the specified types
+        ///     Creates the or get existing archetype using the specified types
         /// </summary>
         /// <param name="types">The types</param>
         /// <param name="scene">The scene</param>
@@ -923,9 +903,9 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
             return archetype;
         }
 
-       
+
         /// <summary>
-        /// Gets the archetype id using the specified types
+        ///     Gets the archetype id using the specified types
         /// </summary>
         /// <param name="types">The types</param>
         /// <param name="typesArray">The types array</param>
@@ -969,7 +949,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
 
 
         /// <summary>
-        /// Modifies the component location table using the specified archetype types
+        ///     Modifies the component location table using the specified archetype types
         /// </summary>
         /// <param name="archetypeTypes">The archetype types</param>
         /// <param name="id">The id</param>
@@ -1018,7 +998,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
             {
                 h1.Add(types[i]);
             }
-            
+
             for (; i < types.Length; i++)
             {
                 h2.Add(types[i]);
@@ -1028,9 +1008,20 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
 
             return hash;
         }
+
+        /// <summary>
+        ///     The of component class
+        /// </summary>
+        internal static class OfComponent<TC>
+        {
+            /// <summary>
+            ///     The id
+            /// </summary>
+            public static readonly int Index = GlobalWorldTables.ComponentIndex(Id, Component<TC>.Id);
+        }
     }
-    
-    
+
+
     /// <summary>
     ///     The archetype class
     /// </summary>
@@ -1090,8 +1081,8 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
             }
         }
     }
-    
-     /// <summary>
+
+    /// <summary>
     ///     The archetype class
     /// </summary>
     internal static class Archetype<T1, T2, T3>
@@ -1153,8 +1144,8 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
             }
         }
     }
-     
-      /// <summary>
+
+    /// <summary>
     ///     The archetype class
     /// </summary>
     internal static class Archetype<T1, T2, T3, T4>
@@ -1220,8 +1211,8 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
             }
         }
     }
-      
-        /// <summary>
+
+    /// <summary>
     ///     The archetype class
     /// </summary>
     internal static class Archetype<T1, T2, T3, T4, T5>
@@ -1290,8 +1281,8 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
             }
         }
     }
-        
-         /// <summary>
+
+    /// <summary>
     ///     The archetype class
     /// </summary>
     internal static class Archetype<T1, T2, T3, T4, T5, T6>
@@ -1365,8 +1356,8 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
             }
         }
     }
-         
-         /// <summary>
+
+    /// <summary>
     ///     The archetype class
     /// </summary>
     internal static class Archetype<T1, T2, T3, T4, T5, T6, T7>
@@ -1444,8 +1435,8 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
             }
         }
     }
-         
-         /// <summary>
+
+    /// <summary>
     ///     The archetype class
     /// </summary>
     internal static class Archetype<T1, T2, T3, T4, T5, T6, T7, T8>

@@ -87,10 +87,10 @@ namespace Alis.Core.Ecs.Systems
         /// </summary>
         public GameObjectRefTuple<T> Current
             => new GameObjectRefTuple<T>
-        {
-            GameObject = _entityIds[_componentIndex].ToEntity(_scene),
-            Item1 = new Ref<T>(_currentSpan1, _componentIndex)
-        };
+            {
+                GameObject = _entityIds[_componentIndex].ToEntity(_scene),
+                Item1 = new Ref<T>(_currentSpan1, _componentIndex)
+            };
 
         /// <summary>
         ///     Indicates to the scene that this enumeration is finished; the scene might allow structual changes after this.

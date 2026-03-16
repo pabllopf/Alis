@@ -1,4 +1,33 @@
-using Alis.Core.Ecs.Kernel;
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:QueryIterationExtensionsTest.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
@@ -6,12 +35,12 @@ using Xunit;
 namespace Alis.Core.Ecs.Test.Systems
 {
     /// <summary>
-    /// Exhaustive tests for QueryIterationExtensions delegate and inline overloads (arities 1..8).
+    ///     Exhaustive tests for QueryIterationExtensions delegate and inline overloads (arities 1..8).
     /// </summary>
     public class QueryIterationExtensionsTest
     {
         /// <summary>
-        /// Tests that delegate arity 1 updates all matching across archetypes
+        ///     Tests that delegate arity 1 updates all matching across archetypes
         /// </summary>
         [Fact]
         public void Delegate_Arity1_UpdatesAllMatchingAcrossArchetypes()
@@ -24,7 +53,7 @@ namespace Alis.Core.Ecs.Test.Systems
             Query query = scene.Query<With<Position>>();
             int calls = 0;
 
-            query.Delegate<Position>((ref Position p) =>
+            query.Delegate((ref Position p) =>
             {
                 calls++;
                 p.X += 2;
@@ -40,7 +69,7 @@ namespace Alis.Core.Ecs.Test.Systems
         }
 
         /// <summary>
-        /// Tests that delegate arity 2 updates all matching across archetypes
+        ///     Tests that delegate arity 2 updates all matching across archetypes
         /// </summary>
         [Fact]
         public void Delegate_Arity2_UpdatesAllMatchingAcrossArchetypes()
@@ -53,7 +82,7 @@ namespace Alis.Core.Ecs.Test.Systems
             Query query = scene.Query<With<Position>, With<Velocity>>();
             int calls = 0;
 
-            query.Delegate<Position, Velocity>((ref Position p, ref Velocity v) =>
+            query.Delegate((ref Position p, ref Velocity v) =>
             {
                 calls++;
                 p.X += v.X;
@@ -75,7 +104,7 @@ namespace Alis.Core.Ecs.Test.Systems
         }
 
         /// <summary>
-        /// Tests that delegate arity 3 updates all matching across archetypes
+        ///     Tests that delegate arity 3 updates all matching across archetypes
         /// </summary>
         [Fact]
         public void Delegate_Arity3_UpdatesAllMatchingAcrossArchetypes()
@@ -88,7 +117,7 @@ namespace Alis.Core.Ecs.Test.Systems
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>>();
             int calls = 0;
 
-            query.Delegate<Position, Velocity, Health>((ref Position p, ref Velocity v, ref Health h) =>
+            query.Delegate((ref Position p, ref Velocity v, ref Health h) =>
             {
                 calls++;
                 p.X += v.X;
@@ -107,7 +136,7 @@ namespace Alis.Core.Ecs.Test.Systems
         }
 
         /// <summary>
-        /// Tests that delegate arity 4 updates all matching across archetypes
+        ///     Tests that delegate arity 4 updates all matching across archetypes
         /// </summary>
         [Fact]
         public void Delegate_Arity4_UpdatesAllMatchingAcrossArchetypes()
@@ -131,7 +160,7 @@ namespace Alis.Core.Ecs.Test.Systems
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>>();
             int calls = 0;
 
-            query.Delegate<Position, Velocity, Health, Armor>((ref Position p, ref Velocity v, ref Health h, ref Armor a) =>
+            query.Delegate((ref Position p, ref Velocity v, ref Health h, ref Armor a) =>
             {
                 calls++;
                 p.X += 1;
@@ -151,7 +180,7 @@ namespace Alis.Core.Ecs.Test.Systems
         }
 
         /// <summary>
-        /// Tests that delegate arity 5 updates all matching across archetypes
+        ///     Tests that delegate arity 5 updates all matching across archetypes
         /// </summary>
         [Fact]
         public void Delegate_Arity5_UpdatesAllMatchingAcrossArchetypes()
@@ -177,7 +206,7 @@ namespace Alis.Core.Ecs.Test.Systems
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>>();
             int calls = 0;
 
-            query.Delegate<Position, Velocity, Health, Armor, Damage>((ref Position p, ref Velocity v, ref Health h, ref Armor a, ref Damage d) =>
+            query.Delegate((ref Position p, ref Velocity v, ref Health h, ref Armor a, ref Damage d) =>
             {
                 calls++;
                 p.X += v.X;
@@ -199,7 +228,7 @@ namespace Alis.Core.Ecs.Test.Systems
         }
 
         /// <summary>
-        /// Tests that delegate arity 6 updates all matching across archetypes
+        ///     Tests that delegate arity 6 updates all matching across archetypes
         /// </summary>
         [Fact]
         public void Delegate_Arity6_UpdatesAllMatchingAcrossArchetypes()
@@ -227,7 +256,7 @@ namespace Alis.Core.Ecs.Test.Systems
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>>();
             int calls = 0;
 
-            query.Delegate<Position, Velocity, Health, Armor, Damage, Transform>((ref Position p, ref Velocity v, ref Health h, ref Armor a, ref Damage d, ref Transform t) =>
+            query.Delegate((ref Position p, ref Velocity v, ref Health h, ref Armor a, ref Damage d, ref Transform t) =>
             {
                 calls++;
                 p.X += 1;
@@ -252,7 +281,7 @@ namespace Alis.Core.Ecs.Test.Systems
         }
 
         /// <summary>
-        /// Tests that delegate arity 7 updates all matching across archetypes
+        ///     Tests that delegate arity 7 updates all matching across archetypes
         /// </summary>
         [Fact]
         public void Delegate_Arity7_UpdatesAllMatchingAcrossArchetypes()
@@ -282,7 +311,7 @@ namespace Alis.Core.Ecs.Test.Systems
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>, With<TestComponent>>();
             int calls = 0;
 
-            query.Delegate<Position, Velocity, Health, Armor, Damage, Transform, TestComponent>((ref Position p, ref Velocity v, ref Health h, ref Armor a, ref Damage d, ref Transform t, ref TestComponent tc) =>
+            query.Delegate((ref Position p, ref Velocity v, ref Health h, ref Armor a, ref Damage d, ref Transform t, ref TestComponent tc) =>
             {
                 calls++;
                 p.X += v.X;
@@ -304,7 +333,7 @@ namespace Alis.Core.Ecs.Test.Systems
         }
 
         /// <summary>
-        /// Tests that delegate arity 8 updates all matching across archetypes
+        ///     Tests that delegate arity 8 updates all matching across archetypes
         /// </summary>
         [Fact]
         public void Delegate_Arity8_UpdatesAllMatchingAcrossArchetypes()
@@ -344,7 +373,7 @@ namespace Alis.Core.Ecs.Test.Systems
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>, With<TestComponent>, With<AnotherComponent>>();
             int calls = 0;
 
-            query.Delegate<Position, Velocity, Health, Armor, Damage, Transform, TestComponent, AnotherComponent>((ref Position p, ref Velocity v, ref Health h, ref Armor a, ref Damage d, ref Transform t, ref TestComponent tc, ref AnotherComponent ac) =>
+            query.Delegate((ref Position p, ref Velocity v, ref Health h, ref Armor a, ref Damage d, ref Transform t, ref TestComponent tc, ref AnotherComponent ac) =>
             {
                 calls++;
                 p.Y += v.Y;
@@ -380,7 +409,7 @@ namespace Alis.Core.Ecs.Test.Systems
         }
 
         /// <summary>
-        /// Tests that delegate all arities do nothing on empty query
+        ///     Tests that delegate all arities do nothing on empty query
         /// </summary>
         [Fact]
         public void Delegate_AllArities_DoNothingOnEmptyQuery()
@@ -396,14 +425,14 @@ namespace Alis.Core.Ecs.Test.Systems
             int c7 = 0;
             int c8 = 0;
 
-            scene.Query<With<Position>>().Delegate<Position>((ref Position _) => c1++);
-            scene.Query<With<Position>, With<Velocity>>().Delegate<Position, Velocity>((ref Position _, ref Velocity _) => c2++);
-            scene.Query<With<Position>, With<Velocity>, With<Health>>().Delegate<Position, Velocity, Health>((ref Position _, ref Velocity _, ref Health _) => c3++);
-            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>>().Delegate<Position, Velocity, Health, Armor>((ref Position _, ref Velocity _, ref Health _, ref Armor _) => c4++);
-            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>>().Delegate<Position, Velocity, Health, Armor, Damage>((ref Position _, ref Velocity _, ref Health _, ref Armor _, ref Damage _) => c5++);
-            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>>().Delegate<Position, Velocity, Health, Armor, Damage, Transform>((ref Position _, ref Velocity _, ref Health _, ref Armor _, ref Damage _, ref Transform _) => c6++);
-            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>, With<TestComponent>>().Delegate<Position, Velocity, Health, Armor, Damage, Transform, TestComponent>((ref Position _, ref Velocity _, ref Health _, ref Armor _, ref Damage _, ref Transform _, ref TestComponent _) => c7++);
-            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>, With<TestComponent>, With<AnotherComponent>>().Delegate<Position, Velocity, Health, Armor, Damage, Transform, TestComponent, AnotherComponent>((ref Position _, ref Velocity _, ref Health _, ref Armor _, ref Damage _, ref Transform _, ref TestComponent _, ref AnotherComponent _) => c8++);
+            scene.Query<With<Position>>().Delegate((ref Position _) => c1++);
+            scene.Query<With<Position>, With<Velocity>>().Delegate((ref Position _, ref Velocity _) => c2++);
+            scene.Query<With<Position>, With<Velocity>, With<Health>>().Delegate((ref Position _, ref Velocity _, ref Health _) => c3++);
+            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>>().Delegate((ref Position _, ref Velocity _, ref Health _, ref Armor _) => c4++);
+            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>>().Delegate((ref Position _, ref Velocity _, ref Health _, ref Armor _, ref Damage _) => c5++);
+            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>>().Delegate((ref Position _, ref Velocity _, ref Health _, ref Armor _, ref Damage _, ref Transform _) => c6++);
+            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>, With<TestComponent>>().Delegate((ref Position _, ref Velocity _, ref Health _, ref Armor _, ref Damage _, ref Transform _, ref TestComponent _) => c7++);
+            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>, With<TestComponent>, With<AnotherComponent>>().Delegate((ref Position _, ref Velocity _, ref Health _, ref Armor _, ref Damage _, ref Transform _, ref TestComponent _, ref AnotherComponent _) => c8++);
 
             Assert.Equal(0, c1);
             Assert.Equal(0, c2);
@@ -416,7 +445,7 @@ namespace Alis.Core.Ecs.Test.Systems
         }
 
         /// <summary>
-        /// Tests that inline arity 1 updates all matching across archetypes
+        ///     Tests that inline arity 1 updates all matching across archetypes
         /// </summary>
         [Fact]
         public void Inline_Arity1_UpdatesAllMatchingAcrossArchetypes()
@@ -427,7 +456,7 @@ namespace Alis.Core.Ecs.Test.Systems
             GameObject e1 = scene.Create(new Position {X = 1, Y = 1});
             GameObject e2 = scene.Create(new Position {X = 10, Y = 10}, new AnotherComponent2 {Data = 5});
 
-            scene.Query<With<Position>>().Inline<InlineAction1, Position>(default);
+            scene.Query<With<Position>>().Inline<InlineAction1, Position>(default(InlineAction1));
 
             Assert.Equal(2, InlineAction1.Calls);
             Assert.Equal(3, e1.Get<Position>().X);
@@ -437,7 +466,7 @@ namespace Alis.Core.Ecs.Test.Systems
         }
 
         /// <summary>
-        /// Tests that inline arity 2 updates all matching across archetypes
+        ///     Tests that inline arity 2 updates all matching across archetypes
         /// </summary>
         [Fact]
         public void Inline_Arity2_UpdatesAllMatchingAcrossArchetypes()
@@ -448,7 +477,7 @@ namespace Alis.Core.Ecs.Test.Systems
             GameObject e1 = scene.Create(new Position {X = 1, Y = 1}, new Velocity {X = 1, Y = 2});
             GameObject e2 = scene.Create(new Position {X = 10, Y = 10}, new Velocity {X = 3, Y = 4}, new AnotherComponent2 {Data = 5});
 
-            scene.Query<With<Position>, With<Velocity>>().Inline<InlineAction2, Position, Velocity>(default);
+            scene.Query<With<Position>, With<Velocity>>().Inline<InlineAction2, Position, Velocity>(default(InlineAction2));
 
             Assert.Equal(2, InlineAction2.Calls);
             Assert.Equal(2, e1.Get<Position>().X);
@@ -458,7 +487,7 @@ namespace Alis.Core.Ecs.Test.Systems
         }
 
         /// <summary>
-        /// Tests that inline arity 3 updates all matching across archetypes
+        ///     Tests that inline arity 3 updates all matching across archetypes
         /// </summary>
         [Fact]
         public void Inline_Arity3_UpdatesAllMatchingAcrossArchetypes()
@@ -469,7 +498,7 @@ namespace Alis.Core.Ecs.Test.Systems
             GameObject e1 = scene.Create(new Position {X = 1, Y = 1}, new Velocity {X = 1, Y = 1}, new Health {Value = 10});
             GameObject e2 = scene.Create(new Position {X = 10, Y = 10}, new Velocity {X = 2, Y = 3}, new Health {Value = 20}, new AnotherComponent2 {Data = 5});
 
-            scene.Query<With<Position>, With<Velocity>, With<Health>>().Inline<InlineAction3, Position, Velocity, Health>(default);
+            scene.Query<With<Position>, With<Velocity>, With<Health>>().Inline<InlineAction3, Position, Velocity, Health>(default(InlineAction3));
 
             Assert.Equal(2, InlineAction3.Calls);
             Assert.Equal(2, e1.Get<Position>().X);
@@ -479,7 +508,7 @@ namespace Alis.Core.Ecs.Test.Systems
         }
 
         /// <summary>
-        /// Tests that inline arity 4 updates all matching across archetypes
+        ///     Tests that inline arity 4 updates all matching across archetypes
         /// </summary>
         [Fact]
         public void Inline_Arity4_UpdatesAllMatchingAcrossArchetypes()
@@ -490,7 +519,7 @@ namespace Alis.Core.Ecs.Test.Systems
             GameObject e1 = scene.Create(new Position {X = 1, Y = 1}, new Velocity {X = 1, Y = 1}, new Health {Value = 10}, new Armor {Value = 20});
             GameObject e2 = scene.Create(new Position {X = 10, Y = 10}, new Velocity {X = 2, Y = 3}, new Health {Value = 30}, new Armor {Value = 40}, new AnotherComponent2 {Data = 5});
 
-            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>>().Inline<InlineAction4, Position, Velocity, Health, Armor>(default);
+            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>>().Inline<InlineAction4, Position, Velocity, Health, Armor>(default(InlineAction4));
 
             Assert.Equal(2, InlineAction4.Calls);
             Assert.Equal(2, e1.Get<Position>().X);
@@ -502,7 +531,7 @@ namespace Alis.Core.Ecs.Test.Systems
         }
 
         /// <summary>
-        /// Tests that inline arity 5 updates all matching across archetypes
+        ///     Tests that inline arity 5 updates all matching across archetypes
         /// </summary>
         [Fact]
         public void Inline_Arity5_UpdatesAllMatchingAcrossArchetypes()
@@ -513,7 +542,7 @@ namespace Alis.Core.Ecs.Test.Systems
             GameObject e1 = scene.Create(new Position {X = 1, Y = 1}, new Velocity {X = 1, Y = 1}, new Health {Value = 10}, new Armor {Value = 20}, new Damage {Value = 3});
             GameObject e2 = scene.Create(new Position {X = 10, Y = 10}, new Velocity {X = 2, Y = 3}, new Health {Value = 30}, new Armor {Value = 40}, new Damage {Value = 4}, new AnotherComponent2 {Data = 5});
 
-            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>>().Inline<InlineAction5, Position, Velocity, Health, Armor, Damage>(default);
+            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>>().Inline<InlineAction5, Position, Velocity, Health, Armor, Damage>(default(InlineAction5));
 
             Assert.Equal(2, InlineAction5.Calls);
             Assert.Equal(2, e1.Get<Position>().X);
@@ -527,7 +556,7 @@ namespace Alis.Core.Ecs.Test.Systems
         }
 
         /// <summary>
-        /// Tests that inline arity 6 updates all matching across archetypes
+        ///     Tests that inline arity 6 updates all matching across archetypes
         /// </summary>
         [Fact]
         public void Inline_Arity6_UpdatesAllMatchingAcrossArchetypes()
@@ -538,7 +567,7 @@ namespace Alis.Core.Ecs.Test.Systems
             GameObject e1 = scene.Create(new Position {X = 1, Y = 1}, new Velocity {X = 1, Y = 1}, new Health {Value = 10}, new Armor {Value = 20}, new Damage {Value = 3}, new Transform {X = 4, Y = 5, Rotation = 6});
             GameObject e2 = scene.Create(new Position {X = 10, Y = 10}, new Velocity {X = 2, Y = 3}, new Health {Value = 30}, new Armor {Value = 40}, new Damage {Value = 4}, new Transform {X = 7, Y = 8, Rotation = 9}, new AnotherComponent2 {Data = 5});
 
-            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>>().Inline<InlineAction6, Position, Velocity, Health, Armor, Damage, Transform>(default);
+            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>>().Inline<InlineAction6, Position, Velocity, Health, Armor, Damage, Transform>(default(InlineAction6));
 
             Assert.Equal(2, InlineAction6.Calls);
             Assert.Equal(2, e1.Get<Position>().X);
@@ -554,7 +583,7 @@ namespace Alis.Core.Ecs.Test.Systems
         }
 
         /// <summary>
-        /// Tests that inline arity 7 updates all matching across archetypes
+        ///     Tests that inline arity 7 updates all matching across archetypes
         /// </summary>
         [Fact]
         public void Inline_Arity7_UpdatesAllMatchingAcrossArchetypes()
@@ -565,7 +594,7 @@ namespace Alis.Core.Ecs.Test.Systems
             GameObject e1 = scene.Create(new Position {X = 1, Y = 1}, new Velocity {X = 1, Y = 1}, new Health {Value = 10}, new Armor {Value = 20}, new Damage {Value = 3}, new Transform {X = 4, Y = 5, Rotation = 6}, new TestComponent {Value = 7});
             GameObject e2 = scene.Create(new Position {X = 10, Y = 10}, new Velocity {X = 2, Y = 3}, new Health {Value = 30}, new Armor {Value = 40}, new Damage {Value = 4}, new Transform {X = 7, Y = 8, Rotation = 9}, new TestComponent {Value = 11}, new AnotherComponent2 {Data = 5});
 
-            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>, With<TestComponent>>().Inline<InlineAction7, Position, Velocity, Health, Armor, Damage, Transform, TestComponent>(default);
+            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>, With<TestComponent>>().Inline<InlineAction7, Position, Velocity, Health, Armor, Damage, Transform, TestComponent>(default(InlineAction7));
 
             Assert.Equal(2, InlineAction7.Calls);
             Assert.Equal(2, e1.Get<Position>().X);
@@ -579,7 +608,7 @@ namespace Alis.Core.Ecs.Test.Systems
         }
 
         /// <summary>
-        /// Tests that inline arity 8 updates all matching across archetypes
+        ///     Tests that inline arity 8 updates all matching across archetypes
         /// </summary>
         [Fact]
         public void Inline_Arity8_UpdatesAllMatchingAcrossArchetypes()
@@ -609,7 +638,7 @@ namespace Alis.Core.Ecs.Test.Systems
             );
             e2.Add(new AnotherComponent2 {Data = 9});
 
-            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>, With<TestComponent>, With<AnotherComponent>>().Inline<InlineAction8, Position, Velocity, Health, Armor, Damage, Transform, TestComponent, AnotherComponent>(default);
+            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>, With<TestComponent>, With<AnotherComponent>>().Inline<InlineAction8, Position, Velocity, Health, Armor, Damage, Transform, TestComponent, AnotherComponent>(default(InlineAction8));
 
             Assert.Equal(2, InlineAction8.Calls);
             Assert.Equal(2, e1.Get<Position>().Y);
@@ -632,7 +661,7 @@ namespace Alis.Core.Ecs.Test.Systems
         }
 
         /// <summary>
-        /// Tests that inline all arities do nothing on empty query
+        ///     Tests that inline all arities do nothing on empty query
         /// </summary>
         [Fact]
         public void Inline_AllArities_DoNothingOnEmptyQuery()
@@ -648,14 +677,14 @@ namespace Alis.Core.Ecs.Test.Systems
 
             using Scene scene = new Scene();
 
-            scene.Query<With<Position>>().Inline<InlineAction1, Position>(default);
-            scene.Query<With<Position>, With<Velocity>>().Inline<InlineAction2, Position, Velocity>(default);
-            scene.Query<With<Position>, With<Velocity>, With<Health>>().Inline<InlineAction3, Position, Velocity, Health>(default);
-            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>>().Inline<InlineAction4, Position, Velocity, Health, Armor>(default);
-            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>>().Inline<InlineAction5, Position, Velocity, Health, Armor, Damage>(default);
-            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>>().Inline<InlineAction6, Position, Velocity, Health, Armor, Damage, Transform>(default);
-            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>, With<TestComponent>>().Inline<InlineAction7, Position, Velocity, Health, Armor, Damage, Transform, TestComponent>(default);
-            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>, With<TestComponent>, With<AnotherComponent>>().Inline<InlineAction8, Position, Velocity, Health, Armor, Damage, Transform, TestComponent, AnotherComponent>(default);
+            scene.Query<With<Position>>().Inline<InlineAction1, Position>(default(InlineAction1));
+            scene.Query<With<Position>, With<Velocity>>().Inline<InlineAction2, Position, Velocity>(default(InlineAction2));
+            scene.Query<With<Position>, With<Velocity>, With<Health>>().Inline<InlineAction3, Position, Velocity, Health>(default(InlineAction3));
+            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>>().Inline<InlineAction4, Position, Velocity, Health, Armor>(default(InlineAction4));
+            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>>().Inline<InlineAction5, Position, Velocity, Health, Armor, Damage>(default(InlineAction5));
+            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>>().Inline<InlineAction6, Position, Velocity, Health, Armor, Damage, Transform>(default(InlineAction6));
+            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>, With<TestComponent>>().Inline<InlineAction7, Position, Velocity, Health, Armor, Damage, Transform, TestComponent>(default(InlineAction7));
+            scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>, With<TestComponent>, With<AnotherComponent>>().Inline<InlineAction8, Position, Velocity, Health, Armor, Damage, Transform, TestComponent, AnotherComponent>(default(InlineAction8));
 
             Assert.Equal(0, InlineAction1.Calls);
             Assert.Equal(0, InlineAction2.Calls);
@@ -668,22 +697,22 @@ namespace Alis.Core.Ecs.Test.Systems
         }
 
         /// <summary>
-        /// The inline action
+        ///     The inline action
         /// </summary>
-        private struct InlineAction1 : IAction<Position>
+        private struct InlineAction1 : Ecs.Systems.IAction<Position>
         {
             /// <summary>
-            /// The calls
+            ///     The calls
             /// </summary>
             public static int Calls;
 
             /// <summary>
-            /// Resets
+            ///     Resets
             /// </summary>
             public static void Reset() => Calls = 0;
 
             /// <summary>
-            /// Runs the arg 1
+            ///     Runs the arg 1
             /// </summary>
             /// <param name="arg1">The arg</param>
             public void Run(ref Position arg1)
@@ -695,22 +724,22 @@ namespace Alis.Core.Ecs.Test.Systems
         }
 
         /// <summary>
-        /// The inline action
+        ///     The inline action
         /// </summary>
-        private struct InlineAction2 : Alis.Core.Aspect.Fluent.Components.IAction<Position, Velocity>
+        private struct InlineAction2 : IAction<Position, Velocity>
         {
             /// <summary>
-            /// The calls
+            ///     The calls
             /// </summary>
             public static int Calls;
 
             /// <summary>
-            /// Resets
+            ///     Resets
             /// </summary>
             public static void Reset() => Calls = 0;
 
             /// <summary>
-            /// Runs the arg 1
+            ///     Runs the arg 1
             /// </summary>
             /// <param name="arg1">The arg</param>
             /// <param name="arg2">The arg</param>
@@ -725,22 +754,22 @@ namespace Alis.Core.Ecs.Test.Systems
         }
 
         /// <summary>
-        /// The inline action
+        ///     The inline action
         /// </summary>
-        private struct InlineAction3 : Alis.Core.Aspect.Fluent.Components.IAction<Position, Velocity, Health>
+        private struct InlineAction3 : IAction<Position, Velocity, Health>
         {
             /// <summary>
-            /// The calls
+            ///     The calls
             /// </summary>
             public static int Calls;
 
             /// <summary>
-            /// Resets
+            ///     Resets
             /// </summary>
             public static void Reset() => Calls = 0;
 
             /// <summary>
-            /// Runs the arg 1
+            ///     Runs the arg 1
             /// </summary>
             /// <param name="arg1">The arg</param>
             /// <param name="arg2">The arg</param>
@@ -755,22 +784,22 @@ namespace Alis.Core.Ecs.Test.Systems
         }
 
         /// <summary>
-        /// The inline action
+        ///     The inline action
         /// </summary>
-        private struct InlineAction4 : Alis.Core.Aspect.Fluent.Components.IAction<Position, Velocity, Health, Armor>
+        private struct InlineAction4 : IAction<Position, Velocity, Health, Armor>
         {
             /// <summary>
-            /// The calls
+            ///     The calls
             /// </summary>
             public static int Calls;
 
             /// <summary>
-            /// Resets
+            ///     Resets
             /// </summary>
             public static void Reset() => Calls = 0;
 
             /// <summary>
-            /// Runs the arg 1
+            ///     Runs the arg 1
             /// </summary>
             /// <param name="arg1">The arg</param>
             /// <param name="arg2">The arg</param>
@@ -787,22 +816,22 @@ namespace Alis.Core.Ecs.Test.Systems
         }
 
         /// <summary>
-        /// The inline action
+        ///     The inline action
         /// </summary>
-        private struct InlineAction5 : Alis.Core.Aspect.Fluent.Components.IAction<Position, Velocity, Health, Armor, Damage>
+        private struct InlineAction5 : IAction<Position, Velocity, Health, Armor, Damage>
         {
             /// <summary>
-            /// The calls
+            ///     The calls
             /// </summary>
             public static int Calls;
 
             /// <summary>
-            /// Resets
+            ///     Resets
             /// </summary>
             public static void Reset() => Calls = 0;
 
             /// <summary>
-            /// Runs the arg 1
+            ///     Runs the arg 1
             /// </summary>
             /// <param name="arg1">The arg</param>
             /// <param name="arg2">The arg</param>
@@ -820,22 +849,22 @@ namespace Alis.Core.Ecs.Test.Systems
         }
 
         /// <summary>
-        /// The inline action
+        ///     The inline action
         /// </summary>
-        private struct InlineAction6 : Alis.Core.Aspect.Fluent.Components.IAction<Position, Velocity, Health, Armor, Damage, Transform>
+        private struct InlineAction6 : IAction<Position, Velocity, Health, Armor, Damage, Transform>
         {
             /// <summary>
-            /// The calls
+            ///     The calls
             /// </summary>
             public static int Calls;
 
             /// <summary>
-            /// Resets
+            ///     Resets
             /// </summary>
             public static void Reset() => Calls = 0;
 
             /// <summary>
-            /// Runs the arg 1
+            ///     Runs the arg 1
             /// </summary>
             /// <param name="arg1">The arg</param>
             /// <param name="arg2">The arg</param>
@@ -855,22 +884,22 @@ namespace Alis.Core.Ecs.Test.Systems
         }
 
         /// <summary>
-        /// The inline action
+        ///     The inline action
         /// </summary>
-        private struct InlineAction7 : Alis.Core.Aspect.Fluent.Components.IAction<Position, Velocity, Health, Armor, Damage, Transform, TestComponent>
+        private struct InlineAction7 : IAction<Position, Velocity, Health, Armor, Damage, Transform, TestComponent>
         {
             /// <summary>
-            /// The calls
+            ///     The calls
             /// </summary>
             public static int Calls;
 
             /// <summary>
-            /// Resets
+            ///     Resets
             /// </summary>
             public static void Reset() => Calls = 0;
 
             /// <summary>
-            /// Runs the arg 1
+            ///     Runs the arg 1
             /// </summary>
             /// <param name="arg1">The arg</param>
             /// <param name="arg2">The arg</param>
@@ -890,22 +919,22 @@ namespace Alis.Core.Ecs.Test.Systems
         }
 
         /// <summary>
-        /// The inline action
+        ///     The inline action
         /// </summary>
-        private struct InlineAction8 : Alis.Core.Aspect.Fluent.Components.IAction<Position, Velocity, Health, Armor, Damage, Transform, TestComponent, AnotherComponent>
+        private struct InlineAction8 : IAction<Position, Velocity, Health, Armor, Damage, Transform, TestComponent, AnotherComponent>
         {
             /// <summary>
-            /// The calls
+            ///     The calls
             /// </summary>
             public static int Calls;
 
             /// <summary>
-            /// Resets
+            ///     Resets
             /// </summary>
             public static void Reset() => Calls = 0;
 
             /// <summary>
-            /// Runs the arg 1
+            ///     Runs the arg 1
             /// </summary>
             /// <param name="arg1">The arg</param>
             /// <param name="arg2">The arg</param>
@@ -930,4 +959,3 @@ namespace Alis.Core.Ecs.Test.Systems
         }
     }
 }
-
