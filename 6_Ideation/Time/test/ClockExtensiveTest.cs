@@ -229,7 +229,7 @@ namespace Alis.Core.Aspect.Time.Test
             long delta = end - start;
             Assert.InRange(delta, 90, 400);
         }
-        
+
 
         /// <summary>
         ///     Tests that precision sub millisecond can be measured

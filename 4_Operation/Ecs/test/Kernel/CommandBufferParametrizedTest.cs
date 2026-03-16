@@ -39,15 +39,11 @@ namespace Alis.Core.Ecs.Test.Kernel
     /// </summary>
     public class CommandBufferParametrizedTest
     {
-
         /// <summary>
-        /// Tests that command buffer enqueue and playback multiple rounds
+        ///     Tests that command buffer enqueue and playback multiple rounds
         /// </summary>
         /// <param name="rounds">The rounds</param>
-        [Theory]
-        [InlineData(5)]
-        [InlineData(10)]
-        [InlineData(20)]
+        [Theory, InlineData(5), InlineData(10), InlineData(20)]
         public void CommandBuffer_EnqueueAndPlayback_MultipleRounds(int rounds)
         {
             // Arrange
@@ -65,7 +61,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         }
 
         /// <summary>
-        /// Tests that command buffer create command with component correct
+        ///     Tests that command buffer create command with component correct
         /// </summary>
         [Fact]
         public void CommandBuffer_CreateCommandWithComponent_Correct()
@@ -73,7 +69,7 @@ namespace Alis.Core.Ecs.Test.Kernel
             // Arrange
             using Scene scene = new Scene();
             CommandBuffer buffer = new(scene);
-            Position pos = new Position { X = 10, Y = 20 };
+            Position pos = new Position {X = 10, Y = 20};
 
 
             buffer.Playback();
@@ -84,23 +80,21 @@ namespace Alis.Core.Ecs.Test.Kernel
             {
                 count++;
             }
+
             Assert.True(count >= 0);
         }
 
         /// <summary>
-        /// Tests that command buffer multiple create commands all processed
+        ///     Tests that command buffer multiple create commands all processed
         /// </summary>
         /// <param name="count">The count</param>
-        [Theory]
-        [InlineData(1)]
-        [InlineData(5)]
-        [InlineData(10)]
+        [Theory, InlineData(1), InlineData(5), InlineData(10)]
         public void CommandBuffer_MultipleCreateCommands_AllProcessed(int count)
         {
             // Arrange
             using Scene scene = new Scene();
             CommandBuffer buffer = new(scene);
-            
+
             buffer.Playback();
 
             // Assert
@@ -109,11 +103,12 @@ namespace Alis.Core.Ecs.Test.Kernel
             {
                 queryCount++;
             }
+
             Assert.True(queryCount >= 0);
         }
 
         /// <summary>
-        /// Tests that command buffer dispose works
+        ///     Tests that command buffer dispose works
         /// </summary>
         [Fact]
         public void CommandBuffer_Dispose_Works()
@@ -127,18 +122,16 @@ namespace Alis.Core.Ecs.Test.Kernel
         }
 
         /// <summary>
-        /// Tests that command buffer stress test many commands
+        ///     Tests that command buffer stress test many commands
         /// </summary>
         /// <param name="commandCount">The command count</param>
-        [Theory]
-        [InlineData(10)]
-        [InlineData(50)]
+        [Theory, InlineData(10), InlineData(50)]
         public void CommandBuffer_StressTest_ManyCommands(int commandCount)
         {
             // Arrange
             using Scene scene = new Scene();
             CommandBuffer buffer = new(scene);
-            
+
             buffer.Playback();
 
             // Assert
@@ -146,4 +139,3 @@ namespace Alis.Core.Ecs.Test.Kernel
         }
     }
 }
-
