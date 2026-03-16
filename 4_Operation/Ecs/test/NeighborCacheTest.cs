@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Collections;
 using Alis.Core.Ecs.Exceptions;
 using Alis.Core.Ecs.Kernel;
@@ -52,11 +53,11 @@ namespace Alis.Core.Ecs.Test
         public void ModifyComponents_AddsComponent_WhenAddFlagIsTrue()
         {
             // Arrange
-            NeighborCache<Position> cache = default;
+            NeighborCache<Position> cache = default(NeighborCache<Position>);
             FastImmutableArray<ComponentId> components = FastImmutableArray<ComponentId>.Empty;
 
             // Act
-            cache.ModifyComponents(ref components, add: true);
+            cache.ModifyComponents(ref components, true);
 
             // Assert
             Assert.Single(components);
@@ -70,13 +71,13 @@ namespace Alis.Core.Ecs.Test
         public void ModifyComponents_RemovesComponent_WhenAddFlagIsFalse()
         {
             // Arrange
-            NeighborCache<Position> cache = default;
+            NeighborCache<Position> cache = default(NeighborCache<Position>);
             FastImmutableArray<ComponentId>.Builder builder = FastImmutableArray<ComponentId>.CreateBuilder<ComponentId>(1);
             builder.Add(Component<Position>.Id);
             FastImmutableArray<ComponentId> components = builder.ToImmutable();
 
             // Act
-            cache.ModifyComponents(ref components, add: false);
+            cache.ModifyComponents(ref components, false);
 
             // Assert
             Assert.Empty(components);
@@ -89,14 +90,14 @@ namespace Alis.Core.Ecs.Test
         public void ModifyComponents_PreservesExistingComponents_WhenAdding()
         {
             // Arrange
-            NeighborCache<Velocity> cache = default;
+            NeighborCache<Velocity> cache = default(NeighborCache<Velocity>);
             FastImmutableArray<ComponentId>.Builder builder = FastImmutableArray<ComponentId>.CreateBuilder<ComponentId>(1);
             builder.Add(Component<Position>.Id);
             FastImmutableArray<ComponentId> components = builder.ToImmutable();
             int originalLength = components.Length;
 
             // Act
-            cache.ModifyComponents(ref components, add: true);
+            cache.ModifyComponents(ref components, true);
 
             // Assert
             Assert.Equal(originalLength + 1, components.Length);
@@ -127,11 +128,11 @@ namespace Alis.Core.Ecs.Test
             public void ModifyComponents_AddsBothComponents_WhenAddFlagIsTrue()
             {
                 // Arrange
-                NeighborCache<Position, Velocity> cache = default;
+                NeighborCache<Position, Velocity> cache = default(NeighborCache<Position, Velocity>);
                 FastImmutableArray<ComponentId> components = FastImmutableArray<ComponentId>.Empty;
 
                 // Act
-                cache.ModifyComponents(ref components, add: true);
+                cache.ModifyComponents(ref components, true);
 
                 // Assert
                 Assert.Equal(2, components.Length);
@@ -146,14 +147,14 @@ namespace Alis.Core.Ecs.Test
             public void ModifyComponents_RemovesBothComponents_WhenAddFlagIsFalse()
             {
                 // Arrange
-                NeighborCache<Position, Velocity> cache = default;
+                NeighborCache<Position, Velocity> cache = default(NeighborCache<Position, Velocity>);
                 FastImmutableArray<ComponentId>.Builder builder = FastImmutableArray<ComponentId>.CreateBuilder<ComponentId>(2);
                 builder.Add(Component<Position>.Id);
                 builder.Add(Component<Velocity>.Id);
                 FastImmutableArray<ComponentId> components = builder.ToImmutable();
 
                 // Act
-                cache.ModifyComponents(ref components, add: false);
+                cache.ModifyComponents(ref components, false);
 
                 // Assert
                 Assert.Empty(components);
@@ -166,13 +167,13 @@ namespace Alis.Core.Ecs.Test
             public void ModifyComponents_PreservesOtherComponents_WhenAdding()
             {
                 // Arrange
-                NeighborCache<Position, Velocity> cache = default;
+                NeighborCache<Position, Velocity> cache = default(NeighborCache<Position, Velocity>);
                 FastImmutableArray<ComponentId>.Builder builder = FastImmutableArray<ComponentId>.CreateBuilder<ComponentId>(1);
                 builder.Add(Component<Health>.Id);
                 FastImmutableArray<ComponentId> components = builder.ToImmutable();
 
                 // Act
-                cache.ModifyComponents(ref components, add: true);
+                cache.ModifyComponents(ref components, true);
 
                 // Assert
                 Assert.Equal(3, components.Length);
@@ -180,7 +181,6 @@ namespace Alis.Core.Ecs.Test
                 Assert.Contains(Component<Position>.Id, components);
                 Assert.Contains(Component<Velocity>.Id, components);
             }
-
         }
 
         /// <summary>
@@ -195,11 +195,11 @@ namespace Alis.Core.Ecs.Test
             public void ModifyComponents_AddsAllThreeComponents_WhenAddFlagIsTrue()
             {
                 // Arrange
-                NeighborCache<Position, Velocity, Health> cache = default;
+                NeighborCache<Position, Velocity, Health> cache = default(NeighborCache<Position, Velocity, Health>);
                 FastImmutableArray<ComponentId> components = FastImmutableArray<ComponentId>.Empty;
 
                 // Act
-                cache.ModifyComponents(ref components, add: true);
+                cache.ModifyComponents(ref components, true);
 
                 // Assert
                 Assert.Equal(3, components.Length);
@@ -215,7 +215,7 @@ namespace Alis.Core.Ecs.Test
             public void ModifyComponents_RemovesAllThreeComponents_WhenAddFlagIsFalse()
             {
                 // Arrange
-                NeighborCache<Position, Velocity, Health> cache = default;
+                NeighborCache<Position, Velocity, Health> cache = default(NeighborCache<Position, Velocity, Health>);
                 FastImmutableArray<ComponentId>.Builder builder = FastImmutableArray<ComponentId>.CreateBuilder<ComponentId>(3);
                 builder.Add(Component<Position>.Id);
                 builder.Add(Component<Velocity>.Id);
@@ -223,7 +223,7 @@ namespace Alis.Core.Ecs.Test
                 FastImmutableArray<ComponentId> components = builder.ToImmutable();
 
                 // Act
-                cache.ModifyComponents(ref components, add: false);
+                cache.ModifyComponents(ref components, false);
 
                 // Assert
                 Assert.Empty(components);
@@ -236,7 +236,7 @@ namespace Alis.Core.Ecs.Test
             public void ModifyComponents_RemovesOnlySpecifiedComponents()
             {
                 // Arrange
-                NeighborCache<Position, Velocity, Health> cache = default;
+                NeighborCache<Position, Velocity, Health> cache = default(NeighborCache<Position, Velocity, Health>);
                 FastImmutableArray<ComponentId>.Builder builder = FastImmutableArray<ComponentId>.CreateBuilder<ComponentId>(4);
                 builder.Add(Component<Position>.Id);
                 builder.Add(Component<Velocity>.Id);
@@ -245,7 +245,7 @@ namespace Alis.Core.Ecs.Test
                 FastImmutableArray<ComponentId> components = builder.ToImmutable();
 
                 // Act
-                cache.ModifyComponents(ref components, add: false);
+                cache.ModifyComponents(ref components, false);
 
                 // Assert
                 Assert.Single(components);
@@ -268,11 +268,11 @@ namespace Alis.Core.Ecs.Test
             public void ModifyComponents_AddsFourComponents_WhenAddFlagIsTrue()
             {
                 // Arrange
-                NeighborCache<Position, Velocity, Health, Armor> cache = default;
+                NeighborCache<Position, Velocity, Health, Armor> cache = default(NeighborCache<Position, Velocity, Health, Armor>);
                 FastImmutableArray<ComponentId> components = FastImmutableArray<ComponentId>.Empty;
 
                 // Act
-                cache.ModifyComponents(ref components, add: true);
+                cache.ModifyComponents(ref components, true);
 
                 // Assert
                 Assert.Equal(4, components.Length);
@@ -289,7 +289,7 @@ namespace Alis.Core.Ecs.Test
             public void ModifyComponents_RemovesFourComponents_WhenAddFlagIsFalse()
             {
                 // Arrange
-                NeighborCache<Position, Velocity, Health, Armor> cache = default;
+                NeighborCache<Position, Velocity, Health, Armor> cache = default(NeighborCache<Position, Velocity, Health, Armor>);
                 FastImmutableArray<ComponentId>.Builder builder = FastImmutableArray<ComponentId>.CreateBuilder<ComponentId>(4);
                 builder.Add(Component<Position>.Id);
                 builder.Add(Component<Velocity>.Id);
@@ -298,7 +298,7 @@ namespace Alis.Core.Ecs.Test
                 FastImmutableArray<ComponentId> components = builder.ToImmutable();
 
                 // Act
-                cache.ModifyComponents(ref components, add: false);
+                cache.ModifyComponents(ref components, false);
 
                 // Assert
                 Assert.Empty(components);
@@ -317,11 +317,11 @@ namespace Alis.Core.Ecs.Test
             public void ModifyComponents_AddsFiveComponents_WhenAddFlagIsTrue()
             {
                 // Arrange
-                NeighborCache<Position, Velocity, Health, Armor, Damage> cache = default;
+                NeighborCache<Position, Velocity, Health, Armor, Damage> cache = default(NeighborCache<Position, Velocity, Health, Armor, Damage>);
                 FastImmutableArray<ComponentId> components = FastImmutableArray<ComponentId>.Empty;
 
                 // Act
-                cache.ModifyComponents(ref components, add: true);
+                cache.ModifyComponents(ref components, true);
 
                 // Assert
                 Assert.Equal(5, components.Length);
@@ -339,7 +339,7 @@ namespace Alis.Core.Ecs.Test
             public void ModifyComponents_RemovesFiveComponents_WhenAddFlagIsFalse()
             {
                 // Arrange
-                NeighborCache<Position, Velocity, Health, Armor, Damage> cache = default;
+                NeighborCache<Position, Velocity, Health, Armor, Damage> cache = default(NeighborCache<Position, Velocity, Health, Armor, Damage>);
                 FastImmutableArray<ComponentId>.Builder builder = FastImmutableArray<ComponentId>.CreateBuilder<ComponentId>(5);
                 builder.Add(Component<Position>.Id);
                 builder.Add(Component<Velocity>.Id);
@@ -349,7 +349,7 @@ namespace Alis.Core.Ecs.Test
                 FastImmutableArray<ComponentId> components = builder.ToImmutable();
 
                 // Act
-                cache.ModifyComponents(ref components, add: false);
+                cache.ModifyComponents(ref components, false);
 
                 // Assert
                 Assert.Empty(components);
@@ -365,7 +365,7 @@ namespace Alis.Core.Ecs.Test
                 Type cacheType = typeof(NeighborCache<Position, Velocity, Health, Armor, Damage>);
 
                 // Assert
-                object[] layoutAttr = cacheType.GetCustomAttributes(typeof(System.Runtime.InteropServices.StructLayoutAttribute), false);
+                object[] layoutAttr = cacheType.GetCustomAttributes(typeof(StructLayoutAttribute), false);
                 Assert.Empty(layoutAttr);
             }
         }
@@ -382,11 +382,11 @@ namespace Alis.Core.Ecs.Test
             public void ModifyComponents_AddsSixComponents_WhenAddFlagIsTrue()
             {
                 // Arrange
-                NeighborCache<Position, Velocity, Health, Armor, Damage, TestComponent> cache = default;
+                NeighborCache<Position, Velocity, Health, Armor, Damage, TestComponent> cache = default(NeighborCache<Position, Velocity, Health, Armor, Damage, TestComponent>);
                 FastImmutableArray<ComponentId> components = FastImmutableArray<ComponentId>.Empty;
 
                 // Act
-                cache.ModifyComponents(ref components, add: true);
+                cache.ModifyComponents(ref components, true);
 
                 // Assert
                 Assert.Equal(6, components.Length);
@@ -399,7 +399,7 @@ namespace Alis.Core.Ecs.Test
             public void ModifyComponents_RemovesSixComponents_WhenAddFlagIsFalse()
             {
                 // Arrange
-                NeighborCache<Position, Velocity, Health, Armor, Damage, TestComponent> cache = default;
+                NeighborCache<Position, Velocity, Health, Armor, Damage, TestComponent> cache = default(NeighborCache<Position, Velocity, Health, Armor, Damage, TestComponent>);
                 FastImmutableArray<ComponentId>.Builder builder = FastImmutableArray<ComponentId>.CreateBuilder<ComponentId>(6);
                 builder.Add(Component<Position>.Id);
                 builder.Add(Component<Velocity>.Id);
@@ -410,7 +410,7 @@ namespace Alis.Core.Ecs.Test
                 FastImmutableArray<ComponentId> components = builder.ToImmutable();
 
                 // Act
-                cache.ModifyComponents(ref components, add: false);
+                cache.ModifyComponents(ref components, false);
 
                 // Assert
                 Assert.Empty(components);
@@ -429,11 +429,11 @@ namespace Alis.Core.Ecs.Test
             public void ModifyComponents_AddsSevenComponents_WhenAddFlagIsTrue()
             {
                 // Arrange
-                NeighborCache<Position, Velocity, Health, Armor, Damage, TestComponent, TestComponent2> cache = default;
+                NeighborCache<Position, Velocity, Health, Armor, Damage, TestComponent, TestComponent2> cache = default(NeighborCache<Position, Velocity, Health, Armor, Damage, TestComponent, TestComponent2>);
                 FastImmutableArray<ComponentId> components = FastImmutableArray<ComponentId>.Empty;
 
                 // Act
-                cache.ModifyComponents(ref components, add: true);
+                cache.ModifyComponents(ref components, true);
 
                 // Assert
                 Assert.Equal(7, components.Length);
@@ -446,7 +446,7 @@ namespace Alis.Core.Ecs.Test
             public void ModifyComponents_RemovesSevenComponents_WhenAddFlagIsFalse()
             {
                 // Arrange
-                NeighborCache<Position, Velocity, Health, Armor, Damage, TestComponent, TestComponent2> cache = default;
+                NeighborCache<Position, Velocity, Health, Armor, Damage, TestComponent, TestComponent2> cache = default(NeighborCache<Position, Velocity, Health, Armor, Damage, TestComponent, TestComponent2>);
                 FastImmutableArray<ComponentId>.Builder builder = FastImmutableArray<ComponentId>.CreateBuilder<ComponentId>(7);
                 builder.Add(Component<Position>.Id);
                 builder.Add(Component<Velocity>.Id);
@@ -458,7 +458,7 @@ namespace Alis.Core.Ecs.Test
                 FastImmutableArray<ComponentId> components = builder.ToImmutable();
 
                 // Act
-                cache.ModifyComponents(ref components, add: false);
+                cache.ModifyComponents(ref components, false);
 
                 // Assert
                 Assert.Empty(components);
@@ -477,11 +477,11 @@ namespace Alis.Core.Ecs.Test
             public void ModifyComponents_AddsEightComponents_WhenAddFlagIsTrue()
             {
                 // Arrange
-                NeighborCache<Position, Velocity, Health, Armor, Damage, TestComponent, TestComponent2, AnotherComponent> cache = default;
+                NeighborCache<Position, Velocity, Health, Armor, Damage, TestComponent, TestComponent2, AnotherComponent> cache = default(NeighborCache<Position, Velocity, Health, Armor, Damage, TestComponent, TestComponent2, AnotherComponent>);
                 FastImmutableArray<ComponentId> components = FastImmutableArray<ComponentId>.Empty;
 
                 // Act
-                cache.ModifyComponents(ref components, add: true);
+                cache.ModifyComponents(ref components, true);
 
                 // Assert
                 Assert.Equal(8, components.Length);
@@ -494,7 +494,7 @@ namespace Alis.Core.Ecs.Test
             public void ModifyComponents_RemovesEightComponents_WhenAddFlagIsFalse()
             {
                 // Arrange
-                NeighborCache<Position, Velocity, Health, Armor, Damage, TestComponent, TestComponent2, AnotherComponent> cache = default;
+                NeighborCache<Position, Velocity, Health, Armor, Damage, TestComponent, TestComponent2, AnotherComponent> cache = default(NeighborCache<Position, Velocity, Health, Armor, Damage, TestComponent, TestComponent2, AnotherComponent>);
                 FastImmutableArray<ComponentId>.Builder builder = FastImmutableArray<ComponentId>.CreateBuilder<ComponentId>(8);
                 builder.Add(Component<Position>.Id);
                 builder.Add(Component<Velocity>.Id);
@@ -507,7 +507,7 @@ namespace Alis.Core.Ecs.Test
                 FastImmutableArray<ComponentId> components = builder.ToImmutable();
 
                 // Act
-                cache.ModifyComponents(ref components, add: false);
+                cache.ModifyComponents(ref components, false);
 
                 // Assert
                 Assert.Empty(components);
@@ -526,15 +526,15 @@ namespace Alis.Core.Ecs.Test
             public void ModifyComponents_CanBeAppliedInSequence()
             {
                 // Arrange
-                NeighborCache<Position, Velocity> cache = default;
+                NeighborCache<Position, Velocity> cache = default(NeighborCache<Position, Velocity>);
                 FastImmutableArray<ComponentId> components = FastImmutableArray<ComponentId>.Empty;
 
                 // Act - Add components
-                cache.ModifyComponents(ref components, add: true);
+                cache.ModifyComponents(ref components, true);
                 int addedCount = components.Length;
 
                 // Act - Remove components
-                cache.ModifyComponents(ref components, add: false);
+                cache.ModifyComponents(ref components, false);
                 int finalCount = components.Length;
 
                 // Assert
@@ -549,13 +549,13 @@ namespace Alis.Core.Ecs.Test
             public void ModifyComponents_AllowsMultipleComponentTypes()
             {
                 // Arrange
-                NeighborCache<Position, Velocity> cacheA = default;
-                NeighborCache<Health, Armor> cacheB = default;
+                NeighborCache<Position, Velocity> cacheA = default(NeighborCache<Position, Velocity>);
+                NeighborCache<Health, Armor> cacheB = default(NeighborCache<Health, Armor>);
                 FastImmutableArray<ComponentId> components = FastImmutableArray<ComponentId>.Empty;
 
                 // Act
-                cacheA.ModifyComponents(ref components, add: true);
-                cacheB.ModifyComponents(ref components, add: true);
+                cacheA.ModifyComponents(ref components, true);
+                cacheB.ModifyComponents(ref components, true);
 
                 // Assert
                 Assert.Equal(4, components.Length);
@@ -579,13 +579,13 @@ namespace Alis.Core.Ecs.Test
         public void ModifyComponents_ThrowsException_WhenAddingDuplicateComponent()
         {
             // Arrange
-            NeighborCache<Position> cache = default;
+            NeighborCache<Position> cache = default(NeighborCache<Position>);
             FastImmutableArray<ComponentId>.Builder builder = FastImmutableArray<ComponentId>.CreateBuilder<ComponentId>(1);
             builder.Add(Component<Position>.Id);
             FastImmutableArray<ComponentId> components = builder.ToImmutable();
 
             // Act & Assert
-            Assert.Throws<InvalidOperationException>(() => cache.ModifyComponents(ref components, add: true));
+            Assert.Throws<InvalidOperationException>(() => cache.ModifyComponents(ref components, true));
         }
 
         /// <summary>
@@ -595,13 +595,13 @@ namespace Alis.Core.Ecs.Test
         public void ModifyComponents_ThrowsException_WhenRemovingNonExistentComponent()
         {
             // Arrange
-            NeighborCache<Position> cache = default;
+            NeighborCache<Position> cache = default(NeighborCache<Position>);
             FastImmutableArray<ComponentId>.Builder builder = FastImmutableArray<ComponentId>.CreateBuilder<ComponentId>(1);
             builder.Add(Component<Velocity>.Id);
             FastImmutableArray<ComponentId> components = builder.ToImmutable();
 
             // Act & Assert
-            Assert.Throws<ComponentNotFoundException>(() => cache.ModifyComponents(ref components, add: false));
+            Assert.Throws<ComponentNotFoundException>(() => cache.ModifyComponents(ref components, false));
         }
 
         /// <summary>
@@ -611,11 +611,11 @@ namespace Alis.Core.Ecs.Test
         public void ModifyComponents_HandlesEmptyComponentArray()
         {
             // Arrange
-            NeighborCache<Position> cache = default;
+            NeighborCache<Position> cache = default(NeighborCache<Position>);
             FastImmutableArray<ComponentId> components = FastImmutableArray<ComponentId>.Empty;
 
             // Act
-            cache.ModifyComponents(ref components, add: true);
+            cache.ModifyComponents(ref components, true);
 
             // Assert
             Assert.NotEmpty(components);
@@ -628,7 +628,7 @@ namespace Alis.Core.Ecs.Test
         public void ModifyComponents_HandlesLargeComponentSets()
         {
             // Arrange
-            NeighborCache<Position, Velocity, Health, Armor, Damage, TestComponent, TestComponent2, AnotherComponent> cache = default;
+            NeighborCache<Position, Velocity, Health, Armor, Damage, TestComponent, TestComponent2, AnotherComponent> cache = default(NeighborCache<Position, Velocity, Health, Armor, Damage, TestComponent, TestComponent2, AnotherComponent>);
             FastImmutableArray<ComponentId>.Builder builder = FastImmutableArray<ComponentId>.CreateBuilder<ComponentId>(10);
             // Add some pre-existing components
             builder.Add(Component<AnotherComponent2>.Id);
@@ -636,12 +636,10 @@ namespace Alis.Core.Ecs.Test
             int originalLength = components.Length;
 
             // Act
-            cache.ModifyComponents(ref components, add: true);
+            cache.ModifyComponents(ref components, true);
 
             // Assert
             Assert.Equal(originalLength + 8, components.Length);
         }
     }
 }
-
-
