@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:TriangleRenderer.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Graphic.OpenGL;
@@ -12,19 +41,19 @@ using Object = Java.Lang.Object;
 namespace Alis.Sample.Asteroid.Android
 {
     /// <summary>
-    /// The triangle renderer class
+    ///     The triangle renderer class
     /// </summary>
-    /// <seealso cref="Object"/>
-    /// <seealso cref="GLSurfaceView.IRenderer"/>
+    /// <seealso cref="Object" />
+    /// <seealso cref="GLSurfaceView.IRenderer" />
     public class TriangleRenderer : Object, GLSurfaceView.IRenderer
     {
         /// <summary>
-        /// The coords per vertex
+        ///     The coords per vertex
         /// </summary>
         private const int CoordsPerVertex = 2;
 
         /// <summary>
-        /// The triangle coords
+        ///     The triangle coords
         /// </summary>
         private static readonly float[] TriangleCoords =
         {
@@ -34,33 +63,35 @@ namespace Alis.Sample.Asteroid.Android
         };
 
         /// <summary>
-        /// The vertex shader code
+        ///     The vertex shader code
         /// </summary>
         private static readonly string VertexShaderCode =
             "attribute vec2 vPosition; void main() { gl_Position = vec4(vPosition, 0.0, 1.0); }";
 
         /// <summary>
-        /// The fragment shader code
+        ///     The fragment shader code
         /// </summary>
         private static readonly string FragmentShaderCode =
             "precision mediump float; void main() { gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0); }";
 
         /// <summary>
-        /// The vertex ptr
+        ///     The vertex ptr
         /// </summary>
         private IntPtr _vertexPtr;
+
         /// <summary>
-        /// The position handle
+        ///     The position handle
         /// </summary>
         private int positionHandle;
+
         /// <summary>
-        /// The program
+        ///     The program
         /// </summary>
         private uint program;
 
         // Métodos para compatibilidad con IGL10/EGLConfig
         /// <summary>
-        /// Ons the draw frame using the specified gl
+        ///     Ons the draw frame using the specified gl
         /// </summary>
         /// <param name="gl">The gl</param>
         public void OnDrawFrame(IGL10? gl)
@@ -69,7 +100,7 @@ namespace Alis.Sample.Asteroid.Android
         }
 
         /// <summary>
-        /// Ons the surface changed using the specified gl
+        ///     Ons the surface changed using the specified gl
         /// </summary>
         /// <param name="gl">The gl</param>
         /// <param name="width">The width</param>
@@ -80,7 +111,7 @@ namespace Alis.Sample.Asteroid.Android
         }
 
         /// <summary>
-        /// Ons the surface created using the specified gl
+        ///     Ons the surface created using the specified gl
         /// </summary>
         /// <param name="gl">The gl</param>
         /// <param name="config">The config</param>
@@ -91,7 +122,7 @@ namespace Alis.Sample.Asteroid.Android
 
 
         /// <summary>
-        /// Ons the surface created using the specified gl
+        ///     Ons the surface created using the specified gl
         /// </summary>
         /// <param name="gl">The gl</param>
         /// <param name="config">The config</param>
@@ -123,7 +154,7 @@ namespace Alis.Sample.Asteroid.Android
         }
 
         /// <summary>
-        /// Ons the draw frame using the specified gl
+        ///     Ons the draw frame using the specified gl
         /// </summary>
         /// <param name="gl">The gl</param>
         public void OnDrawFrame(Object gl)
@@ -151,7 +182,7 @@ namespace Alis.Sample.Asteroid.Android
         }
 
         /// <summary>
-        /// Ons the surface changed using the specified gl
+        ///     Ons the surface changed using the specified gl
         /// </summary>
         /// <param name="gl">The gl</param>
         /// <param name="width">The width</param>
@@ -163,7 +194,7 @@ namespace Alis.Sample.Asteroid.Android
         }
 
         /// <summary>
-        /// Loads the shader using the specified type
+        ///     Loads the shader using the specified type
         /// </summary>
         /// <param name="type">The type</param>
         /// <param name="shaderCode">The shader code</param>
@@ -177,7 +208,7 @@ namespace Alis.Sample.Asteroid.Android
         }
 
         /// <summary>
-        /// Disposes the disposing
+        ///     Disposes the disposing
         /// </summary>
         /// <param name="disposing">The disposing</param>
         protected override void Dispose(bool disposing)
