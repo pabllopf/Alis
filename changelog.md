@@ -5,6 +5,36 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.0.1] - 2026-03-17
+### :bug: Bug Fixes
+- [`d43b370`](https://github.com/pabllopf/Alis/commit/d43b370c17b699e2c052f43ffe2949bf5430f1a1) - Minor formatting: add blank line in Animator.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5367f8a`](https://github.com/pabllopf/Alis/commit/5367f8a4c04d0dabb90d9703df8a0496d7db6fc7) - Publish .nupkg and .snupkg to NuGet *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0c1003a`](https://github.com/pabllopf/Alis/commit/0c1003a2e2d0baab0b135621fd9d8c8249973952) - Trim trailing whitespace in ClockExtensiveTest.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5408531`](https://github.com/pabllopf/Alis/commit/5408531a4cf9a03b3bc55c4b2a37648f1ba05d05) - Format code, add headers, tidy tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5a01fb9`](https://github.com/pabllopf/Alis/commit/5a01fb95f9fb53b6de24f193655a6763ff4db6a1) - Normalize formatting in query system files *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d44a767`](https://github.com/pabllopf/Alis/commit/d44a76765864b8705300fc361ed4990a89548d6f) - Add headers and normalize formatting *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ebd193b`](https://github.com/pabllopf/Alis/commit/ebd193b3ded2d7308385873a978cd70f444904a4) - Reformat Interop, adjust tests, add stubs *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`27138c0`](https://github.com/pabllopf/Alis/commit/27138c0921369b192e7d19e74047a74542bc86ed) - Style & formatting cleanup across ECS code *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9b2dbf0`](https://github.com/pabllopf/Alis/commit/9b2dbf0abcfe6f7089bcd71de09050e7a031f08c) - Format tests, add headers and simplify code *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6253c4e`](https://github.com/pabllopf/Alis/commit/6253c4e053fa9a8c68264b6c88bc6eaece5a2348) - Format EntryPoint and update tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`534a699`](https://github.com/pabllopf/Alis/commit/534a69982651ddd96c851093a65e531806a3b9ba) - Add header to sample and simplify Ref<T> *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1c496e1`](https://github.com/pabllopf/Alis/commit/1c496e1efa29988fdc25799f4903c89490237083) - Add license header and reformat tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`57aa255`](https://github.com/pabllopf/Alis/commit/57aa2556999e07d0206c44aaa3efb2627ffba0f2) - Add license headers and refactor archetype & tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5ada317`](https://github.com/pabllopf/Alis/commit/5ada317abcd9ad54159fc9e8656da2a18a53e637) - Refactor ComponentStorage; update docs; add header *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8b5de49`](https://github.com/pabllopf/Alis/commit/8b5de49a187484049df3aac388f7f34327ff02df) - add more of 10.000 test to aspects *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :art: Code Style Changes
+- [`e7342bd`](https://github.com/pabllopf/Alis/commit/e7342bd511f3f38af9c52f139012cb3f1a2654e5) - Add GPL headers and reformat codebase *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7fa3d5c`](https://github.com/pabllopf/Alis/commit/7fa3d5cc8f2cd6916670f5d71854c48fd5be3cc7) - Format Query and BulkComponentTests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d15a9e8`](https://github.com/pabllopf/Alis/commit/d15a9e8705df9846cadb7438502ff81788e09b88) - Format EntryPoint, add license header; tidy tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f60c376`](https://github.com/pabllopf/Alis/commit/f60c37684e8f5a59b35e55ff277beec1991ab6ee) - Add license headers and clean up code style *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bef1c47`](https://github.com/pabllopf/Alis/commit/bef1c475990f940ae3312a04266c25460a18aac4) - Add file headers and format test code *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`55306fb`](https://github.com/pabllopf/Alis/commit/55306fb313251a209d1981e508905f734378933c) - Add file headers, formatting, and test fixes *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3b5a593`](https://github.com/pabllopf/Alis/commit/3b5a5931e77426679d373e2bd42a999048f2af66) - and formatting cleanup across ECS module *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v1.0.0] - 2026-03-16
 ### :sparkles: New Features
 - [`7c3b393`](https://github.com/pabllopf/Alis/commit/7c3b393387b911c13d582e399b88493b848bfeee) - Refactor neighbor cache internals and update benchmarks *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -6131,3 +6161,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.9.8]: https://github.com/pabllopf/Alis/compare/v0.9.7...v0.9.8
 [v0.9.9]: https://github.com/pabllopf/Alis/compare/v0.9.8...v0.9.9
 [v1.0.0]: https://github.com/pabllopf/Alis/compare/v0.9.9...v1.0.0
+[v1.0.1]: https://github.com/pabllopf/Alis/compare/v1.0.0...v1.0.1
