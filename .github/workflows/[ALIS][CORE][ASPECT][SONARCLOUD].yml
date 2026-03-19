@@ -44,4 +44,12 @@ jobs:
           dotnet sonarscanner begin /k:"pabllopf_alis-core-aspect" /o:"pabllopf" /d:sonar.scanner.scanAll=false /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" /d:sonar.token="${{ secrets.SONAR_TOKEN_ALIS_CORE_ASPECT }}" /d:sonar.scanner.skipJreProvisioning=false /d:sonar.language=cs /d:sonar.dotnet.version=8.0 /d:sonar.verbose=false /d:sonar.cs.opencover.reportsPaths="./.test/**/*.opencover.xml"
           dotnet build -c Debug -f net8.0 ./5_Declaration/Aspect/src/Alis.Core.Aspect.csproj
           dotnet test -f net8.0 -c Debug ./5_Declaration/Aspect/test/Alis.Core.Aspect.Test.csproj --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
+          
+          dotnet test -f net8.0 -c Debug ./6_Ideation/Time/test/Alis.Core.Aspect.Time.Test.csproj --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
+          dotnet test -f net8.0 -c Debug ./6_Ideation/Memory/test/Alis.Core.Aspect.Memory.Test.csproj --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
+          dotnet test -f net8.0 -c Debug ./6_Ideation/Math/test/Alis.Core.Aspect.Math.Test.csproj --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
+          dotnet test -f net8.0 -c Debug ./6_Ideation/Logging/test/Alis.Core.Aspect.Logging.Test.csproj --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
+          dotnet test -f net8.0 -c Debug ./6_Ideation/Fluent/test/Alis.Core.Aspect.Fluent.Test.csproj --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
+          dotnet test -f net8.0 -c Debug ./6_Ideation/Data/test/Alis.Core.Aspect.Data.Test.csproj --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
+          
           dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN_ALIS_CORE_ASPECT }}"
