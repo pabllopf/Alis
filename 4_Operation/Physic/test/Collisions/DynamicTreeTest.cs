@@ -5,8 +5,14 @@ using Xunit;
 
 namespace Alis.Core.Physic.Test.Collisions
 {
+    /// <summary>
+    /// The dynamic tree test class
+    /// </summary>
     public class DynamicTreeTest
     {
+        /// <summary>
+        /// Tests that add proxy set user data get user data should round trip
+        /// </summary>
         [Fact]
         public void AddProxy_SetUserData_GetUserData_ShouldRoundTrip()
         {
@@ -20,6 +26,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(tree.Height >= 0);
         }
 
+        /// <summary>
+        /// Tests that query should return inserted proxy
+        /// </summary>
         [Fact]
         public void Query_ShouldReturnInsertedProxy()
         {
@@ -38,6 +47,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Contains(proxyId, hits);
         }
 
+        /// <summary>
+        /// Tests that move proxy should return false when new aabb is inside fat aabb
+        /// </summary>
         [Fact]
         public void MoveProxy_ShouldReturnFalse_WhenNewAabbIsInsideFatAabb()
         {
@@ -50,6 +62,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.False(moved);
         }
 
+        /// <summary>
+        /// Tests that remove proxy should keep tree operational
+        /// </summary>
         [Fact]
         public void RemoveProxy_ShouldKeepTreeOperational()
         {

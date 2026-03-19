@@ -6,8 +6,14 @@ using Xunit;
 
 namespace Alis.Core.Physic.Test.Collisions
 {
+    /// <summary>
+    /// The separation function test class
+    /// </summary>
     public class SeparationFunctionTest
     {
+        /// <summary>
+        /// Tests that set with one cache point should configure points mode and evaluate finite separation
+        /// </summary>
         [Fact]
         public void Set_WithOneCachePoint_ShouldConfigurePointsModeAndEvaluateFiniteSeparation()
         {
@@ -30,6 +36,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(0, indexB);
         }
 
+        /// <summary>
+        /// Tests that evaluate should return finite value after set
+        /// </summary>
         [Fact]
         public void Evaluate_ShouldReturnFiniteValue_AfterSet()
         {

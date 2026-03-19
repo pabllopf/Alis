@@ -6,8 +6,14 @@ using Xunit;
 
 namespace Alis.Core.Physic.Test.Collisions
 {
+    /// <summary>
+    /// The time of impact test class
+    /// </summary>
     public class TimeOfImpactTest
     {
+        /// <summary>
+        /// Tests that calculate time of impact should return separated for far sweeps
+        /// </summary>
         [Fact]
         public void CalculateTimeOfImpact_ShouldReturnSeparated_ForFarSweeps()
         {
@@ -45,6 +51,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(1.0f, output.T);
         }
 
+        /// <summary>
+        /// Tests that calculate time of impact should return overlapped when starting intersecting
+        /// </summary>
         [Fact]
         public void CalculateTimeOfImpact_ShouldReturnOverlapped_WhenStartingIntersecting()
         {

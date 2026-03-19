@@ -5,8 +5,14 @@ using Xunit;
 
 namespace Alis.Core.Physic.Test.Collisions
 {
+    /// <summary>
+    /// The simplex test class
+    /// </summary>
     public class SimplexTest
     {
+        /// <summary>
+        /// Tests that get search direction with single vertex should negate vertex
+        /// </summary>
         [Fact]
         public void GetSearchDirection_WithSingleVertex_ShouldNegateVertex()
         {
@@ -22,6 +28,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(new Vector2F(-2.0f, 3.0f), direction);
         }
 
+        /// <summary>
+        /// Tests that solve 2 should reduce to closest vertex when origin outside segment
+        /// </summary>
         [Fact]
         public void Solve2_ShouldReduceToClosestVertex_WhenOriginOutsideSegment()
         {
@@ -38,6 +47,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(1, simplex.Count);
         }
 
+        /// <summary>
+        /// Tests that get metric with two points should return segment length
+        /// </summary>
         [Fact]
         public void GetMetric_WithTwoPoints_ShouldReturnSegmentLength()
         {
@@ -54,6 +66,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(5.0f, metric);
         }
 
+        /// <summary>
+        /// Tests that get witness points with single point should return stored points
+        /// </summary>
         [Fact]
         public void GetWitnessPoints_WithSinglePoint_ShouldReturnStoredPoints()
         {

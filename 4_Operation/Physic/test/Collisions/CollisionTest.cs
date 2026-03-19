@@ -7,8 +7,14 @@ using Xunit;
 
 namespace Alis.Core.Physic.Test.Collisions
 {
+    /// <summary>
+    /// The collision test class
+    /// </summary>
     public class CollisionTest
     {
+        /// <summary>
+        /// Tests that test overlap should return true for overlapping circles
+        /// </summary>
         [Fact]
         public void TestOverlap_ShouldReturnTrue_ForOverlappingCircles()
         {
@@ -22,6 +28,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(overlap);
         }
 
+        /// <summary>
+        /// Tests that collide circles should produce single contact when intersecting
+        /// </summary>
         [Fact]
         public void CollideCircles_ShouldProduceSingleContact_WhenIntersecting()
         {
@@ -37,6 +46,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(ManifoldType.Circles, manifold.Type);
         }
 
+        /// <summary>
+        /// Tests that collide polygon and circle should produce contact for circle inside polygon
+        /// </summary>
         [Fact]
         public void CollidePolygonAndCircle_ShouldProduceContact_ForCircleInsidePolygon()
         {
@@ -52,6 +64,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(manifold.PointCount >= 1);
         }
 
+        /// <summary>
+        /// Tests that collide polygons should generate manifold for overlapping rectangles
+        /// </summary>
         [Fact]
         public void CollidePolygons_ShouldGenerateManifold_ForOverlappingRectangles()
         {
@@ -66,6 +81,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(manifold.PointCount >= 1);
         }
 
+        /// <summary>
+        /// Tests that get point states should mark persist and add correctly
+        /// </summary>
         [Fact]
         public void GetPointStates_ShouldMarkPersistAndAddCorrectly()
         {

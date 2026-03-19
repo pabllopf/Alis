@@ -5,8 +5,14 @@ using Xunit;
 
 namespace Alis.Core.Physic.Test.Collisions
 {
+    /// <summary>
+    /// The dynamic tree broad phase test class
+    /// </summary>
     public class DynamicTreeBroadPhaseTest
     {
+        /// <summary>
+        /// Tests that add proxy set proxy get proxy should round trip user data
+        /// </summary>
         [Fact]
         public void AddProxy_SetProxy_GetProxy_ShouldRoundTripUserData()
         {
@@ -20,6 +26,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(proxyId, broadPhase.GetProxy(proxyId));
         }
 
+        /// <summary>
+        /// Tests that update pairs should report overlap pair
+        /// </summary>
         [Fact]
         public void UpdatePairs_ShouldReportOverlapPair()
         {
@@ -38,6 +47,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Contains((proxyA < proxyB ? proxyA : proxyB, proxyA < proxyB ? proxyB : proxyA), pairs);
         }
 
+        /// <summary>
+        /// Tests that query should return overlapping proxy ids
+        /// </summary>
         [Fact]
         public void Query_ShouldReturnOverlappingProxyIds()
         {
