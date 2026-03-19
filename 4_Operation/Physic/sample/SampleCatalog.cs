@@ -3,8 +3,14 @@ using Alis.Core.Physic.Sample.Samples;
 
 namespace Alis.Core.Physic.Sample
 {
+    /// <summary>
+    /// The sample catalog class
+    /// </summary>
     internal static class SampleCatalog
     {
+        /// <summary>
+        /// Gets the value of the all
+        /// </summary>
         public static IReadOnlyList<IPhysicSample> All { get; } =
             new List<IPhysicSample>
             {

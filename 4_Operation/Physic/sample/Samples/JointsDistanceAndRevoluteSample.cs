@@ -5,14 +5,31 @@ using Alis.Core.Physic.Dynamics.Joints;
 
 namespace Alis.Core.Physic.Sample.Samples
 {
+    /// <summary>
+    /// The joints distance and revolute sample class
+    /// </summary>
+    /// <seealso cref="IPhysicSample"/>
     internal sealed class JointsDistanceAndRevoluteSample : IPhysicSample
     {
+        /// <summary>
+        /// Gets the value of the key
+        /// </summary>
         public string Key => "joints";
 
+        /// <summary>
+        /// Gets the value of the title
+        /// </summary>
         public string Title => "Distance and revolute joints";
 
+        /// <summary>
+        /// Gets the value of the description
+        /// </summary>
         public string Description => "Connects bodies with spring-like distance joints and a motorized revolute joint.";
 
+        /// <summary>
+        /// Runs the runtime
+        /// </summary>
+        /// <param name="runtime">The runtime</param>
         public void Run(SampleRuntime runtime)
         {
             WorldPhysic world = runtime.CreateWorld(new Vector2F(0.0f, -9.81f));

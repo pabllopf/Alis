@@ -5,8 +5,15 @@ using Alis.Core.Physic.Sample.Samples;
 
 namespace Alis.Core.Physic.Sample
 {
+    /// <summary>
+    /// The sample runner class
+    /// </summary>
     internal static class SampleRunner
     {
+        /// <summary>
+        /// Runs the args
+        /// </summary>
+        /// <param name="args">The args</param>
         public static void Run(string[] args)
         {
             if ((args != null) && (args.Length > 0))
@@ -22,6 +29,10 @@ namespace Alis.Core.Physic.Sample
             ExecuteSelection(selection);
         }
 
+        /// <summary>
+        /// Executes the selection using the specified selection
+        /// </summary>
+        /// <param name="selection">The selection</param>
         private static void ExecuteSelection(string selection)
         {
             if (string.IsNullOrWhiteSpace(selection))
@@ -66,6 +77,9 @@ namespace Alis.Core.Physic.Sample
             Console.WriteLine("Use a sample number, a sample key, or 'all'.");
         }
 
+        /// <summary>
+        /// Prints the menu
+        /// </summary>
         private static void PrintMenu()
         {
             WriteSectionTitle("Alis Physic Sample Selector");
@@ -84,6 +98,9 @@ namespace Alis.Core.Physic.Sample
             Console.WriteLine("[A ] Run all samples (all)");
         }
 
+        /// <summary>
+        /// Runs the all
+        /// </summary>
         private static void RunAll()
         {
             Stopwatch totalTimer = Stopwatch.StartNew();
@@ -118,6 +135,12 @@ namespace Alis.Core.Physic.Sample
             WriteInfo(string.Format("Total time: {0:F2} ms", totalTimer.Elapsed.TotalMilliseconds));
         }
 
+        /// <summary>
+        /// Runs the one using the specified sample
+        /// </summary>
+        /// <param name="sample">The sample</param>
+        /// <param name="index">The index</param>
+        /// <returns>The bool</returns>
         private static bool RunOne(IPhysicSample sample, int index)
         {
             Stopwatch timer = Stopwatch.StartNew();
@@ -150,6 +173,10 @@ namespace Alis.Core.Physic.Sample
             }
         }
 
+        /// <summary>
+        /// Writes the section title using the specified text
+        /// </summary>
+        /// <param name="text">The text</param>
         private static void WriteSectionTitle(string text)
         {
             ConsoleColor previousColor = Console.ForegroundColor;
@@ -158,6 +185,10 @@ namespace Alis.Core.Physic.Sample
             Console.ForegroundColor = previousColor;
         }
 
+        /// <summary>
+        /// Writes the info using the specified text
+        /// </summary>
+        /// <param name="text">The text</param>
         private static void WriteInfo(string text)
         {
             ConsoleColor previousColor = Console.ForegroundColor;
@@ -166,6 +197,10 @@ namespace Alis.Core.Physic.Sample
             Console.ForegroundColor = previousColor;
         }
 
+        /// <summary>
+        /// Writes the success using the specified text
+        /// </summary>
+        /// <param name="text">The text</param>
         private static void WriteSuccess(string text)
         {
             ConsoleColor previousColor = Console.ForegroundColor;
@@ -174,6 +209,10 @@ namespace Alis.Core.Physic.Sample
             Console.ForegroundColor = previousColor;
         }
 
+        /// <summary>
+        /// Writes the error using the specified text
+        /// </summary>
+        /// <param name="text">The text</param>
         private static void WriteError(string text)
         {
             ConsoleColor previousColor = Console.ForegroundColor;

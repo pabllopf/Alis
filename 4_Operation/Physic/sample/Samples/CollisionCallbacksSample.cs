@@ -4,14 +4,31 @@ using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Physic.Sample.Samples
 {
+    /// <summary>
+    /// The collision callbacks sample class
+    /// </summary>
+    /// <seealso cref="IPhysicSample"/>
     internal sealed class CollisionCallbacksSample : IPhysicSample
     {
+        /// <summary>
+        /// Gets the value of the key
+        /// </summary>
         public string Key => "callbacks";
 
+        /// <summary>
+        /// Gets the value of the title
+        /// </summary>
         public string Title => "Collision callbacks";
 
+        /// <summary>
+        /// Gets the value of the description
+        /// </summary>
         public string Description => "Subscribes to collision and separation callbacks on fixtures and bodies.";
 
+        /// <summary>
+        /// Runs the runtime
+        /// </summary>
+        /// <param name="runtime">The runtime</param>
         public void Run(SampleRuntime runtime)
         {
             WorldPhysic world = runtime.CreateWorld(Vector2F.Zero);

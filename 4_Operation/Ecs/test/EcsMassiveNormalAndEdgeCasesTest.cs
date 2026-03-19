@@ -9,6 +9,10 @@ namespace Alis.Core.Ecs.Test
     /// </summary>
     public class EcsMassiveNormalAndEdgeCasesTest
     {
+        /// <summary>
+        /// Generates the flags and hash cases
+        /// </summary>
+        /// <returns>An enumerable of object array</returns>
         public static IEnumerable<object[]> GenerateFlagsAndHashCases()
         {
             for (int i = 0; i < 2500; i++)
@@ -20,6 +24,12 @@ namespace Alis.Core.Ecs.Test
             }
         }
 
+        /// <summary>
+        /// Tests that flags and query hash normal and edge cases are deterministic
+        /// </summary>
+        /// <param name="leftMask">The left mask</param>
+        /// <param name="rightMask">The right mask</param>
+        /// <param name="includeWorldCreate">The include world create</param>
         [Theory, MemberData(nameof(GenerateFlagsAndHashCases))]
         public void FlagsAndQueryHash_NormalAndEdgeCases_AreDeterministic(int leftMask, int rightMask, bool includeWorldCreate)
         {

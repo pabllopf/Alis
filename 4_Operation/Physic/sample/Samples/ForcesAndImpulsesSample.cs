@@ -3,14 +3,31 @@ using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Physic.Sample.Samples
 {
+    /// <summary>
+    /// The forces and impulses sample class
+    /// </summary>
+    /// <seealso cref="IPhysicSample"/>
     internal sealed class ForcesAndImpulsesSample : IPhysicSample
     {
+        /// <summary>
+        /// Gets the value of the key
+        /// </summary>
         public string Key => "forces";
 
+        /// <summary>
+        /// Gets the value of the title
+        /// </summary>
         public string Title => "Forces vs impulses";
 
+        /// <summary>
+        /// Gets the value of the description
+        /// </summary>
         public string Description => "Compares continuous force application against a one-shot impulse.";
 
+        /// <summary>
+        /// Runs the runtime
+        /// </summary>
+        /// <param name="runtime">The runtime</param>
         public void Run(SampleRuntime runtime)
         {
             WorldPhysic world = runtime.CreateWorld(Vector2F.Zero);

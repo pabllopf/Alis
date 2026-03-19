@@ -10,6 +10,10 @@ namespace Alis.Core.Audio.Test
     /// </summary>
     public class AudioMassiveNormalAndEdgeCasesTest
     {
+        /// <summary>
+        /// Generates the player input cases
+        /// </summary>
+        /// <returns>An enumerable of object array</returns>
         public static IEnumerable<object[]> GeneratePlayerInputCases()
         {
             for (int i = 0; i < 2500; i++)
@@ -21,6 +25,12 @@ namespace Alis.Core.Audio.Test
             }
         }
 
+        /// <summary>
+        /// Tests that player input and platform selection are consistent
+        /// </summary>
+        /// <param name="fileName">The file name</param>
+        /// <param name="volume">The volume</param>
+        /// <param name="loop">The loop</param>
         [Theory, MemberData(nameof(GeneratePlayerInputCases))]
         public void Player_InputAndPlatformSelection_AreConsistent(string fileName, byte volume, bool loop)
         {

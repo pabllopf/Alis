@@ -11,6 +11,10 @@ namespace Alis.Core.Physic.Test
     /// </summary>
     public class PhysicMassiveNormalAndEdgeCasesTest
     {
+        /// <summary>
+        /// Generates the aabb cases
+        /// </summary>
+        /// <returns>An enumerable of object array</returns>
         public static IEnumerable<object[]> GenerateAabbCases()
         {
             for (int i = 0; i < 2500; i++)
@@ -25,6 +29,13 @@ namespace Alis.Core.Physic.Test
             }
         }
 
+        /// <summary>
+        /// Tests that aabb normal and edge cases remain stable
+        /// </summary>
+        /// <param name="minX">The min</param>
+        /// <param name="minY">The min</param>
+        /// <param name="maxX">The max</param>
+        /// <param name="maxY">The max</param>
         [Theory, MemberData(nameof(GenerateAabbCases))]
         public void Aabb_NormalAndEdgeCases_RemainStable(float minX, float minY, float maxX, float maxY)
         {

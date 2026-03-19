@@ -10,6 +10,10 @@ namespace Alis.Core.Graphic.Test
     /// </summary>
     public class GraphicMassiveNormalAndEdgeCasesTest
     {
+        /// <summary>
+        /// Generates the open gl enum cases
+        /// </summary>
+        /// <returns>An enumerable of object array</returns>
         public static IEnumerable<object[]> GenerateOpenGlEnumCases()
         {
             string[] enumNames = {"BeginMode", "BufferTarget", "TextureTarget", "ShaderType", "PixelFormat"};
@@ -22,6 +26,11 @@ namespace Alis.Core.Graphic.Test
             }
         }
 
+        /// <summary>
+        /// Tests that open gl enums handle defined and undefined values
+        /// </summary>
+        /// <param name="enumName">The enum name</param>
+        /// <param name="rawValue">The raw value</param>
         [Theory, MemberData(nameof(GenerateOpenGlEnumCases))]
         public void OpenGlEnums_HandleDefinedAndUndefinedValues(string enumName, int rawValue)
         {
@@ -43,6 +52,12 @@ namespace Alis.Core.Graphic.Test
             }
         }
 
+        /// <summary>
+        /// Gets the enum type using the specified enum name
+        /// </summary>
+        /// <param name="enumName">The enum name</param>
+        /// <exception cref="ArgumentOutOfRangeException">null</exception>
+        /// <returns>The type</returns>
         private static Type GetEnumType(string enumName)
         {
             return enumName switch
@@ -56,6 +71,13 @@ namespace Alis.Core.Graphic.Test
             };
         }
 
+        /// <summary>
+        /// Boxes the enum name
+        /// </summary>
+        /// <param name="enumName">The enum name</param>
+        /// <param name="rawValue">The raw value</param>
+        /// <exception cref="ArgumentOutOfRangeException">null</exception>
+        /// <returns>The enum</returns>
         private static Enum Box(string enumName, int rawValue)
         {
             return enumName switch

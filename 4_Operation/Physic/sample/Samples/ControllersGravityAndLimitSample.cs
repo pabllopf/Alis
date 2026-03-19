@@ -4,14 +4,31 @@ using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Physic.Sample.Samples
 {
+    /// <summary>
+    /// The controllers gravity and limit sample class
+    /// </summary>
+    /// <seealso cref="IPhysicSample"/>
     internal sealed class ControllersGravityAndLimitSample : IPhysicSample
     {
+        /// <summary>
+        /// Gets the value of the key
+        /// </summary>
         public string Key => "controllers";
 
+        /// <summary>
+        /// Gets the value of the title
+        /// </summary>
         public string Title => "Gravity and velocity-limit controllers";
 
+        /// <summary>
+        /// Gets the value of the description
+        /// </summary>
         public string Description => "Uses controllers to add custom gravity and cap linear/angular speeds.";
 
+        /// <summary>
+        /// Runs the runtime
+        /// </summary>
+        /// <param name="runtime">The runtime</param>
         public void Run(SampleRuntime runtime)
         {
             WorldPhysic world = runtime.CreateWorld(Vector2F.Zero);

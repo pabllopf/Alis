@@ -5,14 +5,31 @@ using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Physic.Sample.Samples
 {
+    /// <summary>
+    /// The buoyancy controller sample class
+    /// </summary>
+    /// <seealso cref="IPhysicSample"/>
     internal sealed class BuoyancyControllerSample : IPhysicSample
     {
+        /// <summary>
+        /// Gets the value of the key
+        /// </summary>
         public string Key => "buoyancy";
 
+        /// <summary>
+        /// Gets the value of the title
+        /// </summary>
         public string Title => "Buoyancy controller";
 
+        /// <summary>
+        /// Gets the value of the description
+        /// </summary>
         public string Description => "Creates a water volume that applies buoyancy and drag to submerged bodies.";
 
+        /// <summary>
+        /// Runs the runtime
+        /// </summary>
+        /// <param name="runtime">The runtime</param>
         public void Run(SampleRuntime runtime)
         {
             WorldPhysic world = runtime.CreateWorld(new Vector2F(0.0f, -9.81f));

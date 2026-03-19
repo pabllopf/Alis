@@ -4,14 +4,31 @@ using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Physic.Sample.Samples
 {
+    /// <summary>
+    /// The collision filtering and sensors sample class
+    /// </summary>
+    /// <seealso cref="IPhysicSample"/>
     internal sealed class CollisionFilteringAndSensorsSample : IPhysicSample
     {
+        /// <summary>
+        /// Gets the value of the key
+        /// </summary>
         public string Key => "filter";
 
+        /// <summary>
+        /// Gets the value of the title
+        /// </summary>
         public string Title => "Collision filtering and sensors";
 
+        /// <summary>
+        /// Gets the value of the description
+        /// </summary>
         public string Description => "Shows category masks and non-solid sensor fixtures.";
 
+        /// <summary>
+        /// Runs the runtime
+        /// </summary>
+        /// <param name="runtime">The runtime</param>
         public void Run(SampleRuntime runtime)
         {
             RunSensorScenario(runtime);
@@ -19,6 +36,10 @@ namespace Alis.Core.Physic.Sample.Samples
             RunCategoryFilteringScenario(runtime);
         }
 
+        /// <summary>
+        /// Runs the sensor scenario using the specified runtime
+        /// </summary>
+        /// <param name="runtime">The runtime</param>
         private static void RunSensorScenario(SampleRuntime runtime)
         {
             Console.WriteLine("Sensor scenario");
@@ -44,6 +65,10 @@ namespace Alis.Core.Physic.Sample.Samples
             runtime.PrintBodyState("Falling ball", fallingBall);
         }
 
+        /// <summary>
+        /// Runs the category filtering scenario using the specified runtime
+        /// </summary>
+        /// <param name="runtime">The runtime</param>
         private static void RunCategoryFilteringScenario(SampleRuntime runtime)
         {
             Console.WriteLine("Category filtering scenario");

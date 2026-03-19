@@ -4,14 +4,31 @@ using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Physic.Sample.Samples
 {
+    /// <summary>
+    /// The body factory shapes sample class
+    /// </summary>
+    /// <seealso cref="IPhysicSample"/>
     internal sealed class BodyFactoryShapesSample : IPhysicSample
     {
+        /// <summary>
+        /// Gets the value of the key
+        /// </summary>
         public string Key => "shapes";
 
+        /// <summary>
+        /// Gets the value of the title
+        /// </summary>
         public string Title => "Factory helpers for shapes";
 
+        /// <summary>
+        /// Gets the value of the description
+        /// </summary>
         public string Description => "Builds circles, rectangles, polygons and capsule-like bodies via helper APIs.";
 
+        /// <summary>
+        /// Runs the runtime
+        /// </summary>
+        /// <param name="runtime">The runtime</param>
         public void Run(SampleRuntime runtime)
         {
             WorldPhysic world = runtime.CreateWorld(new Vector2F(0.0f, -9.81f));

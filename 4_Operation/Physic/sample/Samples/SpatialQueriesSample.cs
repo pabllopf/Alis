@@ -5,14 +5,31 @@ using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Physic.Sample.Samples
 {
+    /// <summary>
+    /// The spatial queries sample class
+    /// </summary>
+    /// <seealso cref="IPhysicSample"/>
     internal sealed class SpatialQueriesSample : IPhysicSample
     {
+        /// <summary>
+        /// Gets the value of the key
+        /// </summary>
         public string Key => "queries";
 
+        /// <summary>
+        /// Gets the value of the title
+        /// </summary>
         public string Title => "AABB queries, ray-casts and point tests";
 
+        /// <summary>
+        /// Gets the value of the description
+        /// </summary>
         public string Description => "Demonstrates WorldPhysic.QueryAabb, WorldPhysic.RayCast and WorldPhysic.TestPoint.";
 
+        /// <summary>
+        /// Runs the runtime
+        /// </summary>
+        /// <param name="runtime">The runtime</param>
         public void Run(SampleRuntime runtime)
         {
             WorldPhysic world = runtime.CreateWorld(Vector2F.Zero);
