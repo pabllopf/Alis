@@ -27,16 +27,14 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Logging;
-using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Dynamics;
+using Alis.Core.Physic.Sample.Samples;
 
 namespace Alis.Core.Physic.Sample
 {
     /// <summary>
     ///     The program class
     /// </summary>
-    public static class Program
+    internal static class Program
     {
         /// <summary>
         ///     Main the args
@@ -44,19 +42,7 @@ namespace Alis.Core.Physic.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            Logger.Info($"Run {nameof(Alis)}.{nameof(Core)}.{nameof(Physic)}.{nameof(Sample)}");
-
-            Vector2F gravity = new Vector2F(0.0f, -9.8f);
-
-            WorldPhysic worldPhysic = new WorldPhysic(gravity);
-
-            for (int i = 0; i < 100; i++)
-            {
-                worldPhysic.Step(1.0f / 60.0f);
-                Logger.Info($"Step {i}");
-            }
-
-            Logger.Trace("Press any key to exit...");
+            SampleRunner.Run(args);
         }
     }
 }
