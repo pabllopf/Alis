@@ -54,7 +54,7 @@ namespace Alis.Core.Physic.Common
         /// <summary>
         ///     The delta
         /// </summary>
-        private float _deltaT;
+        internal float _deltaT;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Path" /> class.
@@ -336,7 +336,7 @@ namespace Alis.Core.Physic.Common
         /// <param name="p3">The </param>
         /// <param name="amount">The amount</param>
         /// <param name="result">The result</param>
-        private void CalcCatmullRom(Vector2F p0, Vector2F p1, Vector2F p2, Vector2F p3, float amount, out Vector2F result)
+        internal void CalcCatmullRom(Vector2F p0, Vector2F p1, Vector2F p2, Vector2F p3, float amount, out Vector2F result)
         {
             double sqAmount = amount * amount;
             double cuAmount = sqAmount * amount;

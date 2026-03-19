@@ -58,7 +58,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT
         /// <summary>
         ///     Gets or sets the value of the edges
         /// </summary>
-        public List<DtSweepConstraint> Edges { get; private set; }
+        public List<DtSweepConstraint> Edges { get; internal set; }
 
         /// <summary>
         ///     Gets or sets the value of the xf

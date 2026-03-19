@@ -94,7 +94,7 @@ namespace Alis.Core.Physic.Common.Logic
         /// <param name="maxForce">The max force</param>
         /// <param name="overlappingBodies">The overlapping bodies</param>
         /// <returns>The forces</returns>
-        private Dictionary<Body, Vector2F> ApplyImpulse(Vector2F pos, float radius, float force, float maxForce, HashSet<Body> overlappingBodies)
+        internal Dictionary<Body, Vector2F> ApplyImpulse(Vector2F pos, float radius, float force, float maxForce, HashSet<Body> overlappingBodies)
         {
             Dictionary<Body, Vector2F> forces = new Dictionary<Body, Vector2F>(overlappingBodies.Count);
 
@@ -124,7 +124,7 @@ namespace Alis.Core.Physic.Common.Logic
         /// <param name="distance">The distance</param>
         /// <param name="radius">The radius</param>
         /// <returns>The float</returns>
-        private float GetPercent(float distance, float radius)
+        internal float GetPercent(float distance, float radius)
         {
             //(1-(distance/radius))^power-1
             float percent = (float) Math.Pow(1 - (distance - radius) / radius, Power) - 1;

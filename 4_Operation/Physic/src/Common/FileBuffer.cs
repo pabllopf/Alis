@@ -63,7 +63,7 @@ namespace Alis.Core.Physic.Common
         /// <summary>
         ///     Gets the value of the length
         /// </summary>
-        private int Length => Buffer.Length;
+        internal int Length => Buffer.Length;
 
         /// <summary>
         ///     Gets the value of the next

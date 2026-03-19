@@ -158,7 +158,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
         ///     Enumerates this instance
         /// </summary>
         /// <returns>An enumerable of t</returns>
-        private IEnumerable<T> Enumerate()
+        internal IEnumerable<T> Enumerate()
         {
             for (int i = 0; i < 3; ++i)
             {

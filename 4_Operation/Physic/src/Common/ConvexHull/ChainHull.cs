@@ -43,7 +43,7 @@ namespace Alis.Core.Physic.Common.ConvexHull
         /// <summary>
         ///     The point comparer
         /// </summary>
-        private static readonly PointComparer PointComparer = new PointComparer();
+        internal static readonly PointComparer PointComparer = new PointComparer();
 
         /// <summary>
         ///     Returns the convex hull from the given vertices..

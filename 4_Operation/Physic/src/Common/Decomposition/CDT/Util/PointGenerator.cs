@@ -41,7 +41,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
         /// <summary>
         ///     The random
         /// </summary>
-        private static readonly RandomNumberGenerator Rng = RandomNumberGenerator.Create();
+        internal static readonly RandomNumberGenerator Rng = RandomNumberGenerator.Create();
 
         /// <summary>
         ///     Uniforms the distribution using the specified n

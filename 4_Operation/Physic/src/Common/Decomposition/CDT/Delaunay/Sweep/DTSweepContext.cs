@@ -40,7 +40,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         /// <summary>
         ///     The alpha
         /// </summary>
-        private const float Alpha = 0.3f;
+        internal const float Alpha = 0.3f;
 
         /// <summary>
         ///     The dt sweep point comparator

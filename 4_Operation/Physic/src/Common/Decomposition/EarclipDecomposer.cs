@@ -70,7 +70,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <remarks>
         ///     Only works on simple polygons.
         /// </remarks>
-        private static List<Vertices> TriangulatePolygon(Vertices vertices, float tolerance)
+        internal static List<Vertices> TriangulatePolygon(Vertices vertices, float tolerance)
         {
             //FPE note: Check is needed as invalid triangles can be returned in recursive calls.
             if (vertices.Count < 3)
@@ -219,7 +219,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <param name="poutA">The pout A.</param>
         /// <param name="poutB">The pout B.</param>
         /// <param name="tolerance"></param>
-        private static bool ResolvePinchPoint(Vertices pin, out Vertices poutA, out Vertices poutB, float tolerance)
+        internal static bool ResolvePinchPoint(Vertices pin, out Vertices poutA, out Vertices poutB, float tolerance)
         {
             poutA = new Vertices();
             poutB = new Vertices();
@@ -284,7 +284,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <param name="x">The x.</param>
         /// <param name="modulus">The modulus.</param>
         /// <returns></returns>
-        private static int Remainder(int x, int modulus)
+        internal static int Remainder(int x, int modulus)
         {
             int rem = x % modulus;
             while (rem < 0)
@@ -308,7 +308,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <returns>
         ///     <c>true</c> if the specified i is ear; otherwise, <c>false</c>.
         /// </returns>
-        private static bool IsEar(int i, float[] xv, float[] yv, int xvLength)
+        internal static bool IsEar(int i, float[] xv, float[] yv, int xvLength)
         {
             float dx0, dy0, dx1, dy1;
             if (i >= xvLength || i < 0 || xvLength < 3)

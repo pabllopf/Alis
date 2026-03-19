@@ -58,7 +58,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// </summary>
         /// <param name="vertices">The vertices</param>
         /// <returns>The list</returns>
-        private static List<Vertices> TriangulatePolygon(Vertices vertices)
+        internal static List<Vertices> TriangulatePolygon(Vertices vertices)
         {
             List<Vertices> list = new List<Vertices>();
             Vector2F lowerInt = new Vector2F();
@@ -192,7 +192,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <param name="i">The </param>
         /// <param name="vertices">The vertices</param>
         /// <returns>The vector</returns>
-        private static Vector2F At(int i, Vertices vertices)
+        internal static Vector2F At(int i, Vertices vertices)
         {
             int s = vertices.Count;
             return vertices[i < 0 ? s - 1 - (-i - 1) % s : i % s];
@@ -205,7 +205,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <param name="j">The </param>
         /// <param name="vertices">The vertices</param>
         /// <returns>The </returns>
-        private static Vertices Copy(int i, int j, Vertices vertices)
+        internal static Vertices Copy(int i, int j, Vertices vertices)
         {
             while (j < i)
             {
@@ -229,7 +229,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <param name="j">The </param>
         /// <param name="vertices">The vertices</param>
         /// <returns>The bool</returns>
-        private static bool CanSee(int i, int j, Vertices vertices)
+        internal static bool CanSee(int i, int j, Vertices vertices)
         {
             if (Reflex(i, vertices))
             {
@@ -283,7 +283,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <param name="i">The </param>
         /// <param name="vertices">The vertices</param>
         /// <returns>The bool</returns>
-        private static bool Reflex(int i, Vertices vertices) => Right(i, vertices);
+        internal static bool Reflex(int i, Vertices vertices) => Right(i, vertices);
 
         /// <summary>
         ///     Describes whether right
@@ -291,7 +291,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <param name="i">The </param>
         /// <param name="vertices">The vertices</param>
         /// <returns>The bool</returns>
-        private static bool Right(int i, Vertices vertices) => Right(At(i - 1, vertices), At(i, vertices), At(i + 1, vertices));
+        internal static bool Right(int i, Vertices vertices) => Right(At(i - 1, vertices), At(i, vertices), At(i + 1, vertices));
 
         /// <summary>
         ///     Describes whether left
@@ -300,7 +300,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <param name="b">The </param>
         /// <param name="c">The </param>
         /// <returns>The bool</returns>
-        private static bool Left(Vector2F a, Vector2F b, Vector2F c) => MathUtils.Area(ref a, ref b, ref c) > 0;
+        internal static bool Left(Vector2F a, Vector2F b, Vector2F c) => MathUtils.Area(ref a, ref b, ref c) > 0;
 
         /// <summary>
         ///     Describes whether left on
@@ -309,7 +309,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <param name="b">The </param>
         /// <param name="c">The </param>
         /// <returns>The bool</returns>
-        private static bool LeftOn(Vector2F a, Vector2F b, Vector2F c) => MathUtils.Area(ref a, ref b, ref c) >= 0;
+        internal static bool LeftOn(Vector2F a, Vector2F b, Vector2F c) => MathUtils.Area(ref a, ref b, ref c) >= 0;
 
         /// <summary>
         ///     Describes whether right
@@ -318,7 +318,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <param name="b">The </param>
         /// <param name="c">The </param>
         /// <returns>The bool</returns>
-        private static bool Right(Vector2F a, Vector2F b, Vector2F c) => MathUtils.Area(ref a, ref b, ref c) < 0;
+        internal static bool Right(Vector2F a, Vector2F b, Vector2F c) => MathUtils.Area(ref a, ref b, ref c) < 0;
 
         /// <summary>
         ///     Describes whether right on
@@ -327,7 +327,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <param name="b">The </param>
         /// <param name="c">The </param>
         /// <returns>The bool</returns>
-        private static bool RightOn(Vector2F a, Vector2F b, Vector2F c) => MathUtils.Area(ref a, ref b, ref c) <= 0;
+        internal static bool RightOn(Vector2F a, Vector2F b, Vector2F c) => MathUtils.Area(ref a, ref b, ref c) <= 0;
 
         /// <summary>
         ///     Squares the dist using the specified a
@@ -335,7 +335,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <param name="a">The </param>
         /// <param name="b">The </param>
         /// <returns>The float</returns>
-        private static float SquareDist(Vector2F a, Vector2F b)
+        internal static float SquareDist(Vector2F a, Vector2F b)
         {
             float dx = b.X - a.X;
             float dy = b.Y - a.Y;

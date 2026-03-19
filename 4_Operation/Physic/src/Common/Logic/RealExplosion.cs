@@ -64,17 +64,17 @@ namespace Alis.Core.Physic.Common.Logic
         /// <summary>
         ///     Two degrees: maximum angle from edges to first ray tested
         /// </summary>
-        private const float MaxEdgeOffset = Constant.Pi / 90;
+        internal const float MaxEdgeOffset = Constant.Pi / 90;
 
         /// <summary>
         ///     The shape data
         /// </summary>
-        private readonly List<ShapeData> _data;
+        internal readonly List<ShapeData> _data;
 
         /// <summary>
         ///     The rdc
         /// </summary>
-        private readonly RayDataComparer _rdc;
+        internal readonly RayDataComparer _rdc;
 
         /// <summary>
         ///     Ratio of arc length to angle from edges to first ray tested.
@@ -459,7 +459,7 @@ namespace Alis.Core.Physic.Common.Logic
         /// <typeparam name="T">The </typeparam>
         /// <param name="list">The list</param>
         /// <returns>The bool</returns>
-        private bool ListAny<T>(List<T> list) => list.Count > 0;
+        internal bool ListAny<T>(List<T> list) => list.Count > 0;
 
         /// <summary>
         ///     Lists the first using the specified list
@@ -467,7 +467,7 @@ namespace Alis.Core.Physic.Common.Logic
         /// <typeparam name="T">The </typeparam>
         /// <param name="list">The list</param>
         /// <returns>The</returns>
-        private T ListFirst<T>(List<T> list) => list[0];
+        internal T ListFirst<T>(List<T> list) => list[0];
 
         /// <summary>
         ///     Lists the last using the specified list
@@ -475,6 +475,6 @@ namespace Alis.Core.Physic.Common.Logic
         /// <typeparam name="T">The </typeparam>
         /// <param name="list">The list</param>
         /// <returns>The</returns>
-        private T ListLast<T>(List<T> list) => list[list.Count - 1];
+        internal T ListLast<T>(List<T> list) => list[list.Count - 1];
     }
 }

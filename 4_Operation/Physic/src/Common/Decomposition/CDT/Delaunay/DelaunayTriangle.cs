@@ -174,7 +174,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
         /// <param name="p1">Point 1 of the shared edge</param>
         /// <param name="p2">Point 2 of the shared edge</param>
         /// <param name="t">This triangle's new neighbor</param>
-        private void MarkNeighbor(TriangulationPoint p1, TriangulationPoint p2, DelaunayTriangle t)
+        internal void MarkNeighbor(TriangulationPoint p1, TriangulationPoint p2, DelaunayTriangle t)
         {
             if (((p1 == Points[2]) && (p2 == Points[1])) || ((p1 == Points[1]) && (p2 == Points[2])))
             {

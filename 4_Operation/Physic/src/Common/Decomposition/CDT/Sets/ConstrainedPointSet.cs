@@ -48,7 +48,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Sets
         /// <summary>
         ///     The constrained point list
         /// </summary>
-        private readonly List<TriangulationPoint> _constrainedPointList;
+        internal readonly List<TriangulationPoint> _constrainedPointList;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ConstrainedPointSet" /> class

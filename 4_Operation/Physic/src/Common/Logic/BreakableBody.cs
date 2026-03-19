@@ -56,18 +56,18 @@ namespace Alis.Core.Physic.Common.Logic
         /// <summary>
         ///     The angular velocities cache
         /// </summary>
-        private float[] _angularVelocitiesCache = new float[8];
+        internal float[] _angularVelocitiesCache = new float[8];
 
         /// <summary>
         ///     The vector
         /// </summary>
-        private Vector2F[] _velocitiesCache = new Vector2F[8];
+        internal Vector2F[] _velocitiesCache = new Vector2F[8];
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="BreakableBody" /> class
         /// </summary>
         /// <param name="worldPhysic">The world</param>
-        private BreakableBody(WorldPhysic worldPhysic)
+        internal BreakableBody(WorldPhysic worldPhysic)
         {
             WorldPhysic = worldPhysic;
             WorldPhysic.ContactManager.PostSolve += PostSolve;
@@ -149,14 +149,14 @@ namespace Alis.Core.Physic.Common.Logic
         /// <summary>
         ///     Gets or sets the value of the state
         /// </summary>
-        public BreakableBodyState State { get; private set; }
+        public BreakableBodyState State { get; internal set; }
 
         /// <summary>
         ///     Posts the solve using the specified contact
         /// </summary>
         /// <param name="contact">The contact</param>
         /// <param name="impulse">The impulse</param>
-        private void PostSolve(Contact contact, ContactVelocityConstraint impulse)
+        internal void PostSolve(Contact contact, ContactVelocityConstraint impulse)
         {
             if (State != BreakableBodyState.Broken)
             {
@@ -199,7 +199,7 @@ namespace Alis.Core.Physic.Common.Logic
         /// <summary>
         ///     Caches the velocities
         /// </summary>
-        private void CacheVelocities()
+        internal void CacheVelocities()
         {
             //Enlarge the cache if needed
             if (Parts.Count > _angularVelocitiesCache.Length)
@@ -220,7 +220,7 @@ namespace Alis.Core.Physic.Common.Logic
         ///     Decomposes this instance
         /// </summary>
         /// <exception cref="InvalidOperationException">BreakableBody is allready broken</exception>
-        private void Decompose()
+        internal void Decompose()
         {
             if (State == BreakableBodyState.Broken)
             {

@@ -131,7 +131,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// </summary>
         /// <param name="polygon">The polygon</param>
         /// <returns>The bool</returns>
-        private static bool ValidatePolygon(Vertices polygon)
+        internal static bool ValidatePolygon(Vertices polygon)
         {
             PolygonError errorCode = polygon.CheckPolygon();
 

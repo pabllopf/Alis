@@ -39,37 +39,37 @@ namespace Alis.Core.Physic.Common
         /// <summary>
         ///     The value
         /// </summary>
-        private T _value0;
+        internal T _value0;
 
         /// <summary>
         ///     The value
         /// </summary>
-        private T _value1;
+        internal T _value1;
 
         /// <summary>
         ///     The value
         /// </summary>
-        private T _value2;
+        internal T _value2;
 
         /// <summary>
         ///     The value
         /// </summary>
-        private T _value3;
+        internal T _value3;
 
         /// <summary>
         ///     The value
         /// </summary>
-        private T _value4;
+        internal T _value4;
 
         /// <summary>
         ///     The value
         /// </summary>
-        private T _value5;
+        internal T _value5;
 
         /// <summary>
         ///     The value
         /// </summary>
-        private T _value6;
+        internal T _value6;
 
         /// <summary>
         ///     The value

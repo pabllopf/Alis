@@ -39,17 +39,17 @@ namespace Alis.Core.Physic.Common
         /// <summary>
         ///     The value
         /// </summary>
-        private T _value0;
+        internal T _value0;
 
         /// <summary>
         ///     The value
         /// </summary>
-        private T _value1;
+        internal T _value1;
 
         /// <summary>
         ///     The value
         /// </summary>
-        private T _value2;
+        internal T _value2;
 
         /// <summary>
         ///     The index out of range exception

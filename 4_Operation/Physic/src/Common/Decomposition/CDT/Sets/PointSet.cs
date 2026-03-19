@@ -53,7 +53,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Sets
         /// <summary>
         ///     Gets or sets the value of the triangles
         /// </summary>
-        public IList<DelaunayTriangle> GetTriangles { get; private set; }
+        public IList<DelaunayTriangle> GetTriangles { get; internal set; }
 
         /// <summary>
         ///     Gets the value of the triangulation mode

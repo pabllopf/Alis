@@ -160,7 +160,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
         ///     Enumerates this instance
         /// </summary>
         /// <returns>An enumerable of bool</returns>
-        private IEnumerable<bool> Enumerate()
+        internal IEnumerable<bool> Enumerate()
         {
             for (int i = 0; i < 3; ++i)
             {

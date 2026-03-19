@@ -45,7 +45,7 @@ namespace Alis.Core.Physic.Common.TextureTools
         /// <summary>
         ///     The look march
         /// </summary>
-        private static readonly int[] LookMarch =
+        internal static readonly int[] LookMarch =
         {
             0x00, 0xE0, 0x38, 0xD8, 0x0E, 0xEE, 0x36, 0xD6, 0x83, 0x63, 0xBB, 0x5B, 0x8D,
             0x6D, 0xB5, 0x55
@@ -347,7 +347,7 @@ namespace Alis.Core.Physic.Common.TextureTools
         /// <param name="v0">The </param>
         /// <param name="v1">The </param>
         /// <returns>The float</returns>
-        private static float Lerp(float x0, float x1, float v0, float v1)
+        internal static float Lerp(float x0, float x1, float v0, float v1)
         {
             float dv = v0 - v1;
             float t;
@@ -366,7 +366,7 @@ namespace Alis.Core.Physic.Common.TextureTools
         //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
         /** Recursive linear interpolation for use in marching squares **/
-        private static float Xlerp(float x0, float x1, float y, float v0, float v1, sbyte[,] f, int c)
+        internal static float Xlerp(float x0, float x1, float y, float v0, float v1, sbyte[,] f, int c)
         {
             float xm = Lerp(x0, x1, v0, v1);
             if (c == 0)
@@ -385,7 +385,7 @@ namespace Alis.Core.Physic.Common.TextureTools
         }
 
         /** Recursive linear interpolation for use in marching squares **/
-        private static float Ylerp(float y0, float y1, float x, float v0, float v1, sbyte[,] f, int c)
+        internal static float Ylerp(float y0, float y1, float x, float v0, float v1, sbyte[,] f, int c)
         {
             float ym = Lerp(y0, y1, v0, v1);
             if (c == 0)
@@ -404,7 +404,7 @@ namespace Alis.Core.Physic.Common.TextureTools
         }
 
         /** Square value for use in marching squares **/
-        private static float Square(float x) => x * x;
+        internal static float Square(float x) => x * x;
 
         /// <summary>
         ///     Vecs the dsq using the specified a
@@ -412,7 +412,7 @@ namespace Alis.Core.Physic.Common.TextureTools
         /// <param name="a">The </param>
         /// <param name="b">The </param>
         /// <returns>The float</returns>
-        private static float VecDsq(Vector2F a, Vector2F b)
+        internal static float VecDsq(Vector2F a, Vector2F b)
         {
             Vector2F d = a - b;
             return d.X * d.X + d.Y * d.Y;
@@ -424,7 +424,7 @@ namespace Alis.Core.Physic.Common.TextureTools
         /// <param name="a">The </param>
         /// <param name="b">The </param>
         /// <returns>The float</returns>
-        private static float VecCross(Vector2F a, Vector2F b) => a.X * b.Y - a.Y * b.X;
+        internal static float VecCross(Vector2F a, Vector2F b) => a.X * b.Y - a.Y * b.X;
 
 
         /// <summary>
@@ -441,7 +441,7 @@ namespace Alis.Core.Physic.Common.TextureTools
         /// <param name="y1">The </param>
         /// <param name="bin">The bin</param>
         /// <returns>The key</returns>
-        private static int MarchSquare(sbyte[,] f, sbyte[,] fs, ref GeomPoly poly, int ax, int ay, float x0, float y0,
+        internal static int MarchSquare(sbyte[,] f, sbyte[,] fs, ref GeomPoly poly, int ax, int ay, float x0, float y0,
             float x1, float y1, int bin)
         {
             //key lookup
@@ -538,7 +538,7 @@ namespace Alis.Core.Physic.Common.TextureTools
         /// </summary>
         /// <param name="polya">The polya</param>
         /// <param name="polyb">The polyb</param>
-        private static void CombLeft(ref GeomPoly polya, ref GeomPoly polyb)
+        internal static void CombLeft(ref GeomPoly polya, ref GeomPoly polyb)
         {
             CxFastList<Vector2F> ap = polya.Points;
             CxFastList<Vector2F> bp = polyb.Points;
@@ -634,13 +634,13 @@ namespace Alis.Core.Physic.Common.TextureTools
             /// <summary>
             ///     The count
             /// </summary>
-            private int _count;
+            internal int _count;
 
             // first node in the list
             /// <summary>
             ///     The head
             /// </summary>
-            private CxFastListNode<T> _head;
+            internal CxFastListNode<T> _head;
 
             /// <summary>
             ///     Iterator to start of list (O(1))

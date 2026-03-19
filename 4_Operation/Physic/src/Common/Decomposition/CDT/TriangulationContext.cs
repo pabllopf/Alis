@@ -60,7 +60,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT
         /// <summary>
         ///     Gets or sets the value of the triangulatable
         /// </summary>
-        public ITriangulatable Triangulatable { get; private set; }
+        public ITriangulatable Triangulatable { get; internal set; }
 
         /// <summary>
         ///     Gets the value of the wait until notified

@@ -65,42 +65,42 @@ namespace Alis.Core.Physic.Common.TextureTools
         /// <summary>
         ///     Generated bodies.
         /// </summary>
-        private List<Body>[,] _bodyMap;
+        internal List<Body>[,] _bodyMap;
 
         /// <summary>
         ///     The dirty area
         /// </summary>
-        private Aabb _dirtyArea;
+        internal Aabb _dirtyArea;
 
         /// <summary>
         ///     The local height
         /// </summary>
-        private float _localHeight;
+        internal float _localHeight;
 
         /// <summary>
         ///     The local width
         /// </summary>
-        private float _localWidth;
+        internal float _localWidth;
 
         /// <summary>
         ///     Point cloud defining the terrain.
         /// </summary>
-        private sbyte[,] _terrainMap;
+        internal sbyte[,] _terrainMap;
 
         /// <summary>
         ///     The top left
         /// </summary>
-        private Vector2F _topLeft;
+        internal Vector2F _topLeft;
 
         /// <summary>
         ///     The xnum
         /// </summary>
-        private int _xnum;
+        internal int _xnum;
 
         /// <summary>
         ///     The ynum
         /// </summary>
-        private int _ynum;
+        internal int _ynum;
 
         /// <summary>
         ///     Points per cell.
@@ -291,7 +291,7 @@ namespace Alis.Core.Physic.Common.TextureTools
         /// <param name="xEnd">The end</param>
         /// <param name="yStart">The start</param>
         /// <param name="yEnd">The end</param>
-        private void RemoveOldData(int xStart, int xEnd, int yStart, int yEnd)
+        internal void RemoveOldData(int xStart, int xEnd, int yStart, int yEnd)
         {
             for (int x = xStart; x < xEnd; x++)
             {
@@ -319,7 +319,7 @@ namespace Alis.Core.Physic.Common.TextureTools
         /// </summary>
         /// <param name="gx">The gx</param>
         /// <param name="gy">The gy</param>
-        private void GenerateTerrain(int gx, int gy)
+        internal void GenerateTerrain(int gx, int gy)
         {
             float ax = gx * CellSize;
             float ay = gy * CellSize;
