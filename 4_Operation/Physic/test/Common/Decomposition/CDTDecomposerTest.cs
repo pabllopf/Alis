@@ -7,7 +7,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
         [Fact]
         public void CDTDecomposer_TypeShouldBeAccessible()
         {
-            Assert.NotNull(typeof(global::Alis.Core.Physic.Common.Decomposition.CDTDecomposer));
+            Assert.NotNull(typeof(global::Alis.Core.Physic.Common.Decomposition.CdtDecomposer));
         }
     }
 }

@@ -7,7 +7,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         [Fact]
         public void DTSweep_TypeShouldBeAccessible()
         {
-            Assert.NotNull(typeof(global::Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep.DTSweep));
+            Assert.NotNull(typeof(global::Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep.DtSweep));
         }
     }
 }
