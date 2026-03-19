@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AabbTest.cs
+//  File:AABBTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -37,7 +37,7 @@ namespace Alis.Core.Physic.Test.Collisions
     /// <summary>
     ///     The aabb test class
     /// </summary>
-    public class AabbTest
+    public class AABBTest
     {
         /// <summary>
         ///     Tests that constructor with min max should initialize correctly

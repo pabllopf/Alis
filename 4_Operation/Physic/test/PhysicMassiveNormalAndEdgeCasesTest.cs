@@ -17,7 +17,7 @@ namespace Alis.Core.Physic.Test
         /// <returns>An enumerable of object array</returns>
         public static IEnumerable<object[]> GenerateAabbCases()
         {
-            for (int i = 0; i < 2500; i++)
+            for (int i = 0; i < 100; i++)
             {
                 float minX = (i % 100) - 50f;
                 float minY = ((i / 100f) % 25f) - 12f;

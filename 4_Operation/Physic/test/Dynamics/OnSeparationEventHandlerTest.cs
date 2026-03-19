@@ -15,7 +15,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Delegate_ShouldBeInvokable()
         {
             bool invoked = false;
-            OnSeparationEventHandler callback = (sender, other, contact) => { invoked = true; };
+            OnSeparationEventHandler callback = (_, _, _) => { invoked = true; };
 
             callback(null, null, null);
 

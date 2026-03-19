@@ -23,7 +23,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             world.Add(first);
             world.Add(second);
 
-            ControllerEnumerator enumerator = world.ControllerList.GetEnumerator();
+            using ControllerEnumerator enumerator = world.ControllerList.GetEnumerator();
 
             Assert.True(enumerator.MoveNext());
             Assert.Equal(first, enumerator.Current);
@@ -40,7 +40,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             world.Add(new GravityController(1.0f));
-            ControllerEnumerator enumerator = world.ControllerList.GetEnumerator();
+            using ControllerEnumerator enumerator = world.ControllerList.GetEnumerator();
 
             world.Add(new GravityController(2.0f));
 

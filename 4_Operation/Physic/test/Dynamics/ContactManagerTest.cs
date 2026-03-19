@@ -54,7 +54,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
             world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
-            world.ContactManager.ContactFilter = (fixtureA, fixtureB) => false;
+            world.ContactManager.ContactFilter = (_, _) => false;
 
             world.Step(1.0f / 60.0f);
 
