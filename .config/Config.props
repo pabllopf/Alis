@@ -170,7 +170,6 @@
         <None Include="$(SolutionDir).config/target/alis.targets" Visible="false" Pack="true" Link="buildTransitive/$(AssemblyName).targets" PackagePath="buildTransitive/$(AssemblyName).targets"/>
     </ItemGroup>
     
-    
     <ItemGroup>
         <None Remove="$(ProjectDir)runtimes/**"/>
     </ItemGroup>
