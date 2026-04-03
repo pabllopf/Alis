@@ -158,11 +158,6 @@
         <IsBrowserWasm Condition="'$(RuntimeIdentifier)' == 'browser-wasm'">true</IsBrowserWasm>
         <IsBrowserWasm Condition="'$(RuntimeIdentifier)' != 'browser-wasm'">false</IsBrowserWasm>
     </PropertyGroup>
-
-    <ItemGroup>
-        <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute"/>
-    </ItemGroup>
-
     
     <Target Name="GenerateGitattributesForBrowserWasm" BeforeTargets="CoreCompile" Condition="$(NoAutoGenerateFiles) != 'true'">
         <WriteLinesToFile
