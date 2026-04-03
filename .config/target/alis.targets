@@ -151,8 +151,7 @@
                             CopyToPublishDirectory="Never"
                             Visible="false" />
        </ItemGroup>
-
-
+    
 
     <PropertyGroup>
         <IsBrowserWasm Condition="'$(RuntimeIdentifier)' == 'browser-wasm'">true</IsBrowserWasm>
