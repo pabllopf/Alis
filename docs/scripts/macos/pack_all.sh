@@ -12,7 +12,8 @@ select yn in "Yes" "No"; do
       do if [[ $i == *".Template."* || $i == *".App."* || $i == *".Test."* || $i == *".Benchmark."* || $i == *".Generator."* || $i == *".Sample."* ]] ; 
       then 
         echo "Skip project $i"; 
-      else 
+      else
+        dotnet build -c Release -r osx-arm64 -f net9.0 $i ;
         dotnet pack -c Release $i -o ./.publish/test/ ; 
       fi;done
     
