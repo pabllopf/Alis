@@ -840,6 +840,7 @@ namespace $(RootNamespace)
 
     </Target>
 
+    
     <PropertyGroup Condition="'$(IsBrowserWasm)' == 'true' AND $(NoAutoGenerateFiles) != 'true'">
         <IsAotCompatible>true</IsAotCompatible>
         <NoWarn>$(NoWarn);RCS1090</NoWarn>
