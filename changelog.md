@@ -5,6 +5,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.0.2] - 2026-04-03
+### :sparkles: New Features
+- [`d04b022`](https://github.com/pabllopf/Alis/commit/d04b022095b43fbcf87894acf2e3c9950b46b8af) - Add Physic sample runner and samples *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`57ea099`](https://github.com/pabllopf/Alis/commit/57ea09978205ea60ede4289eb646b91ca3fc01af) - Make many private members internal in physics *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`09cb1cb`](https://github.com/pabllopf/Alis/commit/09cb1cb667703d2f24f95481d242927f8fc0b765) - Update tests for renamed Delaunay/CDT types *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8ce432e`](https://github.com/pabllopf/Alis/commit/8ce432ef54af35020288cc00b798be2910eb3ec1) - Remove ExcludeFromCodeCoverage assembly injection *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`e6ec685`](https://github.com/pabllopf/Alis/commit/e6ec685b757ff5cf805e4ff5eb27a44b742f86fc) - Add massive normal and edge-case tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2aa93e0`](https://github.com/pabllopf/Alis/commit/2aa93e07b14eff3b09b7865386c581918842dd94) - Add physics dynamics unit tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2b0e255`](https://github.com/pabllopf/Alis/commit/2b0e2553e2b57a0015ffccbd85218f6ca1e877aa) - Simplify lambdas and reduce test loop *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`55c9f4c`](https://github.com/pabllopf/Alis/commit/55c9f4c43e797302c3bf043aa733fa91b6d41744) - Add accessibility tests for Physic assembly *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :memo: Documentation Changes
+- [`89989c1`](https://github.com/pabllopf/Alis/commit/89989c17b970cf9a71726beb5110f23b0ceab7f2) - Add XML docs to tests and samples *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b832776`](https://github.com/pabllopf/Alis/commit/b83277666c208a34e84a9621480041aca6a3e57d) - Add XML summaries to Physic tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :art: Code Style Changes
+- [`afe72cc`](https://github.com/pabllopf/Alis/commit/afe72cc1e127aeb4926df5c05e0c348d5f9f8174) - Remove file headers and reformat web samples *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v1.0.1] - 2026-03-17
 ### :bug: Bug Fixes
 - [`d43b370`](https://github.com/pabllopf/Alis/commit/d43b370c17b699e2c052f43ffe2949bf5430f1a1) - Minor formatting: add blank line in Animator.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -6162,3 +6185,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.9.9]: https://github.com/pabllopf/Alis/compare/v0.9.8...v0.9.9
 [v1.0.0]: https://github.com/pabllopf/Alis/compare/v0.9.9...v1.0.0
 [v1.0.1]: https://github.com/pabllopf/Alis/compare/v1.0.0...v1.0.1
+[v1.0.2]: https://github.com/pabllopf/Alis/compare/v1.0.1...v1.0.2
