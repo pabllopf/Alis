@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.0.3] - 2026-04-03
+### :bug: Bug Fixes
+- [`f84de30`](https://github.com/pabllopf/Alis/commit/f84de30bdcfdf1cb0f697c9fc18e1d64f51c1a75) - Build for osx-arm64/net9.0 before packing *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d7d2bf6`](https://github.com/pabllopf/Alis/commit/d7d2bf611e1507e893a11ff09ee3244341e1a789) - content of nugets *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`7e7aa09`](https://github.com/pabllopf/Alis/commit/7e7aa091a9bf10238f7a83368a912f89b2486b07) - check the compilation on custom nugets *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v1.0.2] - 2026-04-03
 ### :sparkles: New Features
 - [`d04b022`](https://github.com/pabllopf/Alis/commit/d04b022095b43fbcf87894acf2e3c9950b46b8af) - Add Physic sample runner and samples *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -6186,3 +6195,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.0.0]: https://github.com/pabllopf/Alis/compare/v0.9.9...v1.0.0
 [v1.0.1]: https://github.com/pabllopf/Alis/compare/v1.0.0...v1.0.1
 [v1.0.2]: https://github.com/pabllopf/Alis/compare/v1.0.1...v1.0.2
+[v1.0.3]: https://github.com/pabllopf/Alis/compare/v1.0.2...v1.0.3
