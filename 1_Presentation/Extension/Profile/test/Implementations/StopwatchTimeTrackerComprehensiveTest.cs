@@ -265,7 +265,6 @@ namespace Alis.Extension.Profile.Test.Implementations
             Assert.False(tracker.IsRunning);
         }
         
-
         /// <summary>
         ///     Tests concurrent Start and Stop operations.
         /// </summary>
