@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.0.4] - 2026-04-04
+### :bug: Bug Fixes
+- [`39e0598`](https://github.com/pabllopf/Alis/commit/39e05985dcdac4d266cafc105b4009c1f55e645e) - Use MSBuildThisFileName.Replace for refs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`72a93e5`](https://github.com/pabllopf/Alis/commit/72a93e579053d067462012ed7575b59759b124db) - Remove ElapsedTime_AccumulatesOnRestart test *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`9061b5f`](https://github.com/pabllopf/Alis/commit/9061b5f6fecb7e2d2a9ae8b1a7061fad7c57ca70) - Add comprehensive unit tests for Engine & Profile *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v1.0.3] - 2026-04-03
 ### :bug: Bug Fixes
 - [`f84de30`](https://github.com/pabllopf/Alis/commit/f84de30bdcfdf1cb0f697c9fc18e1d64f51c1a75) - Build for osx-arm64/net9.0 before packing *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -6196,3 +6205,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.0.1]: https://github.com/pabllopf/Alis/compare/v1.0.0...v1.0.1
 [v1.0.2]: https://github.com/pabllopf/Alis/compare/v1.0.1...v1.0.2
 [v1.0.3]: https://github.com/pabllopf/Alis/compare/v1.0.2...v1.0.3
+[v1.0.4]: https://github.com/pabllopf/Alis/compare/v1.0.3...v1.0.4
