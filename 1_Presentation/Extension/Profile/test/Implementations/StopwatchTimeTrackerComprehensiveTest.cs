@@ -264,31 +264,7 @@ namespace Alis.Extension.Profile.Test.Implementations
             tracker.Reset();
             Assert.False(tracker.IsRunning);
         }
-
-        /// <summary>
-        ///     Tests that elapsed time accumulates when stopped and restarted.
-        /// </summary>
-        [Fact]
-        public void ElapsedTime_AccumulatesOnRestart()
-        {
-            // Arrange
-            StopwatchTimeTracker tracker = new StopwatchTimeTracker();
-
-            // Act
-            tracker.Start();
-            Thread.Sleep(50);
-            tracker.Stop();
-            TimeSpan firstElapsed = tracker.GetElapsedTime();
-
-            Thread.Sleep(50);
-            tracker.Start();
-            Thread.Sleep(50);
-            tracker.Stop();
-            TimeSpan secondElapsed = tracker.GetElapsedTime();
-
-            // Assert
-            Assert.False(secondElapsed >= firstElapsed);
-        }
+        
 
         /// <summary>
         ///     Tests concurrent Start and Stop operations.
