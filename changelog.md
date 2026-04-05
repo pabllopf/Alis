@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.0.5] - 2026-04-05
+### :sparkles: New Features
+- [`1a3d608`](https://github.com/pabllopf/Alis/commit/1a3d6080ca09999ff2c2ed52647758ad791b95e2) - retrocompatible dlls *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`9d720f7`](https://github.com/pabllopf/Alis/commit/9d720f7fcb20471f1d5519703820db05f70c826f) - the OnDestroy_DisposesResources *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8a9d824`](https://github.com/pabllopf/Alis/commit/8a9d824a7c0fabb08efa6c765040ee3ca844599c) - the pabllopf-official orgination *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c07b863`](https://github.com/pabllopf/Alis/commit/c07b863d7563f9cc60925221d638495159669bf4) - token generation *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9ef2fbf`](https://github.com/pabllopf/Alis/commit/9ef2fbf0ab07f56b04a3740de171eca6ecf79638) - the spaces *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`306da56`](https://github.com/pabllopf/Alis/commit/306da569d66f01a4253e605625d06565d7590315) - Add video playback samples and VideoExampleBase *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`55e704d`](https://github.com/pabllopf/Alis/commit/55e704dca6fa896cb6ae9a529e504a36a7c47e16) - Add XML docs to tests and FFmpeg samples *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`c7d0b52`](https://github.com/pabllopf/Alis/commit/c7d0b52154bc7669698cf0279947b33df09b8f24) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v1.0.4] - 2026-04-04
 ### :bug: Bug Fixes
 - [`39e0598`](https://github.com/pabllopf/Alis/commit/39e05985dcdac4d266cafc105b4009c1f55e645e) - Use MSBuildThisFileName.Replace for refs *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -6206,3 +6222,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.0.2]: https://github.com/pabllopf/Alis/compare/v1.0.1...v1.0.2
 [v1.0.3]: https://github.com/pabllopf/Alis/compare/v1.0.2...v1.0.3
 [v1.0.4]: https://github.com/pabllopf/Alis/compare/v1.0.3...v1.0.4
+[v1.0.5]: https://github.com/pabllopf/Alis/compare/v1.0.4...v1.0.5
