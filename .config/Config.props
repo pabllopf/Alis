@@ -603,6 +603,7 @@
         <Content Include="$(ProjectDir)bin/Release/linux-musl-arm64/lib/netstandard2.0/Alis.*" Visible="false" PackagePath="runtimes/linux-musl-arm64/lib/netstandard2.0/"/>
         <Content Include="$(ProjectDir)bin/Release/linux-musl-arm64/lib/netstandard2.1/Alis.*" Visible="false" PackagePath="runtimes/linux-musl-arm64/lib/netstandard2.1/"/>
 
+        
         <!-- Include all the .dll runtimes of /lib/osx-arm64/lib/runtime -->
         <Content Include="$(ProjectDir)bin/Release/osx-arm64/lib/net5.0/Alis.*" Visible="false" PackagePath="runtimes/osx-arm64/lib/net5.0/"/>
         <Content Include="$(ProjectDir)bin/Release/osx-arm64/lib/net6.0/Alis.*" Visible="false" PackagePath="runtimes/osx-arm64/lib/net6.0/"/>
