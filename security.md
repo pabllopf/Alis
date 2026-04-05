@@ -15,6 +15,7 @@ The following are the compatible versions (target frameworks) of the project tha
     - `net10.0`, `net10.0-android`, `net10.0-browser`, `net10.0-ios`, `net10.0-maccatalyst`, `net10.0-macos`,
       `net10.0-tvos`, `net10.0-windows`
 
+
 - **.NET Core:**
     - `netcoreapp2.0`, `netcoreapp2.1`, `netcoreapp2.2`
     - `netcoreapp3.0`, `netcoreapp3.1`
