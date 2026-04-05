@@ -41,7 +41,7 @@ jobs:
           dotnet tool install --global coverlet.console --version 6.0.4
           dotnet tool install --global dotnet-sonarscanner --version 8.0.2
 
-          dotnet sonarscanner begin /k:"pabllopf-official-official_alis-extension-cloud-dropbox" /o:"pabllopf-official-official" /d:sonar.scanner.scanAll=false /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" /d:sonar.token="${{ secrets.SONAR_TOKEN_ALIS_EXTENSION_CLOUD_DROPBOX }}" /d:sonar.scanner.skipJreProvisioning=false /d:sonar.language=cs /d:sonar.dotnet.version=8.0 /d:sonar.verbose=false /d:sonar.cs.opencover.reportsPaths="./.test/**/*.opencover.xml"
+          dotnet sonarscanner begin /k:"pabllopf-official_alis-extension-cloud-dropbox" /o:"pabllopf-official" /d:sonar.scanner.scanAll=false /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" /d:sonar.token="${{ secrets.SONAR_TOKEN_ALIS_EXTENSION_CLOUD_DROPBOX }}" /d:sonar.scanner.skipJreProvisioning=false /d:sonar.language=cs /d:sonar.dotnet.version=8.0 /d:sonar.verbose=false /d:sonar.cs.opencover.reportsPaths="./.test/**/*.opencover.xml"
           dotnet build -c Debug -f net8.0 ./1_Presentation/Extension/Cloud/DropBox/src/Alis.Extension.Cloud.DropBox.csproj
           dotnet test -f net8.0 -c Debug ./1_Presentation/Extension/Cloud/DropBox/test/Alis.Extension.Cloud.DropBox.Test.csproj --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
           dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN_ALIS_EXTENSION_CLOUD_DROPBOX }}"

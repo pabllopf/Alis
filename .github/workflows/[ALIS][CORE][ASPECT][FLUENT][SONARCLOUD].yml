@@ -41,7 +41,7 @@ jobs:
           dotnet tool install --global coverlet.console --version 6.0.4
           dotnet tool install --global dotnet-sonarscanner --version 8.0.2
           
-          dotnet sonarscanner begin /k:"pabllopf-official-official_alis-core-aspect-fluent" /o:"pabllopf-official-official" /d:sonar.scanner.scanAll=false /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" /d:sonar.token="${{ secrets.SONAR_TOKEN_ALIS_CORE_ASPECT_FLUENT }}" /d:sonar.scanner.skipJreProvisioning=false /d:sonar.language=cs /d:sonar.dotnet.version=8.0 /d:sonar.verbose=false /d:sonar.cs.opencover.reportsPaths="./.test/**/*.opencover.xml"
+          dotnet sonarscanner begin /k:"pabllopf-official_alis-core-aspect-fluent" /o:"pabllopf-official" /d:sonar.scanner.scanAll=false /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" /d:sonar.token="${{ secrets.SONAR_TOKEN_ALIS_CORE_ASPECT_FLUENT }}" /d:sonar.scanner.skipJreProvisioning=false /d:sonar.language=cs /d:sonar.dotnet.version=8.0 /d:sonar.verbose=false /d:sonar.cs.opencover.reportsPaths="./.test/**/*.opencover.xml"
           dotnet build -c Debug -f net8.0 ./6_Ideation/Fluent/src/Alis.Core.Aspect.Fluent.csproj
           dotnet test -f net8.0 -c Debug ./6_Ideation/Fluent/test/Alis.Core.Aspect.Fluent.Test.csproj --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
           dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN_ALIS_CORE_ASPECT_FLUENT }}"
