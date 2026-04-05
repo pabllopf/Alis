@@ -10,6 +10,10 @@ The following are the compatible versions (target frameworks) of the project tha
     - `net7.0`, `net7.0-android`, `net7.0-ios`, `net7.0-maccatalyst`, `net7.0-macos`, `net7.0-tvos`, `net7.0-windows`
     - `net8.0`, `net8.0-android`, `net8.0-browser`, `net8.0-ios`, `net8.0-maccatalyst`, `net8.0-macos`, `net8.0-tvos`,
       `net8.0-windows`
+    - `net9.0`, `net9.0-android`, `net9.0-browser`, `net9.0-ios`, `net9.0-maccatalyst`, `net9.0-macos`, `net9.0-tvos`,
+      `net9.0-windows`
+    - `net10.0`, `net10.0-android`, `net10.0-browser`, `net10.0-ios`, `net10.0-maccatalyst`, `net10.0-macos`,
+      `net10.0-tvos`, `net10.0-windows`
 
 - **.NET Core:**
     - `netcoreapp2.0`, `netcoreapp2.1`, `netcoreapp2.2`
