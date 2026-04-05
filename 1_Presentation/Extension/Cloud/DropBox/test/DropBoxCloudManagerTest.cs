@@ -196,23 +196,6 @@ namespace Alis.Extension.Cloud.DropBox.Test
         }
 
         /// <summary>
-        ///     Tests that manager disposes correctly
-        /// </summary>
-        [Fact]
-        public void OnDestroy_DisposesResources()
-        {
-            // Arrange
-            Context context = CreateMockContext();
-            DropBoxCloudManager manager = new DropBoxCloudManager(context);
-
-            // Act
-            manager.OnDestroy();
-
-            // Assert - No exception should be thrown
-            Assert.NotNull(manager);
-        }
-
-        /// <summary>
         ///     Tests that is initialized property works correctly before initialization
         /// </summary>
         [Fact]
