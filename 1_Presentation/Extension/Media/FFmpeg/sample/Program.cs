@@ -67,6 +67,11 @@ namespace Alis.Extension.Media.FFmpeg.Sample
             Logger.Info("5: Load font with custom bmp");
             Logger.Info("6: Load font with custom bmp 2");
             Logger.Info("7: Load font with timer");
+            Logger.Info("8: Video sample (normal)");
+            Logger.Info("9: Video sample (grayscale)");
+            Logger.Info("10: Video sample (mirror)");
+            Logger.Info("11: Video sample (tint pulse)");
+            Logger.Info("12: Video sample (cover + slow motion)");
             Logger.Info("Opción: ");
             int option = 0;
             string input = Console.ReadLine();
@@ -80,6 +85,11 @@ namespace Alis.Extension.Media.FFmpeg.Sample
                 5 => new LoadFontWithCustomBmpExample(),
                 6 => new LoadFontWithCustomBmpExample2(),
                 7 => new LoadFontwithTimerExample(),
+                8 => new VideoPlaybackExample(),
+                9 => new VideoGrayscaleExample(),
+                10 => new VideoMirrorExample(),
+                11 => new VideoTintPulseExample(),
+                12 => new VideoCoverSlowMotionExample(),
                 _ => new SimpleRedExample()
             };
 
