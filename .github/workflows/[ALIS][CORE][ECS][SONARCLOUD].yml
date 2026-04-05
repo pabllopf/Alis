@@ -41,7 +41,7 @@ jobs:
           dotnet tool install --global coverlet.console --version 6.0.4
           dotnet tool install --global dotnet-sonarscanner --version 8.0.2
           
-          dotnet sonarscanner begin /k:"pabllopf_alis-core-ecs" /o:"pabllopf_official" /d:sonar.scanner.scanAll=false /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" /d:sonar.token="${{ secrets.SONAR_TOKEN_ALIS_CORE_ECS }}" /d:sonar.scanner.skipJreProvisioning=false /d:sonar.language=cs /d:sonar.dotnet.version=8.0 /d:sonar.verbose=false /d:sonar.cs.opencover.reportsPaths="./.test/**/*.opencover.xml"
+          dotnet sonarscanner begin /k:"pabllopf_alis-core-ecs" /o:"pabllopf" /d:sonar.scanner.scanAll=false /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" /d:sonar.token="${{ secrets.SONAR_TOKEN_ALIS_CORE_ECS }}" /d:sonar.scanner.skipJreProvisioning=false /d:sonar.language=cs /d:sonar.dotnet.version=8.0 /d:sonar.verbose=false /d:sonar.cs.opencover.reportsPaths="./.test/**/*.opencover.xml"
           dotnet build -c Debug -f net8.0 ./4_Operation/Ecs/src/Alis.Core.Ecs.csproj
           dotnet test -f net8.0 -c Debug ./4_Operation/Ecs/test/Alis.Core.Ecs.Test.csproj --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
           dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN_ALIS_CORE_ECS }}"
