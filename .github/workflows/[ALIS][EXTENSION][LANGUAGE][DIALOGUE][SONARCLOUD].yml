@@ -41,7 +41,7 @@ jobs:
           dotnet tool install --global coverlet.console --version 6.0.4
           dotnet tool install --global dotnet-sonarscanner --version 8.0.2
 
-          dotnet sonarscanner begin /k:"pabllopf_alis-extension-language-dialogue" /o:"pabllopf" /d:sonar.scanner.scanAll=false /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" /d:sonar.token="${{ secrets.SONAR_TOKEN_ALIS_EXTENSION_LANGUAGE_DIALOGUE }}" /d:sonar.scanner.skipJreProvisioning=false /d:sonar.language=cs /d:sonar.dotnet.version=8.0 /d:sonar.verbose=false /d:sonar.cs.opencover.reportsPaths="./.test/**/*.opencover.xml"
+          dotnet sonarscanner begin /k:"pabllopf-official_alis-extension-language-dialogue" /o:"pabllopf-official" /d:sonar.scanner.scanAll=false /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" /d:sonar.token="${{ secrets.SONAR_TOKEN_ALIS_EXTENSION_LANGUAGE_DIALOGUE }}" /d:sonar.scanner.skipJreProvisioning=false /d:sonar.language=cs /d:sonar.dotnet.version=8.0 /d:sonar.verbose=false /d:sonar.cs.opencover.reportsPaths="./.test/**/*.opencover.xml"
           dotnet build -c Debug -f net8.0 ./1_Presentation/Extension/Language/Dialogue/src/Alis.Extension.Language.Dialogue.csproj
           dotnet test -f net8.0 -c Debug ./1_Presentation/Extension/Language/Dialogue/test/Alis.Extension.Language.Dialogue.Test.csproj --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
           dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN_ALIS_EXTENSION_LANGUAGE_DIALOGUE }}"
