@@ -45,3 +45,4 @@ jobs:
           dotnet build -c Debug -f net8.0 ./1_Presentation/Extension/Graphic/Ui/src/Alis.Extension.Graphic.Ui.csproj
           dotnet test -f net8.0 -c Debug ./1_Presentation/Extension/Graphic/Ui/test/Alis.Extension.Graphic.Ui.Test.csproj --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
           dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN_ALIS_EXTENSION_GRAPHIC_UI }}"
+
