@@ -46,8 +46,14 @@ namespace Alis.Extension.Media.FFmpeg.Sample.Samples
     /// </summary>
     internal abstract class VideoExampleBase : IExample
     {
+        /// <summary>
+        /// The gl viewport
+        /// </summary>
         private const int GlViewport = 0x0BA2;
 
+        /// <summary>
+        /// The quad vertices
+        /// </summary>
         private readonly float[] quadVertices =
         {
             // x, y, z, u, v
@@ -57,32 +63,93 @@ namespace Alis.Extension.Media.FFmpeg.Sample.Samples
             -1.0f, -1.0f, 0.0f, 0.0f, 1.0f
         };
 
+        /// <summary>
+        /// The quad indices
+        /// </summary>
         private readonly uint[] quadIndices = {0, 1, 2, 0, 2, 3};
 
+        /// <summary>
+        /// The next frame at utc
+        /// </summary>
         private DateTime nextFrameAtUtc;
+        /// <summary>
+        /// The video path
+        /// </summary>
         private string videoPath;
+        /// <summary>
+        /// The video width
+        /// </summary>
         private int videoWidth;
+        /// <summary>
+        /// The video height
+        /// </summary>
         private int videoHeight;
+        /// <summary>
+        /// The vao
+        /// </summary>
         private uint vao;
+        /// <summary>
+        /// The vbo
+        /// </summary>
         private uint vbo;
+        /// <summary>
+        /// The ebo
+        /// </summary>
         private uint ebo;
+        /// <summary>
+        /// The texture
+        /// </summary>
         private uint texture;
+        /// <summary>
+        /// The shader program
+        /// </summary>
         private uint shaderProgram;
+        /// <summary>
+        /// The scale location
+        /// </summary>
         private int scaleLocation;
+        /// <summary>
+        /// The texture location
+        /// </summary>
         private int textureLocation;
+        /// <summary>
+        /// The reader
+        /// </summary>
         private VideoReader reader;
+        /// <summary>
+        /// The frame buffer
+        /// </summary>
         private VideoFrame frameBuffer;
 
+        /// <summary>
+        /// Gets the value of the video asset name
+        /// </summary>
         protected virtual string VideoAssetName => "sample.mp4";
 
+        /// <summary>
+        /// Gets the value of the loop video
+        /// </summary>
         protected virtual bool LoopVideo => true;
 
+        /// <summary>
+        /// Gets the value of the use cover scaling
+        /// </summary>
         protected virtual bool UseCoverScaling => false;
 
+        /// <summary>
+        /// Gets the value of the playback speed
+        /// </summary>
         protected virtual double PlaybackSpeed => 1.0;
 
+        /// <summary>
+        /// Gets the value of the shader program
+        /// </summary>
         protected uint ShaderProgram => shaderProgram;
 
+        /// <summary>
+        /// Gets the fragment shader source
+        /// </summary>
+        /// <returns>The string</returns>
         protected virtual string GetFragmentShaderSource()
         {
             return @"
@@ -95,10 +162,17 @@ void main() {
 }";
         }
 
+        /// <summary>
+        /// Sets the per frame uniforms using the specified elapsed seconds
+        /// </summary>
+        /// <param name="elapsedSeconds">The elapsed seconds</param>
         protected virtual void SetPerFrameUniforms(float elapsedSeconds)
         {
         }
 
+        /// <summary>
+        /// Initializes this instance
+        /// </summary>
         public void Initialize()
         {
             videoPath = AssetRegistry.GetResourcePathByName(VideoAssetName);
@@ -108,6 +182,9 @@ void main() {
             nextFrameAtUtc = DateTime.UtcNow;
         }
 
+        /// <summary>
+        /// Draws this instance
+        /// </summary>
         public void Draw()
         {
             Gl.GlClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -125,6 +202,9 @@ void main() {
             Gl.GlDrawElements(PrimitiveType.Triangles, quadIndices.Length, DrawElementsType.UnsignedInt, IntPtr.Zero);
         }
 
+        /// <summary>
+        /// Cleanups this instance
+        /// </summary>
         public void Cleanup()
         {
             frameBuffer?.Dispose();
@@ -137,6 +217,9 @@ void main() {
             Gl.GlDeleteProgram(shaderProgram);
         }
 
+        /// <summary>
+        /// Opens the video reader
+        /// </summary>
         private void OpenVideoReader()
         {
             reader?.Dispose();
@@ -153,6 +236,11 @@ void main() {
             frameBuffer = new VideoFrame(videoWidth, videoHeight);
         }
 
+        /// <summary>
+        /// Ensures the metadata has dimensions
+        /// </summary>
+        /// <exception cref="InvalidDataException">No se pudo inicializar metadata para '{VideoAssetName}'.</exception>
+        /// <exception cref="InvalidDataException">No se pudo obtener metadata valida para '{VideoAssetName}'. Asegura que ffprobe este instalado y que el asset de video sea valido.</exception>
         private void EnsureMetadataHasDimensions()
         {
             if (reader?.Metadata != null && reader.Metadata.Width > 0 && reader.Metadata.Height > 0)
@@ -178,6 +266,14 @@ void main() {
             }
         }
 
+        /// <summary>
+        /// Tries the read video metadata from ffprobe using the specified input path
+        /// </summary>
+        /// <param name="inputPath">The input path</param>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        /// <param name="fps">The fps</param>
+        /// <returns>The bool</returns>
         private static bool TryReadVideoMetadataFromFfprobe(string inputPath, out int width, out int height, out double fps)
         {
             width = 0;
@@ -259,6 +355,11 @@ void main() {
             return false;
         }
 
+        /// <summary>
+        /// Parses the fps using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The double</returns>
         private static double ParseFps(string value)
         {
             if (string.IsNullOrWhiteSpace(value))
@@ -283,6 +384,9 @@ void main() {
             return 0;
         }
 
+        /// <summary>
+        /// Creates the rendering resources
+        /// </summary>
         private void CreateRenderingResources()
         {
             vao = Gl.GenVertexArray();
@@ -379,6 +483,9 @@ void main() {
             Gl.GlUniform1I(textureLocation, 0);
         }
 
+        /// <summary>
+        /// Tries the advance video frame
+        /// </summary>
         private void TryAdvanceVideoFrame()
         {
             if (DateTime.UtcNow < nextFrameAtUtc)
@@ -396,6 +503,10 @@ void main() {
             nextFrameAtUtc = DateTime.UtcNow.AddSeconds(1.0 / effectiveFps);
         }
 
+        /// <summary>
+        /// Uploads the frame to texture
+        /// </summary>
+        /// <returns>The bool</returns>
         private bool UploadFrameToTexture()
         {
             VideoFrame nextFrame = reader.NextFrame(frameBuffer);
@@ -432,6 +543,9 @@ void main() {
             return true;
         }
 
+        /// <summary>
+        /// Applies the aspect scale
+        /// </summary>
         private void ApplyAspectScale()
         {
             int[] viewport = new int[4];

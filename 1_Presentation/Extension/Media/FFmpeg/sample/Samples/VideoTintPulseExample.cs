@@ -36,8 +36,15 @@ namespace Alis.Extension.Media.FFmpeg.Sample.Samples
     /// </summary>
     internal class VideoTintPulseExample : VideoExampleBase
     {
+        /// <summary>
+        /// The time location
+        /// </summary>
         private int timeLocation = -1;
 
+        /// <summary>
+        /// Gets the fragment shader source
+        /// </summary>
+        /// <returns>The string</returns>
         protected override string GetFragmentShaderSource()
         {
             return @"
@@ -54,6 +61,10 @@ void main() {
 }";
         }
 
+        /// <summary>
+        /// Sets the per frame uniforms using the specified elapsed seconds
+        /// </summary>
+        /// <param name="elapsedSeconds">The elapsed seconds</param>
         protected override void SetPerFrameUniforms(float elapsedSeconds)
         {
             if (timeLocation < 0)

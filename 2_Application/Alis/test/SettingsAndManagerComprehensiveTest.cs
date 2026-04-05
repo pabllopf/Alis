@@ -34,6 +34,9 @@ namespace Alis.Test
     /// </summary>
     public class SettingsAndManagerComprehensiveTest
     {
+        /// <summary>
+        /// Tests that audio setting default constructor should use expected defaults
+        /// </summary>
         [Fact]
         public void AudioSetting_DefaultConstructor_ShouldUseExpectedDefaults()
         {
@@ -43,6 +46,9 @@ namespace Alis.Test
             Assert.False(setting.Mute);
         }
 
+        /// <summary>
+        /// Tests that audio setting custom constructor should store provided values
+        /// </summary>
         [Fact]
         public void AudioSetting_CustomConstructor_ShouldStoreProvidedValues()
         {
@@ -52,6 +58,9 @@ namespace Alis.Test
             Assert.True(setting.Mute);
         }
 
+        /// <summary>
+        /// Tests that input setting default constructor should use expected defaults
+        /// </summary>
         [Fact]
         public void InputSetting_DefaultConstructor_ShouldUseExpectedDefaults()
         {
@@ -60,6 +69,9 @@ namespace Alis.Test
             Assert.Equal(0.1f, setting.MouseSensitivity);
         }
 
+        /// <summary>
+        /// Tests that input setting custom constructor should store provided values
+        /// </summary>
         [Fact]
         public void InputSetting_CustomConstructor_ShouldStoreProvidedValues()
         {
@@ -68,6 +80,9 @@ namespace Alis.Test
             Assert.Equal(1.75f, setting.MouseSensitivity);
         }
 
+        /// <summary>
+        /// Tests that graphic setting default constructor should use expected values
+        /// </summary>
         [Fact]
         public void GraphicSetting_DefaultConstructor_ShouldUseExpectedValues()
         {
@@ -81,6 +96,9 @@ namespace Alis.Test
             Assert.True(setting.IsResizable);
         }
 
+        /// <summary>
+        /// Tests that graphic setting custom constructor should store provided values
+        /// </summary>
         [Fact]
         public void GraphicSetting_CustomConstructor_ShouldStoreProvidedValues()
         {
@@ -104,6 +122,9 @@ namespace Alis.Test
             Assert.False(setting.IsResizable);
         }
 
+        /// <summary>
+        /// Tests that physic setting default constructor should use expected values
+        /// </summary>
         [Fact]
         public void PhysicSetting_DefaultConstructor_ShouldUseExpectedValues()
         {
@@ -114,6 +135,9 @@ namespace Alis.Test
             Assert.Equal(new Color(0, 0, 0, 1), setting.DebugColor);
         }
 
+        /// <summary>
+        /// Tests that physic setting custom constructor should store provided values
+        /// </summary>
         [Fact]
         public void PhysicSetting_CustomConstructor_ShouldStoreProvidedValues()
         {
@@ -124,6 +148,9 @@ namespace Alis.Test
             Assert.Equal(Color.Red, setting.DebugColor);
         }
 
+        /// <summary>
+        /// Tests that settings structs should implement expected interfaces
+        /// </summary>
         [Fact]
         public void SettingsStructs_ShouldImplementExpectedInterfaces()
         {
@@ -133,6 +160,9 @@ namespace Alis.Test
             Assert.IsAssignableFrom<IPhysicSetting>(new PhysicSetting());
         }
 
+        /// <summary>
+        /// Tests that settings structs should use sequential struct layout with pack 1
+        /// </summary>
         [Fact]
         public void SettingsStructs_ShouldUseSequentialStructLayoutWithPack1()
         {
@@ -142,6 +172,9 @@ namespace Alis.Test
             AssertStructLayout(typeof(PhysicSetting));
         }
 
+        /// <summary>
+        /// Tests that setting default constructor should create nested settings
+        /// </summary>
         [Fact]
         public void Setting_DefaultConstructor_ShouldCreateNestedSettings()
         {
@@ -160,6 +193,9 @@ namespace Alis.Test
             Assert.Equal(new Vector2F(0, -9.81f), setting.Physic.Gravity);
         }
 
+        /// <summary>
+        /// Tests that setting custom constructor should use provided values
+        /// </summary>
         [Fact]
         public void Setting_CustomConstructor_ShouldUseProvidedValues()
         {
@@ -180,6 +216,9 @@ namespace Alis.Test
             Assert.Equal(new Vector2F(1, 2), setting.Physic.Gravity);
         }
 
+        /// <summary>
+        /// Tests that a manager default protected constructor should set expected defaults
+        /// </summary>
         [Fact]
         public void AManager_DefaultProtectedConstructor_ShouldSetExpectedDefaults()
         {
@@ -193,6 +232,9 @@ namespace Alis.Test
             Assert.IsAssignableFrom<IManager>(manager);
         }
 
+        /// <summary>
+        /// Tests that a manager protected constructor with values should store provided values
+        /// </summary>
         [Fact]
         public void AManager_ProtectedConstructorWithValues_ShouldStoreProvidedValues()
         {
@@ -205,6 +247,9 @@ namespace Alis.Test
             Assert.Null(manager.Context);
         }
 
+        /// <summary>
+        /// Tests that a manager all virtual lifecycle methods should be no op by default
+        /// </summary>
         [Fact]
         public void AManager_AllVirtualLifecycleMethods_ShouldBeNoOpByDefault()
         {
@@ -242,6 +287,10 @@ namespace Alis.Test
             Assert.True(true);
         }
 
+        /// <summary>
+        /// Asserts the struct layout using the specified type
+        /// </summary>
+        /// <param name="type">The type</param>
         private static void AssertStructLayout(Type type)
         {
             StructLayoutAttribute layout = type.StructLayoutAttribute;
@@ -250,12 +299,28 @@ namespace Alis.Test
             Assert.Equal(1, layout.Pack);
         }
 
+        /// <summary>
+        /// The test manager class
+        /// </summary>
+        /// <seealso cref="AManager"/>
         private sealed class TestManager : AManager
         {
+            /// <summary>
+            /// Initializes a new instance of the <see cref="TestManager"/> class
+            /// </summary>
+            /// <param name="context">The context</param>
             public TestManager(Context context) : base(context)
             {
             }
 
+            /// <summary>
+            /// Initializes a new instance of the <see cref="TestManager"/> class
+            /// </summary>
+            /// <param name="id">The id</param>
+            /// <param name="name">The name</param>
+            /// <param name="tag">The tag</param>
+            /// <param name="isEnable">The is enable</param>
+            /// <param name="context">The context</param>
             public TestManager(string id, string name, string tag, bool isEnable, Context context)
                 : base(id, name, tag, isEnable, context)
             {

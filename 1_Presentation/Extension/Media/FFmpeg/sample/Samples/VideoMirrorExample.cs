@@ -34,6 +34,10 @@ namespace Alis.Extension.Media.FFmpeg.Sample.Samples
     /// </summary>
     internal class VideoMirrorExample : VideoExampleBase
     {
+        /// <summary>
+        /// Gets the fragment shader source
+        /// </summary>
+        /// <returns>The string</returns>
         protected override string GetFragmentShaderSource()
         {
             return @"

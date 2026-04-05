@@ -30,6 +30,9 @@ namespace Alis.App.Installer.Test
     /// </summary>
     public class InstallerComprehensiveTest
     {
+        /// <summary>
+        /// Tests that installer type should be public
+        /// </summary>
         [Fact]
         public void Installer_Type_ShouldBePublicClass()
         {
@@ -39,6 +42,9 @@ namespace Alis.App.Installer.Test
             Assert.True(type.IsPublic);
         }
 
+        /// <summary>
+        /// Tests that program type should be public static
+        /// </summary>
         [Fact]
         public void Program_Type_ShouldBePublicStaticClass()
         {
@@ -50,6 +56,9 @@ namespace Alis.App.Installer.Test
             Assert.True(type.IsSealed);
         }
 
+        /// <summary>
+        /// Tests that program main should match entry point signature
+        /// </summary>
         [Fact]
         public void Program_Main_ShouldMatchEntryPointSignature()
         {
@@ -63,6 +72,9 @@ namespace Alis.App.Installer.Test
             Assert.Equal(typeof(string[]), parameters[0].ParameterType);
         }
 
+        /// <summary>
+        /// Tests that imgui sample should implement internal i example
+        /// </summary>
         [Fact]
         public void ImguiSample_ShouldImplementInternalIExample()
         {
@@ -72,6 +84,9 @@ namespace Alis.App.Installer.Test
             Assert.Contains(interfaces, i => i.Name == "IExample");
         }
 
+        /// <summary>
+        /// Tests that imgui sample constructors should exist
+        /// </summary>
         [Fact]
         public void ImguiSample_Constructors_ShouldExist()
         {
@@ -85,6 +100,9 @@ namespace Alis.App.Installer.Test
             });
         }
 
+        /// <summary>
+        /// Tests that imgui sample public lifecycle methods should exist
+        /// </summary>
         [Fact]
         public void ImguiSample_PublicLifecycleMethods_ShouldExist()
         {
@@ -101,6 +119,9 @@ namespace Alis.App.Installer.Test
             Assert.Equal(typeof(void), cleanup.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that installer run should expose expected signature
+        /// </summary>
         [Fact]
         public void Installer_Run_ShouldExposeExpectedSignature()
         {
@@ -114,6 +135,9 @@ namespace Alis.App.Installer.Test
             Assert.Equal(typeof(string[]), parameters[0].ParameterType);
         }
 
+        /// <summary>
+        /// Tests that installer initialize platform should return false when platform is null
+        /// </summary>
         [Fact]
         public void Installer_InitializePlatform_ShouldReturnFalse_WhenPlatformIsNull()
         {
@@ -127,6 +151,9 @@ namespace Alis.App.Installer.Test
             Assert.False((bool)result);
         }
 
+        /// <summary>
+        /// Tests that installer initialize platform should return false when initialize fails
+        /// </summary>
         [Fact]
         public void Installer_InitializePlatform_ShouldReturnFalse_WhenInitializeFails()
         {
@@ -142,6 +169,9 @@ namespace Alis.App.Installer.Test
             Assert.Equal("Fail Case", platform.LastTitle);
         }
 
+        /// <summary>
+        /// Tests that installer initialize platform should return true when initialize succeeds
+        /// </summary>
         [Fact]
         public void Installer_InitializePlatform_ShouldReturnTrue_WhenInitializeSucceeds()
         {
@@ -157,6 +187,9 @@ namespace Alis.App.Installer.Test
             Assert.Equal("Ok Case", platform.LastTitle);
         }
 
+        /// <summary>
+        /// Tests that installer load font from resource should copy bytes to native memory
+        /// </summary>
         [Fact]
         public void Installer_LoadFontFromResource_ShouldCopyBytesToNativeMemory()
         {
@@ -186,6 +219,9 @@ namespace Alis.App.Installer.Test
             }
         }
 
+        /// <summary>
+        /// Tests that installer load font from resource should advance stream position to end
+        /// </summary>
         [Fact]
         public void Installer_LoadFontFromResource_ShouldAdvanceStreamPositionToEnd()
         {
@@ -214,6 +250,9 @@ namespace Alis.App.Installer.Test
             }
         }
 
+        /// <summary>
+        /// Tests that installer private helpers should exist with expected signatures
+        /// </summary>
         [Fact]
         public void Installer_PrivateHelpers_ShouldExistWithExpectedSignatures()
         {
@@ -233,14 +272,40 @@ namespace Alis.App.Installer.Test
             Assert.Equal(typeof(uint), loadTexture.ReturnType);
         }
 
+        /// <summary>
+        /// The fake platform class
+        /// </summary>
+        /// <seealso cref="INativePlatform"/>
         private sealed class FakePlatform : INativePlatform
         {
+            /// <summary>
+            /// Gets or sets the value of the initialize result
+            /// </summary>
             public bool InitializeResult { get; set; }
+            /// <summary>
+            /// Gets or sets the value of the initialize calls
+            /// </summary>
             public int InitializeCalls { get; private set; }
+            /// <summary>
+            /// Gets or sets the value of the last width
+            /// </summary>
             public int LastWidth { get; private set; }
+            /// <summary>
+            /// Gets or sets the value of the last height
+            /// </summary>
             public int LastHeight { get; private set; }
+            /// <summary>
+            /// Gets or sets the value of the last title
+            /// </summary>
             public string LastTitle { get; private set; }
 
+            /// <summary>
+            /// Initializes the width
+            /// </summary>
+            /// <param name="width">The width</param>
+            /// <param name="height">The height</param>
+            /// <param name="title">The title</param>
+            /// <returns>The initialize result</returns>
             public bool Initialize(int width, int height, string title)
             {
                 InitializeCalls++;
@@ -250,27 +315,100 @@ namespace Alis.App.Installer.Test
                 return InitializeResult;
             }
 
+            /// <summary>
+            /// Initializes the width
+            /// </summary>
+            /// <param name="width">The width</param>
+            /// <param name="height">The height</param>
+            /// <param name="title">The title</param>
+            /// <param name="iconPath">The icon path</param>
+            /// <returns>The bool</returns>
             public bool Initialize(int width, int height, string title, string iconPath) => Initialize(width, height, title);
+            /// <summary>
+            /// Shows the window
+            /// </summary>
             public void ShowWindow() { }
+            /// <summary>
+            /// Hides the window
+            /// </summary>
             public void HideWindow() { }
+            /// <summary>
+            /// Sets the title using the specified title
+            /// </summary>
+            /// <param name="title">The title</param>
             public void SetTitle(string title) { }
+            /// <summary>
+            /// Sets the size using the specified width
+            /// </summary>
+            /// <param name="width">The width</param>
+            /// <param name="height">The height</param>
             public void SetSize(int width, int height) { }
+            /// <summary>
+            /// Makes the context current
+            /// </summary>
             public void MakeContextCurrent() { }
+            /// <summary>
+            /// Swaps the buffers
+            /// </summary>
             public void SwapBuffers() { }
+            /// <summary>
+            /// Ises the window visible
+            /// </summary>
+            /// <returns>The bool</returns>
             public bool IsWindowVisible() => true;
+            /// <summary>
+            /// Polls the events
+            /// </summary>
+            /// <returns>The bool</returns>
             public bool PollEvents() => true;
+            /// <summary>
+            /// Cleanups this instance
+            /// </summary>
             public void Cleanup() { }
+            /// <summary>
+            /// Gets the window width
+            /// </summary>
+            /// <returns>The int</returns>
             public int GetWindowWidth() => 0;
+            /// <summary>
+            /// Gets the window height
+            /// </summary>
+            /// <returns>The int</returns>
             public int GetWindowHeight() => 0;
+            /// <summary>
+            /// Gets the proc address using the specified proc name
+            /// </summary>
+            /// <param name="procName">The proc name</param>
+            /// <returns>The int ptr</returns>
             public IntPtr GetProcAddress(string procName) => IntPtr.Zero;
+            /// <summary>
+            /// Tries the get last key pressed using the specified key
+            /// </summary>
+            /// <param name="key">The key</param>
+            /// <returns>The bool</returns>
             public bool TryGetLastKeyPressed(out ConsoleKey key)
             {
                 key = default;
                 return false;
             }
 
+            /// <summary>
+            /// Ises the key down using the specified console key
+            /// </summary>
+            /// <param name="consoleKey">The console key</param>
+            /// <returns>The bool</returns>
             public bool IsKeyDown(ConsoleKey consoleKey) => false;
+            /// <summary>
+            /// Sets the window icon using the specified icon path
+            /// </summary>
+            /// <param name="iconPath">The icon path</param>
             public void SetWindowIcon(string iconPath) { }
+            /// <summary>
+            /// Gets the mouse state using the specified x
+            /// </summary>
+            /// <param name="x">The </param>
+            /// <param name="y">The </param>
+            /// <param name="buttons">The buttons</param>
             public void GetMouseState(out int x, out int y, out bool[] buttons)
             {
                 x = 0;
@@ -278,15 +416,41 @@ namespace Alis.App.Installer.Test
                 buttons = new bool[5];
             }
 
+            /// <summary>
+            /// Gets the mouse wheel
+            /// </summary>
+            /// <returns>The float</returns>
             public float GetMouseWheel() => 0f;
+            /// <summary>
+            /// Tries the get last input characters using the specified chars
+            /// </summary>
+            /// <param name="chars">The chars</param>
+            /// <returns>The bool</returns>
             public bool TryGetLastInputCharacters(out string chars)
             {
                 chars = null;
                 return false;
             }
 
+            /// <summary>
+            /// Gets the window position x
+            /// </summary>
+            /// <returns>The int</returns>
             public int GetWindowPositionX() => 0;
+            /// <summary>
+            /// Gets the window position y
+            /// </summary>
+            /// <returns>The int</returns>
             public int GetWindowPositionY() => 0;
+            /// <summary>
+            /// Gets the window metrics using the specified win x
+            /// </summary>
+            /// <param name="winX">The win</param>
+            /// <param name="winY">The win</param>
+            /// <param name="winW">The win</param>
+            /// <param name="winH">The win</param>
+            /// <param name="fbW">The fb</param>
+            /// <param name="fbH">The fb</param>
             public void GetWindowMetrics(out int winX, out int winY, out int winW, out int winH, out int fbW, out int fbH)
             {
                 winX = 0;
@@ -297,6 +461,11 @@ namespace Alis.App.Installer.Test
                 fbH = 0;
             }
 
+            /// <summary>
+            /// Gets the mouse position in view using the specified x
+            /// </summary>
+            /// <param name="x">The </param>
+            /// <param name="y">The </param>
             public void GetMousePositionInView(out float x, out float y)
             {
                 x = 0;

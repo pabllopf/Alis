@@ -27,6 +27,9 @@ namespace Alis.App.Engine.Test
     /// </summary>
     public class EngineMenuComprehensiveTest
     {
+        /// <summary>
+        /// Tests that internal i menu should exist and inherit expected interfaces
+        /// </summary>
         [Fact]
         public void InternalIMenu_ShouldExistAndInheritExpectedInterfaces()
         {
@@ -40,6 +43,9 @@ namespace Alis.App.Engine.Test
             Assert.NotNull(menuType.GetMethod("Start"));
         }
 
+        /// <summary>
+        /// Tests that top menu action should be public static
+        /// </summary>
         [Fact]
         public void TopMenuAction_ShouldBePublicStaticClass()
         {
@@ -51,6 +57,9 @@ namespace Alis.App.Engine.Test
             Assert.True(type.IsSealed);
         }
 
+        /// <summary>
+        /// Tests that top menu action menu registry should contain expected core entries
+        /// </summary>
         [Fact]
         public void TopMenuAction_MenuRegistry_ShouldContainExpectedCoreEntries()
         {
@@ -83,6 +92,9 @@ namespace Alis.App.Engine.Test
             }
         }
 
+        /// <summary>
+        /// Tests that top menu action execute menu action should not throw for unknown action
+        /// </summary>
         [Fact]
         public void TopMenuAction_ExecuteMenuAction_ShouldNotThrow_ForUnknownAction()
         {
@@ -90,6 +102,9 @@ namespace Alis.App.Engine.Test
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that top menu action set space work should accept null
+        /// </summary>
         [Fact]
         public void TopMenuAction_SetSpaceWork_ShouldAcceptNull()
         {
@@ -97,6 +112,9 @@ namespace Alis.App.Engine.Test
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that top menu action should expose expected public methods
+        /// </summary>
         [Fact]
         public void TopMenuAction_ShouldExposeExpectedPublicMethods()
         {

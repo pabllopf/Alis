@@ -35,6 +35,9 @@ namespace Alis.App.Engine.Test
     /// </summary>
     public class EngineSurfaceComprehensiveTest
     {
+        /// <summary>
+        /// Tests that engine type should expose public run method
+        /// </summary>
         [Fact]
         public void Engine_Type_ShouldExposePublicRunMethod()
         {
@@ -48,6 +51,9 @@ namespace Alis.App.Engine.Test
             Assert.Empty(run.GetParameters());
         }
 
+        /// <summary>
+        /// Tests that program internal type should expose main signature
+        /// </summary>
         [Fact]
         public void Program_InternalType_ShouldExposeMainSignature()
         {
@@ -67,6 +73,9 @@ namespace Alis.App.Engine.Test
             Assert.Equal(typeof(string[]), parameters[0].ParameterType);
         }
 
+        /// <summary>
+        /// Tests that marker interfaces should exist with expected visibility
+        /// </summary>
         [Fact]
         public void MarkerInterfaces_ShouldExistWithExpectedVisibility()
         {
@@ -79,12 +88,18 @@ namespace Alis.App.Engine.Test
             Assert.True(typeof(IShader).IsInterface);
         }
 
+        /// <summary>
+        /// Tests that layout configuration should implement i configuration
+        /// </summary>
         [Fact]
         public void LayoutConfiguration_ShouldImplementIConfiguration()
         {
             Assert.Contains(typeof(IConfiguration), typeof(LayoutConfiguration).GetInterfaces());
         }
 
+        /// <summary>
+        /// Tests that icon implementations should implement i icon
+        /// </summary>
         [Fact]
         public void IconImplementations_ShouldImplementIIcon()
         {
@@ -92,6 +107,9 @@ namespace Alis.App.Engine.Test
             Assert.Contains(typeof(IIcon), typeof(SegoeIcon).GetInterfaces());
         }
 
+        /// <summary>
+        /// Tests that font classes should be instantiable public classes
+        /// </summary>
         [Fact]
         public void FontClasses_ShouldBeInstantiablePublicClasses()
         {
@@ -104,6 +122,9 @@ namespace Alis.App.Engine.Test
             Assert.True(typeof(HackFont).IsPublic);
         }
 
+        /// <summary>
+        /// Tests that demo interface should define initialize start run
+        /// </summary>
         [Fact]
         public void DemoInterface_ShouldDefineInitializeStartRun()
         {
@@ -119,6 +140,9 @@ namespace Alis.App.Engine.Test
             Assert.Equal(typeof(void), run.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that shader implementations should provide non empty code
+        /// </summary>
         [Fact]
         public void ShaderImplementations_ShouldProvideNonEmptyCode()
         {
@@ -131,6 +155,9 @@ namespace Alis.App.Engine.Test
             Assert.Contains("#version", fragment.ShaderCode);
         }
 
+        /// <summary>
+        /// Tests that vertex shader code should contain expected symbols
+        /// </summary>
         [Fact]
         public void VertexShader_Code_ShouldContainExpectedSymbols()
         {
@@ -142,6 +169,9 @@ namespace Alis.App.Engine.Test
             Assert.Contains("gl_Position", code);
         }
 
+        /// <summary>
+        /// Tests that fragment shader code should contain expected symbols
+        /// </summary>
         [Fact]
         public void FragmentShader_Code_ShouldContainExpectedSymbols()
         {
@@ -153,6 +183,9 @@ namespace Alis.App.Engine.Test
             Assert.Contains("texture(", code);
         }
 
+        /// <summary>
+        /// Tests that project constructor should assign primary fields
+        /// </summary>
         [Fact]
         public void Project_Constructor_ShouldAssignPrimaryFields()
         {
@@ -165,6 +198,9 @@ namespace Alis.App.Engine.Test
             Assert.Equal("2026.1", project.EditorVersion);
         }
 
+        /// <summary>
+        /// Tests that project parameterless initialization should use struct defaults
+        /// </summary>
         [Fact]
         public void Project_ParameterlessInitialization_ShouldUseStructDefaults()
         {
@@ -179,6 +215,9 @@ namespace Alis.App.Engine.Test
             Assert.Null(project.LastModified);
         }
 
+        /// <summary>
+        /// Tests that project setters should mutate optional fields
+        /// </summary>
         [Fact]
         public void Project_Setters_ShouldMutateOptionalFields()
         {
@@ -192,6 +231,11 @@ namespace Alis.App.Engine.Test
             Assert.Equal("Now", project.LastModified);
         }
 
+        /// <summary>
+        /// Tests that project properties should have expected json native attribute
+        /// </summary>
+        /// <param name="propertyName">The property name</param>
+        /// <param name="expectedName">The expected name</param>
         [Theory]
         [InlineData(nameof(Project.Name), "_name_")]
         [InlineData(nameof(Project.Path), "_path_")]
@@ -209,6 +253,9 @@ namespace Alis.App.Engine.Test
             Assert.Equal(expectedName, attribute.Name);
         }
 
+        /// <summary>
+        /// Tests that project type should be serializable sequential struct
+        /// </summary>
         [Fact]
         public void Project_Type_ShouldBeSerializableSequentialStruct()
         {
@@ -223,6 +270,9 @@ namespace Alis.App.Engine.Test
             Assert.Equal(1, layout.Pack);
         }
 
+        /// <summary>
+        /// Tests that shortcuts should initialize with non empty values
+        /// </summary>
         [Fact]
         public void Shortcuts_ShouldInitializeWithNonEmptyValues()
         {
@@ -245,6 +295,9 @@ namespace Alis.App.Engine.Test
             Assert.False(string.IsNullOrWhiteSpace(Shortcuts.QuitAlis));
         }
 
+        /// <summary>
+        /// Tests that shortcuts should use expected platform prefix or delete key
+        /// </summary>
         [Fact]
         public void Shortcuts_ShouldUseExpectedPlatformPrefixOrDeleteKey()
         {
@@ -266,6 +319,9 @@ namespace Alis.App.Engine.Test
             }
         }
 
+        /// <summary>
+        /// Tests that internal active button enum should contain expected members
+        /// </summary>
         [Fact]
         public void InternalActiveButtonEnum_ShouldContainExpectedMembers()
         {
@@ -283,6 +339,9 @@ namespace Alis.App.Engine.Test
             Assert.Contains("User", names);
         }
 
+        /// <summary>
+        /// Tests that internal i window should inherit from expected engine core interfaces
+        /// </summary>
         [Fact]
         public void InternalIWindow_ShouldInheritFromExpectedEngineCoreInterfaces()
         {
@@ -296,6 +355,9 @@ namespace Alis.App.Engine.Test
             Assert.NotNull(iwindowType.GetMethod("Start"));
         }
 
+        /// <summary>
+        /// Tests that shader structs should be readonly value types
+        /// </summary>
         [Fact]
         public void ShaderStructs_ShouldBeReadonlyValueTypes()
         {

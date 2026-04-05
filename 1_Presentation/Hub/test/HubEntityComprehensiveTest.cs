@@ -27,6 +27,9 @@ namespace Alis.App.Hub.Test
     /// </summary>
     public class HubEntityComprehensiveTest
     {
+        /// <summary>
+        /// Tests that project constructor should assign mandatory fields
+        /// </summary>
         [Fact]
         public void Project_Constructor_ShouldAssignMandatoryFields()
         {
@@ -39,6 +42,9 @@ namespace Alis.App.Hub.Test
             Assert.Equal("2026.1.0", project.EditorVersion);
         }
 
+        /// <summary>
+        /// Tests that project parameterless initialization should use struct default values
+        /// </summary>
         [Fact]
         public void Project_ParameterlessInitialization_ShouldUseStructDefaultValues()
         {
@@ -53,6 +59,9 @@ namespace Alis.App.Hub.Test
             Assert.Null(project.LastModified);
         }
 
+        /// <summary>
+        /// Tests that project setters should allow overriding optional fields
+        /// </summary>
         [Fact]
         public void Project_Setters_ShouldAllowOverridingOptionalFields()
         {
@@ -68,6 +77,11 @@ namespace Alis.App.Hub.Test
             Assert.Equal("Today", project.LastModified);
         }
 
+        /// <summary>
+        /// Tests that project properties should expose expected json native property names
+        /// </summary>
+        /// <param name="propertyName">The property name</param>
+        /// <param name="expected">The expected</param>
         [Theory]
         [InlineData(nameof(Project.Name), "_name_")]
         [InlineData(nameof(Project.Path), "_path_")]
@@ -85,6 +99,9 @@ namespace Alis.App.Hub.Test
             Assert.Equal(expected, attribute.Name);
         }
 
+        /// <summary>
+        /// Tests that installed version constructor should assign read only properties
+        /// </summary>
         [Fact]
         public void InstalledVersion_Constructor_ShouldAssignReadOnlyProperties()
         {
@@ -95,6 +112,9 @@ namespace Alis.App.Hub.Test
             Assert.Equal("/Applications/Alis", version.InstallPath);
         }
 
+        /// <summary>
+        /// Tests that learning resource constructor should assign read only properties
+        /// </summary>
         [Fact]
         public void LearningResource_Constructor_ShouldAssignReadOnlyProperties()
         {
@@ -105,6 +125,9 @@ namespace Alis.App.Hub.Test
             Assert.Equal("https://example.com/docs", resource.Url);
         }
 
+        /// <summary>
+        /// Tests that gallery item constructor should assign all properties
+        /// </summary>
         [Fact]
         public void GalleryItem_Constructor_ShouldAssignAllProperties()
         {
@@ -118,6 +141,9 @@ namespace Alis.App.Hub.Test
             Assert.Equal(300, item.Width);
         }
 
+        /// <summary>
+        /// Tests that gallery item setters should mutate properties
+        /// </summary>
         [Fact]
         public void GalleryItem_Setters_ShouldMutateProperties()
         {
@@ -139,6 +165,9 @@ namespace Alis.App.Hub.Test
             Assert.Equal(555, item.Width);
         }
 
+        /// <summary>
+        /// Tests that gallery constructor should create exactly 10 items
+        /// </summary>
         [Fact]
         public void Gallery_Constructor_ShouldCreateExactly10Items()
         {
@@ -149,6 +178,9 @@ namespace Alis.App.Hub.Test
             Assert.All(gallery.Items, item => Assert.NotNull(item));
         }
 
+        /// <summary>
+        /// Tests that gallery items should have expected generated titles and descriptions
+        /// </summary>
         [Fact]
         public void Gallery_Items_ShouldHaveExpectedGeneratedTitlesAndDescriptions()
         {
@@ -163,6 +195,9 @@ namespace Alis.App.Hub.Test
             }
         }
 
+        /// <summary>
+        /// Tests that gallery items should use expected dimensions and image pattern
+        /// </summary>
         [Fact]
         public void Gallery_Items_ShouldUseExpectedDimensionsAndImagePattern()
         {
@@ -176,6 +211,9 @@ namespace Alis.App.Hub.Test
             });
         }
 
+        /// <summary>
+        /// Tests that gallery items list should allow external mutations
+        /// </summary>
         [Fact]
         public void Gallery_ItemsList_ShouldAllowExternalMutations()
         {
@@ -187,6 +225,9 @@ namespace Alis.App.Hub.Test
             Assert.Equal(initialCount + 1, gallery.Items.Count);
         }
 
+        /// <summary>
+        /// Tests that project type should be serializable sequential struct
+        /// </summary>
         [Fact]
         public void Project_Type_ShouldBeSerializableSequentialStruct()
         {
@@ -201,6 +242,9 @@ namespace Alis.App.Hub.Test
             Assert.Equal(1, layout.Pack);
         }
 
+        /// <summary>
+        /// Tests that hub entity types should expose expected public surface
+        /// </summary>
         [Fact]
         public void HubEntity_Types_ShouldExposeExpectedPublicSurface()
         {
