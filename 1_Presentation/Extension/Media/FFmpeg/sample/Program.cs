@@ -72,6 +72,7 @@ namespace Alis.Extension.Media.FFmpeg.Sample
             Logger.Info("10: Video sample (mirror)");
             Logger.Info("11: Video sample (tint pulse)");
             Logger.Info("12: Video sample (cover + slow motion)");
+            Logger.Info("13: Video sample (audio + video)");
             Logger.Info("Opción: ");
             int option = 0;
             string input = Console.ReadLine();
@@ -90,6 +91,7 @@ namespace Alis.Extension.Media.FFmpeg.Sample
                 10 => new VideoMirrorExample(),
                 11 => new VideoTintPulseExample(),
                 12 => new VideoCoverSlowMotionExample(),
+                13 => new VideoAudioPlaybackExample(),
                 _ => new SimpleRedExample()
             };
 

@@ -147,6 +147,11 @@ namespace Alis.Extension.Media.FFmpeg.Sample.Samples
         protected uint ShaderProgram => shaderProgram;
 
         /// <summary>
+        /// Gets the value of the resolved video path in the assets system
+        /// </summary>
+        protected string VideoPath => videoPath;
+
+        /// <summary>
         /// Gets the fragment shader source
         /// </summary>
         /// <returns>The string</returns>
@@ -171,6 +176,20 @@ void main() {
         }
 
         /// <summary>
+        /// Called after the video reader and GL resources are initialized
+        /// </summary>
+        protected virtual void OnInitialize()
+        {
+        }
+
+        /// <summary>
+        /// Called during cleanup before releasing base resources
+        /// </summary>
+        protected virtual void OnCleanup()
+        {
+        }
+
+        /// <summary>
         /// Initializes this instance
         /// </summary>
         public void Initialize()
@@ -180,6 +199,7 @@ void main() {
             CreateRenderingResources();
             UploadFrameToTexture();
             nextFrameAtUtc = DateTime.UtcNow;
+            OnInitialize();
         }
 
         /// <summary>
@@ -207,6 +227,7 @@ void main() {
         /// </summary>
         public void Cleanup()
         {
+            OnCleanup();
             frameBuffer?.Dispose();
             reader?.Dispose();
 
