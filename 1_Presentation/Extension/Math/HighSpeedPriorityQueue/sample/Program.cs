@@ -28,6 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Logging;
+using System;
+using System.Collections.Generic;
 
 namespace Alis.Extension.Math.HighSpeedPriorityQueue.Sample
 {
@@ -36,18 +38,80 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Sample
     /// </summary>
     public static class Program
     {
+        private static readonly IReadOnlyList<ExampleEntry> Examples = new List<ExampleEntry>
+        {
+            new ExampleEntry("FastPriorityQueue", FastPriorityQueueExample.RunExample),
+            new ExampleEntry("SimplePriorityQueue", SimplePriorityQueueExample.RunExample),
+            new ExampleEntry("SimplePriorityQueue Try*", SimplePriorityQueueTryExample.RunExample),
+            new ExampleEntry("GenericPriorityQueue", GenericPriorityQueueExample.RunExample),
+            new ExampleEntry("StablePriorityQueue", StablePriorityQueueExample.RunExample)
+        };
+
         /// <summary>
         ///     Main
         /// </summary>
         public static void Main()
         {
-            FastPriorityQueueExample.RunExample();
+            PrintMenu();
 
-            Logger.Trace("------------------------------");
+            string input = (Console.ReadLine() ?? string.Empty).Trim();
 
-            SimplePriorityQueueExample.RunExample();
+            if (input.Equals("all", StringComparison.OrdinalIgnoreCase))
+            {
+                RunAllExamples();
+                return;
+            }
+
+            if (int.TryParse(input, out int selectedIndex) && selectedIndex >= 1 && selectedIndex <= Examples.Count)
+            {
+                RunSingleExample(selectedIndex - 1);
+                Logger.Trace("End Program...");
+                return;
+            }
+
+            Logger.Warning("Invalid option. Use a number from the list or 'all'.");
+        }
+
+        private static void PrintMenu()
+        {
+            Logger.Info("Select an example to run:");
+
+            for (int i = 0; i < Examples.Count; i++)
+            {
+                Logger.Info($"{i + 1}. {Examples[i].Name}");
+            }
+
+            Logger.Info("Type a number or 'all' to run every example:");
+        }
+
+        private static void RunAllExamples()
+        {
+            for (int i = 0; i < Examples.Count; i++)
+            {
+                RunSingleExample(i);
+            }
 
             Logger.Trace("End Program...");
+        }
+
+        private static void RunSingleExample(int index)
+        {
+            Logger.Trace($"Running example {index + 1}: {Examples[index].Name}");
+            Examples[index].Run();
+            Logger.Trace("------------------------------");
+        }
+
+        private sealed class ExampleEntry
+        {
+            public ExampleEntry(string name, Action run)
+            {
+                Name = name;
+                Run = run;
+            }
+
+            public string Name { get; }
+
+            public Action Run { get; }
         }
     }
 }
