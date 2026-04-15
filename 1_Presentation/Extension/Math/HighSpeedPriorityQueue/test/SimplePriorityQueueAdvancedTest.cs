@@ -5,8 +5,14 @@ using Xunit;
 
 namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
 {
+    /// <summary>
+    /// The simple priority queue advanced test class
+    /// </summary>
     public class SimplePriorityQueueAdvancedTest
     {
+        /// <summary>
+        /// Tests that first when empty throws
+        /// </summary>
         [Fact]
         public void First_WhenEmpty_Throws()
         {
@@ -14,6 +20,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.Throws<InvalidOperationException>(() => _ = queue.First);
         }
 
+        /// <summary>
+        /// Tests that dequeue when empty throws
+        /// </summary>
         [Fact]
         public void Dequeue_WhenEmpty_Throws()
         {
@@ -21,6 +30,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.Throws<InvalidOperationException>(() => queue.Dequeue());
         }
 
+        /// <summary>
+        /// Tests that remove when missing throws
+        /// </summary>
         [Fact]
         public void Remove_WhenMissing_Throws()
         {
@@ -28,6 +40,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.Throws<InvalidOperationException>(() => queue.Remove("missing"));
         }
 
+        /// <summary>
+        /// Tests that update priority when missing throws
+        /// </summary>
         [Fact]
         public void UpdatePriority_WhenMissing_Throws()
         {
@@ -35,6 +50,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.Throws<InvalidOperationException>(() => queue.UpdatePriority("missing", 3));
         }
 
+        /// <summary>
+        /// Tests that get priority when missing throws
+        /// </summary>
         [Fact]
         public void GetPriority_WhenMissing_Throws()
         {
@@ -42,6 +60,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.Throws<InvalidOperationException>(() => queue.GetPriority("missing"));
         }
 
+        /// <summary>
+        /// Tests that try methods on empty queue return false
+        /// </summary>
         [Fact]
         public void TryMethods_OnEmptyQueue_ReturnFalse()
         {
@@ -63,6 +84,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.Equal(0, priority);
         }
 
+        /// <summary>
+        /// Tests that try methods on existing item return true
+        /// </summary>
         [Fact]
         public void TryMethods_OnExistingItem_ReturnTrue()
         {
@@ -80,6 +104,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.Equal(0, queue.Count);
         }
 
+        /// <summary>
+        /// Tests that enqueue without duplicates with null allows single entry
+        /// </summary>
         [Fact]
         public void EnqueueWithoutDuplicates_WithNull_AllowsSingleEntry()
         {
@@ -93,6 +120,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.Equal(1, queue.Count);
         }
 
+        /// <summary>
+        /// Tests that duplicate items remove only one occurrence
+        /// </summary>
         [Fact]
         public void DuplicateItems_RemoveOnlyOneOccurrence()
         {
@@ -106,6 +136,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.Equal(1, queue.Count);
         }
 
+        /// <summary>
+        /// Tests that custom equality comparer is used for contains and updates
+        /// </summary>
         [Fact]
         public void CustomEqualityComparer_IsUsedForContainsAndUpdates()
         {
@@ -119,6 +152,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.Equal("Task", queue.Dequeue());
         }
 
+        /// <summary>
+        /// Tests that enumerator returns snapshot of items
+        /// </summary>
         [Fact]
         public void Enumerator_ReturnsSnapshotOfItems()
         {

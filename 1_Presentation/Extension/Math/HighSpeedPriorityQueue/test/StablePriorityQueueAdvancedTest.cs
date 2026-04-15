@@ -2,8 +2,14 @@ using Xunit;
 
 namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
 {
+    /// <summary>
+    /// The stable priority queue advanced test class
+    /// </summary>
     public class StablePriorityQueueAdvancedTest
     {
+        /// <summary>
+        /// Tests that equal priorities dequeue in insertion order
+        /// </summary>
         [Fact]
         public void EqualPriorities_DequeueInInsertionOrder()
         {
@@ -21,6 +27,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.Same(third, queue.Dequeue());
         }
 
+        /// <summary>
+        /// Tests that very close priorities use insertion index as tie breaker
+        /// </summary>
         [Fact]
         public void VeryClosePriorities_UseInsertionIndexAsTieBreaker()
         {
@@ -34,6 +43,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.Same(earlier, queue.Dequeue());
         }
 
+        /// <summary>
+        /// Tests that remove and update priority keep queue valid
+        /// </summary>
         [Fact]
         public void RemoveAndUpdatePriority_KeepQueueValid()
         {
@@ -53,6 +65,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.True(queue.IsValidQueue());
         }
 
+        /// <summary>
+        /// Tests that reset node resets queue index
+        /// </summary>
         [Fact]
         public void ResetNode_ResetsQueueIndex()
         {
@@ -65,10 +80,21 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.Equal(0, node.QueueIndex);
         }
 
+        /// <summary>
+        /// The job node class
+        /// </summary>
+        /// <seealso cref="StablePriorityQueueNode"/>
         private sealed class JobNode : StablePriorityQueueNode
         {
+            /// <summary>
+            /// Initializes a new instance of the <see cref="JobNode"/> class
+            /// </summary>
+            /// <param name="id">The id</param>
             public JobNode(string id) => Id = id;
 
+            /// <summary>
+            /// Gets the value of the id
+            /// </summary>
             public string Id { get; }
         }
     }

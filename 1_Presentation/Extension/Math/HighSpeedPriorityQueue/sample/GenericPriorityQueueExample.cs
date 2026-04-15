@@ -62,8 +62,15 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Sample
         /// </summary>
         public sealed class BuildTask : GenericPriorityQueueNode<DateTime>
         {
+            /// <summary>
+            /// Initializes a new instance of the <see cref="BuildTask"/> class
+            /// </summary>
+            /// <param name="name">The name</param>
             public BuildTask(string name) => Name = name;
 
+            /// <summary>
+            /// Gets the value of the name
+            /// </summary>
             public string Name { get; }
         }
     }

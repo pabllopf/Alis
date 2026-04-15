@@ -63,14 +63,25 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Sample
         /// </summary>
         public sealed class Job : StablePriorityQueueNode
         {
+            /// <summary>
+            /// Initializes a new instance of the <see cref="Job"/> class
+            /// </summary>
+            /// <param name="id">The id</param>
+            /// <param name="description">The description</param>
             public Job(string id, string description)
             {
                 Id = id;
                 Description = description;
             }
 
+            /// <summary>
+            /// Gets the value of the id
+            /// </summary>
             public string Id { get; }
 
+            /// <summary>
+            /// Gets the value of the description
+            /// </summary>
             public string Description { get; }
         }
     }

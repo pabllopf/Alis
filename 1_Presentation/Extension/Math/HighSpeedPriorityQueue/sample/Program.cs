@@ -38,6 +38,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Sample
     /// </summary>
     public static class Program
     {
+        /// <summary>
+        /// The run example
+        /// </summary>
         private static readonly IReadOnlyList<ExampleEntry> Examples = new List<ExampleEntry>
         {
             new ExampleEntry("FastPriorityQueue", FastPriorityQueueExample.RunExample),
@@ -72,6 +75,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Sample
             Logger.Warning("Invalid option. Use a number from the list or 'all'.");
         }
 
+        /// <summary>
+        /// Prints the menu
+        /// </summary>
         private static void PrintMenu()
         {
             Logger.Info("Select an example to run:");
@@ -84,6 +90,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Sample
             Logger.Info("Type a number or 'all' to run every example:");
         }
 
+        /// <summary>
+        /// Runs the all examples
+        /// </summary>
         private static void RunAllExamples()
         {
             for (int i = 0; i < Examples.Count; i++)
@@ -94,6 +103,10 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Sample
             Logger.Trace("End Program...");
         }
 
+        /// <summary>
+        /// Runs the single example using the specified index
+        /// </summary>
+        /// <param name="index">The index</param>
         private static void RunSingleExample(int index)
         {
             Logger.Trace($"Running example {index + 1}: {Examples[index].Name}");
@@ -101,16 +114,30 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Sample
             Logger.Trace("------------------------------");
         }
 
+        /// <summary>
+        /// The example entry class
+        /// </summary>
         private sealed class ExampleEntry
         {
+            /// <summary>
+            /// Initializes a new instance of the <see cref="ExampleEntry"/> class
+            /// </summary>
+            /// <param name="name">The name</param>
+            /// <param name="run">The run</param>
             public ExampleEntry(string name, Action run)
             {
                 Name = name;
                 Run = run;
             }
 
+            /// <summary>
+            /// Gets the value of the name
+            /// </summary>
             public string Name { get; }
 
+            /// <summary>
+            /// Gets the value of the run
+            /// </summary>
             public Action Run { get; }
         }
     }

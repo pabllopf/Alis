@@ -3,8 +3,14 @@ using Xunit;
 
 namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
 {
+    /// <summary>
+    /// The fast priority queue advanced test class
+    /// </summary>
     public class FastPriorityQueueAdvancedTest
     {
+        /// <summary>
+        /// Tests that dequeue with single node clears queue
+        /// </summary>
         [Fact]
         public void Dequeue_WithSingleNode_ClearsQueue()
         {
@@ -19,6 +25,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.True(queue.IsValidQueue());
         }
 
+        /// <summary>
+        /// Tests that update priority cascades node up and down
+        /// </summary>
         [Fact]
         public void UpdatePriority_CascadesNodeUpAndDown()
         {
@@ -39,6 +48,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.True(queue.IsValidQueue());
         }
 
+        /// <summary>
+        /// Tests that remove last element and non last element keeps queue valid
+        /// </summary>
         [Fact]
         public void Remove_LastElementAndNonLastElement_KeepsQueueValid()
         {
@@ -59,6 +71,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.True(queue.IsValidQueue());
         }
 
+        /// <summary>
+        /// Tests that reset node allows clearing queue index
+        /// </summary>
         [Fact]
         public void ResetNode_AllowsClearingQueueIndex()
         {
@@ -71,6 +86,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.Equal(0, node.QueueIndex);
         }
 
+        /// <summary>
+        /// Tests that enumerator returns all nodes currently in queue
+        /// </summary>
         [Fact]
         public void Enumerator_ReturnsAllNodesCurrentlyInQueue()
         {

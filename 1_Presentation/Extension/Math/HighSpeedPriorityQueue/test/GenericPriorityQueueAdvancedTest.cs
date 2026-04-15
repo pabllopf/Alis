@@ -3,8 +3,14 @@ using Xunit;
 
 namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
 {
+    /// <summary>
+    /// The generic priority queue advanced test class
+    /// </summary>
     public class GenericPriorityQueueAdvancedTest
     {
+        /// <summary>
+        /// Tests that constructor with custom comparer changes ordering
+        /// </summary>
         [Fact]
         public void Constructor_WithCustomComparer_ChangesOrdering()
         {
@@ -20,6 +26,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.Same(high, queue.First);
         }
 
+        /// <summary>
+        /// Tests that equal priorities are stable by insertion order
+        /// </summary>
         [Fact]
         public void EqualPriorities_AreStableByInsertionOrder()
         {
@@ -34,6 +43,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.Same(second, queue.Dequeue());
         }
 
+        /// <summary>
+        /// Tests that remove non last and last node keep queue consistent
+        /// </summary>
         [Fact]
         public void Remove_NonLastAndLastNode_KeepQueueConsistent()
         {
@@ -54,6 +66,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.True(queue.IsValidQueue());
         }
 
+        /// <summary>
+        /// Tests that reset node sets queue index to zero
+        /// </summary>
         [Fact]
         public void ResetNode_SetsQueueIndexToZero()
         {
@@ -66,10 +81,21 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.Equal(0, node.QueueIndex);
         }
 
+        /// <summary>
+        /// The timestamp node class
+        /// </summary>
+        /// <seealso cref="GenericPriorityQueueNode{int}"/>
         private sealed class TimestampNode : GenericPriorityQueueNode<int>
         {
+            /// <summary>
+            /// Initializes a new instance of the <see cref="TimestampNode"/> class
+            /// </summary>
+            /// <param name="id">The id</param>
             public TimestampNode(string id) => Id = id;
 
+            /// <summary>
+            /// Gets the value of the id
+            /// </summary>
             public string Id { get; }
         }
     }
