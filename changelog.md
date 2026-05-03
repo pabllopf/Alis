@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.0.6] - 2026-05-03
+### :sparkles: New Features
+- [`0b676af`](https://github.com/pabllopf/Alis/commit/0b676af2102dce0a781cefaabd1f2bfd32cf67eb) - Add HighSpeedPriorityQueue samples, docs and tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d0b23f9`](https://github.com/pabllopf/Alis/commit/d0b23f996546f77deee5a7e57ad5cf2a35b3546a) - create sample for engine *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c1364d4`](https://github.com/pabllopf/Alis/commit/c1364d40a7a6d76a9d404ad2921128e81a273b9a) - Reorganize solution layout and update workflows *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`8678522`](https://github.com/pabllopf/Alis/commit/86785229c18fa3014df15bc5fd1b9c4e0cc28875) - Add video+audio playback sample and hooks *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f254da7`](https://github.com/pabllopf/Alis/commit/f254da756a52fd6313670a22a053cee3dd4a0437) - linux distributions *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b7ba6c7`](https://github.com/pabllopf/Alis/commit/b7ba6c788c0ea3621d17a77ebac143714e6a602b) - #elif winx64 || winx86 || winarm64 || winarm || win *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :memo: Documentation Changes
+- [`dd84a1f`](https://github.com/pabllopf/Alis/commit/dd84a1f647b2ab2e292445de9b8eab9c1773a29f) - Add XML docs to priority queue samples/tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v1.0.5] - 2026-04-05
 ### :sparkles: New Features
 - [`1a3d608`](https://github.com/pabllopf/Alis/commit/1a3d6080ca09999ff2c2ed52647758ad791b95e2) - retrocompatible dlls *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -6223,3 +6238,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.0.3]: https://github.com/pabllopf/Alis/compare/v1.0.2...v1.0.3
 [v1.0.4]: https://github.com/pabllopf/Alis/compare/v1.0.3...v1.0.4
 [v1.0.5]: https://github.com/pabllopf/Alis/compare/v1.0.4...v1.0.5
+[v1.0.6]: https://github.com/pabllopf/Alis/compare/v1.0.5...v1.0.6
