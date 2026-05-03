@@ -680,6 +680,7 @@
         <Content Include="$(ProjectDir)bin/Release/osx-x64/lib/netstandard2.0/Alis.*" Visible="false" PackagePath="runtimes/osx-x64/lib/netstandard2.0/"/>
         <Content Include="$(ProjectDir)bin/Release/osx-x64/lib/netstandard2.1/Alis.*" Visible="false" PackagePath="runtimes/osx-x64/lib/netstandard2.1/"/>
 
+        
         <!-- Include all the .dll runtimes of /lib/win-arm64/lib/runtime -->
         <Content Include="$(ProjectDir)bin/Release/win-arm64/lib/net5.0/Alis.*" Visible="false" PackagePath="runtimes/win-arm64/lib/net5.0/"/>
         <Content Include="$(ProjectDir)bin/Release/win-arm64/lib/net6.0/Alis.*" Visible="false" PackagePath="runtimes/win-arm64/lib/net6.0/"/>
