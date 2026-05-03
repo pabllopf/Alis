@@ -12,9 +12,39 @@
     </PropertyGroup>
     
     
-    <PropertyGroup>
+     <PropertyGroup>
         <DefineConstants Condition="'$(RuntimeIdentifier)' != ''">$(DefineConstants);$([System.String]::Copy('$(RuntimeIdentifier)').Replace('-',''));</DefineConstants>
+
+        <DefineConstants Condition="
+                '$(RuntimeIdentifier)' != '' AND 
+                ($([System.String]::Copy('$(RuntimeIdentifier)').StartsWith('ubuntu')) == True OR
+                 $([System.String]::Copy('$(RuntimeIdentifier)').StartsWith('debian')) == True OR
+                 $([System.String]::Copy('$(RuntimeIdentifier)').StartsWith('alpine')) == True OR
+                 $([System.String]::Copy('$(RuntimeIdentifier)').StartsWith('centos')) == True OR
+                 $([System.String]::Copy('$(RuntimeIdentifier)').StartsWith('fedora')) == True OR
+                 $([System.String]::Copy('$(RuntimeIdentifier)').StartsWith('rocky')) == True OR
+                 $([System.String]::Copy('$(RuntimeIdentifier)').StartsWith('rhel')) == True OR
+                 $([System.String]::Copy('$(RuntimeIdentifier)').StartsWith('opensuse')) == True OR
+                 $([System.String]::Copy('$(RuntimeIdentifier)').StartsWith('raspbian')) == True OR
+                 $([System.String]::Copy('$(RuntimeIdentifier)').StartsWith('mariner')) == True)
+                ">$(DefineConstants);linux$([System.Text.RegularExpressions.Regex]::Match('$(RuntimeIdentifier)', '(x64|arm64|arm|x86)$').Value)</DefineConstants>
+        
         <DefineConstants Condition="'$(RuntimeIdentifier)' == ''">$([System.String]::Copy('$(NETCoreSdkRuntimeIdentifier)').Replace('-',''));</DefineConstants>
+
+        <DefineConstants Condition="
+                '$(RuntimeIdentifier)' == '' AND 
+                ($([System.String]::Copy('$(NETCoreSdkRuntimeIdentifier)').StartsWith('ubuntu')) == True OR
+                 $([System.String]::Copy('$(NETCoreSdkRuntimeIdentifier)').StartsWith('debian')) == True OR
+                 $([System.String]::Copy('$(NETCoreSdkRuntimeIdentifier)').StartsWith('alpine')) == True OR
+                 $([System.String]::Copy('$(NETCoreSdkRuntimeIdentifier)').StartsWith('centos')) == True OR
+                 $([System.String]::Copy('$(NETCoreSdkRuntimeIdentifier)').StartsWith('fedora')) == True OR
+                 $([System.String]::Copy('$(NETCoreSdkRuntimeIdentifier)').StartsWith('rocky')) == True OR
+                 $([System.String]::Copy('$(NETCoreSdkRuntimeIdentifier)').StartsWith('rhel')) == True OR
+                 $([System.String]::Copy('$(NETCoreSdkRuntimeIdentifier)').StartsWith('opensuse')) == True OR
+                 $([System.String]::Copy('$(NETCoreSdkRuntimeIdentifier)').StartsWith('raspbian')) == True OR
+                 $([System.String]::Copy('$(NETCoreSdkRuntimeIdentifier)').StartsWith('mariner')) == True)
+                ">$(DefineConstants);linux$([System.Text.RegularExpressions.Regex]::Match('$(NETCoreSdkRuntimeIdentifier)', '(x64|arm64|arm|x86)$').Value)</DefineConstants>
+
     </PropertyGroup>
 
     <ItemGroup>
