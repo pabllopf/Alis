@@ -840,27 +840,84 @@ namespace Alis.Core.Graphic.Platforms.Linux
             bool result = Initialize(width, height, title);
             if (!result)
                 return false;
-            try
+            
+            if (!string.IsNullOrEmpty(iconPath) && System.IO.File.Exists(iconPath))
             {
-                // Cargar el BMP en memoria
-                byte[] bmpData = System.IO.File.ReadAllBytes(iconPath);
-                // Extraer ancho, alto y datos de píxeles del BMP (asumiendo formato estándar)
-                int iconWidth = BitConverter.ToInt32(bmpData, 18);
-                int iconHeight = BitConverter.ToInt32(bmpData, 22);
-                int pixelOffset = BitConverter.ToInt32(bmpData, 10);
-                IntPtr iconPixmap = XCreatePixmapFromBitmapData(display, window, bmpData, iconWidth, iconHeight);
-                if (iconPixmap != IntPtr.Zero)
-                {
-                    XWMHints hints = new XWMHints {flags = 2, icon_pixmap = iconPixmap};
-                    XSetWMHints(display, window, ref hints);
-                }
+                SetWindowIconSafe(iconPath);
             }
-            catch (Exception ex)
+            else if (!string.IsNullOrEmpty(iconPath))
             {
-                throw new Exception($"[OnInit] Error al establecer el icono de la ventana: {ex.Message}");
+                Logger.Warning($"[OnInit] Icon file not found: {iconPath}");
             }
 
             return true;
+        }
+        
+        /// <summary>
+        /// Safely attempts to set the window icon from a BMP file
+        /// </summary>
+        private void SetWindowIconSafe(string iconPath)
+        {
+            try
+            {
+                byte[] bmpData = System.IO.File.ReadAllBytes(iconPath);
+                
+                // Validate BMP header (must start with "BM")
+                if (bmpData.Length < 26 || bmpData[0] != 0x42 || bmpData[1] != 0x4D)
+                {
+                    Logger.Warning("[SetWindowIcon] Invalid BMP file format (missing BM signature)");
+                    return;
+                }
+                
+                // Extract dimensions from BMP header (little-endian)
+                int iconWidth = BitConverter.ToInt32(bmpData, 18);
+                int iconHeight = BitConverter.ToInt32(bmpData, 22);
+                
+                // Validate dimensions (reasonable limits for icons)
+                if (iconWidth <= 0 || iconWidth > 512 || iconHeight <= 0 || iconHeight > 512)
+                {
+                    Logger.Warning($"[SetWindowIcon] BMP dimensions out of valid range: {iconWidth}x{iconHeight}");
+                    return;
+                }
+                
+                int pixelOffset = BitConverter.ToInt32(bmpData, 10);
+                if (pixelOffset <= 0 || pixelOffset >= bmpData.Length)
+                {
+                    Logger.Warning("[SetWindowIcon] Invalid pixel offset in BMP");
+                    return;
+                }
+                
+                // Extract only the pixel data (skip BMP headers)
+                int pixelDataLength = bmpData.Length - pixelOffset;
+                byte[] pixelData = new byte[pixelDataLength];
+                System.Array.Copy(bmpData, pixelOffset, pixelData, 0, pixelDataLength);
+                
+                // Try to create pixmap with extracted pixel data
+                IntPtr iconPixmap = XCreatePixmapFromBitmapData(display, window, pixelData, iconWidth, iconHeight);
+                
+                if (iconPixmap != IntPtr.Zero)
+                {
+                    XWMHints hints = new XWMHints { flags = 2, icon_pixmap = iconPixmap };
+                    XSetWMHints(display, window, ref hints);
+                    Logger.Info($"[SetWindowIcon] Icon loaded successfully: {iconWidth}x{iconHeight}");
+                }
+                else
+                {
+                    Logger.Warning("[SetWindowIcon] Failed to create pixmap from BMP data");
+                }
+            }
+            catch (System.IO.FileNotFoundException)
+            {
+                Logger.Warning($"[SetWindowIcon] Icon file not found: {iconPath}");
+            }
+            catch (System.IO.IOException ex)
+            {
+                Logger.Warning($"[SetWindowIcon] Error reading icon file: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Logger.Warning($"[SetWindowIcon] Error setting window icon: {ex.Message}");
+            }
         }
 
         /// <summary>
@@ -945,21 +1002,14 @@ namespace Alis.Core.Graphic.Platforms.Linux
         {
             if (display == IntPtr.Zero || window == IntPtr.Zero)
                 return;
-            try
+            
+            if (!string.IsNullOrEmpty(iconPath) && System.IO.File.Exists(iconPath))
             {
-                byte[] bmpData = System.IO.File.ReadAllBytes(iconPath);
-                int iconWidth = BitConverter.ToInt32(bmpData, 18);
-                int iconHeight = BitConverter.ToInt32(bmpData, 22);
-                IntPtr iconPixmap = XCreatePixmapFromBitmapData(display, window, bmpData, iconWidth, iconHeight);
-                if (iconPixmap != IntPtr.Zero)
-                {
-                    XWMHints hints = new XWMHints {flags = 2, icon_pixmap = iconPixmap};
-                    XSetWMHints(display, window, ref hints);
-                }
+                SetWindowIconSafe(iconPath);
             }
-            catch (Exception ex)
+            else if (!string.IsNullOrEmpty(iconPath))
             {
-                throw new Exception($"[SetWindowIcon] Error al establecer el icono de la ventana: {ex.Message}");
+                Logger.Warning($"[SetWindowIcon] Icon file not found: {iconPath}");
             }
         }
 
