@@ -29,138 +29,222 @@
 
 #if linuxx64 || linuxx86 || linuxarm64 || linuxarm || linux
 using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Logging;
 using System.Diagnostics.CodeAnalysis;
-
+using System.Runtime.InteropServices;
 
 namespace Alis.Core.Graphic.Platforms.Linux
 {
     /// <summary>
-    /// The event
+    /// Represents the native X11 event union used by <c>XNextEvent</c>.
     /// </summary>
+    [StructLayout(LayoutKind.Explicit, Size = 192)]
     internal struct XEvent
     {
         /// <summary>
-        /// The type
+        /// The event type.
         /// </summary>
+        [FieldOffset(0)]
         public int type;
 
         /// <summary>
-        /// The pad
+        /// Shared event header.
         /// </summary>
-        public IntPtr pad1;
+        [FieldOffset(0)]
+        public XAnyEvent xany;
 
         /// <summary>
-        /// The pad
+        /// Keyboard event payload.
         /// </summary>
-        public IntPtr pad2;
+        [FieldOffset(0)]
+        public XKeyEvent xkey;
 
         /// <summary>
-        /// The pad
+        /// Mouse button event payload.
         /// </summary>
-        public IntPtr pad3;
+        [FieldOffset(0)]
+        public XButtonEvent xbutton;
 
         /// <summary>
-        /// The pad
+        /// Mouse motion event payload.
         /// </summary>
-        public IntPtr pad4;
+        [FieldOffset(0)]
+        public XMotionEvent xmotion;
 
         /// <summary>
-        /// The pad
+        /// Window configuration event payload.
         /// </summary>
-        public IntPtr pad5;
+        [FieldOffset(0)]
+        public XConfigureEvent xconfigure;
 
         /// <summary>
-        /// The pad
+        /// Window focus event payload.
         /// </summary>
-        public IntPtr pad6;
+        [FieldOffset(0)]
+        public XFocusChangeEvent xfocus;
 
         /// <summary>
-        /// The pad
+        /// Window visibility event payload.
         /// </summary>
-        public IntPtr pad7;
+        [FieldOffset(0)]
+        public XVisibilityEvent xvisibility;
 
         /// <summary>
-        /// The pad
+        /// Client-message event payload.
         /// </summary>
-        public IntPtr pad8;
+        [FieldOffset(0)]
+        public XClientMessageEvent xclient;
+    }
 
-        /// <summary>
-        /// The pad
-        /// </summary>
-        public IntPtr pad9;
+    /// <summary>
+    /// Native X11 event header shared by all event types.
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    internal struct XAnyEvent
+    {
+        public int type;
+        public UIntPtr serial;
+        public int send_event;
+        public IntPtr display;
+        public UIntPtr window;
+    }
 
-        /// <summary>
-        /// The pad 10
-        /// </summary>
-        public IntPtr pad10;
+    /// <summary>
+    /// Native X11 keyboard event.
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    internal struct XKeyEvent
+    {
+        public int type;
+        public UIntPtr serial;
+        public int send_event;
+        public IntPtr display;
+        public UIntPtr window;
+        public UIntPtr root;
+        public UIntPtr subwindow;
+        public UIntPtr time;
+        public int x;
+        public int y;
+        public int x_root;
+        public int y_root;
+        public uint state;
+        public uint keycode;
+        public int same_screen;
+    }
 
-        /// <summary>
-        /// The pad 11
-        /// </summary>
-        public IntPtr pad11;
+    /// <summary>
+    /// Native X11 mouse button event.
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    internal struct XButtonEvent
+    {
+        public int type;
+        public UIntPtr serial;
+        public int send_event;
+        public IntPtr display;
+        public UIntPtr window;
+        public UIntPtr root;
+        public UIntPtr subwindow;
+        public UIntPtr time;
+        public int x;
+        public int y;
+        public int x_root;
+        public int y_root;
+        public uint state;
+        public uint button;
+        public int same_screen;
+    }
 
-        /// <summary>
-        /// The pad 12
-        /// </summary>
-        public IntPtr pad12;
+    /// <summary>
+    /// Native X11 mouse motion event.
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    internal struct XMotionEvent
+    {
+        public int type;
+        public UIntPtr serial;
+        public int send_event;
+        public IntPtr display;
+        public UIntPtr window;
+        public UIntPtr root;
+        public UIntPtr subwindow;
+        public UIntPtr time;
+        public int x;
+        public int y;
+        public int x_root;
+        public int y_root;
+        public uint state;
+        public byte is_hint;
+        public int same_screen;
+    }
 
-        /// <summary>
-        /// The pad 13
-        /// </summary>
-        public IntPtr pad13;
+    /// <summary>
+    /// Native X11 window-configuration event.
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    internal struct XConfigureEvent
+    {
+        public int type;
+        public UIntPtr serial;
+        public int send_event;
+        public IntPtr display;
+        public UIntPtr event_window;
+        public UIntPtr window;
+        public int x;
+        public int y;
+        public int width;
+        public int height;
+        public int border_width;
+        public UIntPtr above;
+        public int override_redirect;
+    }
 
-        /// <summary>
-        /// The pad 14
-        /// </summary>
-        public IntPtr pad14;
+    /// <summary>
+    /// Native X11 focus-change event.
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    internal struct XFocusChangeEvent
+    {
+        public int type;
+        public UIntPtr serial;
+        public int send_event;
+        public IntPtr display;
+        public UIntPtr window;
+        public int mode;
+        public int detail;
+    }
 
-        /// <summary>
-        /// The pad 15
-        /// </summary>
-        public IntPtr pad15;
+    /// <summary>
+    /// Native X11 visibility event.
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    internal struct XVisibilityEvent
+    {
+        public int type;
+        public UIntPtr serial;
+        public int send_event;
+        public IntPtr display;
+        public UIntPtr window;
+        public int state;
+    }
 
-        /// <summary>
-        /// The pad 16
-        /// </summary>
-        public IntPtr pad16;
-
-        /// <summary>
-        /// The pad 17
-        /// </summary>
-        public IntPtr pad17;
-
-        /// <summary>
-        /// The pad 18
-        /// </summary>
-        public IntPtr pad18;
-
-        /// <summary>
-        /// The pad 19
-        /// </summary>
-        public IntPtr pad19;
-
-        /// <summary>
-        /// The pad 20
-        /// </summary>
-        public IntPtr pad20;
-
-        /// <summary>
-        /// The pad 21
-        /// </summary>
-        public IntPtr pad21;
-
-        /// <summary>
-        /// The pad 22
-        /// </summary>
-        public IntPtr pad22;
-
-        /// <summary>
-        /// The pad 23
-        /// </summary>
-        public IntPtr pad23;
+    /// <summary>
+    /// Native X11 client-message event.
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    internal struct XClientMessageEvent
+    {
+        public int type;
+        public UIntPtr serial;
+        public int send_event;
+        public IntPtr display;
+        public UIntPtr window;
+        public UIntPtr message_type;
+        public int format;
+        public IntPtr data0;
+        public IntPtr data1;
+        public IntPtr data2;
+        public IntPtr data3;
+        public IntPtr data4;
     }
 }
 
