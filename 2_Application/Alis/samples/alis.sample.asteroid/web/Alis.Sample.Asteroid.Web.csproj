@@ -6,6 +6,8 @@
         <RuntimeIdentifier>browser-wasm</RuntimeIdentifier>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
           <NoAutoGenerateFiles>false</NoAutoGenerateFiles>
+          <WasmAllowUndefinedSymbols>true</WasmAllowUndefinedSymbols>
+          <EmscriptenLinkingFlags>-sWASM_ASYNC_COMPILATION=0 -sALLOW_UNIMPLEMENTED_SYSCALLS=1</EmscriptenLinkingFlags>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -36,10 +38,72 @@
             Overwrite="true" />
 
         <WriteLinesToFile
-            Condition="'$(IsBrowserWasm)' == 'true'"
+            Condition="'$(IsBrowserWasm)' == 'true' AND !Exists('$(MSBuildProjectDirectory)/Native/emscripten.c')"
             File="$(MSBuildProjectDirectory)/Native/emscripten.c"
-            Lines='#include "emscripten.h"'
-            Overwrite="true" />
+            Lines='#include &lt;emscripten.h&gt;
+// Keyboard callbacks
+extern void registerKeyboardCallbacks(void* onKeyDown, void* onKeyUp, void* onCharInput);
+// Mouse callbacks  
+extern void registerMouseCallbacks(void* onMouseMove, void* onMouseDown, void* onMouseUp, void* onMouseWheel);
+// Gamepad callbacks
+extern void registerGamepadCallbacks(void* onGamepadConnect, void* onGamepadDisconnect);
+// Window callbacks
+extern void registerWindowCallbacks(void* onWindowResize, void* onWindowClose, void* onWindowFocus);
+// Gamepad functions
+extern void* getConnectedGamepads(void);
+extern void* getGamepadAxes(int gamepadIndex);
+extern void* getGamepadButtons(int gamepadIndex);
+// Array utilities
+extern int getArrayLength(void* arrayPtr);
+extern int getArrayIntElement(void* arrayPtr, int index);
+extern float getArrayFloatElement(void* arrayPtr, int index);
+extern int getArrayBoolElement(void* arrayPtr, int index);
+extern void freeArray(void* arrayPtr);
+// Canvas functions
+extern void showCanvas(void);
+extern void hideCanvas(void);
+extern void setWindowTitle(const char* title);
+extern void setCanvasSize(int width, int height);
+extern void setWindowIcon(const char* iconPath);
+// Window position
+extern int getWindowPositionX(void);
+extern int getWindowPositionY(void);
+extern float getDevicePixelRatio(void);
+// Fullscreen
+extern int requestFullscreen(void);
+extern int exitFullscreen(void);
+extern int isFullscreenEnabled(void);
+// Pointer lock
+extern int lockPointer(void);
+extern int unlockPointer(void);
+extern int isPointerLocked(void);
+// Gamepad vibration
+extern int vibrateGamepad(int gamepadIndex, float leftMotor, float rightMotor, float duration);
+// System time
+extern double getSystemTimeMs(void);
+// File operations
+extern void* openFileDialog(const char* mimeTypes);
+extern int saveFile(const char* filename, unsigned char* data, int dataLength);
+// Clipboard
+extern int copyToClipboard(const char* text);
+extern void* pasteFromClipboard(void);
+// Dialogs
+extern void showAlert(const char* message);
+extern int showConfirm(const char* message);
+// System info
+extern void* getLanguage(void);
+extern int isOnline(void);
+extern float getBatteryLevel(void);
+extern int isCharging(void);
+extern int getOrientation(void);
+// Permissions
+extern int requestCameraPermission(void);
+extern int requestMicrophonePermission(void);
+// Console
+extern void consoleLog(const char* message);
+extern void consoleWarn(const char* message);
+extern void consoleError(const char* message);'
+            Overwrite="false" />
 
         <WriteLinesToFile
             Condition="'$(IsBrowserWasm)' == 'true'"
@@ -920,9 +984,20 @@ namespace $(RootNamespace)
                             CopyToOutputDirectory="Never"
                             CopyToPublishDirectory="Never"
                             Visible="false" />
-       </ItemGroup>
+        </ItemGroup>
+        <ItemGroup>
+          <ClCompile Include="Native\emscripten.c" />
+          <ClCompile Include="Native\emscripten_web.c" />
+          <ClCompile Include="Native\libEGL.c" />
+          <ClCompile Include="Native\openal32.c" />
+        </ItemGroup>
+        <ItemGroup>
+          <None Include="emscripten_web_bridge.js" CopyToPublishDirectory="PreserveNewest" />
+          <None Include="index.html" CopyToPublishDirectory="PreserveNewest" />
+          <None Include="main.js" CopyToPublishDirectory="PreserveNewest" />
+        </ItemGroup>
 
-   
+    
 
 
 </Project>
