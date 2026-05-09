@@ -43,27 +43,81 @@ namespace Alis.Core.Graphic.Platforms.Web
     public class WebAssemblyPlatform : INativePlatform
     {
         // Window and rendering state
+        /// <summary>
+        /// The window width
+        /// </summary>
         private int _windowWidth;
+        /// <summary>
+        /// The window height
+        /// </summary>
         private int _windowHeight;
+        /// <summary>
+        /// The window title
+        /// </summary>
         private string _windowTitle;
+        /// <summary>
+        /// The is window visible
+        /// </summary>
         private bool _isWindowVisible;
+        /// <summary>
+        /// The window should close
+        /// </summary>
         private bool _windowShouldClose;
 
         // EGL context state
+        /// <summary>
+        /// The zero
+        /// </summary>
         private IntPtr _eglDisplay = IntPtr.Zero;
+        /// <summary>
+        /// The zero
+        /// </summary>
         private IntPtr _eglContext = IntPtr.Zero;
+        /// <summary>
+        /// The zero
+        /// </summary>
         private IntPtr _eglSurface = IntPtr.Zero;
+        /// <summary>
+        /// The zero
+        /// </summary>
         private IntPtr _eglConfig = IntPtr.Zero;
 
         // Input state
+        /// <summary>
+        /// The key states
+        /// </summary>
         private Dictionary<ConsoleKey, bool> _keyStates;
+        /// <summary>
+        /// The key pressed queue
+        /// </summary>
         private Queue<ConsoleKey> _keyPressedQueue;
+        /// <summary>
+        /// The input character builder
+        /// </summary>
         private StringBuilder _inputCharacterBuilder;
+        /// <summary>
+        /// The mouse
+        /// </summary>
         private int _mouseX;
+        /// <summary>
+        /// The mouse
+        /// </summary>
         private int _mouseY;
+        /// <summary>
+        /// The mouse buttons
+        /// </summary>
         private bool[] _mouseButtons; // [left, right, middle, aux1, aux2]
+        /// <summary>
+        /// The mouse wheel delta
+        /// </summary>
         private float _mouseWheelDelta;
+        /// <summary>
+        /// The gamepad states
+        /// </summary>
         private Dictionary<int, GamepadState> _gamepadStates;
+        /// <summary>
+        /// The is initialized
+        /// </summary>
         private bool _isInitialized;
 
         /// <summary>
@@ -529,24 +583,39 @@ namespace Alis.Core.Graphic.Platforms.Web
             }
         }
 
+        /// <summary>
+        /// Shows the window
+        /// </summary>
         public void ShowWindow()
         {
             _isWindowVisible = true;
             EmscriptenWeb.ShowCanvas();
         }
 
+        /// <summary>
+        /// Hides the window
+        /// </summary>
         public void HideWindow()
         {
             _isWindowVisible = false;
             EmscriptenWeb.HideCanvas();
         }
 
+        /// <summary>
+        /// Sets the title using the specified title
+        /// </summary>
+        /// <param name="title">The title</param>
         public void SetTitle(string title)
         {
             _windowTitle = title;
             EmscriptenWeb.SetWindowTitle(title);
         }
 
+        /// <summary>
+        /// Sets the size using the specified width
+        /// </summary>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
         public void SetSize(int width, int height)
         {
             _windowWidth = width;
@@ -554,6 +623,9 @@ namespace Alis.Core.Graphic.Platforms.Web
             EmscriptenWeb.SetCanvasSize(width, height);
         }
 
+        /// <summary>
+        /// Makes the context current
+        /// </summary>
         public void MakeContextCurrent()
         {
             if (_eglDisplay != IntPtr.Zero && _eglSurface != IntPtr.Zero && _eglContext != IntPtr.Zero)
@@ -562,6 +634,9 @@ namespace Alis.Core.Graphic.Platforms.Web
             }
         }
 
+        /// <summary>
+        /// Swaps the buffers
+        /// </summary>
         public void SwapBuffers()
         {
             if (_eglDisplay != IntPtr.Zero && _eglSurface != IntPtr.Zero)
@@ -570,11 +645,19 @@ namespace Alis.Core.Graphic.Platforms.Web
             }
         }
 
+        /// <summary>
+        /// Ises the window visible
+        /// </summary>
+        /// <returns>The is window visible</returns>
         public bool IsWindowVisible()
         {
             return _isWindowVisible;
         }
 
+        /// <summary>
+        /// Polls the events
+        /// </summary>
+        /// <returns>The bool</returns>
         public bool PollEvents()
         {
             UpdateGamepadStates();
@@ -582,6 +665,9 @@ namespace Alis.Core.Graphic.Platforms.Web
             return !_windowShouldClose;
         }
 
+        /// <summary>
+        /// Cleanups this instance
+        /// </summary>
         public void Cleanup()
         {
             if (!_isInitialized)
@@ -614,21 +700,39 @@ namespace Alis.Core.Graphic.Platforms.Web
             _gamepadStates.Clear();
         }
 
+        /// <summary>
+        /// Gets the window width
+        /// </summary>
+        /// <returns>The window width</returns>
         public int GetWindowWidth()
         {
             return _windowWidth;
         }
 
+        /// <summary>
+        /// Gets the window height
+        /// </summary>
+        /// <returns>The window height</returns>
         public int GetWindowHeight()
         {
             return _windowHeight;
         }
 
+        /// <summary>
+        /// Gets the proc address using the specified proc name
+        /// </summary>
+        /// <param name="procName">The proc name</param>
+        /// <returns>The int ptr</returns>
         public IntPtr GetProcAddress(string procName)
         {
             return EGL.GetProcAddress(procName);
         }
 
+        /// <summary>
+        /// Tries the get last key pressed using the specified key
+        /// </summary>
+        /// <param name="key">The key</param>
+        /// <returns>The bool</returns>
         public bool TryGetLastKeyPressed(out ConsoleKey key)
         {
             if (_keyPressedQueue.Count > 0)
@@ -641,6 +745,11 @@ namespace Alis.Core.Graphic.Platforms.Web
             return false;
         }
 
+        /// <summary>
+        /// Ises the key down using the specified console key
+        /// </summary>
+        /// <param name="consoleKey">The console key</param>
+        /// <returns>The bool</returns>
         public bool IsKeyDown(ConsoleKey consoleKey)
         {
             if (_keyStates.TryGetValue(consoleKey, out bool isDown))
@@ -651,6 +760,10 @@ namespace Alis.Core.Graphic.Platforms.Web
             return false;
         }
 
+        /// <summary>
+        /// Sets the window icon using the specified icon path
+        /// </summary>
+        /// <param name="iconPath">The icon path</param>
         public void SetWindowIcon(string iconPath)
         {
             // WebAssembly context typically doesn't support traditional file system access
@@ -665,6 +778,12 @@ namespace Alis.Core.Graphic.Platforms.Web
             }
         }
 
+        /// <summary>
+        /// Gets the mouse state using the specified x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="buttons">The buttons</param>
         public void GetMouseState(out int x, out int y, out bool[] buttons)
         {
             x = _mouseX;
@@ -672,11 +791,20 @@ namespace Alis.Core.Graphic.Platforms.Web
             buttons = (bool[])_mouseButtons.Clone();
         }
 
+        /// <summary>
+        /// Gets the mouse wheel
+        /// </summary>
+        /// <returns>The mouse wheel delta</returns>
         public float GetMouseWheel()
         {
             return _mouseWheelDelta;
         }
 
+        /// <summary>
+        /// Tries the get last input characters using the specified chars
+        /// </summary>
+        /// <param name="chars">The chars</param>
+        /// <returns>The bool</returns>
         public bool TryGetLastInputCharacters(out string chars)
         {
             if (_inputCharacterBuilder.Length > 0)
@@ -690,16 +818,33 @@ namespace Alis.Core.Graphic.Platforms.Web
             return false;
         }
 
+        /// <summary>
+        /// Gets the window position x
+        /// </summary>
+        /// <returns>The int</returns>
         public int GetWindowPositionX()
         {
             return EmscriptenWeb.GetWindowPositionX();
         }
 
+        /// <summary>
+        /// Gets the window position y
+        /// </summary>
+        /// <returns>The int</returns>
         public int GetWindowPositionY()
         {
             return EmscriptenWeb.GetWindowPositionY();
         }
 
+        /// <summary>
+        /// Gets the window metrics using the specified win x
+        /// </summary>
+        /// <param name="winX">The win</param>
+        /// <param name="winY">The win</param>
+        /// <param name="winW">The win</param>
+        /// <param name="winH">The win</param>
+        /// <param name="fbW">The fb</param>
+        /// <param name="fbH">The fb</param>
         public void GetWindowMetrics(out int winX, out int winY, out int winW, out int winH, out int fbW, out int fbH)
         {
             winX = GetWindowPositionX();
@@ -713,6 +858,11 @@ namespace Alis.Core.Graphic.Platforms.Web
             fbH = (int)(_windowHeight * devicePixelRatio);
         }
 
+        /// <summary>
+        /// Gets the mouse position in view using the specified x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
         public void GetMousePositionInView(out float x, out float y)
         {
             x = _mouseX;
@@ -744,33 +894,63 @@ namespace Alis.Core.Graphic.Platforms.Web
         }
 
         // Delegates for JavaScript callbacks
+        /// <summary>
+        /// The key event delegate
+        /// </summary>
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         private delegate void KeyEventDelegate(int keyCode, int location);
 
+        /// <summary>
+        /// The key char delegate
+        /// </summary>
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         private delegate void KeyCharDelegate(uint charCode);
 
+        /// <summary>
+        /// The mouse move delegate
+        /// </summary>
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         private delegate void MouseMoveDelegate(int x, int y, int clientX, int clientY);
 
+        /// <summary>
+        /// The mouse button delegate
+        /// </summary>
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         private delegate void MouseButtonDelegate(int button, int x, int y, int clientX, int clientY);
 
+        /// <summary>
+        /// The mouse wheel delegate
+        /// </summary>
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         private delegate void MouseWheelDelegate(int deltaX, int deltaY);
 
+        /// <summary>
+        /// The gamepad connect delegate
+        /// </summary>
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         private delegate void GamepadConnectDelegate(int gamepadIndex);
 
+        /// <summary>
+        /// The gamepad disconnect delegate
+        /// </summary>
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         private delegate void GamepadDisconnectDelegate(int gamepadIndex);
 
+        /// <summary>
+        /// The window resize delegate
+        /// </summary>
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         private delegate void WindowResizeDelegate(int width, int height);
 
+        /// <summary>
+        /// The window close delegate
+        /// </summary>
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         private delegate void WindowCloseDelegate();
 
+        /// <summary>
+        /// The window focus delegate
+        /// </summary>
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         private delegate void WindowFocusDelegate(bool focused);
     }

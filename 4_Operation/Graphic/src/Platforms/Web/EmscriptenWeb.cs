@@ -40,6 +40,9 @@ namespace Alis.Core.Graphic.Platforms.Web
     /// </summary>
     public static class EmscriptenWeb
     {
+        /// <summary>
+        /// The emscripten lib
+        /// </summary>
         private const string EmscriptenLib = "emscripten";
 
         /// <summary>

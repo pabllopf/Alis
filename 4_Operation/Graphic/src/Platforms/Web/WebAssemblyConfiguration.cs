@@ -37,6 +37,9 @@ namespace Alis.Core.Graphic.Platforms.Web
     /// </summary>
     public class WebAssemblyConfigurationBuilder
     {
+        /// <summary>
+        /// The configuration
+        /// </summary>
         private readonly WebAssemblyConfiguration _configuration;
 
         /// <summary>

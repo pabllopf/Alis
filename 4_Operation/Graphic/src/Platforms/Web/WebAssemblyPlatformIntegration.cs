@@ -98,6 +98,9 @@ namespace Alis.Core.Graphic.Platforms.Web
     /// </summary>
     public class WebAssemblyPlatformIntegration
     {
+        /// <summary>
+        /// The web assembly platform
+        /// </summary>
         private static readonly Dictionary<string, Type> _registeredPlatforms = new Dictionary<string, Type>
         {
             { "WebAssembly", typeof(WebAssemblyPlatform) },
@@ -215,15 +218,42 @@ namespace Alis.Core.Graphic.Platforms.Web
     /// </summary>
     public class MultiplatformGameEngine : IDisposable
     {
+        /// <summary>
+        /// The game context
+        /// </summary>
         private readonly WebAssemblyGameContext _gameContext;
+        /// <summary>
+        /// The input manager
+        /// </summary>
         private readonly InputManager _inputManager;
+        /// <summary>
+        /// The display manager
+        /// </summary>
         private readonly DisplayManager _displayManager;
+        /// <summary>
+        /// The disposed
+        /// </summary>
         private bool _disposed;
 
+        /// <summary>
+        /// Gets the value of the game context
+        /// </summary>
         public WebAssemblyGameContext GameContext => _gameContext;
+        /// <summary>
+        /// Gets the value of the input
+        /// </summary>
         public InputManager Input => _inputManager;
+        /// <summary>
+        /// Gets the value of the display
+        /// </summary>
         public DisplayManager Display => _displayManager;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MultiplatformGameEngine"/> class
+        /// </summary>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        /// <param name="title">The title</param>
         public MultiplatformGameEngine(int width, int height, string title)
         {
             _gameContext = WebAssemblyGameContext.Create(width, height, title);
@@ -232,11 +262,18 @@ namespace Alis.Core.Graphic.Platforms.Web
             _disposed = false;
         }
 
+        /// <summary>
+        /// Runs the update callback
+        /// </summary>
+        /// <param name="updateCallback">The update callback</param>
         public void Run(Action<MultiplatformGameEngine> updateCallback)
         {
             _gameContext.Run((context) => updateCallback?.Invoke(this));
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             if (!_disposed)
@@ -253,13 +290,26 @@ namespace Alis.Core.Graphic.Platforms.Web
     /// </summary>
     public class InputManager
     {
+        /// <summary>
+        /// The game context
+        /// </summary>
         private readonly WebAssemblyGameContext _gameContext;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="InputManager"/> class
+        /// </summary>
+        /// <param name="gameContext">The game context</param>
         public InputManager(WebAssemblyGameContext gameContext)
         {
             _gameContext = gameContext;
         }
 
+        /// <summary>
+        /// Gets the movement input using the specified x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <returns>The bool</returns>
         public bool GetMovementInput(out float x, out float y)
         {
             x = 0;
@@ -290,6 +340,10 @@ namespace Alis.Core.Graphic.Platforms.Web
             return mag > 0;
         }
 
+        /// <summary>
+        /// Ises the jump pressed
+        /// </summary>
+        /// <returns>The bool</returns>
         public bool IsJumpPressed()
         {
             bool keyboard = _gameContext.IsKeyDown(ConsoleKey.Spacebar);
@@ -297,6 +351,10 @@ namespace Alis.Core.Graphic.Platforms.Web
             return keyboard || gamepad;
         }
 
+        /// <summary>
+        /// Ises the attack pressed
+        /// </summary>
+        /// <returns>The bool</returns>
         public bool IsAttackPressed()
         {
             bool keyboard = _gameContext.IsKeyDown(ConsoleKey.E);
@@ -304,6 +362,11 @@ namespace Alis.Core.Graphic.Platforms.Web
             return keyboard || gamepad;
         }
 
+        /// <summary>
+        /// Gets the camera input using the specified pitch
+        /// </summary>
+        /// <param name="pitch">The pitch</param>
+        /// <param name="yaw">The yaw</param>
         public void GetCameraInput(out float pitch, out float yaw)
         {
             pitch = 0;
@@ -325,18 +388,45 @@ namespace Alis.Core.Graphic.Platforms.Web
     /// </summary>
     public class DisplayManager
     {
+        /// <summary>
+        /// The game context
+        /// </summary>
         private readonly WebAssemblyGameContext _gameContext;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DisplayManager"/> class
+        /// </summary>
+        /// <param name="gameContext">The game context</param>
         public DisplayManager(WebAssemblyGameContext gameContext)
         {
             _gameContext = gameContext;
         }
 
+        /// <summary>
+        /// Gets the width
+        /// </summary>
+        /// <returns>The int</returns>
         public int GetWidth() => _gameContext.GetWidth();
+        /// <summary>
+        /// Gets the height
+        /// </summary>
+        /// <returns>The int</returns>
         public int GetHeight() => _gameContext.GetHeight();
+        /// <summary>
+        /// Gets the aspect ratio
+        /// </summary>
+        /// <returns>The float</returns>
         public float GetAspectRatio() => _gameContext.GetAspectRatio();
+        /// <summary>
+        /// Ises the fullscreen
+        /// </summary>
+        /// <returns>The bool</returns>
         public bool IsFullscreen() => _gameContext.IsFullscreen();
 
+        /// <summary>
+        /// Sets the fullscreen using the specified enabled
+        /// </summary>
+        /// <param name="enabled">The enabled</param>
         public void SetFullscreen(bool enabled)
         {
             if (enabled)
@@ -345,8 +435,20 @@ namespace Alis.Core.Graphic.Platforms.Web
                 _gameContext.ExitFullscreen();
         }
 
+        /// <summary>
+        /// Toggles the fullscreen
+        /// </summary>
         public void ToggleFullscreen() => _gameContext.ToggleFullscreen();
+        /// <summary>
+        /// Sets the size using the specified width
+        /// </summary>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
         public void SetSize(int width, int height) => _gameContext.SetSize(width, height);
+        /// <summary>
+        /// Sets the title using the specified title
+        /// </summary>
+        /// <param name="title">The title</param>
         public void SetTitle(string title) => _gameContext.SetTitle(title);
     }
 
@@ -355,26 +457,70 @@ namespace Alis.Core.Graphic.Platforms.Web
     /// </summary>
     public static class SystemInfo
     {
+        /// <summary>
+        /// Gets the platform name
+        /// </summary>
+        /// <returns>The string</returns>
         public static string GetPlatformName() => "WebAssembly";
 
+        /// <summary>
+        /// Ises the online
+        /// </summary>
+        /// <returns>The bool</returns>
         public static bool IsOnline() => EmscriptenWeb.IsOnline();
 
+        /// <summary>
+        /// Gets the language
+        /// </summary>
+        /// <returns>The string</returns>
         public static string GetLanguage() => EmscriptenWeb.GetLanguage();
 
+        /// <summary>
+        /// Gets the device pixel ratio
+        /// </summary>
+        /// <returns>The float</returns>
         public static float GetDevicePixelRatio() => EmscriptenWeb.GetDevicePixelRatio();
 
+        /// <summary>
+        /// Gets the battery level
+        /// </summary>
+        /// <returns>The float</returns>
         public static float GetBatteryLevel() => EmscriptenWeb.GetBatteryLevel();
 
+        /// <summary>
+        /// Ises the charging
+        /// </summary>
+        /// <returns>The bool</returns>
         public static bool IsCharging() => EmscriptenWeb.IsCharging();
 
+        /// <summary>
+        /// Gets the screen orientation
+        /// </summary>
+        /// <returns>The int</returns>
         public static int GetScreenOrientation() => EmscriptenWeb.GetOrientation();
 
+        /// <summary>
+        /// Gets the system time ms
+        /// </summary>
+        /// <returns>The double</returns>
         public static double GetSystemTimeMs() => EmscriptenWeb.GetSystemTimeMs();
 
+        /// <summary>
+        /// Logs the to console using the specified message
+        /// </summary>
+        /// <param name="message">The message</param>
         public static void LogToConsole(string message) => EmscriptenWeb.ConsoleLog(message);
 
+        /// <summary>
+        /// Warns the to console using the specified message
+        /// </summary>
+        /// <param name="message">The message</param>
         public static void WarnToConsole(string message) => EmscriptenWeb.ConsoleWarn(message);
 
+        /// <summary>
+        /// Errors the to console using the specified message
+        /// </summary>
+        /// <param name="message">The message</param>
         public static void ErrorToConsole(string message) => EmscriptenWeb.ConsoleError(message);
     }
 

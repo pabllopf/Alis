@@ -37,12 +37,33 @@ namespace Alis.Core.Graphic.Platforms.Web
     /// </summary>
     public class WebAssemblyGameContext : IDisposable
     {
+        /// <summary>
+        /// The platform
+        /// </summary>
         private readonly WebAssemblyPlatform _platform;
+        /// <summary>
+        /// The input manager
+        /// </summary>
         private readonly WebAssemblyInputManager _inputManager;
+        /// <summary>
+        /// The input context
+        /// </summary>
         private readonly WebAssemblyInputContext _inputContext;
+        /// <summary>
+        /// The display manager
+        /// </summary>
         private readonly WebAssemblyDisplayManager _displayManager;
+        /// <summary>
+        /// The configuration
+        /// </summary>
         private readonly WebAssemblyConfiguration _configuration;
+        /// <summary>
+        /// The is running
+        /// </summary>
         private bool _isRunning;
+        /// <summary>
+        /// The disposed
+        /// </summary>
         private bool _disposed;
 
         /// <summary>

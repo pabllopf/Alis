@@ -38,12 +38,33 @@ namespace Alis.Core.Graphic.Platforms.Web
     /// </summary>
     public class WebAssemblyInputManager
     {
+        /// <summary>
+        /// The platform
+        /// </summary>
         private readonly WebAssemblyPlatform _platform;
+        /// <summary>
+        /// The key bindings
+        /// </summary>
         private Dictionary<string, KeyBinding> _keyBindings;
+        /// <summary>
+        /// The previous gamepad states
+        /// </summary>
         private Dictionary<int, GamepadInputState> _previousGamepadStates;
+        /// <summary>
+        /// The last mouse
+        /// </summary>
         private int _lastMouseX;
+        /// <summary>
+        /// The last mouse
+        /// </summary>
         private int _lastMouseY;
+        /// <summary>
+        /// The last mouse wheel delta
+        /// </summary>
         private float _lastMouseWheelDelta;
+        /// <summary>
+        /// The touch points
+        /// </summary>
         private Dictionary<int, TouchPoint> _touchPoints;
 
         /// <summary>
@@ -320,33 +341,60 @@ namespace Alis.Core.Graphic.Platforms.Web
     /// </summary>
     public class KeyBinding
     {
+        /// <summary>
+        /// The keys
+        /// </summary>
         private HashSet<ConsoleKey> _keys;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="KeyBinding"/> class
+        /// </summary>
         public KeyBinding()
         {
             _keys = new HashSet<ConsoleKey>();
         }
 
+        /// <summary>
+        /// Adds the key using the specified key
+        /// </summary>
+        /// <param name="key">The key</param>
         public void AddKey(ConsoleKey key)
         {
             _keys.Add(key);
         }
 
+        /// <summary>
+        /// Removes the key using the specified key
+        /// </summary>
+        /// <param name="key">The key</param>
         public void RemoveKey(ConsoleKey key)
         {
             _keys.Remove(key);
         }
 
+        /// <summary>
+        /// Containses the key using the specified key
+        /// </summary>
+        /// <param name="key">The key</param>
+        /// <returns>The bool</returns>
         public bool ContainsKey(ConsoleKey key)
         {
             return _keys.Contains(key);
         }
 
+        /// <summary>
+        /// Clears this instance
+        /// </summary>
         public void Clear()
         {
             _keys.Clear();
         }
 
+        /// <summary>
+        /// Ises the active using the specified platform
+        /// </summary>
+        /// <param name="platform">The platform</param>
+        /// <returns>The bool</returns>
         public bool IsActive(WebAssemblyPlatform platform)
         {
             foreach (ConsoleKey key in _keys)
@@ -365,9 +413,19 @@ namespace Alis.Core.Graphic.Platforms.Web
     /// </summary>
     public class GamepadInputState
     {
+        /// <summary>
+        /// Gets or sets the value of the current state
+        /// </summary>
         public GamepadState CurrentState { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the previous state
+        /// </summary>
         public GamepadState PreviousState { get; set; }
 
+        /// <summary>
+        /// Updates the new state
+        /// </summary>
+        /// <param name="newState">The new state</param>
         public void Update(GamepadState newState)
         {
             PreviousState = CurrentState;
@@ -380,10 +438,25 @@ namespace Alis.Core.Graphic.Platforms.Web
     /// </summary>
     public enum TouchState
     {
+        /// <summary>
+        /// The begin touch state
+        /// </summary>
         Begin,
+        /// <summary>
+        /// The moved touch state
+        /// </summary>
         Moved,
+        /// <summary>
+        /// The stationary touch state
+        /// </summary>
         Stationary,
+        /// <summary>
+        /// The ended touch state
+        /// </summary>
         Ended,
+        /// <summary>
+        /// The cancelled touch state
+        /// </summary>
         Cancelled
     }
 
@@ -392,12 +465,30 @@ namespace Alis.Core.Graphic.Platforms.Web
     /// </summary>
     public class TouchPoint
     {
+        /// <summary>
+        /// Gets or sets the value of the id
+        /// </summary>
         public int Id { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the x
+        /// </summary>
         public int X { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the y
+        /// </summary>
         public int Y { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the is active
+        /// </summary>
         public bool IsActive { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the state
+        /// </summary>
         public TouchState State { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TouchPoint"/> class
+        /// </summary>
         public TouchPoint()
         {
             IsActive = true;
@@ -410,9 +501,20 @@ namespace Alis.Core.Graphic.Platforms.Web
     /// </summary>
     public class WebAssemblyInputContext
     {
+        /// <summary>
+        /// The input manager
+        /// </summary>
         private readonly WebAssemblyInputManager _inputManager;
+        /// <summary>
+        /// The platform
+        /// </summary>
         private readonly WebAssemblyPlatform _platform;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WebAssemblyInputContext"/> class
+        /// </summary>
+        /// <param name="platform">The platform</param>
+        /// <exception cref="ArgumentNullException"></exception>
         public WebAssemblyInputContext(WebAssemblyPlatform platform)
         {
             _platform = platform ?? throw new ArgumentNullException(nameof(platform));

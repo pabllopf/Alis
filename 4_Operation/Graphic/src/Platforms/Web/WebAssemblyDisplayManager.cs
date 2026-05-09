@@ -38,12 +38,33 @@ namespace Alis.Core.Graphic.Platforms.Web
     /// </summary>
     public class WebAssemblyDisplayManager
     {
+        /// <summary>
+        /// The platform
+        /// </summary>
         private readonly WebAssemblyPlatform _platform;
+        /// <summary>
+        /// The current width
+        /// </summary>
         private int _currentWidth;
+        /// <summary>
+        /// The current height
+        /// </summary>
         private int _currentHeight;
+        /// <summary>
+        /// The current orientation
+        /// </summary>
         private ScreenOrientation _currentOrientation;
+        /// <summary>
+        /// The is fullscreen
+        /// </summary>
         private bool _isFullscreen;
+        /// <summary>
+        /// The display quality
+        /// </summary>
         private DisplayQuality _displayQuality;
+        /// <summary>
+        /// The supported modes
+        /// </summary>
         private List<DisplayMode> _supportedModes;
 
         /// <summary>
@@ -409,11 +430,27 @@ namespace Alis.Core.Graphic.Platforms.Web
     /// </summary>
     public class DisplayMode
     {
+        /// <summary>
+        /// Gets or sets the value of the width
+        /// </summary>
         public int Width { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the height
+        /// </summary>
         public int Height { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the refresh rate
+        /// </summary>
         public int RefreshRate { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the is fullscreen only
+        /// </summary>
         public bool IsFullscreenOnly { get; set; }
 
+        /// <summary>
+        /// Returns the string
+        /// </summary>
+        /// <returns>The string</returns>
         public override string ToString()
         {
             return $"{Width}x{Height}@{RefreshRate}Hz";
@@ -425,8 +462,17 @@ namespace Alis.Core.Graphic.Platforms.Web
     /// </summary>
     public enum ScreenOrientation
     {
+        /// <summary>
+        /// The portrait screen orientation
+        /// </summary>
         Portrait,
+        /// <summary>
+        /// The landscape screen orientation
+        /// </summary>
         Landscape,
+        /// <summary>
+        /// The square screen orientation
+        /// </summary>
         Square
     }
 
@@ -435,11 +481,29 @@ namespace Alis.Core.Graphic.Platforms.Web
     /// </summary>
     public enum DisplayQuality
     {
+        /// <summary>
+        /// The very low display quality
+        /// </summary>
         VeryLow = 0,
+        /// <summary>
+        /// The low display quality
+        /// </summary>
         Low = 1,
+        /// <summary>
+        /// The medium display quality
+        /// </summary>
         Medium = 2,
+        /// <summary>
+        /// The high display quality
+        /// </summary>
         High = 3,
+        /// <summary>
+        /// The very high display quality
+        /// </summary>
         VeryHigh = 4,
+        /// <summary>
+        /// The ultra display quality
+        /// </summary>
         Ultra = 5
     }
 
@@ -448,7 +512,13 @@ namespace Alis.Core.Graphic.Platforms.Web
     /// </summary>
     public class DisplayEventArgs : EventArgs
     {
+        /// <summary>
+        /// Gets or sets the value of the width
+        /// </summary>
         public int Width { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the height
+        /// </summary>
         public int Height { get; set; }
     }
 
@@ -457,6 +527,9 @@ namespace Alis.Core.Graphic.Platforms.Web
     /// </summary>
     public class OrientationEventArgs : EventArgs
     {
+        /// <summary>
+        /// Gets or sets the value of the orientation
+        /// </summary>
         public ScreenOrientation Orientation { get; set; }
     }
 
@@ -465,6 +538,9 @@ namespace Alis.Core.Graphic.Platforms.Web
     /// </summary>
     public class FullscreenEventArgs : EventArgs
     {
+        /// <summary>
+        /// Gets or sets the value of the is fullscreen
+        /// </summary>
         public bool IsFullscreen { get; set; }
     }
 }
