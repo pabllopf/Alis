@@ -34,6 +34,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using Alis.Core.Aspect.Logging;
 using System.Diagnostics.CodeAnalysis;
+using Alis.Core.Graphic.Platforms.Linux.Native;
 
 namespace Alis.Core.Graphic.Platforms.Linux
 {
@@ -1681,24 +1682,18 @@ namespace Alis.Core.Graphic.Platforms.Linux
                     return ConsoleKey.DownArrow;
                 case XkInsert:
                     return ConsoleKey.Insert;
-                case XkMenu:
-                    return ConsoleKey.Menu;
-                case XkShiftL:
-                    return ConsoleKey.LeftShift;
-                case XkShiftR:
-                    return ConsoleKey.RightShift;
-                case XkControlL:
-                    return ConsoleKey.LeftCtrl;
-                case XkControlR:
-                    return ConsoleKey.RightCtrl;
-                case XkAltL:
-                    return ConsoleKey.LeftAlt;
-                case XkAltR:
-                    return ConsoleKey.RightAlt;
                 case XkSuperL:
                     return ConsoleKey.LeftWindows;
                 case XkSuperR:
                     return ConsoleKey.RightWindows;
+                case XkMenu:
+                case XkShiftL:
+                case XkShiftR:
+                case XkControlL:
+                case XkControlR:
+                case XkAltL:
+                case XkAltR:
+                    return null;
                 case 0x0020:
                     return ConsoleKey.Spacebar;
                 case 0xFFAA:
