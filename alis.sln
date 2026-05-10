@@ -22,6 +22,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{6E102FFE-9727-458C-9361-4588C4157572}"
 	ProjectSection(SolutionItems) = preProject
 		.github\dependabot.yml = .github\dependabot.yml
+		.github\copilot-instructions.md = .github\copilot-instructions.md
+		.github\pull_request_template.md = .github\pull_request_template.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{CDB74D6E-4B2E-4FDA-8239-B8C6C1C47059}"
@@ -589,6 +591,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "aspect", "aspect", "{1D4E99
 		.github\workflows\[ALIS][CORE][ASPECT][MATH][SONARCLOUD].yml = .github\workflows\[ALIS][CORE][ASPECT][MATH][SONARCLOUD].yml
 		.github\workflows\[ALIS][CORE][ASPECT][TIME][SONARCLOUD].yml = .github\workflows\[ALIS][CORE][ASPECT][TIME][SONARCLOUD].yml
 		.github\workflows\[ALIS][CORE][ASPECT][MEMORY][SONARCLOUD].yml = .github\workflows\[ALIS][CORE][ASPECT][MEMORY][SONARCLOUD].yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "agents", "agents", "{1DF5BF0C-BB43-4892-A852-29207201D965}"
+	ProjectSection(SolutionItems) = preProject
+		.github\agents\alis-solution-agent.agent.md = .github\agents\alis-solution-agent.agent.md
 	EndProjectSection
 EndProject
 Global
@@ -3588,6 +3595,7 @@ Global
 		{45592175-E86F-4C41-98BF-762B730D9AE1} = {FFC9978E-F56C-45BB-95FA-01D292791099}
 		{87586097-9BEB-4FD0-B87F-A6B803D86BB7} = {FFC9978E-F56C-45BB-95FA-01D292791099}
 		{1D4E99A6-2564-4856-A3E1-330AF26E02A0} = {FFC9978E-F56C-45BB-95FA-01D292791099}
+		{1DF5BF0C-BB43-4892-A852-29207201D965} = {6E102FFE-9727-458C-9361-4588C4157572}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8C491FC8-E9B0-4689-BAA5-ED6F7C5F61A5}
