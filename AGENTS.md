@@ -193,6 +193,8 @@ Contains:
 - Platform implementations
 - Native integrations
 
+Several operation modules use paired `generator/`, `sample/`, `src/`, and `test/` subtrees; notable examples include `4_Operation/Ecs/` and `4_Operation/Graphic/`.
+
 Example:
 - `4_Operation/Graphic/src/Alis.Core.Graphic.csproj`
 
@@ -216,6 +218,8 @@ Contains:
 - Experimental systems
 - Research modules
 - Prototype implementations
+
+Several ideation modules also follow the `generator/`, `sample/`, `src/`, and `test/` layout; notable examples include `6_Ideation/Data/`, `6_Ideation/Fluent/`, and `6_Ideation/Memory/`.
 
 ---
 
@@ -309,17 +313,22 @@ dotnet build alis.sln -c Debug
 dotnet test alis.sln
 ```
 
+For repository-wide validation on macOS, use `docs/scripts/macos/run_tests.sh`; it runs `dotnet test` for every non-template `*.csproj` twice, once in Debug and once in Release.
+
+For the broader packaging workflows, `docs/scripts/macos/build_all.sh` restores `alis.sln` and packs the production projects, while `docs/scripts/macos/pack_all.sh` builds and packs the same production-project subset for `osx-arm64` and `net9.0`.
+
 ---
 
 # Repository Scripts
 
 ## Test Scripts
 - `docs/scripts/macos/run_tests.sh`
+- `docs/scripts/linux/run_tests.sh`
+- `docs/scripts/windows/run_tests.bat`
 
 Runs:
-- Debug tests
-- Release tests
-- All test projects
+- Debug tests for every non-template `*.csproj`
+- Release tests for every non-template `*.csproj`
 
 Skips:
 - Templates
@@ -329,11 +338,12 @@ Skips:
 ## Build Scripts
 - `docs/scripts/macos/build_all.sh`
 - `docs/scripts/macos/pack_all.sh`
+- `docs/scripts/windows/run_pack_all.bat`
 
 These scripts:
-- Iterate all projects
-- Handle runtime packaging
-- Apply repository-wide conventions
+- Restore, build, and/or pack the production project set
+- Skip `*.Template.*`, `*.App.*`, `*.Test.*`, `*.Benchmark.*`, `*.Sample.*`, and `*.Generator.*` projects
+- Apply repository-wide packaging conventions
 
 ---
 
