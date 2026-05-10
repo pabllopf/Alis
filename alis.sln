@@ -16,6 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".docs", ".docs", "{18D887C5
 		readme.md = readme.md
 		contributing.md = contributing.md
 		security.md = security.md
+		AGENTS.md = AGENTS.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{6E102FFE-9727-458C-9361-4588C4157572}"
