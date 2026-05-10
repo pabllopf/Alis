@@ -15,6 +15,10 @@
         <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute"/>
     </ItemGroup>
 
+    <ItemGroup>
+        <None Condition="Exists('$(ProjectDir).docs/')" Include="$(ProjectDir).docs/**/*.md" Pack="false" Visible="true"/>
+    </ItemGroup>
+
     <PropertyGroup>
         <NoWarn>$(NoWarn);CS1685;</NoWarn> <!-- Error CS1685 : Warning As Error: Define on differente assemblys of alias gloabal -->
         <NoWarn>$(NoWarn);CS0436;</NoWarn> <!-- Error CS0436 : Warning As Error: Overriding dependency version -->

@@ -64,6 +64,10 @@
         <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute"/>
     </ItemGroup>
 
+    <ItemGroup>
+        <None Condition="Exists('$(ProjectDir).docs/')" Include="$(ProjectDir).docs/**/*.md" Pack="false" Visible="true"/>
+    </ItemGroup>
+
 
 
     <ItemGroup>

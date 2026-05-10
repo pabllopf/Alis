@@ -6,6 +6,8 @@
         <RuntimeIdentifier>browser-wasm</RuntimeIdentifier>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <NoAutoGenerateFiles>false</NoAutoGenerateFiles>
+        <WasmAllowUndefinedSymbols>true</WasmAllowUndefinedSymbols>
+        <EmscriptenLinkingFlags>-sWASM_ASYNC_COMPILATION=0 -sALLOW_UNIMPLEMENTED_SYSCALLS=1</EmscriptenLinkingFlags>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -15,6 +17,10 @@
 
     <ItemGroup>
         <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Condition="Exists('$(ProjectDir).docs/')" Include="$(ProjectDir).docs/**/*.md" Pack="false" Visible="true"/>
     </ItemGroup>
 
 
