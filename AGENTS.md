@@ -645,6 +645,7 @@ Agents must not generate repository documentation files.
 
 # Coding Standards
 
+
 ## General Principles
 - Prefer explicit code.
 - Prefer deterministic behavior.
@@ -654,11 +655,68 @@ Agents must not generate repository documentation files.
 
 ---
 
-## Naming Rules
+## Coding Style and Formatting Rules
+
+All C# code in this repository must strictly follow the mandatory coding style and formatting rules below. These rules are enforced for all contributors and agents, and must not be violated under any circumstances.
+
+### Charset and Whitespace
+- All files must use UTF-8 encoding.
+- End-of-line: LF (`\n`).
+- No automatic trimming of trailing whitespace.
+- No automatic insertion of a final newline.
+- Indentation: spaces only, 4 spaces per level.
+
+### .NET and C# Formatting
+- `csharp_new_line_before_members_in_object_initializers = false`
+- `csharp_preferred_modifier_order = public, private, protected, internal, new, static, abstract, virtual, sealed, readonly, override, extern, volatile, async`
+- `csharp_space_after_cast = true`
+- `csharp_style_namespace_declarations = block_scoped:suggestion`
+- `csharp_style_var_elsewhere = false:suggestion`
+- `csharp_style_var_for_built_in_types = false:suggestion`
+- `csharp_style_var_when_type_is_apparent = false:suggestion`
+
+### Naming Rules
 - PascalCase for types and members
 - camelCase for locals and parameters
-- Meaningful names only
-- Avoid unclear abbreviations
+- Private constants: PascalCase (const fields)
+- Private instance fields: camelCase or _camelCase
+- Private static fields: _camelCase
+- Private static readonly fields: PascalCase
+- Unity serialized fields: camelCase
+
+### .NET Naming and Style Enforcement
+- All naming rules above are enforced via dotnet_naming_rule and dotnet_naming_style settings.
+- See repository .editorconfig for full symbol and style mapping.
+
+### Parentheses and Type Preferences
+- Arithmetic/relational/other binary operator parentheses: only as required for clarity.
+- Use predefined types for locals, parameters, members, and member access when possible.
+- Accessibility modifiers required for all non-interface members.
+
+### File Header
+- All C# files must use the standard file header template as defined in .editorconfig.
+
+### ReSharper and Inspection Rules
+- ReSharper indentation autodetect: enabled
+- Braces required for all control flow
+- Expression-bodied members preferred for methods, constructors, destructors, and local functions
+- Maximum line length: 392
+- Default value style: default expression
+- Attribute style: join
+- Explicitly typed object creation when type is evident
+- No redundant braces
+- No redundant parentheses
+- No unnecessary 'this.' qualifiers
+- All other ReSharper and inspection rules as defined in .editorconfig must be followed.
+
+### File Types
+- Only `.cs` files are allowed for source code.
+- No forbidden file types or documentation files may be generated.
+
+### Enforcement
+- All code must comply with these style and formatting rules.
+- Agents must never introduce code that violates these rules.
+- All code reviews and automated checks must validate compliance.
 
 ---
 
