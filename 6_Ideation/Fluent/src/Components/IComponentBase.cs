@@ -42,11 +42,14 @@ namespace Alis.Core.Aspect.Fluent.Components
      */
 
     /// <summary>
-    ///     Base marker component for all component interfaces
+    ///     Base marker interface for all component interfaces in the fluent game entity system.
+    ///     Components implementing this interface are auto-registered for AOT compilation compatibility.
     /// </summary>
     /// <remarks>
-    ///     All components with <see cref="IComponentBase" /> will be auto-registered. This makes it useful for AOT
-    ///     compilation scenarios
+    ///     This is a marker-only interface with no members. Derived interfaces define lifecycle hooks
+    ///     (e.g., <see cref="IOnUpdate" />, <see cref="IOnDraw" />) and behavior contracts for game entities.
+    ///     The comment block above describes the component filter matrix used by the ECS to organize
+    ///     update loops by component composition (data-only, update-only, update-with-N-components, etc.).
     /// </remarks>
     public interface IComponentBase;
 }

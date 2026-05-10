@@ -32,36 +32,38 @@ using System;
 namespace Alis.Core.Aspect.Fluent.Components
 {
     /// <summary>
-    ///     The game object interface
+    ///     Represents a game entity that owns components and provides access to them.
+    ///     Components are retrieved by type and queried for presence.
     /// </summary>
     public interface IGameObject
     {
         /// <summary>
-        ///     Gets this instance
+        ///     Gets a reference to the component of type <c>T</c> owned by this entity.
         /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <returns>The ref</returns>
+        /// <typeparam name="T">The component type to retrieve. Must be implemented by a component interface.</typeparam>
+        /// <returns>A reference to the component instance. Throws if the component is not present.</returns>
+        /// <exception cref="InvalidOperationException">Thrown when the entity does not have a component of type <c>T</c>.</exception>
         ref T Get<T>();
 
         /// <summary>
-        ///     Hases this instance
+        ///     Determines whether this entity has a component of type <c>T</c>.
         /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <returns>The bool</returns>
+        /// <typeparam name="T">The component type to check.</typeparam>
+        /// <returns><c>true</c> if the entity has a component of type <c>T</c>; otherwise, <c>false</c>.</returns>
         bool Has<T>();
 
         /// <summary>
-        ///     Hases the type
+        ///     Determines whether this entity has a component of the specified <paramref name="type" />.
         /// </summary>
-        /// <param name="type">The type</param>
-        /// <returns>The bool</returns>
+        /// <param name="type">The component type to check.</param>
+        /// <returns><c>true</c> if the entity has a component of the specified type; otherwise, <c>false</c>.</returns>
         bool Has(Type type);
 
         /// <summary>
-        ///     Tries the has
+        ///     Attempts to determine whether this entity has a component of type <c>T</c> without throwing on miss.
         /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <returns>The bool</returns>
+        /// <typeparam name="T">The component type to check.</typeparam>
+        /// <returns><c>true</c> if the component exists; otherwise, <c>false</c>.</returns>
         bool TryHas<T>();
     }
 }

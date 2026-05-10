@@ -30,16 +30,20 @@
 namespace Alis.Core.Aspect.Fluent.Components
 {
     /// <summary>
-    ///     Indicates a component should be updated with itself as an argument
+    ///     Lifecycle hook called every frame during the variable-timestep update loop.
+    ///     Components implementing this interface receive the owning entity each frame for game logic execution.
     /// </summary>
-    /// <remarks>Components should only implement one "Update" method.</remarks>
+    /// <remarks>
+    ///     Components should only implement one "Update" method to avoid duplicate logic execution.
+    ///     For fixed-timestep updates, use <see cref="IOnFixedUpdate" /> instead.
+    /// </remarks>
     // ReSharper disable once PartialTypeWithSinglePart
     public partial interface IOnUpdate : IComponentBase
     {
         /// <summary>
-        ///     Ons the update using the specified self
+        ///     Called every frame during the variable-timestep update loop with a reference to the owning entity.
         /// </summary>
-        /// <param name="self">The self</param>
+        /// <param name="self">The entity that owns this component.</param>
         void OnUpdate(IGameObject self);
     }
 }

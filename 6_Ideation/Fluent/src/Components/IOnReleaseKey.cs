@@ -30,14 +30,15 @@
 namespace Alis.Core.Aspect.Fluent.Components
 {
     /// <summary>
-    ///     Interfaz para gestionar el evento de soltar una tecla
+    ///     Keyboard lifecycle hook called when a key is released.
+    ///     Use this for detecting key release events (e.g., releasing a jump button to control jump height).
     /// </summary>
     public interface IOnReleaseKey
     {
         /// <summary>
-        ///     Ons the release key using the specified info
+        ///     Called when a key is released.
         /// </summary>
-        /// <param name="info">The info</param>
+        /// <param name="info">Metadata about the key event, including which key, timestamp, and hold duration.</param>
         void OnReleaseKey(KeyEventInfo info);
     }
 }

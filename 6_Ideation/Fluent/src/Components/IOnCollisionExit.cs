@@ -30,14 +30,15 @@
 namespace Alis.Core.Aspect.Fluent.Components
 {
     /// <summary>
-    ///     The on collision exit interface
+    ///     Collision lifecycle hook called when the owning entity's collider ceases contact with another entity.
+    ///     Fired during the physics update pass when collision detection determines two colliders no longer overlap.
     /// </summary>
     public interface IOnCollisionExit
     {
         /// <summary>
-        ///     Ons the collision exit using the specified other
+        ///     Called when this entity's collider stops contacting another entity's collider.
         /// </summary>
-        /// <param name="other">The other</param>
+        /// <param name="other">The entity that was previously collided with.</param>
         void OnCollisionExit(IGameObject other);
     }
 }

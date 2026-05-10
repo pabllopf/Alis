@@ -30,14 +30,15 @@
 namespace Alis.Core.Aspect.Fluent.Components
 {
     /// <summary>
-    ///     The on physic update interface
+    ///     Lifecycle hook called during the physics update pass for collision detection, response, and physics-based movement.
+    ///     Executes in the dedicated physics loop separate from the standard update and fixed-update cycles.
     /// </summary>
     public interface IOnPhysicUpdate
     {
         /// <summary>
-        ///     Ons the physic update using the specified self
+        ///     Called during the physics update pass with a reference to the owning entity.
         /// </summary>
-        /// <param name="self">The self</param>
+        /// <param name="self">The entity that owns this component.</param>
         void OnPhysicUpdate(IGameObject self);
     }
 }

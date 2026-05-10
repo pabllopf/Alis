@@ -30,12 +30,13 @@
 namespace Alis.Core.Aspect.Fluent.Components
 {
     /// <summary>
-    ///     Marks a component to have a <see cref="OnDestroy" /> method to be called at the end of a component lifetime.
+    ///     Lifecycle hook called when the owning entity is destroyed and removed from the game loop.
+    ///     Use this for cleanup of resources, unsubscribing from events, or saving state.
     /// </summary>
     public interface IOnDestroy : IComponentBase
     {
         /// <summary>
-        ///     Destroys this instance
+        ///     Called when the owning entity is destroyed and removed from the game loop.
         /// </summary>
         void OnDestroy();
     }

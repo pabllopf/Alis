@@ -30,14 +30,15 @@
 namespace Alis.Core.Aspect.Fluent.Components
 {
     /// <summary>
-    ///     The on draw interface
+    ///     Lifecycle hook called every frame during the rendering pass.
+    ///     Components implementing this interface are responsible for drawing their visual representation.
     /// </summary>
     public interface IOnDraw
     {
         /// <summary>
-        ///     Ons the draw using the specified self
+        ///     Called every frame during the rendering pass with a reference to the owning entity.
         /// </summary>
-        /// <param name="self">The self</param>
+        /// <param name="self">The entity that owns this component.</param>
         void OnDraw(IGameObject self);
     }
 }

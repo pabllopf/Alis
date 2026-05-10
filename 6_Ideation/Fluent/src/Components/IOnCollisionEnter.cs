@@ -30,14 +30,15 @@
 namespace Alis.Core.Aspect.Fluent.Components
 {
     /// <summary>
-    ///     The on collision enter interface
+    ///     Collision lifecycle hook called when the owning entity's collider makes initial contact with another entity.
+    ///     Fired during the physics update pass when collision detection determines two colliders overlap.
     /// </summary>
     public interface IOnCollisionEnter
     {
         /// <summary>
-        ///     Ons the collision enter using the specified other
+        ///     Called when this entity's collider first contacts another entity's collider.
         /// </summary>
-        /// <param name="other">The other</param>
+        /// <param name="other">The entity that was collided with.</param>
         void OnCollisionEnter(IGameObject other);
     }
 }

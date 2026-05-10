@@ -30,14 +30,17 @@
 namespace Alis.Core.Aspect.Fluent.Components
 {
     /// <summary>
-    ///     The on fixed update interface
+    ///     Lifecycle hook called at a fixed timestep independent of frame rate.
+    ///     Use this for physics-affected game logic that requires deterministic timing.
     /// </summary>
     public interface IOnFixedUpdate
     {
         /// <summary>
-        ///     Ons the fixed update using the specified self
+        ///     Called at each fixed timestep interval with a reference to the owning entity.
+        ///     Executes less frequently than <see cref="IOnUpdate.OnUpdate" /> on low-frame machines
+        ///     and more frequently on high-frame machines, ensuring consistent simulation speed.
         /// </summary>
-        /// <param name="self">The self</param>
+        /// <param name="self">The entity that owns this component.</param>
         void OnFixedUpdate(IGameObject self);
     }
 }

@@ -30,14 +30,15 @@
 namespace Alis.Core.Aspect.Fluent.Components
 {
     /// <summary>
-    ///     The on before update interface
+    ///     Lifecycle hook called once per frame before the variable-timestep <see cref="IOnUpdate.OnUpdate" /> loop.
+    ///     Use this for logic that must execute prior to all update calculations.
     /// </summary>
     public interface IOnBeforeUpdate
     {
         /// <summary>
-        ///     Ons the before update using the specified self
+        ///     Called every frame before <see cref="IOnUpdate.OnUpdate" /> hooks execute.
         /// </summary>
-        /// <param name="self">The self</param>
+        /// <param name="self">The entity that owns this component.</param>
         void OnBeforeUpdate(IGameObject self);
     }
 }

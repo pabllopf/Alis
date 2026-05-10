@@ -30,14 +30,15 @@
 namespace Alis.Core.Aspect.Fluent.Components
 {
     /// <summary>
-    ///     The on start interface
+    ///     Lifecycle hook called once when the entity is first activated and ready for the main update loop.
+    ///     Fires after <see cref="IOnAwake.OnAwake" /> and <see cref="IOnInit.OnInit" />, before any <see cref="IOnUpdate.OnUpdate" /> calls.
     /// </summary>
     public interface IOnStart
     {
         /// <summary>
-        ///     Ons the start using the specified self
+        ///     Called once when the owning entity becomes active and enters the main update loop.
         /// </summary>
-        /// <param name="self">The self</param>
+        /// <param name="self">The entity that owns this component.</param>
         void OnStart(IGameObject self);
     }
 }

@@ -30,14 +30,15 @@
 namespace Alis.Core.Aspect.Fluent.Components
 {
     /// <summary>
-    ///     The on after update interface
+    ///     Lifecycle hook called once per frame after the variable-timestep <see cref="IOnUpdate.OnUpdate" /> loop.
+    ///     Use this for logic that must execute after all update calculations are complete.
     /// </summary>
     public interface IOnAfterUpdate
     {
         /// <summary>
-        ///     Ons the after update using the specified self
+        ///     Called every frame after <see cref="IOnUpdate.OnUpdate" /> hooks finish executing.
         /// </summary>
-        /// <param name="self">The self</param>
+        /// <param name="self">The entity that owns this component.</param>
         void OnAfterUpdate(IGameObject self);
     }
 }

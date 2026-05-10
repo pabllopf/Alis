@@ -30,14 +30,15 @@
 namespace Alis.Core.Aspect.Fluent.Components
 {
     /// <summary>
-    ///     The on after draw interface
+    ///     Lifecycle hook called once per frame after the rendering <see cref="IOnDraw.OnDraw" /> loop.
+    ///     Use this for post-render cleanup or overlay drawing.
     /// </summary>
     public interface IOnAfterDraw
     {
         /// <summary>
-        ///     Ons the after draw using the specified self
+        ///     Called every frame after <see cref="IOnDraw.OnDraw" /> hooks finish executing.
         /// </summary>
-        /// <param name="self">The self</param>
+        /// <param name="self">The entity that owns this component.</param>
         void OnAfterDraw(IGameObject self);
     }
 }

@@ -30,14 +30,16 @@
 namespace Alis.Core.Aspect.Fluent.Components
 {
     /// <summary>
-    ///     The on awake interface
+    ///     Lifecycle hook called when a component is initialized and made active, before the first <see cref="IOnUpdate.OnUpdate" /> call.
+    ///     This is the appropriate place for one-time setup that requires other components to already exist.
     /// </summary>
     public interface IOnAwake
     {
         /// <summary>
-        ///     Ons the awake using the specified self
+        ///     Called when the owning entity is awoken. Executes once after all <see cref="IOnInit" /> hooks have fired
+        ///     and before any update loop begins.
         /// </summary>
-        /// <param name="self">The self</param>
+        /// <param name="self">The entity that owns this component.</param>
         void OnAwake(IGameObject self);
     }
 }

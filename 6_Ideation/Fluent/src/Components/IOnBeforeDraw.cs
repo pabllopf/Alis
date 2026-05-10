@@ -30,14 +30,15 @@
 namespace Alis.Core.Aspect.Fluent.Components
 {
     /// <summary>
-    ///     The on before draw interface
+    ///     Lifecycle hook called once per frame before the rendering <see cref="IOnDraw.OnDraw" /> loop.
+    ///     Use this for preparing transform matrices, culling visibility, or batching draw calls.
     /// </summary>
     public interface IOnBeforeDraw
     {
         /// <summary>
-        ///     Ons the before draw using the specified self
+        ///     Called every frame before <see cref="IOnDraw.OnDraw" /> hooks execute.
         /// </summary>
-        /// <param name="self">The self</param>
+        /// <param name="self">The entity that owns this component.</param>
         void OnBeforeDraw(IGameObject self);
     }
 }

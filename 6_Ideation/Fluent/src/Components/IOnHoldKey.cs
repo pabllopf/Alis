@@ -30,14 +30,15 @@
 namespace Alis.Core.Aspect.Fluent.Components
 {
     /// <summary>
-    ///     Interfaz para gestionar el evento de mantener pulsada una tecla
+    ///     Keyboard lifecycle hook called continuously while a key is held down.
+    ///     Use this for sustained input handling (e.g., holding a throttle button for accelerated movement).
     /// </summary>
     public interface IOnHoldKey
     {
         /// <summary>
-        ///     Ons the hold key using the specified info
+        ///     Called each frame while a key is held down.
         /// </summary>
-        /// <param name="info">The info</param>
+        /// <param name="info">Metadata about the key event, including which key, timestamp, and cumulative hold duration.</param>
         void OnHoldKey(KeyEventInfo info);
     }
 }

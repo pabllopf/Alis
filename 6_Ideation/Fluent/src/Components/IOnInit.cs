@@ -30,15 +30,16 @@
 namespace Alis.Core.Aspect.Fluent.Components
 {
     /// <summary>
-    ///     The initable interface
+    ///     Lifecycle hook called once during initial component initialization, before <see cref="IOnAwake.OnAwake" />.
+    ///     This is the earliest lifecycle point where the component can perform setup logic.
     /// </summary>
     /// <seealso cref="IComponentBase" />
     public interface IOnInit : IComponentBase
     {
         /// <summary>
-        ///     Inits the self
+        ///     Called once during initial component setup, before <see cref="IOnAwake.OnAwake" />.
         /// </summary>
-        /// <param name="self">The self</param>
+        /// <param name="self">The entity that owns this component.</param>
         void OnInit(IGameObject self);
     }
 }

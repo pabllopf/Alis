@@ -30,14 +30,15 @@
 namespace Alis.Core.Aspect.Fluent.Components
 {
     /// <summary>
-    ///     The on process pending changes interface
+    ///     Lifecycle hook called when the entity has pending state changes that need processing.
+    ///     Use this for batch updates, deferred actions, or applying queued modifications.
     /// </summary>
     public interface IOnProcessPendingChanges
     {
         /// <summary>
-        ///     Ons the process pending changes using the specified self
+        ///     Called when the owning entity has pending state changes to process.
         /// </summary>
-        /// <param name="self">The self</param>
+        /// <param name="self">The entity that owns this component.</param>
         void OnProcessPendingChanges(IGameObject self);
     }
 }

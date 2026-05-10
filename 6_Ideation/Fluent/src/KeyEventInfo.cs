@@ -32,31 +32,33 @@ using System;
 namespace Alis.Core.Aspect.Fluent
 {
     /// <summary>
-    ///     The key event info
+    ///     Value type holding metadata about a keyboard event, including which key was pressed or released,
+    ///     when the event occurred, and how long the key was held down.
     /// </summary>
     public struct KeyEventInfo
     {
         /// <summary>
-        ///     The key
+        ///     The console key associated with this event.
         /// </summary>
         public ConsoleKey Key;
 
         /// <summary>
-        ///     The timestamp
+        ///     The UTC timestamp when the keyboard event occurred.
         /// </summary>
         public DateTime Timestamp;
 
         /// <summary>
-        ///     The hold duration
+        ///     The duration the key was held down, measured from press to release.
+        ///     Zero <see cref="TimeSpan" /> if the key was simply pressed or released without a hold.
         /// </summary>
         public TimeSpan HoldDuration;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="KeyEventInfo" /> class
+        ///     Initializes a new instance of the <see cref="KeyEventInfo" /> struct.
         /// </summary>
-        /// <param name="key">The key</param>
-        /// <param name="timestamp">The timestamp</param>
-        /// <param name="holdDuration">The hold duration</param>
+        /// <param name="key">The console key associated with the event.</param>
+        /// <param name="timestamp">The UTC timestamp when the event occurred.</param>
+        /// <param name="holdDuration">The duration the key was held down.</param>
         public KeyEventInfo(ConsoleKey key, DateTime timestamp, TimeSpan holdDuration)
         {
             Key = key;

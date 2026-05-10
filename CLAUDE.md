@@ -88,3 +88,31 @@ Agents must never create new projects, new solutions, modify solution architectu
 - **Workflow:** TDD - write failing test, implement, validate, refactor.
 - **Output:** `.test/<TargetFramework>/`.
 - Every code change needs unit tests, integration tests (when applicable), regression tests (when applicable), and performance tests for performance-sensitive code.
+
+### 🧾 C# Code Encoding Rule (IMPORTANT)
+
+* Never HTML-encode or escape characters in source code.[AGENTS.md](AGENTS.md)[AGENTS.md](AGENTS.md)
+* Do NOT convert:
+
+    * `<` into `&lt;`
+    * `>` into `&gt;`
+    * `&` into `&amp;`[AGENTS.md](AGENTS.md)
+* All C# code must be written in **raw syntax form**, exactly as it would appear in a .cs file.
+* This includes:
+
+    * generics (`IInterface<T>`)
+    * comparisons (`a < b`, `a > b`)
+    * bitwise operations
+* Only escape characters if explicitly required by a non-code format (e.g. markdown rendering outside code blocks), never inside code files or patches.
+
+**Example of correct output:**
+
+```csharp
+public partial interface IOnUpdate<TArg> : IComponentBase
+```
+
+**Incorrect (forbidden):**
+
+```csharp
+public partial interface IOnUpdate&lt;TArg&gt; : IComponentBase
+```

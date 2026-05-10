@@ -30,14 +30,15 @@
 namespace Alis.Core.Aspect.Fluent.Components
 {
     /// <summary>
-    ///     The on exit interface
+    ///     Lifecycle hook called when the owning entity is deactivated or leaves the active game loop.
+    ///     Fires before <see cref="IOnDestroy.OnDestroy" /> but while the entity is still logically present.
     /// </summary>
     public interface IOnExit
     {
         /// <summary>
-        ///     Ons the exit using the specified self
+        ///     Called when the owning entity is deactivated or removed from the active update loop.
         /// </summary>
-        /// <param name="self">The self</param>
+        /// <param name="self">The entity that owns this component.</param>
         void OnExit(IGameObject self);
     }
 }
