@@ -439,6 +439,8 @@ Do not use APIs unavailable on older targets unless protected through conditiona
 
 Backward compatibility is mandatory.
 
+AOT compatibility is mandatory for all generated and manually authored code paths.
+
 ---
 
 # Build and Test Workflows
@@ -541,6 +543,8 @@ The framework must remain fully self-contained.
 
 Source generators are first-class architecture components.
 
+All generated output must be AOT-safe and must not rely on runtime code generation.
+
 Generators are referenced through analyzers using:
 - `OutputItemType="Analyzer"`
 
@@ -550,6 +554,12 @@ Generators must:
 - Avoid allocations when possible
 - Generate XML documentation
 - Never generate invalid code
+- Emit deterministic diagnostics when required build inputs are missing or invalid
+- Keep AOT validation paths active so invalid configurations fail early at compile time
+
+Repository examples of required validation behavior include:
+- `6_Ideation/Fluent/generator/AotReflectionAnalyzer.cs` diagnostic checks for reflection/emit/invoke patterns
+- `6_Ideation/Memory/generator/ResourceAccessorGenerator.cs` diagnostics for missing/invalid `assets.pack` and non-executable output kinds (`ALIS0011`, `ALIS0012`, `ALIS0013`)
 
 Generated code quality must match manual code quality.
 
@@ -670,6 +680,7 @@ Avoid:
 - Reflection
 - Hidden allocations
 - Unnecessary heap allocations
+- Runtime code generation (`System.Reflection.Emit`, runtime IL emit, dynamic method generation)
 
 Use spans and memory-efficient APIs when target compatibility allows.
 
@@ -693,6 +704,8 @@ Use spans and memory-efficient APIs when target compatibility allows.
 - Runtime-specific assumptions
 - Platform leaks into shared APIs
 - Architecture shortcuts that break layering
+- Runtime code generation patterns that break AOT compatibility
+- Reflection-heavy execution paths without explicit AOT-safe alternatives
 
 ---
 
@@ -815,6 +828,8 @@ Before completing any task verify:
 - No external dependencies were added
 - Platform compatibility is preserved
 - Multi-framework compatibility is preserved
+- AOT compatibility is preserved
+- AOT-related analyzers and generator diagnostics remain enforceable for changed code paths
 - Performance impact was considered
 - Architecture rules were respected
 - No dependency direction violations were introduced
