@@ -9,17 +9,42 @@ using System.Collections.Generic;
 
 namespace Alis.App.Agent
 {
+    /// <summary>
+    /// The program class
+    /// </summary>
     public class Program
     {
+        /// <summary>
+        /// The http client
+        /// </summary>
         private static readonly HttpClient http = new HttpClient();
 
+        /// <summary>
+        /// The ollama url
+        /// </summary>
         private const string OllamaUrl = "http://localhost:11434/api/embeddings";
+        /// <summary>
+        /// The qdrant base
+        /// </summary>
         private const string QdrantBase = "http://localhost:6333";
+        /// <summary>
+        /// The collection
+        /// </summary>
         private const string Collection = "repo_chunks";
 
+        /// <summary>
+        /// The global file index
+        /// </summary>
         private static int globalFileIndex = 0;
+        /// <summary>
+        /// The global file count
+        /// </summary>
         private static int globalFileCount = 0;
 
+        /// <summary>
+        /// Main the args
+        /// </summary>
+        /// <param name="args">The args</param>
         public static async Task Main(string[] args)
         {
             Console.Clear();
@@ -58,6 +83,12 @@ namespace Alis.App.Agent
         // ============================================================
         // FILE PROCESSING
         // ============================================================
+        /// <summary>
+        /// Processes the file using the specified file
+        /// </summary>
+        /// <param name="file">The file</param>
+        /// <param name="index">The index</param>
+        /// <param name="total">The total</param>
         private static async Task ProcessFile(string file, int index, int total)
         {
             Console.WriteLine($"\n▶ FILE [{index}/{total}]");
@@ -100,11 +131,19 @@ namespace Alis.App.Agent
         // ============================================================
         // LIVE UI (IMPORTANT PART)
         // ============================================================
+        /// <summary>
+        /// Updates the chunk progress using the specified current
+        /// </summary>
+        /// <param name="current">The current</param>
+        /// <param name="total">The total</param>
         private static void UpdateChunkProgress(int current, int total)
         {
             Console.Write($"\r   ℹ Store chunk {current}/{total}   ");
         }
 
+        /// <summary>
+        /// Prints the header
+        /// </summary>
         private static void PrintHeader()
         {
             Console.WriteLine("========================================");
@@ -115,6 +154,10 @@ namespace Alis.App.Agent
         // ============================================================
         // ENV VALIDATION
         // ============================================================
+        /// <summary>
+        /// Validates the environment
+        /// </summary>
+        /// <returns>A task containing the bool</returns>
         private static async Task<bool> ValidateEnvironment()
         {
             Console.WriteLine("▶ ENV CHECK");
@@ -143,6 +186,10 @@ namespace Alis.App.Agent
         // ============================================================
         // OLLAMA
         // ============================================================
+        /// <summary>
+        /// Checks the ollama
+        /// </summary>
+        /// <returns>A task containing the bool</returns>
         private static async Task<bool> CheckOllama()
         {
             try
@@ -166,6 +213,10 @@ namespace Alis.App.Agent
         // ============================================================
         // QDRANT
         // ============================================================
+        /// <summary>
+        /// Checks the qdrant
+        /// </summary>
+        /// <returns>A task containing the bool</returns>
         private static async Task<bool> CheckQdrant()
         {
             try
@@ -181,6 +232,9 @@ namespace Alis.App.Agent
             }
         }
 
+        /// <summary>
+        /// Ensures the collection
+        /// </summary>
         private static async Task EnsureCollection()
         {
             Console.WriteLine("   ℹ Collection check...");
@@ -214,6 +268,11 @@ namespace Alis.App.Agent
         // ============================================================
         // EMBEDDINGS
         // ============================================================
+        /// <summary>
+        /// Gets the embedding using the specified text
+        /// </summary>
+        /// <param name="text">The text</param>
+        /// <returns>A task containing the float array</returns>
         private static async Task<float[]> GetEmbedding(string text)
         {
             var res = await http.PostAsJsonAsync(OllamaUrl, new
@@ -236,6 +295,12 @@ namespace Alis.App.Agent
         // ============================================================
         // STORAGE
         // ============================================================
+        /// <summary>
+        /// Stores the chunk using the specified file
+        /// </summary>
+        /// <param name="file">The file</param>
+        /// <param name="content">The content</param>
+        /// <param name="embedding">The embedding</param>
         private static async Task StoreChunk(string file, string content, float[] embedding)
         {
             var payload = new
@@ -268,6 +333,11 @@ namespace Alis.App.Agent
         // ============================================================
         // CHUNKING (SIMPLE BUT STABLE)
         // ============================================================
+        /// <summary>
+        /// Splits the code using the specified code
+        /// </summary>
+        /// <param name="code">The code</param>
+        /// <returns>The chunks</returns>
         private static List<string> SplitCode(string code)
         {
             var chunks = new List<string>();

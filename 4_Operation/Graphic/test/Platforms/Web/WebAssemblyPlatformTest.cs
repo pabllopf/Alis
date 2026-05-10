@@ -91,6 +91,12 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(buttons[1]);
         }
 
+        /// <summary>
+        /// Invokes the private using the specified instance
+        /// </summary>
+        /// <param name="instance">The instance</param>
+        /// <param name="methodName">The method name</param>
+        /// <param name="arguments">The arguments</param>
         private static void InvokePrivate(object instance, string methodName, params object[] arguments)
         {
             MethodInfo method = instance.GetType().GetMethod(methodName, BindingFlags.Instance | BindingFlags.NonPublic);

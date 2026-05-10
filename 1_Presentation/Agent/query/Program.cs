@@ -8,18 +8,43 @@ using System.Threading.Tasks;
 
 namespace Alis.App.Query;
 
+/// <summary>
+/// The query service class
+/// </summary>
 public sealed class QueryService
 {
+    /// <summary>
+    /// The http client
+    /// </summary>
     private readonly HttpClient _httpClient;
 
+    /// <summary>
+    /// The ollama endpoint
+    /// </summary>
     private const string OllamaEndpoint = "http://localhost:11434";
+    /// <summary>
+    /// The qdrant endpoint
+    /// </summary>
     private const string QdrantEndpoint = "http://localhost:6333";
 
+    /// <summary>
+    /// The embedding model
+    /// </summary>
     private const string EmbeddingModel = "nomic-embed-text";
+    /// <summary>
+    /// The chat model
+    /// </summary>
     private const string ChatModel = "qwen3.5:27b-coding-nvfp4";
 
+    /// <summary>
+    /// The collection name
+    /// </summary>
     private const string CollectionName = "repo_chunks";
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="QueryService"/> class
+    /// </summary>
+    /// <param name="httpClient">The http client</param>
     public QueryService(HttpClient httpClient)
     {
         _httpClient = httpClient;
@@ -28,6 +53,12 @@ public sealed class QueryService
     // =====================================================
     // PUBLIC API
     // =====================================================
+    /// <summary>
+    /// Asks the question
+    /// </summary>
+    /// <param name="question">The question</param>
+    /// <param name="topK">The top</param>
+    /// <returns>A task containing the string</returns>
     public async Task<string> AskAsync(string question, int topK = 8)
     {
         LogHeader(question);
@@ -48,6 +79,11 @@ public sealed class QueryService
     // =====================================================
     // QUERY REWRITE (INTENT FIX)
     // =====================================================
+    /// <summary>
+    /// Rewrites the query using the specified q
+    /// </summary>
+    /// <param name="q">The </param>
+    /// <returns>The </returns>
     private static string RewriteQuery(string q)
     {
         q = q.ToLowerInvariant();
@@ -64,6 +100,13 @@ public sealed class QueryService
     // =====================================================
     // EMBEDDING
     // =====================================================
+    /// <summary>
+    /// Gets the embedding using the specified text
+    /// </summary>
+    /// <param name="text">The text</param>
+    /// <exception cref="Exception">Embedding error:\n{raw}</exception>
+    /// <exception cref="Exception">Embedding field missing</exception>
+    /// <returns>A task containing the float array</returns>
     private async Task<float[]> GetEmbeddingAsync(string text)
     {
         var payload = new
@@ -97,6 +140,13 @@ public sealed class QueryService
     // =====================================================
     // QDRANT SEARCH (FULL ROBUST PARSER)
     // =====================================================
+    /// <summary>
+    /// Searches the embedding
+    /// </summary>
+    /// <param name="embedding">The embedding</param>
+    /// <param name="topK">The top</param>
+    /// <exception cref="Exception">Qdrant HTTP error:\n{raw}</exception>
+    /// <returns>A task containing a list of search result</returns>
     private async Task<List<SearchResult>> SearchAsync(float[] embedding, int topK)
     {
         var payload = new
@@ -149,6 +199,11 @@ public sealed class QueryService
     // =====================================================
     // PARSER
     // =====================================================
+    /// <summary>
+    /// Parses the points using the specified array
+    /// </summary>
+    /// <param name="array">The array</param>
+    /// <returns>The results</returns>
     private List<SearchResult> ParsePoints(JsonElement array)
     {
         var results = new List<SearchResult>();
@@ -184,6 +239,13 @@ public sealed class QueryService
     // =====================================================
     // LLM
     // =====================================================
+    /// <summary>
+    /// Asks the llm using the specified question
+    /// </summary>
+    /// <param name="question">The question</param>
+    /// <param name="context">The context</param>
+    /// <exception cref="Exception">LLM error:\n{raw}</exception>
+    /// <returns>A task containing the string</returns>
     private async Task<string> AskLLMAsync(string question, string context)
     {
         var payload = new
@@ -236,6 +298,11 @@ CONTEXT:
     // =====================================================
     // CONTEXT
     // =====================================================
+    /// <summary>
+    /// Builds the context using the specified results
+    /// </summary>
+    /// <param name="results">The results</param>
+    /// <returns>The string</returns>
     private static string BuildContext(List<SearchResult> results)
     {
         var sb = new StringBuilder();
@@ -257,6 +324,10 @@ CONTEXT:
     // =====================================================
     // LOGGING
     // =====================================================
+    /// <summary>
+    /// Logs the header using the specified question
+    /// </summary>
+    /// <param name="question">The question</param>
     private static void LogHeader(string question)
     {
         Console.WriteLine("\n========================================");
@@ -265,6 +336,10 @@ CONTEXT:
         Console.WriteLine($"▶ Question: {question}\n");
     }
 
+    /// <summary>
+    /// Logs the results using the specified results
+    /// </summary>
+    /// <param name="results">The results</param>
     private static void LogResults(List<SearchResult> results)
     {
         Console.WriteLine("\n▶ MATCHES");
@@ -275,6 +350,10 @@ CONTEXT:
         Console.WriteLine();
     }
 
+    /// <summary>
+    /// Logs the raw qdrant using the specified raw
+    /// </summary>
+    /// <param name="raw">The raw</param>
     private static void LogRawQdrant(string raw)
     {
         Console.WriteLine("\n▶ QDRANT RAW RESPONSE:");
@@ -284,9 +363,21 @@ CONTEXT:
     // =====================================================
     // SAFE HELPERS
     // =====================================================
+    /// <summary>
+    /// Safes the el
+    /// </summary>
+    /// <param name="el">The el</param>
+    /// <param name="key">The key</param>
+    /// <returns>The string</returns>
     private static string Safe(JsonElement el, string key)
         => el.TryGetProperty(key, out var v) ? v.GetString() ?? "" : "";
 
+    /// <summary>
+    /// Safes the int using the specified el
+    /// </summary>
+    /// <param name="el">The el</param>
+    /// <param name="key">The key</param>
+    /// <returns>The int</returns>
     private static int SafeInt(JsonElement el, string key)
         => el.TryGetProperty(key, out var v) ? v.GetInt32() : 0;
 }
@@ -294,21 +385,48 @@ CONTEXT:
 // =====================================================
 // MODEL
 // =====================================================
+/// <summary>
+/// The search result class
+/// </summary>
 public sealed class SearchResult
 {
+    /// <summary>
+    /// Gets or inits the value of the score
+    /// </summary>
     public double Score { get; init; }
+    /// <summary>
+    /// Gets or inits the value of the file
+    /// </summary>
     public string File { get; init; } = "";
+    /// <summary>
+    /// Gets or inits the value of the content
+    /// </summary>
     public string Content { get; init; } = "";
+    /// <summary>
+    /// Gets or inits the value of the chunk index
+    /// </summary>
     public int ChunkIndex { get; init; }
+    /// <summary>
+    /// Gets or inits the value of the start line
+    /// </summary>
     public int StartLine { get; init; }
+    /// <summary>
+    /// Gets or inits the value of the end line
+    /// </summary>
     public int EndLine { get; init; }
 }
 
 // =====================================================
 // PROGRAM LOOP
 // =====================================================
+/// <summary>
+/// The program class
+/// </summary>
 public static class Program
 {
+    /// <summary>
+    /// Main
+    /// </summary>
     public static async Task Main()
     {
         Console.OutputEncoding = Encoding.UTF8;
