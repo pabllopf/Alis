@@ -43,20 +43,19 @@ namespace Alis.Core.Aspect.Time.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            // Create a new Clock instance
-            Clock clock = new Clock();
-            clock.Start();
-
-            int i = 0;
-            while (i < 1000)
-            {
-                Thread.Sleep(1);
-                i++;
-            }
-
-            // Stop the clock and print the elapsed time
+            Clock clock = Clock.Create();
+            Thread.Sleep(150);
             clock.Stop();
-            Console.ReadKey();
+
+            Console.WriteLine($"First measurement: {clock.ElapsedMilliseconds} ms");
+
+            clock.Restart();
+            Thread.Sleep(75);
+            clock.Stop();
+
+            Console.WriteLine($"Second measurement after restart: {clock.ElapsedMilliseconds} ms");
+            Console.WriteLine($"Elapsed ticks: {clock.ElapsedTicks}");
+            Console.WriteLine($"Elapsed string: {clock}");
         }
     }
 }

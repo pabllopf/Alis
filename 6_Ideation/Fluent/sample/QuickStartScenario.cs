@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:QuickStartScenario.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,34 +27,25 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
 namespace Alis.Core.Aspect.Fluent.Sample
 {
     /// <summary>
-    ///     The program class
+    ///     Small fluent-builder scenario for sample reuse.
     /// </summary>
-    public static class Program
+    internal static class QuickStartScenario
     {
         /// <summary>
-        ///     Main the args
+        ///     Creates a configured sports car using fluent API.
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
+        /// <returns>A configured <see cref="Car"/> instance.</returns>
+        internal static Car CreateSportsCar()
         {
-            Car sampleCar = Car
+            return Car
                 .Create()
-                .WithName("Ferrari")
-                .WithModel("F8")
-                .WithColor("Red")
+                .WithName("Alis Racer")
+                .WithModel("X1")
+                .WithColor("Blue")
                 .Build();
-
-            Car quickStartCar = QuickStartScenario.CreateSportsCar();
-
-            Console.WriteLine($"Car Name: {sampleCar.Name}");
-            Console.WriteLine($"Car Model: {sampleCar.Model}");
-            Console.WriteLine($"Car Color: {sampleCar.Color}");
-            Console.WriteLine($"Quick Start Car: {quickStartCar.Name} / {quickStartCar.Model} / {quickStartCar.Color}");
         }
     }
 }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:IFastImmutableArrayContractTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -28,33 +28,39 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Math.Collections;
+using Xunit;
 
-namespace Alis.Core.Aspect.Fluent.Sample
+namespace Alis.Core.Aspect.Math.Test.Collections
 {
     /// <summary>
-    ///     The program class
+    ///     Tests the IFastImmutableArray contract through reflection.
     /// </summary>
-    public static class Program
+    public class IFastImmutableArrayContractTest
     {
         /// <summary>
-        ///     Main the args
+        ///     Tests that FastImmutableArray implements IFastImmutableArray.
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
+        [Fact]
+        public void FastImmutableArray_ImplementsInternalContractInterface()
         {
-            Car sampleCar = Car
-                .Create()
-                .WithName("Ferrari")
-                .WithModel("F8")
-                .WithColor("Red")
-                .Build();
+            Type interfaceType = typeof(FastImmutableArray<int>).Assembly.GetType("Alis.Core.Aspect.Math.Collections.IFastImmutableArray", true);
 
-            Car quickStartCar = QuickStartScenario.CreateSportsCar();
+            Assert.Contains(interfaceType, typeof(FastImmutableArray<int>).GetInterfaces());
+        }
 
-            Console.WriteLine($"Car Name: {sampleCar.Name}");
-            Console.WriteLine($"Car Model: {sampleCar.Model}");
-            Console.WriteLine($"Car Color: {sampleCar.Color}");
-            Console.WriteLine($"Quick Start Car: {quickStartCar.Name} / {quickStartCar.Model} / {quickStartCar.Color}");
+        /// <summary>
+        ///     Tests that IFastImmutableArray.Array returns the same underlying array instance.
+        /// </summary>
+        [Fact]
+        public void ContractArrayProperty_ReturnsBackingArrayReference()
+        {
+            int[] backingArray = {4, 8, 15, 16};
+            object immutable = new FastImmutableArray<int>(backingArray);
+            Type interfaceType = immutable.GetType().Assembly.GetType("Alis.Core.Aspect.Math.Collections.IFastImmutableArray", true);
+            object untypedArray = interfaceType.GetProperty("Array")?.GetValue(immutable);
+
+            Assert.Same(backingArray, untypedArray);
         }
     }
 }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:QuickStartScenario.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,34 +27,26 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
-namespace Alis.Core.Aspect.Fluent.Sample
+namespace Alis.Core.Aspect.Data.Sample
 {
     /// <summary>
-    ///     The program class
+    ///     Small helper scenario used by sample applications.
     /// </summary>
-    public static class Program
+    internal static class QuickStartScenario
     {
         /// <summary>
-        ///     Main the args
+        ///     Creates a sample music album payload.
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
+        /// <returns>A ready-to-serialize album instance.</returns>
+        internal static Album CreateAlbum()
         {
-            Car sampleCar = Car
-                .Create()
-                .WithName("Ferrari")
-                .WithModel("F8")
-                .WithColor("Red")
-                .Build();
-
-            Car quickStartCar = QuickStartScenario.CreateSportsCar();
-
-            Console.WriteLine($"Car Name: {sampleCar.Name}");
-            Console.WriteLine($"Car Model: {sampleCar.Model}");
-            Console.WriteLine($"Car Color: {sampleCar.Color}");
-            Console.WriteLine($"Quick Start Car: {quickStartCar.Name} / {quickStartCar.Model} / {quickStartCar.Color}");
+            return new Album
+            {
+                Name = "Alis Demo Album",
+                TrackCount = 12,
+                DurationSeconds = 2640,
+                IsAvailable = true
+            };
         }
     }
 }

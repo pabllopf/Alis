@@ -35,7 +35,8 @@ namespace Alis.Core.Aspect.Data.Json
     ///     The json native ignore attribute class
     /// </summary>
     /// <seealso cref="Attribute" />
-    public class JsonNativeIgnoreAttribute : Attribute
+    [AttributeUsage(AttributeTargets.Property)]
+    public sealed class JsonNativeIgnoreAttribute : Attribute
     {
     }
 }

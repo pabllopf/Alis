@@ -43,23 +43,27 @@ namespace Alis.Core.Aspect.Memory.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            LoadAsset();
+            LoadAsset("app.bmp");
         }
 
         /// <summary>
-        ///     Loads the asset
+        ///     Loads the asset from the embedded assets.pack registry.
         /// </summary>
-        public static void LoadAsset()
+        /// <param name="resourceName">The asset resource path.</param>
+        public static void LoadAsset(string resourceName)
         {
-            Console.WriteLine("Intentando cargar 'asset.pak' de forma AOT-compatible...");
+            Console.WriteLine($"Loading '{resourceName}' from assets.pack in an AOT-safe way...");
 
             try
             {
-                using (Stream streamPack = AssetRegistry.GetResourceMemoryStreamByName("app.bmp"))
+                string resourcePath = AssetRegistry.GetResourcePathByName(resourceName);
+                Console.WriteLine($"Resolved extracted path: {resourcePath}");
+
+                using (Stream streamPack = AssetRegistry.GetResourceMemoryStreamByName(resourceName))
                 {
                     if (streamPack == null)
                     {
-                        throw new InvalidOperationException("Recurso 'app.bmp' no encontrado en el registro de recursos.");
+                        throw new InvalidOperationException($"Resource '{resourceName}' was not found.");
                     }
 
                     using (MemoryStream memoryStream = new MemoryStream())
@@ -67,14 +71,17 @@ namespace Alis.Core.Aspect.Memory.Sample
                         streamPack.CopyTo(memoryStream);
                         byte[] assetData = memoryStream.ToArray();
 
-                        Console.WriteLine($"✅ Recurso 'app.bmp' cargado correctamente. Tamaño: {assetData.Length} bytes.");
+                        Console.WriteLine($"Loaded '{resourceName}' successfully. Size: {assetData.Length} bytes.");
                     }
                 }
             }
             catch (InvalidOperationException ex)
             {
-                // Captura la excepción si el recurso no se encontró.
-                Console.WriteLine($"❌ Error AOT al cargar recurso: {ex.Message}");
+                Console.WriteLine($"Asset registry is not ready: {ex.Message}");
+            }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine($"Resource lookup failed: {ex.Message}");
             }
         }
     }

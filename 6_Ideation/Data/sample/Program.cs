@@ -85,6 +85,9 @@ namespace Alis.Core.Aspect.Data.Sample
                 DemonstrateAlbum();
                 Console.WriteLine();
 
+                Album quickStartAlbum = QuickStartScenario.CreateAlbum();
+                Console.WriteLine($"Quick start album: {quickStartAlbum.Name} ({quickStartAlbum.TrackCount} tracks)");
+
                 Console.WriteLine("╔═════════════════════════════════════════════════════════════╗");
                 Console.WriteLine("║                    All Tests Completed Successfully         ║");
                 Console.WriteLine("╚═════════════════════════════════════════════════════════════╝");

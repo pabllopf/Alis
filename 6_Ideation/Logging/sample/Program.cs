@@ -52,6 +52,7 @@ namespace Alis.Core.Aspect.Logging.Sample
         public static void Main(string[] args)
         {
             Console.WriteLine("=== Alis Logging Framework - Complete Sample Suite ===\n");
+            Console.WriteLine($"Quick start filter: {QuickStartScenario.CreateInfoFilter().Name}");
 
             // Example 1: Basic logging with default factory
             BasicLoggingExample();
@@ -434,10 +435,12 @@ namespace Alis.Core.Aspect.Logging.Sample
         {
             Console.WriteLine("Example 10: Backward Compatibility");
 
+#pragma warning disable CS0618
             // Static Logger class still works for legacy code
             Logger.Info("Using legacy static Logger API");
             Logger.Warning("This uses the default logger instance");
             Logger.Log("All static methods still function");
+#pragma warning restore CS0618
 
             Console.WriteLine("(No exceptions thrown - backward compatible)");
         }

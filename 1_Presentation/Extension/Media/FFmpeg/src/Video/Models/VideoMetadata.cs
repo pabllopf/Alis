@@ -161,13 +161,11 @@ namespace Alis.Extension.Media.FFmpeg.Video.Models
         /// <summary>
         ///     Get first video stream
         /// </summary>
-        [JsonNativeIgnore]
         public MediaStream GetFirstVideoStream() => Streams.Where(x => x.IsVideo).FirstOrDefault();
 
         /// <summary>
         ///     Get first audio stream
         /// </summary>
-        [JsonNativeIgnore]
         public MediaStream GetFirstAudioStream() => Streams.Where(x => x.IsAudio).FirstOrDefault();
     }
 }

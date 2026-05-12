@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:QuickStartScenario.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,34 +27,20 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
+using Alis.Core.Aspect.Logging.Abstractions;
+using Alis.Core.Aspect.Logging.Filters;
 
-namespace Alis.Core.Aspect.Fluent.Sample
+namespace Alis.Core.Aspect.Logging.Sample
 {
     /// <summary>
-    ///     The program class
+    ///     Small logging scenario helper for sample composition.
     /// </summary>
-    public static class Program
+    internal static class QuickStartScenario
     {
         /// <summary>
-        ///     Main the args
+        ///     Creates an info-level log filter used by sample pipelines.
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-            Car sampleCar = Car
-                .Create()
-                .WithName("Ferrari")
-                .WithModel("F8")
-                .WithColor("Red")
-                .Build();
-
-            Car quickStartCar = QuickStartScenario.CreateSportsCar();
-
-            Console.WriteLine($"Car Name: {sampleCar.Name}");
-            Console.WriteLine($"Car Model: {sampleCar.Model}");
-            Console.WriteLine($"Car Color: {sampleCar.Color}");
-            Console.WriteLine($"Quick Start Car: {quickStartCar.Name} / {quickStartCar.Model} / {quickStartCar.Color}");
-        }
+        /// <returns>A configured log filter instance.</returns>
+        internal static ILogFilter CreateInfoFilter() => new LogLevelFilter(LogLevel.Info);
     }
 }

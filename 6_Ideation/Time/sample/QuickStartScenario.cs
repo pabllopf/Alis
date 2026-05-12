@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:QuickStartScenario.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,34 +27,17 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
-namespace Alis.Core.Aspect.Fluent.Sample
+namespace Alis.Core.Aspect.Time.Sample
 {
     /// <summary>
-    ///     The program class
+    ///     Small helpers for timing-related samples.
     /// </summary>
-    public static class Program
+    internal static class QuickStartScenario
     {
         /// <summary>
-        ///     Main the args
+        ///     Creates and starts a clock in one call.
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-            Car sampleCar = Car
-                .Create()
-                .WithName("Ferrari")
-                .WithModel("F8")
-                .WithColor("Red")
-                .Build();
-
-            Car quickStartCar = QuickStartScenario.CreateSportsCar();
-
-            Console.WriteLine($"Car Name: {sampleCar.Name}");
-            Console.WriteLine($"Car Model: {sampleCar.Model}");
-            Console.WriteLine($"Car Color: {sampleCar.Color}");
-            Console.WriteLine($"Quick Start Car: {quickStartCar.Name} / {quickStartCar.Model} / {quickStartCar.Color}");
-        }
+        /// <returns>A running clock instance.</returns>
+        internal static Clock StartClock() => Clock.Create();
     }
 }

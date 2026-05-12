@@ -58,7 +58,7 @@ namespace Alis.Core.Aspect.Fluent.Sample
         /// <returns>The car builder</returns>
         public CarBuilder WithColor(string value)
         {
-            _car.Model = value;
+            _car.Color = value;
             return this;
         }
 
@@ -69,7 +69,7 @@ namespace Alis.Core.Aspect.Fluent.Sample
         /// <returns>The car builder</returns>
         public CarBuilder WithModel(string value)
         {
-            _car.Color = value;
+            _car.Model = value;
             return this;
         }
 

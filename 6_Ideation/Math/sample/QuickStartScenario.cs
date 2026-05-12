@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:QuickStartScenario.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,34 +27,25 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
+using Alis.Core.Aspect.Math.Vector;
 
-namespace Alis.Core.Aspect.Fluent.Sample
+namespace Alis.Core.Aspect.Math.Sample
 {
     /// <summary>
-    ///     The program class
+    ///     Math helper scenario for sample programs.
     /// </summary>
-    public static class Program
+    internal static class QuickStartScenario
     {
         /// <summary>
-        ///     Main the args
+        ///     Computes squared distance in 2D without square root cost.
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
+        /// <param name="from">Start position.</param>
+        /// <param name="to">End position.</param>
+        /// <returns>The squared distance value.</returns>
+        internal static float DistanceSquared(Vector2F from, Vector2F to)
         {
-            Car sampleCar = Car
-                .Create()
-                .WithName("Ferrari")
-                .WithModel("F8")
-                .WithColor("Red")
-                .Build();
-
-            Car quickStartCar = QuickStartScenario.CreateSportsCar();
-
-            Console.WriteLine($"Car Name: {sampleCar.Name}");
-            Console.WriteLine($"Car Model: {sampleCar.Model}");
-            Console.WriteLine($"Car Color: {sampleCar.Color}");
-            Console.WriteLine($"Quick Start Car: {quickStartCar.Name} / {quickStartCar.Model} / {quickStartCar.Color}");
+            Vector2F delta = to - from;
+            return (delta.X * delta.X) + (delta.Y * delta.Y);
         }
     }
 }
