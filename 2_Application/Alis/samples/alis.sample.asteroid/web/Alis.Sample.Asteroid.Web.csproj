@@ -42,72 +42,10 @@
             Overwrite="true" />
 
         <WriteLinesToFile
-            Condition="'$(IsBrowserWasm)' == 'true' AND !Exists('$(MSBuildProjectDirectory)/Native/emscripten.c')"
+            Condition="'$(IsBrowserWasm)' == 'true'"
             File="$(MSBuildProjectDirectory)/Native/emscripten.c"
-            Lines='#include &lt;emscripten.h&gt;
-// Keyboard callbacks
-extern void registerKeyboardCallbacks(void* onKeyDown, void* onKeyUp, void* onCharInput);
-// Mouse callbacks  
-extern void registerMouseCallbacks(void* onMouseMove, void* onMouseDown, void* onMouseUp, void* onMouseWheel);
-// Gamepad callbacks
-extern void registerGamepadCallbacks(void* onGamepadConnect, void* onGamepadDisconnect);
-// Window callbacks
-extern void registerWindowCallbacks(void* onWindowResize, void* onWindowClose, void* onWindowFocus);
-// Gamepad functions
-extern void* getConnectedGamepads(void);
-extern void* getGamepadAxes(int gamepadIndex);
-extern void* getGamepadButtons(int gamepadIndex);
-// Array utilities
-extern int getArrayLength(void* arrayPtr);
-extern int getArrayIntElement(void* arrayPtr, int index);
-extern float getArrayFloatElement(void* arrayPtr, int index);
-extern int getArrayBoolElement(void* arrayPtr, int index);
-extern void freeArray(void* arrayPtr);
-// Canvas functions
-extern void showCanvas(void);
-extern void hideCanvas(void);
-extern void setWindowTitle(const char* title);
-extern void setCanvasSize(int width, int height);
-extern void setWindowIcon(const char* iconPath);
-// Window position
-extern int getWindowPositionX(void);
-extern int getWindowPositionY(void);
-extern float getDevicePixelRatio(void);
-// Fullscreen
-extern int requestFullscreen(void);
-extern int exitFullscreen(void);
-extern int isFullscreenEnabled(void);
-// Pointer lock
-extern int lockPointer(void);
-extern int unlockPointer(void);
-extern int isPointerLocked(void);
-// Gamepad vibration
-extern int vibrateGamepad(int gamepadIndex, float leftMotor, float rightMotor, float duration);
-// System time
-extern double getSystemTimeMs(void);
-// File operations
-extern void* openFileDialog(const char* mimeTypes);
-extern int saveFile(const char* filename, unsigned char* data, int dataLength);
-// Clipboard
-extern int copyToClipboard(const char* text);
-extern void* pasteFromClipboard(void);
-// Dialogs
-extern void showAlert(const char* message);
-extern int showConfirm(const char* message);
-// System info
-extern void* getLanguage(void);
-extern int isOnline(void);
-extern float getBatteryLevel(void);
-extern int isCharging(void);
-extern int getOrientation(void);
-// Permissions
-extern int requestCameraPermission(void);
-extern int requestMicrophonePermission(void);
-// Console
-extern void consoleLog(const char* message);
-extern void consoleWarn(const char* message);
-extern void consoleError(const char* message);'
-            Overwrite="false" />
+            Lines='#include "emscripten.h"'
+            Overwrite="true" />
 
         <WriteLinesToFile
             Condition="'$(IsBrowserWasm)' == 'true'"
@@ -786,9 +724,6 @@ namespace $(RootNamespace)
         <None Include="$(MSBuildProjectDirectory)/.gitattributes" CopyToPublishDirectory="Always" CopyToOutputDirectory="Always" />
         <None Include="$(MSBuildProjectDirectory)/.nojekyll" CopyToPublishDirectory="Always" CopyToOutputDirectory="Always" />
 
-        <WasmExtraFilesToDeploy Include="$(MSBuildProjectDirectory)/index.html" />
-        <WasmExtraFilesToDeploy Include="$(MSBuildProjectDirectory)/main.js" />
-
         <NativeFileReference Include="$(MSBuildProjectDirectory)/Native/libEGL.c" ScanForPInvokes="true" />
         <NativeFileReference Include="$(MSBuildProjectDirectory)/Native/openal32.c" ScanForPInvokes="true" />
         <NativeFileReference Include="$(MSBuildProjectDirectory)/Native/emscripten.c" ScanForPInvokes="true" />
@@ -800,7 +735,7 @@ namespace $(RootNamespace)
 
 
 
-   <ItemGroup Condition="'$(IsBrowserWasm)' == 'true' AND $(NoAutoGenerateFiles) != 'true'">
+    <ItemGroup Condition="'$(IsBrowserWasm)' == 'true' AND $(NoAutoGenerateFiles) != 'true'">
         <Compile Condition="!Exists('$(MSBuildProjectDirectory)/EntryPoint.cs')" Include="$(MSBuildProjectDirectory)/EntryPoint.cs" Visible="false" />
         <Compile Condition="!Exists('$(MSBuildProjectDirectory)/Interop.cs')" Include="$(MSBuildProjectDirectory)/Interop.cs" Visible="false" />
         <Compile Condition="!Exists('$(MSBuildProjectDirectory)/Game.cs')" Include="$(MSBuildProjectDirectory)/Game.cs" Visible="false" />
@@ -815,22 +750,7 @@ namespace $(RootNamespace)
     <ItemGroup>
         <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation')) OR $(ProjectDir.Contains('2_Application'))"
                           Include="
-          $(SolutionDir)3_Structuration/**/**/generator/**/*Generator.csproj;               
           $(SolutionDir)4_Operation/**/**/generator/**/*Generator.csproj;
-          $(SolutionDir)5_Declaration/**/**/generator/**/*Generator.csproj;
-          $(SolutionDir)6_Ideation/**/**/generator/**/*Generator.csproj;"
-                          OutputItemType="Analyzer"
-                          PrivateAssets="all"
-                          ReferenceOutputAssembly="false">
-                <Properties>
-                    TargetFramework=netstandard2.0
-                </Properties>
-        </ProjectReference>
-
-        <ProjectReference Condition="$(ProjectDir.Contains('3_Structuration'))"
-                          Include="          
-          $(SolutionDir)4_Operation/**/**/generator/**/*Generator.csproj;
-          $(SolutionDir)5_Declaration/**/**/generator/**/*Generator.csproj;
           $(SolutionDir)6_Ideation/**/**/generator/**/*Generator.csproj;"
                           OutputItemType="Analyzer"
                           PrivateAssets="all"
@@ -839,169 +759,134 @@ namespace $(RootNamespace)
                 TargetFramework=netstandard2.0
             </Properties>
         </ProjectReference>
-
-        <ProjectReference Condition="$(ProjectDir.Contains('4_Operation'))"
-                          Include="          
-          $(SolutionDir)5_Declaration/**/**/generator/**/*Generator.csproj;
-          $(SolutionDir)6_Ideation/**/**/generator/**/*Generator.csproj;"
-                          OutputItemType="Analyzer"
-                          PrivateAssets="all"
-                          ReferenceOutputAssembly="false">
-            <Properties>
-                TargetFramework=netstandard2.0
-            </Properties>
-        </ProjectReference>
-
-        <ProjectReference Condition="$(ProjectDir.Contains('5_Declaration'))"
-                          Include="          
-          $(SolutionDir)6_Ideation/**/**/generator/**/*Generator.csproj;"
-                          OutputItemType="Analyzer"
-                          PrivateAssets="all"
-                          ReferenceOutputAssembly="false">
-            <Properties>
-                TargetFramework=netstandard2.0
-            </Properties>
-        </ProjectReference>
-        
     </ItemGroup>
 
-           <!-- ========== PROPIEDADES DE ASSETS ========== -->
-       <PropertyGroup>
-           <!-- Carpeta de recursos -->
-           <AssetsDir>$(ProjectDir)Assets</AssetsDir>
-   
-           <!-- Archivos generados intermedios -->
-           <AssetsZip>$(ProjectDir)obj/assets.zip</AssetsZip>
-           <AssetsOutput>$(ProjectDir)obj/assets.pack</AssetsOutput>
-   
-           <!-- Hash usado para detectar cambios reales de contenido -->
-           <AssetHashAlgorithm Condition="'$(AssetHashAlgorithm)' == ''">SHA256</AssetHashAlgorithm>
-       </PropertyGroup>
-   
-       <PropertyGroup Condition="'$(AssetsOutput)' != ''">
-           <AssetsIntermediateDir Condition="'$(AssetsIntermediateDir)' == ''">$([System.IO.Path]::GetDirectoryName('$(AssetsOutput)'))</AssetsIntermediateDir>
-           <AssetsManifest Condition="'$(AssetsManifest)' == ''">$(AssetsIntermediateDir)/assets.manifest</AssetsManifest>
-       </PropertyGroup>
-   
-       <ItemGroup Condition="'$(AssetsDir)' != '' AND Exists('$(AssetsDir)')">
-           <AssetPackInput Include="$(AssetsDir)/**/*" />
-       </ItemGroup>
-   
-       <Target Name="_PrepareAssetPackManifest"
-               Condition="'$(AssetsOutput)' != '' AND Exists('$(ProjectDir)')">
-           <Message Importance="High"
-                    Text="[Assets] _PrepareAssetPackManifest iniciado. AssetsDir='$(AssetsDir)' AssetsManifest='$(AssetsManifest)' Algoritmo='$(AssetHashAlgorithm)'" />
-   
-           <MakeDir Directories="$(AssetsIntermediateDir)" Condition="'$(AssetsIntermediateDir)' != ''" />
-   
-           <Message Importance="High"
-                    Text="[Assets] Ficheros detectados: @(AssetPackInput->Count())"
-                    Condition="Exists('$(AssetsDir)')" />
-   
-           <!-- Calcula hash por fichero y conserva metadatos (incluye FullPath) -->
-           <GetFileHash Files="@(AssetPackInput)"
-                        Algorithm="$(AssetHashAlgorithm)"
-                        Condition="Exists('$(AssetsDir)')">
-               <Output TaskParameter="Items" ItemName="AssetPackHashed" />
-           </GetFileHash>
-   
-           <!-- Log por fichero: ruta completa + hash -->
-           <Message Importance="Normal"
-                    Text="[Assets] HASH %(AssetPackHashed.FullPath) | %(AssetPackHashed.FileHash)"
-                    Condition="Exists('$(AssetsDir)')" />
-   
-           <!-- Manifiesto: FullPath|Hash -->
-           <WriteLinesToFile File="$(AssetsManifest)"
-                             Lines="@(AssetPackHashed->'%(FullPath)|%(FileHash)')"
-                             Overwrite="true"
-                             WriteOnlyWhenDifferent="true"
-                             Encoding="ASCII"
-                             Condition="Exists('$(AssetsDir)')" />
-   
-           <!-- Caso sin carpeta de assets -->
-           <WriteLinesToFile File="$(AssetsManifest)"
-                             Lines="__NO_ASSETS__"
-                             Overwrite="true"
-                             WriteOnlyWhenDifferent="true"
-                             Encoding="ASCII"
-                             Condition="!Exists('$(AssetsDir)')" />
-   
-           <Message Importance="High"
-                    Text="[Assets] Manifiesto generado en '$(AssetsManifest)'."
-                    Condition="Exists('$(AssetsDir)')" />
-   
-           <Message Importance="High"
-                    Text="[Assets] No existe AssetsDir. Se escribe marcador __NO_ASSETS__ en el manifiesto."
-                    Condition="!Exists('$(AssetsDir)')" />
-       </Target>
-   
-       <Target Name="ZipAssets"
-               DependsOnTargets="_PrepareAssetPackManifest"
-               BeforeTargets="BeforeBuild;BeforePublish"
-               Condition="'$(AssetsOutput)' != '' AND Exists('$(ProjectDir)')"
-               Inputs="$(AssetsManifest)"
-               Outputs="$(AssetsOutput)">
-   
-           <Message Text="[Assets] ZipAssets incremental: AssetsDir='$(AssetsDir)'; AssetsZip='$(AssetsZip)'; AssetsOutput='$(AssetsOutput)'; AssetsManifest='$(AssetsManifest)'"
-                    Importance="High" />
-   
-           <MakeDir Directories="$(AssetsIntermediateDir)" Condition="'$(AssetsIntermediateDir)' != ''" />
-   
-           <Delete Files="$(AssetsZip)" Condition="Exists('$(AssetsZip)') AND Exists('$(AssetsDir)')" />
-           <Message Importance="Normal"
-                    Text="[Assets] ZIP previo eliminado: $(AssetsZip)"
-                    Condition="Exists('$(AssetsDir)')" />
-   
-           <ZipDirectory SourceDirectory="$(AssetsDir)"
-                         DestinationFile="$(AssetsZip)"
-                         Condition="Exists('$(AssetsDir)')" />
-           <Message Importance="High"
-                    Text="[Assets] ZIP generado: $(AssetsZip)"
-                    Condition="Exists('$(AssetsDir)')" />
-   
-           <Exec Condition="Exists('$(AssetsDir)') AND '$(OS)' == 'Windows_NT'"
-                 Command="powershell -NoLogo -Command &quot;[Convert]::ToBase64String([System.IO.File]::ReadAllBytes('$(AssetsZip)')) | Out-File -FilePath '$(AssetsOutput)' -Encoding ASCII&quot;" />
-           <Message Importance="High"
-                    Text="[Assets] Base64 generado (Windows) en: $(AssetsOutput)"
-                    Condition="Exists('$(AssetsDir)') AND '$(OS)' == 'Windows_NT'" />
-   
-           <Exec Condition="Exists('$(AssetsDir)') AND '$(OS)' != 'Windows_NT'"
-                 Command="sh -c &quot;base64 &lt; '$(AssetsZip)' &gt; '$(AssetsOutput)'&quot;" />
-           <Message Importance="High"
-                    Text="[Assets] Base64 generado (Unix) en: $(AssetsOutput)"
-                    Condition="Exists('$(AssetsDir)') AND '$(OS)' != 'Windows_NT'" />
-   
-           <WriteLinesToFile File="$(AssetsOutput)"
-                             Lines=""
-                             Overwrite="true"
-                             WriteOnlyWhenDifferent="true"
-                             Encoding="ASCII"
-                             Condition="!Exists('$(AssetsDir)')" />
-           <Message Importance="High"
-                    Text="[Assets] Sin assets: se genera archivo vacío en $(AssetsOutput)"
-                    Condition="!Exists('$(AssetsDir)')" />
-       </Target>
-   
-       <!-- ========== REGISTRO DEL OUTPUT ========== -->
-       <ItemGroup>
-           <AdditionalFiles Include="$(AssetsOutput)"
-                            CopyToOutputDirectory="Never"
-                            CopyToPublishDirectory="Never"
-                            Visible="false" />
-        </ItemGroup>
-        <ItemGroup>
-          <ClCompile Include="Native\emscripten.c" />
-          <ClCompile Include="Native\emscripten_web.c" />
-          <ClCompile Include="Native\libEGL.c" />
-          <ClCompile Include="Native\openal32.c" />
-        </ItemGroup>
-        <ItemGroup>
-          <None Include="emscripten_web_bridge.js" CopyToPublishDirectory="PreserveNewest" />
-          <None Include="index.html" CopyToPublishDirectory="PreserveNewest" />
-          <None Include="main.js" CopyToPublishDirectory="PreserveNewest" />
-        </ItemGroup>
+    <!-- ========== PROPIEDADES DE ASSETS ========== -->
+    <PropertyGroup>
+        <!-- Carpeta de recursos -->
+        <AssetsDir>$(ProjectDir)Assets</AssetsDir>
 
-    
+        <!-- Archivos generados intermedios -->
+        <AssetsZip>$(ProjectDir)obj/assets.zip</AssetsZip>
+        <AssetsOutput>$(ProjectDir)obj/assets.pack</AssetsOutput>
+
+        <!-- Hash usado para detectar cambios reales de contenido -->
+        <AssetHashAlgorithm Condition="'$(AssetHashAlgorithm)' == ''">SHA256</AssetHashAlgorithm>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(AssetsOutput)' != ''">
+        <AssetsIntermediateDir Condition="'$(AssetsIntermediateDir)' == ''">$([System.IO.Path]::GetDirectoryName('$(AssetsOutput)'))</AssetsIntermediateDir>
+        <AssetsManifest Condition="'$(AssetsManifest)' == ''">$(AssetsIntermediateDir)/assets.manifest</AssetsManifest>
+    </PropertyGroup>
+
+    <ItemGroup Condition="'$(AssetsDir)' != '' AND Exists('$(AssetsDir)')">
+        <AssetPackInput Include="$(AssetsDir)/**/*" />
+    </ItemGroup>
+
+    <Target Name="_PrepareAssetPackManifest"
+            Condition="'$(AssetsOutput)' != '' AND Exists('$(ProjectDir)')">
+        <Message Importance="High"
+                 Text="[Assets] _PrepareAssetPackManifest iniciado. AssetsDir='$(AssetsDir)' AssetsManifest='$(AssetsManifest)' Algoritmo='$(AssetHashAlgorithm)'" />
+
+        <MakeDir Directories="$(AssetsIntermediateDir)" Condition="'$(AssetsIntermediateDir)' != ''" />
+
+        <Message Importance="High"
+                 Text="[Assets] Ficheros detectados: @(AssetPackInput->Count())"
+                 Condition="Exists('$(AssetsDir)')" />
+
+        <!-- Calcula hash por fichero y conserva metadatos (incluye FullPath) -->
+        <GetFileHash Files="@(AssetPackInput)"
+                     Algorithm="$(AssetHashAlgorithm)"
+                     Condition="Exists('$(AssetsDir)')">
+            <Output TaskParameter="Items" ItemName="AssetPackHashed" />
+        </GetFileHash>
+
+        <!-- Log por fichero: ruta completa + hash -->
+        <Message Importance="Normal"
+                 Text="[Assets] HASH %(AssetPackHashed.FullPath) | %(AssetPackHashed.FileHash)"
+                 Condition="Exists('$(AssetsDir)')" />
+
+        <!-- Manifiesto: FullPath|Hash -->
+        <WriteLinesToFile File="$(AssetsManifest)"
+                          Lines="@(AssetPackHashed->'%(FullPath)|%(FileHash)')"
+                          Overwrite="true"
+                          WriteOnlyWhenDifferent="true"
+                          Encoding="ASCII"
+                          Condition="Exists('$(AssetsDir)')" />
+
+        <!-- Caso sin carpeta de assets -->
+        <WriteLinesToFile File="$(AssetsManifest)"
+                          Lines="__NO_ASSETS__"
+                          Overwrite="true"
+                          WriteOnlyWhenDifferent="true"
+                          Encoding="ASCII"
+                          Condition="!Exists('$(AssetsDir)')" />
+
+        <Message Importance="High"
+                 Text="[Assets] Manifiesto generado en '$(AssetsManifest)'."
+                 Condition="Exists('$(AssetsDir)')" />
+
+        <Message Importance="High"
+                 Text="[Assets] No existe AssetsDir. Se escribe marcador __NO_ASSETS__ en el manifiesto."
+                 Condition="!Exists('$(AssetsDir)')" />
+    </Target>
+
+    <Target Name="ZipAssets"
+            DependsOnTargets="_PrepareAssetPackManifest"
+            BeforeTargets="BeforeBuild;BeforePublish"
+            Condition="'$(AssetsOutput)' != '' AND Exists('$(ProjectDir)')"
+            Inputs="$(AssetsManifest)"
+            Outputs="$(AssetsOutput)">
+
+        <Message Text="[Assets] ZipAssets incremental: AssetsDir='$(AssetsDir)'; AssetsZip='$(AssetsZip)'; AssetsOutput='$(AssetsOutput)'; AssetsManifest='$(AssetsManifest)'"
+                 Importance="High" />
+
+        <MakeDir Directories="$(AssetsIntermediateDir)" Condition="'$(AssetsIntermediateDir)' != ''" />
+
+        <Delete Files="$(AssetsZip)" Condition="Exists('$(AssetsZip)') AND Exists('$(AssetsDir)')" />
+        <Message Importance="Normal"
+                 Text="[Assets] ZIP previo eliminado: $(AssetsZip)"
+                 Condition="Exists('$(AssetsDir)')" />
+
+        <ZipDirectory SourceDirectory="$(AssetsDir)"
+                      DestinationFile="$(AssetsZip)"
+                      Condition="Exists('$(AssetsDir)')" />
+        <Message Importance="High"
+                 Text="[Assets] ZIP generado: $(AssetsZip)"
+                 Condition="Exists('$(AssetsDir)')" />
+
+        <Exec Condition="Exists('$(AssetsDir)') AND '$(OS)' == 'Windows_NT'"
+              Command="powershell -NoLogo -Command &quot;[Convert]::ToBase64String([System.IO.File]::ReadAllBytes('$(AssetsZip)')) | Out-File -FilePath '$(AssetsOutput)' -Encoding ASCII&quot;" />
+        <Message Importance="High"
+                 Text="[Assets] Base64 generado (Windows) en: $(AssetsOutput)"
+                 Condition="Exists('$(AssetsDir)') AND '$(OS)' == 'Windows_NT'" />
+
+        <Exec Condition="Exists('$(AssetsDir)') AND '$(OS)' != 'Windows_NT'"
+              Command="sh -c &quot;base64 &lt; '$(AssetsZip)' &gt; '$(AssetsOutput)'&quot;" />
+        <Message Importance="High"
+                 Text="[Assets] Base64 generado (Unix) en: $(AssetsOutput)"
+                 Condition="Exists('$(AssetsDir)') AND '$(OS)' != 'Windows_NT'" />
+
+        <WriteLinesToFile File="$(AssetsOutput)"
+                          Lines=""
+                          Overwrite="true"
+                          WriteOnlyWhenDifferent="true"
+                          Encoding="ASCII"
+                          Condition="!Exists('$(AssetsDir)')" />
+        <Message Importance="High"
+                 Text="[Assets] Sin assets: se genera archivo vacío en $(AssetsOutput)"
+                 Condition="!Exists('$(AssetsDir)')" />
+    </Target>
+
+    <!-- ========== REGISTRO DEL OUTPUT ========== -->
+    <ItemGroup>
+        <AdditionalFiles Include="$(AssetsOutput)"
+                         CopyToOutputDirectory="Never"
+                         CopyToPublishDirectory="Never"
+                         Visible="false" />
+    </ItemGroup>
+
+
 
 
 </Project>
