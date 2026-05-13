@@ -31,14 +31,6 @@ using System.Collections.Generic;
 
 namespace Alis.Core.Physic.Common.Decomposition.CDT.Sets
 {
-    /*
-     * Extends the PointSet by adding some Constraints on how it will be triangulated
-     * A constraint defines an edge between two points in the set, these edges can not
-     * be crossed. They will be enforced triangle edges after a triangulation.
-     *
-     * @author Thomas Åhlén, thahlen@gmail.com
-     */
-
     /// <summary>
     ///     The constrained point set class
     /// </summary>
@@ -105,7 +97,6 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Sets
             {
                 for (int i = 0; i < EdgeIndex.Length; i += 2)
                 {
-                    // XXX: must change!!
                     tcx.NewConstraint(GetPoints[EdgeIndex[i]], GetPoints[EdgeIndex[i + 1]]);
                 }
             }
