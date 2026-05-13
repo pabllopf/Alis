@@ -33,33 +33,45 @@ using System.Diagnostics.CodeAnalysis;
 namespace Alis.Core.Aspect.Data.Json
 {
     /// <summary>
-    ///     Defines a contract for objects that can be serialized to JSON format.
+    ///     Defines a contract for objects that can provide their serializable properties for
+    ///     conversion into JSON format. Implementing types define which properties are included
+    ///     in JSON output and how their values are represented as strings.
     /// </summary>
     /// <remarks>
     ///     Types implementing this interface can provide their own serialization logic by defining
     ///     which properties should be included and how their values should be represented.
+    ///     This is the serialization counterpart to <see cref="IJsonDesSerializable{T}" />.
+    ///     <para>
     ///     Usage Pattern:
     ///     Classes should implement this interface to support JSON serialization through the
-    ///     JsonNativeAot.Serialize&lt;T&gt; method.
+    ///     <see cref="JsonNativeAot.Serialize{T}" /> method.
     ///     Note: For complete bidirectional serialization support, also implement
-    ///     IJsonDesSerializable&lt;T&gt; to enable deserialization.
+    ///     <see cref="IJsonDesSerializable{T}" /> to enable deserialization.
+    ///     </para>
     /// </remarks>
     public interface IJsonSerializable
     {
         /// <summary>
-        ///     Gets the serializable properties of this instance.
+        ///     Returns an enumerable collection of property name-value string tuples that represent
+        ///     the serializable state of this instance. Each tuple consists of a property name and
+        ///     its string representation.
         /// </summary>
         /// <returns>
-        ///     An enumerable of tuples containing property names and their string representations.
-        ///     Property names should not include quotes; values may be primitives or raw JSON.
+        ///     An enumerable of tuples where each tuple contains:
+        ///     - <c>PropertyName</c>: The JSON key (without surrounding quotes).
+        ///     - <c>Value</c>: The string representation of the property value.
+        ///     Primitive values should be plain strings; complex values (objects or arrays)
+        ///     should be returned as raw JSON strings.
+        ///     Returns an empty enumeration if there are no properties to serialize.
         /// </returns>
         /// <remarks>
         ///     Implementation Guide:
-        ///     - Use yield return for each property: (propertyName, stringValue)
-        ///     - Primitive values should be converted to strings (e.g., number.ToString())
+        ///     - Use <c>yield return</c> for each property: <c>(propertyName, stringValue)</c>
+        ///     - Primitive values should be converted to strings (e.g., <c>number.ToString()</c>)
         ///     - Complex values (objects/arrays) should return raw JSON strings
-        ///     - Null or empty values are allowed and will be handled by the serializer
-        ///     Time Complexity: Should be O(n) where n is the number of properties.
+        ///     - Null or empty values are allowed and will be handled by the serializer (null values are skipped)
+        ///     - Time Complexity: Should be O(n) where n is the number of properties.
+        ///     <para>
         ///     Example:
         ///     <code>
         ///     public class Person : IJsonSerializable
@@ -76,6 +88,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///         }
         ///     }
         ///     </code>
+        ///     </para>
         /// </remarks>
         [ExcludeFromCodeCoverage]
         IEnumerable<(string PropertyName, string Value)> GetSerializableProperties();

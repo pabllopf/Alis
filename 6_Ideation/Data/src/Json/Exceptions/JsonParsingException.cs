@@ -32,23 +32,38 @@ using System;
 namespace Alis.Core.Aspect.Data.Json.Exceptions
 {
     /// <summary>
-    ///     Thrown when a JSON parsing operation fails.
+    ///     Represents errors that occur during JSON parsing operations.
+    ///     Thrown by <see cref="Parsing.JsonParser" /> when the input JSON string is malformed,
+    ///     contains unexpected characters, or has structural issues such as unterminated strings
+    ///     or missing delimiters.
     /// </summary>
+    /// <remarks>
+    ///     Common scenarios that trigger this exception include:
+    ///     - Unterminated JSON strings (missing closing quote)
+    ///     - Unterminated JSON structures (unclosed objects or arrays)
+    ///     - Missing expected delimiters such as ':' between key and value
+    ///     - Invalid escape sequences
+    ///     When wrapping a non-parsing exception, the original exception message is included
+    ///     in the error message to aid in debugging.
+    /// </remarks>
     public sealed class JsonParsingException : Exception
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="JsonParsingException" /> class.
+        ///     Initializes a new instance of the <see cref="JsonParsingException" /> class
+        ///     with a specified error message.
         /// </summary>
-        /// <param name="message">The error message.</param>
+        /// <param name="message">The error message that describes the parsing failure and its location.</param>
         public JsonParsingException(string message) : base(message)
         {
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="JsonParsingException" /> class.
+        ///     Initializes a new instance of the <see cref="JsonParsingException" /> class
+        ///     with a specified error message and a reference to the inner exception that is the
+        ///     cause of this exception.
         /// </summary>
-        /// <param name="message">The error message.</param>
-        /// <param name="innerException">The inner exception.</param>
+        /// <param name="message">The error message that describes the parsing failure.</param>
+        /// <param name="innerException">The exception that caused the parsing failure, or null.</param>
         public JsonParsingException(string message, Exception innerException) : base(message, innerException)
         {
         }
