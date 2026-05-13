@@ -246,8 +246,6 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
             }
 
             Holes.Add(poly);
-            // XXX: tests could be made here to be sure it is fully inside
-            //        addSubtraction( poly.getPoints() );
         }
 
         /// <summary>
