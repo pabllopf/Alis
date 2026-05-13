@@ -42,16 +42,15 @@ namespace Alis.Core.Aspect.Logging.Core
     public sealed class LogEntry : ILogEntry
     {
         /// <summary>
-        ///     Initializes a new instance of the LogEntry class with the specified log data.
-        ///     The timestamp and thread ID are automatically captured at creation time.
+        ///     Initializes a new instance of the LogEntry class.
         /// </summary>
-        /// <param name="level">The severity level of this log entry.</param>
-        /// <param name="message">The log message content. If null, defaults to an empty string.</param>
-        /// <param name="loggerName">The name of the logger creating this entry. If null, defaults to an empty string.</param>
-        /// <param name="exception">The exception to associate with this entry, or null if none.</param>
-        /// <param name="correlationId">The correlation ID for tracing requests across components, or null.</param>
-        /// <param name="properties">Structured key-value data for this log entry, or null for none.</param>
-        /// <param name="scopes">The scope context objects, or null for none.</param>
+        /// <param name="level">The log level.</param>
+        /// <param name="message">The log message.</param>
+        /// <param name="loggerName">The logger name.</param>
+        /// <param name="exception">The exception, if any.</param>
+        /// <param name="correlationId">The correlation ID for tracing.</param>
+        /// <param name="properties">Structured properties of the log.</param>
+        /// <param name="scopes">The scope stack.</param>
         public LogEntry(
             LogLevel level,
             string message,
@@ -74,55 +73,55 @@ namespace Alis.Core.Aspect.Logging.Core
 
 
         /// <summary>
-        ///     Gets the severity level of this log entry.
+        ///     Gets the value of the level
         /// </summary>
         public LogLevel Level { get; }
 
 
         /// <summary>
-        ///     Gets the primary log message text.
+        ///     Gets the value of the message
         /// </summary>
         public string Message { get; }
 
 
         /// <summary>
-        ///     Gets the UTC timestamp when this log entry was created.
+        ///     Gets the value of the timestamp
         /// </summary>
         public DateTime Timestamp { get; }
 
 
         /// <summary>
-        ///     Gets the name of the logger that created this entry.
+        ///     Gets the value of the logger name
         /// </summary>
         public string LoggerName { get; }
 
 
         /// <summary>
-        ///     Gets the exception associated with this entry, if any; otherwise null.
+        ///     Gets the value of the exception
         /// </summary>
         public Exception Exception { get; }
 
 
         /// <summary>
-        ///     Gets the managed thread ID of the thread that created this entry.
+        ///     Gets the value of the thread id
         /// </summary>
         public int ThreadId { get; }
 
 
         /// <summary>
-        ///     Gets the correlation ID for tracing related log entries across components.
+        ///     Gets the value of the correlation id
         /// </summary>
         public string CorrelationId { get; }
 
 
         /// <summary>
-        ///     Gets the structured key-value properties attached to this log entry.
+        ///     Gets the value of the properties
         /// </summary>
         public IReadOnlyDictionary<string, object> Properties { get; }
 
 
         /// <summary>
-        ///     Gets the scope context stack associated with this log entry.
+        ///     Gets the value of the scopes
         /// </summary>
         public IReadOnlyList<object> Scopes { get; }
     }
