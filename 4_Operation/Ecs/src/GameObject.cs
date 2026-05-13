@@ -43,12 +43,42 @@ using Alis.Core.Ecs.Updating;
 namespace Alis.Core.Ecs
 {
     /// <summary>
-    ///     An GameObject reference; refers to a collection of components of unqiue types.
+    ///     A lightweight identifier that represents an entity in the ECS (Entity Component System) architecture.
     /// </summary>
     /// <remarks>
-    ///     Memory layout optimized: 8 bytes total (int + ushort + ushort)
-    ///     Field order: int (4 bytes) -> ushort (2 bytes) -> ushort (2 bytes)
-    ///     Pack = 1 for minimal memory footprint, no padding between fields
+    ///     <para>
+    ///     In the ECS pattern, an entity is simply an ID that identifies a collection of components.
+    ///     Components hold data, while systems provide logic. This struct serves as the primary handle
+    ///     for accessing and manipulating game objects within a <see cref="Scene" />.
+    ///     </para>
+    ///     <para>
+    ///     The struct is designed for value-type performance: 8 bytes total (int + ushort + ushort),
+    ///     with no padding due to <c>Pack = 1</c>. The fields are laid out as: EntityID (4 bytes),
+    ///     EntityVersion (2 bytes), WorldID (2 bytes).
+    ///     </para>
+    ///     <para>
+    ///     The version field enables safe handling of recycled entity IDs, preventing access to
+    ///     deleted entities through compile-time and runtime validation.
+    ///     </para>
+    ///     <example>
+    ///     <code>
+    ///     // Create a new entity with components
+    ///     var scene = new Scene();
+    ///     var player = scene.Create(new Transform(), new Health { Value = 100 });
+    ///     
+    ///     // Add a component
+    ///     player.Add(new Velocity { X = 5, Y = 10 });
+    ///     
+    ///     // Get a component (returns default if not present)
+    ///     ref var health = ref player.Get&lt;Health&gt;();
+    ///     
+    ///     // Check if entity is alive
+    ///     if (player.IsAlive())
+    ///     {
+    ///         // Modify components
+    ///     }
+    ///     </code>
+    ///     </example>
     /// </remarks>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct GameObject : IEquatable<GameObject>, IGameObject
@@ -77,18 +107,29 @@ namespace Alis.Core.Ecs
         //WARNING
         //DO NOT CHANGE STRUCT LAYOUT
         /// <summary>
-        ///     The gameObject id
+        ///     Gets or sets the unique identifier for this entity within its scene.
         /// </summary>
+        /// <value>
+        ///     An integer that uniquely identifies the entity. When the entity is deleted,
+        ///     this ID may be recycled for new entities.
+        /// </value>
         internal int EntityID;
 
         /// <summary>
-        ///     The gameObject version
+        ///     Gets or sets the version number of this entity.
         /// </summary>
+        /// <value>
+        ///     A version counter that increments each time the entity is deleted. This enables
+        ///     detecting stale references to recycled entity IDs.
+        /// </value>
         internal ushort EntityVersion;
 
         /// <summary>
-        ///     The scene id
+        ///     Gets or sets the scene identifier that owns this entity.
         /// </summary>
+        /// <value>
+        ///     The unique identifier of the <see cref="Scene" /> that contains this entity.
+        /// </value>
         internal ushort WorldID;
 
 

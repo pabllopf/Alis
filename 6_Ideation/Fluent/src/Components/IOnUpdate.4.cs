@@ -31,21 +31,7 @@ namespace Alis.Core.Aspect.Fluent.Components
 {
     /// <summary>
     ///     Lifecycle hook invoked each frame during the update loop, providing the owning entity and
-    ///     4 additional component references of types <typeparamref name="TArg1"/>, <typeparamref name="TArg2"/>, <typeparamref name="TArg3"/>, <typeparamref name="TArg4"/>.
-    /// </summary>
-    /// <typeparam name="TArg1">The type of the 1st additional component or data argument passed to the update method.</typeparam>
-    /// <typeparam name="TArg2">The type of the 2nd additional component or data argument passed to the update method.</typeparam>
-    /// <typeparam name="TArg3">The type of the 3rd additional component or data argument passed to the update method.</typeparam>
-    /// <typeparam name="TArg4">The type of the 4th additional component or data argument passed to the update method.</typeparam>
-    /// <typeparam name="TArg2">The type of the 2nd additional component or data argument passed to the update method.</typeparam>
-    /// <typeparam name="TArg3">The type of the 3rd additional component or data argument passed to the update method.</typeparam>
-    /// <typeparam name="TArg4">The type of the 4th additional component or data argument passed to the update method.</typeparam>
-
-    /// <seealso cref="IComponentBase" />
-    /// <seealso cref="IComponentBase" />
-    /// <summary>
-    ///     Lifecycle hook invoked each frame during the update loop, providing the owning entity and
-    ///     4 additional component references of types <typeparamref name="TArg1"/>, <typeparamref name="TArg2"/>, <typeparamref name="TArg3"/>, <typeparamref name="TArg4"/>.
+    ///     4 additional component references of types <typeparamref name="TArg1"/>, <typeparamref name="TArg2"/>, <typeparamref name="TArg3"/>, and <typeparamref name="TArg4"/>.
     /// </summary>
     /// <typeparam name="TArg1">The type of the 1st additional component or data argument passed to the update method.</typeparam>
     /// <typeparam name="TArg2">The type of the 2nd additional component or data argument passed to the update method.</typeparam>
