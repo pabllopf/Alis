@@ -33,24 +33,29 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Core.Aspect.Math.Matrix
 {
     /// <summary>
-    ///     A 2-by-2 matrix. Stored in column-major order.
+    ///     A 2-by-2 matrix stored in column-major order using two <see cref="Vector2F" /> columns.
+    ///     Provides common matrix operations such as inversion, rotation, scaling, and solving linear systems.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct Matrix2X2
     {
         /// <summary>
-        ///     The col
+        ///     Gets or sets the first column vector of the matrix.
         /// </summary>
         public Vector2F Ex { get; set; }
 
         /// <summary>
-        ///     The col
+        ///     Gets or sets the second column vector of the matrix.
         /// </summary>
         public Vector2F Ey { get; set; }
 
         /// <summary>
-        ///     Construct this matrix using scalars.
+        ///     Constructs this matrix from four scalar values in column-major order.
         /// </summary>
+        /// <param name="a11">The value at row 1, column 1.</param>
+        /// <param name="a12">The value at row 1, column 2.</param>
+        /// <param name="a21">The value at row 2, column 1.</param>
+        /// <param name="a22">The value at row 2, column 2.</param>
         public Matrix2X2(float a11, float a12, float a21, float a22)
         {
             Ex = new Vector2F(a11, a21);
@@ -58,9 +63,9 @@ namespace Alis.Core.Aspect.Math.Matrix
         }
 
         /// <summary>
-        ///     Construct this matrix using an angle.
-        ///     This matrix becomes an orthonormal rotation matrix.
+        ///     Constructs this matrix as an orthonormal rotation matrix from a specified angle.
         /// </summary>
+        /// <param name="angle">The rotation angle in radians.</param>
         public Matrix2X2(float angle)
         {
             float c = (float) System.Math.Cos(angle), s = (float) System.Math.Sin(angle);
@@ -69,8 +74,10 @@ namespace Alis.Core.Aspect.Math.Matrix
         }
 
         /// <summary>
-        ///     Initialize this matrix using columns.
+        ///     Sets the matrix columns using two specified column vectors.
         /// </summary>
+        /// <param name="c1">The new first column vector.</param>
+        /// <param name="c2">The new second column vector.</param>
         public void Set(Vector2F c1, Vector2F c2)
         {
             Ex = c1;
@@ -78,7 +85,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         }
 
         /// <summary>
-        ///     Set this to the identity matrix.
+        ///     Sets this matrix to the identity matrix.
         /// </summary>
         public void SetIdentity()
         {
@@ -87,7 +94,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         }
 
         /// <summary>
-        ///     Set this matrix to all zeros.
+        ///     Sets all elements of this matrix to zero.
         /// </summary>
         public void SetZero()
         {
@@ -96,13 +103,15 @@ namespace Alis.Core.Aspect.Math.Matrix
         }
 
         /// <summary>
-        ///     Extract the angle from this matrix (assumed to be a rotation matrix).
+        ///     Extracts the rotation angle from this matrix, assuming it is an orthonormal rotation matrix.
         /// </summary>
+        /// <returns>The rotation angle in radians.</returns>
         public float GetAngle() => (float) System.Math.Atan2(Ex.Y, Ex.X);
 
         /// <summary>
-        ///     Compute the inverse of this matrix, such that inv(A) * A = identity.
+        ///     Computes the inverse of this matrix such that inv(A) * A = identity.
         /// </summary>
+        /// <returns>The inverse matrix.</returns>
         public Matrix2X2 GetInverse()
         {
             float col1X = Ex.X;
@@ -124,9 +133,11 @@ namespace Alis.Core.Aspect.Math.Matrix
         }
 
         /// <summary>
-        ///     Solve A * x = b, where b is a column vector. This is more efficient
-        ///     than computing the inverse in one-shot cases.
+        ///     Solves the linear system A * x = b where A is this matrix and b is a column vector.
+        ///     This is more efficient than computing the inverse in one-shot cases.
         /// </summary>
+        /// <param name="b">The right-hand side column vector.</param>
+        /// <returns>The solution vector x.</returns>
         public Vector2F Solve(Vector2F b)
         {
             float col1X = Ex.X;
@@ -144,10 +155,11 @@ namespace Alis.Core.Aspect.Math.Matrix
         }
 
         /// <summary>
+        ///     Adds two matrices component-wise.
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        /// <param name="a">The first matrix.</param>
+        /// <param name="b">The second matrix.</param>
+        /// <returns>The sum of the two matrices.</returns>
         public static Matrix2X2 operator +(Matrix2X2 a, Matrix2X2 b)
         {
             Matrix2X2 c = new Matrix2X2();
@@ -156,7 +168,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         }
 
         /// <summary>
-        ///     Gets the value of the inverse
+        ///     Gets the inverse of this matrix.
         /// </summary>
         public Matrix2X2 Inverse
         {
