@@ -150,11 +150,19 @@ namespace Alis.Core.Ecs
 
 
         /// <summary>
-        ///     Internals the is alive using the specified scene
+        ///     Checks if this entity is still valid and alive in its scene.
         /// </summary>
-        /// <param name="scene">The scene</param>
-        /// <param name="gameObjectLocation">The gameObject location</param>
-        /// <returns>The bool</returns>
+        /// <param name="scene">When this method returns, contains the <see cref="Scene"/> this entity belongs to, or <see langword="null"/> if invalid.</param>
+        /// <param name="gameObjectLocation">When this method returns, contains the entity's location data if alive; otherwise, default.</param>
+        /// <returns>
+        ///     <see langword="true"/> if the entity is alive and belongs to a valid scene;
+        ///     <see langword="false"/> if the entity has been deleted or its scene no longer exists.
+        /// </returns>
+        /// <remarks>
+        ///     This method verifies both that the scene exists and that the entity's version matches
+        ///     the current version in the scene's entity table. This handles the case where entity
+        ///     IDs are recycled after deletion.
+        /// </remarks>
         internal bool InternalIsAlive(out Scene scene, out GameObjectLocation gameObjectLocation)
         {
             scene = GlobalWorldTables.Worlds.UnsafeIndexNoResize(WorldID);
@@ -184,11 +192,30 @@ namespace Alis.Core.Ecs
 
 
         /// <summary>
-        ///     Tries the get core using the specified exists
+        ///     Attempts to retrieve a reference to the component of type <typeparamref name="T"/> attached to this entity.
         /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="exists">The exists</param>
-        /// <returns>A ref of t</returns>
+        /// <typeparam name="T">The type of component to retrieve.</typeparam>
+        /// <param name="exists">
+        ///     When this method returns, contains <see langword="true"/> if the component exists;
+        ///     otherwise, <see langword="false"/>.
+        /// </param>
+        /// <returns>
+        ///     A <see cref="Ref{T}"/> that provides direct access to the component data.
+        ///     If the component does not exist, returns a default <see cref="Ref{T}"/> and <paramref name="exists"/> is <see langword="false"/>.
+        /// </returns>
+        /// <remarks>
+        ///     This method is safe to call on destroyed entities - it will return with <paramref name="exists"/> set to <see langword="false"/>
+        ///     rather than throwing an exception.
+        /// </remarks>
+        /// <example>
+        /// <code>
+        /// if (player.TryGetCore&lt;Health&gt;(out bool hasHealth))
+        /// {
+        ///     ref var health = ref player.Get&lt;Health&gt;();
+        ///     health.Value -= damage;
+        /// }
+        /// </code>
+        /// </example>
         public Ref<T> TryGetCore<T>(out bool exists)
         {
             if (!InternalIsAlive(out Scene _, out GameObjectLocation entityLocation))
