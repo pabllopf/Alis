@@ -35,34 +35,77 @@ using Alis.Core.Physic.Dynamics;
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     The Gilbert–Johnson–Keerthi distance algorithm that provides the distance between shapes.
+    ///     Provides distance computation between convex shapes using the GJK algorithm.
     /// </summary>
+    /// <remarks>
+    ///     This class implements the Gilbert-Johnson-Keerthi (GJK) algorithm for computing
+    ///     the minimum distance between two convex shapes. The algorithm works by maintaining
+    ///     a simplex (point, line segment, or triangle) in Minkowski space and iteratively
+    ///     refining it until the closest point to the origin is found.
+    ///     
+    ///     The algorithm is used extensively in the physics engine for:
+    ///     - Broad-phase collision detection
+    ///     - Narrow-phase collision detection
+    ///     - Contact point generation
+    ///     
+    ///     Performance is optimized by caching simplex state between frames and using
+    ///     early termination criteria to avoid unnecessary iterations.
+    /// </remarks>
     public static class Distance
     {
         /// <summary>
-        ///     The number of calls made to the ComputeDistance() function.
-        ///     Note: This is only activated when Settings.EnableDiagnostics = true
+        ///     Gets the total number of calls made to <see cref="ComputeDistance(out DistanceOutput, out SimplexCache, DistanceInput)"/> since last reset.
         /// </summary>
+        /// <value>
+        ///     An <see cref="int"/> representing the cumulative call count.
+        /// </value>
+        /// <remarks>
+        ///     This statistic is only tracked when <see cref="SettingEnv.EnableDiagnostics"/> is <c>true</c>.
+        ///     Useful for profiling and performance analysis.
+        /// </remarks>
         [ThreadStatic] public static int GjkCalls;
 
         /// <summary>
-        ///     The number of iterations that was made on the last call to ComputeDistance().
-        ///     Note: This is only activated when Settings.EnableDiagnostics = true
+        ///     Gets the number of iterations used in the most recent call to <see cref="ComputeDistance(out DistanceOutput, out SimplexCache, DistanceInput)"/>.
         /// </summary>
+        /// <value>
+        ///     An <see cref="int"/> representing the iteration count of the last call.
+        /// </value>
+        /// <remarks>
+        ///     This statistic is only tracked when <see cref="SettingEnv.EnableDiagnostics"/> is <c>true</c>.
+        ///     Useful for identifying performance issues with specific collision pairs.
+        /// </remarks>
         [ThreadStatic] public static int GjkIters;
 
         /// <summary>
-        ///     The maximum numer of iterations ever mae with calls to the CompteDistance() funtion.
-        ///     Note: This is only activated when Settings.EnableDiagnostics = true
+        ///     Gets the maximum number of iterations ever used by any call to <see cref="ComputeDistance(out DistanceOutput, out SimplexCache, DistanceInput)"/>.
         /// </summary>
+        /// <value>
+        ///     An <see cref="int"/> representing the maximum iteration count observed.
+        /// </value>
+        /// <remarks>
+        ///     This statistic is only tracked when <see cref="SettingEnv.EnableDiagnostics"/> is <c>true</c>.
+        ///     Useful for tuning <see cref="SettingEnv.MaxGjkIterations"/> to balance performance and accuracy.
+        /// </remarks>
         [ThreadStatic] public static int GjkMaxIters;
 
         /// <summary>
-        ///     Computes the distance using the specified output
+        ///     Computes the minimum distance between two convex shapes using the GJK algorithm.
         /// </summary>
-        /// <param name="output">The output</param>
-        /// <param name="cache">The cache</param>
-        /// <param name="input">The input</param>
+        /// <param name="output">The output parameter that receives the distance result and witness points.</param>
+        /// <param name="cache">The cache parameter that stores simplex state for potential reuse in subsequent calls.</param>
+        /// <param name="input">The input parameters specifying the shapes, their transforms, and calculation options.</param>
+        /// <remarks>
+        ///     The algorithm iteratively builds a simplex in the Minkowski difference of the two shapes.
+        ///     It terminates when:
+        ///     - The simplex contains 3 points (origin is inside the simplex = shapes overlap)
+        ///     - A duplicate support point is found (cycling prevention)
+        ///     - Maximum iterations reached
+        ///     - Search direction becomes too small (degenerate case)
+        ///     
+        ///     The output contains the distance and two witness points (one on each shape)
+        ///     that represent the closest points between the shapes.
+        /// </remarks>
         public static void ComputeDistance(out DistanceOutput output, out SimplexCache cache, DistanceInput input)
         {
             cache = new SimplexCache();
