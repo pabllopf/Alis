@@ -31,11 +31,17 @@ namespace Alis.Core.Aspect.Fluent.Components
 {
     /// <summary>
     ///     Lifecycle hook called every frame during the variable-timestep update loop.
-    ///     Components implementing this interface receive the owning entity each frame for game logic execution.
     /// </summary>
     /// <remarks>
-    ///     Components should only implement one "Update" method to avoid duplicate logic execution.
-    ///     For fixed-timestep updates, use <see cref="IOnFixedUpdate" /> instead.
+    ///     <para>
+    ///     <see cref="IOnUpdate"/> is the primary per-frame logic hook. Components implementing
+    ///     this interface receive the owning entity reference each frame for game logic execution.
+    ///     </para>
+    ///     <para>
+    ///     Only implement one "Update" method across all update-related interfaces to avoid
+    ///     duplicate logic. For physics-based updates at a fixed timestep, use
+    ///     <see cref="IOnFixedUpdate"/> instead.
+    ///     </para>
     /// </remarks>
     public partial interface IOnUpdate : IComponentBase
     {

@@ -30,9 +30,20 @@
 namespace Alis.Core.Aspect.Fluent.Components
 {
     /// <summary>
-    ///     Lifecycle hook called when a component is initialized and made active, before the first <see cref="IOnUpdate.OnUpdate" /> call.
-    ///     This is the appropriate place for one-time setup that requires other components to already exist.
+    ///     Lifecycle hook called when a component is activated, before the first <see cref="IOnUpdate"/> call.
     /// </summary>
+    /// <remarks>
+    ///     <para>
+    ///     <see cref="IOnAwake"/> fires after <see cref="IOnInit"/> and is the ideal place for
+    ///     setup logic that requires other components to already exist and be initialized.
+    ///     For example, acquiring references to sibling components, registering with managers,
+    ///     or initializing subsystems.
+    ///     </para>
+    ///     <para>
+    ///     This is called once per activation cycle — if the entity is deactivated and re-activated,
+    ///     <see cref="IOnAwake"/> fires again.
+    ///     </para>
+    /// </remarks>
     public interface IOnAwake
     {
         /// <summary>

@@ -30,10 +30,22 @@
 namespace Alis.Core.Aspect.Fluent.Components
 {
     /// <summary>
-    ///     Lifecycle hook called once during initial component initialization, before <see cref="IOnAwake.OnAwake" />.
-    ///     This is the earliest lifecycle point where the component can perform setup logic.
+    ///     Lifecycle hook called during initial component construction, before <see cref="IOnAwake.OnAwake" />.
     /// </summary>
-    /// <seealso cref="IComponentBase" />
+    /// <remarks>
+    ///     <para>
+    ///     <see cref="IOnInit"/> is the earliest lifecycle point — it fires during entity creation,
+    ///     before the entity enters the active game loop. Use this for allocating resources,
+    ///     initializing internal state, or establishing references that other components may not
+    ///     yet have.
+    ///     </para>
+    ///     <para>
+    ///     To ensure proper ordering, implement <see cref="IOnInit"/> rather than putting
+    ///     initialization logic in constructors, which may run before the entity is fully
+    ///     registered in the scene.
+    ///     </para>
+    /// </remarks>
+    /// <seealso cref="IComponentBase"/>
     public interface IOnInit : IComponentBase
     {
         /// <summary>
