@@ -41,46 +41,55 @@ namespace Alis.Core.Aspect.Logging.Abstractions
         /// <summary>
         ///     Gets the log level indicating severity of this entry.
         /// </summary>
+        /// <value>The severity level of this log entry.</value>
         LogLevel Level { get; }
 
         /// <summary>
         ///     Gets the primary message of the log entry.
         /// </summary>
+        /// <value>The log message content.</value>
         string Message { get; }
 
         /// <summary>
         ///     Gets the timestamp when the log entry was created.
         /// </summary>
+        /// <value>The UTC timestamp of the log entry creation.</value>
         DateTime Timestamp { get; }
 
         /// <summary>
         ///     Gets the name/category of the logger that created this entry.
         /// </summary>
+        /// <value>The logger name or category.</value>
         string LoggerName { get; }
 
         /// <summary>
         ///     Gets the exception associated with this entry, if any.
         /// </summary>
+        /// <value>The exception, or null if no exception is associated.</value>
         Exception Exception { get; }
 
         /// <summary>
         ///     Gets the thread ID where the log entry was created.
         /// </summary>
+        /// <value>The managed thread ID of the creating thread.</value>
         int ThreadId { get; }
 
         /// <summary>
         ///     Gets the correlation ID for tracing related log entries.
         /// </summary>
+        /// <value>The correlation identifier, or null if not set.</value>
         string CorrelationId { get; }
 
         /// <summary>
         ///     Gets the structured data (key-value pairs) associated with this entry.
         /// </summary>
+        /// <value>The dictionary of structured properties.</value>
         IReadOnlyDictionary<string, object> Properties { get; }
 
         /// <summary>
         ///     Gets the scope/context information for this log entry.
         /// </summary>
+        /// <value>The list of active scopes for this entry.</value>
         IReadOnlyList<object> Scopes { get; }
     }
 }

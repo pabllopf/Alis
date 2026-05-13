@@ -40,7 +40,7 @@ using Alis.Core.Graphic.OpenGL.Enums;
 namespace Alis.Core.Graphic.Ui
 {
     /// <summary>
-    ///     The sprite
+    ///     The font class
     /// </summary>
     public class Font(string NameFile, int Depth, int size, string fullPath)
     {
@@ -233,9 +233,6 @@ namespace Alis.Core.Graphic.Ui
             Gl.GenerateMipmap(TextureTarget.Texture2D);
         }
 
-        /// <summary>
-        ///     Setup the buffers
-        /// </summary>
         /// <summary>
         ///     Setup the buffers
         /// </summary>

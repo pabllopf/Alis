@@ -41,11 +41,13 @@ namespace Alis.Core.Aspect.Logging.Abstractions
         /// <summary>
         ///     Gets a human-readable name for this output destination.
         /// </summary>
+        /// <value>The human-readable name of this output destination.</value>
         string Name { get; }
 
         /// <summary>
         ///     Gets a value indicating whether this output is currently enabled.
         /// </summary>
+        /// <value>True if this output is accepting log entries; false otherwise.</value>
         bool IsEnabled { get; internal set; }
 
         /// <summary>

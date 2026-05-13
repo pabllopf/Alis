@@ -33,14 +33,19 @@ using Alis.Core.Ecs.Systems;
 namespace Alis.Core.Ecs
 {
     /// <summary>
-    ///     Extensions to use query the scene.
+    ///     Provides extension methods for creating queries against a <see cref="Scene"/>.
     /// </summary>
     public static class SceneQueryExtensions
     {
         /// <summary>
-        ///     Gets a query specified by the given rules
+        ///     Gets or creates a query matching the specified rule type.
         /// </summary>
-        /// <returns>The created or cached query.</returns>
+        /// <remarks>
+        ///     Queries are cached by their hash, so subsequent calls with the same type return the same query instance.
+        /// </remarks>
+        /// <typeparam name="T">The type of the rule to match, which must implement <see cref="IRuleProvider"/>.</typeparam>
+        /// <param name="scene">The scene to query.</param>
+        /// <returns>The created or cached query matching the rule.</returns>
         public static Query Query<T>(this Scene scene) where T : struct, IRuleProvider
         {
             if (scene.QueryCache.TryGetValue(QueryHashCache<T>.Value, out Query value))
@@ -54,9 +59,15 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        ///     Gets a query specified by the given rules
+        ///     Gets or creates a query matching the specified rule types.
         /// </summary>
-        /// <returns>The created or cached query.</returns>
+        /// <remarks>
+        ///     Queries are cached by their hash, so subsequent calls with the same types return the same query instance.
+        /// </remarks>
+        /// <typeparam name="T1">The type of the first rule to match, which must implement <see cref="IRuleProvider"/>.</typeparam>
+        /// <typeparam name="T2">The type of the second rule to match, which must implement <see cref="IRuleProvider"/>.</typeparam>
+        /// <param name="scene">The scene to query.</param>
+        /// <returns>The created or cached query matching all specified rules.</returns>
         public static Query Query<T1, T2>(this Scene scene)
             where T1 : struct, IRuleProvider
             where T2 : struct, IRuleProvider
@@ -73,9 +84,16 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        ///     Gets a query specified by the given rules
+        ///     Gets or creates a query matching the specified rule types.
         /// </summary>
-        /// <returns>The created or cached query.</returns>
+        /// <remarks>
+        ///     Queries are cached by their hash, so subsequent calls with the same types return the same query instance.
+        /// </remarks>
+        /// <typeparam name="T1">The type of the first rule, which must implement <see cref="IRuleProvider"/>.</typeparam>
+        /// <typeparam name="T2">The type of the second rule, which must implement <see cref="IRuleProvider"/>.</typeparam>
+        /// <typeparam name="T3">The type of the third rule, which must implement <see cref="IRuleProvider"/>.</typeparam>
+        /// <param name="scene">The scene to query.</param>
+        /// <returns>The created or cached query matching all specified rules.</returns>
         public static Query Query<T1, T2, T3>(this Scene scene)
             where T1 : struct, IRuleProvider
             where T2 : struct, IRuleProvider
@@ -94,9 +112,17 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        ///     Gets a query specified by the given rules
+        ///     Gets or creates a query matching the specified rule types.
         /// </summary>
-        /// <returns>The created or cached query.</returns>
+        /// <remarks>
+        ///     Queries are cached by their hash, so subsequent calls with the same types return the same query instance.
+        /// </remarks>
+        /// <typeparam name="T1">The type of the first rule, which must implement <see cref="IRuleProvider"/>.</typeparam>
+        /// <typeparam name="T2">The type of the second rule, which must implement <see cref="IRuleProvider"/>.</typeparam>
+        /// <typeparam name="T3">The type of the third rule, which must implement <see cref="IRuleProvider"/>.</typeparam>
+        /// <typeparam name="T4">The type of the fourth rule, which must implement <see cref="IRuleProvider"/>.</typeparam>
+        /// <param name="scene">The scene to query.</param>
+        /// <returns>The created or cached query matching all specified rules.</returns>
         public static Query Query<T1, T2, T3, T4>(this Scene scene)
             where T1 : struct, IRuleProvider
             where T2 : struct, IRuleProvider
@@ -117,9 +143,18 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        ///     Gets a query specified by the given rules
+        ///     Gets or creates a query matching the specified rule types.
         /// </summary>
-        /// <returns>The created or cached query.</returns>
+        /// <remarks>
+        ///     Queries are cached by their hash, so subsequent calls with the same types return the same query instance.
+        /// </remarks>
+        /// <typeparam name="T1">The type of the first rule, which must implement <see cref="IRuleProvider"/>.</typeparam>
+        /// <typeparam name="T2">The type of the second rule, which must implement <see cref="IRuleProvider"/>.</typeparam>
+        /// <typeparam name="T3">The type of the third rule, which must implement <see cref="IRuleProvider"/>.</typeparam>
+        /// <typeparam name="T4">The type of the fourth rule, which must implement <see cref="IRuleProvider"/>.</typeparam>
+        /// <typeparam name="T5">The type of the fifth rule, which must implement <see cref="IRuleProvider"/>.</typeparam>
+        /// <param name="scene">The scene to query.</param>
+        /// <returns>The created or cached query matching all specified rules.</returns>
         public static Query Query<T1, T2, T3, T4, T5>(this Scene scene)
             where T1 : struct, IRuleProvider
             where T2 : struct, IRuleProvider
@@ -141,9 +176,19 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        ///     Gets a query specified by the given rules
+        ///     Gets or creates a query matching the specified rule types.
         /// </summary>
-        /// <returns>The created or cached query.</returns>
+        /// <remarks>
+        ///     Queries are cached by their hash, so subsequent calls with the same types return the same query instance.
+        /// </remarks>
+        /// <typeparam name="T1">The type of the first rule, which must implement <see cref="IRuleProvider"/>.</typeparam>
+        /// <typeparam name="T2">The type of the second rule, which must implement <see cref="IRuleProvider"/>.</typeparam>
+        /// <typeparam name="T3">The type of the third rule, which must implement <see cref="IRuleProvider"/>.</typeparam>
+        /// <typeparam name="T4">The type of the fourth rule, which must implement <see cref="IRuleProvider"/>.</typeparam>
+        /// <typeparam name="T5">The type of the fifth rule, which must implement <see cref="IRuleProvider"/>.</typeparam>
+        /// <typeparam name="T6">The type of the sixth rule, which must implement <see cref="IRuleProvider"/>.</typeparam>
+        /// <param name="scene">The scene to query.</param>
+        /// <returns>The created or cached query matching all specified rules.</returns>
         public static Query Query<T1, T2, T3, T4, T5, T6>(this Scene scene)
             where T1 : struct, IRuleProvider
             where T2 : struct, IRuleProvider
@@ -166,9 +211,20 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        ///     Gets a query specified by the given rules
+        ///     Gets or creates a query matching the specified rule types.
         /// </summary>
-        /// <returns>The created or cached query.</returns>
+        /// <remarks>
+        ///     Queries are cached by their hash, so subsequent calls with the same types return the same query instance.
+        /// </remarks>
+        /// <typeparam name="T1">The type of the first rule, which must implement <see cref="IRuleProvider"/>.</typeparam>
+        /// <typeparam name="T2">The type of the second rule, which must implement <see cref="IRuleProvider"/>.</typeparam>
+        /// <typeparam name="T3">The type of the third rule, which must implement <see cref="IRuleProvider"/>.</typeparam>
+        /// <typeparam name="T4">The type of the fourth rule, which must implement <see cref="IRuleProvider"/>.</typeparam>
+        /// <typeparam name="T5">The type of the fifth rule, which must implement <see cref="IRuleProvider"/>.</typeparam>
+        /// <typeparam name="T6">The type of the sixth rule, which must implement <see cref="IRuleProvider"/>.</typeparam>
+        /// <typeparam name="T7">The type of the seventh rule, which must implement <see cref="IRuleProvider"/>.</typeparam>
+        /// <param name="scene">The scene to query.</param>
+        /// <returns>The created or cached query matching all specified rules.</returns>
         public static Query Query<T1, T2, T3, T4, T5, T6, T7>(this Scene scene)
             where T1 : struct, IRuleProvider
             where T2 : struct, IRuleProvider
@@ -193,9 +249,21 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        ///     Gets a query specified by the given rules
+        ///     Gets or creates a query matching the specified rule types.
         /// </summary>
-        /// <returns>The created or cached query.</returns>
+        /// <remarks>
+        ///     Queries are cached by their hash, so subsequent calls with the same types return the same query instance.
+        /// </remarks>
+        /// <typeparam name="T1">The type of the first rule, which must implement <see cref="IRuleProvider"/>.</typeparam>
+        /// <typeparam name="T2">The type of the second rule, which must implement <see cref="IRuleProvider"/>.</typeparam>
+        /// <typeparam name="T3">The type of the third rule, which must implement <see cref="IRuleProvider"/>.</typeparam>
+        /// <typeparam name="T4">The type of the fourth rule, which must implement <see cref="IRuleProvider"/>.</typeparam>
+        /// <typeparam name="T5">The type of the fifth rule, which must implement <see cref="IRuleProvider"/>.</typeparam>
+        /// <typeparam name="T6">The type of the sixth rule, which must implement <see cref="IRuleProvider"/>.</typeparam>
+        /// <typeparam name="T7">The type of the seventh rule, which must implement <see cref="IRuleProvider"/>.</typeparam>
+        /// <typeparam name="T8">The type of the eighth rule, which must implement <see cref="IRuleProvider"/>.</typeparam>
+        /// <param name="scene">The scene to query.</param>
+        /// <returns>The created or cached query matching all specified rules.</returns>
         public static Query Query<T1, T2, T3, T4, T5, T6, T7, T8>(this Scene scene)
             where T1 : struct, IRuleProvider
             where T2 : struct, IRuleProvider

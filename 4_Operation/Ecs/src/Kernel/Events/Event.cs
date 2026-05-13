@@ -33,14 +33,44 @@ using Alis.Core.Ecs.Collections;
 
 namespace Alis.Core.Ecs.Kernel.Events
 {
-    /// <summary>
-    ///     The event
-    /// </summary>
-    /// <remarks>
-    ///     Memory layout optimized: Action reference (8 bytes) + FrugalStack struct (12 bytes)
-    ///     Total: 20 bytes + 4 bytes padding = 24 bytes aligned
-    ///     Pack = 8 for optimal alignment with reference types
-    /// </remarks>
+/// <summary>
+///     Represents a typed event in the ECS system that can be raised and listened to by GameObjects.
+///     This struct uses a combination of a single Action reference for the first listener and a
+///     FrugalStack for additional listeners to minimize memory allocations.
+///     Events are generic over the event argument type T, allowing type-safe event handling.
+/// </summary>
+/// <typeparam name="T">The type of the event argument passed to listeners when the event is invoked.</typeparam>
+/// <remarks>
+///     Memory layout optimized: Action reference (8 bytes) + FrugalStack struct (12 bytes)
+///     Total: 20 bytes + 4 bytes padding = 24 bytes aligned
+///     Pack = 8 for optimal alignment with reference types
+///     
+///     The Event struct is designed to be a lightweight, allocation-free way to handle events
+///     in an ECS (Entity Component System) architecture. It uses a hybrid storage approach:
+///     - The first listener is stored directly in a field (_first)
+///     - Additional listeners are stored in a FrugalStack (_invokationList)
+///     
+///     Usage example:
+///     <code>
+///     // Define an event argument type
+///     public struct CollisionEvent {
+///         public GameObject Other;
+///         public Vector2F Normal;
+///     }
+///     
+///     // Create an event
+///     Event&lt;CollisionEvent&gt; collisionEvent = new Event&lt;CollisionEvent&gt;();
+///     
+///     // Subscribe to the event
+///     collisionEvent.Add((gameObject, arg) => {
+///         // Handle collision
+///         Console.WriteLine($"Collided with {arg.Other.Name}");
+///     });
+///     
+///     // Invoke the event
+///     collisionEvent.Invoke(someGameObject, new CollisionEvent { /* ... */ });
+///     </code>
+/// </remarks>
     [StructLayout(LayoutKind.Sequential, Pack = 8)]
     public struct Event<T>()
     {

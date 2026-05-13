@@ -46,7 +46,8 @@ namespace Alis.Core.Aspect.Math.Matrix
         private const float Epsilon = 0.00001f;
 
         /// <summary>
-        ///     The first column vector of the matrix.
+        ///     The three column vectors (Ex, Ey, Ez) of the 3x3 matrix stored in column-major order,
+        ///     representing the X, Y, and Z basis directions respectively.
         /// </summary>
         public Vector3F Ex, Ey, Ez;
 
@@ -101,7 +102,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         ///     Solves the 3x3 linear system A * x = b where A is this matrix.
         /// </summary>
         /// <param name="b">The right-hand side vector.</param>
-        /// <returns>The solution vector x.</returns>
+        /// <returns>The solution vector x computed via Cramer's rule using the determinant.</returns>
         [ExcludeFromCodeCoverage]
         public Vector3F Solve33(Vector3F b)
         {
@@ -120,7 +121,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         ///     Solves the 2x2 subsystem (upper-left 2x2 portion) for the given right-hand side vector.
         /// </summary>
         /// <param name="b">The right-hand side 2D vector.</param>
-        /// <returns>The solution 2D vector.</returns>
+        /// <returns>The solution 2D vector computed via the 2x2 determinant.</returns>
         public Vector2F Solve22(Vector2F b)
         {
             float a11 = Ex.X, a12 = Ey.X, a21 = Ex.Y, a22 = Ey.Y;

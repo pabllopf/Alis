@@ -37,7 +37,7 @@ namespace Alis.Core.Aspect.Fluent.Words
     public interface IScreenMode<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Screens the mode using the specified value
+        ///     Sets the screen mode on the builder.
         /// </summary>
         /// <param name="value">The screen mode to apply.</param>
         /// <returns>The builder instance, enabling fluent chaining.</returns>

@@ -40,7 +40,7 @@ namespace Alis.Core.Aspect.Fluent.Words
         ///     Configures update behavior on the builder.
         /// </summary>
         /// <param name="obj">The update configuration to apply.</param>
-        /// <returns>The</returns>
+        /// <returns>The builder instance, enabling fluent chaining.</returns>
         TBuilder Update(TArgument obj);
     }
 }

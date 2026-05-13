@@ -40,11 +40,11 @@ namespace Alis.Core.Ecs
     public static class GameObjectExtensions
     {
         /// <summary>
-        ///     Deconstructs the e
+        ///     Deconstructs the entity into a component reference
         /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="e">The </param>
-        /// <param name="comp">The comp</param>
+        /// <typeparam name="T">The component type to extract</typeparam>
+        /// <param name="e">The gameObject to deconstruct</param>
+        /// <param name="comp">The extracted component reference</param>
         public static void Deconstruct<T>(this GameObject e, out Ref<T> comp)
         {
             GameObjectLocation eloc = e.AssertIsAlive(out _);
@@ -56,13 +56,13 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        ///     Deconstructs the e
+        ///     Deconstructs the entity into two component references
         /// </summary>
-        /// <typeparam name="T1">The </typeparam>
-        /// <typeparam name="T2">The </typeparam>
-        /// <param name="e">The </param>
-        /// <param name="comp1">The comp</param>
-        /// <param name="comp2">The comp</param>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <param name="e">The gameObject to deconstruct</param>
+        /// <param name="comp1">The first extracted component reference</param>
+        /// <param name="comp2">The second extracted component reference</param>
         public static void Deconstruct<T1, T2>(this GameObject e, out Ref<T1> comp1, out Ref<T2> comp2)
         {
             GameObjectLocation eloc = e.AssertIsAlive(out _);
@@ -75,15 +75,15 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        ///     Deconstructs the e
+        ///     Deconstructs the entity into three component references
         /// </summary>
-        /// <typeparam name="T1">The </typeparam>
-        /// <typeparam name="T2">The </typeparam>
-        /// <typeparam name="T3">The </typeparam>
-        /// <param name="e">The </param>
-        /// <param name="comp1">The comp</param>
-        /// <param name="comp2">The comp</param>
-        /// <param name="comp3">The comp</param>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <typeparam name="T3">The third component type</typeparam>
+        /// <param name="e">The gameObject to deconstruct</param>
+        /// <param name="comp1">The first extracted component reference</param>
+        /// <param name="comp2">The second extracted component reference</param>
+        /// <param name="comp3">The third extracted component reference</param>
         public static void Deconstruct<T1, T2, T3>(this GameObject e, out Ref<T1> comp1, out Ref<T2> comp2, out Ref<T3> comp3)
         {
             GameObjectLocation eloc = e.AssertIsAlive(out _);
@@ -97,17 +97,17 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        ///     Deconstructs the e
+        ///     Deconstructs the entity into four component references
         /// </summary>
-        /// <typeparam name="T1">The </typeparam>
-        /// <typeparam name="T2">The </typeparam>
-        /// <typeparam name="T3">The </typeparam>
-        /// <typeparam name="T4">The </typeparam>
-        /// <param name="e">The </param>
-        /// <param name="comp1">The comp</param>
-        /// <param name="comp2">The comp</param>
-        /// <param name="comp3">The comp</param>
-        /// <param name="comp4">The comp</param>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <typeparam name="T3">The third component type</typeparam>
+        /// <typeparam name="T4">The fourth component type</typeparam>
+        /// <param name="e">The gameObject to deconstruct</param>
+        /// <param name="comp1">The first extracted component reference</param>
+        /// <param name="comp2">The second extracted component reference</param>
+        /// <param name="comp3">The third extracted component reference</param>
+        /// <param name="comp4">The fourth extracted component reference</param>
         public static void Deconstruct<T1, T2, T3, T4>(this GameObject e, out Ref<T1> comp1, out Ref<T2> comp2,
             out Ref<T3> comp3, out Ref<T4> comp4)
         {
@@ -123,19 +123,19 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        ///     Deconstructs the e
+        ///     Deconstructs the entity into five component references
         /// </summary>
-        /// <typeparam name="T1">The </typeparam>
-        /// <typeparam name="T2">The </typeparam>
-        /// <typeparam name="T3">The </typeparam>
-        /// <typeparam name="T4">The </typeparam>
-        /// <typeparam name="T5">The </typeparam>
-        /// <param name="e">The </param>
-        /// <param name="comp1">The comp</param>
-        /// <param name="comp2">The comp</param>
-        /// <param name="comp3">The comp</param>
-        /// <param name="comp4">The comp</param>
-        /// <param name="comp5">The comp</param>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <typeparam name="T3">The third component type</typeparam>
+        /// <typeparam name="T4">The fourth component type</typeparam>
+        /// <typeparam name="T5">The fifth component type</typeparam>
+        /// <param name="e">The gameObject to deconstruct</param>
+        /// <param name="comp1">The first extracted component reference</param>
+        /// <param name="comp2">The second extracted component reference</param>
+        /// <param name="comp3">The third extracted component reference</param>
+        /// <param name="comp4">The fourth extracted component reference</param>
+        /// <param name="comp5">The fifth extracted component reference</param>
         public static void Deconstruct<T1, T2, T3, T4, T5>(this GameObject e, out Ref<T1> comp1, out Ref<T2> comp2,
             out Ref<T3> comp3, out Ref<T4> comp4, out Ref<T5> comp5)
         {
@@ -152,21 +152,21 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        ///     Deconstructs the e
+        ///     Deconstructs the entity into six component references
         /// </summary>
-        /// <typeparam name="T1">The </typeparam>
-        /// <typeparam name="T2">The </typeparam>
-        /// <typeparam name="T3">The </typeparam>
-        /// <typeparam name="T4">The </typeparam>
-        /// <typeparam name="T5">The </typeparam>
-        /// <typeparam name="T6">The </typeparam>
-        /// <param name="e">The </param>
-        /// <param name="comp1">The comp</param>
-        /// <param name="comp2">The comp</param>
-        /// <param name="comp3">The comp</param>
-        /// <param name="comp4">The comp</param>
-        /// <param name="comp5">The comp</param>
-        /// <param name="comp6">The comp</param>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <typeparam name="T3">The third component type</typeparam>
+        /// <typeparam name="T4">The fourth component type</typeparam>
+        /// <typeparam name="T5">The fifth component type</typeparam>
+        /// <typeparam name="T6">The sixth component type</typeparam>
+        /// <param name="e">The gameObject to deconstruct</param>
+        /// <param name="comp1">The first extracted component reference</param>
+        /// <param name="comp2">The second extracted component reference</param>
+        /// <param name="comp3">The third extracted component reference</param>
+        /// <param name="comp4">The fourth extracted component reference</param>
+        /// <param name="comp5">The fifth extracted component reference</param>
+        /// <param name="comp6">The sixth extracted component reference</param>
         public static void Deconstruct<T1, T2, T3, T4, T5, T6>(this GameObject e, out Ref<T1> comp1, out Ref<T2> comp2,
             out Ref<T3> comp3, out Ref<T4> comp4, out Ref<T5> comp5, out Ref<T6> comp6)
         {
@@ -184,23 +184,23 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        ///     Deconstructs the e
+        ///     Deconstructs the entity into seven component references
         /// </summary>
-        /// <typeparam name="T1">The </typeparam>
-        /// <typeparam name="T2">The </typeparam>
-        /// <typeparam name="T3">The </typeparam>
-        /// <typeparam name="T4">The </typeparam>
-        /// <typeparam name="T5">The </typeparam>
-        /// <typeparam name="T6">The </typeparam>
-        /// <typeparam name="T7">The </typeparam>
-        /// <param name="e">The </param>
-        /// <param name="comp1">The comp</param>
-        /// <param name="comp2">The comp</param>
-        /// <param name="comp3">The comp</param>
-        /// <param name="comp4">The comp</param>
-        /// <param name="comp5">The comp</param>
-        /// <param name="comp6">The comp</param>
-        /// <param name="comp7">The comp</param>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <typeparam name="T3">The third component type</typeparam>
+        /// <typeparam name="T4">The fourth component type</typeparam>
+        /// <typeparam name="T5">The fifth component type</typeparam>
+        /// <typeparam name="T6">The sixth component type</typeparam>
+        /// <typeparam name="T7">The seventh component type</typeparam>
+        /// <param name="e">The gameObject to deconstruct</param>
+        /// <param name="comp1">The first extracted component reference</param>
+        /// <param name="comp2">The second extracted component reference</param>
+        /// <param name="comp3">The third extracted component reference</param>
+        /// <param name="comp4">The fourth extracted component reference</param>
+        /// <param name="comp5">The fifth extracted component reference</param>
+        /// <param name="comp6">The sixth extracted component reference</param>
+        /// <param name="comp7">The seventh extracted component reference</param>
         public static void Deconstruct<T1, T2, T3, T4, T5, T6, T7>(this GameObject e, out Ref<T1> comp1, out Ref<T2> comp2,
             out Ref<T3> comp3, out Ref<T4> comp4, out Ref<T5> comp5, out Ref<T6> comp6, out Ref<T7> comp7)
         {
@@ -219,25 +219,25 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        ///     Deconstructs the e
+        ///     Deconstructs the entity into eight component references
         /// </summary>
-        /// <typeparam name="T1">The </typeparam>
-        /// <typeparam name="T2">The </typeparam>
-        /// <typeparam name="T3">The </typeparam>
-        /// <typeparam name="T4">The </typeparam>
-        /// <typeparam name="T5">The </typeparam>
-        /// <typeparam name="T6">The </typeparam>
-        /// <typeparam name="T7">The </typeparam>
-        /// <typeparam name="T8">The </typeparam>
-        /// <param name="e">The </param>
-        /// <param name="comp1">The comp</param>
-        /// <param name="comp2">The comp</param>
-        /// <param name="comp3">The comp</param>
-        /// <param name="comp4">The comp</param>
-        /// <param name="comp5">The comp</param>
-        /// <param name="comp6">The comp</param>
-        /// <param name="comp7">The comp</param>
-        /// <param name="comp8">The comp</param>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <typeparam name="T3">The third component type</typeparam>
+        /// <typeparam name="T4">The fourth component type</typeparam>
+        /// <typeparam name="T5">The fifth component type</typeparam>
+        /// <typeparam name="T6">The sixth component type</typeparam>
+        /// <typeparam name="T7">The seventh component type</typeparam>
+        /// <typeparam name="T8">The eighth component type</typeparam>
+        /// <param name="e">The gameObject to deconstruct</param>
+        /// <param name="comp1">The first extracted component reference</param>
+        /// <param name="comp2">The second extracted component reference</param>
+        /// <param name="comp3">The third extracted component reference</param>
+        /// <param name="comp4">The fourth extracted component reference</param>
+        /// <param name="comp5">The fifth extracted component reference</param>
+        /// <param name="comp6">The sixth extracted component reference</param>
+        /// <param name="comp7">The seventh extracted component reference</param>
+        /// <param name="comp8">The eighth extracted component reference</param>
         public static void Deconstruct<T1, T2, T3, T4, T5, T6, T7, T8>(this GameObject e, out Ref<T1> comp1, out Ref<T2> comp2,
             out Ref<T3> comp3, out Ref<T4> comp4, out Ref<T5> comp5, out Ref<T6> comp6, out Ref<T7> comp7,
             out Ref<T8> comp8)
@@ -258,13 +258,13 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        ///     Gets the comp using the specified archetype table
+        ///     Gets a component reference using the archetype's tag table and component list
         /// </summary>
-        /// <typeparam name="TC">The tc</typeparam>
-        /// <param name="archetypeTable">The archetype table</param>
-        /// <param name="comps">The comps</param>
-        /// <param name="index">The index</param>
-        /// <returns>A ref of tc</returns>
+        /// <typeparam name="TC">The component type to retrieve</typeparam>
+        /// <param name="archetypeTable">The component tag table of the archetype</param>
+        /// <param name="comps">The component storage array of the archetype</param>
+        /// <param name="index">The entity index within the archetype</param>
+        /// <returns>A reference to the component of type <typeparamref name="TC" /></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static Ref<TC> GetComp<TC>(byte[] archetypeTable, ComponentStorageBase[] comps, int index)
         {

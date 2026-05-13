@@ -29,9 +29,11 @@
 
 namespace Alis.Core.Physic.Controllers
 {
-    /// <summary>
-    ///     The gravity type enum
-    /// </summary>
+/// <summary>
+///     Specifies the type of gravity calculation to be used by controllers.
+///     This enumeration defines different gravity models that can be applied
+///     to simulate various gravitational behaviors in the physics simulation.
+/// </summary>
     public enum GravityType
     {
         /// <summary>

@@ -88,9 +88,9 @@ namespace Alis.Core.Aspect.Logging
         }
 
         /// <summary>
-        ///     Traces the message
+        ///     Logs a message with Trace severity.
         /// </summary>
-        /// <param name="message">The message</param>
+        /// <param name="message">The message to log.</param>
         public static void Trace(string message)
         {
             EnsureInitialized();
@@ -98,9 +98,9 @@ namespace Alis.Core.Aspect.Logging
         }
 
         /// <summary>
-        ///     Infoes the message
+        ///     Logs a message with Info severity.
         /// </summary>
-        /// <param name="message">The message</param>
+        /// <param name="message">The message to log.</param>
         public static void Info(string message)
         {
             EnsureInitialized();
@@ -108,9 +108,9 @@ namespace Alis.Core.Aspect.Logging
         }
 
         /// <summary>
-        ///     Logs the message
+        ///     Logs a message with Info severity using the legacy API.
         /// </summary>
-        /// <param name="message">The message</param>
+        /// <param name="message">The message to log.</param>
         public static void Log(string message)
         {
             EnsureInitialized();
@@ -118,9 +118,9 @@ namespace Alis.Core.Aspect.Logging
         }
 
         /// <summary>
-        ///     Warnings the message
+        ///     Logs a message with Warning severity.
         /// </summary>
-        /// <param name="message">The message</param>
+        /// <param name="message">The message to log.</param>
         public static void Warning(string message)
         {
             EnsureInitialized();
@@ -128,9 +128,9 @@ namespace Alis.Core.Aspect.Logging
         }
 
         /// <summary>
-        ///     Errors the message
+        ///     Logs a message with Error severity.
         /// </summary>
-        /// <param name="message">The message</param>
+        /// <param name="message">The message to log.</param>
         public static void Error(string message)
         {
             EnsureInitialized();
@@ -138,9 +138,9 @@ namespace Alis.Core.Aspect.Logging
         }
 
         /// <summary>
-        ///     Debugs the message
+        ///     Logs a message with Debug severity.
         /// </summary>
-        /// <param name="message">The message</param>
+        /// <param name="message">The message to log.</param>
         public static void Debug(string message)
         {
             EnsureInitialized();
@@ -148,9 +148,10 @@ namespace Alis.Core.Aspect.Logging
         }
 
         /// <summary>
-        ///     Exceptions the to string
+        ///     Logs an exception message at Critical severity and throws an <see cref="Exception"/>.
         /// </summary>
-        /// <param name="toString">The to string</param>
+        /// <param name="toString">The exception message to log and throw.</param>
+        /// <exception cref="Exception">Thrown after logging to propagate the error.</exception>
         public static void Exception(string toString)
         {
             EnsureInitialized();

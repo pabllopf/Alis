@@ -133,7 +133,7 @@ namespace Alis.Core.Aspect.Logging.Outputs
 
 
         /// <summary>
-        ///     Disposes this instance
+        ///     Releases all resources used by the console output.
         /// </summary>
         public void Dispose()
         {

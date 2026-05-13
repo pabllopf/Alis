@@ -39,6 +39,7 @@ namespace Alis.Core.Aspect.Logging.Abstractions
         /// <summary>
         ///     Gets a human-readable name for this filter.
         /// </summary>
+        /// <value>The human-readable name of this filter.</value>
         string Name { get; }
 
         /// <summary>

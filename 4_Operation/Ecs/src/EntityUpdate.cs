@@ -36,17 +36,23 @@ using Alis.Core.Ecs.Updating;
 namespace Alis.Core.Ecs
 {
     /// <summary>
-    ///     The gameObject update class
+    ///     Handles update logic for entities that have a specific component and up to five dependency arguments.
     /// </summary>
+    /// <typeparam name="TComp">The component type that implements <see cref="IOnUpdate{TArg1,TArg2,TArg3,TArg4,TArg5}"/>.</typeparam>
+    /// <typeparam name="TArg1">The type of the first update argument.</typeparam>
+    /// <typeparam name="TArg2">The type of the second update argument.</typeparam>
+    /// <typeparam name="TArg3">The type of the third update argument.</typeparam>
+    /// <typeparam name="TArg4">The type of the fourth update argument.</typeparam>
+    /// <typeparam name="TArg5">The type of the fifth update argument.</typeparam>
     /// <seealso cref="ComponentStorage{TComp}" />
     public class EntityUpdate<TComp, TArg1, TArg2, TArg3, TArg4, TArg5>(int capacity) : ComponentStorage<TComp>(capacity)
         where TComp : IOnUpdate<TArg1, TArg2, TArg3, TArg4, TArg5>
     {
         /// <summary>
-        ///     Runs the scene
+        ///     Runs the update logic for all entities of this archetype.
         /// </summary>
-        /// <param name="scene">The scene</param>
-        /// <param name="b">The </param>
+        /// <param name="scene">The scene containing the entities to update.</param>
+        /// <param name="b">The archetype representing the set of entities to update.</param>
         internal override void Run(Scene scene, Archetype b)
         {
             ref GameObjectIdOnly entityIds = ref b.GetEntityDataReference();
@@ -78,12 +84,12 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        ///     Runs the scene
+        ///     Runs the update logic for a subset of entities in this archetype, starting at the specified index.
         /// </summary>
-        /// <param name="scene">The scene</param>
-        /// <param name="b">The </param>
-        /// <param name="start">The start</param>
-        /// <param name="length">The length</param>
+        /// <param name="scene">The scene containing the entities to update.</param>
+        /// <param name="b">The archetype representing the set of entities to update.</param>
+        /// <param name="start">The zero-based starting index within the archetype from which to begin updating.</param>
+        /// <param name="length">The number of entities to update starting from <paramref name="start"/>.</param>
         internal override void Run(Scene scene, Archetype b, int start, int length)
         {
             ref GameObjectIdOnly entityIds = ref Unsafe.Add(ref b.GetEntityDataReference(), start);

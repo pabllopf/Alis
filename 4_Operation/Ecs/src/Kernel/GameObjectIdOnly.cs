@@ -32,13 +32,28 @@ using System.Runtime.InteropServices;
 
 namespace Alis.Core.Ecs.Kernel
 {
-    /// <summary>
-    ///     The gameObject id only
-    /// </summary>
-    /// <remarks>
-    ///     Memory layout optimized: 6 bytes total (int + ushort)
-    ///     Pack = 1 for minimal memory footprint
-    /// </remarks>
+/// <summary>
+///     Represents a lightweight reference to a GameObject containing only its ID and version.
+///     This struct is used to reference GameObjects without keeping them alive, preventing
+///     memory leaks in scenarios where you need to store references to potentially destroyed objects.
+///     The version field helps detect if the referenced GameObject has been destroyed and recreated.
+/// </summary>
+/// <remarks>
+///     Memory layout optimized: 6 bytes total (int + ushort)
+///     Pack = 1 for minimal memory footprint
+///     
+///     Usage example:
+///     <code>
+///     // When creating a reference to a GameObject that might be destroyed
+///     GameObjectIdOnly objRef = new GameObjectIdOnly(gameObject.ID, gameObject.Version);
+///     
+///     // Later, check if the object still exists and get it
+///     if (scene.TryGetGameObject(objRef, out GameObject obj))
+///     {
+///         // Use the object safely
+///     }
+///     </code>
+/// </remarks>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct GameObjectIdOnly(int id, ushort version)
     {

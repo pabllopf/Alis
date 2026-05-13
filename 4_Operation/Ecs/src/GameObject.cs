@@ -380,9 +380,9 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Invokes the component scene events using the specified event
         /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="e">The event</param>
-        /// <param name="gameObject">The gameObject</param>
+        /// <typeparam name="T">The component type</typeparam>
+        /// <param name="e">The event to invoke</param>
+        /// <param name="gameObject">The gameObject raising the event</param>
         public static void InvokeComponentWorldEvents<T>(ref Event<ComponentId> e, GameObject gameObject)
         {
             e.InvokeInternal(gameObject, Component<T>.Id);
@@ -391,11 +391,11 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Invokes the per gameObject events using the specified gameObject
         /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="gameObject">The gameObject</param>
-        /// <param name="hasGenericEvent">The has generic event</param>
-        /// <param name="events">The events</param>
-        /// <param name="component">The component</param>
+        /// <typeparam name="T">The component type</typeparam>
+        /// <param name="gameObject">The gameObject raising the event</param>
+        /// <param name="hasGenericEvent">Whether a generic event handler is registered</param>
+        /// <param name="events">The event record for this gameObject</param>
+        /// <param name="component">The component data</param>
         public static void InvokePerEntityEvents<T>(GameObject gameObject, bool hasGenericEvent, ref ComponentEvent events,
             ref T component)
         {
@@ -543,10 +543,10 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Invokes the component scene events using the specified event
         /// </summary>
-        /// <typeparam name="T1">The </typeparam>
-        /// <typeparam name="T2">The </typeparam>
-        /// <param name="e">The event</param>
-        /// <param name="gameObject">The gameObject</param>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <param name="e">The event to invoke</param>
+        /// <param name="gameObject">The gameObject raising the event</param>
         public static void InvokeComponentWorldEvents<T1, T2>(ref Event<ComponentId> e, GameObject gameObject)
         {
             e.InvokeInternal(gameObject, Component<T1>.Id);
@@ -556,13 +556,13 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Invokes the per gameObject events using the specified gameObject
         /// </summary>
-        /// <typeparam name="T1">The </typeparam>
-        /// <typeparam name="T2">The </typeparam>
-        /// <param name="gameObject">The gameObject</param>
-        /// <param name="hasGenericEvent">The has generic event</param>
-        /// <param name="events">The events</param>
-        /// <param name="component1">The component</param>
-        /// <param name="component2">The component</param>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <param name="gameObject">The gameObject raising the event</param>
+        /// <param name="hasGenericEvent">Whether a generic event handler is registered</param>
+        /// <param name="events">The event record for this gameObject</param>
+        /// <param name="component1">The first component data</param>
+        /// <param name="component2">The second component data</param>
         public static void InvokePerEntityEvents<T1, T2>(GameObject gameObject, bool hasGenericEvent, ref ComponentEvent events,
             ref T1 component1, ref T2 component2)
         {
@@ -672,11 +672,11 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Invokes the component scene events using the specified event
         /// </summary>
-        /// <typeparam name="T1">The </typeparam>
-        /// <typeparam name="T2">The </typeparam>
-        /// <typeparam name="T3">The </typeparam>
-        /// <param name="e">The event</param>
-        /// <param name="gameObject">The gameObject</param>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <typeparam name="T3">The third component type</typeparam>
+        /// <param name="e">The event to invoke</param>
+        /// <param name="gameObject">The gameObject raising the event</param>
         public static void InvokeComponentWorldEvents<T1, T2, T3>(ref Event<ComponentId> e, GameObject gameObject)
         {
             e.InvokeInternal(gameObject, Component<T1>.Id);
@@ -687,15 +687,15 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Invokes the per gameObject events using the specified gameObject
         /// </summary>
-        /// <typeparam name="T1">The </typeparam>
-        /// <typeparam name="T2">The </typeparam>
-        /// <typeparam name="T3">The </typeparam>
-        /// <param name="gameObject">The gameObject</param>
-        /// <param name="hasGenericEvent">The has generic event</param>
-        /// <param name="events">The events</param>
-        /// <param name="component1">The component</param>
-        /// <param name="component2">The component</param>
-        /// <param name="component3">The component</param>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <typeparam name="T3">The third component type</typeparam>
+        /// <param name="gameObject">The gameObject raising the event</param>
+        /// <param name="hasGenericEvent">Whether a generic event handler is registered</param>
+        /// <param name="events">The event record for this gameObject</param>
+        /// <param name="component1">The first component data</param>
+        /// <param name="component2">The second component data</param>
+        /// <param name="component3">The third component data</param>
         public static void InvokePerEntityEvents<T1, T2, T3>(GameObject gameObject, bool hasGenericEvent,
             ref ComponentEvent events, ref T1 component1, ref T2 component2, ref T3 component3)
         {
@@ -813,12 +813,12 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Invokes the component scene events using the specified event
         /// </summary>
-        /// <typeparam name="T1">The </typeparam>
-        /// <typeparam name="T2">The </typeparam>
-        /// <typeparam name="T3">The </typeparam>
-        /// <typeparam name="T4">The </typeparam>
-        /// <param name="e">The event</param>
-        /// <param name="gameObject">The gameObject</param>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <typeparam name="T3">The third component type</typeparam>
+        /// <typeparam name="T4">The fourth component type</typeparam>
+        /// <param name="e">The event to invoke</param>
+        /// <param name="gameObject">The gameObject raising the event</param>
         public static void InvokeComponentWorldEvents<T1, T2, T3, T4>(ref Event<ComponentId> e, GameObject gameObject)
         {
             e.InvokeInternal(gameObject, Component<T1>.Id);
@@ -830,17 +830,17 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Invokes the per gameObject events using the specified gameObject
         /// </summary>
-        /// <typeparam name="T1">The </typeparam>
-        /// <typeparam name="T2">The </typeparam>
-        /// <typeparam name="T3">The </typeparam>
-        /// <typeparam name="T4">The </typeparam>
-        /// <param name="gameObject">The gameObject</param>
-        /// <param name="hasGenericEvent">The has generic event</param>
-        /// <param name="events">The events</param>
-        /// <param name="component1">The component</param>
-        /// <param name="component2">The component</param>
-        /// <param name="component3">The component</param>
-        /// <param name="component4">The component</param>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <typeparam name="T3">The third component type</typeparam>
+        /// <typeparam name="T4">The fourth component type</typeparam>
+        /// <param name="gameObject">The gameObject raising the event</param>
+        /// <param name="hasGenericEvent">Whether a generic event handler is registered</param>
+        /// <param name="events">The event record for this gameObject</param>
+        /// <param name="component1">The first component data</param>
+        /// <param name="component2">The second component data</param>
+        /// <param name="component3">The third component data</param>
+        /// <param name="component4">The fourth component data</param>
         public static void InvokePerEntityEvents<T1, T2, T3, T4>(GameObject gameObject, bool hasGenericEvent,
             ref ComponentEvent events, ref T1 component1, ref T2 component2, ref T3 component3, ref T4 component4)
         {
@@ -966,13 +966,13 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Invokes the component scene events using the specified event
         /// </summary>
-        /// <typeparam name="T1">The </typeparam>
-        /// <typeparam name="T2">The </typeparam>
-        /// <typeparam name="T3">The </typeparam>
-        /// <typeparam name="T4">The </typeparam>
-        /// <typeparam name="T5">The </typeparam>
-        /// <param name="e">The event</param>
-        /// <param name="gameObject">The gameObject</param>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <typeparam name="T3">The third component type</typeparam>
+        /// <typeparam name="T4">The fourth component type</typeparam>
+        /// <typeparam name="T5">The fifth component type</typeparam>
+        /// <param name="e">The event to invoke</param>
+        /// <param name="gameObject">The gameObject raising the event</param>
         public static void InvokeComponentWorldEvents<T1, T2, T3, T4, T5>(ref Event<ComponentId> e, GameObject gameObject)
         {
             e.InvokeInternal(gameObject, Component<T1>.Id);
@@ -985,19 +985,19 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Invokes the per gameObject events using the specified gameObject
         /// </summary>
-        /// <typeparam name="T1">The </typeparam>
-        /// <typeparam name="T2">The </typeparam>
-        /// <typeparam name="T3">The </typeparam>
-        /// <typeparam name="T4">The </typeparam>
-        /// <typeparam name="T5">The </typeparam>
-        /// <param name="gameObject">The gameObject</param>
-        /// <param name="hasGenericEvent">The has generic event</param>
-        /// <param name="events">The events</param>
-        /// <param name="component1">The component</param>
-        /// <param name="component2">The component</param>
-        /// <param name="component3">The component</param>
-        /// <param name="component4">The component</param>
-        /// <param name="component5">The component</param>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <typeparam name="T3">The third component type</typeparam>
+        /// <typeparam name="T4">The fourth component type</typeparam>
+        /// <typeparam name="T5">The fifth component type</typeparam>
+        /// <param name="gameObject">The gameObject raising the event</param>
+        /// <param name="hasGenericEvent">Whether a generic event handler is registered</param>
+        /// <param name="events">The event record for this gameObject</param>
+        /// <param name="component1">The first component data</param>
+        /// <param name="component2">The second component data</param>
+        /// <param name="component3">The third component data</param>
+        /// <param name="component4">The fourth component data</param>
+        /// <param name="component5">The fifth component data</param>
         public static void InvokePerEntityEvents<T1, T2, T3, T4, T5>(GameObject gameObject, bool hasGenericEvent,
             ref ComponentEvent events, ref T1 component1, ref T2 component2, ref T3 component3, ref T4 component4,
             ref T5 component5)
@@ -1132,14 +1132,14 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Invokes the component scene events using the specified event
         /// </summary>
-        /// <typeparam name="T1">The </typeparam>
-        /// <typeparam name="T2">The </typeparam>
-        /// <typeparam name="T3">The </typeparam>
-        /// <typeparam name="T4">The </typeparam>
-        /// <typeparam name="T5">The </typeparam>
-        /// <typeparam name="T6">The </typeparam>
-        /// <param name="e">The event</param>
-        /// <param name="gameObject">The gameObject</param>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <typeparam name="T3">The third component type</typeparam>
+        /// <typeparam name="T4">The fourth component type</typeparam>
+        /// <typeparam name="T5">The fifth component type</typeparam>
+        /// <typeparam name="T6">The sixth component type</typeparam>
+        /// <param name="e">The event to invoke</param>
+        /// <param name="gameObject">The gameObject raising the event</param>
         public static void InvokeComponentWorldEvents<T1, T2, T3, T4, T5, T6>(ref Event<ComponentId> e, GameObject gameObject)
         {
             e.InvokeInternal(gameObject, Component<T1>.Id);
@@ -1153,21 +1153,21 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Invokes the per gameObject events using the specified gameObject
         /// </summary>
-        /// <typeparam name="T1">The </typeparam>
-        /// <typeparam name="T2">The </typeparam>
-        /// <typeparam name="T3">The </typeparam>
-        /// <typeparam name="T4">The </typeparam>
-        /// <typeparam name="T5">The </typeparam>
-        /// <typeparam name="T6">The </typeparam>
-        /// <param name="gameObject">The gameObject</param>
-        /// <param name="hasGenericEvent">The has generic event</param>
-        /// <param name="events">The events</param>
-        /// <param name="component1">The component</param>
-        /// <param name="component2">The component</param>
-        /// <param name="component3">The component</param>
-        /// <param name="component4">The component</param>
-        /// <param name="component5">The component</param>
-        /// <param name="component6">The component</param>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <typeparam name="T3">The third component type</typeparam>
+        /// <typeparam name="T4">The fourth component type</typeparam>
+        /// <typeparam name="T5">The fifth component type</typeparam>
+        /// <typeparam name="T6">The sixth component type</typeparam>
+        /// <param name="gameObject">The gameObject raising the event</param>
+        /// <param name="hasGenericEvent">Whether a generic event handler is registered</param>
+        /// <param name="events">The event record for this gameObject</param>
+        /// <param name="component1">The first component data</param>
+        /// <param name="component2">The second component data</param>
+        /// <param name="component3">The third component data</param>
+        /// <param name="component4">The fourth component data</param>
+        /// <param name="component5">The fifth component data</param>
+        /// <param name="component6">The sixth component data</param>
         public static void InvokePerEntityEvents<T1, T2, T3, T4, T5, T6>(GameObject gameObject, bool hasGenericEvent,
             ref ComponentEvent events, ref T1 component1, ref T2 component2, ref T3 component3, ref T4 component4,
             ref T5 component5, ref T6 component6)
@@ -1309,15 +1309,15 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Invokes the component scene events using the specified event
         /// </summary>
-        /// <typeparam name="T1">The </typeparam>
-        /// <typeparam name="T2">The </typeparam>
-        /// <typeparam name="T3">The </typeparam>
-        /// <typeparam name="T4">The </typeparam>
-        /// <typeparam name="T5">The </typeparam>
-        /// <typeparam name="T6">The </typeparam>
-        /// <typeparam name="T7">The </typeparam>
-        /// <param name="e">The event</param>
-        /// <param name="gameObject">The gameObject</param>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <typeparam name="T3">The third component type</typeparam>
+        /// <typeparam name="T4">The fourth component type</typeparam>
+        /// <typeparam name="T5">The fifth component type</typeparam>
+        /// <typeparam name="T6">The sixth component type</typeparam>
+        /// <typeparam name="T7">The seventh component type</typeparam>
+        /// <param name="e">The event to invoke</param>
+        /// <param name="gameObject">The gameObject raising the event</param>
         public static void InvokeComponentWorldEvents<T1, T2, T3, T4, T5, T6, T7>(ref Event<ComponentId> e,
             GameObject gameObject)
         {
@@ -1333,23 +1333,23 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Invokes the per gameObject events using the specified gameObject
         /// </summary>
-        /// <typeparam name="T1">The </typeparam>
-        /// <typeparam name="T2">The </typeparam>
-        /// <typeparam name="T3">The </typeparam>
-        /// <typeparam name="T4">The </typeparam>
-        /// <typeparam name="T5">The </typeparam>
-        /// <typeparam name="T6">The </typeparam>
-        /// <typeparam name="T7">The </typeparam>
-        /// <param name="gameObject">The gameObject</param>
-        /// <param name="hasGenericEvent">The has generic event</param>
-        /// <param name="events">The events</param>
-        /// <param name="component1">The component</param>
-        /// <param name="component2">The component</param>
-        /// <param name="component3">The component</param>
-        /// <param name="component4">The component</param>
-        /// <param name="component5">The component</param>
-        /// <param name="component6">The component</param>
-        /// <param name="component7">The component</param>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <typeparam name="T3">The third component type</typeparam>
+        /// <typeparam name="T4">The fourth component type</typeparam>
+        /// <typeparam name="T5">The fifth component type</typeparam>
+        /// <typeparam name="T6">The sixth component type</typeparam>
+        /// <typeparam name="T7">The seventh component type</typeparam>
+        /// <param name="gameObject">The gameObject raising the event</param>
+        /// <param name="hasGenericEvent">Whether a generic event handler is registered</param>
+        /// <param name="events">The event record for this gameObject</param>
+        /// <param name="component1">The first component data</param>
+        /// <param name="component2">The second component data</param>
+        /// <param name="component3">The third component data</param>
+        /// <param name="component4">The fourth component data</param>
+        /// <param name="component5">The fifth component data</param>
+        /// <param name="component6">The sixth component data</param>
+        /// <param name="component7">The seventh component data</param>
         public static void InvokePerEntityEvents<T1, T2, T3, T4, T5, T6, T7>(GameObject gameObject, bool hasGenericEvent,
             ref ComponentEvent events, ref T1 component1, ref T2 component2, ref T3 component3, ref T4 component4,
             ref T5 component5, ref T6 component6, ref T7 component7)
@@ -1501,16 +1501,16 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Invokes the component scene events using the specified event
         /// </summary>
-        /// <typeparam name="T1">The </typeparam>
-        /// <typeparam name="T2">The </typeparam>
-        /// <typeparam name="T3">The </typeparam>
-        /// <typeparam name="T4">The </typeparam>
-        /// <typeparam name="T5">The </typeparam>
-        /// <typeparam name="T6">The </typeparam>
-        /// <typeparam name="T7">The </typeparam>
-        /// <typeparam name="T8">The </typeparam>
-        /// <param name="e">The event</param>
-        /// <param name="gameObject">The gameObject</param>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <typeparam name="T3">The third component type</typeparam>
+        /// <typeparam name="T4">The fourth component type</typeparam>
+        /// <typeparam name="T5">The fifth component type</typeparam>
+        /// <typeparam name="T6">The sixth component type</typeparam>
+        /// <typeparam name="T7">The seventh component type</typeparam>
+        /// <typeparam name="T8">The eighth component type</typeparam>
+        /// <param name="e">The event to invoke</param>
+        /// <param name="gameObject">The gameObject raising the event</param>
         public static void InvokeComponentWorldEvents<T1, T2, T3, T4, T5, T6, T7, T8>(ref Event<ComponentId> e,
             GameObject gameObject)
         {
@@ -1527,25 +1527,25 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Invokes the per gameObject events using the specified gameObject
         /// </summary>
-        /// <typeparam name="T1">The </typeparam>
-        /// <typeparam name="T2">The </typeparam>
-        /// <typeparam name="T3">The </typeparam>
-        /// <typeparam name="T4">The </typeparam>
-        /// <typeparam name="T5">The </typeparam>
-        /// <typeparam name="T6">The </typeparam>
-        /// <typeparam name="T7">The </typeparam>
-        /// <typeparam name="T8">The </typeparam>
-        /// <param name="gameObject">The gameObject</param>
-        /// <param name="hasGenericEvent">The has generic event</param>
-        /// <param name="events">The events</param>
-        /// <param name="component1">The component</param>
-        /// <param name="component2">The component</param>
-        /// <param name="component3">The component</param>
-        /// <param name="component4">The component</param>
-        /// <param name="component5">The component</param>
-        /// <param name="component6">The component</param>
-        /// <param name="component7">The component</param>
-        /// <param name="component8">The component</param>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <typeparam name="T3">The third component type</typeparam>
+        /// <typeparam name="T4">The fourth component type</typeparam>
+        /// <typeparam name="T5">The fifth component type</typeparam>
+        /// <typeparam name="T6">The sixth component type</typeparam>
+        /// <typeparam name="T7">The seventh component type</typeparam>
+        /// <typeparam name="T8">The eighth component type</typeparam>
+        /// <param name="gameObject">The gameObject raising the event</param>
+        /// <param name="hasGenericEvent">Whether a generic event handler is registered</param>
+        /// <param name="events">The event record for this gameObject</param>
+        /// <param name="component1">The first component data</param>
+        /// <param name="component2">The second component data</param>
+        /// <param name="component3">The third component data</param>
+        /// <param name="component4">The fourth component data</param>
+        /// <param name="component5">The fifth component data</param>
+        /// <param name="component6">The sixth component data</param>
+        /// <param name="component7">The seventh component data</param>
+        /// <param name="component8">The eighth component data</param>
         public static void InvokePerEntityEvents<T1, T2, T3, T4, T5, T6, T7, T8>(GameObject gameObject, bool hasGenericEvent,
             ref ComponentEvent events, ref T1 component1, ref T2 component2, ref T3 component3, ref T4 component4,
             ref T5 component5, ref T6 component6, ref T7 component7, ref T8 component8)

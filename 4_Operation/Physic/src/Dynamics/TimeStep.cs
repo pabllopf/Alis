@@ -48,14 +48,19 @@
 
 namespace Alis.Core.Physic.Dynamics
 {
-    /// <summary>
-    ///     This is an internal structure.
-    /// </summary>
+/// <summary>
+///     Internal structure that holds data for a single time step in the physics simulation.
+///     This structure is used by the solver to manage the iteration process and
+///     contains all the parameters needed for solving constraints during a time step.
+///     It's marked as internal because it's only used within the Dynamics namespace.
+/// </summary>
     internal struct TimeStep
     {
-        /// <summary>
-        ///     Time step (Delta time)
-        /// </summary>
+/// <summary>
+///     Gets or sets the time step size (delta time) for this step.
+///     This represents the amount of time that has passed since the last step,
+///     typically measured in seconds.
+/// </summary>
         public float Dt;
 
         /// <summary>

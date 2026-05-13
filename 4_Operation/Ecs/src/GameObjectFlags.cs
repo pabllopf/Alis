@@ -32,11 +32,11 @@ using System;
 namespace Alis.Core.Ecs
 {
     /// <summary>
-    ///     Flags that track the state and event subscription status of entities within a scene.
+    ///     Defines bitwise flags that track the state and event subscription status of entities within a scene.
     /// </summary>
     /// <remarks>
     ///     <para>
-    ///     This enum is used internally by the ECS system to track which events are active for
+    ///     This flags enum is used internally by the ECS system to track which events are active for
     ///     each entity and to manage structural changes. The flags are stored in entity metadata
     ///     and checked during system execution to determine whether event handlers should be invoked.
     ///     </para>
@@ -88,7 +88,7 @@ namespace Alis.Core.Ecs
         Events = AddComp | RemoveComp | OnDelete | WorldCreate,
 
         /// <summary>
-        ///     Indicates that there are registered listeners for entity-created events in this scene.
+        ///     Indicates there are registered listeners for entity-created events in this scene.
         /// </summary>
         WorldCreate = 1 << 7,
 

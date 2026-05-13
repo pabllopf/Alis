@@ -38,13 +38,13 @@ namespace Alis.Core.Aspect.Math
     /// </summary>
     public static class CustomMathF
     {
-        /// <summary>Represents the natural logarithmic base, specified by the constant, <see langword="e" />.</summary>
+        /// <summary>Represents the natural logarithmic base (2.7182817f), also known as Euler's number, specified by the constant <see langword="e" />.</summary>
         public const float E = 2.7182817f;
 
-        /// <summary>Represents the ratio of the circumference of a circle to its diameter, specified by the constant, p.</summary>
+        /// <summary>Represents the ratio of the circumference of a circle to its diameter (3.1415927f), specified by the constant π (pi).</summary>
         public const float Pi = 3.1415927f;
 
-        /// <summary>Represents the number of radians in one turn, specified by the constant, τ.</summary>
+        /// <summary>Represents the number of radians in one full turn (6.2831855f), equivalent to 2π, specified by the constant τ (tau).</summary>
         public const float Tau = 6.2831855f;
 
         /// <summary>

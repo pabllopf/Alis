@@ -31,17 +31,24 @@ using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Physic.Dynamics
 {
-    /// This is an internal structure.
+    /// <summary>
+///     Internal structure representing a position in the solver.
+///     This structure is used during the constraint solving process
+///     to store position-related data for bodies.
+///     Marked as internal because it's only used within the Dynamics namespace.
+/// </summary>
     internal struct SolverPosition
     {
-        /// <summary>
-        ///     The
-        /// </summary>
-        public Vector2F C;
+/// <summary>
+///     Gets or sets the center position of the body in world space.
+///     This represents the current position of the body's center of mass.
+/// </summary>
+public Vector2F C;
 
-        /// <summary>
-        ///     The
-        /// </summary>
-        public float A;
+/// <summary>
+///     Gets or sets the angle of the body in radians.
+///     This represents the current orientation of the body.
+/// </summary>
+public float A;
     }
 }

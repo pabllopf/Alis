@@ -73,56 +73,65 @@ namespace Alis.Core.Aspect.Logging.Core
 
 
         /// <summary>
-        ///     Gets the value of the level
+        ///     Gets the log level indicating severity of this entry.
         /// </summary>
+        /// <value>The severity level of this log entry.</value>
         public LogLevel Level { get; }
 
 
         /// <summary>
-        ///     Gets the value of the message
+        ///     Gets the primary message of the log entry.
         /// </summary>
+        /// <value>The log message content.</value>
         public string Message { get; }
 
 
         /// <summary>
-        ///     Gets the value of the timestamp
+        ///     Gets the timestamp when the log entry was created.
         /// </summary>
+        /// <value>The UTC timestamp of the log entry creation.</value>
         public DateTime Timestamp { get; }
 
 
         /// <summary>
-        ///     Gets the value of the logger name
+        ///     Gets the name/category of the logger that created this entry.
         /// </summary>
+        /// <value>The logger name or category.</value>
         public string LoggerName { get; }
 
 
         /// <summary>
-        ///     Gets the value of the exception
+        ///     Gets the exception associated with this entry, if any.
         /// </summary>
+        /// <value>The exception, or null if no exception is associated.</value>
         public Exception Exception { get; }
 
 
         /// <summary>
-        ///     Gets the value of the thread id
+        ///     Gets the thread ID where the log entry was created.
         /// </summary>
+        /// <value>The managed thread ID of the creating thread.</value>
         public int ThreadId { get; }
 
 
         /// <summary>
-        ///     Gets the value of the correlation id
+        ///     Gets the correlation ID for tracing related log entries.
         /// </summary>
+        /// <value>The correlation identifier, or null if not set.</value>
         public string CorrelationId { get; }
 
 
         /// <summary>
-        ///     Gets the value of the properties
+        ///     Gets the structured data (key-value pairs) associated with this entry.
         /// </summary>
+        /// <value>The dictionary of structured properties.</value>
         public IReadOnlyDictionary<string, object> Properties { get; }
 
 
         /// <summary>
-        ///     Gets the value of the scopes
+        ///     Gets the scope/context information for this log entry.
         /// </summary>
+        /// <value>The list of active scopes for this entry.</value>
         public IReadOnlyList<object> Scopes { get; }
     }
 }

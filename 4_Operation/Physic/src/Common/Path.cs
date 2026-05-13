@@ -37,23 +37,45 @@ namespace Alis.Core.Physic.Common
 {
     //Contributed by Matthew Bettcher
 
-    /// <summary>
-    ///     Path:
-    ///     Very similar to Vertices, but this
-    ///     class contains vectors describing
-    ///     control points on a Catmull-Rom
-    ///     curve.
-    /// </summary>
+/// <summary>
+///     Represents a Catmull-Rom spline path defined by control points.
+///     This class is similar to Vertices but specifically designed for 
+///     creating smooth curves using the Catmull-Rom spline algorithm.
+///     The path can be either open or closed, and provides methods for 
+///     evaluating points along the curve, getting normals, and manipulating
+///     the control points.
+///     
+///     Catmull-Rom splines are a type of interpolating spline where the curve
+///     passes through each control point. The curve is defined piecewise by
+///     cubic polynomials between each pair of control points.
+///     
+///     Usage example:
+///     <code>
+///     var path = new Path();
+///     path.Add(new Vector2F(0, 0));
+///     path.Add(new Vector2F(10, 0));
+///     path.Add(new Vector2F(10, 10));
+///     path.Add(new Vector2F(0, 10));
+///     path.Closed = true;
+///     
+///     // Get points along the path
+///     var vertices = path.GetVertices(10);
+///     </code>
+/// </summary>
     public class Path
     {
-        /// <summary>
-        ///     All the points that makes up the curve
-        /// </summary>
+/// <summary>
+///     Gets the list of control points that define the Catmull-Rom spline curve.
+///     These points determine the shape of the curve, with the curve passing
+///     through each point except possibly the first and last in an open curve.
+/// </summary>
         public readonly List<Vector2F> ControlPoints;
 
-        /// <summary>
-        ///     The delta
-        /// </summary>
+/// <summary>
+///     Gets or sets the delta time value used for calculations along the spline.
+///     This value represents the time increment between control points and is
+///     automatically updated when points are added or removed.
+/// </summary>
         internal float _deltaT;
 
         /// <summary>
@@ -330,12 +352,12 @@ namespace Alis.Core.Physic.Common
         /// <summary>
         ///     Calcs the catmull rom using the specified p 0
         /// </summary>
-        /// <param name="p0">The </param>
-        /// <param name="p1">The </param>
-        /// <param name="p2">The </param>
-        /// <param name="p3">The </param>
-        /// <param name="amount">The amount</param>
-        /// <param name="result">The result</param>
+        /// <param name="p0">The first control point.</param>
+        /// <param name="p1">The second control point.</param>
+        /// <param name="p2">The third control point.</param>
+        /// <param name="p3">The fourth control point.</param>
+        /// <param name="amount">The interpolation amount.</param>
+        /// <param name="result">The interpolated position on the Catmull-Rom curve.</param>
         internal void CalcCatmullRom(Vector2F p0, Vector2F p1, Vector2F p2, Vector2F p3, float amount, out Vector2F result)
         {
             double sqAmount = amount * amount;

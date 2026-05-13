@@ -34,15 +34,33 @@ using Alis.Core.Ecs.Updating;
 
 namespace Alis.Core.Ecs.Kernel
 {
-    /// <summary>
-    ///     A wrapper ref struct over a reference to a <typeparamref name="T" />
-    /// </summary>
-    /// <typeparam name="T">The type this  /> wraps over</typeparam>
-    /// <remarks>
-    ///     Memory layout optimized: Span (16 bytes) + int (4 bytes)
-    ///     Total: 20 bytes + 4 bytes padding = 24 bytes aligned
-    ///     Pack = 4 for optimal alignment with Span structure
-    /// </remarks>
+/// <summary>
+///     A wrapper ref struct over a reference to a <typeparamref name="T" />.
+///     This struct provides a safe way to hold a reference to a value type or reference type
+///     without boxing allocations, useful for high-performance scenarios like ECS systems.
+///     The ref struct ensures the reference lives only on the stack and cannot be escaped to the heap.
+/// </summary>
+/// <typeparam name="T">The type this wrapper references.</typeparam>
+/// <remarks>
+///     Memory layout optimized: Span (16 bytes) + int (4 bytes)
+///     Total: 20 bytes + 4 bytes padding = 24 bytes aligned
+///     Pack = 4 for optimal alignment with Span structure
+///     
+///     Usage example:
+///     <code>
+///     // Assuming we have a component array
+///     Transform[] transforms = new Transform[100];
+///     
+///     // Create a Ref to access a specific element
+///     Ref&lt;Transform&gt; transformRef = new Ref&lt;Transform&gt;(transforms, 42);
+///     
+///     // Access the value (returns a ref)
+///     ref Transform transform = ref transformRef.Value;
+///     
+///     // Modify the value directly in the array
+///     transform.Position = new Vector2F(10, 20);
+///     </code>
+/// </remarks>
     [StructLayout(LayoutKind.Sequential, Pack = 4)]
     public ref struct Ref<T>
     {

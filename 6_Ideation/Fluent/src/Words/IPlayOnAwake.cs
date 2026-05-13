@@ -37,7 +37,7 @@ namespace Alis.Core.Aspect.Fluent.Words
     public interface IPlayOnAwake<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Plays the on awake using the specified value
+        ///     Sets the play-on-awake setting on the builder.
         /// </summary>
         /// <param name="value">The play on awake setting to apply.</param>
         /// <returns>The builder instance, enabling fluent chaining.</returns>

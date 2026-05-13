@@ -77,7 +77,7 @@ namespace Alis.Core.Physic.Collisions
         /// <param name="sweepA">The sweep</param>
         /// <param name="proxyB">The proxy</param>
         /// <param name="sweepB">The sweep</param>
-        /// <param name="t1">The </param>
+        /// <param name="t1">The fractional time value for initializing the transform.</param>
         public static void Set(ref SimplexCache cache, ref DistanceProxy proxyA, ref Sweep sweepA, ref DistanceProxy proxyB, ref Sweep sweepB, float t1)
         {
             _localPoint = Vector2F.Zero;
@@ -153,10 +153,10 @@ namespace Alis.Core.Physic.Collisions
         /// <summary>
         ///     Finds the min separation using the specified index a
         /// </summary>
-        /// <param name="indexA">The index</param>
-        /// <param name="indexB">The index</param>
-        /// <param name="t">The </param>
-        /// <returns>The float</returns>
+        /// <param name="indexA">The index of the support point on shape A.</param>
+        /// <param name="indexB">The index of the support point on shape B.</param>
+        /// <param name="t">The fractional time value for the transform.</param>
+        /// <returns>The minimum separation distance.</returns>
         public static float FindMinSeparation(out int indexA, out int indexB, float t)
         {
             _sweepA.GetTransform(out ControllerTransform xfA, t);
@@ -226,10 +226,10 @@ namespace Alis.Core.Physic.Collisions
         /// <summary>
         ///     Evaluates the index a
         /// </summary>
-        /// <param name="indexA">The index</param>
-        /// <param name="indexB">The index</param>
-        /// <param name="t">The </param>
-        /// <returns>The float</returns>
+        /// <param name="indexA">The index of the support point on shape A.</param>
+        /// <param name="indexB">The index of the support point on shape B.</param>
+        /// <param name="t">The fractional time value for the transform.</param>
+        /// <returns>The separation distance at the given indices and time.</returns>
         public static float Evaluate(int indexA, int indexB, float t)
         {
             _sweepA.GetTransform(out ControllerTransform xfA, t);

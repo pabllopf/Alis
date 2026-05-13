@@ -37,25 +37,59 @@ using Alis.Core.Ecs.Systems.Scope;
 
 namespace Alis.Core.Ecs.Systems.Manager.Scene
 {
-    /// <summary>
-    ///     The scene manager base class
+/// <summary>
+    ///     Manages game scenes and coordinates scene loading, unloading, and transitions
+    ///     within the Alis ECS framework.
     /// </summary>
+    /// <remarks>
+    ///     <para>
+    ///         <see cref="SceneManager" /> derives from <see cref="AManager" /> and is responsible
+    ///         for maintaining a list of loaded scenes (<see cref="LoadedScenes" />) and tracking
+    ///         the currently active scene via <see cref="CurrentWorld" />.
+    ///     </para>
+    ///     <para>
+    ///         During its lifecycle callbacks (OnInit, OnAwake, OnStart, etc.), the SceneManager
+    ///         iterates over all entities in the current world and dispatches lifecycle events
+    ///         to qualifying components (e.g., <c>IOnAwake</c>, <c>IOnStart</c>, <c>IOnUpdate</c>).
+    ///     </para>
+    ///     <para>
+    ///         Scenes can be added via <see cref="AddScene" />, loaded/unloaded by index
+    ///         via <see cref="LoadScene(int)" /> or by name via <see cref="LoadScene(string)" />,
+    ///         and tracked using <see cref="ScenesMap" />.
+    ///     </para>
+    /// </remarks>
     /// <seealso cref="AManager" />
     public class SceneManager : AManager
     {
         /// <summary>
-        ///     The loaded scenes
+        ///     Gets the list of all currently loaded scenes.
         /// </summary>
+        /// <remarks>
+        ///     Scenes are added via <see cref="AddScene" /> and can be switched at runtime
+        ///     using <see cref="LoadScene" />. This list persists across scene transitions.
+        /// </remarks>
         public List<Ecs.Scene> LoadedScenes;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="SceneManager" /> class
+        ///     Initializes a new instance of the <see cref="SceneManager" /> class with an empty scene list.
         /// </summary>
-        /// <param name="context">The context</param>
+        /// <param name="context">The <see cref="Context" /> this manager belongs to.</param>
+        /// <remarks>
+        ///     Creates a new empty <see cref="Ecs.Scene" /> as <see cref="CurrentWorld" />.
+        /// </remarks>
         public SceneManager(Context context) : base(context)
         {
-            LoadedScenes = new List<Ecs.Scene>();
-            CurrentWorld = new Ecs.Scene();
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="SceneManager" /> class with the specified scenes.
+        /// </summary>
+        /// <param name="context">The <see cref="Context" /> this manager belongs to.</param>
+        /// <param name="scenes">The scenes to preload. The first scene becomes the <see cref="CurrentWorld" />.</param>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="scenes" /> is <see langword="null" />.</exception>
+        /// <exception cref="ArgumentException">Thrown when <paramref name="scenes" /> is empty.</exception>
+        public SceneManager(Context context, params Ecs.Scene[] scenes) : base(context)
+        {
         }
 
         /// <summary>
@@ -71,12 +105,17 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
 
 
         /// <summary>
-        ///     Gets or sets the value of the scene
+        ///     Gets or sets the currently active scene.
         /// </summary>
+        /// <remarks>
+        ///     Setting <see cref="CurrentWorld" /> switches the active scene immediately.
+        ///     For a managed transition with lifecycle callbacks, use <see cref="LoadScene" /> instead.
+        /// </remarks>
         public Ecs.Scene CurrentWorld { get; set; }
 
         /// <summary>
-        ///     Ons the init
+        ///     Initializes all entities in the current scene by assigning the <see cref="Context" />
+        ///     to any component implementing <see cref="IHasContext{Context}" />.
         /// </summary>
         public override void OnInit()
         {
@@ -102,7 +141,8 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         }
 
         /// <summary>
-        ///     Ons the awake
+        ///     Awakens all entities in the current scene by invoking <c>OnAwake</c> on
+        ///     each qualifying component (those implementing <see cref="IOnAwake" />), excluding rigid bodies.
         /// </summary>
         public override void OnAwake()
         {
@@ -122,7 +162,8 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         }
 
         /// <summary>
-        ///     Ons the start
+        ///     Starts all entities in the current scene by invoking <c>OnStart</c> on
+        ///     each qualifying component (those implementing <see cref="IOnStart" />), excluding rigid bodies.
         /// </summary>
         public override void OnStart()
         {
@@ -142,7 +183,8 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         }
 
         /// <summary>
-        ///     Ons the physic update
+        ///     Performs physics updates on all entities in the current scene by invoking <c>OnPhysicUpdate</c>
+        ///     on each qualifying component (those implementing <see cref="IOnPhysicUpdate" />), excluding rigid bodies.
         /// </summary>
         public override void OnPhysicUpdate()
         {
@@ -162,7 +204,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         }
 
         /// <summary>
-        ///     Ons the save
+        ///     Saves the current scene. Currently disabled (serialization logic is commented out).
         /// </summary>
         public override void OnSave()
         {
@@ -187,7 +229,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         }
 
         /// <summary>
-        ///     Ons the before update
+        ///     Updates all entities in the current scene before component updates, excluding rigid bodies.
         /// </summary>
         public override void OnBeforeUpdate()
         {
@@ -207,7 +249,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         }
 
         /// <summary>
-        ///     Ons the update
+        ///     Updates the current scene, advancing game logic for all entities.
         /// </summary>
         public override void OnUpdate()
         {
@@ -215,7 +257,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         }
 
         /// <summary>
-        ///     Ons the after update
+        ///     Updates all entities in the current scene after component updates, excluding rigid bodies.
         /// </summary>
         public override void OnAfterUpdate()
         {
@@ -235,7 +277,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         }
 
         /// <summary>
-        ///     Ons the before fixed update
+        ///     Performs pre-fixed-update logic on all entities in the current scene, excluding rigid bodies.
         /// </summary>
         public override void OnBeforeFixedUpdate()
         {
@@ -255,7 +297,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         }
 
         /// <summary>
-        ///     Ons the fixed update
+        ///     Performs fixed-rate physics updates on all entities in the current scene, excluding rigid bodies.
         /// </summary>
         public override void OnFixedUpdate()
         {
@@ -275,7 +317,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         }
 
         /// <summary>
-        ///     Ons the after fixed update
+        ///     Performs post-fixed-update logic on all entities in the current scene, excluding rigid bodies.
         /// </summary>
         public override void OnAfterFixedUpdate()
         {
@@ -295,7 +337,8 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         }
 
         /// <summary>
-        ///     Ons the process pending changes
+        ///     Processes any pending structural changes (entity creation/destruction, component adds/removes)
+        ///     on all entities in the current scene, excluding rigid bodies.
         /// </summary>
         public override void OnProcessPendingChanges()
         {

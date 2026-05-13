@@ -37,7 +37,7 @@ namespace Alis.Core.Aspect.Fluent.Words
     public interface IGravityScale<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Gravities the scale using the specified value
+        ///     Sets the gravity scale on the builder.
         /// </summary>
         /// <param name="value">The gravity scale to apply.</param>
         /// <returns>The builder instance, enabling fluent chaining.</returns>

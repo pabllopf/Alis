@@ -43,7 +43,17 @@ namespace Alis.Core.Aspect.Fluent.Components
     /// <typeparam name="TArg8">The type of the 8th argument passed to the action.</typeparam>
     public partial interface IAction<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8>
     {
-        /// Executes the function
+        /// <summary>
+        ///     Executes the action with the provided 8 arguments, passed by reference.
+        /// </summary>
+        /// <param name="arg1">The 1st action argument of type <typeparamref name="TArg1"/>, passed by reference so the action can mutate it.</param>
+        /// <param name="arg2">The 2nd action argument of type <typeparamref name="TArg2"/>, passed by reference so the action can mutate it.</param>
+        /// <param name="arg3">The 3rd action argument of type <typeparamref name="TArg3"/>, passed by reference so the action can mutate it.</param>
+        /// <param name="arg4">The 4th action argument of type <typeparamref name="TArg4"/>, passed by reference so the action can mutate it.</param>
+        /// <param name="arg5">The 5th action argument of type <typeparamref name="TArg5"/>, passed by reference so the action can mutate it.</param>
+        /// <param name="arg6">The 6th action argument of type <typeparamref name="TArg6"/>, passed by reference so the action can mutate it.</param>
+        /// <param name="arg7">The 7th action argument of type <typeparamref name="TArg7"/>, passed by reference so the action can mutate it.</param>
+        /// <param name="arg8">The 8th action argument of type <typeparamref name="TArg8"/>, passed by reference so the action can mutate it.</param>
         void Run(ref TArg1 arg1, ref TArg2 arg2, ref TArg3 arg3, ref TArg4 arg4, ref TArg5 arg5, ref TArg6 arg6,
             ref TArg7 arg7, ref TArg8 arg8);
     }

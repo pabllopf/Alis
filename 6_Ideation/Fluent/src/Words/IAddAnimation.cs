@@ -37,7 +37,7 @@ namespace Alis.Core.Aspect.Fluent.Words
     public interface IAddAnimation<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Adds the animation using the specified value
+        ///     Adds an animation with the specified value to the builder.
         /// </summary>
         /// <param name="value">The animation to apply.</param>
         /// <returns>The builder instance, enabling fluent chaining.</returns>

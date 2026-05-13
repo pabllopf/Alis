@@ -39,7 +39,7 @@ namespace Alis.Core.Aspect.Fluent.Words
         /// <summary>
         ///     Deletes this instance
         /// </summary>
-        /// <returns>The</returns>
+        /// <returns>The builder instance, enabling fluent chaining.</returns>
         TBuilder Delete();
     }
 }

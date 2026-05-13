@@ -34,8 +34,14 @@ using Alis.Core.Ecs.Kernel.Archetypes;
 namespace Alis.Core.Ecs.Systems
 {
     /// <summary>
-    ///     The chunk query enumerator
+    ///     Enumerates component chunks that match a <see cref="Query" /> across all matching archetypes.
     /// </summary>
+    /// <remarks>
+    ///     Iterates over archetypes matched by a query, yielding a <see cref="ChunkTuple{T}" /> for each archetype
+    ///     that contains the requested component type(s). Use the <see cref="QueryEnumerable" /> wrapper to
+    ///     use this struct with <c>foreach</c> syntax.
+    /// </remarks>
+    /// <typeparam name="T">The component type to iterate over in each chunk.</typeparam>
     public ref struct ChunkQueryEnumerator<T>
     {
         /// <summary>
@@ -66,8 +72,12 @@ namespace Alis.Core.Ecs.Systems
         }
 
         /// <summary>
-        ///     The current tuple of component chunks.
+        ///     Gets the component chunk span for the current archetype.
         /// </summary>
+        /// <remarks>
+        ///     Returns a <see cref="ChunkTuple{T}" /> containing the span of component data
+        ///     for the current archetype being iterated.
+        /// </remarks>
         public ChunkTuple<T> Current
         {
             get
@@ -81,8 +91,12 @@ namespace Alis.Core.Ecs.Systems
         }
 
         /// <summary>
-        ///     Indicates to the scene that this enumeration is finished; the scene might allow structual changes after this.
+        ///     Releases the scene lock acquired during enumeration.
         /// </summary>
+        /// <remarks>
+        ///     Signals to the scene that enumeration is finished. After this call, the scene
+        ///     may allow structural changes (such as adding or removing components/entities).
+        /// </remarks>
         public void Dispose()
         {
             _scene.ExitDisallowState(null);
@@ -109,8 +123,15 @@ namespace Alis.Core.Ecs.Systems
     }
 
     /// <summary>
-    ///     The chunk query enumerator
+    ///     Enumerates component chunks of up to two component types that match a <see cref="Query" /> across all matching archetypes.
     /// </summary>
+    /// <remarks>
+    ///     Iterates over archetypes matched by a query, yielding a <see cref="ChunkTuple{T1, T2}" /> for each archetype
+    ///     that contains both requested component types. Use the <see cref="QueryEnumerable" /> wrapper to
+    ///     use this struct with <c>foreach</c> syntax.
+    /// </remarks>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
     public ref struct ChunkQueryEnumerator<T1, T2>
     {
         /// <summary>
@@ -141,8 +162,12 @@ namespace Alis.Core.Ecs.Systems
         }
 
         /// <summary>
-        ///     The current tuple of component chunks.
+        ///     Gets the component chunk spans for the current archetype.
         /// </summary>
+        /// <remarks>
+        ///     Returns a <see cref="ChunkTuple{T1, T2}" /> containing the spans of component data
+        ///     for the current archetype being iterated.
+        /// </remarks>
         public ChunkTuple<T1, T2> Current
         {
             get
@@ -157,8 +182,12 @@ namespace Alis.Core.Ecs.Systems
         }
 
         /// <summary>
-        ///     Indicates to the scene that this enumeration is finished; the scene might allow structual changes after this.
+        ///     Releases the scene lock acquired during enumeration.
         /// </summary>
+        /// <remarks>
+        ///     Signals to the scene that enumeration is finished. After this call, the scene
+        ///     may allow structural changes (such as adding or removing components/entities).
+        /// </remarks>
         public void Dispose()
         {
             _scene.ExitDisallowState(null);
@@ -227,7 +256,7 @@ namespace Alis.Core.Ecs.Systems
         }
 
         /// <summary>
-        ///     The current tuple of component chunks.
+        ///     Gets the component chunk spans for the current archetype.
         /// </summary>
         public ChunkTuple<T1, T2, T3> Current
         {
@@ -244,8 +273,12 @@ namespace Alis.Core.Ecs.Systems
         }
 
         /// <summary>
-        ///     Indicates to the scene that this enumeration is finished; the scene might allow structual changes after this.
+        ///     Releases the scene lock acquired during enumeration.
         /// </summary>
+        /// <remarks>
+        ///     Signals to the scene that enumeration is finished. After this call, the scene
+        ///     may allow structural changes (such as adding or removing components/entities).
+        /// </remarks>
         public void Dispose()
         {
             _scene.ExitDisallowState(null);
@@ -272,8 +305,17 @@ namespace Alis.Core.Ecs.Systems
     }
 
     /// <summary>
-    ///     The chunk query enumerator
+    ///     Enumerates component chunks of up to four component types that match a <see cref="Query" /> across all matching archetypes.
     /// </summary>
+    /// <remarks>
+    ///     Iterates over archetypes matched by a query, yielding a <see cref="ChunkTuple{T1, T2, T3, T4}" /> for each archetype
+    ///     that contains all requested component types. Use the <see cref="QueryEnumerable" /> wrapper to
+    ///     use this struct with <c>foreach</c> syntax.
+    /// </remarks>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
+    /// <typeparam name="T3">The third component type.</typeparam>
+    /// <typeparam name="T4">The fourth component type.</typeparam>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkQueryEnumerator<T1, T2, T3, T4>
     {
@@ -305,7 +347,7 @@ namespace Alis.Core.Ecs.Systems
         }
 
         /// <summary>
-        ///     The current tuple of component chunks.
+        ///     Gets the component chunk spans for the current archetype.
         /// </summary>
         public ChunkTuple<T1, T2, T3, T4> Current
         {
@@ -323,8 +365,12 @@ namespace Alis.Core.Ecs.Systems
         }
 
         /// <summary>
-        ///     Indicates to the scene that this enumeration is finished; the scene might allow structual changes after this.
+        ///     Releases the scene lock acquired during enumeration.
         /// </summary>
+        /// <remarks>
+        ///     Signals to the scene that enumeration is finished. After this call, the scene
+        ///     may allow structural changes (such as adding or removing components/entities).
+        /// </remarks>
         public void Dispose()
         {
             _scene.ExitDisallowState(null);
@@ -351,13 +397,18 @@ namespace Alis.Core.Ecs.Systems
     }
 
     /// <summary>
-    ///     The chunk query enumerator
+    ///     Enumerates component chunks of up to six component types that match a <see cref="Query" /> across all matching archetypes.
     /// </summary>
     /// <remarks>
     ///     Memory layout optimized: Scene reference (8 bytes) + Span (16 bytes) + int (4 bytes)
     ///     Total: 28 bytes + 4 bytes padding = 32 bytes aligned
     ///     Pack = 4 for optimal alignment
     /// </remarks>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
+    /// <typeparam name="T3">The third component type.</typeparam>
+    /// <typeparam name="T4">The fourth component type.</typeparam>
+    /// <typeparam name="T5">The fifth component type.</typeparam>
     [StructLayout(LayoutKind.Sequential, Pack = 4)]
     public ref struct ChunkQueryEnumerator<T1, T2, T3, T4, T5>
     {
@@ -389,7 +440,7 @@ namespace Alis.Core.Ecs.Systems
         }
 
         /// <summary>
-        ///     The current tuple of component chunks.
+        ///     Gets the component chunk spans for the current archetype.
         /// </summary>
         public ChunkTuple<T1, T2, T3, T4, T5> Current
         {
@@ -408,8 +459,12 @@ namespace Alis.Core.Ecs.Systems
         }
 
         /// <summary>
-        ///     Indicates to the scene that this enumeration is finished; the scene might allow structual changes after this.
+        ///     Releases the scene lock acquired during enumeration.
         /// </summary>
+        /// <remarks>
+        ///     Signals to the scene that enumeration is finished. After this call, the scene
+        ///     may allow structural changes (such as adding or removing components/entities).
+        /// </remarks>
         public void Dispose()
         {
             _scene.ExitDisallowState(null);
@@ -494,8 +549,12 @@ namespace Alis.Core.Ecs.Systems
         }
 
         /// <summary>
-        ///     Indicates to the scene that this enumeration is finished; the scene might allow structual changes after this.
+        ///     Releases the scene lock acquired during enumeration.
         /// </summary>
+        /// <remarks>
+        ///     Signals to the scene that enumeration is finished. After this call, the scene
+        ///     may allow structural changes (such as adding or removing components/entities).
+        /// </remarks>
         public void Dispose()
         {
             _scene.ExitDisallowState(null);
@@ -585,8 +644,12 @@ namespace Alis.Core.Ecs.Systems
         }
 
         /// <summary>
-        ///     Indicates to the scene that this enumeration is finished; the scene might allow structual changes after this.
+        ///     Releases the scene lock acquired during enumeration.
         /// </summary>
+        /// <remarks>
+        ///     Signals to the scene that enumeration is finished. After this call, the scene
+        ///     may allow structural changes (such as adding or removing components/entities).
+        /// </remarks>
         public void Dispose()
         {
             _scene.ExitDisallowState(null);
@@ -617,13 +680,21 @@ namespace Alis.Core.Ecs.Systems
     }
 
     /// <summary>
-    ///     The chunk query enumerator
+    ///     Enumerates component chunks of up to eight component types that match a <see cref="Query" /> across all matching archetypes.
     /// </summary>
     /// <remarks>
     ///     Memory layout optimized: Scene reference (8 bytes) + Span (16 bytes) + int (4 bytes)
     ///     Total: 28 bytes + 4 bytes padding = 32 bytes aligned
     ///     Pack = 4 for optimal alignment
     /// </remarks>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
+    /// <typeparam name="T3">The third component type.</typeparam>
+    /// <typeparam name="T4">The fourth component type.</typeparam>
+    /// <typeparam name="T5">The fifth component type.</typeparam>
+    /// <typeparam name="T6">The sixth component type.</typeparam>
+    /// <typeparam name="T7">The seventh component type.</typeparam>
+    /// <typeparam name="T8">The eighth component type.</typeparam>
     [StructLayout(LayoutKind.Sequential, Pack = 4)]
     public ref struct ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8>
     {
@@ -655,8 +726,12 @@ namespace Alis.Core.Ecs.Systems
         }
 
         /// <summary>
-        ///     The current tuple of component chunks.
+        ///     Gets the component chunk spans for the current archetype.
         /// </summary>
+        /// <remarks>
+        ///     Returns a <see cref="ChunkTuple{T1, T2, T3, T4, T5, T6, T7, T8}" /> containing the spans of component data
+        ///     for the current archetype being iterated.
+        /// </remarks>
         public ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8> Current
         {
             get
@@ -677,8 +752,12 @@ namespace Alis.Core.Ecs.Systems
         }
 
         /// <summary>
-        ///     Indicates to the scene that this enumeration is finished; the scene might allow structual changes after this.
+        ///     Releases the scene lock acquired during enumeration.
         /// </summary>
+        /// <remarks>
+        ///     Signals to the scene that enumeration is finished. After this call, the scene
+        ///     may allow structural changes (such as adding or removing components/entities).
+        /// </remarks>
         public void Dispose()
         {
             _scene.ExitDisallowState(null);

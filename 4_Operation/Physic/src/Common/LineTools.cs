@@ -43,10 +43,10 @@ namespace Alis.Core.Physic.Common
         /// <summary>
         ///     Distances the between point and line segment using the specified point
         /// </summary>
-        /// <param name="point">The point</param>
-        /// <param name="start">The start</param>
-        /// <param name="end">The end</param>
-        /// <returns>The float</returns>
+        /// <param name="point">The point to measure the distance from.</param>
+        /// <param name="start">The start point of the line segment.</param>
+        /// <param name="end">The end point of the line segment.</param>
+        /// <returns>The shortest distance from the point to the line segment.</returns>
         public static float DistanceBetweenPointAndLineSegment(ref Vector2F point, ref Vector2F start, ref Vector2F end)
         {
             if (start == end)
@@ -136,11 +136,11 @@ namespace Alis.Core.Physic.Common
         /// <summary>
         ///     Lines the intersect using the specified p 1
         /// </summary>
-        /// <param name="p1">The </param>
-        /// <param name="p2">The </param>
-        /// <param name="q1">The </param>
-        /// <param name="q2">The </param>
-        /// <returns>The </returns>
+        /// <param name="p1">The first point of the first line.</param>
+        /// <param name="p2">The second point of the first line.</param>
+        /// <param name="q1">The first point of the second line.</param>
+        /// <param name="q2">The second point of the second line.</param>
+        /// <returns>The intersection point of the two lines.</returns>
         public static Vector2F LineIntersect(Vector2F p1, Vector2F p2, Vector2F q1, Vector2F q2)
         {
             Vector2F i = Vector2F.Zero;

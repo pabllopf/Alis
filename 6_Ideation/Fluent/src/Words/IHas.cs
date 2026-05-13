@@ -40,7 +40,7 @@ namespace Alis.Core.Aspect.Fluent.Words
         ///     Specifies a has relationship on the builder.
         /// </summary>
         /// <param name="obj">The value to apply.</param>
-        /// <returns>The</returns>
+        /// <returns>The builder instance, enabling fluent chaining.</returns>
         TBuilder Has(TArgument obj);
     }
 }

@@ -233,17 +233,17 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     Friction mixing law. Feel free to customize this.
         /// </summary>
-        /// <param name="friction1">The friction1.</param>
-        /// <param name="friction2">The friction2.</param>
-        /// <returns></returns>
+        /// <param name="friction1">The first friction coefficient to mix.</param>
+        /// <param name="friction2">The second friction coefficient to mix.</param>
+        /// <returns>The geometric mean of the two friction coefficients.</returns>
         public static float MixFriction(float friction1, float friction2) => (float) Math.Sqrt(friction1 * friction2);
 
         /// <summary>
         ///     Restitution mixing law. Feel free to customize this.
         /// </summary>
-        /// <param name="restitution1">The restitution1.</param>
-        /// <param name="restitution2">The restitution2.</param>
-        /// <returns></returns>
+        /// <param name="restitution1">The first restitution coefficient to mix.</param>
+        /// <param name="restitution2">The second restitution coefficient to mix.</param>
+        /// <returns>The maximum of the two restitution coefficients.</returns>
         public static float MixRestitution(float restitution1, float restitution2) => restitution1 > restitution2 ? restitution1 : restitution2;
     }
 }

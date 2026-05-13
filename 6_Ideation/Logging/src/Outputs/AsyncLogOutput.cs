@@ -79,21 +79,21 @@ namespace Alis.Core.Aspect.Logging.Outputs
 
 
         /// <summary>
-        ///     Gets the value of the name
+        ///     Gets a human-readable identifier for this async output.
         /// </summary>
         public string Name => $"Async[{_innerOutput.Name}]";
 
 
         /// <summary>
-        ///     Gets or sets the value of the is enabled
+        ///     Gets or sets whether this output is currently accepting log entries.
         /// </summary>
         public bool IsEnabled { get; set; } = true;
 
 
         /// <summary>
-        ///     Writes the entry
+        ///     Queues the specified log entry for asynchronous writing.
         /// </summary>
-        /// <param name="entry">The entry</param>
+        /// <param name="entry">The log entry to queue.</param>
         public void Write(ILogEntry entry)
         {
             if (entry == null || _disposed || !IsEnabled)
@@ -122,7 +122,7 @@ namespace Alis.Core.Aspect.Logging.Outputs
 
 
         /// <summary>
-        ///     Flushes this instance
+        ///     Flushes all queued entries by writing them to the inner output.
         /// </summary>
         public void Flush()
         {
@@ -147,7 +147,7 @@ namespace Alis.Core.Aspect.Logging.Outputs
 
 
         /// <summary>
-        ///     Disposes this instance
+        ///     Releases all resources used by the async output.
         /// </summary>
         public void Dispose()
         {

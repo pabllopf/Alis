@@ -74,10 +74,10 @@ namespace Alis.Core.Aspect.Math.Matrix
         }
 
         /// <summary>
-        ///     Sets the matrix columns using two specified column vectors.
+        ///     Sets both column vectors of the matrix to the specified values.
         /// </summary>
-        /// <param name="c1">The new first column vector.</param>
-        /// <param name="c2">The new second column vector.</param>
+        /// <param name="c1">The new first column vector to assign to <see cref="Ex" />.</param>
+        /// <param name="c2">The new second column vector to assign to <see cref="Ey" />.</param>
         public void Set(Vector2F c1, Vector2F c2)
         {
             Ex = c1;
@@ -85,7 +85,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         }
 
         /// <summary>
-        ///     Sets this matrix to the identity matrix.
+        ///     Resets this matrix to the identity matrix, where <see cref="Ex" /> = (1, 0) and <see cref="Ey" /> = (0, 1).
         /// </summary>
         public void SetIdentity()
         {
@@ -94,7 +94,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         }
 
         /// <summary>
-        ///     Sets all elements of this matrix to zero.
+        ///     Sets all elements of this matrix to zero, where both <see cref="Ex" /> and <see cref="Ey" /> become (0, 0).
         /// </summary>
         public void SetZero()
         {
@@ -168,8 +168,9 @@ namespace Alis.Core.Aspect.Math.Matrix
         }
 
         /// <summary>
-        ///     Gets the inverse of this matrix.
+        ///     Gets the inverse of this matrix such that the result multiplied by the original equals the identity.
         /// </summary>
+        /// <value>The inverse matrix if the determinant is non-zero; otherwise, a default matrix.</value>
         public Matrix2X2 Inverse
         {
             get

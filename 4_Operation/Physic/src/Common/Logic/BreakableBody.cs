@@ -37,20 +37,44 @@ using Alis.Core.Physic.Dynamics.Contacts;
 
 namespace Alis.Core.Physic.Common.Logic
 {
-    /// <summary>
-    ///     A type of body that supports multiple fixtures that can break apart.
-    /// </summary>
+/// <summary>
+///     Represents a breakable body composed of multiple fixtures that can separate when subjected to sufficient force.
+///     This class manages a collection of fixtures that belong to a main body, and when the impact force exceeds
+///     a specified strength threshold, the body decomposes into separate independent bodies.
+///     The breakable body tracks its state (unbroken, should break, broken) and caches velocities to ensure
+///     proper physical behavior after decomposition.
+///     
+///     When a breakable body is subjected to a collision with an impulse greater than its Strength property,
+///     it transitions from Unbroken to ShouldBreak state, and during the next Update() call it decomposes into
+///     separate Body instances, each containing one of the original fixtures with preserved velocities.
+///     
+///     Usage example:
+///     <code>
+///     // Create a breakable body from a list of vertices
+///     var verticesList = new List&lt;Vertices&gt; { /* polygon vertices */ };
+///     var breakableBody = new BreakableBody(world, verticesList, 1.0f);
+///     
+///     // Adjust the strength threshold (optional)
+///     breakableBody.Strength = 1000.0f;
+///     
+///     // In your game loop:
+///     breakableBody.Update(); // Check for and handle breaking
+///     </code>
+/// </summary>
     public class BreakableBody
     {
-        /// <summary>
-        ///     The fixture
-        /// </summary>
+/// <summary>
+///     Gets the list of fixtures that make up this breakable body.
+///     Each fixture represents a separate part that can break away from the main body
+///     when sufficient force is applied. The list is initialized with a capacity of 8.
+/// </summary>
         public readonly List<Fixture> Parts = new List<Fixture>(8);
 
-        /// <summary>
-        ///     The force needed to break the body apart.
-        ///     Default: 500
-        /// </summary>
+/// <summary>
+///     Gets the force threshold required to break the body apart.
+///     When the impulse from a collision exceeds this value, the body will break.
+///     The default value is 500.0f units of force.
+/// </summary>
         public readonly float Strength = 500.0f;
 
         /// <summary>

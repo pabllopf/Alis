@@ -1082,11 +1082,13 @@ namespace Alis.Core.Aspect.Math.Collections
         /// <summary>
         ///     Gets a value indicating whether this collection is empty.
         /// </summary>
+        /// <value><c>true</c> if the underlying array length is zero; otherwise, <c>false</c>.</value>
         public bool IsEmpty => Array!.Length == 0;
 
         /// <summary>
         ///     Gets the number of elements in the array.
         /// </summary>
+        /// <value>The total number of elements in the underlying array.</value>
         public int Length =>
             // We intentionally do not check this.array != null, and throw NullReferenceException
             // if this is called while uninitialized.
@@ -1098,6 +1100,7 @@ namespace Alis.Core.Aspect.Math.Collections
         /// <summary>
         ///     Gets a value indicating whether this struct was initialized without an actual array instance.
         /// </summary>
+        /// <value><c>true</c> if the underlying array is null; otherwise, <c>false</c>.</value>
         public bool IsDefault => Array == null;
 
         /// <summary>

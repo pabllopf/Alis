@@ -42,16 +42,16 @@ namespace Alis.Core.Aspect.Logging.Formatters
     public sealed class CompactLogFormatter : ILogFormatter
     {
         /// <summary>
-        ///     Gets the value of the name
+        ///     Gets a human-readable name for this formatter.
         /// </summary>
         public string Name => "CompactFormatter";
 
 
         /// <summary>
-        ///     Formats the entry
+        ///     Formats the specified log entry into a compact string.
         /// </summary>
-        /// <param name="entry">The entry</param>
-        /// <returns>The string</returns>
+        /// <param name="entry">The log entry to format.</param>
+        /// <returns>A compact string representation of the log entry.</returns>
         [ExcludeFromCodeCoverage]
         public string Format(ILogEntry entry)
         {

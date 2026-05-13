@@ -59,6 +59,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     Gets the custom JSON property name that will replace the original C# property name
         ///     during serialization and deserialization.
         /// </summary>
+        /// <value>The JSON key name used for the decorated property in serialization and deserialization.</value>
         public string Name { get; }
     }
 }

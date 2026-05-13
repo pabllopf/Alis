@@ -86,21 +86,21 @@ namespace Alis.Core.Aspect.Logging.Outputs
 
 
         /// <summary>
-        ///     Gets the value of the name
+        ///     Gets a human-readable identifier for this memory output.
         /// </summary>
         public string Name => "MemoryOutput";
 
 
         /// <summary>
-        ///     Gets or sets the value of the is enabled
+        ///     Gets or sets whether this output is currently accepting log entries.
         /// </summary>
         public bool IsEnabled { get; set; } = true;
 
 
         /// <summary>
-        ///     Writes the entry
+        ///     Writes the specified log entry to memory storage.
         /// </summary>
-        /// <param name="entry">The entry</param>
+        /// <param name="entry">The log entry to store.</param>
         public void Write(ILogEntry entry)
         {
             if (entry == null || _disposed)
@@ -122,7 +122,7 @@ namespace Alis.Core.Aspect.Logging.Outputs
 
 
         /// <summary>
-        ///     Flushes this instance
+        ///     No-op for memory output since entries are always available.
         /// </summary>
         public void Flush()
         {
@@ -131,7 +131,7 @@ namespace Alis.Core.Aspect.Logging.Outputs
 
 
         /// <summary>
-        ///     Disposes this instance
+        ///     Releases all resources used by the memory output.
         /// </summary>
         public void Dispose()
         {

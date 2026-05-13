@@ -39,7 +39,7 @@ namespace Alis.Core.Aspect.Fluent.Words
         /// <summary>
         ///     Stores a value on the builder.
         /// </summary>
-        /// <param name="value">The value to store to apply.</param>
+        /// <param name="value">The value to store.</param>
         /// <returns>The builder instance, enabling fluent chaining.</returns>
         TBuilder Store(TArgument value);
     }

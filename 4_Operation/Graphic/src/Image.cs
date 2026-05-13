@@ -34,16 +34,16 @@ using Alis.Core.Aspect.Memory;
 namespace Alis.Core.Graphic
 {
     /// <summary>
-    ///     The sprite class
+    ///     The image class
     /// </summary>
     public class Image
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="Image" /> class
         /// </summary>
-        /// <param name="width">The width</param>
-        /// <param name="height">The height</param>
-        /// <param name="data">The data</param>
+        /// <param name="width">The width of the image in pixels</param>
+        /// <param name="height">The height of the image in pixels</param>
+        /// <param name="data">The raw pixel data in RGBA format</param>
         private Image(int width, int height, byte[] data)
         {
             Width = width;
@@ -69,19 +69,19 @@ namespace Alis.Core.Graphic
         /// <summary>
         ///     Loads the image from resources using the specified resource name
         /// </summary>
-        /// <param name="resourceName">The resource name</param>
+        /// <param name="resourceName">The name of the embedded resource to load</param>
         /// <exception cref="FileNotFoundException">Resource '{resourceName}' not found in 'assets.pack'.</exception>
         /// <exception cref="FileNotFoundException">Resource file 'assets.pack' not found in embedded resources.</exception>
-        /// <returns>The image</returns>
+        /// <returns>The loaded image instance</returns>
         public static Image LoadImageFromResources(string resourceName) => LoadFromStream(AssetRegistry.GetResourceMemoryStreamByName(resourceName));
 
         /// <summary>
         ///     Loads the from stream using the specified stream
         /// </summary>
-        /// <param name="stream">The stream</param>
+        /// <param name="stream">The stream containing the BMP image data</param>
         /// <exception cref="InvalidDataException">Not a valid BMP file (missing BM header)</exception>
         /// <exception cref="NotSupportedException">Unsupported BMP compression type: {compression}</exception>
-        /// <returns>The image</returns>
+        /// <returns>The loaded image instance</returns>
         private static Image LoadFromStream(Stream stream)
         {
             using (BinaryReader reader = new BinaryReader(stream))
@@ -185,8 +185,8 @@ namespace Alis.Core.Graphic
         /// <summary>
         ///     Loads the path
         /// </summary>
-        /// <param name="path">The path</param>
-        /// <returns>The sprite</returns>
+        /// <param name="path">The file path to the BMP image</param>
+        /// <returns>The loaded image</returns>
         public static Image Load(string path)
         {
             using (FileStream stream = new FileStream(path, FileMode.Open, FileAccess.Read))
@@ -199,14 +199,14 @@ namespace Alis.Core.Graphic
         /// <summary>
         ///     Loads the bmp rgb using the specified reader
         /// </summary>
-        /// <param name="reader">The reader</param>
-        /// <param name="width">The width</param>
-        /// <param name="height">The height</param>
-        /// <param name="bitsPerPixel">The bits per pixel</param>
-        /// <param name="rawData">The raw data</param>
-        /// <param name="palette">The palette</param>
-        /// <param name="rowPadded">The row padded</param>
-        /// <param name="bytesPerPixel">The bytes per pixel</param>
+        /// <param name="reader">The binary reader used to read the BMP data</param>
+        /// <param name="width">The width of the image in pixels</param>
+        /// <param name="height">The height of the image in pixels</param>
+        /// <param name="bitsPerPixel">The number of bits per pixel</param>
+        /// <param name="rawData">The raw pixel data array to fill</param>
+        /// <param name="palette">The color palette for indexed formats</param>
+        /// <param name="rowPadded">The padded row size in bytes</param>
+        /// <param name="bytesPerPixel">The number of bytes per pixel</param>
         /// <exception cref="NotSupportedException">Unsupported bits per pixel: {bitsPerPixel}</exception>
         private static void LoadBmpRgb(BinaryReader reader, int width, int height, short bitsPerPixel, byte[] rawData, byte[][] palette, int rowPadded, int bytesPerPixel)
         {
@@ -315,14 +315,14 @@ namespace Alis.Core.Graphic
         /// <summary>
         ///     Loads the bmp rle 8 using the specified reader
         /// </summary>
-        /// <param name="reader">The reader</param>
-        /// <param name="width">The width</param>
-        /// <param name="height">The height</param>
-        /// <param name="bitsPerPixel">The bits per pixel</param>
-        /// <param name="rawData">The raw data</param>
-        /// <param name="palette">The palette</param>
-        /// <param name="rowPadded">The row padded</param>
-        /// <param name="bytesPerPixel">The bytes per pixel</param>
+        /// <param name="reader">The binary reader used to read the BMP data</param>
+        /// <param name="width">The width of the image in pixels</param>
+        /// <param name="height">The height of the image in pixels</param>
+        /// <param name="bitsPerPixel">The number of bits per pixel</param>
+        /// <param name="rawData">The raw pixel data array to fill</param>
+        /// <param name="palette">The color palette for indexed formats</param>
+        /// <param name="rowPadded">The padded row size in bytes</param>
+        /// <param name="bytesPerPixel">The number of bytes per pixel</param>
         private static void LoadBmpRle8(BinaryReader reader, int width, int height, short bitsPerPixel, byte[] rawData, byte[][] palette, int rowPadded, int bytesPerPixel)
         {
             int x = 0, y = 0; // Corregido: empezar desde la primera fila
@@ -398,14 +398,14 @@ namespace Alis.Core.Graphic
         /// <summary>
         ///     Loads the bmp rle 4 using the specified reader
         /// </summary>
-        /// <param name="reader">The reader</param>
-        /// <param name="width">The width</param>
-        /// <param name="height">The height</param>
-        /// <param name="bitsPerPixel">The bits per pixel</param>
-        /// <param name="rawData">The raw data</param>
-        /// <param name="palette">The palette</param>
-        /// <param name="rowPadded">The row padded</param>
-        /// <param name="bytesPerPixel">The bytes per pixel</param>
+        /// <param name="reader">The binary reader used to read the BMP data</param>
+        /// <param name="width">The width of the image in pixels</param>
+        /// <param name="height">The height of the image in pixels</param>
+        /// <param name="bitsPerPixel">The number of bits per pixel</param>
+        /// <param name="rawData">The raw pixel data array to fill</param>
+        /// <param name="palette">The color palette for indexed formats</param>
+        /// <param name="rowPadded">The padded row size in bytes</param>
+        /// <param name="bytesPerPixel">The number of bytes per pixel</param>
         private static void LoadBmpRle4(BinaryReader reader, int width, int height, short bitsPerPixel, byte[] rawData, byte[][] palette, int rowPadded, int bytesPerPixel)
         {
             if (height < 0)

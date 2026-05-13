@@ -43,135 +43,114 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
     /// <summary>
     ///     The archetype class
     /// </summary>
-    public class Archetype(GameObjectType archetypeId, ComponentStorageBase[] components, bool isTempCreateArchetype)
-    {
-        /// <summary>
-        ///     The null
-        /// </summary>
-        internal static readonly GameObjectType Null;
+public class Archetype(GameObjectType archetypeId, ComponentStorageBase[] components, bool isTempCreateArchetype)
+     {
+         /// <summary>
+         ///     Represents a null archetype with no components.
+         /// </summary>
+         internal static readonly GameObjectType Null;
 
-        /// <summary>
-        ///     The create
-        /// </summary>
-        internal static FastestStack<ArchetypeData> ArchetypeTable = FastestStack<ArchetypeData>.Create(16);
+         /// <summary>
+         ///     Pool of reusable archetype data instances to avoid frequent allocations.
+         /// </summary>
+         internal static FastestStack<ArchetypeData> ArchetypeTable = FastestStack<ArchetypeData>.Create(16);
 
-        /// <summary>
-        ///     The next archetype id
-        /// </summary>
-        internal static int NextArchetypeId = -1;
+         /// <summary>
+         ///     Monotonically increasing counter for assigning unique archetype IDs.
+         /// </summary>
+         internal static int NextArchetypeId = -1;
 
-        /// <summary>
-        ///     The existing archetypes
-        /// </summary>
-        private static readonly Dictionary<long, ArchetypeData> ExistingArchetypes = [];
+         /// <summary>
+         ///     Maps archetype hashes to their corresponding <see cref="ArchetypeData" /> for deduplication.
+         /// </summary>
+         private static readonly Dictionary<long, ArchetypeData> ExistingArchetypes = [];
 
-        //2
-        /// <summary>
-        ///     The archetype id
-        /// </summary>
-        private readonly GameObjectType _archetypeId = archetypeId;
+         //2
+         /// <summary>
+         ///     The archetype ID this instance represents.
+         /// </summary>
+         private readonly GameObjectType _archetypeId = archetypeId;
 
 
-        /// <summary>
-        ///     The components
-        /// </summary>
-        internal readonly ComponentStorageBase[] Components = components;
+/// <summary>
+         ///     Storage arrays for each component type in this archetype.
+         /// </summary>
+         internal readonly ComponentStorageBase[] Components = components;
 
 
         //we include version
         //this is so we dont need to lookup
         //the scene table every time
         /// <summary>
-        ///     The gameObject id only
+        ///     Array of entity IDs stored in this archetype, with version information for stale-reference detection.
         /// </summary>
         private GameObjectIdOnly[] _entities = isTempCreateArchetype ? Array.Empty<GameObjectIdOnly>() : new GameObjectIdOnly[1];
 
         //4
-        /// <summary>
-        ///     The next component index or deferred gameObject count
-        /// </summary>
-        /// <remarks>
-        ///     You can think of this as a discrimminated union. Next component index is the non-deferred count of a normal
-        ///     archetype.
-        ///     Deferred gameObject count is the total number of deferred entities, some of which may be stored directly on the
-        ///     normal
-        ///     archetype.
-        /// </remarks>
-        private int _nextComponentIndexOrDeferredEntityCount;
+/// <summary>
+         ///     Tracks the next available component slot index, or the deferred entity count during deferred creation.
+         /// </summary>
+         /// <remarks>
+         ///     This field serves as a discriminated union: for normal archetypes it holds the next component index,
+         ///     while during deferred entity creation it temporarily tracks the total deferred entity count.
+         /// </remarks>
+         private int _nextComponentIndexOrDeferredEntityCount;
 
 
-        //information for tag existence & component index per id
-        //updated by static methods
-        //saves a lookup on hot paths
         /// <summary>
-        ///     The raw index
-        /// </summary>
-        internal byte[] ComponentTagTable = GlobalWorldTables.ComponentTagLocationTable[archetypeId.RawIndex];
+         ///     Lookup table mapping component IDs to their storage indices within this archetype.
+         /// </summary>
+         /// <remarks>
+         ///     Indexed by component raw index; value is the position in the Components array (0 = not present).
+         /// </remarks>
+         internal byte[] ComponentTagTable = GlobalWorldTables.ComponentTagLocationTable[archetypeId.RawIndex];
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Archetype" /> class
         /// </summary>
         static Archetype() => Null = GetArchetypeId([Component.GetComponentId(typeof(void))]);
 
-        /// <summary>
-        ///     Gets the value of the id
-        /// </summary>
-        internal GameObjectType Id => _archetypeId;
+/// <summary>
+         ///     Gets the unique identifier of this archetype.
+         /// </summary>
+         internal GameObjectType Id => _archetypeId;
 
-        /// <summary>
-        ///     Gets the value of the archetype type array
-        /// </summary>
-        internal FastImmutableArray<ComponentId> ArchetypeTypeArray => _archetypeId.Types;
+         /// <summary>
+         ///     Gets the immutable array of component IDs that define this archetype's type composition.
+         /// </summary>
+         internal FastImmutableArray<ComponentId> ArchetypeTypeArray => _archetypeId.Types;
 
-        /// <summary>
-        ///     Gets the value of the gameObject count
-        /// </summary>
-        internal int EntityCount => NextComponentIndex;
+         /// <summary>
+         ///     Gets the number of entities currently stored in this archetype.
+         /// </summary>
+         internal int EntityCount => NextComponentIndex;
 
-        /// <summary>
-        ///     Gets the value of the data
-        /// </summary>
-        internal Fields Data => new Fields
-        {
-            Map = ComponentTagTable,
-            Components = Components
-        };
+         /// <summary>
+         ///     Gets a <see cref="Fields" /> struct providing typed access to this archetype's component storage.
+         /// </summary>
+         internal Fields Data => new Fields
+         {
+             Map = ComponentTagTable,
+             Components = Components
+         };
 
-        /// <summary>
-        ///     Gets the value of the next component index
-        /// </summary>
-        private ref int NextComponentIndex => ref _nextComponentIndexOrDeferredEntityCount;
+         /// <summary>
+         ///     Gets a reference to the next component index, used for both entity allocation and deferred creation tracking.
+         /// </summary>
+         private ref int NextComponentIndex => ref _nextComponentIndexOrDeferredEntityCount;
 
-        /// <summary>
-        ///     Gets the value of the deferred gameObject count
-        /// </summary>
-        private ref int DeferredEntityCount => ref _nextComponentIndexOrDeferredEntityCount;
+         /// <summary>
+         ///     Gets a reference to the deferred entity count, sharing storage with <see cref="NextComponentIndex" />.
+         /// </summary>
+         private ref int DeferredEntityCount => ref _nextComponentIndexOrDeferredEntityCount;
 
-        /// <summary>
-        ///     Gets the component span
-        /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <returns>A span of t</returns>
-        internal Span<T> GetComponentSpan<T>()
-        {
-            ComponentStorageBase[] components = Components;
-            int index = GetComponentIndex<T>();
-            if (index == 0)
-            {
-                throw new ComponentNotFoundException(typeof(T));
-            }
-
-            return Unsafe.As<ComponentStorage<T>>(Unsafe.Add(ref components[0], index))
-                .AsSpanLength(NextComponentIndex);
-        }
-
-        /// <summary>
-        ///     Gets the component data reference
-        /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <returns>The ref</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal ref T GetComponentDataReference<T>()
+/// <summary>
+         ///     Gets a direct reference to the first element of component storage for type <typeparamref name="T" />.
+         /// </summary>
+         /// <typeparam name="T">The component type to retrieve a data reference for.</typeparam>
+         /// <returns>A reference to the component data of type <typeparamref name="T" />.</returns>
+         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+         internal ref T GetComponentDataReference<T>()
         {
             int index = GetComponentIndex<T>();
             return ref Unsafe.As<ComponentStorage<T>>(Unsafe.Add(ref Components[0], index))
@@ -179,14 +158,14 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         }
 
 
-        /// <summary>
-        ///     Creates the gameObject location using the specified flags
-        /// </summary>
-        /// <param name="flags">The flags</param>
-        /// <param name="gameObjectLocation">The gameObject location</param>
-        /// <returns>The ref gameObject id only</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal ref GameObjectIdOnly CreateEntityLocation(GameObjectFlags flags, out GameObjectLocation gameObjectLocation)
+/// <summary>
+         ///     Creates entity location data using the specified allocation flags.
+         /// </summary>
+         /// <param name="flags">The <see cref="GameObjectFlags" /> controlling entity creation behavior.</param>
+         /// <param name="gameObjectLocation">The resulting gameObject location, including archetype, index, and flags.</param>
+         /// <returns>A reference to the entity ID where the entity will be stored.</returns>
+         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+         internal ref GameObjectIdOnly CreateEntityLocation(GameObjectFlags flags, out GameObjectLocation gameObjectLocation)
         {
             if (_entities.Length == NextComponentIndex)
             {
@@ -203,11 +182,16 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
             return ref Unsafe.Add(ref _entities[0], NextComponentIndex++);
         }
 
-        /// <summary>
-        ///     Note! GameObject location version is not set!
-        /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal ref GameObjectIdOnly CreateDeferredEntityLocation(Scene scene, Archetype deferredCreationArchetype,
+/// <summary>
+         ///     Note! GameObject location version is not set by this method.
+         /// </summary>
+         /// <param name="scene">The scene to which the entity belongs.</param>
+         /// <param name="deferredCreationArchetype">The archetype used for deferred entity creation.</param>
+         /// <param name="gameObjectLocation">The output gameObject location.</param>
+         /// <param name="writeStorage">The component storage arrays to write into.</param>
+         /// <returns>A reference to the <see cref="GameObjectIdOnly" /> for the deferred entity.</returns>
+         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+         internal ref GameObjectIdOnly CreateDeferredEntityLocation(Scene scene, Archetype deferredCreationArchetype,
             scoped ref GameObjectLocation gameObjectLocation, out ComponentStorageBase[] writeStorage)
         {
             if (deferredCreationArchetype.DeferredEntityCount == 0)
@@ -258,12 +242,12 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
             return ref Unsafe.Add(ref deferredCreationArchetype._entities[0], gameObjectLocation.Index);
         }
 
-        /// <summary>
-        ///     Resolves the deferred gameObject creations using the specified scene
-        /// </summary>
-        /// <param name="scene">The scene</param>
-        /// <param name="deferredCreationArchetype">The deferred creation archetype</param>
-        internal void ResolveDeferredEntityCreations(Scene scene, Archetype deferredCreationArchetype)
+/// <summary>
+         ///     Resolves all pending deferred entity creations, moving entities from temporary storage into their final archetype.
+         /// </summary>
+         /// <param name="scene">The scene containing the entity lookup table.</param>
+         /// <param name="deferredCreationArchetype">The archetype that holds deferred entities.</param>
+         internal void ResolveDeferredEntityCreations(Scene scene, Archetype deferredCreationArchetype)
         {
             int deltaFromMaxDeferredInPlace =
                 -(_entities.Length - (NextComponentIndex + deferredCreationArchetype.DeferredEntityCount));
@@ -302,13 +286,13 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
             deferredCreationArchetype.DeferredEntityCount = 0;
         }
 
-        /// <summary>
-        ///     Creates the gameObject locations using the specified count
-        /// </summary>
-        /// <param name="count">The count</param>
-        /// <param name="scene">The scene</param>
-        /// <returns>The gameObject span</returns>
-        internal Span<GameObjectIdOnly> CreateEntityLocations(int count, Scene scene)
+/// <summary>
+         ///     Allocates entity locations in bulk for the specified count.
+         /// </summary>
+         /// <param name="count">The number of entities to allocate.</param>
+         /// <param name="scene">The scene for allocating entity IDs and updating the entity lookup table.</param>
+         /// <returns>A <see cref="Span{T}" /> over the allocated <see cref="GameObjectIdOnly" /> entries.</returns>
+         internal Span<GameObjectIdOnly> CreateEntityLocations(int count, Scene scene)
         {
             int newLen = NextComponentIndex + count;
             EnsureCapacity(newLen);
@@ -336,11 +320,11 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
             return entitySpan;
         }
 
-        /// <summary>
-        ///     Resizes the new len
-        /// </summary>
-        /// <param name="newLen">The new len</param>
-        private void Resize(int newLen)
+/// <summary>
+         ///     Resizes all entity and component storage arrays to the specified new capacity.
+         /// </summary>
+         /// <param name="newLen">The new capacity for entity and component storage.</param>
+         private void Resize(int newLen)
         {
             Array.Resize(ref _entities, newLen);
             ComponentStorageBase[] runners = Components;
@@ -350,10 +334,10 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
             }
         }
 
-        /// <summary>
-        ///     Resizes the create component buffers
-        /// </summary>
-        private void ResizeCreateComponentBuffers()
+/// <summary>
+         ///     Resizes the temporary component buffers used during deferred entity creation.
+         /// </summary>
+         private void ResizeCreateComponentBuffers()
         {
             int newLen = checked(Math.Max(1, _entities.Length) * 2);
             //we only need to resize the EntityIDOnly array when future total gameObject count is greater than capacity

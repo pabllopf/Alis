@@ -57,16 +57,16 @@ namespace Alis.Core.Aspect.Logging.Filters
 
 
         /// <summary>
-        ///     Gets the value of the name
+        ///     Gets a human-readable name for this filter.
         /// </summary>
         public string Name { get; }
 
 
         /// <summary>
-        ///     Shoulds the log using the specified entry
+        ///     Determines whether the specified entry passes the custom predicate function.
         /// </summary>
-        /// <param name="entry">The entry</param>
-        /// <returns>The bool</returns>
+        /// <param name="entry">The log entry to evaluate.</param>
+        /// <returns>True if the entry passes the predicate; false otherwise.</returns>
         public bool ShouldLog(ILogEntry entry)
         {
             try

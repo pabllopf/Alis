@@ -68,12 +68,14 @@ namespace Alis.Core.Aspect.Time
         /// <summary>
         ///     Gets the total elapsed time measured by the clock, expressed in whole seconds.
         /// </summary>
+        /// <value>The total elapsed whole seconds.</value>
         /// <returns>The total elapsed seconds, computed as <see cref="ElapsedMilliseconds" /> divided by 1000.</returns>
         public long ElapsedSeconds => ElapsedMilliseconds / 1000;
 
         /// <summary>
         ///     Gets a value indicating whether the clock is currently running (measuring time).
         /// </summary>
+        /// <value><c>true</c> if the clock is running; <c>false</c> if stopped.</value>
         /// <returns><c>true</c> if the clock is running; otherwise, <c>false</c>.</returns>
         public bool IsRunning => _isRunning;
 
@@ -82,18 +84,21 @@ namespace Alis.Core.Aspect.Time
         ///     If the clock is currently running, the returned value includes the time elapsed since the last start.
         ///     If the clock is stopped, the returned value is the accumulated elapsed time at the moment it was stopped.
         /// </summary>
+        /// <value>A <see cref="TimeSpan" /> representing the total accumulated elapsed time.</value>
         /// <returns>A <see cref="TimeSpan" /> representing the total elapsed time.</returns>
         public TimeSpan Elapsed => _isRunning ? _elapsed + (DateTime.UtcNow - _startTime) : _elapsed;
 
         /// <summary>
         ///     Gets the total elapsed time measured by the clock, expressed in milliseconds.
         /// </summary>
+        /// <value>The total elapsed milliseconds, truncated to a whole number.</value>
         /// <returns>The total elapsed milliseconds, truncated to a whole number.</returns>
         public long ElapsedMilliseconds => (long) Elapsed.TotalMilliseconds;
 
         /// <summary>
         ///     Gets the total elapsed time measured by the clock, expressed in tick units (100-nanosecond intervals).
         /// </summary>
+        /// <value>The total elapsed ticks, equivalent to <see cref="TimeSpan.Ticks" />.</value>
         /// <returns>The total elapsed ticks, equivalent to <see cref="TimeSpan.Ticks" />.</returns>
         public long ElapsedTicks => Elapsed.Ticks;
 

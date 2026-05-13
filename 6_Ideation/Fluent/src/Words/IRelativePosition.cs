@@ -37,7 +37,7 @@ namespace Alis.Core.Aspect.Fluent.Words
     public interface IRelativePosition<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Relatives the position using the specified x
+        ///     Sets the relative position using the specified x and y values.
         /// </summary>
         /// <param name="x">The X-coordinate or first component value.</param>
         /// <param name="y">The Y-coordinate or second component value.</param>

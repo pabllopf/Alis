@@ -104,128 +104,227 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     Enumerates component references for all entities in this query. Intended for use in foreach loops.
         /// </summary>
+        /// <typeparam name="T">The component type to enumerate</typeparam>
+        /// <returns>An enumerable that can be used in a foreach loop over component references</returns>
         public QueryEnumerator<T>.QueryEnumerable Enumerate<T>() => new QueryEnumerator<T>.QueryEnumerable(this);
 
         /// <summary>
         ///     Enumerates component references and <see cref="GameObject" /> instances for all entities in this query. Intended
-        ///     for
-        ///     use in foreach loops.
+        ///     for use in foreach loops.
         /// </summary>
+        /// <typeparam name="T">The component type to enumerate</typeparam>
+        /// <returns>An enumerable that yields both the gameObject and component reference</returns>
         public GameObjectQueryEnumerator<T>.QueryEnumerable EnumerateWithEntities<T>() => new GameObjectQueryEnumerator<T>.QueryEnumerable(this);
 
         /// <summary>
         ///     Enumerates component chunks for all entities in this query. Intended for use in foreach loops.
         /// </summary>
+        /// <typeparam name="T">The component type to enumerate as chunks</typeparam>
+        /// <returns>An enumerable that yields spans of contiguous component data</returns>
         public ChunkQueryEnumerator<T>.QueryEnumerable EnumerateChunks<T>() => new ChunkQueryEnumerator<T>.QueryEnumerable(this);
 
         /// <summary>
         ///     Enumerates <see cref="GameObject" /> instances for all entities in this query. Intended for use in foreach loops.
         /// </summary>
+        /// <returns>An enumerable that yields gameObject instances</returns>
         public GameObjectQueryEnumerator.QueryEnumerable EnumerateWithEntities() => new GameObjectQueryEnumerator.QueryEnumerable(this);
 
         /// <summary>
         ///     Enumerates component references for all entities in this query. Intended for use in foreach loops.
         /// </summary>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <returns>An enumerable that can be used in a foreach loop over paired component references</returns>
         public QueryEnumerator<T1, T2>.QueryEnumerable Enumerate<T1, T2>() => new QueryEnumerator<T1, T2>.QueryEnumerable(this);
 
         /// <summary>
         ///     Enumerates component references and <see cref="GameObject" /> instances for all entities in this query. Intended
-        ///     for
-        ///     use in foreach loops.
+        ///     for use in foreach loops.
         /// </summary>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <returns>An enumerable that yields the gameObject and paired component references</returns>
         public QueryEnumerable<T1, T2> EnumerateWithEntities<T1, T2>() => new QueryEnumerable<T1, T2>(this);
 
         /// <summary>
         ///     Enumerates component chunks for all entities in this query. Intended for use in foreach loops.
         /// </summary>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <returns>An enumerable that yields paired spans of contiguous component data</returns>
         public ChunkQueryEnumerator<T1, T2>.QueryEnumerable EnumerateChunks<T1, T2>() => new ChunkQueryEnumerator<T1, T2>.QueryEnumerable(this);
 
         /// <summary>
         ///     Enumerates component references for all entities in this query. Intended for use in foreach loops.
         /// </summary>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <typeparam name="T3">The third component type</typeparam>
+        /// <returns>An enumerable that can be used in a foreach loop over three component references</returns>
         public QueryEnumerator<T1, T2, T3>.QueryEnumerable Enumerate<T1, T2, T3>() => new QueryEnumerator<T1, T2, T3>.QueryEnumerable(this);
 
         /// <summary>
         ///     Enumerates component references and <see cref="GameObject" /> instances for all entities in this query. Intended
-        ///     for
-        ///     use in foreach loops.
+        ///     for use in foreach loops.
         /// </summary>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <typeparam name="T3">The third component type</typeparam>
+        /// <returns>An enumerable that yields the gameObject and three component references</returns>
         public QueryEnumerable<T1, T2, T3> EnumerateWithEntities<T1, T2, T3>() => new QueryEnumerable<T1, T2, T3>(this);
 
         /// <summary>
         ///     Enumerates component chunks for all entities in this query. Intended for use in foreach loops.
         /// </summary>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <typeparam name="T3">The third component type</typeparam>
+        /// <returns>An enumerable that yields three spans of contiguous component data</returns>
         public ChunkQueryEnumerator<T1, T2, T3>.QueryEnumerable EnumerateChunks<T1, T2, T3>() => new ChunkQueryEnumerator<T1, T2, T3>.QueryEnumerable(this);
 
         /// <summary>
         ///     Enumerates component references for all entities in this query. Intended for use in foreach loops.
         /// </summary>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <typeparam name="T3">The third component type</typeparam>
+        /// <typeparam name="T4">The fourth component type</typeparam>
+        /// <returns>An enumerable that can be used in a foreach loop over four component references</returns>
         public QueryEnumerator<T1, T2, T3, T4>.QueryEnumerable Enumerate<T1, T2, T3, T4>() => new QueryEnumerator<T1, T2, T3, T4>.QueryEnumerable(this);
 
         /// <summary>
         ///     Enumerates component references and <see cref="GameObject" /> instances for all entities in this query. Intended
-        ///     for
-        ///     use in foreach loops.
+        ///     for use in foreach loops.
         /// </summary>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <typeparam name="T3">The third component type</typeparam>
+        /// <typeparam name="T4">The fourth component type</typeparam>
+        /// <returns>An enumerable that yields the gameObject and four component references</returns>
         public QueryEnumerable<T1, T2, T3, T4> EnumerateWithEntities<T1, T2, T3, T4>() => new QueryEnumerable<T1, T2, T3, T4>(this);
 
         /// <summary>
         ///     Enumerates component chunks for all entities in this query. Intended for use in foreach loops.
         /// </summary>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <typeparam name="T3">The third component type</typeparam>
+        /// <typeparam name="T4">The fourth component type</typeparam>
+        /// <returns>An enumerable that yields four spans of contiguous component data</returns>
         public ChunkQueryEnumerator<T1, T2, T3, T4>.QueryEnumerable EnumerateChunks<T1, T2, T3, T4>() => new ChunkQueryEnumerator<T1, T2, T3, T4>.QueryEnumerable(this);
 
 
         /// <summary>
         ///     Enumerates component references for all entities in this query. Intended for use in foreach loops.
         /// </summary>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <typeparam name="T3">The third component type</typeparam>
+        /// <typeparam name="T4">The fourth component type</typeparam>
+        /// <typeparam name="T5">The fifth component type</typeparam>
+        /// <returns>An enumerable that can be used in a foreach loop over five component references</returns>
         public QueryEnumerator<T1, T2, T3, T4, T5>.QueryEnumerable Enumerate<T1, T2, T3, T4, T5>() => new QueryEnumerator<T1, T2, T3, T4, T5>.QueryEnumerable(this);
 
         /// <summary>
         ///     Enumerates component references and <see cref="GameObject" /> instances for all entities in this query. Intended
-        ///     for
-        ///     use in foreach loops.
+        ///     for use in foreach loops.
         /// </summary>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <typeparam name="T3">The third component type</typeparam>
+        /// <typeparam name="T4">The fourth component type</typeparam>
+        /// <typeparam name="T5">The fifth component type</typeparam>
+        /// <returns>An enumerable that yields the gameObject and five component references</returns>
         public QueryEnumerable<T1, T2, T3, T4, T5> EnumerateWithEntities<T1, T2, T3, T4, T5>() => new QueryEnumerable<T1, T2, T3, T4, T5>(this);
 
         /// <summary>
         ///     Enumerates component chunks for all entities in this query. Intended for use in foreach loops.
         /// </summary>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <typeparam name="T3">The third component type</typeparam>
+        /// <typeparam name="T4">The fourth component type</typeparam>
+        /// <typeparam name="T5">The fifth component type</typeparam>
+        /// <returns>An enumerable that yields five spans of contiguous component data</returns>
         public ChunkQueryEnumerator<T1, T2, T3, T4, T5>.QueryEnumerable EnumerateChunks<T1, T2, T3, T4, T5>() => new ChunkQueryEnumerator<T1, T2, T3, T4, T5>.QueryEnumerable(this);
 
         /// <summary>
         ///     Enumerates component references for all entities in this query. Intended for use in foreach loops.
         /// </summary>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <typeparam name="T3">The third component type</typeparam>
+        /// <typeparam name="T4">The fourth component type</typeparam>
+        /// <typeparam name="T5">The fifth component type</typeparam>
+        /// <typeparam name="T6">The sixth component type</typeparam>
+        /// <returns>An enumerable that can be used in a foreach loop over six component references</returns>
         public QueryEnumerator<T1, T2, T3, T4, T5, T6>.QueryEnumerable Enumerate<T1, T2, T3, T4, T5, T6>() => new QueryEnumerator<T1, T2, T3, T4, T5, T6>.QueryEnumerable(this);
 
         /// <summary>
         ///     Enumerates component references and <see cref="GameObject" /> instances for all entities in this query. Intended
-        ///     for
-        ///     use in foreach loops.
+        ///     for use in foreach loops.
         /// </summary>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <typeparam name="T3">The third component type</typeparam>
+        /// <typeparam name="T4">The fourth component type</typeparam>
+        /// <typeparam name="T5">The fifth component type</typeparam>
+        /// <typeparam name="T6">The sixth component type</typeparam>
+        /// <returns>An enumerable that yields the gameObject and six component references</returns>
         public QueryEnumerable<T1, T2, T3, T4, T5, T6> EnumerateWithEntities<T1, T2, T3, T4, T5, T6>() => new QueryEnumerable<T1, T2, T3, T4, T5, T6>(this);
 
         /// <summary>
         ///     Enumerates component chunks for all entities in this query. Intended for use in foreach loops.
         /// </summary>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <typeparam name="T3">The third component type</typeparam>
+        /// <typeparam name="T4">The fourth component type</typeparam>
+        /// <typeparam name="T5">The fifth component type</typeparam>
+        /// <typeparam name="T6">The sixth component type</typeparam>
+        /// <returns>An enumerable that yields six spans of contiguous component data</returns>
         public ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6>.QueryEnumerable EnumerateChunks<T1, T2, T3, T4, T5, T6>() => new ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6>.QueryEnumerable(this);
 
         /// <summary>
         ///     Enumerates component references for all entities in this query. Intended for use in foreach loops.
         /// </summary>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <typeparam name="T3">The third component type</typeparam>
+        /// <typeparam name="T4">The fourth component type</typeparam>
+        /// <typeparam name="T5">The fifth component type</typeparam>
+        /// <typeparam name="T6">The sixth component type</typeparam>
+        /// <typeparam name="T7">The seventh component type</typeparam>
+        /// <returns>An enumerable that can be used in a foreach loop over seven component references</returns>
         public QueryEnumerator<T1, T2, T3, T4, T5, T6, T7>.QueryEnumerable Enumerate<T1, T2, T3, T4, T5, T6, T7>() => new QueryEnumerator<T1, T2, T3, T4, T5, T6, T7>.QueryEnumerable(this);
 
         /// <summary>
         ///     Enumerates component references and <see cref="GameObject" /> instances for all entities in this query. Intended
-        ///     for
-        ///     use in foreach loops.
+        ///     for use in foreach loops.
         /// </summary>
-        public QueryEnumerable<T1, T2, T3, T4, T5, T6, T7> EnumerateWithEntities<T1, T2, T3, T4, T5,
-            T6, T7>()
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <typeparam name="T3">The third component type</typeparam>
+        /// <typeparam name="T4">The fourth component type</typeparam>
+        /// <typeparam name="T5">The fifth component type</typeparam>
+        /// <typeparam name="T6">The sixth component type</typeparam>
+        /// <typeparam name="T7">The seventh component type</typeparam>
+        /// <returns>An enumerable that yields the gameObject and seven component references</returns>
+        public QueryEnumerable<T1, T2, T3, T4, T5, T6, T7> EnumerateWithEntities<T1, T2, T3, T4, T5, T6,
+            T7>()
             => new QueryEnumerable<T1, T2, T3, T4, T5, T6, T7>(this);
 
         /// <summary>
         ///     Enumerates component chunks for all entities in this query. Intended for use in foreach loops.
         /// </summary>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <typeparam name="T3">The third component type</typeparam>
+        /// <typeparam name="T4">The fourth component type</typeparam>
+        /// <typeparam name="T5">The fifth component type</typeparam>
+        /// <typeparam name="T6">The sixth component type</typeparam>
+        /// <typeparam name="T7">The seventh component type</typeparam>
+        /// <returns>An enumerable that yields seven spans of contiguous component data</returns>
         public ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7>.QueryEnumerable
             EnumerateChunks<T1, T2, T3, T4, T5, T6, T7>()
             => new ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7>.QueryEnumerable(this);
@@ -233,13 +332,30 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     Enumerates component references for all entities in this query. Intended for use in foreach loops.
         /// </summary>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <typeparam name="T3">The third component type</typeparam>
+        /// <typeparam name="T4">The fourth component type</typeparam>
+        /// <typeparam name="T5">The fifth component type</typeparam>
+        /// <typeparam name="T6">The sixth component type</typeparam>
+        /// <typeparam name="T7">The seventh component type</typeparam>
+        /// <typeparam name="T8">The eighth component type</typeparam>
+        /// <returns>An enumerable that can be used in a foreach loop over eight component references</returns>
         public QueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8>.QueryEnumerable Enumerate<T1, T2, T3, T4, T5, T6, T7, T8>() => new QueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8>.QueryEnumerable(this);
 
         /// <summary>
         ///     Enumerates component references and <see cref="GameObject" /> instances for all entities in this query. Intended
-        ///     for
-        ///     use in foreach loops.
+        ///     for use in foreach loops.
         /// </summary>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <typeparam name="T3">The third component type</typeparam>
+        /// <typeparam name="T4">The fourth component type</typeparam>
+        /// <typeparam name="T5">The fifth component type</typeparam>
+        /// <typeparam name="T6">The sixth component type</typeparam>
+        /// <typeparam name="T7">The seventh component type</typeparam>
+        /// <typeparam name="T8">The eighth component type</typeparam>
+        /// <returns>An enumerable that yields the gameObject and eight component references</returns>
         public QueryEnumerable<T1, T2, T3, T4, T5, T6, T7, T8> EnumerateWithEntities<T1, T2, T3, T4,
             T5, T6, T7, T8>()
             => new QueryEnumerable<T1, T2, T3, T4, T5, T6, T7, T8>(this);
@@ -247,6 +363,15 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     Enumerates component chunks for all entities in this query. Intended for use in foreach loops.
         /// </summary>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <typeparam name="T3">The third component type</typeparam>
+        /// <typeparam name="T4">The fourth component type</typeparam>
+        /// <typeparam name="T5">The fifth component type</typeparam>
+        /// <typeparam name="T6">The sixth component type</typeparam>
+        /// <typeparam name="T7">The seventh component type</typeparam>
+        /// <typeparam name="T8">The eighth component type</typeparam>
+        /// <returns>An enumerable that yields eight spans of contiguous component data</returns>
         public ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8>.QueryEnumerable EnumerateChunks<T1, T2, T3, T4, T5, T6,
             T7, T8>()
             => new ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8>.QueryEnumerable(this);

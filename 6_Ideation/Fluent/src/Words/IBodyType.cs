@@ -37,7 +37,7 @@ namespace Alis.Core.Aspect.Fluent.Words
     public interface IBodyType<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Bodies the type using the specified value
+        ///     Sets the physics body type on the builder.
         /// </summary>
         /// <param name="value">The body type to apply.</param>
         /// <returns>The builder instance, enabling fluent chaining.</returns>

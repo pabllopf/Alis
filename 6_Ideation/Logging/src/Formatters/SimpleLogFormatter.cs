@@ -40,16 +40,16 @@ namespace Alis.Core.Aspect.Logging.Formatters
     public sealed class SimpleLogFormatter : ILogFormatter
     {
         /// <summary>
-        ///     Gets the value of the name
+        ///     Gets a human-readable name for this formatter.
         /// </summary>
         public string Name => "SimpleFormatter";
 
 
         /// <summary>
-        ///     Formats the entry
+        ///     Formats the specified log entry into a human-readable string.
         /// </summary>
-        /// <param name="entry">The entry</param>
-        /// <returns>The string</returns>
+        /// <param name="entry">The log entry to format.</param>
+        /// <returns>A formatted string representation of the log entry.</returns>
         public string Format(ILogEntry entry)
         {
             StringBuilder sb = new StringBuilder(256);

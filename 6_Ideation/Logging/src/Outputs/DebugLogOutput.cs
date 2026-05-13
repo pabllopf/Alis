@@ -60,21 +60,21 @@ namespace Alis.Core.Aspect.Logging.Outputs
 
 
         /// <summary>
-        ///     Gets the value of the name
+        ///     Gets a human-readable identifier for this debug output.
         /// </summary>
         public string Name => "DebugOutput";
 
 
         /// <summary>
-        ///     Gets or sets the value of the is enabled
+        ///     Gets or sets whether this output is currently accepting log entries.
         /// </summary>
         public bool IsEnabled { get; set; } = true;
 
 
         /// <summary>
-        ///     Writes the entry
+        ///     Writes the specified log entry to the debugger output.
         /// </summary>
-        /// <param name="entry">The entry</param>
+        /// <param name="entry">The log entry to write.</param>
         [ExcludeFromCodeCoverage]
         public void Write(ILogEntry entry)
         {
@@ -96,7 +96,7 @@ namespace Alis.Core.Aspect.Logging.Outputs
 
 
         /// <summary>
-        ///     Flushes this instance
+        ///     No-op for debug output since Debug.WriteLine writes immediately.
         /// </summary>
         public void Flush()
         {
@@ -105,7 +105,7 @@ namespace Alis.Core.Aspect.Logging.Outputs
 
 
         /// <summary>
-        ///     Disposes this instance
+        ///     Releases all resources used by the debug output.
         /// </summary>
         public void Dispose()
         {

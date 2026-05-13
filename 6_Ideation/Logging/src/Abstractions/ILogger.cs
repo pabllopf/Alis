@@ -42,6 +42,7 @@ namespace Alis.Core.Aspect.Logging.Abstractions
         /// <summary>
         ///     Gets the logical name of this logger (typically the component/class name).
         /// </summary>
+        /// <value>The logical name of this logger.</value>
         string Name { get; }
 
         /// <summary>

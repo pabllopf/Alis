@@ -31,15 +31,22 @@ using System.IO;
 
 namespace Alis.Core.Physic.Common
 {
-    /// <summary>
-    ///     The file buffer class
-    /// </summary>
+/// <summary>
+///     Provides a buffered reader for efficiently reading characters from a stream.
+///     This class reads the entire stream content into memory and allows sequential
+///     access to characters with position tracking. It's designed for parsing text
+///     content where you need to read character by character while keeping track
+///     of the current position.
+/// </summary>
     internal class FileBuffer
     {
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="FileBuffer" /> class
-        /// </summary>
-        /// <param name="stream">The stream</param>
+/// <summary>
+///     Initializes a new instance of the <see cref="FileBuffer"/> class.
+///     Reads the entire content of the provided stream into an internal buffer
+///     for efficient character-by-character access.
+/// </summary>
+/// <param name="stream">The input stream to read from. The stream's content
+///     will be read completely during initialization.</param>
         public FileBuffer(Stream stream)
         {
             using (StreamReader sr = new StreamReader(stream))
@@ -50,9 +57,10 @@ namespace Alis.Core.Physic.Common
             Position = 0;
         }
 
-        /// <summary>
-        ///     Gets or sets the value of the buffer
-        /// </summary>
+/// <summary>
+///     Gets or sets the internal buffer containing the entire content of the stream.
+///     This string holds all the data read from the stream during initialization.
+/// </summary>
         public string Buffer { get; set; }
 
         /// <summary>

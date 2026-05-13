@@ -206,14 +206,16 @@ namespace Alis.Core.Ecs.Updating
         }
 
         /// <summary>
+        ///     Returns a span of the underlying buffer with the specified length
         /// </summary>
-        /// <param name="length"></param>
-        /// <returns></returns>
+        /// <param name="length">The number of elements to include in the span</param>
+        /// <returns>A span covering the first <paramref name="length" /> elements of the buffer</returns>
         public Span<TComponent> AsSpanLength(int length) => TypedBuffer.AsSpan(0, length);
 
         /// <summary>
+        ///     Returns a span over the entire underlying buffer
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A span over the full component data buffer</returns>
         public Span<TComponent> AsSpan() => TypedBuffer;
 
         /// <summary>

@@ -178,9 +178,9 @@ namespace Alis.Core.Physic.Collisions
         /// <summary>
         ///     Gets the witness points using the specified p a
         /// </summary>
-        /// <param name="pA">The </param>
-        /// <param name="pB">The </param>
-        /// <exception cref="Exception"></exception>
+        /// <param name="pA">The closest point on shape A.</param>
+        /// <param name="pB">The closest point on shape B.</param>
+        /// <exception cref="Exception">Thrown when the simplex count is invalid.</exception>
         internal void GetWitnessPoints(out Vector2F pA, out Vector2F pB)
         {
             switch (Count)
@@ -213,7 +213,7 @@ namespace Alis.Core.Physic.Collisions
         /// <summary>
         ///     Gets the metric
         /// </summary>
-        /// <returns>The float</returns>
+        /// <returns>The metric value used for cache validation.</returns>
         internal float GetMetric()
         {
             switch (Count)

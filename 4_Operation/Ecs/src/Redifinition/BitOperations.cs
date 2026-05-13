@@ -34,6 +34,7 @@ using System.Runtime.CompilerServices;
 namespace System.Numerics
 {
     /// <summary>
+    ///     Provides bitwise utility operations for integer types
     /// </summary>
     [ExcludeFromCodeCoverage]
     public static class BitOperations
@@ -51,9 +52,10 @@ namespace System.Numerics
 
 
         /// <summary>
+        ///     Returns the integer logarithm base 2 of the specified value
         /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
+        /// <param name="value">The unsigned integer to compute the log2 of</param>
+        /// <returns>The base-2 logarithm of <paramref name="value" /></returns>
         public static int Log2(uint value)
         {
             value |= value >> 01;
@@ -72,10 +74,10 @@ namespace System.Numerics
 
 
         /// <summary>
-        ///     rounds up to the next highest power of 2.
+        ///     Rounds up to the next highest power of two
         /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
+        /// <param name="value">The value to round up</param>
+        /// <returns>The smallest power of two greater than or equal to <paramref name="value" /></returns>
         public static uint RoundUpToPowerOf2(uint value)
         {
             --value;

@@ -39,15 +39,15 @@ namespace Alis.Core.Aspect.Fluent.Words
     public interface IAddComponent<out TBuilder, in TType>
     {
         /// <summary>
-        ///     Adds the component using the specified value
+        ///     Adds a component with the specified function to the builder.
         /// </summary>
         /// <typeparam name="T">The specific type parameter for this operation.</typeparam>
-        /// <param name="value">The component to apply.</param>
+        /// <param name="value">The function that creates the component.</param>
         /// <returns>The builder instance, enabling fluent chaining.</returns>
         TBuilder AddComponent<T>(Func<T, TType> value) where T : TType;
 
         /// <summary>
-        ///     Adds the component using the specified value
+        ///     Adds a component with the specified value to the builder.
         /// </summary>
         /// <typeparam name="T">The specific type parameter for this operation.</typeparam>
         /// <param name="value">The component to apply.</param>

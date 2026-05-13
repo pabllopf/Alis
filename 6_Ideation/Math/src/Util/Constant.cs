@@ -30,17 +30,20 @@
 namespace Alis.Core.Aspect.Math.Util
 {
     /// <summary>
-    ///     The math constants class
+    ///     Provides commonly used mathematical constants for single-precision floating-point computations,
+    ///     including epsilon, Euler's number, pi, logarithmic values, and tau.
     /// </summary>
     public static class Constant
     {
         /// <summary>
-        ///     The epsilon
+        ///     A very small positive epsilon value (1.192092896e-07f) used as a tolerance threshold
+        ///     for floating-point comparisons and near-zero checks.
         /// </summary>
         public const float Epsilon = 1.192092896e-07f;
 
         /// <summary>
-        ///     The euler
+        ///     Euler's number (2.71828175f) representing the base of natural logarithms,
+        ///     used in exponential and logarithmic mathematical operations.
         /// </summary>
         public const float Euler = 2.7182818284590452354f;
 

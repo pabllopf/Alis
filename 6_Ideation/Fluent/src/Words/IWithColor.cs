@@ -37,7 +37,7 @@ namespace Alis.Core.Aspect.Fluent.Words
     public interface IWithColor<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Adds the color using the specified value
+        ///     Sets the color on the builder.
         /// </summary>
         /// <param name="value">The color to apply.</param>
         /// <returns>The builder instance, enabling fluent chaining.</returns>

@@ -75,8 +75,8 @@ namespace Alis.Core.Audio
         ///     absolute path or a path relative to the directory where the library is located. Sets Playing flag to true. Sets
         ///     Paused flag to false.
         /// </summary>
-        /// <param name="fileName"></param>
-        /// <returns></returns>
+        /// <param name="fileName">The path to the audio file to play.</param>
+        /// <returns>A task that represents the asynchronous playback operation.</returns>
         public async Task Play(string fileName)
         {
             await _internalPlayer.Play(fileName);
@@ -95,7 +95,7 @@ namespace Alis.Core.Audio
         /// <summary>
         ///     Pauses any playback. Sets Paused flag to true. Doesn't modify Playing flag.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A task that represents the asynchronous pause operation.</returns>
         public async Task Pause()
         {
             await _internalPlayer.Pause();
@@ -104,7 +104,7 @@ namespace Alis.Core.Audio
         /// <summary>
         ///     Resumes any paused playback. Sets Paused flag to false. Doesn't modify Playing flag.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A task that represents the asynchronous resume operation.</returns>
         public async Task Resume()
         {
             await _internalPlayer.Resume();
@@ -113,7 +113,7 @@ namespace Alis.Core.Audio
         /// <summary>
         ///     Stops any current playback and clears the buffer. Sets Playing and Paused flags to false.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A task that represents the asynchronous stop operation.</returns>
         public async Task Stop()
         {
             await _internalPlayer.Stop();
@@ -122,7 +122,7 @@ namespace Alis.Core.Audio
         /// <summary>
         ///     Sets the playing volume as percent
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A task that represents the asynchronous volume-setting operation.</returns>
         public async Task SetVolume(byte percent)
         {
             await _internalPlayer.SetVolume(percent);
@@ -131,8 +131,8 @@ namespace Alis.Core.Audio
         /// <summary>
         ///     Checks the os
         /// </summary>
-        /// <exception>No implementation exist for the current OS</exception>
-        /// <returns>The player</returns>
+        /// <exception cref="Exception">No implementation exist for the current OS</exception>
+        /// <returns>The player instance for the current operating system.</returns>
         internal static IPlayer CheckOs()
         {
 #if osxarm64 || osxarm || osxx64 || osx || osxarm || osxx64 || osx
@@ -153,7 +153,7 @@ namespace Alis.Core.Audio
         ///     Ons the playback finished using the specified sender
         /// </summary>
         /// <param name="sender">The sender</param>
-        /// <param name="e">The </param>
+        /// <param name="e">The event arguments associated with the playback finished event.</param>
         internal void OnPlaybackFinished(object sender, EventArgs e)
         {
             PlaybackFinished?.Invoke(this, e);

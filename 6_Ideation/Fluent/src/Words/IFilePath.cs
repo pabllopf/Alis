@@ -37,7 +37,7 @@ namespace Alis.Core.Aspect.Fluent.Words
     public interface IFilePath<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Files the path using the specified value
+        ///     Sets the file path on the builder.
         /// </summary>
         /// <param name="value">The file path to apply.</param>
         /// <returns>The builder instance, enabling fluent chaining.</returns>

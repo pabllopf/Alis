@@ -60,6 +60,7 @@ namespace Alis.Core.Aspect.Logging.Core
         /// <param name="scope">The scope to push.</param>
         /// <param name="scopeStack">The shared scope stack.</param>
         /// <param name="onDispose">Action to invoke when disposed.</param>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="scopeStack"/> is null.</exception>
         public LoggerScope(object scope, Stack<object> scopeStack, Action onDispose)
         {
             _scopeStack = scopeStack ?? throw new ArgumentNullException(nameof(scopeStack));
@@ -69,7 +70,7 @@ namespace Alis.Core.Aspect.Logging.Core
 
 
         /// <summary>
-        ///     Disposes this instance
+        ///     Pops the scope from the stack and invokes the dispose action.
         /// </summary>
         public void Dispose()
         {

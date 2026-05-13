@@ -37,7 +37,7 @@ namespace Alis.Core.Aspect.Fluent.Words
     public interface IAutoTilling<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Autoes the tilling using the specified value
+        ///     Sets the auto-tilling setting on the builder.
         /// </summary>
         /// <param name="value">The auto-tilling setting to apply.</param>
         /// <returns>The builder instance, enabling fluent chaining.</returns>

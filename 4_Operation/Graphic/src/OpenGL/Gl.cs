@@ -97,17 +97,17 @@ namespace Alis.Core.Graphic.OpenGL
         private static GetProcAddressDelegate _getProcAddress;
 
         /// <summary>
-        ///     The uint
+        ///     Temporary array for single uint OpenGL operations
         /// </summary>
         public static uint[] Uint1 = new uint[1];
 
         /// <summary>
-        ///     The int
+        ///     Temporary array for single int OpenGL operations
         /// </summary>
         public static int[] Int1 = new int[1];
 
         /// <summary>
-        ///     The matrix float
+        ///     Temporary array for 4x4 matrix float operations
         /// </summary>
         public static float[] Matrix4Float = new float[16];
 
@@ -475,11 +475,11 @@ namespace Alis.Core.Graphic.OpenGL
         /// <summary>
         ///     Gets the command using the specified command
         /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="command">The command</param>
+        /// <typeparam name="T">The delegate type to create from the function pointer</typeparam>
+        /// <param name="command">The name of the OpenGL function to resolve</param>
         /// <exception cref="InvalidOperationException">Inicialize called before Initialize</exception>
         /// <exception cref="ExternalException">{command} from {typeof(T).Name}</exception>
-        /// <returns>The</returns>
+        /// <returns>The delegate wrapping the native function pointer</returns>
         private static T GetCommand<T>(string command) where T : class
         {
             if (_getProcAddress == null)
@@ -524,7 +524,7 @@ namespace Alis.Core.Graphic.OpenGL
         /// <summary>
         ///     Gens the buffer
         /// </summary>
-        /// <returns>The uint</returns>
+        /// <returns>The generated buffer handle</returns>
         public static uint GenBuffer()
         {
             Uint1[0] = 0;
@@ -535,7 +535,7 @@ namespace Alis.Core.Graphic.OpenGL
         /// <summary>
         ///     Deletes the buffer using the specified buffer
         /// </summary>
-        /// <param name="buffer">The buffer</param>
+        /// <param name="buffer">The buffer handle to delete</param>
         public static void DeleteBuffer(uint buffer)
         {
             Uint1[0] = 0;
@@ -546,8 +546,8 @@ namespace Alis.Core.Graphic.OpenGL
         /// <summary>
         ///     Gets the shader info log using the specified shader
         /// </summary>
-        /// <param name="shader">The shader</param>
-        /// <returns>The string</returns>
+        /// <param name="shader">The shader object handle</param>
+        /// <returns>The shader compilation info log</returns>
         public static string GetShaderInfoLog(uint shader)
         {
             GlGetShaderIv(shader, ShaderParameter.InfoLogLength, Int1);
@@ -564,8 +564,8 @@ namespace Alis.Core.Graphic.OpenGL
         /// <summary>
         ///     Shaders the source using the specified shader
         /// </summary>
-        /// <param name="shader">The shader</param>
-        /// <param name="source">The source</param>
+        /// <param name="shader">The shader object handle</param>
+        /// <param name="source">The shader source code string</param>
         public static void ShaderSource(uint shader, string source)
         {
             Int1[0] = source.Length;
@@ -575,8 +575,8 @@ namespace Alis.Core.Graphic.OpenGL
         /// <summary>
         ///     Describes whether get shader compile status
         /// </summary>
-        /// <param name="shader">The shader</param>
-        /// <returns>The bool</returns>
+        /// <param name="shader">The shader object handle</param>
+        /// <returns>True if compilation succeeded, otherwise false</returns>
         public static bool GetShaderCompileStatus(uint shader)
         {
             GlGetShaderIv(shader, ShaderParameter.CompileStatus, Int1);
@@ -586,8 +586,8 @@ namespace Alis.Core.Graphic.OpenGL
         /// <summary>
         ///     Gets the program info log using the specified program
         /// </summary>
-        /// <param name="program">The program</param>
-        /// <returns>The string</returns>
+        /// <param name="program">The program object handle</param>
+        /// <returns>The program linking info log</returns>
         public static string GetProgramInfoLog(uint program)
         {
             GlGetProgramiv(program, ProgramParameter.InfoLogLength, Int1);
@@ -604,8 +604,8 @@ namespace Alis.Core.Graphic.OpenGL
         /// <summary>
         ///     Describes whether get program link status
         /// </summary>
-        /// <param name="program">The program</param>
-        /// <returns>The bool</returns>
+        /// <param name="program">The program object handle</param>
+        /// <returns>True if linking succeeded, otherwise false</returns>
         public static bool GetProgramLinkStatus(uint program)
         {
             GlGetProgramiv(program, ProgramParameter.LinkStatus, Int1);
@@ -615,8 +615,8 @@ namespace Alis.Core.Graphic.OpenGL
         /// <summary>
         ///     Uniforms the matrix 4fv using the specified location
         /// </summary>
-        /// <param name="location">The location</param>
-        /// <param name="param">The param</param>
+        /// <param name="location">The uniform variable location</param>
+        /// <param name="param">The 4x4 matrix value to set</param>
         public static void UniformMatrix4Fv(int location, Matrix4X4 param)
         {
             Matrix4Float[0] = param.M11;
@@ -642,12 +642,12 @@ namespace Alis.Core.Graphic.OpenGL
         /// <summary>
         ///     Vertexes the attrib pointer using the specified index
         /// </summary>
-        /// <param name="index">The index</param>
-        /// <param name="size">The size</param>
-        /// <param name="type">The type</param>
-        /// <param name="normalized">The normalized</param>
-        /// <param name="stride">The stride</param>
-        /// <param name="pointer">The pointer</param>
+        /// <param name="index">The vertex attribute index</param>
+        /// <param name="size">The number of components per attribute</param>
+        /// <param name="type">The data type of each component</param>
+        /// <param name="normalized">Whether fixed-point values should be normalized</param>
+        /// <param name="stride">The byte offset between consecutive attributes</param>
+        /// <param name="pointer">The offset in bytes to the first component</param>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
         public static void VertexAttribPointer(int index, int size, VertexAttribPointerType type, bool normalized, int stride, IntPtr pointer)
         {
@@ -662,7 +662,7 @@ namespace Alis.Core.Graphic.OpenGL
         /// <summary>
         ///     Enables the vertex attrib array using the specified index
         /// </summary>
-        /// <param name="index">The index</param>
+        /// <param name="index">The vertex attribute index to enable</param>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
         public static void EnableVertexAttribArray(int index)
         {
@@ -677,7 +677,7 @@ namespace Alis.Core.Graphic.OpenGL
         /// <summary>
         ///     Gens the vertex array
         /// </summary>
-        /// <returns>The uint</returns>
+        /// <returns>The generated vertex array handle</returns>
         public static uint GenVertexArray()
         {
             Uint1[0] = 0;
@@ -688,7 +688,7 @@ namespace Alis.Core.Graphic.OpenGL
         /// <summary>
         ///     Deletes the vertex array using the specified vao
         /// </summary>
-        /// <param name="vao">The vao</param>
+        /// <param name="vao">The vertex array handle to delete</param>
         public static void DeleteVertexArray(uint vao)
         {
             Uint1[0] = vao;
@@ -698,7 +698,7 @@ namespace Alis.Core.Graphic.OpenGL
         /// <summary>
         ///     Gens the texture
         /// </summary>
-        /// <returns>The uint</returns>
+        /// <returns>The generated texture handle</returns>
         public static uint GenTexture()
         {
             Uint1[0] = 0;
@@ -709,7 +709,7 @@ namespace Alis.Core.Graphic.OpenGL
         /// <summary>
         ///     Deletes the texture using the specified texture
         /// </summary>
-        /// <param name="texture">The texture</param>
+        /// <param name="texture">The texture handle to delete</param>
         public static void DeleteTexture(uint texture)
         {
             Uint1[0] = texture;
@@ -719,7 +719,7 @@ namespace Alis.Core.Graphic.OpenGL
         /// <summary>
         ///     Generates the mipmap using the specified texture 2 d
         /// </summary>
-        /// <param name="texture2D">The texture</param>
+        /// <param name="texture2D">The texture target for which to generate mipmaps</param>
         public static void GenerateMipmap(TextureTarget texture2D) => GetCommand<GetString>("glGenerateMipmap");
 
         /// <summary>
@@ -731,7 +731,7 @@ namespace Alis.Core.Graphic.OpenGL
         /// <summary>
         ///     Gls the line width using the specified width
         /// </summary>
-        /// <param name="width">The width</param>
+        /// <param name="width">The width of the line to set</param>
         public static void GlLineWidth(float width)
         {
             GlLineWidthDelegate(width);
@@ -740,7 +740,7 @@ namespace Alis.Core.Graphic.OpenGL
         /// <summary>
         ///     Gls the active texture using the specified texture
         /// </summary>
-        /// <param name="texture">The texture</param>
+        /// <param name="texture">The texture unit to activate</param>
         public static void GlActiveTexture(TextureUnit texture)
         {
             GlActiveTextureDelegate(texture);
@@ -749,8 +749,8 @@ namespace Alis.Core.Graphic.OpenGL
         /// <summary>
         ///     Gls the get integerv using the specified i
         /// </summary>
-        /// <param name="i">The </param>
-        /// <param name="viewport">The viewport</param>
+        /// <param name="i">The parameter name to query</param>
+        /// <param name="viewport">The array to receive the queried values</param>
         public static void GlGetIntegerv(int i, int[] viewport)
         {
             GetIntegerv getIntegerv = GetCommand<GetIntegerv>("glGetIntegerv");
@@ -762,7 +762,7 @@ namespace Alis.Core.Graphic.OpenGL
         /// </summary>
         /// <param name="vertexShader">The vertex shader</param>
         /// <param name="compileStatus">The compile status</param>
-        /// <param name="i">The </param>
+        /// <param name="i">The output value for the queried shader parameter</param>
         public static void GlGetShader(uint vertexShader, object compileStatus, out int i)
         {
             GlGetShaderIv(vertexShader, (ShaderParameter) compileStatus, Int1);
@@ -774,7 +774,7 @@ namespace Alis.Core.Graphic.OpenGL
         /// </summary>
         /// <param name="shaderProgram">The shader program</param>
         /// <param name="linkStatus">The link status</param>
-        /// <param name="res">The res</param>
+        /// <param name="res">The output value for the queried program parameter</param>
         public static void GlGetProgram(uint shaderProgram, object linkStatus, out int res)
         {
             GlGetProgramiv(shaderProgram, (ProgramParameter) linkStatus, Int1);
@@ -785,8 +785,8 @@ namespace Alis.Core.Graphic.OpenGL
         ///     Gls the uniform matrix 2x 3 using the specified view projection location
         /// </summary>
         /// <param name="viewProjectionLocation">The view projection location</param>
-        /// <param name="b">The </param>
-        /// <param name="matrix">The matrix</param>
+        /// <param name="b">Whether to transpose the matrix</param>
+        /// <param name="matrix">The matrix values to set</param>
         public static void GlUniformMatrix2x3(int viewProjectionLocation, bool b, Span<float> matrix)
         {
             GetCommand<UniformMatrix2x3FvDel>("glUniformMatrix2x3fv")(viewProjectionLocation, 1, b, matrix);

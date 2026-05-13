@@ -237,30 +237,30 @@ namespace Alis.Core.Audio.Players
         /// <summary>
         ///     Mcis the send string using the specified command
         /// </summary>
-        /// <param name="command">The command</param>
-        /// <param name="stringReturn">The string return</param>
-        /// <param name="returnLength">The return length</param>
-        /// <param name="hwndCallback">The hwnd callback</param>
-        /// <returns>The int</returns>
+        /// <param name="command">The MCI command string to send.</param>
+        /// <param name="stringReturn">The string builder to receive return information.</param>
+        /// <param name="returnLength">The size of the return buffer.</param>
+        /// <param name="hwndCallback">The callback window handle, or IntPtr.Zero if not used.</param>
+        /// <returns>Zero if successful, or an error code otherwise.</returns>
         [DllImport("winmm.dll"), ExcludeFromCodeCoverage]
         private static extern int mciSendString(string command, StringBuilder stringReturn, int returnLength, IntPtr hwndCallback);
 
         /// <summary>
         ///     Mcis the get error string using the specified error code
         /// </summary>
-        /// <param name="errorCode">The error code</param>
-        /// <param name="errorText">The error text</param>
-        /// <param name="errorTextSize">The error text size</param>
-        /// <returns>The int</returns>
+        /// <param name="errorCode">The MCI error code returned by mciSendString.</param>
+        /// <param name="errorText">The string builder to receive the error description.</param>
+        /// <param name="errorTextSize">The size of the error text buffer.</param>
+        /// <returns>Zero if successful, or an error code otherwise.</returns>
         [DllImport("winmm.dll"), ExcludeFromCodeCoverage]
         private static extern int mciGetErrorString(int errorCode, StringBuilder errorText, int errorTextSize);
 
         /// <summary>
         ///     Waves the out set volume using the specified hwo
         /// </summary>
-        /// <param name="hwo">The hwo</param>
-        /// <param name="dwVolume">The dw volume</param>
-        /// <returns>The int</returns>
+        /// <param name="hwo">The handle to the waveform-audio output device.</param>
+        /// <param name="dwVolume">The new volume setting (low word = left channel, high word = right channel).</param>
+        /// <returns>MMSYSERR_NOERROR (0) if successful, or an error code otherwise.</returns>
         [DllImport("winmm.dll"), ExcludeFromCodeCoverage]
         public static extern int waveOutSetVolume(IntPtr hwo, uint dwVolume);
 
@@ -268,7 +268,7 @@ namespace Alis.Core.Audio.Players
         ///     Handles the playback finished using the specified sender
         /// </summary>
         /// <param name="sender">The sender</param>
-        /// <param name="e">The </param>
+        /// <param name="e">The elapsed event arguments.</param>
         private void HandlePlaybackFinished(object sender, ElapsedEventArgs e)
         {
             Playing = false;

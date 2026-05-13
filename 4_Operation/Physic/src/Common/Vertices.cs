@@ -36,32 +36,49 @@ using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Physic.Common
 {
-    /// <summary>
-    ///     The vertices class
-    /// </summary>
-    /// <seealso cref="List{Vector2F}" />
+/// <summary>
+///     Represents a collection of 2D vertices that define a polygon shape.
+///     This class inherits from List&lt;Vector2F&gt; and provides additional
+///     functionality for geometric calculations, including area computation,
+///     centroid calculation, convexity testing, and polygon manipulation.
+///     Vertices are commonly used to define collision shapes in the physics engine.
+/// </summary>
+/// <seealso cref="List{Vector2F}" />
+/// <remarks>
+///     This class extends List&lt;Vector2F&gt; with geometry-specific methods.
+///     The vertices should ideally be ordered either clockwise or counter-clockwise
+///     for proper operation of geometric algorithms.
+/// </remarks>
     public class Vertices : List<Vector2F>
     {
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Vertices" /> class
-        /// </summary>
-        public Vertices()
+/// <summary>
+///     Initializes a new empty instance of the <see cref="Vertices"/> class.
+///     Creates a vertex collection with default capacity.
+/// </summary>
+public Vertices()
         {
         }
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Vertices" /> class
-        /// </summary>
-        /// <param name="capacity">The capacity</param>
-        public Vertices(int capacity) : base(capacity)
+/// <summary>
+///     Initializes a new instance of the <see cref="Vertices"/> class
+///     with the specified initial capacity.
+/// </summary>
+/// <param name="capacity">
+///     The initial number of elements that the Vertices can contain
+///     before resizing is required.
+/// </param>
+public Vertices(int capacity) : base(capacity)
         {
         }
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Vertices" /> class
-        /// </summary>
-        /// <param name="vertices">The vertices</param>
-        public Vertices(IEnumerable<Vector2F> vertices)
+/// <summary>
+///     Initializes a new instance of the <see cref="Vertices"/> class
+///     containing elements copied from the specified collection.
+/// </summary>
+/// <param name="vertices">
+///     The collection of Vector2F elements to copy to the new Vertices instance.
+/// </param>
+public Vertices(IEnumerable<Vector2F> vertices)
         {
             AddRange(vertices);
         }
@@ -267,7 +284,7 @@ namespace Alis.Core.Physic.Common
         /// <summary>
         ///     Translates the vertices with the specified vector.
         /// </summary>
-        /// <param name="value">The value.</param>
+        /// <param name="value">The translation vector to apply.</param>
         public void Translate(Vector2F value)
         {
             Translate(ref value);

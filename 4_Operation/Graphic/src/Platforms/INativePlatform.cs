@@ -39,19 +39,19 @@ namespace Alis.Core.Graphic.Platforms
         /// <summary>
         ///     Initializes the width
         /// </summary>
-        /// <param name="width">The width</param>
-        /// <param name="height">The height</param>
-        /// <param name="title">The title</param>
+        /// <param name="width">The width of the window in pixels</param>
+        /// <param name="height">The height of the window in pixels</param>
+        /// <param name="title">The title of the window</param>
         bool Initialize(int width, int height, string title);
 
         /// <summary>
         ///     Initializes the width
         /// </summary>
-        /// <param name="width">The width</param>
-        /// <param name="height">The height</param>
-        /// <param name="title">The title</param>
-        /// <param name="iconPath">The icon path</param>
-        /// <returns>The bool</returns>
+        /// <param name="width">The width of the window in pixels</param>
+        /// <param name="height">The height of the window in pixels</param>
+        /// <param name="title">The title of the window</param>
+        /// <param name="iconPath">The path to the window icon file</param>
+        /// <returns>True if initialization succeeded, otherwise false</returns>
         bool Initialize(int width, int height, string title, string iconPath);
 
         /// <summary>
@@ -67,14 +67,14 @@ namespace Alis.Core.Graphic.Platforms
         /// <summary>
         ///     Sets the title using the specified title
         /// </summary>
-        /// <param name="title">The title</param>
+        /// <param name="title">The new window title</param>
         void SetTitle(string title);
 
         /// <summary>
         ///     Sets the size using the specified width
         /// </summary>
-        /// <param name="width">The width</param>
-        /// <param name="height">The height</param>
+        /// <param name="width">The new width of the window in pixels</param>
+        /// <param name="height">The new height of the window in pixels</param>
         void SetSize(int width, int height);
 
         /// <summary>
@@ -90,13 +90,13 @@ namespace Alis.Core.Graphic.Platforms
         /// <summary>
         ///     Ises the window visible
         /// </summary>
-        /// <returns>The bool</returns>
+        /// <returns>True if the window is visible, otherwise false</returns>
         bool IsWindowVisible();
 
         /// <summary>
         ///     Polls the events
         /// </summary>
-        /// <returns>The bool</returns>
+        /// <returns>True if events were polled, false if the window was closed</returns>
         bool PollEvents(); // Devuelve false si la ventana se ha cerrado
 
         /// <summary>
@@ -107,13 +107,13 @@ namespace Alis.Core.Graphic.Platforms
         /// <summary>
         ///     Gets the window width
         /// </summary>
-        /// <returns>The int</returns>
+        /// <returns>The window width in pixels</returns>
         int GetWindowWidth();
 
         /// <summary>
         ///     Gets the window height
         /// </summary>
-        /// <returns>The int</returns>
+        /// <returns>The window height in pixels</returns>
         int GetWindowHeight();
 
 
@@ -121,22 +121,22 @@ namespace Alis.Core.Graphic.Platforms
         /// <summary>
         ///     Gets the proc address using the specified proc name
         /// </summary>
-        /// <param name="procName">The proc name</param>
-        /// <returns>The int ptr</returns>
+        /// <param name="procName">The name of the native function to look up</param>
+        /// <returns>A function pointer to the requested OpenGL function, or IntPtr.Zero if not found</returns>
         IntPtr GetProcAddress(string procName);
 
         /// <summary>
-        ///     Devuelve la última tecla pulsada, si existe
+        ///     Gets the last key pressed, if any
         /// </summary>
-        /// <param name="key">La tecla pulsada</param>
-        /// <returns>true si hay tecla, false si no</returns>
+        /// <param name="key">The last pressed key, if available</param>
+        /// <returns>True if a key was pressed, false otherwise</returns>
         bool TryGetLastKeyPressed(out ConsoleKey key);
 
         /// <summary>
         ///     Ises the key down using the specified console key
         /// </summary>
-        /// <param name="consoleKey">The console key</param>
-        /// <returns>The bool</returns>
+        /// <param name="consoleKey">The console key to check</param>
+        /// <returns>True if the key is currently pressed, otherwise false</returns>
         bool IsKeyDown(ConsoleKey consoleKey);
 
         /// <summary>
@@ -160,34 +160,33 @@ namespace Alis.Core.Graphic.Platforms
         float GetMouseWheel();
 
         /// <summary>
-        ///     Devuelve la última cadena de caracteres de entrada (por ejemplo texto) acumulada por el backend de la plataforma.
-        ///     Esto permite transportar caracteres imprimibles (WM_CHAR / X11 KeySym) hacia ImGui.
+        ///     Gets the last input character string accumulated by the platform backend
         /// </summary>
-        /// <param name="chars">La cadena de caracteres entrantes (puede contener varios caracteres)</param>
-        /// <returns>true si había caracteres pendientes, false si no</returns>
+        /// <param name="chars">The incoming characters string, may contain multiple characters</param>
+        /// <returns>True if there were pending characters, false otherwise</returns>
         bool TryGetLastInputCharacters(out string chars);
 
         /// <summary>
         ///     Gets the window position x
         /// </summary>
-        /// <returns>The int</returns>
+        /// <returns>The window x position in pixels</returns>
         int GetWindowPositionX();
 
         /// <summary>
         ///     Gets the window position y
         /// </summary>
-        /// <returns>The int</returns>
+        /// <returns>The window y position in pixels</returns>
         int GetWindowPositionY();
 
         /// <summary>
         ///     Gets the window metrics using the specified win x
         /// </summary>
-        /// <param name="winX">The win</param>
-        /// <param name="winY">The win</param>
-        /// <param name="winW">The win</param>
-        /// <param name="winH">The win</param>
-        /// <param name="fbW">The fb</param>
-        /// <param name="fbH">The fb</param>
+        /// <param name="winX">Window x position output</param>
+        /// <param name="winY">Window y position output</param>
+        /// <param name="winW">Window width output</param>
+        /// <param name="winH">Window height output</param>
+        /// <param name="fbW">Framebuffer width output</param>
+        /// <param name="fbH">Framebuffer height output</param>
         void GetWindowMetrics(out int winX, out int winY,
             out int winW, out int winH,
             out int fbW, out int fbH);
@@ -196,8 +195,8 @@ namespace Alis.Core.Graphic.Platforms
         /// <summary>
         ///     Gets the mouse position in view using the specified x
         /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="x">The mouse x position output</param>
+        /// <param name="y">The mouse y position output</param>
         void GetMousePositionInView(out float x, out float y);
     }
 }

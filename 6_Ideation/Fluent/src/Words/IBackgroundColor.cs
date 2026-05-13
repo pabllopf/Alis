@@ -37,7 +37,7 @@ namespace Alis.Core.Aspect.Fluent.Words
     public interface IBackgroundColor<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Backgrounds the color using the specified value
+        ///     Sets the background color on the builder.
         /// </summary>
         /// <param name="value">The background color to apply.</param>
         /// <returns>The builder instance, enabling fluent chaining.</returns>

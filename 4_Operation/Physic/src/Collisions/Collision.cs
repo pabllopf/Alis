@@ -50,7 +50,7 @@ namespace Alis.Core.Physic.Collisions
         /// <param name="indexB">The index for the second shape.</param>
         /// <param name="xfA">The transform for the first shape.</param>
         /// <param name="xfB">The transform for the seconds shape.</param>
-        /// <returns></returns>
+        /// <returns>True if the shapes overlap, false otherwise.</returns>
         public static bool TestOverlap(Shape shapeA, int indexA, Shape shapeB, int indexB, ref ControllerTransform xfA, ref ControllerTransform xfB)
         {
             DistanceInput input = new DistanceInput();
@@ -585,12 +585,12 @@ namespace Alis.Core.Physic.Collisions
         /// <summary>
         ///     Clipping for contact manifolds.
         /// </summary>
-        /// <param name="vOut">The v out.</param>
-        /// <param name="vIn">The v in.</param>
-        /// <param name="normal">The normal.</param>
-        /// <param name="offset">The offset.</param>
+        /// <param name="vOut">The output clipped vertices.</param>
+        /// <param name="vIn">The input vertices to clip.</param>
+        /// <param name="normal">The clipping plane normal.</param>
+        /// <param name="offset">The clipping plane offset.</param>
         /// <param name="vertexIndexA">The vertex index A.</param>
-        /// <returns></returns>
+        /// <returns>The number of clipped output vertices.</returns>
         private static int ClipSegmentToLine(out FixedArray2<ClipVertex> vOut, ref FixedArray2<ClipVertex> vIn, Vector2F normal, float offset, int vertexIndexA)
         {
             vOut = new FixedArray2<ClipVertex>();
@@ -643,12 +643,13 @@ namespace Alis.Core.Physic.Collisions
 
 
         /// <summary>
+        ///     Computes the separation distance between two polygon edges.
         /// </summary>
-        /// <param name="poly1"></param>
-        /// <param name="xf1To2"></param>
-        /// <param name="edge1"></param>
-        /// <param name="poly2"></param>
-        /// <returns></returns>
+        /// <param name="poly1">The first polygon shape.</param>
+        /// <param name="xf1To2">The transform from poly1's space to poly2's space.</param>
+        /// <param name="edge1">The index of the edge on poly1.</param>
+        /// <param name="poly2">The second polygon shape.</param>
+        /// <returns>The separation distance for the given edge.</returns>
         private static float EdgeSeparation(PolygonShape poly1, ref ControllerTransform xf1To2, int edge1, PolygonShape poly2)
         {
             List<Vector2F> vertices1 = poly1.Vertices;
@@ -689,7 +690,7 @@ namespace Alis.Core.Physic.Collisions
         /// <param name="xf1">The XF1.</param>
         /// <param name="poly2">The poly2.</param>
         /// <param name="xf2">The XF2.</param>
-        /// <returns></returns>
+        /// <returns>The maximum separation distance.</returns>
         private static float FindMaxSeparation(out int edgeIndex, PolygonShape poly1, ref ControllerTransform xf1, PolygonShape poly2, ref ControllerTransform xf2)
         {
             int count1 = poly1.Vertices.Count;
@@ -779,12 +780,12 @@ namespace Alis.Core.Physic.Collisions
         /// <summary>
         ///     Finds the incident edge using the specified c
         /// </summary>
-        /// <param name="c">The </param>
-        /// <param name="poly1">The poly</param>
-        /// <param name="xf1">The xf</param>
-        /// <param name="edge1">The edge</param>
-        /// <param name="poly2">The poly</param>
-        /// <param name="xf2">The xf</param>
+        /// <param name="c">The output array of clip vertices for the incident edge.</param>
+        /// <param name="poly1">The reference polygon shape.</param>
+        /// <param name="xf1">The transform of the reference polygon.</param>
+        /// <param name="edge1">The index of the reference edge.</param>
+        /// <param name="poly2">The incident polygon shape.</param>
+        /// <param name="xf2">The transform of the incident polygon.</param>
         private static void FindIncidentEdge(out FixedArray2<ClipVertex> c, PolygonShape poly1, ref ControllerTransform xf1, int edge1, PolygonShape poly2, ref ControllerTransform xf2)
         {
             c = new FixedArray2<ClipVertex>();
@@ -1264,11 +1265,11 @@ namespace Alis.Core.Physic.Collisions
             /// <summary>
             ///     Computes the edge separation using the specified polygon b
             /// </summary>
-            /// <param name="polygonB">The polygon</param>
-            /// <param name="normal">The normal</param>
-            /// <param name="v1">The </param>
-            /// <param name="front">The front</param>
-            /// <returns>The axis</returns>
+            /// <param name="polygonB">The polygon shape in local space.</param>
+            /// <param name="normal">The separation normal.</param>
+            /// <param name="v1">The first vertex of the edge.</param>
+            /// <param name="front">Whether the edge is facing front.</param>
+            /// <returns>The axis with separation information.</returns>
             private static EpAxis ComputeEdgeSeparation(ref TempPolygon polygonB, ref Vector2F normal, ref Vector2F v1, bool front)
             {
                 EpAxis axis;
@@ -1291,14 +1292,14 @@ namespace Alis.Core.Physic.Collisions
             /// <summary>
             ///     Computes the polygon separation using the specified polygon b
             /// </summary>
-            /// <param name="polygonB">The polygon</param>
-            /// <param name="normal">The normal</param>
-            /// <param name="v1">The </param>
-            /// <param name="v2">The </param>
-            /// <param name="lowerLimit">The lower limit</param>
-            /// <param name="upperLimit">The upper limit</param>
-            /// <param name="radius">The radius</param>
-            /// <returns>The axis</returns>
+            /// <param name="polygonB">The polygon shape in local space.</param>
+            /// <param name="normal">The reference normal.</param>
+            /// <param name="v1">The first edge vertex.</param>
+            /// <param name="v2">The second edge vertex.</param>
+            /// <param name="lowerLimit">The lower angular limit for the normal.</param>
+            /// <param name="upperLimit">The upper angular limit for the normal.</param>
+            /// <param name="radius">The skin radius for collision.</param>
+            /// <returns>The axis with separation information.</returns>
             private static EpAxis ComputePolygonSeparation(ref TempPolygon polygonB, ref Vector2F normal, ref Vector2F v1, ref Vector2F v2, ref Vector2F lowerLimit, ref Vector2F upperLimit, float radius)
             {
                 EpAxis axis;

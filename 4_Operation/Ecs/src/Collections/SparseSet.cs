@@ -34,27 +34,28 @@ using Alis.Core.Ecs.Redifinition;
 namespace Alis.Core.Ecs.Collections
 {
     /// <summary>
-    ///     The sparse set class
+    ///     A sparse set data structure mapping integer IDs to values with O(1) access
     /// </summary>
+    /// <typeparam name="T">The element type stored in the set</typeparam>
     public class SparseSet<T>
     {
         /// <summary>
-        ///     The dense
+        ///     The dense array storing elements in insertion order
         /// </summary>
         private T[] _dense;
 
         /// <summary>
-        ///     The next index
+        ///     The next available index in the dense array
         /// </summary>
         private int _nextIndex;
 
         /// <summary>
-        ///     The sparse
+        ///     The sparse array mapping external IDs to dense indices
         /// </summary>
         private int[] _sparse;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="SparseSet{T}" /> class
+        ///     Initializes a new instance of the <see cref="SparseSet{T}" /> class with default capacity
         /// </summary>
         public SparseSet()
         {
@@ -65,8 +66,10 @@ namespace Alis.Core.Ecs.Collections
         }
 
         /// <summary>
-        ///     The index
+        ///     Gets or sets the element associated with the specified ID
         /// </summary>
+        /// <param name="id">The external ID of the element</param>
+        /// <returns>A reference to the element at the specified ID</returns>
         public ref T this[int id]
         {
             get
@@ -83,10 +86,10 @@ namespace Alis.Core.Ecs.Collections
         }
 
         /// <summary>
-        ///     Ensures the sparse capacity and get index using the specified id
+        ///     Ensures the sparse array has capacity for the given ID and returns a reference to its entry
         /// </summary>
-        /// <param name="id">The id</param>
-        /// <returns>The ref int</returns>
+        /// <param name="id">The external ID to look up</param>
+        /// <returns>A reference to the sparse array entry for the specified ID</returns>
         private ref int EnsureSparseCapacityAndGetIndex(int id)
         {
             int[] localSparse = _sparse;

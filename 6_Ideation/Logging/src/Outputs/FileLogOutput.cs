@@ -108,21 +108,21 @@ namespace Alis.Core.Aspect.Logging.Outputs
 
 
         /// <summary>
-        ///     Gets the value of the name
+        ///     Gets a human-readable identifier for this file output.
         /// </summary>
         public string Name => $"FileOutput[{Path.GetFileName(_filePath)}]";
 
 
         /// <summary>
-        ///     Gets or sets the value of the is enabled
+        ///     Gets or sets whether this output is currently accepting log entries.
         /// </summary>
         public bool IsEnabled { get; set; } = true;
 
 
         /// <summary>
-        ///     Writes the entry
+        ///     Writes the specified log entry to the file.
         /// </summary>
-        /// <param name="entry">The entry</param>
+        /// <param name="entry">The log entry to write.</param>
         [ExcludeFromCodeCoverage]
         public void Write(ILogEntry entry)
         {
@@ -147,7 +147,7 @@ namespace Alis.Core.Aspect.Logging.Outputs
 
 
         /// <summary>
-        ///     Flushes this instance
+        ///     Flushes any buffered data to the file.
         /// </summary>
         [ExcludeFromCodeCoverage]
         public void Flush()
@@ -172,7 +172,7 @@ namespace Alis.Core.Aspect.Logging.Outputs
 
 
         /// <summary>
-        ///     Disposes this instance
+        ///     Releases all resources used by the file output.
         /// </summary>
         [ExcludeFromCodeCoverage]
         public void Dispose()

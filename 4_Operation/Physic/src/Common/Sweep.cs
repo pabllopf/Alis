@@ -33,17 +33,32 @@ using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Physic.Common
 {
-    /// <summary>
-    ///     This describes the motion of a body/shape for TOI computation.
-    ///     Shapes are defined with respect to the body origin, which may
-    ///     no coincide with the center of mass. However, to support dynamics
-    ///     we must interpolate the center of mass position.
-    /// </summary>
+/// <summary>
+///     Describes the motion of a body/shape for time-of-impact (TOI) computation.
+///     This structure stores information needed to interpolate the transform of a body
+///     between time steps for continuous collision detection. Shapes are defined with
+///     respect to the body origin, which may not coincide with the center of mass.
+///     To support dynamics properly, we must interpolate the center of mass position.
+///     The sweep uses alpha0 as a fractional time value in the range [0,1] to represent
+///     temporal interpolation between frames.
+///     
+///     This structure is used in the physics engine for continuous collision detection
+///     (CCD) to prevent tunneling of fast-moving objects. It represents the swept
+///     motion of a body from its previous to current transform.
+///     
+///     Fields:
+///     - LocalCenter: The local center of mass position
+///     - C0, C: Center positions at previous and current time steps
+///     - A0, A: Angles at previous and current time steps (in radians)
+///     - Alpha0: Fraction of the current time step in [0,1] representing the 
+///              start time for interpolation
+/// </summary>
     public struct Sweep
     {
-        /// <summary>
-        ///     World angles
-        /// </summary>
+/// <summary>
+///     Gets or sets the current world angle of the sweep in radians.
+///     This represents the orientation of the body at the current time step.
+/// </summary>
         public float A;
 
         /// <summary>

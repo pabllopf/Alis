@@ -40,7 +40,7 @@ namespace Alis.Core.Aspect.Fluent.Words
         ///     Creates a new instance on the builder.
         /// </summary>
         /// <param name="obj">The creation parameter to apply.</param>
-        /// <returns>The</returns>
+        /// <returns>The builder instance, enabling fluent chaining.</returns>
         TBuilder Create(TArgument obj);
     }
 }

@@ -184,7 +184,7 @@ namespace Alis.Core.Aspect.Logging
         }
 
         /// <summary>
-        ///     Flushes all outputs and cleans up resources.
+        ///     Flushes all outputs to ensure all entries are written.
         /// </summary>
         [ExcludeFromCodeCoverage]
         public void Flush()

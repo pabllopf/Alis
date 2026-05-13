@@ -46,9 +46,9 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Crosses the a
         /// </summary>
-        /// <param name="a">The </param>
-        /// <param name="b">The </param>
-        /// <returns>The float</returns>
+        /// <param name="a">The first vector.</param>
+        /// <param name="b">The second vector.</param>
+        /// <returns>The 2D cross product (scalar) of the two vectors.</returns>
         public static float Cross(ref Vector2F a, ref Vector2F b) => a.X * b.Y - a.Y * b.X;
 
         /// <summary>
@@ -104,9 +104,9 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Muls the a
         /// </summary>
-        /// <param name="a">The </param>
-        /// <param name="v">The </param>
-        /// <returns>The vector</returns>
+        /// <param name="a">The matrix.</param>
+        /// <param name="v">The vector.</param>
+        /// <returns>The multiplied vector.</returns>
         public static Vector2F Mul(ref Mat22 a, Vector2F v) => Mul(ref a, ref v);
 
         /// <summary>

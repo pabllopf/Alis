@@ -39,6 +39,7 @@ namespace Alis.Core.Aspect.Logging.Abstractions
         /// <summary>
         ///     Gets a human-readable name for this formatter.
         /// </summary>
+        /// <value>The human-readable name of this formatter.</value>
         string Name { get; }
 
         /// <summary>

@@ -123,7 +123,7 @@ namespace Alis.Core.Audio.Players
         ///     Plays the file name
         /// </summary>
         /// <param name="fileName">The file name</param>
-        /// <exception cref="FileNotFoundException"></exception>
+        /// <exception cref="FileNotFoundException">Thrown when the specified audio file cannot be found.</exception>
         /// <exception cref="Exception">Formato WAV no soportado</exception>
         public async Task Play(string fileName)
         {

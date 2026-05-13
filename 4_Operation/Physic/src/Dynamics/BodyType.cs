@@ -29,9 +29,12 @@
 
 namespace Alis.Core.Physic.Dynamics
 {
-    /// <summary>
-    ///     The body type.
-    /// </summary>
+/// <summary>
+///     Defines the type of a physics body, which determines how it behaves in the simulation.
+///     The body type affects how the body responds to forces, collisions, and user input.
+///     There are three types: Static (fixed position), Kinematic (user-controlled motion),
+///     and Dynamic (fully simulated physics).
+/// </summary>
     public enum BodyType
     {
         /// <summary>

@@ -323,7 +323,7 @@ namespace Alis.Core.Audio.Players
         ///     Handles the playback finished using the specified sender
         /// </summary>
         /// <param name="sender">The sender</param>
-        /// <param name="e">The </param>
+        /// <param name="e">The event arguments.</param>
         internal void HandlePlaybackFinished(object sender, EventArgs e)
         {
             if (Playing)

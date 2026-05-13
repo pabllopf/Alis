@@ -45,10 +45,10 @@ namespace Alis.Core.Graphic.Ui
         ///     Renders the text using the specified text
         /// </summary>
         /// <param name="text">The text</param>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        /// <param name="foreColor">The fore color</param>
-        /// <param name="backColor">The back color</param>
+        /// <param name="x">The x position to render the text</param>
+        /// <param name="y">The y position to render the text</param>
+        /// <param name="foreColor">The foreground color of the text</param>
+        /// <param name="backColor">The background color of the text</param>
         public static void RenderText(string text, int x, int y, Color foreColor, Color backColor)
         {
             DefaultFont.RenderText(text, x, y, foreColor, backColor);
@@ -58,8 +58,8 @@ namespace Alis.Core.Graphic.Ui
         ///     Renders the text using the specified text
         /// </summary>
         /// <param name="text">The text</param>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="x">The x position to render the text</param>
+        /// <param name="y">The y position to render the text</param>
         public static void RenderText(string text, int x, int y)
         {
             DefaultFont.RenderText(text, x, y, Color.White, Color.Transparent);
