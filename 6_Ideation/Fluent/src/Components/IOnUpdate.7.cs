@@ -40,6 +40,12 @@ namespace Alis.Core.Aspect.Fluent.Components
     /// <typeparam name="TArg5">The type of the 5th additional component or data argument passed to the update method.</typeparam>
     /// <typeparam name="TArg6">The type of the 6th additional component or data argument passed to the update method.</typeparam>
     /// <typeparam name="TArg7">The type of the 7th additional component or data argument passed to the update method.</typeparam>
+    /// <typeparam name="TArg2">The type of the 2nd additional component or data argument passed to the update method.</typeparam>
+    /// <typeparam name="TArg3">The type of the 3rd additional component or data argument passed to the update method.</typeparam>
+    /// <typeparam name="TArg4">The type of the 4th additional component or data argument passed to the update method.</typeparam>
+    /// <typeparam name="TArg5">The type of the 5th additional component or data argument passed to the update method.</typeparam>
+    /// <typeparam name="TArg6">The type of the 6th additional component or data argument passed to the update method.</typeparam>
+    /// <typeparam name="TArg7">The type of the 7th additional component or data argument passed to the update method.</typeparam>
 
     /// <seealso cref="IComponentBase" />
     /// <seealso cref="IComponentBase" />

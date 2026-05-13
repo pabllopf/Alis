@@ -31,9 +31,9 @@ namespace Alis.Core.Aspect.Fluent.Components
 {
     /// <summary>
     ///     Lifecycle hook invoked each frame during the update loop, providing the owning entity and
-    ///     1 additional component reference of type <typeparamref name="TArg1"/>.
+    ///     1 additional component reference of type <typeparamref name="TArg"/>.
     /// </summary>
-    /// <typeparam name="TArg1">The type of the 1st additional component or data argument passed to the update method.</typeparam>
+    /// <typeparam name="TArg">The type of the 1st additional component or data argument passed to the update method.</typeparam>
 
     /// <remarks>Components should only implement one "Update" method.</remarks>
     public partial interface IOnUpdate<TArg> : IComponentBase

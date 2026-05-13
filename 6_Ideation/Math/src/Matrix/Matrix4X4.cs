@@ -35,13 +35,14 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Core.Aspect.Math.Matrix
 {
     /// <summary>
-    ///     The matrix
+    ///     Represents a 4x4 matrix stored in row-major order. Implements <see cref="IEquatable{T}" /> for equality comparisons.
+    ///     Provides matrix operations including multiplication, rotation, translation, orthographic and perspective projections.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct Matrix4X4 : IEquatable<Matrix4X4>
     {
         /// <summary>
-        ///     The hash code
+        ///     The precomputed hash code for this matrix instance.
         /// </summary>
         private readonly int hashCode;
 
@@ -101,15 +102,15 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <param name="m21">The value to assign to the first element in the second row.</param>
         /// <param name="m22">The value to assign to the second element in the second row.</param>
         /// <param name="m23">The value to assign to the third element in the second row.</param>
-        /// <param name="m24">The value to assign to the third element in the second row.</param>
+        /// <param name="m24">The value to assign to the fourth element in the second row.</param>
         /// <param name="m31">The value to assign to the first element in the third row.</param>
         /// <param name="m32">The value to assign to the second element in the third row.</param>
         /// <param name="m33">The value to assign to the third element in the third row.</param>
         /// <param name="m34">The value to assign to the fourth element in the third row.</param>
         /// <param name="m41">The value to assign to the first element in the fourth row.</param>
         /// <param name="m42">The value to assign to the second element in the fourth row.</param>
-        /// <param name="m43"></param>
-        /// <param name="m44"></param>
+        /// <param name="m43">The value to assign to the third element in the fourth row.</param>
+        /// <param name="m44">The value to assign to the fourth element in the fourth row.</param>
         public Matrix4X4(float m11, float m12, float m13, float m14,
             float m21, float m22, float m23, float m24,
             float m31, float m32, float m33, float m34,
@@ -158,7 +159,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         }
 
         /// <summary>Gets the multiplicative identity matrix.</summary>
-        /// <value>Gets the multiplicative identity matrix.</value>
+        /// <value>The identity matrix with ones on the diagonal and zeros elsewhere.</value>
         public static Matrix4X4 Identity => new Matrix4X4
         (
             1f, 0f, 0f, 0f,
@@ -168,8 +169,12 @@ namespace Alis.Core.Aspect.Math.Matrix
         );
 
         /// <summary>
-        ///     The index out of range exception
+        ///     Gets or sets the element at the specified row and column using zero-based indices.
         /// </summary>
+        /// <param name="row">The zero-based row index (0-3).</param>
+        /// <param name="column">The zero-based column index (0-3).</param>
+        /// <returns>The element at the specified position.</returns>
+        /// <exception cref="CustomIndexOutOfRangeException">Thrown when <paramref name="row" /> or <paramref name="column" /> is outside the valid range [0, 3].</exception>
         [ExcludeFromCodeCoverage]
         public float this[int row, int column]
         {
@@ -251,10 +256,6 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <param name="value1">The first matrix.</param>
         /// <param name="value2">The second matrix.</param>
         /// <returns>The matrix that contains the summed values.</returns>
-        /// <remarks>
-        ///     The <see cref="Matrix4X4.op_Addition" /> method defines the operation of the addition operator for
-        ///     <see cref="Matrix4X4" /> objects.
-        /// </remarks>
         public static Matrix4X4 operator +(Matrix4X4 value1, Matrix4X4 value2)
         {
             Matrix4X4 m = new Matrix4X4(
@@ -280,13 +281,9 @@ namespace Alis.Core.Aspect.Math.Matrix
 
         /// <summary>Returns a value that indicates whether the specified matrices are equal.</summary>
         /// <param name="value1">The first matrix to compare.</param>
-        /// <param name="value2">The second matrix to care</param>
-        /// <returns>
-        ///     <see langword="true" /> if <paramref name="value1" /> and <paramref name="value2" /> are equal; otherwise,
-        ///     <see langword="false" />.
-        /// </returns>
-        /// <remarks>Two matrices are equal if all their corresponding elements are equal.</remarks>
-        public static bool operator ==(Matrix4X4 value1, Matrix4X4 value2) => (System.Math.Abs(value1.M11 - value2.M11) < 0.1F) && (System.Math.Abs(value1.M22 - value2.M22) < 0.1F) && (System.Math.Abs(value1.M33 - value2.M33) < 0.1F) && (System.Math.Abs(value1.M44 - value2.M44) < 0.1F) && // Check diagonal element first for early out.
+        /// <param name="value2">The second matrix to compare.</param>
+        /// <returns><c>true</c> if the matrices are equal; otherwise, <c>false</c>.</returns>
+        public static bool operator ==(Matrix4X4 value1, Matrix4X4 value2) => (System.Math.Abs(value1.M11 - value2.M11) < 0.1F) && (System.Math.Abs(value1.M22 - value2.M22) < 0.1F) && (System.Math.Abs(value1.M33 - value2.M33) < 0.1F) && (System.Math.Abs(value1.M44 - value2.M44) < 0.1F) &&
                                                                               (System.Math.Abs(value1.M12 - value2.M12) < 0.1F) && (System.Math.Abs(value1.M13 - value2.M13) < 0.1F) && (System.Math.Abs(value1.M14 - value2.M14) < 0.1F) && (System.Math.Abs(value1.M21 - value2.M21) < 0.1F) &&
                                                                               (System.Math.Abs(value1.M23 - value2.M23) < 0.1F) && (System.Math.Abs(value1.M24 - value2.M24) < 0.1F) && (System.Math.Abs(value1.M31 - value2.M31) < 0.1F) && (System.Math.Abs(value1.M32 - value2.M32) < 0.1F) &&
                                                                               (System.Math.Abs(value1.M34 - value2.M34) < 0.1F) && (System.Math.Abs(value1.M41 - value2.M41) < 0.1F) && (System.Math.Abs(value1.M42 - value2.M42) < 0.1F) && (System.Math.Abs(value1.M43 - value2.M43) < 0.1F);
@@ -294,10 +291,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <summary>Returns a value that indicates whether the specified matrices are not equal.</summary>
         /// <param name="value1">The first matrix to compare.</param>
         /// <param name="value2">The second matrix to compare.</param>
-        /// <returns>
-        ///     <see langword="true" /> if <paramref name="value1" /> and <paramref name="value2" /> are not equal; otherwise,
-        ///     <see langword="false" />.
-        /// </returns>
+        /// <returns><c>true</c> if the matrices are not equal; otherwise, <c>false</c>.</returns>
         public static bool operator !=(Matrix4X4 value1, Matrix4X4 value2) => !(System.Math.Abs(value1.M11 - value2.M11) > 0.1F) && !(System.Math.Abs(value1.M12 - value2.M12) > 0.1F) && !(System.Math.Abs(value1.M13 - value2.M13) > 0.1F) && !(System.Math.Abs(value1.M14 - value2.M14) > 0.1F) &&
                                                                               !(System.Math.Abs(value1.M21 - value2.M21) > 0.1F) && !(System.Math.Abs(value1.M22 - value2.M22) > 0.1F) && !(System.Math.Abs(value1.M23 - value2.M23) > 0.1F) && !(System.Math.Abs(value1.M24 - value2.M24) > 0.1F) &&
                                                                               !(System.Math.Abs(value1.M31 - value2.M31) > 0.1F) && !(System.Math.Abs(value1.M32 - value2.M32) > 0.1F) && !(System.Math.Abs(value1.M33 - value2.M33) > 0.1F) && !(System.Math.Abs(value1.M34 - value2.M34) > 0.1F) &&
@@ -312,10 +306,6 @@ namespace Alis.Core.Aspect.Math.Matrix
             float c = (float) System.Math.Cos(radians);
             float s = (float) System.Math.Sin(radians);
 
-            // [  c  s  0  0 ]
-            // [ -s  c  0  0 ]
-            // [  0  0  1  0 ]
-            // [  0  0  0  1 ]
             Matrix4X4 result = new Matrix4X4(
                 c, s, 0, 0,
                 -s, c, 0, 0,
@@ -327,28 +317,19 @@ namespace Alis.Core.Aspect.Math.Matrix
 
         /// <summary>Returns a value that indicates whether this instance and a specified object are equal.</summary>
         /// <param name="obj">The object to compare with the current instance.</param>
-        /// <returns>
-        ///     <see langword="true" /> if the current instance and <paramref name="obj" /> are equal; otherwise,
-        ///     <see langword="false" />. If <paramref name="obj" /> is <see langword="null" />, the method returns
-        ///     <see langword="false" />.
-        /// </returns>
-        /// <remarks>
-        ///     The current instance and <paramref name="obj" /> are equal if <paramref name="obj" /> is a
-        ///     <see cref="Matrix4X4" /> object and the corresponding elements of each matrix are equal.
-        /// </remarks>
+        /// <returns><c>true</c> if equal; otherwise, <c>false</c>.</returns>
         public override bool Equals(object obj) => obj is Matrix4X4 other && Equals(other);
 
         /// <summary>
+        ///     Multiplies two 4x4 matrices and returns the result.
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        /// <param name="a">The first matrix.</param>
+        /// <param name="b">The second matrix.</param>
+        /// <returns>The product matrix.</returns>
         [ExcludeFromCodeCoverage]
         public static Matrix4X4 operator *(Matrix4X4 a, Matrix4X4 b)
         {
-            // Implement the matrix multiplication logic here
             Matrix4X4 result = new Matrix4X4();
-            // Example logic for matrix multiplication
             for (int i = 0; i < 4; i++)
             {
                 for (int j = 0; j < 4; j++)
@@ -366,42 +347,28 @@ namespace Alis.Core.Aspect.Math.Matrix
 
         /// <summary>Returns a value that indicates whether this instance and another 4x4 matrix are equal.</summary>
         /// <param name="other">The other matrix.</param>
-        /// <returns><see langword="true" /> if the two matrices are equal; otherwise, <see langword="false" />.</returns>
+        /// <returns><c>true</c> if equal; otherwise, <c>false</c>.</returns>
         public bool Equals(Matrix4X4 other) => this == other;
 
         /// <summary>Returns the hash code for this instance.</summary>
-        /// <returns>The hash code.</returns>
+        /// <returns>The precomputed hash code.</returns>
         public override int GetHashCode() => hashCode;
 
         /// <summary>Returns a string that represents this matrix.</summary>
         /// <returns>The string representation of this matrix.</returns>
-        /// <remarks>
-        ///     The numeric values in the returned string are formatted by using the conventions of the current culture. For
-        ///     example, for the en-US culture, the returned string might appear as
-        ///     <c>
-        ///         { {M11:1.1 M12:1.2 M13:1.3 M14:1.4} {M21:2.1 M22:2.2 M23:2.3 M24:2.4} {M31:3.1 M32:3.2 M33:3.3 M34:3.4}
-        ///         {M41:4.1
-        ///         M42:4.2 M43:4.3 M44:4.4} }
-        ///     </c>
-        ///     .
-        /// </remarks>
         public override string ToString() =>
             $"{{ {{M11:{M11} M12:{M12} M13:{M13} M14:{M14}}} {{M21:{M21} M22:{M22} M23:{M23} M24:{M24}}} {{M31:{M31} M32:{M32} M33:{M33} M34:{M34}}} {{M41:{M41} M42:{M42} M43:{M43} M44:{M44}}} }}";
 
         /// <summary>
-        ///     Creates the rotation x using the specified radians
+        ///     Creates a matrix for rotating points around the X axis.
         /// </summary>
-        /// <param name="radians">The radians</param>
-        /// <returns>The result</returns>
+        /// <param name="radians">The rotation angle in radians.</param>
+        /// <returns>The rotation matrix.</returns>
         public static Matrix4X4 CreateRotationX(float radians)
         {
             float c = (float) System.Math.Cos(radians);
             float s = (float) System.Math.Sin(radians);
 
-            // [  1  0  0  0 ]
-            // [  0  c  s  0 ]
-            // [  0 -s  c  0 ]
-            // [  0  0  0  1 ]
             Matrix4X4 result = new Matrix4X4(
                 1f, 0f, 0f, 0f,
                 0f, c, s, 0f,
@@ -412,11 +379,11 @@ namespace Alis.Core.Aspect.Math.Matrix
         }
 
         /// <summary>
-        ///     Multiplies the matrix 1
+        ///     Multiplies two 4x4 matrices.
         /// </summary>
-        /// <param name="matrix1">The matrix</param>
-        /// <param name="matrix2">The matrix</param>
-        /// <returns>The result</returns>
+        /// <param name="matrix1">The first matrix.</param>
+        /// <param name="matrix2">The second matrix.</param>
+        /// <returns>The product matrix.</returns>
         public static Matrix4X4 Multiply(Matrix4X4 matrix1, Matrix4X4 matrix2) => new Matrix4X4
         {
             M11 = matrix1.M11 * matrix2.M11 + matrix1.M12 * matrix2.M21 + matrix1.M13 * matrix2.M31 + matrix1.M14 * matrix2.M41,
@@ -438,10 +405,10 @@ namespace Alis.Core.Aspect.Math.Matrix
         };
 
         /// <summary>
-        ///     Creates the translation using the specified vector 3
+        ///     Creates a translation matrix from a <see cref="Vector3F" />.
         /// </summary>
-        /// <param name="vector3">The vector</param>
-        /// <returns>The result</returns>
+        /// <param name="vector3">The translation vector (X, Y, Z).</param>
+        /// <returns>The translation matrix.</returns>
         public static Matrix4X4 CreateTranslation(Vector3F vector3)
         {
             Matrix4X4 result = Identity;
@@ -454,13 +421,13 @@ namespace Alis.Core.Aspect.Math.Matrix
         }
 
         /// <summary>
-        ///     Creates the perspective field of view using the specified pi
+        ///     Creates a perspective projection matrix based on a field of view.
         /// </summary>
-        /// <param name="pi">The pi</param>
-        /// <param name="aspect">The aspect</param>
-        /// <param name="f">The </param>
-        /// <param name="f1">The </param>
-        /// <returns>The result</returns>
+        /// <param name="pi">The field of view angle in radians.</param>
+        /// <param name="aspect">The aspect ratio (width / height).</param>
+        /// <param name="f">The distance to the near clipping plane.</param>
+        /// <param name="f1">The distance to the far clipping plane.</param>
+        /// <returns>The perspective projection matrix.</returns>
         public static Matrix4X4 CreatePerspectiveFieldOfView(float pi, float aspect, float f, float f1)
         {
             Matrix4X4 result = Identity;

@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The run interface
+    ///     Defines a fluent builder method that runs or executes the configured builder.
     /// </summary>
     public interface IRun
     {
         /// <summary>
-        ///     Runs this instance
+        ///     Runs the configured builder and executes the defined behavior.
         /// </summary>
         void Run();
     }

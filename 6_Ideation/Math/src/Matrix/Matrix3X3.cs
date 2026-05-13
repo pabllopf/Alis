@@ -34,27 +34,28 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Core.Aspect.Math.Matrix
 {
     /// <summary>
-    ///     The matrix
+    ///     A 3x3 matrix stored in column-major order using three <see cref="Vector3F" /> columns.
+    ///     Provides linear system solving and inverse operations for 2D/3D transformations.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct Matrix3X3
     {
         /// <summary>
-        ///     The epsilon
+        ///     The epsilon tolerance used for near-zero determinant checks.
         /// </summary>
         private const float Epsilon = 0.00001f;
 
         /// <summary>
-        ///     The ez
+        ///     The first column vector of the matrix.
         /// </summary>
         public Vector3F Ex, Ey, Ez;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Matrix3X3" /> class
+        ///     Initializes a new instance of the <see cref="Matrix3X3" /> struct using three column vectors.
         /// </summary>
-        /// <param name="c1">The </param>
-        /// <param name="c2">The </param>
-        /// <param name="c3">The </param>
+        /// <param name="c1">The first column vector.</param>
+        /// <param name="c2">The second column vector.</param>
+        /// <param name="c3">The third column vector.</param>
         public Matrix3X3(Vector3F c1, Vector3F c2, Vector3F c3)
         {
             Ex = c1;
@@ -64,17 +65,17 @@ namespace Alis.Core.Aspect.Math.Matrix
 
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Matrix3X3" /> class
+        ///     Initializes a new instance of the <see cref="Matrix3X3" /> struct using nine scalar values in row-major order.
         /// </summary>
-        /// <param name="a00">The 00</param>
-        /// <param name="a01">The 01</param>
-        /// <param name="a02">The 02</param>
-        /// <param name="a10">The 10</param>
-        /// <param name="a11">The 11</param>
-        /// <param name="a12">The 12</param>
-        /// <param name="a20">The 20</param>
-        /// <param name="a21">The 21</param>
-        /// <param name="a22">The 22</param>
+        /// <param name="a00">The value at row 0, column 0.</param>
+        /// <param name="a01">The value at row 0, column 1.</param>
+        /// <param name="a02">The value at row 0, column 2.</param>
+        /// <param name="a10">The value at row 1, column 0.</param>
+        /// <param name="a11">The value at row 1, column 1.</param>
+        /// <param name="a12">The value at row 1, column 2.</param>
+        /// <param name="a20">The value at row 2, column 0.</param>
+        /// <param name="a21">The value at row 2, column 1.</param>
+        /// <param name="a22">The value at row 2, column 2.</param>
         public Matrix3X3(float a00, float a01, float a02,
             float a10, float a11, float a12,
             float a20, float a21, float a22)
@@ -97,15 +98,15 @@ namespace Alis.Core.Aspect.Math.Matrix
         }
 
         /// <summary>
-        ///     Solves the 33 using the specified b
+        ///     Solves the 3x3 linear system A * x = b where A is this matrix.
         /// </summary>
-        /// <param name="b">The </param>
-        /// <returns>The vector</returns>
+        /// <param name="b">The right-hand side vector.</param>
+        /// <returns>The solution vector x.</returns>
         [ExcludeFromCodeCoverage]
         public Vector3F Solve33(Vector3F b)
         {
             float det = Vector3F.Dot(Ex, Vector3F.Cross(Ey, Ez));
-            if (System.Math.Abs(det) > Epsilon) // Use epsilon check instead of exact comparison
+            if (System.Math.Abs(det) > Epsilon)
             {
                 det = 1.0f / det;
             }
@@ -116,16 +117,16 @@ namespace Alis.Core.Aspect.Math.Matrix
 
 
         /// <summary>
-        ///     Solves the 22 using the specified b
+        ///     Solves the 2x2 subsystem (upper-left 2x2 portion) for the given right-hand side vector.
         /// </summary>
-        /// <param name="b">The </param>
-        /// <returns>The vector</returns>
+        /// <param name="b">The right-hand side 2D vector.</param>
+        /// <returns>The solution 2D vector.</returns>
         public Vector2F Solve22(Vector2F b)
         {
             float a11 = Ex.X, a12 = Ey.X, a21 = Ex.Y, a22 = Ey.Y;
             float det = a11 * a22 - a12 * a21;
 
-            if (System.Math.Abs(det) > Epsilon) // Use epsilon check instead of exact comparison
+            if (System.Math.Abs(det) > Epsilon)
             {
                 det = 1.0f / det;
             }
@@ -135,16 +136,16 @@ namespace Alis.Core.Aspect.Math.Matrix
 
 
         /// <summary>
-        ///     Gets the inverse 22 using the specified m
+        ///     Computes the inverse of the upper-left 2x2 submatrix and stores it in the provided output matrix.
         /// </summary>
-        /// <param name="m">The </param>
+        /// <param name="m">The output matrix that will receive the inverse of the 2x2 submatrix.</param>
         [ExcludeFromCodeCoverage]
         public void GetInverse22(ref Matrix3X3 m)
         {
             float a = Ex.X, b = Ey.X, c = Ex.Y, d = Ey.Y;
             float det = a * d - b * c;
 
-            if (System.Math.Abs(det) > Epsilon) // Use epsilon check instead of exact comparison
+            if (System.Math.Abs(det) > Epsilon)
             {
                 det = 1.0f / det;
             }
@@ -169,9 +170,9 @@ namespace Alis.Core.Aspect.Math.Matrix
         }
 
         /// <summary>
-        ///     Gets the sym inverse 33 using the specified m
+        ///     Computes the symmetric inverse of the full 3x3 matrix and stores it in the provided output matrix.
         /// </summary>
-        /// <param name="m">The </param>
+        /// <param name="m">The output matrix that will receive the symmetric inverse.</param>
         [ExcludeFromCodeCoverage]
         public void GetSymInverse33(ref Matrix3X3 m)
         {
@@ -206,20 +207,20 @@ namespace Alis.Core.Aspect.Math.Matrix
 
 
         /// <summary>
-        ///     Dots the a
+        ///     Computes the dot product of two 3D vectors.
         /// </summary>
-        /// <param name="a">The </param>
-        /// <param name="b">The </param>
-        /// <returns>The float</returns>
+        /// <param name="a">The first vector.</param>
+        /// <param name="b">The second vector.</param>
+        /// <returns>The dot product.</returns>
         private static float Dot(Vector3F a, Vector3F b) => a.X * b.X + a.Y * b.Y + a.Z * b.Z;
 
 
         /// <summary>
-        ///     Crosses the a
+        ///     Computes the cross product of two 3D vectors.
         /// </summary>
-        /// <param name="a">The </param>
-        /// <param name="b">The </param>
-        /// <returns>The vector</returns>
+        /// <param name="a">The first vector.</param>
+        /// <param name="b">The second vector.</param>
+        /// <returns>The cross product vector.</returns>
         private static Vector3F Cross(Vector3F a, Vector3F b) =>
             new Vector3F(a.Y * b.Z - a.Z * b.Y, a.Z * b.X - a.X * b.Z, a.X * b.Y - a.Y * b.X);
     }

@@ -35,6 +35,7 @@ namespace Alis.Core.Aspect.Fluent.Components
     /// </summary>
     /// <typeparam name="TArg1">The type of the 1st additional component or data argument passed to the update method.</typeparam>
     /// <typeparam name="TArg2">The type of the 2nd additional component or data argument passed to the update method.</typeparam>
+    /// <typeparam name="TArg2">The type of the 2nd additional component or data argument passed to the update method.</typeparam>
 
     /// <seealso cref="IComponentBase" />
     /// <seealso cref="IComponentBase" />

@@ -37,7 +37,7 @@ namespace Alis.Core.Aspect.Fluent.Words
     public interface IManagerOf<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Managers the of using the specified value
+        ///     Configures a manager of a specific type on the builder.
         /// </summary>
         /// <typeparam name="T">The specific type parameter for this operation.</typeparam>
         /// <param name="value">The manager configuration to apply.</param>

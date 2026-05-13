@@ -29,14 +29,18 @@
 
 namespace Alis.Core.Aspect.Fluent.Words
 {
-    /// <summary>Define the word "Name" </summary>
-    /// <typeparam name="TBuilder">The type of the builder.</typeparam>
-    /// <typeparam name="TArgument">The type of the argument.</typeparam>
+    /// <summary>
+    ///     Fluent builder interface that sets the name on the target builder.
+    /// </summary>
+    /// <typeparam name="TBuilder">The builder type returned by the fluent method for chaining.</typeparam>
+    /// <typeparam name="TArgument">The argument type accepted by the fluent method.</typeparam>
     public interface IWithName<out TBuilder, in TArgument>
     {
-        /// <summary>Withes the name.</summary>
+        /// <summary>
+        ///     Sets the name on the builder.
+        /// </summary>
         /// <param name="value">The name to apply.</param>
-        /// <returns>Return the value that you want.</returns>
+        /// <returns>The builder instance, enabling fluent chaining.</returns>
         TBuilder WithName(TArgument value);
     }
 }
