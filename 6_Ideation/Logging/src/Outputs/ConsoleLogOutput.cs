@@ -43,12 +43,12 @@ namespace Alis.Core.Aspect.Logging.Outputs
     public sealed class ConsoleLogOutput : ILogOutput
     {
         /// <summary>
-        ///     The formatter
+        ///     The formatter used to convert log entries into strings for console display.
         /// </summary>
         private readonly ILogFormatter _formatter;
 
         /// <summary>
-        ///     The disposed
+        ///     Indicates whether this instance has been disposed and should no longer accept writes.
         /// </summary>
         private bool _disposed;
 
@@ -60,21 +60,24 @@ namespace Alis.Core.Aspect.Logging.Outputs
 
 
         /// <summary>
-        ///     Gets the value of the name
+        ///     Gets a human-readable identifier for this console output.
         /// </summary>
         public string Name => "ConsoleOutput";
 
 
         /// <summary>
-        ///     Gets or sets the value of the is enabled
+        ///     Gets or sets whether this output is currently accepting log entries.
+        ///     When disabled, <see cref="Write"/> silently ignores entries.
         /// </summary>
         public bool IsEnabled { get; set; } = true;
 
 
         /// <summary>
-        ///     Writes the entry
+        ///     Writes the formatted log entry to <see cref="Console.Out"/> with color coding
+        ///     based on the log severity level. Colors: Trace=Gray, Debug=Cyan, Info=White,
+        ///     Warning=Yellow, Error=Red, Critical=Magenta.
         /// </summary>
-        /// <param name="entry">The entry</param>
+        /// <param name="entry">The log entry to format and write to the console. Null entries are silently ignored.</param>
         [ExcludeFromCodeCoverage]
         public void Write(ILogEntry entry)
         {
@@ -121,7 +124,7 @@ namespace Alis.Core.Aspect.Logging.Outputs
 
 
         /// <summary>
-        ///     Flushes this instance
+        ///     No-op for console output since <see cref="Console.WriteLine"/> writes immediately.
         /// </summary>
         public void Flush()
         {
