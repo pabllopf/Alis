@@ -67,14 +67,29 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        ///     Gets or sets the value of the attached to body
+        ///     Gets or sets whether this vertex collection is attached to a physics body.
+        ///     Internal flag used to track ownership and prevent duplicate operations.
         /// </summary>
         internal bool AttachedToBody { get; set; }
 
         /// <summary>
-        ///     You can add holes to this collection.
-        ///     It will get respected by some of the triangulation algoithms, but otherwise not used.
+        ///     Gets or sets the collection of holes within this polygon.
         /// </summary>
+        /// <value>
+        ///     A <see cref="List{Vertices}"/> containing hole definitions, or <c>null</c> if no holes.
+        /// </value>
+        /// <remarks>
+        ///     Holes are vertex collections that define interior regions to be excluded from the polygon.
+        ///     Some triangulation algorithms (such as CDT) respect these holes during decomposition.
+        ///     The vertices in each hole should be in counter-clockwise order relative to the outer polygon.
+        /// </remarks>
+        /// <example>
+        ///     <code>
+        ///     Vertices polygon = new Vertices() { new Vector2F(0,0), new Vector2F(10,0), new Vector2F(10,10), new Vector2F(0,10) };
+        ///     Vertices hole = new Vertices() { new Vector2F(2,2), new Vector2F(2,4), new Vector2F(4,4), new Vector2F(4,2) };
+        ///     polygon.Holes = new List&lt;Vertices&gt; { hole };
+        ///     </code>
+        /// </example>
         public List<Vertices> Holes { get; set; }
 
         /// <summary>
@@ -102,10 +117,20 @@ namespace Alis.Core.Physic.Common
         public Vector2F PreviousVertex(int index) => this[PreviousIndex(index)];
 
         /// <summary>
-        ///     Gets the signed area.
-        ///     If the area is less than 0, it indicates that the polygon is clockwise winded.
+        ///     Calculates the signed area of the polygon using the Shoelace formula.
         /// </summary>
-        /// <returns>The signed area</returns>
+        /// <returns>
+        ///     A <see cref="float"/> representing the signed area.
+        ///     A positive value indicates counter-clockwise winding order.
+        ///     A negative value indicates clockwise winding order.
+        ///     Returns 0 if the polygon has fewer than 3 vertices.
+        /// </returns>
+        /// <remarks>
+        ///     The signed area is computed using the Shoelace formula:
+        ///     Area = 0.5 * Σ(x_i * y_{i+1} - y_i * x_{i+1})
+        ///     This is useful for determining the winding order of the polygon
+        ///     without requiring a specific vertex ordering.
+        /// </remarks>
         public float GetSignedArea()
         {
             //The simplest polygon which can exist in the Euclidean plane has 3 sides.
@@ -133,9 +158,17 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        ///     Gets the area.
+        ///     Calculates the absolute (unsigned) area of the polygon.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>
+        ///     A <see cref="float"/> representing the absolute area of the polygon.
+        ///     Always returns a non-negative value.
+        ///     Returns 0 if the polygon has fewer than 3 vertices.
+        /// </returns>
+        /// <remarks>
+        ///     This method uses <see cref="GetSignedArea"/> and takes the absolute value
+        ///     to ensure a positive area regardless of the polygon's winding order.
+        /// </remarks>
         public float GetArea()
         {
             float area = GetSignedArea();
@@ -143,9 +176,17 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        ///     Gets the centroid.
+        ///     Calculates the centroid (center of mass) of the polygon.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>
+        ///     A <see cref="Vector2F"/> representing the centroid coordinates.
+        ///     Returns <see cref="Vector2F.NaN"/> if the polygon has fewer than 3 vertices.
+        /// </returns>
+        /// <remarks>
+        ///     The centroid is computed as the weighted average of triangle centroids
+        ///     formed by triangulating the polygon fan-style from the first vertex.
+        ///     This is the same algorithm used by Box2D.
+        /// </remarks>
         public Vector2F GetCentroid()
         {
             //The simplest polygon which can exist in the Euclidean plane has 3 sides.
@@ -178,8 +219,16 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        ///     Returns an AABB that fully contains this polygon.
+        ///     Calculates the axis-aligned bounding box (AABB) that fully contains this polygon.
         /// </summary>
+        /// <returns>
+        ///     An <see cref="Aabb"/> containing the minimum and maximum bounds of the polygon.
+        /// </returns>
+        /// <remarks>
+        ///     The AABB is computed by iterating through all vertices and finding
+        ///     the minimum and maximum X and Y coordinates. This is useful for
+        ///     broad-phase collision detection and spatial partitioning.
+        /// </remarks>
         public Aabb GetAabb()
         {
             Aabb aabb;
@@ -301,14 +350,22 @@ namespace Alis.Core.Physic.Common
 
         /// <summary>
         ///     Determines whether the polygon is convex.
-        ///     O(n^2) running time.
-        ///     Assumptions:
-        ///     - The polygon is in counter clockwise order
-        ///     - The polygon has no overlapping edges
         /// </summary>
         /// <returns>
-        ///     <c>true</c> if it is convex; otherwise, <c>false</c>.
+        ///     <c>true</c> if the polygon is convex (all interior angles less than 180 degrees);
+        ///     otherwise, <c>false</c>.
         /// </returns>
+        /// <remarks>
+        ///     This method runs in O(n^2) time where n is the number of vertices.
+        ///     
+        ///     Assumptions for correct results:
+        ///     - The polygon vertices are in counter-clockwise order
+        ///     - The polygon has no overlapping edges (is simple)
+        ///     
+        ///     A convex polygon has all interior angles less than 180 degrees and
+        ///     any line segment between two points in the polygon lies entirely within it.
+        /// </remarks>
+        /// <exception cref="InvalidOperationException">Thrown if the polygon has fewer than 3 vertices.</exception>
         public bool IsConvex()
         {
             //The simplest polygon which can exist in the Euclidean plane has 3 sides.
@@ -352,9 +409,23 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        ///     Indicates if the vertices are in counter clockwise order.
-        ///     Warning: If the area of the polygon is 0, it is unable to determine the winding.
+        ///     Determines whether the vertices are in counter-clockwise order.
         /// </summary>
+        /// <returns>
+        ///     <c>true</c> if the vertices are in counter-clockwise order;
+        ///     <c>false</c> if they are in clockwise order.
+        /// </returns>
+        /// <remarks>
+        ///     This method uses the signed area to determine winding order.
+        ///     If the polygon has zero area (collinear points), the result is undefined.
+        ///     
+        ///     Many physics engines require polygons to be in counter-clockwise order
+        ///     for correct collision detection and response.
+        /// </remarks>
+        /// <warning>
+        ///     If the area of the polygon is exactly zero (all points collinear),
+        ///     this method cannot reliably determine the winding order.
+        /// </warning>
         public bool IsCounterClockWise()
         {
             //The simplest polygon which can exist in the Euclidean plane has 3 sides.
