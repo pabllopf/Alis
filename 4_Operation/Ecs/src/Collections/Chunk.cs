@@ -37,6 +37,7 @@ namespace Alis.Core.Ecs.Collections
     /// <summary>
     ///     The chunk
     /// </summary>
+    /// <typeparam name="TData">The data type stored in the collection.</typeparam>
     /// <remarks>
     ///     Memory layout optimized: 8 bytes total (TData[] reference)
     ///     Pack = 8 for optimal alignment with reference types on 64-bit architectures
@@ -72,6 +73,7 @@ namespace Alis.Core.Ecs.Collections
         /// <summary>
         ///     Converts the span
         /// </summary>
+        /// <typeparam name="TData">The data type stored in the collection.</typeparam>
         /// <returns>The buffer</returns>
         public Span<TData> AsSpan() => Buffer;
 
@@ -79,6 +81,7 @@ namespace Alis.Core.Ecs.Collections
         /// <summary>
         ///     Converts the span using the specified start
         /// </summary>
+        /// <typeparam name="TData">The data type stored in the collection.</typeparam>
         /// <param name="start">The start</param>
         /// <param name="length">The length</param>
         /// <returns>A span of t data</returns>

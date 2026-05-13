@@ -51,6 +51,7 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     Allows tuple deconstruction syntax to be used.
         /// </summary>
+        /// <param name="comp1">The comp1 parameter.</param>
         public void Deconstruct(out Span<T1> comp1)
         {
             comp1 = Span;
@@ -82,6 +83,8 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     Allows tuple deconstruction syntax to be used.
         /// </summary>
+        /// <param name="comp1">The comp1 parameter.</param>
+        /// <param name="comp2">The comp2 parameter.</param>
         public void Deconstruct(out Span<T1> comp1, out Span<T2> comp2)
         {
             comp1 = Span1;
@@ -119,6 +122,9 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     Allows tuple deconstruction syntax to be used.
         /// </summary>
+        /// <param name="comp1">The comp1 parameter.</param>
+        /// <param name="comp2">The comp2 parameter.</param>
+        /// <param name="comp3">The comp3 parameter.</param>
         public void Deconstruct(out Span<T1> comp1, out Span<T2> comp2, out Span<T3> comp3)
         {
             comp1 = Span1;
@@ -162,6 +168,10 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     Allows tuple deconstruction syntax to be used.
         /// </summary>
+        /// <param name="comp1">The comp1 parameter.</param>
+        /// <param name="comp2">The comp2 parameter.</param>
+        /// <param name="comp3">The comp3 parameter.</param>
+        /// <param name="comp4">The comp4 parameter.</param>
         public void Deconstruct(out Span<T1> comp1, out Span<T2> comp2, out Span<T3> comp3, out Span<T4> comp4)
         {
             comp1 = Span1;

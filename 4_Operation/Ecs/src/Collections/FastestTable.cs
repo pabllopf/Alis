@@ -37,6 +37,7 @@ namespace Alis.Core.Ecs.Collections
     /// <summary>
     ///     The fastest table combining optimal performance traits, safe version.
     /// </summary>
+    /// <typeparam name="T">The component type.</typeparam>
     /// <remarks>
     ///     Memory layout optimized: 8 bytes total (T[] reference)
     ///     Pack = 8 for optimal alignment with reference types on 64-bit architectures
@@ -119,6 +120,7 @@ namespace Alis.Core.Ecs.Collections
         /// <summary>
         ///     Converts the span
         /// </summary>
+        /// <typeparam name="T">The component type.</typeparam>
         /// <returns>A span of t</returns>
         public Span<T> AsSpan() => _buffer.AsSpan();
 

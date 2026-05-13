@@ -30,20 +30,22 @@
 namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>
-    ///     The solver iterations
+    ///     Configures the number of solver iterations used by the physics engine for velocity and position
+    ///     constraint resolution, including continuous collision detection (TOI) iterations.
+    ///     These values directly affect simulation stability and performance.
     /// </summary>
     public struct SolverIterations
     {
-        /// <summary>The number of velocity iterations used in the solver.</summary>
+        /// <summary>The number of velocity constraint iterations used in the main solver pass. More iterations improve stability at the cost of performance.</summary>
         public int VelocityIterations;
 
-        /// <summary>The number of position iterations used in the solver.</summary>
+        /// <summary>The number of position constraint iterations used in the main solver pass. More iterations reduce overlap artifacts at the cost of performance.</summary>
         public int PositionIterations;
 
-        /// <summary>The number of velocity iterations in the TOI solver</summary>
+        /// <summary>The number of velocity iterations in the TOI (time of impact) continuous collision solver.</summary>
         public int ToiVelocityIterations;
 
-        /// <summary>The number of position iterations in the TOI solver</summary>
+        /// <summary>The number of position iterations in the TOI (time of impact) continuous collision solver.</summary>
         public int ToiPositionIterations;
     }
 }

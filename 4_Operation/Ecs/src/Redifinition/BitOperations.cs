@@ -52,7 +52,7 @@ namespace System.Numerics
 
         /// <summary>
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="value">The value to set.</param>
         /// <returns></returns>
         public static int Log2(uint value)
         {
@@ -74,7 +74,7 @@ namespace System.Numerics
         /// <summary>
         ///     rounds up to the next highest power of 2.
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="value">The value to set.</param>
         /// <returns></returns>
         public static uint RoundUpToPowerOf2(uint value)
         {

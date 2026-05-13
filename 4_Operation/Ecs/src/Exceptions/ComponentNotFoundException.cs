@@ -40,7 +40,7 @@ namespace Alis.Core.Ecs.Exceptions
         /// <summary>
         ///     Initializes a new instance of the <see cref="ComponentNotFoundException" /> class
         /// </summary>
-        /// <param name="t">The </param>
+        /// <param name="t">The t parameter.</param>
         public ComponentNotFoundException(Type t)
             : base("Component not found")
         {

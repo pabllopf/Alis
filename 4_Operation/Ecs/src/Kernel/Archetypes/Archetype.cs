@@ -305,6 +305,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// <summary>
         ///     Creates the gameObject locations using the specified count
         /// </summary>
+        /// <typeparam name="GameObjectIdOnly">The GameObjectIdOnly type parameter.</typeparam>
         /// <param name="count">The count</param>
         /// <param name="scene">The scene</param>
         /// <returns>The gameObject span</returns>
@@ -387,6 +388,9 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// <summary>
         ///     This method doesn't modify component storages
         /// </summary>
+        /// <param name="index">The index within the storage.</param>
+        /// <param name="deletedIndex">The deletedIndex parameter.</param>
+        /// <returns>The result of the operation.</returns>
         internal GameObjectIdOnly DeleteEntityFromStorage(int index, out int deletedIndex)
         {
             deletedIndex = --NextComponentIndex;
@@ -525,6 +529,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// <summary>
         ///     Gets the gameObject span
         /// </summary>
+        /// <typeparam name="GameObjectIdOnly">The GameObjectIdOnly type parameter.</typeparam>
         /// <returns>A span of gameObject id only</returns>
         internal Span<GameObjectIdOnly> GetEntitySpan() => _entities.AsSpan(0, NextComponentIndex);
 
@@ -538,6 +543,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// <summary>
         ///     Creates the or get existing archetype using the specified types
         /// </summary>
+        /// <param name="null">The null parameter.</param>
         /// <param name="types">The types</param>
         /// <param name="scene">The scene</param>
         /// <param name="typeArray">The type array</param>
@@ -629,6 +635,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// <summary>
         ///     Gets the archetype id using the specified types
         /// </summary>
+        /// <param name="null">The null parameter.</param>
         /// <param name="types">The types</param>
         /// <param name="typesArray">The types array</param>
         /// <exception cref="InvalidOperationException">Entities can have a max of 127 components!</exception>
@@ -735,6 +742,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
     /// <summary>
     ///     The archetype class
     /// </summary>
+    /// <typeparam name="T">The component type.</typeparam>
     internal static class Archetype<T>
     {
         /// <summary>
@@ -816,6 +824,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// <summary>
         ///     Creates the or get existing archetype using the specified types
         /// </summary>
+        /// <param name="null">The null parameter.</param>
         /// <param name="types">The types</param>
         /// <param name="scene">The scene</param>
         /// <param name="typeArray">The type array</param>
@@ -907,6 +916,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// <summary>
         ///     Gets the archetype id using the specified types
         /// </summary>
+        /// <param name="null">The null parameter.</param>
         /// <param name="types">The types</param>
         /// <param name="typesArray">The types array</param>
         /// <exception cref="InvalidOperationException">Entities can have a max of 127 components!</exception>
@@ -1012,6 +1022,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// <summary>
         ///     The of component class
         /// </summary>
+        /// <typeparam name="TC">The component type.</typeparam>
         internal static class OfComponent<TC>
         {
             /// <summary>
@@ -1025,6 +1036,8 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
     /// <summary>
     ///     The archetype class
     /// </summary>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
     public static class Archetype<T1, T2>
     {
         /// <summary>
@@ -1085,6 +1098,9 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
     /// <summary>
     ///     The archetype class
     /// </summary>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
+    /// <typeparam name="T3">The third component type.</typeparam>
     internal static class Archetype<T1, T2, T3>
     {
         /// <summary>
@@ -1148,6 +1164,10 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
     /// <summary>
     ///     The archetype class
     /// </summary>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
+    /// <typeparam name="T3">The third component type.</typeparam>
+    /// <typeparam name="T4">The fourth component type.</typeparam>
     internal static class Archetype<T1, T2, T3, T4>
     {
         /// <summary>
@@ -1215,6 +1235,11 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
     /// <summary>
     ///     The archetype class
     /// </summary>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
+    /// <typeparam name="T3">The third component type.</typeparam>
+    /// <typeparam name="T4">The fourth component type.</typeparam>
+    /// <typeparam name="T5">The fifth component type.</typeparam>
     internal static class Archetype<T1, T2, T3, T4, T5>
     {
         /// <summary>
@@ -1285,6 +1310,12 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
     /// <summary>
     ///     The archetype class
     /// </summary>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
+    /// <typeparam name="T3">The third component type.</typeparam>
+    /// <typeparam name="T4">The fourth component type.</typeparam>
+    /// <typeparam name="T5">The fifth component type.</typeparam>
+    /// <typeparam name="T6">The sixth component type.</typeparam>
     internal static class Archetype<T1, T2, T3, T4, T5, T6>
     {
         /// <summary>
@@ -1360,6 +1391,13 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
     /// <summary>
     ///     The archetype class
     /// </summary>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
+    /// <typeparam name="T3">The third component type.</typeparam>
+    /// <typeparam name="T4">The fourth component type.</typeparam>
+    /// <typeparam name="T5">The fifth component type.</typeparam>
+    /// <typeparam name="T6">The sixth component type.</typeparam>
+    /// <typeparam name="T7">The seventh component type.</typeparam>
     internal static class Archetype<T1, T2, T3, T4, T5, T6, T7>
     {
         /// <summary>
@@ -1439,6 +1477,14 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
     /// <summary>
     ///     The archetype class
     /// </summary>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
+    /// <typeparam name="T3">The third component type.</typeparam>
+    /// <typeparam name="T4">The fourth component type.</typeparam>
+    /// <typeparam name="T5">The fifth component type.</typeparam>
+    /// <typeparam name="T6">The sixth component type.</typeparam>
+    /// <typeparam name="T7">The seventh component type.</typeparam>
+    /// <typeparam name="T8">The eighth component type.</typeparam>
     internal static class Archetype<T1, T2, T3, T4, T5, T6, T7, T8>
     {
         /// <summary>

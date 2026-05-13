@@ -41,12 +41,13 @@ namespace Alis.Core.Physic.Common
     public static class LineTools
     {
         /// <summary>
-        ///     Distances the between point and line segment using the specified point
+        ///     Computes the minimum distance from a point to a line segment defined by two endpoints.
+        ///     Returns the distance to the nearest point on the segment, including endpoints.
         /// </summary>
-        /// <param name="point">The point</param>
-        /// <param name="start">The start</param>
-        /// <param name="end">The end</param>
-        /// <returns>The float</returns>
+        /// <param name="point">The point to measure the distance from.</param>
+        /// <param name="start">The start point of the line segment.</param>
+        /// <param name="end">The end point of the line segment.</param>
+        /// <returns>The minimum distance from the point to any point on the line segment.</returns>
         public static float DistanceBetweenPointAndLineSegment(ref Vector2F point, ref Vector2F start, ref Vector2F end)
         {
             if (start == end)
@@ -76,11 +77,16 @@ namespace Alis.Core.Physic.Common
 
         // From Eric Jordan's convex decomposition library
         /// <summary>
-        ///     Check if the lines a0->a1 and b0->b1 cross.
-        ///     If they do, intersectionPoint will be filled
-        ///     with the point of crossing.
-        ///     Grazing lines should not return true.
+        ///     Determines whether two line segments (a0-a1 and b0-b1) intersect, excluding endpoints
+        ///     (grazing/non-intersecting endpoints return false). If the segments intersect, the
+        ///     intersection point is returned. Based on Eric Jordan's convex decomposition library.
         /// </summary>
+        /// <param name="a0">The start point of the first line segment.</param>
+        /// <param name="a1">The end point of the first line segment.</param>
+        /// <param name="b0">The start point of the second line segment.</param>
+        /// <param name="b1">The end point of the second line segment.</param>
+        /// <param name="intersectionPoint">When this method returns, contains the intersection point if the segments intersect.</param>
+        /// <returns><c>true</c> if the segments intersect (excluding grazing endpoint touches); otherwise, <c>false</c>.</returns>
         public static bool LineIntersect2(ref Vector2F a0, ref Vector2F a1, ref Vector2F b0, ref Vector2F b1, out Vector2F intersectionPoint)
         {
             intersectionPoint = Vector2F.Zero;
@@ -134,13 +140,15 @@ namespace Alis.Core.Physic.Common
 
         //From Mark Bayazit's convex decomposition algorithm
         /// <summary>
-        ///     Lines the intersect using the specified p 1
+        ///     Computes the intersection point of two infinite lines defined by point pairs (p1-p2) and (q1-q2).
+        ///     Does not check if the intersection lies within the segments. Returns zero vector for parallel lines.
+        ///     Based on Mark Bayazit's convex decomposition algorithm.
         /// </summary>
-        /// <param name="p1">The </param>
-        /// <param name="p2">The </param>
-        /// <param name="q1">The </param>
-        /// <param name="q2">The </param>
-        /// <returns>The </returns>
+        /// <param name="p1">The first point defining the first line.</param>
+        /// <param name="p2">The second point defining the first line.</param>
+        /// <param name="q1">The first point defining the second line.</param>
+        /// <param name="q2">The second point defining the second line.</param>
+        /// <returns>The intersection point of the two lines, or <see cref="Vector2F.Zero"/> if the lines are parallel.</returns>
         public static Vector2F LineIntersect(Vector2F p1, Vector2F p2, Vector2F q1, Vector2F q2)
         {
             Vector2F i = Vector2F.Zero;
@@ -314,15 +322,13 @@ namespace Alis.Core.Physic.Common
         public static bool LineIntersect(Vector2F point1, Vector2F point2, Vector2F point3, Vector2F point4, out Vector2F intersectionPoint) => LineIntersect(ref point1, ref point2, ref point3, ref point4, true, true, out intersectionPoint);
 
         /// <summary>
-        ///     Get all intersections between a line segment and a list of vertices
-        ///     representing a polygon. The vertices reuse adjacent points, so for example
-        ///     edges one and two are between the first and second vertices and between the
-        ///     second and third vertices. The last edge is between vertex vertices.Count - 1
-        ///     and verts0. (ie, vertices from a Geometry or AABB)
+        ///     Finds all intersection points between a line segment and the edges of a polygon defined
+        ///     by a vertex list with wrap-around (the last edge connects the last vertex to the first).
         /// </summary>
-        /// <param name="point1">The first point of the line segment to test</param>
-        /// <param name="point2">The second point of the line segment to test.</param>
-        /// <param name="vertices">The vertices, as described above</param>
+        /// <param name="point1">The start point of the line segment.</param>
+        /// <param name="point2">The end point of the line segment.</param>
+        /// <param name="vertices">The polygon vertices defining the edges to test (closed with wrap-around).</param>
+        /// <returns>A <see cref="Vertices"/> collection containing all intersection points found.</returns>
         public static Vertices LineSegmentVerticesIntersect(ref Vector2F point1, ref Vector2F point2, Vertices vertices)
         {
             Vertices intersectionPoints = new Vertices();
@@ -339,11 +345,13 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        ///     Get all intersections between a line segment and an AABB.
+        ///     Finds all intersection points between a line segment and an axis-aligned bounding box (AABB).
+        ///     Converts the AABB to its four corner vertices and tests each edge for intersection.
         /// </summary>
-        /// <param name="point1">The first point of the line segment to test</param>
-        /// <param name="point2">The second point of the line segment to test.</param>
-        /// <param name="aabb">The AABB that is used for testing intersection.</param>
+        /// <param name="point1">The start point of the line segment.</param>
+        /// <param name="point2">The end point of the line segment.</param>
+        /// <param name="aabb">The AABB to test intersection against.</param>
+        /// <returns>A <see cref="Vertices"/> collection containing all intersection points with the AABB edges.</returns>
         public static Vertices LineSegmentAabbIntersect(ref Vector2F point1, ref Vector2F point2, Aabb aabb) => LineSegmentVerticesIntersect(ref point1, ref point2, aabb.Vertices);
     }
 }

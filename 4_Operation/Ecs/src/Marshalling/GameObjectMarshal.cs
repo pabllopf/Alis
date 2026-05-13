@@ -49,6 +49,7 @@ namespace Alis.Core.Ecs.Marshalling
         /// <summary>
         ///     Gets the raw entityID from an <see cref="GameObject" />
         /// </summary>
+        /// <param name="gameObject">The gameObject parameter.</param>
         /// <returns>The integer entityID</returns>
         public static int EntityId(GameObject gameObject) => gameObject.EntityID;
     }

@@ -51,6 +51,8 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Allows tuple deconstruction syntax to be used.
         /// </summary>
+        /// <param name="gameObject">The gameObject parameter.</param>
+        /// <param name="ref1">The first component reference output.</param>
         public void Deconstruct(out GameObject gameObject, out Ref<T1> ref1)
         {
             gameObject = GameObject;
@@ -83,6 +85,9 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Allows tuple deconstruction syntax to be used.
         /// </summary>
+        /// <param name="gameObject">The gameObject parameter.</param>
+        /// <param name="ref1">The first component reference output.</param>
+        /// <param name="ref2">The second component reference output.</param>
         public void Deconstruct(out GameObject gameObject, out Ref<T1> ref1, out Ref<T2> ref2)
         {
             gameObject = GameObject;
@@ -120,6 +125,10 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Allows tuple deconstruction syntax to be used.
         /// </summary>
+        /// <param name="gameObject">The gameObject parameter.</param>
+        /// <param name="ref1">The first component reference output.</param>
+        /// <param name="ref2">The second component reference output.</param>
+        /// <param name="ref3">The third component reference output.</param>
         public void Deconstruct(out GameObject gameObject, out Ref<T1> ref1, out Ref<T2> ref2, out Ref<T3> ref3)
         {
             gameObject = GameObject;
@@ -163,6 +172,11 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Allows tuple deconstruction syntax to be used.
         /// </summary>
+        /// <param name="gameObject">The gameObject parameter.</param>
+        /// <param name="ref1">The first component reference output.</param>
+        /// <param name="ref2">The second component reference output.</param>
+        /// <param name="ref3">The third component reference output.</param>
+        /// <param name="ref4">The fourth component reference output.</param>
         public void Deconstruct(out GameObject gameObject, out Ref<T1> ref1, out Ref<T2> ref2, out Ref<T3> ref3, out Ref<T4> ref4)
         {
             gameObject = GameObject;

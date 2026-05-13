@@ -113,6 +113,9 @@ namespace Alis.Core.Ecs
     /// <summary>
     ///     The neighbor cache component ids class
     /// </summary>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
+    /// <typeparam name="T3">The third component type.</typeparam>
     internal static class NeighborCacheComponentIds<T1, T2, T3>
     {
         /// <summary>
@@ -124,6 +127,10 @@ namespace Alis.Core.Ecs
     /// <summary>
     ///     The neighbor cache component ids class
     /// </summary>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
+    /// <typeparam name="T3">The third component type.</typeparam>
+    /// <typeparam name="T4">The fourth component type.</typeparam>
     internal static class NeighborCacheComponentIds<T1, T2, T3, T4>
     {
         /// <summary>
@@ -136,6 +143,11 @@ namespace Alis.Core.Ecs
     /// <summary>
     ///     The neighbor cache component ids class
     /// </summary>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
+    /// <typeparam name="T3">The third component type.</typeparam>
+    /// <typeparam name="T4">The fourth component type.</typeparam>
+    /// <typeparam name="T5">The fifth component type.</typeparam>
     internal static class NeighborCacheComponentIds<T1, T2, T3, T4, T5>
     {
         /// <summary>
@@ -148,6 +160,12 @@ namespace Alis.Core.Ecs
     /// <summary>
     ///     The neighbor cache component ids class
     /// </summary>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
+    /// <typeparam name="T3">The third component type.</typeparam>
+    /// <typeparam name="T4">The fourth component type.</typeparam>
+    /// <typeparam name="T5">The fifth component type.</typeparam>
+    /// <typeparam name="T6">The sixth component type.</typeparam>
     internal static class NeighborCacheComponentIds<T1, T2, T3, T4, T5, T6>
     {
         /// <summary>
@@ -163,6 +181,13 @@ namespace Alis.Core.Ecs
     /// <summary>
     ///     The neighbor cache component ids class
     /// </summary>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
+    /// <typeparam name="T3">The third component type.</typeparam>
+    /// <typeparam name="T4">The fourth component type.</typeparam>
+    /// <typeparam name="T5">The fifth component type.</typeparam>
+    /// <typeparam name="T6">The sixth component type.</typeparam>
+    /// <typeparam name="T7">The seventh component type.</typeparam>
     internal static class NeighborCacheComponentIds<T1, T2, T3, T4, T5, T6, T7>
     {
         /// <summary>
@@ -178,6 +203,14 @@ namespace Alis.Core.Ecs
     /// <summary>
     ///     The neighbor cache component ids class
     /// </summary>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
+    /// <typeparam name="T3">The third component type.</typeparam>
+    /// <typeparam name="T4">The fourth component type.</typeparam>
+    /// <typeparam name="T5">The fifth component type.</typeparam>
+    /// <typeparam name="T6">The sixth component type.</typeparam>
+    /// <typeparam name="T7">The seventh component type.</typeparam>
+    /// <typeparam name="T8">The eighth component type.</typeparam>
     internal static class NeighborCacheComponentIds<T1, T2, T3, T4, T5, T6, T7, T8>
     {
         /// <summary>
@@ -198,6 +231,7 @@ namespace Alis.Core.Ecs
 
 
     /// <summary>Add-edge neighbor cache for arity 1.</summary>
+    /// <typeparam name="T1">The first component type.</typeparam>
     internal static class NeighborCacheAdd<T1>
     {
         /// <summary>
@@ -210,6 +244,7 @@ namespace Alis.Core.Ecs
     }
 
     /// <summary>Remove-edge neighbor cache for arity 1.</summary>
+    /// <typeparam name="T1">The first component type.</typeparam>
     internal static class NeighborCacheRemove<T1>
     {
         /// <summary>
@@ -222,6 +257,8 @@ namespace Alis.Core.Ecs
     }
 
     /// <summary>Add-edge neighbor cache for arity 2.</summary>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
     internal static class NeighborCacheAdd<T1, T2>
     {
         /// <summary>
@@ -234,6 +271,8 @@ namespace Alis.Core.Ecs
     }
 
     /// <summary>Remove-edge neighbor cache for arity 2.</summary>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
     internal static class NeighborCacheRemove<T1, T2>
     {
         /// <summary>
@@ -246,6 +285,9 @@ namespace Alis.Core.Ecs
     }
 
     /// <summary>Add-edge neighbor cache for arity 3.</summary>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
+    /// <typeparam name="T3">The third component type.</typeparam>
     internal static class NeighborCacheAdd<T1, T2, T3>
     {
         /// <summary>
@@ -258,6 +300,9 @@ namespace Alis.Core.Ecs
     }
 
     /// <summary>Remove-edge neighbor cache for arity 3.</summary>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
+    /// <typeparam name="T3">The third component type.</typeparam>
     internal static class NeighborCacheRemove<T1, T2, T3>
     {
         /// <summary>
@@ -270,6 +315,10 @@ namespace Alis.Core.Ecs
     }
 
     /// <summary>Add-edge neighbor cache for arity 4.</summary>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
+    /// <typeparam name="T3">The third component type.</typeparam>
+    /// <typeparam name="T4">The fourth component type.</typeparam>
     internal static class NeighborCacheAdd<T1, T2, T3, T4>
     {
         /// <summary>
@@ -282,6 +331,10 @@ namespace Alis.Core.Ecs
     }
 
     /// <summary>Remove-edge neighbor cache for arity 4.</summary>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
+    /// <typeparam name="T3">The third component type.</typeparam>
+    /// <typeparam name="T4">The fourth component type.</typeparam>
     internal static class NeighborCacheRemove<T1, T2, T3, T4>
     {
         /// <summary>
@@ -294,6 +347,11 @@ namespace Alis.Core.Ecs
     }
 
     /// <summary>Add-edge neighbor cache for arity 5.</summary>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
+    /// <typeparam name="T3">The third component type.</typeparam>
+    /// <typeparam name="T4">The fourth component type.</typeparam>
+    /// <typeparam name="T5">The fifth component type.</typeparam>
     internal static class NeighborCacheAdd<T1, T2, T3, T4, T5>
     {
         /// <summary>
@@ -306,6 +364,11 @@ namespace Alis.Core.Ecs
     }
 
     /// <summary>Remove-edge neighbor cache for arity 5.</summary>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
+    /// <typeparam name="T3">The third component type.</typeparam>
+    /// <typeparam name="T4">The fourth component type.</typeparam>
+    /// <typeparam name="T5">The fifth component type.</typeparam>
     internal static class NeighborCacheRemove<T1, T2, T3, T4, T5>
     {
         /// <summary>
@@ -318,6 +381,12 @@ namespace Alis.Core.Ecs
     }
 
     /// <summary>Add-edge neighbor cache for arity 6.</summary>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
+    /// <typeparam name="T3">The third component type.</typeparam>
+    /// <typeparam name="T4">The fourth component type.</typeparam>
+    /// <typeparam name="T5">The fifth component type.</typeparam>
+    /// <typeparam name="T6">The sixth component type.</typeparam>
     internal static class NeighborCacheAdd<T1, T2, T3, T4, T5, T6>
     {
         /// <summary>
@@ -330,6 +399,12 @@ namespace Alis.Core.Ecs
     }
 
     /// <summary>Remove-edge neighbor cache for arity 6.</summary>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
+    /// <typeparam name="T3">The third component type.</typeparam>
+    /// <typeparam name="T4">The fourth component type.</typeparam>
+    /// <typeparam name="T5">The fifth component type.</typeparam>
+    /// <typeparam name="T6">The sixth component type.</typeparam>
     internal static class NeighborCacheRemove<T1, T2, T3, T4, T5, T6>
     {
         /// <summary>
@@ -342,6 +417,13 @@ namespace Alis.Core.Ecs
     }
 
     /// <summary>Add-edge neighbor cache for arity 7.</summary>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
+    /// <typeparam name="T3">The third component type.</typeparam>
+    /// <typeparam name="T4">The fourth component type.</typeparam>
+    /// <typeparam name="T5">The fifth component type.</typeparam>
+    /// <typeparam name="T6">The sixth component type.</typeparam>
+    /// <typeparam name="T7">The seventh component type.</typeparam>
     internal static class NeighborCacheAdd<T1, T2, T3, T4, T5, T6, T7>
     {
         /// <summary>
@@ -354,6 +436,13 @@ namespace Alis.Core.Ecs
     }
 
     /// <summary>Remove-edge neighbor cache for arity 7.</summary>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
+    /// <typeparam name="T3">The third component type.</typeparam>
+    /// <typeparam name="T4">The fourth component type.</typeparam>
+    /// <typeparam name="T5">The fifth component type.</typeparam>
+    /// <typeparam name="T6">The sixth component type.</typeparam>
+    /// <typeparam name="T7">The seventh component type.</typeparam>
     internal static class NeighborCacheRemove<T1, T2, T3, T4, T5, T6, T7>
     {
         /// <summary>
@@ -366,6 +455,14 @@ namespace Alis.Core.Ecs
     }
 
     /// <summary>Add-edge neighbor cache for arity 8.</summary>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
+    /// <typeparam name="T3">The third component type.</typeparam>
+    /// <typeparam name="T4">The fourth component type.</typeparam>
+    /// <typeparam name="T5">The fifth component type.</typeparam>
+    /// <typeparam name="T6">The sixth component type.</typeparam>
+    /// <typeparam name="T7">The seventh component type.</typeparam>
+    /// <typeparam name="T8">The eighth component type.</typeparam>
     internal static class NeighborCacheAdd<T1, T2, T3, T4, T5, T6, T7, T8>
     {
         /// <summary>
@@ -378,6 +475,14 @@ namespace Alis.Core.Ecs
     }
 
     /// <summary>Remove-edge neighbor cache for arity 8.</summary>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
+    /// <typeparam name="T3">The third component type.</typeparam>
+    /// <typeparam name="T4">The fourth component type.</typeparam>
+    /// <typeparam name="T5">The fifth component type.</typeparam>
+    /// <typeparam name="T6">The sixth component type.</typeparam>
+    /// <typeparam name="T7">The seventh component type.</typeparam>
+    /// <typeparam name="T8">The eighth component type.</typeparam>
     internal static class NeighborCacheRemove<T1, T2, T3, T4, T5, T6, T7, T8>
     {
         /// <summary>
@@ -394,80 +499,132 @@ namespace Alis.Core.Ecs
     // ---------------------------------------------------------------------------
 
     /// <summary>The neighbor cache (arity 8).</summary>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
+    /// <typeparam name="T3">The third component type.</typeparam>
+    /// <typeparam name="T4">The fourth component type.</typeparam>
+    /// <typeparam name="T5">The fifth component type.</typeparam>
+    /// <typeparam name="T6">The sixth component type.</typeparam>
+    /// <typeparam name="T7">The seventh component type.</typeparam>
+    /// <typeparam name="T8">The eighth component type.</typeparam>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct NeighborCache<T1, T2, T3, T4, T5, T6, T7, T8> : IArchetypeGraphEdge
     {
         /// <summary>Modifies the components using the specified components.</summary>
+        /// <param name="components">The span of component IDs to modify.</param>
+        /// <param name="add">Whether to add (true) or remove (false) the component.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void ModifyComponents(ref FastImmutableArray<ComponentId> components, bool add)
             => components = NeighborCacheCore.Modify(components, NeighborCacheComponentIds<T1, T2, T3, T4, T5, T6, T7, T8>.Values, add);
     }
 
     /// <summary>The neighbor cache (arity 7).</summary>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
+    /// <typeparam name="T3">The third component type.</typeparam>
+    /// <typeparam name="T4">The fourth component type.</typeparam>
+    /// <typeparam name="T5">The fifth component type.</typeparam>
+    /// <typeparam name="T6">The sixth component type.</typeparam>
+    /// <typeparam name="T7">The seventh component type.</typeparam>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct NeighborCache<T1, T2, T3, T4, T5, T6, T7> : IArchetypeGraphEdge
     {
         /// <summary>Modifies the components using the specified components.</summary>
+        /// <param name="components">The span of component IDs to modify.</param>
+        /// <param name="add">Whether to add (true) or remove (false) the component.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void ModifyComponents(ref FastImmutableArray<ComponentId> components, bool add)
             => components = NeighborCacheCore.Modify(components, NeighborCacheComponentIds<T1, T2, T3, T4, T5, T6, T7>.Values, add);
     }
 
     /// <summary>The neighbor cache (arity 6).</summary>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
+    /// <typeparam name="T3">The third component type.</typeparam>
+    /// <typeparam name="T4">The fourth component type.</typeparam>
+    /// <typeparam name="T5">The fifth component type.</typeparam>
+    /// <typeparam name="T6">The sixth component type.</typeparam>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct NeighborCache<T1, T2, T3, T4, T5, T6> : IArchetypeGraphEdge
     {
         /// <summary>Modifies the components using the specified components.</summary>
+        /// <param name="components">The span of component IDs to modify.</param>
+        /// <param name="add">Whether to add (true) or remove (false) the component.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void ModifyComponents(ref FastImmutableArray<ComponentId> components, bool add)
             => components = NeighborCacheCore.Modify(components, NeighborCacheComponentIds<T1, T2, T3, T4, T5, T6>.Values, add);
     }
 
     /// <summary>The neighbor cache (arity 5).</summary>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
+    /// <typeparam name="T3">The third component type.</typeparam>
+    /// <typeparam name="T4">The fourth component type.</typeparam>
+    /// <typeparam name="T5">The fifth component type.</typeparam>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct NeighborCache<T1, T2, T3, T4, T5> : IArchetypeGraphEdge
     {
         /// <summary>Modifies the components using the specified components.</summary>
+        /// <param name="components">The span of component IDs to modify.</param>
+        /// <param name="add">Whether to add (true) or remove (false) the component.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void ModifyComponents(ref FastImmutableArray<ComponentId> components, bool add)
             => components = NeighborCacheCore.Modify(components, NeighborCacheComponentIds<T1, T2, T3, T4, T5>.Values, add);
     }
 
     /// <summary>The neighbor cache (arity 4).</summary>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
+    /// <typeparam name="T3">The third component type.</typeparam>
+    /// <typeparam name="T4">The fourth component type.</typeparam>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct NeighborCache<T1, T2, T3, T4> : IArchetypeGraphEdge
     {
         /// <summary>Modifies the components using the specified components.</summary>
+        /// <param name="components">The span of component IDs to modify.</param>
+        /// <param name="add">Whether to add (true) or remove (false) the component.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void ModifyComponents(ref FastImmutableArray<ComponentId> components, bool add)
             => components = NeighborCacheCore.Modify(components, NeighborCacheComponentIds<T1, T2, T3, T4>.Values, add);
     }
 
     /// <summary>The neighbor cache (arity 3).</summary>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
+    /// <typeparam name="T3">The third component type.</typeparam>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct NeighborCache<T1, T2, T3> : IArchetypeGraphEdge
     {
         /// <summary>Modifies the components using the specified components.</summary>
+        /// <param name="components">The span of component IDs to modify.</param>
+        /// <param name="add">Whether to add (true) or remove (false) the component.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void ModifyComponents(ref FastImmutableArray<ComponentId> components, bool add)
             => components = NeighborCacheCore.Modify(components, NeighborCacheComponentIds<T1, T2, T3>.Values, add);
     }
 
     /// <summary>The neighbor cache (arity 2).</summary>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct NeighborCache<T1, T2> : IArchetypeGraphEdge
     {
         /// <summary>Modifies the components using the specified components.</summary>
+        /// <param name="components">The span of component IDs to modify.</param>
+        /// <param name="add">Whether to add (true) or remove (false) the component.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void ModifyComponents(ref FastImmutableArray<ComponentId> components, bool add)
             => components = NeighborCacheCore.Modify(components, NeighborCacheComponentIds<T1, T2>.Values, add);
     }
 
     /// <summary>The neighbor cache (arity 1).</summary>
+    /// <typeparam name="T">The component type.</typeparam>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct NeighborCache<T> : IArchetypeGraphEdge
     {
         /// <summary>Modifies the components using the specified components.</summary>
+        /// <param name="components">The span of component IDs to modify.</param>
+        /// <param name="add">Whether to add (true) or remove (false) the component.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void ModifyComponents(ref FastImmutableArray<ComponentId> components, bool add)
             => components = NeighborCacheCore.ModifySingle(components, Component<T>.Id, add);

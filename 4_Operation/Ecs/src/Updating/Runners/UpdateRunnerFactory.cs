@@ -35,6 +35,8 @@ namespace Alis.Core.Ecs.Updating.Runners
     /// <summary>
     ///     The update runner factory class
     /// </summary>
+    /// <typeparam name="TComp">The component type being updated.</typeparam>
+    /// <typeparam name="TComp">The component type being updated.</typeparam>
     /// <seealso cref="IComponentStorageBaseFactory" />
     /// <seealso cref="IComponentStorageBaseFactory{TComp}" />
     public class UpdateRunnerFactory<TComp> : IComponentStorageBaseFactory, IComponentStorageBaseFactory<TComp>
@@ -64,6 +66,9 @@ namespace Alis.Core.Ecs.Updating.Runners
     /// <summary>
     ///     The update runner factory class
     /// </summary>
+    /// <typeparam name="TComp">The component type being updated.</typeparam>
+    /// <typeparam name="TArg">The TArg type parameter.</typeparam>
+    /// <typeparam name="TComp">The component type being updated.</typeparam>
     /// <seealso cref="IComponentStorageBaseFactory" />
     /// <seealso cref="IComponentStorageBaseFactory{TComp}" />
     public class UpdateRunnerFactory<TComp, TArg> : IComponentStorageBaseFactory, IComponentStorageBaseFactory<TComp>
@@ -93,6 +98,9 @@ namespace Alis.Core.Ecs.Updating.Runners
     /// <summary>
     ///     The update runner factory class
     /// </summary>
+    /// <typeparam name="TComp">The component type being updated.</typeparam>
+    /// <typeparam name="TArg1">The first update method argument type.</typeparam>
+    /// <typeparam name="TArg2">The second update method argument type.</typeparam>
     /// <seealso cref="IComponentStorageBaseFactory" />
     /// <seealso cref="IComponentStorageBaseFactory{TComp}" />
     public class UpdateRunnerFactory<TComp, TArg1, TArg2> : IComponentStorageBaseFactory,
@@ -123,6 +131,10 @@ namespace Alis.Core.Ecs.Updating.Runners
     /// <summary>
     ///     The gameObject update runner factory class
     /// </summary>
+    /// <typeparam name="TComp">The component type being updated.</typeparam>
+    /// <typeparam name="TArg1">The first update method argument type.</typeparam>
+    /// <typeparam name="TArg2">The second update method argument type.</typeparam>
+    /// <typeparam name="TArg3">The third update method argument type.</typeparam>
     /// <seealso cref="IComponentStorageBaseFactory" />
     /// <seealso cref="IComponentStorageBaseFactory{TComp}" />
     public class UpdateRunnerFactory<TComp, TArg1, TArg2, TArg3> : IComponentStorageBaseFactory,
@@ -153,6 +165,11 @@ namespace Alis.Core.Ecs.Updating.Runners
     /// <summary>
     ///     The update runner factory class
     /// </summary>
+    /// <typeparam name="TComp">The component type being updated.</typeparam>
+    /// <typeparam name="TArg1">The first update method argument type.</typeparam>
+    /// <typeparam name="TArg2">The second update method argument type.</typeparam>
+    /// <typeparam name="TArg3">The third update method argument type.</typeparam>
+    /// <typeparam name="TArg4">The fourth update method argument type.</typeparam>
     /// <seealso cref="IComponentStorageBaseFactory" />
     /// <seealso cref="IComponentStorageBaseFactory{TComp}" />
     public class UpdateRunnerFactory<TComp, TArg1, TArg2, TArg3, TArg4> : IComponentStorageBaseFactory,
@@ -183,6 +200,12 @@ namespace Alis.Core.Ecs.Updating.Runners
     /// <summary>
     ///     The update runner factory class
     /// </summary>
+    /// <typeparam name="TComp">The component type being updated.</typeparam>
+    /// <typeparam name="TArg1">The first update method argument type.</typeparam>
+    /// <typeparam name="TArg2">The second update method argument type.</typeparam>
+    /// <typeparam name="TArg3">The third update method argument type.</typeparam>
+    /// <typeparam name="TArg4">The fourth update method argument type.</typeparam>
+    /// <typeparam name="TArg5">The fifth update method argument type.</typeparam>
     /// <seealso cref="IComponentStorageBaseFactory" />
     /// <seealso cref="IComponentStorageBaseFactory{TComp}" />
     public class UpdateRunnerFactory<TComp, TArg1, TArg2, TArg3, TArg4, TArg5> : IComponentStorageBaseFactory,
@@ -213,6 +236,13 @@ namespace Alis.Core.Ecs.Updating.Runners
     /// <summary>
     ///     The update runner factory class
     /// </summary>
+    /// <typeparam name="TComp">The component type being updated.</typeparam>
+    /// <typeparam name="TArg1">The first update method argument type.</typeparam>
+    /// <typeparam name="TArg2">The second update method argument type.</typeparam>
+    /// <typeparam name="TArg3">The third update method argument type.</typeparam>
+    /// <typeparam name="TArg4">The fourth update method argument type.</typeparam>
+    /// <typeparam name="TArg5">The fifth update method argument type.</typeparam>
+    /// <typeparam name="TArg6">The TArg6 type parameter.</typeparam>
     /// <seealso cref="IComponentStorageBaseFactory" />
     /// <seealso cref="IComponentStorageBaseFactory{TComp}" />
     public class UpdateRunnerFactory<TComp, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6> : IComponentStorageBaseFactory,
@@ -243,6 +273,14 @@ namespace Alis.Core.Ecs.Updating.Runners
     /// <summary>
     ///     The update runner factory class
     /// </summary>
+    /// <typeparam name="TComp">The component type being updated.</typeparam>
+    /// <typeparam name="TArg1">The first update method argument type.</typeparam>
+    /// <typeparam name="TArg2">The second update method argument type.</typeparam>
+    /// <typeparam name="TArg3">The third update method argument type.</typeparam>
+    /// <typeparam name="TArg4">The fourth update method argument type.</typeparam>
+    /// <typeparam name="TArg5">The fifth update method argument type.</typeparam>
+    /// <typeparam name="TArg6">The TArg6 type parameter.</typeparam>
+    /// <typeparam name="TArg7">The TArg7 type parameter.</typeparam>
     /// <seealso cref="IComponentStorageBaseFactory" />
     /// <seealso cref="IComponentStorageBaseFactory{TComp}" />
     public class UpdateRunnerFactory<TComp, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7> : IComponentStorageBaseFactory,
@@ -273,6 +311,15 @@ namespace Alis.Core.Ecs.Updating.Runners
     /// <summary>
     ///     The update runner factory class
     /// </summary>
+    /// <typeparam name="TComp">The component type being updated.</typeparam>
+    /// <typeparam name="TArg1">The first update method argument type.</typeparam>
+    /// <typeparam name="TArg2">The second update method argument type.</typeparam>
+    /// <typeparam name="TArg3">The third update method argument type.</typeparam>
+    /// <typeparam name="TArg4">The fourth update method argument type.</typeparam>
+    /// <typeparam name="TArg5">The fifth update method argument type.</typeparam>
+    /// <typeparam name="TArg6">The TArg6 type parameter.</typeparam>
+    /// <typeparam name="TArg7">The TArg7 type parameter.</typeparam>
+    /// <typeparam name="TArg8">The TArg8 type parameter.</typeparam>
     /// <seealso cref="IComponentStorageBaseFactory" />
     /// <seealso cref="IComponentStorageBaseFactory{TComp}" />
     public class UpdateRunnerFactory<TComp, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8> :

@@ -32,6 +32,7 @@ namespace Alis.Core.Ecs.Kernel
     /// <summary>
     ///     Used only in source generation
     /// </summary>
+    /// <typeparam name="T">The component type.</typeparam>
     public static class ComponentDelegates<T>
     {
         /// <summary>

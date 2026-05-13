@@ -37,6 +37,7 @@ namespace Alis.Core.Ecs.Collections
     /// <summary>
     ///     The frugal stack
     /// </summary>
+    /// <typeparam name="T">The component type.</typeparam>
     /// <remarks>
     ///     Memory layout optimized: 12 bytes total (T[] reference 8 bytes + int 4 bytes)
     ///     Pack = 4 for optimal alignment with reference types
@@ -142,6 +143,8 @@ namespace Alis.Core.Ecs.Collections
         /// <summary>
         ///     DO NOT ALTER WHILE SPAN IS IN USE
         /// </summary>
+        /// <typeparam name="T">The component type.</typeparam>
+        /// <returns>The result of the operation.</returns>
         public readonly Span<T> AsSpan() => _buffer.AsSpan(0, _nextIndex);
     }
 }

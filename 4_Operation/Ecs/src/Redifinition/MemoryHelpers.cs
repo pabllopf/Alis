@@ -118,7 +118,7 @@ namespace Alis.Core.Ecs.Redifinition
         /// <summary>
         ///     Bools the to byte using the specified b
         /// </summary>
-        /// <param name="b">The </param>
+        /// <param name="b">The second operand or archetype.</param>
         /// <returns>The byte</returns>
         public static byte BoolToByte(bool b) => Unsafe.As<bool, byte>(ref b);
 
@@ -335,6 +335,7 @@ namespace Alis.Core.Ecs.Redifinition
     /// <summary>
     ///     The memory helpers class
     /// </summary>
+    /// <typeparam name="T">The component type.</typeparam>
     internal static class MemoryHelpers<T>
     {
         /// <summary>

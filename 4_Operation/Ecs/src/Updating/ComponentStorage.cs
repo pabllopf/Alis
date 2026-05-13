@@ -39,6 +39,7 @@ namespace Alis.Core.Ecs.Updating
     /// <summary>
     ///     The component storage class
     /// </summary>
+    /// <typeparam name="TComponent">The TComponent type parameter.</typeparam>
     /// <seealso cref="ComponentStorageBase" />
     public abstract class ComponentStorage<TComponent>(int length)
         : ComponentStorageBase(length == 0 ? [] : new TComponent[length])
@@ -102,7 +103,7 @@ namespace Alis.Core.Ecs.Updating
         ///     Invokes the generic action with using the specified action
         /// </summary>
         /// <param name="action">The action</param>
-        /// <param name="e">The </param>
+        /// <param name="e">The entity or event argument.</param>
         /// <param name="index">The index</param>
         internal override void InvokeGenericActionWith(GenericEvent action, GameObject e, int index)
         {
@@ -207,12 +208,14 @@ namespace Alis.Core.Ecs.Updating
 
         /// <summary>
         /// </summary>
-        /// <param name="length"></param>
+        /// <typeparam name="TComponent">The TComponent type parameter.</typeparam>
+        /// <param name="length">The number of elements to process.</param>
         /// <returns></returns>
         public Span<TComponent> AsSpanLength(int length) => TypedBuffer.AsSpan(0, length);
 
         /// <summary>
         /// </summary>
+        /// <typeparam name="TComponent">The TComponent type parameter.</typeparam>
         /// <returns></returns>
         public Span<TComponent> AsSpan() => TypedBuffer;
 

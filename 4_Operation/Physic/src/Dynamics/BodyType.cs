@@ -30,22 +30,29 @@
 namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>
-    ///     The body type.
+    ///     Defines the type of a physics body, which determines how it interacts with forces, collisions,
+    ///     and constraints in the simulation.
     /// </summary>
     public enum BodyType
     {
         /// <summary>
-        ///     Zero velocity, may be manually moved. Note: even static bodies have mass.
+        ///     A static body has zero velocity and does not respond to forces or collisions.
+        ///     Static bodies are immovable and are used for terrain, walls, and other fixed geometry.
+        ///     Note: even static bodies have mass for constraint calculations.
         /// </summary>
         Static,
 
         /// <summary>
-        ///     Zero mass, non-zero velocity set by user, moved by solver
+        ///     A kinematic body has zero mass but non-zero velocity set by the user.
+        ///     Kinematic bodies are moved by the solver to resolve collisions, and they can push
+        ///     dynamic bodies. They are useful for moving platforms, elevators, and character controllers.
         /// </summary>
         Kinematic,
 
         /// <summary>
-        ///     Positive mass, non-zero velocity determined by forces, moved by solver
+        ///     A dynamic body has positive mass determined by its shape density and area.
+        ///     Its motion is determined by applied forces, gravity, and collisions.
+        ///     Dynamic bodies provide the most realistic physical behavior.
         /// </summary>
         Dynamic
     }

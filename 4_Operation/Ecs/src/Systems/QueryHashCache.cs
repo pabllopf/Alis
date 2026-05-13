@@ -32,6 +32,7 @@ namespace Alis.Core.Ecs.Systems
     /// <summary>
     ///     The query hash cache class
     /// </summary>
+    /// <typeparam name="T">The component type.</typeparam>
     internal static class QueryHashCache<T>
         where T : struct, IRuleProvider
     {
@@ -46,6 +47,8 @@ namespace Alis.Core.Ecs.Systems
     /// <summary>
     ///     The query hash cache class
     /// </summary>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
     internal static class QueryHashCache<T1, T2>
         where T1 : struct, IRuleProvider
         where T2 : struct, IRuleProvider
@@ -63,6 +66,9 @@ namespace Alis.Core.Ecs.Systems
     /// <summary>
     ///     The query hash cache class
     /// </summary>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
+    /// <typeparam name="T3">The third component type.</typeparam>
     internal static class QueryHashCache<T1, T2, T3>
         where T1 : struct, IRuleProvider
         where T2 : struct, IRuleProvider
@@ -82,6 +88,10 @@ namespace Alis.Core.Ecs.Systems
     /// <summary>
     ///     The query hash cache class
     /// </summary>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
+    /// <typeparam name="T3">The third component type.</typeparam>
+    /// <typeparam name="T4">The fourth component type.</typeparam>
     internal static class QueryHashCache<T1, T2, T3, T4>
         where T1 : struct, IRuleProvider
         where T2 : struct, IRuleProvider
@@ -103,6 +113,11 @@ namespace Alis.Core.Ecs.Systems
     /// <summary>
     ///     The query hash cache class
     /// </summary>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
+    /// <typeparam name="T3">The third component type.</typeparam>
+    /// <typeparam name="T4">The fourth component type.</typeparam>
+    /// <typeparam name="T5">The fifth component type.</typeparam>
     internal static class QueryHashCache<T1, T2, T3, T4, T5>
         where T1 : struct, IRuleProvider
         where T2 : struct, IRuleProvider
@@ -126,6 +141,12 @@ namespace Alis.Core.Ecs.Systems
     /// <summary>
     ///     The query hash cache class
     /// </summary>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
+    /// <typeparam name="T3">The third component type.</typeparam>
+    /// <typeparam name="T4">The fourth component type.</typeparam>
+    /// <typeparam name="T5">The fifth component type.</typeparam>
+    /// <typeparam name="T6">The sixth component type.</typeparam>
     internal static class QueryHashCache<T1, T2, T3, T4, T5, T6>
         where T1 : struct, IRuleProvider
         where T2 : struct, IRuleProvider
@@ -151,6 +172,13 @@ namespace Alis.Core.Ecs.Systems
     /// <summary>
     ///     The query hash cache class
     /// </summary>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
+    /// <typeparam name="T3">The third component type.</typeparam>
+    /// <typeparam name="T4">The fourth component type.</typeparam>
+    /// <typeparam name="T5">The fifth component type.</typeparam>
+    /// <typeparam name="T6">The sixth component type.</typeparam>
+    /// <typeparam name="T7">The seventh component type.</typeparam>
     internal static class QueryHashCache<T1, T2, T3, T4, T5, T6, T7>
         where T1 : struct, IRuleProvider
         where T2 : struct, IRuleProvider
@@ -178,6 +206,14 @@ namespace Alis.Core.Ecs.Systems
     /// <summary>
     ///     The query hash cache class
     /// </summary>
+    /// <typeparam name="T1">The first component type.</typeparam>
+    /// <typeparam name="T2">The second component type.</typeparam>
+    /// <typeparam name="T3">The third component type.</typeparam>
+    /// <typeparam name="T4">The fourth component type.</typeparam>
+    /// <typeparam name="T5">The fifth component type.</typeparam>
+    /// <typeparam name="T6">The sixth component type.</typeparam>
+    /// <typeparam name="T7">The seventh component type.</typeparam>
+    /// <typeparam name="T8">The eighth component type.</typeparam>
     internal static class QueryHashCache<T1, T2, T3, T4, T5, T6, T7, T8>
         where T1 : struct, IRuleProvider
         where T2 : struct, IRuleProvider

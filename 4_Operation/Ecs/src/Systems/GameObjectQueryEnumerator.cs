@@ -132,6 +132,7 @@ namespace Alis.Core.Ecs.Systems
             /// <summary>
             ///     Gets the enumerator over a query.
             /// </summary>
+            /// <returns>An enumerator for the matching entities.</returns>
             public GameObjectQueryEnumerator GetEnumerator() => new GameObjectQueryEnumerator(query);
         }
     }

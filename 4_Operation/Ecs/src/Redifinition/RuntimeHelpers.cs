@@ -47,7 +47,7 @@ namespace System.Runtime.CompilerServices
 
         /// <summary>
         /// </summary>
-        /// <param name="type"></param>
+        /// <param name="type">The type parameter.</param>
         /// <returns></returns>
         private static bool IsReferenceOrContainsReferences(Type type)
         {

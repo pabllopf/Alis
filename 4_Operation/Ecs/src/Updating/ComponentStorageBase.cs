@@ -55,14 +55,14 @@ namespace Alis.Core.Ecs.Updating
         ///     Runs the scene
         /// </summary>
         /// <param name="scene">The scene</param>
-        /// <param name="b">The </param>
+        /// <param name="b">The second operand or archetype.</param>
         internal abstract void Run(Scene scene, Archetype b);
 
         /// <summary>
         ///     Runs the scene
         /// </summary>
         /// <param name="scene">The scene</param>
-        /// <param name="b">The </param>
+        /// <param name="b">The second operand or archetype.</param>
         /// <param name="start">The start</param>
         /// <param name="length">The length</param>
         internal abstract void Run(Scene scene, Archetype b, int start, int length);

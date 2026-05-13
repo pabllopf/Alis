@@ -37,6 +37,8 @@ namespace Alis.Core.Ecs.Collections
     /// <summary>
     ///     The fastest array pool class
     /// </summary>
+    /// <typeparam name="T">The component type.</typeparam>
+    /// <typeparam name="T">The component type.</typeparam>
     /// <seealso cref="ArrayPool{T}" />
     public sealed class FastestArrayPool<T> : ArrayPool<T>
     {
@@ -113,6 +115,7 @@ namespace Alis.Core.Ecs.Collections
         /// <summary>
         ///     Returns the array
         /// </summary>
+        /// <param name="false">The false parameter.</param>
         /// <param name="array">The array</param>
         /// <param name="clearArray">The clear array</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

@@ -48,6 +48,7 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     Allows tuple deconstruction syntax to be used.
         /// </summary>
+        /// <param name="ref">The ref parameter.</param>
         public void Deconstruct(out Ref<T> @ref)
         {
             @ref = Item1;
@@ -74,6 +75,8 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     Allows tuple deconstruction syntax to be used.
         /// </summary>
+        /// <param name="ref1">The first component reference output.</param>
+        /// <param name="ref2">The second component reference output.</param>
         public void Deconstruct(out Ref<T1> ref1, out Ref<T2> ref2)
         {
             ref1 = Item1;
@@ -105,6 +108,9 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     Allows tuple deconstruction syntax to be used.
         /// </summary>
+        /// <param name="ref1">The first component reference output.</param>
+        /// <param name="ref2">The second component reference output.</param>
+        /// <param name="ref3">The third component reference output.</param>
         public void Deconstruct(out Ref<T1> ref1, out Ref<T2> ref2, out Ref<T3> ref3)
         {
             ref1 = Item1;
@@ -142,6 +148,10 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     Allows tuple deconstruction syntax to be used.
         /// </summary>
+        /// <param name="ref1">The first component reference output.</param>
+        /// <param name="ref2">The second component reference output.</param>
+        /// <param name="ref3">The third component reference output.</param>
+        /// <param name="ref4">The fourth component reference output.</param>
         public void Deconstruct(out Ref<T1> ref1, out Ref<T2> ref2, out Ref<T3> ref3, out Ref<T4> ref4)
         {
             ref1 = Item1;
@@ -185,6 +195,11 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     Allows tuple deconstruction syntax to be used.
         /// </summary>
+        /// <param name="ref1">The first component reference output.</param>
+        /// <param name="ref2">The second component reference output.</param>
+        /// <param name="ref3">The third component reference output.</param>
+        /// <param name="ref4">The fourth component reference output.</param>
+        /// <param name="ref5">The fifth component reference output.</param>
         public void Deconstruct(out Ref<T1> ref1, out Ref<T2> ref2, out Ref<T3> ref3, out Ref<T4> ref4, out Ref<T5> ref5)
         {
             ref1 = Item1;

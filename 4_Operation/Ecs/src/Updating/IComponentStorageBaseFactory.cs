@@ -40,11 +40,14 @@ namespace Alis.Core.Ecs.Updating
         /// <summary>
         ///     Used only in source generation
         /// </summary>
+        /// <param name="capacity">The storage capacity.</param>
+        /// <returns>The result of the operation.</returns>
         internal ComponentStorageBase Create(int capacity);
 
         /// <summary>
         ///     Used only in source generation
         /// </summary>
+        /// <returns>The result of the operation.</returns>
         internal IdTable CreateStack();
     }
 }

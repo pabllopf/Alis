@@ -107,6 +107,8 @@ namespace Alis.Core.Ecs.Kernel
         /// <summary>
         ///     Use ComponentHandle.Create instead.
         /// </summary>
+        /// <param name="component">The component data.</param>
+        /// <returns>The result of the operation.</returns>
         public static ComponentHandle StoreComponent(in T component)
         {
             GeneralComponentStorage.Create(out int index) = component;
@@ -116,6 +118,7 @@ namespace Alis.Core.Ecs.Kernel
         /// <summary>
         ///     Creates the instance using the specified cap
         /// </summary>
+        /// <typeparam name="T">The component type.</typeparam>
         /// <param name="cap">The cap</param>
         /// <returns>A component storage of t</returns>
         internal static ComponentStorage<T> CreateInstance(int cap) => RunnerInstance.CreateStronglyTyped(cap);
@@ -158,7 +161,7 @@ namespace Alis.Core.Ecs.Kernel
         /// <summary>
         ///     Gets the component factory from type using the specified t
         /// </summary>
-        /// <param name="t">The </param>
+        /// <param name="t">The t parameter.</param>
         /// <returns>The component storage base factory</returns>
         internal static IComponentStorageBaseFactory GetComponentFactoryFromType(Type t)
         {
@@ -312,7 +315,7 @@ namespace Alis.Core.Ecs.Kernel
         /// <summary>
         ///     Throws the component type not init using the specified t
         /// </summary>
-        /// <param name="t">The </param>
+        /// <param name="t">The t parameter.</param>
         /// <exception cref="InvalidOperationException">
         ///     {t.FullName} is not initalized. (Did you initalize T with
         ///     Component.RegisterComponent&lt;T&gt;()?)

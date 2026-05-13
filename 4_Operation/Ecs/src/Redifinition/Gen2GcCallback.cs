@@ -92,6 +92,7 @@ namespace Alis.Core.Ecs.Redifinition
         ///     Schedule 'callback' to be called in the next GC.  If the callback returns true it is
         ///     rescheduled for the next Gen 2 GC.  Otherwise the callbacks stop.
         /// </summary>
+        /// <param name="callback">The callback parameter.</param>
         public static void Register(Func<bool> callback)
         {
             // Create a unreachable object that remembers the callback function and target object.
@@ -104,6 +105,8 @@ namespace Alis.Core.Ecs.Redifinition
         ///     NOTE: This callback will be kept alive until either the callback function returns false,
         ///     or the target object dies.
         /// </summary>
+        /// <param name="callback">The callback parameter.</param>
+        /// <param name="targetObj">The targetObj parameter.</param>
         public static void Register(Func<object, bool> callback, object targetObj)
         {
             // Create a unreachable object that remembers the callback function and target object.

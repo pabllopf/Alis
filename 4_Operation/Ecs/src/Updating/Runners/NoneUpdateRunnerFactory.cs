@@ -34,6 +34,8 @@ namespace Alis.Core.Ecs.Updating.Runners
     /// <summary>
     ///     The none update runner factory class
     /// </summary>
+    /// <typeparam name="T">The component type.</typeparam>
+    /// <typeparam name="T">The component type.</typeparam>
     /// <seealso cref="IComponentStorageBaseFactory" />
     /// <seealso cref="IComponentStorageBaseFactory{T}" />
     public class NoneUpdateRunnerFactory<T> : IComponentStorageBaseFactory, IComponentStorageBaseFactory<T>

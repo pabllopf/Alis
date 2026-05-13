@@ -12,28 +12,14 @@
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
 //  --------------------------------------------------------------------------
-
-using System.Runtime.InteropServices;
 
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     The enable vertex attrib array del
+    /// Represents the unmanaged function pointer for the OpenGL glEnableVertexAttribArray command.
+    /// Enables a generic vertex attribute array at the specified index.
     /// </summary>
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
+    /// <param name="index">The index of the vertex attribute to enable.</param>
     public delegate void EnableVertexAttribArrayDel(uint index);
 }

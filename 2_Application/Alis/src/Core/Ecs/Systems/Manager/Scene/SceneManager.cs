@@ -38,13 +38,13 @@ using Alis.Core.Ecs.Systems.Scope;
 namespace Alis.Core.Ecs.Systems.Manager.Scene
 {
     /// <summary>
-    ///     The scene manager base class
+    ///     Manages scene loading, switching, and lifecycle events.
     /// </summary>
     /// <seealso cref="AManager" />
     public class SceneManager : AManager
     {
         /// <summary>
-        ///     The loaded scenes
+        ///     Collection of all scenes currently loaded in memory.
         /// </summary>
         public List<Ecs.Scene> LoadedScenes;
 
@@ -59,10 +59,16 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="SceneManager" /> class
+        ///     Initializes a new instance of the <see cref="SceneManager" /> class.
         /// </summary>
-        /// <param name="context">The context</param>
-        /// <param name="scenes">The scenes</param>
+        /// <param name="context">The execution context.</param>
+        public SceneManager(Context context) : base(context)
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="SceneManager" /> class with preloaded scenes.
+        /// </summary>
+        /// <param name="context">The execution context.</param>
+        /// <param name="scenes">Initial scenes to load.</param>
         public SceneManager(Context context, params Ecs.Scene[] scenes) : base(context)
         {
             LoadedScenes = new List<Ecs.Scene>(scenes);
@@ -376,7 +382,88 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
 
 
         /// <summary>
-        ///     Ons the exit
+        ///     Gets or sets the currently active world.
+        /// </summary>
+        public Ecs.Scene CurrentWorld { get; set; }
+
+        /// <summary>
+        ///     Called when the scene manager is initialized. Sets up context for all components.
+        /// </summary>
+        public override void OnInit()
+
+        /// <summary>
+        ///     Called after all scene objects are created. Invokes OnAwake on applicable components.
+        /// </summary>
+        public override void OnAwake()
+
+        /// <summary>
+        ///     Called once, after all Awake calls. Invokes OnStart on applicable components.
+        /// </summary>
+        public override void OnStart()
+
+        /// <summary>
+        ///     Called during the physics update phase. Invokes OnPhysicUpdate on applicable components.
+        /// </summary>
+        public override void OnPhysicUpdate()
+
+        /// <summary>
+        ///     Called when saving the scene state.
+        /// </summary>
+        public override void OnSave()
+
+        /// <summary>
+        ///     Called before the main update loop. Invokes OnBeforeUpdate on applicable components.
+        /// </summary>
+        public override void OnBeforeUpdate()
+
+        /// <summary>
+        ///     Called during the main update loop. Updates the current world.
+        /// </summary>
+        public override void OnUpdate()
+
+        /// <summary>
+        ///     Called after the main update loop. Invokes OnAfterUpdate on applicable components.
+        /// </summary>
+        public override void OnAfterUpdate()
+
+        /// <summary>
+        ///     Called before the fixed physics update. Invokes OnBeforeFixedUpdate on applicable components.
+        /// </summary>
+        public override void OnBeforeFixedUpdate()
+
+        /// <summary>
+        ///     Called during the fixed physics update. Invokes OnFixedUpdate on applicable components.
+        /// </summary>
+        public override void OnFixedUpdate()
+
+        /// <summary>
+        ///     Called after the fixed physics update. Invokes OnAfterFixedUpdate on applicable components.
+        /// </summary>
+        public override void OnAfterFixedUpdate()
+
+        /// <summary>
+        ///     Called to process deferred structural changes. Invokes OnProcessPendingChanges on applicable components.
+        /// </summary>
+        public override void OnProcessPendingChanges()
+
+        /// <summary>
+        ///     Called before rendering. Invokes OnBeforeDraw on applicable components.
+        /// </summary>
+        public override void OnBeforeDraw()
+
+        /// <summary>
+        ///     Called during the rendering phase. Invokes OnDraw on applicable components.
+        /// </summary>
+        public override void OnDraw()
+
+        /// <summary>
+        ///     Called after rendering. Invokes OnAfterDraw on applicable components.
+        /// </summary>
+        public override void OnAfterDraw()
+
+
+        /// <summary>
+        ///     Called when exiting the scene. Invokes OnExit on applicable components.
         /// </summary>
         public override void OnExit()
         {
@@ -405,9 +492,15 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         }
 
         /// <summary>
-        ///     Loads the scene using the specified id
+        ///     Loads a scene by its string identifier.
         /// </summary>
-        /// <param name="id">The id</param>
+        /// <param name="gameScene">The scene identifier.</param>
+        public void LoadScene(string gameScene)
+
+        /// <summary>
+        ///     Loads a scene by its index in the loaded scenes collection.
+        /// </summary>
+        /// <param name="id">The zero-based index of the scene to load.</param>
         public void LoadScene(int id)
         {
             OnExit();
@@ -432,9 +525,9 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         }
 
         /// <summary>
-        ///     Adds the scene using the specified scene
+        ///     Adds a scene to the loaded scenes collection.
         /// </summary>
-        /// <param name="scene">The scene</param>
+        /// <param name="scene">The scene to add.</param>
         public void AddScene(Ecs.Scene scene)
         {
             LoadedScenes.Add(scene);

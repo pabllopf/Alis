@@ -42,7 +42,7 @@ namespace Alis.Core.Ecs.Systems
     public sealed class VideoGame : IGame
     {
         /// <summary>
-        ///     The context handler
+        ///     The context handler for managing game lifecycle contexts.
         /// </summary>
         private readonly IContextHandler<Context> _contextHandler;
 
@@ -92,23 +92,23 @@ namespace Alis.Core.Ecs.Systems
         public void Exit() => _contextHandler.Exit();
 
         /// <summary>
-        ///     Creates
+        ///     Creates a new VideoGameBuilder for fluent configuration.
         /// </summary>
-        /// <returns>The video game builder</returns>
+        /// <returns>A VideoGameBuilder instance.</returns>
         public static VideoGameBuilder Create() => new VideoGameBuilder();
 
         /// <summary>
-        ///     Saves this instance
+        ///     Saves the current game state.
         /// </summary>
         public void Save() => _contextHandler.Save();
 
         /// <summary>
-        ///     Inits the preview
+        ///     Initializes preview mode for the game.
         /// </summary>
         public void InitPreview() => _contextHandler.InitPreview();
 
         /// <summary>
-        ///     Previews this instance
+        ///     Enters preview mode.
         /// </summary>
         public void Preview() => _contextHandler.Preview();
     }

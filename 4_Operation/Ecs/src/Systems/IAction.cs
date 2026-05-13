@@ -32,6 +32,7 @@ namespace Alis.Core.Ecs.Systems
     /// <summary>
     ///     An arbitary function with one parameter
     /// </summary>
+    /// <typeparam name="TArg">The TArg type parameter.</typeparam>
     /// <remarks>Used to inline query functions</remarks>
     public interface IAction<TArg>
     {
