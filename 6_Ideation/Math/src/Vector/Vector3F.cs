@@ -35,13 +35,15 @@ using System.Runtime.Serialization;
 namespace Alis.Core.Aspect.Math.Vector
 {
     /// <summary>
-    ///     The vector
+    ///     Represents a 3D vector with single-precision floating-point X, Y, and Z components.
+    ///     Provides standard vector operations such as addition, subtraction, dot product, cross product,
+    ///     normalization, and length calculation. Implements <see cref="IEquatable{T}" />, <see cref="IFormattable" />, and <see cref="ISerializable" />.
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct Vector3F : IEquatable<Vector3F>, IFormattable, ISerializable
     {
         /// <summary>
-        ///     The hash code
+        ///     The precomputed hash code for this vector instance.
         /// </summary>
         private readonly int hashCode;
 
@@ -55,24 +57,24 @@ namespace Alis.Core.Aspect.Math.Vector
         public float Z { get; set; }
 
         /// <summary>Creates a new <see cref="Vector3F" /> object whose three elements have the same value.</summary>
-        /// <param name="value">The value to assign to all three elements.</param>
+        /// <param name="value">The value to assign to all three components.</param>
         private Vector3F(float value) : this(value, value, value)
         {
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Vector3F" /> class
+        ///     Initializes a new instance of the <see cref="Vector3F" /> struct from a <see cref="Vector2F" /> and a Z component.
         /// </summary>
-        /// <param name="value">The value</param>
-        /// <param name="z">The </param>
+        /// <param name="value">The <see cref="Vector2F" /> providing X and Y components.</param>
+        /// <param name="z">The Z component value.</param>
         public Vector3F(Vector2F value, float z) : this(value.X, value.Y, z)
         {
         }
 
         /// <summary>Creates a vector whose elements have the specified values.</summary>
-        /// <param name="x">The value to assign to the <see cref="Vector3F.X" /> field.</param>
-        /// <param name="y">The value to assign to the <see cref="Vector3F.Y" /> field.</param>
-        /// <param name="z">The value to assign to the <see cref="Vector3F.Z" /> field.</param>
+        /// <param name="x">The value to assign to the <see cref="X" /> component.</param>
+        /// <param name="y">The value to assign to the <see cref="Y" /> component.</param>
+        /// <param name="z">The value to assign to the <see cref="Z" /> component.</param>
         public Vector3F(float x, float y, float z)
         {
             X = x;
@@ -86,67 +88,56 @@ namespace Alis.Core.Aspect.Math.Vector
             hashCode = hash.ToHashCode();
         }
 
-        /// <summary>Gets a vector whose 3 elements are equal to zero.</summary>
-        /// <value>A vector whose three elements are equal to zero (that is, it returns the vector <c>(0,0,0)</c>.</value>
+        /// <summary>Gets a vector whose three elements are equal to zero.</summary>
+        /// <value>A vector with all components set to zero: <c>(0, 0, 0)</c>.</value>
         public static Vector3F Zero => default(Vector3F);
 
-        /// <summary>Gets a vector whose 3 elements are equal to one.</summary>
-        /// <value>A vector whose three elements are equal to one (that is, it returns the vector <c>(1,1,1)</c>.</value>
+        /// <summary>Gets a vector whose three elements are equal to one.</summary>
+        /// <value>A vector with all components set to one: <c>(1, 1, 1)</c>.</value>
         public static Vector3F One => new Vector3F(1.0f);
 
-        /// <summary>Gets the vector (1,0,0).</summary>
-        /// <value>The vector <c>(1,0,0)</c>.</value>
+        /// <summary>Gets the unit vector for the X axis.</summary>
+        /// <value>The vector <c>(1, 0, 0)</c>.</value>
         public static Vector3F UnitX => new Vector3F(1.0f, 0.0f, 0.0f);
 
-        /// <summary>Gets the vector (0,1,0).</summary>
-        /// <value>The vector <c>(0,1,0)</c>.</value>
+        /// <summary>Gets the unit vector for the Y axis.</summary>
+        /// <value>The vector <c>(0, 1, 0)</c>.</value>
         public static Vector3F UnitY => new Vector3F(0.0f, 1.0f, 0.0f);
 
-        /// <summary>Gets the vector (0,0,1).</summary>
-        /// <value>The vector <c>(0,0,1)</c>.</value>
+        /// <summary>Gets the unit vector for the Z axis.</summary>
+        /// <value>The vector <c>(0, 0, 1)</c>.</value>
         public static Vector3F UnitZ => new Vector3F(0.0f, 0.0f, 1.0f);
 
-        /// <summary>Adds two vectors together.</summary>
+        /// <summary>Adds two vectors together component-wise.</summary>
         /// <param name="left">The first vector to add.</param>
         /// <param name="right">The second vector to add.</param>
         /// <returns>The summed vector.</returns>
-        /// <remarks>
-        ///     The <see cref="Vector3F.op_Addition" /> method defines the addition operation for <see cref="Vector3F" />
-        ///     objects.
-        /// </remarks>
         public static Vector3F operator +(Vector3F left, Vector3F right) => new Vector3F(
             left.X + right.X,
             left.Y + right.Y,
             left.Z + right.Z
         );
 
-        /// <summary>Divides the first vector by the second.</summary>
-        /// <param name="left">The first vector.</param>
-        /// <param name="right">The second vector.</param>
-        /// <returns>The vector that results from dividing <paramref name="left" /> by <paramref name="right" />.</returns>
+        /// <summary>Divides the first vector by the second component-wise.</summary>
+        /// <param name="left">The dividend vector.</param>
+        /// <param name="right">The divisor vector.</param>
+        /// <returns>The component-wise quotient vector.</returns>
         public static Vector3F operator /(Vector3F left, Vector3F right) => new Vector3F(
             left.X / right.X,
             left.Y / right.Y,
             left.Z / right.Z
         );
 
-        /// <summary>Divides the specified vector by a specified scalar value.</summary>
+        /// <summary>Divides the specified vector by a scalar value.</summary>
         /// <param name="value1">The vector.</param>
-        /// <param name="value2">The scalar value.</param>
-        /// <returns>The result of the division.</returns>
+        /// <param name="value2">The scalar divisor.</param>
+        /// <returns>The scaled result.</returns>
         public static Vector3F operator /(Vector3F value1, float value2) => value1 / new Vector3F(value2);
 
-        /// <summary>Returns a value that indicates whether each pair of elements in two specified vectors is equal.</summary>
+        /// <summary>Returns a value that indicates whether each pair of elements in two specified vectors is equal within a tolerance of 0.1.</summary>
         /// <param name="left">The first vector to compare.</param>
         /// <param name="right">The second vector to compare.</param>
-        /// <returns>
-        ///     <see langword="true" /> if <paramref name="left" /> and <paramref name="right" /> are equal; otherwise,
-        ///     <see langword="false" />.
-        /// </returns>
-        /// <remarks>
-        ///     Two <see cref="Vector3F" /> objects are equal if each element in <paramref name="right" /> is equal to the
-        ///     corresponding element in <paramref name="right" />.
-        /// </remarks>
+        /// <returns><c>true</c> if equal; otherwise, <c>false</c>.</returns>
         public static bool operator ==(Vector3F left, Vector3F right) => (System.Math.Abs(left.X - right.X) < 0.1f)
                                                                          && (System.Math.Abs(left.Y - right.Y) < 0.1f)
                                                                          && (System.Math.Abs(left.Z - right.Z) < 0.1f);
@@ -154,13 +145,10 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <summary>Returns a value that indicates whether two specified vectors are not equal.</summary>
         /// <param name="left">The first vector to compare.</param>
         /// <param name="right">The second vector to compare.</param>
-        /// <returns>
-        ///     <see langword="true" /> if <paramref name="left" /> and <paramref name="right" /> are not equal; otherwise,
-        ///     <see langword="false" />.
-        /// </returns>
+        /// <returns><c>true</c> if not equal; otherwise, <c>false</c>.</returns>
         public static bool operator !=(Vector3F left, Vector3F right) => !(left == right);
 
-        /// <summary>Returns a new vector whose values are the product of each pair of elements in two specified vectors.</summary>
+        /// <summary>Returns a new vector whose values are the component-wise product of two specified vectors.</summary>
         /// <param name="left">The first vector.</param>
         /// <param name="right">The second vector.</param>
         /// <returns>The element-wise product vector.</returns>
@@ -170,26 +158,22 @@ namespace Alis.Core.Aspect.Math.Vector
             left.Z * right.Z
         );
 
-        /// <summary>Multiplies the specified vector by the specified scalar value.</summary>
+        /// <summary>Multiplies the specified vector by a scalar value.</summary>
         /// <param name="left">The vector.</param>
-        /// <param name="right">The scalar value.</param>
+        /// <param name="right">The scalar multiplier.</param>
         /// <returns>The scaled vector.</returns>
         public static Vector3F operator *(Vector3F left, float right) => left * new Vector3F(right);
 
-        /// <summary>Multiplies the scalar value by the specified vector.</summary>
-        /// <param name="left">The vector.</param>
-        /// <param name="right">The scalar value.</param>
+        /// <summary>Multiplies a scalar value by the specified vector.</summary>
+        /// <param name="left">The scalar multiplier.</param>
+        /// <param name="right">The vector.</param>
         /// <returns>The scaled vector.</returns>
         public static Vector3F operator *(float left, Vector3F right) => right * left;
 
-        /// <summary>Subtracts the second vector from the first.</summary>
+        /// <summary>Subtracts the second vector from the first component-wise.</summary>
         /// <param name="left">The first vector.</param>
         /// <param name="right">The second vector.</param>
-        /// <returns>The vector that results from subtracting <paramref name="right" /> from <paramref name="left" />.</returns>
-        /// <remarks>
-        ///     The <see cref="Vector3F.op_Subtraction" /> method defines the subtraction operation for
-        ///     <see cref="Vector3F" /> objects.
-        /// </remarks>
+        /// <returns>The difference vector.</returns>
         public static Vector3F operator -(Vector3F left, Vector3F right) => new Vector3F(
             left.X - right.X,
             left.Y - right.Y,
@@ -199,16 +183,12 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <summary>Negates the specified vector.</summary>
         /// <param name="value">The vector to negate.</param>
         /// <returns>The negated vector.</returns>
-        /// <remarks>
-        ///     The <see cref="Vector3F.op_UnaryNegation" /> method defines the unary negation operation for
-        ///     <see cref="Vector3F" /> objects.
-        /// </remarks>
         public static Vector3F operator -(Vector3F value) => Zero - value;
 
         /// <summary>Computes the cross product of two vectors.</summary>
         /// <param name="vector1">The first vector.</param>
         /// <param name="vector2">The second vector.</param>
-        /// <returns>The cross product.</returns>
+        /// <returns>The cross product vector orthogonal to both inputs.</returns>
         public static Vector3F Cross(Vector3F vector1, Vector3F vector2) => new Vector3F(
             vector1.Y * vector2.Z - vector1.Z * vector2.Y,
             vector1.Z * vector2.X - vector1.X * vector2.Z,
@@ -218,73 +198,51 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <summary>Returns the dot product of two vectors.</summary>
         /// <param name="vector1">The first vector.</param>
         /// <param name="vector2">The second vector.</param>
-        /// <returns>The dot product.</returns>
+        /// <returns>The dot product (scalar).</returns>
         public static float Dot(Vector3F vector1, Vector3F vector2) => vector1.X * vector2.X
                                                                        + vector1.Y * vector2.Y
                                                                        + vector1.Z * vector2.Z;
 
         /// <summary>Returns a vector with the same direction as the specified vector, but with a length of one.</summary>
         /// <param name="value">The vector to normalize.</param>
-        /// <returns>The normalized vector.</returns>
+        /// <returns>The normalized unit vector.</returns>
         public static Vector3F Normalize(Vector3F value) => value / value.Length();
 
         /// <summary>Returns a value that indicates whether this instance and a specified object are equal.</summary>
-        /// <param name="obj">The object to compare with the current instance.</param>
-        /// <returns>
-        ///     <see langword="true" /> if the current instance and <paramref name="obj" /> are equal; otherwise,
-        ///     <see langword="false" />. If <paramref name="obj" /> is <see langword="null" />, the method returns
-        ///     <see langword="false" />.
-        /// </returns>
-        /// <remarks>
-        ///     The current instance and <paramref name="obj" /> are equal if <paramref name="obj" /> is a
-        ///     <see cref="Vector3F" /> object and their corresponding elements are equal.
-        /// </remarks>
+        /// <param name="obj">The object to compare.</param>
+        /// <returns><c>true</c> if equal; otherwise, <c>false</c>.</returns>
         public readonly override bool Equals(object obj) => obj is Vector3F other && Equals(other);
 
         /// <summary>Returns a value that indicates whether this instance and another vector are equal.</summary>
         /// <param name="other">The other vector.</param>
-        /// <returns><see langword="true" /> if the two vectors are equal; otherwise, <see langword="false" />.</returns>
-        /// <remarks>
-        ///     Two vectors are equal if their <see cref="Vector3F.X" />, <see cref="Vector3F.Y" />, and
-        ///     <see cref="Vector3F.Z" /> elements are equal.
-        /// </remarks>
+        /// <returns><c>true</c> if equal; otherwise, <c>false</c>.</returns>
         public readonly bool Equals(Vector3F other) => this == other;
 
         /// <summary>Returns the hash code for this instance.</summary>
-        /// <returns>The hash code.</returns>
+        /// <returns>The precomputed hash code.</returns>
         public readonly override int GetHashCode() => hashCode;
 
-        /// <summary>Returns the length of this vector object.</summary>
+        /// <summary>Returns the Euclidean length (magnitude) of the vector.</summary>
         /// <returns>The vector's length.</returns>
-        /// <altmember cref="Vector3F.LengthSquared" />
         public readonly float Length()
         {
             float lengthSquared = LengthSquared();
             return (float) System.Math.Sqrt(lengthSquared);
         }
 
-        /// <summary>Returns the length of the vector squared.</summary>
-        /// <returns>The vector's length squared.</returns>
-        /// <remarks>This operation offers better performance than a call to the <see cref="Vector3F.Length" /> method.</remarks>
-        /// <altmember cref="Vector3F.Length" />
+        /// <summary>Returns the squared length of the vector. This is faster than <see cref="Length" /> as it avoids a square root.</summary>
+        /// <returns>The squared length.</returns>
         public readonly float LengthSquared() => Dot(this, this);
 
-        /// <summary>Returns the string representation of the current instance using default formatting.</summary>
-        /// <returns>The string representation of the current instance.</returns>
-        /// <remarks>
-        ///     This method returns a string in which each element of the vector is formatted using the "G" (general) format
-        ///     string and the formatting conventions of the current thread culture. The "&lt;" and "&gt;" characters are used to
-        ///     begin and end the string, and the current culture's
-        ///     <see cref="System.Globalization.NumberFormatInfo.NumberGroupSeparator" /> property followed by a space is used to
-        ///     separate each element.
-        /// </remarks>
+        /// <summary>Returns the default string representation of the current instance.</summary>
+        /// <returns>A string in the format "&lt;X, Y, Z&gt;".</returns>
         public readonly override string ToString() => ToString("G", CultureInfo.CurrentCulture);
 
         /// <summary>
-        ///     Gets the object data using the specified info
+        ///     Populates a <see cref="SerializationInfo" /> with the vector's component data.
         /// </summary>
-        /// <param name="info">The info</param>
-        /// <param name="context">The context</param>
+        /// <param name="info">The <see cref="SerializationInfo" /> to populate.</param>
+        /// <param name="context">The streaming context.</param>
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("x", X);
@@ -293,23 +251,11 @@ namespace Alis.Core.Aspect.Math.Vector
         }
 
         /// <summary>
-        ///     Returns the string representation of the current instance using the specified format string to format
-        ///     individual elements and the specified format provider to define culture-specific formatting.
+        ///     Returns the string representation using the specified format and format provider.
         /// </summary>
-        /// <param name="format">A standard or custom numeric format string that defines the format of individual elements.</param>
-        /// <param name="formatProvider">A format provider that supplies culture-specific formatting information.</param>
-        /// <returns>The string representation of the current instance.</returns>
-        /// <remarks>
-        ///     This method returns a string in which each element of the vector is formatted using <paramref name="format" />
-        ///     and <paramref name="formatProvider" />. The "&lt;" and "&gt;" characters are used to begin and end the string, and
-        ///     the format provider's <see cref="System.Globalization.NumberFormatInfo.NumberGroupSeparator" /> property followed
-        ///     by a space is used to separate each element.
-        /// </remarks>
-        /// <related type="Article" href="/dotnet/standard/base-types/standard-numeric-format-strings">
-        ///     Standard Numeric Format
-        ///     Strings
-        /// </related>
-        /// <related type="Article" href="/dotnet/standard/base-types/custom-numeric-format-strings">Custom Numeric Format Strings</related>
+        /// <param name="format">A standard or custom numeric format string.</param>
+        /// <param name="formatProvider">A format provider for culture-specific formatting.</param>
+        /// <returns>The formatted string.</returns>
         public readonly string ToString(string format, IFormatProvider formatProvider) => string.Format(
             formatProvider,
             "<{0}, {1}, {2}>",

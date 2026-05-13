@@ -30,7 +30,7 @@
 namespace Alis.Core.Aspect.Math.Shapes
 {
     /// <summary>
-    ///     The figure interface
+    ///     Base marker interface for all geometric shape types (e.g., line, rectangle, circle, square, point).
     /// </summary>
     public interface IShape
     {

@@ -41,3 +41,5 @@ namespace Alis.Core.Aspect.Fluent.Words
         /// </summary>
         /// <returns>The builder instance, enabling fluent chaining.</returns>
         TBuilder IsDynamic();
+    }
+}

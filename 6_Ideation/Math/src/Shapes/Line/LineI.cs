@@ -17,7 +17,7 @@
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
-//  This program is distributed in the hope that it will be useful,
+//  This program is free software:distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
@@ -32,28 +32,28 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Aspect.Math.Shapes.Line
 {
     /// <summary>
-    ///     The line
+    ///     Represents a line segment defined by two endpoints with integer coordinates. Implements <see cref="IShape" />.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct LineI : IShape
     {
         /// <summary>
-        ///     The x1
+        ///     Gets or sets the X coordinate of the first endpoint.
         /// </summary>
         public int X1 { get; set; }
 
         /// <summary>
-        ///     The y1
+        ///     Gets or sets the Y coordinate of the first endpoint.
         /// </summary>
         public int Y1 { get; set; }
 
         /// <summary>
-        ///     The x2
+        ///     Gets or sets the X coordinate of the second endpoint.
         /// </summary>
         public int X2 { get; set; }
 
         /// <summary>
-        ///     The y2
+        ///     Gets or sets the Y coordinate of the second endpoint.
         /// </summary>
         public int Y2 { get; set; }
     }
