@@ -34,21 +34,33 @@ using Alis.Core.Physic.Dynamics;
 namespace Alis.Core.Physic.Common
 {
     /// <summary>
-    ///     A 3-by-3 matrix. Stored in column-major order.
+    ///     Represents a 3-by-3 matrix stored in column-major order.
     /// </summary>
+    /// <remarks>
+    ///     This matrix is commonly used for 3D transformations in the physics engine,
+    ///     including inertia tensor calculations and mass matrix operations.
+    ///     The matrix layout is as follows:
+    ///     | Ex.X  Ey.X  Ez.X |
+    ///     | Ex.Y  Ey.Y  Ez.Y |
+    ///     | Ex.Z  Ey.Z  Ez.Z |
+    ///     Where Ex, Ey, and Ez are column vectors representing the matrix columns.
+    /// </remarks>
     public struct Mat33
     {
         /// <summary>
-        ///     The ez
+        ///     Gets or sets the first column vector (X-axis basis vector).
         /// </summary>
+        /// <value>
+        ///     A <see cref="Vector3F"/> representing the first column of the matrix.
+        /// </value>
         public Vector3F Ex, Ey, Ez;
 
         /// <summary>
-        ///     Construct this matrix using columns.
+        ///     Initializes a new instance of the <see cref="Mat33"/> struct using three column vectors.
         /// </summary>
-        /// <param name="c1">The c1.</param>
-        /// <param name="c2">The c2.</param>
-        /// <param name="c3">The c3.</param>
+        /// <param name="c1">The first column vector (X-axis basis).</param>
+        /// <param name="c2">The second column vector (Y-axis basis).</param>
+        /// <param name="c3">The third column vector (Z-axis basis).</param>
         public Mat33(Vector3F c1, Vector3F c2, Vector3F c3)
         {
             Ex = c1;
@@ -57,8 +69,14 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        ///     Set this matrix to all zeros.
+        ///     Sets all elements of this matrix to zero.
         /// </summary>
+        /// <remarks>
+        ///     The resulting matrix is a zero matrix with all elements set to 0:
+        ///     | 0  0  0 |
+        ///     | 0  0  0 |
+        ///     | 0  0  0 |
+        /// </remarks>
         public void SetZero()
         {
             Ex = Vector3F.Zero;
@@ -67,11 +85,17 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        ///     Solve A * x = b, where b is a column vector. This is more efficient
-        ///     than computing the inverse in one-shot cases.
+        ///     Solves the linear system A * x = b for a 3x3 matrix.
         /// </summary>
-        /// <param name="b">The b.</param>
-        /// <returns></returns>
+        /// <param name="b">The right-hand side 3D vector to solve for.</param>
+        /// <returns>
+        ///     The solution vector x that satisfies A * x = b.
+        ///     Returns a zero vector if the matrix is singular.
+        /// </returns>
+        /// <remarks>
+        ///     This uses Cramer's rule via cross products for efficient solution
+        ///     without computing the full matrix inverse.
+        /// </remarks>
         public Vector3F Solve33(Vector3F b)
         {
             float det = Vector3F.Dot(Ex, Vector3F.Cross(Ey, Ez));
@@ -84,12 +108,17 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        ///     Solve A * x = b, where b is a column vector. This is more efficient
-        ///     than computing the inverse in one-shot cases. Solve only the upper
-        ///     2-by-2 matrix equation.
+        ///     Solves the linear system A * x = b for the upper 2x2 submatrix.
         /// </summary>
-        /// <param name="b">The b.</param>
-        /// <returns></returns>
+        /// <param name="b">The right-hand side 2D vector to solve for.</param>
+        /// <returns>
+        ///     The 2D solution vector x that satisfies the 2x2 system.
+        ///     Returns a zero vector if the matrix is singular.
+        /// </returns>
+        /// <remarks>
+        ///     This only considers the upper-left 2x2 portion of the matrix,
+        ///     ignoring the third row and column. Useful for 2D physics subproblems.
+        /// </remarks>
         public Vector2F Solve22(Vector2F b)
         {
             float a11 = Ex.X, a12 = Ey.X, a21 = Ex.Y, a22 = Ey.Y;
@@ -103,8 +132,14 @@ namespace Alis.Core.Physic.Common
             return new Vector2F(det * (a22 * b.X - a12 * b.Y), det * (a11 * b.Y - a21 * b.X));
         }
 
-        /// Get the inverse of this matrix as a 2-by-2.
-        /// Returns the zero matrix if singular.
+        /// <summary>
+        ///     Computes the inverse of the 2x2 top-left submatrix and stores the result.
+        /// </summary>
+        /// <param name="m">The output parameter that receives the 2x2 inverse (padded to 3x3 with zeros).</param>
+        /// <remarks>
+        ///     Only the upper-left 2x2 portion is inverted. The third row and column
+        ///     are set to zero. Returns the zero matrix if the 2x2 submatrix is singular.
+        /// </remarks>
         public void GetInverse22(ref Mat33 m)
         {
             float a = Ex.X, b = Ey.X, c = Ex.Y, d = Ey.Y;
@@ -125,8 +160,15 @@ namespace Alis.Core.Physic.Common
             m.Ez.Z = 0.0f;
         }
 
-        /// Get the symmetric inverse of this matrix as a 3-by-3.
-        /// Returns the zero matrix if singular.
+        /// <summary>
+        ///     Computes the symmetric inverse of this 3x3 matrix.
+        /// </summary>
+        /// <param name="m">The output parameter that receives the symmetric inverse.</param>
+        /// <remarks>
+        ///     The result is always symmetric (m = m^T). This is useful for
+        ///     inverting mass matrices and inertia tensors which are guaranteed
+        ///     to be symmetric positive definite. Returns zero matrix if singular.
+        /// </remarks>
         public void GetSymInverse33(ref Mat33 m)
         {
             float det = MathUtils.Dot(Ex, MathUtils.Cross(ref Ey, ref Ez));
