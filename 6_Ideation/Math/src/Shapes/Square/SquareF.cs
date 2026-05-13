@@ -32,23 +32,23 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Aspect.Math.Shapes.Square
 {
     /// <summary>
-    ///     The sdl f rect
+    ///     Represents a square defined by its top-left corner position and side length using single-precision floating-point coordinates. Implements <see cref="IShape" />.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct SquareF : IShape
     {
         /// <summary>
-        ///     The
+        ///     Gets or sets the X coordinate of the top-left corner.
         /// </summary>
         public float X { get; set; }
 
         /// <summary>
-        ///     The
+        ///     Gets or sets the Y coordinate of the top-left corner.
         /// </summary>
         public float Y { get; set; }
 
         /// <summary>
-        ///     The
+        ///     Gets or sets the side length (width and height) of the square.
         /// </summary>
         public float W { get; set; }
     }
