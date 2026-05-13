@@ -30,17 +30,20 @@
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     The contact feature type enum
+    ///     Defines the type of geometric feature involved in a contact point between two colliding shapes.
+    ///     This helps the collision system determine how impulses are applied during the solver phase.
     /// </summary>
     internal enum ContactFeatureType : byte
     {
         /// <summary>
-        ///     The vertex contact feature type
+        ///     The contact involves a vertex (corner point) of the shape. Vertex contacts produce
+        ///     concentrated impulses at a single point.
         /// </summary>
         Vertex = 0,
 
         /// <summary>
-        ///     The face contact feature type
+        ///     The contact involves a face (edge) of the shape. Face contacts distribute impulses
+        ///     along the edge surface.
         /// </summary>
         Face = 1
     }

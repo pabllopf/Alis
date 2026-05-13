@@ -30,7 +30,11 @@
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     The broadphase delegate
+    ///     Represents a callback that is invoked for each overlapping proxy pair detected during the broad-phase collision
+    ///     detection. This delegate is used by the broad-phase system to report potentially colliding pairs of proxies
+    ///     that require further narrow-phase collision checking.
     /// </summary>
+    /// <param name="proxyIdA">The proxy identifier of the first overlapping object.</param>
+    /// <param name="proxyIdB">The proxy identifier of the second overlapping object.</param>
     public delegate void BroadphaseDelegate(int proxyIdA, int proxyIdB);
 }

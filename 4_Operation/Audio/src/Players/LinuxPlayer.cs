@@ -36,17 +36,20 @@ using Alis.Core.Audio.Interfaces;
 namespace Alis.Core.Audio.Players
 {
     /// <summary>
-    ///     The linux player class
+    ///     Audio player implementation for Linux platforms.
+    ///     Uses ALSA (amixer) for volume control and delegates playback to Unix command-line tools
+    ///     such as aplay (for WAV) or mpg123 (for MP3 and other formats).
     /// </summary>
     /// <seealso cref="UnixPlayerBase" />
     /// <seealso cref="IPlayer" />
     internal class LinuxPlayer : UnixPlayerBase, IPlayer
     {
         /// <summary>
-        ///     Sets the volume using the specified percent
+        ///     Sets the system master volume using the ALSA amixer command-line tool.
         /// </summary>
-        /// <param name="percent">The percent</param>
-        /// <exception cref="ArgumentOutOfRangeException">Percent can't exceed 100</exception>
+        /// <param name="percent">The volume level as a percentage from 0 to 100.</param>
+        /// <returns>A task that represents the asynchronous volume change operation.</returns>
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="percent" /> exceeds 100.</exception>
         public override Task SetVolume(byte percent)
         {
             if (percent > 100)
@@ -61,10 +64,11 @@ namespace Alis.Core.Audio.Players
         }
 
         /// <summary>
-        ///     Gets the bash command using the specified file name
+        ///     Returns the appropriate bash command-line audio player for the given file based on its extension.
+        ///     Uses mpg123 for WAV files and aplay for all other formats.
         /// </summary>
-        /// <param name="fileName">The file name</param>
-        /// <returns>The string</returns>
+        /// <param name="fileName">The path to the audio file.</param>
+        /// <returns>The name of the command-line player tool (e.g., "aplay -q" or "mpg123 -q").</returns>
         internal override string GetBashCommand(string fileName)
         {
             if (Path.GetExtension(fileName).ToLower().Equals(".wav"))

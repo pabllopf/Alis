@@ -35,20 +35,23 @@ using Alis.Core.Audio.Players;
 namespace Alis.Core.Audio
 {
     /// <summary>
-    ///     The player class
+    ///     The top-level audio player that delegates playback to the appropriate platform-specific implementation.
+    ///     Automatically detects the current operating system and selects the corresponding player (Windows, macOS, Linux,
+    ///     or Web).
     /// </summary>
     /// <seealso cref="IPlayer" />
     public class Player : IPlayer
     {
         /// <summary>
-        ///     The internal player
+        ///     The platform-specific player instance determined at construction time via OS detection.
         /// </summary>
         private readonly IPlayer _internalPlayer;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Player" /> class
+        ///     Initializes a new instance of the <see cref="Player" /> class.
+        ///     Detects the current operating system and creates the appropriate internal player implementation.
         /// </summary>
-        /// <exception cref="Exception">No implementation exist for the current OS</exception>
+        /// <exception cref="Exception">Thrown when no audio player implementation exists for the current operating system.</exception>
         public Player()
         {
             _internalPlayer = CheckOs();
@@ -56,83 +59,88 @@ namespace Alis.Core.Audio
         }
 
         /// <summary>
-        ///     Internally, sets Playing flag to false. Additional handlers can be attached to it to handle any custom logic.
+        ///     Occurs when audio playback has finished. Internally sets the Playing flag to <c>false</c>.
+        ///     Additional handlers can be attached to handle custom post-playback logic.
         /// </summary>
         public event EventHandler PlaybackFinished;
 
         /// <summary>
-        ///     Indicates that the audio is currently playing.
+        ///     Gets a value indicating whether the audio is currently playing.
         /// </summary>
         public bool Playing => _internalPlayer.Playing;
 
         /// <summary>
-        ///     Indicates that the audio playback is currently paused.
+        ///     Gets a value indicating whether the audio playback is currently paused.
         /// </summary>
         public bool Paused => _internalPlayer.Paused;
 
         /// <summary>
-        ///     Will stop any current playback and will start playing the specified audio file. The fileName parameter can be an
-        ///     absolute path or a path relative to the directory where the library is located. Sets Playing flag to true. Sets
-        ///     Paused flag to false.
+        ///     Starts playback of the specified audio file. Stops any current playback before starting.
+        ///     Sets the <see cref="Playing" /> flag to <c>true</c> and the <see cref="Paused" /> flag to <c>false</c>.
         /// </summary>
-        /// <param name="fileName"></param>
-        /// <returns></returns>
+        /// <param name="fileName">The absolute or relative path to the audio file to play.</param>
+        /// <returns>A task that represents the asynchronous playback operation.</returns>
         public async Task Play(string fileName)
         {
             await _internalPlayer.Play(fileName);
         }
 
         /// <summary>
-        ///     Plays the loop using the specified file name
+        ///     Starts playback of the specified audio file with optional looping.
         /// </summary>
-        /// <param name="fileName">The file name</param>
-        /// <param name="loop">The loop</param>
+        /// <param name="fileName">The absolute or relative path to the audio file to play.</param>
+        /// <param name="loop">If <c>true</c>, the audio file loops continuously; otherwise it plays once.</param>
+        /// <returns>A task that represents the asynchronous playback operation.</returns>
         public async Task PlayLoop(string fileName, bool loop)
         {
             await _internalPlayer.PlayLoop(fileName, loop);
         }
 
         /// <summary>
-        ///     Pauses any playback. Sets Paused flag to true. Doesn't modify Playing flag.
+        ///     Pauses the currently playing audio. Sets the <see cref="Paused" /> flag to <c>true</c>.
+        ///     Does not modify the <see cref="Playing" /> flag.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A task that represents the asynchronous pause operation.</returns>
         public async Task Pause()
         {
             await _internalPlayer.Pause();
         }
 
         /// <summary>
-        ///     Resumes any paused playback. Sets Paused flag to false. Doesn't modify Playing flag.
+        ///     Resumes playback of a previously paused audio file. Sets the <see cref="Paused" /> flag to <c>false</c>.
+        ///     Does not modify the <see cref="Playing" /> flag.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A task that represents the asynchronous resume operation.</returns>
         public async Task Resume()
         {
             await _internalPlayer.Resume();
         }
 
         /// <summary>
-        ///     Stops any current playback and clears the buffer. Sets Playing and Paused flags to false.
+        ///     Stops any current playback and clears the audio buffer. Sets both <see cref="Playing" /> and <see cref="Paused" />
+        ///     flags to <c>false</c>.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A task that represents the asynchronous stop operation.</returns>
         public async Task Stop()
         {
             await _internalPlayer.Stop();
         }
 
         /// <summary>
-        ///     Sets the playing volume as percent
+        ///     Sets the audio playback volume as a percentage of the maximum volume.
         /// </summary>
-        /// <returns></returns>
+        /// <param name="percent">The volume level from 0 (silence) to 100 (maximum).</param>
+        /// <returns>A task that represents the asynchronous volume change operation.</returns>
         public async Task SetVolume(byte percent)
         {
             await _internalPlayer.SetVolume(percent);
         }
 
         /// <summary>
-        ///     Checks the os
+        ///     Detects the current operating system and returns the corresponding platform-specific player instance.
         /// </summary>
-        /// <exception>No implementation exist for the current OS</exception>
-        /// <returns>The player</returns>
+        /// <exception cref="Exception">Thrown when no player implementation exists for the detected operating system.</exception>
+        /// <returns>An <see cref="IPlayer" /> implementation for the current platform.</returns>
         internal static IPlayer CheckOs()
         {
 #if osxarm64 || osxarm || osxx64 || osx || osxarm || osxx64 || osx
@@ -150,10 +158,11 @@ namespace Alis.Core.Audio
         }
 
         /// <summary>
-        ///     Ons the playback finished using the specified sender
+        ///     Handles the <see cref="IPlayer.PlaybackFinished" /> event from the internal player.
+        ///     Forwards the event to external subscribers.
         /// </summary>
-        /// <param name="sender">The sender</param>
-        /// <param name="e">The </param>
+        /// <param name="sender">The source of the event (the internal player).</param>
+        /// <param name="e">An <see cref="EventArgs" /> that contains no event data.</param>
         internal void OnPlaybackFinished(object sender, EventArgs e)
         {
             PlaybackFinished?.Invoke(this, e);

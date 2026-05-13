@@ -32,27 +32,31 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     Output for Distance.ComputeDistance().
+    ///     Output result from the <see cref="Distance.ComputeDistance"/> GJK algorithm.
+    ///     Contains the minimum distance between two shapes and the closest points (witness points)
+    ///     on each shape's surface.
     /// </summary>
     public struct DistanceOutput
     {
         /// <summary>
-        ///     The distance
+        ///     The minimum distance between the two shapes after radius consideration.
+        ///     A value of zero or less indicates the shapes are overlapping or touching.
         /// </summary>
         public float Distance;
 
         /// <summary>
-        ///     Number of GJK iterations used
+        ///     The number of GJK iterations used to compute this distance result.
+        ///     Useful for performance profiling and debugging.
         /// </summary>
         public int Iterations;
 
         /// <summary>
-        ///     Closest point on shapeA
+        ///     The closest point on the surface of shape A (witness point A) in world coordinates.
         /// </summary>
         public Vector2F PointA;
 
         /// <summary>
-        ///     Closest point on shapeB
+        ///     The closest point on the surface of shape B (witness point B) in world coordinates.
         /// </summary>
         public Vector2F PointB;
     }

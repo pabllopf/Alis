@@ -30,14 +30,14 @@
 namespace Alis.Core.Graphic.OpenGL
 {
     /// <summary>
-    ///     The framebuffer attachment enum
+    /// Defines the attachment points for framebuffer objects in OpenGL.
+    /// Used with glFramebufferTexture2D and related functions to attach textures or renderbuffers to a framebuffer.
     /// </summary>
     public enum FramebufferAttachment
     {
         /// <summary>
-        ///     The color attachment framebuffer attachment
+        /// The first color attachment point of a framebuffer object (GL_COLOR_ATTACHMENT0 = 0x8CE0).
         /// </summary>
         ColorAttachment0 = 0x8CE0
-        // Agrega otros si los necesitas
     }
 }

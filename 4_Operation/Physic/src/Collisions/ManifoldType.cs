@@ -30,22 +30,26 @@
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     The manifold type enum
+    ///     Defines the type of contact manifold between two colliding shapes. The manifold type determines
+    ///     how the local point and normal are interpreted during collision resolution.
     /// </summary>
     public enum ManifoldType
     {
         /// <summary>
-        ///     The circles manifold type
+        ///     The manifold represents a circle-to-circle contact. The local point represents the center of circle A,
+        ///     and the local normal is not used.
         /// </summary>
         Circles,
 
         /// <summary>
-        ///     The face manifold type
+        ///     The manifold represents a contact where shape A provides the reference face. The local point is the
+        ///     center of the reference face on shape A, and the local normal is the outward normal of that face.
         /// </summary>
         FaceA,
 
         /// <summary>
-        ///     The face manifold type
+        ///     The manifold represents a contact where shape B provides the reference face. The local point is the
+        ///     center of the reference face on shape B, and the local normal is the outward normal of that face.
         /// </summary>
         FaceB
     }

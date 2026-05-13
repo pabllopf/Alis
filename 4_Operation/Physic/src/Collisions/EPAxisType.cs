@@ -30,22 +30,26 @@
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     The ep axis type enum
+    ///     Defines the type of separating axis identified during edge-polygon collision detection (EP algorithm).
+    ///     Determines whether the best separation was found against an edge or a polygon face, or is unknown.
     /// </summary>
     public enum EpAxisType
     {
         /// <summary>
-        ///     The unknown ep axis type
+        ///     The separating axis type has not been determined or is not applicable.
+        ///     This is the default state before axis computation.
         /// </summary>
         Unknown,
 
         /// <summary>
-        ///     The edge ep axis type
+        ///     The best separating axis corresponds to an edge of shape A (the edge shape).
+        ///     Separation is measured from the edge's reference face.
         /// </summary>
         EdgeA,
 
         /// <summary>
-        ///     The edge ep axis type
+        ///     The best separating axis corresponds to an edge/face of shape B (the polygon shape).
+        ///     Separation is measured from the polygon's reference face.
         /// </summary>
         EdgeB
     }

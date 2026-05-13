@@ -33,57 +33,64 @@ using System.Threading.Tasks;
 namespace Alis.Core.Audio.Interfaces
 {
     /// <summary>
-    ///     The player interface
+    ///     Defines the contract for audio playback implementations across different platforms.
+    ///     Provides methods for play, pause, resume, stop, and volume control of audio files.
     /// </summary>
     public interface IPlayer
     {
         /// <summary>
-        ///     Gets the value of the playing
+        ///     Gets a value indicating whether audio playback is currently in progress.
         /// </summary>
         bool Playing { get; }
 
         /// <summary>
-        ///     Gets the value of the paused
+        ///     Gets a value indicating whether audio playback is currently paused.
         /// </summary>
         bool Paused { get; }
 
         /// <summary>
-        ///     playback
+        ///     Occurs when the current audio playback has finished.
         /// </summary>
         event EventHandler PlaybackFinished;
 
         /// <summary>
-        ///     Plays the file name
+        ///     Starts playback of the specified audio file. Stops any current playback before starting.
         /// </summary>
-        /// <param name="fileName">The file name</param>
+        /// <param name="fileName">The absolute or relative path to the audio file to play.</param>
+        /// <returns>A task that represents the asynchronous playback operation.</returns>
         Task Play(string fileName);
 
         /// <summary>
-        ///     Plays the loop using the specified file name
+        ///     Starts playback of the specified audio file with optional looping. Stops any current playback before starting.
         /// </summary>
-        /// <param name="fileName">The file name</param>
-        /// <param name="loop">The loop</param>
+        /// <param name="fileName">The absolute or relative path to the audio file to play.</param>
+        /// <param name="loop">If <c>true</c>, the audio file will be played in a continuous loop; otherwise, it plays once.</param>
+        /// <returns>A task that represents the asynchronous playback operation.</returns>
         Task PlayLoop(string fileName, bool loop);
 
         /// <summary>
-        ///     Pauses this instance
+        ///     Pauses the currently playing audio, preserving the current playback position.
         /// </summary>
+        /// <returns>A task that represents the asynchronous pause operation.</returns>
         Task Pause();
 
         /// <summary>
-        ///     Resumes this instance
+        ///     Resumes playback of a previously paused audio file from the stored position.
         /// </summary>
+        /// <returns>A task that represents the asynchronous resume operation.</returns>
         Task Resume();
 
         /// <summary>
-        ///     Stops this instance
+        ///     Stops the current audio playback and resets the playback position to the beginning.
         /// </summary>
+        /// <returns>A task that represents the asynchronous stop operation.</returns>
         Task Stop();
 
         /// <summary>
-        ///     Sets the volume using the specified percent
+        ///     Sets the audio playback volume.
         /// </summary>
-        /// <param name="percent">The percent</param>
+        /// <param name="percent">The volume level as a percentage from 0 to 100, where 0 is silence and 100 is maximum.</param>
+        /// <returns>A task that represents the asynchronous volume set operation.</returns>
         Task SetVolume(byte percent);
     }
 }

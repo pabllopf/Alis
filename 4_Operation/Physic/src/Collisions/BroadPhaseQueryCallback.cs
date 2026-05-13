@@ -30,7 +30,10 @@
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     The broad phase query callback
+    ///     Represents a callback that is invoked for each proxy found during an AABB query against the broad-phase tree.
+    ///     The callback allows the caller to decide whether to continue the query or terminate early based on the proxy found.
     /// </summary>
+    /// <param name="proxyId">The proxy identifier of the node found overlapping the query AABB.</param>
+    /// <returns><c>true</c> to continue the query iteration; <c>false</c> to terminate the query early.</returns>
     public delegate bool BroadPhaseQueryCallback(int proxyId);
 }

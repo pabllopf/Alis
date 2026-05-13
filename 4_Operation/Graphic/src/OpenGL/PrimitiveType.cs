@@ -30,48 +30,49 @@
 namespace Alis.Core.Graphic.OpenGL
 {
     /// <summary>
-    ///     The primitive type enum
+    /// Defines the geometric primitive types used by OpenGL drawing commands such as glDrawArrays and glDrawElements.
+    /// Each value corresponds to a standard OpenGL primitive type constant that specifies how vertex data is interpreted.
     /// </summary>
     public enum PrimitiveType
     {
         /// <summary>
-        ///     The points primitive type
+        /// Each vertex is rendered as an individual point (GL_POINTS = 0x0000).
         /// </summary>
-        Points = 0x0000, // GL_POINTS
+        Points = 0x0000,
 
         /// <summary>
-        ///     The lines primitive type
+        /// Each pair of consecutive vertices defines an independent line segment (GL_LINES = 0x0001).
         /// </summary>
-        Lines = 0x0001, // GL_LINES
+        Lines = 0x0001,
 
         /// <summary>
-        ///     The line loop primitive type
+        /// A continuous line is drawn from the first vertex to the last, with the last vertex connected back to the first (GL_LINE_LOOP = 0x0002).
         /// </summary>
-        LineLoop = 0x0002, // GL_LINE_LOOP
+        LineLoop = 0x0002,
 
         /// <summary>
-        ///     The line strip primitive type
+        /// A continuous line is drawn from the first vertex to the last without closing back to the first (GL_LINE_STRIP = 0x0003).
         /// </summary>
-        LineStrip = 0x0003, // GL_LINE_STRIP
+        LineStrip = 0x0003,
 
         /// <summary>
-        ///     The triangles primitive type
+        /// Each group of three consecutive vertices defines an independent triangle (GL_TRIANGLES = 0x0004).
         /// </summary>
-        Triangles = 0x0004, // GL_TRIANGLES
+        Triangles = 0x0004,
 
         /// <summary>
-        ///     The triangle strip primitive type
+        /// A strip of triangles where each new vertex forms a triangle with the two previous vertices (GL_TRIANGLE_STRIP = 0x0005).
         /// </summary>
-        TriangleStrip = 0x0005, // GL_TRIANGLE_STRIP
+        TriangleStrip = 0x0005,
 
         /// <summary>
-        ///     The triangle fan primitive type
+        /// A fan of triangles where all triangles share the first vertex (GL_TRIANGLE_FAN = 0x0006).
         /// </summary>
-        TriangleFan = 0x0006, // GL_TRIANGLE_FAN
+        TriangleFan = 0x0006,
 
         /// <summary>
-        ///     The quads primitive type
+        /// Each group of four consecutive vertices defines an independent quadrilateral (GL_QUADS = 0x0007).
         /// </summary>
-        Quads = 0x0007 // GL_QUADS
+        Quads = 0x0007
     }
 }

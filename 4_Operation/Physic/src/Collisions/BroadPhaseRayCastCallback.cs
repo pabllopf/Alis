@@ -30,7 +30,15 @@
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     The broad phase ray cast callback
+    ///     Represents a callback that is invoked for each proxy intersected by a ray during a ray cast against the broad-phase
+    ///     tree. The callback reports the ray intersection input and proxy identifier, and returns the fraction of the ray
+    ///     at which the intersection occurred. A return value of zero terminates the ray cast early.
     /// </summary>
+    /// <param name="input">The ray-cast input data describing the ray origin, direction, and maximum fraction.</param>
+    /// <param name="proxyId">The proxy identifier of the node intersected by the ray.</param>
+    /// <returns>
+    ///     The fraction of the ray at which the intersection occurs. A value of zero signals the client to terminate
+    ///     the ray cast. Positive values update the ray casting bounds to the specified fraction.
+    /// </returns>
     public delegate float BroadPhaseRayCastCallback(ref RayCastInput input, int proxyId);
 }
