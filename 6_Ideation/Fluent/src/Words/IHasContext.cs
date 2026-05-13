@@ -30,15 +30,21 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     Fluent builder interface that sets the context on the target builder.
+    ///     Fluent builder interface that provides access to a shared context object
+    ///     during the entity construction pipeline.
     /// </summary>
-    /// <typeparam name="TBuilder">The builder type returned by the fluent method for chaining.</typeparam>
-    /// <typeparam name="TArgument">The argument type accepted by the fluent method.</typeparam>
+    /// <typeparam name="T">The type of context object shared across the build pipeline.</typeparam>
+    /// <remarks>
+    ///     The context can carry shared state between different fluent builder stages
+    ///     (e.g., a level editor reference, a shared resource manager, or a build accumulator).
+    ///     This interface exposes the context as a mutable property for read/write access.
+    /// </remarks>
     public interface IHasContext<T>
     {
         /// <summary>
-        ///     Gets the value of the context
+        ///     Gets or sets the shared context value available during entity construction.
         /// </summary>
+        /// <value>The context object. Can be read or modified by the builder pipeline.</value>
         T Context { get; set; }
     }
 }

@@ -82,17 +82,6 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="SceneManager" /> class with the specified scenes.
-        /// </summary>
-        /// <param name="context">The <see cref="Context" /> this manager belongs to.</param>
-        /// <param name="scenes">The scenes to preload. The first scene becomes the <see cref="CurrentWorld" />.</param>
-        /// <exception cref="ArgumentNullException">Thrown when <paramref name="scenes" /> is <see langword="null" />.</exception>
-        /// <exception cref="ArgumentException">Thrown when <paramref name="scenes" /> is empty.</exception>
-        public SceneManager(Context context, params Ecs.Scene[] scenes) : base(context)
-        {
-        }
-
-        /// <summary>
         ///     Initializes a new instance of the <see cref="SceneManager" /> class
         /// </summary>
         /// <param name="context">The context</param>

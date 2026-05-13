@@ -29,17 +29,23 @@
 
 namespace Alis.Core.Aspect.Fluent.Words
 {
-    /// <summary>
-    ///     Fluent builder interface that configures general properties on the target builder.
+/// <summary>
+    ///     Fluent builder interface for configuring general-purpose,
+    ///     global game settings that apply across the entire application.
     /// </summary>
-    /// <typeparam name="TBuilder">The builder type returned by the fluent method for chaining.</typeparam>
-    /// <typeparam name="TArgument">The argument type accepted by the fluent method.</typeparam>
+    /// <typeparam name="TBuilder">The builder type returned by the fluent method, enabling fluent chaining.</typeparam>
+    /// <typeparam name="TArgument">The general settings type, typically a configuration object with engine-wide parameters.</typeparam>
+    /// <remarks>
+    ///     Used to set application-wide properties such as target frame rate,
+    ///     global time scale, rendering quality presets, or platform-specific defaults.
+    ///     These settings affect all scenes and entities unless overridden locally.
+    /// </remarks>
     public interface IGeneral<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Configures general properties on the builder.
+        ///     Configures general application settings on the builder.
         /// </summary>
-        /// <param name="value">The general configuration to apply.</param>
+        /// <param name="value">The general settings object containing engine-wide configuration parameters.</param>
         /// <returns>The builder instance, enabling fluent chaining.</returns>
         TBuilder General(TArgument value);
     }

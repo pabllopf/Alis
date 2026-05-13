@@ -30,16 +30,22 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     Fluent builder interface that configures graphics settings on the target builder.
+    ///     Fluent builder interface that configures the visual rendering properties
+    ///     of a game entity, including sprite, mesh, material, and shader settings.
     /// </summary>
-    /// <typeparam name="TBuilder">The builder type returned by the fluent method for chaining.</typeparam>
-    /// <typeparam name="TArgument">The argument type accepted by the fluent method.</typeparam>
+    /// <typeparam name="TBuilder">The builder type returned by the fluent method, enabling fluent chaining.</typeparam>
+    /// <typeparam name="TArgument">The graphics configuration type — typically a sprite reference, mesh descriptor, or rendering settings object.</typeparam>
+    /// <remarks>
+    ///     Use this to assign visual representations to entities. The argument may reference
+    ///     a sprite, a 3D mesh, a procedural shape, or a rendering material.
+    ///     Related interfaces: <see cref="IScale2D"/>, <see cref="IColor"/>.
+    /// </remarks>
     public interface IGraphic<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Configures graphics settings on the builder.
+        ///     Configures visual rendering properties on the builder.
         /// </summary>
-        /// <param name="value">The graphics configuration to apply.</param>
+        /// <param name="value">The graphics configuration — a sprite, mesh reference, material, or rendering descriptor.</param>
         /// <returns>The builder instance, enabling fluent chaining.</returns>
         TBuilder Graphic(TArgument value);
     }
