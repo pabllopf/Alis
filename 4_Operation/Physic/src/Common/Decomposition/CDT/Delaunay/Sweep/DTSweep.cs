@@ -107,12 +107,6 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
 
 
             // Lets remove triangles connected to the two "algorithm" points
-
-            // XXX: When the first the nodes are points in a triangle we need to do a flip before 
-            //      removing triangles or we will lose a valid triangle.
-            //      Same for last three nodes!
-            // !!! If I implement ConvexHull for lower right and left boundary this fix should not be 
-            //     needed and the removed triangles will be added again by default
             n1 = tcx.AFront.Tail.Prev;
             if (n1.Triangle.Contains(n1.Next.Point) && n1.Triangle.Contains(n1.Prev.Point))
             {
@@ -265,7 +259,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             node.Next.Prev = newNode;
             node.Next = newNode;
 
-            tcx.AddNode(newNode); // XXX: BST
+            tcx.AddNode(newNode);
 
             if (!Legalize(tcx, triangle))
             {
@@ -677,7 +671,6 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                     else
                     {
                         Logger.Log("[FLIP] - subedge done");
-                        // XXX: I think one of the triangles should be legalized here?
                     }
                 }
                 else
@@ -1069,8 +1062,6 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         /// <returns>the angle between 3 front nodes</returns>
         private static double HoleAngle(AdvancingFrontNode node)
         {
-            // XXX: do we really need a signed angle for holeAngle?
-            //      could possible save some cycles here
             /* Complex plane
              * ab = cosA +i*sinA
              * ab = (ax + ay*i)(bx + by*i) = (ax*bx + ay*by) + i(ax*by-ay*bx)
@@ -1150,7 +1141,6 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                     if (ot.EdgeIsConstrained[oi] || ot.EdgeIsDelaunay[oi])
                     {
                         t.EdgeIsConstrained[i] = ot.EdgeIsConstrained[oi];
-                        // XXX: have no good way of setting this property when creating new triangles so lets set it here
                         continue;
                     }
 
@@ -1184,8 +1174,6 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
 
                         // Reset the Delaunay edges, since they only are valid Delaunay edges
                         // until we add a new triangle or point.
-                        // XXX: need to think about this. Can these edges be tried after we 
-                        //      return to previous recursive level?
                         t.EdgeIsDelaunay[i] = false;
                         ot.EdgeIsDelaunay[oi] = false;
 
@@ -1244,10 +1232,6 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             ot.SetConstrainedEdgeCw(op, ce4);
 
             // Remap neighbors
-            // XXX: might optimize the markNeighbor by keeping track of
-            //      what side should be assigned to what neighbor after the 
-            //      rotation. Now mark neighbor does lots of testing to find 
-            //      the right side.
             t.Neighbors.Clear();
             ot.Neighbors.Clear();
             if (n1 != null)
