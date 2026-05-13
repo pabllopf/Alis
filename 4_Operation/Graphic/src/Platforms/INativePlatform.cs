@@ -12,19 +12,6 @@
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
 //  --------------------------------------------------------------------------
 
 using System;
@@ -32,172 +19,172 @@ using System;
 namespace Alis.Core.Graphic.Platforms
 {
     /// <summary>
-    ///     The native platform interface
+    /// Defines the platform abstraction interface for creating and managing native windows,
+    /// OpenGL contexts, input processing, and window properties.
+    /// Each supported platform (Windows, macOS, Linux, Android, Web) provides its own implementation.
     /// </summary>
     public interface INativePlatform
     {
         /// <summary>
-        ///     Initializes the width
+        /// Initializes the native platform with the specified window dimensions and title.
+        /// Creates the window, sets up the OpenGL context, and makes it current.
         /// </summary>
-        /// <param name="width">The width</param>
-        /// <param name="height">The height</param>
-        /// <param name="title">The title</param>
+        /// <param name="width">The desired window width in pixels.</param>
+        /// <param name="height">The desired window height in pixels.</param>
+        /// <param name="title">The window title string.</param>
+        /// <returns>True if initialization succeeded, false otherwise.</returns>
         bool Initialize(int width, int height, string title);
 
         /// <summary>
-        ///     Initializes the width
+        /// Initializes the native platform with the specified window dimensions, title, and icon.
+        /// Creates the window, sets the icon, and prepares the OpenGL context.
         /// </summary>
-        /// <param name="width">The width</param>
-        /// <param name="height">The height</param>
-        /// <param name="title">The title</param>
-        /// <param name="iconPath">The icon path</param>
-        /// <returns>The bool</returns>
+        /// <param name="width">The desired window width in pixels.</param>
+        /// <param name="height">The desired window height in pixels.</param>
+        /// <param name="title">The window title string.</param>
+        /// <param name="iconPath">The file path to a BMP icon file for the window.</param>
+        /// <returns>True if initialization succeeded, false otherwise.</returns>
         bool Initialize(int width, int height, string title, string iconPath);
 
         /// <summary>
-        ///     Shows the window
+        /// Makes the window visible on screen.
         /// </summary>
         void ShowWindow();
 
         /// <summary>
-        ///     Hides the window
+        /// Hides the window from view.
         /// </summary>
         void HideWindow();
 
         /// <summary>
-        ///     Sets the title using the specified title
+        /// Sets the window title text.
         /// </summary>
-        /// <param name="title">The title</param>
+        /// <param name="title">The new window title.</param>
         void SetTitle(string title);
 
         /// <summary>
-        ///     Sets the size using the specified width
+        /// Sets the window client area size.
         /// </summary>
-        /// <param name="width">The width</param>
-        /// <param name="height">The height</param>
+        /// <param name="width">The new width in pixels.</param>
+        /// <param name="height">The new height in pixels.</param>
         void SetSize(int width, int height);
 
         /// <summary>
-        ///     Makes the context current
+        /// Makes the OpenGL rendering context current for the calling thread.
         /// </summary>
         void MakeContextCurrent();
 
         /// <summary>
-        ///     Swaps the buffers
+        /// Swaps the front and back buffers, presenting the rendered frame.
         /// </summary>
         void SwapBuffers();
 
         /// <summary>
-        ///     Ises the window visible
+        /// Checks whether the window is currently visible.
         /// </summary>
-        /// <returns>The bool</returns>
+        /// <returns>True if the window is visible, false otherwise.</returns>
         bool IsWindowVisible();
 
         /// <summary>
-        ///     Polls the events
+        /// Processes pending window events (input, resize, close, etc.).
+        /// Returns false when the window has been requested to close.
         /// </summary>
-        /// <returns>The bool</returns>
-        bool PollEvents(); // Devuelve false si la ventana se ha cerrado
+        /// <returns>True if the window is still running, false if a close has been requested.</returns>
+        bool PollEvents();
 
         /// <summary>
-        ///     Cleanups this instance
+        /// Releases all native resources (window, context, display connections).
         /// </summary>
         void Cleanup();
 
         /// <summary>
-        ///     Gets the window width
+        /// Gets the current window width in pixels.
         /// </summary>
-        /// <returns>The int</returns>
+        /// <returns>The window width.</returns>
         int GetWindowWidth();
 
         /// <summary>
-        ///     Gets the window height
+        /// Gets the current window height in pixels.
         /// </summary>
-        /// <returns>The int</returns>
+        /// <returns>The window height.</returns>
         int GetWindowHeight();
 
-
-        // Otros métodos según necesidades
         /// <summary>
-        ///     Gets the proc address using the specified proc name
+        /// Resolves an OpenGL function pointer by name from the platform's OpenGL driver.
         /// </summary>
-        /// <param name="procName">The proc name</param>
-        /// <returns>The int ptr</returns>
+        /// <param name="procName">The name of the OpenGL function to resolve.</param>
+        /// <returns>A function pointer, or IntPtr.Zero if not found.</returns>
         IntPtr GetProcAddress(string procName);
 
         /// <summary>
-        ///     Devuelve la última tecla pulsada, si existe
+        /// Gets the last key pressed, if any, and clears the stored key.
         /// </summary>
-        /// <param name="key">La tecla pulsada</param>
-        /// <returns>true si hay tecla, false si no</returns>
+        /// <param name="key">When this method returns, contains the last key pressed if available.</param>
+        /// <returns>True if a key was available, false otherwise.</returns>
         bool TryGetLastKeyPressed(out ConsoleKey key);
 
         /// <summary>
-        ///     Ises the key down using the specified console key
+        /// Checks if a specific key is currently held down.
         /// </summary>
-        /// <param name="consoleKey">The console key</param>
-        /// <returns>The bool</returns>
+        /// <param name="consoleKey">The key to check.</param>
+        /// <returns>True if the key is currently pressed, false otherwise.</returns>
         bool IsKeyDown(ConsoleKey consoleKey);
 
         /// <summary>
-        ///     Sets the window icon from the specified BMP file path
+        /// Sets the window icon from the specified BMP file path.
         /// </summary>
-        /// <param name="iconPath">Full path to the BMP icon file</param>
+        /// <param name="iconPath">Full path to the BMP icon file.</param>
         void SetWindowIcon(string iconPath);
 
         /// <summary>
-        ///     Gets the mouse state: position and button array (left, right, middle, aux1, aux2)
+        /// Gets the current mouse position and button states.
         /// </summary>
-        /// <param name="x">out x</param>
-        /// <param name="y">out y</param>
-        /// <param name="buttons">out buttons array</param>
+        /// <param name="x">When this method returns, contains the mouse X coordinate.</param>
+        /// <param name="y">When this method returns, contains the mouse Y coordinate.</param>
+        /// <param name="buttons">An array of 5 bools indicating button states (left, right, middle, aux1, aux2).</param>
         void GetMouseState(out int x, out int y, out bool[] buttons);
 
         /// <summary>
-        ///     Gets the mouse wheel delta (vertical)
+        /// Gets the accumulated mouse wheel vertical delta and resets it.
         /// </summary>
-        /// <returns>float wheel</returns>
+        /// <returns>The accumulated wheel delta.</returns>
         float GetMouseWheel();
 
         /// <summary>
-        ///     Devuelve la última cadena de caracteres de entrada (por ejemplo texto) acumulada por el backend de la plataforma.
-        ///     Esto permite transportar caracteres imprimibles (WM_CHAR / X11 KeySym) hacia ImGui.
+        /// Gets the last input characters (e.g., from WM_CHAR or X11 KeySym) for text input handling.
         /// </summary>
-        /// <param name="chars">La cadena de caracteres entrantes (puede contener varios caracteres)</param>
-        /// <returns>true si había caracteres pendientes, false si no</returns>
+        /// <param name="chars">When this method returns, contains the accumulated input characters.</param>
+        /// <returns>True if characters were available, false otherwise.</returns>
         bool TryGetLastInputCharacters(out string chars);
 
         /// <summary>
-        ///     Gets the window position x
+        /// Gets the window's X position on screen.
         /// </summary>
-        /// <returns>The int</returns>
+        /// <returns>The X coordinate of the window.</returns>
         int GetWindowPositionX();
 
         /// <summary>
-        ///     Gets the window position y
+        /// Gets the window's Y position on screen.
         /// </summary>
-        /// <returns>The int</returns>
+        /// <returns>The Y coordinate of the window.</returns>
         int GetWindowPositionY();
 
         /// <summary>
-        ///     Gets the window metrics using the specified win x
+        /// Gets the window metrics including position, size, and framebuffer size.
         /// </summary>
-        /// <param name="winX">The win</param>
-        /// <param name="winY">The win</param>
-        /// <param name="winW">The win</param>
-        /// <param name="winH">The win</param>
-        /// <param name="fbW">The fb</param>
-        /// <param name="fbH">The fb</param>
-        void GetWindowMetrics(out int winX, out int winY,
-            out int winW, out int winH,
-            out int fbW, out int fbH);
-
+        /// <param name="winX">Outputs the window X position.</param>
+        /// <param name="winY">Outputs the window Y position.</param>
+        /// <param name="winW">Outputs the window width.</param>
+        /// <param name="winH">Outputs the window height.</param>
+        /// <param name="fbW">Outputs the framebuffer width (may differ on HiDPI).</param>
+        /// <param name="fbH">Outputs the framebuffer height.</param>
+        void GetWindowMetrics(out int winX, out int winY, out int winW, out int winH, out int fbW, out int fbH);
 
         /// <summary>
-        ///     Gets the mouse position in view using the specified x
+        /// Gets the mouse position relative to the view area, normalized to 0.0-1.0 range.
         /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="x">Outputs the normalized X coordinate.</param>
+        /// <param name="y">Outputs the normalized Y coordinate.</param>
         void GetMousePositionInView(out float x, out float y);
     }
 }
