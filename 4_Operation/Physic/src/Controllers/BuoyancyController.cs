@@ -36,8 +36,38 @@ using Alis.Core.Physic.Dynamics;
 namespace Alis.Core.Physic.Controllers
 {
     /// <summary>
-    ///     The buoyancy controller class
+    ///     Simulates buoyancy forces on rigid bodies within a fluid region.
     /// </summary>
+    /// <remarks>
+    ///     <para>This controller applies buoyancy forces, linear drag, and angular drag to bodies
+    ///     that overlap with the specified container AABB.</para>
+    ///     <para>Buoyancy is calculated using Archimedes' principle: the upward buoyant force equals
+    ///     the weight of the fluid displaced by the submerged portion of the body.</para>
+    ///     <para>The controller computes the submerged area of each body's fixtures using the
+    ///     shape's <see cref="Shape.ComputeSubmergedArea"/> method, which determines how much of
+    ///     the shape lies below the fluid surface defined by the container's upper bound.</para>
+    ///     <para>Drag forces are applied to simulate fluid resistance. Linear drag acts against
+    ///     the body's linear velocity relative to the fluid, while angular drag resists rotation.</para>
+    ///     <example>
+    ///     <code>
+    ///     // Create a buoyancy controller for a water surface
+    ///     var waterArea = new Aabb(new Vector2F(-50, 0), new Vector2F(50, 20));
+    ///     var buoyancy = new BuoyancyController(
+    ///         container: waterArea,
+    ///         density: 1.0f,           // Water density
+    ///         linearDragCoefficient: 0.05f,
+    ///         rotationalDragCoefficient: 0.1f,
+    ///         gravity: new Vector2F(0, -9.81f)
+    ///     );
+    ///     
+    ///     // Add current effect (water flow)
+    ///     buoyancy.Velocity = new Vector2F(1, 0);
+    ///     
+    ///     // Add controller to world
+    ///     world.AddController(buoyancy);
+    ///     </code>
+    ///     </example>
+    /// </remarks>
     /// <seealso cref="Controller" />
     public sealed class BuoyancyController : Controller
     {
@@ -109,8 +139,13 @@ namespace Alis.Core.Physic.Controllers
         }
 
         /// <summary>
-        ///     Gets or sets the value of the container
+        ///     Gets or sets the AABB defining the fluid region.
         /// </summary>
+        /// <remarks>
+        ///     The upper bound of this AABB represents the fluid surface level.
+        ///     Bodies with fixtures below this Y coordinate are considered submerged.
+        ///     Only bodies intersecting this AABB will be affected by buoyancy forces.
+        /// </remarks>
         public Aabb Container
         {
             get => _container;
@@ -122,9 +157,22 @@ namespace Alis.Core.Physic.Controllers
         }
 
         /// <summary>
-        ///     Updates the dt
+        ///     Applies buoyancy forces to all bodies within the fluid region.
         /// </summary>
-        /// <param name="dt">The dt</param>
+        /// <param name="dt">Time step delta in seconds. Used to scale velocity clamping calculations.</param>
+        /// <remarks>
+        ///     <para>This method is called automatically by the physics world during simulation.
+        ///     It performs the following steps:</para>
+        ///     <list type="number">
+        ///         <item>Queries all fixtures intersecting the container AABB</item>
+        ///         <item>Filters to unique bodies (skipping static and sleeping bodies)</item>
+        ///         <item>For each body, iterates through polygon and circle fixtures</item>
+        ///         <item>Computes submerged area and centroid for each fixture</item>
+        ///         <item>Applies buoyancy force: <c>F = -density * area * gravity</c></item>
+        ///         <item>Applies linear drag based on velocity difference from fluid</item>
+        ///         <item>Applies angular drag proportional to angular velocity</item>
+        ///     </list>
+        /// </remarks>
         public override void Update(float dt)
         {
             _uniqueBodies.Clear();
