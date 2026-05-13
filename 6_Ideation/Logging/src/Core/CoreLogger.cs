@@ -43,53 +43,53 @@ namespace Alis.Core.Aspect.Logging.Core
     internal sealed class CoreLogger : ILogger
     {
         /// <summary>
-        ///     Synchronization lock for thread-safe access to the correlation ID.
+        ///     The correlation lock
         /// </summary>
         private readonly object _correlationLock = new object();
 
         /// <summary>
-        ///     The collection of filters to evaluate before writing log entries.
+        ///     The filters
         /// </summary>
         private readonly List<ILogFilter> _filters;
 
         /// <summary>
-        ///     The formatter used to convert log entries into strings for output.
+        ///     The formatter
         /// </summary>
         private readonly ILogFormatter _formatter;
 
         /// <summary>
-        ///     The minimum severity level threshold. Entries below this are silently discarded.
+        ///     The minimum level
         /// </summary>
         private readonly LogLevel _minimumLevel;
 
         /// <summary>
-        ///     The collection of output destinations where log entries are written.
+        ///     The outputs
         /// </summary>
         private readonly List<ILogOutput> _outputs;
 
         /// <summary>
-        ///     Synchronization lock for thread-safe access to the scope stack.
+        ///     The scope lock
         /// </summary>
         private readonly object _scopeLock = new object();
 
         /// <summary>
-        ///     Thread-safe stack of active scope objects for grouping related log entries.
+        ///     The scope stack
         /// </summary>
         private readonly Stack<object> _scopeStack;
 
         /// <summary>
-        ///     The current correlation ID for tracing related log entries across components.
+        ///     The correlation id
         /// </summary>
         private string _correlationId;
 
         /// <summary>
-        ///     Initializes a new instance of the CoreLogger class with the specified configuration.
+        ///     Initializes a new instance of the CoreLogger class.
         /// </summary>
-        /// <param name="name">The logical name for this logger, typically the fully-qualified class or component name.</param>
-        /// <param name="outputs">The collection of output destinations. If null, defaults to an empty list.</param>
-        /// <param name="filters">The collection of log filters. If null, defaults to an empty list.</param>
-        /// <param name="formatter">The formatter for converting entries to strings. Used internally for each entry.</param>
-        /// <param name="minimumLevel">The minimum severity level to process. Defaults to <see cref="LogLevel.Trace"/>.</param>
+        /// <param name="name">The logger name.</param>
+        /// <param name="outputs">The collection of log outputs.</param>
+        /// <param name="filters">The collection of log filters.</param>
+        /// <param name="formatter">The log formatter.</param>
+        /// <param name="minimumLevel">The minimum log level to process.</param>
         public CoreLogger(
             string name,
             List<ILogOutput> outputs,
