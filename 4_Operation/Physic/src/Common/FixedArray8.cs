@@ -32,53 +32,79 @@ using Alis.Core.Aspect.Math.Matrix;
 namespace Alis.Core.Physic.Common
 {
     /// <summary>
-    ///     The fixed array
+    ///     A fixed-size array of eight elements of type T, optimized for performance.
     /// </summary>
+    /// <typeparam name="T">The type of elements stored in the array.</typeparam>
+    /// <remarks>
+    ///     This struct provides a memory-efficient alternative to standard .NET arrays
+    ///     for small fixed-size collections. It avoids heap allocations and provides
+    ///     bounds-checked access with zero-overhead indexer when possible.
+    ///     Ideal for use in performance-critical physics calculations where allocation
+    ///     overhead must be minimized. Commonly used for representing matrix columns
+    ///     or larger contact manifolds.
+    /// </remarks>
+    /// <example>
+    ///     <code>
+    ///     FixedArray8&lt;ContactPoint&gt; manifold = new FixedArray8&lt;ContactPoint&gt;();
+    ///     for (int i = 0; i &lt; 8; i++)
+    ///     {
+    ///         manifold[i] = new ContactPoint();
+    ///     }
+    ///     </code>
+    /// </example>
     public struct FixedArray8<T>
     {
         /// <summary>
-        ///     The value
+        ///     The first element at index 0.
         /// </summary>
         internal T _value0;
 
         /// <summary>
-        ///     The value
+        ///     The second element at index 1.
         /// </summary>
         internal T _value1;
 
         /// <summary>
-        ///     The value
+        ///     The third element at index 2.
         /// </summary>
         internal T _value2;
 
         /// <summary>
-        ///     The value
+        ///     The fourth element at index 3.
         /// </summary>
         internal T _value3;
 
         /// <summary>
-        ///     The value
+        ///     The fifth element at index 4.
         /// </summary>
         internal T _value4;
 
         /// <summary>
-        ///     The value
+        ///     The sixth element at index 5.
         /// </summary>
         internal T _value5;
 
         /// <summary>
-        ///     The value
+        ///     The seventh element at index 6.
         /// </summary>
         internal T _value6;
 
         /// <summary>
-        ///     The value
+        ///     The eighth element at index 7.
         /// </summary>
         private T _value7;
 
         /// <summary>
-        ///     The index out of range exception
+        ///     Gets or sets the element at the specified index.
         /// </summary>
+        /// <param name="index">The zero-based index of the element (must be between 0 and 7).</param>
+        /// <value>
+        ///     The element at the specified index.
+        /// </value>
+        /// <returns>The element at the specified index.</returns>
+        /// <exception cref="CustomIndexOutOfRangeException">
+        ///     Thrown when index is less than 0 or greater than 7.
+        /// </exception>
         public T this[int index]
         {
             get
