@@ -40,26 +40,27 @@ namespace Alis.Core.Aspect.Logging.Core
     internal sealed class LoggerScope : IDisposable
     {
         /// <summary>
-        ///     The on dispose
+        ///     Callback invoked when this scope is disposed (popped from the stack).
         /// </summary>
         private readonly Action _onDispose;
 
         /// <summary>
-        ///     The scope stack
+        ///     Reference to the shared scope stack from the parent logger.
         /// </summary>
         private readonly Stack<object> _scopeStack;
 
         /// <summary>
-        ///     The disposed
+        ///     Indicates whether this scope has already been disposed.
         /// </summary>
         private bool _disposed;
 
         /// <summary>
-        ///     Initializes a new instance of the LoggerScope class.
+        ///     Initializes a new instance of the LoggerScope class, pushing the scope onto the shared stack.
         /// </summary>
-        /// <param name="scope">The scope to push.</param>
-        /// <param name="scopeStack">The shared scope stack.</param>
-        /// <param name="onDispose">Action to invoke when disposed.</param>
+        /// <param name="scope">The scope object to push onto the stack.</param>
+        /// <param name="scopeStack">The shared scope stack from the parent logger. Must not be null.</param>
+        /// <param name="onDispose">Optional action to invoke when this scope is disposed.</param>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="scopeStack"/> is null.</exception>
         public LoggerScope(object scope, Stack<object> scopeStack, Action onDispose)
         {
             _scopeStack = scopeStack ?? throw new ArgumentNullException(nameof(scopeStack));

@@ -33,9 +33,11 @@ using System.Collections.Generic;
 namespace Alis.Core.Aspect.Logging.Abstractions
 {
     /// <summary>
-    ///     Core logger interface for logging structured messages with various severity levels.
-    ///     Implementations must be thread-safe and support dependency injection.
-    ///     AOT-compatible: Uses interfaces and virtual dispatch only.
+    ///     Core logging interface for recording structured messages at various severity levels.
+    ///     Implementations must be thread-safe and suitable for use with dependency injection.
+    ///     Supports correlation IDs for request tracing, scopes for context grouping,
+    ///     and structured properties for rich log data.
+    ///     AOT-compatible: Uses only interfaces and virtual dispatch.
     /// </summary>
     public interface ILogger
     {
