@@ -32,8 +32,14 @@ using System;
 namespace Alis.Core.Aspect.Time
 {
     /// <summary>
-    ///     The clock class
+    ///     Provides a high-resolution time measurement utility similar to a stopwatch,
+    ///     allowing callers to measure elapsed time with start, stop, reset, and restart operations.
+    ///     Uses <see cref="DateTime.UtcNow" /> as the underlying time source.
     /// </summary>
+    /// <remarks>
+    ///     This class is not thread-safe. Instances should not be shared across threads without external synchronization.
+    ///     When started, elapsed time accumulates until the clock is stopped.
+    /// </remarks>
     public class Clock
     {
         /// <summary>
@@ -52,7 +58,7 @@ namespace Alis.Core.Aspect.Time
         private DateTime _startTime;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Clock" /> class
+        ///     Initializes a new instance of the <see cref="Clock" /> class with elapsed time set to zero and the clock in a stopped state.
         /// </summary>
         public Clock()
         {
@@ -60,32 +66,39 @@ namespace Alis.Core.Aspect.Time
         }
 
         /// <summary>
-        ///     Gets the value of the elapsed seconds
+        ///     Gets the total elapsed time measured by the clock, expressed in whole seconds.
         /// </summary>
+        /// <returns>The total elapsed seconds, computed as <see cref="ElapsedMilliseconds" /> divided by 1000.</returns>
         public long ElapsedSeconds => ElapsedMilliseconds / 1000;
 
         /// <summary>
-        ///     Gets the value of the is running
+        ///     Gets a value indicating whether the clock is currently running (measuring time).
         /// </summary>
+        /// <returns><c>true</c> if the clock is running; otherwise, <c>false</c>.</returns>
         public bool IsRunning => _isRunning;
 
         /// <summary>
-        ///     Gets the value of the elapsed
+        ///     Gets the total elapsed time measured by the clock.
+        ///     If the clock is currently running, the returned value includes the time elapsed since the last start.
+        ///     If the clock is stopped, the returned value is the accumulated elapsed time at the moment it was stopped.
         /// </summary>
+        /// <returns>A <see cref="TimeSpan" /> representing the total elapsed time.</returns>
         public TimeSpan Elapsed => _isRunning ? _elapsed + (DateTime.UtcNow - _startTime) : _elapsed;
 
         /// <summary>
-        ///     Gets the value of the elapsed milliseconds
+        ///     Gets the total elapsed time measured by the clock, expressed in milliseconds.
         /// </summary>
+        /// <returns>The total elapsed milliseconds, truncated to a whole number.</returns>
         public long ElapsedMilliseconds => (long) Elapsed.TotalMilliseconds;
 
         /// <summary>
-        ///     Gets the value of the elapsed ticks
+        ///     Gets the total elapsed time measured by the clock, expressed in tick units (100-nanosecond intervals).
         /// </summary>
+        /// <returns>The total elapsed ticks, equivalent to <see cref="TimeSpan.Ticks" />.</returns>
         public long ElapsedTicks => Elapsed.Ticks;
 
         /// <summary>
-        ///     Starts this instance
+        ///     Starts or resumes measuring elapsed time. If the clock is already running, this method is a no-op.
         /// </summary>
         public void Start()
         {
@@ -98,9 +111,10 @@ namespace Alis.Core.Aspect.Time
         }
 
         /// <summary>
-        ///     Starts the new
+        ///     Creates a new <see cref="Clock" /> instance and immediately starts it.
+        ///     This is a convenience factory method equivalent to <c>new Clock(); clock.Start();</c>.
         /// </summary>
-        /// <returns>The </returns>
+        /// <returns>A new <see cref="Clock" /> instance that is already running.</returns>
         public static Clock Create()
         {
             Clock s = new Clock();
@@ -109,7 +123,8 @@ namespace Alis.Core.Aspect.Time
         }
 
         /// <summary>
-        ///     Stops this instance
+        ///     Stops measuring elapsed time and freezes the accumulated elapsed value.
+        ///     If the clock is already stopped, this method is a no-op.
         /// </summary>
         public void Stop()
         {
@@ -122,7 +137,7 @@ namespace Alis.Core.Aspect.Time
         }
 
         /// <summary>
-        ///     Resets this instance
+        ///     Stops the clock and resets the accumulated elapsed time to zero.
         /// </summary>
         public void Reset()
         {
@@ -133,7 +148,8 @@ namespace Alis.Core.Aspect.Time
 
         // Convenience method for replacing {sw.Reset(); sw.Start();} with a single sw.Restart()
         /// <summary>
-        ///     Restarts this instance
+        ///     Resets the elapsed time to zero and starts the clock.
+        ///     This is a convenience method equivalent to calling <see cref="Reset" /> followed by <see cref="Start" />.
         /// </summary>
         public void Restart()
         {
