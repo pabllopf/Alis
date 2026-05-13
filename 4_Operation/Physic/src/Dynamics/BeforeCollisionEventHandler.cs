@@ -30,12 +30,7 @@
 namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>
-    ///     Represents a callback that is invoked before a collision between two fixtures is processed.
-    ///     The delegate can return <c>false</c> to prevent the collision from being processed entirely,
-    ///     effectively allowing custom collision filtering at runtime.
+    ///     The before collision event handler
     /// </summary>
-    /// <param name="sender">The fixture on the first body involved in the potential collision.</param>
-    /// <param name="other">The fixture on the second body involved in the potential collision.</param>
-    /// <returns><c>true</c> to allow the collision to be processed; <c>false</c> to ignore the collision.</returns>
     public delegate bool BeforeCollisionEventHandler(Fixture sender, Fixture other);
 }

@@ -31,19 +31,16 @@ using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Physic.Dynamics
 {
-    /// <summary>
-    ///     Stores the velocity state of a single body during constraint solving,
-    ///     including the linear and angular velocity.
-    /// </summary>
+    /// This is an internal structure.
     internal struct SolverVelocity
     {
         /// <summary>
-        ///     The linear velocity of the body's center of mass in world-space units per second.
+        ///     The
         /// </summary>
         public Vector2F V;
 
         /// <summary>
-        ///     The angular velocity of the body in radians per second.
+        ///     The
         /// </summary>
         public float W;
     }

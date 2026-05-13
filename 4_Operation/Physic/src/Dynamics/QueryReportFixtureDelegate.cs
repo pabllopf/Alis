@@ -30,10 +30,8 @@
 namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>
-    ///     Represents a callback invoked for each fixture found during an AABB or point query in the physics world.
-    ///     Return <c>true</c> to continue the query or <c>false</c> to terminate it early.
+    ///     Called for each fixture found in the query.
+    ///     <returns>true: Continues the query, false: Terminate the query</returns>
     /// </summary>
-    /// <param name="fixture">The fixture found overlapping the query region.</param>
-    /// <returns><c>true</c> to continue the query iteration; <c>false</c> to terminate the query.</returns>
     public delegate bool QueryReportFixtureDelegate(Fixture fixture);
 }

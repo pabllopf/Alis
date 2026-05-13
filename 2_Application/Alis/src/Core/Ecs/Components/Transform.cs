@@ -33,37 +33,37 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Core.Ecs.Components
 {
     /// <summary>
-    ///     Represents the spatial transform (position, rotation, scale) of an ECS entity.
+    ///     The transform
     /// </summary>
     public struct Transform : IOnStart, IOnExit
     {
         /// <summary>
-        ///     The original position for reset purposes.
+        ///     The position origin
         /// </summary>
         private readonly Vector2F positionOrigin;
 
         /// <summary>
-        ///     The original rotation for reset purposes.
+        ///     The rotation origin
         /// </summary>
         private readonly float rotationOrigin;
 
         /// <summary>
-        ///     The original scale for reset purposes.
+        ///     The scale origin
         /// </summary>
         private readonly Vector2F scaleOrigin;
 
         /// <summary>
-        ///     Current position of the entity in world space.
+        ///     The position
         /// </summary>
         public Vector2F Position;
 
         /// <summary>
-        ///     Current rotation of the entity in radians.
+        ///     The rotation
         /// </summary>
         public float Rotation;
 
         /// <summary>
-        ///     Current scale of the entity.
+        ///     The scale
         /// </summary>
         public Vector2F Scale;
 
@@ -84,18 +84,11 @@ namespace Alis.Core.Ecs.Components
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Transform" /> struct.
+        ///     Initializes a new instance of the <see cref="Transform" /> class
         /// </summary>
-        /// <param name="position">The initial position.</param>
-        /// <param name="rotation">The initial rotation in radians.</param>
-        public Transform(Vector2F position, float rotation)
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Transform" /> struct.
-        /// </summary>
-        /// <param name="position">The initial position.</param>
-        /// <param name="rotation">The initial rotation in radians.</param>
-        /// <param name="scale">The initial scale.</param>
+        /// <param name="position">The position</param>
+        /// <param name="rotation">The rotation</param>
+        /// <param name="scale">The scale</param>
         public Transform(Vector2F position, float rotation, Vector2F scale)
         {
             Rotation = rotation;
@@ -116,15 +109,9 @@ namespace Alis.Core.Ecs.Components
         }
 
         /// <summary>
-        ///     Called when the entity is started.
+        ///     Ons the exit using the specified self
         /// </summary>
-        /// <param name="self">The owning game object.</param>
-        public void OnStart(IGameObject self)
-
-        /// <summary>
-        ///     Called when the entity is destroyed; resets transform to origin values.
-        /// </summary>
-        /// <param name="self">The owning game object.</param>
+        /// <param name="self">The self</param>
         public void OnExit(IGameObject self)
         {
             Position = positionOrigin;

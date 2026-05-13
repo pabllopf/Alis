@@ -35,27 +35,27 @@ using Alis.Core.Ecs.Systems.Scope;
 namespace Alis.Core.Ecs.Components.Render
 {
     /// <summary>
-    ///     Represents a rendering camera with position and resolution.
+    ///     The camera
     /// </summary>
     public struct Camera(Context context, Vector2F position, Vector2F resolution) : ICamera
     {
         /// <summary>
-        ///     The original position for reset purposes.
+        ///     The position
         /// </summary>
         private readonly Vector2F positionOriginal = position;
 
         /// <summary>
-        ///     The original resolution for reset purposes.
+        ///     The resolution
         /// </summary>
         private readonly Vector2F resolutionOriginal = resolution;
 
         /// <summary>
-        ///     Current camera position in world space.
+        ///     The position
         /// </summary>
         public Vector2F Position { get; set; } = position;
 
         /// <summary>
-        ///     Gets or sets the camera's rendering resolution.
+        ///     Gets or sets the value of the resolution
         /// </summary>
         public Vector2F Resolution { get; set; } = resolution;
 
@@ -80,19 +80,7 @@ namespace Alis.Core.Ecs.Components.Render
         }
 
         /// <summary>
-        ///     Called when the entity is started. Logs initialization details.
-        /// </summary>
-        /// <param name="self">The owning game object.</param>
-        public void OnStart(IGameObject self)
-
-        /// <summary>
-        ///     Called when the entity is destroyed; resets camera to original position and resolution.
-        /// </summary>
-        /// <param name="self">The owning game object.</param>
-        public void OnExit(IGameObject self)
-
-        /// <summary>
-        ///     Gets or sets the execution context.
+        ///     Gets or sets the value of the context
         /// </summary>
         public Context Context { get; set; } = context;
     }

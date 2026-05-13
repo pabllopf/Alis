@@ -12,6 +12,19 @@
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
 //  --------------------------------------------------------------------------
 
 using System;
@@ -25,41 +38,37 @@ using Type = System.Type;
 namespace Alis.Core.Graphic.OpenGL.Constructs
 {
     /// <summary>
-    /// Represents a linked OpenGL shader program that combines vertex and fragment shaders.
-    /// Provides automatic parameter (attribute/uniform) discovery, location resolution,
-    /// and typed value setting. Implements <see cref="IDisposable"/> for deterministic cleanup.
+    ///     The gl shader program class
     /// </summary>
     /// <seealso cref="IDisposable" />
     public sealed class GlShaderProgram : IDisposable
     {
         /// <summary>
-        /// Specifies whether this program will automatically dispose of the child
-        /// vertex/fragment shaders when the program is disposed.
+        ///     Specifies whether this program will dispose of the child
+        ///     vertex/fragment programs when the IDisposable method is called.
         /// </summary>
         public readonly bool DisposeChildren;
 
         /// <summary>
-        /// Specifies the fragment shader object used in this program.
+        ///     Specifies the fragment shader used in this program.
         /// </summary>
         public readonly GlShader FragmentShader;
 
         /// <summary>
-        /// Specifies the vertex shader object used in this program.
+        ///     Specifies the vertex shader used in this program.
         /// </summary>
         public readonly GlShader VertexShader;
 
         /// <summary>
-        /// Internal dictionary mapping parameter names to their shader program parameter objects.
+        ///     The shader params
         /// </summary>
         private Dictionary<string, GlShaderProgramParam> shaderParams;
 
         /// <summary>
-        /// Links a vertex and fragment shader together to create a shader program.
-        /// After linking, automatically discovers all active attributes and uniforms.
+        ///     Links a vertex and fragment shader together to create a shader program.
         /// </summary>
-        /// <param name="vertexShader">The compiled vertex shader to attach.</param>
-        /// <param name="fragmentShader">The compiled fragment shader to attach.</param>
-        /// <exception cref="Exception">Thrown when program linking fails; the message contains the program info log.</exception>
+        /// <param name="vertexShader">Specifies the vertex shader.</param>
+        /// <param name="fragmentShader">Specifies the fragment shader.</param>
         public GlShaderProgram(GlShader vertexShader, GlShader fragmentShader)
         {
             VertexShader = vertexShader;
@@ -71,6 +80,8 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
             Gl.GlAttachShader(ProgramId, fragmentShader.ShaderId);
             Gl.GlLinkProgram(ProgramId);
 
+            //Check whether the program linked successfully.
+            //If not then throw an error with the linking error.
             if (!Gl.GetProgramLinkStatus(ProgramId))
             {
                 throw new Exception(ProgramLog);
@@ -80,35 +91,33 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         }
 
         /// <summary>
-        /// Creates two shaders from the provided source strings and links them together.
-        /// The created vertex and fragment shaders will be automatically disposed when the program is disposed.
+        ///     Creates two shaders and then links them together to create a shader program.
         /// </summary>
-        /// <param name="vertexShaderSource">The GLSL source code of the vertex shader.</param>
-        /// <param name="fragmentShaderSource">The GLSL source code of the fragment shader.</param>
+        /// <param name="vertexShaderSource">Specifies the source code of the vertex shader.</param>
+        /// <param name="fragmentShaderSource">Specifies the source code of the fragment shader.</param>
         public GlShaderProgram(string vertexShaderSource, string fragmentShaderSource)
             : this(new GlShader(vertexShaderSource, ShaderType.VertexShader), new GlShader(fragmentShaderSource, ShaderType.FragmentShader))
             => DisposeChildren = true;
 
         /// <summary>
-        /// Gets or sets the OpenGL program object ID (handle).
+        ///     Specifies the OpenGL shader program ID.
         /// </summary>
         public uint ProgramId { get; set; }
 
         /// <summary>
-        /// Gets the shader parameter with the specified case-sensitive name.
-        /// Returns null if the parameter is not found in the program.
+        ///     Queries the shader parameter hashtable to find a matching attribute/uniform.
         /// </summary>
-        /// <param name="name">The case-sensitive name of the shader attribute or uniform.</param>
-        /// <returns>The <see cref="GlShaderProgramParam"/> for the requested name, or null.</returns>
+        /// <param name="name">Specifies the case-sensitive name of the shader attribute/uniform.</param>
+        /// <returns>The requested attribute/uniform, or null on a failure.</returns>
         public GlShaderProgramParam this[string name] => shaderParams.ContainsKey(name) ? shaderParams[name] : null;
 
         /// <summary>
-        /// Gets the program info log, containing any linking or validation messages.
+        ///     Gets the value of the program log
         /// </summary>
         public string ProgramLog => Gl.GetProgramInfoLog(ProgramId);
 
         /// <summary>
-        /// Releases the program resources, detaching and optionally disposing shaders.
+        ///     Disposes this instance
         /// </summary>
         public void Dispose()
         {
@@ -117,8 +126,8 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         }
 
         /// <summary>
-        /// Parses all active vertex attributes and uniforms from the compiled and linked program,
-        /// resolves their locations, and stores them in the internal parameter dictionary.
+        ///     Parses all of the parameters (attributes/uniforms) from the two attached shaders
+        ///     and then loads their location by passing this shader program into the parameter object.
         /// </summary>
         private void GetParams()
         {
@@ -162,11 +171,11 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         }
 
         /// <summary>
-        /// Maps an <see cref="ActiveAttribType"/> to its corresponding managed <see cref="Type"/>.
+        ///     Types the from attribute type using the specified type
         /// </summary>
-        /// <param name="type">The OpenGL attribute type from glGetActiveAttrib.</param>
-        /// <returns>The managed type that corresponds to the OpenGL attribute type.</returns>
-        /// <exception cref="Exception">Thrown when the type FloatMat3 is encountered (unsupported).</exception>
+        /// <param name="type">The type</param>
+        /// <exception cref="Exception"></exception>
+        /// <returns>The type</returns>
         private Type TypeFromAttributeType(ActiveAttribType type)
         {
             switch (type)
@@ -183,11 +192,11 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         }
 
         /// <summary>
-        /// Maps an <see cref="ActiveUniformType"/> to its corresponding managed <see cref="Type"/>.
+        ///     Types the from uniform type using the specified type
         /// </summary>
-        /// <param name="type">The OpenGL uniform type from glGetActiveUniform.</param>
-        /// <returns>The managed type that corresponds to the OpenGL uniform type.</returns>
-        /// <exception cref="Exception">Thrown when the type FloatMat3 is encountered (unsupported).</exception>
+        /// <param name="type">The type</param>
+        /// <exception cref="Exception"></exception>
+        /// <returns>The type</returns>
         private Type TypeFromUniformType(ActiveUniformType type)
         {
             switch (type)
@@ -257,15 +266,15 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         }
 
         /// <summary>
-        /// Activates this shader program for rendering via glUseProgram.
+        ///     Uses this instance
         /// </summary>
         public void Use() => Gl.GlUseProgram(ProgramId);
 
         /// <summary>
-        /// Gets the location of a uniform variable in this program.
+        ///     Gets the uniform location using the specified name
         /// </summary>
-        /// <param name="name">The name of the uniform variable.</param>
-        /// <returns>The integer location of the uniform, or -1 if not found.</returns>
+        /// <param name="name">The name</param>
+        /// <returns>The int</returns>
         public int GetUniformLocation(string name)
         {
             Use();
@@ -273,10 +282,10 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         }
 
         /// <summary>
-        /// Gets the location of a vertex attribute in this program.
+        ///     Gets the attribute location using the specified name
         /// </summary>
-        /// <param name="name">The name of the vertex attribute.</param>
-        /// <returns>The integer location of the attribute, or -1 if not found.</returns>
+        /// <param name="name">The name</param>
+        /// <returns>The int</returns>
         public int GetAttributeLocation(string name)
         {
             Use();
@@ -284,15 +293,13 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         }
 
         /// <summary>
-        /// Finalizes the shader program, ensuring OpenGL resources are released.
         /// </summary>
         ~GlShaderProgram() => Dispose(false);
 
         /// <summary>
-        /// Releases the program and associated resources.
-        /// Detaches shaders, deletes the program, and optionally disposes child shaders.
+        ///     Disposes the disposing
         /// </summary>
-        /// <param name="disposing">True if called from Dispose, false if called from the finalizer.</param>
+        /// <param name="disposing">The disposing</param>
         private void Dispose(bool disposing)
         {
             if (ProgramId != 0)

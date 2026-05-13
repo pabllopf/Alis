@@ -30,11 +30,7 @@
 namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>
-    ///     Represents a callback that is invoked when a fixture event occurs in the physics world,
-    ///     such as fixture creation or destruction. Provides the world, body, and fixture.
+    ///     The fixture delegate
     /// </summary>
-    /// <param name="sender">The physics world that triggered the event.</param>
-    /// <param name="body">The body that owns the fixture.</param>
-    /// <param name="fixture">The fixture associated with the event.</param>
     public delegate void FixtureDelegate(WorldPhysic sender, Body body, Fixture fixture);
 }

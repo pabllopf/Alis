@@ -32,11 +32,7 @@ using Alis.Core.Physic.Dynamics.Contacts;
 namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>
-    ///     Represents a callback that is invoked when two fixtures that were previously in contact
-    ///     separate (cease to overlap). This is called after the contact is destroyed.
+    ///     The on separation event handler
     /// </summary>
-    /// <param name="sender">The fixture on the first body that was in contact.</param>
-    /// <param name="other">The fixture on the second body that was in contact.</param>
-    /// <param name="contact">The contact object that is being destroyed due to separation.</param>
     public delegate void OnSeparationEventHandler(Fixture sender, Fixture other, Contact contact);
 }

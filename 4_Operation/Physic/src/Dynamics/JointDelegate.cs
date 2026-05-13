@@ -32,10 +32,7 @@ using Alis.Core.Physic.Dynamics.Joints;
 namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>
-    ///     Represents a callback that is invoked when a joint event occurs in the physics world,
-    ///     such as joint creation or destruction. Provides the world and the affected joint.
+    ///     The joint delegate
     /// </summary>
-    /// <param name="sender">The physics world that triggered the event.</param>
-    /// <param name="joint">The joint associated with the event.</param>
     public delegate void JointDelegate(WorldPhysic sender, Joint joint);
 }

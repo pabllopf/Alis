@@ -32,10 +32,7 @@ using Alis.Core.Physic.Controllers;
 namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>
-    ///     Represents a callback that is invoked when a controller event occurs in the physics world,
-    ///     such as controller addition or removal. Provides the world and the affected controller.
+    ///     The controller delegate
     /// </summary>
-    /// <param name="sender">The physics world that triggered the event.</param>
-    /// <param name="controller">The controller associated with the event.</param>
     public delegate void ControllerDelegate(WorldPhysic sender, Controller controller);
 }

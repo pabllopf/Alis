@@ -12,6 +12,19 @@
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
 //  --------------------------------------------------------------------------
 
 using System;
@@ -24,334 +37,449 @@ using Alis.Core.Graphic.OpenGL.Enums;
 namespace Alis.Core.Graphic.OpenGL
 {
     /// <summary>
-    /// Provides a managed wrapper around OpenGL functions loaded at runtime via platform-specific GetProcAddress.
-    /// All OpenGL commands are exposed as static delegates that are resolved dynamically,
-    /// enabling cross-platform support for Windows, macOS, Linux, and WebAssembly.
+    ///     The gl class
     /// </summary>
     public static class Gl
     {
         /// <summary>
-        /// Activates the specified texture unit for subsequent texture binding operations.
+        ///     Activates the specified texture unit
         /// </summary>
-        /// <param name="texture">The texture unit to activate.</param>
+        /// <param name="texture">The texture unit</param>
         public delegate void ActiveTexture(TextureUnit texture);
 
+        // Enum para FramebufferTarget
+
         /// <summary>
-        /// Binds a framebuffer object to the specified target.
+        ///     The bind framebuffer
         /// </summary>
-        /// <param name="target">The framebuffer target (e.g., Framebuffer).</param>
-        /// <param name="framebuffer">The framebuffer object name.</param>
         public delegate void BindFramebuffer(FramebufferTarget target, uint framebuffer);
 
         /// <summary>
-        /// Attaches a texture as a buffer attachment point to a framebuffer object.
+        ///     The framebuffer texture
         /// </summary>
-        /// <param name="target">The framebuffer target.</param>
-        /// <param name="attachment">The attachment point.</param>
-        /// <param name="texTarget">The texture target.</param>
-        /// <param name="texture">The texture object name.</param>
-        /// <param name="level">The mipmap level of the texture to attach.</param>
         public delegate void FramebufferTexture2D(FramebufferTarget target, FramebufferAttachment attachment, TextureTarget texTarget, uint texture, int level);
 
         /// <summary>
-        /// Generates a single framebuffer object name.
+        ///     The gen framebuffer
         /// </summary>
-        /// <returns>The generated framebuffer object name.</returns>
         public delegate uint GenFramebuffer();
 
         /// <summary>
-        /// Returns the value of a specified OpenGL integer parameter.
+        ///     The get integerv
         /// </summary>
-        /// <param name="pname">The parameter name to query.</param>
-        /// <param name="data">The array that receives the parameter value(s).</param>
         public delegate void GetIntegerv(int pname, int[] data);
 
         /// <summary>
-        /// Delegate for loading OpenGL function pointers from the platform.
+        ///     The get proc address delegate
         /// </summary>
-        /// <param name="procName">The name of the OpenGL function to load.</param>
-        /// <returns>A pointer to the function, or IntPtr.Zero if not found.</returns>
         public delegate IntPtr GetProcAddressDelegate(string procName);
 
         /// <summary>
-        /// Sets the width of rasterized lines.
+        ///     Sets the width of lines to be rasterized
         /// </summary>
-        /// <param name="width">The width of the line in pixels.</param>
+        /// <param name="width">The width of the line</param>
         public delegate void LineWidth(float width);
 
+        // En Gl.cs
         /// <summary>
-        /// Reads a block of pixels from the framebuffer.
+        ///     The read pixels
         /// </summary>
-        /// <param name="x">The x-coordinate of the lower-left corner.</param>
-        /// <param name="y">The y-coordinate of the lower-left corner.</param>
-        /// <param name="width">The width of the pixel rectangle.</param>
-        /// <param name="height">The height of the pixel rectangle.</param>
-        /// <param name="format">The pixel format of the output data.</param>
-        /// <param name="type">The data type of the pixel data.</param>
-        /// <param name="pixels">A pointer to the output buffer.</param>
         public delegate void ReadPixels(int x, int y, int width, int height, PixelFormat format, PixelType type, IntPtr pixels);
 
         /// <summary>
-        /// Sets a 2x3 float matrix uniform value.
+        ///     The uniform matrix 2x fv del
         /// </summary>
-        /// <param name="location">The uniform location.</param>
-        /// <param name="count">The number of matrices.</param>
-        /// <param name="transpose">Whether to transpose the matrix.</param>
-        /// <param name="value">The matrix values.</param>
         public delegate void UniformMatrix2x3FvDel(int location, int count, bool transpose, Span<float> value);
 
         /// <summary>
-        /// The cached GetProcAddress delegate used to resolve OpenGL function pointers.
+        ///     The get proc address
         /// </summary>
         private static GetProcAddressDelegate _getProcAddress;
 
         /// <summary>
-        /// Reusable 1-element uint array for buffer/texture/framebuffer name generation.
+        ///     The uint
         /// </summary>
         public static uint[] Uint1 = new uint[1];
 
         /// <summary>
-        /// Reusable 1-element int array for shader/program parameter queries.
+        ///     The int
         /// </summary>
         public static int[] Int1 = new int[1];
 
         /// <summary>
-        /// Reusable 16-element float array for matrix4x4 uniform uploads.
+        ///     The matrix float
         /// </summary>
         public static float[] Matrix4Float = new float[16];
 
-        // ---------------------------------------------------------------
-        // OpenGL function delegates resolved via GetProcAddress
-        // ---------------------------------------------------------------
-
-        /// <summary>Gets the GetString delegate resolved from "glGetString".</summary>
+        /// <summary>
+        ///     The get string
+        /// </summary>
         public static GetString GetString => GetCommand<GetString>("glGetString");
 
-        /// <summary>Gets the GenBuffers delegate resolved from "glGenBuffers".</summary>
+        /// <summary>
+        ///     The gen buffers
+        /// </summary>
         public static GenBuffers GlGenBuffers => GetCommand<GenBuffers>("glGenBuffers");
 
-        /// <summary>Gets the DeleteBuffers delegate resolved from "glDeleteBuffers".</summary>
+        /// <summary>
+        ///     The delete buffers
+        /// </summary>
         public static DeleteBuffers GlDeleteBuffers => GetCommand<DeleteBuffers>("glDeleteBuffers");
 
-        /// <summary>Gets the GetIntegerv delegate resolved from "glGetIntegerv".</summary>
+        /// <summary>
+        ///     Gets the value of the gl get integer v
+        /// </summary>
         public static GetIntegerv GlGetIntegerV => GetCommand<GetIntegerv>("glGetIntegerv");
 
-        /// <summary>Gets the Viewport delegate resolved from "glViewport".</summary>
+        /// <summary>
+        ///     The viewport
+        /// </summary>
         public static Viewport GlViewport => GetCommand<Viewport>("glViewport");
 
-        /// <summary>Gets the ClearColor delegate resolved from "glClearColor".</summary>
+        /// <summary>
+        ///     The clear color
+        /// </summary>
         public static ClearColor GlClearColor => GetCommand<ClearColor>("glClearColor");
 
-        /// <summary>Gets the Color4F delegate resolved from "glColor4f".</summary>
+        /// <summary>
+        ///     The color 4f
+        /// </summary>
         public static Color4F GlColor4F => GetCommand<Color4F>("glColor4f");
 
-        /// <summary>Gets the End delegate resolved from "glEnd".</summary>
+
+        /// <summary>
+        ///     The end
+        /// </summary>
         public static End GlEnd => GetCommand<End>("glEnd");
 
-        /// <summary>Gets the Clear delegate resolved from "glClear".</summary>
+        /// <summary>
+        ///     The clear
+        /// </summary>
         public static Clear GlClear => GetCommand<Clear>("glClear");
 
-        /// <summary>Gets the Enable delegate resolved from "glEnable".</summary>
+        /// <summary>
+        ///     The enable
+        /// </summary>
         public static Enable GlEnable => GetCommand<Enable>("glEnable");
 
-        /// <summary>Gets the Disable delegate resolved from "glDisable".</summary>
+        /// <summary>
+        ///     The disable
+        /// </summary>
         public static Disable GlDisable => GetCommand<Disable>("glDisable");
 
-        /// <summary>Gets the BlendEquation delegate resolved from "glBlendEquation".</summary>
+        /// <summary>
+        ///     The blend equation
+        /// </summary>
         public static BlendEquation GlBlendEquation => GetCommand<BlendEquation>("glBlendEquation");
 
-        /// <summary>Gets the BlendFunc delegate resolved from "glBlendFunc".</summary>
+        /// <summary>
+        ///     The blend func
+        /// </summary>
         public static BlendFunc GlBlendFunc => GetCommand<BlendFunc>("glBlendFunc");
 
-        /// <summary>Gets the UseProgram delegate resolved from "glUseProgram".</summary>
+        /// <summary>
+        ///     The use program
+        /// </summary>
         public static UseProgram GlUseProgram => GetCommand<UseProgram>("glUseProgram");
 
-        /// <summary>Gets the GetShaderiv delegate resolved from "glGetShaderiv".</summary>
+        /// <summary>
+        ///     The get shader
+        /// </summary>
         public static GetShaderiv GlGetShaderIv => GetCommand<GetShaderiv>("glGetShaderiv");
 
-        /// <summary>Gets the GetShaderInfoLogDel delegate resolved from "glGetShaderInfoLog".</summary>
+        /// <summary>
+        ///     The get shader info log del
+        /// </summary>
         public static GetShaderInfoLogDel GlGetShaderInfoLog => GetCommand<GetShaderInfoLogDel>("glGetShaderInfoLog");
 
-        /// <summary>Gets the CreateShader delegate resolved from "glCreateShader".</summary>
+        /// <summary>
+        ///     The create shader
+        /// </summary>
         public static CreateShader GlCreateShader => GetCommand<CreateShader>("glCreateShader");
 
-        /// <summary>Gets the Begin delegate resolved from "glBegin".</summary>
+        /// <summary>
+        ///     The begin
+        /// </summary>
         public static Begin GlBegin => GetCommand<Begin>("glBegin");
 
-        /// <summary>Gets the ShaderSourceDel delegate resolved from "glShaderSource".</summary>
+        /// <summary>
+        ///     The shader source del
+        /// </summary>
         public static ShaderSourceDel GlShaderSource => GetCommand<ShaderSourceDel>("glShaderSource");
 
-        /// <summary>Gets the CompileShader delegate resolved from "glCompileShader".</summary>
+        /// <summary>
+        ///     The compile shader
+        /// </summary>
         public static CompileShader GlCompileShader => GetCommand<CompileShader>("glCompileShader");
 
-        /// <summary>Gets the DeleteShader delegate resolved from "glDeleteShader".</summary>
+        /// <summary>
+        ///     The delete shader
+        /// </summary>
         public static DeleteShader GlDeleteShader => GetCommand<DeleteShader>("glDeleteShader");
 
-        /// <summary>Gets the GetProgramiv delegate resolved from "glGetProgramiv".</summary>
+        /// <summary>
+        ///     The get programiv
+        /// </summary>
         public static GetProgramiv GlGetProgramiv => GetCommand<GetProgramiv>("glGetProgramiv");
 
-        /// <summary>Gets the GetProgramInfoLogDel delegate resolved from "glGetProgramInfoLog".</summary>
+        /// <summary>
+        ///     The get program info log del
+        /// </summary>
         public static GetProgramInfoLogDel GlGetProgramInfoLog => GetCommand<GetProgramInfoLogDel>("glGetProgramInfoLog");
 
-        /// <summary>Gets the CreateProgram delegate resolved from "glCreateProgram".</summary>
+        /// <summary>
+        ///     The create program
+        /// </summary>
         public static CreateProgram GlCreateProgram => GetCommand<CreateProgram>("glCreateProgram");
 
-        /// <summary>Gets the AttachShader delegate resolved from "glAttachShader".</summary>
+        /// <summary>
+        ///     The attach shader
+        /// </summary>
         public static AttachShader GlAttachShader => GetCommand<AttachShader>("glAttachShader");
 
-        /// <summary>Gets the LinkProgram delegate resolved from "glLinkProgram".</summary>
+        /// <summary>
+        ///     The link program
+        /// </summary>
         public static LinkProgram GlLinkProgram => GetCommand<LinkProgram>("glLinkProgram");
 
-        /// <summary>Gets the GetUniformLocation delegate resolved from "glGetUniformLocation".</summary>
+        /// <summary>
+        ///     The get uniform location
+        /// </summary>
         public static GetUniformLocation GlGetUniformLocation => GetCommand<GetUniformLocation>("glGetUniformLocation");
 
-        /// <summary>Gets the GetAttribLocation delegate resolved from "glGetAttribLocation".</summary>
+        /// <summary>
+        ///     The get attrib location
+        /// </summary>
         public static GetAttribLocation GlGetAttribLocation => GetCommand<GetAttribLocation>("glGetAttribLocation");
 
-        /// <summary>Gets the DetachShader delegate resolved from "glDetachShader".</summary>
+        /// <summary>
+        ///     The detach shader
+        /// </summary>
         public static DetachShader GlDetachShader => GetCommand<DetachShader>("glDetachShader");
 
-        /// <summary>Gets the DeleteProgram delegate resolved from "glDeleteProgram".</summary>
+        /// <summary>
+        ///     The delete program
+        /// </summary>
         public static DeleteProgram GlDeleteProgram => GetCommand<DeleteProgram>("glDeleteProgram");
 
-        /// <summary>Gets the GetActiveAttrib delegate resolved from "glGetActiveAttrib".</summary>
+        /// <summary>
+        ///     The get active attrib
+        /// </summary>
         public static GetActiveAttrib GlGetActiveAttrib => GetCommand<GetActiveAttrib>("glGetActiveAttrib");
 
-        /// <summary>Gets the GetActiveUniform delegate resolved from "glGetActiveUniform".</summary>
+        /// <summary>
+        ///     The get active uniform
+        /// </summary>
         public static GetActiveUniform GlGetActiveUniform => GetCommand<GetActiveUniform>("glGetActiveUniform");
 
-        /// <summary>Gets the Uniform1F delegate resolved from "glUniform1f".</summary>
+        /// <summary>
+        ///     The uniform 1f
+        /// </summary>
         public static Uniform1F GlUniform1F => GetCommand<Uniform1F>("glUniform1f");
 
-        /// <summary>Gets the Uniform2F delegate resolved from "glUniform2f".</summary>
+        /// <summary>
+        ///     The uniform 2f
+        /// </summary>
         public static Uniform2F GlUniform2F => GetCommand<Uniform2F>("glUniform2f");
 
-        /// <summary>Gets the Uniform3F delegate resolved from "glUniform3f".</summary>
+        /// <summary>
+        ///     The uniform 3f
+        /// </summary>
         public static Uniform3F GlUniform3F => GetCommand<Uniform3F>("glUniform3f");
 
-        /// <summary>Gets the Uniform4F delegate resolved from "glUniform4f".</summary>
+        /// <summary>
+        ///     The uniform 4f
+        /// </summary>
         public static Uniform4F GlUniform4F => GetCommand<Uniform4F>("glUniform4f");
 
-        /// <summary>Gets the Uniform1I delegate resolved from "glUniform1i".</summary>
+        /// <summary>
+        ///     The uniform 1i
+        /// </summary>
         public static Uniform1I GlUniform1I => GetCommand<Uniform1I>("glUniform1i");
 
-        /// <summary>Gets the Uniform3Fv delegate resolved from "glUniform3fv".</summary>
+        /// <summary>
+        ///     The uniform 3fv
+        /// </summary>
         private static Uniform3Fv GlUniform3Fv => GetCommand<Uniform3Fv>("glUniform3fv");
 
-        /// <summary>Gets the ReadPixels delegate resolved from "glReadPixels".</summary>
+        /// <summary>
+        ///     Gets the value of the gl read pixels
+        /// </summary>
         public static ReadPixels GlReadPixels => GetCommand<ReadPixels>("glReadPixels");
 
-        /// <summary>Gets the GenFramebuffer delegate resolved from "glGenFramebuffers".</summary>
+
+        /// <summary>
+        ///     Gets the value of the gl gen framebuffer
+        /// </summary>
         public static GenFramebuffer GlGenFramebuffer => GetCommand<GenFramebuffer>("glGenFramebuffers");
 
-        /// <summary>Gets the FramebufferTexture2D delegate resolved from "glFramebufferTexture2D".</summary>
+        /// <summary>
+        ///     Gets the value of the gl framebuffer texture 2 d
+        /// </summary>
         public static FramebufferTexture2D GlFramebufferTexture2D => GetCommand<FramebufferTexture2D>("glFramebufferTexture2D");
 
-        /// <summary>Gets the Uniform4Fv delegate resolved from "glUniform4fv".</summary>
+        /// <summary>
+        ///     The uniform 4fv
+        /// </summary>
         private static Uniform4Fv GlUniform4Fv => GetCommand<Uniform4Fv>("glUniform4fv");
 
-        /// <summary>Gets the UniformMatrix3FvDel delegate resolved from "glUniformMatrix3fv".</summary>
+        /// <summary>
+        ///     The uniform matrix 3fv del
+        /// </summary>
         public static UniformMatrix3FvDel GlUniformMatrix3Fv => GetCommand<UniformMatrix3FvDel>("glUniformMatrix3fv");
 
-        /// <summary>Gets the UniformMatrix4FvDel delegate resolved from "glUniformMatrix4fv".</summary>
+        /// <summary>
+        ///     The uniform matrix 4fv del
+        /// </summary>
         public static UniformMatrix4FvDel GlUniformMatrix4Fv => GetCommand<UniformMatrix4FvDel>("glUniformMatrix4fv");
 
-        /// <summary>Gets the BindSampler delegate resolved from "glBindSampler".</summary>
+        /// <summary>
+        ///     The bind sampler
+        /// </summary>
         public static BindSampler GlBindSampler => GetCommand<BindSampler>("glBindSampler");
 
-        /// <summary>Gets the BindVertexArray delegate resolved from "glBindVertexArray".</summary>
+        /// <summary>
+        ///     The bind vertex array
+        /// </summary>
         public static BindVertexArray GlBindVertexArray => GetCommand<BindVertexArray>("glBindVertexArray");
 
-        /// <summary>Gets the BindBuffer delegate resolved from "glBindBuffer".</summary>
+        /// <summary>
+        ///     The bind buffer
+        /// </summary>
         public static BindBuffer GlBindBuffer => GetCommand<BindBuffer>("glBindBuffer");
 
-        /// <summary>Gets the Vertex2F delegate resolved from "glVertex2f".</summary>
+        /// <summary>
+        ///     The vertex 2f
+        /// </summary>
         public static Vertex2F GlVertex2F => GetCommand<Vertex2F>("glVertex2f");
 
-        /// <summary>Gets the TexCoord2F delegate resolved from "glTexCoord2f".</summary>
+        /// <summary>
+        ///     Gets the value of the gl tex coord 2 f
+        /// </summary>
         public static TexCoord2F GlTexCoord2F => GetCommand<TexCoord2F>("glTexCoord2f");
 
-        /// <summary>Gets the EnableVertexAttribArrayDel delegate resolved from "glEnableVertexAttribArray".</summary>
+        /// <summary>
+        ///     The enable vertex attrib array del
+        /// </summary>
         public static EnableVertexAttribArrayDel GlEnableVertexAttribArray => GetCommand<EnableVertexAttribArrayDel>("glEnableVertexAttribArray");
 
-        /// <summary>Gets the DisableVertexAttribArray delegate resolved from "glDisableVertexAttribArray".</summary>
+        /// <summary>
+        ///     The disable vertex attrib array
+        /// </summary>
         public static DisableVertexAttribArray GlDisableVertexAttribArray => GetCommand<DisableVertexAttribArray>("glDisableVertexAttribArray");
 
-        /// <summary>Gets the VertexAttribPointerDel delegate resolved from "glVertexAttribPointer".</summary>
+        /// <summary>
+        ///     The vertex attrib pointer del
+        /// </summary>
         public static VertexAttribPointerDel GlVertexAttribPointer => GetCommand<VertexAttribPointerDel>("glVertexAttribPointer");
 
-        /// <summary>Gets the BindFramebuffer delegate resolved from "glBindFramebuffer".</summary>
+        /// <summary>
+        ///     Gets the value of the gl bind framebuffer
+        /// </summary>
         public static BindFramebuffer GlBindFramebuffer => GetCommand<BindFramebuffer>("glBindFramebuffer");
 
-        /// <summary>Gets the BindTexture delegate resolved from "glBindTexture".</summary>
+        /// <summary>
+        ///     The bind texture
+        /// </summary>
         public static BindTexture GlBindTexture => GetCommand<BindTexture>("glBindTexture");
 
-        /// <summary>Gets the BufferData delegate resolved from "glBufferData".</summary>
+        /// <summary>
+        ///     The buffer data
+        /// </summary>
         public static BufferData GlBufferData => GetCommand<BufferData>("glBufferData");
 
-        /// <summary>Gets the Scissor delegate resolved from "glScissor".</summary>
+        /// <summary>
+        ///     The scissor
+        /// </summary>
         public static Scissor GlScissor => GetCommand<Scissor>("glScissor");
 
-        /// <summary>Gets the DrawElementsBaseVertex delegate resolved from "glDrawElementsBaseVertex".</summary>
+        /// <summary>
+        ///     The draw elements base vertex
+        /// </summary>
         public static DrawElementsBaseVertex GlDrawElementsBaseVertex => GetCommand<DrawElementsBaseVertex>("glDrawElementsBaseVertex");
 
-        /// <summary>Gets the DeleteVertexArrays delegate resolved from "glDeleteVertexArrays".</summary>
+        /// <summary>
+        ///     The delete vertex arrays
+        /// </summary>
         public static DeleteVertexArrays GlDeleteVertexArrays => GetCommand<DeleteVertexArrays>("glDeleteVertexArrays");
 
-        /// <summary>Gets the GenVertexArrays delegate resolved from "glGenVertexArrays".</summary>
+        /// <summary>
+        ///     The gen vertex arrays
+        /// </summary>
         public static GenVertexArrays GlGenVertexArrays => GetCommand<GenVertexArrays>("glGenVertexArrays");
 
-        /// <summary>Gets the GenTextures delegate resolved from "glGenTextures".</summary>
+        /// <summary>
+        ///     The gen textures
+        /// </summary>
         public static GenTextures GlGenTextures => GetCommand<GenTextures>("glGenTextures");
 
-        /// <summary>Gets the Storei delegate resolved from "glPixelStorei".</summary>
+        /// <summary>
+        ///     The pixel storei
+        /// </summary>
         public static Storei GlPixelStorei => GetCommand<Storei>("glPixelStorei");
 
-        /// <summary>Gets the TexImage2D delegate resolved from "glTexImage2D".</summary>
+        /// <summary>
+        ///     The tex image
+        /// </summary>
         public static TexImage2D GlTexImage2D => GetCommand<TexImage2D>("glTexImage2D");
 
-        /// <summary>Gets the TexParameteri delegate resolved from "glTexParameteri".</summary>
+        /// <summary>
+        ///     The tex parameteri
+        /// </summary>
         public static TexParameteri GlTexParameteri => GetCommand<TexParameteri>("glTexParameteri");
 
-        /// <summary>Gets the DeleteTextures delegate resolved from "glDeleteTextures".</summary>
+        /// <summary>
+        ///     The delete textures
+        /// </summary>
         public static DeleteTextures GlDeleteTextures => GetCommand<DeleteTextures>("glDeleteTextures");
 
-        /// <summary>Gets the DrawArrays delegate resolved from "glDrawArrays".</summary>
+        /// <summary>
+        ///     The draw arrays
+        /// </summary>
         public static DrawArrays GlDrawArrays => GetCommand<DrawArrays>("glDrawArrays");
 
-        /// <summary>Gets the DrawElements delegate resolved from "glDrawElements".</summary>
+        /// <summary>
+        ///     The draw elements
+        /// </summary>
         public static DrawElements GlDrawElements => GetCommand<DrawElements>("glDrawElements");
 
-        /// <summary>Gets the PolygonMode delegate resolved from "glPolygonMode".</summary>
+        /// <summary>
+        ///     The polygon mode
+        /// </summary>
         public static PolygonMode GlPolygonMode => GetCommand<PolygonMode>("glPolygonMode");
 
-        /// <summary>Gets the GetError delegate resolved from "glGetError".</summary>
+        /// <summary>
+        ///     Gets the value of glGetError
+        /// </summary>
         internal static GetError GlGetErrorDelegate => GetCommand<GetError>("glGetError");
 
-        /// <summary>Gets the LineWidth delegate resolved from "glLineWidth".</summary>
+        /// <summary>
+        ///     Gets the value of the gl line width delegate
+        /// </summary>
         public static LineWidth GlLineWidthDelegate => GetCommand<LineWidth>("glLineWidth");
 
-        /// <summary>Gets the ActiveTexture delegate resolved from "glActiveTexture".</summary>
+        /// <summary>
+        ///     Gets the value of the gl active texture delegate
+        /// </summary>
         public static ActiveTexture GlActiveTextureDelegate => GetCommand<ActiveTexture>("glActiveTexture");
 
         /// <summary>
-        /// Initializes the OpenGL function pointer resolution system with a platform-specific delegate.
-        /// Must be called once before any other OpenGL commands are used.
+        ///     Initializes the get proc address
         /// </summary>
-        /// <param name="getProcAddress">The platform delegate that resolves OpenGL function names to function pointers.</param>
+        /// <param name="getProcAddress">The get proc address</param>
         public static void Initialize(GetProcAddressDelegate getProcAddress)
         {
             _getProcAddress = getProcAddress;
         }
 
         /// <summary>
-        /// Resolves an OpenGL function pointer by name and returns it as a managed delegate.
+        ///     Gets the command using the specified command
         /// </summary>
-        /// <typeparam name="T">The delegate type for the OpenGL function.</typeparam>
-        /// <param name="command">The name of the OpenGL function to resolve.</param>
-        /// <returns>A delegate of type T that wraps the native OpenGL function.</returns>
-        /// <exception cref="InvalidOperationException">Thrown when Initialize has not been called before this method.</exception>
-        /// <exception cref="ExternalException">Thrown when the specified function cannot be resolved from the OpenGL driver.</exception>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="command">The command</param>
+        /// <exception cref="InvalidOperationException">Inicialize called before Initialize</exception>
+        /// <exception cref="ExternalException">{command} from {typeof(T).Name}</exception>
+        /// <returns>The</returns>
         private static T GetCommand<T>(string command) where T : class
         {
             if (_getProcAddress == null)
@@ -369,10 +497,10 @@ namespace Alis.Core.Graphic.OpenGL
         }
 
         /// <summary>
-        /// Retrieves an OpenGL string value (vendor, renderer, version, etc.) as a managed string.
+        ///     Gls the get string using the specified pname
         /// </summary>
-        /// <param name="pname">The symbolic constant identifying the string to query.</param>
-        /// <returns>The requested string, or <see cref="string.Empty"/> if the pointer is null.</returns>
+        /// <param name="pname">The pname</param>
+        /// <returns>The string</returns>
         public static string GlGetString(StringName pname)
         {
             IntPtr ptr = GetString(pname);
@@ -394,9 +522,9 @@ namespace Alis.Core.Graphic.OpenGL
         }
 
         /// <summary>
-        /// Generates a single buffer object name and returns it.
+        ///     Gens the buffer
         /// </summary>
-        /// <returns>The generated buffer object name (uint).</returns>
+        /// <returns>The uint</returns>
         public static uint GenBuffer()
         {
             Uint1[0] = 0;
@@ -405,9 +533,9 @@ namespace Alis.Core.Graphic.OpenGL
         }
 
         /// <summary>
-        /// Deletes a single buffer object, freeing its OpenGL resources.
+        ///     Deletes the buffer using the specified buffer
         /// </summary>
-        /// <param name="buffer">The buffer object name to delete.</param>
+        /// <param name="buffer">The buffer</param>
         public static void DeleteBuffer(uint buffer)
         {
             Uint1[0] = 0;
@@ -416,10 +544,10 @@ namespace Alis.Core.Graphic.OpenGL
         }
 
         /// <summary>
-        /// Retrieves the compilation or linking info log for a shader object.
+        ///     Gets the shader info log using the specified shader
         /// </summary>
-        /// <param name="shader">The shader object to query.</param>
-        /// <returns>The info log string, or <see cref="string.Empty"/> if empty.</returns>
+        /// <param name="shader">The shader</param>
+        /// <returns>The string</returns>
         public static string GetShaderInfoLog(uint shader)
         {
             GlGetShaderIv(shader, ShaderParameter.InfoLogLength, Int1);
@@ -434,10 +562,10 @@ namespace Alis.Core.Graphic.OpenGL
         }
 
         /// <summary>
-        /// Sets the source code for a shader object from a managed string.
+        ///     Shaders the source using the specified shader
         /// </summary>
-        /// <param name="shader">The shader object to set source on.</param>
-        /// <param name="source">The GLSL source code string.</param>
+        /// <param name="shader">The shader</param>
+        /// <param name="source">The source</param>
         public static void ShaderSource(uint shader, string source)
         {
             Int1[0] = source.Length;
@@ -445,10 +573,10 @@ namespace Alis.Core.Graphic.OpenGL
         }
 
         /// <summary>
-        /// Queries whether a shader compiled successfully.
+        ///     Describes whether get shader compile status
         /// </summary>
-        /// <param name="shader">The shader object to check.</param>
-        /// <returns>True if compilation succeeded, false otherwise.</returns>
+        /// <param name="shader">The shader</param>
+        /// <returns>The bool</returns>
         public static bool GetShaderCompileStatus(uint shader)
         {
             GlGetShaderIv(shader, ShaderParameter.CompileStatus, Int1);
@@ -456,10 +584,10 @@ namespace Alis.Core.Graphic.OpenGL
         }
 
         /// <summary>
-        /// Retrieves the info log for a program object.
+        ///     Gets the program info log using the specified program
         /// </summary>
-        /// <param name="program">The program object to query.</param>
-        /// <returns>The info log string, or <see cref="string.Empty"/> if empty.</returns>
+        /// <param name="program">The program</param>
+        /// <returns>The string</returns>
         public static string GetProgramInfoLog(uint program)
         {
             GlGetProgramiv(program, ProgramParameter.InfoLogLength, Int1);
@@ -474,10 +602,10 @@ namespace Alis.Core.Graphic.OpenGL
         }
 
         /// <summary>
-        /// Queries whether a program linked successfully.
+        ///     Describes whether get program link status
         /// </summary>
-        /// <param name="program">The program object to check.</param>
-        /// <returns>True if linking succeeded, false otherwise.</returns>
+        /// <param name="program">The program</param>
+        /// <returns>The bool</returns>
         public static bool GetProgramLinkStatus(uint program)
         {
             GlGetProgramiv(program, ProgramParameter.LinkStatus, Int1);
@@ -485,10 +613,10 @@ namespace Alis.Core.Graphic.OpenGL
         }
 
         /// <summary>
-        /// Sets a 4x4 float matrix uniform by converting a <see cref="Matrix4X4"/> into a flat float array.
+        ///     Uniforms the matrix 4fv using the specified location
         /// </summary>
-        /// <param name="location">The uniform location.</param>
-        /// <param name="param">The matrix value to upload.</param>
+        /// <param name="location">The location</param>
+        /// <param name="param">The param</param>
         public static void UniformMatrix4Fv(int location, Matrix4X4 param)
         {
             Matrix4Float[0] = param.M11;
@@ -512,15 +640,15 @@ namespace Alis.Core.Graphic.OpenGL
         }
 
         /// <summary>
-        /// Configures a vertex attribute pointer with validation for negative indices.
+        ///     Vertexes the attrib pointer using the specified index
         /// </summary>
-        /// <param name="index">The vertex attribute index (must be >= 0).</param>
-        /// <param name="size">The number of components per vertex.</param>
-        /// <param name="type">The data type of each component.</param>
-        /// <param name="normalized">Whether to normalize fixed-point values.</param>
-        /// <param name="stride">The byte stride between consecutive attributes.</param>
-        /// <param name="pointer">The offset into the bound vertex buffer.</param>
-        /// <exception cref="ArgumentOutOfRangeException">Thrown when index is negative.</exception>
+        /// <param name="index">The index</param>
+        /// <param name="size">The size</param>
+        /// <param name="type">The type</param>
+        /// <param name="normalized">The normalized</param>
+        /// <param name="stride">The stride</param>
+        /// <param name="pointer">The pointer</param>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
         public static void VertexAttribPointer(int index, int size, VertexAttribPointerType type, bool normalized, int stride, IntPtr pointer)
         {
             if (index < 0)
@@ -532,10 +660,10 @@ namespace Alis.Core.Graphic.OpenGL
         }
 
         /// <summary>
-        /// Enables a vertex attribute array with validation for negative indices.
+        ///     Enables the vertex attrib array using the specified index
         /// </summary>
-        /// <param name="index">The vertex attribute index (must be >= 0).</param>
-        /// <exception cref="ArgumentOutOfRangeException">Thrown when index is negative.</exception>
+        /// <param name="index">The index</param>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
         public static void EnableVertexAttribArray(int index)
         {
             if (index < 0)
@@ -547,9 +675,9 @@ namespace Alis.Core.Graphic.OpenGL
         }
 
         /// <summary>
-        /// Generates a single vertex array object name.
+        ///     Gens the vertex array
         /// </summary>
-        /// <returns>The generated VAO name.</returns>
+        /// <returns>The uint</returns>
         public static uint GenVertexArray()
         {
             Uint1[0] = 0;
@@ -558,9 +686,9 @@ namespace Alis.Core.Graphic.OpenGL
         }
 
         /// <summary>
-        /// Deletes a single vertex array object.
+        ///     Deletes the vertex array using the specified vao
         /// </summary>
-        /// <param name="vao">The VAO name to delete.</param>
+        /// <param name="vao">The vao</param>
         public static void DeleteVertexArray(uint vao)
         {
             Uint1[0] = vao;
@@ -568,9 +696,9 @@ namespace Alis.Core.Graphic.OpenGL
         }
 
         /// <summary>
-        /// Generates a single texture object name.
+        ///     Gens the texture
         /// </summary>
-        /// <returns>The generated texture name.</returns>
+        /// <returns>The uint</returns>
         public static uint GenTexture()
         {
             Uint1[0] = 0;
@@ -579,9 +707,9 @@ namespace Alis.Core.Graphic.OpenGL
         }
 
         /// <summary>
-        /// Deletes a single texture object.
+        ///     Deletes the texture using the specified texture
         /// </summary>
-        /// <param name="texture">The texture name to delete.</param>
+        /// <param name="texture">The texture</param>
         public static void DeleteTexture(uint texture)
         {
             Uint1[0] = texture;
@@ -589,40 +717,40 @@ namespace Alis.Core.Graphic.OpenGL
         }
 
         /// <summary>
-        /// Generates mipmaps for the specified texture target.
+        ///     Generates the mipmap using the specified texture 2 d
         /// </summary>
-        /// <param name="texture2D">The texture target (e.g., Texture2D).</param>
+        /// <param name="texture2D">The texture</param>
         public static void GenerateMipmap(TextureTarget texture2D) => GetCommand<GetString>("glGenerateMipmap");
 
         /// <summary>
-        /// Gets the last error code from OpenGL.
+        ///     Gets the last error from OpenGL
         /// </summary>
-        /// <returns>The OpenGL error code (int).</returns>
+        /// <returns>Error code</returns>
         public static int GlGetError() => GlGetErrorDelegate();
 
         /// <summary>
-        /// Sets the line width using the resolved LineWidth delegate.
+        ///     Gls the line width using the specified width
         /// </summary>
-        /// <param name="width">The line width in pixels.</param>
+        /// <param name="width">The width</param>
         public static void GlLineWidth(float width)
         {
             GlLineWidthDelegate(width);
         }
 
         /// <summary>
-        /// Activates the specified texture unit using the resolved ActiveTexture delegate.
+        ///     Gls the active texture using the specified texture
         /// </summary>
-        /// <param name="texture">The texture unit to activate.</param>
+        /// <param name="texture">The texture</param>
         public static void GlActiveTexture(TextureUnit texture)
         {
             GlActiveTextureDelegate(texture);
         }
 
         /// <summary>
-        /// Queries an integer OpenGL parameter value.
+        ///     Gls the get integerv using the specified i
         /// </summary>
-        /// <param name="i">The parameter name to query.</param>
-        /// <param name="viewport">The array that receives the parameter values.</param>
+        /// <param name="i">The </param>
+        /// <param name="viewport">The viewport</param>
         public static void GlGetIntegerv(int i, int[] viewport)
         {
             GetIntegerv getIntegerv = GetCommand<GetIntegerv>("glGetIntegerv");
@@ -630,11 +758,11 @@ namespace Alis.Core.Graphic.OpenGL
         }
 
         /// <summary>
-        /// Queries a shader parameter (e.g., compile status) via the resolved delegate.
+        ///     Gls the get shader using the specified vertex shader
         /// </summary>
-        /// <param name="vertexShader">The shader object to query.</param>
-        /// <param name="compileStatus">The parameter to query (typically CompileStatus).</param>
-        /// <param name="i">Outputs the parameter value.</param>
+        /// <param name="vertexShader">The vertex shader</param>
+        /// <param name="compileStatus">The compile status</param>
+        /// <param name="i">The </param>
         public static void GlGetShader(uint vertexShader, object compileStatus, out int i)
         {
             GlGetShaderIv(vertexShader, (ShaderParameter) compileStatus, Int1);
@@ -642,11 +770,11 @@ namespace Alis.Core.Graphic.OpenGL
         }
 
         /// <summary>
-        /// Queries a program parameter (e.g., link status) via the resolved delegate.
+        ///     Gls the get program using the specified shader program
         /// </summary>
-        /// <param name="shaderProgram">The program object to query.</param>
-        /// <param name="linkStatus">The parameter to query (typically LinkStatus).</param>
-        /// <param name="res">Outputs the parameter value.</param>
+        /// <param name="shaderProgram">The shader program</param>
+        /// <param name="linkStatus">The link status</param>
+        /// <param name="res">The res</param>
         public static void GlGetProgram(uint shaderProgram, object linkStatus, out int res)
         {
             GlGetProgramiv(shaderProgram, (ProgramParameter) linkStatus, Int1);
@@ -654,18 +782,18 @@ namespace Alis.Core.Graphic.OpenGL
         }
 
         /// <summary>
-        /// Sets a 2x3 float matrix uniform using the dynamically resolved function.
+        ///     Gls the uniform matrix 2x 3 using the specified view projection location
         /// </summary>
-        /// <param name="viewProjectionLocation">The uniform location.</param>
-        /// <param name="b">Whether to transpose the matrix.</param>
-        /// <param name="matrix">The matrix values as a span of floats.</param>
+        /// <param name="viewProjectionLocation">The view projection location</param>
+        /// <param name="b">The </param>
+        /// <param name="matrix">The matrix</param>
         public static void GlUniformMatrix2x3(int viewProjectionLocation, bool b, Span<float> matrix)
         {
             GetCommand<UniformMatrix2x3FvDel>("glUniformMatrix2x3fv")(viewProjectionLocation, 1, b, matrix);
         }
 
         /// <summary>
-        /// Internal delegate for the OpenGL glGetError function.
+        ///     The get error
         /// </summary>
         internal delegate int GetError();
     }

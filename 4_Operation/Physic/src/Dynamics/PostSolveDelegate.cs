@@ -32,11 +32,7 @@ using Alis.Core.Physic.Dynamics.Contacts;
 namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>
-    ///     Represents a callback that is invoked after the contact solver has resolved a contact.
-    ///     Provides access to the calculated impulse data, enabling post-collision effects
-    ///     such as impact sounds or breaking thresholds based on impulse magnitude.
+    ///     The post solve delegate
     /// </summary>
-    /// <param name="contact">The contact that was solved.</param>
-    /// <param name="impulse">The velocity constraint data containing the resolved normal and tangent impulses.</param>
     public delegate void PostSolveDelegate(Contact contact, ContactVelocityConstraint impulse);
 }

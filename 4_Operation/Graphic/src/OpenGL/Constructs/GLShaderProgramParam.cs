@@ -12,6 +12,19 @@
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
 //  --------------------------------------------------------------------------
 
 using System;
@@ -22,33 +35,31 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Core.Graphic.OpenGL.Constructs
 {
     /// <summary>
-    /// Represents a single parameter (attribute or uniform) in an OpenGL shader program.
-    /// Provides typed value-setting methods that automatically map managed types to their
-    /// corresponding OpenGL uniform/attribute commands.
+    ///     The gl shader program param class
     /// </summary>
     public sealed class GlShaderProgramParam
     {
         /// <summary>
-        /// Specifies the case-sensitive name of the parameter as declared in the GLSL shader.
+        ///     Specifies the case-sensitive name of the parameter.
         /// </summary>
         public readonly string Name;
 
         /// <summary>
-        /// Specifies whether this parameter is a uniform or vertex attribute.
+        ///     Specifies the parameter type (either attribute or uniform).
         /// </summary>
         public readonly ParamType ParamType;
 
         /// <summary>
-        /// Specifies the managed <see cref="Type"/> that corresponds to the GLSL data type of this parameter.
+        ///     Specifies the C# equivalent of the GLSL data type.
         /// </summary>
         public readonly Type Type;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GlShaderProgramParam" /> class.
+        ///     Initializes a new instance of the <see cref="GlShaderProgramParam" /> class
         /// </summary>
-        /// <param name="type">The managed type equivalent of the GLSL data type.</param>
-        /// <param name="paramType">Whether this is a uniform or attribute parameter.</param>
-        /// <param name="name">The case-sensitive name from the GLSL shader source.</param>
+        /// <param name="type">The type</param>
+        /// <param name="paramType">The param type</param>
+        /// <param name="name">The name</param>
         public GlShaderProgramParam(Type type, ParamType paramType, string name)
         {
             Type = type;
@@ -57,14 +68,13 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GlShaderProgramParam" /> class
-        /// with a pre-resolved program and location.
+        ///     Initializes a new instance of the <see cref="GlShaderProgramParam" /> class
         /// </summary>
-        /// <param name="type">The managed type equivalent of the GLSL data type.</param>
-        /// <param name="paramType">Whether this is a uniform or attribute parameter.</param>
-        /// <param name="name">The case-sensitive name from the GLSL shader source.</param>
-        /// <param name="program">The OpenGL program ID that owns this parameter.</param>
-        /// <param name="location">The pre-resolved OpenGL location of the parameter.</param>
+        /// <param name="type">The type</param>
+        /// <param name="paramType">The param type</param>
+        /// <param name="name">The name</param>
+        /// <param name="program">The program</param>
+        /// <param name="location">The location</param>
         public GlShaderProgramParam(Type type, ParamType paramType, string name, uint program, int location) : this(type, paramType, name)
         {
             ProgramId = Program;
@@ -72,24 +82,24 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         }
 
         /// <summary>
-        /// Gets or sets the OpenGL location of this parameter within the shader program.
+        ///     Specifies the location of the parameter in the OpenGL program.
         /// </summary>
         public int Location { get; set; }
 
         /// <summary>
-        /// Gets or sets the OpenGL program ID that owns this parameter.
+        ///     Specifies the OpenGL program ID.
         /// </summary>
         public uint Program { get; set; }
 
         /// <summary>
-        /// Gets or sets the OpenGL program ID (alias for internal use).
+        ///     The program id
         /// </summary>
         public uint ProgramId { get; set; }
 
         /// <summary>
-        /// Resolves and caches the OpenGL location of this parameter within the specified shader program.
+        ///     Gets the location of the parameter in a compiled OpenGL program.
         /// </summary>
-        /// <param name="program">The shader program that contains this parameter.</param>
+        /// <param name="program">Specifies the shader program that contains this parameter.</param>
         public void GetLocation(GlShaderProgram program)
         {
             program.Use();
@@ -101,9 +111,9 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         }
 
         /// <summary>
-        /// Sets the value of this parameter as a boolean (converted to integer 0/1).
+        ///     Sets the value using the specified param
         /// </summary>
-        /// <param name="param">The boolean value to set.</param>
+        /// <param name="param">The param</param>
         public void SetValue(bool param)
         {
             EnsureType<bool>();
@@ -111,9 +121,9 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         }
 
         /// <summary>
-        /// Sets the value of this parameter as an integer.
+        ///     Sets the value using the specified param
         /// </summary>
-        /// <param name="param">The integer value to set.</param>
+        /// <param name="param">The param</param>
         public void SetValue(int param)
         {
             EnsureType<int>();
@@ -121,9 +131,9 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         }
 
         /// <summary>
-        /// Sets the value of this parameter as a single-precision float.
+        ///     Sets the value using the specified param
         /// </summary>
-        /// <param name="param">The float value to set.</param>
+        /// <param name="param">The param</param>
         public void SetValue(float param)
         {
             EnsureType<float>();
@@ -131,9 +141,9 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         }
 
         /// <summary>
-        /// Sets the value of this parameter as a 2-component float vector.
+        ///     Sets the value using the specified param
         /// </summary>
-        /// <param name="param">The vector value to set.</param>
+        /// <param name="param">The param</param>
         public void SetValue(Vector2F param)
         {
             EnsureType<Vector2F>();
@@ -141,9 +151,9 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         }
 
         /// <summary>
-        /// Sets the value of this parameter as a 3-component float vector.
+        ///     Sets the value using the specified param
         /// </summary>
-        /// <param name="param">The vector value to set.</param>
+        /// <param name="param">The param</param>
         public void SetValue(Vector3F param)
         {
             EnsureType<Vector3F>();
@@ -151,9 +161,9 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         }
 
         /// <summary>
-        /// Sets the value of this parameter as a 4-component float vector.
+        ///     Sets the value using the specified param
         /// </summary>
-        /// <param name="param">The vector value to set.</param>
+        /// <param name="param">The param</param>
         public void SetValue(Vector4F param)
         {
             EnsureType<Vector4F>();
@@ -161,9 +171,9 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         }
 
         /// <summary>
-        /// Sets the value of this parameter as a 4x4 float matrix.
+        ///     Sets the value using the specified param
         /// </summary>
-        /// <param name="param">The matrix value to set.</param>
+        /// <param name="param">The param</param>
         public void SetValue(Matrix4X4 param)
         {
             EnsureType<Matrix4X4>();
@@ -171,13 +181,10 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         }
 
         /// <summary>
-        /// Sets the value of this parameter using a float array, automatically determining
-        /// the appropriate OpenGL command based on array length:
-        /// 1 element = Uniform1F, 2 = Uniform2F, 3 = Uniform3F, 4 = Uniform4F,
-        /// 9 = UniformMatrix3Fv, 16 = UniformMatrix4Fv.
+        ///     Sets the value using the specified param
         /// </summary>
-        /// <param name="param">The float array value to set.</param>
-        /// <exception cref="ArgumentException">Thrown when the array length is not 1, 2, 3, 4, 9, or 16.</exception>
+        /// <param name="param">The param</param>
+        /// <exception cref="ArgumentException">param was an unexpected length. </exception>
         public void SetValue(float[] param)
         {
             if (param.Length == 16)
@@ -217,10 +224,9 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         }
 
         /// <summary>
-        /// Debug-only type assertion that validates the managed type matches the expected parameter type.
-        /// No-op in Release builds.
+        ///     Ensures the type
         /// </summary>
-        /// <typeparam name="T">The expected managed type.</typeparam>
+        /// <typeparam name="T">The </typeparam>
         [Conditional("DEBUG")]
         private void EnsureType<T>()
         {

@@ -32,110 +32,174 @@ using System;
 namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>
-    ///     Defines 32 collision categories as a bit-flag enum, used for collision filtering.
-    ///     Each fixture can belong to one or more categories, and collision occurs only when
-    ///     categories match according to the collision mask.
+    ///     The category enum
     /// </summary>
     [Flags]
     public enum Category
     {
-        /// <summary>No category (collides with nothing by default).</summary>
+        /// <summary>
+        ///     The none category
+        /// </summary>
         None = 0x00000000,
 
-        /// <summary>Category 1 (bit 0).</summary>
+        /// <summary>
+        ///     The cat category
+        /// </summary>
         Cat1 = 0x00000001,
 
-        /// <summary>Category 2 (bit 1).</summary>
+        /// <summary>
+        ///     The cat category
+        /// </summary>
         Cat2 = 0x00000002,
 
-        /// <summary>Category 3 (bit 2).</summary>
+        /// <summary>
+        ///     The cat category
+        /// </summary>
         Cat3 = 0x00000004,
 
-        /// <summary>Category 4 (bit 3).</summary>
+        /// <summary>
+        ///     The cat category
+        /// </summary>
         Cat4 = 0x00000008,
 
-        /// <summary>Category 5 (bit 4).</summary>
+        /// <summary>
+        ///     The cat category
+        /// </summary>
         Cat5 = 0x00000010,
 
-        /// <summary>Category 6 (bit 5).</summary>
+        /// <summary>
+        ///     The cat category
+        /// </summary>
         Cat6 = 0x00000020,
 
-        /// <summary>Category 7 (bit 6).</summary>
+        /// <summary>
+        ///     The cat category
+        /// </summary>
         Cat7 = 0x00000040,
 
-        /// <summary>Category 8 (bit 7).</summary>
+        /// <summary>
+        ///     The cat category
+        /// </summary>
         Cat8 = 0x00000080,
 
-        /// <summary>Category 9 (bit 8).</summary>
+        /// <summary>
+        ///     The cat category
+        /// </summary>
         Cat9 = 0x00000100,
 
-        /// <summary>Category 10 (bit 9).</summary>
+        /// <summary>
+        ///     The cat 10 category
+        /// </summary>
         Cat10 = 0x00000200,
 
-        /// <summary>Category 11 (bit 10).</summary>
+        /// <summary>
+        ///     The cat 11 category
+        /// </summary>
         Cat11 = 0x00000400,
 
-        /// <summary>Category 12 (bit 11).</summary>
+        /// <summary>
+        ///     The cat 12 category
+        /// </summary>
         Cat12 = 0x00000800,
 
-        /// <summary>Category 13 (bit 12).</summary>
+        /// <summary>
+        ///     The cat 13 category
+        /// </summary>
         Cat13 = 0x00001000,
 
-        /// <summary>Category 14 (bit 13).</summary>
+        /// <summary>
+        ///     The cat 14 category
+        /// </summary>
         Cat14 = 0x00002000,
 
-        /// <summary>Category 15 (bit 14).</summary>
+        /// <summary>
+        ///     The cat 15 category
+        /// </summary>
         Cat15 = 0x00004000,
 
-        /// <summary>Category 16 (bit 15).</summary>
+        /// <summary>
+        ///     The cat 16 category
+        /// </summary>
         Cat16 = 0x00008000,
 
-        /// <summary>Category 17 (bit 16).</summary>
+        /// <summary>
+        ///     The cat 17 category
+        /// </summary>
         Cat17 = 0x00010000,
 
-        /// <summary>Category 18 (bit 17).</summary>
+        /// <summary>
+        ///     The cat 18 category
+        /// </summary>
         Cat18 = 0x00020000,
 
-        /// <summary>Category 19 (bit 18).</summary>
+        /// <summary>
+        ///     The cat 19 category
+        /// </summary>
         Cat19 = 0x00040000,
 
-        /// <summary>Category 20 (bit 19).</summary>
+        /// <summary>
+        ///     The cat 20 category
+        /// </summary>
         Cat20 = 0x00080000,
 
-        /// <summary>Category 21 (bit 20).</summary>
+        /// <summary>
+        ///     The cat 21 category
+        /// </summary>
         Cat21 = 0x00100000,
 
-        /// <summary>Category 22 (bit 21).</summary>
+        /// <summary>
+        ///     The cat 22 category
+        /// </summary>
         Cat22 = 0x00200000,
 
-        /// <summary>Category 23 (bit 22).</summary>
+        /// <summary>
+        ///     The cat 23 category
+        /// </summary>
         Cat23 = 0x00400000,
 
-        /// <summary>Category 24 (bit 23).</summary>
+        /// <summary>
+        ///     The cat 24 category
+        /// </summary>
         Cat24 = 0x00800000,
 
-        /// <summary>Category 25 (bit 24).</summary>
+        /// <summary>
+        ///     The cat 25 category
+        /// </summary>
         Cat25 = 0x01000000,
 
-        /// <summary>Category 26 (bit 25).</summary>
+        /// <summary>
+        ///     The cat 26 category
+        /// </summary>
         Cat26 = 0x02000000,
 
-        /// <summary>Category 27 (bit 26).</summary>
+        /// <summary>
+        ///     The cat 27 category
+        /// </summary>
         Cat27 = 0x04000000,
 
-        /// <summary>Category 28 (bit 27).</summary>
+        /// <summary>
+        ///     The cat 28 category
+        /// </summary>
         Cat28 = 0x08000000,
 
-        /// <summary>Category 29 (bit 28).</summary>
+        /// <summary>
+        ///     The cat 29 category
+        /// </summary>
         Cat29 = 0x10000000,
 
-        /// <summary>Category 30 (bit 29).</summary>
+        /// <summary>
+        ///     The cat 30 category
+        /// </summary>
         Cat30 = 0x20000000,
 
-        /// <summary>Category 31 (bit 30).</summary>
+        /// <summary>
+        ///     The cat 31 category
+        /// </summary>
         Cat31 = 0x40000000,
 
-        /// <summary>All categories (collides with everything).</summary>
+        /// <summary>
+        ///     The all category
+        /// </summary>
         All = int.MaxValue
     }
 }

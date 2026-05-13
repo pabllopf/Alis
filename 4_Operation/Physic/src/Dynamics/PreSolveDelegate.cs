@@ -33,11 +33,7 @@ using Alis.Core.Physic.Dynamics.Contacts;
 namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>
-    ///     Represents a callback that is invoked before the contact solver processes a contact.
-    ///     Provides the old manifold data from the previous frame for warm starting purposes,
-    ///     allowing custom pre-solve modifications.
+    ///     The pre solve delegate
     /// </summary>
-    /// <param name="contact">The contact about to be solved.</param>
-    /// <param name="oldManifold">The manifold data from the previous simulation step, used for solver warm starting.</param>
     public delegate void PreSolveDelegate(Contact contact, ref Manifold oldManifold);
 }

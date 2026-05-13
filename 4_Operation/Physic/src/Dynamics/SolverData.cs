@@ -29,29 +29,26 @@
 
 namespace Alis.Core.Physic.Dynamics
 {
-    /// <summary>
-    ///     Provides all data needed by the contact and joint solvers for a single simulation step,
-    ///     including the time step configuration, body position/velocity arrays, and lock indices.
-    /// </summary>
+    /// Solver Data
     internal struct SolverData
     {
         /// <summary>
-        ///     The time step configuration containing delta time, inverse delta time, and iteration counts.
+        ///     The step
         /// </summary>
         internal TimeStep Step;
 
         /// <summary>
-        ///     The array of solver position states for all bodies in the simulation.
+        ///     The positions
         /// </summary>
         internal SolverPosition[] Positions;
 
         /// <summary>
-        ///     The array of solver velocity states for all bodies in the simulation.
+        ///     The velocities
         /// </summary>
         internal SolverVelocity[] Velocities;
 
         /// <summary>
-        ///     Lock indices used to prevent duplicate processing of bodies during island solving.
+        ///     The locks
         /// </summary>
         internal int[] Locks;
     }

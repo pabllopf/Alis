@@ -49,7 +49,6 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     Allows tuple deconstruction syntax to be used.
         /// </summary>
-        /// <param name="Ref<T>">The Ref<T> parameter.</param>
         /// <param name="gameObject">The gameObject parameter.</param>
         /// <param name="ref">The ref parameter.</param>
         public void Deconstruct(out GameObject gameObject, out Ref<T> @ref)

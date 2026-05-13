@@ -32,9 +32,7 @@ using Alis.Core.Physic.Dynamics.Contacts;
 namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>
-    ///     Represents a callback that is invoked when two fixtures stop touching (a contact is destroyed).
-    ///     This can happen when bodies separate, one of them is removed, or the contact is disabled.
+    ///     This delegate is called when a contact is deleted
     /// </summary>
-    /// <param name="contact">The contact object that is being destroyed.</param>
     public delegate void EndContactDelegate(Contact contact);
 }
