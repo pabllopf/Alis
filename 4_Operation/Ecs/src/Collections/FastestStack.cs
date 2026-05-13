@@ -38,7 +38,6 @@ namespace Alis.Core.Ecs.Collections
     /// <summary>
     ///     The fastest stack class
     /// </summary>
-    /// <typeparam name="T">The component type.</typeparam>
     /// <seealso cref="ICollection" />
     /// <seealso cref="IReadOnlyCollection{T}" />
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -531,7 +530,6 @@ namespace Alis.Core.Ecs.Collections
         /// <summary>
         ///     The enumerator
         /// </summary>
-        /// <typeparam name="T">The component type.</typeparam>
         /// <remarks>
         ///     Memory layout optimized: FastestStack struct (16 bytes) + T generic (variable) + two ints (8 bytes)
         ///     Pack = 4 for optimal alignment
@@ -695,15 +693,13 @@ namespace Alis.Core.Ecs.Collections
         /// <summary>
         ///     Creates the i
         /// </summary>
-        /// <typeparam name="T">The component type.</typeparam>
-        /// <param name="i">The i parameter.</param>
+        /// <param name="i">The </param>
         /// <returns>A fast stack of t</returns>
         public static FastestStack<T> Create(int i) => new FastestStack<T>(i);
 
         /// <summary>
         ///     Converts the span
         /// </summary>
-        /// <typeparam name="T">The component type.</typeparam>
         /// <returns>A span of t</returns>
         public Span<T> AsSpan() => _array.AsSpan(0, _size);
 

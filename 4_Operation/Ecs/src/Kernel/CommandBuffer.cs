@@ -382,8 +382,6 @@ namespace Alis.Core.Ecs.Kernel
         ///     Records <paramref name="component" /> to be part of the gameObject created when resolved as a component type
         ///     represented by <paramref name="componentId" />.
         /// </summary>
-        /// <param name="componentId">The componentId parameter.</param>
-        /// <param name="component">The component data.</param>
         /// <returns><see langword="this" /> instance, for method chaining.</returns>
         /// <exception cref="InvalidOperationException"><see cref="Entity" /> has not been called."/></exception>
         public CommandBuffer WithBoxed(ComponentId componentId, object component)
@@ -398,7 +396,6 @@ namespace Alis.Core.Ecs.Kernel
         /// <summary>
         ///     Records <paramref name="component" /> to be part of the gameObject created when resolved.
         /// </summary>
-        /// <param name="component">The component data.</param>
         /// <returns><see langword="this" /> instance, for method chaining.</returns>
         /// <exception cref="InvalidOperationException"><see cref="Entity" /> has not been called."/></exception>
         public CommandBuffer WithBoxed(object component) => WithBoxed(component.GetType(), component);
@@ -407,8 +404,6 @@ namespace Alis.Core.Ecs.Kernel
         ///     Records <paramref name="component" /> to be part of the gameObject created when resolved as a component type of
         ///     <paramref name="type" />.
         /// </summary>
-        /// <param name="type">The type parameter.</param>
-        /// <param name="component">The component data.</param>
         /// <returns><see langword="this" /> instance, for method chaining.</returns>
         /// <exception cref="InvalidOperationException"><see cref="Entity" /> has not been called."/></exception>
         public CommandBuffer WithBoxed(Type type, object component) => WithBoxed(Component.GetComponentId(type), component);

@@ -40,7 +40,6 @@ namespace Alis.Core.Ecs.Kernel
     /// <summary>
     ///     Represents an gameObject's type, or set of component and tag types that make it up
     /// </summary>
-    /// <typeparam name="ArchetypeID">The ArchetypeID type parameter.</typeparam>
     /// <remarks>
     ///     Memory layout optimized: 2 bytes total (single ushort)
     ///     Pack = 1 for minimal memory footprint

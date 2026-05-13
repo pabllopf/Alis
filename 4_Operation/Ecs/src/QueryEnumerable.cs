@@ -46,8 +46,6 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Gets the enumerator over a query.
         /// </summary>
-        /// <typeparam name="T1">The first component type.</typeparam>
-        /// <returns>An enumerator for the matching entities.</returns>
         public GameObjectQueryEnumerator<T1> GetEnumerator() => new GameObjectQueryEnumerator<T1>(query);
     }
 
@@ -65,9 +63,6 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Gets the enumerator over a query.
         /// </summary>
-        /// <typeparam name="T1">The first component type.</typeparam>
-        /// <typeparam name="T2">The second component type.</typeparam>
-        /// <returns>An enumerator for the matching entities.</returns>
         public GameObjectQueryEnumerator<T1, T2> GetEnumerator() => new GameObjectQueryEnumerator<T1, T2>(query);
     }
 
@@ -85,10 +80,6 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Gets the enumerator over a query.
         /// </summary>
-        /// <typeparam name="T1">The first component type.</typeparam>
-        /// <typeparam name="T3">The third component type.</typeparam>
-        /// <typeparam name="T2">The second component type.</typeparam>
-        /// <returns>An enumerator for the matching entities.</returns>
         public GameObjectQueryEnumerator<T1, T2, T3> GetEnumerator() => new GameObjectQueryEnumerator<T1, T2, T3>(query);
     }
 
@@ -106,11 +97,6 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Gets the enumerator over a query.
         /// </summary>
-        /// <typeparam name="T1">The first component type.</typeparam>
-        /// <typeparam name="T4">The fourth component type.</typeparam>
-        /// <typeparam name="T3">The third component type.</typeparam>
-        /// <typeparam name="T2">The second component type.</typeparam>
-        /// <returns>An enumerator for the matching entities.</returns>
         public GameObjectQueryEnumerator<T1, T2, T3, T4> GetEnumerator() => new GameObjectQueryEnumerator<T1, T2, T3, T4>(query);
     }
 
@@ -128,12 +114,6 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Gets the enumerator over a query.
         /// </summary>
-        /// <typeparam name="T2">The second component type.</typeparam>
-        /// <typeparam name="T1">The first component type.</typeparam>
-        /// <typeparam name="T3">The third component type.</typeparam>
-        /// <typeparam name="T5">The fifth component type.</typeparam>
-        /// <typeparam name="T4">The fourth component type.</typeparam>
-        /// <returns>An enumerator for the matching entities.</returns>
         public GameObjectQueryEnumerator<T1, T2, T3, T4, T5> GetEnumerator() => new GameObjectQueryEnumerator<T1, T2, T3, T4, T5>(query);
     }
 
@@ -151,13 +131,6 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Gets the enumerator over a query.
         /// </summary>
-        /// <typeparam name="T2">The second component type.</typeparam>
-        /// <typeparam name="T1">The first component type.</typeparam>
-        /// <typeparam name="T3">The third component type.</typeparam>
-        /// <typeparam name="T5">The fifth component type.</typeparam>
-        /// <typeparam name="T6">The sixth component type.</typeparam>
-        /// <typeparam name="T4">The fourth component type.</typeparam>
-        /// <returns>An enumerator for the matching entities.</returns>
         public GameObjectQueryEnumerator<T1, T2, T3, T4, T5, T6> GetEnumerator() => new GameObjectQueryEnumerator<T1, T2, T3, T4, T5, T6>(query);
     }
 
@@ -175,14 +148,6 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Gets the enumerator over a query.
         /// </summary>
-        /// <typeparam name="T2">The second component type.</typeparam>
-        /// <typeparam name="T1">The first component type.</typeparam>
-        /// <typeparam name="T3">The third component type.</typeparam>
-        /// <typeparam name="T5">The fifth component type.</typeparam>
-        /// <typeparam name="T6">The sixth component type.</typeparam>
-        /// <typeparam name="T4">The fourth component type.</typeparam>
-        /// <typeparam name="T7">The seventh component type.</typeparam>
-        /// <returns>An enumerator for the matching entities.</returns>
         public GameObjectQueryEnumerator<T1, T2, T3, T4, T5, T6, T7> GetEnumerator() => new GameObjectQueryEnumerator<T1, T2, T3, T4, T5, T6, T7>(query);
     }
 
@@ -200,15 +165,6 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Gets the enumerator over a query.
         /// </summary>
-        /// <typeparam name="T2">The second component type.</typeparam>
-        /// <typeparam name="T1">The first component type.</typeparam>
-        /// <typeparam name="T3">The third component type.</typeparam>
-        /// <typeparam name="T5">The fifth component type.</typeparam>
-        /// <typeparam name="T6">The sixth component type.</typeparam>
-        /// <typeparam name="T4">The fourth component type.</typeparam>
-        /// <typeparam name="T7">The seventh component type.</typeparam>
-        /// <typeparam name="T8">The eighth component type.</typeparam>
-        /// <returns>An enumerator for the matching entities.</returns>
         public GameObjectQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8> GetEnumerator() => new GameObjectQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8>(query);
     }
 }

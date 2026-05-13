@@ -145,8 +145,6 @@ namespace Alis.Core.Ecs.Systems
             /// <summary>
             ///     Gets the enumerator over a query.
             /// </summary>
-            /// <typeparam name="T">The component type.</typeparam>
-            /// <returns>An enumerator for the matching entities.</returns>
             public GameObjectQueryEnumerator<T> GetEnumerator() => new GameObjectQueryEnumerator<T>(query);
         }
     }

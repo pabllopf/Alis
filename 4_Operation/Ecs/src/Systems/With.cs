@@ -35,7 +35,6 @@ namespace Alis.Core.Ecs.Systems
     /// <summary>
     ///     Specifies a query should have a component of <see paramref="T" />
     /// </summary>
-    /// <typeparam name="T">The component type.</typeparam>
     /// <remarks>
     ///     Memory layout optimized: Empty struct, 1 byte (C# minimum)
     ///     Pack = 1 for minimal memory footprint

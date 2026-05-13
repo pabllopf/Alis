@@ -36,7 +36,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
     /// <summary>
     ///     The archetype edge key
     /// </summary>
-    /// <typeparam name="ArchetypeEdgeKey">The ArchetypeEdgeKey type parameter.</typeparam>
     /// <remarks>
     ///     Memory layout optimized: 8 bytes total (ArchetypeEdgeType enum 4 bytes + ComponentId 2 bytes + GameObjectType 2
     ///     bytes)

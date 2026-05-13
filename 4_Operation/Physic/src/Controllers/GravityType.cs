@@ -30,21 +30,17 @@
 namespace Alis.Core.Physic.Controllers
 {
     /// <summary>
-    ///     Defines the gravity calculation model used by the <see cref="GravityController"/>.
-    ///     Determines how gravitational force attenuates with distance between bodies.
+    ///     The gravity type enum
     /// </summary>
     public enum GravityType
     {
         /// <summary>
-        ///     Linear gravity applies a constant gravitational force regardless of distance.
-        ///     Suitable for simple top-down or platformer gravity fields.
+        ///     The linear gravity type
         /// </summary>
         Linear,
 
         /// <summary>
-        ///     Distance-squared gravity applies an inverse-square attenuation (Newtonian gravity).
-        ///     Gravitational force decreases proportionally to the square of the distance,
-        ///     suitable for planetary or astrophysical simulations.
+        ///     The distance squared gravity type
         /// </summary>
         DistanceSquared
     }

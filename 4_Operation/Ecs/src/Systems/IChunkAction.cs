@@ -34,7 +34,6 @@ namespace Alis.Core.Ecs.Systems
     /// <summary>
     ///     An arbitary function that operates over a range of components
     /// </summary>
-    /// <typeparam name="TArg">The TArg type parameter.</typeparam>
     /// <remarks>Used for SIMD</remarks>
     public interface IChunkAction<TArg>
     {

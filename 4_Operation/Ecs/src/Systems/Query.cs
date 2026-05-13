@@ -68,7 +68,6 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     Converts the span
         /// </summary>
-        /// <typeparam name="Archetype">The Archetype type parameter.</typeparam>
         /// <returns>A span of archetype</returns>
         internal Span<Archetype> AsSpan() => _archetypes.AsSpan();
 
@@ -122,7 +121,6 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     Enumerates <see cref="GameObject" /> instances for all entities in this query. Intended for use in foreach loops.
         /// </summary>
-        /// <returns>The result of the operation.</returns>
         public GameObjectQueryEnumerator.QueryEnumerable EnumerateWithEntities() => new GameObjectQueryEnumerator.QueryEnumerable(this);
 
         /// <summary>

@@ -81,8 +81,6 @@ namespace Alis.Core.Ecs.Updating
         /// <summary>
         ///     Used only for source generation
         /// </summary>
-        /// <param name="type">The type parameter.</param>
-        /// <param name="fact">The fact parameter.</param>
         public static void RegisterType(Type type, object fact)
         {
             if (fact is not IComponentStorageBaseFactory value)
@@ -108,8 +106,6 @@ namespace Alis.Core.Ecs.Updating
         /// <summary>
         ///     Used only for source generation
         /// </summary>
-        /// <param name="attributeType">The attributeType parameter.</param>
-        /// <param name="componentType">The componentType parameter.</param>
         public static void RegisterUpdateMethodAttribute(Type attributeType, Type componentType)
         {
             if (!TypeAttributeCache.TryGetValue(attributeType, out HashSet<Type> set))

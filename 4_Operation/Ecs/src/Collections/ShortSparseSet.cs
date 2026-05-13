@@ -36,7 +36,6 @@ namespace Alis.Core.Ecs.Collections
     /// <summary>
     ///     The short sparse set class
     /// </summary>
-    /// <typeparam name="T">The component type.</typeparam>
     public class ShortSparseSet<T>
     {
         /// <summary>
@@ -222,8 +221,6 @@ namespace Alis.Core.Ecs.Collections
         /// <summary>
         ///     Note: this span will become invalid on resize or add
         /// </summary>
-        /// <typeparam name="T">The component type.</typeparam>
-        /// <returns>The result of the operation.</returns>
         public Span<T> AsSpan() => _dense.AsSpan(0, _nextIndex);
 
         /// <summary>

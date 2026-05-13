@@ -35,7 +35,6 @@ namespace Alis.Core.Ecs.Collections
     /// <summary>
     ///     The inline array
     /// </summary>
-    /// <typeparam name="T">The component type.</typeparam>
     /// <remarks>
     ///     Memory layout optimized: 8 elements of type T laid out sequentially
     ///     Pack = 1 for minimal memory footprint, tightly packed inline array

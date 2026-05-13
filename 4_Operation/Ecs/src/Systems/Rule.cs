@@ -38,7 +38,6 @@ namespace Alis.Core.Ecs.Systems
     /// <summary>
     ///     Encapsulates a check for an gameObject, used to filter queries
     /// </summary>
-    /// <typeparam name="Rule">The Rule type parameter.</typeparam>
     /// <remarks>
     ///     Memory layout optimized: Func reference (8 bytes) -> ComponentId (2 bytes) -> RuleState enum (4 bytes)
     ///     Total: 14 bytes + 2 bytes padding = 16 bytes aligned

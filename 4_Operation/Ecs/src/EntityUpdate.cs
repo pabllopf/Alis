@@ -38,13 +38,6 @@ namespace Alis.Core.Ecs
     /// <summary>
     ///     The gameObject update class
     /// </summary>
-    /// <typeparam name="TComp">The component type being updated.</typeparam>
-    /// <typeparam name="TArg1">The first update method argument type.</typeparam>
-    /// <typeparam name="TArg2">The second update method argument type.</typeparam>
-    /// <typeparam name="TArg3">The third update method argument type.</typeparam>
-    /// <typeparam name="TArg4">The fourth update method argument type.</typeparam>
-    /// <typeparam name="TArg5">The fifth update method argument type.</typeparam>
-    /// <typeparam name="TComp">The component type being updated.</typeparam>
     /// <seealso cref="ComponentStorage{TComp}" />
     public class EntityUpdate<TComp, TArg1, TArg2, TArg3, TArg4, TArg5>(int capacity) : ComponentStorage<TComp>(capacity)
         where TComp : IOnUpdate<TArg1, TArg2, TArg3, TArg4, TArg5>
@@ -53,7 +46,7 @@ namespace Alis.Core.Ecs
         ///     Runs the scene
         /// </summary>
         /// <param name="scene">The scene</param>
-        /// <param name="b">The second operand or archetype.</param>
+        /// <param name="b">The </param>
         internal override void Run(Scene scene, Archetype b)
         {
             ref GameObjectIdOnly entityIds = ref b.GetEntityDataReference();
@@ -88,7 +81,7 @@ namespace Alis.Core.Ecs
         ///     Runs the scene
         /// </summary>
         /// <param name="scene">The scene</param>
-        /// <param name="b">The second operand or archetype.</param>
+        /// <param name="b">The </param>
         /// <param name="start">The start</param>
         /// <param name="length">The length</param>
         internal override void Run(Scene scene, Archetype b, int start, int length)

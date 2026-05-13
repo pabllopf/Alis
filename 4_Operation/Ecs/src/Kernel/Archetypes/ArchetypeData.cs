@@ -35,7 +35,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
     /// <summary>
     ///     Archetype metadata
     /// </summary>
-    /// <typeparam name="ComponentId">The ComponentId type parameter.</typeparam>
     /// <param name="Id">The archetype ID</param>
     /// <param name="ComponentTypes">The component types in this archetype</param>
     /// <remarks>

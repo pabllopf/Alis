@@ -561,7 +561,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Updates all instances of a specific component type.
         /// </summary>
-        /// <param name="componentType">The componentType parameter.</param>
+        /// <param name="componentType"></param>
         public void UpdateComponent(ComponentId componentType)
         {
             EnterDisallowState();
@@ -682,7 +682,6 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Exits the disallow state using the specified filter used
         /// </summary>
-        /// <param name="false">The false parameter.</param>
         /// <param name="filterUsed">The filter used</param>
         /// <param name="updateDeferredEntities">The update deferred entities</param>
         public void ExitDisallowState(IComponentUpdateFilter filterUsed, bool updateDeferredEntities = false)

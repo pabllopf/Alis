@@ -36,7 +36,6 @@ namespace Alis.Core.Ecs.Kernel.Events
     /// <summary>
     ///     The event
     /// </summary>
-    /// <typeparam name="T">The component type.</typeparam>
     /// <remarks>
     ///     Memory layout optimized: Action reference (8 bytes) + FrugalStack struct (12 bytes)
     ///     Total: 20 bytes + 4 bytes padding = 24 bytes aligned

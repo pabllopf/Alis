@@ -113,7 +113,6 @@ namespace Alis.Core.Ecs.Systems
             ///     foreach
             ///     syntax.
             /// </summary>
-            /// <returns>An enumerator for the matching entities.</returns>
             public GameObjectEnumerator GetEnumerator() => new GameObjectEnumerator(_scene, _entities);
         }
     }

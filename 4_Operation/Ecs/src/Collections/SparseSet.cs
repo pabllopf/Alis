@@ -36,7 +36,6 @@ namespace Alis.Core.Ecs.Collections
     /// <summary>
     ///     The sparse set class
     /// </summary>
-    /// <typeparam name="T">The component type.</typeparam>
     public class SparseSet<T>
     {
         /// <summary>

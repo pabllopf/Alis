@@ -32,15 +32,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
     /// <summary>
     ///     The of component class
     /// </summary>
-    /// <typeparam name="T1">The first component type.</typeparam>
-    /// <typeparam name="T2">The second component type.</typeparam>
-    /// <typeparam name="T3">The third component type.</typeparam>
-    /// <typeparam name="T4">The fourth component type.</typeparam>
-    /// <typeparam name="T5">The fifth component type.</typeparam>
-    /// <typeparam name="T6">The sixth component type.</typeparam>
-    /// <typeparam name="T7">The seventh component type.</typeparam>
-    /// <typeparam name="T8">The eighth component type.</typeparam>
-    /// <typeparam name="TC">The component type.</typeparam>
     internal static class OfComponent<T1, T2, T3, T4, T5, T6, T7, T8, TC>
     {
         /// <summary>
@@ -52,14 +43,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
     /// <summary>
     ///     The of component class
     /// </summary>
-    /// <typeparam name="T1">The first component type.</typeparam>
-    /// <typeparam name="T2">The second component type.</typeparam>
-    /// <typeparam name="T3">The third component type.</typeparam>
-    /// <typeparam name="T4">The fourth component type.</typeparam>
-    /// <typeparam name="T5">The fifth component type.</typeparam>
-    /// <typeparam name="T6">The sixth component type.</typeparam>
-    /// <typeparam name="T7">The seventh component type.</typeparam>
-    /// <typeparam name="TC">The component type.</typeparam>
     internal static class OfComponent<T1, T2, T3, T4, T5, T6, T7, TC>
     {
         /// <summary>
@@ -71,13 +54,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
     /// <summary>
     ///     The of component class
     /// </summary>
-    /// <typeparam name="T1">The first component type.</typeparam>
-    /// <typeparam name="T2">The second component type.</typeparam>
-    /// <typeparam name="T3">The third component type.</typeparam>
-    /// <typeparam name="T4">The fourth component type.</typeparam>
-    /// <typeparam name="T5">The fifth component type.</typeparam>
-    /// <typeparam name="T6">The sixth component type.</typeparam>
-    /// <typeparam name="TC">The component type.</typeparam>
     internal static class OfComponent<T1, T2, T3, T4, T5, T6, TC>
     {
         /// <summary>
@@ -89,12 +65,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
     /// <summary>
     ///     The of component class
     /// </summary>
-    /// <typeparam name="T1">The first component type.</typeparam>
-    /// <typeparam name="T2">The second component type.</typeparam>
-    /// <typeparam name="T3">The third component type.</typeparam>
-    /// <typeparam name="T4">The fourth component type.</typeparam>
-    /// <typeparam name="T5">The fifth component type.</typeparam>
-    /// <typeparam name="TC">The component type.</typeparam>
     internal static class OfComponent<T1, T2, T3, T4, T5, TC>
     {
         /// <summary>
@@ -106,11 +76,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
     /// <summary>
     ///     The of component class
     /// </summary>
-    /// <typeparam name="T1">The first component type.</typeparam>
-    /// <typeparam name="T2">The second component type.</typeparam>
-    /// <typeparam name="T3">The third component type.</typeparam>
-    /// <typeparam name="T4">The fourth component type.</typeparam>
-    /// <typeparam name="TC">The component type.</typeparam>
     internal static class OfComponent<T1, T2, T3, T4, TC>
     {
         /// <summary>
@@ -122,10 +87,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
     /// <summary>
     ///     The of component class
     /// </summary>
-    /// <typeparam name="T1">The first component type.</typeparam>
-    /// <typeparam name="T2">The second component type.</typeparam>
-    /// <typeparam name="T3">The third component type.</typeparam>
-    /// <typeparam name="TC">The component type.</typeparam>
     internal static class OfComponent<T1, T2, T3, TC>
     {
         /// <summary>
@@ -137,9 +98,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
     /// <summary>
     ///     The of component class
     /// </summary>
-    /// <typeparam name="T1">The first component type.</typeparam>
-    /// <typeparam name="T2">The second component type.</typeparam>
-    /// <typeparam name="TC">The component type.</typeparam>
     internal static class OfComponent<T1, T2, TC>
     {
         /// <summary>

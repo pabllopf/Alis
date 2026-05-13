@@ -169,7 +169,6 @@ namespace Alis.Core.Ecs.Collections
     /// <summary>
     ///     The id table class
     /// </summary>
-    /// <typeparam name="T">The component type.</typeparam>
     /// <seealso cref="IdTable" />
     public class IdTable<T> : IdTable
     {

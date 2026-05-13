@@ -45,7 +45,6 @@ namespace Alis.Core.Ecs
     /// <summary>
     ///     A lightweight identifier that represents an entity in the ECS (Entity Component System) architecture.
     /// </summary>
-    /// <typeparam name="GameObject">The GameObject type parameter.</typeparam>
     /// <remarks>
     ///     <para>
     ///     In the ECS pattern, an entity is simply an ID that identifies a collection of components.
@@ -178,7 +177,6 @@ namespace Alis.Core.Ecs
         }
 
         /// <exception cref="InvalidOperationException">This <see cref="GameObject" /> has been deleted.</exception>
-        /// <returns>The result of the operation.</returns>
         internal ref GameObjectLocation AssertIsAlive(out Scene scene)
         {
             scene = GlobalWorldTables.Worlds.UnsafeIndexNoResize(WorldID);
@@ -1993,7 +1991,6 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Initalizes the event record using the specified delegate
         /// </summary>
-        /// <param name="false">The false parameter.</param>
         /// <param name="d">The delegate</param>
         /// <param name="flag">The flag</param>
         /// <param name="isGenericEvent">The is generic event</param>
@@ -2134,7 +2131,6 @@ namespace Alis.Core.Ecs
         ///     Gets an <see cref="GameObjectType" /> without needing an <see cref="GameObject" /> of the specific type.
         /// </summary>
         /// <param name="components">The components the <see cref="GameObjectType" /> should have.</param>
-        /// <returns>The result of the operation.</returns>
         public static GameObjectType EntityTypeOf(ReadOnlySpan<ComponentId> components) => Archetype.GetArchetypeId(components);
     }
 }

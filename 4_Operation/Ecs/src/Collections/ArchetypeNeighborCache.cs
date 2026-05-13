@@ -67,8 +67,6 @@ namespace Alis.Core.Ecs.Collections
         private int _nextIndex;
 
         /// <summary>Returns the slot index (0-3) for <paramref name="value" />, or 32 on miss.</summary>
-        /// <param name="value">The value to set.</param>
-        /// <returns>The result of the operation.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public int Traverse(ushort value)
         {
@@ -99,8 +97,6 @@ namespace Alis.Core.Ecs.Collections
         ///     Returns the cached <see cref="Archetype" /> for <paramref name="key" /> directly,
         ///     or <see langword="null" /> on a miss. Eliminates the WorldArchetypeTable lookup on the hot path.
         /// </summary>
-        /// <param name="key">The lookup key.</param>
-        /// <returns>The result of the operation.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public Archetype TraverseArchetype(ushort key)
         {
@@ -128,8 +124,6 @@ namespace Alis.Core.Ecs.Collections
         }
 
         /// <summary>Returns the destination archetype ID stored at <paramref name="index" />.</summary>
-        /// <param name="index">The index within the storage.</param>
-        /// <returns>The result of the operation.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public ushort Lookup(int index)
         {
@@ -143,8 +137,6 @@ namespace Alis.Core.Ecs.Collections
         }
 
         /// <summary>Stores a key→value mapping (ushort only, no direct Archetype reference).</summary>
-        /// <param name="key">The lookup key.</param>
-        /// <param name="value">The value to set.</param>
         public void Set(ushort key, ushort value)
         {
             int slot = _nextIndex;
@@ -179,8 +171,6 @@ namespace Alis.Core.Ecs.Collections
         ///     Stores a key→archetype mapping. The destination archetype ID is derived from
         ///     <paramref name="archetype" /> and the reference is cached for the fast hit path.
         /// </summary>
-        /// <param name="key">The lookup key.</param>
-        /// <param name="archetype">The archetype to use.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Set(ushort key, Archetype archetype)
         {
