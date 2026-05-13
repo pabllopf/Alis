@@ -30,23 +30,18 @@
 namespace Alis.Core.Graphic.OpenGL.Enums
 {
     /// <summary>
-    ///     The polygon mode enum enum
+    /// Defines the polygon rasterization modes used by glPolygonMode.
+    /// Specifies how polygons are rasterized: as points, lines, or filled.
     /// </summary>
     public enum PolygonModeEnum : uint
     {
-        /// <summary>
-        ///     The point polygon mode enum
-        /// </summary>
+        /// <summary>Polygons are rendered as points at their vertices (GL_POINT = 0x1B00).</summary>
         Point = 0x1B00,
 
-        /// <summary>
-        ///     The line polygon mode enum
-        /// </summary>
+        /// <summary>Polygons are rendered as line outlines (GL_LINE = 0x1B01).</summary>
         Line = 0x1B01,
 
-        /// <summary>
-        ///     The fill polygon mode enum
-        /// </summary>
+        /// <summary>Polygons are filled solid (GL_FILL = 0x1B02).</summary>
         Fill = 0x1B02
     }
 }

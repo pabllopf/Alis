@@ -30,33 +30,24 @@
 namespace Alis.Core.Graphic.OpenGL.Enums
 {
     /// <summary>
-    ///     The shader parameter enum
+    /// Defines the parameters that can be queried from OpenGL shader objects using glGetShaderiv.
+    /// Provides information about the shader's type, compilation status, and source length.
     /// </summary>
     public enum ShaderParameter
     {
-        /// <summary>
-        ///     The shader type shader parameter
-        /// </summary>
+        /// <summary>The type of the shader (vertex, fragment, geometry, etc.) (GL_SHADER_TYPE = 0x8B4F).</summary>
         ShaderType = 0x8B4F,
 
-        /// <summary>
-        ///     The delete status shader parameter
-        /// </summary>
+        /// <summary>Whether the shader has been flagged for deletion (GL_DELETE_STATUS = 0x8B80).</summary>
         DeleteStatus = 0x8B80,
 
-        /// <summary>
-        ///     The compile status shader parameter
-        /// </summary>
+        /// <summary>Whether the shader was successfully compiled (GL_COMPILE_STATUS = 0x8B81).</summary>
         CompileStatus = 0x8B81,
 
-        /// <summary>
-        ///     The info log length shader parameter
-        /// </summary>
+        /// <summary>Length of the shader's info log (GL_INFO_LOG_LENGTH = 0x8B84).</summary>
         InfoLogLength = 0x8B84,
 
-        /// <summary>
-        ///     The shader source length shader parameter
-        /// </summary>
+        /// <summary>Length of the shader source code (GL_SHADER_SOURCE_LENGTH = 0x8B88).</summary>
         ShaderSourceLength = 0x8B88
     }
 }

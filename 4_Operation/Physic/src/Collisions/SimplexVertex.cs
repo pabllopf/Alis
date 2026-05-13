@@ -32,37 +32,40 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     The simplex vertex
+    ///     Represents a single vertex of the GJK simplex in Minkowski difference space.
+    ///     Each vertex stores a support point from each shape, their difference vector,
+    ///     the vertex indices, and the barycentric coefficient for closest-point computation.
     /// </summary>
     internal struct SimplexVertex
     {
         /// <summary>
-        ///     Barycentric coordinate for closest point
+        ///     The barycentric coordinate (coefficient) for this vertex in the convex combination
+        ///     that yields the closest point to the origin. The sum of all A values equals 1.
         /// </summary>
         public float A;
 
         /// <summary>
-        ///     wA index
+        ///     The index of the support vertex on shape A that generated this simplex point.
         /// </summary>
         public int IndexA;
 
         /// <summary>
-        ///     wB index
+        ///     The index of the support vertex on shape B that generated this simplex point.
         /// </summary>
         public int IndexB;
 
         /// <summary>
-        ///     wB - wA
+        ///     The difference vector Wb - Wa in world space (Minkowski sum point).
         /// </summary>
         public Vector2F W;
 
         /// <summary>
-        ///     Support point in proxyA
+        ///     The world-space support point on shape A (proxyA).
         /// </summary>
         public Vector2F Wa;
 
         /// <summary>
-        ///     Support point in proxyB
+        ///     The world-space support point on shape B (proxyB).
         /// </summary>
         public Vector2F Wb;
     }

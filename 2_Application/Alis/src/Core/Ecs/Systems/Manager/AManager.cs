@@ -294,7 +294,144 @@ namespace Alis.Core.Ecs.Systems.Manager
         }
 
         /// <summary>
-        ///     Ons the physics update
+        ///     Called when the manager is enabled.
+        /// </summary>
+        public virtual void OnEnable()
+
+        /// <summary>
+        ///     Called when the manager is initialized.
+        /// </summary>
+        public virtual void OnInit()
+
+        /// <summary>
+        ///     Called after the manager's entities are created but before the first update.
+        /// </summary>
+        public virtual void OnAwake()
+
+        /// <summary>
+        ///     Called once, after all Awake calls have been completed.
+        /// </summary>
+        public virtual void OnStart()
+
+        /// <summary>
+        ///     Called before the first Update call.
+        /// </summary>
+        public virtual void OnBeforeUpdate()
+
+        /// <summary>
+        ///     Called once per frame during the main update loop.
+        /// </summary>
+        public virtual void OnUpdate()
+
+        /// <summary>
+        ///     Called after the main Update call.
+        /// </summary>
+        public virtual void OnAfterUpdate()
+
+        /// <summary>
+        ///     Called to process any deferred structural changes.
+        /// </summary>
+        public virtual void OnProcessPendingChanges()
+
+        /// <summary>
+        ///     Called before the fixed physics update.
+        /// </summary>
+        public virtual void OnBeforeFixedUpdate()
+
+        /// <summary>
+        ///     Called at a fixed rate during the physics update phase.
+        /// </summary>
+        public virtual void OnFixedUpdate()
+
+        /// <summary>
+        ///     Called after the fixed physics update.
+        /// </summary>
+        public virtual void OnAfterFixedUpdate()
+
+        /// <summary>
+        ///     Called to dispatch queued events.
+        /// </summary>
+        public virtual void OnDispatchEvents()
+
+        /// <summary>
+        ///     Called for custom calculation steps.
+        /// </summary>
+        public virtual void OnCalculate()
+
+        /// <summary>
+        ///     Called before the rendering phase.
+        /// </summary>
+        public virtual void OnBeforeDraw()
+
+        /// <summary>
+        ///     Called during the rendering phase.
+        /// </summary>
+        public virtual void OnDraw()
+
+        /// <summary>
+        ///     Called after the rendering phase.
+        /// </summary>
+        public virtual void OnAfterDraw()
+
+        /// <summary>
+        ///     Called for GUI rendering and interaction.
+        /// </summary>
+        public virtual void OnGui()
+
+        /// <summary>
+        ///     Called after presenting the rendered frame.
+        /// </summary>
+        public virtual void OnRenderPresent()
+
+        /// <summary>
+        ///     Called when the manager is disabled.
+        /// </summary>
+        public virtual void OnDisable()
+
+        /// <summary>
+        ///     Called to reset the manager to its initial state.
+        /// </summary>
+        public virtual void OnReset()
+
+        /// <summary>
+        ///     Called when stopping the manager.
+        /// </summary>
+        public virtual void OnStop()
+
+        /// <summary>
+        ///     Called when exiting the scene.
+        /// </summary>
+        public virtual void OnExit()
+
+        /// <summary>
+        ///     Called when the manager is being destroyed.
+        /// </summary>
+        public virtual void OnDestroy()
+
+        /// <summary>
+        ///     Called when saving the manager's state.
+        /// </summary>
+        public virtual void OnSave()
+
+        /// <summary>
+        ///     Called when loading the manager's state.
+        /// </summary>
+        public virtual void OnLoad()
+
+        /// <summary>
+        ///     Called when saving the manager's state to a specific path.
+        /// </summary>
+        /// <param name="path">The file path to save to.</param>
+        public virtual void OnSave(string path)
+
+        /// <summary>
+        ///     Called when loading the manager's state from a specific path.
+        /// </summary>
+        /// <param name="path">The file path to load from.</param>
+        public virtual void OnLoad(string path)
+
+        /// <summary>
+        ///     Called during the physics update phase.
         /// </summary>
         public virtual void OnPhysicUpdate()
         {

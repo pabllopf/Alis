@@ -34,8 +34,13 @@ using Alis.Core.Graphic.OpenGL.Enums;
 namespace Alis.Core.Graphic.OpenGL
 {
     /// <summary>
-    ///     The draw elements
+    /// Represents the unmanaged function pointer for the OpenGL glDrawElements command.
+    /// Renders primitives from array data using index values stored in a bound element array buffer.
     /// </summary>
+    /// <param name="mode">The type of primitive to render (e.g., Triangles, Lines, Points).</param>
+    /// <param name="count">The number of elements to render.</param>
+    /// <param name="type">The data type of the index values in the element array buffer.</param>
+    /// <param name="indices">A pointer to the index data, or an offset into the bound element array buffer.</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void DrawElements(PrimitiveType mode, int count, DrawElementsType type, IntPtr indices);
 }

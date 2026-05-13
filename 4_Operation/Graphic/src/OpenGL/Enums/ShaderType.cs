@@ -30,38 +30,27 @@
 namespace Alis.Core.Graphic.OpenGL.Enums
 {
     /// <summary>
-    ///     The shader type enum
+    /// Defines the types of shader objects that can be created in OpenGL.
+    /// Used with glCreateShader to specify the shader stage.
     /// </summary>
     public enum ShaderType
     {
-        /// <summary>
-        ///     The fragment shader shader type
-        /// </summary>
+        /// <summary>Fragment (pixel) shader - processes rasterized fragments (GL_FRAGMENT_SHADER = 0x8B30).</summary>
         FragmentShader = 0x8B30,
 
-        /// <summary>
-        ///     The vertex shader shader type
-        /// </summary>
+        /// <summary>Vertex shader - processes vertex data (GL_VERTEX_SHADER = 0x8B31).</summary>
         VertexShader = 0x8B31,
 
-        /// <summary>
-        ///     The geometry shader shader type
-        /// </summary>
+        /// <summary>Geometry shader - processes primitive data (GL_GEOMETRY_SHADER = 0x8DD9).</summary>
         GeometryShader = 0x8DD9,
 
-        /// <summary>
-        ///     The tess control shader shader type
-        /// </summary>
+        /// <summary>Tessellation control shader (GL_TESS_CONTROL_SHADER = 0x8E88).</summary>
         TessControlShader = 0x8E88,
 
-        /// <summary>
-        ///     The tess evaluation shader shader type
-        /// </summary>
+        /// <summary>Tessellation evaluation shader (GL_TESS_EVALUATION_SHADER = 0x8E87).</summary>
         TessEvaluationShader = 0x8E87,
 
-        /// <summary>
-        ///     The compute shader shader type
-        /// </summary>
+        /// <summary>Compute shader - general purpose computation (GL_COMPUTE_SHADER = 0x91B9).</summary>
         ComputeShader = 0x91B9
     }
 }

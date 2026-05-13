@@ -30,93 +30,60 @@
 namespace Alis.Core.Graphic.OpenGL.Enums
 {
     /// <summary>
-    ///     The program parameter enum
+    /// Defines the parameters that can be queried from OpenGL shader program objects using glGetProgramiv.
+    /// Provides information about the program's status, attached shaders, active attributes, uniforms, and transform feedback state.
     /// </summary>
     public enum ProgramParameter
     {
-        /// <summary>
-        ///     The active uniform block max name length program parameter
-        /// </summary>
+        /// <summary>Maximum name length of active uniform blocks (GL_ACTIVE_UNIFORM_BLOCK_MAX_NAME_LENGTH = 0x8A35).</summary>
         ActiveUniformBlockMaxNameLength = 0x8A35,
 
-        /// <summary>
-        ///     The active uniform blocks program parameter
-        /// </summary>
+        /// <summary>Number of active uniform blocks (GL_ACTIVE_UNIFORM_BLOCKS = 0x8A36).</summary>
         ActiveUniformBlocks = 0x8A36,
 
-        /// <summary>
-        ///     The delete status program parameter
-        /// </summary>
+        /// <summary>Whether the program has been flagged for deletion (GL_DELETE_STATUS = 0x8B80).</summary>
         DeleteStatus = 0x8B80,
 
-        /// <summary>
-        ///     The link status program parameter
-        /// </summary>
+        /// <summary>Whether the program was successfully linked (GL_LINK_STATUS = 0x8B82).</summary>
         LinkStatus = 0x8B82,
 
-        /// <summary>
-        ///     The validate status program parameter
-        /// </summary>
+        /// <summary>Whether the program is valid for current OpenGL state (GL_VALIDATE_STATUS = 0x8B83).</summary>
         ValidateStatus = 0x8B83,
 
-        /// <summary>
-        ///     The info log length program parameter
-        /// </summary>
+        /// <summary>Length of the program's info log (GL_INFO_LOG_LENGTH = 0x8B84).</summary>
         InfoLogLength = 0x8B84,
 
-        /// <summary>
-        ///     The attached shaders program parameter
-        /// </summary>
+        /// <summary>Number of shader objects attached to the program (GL_ATTACHED_SHADERS = 0x8B85).</summary>
         AttachedShaders = 0x8B85,
 
-        /// <summary>
-        ///     The active uniforms program parameter
-        /// </summary>
+        /// <summary>Number of active uniform variables (GL_ACTIVE_UNIFORMS = 0x8B86).</summary>
         ActiveUniforms = 0x8B86,
 
-        /// <summary>
-        ///     The active uniform max length program parameter
-        /// </summary>
+        /// <summary>Maximum name length of active uniforms (GL_ACTIVE_UNIFORM_MAX_LENGTH = 0x8B87).</summary>
         ActiveUniformMaxLength = 0x8B87,
 
-        /// <summary>
-        ///     The active attributes program parameter
-        /// </summary>
+        /// <summary>Number of active vertex attributes (GL_ACTIVE_ATTRIBUTES = 0x8B89).</summary>
         ActiveAttributes = 0x8B89,
 
-        /// <summary>
-        ///     The active attribute max length program parameter
-        /// </summary>
+        /// <summary>Maximum name length of active attributes (GL_ACTIVE_ATTRIBUTE_MAX_LENGTH = 0x8B8A).</summary>
         ActiveAttributeMaxLength = 0x8B8A,
 
-        /// <summary>
-        ///     The transform feedback varying max length program parameter
-        /// </summary>
+        /// <summary>Maximum name length of transform feedback varyings (GL_TRANSFORM_FEEDBACK_VARYING_MAX_LENGTH = 0x8C76).</summary>
         TransformFeedbackVaryingMaxLength = 0x8C76,
 
-        /// <summary>
-        ///     The transform feedback buffer mode program parameter
-        /// </summary>
+        /// <summary>Transform feedback buffer mode (GL_TRANSFORM_FEEDBACK_BUFFER_MODE = 0x8C7F).</summary>
         TransformFeedbackBufferMode = 0x8C7F,
 
-        /// <summary>
-        ///     The transform feedback varyings program parameter
-        /// </summary>
+        /// <summary>Number of transform feedback varyings (GL_TRANSFORM_FEEDBACK_VARYINGS = 0x8C83).</summary>
         TransformFeedbackVaryings = 0x8C83,
 
-        /// <summary>
-        ///     The geometry vertices out program parameter
-        /// </summary>
+        /// <summary>Maximum number of vertices output by geometry shader (GL_GEOMETRY_VERTICES_OUT = 0x8DDA).</summary>
         GeometryVerticesOut = 0x8DDA,
 
-        /// <summary>
-        ///     The geometry input type program parameter
-        /// </summary>
+        /// <summary>Input primitive type of geometry shader (GL_GEOMETRY_INPUT_TYPE = 0x8DDB).</summary>
         GeometryInputType = 0x8DDB,
 
-        /// <summary>
-        ///     The geometry output type program parameter
-        /// </summary>
+        /// <summary>Output primitive type of geometry shader (GL_GEOMETRY_OUTPUT_TYPE = 0x8DDC).</summary>
         GeometryOutputType = 0x8DDC
     }
 }

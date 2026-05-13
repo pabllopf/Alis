@@ -30,43 +30,30 @@
 namespace Alis.Core.Graphic.OpenGL.Enums
 {
     /// <summary>
-    ///     The active attrib type enum
+    /// Defines the possible data types for active vertex attributes in an OpenGL shader program.
+    /// Used with glGetActiveAttrib to determine the GLSL type of each active attribute.
     /// </summary>
     public enum ActiveAttribType
     {
-        /// <summary>
-        ///     The float active attrib type
-        /// </summary>
+        /// <summary>Single-precision float attribute (GL_FLOAT = 0x1406).</summary>
         Float = 0x1406,
 
-        /// <summary>
-        ///     The float vec active attrib type
-        /// </summary>
+        /// <summary>Two-component float vector attribute (GL_FLOAT_VEC2 = 0x8B50).</summary>
         FloatVec2 = 0x8B50,
 
-        /// <summary>
-        ///     The float vec active attrib type
-        /// </summary>
+        /// <summary>Three-component float vector attribute (GL_FLOAT_VEC3 = 0x8B51).</summary>
         FloatVec3 = 0x8B51,
 
-        /// <summary>
-        ///     The float vec active attrib type
-        /// </summary>
+        /// <summary>Four-component float vector attribute (GL_FLOAT_VEC4 = 0x8B52).</summary>
         FloatVec4 = 0x8B52,
 
-        /// <summary>
-        ///     The float mat active attrib type
-        /// </summary>
+        /// <summary>2x2 float matrix attribute (GL_FLOAT_MAT2 = 0x8B5A).</summary>
         FloatMat2 = 0x8B5A,
 
-        /// <summary>
-        ///     The float mat active attrib type
-        /// </summary>
+        /// <summary>3x3 float matrix attribute (GL_FLOAT_MAT3 = 0x8B5B).</summary>
         FloatMat3 = 0x8B5B,
 
-        /// <summary>
-        ///     The float mat active attrib type
-        /// </summary>
+        /// <summary>4x4 float matrix attribute (GL_FLOAT_MAT4 = 0x8B5C).</summary>
         FloatMat4 = 0x8B5C
     }
 }

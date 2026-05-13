@@ -34,7 +34,9 @@ using Alis.Core.Physic.Dynamics;
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     The time of impact class
+    ///     Computes the time of impact (TOI) for two convex shapes in motion using the swept separating axis
+    ///     method. This enables continuous collision detection (CCD) by finding the earliest time fraction
+    ///     in [0, tMax] at which two moving shapes begin to penetrate.
     /// </summary>
     public static class TimeOfImpact
     {
@@ -42,39 +44,48 @@ namespace Alis.Core.Physic.Collisions
         // by computing the largest time at which separation is maintained.
 
         /// <summary>
-        ///     The toi max iters
+        ///     The total number of calls made to <see cref="CalculateTimeOfImpact"/> since the last reset.
+        ///     Only tracked when <see cref="SettingEnv.EnableDiagnostics"/> is <c>true</c>.
         /// </summary>
         [ThreadStatic] public static int ToiCalls;
 
         /// <summary>
-        ///     The toi max iters
+        ///     The number of iterations used in the most recent call to <see cref="CalculateTimeOfImpact"/>.
+        ///     Only tracked when <see cref="SettingEnv.EnableDiagnostics"/> is <c>true</c>.
         /// </summary>
         [ThreadStatic] public static int ToiIters;
 
         /// <summary>
-        ///     The toi max iters
+        ///     The maximum number of iterations ever used by any call to <see cref="CalculateTimeOfImpact"/>.
+        ///     Only tracked when <see cref="SettingEnv.EnableDiagnostics"/> is <c>true</c>.
         /// </summary>
         [ThreadStatic] public static int ToiMaxIters;
 
         /// <summary>
-        ///     The toi max root iters
+        ///     The total number of root-finding iterations in the most recent TOI computation.
+        ///     Only tracked when <see cref="SettingEnv.EnableDiagnostics"/> is <c>true</c>.
         /// </summary>
         [ThreadStatic] public static int ToiRootIters;
 
         /// <summary>
-        ///     The toi max root iters
+        ///     The maximum number of root-finding iterations ever used by any TOI computation.
+        ///     Only tracked when <see cref="SettingEnv.EnableDiagnostics"/> is <c>true</c>.
         /// </summary>
         [ThreadStatic] public static int ToiMaxRootIters;
 
         /// <summary>
-        ///     Compute the upper bound on time before two shapes penetrate. Time is represented as
-        ///     a fraction between [0,tMax]. This uses a swept separating axis and may miss some intermediate,
-        ///     non-tunneling collision. If you change the time interval, you should call this function
-        ///     again.
-        ///     Note: use Distance() to compute the contact point and normal at the time of impact.
+        ///     Computes the upper bound on time before two shapes penetrate using the swept separating axis
+        ///     method. Time is represented as a fraction in [0, tMax]. The algorithm uses a combination of
+        ///     GJK distance computation, separation function evaluation, and root finding (secant/bisection)
+        ///     to determine the exact time of impact.
         /// </summary>
-        /// <param name="output">The output.</param>
-        /// <param name="input">The input.</param>
+        /// <param name="output">When this method returns, contains the TOI result (state and time fraction).</param>
+        /// <param name="input">The input parameters specifying the two shape proxies, their motion sweeps, and the maximum time.</param>
+        /// <remarks>
+        ///     This method may miss some intermediate, non-tunneling collisions. If the shapes are overlapping
+        ///     at time 0, the output state is set to <see cref="ToiOutputState.Overlapped"/>. Use
+        ///     <see cref="Distance.ComputeDistance"/> to compute contact points at the time of impact.
+        /// </remarks>
         public static void CalculateTimeOfImpact(out ToiOutput output, ref ToiInput input)
         {
             if (SettingEnv.EnableDiagnostics) //FPE: We only gather diagnostics when enabled

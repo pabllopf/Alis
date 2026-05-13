@@ -35,28 +35,32 @@ using Alis.Core.Physic.Dynamics;
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     The simplex
+    ///     Represents a simplex used by the GJK (Gilbert-Johnson-Keerthi) distance algorithm.
+    ///     The simplex is a point, line segment, or triangle in the Minkowski difference space
+    ///     that is iteratively refined to find the minimum distance between two convex shapes.
     /// </summary>
     internal struct Simplex
     {
         /// <summary>
-        ///     The count
+        ///     The number of vertices currently defining this simplex (0-3).
         /// </summary>
         internal int Count;
 
         /// <summary>
-        ///     The
+        ///     The fixed-size array of up to three simplex vertices (points in Minkowski space).
         /// </summary>
         internal FixedArray3<SimplexVertex> V;
 
         /// <summary>
-        ///     Reads the cache using the specified cache
+        ///     Restores the simplex state from a cached GJK result for warm starting.
+        ///     Validates the cached metric against the current simplex metric; if the difference
+        ///     is too large, the simplex is reset to the initial state (first vertex on each shape).
         /// </summary>
-        /// <param name="cache">The cache</param>
-        /// <param name="proxyA">The proxy</param>
-        /// <param name="controllerTransformA">The transform</param>
-        /// <param name="proxyB">The proxy</param>
-        /// <param name="controllerTransformB">The transform</param>
+        /// <param name="cache">The simplex cache containing the previously computed vertex indices, count, and metric.</param>
+        /// <param name="proxyA">The distance proxy for shape A providing vertex positions.</param>
+        /// <param name="controllerTransformA">The world transform of shape A.</param>
+        /// <param name="proxyB">The distance proxy for shape B providing vertex positions.</param>
+        /// <param name="controllerTransformB">The world transform of shape B.</param>
         internal void ReadCache(ref SimplexCache cache, ref DistanceProxy proxyA, ref ControllerTransform controllerTransformA, ref DistanceProxy proxyB, ref ControllerTransform controllerTransformB)
         {
             // Copy data from cache.
@@ -106,9 +110,10 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     Writes the cache using the specified cache
+        ///     Saves the current simplex state (vertex indices, count, and metric) into a cache structure
+        ///     for warm starting subsequent GJK distance queries.
         /// </summary>
-        /// <param name="cache">The cache</param>
+        /// <param name="cache">The cache structure to populate with the current simplex state.</param>
         internal void WriteCache(ref SimplexCache cache)
         {
             cache.Metric = GetMetric();
@@ -121,9 +126,12 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     Gets the search direction
+        ///     Computes the search direction for the next iteration of the GJK algorithm.
+        ///     The direction points from the current simplex toward the origin in Minkowski space.
+        ///     For a 1-vertex simplex, returns the negative of the vertex. For a 2-vertex simplex,
+        ///     returns the vector perpendicular to the edge pointing toward the origin.
         /// </summary>
-        /// <returns>The vector</returns>
+        /// <returns>The search direction vector for finding the next support point.</returns>
         internal Vector2F GetSearchDirection()
         {
             switch (Count)
@@ -151,9 +159,11 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     Gets the closest point
+        ///     Computes the closest point in the current simplex to the origin in Minkowski space.
+        ///     For a 2-vertex simplex, the point is computed using barycentric coordinates (A coefficients).
+        ///     A 3-vertex simplex indicates the origin is inside the triangle (shapes overlap).
         /// </summary>
-        /// <returns>The vector</returns>
+        /// <returns>The closest point in the simplex to the origin, or zero if the count is 0 or 3.</returns>
         internal Vector2F GetClosestPoint()
         {
             switch (Count)
@@ -176,11 +186,13 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     Gets the witness points using the specified p a
+        ///     Computes the witness points (closest points) on each shape by interpolating simplex vertices
+        ///     using the barycentric coordinates (A coefficients). For a 3-vertex simplex (overlap),
+        ///     both witness points are set to the same position (degenerate case).
         /// </summary>
-        /// <param name="pA">The </param>
-        /// <param name="pB">The </param>
-        /// <exception cref="Exception"></exception>
+        /// <param name="pA">When this method returns, contains the closest point on shape A in world coordinates.</param>
+        /// <param name="pB">When this method returns, contains the closest point on shape B in world coordinates.</param>
+        /// <exception cref="Exception">Thrown when the simplex count is not 0, 1, 2, or 3 (invalid state).</exception>
         internal void GetWitnessPoints(out Vector2F pA, out Vector2F pB)
         {
             switch (Count)
@@ -211,9 +223,10 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     Gets the metric
+        ///     Computes the simplex metric: the length of the edge (2 vertices) or the signed area of the triangle (3 vertices).
+        ///     This metric is used to detect significant changes in simplex configuration between frames.
         /// </summary>
-        /// <returns>The float</returns>
+        /// <returns>The metric value (edge length for 2-vertex simplex, cross product area for 3-vertex simplex).</returns>
         internal float GetMetric()
         {
             switch (Count)
@@ -259,7 +272,9 @@ namespace Alis.Core.Physic.Collisions
         // a2 = d12_2 / d12
 
         /// <summary>
-        ///     Solves the 2
+        ///     Solves the closest point on a 2-vertex simplex (line segment) using barycentric coordinates.
+        ///     Determines whether the closest point is on vertex w1, vertex w2, or the edge e12,
+        ///     and adjusts the simplex count accordingly.
         /// </summary>
         internal void Solve2()
         {
@@ -309,7 +324,9 @@ namespace Alis.Core.Physic.Collisions
         // - edge points[1]-points[2]
         // - inside the triangle
         /// <summary>
-        ///     Solves the 3
+        ///     Solves the closest point on a 3-vertex simplex (triangle) using barycentric coordinates.
+        ///     Determines the closest region (vertex, edge, or interior) and adjusts the simplex
+        ///     count and vertex coefficients accordingly. The 3-vertex case corresponds to overlapping shapes.
         /// </summary>
         internal void Solve3()
         {

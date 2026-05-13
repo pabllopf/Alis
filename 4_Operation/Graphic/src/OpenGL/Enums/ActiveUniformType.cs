@@ -30,308 +30,190 @@
 namespace Alis.Core.Graphic.OpenGL.Enums
 {
     /// <summary>
-    ///     The active uniform type enum
+    /// Defines all possible data types for active uniforms in an OpenGL shader program.
+    /// Used with glGetActiveUniform to determine the GLSL type of each active uniform variable.
+    /// Covers scalar, vector, matrix, and sampler types across all recent OpenGL versions.
     /// </summary>
     public enum ActiveUniformType
     {
-        /// <summary>
-        ///     The int active uniform type
-        /// </summary>
+        /// <summary>Signed integer scalar (GL_INT = 0x1404).</summary>
         Int = 0x1404,
 
-        /// <summary>
-        ///     The float active uniform type
-        /// </summary>
+        /// <summary>Single-precision float scalar (GL_FLOAT = 0x1406).</summary>
         Float = 0x1406,
 
-        /// <summary>
-        ///     The float vec active uniform type
-        /// </summary>
+        /// <summary>Two-component float vector (GL_FLOAT_VEC2 = 0x8B50).</summary>
         FloatVec2 = 0x8B50,
 
-        /// <summary>
-        ///     The float vec active uniform type
-        /// </summary>
+        /// <summary>Three-component float vector (GL_FLOAT_VEC3 = 0x8B51).</summary>
         FloatVec3 = 0x8B51,
 
-        /// <summary>
-        ///     The float vec active uniform type
-        /// </summary>
+        /// <summary>Four-component float vector (GL_FLOAT_VEC4 = 0x8B52).</summary>
         FloatVec4 = 0x8B52,
 
-        /// <summary>
-        ///     The int vec active uniform type
-        /// </summary>
+        /// <summary>Two-component integer vector (GL_INT_VEC2 = 0x8B53).</summary>
         IntVec2 = 0x8B53,
 
-        /// <summary>
-        ///     The int vec active uniform type
-        /// </summary>
+        /// <summary>Three-component integer vector (GL_INT_VEC3 = 0x8B54).</summary>
         IntVec3 = 0x8B54,
 
-        /// <summary>
-        ///     The int vec active uniform type
-        /// </summary>
+        /// <summary>Four-component integer vector (GL_INT_VEC4 = 0x8B55).</summary>
         IntVec4 = 0x8B55,
 
-        /// <summary>
-        ///     The bool active uniform type
-        /// </summary>
+        /// <summary>Boolean scalar (GL_BOOL = 0x8B56).</summary>
         Bool = 0x8B56,
 
-        /// <summary>
-        ///     The bool vec active uniform type
-        /// </summary>
+        /// <summary>Two-component boolean vector (GL_BOOL_VEC2 = 0x8B57).</summary>
         BoolVec2 = 0x8B57,
 
-        /// <summary>
-        ///     The bool vec active uniform type
-        /// </summary>
+        /// <summary>Three-component boolean vector (GL_BOOL_VEC3 = 0x8B58).</summary>
         BoolVec3 = 0x8B58,
 
-        /// <summary>
-        ///     The bool vec active uniform type
-        /// </summary>
+        /// <summary>Four-component boolean vector (GL_BOOL_VEC4 = 0x8B59).</summary>
         BoolVec4 = 0x8B59,
 
-        /// <summary>
-        ///     The float mat active uniform type
-        /// </summary>
+        /// <summary>2x2 float matrix (GL_FLOAT_MAT2 = 0x8B5A).</summary>
         FloatMat2 = 0x8B5A,
 
-        /// <summary>
-        ///     The float mat active uniform type
-        /// </summary>
+        /// <summary>3x3 float matrix (GL_FLOAT_MAT3 = 0x8B5B).</summary>
         FloatMat3 = 0x8B5B,
 
-        /// <summary>
-        ///     The float mat active uniform type
-        /// </summary>
+        /// <summary>4x4 float matrix (GL_FLOAT_MAT4 = 0x8B5C).</summary>
         FloatMat4 = 0x8B5C,
 
-        /// <summary>
-        ///     The sampler active uniform type
-        /// </summary>
+        /// <summary>1D sampler uniform (GL_SAMPLER_1D = 0x8B5D).</summary>
         Sampler1D = 0x8B5D,
 
-        /// <summary>
-        ///     The sampler active uniform type
-        /// </summary>
+        /// <summary>2D sampler uniform (GL_SAMPLER_2D = 0x8B5E).</summary>
         Sampler2D = 0x8B5E,
 
-        /// <summary>
-        ///     The sampler active uniform type
-        /// </summary>
+        /// <summary>3D sampler uniform (GL_SAMPLER_3D = 0x8B5F).</summary>
         Sampler3D = 0x8B5F,
 
-        /// <summary>
-        ///     The sampler cube active uniform type
-        /// </summary>
+        /// <summary>Cube map sampler uniform (GL_SAMPLER_CUBE = 0x8B60).</summary>
         SamplerCube = 0x8B60,
 
-        /// <summary>
-        ///     The sampler shadow active uniform type
-        /// </summary>
+        /// <summary>1D shadow sampler uniform (GL_SAMPLER_1D_SHADOW = 0x8B61).</summary>
         Sampler1DShadow = 0x8B61,
 
-        /// <summary>
-        ///     The sampler shadow active uniform type
-        /// </summary>
+        /// <summary>2D shadow sampler uniform (GL_SAMPLER_2D_SHADOW = 0x8B62).</summary>
         Sampler2DShadow = 0x8B62,
 
-        /// <summary>
-        ///     The sampler rect active uniform type
-        /// </summary>
+        /// <summary>2D rectangle sampler uniform (GL_SAMPLER_2D_RECT = 0x8B63).</summary>
         Sampler2DRect = 0x8B63,
 
-        /// <summary>
-        ///     The sampler rect shadow active uniform type
-        /// </summary>
+        /// <summary>2D rectangle shadow sampler uniform (GL_SAMPLER_2D_RECT_SHADOW = 0x8B64).</summary>
         Sampler2DRectShadow = 0x8B64,
 
-        /// <summary>
-        ///     The float mat 2x active uniform type
-        /// </summary>
+        /// <summary>2x3 float matrix (GL_FLOAT_MAT2x3 = 0x8B65).</summary>
         FloatMat2X3 = 0x8B65,
 
-        /// <summary>
-        ///     The float mat 2x active uniform type
-        /// </summary>
+        /// <summary>2x4 float matrix (GL_FLOAT_MAT2x4 = 0x8B66).</summary>
         FloatMat2X4 = 0x8B66,
 
-        /// <summary>
-        ///     The float mat 3x active uniform type
-        /// </summary>
+        /// <summary>3x2 float matrix (GL_FLOAT_MAT3x2 = 0x8B67).</summary>
         FloatMat3X2 = 0x8B67,
 
-        /// <summary>
-        ///     The float mat 3x active uniform type
-        /// </summary>
+        /// <summary>3x4 float matrix (GL_FLOAT_MAT3x4 = 0x8B68).</summary>
         FloatMat3X4 = 0x8B68,
 
-        /// <summary>
-        ///     The float mat 4x active uniform type
-        /// </summary>
+        /// <summary>4x2 float matrix (GL_FLOAT_MAT4x2 = 0x8B69).</summary>
         FloatMat4X2 = 0x8B69,
 
-        /// <summary>
-        ///     The float mat 4x active uniform type
-        /// </summary>
+        /// <summary>4x3 float matrix (GL_FLOAT_MAT4x3 = 0x8B6A).</summary>
         FloatMat4X3 = 0x8B6A,
 
-        /// <summary>
-        ///     The sampler array active uniform type
-        /// </summary>
+        /// <summary>1D array sampler uniform (GL_SAMPLER_1D_ARRAY = 0x8DC0).</summary>
         Sampler1DArray = 0x8DC0,
 
-        /// <summary>
-        ///     The sampler array active uniform type
-        /// </summary>
+        /// <summary>2D array sampler uniform (GL_SAMPLER_2D_ARRAY = 0x8DC1).</summary>
         Sampler2DArray = 0x8DC1,
 
-        /// <summary>
-        ///     The sampler buffer active uniform type
-        /// </summary>
+        /// <summary>Buffer sampler uniform (GL_SAMPLER_BUFFER = 0x8DC2).</summary>
         SamplerBuffer = 0x8DC2,
 
-        /// <summary>
-        ///     The sampler array shadow active uniform type
-        /// </summary>
+        /// <summary>1D array shadow sampler uniform (GL_SAMPLER_1D_ARRAY_SHADOW = 0x8DC3).</summary>
         Sampler1DArrayShadow = 0x8DC3,
 
-        /// <summary>
-        ///     The sampler array shadow active uniform type
-        /// </summary>
+        /// <summary>2D array shadow sampler uniform (GL_SAMPLER_2D_ARRAY_SHADOW = 0x8DC4).</summary>
         Sampler2DArrayShadow = 0x8DC4,
 
-        /// <summary>
-        ///     The sampler cube shadow active uniform type
-        /// </summary>
+        /// <summary>Cube map shadow sampler uniform (GL_SAMPLER_CUBE_SHADOW = 0x8DC5).</summary>
         SamplerCubeShadow = 0x8DC5,
 
-        /// <summary>
-        ///     The unsigned int vec active uniform type
-        /// </summary>
+        /// <summary>Two-component unsigned integer vector (GL_UNSIGNED_INT_VEC2 = 0x8DC6).</summary>
         UnsignedIntVec2 = 0x8DC6,
 
-        /// <summary>
-        ///     The unsigned int vec active uniform type
-        /// </summary>
+        /// <summary>Three-component unsigned integer vector (GL_UNSIGNED_INT_VEC3 = 0x8DC7).</summary>
         UnsignedIntVec3 = 0x8DC7,
 
-        /// <summary>
-        ///     The unsigned int vec active uniform type
-        /// </summary>
+        /// <summary>Four-component unsigned integer vector (GL_UNSIGNED_INT_VEC4 = 0x8DC8).</summary>
         UnsignedIntVec4 = 0x8DC8,
 
-        /// <summary>
-        ///     The int sampler active uniform type
-        /// </summary>
+        /// <summary>1D integer sampler uniform (GL_INT_SAMPLER_1D = 0x8DC9).</summary>
         IntSampler1D = 0x8DC9,
 
-        /// <summary>
-        ///     The int sampler active uniform type
-        /// </summary>
+        /// <summary>2D integer sampler uniform (GL_INT_SAMPLER_2D = 0x8DCA).</summary>
         IntSampler2D = 0x8DCA,
 
-        /// <summary>
-        ///     The int sampler active uniform type
-        /// </summary>
+        /// <summary>3D integer sampler uniform (GL_INT_SAMPLER_3D = 0x8DCB).</summary>
         IntSampler3D = 0x8DCB,
 
-        /// <summary>
-        ///     The int sampler cube active uniform type
-        /// </summary>
+        /// <summary>Cube map integer sampler uniform (GL_INT_SAMPLER_CUBE = 0x8DCC).</summary>
         IntSamplerCube = 0x8DCC,
 
-        /// <summary>
-        ///     The int sampler rect active uniform type
-        /// </summary>
+        /// <summary>2D rectangle integer sampler uniform (GL_INT_SAMPLER_2D_RECT = 0x8DCD).</summary>
         IntSampler2DRect = 0x8DCD,
 
-        /// <summary>
-        ///     The int sampler array active uniform type
-        /// </summary>
+        /// <summary>1D array integer sampler uniform (GL_INT_SAMPLER_1D_ARRAY = 0x8DCE).</summary>
         IntSampler1DArray = 0x8DCE,
 
-        /// <summary>
-        ///     The int sampler array active uniform type
-        /// </summary>
+        /// <summary>2D array integer sampler uniform (GL_INT_SAMPLER_2D_ARRAY = 0x8DCF).</summary>
         IntSampler2DArray = 0x8DCF,
 
-        /// <summary>
-        ///     The int sampler buffer active uniform type
-        /// </summary>
+        /// <summary>Buffer integer sampler uniform (GL_INT_SAMPLER_BUFFER = 0x8DD0).</summary>
         IntSamplerBuffer = 0x8DD0,
 
-        /// <summary>
-        ///     The unsigned int sampler active uniform type
-        /// </summary>
+        /// <summary>1D unsigned integer sampler uniform (GL_UNSIGNED_INT_SAMPLER_1D = 0x8DD1).</summary>
         UnsignedIntSampler1D = 0x8DD1,
 
-        /// <summary>
-        ///     The unsigned int sampler active uniform type
-        /// </summary>
+        /// <summary>2D unsigned integer sampler uniform (GL_UNSIGNED_INT_SAMPLER_2D = 0x8DD2).</summary>
         UnsignedIntSampler2D = 0x8DD2,
 
-        /// <summary>
-        ///     The unsigned int sampler active uniform type
-        /// </summary>
+        /// <summary>3D unsigned integer sampler uniform (GL_UNSIGNED_INT_SAMPLER_3D = 0x8DD3).</summary>
         UnsignedIntSampler3D = 0x8DD3,
 
-        /// <summary>
-        ///     The unsigned int sampler cube active uniform type
-        /// </summary>
+        /// <summary>Cube map unsigned integer sampler uniform (GL_UNSIGNED_INT_SAMPLER_CUBE = 0x8DD4).</summary>
         UnsignedIntSamplerCube = 0x8DD4,
 
-        /// <summary>
-        ///     The unsigned int sampler rect active uniform type
-        /// </summary>
+        /// <summary>2D rectangle unsigned integer sampler uniform (GL_UNSIGNED_INT_SAMPLER_2D_RECT = 0x8DD5).</summary>
         UnsignedIntSampler2DRect = 0x8DD5,
 
-        /// <summary>
-        ///     The unsigned int sampler array active uniform type
-        /// </summary>
+        /// <summary>1D array unsigned integer sampler uniform (GL_UNSIGNED_INT_SAMPLER_1D_ARRAY = 0x8DD6).</summary>
         UnsignedIntSampler1DArray = 0x8DD6,
 
-        /// <summary>
-        ///     The unsigned int sampler array active uniform type
-        /// </summary>
+        /// <summary>2D array unsigned integer sampler uniform (GL_UNSIGNED_INT_SAMPLER_2D_ARRAY = 0x8DD7).</summary>
         UnsignedIntSampler2DArray = 0x8DD7,
 
-        /// <summary>
-        ///     The unsigned int sampler buffer active uniform type
-        /// </summary>
+        /// <summary>Buffer unsigned integer sampler uniform (GL_UNSIGNED_INT_SAMPLER_BUFFER = 0x8DD8).</summary>
         UnsignedIntSamplerBuffer = 0x8DD8,
 
-        /// <summary>
-        ///     The sampler multisample active uniform type
-        /// </summary>
+        /// <summary>2D multisample sampler uniform (GL_SAMPLER_2D_MULTISAMPLE = 0x9108).</summary>
         Sampler2DMultisample = 0x9108,
 
-        /// <summary>
-        ///     The int sampler multisample active uniform type
-        /// </summary>
+        /// <summary>2D multisample integer sampler uniform (GL_INT_SAMPLER_2D_MULTISAMPLE = 0x9109).</summary>
         IntSampler2DMultisample = 0x9109,
 
-        /// <summary>
-        ///     The unsigned int sampler multisample active uniform type
-        /// </summary>
+        /// <summary>2D multisample unsigned integer sampler uniform (GL_UNSIGNED_INT_SAMPLER_2D_MULTISAMPLE = 0x910A).</summary>
         UnsignedIntSampler2DMultisample = 0x910A,
 
-        /// <summary>
-        ///     The sampler multisample array active uniform type
-        /// </summary>
+        /// <summary>2D multisample array sampler uniform (GL_SAMPLER_2D_MULTISAMPLE_ARRAY = 0x910B).</summary>
         Sampler2DMultisampleArray = 0x910B,
 
-        /// <summary>
-        ///     The int sampler multisample array active uniform type
-        /// </summary>
+        /// <summary>2D multisample array integer sampler uniform (GL_INT_SAMPLER_2D_MULTISAMPLE_ARRAY = 0x910C).</summary>
         IntSampler2DMultisampleArray = 0x910C,
 
-        /// <summary>
-        ///     The unsigned int sampler multisample array active uniform type
-        /// </summary>
+        /// <summary>2D multisample array unsigned integer sampler uniform (GL_UNSIGNED_INT_SAMPLER_2D_MULTISAMPLE_ARRAY = 0x910D).</summary>
         UnsignedIntSampler2DMultisampleArray = 0x910D
     }
 }

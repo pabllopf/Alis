@@ -152,9 +152,8 @@ namespace Alis.Core.Audio
 #elif webassembly || browser
             return new WebPlayer();
 #else
-            return null;
+            throw new InvalidOperationException("No implementation exist for the current OS");
 #endif
-            throw new Exception("No implementation exist for the current OS");
         }
 
         /// <summary>

@@ -58,33 +58,33 @@ namespace Alis.Core.Physic.Collisions.Shapes
         public float Mass { get; internal set; }
 
         /// <summary>
-        ///     The equal operator
+        ///     Determines whether two <see cref="MassData"/> instances are equal by comparing area, mass, centroid, and inertia within epsilon tolerance.
         /// </summary>
-        /// <param name="left"></param>
-        /// <param name="right"></param>
-        /// <returns></returns>
+        /// <param name="left">The first mass data to compare.</param>
+        /// <param name="right">The second mass data to compare.</param>
+        /// <returns><c>true</c> if all properties are within epsilon tolerance; otherwise, <c>false</c>.</returns>
         public static bool operator ==(MassData left, MassData right) => (Math.Abs(left.Area - right.Area) < SettingEnv.Epsilon) && (Math.Abs(left.Mass - right.Mass) < SettingEnv.Epsilon) && (left.Centroid == right.Centroid) && (Math.Abs(left.Inertia - right.Inertia) < SettingEnv.Epsilon);
 
         /// <summary>
-        ///     The not equal operator
+        ///     Determines whether two <see cref="MassData"/> instances are not equal.
         /// </summary>
-        /// <param name="left"></param>
-        /// <param name="right"></param>
-        /// <returns></returns>
+        /// <param name="left">The first mass data to compare.</param>
+        /// <param name="right">The second mass data to compare.</param>
+        /// <returns><c>true</c> if any property differs beyond epsilon tolerance; otherwise, <c>false</c>.</returns>
         public static bool operator !=(MassData left, MassData right) => !(left == right);
 
         /// <summary>
-        ///     Describes whether this instance equals
+        ///     Indicates whether this mass data is equal to another mass data by delegating to the equality operator.
         /// </summary>
-        /// <param name="other">The other</param>
-        /// <returns>The bool</returns>
+        /// <param name="other">The other mass data to compare against.</param>
+        /// <returns><c>true</c> if the instances are equal; otherwise, <c>false</c>.</returns>
         public bool Equals(MassData other) => this == other;
 
         /// <summary>
-        ///     Describes whether this instance equals
+        ///     Determines whether the specified object is equal to this mass data instance.
         /// </summary>
-        /// <param name="obj">The obj</param>
-        /// <returns>The bool</returns>
+        /// <param name="obj">The object to compare against this instance.</param>
+        /// <returns><c>true</c> if the object is a <see cref="MassData"/> and equal; otherwise, <c>false</c>.</returns>
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj))
@@ -96,9 +96,9 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Gets the hash code
+        ///     Returns a hash code for this mass data instance based on its area, centroid, inertia, and mass.
         /// </summary>
-        /// <returns>The int</returns>
+        /// <returns>A 32-bit signed integer hash code.</returns>
         public override int GetHashCode()
         {
             unchecked

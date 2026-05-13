@@ -42,12 +42,13 @@ namespace Alis.Core.Physic.Common
     public struct Sweep
     {
         /// <summary>
-        ///     World angles
+        ///     The current world angle (rotation) of the body at the end of the sweep in radians.
         /// </summary>
         public float A;
 
         /// <summary>
-        ///     The
+        ///     The initial world angle (rotation) of the body at the start of the sweep in radians,
+        ///     corresponding to time <see cref="Alpha0"/>.
         /// </summary>
         public float A0;
 
@@ -58,12 +59,13 @@ namespace Alis.Core.Physic.Common
         public float Alpha0;
 
         /// <summary>
-        ///     Center world positions
+        ///     The current center of mass position of the body in world coordinates at the end of the sweep.
         /// </summary>
         public Vector2F C;
 
         /// <summary>
-        ///     The
+        ///     The initial center of mass position of the body in world coordinates at the start of the sweep,
+        ///     corresponding to time <see cref="Alpha0"/>.
         /// </summary>
         public Vector2F C0;
 

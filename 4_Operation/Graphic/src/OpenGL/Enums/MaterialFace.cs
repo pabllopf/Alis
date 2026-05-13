@@ -30,23 +30,18 @@
 namespace Alis.Core.Graphic.OpenGL.Enums
 {
     /// <summary>
-    ///     The material face enum
+    /// Defines which face(s) of a polygon are affected by material and lighting operations.
+    /// Used with glMaterial and glLightModel functions to specify front, back, or both faces.
     /// </summary>
     public enum MaterialFace : uint
     {
-        /// <summary>
-        ///     The front material face
-        /// </summary>
+        /// <summary>Front face of polygons (GL_FRONT = 0x0404).</summary>
         Front = 0x0404,
 
-        /// <summary>
-        ///     The back material face
-        /// </summary>
+        /// <summary>Back face of polygons (GL_BACK = 0x0405).</summary>
         Back = 0x0405,
 
-        /// <summary>
-        ///     The front and back material face
-        /// </summary>
+        /// <summary>Both front and back faces of polygons (GL_FRONT_AND_BACK = 0x0408).</summary>
         FrontAndBack = 0x0408
     }
 }

@@ -30,88 +30,57 @@
 namespace Alis.Core.Graphic.OpenGL.Enums
 {
     /// <summary>
-    ///     The texture unit enum
+    /// Defines the texture unit selectors used with glActiveTexture.
+    /// Each value corresponds to a specific texture unit (GL_TEXTURE0 through GL_TEXTURE15) for multitexturing operations.
     /// </summary>
     public enum TextureUnit
     {
-        /// <summary>
-        ///     The texture texture unit
-        /// </summary>
+        /// <summary>Texture unit 0 (GL_TEXTURE0 = 0x84C0).</summary>
         Texture0 = 0x84C0,
 
-        /// <summary>
-        ///     The texture texture unit
-        /// </summary>
+        /// <summary>Texture unit 1 (GL_TEXTURE1 = 0x84C1).</summary>
         Texture1 = 0x84C1,
 
-        /// <summary>
-        ///     The texture texture unit
-        /// </summary>
+        /// <summary>Texture unit 2 (GL_TEXTURE2 = 0x84C2).</summary>
         Texture2 = 0x84C2,
 
-        /// <summary>
-        ///     The texture texture unit
-        /// </summary>
+        /// <summary>Texture unit 3 (GL_TEXTURE3 = 0x84C3).</summary>
         Texture3 = 0x84C3,
 
-        /// <summary>
-        ///     The texture texture unit
-        /// </summary>
+        /// <summary>Texture unit 4 (GL_TEXTURE4 = 0x84C4).</summary>
         Texture4 = 0x84C4,
 
-        /// <summary>
-        ///     The texture texture unit
-        /// </summary>
+        /// <summary>Texture unit 5 (GL_TEXTURE5 = 0x84C5).</summary>
         Texture5 = 0x84C5,
 
-        /// <summary>
-        ///     The texture texture unit
-        /// </summary>
+        /// <summary>Texture unit 6 (GL_TEXTURE6 = 0x84C6).</summary>
         Texture6 = 0x84C6,
 
-        /// <summary>
-        ///     The texture texture unit
-        /// </summary>
+        /// <summary>Texture unit 7 (GL_TEXTURE7 = 0x84C7).</summary>
         Texture7 = 0x84C7,
 
-        /// <summary>
-        ///     The texture texture unit
-        /// </summary>
+        /// <summary>Texture unit 8 (GL_TEXTURE8 = 0x84C8).</summary>
         Texture8 = 0x84C8,
 
-        /// <summary>
-        ///     The texture texture unit
-        /// </summary>
+        /// <summary>Texture unit 9 (GL_TEXTURE9 = 0x84C9).</summary>
         Texture9 = 0x84C9,
 
-        /// <summary>
-        ///     The texture 10 texture unit
-        /// </summary>
+        /// <summary>Texture unit 10 (GL_TEXTURE10 = 0x84CA).</summary>
         Texture10 = 0x84CA,
 
-        /// <summary>
-        ///     The texture 11 texture unit
-        /// </summary>
+        /// <summary>Texture unit 11 (GL_TEXTURE11 = 0x84CB).</summary>
         Texture11 = 0x84CB,
 
-        /// <summary>
-        ///     The texture 12 texture unit
-        /// </summary>
+        /// <summary>Texture unit 12 (GL_TEXTURE12 = 0x84CC).</summary>
         Texture12 = 0x84CC,
 
-        /// <summary>
-        ///     The texture 13 texture unit
-        /// </summary>
+        /// <summary>Texture unit 13 (GL_TEXTURE13 = 0x84CD).</summary>
         Texture13 = 0x84CD,
 
-        /// <summary>
-        ///     The texture 14 texture unit
-        /// </summary>
+        /// <summary>Texture unit 14 (GL_TEXTURE14 = 0x84CE).</summary>
         Texture14 = 0x84CE,
 
-        /// <summary>
-        ///     The texture 15 texture unit
-        /// </summary>
+        /// <summary>Texture unit 15 (GL_TEXTURE15 = 0x84CF).</summary>
         Texture15 = 0x84CF
     }
 }

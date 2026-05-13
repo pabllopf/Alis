@@ -30,33 +30,24 @@
 namespace Alis.Core.Graphic.OpenGL.Enums
 {
     /// <summary>
-    ///     The string name enum
+    /// Defines the string name parameters that can be queried from OpenGL using glGetString.
+    /// Returns information about the OpenGL implementation, including vendor, renderer, version, and extensions.
     /// </summary>
     public enum StringName
     {
-        /// <summary>
-        ///     The vendor string name
-        /// </summary>
+        /// <summary>Returns the name of the OpenGL vendor (GL_VENDOR = 0x1F00).</summary>
         Vendor = 0x1F00,
 
-        /// <summary>
-        ///     The renderer string name
-        /// </summary>
+        /// <summary>Returns the name of the OpenGL renderer (GL_RENDERER = 0x1F01).</summary>
         Renderer = 0x1F01,
 
-        /// <summary>
-        ///     The version string name
-        /// </summary>
+        /// <summary>Returns the OpenGL version string (GL_VERSION = 0x1F02).</summary>
         Version = 0x1F02,
 
-        /// <summary>
-        ///     The extensions string name
-        /// </summary>
+        /// <summary>Returns the list of OpenGL extensions (GL_EXTENSIONS = 0x1F03).</summary>
         Extensions = 0x1F03,
 
-        /// <summary>
-        ///     The shading language version string name
-        /// </summary>
+        /// <summary>Returns the shading language version (GL_SHADING_LANGUAGE_VERSION = 0x8B8C).</summary>
         ShadingLanguageVersion = 0x8B8C
     }
 }

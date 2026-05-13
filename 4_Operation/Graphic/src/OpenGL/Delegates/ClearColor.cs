@@ -12,28 +12,17 @@
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
 //  --------------------------------------------------------------------------
-
-using System.Runtime.InteropServices;
 
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     The clear color
+    /// Represents the unmanaged function pointer for the OpenGL glClearColor command.
+    /// Specifies the red, green, blue, and alpha values used when clearing the color buffer.
     /// </summary>
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    public delegate void ClearColor(float r, float g, float b, float a);
+    /// <param name="red">The red component of the clear color (range 0.0 to 1.0).</param>
+    /// <param name="green">The green component of the clear color (range 0.0 to 1.0).</param>
+    /// <param name="blue">The blue component of the clear color (range 0.0 to 1.0).</param>
+    /// <param name="alpha">The alpha component of the clear color (range 0.0 to 1.0).</param>
+    public delegate void ClearColor(float red, float green, float blue, float alpha);
 }
