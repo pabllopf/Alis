@@ -154,8 +154,20 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        ///     Set this to the identity matrix.
+        ///     Sets this matrix to the identity matrix.
         /// </summary>
+        /// <remarks>
+        ///     The identity matrix has 1s on the main diagonal and 0s elsewhere:
+        ///     | 1  0 |
+        ///     | 0  1 |
+        ///     This is the multiplicative identity for matrix multiplication.
+        /// </remarks>
+        /// <example>
+        ///     <code>
+        ///     Mat22 m = new Mat22(2, 3, 4, 5);
+        ///     m.SetIdentity(); // m is now the identity matrix
+        ///     </code>
+        /// </example>
         public void SetIdentity()
         {
             Ex.X = 1.0f;
