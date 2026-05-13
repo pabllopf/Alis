@@ -32,7 +32,10 @@ using Alis.Core.Physic.Dynamics.Contacts;
 namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>
-    ///     This delegate is called when a contact is created
+    ///     Represents a callback that is invoked when two fixtures begin touching (a new contact is created).
+    ///     The delegate can return <c>false</c> to disable the contact, preventing collision response.
     /// </summary>
+    /// <param name="contact">The contact object representing the new collision between two fixtures.</param>
+    /// <returns><c>true</c> to enable the contact and allow collision response; <c>false</c> to disable it.</returns>
     public delegate bool BeginContactDelegate(Contact contact);
 }

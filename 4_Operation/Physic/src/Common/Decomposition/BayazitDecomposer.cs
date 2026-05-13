@@ -294,6 +294,15 @@ namespace Alis.Core.Physic.Common.Decomposition
         internal static bool Right(int i, Vertices vertices) => Right(At(i - 1, vertices), At(i, vertices), At(i + 1, vertices));
 
         /// <summary>
+        ///     Describes whether right
+        /// </summary>
+        /// <param name="a">The </param>
+        /// <param name="b">The </param>
+        /// <param name="c">The </param>
+        /// <returns>The bool</returns>
+        internal static bool Right(Vector2F a, Vector2F b, Vector2F c) => MathUtils.Area(ref a, ref b, ref c) < 0;
+
+        /// <summary>
         ///     Describes whether left
         /// </summary>
         /// <param name="a">The </param>
@@ -310,15 +319,6 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <param name="c">The </param>
         /// <returns>The bool</returns>
         internal static bool LeftOn(Vector2F a, Vector2F b, Vector2F c) => MathUtils.Area(ref a, ref b, ref c) >= 0;
-
-        /// <summary>
-        ///     Describes whether right
-        /// </summary>
-        /// <param name="a">The </param>
-        /// <param name="b">The </param>
-        /// <param name="c">The </param>
-        /// <returns>The bool</returns>
-        internal static bool Right(Vector2F a, Vector2F b, Vector2F c) => MathUtils.Area(ref a, ref b, ref c) < 0;
 
         /// <summary>
         ///     Describes whether right on

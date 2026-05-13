@@ -97,6 +97,7 @@ namespace Alis.Core.Ecs.Kernel
         /// <summary>
         ///     Extracts the wrapped <typeparamref name="T" /> from this  />
         /// </summary>
+        /// <param name="Ref<T>">The Ref<T> parameter.</param>
         /// <param name="ref">The ref parameter.</param>
         /// <returns>The result of the operation.</returns>
         public static implicit operator T(Ref<T> @ref) => @ref.Value;

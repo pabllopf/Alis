@@ -32,16 +32,19 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>
-    ///     Called for each fixture found in the query. You control how the ray cast
-    ///     proceeds by returning a float:
-    ///     return -1: ignore this fixture and continue
-    ///     return 0: terminate the ray cast
-    ///     return fraction: clip the ray to this point
-    ///     return 1: don't clip the ray and continue
-    ///     @param fixture the fixture hit by the ray
-    ///     @param point the point of initial intersection
-    ///     @param normal the normal vector at the point of intersection
-    ///     @return 0 to terminate, fraction to clip the ray for closest hit, 1 to continue
+    ///     Represents a callback invoked for each fixture intersected by a ray during a ray cast query.
+    ///     The return value controls the ray cast behavior:
+    ///     <list type="table">
+    ///     <item><term>-1</term><description>Ignore this fixture and continue the ray cast</description></item>
+    ///     <item><term>0</term><description>Terminate the ray cast</description></item>
+    ///     <item><term>fraction</term><description>Clip the ray to this point (for closest-hit queries)</description></item>
+    ///     <item><term>1</term><description>Don't clip the ray and continue</description></item>
+    ///     </list>
     /// </summary>
+    /// <param name="fixture">The fixture hit by the ray.</param>
+    /// <param name="point">The world-space point of intersection.</param>
+    /// <param name="normal">The surface normal at the point of intersection.</param>
+    /// <param name="fraction">The fraction along the ray at which the intersection occurred.</param>
+    /// <returns>A float controlling the ray cast behavior: 0 to terminate, fraction to clip, 1 to continue, -1 to skip.</returns>
     public delegate float RayCastReportFixtureDelegate(Fixture fixture, Vector2F point, Vector2F normal, float fraction);
 }

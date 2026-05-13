@@ -30,7 +30,11 @@
 namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>
-    ///     The collision filter delegate
+    ///     Represents a callback that is invoked to determine whether a collision between two fixtures should be processed.
+    ///     Allows custom collision filtering logic beyond category/group-based filtering.
     /// </summary>
+    /// <param name="fixtureA">The first fixture involved in the potential collision.</param>
+    /// <param name="fixtureB">The second fixture involved in the potential collision.</param>
+    /// <returns><c>true</c> if the collision should be processed; <c>false</c> to ignore it.</returns>
     public delegate bool CollisionFilterDelegate(Fixture fixtureA, Fixture fixtureB);
 }

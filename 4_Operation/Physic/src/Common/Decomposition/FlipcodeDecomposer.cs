@@ -45,21 +45,6 @@ namespace Alis.Core.Physic.Common.Decomposition
     internal static class FlipcodeDecomposer
     {
         /// <summary>
-        ///     The tmp
-        /// </summary>
-        internal static Vector2F _tmpA;
-
-        /// <summary>
-        ///     The tmp
-        /// </summary>
-        internal static Vector2F _tmpB;
-
-        /// <summary>
-        ///     The tmp
-        /// </summary>
-        internal static Vector2F _tmpC;
-
-        /// <summary>
         ///     Decompose the polygon into triangles.
         ///     Properties:
         ///     - Only works on counter clockwise polygons
@@ -109,19 +94,19 @@ namespace Alis.Core.Physic.Common.Decomposition
                     w = 0; // Next 
                 }
 
-                _tmpA = vertices[polygon[u]];
-                _tmpB = vertices[polygon[v]];
-                _tmpC = vertices[polygon[w]];
+                Vector2F tmpA = vertices[polygon[u]];
+                Vector2F tmpB = vertices[polygon[v]];
+                Vector2F tmpC = vertices[polygon[w]];
 
-                if (Snip(vertices, u, v, w, nv, polygon))
+                if (Snip(vertices, u, v, w, nv, polygon, ref tmpA, ref tmpB, ref tmpC))
                 {
                     int s, t;
 
                     // Output Triangle
                     Vertices triangle = new Vertices(3);
-                    triangle.Add(_tmpA);
-                    triangle.Add(_tmpB);
-                    triangle.Add(_tmpC);
+                    triangle.Add(tmpA);
+                    triangle.Add(tmpB);
+                    triangle.Add(tmpC);
                     result.Add(triangle);
 
                     // Remove v from remaining polygon 
@@ -174,9 +159,9 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <param name="n">The number of elements in the array.</param>
         /// <param name="vertices"></param>
         /// <returns>True if a triangle was found</returns>
-        internal static bool Snip(Vertices contour, int u, int v, int w, int n, int[] vertices)
+        internal static bool Snip(Vertices contour, int u, int v, int w, int n, int[] vertices, ref Vector2F tmpA, ref Vector2F tmpB, ref Vector2F tmpC)
         {
-            if (SettingEnv.Epsilon > MathUtils.Area(ref _tmpA, ref _tmpB, ref _tmpC))
+            if (SettingEnv.Epsilon > MathUtils.Area(ref tmpA, ref tmpB, ref tmpC))
             {
                 return false;
             }
@@ -190,7 +175,7 @@ namespace Alis.Core.Physic.Common.Decomposition
 
                 Vector2F point = contour[vertices[p]];
 
-                if (InsideTriangle(ref _tmpA, ref _tmpB, ref _tmpC, ref point))
+                if (InsideTriangle(ref tmpA, ref tmpB, ref tmpC, ref point))
                 {
                     return false;
                 }

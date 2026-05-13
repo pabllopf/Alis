@@ -49,37 +49,41 @@
 namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>
-    ///     This is an internal structure.
+    ///     Stores the time step configuration for a single physics simulation step.
+    ///     Contains the delta time, inverse delta time, iteration counts for the solver,
+    ///     and a warm starting flag.
     /// </summary>
     internal struct TimeStep
     {
         /// <summary>
-        ///     Time step (Delta time)
+        ///     The time step duration (delta time) in seconds for the current simulation step.
         /// </summary>
         public float Dt;
 
         /// <summary>
-        ///     dt * inv_dt0
+        ///     The ratio of the current delta time to the previous delta time (dt * inv_dt0).
+        ///     Used to scale accumulated impulses when the time step changes.
         /// </summary>
         public float DtRatio;
 
         /// <summary>
-        ///     Inverse time step (0 if dt == 0).
+        ///     The inverse of the time step (1 / Dt), or 0 if Dt is zero.
         /// </summary>
         public float InvDt;
 
         /// <summary>
-        ///     The position iterations
+        ///     The number of position constraint iterations to perform in the solver.
         /// </summary>
         public int PositionIterations;
 
         /// <summary>
-        ///     The velocity iterations
+        ///     The number of velocity constraint iterations to perform in the solver.
         /// </summary>
         public int VelocityIterations;
 
         /// <summary>
-        ///     The warm starting
+        ///     Whether warm starting is enabled for the solver. Warm starting uses cached impulses
+        ///     from the previous frame to improve solver convergence.
         /// </summary>
         public bool WarmStarting;
     }

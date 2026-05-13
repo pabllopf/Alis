@@ -32,7 +32,13 @@ using Alis.Core.Physic.Dynamics.Contacts;
 namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>
-    ///     The after collision event handler
+    ///     Represents a callback that is invoked after collision resolution has been computed for a contact pair.
+    ///     Provides access to the collision impulse data, allowing post-collision effects such as impact sounds,
+    ///     particle effects, or damage calculations based on the contact impulse magnitude.
     /// </summary>
+    /// <param name="sender">The fixture on the first body involved in the collision.</param>
+    /// <param name="other">The fixture on the second body involved in the collision.</param>
+    /// <param name="contact">The contact object describing the collision manifold.</param>
+    /// <param name="impulse">The velocity constraint containing the resolved normal and tangent impulses for the contact.</param>
     public delegate void AfterCollisionEventHandler(Fixture sender, Fixture other, Contact contact, ContactVelocityConstraint impulse);
 }

@@ -459,7 +459,7 @@ namespace Alis.Core.Physic.Common.Logic
         /// <typeparam name="T">The </typeparam>
         /// <param name="list">The list</param>
         /// <returns>The bool</returns>
-        internal bool ListAny<T>(List<T> list) => list.Count > 0;
+        internal static bool ListAny<T>(List<T> list) => list.Count > 0;
 
         /// <summary>
         ///     Lists the first using the specified list
@@ -467,7 +467,7 @@ namespace Alis.Core.Physic.Common.Logic
         /// <typeparam name="T">The </typeparam>
         /// <param name="list">The list</param>
         /// <returns>The</returns>
-        internal T ListFirst<T>(List<T> list) => list[0];
+        internal static T ListFirst<T>(List<T> list) => list[0];
 
         /// <summary>
         ///     Lists the last using the specified list
@@ -475,6 +475,6 @@ namespace Alis.Core.Physic.Common.Logic
         /// <typeparam name="T">The </typeparam>
         /// <param name="list">The list</param>
         /// <returns>The</returns>
-        internal T ListLast<T>(List<T> list) => list[list.Count - 1];
+        internal static T ListLast<T>(List<T> list) => list[list.Count - 1];
     }
 }

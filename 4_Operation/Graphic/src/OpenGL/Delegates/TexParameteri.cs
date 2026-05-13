@@ -12,29 +12,18 @@
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.InteropServices;
 using Alis.Core.Graphic.OpenGL.Enums;
 
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     The tex parameteri
+    /// Represents the unmanaged function pointer for the OpenGL glTexParameteri command.
+    /// Sets integer texture parameters such as filtering and wrapping modes.
     /// </summary>
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
+    /// <param name="target">The texture target (e.g., Texture2D).</param>
+    /// <param name="pname">The texture parameter name to set.</param>
+    /// <param name="param">The integer value to set for the parameter.</param>
     public delegate void TexParameteri(TextureTarget target, TextureParameterName pname, TextureParameter param);
 }

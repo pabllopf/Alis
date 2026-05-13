@@ -12,28 +12,15 @@
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
 //  --------------------------------------------------------------------------
-
-using System.Runtime.InteropServices;
 
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     The begin
+    /// Represents the unmanaged function pointer for the legacy OpenGL glTexCoord2f command.
+    /// Sets the current texture coordinate in immediate mode.
     /// </summary>
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
+    /// <param name="s">The S (horizontal) texture coordinate.</param>
+    /// <param name="t">The T (vertical) texture coordinate.</param>
     public delegate void TexCoord2F(float s, float t);
 }

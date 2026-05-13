@@ -32,7 +32,13 @@ using Alis.Core.Physic.Dynamics.Contacts;
 namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>
-    ///     The on collision event handler
+    ///     Represents a callback that is invoked when a collision between two fixtures is detected.
+    ///     The delegate can return <c>false</c> to prevent the collision from being processed,
+    ///     providing a runtime option to ignore specific collision pairs.
     /// </summary>
+    /// <param name="sender">The fixture on the first body involved in the collision.</param>
+    /// <param name="other">The fixture on the second body involved in the collision.</param>
+    /// <param name="contact">The contact object describing the collision manifold.</param>
+    /// <returns><c>true</c> to process the collision; <c>false</c> to ignore it.</returns>
     public delegate bool OnCollisionEventHandler(Fixture sender, Fixture other, Contact contact);
 }

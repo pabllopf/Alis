@@ -31,16 +31,19 @@ using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Physic.Dynamics
 {
-    /// This is an internal structure.
+    /// <summary>
+    ///     Stores the position state of a single body during constraint solving,
+    ///     including the center position and rotation angle.
+    /// </summary>
     internal struct SolverPosition
     {
         /// <summary>
-        ///     The
+        ///     The world-space center of mass position of the body.
         /// </summary>
         public Vector2F C;
 
         /// <summary>
-        ///     The
+        ///     The rotation angle of the body in radians.
         /// </summary>
         public float A;
     }

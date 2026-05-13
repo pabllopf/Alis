@@ -30,7 +30,10 @@
 namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>
-    ///     The body delegate
+    ///     Represents a callback that is invoked when a body event occurs in the physics world,
+    ///     such as body creation or destruction. Provides the world and the affected body.
     /// </summary>
+    /// <param name="sender">The physics world that triggered the event.</param>
+    /// <param name="body">The body associated with the event.</param>
     public delegate void BodyDelegate(WorldPhysic sender, Body body);
 }

@@ -12,36 +12,19 @@
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
 //  --------------------------------------------------------------------------
 
 namespace Alis.Core.Graphic.OpenGL.Constructs
 {
     /// <summary>
-    ///     The param type enum
+    /// Defines the type of a shader program parameter, distinguishing between uniforms and vertex attributes.
     /// </summary>
     public enum ParamType
     {
-        /// <summary>
-        ///     The uniform param type
-        /// </summary>
+        /// <summary>The parameter is a uniform variable, constant across all vertices in a draw call.</summary>
         Uniform,
 
-        /// <summary>
-        ///     The attribute param type
-        /// </summary>
+        /// <summary>The parameter is a vertex attribute, varying per vertex.</summary>
         Attribute
     }
 }

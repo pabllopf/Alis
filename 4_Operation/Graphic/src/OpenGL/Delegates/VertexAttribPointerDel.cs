@@ -12,30 +12,22 @@
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Runtime.InteropServices;
 using Alis.Core.Graphic.OpenGL.Enums;
 
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     The vertex attrib pointer del
+    /// Represents the unmanaged function pointer for the OpenGL glVertexAttribPointer command.
+    /// Specifies the layout of a generic vertex attribute array for rendering.
     /// </summary>
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
+    /// <param name="index">The index of the generic vertex attribute to configure.</param>
+    /// <param name="size">The number of components per vertex attribute (1-4).</param>
+    /// <param name="type">The data type of each component.</param>
+    /// <param name="normalized">Whether fixed-point data values should be normalized.</param>
+    /// <param name="stride">The byte offset between consecutive vertex attributes.</param>
+    /// <param name="pointer">A pointer to the first component or an offset into the bound vertex buffer.</param>
     public delegate void VertexAttribPointerDel(uint index, int size, VertexAttribPointerType type, bool normalized, int stride, IntPtr pointer);
 }

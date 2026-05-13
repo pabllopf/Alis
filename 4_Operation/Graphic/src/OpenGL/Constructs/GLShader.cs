@@ -12,19 +12,6 @@
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
 //  --------------------------------------------------------------------------
 
 using System;
@@ -34,17 +21,20 @@ using static Alis.Core.Graphic.OpenGL.Gl;
 namespace Alis.Core.Graphic.OpenGL.Constructs
 {
     /// <summary>
-    ///     The gl shader class
+    /// Represents an OpenGL shader object that encapsulates shader source compilation and lifecycle management.
+    /// Implements <see cref="IDisposable"/> for deterministic resource cleanup.
+    /// Supports automatic compilation and error checking via the info log.
     /// </summary>
     /// <seealso cref="IDisposable" />
     public sealed class GlShader : IDisposable
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="GlShader" /> class
+        /// Initializes a new instance of the <see cref="GlShader" /> class.
+        /// Creates a new OpenGL shader from the provided source code, compiles it, and throws on compilation failure.
         /// </summary>
-        /// <param name="source">The source</param>
-        /// <param name="type">The type</param>
-        /// <exception cref="Exception"></exception>
+        /// <param name="source">The GLSL source code string to compile.</param>
+        /// <param name="type">The type of shader to create (e.g., VertexShader, FragmentShader).</param>
+        /// <exception cref="Exception">Thrown when shader compilation fails; the exception message contains the shader info log.</exception>
         public GlShader(string source, ShaderType type)
         {
             ShaderType = type;
@@ -59,26 +49,23 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
             }
         }
 
-        // Specifies the OpenGL ShaderID.
         /// <summary>
-        ///     Gets or sets the value of the shader id
+        /// Gets the OpenGL handle (ID) for this shader object.
         /// </summary>
         public uint ShaderId { get; private set; }
 
-        // Specifies the type of shader.
         /// <summary>
-        ///     Gets or sets the value of the shader type
+        /// Gets the type of this shader (e.g., Vertex, Fragment, Geometry).
         /// </summary>
         public ShaderType ShaderType { get; private set; }
 
-        // Returns Gl.GetShaderInfoLog(ShaderID), which contains any compilation errors.
         /// <summary>
-        ///     Gets the value of the shader log
+        /// Gets the compilation info log for this shader, containing any errors or warnings from the last compilation attempt.
         /// </summary>
         public string ShaderLog => GetShaderInfoLog(ShaderId);
 
         /// <summary>
-        ///     Disposes this instance
+        /// Releases the OpenGL shader resource and suppresses finalization.
         /// </summary>
         public void Dispose()
         {
@@ -87,14 +74,14 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         }
 
         /// <summary>
-        ///     /
+        /// Finalizes the shader object, ensuring the OpenGL resource is released.
         /// </summary>
         ~GlShader() => Dispose(false);
 
         /// <summary>
-        ///     Disposes the disposing
+        /// Releases the underlying OpenGL shader object if it has not been deleted yet.
         /// </summary>
-        /// <param name="disposing">The disposing</param>
+        /// <param name="disposing">True if called from Dispose, false if called from the finalizer.</param>
         private void Dispose(bool disposing)
         {
             if (ShaderId != 0)

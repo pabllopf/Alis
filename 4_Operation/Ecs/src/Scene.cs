@@ -94,7 +94,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The next scene id
         /// </summary>
-        internal static ushort _nextWorldId = 1;
+        internal static int _nextWorldId;
 
         /// <summary>
         ///     The shared countdown
@@ -290,7 +290,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         public Scene()
         {
-            Id = _nextWorldId++;
+            Id = (ushort)Interlocked.Increment(ref _nextWorldId);
 
             GlobalWorldTables.Worlds[Id] = this;
 
