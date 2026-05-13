@@ -1,0 +1,145 @@
+<Solution>
+    <Folder Name="/2_Application/" />
+
+    <Folder Name="/2_Application/Alis/">
+        <Project Path="2_Application/Alis/src/Alis.csproj" />
+    </Folder>
+    
+    <Folder Name="/2_Application/Alis/samples/alis.sample.king.platform/">
+        <Project Path="2_Application/Alis/samples/alis.sample.king.platform/web/Alis.Sample.King.Platform.Web.csproj" />
+        <Project Path="2_Application/Alis/samples/alis.sample.king.platform/desktop/Alis.Sample.King.Platform.Desktop.csproj" />
+    </Folder>
+
+    <Folder Name="/2_Application/Alis/samples/alis.sample.flappy.bird/">
+        <Project Path="2_Application/Alis/samples/alis.sample.flappy.bird/web/Alis.Sample.Flappy.Bird.Web.csproj" />
+        <Project Path="2_Application/Alis/samples/alis.sample.flappy.bird/desktop/Alis.Sample.Flappy.Bird.Desktop.csproj" />
+    </Folder>
+
+    <Folder Name="/2_Application/Alis/samples/alis.sample.space.simulator/">
+        <Project Path="2_Application/Alis/samples/alis.sample.space.simulator/web/Alis.Sample.Space.Simulator.Web.csproj" />
+        <Project Path="2_Application/Alis/samples/alis.sample.space.simulator/desktop/Alis.Sample.Space.Simulator.Desktop.csproj" />
+    </Folder>
+
+    <Folder Name="/2_Application/Alis/samples/alis.sample.dino/">
+        <Project Path="2_Application/Alis/samples/alis.sample.dino/web/Alis.Sample.Dino.Web.csproj" />
+        <Project Path="2_Application/Alis/samples/alis.sample.dino/desktop/Alis.Sample.Dino.Desktop.csproj" />
+    </Folder>
+
+    <Folder Name="/2_Application/Alis/samples/alis.sample.empty/">
+        <Project Path="2_Application/Alis/samples/alis.sample.empty/web/Alis.Sample.Empty.Web.csproj" />
+        <Project Path="2_Application/Alis/samples/alis.sample.empty/desktop/Alis.Sample.Empty.Desktop.csproj" />
+    </Folder>
+
+    <Folder Name="/2_Application/Alis/samples/alis.sample.pong/">
+        <Project Path="2_Application/Alis/samples/alis.sample.pong/web/Alis.Sample.Pong.Web.csproj" />
+        <Project Path="2_Application/Alis/samples/alis.sample.pong/desktop/Alis.Sample.Pong.Desktop.csproj" />
+    </Folder>
+
+    <Folder Name="/2_Application/Alis/samples/alis.sample.splitcamera/">
+        <Project Path="2_Application/Alis/samples/alis.sample.splitcamera/web/Alis.Sample.SplitCamera.Web.csproj" />
+        <Project Path="2_Application/Alis/samples/alis.sample.splitcamera/desktop/Alis.Sample.SplitCamera.Desktop.csproj" />
+    </Folder>
+
+    <Folder Name="/2_Application/Alis/samples/alis.sample.asteroid/">
+        <Project Path="2_Application/Alis/samples/alis.sample.asteroid/web/Alis.Sample.Asteroid.Web.csproj" />
+        <Project Path="2_Application/Alis/samples/alis.sample.asteroid/desktop/Alis.Sample.Asteroid.Desktop.csproj" />
+    </Folder>
+
+    <Folder Name="/2_Application/Alis/samples/alis.sample.rogue/">
+        <Project Path="2_Application/Alis/samples/alis.sample.rogue/web/Alis.Sample.Rogue.Web.csproj" />
+        <Project Path="2_Application/Alis/samples/alis.sample.rogue/desktop/Alis.Sample.Rogue.Desktop.csproj" />
+    </Folder>
+
+    <Folder Name="/2_Application/Alis/samples/alis.sample.snake/">
+        <Project Path="2_Application/Alis/samples/alis.sample.snake/web/Alis.Sample.Snake.Web.csproj" />
+        <Project Path="2_Application/Alis/samples/alis.sample.snake/desktop/Alis.Sample.Snake.Desktop.csproj" />
+    </Folder>
+
+    <Folder Name="/2_Application/Alis/samples/alis.sample.ruinsoftartarus/">
+        <Project Path="2_Application/Alis/samples/alis.sample.ruinsoftartarus/web/Alis.Sample.RuinsOfTartarus.Web.csproj" />
+        <Project Path="2_Application/Alis/samples/alis.sample.ruinsoftartarus/desktop/Alis.Sample.RuinsOfTartarus.Desktop.csproj" />
+    </Folder>
+
+    <Folder Name="/2_Application/Alis/samples/alis.sample.egg/">
+        <Project Path="2_Application/Alis/samples/alis.sample.egg/web/Alis.Sample.Egg.Web.csproj" />
+        <Project Path="2_Application/Alis/samples/alis.sample.egg/desktop/Alis.Sample.Egg.Desktop.csproj" />
+    </Folder>
+
+    <Folder Name="/2_Application/Alis/samples/alis.sample.inefable/">
+        <Project Path="2_Application/Alis/samples/alis.sample.inefable/web/Alis.Sample.Inefable.Web.csproj" />
+        <Project Path="2_Application/Alis/samples/alis.sample.inefable/desktop/Alis.Sample.Inefable.Desktop.csproj" />
+    </Folder>
+
+    <Folder Name="/3_Structuration/" />
+
+    <Folder Name="/3_Structuration/Core/">
+        <Project Path="3_Structuration/Core/src/Alis.Core.csproj" />
+        <Project Path="3_Structuration/Core/sample/Alis.Core.Sample.csproj" />
+    </Folder>
+
+    <Folder Name="/4_Operation/" />
+
+    <Folder Name="/4_Operation/Ecs/">
+        <Project Path="4_Operation/Ecs/src/Alis.Core.Ecs.csproj" />
+        <Project Path="4_Operation/Ecs/sample/Alis.Core.Ecs.Sample.csproj" />
+        <Project Path="4_Operation/Ecs/generator/Alis.Core.Ecs.Generator.csproj" />
+    </Folder>
+
+    <Folder Name="/4_Operation/Graphic/">
+        <Project Path="4_Operation/Graphic/src/Alis.Core.Graphic.csproj" />
+        <Project Path="4_Operation/Graphic/sample/Alis.Core.Graphic.Sample.csproj" />
+        <Project Path="4_Operation/Graphic/generator/Alis.Core.Graphic.Generator.csproj" />
+    </Folder>
+
+    <Folder Name="/4_Operation/Audio/">
+        <Project Path="4_Operation/Audio/src/Alis.Core.Audio.csproj" />
+        <Project Path="4_Operation/Audio/sample/Alis.Core.Audio.Sample.csproj" />
+    </Folder>
+
+    <Folder Name="/4_Operation/Physic/">
+        <Project Path="4_Operation/Physic/src/Alis.Core.Physic.csproj" />
+        <Project Path="4_Operation/Physic/sample/Alis.Core.Physic.Sample.csproj" />
+    </Folder>
+
+    <Folder Name="/5_Declaration/" />
+
+    <Folder Name="/5_Declaration/Aspect/">
+        <Project Path="5_Declaration/Aspect/src/Alis.Core.Aspect.csproj" />
+        <Project Path="5_Declaration/Aspect/sample/Alis.Core.Aspect.Sample.csproj" />
+    </Folder>
+
+    <Folder Name="/6_Ideation/" />
+
+    <Folder Name="/6_Ideation/Memory/">
+        <Project Path="6_Ideation/Memory/src/Alis.Core.Aspect.Memory.csproj" />
+        <Project Path="6_Ideation/Memory/sample/Alis.Core.Aspect.Memory.Sample.csproj" />
+        <Project Path="6_Ideation/Memory/generator/Alis.Core.Aspect.Memory.Generator.csproj" />
+    </Folder>
+
+    <Folder Name="/6_Ideation/Fluent/">
+        <Project Path="6_Ideation/Fluent/src/Alis.Core.Aspect.Fluent.csproj" />
+        <Project Path="6_Ideation/Fluent/sample/Alis.Core.Aspect.Fluent.Sample.csproj" />
+        <Project Path="6_Ideation/Fluent/generator/Alis.Core.Aspect.Fluent.Generator.csproj" />
+    </Folder>
+
+    <Folder Name="/6_Ideation/Math/">
+        <Project Path="6_Ideation/Math/src/Alis.Core.Aspect.Math.csproj" />
+        <Project Path="6_Ideation/Math/sample/Alis.Core.Aspect.Math.Sample.csproj" />
+    </Folder>
+
+    <Folder Name="/6_Ideation/Time/">
+        <Project Path="6_Ideation/Time/src/Alis.Core.Aspect.Time.csproj" />
+        <Project Path="6_Ideation/Time/sample/Alis.Core.Aspect.Time.Sample.csproj" />
+    </Folder>
+
+    <Folder Name="/6_Ideation/Data/">
+        <Project Path="6_Ideation/Data/src/Alis.Core.Aspect.Data.csproj" />
+        <Project Path="6_Ideation/Data/sample/Alis.Core.Aspect.Data.Sample.csproj" />
+        <Project Path="6_Ideation/Data/generator/Alis.Core.Aspect.Data.Generator.csproj" />
+    </Folder>
+
+    <Folder Name="/6_Ideation/Logging/">
+        <Project Path="6_Ideation/Logging/src/Alis.Core.Aspect.Logging.csproj" />
+        <Project Path="6_Ideation/Logging/sample/Alis.Core.Aspect.Logging.Sample.csproj" />
+    </Folder>
+</Solution>

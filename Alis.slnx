@@ -1,2 +1,331 @@
 <Solution>
+
+    <!-- ===================== -->
+    <!-- 2 APPLICATION LAYER   -->
+    <!-- ===================== -->
+
+    <Folder Name="/2_Application/" />
+
+    <Folder Name="/2_Application/Alis/">
+        <Project Path="2_Application/Alis/src/Alis.csproj" />
+        <Project Path="2_Application/Alis/test/Alis.Test.csproj" />
+    </Folder>
+
+
+    <Folder Name="/2_Application/Alis/samples/alis.sample.king.platform/">
+        <Project Path="2_Application/Alis/samples/alis.sample.king.platform/web/Alis.Sample.King.Platform.Web.csproj" />
+        <Project Path="2_Application/Alis/samples/alis.sample.king.platform/desktop/Alis.Sample.King.Platform.Desktop.csproj" />
+    </Folder>
+
+    <Folder Name="/2_Application/Alis/samples/alis.sample.flappy.bird/">
+        <Project Path="2_Application/Alis/samples/alis.sample.flappy.bird/web/Alis.Sample.Flappy.Bird.Web.csproj" />
+        <Project Path="2_Application/Alis/samples/alis.sample.flappy.bird/desktop/Alis.Sample.Flappy.Bird.Desktop.csproj" />
+    </Folder>
+
+    <Folder Name="/2_Application/Alis/samples/alis.sample.space.simulator/">
+        <Project Path="2_Application/Alis/samples/alis.sample.space.simulator/web/Alis.Sample.Space.Simulator.Web.csproj" />
+        <Project Path="2_Application/Alis/samples/alis.sample.space.simulator/desktop/Alis.Sample.Space.Simulator.Desktop.csproj" />
+    </Folder>
+
+    <Folder Name="/2_Application/Alis/samples/alis.sample.dino/">
+        <Project Path="2_Application/Alis/samples/alis.sample.dino/web/Alis.Sample.Dino.Web.csproj" />
+        <Project Path="2_Application/Alis/samples/alis.sample.dino/desktop/Alis.Sample.Dino.Desktop.csproj" />
+    </Folder>
+
+    <Folder Name="/2_Application/Alis/samples/alis.sample.empty/">
+        <Project Path="2_Application/Alis/samples/alis.sample.empty/web/Alis.Sample.Empty.Web.csproj" />
+        <Project Path="2_Application/Alis/samples/alis.sample.empty/desktop/Alis.Sample.Empty.Desktop.csproj" />
+    </Folder>
+
+    <Folder Name="/2_Application/Alis/samples/alis.sample.pong/">
+        <Project Path="2_Application/Alis/samples/alis.sample.pong/web/Alis.Sample.Pong.Web.csproj" />
+        <Project Path="2_Application/Alis/samples/alis.sample.pong/desktop/Alis.Sample.Pong.Desktop.csproj" />
+    </Folder>
+
+    <Folder Name="/2_Application/Alis/samples/alis.sample.splitcamera/">
+        <Project Path="2_Application/Alis/samples/alis.sample.splitcamera/web/Alis.Sample.SplitCamera.Web.csproj" />
+        <Project Path="2_Application/Alis/samples/alis.sample.splitcamera/desktop/Alis.Sample.SplitCamera.Desktop.csproj" />
+    </Folder>
+
+    <Folder Name="/2_Application/Alis/samples/alis.sample.asteroid/">
+        <Project Path="2_Application/Alis/samples/alis.sample.asteroid/web/Alis.Sample.Asteroid.Web.csproj" />
+        <Project Path="2_Application/Alis/samples/alis.sample.asteroid/desktop/Alis.Sample.Asteroid.Desktop.csproj" />
+    </Folder>
+
+    <Folder Name="/2_Application/Alis/samples/alis.sample.rogue/">
+        <Project Path="2_Application/Alis/samples/alis.sample.rogue/web/Alis.Sample.Rogue.Web.csproj" />
+        <Project Path="2_Application/Alis/samples/alis.sample.rogue/desktop/Alis.Sample.Rogue.Desktop.csproj" />
+    </Folder>
+
+    <Folder Name="/2_Application/Alis/samples/alis.sample.snake/">
+        <Project Path="2_Application/Alis/samples/alis.sample.snake/web/Alis.Sample.Snake.Web.csproj" />
+        <Project Path="2_Application/Alis/samples/alis.sample.snake/desktop/Alis.Sample.Snake.Desktop.csproj" />
+    </Folder>
+
+    <Folder Name="/2_Application/Alis/samples/alis.sample.ruinsoftartarus/">
+        <Project Path="2_Application/Alis/samples/alis.sample.ruinsoftartarus/web/Alis.Sample.RuinsOfTartarus.Web.csproj" />
+        <Project Path="2_Application/Alis/samples/alis.sample.ruinsoftartarus/desktop/Alis.Sample.RuinsOfTartarus.Desktop.csproj" />
+    </Folder>
+
+    <Folder Name="/2_Application/Alis/samples/alis.sample.egg/">
+        <Project Path="2_Application/Alis/samples/alis.sample.egg/web/Alis.Sample.Egg.Web.csproj" />
+        <Project Path="2_Application/Alis/samples/alis.sample.egg/desktop/Alis.Sample.Egg.Desktop.csproj" />
+    </Folder>
+
+    <Folder Name="/2_Application/Alis/samples/alis.sample.inefable/">
+        <Project Path="2_Application/Alis/samples/alis.sample.inefable/web/Alis.Sample.Inefable.Web.csproj" />
+        <Project Path="2_Application/Alis/samples/alis.sample.inefable/desktop/Alis.Sample.Inefable.Desktop.csproj" />
+    </Folder>
+
+    <!-- ===================== -->
+    <!-- 3 STRUCTURATION       -->
+    <!-- ===================== -->
+
+    <Folder Name="/3_Structuration/" />
+
+    <Folder Name="/3_Structuration/Core/">
+        <Project Path="3_Structuration/Core/src/Alis.Core.csproj" />
+        <Project Path="3_Structuration/Core/test/Alis.Core.Test.csproj" />
+        <Project Path="3_Structuration/Core/sample/Alis.Core.Sample.csproj" />
+    </Folder>
+
+    <!-- ===================== -->
+    <!-- 4 OPERATION           -->
+    <!-- ===================== -->
+
+    <Folder Name="/4_Operation/" />
+
+    <Folder Name="/4_Operation/Ecs/">
+        <Project Path="4_Operation/Ecs/src/Alis.Core.Ecs.csproj" />
+        <Project Path="4_Operation/Ecs/test/Alis.Core.Ecs.Test.csproj" />
+        <Project Path="4_Operation/Ecs/sample/Alis.Core.Ecs.Sample.csproj" />
+        <Project Path="4_Operation/Ecs/generator/Alis.Core.Ecs.Generator.csproj" />
+    </Folder>
+
+    <Folder Name="/4_Operation/Graphic/">
+        <Project Path="4_Operation/Graphic/src/Alis.Core.Graphic.csproj" />
+        <Project Path="4_Operation/Graphic/test/Alis.Core.Graphic.Test.csproj" />
+        <Project Path="4_Operation/Graphic/sample/Alis.Core.Graphic.Sample.csproj" />
+        <Project Path="4_Operation/Graphic/generator/Alis.Core.Graphic.Generator.csproj" />
+    </Folder>
+
+    <Folder Name="/4_Operation/Audio/">
+        <Project Path="4_Operation/Audio/src/Alis.Core.Audio.csproj" />
+        <Project Path="4_Operation/Audio/test/Alis.Core.Audio.Test.csproj" />
+        <Project Path="4_Operation/Audio/sample/Alis.Core.Audio.Sample.csproj" />
+    </Folder>
+
+    <Folder Name="/4_Operation/Physic/">
+        <Project Path="4_Operation/Physic/src/Alis.Core.Physic.csproj" />
+        <Project Path="4_Operation/Physic/test/Alis.Core.Physic.Test.csproj" />
+        <Project Path="4_Operation/Physic/sample/Alis.Core.Physic.Sample.csproj" />
+    </Folder>
+
+    <!-- ===================== -->
+    <!-- 5 DECLARATION         -->
+    <!-- ===================== -->
+
+    <Folder Name="/5_Declaration/" />
+
+    <Folder Name="/5_Declaration/Aspect/">
+        <Project Path="5_Declaration/Aspect/src/Alis.Core.Aspect.csproj" />
+        <Project Path="5_Declaration/Aspect/test/Alis.Core.Aspect.Test.csproj" />
+        <Project Path="5_Declaration/Aspect/sample/Alis.Core.Aspect.Sample.csproj" />
+    </Folder>
+
+    <!-- ===================== -->
+    <!-- 6 IDEATION            -->
+    <!-- ===================== -->
+
+    <Folder Name="/6_Ideation/" />
+
+    <Folder Name="/6_Ideation/Memory/">
+        <Project Path="6_Ideation/Memory/src/Alis.Core.Aspect.Memory.csproj" />
+        <Project Path="6_Ideation/Memory/test/Alis.Core.Aspect.Memory.Test.csproj" />
+        <Project Path="6_Ideation/Memory/sample/Alis.Core.Aspect.Memory.Sample.csproj" />
+        <Project Path="6_Ideation/Memory/generator/Alis.Core.Aspect.Memory.Generator.csproj" />
+    </Folder>
+
+    <Folder Name="/6_Ideation/Fluent/">
+        <Project Path="6_Ideation/Fluent/src/Alis.Core.Aspect.Fluent.csproj" />
+        <Project Path="6_Ideation/Fluent/test/Alis.Core.Aspect.Fluent.Test.csproj" />
+        <Project Path="6_Ideation/Fluent/sample/Alis.Core.Aspect.Fluent.Sample.csproj" />
+        <Project Path="6_Ideation/Fluent/generator/Alis.Core.Aspect.Fluent.Generator.csproj" />
+    </Folder>
+
+    <Folder Name="/6_Ideation/Math/">
+        <Project Path="6_Ideation/Math/src/Alis.Core.Aspect.Math.csproj" />
+        <Project Path="6_Ideation/Math/test/Alis.Core.Aspect.Math.Test.csproj" />
+        <Project Path="6_Ideation/Math/sample/Alis.Core.Aspect.Math.Sample.csproj" />
+    </Folder>
+
+    <Folder Name="/6_Ideation/Time/">
+        <Project Path="6_Ideation/Time/src/Alis.Core.Aspect.Time.csproj" />
+        <Project Path="6_Ideation/Time/test/Alis.Core.Aspect.Time.Test.csproj" />
+        <Project Path="6_Ideation/Time/sample/Alis.Core.Aspect.Time.Sample.csproj" />
+    </Folder>
+
+    <Folder Name="/6_Ideation/Data/">
+        <Project Path="6_Ideation/Data/src/Alis.Core.Aspect.Data.csproj" />
+        <Project Path="6_Ideation/Data/test/Alis.Core.Aspect.Data.Test.csproj" />
+        <Project Path="6_Ideation/Data/sample/Alis.Core.Aspect.Data.Sample.csproj" />
+        <Project Path="6_Ideation/Data/generator/Alis.Core.Aspect.Data.Generator.csproj" />
+    </Folder>
+
+    <Folder Name="/6_Ideation/Logging/">
+        <Project Path="6_Ideation/Logging/src/Alis.Core.Aspect.Logging.csproj" />
+        <Project Path="6_Ideation/Logging/test/Alis.Core.Aspect.Logging.Test.csproj" />
+        <Project Path="6_Ideation/Logging/sample/Alis.Core.Aspect.Logging.Sample.csproj" />
+    </Folder>
+
+    <!-- ===================== -->
+    <!-- 1 PRESENTATION        -->
+    <!-- ===================== -->
+
+    <Folder Name="/1_Presentation/" />
+
+    <Folder Name="/1_Presentation/Installer/">
+        <Project Path="1_Presentation/Installer/src/Alis.App.Installer.csproj" />
+    </Folder>
+
+    <Folder Name="/1_Presentation/Engine/">
+        <Project Path="1_Presentation/Engine/src/Alis.App.Engine.csproj" />
+    </Folder>
+
+    <Folder Name="/1_Presentation/Hub/">
+        <Project Path="1_Presentation/Hub/src/Alis.App.Hub.csproj" />
+    </Folder>
+    <Folder Name="/1_Presentation/Extension/" />
+    <Folder Name="/1_Presentation/Extension/Ads/" />
+
+    <!-- EXTENSIONS (FULLY COMPLETED) -->
+
+    <Folder Name="/1_Presentation/Extension/Ads/GoogleAds/">
+        <Project Path="1_Presentation/Extension/Ads/GoogleAds/src/Alis.Extension.Ads.GoogleAds.csproj" />
+        <Project Path="1_Presentation/Extension/Ads/GoogleAds/test/Alis.Extension.Ads.GoogleAds.Test.csproj" />
+        <Project Path="1_Presentation/Extension/Ads/GoogleAds/sample/Alis.Extension.Ads.GoogleAds.Sample.csproj" />
+    </Folder>
+
+    <Folder Name="/1_Presentation/Extension/Security/">
+        <Project Path="1_Presentation/Extension/Security/src/Alis.Extension.Security.csproj" />
+        <Project Path="1_Presentation/Extension/Security/test/Alis.Extension.Security.Test.csproj" />
+        <Project Path="1_Presentation/Extension/Security/sample/Alis.Extension.Security.Sample.csproj" />
+    </Folder>
+    <Folder Name="/1_Presentation/Extension/Network/Samples/">
+        <Project Path="1_Presentation/Extension/Network/samples/ConsoleGame/client/Alis.Extension.Network.Sample.ConsoleGame.Client.csproj" />
+        <Project Path="1_Presentation/Extension/Network/samples/ConsoleGame/server/Alis.Extension.Network.Sample.ConsoleGame.Server.csproj" />
+        <Project Path="1_Presentation/Extension/Network/samples/SimpleChat/client/Alis.Extension.Network.Sample.SimpleChat.Client.csproj" />
+        <Project Path="1_Presentation/Extension/Network/samples/SimpleChat/server/Alis.Extension.Network.Sample.SimpleChat.Server.csproj" />
+        <Project Path="1_Presentation/Extension/Network/samples/SimpleGame/client/Alis.Extension.Network.Sample.SimpleGame.Client.csproj" />
+        <Project Path="1_Presentation/Extension/Network/samples/SimpleGame/server/Alis.Extension.Network.Sample.SimpleGame.Server.csproj" />
+    </Folder>
+    <Folder Name="/1_Presentation/Extension/Payment/" />
+
+    <Folder Name="/1_Presentation/Extension/Payment/Stripe/">
+        <Project Path="1_Presentation/Extension/Payment/Stripe/src/Alis.Extension.Payment.Stripe.csproj" />
+        <Project Path="1_Presentation/Extension/Payment/Stripe/test/Alis.Extension.Payment.Stripe.Test.csproj" />
+        <Project Path="1_Presentation/Extension/Payment/Stripe/sample/Alis.Extension.Payment.Stripe.Sample.csproj" />
+    </Folder>
+
+    <Folder Name="/1_Presentation/Extension/Network/">
+        <Project Path="1_Presentation/Extension/Network/src/Alis.Extension.Network.csproj" />
+        <Project Path="1_Presentation/Extension/Network/test/Alis.Extension.Network.Test.csproj" />
+    </Folder>
+    <Folder Name="/1_Presentation/Extension/Io/" />
+
+    <Folder Name="/1_Presentation/Extension/Io/FileDialog/">
+        <Project Path="1_Presentation/Extension/Io/FileDialog/src/Alis.Extension.Io.FileDialog.csproj" />
+        <Project Path="1_Presentation/Extension/Io/FileDialog/test/Alis.Extension.Io.FileDialog.Test.csproj" />
+        <Project Path="1_Presentation/Extension/Io/FileDialog/sample/Alis.Extension.Io.FileDialog.Sample.csproj" />
+    </Folder>
+
+    <Folder Name="/1_Presentation/Extension/Updater/">
+        <Project Path="1_Presentation/Extension/Updater/src/Alis.Extension.Updater.csproj" />
+        <Project Path="1_Presentation/Extension/Updater/test/Alis.Extension.Updater.Test.csproj" />
+        <Project Path="1_Presentation/Extension/Updater/sample/Alis.Extension.Updater.Sample.csproj" />
+    </Folder>
+
+    <Folder Name="/1_Presentation/Extension/Language/Translator/">
+        <Project Path="1_Presentation/Extension/Language/Translator/src/Alis.Extension.Language.Translator.csproj" />
+        <Project Path="1_Presentation/Extension/Language/Translator/test/Alis.Extension.Language.Translator.Test.csproj" />
+        <Project Path="1_Presentation/Extension/Language/Translator/sample/Alis.Extension.Language.Translator.Sample.csproj" />
+    </Folder>
+    <Folder Name="/1_Presentation/Extension/Language/" />
+
+    <Folder Name="/1_Presentation/Extension/Language/Dialogue/">
+        <Project Path="1_Presentation/Extension/Language/Dialogue/src/Alis.Extension.Language.Dialogue.csproj" />
+        <Project Path="1_Presentation/Extension/Language/Dialogue/test/Alis.Extension.Language.Dialogue.Test.csproj" />
+        <Project Path="1_Presentation/Extension/Language/Dialogue/sample/Alis.Extension.Language.Dialogue.Sample.csproj" />
+    </Folder>
+
+    <Folder Name="/1_Presentation/Extension/Math/ProceduralDungeon/">
+        <Project Path="1_Presentation/Extension/Math/ProceduralDungeon/src/Alis.Extension.Math.ProceduralDungeon.csproj" />
+        <Project Path="1_Presentation/Extension/Math/ProceduralDungeon/test/Alis.Extension.Math.ProceduralDungeon.Test.csproj" />
+        <Project Path="1_Presentation/Extension/Math/ProceduralDungeon/sample/Alis.Extension.Math.ProceduralDungeon.Sample.csproj" />
+    </Folder>
+    <Folder Name="/1_Presentation/Extension/Math/" />
+
+    <Folder Name="/1_Presentation/Extension/Math/HighSpeedPriorityQueue/">
+        <Project Path="1_Presentation/Extension/Math/HighSpeedPriorityQueue/src/Alis.Extension.Math.HighSpeedPriorityQueue.csproj" />
+        <Project Path="1_Presentation/Extension/Math/HighSpeedPriorityQueue/test/Alis.Extension.Math.HighSpeedPriorityQueue.Test.csproj" />
+        <Project Path="1_Presentation/Extension/Math/HighSpeedPriorityQueue/sample/Alis.Extension.Math.HighSpeedPriorityQueue.Sample.csproj" />
+    </Folder>
+
+    <Folder Name="/1_Presentation/Extension/Graphic/Ui/">
+        <Project Path="1_Presentation/Extension/Graphic/Ui/src/Alis.Extension.Graphic.Ui.csproj" />
+        <Project Path="1_Presentation/Extension/Graphic/Ui/test/Alis.Extension.Graphic.Ui.Test.csproj" />
+        <Project Path="1_Presentation/Extension/Graphic/Ui/sample/Alis.Extension.Graphic.Ui.Sample.csproj" />
+    </Folder>
+
+    <Folder Name="/1_Presentation/Extension/Graphic/Sfml/">
+        <Project Path="1_Presentation/Extension/Graphic/Sfml/src/Alis.Extension.Graphic.Sfml.csproj" />
+        <Project Path="1_Presentation/Extension/Graphic/Sfml/test/Alis.Extension.Graphic.Sfml.Test.csproj" />
+        <Project Path="1_Presentation/Extension/Graphic/Sfml/sample/Alis.Extension.Graphic.Sfml.Sample.csproj" />
+    </Folder>
+    <Folder Name="/1_Presentation/Extension/Graphic/" />
+
+    <Folder Name="/1_Presentation/Extension/Graphic/Glfw/">
+        <Project Path="1_Presentation/Extension/Graphic/Glfw/src/Alis.Extension.Graphic.Glfw.csproj" />
+        <Project Path="1_Presentation/Extension/Graphic/Glfw/test/Alis.Extension.Graphic.Glfw.Test.csproj" />
+        <Project Path="1_Presentation/Extension/Graphic/Glfw/sample/Alis.Extension.Graphic.Glfw.Sample.csproj" />
+    </Folder>
+
+    <Folder Name="/1_Presentation/Extension/Graphic/Sdl2/">
+        <Project Path="1_Presentation/Extension/Graphic/Sdl2/src/Alis.Extension.Graphic.Sdl2.csproj" />
+        <Project Path="1_Presentation/Extension/Graphic/Sdl2/test/Alis.Extension.Graphic.Sdl2.Test.csproj" />
+        <Project Path="1_Presentation/Extension/Graphic/Sdl2/sample/Alis.Extension.Graphic.Sdl2.Sample.csproj" />
+    </Folder>
+
+    <Folder Name="/1_Presentation/Extension/Profile/">
+        <Project Path="1_Presentation/Extension/Profile/src/Alis.Extension.Profile.csproj" />
+        <Project Path="1_Presentation/Extension/Profile/test/Alis.Extension.Profile.Test.csproj" />
+        <Project Path="1_Presentation/Extension/Profile/sample/Alis.Extension.Profile.Sample.csproj" />
+    </Folder>
+    <Folder Name="/1_Presentation/Extension/Cloud/" />
+
+    <Folder Name="/1_Presentation/Extension/Cloud/DropBox/">
+        <Project Path="1_Presentation/Extension/Cloud/DropBox/src/Alis.Extension.Cloud.DropBox.csproj" />
+        <Project Path="1_Presentation/Extension/Cloud/DropBox/test/Alis.Extension.Cloud.DropBox.Test.csproj" />
+        <Project Path="1_Presentation/Extension/Cloud/DropBox/sample/Alis.Extension.Cloud.DropBox.Sample.csproj" />
+    </Folder>
+
+    <Folder Name="/1_Presentation/Extension/Cloud/GoogleDrive/">
+        <Project Path="1_Presentation/Extension/Cloud/GoogleDrive/src/Alis.Extension.Cloud.GoogleDrive.csproj" />
+        <Project Path="1_Presentation/Extension/Cloud/GoogleDrive/test/Alis.Extension.Cloud.GoogleDrive.Test.csproj" />
+        <Project Path="1_Presentation/Extension/Cloud/GoogleDrive/sample/Alis.Extension.Cloud.GoogleDrive.Sample.csproj" />
+    </Folder>
+
+    <Folder Name="/1_Presentation/Extension/Thread/">
+        <Project Path="1_Presentation/Extension/Thread/src/Alis.Extension.Thread.csproj" />
+        <Project Path="1_Presentation/Extension/Thread/test/Alis.Extension.Thread.Test.csproj" />
+        <Project Path="1_Presentation/Extension/Thread/sample/Alis.Extension.Thread.Sample.csproj" />
+    </Folder>
+    <Folder Name="/1_Presentation/Extension/Media/" />
+
+    <Folder Name="/1_Presentation/Extension/Media/FFmpeg/">
+        <Project Path="1_Presentation/Extension/Media/FFmpeg/src/Alis.Extension.Media.FFmpeg.csproj" />
+        <Project Path="1_Presentation/Extension/Media/FFmpeg/test/Alis.Extension.Media.FFmpeg.Test.csproj" />
+        <Project Path="1_Presentation/Extension/Media/FFmpeg/sample/Alis.Extension.Media.FFmpeg.Sample.csproj" />
+    </Folder>
+
 </Solution>

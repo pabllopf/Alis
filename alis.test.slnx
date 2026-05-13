@@ -1,0 +1,81 @@
+<Solution>
+    <Folder Name="/2_Application/" />
+
+    <Folder Name="/2_Application/Alis/">
+        <Project Path="2_Application/Alis/src/Alis.csproj" />
+        <Project Path="2_Application/Alis/test/Alis.Test.csproj" />
+    </Folder>
+
+    <Folder Name="/3_Structuration/" />
+
+    <Folder Name="/3_Structuration/Core/">
+        <Project Path="3_Structuration/Core/src/Alis.Core.csproj" />
+        <Project Path="3_Structuration/Core/test/Alis.Core.Test.csproj" />
+    </Folder>
+
+    <Folder Name="/4_Operation/" />
+
+    <Folder Name="/4_Operation/Ecs/">
+        <Project Path="4_Operation/Ecs/src/Alis.Core.Ecs.csproj" />
+        <Project Path="4_Operation/Ecs/test/Alis.Core.Ecs.Test.csproj" />
+        <Project Path="4_Operation/Ecs/generator/Alis.Core.Ecs.Generator.csproj" />
+    </Folder>
+
+    <Folder Name="/4_Operation/Graphic/">
+        <Project Path="4_Operation/Graphic/src/Alis.Core.Graphic.csproj" />
+        <Project Path="4_Operation/Graphic/test/Alis.Core.Graphic.Test.csproj" />
+        <Project Path="4_Operation/Graphic/generator/Alis.Core.Graphic.Generator.csproj" />
+    </Folder>
+
+    <Folder Name="/4_Operation/Audio/">
+        <Project Path="4_Operation/Audio/src/Alis.Core.Audio.csproj" />
+        <Project Path="4_Operation/Audio/test/Alis.Core.Audio.Test.csproj" />
+    </Folder>
+
+    <Folder Name="/4_Operation/Physic/">
+        <Project Path="4_Operation/Physic/src/Alis.Core.Physic.csproj" />
+        <Project Path="4_Operation/Physic/test/Alis.Core.Physic.Test.csproj" />
+    </Folder>
+
+    <Folder Name="/5_Declaration/" />
+
+    <Folder Name="/5_Declaration/Aspect/">
+        <Project Path="5_Declaration/Aspect/src/Alis.Core.Aspect.csproj" />
+        <Project Path="5_Declaration/Aspect/test/Alis.Core.Aspect.Test.csproj" />
+    </Folder>
+
+    <Folder Name="/6_Ideation/" />
+
+    <Folder Name="/6_Ideation/Memory/">
+        <Project Path="6_Ideation/Memory/src/Alis.Core.Aspect.Memory.csproj" />
+        <Project Path="6_Ideation/Memory/test/Alis.Core.Aspect.Memory.Test.csproj" />
+        <Project Path="6_Ideation/Memory/generator/Alis.Core.Aspect.Memory.Generator.csproj" />
+    </Folder>
+
+    <Folder Name="/6_Ideation/Fluent/">
+        <Project Path="6_Ideation/Fluent/src/Alis.Core.Aspect.Fluent.csproj" />
+        <Project Path="6_Ideation/Fluent/test/Alis.Core.Aspect.Fluent.Test.csproj" />
+        <Project Path="6_Ideation/Fluent/generator/Alis.Core.Aspect.Fluent.Generator.csproj" />
+    </Folder>
+
+    <Folder Name="/6_Ideation/Math/">
+        <Project Path="6_Ideation/Math/src/Alis.Core.Aspect.Math.csproj" />
+        <Project Path="6_Ideation/Math/test/Alis.Core.Aspect.Math.Test.csproj" />
+    </Folder>
+
+    <Folder Name="/6_Ideation/Time/">
+        <Project Path="6_Ideation/Time/src/Alis.Core.Aspect.Time.csproj" />
+        <Project Path="6_Ideation/Time/test/Alis.Core.Aspect.Time.Test.csproj" />
+    </Folder>
+
+    <Folder Name="/6_Ideation/Data/">
+        <Project Path="6_Ideation/Data/src/Alis.Core.Aspect.Data.csproj" />
+        <Project Path="6_Ideation/Data/test/Alis.Core.Aspect.Data.Test.csproj" />
+        <Project Path="6_Ideation/Data/generator/Alis.Core.Aspect.Data.Generator.csproj" />
+    </Folder>
+
+    <Folder Name="/6_Ideation/Logging/">
+        <Project Path="6_Ideation/Logging/src/Alis.Core.Aspect.Logging.csproj" />
+        <Project Path="6_Ideation/Logging/test/Alis.Core.Aspect.Logging.Test.csproj" />
+    </Folder>
+</Solution>

@@ -1,0 +1,157 @@
+<Solution>
+
+    <Folder Name="/1_Presentation/" />
+    <Folder Name="/1_Presentation/Extension/" />
+    <Folder Name="/1_Presentation/Extension/Ads/" />
+    
+    <Folder Name="/1_Presentation/Extension/Ads/GoogleAds/">
+        <Project Path="1_Presentation/Extension/Ads/GoogleAds/src/Alis.Extension.Ads.GoogleAds.csproj" />
+    </Folder>
+
+    <Folder Name="/1_Presentation/Extension/Security/">
+        <Project Path="1_Presentation/Extension/Security/src/Alis.Extension.Security.csproj" />
+    </Folder>
+    <Folder Name="/1_Presentation/Extension/Payment/" />
+
+    <Folder Name="/1_Presentation/Extension/Payment/Stripe/">
+        <Project Path="1_Presentation/Extension/Payment/Stripe/src/Alis.Extension.Payment.Stripe.csproj" />
+    </Folder>
+
+    <Folder Name="/1_Presentation/Extension/Network/">
+        <Project Path="1_Presentation/Extension/Network/src/Alis.Extension.Network.csproj" />
+    </Folder>
+    <Folder Name="/1_Presentation/Extension/Io/" />
+
+    <Folder Name="/1_Presentation/Extension/Io/FileDialog/">
+        <Project Path="1_Presentation/Extension/Io/FileDialog/src/Alis.Extension.Io.FileDialog.csproj" />
+    </Folder>
+
+    <Folder Name="/1_Presentation/Extension/Updater/">
+        <Project Path="1_Presentation/Extension/Updater/src/Alis.Extension.Updater.csproj" />
+    </Folder>
+
+    <Folder Name="/1_Presentation/Extension/Language/Translator/">
+        <Project Path="1_Presentation/Extension/Language/Translator/src/Alis.Extension.Language.Translator.csproj" />
+    </Folder>
+    <Folder Name="/1_Presentation/Extension/Language/" />
+
+    <Folder Name="/1_Presentation/Extension/Language/Dialogue/">
+        <Project Path="1_Presentation/Extension/Language/Dialogue/src/Alis.Extension.Language.Dialogue.csproj" />
+    </Folder>
+
+    <Folder Name="/1_Presentation/Extension/Math/ProceduralDungeon/">
+        <Project Path="1_Presentation/Extension/Math/ProceduralDungeon/src/Alis.Extension.Math.ProceduralDungeon.csproj" />
+    </Folder>
+    <Folder Name="/1_Presentation/Extension/Math/" />
+
+    <Folder Name="/1_Presentation/Extension/Math/HighSpeedPriorityQueue/">
+        <Project Path="1_Presentation/Extension/Math/HighSpeedPriorityQueue/src/Alis.Extension.Math.HighSpeedPriorityQueue.csproj" />
+    </Folder>
+
+    <Folder Name="/1_Presentation/Extension/Graphic/Ui/">
+        <Project Path="1_Presentation/Extension/Graphic/Ui/src/Alis.Extension.Graphic.Ui.csproj" />
+    </Folder>
+
+    <Folder Name="/1_Presentation/Extension/Graphic/Sfml/">
+        <Project Path="1_Presentation/Extension/Graphic/Sfml/src/Alis.Extension.Graphic.Sfml.csproj" />
+    </Folder>
+    <Folder Name="/1_Presentation/Extension/Graphic/" />
+
+    <Folder Name="/1_Presentation/Extension/Graphic/Glfw/">
+        <Project Path="1_Presentation/Extension/Graphic/Glfw/src/Alis.Extension.Graphic.Glfw.csproj" />
+    </Folder>
+
+    <Folder Name="/1_Presentation/Extension/Graphic/Sdl2/">
+        <Project Path="1_Presentation/Extension/Graphic/Sdl2/src/Alis.Extension.Graphic.Sdl2.csproj" />
+    </Folder>
+
+    <Folder Name="/1_Presentation/Extension/Profile/">
+        <Project Path="1_Presentation/Extension/Profile/src/Alis.Extension.Profile.csproj" />
+    </Folder>
+    <Folder Name="/1_Presentation/Extension/Cloud/" />
+
+    <Folder Name="/1_Presentation/Extension/Cloud/DropBox/">
+        <Project Path="1_Presentation/Extension/Cloud/DropBox/src/Alis.Extension.Cloud.DropBox.csproj" />
+    </Folder>
+
+    <Folder Name="/1_Presentation/Extension/Cloud/GoogleDrive/">
+        <Project Path="1_Presentation/Extension/Cloud/GoogleDrive/src/Alis.Extension.Cloud.GoogleDrive.csproj" />
+    </Folder>
+
+    <Folder Name="/1_Presentation/Extension/Thread/">
+        <Project Path="1_Presentation/Extension/Thread/src/Alis.Extension.Thread.csproj" />
+    </Folder>
+    <Folder Name="/1_Presentation/Extension/Media/" />
+
+    <Folder Name="/1_Presentation/Extension/Media/FFmpeg/">
+        <Project Path="1_Presentation/Extension/Media/FFmpeg/src/Alis.Extension.Media.FFmpeg.csproj" />
+    </Folder>
+    
+    
+    <Folder Name="/2_Application/" />
+
+    <Folder Name="/2_Application/Alis/">
+        <Project Path="2_Application/Alis/src/Alis.csproj" />
+    </Folder>
+
+    <Folder Name="/3_Structuration/" />
+
+    <Folder Name="/3_Structuration/Core/">
+        <Project Path="3_Structuration/Core/src/Alis.Core.csproj" />
+    </Folder>
+
+    <Folder Name="/4_Operation/" />
+
+    <Folder Name="/4_Operation/Ecs/">
+        <Project Path="4_Operation/Ecs/src/Alis.Core.Ecs.csproj" />
+        <Project Path="4_Operation/Ecs/generator/Alis.Core.Ecs.Generator.csproj" />
+    </Folder>
+
+    <Folder Name="/4_Operation/Graphic/">
+        <Project Path="4_Operation/Graphic/src/Alis.Core.Graphic.csproj" />
+        <Project Path="4_Operation/Graphic/generator/Alis.Core.Graphic.Generator.csproj" />
+    </Folder>
+
+    <Folder Name="/4_Operation/Audio/">
+        <Project Path="4_Operation/Audio/src/Alis.Core.Audio.csproj" />
+    </Folder>
+
+    <Folder Name="/4_Operation/Physic/">
+        <Project Path="4_Operation/Physic/src/Alis.Core.Physic.csproj" />
+    </Folder>
+
+    <Folder Name="/5_Declaration/" />
+
+    <Folder Name="/5_Declaration/Aspect/">
+        <Project Path="5_Declaration/Aspect/src/Alis.Core.Aspect.csproj" />
+    </Folder>
+
+    <Folder Name="/6_Ideation/" />
+
+    <Folder Name="/6_Ideation/Memory/">
+        <Project Path="6_Ideation/Memory/src/Alis.Core.Aspect.Memory.csproj" />
+        <Project Path="6_Ideation/Memory/generator/Alis.Core.Aspect.Memory.Generator.csproj" />
+    </Folder>
+
+    <Folder Name="/6_Ideation/Fluent/">
+        <Project Path="6_Ideation/Fluent/src/Alis.Core.Aspect.Fluent.csproj" />
+        <Project Path="6_Ideation/Fluent/generator/Alis.Core.Aspect.Fluent.Generator.csproj" />
+    </Folder>
+
+    <Folder Name="/6_Ideation/Math/">
+        <Project Path="6_Ideation/Math/src/Alis.Core.Aspect.Math.csproj" />
+    </Folder>
+
+    <Folder Name="/6_Ideation/Time/">
+        <Project Path="6_Ideation/Time/src/Alis.Core.Aspect.Time.csproj" />
+    </Folder>
+
+    <Folder Name="/6_Ideation/Data/">
+        <Project Path="6_Ideation/Data/src/Alis.Core.Aspect.Data.csproj" />
+        <Project Path="6_Ideation/Data/generator/Alis.Core.Aspect.Data.Generator.csproj" />
+    </Folder>
+
+    <Folder Name="/6_Ideation/Logging/">
+        <Project Path="6_Ideation/Logging/src/Alis.Core.Aspect.Logging.csproj" />
+    </Folder>
+</Solution>

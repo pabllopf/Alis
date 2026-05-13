@@ -1,0 +1,36 @@
+<Solution>
+    <Folder Name="/5_Declaration/" />
+
+    <Folder Name="/5_Declaration/Aspect/">
+        <Project Path="5_Declaration/Aspect/src/Alis.Core.Aspect.csproj" />
+    </Folder>
+
+    <Folder Name="/6_Ideation/" />
+
+    <Folder Name="/6_Ideation/Memory/">
+        <Project Path="6_Ideation/Memory/src/Alis.Core.Aspect.Memory.csproj" />
+        <Project Path="6_Ideation/Memory/generator/Alis.Core.Aspect.Memory.Generator.csproj" />
+    </Folder>
+
+    <Folder Name="/6_Ideation/Fluent/">
+        <Project Path="6_Ideation/Fluent/src/Alis.Core.Aspect.Fluent.csproj" />
+        <Project Path="6_Ideation/Fluent/generator/Alis.Core.Aspect.Fluent.Generator.csproj" />
+    </Folder>
+
+    <Folder Name="/6_Ideation/Math/">
+        <Project Path="6_Ideation/Math/src/Alis.Core.Aspect.Math.csproj" />
+    </Folder>
+
+    <Folder Name="/6_Ideation/Time/">
+        <Project Path="6_Ideation/Time/src/Alis.Core.Aspect.Time.csproj" />
+    </Folder>
+
+    <Folder Name="/6_Ideation/Data/">
+        <Project Path="6_Ideation/Data/src/Alis.Core.Aspect.Data.csproj" />
+        <Project Path="6_Ideation/Data/generator/Alis.Core.Aspect.Data.Generator.csproj" />
+    </Folder>
+
+    <Folder Name="/6_Ideation/Logging/">
+        <Project Path="6_Ideation/Logging/src/Alis.Core.Aspect.Logging.csproj" />
+    </Folder>
+</Solution>
