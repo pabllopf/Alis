@@ -32,7 +32,9 @@ using System.Diagnostics.CodeAnalysis;
 namespace Alis.Core.Aspect.Math
 {
     /// <summary>
-    ///     The math class
+    ///     Provides custom single-precision floating-point mathematical operations including square root,
+    ///     trigonometric functions (sin, cos, tan, acos), absolute value, min/max, and clamping.
+    ///     Uses Taylor series approximations where applicable with a fixed iteration count.
     /// </summary>
     public static class CustomMathF
     {
@@ -51,10 +53,12 @@ namespace Alis.Core.Aspect.Math
         private const int MaxIterations = 10;
 
         /// <summary>
-        ///     Sqrt the x
+        ///     Computes the square root of a single-precision floating-point number using Newton's method.
         /// </summary>
-        /// <param name="x">The </param>
-        /// <returns>The float</returns>
+        /// <param name="x">The non-negative value whose square root is to be computed.</param>
+        /// <returns>
+        ///     The positive square root of <paramref name="x" />. Returns <see cref="float.NaN" /> if <paramref name="x" /> is negative.
+        /// </returns>
         public static float Sqrt(float x)
         {
             if (x < 0f)
@@ -80,17 +84,20 @@ namespace Alis.Core.Aspect.Math
         }
 
         /// <summary>
-        ///     Abs the value
+        ///     Returns the absolute value of a single-precision floating-point number.
         /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The float</returns>
+        /// <param name="value">The value to compute the absolute value of.</param>
+        /// <returns>The absolute value of <paramref name="value" />.</returns>
         public static float Abs(float value) => value < 0f ? -value : value;
 
         /// <summary>
-        ///     Coses the x
+        ///     Computes the cosine of a single-precision floating-point angle using a Taylor series approximation.
         /// </summary>
-        /// <param name="x">The </param>
-        /// <returns>The result</returns>
+        /// <param name="x">The angle in radians.</param>
+        /// <returns>
+        ///     The cosine of <paramref name="x" />. Returns <see cref="float.NaN" /> if <paramref name="x" /> is
+        ///     <see cref="float.NaN" /> or <see cref="float.PositiveInfinity" /> or <see cref="float.NegativeInfinity" />.
+        /// </returns>
         public static float Cos(float x)
         {
             if (float.IsNaN(x) || float.IsInfinity(x))
@@ -114,10 +121,13 @@ namespace Alis.Core.Aspect.Math
         }
 
         /// <summary>
-        ///     Sins the x
+        ///     Computes the sine of a single-precision floating-point angle using a Taylor series approximation.
         /// </summary>
-        /// <param name="x">The </param>
-        /// <returns>The result</returns>
+        /// <param name="x">The angle in radians.</param>
+        /// <returns>
+        ///     The sine of <paramref name="x" />. Returns <see cref="float.NaN" /> if <paramref name="x" /> is
+        ///     <see cref="float.NaN" /> or <see cref="float.PositiveInfinity" /> or <see cref="float.NegativeInfinity" />.
+        /// </returns>
         [ExcludeFromCodeCoverage]
         public static float Sin(float x)
         {
@@ -152,10 +162,13 @@ namespace Alis.Core.Aspect.Math
         }
 
         /// <summary>
-        ///     Acos the x
+        ///     Computes the arccosine (inverse cosine) of a single-precision floating-point number.
         /// </summary>
-        /// <param name="x">The </param>
-        /// <returns>The angle</returns>
+        /// <param name="x">A value between -1 and 1 representing the cosine of an angle.</param>
+        /// <returns>
+        ///     The arccosine of <paramref name="x" /> in radians. Returns <see cref="float.NaN" /> if <paramref name="x" />
+        ///     is outside the interval [-1, 1] or is <see cref="float.NaN" />.
+        /// </returns>
         [ExcludeFromCodeCoverage]
         public static float Acos(float x)
         {
@@ -184,35 +197,35 @@ namespace Alis.Core.Aspect.Math
         }
 
         /// <summary>
-        ///     Maxes the val 1
+        ///     Returns the larger of two 32-bit signed integers.
         /// </summary>
-        /// <param name="val1">The val</param>
-        /// <param name="val2">The val</param>
-        /// <returns>The int</returns>
+        /// <param name="val1">The first value to compare.</param>
+        /// <param name="val2">The second value to compare.</param>
+        /// <returns>The larger of <paramref name="val1" /> and <paramref name="val2" />.</returns>
         public static int Max(int val1, int val2) => val1 >= val2 ? val1 : val2;
 
         /// <summary>
-        ///     Mins the y 3
+        ///     Returns the smaller of two 32-bit signed integers.
         /// </summary>
-        /// <param name="y3">The </param>
-        /// <param name="y4">The </param>
-        /// <returns>The int</returns>
+        /// <param name="y3">The first value to compare.</param>
+        /// <param name="y4">The second value to compare.</param>
+        /// <returns>The smaller of <paramref name="y3" /> and <paramref name="y4" />.</returns>
         public static int Min(int y3, int y4) => y3 <= y4 ? y3 : y4;
 
         /// <summary>
-        ///     Maxes the val 1
+        ///     Returns the larger of two single-precision floating-point numbers.
         /// </summary>
-        /// <param name="val1">The val</param>
-        /// <param name="val2">The val</param>
-        /// <returns>The float</returns>
+        /// <param name="val1">The first value to compare.</param>
+        /// <param name="val2">The second value to compare.</param>
+        /// <returns>The larger of <paramref name="val1" /> and <paramref name="val2" />.</returns>
         public static float Max(float val1, float val2) => val1 >= val2 ? val1 : val2;
 
         /// <summary>
-        ///     Mins the y 3
+        ///     Returns the smaller of two single-precision floating-point numbers.
         /// </summary>
-        /// <param name="y3">The </param>
-        /// <param name="y4">The </param>
-        /// <returns>The float</returns>
+        /// <param name="y3">The first value to compare.</param>
+        /// <param name="y4">The second value to compare.</param>
+        /// <returns>The smaller of <paramref name="y3" /> and <paramref name="y4" />.</returns>
         public static float Min(float y3, float y4) => y3 <= y4 ? y3 : y4;
 
         /// <summary>

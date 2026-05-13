@@ -35,17 +35,33 @@ using System.Text;
 namespace Alis.Core.Aspect.Data.Json.Helpers
 {
     /// <summary>
-    ///     Handles JSON escape sequences in strings.
+    ///     Processes and resolves JSON escape sequences within string values.
+    ///     Provides functionality to detect escaped characters by counting preceding backslashes,
+    ///     and to convert standard JSON escape sequences (e.g., \n, \t, \", \\, \uXXXX) into their
+    ///     actual character representations.
     /// </summary>
+    /// <remarks>
+    ///     This handler supports all standard JSON escape sequences as defined by the JSON specification:
+    ///     \", \\, \/, \b, \f, \n, \r, \t, and \uXXXX (Unicode code point). For Unicode escape sequences,
+    ///     the handler parses the four hexadecimal digits following \u and converts them to the
+    ///     corresponding Unicode character.
+    ///     Escape detection is performed by counting consecutive backslashes preceding the position:
+    ///     an odd count means the character is escaped.
+    /// </remarks>
     public sealed class EscapeSequenceHandler : IEscapeSequenceHandler
     {
         /// <summary>
-        ///     Determines if a character at the specified position is escaped.
+        ///     Determines whether the character at the specified position within the text is escaped
+        ///     by an odd number of preceding backslash characters.
         /// </summary>
-        /// <param name="text">The text to check.</param>
-        /// <param name="position">The position of the character to check.</param>
-        /// <returns>True if the character is escaped; otherwise, false.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when text is null.</exception>
+        /// <param name="text">The text string to examine. Must not be null.</param>
+        /// <param name="position">The zero-based index of the character to check for escaping.</param>
+        /// <returns>
+        ///     <c>true</c> if the character at <paramref name="position" /> is preceded by an odd number
+        ///     of consecutive backslashes (indicating it is escaped); otherwise, <c>false</c>.
+        ///     Returns <c>false</c> if <paramref name="position" /> is out of range.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="text" /> is null.</exception>
         public bool IsEscaped(string text, int position)
         {
             if (text == null)
@@ -71,11 +87,16 @@ namespace Alis.Core.Aspect.Data.Json.Helpers
         }
 
         /// <summary>
-        ///     Unescapes a JSON string by replacing escape sequences with their actual characters.
+        ///     Unescapes a JSON string by replacing recognized escape sequences with their actual
+        ///     character representations. If the input contains no backslash characters, it is
+        ///     returned unchanged.
         /// </summary>
-        /// <param name="escapedString">The escaped string.</param>
-        /// <returns>The unescaped string.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when escapedString is null.</exception>
+        /// <param name="escapedString">The JSON-escaped string to unescape. Must not be null.</param>
+        /// <returns>
+        ///     The unescaped string with all escape sequences resolved to their corresponding characters.
+        ///     If no escape sequences are present, the original string is returned unchanged.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="escapedString" /> is null.</exception>
         [ExcludeFromCodeCoverage]
         public string Unescape(string escapedString)
         {
