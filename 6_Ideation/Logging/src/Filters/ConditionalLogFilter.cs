@@ -40,7 +40,7 @@ namespace Alis.Core.Aspect.Logging.Filters
     public sealed class ConditionalLogFilter : ILogFilter
     {
         /// <summary>
-        ///     The predicate
+        ///     The user-defined predicate function that determines whether an entry should be logged.
         /// </summary>
         private readonly Func<ILogEntry, bool> _predicate;
 
@@ -57,16 +57,18 @@ namespace Alis.Core.Aspect.Logging.Filters
 
 
         /// <summary>
-        ///     Gets the value of the name
+        ///     Gets the human-readable name for this filter, as provided during construction.
         /// </summary>
         public string Name { get; }
 
 
         /// <summary>
-        ///     Shoulds the log using the specified entry
+        ///     Evaluates the predicate function with the given log entry.
+        ///     If the predicate throws an exception, it is caught and the entry is allowed through
+        ///     to prevent filter errors from disrupting logging.
         /// </summary>
-        /// <param name="entry">The entry</param>
-        /// <returns>The bool</returns>
+        /// <param name="entry">The log entry to evaluate. May be null.</param>
+        /// <returns>True if the entry should be logged; false otherwise. Returns true on predicate errors.</returns>
         public bool ShouldLog(ILogEntry entry)
         {
             try

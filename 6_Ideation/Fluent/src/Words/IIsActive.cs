@@ -37,7 +37,7 @@ namespace Alis.Core.Aspect.Fluent.Words
     public interface IIsActive<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Ises the active using the specified value
+        ///     Sets active state on the builder using the provided value.
         /// </summary>
         /// <param name="value">The active state to apply.</param>
         /// <returns>The builder instance, enabling fluent chaining.</returns>

@@ -39,7 +39,7 @@ namespace Alis.Core.Aspect.Logging.Filters
     public sealed class LogLevelFilter : ILogFilter
     {
         /// <summary>
-        ///     The minimum level
+        ///     The minimum severity level threshold. Entries with level below this are rejected.
         /// </summary>
         private readonly LogLevel _minimumLevel;
 
@@ -51,16 +51,17 @@ namespace Alis.Core.Aspect.Logging.Filters
 
 
         /// <summary>
-        ///     Gets the value of the name
+        ///     Gets a human-readable name showing the configured minimum level.
         /// </summary>
         public string Name => $"LogLevelFilter[{_minimumLevel}]";
 
 
         /// <summary>
-        ///     Shoulds the log using the specified entry
+        ///     Determines whether a log entry's severity level meets the minimum threshold.
+        ///     Returns false for null entries.
         /// </summary>
-        /// <param name="entry">The entry</param>
-        /// <returns>The bool</returns>
+        /// <param name="entry">The log entry to evaluate. May be null.</param>
+        /// <returns>True if <paramref name="entry"/>.<see cref="ILogEntry.Level"/> is >= minimum level; false otherwise.</returns>
         public bool ShouldLog(ILogEntry entry) => entry?.Level >= _minimumLevel;
     }
 }

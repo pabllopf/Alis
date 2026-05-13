@@ -42,16 +42,18 @@ namespace Alis.Core.Aspect.Logging.Formatters
     public sealed class JsonLogFormatter : ILogFormatter
     {
         /// <summary>
-        ///     Gets the value of the name
+        ///     Gets a human-readable name for this JSON formatter.
         /// </summary>
         public string Name => "JsonFormatter";
 
 
         /// <summary>
-        ///     Formats the entry
+        ///     Formats a log entry into a JSON object string with fields: timestamp, level, logger,
+        ///     message, threadId, correlationId, scopes, properties, and exception details.
+        ///     Suitable for structured logging and log aggregation systems.
         /// </summary>
-        /// <param name="entry">The entry</param>
-        /// <returns>The string</returns>
+        /// <param name="entry">The log entry to format. Must not be null.</param>
+        /// <returns>A JSON-formatted string representation of the log entry.</returns>
         public string Format(ILogEntry entry)
         {
             StringBuilder sb = new StringBuilder(512);
@@ -131,8 +133,11 @@ namespace Alis.Core.Aspect.Logging.Formatters
         }
 
         /// <summary>
-        ///     Escapes special characters for JSON string values.
+        ///     Escapes special characters in a string value for safe inclusion in JSON output.
+        ///     Handles quotes, backslashes, control characters, and non-printable characters.
         /// </summary>
+        /// <param name="sb">The <see cref="StringBuilder"/> to append the escaped string to.</param>
+        /// <param name="value">The raw string value to escape. If null or empty, nothing is appended.</param>
         [ExcludeFromCodeCoverage]
         private static void EscapeJsonString(StringBuilder sb, string value)
         {

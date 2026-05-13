@@ -37,7 +37,7 @@ namespace Alis.Core.Aspect.Fluent.Words
     public interface ILinearVelocity<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Linears the velocity using the specified x
+        ///     Sets the linear velocity on the builder using the specified X and Y components.
         /// </summary>
         /// <param name="x">The X-coordinate or first component value.</param>
         /// <param name="y">The Y-coordinate or second component value.</param>

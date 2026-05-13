@@ -42,18 +42,20 @@ namespace Alis.Core.Aspect.Logging
     /// </summary>
     public static class Logger
     {
-        /// <summary>
-        ///     The default logger
-        /// </summary>
-        private static ILogger _defaultLogger;
+    /// <summary>
+    ///     The default static logger instance used by all static logging methods.
+    ///     Initialized lazily on first use via <see cref="EnsureInitialized"/>.
+    /// </summary>
+    private static ILogger _defaultLogger;
+
+    /// <summary>
+    ///     Synchronization lock for thread-safe initialization and replacement of the default logger.
+    /// </summary>
+    private static readonly object _lock = new object();
 
         /// <summary>
-        ///     The lock
-        /// </summary>
-        private static readonly object _lock = new object();
-
-        /// <summary>
-        ///     Ensures the default logger is initialized.
+        ///     Ensures the default logger is lazily initialized with a console output using a simple formatter.
+        ///     Safe to call from multiple threads; uses double-checked locking.
         /// </summary>
         private static void EnsureInitialized()
         {
@@ -88,9 +90,10 @@ namespace Alis.Core.Aspect.Logging
         }
 
         /// <summary>
-        ///     Traces the message
+        ///     Logs a message at the Trace level, the most verbose severity.
+        ///     Typically used for detailed diagnostic information during development.
         /// </summary>
-        /// <param name="message">The message</param>
+        /// <param name="message">The message to log. Must not be null.</param>
         public static void Trace(string message)
         {
             EnsureInitialized();
@@ -98,9 +101,9 @@ namespace Alis.Core.Aspect.Logging
         }
 
         /// <summary>
-        ///     Infoes the message
+        ///     Logs a message at the Info level, used for general informational messages.
         /// </summary>
-        /// <param name="message">The message</param>
+        /// <param name="message">The message to log. Must not be null.</param>
         public static void Info(string message)
         {
             EnsureInitialized();
@@ -108,9 +111,10 @@ namespace Alis.Core.Aspect.Logging
         }
 
         /// <summary>
-        ///     Logs the message
+        ///     Logs a message at the Info level. Equivalent to calling <see cref="Info"/>.
+        ///     Provided for backward compatibility.
         /// </summary>
-        /// <param name="message">The message</param>
+        /// <param name="message">The message to log. Must not be null.</param>
         public static void Log(string message)
         {
             EnsureInitialized();
@@ -118,9 +122,9 @@ namespace Alis.Core.Aspect.Logging
         }
 
         /// <summary>
-        ///     Warnings the message
+        ///     Logs a message at the Warning level for potentially harmful situations.
         /// </summary>
-        /// <param name="message">The message</param>
+        /// <param name="message">The message to log. Must not be null.</param>
         public static void Warning(string message)
         {
             EnsureInitialized();
@@ -128,9 +132,9 @@ namespace Alis.Core.Aspect.Logging
         }
 
         /// <summary>
-        ///     Errors the message
+        ///     Logs a message at the Error level for serious application problems.
         /// </summary>
-        /// <param name="message">The message</param>
+        /// <param name="message">The message to log. Must not be null.</param>
         public static void Error(string message)
         {
             EnsureInitialized();
@@ -138,9 +142,9 @@ namespace Alis.Core.Aspect.Logging
         }
 
         /// <summary>
-        ///     Debugs the message
+        ///     Logs a message at the Debug level for internal debugging and diagnostics.
         /// </summary>
-        /// <param name="message">The message</param>
+        /// <param name="message">The message to log. Must not be null.</param>
         public static void Debug(string message)
         {
             EnsureInitialized();
@@ -148,9 +152,11 @@ namespace Alis.Core.Aspect.Logging
         }
 
         /// <summary>
-        ///     Exceptions the to string
+        ///     Logs a message at the Critical level and immediately throws an <see cref="Exception"/>
+        ///     with the specified message. Useful for unrecoverable error conditions.
         /// </summary>
-        /// <param name="toString">The to string</param>
+        /// <param name="toString">The exception message to log and throw.</param>
+        /// <exception cref="Exception">Always thrown with the provided <paramref name="toString"/> message.</exception>
         public static void Exception(string toString)
         {
             EnsureInitialized();

@@ -155,49 +155,81 @@ namespace Alis.Core.Ecs
         //these lookups exists for programmical api optimization
         //normal <T1, T2...> methods use a shared global static cache
         /// <summary>
-        ///     The add component lookup
+        ///     Gets or sets the lookup cache for add-component operations.
         /// </summary>
+        /// <value>
+        ///     A <see cref="FastLookup"/> used internally to cache archetype traversal paths
+        ///     when adding components to entities. Optimizes repeated add operations.
+        /// </value>
         public FastLookup AddComponentLookup = new FastLookup();
 
         /// <summary>
-        ///     The add tag lookup
+        ///     Gets or sets the lookup cache for add-tag operations.
         /// </summary>
+        /// <value>
+        ///     A <see cref="FastLookup"/> used internally to cache archetype traversal paths
+        ///     when adding tags to entities.
+        /// </value>
         public FastLookup AddTagLookup = new FastLookup();
 
         /// <summary>
-        ///     The archetype graph edges
+        ///     Gets or sets the cache of archetype transitions.
         /// </summary>
+        /// <value>
+        ///     A dictionary mapping archetype edge keys to resulting archetypes, used for
+        ///     efficient component add/remove operations by caching known transitions.
+        /// </value>
         public Dictionary<ArchetypeEdgeKey, Archetype> ArchetypeGraphEdges = [];
 
         /// <summary>
-        ///     The component id
+        ///     Gets or sets the event dispatcher for component-added events.
         /// </summary>
+        /// <value>
+        ///     An <see cref="Event{ComponentId}"/> that fires when components are added to entities.
+        /// </value>
         public Event<ComponentId> ComponentAddedEvent = new Event<ComponentId>();
 
         /// <summary>
-        ///     The component id
+        ///     Gets or sets the event dispatcher for component-removed events.
         /// </summary>
+        /// <value>
+        ///     An <see cref="Event{ComponentId}"/> that fires when components are removed from entities.
+        /// </value>
         public Event<ComponentId> ComponentRemovedEvent = new Event<ComponentId>();
 
         /// <summary>
-        ///     The create
+        ///     Gets or sets the stack of deferred archetype updates to process.
         /// </summary>
+        /// <value>
+        ///     A stack of archetype records created during structural changes that need
+        ///     to be resolved after the update cycle completes.
+        /// </value>
         public FastestStack<ArchetypeDeferredUpdateRecord> DeferredCreationArchetypes =
             FastestStack<ArchetypeDeferredUpdateRecord>.Create(4);
 
         /// <summary>
-        ///     The create
+        ///     Gets or sets the stack of archetypes with registered update systems.
         /// </summary>
+        /// <value>
+        ///     A stack of archetype IDs that have systems attached, used during
+        ///     <see cref="Update()"/> to iterate and execute all active systems.
+        /// </value>
         public FastestStack<GameObjectType> EnabledArchetypes = FastestStack<GameObjectType>.Create(16);
 
         /// <summary>
-        ///     The gameObject only event
+        ///     Gets or sets the event for entity creation notifications.
         /// </summary>
+        /// <value>
+        ///     A <see cref="GameObjectOnlyEvent"/> that fires when new entities are created.
+        /// </value>
         public GameObjectOnlyEvent EntityCreatedEvent = new GameObjectOnlyEvent();
 
         /// <summary>
-        ///     The gameObject only event
+        ///     Gets or sets the event for entity deletion notifications.
         /// </summary>
+        /// <value>
+        ///     A <see cref="GameObjectOnlyEvent"/> that fires when entities are deleted.
+        /// </value>
         public GameObjectOnlyEvent EntityDeletedEvent = new GameObjectOnlyEvent();
 
         //entityID -> gameObject metadata
@@ -270,19 +302,31 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        ///     Gets the value of the shared countdown
+        ///     Gets the synchronization primitive for coordinating parallel operations.
         /// </summary>
-
+        /// <value>
+        ///     A <see cref="CountdownEvent"/> used internally for synchronizing multi-threaded
+        ///     system updates and ensuring all systems complete before structural changes are allowed.
+        /// </value>
         public CountdownEvent SharedCountdown => _sharedCountdown;
 
         /// <summary>
-        ///     Gets the current number of entities managed by the scene.
+        ///     Gets the current number of alive entities in this scene.
         /// </summary>
+        /// <value>
+        ///     The total count of entities minus recycled IDs. This accounts for both active
+        ///     entities and those waiting to be recycled.
+        /// </value>
         public int EntityCount => NextEntityId - RecycledEntityIds.Count;
 
         /// <summary>
-        ///     Gets the value of the allow structual changes
+        ///     Gets a value indicating whether structural changes are currently allowed.
         /// </summary>
+        /// <value>
+        ///     <see langword="true"/> if the scene is not currently updating and entities can be
+        ///     created, modified, or deleted. <see langword="false"/> during update cycles when
+        ///     changes are deferred to maintain data consistency.
+        /// </value>
         public bool AllowStructualChanges => _allowStructuralChanges == -1;
 
         /// <summary>
@@ -308,8 +352,18 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        ///     Invoked whenever an gameObject is created on this scene.
+        ///     Raised when a new entity is created in this scene.
         /// </summary>
+        /// <remarks>
+        ///     This event is invoked after an entity is successfully created and added to the scene's
+        ///     entity table. Use this to initialize per-entity state, spawn visual representations,
+        ///     or register the entity with other subsystems.
+        /// </remarks>
+        /// <example>
+        /// <code>
+        /// scene.EntityCreated += entity => Console.WriteLine($"Created: {entity}");
+        /// </code>
+        /// </example>
         public event Action<GameObject> EntityCreated
         {
             add
@@ -328,8 +382,17 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        ///     Invoked whenever an gameObject belonging to this scene is deleted.
+        ///     Raised when an entity is deleted from this scene.
         /// </summary>
+        /// <remarks>
+        ///     This event is invoked just before an entity is removed from the scene. Use this to
+        ///     clean up resources, release references, or notify other systems that depend on this entity.
+        /// </remarks>
+        /// <example>
+        /// <code>
+        /// scene.EntityDeleted += entity => CleanupEntity(entity);
+        /// </code>
+        /// </example>
         public event Action<GameObject> EntityDeleted
         {
             add
@@ -348,8 +411,18 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        ///     Invoked whenever a component is added to an gameObject.
+        ///     Raised when a component is added to an entity.
         /// </summary>
+        /// <remarks>
+        ///     This event fires after the component has been successfully added to the entity's
+        ///     archetype. The <see cref="ComponentId"/> identifies the type of component that was added.
+        /// </remarks>
+        /// <example>
+        /// <code>
+        /// scene.ComponentAdded += (entity, componentId) => 
+        ///     Console.WriteLine($"Added {componentId} to {entity}");
+        /// </code>
+        /// </example>
         public event Action<GameObject, ComponentId> ComponentAdded
         {
             add => AddEvent(ref ComponentAddedEvent, value, GameObjectFlags.AddComp);
@@ -357,8 +430,18 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        ///     Invoked whenever a component is removed from an gameObject.
+        ///     Raised when a component is removed from an entity.
         /// </summary>
+        /// <remarks>
+        ///     This event fires after the component has been removed from the entity. Use this to
+        ///     handle cleanup or state changes when components are dynamically removed.
+        /// </remarks>
+        /// <example>
+        /// <code>
+        /// scene.ComponentRemoved += (entity, componentId) => 
+        ///     Console.WriteLine($"Removed {componentId} from {entity}");
+        /// </code>
+        /// </example>
         public event Action<GameObject, ComponentId> ComponentRemoved
         {
             add => AddEvent(ref ComponentRemovedEvent, value, GameObjectFlags.RemoveComp);
@@ -410,7 +493,18 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
+        ///     Runs all enabled update systems in the scene.
         /// </summary>
+        /// <remarks>
+        ///     <para>
+        ///     This method iterates through all archetypes that have registered update systems
+        ///     and executes their Update methods in order. This is typically called once per frame.
+        ///     </para>
+        ///     <para>
+        ///     During the update, structural changes (adding/removing entities or components) are
+        ///     deferred until the update completes to maintain data consistency within the frame.
+        ///     </para>
+        /// </remarks>
         public void Update()
         {
             EnterDisallowState();
@@ -428,10 +522,13 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        ///     Updates all component instances in the scene that implement a component interface and have update methods with the
-        ///     <typeparamref name="T" /> attribute
+        ///     Runs all update systems that have the specified attribute type.
         /// </summary>
-        /// <typeparam name="T">The type of attribute to filter</typeparam>
+        /// <typeparam name="T">The type of <see cref="UpdateTypeAttribute"/> that marks systems to run.</typeparam>
+        /// <remarks>
+        ///     This allows filtering which systems execute based on attribute markers (e.g., FixedUpdate, LateUpdate).
+        ///     Structural changes are deferred during this update, similar to <see cref="Update()"/>.
+        /// </remarks>
         public void Update<T>() where T : UpdateTypeAttribute
         {
             Update(typeof(T));
@@ -669,10 +766,25 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        ///     Creates an <see cref="GameObject" />
+        ///     Creates a new entity with the specified components using a weakly-typed approach.
         /// </summary>
-        /// <param name="components">The components to use</param>
-        /// <returns>The created gameObject</returns>
+        /// <param name="components">A span of component objects to attach to the new entity.</param>
+        /// <returns>
+        ///     A <see cref="GameObject"/> representing the created entity with all specified components.
+        /// </returns>
+        /// <exception cref="ArgumentException">
+        ///     Thrown when more than 127 components are specified, as this exceeds the ECS limit.
+        /// </exception>
+        /// <remarks>
+        ///     <para>
+        ///     This method uses reflection to determine component types at runtime. For better
+        ///     performance, use the strongly-typed <see cref="Create{T1, T2}(in T1, in T2)"/> overloads
+        ///     when the component types are known at compile time.
+        ///     </para>
+        ///     <para>
+        ///     If called during an update cycle, component addition is deferred until the update completes.
+        ///     </para>
+        /// </remarks>
         public GameObject CreateFromObjects(ReadOnlySpan<object> components)
         {
             if (components.Length > MemoryHelpers.MaxComponentCount)
@@ -705,9 +817,29 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        ///     Creates an <see cref="GameObject" /> with zero components.
+        ///     Creates a new entity with no components attached.
         /// </summary>
-        /// <returns>The gameObject that was created.</returns>
+        /// <returns>
+        ///     A new <see cref="GameObject"/> representing the created entity.
+        /// </returns>
+        /// <remarks>
+        ///     <para>
+        ///     Entities created without components use the default archetype and can have
+        ///     components added later via <see cref="GameObject.Add{T}(in T)"/> or similar methods.
+        ///     </para>
+        ///     <para>
+        ///     If called during an update cycle, the entity creation is deferred until the
+        ///     update completes to maintain consistency.
+        ///     </para>
+        /// </remarks>
+        /// <example>
+        /// <code>
+        /// var scene = new Scene();
+        /// var entity = scene.Create();
+        /// // Later add components
+        /// entity.Add(new Transform { X = 0, Y = 0 });
+        /// </code>
+        /// </example>
         public GameObject Create()
         {
             GameObject gameObject = CreateEntityWithoutEvent();

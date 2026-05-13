@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using Alis.Core.Aspect.Data.Json.Deserialization;
@@ -88,7 +89,7 @@ namespace Alis.Core.Aspect.Data.Json.FileOperations
         [ExcludeFromCodeCoverage]
         public void SerializeToFile<T>(T instance, string fileName, string relativePath) where T : IJsonSerializable
         {
-            if (instance == null)
+            if (EqualityComparer<T>.Default.Equals(instance, default))
             {
                 throw new ArgumentNullException(nameof(instance));
             }

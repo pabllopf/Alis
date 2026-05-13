@@ -41,22 +41,22 @@ namespace Alis.Core.Aspect.Logging.Outputs
     public sealed class MemoryLogOutput : ILogOutput
     {
         /// <summary>
-        ///     The entries
+        ///     Internal list storing all log entries retained in memory.
         /// </summary>
         private readonly List<ILogEntry> _entries;
 
         /// <summary>
-        ///     The lock
+        ///     Synchronization lock for thread-safe access to the entries list.
         /// </summary>
         private readonly object _lock = new object();
 
         /// <summary>
-        ///     The max entries
+        ///     Maximum number of entries to retain. Oldest entries are evicted when exceeded.
         /// </summary>
         private readonly int _maxEntries;
 
         /// <summary>
-        ///     The disposed
+        ///     Indicates whether this instance has been disposed and should no longer accept entries.
         /// </summary>
         private bool _disposed;
 
@@ -86,21 +86,23 @@ namespace Alis.Core.Aspect.Logging.Outputs
 
 
         /// <summary>
-        ///     Gets the value of the name
+        ///     Gets a human-readable identifier for this in-memory output.
         /// </summary>
         public string Name => "MemoryOutput";
 
 
         /// <summary>
-        ///     Gets or sets the value of the is enabled
+        ///     Gets or sets whether this output is currently accepting log entries.
+        ///     When disabled, <see cref="Write"/> silently ignores entries.
         /// </summary>
         public bool IsEnabled { get; set; } = true;
 
 
         /// <summary>
-        ///     Writes the entry
+        ///     Stores the log entry in the internal list. If the maximum entry count is exceeded,
+        ///     the oldest entries are automatically removed to stay within the limit.
         /// </summary>
-        /// <param name="entry">The entry</param>
+        /// <param name="entry">The log entry to store. Null entries are silently ignored.</param>
         public void Write(ILogEntry entry)
         {
             if (entry == null || _disposed)
@@ -122,7 +124,7 @@ namespace Alis.Core.Aspect.Logging.Outputs
 
 
         /// <summary>
-        ///     Flushes this instance
+        ///     No-op for memory output since entries are always immediately available.
         /// </summary>
         public void Flush()
         {
@@ -131,7 +133,8 @@ namespace Alis.Core.Aspect.Logging.Outputs
 
 
         /// <summary>
-        ///     Disposes this instance
+        ///     Clears all stored entries and marks this instance as disposed.
+        ///     Safe to call multiple times.
         /// </summary>
         public void Dispose()
         {

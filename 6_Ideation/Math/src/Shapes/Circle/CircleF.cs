@@ -32,23 +32,23 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Aspect.Math.Shapes.Circle
 {
     /// <summary>
-    ///     The circle
+    ///     Represents a circle defined by its center point and radius using single-precision floating-point coordinates. Implements <see cref="IShape" />.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct CircleF : IShape
     {
         /// <summary>
-        ///     The x
+        ///     Gets or sets the X coordinate of the circle center.
         /// </summary>
         public float X { get; set; }
 
         /// <summary>
-        ///     The y
+        ///     Gets or sets the Y coordinate of the circle center.
         /// </summary>
         public float Y { get; set; }
 
         /// <summary>
-        ///     The r
+        ///     Gets or sets the radius of the circle.
         /// </summary>
         public float R { get; set; }
     }

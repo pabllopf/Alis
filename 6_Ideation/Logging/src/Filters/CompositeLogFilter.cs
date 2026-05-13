@@ -40,12 +40,12 @@ namespace Alis.Core.Aspect.Logging.Filters
     public sealed class CompositeLogFilter : ILogFilter
     {
         /// <summary>
-        ///     The filters
+        ///     The list of child filters to evaluate when determining whether to log an entry.
         /// </summary>
         private readonly List<ILogFilter> _filters;
 
         /// <summary>
-        ///     The require all
+        ///     If true, all filters must pass (AND logic). If false, any filter passing is sufficient (OR logic).
         /// </summary>
         private readonly bool _requireAll;
 
@@ -62,16 +62,19 @@ namespace Alis.Core.Aspect.Logging.Filters
 
 
         /// <summary>
-        ///     Gets the value of the name
+        ///     Gets a human-readable name showing the combination mode (AND/OR) and filter count.
         /// </summary>
         public string Name => $"CompositeFilter[{(_requireAll ? "AND" : "OR")}:{_filters.Count}]";
 
 
         /// <summary>
-        ///     Shoulds the log using the specified entry
+        ///     Evaluates all child filters using AND or OR logic.
+        ///     With AND (default): all filters must return true for the entry to pass.
+        ///     With OR: at least one filter must return true.
+        ///     Returns true if there are no child filters or the entry is null.
         /// </summary>
-        /// <param name="entry">The entry</param>
-        /// <returns>The bool</returns>
+        /// <param name="entry">The log entry to evaluate. May be null.</param>
+        /// <returns>True if the entry passes the composite filter; false otherwise.</returns>
         public bool ShouldLog(ILogEntry entry)
         {
             if (entry == null || _filters.Count == 0)

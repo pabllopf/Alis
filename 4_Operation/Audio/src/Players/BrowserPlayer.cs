@@ -138,7 +138,11 @@ namespace Alis.Core.Audio.Players
                 }
 
                 wavData = new byte[stream.Length];
-                await stream.ReadAsync(wavData, 0, (int) stream.Length);
+                int bytesRead = await stream.ReadAsync(wavData, 0, (int) stream.Length);
+                if (bytesRead != stream.Length)
+                {
+                    Console.WriteLine($"[BrowserPlayer] Incomplete read: {bytesRead} of {stream.Length} bytes");
+                }
                 Console.WriteLine($"[BrowserPlayer] Tamaño del recurso: {wavData.Length}");
             }
 

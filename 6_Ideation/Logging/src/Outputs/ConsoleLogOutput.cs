@@ -133,7 +133,8 @@ namespace Alis.Core.Aspect.Logging.Outputs
 
 
         /// <summary>
-        ///     Disposes this instance
+        ///     Marks this instance as disposed, preventing further writes.
+        ///     Safe to call multiple times.
         /// </summary>
         public void Dispose()
         {

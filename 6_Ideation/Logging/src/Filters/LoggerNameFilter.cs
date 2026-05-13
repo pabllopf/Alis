@@ -40,12 +40,13 @@ namespace Alis.Core.Aspect.Logging.Filters
     public sealed class LoggerNameFilter : ILogFilter
     {
         /// <summary>
-        ///     The included names
+        ///     Set of logger names to include or exclude based on the <see cref="_inclusive"/> flag.
         /// </summary>
         private readonly HashSet<string> _includedNames;
 
         /// <summary>
-        ///     The inclusive
+        ///     If true, only loggers whose names are in <see cref="_includedNames"/> pass through.
+        ///     If false, loggers whose names are in <see cref="_includedNames"/> are excluded.
         /// </summary>
         private readonly bool _inclusive;
 
@@ -62,16 +63,18 @@ namespace Alis.Core.Aspect.Logging.Filters
 
 
         /// <summary>
-        ///     Gets the value of the name
+        ///     Gets a human-readable name showing the mode (Include/Exclude) and number of names.
         /// </summary>
         public string Name => $"LoggerNameFilter[{(_inclusive ? "Include" : "Exclude")}:{_includedNames.Count}]";
 
 
         /// <summary>
-        ///     Shoulds the log using the specified entry
+        ///     Determines whether a log entry's logger name matches the configured filter set.
+        ///     In include mode, only names in the set pass. In exclude mode, names in the set are blocked.
+        ///     Returns true if the entry is null or the name set is empty.
         /// </summary>
-        /// <param name="entry">The entry</param>
-        /// <returns>The bool</returns>
+        /// <param name="entry">The log entry to evaluate. May be null.</param>
+        /// <returns>True if the entry passes the name filter; false otherwise.</returns>
         public bool ShouldLog(ILogEntry entry)
         {
             if (entry == null || _includedNames.Count == 0)

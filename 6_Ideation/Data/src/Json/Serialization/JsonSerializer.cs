@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using Alis.Core.Aspect.Data.Json.Exceptions;
@@ -63,7 +64,7 @@ namespace Alis.Core.Aspect.Data.Json.Serialization
         [ExcludeFromCodeCoverage]
         public string Serialize<T>(T instance) where T : IJsonSerializable
         {
-            if (instance == null)
+            if (EqualityComparer<T>.Default.Equals(instance, default))
             {
                 throw new ArgumentNullException(nameof(instance));
             }

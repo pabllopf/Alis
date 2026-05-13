@@ -41,27 +41,27 @@ namespace Alis.Core.Aspect.Logging.Outputs
     public sealed class AsyncLogOutput : ILogOutput
     {
         /// <summary>
-        ///     The inner output
+        ///     The underlying output that will receive entries when the queue is flushed.
         /// </summary>
         private readonly ILogOutput _innerOutput;
 
         /// <summary>
-        ///     The max queue size
+        ///     Maximum number of entries allowed in the pending queue before dropping oldest entries.
         /// </summary>
         private readonly int _maxQueueSize;
 
         /// <summary>
-        ///     The queue
+        ///     Internal queue of pending log entries waiting to be written to the inner output.
         /// </summary>
         private readonly Queue<ILogEntry> _queue;
 
         /// <summary>
-        ///     The queue lock
+        ///     Synchronization lock for thread-safe queue operations.
         /// </summary>
         private readonly object _queueLock = new object();
 
         /// <summary>
-        ///     The disposed
+        ///     Indicates whether this instance has been disposed and should no longer accept entries.
         /// </summary>
         private bool _disposed;
 
@@ -79,21 +79,23 @@ namespace Alis.Core.Aspect.Logging.Outputs
 
 
         /// <summary>
-        ///     Gets the value of the name
+        ///     Gets a human-readable name that wraps the inner output's name with an "Async" prefix.
         /// </summary>
         public string Name => $"Async[{_innerOutput.Name}]";
 
 
         /// <summary>
-        ///     Gets or sets the value of the is enabled
+        ///     Gets or sets whether this output is currently accepting log entries.
+        ///     When disabled, <see cref="Write"/> silently drops entries without queuing.
         /// </summary>
         public bool IsEnabled { get; set; } = true;
 
 
         /// <summary>
-        ///     Writes the entry
+        ///     Enqueues a log entry for asynchronous processing. If the queue is full,
+        ///     the oldest entry is dropped to make room for the new one.
         /// </summary>
-        /// <param name="entry">The entry</param>
+        /// <param name="entry">The log entry to enqueue. Null entries or entries when disposed are silently ignored.</param>
         public void Write(ILogEntry entry)
         {
             if (entry == null || _disposed || !IsEnabled)
@@ -122,7 +124,9 @@ namespace Alis.Core.Aspect.Logging.Outputs
 
 
         /// <summary>
-        ///     Flushes this instance
+        ///     Drains all queued entries by writing them sequentially to the inner output.
+        ///     Blocks until the queue is empty. Errors from individual entries are caught
+        ///     to prevent one failure from blocking the entire flush.
         /// </summary>
         public void Flush()
         {
@@ -147,7 +151,8 @@ namespace Alis.Core.Aspect.Logging.Outputs
 
 
         /// <summary>
-        ///     Disposes this instance
+        ///     Flushes all pending entries and disposes the inner output.
+        ///     Safe to call multiple times.
         /// </summary>
         public void Dispose()
         {

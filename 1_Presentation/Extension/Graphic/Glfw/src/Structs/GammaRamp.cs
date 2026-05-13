@@ -46,12 +46,12 @@ namespace Alis.Extension.Graphic.Glfw.Structs
         /// <summary>
         ///     An array of value describing the response of the green channel.
         /// </summary>
-        [MarshalAs(UnmanagedType.LPArray)] public readonly ushort[] Green;
+        [MarshalAs(UnmanagedType.LPArray)] public ushort[] Green;
 
         /// <summary>
         ///     An array of value describing the response of the blue channel.
         /// </summary>
-        [MarshalAs(UnmanagedType.LPArray)] public readonly ushort[] Blue;
+        [MarshalAs(UnmanagedType.LPArray)] public ushort[] Blue;
 
         /// <summary>
         ///     The number of elements in each array.
