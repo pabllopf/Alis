@@ -86,8 +86,8 @@ When working with source generators:
 
 ## Quality Control Checklist
 Before completing any task, verify ALL of the following:
-1. All tests pass (run: dotnet test alis.sln)
-2. All projects compile (run: dotnet build alis.sln -c Debug)
+1. All tests pass (run: dotnet test alis.slnx)
+2. All projects compile (run: dotnet build alis.slnx -c Debug)
 3. No forbidden comments (//, /* */) exist in code
 4. XML documentation exists on all public/protected/internal APIs
 5. No external dependencies were added

@@ -10,7 +10,7 @@ The repository is a large-scale layered .NET monorepo organized by architectural
 
 The root solution is:
 
-- `alis.sln`
+- `alis.slnx`
 
 All modules, tools, generators, tests, samples, and applications inside the repository must comply with the rules defined in this document.
 
@@ -119,11 +119,11 @@ The dependency rules are enforced through:
 # Repository Structure
 
 ## Root Solution
-- `alis.sln`
+- `alis.slnx`
 
 ## Solution Projects (Relative Paths)
 
-The following project files are included in `alis.sln` and should be referenced using repository-relative paths:
+The following project files are included in `alis.slnx` and should be referenced using repository-relative paths:
 
 ```text
 2_Application/Alis/src/Alis.csproj
@@ -447,22 +447,22 @@ AOT compatibility is mandatory for all generated and manually authored code path
 
 ## Restore
 ```bash
-dotnet restore alis.sln
+dotnet restore alis.slnx
 ```
 
 ## Build
 ```bash
-dotnet build alis.sln -c Debug
+dotnet build alis.slnx -c Debug
 ```
 
 ## Run Tests
 ```bash
-dotnet test alis.sln
+dotnet test alis.slnx
 ```
 
 For repository-wide validation on macOS, use `docs/scripts/macos/run_tests.sh`; it runs `dotnet test` for every non-template `*.csproj` twice, once in Debug and once in Release.
 
-For the broader packaging workflows, `docs/scripts/macos/build_all.sh` restores `alis.sln` and packs the production projects, while `docs/scripts/macos/pack_all.sh` builds and packs the same production-project subset for `osx-arm64` and `net9.0`.
+For the broader packaging workflows, `docs/scripts/macos/build_all.sh` restores `alis.slnx` and packs the production projects, while `docs/scripts/macos/pack_all.sh` builds and packs the same production-project subset for `osx-arm64` and `net9.0`.
 
 ---
 

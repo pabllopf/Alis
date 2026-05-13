@@ -7,11 +7,11 @@
 - Modules are conventionally split into `src/`, `test/`, `sample/`, and sometimes `generator/` trees, as seen in `4_Operation/Ecs/` and `6_Ideation/Memory/`.
 
 ## Read first
-- `alis.sln` for the project map.
+- `alis.slnx` for the project map.
 - `.config/Config.props` for TFMs, RIDs, analyzers, pack rules, and layer-based `ProjectReference` wiring.
 - `readme.md` for the public package map and platform scope.
 - `.github/copilot-instructions.md` and `CLAUDE.md` for existing agent workflow rules.
-
+[CLAUDE.md](CLAUDE.md)
 ## What matters technically
 - The repo targets many frameworks and runtimes; use only APIs that stay compatible with the configured TFMs in `.config/Config.props`.
 - Release builds enable packing, documentation generation, SourceLink, and deterministic output; treat warnings as errors.
@@ -19,9 +19,9 @@
 - Native/runtime assets are packed from `runtimes/` and specific modules may carry local `Config/` or `Data/` folders.
 
 ## Build and test
-- Restore: `dotnet restore alis.sln`
-- Build: `dotnet build alis.sln -c Debug`
-- Test: `dotnet test alis.sln`
+- Restore: `dotnet restore alis.slnx`
+- Build: `dotnet build alis.slnx -c Debug`
+- Test: `dotnet test alis.slnx`
 - macOS full-test script: `docs/scripts/macos/run_tests.sh` runs Debug + Release across non-template projects.
 - Packaging scripts: `docs/scripts/macos/build_all.sh` and `docs/scripts/macos/pack_all.sh`.
 
