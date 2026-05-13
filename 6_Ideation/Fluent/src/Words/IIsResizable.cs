@@ -41,12 +41,5 @@ namespace Alis.Core.Aspect.Fluent.Words
         /// </summary>
         /// <returns>The builder instance, enabling fluent chaining.</returns>
         TBuilder IsResizable();
-
-        /// <summary>
-        ///     Sets resizable state on the builder using the provided value.
-        /// </summary>
-        /// <param name="value">The resizable setting to apply.</param>
-        /// <returns>The builder instance, enabling fluent chaining.</returns>
-        TBuilder IsResizable(TArgument value);
     }
 }

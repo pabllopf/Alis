@@ -41,12 +41,5 @@ namespace Alis.Core.Aspect.Fluent.Words
         /// </summary>
         /// <returns>The builder instance, enabling fluent chaining.</returns>
         TBuilder IsTrigger();
-
-        /// <summary>
-        ///     Sets trigger collider state on the builder using the provided value.
-        /// </summary>
-        /// <param name="value">The trigger setting to apply.</param>
-        /// <returns>The builder instance, enabling fluent chaining.</returns>
-        TBuilder IsTrigger(TArgument value);
     }
 }

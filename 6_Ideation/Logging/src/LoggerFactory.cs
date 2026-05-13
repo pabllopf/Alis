@@ -161,11 +161,10 @@ namespace Alis.Core.Aspect.Logging
         }
 
         /// <summary>
-        ///     Sets the minimum log level threshold for all loggers created by this factory.
-        ///     Entries with a severity below this level will be silently discarded.
+        ///     Sets the minimum log level for all loggers created by this factory.
         /// </summary>
-        /// <param name="level">The minimum severity level to accept.</param>
-        /// <returns>This factory instance for fluent method chaining.</returns>
+        /// <param name="level">The minimum level.</param>
+        /// <returns>This factory for fluent chaining.</returns>
         public LoggerFactory SetMinimumLevel(LogLevel level)
         {
             _minimumLevel = level;
@@ -173,12 +172,11 @@ namespace Alis.Core.Aspect.Logging
         }
 
         /// <summary>
-        ///     Creates a new logger instance with the specified name.
-        ///     The logger will use all outputs, filters, formatter, and minimum level
-        ///     configured on this factory.
+        ///     Creates a new logger instance with the given name.
+        ///     The logger will use all configured outputs, filters, and formatter.
         /// </summary>
-        /// <param name="name">The logical name for the logger, typically the fully-qualified class or component name.</param>
-        /// <returns>A configured <see cref="ILogger"/> instance ready for use.</returns>
+        /// <param name="name">The name for the logger (typically a class or component name).</param>
+        /// <returns>A configured ILogger instance.</returns>
         public ILogger CreateLogger(string name)
         {
             CoreLogger logger = new CoreLogger(name, _outputs, _filters, _formatter, _minimumLevel);
@@ -186,8 +184,7 @@ namespace Alis.Core.Aspect.Logging
         }
 
         /// <summary>
-        ///     Flushes all configured outputs to ensure buffered data is written.
-        ///     Errors from individual outputs are caught to prevent propagation.
+        ///     Flushes all outputs and cleans up resources.
         /// </summary>
         [ExcludeFromCodeCoverage]
         public void Flush()

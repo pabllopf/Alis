@@ -216,7 +216,7 @@ namespace Alis.Core.Ecs.Components.Render
                                         "}\n";
 
             string fragmentShaderSource = version + precision +
-                                          "in vec2 TexCoord;\nout vec4 FragColor;\n" +
+                                          (Context.Setting.Graphic.PreviewMode ? "in vec2 TexCoord;\nout vec4 FragColor;\n" : "in vec2 TexCoord;\nout vec4 FragColor;\n") +
                                           "uniform sampler2D texture1;\n" +
                                           "void main() {\n" +
                                           "    FragColor = texture(texture1, TexCoord);\n" +

@@ -43,12 +43,12 @@ namespace Alis.Core.Aspect.Logging.Outputs
     public sealed class DebugLogOutput : ILogOutput
     {
         /// <summary>
-        ///     The formatter used to convert log entries into strings before writing to debug output.
+        ///     The formatter
         /// </summary>
         private readonly ILogFormatter _formatter;
 
         /// <summary>
-        ///     Indicates whether this instance has been disposed and should no longer accept writes.
+        ///     The disposed
         /// </summary>
         private bool _disposed;
 
@@ -60,23 +60,21 @@ namespace Alis.Core.Aspect.Logging.Outputs
 
 
         /// <summary>
-        ///     Gets a human-readable identifier for this debug output.
+        ///     Gets the value of the name
         /// </summary>
         public string Name => "DebugOutput";
 
 
         /// <summary>
-        ///     Gets or sets whether this output is currently accepting log entries.
-        ///     When disabled, <see cref="Write"/> silently ignores entries.
+        ///     Gets or sets the value of the is enabled
         /// </summary>
         public bool IsEnabled { get; set; } = true;
 
 
         /// <summary>
-        ///     Writes the formatted log entry to <see cref="Debug.WriteLine(string)"/>.
-        ///     Only writes when a debugger is attached to avoid unnecessary overhead.
+        ///     Writes the entry
         /// </summary>
-        /// <param name="entry">The log entry to format and output. Null entries are silently ignored.</param>
+        /// <param name="entry">The entry</param>
         [ExcludeFromCodeCoverage]
         public void Write(ILogEntry entry)
         {
@@ -98,7 +96,7 @@ namespace Alis.Core.Aspect.Logging.Outputs
 
 
         /// <summary>
-        ///     No-op for debug output since <see cref="Debug.WriteLine(string)"/> writes immediately.
+        ///     Flushes this instance
         /// </summary>
         public void Flush()
         {
@@ -107,8 +105,7 @@ namespace Alis.Core.Aspect.Logging.Outputs
 
 
         /// <summary>
-        ///     Marks this instance as disposed, preventing further writes.
-        ///     Safe to call multiple times.
+        ///     Disposes this instance
         /// </summary>
         public void Dispose()
         {

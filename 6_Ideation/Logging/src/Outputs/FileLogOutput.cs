@@ -45,27 +45,27 @@ namespace Alis.Core.Aspect.Logging.Outputs
     public sealed class FileLogOutput : ILogOutput
     {
         /// <summary>
-        ///     The absolute or relative path to the log file on disk.
+        ///     The file path
         /// </summary>
         private readonly string _filePath;
 
         /// <summary>
-        ///     The formatter used to convert log entries into strings before writing.
+        ///     The formatter
         /// </summary>
         private readonly ILogFormatter _formatter;
 
         /// <summary>
-        ///     Synchronization lock for thread-safe file write operations.
+        ///     The write lock
         /// </summary>
         private readonly object _writeLock = new object();
 
         /// <summary>
-        ///     Indicates whether this instance has been disposed and should no longer accept writes.
+        ///     The disposed
         /// </summary>
         private bool _disposed;
 
         /// <summary>
-        ///     The underlying <see cref="StreamWriter"/> used to write formatted log lines to the file.
+        ///     The writer
         /// </summary>
         private StreamWriter _writer;
 
@@ -108,25 +108,21 @@ namespace Alis.Core.Aspect.Logging.Outputs
 
 
         /// <summary>
-        ///     Gets a human-readable name for this output, including the file name derived from the path.
+        ///     Gets the value of the name
         /// </summary>
         public string Name => $"FileOutput[{Path.GetFileName(_filePath)}]";
 
 
         /// <summary>
-        ///     Gets or sets whether this output is currently accepting log entries.
-        ///     When set to false, <see cref="Write"/> will silently ignore entries.
-        ///     Automatically set to false if the file could not be opened during construction.
+        ///     Gets or sets the value of the is enabled
         /// </summary>
         public bool IsEnabled { get; set; } = true;
 
 
         /// <summary>
-        ///     Writes a formatted log entry as a line to the log file.
-        ///     Safe to call from multiple threads; uses a lock for synchronization.
-        ///     Silently ignores null entries, disposed state, or write failures.
+        ///     Writes the entry
         /// </summary>
-        /// <param name="entry">The log entry to format and write to disk.</param>
+        /// <param name="entry">The entry</param>
         [ExcludeFromCodeCoverage]
         public void Write(ILogEntry entry)
         {
@@ -151,8 +147,7 @@ namespace Alis.Core.Aspect.Logging.Outputs
 
 
         /// <summary>
-        ///     Flushes any buffered data to the underlying file stream.
-        ///     No-op if disposed or if the writer is null.
+        ///     Flushes this instance
         /// </summary>
         [ExcludeFromCodeCoverage]
         public void Flush()
@@ -177,9 +172,7 @@ namespace Alis.Core.Aspect.Logging.Outputs
 
 
         /// <summary>
-        ///     Releases all resources used by this file output.
-        ///     Flushes and disposes the underlying <see cref="StreamWriter"/>.
-        ///     Safe to call multiple times.
+        ///     Disposes this instance
         /// </summary>
         [ExcludeFromCodeCoverage]
         public void Dispose()

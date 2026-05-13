@@ -45,7 +45,7 @@ namespace Alis.Core.Physic.Common.Logic
         /// <summary>
         ///     The fixture
         /// </summary>
-        public List<Fixture> Parts = new List<Fixture>(8);
+        public readonly List<Fixture> Parts = new List<Fixture>(8);
 
         /// <summary>
         ///     The force needed to break the body apart.

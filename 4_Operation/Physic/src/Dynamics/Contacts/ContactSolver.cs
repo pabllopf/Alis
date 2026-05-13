@@ -570,7 +570,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
                     //B2_NOT_USED(k_errorTol);
 
-                    do
+                    for (;;)
                     {
                         //
                         // Case 1: vn = 0
@@ -698,7 +698,8 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                             cp2.NormalImpulse = x.Y;
                         }
 
-                    } while (false);
+                        break;
+                    }
                 }
 
                 Velocities[indexA].V = vA;

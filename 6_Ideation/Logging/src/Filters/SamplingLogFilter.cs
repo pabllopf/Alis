@@ -40,12 +40,12 @@ namespace Alis.Core.Aspect.Logging.Filters
     public sealed class SamplingLogFilter : ILogFilter
     {
         /// <summary>
-        ///     Determines the sampling frequency: 1 out of every N entries will pass through.
+        ///     The sample rate
         /// </summary>
-        private readonly int _sampleRate;
+        private readonly int _sampleRate; // 1 in N entries pass through
 
         /// <summary>
-        ///     Internal counter used to track which entries pass through based on the sample rate.
+        ///     The counter
         /// </summary>
         private long _counter;
 
@@ -53,7 +53,6 @@ namespace Alis.Core.Aspect.Logging.Filters
         ///     Initializes a new instance of the SamplingLogFilter class.
         /// </summary>
         /// <param name="sampleRate">1 out of every N entries will pass. Must be >= 1.</param>
-        /// <exception cref="ArgumentException">Thrown when <paramref name="sampleRate"/> is less than 1.</exception>
         public SamplingLogFilter(int sampleRate = 10)
         {
             if (sampleRate < 1)
@@ -67,18 +66,16 @@ namespace Alis.Core.Aspect.Logging.Filters
 
 
         /// <summary>
-        ///     Gets a human-readable name showing the sampling ratio (1:N).
+        ///     Gets the value of the name
         /// </summary>
         public string Name => $"SamplingFilter[1:{_sampleRate}]";
 
 
         /// <summary>
-        ///     Determines whether a log entry should be processed based on the configured sample rate.
-        ///     Every Nth entry (where N = sampleRate) passes through; others are discarded.
-        ///     Returns false for null entries.
+        ///     Shoulds the log using the specified entry
         /// </summary>
-        /// <param name="entry">The log entry to evaluate. May be null.</param>
-        /// <returns>True if the entry passes the sample; false if it should be skipped.</returns>
+        /// <param name="entry">The entry</param>
+        /// <returns>The bool</returns>
         public bool ShouldLog(ILogEntry entry)
         {
             if (entry == null)

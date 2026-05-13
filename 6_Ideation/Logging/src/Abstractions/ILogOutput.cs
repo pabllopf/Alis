@@ -32,10 +32,9 @@ using System;
 namespace Alis.Core.Aspect.Logging.Abstractions
 {
     /// <summary>
-    ///     Defines a destination where log entries are written.
-    ///     Implementations determine how and where log output is persisted, displayed, or transmitted.
-    ///     All implementations must be thread-safe and handle errors gracefully without throwing.
-    ///     AOT-compatible: No reflection, pure interface-based dispatch.
+    ///     Represents a destination where log entries are written.
+    ///     Implementations define how and where logs are persisted or displayed.
+    ///     AOT-compatible: No reflection, no dynamic dispatch beyond virtuals.
     /// </summary>
     public interface ILogOutput : IDisposable
     {
@@ -45,8 +44,7 @@ namespace Alis.Core.Aspect.Logging.Abstractions
         string Name { get; }
 
         /// <summary>
-        ///     Gets a value indicating whether this output is currently accepting log entries.
-        ///     When false, <see cref="Write"/> should silently ignore entries.
+        ///     Gets a value indicating whether this output is currently enabled.
         /// </summary>
         bool IsEnabled { get; internal set; }
 
