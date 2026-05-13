@@ -45,27 +45,28 @@ namespace Alis.Core.Aspect.Logging
     public sealed class LoggerFactory : IDisposable
     {
         /// <summary>
-        ///     The log filter
+        ///     Collection of filters applied to all loggers created by this factory.
         /// </summary>
         private readonly List<ILogFilter> _filters = new List<ILogFilter>();
 
         /// <summary>
-        ///     The log output
+        ///     Collection of output destinations for all loggers created by this factory.
         /// </summary>
         private readonly List<ILogOutput> _outputs = new List<ILogOutput>();
 
         /// <summary>
-        ///     The disposed
+        ///     Indicates whether this factory has been disposed.
         /// </summary>
         private bool _disposed;
 
         /// <summary>
-        ///     The formatter
+        ///     The formatter used by all loggers created by this factory.
         /// </summary>
         private ILogFormatter _formatter;
 
         /// <summary>
-        ///     The trace
+        ///     The minimum log level threshold for all loggers created by this factory.
+        ///     Entries below this level are silently discarded.
         /// </summary>
         private LogLevel _minimumLevel = LogLevel.Trace;
 
@@ -78,7 +79,9 @@ namespace Alis.Core.Aspect.Logging
 
 
         /// <summary>
-        ///     Disposes this instance
+        ///     Releases all resources used by this factory, flushing and disposing all outputs.
+        ///     Safe to call multiple times. Errors from individual outputs are caught
+        ///     to prevent one failure from affecting others.
         /// </summary>
         [ExcludeFromCodeCoverage]
         public void Dispose()
@@ -112,8 +115,9 @@ namespace Alis.Core.Aspect.Logging
         ///     Adds a log output to this factory.
         ///     All loggers created by this factory will write to this output.
         /// </summary>
-        /// <param name="output">The output to add.</param>
-        /// <returns>This factory for fluent chaining.</returns>
+        /// <param name="output">The output destination to add. Must not be null.</param>
+        /// <returns>This factory instance for fluent method chaining.</returns>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="output"/> is null.</exception>
         public LoggerFactory AddOutput(ILogOutput output)
         {
             if (output == null)
@@ -127,10 +131,11 @@ namespace Alis.Core.Aspect.Logging
 
         /// <summary>
         ///     Adds a log filter to this factory.
-        ///     All loggers created by this factory will apply this filter.
+        ///     All loggers created by this factory will apply this filter when processing entries.
         /// </summary>
-        /// <param name="filter">The filter to add.</param>
-        /// <returns>This factory for fluent chaining.</returns>
+        /// <param name="filter">The filter to add. Must not be null.</param>
+        /// <returns>This factory instance for fluent method chaining.</returns>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="filter"/> is null.</exception>
         public LoggerFactory AddFilter(ILogFilter filter)
         {
             if (filter == null)
@@ -146,8 +151,9 @@ namespace Alis.Core.Aspect.Logging
         ///     Sets the log formatter for this factory.
         ///     All loggers created by this factory will use this formatter.
         /// </summary>
-        /// <param name="formatter">The formatter to use.</param>
-        /// <returns>This factory for fluent chaining.</returns>
+        /// <param name="formatter">The formatter to use. Must not be null.</param>
+        /// <returns>This factory instance for fluent method chaining.</returns>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="formatter"/> is null.</exception>
         public LoggerFactory SetFormatter(ILogFormatter formatter)
         {
             _formatter = formatter ?? throw new ArgumentNullException(nameof(formatter));
