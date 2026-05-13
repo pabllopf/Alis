@@ -101,8 +101,25 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        ///     Gets the value of the inverse
+        ///     Gets the inverse of this matrix.
         /// </summary>
+        /// <value>
+        ///     A new <see cref="Mat22"/> representing the inverse of this matrix.
+        ///     Returns a zero matrix if the determinant is near zero (singular matrix).
+        /// </value>
+        /// <remarks>
+        ///     The inverse of a 2x2 matrix is computed as:
+        ///     1/det * | d   -b |
+        ///              | -c   a |
+        ///     where det = a*d - b*c
+        ///     If the determinant is zero or nearly zero, the returned matrix contains zeros.
+        /// </remarks>
+        /// <example>
+        ///     <code>
+        ///     Mat22 m = new Mat22(1, 2, 3, 4);
+        ///     Mat22 inv = m.Inverse; // Returns inverse matrix
+        ///     </code>
+        /// </example>
         public Mat22 Inverse
         {
             get
@@ -123,10 +140,13 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        ///     Initialize this matrix using columns.
+        ///     Sets this matrix using two column vectors.
         /// </summary>
-        /// <param name="c1">The c1.</param>
-        /// <param name="c2">The c2.</param>
+        /// <param name="c1">The first column vector (X-axis basis) to set.</param>
+        /// <param name="c2">The second column vector (Y-axis basis) to set.</param>
+        /// <remarks>
+        ///     This method modifies the existing matrix in place, updating both column vectors.
+        /// </remarks>
         public void Set(Vector2F c1, Vector2F c2)
         {
             Ex = c1;
