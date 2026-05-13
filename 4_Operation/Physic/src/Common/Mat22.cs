@@ -177,8 +177,19 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        ///     Set this matrix to all zeros.
+        ///     Sets all elements of this matrix to zero.
         /// </summary>
+        /// <remarks>
+        ///     The resulting matrix is a zero matrix with all elements set to 0:
+        ///     | 0  0 |
+        ///     | 0  0 |
+        /// </remarks>
+        /// <example>
+        ///     <code>
+        ///     Mat22 m = new Mat22(1, 2, 3, 4);
+        ///     m.SetZero(); // m is now a zero matrix
+        ///     </code>
+        /// </example>
         public void SetZero()
         {
             Ex.X = 0.0f;
@@ -188,11 +199,26 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        ///     Solve A * x = b, where b is a column vector. This is more efficient
-        ///     than computing the inverse in one-shot cases.
+        ///     Solves the linear system A * x = b, where A is this matrix and b is a column vector.
         /// </summary>
-        /// <param name="b">The b.</param>
-        /// <returns></returns>
+        /// <param name="b">The right-hand side column vector to solve for.</param>
+        /// <returns>
+        ///     The solution vector x that satisfies A * x = b.
+        ///     Returns a zero vector if the matrix is singular (determinant near zero).
+        /// </returns>
+        /// <remarks>
+        ///     This method uses Cramer's rule to solve the 2x2 system directly,
+        ///     which is more numerically stable and efficient than computing the inverse
+        ///     for single-shot solves. For multiple solves with the same matrix,
+        ///     compute the inverse once and multiply.
+        /// </remarks>
+        /// <example>
+        ///     <code>
+        ///     Mat22 A = new Mat22(1, 2, 3, 4);
+        ///     Vector2F b = new Vector2F(5, 6);
+        ///     Vector2F x = A.Solve(b); // Solves A*x = b
+        ///     </code>
+        /// </example>
         public Vector2F Solve(Vector2F b)
         {
             float a11 = Ex.X, a12 = Ey.X, a21 = Ex.Y, a22 = Ey.Y;
@@ -206,11 +232,24 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        ///     Adds the a
+        ///     Adds two matrices together and stores the result in a output parameter.
         /// </summary>
-        /// <param name="a">The </param>
-        /// <param name="b">The </param>
-        /// <param name="r">The </param>
+        /// <param name="a">The first matrix to add. This is passed by reference to avoid copying.</param>
+        /// <param name="b">The second matrix to add. This is passed by reference to avoid copying.</param>
+        /// <param name="r">The output parameter that will contain the sum of the two matrices (a + b).</param>
+        /// <remarks>
+        ///     Matrix addition is performed element-wise:
+        ///     r[i,j] = a[i,j] + b[i,j]
+        ///     Both matrices must have the same dimensions.
+        /// </remarks>
+        /// <example>
+        ///     <code>
+        ///     Mat22 a = new Mat22(1, 2, 3, 4);
+        ///     Mat22 b = new Mat22(5, 6, 7, 8);
+        ///     Mat22 result;
+        ///     Mat22.Add(ref a, ref b, out result); // result = {{6, 8}, {10, 12}}
+        ///     </code>
+        /// </example>
         public static void Add(ref Mat22 a, ref Mat22 b, out Mat22 r)
         {
             r.Ex = a.Ex + b.Ex;
