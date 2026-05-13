@@ -42,10 +42,11 @@ namespace Alis.Core.Aspect.Logging.Abstractions
         string Name { get; }
 
         /// <summary>
-        ///     Formats the given log entry into a string.
+        ///     Converts a log entry into its string representation for output.
+        ///     The format varies by implementation (plain text, JSON, compact, etc.).
         /// </summary>
-        /// <param name="entry">The log entry to format.</param>
-        /// <returns>A formatted string representation of the log entry.</returns>
+        /// <param name="entry">The log entry to format. Must not be null.</param>
+        /// <returns>A formatted string suitable for writing to an output destination.</returns>
         string Format(ILogEntry entry);
     }
 }

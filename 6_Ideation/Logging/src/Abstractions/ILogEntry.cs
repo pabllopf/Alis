@@ -64,7 +64,8 @@ namespace Alis.Core.Aspect.Logging.Abstractions
         Exception Exception { get; }
 
         /// <summary>
-        ///     Gets the thread ID where the log entry was created.
+        ///     Gets the managed thread ID of the thread that created this log entry.
+        ///     Useful for correlating logs with specific threads in multi-threaded scenarios.
         /// </summary>
         int ThreadId { get; }
 
