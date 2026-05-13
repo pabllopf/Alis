@@ -229,12 +229,12 @@ namespace Alis.Core.Aspect.Math
         public static float Min(float y3, float y4) => y3 <= y4 ? y3 : y4;
 
         /// <summary>
-        ///     Clamps the value
+        ///     Restricts a single-precision floating-point value to be within a specified range.
         /// </summary>
-        /// <param name="value">The value</param>
-        /// <param name="min">The min</param>
-        /// <param name="max">The max</param>
-        /// <returns>The float</returns>
+        /// <param name="value">The value to clamp.</param>
+        /// <param name="min">The minimum boundary. If <paramref name="value" /> is less than this, <paramref name="min" /> is returned.</param>
+        /// <param name="max">The maximum boundary. If <paramref name="value" /> is greater than this, <paramref name="max" /> is returned.</param>
+        /// <returns>The clamped value within the inclusive range [<paramref name="min" />, <paramref name="max" />].</returns>
         public static float Clamp(float value, float min, float max)
         {
             if (value < min)
@@ -251,10 +251,14 @@ namespace Alis.Core.Aspect.Math
         }
 
         /// <summary>
-        ///     Tans the pi
+        ///     Computes the tangent of a single-precision floating-point angle.
         /// </summary>
-        /// <param name="pi">The pi</param>
-        /// <returns>The float</returns>
+        /// <param name="pi">The angle in radians.</param>
+        /// <returns>
+        ///     The tangent of <paramref name="pi" />. Returns <see cref="float.NaN" /> if the input is
+        ///     <see cref="float.NaN" /> or <see cref="float.PositiveInfinity" /> or <see cref="float.NegativeInfinity" />.
+        ///     Returns <see cref="float.PositiveInfinity" /> if the angle is near ±π/2.
+        /// </returns>
         public static float Tan(float pi)
         {
             if (float.IsNaN(pi) || float.IsInfinity(pi))

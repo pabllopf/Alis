@@ -34,7 +34,8 @@ using System.Security.Cryptography;
 namespace Alis.Core.Aspect.Math
 {
     /// <summary>
-    ///     The hash code
+    ///     Represents a hash code computation structure using the xxHash32 algorithm.
+    ///     Provides methods to combine multiple values into a single deterministic hash code.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct HashCode
@@ -97,11 +98,11 @@ namespace Alis.Core.Aspect.Math
         }
 
         /// <summary>
-        ///     Combines the value 1
+        ///     Combines a single value into a hash code.
         /// </summary>
-        /// <typeparam name="T1">The </typeparam>
-        /// <param name="value1">The value</param>
-        /// <returns>The int</returns>
+        /// <typeparam name="T1">The type of the value to combine.</typeparam>
+        /// <param name="value1">The value whose hash code will be combined.</param>
+        /// <returns>A hash code that represents the combined value.</returns>
         public static int Combine<T1>(T1 value1)
         {
             // Provide a way of diffusing bits from something with a limited
@@ -123,13 +124,13 @@ namespace Alis.Core.Aspect.Math
         }
 
         /// <summary>
-        ///     Combines the value 1
+        ///     Combines two values into a hash code.
         /// </summary>
-        /// <typeparam name="T1">The </typeparam>
-        /// <typeparam name="T2">The </typeparam>
-        /// <param name="value1">The value</param>
-        /// <param name="value2">The value</param>
-        /// <returns>The int</returns>
+        /// <typeparam name="T1">The type of the first value.</typeparam>
+        /// <typeparam name="T2">The type of the second value.</typeparam>
+        /// <param name="value1">The first value whose hash code will be combined.</param>
+        /// <param name="value2">The second value whose hash code will be combined.</param>
+        /// <returns>A hash code that represents the combined values.</returns>
         public static int Combine<T1, T2>(T1 value1, T2 value2)
         {
             uint hc1 = (uint) (value1?.GetHashCode() ?? 0);
@@ -146,15 +147,15 @@ namespace Alis.Core.Aspect.Math
         }
 
         /// <summary>
-        ///     Combines the value 1
+        ///     Combines three values into a hash code.
         /// </summary>
-        /// <typeparam name="T1">The </typeparam>
-        /// <typeparam name="T2">The </typeparam>
-        /// <typeparam name="T3">The </typeparam>
-        /// <param name="value1">The value</param>
-        /// <param name="value2">The value</param>
-        /// <param name="value3">The value</param>
-        /// <returns>The int</returns>
+        /// <typeparam name="T1">The type of the first value.</typeparam>
+        /// <typeparam name="T2">The type of the second value.</typeparam>
+        /// <typeparam name="T3">The type of the third value.</typeparam>
+        /// <param name="value1">The first value whose hash code will be combined.</param>
+        /// <param name="value2">The second value whose hash code will be combined.</param>
+        /// <param name="value3">The third value whose hash code will be combined.</param>
+        /// <returns>A hash code that represents the combined values.</returns>
         public static int Combine<T1, T2, T3>(T1 value1, T2 value2, T3 value3)
         {
             uint hc1 = (uint) (value1?.GetHashCode() ?? 0);
