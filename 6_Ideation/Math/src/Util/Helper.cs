@@ -31,7 +31,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Alis.Core.Aspect.Math.Util
 {
-    /// <summary>Contains commonly used precalculated values and mathematical operations.</summary>
+    /// <summary>Contains commonly used precalculated values and mathematical operations for interpolation, clamping, angle conversion, and power-of-two testing.</summary>
     public static class Helper
     {
         /// <summary>
@@ -76,36 +76,29 @@ namespace Alis.Core.Aspect.Math.Util
         /// <param name="value">The value to clamp.</param>
         /// <param name="min">The minimum value. If <c>value</c> is less than <c>min</c>, <c>min</c> will be returned.</param>
         /// <param name="max">The maximum value. If <c>value</c> is greater than <c>max</c>, <c>max</c> will be returned.</param>
-        /// <returns>The clamped value.</returns>
+        /// <returns>The clamped value within the inclusive range [<paramref name="min" />, <paramref name="max" />].</returns>
         public static float Clamp(float value, float min, float max)
         {
-            // First we check to see if we're greater than the max
             value = value > max ? max : value;
-
-            // Then we check to see if we're less than the min.
             value = value < min ? min : value;
-
-            // There's no check to see if min > max.
             return value;
         }
 
-        /// <summary>Calculates the absolute value of the difference of two values.</summary>
-        /// <param name="value1">Source value.</param>
-        /// <param name="value2">Source value.</param>
-        /// <returns>Distance between the two values.</returns>
+        /// <summary>Calculates the absolute difference between two values.</summary>
+        /// <param name="value1">The first source value.</param>
+        /// <param name="value2">The second source value.</param>
+        /// <returns>The absolute distance between the two values.</returns>
         public static float Distance(float value1, float value2) => System.Math.Abs(value1 - value2);
 
         /// <summary>Performs a Hermite spline interpolation.</summary>
-        /// <param name="value1">Source position.</param>
-        /// <param name="tangent1">Source tangent.</param>
-        /// <param name="value2">Source position.</param>
-        /// <param name="tangent2">Source tangent.</param>
+        /// <param name="value1">The source position.</param>
+        /// <param name="tangent1">The source tangent.</param>
+        /// <param name="value2">The source position.</param>
+        /// <param name="tangent2">The source tangent.</param>
         /// <param name="amount">Weighting factor.</param>
         /// <returns>The result of the Hermite spline interpolation.</returns>
         public static float Hermite(float value1, float tangent1, float value2, float tangent2, float amount)
         {
-            // All transformed to double not to lose precission
-            // Otherwise, for high numbers of param:amount the result is NaN instead of Infinity
             double v1 = value1, v2 = value2, t1 = tangent1, t2 = tangent2, s = amount;
             double sCubed = s * s * s;
             double sSquared = s * s;
@@ -122,57 +115,53 @@ namespace Alis.Core.Aspect.Math.Util
 
 
         /// <summary>
-        ///     Lerp the value 1
+        ///     Linearly interpolates between two values based on the given weighting.
         /// </summary>
-        /// <param name="value1">The value</param>
-        /// <param name="value2">The value</param>
-        /// <param name="amount">The amount</param>
-        /// <returns>The float</returns>
+        /// <param name="value1">The first (source) value.</param>
+        /// <param name="value2">The second (destination) value.</param>
+        /// <param name="amount">A value between 0 and 1 indicating the weight of <paramref name="value2" />.</param>
+        /// <returns>The interpolated value.</returns>
         public static float Lerp(float value1, float value2, float amount) => value1 + (value2 - value1) * amount;
 
         /// <summary>Returns the greater of two values.</summary>
-        /// <param name="value1">Source value.</param>
-        /// <param name="value2">Source value.</param>
+        /// <param name="value1">The first source value.</param>
+        /// <param name="value2">The second source value.</param>
         /// <returns>The greater value.</returns>
         public static float Max(float value1, float value2) => value1 > value2 ? value1 : value2;
 
         /// <summary>Returns the lesser of two values.</summary>
-        /// <param name="value1">Source value.</param>
-        /// <param name="value2">Source value.</param>
+        /// <param name="value1">The first source value.</param>
+        /// <param name="value2">The second source value.</param>
         /// <returns>The lesser value.</returns>
         public static float Min(float value1, float value2) => value1 < value2 ? value1 : value2;
 
-        /// <summary>Interpolates between two values using a cubic equation.</summary>
-        /// <param name="value1">Source value.</param>
-        /// <param name="value2">Source value.</param>
-        /// <param name="amount">Weighting value.</param>
-        /// <returns>Interpolated value.</returns>
+        /// <summary>Interpolates between two values using a cubic equation (smooth step).</summary>
+        /// <param name="value1">The first source value.</param>
+        /// <param name="value2">The second source value.</param>
+        /// <param name="amount">Weighting value (expected between 0 and 1).</param>
+        /// <returns>The smoothly interpolated value.</returns>
         public static float SmoothStep(float value1, float value2, float amount)
         {
-            // It is expected that 0 < amount < 1
-            // If amount < 0, return value1
-            // If amount > 1, return value2
             float result = Clamp(amount, 0f, 1f);
             result = Hermite(value1, 0f, value2, 0f, result);
-
             return result;
         }
 
         /// <summary>Converts radians to degrees.</summary>
         /// <param name="radians">The angle in radians.</param>
         /// <returns>The angle in degrees.</returns>
-        /// <remarks>This method uses double precission internally, though it returns single float Factor = 180 / pi</remarks>
+        /// <remarks>This method uses double precision internally, though it returns a single float. Factor = 180 / pi.</remarks>
         public static float ToDegrees(float radians) => (float) (radians * 57.295779513082320876798154814105);
 
         /// <summary>Converts degrees to radians.</summary>
         /// <param name="degrees">The angle in degrees.</param>
         /// <returns>The angle in radians.</returns>
-        /// <remarks>This method uses double precission internally, though it returns single float Factor = pi / 180</remarks>
+        /// <remarks>This method uses double precision internally, though it returns a single float. Factor = pi / 180.</remarks>
         public static float ToRadians(float degrees) => (float) (degrees * 0.017453292519943295769236907684886);
 
         /// <summary>Reduces a given angle to a value between π and -π.</summary>
         /// <param name="angle">The angle to reduce, in radians.</param>
-        /// <returns>The new angle, in radians.</returns>
+        /// <returns>The wrapped angle in radians within the range [-π, π].</returns>
         [ExcludeFromCodeCoverage]
         public static float WrapAngle(float angle)
         {
@@ -195,9 +184,9 @@ namespace Alis.Core.Aspect.Math.Util
             return angle;
         }
 
-        /// <summary>Determines if value is powered by two.</summary>
-        /// <param name="value">A value.</param>
-        /// <returns><c>true</c> if <c>value</c> is powered by two; otherwise <c>false</c>.</returns>
+        /// <summary>Determines if a value is a power of two.</summary>
+        /// <param name="value">The value to test.</param>
+        /// <returns><c>true</c> if <paramref name="value" /> is a power of two; otherwise, <c>false</c>.</returns>
         public static bool IsPowerOfTwo(int value) => (value > 0) && ((value & (value - 1)) == 0);
     }
 }
