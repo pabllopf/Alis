@@ -30,17 +30,23 @@
 namespace Alis.Core.Aspect.Data.Json.Serialization
 {
     /// <summary>
-    ///     Defines a contract for serializing objects that implement IJsonSerializable to JSON strings.
+    ///     Defines a contract for serializing objects that implement <see cref="IJsonSerializable" />
+    ///     into their JSON string representation.
     /// </summary>
+    /// <remarks>
+    ///     Implementations traverse the properties provided by <see cref="IJsonSerializable.GetSerializableProperties" />
+    ///     and produce a compact JSON object string. Primitive values are quoted; complex values (objects or arrays)
+    ///     are inserted as raw JSON. Null-valued properties are skipped.
+    /// </remarks>
     public interface IJsonSerializer
     {
         /// <summary>
-        ///     Serializes an object to a JSON string.
+        ///     Serializes the specified object instance to a JSON string representation.
         /// </summary>
-        /// <typeparam name="T">The type of the object to serialize, which must implement IJsonSerializable.</typeparam>
-        /// <param name="instance">The instance to serialize.</param>
-        /// <returns>A JSON string representation of the object.</returns>
-        /// <exception cref="System.ArgumentNullException">Thrown when instance is null.</exception>
+        /// <typeparam name="T">The type of the object to serialize. Must implement <see cref="IJsonSerializable" />.</typeparam>
+        /// <param name="instance">The object instance to serialize into JSON. Must not be null.</param>
+        /// <returns>A JSON string representing the serialized object, enclosed in curly braces.</returns>
+        /// <exception cref="System.ArgumentNullException">Thrown when <paramref name="instance" /> is null.</exception>
         string Serialize<T>(T instance) where T : IJsonSerializable;
     }
 }

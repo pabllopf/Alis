@@ -32,24 +32,28 @@ using System.Collections.Generic;
 namespace Alis.Core.Aspect.Memory
 {
     /// <summary>
-    ///     The zip cache entry class
+    ///     Caches the raw byte content of an extracted assets.pack archive together with
+    ///     pre-built lookup dictionaries that map entry paths and file names to their
+    ///     corresponding <see cref="ZipEntryInfo" /> metadata, enabling fast repeated access.
     /// </summary>
     internal class ZipCacheEntry
     {
-        // bytes del paquete (no copiados al crear MemoryStream)
         /// <summary>
-        ///     Gets or sets the value of the pack bytes
+        ///     Gets or sets the complete raw byte content of the assets.pack archive.
+        ///     These bytes are shared across all extractions without additional copying.
         /// </summary>
         internal byte[] PackBytes { get; set; }
 
-        // índices ligeros para búsquedas rápidas
         /// <summary>
-        ///     Gets or sets the value of the entries by full name lower
+        ///     Gets a dictionary that maps lower-cased full entry paths (using forward slashes)
+        ///     to their <see cref="ZipEntryInfo" /> metadata for O(1) exact-path lookups.
         /// </summary>
         internal Dictionary<string, ZipEntryInfo> EntriesByFullNameLower { get; } = new();
 
         /// <summary>
-        ///     Gets or sets the value of the entries by file name lower
+        ///     Gets a dictionary that maps lower-cased file names to a list of
+        ///     <see cref="ZipEntryInfo" /> metadata entries, supporting lookups when
+        ///     multiple entries share the same file name in different directories.
         /// </summary>
         internal Dictionary<string, List<ZipEntryInfo>> EntriesByFileNameLower { get; } = new();
     }

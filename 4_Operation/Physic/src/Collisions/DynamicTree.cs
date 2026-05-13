@@ -184,9 +184,14 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
+        ///     Creates a proxy in the dynamic tree for the given AABB.
         /// </summary>
-        /// <param name="aabb"></param>
-        /// <returns></returns>
+        /// <param name="aabb">The axis-aligned bounding box to add to the tree.</param>
+        /// <returns>The proxy ID used to reference this AABB in future operations.</returns>
+        /// <remarks>
+        ///     The AABB is "fattened" by the configured extension factor to allow small movements
+        ///     without requiring tree updates. Use the returned proxyId with RemoveProxy to remove.
+        /// </remarks>
         public int AddProxy(ref Aabb aabb)
         {
             int proxyId = AllocateNode();
@@ -264,9 +269,10 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
+        ///     Associates user data with a proxy.
         /// </summary>
-        /// <param name="proxyId"></param>
-        /// <param name="userData"></param>
+        /// <param name="proxyId">The proxy identifier.</param>
+        /// <param name="userData">The user data to store with the proxy.</param>
         public void SetUserData(int proxyId, TNode userData)
         {
             _nodes[proxyId].UserData = userData;
