@@ -44,8 +44,46 @@ using Alis.Core.Ecs.Updating;
 namespace Alis.Core.Ecs
 {
     /// <summary>
-    ///     A collection of entities that can be updated and queried.
+    ///     The central container for all entities and systems in the ECS (Entity Component System) architecture.
     /// </summary>
+    /// <remarks>
+    ///     <para>
+    ///     A Scene represents an isolated world or game level that manages its own collection of entities,
+    ///     each consisting of typed components. It provides the primary interface for creating, querying,
+    /// and updating entities and their components.
+    /// </para>
+    ///     <para>
+    ///     Key features:
+    ///     <list type="bullet">
+    ///         <item><description>Entity creation with arbitrary component combinations</description></item>
+    ///         <item><description>Component add/remove operations with event notifications</description></item>
+    ///         <item><description>Custom queries using rule-based filtering</description></item>
+    ///         <item><description>Update systems by attribute type or component type</description></item>
+    ///         <item><description>Structural change safety during update cycles</description></item>
+    ///         <item><description>Bulk entity creation for performance</description></item>
+    ///     </list>
+    ///     </para>
+    ///     <para>
+    ///     The Scene implements deferred structural changes: when modifications occur during an update cycle,
+    /// they are queued and applied after the current update completes to maintain consistency.
+    ///     </para>
+    /// <example>
+    /// <code>
+    /// // Create a new scene
+    /// var scene = new Scene();
+    /// 
+    /// // Create entities with components
+    /// var player = scene.Create(new Transform { X = 0, Y = 0 }, new Health { Value = 100 });
+    /// var enemy = scene.Create(new Transform { X = 10, Y = 5 }, new Health { Value = 50 });
+    /// 
+    /// // Query entities with specific components
+    /// var healthQuery = scene.CreateQuery(Rule.With&lt;Transform&gt;().And&lt;Health&gt;());
+    /// 
+    /// // Update entities
+    /// scene.Update&lt;FixedUpdate&gt;();
+    /// </code>
+    /// </example>
+    /// </remarks>
     public class Scene : IDisposable
     {
         /// <summary>
@@ -74,18 +112,30 @@ namespace Alis.Core.Ecs
         internal readonly Dictionary<Type, SceneUpdateFilter> _updatesByAttributes = [];
 
         /// <summary>
-        ///     The default archetype
+        ///     Gets the archetype with zero components.
         /// </summary>
+        /// <value>
+        ///     The default <see cref="Archetype"/> used when creating entities without components.
+        ///     All other archetypes derive from this base archetype.
+        /// </value>
         public readonly Archetype DefaultArchetype;
 
         /// <summary>
-        ///     The default scene gameObject
+        ///     Gets a GameObject that serves as a handle for this scene itself.
         /// </summary>
+        /// <value>
+        ///     A <see cref="GameObject"/> associated with this scene, used when systems need to
+        ///     operate on the scene as an entity (e.g., scene-level component data).
+        /// </value>
         public readonly GameObject DefaultWorldGameObject;
 
         /// <summary>
-        ///     The id
+        ///     Gets the unique identifier for this scene.
         /// </summary>
+        /// <value>
+        ///     A unique ushort identifier assigned when the scene is created. Used internally
+        ///     for entity lookups and global scene management.
+        /// </value>
         public readonly ushort Id;
 
         // -1: normal state
