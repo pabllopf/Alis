@@ -111,11 +111,10 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     Finds the index of the vertex that is farthest in the specified direction.
-        ///     Used by the GJK algorithm to find support points in the Minkowski difference.
+        ///     Get the supporting vertex index in the given direction.
         /// </summary>
-        /// <param name="direction">The search direction to find the farthest supporting vertex along.</param>
-        /// <returns>The zero-based index of the vertex with the maximum projection onto the given direction.</returns>
+        /// <param name="direction">The direction.</param>
+        /// <returns></returns>
         public int GetSupport(Vector2F direction)
         {
             int bestIndex = 0;
@@ -134,11 +133,10 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     Gets the vertex that is farthest in the specified direction.
-        ///     Equivalent to calling <see cref="GetSupport"/> and indexing into the vertex array.
+        ///     Get the supporting vertex in the given direction.
         /// </summary>
-        /// <param name="direction">The search direction to find the farthest supporting vertex along.</param>
-        /// <returns>The world-space position of the vertex with the maximum projection onto the given direction.</returns>
+        /// <param name="direction">The direction.</param>
+        /// <returns></returns>
         public Vector2F GetSupportVertex(Vector2F direction)
         {
             int bestIndex = 0;

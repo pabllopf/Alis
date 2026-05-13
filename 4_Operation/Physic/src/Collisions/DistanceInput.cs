@@ -32,36 +32,33 @@ using Alis.Core.Physic.Dynamics;
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     Input parameters for the <see cref="Distance.ComputeDistance"/> GJK algorithm.
-    ///     Specifies the two shape proxies, their transforms, and whether shape radii
-    ///     should be included in the distance calculation.
+    ///     Input for Distance.ComputeDistance().
+    ///     You have to option to use the shape radii in the computation.
     /// </summary>
     public struct DistanceInput
     {
         /// <summary>
-        ///     The distance proxy representing the first shape's vertices and radius for GJK computation.
+        ///     The proxy
         /// </summary>
         public DistanceProxy ProxyA;
 
         /// <summary>
-        ///     The distance proxy representing the second shape's vertices and radius for GJK computation.
+        ///     The proxy
         /// </summary>
         public DistanceProxy ProxyB;
 
         /// <summary>
-        ///     The world transform (position and rotation) of the first shape.
+        ///     The transform
         /// </summary>
         public ControllerTransform ControllerTransformA;
 
         /// <summary>
-        ///     The world transform (position and rotation) of the second shape.
+        ///     The transform
         /// </summary>
         public ControllerTransform ControllerTransformB;
 
         /// <summary>
-        ///     If <c>true</c>, the shape radii are subtracted from the computed distance to yield the
-        ///     surface-to-surface distance. If <c>false</c> (or shapes overlap), radii are handled
-        ///     differently or the distance represents center-to-center proximity.
+        ///     The use radii
         /// </summary>
         public bool UseRadii;
     }

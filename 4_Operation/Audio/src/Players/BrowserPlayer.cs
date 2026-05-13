@@ -38,49 +38,47 @@ using Alis.Core.Audio.Interfaces;
 namespace Alis.Core.Audio.Players
 {
     /// <summary>
-    ///     Audio player implementation for browser (WebAssembly) environments using OpenAL.
-    ///     Loads WAV audio files from embedded resources and plays them through the OpenAL subsystem.
+    ///     The browser player class
     /// </summary>
     /// <seealso cref="IPlayer" />
     internal class BrowserPlayer : IPlayer
     {
         /// <summary>
-        ///     The OpenAL buffer identifier used to store the audio sample data.
+        ///     The buffer
         /// </summary>
         private readonly uint _buffer;
 
         /// <summary>
-        ///     The OpenAL context pointer for audio rendering.
+        ///     The context
         /// </summary>
         private readonly IntPtr _context;
 
         /// <summary>
-        ///     The OpenAL device pointer opened during initialization.
+        ///     The device
         /// </summary>
         private readonly IntPtr _device;
 
         /// <summary>
-        ///     The OpenAL source identifier used for playback control.
+        ///     The source
         /// </summary>
         private readonly uint _source;
 
         /// <summary>
-        ///     Indicates whether playback is currently paused.
+        ///     The paused
         /// </summary>
         private bool _paused;
 
         /// <summary>
-        ///     Indicates whether playback is currently active.
+        ///     The playing
         /// </summary>
         private bool _playing;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="BrowserPlayer" /> class.
-        ///     Opens the default OpenAL device, creates an audio context, and generates a source and buffer.
+        ///     Initializes a new instance of the <see cref="BrowserPlayer" /> class
         /// </summary>
-        /// <exception cref="Exception">Thrown when the OpenAL device cannot be opened.</exception>
-        /// <exception cref="Exception">Thrown when the OpenAL context cannot be created.</exception>
-        /// <exception cref="Exception">Thrown when the OpenAL context cannot be made current.</exception>
+        /// <exception cref="Exception">No se pudo abrir el dispositivo OpenAL</exception>
+        /// <exception cref="Exception">No se pudo activar el contexto OpenAL</exception>
+        /// <exception cref="Exception">No se pudo crear el contexto OpenAL</exception>
         public BrowserPlayer()
         {
             Console.WriteLine("[BrowserPlayer] Inicializando OpenAL...");
@@ -110,28 +108,23 @@ namespace Alis.Core.Audio.Players
         }
 
         /// <summary>
-        ///     Gets a value indicating whether audio playback is currently in progress.
+        ///     Gets the value of the playing
         /// </summary>
         public bool Playing => _playing;
 
         /// <summary>
-        ///     Gets a value indicating whether audio playback is currently paused.
+        ///     Gets the value of the paused
         /// </summary>
         public bool Paused => _paused;
 
-        /// <summary>
-        ///     Occurs when the current audio playback has finished.
-        /// </summary>
         public event EventHandler PlaybackFinished;
 
         /// <summary>
-        ///     Loads a WAV file from an embedded resource and starts OpenAL playback.
-        ///     Parses the WAV header, uploads PCM data to an OpenAL buffer, and issues a play command.
+        ///     Plays the file name
         /// </summary>
-        /// <param name="fileName">The name of the embedded WAV resource to play.</param>
-        /// <returns>A task that represents the asynchronous playback operation.</returns>
-        /// <exception cref="FileNotFoundException">Thrown when the specified resource cannot be found.</exception>
-        /// <exception cref="Exception">Thrown when the WAV format is not supported (e.g., compressed or unknown format).</exception>
+        /// <param name="fileName">The file name</param>
+        /// <exception cref="FileNotFoundException"></exception>
+        /// <exception cref="Exception">Formato WAV no soportado</exception>
         public async Task Play(string fileName)
         {
             Console.WriteLine($"[BrowserPlayer] Play: {fileName}");
@@ -182,21 +175,17 @@ namespace Alis.Core.Audio.Players
         }
 
         /// <summary>
-        ///     Starts playback of the specified audio file with optional looping.
-        ///     Currently, looping is not implemented; it delegates to <see cref="Play" /> for single playback.
+        ///     Plays the loop using the specified file name
         /// </summary>
-        /// <param name="fileName">The name of the embedded WAV resource to play.</param>
-        /// <param name="loop">If <c>true</c>, the audio should loop; currently ignored.</param>
-        /// <returns>A task that represents the asynchronous playback operation.</returns>
+        /// <param name="fileName">The file name</param>
+        /// <param name="loop">The loop</param>
         public Task PlayLoop(string fileName, bool loop) =>
             // No implementado: se puede usar alSourcei(_source, AL_LOOPING, 1)
             Play(fileName);
 
         /// <summary>
-        ///     Pauses the currently playing audio by stopping the OpenAL source.
-        ///     Sets the paused flag to <c>true</c> and the playing flag to <c>false</c>.
+        ///     Pauses this instance
         /// </summary>
-        /// <returns>A task that represents the asynchronous pause operation.</returns>
         public Task Pause()
         {
             OpenAl.alSourceStop(_source);
@@ -206,10 +195,8 @@ namespace Alis.Core.Audio.Players
         }
 
         /// <summary>
-        ///     Resumes playback of a previously paused audio file by restarting the OpenAL source.
-        ///     Sets the paused flag to <c>false</c> and the playing flag to <c>true</c>.
+        ///     Resumes this instance
         /// </summary>
-        /// <returns>A task that represents the asynchronous resume operation.</returns>
         public Task Resume()
         {
             OpenAl.alSourcePlay(_source);
@@ -219,10 +206,8 @@ namespace Alis.Core.Audio.Players
         }
 
         /// <summary>
-        ///     Stops the current audio playback by stopping the OpenAL source.
-        ///     Resets both the playing and paused flags to <c>false</c>.
+        ///     Stops this instance
         /// </summary>
-        /// <returns>A task that represents the asynchronous stop operation.</returns>
         public Task Stop()
         {
             OpenAl.alSourceStop(_source);
@@ -232,25 +217,22 @@ namespace Alis.Core.Audio.Players
         }
 
         /// <summary>
-        ///     Sets the audio playback volume.
-        ///     Currently not implemented; can be extended using <c>alSourcef(_source, AL_GAIN, percent/100f)</c>.
+        ///     Sets the volume using the specified percent
         /// </summary>
-        /// <param name="percent">The volume level from 0 to 100.</param>
-        /// <returns>A task that represents the asynchronous volume change operation.</returns>
+        /// <param name="percent">The percent</param>
         public Task SetVolume(byte percent) =>
             // No implementado: se puede usar alSourcef(_source, AL_GAIN, percent/100f)
             Task.CompletedTask;
 
         /// <summary>
-        ///     Attempts to parse a WAV file's header and extract audio format information.
-        ///     Supports PCM 8-bit and 16-bit mono/stereo formats. Validates RIFF/WAVE headers and the 'fmt ' and 'data' chunks.
+        ///     Tries the parse wav using the specified wav
         /// </summary>
-        /// <param name="wav">The raw WAV file data as a byte array.</param>
-        /// <param name="dataOffset">When this method returns, contains the offset in bytes to the start of the PCM data.</param>
-        /// <param name="dataSize">When this method returns, contains the size in bytes of the PCM data.</param>
-        /// <param name="freq">When this method returns, contains the sample frequency in Hertz.</param>
-        /// <param name="format">When this method returns, contains the OpenAL format constant.</param>
-        /// <returns><c>true</c> if the WAV file was successfully parsed; otherwise, <c>false</c>.</returns>
+        /// <param name="wav">The wav</param>
+        /// <param name="dataOffset">The data offset</param>
+        /// <param name="dataSize">The data size</param>
+        /// <param name="freq">The freq</param>
+        /// <param name="format">The format</param>
+        /// <returns>The bool</returns>
         private bool TryParseWav(byte[] wav, out int dataOffset, out int dataSize, out int freq, out int format)
         {
             // Parser WAV extendido: muestra todos los campos fmt, chunks, y sugiere conversión si es comprimido

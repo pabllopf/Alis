@@ -33,35 +33,27 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     Represents a pair of proxy identifiers detected as potentially overlapping during the broad-phase
-    ///     collision detection pass. Pairs are sorted and deduplicated before being reported to the collision
-    ///     system for narrow-phase processing.
+    ///     The pair
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     internal struct Pair : IComparable<Pair>
     {
         /// <summary>
-        ///     The proxy identifier of the first object in the overlapping pair.
-        ///     This is always the smaller of the two proxy IDs after sorting.
+        ///     The proxy id
         /// </summary>
         public int ProxyIdA;
 
         /// <summary>
-        ///     The proxy identifier of the second object in the overlapping pair.
-        ///     This is always the larger of the two proxy IDs after sorting.
+        ///     The proxy id
         /// </summary>
         public int ProxyIdB;
 
 
         /// <summary>
-        ///     Compares this pair to another pair for sorting and duplicate detection.
-        ///     Pairs are sorted first by <see cref="ProxyIdB"/> and then by <see cref="ProxyIdA"/>.
+        ///     Compares the to using the specified other
         /// </summary>
-        /// <param name="other">The other pair to compare against.</param>
-        /// <returns>
-        ///     A value less than zero if this instance precedes <paramref name="other"/> in sort order;
-        ///     zero if they are equal; greater than zero if this follows <paramref name="other"/>.
-        /// </returns>
+        /// <param name="other">The other</param>
+        /// <returns>The int</returns>
         public int CompareTo(Pair other)
         {
             if (ProxyIdB < other.ProxyIdB)

@@ -35,19 +35,17 @@ using Alis.Core.Audio.Interfaces;
 namespace Alis.Core.Audio.Players
 {
     /// <summary>
-    ///     Audio player implementation for macOS platforms.
-    ///     Uses AppleScript (osascript) for volume control and the afplay command-line tool for audio playback.
+    ///     The mac player class
     /// </summary>
     /// <seealso cref="UnixPlayerBase" />
     /// <seealso cref="IPlayer" />
     internal class MacPlayer : UnixPlayerBase, IPlayer
     {
         /// <summary>
-        ///     Sets the system output volume on macOS using the osascript command-line utility.
+        ///     Sets the volume using the specified percent
         /// </summary>
-        /// <param name="percent">The volume level as a percentage from 0 to 100.</param>
-        /// <returns>A task that represents the asynchronous volume change operation.</returns>
-        /// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="percent" /> exceeds 100.</exception>
+        /// <param name="percent">The percent</param>
+        /// <exception cref="ArgumentOutOfRangeException">Percent can't exceed 100</exception>
         public override Task SetVolume(byte percent)
         {
             if (percent > 100)
@@ -62,10 +60,10 @@ namespace Alis.Core.Audio.Players
         }
 
         /// <summary>
-        ///     Returns the bash command for audio playback on macOS, which is always "afplay".
+        ///     Gets the bash command using the specified file name
         /// </summary>
-        /// <param name="fileName">The path to the audio file (used for potential extension-based dispatch, currently unused).</param>
-        /// <returns>The string "afplay" representing the macOS command-line audio player.</returns>
+        /// <param name="fileName">The file name</param>
+        /// <returns>The string</returns>
         internal override string GetBashCommand(string fileName) => "afplay";
     }
 }

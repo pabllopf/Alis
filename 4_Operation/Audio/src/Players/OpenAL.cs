@@ -34,119 +34,118 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Audio.Players
 {
     /// <summary>
-    ///     Provides P/Invoke declarations for the OpenAL 32-bit audio library (openal32).
-    ///     Encapsulates device, context, source, and buffer management functions used for cross-platform audio playback.
+    ///     The open al class
     /// </summary>
     internal static class OpenAl
     {
         // Device management
         /// <summary>
-        ///     Opens an OpenAL audio device for playback.
+        ///     Alcs the open device using the specified devicename
         /// </summary>
-        /// <param name="devicename">The name of the device to open, or <c>null</c> to open the default device.</param>
-        /// <returns>A pointer to the opened device, or <see cref="IntPtr.Zero" /> if the device could not be opened.</returns>
+        /// <param name="devicename">The devicename</param>
+        /// <returns>The int ptr</returns>
         [DllImport("openal32", EntryPoint = "alcOpenDevice"), ExcludeFromCodeCoverage]
         public static extern IntPtr alcOpenDevice(string devicename);
 
         /// <summary>
-        ///     Creates an OpenAL audio context on the specified device.
+        ///     Alcs the create context using the specified device
         /// </summary>
-        /// <param name="device">A pointer to the previously opened audio device.</param>
-        /// <param name="attrlist">A pointer to a list of context attributes, or <see cref="IntPtr.Zero" /> for default attributes.</param>
-        /// <returns>A pointer to the created context, or <see cref="IntPtr.Zero" /> if creation failed.</returns>
+        /// <param name="device">The device</param>
+        /// <param name="attrlist">The attrlist</param>
+        /// <returns>The int ptr</returns>
         [DllImport("openal32", EntryPoint = "alcCreateContext"), ExcludeFromCodeCoverage]
         public static extern IntPtr alcCreateContext(IntPtr device, IntPtr attrlist);
 
         /// <summary>
-        ///     Makes the specified OpenAL context the current (active) context for the calling thread.
+        ///     Alcs the make context current using the specified context
         /// </summary>
-        /// <param name="context">A pointer to the context to make current.</param>
-        /// <returns><c>true</c> if the context was successfully made current; otherwise, <c>false</c>.</returns>
+        /// <param name="context">The context</param>
+        /// <returns>The bool</returns>
         [DllImport("openal32", EntryPoint = "alcMakeContextCurrent"), ExcludeFromCodeCoverage]
         public static extern bool alcMakeContextCurrent(IntPtr context);
 
         /// <summary>
-        ///     Closes an OpenAL audio device that was previously opened with <see cref="alcOpenDevice" />.
+        ///     Alcs the close device using the specified device
         /// </summary>
-        /// <param name="device">A pointer to the device to close.</param>
-        /// <returns><c>true</c> if the device was successfully closed; otherwise, <c>false</c>.</returns>
+        /// <param name="device">The device</param>
+        /// <returns>The bool</returns>
         [DllImport("openal32", EntryPoint = "alcCloseDevice"), ExcludeFromCodeCoverage]
         public static extern bool alcCloseDevice(IntPtr device);
 
         // Source management
         /// <summary>
-        ///     Generates one or more OpenAL source names.
+        ///     Als the gen sources using the specified n
         /// </summary>
-        /// <param name="n">The number of sources to generate.</param>
-        /// <param name="sources">When this method returns, contains the generated source name.</param>
+        /// <param name="n">The </param>
+        /// <param name="sources">The sources</param>
         [DllImport("openal32", EntryPoint = "alGenSources"), ExcludeFromCodeCoverage]
         public static extern void alGenSources(int n, out uint sources);
 
         /// <summary>
-        ///     Deletes one or more OpenAL sources.
+        ///     Als the delete sources using the specified n
         /// </summary>
-        /// <param name="n">The number of sources to delete.</param>
-        /// <param name="sources">A reference to the source name(s) to delete.</param>
+        /// <param name="n">The </param>
+        /// <param name="sources">The sources</param>
         [DllImport("openal32", EntryPoint = "alDeleteSources"), ExcludeFromCodeCoverage]
         public static extern void alDeleteSources(int n, ref uint sources);
 
         /// <summary>
-        ///     Starts playback on the specified OpenAL source.
+        ///     Als the source play using the specified source
         /// </summary>
-        /// <param name="source">The source name to start playing.</param>
+        /// <param name="source">The source</param>
         [DllImport("openal32", EntryPoint = "alSourcePlay"), ExcludeFromCodeCoverage]
         public static extern void alSourcePlay(uint source);
 
         /// <summary>
-        ///     Stops playback on the specified OpenAL source.
+        ///     Als the source stop using the specified source
         /// </summary>
-        /// <param name="source">The source name to stop.</param>
+        /// <param name="source">The source</param>
         [DllImport("openal32", EntryPoint = "alSourceStop"), ExcludeFromCodeCoverage]
         public static extern void alSourceStop(uint source);
 
         // Buffer management
         /// <summary>
-        ///     Generates one or more OpenAL buffer names.
+        ///     Als the gen buffers using the specified n
         /// </summary>
-        /// <param name="n">The number of buffers to generate.</param>
-        /// <param name="buffers">When this method returns, contains the generated buffer name.</param>
+        /// <param name="n">The </param>
+        /// <param name="buffers">The buffers</param>
         [DllImport("openal32", EntryPoint = "alGenBuffers"), ExcludeFromCodeCoverage]
         public static extern void alGenBuffers(int n, out uint buffers);
 
         /// <summary>
-        ///     Deletes one or more OpenAL buffers.
+        ///     Als the delete buffers using the specified n
         /// </summary>
-        /// <param name="n">The number of buffers to delete.</param>
-        /// <param name="buffers">A reference to the buffer name(s) to delete.</param>
+        /// <param name="n">The </param>
+        /// <param name="buffers">The buffers</param>
         [DllImport("openal32", EntryPoint = "alDeleteBuffers"), ExcludeFromCodeCoverage]
         public static extern void alDeleteBuffers(int n, ref uint buffers);
 
         /// <summary>
-        ///     Fills an OpenAL buffer with audio data in the specified format.
+        ///     Als the buffer data using the specified buffer
         /// </summary>
-        /// <param name="buffer">The buffer name to fill.</param>
-        /// <param name="format">The OpenAL audio format (e.g., AL_FORMAT_MONO16 or AL_FORMAT_STEREO16).</param>
-        /// <param name="data">A pointer to the raw PCM audio data.</param>
-        /// <param name="size">The size of the audio data in bytes.</param>
-        /// <param name="freq">The sample frequency of the audio data in Hertz.</param>
+        /// <param name="buffer">The buffer</param>
+        /// <param name="format">The format</param>
+        /// <param name="data">The data</param>
+        /// <param name="size">The size</param>
+        /// <param name="freq">The freq</param>
         [DllImport("openal32", EntryPoint = "alBufferData"), ExcludeFromCodeCoverage]
         public static extern void alBufferData(uint buffer, int format, IntPtr data, int size, int freq);
 
         /// <summary>
-        ///     Sets an integer property on the specified OpenAL source.
+        ///     Als the sourcei using the specified source
         /// </summary>
-        /// <param name="source">The source name to configure.</param>
-        /// <param name="param">The parameter identifier to set.</param>
-        /// <param name="value">The integer value to assign to the parameter.</param>
+        /// <param name="source">The source</param>
+        /// <param name="param">The param</param>
+        /// <param name="value">The value</param>
         [DllImport("openal32", EntryPoint = "alSourcei"), ExcludeFromCodeCoverage]
         public static extern void alSourcei(uint source, int param, int value);
 
         /// <summary>
-        ///     Queues one or more buffers on the specified OpenAL source for sequential playback.
+        ///     Als the source queue buffers using the specified source
         /// </summary>
-        /// <param name="source">The source name to queue buffers on.</param>
-        /// <param name="nb">The number of buffers to queue.</param>
-        /// <param name="buffers">A reference to the buffer name(s) to queue.</param>
+        /// <param name="source">The source</param>
+        /// <param name="nb">The nb</param>
+        /// <param name="buffers">The buffers</param>
         [DllImport("openal32", EntryPoint = "alSourceQueueBuffers"), ExcludeFromCodeCoverage]
         public static extern void alSourceQueueBuffers(uint source, int nb, ref uint buffers);
     }

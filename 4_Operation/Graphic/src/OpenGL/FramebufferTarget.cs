@@ -30,13 +30,12 @@
 namespace Alis.Core.Graphic.OpenGL
 {
     /// <summary>
-    /// Defines the target binding points for framebuffer objects in OpenGL.
-    /// Used with glBindFramebuffer and related framebuffer operations to specify the target framebuffer.
+    ///     The framebuffer target enum
     /// </summary>
     public enum FramebufferTarget
     {
         /// <summary>
-        /// The default framebuffer binding point for read and draw operations (GL_FRAMEBUFFER = 0x8D40).
+        ///     The framebuffer framebuffer target
         /// </summary>
         Framebuffer = 0x8D40
     }

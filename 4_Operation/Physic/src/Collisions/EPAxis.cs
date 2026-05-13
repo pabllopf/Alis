@@ -30,27 +30,22 @@
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     Stores the best separating axis found during edge-polygon (EP) collision detection.
-    ///     Tracks which axis type, which edge index, and the computed separation value to
-    ///     determine the collision manifold.
+    ///     This structure is used to keep track of the best separating axis.
     /// </summary>
     public struct EpAxis
     {
         /// <summary>
-        ///     The index of the edge or face on the reference shape that produced the best separation.
-        ///     The interpretation depends on the <see cref="Type"/> value.
+        ///     The index
         /// </summary>
         public int Index;
 
         /// <summary>
-        ///     The separation distance along this axis. A positive value indicates shapes are separated;
-        ///     a negative or zero value indicates overlapping shapes.
+        ///     The separation
         /// </summary>
         public float Separation;
 
         /// <summary>
-        ///     The type of separating axis, indicating whether the best separation was found on
-        ///     an edge of shape A, an edge of shape B, or is unknown.
+        ///     The type
         /// </summary>
         public EpAxisType Type;
     }

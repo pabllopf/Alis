@@ -32,49 +32,42 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     Represents a reference face used during edge-polygon collision clipping. The reference face defines
-    ///     the clipping plane, side extrusion planes, and vertex indices needed to compute contact points
-    ///     between an edge and a polygon shape.
+    ///     Reference face used for clipping
     /// </summary>
     public struct ReferenceFace
     {
         /// <summary>
-        ///     The indices of the two vertices that define the reference face on the reference shape.
-        ///     I1 is the first vertex index, I2 is the second.
+        ///     The
         /// </summary>
         public int I1, I2;
 
         /// <summary>
-        ///     The world-space positions of the two vertices that define the reference face.
-        ///     V1 corresponds to the vertex at index I1, V2 corresponds to I2.
+        ///     The
         /// </summary>
         public Vector2F V1, V2;
 
         /// <summary>
-        ///     The outward-facing normal of the reference face, pointing away from the reference shape.
-        ///     Used to compute separation distances during clipping.
+        ///     The normal
         /// </summary>
         public Vector2F Normal;
 
         /// <summary>
-        ///     The first side normal vector, perpendicular to <see cref="Normal"/>, defining one side
-        ///     extrusion plane for clipping the incident edge.
+        ///     The side normal
         /// </summary>
         public Vector2F SideNormal1;
 
         /// <summary>
-        ///     The offset distance from the origin to the first side clipping plane along <see cref="SideNormal1"/>.
+        ///     The side offset
         /// </summary>
         public float SideOffset1;
 
         /// <summary>
-        ///     The second side normal vector, opposite to <see cref="SideNormal1"/>, defining the other side
-        ///     extrusion plane for clipping the incident edge.
+        ///     The side normal
         /// </summary>
         public Vector2F SideNormal2;
 
         /// <summary>
-        ///     The offset distance from the origin to the second side clipping plane along <see cref="SideNormal2"/>.
+        ///     The side offset
         /// </summary>
         public float SideOffset2;
     }

@@ -38,31 +38,13 @@ using Alis.Core.Ecs.Redifinition;
 namespace Alis.Core.Ecs
 {
     /// <summary>
-    ///     Provides core operations for modifying component collections in neighbor caches.
+    ///     The neighbor cache core class
     /// </summary>
-    /// <remarks>
-    ///     This static class contains reusable logic for adding or removing component IDs
-    ///     from <see cref="FastImmutableArray{ComponentId}"/> collections, used by the
-    ///     archetype graph edge implementations.
-    /// </remarks>
     internal static class NeighborCacheCore
     {
         /// <summary>
-        ///     Modifies the component set by adding or removing the specified component IDs.
+        ///     Modifies the components
         /// </summary>
-        /// <param name="components">The current array of component IDs to modify.</param>
-        /// <param name="ids">The span of component IDs to add or remove.</param>
-        /// <param name="add">When <see langword="true"/>, adds the IDs; when <see langword="false"/>, removes them.</param>
-        /// <returns>A new <see cref="FastImmutableArray{ComponentId}"/> with the modifications applied.</returns>
-        /// <example>
-        /// <code>
-        /// // Adding components to a cache
-        /// var newComponents = NeighborCacheCore.Modify(existingComponents, newIds, add: true);
-        /// 
-        /// // Removing components from a cache
-        /// var reducedComponents = NeighborCacheCore.Modify(existingComponents, oldIds, add: false);
-        /// </code>
-        /// </example>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static FastImmutableArray<ComponentId> Modify(
             FastImmutableArray<ComponentId> components,
@@ -73,12 +55,12 @@ namespace Alis.Core.Ecs
                 : MemoryHelpers.Remove(components, ids);
 
         /// <summary>
-        ///     Modifies the component set by adding or removing a single component ID.
+        ///     Modifies the single using the specified components
         /// </summary>
-        /// <param name="components">The current array of component IDs to modify.</param>
-        /// <param name="id">The single component ID to add or remove.</param>
-        /// <param name="add">When <see langword="true"/>, adds the ID; when <see langword="false"/>, removes it.</param>
-        /// <returns>A new <see cref="FastImmutableArray{ComponentId}"/> with the modification applied.</returns>
+        /// <param name="components">The components</param>
+        /// <param name="id">The id</param>
+        /// <param name="add">The add</param>
+        /// <returns>A fast immutable array of component id</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static FastImmutableArray<ComponentId> ModifySingle(
             FastImmutableArray<ComponentId> components,
@@ -94,18 +76,12 @@ namespace Alis.Core.Ecs
     // ---------------------------------------------------------------------------
 
     /// <summary>
-    ///     Caches component IDs for 2-component neighbor cache lookups.
+    ///     The neighbor cache component ids class
     /// </summary>
-    /// <typeparam name="T1">The first component type.</typeparam>
-    /// <typeparam name="T2">The second component type.</typeparam>
-    /// <remarks>
-    ///     Prevents repeated reflection or dictionary lookups by storing component IDs
-    ///     as a static readonly array at type-initialization time.
-    /// </remarks>
     internal static class NeighborCacheComponentIds<T1, T2>
     {
         /// <summary>
-        ///     The cached component IDs for this type signature.
+        ///     The id
         /// </summary>
         internal static readonly ComponentId[] Values = [Component<T1>.Id, Component<T2>.Id];
     }

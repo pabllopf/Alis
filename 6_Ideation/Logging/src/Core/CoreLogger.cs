@@ -107,75 +107,74 @@ namespace Alis.Core.Aspect.Logging.Core
 
 
         /// <summary>
-        ///     Gets the logical name of this logger, typically the component or class name.
+        ///     Gets the value of the name
         /// </summary>
         public string Name { get; }
 
 
         /// <summary>
-        ///     Logs a message with Trace severity, the most detailed diagnostic level.
+        ///     Logs the trace using the specified message
         /// </summary>
-        /// <param name="message">The message to log.</param>
+        /// <param name="message">The message</param>
         public void LogTrace(string message) => Log(LogLevel.Trace, message);
 
 
         /// <summary>
-        ///     Logs a message with Debug severity for development-time diagnostics.
+        ///     Logs the debug using the specified message
         /// </summary>
-        /// <param name="message">The message to log.</param>
+        /// <param name="message">The message</param>
         public void LogDebug(string message) => Log(LogLevel.Debug, message);
 
 
         /// <summary>
-        ///     Logs a message with Info severity for general informational messages.
+        ///     Logs the info using the specified message
         /// </summary>
-        /// <param name="message">The message to log.</param>
+        /// <param name="message">The message</param>
         public void LogInfo(string message) => Log(LogLevel.Info, message);
 
 
         /// <summary>
-        ///     Logs a message with Warning severity for potentially harmful situations.
+        ///     Logs the warning using the specified message
         /// </summary>
-        /// <param name="message">The message to log.</param>
+        /// <param name="message">The message</param>
         public void LogWarning(string message) => Log(LogLevel.Warning, message);
 
 
         /// <summary>
-        ///     Logs a message with Error severity for serious application problems.
+        ///     Logs the error using the specified message
         /// </summary>
-        /// <param name="message">The message to log.</param>
+        /// <param name="message">The message</param>
         public void LogError(string message) => Log(LogLevel.Error, message);
 
 
         /// <summary>
-        ///     Logs a message with Critical severity for unrecoverable errors.
+        ///     Logs the critical using the specified message
         /// </summary>
-        /// <param name="message">The message to log.</param>
+        /// <param name="message">The message</param>
         public void LogCritical(string message) => Log(LogLevel.Critical, message);
 
 
         /// <summary>
-        ///     Logs a message with Error severity, including an associated exception.
+        ///     Logs the error using the specified message
         /// </summary>
-        /// <param name="message">The message describing the error context.</param>
-        /// <param name="exception">The exception to include in the log entry.</param>
+        /// <param name="message">The message</param>
+        /// <param name="exception">The exception</param>
         public void LogError(string message, Exception exception) => Log(LogLevel.Error, message, exception);
 
 
         /// <summary>
-        ///     Logs a message with Critical severity, including an associated exception.
+        ///     Logs the critical using the specified message
         /// </summary>
-        /// <param name="message">The message describing the critical error context.</param>
-        /// <param name="exception">The exception to include in the log entry.</param>
+        /// <param name="message">The message</param>
+        /// <param name="exception">The exception</param>
         public void LogCritical(string message, Exception exception) => Log(LogLevel.Critical, message, exception);
 
 
         /// <summary>
-        ///     Logs a message at the specified severity level without an exception.
-        ///     If the level is below the minimum threshold or disabled, the call is a no-op.
+        ///     Logs the level
         /// </summary>
-        /// <param name="level">The severity level for this log entry.</param>
-        /// <param name="message">The message to log.</param>
+        /// <param name="level">The level</param>
+        /// <param name="message">The message</param>
         public void Log(LogLevel level, string message)
         {
             Log(level, message, null);
@@ -183,13 +182,11 @@ namespace Alis.Core.Aspect.Logging.Core
 
 
         /// <summary>
-        ///     Logs a message at the specified severity level with an associated exception.
-        ///     Creates a <see cref="LogEntry"/> with current scope and correlation context,
-        ///     then processes it through filters and outputs.
+        ///     Logs the level
         /// </summary>
-        /// <param name="level">The severity level for this log entry.</param>
-        /// <param name="message">The message describing the log event.</param>
-        /// <param name="exception">The exception to associate, or null if none.</param>
+        /// <param name="level">The level</param>
+        /// <param name="message">The message</param>
+        /// <param name="exception">The exception</param>
         public void Log(LogLevel level, string message, Exception exception)
         {
             if (!IsEnabled(level))
@@ -213,12 +210,11 @@ namespace Alis.Core.Aspect.Logging.Core
         }
 
         /// <summary>
-        ///     Logs a structured message with additional key-value properties at the specified level.
-        ///     If <paramref name="properties"/> is null, falls back to <see cref="Log(LogLevel, string)"/>.
+        ///     Logs the structured using the specified level
         /// </summary>
-        /// <param name="level">The severity level for this log entry.</param>
-        /// <param name="message">The message describing the log event.</param>
-        /// <param name="properties">Key-value pairs of structured data to attach to the entry, or null.</param>
+        /// <param name="level">The level</param>
+        /// <param name="message">The message</param>
+        /// <param name="properties">The properties</param>
         [ExcludeFromCodeCoverage]
         public void LogStructured(LogLevel level, string message, IReadOnlyDictionary<string, object> properties)
         {
@@ -250,11 +246,9 @@ namespace Alis.Core.Aspect.Logging.Core
 
 
         /// <summary>
-        ///     Sets the correlation ID for tracing related log entries across components.
-        ///     Thread-safe.
+        ///     Sets the correlation id using the specified correlation id
         /// </summary>
-        /// <param name="correlationId">The correlation ID to associate with subsequent log entries.
-        ///     Typically a GUID or request identifier. Set to null to clear.</param>
+        /// <param name="correlationId">The correlation id</param>
         public void SetCorrelationId(string correlationId)
         {
             lock (_correlationLock)
@@ -265,10 +259,9 @@ namespace Alis.Core.Aspect.Logging.Core
 
 
         /// <summary>
-        ///     Gets the current correlation ID, if one has been set.
-        ///     Thread-safe.
+        ///     Gets the correlation id
         /// </summary>
-        /// <returns>The current correlation ID, or null if not set.</returns>
+        /// <returns>The string</returns>
         public string GetCorrelationId()
         {
             lock (_correlationLock)
@@ -279,12 +272,10 @@ namespace Alis.Core.Aspect.Logging.Core
 
 
         /// <summary>
-        ///     Begins a named scope for grouping related log entries.
-        ///     Returns an <see cref="IDisposable"/> that, when disposed, removes the scope.
-        ///     Scopes are stored in a thread-safe stack and included in log entries.
+        ///     Begins the scope using the specified scope
         /// </summary>
-        /// <param name="scope">The scope object or identifier. Typically a string name.</param>
-        /// <returns>An <see cref="IDisposable"/> that ends the scope when disposed.</returns>
+        /// <param name="scope">The scope</param>
+        /// <returns>The disposable</returns>
         public IDisposable BeginScope(object scope)
         {
             lock (_scopeLock)
@@ -295,18 +286,15 @@ namespace Alis.Core.Aspect.Logging.Core
 
 
         /// <summary>
-        ///     Determines whether logging is enabled at the specified level.
-        ///     Checks both the minimum level threshold and the None sentinel.
+        ///     Ises the enabled using the specified level
         /// </summary>
-        /// <param name="level">The log level to check.</param>
-        /// <returns>True if the level is >= minimum level and not <see cref="LogLevel.None"/>; false otherwise.</returns>
+        /// <param name="level">The level</param>
+        /// <returns>The bool</returns>
         public bool IsEnabled(LogLevel level) => (level >= _minimumLevel) && (level != LogLevel.None);
 
         /// <summary>
-        ///     Gets a snapshot of the current active scopes as a read-only list.
-        ///     Thread-safe: acquires the scope lock before reading.
+        ///     Gets the current scope stack as a read-only list.
         /// </summary>
-        /// <returns>A list copy of all active scopes, or an empty list if none are active.</returns>
         private IReadOnlyList<object> GetCurrentScopes()
         {
             lock (_scopeLock)
@@ -316,10 +304,8 @@ namespace Alis.Core.Aspect.Logging.Core
         }
 
         /// <summary>
-        ///     Gets the current correlation ID without allocating a lock object return path.
-        ///     Thread-safe: acquires the correlation lock before reading.
+        ///     Gets the current correlation ID (internal, thread-safe version).
         /// </summary>
-        /// <returns>The current correlation ID, or null if not set.</returns>
         private string GetCorrelationIdInternal()
         {
             lock (_correlationLock)
@@ -329,10 +315,8 @@ namespace Alis.Core.Aspect.Logging.Core
         }
 
         /// <summary>
-        ///     Processes a log entry by first evaluating all filters, then writing to all enabled outputs.
-        ///     Exceptions from individual filters or outputs are caught to prevent cascading failures.
+        ///     Processes a log entry through filters and outputs.
         /// </summary>
-        /// <param name="entry">The log entry to process through the pipeline.</param>
         [ExcludeFromCodeCoverage]
         private void ProcessEntry(ILogEntry entry)
         {
