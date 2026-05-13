@@ -34,24 +34,45 @@ using Alis.Core.Physic.Dynamics;
 namespace Alis.Core.Physic.Controllers
 {
     /// <summary>
-    ///     Put a limit on the linear (translation - the movespeed) and angular (rotation) velocity
-    ///     of bodies added to this controller.
+    ///     Limits the linear and angular velocity of registered bodies.
     /// </summary>
+    /// <remarks>
+    ///     <para>This controller constrains body velocities to prevent excessive speeds that could
+    ///     cause numerical instability or unrealistic behavior in the simulation.</para>
+    ///     <para>It can be configured to limit only linear velocity, only angular velocity, or both.
+    ///     Pass <c>0</c> or <c>float.MaxValue</c> to a constructor parameter to disable that limit.</para>
+    ///     <para>The velocity is clamped by computing the displacement that would occur during the
+    ///     time step (<c>dt * velocity</c>) and scaling the velocity if this displacement exceeds
+    ///     the configured maximum.</para>
+    ///     <example>
+    ///     <code>
+    ///     // Limit maximum speed to prevent tunneling
+    ///     var speedLimit = new VelocityLimitController(20f, 10f); // 20 units/s linear, 10 rad/s angular
+    ///     world.AddController(speedLimit);
+    ///     
+    ///     // Add bodies to limit
+    ///     speedLimit.AddBody(playerBody);
+    ///     speedLimit.AddBody(vehicleBody);
+    ///     </code>
+    ///     </example>
+    /// </remarks>
     public class VelocityLimitController : Controller
     {
         /// <summary>
-        ///     The body
+        ///     The collection of bodies whose velocities are constrained.
         /// </summary>
         private readonly List<Body> _bodies = new List<Body>();
 
         /// <summary>
-        ///     The limit angular velocity
+        ///     Gets whether angular velocity limiting is enabled.
         /// </summary>
+        /// <value><c>true</c> if angular velocity is limited; otherwise <c>false</c>.</value>
         public readonly bool LimitAngularVelocity = true;
 
         /// <summary>
-        ///     The limit linear velocity
+        ///     Gets whether linear velocity limiting is enabled.
         /// </summary>
+        /// <value><c>true</c> if linear velocity is limited; otherwise <c>false</c>.</value>
         public readonly bool LimitLinearVelocity = true;
 
         /// <summary>
@@ -109,9 +130,12 @@ namespace Alis.Core.Physic.Controllers
         }
 
         /// <summary>
-        ///     Gets or sets the max angular velocity.
+        ///     Gets or sets the maximum allowable angular velocity.
         /// </summary>
-        /// <value>The max angular velocity.</value>
+        /// <value>The maximum angular velocity in radians per second.</value>
+        /// <remarks>
+        ///     Setting this property also updates the internal squared value for efficient comparison.
+        /// </remarks>
         public float MaxAngularVelocity
         {
             get => _maxAngularVelocity;
@@ -123,9 +147,12 @@ namespace Alis.Core.Physic.Controllers
         }
 
         /// <summary>
-        ///     Gets or sets the max linear velocity.
+        ///     Gets or sets the maximum allowable linear velocity.
         /// </summary>
-        /// <value>The max linear velocity.</value>
+        /// <value>The maximum linear velocity in units per second.</value>
+        /// <remarks>
+        ///     Setting this property also updates the internal squared value for efficient comparison.
+        /// </remarks>
         public float MaxLinearVelocity
         {
             get => _maxLinearVelocity;
@@ -137,9 +164,16 @@ namespace Alis.Core.Physic.Controllers
         }
 
         /// <summary>
-        ///     Updates the dt
+        ///     Clamps velocities of all registered bodies to their maximum limits.
         /// </summary>
-        /// <param name="dt">The dt</param>
+        /// <param name="dt">Time step delta in seconds. Used to compute the displacement that would occur during the step.</param>
+        /// <remarks>
+        ///     <para>This method is called automatically by the physics world during simulation.
+        ///     For each registered body, it checks whether the computed displacement (<c>dt * velocity</c>)
+        ///     would exceed the configured maximum and scales the velocity proportionally if needed.</para>
+        ///     <para>Linear velocity is clamped using: <c>ratio = maxLinearVelocity / |velocity|</c></para>
+        ///     <para>Angular velocity is clamped using: <c>ratio = maxAngularVelocity / |angularVelocity|</c></para>
+        /// </remarks>
         public override void Update(float dt)
         {
             foreach (Body body in _bodies)
