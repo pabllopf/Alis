@@ -129,10 +129,6 @@ namespace Alis.Extension.Graphic.Sdl2.Sample
                 Logger.Info("Renderer created");
             }
 
-            // TODO: Set icon
-            //IntPtr icon = Sdl.LoadBmp(AssetManager.Find("logo.bmp"));
-            //Sdl.SetWindowIcon(window, icon);
-
             Sdlinput();
 
             // Rectangle to be drawn outline.

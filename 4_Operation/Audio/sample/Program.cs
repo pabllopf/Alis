@@ -53,7 +53,6 @@ namespace Alis.Core.Audio.Sample
                     switch (command)
                     {
                         case "play":
-                            // TODO: fix pahth issue
                             _ = player.Play("sample.wav");
                             break;
                         case "stop":

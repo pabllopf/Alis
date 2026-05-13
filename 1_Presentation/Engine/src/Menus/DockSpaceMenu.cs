@@ -70,36 +70,9 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         public void Update()
         {
-            // TODO: INCLUDE ALL THE LOGIC TO APPER THE MENU BAR
-            /*
-             // if is macos system:
-            if (!IsMacOs)
-            {
-                TopMenu.Initialize();
-            }
-            else
-            {
-                TopMenuMac.Initialize();
-            }
-
-
-             */
-
-
-            // Establece el padding de la ventana
-            //ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0);  // Igual padding arriba y abajo
-            //ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(4, 4f));
-            //ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2F(4, 4));
-
-            // Set height of the menu bar
-            //ImGui.SetWindowSize(new Vector2F(0, 5), ImGuiCond.Always);
-
-
-            // Establecer el color de fondo de los botones
-            //ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0.15f, 0.15f, 0.15f, 1.0f));
-            //ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4F(0.15f, 0.15f, 0.15f, 1.0f));
-            //ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4F(0.133f, 0.145f, 0.153f, 1.0f));
-            //ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
+            ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
+            ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
+            ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
 
             ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
             ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
@@ -131,34 +104,21 @@ namespace Alis.App.Engine.Menus
                 // Primer conjunto de botones: izquierda
                 if (ImGui.Button($"{FontAwesome5.Bars}"))
                 {
-                    // Lógica para retroceder
                     Logger.Info("Show normal menu...");
-
-                    // TODO: Load different layouts
-                    // ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Engine_default_config.ini"));
                 }
 
                 ImGui.SameLine();
 
-                // Primer conjunto de botones: izquierda
                 if (ImGui.Button($"{FontAwesome5.ArrowLeft}"))
                 {
-                    // Lógica para retroceder
                     Logger.Info("Retrocediendo...");
-
-                    // TODO: Load different layouts
-                    // ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Engine_default_config.ini"));
                 }
 
                 ImGui.SameLine();
 
                 if (ImGui.Button($"{FontAwesome5.ArrowRight}"))
                 {
-                    // Lógica para avanzar
                     Logger.Info("Avanzando...");
-
-                    // TODO: Load different layouts
-                    //ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Engine_tall_config.ini"));
                 }
 
                 ImGui.SameLine();
@@ -190,29 +150,6 @@ namespace Alis.App.Engine.Menus
 
 
                 // Segundo conjunto de botones: en el centro
-
-                /*
-                Scene scene = SpaceWork.VideoGame.Context.SceneManager.CurrentScene;
-                List<Scene> scenes = SpaceWork.VideoGame.Context.SceneManager.Scenes;
-
-                int numberCharsName = scene.Name.Length + 1;
-                ImGui.SetNextItemWidth(32 + numberCharsName * 10);
-
-                if (ImGui.BeginCombo($"##{scene.Id}", $"{FontAwesome5.Cube} {scene.Name}"))
-                {
-                    // Show the scenes of game:
-                    for (int i = 0; i < scenes.Count; i++)
-                    {
-                        Scene s = scenes[i];
-                        if (ImGui.Selectable($"{FontAwesome5.Cube} {s.Name}"))
-                        {
-                            SpaceWork.VideoGame.Context.SceneManager.LoadScene(i);
-                        }
-                    }
-
-                    ImGui.EndCombo();
-                }*/
-
 
                 ImGui.SameLine();
 
@@ -261,28 +198,6 @@ namespace Alis.App.Engine.Menus
                     ImGui.EndCombo();
                 }
 
-                /*
-                ImGui.SameLine();
-                ImGui.SetNextItemWidth(100);
-                if (ImGui.BeginCombo("##platform", $"{FontAwesome5.LaptopCode} MacOS", ImGuiComboFlags.HeightLarge))
-                {
-                    if (ImGui.Selectable("Windows"))
-                    {
-                    }
-
-                    if (ImGui.Selectable("MacOS"))
-                    {
-                    }
-
-                    ImGui.EndCombo();
-                }*/
-
-                // Espaciado y botones finales (Buscar y Configuración)
-                //ImGui.Spacing();
-                //ImGui.Spacing();
-                //ImGui.Spacing();
-
-
                 if (ImGui.Button($"{FontAwesome5.Search}"))
                 {
                     Logger.Info("Abriendo buscador...");
@@ -298,11 +213,7 @@ namespace Alis.App.Engine.Menus
 
                 if (ImGui.Button($"{FontAwesome5.Minus}"))
                 {
-                    // Lógica para retroceder
                     Logger.Info("Show normal menu...");
-
-                    // TODO: Load different layouts
-                    // ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Engine_default_config.ini"));
                 }
 
 
@@ -310,22 +221,14 @@ namespace Alis.App.Engine.Menus
 
                 if (ImGui.Button($"{FontAwesome5.WindowRestore}"))
                 {
-                    // Lógica para retroceder
                     Logger.Info("Show normal menu...");
-
-                    // TODO: Load different layouts
-                    // ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Engine_default_config.ini"));
                 }
 
                 ImGui.SameLine();
 
                 if (ImGui.Button($"{FontAwesome5.Times}"))
                 {
-                    // Lógica para retroceder
                     Logger.Info("Show normal menu...");
-
-                    // TODO: Load different layouts
-                    // ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Engine_default_config.ini"));
                 }
 
                 ImGui.EndMenuBar();

@@ -121,7 +121,6 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         protected Window(IntPtr cPointer, int dummy) :
             base(cPointer)
         {
-            // TODO : find a cleaner way of separating this constructor from Window(IntPtr handle)
         }
 
 

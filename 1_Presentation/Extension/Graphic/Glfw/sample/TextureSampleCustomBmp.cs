@@ -197,7 +197,6 @@ namespace Alis.Extension.Graphic.Glfw.Sample
             Gl.GlDeleteShader(vertexShader);
             Gl.GlDeleteShader(fragmentShader);
 
-            // TODO: fix path issue
             string imagePath = "tile000.bmp";
             if (!File.Exists(imagePath))
             {

@@ -32,8 +32,6 @@ using System.Runtime.InteropServices;
 
 namespace Alis.Extension.Graphic.Glfw.Structs
 {
-    // TODO:  Make custom marshaller instead of this
-
     /// <summary>
     ///     Used internally for marshalling
     /// </summary>

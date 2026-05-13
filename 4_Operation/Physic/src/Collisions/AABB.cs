@@ -35,35 +35,62 @@ using Alis.Core.Physic.Dynamics;
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     An axis aligned bounding box.
+    ///     Represents an axis-aligned bounding box (AABB) in 2D space.
     /// </summary>
+    /// <remarks>
+    ///     An AABB is a rectangular region aligned with the X and Y axes,
+    ///     defined by its lower (minimum) and upper (maximum) bounds.
+    ///     This structure is primarily used for broad-phase collision detection,
+    ///     spatial partitioning, and ray casting operations.
+    /// </remarks>
+    /// <example>
+    ///     <code>
+    ///     // Create an AABB from two corner points
+    ///     Aabb box = new Aabb(new Vector2F(0, 0), new Vector2F(10, 10));
+    ///     
+    ///     // Create an AABB from center and dimensions
+    ///     Aabb centered = new Aabb(new Vector2F(5, 5), 10, 10);
+    ///     </code>
+    /// </example>
     public struct Aabb
     {
         /// <summary>
-        ///     The lower vertex
+        ///     Gets or sets the lower (minimum) bound of the AABB.
+        ///     This represents the bottom-left corner with the smallest X and Y values.
         /// </summary>
+        /// <value>
+        ///     A <see cref="Vector2F"/> representing the lower-left corner.
+        /// </value>
         public Vector2F LowerBound;
 
         /// <summary>
-        ///     The upper vertex
+        ///     Gets or sets the upper (maximum) bound of the AABB.
+        ///     This represents the top-right corner with the largest X and Y values.
         /// </summary>
+        /// <value>
+        ///     A <see cref="Vector2F"/> representing the upper-right corner.
+        /// </value>
         public Vector2F UpperBound;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Aabb" /> class
+        ///     Initializes a new instance of the <see cref="Aabb"/> struct with specified corner points.
         /// </summary>
-        /// <param name="min">The min</param>
-        /// <param name="max">The max</param>
+        /// <param name="min">The lower (minimum) bound corner of the bounding box.</param>
+        /// <param name="max">The upper (maximum) bound corner of the bounding box.</param>
+        /// <remarks>
+        ///     This constructor copies the vector values. For better performance with
+        ///     existing vectors, use the ref version <see cref="AABB(ref Vector2F, ref Vector2F)"/>
+        /// </remarks>
         public Aabb(Vector2F min, Vector2F max)
             : this(ref min, ref max)
         {
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Aabb" /> class
+        ///     Initializes a new instance of the <see cref="Aabb"/> struct with specified corner points (by reference).
         /// </summary>
-        /// <param name="min">The min</param>
-        /// <param name="max">The max</param>
+        /// <param name="min">The lower (minimum) bound corner of the bounding box, passed by reference for performance.</param>
+        /// <param name="max">The upper (maximum) bound corner of the bounding box, passed by reference for performance.</param>
         public Aabb(ref Vector2F min, ref Vector2F max)
         {
             LowerBound = min;
@@ -71,11 +98,14 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Aabb" /> class
+        ///     Initializes a new instance of the <see cref="Aabb"/> struct with center point and dimensions.
         /// </summary>
-        /// <param name="center">The center</param>
-        /// <param name="width">The width</param>
-        /// <param name="height">The height</param>
+        /// <param name="center">The center point of the bounding box.</param>
+        /// <param name="width">The total width of the box (extent in X direction).</param>
+        /// <param name="height">The total height of the box (extent in Y direction).</param>
+        /// <remarks>
+        ///     The box extends half the width and height in each direction from the center.
+        /// </remarks>
         public Aabb(Vector2F center, float width, float height)
         {
             LowerBound = center - new Vector2F(width / 2, height / 2);
@@ -83,28 +113,47 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     Gets the value of the width
+        ///     Gets the width of the AABB (distance in X direction).
         /// </summary>
+        /// <value>
+        ///     A <see cref="float"/> representing the total width.
+        /// </value>
         public float Width => UpperBound.X - LowerBound.X;
 
         /// <summary>
-        ///     Gets the value of the height
+        ///     Gets the height of the AABB (distance in Y direction).
         /// </summary>
+        /// <value>
+        ///     A <see cref="float"/> representing the total height.
+        /// </value>
         public float Height => UpperBound.Y - LowerBound.Y;
 
         /// <summary>
-        ///     Get the center of the AABB.
+        ///     Gets the center point of the AABB.
         /// </summary>
+        /// <value>
+        ///     A <see cref="Vector2F"/> at the geometric center of the box.
+        /// </value>
         public Vector2F Center => 0.5f * (LowerBound + UpperBound);
 
         /// <summary>
-        ///     Get the extents of the AABB (half-widths).
+        ///     Gets the extents (half-widths) of the AABB from center to each edge.
         /// </summary>
+        /// <value>
+        ///     A <see cref="Vector2F"/> where X is half the width and Y is half the height.
+        /// </value>
+        /// <remarks>
+        ///     Extents are useful for computing distances from the center to edges
+        ///     and are commonly used in collision detection algorithms.
+        /// </remarks>
         public Vector2F Extents => 0.5f * (UpperBound - LowerBound);
 
         /// <summary>
-        ///     Get the perimeter length
+        ///     Gets the perimeter length of the AABB.
         /// </summary>
+        /// <value>
+        ///     A <see cref="float"/> representing the total perimeter (2 * (width + height)).
+        /// </value>
         public float Perimeter
         {
             get
@@ -133,23 +182,35 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     First quadrant
+        ///     Gets the first quadrant (top-right quarter) of this AABB.
         /// </summary>
+        /// <value>
+        ///     A new <see cref="Aabb"/> representing the quadrant from center to upper bound.
+        /// </value>
         public Aabb Q1 => new Aabb(Center, UpperBound);
 
         /// <summary>
-        ///     Second quadrant
+        ///     Gets the second quadrant (top-left quarter) of this AABB.
         /// </summary>
+        /// <value>
+        ///     A new <see cref="Aabb"/> representing the quadrant from lower X / center Y to center / upper Y.
+        /// </value>
         public Aabb Q2 => new Aabb(new Vector2F(LowerBound.X, Center.Y), new Vector2F(Center.X, UpperBound.Y));
 
         /// <summary>
-        ///     Third quadrant
+        ///     Gets the third quadrant (bottom-left quarter) of this AABB.
         /// </summary>
+        /// <value>
+        ///     A new <see cref="Aabb"/> representing the quadrant from lower bound to center.
+        /// </value>
         public Aabb Q3 => new Aabb(LowerBound, Center);
 
         /// <summary>
-        ///     Forth quadrant
+        ///     Gets the fourth quadrant (bottom-right quarter) of this AABB.
         /// </summary>
+        /// <value>
+        ///     A new <see cref="Aabb"/> representing the quadrant from center X / lower Y to upper X / center Y.
+        /// </value>
         public Aabb Q4 => new Aabb(new Vector2F(Center.X, LowerBound.Y), new Vector2F(UpperBound.X, Center.Y));
 
         /// <summary>
@@ -238,11 +299,24 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
+        ///     Casts a ray against this AABB and computes the intersection point and normal.
         /// </summary>
-        /// <param name="output"></param>
-        /// <param name="input"></param>
-        /// <param name="doInteriorCheck"></param>
-        /// <returns></returns>
+        /// <param name="output">The output parameter that receives the intersection result (fraction and normal).</param>
+        /// <param name="input">The ray cast input containing the ray endpoints and maximum fraction.</param>
+        /// <param name="doInteriorCheck">
+        ///     If <c>true</c>, checks if the ray starts inside the AABB and handles interior intersections.
+        ///     If <c>false</c>, assumes the ray starts outside the AABB.
+        /// </param>
+        /// <returns>
+        ///     <c>true</c> if the ray intersects the AABB; otherwise, <c>false</c>.
+        /// </returns>
+        /// <remarks>
+        ///     This implements the slab method algorithm from "Real-Time Collision Detection" by Christer Ericson.
+        ///     The algorithm finds the closest intersection along the ray with the AABB's walls.
+        ///     
+        ///     The output fraction represents the distance along the ray where the intersection occurs,
+        ///     normalized to [0, 1] based on the ray's length.
+        /// </remarks>
         public bool RayCast(out RayCastOutput output, ref RayCastInput input, bool doInteriorCheck = true)
         {
             // From Real-time Collision Detection, p179.
