@@ -42,11 +42,11 @@ namespace Alis.Core.Aspect.Logging.Abstractions
         string Name { get; }
 
         /// <summary>
-        ///     Evaluates whether the given log entry should be processed and written to outputs.
-        ///     Returning false prevents the entry from reaching any output destination.
+        ///     Evaluates whether the given log entry should be processed.
+        ///     Returning false prevents the entry from being written to outputs.
         /// </summary>
-        /// <param name="entry">The log entry to evaluate for filtering.</param>
-        /// <returns>True if the entry should be logged; false if it should be silently discarded.</returns>
+        /// <param name="entry">The log entry to filter.</param>
+        /// <returns>True if the entry should be logged; false if it should be skipped.</returns>
         bool ShouldLog(ILogEntry entry);
     }
 }
