@@ -30,44 +30,37 @@
 namespace Alis.Core.Physic.Collisions.Shapes
 {
     /// <summary>
-    ///     Defines the available types of collision shapes in the physics engine.
-    ///     Each shape type has different collision properties and computational characteristics.
+    ///     The shape type enum
     /// </summary>
     public enum ShapeType
     {
         /// <summary>
-        ///     The shape type has not been initialized or is unspecified.
-        ///     Used as a default value before the shape is fully constructed.
+        ///     The unknown shape type
         /// </summary>
         Unknown = -1,
 
         /// <summary>
-        ///     A circle shape defined by a center position and radius.
-        ///     The simplest and most efficient collision primitive.
+        ///     The circle shape type
         /// </summary>
         Circle = 0,
 
         /// <summary>
-        ///     A line segment (edge) shape defined by two endpoints.
-        ///     Can be connected to adjacent edges for smooth chain collisions.
+        ///     The edge shape type
         /// </summary>
         Edge = 1,
 
         /// <summary>
-        ///     A convex polygon shape defined by a set of vertices.
-        ///     Vertices must form a non-self-intersecting convex hull.
+        ///     The polygon shape type
         /// </summary>
         Polygon = 2,
 
         /// <summary>
-        ///     A chain shape consisting of a sequence of connected line segments.
-        ///     Supports smooth collisions between adjacent edges using ghost vertices.
+        ///     The chain shape type
         /// </summary>
         Chain = 3,
 
         /// <summary>
-        ///     The total count of distinct shape types. Not a valid shape type itself.
-        ///     Used for array sizing and enumeration purposes.
+        ///     The type count shape type
         /// </summary>
         TypeCount = 4
     }

@@ -33,32 +33,29 @@ using Alis.Core.Physic.Common;
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     Caches the simplex state from a GJK distance computation for warm starting subsequent calls.
-    ///     Storing the vertex indices and metric allows the GJK algorithm to resume from a good
-    ///     initial simplex rather than starting from scratch, significantly improving performance
-    ///     for temporally coherent simulations. Set <see cref="Count"/> to zero on first call.
+    ///     Used to warm start ComputeDistance.
+    ///     Set count to zero on first call.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct SimplexCache
     {
         /// <summary>
-        ///     The number of vertices in the cached simplex (0-3). Set to 0 to force a fresh computation.
+        ///     Length or area
         /// </summary>
         public ushort Count;
 
         /// <summary>
-        ///     The cached vertex indices on shape A that define the simplex in Minkowski space.
+        ///     Vertices on shape A
         /// </summary>
         public FixedArray3<byte> IndexA;
 
         /// <summary>
-        ///     The cached vertex indices on shape B that define the simplex in Minkowski space.
+        ///     Vertices on shape B
         /// </summary>
         public FixedArray3<byte> IndexB;
 
         /// <summary>
-        ///     The cached metric value (edge length or area) used to detect significant configuration changes.
-        ///     If the new metric differs by more than a factor of 2, the cache is discarded.
+        ///     The metric
         /// </summary>
         public float Metric;
     }

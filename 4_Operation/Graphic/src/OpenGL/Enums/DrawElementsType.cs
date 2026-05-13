@@ -30,18 +30,23 @@
 namespace Alis.Core.Graphic.OpenGL.Enums
 {
     /// <summary>
-    /// Defines the data types for index values used with glDrawElements and related indexed drawing commands.
-    /// Specifies the size (byte-width) of each index in the element array buffer.
+    ///     The draw elements type enum
     /// </summary>
     public enum DrawElementsType
     {
-        /// <summary>Unsigned 8-bit byte index (GL_UNSIGNED_BYTE = 0x1401).</summary>
+        /// <summary>
+        ///     The unsigned byte draw elements type
+        /// </summary>
         UnsignedByte = 0x1401,
 
-        /// <summary>Unsigned 16-bit short index (GL_UNSIGNED_SHORT = 0x1403).</summary>
+        /// <summary>
+        ///     The unsigned short draw elements type
+        /// </summary>
         UnsignedShort = 0x1403,
 
-        /// <summary>Unsigned 32-bit integer index (GL_UNSIGNED_INT = 0x1405).</summary>
+        /// <summary>
+        ///     The unsigned int draw elements type
+        /// </summary>
         UnsignedInt = 0x1405
     }
 }

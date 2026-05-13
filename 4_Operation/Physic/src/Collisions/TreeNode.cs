@@ -30,44 +30,39 @@
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     A node in the dynamic tree (AABB tree) used for broad-phase collision detection.
-    ///     Leaf nodes store AABBs of collision proxies; internal nodes combine child AABBs.
-    ///     The tree is stored as a contiguous array with linked-list free node management.
+    ///     A node in the dynamic tree. The client does not interact with this directly.
     /// </summary>
     internal struct TreeNode<TNode>
     {
         /// <summary>
-        ///     The fat axis-aligned bounding box for this node, enlarged by the AABB extension factor
-        ///     to allow small movements without requiring tree updates.
+        ///     Enlarged AABB
         /// </summary>
         internal Aabb Aabb;
 
         /// <summary>
-        ///     The index of the first child node. For leaf nodes, this equals <see cref="DynamicTree{TNode}.NullNode"/>.
+        ///     The child
         /// </summary>
         internal int Child1;
 
         /// <summary>
-        ///     The index of the second child node. For leaf nodes, this equals <see cref="DynamicTree{TNode}.NullNode"/>.
+        ///     The child
         /// </summary>
         internal int Child2;
 
+        // leaf = 0, free node = -1
         /// <summary>
-        ///     The height of the subtree rooted at this node.
-        ///     Leaf nodes have height 0, free nodes have height -1.
+        ///     The height
         /// </summary>
         internal int Height;
 
         /// <summary>
-        ///     The index of the parent node. For the root node, this equals <see cref="DynamicTree{TNode}.NullNode"/>.
-        ///     For free nodes, this is repurposed as the next free node index.
+        ///     The parent
         /// </summary>
         internal int Parent;
 
+        // to reduce struct size we use Parent for the Free linked-list
         /// <summary>
-        ///     Gets or sets the next free node index in the free list.
-        ///     This property reuses the <see cref="Parent"/> field to reduce struct size,
-        ///     since a node cannot be both in-use and free simultaneously.
+        ///     Next free node
         /// </summary>
         internal int Next
         {
@@ -76,15 +71,15 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     The user data associated with this node (e.g., a <see cref="FixtureProxy"/> reference).
+        ///     The user data
         /// </summary>
         internal TNode UserData;
 
+
         /// <summary>
-        ///     Determines whether this node is a leaf node. Leaf nodes have no children
-        ///     (Child1 equals <see cref="DynamicTree{TNode}.NullNode"/>).
+        ///     Describes whether this instance is leaf
         /// </summary>
-        /// <returns><c>true</c> if this node is a leaf; otherwise, <c>false</c>.</returns>
+        /// <returns>The bool</returns>
         internal bool IsLeaf() => Child1 == DynamicTree<TNode>.NullNode;
     }
 }

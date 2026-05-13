@@ -30,111 +30,178 @@
 namespace Alis.Core.Graphic.OpenGL.Enums
 {
     /// <summary>
-    /// Defines the pixel storage parameters used by glPixelStorei to control pixel data packing and unpacking.
-    /// Affects how pixel data is read from and written to client memory during texture and framebuffer operations.
+    ///     The pixel store parameter enum
     /// </summary>
     public enum StoreParameter
     {
-        /// <summary>Swap bytes for unpack operations (GL_UNPACK_SWAP_BYTES = 0x0CF0).</summary>
+        /// <summary>
+        ///     The unpack swap bytes pixel store parameter
+        /// </summary>
         UnpackSwapBytes = 0x0CF0,
 
-        /// <summary>LSB first for unpack operations (GL_UNPACK_LSB_FIRST = 0x0CF1).</summary>
+        /// <summary>
+        ///     The unpack lsb first pixel store parameter
+        /// </summary>
         UnpackLsbFirst = 0x0CF1,
 
-        /// <summary>Row length for unpack operations (GL_UNPACK_ROW_LENGTH = 0x0CF2).</summary>
+        /// <summary>
+        ///     The unpack row length pixel store parameter
+        /// </summary>
         UnpackRowLength = 0x0CF2,
 
-        /// <summary>Skip rows for unpack operations (GL_UNPACK_SKIP_ROWS = 0x0CF3).</summary>
+        /// <summary>
+        ///     The unpack skip rows pixel store parameter
+        /// </summary>
         UnpackSkipRows = 0x0CF3,
 
-        /// <summary>Skip pixels for unpack operations (GL_UNPACK_SKIP_PIXELS = 0x0CF4).</summary>
+        /// <summary>
+        ///     The unpack skip pixels pixel store parameter
+        /// </summary>
         UnpackSkipPixels = 0x0CF4,
 
-        /// <summary>Alignment for unpack operations (GL_UNPACK_ALIGNMENT = 0x0CF5).</summary>
+        /// <summary>
+        ///     The unpack alignment pixel store parameter
+        /// </summary>
         UnpackAlignment = 0x0CF5,
 
-        /// <summary>Swap bytes for pack operations (GL_PACK_SWAP_BYTES = 0x0D00).</summary>
+        /// <summary>
+        ///     The pack swap bytes pixel store parameter
+        /// </summary>
         PackSwapBytes = 0x0D00,
 
-        /// <summary>LSB first for pack operations (GL_PACK_LSB_FIRST = 0x0D01).</summary>
+        /// <summary>
+        ///     The pack lsb first pixel store parameter
+        /// </summary>
         PackLsbFirst = 0x0D01,
 
-        /// <summary>Row length for pack operations (GL_PACK_ROW_LENGTH = 0x0D02).</summary>
+        /// <summary>
+        ///     The pack row length pixel store parameter
+        /// </summary>
         PackRowLength = 0x0D02,
 
-        /// <summary>Skip rows for pack operations (GL_PACK_SKIP_ROWS = 0x0D03).</summary>
+        /// <summary>
+        ///     The pack skip rows pixel store parameter
+        /// </summary>
         PackSkipRows = 0x0D03,
 
-        /// <summary>Skip pixels for pack operations (GL_PACK_SKIP_PIXELS = 0x0D04).</summary>
+        /// <summary>
+        ///     The pack skip pixels pixel store parameter
+        /// </summary>
         PackSkipPixels = 0x0D04,
 
-        /// <summary>Alignment for pack operations (GL_PACK_ALIGNMENT = 0x0D05).</summary>
+        /// <summary>
+        ///     The pack alignment pixel store parameter
+        /// </summary>
         PackAlignment = 0x0D05,
 
-        /// <summary>Skip images for pack (GL_PACK_SKIP_IMAGES = 0x806B).</summary>
+        /// <summary>
+        ///     The pack skip images pixel store parameter
+        /// </summary>
         PackSkipImages = 0x806B,
 
-        /// <summary>Extension alias for pack skip images (GL_PACK_SKIP_IMAGES_EXT = 0x806B).</summary>
+        /// <summary>
+        ///     The pack skip images ext pixel store parameter
+        /// </summary>
         PackSkipImagesExt = 0x806B,
 
-        /// <summary>Image height for pack (GL_PACK_IMAGE_HEIGHT = 0x806C).</summary>
+        /// <summary>
+        ///     The pack image height pixel store parameter
+        /// </summary>
         PackImageHeight = 0x806C,
 
-        /// <summary>Extension alias for pack image height (GL_PACK_IMAGE_HEIGHT_EXT = 0x806C).</summary>
+        /// <summary>
+        ///     The pack image height ext pixel store parameter
+        /// </summary>
         PackImageHeightExt = 0x806C,
 
-        /// <summary>Skip images for unpack (GL_UNPACK_SKIP_IMAGES = 0x806D).</summary>
+        /// <summary>
+        ///     The unpack skip images pixel store parameter
+        /// </summary>
         UnpackSkipImages = 0x806D,
 
-        /// <summary>Extension alias for unpack skip images (GL_UNPACK_SKIP_IMAGES_EXT = 0x806D).</summary>
+        /// <summary>
+        ///     The unpack skip images ext pixel store parameter
+        /// </summary>
         UnpackSkipImagesExt = 0x806D,
 
-        /// <summary>Image height for unpack (GL_UNPACK_IMAGE_HEIGHT = 0x806E).</summary>
+        /// <summary>
+        ///     The unpack image height pixel store parameter
+        /// </summary>
         UnpackImageHeight = 0x806E,
 
-        /// <summary>Extension alias for unpack image height (GL_UNPACK_IMAGE_HEIGHT_EXT = 0x806E).</summary>
+        /// <summary>
+        ///     The unpack image height ext pixel store parameter
+        /// </summary>
         UnpackImageHeightExt = 0x806E,
 
-        /// <summary>Extension: skip volumes for pack (GL_PACK_SKIP_VOLUMES_SGIS = 0x8130).</summary>
+        /// <summary>
+        ///     The pack skip volumes sgis pixel store parameter
+        /// </summary>
         PackSkipVolumesSgis = 0x8130,
 
-        /// <summary>Extension: image depth for pack (GL_PACK_IMAGE_DEPTH_SGIS = 0x8131).</summary>
+        /// <summary>
+        ///     The pack image depth sgis pixel store parameter
+        /// </summary>
         PackImageDepthSgis = 0x8131,
 
-        /// <summary>Extension: skip volumes for unpack (GL_UNPACK_SKIP_VOLUMES_SGIS = 0x8132).</summary>
+        /// <summary>
+        ///     The unpack skip volumes sgis pixel store parameter
+        /// </summary>
         UnpackSkipVolumesSgis = 0x8132,
 
-        /// <summary>Extension: image depth for unpack (GL_UNPACK_IMAGE_DEPTH_SGIS = 0x8133).</summary>
+        /// <summary>
+        ///     The unpack image depth sgis pixel store parameter
+        /// </summary>
         UnpackImageDepthSgis = 0x8133,
 
-        /// <summary>Extension: tile width (GL_TILE_WIDTH_SGIX = 0x8140).</summary>
+        /// <summary>
+        ///     The pixel tile width sgix pixel store parameter
+        /// </summary>
         TileWidthSgix = 0x8140,
 
-        /// <summary>Extension: tile height (GL_TILE_HEIGHT_SGIX = 0x8141).</summary>
+        /// <summary>
+        ///     The pixel tile height sgix pixel store parameter
+        /// </summary>
         TileHeightSgix = 0x8141,
 
-        /// <summary>Extension: tile grid width (GL_TILE_GRID_WIDTH_SGIX = 0x8142).</summary>
+        /// <summary>
+        ///     The pixel tile grid width sgix pixel store parameter
+        /// </summary>
         TileGridWidthSgix = 0x8142,
 
-        /// <summary>Extension: tile grid height (GL_TILE_GRID_HEIGHT_SGIX = 0x8143).</summary>
+        /// <summary>
+        ///     The pixel tile grid height sgix pixel store parameter
+        /// </summary>
         TileGridHeightSgix = 0x8143,
 
-        /// <summary>Extension: tile grid depth (GL_TILE_GRID_DEPTH_SGIX = 0x8144).</summary>
+        /// <summary>
+        ///     The pixel tile grid depth sgix pixel store parameter
+        /// </summary>
         TileGridDepthSgix = 0x8144,
 
-        /// <summary>Extension: tile cache size (GL_TILE_CACHE_SIZE_SGIX = 0x8145).</summary>
+        /// <summary>
+        ///     The pixel tile cache size sgix pixel store parameter
+        /// </summary>
         TileCacheSizeSgix = 0x8145,
 
-        /// <summary>Extension: pack resample (GL_PACK_RESAMPLE_SGIX = 0x842C).</summary>
+        /// <summary>
+        ///     The pack resample sgix pixel store parameter
+        /// </summary>
         PackResampleSgix = 0x842C,
 
-        /// <summary>Extension: unpack resample (GL_UNPACK_RESAMPLE_SGIX = 0x842D).</summary>
+        /// <summary>
+        ///     The unpack resample sgix pixel store parameter
+        /// </summary>
         UnpackResampleSgix = 0x842D,
 
-        /// <summary>Extension: pack subsample rate (GL_PACK_SUBSAMPLE_RATE_SGIX = 0x85A0).</summary>
+        /// <summary>
+        ///     The pack subsample rate sgix pixel store parameter
+        /// </summary>
         PackSubsampleRateSgix = 0x85A0,
 
-        /// <summary>Extension: unpack subsample rate (GL_UNPACK_SUBSAMPLE_RATE_SGIX = 0x85A1).</summary>
+        /// <summary>
+        ///     The unpack subsample rate sgix pixel store parameter
+        /// </summary>
         UnpackSubsampleRateSgix = 0x85A1
     }
 }

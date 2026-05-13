@@ -35,53 +35,49 @@ using Alis.Core.Physic.Dynamics;
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     Implements the separation function used for continuous collision detection (CCD) via the time of impact (TOI)
-    ///     algorithm. Computes the minimum separation between two shapes at a given time and evaluates separation
-    ///     along different function types (points, face A, face B) derived from the GJK simplex cache.
+    ///     The separation function class
     /// </summary>
     public static class SeparationFunction
     {
         /// <summary>
-        ///     The current separating axis direction used for computing distances.
+        ///     The axis
         /// </summary>
         [ThreadStatic] private static Vector2F _axis;
 
         /// <summary>
-        ///     The local point on the reference face used for face-type separation computations.
+        ///     The local point
         /// </summary>
         [ThreadStatic] private static Vector2F _localPoint;
 
         /// <summary>
-        ///     The distance proxy for the first shape (A), providing vertex access for support queries.
+        ///     The proxy
         /// </summary>
         [ThreadStatic] private static DistanceProxy _proxyA;
 
         /// <summary>
-        ///     The distance proxy for the second shape (B), providing vertex access for support queries.
+        ///     The proxy
         /// </summary>
         [ThreadStatic] private static DistanceProxy _proxyB;
 
         /// <summary>
-        ///     The sweep motion data for shape A and shape B, used to interpolate transforms over time.
+        ///     The sweep
         /// </summary>
         [ThreadStatic] private static Sweep _sweepA, _sweepB;
 
         /// <summary>
-        ///     The type of separation function to use, determined by the simplex cache configuration.
+        ///     The type
         /// </summary>
         [ThreadStatic] private static SeparationFunctionType _type;
 
         /// <summary>
-        ///     Initializes the separation function from a simplex cache and two shape proxies with their motion sweeps.
-        ///     Determines whether the separation function operates on point-to-point, face A, or face B mode based
-        ///     on the simplex cache vertex configuration.
+        ///     Sets the cache
         /// </summary>
-        /// <param name="cache">The simplex cache from the GJK distance computation, containing vertex indices and count.</param>
-        /// <param name="proxyA">The distance proxy for shape A.</param>
-        /// <param name="sweepA">The motion sweep data for shape A.</param>
-        /// <param name="proxyB">The distance proxy for shape B.</param>
-        /// <param name="sweepB">The motion sweep data for shape B.</param>
-        /// <param name="t1">The initial time parameter at which to evaluate the transforms.</param>
+        /// <param name="cache">The cache</param>
+        /// <param name="proxyA">The proxy</param>
+        /// <param name="sweepA">The sweep</param>
+        /// <param name="proxyB">The proxy</param>
+        /// <param name="sweepB">The sweep</param>
+        /// <param name="t1">The </param>
         public static void Set(ref SimplexCache cache, ref DistanceProxy proxyA, ref Sweep sweepA, ref DistanceProxy proxyB, ref Sweep sweepB, float t1)
         {
             _localPoint = Vector2F.Zero;
@@ -155,15 +151,12 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     Computes the minimum separation distance between the two shapes at the specified time parameter.
-        ///     Determines the support vertices on each shape that achieve the minimum separation along the
-        ///     current separation axis. The separation type (points, face A, face B) determines how the
-        ///     axis and witness points are derived.
+        ///     Finds the min separation using the specified index a
         /// </summary>
-        /// <param name="indexA">When this method returns, contains the support vertex index on shape A.</param>
-        /// <param name="indexB">When this method returns, contains the support vertex index on shape B.</param>
-        /// <param name="t">The time parameter at which to evaluate the separation (used to interpolate transforms from the sweeps).</param>
-        /// <returns>The minimum separation distance. Positive values indicate shapes are separated; negative or zero indicates overlap or contact.</returns>
+        /// <param name="indexA">The index</param>
+        /// <param name="indexB">The index</param>
+        /// <param name="t">The </param>
+        /// <returns>The float</returns>
         public static float FindMinSeparation(out int indexA, out int indexB, float t)
         {
             _sweepA.GetTransform(out ControllerTransform xfA, t);
@@ -231,15 +224,12 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     Evaluates the separation distance at the specified time for given support vertex indices.
-        ///     Unlike <see cref="FindMinSeparation"/>, this method uses pre-determined vertex indices
-        ///     rather than finding the support vertices, making it suitable for binary search refinement
-        ///     in the TOI algorithm.
+        ///     Evaluates the index a
         /// </summary>
-        /// <param name="indexA">The support vertex index on shape A (use -1 for face-type where only one shape's vertex is needed).</param>
-        /// <param name="indexB">The support vertex index on shape B (use -1 for face-type where only one shape's vertex is needed).</param>
-        /// <param name="t">The time parameter at which to evaluate the separation.</param>
-        /// <returns>The separation distance at the given time for the specified vertices.</returns>
+        /// <param name="indexA">The index</param>
+        /// <param name="indexB">The index</param>
+        /// <param name="t">The </param>
+        /// <returns>The float</returns>
         public static float Evaluate(int indexA, int indexB, float t)
         {
             _sweepA.GetTransform(out ControllerTransform xfA, t);

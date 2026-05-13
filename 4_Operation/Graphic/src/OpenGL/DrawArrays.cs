@@ -30,11 +30,7 @@
 namespace Alis.Core.Graphic.OpenGL
 {
     /// <summary>
-    /// Represents the unmanaged function pointer for the OpenGL glDrawArrays command.
-    /// Renders primitives from array data using the currently bound vertex array.
+    ///     The draw arrays
     /// </summary>
-    /// <param name="mode">The type of primitive to render (e.g., Triangles, Lines, Points).</param>
-    /// <param name="first">The starting index in the enabled vertex arrays.</param>
-    /// <param name="count">The number of vertices to render.</param>
     public delegate void DrawArrays(PrimitiveType mode, int first, int count);
 }

@@ -32,16 +32,14 @@ using System.IO;
 namespace Alis.Core.Physic.Common
 {
     /// <summary>
-    ///     Provides a simple text buffer reader that reads all content from a <see cref="Stream"/>
-    ///     and provides sequential character access with position tracking.
-    ///     Used for parsing textual physics data (e.g., polygon definitions from files).
+    ///     The file buffer class
     /// </summary>
     internal class FileBuffer
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="FileBuffer" /> class by reading the entire stream content into a string buffer.
+        ///     Initializes a new instance of the <see cref="FileBuffer" /> class
         /// </summary>
-        /// <param name="stream">The input stream containing text data to read (e.g., polygon vertex definitions).</param>
+        /// <param name="stream">The stream</param>
         public FileBuffer(Stream stream)
         {
             using (StreamReader sr = new StreamReader(stream))

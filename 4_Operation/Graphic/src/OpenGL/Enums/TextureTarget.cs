@@ -30,57 +30,88 @@
 namespace Alis.Core.Graphic.OpenGL.Enums
 {
     /// <summary>
-    /// Defines the texture target binding points in OpenGL.
-    /// Specifies the type of texture object being bound or operated on, including 1D, 2D, 3D, cube map, array, multisample, and rectangle textures.
+    ///     The texture target enum
     /// </summary>
     public enum TextureTarget
     {
-        /// <summary>1D texture target (GL_TEXTURE_1D = 0x0DE0).</summary>
+        /// <summary>
+        ///     The texture texture target
+        /// </summary>
         Texture1D = 0x0DE0,
 
-        /// <summary>2D texture target (GL_TEXTURE_2D = 0x0DE1).</summary>
+        /// <summary>
+        ///     The texture texture target
+        /// </summary>
         Texture2D = 0x0DE1,
 
-        /// <summary>3D texture target (GL_TEXTURE_3D = 0x806F).</summary>
+        /// <summary>
+        ///     The texture texture target
+        /// </summary>
         Texture3D = 0x806F,
 
-        /// <summary>1D array texture target (GL_TEXTURE_1D_ARRAY = 0x8C18).</summary>
+        /// <summary>
+        ///     The texture array texture target
+        /// </summary>
         Texture1DArray = 0x8C18,
 
-        /// <summary>2D array texture target (GL_TEXTURE_2D_ARRAY = 0x8C1A).</summary>
+        /// <summary>
+        ///     The texture array texture target
+        /// </summary>
         Texture2DArray = 0x8C1A,
 
-        /// <summary>Rectangle texture target (non-power-of-two) (GL_TEXTURE_RECTANGLE = 0x84F5).</summary>
+        /// <summary>
+        ///     The texture rectangle texture target
+        /// </summary>
         TextureRectangle = 0x84F5,
 
-        /// <summary>Cube map texture target (GL_TEXTURE_CUBE_MAP = 0x8513).</summary>
+        /// <summary>
+        ///     The texture cube map texture target
+        /// </summary>
         TextureCubeMap = 0x8513,
 
-        /// <summary>Cube map positive X face (GL_TEXTURE_CUBE_MAP_POSITIVE_X = 0x8515).</summary>
+        /// <summary>
+        ///     The texture cube map positive texture target
+        /// </summary>
         TextureCubeMapPositiveX = 0x8515,
 
-        /// <summary>Cube map negative X face (GL_TEXTURE_CUBE_MAP_NEGATIVE_X = 0x8516).</summary>
+        /// <summary>
+        ///     The texture cube map negative texture target
+        /// </summary>
         TextureCubeMapNegativeX = 0x8516,
 
-        /// <summary>Cube map positive Y face (GL_TEXTURE_CUBE_MAP_POSITIVE_Y = 0x8517).</summary>
+        /// <summary>
+        ///     The texture cube map positive texture target
+        /// </summary>
         TextureCubeMapPositiveY = 0x8517,
 
-        /// <summary>Cube map negative Y face (GL_TEXTURE_CUBE_MAP_NEGATIVE_Y = 0x8518).</summary>
+        /// <summary>
+        ///     The texture cube map negative texture target
+        /// </summary>
         TextureCubeMapNegativeY = 0x8518,
 
-        /// <summary>Cube map positive Z face (GL_TEXTURE_CUBE_MAP_POSITIVE_Z = 0x8519).</summary>
+        /// <summary>
+        ///     The texture cube map positive texture target
+        /// </summary>
         TextureCubeMapPositiveZ = 0x8519,
 
-        /// <summary>Cube map negative Z face (GL_TEXTURE_CUBE_MAP_NEGATIVE_Z = 0x851A).</summary>
+        /// <summary>
+        ///     The texture cube map negative texture target
+        /// </summary>
         TextureCubeMapNegativeZ = 0x851A,
 
-        /// <summary>Cube map array texture target (GL_TEXTURE_CUBE_MAP_ARRAY = 0x9009).</summary>
+        /// <summary>
+        ///     The texture cube map array texture target
+        /// </summary>
         TextureCubeMapArray = 0x9009,
 
-        /// <summary>2D multisample texture target (GL_TEXTURE_2D_MULTISAMPLE = 0x9100).</summary>
+        /// <summary>
+        ///     The texture multisample texture target
+        /// </summary>
         Texture2DMultisample = 0x9100,
 
-        /// <summary>2D multisample array texture target (GL_TEXTURE_2D_MULTISAMPLE_ARRAY = 0x9102).</summary>
+        /// <summary>
+        ///     The texture multisample array texture target
+        /// </summary>
         Texture2DMultisampleArray = 0x9102
     }
 }

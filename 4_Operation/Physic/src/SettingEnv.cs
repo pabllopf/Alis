@@ -33,9 +33,7 @@ using Alis.Core.Physic.Common;
 namespace Alis.Core.Physic
 {
     /// <summary>
-    ///     Central configuration settings for the physics engine. Controls numerical tolerances,
-    ///     solver iterations, collision detection parameters, sleeping behavior, and diagnostic
-    ///     flags. These settings affect simulation stability, performance, and behavior.
+    ///     The settings class
     /// </summary>
     public static class SettingEnv
     {
@@ -233,21 +231,19 @@ namespace Alis.Core.Physic
         public static readonly int MaxPolygonVertices = 8;
 
         /// <summary>
-        ///     Mixes two friction values using the geometric mean (sqrt(a * b)).
-        ///     This is the default friction mixing law for the physics engine.
+        ///     Friction mixing law. Feel free to customize this.
         /// </summary>
-        /// <param name="friction1">The friction coefficient of the first material.</param>
-        /// <param name="friction2">The friction coefficient of the second material.</param>
-        /// <returns>The mixed friction coefficient.</returns>
+        /// <param name="friction1">The friction1.</param>
+        /// <param name="friction2">The friction2.</param>
+        /// <returns></returns>
         public static float MixFriction(float friction1, float friction2) => (float) Math.Sqrt(friction1 * friction2);
 
         /// <summary>
-        ///     Mixes two restitution values using the maximum law (max(a, b)).
-        ///     This is the default restitution (bounciness) mixing law for the physics engine.
+        ///     Restitution mixing law. Feel free to customize this.
         /// </summary>
-        /// <param name="restitution1">The restitution coefficient of the first material.</param>
-        /// <param name="restitution2">The restitution coefficient of the second material.</param>
-        /// <returns>The mixed restitution coefficient (the larger of the two values).</returns>
+        /// <param name="restitution1">The restitution1.</param>
+        /// <param name="restitution2">The restitution2.</param>
+        /// <returns></returns>
         public static float MixRestitution(float restitution1, float restitution2) => restitution1 > restitution2 ? restitution1 : restitution2;
     }
 }

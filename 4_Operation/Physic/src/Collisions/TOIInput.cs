@@ -32,36 +32,33 @@ using Alis.Core.Physic.Common;
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     Input parameters for <see cref="TimeOfImpact.CalculateTimeOfImpact"/>.
-    ///     Specifies the two shape proxies, their motion sweeps, and the maximum time fraction
-    ///     that defines the sweep interval [0, tMax].
+    ///     Input parameters for CalculateTimeOfImpact
     /// </summary>
     public class ToiInput
     {
         /// <summary>
-        ///     The distance proxy for the first shape (A), providing vertices for GJK support queries.
+        ///     The proxy
         /// </summary>
         public DistanceProxy ProxyA;
 
         /// <summary>
-        ///     The distance proxy for the second shape (B), providing vertices for GJK support queries.
+        ///     The proxy
         /// </summary>
         public DistanceProxy ProxyB;
 
         /// <summary>
-        ///     The motion sweep data for shape A, defining its position and rotation over time.
+        ///     The sweep
         /// </summary>
         public Sweep SweepA;
 
         /// <summary>
-        ///     The motion sweep data for shape B, defining its position and rotation over time.
+        ///     The sweep
         /// </summary>
         public Sweep SweepB;
 
         /// <summary>
-        ///     The maximum time fraction defining the sweep interval [0, tMax].
-        ///     The TOI algorithm searches for impacts within this range.
+        ///     The max
         /// </summary>
-        public float TMax;
+        public float TMax; // defines sweep interval [0, tMax]
     }
 }

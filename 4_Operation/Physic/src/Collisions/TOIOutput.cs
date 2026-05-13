@@ -30,19 +30,17 @@
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     Output result from <see cref="TimeOfImpact.CalculateTimeOfImpact"/>.
-    ///     Contains the time of impact state and the time fraction at which the shapes first contact.
+    ///     The toi output
     /// </summary>
     public struct ToiOutput
     {
         /// <summary>
-        ///     The state of the TOI computation indicating the outcome (unknown, failed, overlapped, touching, separated).
+        ///     The state
         /// </summary>
         public ToiOutputState State;
 
         /// <summary>
-        ///     The time fraction in [0, tMax] at which the shapes first contact, or the best estimate if the
-        ///     computation failed. The exact meaning depends on the <see cref="State"/> value.
+        ///     The
         /// </summary>
         public float T;
     }

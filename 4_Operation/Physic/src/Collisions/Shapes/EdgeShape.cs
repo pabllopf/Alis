@@ -41,20 +41,17 @@ namespace Alis.Core.Physic.Collisions.Shapes
     public class EdgeShape : Shape
     {
         /// <summary>
-        ///     The internal start vertex of the edge segment in local coordinates.
-        ///     Accessed via the <see cref="Vertex1"/> property which triggers property recomputation.
+        ///     Edge start vertex
         /// </summary>
         internal Vector2F Vertex11;
 
         /// <summary>
-        ///     The internal end vertex of the edge segment in local coordinates.
-        ///     Accessed via the <see cref="Vertex2"/> property which triggers property recomputation.
+        ///     Edge end vertex
         /// </summary>
         internal Vector2F Vertex22;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="EdgeShape" /> class with default values (zero-length edge, zero density).
-        ///     This constructor is internal and used primarily for cloning and chain shape child edge creation.
+        ///     Initializes a new instance of the <see cref="EdgeShape" /> class
         /// </summary>
         internal EdgeShape()
             : base(0)
@@ -77,7 +74,7 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Gets the number of child primitives for this edge shape. An edge always has a single child.
+        ///     Gets the value of the child count
         /// </summary>
         public override int ChildCount => 1;
 
@@ -143,25 +140,21 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Tests whether a point in world coordinates lies inside this edge shape.
-        ///     Edge shapes always return <c>false</c> because they are one-dimensional line segments
-        ///     without interior area.
+        ///     Describes whether this instance test point
         /// </summary>
-        /// <param name="controllerTransform">The world transform applied to the shape.</param>
-        /// <param name="point">The world-space point to test.</param>
-        /// <returns>Always <c>false</c> for edge shapes.</returns>
+        /// <param name="controllerTransform">The transform</param>
+        /// <param name="point">The point</param>
+        /// <returns>The bool</returns>
         public override bool TestPoint(ref ControllerTransform controllerTransform, ref Vector2F point) => false;
 
         /// <summary>
-        ///     Casts a ray against this edge shape and computes the intersection point and surface normal.
-        ///     Uses line segment intersection by solving for the ray parameter at which it crosses the
-        ///     infinite line of the edge, then checks if the intersection lies within the segment bounds.
+        ///     Describes whether this instance ray cast
         /// </summary>
-        /// <param name="output">When this method returns, contains the ray intersection fraction and normal (if hit).</param>
-        /// <param name="input">The ray-cast input data (start point, end point, maximum fraction).</param>
-        /// <param name="controllerTransform">The world transform applied to the edge.</param>
-        /// <param name="childIndex">The child index (unused for edges, always 0).</param>
-        /// <returns><c>true</c> if the ray intersects the edge segment; otherwise, <c>false</c>.</returns>
+        /// <param name="output">The output</param>
+        /// <param name="input">The input</param>
+        /// <param name="controllerTransform">The transform</param>
+        /// <param name="childIndex">The child index</param>
+        /// <returns>The bool</returns>
         public override bool RayCast(out RayCastOutput output, ref RayCastInput input, ref ControllerTransform controllerTransform, int childIndex)
         {
             // p = p1 + t * d
@@ -230,12 +223,11 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Computes the axis-aligned bounding box (AABB) for this edge shape in world coordinates.
-        ///     The AABB encompasses both endpoints expanded by the shape's radius.
+        ///     Computes the aabb using the specified aabb
         /// </summary>
-        /// <param name="aabb">When this method returns, contains the computed AABB for the edge.</param>
-        /// <param name="controllerTransform">The world transform applied to the edge.</param>
-        /// <param name="childIndex">The child index (unused for edges, always 0).</param>
+        /// <param name="aabb">The aabb</param>
+        /// <param name="controllerTransform">The transform</param>
+        /// <param name="childIndex">The child index</param>
         public override void ComputeAabb(out Aabb aabb, ref ControllerTransform controllerTransform, int childIndex)
         {
             // Initialize aabb
@@ -282,8 +274,7 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Computes the mass properties for this edge shape. Edge shapes only have a centroid
-        ///     (midpoint of the segment) but zero mass, area, and inertia.
+        ///     Computes the properties
         /// </summary>
         protected override void ComputeProperties()
         {
@@ -291,14 +282,13 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Computes the submerged area of this edge shape for buoyancy simulation.
-        ///     Edge shapes always return zero submerged area because they have no interior volume.
+        ///     Computes the submerged area using the specified normal
         /// </summary>
-        /// <param name="normal">The surface normal of the fluid plane.</param>
-        /// <param name="offset">The offset of the fluid plane along the normal direction.</param>
-        /// <param name="xf">The world transform of the shape.</param>
-        /// <param name="sc">When this method returns, contains the submerged center (always zero for edge shapes).</param>
-        /// <returns>Always returns 0 for edge shapes.</returns>
+        /// <param name="normal">The normal</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="xf">The xf</param>
+        /// <param name="sc">The sc</param>
+        /// <returns>The float</returns>
         public override float ComputeSubmergedArea(ref Vector2F normal, float offset, ref ControllerTransform xf, out Vector2F sc)
         {
             sc = Vector2F.Zero;
@@ -306,11 +296,10 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Compares this edge shape to another for geometric equality. Two edges are equal if they have
-        ///     the same adjacency flags and matching vertex positions.
+        ///     Describes whether this instance compare to
         /// </summary>
-        /// <param name="shape">The other edge shape to compare against.</param>
-        /// <returns><c>true</c> if the two edge shapes are geometrically identical; otherwise, <c>false</c>.</returns>
+        /// <param name="shape">The shape</param>
+        /// <returns>The bool</returns>
         public bool CompareTo(EdgeShape shape) => (HasVertex0 == shape.HasVertex0) &&
                                                   (HasVertex3 == shape.HasVertex3) &&
                                                   (Vertex0 == shape.Vertex0) &&
@@ -319,9 +308,9 @@ namespace Alis.Core.Physic.Collisions.Shapes
                                                   (Vertex3 == shape.Vertex3);
 
         /// <summary>
-        ///     Creates a deep copy of this edge shape, preserving all vertices, adjacency flags, and mass properties.
+        ///     Clones this instance
         /// </summary>
-        /// <returns>A new <see cref="Shape"/> that is a clone of this edge shape instance.</returns>
+        /// <returns>The clone</returns>
         public override Shape Clone()
         {
             EdgeShape clone = new EdgeShape();

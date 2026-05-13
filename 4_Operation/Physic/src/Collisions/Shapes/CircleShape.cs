@@ -35,15 +35,12 @@ using Alis.Core.Physic.Dynamics;
 namespace Alis.Core.Physic.Collisions.Shapes
 {
     /// <summary>
-    ///     Represents a solid circle shape used for collision detection and physics simulation.
-    ///     Circles are the simplest collision primitive and provide the most efficient overlap tests.
-    ///     They are defined by a center position and radius, with configurable density for mass computation.
+    ///     A circle shape.
     /// </summary>
     public class CircleShape : Shape
     {
         /// <summary>
-        ///     The internal position of the circle center in local coordinates.
-        ///     Accessed via the <see cref="Position"/> property which triggers property recomputation.
+        ///     The position
         /// </summary>
         internal Vector2F PositionInternal;
 
@@ -61,8 +58,7 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="CircleShape" /> class with default values (zero radius, zero density, origin center).
-        ///     This constructor is internal and used primarily for cloning operations.
+        ///     Initializes a new instance of the <see cref="CircleShape" /> class
         /// </summary>
         internal CircleShape()
             : base(0)
@@ -73,7 +69,7 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Gets the number of child primitives for this circle shape. A circle always has a single child.
+        ///     Gets the value of the child count
         /// </summary>
         public override int ChildCount => 1;
 
@@ -104,15 +100,13 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Casts a ray against this circle shape and computes the intersection point and surface normal.
-        ///     Uses the quadratic equation solution for ray-sphere intersection as described in
-        ///     "Collision Detection in Interactive 3D Environments" by Gino van den Bergen.
+        ///     Describes whether this instance ray cast
         /// </summary>
-        /// <param name="output">When this method returns, contains the ray intersection fraction and normal (if hit).</param>
-        /// <param name="input">The ray-cast input data (start point, end point, maximum fraction).</param>
-        /// <param name="controllerTransform">The world transform applied to the circle.</param>
-        /// <param name="childIndex">The child index (unused for circles, always 0).</param>
-        /// <returns><c>true</c> if the ray intersects the circle; otherwise, <c>false</c>.</returns>
+        /// <param name="output">The output</param>
+        /// <param name="input">The input</param>
+        /// <param name="controllerTransform">The transform</param>
+        /// <param name="childIndex">The child index</param>
+        /// <returns>The bool</returns>
         public override bool RayCast(out RayCastOutput output, ref RayCastInput input, ref ControllerTransform controllerTransform, int childIndex)
         {
             // Collision Detection in Interactive 3D Environments by Gino van den Bergen
@@ -157,12 +151,11 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Computes the axis-aligned bounding box (AABB) for this circle shape in world coordinates.
-        ///     The AABB extends the circle center by the radius in all four cardinal directions.
+        ///     Computes the aabb using the specified aabb
         /// </summary>
-        /// <param name="aabb">When this method returns, contains the computed AABB for the circle.</param>
-        /// <param name="controllerTransform">The world transform applied to the circle.</param>
-        /// <param name="childIndex">The child index (unused for circles, always 0).</param>
+        /// <param name="aabb">The aabb</param>
+        /// <param name="controllerTransform">The transform</param>
+        /// <param name="childIndex">The child index</param>
         public override void ComputeAabb(out Aabb aabb, ref ControllerTransform controllerTransform, int childIndex)
         {
             // OPT: Vector2F p = transform.p + Complex.Multiply(ref _position, ref transform.q);
@@ -177,8 +170,7 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Computes the mass properties (area, mass, centroid, and inertia) for this circle shape
-        ///     based on its radius and density. The centroid is at the circle's local position.
+        ///     Computes the properties
         /// </summary>
         protected sealed override void ComputeProperties()
         {
@@ -192,15 +184,13 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Computes the submerged area of this circle shape for buoyancy simulation.
-        ///     Returns the area of the portion of the circle that is below the fluid surface,
-        ///     and computes the center of submerged volume.
+        ///     Computes the submerged area using the specified normal
         /// </summary>
-        /// <param name="normal">The surface normal of the fluid plane (pointing upward).</param>
-        /// <param name="offset">The offset of the fluid plane along the normal direction.</param>
-        /// <param name="xf">The world transform of the circle.</param>
-        /// <param name="sc">When this method returns, contains the center of the submerged volume.</param>
-        /// <returns>The area of the submerged portion of the circle (0 = completely dry, full area = completely wet).</returns>
+        /// <param name="normal">The normal</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="xf">The xf</param>
+        /// <param name="sc">The sc</param>
+        /// <returns>The area</returns>
         public override float ComputeSubmergedArea(ref Vector2F normal, float offset, ref ControllerTransform xf, out Vector2F sc)
         {
             sc = Vector2F.Zero;
@@ -232,17 +222,16 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Compares this circle shape to another for geometric equality. Two circles are equal if they have
-        ///     the same radius (within epsilon tolerance) and the same center position.
+        ///     Compare the circle to another circle
         /// </summary>
-        /// <param name="shape">The other circle shape to compare against.</param>
-        /// <returns><c>true</c> if the two circles are geometrically identical; otherwise, <c>false</c>.</returns>
+        /// <param name="shape">The other circle</param>
+        /// <returns>True if the two circles are the same size and have the same position</returns>
         public bool CompareTo(CircleShape shape) => (Math.Abs(GetRadius - shape.GetRadius) < MathUtils.Epsilon) && (Position == shape.Position);
 
         /// <summary>
-        ///     Creates a deep copy of this circle shape, preserving all geometric properties and cached values.
+        ///     Clones this instance
         /// </summary>
-        /// <returns>A new <see cref="Shape"/> that is a clone of this circle shape instance.</returns>
+        /// <returns>The clone</returns>
         public override Shape Clone()
         {
             CircleShape clone = new CircleShape();

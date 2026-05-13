@@ -30,24 +30,33 @@
 namespace Alis.Core.Graphic.OpenGL.Enums
 {
     /// <summary>
-    /// Defines the blend equation modes used by glBlendEquation to determine how source and destination colors are combined.
-    /// Controls the arithmetic operation applied during color blending.
+    ///     The blend equation mode enum
     /// </summary>
     public enum BlendEquationMode
     {
-        /// <summary>Source and destination colors are added together (GL_FUNC_ADD = 0x8006).</summary>
+        /// <summary>
+        ///     The func add blend equation mode
+        /// </summary>
         FuncAdd = 0x8006,
 
-        /// <summary>The minimum of source and destination color components is used (GL_MIN = 0x8007).</summary>
+        /// <summary>
+        ///     The min blend equation mode
+        /// </summary>
         Min = 0x8007,
 
-        /// <summary>The maximum of source and destination color components is used (GL_MAX = 0x8008).</summary>
+        /// <summary>
+        ///     The max blend equation mode
+        /// </summary>
         Max = 0x8008,
 
-        /// <summary>Destination color is subtracted from source color (GL_FUNC_SUBTRACT = 0x800A).</summary>
+        /// <summary>
+        ///     The func subtract blend equation mode
+        /// </summary>
         FuncSubtract = 0x800A,
 
-        /// <summary>Source color is subtracted from destination color (GL_FUNC_REVERSE_SUBTRACT = 0x800B).</summary>
+        /// <summary>
+        ///     The func reverse subtract blend equation mode
+        /// </summary>
         FuncReverseSubtract = 0x800B
     }
 }

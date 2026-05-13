@@ -41,30 +41,28 @@ using Alis.Core.Audio.Interfaces;
 namespace Alis.Core.Audio.Players
 {
     /// <summary>
-    ///     Audio player implementation for Windows platforms using the Windows Multimedia API (MCI).
-    ///     Manages playback via MCI commands and uses <c>waveOutSetVolume</c> for volume control.
-    ///     Supports play, pause, resume, stop, loop, and volume adjustment operations.
+    ///     The windows player class
     /// </summary>
     /// <seealso cref="IPlayer" />
     internal class WindowsPlayer : IPlayer, IDisposable
     {
         /// <summary>
-        ///     The path to the currently loaded audio file being played or paused.
+        ///     The file name
         /// </summary>
         private string _fileName;
 
         /// <summary>
-        ///     Timer used to detect when playback has finished based on the audio file duration.
+        ///     The playback timer
         /// </summary>
         private Timer _playbackTimer;
 
         /// <summary>
-        ///     Stopwatch used to track elapsed playback time for accurate pause/resume timing.
+        ///     The play stopwatch
         /// </summary>
         private Clock _playStopwatch;
 
         /// <summary>
-        ///     Releases all resources used by the <see cref="WindowsPlayer" />, particularly the playback timer.
+        ///     Disposes this instance
         /// </summary>
         public void Dispose()
         {
@@ -72,28 +70,22 @@ namespace Alis.Core.Audio.Players
             _playbackTimer = null;
         }
 
-        /// <summary>
-        ///     Occurs when the current audio playback has finished.
-        /// </summary>
         public event EventHandler PlaybackFinished;
 
         /// <summary>
-        ///     Gets a value indicating whether audio playback is currently in progress.
+        ///     Gets or sets the value of the playing
         /// </summary>
         public bool Playing { get; private set; }
 
         /// <summary>
-        ///     Gets a value indicating whether audio playback is currently paused.
+        ///     Gets or sets the value of the paused
         /// </summary>
         public bool Paused { get; private set; }
 
         /// <summary>
-        ///     Starts playback of the specified audio file using the Windows MCI subsystem.
-        ///     If the file is not found on disk, it attempts to extract it from embedded resources.
+        ///     Plays the file name
         /// </summary>
-        /// <param name="fileName">The absolute or relative path to the audio file to play.</param>
-        /// <returns>A task that represents the asynchronous playback operation.</returns>
-        /// <exception cref="FileNotFoundException">Thrown when the specified file cannot be found on disk or in resources.</exception>
+        /// <param name="fileName">The file name</param>
         public Task Play(string fileName)
         {
             if (!File.Exists(fileName))
@@ -128,12 +120,11 @@ namespace Alis.Core.Audio.Players
 
 
         /// <summary>
-        ///     Starts playback of the specified audio file with optional looping via the MCI Repeat command.
+        ///     Plays the loop using the specified file name
         /// </summary>
-        /// <param name="fileName">The absolute or relative path to the audio file to play.</param>
-        /// <param name="loop">If <c>true</c>, the MCI Repeat flag is appended to the play command for continuous looping.</param>
-        /// <returns>A task that represents the asynchronous playback operation.</returns>
-        /// <exception cref="FileNotFoundException">Thrown when the specified file cannot be found on disk or in resources.</exception>
+        /// <param name="fileName">The file name</param>
+        /// <param name="loop">The loop</param>
+        /// <exception cref="FileNotFoundException">File '{fileName}' not found. </exception>
         public Task PlayLoop(string fileName, bool loop)
         {
             if (!File.Exists(fileName))
@@ -166,10 +157,8 @@ namespace Alis.Core.Audio.Players
         }
 
         /// <summary>
-        ///     Pauses the currently playing audio via the MCI Pause command.
-        ///     Stops the playback timer and stopwatch, and adjusts the remaining timer interval.
+        ///     Pauses this instance
         /// </summary>
-        /// <returns>A task that represents the asynchronous pause operation.</returns>
         public Task Pause()
         {
             if (Playing && !Paused)
@@ -185,10 +174,8 @@ namespace Alis.Core.Audio.Players
         }
 
         /// <summary>
-        ///     Resumes playback of a previously paused audio file via the MCI Resume command.
-        ///     Restarts the timer and resets the stopwatch for accurate remaining-duration tracking.
+        ///     Resumes this instance
         /// </summary>
-        /// <returns>A task that represents the asynchronous resume operation.</returns>
         public Task Resume()
         {
             if (Playing && Paused)
@@ -204,10 +191,8 @@ namespace Alis.Core.Audio.Players
         }
 
         /// <summary>
-        ///     Stops the current audio playback via the MCI Stop command.
-        ///     Resets playing and paused flags and stops both the timer and stopwatch.
+        ///     Stops this instance
         /// </summary>
-        /// <returns>A task that represents the asynchronous stop operation.</returns>
         public Task Stop()
         {
             if (Playing)
@@ -223,11 +208,9 @@ namespace Alis.Core.Audio.Players
         }
 
         /// <summary>
-        ///     Sets the audio playback volume using the Windows <c>waveOutSetVolume</c> API.
-        ///     Calculates the appropriate 16-bit volume level for both left and right channels from a percentage value.
+        ///     Sets the volume using the specified percent
         /// </summary>
-        /// <param name="percent">The volume level as a percentage from 0 to 100.</param>
-        /// <returns>A task that represents the asynchronous volume change operation.</returns>
+        /// <param name="percent">The percent</param>
         public Task SetVolume(byte percent)
         {
             // Calculate the volume that's being set
@@ -241,51 +224,51 @@ namespace Alis.Core.Audio.Players
         }
 
         /// <summary>
-        ///     Extracts a WAV file from the embedded asset pack by name and returns its extracted file path.
+        ///     Extracts the wav from resources using the specified wav file name
         /// </summary>
-        /// <param name="wavFileName">The name of the WAV resource to extract.</param>
-        /// <returns>The file path of the extracted WAV file on disk.</returns>
-        /// <exception cref="InvalidOperationException">Thrown when no entry assembly is found.</exception>
-        /// <exception cref="FileNotFoundException">Thrown when the resource is not found in the asset pack.</exception>
+        /// <param name="wavFileName">The wav file name</param>
+        /// <exception cref="InvalidOperationException">No entry assembly found.</exception>
+        /// <exception cref="FileNotFoundException">Resource '{wavFileName}' not found in 'assets.pack'.</exception>
+        /// <exception cref="FileNotFoundException">Resource file 'assets.pack' not found in embedded resources.</exception>
+        /// <returns>A task containing the string</returns>
         private static string ExtractWavFromResourcesAsync(string wavFileName) => AssetRegistry.GetResourcePathByName(wavFileName);
 
 
         /// <summary>
-        ///     Sends a command string to the Windows MCI (Media Control Interface) subsystem.
+        ///     Mcis the send string using the specified command
         /// </summary>
-        /// <param name="command">The MCI command string to send.</param>
-        /// <param name="stringReturn">A <see cref="StringBuilder" /> that receives the return information.</param>
-        /// <param name="returnLength">The size of the return buffer.</param>
-        /// <param name="hwndCallback">A handle to a callback window for MCI notification messages.</param>
-        /// <returns>Zero if the function succeeds; otherwise, an error code.</returns>
+        /// <param name="command">The command</param>
+        /// <param name="stringReturn">The string return</param>
+        /// <param name="returnLength">The return length</param>
+        /// <param name="hwndCallback">The hwnd callback</param>
+        /// <returns>The int</returns>
         [DllImport("winmm.dll"), ExcludeFromCodeCoverage]
         private static extern int mciSendString(string command, StringBuilder stringReturn, int returnLength, IntPtr hwndCallback);
 
         /// <summary>
-        ///     Retrieves a textual description of an MCI error code.
+        ///     Mcis the get error string using the specified error code
         /// </summary>
-        /// <param name="errorCode">The MCI error code returned by <see cref="mciSendString" />.</param>
-        /// <param name="errorText">A <see cref="StringBuilder" /> that receives the error description.</param>
-        /// <param name="errorTextSize">The size of the error text buffer.</param>
-        /// <returns>Zero if the function succeeds; otherwise, an error code.</returns>
+        /// <param name="errorCode">The error code</param>
+        /// <param name="errorText">The error text</param>
+        /// <param name="errorTextSize">The error text size</param>
+        /// <returns>The int</returns>
         [DllImport("winmm.dll"), ExcludeFromCodeCoverage]
         private static extern int mciGetErrorString(int errorCode, StringBuilder errorText, int errorTextSize);
 
         /// <summary>
-        ///     Sets the volume of the waveform output device.
+        ///     Waves the out set volume using the specified hwo
         /// </summary>
-        /// <param name="hwo">A handle to the waveform-audio output device, or <see cref="IntPtr.Zero" /> for the default device.</param>
-        /// <param name="dwVolume">The volume setting, with the low-order word for the left channel and the high-order word for the right channel.</param>
-        /// <returns>Returns zero if successful, or an error code otherwise.</returns>
+        /// <param name="hwo">The hwo</param>
+        /// <param name="dwVolume">The dw volume</param>
+        /// <returns>The int</returns>
         [DllImport("winmm.dll"), ExcludeFromCodeCoverage]
         public static extern int waveOutSetVolume(IntPtr hwo, uint dwVolume);
 
         /// <summary>
-        ///     Handles the timer elapsed event to signal that playback has finished.
-        ///     Resets the playing flag and invokes the <see cref="PlaybackFinished" /> event.
+        ///     Handles the playback finished using the specified sender
         /// </summary>
-        /// <param name="sender">The source of the event (the playback timer).</param>
-        /// <param name="e">An <see cref="ElapsedEventArgs" /> that contains the event data.</param>
+        /// <param name="sender">The sender</param>
+        /// <param name="e">The </param>
         private void HandlePlaybackFinished(object sender, ElapsedEventArgs e)
         {
             Playing = false;
@@ -295,12 +278,10 @@ namespace Alis.Core.Audio.Players
         }
 
         /// <summary>
-        ///     Executes an MCI command string and handles any errors returned by the MCI subsystem.
-        ///     If the command is a "Status" query for length, parses the result to set the playback timer interval.
+        ///     Executes the msi command using the specified command string
         /// </summary>
-        /// <param name="commandString">The MCI command string to execute.</param>
-        /// <returns>A task that represents the asynchronous operation.</returns>
-        /// <exception cref="Exception">Thrown when the MCI command returns a non-zero error code.</exception>
+        /// <param name="commandString">The command string</param>
+        /// <exception cref="Exception"></exception>
         private Task ExecuteMsiCommand(string commandString)
         {
             StringBuilder sb = new StringBuilder();

@@ -30,100 +30,158 @@
 namespace Alis.Core.Graphic.OpenGL.Enums
 {
     /// <summary>
-    /// Defines the pixel data types used by OpenGL for specifying the format of pixel data.
-    /// Used with glTexImage2D, glReadPixels, and other pixel transfer operations to describe
-    /// the data type of each pixel component in client memory.
+    ///     The pixel type enum
     /// </summary>
     public enum PixelType
     {
-        /// <summary>Signed 8-bit byte (GL_BYTE = 0x1400).</summary>
+        /// <summary>
+        ///     The byte pixel type
+        /// </summary>
         Byte = 0x1400,
 
-        /// <summary>Unsigned 8-bit byte (GL_UNSIGNED_BYTE = 0x1401).</summary>
+        /// <summary>
+        ///     The unsigned byte pixel type
+        /// </summary>
         UnsignedByte = 0x1401,
 
-        /// <summary>Signed 16-bit short (GL_SHORT = 0x1402).</summary>
+        /// <summary>
+        ///     The short pixel type
+        /// </summary>
         Short = 0x1402,
 
-        /// <summary>Unsigned 16-bit short (GL_UNSIGNED_SHORT = 0x1403).</summary>
+        /// <summary>
+        ///     The unsigned short pixel type
+        /// </summary>
         UnsignedShort = 0x1403,
 
-        /// <summary>Signed 32-bit integer (GL_INT = 0x1404).</summary>
+        /// <summary>
+        ///     The int pixel type
+        /// </summary>
         Int = 0x1404,
 
-        /// <summary>Unsigned 32-bit integer (GL_UNSIGNED_INT = 0x1405).</summary>
+        /// <summary>
+        ///     The unsigned int pixel type
+        /// </summary>
         UnsignedInt = 0x1405,
 
-        /// <summary>32-bit single-precision float (GL_FLOAT = 0x1406).</summary>
+        /// <summary>
+        ///     The float pixel type
+        /// </summary>
         Float = 0x1406,
 
-        /// <summary>16-bit half-precision float (GL_HALF_FLOAT = 0x140B).</summary>
+        /// <summary>
+        ///     The half float pixel type
+        /// </summary>
         HalfFloat = 0x140B,
 
-        /// <summary>Single-bit bitmap (GL_BITMAP = 0x1A00).</summary>
+        /// <summary>
+        ///     The bitmap pixel type
+        /// </summary>
         Bitmap = 0x1A00,
 
-        /// <summary>Unsigned 3-3-2 packed RGB (GL_UNSIGNED_BYTE_3_3_2 = 0x8032).</summary>
+        /// <summary>
+        ///     The unsigned byte 332 pixel type
+        /// </summary>
         UnsignedByte332 = 0x8032,
 
-        /// <summary>Extension alias for 3-3-2 packed (GL_UNSIGNED_BYTE_3_3_2_EXT = 0x8032).</summary>
+        /// <summary>
+        ///     The unsigned byte 332 ext pixel type
+        /// </summary>
         UnsignedByte332Ext = 0x8032,
 
-        /// <summary>Unsigned 4-4-4-4 packed RGBA (GL_UNSIGNED_SHORT_4_4_4_4 = 0x8033).</summary>
+        /// <summary>
+        ///     The unsigned short 4444 pixel type
+        /// </summary>
         UnsignedShort4444 = 0x8033,
 
-        /// <summary>Extension alias for 4-4-4-4 packed (GL_UNSIGNED_SHORT_4_4_4_4_EXT = 0x8033).</summary>
+        /// <summary>
+        ///     The unsigned short 4444 ext pixel type
+        /// </summary>
         UnsignedShort4444Ext = 0x8033,
 
-        /// <summary>Unsigned 5-5-5-1 packed RGBA (GL_UNSIGNED_SHORT_5_5_5_1 = 0x8034).</summary>
+        /// <summary>
+        ///     The unsigned short 5551 pixel type
+        /// </summary>
         UnsignedShort5551 = 0x8034,
 
-        /// <summary>Extension alias for 5-5-5-1 packed (GL_UNSIGNED_SHORT_5_5_5_1_EXT = 0x8034).</summary>
+        /// <summary>
+        ///     The unsigned short 5551 ext pixel type
+        /// </summary>
         UnsignedShort5551Ext = 0x8034,
 
-        /// <summary>Unsigned 8-8-8-8 packed RGBA (GL_UNSIGNED_INT_8_8_8_8 = 0x8035).</summary>
+        /// <summary>
+        ///     The unsigned int 8888 pixel type
+        /// </summary>
         UnsignedInt8888 = 0x8035,
 
-        /// <summary>Extension alias for 8-8-8-8 packed (GL_UNSIGNED_INT_8_8_8_8_EXT = 0x8035).</summary>
+        /// <summary>
+        ///     The unsigned int 8888 ext pixel type
+        /// </summary>
         UnsignedInt8888Ext = 0x8035,
 
-        /// <summary>Unsigned 10-10-10-2 packed RGBA (GL_UNSIGNED_INT_10_10_10_2 = 0x8036).</summary>
+        /// <summary>
+        ///     The unsigned int 1010102 pixel type
+        /// </summary>
         UnsignedInt1010102 = 0x8036,
 
-        /// <summary>Extension alias for 10-10-10-2 packed (GL_UNSIGNED_INT_10_10_10_2_EXT = 0x8036).</summary>
+        /// <summary>
+        ///     The unsigned int 1010102 ext pixel type
+        /// </summary>
         UnsignedInt1010102Ext = 0x8036,
 
-        /// <summary>Unsigned 2-3-3 reversed packed (GL_UNSIGNED_BYTE_2_3_3_REV = 0x8362).</summary>
+        /// <summary>
+        ///     The unsigned byte 233 reversed pixel type
+        /// </summary>
         UnsignedByte233Reversed = 0x8362,
 
-        /// <summary>Unsigned 5-6-5 packed RGB (GL_UNSIGNED_SHORT_5_6_5 = 0x8363).</summary>
+        /// <summary>
+        ///     The unsigned short 565 pixel type
+        /// </summary>
         UnsignedShort565 = 0x8363,
 
-        /// <summary>Unsigned 5-6-5 reversed packed (GL_UNSIGNED_SHORT_5_6_5_REV = 0x8364).</summary>
+        /// <summary>
+        ///     The unsigned short 565 reversed pixel type
+        /// </summary>
         UnsignedShort565Reversed = 0x8364,
 
-        /// <summary>Unsigned 4-4-4-4 reversed packed (GL_UNSIGNED_SHORT_4_4_4_4_REV = 0x8365).</summary>
+        /// <summary>
+        ///     The unsigned short 4444 reversed pixel type
+        /// </summary>
         UnsignedShort4444Reversed = 0x8365,
 
-        /// <summary>Unsigned 1-5-5-5 reversed packed (GL_UNSIGNED_SHORT_1_5_5_5_REV = 0x8366).</summary>
+        /// <summary>
+        ///     The unsigned short 1555 reversed pixel type
+        /// </summary>
         UnsignedShort1555Reversed = 0x8366,
 
-        /// <summary>Unsigned 8-8-8-8 reversed packed (GL_UNSIGNED_INT_8_8_8_8_REV = 0x8367).</summary>
+        /// <summary>
+        ///     The unsigned int 8888 reversed pixel type
+        /// </summary>
         UnsignedInt8888Reversed = 0x8367,
 
-        /// <summary>Unsigned 2-10-10-10 reversed packed (GL_UNSIGNED_INT_2_10_10_10_REV = 0x8368).</summary>
+        /// <summary>
+        ///     The unsigned int 2101010 reversed pixel type
+        /// </summary>
         UnsignedInt2101010Reversed = 0x8368,
 
-        /// <summary>Unsigned 24-8 packed depth-stencil (GL_UNSIGNED_INT_24_8 = 0x84FA).</summary>
+        /// <summary>
+        ///     The unsigned int 248 pixel type
+        /// </summary>
         UnsignedInt248 = 0x84FA,
 
-        /// <summary>Unsigned 10-11-11 reversed packed float (GL_UNSIGNED_INT_10F_11F_11F_REV = 0x8C3B).</summary>
+        /// <summary>
+        ///     The unsigned int 10 11 11 rev pixel type
+        /// </summary>
         UnsignedInt10F11F11FRev = 0x8C3B,
 
-        /// <summary>Unsigned 5-9-9-9 reversed packed float (GL_UNSIGNED_INT_5_9_9_9_REV = 0x8C3E).</summary>
+        /// <summary>
+        ///     The unsigned int 5999 rev pixel type
+        /// </summary>
         UnsignedInt5999Rev = 0x8C3E,
 
-        /// <summary>32-bit float and 24-8 packed depth-stencil (GL_FLOAT_32_UNSIGNED_INT_24_8_REV = 0x8DAD).</summary>
+        /// <summary>
+        ///     The float 32 unsigned int 248 rev pixel type
+        /// </summary>
         Float32UnsignedInt248Rev = 0x8DAD
     }
 }

@@ -32,22 +32,29 @@ using System;
 namespace Alis.Core.Graphic.OpenGL.Enums
 {
     /// <summary>
-    /// Defines the bitfield flags used by glClear to specify which buffers to clear.
-    /// Multiple flags can be combined using bitwise OR to clear multiple buffers simultaneously.
+    ///     The clear buffer mask enum
     /// </summary>
     [Flags]
     public enum ClearBufferMask
     {
-        /// <summary>Clear the depth buffer (GL_DEPTH_BUFFER_BIT = 0x00000100).</summary>
+        /// <summary>
+        ///     The depth buffer bit clear buffer mask
+        /// </summary>
         DepthBufferBit = 0x00000100,
 
-        /// <summary>Clear the accumulation buffer (GL_ACCUM_BUFFER_BIT = 0x00000200).</summary>
+        /// <summary>
+        ///     The accum buffer bit clear buffer mask
+        /// </summary>
         AccumBufferBit = 0x00000200,
 
-        /// <summary>Clear the stencil buffer (GL_STENCIL_BUFFER_BIT = 0x00000400).</summary>
+        /// <summary>
+        ///     The stencil buffer bit clear buffer mask
+        /// </summary>
         StencilBufferBit = 0x00000400,
 
-        /// <summary>Clear the color buffer (GL_COLOR_BUFFER_BIT = 0x00004000).</summary>
+        /// <summary>
+        ///     The color buffer bit clear buffer mask
+        /// </summary>
         ColorBufferBit = 0x00004000
     }
 }

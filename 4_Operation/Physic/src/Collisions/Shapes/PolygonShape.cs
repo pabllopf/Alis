@@ -42,8 +42,7 @@ namespace Alis.Core.Physic.Collisions.Shapes
     public class PolygonShape : Shape
     {
         /// <summary>
-        ///     The backing field for the polygon's vertices in local coordinates.
-        ///     Accessed through the <see cref="Vertices"/> property which performs convex hull computation.
+        ///     The vertices
         /// </summary>
         private Vertices _vertices;
 
@@ -75,8 +74,7 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="PolygonShape" /> class with default values (zero density, no vertices).
-        ///     This constructor is internal and used primarily for cloning operations.
+        ///     Initializes a new instance of the <see cref="PolygonShape" /> class
         /// </summary>
         internal PolygonShape()
             : base(0)
@@ -133,20 +131,17 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Gets the outward-facing edge normals for this polygon. These are computed from the vertex set
-        ///     and are used for collision detection (SAT) and ray casting against the polygon.
+        ///     Gets or sets the value of the normals
         /// </summary>
         public Vertices Normals { get; private set; }
 
         /// <summary>
-        ///     Gets the number of child primitives for this polygon shape. A polygon always has a single child.
+        ///     Gets the value of the child count
         /// </summary>
         public override int ChildCount => 1;
 
         /// <summary>
-        ///     Computes the mass properties (area, mass, centroid, and inertia) for this polygon shape
-        ///     using the triangle fan integration method. The polygon is decomposed into triangles
-        ///     relative to a reference point at the vertex average.
+        ///     Computes the properties
         /// </summary>
         protected override void ComputeProperties()
         {
@@ -241,12 +236,11 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Tests whether a point in world coordinates lies inside this convex polygon shape.
-        ///     Uses the dot product test against each edge normal to determine containment.
+        ///     Describes whether this instance test point
         /// </summary>
-        /// <param name="controllerTransform">The world transform applied to the shape.</param>
-        /// <param name="point">The world-space point to test.</param>
-        /// <returns><c>true</c> if the point is inside the polygon; otherwise, <c>false</c>.</returns>
+        /// <param name="controllerTransform">The transform</param>
+        /// <param name="point">The point</param>
+        /// <returns>The bool</returns>
         public override bool TestPoint(ref ControllerTransform controllerTransform, ref Vector2F point)
         {
             Vector2F pLocal = Complex.Divide(point - controllerTransform.Position, ref controllerTransform.Rotation);
@@ -264,14 +258,13 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Casts a ray against this convex polygon shape and computes the intersection point and surface normal.
-        ///     Uses the slab method to find where the ray enters and exits the polygon's half-spaces.
+        ///     Describes whether this instance ray cast
         /// </summary>
-        /// <param name="output">When this method returns, contains the ray intersection fraction and normal (if hit).</param>
-        /// <param name="input">The ray-cast input data (start point, end point, maximum fraction).</param>
-        /// <param name="controllerTransform">The world transform applied to the polygon.</param>
-        /// <param name="childIndex">The child index (unused for polygons, always 0).</param>
-        /// <returns><c>true</c> if the ray intersects the polygon; otherwise, <c>false</c>.</returns>
+        /// <param name="output">The output</param>
+        /// <param name="input">The input</param>
+        /// <param name="controllerTransform">The transform</param>
+        /// <param name="childIndex">The child index</param>
+        /// <returns>The bool</returns>
         public override bool RayCast(out RayCastOutput output, ref RayCastInput input, ref ControllerTransform controllerTransform, int childIndex)
         {
             output = new RayCastOutput();

@@ -152,12 +152,10 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Populates a pre-allocated edge shape with the vertex data for the specified child edge index.
-        ///     This method avoids garbage allocation by reusing an existing edge shape instance,
-        ///     and sets up connectivity data (previous/next vertices) for smooth collisions.
+        ///     This method has been optimized to reduce garbage.
         /// </summary>
-        /// <param name="edge">The pre-allocated edge shape to populate with child edge data.</param>
-        /// <param name="index">The zero-based index of the child edge within this chain.</param>
+        /// <param name="edge">The cached edge to set properties on.</param>
+        /// <param name="index">The index.</param>
         internal void GetChildEdge(EdgeShape edge, int index)
         {
             edge.ShapeType = ShapeType.Edge;
@@ -190,11 +188,9 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Creates and returns a new edge shape representing the specified child edge of this chain.
-        ///     Connectivity data (previous/next vertices) is automatically populated for smooth collisions.
+        ///     Get a child edge.
         /// </summary>
-        /// <param name="index">The zero-based index of the child edge within this chain.</param>
-        /// <returns>A new <see cref="EdgeShape"/> initialized with the vertex data for the specified child edge.</returns>
+        /// <param name="index">The index.</param>
         public EdgeShape GetChildEdge(int index)
         {
             EdgeShape edgeShape = new EdgeShape();
@@ -203,23 +199,21 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Tests whether a point in world coordinates lies inside this chain shape.
-        ///     Chain shapes always return <c>false</c> because they are open/closed sequences of line segments
-        ///     without interior area.
+        ///     Describes whether this instance test point
         /// </summary>
-        /// <param name="controllerTransform">The world transform applied to the shape.</param>
-        /// <param name="point">The world-space point to test.</param>
-        /// <returns>Always <c>false</c> for chain shapes.</returns>
+        /// <param name="controllerTransform">The transform</param>
+        /// <param name="point">The point</param>
+        /// <returns>The bool</returns>
         public override bool TestPoint(ref ControllerTransform controllerTransform, ref Vector2F point) => false;
 
         /// <summary>
-        ///     Casts a ray against a specific child edge of this chain shape and computes the intersection point and normal.
+        ///     Describes whether this instance ray cast
         /// </summary>
-        /// <param name="output">When this method returns, contains the ray intersection result (fraction and normal).</param>
-        /// <param name="input">The ray-cast input data (origin, direction, maximum fraction).</param>
-        /// <param name="controllerTransform">The world transform applied to the shape.</param>
-        /// <param name="childIndex">The index of the child edge to test against.</param>
-        /// <returns><c>true</c> if the ray intersects the child edge; otherwise, <c>false</c>.</returns>
+        /// <param name="output">The output</param>
+        /// <param name="input">The input</param>
+        /// <param name="controllerTransform">The transform</param>
+        /// <param name="childIndex">The child index</param>
+        /// <returns>The bool</returns>
         public override bool RayCast(out RayCastOutput output, ref RayCastInput input, ref ControllerTransform controllerTransform, int childIndex)
         {
             int i1 = childIndex;
@@ -236,12 +230,11 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Computes the axis-aligned bounding box (AABB) for a specific child edge of this chain shape
-        ///     in world coordinates.
+        ///     Computes the aabb using the specified aabb
         /// </summary>
-        /// <param name="aabb">When this method returns, contains the computed AABB for the child edge.</param>
-        /// <param name="controllerTransform">The world transform applied to the shape.</param>
-        /// <param name="childIndex">The index of the child edge to compute the AABB for.</param>
+        /// <param name="aabb">The aabb</param>
+        /// <param name="controllerTransform">The transform</param>
+        /// <param name="childIndex">The child index</param>
         public override void ComputeAabb(out Aabb aabb, ref ControllerTransform controllerTransform, int childIndex)
         {
             int i1 = childIndex;
@@ -259,8 +252,7 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Computes the mass properties for this chain shape. This is a no-op because chain shapes
-        ///     do not have physical mass, area, or inertia properties (they are massless collision geometry).
+        ///     Computes the properties
         /// </summary>
         protected override void ComputeProperties()
         {
@@ -268,14 +260,13 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Computes the submerged area of this chain shape for buoyancy simulation.
-        ///     Chain shapes always return zero submerged area because they have no interior volume.
+        ///     Computes the submerged area using the specified normal
         /// </summary>
-        /// <param name="normal">The surface normal of the fluid plane.</param>
-        /// <param name="offset">The offset of the fluid plane along the normal direction.</param>
-        /// <param name="xf">The world transform of the shape.</param>
-        /// <param name="sc">When this method returns, contains the submerged center (always zero for chain shapes).</param>
-        /// <returns>Always returns 0 for chain shapes.</returns>
+        /// <param name="normal">The normal</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="xf">The xf</param>
+        /// <param name="sc">The sc</param>
+        /// <returns>The float</returns>
         public override float ComputeSubmergedArea(ref Vector2F normal, float offset, ref ControllerTransform xf, out Vector2F sc)
         {
             sc = Vector2F.Zero;
@@ -283,11 +274,10 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Compares this chain shape to another for geometric equality. Two chain shapes are equal if they
-        ///     have the same vertices, previous vertex, and next vertex.
+        ///     Compare the chain to another chain
         /// </summary>
-        /// <param name="shape">The other chain shape to compare against.</param>
-        /// <returns><c>true</c> if the two chain shapes are geometrically identical; otherwise, <c>false</c>.</returns>
+        /// <param name="shape">The other chain</param>
+        /// <returns>True if the two chain shapes are the same</returns>
         public bool CompareTo(ChainShape shape)
         {
             if (Vertices.Count != shape.Vertices.Count)
@@ -307,9 +297,9 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Creates a deep copy of this chain shape, including all vertex data and connectivity information.
+        ///     Clones this instance
         /// </summary>
-        /// <returns>A new <see cref="Shape"/> that is a clone of this chain shape instance.</returns>
+        /// <returns>The clone</returns>
         public override Shape Clone()
         {
             ChainShape clone = new ChainShape();

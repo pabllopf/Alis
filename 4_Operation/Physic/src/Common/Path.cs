@@ -38,19 +38,16 @@ namespace Alis.Core.Physic.Common
     //Contributed by Matthew Bettcher
 
     /// <summary>
-    ///     Represents a path defined by a collection of control points that form a Catmull-Rom spline curve.
-    ///     Provides interpolation, subdivision, and geometric manipulation (translation, rotation, scaling)
-    ///     of the control point sequence. Supports both open and closed (looped) paths.
+    ///     Path:
+    ///     Very similar to Vertices, but this
+    ///     class contains vectors describing
+    ///     control points on a Catmull-Rom
+    ///     curve.
     /// </summary>
-    /// <remarks>
-    ///     Contributed by Matthew Bettcher. Paths are commonly used for defining motion trajectories,
-    ///     camera paths, and AI waypoint systems in game development.
-    /// </remarks>
     public class Path
     {
         /// <summary>
-        ///     The list of control points that define the Catmull-Rom spline curve.
-        ///     The curve passes through these points with C1 continuity.
+        ///     All the points that makes up the curve
         /// </summary>
         public List<Vector2F> ControlPoints;
 
@@ -98,11 +95,10 @@ namespace Alis.Core.Physic.Common
         public bool Closed { get; set; }
 
         /// <summary>
-        ///     Gets the next index in the control point list with wrap-around.
-        ///     Useful for iterating edges between consecutive control points.
+        ///     Gets the next index of a controlpoint
         /// </summary>
-        /// <param name="index">The current index.</param>
-        /// <returns>The next index, wrapping to 0 at the end of the list.</returns>
+        /// <param name="index">The index.</param>
+        /// <returns></returns>
         public int NextIndex(int index)
         {
             if (index == ControlPoints.Count - 1)
@@ -114,10 +110,10 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        ///     Gets the previous index in the control point list with wrap-around.
+        ///     Gets the previous index of a controlpoint
         /// </summary>
-        /// <param name="index">The current index.</param>
-        /// <returns>The previous index, wrapping to the last element at index 0.</returns>
+        /// <param name="index">The index.</param>
+        /// <returns></returns>
         public int PreviousIndex(int index)
         {
             if (index == 0)
@@ -167,9 +163,9 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        ///     Returns a string representation of all control points in the path, separated by spaces.
+        ///     Returns the string
         /// </summary>
-        /// <returns>A string containing all control point coordinates.</returns>
+        /// <returns>The string</returns>
         public override string ToString()
         {
             StringBuilder builder = new StringBuilder();
@@ -186,11 +182,12 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        ///     Generates a set of vertices by sampling the Catmull-Rom curve at regular intervals.
-        ///     The number of sample points equals the number of divisions per segment.
+        ///     Returns a set of points defining the
+        ///     curve with the specifed number of divisions
+        ///     between each control point.
         /// </summary>
-        /// <param name="divisions">Number of divisions (sample points) between each pair of control points.</param>
-        /// <returns>A <see cref="Vertices"/> collection containing the interpolated curve points.</returns>
+        /// <param name="divisions">Number of divisions between each control point.</param>
+        /// <returns></returns>
         public Vertices GetVertices(int divisions)
         {
             Vertices verts = new Vertices();
@@ -206,12 +203,11 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        ///     Computes the interpolated position on the Catmull-Rom curve at the specified time parameter.
-        ///     Supports both open and closed paths with proper circular indexing for loops.
+        ///     Gets the position using the specified time
         /// </summary>
-        /// <param name="time">The time parameter in [0, 1], where 0 is the start and 1 is the end of the path.</param>
-        /// <exception cref="Exception">Thrown when the path has fewer than 2 control points.</exception>
-        /// <returns>The interpolated 2D position on the curve at the given time.</returns>
+        /// <param name="time">The time</param>
+        /// <exception cref="Exception">You need at least 2 control points to calculate a position.</exception>
+        /// <returns>The temp</returns>
         public Vector2F GetPosition(float time)
         {
             Vector2F temp;
@@ -332,15 +328,14 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        ///     Computes a point on a Catmull-Rom spline given four control points and an interpolation amount.
-        ///     The spline passes through p1 and p2 with C1 continuity, using p0 and p3 for tangent calculation.
+        ///     Calcs the catmull rom using the specified p 0
         /// </summary>
-        /// <param name="p0">The first control point (used for tangent calculation at p1).</param>
-        /// <param name="p1">The second control point (start of the segment).</param>
-        /// <param name="p2">The third control point (end of the segment).</param>
-        /// <param name="p3">The fourth control point (used for tangent calculation at p2).</param>
-        /// <param name="amount">The interpolation parameter in [0, 1], where 0 returns p1 and 1 returns p2.</param>
-        /// <param name="result">The interpolated point on the Catmull-Rom curve.</param>
+        /// <param name="p0">The </param>
+        /// <param name="p1">The </param>
+        /// <param name="p2">The </param>
+        /// <param name="p3">The </param>
+        /// <param name="amount">The amount</param>
+        /// <param name="result">The result</param>
         internal void CalcCatmullRom(Vector2F p0, Vector2F p1, Vector2F p2, Vector2F p3, float amount, out Vector2F result)
         {
             double sqAmount = amount * amount;
@@ -363,12 +358,10 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        ///     Computes the normal (perpendicular direction) of the curve at the given time parameter.
-        ///     The normal is obtained by sampling the curve at slightly offset times and computing
-        ///     the perpendicular of the resulting direction vector.
+        ///     Gets the normal for the given time.
         /// </summary>
-        /// <param name="time">The time parameter in [0, 1] at which to compute the normal.</param>
-        /// <returns>A normalized 2D vector perpendicular to the curve tangent at the given time.</returns>
+        /// <param name="time">The time</param>
+        /// <returns>The normal.</returns>
         public Vector2F GetPositionNormal(float time)
         {
             float offsetTime = time + 0.0001f;
@@ -388,9 +381,9 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        ///     Adds a control point to the end of the path and recalculates the time delta.
+        ///     Adds the point
         /// </summary>
-        /// <param name="point">The control point to add.</param>
+        /// <param name="point">The point</param>
         public void Add(Vector2F point)
         {
             ControlPoints.Add(point);
@@ -398,9 +391,9 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        ///     Removes the first occurrence of the specified control point and recalculates the time delta.
+        ///     Removes the point
         /// </summary>
-        /// <param name="point">The control point to remove.</param>
+        /// <param name="point">The point</param>
         public void Remove(Vector2F point)
         {
             ControlPoints.Remove(point);
@@ -408,9 +401,9 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        ///     Removes the control point at the specified index and recalculates the time delta.
+        ///     Removes the at using the specified index
         /// </summary>
-        /// <param name="index">The zero-based index of the control point to remove.</param>
+        /// <param name="index">The index</param>
         public void RemoveAt(int index)
         {
             ControlPoints.RemoveAt(index);
@@ -418,10 +411,9 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        ///     Computes the approximate total arc length of the path by sampling at 25 points per control point segment.
-        ///     Includes closing segment length for closed paths.
+        ///     Gets the length
         /// </summary>
-        /// <returns>The approximate total arc length of the curve.</returns>
+        /// <returns>The length</returns>
         public float GetLength()
         {
             List<Vector2F> verts = GetVertices(ControlPoints.Count * 25);
@@ -441,12 +433,10 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        ///     Evenly subdivides the path into the specified number of segments, returning points
-        ///     at approximately equal arc-length intervals along the curve. Each point includes
-        ///     the position and the tangent angle.
+        ///     Subdivides the evenly using the specified divisions
         /// </summary>
-        /// <param name="divisions">The number of even subdivisions to create along the path.</param>
-        /// <returns>A list of 3D vectors where X and Y are the position and Z is the tangent angle in radians.</returns>
+        /// <param name="divisions">The divisions</param>
+        /// <returns>The verts</returns>
         public List<Vector3F> SubdivideEvenly(int divisions)
         {
             List<Vector3F> verts = new List<Vector3F>();

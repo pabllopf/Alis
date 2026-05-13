@@ -30,32 +30,32 @@
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     Defines the possible outcomes of a time-of-impact (TOI) computation in continuous collision detection.
+    ///     The toi output state enum
     /// </summary>
     public enum ToiOutputState
     {
         /// <summary>
-        ///     The TOI computation has not been performed or the result is indeterminate.
+        ///     The unknown toi output state
         /// </summary>
         Unknown,
 
         /// <summary>
-        ///     The TOI computation failed to converge. The output time is a conservative estimate.
+        ///     The failed toi output state
         /// </summary>
         Failed,
 
         /// <summary>
-        ///     The shapes are already overlapping at the initial time (t=0).
+        ///     The overlapped toi output state
         /// </summary>
         Overlapped,
 
         /// <summary>
-        ///     The shapes are touching at the computed time of impact.
+        ///     The touching toi output state
         /// </summary>
         Touching,
 
         /// <summary>
-        ///     The shapes remain separated throughout the entire sweep interval [0, tMax].
+        ///     The seperated toi output state
         /// </summary>
         Seperated
     }

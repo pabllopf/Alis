@@ -37,10 +37,7 @@ using Alis.Core.Physic.Dynamics;
 namespace Alis.Core.Physic.Common
 {
     /// <summary>
-    ///     Represents a collection of 2D vertices that define a polygon or polyline geometry.
-    ///     Extends <see cref="List{Vector2F}"/> with polygon-specific operations such as winding
-    ///     order enforcement, convex hull computation, edge access, and geometric validation.
-    ///     Supports holes for complex polygon decomposition.
+    ///     The vertices class
     /// </summary>
     /// <seealso cref="List{Vector2F}" />
     public class Vertices : List<Vector2F>

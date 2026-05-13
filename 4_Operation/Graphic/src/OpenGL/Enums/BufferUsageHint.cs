@@ -30,37 +30,53 @@
 namespace Alis.Core.Graphic.OpenGL.Enums
 {
     /// <summary>
-    /// Defines the expected usage patterns for OpenGL buffer objects via glBufferData.
-    /// Provides hints to the OpenGL driver for optimal memory placement and performance.
-    /// The pattern is: access (Stream/Static/Dynamic) x nature (Draw/Read/Copy).
+    ///     The buffer usage hint enum
     /// </summary>
     public enum BufferUsageHint
     {
-        /// <summary>Data modified once, used briefly for drawing (GL_STREAM_DRAW = 0x88E0).</summary>
+        /// <summary>
+        ///     The stream draw buffer usage hint
+        /// </summary>
         StreamDraw = 0x88E0,
 
-        /// <summary>Data modified once, used briefly for reading (GL_STREAM_READ = 0x88E1).</summary>
+        /// <summary>
+        ///     The stream read buffer usage hint
+        /// </summary>
         StreamRead = 0x88E1,
 
-        /// <summary>Data modified once, used briefly for copying (GL_STREAM_COPY = 0x88E2).</summary>
+        /// <summary>
+        ///     The stream copy buffer usage hint
+        /// </summary>
         StreamCopy = 0x88E2,
 
-        /// <summary>Data modified once, used many times for drawing (GL_STATIC_DRAW = 0x88E4).</summary>
+        /// <summary>
+        ///     The static draw buffer usage hint
+        /// </summary>
         StaticDraw = 0x88E4,
 
-        /// <summary>Data modified once, used many times for reading (GL_STATIC_READ = 0x88E5).</summary>
+        /// <summary>
+        ///     The static read buffer usage hint
+        /// </summary>
         StaticRead = 0x88E5,
 
-        /// <summary>Data modified once, used many times for copying (GL_STATIC_COPY = 0x88E6).</summary>
+        /// <summary>
+        ///     The static copy buffer usage hint
+        /// </summary>
         StaticCopy = 0x88E6,
 
-        /// <summary>Data modified repeatedly, used many times for drawing (GL_DYNAMIC_DRAW = 0x88E8).</summary>
+        /// <summary>
+        ///     The dynamic draw buffer usage hint
+        /// </summary>
         DynamicDraw = 0x88E8,
 
-        /// <summary>Data modified repeatedly, used many times for reading (GL_DYNAMIC_READ = 0x88E9).</summary>
+        /// <summary>
+        ///     The dynamic read buffer usage hint
+        /// </summary>
         DynamicRead = 0x88E9,
 
-        /// <summary>Data modified repeatedly, used many times for copying (GL_DYNAMIC_COPY = 0x88EA).</summary>
+        /// <summary>
+        ///     The dynamic copy buffer usage hint
+        /// </summary>
         DynamicCopy = 0x88EA
     }
 }

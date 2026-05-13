@@ -30,45 +30,68 @@
 namespace Alis.Core.Graphic.OpenGL.Enums
 {
     /// <summary>
-    /// Defines the geometric primitive modes used with glBegin in legacy OpenGL immediate mode.
-    /// Specifies how vertex data between glBegin and glEnd is interpreted and rendered.
+    ///     The begin mode enum
     /// </summary>
     public enum BeginMode
     {
-        /// <summary>Each vertex is rendered as an individual point (GL_POINTS = 0x0000).</summary>
+        /// <summary>
+        ///     The points begin mode
+        /// </summary>
         Points = 0x0000,
 
-        /// <summary>Each pair of vertices defines an independent line segment (GL_LINES = 0x0001).</summary>
+        /// <summary>
+        ///     The lines begin mode
+        /// </summary>
         Lines = 0x0001,
 
-        /// <summary>A continuous line strip that closes back to the first vertex (GL_LINE_LOOP = 0x0002).</summary>
+        /// <summary>
+        ///     The line loop begin mode
+        /// </summary>
         LineLoop = 0x0002,
 
-        /// <summary>A continuous line strip from first to last vertex (GL_LINE_STRIP = 0x0003).</summary>
+        /// <summary>
+        ///     The line strip begin mode
+        /// </summary>
         LineStrip = 0x0003,
 
-        /// <summary>Each group of three vertices defines an independent triangle (GL_TRIANGLES = 0x0004).</summary>
+        /// <summary>
+        ///     The triangles begin mode
+        /// </summary>
         Triangles = 0x0004,
 
-        /// <summary>A triangle strip where each new vertex forms a triangle with the two previous ones (GL_TRIANGLE_STRIP = 0x0005).</summary>
+        /// <summary>
+        ///     The triangle strip begin mode
+        /// </summary>
         TriangleStrip = 0x0005,
 
-        /// <summary>A triangle fan where all triangles share the first vertex (GL_TRIANGLE_FAN = 0x0006).</summary>
+        /// <summary>
+        ///     The triangle fan begin mode
+        /// </summary>
         TriangleFan = 0x0006,
 
-        /// <summary>Lines with adjacency information for geometry shaders (GL_LINES_ADJACENCY = 0xA).</summary>
+        /// <summary>
+        ///     The lines adjacency begin mode
+        /// </summary>
         LinesAdjacency = 0xA,
 
-        /// <summary>Line strip with adjacency information for geometry shaders (GL_LINE_STRIP_ADJACENCY = 0xB).</summary>
+        /// <summary>
+        ///     The line strip adjacency begin mode
+        /// </summary>
         LineStripAdjacency = 0xB,
 
-        /// <summary>Triangles with adjacency information for geometry shaders (GL_TRIANGLES_ADJACENCY = 0xC).</summary>
+        /// <summary>
+        ///     The triangles adjacency begin mode
+        /// </summary>
         TrianglesAdjacency = 0xC,
 
-        /// <summary>Triangle strip with adjacency information for geometry shaders (GL_TRIANGLE_STRIP_ADJACENCY = 0xD).</summary>
+        /// <summary>
+        ///     The triangle strip adjacency begin mode
+        /// </summary>
         TriangleStripAdjacency = 0xD,
 
-        /// <summary>Patches for tessellation shaders (GL_PATCHES = 0xE).</summary>
+        /// <summary>
+        ///     The patches begin mode
+        /// </summary>
         Patches = 0xE
     }
 }

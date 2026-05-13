@@ -30,75 +30,118 @@
 namespace Alis.Core.Graphic.OpenGL.Enums
 {
     /// <summary>
-    /// Defines the texture parameter values used with glTexParameter to control texture filtering, wrapping, and swizzling.
-    /// Includes filter modes (nearest, linear, mipmap), wrap modes (clamp, repeat, mirror), and comparison modes.
+    ///     The texture parameter enum
     /// </summary>
     public enum TextureParameter
     {
-        /// <summary>Nearest neighbor filtering (GL_NEAREST = 0x2600).</summary>
+        /// <summary>
+        ///     The nearest texture parameter
+        /// </summary>
         Nearest = 0x2600,
 
-        /// <summary>Linear (bilinear) filtering (GL_LINEAR = 0x2601).</summary>
+        /// <summary>
+        ///     The linear texture parameter
+        /// </summary>
         Linear = 0x2601,
 
-        /// <summary>Nearest mipmap nearest filtering (GL_NEAREST_MIPMAP_NEAREST = 0x2700).</summary>
+        /// <summary>
+        ///     The nearest mip map nearest texture parameter
+        /// </summary>
         NearestMipMapNearest = 0x2700,
 
-        /// <summary>Linear mipmap nearest filtering (GL_LINEAR_MIPMAP_NEAREST = 0x2701).</summary>
+        /// <summary>
+        ///     The linear mip map nearest texture parameter
+        /// </summary>
         LinearMipMapNearest = 0x2701,
 
-        /// <summary>Nearest mipmap linear filtering (GL_NEAREST_MIPMAP_LINEAR = 0x2702).</summary>
+        /// <summary>
+        ///     The nearest mip map linear texture parameter
+        /// </summary>
         NearestMipMapLinear = 0x2702,
 
-        /// <summary>Linear mipmap linear (trilinear) filtering (GL_LINEAR_MIPMAP_LINEAR = 0x2703).</summary>
+        /// <summary>
+        ///     The linear mip map linear texture parameter
+        /// </summary>
         LinearMipMapLinear = 0x2703,
 
-        /// <summary>Clamp texture coordinates to the edge (GL_CLAMP_TO_EDGE = 0x812F).</summary>
+        /// <summary>
+        ///     The clamp to edge texture parameter
+        /// </summary>
         ClampToEdge = 0x812F,
 
-        /// <summary>Clamp texture coordinates to the border color (GL_CLAMP_TO_BORDER = 0x812D).</summary>
+        /// <summary>
+        ///     The clamp to border texture parameter
+        /// </summary>
         ClampToBorder = 0x812D,
 
-        /// <summary>Mirror clamp to edge wrapping (GL_MIRROR_CLAMP_TO_EDGE = 0x8743).</summary>
+        /// <summary>
+        ///     The mirror clamp to edge texture parameter
+        /// </summary>
         MirrorClampToEdge = 0x8743,
 
-        /// <summary>Mirrored repeat wrapping (GL_MIRRORED_REPEAT = 0x8370).</summary>
+        /// <summary>
+        ///     The mirrored repeat texture parameter
+        /// </summary>
         MirroredRepeat = 0x8370,
 
-        /// <summary>Repeat texture coordinates (GL_REPEAT = 0x2901).</summary>
+        /// <summary>
+        ///     The repeat texture parameter
+        /// </summary>
         Repeat = 0x2901,
 
-        /// <summary>Red component swizzle (GL_RED = 0x1903).</summary>
+        /// <summary>
+        ///     The red texture parameter
+        /// </summary>
         Red = 0x1903,
 
-        /// <summary>Green component swizzle (GL_GREEN = 0x1904).</summary>
+        /// <summary>
+        ///     The green texture parameter
+        /// </summary>
         Green = 0x1904,
 
-        /// <summary>Blue component swizzle (GL_BLUE = 0x1905).</summary>
+        /// <summary>
+        ///     The blue texture parameter
+        /// </summary>
         Blue = 0x1905,
 
-        /// <summary>Alpha component swizzle (GL_ALPHA = 0x1906).</summary>
+        /// <summary>
+        ///     The alpha texture parameter
+        /// </summary>
         Alpha = 0x1906,
 
-        /// <summary>Zero value (GL_ZERO = 0).</summary>
+        /// <summary>
+        ///     The zero texture parameter
+        /// </summary>
         Zero = 0,
 
-        /// <summary>One value (GL_ONE = 1).</summary>
+        /// <summary>
+        ///     The one texture parameter
+        /// </summary>
         One = 1,
 
-        /// <summary>Compare ref to texture for depth textures (GL_COMPARE_REF_TO_TEXTURE = 0x884E).</summary>
+        /// <summary>
+        ///     The compare ref to texture texture parameter
+        /// </summary>
         CompareRefToTexture = 0x884E,
 
-        /// <summary>None value (GL_NONE = 0).</summary>
+        /// <summary>
+        ///     The none texture parameter
+        /// </summary>
         None = 0,
 
-        /// <summary>Stencil index (GL_STENCIL_INDEX = 0x1901).</summary>
+        /// <summary>
+        ///     The stencil index texture parameter
+        /// </summary>
         StencilIndex = 0x1901,
 
-        /// <summary>Depth component (GL_DEPTH_COMPONENT = 0x1902).</summary>
+        /// <summary>
+        ///     The depth component texture parameter
+        /// </summary>
         DepthComponent = 0x1902,
 
-        /// <summary>Maximum anisotropy level (GL_MAX_ANISOTROPY_EXT = 0x84FE).</summary>
+        /// <summary>
+        ///     The max anisotropy ext texture parameter
+        /// </summary>
         MaxAnisotropyExt = 0x84FE
     }
 }
