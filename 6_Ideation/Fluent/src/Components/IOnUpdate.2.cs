@@ -33,7 +33,6 @@ namespace Alis.Core.Aspect.Fluent.Components
     ///     The gameObject component interface
     /// </summary>
     /// <seealso cref="IComponentBase" />
-    // ReSharper disable once PartialTypeWithSinglePart
     public partial interface IOnUpdate<TArg1, TArg2> : IComponentBase
     {
         /// <summary>

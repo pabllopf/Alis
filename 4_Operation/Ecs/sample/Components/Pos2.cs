@@ -32,6 +32,9 @@ using Alis.Core.Aspect.Fluent.Components;
 
 namespace Alis.Core.Ecs.Sample.Components
 {
+    /// <summary>
+    ///     Represents the sample position component with initialization state.
+    /// </summary>
     internal record struct Pos2(float X = 0) : IOnInit, IOnUpdate
     {
         /// <summary>

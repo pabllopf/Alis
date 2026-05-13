@@ -31,6 +31,9 @@ using Alis.Core.Aspect.Fluent.Components;
 
 namespace Alis.Core.Ecs.Sample.Components
 {
+    /// <summary>
+    ///     Represents the sample velocity component.
+    /// </summary>
     internal record struct Vel(float DX) : IOnUpdate<Pos>
     {
         /// <summary>

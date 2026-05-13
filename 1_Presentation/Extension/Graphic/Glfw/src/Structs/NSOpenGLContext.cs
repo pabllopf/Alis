@@ -36,7 +36,6 @@ namespace Alis.Extension.Graphic.Glfw.Structs
     ///     Wrapper around a NSOpenGL context pointer.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    // ReSharper disable once InconsistentNaming
     public struct NSOpenGLContext : IEquatable<NSOpenGLContext>
     {
         /// <summary>

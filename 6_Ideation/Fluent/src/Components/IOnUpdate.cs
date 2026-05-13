@@ -37,7 +37,6 @@ namespace Alis.Core.Aspect.Fluent.Components
     ///     Components should only implement one "Update" method to avoid duplicate logic execution.
     ///     For fixed-timestep updates, use <see cref="IOnFixedUpdate" /> instead.
     /// </remarks>
-    // ReSharper disable once PartialTypeWithSinglePart
     public partial interface IOnUpdate : IComponentBase
     {
         /// <summary>

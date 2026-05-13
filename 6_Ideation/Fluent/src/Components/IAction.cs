@@ -32,7 +32,6 @@ namespace Alis.Core.Aspect.Fluent.Components
     /// <summary>
     ///     The action interface
     /// </summary>
-    // ReSharper disable once PartialTypeWithSinglePart
     public partial interface IAction<TArg1>
     {
         /// Executes the function
