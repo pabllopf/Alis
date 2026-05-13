@@ -31,8 +31,12 @@ namespace Alis.Core.Aspect.Fluent.Components
 {
     /// <summary>
     ///     Defines a fluent action delegate that operates on 1 argument
-    ///     of type TArg1.
+    ///     of type <typeparamref name="TArg1"/>.
     /// </summary>
+    /// <remarks>
+    ///     Partial interface — implementations may provide overloads for multiple
+    ///     argument counts to support flexible action signatures.
+    /// </remarks>
     /// <typeparam name="TArg1">The type of the 1st argument passed to the action.</typeparam>
     public partial interface IAction<TArg1>
     {

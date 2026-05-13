@@ -35,6 +35,12 @@ namespace Alis.Core.Aspect.Fluent.Components
     ///     Represents a game entity that owns components and provides access to them.
     ///     Components are retrieved by type and queried for presence.
     /// </summary>
+    /// <remarks>
+    ///     An <see cref="IGameObject"/> is a handle to an entity living within a <see cref="Scene"/>.
+    ///     It provides O(1) component access via <see cref="Get{T}"/> and presence checks via
+    ///     <see cref="Has{T}"/>. The entity's identity is composed of an ID and a version counter
+    ///     to support safe reuse of IDs after entity destruction.
+    /// </remarks>
     public interface IGameObject
     {
         /// <summary>

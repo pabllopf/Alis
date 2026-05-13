@@ -29,27 +29,24 @@
 
 namespace Alis.Core.Aspect.Fluent.Components
 {
-    /*  ALL COMPONENT TYPES                                 |Interface|Storage
-     *  Arbitary data                                           X       X
-     *  Update Only                                             X       X
-     *  Update with N components                                X       X
-     *  Update with N components + uniform                      X       X
-     *  Update with N components + entityid                     X       X
-     *  Update with N components + uniform + entityid           X       X
-     *  Update with uniform                                     X       X
-     *  Update with entityid                                    X       X
-     *  Update with uniform + entityid                          X       X
-     */
-
-    /// <summary>
+/// <summary>
     ///     Base marker interface for all component interfaces in the fluent game entity system.
     ///     Components implementing this interface are auto-registered for AOT compilation compatibility.
     /// </summary>
     /// <remarks>
     ///     This is a marker-only interface with no members. Derived interfaces define lifecycle hooks
-    ///     (e.g., <see cref="IOnUpdate" />, <see cref="IOnDraw" />) and behavior contracts for game entities.
-    ///     The comment block above describes the component filter matrix used by the ECS to organize
-    ///     update loops by component composition (data-only, update-only, update-with-N-components, etc.).
+    ///     (e.g., <see cref="IOnUpdate"/>, <see cref="IOnDraw"/>, <see cref="IOnCollisionEnter"/>)
+    ///     and behavior contracts for game entities.
     /// </remarks>
+    /// <example>
+    /// <code>
+    /// // A typical component combines multiple marker interfaces:
+    /// public struct HealthComponent : IComponentBase, IOnUpdate&lt;float&gt;
+    /// {
+    ///     public float Value;
+    ///     public void Update(IGameObject self, ref float deltaTime) { ... }
+    /// }
+    /// </code>
+    /// </example>
     public interface IComponentBase;
 }
