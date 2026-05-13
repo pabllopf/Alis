@@ -30,15 +30,17 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The network interface
+    ///     Fluent builder interface that configures network settings on the target builder.
     /// </summary>
+    /// <typeparam name="TBuilder">The builder type returned by the fluent method for chaining.</typeparam>
+    /// <typeparam name="TArgument">The argument type accepted by the fluent method.</typeparam>
     public interface INetwork<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Networks the value
+        ///     Configures network settings on the builder.
         /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The builder</returns>
+        /// <param name="value">The network configuration to apply.</param>
+        /// <returns>The builder instance, enabling fluent chaining.</returns>
         TBuilder Network(TArgument value);
     }
 }

@@ -30,15 +30,17 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The script interface
+    ///     Fluent builder interface that assigns a script on the target builder.
     /// </summary>
+    /// <typeparam name="TBuilder">The builder type returned by the fluent method for chaining.</typeparam>
+    /// <typeparam name="TArgument">The argument type accepted by the fluent method.</typeparam>
     public interface IScript<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Scripts the value
+        ///     Assigns a script on the builder.
         /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The builder</returns>
+        /// <param name="value">The script reference to apply.</param>
+        /// <returns>The builder instance, enabling fluent chaining.</returns>
         TBuilder Script(TArgument value);
     }
 }

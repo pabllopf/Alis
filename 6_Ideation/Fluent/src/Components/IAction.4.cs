@@ -30,11 +30,22 @@
 namespace Alis.Core.Aspect.Fluent.Components
 {
     /// <summary>
-    ///     The action interface
+    ///     Defines a fluent action delegate that operates on 4 arguments
+    ///     of types TArg1, TArg2, TArg3, TArg4.
     /// </summary>
+    /// <typeparam name="TArg1">The type of the 1st argument passed to the action.</typeparam>
+    /// <typeparam name="TArg2">The type of the 2nd argument passed to the action.</typeparam>
+    /// <typeparam name="TArg3">The type of the 3rd argument passed to the action.</typeparam>
+    /// <typeparam name="TArg4">The type of the 4th argument passed to the action.</typeparam>
     public partial interface IAction<TArg1, TArg2, TArg3, TArg4>
     {
-        /// Executes the function
+        /// <summary>
+        ///     Executes the action with the provided 4 arguments, passed by reference.
+        /// </summary>
+        /// <param name="arg1">The 1st action argument of type <typeparamref name="TArg1"/>, passed by reference so the action can mutate it.</param>
+        /// <param name="arg2">The 2nd action argument of type <typeparamref name="TArg2"/>, passed by reference so the action can mutate it.</param>
+        /// <param name="arg3">The 3rd action argument of type <typeparamref name="TArg3"/>, passed by reference so the action can mutate it.</param>
+        /// <param name="arg4">The 4th action argument of type <typeparamref name="TArg4"/>, passed by reference so the action can mutate it.</param>
         void Run(ref TArg1 arg1, ref TArg2 arg2, ref TArg3 arg3, ref TArg4 arg4);
     }
 }

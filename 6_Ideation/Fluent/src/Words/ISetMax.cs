@@ -30,16 +30,18 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The set max interface
+    ///     Fluent builder interface that sets the maximum value on the target builder.
     /// </summary>
+    /// <typeparam name="TBuilder">The builder type returned by the fluent method for chaining.</typeparam>
+    /// <typeparam name="TArgument">The argument type accepted by the fluent method.</typeparam>
     public interface ISetMax<out TBuilder, in TArgument>
     {
         /// <summary>
         ///     Sets the max using the specified value
         /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="value">The value</param>
-        /// <returns>The builder</returns>
+        /// <typeparam name="T">The specific type parameter for this operation.</typeparam>
+        /// <param name="value">The maximum value to apply.</param>
+        /// <returns>The builder instance, enabling fluent chaining.</returns>
         TBuilder SetMax<T>(TArgument value);
     }
 }

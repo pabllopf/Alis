@@ -30,15 +30,17 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The background interface
+    ///     Fluent builder interface that sets the background on the target builder.
     /// </summary>
+    /// <typeparam name="TBuilder">The builder type returned by the fluent method for chaining.</typeparam>
+    /// <typeparam name="TArgument">The argument type accepted by the fluent method.</typeparam>
     public interface IBackground<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Backgrounds the value
+        ///     Sets the background on the builder.
         /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The builder</returns>
+        /// <param name="value">The background value to apply.</param>
+        /// <returns>The builder instance, enabling fluent chaining.</returns>
         TBuilder Background(TArgument value);
     }
 }

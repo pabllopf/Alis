@@ -30,16 +30,18 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The gravity interface
+    ///     Fluent builder interface that sets the gravity on the target builder.
     /// </summary>
+    /// <typeparam name="TBuilder">The builder type returned by the fluent method for chaining.</typeparam>
+    /// <typeparam name="TArgument">The argument type accepted by the fluent method.</typeparam>
     public interface IGravity<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Gravities the x
+        ///     Sets the gravity on the builder.
         /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        /// <returns>The builder</returns>
+        /// <param name="x">The X-coordinate or first component value.</param>
+        /// <param name="y">The Y-coordinate or second component value.</param>
+        /// <returns>The builder instance, enabling fluent chaining.</returns>
         TBuilder Gravity(TArgument x, TArgument y);
     }
 }

@@ -30,15 +30,17 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The audio interface
+    ///     Fluent builder interface that configures audio settings on the target builder.
     /// </summary>
+    /// <typeparam name="TBuilder">The builder type returned by the fluent method for chaining.</typeparam>
+    /// <typeparam name="TArgument">The argument type accepted by the fluent method.</typeparam>
     public interface IAudio<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Audioes the value
+        ///     Configures audio settings on the builder.
         /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The builder</returns>
+        /// <param name="value">The audio configuration to apply.</param>
+        /// <returns>The builder instance, enabling fluent chaining.</returns>
         TBuilder Audio(TArgument value);
     }
 }

@@ -30,16 +30,18 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The resolution interface
+    ///     Fluent builder interface that sets the resolution on the target builder.
     /// </summary>
+    /// <typeparam name="TBuilder">The builder type returned by the fluent method for chaining.</typeparam>
+    /// <typeparam name="TArgument">The argument type accepted by the fluent method.</typeparam>
     public interface IResolution<out TBuilder, in TArgument1, in TArgument2>
     {
         /// <summary>
-        ///     Resolutions the x
+        ///     Sets the resolution on the builder.
         /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        /// <returns>The builder</returns>
+        /// <param name="x">The first dimension or X value.</param>
+        /// <param name="y">The second dimension or Y value.</param>
+        /// <returns>The builder instance, enabling fluent chaining.</returns>
         TBuilder Resolution(TArgument1 x, TArgument2 y);
     }
 }

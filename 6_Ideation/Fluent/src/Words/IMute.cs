@@ -30,15 +30,17 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The mute interface
+    ///     Fluent builder interface that sets mute state on the target builder.
     /// </summary>
+    /// <typeparam name="TBuilder">The builder type returned by the fluent method for chaining.</typeparam>
+    /// <typeparam name="TArgument">The argument type accepted by the fluent method.</typeparam>
     public interface IMute<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Mutes the value
+        ///     Sets mute state on the builder.
         /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The builder</returns>
+        /// <param name="value">The mute setting to apply.</param>
+        /// <returns>The builder instance, enabling fluent chaining.</returns>
         TBuilder Mute(TArgument value);
     }
 }

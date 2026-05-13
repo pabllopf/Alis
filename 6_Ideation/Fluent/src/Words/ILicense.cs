@@ -30,15 +30,17 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The license interface
+    ///     Fluent builder interface that sets the license on the target builder.
     /// </summary>
+    /// <typeparam name="TBuilder">The builder type returned by the fluent method for chaining.</typeparam>
+    /// <typeparam name="TArgument">The argument type accepted by the fluent method.</typeparam>
     public interface ILicense<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Licenses the value
+        ///     Sets the license on the builder.
         /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The builder</returns>
+        /// <param name="value">The license value to apply.</param>
+        /// <returns>The builder instance, enabling fluent chaining.</returns>
         TBuilder License(TArgument value);
     }
 }

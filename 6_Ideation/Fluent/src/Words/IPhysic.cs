@@ -30,15 +30,17 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The physic interface
+    ///     Fluent builder interface that configures physics settings on the target builder.
     /// </summary>
+    /// <typeparam name="TBuilder">The builder type returned by the fluent method for chaining.</typeparam>
+    /// <typeparam name="TArgument">The argument type accepted by the fluent method.</typeparam>
     public interface IPhysic<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Physics the value
+        ///     Configures physics settings on the builder.
         /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The builder</returns>
+        /// <param name="value">The physics configuration to apply.</param>
+        /// <returns>The builder instance, enabling fluent chaining.</returns>
         TBuilder Physic(TArgument value);
     }
 }

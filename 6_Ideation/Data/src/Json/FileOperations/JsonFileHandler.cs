@@ -36,26 +36,37 @@ using Alis.Core.Aspect.Data.Json.Serialization;
 namespace Alis.Core.Aspect.Data.Json.FileOperations
 {
     /// <summary>
-    ///     Handles reading and writing JSON files.
+    ///     Provides JSON file I/O operations by coordinating a serializer and deserializer.
+    ///     Handles file path construction, directory creation, file existence verification,
+    ///     and delegates the actual JSON conversion to the injected <see cref="IJsonSerializer" />
+    ///     and <see cref="IJsonDeserializer" /> instances.
     /// </summary>
+    /// <remarks>
+    ///     File paths are constructed by combining <see cref="Environment.CurrentDirectory" />
+    ///     with the provided relative path. The .json extension is appended to the file name
+    ///     automatically. During serialization, the target directory is created if it does not
+    ///     already exist. During deserialization, a <see cref="FileNotFoundException" /> is
+    ///     thrown if the file is missing. All I/O errors are wrapped in <see cref="IOException" />.
+    /// </remarks>
     public sealed class JsonFileHandler : IJsonFileHandler
     {
         /// <summary>
-        ///     The json deserializer
+        ///     The deserializer used to convert JSON file contents into typed objects.
         /// </summary>
         private readonly IJsonDeserializer _jsonDeserializer;
 
         /// <summary>
-        ///     The json serializer
+        ///     The serializer used to convert objects into JSON strings for file output.
         /// </summary>
         private readonly IJsonSerializer _jsonSerializer;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="JsonFileHandler" /> class.
+        ///     Initializes a new instance of the <see cref="JsonFileHandler" /> class with the
+        ///     specified serializer and deserializer.
         /// </summary>
-        /// <param name="jsonSerializer">The JSON serializer to use.</param>
-        /// <param name="jsonDeserializer">The JSON deserializer to use.</param>
-        /// <exception cref="ArgumentNullException">Thrown when any parameter is null.</exception>
+        /// <param name="jsonSerializer">The JSON serializer to use for converting objects to JSON strings. Must not be null.</param>
+        /// <param name="jsonDeserializer">The JSON deserializer to use for converting JSON strings to objects. Must not be null.</param>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="jsonSerializer" /> or <paramref name="jsonDeserializer" /> is null.</exception>
         public JsonFileHandler(IJsonSerializer jsonSerializer, IJsonDeserializer jsonDeserializer)
         {
             _jsonSerializer = jsonSerializer ?? throw new ArgumentNullException(nameof(jsonSerializer));
@@ -63,14 +74,17 @@ namespace Alis.Core.Aspect.Data.Json.FileOperations
         }
 
         /// <summary>
-        ///     Serializes an object to a JSON file.
+        ///     Serializes the specified object to a JSON file on disk. The file is written
+        ///     to a path composed of the current working directory, the relative path, and
+        ///     the file name with a .json extension. The target directory is created if
+        ///     it does not exist.
         /// </summary>
-        /// <typeparam name="T">The type of the object to serialize, which must implement IJsonSerializable.</typeparam>
-        /// <param name="instance">The instance to serialize.</param>
-        /// <param name="fileName">The name of the file (without .json extension).</param>
-        /// <param name="relativePath">The relative path where the file will be saved.</param>
-        /// <exception cref="ArgumentNullException">Thrown when parameters are null.</exception>
-        /// <exception cref="System.IO.IOException">Thrown when file operations fail.</exception>
+        /// <typeparam name="T">The type of the object to serialize. Must implement <see cref="IJsonSerializable" />.</typeparam>
+        /// <param name="instance">The object instance to serialize and write to disk. Must not be null.</param>
+        /// <param name="fileName">The name of the output file without the .json extension (appended automatically). Must not be null.</param>
+        /// <param name="relativePath">The relative directory path (relative to the current working directory) for the output file. Must not be null.</param>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="instance" />, <paramref name="fileName" />, or <paramref name="relativePath" /> is null.</exception>
+        /// <exception cref="System.IO.IOException">Thrown when the file cannot be written due to an I/O error.</exception>
         [ExcludeFromCodeCoverage]
         public void SerializeToFile<T>(T instance, string fileName, string relativePath) where T : IJsonSerializable
         {
@@ -109,15 +123,20 @@ namespace Alis.Core.Aspect.Data.Json.FileOperations
         }
 
         /// <summary>
-        ///     Deserializes a JSON file into an object.
+        ///     Deserializes a JSON file from disk into a new instance of the specified type.
+        ///     Reads the file content, delegates to the deserializer for JSON-to-object conversion,
+        ///     and returns the populated instance.
         /// </summary>
-        /// <typeparam name="T">The target type, which must implement IJsonSerializable and IJsonDesSerializable&lt;T&gt;.</typeparam>
-        /// <param name="fileName">The name of the file (without .json extension).</param>
-        /// <param name="relativePath">The relative path where the file is located.</param>
-        /// <returns>An instance of the specified type populated with data from the JSON file.</returns>
-        /// <exception cref="System.IO.FileNotFoundException">Thrown when the file does not exist.</exception>
-        /// <exception cref="ArgumentNullException">Thrown when parameters are null.</exception>
-        /// <exception cref="System.IO.IOException">Thrown when file operations fail.</exception>
+        /// <typeparam name="T">
+        ///     The target type for deserialization. Must implement <see cref="IJsonSerializable" />
+        ///     and <see cref="IJsonDesSerializable{T}" />, and have a parameterless constructor.
+        /// </typeparam>
+        /// <param name="fileName">The name of the input file without the .json extension (appended automatically). Must not be null.</param>
+        /// <param name="relativePath">The relative directory path (relative to the current working directory) where the file is located. Must not be null.</param>
+        /// <returns>A new instance of <typeparamref name="T" /> populated with data from the JSON file.</returns>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="fileName" /> or <paramref name="relativePath" /> is null.</exception>
+        /// <exception cref="System.IO.FileNotFoundException">Thrown when the specified file does not exist at the constructed path.</exception>
+        /// <exception cref="System.IO.IOException">Thrown when the file cannot be read due to an I/O error.</exception>
         [ExcludeFromCodeCoverage]
         public T DeserializeFromFile<T>(string fileName, string relativePath) where T : IJsonSerializable, IJsonDesSerializable<T>, new()
         {

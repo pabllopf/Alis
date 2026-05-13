@@ -30,15 +30,17 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The friction interface
+    ///     Fluent builder interface that sets the friction coefficient on the target builder.
     /// </summary>
+    /// <typeparam name="TBuilder">The builder type returned by the fluent method for chaining.</typeparam>
+    /// <typeparam name="TArgument">The argument type accepted by the fluent method.</typeparam>
     public interface IFriction<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Frictions the value
+        ///     Sets the friction coefficient on the builder.
         /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The builder</returns>
+        /// <param name="value">The friction value to apply.</param>
+        /// <returns>The builder instance, enabling fluent chaining.</returns>
         TBuilder Friction(TArgument value);
     }
 }

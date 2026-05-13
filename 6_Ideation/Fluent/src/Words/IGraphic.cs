@@ -30,15 +30,17 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The graphic interface
+    ///     Fluent builder interface that configures graphics settings on the target builder.
     /// </summary>
+    /// <typeparam name="TBuilder">The builder type returned by the fluent method for chaining.</typeparam>
+    /// <typeparam name="TArgument">The argument type accepted by the fluent method.</typeparam>
     public interface IGraphic<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Graphics the value
+        ///     Configures graphics settings on the builder.
         /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The builder</returns>
+        /// <param name="value">The graphics configuration to apply.</param>
+        /// <returns>The builder instance, enabling fluent chaining.</returns>
         TBuilder Graphic(TArgument value);
     }
 }

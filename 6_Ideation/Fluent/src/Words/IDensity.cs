@@ -30,15 +30,17 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The density interface
+    ///     Fluent builder interface that sets the density on the target builder.
     /// </summary>
+    /// <typeparam name="TBuilder">The builder type returned by the fluent method for chaining.</typeparam>
+    /// <typeparam name="TArgument">The argument type accepted by the fluent method.</typeparam>
     public interface IDensity<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Densities the value
+        ///     Sets the density on the builder.
         /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The builder</returns>
+        /// <param name="value">The density value to apply.</param>
+        /// <returns>The builder instance, enabling fluent chaining.</returns>
         TBuilder Density(TArgument value);
     }
 }

@@ -30,15 +30,17 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The add interface
+    ///     Fluent builder interface that adds an item on the target builder.
     /// </summary>
+    /// <typeparam name="TBuilder">The builder type returned by the fluent method for chaining.</typeparam>
+    /// <typeparam name="TArgument">The argument type accepted by the fluent method.</typeparam>
     public interface IAdd<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Adds the value
+        ///     Adds an item on the builder.
         /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The builder</returns>
+        /// <param name="value">The value to apply.</param>
+        /// <returns>The builder instance, enabling fluent chaining.</returns>
         TBuilder Add(TArgument value);
     }
 }

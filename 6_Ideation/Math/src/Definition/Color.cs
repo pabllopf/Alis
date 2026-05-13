@@ -33,59 +33,58 @@ using System.Runtime.Serialization;
 namespace Alis.Core.Aspect.Math.Definition
 {
     /// <summary>
-    ///     The color
+    ///     Represents an RGBA color with 8-bit byte components, including predefined named colors. Implements <see cref="ISerializable" />.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct Color : ISerializable
     {
         /// <summary>
-        ///     The
+        ///     Gets or sets the red component (0-255).
         /// </summary>
         public byte R { get; set; }
 
         /// <summary>
-        ///     The
+        ///     Gets or sets the green component (0-255).
         /// </summary>
         public byte G { get; set; }
 
         /// <summary>
-        ///     The
+        ///     Gets or sets the blue component (0-255).
         /// </summary>
         public byte B { get; set; }
 
         /// <summary>
-        ///     The
+        ///     Gets or sets the alpha (opacity) component (0-255, where 255 is fully opaque).
         /// </summary>
         public byte A { get; set; }
 
         /// <summary>
-        ///     Gets the value of the cyan
+        ///     Gets the predefined cyan color (R=0, G=255, B=255, A=255).
         /// </summary>
         public static Color Cyan { get; } = new Color(0, 255, 255, 255);
 
         /// <summary>
-        ///     Gets the value of the magenta
+        ///     Gets the predefined magenta color (R=255, G=0, B=255, A=255).
         /// </summary>
         public static Color Magenta { get; } = new Color(255, 0, 255, 255);
 
         /// <summary>
-        ///     Gets the value of the yellow
+        ///     Gets the predefined yellow color (R=255, G=255, B=0, A=255).
         /// </summary>
         public static Color Yellow { get; } = new Color(255, 255, 0, 255);
 
         /// <summary>
-        ///     Gets the value of the blue
+        ///     Gets the predefined blue color (R=0, G=0, B=255, A=255).
         /// </summary>
         public static Color Blue { get; } = new Color(0, 0, 255, 255);
 
-
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Color" /> class
+        ///     Initializes a new instance of the <see cref="Color" /> struct with explicit byte component values.
         /// </summary>
-        /// <param name="r">The </param>
-        /// <param name="g">The </param>
-        /// <param name="b">The </param>
-        /// <param name="a">The </param>
+        /// <param name="r">The red component value (0-255).</param>
+        /// <param name="g">The green component value (0-255).</param>
+        /// <param name="b">The blue component value (0-255).</param>
+        /// <param name="a">The alpha component value (0-255, 255 = fully opaque).</param>
         public Color(byte r, byte g, byte b, byte a)
         {
             R = r;
@@ -95,12 +94,12 @@ namespace Alis.Core.Aspect.Math.Definition
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Color" /> class
+        ///     Initializes a new instance of the <see cref="Color" /> struct using integer component values that are cast to bytes.
         /// </summary>
-        /// <param name="r">The </param>
-        /// <param name="g">The </param>
-        /// <param name="b">The </param>
-        /// <param name="a">The </param>
+        /// <param name="r">The red component value (will be cast to byte).</param>
+        /// <param name="g">The green component value (will be cast to byte).</param>
+        /// <param name="b">The blue component value (will be cast to byte).</param>
+        /// <param name="a">The alpha component value (will be cast to byte).</param>
         public Color(int r, int g, int b, int a)
         {
             R = (byte) r;
@@ -110,45 +109,45 @@ namespace Alis.Core.Aspect.Math.Definition
         }
 
         /// <summary>
-        ///     Gets the value of the black
+        ///     Gets the predefined black color (R=0, G=0, B=0, A=255).
         /// </summary>
         public static Color Black => new Color(0, 0, 0, 255);
 
         /// <summary>
-        ///     Gets the value of the white
+        ///     Gets the predefined white color (R=255, G=255, B=255, A=255).
         /// </summary>
         public static Color White => new Color(255, 255, 255, 255);
 
         /// <summary>
-        ///     Gets the value of the red
+        ///     Gets the predefined red color (R=255, G=0, B=0, A=255).
         /// </summary>
         public static Color Red => new Color(255, 0, 0, 255);
 
         /// <summary>
-        ///     Gets the value of the transparent
+        ///     Gets the predefined transparent color (R=0, G=0, B=0, A=0).
         /// </summary>
         public static Color Transparent => new Color(0, 0, 0, 0);
 
         /// <summary>
-        ///     Gets the value of the green
+        ///     Gets the predefined green color (R=0, G=255, B=0, A=255).
         /// </summary>
         public static Color Green => new Color(0, 255, 0, 255);
 
         /// <summary>
-        ///     Gets or sets the value of the brown
+        ///     Gets the predefined brown color (R=165, G=42, B=42, A=255).
         /// </summary>
         public static Color Brown { get; } = new Color(165, 42, 42, 255);
 
         /// <summary>
-        ///     Gets or sets the value of the dark green
+        ///     Gets the predefined dark green color (R=0, G=100, B=0, A=255).
         /// </summary>
         public static Color DarkGreen { get; } = new Color(0, 100, 0, 255);
 
         /// <summary>
-        ///     Gets the object data using the specified info
+        ///     Populates a <see cref="SerializationInfo" /> with the data needed to serialize the color.
         /// </summary>
-        /// <param name="info">The info</param>
-        /// <param name="context">The context</param>
+        /// <param name="info">The <see cref="SerializationInfo" /> to populate with data.</param>
+        /// <param name="context">The destination (see <see cref="StreamingContext" />) for this serialization.</param>
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("r", R);

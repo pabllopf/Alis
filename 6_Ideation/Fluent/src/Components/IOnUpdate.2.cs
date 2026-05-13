@@ -30,17 +30,22 @@
 namespace Alis.Core.Aspect.Fluent.Components
 {
     /// <summary>
-    ///     The gameObject component interface
+    ///     Lifecycle hook invoked each frame during the update loop, providing the owning entity and
+    ///     2 additional component references of types <typeparamref name="TArg1"/>, <typeparamref name="TArg2"/>.
     /// </summary>
+    /// <typeparam name="TArg1">The type of the 1st additional component or data argument passed to the update method.</typeparam>
+    /// <typeparam name="TArg2">The type of the 2nd additional component or data argument passed to the update method.</typeparam>
+
+    /// <seealso cref="IComponentBase" />
     /// <seealso cref="IComponentBase" />
     public partial interface IOnUpdate<TArg1, TArg2> : IComponentBase
     {
         /// <summary>
-        ///     Updates the self
+        ///     Invokes the update logic with the owning entity and 2 component references.
         /// </summary>
-        /// <param name="self">The self</param>
-        /// <param name="arg1">The arg</param>
-        /// <param name="arg2">The arg</param>
+        /// <param name="self">The entity that owns this component.</param>
+        /// <param name="arg1">The 1st additional component reference of type <typeparamref name="TArg1"/>.</param>
+        /// <param name="arg2">The 2nd additional component reference of type <typeparamref name="TArg2"/>.</param>
         void Update(IGameObject self, ref TArg1 arg1, ref TArg2 arg2);
     }
 }

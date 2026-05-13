@@ -30,8 +30,17 @@
 namespace Alis.Core.Aspect.Fluent.Components
 {
     /// <summary>
-    ///     The action interface
+    ///     Defines a fluent action delegate that operates on 8 arguments
+    ///     of types TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8.
     /// </summary>
+    /// <typeparam name="TArg1">The type of the 1st argument passed to the action.</typeparam>
+    /// <typeparam name="TArg2">The type of the 2nd argument passed to the action.</typeparam>
+    /// <typeparam name="TArg3">The type of the 3rd argument passed to the action.</typeparam>
+    /// <typeparam name="TArg4">The type of the 4th argument passed to the action.</typeparam>
+    /// <typeparam name="TArg5">The type of the 5th argument passed to the action.</typeparam>
+    /// <typeparam name="TArg6">The type of the 6th argument passed to the action.</typeparam>
+    /// <typeparam name="TArg7">The type of the 7th argument passed to the action.</typeparam>
+    /// <typeparam name="TArg8">The type of the 8th argument passed to the action.</typeparam>
     public partial interface IAction<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8>
     {
         /// Executes the function

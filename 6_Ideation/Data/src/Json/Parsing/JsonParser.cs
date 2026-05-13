@@ -37,29 +37,52 @@ using Alis.Core.Aspect.Data.Json.Helpers;
 namespace Alis.Core.Aspect.Data.Json.Parsing
 {
     /// <summary>
-    ///     Parses JSON strings into dictionaries of properties.
+    ///     Parses JSON strings into flat dictionaries of string key-value pairs.
+    ///     Supports parsing of JSON objects with string keys and values of various types,
+    ///     handling nested objects and arrays by returning them as raw JSON substrings.
+    ///     Uses an <see cref="IEscapeSequenceHandler" /> to correctly process escape sequences
+    ///     within quoted strings.
     /// </summary>
+    /// <remarks>
+    ///     The parser processes JSON input character by character, maintaining a position cursor.
+    ///     It handles:
+    ///     - Quoted strings with full escape sequence support (via the injected handler)
+    ///     - Nested objects and arrays (tracked via depth counting, respecting string boundaries)
+    ///     - Primitive values (numbers, booleans, null) delimited by structural characters
+    ///     - Whitespace skipping between tokens
+    ///     The parser does not perform type conversion; all values are returned as strings.
+    ///     This parser is designed to be AOT-compatible and avoids runtime code generation.
+    /// </remarks>
     public sealed class JsonParser : IJsonParser
     {
         /// <summary>
-        ///     The escape sequence handler
+        ///     The escape sequence handler used to detect escaped characters and unescape
+        ///     JSON strings during parsing.
         /// </summary>
         private readonly IEscapeSequenceHandler _escapeSequenceHandler;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="JsonParser" /> class.
+        ///     Initializes a new instance of the <see cref="JsonParser" /> class with the specified
+        ///     escape sequence handler.
         /// </summary>
-        /// <param name="escapeSequenceHandler">The escape sequence handler.</param>
-        /// <exception cref="ArgumentNullException">Thrown when escapeSequenceHandler is null.</exception>
+        /// <param name="escapeSequenceHandler">The escape sequence handler that provides escaped-character detection and unescaping. Must not be null.</param>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="escapeSequenceHandler" /> is null.</exception>
         public JsonParser(IEscapeSequenceHandler escapeSequenceHandler) => _escapeSequenceHandler = escapeSequenceHandler ?? throw new ArgumentNullException(nameof(escapeSequenceHandler));
 
         /// <summary>
-        ///     Parses a JSON string into a dictionary of property names and their string values.
+        ///     Parses the provided JSON string into a dictionary of property names and their
+        ///     string representations. Complex nested values are preserved as raw JSON substrings.
         /// </summary>
-        /// <param name="json">The JSON string to parse.</param>
-        /// <returns>A dictionary containing property names as keys and their string representations as values.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when json is null.</exception>
-        /// <exception cref="JsonParsingException">Thrown when parsing fails.</exception>
+        /// <param name="json">The JSON string to parse. Must not be null. Expected to represent a JSON object (surrounded by curly braces).</param>
+        /// <returns>
+        ///     A dictionary where each key is a property name from the JSON object and each value
+        ///     is its string representation. Primitive values (numbers, booleans, null) are returned
+        ///     as plain strings; quoted strings are unescaped; nested objects and arrays are returned
+        ///     as raw JSON substrings.
+        ///     Returns an empty dictionary for null, empty, or whitespace-only input.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="json" /> is null.</exception>
+        /// <exception cref="JsonParsingException">Thrown when the JSON is malformed (e.g., missing delimiters, unterminated strings, or unexpected characters).</exception>
         [ExcludeFromCodeCoverage]
         public Dictionary<string, string> ParseToDictionary(string json)
         {
@@ -131,8 +154,18 @@ namespace Alis.Core.Aspect.Data.Json.Parsing
         }
 
         /// <summary>
-        ///     Reads a JSON value at the current position.
+        ///     Reads and returns the next JSON value at the current parsing position.
+        ///     Dispatches to the appropriate reader based on the first character encountered:
+        ///     '{' or '[' for complex structures, '"' for strings, or any other character for primitives.
         /// </summary>
+        /// <param name="json">The full JSON string being parsed.</param>
+        /// <param name="position">The current position within the JSON string, advanced past the read value on return.</param>
+        /// <returns>
+        ///     The string representation of the value read. For quoted strings, the result is
+        ///     unescaped. For objects and arrays, the result is the raw JSON substring including
+        ///     delimiters. For primitives, the result is the trimmed token.
+        ///     Returns null if the position is at or past the end of the string.
+        /// </returns>
         [ExcludeFromCodeCoverage]
         private string ReadJsonValue(string json, ref int position)
         {
@@ -157,8 +190,14 @@ namespace Alis.Core.Aspect.Data.Json.Parsing
         }
 
         /// <summary>
-        ///     Reads a JSON string starting with a quote.
+        ///     Reads a JSON string value starting at the current position (which must point to an
+        ///     opening quote character). Advances the position past the closing unescaped quote
+        ///     and returns the unescaped string content.
         /// </summary>
+        /// <param name="json">The full JSON string being parsed.</param>
+        /// <param name="position">The current position, expected to point at a '"' character. Advanced past the closing '"' on success.</param>
+        /// <returns>The unescaped string content between the opening and closing quotes.</returns>
+        /// <exception cref="JsonParsingException">Thrown if no opening quote is found at the current position, or if the string is unterminated (no closing quote before end of input).</exception>
         private string ReadJsonString(string json, ref int position)
         {
             if (position >= json.Length || json[position] != '"')
@@ -187,8 +226,14 @@ namespace Alis.Core.Aspect.Data.Json.Parsing
         }
 
         /// <summary>
-        ///     Reads a raw JSON value (object or array).
+        ///     Reads a raw JSON value representing a nested object or array, starting at the current
+        ///     position. Tracks nesting depth to correctly handle the top-level closing delimiter,
+        ///     respecting string boundaries to avoid false delimiter matches.
         /// </summary>
+        /// <param name="json">The full JSON string being parsed.</param>
+        /// <param name="position">The current position, expected to point at '{' or '['. Advanced past the matching closing delimiter on success.</param>
+        /// <returns>The raw JSON substring from the opening to the matching closing delimiter, inclusive.</returns>
+        /// <exception cref="JsonParsingException">Thrown if the JSON structure is unterminated (no matching closing delimiter found before end of input).</exception>
         [ExcludeFromCodeCoverage]
         private string ReadRawJsonValue(string json, ref int position)
         {
@@ -236,8 +281,13 @@ namespace Alis.Core.Aspect.Data.Json.Parsing
         }
 
         /// <summary>
-        ///     Reads a primitive JSON value (number, boolean, null).
+        ///     Reads a primitive JSON value (number, boolean literal, or null literal) starting at
+        ///     the current position. The value is delimited by structural characters: comma, closing
+        ///     brace, or closing bracket.
         /// </summary>
+        /// <param name="json">The full JSON string being parsed.</param>
+        /// <param name="position">The current position within the JSON string. Advanced past the end of the primitive value on return.</param>
+        /// <returns>The trimmed string representation of the primitive value, with surrounding whitespace removed.</returns>
         private string ReadPrimitive(string json, ref int position)
         {
             int start = position;
@@ -251,8 +301,11 @@ namespace Alis.Core.Aspect.Data.Json.Parsing
         }
 
         /// <summary>
-        ///     Skips whitespace characters at the current position.
+        ///     Advances the position past any whitespace characters (as defined by
+        ///     <see cref="char.IsWhiteSpace(char)" />) at the current location in the JSON string.
         /// </summary>
+        /// <param name="json">The full JSON string being parsed.</param>
+        /// <param name="position">The current position. Updated to the first non-whitespace character or to the end of the string.</param>
         private void SkipWhitespace(string json, ref int position)
         {
             while ((position < json.Length) && char.IsWhiteSpace(json[position]))

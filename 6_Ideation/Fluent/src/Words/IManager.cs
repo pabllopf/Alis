@@ -30,13 +30,17 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The manager interface
+    ///     Fluent builder interface that configures a manager on the target builder.
     /// </summary>
+    /// <typeparam name="TBuilder">The builder type returned by the fluent method for chaining.</typeparam>
+    /// <typeparam name="TArgument">The argument type accepted by the fluent method.</typeparam>
     public interface IManager<out TBuilder, in TArgument>
     {
-        /// <summary>Withes the specified value.</summary>
-        /// <param name="value">The value.</param>
-        /// <returns>Return that you want.</returns>
+        /// <summary>
+        ///     Configures a manager on the builder.
+        /// </summary>
+        /// <param name="value">The manager configuration to apply.</param>
+        /// <returns>The builder instance, enabling fluent chaining.</returns>
         TBuilder Manager<T>(TArgument value);
     }
 }

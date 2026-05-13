@@ -38,75 +38,113 @@ using Alis.Core.Aspect.Data.Json.Serialization;
 namespace Alis.Core.Aspect.Data.Json
 {
     /// <summary>
-    ///     The json native aot class
+    ///     Provides a static facade for JSON serialization, deserialization, parsing, and file I/O
+    ///     operations. This class is designed to be AOT-compatible by avoiding runtime code generation
+    ///     and reflection-heavy patterns, relying instead on the <see cref="IJsonSerializable" /> and
+    ///     <see cref="IJsonDesSerializable{T}" /> interfaces for type-safe conversion.
     /// </summary>
+    /// <remarks>
+    ///     <para>
+    ///     <see cref="JsonNativeAot" /> configures and exposes a complete JSON pipeline through
+    ///     lazily-initialized singletons:
+    ///     <list type="bullet">
+    ///     <item><description><see cref="IEscapeSequenceHandler" /> — handles escape sequences in quoted strings</description></item>
+    ///     <item><description><see cref="IJsonParser" /> — parses JSON strings into flat property dictionaries</description></item>
+    ///     <item><description><see cref="IJsonSerializer" /> — serializes objects to JSON strings</description></item>
+    ///     <item><description><see cref="IJsonDeserializer" /> — deserializes JSON strings into objects</description></item>
+    ///     <item><description><see cref="IJsonFileHandler" /> — reads/writes JSON files</description></item>
+    ///     </list>
+    ///     </para>
+    ///     <para>
+    ///     All components are initialized on first use and are thread-safe via <see cref="Lazy{T}" />.
+    ///     This design makes <see cref="JsonNativeAot" /> suitable for use in AOT-compiled environments
+    ///     where runtime reflection and code generation are unavailable.
+    ///     </para>
+    /// </remarks>
     public static class JsonNativeAot
     {
         /// <summary>
-        ///     The escape sequence handler
+        ///     Lazily-initialized singleton for handling JSON escape sequences within string values.
         /// </summary>
         private static readonly Lazy<IEscapeSequenceHandler> _escapeSequenceHandler =
             new(() => new EscapeSequenceHandler());
 
         /// <summary>
-        ///     The value
+        ///     Lazily-initialized singleton for parsing JSON strings into flat property dictionaries.
+        ///     Depends on <see cref="_escapeSequenceHandler" /> for correct string processing.
         /// </summary>
         private static readonly Lazy<IJsonParser> _jsonParser =
             new(() => new JsonParser(_escapeSequenceHandler.Value));
 
         /// <summary>
-        ///     The json serializer
+        ///     Lazily-initialized singleton for serializing objects that implement
+        ///     <see cref="IJsonSerializable" /> into JSON strings.
         /// </summary>
         private static readonly Lazy<IJsonSerializer> _jsonSerializer =
             new(() => new JsonSerializer());
 
         /// <summary>
-        ///     The value
+        ///     Lazily-initialized singleton for deserializing JSON strings into typed objects.
+        ///     Depends on <see cref="_jsonParser" /> for the initial parsing step.
         /// </summary>
         private static readonly Lazy<IJsonDeserializer> _jsonDeserializer =
             new(() => new JsonDeserializer(_jsonParser.Value));
 
         /// <summary>
-        ///     The value
+        ///     Lazily-initialized singleton for reading JSON files into objects and writing
+        ///     objects to JSON files. Depends on both the serializer and deserializer.
         /// </summary>
         private static readonly Lazy<IJsonFileHandler> _jsonFileHandler =
             new(() => new JsonFileHandler(_jsonSerializer.Value, _jsonDeserializer.Value));
 
         /// <summary>
-        ///     Serializes an object to a JSON string.
+        ///     Serializes the specified object instance to a JSON string representation.
         /// </summary>
-        /// <typeparam name="T">The type of the object to serialize.</typeparam>
-        /// <param name="instance">The instance to serialize.</param>
-        /// <returns>A JSON string representation of the object.</returns>
+        /// <typeparam name="T">The type of the object to serialize. Must implement <see cref="IJsonSerializable" />.</typeparam>
+        /// <param name="instance">The object instance to serialize. Must not be null.</param>
+        /// <returns>A JSON string representation of the object enclosed in curly braces.</returns>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="instance" /> is null.</exception>
         public static string Serialize<T>(T instance) where T : IJsonSerializable => _jsonSerializer.Value.Serialize(instance);
 
         /// <summary>
-        ///     Serializes an object to a JSON file.
+        ///     Serializes the specified object instance to a JSON file on disk.
+        ///     Creates the target directory if it does not exist.
         /// </summary>
-        /// <typeparam name="T">The type of the object to serialize.</typeparam>
-        /// <param name="instance">The instance to serialize.</param>
-        /// <param name="fileName">The name of the file (without .json extension).</param>
-        /// <param name="relativePath">The relative path where the file will be saved.</param>
+        /// <typeparam name="T">The type of the object to serialize. Must implement <see cref="IJsonSerializable" />.</typeparam>
+        /// <param name="instance">The object instance to serialize and write to file. Must not be null.</param>
+        /// <param name="fileName">The name of the output file without the .json extension. Must not be null.</param>
+        /// <param name="relativePath">The relative directory path (relative to the current working directory) where the file will be saved. Must not be null.</param>
+        /// <exception cref="ArgumentNullException">Thrown when any parameter is null.</exception>
+        /// <exception cref="System.IO.IOException">Thrown when the file cannot be written.</exception>
         public static void SerializeToFile<T>(T instance, string fileName, string relativePath) where T : IJsonSerializable
         {
             _jsonFileHandler.Value.SerializeToFile(instance, fileName, relativePath);
         }
 
         /// <summary>
-        ///     Deserializes a JSON string into an object.
+        ///     Deserializes the specified JSON string into a new instance of type <typeparamref name="T" />.
         /// </summary>
-        /// <typeparam name="T">The target type.</typeparam>
-        /// <param name="json">The JSON string to deserialize.</param>
-        /// <returns>An instance of the specified type.</returns>
+        /// <typeparam name="T">
+        ///     The target type for deserialization. Must implement <see cref="IJsonSerializable" />
+        ///     and <see cref="IJsonDesSerializable{T}" />, and have a parameterless constructor.
+        /// </typeparam>
+        /// <param name="json">The JSON string to deserialize. Must not be null.</param>
+        /// <returns>A new instance of <typeparamref name="T" /> populated with data from the JSON string.</returns>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="json" /> is null.</exception>
         public static T Deserialize<T>(string json) where T : IJsonSerializable, IJsonDesSerializable<T>, new() => _jsonDeserializer.Value.Deserialize<T>(json);
 
         /// <summary>
         ///     Parses a JSON string into a dictionary of property names and their string values.
+        ///     Provides low-level access to JSON parsing without deserializing to a specific type.
         /// </summary>
-        /// <param name="json">The JSON string to parse.</param>
-        /// <returns>A dictionary containing property names as keys and their string representations as values.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when json is null.</exception>
-        /// <exception cref="Exceptions.JsonParsingException">Thrown when JSON parsing fails.</exception>
+        /// <param name="json">The JSON string to parse. Must not be null.</param>
+        /// <returns>
+        ///     A dictionary where each key is a property name from the JSON object and the value
+        ///     is its string representation. Complex values (objects and arrays) are returned as
+        ///     raw JSON substrings. Returns an empty dictionary for empty or whitespace-only input.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="json" /> is null.</exception>
+        /// <exception cref="Exceptions.JsonParsingException">Thrown when JSON parsing fails due to malformed input.</exception>
         /// <remarks>
         ///     This method provides low-level access to JSON parsing. It returns a raw dictionary
         ///     of property names and values without deserializing to a specific type.
@@ -125,12 +163,18 @@ namespace Alis.Core.Aspect.Data.Json
         public static Dictionary<string, string> ParseJsonToDictionary(string json) => _jsonParser.Value.ParseToDictionary(json);
 
         /// <summary>
-        ///     Deserializes a JSON file into an object.
+        ///     Deserializes a JSON file from disk into a new instance of type <typeparamref name="T" />.
         /// </summary>
-        /// <typeparam name="T">The target type.</typeparam>
-        /// <param name="fileName">The name of the file (without .json extension).</param>
-        /// <param name="relativePath">The relative path where the file is located.</param>
-        /// <returns>An instance of the specified type.</returns>
+        /// <typeparam name="T">
+        ///     The target type for deserialization. Must implement <see cref="IJsonSerializable" />
+        ///     and <see cref="IJsonDesSerializable{T}" />, and have a parameterless constructor.
+        /// </typeparam>
+        /// <param name="fileName">The name of the input file without the .json extension. Must not be null.</param>
+        /// <param name="relativePath">The relative directory path (relative to the current working directory) where the file is located. Must not be null.</param>
+        /// <returns>A new instance of <typeparamref name="T" /> populated with data from the JSON file.</returns>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="fileName" /> or <paramref name="relativePath" /> is null.</exception>
+        /// <exception cref="System.IO.FileNotFoundException">Thrown when the specified file does not exist.</exception>
+        /// <exception cref="System.IO.IOException">Thrown when the file cannot be read.</exception>
         public static T DeserializeFromFile<T>(string fileName, string relativePath) where T : IJsonSerializable, IJsonDesSerializable<T>, new() => _jsonFileHandler.Value.DeserializeFromFile<T>(fileName, relativePath);
     }
 }

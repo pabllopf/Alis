@@ -30,22 +30,14 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The is resizable interface
+    ///     Fluent builder interface that sets resizable state on the target builder.
     /// </summary>
+    /// <typeparam name="TBuilder">The builder type returned by the fluent method for chaining.</typeparam>
+    /// <typeparam name="TArgument">The argument type accepted by the fluent method.</typeparam>
     public interface IIsResizable<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Ises the resizable
+        ///     Sets resizable state to <c>true</c> on the builder (no argument overload).
         /// </summary>
-        /// <returns>The builder</returns>
+        /// <returns>The builder instance, enabling fluent chaining.</returns>
         TBuilder IsResizable();
-
-
-        /// <summary>
-        ///     Ises the resizable using the specified value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The builder</returns>
-        TBuilder IsResizable(TArgument value);
-    }
-}

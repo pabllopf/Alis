@@ -30,15 +30,17 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The set audio clip interface
+    ///     Fluent builder interface that sets an audio clip on the target builder.
     /// </summary>
+    /// <typeparam name="TBuilder">The builder type returned by the fluent method for chaining.</typeparam>
+    /// <typeparam name="TArgument">The argument type accepted by the fluent method.</typeparam>
     public interface ISetAudioClip<out TBuilder, in TArgument>
     {
         /// <summary>
         ///     Sets the audio clip using the specified value
         /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The builder</returns>
+        /// <param name="value">The audio clip to apply.</param>
+        /// <returns>The builder instance, enabling fluent chaining.</returns>
         TBuilder SetAudioClip(TArgument value);
     }
 }

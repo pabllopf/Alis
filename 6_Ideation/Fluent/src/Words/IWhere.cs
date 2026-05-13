@@ -30,15 +30,17 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The where interface
+    ///     Fluent builder interface that applies a filter condition on the target builder.
     /// </summary>
+    /// <typeparam name="TBuilder">The builder type returned by the fluent method for chaining.</typeparam>
+    /// <typeparam name="TArgument">The argument type accepted by the fluent method.</typeparam>
     public interface IWhere<out TBuilder, in TArgument>
     {
-        /// <summary>Wheres the specified value.</summary>
-        /// <param name="value">The value.</param>
-        /// <returns>
-        ///     <br />
-        /// </returns>
+        /// <summary>
+        ///     Applies a filter condition on the builder.
+        /// </summary>
+        /// <param name="value">The filter value to apply.</param>
+        /// <returns>The builder instance, enabling fluent chaining.</returns>
         TBuilder Where(TArgument value);
     }
 }

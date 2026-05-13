@@ -36,32 +36,14 @@ using System.Runtime.CompilerServices;
 namespace Alis.Core.Aspect.Math.Collections
 {
     /// <summary>
-    ///     A readonly array with O(1) indexable lookup time.
+    ///     A readonly array with O(1) indexable lookup time, wrapping a <typeparamref name="T" /> array without defensive copying.
     /// </summary>
     /// <typeparam name="T">The type of element stored by the array.</typeparam>
-    /// <devremarks>
-    ///     This type has a documented contract of being exactly one reference-type field in size.
-    ///     Our own <see /> class depends on it, as well as others
-    ///     externally.
-    ///     IMPORTANT NOTICE FOR MAINTAINERS AND REVIEWERS:
-    ///     This type should be thread-safe. As a struct, it cannot protect its own fields
-    ///     from being changed from one thread while its members are executing on other threads
-    ///     because structs can change *in place* simply by reassigning the field containing
-    ///     this struct. Therefore it is extremely important that
-    ///     ** Every member should only dereference <c>this</c> ONCE. **
-    ///     If a member needs to reference the array field, that counts as a dereference of <c>this</c>.
-    ///     Calling other instance members (properties or methods) also counts as dereferencing <c>this</c>.
-    ///     Any member that needs to use <c>this</c> more than once must instead
-    ///     assign <c>this</c> to a local variable and use that for the rest of the code instead.
-    ///     This effectively copies the one field in the struct to a local variable so that
-    ///     it is insulated from other threads.
-    /// </devremarks>
     [ExcludeFromCodeCoverage]
     public readonly struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableArray<T>>, IFastImmutableArray
     {
         /// <summary>
-        ///     A writable array accessor that can be converted into an <see />
-        ///     instance without allocating memory.
+        ///     A writable array accessor that can be converted into an <see cref="FastImmutableArray{T}" /> instance without allocating memory.
         /// </summary>
         [ExcludeFromCodeCoverage]
         public sealed class Builder : IList<T>, IReadOnlyList<T>
@@ -77,7 +59,7 @@ namespace Alis.Core.Aspect.Math.Collections
             private T[] _elements;
 
             /// <summary>
-            ///     Initializes a new instance of the <see cref="Builder" /> class.
+            ///     Initializes a new instance of the <see cref="Builder" /> class with the specified initial capacity.
             /// </summary>
             /// <param name="capacity">The initial capacity of the internal array.</param>
             internal Builder(int capacity)
@@ -87,7 +69,7 @@ namespace Alis.Core.Aspect.Math.Collections
             }
 
             /// <summary>
-            ///     Initializes a new instance of the <see cref="Builder" /> class.
+            ///     Initializes a new instance of the <see cref="Builder" /> class with a default capacity of 8.
             /// </summary>
             internal Builder()
                 : this(8)
@@ -95,9 +77,9 @@ namespace Alis.Core.Aspect.Math.Collections
             }
 
             /// <summary>
-            ///     Get and sets the length of the internal array.  When set the internal array is
-            ///     reallocated to the given capacity if it is not already the specified length.
+            ///     Gets or sets the length of the internal backing array. When set, the internal array is reallocated to the given capacity if it is not already at the specified length.
             /// </summary>
+            /// <exception cref="ArgumentException">Thrown when the value is less than <see cref="Count" />.</exception>
             public int Capacity
             {
                 get => _elements.Length;
@@ -129,12 +111,12 @@ namespace Alis.Core.Aspect.Math.Collections
             }
 
             /// <summary>
-            ///     Gets or sets the length of the builder.
+            ///     Gets or sets the number of initialized elements in the builder.
             /// </summary>
             /// <remarks>
             ///     If the value is decreased, the array contents are truncated.
             ///     If the value is increased, the added elements are initialized to the default value of type
-            ///     <typeparamref />.
+            ///     <typeparamref name="T" />.
             /// </remarks>
             public int Count
             {
@@ -174,10 +156,9 @@ namespace Alis.Core.Aspect.Math.Collections
             /// <summary>
             ///     Gets or sets the element at the specified index.
             /// </summary>
-            /// <param name="index">The index.</param>
-            /// <returns></returns>
-            /// <exception cref="IndexOutOfRangeException">
-            /// </exception>
+            /// <param name="index">The zero-based index of the element to get or set.</param>
+            /// <returns>The element at the specified index.</returns>
+            /// <exception cref="IndexOutOfRangeException">Thrown when <paramref name="index" /> is greater than or equal to <see cref="Count" />.</exception>
             public T this[int index]
             {
                 get
@@ -205,12 +186,12 @@ namespace Alis.Core.Aspect.Math.Collections
             ///     Gets a value indicating whether the <see cref="ICollection{T}" /> is read-only.
             /// </summary>
             /// <returns>
-            ///     true if the <see cref="ICollection{T}" /> is read-only; otherwise, false.
+            ///     <c>true</c> if the <see cref="ICollection{T}" /> is read-only; otherwise, <c>false</c>.
             /// </returns>
             bool ICollection<T>.IsReadOnly => false;
 
             /// <summary>
-            ///     Removes all items from the <see cref="ICollection{T}" />.
+            ///     Removes all items from the builder, setting <see cref="Count" /> to zero.
             /// </summary>
             public void Clear()
             {
@@ -218,10 +199,10 @@ namespace Alis.Core.Aspect.Math.Collections
             }
 
             /// <summary>
-            ///     Inserts an item to the <see cref="IList{T}" /> at the specified index.
+            ///     Inserts an item at the specified index, shifting subsequent elements to the right.
             /// </summary>
             /// <param name="index">The zero-based index at which <paramref name="item" /> should be inserted.</param>
-            /// <param name="item">The object to insert into the <see cref="IList{T}" />.</param>
+            /// <param name="item">The object to insert.</param>
             public void Insert(int index, T item)
             {
                 EnsureCapacity(Count + 1);
@@ -236,9 +217,9 @@ namespace Alis.Core.Aspect.Math.Collections
             }
 
             /// <summary>
-            ///     Adds an item to the <see cref="ICollection{T}" />.
+            ///     Adds an item to the end of the builder.
             /// </summary>
-            /// <param name="item">The object to add to the <see cref="ICollection{T}" />.</param>
+            /// <param name="item">The object to add.</param>
             public void Add(T item)
             {
                 int newCount = _count + 1;
@@ -251,8 +232,8 @@ namespace Alis.Core.Aspect.Math.Collections
             ///     Removes the first occurrence of the specified element from the builder.
             ///     If no match is found, the builder remains unchanged.
             /// </summary>
-            /// <param name="element">The element.</param>
-            /// <returns>A value indicating whether the specified element was found and removed from the collection.</returns>
+            /// <param name="element">The element to remove.</param>
+            /// <returns><c>true</c> if the element was found and removed; otherwise, <c>false</c>.</returns>
             public bool Remove(T element)
             {
                 int index = IndexOf(element);
@@ -266,7 +247,7 @@ namespace Alis.Core.Aspect.Math.Collections
             }
 
             /// <summary>
-            ///     Removes the <see cref="IList{T}" /> item at the specified index.
+            ///     Removes the element at the specified index, shifting subsequent elements to the left.
             /// </summary>
             /// <param name="index">The zero-based index of the item to remove.</param>
             public void RemoveAt(int index)
@@ -280,31 +261,27 @@ namespace Alis.Core.Aspect.Math.Collections
             }
 
             /// <summary>
-            ///     Determines whether the <see cref="ICollection{T}" /> contains a specific value.
+            ///     Determines whether the builder contains a specific value.
             /// </summary>
-            /// <param name="item">The object to locate in the <see cref="ICollection{T}" />.</param>
-            /// <returns>
-            ///     true if <paramref name="item" /> is found in the <see cref="ICollection{T}" />; otherwise, false.
-            /// </returns>
+            /// <param name="item">The object to locate.</param>
+            /// <returns><c>true</c> if <paramref name="item" /> is found; otherwise, <c>false</c>.</returns>
             public bool Contains(T item) => IndexOf(item) >= 0;
 
             /// <summary>
-            ///     Copies the current contents to the specified array.
+            ///     Copies the current contents to the specified array starting at the given index.
             /// </summary>
-            /// <param name="array">The array to copy to.</param>
-            /// <param name="index">The starting index of the target array.</param>
+            /// <param name="array">The destination array.</param>
+            /// <param name="index">The starting index in the destination array.</param>
             public void CopyTo(T[] array, int index)
             {
                 System.Array.Copy(_elements, 0, array, index, Count);
             }
 
             /// <summary>
-            ///     Determines the index of a specific item in the <see cref="IList{T}" />.
+            ///     Determines the index of a specific item in the builder.
             /// </summary>
-            /// <param name="item">The object to locate in the <see cref="IList{T}" />.</param>
-            /// <returns>
-            ///     The index of <paramref name="item" /> if found in the list; otherwise, -1.
-            /// </returns>
+            /// <param name="item">The object to locate.</param>
+            /// <returns>The index of <paramref name="item" /> if found; otherwise, -1.</returns>
             public int IndexOf(T item) => IndexOf(item, 0, _count, EqualityComparer<T>.Default);
 
             /// <summary>
@@ -320,17 +297,16 @@ namespace Alis.Core.Aspect.Math.Collections
             IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
             /// <summary>
-            ///     Throws the index out of range exception
+            ///     Throws an <see cref="IndexOutOfRangeException" /> indicating that the index is out of valid range.
             /// </summary>
             private static void ThrowIndexOutOfRangeException() => throw new IndexOutOfRangeException();
 
             /// <summary>
             ///     Gets a read-only reference to the element at the specified index.
             /// </summary>
-            /// <param name="index">The index.</param>
-            /// <returns></returns>
-            /// <exception cref="IndexOutOfRangeException">
-            /// </exception>
+            /// <param name="index">The zero-based index of the element.</param>
+            /// <returns>A read-only reference to the element at the specified index.</returns>
+            /// <exception cref="IndexOutOfRangeException">Thrown when <paramref name="index" /> is greater than or equal to <see cref="Count" />.</exception>
             public ref readonly T ItemRef(int index)
             {
                 if (index >= Count)
@@ -342,19 +318,16 @@ namespace Alis.Core.Aspect.Math.Collections
             }
 
             /// <summary>
-            ///     Returns an immutable copy of the current contents of this collection.
+            ///     Returns an immutable copy of the current contents of this builder.
             /// </summary>
-            /// <returns>An immutable array.</returns>
+            /// <returns>A new <see cref="FastImmutableArray{T}" /> containing a copy of the current data.</returns>
             public FastImmutableArray<T> ToImmutable() => new FastImmutableArray<T>(ToArray());
 
             /// <summary>
-            ///     Extracts the internal array as an <see cref="FastImmutableArray{T}" /> and replaces it
-            ///     with a zero length array.
+            ///     Extracts the internal array as an <see cref="FastImmutableArray{T}" /> and resets the builder to a zero-length array.
             /// </summary>
-            /// <exception cref="InvalidOperationException">
-            ///     When <see cref="Builder.Count" /> doesn't
-            ///     equal <see cref="Builder.Capacity" />.
-            /// </exception>
+            /// <exception cref="InvalidOperationException">Thrown when <see cref="Builder.Count" /> does not equal <see cref="Builder.Capacity" />.</exception>
+            /// <returns>An <see cref="FastImmutableArray{T}" /> wrapping the internal array.</returns>
             public FastImmutableArray<T> MoveToImmutable()
             {
                 if (Capacity != Count)
@@ -369,8 +342,7 @@ namespace Alis.Core.Aspect.Math.Collections
             }
 
             /// <summary>
-            ///     Returns the current contents as an <see cref="FastImmutableArray{T}" /> and sets the collection to a zero length
-            ///     array.
+            ///     Returns the current contents as an <see cref="FastImmutableArray{T}" /> and sets the collection to a zero-length array.
             /// </summary>
             /// <remarks>
             ///     If <see cref="Capacity" /> equals <see cref="Count" />, the internal array will be extracted
@@ -394,9 +366,9 @@ namespace Alis.Core.Aspect.Math.Collections
             }
 
             /// <summary>
-            ///     Inserts the specified values at the specified index.
+            ///     Inserts the elements of the specified <see cref="FastImmutableArray{T}" /> at the given index.
             /// </summary>
-            /// <param name="index">The index at which to insert the value.</param>
+            /// <param name="index">The zero-based index at which to insert the values.</param>
             /// <param name="items">The elements to insert.</param>
             public void InsertRange(int index, FastImmutableArray<T> items)
             {
@@ -420,7 +392,7 @@ namespace Alis.Core.Aspect.Math.Collections
             /// <summary>
             ///     Adds the specified items to the end of the array.
             /// </summary>
-            /// <param name="items">The items.</param>
+            /// <param name="items">The items to add.</param>
             public void AddRange(params T[] items)
             {
                 int offset = Count;
@@ -430,10 +402,10 @@ namespace Alis.Core.Aspect.Math.Collections
             }
 
             /// <summary>
-            ///     Adds the specified items to the end of the array.
+            ///     Adds the specified items derived from <typeparamref name="T" /> to the end of the array.
             /// </summary>
-            /// <typeparam name="TDerived">The type that derives from the type of item already in the array.</typeparam>
-            /// <param name="items">The items.</param>
+            /// <typeparam name="TDerived">The type that derives from <typeparamref name="T" />.</typeparam>
+            /// <param name="items">The items to add.</param>
             public void AddRange<TDerived>(TDerived[] items) where TDerived : T
             {
                 int offset = Count;
@@ -443,9 +415,9 @@ namespace Alis.Core.Aspect.Math.Collections
             }
 
             /// <summary>
-            ///     Adds the specified items to the end of the array.
+            ///     Adds the specified items to the end of the array up to the given length.
             /// </summary>
-            /// <param name="items">The items.</param>
+            /// <param name="items">The items to add.</param>
             /// <param name="length">The number of elements from the source array to add.</param>
             public void AddRange(T[] items, int length)
             {
@@ -456,18 +428,18 @@ namespace Alis.Core.Aspect.Math.Collections
             }
 
             /// <summary>
-            ///     Adds the specified items to the end of the array.
+            ///     Adds the specified items to the end of the array from another <see cref="FastImmutableArray{T}" />.
             /// </summary>
-            /// <param name="items">The items.</param>
+            /// <param name="items">The items to add.</param>
             public void AddRange(FastImmutableArray<T> items)
             {
                 AddRange(items, items.Length);
             }
 
             /// <summary>
-            ///     Adds the specified items to the end of the array.
+            ///     Adds the specified items to the end of the array from another <see cref="FastImmutableArray{T}" /> up to a given length.
             /// </summary>
-            /// <param name="items">The items.</param>
+            /// <param name="items">The items to add.</param>
             /// <param name="length">The number of elements from the source array to add.</param>
             public void AddRange(FastImmutableArray<T> items, int length)
             {
@@ -478,9 +450,9 @@ namespace Alis.Core.Aspect.Math.Collections
             }
 
             /// <summary>
-            ///     Adds the specified items to the end of the array.
+            ///     Adds the specified items derived from <typeparamref name="T" /> to the end of the array.
             /// </summary>
-            /// <typeparam name="TDerived">The type that derives from the type of item already in the array.</typeparam>
+            /// <typeparam name="TDerived">The type that derives from <typeparamref name="T" />.</typeparam>
             /// <param name="items">The items to add at the end of the array.</param>
             public void AddRange<TDerived>(FastImmutableArray<TDerived> items) where TDerived : T
             {
@@ -491,34 +463,32 @@ namespace Alis.Core.Aspect.Math.Collections
             }
 
             /// <summary>
-            ///     Adds the specified items to the end of the array.
+            ///     Adds the specified items from another builder to the end of the array.
             /// </summary>
-            /// <param name="items">The items to add at the end of the array.</param>
+            /// <param name="items">The builder whose items will be added.</param>
             public void AddRange(Builder items)
             {
                 AddRange(items._elements, items.Count);
             }
 
             /// <summary>
-            ///     Adds the specified items to the end of the array.
+            ///     Adds the specified items from a derived builder to the end of the array.
             /// </summary>
-            /// <typeparam name="TDerived">The type that derives from the type of item already in the array.</typeparam>
-            /// <param name="items">The items to add at the end of the array.</param>
+            /// <typeparam name="TDerived">The type that derives from <typeparamref name="T" />.</typeparam>
+            /// <param name="items">The builder whose items will be added.</param>
             public void AddRange<TDerived>(FastImmutableArray<TDerived>.Builder items) where TDerived : T
             {
                 AddRange(items._elements, items.Count);
             }
 
             /// <summary>
-            ///     Removes the first occurrence of the specified element from the builder.
-            ///     If no match is found, the builder remains unchanged.
+            ///     Removes the first occurrence of the specified element using a custom equality comparer.
             /// </summary>
             /// <param name="element">The element to remove.</param>
             /// <param name="equalityComparer">
-            ///     The equality comparer to use in the search.
-            ///     If <c>null</c>, <see cref="EqualityComparer{T}.Default" /> is used.
+            ///     The equality comparer to use. If <c>null</c>, <see cref="EqualityComparer{T}.Default" /> is used.
             /// </param>
-            /// <returns>A value indicating whether the specified element was found and removed from the collection.</returns>
+            /// <returns><c>true</c> if the element was found and removed; otherwise, <c>false</c>.</returns>
             public bool Remove(T element, IEqualityComparer<T> equalityComparer)
             {
                 int index = IndexOf(element, 0, _count, equalityComparer);
@@ -533,13 +503,9 @@ namespace Alis.Core.Aspect.Math.Collections
             }
 
             /// <summary>
-            ///     Removes all the elements that match the conditions defined by the specified
-            ///     predicate.
+            ///     Removes all the elements that match the conditions defined by the specified predicate.
             /// </summary>
-            /// <param name="match">
-            ///     The <see cref="Predicate{T}" /> delegate that defines the conditions of the elements
-            ///     to remove.
-            /// </param>
+            /// <param name="match">The <see cref="Predicate{T}" /> that defines the conditions of elements to remove.</param>
             public void RemoveAll(Predicate<T> match)
             {
                 List<int> removeIndices = null;
@@ -559,9 +525,9 @@ namespace Alis.Core.Aspect.Math.Collections
             }
 
             /// <summary>
-            ///     Removes the specified values from this list.
+            ///     Removes a range of elements starting at the specified index.
             /// </summary>
-            /// <param name="index">The 0-based index into the array for the element to omit from the returned array.</param>
+            /// <param name="index">The zero-based index of the first element to remove.</param>
             /// <param name="length">The number of elements to remove.</param>
             public void RemoveRange(int index, int length)
             {
@@ -585,21 +551,20 @@ namespace Alis.Core.Aspect.Math.Collections
             }
 
             /// <summary>
-            ///     Removes the specified values from this list.
+            ///     Removes all occurrences of the specified items from this list.
             /// </summary>
-            /// <param name="items">The items to remove if matches are found in this list.</param>
+            /// <param name="items">The items to remove.</param>
             public void RemoveRange(IEnumerable<T> items)
             {
                 RemoveRange(items, EqualityComparer<T>.Default);
             }
 
             /// <summary>
-            ///     Removes the specified values from this list.
+            ///     Removes all occurrences of the specified items using a custom equality comparer.
             /// </summary>
-            /// <param name="items">The items to remove if matches are found in this list.</param>
+            /// <param name="items">The items to remove.</param>
             /// <param name="equalityComparer">
-            ///     The equality comparer to use in the search.
-            ///     If <c>null</c>, <see cref="EqualityComparer{T}.Default" /> is used.
+            ///     The equality comparer to use. If <c>null</c>, <see cref="EqualityComparer{T}.Default" /> is used.
             /// </param>
             public void RemoveRange(IEnumerable<T> items, IEqualityComparer<T> equalityComparer)
             {
@@ -627,13 +592,12 @@ namespace Alis.Core.Aspect.Math.Collections
             }
 
             /// <summary>
-            ///     Replaces the first equal element in the list with the specified element.
+            ///     Replaces the first equal element in the list with the specified element, using a custom equality comparer.
             /// </summary>
             /// <param name="oldValue">The element to replace.</param>
             /// <param name="newValue">The element to replace the old element with.</param>
             /// <param name="equalityComparer">
-            ///     The equality comparer to use in the search.
-            ///     If <c>null</c>, <see cref="EqualityComparer{T}.Default" /> is used.
+            ///     The equality comparer to use. If <c>null</c>, <see cref="EqualityComparer{T}.Default" /> is used.
             /// </param>
             public void Replace(T oldValue, T newValue, IEqualityComparer<T> equalityComparer)
             {
@@ -648,6 +612,7 @@ namespace Alis.Core.Aspect.Math.Collections
             /// <summary>
             ///     Creates a new array with the current contents of this Builder.
             /// </summary>
+            /// <returns>A new <typeparamref name="T" /> array containing the current elements.</returns>
             public T[] ToArray()
             {
                 if (Count == 0)
@@ -663,18 +628,18 @@ namespace Alis.Core.Aspect.Math.Collections
             /// <summary>
             ///     Copies the contents of this array to the specified array.
             /// </summary>
-            /// <param name="destination">The array to copy to.</param>
+            /// <param name="destination">The destination array.</param>
             public void CopyTo(T[] destination)
             {
                 System.Array.Copy(_elements, 0, destination, 0, Count);
             }
 
             /// <summary>
-            ///     Copies the contents of this array to the specified array.
+            ///     Copies a range of elements from this array to the specified destination array.
             /// </summary>
             /// <param name="sourceIndex">The index into this collection of the first element to copy.</param>
-            /// <param name="destination">The array to copy to.</param>
-            /// <param name="destinationIndex">The index into the destination array to which the first copied element is written.</param>
+            /// <param name="destination">The destination array.</param>
+            /// <param name="destinationIndex">The index into the destination array where the first copied element is written.</param>
             /// <param name="length">The number of elements to copy.</param>
             public void CopyTo(int sourceIndex, T[] destination, int destinationIndex, int length)
             {
@@ -682,9 +647,9 @@ namespace Alis.Core.Aspect.Math.Collections
             }
 
             /// <summary>
-            ///     Resizes the array to accommodate the specified capacity requirement.
+            ///     Resizes the backing array to accommodate the specified capacity requirement.
             /// </summary>
-            /// <param name="capacity">The required capacity.</param>
+            /// <param name="capacity">The minimum required capacity.</param>
             private void EnsureCapacity(int capacity)
             {
                 if (_elements.Length < capacity)
@@ -695,33 +660,32 @@ namespace Alis.Core.Aspect.Math.Collections
             }
 
             /// <summary>
-            ///     Searches the array for the specified item.
+            ///     Searches the array for the specified item starting from a given index.
             /// </summary>
             /// <param name="item">The item to search for.</param>
-            /// <param name="startIndex">The index at which to begin the search.</param>
-            /// <returns>The 0-based index into the array where the item was found; or -1 if it could not be found.</returns>
+            /// <param name="startIndex">The zero-based index at which to begin the search.</param>
+            /// <returns>The zero-based index of the item if found; otherwise, -1.</returns>
             public int IndexOf(T item, int startIndex) => IndexOf(item, startIndex, Count - startIndex, EqualityComparer<T>.Default);
 
             /// <summary>
-            ///     Searches the array for the specified item.
+            ///     Searches the array for the specified item within a range.
             /// </summary>
             /// <param name="item">The item to search for.</param>
-            /// <param name="startIndex">The index at which to begin the search.</param>
+            /// <param name="startIndex">The zero-based index at which to begin the search.</param>
             /// <param name="count">The number of elements to search.</param>
-            /// <returns>The 0-based index into the array where the item was found; or -1 if it could not be found.</returns>
+            /// <returns>The zero-based index of the item if found; otherwise, -1.</returns>
             public int IndexOf(T item, int startIndex, int count) => IndexOf(item, startIndex, count, EqualityComparer<T>.Default);
 
             /// <summary>
-            ///     Searches the array for the specified item.
+            ///     Searches the array for the specified item within a range using a custom equality comparer.
             /// </summary>
             /// <param name="item">The item to search for.</param>
-            /// <param name="startIndex">The index at which to begin the search.</param>
+            /// <param name="startIndex">The zero-based index at which to begin the search.</param>
             /// <param name="count">The number of elements to search.</param>
             /// <param name="equalityComparer">
-            ///     The equality comparer to use in the search.
-            ///     If <c>null</c>, <see cref="EqualityComparer{T}.Default" /> is used.
+            ///     The equality comparer to use. If <c>null</c>, <see cref="EqualityComparer{T}.Default" /> is used.
             /// </param>
-            /// <returns>The 0-based index into the array where the item was found; or -1 if it could not be found.</returns>
+            /// <returns>The zero-based index of the item if found; otherwise, -1.</returns>
             public int IndexOf(T item, int startIndex, int count, IEqualityComparer<T> equalityComparer)
             {
                 if ((count == 0) && (startIndex == 0))
@@ -748,22 +712,21 @@ namespace Alis.Core.Aspect.Math.Collections
             }
 
             /// <summary>
-            ///     Searches the array for the specified item.
+            ///     Searches the array for the specified item starting from a given index with a custom equality comparer.
             /// </summary>
             /// <param name="item">The item to search for.</param>
-            /// <param name="startIndex">The index at which to begin the search.</param>
+            /// <param name="startIndex">The zero-based index at which to begin the search.</param>
             /// <param name="equalityComparer">
-            ///     The equality comparer to use in the search.
-            ///     If <c>null</c>, <see cref="EqualityComparer{T}.Default" /> is used.
+            ///     The equality comparer to use. If <c>null</c>, <see cref="EqualityComparer{T}.Default" /> is used.
             /// </param>
-            /// <returns>The 0-based index into the array where the item was found; or -1 if it could not be found.</returns>
+            /// <returns>The zero-based index of the item if found; otherwise, -1.</returns>
             public int IndexOf(T item, int startIndex, IEqualityComparer<T> equalityComparer) => IndexOf(item, startIndex, Count - startIndex, equalityComparer);
 
             /// <summary>
-            ///     Searches the array for the specified item in reverse.
+            ///     Searches the array for the specified item in reverse order.
             /// </summary>
             /// <param name="item">The item to search for.</param>
-            /// <returns>The 0-based index into the array where the item was found; or -1 if it could not be found.</returns>
+            /// <returns>The zero-based index of the item if found; otherwise, -1.</returns>
             public int LastIndexOf(T item)
             {
                 if (Count == 0)
@@ -775,11 +738,11 @@ namespace Alis.Core.Aspect.Math.Collections
             }
 
             /// <summary>
-            ///     Searches the array for the specified item in reverse.
+            ///     Searches the array for the specified item in reverse order starting from a given index.
             /// </summary>
             /// <param name="item">The item to search for.</param>
-            /// <param name="startIndex">The index at which to begin the search.</param>
-            /// <returns>The 0-based index into the array where the item was found; or -1 if it could not be found.</returns>
+            /// <param name="startIndex">The zero-based index at which to begin the reverse search.</param>
+            /// <returns>The zero-based index of the item if found; otherwise, -1.</returns>
             public int LastIndexOf(T item, int startIndex)
             {
                 if ((Count == 0) && (startIndex == 0))
@@ -792,22 +755,22 @@ namespace Alis.Core.Aspect.Math.Collections
             }
 
             /// <summary>
-            ///     Searches the array for the specified item in reverse.
+            ///     Searches the array for the specified item in reverse order within a range.
             /// </summary>
             /// <param name="item">The item to search for.</param>
-            /// <param name="startIndex">The index at which to begin the search.</param>
+            /// <param name="startIndex">The zero-based index at which to begin the reverse search.</param>
             /// <param name="count">The number of elements to search.</param>
-            /// <returns>The 0-based index into the array where the item was found; or -1 if it could not be found.</returns>
+            /// <returns>The zero-based index of the item if found; otherwise, -1.</returns>
             public int LastIndexOf(T item, int startIndex, int count) => LastIndexOf(item, startIndex, count, EqualityComparer<T>.Default);
 
             /// <summary>
-            ///     Searches the array for the specified item in reverse.
+            ///     Searches the array for the specified item in reverse order within a range using a custom equality comparer.
             /// </summary>
             /// <param name="item">The item to search for.</param>
-            /// <param name="startIndex">The index at which to begin the search.</param>
+            /// <param name="startIndex">The zero-based index at which to begin the reverse search.</param>
             /// <param name="count">The number of elements to search.</param>
-            /// <param name="equalityComparer">The equality comparer to use in the search.</param>
-            /// <returns>The 0-based index into the array where the item was found; or -1 if it could not be found.</returns>
+            /// <param name="equalityComparer">The equality comparer to use. If <c>null</c>, <see cref="EqualityComparer{T}.Default" /> is used.</param>
+            /// <returns>The zero-based index of the item if found; otherwise, -1.</returns>
             public int LastIndexOf(T item, int startIndex, int count, IEqualityComparer<T> equalityComparer)
             {
                 if ((count == 0) && (startIndex == 0))
@@ -834,7 +797,7 @@ namespace Alis.Core.Aspect.Math.Collections
             }
 
             /// <summary>
-            ///     Reverses the order of elements in the collection.
+            ///     Reverses the order of elements in the collection in-place.
             /// </summary>
             public void Reverse()
             {
@@ -856,7 +819,7 @@ namespace Alis.Core.Aspect.Math.Collections
             }
 
             /// <summary>
-            ///     Sorts the array.
+            ///     Sorts the elements in the entire array using the default comparer.
             /// </summary>
             public void Sort()
             {
@@ -867,13 +830,10 @@ namespace Alis.Core.Aspect.Math.Collections
             }
 
             /// <summary>
-            ///     Sorts the elements in the entire array using
-            ///     the specified <see cref="Comparison{T}" />.
+            ///     Sorts the elements using the specified <see cref="Comparison{T}" />.
             /// </summary>
-            /// <param name="comparison">
-            ///     The <see cref="Comparison{T}" /> to use when comparing elements.
-            /// </param>
-            /// <exception cref="ArgumentNullException"><paramref name="comparison" /> is null.</exception>
+            /// <param name="comparison">The <see cref="Comparison{T}" /> to use when comparing elements.</param>
+            /// <exception cref="ArgumentNullException">Thrown when <paramref name="comparison" /> is null.</exception>
             public void Sort(Comparison<T> comparison)
             {
                 if (Count > 1)
@@ -893,9 +853,9 @@ namespace Alis.Core.Aspect.Math.Collections
             }
 
             /// <summary>
-            ///     Sorts the array.
+            ///     Sorts the elements using the specified <see cref="IComparer{T}" />.
             /// </summary>
-            /// <param name="comparer">The comparer to use in sorting. If <c>null</c>, the default comparer is used.</param>
+            /// <param name="comparer">The comparer to use. If <c>null</c>, the default comparer is used.</param>
             public void Sort(IComparer<T> comparer)
             {
                 if (Count > 1)
@@ -905,11 +865,11 @@ namespace Alis.Core.Aspect.Math.Collections
             }
 
             /// <summary>
-            ///     Sorts the array.
+            ///     Sorts a range of elements using the specified comparer.
             /// </summary>
-            /// <param name="index">The index of the first element to consider in the sort.</param>
-            /// <param name="count">The number of elements to include in the sort.</param>
-            /// <param name="comparer">The comparer to use in sorting. If <c>null</c>, the default comparer is used.</param>
+            /// <param name="index">The zero-based index of the first element to sort.</param>
+            /// <param name="count">The number of elements to sort.</param>
+            /// <param name="comparer">The comparer to use. If <c>null</c>, the default comparer is used.</param>
             public void Sort(int index, int count, IComparer<T> comparer)
             {
                 // Don't rely on Array.Sort's argument validation since our internal array may exceed
@@ -932,9 +892,9 @@ namespace Alis.Core.Aspect.Math.Collections
             }
 
             /// <summary>
-            ///     Returns an enumerator for the contents of the array.
+            ///     Returns an enumerator that iterates through the collection.
             /// </summary>
-            /// <returns>An enumerator.</returns>
+            /// <returns>An enumerator for the contents of the array.</returns>
             public IEnumerator<T> GetEnumerator()
             {
                 for (int i = 0; i < Count; i++)
@@ -944,11 +904,11 @@ namespace Alis.Core.Aspect.Math.Collections
             }
 
             /// <summary>
-            ///     Adds items to this collection.
+            ///     Adds items from a source array of a derived type to this collection.
             /// </summary>
-            /// <typeparam name="TDerived">The type of source elements.</typeparam>
+            /// <typeparam name="TDerived">The type of source elements (must derive from <typeparamref name="T" />).</typeparam>
             /// <param name="items">The source array.</param>
-            /// <param name="length">The number of elements to add to this array.</param>
+            /// <param name="length">The number of elements to add.</param>
             private void AddRange<TDerived>(TDerived[] items, int length) where TDerived : T
             {
                 EnsureCapacity(Count + length);
@@ -964,9 +924,9 @@ namespace Alis.Core.Aspect.Math.Collections
             }
 
             /// <summary>
-            ///     Removes the at range using the specified indices to remove
+            ///     Removes elements at the specified sorted indices efficiently.
             /// </summary>
-            /// <param name="indicesToRemove">The indices to remove</param>
+            /// <param name="indicesToRemove">The sorted collection of indices to remove.</param>
             private void RemoveAtRange(ICollection<int> indicesToRemove)
             {
                 if (indicesToRemove.Count == 0)
@@ -996,36 +956,36 @@ namespace Alis.Core.Aspect.Math.Collections
         }
 
         /// <summary>
-        ///     Creates the builder using the specified types length
+        ///     Creates a new <see cref="Builder" /> with a specified initial capacity.
         /// </summary>
-        /// <typeparam name="T1">The </typeparam>
-        /// <param name="typesLength">The types length</param>
-        /// <returns>The builder</returns>
+        /// <typeparam name="T1">The type parameter (unused, retained for signature compatibility).</typeparam>
+        /// <param name="typesLength">The initial capacity of the builder.</param>
+        /// <returns>A new <see cref="Builder" /> initialized with the given capacity.</returns>
         public static Builder CreateBuilder<T1>(int typesLength) => new Builder {Capacity = typesLength};
 
 
         /// <summary>
-        ///     Converts the span
+        ///     Returns a <see cref="ReadOnlySpan{T}" /> over the underlying array.
         /// </summary>
-        /// <returns>A read only span of t</returns>
+        /// <returns>A read-only span of <typeparamref name="T" /> representing the array contents.</returns>
         public ReadOnlySpan<T> AsSpan() => Array.AsSpan();
 
         /// <summary>
-        ///     Indexes the of using the specified type id
+        ///     Searches for the specified element and returns the index of its first occurrence.
         /// </summary>
-        /// <typeparam name="T1">The </typeparam>
-        /// <param name="typeId">The type id</param>
-        /// <returns>The int</returns>
+        /// <typeparam name="T1">The type parameter (unused).</typeparam>
+        /// <param name="typeId">The element to locate.</param>
+        /// <returns>The zero-based index of the element if found; otherwise, -1.</returns>
         public int IndexOf<T1>(T typeId) => System.Array.IndexOf(Array, typeId, 0, Length);
 
 
         /// <summary>
-        ///     Removes the at using the specified index
+        ///     Returns a new <see cref="FastImmutableArray{T}" /> with the element at the specified index removed.
         /// </summary>
-        /// <typeparam name="T1">The </typeparam>
-        /// <param name="index">The index</param>
-        /// <exception cref="ArgumentOutOfRangeException"></exception>
-        /// <returns>A fast immutable array of t</returns>
+        /// <typeparam name="T1">The type parameter (unused).</typeparam>
+        /// <param name="index">The zero-based index of the element to remove.</param>
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="index" /> is less than zero or greater than or equal to <see cref="Length" />.</exception>
+        /// <returns>A new <see cref="FastImmutableArray{T}" /> with the element removed.</returns>
         public FastImmutableArray<T> RemoveAt<T1>(int index)
         {
             if (index < 0 || index >= Length)
@@ -1061,35 +1021,35 @@ namespace Alis.Core.Aspect.Math.Collections
 
 
         /// <summary>
-        ///     Checks equality between two instances.
+        ///     Checks equality between two instances by comparing underlying array references.
         /// </summary>
         /// <param name="left">The instance to the left of the operator.</param>
         /// <param name="right">The instance to the right of the operator.</param>
-        /// <returns><c>true</c> if the values' underlying arrays are reference equal; <c>false</c> otherwise.</returns>
+        /// <returns><c>true</c> if the underlying arrays are reference equal; <c>false</c> otherwise.</returns>
         public static bool operator ==(FastImmutableArray<T> left, FastImmutableArray<T> right) => left.Equals(right);
 
         /// <summary>
-        ///     Checks inequality between two instances.
+        ///     Checks inequality between two instances by comparing underlying array references.
         /// </summary>
         /// <param name="left">The instance to the left of the operator.</param>
         /// <param name="right">The instance to the right of the operator.</param>
-        /// <returns><c>true</c> if the values' underlying arrays are reference not equal; <c>false</c> otherwise.</returns>
+        /// <returns><c>true</c> if the underlying arrays are not reference equal; <c>false</c> otherwise.</returns>
         public static bool operator !=(FastImmutableArray<T> left, FastImmutableArray<T> right) => !left.Equals(right);
 
         /// <summary>
-        ///     Checks equality between two instances.
+        ///     Checks equality between two nullable instances.
         /// </summary>
-        /// <param name="left">The instance to the left of the operator.</param>
-        /// <param name="right">The instance to the right of the operator.</param>
-        /// <returns><c>true</c> if the values' underlying arrays are reference equal; <c>false</c> otherwise.</returns>
+        /// <param name="left">The nullable instance to the left of the operator.</param>
+        /// <param name="right">The nullable instance to the right of the operator.</param>
+        /// <returns><c>true</c> if the underlying arrays are reference equal; <c>false</c> otherwise.</returns>
         public static bool operator ==(FastImmutableArray<T>? left, FastImmutableArray<T>? right) => left.GetValueOrDefault().Equals(right.GetValueOrDefault());
 
         /// <summary>
-        ///     Checks inequality between two instances.
+        ///     Checks inequality between two nullable instances.
         /// </summary>
-        /// <param name="left">The instance to the left of the operator.</param>
-        /// <param name="right">The instance to the right of the operator.</param>
-        /// <returns><c>true</c> if the values' underlying arrays are reference not equal; <c>false</c> otherwise.</returns>
+        /// <param name="left">The nullable instance to the left of the operator.</param>
+        /// <param name="right">The nullable instance to the right of the operator.</param>
+        /// <returns><c>true</c> if the underlying arrays are not reference equal; <c>false</c> otherwise.</returns>
         public static bool operator !=(FastImmutableArray<T>? left, FastImmutableArray<T>? right) => !left.GetValueOrDefault().Equals(right.GetValueOrDefault());
 
 
@@ -1097,7 +1057,7 @@ namespace Alis.Core.Aspect.Math.Collections
         ///     Gets the element at the specified index in the read-only list.
         /// </summary>
         /// <param name="index">The zero-based index of the element to get.</param>
-        /// <returns>The element at the specified index in the read-only list.</returns>
+        /// <returns>The element at the specified index.</returns>
         public T this[int index] =>
             // We intentionally do not check this.array != null, and throw NullReferenceException
             // if this is called while uninitialized.
@@ -1107,10 +1067,10 @@ namespace Alis.Core.Aspect.Math.Collections
             Array![index];
 
         /// <summary>
-        ///     Gets a read-only reference to the element at the specified index in the read-only list.
+        ///     Gets a read-only reference to the element at the specified index.
         /// </summary>
         /// <param name="index">The zero-based index of the element to get a reference to.</param>
-        /// <returns>A read-only reference to the element at the specified index in the read-only list.</returns>
+        /// <returns>A read-only reference to the element at the specified index.</returns>
         public ref readonly T ItemRef(int index) =>
             // We intentionally do not check this.array != null, and throw NullReferenceException
             // if this is called while uninitialized.
@@ -1122,13 +1082,11 @@ namespace Alis.Core.Aspect.Math.Collections
         /// <summary>
         ///     Gets a value indicating whether this collection is empty.
         /// </summary>
-
         public bool IsEmpty => Array!.Length == 0;
 
         /// <summary>
         ///     Gets the number of elements in the array.
         /// </summary>
-
         public int Length =>
             // We intentionally do not check this.array != null, and throw NullReferenceException
             // if this is called while uninitialized.
@@ -1140,13 +1098,11 @@ namespace Alis.Core.Aspect.Math.Collections
         /// <summary>
         ///     Gets a value indicating whether this struct was initialized without an actual array instance.
         /// </summary>
-
         public bool IsDefault => Array == null;
 
         /// <summary>
         ///     Gets a value indicating whether this struct is empty or uninitialized.
         /// </summary>
-
         public bool IsDefaultOrEmpty
         {
             get
@@ -1157,12 +1113,12 @@ namespace Alis.Core.Aspect.Math.Collections
         }
 
         /// <summary>
-        ///     Gets an untyped reference to the array.
+        ///     Gets an untyped reference to the underlying array.
         /// </summary>
         Array IFastImmutableArray.Array => Array;
 
         /// <summary>
-        ///     Copies the contents of this array to the specified array.
+        ///     Copies the contents of this array to the specified destination array.
         /// </summary>
         /// <param name="destination">The array to copy to.</param>
         public void CopyTo(T[] destination)
@@ -1173,10 +1129,10 @@ namespace Alis.Core.Aspect.Math.Collections
         }
 
         /// <summary>
-        ///     Copies the contents of this array to the specified array.
+        ///     Copies the contents of this array to the specified destination array starting at a given index.
         /// </summary>
         /// <param name="destination">The array to copy to.</param>
-        /// <param name="destinationIndex">The index into the destination array to which the first copied element is written.</param>
+        /// <param name="destinationIndex">The index in the destination array where copying begins.</param>
         public void CopyTo(T[] destination, int destinationIndex)
         {
             FastImmutableArray<T> self = this;
@@ -1185,11 +1141,11 @@ namespace Alis.Core.Aspect.Math.Collections
         }
 
         /// <summary>
-        ///     Copies the contents of this array to the specified array.
+        ///     Copies a range of elements from this array to the specified destination array.
         /// </summary>
-        /// <param name="sourceIndex">The index into this collection of the first element to copy.</param>
-        /// <param name="destination">The array to copy to.</param>
-        /// <param name="destinationIndex">The index into the destination array to which the first copied element is written.</param>
+        /// <param name="sourceIndex">The index in this array where copying begins.</param>
+        /// <param name="destination">The destination array.</param>
+        /// <param name="destinationIndex">The index in the destination array where the first copied element is written.</param>
         /// <param name="length">The number of elements to copy.</param>
         public void CopyTo(int sourceIndex, T[] destination, int destinationIndex, int length)
         {
@@ -1211,11 +1167,9 @@ namespace Alis.Core.Aspect.Math.Collections
         }
 
         /// <summary>
-        ///     Returns a hash code for this instance.
+        ///     Returns a hash code for this instance based on the underlying array reference.
         /// </summary>
-        /// <returns>
-        ///     A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
-        /// </returns>
+        /// <returns>A hash code for this instance.</returns>
         public override int GetHashCode()
         {
             FastImmutableArray<T> self = this;
@@ -1226,28 +1180,26 @@ namespace Alis.Core.Aspect.Math.Collections
         ///     Determines whether the specified <see cref="object" /> is equal to this instance.
         /// </summary>
         /// <param name="obj">The <see cref="object" /> to compare with this instance.</param>
-        /// <returns>
-        ///     <c>true</c> if the specified <see cref="object" /> is equal to this instance; otherwise, <c>false</c>.
-        /// </returns>
+        /// <returns><c>true</c> if the specified <see cref="object" /> is equal to this instance; otherwise, <c>false</c>.</returns>
         public override bool Equals(object obj) => obj is IFastImmutableArray other && (Array == other.Array);
 
         /// <summary>
         ///     Indicates whether the current object is equal to another object of the same type.
         /// </summary>
         /// <param name="other">An object to compare with this object.</param>
-        /// <returns>
-        ///     true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.
-        /// </returns>
+        /// <returns><c>true</c> if the current object is equal to the <paramref name="other" /> parameter; otherwise, <c>false</c>.</returns>
         public bool Equals(FastImmutableArray<T> other) => Array == other.Array;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="FastImmutableArray{T}" /> struct based on the contents
         ///     of an existing instance, allowing a covariant static cast to efficiently reuse the existing array.
         /// </summary>
-        /// <param name="items">The array to initialize the array with. No copy is made.</param>
+        /// <param name="items">The array to initialize with. No copy is made.</param>
+        /// <typeparam name="TDerived">The source element type that derives from <typeparamref name="T" />.</typeparam>
+        /// <returns>A new <see cref="FastImmutableArray{T}" /> wrapping the same array.</returns>
         /// <remarks>
         ///     Covariant upcasts from this method may be reversed by calling the
-        ///     <see cref="FastImmutableArray{T}.As{TOther}" />  or <see cref="FastImmutableArray{T}.CastArray{TOther}" />method.
+        ///     <see cref="FastImmutableArray{T}.As{TOther}" /> or <see cref="FastImmutableArray{T}.CastArray{TOther}" /> method.
         /// </remarks>
         public static FastImmutableArray<T> CastUp<TDerived>(FastImmutableArray<TDerived> items)
             where TDerived : class, T
@@ -1255,10 +1207,10 @@ namespace Alis.Core.Aspect.Math.Collections
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="FastImmutableArray{T}" /> struct by casting the underlying
-        ///     array to an array of type
-        ///     <typeparam name="TOther" />
-        ///     .
+        ///     array to an array of type <typeparamref name="TOther" />.
         /// </summary>
+        /// <typeparam name="TOther">The target element type for the cast.</typeparam>
+        /// <returns>A new <see cref="FastImmutableArray{TOther}" /> wrapping the cast array.</returns>
         /// <exception cref="InvalidCastException">Thrown if the cast is illegal.</exception>
         public FastImmutableArray<TOther> CastArray<TOther>() where TOther : class => new FastImmutableArray<TOther>((TOther[]) (object) Array!);
 
@@ -1321,11 +1273,13 @@ namespace Alis.Core.Aspect.Math.Collections
 
         /// <summary>
         ///     Throws an <see cref="InvalidOperationException" /> if the <see cref="Array" /> field is null, i.e. the
-        ///     <see cref="IsDefault" /> property returns true.  The
-        ///     <see cref="InvalidOperationException" /> message specifies that the operation cannot be performed
+        ///     <see cref="IsDefault" /> property returns true.
+        /// </summary>
+        /// <remarks>
+        ///     The <see cref="InvalidOperationException" /> message specifies that the operation cannot be performed
         ///     on a default instance of <see cref="FastImmutableArray{T}" />.
         ///     This is intended for explicitly implemented interface method and property implementations.
-        /// </summary>
+        /// </remarks>
         private void ThrowInvalidOperationIfNotInitialized()
         {
             if (IsDefault)
@@ -1335,7 +1289,7 @@ namespace Alis.Core.Aspect.Math.Collections
         }
 
         /// <summary>
-        ///     An array enumerator.
+        ///     An array enumerator struct that does NOT implement <see cref="IDisposable" /> for performance.
         /// </summary>
         /// <remarks>
         ///     It is important that this enumerator does NOT implement <see cref="IDisposable" />.
@@ -1371,10 +1325,8 @@ namespace Alis.Core.Aspect.Math.Collections
             /// <summary>
             ///     Gets the currently enumerated value.
             /// </summary>
+            /// <remarks>No range check is performed here; <see cref="MoveNext" /> must be called first.</remarks>
             public T Current =>
-                // PERF: no need to do a range check, we already did in MoveNext.
-                // if user did not call MoveNext or ignored its result (incorrect use)
-                // they will still get an exception from the array access range check.
                 _array[_index];
 
             /// <summary>
@@ -1385,7 +1337,7 @@ namespace Alis.Core.Aspect.Math.Collections
         }
 
         /// <summary>
-        ///     An array enumerator that implements <see cref="IEnumerator{T}" /> pattern (including <see cref="IDisposable" />).
+        ///     An array enumerator that implements the <see cref="IEnumerator{T}" /> pattern (including <see cref="IDisposable" />).
         /// </summary>
         [ExcludeFromCodeCoverage]
         private sealed class EnumeratorObject : IEnumerator<T>
@@ -1439,14 +1391,14 @@ namespace Alis.Core.Aspect.Math.Collections
             }
 
             /// <summary>
-            ///     Gets the currently enumerated value.
+            ///     Gets the currently enumerated value (boxed).
             /// </summary>
             object IEnumerator.Current => Current;
 
             /// <summary>
-            ///     If another item exists in the array, advances to the next value to be enumerated.
+            ///     Advances to the next element in the array.
             /// </summary>
-            /// <returns><c>true</c> if another item exists in the array; <c>false</c> otherwise.</returns>
+            /// <returns><c>true</c> if another element exists; <c>false</c> otherwise.</returns>
             public bool MoveNext()
             {
                 int newIndex = _index + 1;
@@ -1463,7 +1415,7 @@ namespace Alis.Core.Aspect.Math.Collections
             }
 
             /// <summary>
-            ///     Resets enumeration to the start of the array.
+            ///     Resets the enumerator to the beginning of the array.
             /// </summary>
             void IEnumerator.Reset()
             {
@@ -1471,11 +1423,8 @@ namespace Alis.Core.Aspect.Math.Collections
             }
 
             /// <summary>
-            ///     Disposes this enumerator.
+            ///     Disposes this enumerator. Currently has no action.
             /// </summary>
-            /// <remarks>
-            ///     Currently has no action.
-            /// </remarks>
             public void Dispose()
             {
                 // we do not have any native or disposable resources.
@@ -1483,8 +1432,10 @@ namespace Alis.Core.Aspect.Math.Collections
             }
 
             /// <summary>
-            ///     Creates an enumerator for the specified array.
+            ///     Creates an enumerator for the specified array, returning a singleton for empty arrays.
             /// </summary>
+            /// <param name="array">The array to enumerate.</param>
+            /// <returns>An <see cref="IEnumerator{T}" /> for the array.</returns>
             internal static IEnumerator<T> Create(T[] array)
             {
                 if (array.Length != 0)

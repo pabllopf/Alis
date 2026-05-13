@@ -35,7 +35,7 @@ namespace Alis.Core.Aspect.Fluent.Words
     public interface IWithName<out TBuilder, in TArgument>
     {
         /// <summary>Withes the name.</summary>
-        /// <param name="value">The value.</param>
+        /// <param name="value">The name to apply.</param>
         /// <returns>Return the value that you want.</returns>
         TBuilder WithName(TArgument value);
     }

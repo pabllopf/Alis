@@ -30,14 +30,16 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The has interface
+    ///     Fluent builder interface that specifies a has relationship on the target builder.
     /// </summary>
+    /// <typeparam name="TBuilder">The builder type returned by the fluent method for chaining.</typeparam>
+    /// <typeparam name="TArgument">The argument type accepted by the fluent method.</typeparam>
     public interface IHas<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Hases the obj
+        ///     Specifies a has relationship on the builder.
         /// </summary>
-        /// <param name="obj">The obj</param>
+        /// <param name="obj">The value to apply.</param>
         /// <returns>The</returns>
         TBuilder Has(TArgument obj);
     }

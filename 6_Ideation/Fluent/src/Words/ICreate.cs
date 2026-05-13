@@ -30,14 +30,16 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The create interface
+    ///     Fluent builder interface that creates a new instance on the target builder.
     /// </summary>
+    /// <typeparam name="TBuilder">The builder type returned by the fluent method for chaining.</typeparam>
+    /// <typeparam name="TArgument">The argument type accepted by the fluent method.</typeparam>
     public interface ICreate<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Creates the obj
+        ///     Creates a new instance on the builder.
         /// </summary>
-        /// <param name="obj">The obj</param>
+        /// <param name="obj">The creation parameter to apply.</param>
         /// <returns>The</returns>
         TBuilder Create(TArgument obj);
     }

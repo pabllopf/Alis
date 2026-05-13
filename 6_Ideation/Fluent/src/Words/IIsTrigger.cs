@@ -30,21 +30,14 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The is trigger interface
+    ///     Fluent builder interface that sets trigger collider state on the target builder.
     /// </summary>
+    /// <typeparam name="TBuilder">The builder type returned by the fluent method for chaining.</typeparam>
+    /// <typeparam name="TArgument">The argument type accepted by the fluent method.</typeparam>
     public interface IIsTrigger<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Ises the trigger
+        ///     Sets trigger collider state to <c>true</c> on the builder (no argument overload).
         /// </summary>
-        /// <returns>The builder</returns>
+        /// <returns>The builder instance, enabling fluent chaining.</returns>
         TBuilder IsTrigger();
-
-        /// <summary>
-        ///     Ises the trigger using the specified value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The builder</returns>
-        TBuilder IsTrigger(TArgument value);
-    }
-}

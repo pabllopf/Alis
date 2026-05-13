@@ -41,54 +41,54 @@ namespace Alis.Core.Aspect.Math
     public struct HashCode
     {
         /// <summary>
-        ///     The generate global seed
+        ///     The global seed value generated once per process using a cryptographic random number generator.
         /// </summary>
         private static readonly uint SSeed = GenerateGlobalSeed();
 
         /// <summary>
-        ///     The prime
+        ///     The first prime constant used in xxHash32 mixing operations.
         /// </summary>
         private const uint Prime1 = 2654435761U;
 
         /// <summary>
-        ///     The prime
+        ///     The second prime constant used in xxHash32 mixing operations.
         /// </summary>
         private const uint Prime2 = 2246822519U;
 
         /// <summary>
-        ///     The prime
+        ///     The third prime constant used in xxHash32 mixing operations.
         /// </summary>
         private const uint Prime3 = 3266489917U;
 
         /// <summary>
-        ///     The prime
+        ///     The fourth prime constant used in xxHash32 mixing operations.
         /// </summary>
         private const uint Prime4 = 668265263U;
 
         /// <summary>
-        ///     The prime
+        ///     The fifth prime constant used in xxHash32 mixing operations.
         /// </summary>
         private const uint Prime5 = 374761393U;
 
         /// <summary>
-        ///     The
+        ///     The four internal accumulators used in the xxHash32 algorithm when processing 16-byte blocks.
         /// </summary>
         private uint _v1, _v2, _v3, _v4;
 
         /// <summary>
-        ///     The queue
+        ///     The queue storage for values that do not yet form a full 16-byte block.
         /// </summary>
         private uint _queue1, _queue2, _queue3;
 
         /// <summary>
-        ///     The length
+        ///     The total number of values added to the hash.
         /// </summary>
         private uint _length;
 
         /// <summary>
-        ///     Generates the global seed
+        ///     Generates a cryptographically random global seed for the hash code computation.
         /// </summary>
-        /// <returns>The uint</returns>
+        /// <returns>A random unsigned integer seed.</returns>
         private static uint GenerateGlobalSeed()
         {
             byte[] randomBytes = new byte[sizeof(uint)];
@@ -174,17 +174,17 @@ namespace Alis.Core.Aspect.Math
         }
 
         /// <summary>
-        ///     Combines the value 1
+        ///     Combines four values into a hash code.
         /// </summary>
-        /// <typeparam name="T1">The </typeparam>
-        /// <typeparam name="T2">The </typeparam>
-        /// <typeparam name="T3">The </typeparam>
-        /// <typeparam name="T4">The </typeparam>
-        /// <param name="value1">The value</param>
-        /// <param name="value2">The value</param>
-        /// <param name="value3">The value</param>
-        /// <param name="value4">The value</param>
-        /// <returns>The int</returns>
+        /// <typeparam name="T1">The type of the first value.</typeparam>
+        /// <typeparam name="T2">The type of the second value.</typeparam>
+        /// <typeparam name="T3">The type of the third value.</typeparam>
+        /// <typeparam name="T4">The type of the fourth value.</typeparam>
+        /// <param name="value1">The first value whose hash code will be combined.</param>
+        /// <param name="value2">The second value whose hash code will be combined.</param>
+        /// <param name="value3">The third value whose hash code will be combined.</param>
+        /// <param name="value4">The fourth value whose hash code will be combined.</param>
+        /// <returns>A hash code that represents the combined values.</returns>
         public static int Combine<T1, T2, T3, T4>(T1 value1, T2 value2, T3 value3, T4 value4)
         {
             uint hc1 = (uint) (value1?.GetHashCode() ?? 0);
@@ -207,19 +207,19 @@ namespace Alis.Core.Aspect.Math
         }
 
         /// <summary>
-        ///     Combines the value 1
+        ///     Combines five values into a hash code.
         /// </summary>
-        /// <typeparam name="T1">The </typeparam>
-        /// <typeparam name="T2">The </typeparam>
-        /// <typeparam name="T3">The </typeparam>
-        /// <typeparam name="T4">The </typeparam>
-        /// <typeparam name="T5">The </typeparam>
-        /// <param name="value1">The value</param>
-        /// <param name="value2">The value</param>
-        /// <param name="value3">The value</param>
-        /// <param name="value4">The value</param>
-        /// <param name="value5">The value</param>
-        /// <returns>The int</returns>
+        /// <typeparam name="T1">The type of the first value.</typeparam>
+        /// <typeparam name="T2">The type of the second value.</typeparam>
+        /// <typeparam name="T3">The type of the third value.</typeparam>
+        /// <typeparam name="T4">The type of the fourth value.</typeparam>
+        /// <typeparam name="T5">The type of the fifth value.</typeparam>
+        /// <param name="value1">The first value whose hash code will be combined.</param>
+        /// <param name="value2">The second value whose hash code will be combined.</param>
+        /// <param name="value3">The third value whose hash code will be combined.</param>
+        /// <param name="value4">The fourth value whose hash code will be combined.</param>
+        /// <param name="value5">The fifth value whose hash code will be combined.</param>
+        /// <returns>A hash code that represents the combined values.</returns>
         public static int Combine<T1, T2, T3, T4, T5>(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5)
         {
             uint hc1 = (uint) (value1?.GetHashCode() ?? 0);
@@ -245,21 +245,21 @@ namespace Alis.Core.Aspect.Math
         }
 
         /// <summary>
-        ///     Combines the value 1
+        ///     Combines six values into a hash code.
         /// </summary>
-        /// <typeparam name="T1">The </typeparam>
-        /// <typeparam name="T2">The </typeparam>
-        /// <typeparam name="T3">The </typeparam>
-        /// <typeparam name="T4">The </typeparam>
-        /// <typeparam name="T5">The </typeparam>
-        /// <typeparam name="T6">The </typeparam>
-        /// <param name="value1">The value</param>
-        /// <param name="value2">The value</param>
-        /// <param name="value3">The value</param>
-        /// <param name="value4">The value</param>
-        /// <param name="value5">The value</param>
-        /// <param name="value6">The value</param>
-        /// <returns>The int</returns>
+        /// <typeparam name="T1">The type of the first value.</typeparam>
+        /// <typeparam name="T2">The type of the second value.</typeparam>
+        /// <typeparam name="T3">The type of the third value.</typeparam>
+        /// <typeparam name="T4">The type of the fourth value.</typeparam>
+        /// <typeparam name="T5">The type of the fifth value.</typeparam>
+        /// <typeparam name="T6">The type of the sixth value.</typeparam>
+        /// <param name="value1">The first value whose hash code will be combined.</param>
+        /// <param name="value2">The second value whose hash code will be combined.</param>
+        /// <param name="value3">The third value whose hash code will be combined.</param>
+        /// <param name="value4">The fourth value whose hash code will be combined.</param>
+        /// <param name="value5">The fifth value whose hash code will be combined.</param>
+        /// <param name="value6">The sixth value whose hash code will be combined.</param>
+        /// <returns>A hash code that represents the combined values.</returns>
         public static int Combine<T1, T2, T3, T4, T5, T6>(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6)
         {
             uint hc1 = (uint) (value1?.GetHashCode() ?? 0);
@@ -287,23 +287,23 @@ namespace Alis.Core.Aspect.Math
         }
 
         /// <summary>
-        ///     Combines the value 1
+        ///     Combines seven values into a hash code.
         /// </summary>
-        /// <typeparam name="T1">The </typeparam>
-        /// <typeparam name="T2">The </typeparam>
-        /// <typeparam name="T3">The </typeparam>
-        /// <typeparam name="T4">The </typeparam>
-        /// <typeparam name="T5">The </typeparam>
-        /// <typeparam name="T6">The </typeparam>
-        /// <typeparam name="T7">The </typeparam>
-        /// <param name="value1">The value</param>
-        /// <param name="value2">The value</param>
-        /// <param name="value3">The value</param>
-        /// <param name="value4">The value</param>
-        /// <param name="value5">The value</param>
-        /// <param name="value6">The value</param>
-        /// <param name="value7">The value</param>
-        /// <returns>The int</returns>
+        /// <typeparam name="T1">The type of the first value.</typeparam>
+        /// <typeparam name="T2">The type of the second value.</typeparam>
+        /// <typeparam name="T3">The type of the third value.</typeparam>
+        /// <typeparam name="T4">The type of the fourth value.</typeparam>
+        /// <typeparam name="T5">The type of the fifth value.</typeparam>
+        /// <typeparam name="T6">The type of the sixth value.</typeparam>
+        /// <typeparam name="T7">The type of the seventh value.</typeparam>
+        /// <param name="value1">The first value whose hash code will be combined.</param>
+        /// <param name="value2">The second value whose hash code will be combined.</param>
+        /// <param name="value3">The third value whose hash code will be combined.</param>
+        /// <param name="value4">The fourth value whose hash code will be combined.</param>
+        /// <param name="value5">The fifth value whose hash code will be combined.</param>
+        /// <param name="value6">The sixth value whose hash code will be combined.</param>
+        /// <param name="value7">The seventh value whose hash code will be combined.</param>
+        /// <returns>A hash code that represents the combined values.</returns>
         public static int Combine<T1, T2, T3, T4, T5, T6, T7>(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7)
         {
             uint hc1 = (uint) (value1?.GetHashCode() ?? 0);
@@ -333,25 +333,25 @@ namespace Alis.Core.Aspect.Math
         }
 
         /// <summary>
-        ///     Combines the value 1
+        ///     Combines eight values into a hash code.
         /// </summary>
-        /// <typeparam name="T1">The </typeparam>
-        /// <typeparam name="T2">The </typeparam>
-        /// <typeparam name="T3">The </typeparam>
-        /// <typeparam name="T4">The </typeparam>
-        /// <typeparam name="T5">The </typeparam>
-        /// <typeparam name="T6">The </typeparam>
-        /// <typeparam name="T7">The </typeparam>
-        /// <typeparam name="T8">The </typeparam>
-        /// <param name="value1">The value</param>
-        /// <param name="value2">The value</param>
-        /// <param name="value3">The value</param>
-        /// <param name="value4">The value</param>
-        /// <param name="value5">The value</param>
-        /// <param name="value6">The value</param>
-        /// <param name="value7">The value</param>
-        /// <param name="value8">The value</param>
-        /// <returns>The int</returns>
+        /// <typeparam name="T1">The type of the first value.</typeparam>
+        /// <typeparam name="T2">The type of the second value.</typeparam>
+        /// <typeparam name="T3">The type of the third value.</typeparam>
+        /// <typeparam name="T4">The type of the fourth value.</typeparam>
+        /// <typeparam name="T5">The type of the fifth value.</typeparam>
+        /// <typeparam name="T6">The type of the sixth value.</typeparam>
+        /// <typeparam name="T7">The type of the seventh value.</typeparam>
+        /// <typeparam name="T8">The type of the eighth value.</typeparam>
+        /// <param name="value1">The first value whose hash code will be combined.</param>
+        /// <param name="value2">The second value whose hash code will be combined.</param>
+        /// <param name="value3">The third value whose hash code will be combined.</param>
+        /// <param name="value4">The fourth value whose hash code will be combined.</param>
+        /// <param name="value5">The fifth value whose hash code will be combined.</param>
+        /// <param name="value6">The sixth value whose hash code will be combined.</param>
+        /// <param name="value7">The seventh value whose hash code will be combined.</param>
+        /// <param name="value8">The eighth value whose hash code will be combined.</param>
+        /// <returns>A hash code that represents the combined values.</returns>
         public static int Combine<T1, T2, T3, T4, T5, T6, T7, T8>(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8)
         {
             uint hc1 = (uint) (value1?.GetHashCode() ?? 0);
@@ -383,12 +383,12 @@ namespace Alis.Core.Aspect.Math
         }
 
         /// <summary>
-        ///     Initializes the v 1
+        ///     Initializes the four internal accumulators with seed-derived values.
         /// </summary>
-        /// <param name="v1">The </param>
-        /// <param name="v2">The </param>
-        /// <param name="v3">The </param>
-        /// <param name="v4">The </param>
+        /// <param name="v1">The first accumulator, initialized to <c>SSeed + Prime1 + Prime2</c>.</param>
+        /// <param name="v2">The second accumulator, initialized to <c>SSeed + Prime2</c>.</param>
+        /// <param name="v3">The third accumulator, initialized to <c>SSeed</c>.</param>
+        /// <param name="v4">The fourth accumulator, initialized to <c>SSeed - Prime1</c>.</param>
         private static void Initialize(out uint v1, out uint v2, out uint v3, out uint v4)
         {
             v1 = SSeed + Prime1 + Prime2;
@@ -398,51 +398,51 @@ namespace Alis.Core.Aspect.Math
         }
 
         /// <summary>
-        ///     Rounds the hash
+        ///     Applies one round of the xxHash32 mixing function to a single accumulator.
         /// </summary>
-        /// <param name="hash">The hash</param>
-        /// <param name="input">The input</param>
-        /// <returns>The uint</returns>
+        /// <param name="hash">The current accumulator value.</param>
+        /// <param name="input">The input value to mix in.</param>
+        /// <returns>The mixed accumulator value.</returns>
         private static uint Round(uint hash, uint input) => RotateLeft(hash + input * Prime2, 13) * Prime1;
 
         /// <summary>
-        ///     Queues the round using the specified hash
+        ///     Processes a queued value that does not belong to a full 16-byte block.
         /// </summary>
-        /// <param name="hash">The hash</param>
-        /// <param name="queuedValue">The queued value</param>
-        /// <returns>The uint</returns>
+        /// <param name="hash">The current hash value.</param>
+        /// <param name="queuedValue">The queued value to mix in.</param>
+        /// <returns>The updated hash value.</returns>
         private static uint QueueRound(uint hash, uint queuedValue) => RotateLeft(hash + queuedValue * Prime3, 17) * Prime4;
 
         /// <summary>
-        ///     Mixes the state using the specified v 1
+        ///     Combines the four accumulators into a single hash value.
         /// </summary>
-        /// <param name="v1">The </param>
-        /// <param name="v2">The </param>
-        /// <param name="v3">The </param>
-        /// <param name="v4">The </param>
-        /// <returns>The uint</returns>
+        /// <param name="v1">The first accumulator.</param>
+        /// <param name="v2">The second accumulator.</param>
+        /// <param name="v3">The third accumulator.</param>
+        /// <param name="v4">The fourth accumulator.</param>
+        /// <returns>The combined hash value.</returns>
         private static uint MixState(uint v1, uint v2, uint v3, uint v4) => RotateLeft(v1, 1) + RotateLeft(v2, 7) + RotateLeft(v3, 12) + RotateLeft(v4, 18);
 
         /// <summary>
-        ///     Rotates the left using the specified value
+        ///     Rotates the bits of a 32-bit unsigned integer to the left by a specified offset.
         /// </summary>
-        /// <param name="value">The value</param>
-        /// <param name="offset">The offset</param>
-        /// <returns>The uint</returns>
+        /// <param name="value">The value to rotate.</param>
+        /// <param name="offset">The number of bits to rotate by. Must be between 0 and 31.</param>
+        /// <returns>The rotated value.</returns>
         public static uint RotateLeft(uint value, int offset)
             => (value << offset) | (value >> (32 - offset));
 
         /// <summary>
-        ///     Mixes the empty state
+        ///     Initializes the empty state hash using the global seed and the fifth prime.
         /// </summary>
-        /// <returns>The uint</returns>
+        /// <returns>The initial hash value for an empty state.</returns>
         private static uint MixEmptyState() => SSeed + Prime5;
 
         /// <summary>
-        ///     Mixes the final using the specified hash
+        ///     Applies the final mixing operation to the hash value to improve bit distribution.
         /// </summary>
-        /// <param name="hash">The hash</param>
-        /// <returns>The hash</returns>
+        /// <param name="hash">The hash value before finalization.</param>
+        /// <returns>The final hash value after mixing.</returns>
         private static uint MixFinal(uint hash)
         {
             hash ^= hash >> 15;
@@ -454,19 +454,19 @@ namespace Alis.Core.Aspect.Math
         }
 
         /// <summary>
-        ///     Adds the value
+        ///     Adds a value to the hash computation for later finalization via <see cref="ToHashCode" />.
         /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="value">The value</param>
+        /// <typeparam name="T">The type of the value to add.</typeparam>
+        /// <param name="value">The value whose hash code will be incorporated into the running hash.</param>
         public void Add<T>(T value)
         {
             Add(value?.GetHashCode() ?? 0);
         }
 
         /// <summary>
-        ///     Adds the value
+        ///     Adds an integer hash value to the internal accumulator state.
         /// </summary>
-        /// <param name="value">The value</param>
+        /// <param name="value">The integer hash value to add.</param>
         private void Add(int value)
         {
             // The original xxHash works as follows:
@@ -526,9 +526,9 @@ namespace Alis.Core.Aspect.Math
         }
 
         /// <summary>
-        ///     Returns the hash code
+        ///     Computes the final hash code from all values added via <see cref="Add{T}" />.
         /// </summary>
-        /// <returns>The int</returns>
+        /// <returns>The computed hash code as a 32-bit signed integer.</returns>
         public int ToHashCode()
         {
             // Storing the value of _length locally shaves of quite a few bytes

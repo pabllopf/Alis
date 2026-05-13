@@ -30,15 +30,17 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The body type interface
+    ///     Fluent builder interface that sets the physics body type on the target builder.
     /// </summary>
+    /// <typeparam name="TBuilder">The builder type returned by the fluent method for chaining.</typeparam>
+    /// <typeparam name="TArgument">The argument type accepted by the fluent method.</typeparam>
     public interface IBodyType<out TBuilder, in TArgument>
     {
         /// <summary>
         ///     Bodies the type using the specified value
         /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The builder</returns>
+        /// <param name="value">The body type to apply.</param>
+        /// <returns>The builder instance, enabling fluent chaining.</returns>
         TBuilder BodyType(TArgument value);
     }
 }

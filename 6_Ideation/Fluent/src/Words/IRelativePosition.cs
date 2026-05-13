@@ -30,16 +30,18 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The relative position interface
+    ///     Fluent builder interface that sets the relative position on the target builder.
     /// </summary>
+    /// <typeparam name="TBuilder">The builder type returned by the fluent method for chaining.</typeparam>
+    /// <typeparam name="TArgument">The argument type accepted by the fluent method.</typeparam>
     public interface IRelativePosition<out TBuilder, in TArgument>
     {
         /// <summary>
         ///     Relatives the position using the specified x
         /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        /// <returns>The builder</returns>
+        /// <param name="x">The X-coordinate or first component value.</param>
+        /// <param name="y">The Y-coordinate or second component value.</param>
+        /// <returns>The builder instance, enabling fluent chaining.</returns>
         TBuilder RelativePosition(TArgument x, TArgument y);
     }
 }

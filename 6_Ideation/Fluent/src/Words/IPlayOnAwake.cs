@@ -30,15 +30,17 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The play on awake interface
+    ///     Fluent builder interface that sets play-on-awake state on the target builder.
     /// </summary>
+    /// <typeparam name="TBuilder">The builder type returned by the fluent method for chaining.</typeparam>
+    /// <typeparam name="TArgument">The argument type accepted by the fluent method.</typeparam>
     public interface IPlayOnAwake<out TBuilder, in TArgument>
     {
         /// <summary>
         ///     Plays the on awake using the specified value
         /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The builder</returns>
+        /// <param name="value">The play on awake setting to apply.</param>
+        /// <returns>The builder instance, enabling fluent chaining.</returns>
         TBuilder PlayOnAwake(TArgument value);
     }
 }

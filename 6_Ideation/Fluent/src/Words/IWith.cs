@@ -30,15 +30,17 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     Simple comment
+    ///     Fluent builder interface that configures with a value on the target builder.
     /// </summary>
-    /// <typeparam name="TBuilder">the builder</typeparam>
-    /// <typeparam name="TArgument">the argument</typeparam>
+    /// <typeparam name="TBuilder">The builder type returned by the fluent method for chaining.</typeparam>
+    /// <typeparam name="TArgument">The argument type accepted by the fluent method.</typeparam>
     public interface IWith<out TBuilder, in TArgument>
     {
-        /// <summary>Withes the specified value.</summary>
-        /// <param name="value">The value.</param>
-        /// <returns>Return that you want.</returns>
+        /// <summary>
+        ///     Configures with a value on the builder.
+        /// </summary>
+        /// <param name="value">The value to apply.</param>
+        /// <returns>The builder instance, enabling fluent chaining.</returns>
         TBuilder With(TArgument value);
     }
 }

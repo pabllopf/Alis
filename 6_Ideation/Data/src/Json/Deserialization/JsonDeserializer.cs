@@ -36,30 +36,49 @@ using Alis.Core.Aspect.Data.Json.Parsing;
 namespace Alis.Core.Aspect.Data.Json.Deserialization
 {
     /// <summary>
-    ///     Deserializes JSON strings into objects.
+    ///     Deserializes JSON strings into typed objects by coordinating a JSON parser with
+    ///     the <see cref="IJsonDesSerializable{T}" /> interface. The deserialization pipeline
+    ///     first parses the JSON into a flat property dictionary, then creates a new instance
+    ///     of the target type and populates it via <see cref="IJsonDesSerializable{T}.CreateFromProperties" />.
     /// </summary>
+    /// <remarks>
+    ///     This class is used internally by <see cref="JsonNativeAot.Deserialize{T}" /> and
+    ///     <see cref="FileOperations.JsonFileHandler.DeserializeFromFile{T}" />.
+    ///     The deserialization process requires the target type to have a parameterless
+    ///     constructor (enforced by the generic constraint) and to implement both
+    ///     <see cref="IJsonSerializable" /> and <see cref="IJsonDesSerializable{T}" />.
+    ///     All non-parsing exceptions are caught and wrapped in a
+    ///     <see cref="JsonDeserializationException" /> for consistent error reporting.
+    /// </remarks>
     public sealed class JsonDeserializer : IJsonDeserializer
     {
         /// <summary>
-        ///     The json parser
+        ///     The JSON parser used to convert the JSON string into a flat dictionary of
+        ///     property name-value string pairs.
         /// </summary>
         private readonly IJsonParser _jsonParser;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="JsonDeserializer" /> class.
+        ///     Initializes a new instance of the <see cref="JsonDeserializer" /> class with the
+        ///     specified JSON parser.
         /// </summary>
-        /// <param name="jsonParser">The JSON parser to use.</param>
-        /// <exception cref="ArgumentNullException">Thrown when jsonParser is null.</exception>
+        /// <param name="jsonParser">The JSON parser instance used to parse JSON strings into property dictionaries. Must not be null.</param>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="jsonParser" /> is null.</exception>
         public JsonDeserializer(IJsonParser jsonParser) => _jsonParser = jsonParser ?? throw new ArgumentNullException(nameof(jsonParser));
 
         /// <summary>
-        ///     Deserializes a JSON string into an object of the specified type.
+        ///     Deserializes the specified JSON string into a new instance of type <typeparamref name="T" />.
+        ///     The JSON is first parsed into a dictionary, then a new object is created and populated
+        ///     via the <see cref="IJsonDesSerializable{T}.CreateFromProperties" /> method.
         /// </summary>
-        /// <typeparam name="T">The target type, which must implement IJsonSerializable and IJsonDesSerializable&lt;T&gt;.</typeparam>
-        /// <param name="json">The JSON string to deserialize.</param>
-        /// <returns>An instance of the specified type populated with data from the JSON.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when json is null.</exception>
-        /// <exception cref="JsonDeserializationException">Thrown when deserialization fails.</exception>
+        /// <typeparam name="T">
+        ///     The target type for deserialization. Must implement <see cref="IJsonSerializable" />
+        ///     and <see cref="IJsonDesSerializable{T}" />, and have a parameterless constructor.
+        /// </typeparam>
+        /// <param name="json">The JSON string to deserialize. Must not be null. Expected to represent a JSON object.</param>
+        /// <returns>A new instance of <typeparamref name="T" /> with its properties populated from the JSON data.</returns>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="json" /> is null.</exception>
+        /// <exception cref="JsonDeserializationException">Thrown when deserialization fails due to parsing errors or property population failures.</exception>
         [ExcludeFromCodeCoverage]
         public T Deserialize<T>(string json) where T : IJsonSerializable, IJsonDesSerializable<T>, new()
         {

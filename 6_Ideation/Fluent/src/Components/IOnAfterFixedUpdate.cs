@@ -30,14 +30,15 @@
 namespace Alis.Core.Aspect.Fluent.Components
 {
     /// <summary>
-    ///     The on after fixed update interface
+    ///     Lifecycle hook called once per fixed-timestep interval after the <see cref="IOnFixedUpdate.OnFixedUpdate"/> loop.
+    ///     Use this for post-physics cleanup, interpolation, or finalizing state after fixed-step simulation.
     /// </summary>
     public interface IOnAfterFixedUpdate
     {
         /// <summary>
-        ///     Ons the after fixed update using the specified self
+        ///     Called every fixed timestep after all <see cref="IOnFixedUpdate.OnFixedUpdate"/> hooks have executed.
         /// </summary>
-        /// <param name="self">The self</param>
+        /// <param name="self">The entity that owns this component.</param>
         void OnAfterFixedUpdate(IGameObject self);
     }
 }

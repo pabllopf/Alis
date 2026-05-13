@@ -30,15 +30,17 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The add animation interface
+    ///     Fluent builder interface that adds an animation on the target builder.
     /// </summary>
+    /// <typeparam name="TBuilder">The builder type returned by the fluent method for chaining.</typeparam>
+    /// <typeparam name="TArgument">The argument type accepted by the fluent method.</typeparam>
     public interface IAddAnimation<out TBuilder, in TArgument>
     {
         /// <summary>
         ///     Adds the animation using the specified value
         /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The builder</returns>
+        /// <param name="value">The animation to apply.</param>
+        /// <returns>The builder instance, enabling fluent chaining.</returns>
         TBuilder AddAnimation(TArgument value);
     }
 }

@@ -30,15 +30,17 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The add frame interface
+    ///     Fluent builder interface that adds a frame on the target builder.
     /// </summary>
+    /// <typeparam name="TBuilder">The builder type returned by the fluent method for chaining.</typeparam>
+    /// <typeparam name="TArgument">The argument type accepted by the fluent method.</typeparam>
     public interface IAddFrame<out TBuilder, in TArgument>
     {
         /// <summary>
         ///     Adds the frame using the specified value
         /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The builder</returns>
+        /// <param name="value">The frame to apply.</param>
+        /// <returns>The builder instance, enabling fluent chaining.</returns>
         TBuilder AddFrame(TArgument value);
     }
 }

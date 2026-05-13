@@ -30,15 +30,17 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The is active interface
+    ///     Fluent builder interface that sets active state on the target builder.
     /// </summary>
+    /// <typeparam name="TBuilder">The builder type returned by the fluent method for chaining.</typeparam>
+    /// <typeparam name="TArgument">The argument type accepted by the fluent method.</typeparam>
     public interface IIsActive<out TBuilder, in TArgument>
     {
         /// <summary>
         ///     Ises the active using the specified value
         /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The builder</returns>
+        /// <param name="value">The active state to apply.</param>
+        /// <returns>The builder instance, enabling fluent chaining.</returns>
         TBuilder IsActive(TArgument value);
     }
 }

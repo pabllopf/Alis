@@ -30,15 +30,17 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The fixed rotation interface
+    ///     Fluent builder interface that enables fixed rotation on the target builder.
     /// </summary>
+    /// <typeparam name="TBuilder">The builder type returned by the fluent method for chaining.</typeparam>
+    /// <typeparam name="TArgument">The argument type accepted by the fluent method.</typeparam>
     public interface IFixedRotation<out TBuilder, in TArgument>
     {
         /// <summary>
         ///     Fixeds the rotation using the specified value
         /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The builder</returns>
+        /// <param name="value">The fixed rotation setting to apply.</param>
+        /// <returns>The builder instance, enabling fluent chaining.</returns>
         TBuilder FixedRotation(TArgument value);
     }
 }

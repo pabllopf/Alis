@@ -30,14 +30,14 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     Define the word "Tag"
+    ///     Fluent builder interface that sets the tag on the target builder.
     /// </summary>
-    /// <typeparam name="TBuilder">The type of the builder.</typeparam>
-    /// <typeparam name="TArgument">The type of the argument.</typeparam>
+    /// <typeparam name="TBuilder">The builder type returned by the fluent method for chaining.</typeparam>
+    /// <typeparam name="TArgument">The argument type accepted by the fluent method.</typeparam>
     public interface IWithTag<out TBuilder, in TArgument>
     {
         /// <summary>Withes the tag.</summary>
-        /// <param name="value">The value.</param>
+        /// <param name="value">The tag to apply.</param>
         /// <returns>return the object that you want.</returns>
         TBuilder WithTag(TArgument value);
     }
