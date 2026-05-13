@@ -33,25 +33,48 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Core.Physic.Common
 {
     /// <summary>
-    ///     A 2-by-2 matrix. Stored in column-major order.
+    ///     Represents a 2-by-2 matrix stored in column-major order.
+    ///     This matrix is commonly used for 2D transformations including rotation,
+    ///     scaling, and shearing operations in the physics engine.
     /// </summary>
+    /// <remarks>
+    ///     The matrix layout is as follows:
+    ///     | Ex.X  Ey.X |
+    ///     | Ex.Y  Ey.Y |
+    ///     Where Ex and Ey are column vectors representing the matrix columns.
+    /// </remarks>
     public struct Mat22
     {
         /// <summary>
-        ///     The ey
+        ///     Gets or sets the first column vector (X-axis basis vector).
+        ///     Represents the X-direction transformation coefficients (a11, a21).
         /// </summary>
+        /// <value>
+        ///     A <see cref="Vector2F"/> representing the first column of the matrix.
+        /// </value>
         public Vector2F Ex;
 
         /// <summary>
-        ///     The ey
+        ///     Gets or sets the second column vector (Y-axis basis vector).
+        ///     Represents the Y-direction transformation coefficients (a12, a22).
         /// </summary>
+        /// <value>
+        ///     A <see cref="Vector2F"/> representing the second column of the matrix.
+        /// </value>
         public Vector2F Ey;
 
         /// <summary>
-        ///     Construct this matrix using columns.
+        ///     Initializes a new instance of the <see cref="Mat22"/> struct using two column vectors.
         /// </summary>
-        /// <param name="c1">The c1.</param>
-        /// <param name="c2">The c2.</param>
+        /// <param name="c1">The first column vector (X-axis basis). Specifies the values for the first column of the matrix.</param>
+        /// <param name="c2">The second column vector (Y-axis basis). Specifies the values for the second column of the matrix.</param>
+        /// <example>
+        ///     <code>
+        ///     Vector2F xAxis = new Vector2F(1, 0);
+        ///     Vector2F yAxis = new Vector2F(0, 1);
+        ///     Mat22 identity = new Mat22(xAxis, yAxis);
+        ///     </code>
+        /// </example>
         public Mat22(Vector2F c1, Vector2F c2)
         {
             Ex = c1;
@@ -59,12 +82,18 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        ///     Construct this matrix using scalars.
+        ///     Initializes a new instance of the <see cref="Mat22"/> struct using four scalar values in row-major order.
         /// </summary>
-        /// <param name="a11">The a11.</param>
-        /// <param name="a12">The a12.</param>
-        /// <param name="a21">The a21.</param>
-        /// <param name="a22">The a22.</param>
+        /// <param name="a11">The element at row 1, column 1 (first row, first column). This becomes the X-component of the first column vector.</param>
+        /// <param name="a12">The element at row 1, column 2 (first row, second column). This becomes the X-component of the second column vector.</param>
+        /// <param name="a21">The element at row 2, column 1 (second row, first column). This becomes the Y-component of the first column vector.</param>
+        /// <param name="a22">The element at row 2, column 2 (second row, second column). This becomes the Y-component of the second column vector.</param>
+        /// <example>
+        ///     <code>
+        ///     // Create a 90-degree rotation matrix
+        ///     Mat22 rotation = new Mat22(0, -1, 1, 0);
+        ///     </code>
+        /// </example>
         public Mat22(float a11, float a12, float a21, float a22)
         {
             Ex = new Vector2F(a11, a21);
