@@ -58,7 +58,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// <summary>
         ///     The next archetype id
         /// </summary>
-        internal static int NextArchetypeId = -1;
+        private static int NextArchetypeId = -1;
 
         /// <summary>
         ///     The existing archetypes
@@ -763,7 +763,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// <summary>
         ///     The next archetype id
         /// </summary>
-        internal static int NextArchetypeId = -1;
+        private static int NextArchetypeId = -1;
 
         /// <summary>
         ///     The existing archetypes
