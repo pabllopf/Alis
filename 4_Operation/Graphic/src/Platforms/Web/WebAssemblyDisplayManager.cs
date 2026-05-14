@@ -65,7 +65,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         /// The supported modes
         /// </summary>
-        private List<DisplayMode> _supportedModes;
+        private readonly List<DisplayMode> _supportedModes;
 
         /// <summary>
         ///     Event triggered when the window size changes
@@ -186,7 +186,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Gets the device pixel ratio (for high DPI displays)
         /// </summary>
-        public float GetDevicePixelRatio()
+        public static float GetDevicePixelRatio()
         {
             return EmscriptenWeb.GetDevicePixelRatio();
         }

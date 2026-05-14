@@ -51,11 +51,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         private Dictionary<int, GamepadInputState> _previousGamepadStates;
         /// <summary>
-        /// The last mouse
-        /// </summary>
-        private int _lastMouseX;
-        /// <summary>
-        /// The last mouse
+        /// The last mouse Y position
         /// </summary>
         private int _lastMouseY;
         /// <summary>
@@ -76,7 +72,6 @@ namespace Alis.Core.Graphic.Platforms.Web
             _keyBindings = new Dictionary<string, KeyBinding>();
             _previousGamepadStates = new Dictionary<int, GamepadInputState>();
             _touchPoints = new Dictionary<int, TouchPoint>();
-            _lastMouseX = 0;
             _lastMouseY = 0;
             _lastMouseWheelDelta = 0.0f;
         }
@@ -189,7 +184,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         private void UpdateMouseState()
         {
-            _platform.GetMouseState(out _lastMouseX, out _lastMouseY, out bool[] buttons);
+            _platform.GetMouseState(out _, out _lastMouseY, out bool[] buttons);
             _lastMouseWheelDelta = _platform.GetMouseWheel();
         }
 

@@ -65,8 +65,8 @@ namespace Alis.Core.Graphic.Platforms.Web
 
                     if (gameContext.IsMouseButtonDown(0)) // Left mouse button
                     {
-                        gameContext.GetMousePosition(out int x, out int y);
-                        // Handle mouse click at (x, y)
+                        gameContext.GetMousePosition(out int _, out int y);
+                        // Handle mouse click at y position
                     }
                 };
 
@@ -188,7 +188,7 @@ namespace Alis.Core.Graphic.Platforms.Web
                     int width = context.GetWidth();
                     int height = context.GetHeight();
                     float aspectRatio = context.GetAspectRatio();
-                    float devicePixelRatio = context.DisplayManager.GetDevicePixelRatio();
+                    float devicePixelRatio = WebAssemblyDisplayManager.GetDevicePixelRatio();
 
                     // Check orientation for responsive layout
                     var orientation = context.DisplayManager.GetOrientation();
