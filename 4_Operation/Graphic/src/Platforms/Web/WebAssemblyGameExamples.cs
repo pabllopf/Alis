@@ -109,13 +109,12 @@ namespace Alis.Core.Graphic.Platforms.Web
                             GamepadState state = gamepadState.CurrentState;
 
                             // Read analog sticks
-                            float leftStickX = state.LeftStickX;
+                            float leftStickX = Math.Abs(state.LeftStickX) < 0.15f ? 0 : state.LeftStickX;
                             float leftStickY = state.LeftStickY;
                             float rightStickX = state.RightStickX;
                             float rightStickY = state.RightStickY;
 
                             // Apply deadzone
-                            if (Math.Abs(leftStickX) < 0.15f) leftStickX = 0;
                             if (Math.Abs(leftStickY) < 0.15f) leftStickY = 0;
 
                             // Read triggers
@@ -473,12 +472,9 @@ namespace Alis.Core.Graphic.Platforms.Web
                     }
 
                     // Show confirmation dialog
-                    if (context.IsKeyDown(ConsoleKey.D3))
+                    if (context.IsKeyDown(ConsoleKey.D3) && WebAssemblyGameContext.ShowConfirm("Do you want to quit?"))
                     {
-                        if (WebAssemblyGameContext.ShowConfirm("Do you want to quit?"))
-                        {
-                            context.Stop(); // Exit the game
-                        }
+                        context.Stop(); // Exit the game
                     }
                 });
             }
