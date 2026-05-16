@@ -32,8 +32,5 @@ namespace Alis.Core.Physic.Dynamics
     /// <summary>
     ///     The collision filter delegate
     /// </summary>
-    /// <param name="fixtureA">The first fixture to check for collision.</param>
-    /// <param name="fixtureB">The second fixture to check for collision.</param>
-    /// <returns>True if the fixtures should collide, false otherwise.</returns>
     public delegate bool CollisionFilterDelegate(Fixture fixtureA, Fixture fixtureB);
 }

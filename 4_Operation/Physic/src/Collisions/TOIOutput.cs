@@ -30,17 +30,17 @@
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     Result data from <see cref="TimeOfImpact.CalculateTimeOfImpact"/>.
+    ///     The toi output
     /// </summary>
     public struct ToiOutput
     {
         /// <summary>
-        ///     The status of the time-of-impact computation (unknown, failed, overlapped, touching, separated).
+        ///     The state
         /// </summary>
         public ToiOutputState State;
 
         /// <summary>
-        ///     The computed time of impact within [0, TMax]. Only valid when <see cref="State"/> is Touching or Seperated.
+        ///     The
         /// </summary>
         public float T;
     }

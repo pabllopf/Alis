@@ -638,7 +638,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         /// <param name="t">The </param>
         /// <param name="p">The </param>
         /// <exception cref="Exception">Intersecting Constraints</exception>
-        /// <exception cref="InvalidOperationException">FLIP failed due to missing triangle - this indicates a triangulation error</exception>
+        /// <exception cref="InvalidOperationException">[BUG:FIXME] FLIP failed due to missing triangle</exception>
         private static void FlipEdgeEvent(DtSweepContext tcx, TriangulationPoint ep, TriangulationPoint eq, DelaunayTriangle t, TriangulationPoint p)
         {
             DelaunayTriangle ot = t.NeighborAcross(p);

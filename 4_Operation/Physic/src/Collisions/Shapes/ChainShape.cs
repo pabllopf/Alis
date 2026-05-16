@@ -100,6 +100,9 @@ namespace Alis.Core.Physic.Collisions.Shapes
 
             for (int i = 1; i < vertices.Count; ++i)
             {
+                Vector2F v1 = vertices[i - 1];
+                Vector2F v2 = vertices[i];
+
                 // If the code crashes here, it means your vertices are too close together.
             }
 
@@ -149,11 +152,10 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Populates a pre-allocated <see cref="EdgeShape"/> with the edge data at the given chain segment index.
-        ///     This overload avoids allocating a new edge object.
+        ///     This method has been optimized to reduce garbage.
         /// </summary>
-        /// <param name="edge">The pre-allocated edge shape to populate with the child segment data.</param>
-        /// <param name="index">The zero-based index of the chain segment to retrieve.</param>
+        /// <param name="edge">The cached edge to set properties on.</param>
+        /// <param name="index">The index.</param>
         internal void GetChildEdge(EdgeShape edge, int index)
         {
             edge.ShapeType = ShapeType.Edge;
@@ -186,10 +188,9 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Gets a new <see cref="EdgeShape"/> representing the chain segment at the given index.
+        ///     Get a child edge.
         /// </summary>
-        /// <param name="index">The zero-based index of the chain segment to retrieve.</param>
-        /// <returns>A new edge shape configured with the segment's vertices and adjacency data.</returns>
+        /// <param name="index">The index.</param>
         public EdgeShape GetChildEdge(int index)
         {
             EdgeShape edgeShape = new EdgeShape();
@@ -251,7 +252,7 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Chain shapes have no mass properties, so this method is a no-op.
+        ///     Computes the properties
         /// </summary>
         protected override void ComputeProperties()
         {
@@ -259,13 +260,13 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Computes the submerged area for buoyancy. Chain shapes always return zero area.
+        ///     Computes the submerged area using the specified normal
         /// </summary>
-        /// <param name="normal">The surface normal of the fluid plane.</param>
-        /// <param name="offset">The offset of the fluid plane along the normal.</param>
-        /// <param name="xf">The world transform of the shape.</param>
-        /// <param name="sc">Outputs the submerged centroid (always zero for chains).</param>
-        /// <returns>The submerged area (always 0 for chain shapes).</returns>
+        /// <param name="normal">The normal</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="xf">The xf</param>
+        /// <param name="sc">The sc</param>
+        /// <returns>The float</returns>
         public override float ComputeSubmergedArea(ref Vector2F normal, float offset, ref ControllerTransform xf, out Vector2F sc)
         {
             sc = Vector2F.Zero;
@@ -273,10 +274,10 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Compares this chain shape to another for geometric equality.
+        ///     Compare the chain to another chain
         /// </summary>
-        /// <param name="shape">The other chain shape to compare against.</param>
-        /// <returns><c>true</c> if both chains have identical vertices and adjacency data; otherwise <c>false</c>.</returns>
+        /// <param name="shape">The other chain</param>
+        /// <returns>True if the two chain shapes are the same</returns>
         public bool CompareTo(ChainShape shape)
         {
             if (Vertices.Count != shape.Vertices.Count)
@@ -296,9 +297,9 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Creates a deep copy of this chain shape.
+        ///     Clones this instance
         /// </summary>
-        /// <returns>A new <see cref="ChainShape"/> with the same geometry and properties.</returns>
+        /// <returns>The clone</returns>
         public override Shape Clone()
         {
             ChainShape clone = new ChainShape();

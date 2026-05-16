@@ -157,59 +157,59 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The add component lookup
         /// </summary>
-        internal FastLookup AddComponentLookup = new FastLookup();
+        public FastLookup AddComponentLookup = new FastLookup();
 
         /// <summary>
         ///     The add tag lookup
         /// </summary>
-        public readonly FastLookup AddTagLookup = new FastLookup();
+        public FastLookup AddTagLookup = new FastLookup();
 
         /// <summary>
         ///     The archetype graph edges
         /// </summary>
-        public readonly Dictionary<ArchetypeEdgeKey, Archetype> ArchetypeGraphEdges = [];
+        public Dictionary<ArchetypeEdgeKey, Archetype> ArchetypeGraphEdges = [];
 
         /// <summary>
         ///     The component id
         /// </summary>
-        public readonly Event<ComponentId> ComponentAddedEvent = new Event<ComponentId>();
+        public Event<ComponentId> ComponentAddedEvent = new Event<ComponentId>();
 
         /// <summary>
         ///     The component id
         /// </summary>
-        public readonly Event<ComponentId> ComponentRemovedEvent = new Event<ComponentId>();
+        public Event<ComponentId> ComponentRemovedEvent = new Event<ComponentId>();
 
         /// <summary>
         ///     The create
         /// </summary>
-        public readonly FastestStack<ArchetypeDeferredUpdateRecord> DeferredCreationArchetypes =
+        public FastestStack<ArchetypeDeferredUpdateRecord> DeferredCreationArchetypes =
             FastestStack<ArchetypeDeferredUpdateRecord>.Create(4);
 
         /// <summary>
         ///     The create
         /// </summary>
-        public readonly FastestStack<GameObjectType> EnabledArchetypes = FastestStack<GameObjectType>.Create(16);
+        public FastestStack<GameObjectType> EnabledArchetypes = FastestStack<GameObjectType>.Create(16);
 
         /// <summary>
         ///     The gameObject only event
         /// </summary>
-        public readonly GameObjectOnlyEvent EntityCreatedEvent = new GameObjectOnlyEvent();
+        public GameObjectOnlyEvent EntityCreatedEvent = new GameObjectOnlyEvent();
 
         /// <summary>
         ///     The gameObject only event
         /// </summary>
-        public readonly GameObjectOnlyEvent EntityDeletedEvent = new GameObjectOnlyEvent();
+        public GameObjectOnlyEvent EntityDeletedEvent = new GameObjectOnlyEvent();
 
         //entityID -> gameObject metadata
         /// <summary>
         ///     The gameObject location
         /// </summary>
-        public readonly FastestTable<GameObjectLocation> EntityTable = new FastestTable<GameObjectLocation>(256);
+        public FastestTable<GameObjectLocation> EntityTable = new FastestTable<GameObjectLocation>(256);
 
         /// <summary>
         ///     The event lookup
         /// </summary>
-        public readonly Dictionary<GameObjectIdOnly, EventRecord> EventLookup = [];
+        public Dictionary<GameObjectIdOnly, EventRecord> EventLookup = [];
 
         /// <summary>
         ///     The next gameObject id

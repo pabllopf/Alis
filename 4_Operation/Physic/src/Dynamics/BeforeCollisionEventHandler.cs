@@ -32,8 +32,5 @@ namespace Alis.Core.Physic.Dynamics
     /// <summary>
     ///     The before collision event handler
     /// </summary>
-    /// <param name="sender">The fixture that is about to collide.</param>
-    /// <param name="other">The other fixture involved in the potential collision.</param>
-    /// <returns>True if the collision should proceed, false to ignore it.</returns>
     public delegate bool BeforeCollisionEventHandler(Fixture sender, Fixture other);
 }

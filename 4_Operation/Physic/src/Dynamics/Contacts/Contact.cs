@@ -105,12 +105,12 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         public Manifold Manifold;
 
         /// <summary>
-        ///     The time of impact (TOI) value for continuous collision detection.
+        ///     The toi
         /// </summary>
         internal float Toi;
 
         /// <summary>
-        ///     The number of time-of-impact (TOI) iterations performed.
+        ///     The toi count
         /// </summary>
         internal int ToiCount;
 
@@ -127,22 +127,22 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         }
 
         /// <summary>
-        ///     The first fixture participating in this contact.
+        ///     Gets or sets the value of the fixture a
         /// </summary>
         public Fixture FixtureA { get; internal set; }
 
         /// <summary>
-        ///     The second fixture participating in this contact.
+        ///     Gets or sets the value of the fixture b
         /// </summary>
         public Fixture FixtureB { get; internal set; }
 
         /// <summary>
-        ///     The combined friction coefficient of the two touching fixtures.
+        ///     Gets or sets the value of the friction
         /// </summary>
         public float Friction { get; set; }
 
         /// <summary>
-        ///     The combined restitution (bounciness) coefficient of the two touching fixtures.
+        ///     Gets or sets the value of the restitution
         /// </summary>
         public float Restitution { get; set; }
 
@@ -190,17 +190,17 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         public bool IsTouching { get; set; }
 
         /// <summary>
-        ///     Flag indicating whether this contact belongs to an island in the solver.
+        ///     Gets or sets the value of the island flag
         /// </summary>
         internal bool IslandFlag { get; set; }
 
         /// <summary>
-        ///     Flag indicating whether this contact has been processed in time-of-impact (TOI) solving.
+        ///     Gets or sets the value of the toi flag
         /// </summary>
         internal bool ToiFlag { get; set; }
 
         /// <summary>
-        ///     Flag indicating whether the filter for this contact has been evaluated.
+        ///     Gets or sets the value of the filter flag
         /// </summary>
         internal bool FilterFlag { get; set; }
 
@@ -554,7 +554,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             {
                 if (c == null)
                 {
-                    c = new Contact(fixtureA, indexA, fixtureB, indexB);
+                    c = new Contact(fixtureB, indexB, fixtureA, indexA);
                 }
                 else
                 {

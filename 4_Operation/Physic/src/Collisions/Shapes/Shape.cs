@@ -156,13 +156,8 @@ namespace Alis.Core.Physic.Collisions.Shapes
         protected abstract void ComputeProperties();
 
         /// <summary>
-        ///     Computes the area of this shape that is submerged beneath a fluid plane, for buoyancy simulation.
+        ///     Used for the buoyancy controller
         /// </summary>
-        /// <param name="normal">The upward normal of the fluid surface.</param>
-        /// <param name="offset">The signed offset of the fluid plane along the normal direction.</param>
-        /// <param name="xf">The world transform of the shape.</param>
-        /// <param name="sc">Outputs the world-space centroid of the submerged region.</param>
-        /// <returns>The total submerged area of the shape.</returns>
         public abstract float ComputeSubmergedArea(ref Vector2F normal, float offset, ref ControllerTransform xf, out Vector2F sc);
     }
 }

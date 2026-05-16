@@ -30,7 +30,7 @@
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     Enumerates the types of geometric features that can participate in a contact point.
+    ///     The contact feature type enum
     /// </summary>
     internal enum ContactFeatureType : byte
     {

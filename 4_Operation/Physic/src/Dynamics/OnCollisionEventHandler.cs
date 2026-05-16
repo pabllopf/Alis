@@ -34,9 +34,5 @@ namespace Alis.Core.Physic.Dynamics
     /// <summary>
     ///     The on collision event handler
     /// </summary>
-    /// <param name="sender">The fixture that initiated the collision.</param>
-    /// <param name="other">The other fixture involved in the collision.</param>
-    /// <param name="contact">The contact point where the collision occurred.</param>
-    /// <returns>True if the collision should be processed, false to ignore it.</returns>
     public delegate bool OnCollisionEventHandler(Fixture sender, Fixture other, Contact contact);
 }

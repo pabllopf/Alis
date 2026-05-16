@@ -607,6 +607,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         {
             //this scene doesn't have the archetype, or it doesnt even exist
 
+            Archetype from = edge.ArchetypeFrom.Archetype(scene)!;
             FastImmutableArray<ComponentId> fromComponents = edge.ArchetypeFrom.Types;
 
             switch (edge.EdgeType)
@@ -884,6 +885,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         {
             //this scene doesn't have the archetype, or it doesnt even exist
 
+            Archetype from = edge.ArchetypeFrom.Archetype(scene)!;
             FastImmutableArray<ComponentId> fromComponents = edge.ArchetypeFrom.Types;
 
             switch (edge.EdgeType)

@@ -32,37 +32,37 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     A vertex of the GJK simplex, containing support points from both shapes and a barycentric weight.
+    ///     The simplex vertex
     /// </summary>
     internal struct SimplexVertex
     {
         /// <summary>
-        ///     Barycentric coordinate weight for the closest-point interpolation. Sum of all vertex weights is 1.
+        ///     Barycentric coordinate for closest point
         /// </summary>
         public float A;
 
         /// <summary>
-        ///     Index of the support vertex on shape A.
+        ///     wA index
         /// </summary>
         public int IndexA;
 
         /// <summary>
-        ///     Index of the support vertex on shape B.
+        ///     wB index
         /// </summary>
         public int IndexB;
 
         /// <summary>
-        ///     The Minkowski difference point: wB - wA.
+        ///     wB - wA
         /// </summary>
         public Vector2F W;
 
         /// <summary>
-        ///     The support point on shape A in world coordinates.
+        ///     Support point in proxyA
         /// </summary>
         public Vector2F Wa;
 
         /// <summary>
-        ///     The support point on shape B in world coordinates.
+        ///     Support point in proxyB
         /// </summary>
         public Vector2F Wb;
     }

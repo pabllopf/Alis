@@ -95,7 +95,8 @@ namespace Alis.Core.Ecs.Kernel
                     return;
                 }
 
-                // RunnerInstance already set by a previous type initialization
+                throw new InvalidOperationException(
+                    $"{typeof(T).FullName} is not initalized correctly. (Is the source generator working?)");
             }
 
             NoneUpdateRunnerFactory<T> fac = new NoneUpdateRunnerFactory<T>();
@@ -237,8 +238,8 @@ namespace Alis.Core.Ecs.Kernel
 
                 IdTable<T> stack = new IdTable<T>();
                 ComponentTable.Push(new ComponentData(type, stack,
-                    GenerationServices.TypeIniters.TryGetValue(type, out Delegate _) ? initDelegate : null,
-                    GenerationServices.TypeDestroyers.TryGetValue(type, out Delegate _) ? destroyDelegate : null));
+                    GenerationServices.TypeIniters.TryGetValue(type, out Delegate v1) ? initDelegate : null,
+                    GenerationServices.TypeDestroyers.TryGetValue(type, out Delegate d) ? destroyDelegate : null));
 
                 return (id, stack, initDelegate, destroyDelegate);
             }

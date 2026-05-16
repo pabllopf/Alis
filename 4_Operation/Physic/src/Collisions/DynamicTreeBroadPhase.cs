@@ -118,30 +118,30 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     Gets the tree quality metric (ratio of sum of node areas to root area).
+        ///     Get the tree quality based on the area of the tree.
         /// </summary>
         public float TreeQuality => _tree.AreaRatio;
 
         /// <summary>
-        ///     Gets the maximum balance (height difference between children) across all tree nodes.
+        ///     Gets the balance of the tree.
         /// </summary>
         public int TreeBalance => _tree.MaxBalance;
 
         /// <summary>
-        ///     Gets the height of the dynamic tree (root node height).
+        ///     Gets the height of the tree.
         /// </summary>
         public int TreeHeight => _tree.Height;
 
         /// <summary>
-        ///     Gets the number of proxies currently registered in the broad phase.
+        ///     Get the number of proxies.
         /// </summary>
+        /// <value>The proxy count.</value>
         public int ProxyCount { get; private set; }
 
         /// <summary>
-        ///     Adds a new proxy to the broad phase with the given AABB.
         /// </summary>
-        /// <param name="aabb">The axis-aligned bounding box for the new proxy.</param>
-        /// <returns>The proxy identifier assigned to the newly added proxy.</returns>
+        /// <param name="aabb"></param>
+        /// <returns></returns>
         public int AddProxy(ref Aabb aabb)
         {
             int proxyId = _tree.AddProxy(ref aabb);
@@ -197,28 +197,28 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     Associates user data with a proxy in the broad phase.
+        ///     Sets the proxy using the specified proxy id
         /// </summary>
-        /// <param name="proxyId">The proxy identifier.</param>
-        /// <param name="proxy">The user data to store with the proxy.</param>
+        /// <param name="proxyId">The proxy id</param>
+        /// <param name="proxy">The proxy</param>
         public void SetProxy(int proxyId, ref TNode proxy)
         {
             _tree.SetUserData(proxyId, proxy);
         }
 
         /// <summary>
-        ///     Gets the user data associated with a proxy.
+        ///     Get user data from a proxy. Returns null if the id is invalid.
         /// </summary>
-        /// <param name="proxyId">The proxy identifier.</param>
-        /// <returns>The user data stored with the proxy.</returns>
+        /// <param name="proxyId">The proxy id.</param>
+        /// <returns></returns>
         public TNode GetProxy(int proxyId) => _tree.GetUserData(proxyId);
 
         /// <summary>
-        ///     Tests whether the fat AABBs of two proxies overlap.
+        ///     Test overlap of fat AABBs.
         /// </summary>
-        /// <param name="proxyIdA">The first proxy identifier.</param>
-        /// <param name="proxyIdB">The second proxy identifier.</param>
-        /// <returns><c>true</c> if the fat AABBs overlap; otherwise <c>false</c>.</returns>
+        /// <param name="proxyIdA">The proxy id A.</param>
+        /// <param name="proxyIdB">The proxy id B.</param>
+        /// <returns></returns>
         public bool TestOverlap(int proxyIdA, int proxyIdB) => _tree.TestFatAabbOverlap(proxyIdA, proxyIdB);
 
         /// <summary>
@@ -316,10 +316,9 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     Adds a proxy identifier to the move buffer so it will be re-paired in the next <see cref="UpdatePairs"/> call.
-        ///     Grows the buffer if capacity is exceeded.
+        ///     Buffers the move using the specified proxy id
         /// </summary>
-        /// <param name="proxyId">The proxy identifier to buffer for re-pairing.</param>
+        /// <param name="proxyId">The proxy id</param>
         private void BufferMove(int proxyId)
         {
             if (_moveCount == _moveCapacity)
@@ -335,9 +334,9 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     Removes a proxy from the move buffer by marking its entry as <see cref="NullProxy"/>.
+        ///     Uns the buffer move using the specified proxy id
         /// </summary>
-        /// <param name="proxyId">The proxy identifier to remove from the move buffer.</param>
+        /// <param name="proxyId">The proxy id</param>
         private void UnBufferMove(int proxyId)
         {
             for (int i = 0; i < _moveCount; ++i)
@@ -350,11 +349,10 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     Internal callback invoked from the dynamic tree query during pair generation.
-        ///     Adds the proxy pair to the pair buffer, skipping self-pairing.
+        ///     This is called from DynamicTree.Query when we are gathering pairs.
         /// </summary>
-        /// <param name="proxyId">The proxy identifier found during the tree query.</param>
-        /// <returns>Always <c>true</c> to continue querying the tree.</returns>
+        /// <param name="proxyId"></param>
+        /// <returns></returns>
         private bool QueryCallback(int proxyId)
         {
             // A proxy cannot form a pair with itself.

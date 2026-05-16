@@ -34,44 +34,35 @@ using Alis.Core.Physic.Dynamics;
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     Computes the time of impact (TOI) between two moving convex shapes using continuous collision detection (CCD).
+    ///     The time of impact class
     /// </summary>
-    /// <remarks>
-    ///     The algorithm uses the local separating axis method to find the earliest time two shapes make contact
-    ///     as they sweep through their motion paths. This prevents tunneling artifacts at high velocities.
-    /// </remarks>
     public static class TimeOfImpact
     {
         // CCD via the local separating axis method. This seeks progression
         // by computing the largest time at which separation is maintained.
 
         /// <summary>
-        ///     The total number of times <see cref="CalculateTimeOfImpact"/> has been called.
-        ///     Only tracked when <see cref="SettingEnv.EnableDiagnostics"/> is <c>true</c>.
+        ///     The toi max iters
         /// </summary>
         [ThreadStatic] public static int ToiCalls;
 
         /// <summary>
-        ///     The total number of iterations across all TOI calls.
-        ///     Only tracked when <see cref="SettingEnv.EnableDiagnostics"/> is <c>true</c>.
+        ///     The toi max iters
         /// </summary>
         [ThreadStatic] public static int ToiIters;
 
         /// <summary>
-        ///     The maximum iteration count ever observed across all TOI calls.
-        ///     Only tracked when <see cref="SettingEnv.EnableDiagnostics"/> is <c>true</c>.
+        ///     The toi max iters
         /// </summary>
         [ThreadStatic] public static int ToiMaxIters;
 
         /// <summary>
-        ///     The total number of root-finding iterations across all TOI calls.
-        ///     Only tracked when <see cref="SettingEnv.EnableDiagnostics"/> is <c>true</c>.
+        ///     The toi max root iters
         /// </summary>
         [ThreadStatic] public static int ToiRootIters;
 
         /// <summary>
-        ///     The maximum root-finding iteration count ever observed.
-        ///     Only tracked when <see cref="SettingEnv.EnableDiagnostics"/> is <c>true</c>.
+        ///     The toi max root iters
         /// </summary>
         [ThreadStatic] public static int ToiMaxRootIters;
 

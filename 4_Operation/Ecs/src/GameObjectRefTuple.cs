@@ -30,8 +30,6 @@
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Kernel;
 
-#pragma warning disable S1104
-
 namespace Alis.Core.Ecs
 {
     /// <summary>

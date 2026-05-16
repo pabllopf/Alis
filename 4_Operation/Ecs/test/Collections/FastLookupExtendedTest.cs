@@ -63,8 +63,8 @@ namespace Alis.Core.Ecs.Test.Collections
             FastLookup lookup = new FastLookup();
 
             // Act
-            uint key1 = FastLookup.GetKey(10, new GameObjectType(5));
-            uint key2 = FastLookup.GetKey(20, new GameObjectType(5));
+            uint key1 = lookup.GetKey(10, new GameObjectType(5));
+            uint key2 = lookup.GetKey(20, new GameObjectType(5));
 
             // Assert
             Assert.NotEqual(key1, key2);
@@ -80,9 +80,9 @@ namespace Alis.Core.Ecs.Test.Collections
             FastLookup lookup = new FastLookup();
 
             // Act
-            uint key1 = FastLookup.GetKey(5, new GameObjectType(10));
-            uint key2 = FastLookup.GetKey(5, new GameObjectType(11));
-            uint key3 = FastLookup.GetKey(6, new GameObjectType(10));
+            uint key1 = lookup.GetKey(5, new GameObjectType(10));
+            uint key2 = lookup.GetKey(5, new GameObjectType(11));
+            uint key3 = lookup.GetKey(6, new GameObjectType(10));
 
             // Assert
             Assert.NotEqual(key1, key2);
@@ -100,8 +100,8 @@ namespace Alis.Core.Ecs.Test.Collections
             FastLookup lookup = new FastLookup();
 
             // Act
-            uint key1 = FastLookup.GetKey(0, new GameObjectType(0));
-            uint key2 = FastLookup.GetKey(ushort.MaxValue, new GameObjectType(ushort.MaxValue));
+            uint key1 = lookup.GetKey(0, new GameObjectType(0));
+            uint key2 = lookup.GetKey(ushort.MaxValue, new GameObjectType(ushort.MaxValue));
 
             // Assert
             Assert.NotEqual(key1, key2);
@@ -119,8 +119,8 @@ namespace Alis.Core.Ecs.Test.Collections
             GameObjectType archetype = new GameObjectType(10);
 
             // Act
-            uint key1 = FastLookup.GetKey(id, archetype);
-            uint key2 = FastLookup.GetKey(id, archetype);
+            uint key1 = lookup.GetKey(id, archetype);
+            uint key2 = lookup.GetKey(id, archetype);
 
             // Assert
             Assert.Equal(key1, key2);
@@ -139,7 +139,7 @@ namespace Alis.Core.Ecs.Test.Collections
             // Act
             for (ushort i = 0; i < 100; i++)
             {
-                uint key = FastLookup.GetKey(i, new GameObjectType(i));
+                uint key = lookup.GetKey(i, new GameObjectType(i));
                 keys.Add(key);
             }
 
@@ -155,7 +155,7 @@ namespace Alis.Core.Ecs.Test.Collections
         {
             // Arrange
             FastLookup lookup = new FastLookup();
-            uint key = FastLookup.GetKey(5, new GameObjectType(10));
+            uint key = lookup.GetKey(5, new GameObjectType(10));
 
             // Act
             int index = lookup.LookupIndex(key);
@@ -172,7 +172,7 @@ namespace Alis.Core.Ecs.Test.Collections
         {
             // Arrange
             FastLookup lookup = new FastLookup();
-            uint key = FastLookup.GetKey(15, new GameObjectType(20));
+            uint key = lookup.GetKey(15, new GameObjectType(20));
 
             // Act
             int index1 = lookup.LookupIndex(key);

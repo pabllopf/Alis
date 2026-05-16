@@ -476,13 +476,12 @@ namespace Alis.Core.Physic.Common.TextureTools
                 CxFastListNode<Vector2F> pi = null;
                 for (int i = 0; i < 8; i++)
                 {
-                    Vector2F p = default;
+                    Vector2F p;
                     if ((val & (1 << i)) != 0)
                     {
                         if ((i == 7) && ((val & 1) == 0))
                         {
-                            p = new Vector2F(x0, Ylerp(y0, y1, x0, v0, v3, f, bin));
-                            poly.Points.Add(p);
+                            poly.Points.Add(p = new Vector2F(x0, Ylerp(y0, y1, x0, v0, v3, f, bin)));
                         }
                         else
                         {

@@ -38,57 +38,57 @@ namespace Alis.Core.Physic.Dynamics.Contacts
     public sealed class ContactPositionConstraint
     {
         /// <summary>
-        ///     The local contact points in the space of the reference shape.
+        ///     The max manifold points
         /// </summary>
         public readonly Vector2F[] LocalPoints = new Vector2F[SettingEnv.MaxManifoldPoints];
 
         /// <summary>
-        ///     The index of the first body in the solver arrays.
+        ///     The index
         /// </summary>
         public int IndexA;
 
         /// <summary>
-        ///     The index of the second body in the solver arrays.
+        ///     The index
         /// </summary>
         public int IndexB;
 
         /// <summary>
-        ///     The inverse inertia of body A and body B.
+        ///     The inv ib
         /// </summary>
         public float InvIa, InvIb;
 
         /// <summary>
-        ///     The inverse mass of body A and body B.
+        ///     The inv mass
         /// </summary>
         public float InvMassA, InvMassB;
 
         /// <summary>
-        ///     The local center of mass for body A and body B.
+        ///     The local center
         /// </summary>
         public Vector2F LocalCenterA, LocalCenterB;
 
         /// <summary>
-        ///     The normal of the contact in local coordinates.
+        ///     The local normal
         /// </summary>
         public Vector2F LocalNormal;
 
         /// <summary>
-        ///     The contact point in local coordinates of the reference shape.
+        ///     The local point
         /// </summary>
         public Vector2F LocalPoint;
 
         /// <summary>
-        ///     The number of contact points in this constraint.
+        ///     The point count
         /// </summary>
         public int PointCount;
 
         /// <summary>
-        ///     The radius of the shapes for body A and body B.
+        ///     The radius
         /// </summary>
         public float RadiusA, RadiusB;
 
         /// <summary>
-        ///     The type of the contact manifold.
+        ///     The type
         /// </summary>
         public ManifoldType Type;
     }

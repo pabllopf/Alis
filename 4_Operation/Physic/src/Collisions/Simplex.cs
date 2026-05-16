@@ -35,17 +35,17 @@ using Alis.Core.Physic.Dynamics;
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     A simplex used by the GJK algorithm, consisting of up to three vertices in Minkowski space.
+    ///     The simplex
     /// </summary>
     internal struct Simplex
     {
         /// <summary>
-        ///     The number of active vertices in the simplex (1 = point, 2 = line, 3 = triangle).
+        ///     The count
         /// </summary>
         internal int Count;
 
         /// <summary>
-        ///     The array of up to three simplex vertices representing the current convex hull in Minkowski space.
+        ///     The
         /// </summary>
         internal FixedArray3<SimplexVertex> V;
 

@@ -30,22 +30,22 @@
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     Determines which geometric reference is used by the separation function during CCD.
+    ///     The separation function type enum
     /// </summary>
     public enum SeparationFunctionType
     {
         /// <summary>
-        ///     The separation axis was derived from two witness points (point-to-point).
+        ///     The points separation function type
         /// </summary>
         Points,
 
         /// <summary>
-        ///     The separation axis uses a face from shape A as the reference.
+        ///     The face separation function type
         /// </summary>
         FaceA,
 
         /// <summary>
-        ///     The separation axis uses a face from shape B as the reference.
+        ///     The face separation function type
         /// </summary>
         FaceB
     }

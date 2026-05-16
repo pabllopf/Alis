@@ -30,7 +30,7 @@
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     Enumerates the type of contact manifold, describing how two shapes touch.
+    ///     The manifold type enum
     /// </summary>
     public enum ManifoldType
     {

@@ -34,9 +34,5 @@ namespace Alis.Core.Physic.Dynamics
     /// <summary>
     ///     The after collision event handler
     /// </summary>
-    /// <param name="sender">The fixture that was involved in the collision.</param>
-    /// <param name="other">The other fixture involved in the collision.</param>
-    /// <param name="contact">The contact point of the collision.</param>
-    /// <param name="impulse">The velocity constraint impulse applied after the collision.</param>
     public delegate void AfterCollisionEventHandler(Fixture sender, Fixture other, Contact contact, ContactVelocityConstraint impulse);
 }

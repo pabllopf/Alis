@@ -30,7 +30,7 @@
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     Describes the lifecycle state of a contact point between two consecutive simulation steps.
+    ///     This is used for determining the state of contact points.
     /// </summary>
     public enum PointState
     {

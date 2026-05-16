@@ -30,37 +30,37 @@
 namespace Alis.Core.Physic.Collisions.Shapes
 {
     /// <summary>
-    ///     Identifies the concrete type of a collision shape.
+    ///     The shape type enum
     /// </summary>
     public enum ShapeType
     {
         /// <summary>
-        ///     An uninitialized or undefined shape type.
+        ///     The unknown shape type
         /// </summary>
         Unknown = -1,
 
         /// <summary>
-        ///     A circular shape defined by a center point and radius.
+        ///     The circle shape type
         /// </summary>
         Circle = 0,
 
         /// <summary>
-        ///     A line-segment edge shape with optional connectivity for smooth chains.
+        ///     The edge shape type
         /// </summary>
         Edge = 1,
 
         /// <summary>
-        ///     A convex polygon shape defined by a set of vertices.
+        ///     The polygon shape type
         /// </summary>
         Polygon = 2,
 
         /// <summary>
-        ///     A chain shape composed of multiple connected edge segments.
+        ///     The chain shape type
         /// </summary>
         Chain = 3,
 
         /// <summary>
-        ///     The total number of shape types (used for array sizing).
+        ///     The type count shape type
         /// </summary>
         TypeCount = 4
     }

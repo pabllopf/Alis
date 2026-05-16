@@ -35,9 +35,6 @@ using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Redifinition;
 
-// ReSharper disable StaticMemberInGenericType
-#pragma warning disable S2326 // Unused type parameters are used intentionally as cache-key discriminators
-
 namespace Alis.Core.Ecs
 {
     /// <summary>
@@ -452,4 +449,3 @@ namespace Alis.Core.Ecs
             => components = NeighborCacheCore.ModifySingle(components, Component<T>.Id, add);
     }
 }
-#pragma warning restore S2326

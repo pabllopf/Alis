@@ -30,13 +30,7 @@
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     Callback delegate invoked during a ray-cast query to report intersections with the dynamic tree.
+    ///     The broad phase ray cast callback
     /// </summary>
-    /// <param name="input">The ray-cast input specifying the ray segment and maximum fraction.</param>
-    /// <param name="proxyId">The proxy identifier of the AABB intersected by the ray.</param>
-    /// <returns>
-    ///     The fraction of the ray at which the hit occurred. Return a value less than or equal to 0 to terminate the ray-cast,
-    ///     or a value between 0 and the input's max fraction to clip the remaining ray segment.
-    /// </returns>
     public delegate float BroadPhaseRayCastCallback(ref RayCastInput input, int proxyId);
 }

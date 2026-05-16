@@ -113,13 +113,8 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     Computes the contact manifold for two colliding circles.
+        ///     Compute the collision manifold between two circles.
         /// </summary>
-        /// <param name="manifold">The output manifold that will contain the contact point information.</param>
-        /// <param name="circleA">The first circle shape.</param>
-        /// <param name="xfA">The world transform of the first circle.</param>
-        /// <param name="circleB">The second circle shape.</param>
-        /// <param name="xfB">The world transform of the second circle.</param>
         public static void CollideCircles(ref Manifold manifold, CircleShape circleA, ref ControllerTransform xfA, CircleShape circleB, ref ControllerTransform xfB)
         {
             manifold.PointCount = 0;
@@ -842,18 +837,18 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     Implements the edge-polygon collision algorithm with adjacency-aware contact generation.
+        ///     The ep collider class
         /// </summary>
         private static class EpCollider
         {
-        /// <summary>
-        ///     Computes the contact manifold between an edge and a convex polygon, taking edge adjacency into account for smooth normals.
-        /// </summary>
-        /// <param name="manifold">The output manifold that will contain the generated contact points.</param>
-        /// <param name="edgeA">The edge shape.</param>
-        /// <param name="xfA">The world transform of the edge shape.</param>
-        /// <param name="polygonB">The polygon shape.</param>
-        /// <param name="xfB">The world transform of the polygon shape.</param>
+            /// <summary>
+            ///     Collides the manifold
+            /// </summary>
+            /// <param name="manifold">The manifold</param>
+            /// <param name="edgeA">The edge</param>
+            /// <param name="xfA">The xf</param>
+            /// <param name="polygonB">The polygon</param>
+            /// <param name="xfB">The xf</param>
             public static void Collide(ref Manifold manifold, EdgeShape edgeA, ref ControllerTransform xfA, PolygonShape polygonB, ref ControllerTransform xfB)
             {
                 // Algorithm:
@@ -1267,14 +1262,14 @@ namespace Alis.Core.Physic.Collisions
                 manifold.PointCount = pointCount;
             }
 
-        /// <summary>
-        ///     Computes the minimum separation between the edge and polygon vertices along the given normal.
-        /// </summary>
-        /// <param name="polygonB">The polygon shape vertices and normals expressed in the edge's frame.</param>
-        /// <param name="normal">The separation normal direction.</param>
-        /// <param name="v1">The first vertex of the reference edge.</param>
-        /// <param name="front">If <c>true</c>, the edge is considered front-facing; otherwise back-facing.</param>
-        /// <returns>An <see cref="EpAxis"/> containing the separation distance and axis type.</returns>
+            /// <summary>
+            ///     Computes the edge separation using the specified polygon b
+            /// </summary>
+            /// <param name="polygonB">The polygon shape in local space.</param>
+            /// <param name="normal">The separation normal.</param>
+            /// <param name="v1">The first vertex of the edge.</param>
+            /// <param name="front">Whether the edge is facing front.</param>
+            /// <returns>The axis with separation information.</returns>
             private static EpAxis ComputeEdgeSeparation(ref TempPolygon polygonB, ref Vector2F normal, ref Vector2F v1, bool front)
             {
                 EpAxis axis;
@@ -1294,17 +1289,17 @@ namespace Alis.Core.Physic.Collisions
                 return axis;
             }
 
-        /// <summary>
-        ///     Computes the maximum separation from the polygon's edge normals against the reference edge, respecting angular limits from adjacency.
-        /// </summary>
-        /// <param name="polygonB">The polygon shape vertices and normals expressed in the edge's frame.</param>
-        /// <param name="normal">The reference normal direction.</param>
-        /// <param name="v1">The first vertex of the reference edge.</param>
-        /// <param name="v2">The second vertex of the reference edge.</param>
-        /// <param name="lowerLimit">The lower angular bound for valid separating normals (from adjacent edge).</param>
-        /// <param name="upperLimit">The upper angular bound for valid separating normals (from adjacent edge).</param>
-        /// <param name="radius">The total skin radius used for early-out distance checks.</param>
-        /// <returns>An <see cref="EpAxis"/> containing the best polygon-axis separation or Unknown if none found.</returns>
+            /// <summary>
+            ///     Computes the polygon separation using the specified polygon b
+            /// </summary>
+            /// <param name="polygonB">The polygon shape in local space.</param>
+            /// <param name="normal">The reference normal.</param>
+            /// <param name="v1">The first edge vertex.</param>
+            /// <param name="v2">The second edge vertex.</param>
+            /// <param name="lowerLimit">The lower angular limit for the normal.</param>
+            /// <param name="upperLimit">The upper angular limit for the normal.</param>
+            /// <param name="radius">The skin radius for collision.</param>
+            /// <returns>The axis with separation information.</returns>
             private static EpAxis ComputePolygonSeparation(ref TempPolygon polygonB, ref Vector2F normal, ref Vector2F v1, ref Vector2F v2, ref Vector2F lowerLimit, ref Vector2F upperLimit, float radius)
             {
                 EpAxis axis;
@@ -1359,22 +1354,22 @@ namespace Alis.Core.Physic.Collisions
             }
 
             /// <summary>
-            ///     Temporary storage for polygon B's vertices and normals transformed into the edge's frame A.
+            ///     This holds polygon B expressed in frame A.
             /// </summary>
             internal struct TempPolygon
             {
                 /// <summary>
-                ///     The transformed vertices of polygon B in frame A.
+                ///     The vertices
                 /// </summary>
                 public readonly Vector2F[] Vertices;
 
                 /// <summary>
-                ///     The transformed normals of polygon B in frame A.
+                ///     The normals
                 /// </summary>
                 public readonly Vector2F[] Normals;
 
                 /// <summary>
-                ///     The number of vertices currently populated in the arrays.
+                ///     The count
                 /// </summary>
                 public int Count;
 

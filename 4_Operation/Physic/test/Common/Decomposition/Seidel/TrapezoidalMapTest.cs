@@ -81,7 +81,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             Point ep2 = new Point(8, 5);
             Edge edge = new Edge(ep1, ep2);
 
-            Trapezoid[] result = TrapezoidalMap.Case1(t, edge);
+            Trapezoid[] result = map.Case1(t, edge);
 
             Assert.Equal(4, result.Length);
             Assert.NotNull(result[0]);

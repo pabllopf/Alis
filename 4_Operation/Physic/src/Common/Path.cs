@@ -299,7 +299,7 @@ namespace Alis.Core.Physic.Common
             {
                 int p = (int) (time / _deltaT);
 
-                // Calculate interpolation indices
+                // 
                 int p0 = p - 1;
                 if (p0 < 0)
                 {
@@ -358,7 +358,7 @@ namespace Alis.Core.Physic.Common
         /// <param name="p3">The fourth control point.</param>
         /// <param name="amount">The interpolation amount.</param>
         /// <param name="result">The interpolated position on the Catmull-Rom curve.</param>
-        internal static void CalcCatmullRom(Vector2F p0, Vector2F p1, Vector2F p2, Vector2F p3, float amount, out Vector2F result)
+        internal void CalcCatmullRom(Vector2F p0, Vector2F p1, Vector2F p2, Vector2F p3, float amount, out Vector2F result)
         {
             double sqAmount = amount * amount;
             double cuAmount = sqAmount * amount;

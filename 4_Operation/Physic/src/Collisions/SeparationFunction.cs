@@ -35,7 +35,7 @@ using Alis.Core.Physic.Dynamics;
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     Evaluates separation distances between two convex shapes along a separating axis for continuous collision detection.
+    ///     The separation function class
     /// </summary>
     public static class SeparationFunction
     {
@@ -70,14 +70,14 @@ namespace Alis.Core.Physic.Collisions
         [ThreadStatic] private static SeparationFunctionType _type;
 
         /// <summary>
-        ///     Initializes the separation function from a cached simplex state at a given time.
+        ///     Sets the cache
         /// </summary>
-        /// <param name="cache">The simplex cache from a prior distance computation, used to derive the initial separating axis.</param>
-        /// <param name="proxyA">The distance proxy for the first shape.</param>
-        /// <param name="sweepA">The motion sweep for the first shape.</param>
-        /// <param name="proxyB">The distance proxy for the second shape.</param>
-        /// <param name="sweepB">The motion sweep for the second shape.</param>
-        /// <param name="t1">The fractional time value used to compute the initial transforms.</param>
+        /// <param name="cache">The cache</param>
+        /// <param name="proxyA">The proxy</param>
+        /// <param name="sweepA">The sweep</param>
+        /// <param name="proxyB">The proxy</param>
+        /// <param name="sweepB">The sweep</param>
+        /// <param name="t1">The fractional time value for initializing the transform.</param>
         public static void Set(ref SimplexCache cache, ref DistanceProxy proxyA, ref Sweep sweepA, ref DistanceProxy proxyB, ref Sweep sweepB, float t1)
         {
             _localPoint = Vector2F.Zero;
@@ -151,12 +151,12 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     Finds the minimum separation distance at the given time by searching for the deepest support points.
+        ///     Finds the min separation using the specified index a
         /// </summary>
-        /// <param name="indexA">Outputs the index of the support point on shape A that achieves the minimum separation.</param>
-        /// <param name="indexB">Outputs the index of the support point on shape B that achieves the minimum separation.</param>
-        /// <param name="t">The fractional time value at which to evaluate the separation.</param>
-        /// <returns>The minimum separation distance. Negative values indicate penetration.</returns>
+        /// <param name="indexA">The index of the support point on shape A.</param>
+        /// <param name="indexB">The index of the support point on shape B.</param>
+        /// <param name="t">The fractional time value for the transform.</param>
+        /// <returns>The minimum separation distance.</returns>
         public static float FindMinSeparation(out int indexA, out int indexB, float t)
         {
             _sweepA.GetTransform(out ControllerTransform xfA, t);
@@ -224,11 +224,11 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     Evaluates the separation distance for specific witness point indices at the given time.
+        ///     Evaluates the index a
         /// </summary>
-        /// <param name="indexA">The index of the support point on shape A previously determined by <see cref="FindMinSeparation"/>.</param>
-        /// <param name="indexB">The index of the support point on shape B previously determined by <see cref="FindMinSeparation"/>.</param>
-        /// <param name="t">The fractional time value at which to evaluate the separation.</param>
+        /// <param name="indexA">The index of the support point on shape A.</param>
+        /// <param name="indexB">The index of the support point on shape B.</param>
+        /// <param name="t">The fractional time value for the transform.</param>
         /// <returns>The separation distance at the given indices and time.</returns>
         public static float Evaluate(int indexA, int indexB, float t)
         {

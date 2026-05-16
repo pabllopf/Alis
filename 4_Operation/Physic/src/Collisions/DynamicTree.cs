@@ -866,9 +866,9 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     Recursively validates the tree structure starting from the given node, ensuring parent-child consistency.
+        ///     Validates the structure using the specified index
         /// </summary>
-        /// <param name="index">The node index to validate. No-op if <see cref="NullNode"/>.</param>
+        /// <param name="index">The index</param>
         public void ValidateStructure(int index)
         {
             if (index == NullNode)
@@ -895,9 +895,9 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     Recursively validates that each internal node's AABB correctly encloses its children and height values are consistent.
+        ///     Validates the metrics using the specified index
         /// </summary>
-        /// <param name="index">The node index to validate. No-op if <see cref="NullNode"/>.</param>
+        /// <param name="index">The index</param>
         public void ValidateMetrics(int index)
         {
             if (index == NullNode)
@@ -917,6 +917,7 @@ namespace Alis.Core.Physic.Collisions
 
             int height1 = _nodes[child1].Height;
             int height2 = _nodes[child2].Height;
+            int height = 1 + Math.Max(height1, height2);
             Aabb aabb = new Aabb();
             aabb.Combine(ref _nodes[child1].Aabb, ref _nodes[child2].Aabb);
 
@@ -925,7 +926,7 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     Validates the entire tree structure and metrics. Intended for debugging and testing only.
+        ///     Validate this tree. For testing.
         /// </summary>
         public void Validate()
         {
@@ -942,7 +943,7 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     Rebuilds the tree from the bottom up to produce an optimal structure. This is computationally expensive and intended for testing.
+        ///     Build an optimal tree. Very expensive. For testing.
         /// </summary>
         public void RebuildBottomUp()
         {
@@ -1020,9 +1021,9 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     Translates all node AABBs by the given displacement, used when the world coordinate origin is moved.
+        ///     Shift the origin of the nodes
         /// </summary>
-        /// <param name="newOrigin">The displacement vector to subtract from all AABB bounds.</param>
+        /// <param name="newOrigin">The displacement to use.</param>
         public void ShiftOrigin(Vector2F newOrigin)
         {
             // Build array of leaves. Free the rest.

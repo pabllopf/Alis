@@ -30,9 +30,7 @@
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     Callback delegate invoked by the broad-phase when a potentially overlapping pair of proxies is detected.
+    ///     The broadphase delegate
     /// </summary>
-    /// <param name="proxyIdA">The proxy identifier of the first overlapping AABB.</param>
-    /// <param name="proxyIdB">The proxy identifier of the second overlapping AABB.</param>
     public delegate void BroadphaseDelegate(int proxyIdA, int proxyIdB);
 }

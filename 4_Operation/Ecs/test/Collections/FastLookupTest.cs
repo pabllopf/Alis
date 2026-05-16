@@ -73,7 +73,7 @@ namespace Alis.Core.Ecs.Test.Collections
             GameObjectType archetypeId = new GameObjectType(10);
 
             // Act
-            uint key = FastLookup.GetKey(id, archetypeId);
+            uint key = lookup.GetKey(id, archetypeId);
 
             // Assert
             Assert.NotEqual(0u, key);
@@ -95,7 +95,7 @@ namespace Alis.Core.Ecs.Test.Collections
             GameObjectType archetypeId = new GameObjectType(0);
 
             // Act
-            uint key = FastLookup.GetKey(id, archetypeId);
+            uint key = lookup.GetKey(id, archetypeId);
 
             // Assert
             Assert.Equal(0u, key);
@@ -116,7 +116,7 @@ namespace Alis.Core.Ecs.Test.Collections
             GameObjectType archetypeId = new GameObjectType(ushort.MaxValue);
 
             // Act
-            uint key = FastLookup.GetKey(id, archetypeId);
+            uint key = lookup.GetKey(id, archetypeId);
 
             // Assert
             Assert.NotEqual(0u, key);
@@ -172,9 +172,9 @@ namespace Alis.Core.Ecs.Test.Collections
             FastLookup lookup = new FastLookup();
 
             // Act
-            uint key1 = FastLookup.GetKey(1, new GameObjectType(1));
-            uint key2 = FastLookup.GetKey(2, new GameObjectType(2));
-            uint key3 = FastLookup.GetKey(1, new GameObjectType(2));
+            uint key1 = lookup.GetKey(1, new GameObjectType(1));
+            uint key2 = lookup.GetKey(2, new GameObjectType(2));
+            uint key3 = lookup.GetKey(1, new GameObjectType(2));
 
             // Assert
             Assert.NotEqual(key1, key2);

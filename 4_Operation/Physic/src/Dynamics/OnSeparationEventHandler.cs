@@ -34,8 +34,5 @@ namespace Alis.Core.Physic.Dynamics
     /// <summary>
     ///     The on separation event handler
     /// </summary>
-    /// <param name="sender">The fixture that triggered the separation.</param>
-    /// <param name="other">The other fixture involved in the separation.</param>
-    /// <param name="contact">The contact that was separated.</param>
     public delegate void OnSeparationEventHandler(Fixture sender, Fixture other, Contact contact);
 }

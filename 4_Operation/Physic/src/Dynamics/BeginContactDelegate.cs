@@ -32,9 +32,7 @@ using Alis.Core.Physic.Dynamics.Contacts;
 namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>
-    ///     The begin contact delegate
+    ///     This delegate is called when a contact is created
     /// </summary>
-    /// <param name="contact">The contact that is beginning.</param>
-    /// <returns>True if the contact should be processed, false to ignore it.</returns>
     public delegate bool BeginContactDelegate(Contact contact);
 }

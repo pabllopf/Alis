@@ -235,7 +235,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The float</returns>
-        private static float Angle(Point p)
+        private float Angle(Point p)
         {
             Point a = p.Next - p;
             Point b = p.Prev - p;

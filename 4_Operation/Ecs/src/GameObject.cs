@@ -1663,7 +1663,7 @@ namespace Alis.Core.Ecs
             //Total: 4x lookup
 
             //1x
-            ref GameObjectLocation lookup = ref AssertIsAlive(out Scene _);
+            ref GameObjectLocation lookup = ref AssertIsAlive(out Scene world);
 
             //1x
             //other lookup is optimized into indirect pointer addressing

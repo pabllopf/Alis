@@ -30,38 +30,39 @@
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     A node in the dynamic AABB tree. Nodes are pooled and accessed by index; clients do not interact with these directly.
+    ///     A node in the dynamic tree. The client does not interact with this directly.
     /// </summary>
     internal struct TreeNode<TNode>
     {
         /// <summary>
-        ///     The fat AABB for this node, expanded beyond the actual bounds to allow small movements without tree updates.
+        ///     Enlarged AABB
         /// </summary>
         internal Aabb Aabb;
 
         /// <summary>
-        ///     Index of the first child node. Leaf nodes have this set to <see cref="DynamicTree{TNode}.NullNode"/>.
+        ///     The child
         /// </summary>
         internal int Child1;
 
         /// <summary>
-        ///     Index of the second child node. Leaf nodes have this set to <see cref="DynamicTree{TNode}.NullNode"/>.
+        ///     The child
         /// </summary>
         internal int Child2;
 
+        // leaf = 0, free node = -1
         /// <summary>
-        ///     Height of the subtree rooted at this node. Leaves have height 0; free nodes have height -1.
+        ///     The height
         /// </summary>
         internal int Height;
 
         /// <summary>
-        ///     Index of the parent node, or <see cref="DynamicTree{TNode}.NullNode"/> for the root.
-        ///     Also reused as the next-free index in the free list when the node is deallocated.
+        ///     The parent
         /// </summary>
         internal int Parent;
 
+        // to reduce struct size we use Parent for the Free linked-list
         /// <summary>
-        ///     Index of the next free node in the pool's linked list. Reuses the <see cref="Parent"/> field storage.
+        ///     Next free node
         /// </summary>
         internal int Next
         {
@@ -70,14 +71,15 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     The application-provided data associated with this node.
+        ///     The user data
         /// </summary>
         internal TNode UserData;
 
+
         /// <summary>
-        ///     Returns <c>true</c> if this node is a leaf (no children).
+        ///     Describes whether this instance is leaf
         /// </summary>
-        /// <returns><c>true</c> if this node has no children; otherwise <c>false</c>.</returns>
+        /// <returns>The bool</returns>
         internal bool IsLeaf() => Child1 == DynamicTree<TNode>.NullNode;
     }
 }

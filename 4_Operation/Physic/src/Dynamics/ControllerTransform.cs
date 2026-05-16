@@ -38,12 +38,12 @@ namespace Alis.Core.Physic.Dynamics
     public struct ControllerTransform
     {
         /// <summary>
-        ///     The rotation component of this transform, expressed as a complex number.
+        ///     The
         /// </summary>
         public Complex Rotation;
 
         /// <summary>
-        ///     The translation component of this transform.
+        ///     The
         /// </summary>
         public Vector2F Position;
 

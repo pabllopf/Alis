@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Collections.Generic;
-
 namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
 {
     /// <summary>
@@ -69,12 +67,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         /// </summary>
         public DtSweepContext()
         {
-            Head = null;
-            Tail = null;
-            Triangles = new List<DelaunayTriangle>();
-            BadTriangles = new List<DelaunayTriangle>();
-            OpenList = new LinkedList<TriangulationPoint>();
-            EdgeMap = new Dictionary<TriangulationPoint, TriangulationPoint>();
+            Clear();
         }
 
         /// <summary>

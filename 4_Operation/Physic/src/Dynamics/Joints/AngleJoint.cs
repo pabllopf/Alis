@@ -81,7 +81,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public override Vector2F WorldAnchorA
         {
             get => BodyA.Position;
-            set => throw new NotSupportedException("AngleJoint does not support setting WorldAnchorB directly.");
+            set { }
         }
 
         /// <summary>

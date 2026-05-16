@@ -56,7 +56,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         /// <summary>
         ///     The sheer
         /// </summary>
-        private readonly float _sheer;
+        private readonly float _sheer = 0.001f;
 
         /// <summary>
         ///     The trapezoidal map
@@ -119,7 +119,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
 
                     if (cp && cq)
                     {
-                        tList = TrapezoidalMap.Case1(t, edge);
+                        tList = _trapezoidalMap.Case1(t, edge);
                         _queryGraph.Case1(t.Sink, edge, tList);
                     }
                     else if (cp && !cq)

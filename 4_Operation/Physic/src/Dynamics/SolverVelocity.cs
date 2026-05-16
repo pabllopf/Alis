@@ -35,12 +35,12 @@ namespace Alis.Core.Physic.Dynamics
     internal struct SolverVelocity
     {
         /// <summary>
-        ///     The linear velocity of the body in world space.
+        ///     The
         /// </summary>
         public Vector2F V;
 
         /// <summary>
-        ///     The angular velocity of the body in radians per second.
+        ///     The
         /// </summary>
         public float W;
     }

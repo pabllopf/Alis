@@ -45,10 +45,10 @@ namespace Alis.Core.Physic.Collisions.Shapes
         internal Vector2F PositionInternal;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="CircleShape"/> class with the specified radius and density.
+        ///     Create a new circle with the desired radius and density.
         /// </summary>
         /// <param name="radius">The radius of the circle.</param>
-        /// <param name="density">The density of the circle (mass per unit area).</param>
+        /// <param name="density">The density of the circle.</param>
         public CircleShape(float radius, float density)
             : base(density)
         {
@@ -170,7 +170,7 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Computes the mass properties (area, mass, centroid, and inertia) for this circle based on its radius and density.
+        ///     Computes the properties
         /// </summary>
         protected sealed override void ComputeProperties()
         {
@@ -184,13 +184,13 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Computes the area of the circle that is submerged beneath a fluid plane, for buoyancy simulation.
+        ///     Computes the submerged area using the specified normal
         /// </summary>
-        /// <param name="normal">The upward normal of the fluid surface.</param>
-        /// <param name="offset">The signed offset of the fluid plane along the normal direction.</param>
-        /// <param name="xf">The world transform of the circle.</param>
-        /// <param name="sc">Outputs the submerged centroid in world coordinates.</param>
-        /// <returns>The submerged area of the circle. Zero if completely dry, full area if completely submerged.</returns>
+        /// <param name="normal">The normal</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="xf">The xf</param>
+        /// <param name="sc">The sc</param>
+        /// <returns>The area</returns>
         public override float ComputeSubmergedArea(ref Vector2F normal, float offset, ref ControllerTransform xf, out Vector2F sc)
         {
             sc = Vector2F.Zero;
@@ -222,16 +222,16 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Compares this circle to another for geometric equality.
+        ///     Compare the circle to another circle
         /// </summary>
-        /// <param name="shape">The other circle shape to compare against.</param>
-        /// <returns><c>true</c> if both circles have the same radius and position; otherwise <c>false</c>.</returns>
+        /// <param name="shape">The other circle</param>
+        /// <returns>True if the two circles are the same size and have the same position</returns>
         public bool CompareTo(CircleShape shape) => (Math.Abs(GetRadius - shape.GetRadius) < MathUtils.Epsilon) && (Position == shape.Position);
 
         /// <summary>
-        ///     Creates a deep copy of this circle shape.
+        ///     Clones this instance
         /// </summary>
-        /// <returns>A new <see cref="CircleShape"/> with the same radius, position, and properties.</returns>
+        /// <returns>The clone</returns>
         public override Shape Clone()
         {
             CircleShape clone = new CircleShape();

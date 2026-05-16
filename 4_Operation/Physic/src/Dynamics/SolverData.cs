@@ -33,22 +33,22 @@ namespace Alis.Core.Physic.Dynamics
     internal struct SolverData
     {
         /// <summary>
-        ///     The time step configuration for the current solver iteration.
+        ///     The step
         /// </summary>
         internal TimeStep Step;
 
         /// <summary>
-        ///     Array of body positions used during constraint solving.
+        ///     The positions
         /// </summary>
         internal SolverPosition[] Positions;
 
         /// <summary>
-        ///     Array of body velocities used during constraint solving.
+        ///     The velocities
         /// </summary>
         internal SolverVelocity[] Velocities;
 
         /// <summary>
-        ///     Lock flags for multi-threaded solver operations.
+        ///     The locks
         /// </summary>
         internal int[] Locks;
     }
