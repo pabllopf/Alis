@@ -32,8 +32,10 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     The uniform 1f
+    ///     Sets a single float uniform value for the current program at the specified location
     /// </summary>
+    /// <param name="location">Specifies the location of the uniform variable to modify</param>
+    /// <param name="v0">Specifies the float value to assign</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void Uniform1F(int location, float v0);
 }

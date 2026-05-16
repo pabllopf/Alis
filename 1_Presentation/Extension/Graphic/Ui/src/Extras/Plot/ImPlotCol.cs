@@ -30,118 +30,153 @@
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     The im plot col enum
+    ///     Defines the color style indices used by ImPlot for theming plot elements.
     /// </summary>
     public enum ImPlotCol
     {
         /// <summary>
-        ///     The line im plot col
+        ///     Color of plot line data.
         /// </summary>
         Line = 0,
 
         /// <summary>
-        ///     The fill im plot col
+        ///     Color of filled area under or within plot data.
         /// </summary>
         Fill = 1,
 
         /// <summary>
-        ///     The marker outline im plot col
+        ///     Color of the outline around markers.
         /// </summary>
         MarkerOutline = 2,
 
         /// <summary>
-        ///     The marker fill im plot col
+        ///     Color of the fill inside markers.
         /// </summary>
         MarkerFill = 3,
 
         /// <summary>
-        ///     The error bar im plot col
+        ///     Color of error bars.
         /// </summary>
         ErrorBar = 4,
 
         /// <summary>
-        ///     The frame bg im plot col
+        ///     Background color of the plot frame area.
         /// </summary>
         FrameBg = 5,
 
         /// <summary>
-        ///     The plot bg im plot col
+        ///     Background color of the plot area (inside axes).
         /// </summary>
         PlotBg = 6,
 
         /// <summary>
-        ///     The plot border im plot col
+        ///     Border color of the plot area.
         /// </summary>
         PlotBorder = 7,
 
         /// <summary>
-        ///     The legend bg im plot col
+        ///     Background color of the legend box.
         /// </summary>
         LegendBg = 8,
 
         /// <summary>
-        ///     The legend border im plot col
+        ///     Border color of the legend box.
         /// </summary>
         LegendBorder = 9,
 
         /// <summary>
-        ///     The legend text im plot col
+        ///     Text color of legend entries.
         /// </summary>
         LegendText = 10,
 
         /// <summary>
-        ///     The title text im plot col
+        ///     Text color of the plot title.
         /// </summary>
         TitleText = 11,
 
         /// <summary>
-        ///     The inlay text im plot col
+        ///     Text color of labels and annotations drawn inside the plot area.
         /// </summary>
         InlayText = 12,
 
         /// <summary>
-        ///     The axis text im plot col
+        ///     Color of the primary X axis line and labels.
         /// </summary>
-        AxisText = 13,
+        XAxis = 13,
 
         /// <summary>
-        ///     The axis grid im plot col
+        ///     Color of the primary X axis grid lines.
         /// </summary>
-        AxisGrid = 14,
+        XAxisGrid = 14,
 
         /// <summary>
-        ///     The axis tick im plot col
+        ///     Color of the primary Y axis line and labels.
         /// </summary>
-        AxisTick = 15,
+        YAxis = 15,
 
         /// <summary>
-        ///     The axis bg im plot col
+        ///     Color of the primary Y axis grid lines.
         /// </summary>
-        AxisBg = 16,
+        YAxisGrid = 16,
 
         /// <summary>
-        ///     The axis bg hovered im plot col
+        ///     Color of the secondary Y axis (Y2) line and labels.
         /// </summary>
-        AxisBgHovered = 17,
+        YAxis2 = 17,
 
         /// <summary>
-        ///     The axis bg active im plot col
+        ///     Color of the secondary Y axis (Y2) grid lines.
         /// </summary>
-        AxisBgActive = 18,
+        YAxisGrid2 = 18,
 
         /// <summary>
-        ///     The selection im plot col
+        ///     Color of the secondary X axis (X2) line and labels.
         /// </summary>
-        Selection = 19,
+        XAxis2 = 19,
 
         /// <summary>
-        ///     The crosshairs im plot col
+        ///     Color of the secondary X axis (X2) grid lines.
         /// </summary>
-        Crosshairs = 20,
+        XAxisGrid2 = 20,
 
         /// <summary>
-        ///     The count im plot col
+        ///     Color of the tertiary Y axis (Y3) line and labels.
         /// </summary>
-        Count = 21
+        YAxis3 = 21,
+
+        /// <summary>
+        ///     Color of the tertiary Y axis (Y3) grid lines.
+        /// </summary>
+        YAxisGrid3 = 22,
+
+        /// <summary>
+        ///     Color of the tertiary X axis (X3) line and labels.
+        /// </summary>
+        XAxis3 = 23,
+
+        /// <summary>
+        ///     Color of the tertiary X axis (X3) grid lines.
+        /// </summary>
+        XAxisGrid3 = 24,
+
+        /// <summary>
+        ///     Color of the selection rectangle (drag-select box).
+        /// </summary>
+        Selection = 25,
+
+        /// <summary>
+        ///     Color of the query rectangle (drag-query area).
+        /// </summary>
+        Query = 26,
+
+        /// <summary>
+        ///     Color of the crosshairs cursor lines.
+        /// </summary>
+        Crosshairs = 27,
+
+        /// <summary>
+        ///     Total number of color style elements defined.
+        /// </summary>
+        Count = 28
     }
 }

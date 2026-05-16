@@ -33,8 +33,11 @@ using Alis.Core.Graphic.OpenGL.Enums;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     The tex parameteri
+    ///     Sets an integer-valued texture parameter for the specified texture target
     /// </summary>
+    /// <param name="target">Specifies the target texture type</param>
+    /// <param name="pname">Specifies the symbolic name of the texture parameter to set</param>
+    /// <param name="param">Specifies the value to assign to the texture parameter</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void TexParameteri(TextureTarget target, TextureParameterName pname, TextureParameter param);
 }

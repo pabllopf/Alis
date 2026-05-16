@@ -33,28 +33,28 @@ using Alis.Extension.Graphic.Sdl2.Enums;
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl display event
+    ///     Represents an SDL display event, fired when a display's orientation, position, or mode changes.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct DisplayEvent
     {
         /// <summary>
-        ///     The type
+        ///     The event type identifier, set to <see cref="EventType.DisplayEvent"/>.
         /// </summary>
         public EventType type;
 
         /// <summary>
-        ///     The timestamp
+        ///     The timestamp of the event, in milliseconds, from the SDL event system.
         /// </summary>
         public uint timestamp;
 
         /// <summary>
-        ///     The display
+        ///     The display index associated with the event.
         /// </summary>
         public uint display;
 
         /// <summary>
-        ///     The display event
+        ///     The specific display event subtype (e.g. orientation change, connected, disconnected).
         /// </summary>
         public DisplayEventId displayEvent;
     }

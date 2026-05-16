@@ -75,6 +75,6 @@ namespace Alis.Extension.Profile.Factories
         /// <returns>
         ///     An empty <see cref="ResourceMetrics" /> struct with default values.
         /// </returns>
-        public ResourceMetrics CreateEmpty() => ResourceMetrics.Empty;
+        public static ResourceMetrics CreateEmpty() => ResourceMetrics.Empty;
     }
 }

@@ -32,8 +32,10 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     The begin
+    ///     Sets the current texture coordinates with two floating-point components
     /// </summary>
+    /// <param name="s">Specifies the s component of the texture coordinate</param>
+    /// <param name="t">Specifies the t component of the texture coordinate</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void TexCoord2F(float s, float t);
 }

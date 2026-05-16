@@ -32,8 +32,12 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     The shader source del
+    ///     Sets the source code for a shader object, replacing any previously set source
     /// </summary>
+    /// <param name="shader">Specifies the shader object whose source code is to be replaced</param>
+    /// <param name="count">Specifies the number of strings in the source array</param>
+    /// <param name="string">Specifies an array of strings containing the source code</param>
+    /// <param name="length">Specifies an array with the length of each source string</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void ShaderSourceDel(uint shader, int count, string[] @string, int[] length);
 }

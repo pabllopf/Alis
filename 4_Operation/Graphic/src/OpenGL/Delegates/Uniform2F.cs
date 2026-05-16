@@ -32,8 +32,11 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     The uniform 2f
+    ///     Sets two float uniform values for the current program at the specified location
     /// </summary>
+    /// <param name="location">Specifies the location of the uniform variable to modify</param>
+    /// <param name="v0">Specifies the first float value to assign</param>
+    /// <param name="v1">Specifies the second float value to assign</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void Uniform2F(int location, float v0, float v1);
 }

@@ -32,8 +32,12 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     The scissor
+    ///     Defines the scissor rectangle that constrains pixel drawing operations
     /// </summary>
+    /// <param name="x">Specifies the x-coordinate of the lower-left corner of the scissor rectangle</param>
+    /// <param name="y">Specifies the y-coordinate of the lower-left corner of the scissor rectangle</param>
+    /// <param name="width">Specifies the width of the scissor rectangle</param>
+    /// <param name="height">Specifies the height of the scissor rectangle</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void Scissor(int x, int y, int width, int height);
 }

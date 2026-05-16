@@ -33,19 +33,19 @@ using Alis.Extension.Graphic.Sdl2.Enums;
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl game controller button bind
+    ///     Represents an SDL game controller button binding, mapping a logical controller button to a physical joystick input.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct GameControllerButtonBind
     {
         /// <summary>
-        ///     The bind type
+        ///     The type of binding (e.g. button, axis, hat).
         /// </summary>
         public GameControllerBindType bindType;
 
 
         /// <summary>
-        ///     The value
+        ///     The union value containing the specific binding data (button, axis, or hat).
         /// </summary>
         public InternalGameControllerButtonBindUnion value;
     }
