@@ -43,7 +43,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the char using the specified c
         /// </summary>
-        /// <param name="c">The </param>
+        /// <param name="c">The Unicode codepoint to look up</param>
         public void AddChar(ushort c)
         {
             ImGuiNative.ImFontGlyphRangesBuilder_AddChar(ref this, c);

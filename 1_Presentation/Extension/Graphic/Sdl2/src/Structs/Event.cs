@@ -363,102 +363,102 @@ namespace Alis.Extension.Graphic.Sdl2.Structs
         [FieldOffset(0)] private readonly byte padding29;
 
         /// <summary>
-        ///     The padding 30
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding30;
 
         /// <summary>
-        ///     The padding 31
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding31;
 
         /// <summary>
-        ///     The padding 32
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding32;
 
         /// <summary>
-        ///     The padding 33
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding33;
 
         /// <summary>
-        ///     The padding 34
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding34;
 
         /// <summary>
-        ///     The padding 35
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding35;
 
         /// <summary>
-        ///     The padding 36
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding36;
 
         /// <summary>
-        ///     The padding 37
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding37;
 
         /// <summary>
-        ///     The padding 38
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding38;
 
         /// <summary>
-        ///     The padding 39
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding39;
 
         /// <summary>
-        ///     The padding 40
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding40;
 
         /// <summary>
-        ///     The padding 41
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding41;
 
         /// <summary>
-        ///     The padding 42
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding42;
 
         /// <summary>
-        ///     The padding 43
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding43;
 
         /// <summary>
-        ///     The padding 44
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding44;
 
         /// <summary>
-        ///     The padding 45
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding45;
 
         /// <summary>
-        ///     The padding 46
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding46;
 
         /// <summary>
-        ///     The padding 47
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding47;
 
         /// <summary>
-        ///     The padding 48
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding48;
 
         /// <summary>
-        ///     The padding 49
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding49;
 

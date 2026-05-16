@@ -364,46 +364,46 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Plots the text using the specified text
+        ///     Draws a text label at the specified plot coordinates.
         /// </summary>
-        /// <param name="text">The text content to display</param>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="text">Text content to display</param>
+        /// <param name="x">X-coordinate in plot space</param>
+        /// <param name="y">Y-coordinate in plot space</param>
         public static void PlotText(string text, double x, double y)
         {
             ImPlotNative.ImPlot_PlotText(Encoding.UTF8.GetBytes(text), x, y, new Vector2F(0, 0), ImPlotTextFlags.None);
         }
 
         /// <summary>
-        ///     Plots the text using the specified text
+        ///     Draws a text label at the specified plot coordinates with a pixel offset.
         /// </summary>
-        /// <param name="text">The text content to display</param>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        /// <param name="pixOffset">The pix offset</param>
+        /// <param name="text">Text content to display</param>
+        /// <param name="x">X-coordinate in plot space</param>
+        /// <param name="y">Y-coordinate in plot space</param>
+        /// <param name="pixOffset">Pixel offset from the anchor point</param>
         public static void PlotText(string text, double x, double y, Vector2F pixOffset)
         {
             ImPlotNative.ImPlot_PlotText(Encoding.UTF8.GetBytes(text), x, y, pixOffset, ImPlotTextFlags.None);
         }
 
         /// <summary>
-        ///     Plots the text using the specified text
+        ///     Draws a text label with a pixel offset and text orientation flags.
         /// </summary>
-        /// <param name="text">The text content to display</param>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        /// <param name="pixOffset">The pix offset</param>
-        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="text">Text content to display</param>
+        /// <param name="x">X-coordinate in plot space</param>
+        /// <param name="y">Y-coordinate in plot space</param>
+        /// <param name="pixOffset">Pixel offset from the anchor point</param>
+        /// <param name="flags">Combination of ImPlotTextFlags controlling text orientation</param>
         public static void PlotText(string text, double x, double y, Vector2F pixOffset, ImPlotTextFlags flags)
         {
             ImPlotNative.ImPlot_PlotText(Encoding.UTF8.GetBytes(text), x, y, pixOffset, flags);
         }
 
         /// <summary>
-        ///     Plots the to pixels using the specified plt
+        ///     Converts a plot-space ImPlotPoint to pixel coordinates.
         /// </summary>
-        /// <param name="plt">The plt</param>
-        /// <returns>The retval</returns>
+        /// <param name="plt">The plot-space point to convert</param>
+        /// <returns>Pixel-space coordinates of the point</returns>
         public static Vector2F PlotToPixels(ImPlotPoint plt)
         {
             ImAxis xAxis = (ImAxis) (-1);
@@ -413,11 +413,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Plots the to pixels using the specified plt
+        ///     Converts a plot-space ImPlotPoint to pixel coordinates, specifying the X axis.
         /// </summary>
-        /// <param name="plt">The plt</param>
-        /// <param name="xAxis">The axis</param>
-        /// <returns>The retval</returns>
+        /// <param name="plt">The plot-space point to convert</param>
+        /// <param name="xAxis">X axis to use for the conversion</param>
+        /// <returns>Pixel-space coordinates of the point</returns>
         public static Vector2F PlotToPixels(ImPlotPoint plt, ImAxis xAxis)
         {
             ImAxis yAxis = (ImAxis) (-1);
@@ -426,12 +426,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Plots the to pixels using the specified plt
+        ///     Converts a plot-space ImPlotPoint to pixel coordinates with explicit axes.
         /// </summary>
-        /// <param name="plt">The plt</param>
-        /// <param name="xAxis">The axis</param>
-        /// <param name="yAxis">The axis</param>
-        /// <returns>The retval</returns>
+        /// <param name="plt">The plot-space point to convert</param>
+        /// <param name="xAxis">X axis to use for the conversion</param>
+        /// <param name="yAxis">Y axis to use for the conversion</param>
+        /// <returns>Pixel-space coordinates of the point</returns>
         public static Vector2F PlotToPixels(ImPlotPoint plt, ImAxis xAxis, ImAxis yAxis)
         {
             ImPlotNative.ImPlot_PlotToPixels_PlotPoInt(out Vector2F retval, plt, xAxis, yAxis);
@@ -439,11 +439,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Plots the to pixels using the specified x
+        ///     Converts plot-space (X, Y) doubles to pixel coordinates.
         /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        /// <returns>The retval</returns>
+        /// <param name="x">X-coordinate in plot space</param>
+        /// <param name="y">Y-coordinate in plot space</param>
+        /// <returns>Pixel-space coordinates of the point</returns>
         public static Vector2F PlotToPixels(double x, double y)
         {
             ImAxis xAxis = (ImAxis) (-1);
@@ -453,12 +453,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Plots the to pixels using the specified x
+        ///     Converts plot-space doubles to pixel coordinates with an explicit X axis.
         /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        /// <param name="xAxis">The axis</param>
-        /// <returns>The retval</returns>
+        /// <param name="x">X-coordinate in plot space</param>
+        /// <param name="y">Y-coordinate in plot space</param>
+        /// <param name="xAxis">X axis to use for the conversion</param>
+        /// <returns>Pixel-space coordinates of the point</returns>
         public static Vector2F PlotToPixels(double x, double y, ImAxis xAxis)
         {
             ImAxis yAxis = (ImAxis) (-1);
@@ -467,13 +467,13 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Plots the to pixels using the specified x
+        ///     Converts plot-space doubles to pixel coordinates with explicit axes.
         /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        /// <param name="xAxis">The axis</param>
-        /// <param name="yAxis">The axis</param>
-        /// <returns>The retval</returns>
+        /// <param name="x">X-coordinate in plot space</param>
+        /// <param name="y">Y-coordinate in plot space</param>
+        /// <param name="xAxis">X axis to use for the conversion</param>
+        /// <param name="yAxis">Y axis to use for the conversion</param>
+        /// <returns>Pixel-space coordinates of the point</returns>
         public static Vector2F PlotToPixels(double x, double y, ImAxis xAxis, ImAxis yAxis)
         {
             ImPlotNative.ImPlot_PlotToPixels_double(out Vector2F retval, x, y, xAxis, yAxis);
@@ -481,7 +481,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Pops the colormap
+        ///     Pops one level from the colormap stack.
         /// </summary>
         public static void PopColormap()
         {
@@ -490,16 +490,16 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Pops the colormap using the specified count
+        ///     Pops the specified number of levels from the colormap stack.
         /// </summary>
-        /// <param name="count">The number of elements</param>
+        /// <param name="count">Number of colormap levels to pop</param>
         public static void PopColormap(int count)
         {
             ImPlotNative.ImPlot_PopColormap(count);
         }
 
         /// <summary>
-        ///     Pops the plot clip rect
+        ///     Restores the previous plot clipping rectangle.
         /// </summary>
         public static void PopPlotClipRect()
         {
@@ -507,7 +507,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Pops the style color
+        ///     Pops one level from the plot style color stack.
         /// </summary>
         public static void PopStyleColor()
         {
@@ -516,16 +516,16 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Pops the style color using the specified count
+        ///     Pops the specified number of levels from the style color stack.
         /// </summary>
-        /// <param name="count">The number of elements</param>
+        /// <param name="count">Number of color levels to restore</param>
         public static void PopStyleColor(int count)
         {
             ImPlotNative.ImPlot_PopStyleColor(count);
         }
 
         /// <summary>
-        ///     Pops the style var
+        ///     Pops one level from the plot style variable stack.
         /// </summary>
         public static void PopStyleVar()
         {
@@ -534,34 +534,34 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Pops the style var using the specified count
+        ///     Pops the specified number of levels from the style variable stack.
         /// </summary>
-        /// <param name="count">The number of elements</param>
+        /// <param name="count">Number of style vars to restore</param>
         public static void PopStyleVar(int count)
         {
             ImPlotNative.ImPlot_PopStyleVar(count);
         }
 
         /// <summary>
-        ///     Pushes the colormap using the specified cmap
+        ///     Pushes a predefined colormap onto the colormap stack.
         /// </summary>
-        /// <param name="cmap">The cmap</param>
+        /// <param name="cmap">The colormap to activate</param>
         public static void PushColormap(ImPlotColormap cmap)
         {
             ImPlotNative.ImPlot_PushColormap_PlotColormap(cmap);
         }
 
         /// <summary>
-        ///     Pushes the colormap using the specified name
+        ///     Pushes a custom named colormap onto the colormap stack.
         /// </summary>
-        /// <param name="name">The name</param>
+        /// <param name="name">Name of the custom colormap</param>
         public static void PushColormap(string name)
         {
             ImPlotNative.ImPlot_PushColormap_Str(Encoding.UTF8.GetBytes(name));
         }
 
         /// <summary>
-        ///     Pushes the plot clip rect
+        ///     Pushes a new plot clipping rectangle with no expansion.
         /// </summary>
         public static void PushPlotClipRect()
         {
@@ -570,9 +570,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Pushes the plot clip rect using the specified expand
+        ///     Pushes a new plot clipping rectangle with the specified expansion.
         /// </summary>
-        /// <param name="expand">The expand</param>
+        /// <param name="expand">Expansion (in pixels) applied to the clipping rect</param>
         public static void PushPlotClipRect(float expand)
         {
             ImPlotNative.ImPlot_PushPlotClipRect(expand);
@@ -631,7 +631,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Samples the colormap using the specified t
         /// </summary>
-        /// <param name="t">The </param>
+        /// <param name="t">The parameter value (theta or time)</param>
         /// <returns>The retval</returns>
         public static Vector4F SampleColormap(float t)
         {
@@ -643,7 +643,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Samples the colormap using the specified t
         /// </summary>
-        /// <param name="t">The </param>
+        /// <param name="t">The parameter value (theta or time)</param>
         /// <param name="cmap">The cmap</param>
         /// <returns>The retval</returns>
         public static Vector4F SampleColormap(float t, ImPlotColormap cmap)
@@ -1449,7 +1449,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Tags the x using the specified x
         /// </summary>
-        /// <param name="x">The </param>
+        /// <param name="x">The x-coordinate</param>
         /// <param name="col">The col</param>
         public static void TagX(double x, Vector4F col)
         {
@@ -1460,7 +1460,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Tags the x using the specified x
         /// </summary>
-        /// <param name="x">The </param>
+        /// <param name="x">The x-coordinate</param>
         /// <param name="col">The col</param>
         /// <param name="round">The round</param>
         public static void TagX(double x, Vector4F col, bool round)
@@ -1472,7 +1472,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Tags the x using the specified x
         /// </summary>
-        /// <param name="x">The </param>
+        /// <param name="x">The x-coordinate</param>
         /// <param name="col">The col</param>
         /// <param name="fmt">The fmt</param>
         public static void TagX(double x, Vector4F col, string fmt)
@@ -1483,7 +1483,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Tags the y using the specified y
         /// </summary>
-        /// <param name="y">The </param>
+        /// <param name="y">The y-coordinate</param>
         /// <param name="col">The col</param>
         public static void TagY(double y, Vector4F col)
         {
@@ -1494,7 +1494,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Tags the y using the specified y
         /// </summary>
-        /// <param name="y">The </param>
+        /// <param name="y">The y-coordinate</param>
         /// <param name="col">The col</param>
         /// <param name="round">The round</param>
         public static void TagY(double y, Vector4F col, bool round)
@@ -1506,7 +1506,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Tags the y using the specified y
         /// </summary>
-        /// <param name="y">The </param>
+        /// <param name="y">The y-coordinate</param>
         /// <param name="col">The col</param>
         /// <param name="fmt">The fmt</param>
         public static void TagY(double y, Vector4F col, string fmt)
