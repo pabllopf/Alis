@@ -45,7 +45,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
         [Context] private readonly FlecsContext _flecs;
 
         /// <summary>
-        ///     Benchmarks Each query with one component using FlecsNet
+        ///     Flecses the net each
         /// </summary>
         [BenchmarkCategory(Categories.FlecsNet), Benchmark]
         public void FlecsNet_Each()
@@ -54,7 +54,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
         }
 
         /// <summary>
-        ///     Benchmarks Iter query with one component using FlecsNet
+        ///     Flecses the net iter
         /// </summary>
         [BenchmarkCategory(Categories.FlecsNet), Benchmark]
         public void FlecsNet_Iter()

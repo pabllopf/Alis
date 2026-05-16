@@ -34,17 +34,8 @@ using Alis.Core.Graphic.OpenGL.Enums;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     Specifies a two-dimensional texture image, defining the texels in the image data
+    ///     The tex image
     /// </summary>
-    /// <param name="target">Specifies the target texture type</param>
-    /// <param name="level">Specifies the level-of-detail number</param>
-    /// <param name="internalFormat">Specifies the number of color components in the texture</param>
-    /// <param name="width">Specifies the width of the texture image</param>
-    /// <param name="height">Specifies the height of the texture image</param>
-    /// <param name="border">Specifies the width of the border (must be 0 or 1)</param>
-    /// <param name="format">Specifies the format of the pixel data</param>
-    /// <param name="type">Specifies the data type of the pixel data</param>
-    /// <param name="data">Specifies a pointer to the image data</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void TexImage2D(TextureTarget target, int level, PixelInternalFormat internalFormat, int width, int height, int border, PixelFormat format, PixelType type, IntPtr data);
 }

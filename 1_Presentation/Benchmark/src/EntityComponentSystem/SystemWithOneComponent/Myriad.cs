@@ -51,7 +51,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
         [Context] private readonly MyriadContext _myriad;
 
         /// <summary>
-        ///     Benchmarks single-threaded execution with one component using Myriad
+        ///     Myriads the single thread
         /// </summary>
         [BenchmarkCategory(Categories.Myriad), Benchmark]
         public void Myriad_SingleThread()
@@ -61,7 +61,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
         }
 
         /// <summary>
-        ///     Benchmarks multi-threaded execution with one component using Myriad
+        ///     Myriads the multi thread
         /// </summary>
         [BenchmarkCategory(Categories.Myriad), Benchmark]
         public void Myriad_MultiThread()
@@ -71,7 +71,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
         }
 
         /// <summary>
-        ///     Benchmarks single-threaded chunk execution with one component using Myriad
+        ///     Myriads the single thread chunk
         /// </summary>
         [BenchmarkCategory(Categories.Myriad), Benchmark]
         public void Myriad_SingleThreadChunk()
@@ -81,7 +81,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
         }
 
         /// <summary>
-        ///     Benchmarks multi-threaded chunk execution with one component using Myriad
+        ///     Myriads the multi thread chunk
         /// </summary>
         [BenchmarkCategory(Categories.Myriad), Benchmark]
         public void Myriad_MultiThreadChunk()
@@ -91,7 +91,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
         }
 
         /// <summary>
-        ///     Benchmarks enumerable query with one component using Myriad
+        ///     Myriads the enumerable
         /// </summary>
         [BenchmarkCategory(Categories.Myriad), Benchmark]
         public void Myriad_Enumerable()
@@ -105,7 +105,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
         }
 
         /// <summary>
-        ///     Benchmarks delegate query with one component using Myriad
+        ///     Myriads the delegate
         /// </summary>
         [BenchmarkCategory(Categories.Myriad), Benchmark]
         public void Myriad_Delegate()
@@ -116,7 +116,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
         }
 
         /// <summary>
-        ///     Benchmarks SIMD single-threaded chunk execution with one component using Myriad
+        ///     Myriads the single thread chunk simd
         /// </summary>
         [BenchmarkCategory(Categories.Myriad), Benchmark]
         public void Myriad_SingleThreadChunk_SIMD()
@@ -132,22 +132,22 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
         public struct MyriadForEach1
             : IQuery<Component1>, IChunkQuery<Component1>
         {
-        /// <summary>
-        ///     Executes the query for a single entity
-        /// </summary>
-        /// <param name="entity">The entity to process</param>
-        /// <param name="t0">The component to increment</param>
+            /// <summary>
+            ///     Executes the gameObject
+            /// </summary>
+            /// <param name="entity">The gameObject</param>
+            /// <param name="t0">The </param>
             public void Execute(Entity entity, ref Component1 t0)
             {
                 ++t0.Value;
             }
 
-        /// <summary>
-        ///     Executes the query for a chunk of entities
-        /// </summary>
-        /// <param name="chunk">The chunk handle</param>
-        /// <param name="e">The entity span</param>
-        /// <param name="t0">The component span to process</param>
+            /// <summary>
+            ///     Executes the chunk
+            /// </summary>
+            /// <param name="chunk">The chunk</param>
+            /// <param name="e">The </param>
+            /// <param name="t0">The </param>
             public void Execute(ChunkHandle chunk, ReadOnlySpan<Entity> e, Span<Component1> t0)
             {
                 for (int i = 0; i < t0.Length; i++)
@@ -169,11 +169,11 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
             private static readonly Vector<int> _one = Vector<int>.One;
 
             /// <summary>
-            ///     Executes SIMD vector addition on a chunk
+            ///     Executes the t 0
             /// </summary>
-            /// <param name="t0">The vector span to process</param>
-            /// <param name="offset">The offset within the chunk</param>
-            /// <param name="padding">The padding amount</param>
+            /// <param name="t0">The </param>
+            /// <param name="offset">The offset</param>
+            /// <param name="padding">The padding</param>
             public void Execute(Span<Vector<int>> t0, int offset, int padding)
             {
                 for (int i = 0; i < t0.Length; i++)
@@ -196,7 +196,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
             ///     Initializes a new instance of the <see cref="MyriadContext" /> class
             /// </summary>
             /// <param name="entityCount">The gameObject count</param>
-            /// <param name="_">Unused padding parameter (Myriad stores components as SoA)</param>
+            /// <param name="_">The </param>
             public MyriadContext(int entityCount, int _)
             {
                 CommandBuffer cmd = new CommandBuffer(World);

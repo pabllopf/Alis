@@ -207,7 +207,7 @@ namespace Alis.Core.Graphic.Platforms.Web
                 IntPtr nativeArray = GetConnectedGamepadsNative();
                 if (nativeArray == IntPtr.Zero)
                 {
-                    return Array.Empty<int>();
+                    return null;
                 }
 
                 int length = GetArrayLength(nativeArray);

@@ -51,7 +51,7 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithTwoComponents
         [Context] private readonly ArchBaseContext _arch;
 
         /// <summary>
-        ///     Benchmarks creating entities with two components using Arch ECS
+        ///     Arches this instance
         /// </summary>
         [BenchmarkCategory(Categories.Arch), Benchmark]
         public void Arch()

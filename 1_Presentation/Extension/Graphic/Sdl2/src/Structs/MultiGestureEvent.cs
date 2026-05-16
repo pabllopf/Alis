@@ -28,58 +28,57 @@
 //  --------------------------------------------------------------------------
 
 using System.Runtime.InteropServices;
-using Alis.Extension.Graphic.Sdl2.Enums;
 
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     Represents an SDL multi-finger gesture event, fired when a multi-touch gesture is detected.
+    ///     The sdl multi gesture event
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct MultiGestureEvent
     {
         /// <summary>
-        ///     The event type identifier, set to <see cref="EventType.MultiGesture"/>.
+        ///     The type
         /// </summary>
         public readonly uint type;
 
         /// <summary>
-        ///     The timestamp of the event, in milliseconds, from the SDL event system.
+        ///     The timestamp
         /// </summary>
         public readonly uint timestamp;
 
         /// <summary>
-        ///     The touch device ID that registered the gesture.
+        ///     The touch id
         /// </summary>
         public readonly long touchId;
 
         /// <summary>
-        ///     The angular rotation delta of the multi-finger gesture in radians.
+        ///     The theta
         /// </summary>
         public readonly float dTheta;
 
         /// <summary>
-        ///     The distance delta of the multi-finger gesture (pinch/spread).
+        ///     The dist
         /// </summary>
         public readonly float dDist;
 
         /// <summary>
-        ///     The normalized X coordinate of the gesture centroid.
+        ///     The
         /// </summary>
         public readonly float x;
 
         /// <summary>
-        ///     The normalized Y coordinate of the gesture centroid.
+        ///     The
         /// </summary>
         public readonly float y;
 
         /// <summary>
-        ///     The number of fingers involved in the gesture.
+        ///     The num fingers
         /// </summary>
         public readonly ushort numFingers;
 
         /// <summary>
-        ///     Padding bytes for struct alignment.
+        ///     The padding
         /// </summary>
         public readonly ushort padding;
     }

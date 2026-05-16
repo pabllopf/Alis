@@ -34,29 +34,29 @@ namespace Alis.Extension.Graphic.Sdl2.Enums
     /// </summary>
     public enum DisplayOrientation
     {
-    /// <summary>
-    ///     Display orientation is unknown or not yet determined
-    /// </summary>
-    SdlOrientationUnknown,
+        /// <summary>
+        ///     The sdl orientation unknown sdl display orientation
+        /// </summary>
+        SdlOrientationUnknown,
 
-    /// <summary>
-    ///     Display is in landscape orientation (width greater than height)
-    /// </summary>
-    SdlOrientationLandscape,
+        /// <summary>
+        ///     The sdl orientation landscape sdl display orientation
+        /// </summary>
+        SdlOrientationLandscape,
 
-    /// <summary>
-    ///     Display is in landscape orientation flipped upside down
-    /// </summary>
-    SdlOrientationLandscapeFlipped,
+        /// <summary>
+        ///     The sdl orientation landscape flipped sdl display orientation
+        /// </summary>
+        SdlOrientationLandscapeFlipped,
 
-    /// <summary>
-    ///     Display is in portrait orientation (height greater than width)
-    /// </summary>
-    SdlOrientationPortrait,
+        /// <summary>
+        ///     The sdl orientation portrait sdl display orientation
+        /// </summary>
+        SdlOrientationPortrait,
 
-    /// <summary>
-    ///     Display is in portrait orientation flipped upside down
-    /// </summary>
-    SdlOrientationPortraitFlipped
+        /// <summary>
+        ///     The sdl orientation portrait flipped sdl display orientation
+        /// </summary>
+        SdlOrientationPortraitFlipped
     }
 }

@@ -37,19 +37,19 @@ namespace Alis.Extension.Graphic.Sdl2.Enums
     [Flags]
     public enum TextureAccess
     {
-    /// <summary>
-    ///     Texture is static and rarely or never updated after creation
-    /// </summary>
-    None = 0,
+        /// <summary>
+        ///     The sdl texture access static sdl texture access
+        /// </summary>
+        None = 0,
 
-    /// <summary>
-    ///     Texture is streamed and updated frequently (e.g., video frames)
-    /// </summary>
-    SdlTextureAccessStreaming = 1,
+        /// <summary>
+        ///     The sdl texture access streaming sdl texture access
+        /// </summary>
+        SdlTextureAccessStreaming = 1,
 
-    /// <summary>
-    ///     Texture is used as a render target for off-screen rendering
-    /// </summary>
-    SdlTextureAccessTarget = 2
+        /// <summary>
+        ///     The sdl texture access target sdl texture access
+        /// </summary>
+        SdlTextureAccessTarget = 2
     }
 }

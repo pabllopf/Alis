@@ -32,19 +32,19 @@ using System;
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     Flags that control the behaviour of scatter plots in ImPlot.
+    ///     The im plot scatter flags enum
     /// </summary>
     [Flags]
     public enum ImPlotScatterFlags
     {
         /// <summary>
-        ///     Default scatter plot behaviour with auto-fitting enabled.
+        ///     The none im plot scatter flags
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     Exclude this scatter series from automatic axis fitting.
+        ///     The no clip im plot scatter flags
         /// </summary>
-        NoFit = 1
+        NoClip = 1024
     }
 }

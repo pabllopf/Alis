@@ -132,42 +132,42 @@ namespace Alis.Extension.Media.FFmpeg.Audio
         }
 
         /// <summary>
-        ///     Gets the current FFmpeg encoding process, if running.
+        ///     Gets the value of the current f fmpeg process
         /// </summary>
         public Process CurrentFFmpegProcess => Ffmpegp;
 
         /// <summary>
-        ///     Gets the input audio channel count.
+        ///     Gets the value of the channels
         /// </summary>
         public int Channels { get; }
 
         /// <summary>
-        ///     Gets the input audio sample rate in Hz.
+        ///     Gets the value of the sample rate
         /// </summary>
         public int SampleRate { get; }
 
         /// <summary>
-        ///     Gets the input audio bit depth (16, 24, or 32).
+        ///     Gets the value of the bit depth
         /// </summary>
         public int BitDepth { get; }
 
         /// <summary>
-        ///     Gets whether output is written to a file (true) or a stream (false).
+        ///     Gets the value of the use filename
         /// </summary>
         public bool UseFilename { get; }
 
         /// <summary>
-        ///     Gets the encoder options used for audio encoding.
+        ///     Gets the value of the encoder options
         /// </summary>
         public EncoderOptions EncoderOptions { get; }
 
         /// <summary>
-        ///     Gets the destination stream for stream-based output.
+        ///     Gets or sets the value of the destination stream
         /// </summary>
         public Stream DestinationStream { get; }
 
         /// <summary>
-        ///     Gets the FFmpeg process output data stream for stream-based output.
+        ///     Gets or sets the value of the output data stream
         /// </summary>
         public Stream OutputDataStream { get; private set; }
 

@@ -52,7 +52,7 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithOneComponent
         [Context] private readonly AlisBaseContext _alis;
 
         /// <summary>
-        ///     Benchmarks creating entities with one component using Alis ECS
+        ///     Frents this instance
         /// </summary>
         [BenchmarkCategory(Categories.Alis), Benchmark]
         public void Alis()
@@ -67,7 +67,7 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithOneComponent
         }
 
         /// <summary>
-        ///     Benchmarks bulk-creating entities with one component using Alis ECS
+        ///     Frents the bulk
         /// </summary>
         [BenchmarkCategory(Categories.Alis), Benchmark]
         public void Alis_Bulk()

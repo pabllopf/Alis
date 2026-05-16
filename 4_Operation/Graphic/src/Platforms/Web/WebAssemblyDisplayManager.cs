@@ -65,7 +65,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         /// The supported modes
         /// </summary>
-        private readonly List<DisplayMode> _supportedModes;
+        private List<DisplayMode> _supportedModes;
 
         /// <summary>
         ///     Event triggered when the window size changes
@@ -186,7 +186,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Gets the device pixel ratio (for high DPI displays)
         /// </summary>
-        public static float GetDevicePixelRatio()
+        public float GetDevicePixelRatio()
         {
             return EmscriptenWeb.GetDevicePixelRatio();
         }
@@ -269,7 +269,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Checks if currently in fullscreen
         /// </summary>
-        public static bool IsFullscreen()
+        public bool IsFullscreen()
         {
             return EmscriptenWeb.IsFullscreenEnabled();
         }
@@ -333,7 +333,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Gets the browser's preferred language
         /// </summary>
-        public static string GetSystemLanguage()
+        public string GetSystemLanguage()
         {
             return EmscriptenWeb.GetLanguage();
         }
@@ -341,7 +341,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Checks if the browser is currently online
         /// </summary>
-        public static bool IsOnline()
+        public bool IsOnline()
         {
             return EmscriptenWeb.IsOnline();
         }
@@ -349,7 +349,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Gets the device battery level (if available)
         /// </summary>
-        public static float GetBatteryLevel()
+        public float GetBatteryLevel()
         {
             return EmscriptenWeb.GetBatteryLevel();
         }
@@ -357,7 +357,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Checks if the device is charging
         /// </summary>
-        public static bool IsCharging()
+        public bool IsCharging()
         {
             return EmscriptenWeb.IsCharging();
         }
@@ -365,7 +365,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Gets the screen refresh rate
         /// </summary>
-        public static int GetRefreshRate()
+        public int GetRefreshRate()
         {
             // WebAssembly typically uses 60 FPS for requestAnimationFrame
             // This could be extended to use higher rates if supported
@@ -375,7 +375,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Captures a screenshot and saves it to a file
         /// </summary>
-        public static bool SaveScreenshot(string filename)
+        public bool SaveScreenshot(string filename)
         {
             try
             {

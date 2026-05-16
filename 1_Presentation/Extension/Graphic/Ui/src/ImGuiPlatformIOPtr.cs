@@ -52,13 +52,13 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         /// </summary>
         /// <param name="wrappedPtr"></param>
-        /// <returns>The converted wrapper instance</returns>
+        /// <returns></returns>
         public static implicit operator IntPtr(ImGuiPlatformIoPtr wrappedPtr) => wrappedPtr.NativePtr;
 
         /// <summary>
         /// </summary>
         /// <param name="nativePtr"></param>
-        /// <returns>The converted wrapper instance</returns>
+        /// <returns></returns>
         public static implicit operator ImGuiPlatformIoPtr(IntPtr nativePtr) => new ImGuiPlatformIoPtr(nativePtr);
 
 

@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Fluent.Components;
-
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>

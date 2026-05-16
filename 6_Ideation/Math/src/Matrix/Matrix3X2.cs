@@ -105,7 +105,6 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <value>A <see cref="Vector2F" /> representing the X and Y translation values.</value>
         public Vector2F Translation
         {
-            get => new Vector2F(M31, M32);
             set
             {
                 M31 = value.X;

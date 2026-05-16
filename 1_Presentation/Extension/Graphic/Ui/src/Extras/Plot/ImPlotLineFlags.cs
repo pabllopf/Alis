@@ -32,54 +32,39 @@ using System;
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     Flags that control the appearance and rendering of line plots in ImPlot.
+    ///     The im plot line flags enum
     /// </summary>
     [Flags]
     public enum ImPlotLineFlags
     {
         /// <summary>
-        ///     Default continuous line with clipping and fitting enabled.
+        ///     The none im plot line flags
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     Disable segment-level rendering (draw line as a single strip).
+        ///     The segments im plot line flags
         /// </summary>
-        NoSegments = 1,
+        Segments = 1024,
 
         /// <summary>
-        ///     Exclude this line from automatic axis fitting.
+        ///     The loop im plot line flags
         /// </summary>
-        NoFit = 2,
+        Loop = 2048,
 
         /// <summary>
-        ///     Render the line as a stepped (stair-step) plot.
+        ///     The skip na im plot line flags
         /// </summary>
-        Stepped = 4,
+        SkipNaN = 4096,
 
         /// <summary>
-        ///     Connect the last point back to the first, forming a closed loop.
+        ///     The no clip im plot line flags
         /// </summary>
-        Loop = 8,
+        NoClip = 8192,
 
         /// <summary>
-        ///     Skip NaN values when drawing the line, creating gaps.
+        ///     The shaded im plot line flags
         /// </summary>
-        SkipNaN = 16,
-
-        /// <summary>
-        ///     Disable clipping of the line to the plot area boundaries.
-        /// </summary>
-        NoClip = 32,
-
-        /// <summary>
-        ///     Do not draw a baseline (zero-line fill) for this line.
-        /// </summary>
-        NoBaseline = 64,
-
-        /// <summary>
-        ///     Interpret Y values as X and vice versa, drawing horizontal lines.
-        /// </summary>
-        Horizontal = 1024
+        Shaded = 16384
     }
 }

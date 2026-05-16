@@ -35,492 +35,492 @@ namespace Alis.Core.Graphic.OpenGL.Enums
     public enum PixelInternalFormat
     {
         /// <summary>
-        ///     Depth component internal format (GL_DEPTH_COMPONENT)
+        ///     The depth component pixel internal format
         /// </summary>
         DepthComponent = 0x1902,
 
         /// <summary>
-        ///     Alpha internal format (GL_ALPHA)
+        ///     The alpha pixel internal format
         /// </summary>
         Alpha = 0x1906,
 
         /// <summary>
-        ///     RGB internal format (GL_RGB)
+        ///     The rgb pixel internal format
         /// </summary>
         Rgb = 0x1907,
 
         /// <summary>
-        ///     RGBA internal format (GL_RGBA)
+        ///     The rgba pixel internal format
         /// </summary>
         Rgba = 0x1908,
 
         /// <summary>
-        ///     Luminance internal format (GL_LUMINANCE)
+        ///     The luminance pixel internal format
         /// </summary>
         Luminance = 0x1909,
 
         /// <summary>
-        ///     Luminance-alpha internal format (GL_LUMINANCE_ALPHA)
+        ///     The luminance alpha pixel internal format
         /// </summary>
         LuminanceAlpha = 0x190A,
 
         /// <summary>
-        ///     Packed 3-3-2 RGB internal format (GL_R3_G3_B2)
+        ///     The  pixel internal format
         /// </summary>
         R3G3B2 = 0x2A10,
 
         /// <summary>
-        ///     4-bit alpha internal format (GL_ALPHA4)
+        ///     The alpha pixel internal format
         /// </summary>
         Alpha4 = 0x803B,
 
         /// <summary>
-        ///     8-bit alpha internal format (GL_ALPHA8)
+        ///     The alpha pixel internal format
         /// </summary>
         Alpha8 = 0x803C,
 
         /// <summary>
-        ///     12-bit alpha internal format (GL_ALPHA12)
+        ///     The alpha 12 pixel internal format
         /// </summary>
         Alpha12 = 0x803D,
 
         /// <summary>
-        ///     16-bit alpha internal format (GL_ALPHA16)
+        ///     The alpha 16 pixel internal format
         /// </summary>
         Alpha16 = 0x803E,
 
         /// <summary>
-        ///     4-bit luminance internal format (GL_LUMINANCE4)
+        ///     The luminance pixel internal format
         /// </summary>
         Luminance4 = 0x803F,
 
         /// <summary>
-        ///     8-bit luminance internal format (GL_LUMINANCE8)
+        ///     The luminance pixel internal format
         /// </summary>
         Luminance8 = 0x8040,
 
         /// <summary>
-        ///     12-bit luminance internal format (GL_LUMINANCE12)
+        ///     The luminance 12 pixel internal format
         /// </summary>
         Luminance12 = 0x8041,
 
         /// <summary>
-        ///     16-bit luminance internal format (GL_LUMINANCE16)
+        ///     The luminance 16 pixel internal format
         /// </summary>
         Luminance16 = 0x8042,
 
         /// <summary>
-        ///     4-bit luminance, 4-bit alpha internal format (GL_LUMINANCE4_ALPHA4)
+        ///     The luminance alpha pixel internal format
         /// </summary>
         Luminance4Alpha4 = 0x8043,
 
         /// <summary>
-        ///     6-bit luminance, 2-bit alpha internal format (GL_LUMINANCE6_ALPHA2)
+        ///     The luminance alpha pixel internal format
         /// </summary>
         Luminance6Alpha2 = 0x8044,
 
         /// <summary>
-        ///     8-bit luminance, 8-bit alpha internal format (GL_LUMINANCE8_ALPHA8)
+        ///     The luminance alpha pixel internal format
         /// </summary>
         Luminance8Alpha8 = 0x8045,
 
         /// <summary>
-        ///     12-bit luminance, 4-bit alpha internal format (GL_LUMINANCE12_ALPHA4)
+        ///     The luminance 12 alpha pixel internal format
         /// </summary>
         Luminance12Alpha4 = 0x8046,
 
         /// <summary>
-        ///     12-bit luminance, 12-bit alpha internal format (GL_LUMINANCE12_ALPHA12)
+        ///     The luminance 12 alpha 12 pixel internal format
         /// </summary>
         Luminance12Alpha12 = 0x8047,
 
         /// <summary>
-        ///     16-bit luminance, 16-bit alpha internal format (GL_LUMINANCE16_ALPHA16)
+        ///     The luminance 16 alpha 16 pixel internal format
         /// </summary>
         Luminance16Alpha16 = 0x8048,
 
         /// <summary>
-        ///     Intensity internal format (GL_INTENSITY)
+        ///     The intensity pixel internal format
         /// </summary>
         Intensity = 0x8049,
 
         /// <summary>
-        ///     4-bit intensity internal format (GL_INTENSITY4)
+        ///     The intensity pixel internal format
         /// </summary>
         Intensity4 = 0x804A,
 
         /// <summary>
-        ///     8-bit intensity internal format (GL_INTENSITY8)
+        ///     The intensity pixel internal format
         /// </summary>
         Intensity8 = 0x804B,
 
         /// <summary>
-        ///     12-bit intensity internal format (GL_INTENSITY12)
+        ///     The intensity 12 pixel internal format
         /// </summary>
         Intensity12 = 0x804C,
 
         /// <summary>
-        ///     16-bit intensity internal format (GL_INTENSITY16)
+        ///     The intensity 16 pixel internal format
         /// </summary>
         Intensity16 = 0x804D,
 
         /// <summary>
-        ///     2-bit RGB internal format, EXT (GL_RGB2_EXT)
+        ///     The rgb ext pixel internal format
         /// </summary>
         Rgb2Ext = 0x804E,
 
         /// <summary>
-        ///     4-bit RGB internal format (GL_RGB4)
+        ///     The rgb pixel internal format
         /// </summary>
         Rgb4 = 0x804F,
 
         /// <summary>
-        ///     5-bit RGB internal format (GL_RGB5)
+        ///     The rgb pixel internal format
         /// </summary>
         Rgb5 = 0x8050,
 
         /// <summary>
-        ///     8-bit RGB internal format (GL_RGB8)
+        ///     The rgb pixel internal format
         /// </summary>
         Rgb8 = 0x8051,
 
         /// <summary>
-        ///     10-bit RGB internal format (GL_RGB10)
+        ///     The rgb 10 pixel internal format
         /// </summary>
         Rgb10 = 0x8052,
 
         /// <summary>
-        ///     12-bit RGB internal format (GL_RGB12)
+        ///     The rgb 12 pixel internal format
         /// </summary>
         Rgb12 = 0x8053,
 
         /// <summary>
-        ///     16-bit RGB internal format (GL_RGB16)
+        ///     The rgb 16 pixel internal format
         /// </summary>
         Rgb16 = 0x8054,
 
         /// <summary>
-        ///     2-bit RGBA internal format (GL_RGBA2)
+        ///     The rgba pixel internal format
         /// </summary>
         Rgba2 = 0x8055,
 
         /// <summary>
-        ///     4-bit RGBA internal format (GL_RGBA4)
+        ///     The rgba pixel internal format
         /// </summary>
         Rgba4 = 0x8056,
 
         /// <summary>
-        ///     5-bit RGB, 1-bit alpha internal format (GL_RGB5_A1)
+        ///     The rgb pixel internal format
         /// </summary>
         Rgb5A1 = 0x8057,
 
         /// <summary>
-        ///     8-bit RGBA internal format (GL_RGBA8)
+        ///     The rgba pixel internal format
         /// </summary>
         Rgba8 = 0x8058,
 
         /// <summary>
-        ///     10-bit RGB, 2-bit alpha internal format (GL_RGB10_A2)
+        ///     The rgb 10 pixel internal format
         /// </summary>
         Rgb10A2 = 0x8059,
 
         /// <summary>
-        ///     12-bit RGBA internal format (GL_RGBA12)
+        ///     The rgba 12 pixel internal format
         /// </summary>
         Rgba12 = 0x805A,
 
         /// <summary>
-        ///     16-bit RGBA internal format (GL_RGBA16)
+        ///     The rgba 16 pixel internal format
         /// </summary>
         Rgba16 = 0x805B,
 
         /// <summary>
-        ///     4-bit dual alpha channel, SGIS (GL_DUAL_ALPHA4_SGIS)
+        ///     The dual alpha sgis pixel internal format
         /// </summary>
         DualAlpha4Sgis = 0x8110,
 
         /// <summary>
-        ///     8-bit dual alpha channel, SGIS (GL_DUAL_ALPHA8_SGIS)
+        ///     The dual alpha sgis pixel internal format
         /// </summary>
         DualAlpha8Sgis = 0x8111,
 
         /// <summary>
-        ///     12-bit dual alpha channel, SGIS (GL_DUAL_ALPHA12_SGIS)
+        ///     The dual alpha 12 sgis pixel internal format
         /// </summary>
         DualAlpha12Sgis = 0x8112,
 
         /// <summary>
-        ///     16-bit dual alpha channel, SGIS (GL_DUAL_ALPHA16_SGIS)
+        ///     The dual alpha 16 sgis pixel internal format
         /// </summary>
         DualAlpha16Sgis = 0x8113,
 
         /// <summary>
-        ///     4-bit dual luminance, SGIS (GL_DUAL_LUMINANCE4_SGIS)
+        ///     The dual luminance sgis pixel internal format
         /// </summary>
         DualLuminance4Sgis = 0x8114,
 
         /// <summary>
-        ///     8-bit dual luminance, SGIS (GL_DUAL_LUMINANCE8_SGIS)
+        ///     The dual luminance sgis pixel internal format
         /// </summary>
         DualLuminance8Sgis = 0x8115,
 
         /// <summary>
-        ///     12-bit dual luminance, SGIS (GL_DUAL_LUMINANCE12_SGIS)
+        ///     The dual luminance 12 sgis pixel internal format
         /// </summary>
         DualLuminance12Sgis = 0x8116,
 
         /// <summary>
-        ///     16-bit dual luminance, SGIS (GL_DUAL_LUMINANCE16_SGIS)
+        ///     The dual luminance 16 sgis pixel internal format
         /// </summary>
         DualLuminance16Sgis = 0x8117,
 
         /// <summary>
-        ///     4-bit dual intensity, SGIS (GL_DUAL_INTENSITY4_SGIS)
+        ///     The dual intensity sgis pixel internal format
         /// </summary>
         DualIntensity4Sgis = 0x8118,
 
         /// <summary>
-        ///     8-bit dual intensity, SGIS (GL_DUAL_INTENSITY8_SGIS)
+        ///     The dual intensity sgis pixel internal format
         /// </summary>
         DualIntensity8Sgis = 0x8119,
 
         /// <summary>
-        ///     12-bit dual intensity, SGIS (GL_DUAL_INTENSITY12_SGIS)
+        ///     The dual intensity 12 sgis pixel internal format
         /// </summary>
         DualIntensity12Sgis = 0x811A,
 
         /// <summary>
-        ///     16-bit dual intensity, SGIS (GL_DUAL_INTENSITY16_SGIS)
+        ///     The dual intensity 16 sgis pixel internal format
         /// </summary>
         DualIntensity16Sgis = 0x811B,
 
         /// <summary>
-        ///     4-bit dual luminance-alpha, SGIS (GL_DUAL_LUMINANCE_ALPHA4_SGIS)
+        ///     The dual luminance alpha sgis pixel internal format
         /// </summary>
         DualLuminanceAlpha4Sgis = 0x811C,
 
         /// <summary>
-        ///     8-bit dual luminance-alpha, SGIS (GL_DUAL_LUMINANCE_ALPHA8_SGIS)
+        ///     The dual luminance alpha sgis pixel internal format
         /// </summary>
         DualLuminanceAlpha8Sgis = 0x811D,
 
         /// <summary>
-        ///     4-bit quad alpha, SGIS (GL_QUAD_ALPHA4_SGIS)
+        ///     The quad alpha sgis pixel internal format
         /// </summary>
         QuadAlpha4Sgis = 0x811E,
 
         /// <summary>
-        ///     8-bit quad alpha, SGIS (GL_QUAD_ALPHA8_SGIS)
+        ///     The quad alpha sgis pixel internal format
         /// </summary>
         QuadAlpha8Sgis = 0x811F,
 
         /// <summary>
-        ///     4-bit quad luminance, SGIS (GL_QUAD_LUMINANCE4_SGIS)
+        ///     The quad luminance sgis pixel internal format
         /// </summary>
         QuadLuminance4Sgis = 0x8120,
 
         /// <summary>
-        ///     8-bit quad luminance, SGIS (GL_QUAD_LUMINANCE8_SGIS)
+        ///     The quad luminance sgis pixel internal format
         /// </summary>
         QuadLuminance8Sgis = 0x8121,
 
         /// <summary>
-        ///     4-bit quad intensity, SGIS (GL_QUAD_INTENSITY4_SGIS)
+        ///     The quad intensity sgis pixel internal format
         /// </summary>
         QuadIntensity4Sgis = 0x8122,
 
         /// <summary>
-        ///     8-bit quad intensity, SGIS (GL_QUAD_INTENSITY8_SGIS)
+        ///     The quad intensity sgis pixel internal format
         /// </summary>
         QuadIntensity8Sgis = 0x8123,
 
         /// <summary>
-        ///     16-bit depth component internal format (GL_DEPTH_COMPONENT16)
+        ///     The depth component 16 pixel internal format
         /// </summary>
         DepthComponent16 = 0x81a5,
 
         /// <summary>
-        ///     16-bit depth component internal format, SGIX (GL_DEPTH_COMPONENT16_SGIX)
+        ///     The depth component 16 sgix pixel internal format
         /// </summary>
         DepthComponent16Sgix = 0x81A5,
 
         /// <summary>
-        ///     24-bit depth component internal format (GL_DEPTH_COMPONENT24)
+        ///     The depth component 24 pixel internal format
         /// </summary>
         DepthComponent24 = 0x81a6,
 
         /// <summary>
-        ///     24-bit depth component internal format, SGIX (GL_DEPTH_COMPONENT24_SGIX)
+        ///     The depth component 24 sgix pixel internal format
         /// </summary>
         DepthComponent24Sgix = 0x81A6,
 
         /// <summary>
-        ///     32-bit depth component internal format (GL_DEPTH_COMPONENT32)
+        ///     The depth component 32 pixel internal format
         /// </summary>
         DepthComponent32 = 0x81a7,
 
         /// <summary>
-        ///     32-bit depth component internal format, SGIX (GL_DEPTH_COMPONENT32_SGIX)
+        ///     The depth component 32 sgix pixel internal format
         /// </summary>
         DepthComponent32Sgix = 0x81A7,
 
         /// <summary>
-        ///     Compressed red internal format (GL_COMPRESSED_RED)
+        ///     The compressed red pixel internal format
         /// </summary>
         CompressedRed = 0x8225,
 
         /// <summary>
-        ///     Compressed RG internal format (GL_COMPRESSED_RG)
+        ///     The compressed rg pixel internal format
         /// </summary>
         CompressedRg = 0x8226,
 
         /// <summary>
-        ///     8-bit red channel internal format (GL_R8)
+        ///     The  pixel internal format
         /// </summary>
         R8 = 0x8229,
 
         /// <summary>
-        ///     16-bit red channel internal format (GL_R16)
+        ///     The 16 pixel internal format
         /// </summary>
         R16 = 0x822A,
 
         /// <summary>
-        ///     8-bit RG internal format (GL_RG8)
+        ///     The rg pixel internal format
         /// </summary>
         Rg8 = 0x822B,
 
         /// <summary>
-        ///     16-bit RG internal format (GL_RG16)
+        ///     The rg 16 pixel internal format
         /// </summary>
         Rg16 = 0x822C,
 
         /// <summary>
-        ///     16-bit float red channel internal format (GL_R16F)
+        ///     The 16f pixel internal format
         /// </summary>
         R16F = 0x822D,
 
         /// <summary>
-        ///     32-bit float red channel internal format (GL_R32F)
+        ///     The 32f pixel internal format
         /// </summary>
         R32F = 0x822E,
 
         /// <summary>
-        ///     16-bit float RG internal format (GL_RG16F)
+        ///     The rg 16f pixel internal format
         /// </summary>
         Rg16F = 0x822F,
 
         /// <summary>
-        ///     32-bit float RG internal format (GL_RG32F)
+        ///     The rg 32f pixel internal format
         /// </summary>
         Rg32F = 0x8230,
 
         /// <summary>
-        ///     8-bit signed integer red internal format (GL_R8I)
+        ///     The 8i pixel internal format
         /// </summary>
         R8I = 0x8231,
 
         /// <summary>
-        ///     8-bit unsigned integer red internal format (GL_R8UI)
+        ///     The 8ui pixel internal format
         /// </summary>
         R8Ui = 0x8232,
 
         /// <summary>
-        ///     16-bit signed integer red internal format (GL_R16I)
+        ///     The 16i pixel internal format
         /// </summary>
         R16I = 0x8233,
 
         /// <summary>
-        ///     16-bit unsigned integer red internal format (GL_R16UI)
+        ///     The 16ui pixel internal format
         /// </summary>
         R16Ui = 0x8234,
 
         /// <summary>
-        ///     32-bit signed integer red internal format (GL_R32I)
+        ///     The 32i pixel internal format
         /// </summary>
         R32I = 0x8235,
 
         /// <summary>
-        ///     32-bit unsigned integer red internal format (GL_R32UI)
+        ///     The 32ui pixel internal format
         /// </summary>
         R32Ui = 0x8236,
 
         /// <summary>
-        ///     8-bit signed integer RG internal format (GL_RG8I)
+        ///     The rg 8i pixel internal format
         /// </summary>
         Rg8I = 0x8237,
 
         /// <summary>
-        ///     8-bit unsigned integer RG internal format (GL_RG8UI)
+        ///     The rg 8ui pixel internal format
         /// </summary>
         Rg8Ui = 0x8238,
 
         /// <summary>
-        ///     16-bit signed integer RG internal format (GL_RG16I)
+        ///     The rg 16i pixel internal format
         /// </summary>
         Rg16I = 0x8239,
 
         /// <summary>
-        ///     16-bit unsigned integer RG internal format (GL_RG16UI)
+        ///     The rg 16ui pixel internal format
         /// </summary>
         Rg16Ui = 0x823A,
 
         /// <summary>
-        ///     32-bit signed integer RG internal format (GL_RG32I)
+        ///     The rg 32i pixel internal format
         /// </summary>
         Rg32I = 0x823B,
 
         /// <summary>
-        ///     32-bit unsigned integer RG internal format (GL_RG32UI)
+        ///     The rg 32ui pixel internal format
         /// </summary>
         Rg32Ui = 0x823C,
 
         /// <summary>
-        ///     S3TC DXT1 compressed RGB, EXT (GL_COMPRESSED_RGB_S3TC_DXT1_EXT)
+        ///     The compressed rgb 3tc dxt ext pixel internal format
         /// </summary>
         CompressedRgbS3TcDxt1Ext = 0x83F0,
 
         /// <summary>
-        ///     S3TC DXT1 compressed RGBA, EXT (GL_COMPRESSED_RGBA_S3TC_DXT1_EXT)
+        ///     The compressed rgba 3tc dxt ext pixel internal format
         /// </summary>
         CompressedRgbaS3TcDxt1Ext = 0x83F1,
 
         /// <summary>
-        ///     S3TC DXT3 compressed RGBA, EXT (GL_COMPRESSED_RGBA_S3TC_DXT3_EXT)
+        ///     The compressed rgba 3tc dxt ext pixel internal format
         /// </summary>
         CompressedRgbaS3TcDxt3Ext = 0x83F2,
 
         /// <summary>
-        ///     S3TC DXT5 compressed RGBA, EXT (GL_COMPRESSED_RGBA_S3TC_DXT5_EXT)
+        ///     The compressed rgba 3tc dxt ext pixel internal format
         /// </summary>
         CompressedRgbaS3TcDxt5Ext = 0x83F3,
 
         /// <summary>
-        ///     Compressed alpha internal format (GL_COMPRESSED_ALPHA)
+        ///     The compressed alpha pixel internal format
         /// </summary>
         CompressedAlpha = 0x84E9,
 
         /// <summary>
-        ///     Compressed luminance internal format (GL_COMPRESSED_LUMINANCE)
+        ///     The compressed luminance pixel internal format
         /// </summary>
         CompressedLuminance = 0x84EA,
 
         /// <summary>
-        ///     Compressed luminance-alpha internal format (GL_COMPRESSED_LUMINANCE_ALPHA)
+        ///     The compressed luminance alpha pixel internal format
         /// </summary>
         CompressedLuminanceAlpha = 0x84EB,
 
         /// <summary>
-        ///     Compressed intensity internal format (GL_COMPRESSED_INTENSITY)
+        ///     The compressed intensity pixel internal format
         /// </summary>
         CompressedIntensity = 0x84EC,
 
         /// <summary>
-        ///     Compressed RGB internal format (GL_COMPRESSED_RGB)
+        ///     The compressed rgb pixel internal format
         /// </summary>
         CompressedRgb = 0x84ED,
 
         /// <summary>
-        ///     Compressed RGBA internal format (GL_COMPRESSED_RGBA)
+        ///     The compressed rgba pixel internal format
         /// </summary>
         CompressedRgba = 0x84EE,
 

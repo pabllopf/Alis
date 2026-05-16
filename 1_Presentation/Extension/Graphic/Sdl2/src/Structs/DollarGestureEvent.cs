@@ -28,53 +28,52 @@
 //  --------------------------------------------------------------------------
 
 using System.Runtime.InteropServices;
-using Alis.Extension.Graphic.Sdl2.Enums;
 
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     Represents an SDL dollar gesture event, fired when a dollar-template gesture is detected.
+    ///     The sdl dollar gesture event
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct DollarGestureEvent
     {
         /// <summary>
-        ///     The event type identifier, set to <see cref="EventType.DollarGesture"/> or <see cref="EventType.DollarRecord"/>.
+        ///     The type
         /// </summary>
         public uint type;
 
         /// <summary>
-        ///     The timestamp of the event, in milliseconds, from the SDL event system.
+        ///     The timestamp
         /// </summary>
         public uint timestamp;
 
         /// <summary>
-        ///     The touch device ID that registered the gesture.
+        ///     The touch id
         /// </summary>
         public long touchId;
 
         /// <summary>
-        ///     The unique identifier of the matched dollar gesture template.
+        ///     The gesture id
         /// </summary>
         public long gestureId;
 
         /// <summary>
-        ///     The number of fingers used in the gesture.
+        ///     The num fingers
         /// </summary>
         public uint numFingers;
 
         /// <summary>
-        ///     The error value of the gesture match (lower is a better match).
+        ///     The error
         /// </summary>
         public float error;
 
         /// <summary>
-        ///     The normalized X coordinate of the gesture centroid.
+        ///     The
         /// </summary>
         public float x;
 
         /// <summary>
-        ///     The normalized Y coordinate of the gesture centroid.
+        ///     The
         /// </summary>
         public float y;
     }

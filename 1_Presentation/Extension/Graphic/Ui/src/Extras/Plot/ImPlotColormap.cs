@@ -30,87 +30,87 @@
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     Predefined colormaps available in ImPlot for coloring data series.
+    ///     The im plot colormap enum
     /// </summary>
     public enum ImPlotColormap
     {
         /// <summary>
-        ///     Deep color gradient (dark blues and greens).
+        ///     The deep im plot colormap
         /// </summary>
         Deep = 0,
 
         /// <summary>
-        ///     Dark color gradient (dark tones).
+        ///     The dark im plot colormap
         /// </summary>
         Dark = 1,
 
         /// <summary>
-        ///     Pastel color gradient (soft, light colors).
+        ///     The pastel im plot colormap
         /// </summary>
         Pastel = 2,
 
         /// <summary>
-        ///     Paired color map (alternating colors suitable for categories).
+        ///     The paired im plot colormap
         /// </summary>
         Paired = 3,
 
         /// <summary>
-        ///     Viridis perceptually uniform colormap (green-blue-purple-yellow).
+        ///     The viridis im plot colormap
         /// </summary>
         Viridis = 4,
 
         /// <summary>
-        ///     Plasma perceptually uniform colormap (dark blue to bright yellow).
+        ///     The plasma im plot colormap
         /// </summary>
         Plasma = 5,
 
         /// <summary>
-        ///     Hot colormap (black through red, orange, yellow to white).
+        ///     The hot im plot colormap
         /// </summary>
         Hot = 6,
 
         /// <summary>
-        ///     Cool colormap (cyan to magenta gradient).
+        ///     The cool im plot colormap
         /// </summary>
         Cool = 7,
 
         /// <summary>
-        ///     Pink colormap (dark to light pink tones).
+        ///     The pink im plot colormap
         /// </summary>
         Pink = 8,
 
         /// <summary>
-        ///     Jet colormap (blue-cyan-yellow-orange-red).
+        ///     The jet im plot colormap
         /// </summary>
         Jet = 9,
 
         /// <summary>
-        ///     Twilight colormap (cyclic blue-red-blue).
+        ///     The twilight im plot colormap
         /// </summary>
         Twilight = 10,
 
         /// <summary>
-        ///     Red-Blue diverging colormap.
+        ///     The rd bu im plot colormap
         /// </summary>
         RdBu = 11,
 
         /// <summary>
-        ///     Brown-Blue-Green diverging colormap.
+        ///     The br bg im plot colormap
         /// </summary>
         BrBg = 12,
 
         /// <summary>
-        ///     Pink-Yellow-Green diverging colormap.
+        ///     The pi yg im plot colormap
         /// </summary>
         PiYg = 13,
 
         /// <summary>
-        ///     Spectral colormap (rainbow, high contrast).
+        ///     The spectral im plot colormap
         /// </summary>
         Spectral = 14,
 
         /// <summary>
-        ///     Greyscale colormap (black to white).
+        ///     The greys im plot colormap
         /// </summary>
         Greys = 15
     }

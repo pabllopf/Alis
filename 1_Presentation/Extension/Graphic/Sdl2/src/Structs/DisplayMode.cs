@@ -33,33 +33,33 @@ using System.Runtime.InteropServices;
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     Represents an SDL display mode, describing a display's pixel format, dimensions, and refresh rate.
+    ///     The sdl display mode
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct DisplayMode
     {
         /// <summary>
-        ///     The pixel format of the display mode (e.g. SDL_PIXELFORMAT_RGB888).
+        ///     The format
         /// </summary>
         public uint format;
 
         /// <summary>
-        ///     The width of the display mode in pixels.
+        ///     The
         /// </summary>
         public int w;
 
         /// <summary>
-        ///     The height of the display mode in pixels.
+        ///     The
         /// </summary>
         public int h;
 
         /// <summary>
-        ///     The refresh rate of the display mode in Hz (e.g. 60), or 0 for unspecified.
+        ///     The refresh rate
         /// </summary>
         public int refresh_rate;
 
         /// <summary>
-        ///     Driver-specific data pointer, used internally by SDL.
+        ///     The driver data
         /// </summary>
         public IntPtr DriverData { get; set; }
     }

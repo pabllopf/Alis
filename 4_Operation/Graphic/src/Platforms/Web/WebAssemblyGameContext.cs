@@ -374,7 +374,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public bool VibrateGamepad(int gamepadIndex, float leftMotor = 1.0f, float rightMotor = 1.0f, float duration = 0.1f)
         {
-            return WebAssemblyInputManager.VibrateGamepad(gamepadIndex, leftMotor, rightMotor, duration);
+            return _inputManager.VibrateGamepad(gamepadIndex, leftMotor, rightMotor, duration);
         }
 
         /// <summary>
@@ -406,7 +406,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public bool IsFullscreen()
         {
-            return WebAssemblyDisplayManager.IsFullscreen();
+            return _displayManager.IsFullscreen();
         }
 
         /// <summary>
@@ -414,7 +414,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public bool LockPointer()
         {
-            return WebAssemblyInputContext.LockPointer();
+            return _inputContext.LockPointer();
         }
 
         /// <summary>
@@ -422,7 +422,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public bool UnlockPointer()
         {
-            return WebAssemblyInputContext.UnlockPointer();
+            return _inputContext.UnlockPointer();
         }
 
         /// <summary>
@@ -430,7 +430,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public bool IsPointerLocked()
         {
-            return WebAssemblyInputContext.IsPointerLocked();
+            return _inputContext.IsPointerLocked();
         }
 
         /// <summary>
@@ -486,7 +486,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public string GetDeviceLanguage()
         {
-            return WebAssemblyDisplayManager.GetSystemLanguage();
+            return _displayManager.GetSystemLanguage();
         }
 
         /// <summary>
@@ -494,7 +494,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public float GetBatteryLevel()
         {
-            return WebAssemblyDisplayManager.GetBatteryLevel();
+            return _displayManager.GetBatteryLevel();
         }
 
         /// <summary>
@@ -502,7 +502,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public bool IsCharging()
         {
-            return WebAssemblyDisplayManager.IsCharging();
+            return _displayManager.IsCharging();
         }
 
         /// <summary>
@@ -510,7 +510,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public bool IsOnline()
         {
-            return WebAssemblyDisplayManager.IsOnline();
+            return _displayManager.IsOnline();
         }
 
         /// <summary>
@@ -518,7 +518,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public int GetRefreshRate()
         {
-            return WebAssemblyDisplayManager.GetRefreshRate();
+            return _displayManager.GetRefreshRate();
         }
 
         /// <summary>

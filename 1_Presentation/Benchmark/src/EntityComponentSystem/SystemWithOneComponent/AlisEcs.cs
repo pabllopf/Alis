@@ -50,7 +50,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
 
 
         /// <summary>
-        ///     Benchmarks inline query processing with one component using Alis ECS
+        ///     Alises the query inline
         /// </summary>
         [BenchmarkCategory(Categories.Alis), Benchmark]
         public void Alis_QueryInline()
@@ -60,7 +60,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
 
 
         /// <summary>
-        ///     Benchmarks delegate query processing with one component using Alis ECS
+        ///     Alises the query delegate
         /// </summary>
         [BenchmarkCategory(Categories.Alis), Benchmark]
         public void Alis_QueryDelegate()
@@ -70,7 +70,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
 
 
         /// <summary>
-        ///     Benchmarks SIMD-vectorized query processing with one component using Alis ECS
+        ///     Alises the simd
         /// </summary>
         [BenchmarkCategory(Categories.Alis), Benchmark]
         public void Alis_Simd()
@@ -132,11 +132,11 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
         public struct IncrementAlis : IAction<Component1>
         {
-        /// <summary>
-        ///     Increments the value of the component by one
-        /// </summary>
-        /// <param name="t0">The component to increment</param>
-        public void Run(ref Component1 t0)
+            /// <summary>
+            ///     Runs the t 0
+            /// </summary>
+            /// <param name="t0">The </param>
+            public void Run(ref Component1 t0)
             {
                 t0.Value++;
             }

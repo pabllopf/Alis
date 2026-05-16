@@ -74,84 +74,76 @@ namespace Alis.Extension.Security
         }
 
         /// <summary>
-        ///     Implicitly converts a char value to a SecureChar
         /// </summary>
-        /// <param name="value">The char value to convert</param>
-        /// <returns>A SecureChar instance wrapping the value</returns>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static implicit operator SecureChar(char value) => new SecureChar(value);
 
         /// <summary>
-        ///     Implicitly converts a SecureChar to its underlying char value
         /// </summary>
-        /// <param name="value">The SecureChar to convert</param>
-        /// <returns>The decrypted char value</returns>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static implicit operator char(SecureChar value) => value.Value;
 
         /// <summary>
-        ///     Compares two SecureChar instances for equality
         /// </summary>
-        /// <param name="a">The first SecureChar</param>
-        /// <param name="b">The second SecureChar</param>
-        /// <returns>True if the values are equal; otherwise, false</returns>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static bool operator ==(SecureChar a, SecureChar b) => a.Value == b.Value;
 
         /// <summary>
-        ///     Compares two SecureChar instances for inequality
         /// </summary>
-        /// <param name="a">The first SecureChar</param>
-        /// <param name="b">The second SecureChar</param>
-        /// <returns>True if the values are not equal; otherwise, false</returns>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static bool operator !=(SecureChar a, SecureChar b) => a.Value != b.Value;
 
         /// <summary>
-        ///     Adds two SecureChar values
         /// </summary>
-        /// <param name="a">The first SecureChar</param>
-        /// <param name="b">The second SecureChar</param>
-        /// <returns>A new SecureChar containing the sum</returns>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static SecureChar operator +(SecureChar a, SecureChar b) => new SecureChar((char) (a.Value + b.Value));
 
         /// <summary>
-        ///     Subtracts one SecureChar from another
         /// </summary>
-        /// <param name="a">The SecureChar to subtract from</param>
-        /// <param name="b">The SecureChar to subtract</param>
-        /// <returns>A new SecureChar containing the difference</returns>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static SecureChar operator -(SecureChar a, SecureChar b) => new SecureChar((char) (a.Value - b.Value));
 
         /// <summary>
-        ///     Multiplies two SecureChar values
         /// </summary>
-        /// <param name="a">The first SecureChar</param>
-        /// <param name="b">The second SecureChar</param>
-        /// <returns>A new SecureChar containing the product</returns>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static SecureChar operator *(SecureChar a, SecureChar b) => new SecureChar((char) (a.Value * b.Value));
 
         /// <summary>
-        ///     Divides one SecureChar by another
         /// </summary>
-        /// <param name="a">The SecureChar to divide</param>
-        /// <param name="b">The SecureChar to divide by</param>
-        /// <returns>A new SecureChar containing the quotient</returns>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static SecureChar operator /(SecureChar a, SecureChar b) => new SecureChar((char) (a.Value / b.Value));
 
         /// <summary>
-        ///     Returns the string representation of the decrypted value
+        ///     Returns the string
         /// </summary>
-        /// <returns>The decrypted char value as a string</returns>
+        /// <returns>The string</returns>
         public override string ToString() => Value.ToString();
 
         /// <summary>
-        ///     Computes the hash code of the decrypted value
+        ///     Gets the hash code
         /// </summary>
-        /// <returns>The hash code of the underlying char</returns>
+        /// <returns>The int</returns>
         public override int GetHashCode() => Value.GetHashCode();
 
         /// <summary>
-        ///     Determines whether the specified object equals the current SecureChar
+        ///     Describes whether this instance equals
         /// </summary>
-        /// <param name="obj">The object to compare</param>
-        /// <returns>True if the values are equal; otherwise, false</returns>
+        /// <param name="obj">The obj</param>
+        /// <returns>The bool</returns>
         public override bool Equals(object obj) => Value.Equals((obj as SecureChar).Value);
     }
 }

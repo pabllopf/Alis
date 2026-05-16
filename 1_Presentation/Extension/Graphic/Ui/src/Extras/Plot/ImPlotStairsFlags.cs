@@ -32,29 +32,24 @@ using System;
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     Flags that control the appearance of stair-step plots in ImPlot.
+    ///     The im plot stairs flags enum
     /// </summary>
     [Flags]
     public enum ImPlotStairsFlags
     {
         /// <summary>
-        ///     Default stair-step rendering with fitting and baseline enabled.
+        ///     The none im plot stairs flags
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     Exclude this stair series from automatic axis fitting.
+        ///     The pre step im plot stairs flags
         /// </summary>
-        NoFit = 1,
+        PreStep = 1024,
 
         /// <summary>
-        ///     Do not draw a baseline (zero-line fill) for this stair plot.
+        ///     The shaded im plot stairs flags
         /// </summary>
-        NoBaseline = 64,
-
-        /// <summary>
-        ///     Draw stairs horizontally instead of vertically.
-        /// </summary>
-        Horizontal = 1024
+        Shaded = 2048
     }
 }

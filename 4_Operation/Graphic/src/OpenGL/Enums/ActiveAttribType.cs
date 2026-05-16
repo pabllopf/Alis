@@ -35,37 +35,37 @@ namespace Alis.Core.Graphic.OpenGL.Enums
     public enum ActiveAttribType
     {
         /// <summary>
-        ///     A single floating-point value attribute (GL_FLOAT)
+        ///     The float active attrib type
         /// </summary>
         Float = 0x1406,
 
         /// <summary>
-        ///     A two-component floating-point vector attribute (GL_FLOAT_VEC2)
+        ///     The float vec active attrib type
         /// </summary>
         FloatVec2 = 0x8B50,
 
         /// <summary>
-        ///     A three-component floating-point vector attribute (GL_FLOAT_VEC3)
+        ///     The float vec active attrib type
         /// </summary>
         FloatVec3 = 0x8B51,
 
         /// <summary>
-        ///     A four-component floating-point vector attribute (GL_FLOAT_VEC4)
+        ///     The float vec active attrib type
         /// </summary>
         FloatVec4 = 0x8B52,
 
         /// <summary>
-        ///     A 2x2 floating-point matrix attribute (GL_FLOAT_MAT2)
+        ///     The float mat active attrib type
         /// </summary>
         FloatMat2 = 0x8B5A,
 
         /// <summary>
-        ///     A 3x3 floating-point matrix attribute (GL_FLOAT_MAT3)
+        ///     The float mat active attrib type
         /// </summary>
         FloatMat3 = 0x8B5B,
 
         /// <summary>
-        ///     A 4x4 floating-point matrix attribute (GL_FLOAT_MAT4)
+        ///     The float mat active attrib type
         /// </summary>
         FloatMat4 = 0x8B5C
     }

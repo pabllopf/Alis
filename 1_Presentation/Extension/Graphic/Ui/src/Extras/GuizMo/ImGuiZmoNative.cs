@@ -47,7 +47,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
         /// <summary>
         ///     Ims the guizmo allow axis flip using the specified value
         /// </summary>
-        /// <param name="value">The value to set</param>
+        /// <param name="value">The value</param>
         [DllImport(NativeLibrary, EntryPoint = "ImGuizmo_AllowAxisFlip", CallingConvention = CallingConvention.Cdecl)]
         internal static extern void InternalAllowAxisFlip(byte value);
 
@@ -60,7 +60,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
         /// <summary>
         ///     Ims the guizmo decompose matrix to components using the specified matrix
         /// </summary>
-        /// <param name="matrix">The transformation matrix data</param>
+        /// <param name="matrix">The matrix</param>
         /// <param name="translation">The translation</param>
         /// <param name="rotation">The rotation</param>
         /// <param name="scale">The scale</param>
@@ -70,20 +70,20 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
         /// <summary>
         ///     Ims the guizmo draw cubes using the specified view
         /// </summary>
-        /// <param name="view">The view matrix data</param>
-        /// <param name="projection">The projection matrix data</param>
+        /// <param name="view">The view</param>
+        /// <param name="projection">The projection</param>
         /// <param name="matrices">The matrices</param>
-        /// <param name="matrixCount">The number of matrices in the array</param>
+        /// <param name="matrixCount">The matrix count</param>
         [DllImport(NativeLibrary, EntryPoint = "ImGuizmo_DrawCubes", CallingConvention = CallingConvention.Cdecl)]
         internal static extern void InternalDrawCubes(float view, float projection, float matrices, int matrixCount);
 
         /// <summary>
         ///     Ims the guizmo draw grid using the specified view
         /// </summary>
-        /// <param name="view">The view matrix data</param>
-        /// <param name="projection">The projection matrix data</param>
-        /// <param name="matrix">The transformation matrix data</param>
-        /// <param name="gridSize">The size of the grid cells</param>
+        /// <param name="view">The view</param>
+        /// <param name="projection">The projection</param>
+        /// <param name="matrix">The matrix</param>
+        /// <param name="gridSize">The grid size</param>
         [DllImport(NativeLibrary, EntryPoint = "ImGuizmo_DrawGrid", CallingConvention = CallingConvention.Cdecl)]
         internal static extern void InternalDrawGrid(float[] view, float[] projection, float[] matrix, float gridSize);
 
@@ -97,7 +97,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
         /// <summary>
         ///     Ims the guizmo is over nil
         /// </summary>
-        /// <returns>The byte result from the native operation</returns>
+        /// <returns>The byte</returns>
         [DllImport(NativeLibrary, EntryPoint = "ImGuizmo_IsOver_Nil", CallingConvention = CallingConvention.Cdecl)]
         internal static extern byte InternalIsOverNil();
 
@@ -105,30 +105,30 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
         ///     Ims the guizmo is over operation using the specified op
         /// </summary>
         /// <param name="op">The op</param>
-        /// <returns>The byte result from the native operation</returns>
+        /// <returns>The byte</returns>
         [DllImport(NativeLibrary, EntryPoint = "ImGuizmo_IsOverOPERATION", CallingConvention = CallingConvention.Cdecl)]
         internal static extern byte InternalIsOverOPERATION(Operation op);
 
         /// <summary>
         ///     Ims the guizmo is using
         /// </summary>
-        /// <returns>The byte result from the native operation</returns>
+        /// <returns>The byte</returns>
         [DllImport(NativeLibrary, EntryPoint = "ImGuizmo_IsUsing", CallingConvention = CallingConvention.Cdecl)]
         internal static extern byte InternalIsUsing();
 
         /// <summary>
         ///     Ims the guizmo manipulate using the specified view
         /// </summary>
-        /// <param name="view">The view matrix data</param>
-        /// <param name="projection">The projection matrix data</param>
-        /// <param name="operation">The gizmo operation type (translate/rotate/scale)</param>
-        /// <param name="mode">The operation mode (local or world)</param>
-        /// <param name="matrix">The transformation matrix data</param>
+        /// <param name="view">The view</param>
+        /// <param name="projection">The projection</param>
+        /// <param name="operation">The operation</param>
+        /// <param name="mode">The mode</param>
+        /// <param name="matrix">The matrix</param>
         /// <param name="deltaMatrix">The delta matrix</param>
         /// <param name="snap">The snap</param>
         /// <param name="localBounds">The local bounds</param>
         /// <param name="boundsSnap">The bounds snap</param>
-        /// <returns>The byte result from the native operation</returns>
+        /// <returns>The byte</returns>
         [DllImport(NativeLibrary, EntryPoint = "ImGuizmo_Manipulate", CallingConvention = CallingConvention.Cdecl)]
         internal static extern byte InternalManipulate(IntPtr view, IntPtr projection, Operation operation, Mode mode, IntPtr matrix, IntPtr deltaMatrix, IntPtr snap, IntPtr localBounds, IntPtr boundsSnap);
 
@@ -138,50 +138,50 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
         /// <param name="translation">The translation</param>
         /// <param name="rotation">The rotation</param>
         /// <param name="scale">The scale</param>
-        /// <param name="matrix">The transformation matrix data</param>
+        /// <param name="matrix">The matrix</param>
         [DllImport(NativeLibrary, EntryPoint = "ImGuizmo_RecomposeMatrixFromComponents", CallingConvention = CallingConvention.Cdecl)]
         internal static extern void InternalRecomposeMatrixFromComponents(float[] translation, float[] rotation, float[] scale, float[] matrix);
 
         /// <summary>
         ///     Ims the guizmo set drawlist using the specified drawlist
         /// </summary>
-        /// <param name="drawlist">The draw list pointer to use</param>
+        /// <param name="drawlist">The drawlist</param>
         [DllImport(NativeLibrary, EntryPoint = "ImGuizmo_SetDrawlist", CallingConvention = CallingConvention.Cdecl)]
         internal static extern void InternalSetDrawlist(IntPtr drawlist);
 
         /// <summary>
         ///     Ims the guizmo set gizmo size clip space using the specified value
         /// </summary>
-        /// <param name="value">The value to set</param>
+        /// <param name="value">The value</param>
         [DllImport(NativeLibrary, EntryPoint = "ImGuizmo_SetGizmoSizeClipSpace", CallingConvention = CallingConvention.Cdecl)]
         internal static extern void InternalSetGizmoSizeClipSpace(float value);
 
         /// <summary>
         ///     Ims the guizmo set id using the specified id
         /// </summary>
-        /// <param name="id">The unique identifier for the element</param>
+        /// <param name="id">The id</param>
         [DllImport(NativeLibrary, EntryPoint = "ImGuizmo_SetID", CallingConvention = CallingConvention.Cdecl)]
         internal static extern void InternalSetID(int id);
 
         /// <summary>
         ///     Ims the guizmo set im gui context using the specified ctx
         /// </summary>
-        /// <param name="ctx">The ImNodes context instance</param>
+        /// <param name="ctx">The ctx</param>
         [DllImport(NativeLibrary, EntryPoint = "ImGuizmo_SetImGuiContext", CallingConvention = CallingConvention.Cdecl)]
         internal static extern void InternalSetImGuiContext(IntPtr ctx);
 
         /// <summary>
         ///     Ims the guizmo set orthographic using the specified is orthographic
         /// </summary>
-        /// <param name="isOrthographic">Whether the camera projection is orthographic</param>
+        /// <param name="isOrthographic">The is orthographic</param>
         [DllImport(NativeLibrary, EntryPoint = "ImGuizmo_SetOrthographic", CallingConvention = CallingConvention.Cdecl)]
         internal static extern void InternalSetOrthographic(byte isOrthographic);
 
         /// <summary>
         ///     Ims the guizmo set rect using the specified x
         /// </summary>
-        /// <param name="x">The x-coordinate</param>
-        /// <param name="y">The y-coordinate</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
         /// <param name="width">The width</param>
         /// <param name="height">The height</param>
         [DllImport(NativeLibrary, EntryPoint = "ImGuizmo_SetRect", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
@@ -190,11 +190,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
         /// <summary>
         ///     Ims the guizmo view manipulate using the specified view
         /// </summary>
-        /// <param name="view">The view matrix data</param>
-        /// <param name="length">The length value</param>
+        /// <param name="view">The view</param>
+        /// <param name="length">The length</param>
         /// <param name="position">The position</param>
-        /// <param name="size">The size of the element in pixels</param>
-        /// <param name="backgroundColor">The background color in 0xRRGGBBAA format</param>
+        /// <param name="size">The size</param>
+        /// <param name="backgroundColor">The background color</param>
         [DllImport(NativeLibrary, EntryPoint = "ImGuizmo_ViewManipulate_Float", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
         public static extern void ImGuizmo_ViewManipulate(float[] view, float length, Vector2F position, Vector2F size, uint backgroundColor);
     }

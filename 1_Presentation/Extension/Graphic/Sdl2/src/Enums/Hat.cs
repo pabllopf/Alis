@@ -34,49 +34,49 @@ namespace Alis.Extension.Graphic.Sdl2.Enums
     /// </summary>
     public enum Hat : byte
     {
-    /// <summary>
-    ///     Joystick hat is in the center (neutral position)
-    /// </summary>
-    HatCentered = 0x00,
+        /// <summary>
+        ///     The sdl hat centered
+        /// </summary>
+        HatCentered = 0x00,
 
-    /// <summary>
-    ///     Joystick hat is pushed up
-    /// </summary>
-    HatUp = 0x01,
+        /// <summary>
+        ///     The sdl hat up
+        /// </summary>
+        HatUp = 0x01,
 
-    /// <summary>
-    ///     Joystick hat is pushed right
-    /// </summary>
-    HatRight = 0x02,
+        /// <summary>
+        ///     The sdl hat right
+        /// </summary>
+        HatRight = 0x02,
 
-    /// <summary>
-    ///     Joystick hat is pushed down
-    /// </summary>
-    HatDown = 0x04,
+        /// <summary>
+        ///     The sdl hat down
+        /// </summary>
+        HatDown = 0x04,
 
-    /// <summary>
-    ///     Joystick hat is pushed left
-    /// </summary>
-    HatLeft = 0x08,
+        /// <summary>
+        ///     The sdl hat left
+        /// </summary>
+        HatLeft = 0x08,
 
-    /// <summary>
-    ///     Joystick hat is pushed up and to the right
-    /// </summary>
-    HatRightUp = HatRight | HatUp,
+        /// <summary>
+        ///     The sdl hat up
+        /// </summary>
+        HatRightUp = HatRight | HatUp,
 
-    /// <summary>
-    ///     Joystick hat is pushed down and to the right
-    /// </summary>
-    HatRightDown = HatRight | HatDown,
+        /// <summary>
+        ///     The sdl hat down
+        /// </summary>
+        HatRightDown = HatRight | HatDown,
 
-    /// <summary>
-    ///     Joystick hat is pushed up and to the left
-    /// </summary>
-    HatLeftUp = HatLeft | HatUp,
+        /// <summary>
+        ///     The sdl hat up
+        /// </summary>
+        HatLeftUp = HatLeft | HatUp,
 
-    /// <summary>
-    ///     Joystick hat is pushed down and to the left
-    /// </summary>
-    HatLeftDown = HatLeft | HatDown
+        /// <summary>
+        ///     The sdl hat down
+        /// </summary>
+        HatLeftDown = HatLeft | HatDown
     }
 }

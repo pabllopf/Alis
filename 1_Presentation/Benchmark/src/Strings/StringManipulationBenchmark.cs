@@ -44,9 +44,9 @@ namespace Alis.Benchmark.Strings
         private const int Iterations = 10000;
 
         /// <summary>
-        ///     Benchmarks naive string concatenation using the + operator (baseline for comparison)
+        ///     Bads the string manipulation base line
         /// </summary>
-        /// <returns>The concatenated result string</returns>
+        /// <returns>The result</returns>
         [Benchmark(Baseline = true)]
         public string BadStringManipulation_BaseLine()
         {
@@ -60,9 +60,9 @@ namespace Alis.Benchmark.Strings
         }
 
         /// <summary>
-        ///     Benchmarks string building using StringBuilder
+        ///     Normals the string manipulation
         /// </summary>
-        /// <returns>The built result string</returns>
+        /// <returns>The string</returns>
         [Benchmark]
         public string NormalStringManipulation()
         {
@@ -76,9 +76,9 @@ namespace Alis.Benchmark.Strings
         }
 
         /// <summary>
-        ///     Benchmarks string creation using string.Create with Span fill for optimal performance
+        ///     Perfects the string manipulation
         /// </summary>
-        /// <returns>The created result string</returns>
+        /// <returns>The string</returns>
         [Benchmark]
         public string PerfectStringManipulation()
         {

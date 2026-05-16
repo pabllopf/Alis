@@ -37,13 +37,13 @@ namespace Alis.Extension.Graphic.Sfml.Windows
     public class TouchEventArgs : EventArgs
     {
         /// <summary>Index of the finger in case of multi-touch events</summary>
-        public readonly uint Finger;
+        public uint Finger;
 
         /// <summary>X position of the touch, relative to the left of the owner window</summary>
-        public readonly int X;
+        public int X;
 
         /// <summary>Y position of the touch, relative to the top of the owner window</summary>
-        public readonly int Y;
+        public int Y;
 
         /// <summary>
         ///     Construct the touch arguments from a touch event

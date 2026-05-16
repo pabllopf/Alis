@@ -35,62 +35,62 @@ namespace Alis.Core.Graphic.OpenGL.Enums
     public enum VertexAttribPointerType
     {
         /// <summary>
-        ///     Signed 8-bit integer attribute type (GL_BYTE)
+        ///     The byte vertex attrib pointer type
         /// </summary>
         Byte = 0x1400,
 
         /// <summary>
-        ///     Unsigned 8-bit integer attribute type (GL_UNSIGNED_BYTE)
+        ///     The unsigned byte vertex attrib pointer type
         /// </summary>
         UnsignedByte = 0x1401,
 
         /// <summary>
-        ///     Signed 16-bit integer attribute type (GL_SHORT)
+        ///     The short vertex attrib pointer type
         /// </summary>
         Short = 0x1402,
 
         /// <summary>
-        ///     Unsigned 16-bit integer attribute type (GL_UNSIGNED_SHORT)
+        ///     The unsigned short vertex attrib pointer type
         /// </summary>
         UnsignedShort = 0x1403,
 
         /// <summary>
-        ///     Signed 32-bit integer attribute type (GL_INT)
+        ///     The int vertex attrib pointer type
         /// </summary>
         Int = 0x1404,
 
         /// <summary>
-        ///     Unsigned 32-bit integer attribute type (GL_UNSIGNED_INT)
+        ///     The unsigned int vertex attrib pointer type
         /// </summary>
         UnsignedInt = 0x1405,
 
         /// <summary>
-        ///     32-bit floating-point attribute type (GL_FLOAT)
+        ///     The float vertex attrib pointer type
         /// </summary>
         Float = 0x1406,
 
         /// <summary>
-        ///     64-bit double-precision attribute type (GL_DOUBLE)
+        ///     The double vertex attrib pointer type
         /// </summary>
         Double = 0x140A,
 
         /// <summary>
-        ///     16-bit half-precision float attribute type (GL_HALF_FLOAT)
+        ///     The half float vertex attrib pointer type
         /// </summary>
         HalfFloat = 0x140B,
 
         /// <summary>
-        ///     Packed 2-10-10-10 reversed unsigned int attribute (GL_UNSIGNED_INT_2_10_10_10_REV)
+        ///     The unsigned int 2101010 reversed vertex attrib pointer type
         /// </summary>
         UnsignedUInt2101010Reversed = 0x8368,
 
         /// <summary>
-        ///     Packed 2-10-10-10 reversed unsigned int attribute (core) (GL_UNSIGNED_INT_2_10_10_10_REV)
+        ///     The unsigned int 2101010 reversed vertex attrib pointer type
         /// </summary>
         UnsignedInt2101010Reversed = 0x8D9F,
 
         /// <summary>
-        ///     Packed 10-11-11 reversed unsigned int attribute (GL_UNSIGNED_INT_10_11_11_REV)
+        ///     The unsigned int 101111 reversed vertex attrib pointer type
         /// </summary>
         UnsignedUInt101111Reversed = 0x8C3B
     }

@@ -46,92 +46,92 @@ namespace Alis.App.Engine.Core
     public class SpaceWork
     {
         /// <summary>
-        ///     The icon demo instance for rendering FontAwesome icons
+        ///     The icon demo
         /// </summary>
         public readonly IconDemo IconDemo = new IconDemo();
 
         /// <summary>
-        ///     The ImGui demo instance for showing the Dear ImGui demo window
+        ///     The im gui demo
         /// </summary>
         public readonly ImGuiDemo ImGuiDemo = new ImGuiDemo();
 
         /// <summary>
-        ///     The ImGuizmo demo instance for 3D gizmo manipulation
+        ///     The im guizmo demo
         /// </summary>
         public readonly ImGuizmoDemo ImGuizmoDemo = new ImGuizmoDemo();
 
         /// <summary>
-        ///     The ImNode demo instance for the node editor
+        ///     The im node demo
         /// </summary>
         public readonly ImNodeDemo ImNodeDemo = new ImNodeDemo();
 
         /// <summary>
-        ///     The ImPlot demo instance for plotting charts
+        ///     The im plot demo
         /// </summary>
         public readonly ImPlotDemo ImPlotDemo = new ImPlotDemo();
 
         /// <summary>
-        ///     The settings window instance
+        ///     The settings window
         /// </summary>
         public readonly SettingsWindow SettingsWindow;
 
         /// <summary>
-        ///     The native ImGui context pointer
+        ///     The context
         /// </summary>
         public IntPtr ContextGui;
 
         /// <summary>
-        ///     The loaded font pointer for 10px solid icons
+        ///     The font loaded 10 solid
         /// </summary>
         public ImFontPtr FontLoaded10Solid;
 
         /// <summary>
-        ///     The loaded font pointer for 16px light text
+        ///     The font loaded 16 light
         /// </summary>
         public ImFontPtr FontLoaded16Light;
 
         /// <summary>
-        ///     The loaded font pointer for 16px solid text
+        ///     The font loaded 16 solid
         /// </summary>
         public ImFontPtr FontLoaded16Solid;
 
         /// <summary>
-        ///     The loaded font pointer for 30px bold text
+        ///     The font loaded 30 bold
         /// </summary>
         public ImFontPtr FontLoaded30Bold;
 
         /// <summary>
-        ///     The loaded font pointer for 45px bold text
+        ///     The font loaded 30 bold
         /// </summary>
         public ImFontPtr FontLoaded45Bold;
 
         /// <summary>
-        ///     The ImGui I/O context for input and configuration
+        ///     The io
         /// </summary>
         public ImGuiIoPtr io;
 
         /// <summary>
-        ///     Whether the application main loop is running
+        ///     The quit
         /// </summary>
         public bool IsRunning = true;
 
         /// <summary>
-        ///     The native renderer handle
+        ///     The renderer game
         /// </summary>
         public IntPtr RendererGame;
 
         /// <summary>
-        ///     The active ImGui style
+        ///     The style
         /// </summary>
         public ImGuiStyle Style;
 
         /// <summary>
-        ///     The main ImGui viewport
+        ///     Gets or sets the value of the viewport
         /// </summary>
         public ImGuiViewportPtr Viewport;
 
         /// <summary>
-        ///     The native window handle
+        ///     The window
         /// </summary>
         public IntPtr Window;
 
@@ -239,7 +239,7 @@ namespace Alis.App.Engine.Core
         public uint FontTextureId { get; set; }
 
         /// <summary>
-        ///     Initializes all demo panels and editor windows
+        ///     Initializes this instance
         /// </summary>
         public void OnInit()
         {
@@ -263,7 +263,7 @@ namespace Alis.App.Engine.Core
         }
 
         /// <summary>
-        ///     Starts all demo panels and editor windows
+        ///     Starts this instance
         /// </summary>
         public void OnStart()
         {
@@ -286,7 +286,7 @@ namespace Alis.App.Engine.Core
         }
 
         /// <summary>
-        ///     Renders all visible windows, menus, and demo panels each frame
+        ///     Updates this instance
         /// </summary>
         public void OnRender()
         {

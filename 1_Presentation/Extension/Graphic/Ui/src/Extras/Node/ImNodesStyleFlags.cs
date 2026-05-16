@@ -32,7 +32,7 @@ using System;
 namespace Alis.Extension.Graphic.Ui.Extras.Node
 {
     /// <summary>
-    ///     The ImNodes style configuration structure flags enum
+    ///     The im nodes style flags enum
     /// </summary>
     [Flags]
     public enum ImNodesStyleFlags

@@ -32,10 +32,8 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     Detaches a shader object from a program object
+    ///     The detach shader
     /// </summary>
-    /// <param name="program">Specifies the program object from which to detach the shader</param>
-    /// <param name="shader">Specifies the shader object to detach</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void DetachShader(uint program, uint shader);
 }

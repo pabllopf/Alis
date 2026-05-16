@@ -63,11 +63,6 @@ namespace Alis.Extension.Ads.GoogleAds
         private bool _isInitialized;
 
         /// <summary>
-        ///     Error message for uninitialized ads manager
-        /// </summary>
-        private const string NotInitializedMessage = "AdsManager not initialized. Call InitializeAsync first.";
-
-        /// <summary>
         ///     Flag indicating if interstitial ad is loaded
         /// </summary>
         private bool _isInterstitialAdLoaded;
@@ -192,7 +187,7 @@ namespace Alis.Extension.Ads.GoogleAds
         {
             if (!_isInitialized)
             {
-                Logger.Error(NotInitializedMessage);
+                Logger.Error("AdsManager not initialized. Call InitializeAsync first.");
                 return;
             }
 
@@ -238,7 +233,7 @@ namespace Alis.Extension.Ads.GoogleAds
         {
             if (!_isInitialized)
             {
-                Logger.Error(NotInitializedMessage);
+                Logger.Error("AdsManager not initialized. Call InitializeAsync first.");
                 return;
             }
 
@@ -272,7 +267,7 @@ namespace Alis.Extension.Ads.GoogleAds
         {
             if (!_isInitialized)
             {
-                Logger.Error(NotInitializedMessage);
+                Logger.Error("AdsManager not initialized. Call InitializeAsync first.");
                 return;
             }
 
@@ -338,7 +333,7 @@ namespace Alis.Extension.Ads.GoogleAds
         {
             if (!_isInitialized)
             {
-                throw new InvalidOperationException(NotInitializedMessage);
+                throw new InvalidOperationException("AdsManager not initialized. Call InitializeAsync first.");
             }
 
             if (string.IsNullOrEmpty(adUnitId))
@@ -375,7 +370,7 @@ namespace Alis.Extension.Ads.GoogleAds
         {
             if (!_isInitialized)
             {
-                throw new InvalidOperationException(NotInitializedMessage);
+                throw new InvalidOperationException("AdsManager not initialized. Call InitializeAsync first.");
             }
 
             if (string.IsNullOrEmpty(adUnitId))
@@ -412,7 +407,7 @@ namespace Alis.Extension.Ads.GoogleAds
         {
             if (!_isInitialized)
             {
-                throw new InvalidOperationException(NotInitializedMessage);
+                throw new InvalidOperationException("AdsManager not initialized. Call InitializeAsync first.");
             }
 
             if (string.IsNullOrEmpty(adUnitId))

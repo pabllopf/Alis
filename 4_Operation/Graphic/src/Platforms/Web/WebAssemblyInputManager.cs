@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Alis.Core.Graphic.Platforms.Web
 {
@@ -46,13 +45,17 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         /// The key bindings
         /// </summary>
-        private readonly Dictionary<string, KeyBinding> _keyBindings;
+        private Dictionary<string, KeyBinding> _keyBindings;
         /// <summary>
         /// The previous gamepad states
         /// </summary>
-        private readonly Dictionary<int, GamepadInputState> _previousGamepadStates;
+        private Dictionary<int, GamepadInputState> _previousGamepadStates;
         /// <summary>
-        /// The last mouse Y position
+        /// The last mouse
+        /// </summary>
+        private int _lastMouseX;
+        /// <summary>
+        /// The last mouse
         /// </summary>
         private int _lastMouseY;
         /// <summary>
@@ -62,7 +65,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         /// The touch points
         /// </summary>
-        private readonly Dictionary<int, TouchPoint> _touchPoints;
+        private Dictionary<int, TouchPoint> _touchPoints;
 
         /// <summary>
         ///     Initializes a new instance of the WebAssemblyInputManager
@@ -73,6 +76,7 @@ namespace Alis.Core.Graphic.Platforms.Web
             _keyBindings = new Dictionary<string, KeyBinding>();
             _previousGamepadStates = new Dictionary<int, GamepadInputState>();
             _touchPoints = new Dictionary<int, TouchPoint>();
+            _lastMouseX = 0;
             _lastMouseY = 0;
             _lastMouseWheelDelta = 0.0f;
         }
@@ -185,7 +189,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         private void UpdateMouseState()
         {
-            _platform.GetMouseState(out _, out _lastMouseY, out bool[] _);
+            _platform.GetMouseState(out _lastMouseX, out _lastMouseY, out bool[] buttons);
             _lastMouseWheelDelta = _platform.GetMouseWheel();
         }
 
@@ -194,7 +198,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public void GetMousePosition(out int x, out int y)
         {
-            _platform.GetMouseState(out x, out y, out bool[] _);
+            _platform.GetMouseState(out x, out y, out bool[] buttons);
         }
 
         /// <summary>
@@ -210,7 +214,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public bool IsMouseButtonDown(int button)
         {
-            _platform.GetMouseState(out _, out _, out bool[] buttons);
+            _platform.GetMouseState(out int x, out int y, out bool[] buttons);
             return button >= 0 && button < buttons.Length && buttons[button];
         }
 
@@ -284,7 +288,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Vibrates a gamepad (rumble support)
         /// </summary>
-        public static bool VibrateGamepad(int gamepadIndex, float leftMotor, float rightMotor, float duration = 0.1f)
+        public bool VibrateGamepad(int gamepadIndex, float leftMotor, float rightMotor, float duration = 0.1f)
         {
             return EmscriptenWeb.VibrateGamepad(gamepadIndex, leftMotor, rightMotor, duration);
         }
@@ -340,7 +344,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         /// The keys
         /// </summary>
-        private readonly HashSet<ConsoleKey> _keys;
+        private HashSet<ConsoleKey> _keys;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="KeyBinding"/> class
@@ -393,7 +397,14 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <returns>The bool</returns>
         public bool IsActive(WebAssemblyPlatform platform)
         {
-            return _keys.Any(key => platform.IsKeyDown(key));
+            foreach (ConsoleKey key in _keys)
+            {
+                if (platform.IsKeyDown(key))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 
@@ -539,7 +550,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Locks the pointer to the window (for FPS games)
         /// </summary>
-        public static bool LockPointer()
+        public bool LockPointer()
         {
             return EmscriptenWeb.LockPointer();
         }
@@ -547,7 +558,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Unlocks the pointer
         /// </summary>
-        public static bool UnlockPointer()
+        public bool UnlockPointer()
         {
             return EmscriptenWeb.UnlockPointer();
         }
@@ -555,7 +566,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Checks if the pointer is locked
         /// </summary>
-        public static bool IsPointerLocked()
+        public bool IsPointerLocked()
         {
             return EmscriptenWeb.IsPointerLocked();
         }
@@ -563,7 +574,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Enters fullscreen mode
         /// </summary>
-        public static bool RequestFullscreen()
+        public bool RequestFullscreen()
         {
             return EmscriptenWeb.RequestFullscreen();
         }
@@ -571,7 +582,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Exits fullscreen mode
         /// </summary>
-        public static bool ExitFullscreen()
+        public bool ExitFullscreen()
         {
             return EmscriptenWeb.ExitFullscreen();
         }
@@ -579,7 +590,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Checks if currently in fullscreen
         /// </summary>
-        public static bool IsFullscreen()
+        public bool IsFullscreen()
         {
             return EmscriptenWeb.IsFullscreenEnabled();
         }

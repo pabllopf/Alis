@@ -32,7 +32,7 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Extension.Graphic.Ui.Extras.Node
 {
     /// <summary>
-    ///     The ImNodes style configuration structure
+    ///     The im nodes style
     /// </summary>
     public struct ImNodesStyle
     {

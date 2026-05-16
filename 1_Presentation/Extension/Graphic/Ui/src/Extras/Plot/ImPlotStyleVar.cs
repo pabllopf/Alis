@@ -30,147 +30,147 @@
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     Style variables that can be pushed/popped to customize the look of ImPlot elements.
+    ///     The im plot style var enum
     /// </summary>
     public enum ImPlotStyleVar
     {
         /// <summary>
-        ///     Thickness (weight) of plot lines, in pixels.
+        ///     The line weight im plot style var
         /// </summary>
         LineWeight = 0,
 
         /// <summary>
-        ///     Marker type used for data points.
+        ///     The marker im plot style var
         /// </summary>
         Marker = 1,
 
         /// <summary>
-        ///     Size of markers, in pixels.
+        ///     The marker size im plot style var
         /// </summary>
         MarkerSize = 2,
 
         /// <summary>
-        ///     Thickness (weight) of marker outlines, in pixels.
+        ///     The marker weight im plot style var
         /// </summary>
         MarkerWeight = 3,
 
         /// <summary>
-        ///     Alpha transparency of filled regions.
+        ///     The fill alpha im plot style var
         /// </summary>
         FillAlpha = 4,
 
         /// <summary>
-        ///     Width of error bar caps, in pixels.
+        ///     The error bar size im plot style var
         /// </summary>
         ErrorBarSize = 5,
 
         /// <summary>
-        ///     Thickness (weight) of error bar lines, in pixels.
+        ///     The error bar weight im plot style var
         /// </summary>
         ErrorBarWeight = 6,
 
         /// <summary>
-        ///     Height of digital signal bits, in pixels.
+        ///     The digital bit height im plot style var
         /// </summary>
         DigitalBitHeight = 7,
 
         /// <summary>
-        ///     Gap between adjacent digital signal bits, in pixels.
+        ///     The digital bit gap im plot style var
         /// </summary>
         DigitalBitGap = 8,
 
         /// <summary>
-        ///     Thickness of the plot border, in pixels.
+        ///     The plot border size im plot style var
         /// </summary>
         PlotBorderSize = 9,
 
         /// <summary>
-        ///     Alpha transparency of minor (non-primary) plot elements.
+        ///     The minor alpha im plot style var
         /// </summary>
         MinorAlpha = 10,
 
         /// <summary>
-        ///     Length of major tick marks, in pixels.
+        ///     The major tick len im plot style var
         /// </summary>
         MajorTickLen = 11,
 
         /// <summary>
-        ///     Length of minor tick marks, in pixels.
+        ///     The minor tick len im plot style var
         /// </summary>
         MinorTickLen = 12,
 
         /// <summary>
-        ///     Thickness of major tick marks, in pixels.
+        ///     The major tick size im plot style var
         /// </summary>
         MajorTickSize = 13,
 
         /// <summary>
-        ///     Thickness of minor tick marks, in pixels.
+        ///     The minor tick size im plot style var
         /// </summary>
         MinorTickSize = 14,
 
         /// <summary>
-        ///     Thickness of major grid lines, in pixels.
+        ///     The major grid size im plot style var
         /// </summary>
         MajorGridSize = 15,
 
         /// <summary>
-        ///     Thickness of minor grid lines, in pixels.
+        ///     The minor grid size im plot style var
         /// </summary>
         MinorGridSize = 16,
 
         /// <summary>
-        ///     Padding between the plot area and its frame, in pixels.
+        ///     The plot padding im plot style var
         /// </summary>
         PlotPadding = 17,
 
         /// <summary>
-        ///     Padding between axis labels and the plot edge, in pixels.
+        ///     The label padding im plot style var
         /// </summary>
         LabelPadding = 18,
 
         /// <summary>
-        ///     Padding around the legend box, in pixels.
+        ///     The legend padding im plot style var
         /// </summary>
         LegendPadding = 19,
 
         /// <summary>
-        ///     Inner padding within the legend box, in pixels.
+        ///     The legend inner padding im plot style var
         /// </summary>
         LegendInnerPadding = 20,
 
         /// <summary>
-        ///     Spacing between legend entries, in pixels.
+        ///     The legend spacing im plot style var
         /// </summary>
         LegendSpacing = 21,
 
         /// <summary>
-        ///     Padding around the mouse position tooltip text, in pixels.
+        ///     The mouse pos padding im plot style var
         /// </summary>
         MousePosPadding = 22,
 
         /// <summary>
-        ///     Padding around annotation labels, in pixels.
+        ///     The annotation padding im plot style var
         /// </summary>
         AnnotationPadding = 23,
 
         /// <summary>
-        ///     Padding applied when auto-fitting the axis range to data.
+        ///     The fit padding im plot style var
         /// </summary>
         FitPadding = 24,
 
         /// <summary>
-        ///     Default size of newly created plots (width, height).
+        ///     The plot default size im plot style var
         /// </summary>
         PlotDefaultSize = 25,
 
         /// <summary>
-        ///     Minimum size allowed for a plot (width, height).
+        ///     The plot min size im plot style var
         /// </summary>
         PlotMinSize = 26,
 
         /// <summary>
-        ///     Total number of style variables defined.
+        ///     The count im plot style var
         /// </summary>
         Count = 27
     }

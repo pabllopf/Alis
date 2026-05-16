@@ -32,9 +32,8 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     Disables a generic vertex attribute array at the specified index
+    ///     The disable vertex attrib array
     /// </summary>
-    /// <param name="index">Specifies the index of the generic vertex attribute to disable</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void DisableVertexAttribArray(uint index);
 }

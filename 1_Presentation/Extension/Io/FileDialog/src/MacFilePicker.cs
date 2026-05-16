@@ -214,7 +214,7 @@ namespace Alis.Extension.Io.FileDialog
         /// <summary>
         ///     Executes an AppleScript using osascript.
         /// </summary>
-        private static string ExecuteAppleScript(string script)
+        private string ExecuteAppleScript(string script)
         {
             Logger.Trace("Executing AppleScript via osascript.");
 
@@ -254,7 +254,7 @@ namespace Alis.Extension.Io.FileDialog
         /// <summary>
         ///     Parses the dialog result.
         /// </summary>
-        private static FilePickerResult ParseResult(string output, FilePickerOptions options, bool allowMultiple)
+        private FilePickerResult ParseResult(string output, FilePickerOptions options, bool allowMultiple)
         {
             Logger.Trace($"Parsing result from AppleScript output: {output ?? "(null)"}");
 
@@ -289,7 +289,7 @@ namespace Alis.Extension.Io.FileDialog
         /// <summary>
         ///     Escapes special characters in AppleScript strings.
         /// </summary>
-        private static string EscapeAppleScript(string input)
+        private string EscapeAppleScript(string input)
         {
             if (string.IsNullOrEmpty(input))
             {

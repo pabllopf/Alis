@@ -86,15 +86,15 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         /// The key states
         /// </summary>
-        private readonly Dictionary<ConsoleKey, bool> _keyStates;
+        private Dictionary<ConsoleKey, bool> _keyStates;
         /// <summary>
         /// The key pressed queue
         /// </summary>
-        private readonly Queue<ConsoleKey> _keyPressedQueue;
+        private Queue<ConsoleKey> _keyPressedQueue;
         /// <summary>
         /// The input character builder
         /// </summary>
-        private readonly StringBuilder _inputCharacterBuilder;
+        private StringBuilder _inputCharacterBuilder;
         /// <summary>
         /// The mouse
         /// </summary>
@@ -106,7 +106,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         /// The mouse buttons
         /// </summary>
-        private readonly bool[] _mouseButtons; // [left, right, middle, aux1, aux2]
+        private bool[] _mouseButtons; // [left, right, middle, aux1, aux2]
         /// <summary>
         /// The mouse wheel delta
         /// </summary>
@@ -114,7 +114,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         /// The gamepad states
         /// </summary>
-        private readonly Dictionary<int, GamepadState> _gamepadStates;
+        private Dictionary<int, GamepadState> _gamepadStates;
         /// <summary>
         /// The is initialized
         /// </summary>
@@ -200,7 +200,7 @@ namespace Alis.Core.Graphic.Platforms.Web
                 throw new InvalidOperationException("Failed to get EGL display");
             }
 
-            if (!EGL.Initialize(_eglDisplay, out _, out _))
+            if (!EGL.Initialize(_eglDisplay, out int major, out int minor))
             {
                 throw new InvalidOperationException("Failed to initialize EGL");
             }
@@ -350,7 +350,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         private void OnKeyDown(int keyCode, int location)
         {
-            ConsoleKey key = ConvertKeyCode(keyCode);
+            ConsoleKey key = ConvertKeyCode(keyCode, location);
             if (!_keyStates.ContainsKey(key))
             {
                 _keyStates[key] = true;
@@ -368,7 +368,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         private void OnKeyUp(int keyCode, int location)
         {
-            ConsoleKey key = ConvertKeyCode(keyCode);
+            ConsoleKey key = ConvertKeyCode(keyCode, location);
             if (_keyStates.ContainsKey(key))
             {
                 _keyStates[key] = false;
@@ -484,7 +484,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Converts JavaScript key codes to ConsoleKey values
         /// </summary>
-        private static ConsoleKey ConvertKeyCode(int keyCode)
+        private ConsoleKey ConvertKeyCode(int keyCode, int location)
         {
             return keyCode switch
             {

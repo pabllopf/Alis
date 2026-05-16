@@ -32,13 +32,13 @@ using System.Runtime.InteropServices;
 namespace Alis.Benchmark.CustomEcs.Components
 {
     /// <summary>
-    ///     A benchmark component with a single integer value (index 2)
+    ///     The component
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct Component2
     {
         /// <summary>
-        ///     The component's integer value
+        ///     The value
         /// </summary>
         public int Value;
     }

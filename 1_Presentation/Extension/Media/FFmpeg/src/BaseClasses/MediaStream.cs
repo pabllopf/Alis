@@ -34,289 +34,289 @@ using Alis.Core.Aspect.Data.Json;
 namespace Alis.Extension.Media.FFmpeg.BaseClasses
 {
     /// <summary>
-    ///     Represents a media stream parsed by FFprobe.
+    ///     The media stream class
     /// </summary>
     [Serializable]
     public partial class MediaStream
     {
         /// <summary>
-        ///     Stream index within the container.
+        ///     Gets or sets the value of the index
         /// </summary>
         [JsonNativePropertyName("index")]
         public long Index { get; set; }
 
         /// <summary>
-        ///     Short codec name (e.g. h264, aac).
+        ///     Gets or sets the value of the codec name
         /// </summary>
         [JsonNativePropertyName("codec_name")]
         public string CodecName { get; set; }
 
         /// <summary>
-        ///     Full codec name (e.g. H.264 / AVC).
+        ///     Gets or sets the value of the codec long name
         /// </summary>
         [JsonNativePropertyName("codec_long_name")]
         public string CodecLongName { get; set; }
 
         /// <summary>
-        ///     Encoding profile (e.g. Main, High).
+        ///     Gets or sets the value of the profile
         /// </summary>
         [JsonNativePropertyName("profile")]
         public string Profile { get; set; }
 
         /// <summary>
-        ///     Type of stream: video, audio, subtitle, etc.
+        ///     Gets or sets the value of the codec type
         /// </summary>
         [JsonNativePropertyName("codec_type")]
         public string CodecType { get; set; }
 
         /// <summary>
-        ///     Whether this stream is an audio stream.
+        ///     Gets the value of the is audio
         /// </summary>
         [JsonNativeIgnore]
         public bool IsAudio => CodecType.ToLowerInvariant().Trim() == "audio";
 
         /// <summary>
-        ///     Whether this stream is a video stream.
+        ///     Gets the value of the is video
         /// </summary>
         [JsonNativeIgnore]
         public bool IsVideo => CodecType.ToLowerInvariant().Trim() == "video";
 
         /// <summary>
-        ///     Codec time base as a rational number string.
+        ///     Gets or sets the value of the codec time base
         /// </summary>
         [JsonNativePropertyName("codec_time_base")]
         public string CodecTimeBase { get; set; }
 
         /// <summary>
-        ///     Codec tag as a human-readable string.
+        ///     Gets or sets the value of the codec tag string
         /// </summary>
         [JsonNativePropertyName("codec_tag_string")]
         public string CodecTagString { get; set; }
 
         /// <summary>
-        ///     Numeric codec tag.
+        ///     Gets or sets the value of the codec tag
         /// </summary>
         [JsonNativePropertyName("codec_tag")]
         public string CodecTag { get; set; }
 
         /// <summary>
-        ///     Video width in pixels.
+        ///     Gets or sets the value of the width
         /// </summary>
         [JsonNativePropertyName("width")]
         public int Width { get; set; }
 
         /// <summary>
-        ///     Video height in pixels.
+        ///     Gets or sets the value of the height
         /// </summary>
         [JsonNativePropertyName("height")]
         public int Height { get; set; }
 
         /// <summary>
-        ///     Coded width (may include padding).
+        ///     Gets or sets the value of the coded width
         /// </summary>
         [JsonNativePropertyName("coded_width")]
         public int CodedWidth { get; set; }
 
         /// <summary>
-        ///     Coded height (may include padding).
+        ///     Gets or sets the value of the coded height
         /// </summary>
         [JsonNativePropertyName("coded_height")]
         public int CodedHeight { get; set; }
 
         /// <summary>
-        ///     Number of B-frames in the stream.
+        ///     Gets or sets the value of the has b frames
         /// </summary>
         [JsonNativePropertyName("has_b_frames")]
         public int HasBFrames { get; set; }
 
         /// <summary>
-        ///     Sample aspect ratio (e.g. 1:1).
+        ///     Gets or sets the value of the sample aspect ratio
         /// </summary>
         [JsonNativePropertyName("sample_aspect_ratio")]
         public string SampleAspectRatio { get; set; }
 
         /// <summary>
-        ///     Display aspect ratio (e.g. 16:9).
+        ///     Gets or sets the value of the display aspect ratio
         /// </summary>
         [JsonNativePropertyName("display_aspect_ratio")]
         public string DisplayAspectRatio { get; set; }
 
         /// <summary>
-        ///     Pixel format (e.g. yuv420p).
+        ///     Gets or sets the value of the pix fmt
         /// </summary>
         [JsonNativePropertyName("pix_fmt")]
         public string PixFmt { get; set; }
 
         /// <summary>
-        ///     Codec level identifier.
+        ///     Gets or sets the value of the level
         /// </summary>
         [JsonNativePropertyName("level")]
         public int Level { get; set; }
 
         /// <summary>
-        ///     Color range (e.g. tv, pc).
+        ///     Gets or sets the value of the color range
         /// </summary>
         [JsonNativePropertyName("color_range")]
         public string ColorRange { get; set; }
 
         /// <summary>
-        ///     Color space (e.g. bt709).
+        ///     Gets or sets the value of the color space
         /// </summary>
         [JsonNativePropertyName("color_space")]
         public string ColorSpace { get; set; }
 
         /// <summary>
-        ///     Color transfer characteristics.
+        ///     Gets or sets the value of the color transfer
         /// </summary>
         [JsonNativePropertyName("color_transfer")]
         public string ColorTransfer { get; set; }
 
         /// <summary>
-        ///     Color primaries.
+        ///     Gets or sets the value of the color primaries
         /// </summary>
         [JsonNativePropertyName("color_primaries")]
         public string ColorPrimaries { get; set; }
 
         /// <summary>
-        ///     Chroma sample location.
+        ///     Gets or sets the value of the chroma location
         /// </summary>
         [JsonNativePropertyName("chroma_location")]
         public string ChromaLocation { get; set; }
 
         /// <summary>
-        ///     Number of reference frames.
+        ///     Gets or sets the value of the refs
         /// </summary>
         [JsonNativePropertyName("refs")]
         public int Refs { get; set; }
 
         /// <summary>
-        ///     Whether the stream uses AVC (H.264) encoding.
+        ///     Gets or sets the value of the is avc
         /// </summary>
         [JsonNativePropertyName("is_avc")]
         public string IsAvc { get; set; }
 
         /// <summary>
-        ///     NAL unit length size in bytes.
+        ///     Gets or sets the value of the nal length size
         /// </summary>
         [JsonNativePropertyName("nal_length_size")]
         public string NalLengthSize { get; set; }
 
         /// <summary>
-        ///     Real base frame rate as a rational string.
+        ///     Gets or sets the value of the r frame rate
         /// </summary>
         [JsonNativePropertyName("r_frame_rate")]
         public string RFrameRate { get; set; }
 
         /// <summary>
-        ///     Average frame rate as a rational string.
+        ///     Gets or sets the value of the avg frame rate
         /// </summary>
         [JsonNativePropertyName("avg_frame_rate")]
         public string AvgFrameRate { get; set; }
 
         /// <summary>
-        ///     Average frame rate as a floating-point number.
+        ///     Gets the value of the avg frame rate number
         /// </summary>
         [JsonNativeIgnore]
         public double AvgFrameRateNumber { get; set; }
 
         /// <summary>
-        ///     Stream time base as a rational string.
+        ///     Gets or sets the value of the time base
         /// </summary>
         [JsonNativePropertyName("time_base")]
         public string TimeBase { get; set; }
 
         /// <summary>
-        ///     Starting presentation timestamp.
+        ///     Gets or sets the value of the start pts
         /// </summary>
         [JsonNativePropertyName("start_pts")]
         public int StartPts { get; set; }
 
         /// <summary>
-        ///     Stream start time in seconds.
+        ///     Gets or sets the value of the start time
         /// </summary>
         [JsonNativePropertyName("start_time")]
         public string StartTime { get; set; }
 
         /// <summary>
-        ///     Duration in time base units.
+        ///     Gets or sets the value of the duration ts
         /// </summary>
         [JsonNativePropertyName("duration_ts")]
         public int DurationTs { get; set; }
 
         /// <summary>
-        ///     Stream duration as a string in seconds.
+        ///     Gets or sets the value of the duration
         /// </summary>
         [JsonNativePropertyName("duration")]
         public string Duration { get; set; }
 
         /// <summary>
-        ///     Stream bit rate in bits per second.
+        ///     Gets or sets the value of the bit rate
         /// </summary>
         [JsonNativePropertyName("bit_rate")]
         public string BitRate { get; set; }
 
         /// <summary>
-        ///     Bits per raw sample.
+        ///     Gets or sets the value of the bits per raw sample
         /// </summary>
         [JsonNativePropertyName("bits_per_raw_sample")]
         public string BitsPerRawSample { get; set; }
 
         /// <summary>
-        ///     Number of frames in the stream.
+        ///     Gets or sets the value of the nb frames
         /// </summary>
         [JsonNativePropertyName("nb_frames")]
         public string NbFrames { get; set; }
 
         /// <summary>
-        ///     Disposition flags for the stream.
+        ///     Gets or sets the value of the disposition
         /// </summary>
         [JsonNativeIgnore]
         public Dictionary<string, int> Disposition { get; set; }
 
         /// <summary>
-        ///     Metadata tags associated with the stream.
+        ///     Gets or sets the value of the tags
         /// </summary>
         [JsonNativePropertyName("tags")]
         public StreamTags Tags { get; set; }
 
         /// <summary>
-        ///     Audio sample format (e.g. s16, fltp).
+        ///     Gets or sets the value of the sample fmt
         /// </summary>
         [JsonNativePropertyName("sample_fmt")]
         public string SampleFmt { get; set; }
 
         /// <summary>
-        ///     Audio sample rate as a string.
+        ///     Gets or sets the value of the sample rate
         /// </summary>
         [JsonNativePropertyName("sample_rate")]
         public string SampleRate { get; set; }
 
         /// <summary>
-        ///     Audio sample rate as an integer, or -1 if unavailable.
+        ///     Gets the value of the sample rate number
         /// </summary>
         [JsonNativeIgnore]
         public int SampleRateNumber => string.IsNullOrEmpty(SampleRate) ? -1 : int.Parse(SampleRate);
 
         /// <summary>
-        ///     Number of audio channels.
+        ///     Gets or sets the value of the channels
         /// </summary>
         [JsonNativePropertyName("channels")]
         public int Channels { get; set; }
 
         /// <summary>
-        ///     Audio channel layout (e.g. stereo, 5.1).
+        ///     Gets or sets the value of the channel layout
         /// </summary>
         [JsonNativePropertyName("channel_layout")]
         public string ChannelLayout { get; set; }
 
         /// <summary>
-        ///     Bits per audio sample.
+        ///     Gets or sets the value of the bits per sample
         /// </summary>
         [JsonNativePropertyName("bits_per_sample")]
         public int BitsPerSample { get; set; }
 
         /// <summary>
-        ///     Maximum bit rate.
+        ///     Gets or sets the value of the max bit rate
         /// </summary>
         [JsonNativePropertyName("max_bit_rate")]
         public string MaxBitRate { get; set; }

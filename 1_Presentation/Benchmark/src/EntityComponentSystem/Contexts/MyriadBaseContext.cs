@@ -125,7 +125,7 @@ namespace Alis.Benchmark.EntityComponentSystem.Contexts
         public MyriadBaseContext() => World = new WorldBuilder().Build();
 
         /// <summary>
-        ///     Gets the Myriad ECS world instance
+        ///     Gets the value of the scene
         /// </summary>
         public World World { get; }
 

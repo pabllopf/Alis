@@ -30,7 +30,7 @@
 namespace Alis.Extension.Graphic.Ui.Extras.Node
 {
     /// <summary>
-    ///     The ImNodes style configuration structure var enum
+    ///     The im nodes style var enum
     /// </summary>
     public enum ImNodesStyleVar
     {

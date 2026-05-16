@@ -34,7 +34,7 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     Provides managed wrappers over the CImPlot native library for creating and interacting with ImPlot plots.
+    ///     The im plot class
     /// </summary>
     public static partial class ImPlot
     {
@@ -74,7 +74,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Gets the colormap color using the specified idx
         /// </summary>
         /// <param name="idx">The idx</param>
-        /// <returns>The return value from the native function</returns>
+        /// <returns>The retval</returns>
         public static Vector4F GetColormapColor(int idx)
         {
             ImPlotColormap cmap = (ImPlotColormap) (-1);
@@ -87,7 +87,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="idx">The idx</param>
         /// <param name="cmap">The cmap</param>
-        /// <returns>The return value from the native function</returns>
+        /// <returns>The retval</returns>
         public static Vector4F GetColormapColor(int idx, ImPlotColormap cmap)
         {
             ImPlotNative.ImPlot_GetColormapColor(out Vector4F retval, idx, cmap);
@@ -97,7 +97,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Gets the colormap count
         /// </summary>
-        /// <returns>The result returned from the native function</returns>
+        /// <returns>The ret</returns>
         public static int GetColormapCount()
         {
             int ret = ImPlotNative.ImPlot_GetColormapCount();
@@ -107,8 +107,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Gets the colormap index using the specified name
         /// </summary>
-        /// <param name="name">The name identifier string</param>
-        /// <returns>The result returned from the native function</returns>
+        /// <param name="name">The name</param>
+        /// <returns>The ret</returns>
         public static ImPlotColormap GetColormapIndex(string name)
         {
             ImPlotColormap ret = ImPlotNative.ImPlot_GetColormapIndex(Encoding.UTF8.GetBytes(name));
@@ -119,13 +119,13 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Gets the colormap name using the specified cmap
         /// </summary>
         /// <param name="cmap">The cmap</param>
-        /// <returns>The string result from the native function</returns>
+        /// <returns>The string</returns>
         public static string GetColormapName(ImPlotColormap cmap) => Encoding.UTF8.GetString(ImPlotNative.ImPlot_GetColormapName(cmap));
 
         /// <summary>
         ///     Gets the colormap size
         /// </summary>
-        /// <returns>The result returned from the native function</returns>
+        /// <returns>The ret</returns>
         public static int GetColormapSize()
         {
             ImPlotColormap cmap = (ImPlotColormap) (-1);
@@ -137,7 +137,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Gets the colormap size using the specified cmap
         /// </summary>
         /// <param name="cmap">The cmap</param>
-        /// <returns>The result returned from the native function</returns>
+        /// <returns>The ret</returns>
         public static int GetColormapSize(ImPlotColormap cmap)
         {
             int ret = ImPlotNative.ImPlot_GetColormapSize(cmap);
@@ -147,7 +147,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Gets the current context
         /// </summary>
-        /// <returns>The result returned from the native function</returns>
+        /// <returns>The ret</returns>
         public static IntPtr GetCurrentContext()
         {
             IntPtr ret = ImPlotNative.ImPlot_GetCurrentContext();
@@ -163,7 +163,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Gets the last item color
         /// </summary>
-        /// <returns>The return value from the native function</returns>
+        /// <returns>The retval</returns>
         public static Vector4F GetLastItemColor()
         {
             ImPlotNative.ImPlot_GetLastItemColor(out Vector4F retval);
@@ -174,19 +174,19 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Gets the marker name using the specified idx
         /// </summary>
         /// <param name="idx">The idx</param>
-        /// <returns>The string result from the native function</returns>
+        /// <returns>The string</returns>
         public static string GetMarkerName(ImPlotMarker idx) => Encoding.UTF8.GetString(ImPlotNative.ImPlot_GetMarkerName(idx));
 
         /// <summary>
         ///     Gets the plot draw list
         /// </summary>
-        /// <returns>The ImDrawList pointer for rendering commands</returns>
+        /// <returns>The im draw list ptr</returns>
         public static ImDrawList GetPlotDrawList() => ImPlotNative.ImPlot_GetPlotDrawList();
 
         /// <summary>
         ///     Gets the plot limits
         /// </summary>
-        /// <returns>The result returned from the native function</returns>
+        /// <returns>The ret</returns>
         public static ImPlotRect GetPlotLimits()
         {
             ImAxis xAxis = (ImAxis) (-1);
@@ -199,7 +199,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Gets the plot limits using the specified x axis
         /// </summary>
         /// <param name="xAxis">The axis</param>
-        /// <returns>The result returned from the native function</returns>
+        /// <returns>The ret</returns>
         public static ImPlotRect GetPlotLimits(ImAxis xAxis)
         {
             ImAxis yAxis = (ImAxis) (-1);
@@ -212,7 +212,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="xAxis">The axis</param>
         /// <param name="yAxis">The axis</param>
-        /// <returns>The result returned from the native function</returns>
+        /// <returns>The ret</returns>
         public static ImPlotRect GetPlotLimits(ImAxis xAxis, ImAxis yAxis)
         {
             ImPlotRect ret = ImPlotNative.ImPlot_GetPlotLimits(xAxis, yAxis);
@@ -222,7 +222,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Gets the plot mouse pos
         /// </summary>
-        /// <returns>The return value from the native function</returns>
+        /// <returns>The retval</returns>
         public static ImPlotPoint GetPlotMousePos()
         {
             ImAxis xAxis = (ImAxis) (-1);
@@ -235,7 +235,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Gets the plot mouse pos using the specified x axis
         /// </summary>
         /// <param name="xAxis">The axis</param>
-        /// <returns>The return value from the native function</returns>
+        /// <returns>The retval</returns>
         public static ImPlotPoint GetPlotMousePos(ImAxis xAxis)
         {
             ImAxis yAxis = (ImAxis) (-1);
@@ -248,7 +248,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="xAxis">The axis</param>
         /// <param name="yAxis">The axis</param>
-        /// <returns>The return value from the native function</returns>
+        /// <returns>The retval</returns>
         public static ImPlotPoint GetPlotMousePos(ImAxis xAxis, ImAxis yAxis)
         {
             ImPlotNative.ImPlot_GetPlotMousePos(out ImPlotPoint retval, xAxis, yAxis);
@@ -258,7 +258,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Gets the plot pos
         /// </summary>
-        /// <returns>The return value from the native function</returns>
+        /// <returns>The retval</returns>
         public static Vector2F GetPlotPos()
         {
             ImPlotNative.ImPlot_GetPlotPos(out Vector2F retval);
@@ -268,7 +268,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Gets the plot selection
         /// </summary>
-        /// <returns>The result returned from the native function</returns>
+        /// <returns>The ret</returns>
         public static ImPlotRect GetPlotSelection()
         {
             ImAxis xAxis = (ImAxis) (-1);
@@ -281,7 +281,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Gets the plot selection using the specified x axis
         /// </summary>
         /// <param name="xAxis">The axis</param>
-        /// <returns>The result returned from the native function</returns>
+        /// <returns>The ret</returns>
         public static ImPlotRect GetPlotSelection(ImAxis xAxis)
         {
             ImAxis yAxis = (ImAxis) (-1);
@@ -294,7 +294,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="xAxis">The axis</param>
         /// <param name="yAxis">The axis</param>
-        /// <returns>The result returned from the native function</returns>
+        /// <returns>The ret</returns>
         public static ImPlotRect GetPlotSelection(ImAxis xAxis, ImAxis yAxis)
         {
             ImPlotRect ret = ImPlotNative.ImPlot_GetPlotSelection(xAxis, yAxis);
@@ -304,7 +304,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Gets the plot size
         /// </summary>
-        /// <returns>The return value from the native function</returns>
+        /// <returns>The retval</returns>
         public static Vector2F GetPlotSize()
         {
             ImPlotNative.ImPlot_GetPlotSize(out Vector2F retval);
@@ -321,7 +321,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Gets the style color name using the specified idx
         /// </summary>
         /// <param name="idx">The idx</param>
-        /// <returns>The string result from the native function</returns>
+        /// <returns>The string</returns>
         public static string GetStyleColorName(ImPlotCol idx) => Encoding.UTF8.GetString(ImPlotNative.ImPlot_GetStyleColorName(idx));
 
         /// <summary>
@@ -349,7 +349,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Hides the next item using the specified hidden
         /// </summary>
         /// <param name="hidden">The hidden</param>
-        /// <param name="cond">The condition flag for the operation</param>
+        /// <param name="cond">The cond</param>
         public static void HideNextItem(bool hidden, ImPlotCond cond)
         {
             byte nativeHidden = hidden ? (byte) 1 : (byte) 0;
@@ -360,7 +360,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Describes whether is axis hovered
         /// </summary>
         /// <param name="axis">The axis</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool IsAxisHovered(ImAxis axis)
         {
             byte ret = ImPlotNative.ImPlot_IsAxisHovered(axis);
@@ -370,8 +370,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Describes whether is legend entry hovered
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="labelId">The label id</param>
+        /// <returns>The bool</returns>
         public static bool IsLegendEntryHovered(string labelId)
         {
             byte ret = ImPlotNative.ImPlot_IsLegendEntryHovered(Encoding.UTF8.GetBytes(labelId));
@@ -381,7 +381,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Describes whether is plot hovered
         /// </summary>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool IsPlotHovered()
         {
             byte ret = ImPlotNative.ImPlot_IsPlotHovered();
@@ -391,7 +391,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Describes whether is plot selected
         /// </summary>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool IsPlotSelected()
         {
             byte ret = ImPlotNative.ImPlot_IsPlotSelected();
@@ -401,7 +401,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Describes whether is subplots hovered
         /// </summary>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool IsSubplotsHovered()
         {
             byte ret = ImPlotNative.ImPlot_IsSubplotsHovered();
@@ -411,7 +411,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Items the icon using the specified col
         /// </summary>
-        /// <param name="col">The color value in 0xRRGGBBAA format</param>
+        /// <param name="col">The col</param>
         public static void ItemIcon(Vector4F col)
         {
             ImPlotNative.ImPlot_ItemIcon_Vec4(col);
@@ -420,7 +420,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Items the icon using the specified col
         /// </summary>
-        /// <param name="col">The color value in 0xRRGGBBAA format</param>
+        /// <param name="col">The col</param>
         public static void ItemIcon(uint col)
         {
             ImPlotNative.ImPlot_ItemIcon_U32(col);
@@ -437,7 +437,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Maps the input default using the specified dst
         /// </summary>
-        /// <param name="dst">The destination object to write into</param>
+        /// <param name="dst">The dst</param>
         public static void MapInputDefault(ImPlotInputMap dst)
         {
             ImPlotNative.ImPlot_MapInputDefault(dst);
@@ -454,7 +454,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Maps the input reverse using the specified dst
         /// </summary>
-        /// <param name="dst">The destination object to write into</param>
+        /// <param name="dst">The dst</param>
         public static void MapInputReverse(ImPlotInputMap dst)
         {
             ImPlotNative.ImPlot_MapInputReverse(dst);
@@ -463,7 +463,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Nexts the colormap color
         /// </summary>
-        /// <returns>The return value from the native function</returns>
+        /// <returns>The retval</returns>
         public static Vector4F NextColormapColor()
         {
             ImPlotNative.ImPlot_NextColormapColor(out Vector4F retval);
@@ -474,7 +474,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Pixelses the to plot using the specified pix
         /// </summary>
         /// <param name="pix">The pix</param>
-        /// <returns>The return value from the native function</returns>
+        /// <returns>The retval</returns>
         public static ImPlotPoint PixelsToPlot(Vector2F pix)
         {
             ImAxis xAxis = (ImAxis) (-1);
@@ -488,7 +488,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="pix">The pix</param>
         /// <param name="xAxis">The axis</param>
-        /// <returns>The return value from the native function</returns>
+        /// <returns>The retval</returns>
         public static ImPlotPoint PixelsToPlot(Vector2F pix, ImAxis xAxis)
         {
             ImAxis yAxis = (ImAxis) (-1);
@@ -502,7 +502,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="pix">The pix</param>
         /// <param name="xAxis">The axis</param>
         /// <param name="yAxis">The axis</param>
-        /// <returns>The return value from the native function</returns>
+        /// <returns>The retval</returns>
         public static ImPlotPoint PixelsToPlot(Vector2F pix, ImAxis xAxis, ImAxis yAxis)
         {
             ImPlotNative.ImPlot_PixelsToPlot_Vec2(out ImPlotPoint retval, pix, xAxis, yAxis);
@@ -512,9 +512,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Pixelses the to plot using the specified x
         /// </summary>
-        /// <param name="x">The x-coordinate</param>
-        /// <param name="y">The y-coordinate</param>
-        /// <returns>The return value from the native function</returns>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <returns>The retval</returns>
         public static ImPlotPoint PixelsToPlot(float x, float y)
         {
             ImAxis xAxis = (ImAxis) (-1);
@@ -526,10 +526,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Pixelses the to plot using the specified x
         /// </summary>
-        /// <param name="x">The x-coordinate</param>
-        /// <param name="y">The y-coordinate</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
         /// <param name="xAxis">The axis</param>
-        /// <returns>The return value from the native function</returns>
+        /// <returns>The retval</returns>
         public static ImPlotPoint PixelsToPlot(float x, float y, ImAxis xAxis)
         {
             ImAxis yAxis = (ImAxis) (-1);
@@ -540,11 +540,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Pixelses the to plot using the specified x
         /// </summary>
-        /// <param name="x">The x-coordinate</param>
-        /// <param name="y">The y-coordinate</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
         /// <param name="xAxis">The axis</param>
         /// <param name="yAxis">The axis</param>
-        /// <returns>The return value from the native function</returns>
+        /// <returns>The retval</returns>
         public static ImPlotPoint PixelsToPlot(float x, float y, ImAxis xAxis, ImAxis yAxis)
         {
             ImPlotNative.ImPlot_PixelsToPlot_Float(out ImPlotPoint retval, x, y, xAxis, yAxis);
@@ -554,10 +554,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The array of label identifiers</param>
-        /// <param name="values">The array of data values to plot</param>
+        /// <param name="labelIds">The label ids</param>
+        /// <param name="values">The values</param>
         /// <param name="itemCount">The item count</param>
-        /// <param name="groupCount">The number of groups to display</param>
+        /// <param name="groupCount">The group count</param>
         public static void PlotBarGroups(string[] labelIds, float[] values, int itemCount, int groupCount)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -573,11 +573,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The array of label identifiers</param>
-        /// <param name="values">The array of data values to plot</param>
+        /// <param name="labelIds">The label ids</param>
+        /// <param name="values">The values</param>
         /// <param name="itemCount">The item count</param>
-        /// <param name="groupCount">The number of groups to display</param>
-        /// <param name="groupSize">The size of each group</param>
+        /// <param name="groupCount">The group count</param>
+        /// <param name="groupSize">The group size</param>
         public static void PlotBarGroups(string[] labelIds, float[] values, int itemCount, int groupCount, double groupSize)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -593,12 +593,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The array of label identifiers</param>
-        /// <param name="values">The array of data values to plot</param>
+        /// <param name="labelIds">The label ids</param>
+        /// <param name="values">The values</param>
         /// <param name="itemCount">The item count</param>
-        /// <param name="groupCount">The number of groups to display</param>
-        /// <param name="groupSize">The size of each group</param>
-        /// <param name="shift">The shift offset</param>
+        /// <param name="groupCount">The group count</param>
+        /// <param name="groupSize">The group size</param>
+        /// <param name="shift">The shift</param>
         public static void PlotBarGroups(string[] labelIds, float[] values, int itemCount, int groupCount, double groupSize, double shift)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -614,13 +614,13 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The array of label identifiers</param>
-        /// <param name="values">The array of data values to plot</param>
+        /// <param name="labelIds">The label ids</param>
+        /// <param name="values">The values</param>
         /// <param name="itemCount">The item count</param>
-        /// <param name="groupCount">The number of groups to display</param>
-        /// <param name="groupSize">The size of each group</param>
-        /// <param name="shift">The shift offset</param>
-        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="groupCount">The group count</param>
+        /// <param name="groupSize">The group size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBarGroups(string[] labelIds, float[] values, int itemCount, int groupCount, double groupSize, double shift, ImPlotBarGroupsFlags flags)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -636,10 +636,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The array of label identifiers</param>
-        /// <param name="values">The array of data values to plot</param>
+        /// <param name="labelIds">The label ids</param>
+        /// <param name="values">The values</param>
         /// <param name="itemCount">The item count</param>
-        /// <param name="groupCount">The number of groups to display</param>
+        /// <param name="groupCount">The group count</param>
         public static void PlotBarGroups(string[] labelIds, double[] values, int itemCount, int groupCount)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -655,11 +655,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The array of label identifiers</param>
-        /// <param name="values">The array of data values to plot</param>
+        /// <param name="labelIds">The label ids</param>
+        /// <param name="values">The values</param>
         /// <param name="itemCount">The item count</param>
-        /// <param name="groupCount">The number of groups to display</param>
-        /// <param name="groupSize">The size of each group</param>
+        /// <param name="groupCount">The group count</param>
+        /// <param name="groupSize">The group size</param>
         public static void PlotBarGroups(string[] labelIds, double[] values, int itemCount, int groupCount, double groupSize)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -675,12 +675,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The array of label identifiers</param>
-        /// <param name="values">The array of data values to plot</param>
+        /// <param name="labelIds">The label ids</param>
+        /// <param name="values">The values</param>
         /// <param name="itemCount">The item count</param>
-        /// <param name="groupCount">The number of groups to display</param>
-        /// <param name="groupSize">The size of each group</param>
-        /// <param name="shift">The shift offset</param>
+        /// <param name="groupCount">The group count</param>
+        /// <param name="groupSize">The group size</param>
+        /// <param name="shift">The shift</param>
         public static void PlotBarGroups(string[] labelIds, double[] values, int itemCount, int groupCount, double groupSize, double shift)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -696,13 +696,13 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The array of label identifiers</param>
-        /// <param name="values">The array of data values to plot</param>
+        /// <param name="labelIds">The label ids</param>
+        /// <param name="values">The values</param>
         /// <param name="itemCount">The item count</param>
-        /// <param name="groupCount">The number of groups to display</param>
-        /// <param name="groupSize">The size of each group</param>
-        /// <param name="shift">The shift offset</param>
-        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="groupCount">The group count</param>
+        /// <param name="groupSize">The group size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBarGroups(string[] labelIds, double[] values, int itemCount, int groupCount, double groupSize, double shift, ImPlotBarGroupsFlags flags)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -718,10 +718,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The array of label identifiers</param>
-        /// <param name="values">The array of data values to plot</param>
+        /// <param name="labelIds">The label ids</param>
+        /// <param name="values">The values</param>
         /// <param name="itemCount">The item count</param>
-        /// <param name="groupCount">The number of groups to display</param>
+        /// <param name="groupCount">The group count</param>
         public static void PlotBarGroups(string[] labelIds, sbyte[] values, int itemCount, int groupCount)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -737,11 +737,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The array of label identifiers</param>
-        /// <param name="values">The array of data values to plot</param>
+        /// <param name="labelIds">The label ids</param>
+        /// <param name="values">The values</param>
         /// <param name="itemCount">The item count</param>
-        /// <param name="groupCount">The number of groups to display</param>
-        /// <param name="groupSize">The size of each group</param>
+        /// <param name="groupCount">The group count</param>
+        /// <param name="groupSize">The group size</param>
         public static void PlotBarGroups(string[] labelIds, sbyte[] values, int itemCount, int groupCount, double groupSize)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -757,12 +757,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The array of label identifiers</param>
-        /// <param name="values">The array of data values to plot</param>
+        /// <param name="labelIds">The label ids</param>
+        /// <param name="values">The values</param>
         /// <param name="itemCount">The item count</param>
-        /// <param name="groupCount">The number of groups to display</param>
-        /// <param name="groupSize">The size of each group</param>
-        /// <param name="shift">The shift offset</param>
+        /// <param name="groupCount">The group count</param>
+        /// <param name="groupSize">The group size</param>
+        /// <param name="shift">The shift</param>
         public static void PlotBarGroups(string[] labelIds, sbyte[] values, int itemCount, int groupCount, double groupSize, double shift)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -778,13 +778,13 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The array of label identifiers</param>
-        /// <param name="values">The array of data values to plot</param>
+        /// <param name="labelIds">The label ids</param>
+        /// <param name="values">The values</param>
         /// <param name="itemCount">The item count</param>
-        /// <param name="groupCount">The number of groups to display</param>
-        /// <param name="groupSize">The size of each group</param>
-        /// <param name="shift">The shift offset</param>
-        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="groupCount">The group count</param>
+        /// <param name="groupSize">The group size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBarGroups(string[] labelIds, sbyte[] values, int itemCount, int groupCount, double groupSize, double shift, ImPlotBarGroupsFlags flags)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -800,10 +800,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The array of label identifiers</param>
-        /// <param name="values">The array of data values to plot</param>
+        /// <param name="labelIds">The label ids</param>
+        /// <param name="values">The values</param>
         /// <param name="itemCount">The item count</param>
-        /// <param name="groupCount">The number of groups to display</param>
+        /// <param name="groupCount">The group count</param>
         public static void PlotBarGroups(string[] labelIds, byte[] values, int itemCount, int groupCount)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -819,11 +819,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The array of label identifiers</param>
-        /// <param name="values">The array of data values to plot</param>
+        /// <param name="labelIds">The label ids</param>
+        /// <param name="values">The values</param>
         /// <param name="itemCount">The item count</param>
-        /// <param name="groupCount">The number of groups to display</param>
-        /// <param name="groupSize">The size of each group</param>
+        /// <param name="groupCount">The group count</param>
+        /// <param name="groupSize">The group size</param>
         public static void PlotBarGroups(string[] labelIds, byte[] values, int itemCount, int groupCount, double groupSize)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -839,12 +839,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The array of label identifiers</param>
-        /// <param name="values">The array of data values to plot</param>
+        /// <param name="labelIds">The label ids</param>
+        /// <param name="values">The values</param>
         /// <param name="itemCount">The item count</param>
-        /// <param name="groupCount">The number of groups to display</param>
-        /// <param name="groupSize">The size of each group</param>
-        /// <param name="shift">The shift offset</param>
+        /// <param name="groupCount">The group count</param>
+        /// <param name="groupSize">The group size</param>
+        /// <param name="shift">The shift</param>
         public static void PlotBarGroups(string[] labelIds, byte[] values, int itemCount, int groupCount, double groupSize, double shift)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -860,13 +860,13 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The array of label identifiers</param>
-        /// <param name="values">The array of data values to plot</param>
+        /// <param name="labelIds">The label ids</param>
+        /// <param name="values">The values</param>
         /// <param name="itemCount">The item count</param>
-        /// <param name="groupCount">The number of groups to display</param>
-        /// <param name="groupSize">The size of each group</param>
-        /// <param name="shift">The shift offset</param>
-        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="groupCount">The group count</param>
+        /// <param name="groupSize">The group size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBarGroups(string[] labelIds, byte[] values, int itemCount, int groupCount, double groupSize, double shift, ImPlotBarGroupsFlags flags)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -882,10 +882,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The array of label identifiers</param>
-        /// <param name="values">The array of data values to plot</param>
+        /// <param name="labelIds">The label ids</param>
+        /// <param name="values">The values</param>
         /// <param name="itemCount">The item count</param>
-        /// <param name="groupCount">The number of groups to display</param>
+        /// <param name="groupCount">The group count</param>
         public static void PlotBarGroups(string[] labelIds, short[] values, int itemCount, int groupCount)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -901,11 +901,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The array of label identifiers</param>
-        /// <param name="values">The array of data values to plot</param>
+        /// <param name="labelIds">The label ids</param>
+        /// <param name="values">The values</param>
         /// <param name="itemCount">The item count</param>
-        /// <param name="groupCount">The number of groups to display</param>
-        /// <param name="groupSize">The size of each group</param>
+        /// <param name="groupCount">The group count</param>
+        /// <param name="groupSize">The group size</param>
         public static void PlotBarGroups(string[] labelIds, short[] values, int itemCount, int groupCount, double groupSize)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -921,12 +921,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The array of label identifiers</param>
-        /// <param name="values">The array of data values to plot</param>
+        /// <param name="labelIds">The label ids</param>
+        /// <param name="values">The values</param>
         /// <param name="itemCount">The item count</param>
-        /// <param name="groupCount">The number of groups to display</param>
-        /// <param name="groupSize">The size of each group</param>
-        /// <param name="shift">The shift offset</param>
+        /// <param name="groupCount">The group count</param>
+        /// <param name="groupSize">The group size</param>
+        /// <param name="shift">The shift</param>
         public static void PlotBarGroups(string[] labelIds, short[] values, int itemCount, int groupCount, double groupSize, double shift)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -942,13 +942,13 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The array of label identifiers</param>
-        /// <param name="values">The array of data values to plot</param>
+        /// <param name="labelIds">The label ids</param>
+        /// <param name="values">The values</param>
         /// <param name="itemCount">The item count</param>
-        /// <param name="groupCount">The number of groups to display</param>
-        /// <param name="groupSize">The size of each group</param>
-        /// <param name="shift">The shift offset</param>
-        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="groupCount">The group count</param>
+        /// <param name="groupSize">The group size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBarGroups(string[] labelIds, short[] values, int itemCount, int groupCount, double groupSize, double shift, ImPlotBarGroupsFlags flags)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -964,10 +964,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The array of label identifiers</param>
-        /// <param name="values">The array of data values to plot</param>
+        /// <param name="labelIds">The label ids</param>
+        /// <param name="values">The values</param>
         /// <param name="itemCount">The item count</param>
-        /// <param name="groupCount">The number of groups to display</param>
+        /// <param name="groupCount">The group count</param>
         public static void PlotBarGroups(string[] labelIds, ushort[] values, int itemCount, int groupCount)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -983,11 +983,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The array of label identifiers</param>
-        /// <param name="values">The array of data values to plot</param>
+        /// <param name="labelIds">The label ids</param>
+        /// <param name="values">The values</param>
         /// <param name="itemCount">The item count</param>
-        /// <param name="groupCount">The number of groups to display</param>
-        /// <param name="groupSize">The size of each group</param>
+        /// <param name="groupCount">The group count</param>
+        /// <param name="groupSize">The group size</param>
         public static void PlotBarGroups(string[] labelIds, ushort[] values, int itemCount, int groupCount, double groupSize)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -1003,12 +1003,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The array of label identifiers</param>
-        /// <param name="values">The array of data values to plot</param>
+        /// <param name="labelIds">The label ids</param>
+        /// <param name="values">The values</param>
         /// <param name="itemCount">The item count</param>
-        /// <param name="groupCount">The number of groups to display</param>
-        /// <param name="groupSize">The size of each group</param>
-        /// <param name="shift">The shift offset</param>
+        /// <param name="groupCount">The group count</param>
+        /// <param name="groupSize">The group size</param>
+        /// <param name="shift">The shift</param>
         public static void PlotBarGroups(string[] labelIds, ushort[] values, int itemCount, int groupCount, double groupSize, double shift)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -1024,13 +1024,13 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The array of label identifiers</param>
-        /// <param name="values">The array of data values to plot</param>
+        /// <param name="labelIds">The label ids</param>
+        /// <param name="values">The values</param>
         /// <param name="itemCount">The item count</param>
-        /// <param name="groupCount">The number of groups to display</param>
-        /// <param name="groupSize">The size of each group</param>
-        /// <param name="shift">The shift offset</param>
-        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="groupCount">The group count</param>
+        /// <param name="groupSize">The group size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBarGroups(string[] labelIds, ushort[] values, int itemCount, int groupCount, double groupSize, double shift, ImPlotBarGroupsFlags flags)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -1046,10 +1046,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The array of label identifiers</param>
-        /// <param name="values">The array of data values to plot</param>
+        /// <param name="labelIds">The label ids</param>
+        /// <param name="values">The values</param>
         /// <param name="itemCount">The item count</param>
-        /// <param name="groupCount">The number of groups to display</param>
+        /// <param name="groupCount">The group count</param>
         public static void PlotBarGroups(string[] labelIds, int[] values, int itemCount, int groupCount)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -1065,11 +1065,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The array of label identifiers</param>
-        /// <param name="values">The array of data values to plot</param>
+        /// <param name="labelIds">The label ids</param>
+        /// <param name="values">The values</param>
         /// <param name="itemCount">The item count</param>
-        /// <param name="groupCount">The number of groups to display</param>
-        /// <param name="groupSize">The size of each group</param>
+        /// <param name="groupCount">The group count</param>
+        /// <param name="groupSize">The group size</param>
         public static void PlotBarGroups(string[] labelIds, int[] values, int itemCount, int groupCount, double groupSize)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -1085,12 +1085,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The array of label identifiers</param>
-        /// <param name="values">The array of data values to plot</param>
+        /// <param name="labelIds">The label ids</param>
+        /// <param name="values">The values</param>
         /// <param name="itemCount">The item count</param>
-        /// <param name="groupCount">The number of groups to display</param>
-        /// <param name="groupSize">The size of each group</param>
-        /// <param name="shift">The shift offset</param>
+        /// <param name="groupCount">The group count</param>
+        /// <param name="groupSize">The group size</param>
+        /// <param name="shift">The shift</param>
         public static void PlotBarGroups(string[] labelIds, int[] values, int itemCount, int groupCount, double groupSize, double shift)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -1106,13 +1106,13 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The array of label identifiers</param>
-        /// <param name="values">The array of data values to plot</param>
+        /// <param name="labelIds">The label ids</param>
+        /// <param name="values">The values</param>
         /// <param name="itemCount">The item count</param>
-        /// <param name="groupCount">The number of groups to display</param>
-        /// <param name="groupSize">The size of each group</param>
-        /// <param name="shift">The shift offset</param>
-        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="groupCount">The group count</param>
+        /// <param name="groupSize">The group size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBarGroups(string[] labelIds, int[] values, int itemCount, int groupCount, double groupSize, double shift, ImPlotBarGroupsFlags flags)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -1128,10 +1128,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The array of label identifiers</param>
-        /// <param name="values">The array of data values to plot</param>
+        /// <param name="labelIds">The label ids</param>
+        /// <param name="values">The values</param>
         /// <param name="itemCount">The item count</param>
-        /// <param name="groupCount">The number of groups to display</param>
+        /// <param name="groupCount">The group count</param>
         public static void PlotBarGroups(string[] labelIds, uint[] values, int itemCount, int groupCount)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];

@@ -46,7 +46,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
         [Context] private readonly FennecsContext _fennecs;
 
         /// <summary>
-        ///     Benchmarks ForEach query with two components using Fennecs ECS
+        ///     Fennecses the for each
         /// </summary>
         [BenchmarkCategory(Categories.Fennecs), Benchmark]
         public void Fennecs_ForEach()
@@ -55,7 +55,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
         }
 
         /// <summary>
-        ///     Benchmarks Job query with two components using Fennecs ECS
+        ///     Fennecses the job
         /// </summary>
         [BenchmarkCategory(Categories.Fennecs), Benchmark]
         public void Fennecs_Job()
@@ -64,7 +64,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
         }
 
         /// <summary>
-        ///     Benchmarks Raw memory query with two components using Fennecs ECS
+        ///     Fennecses the raw
         /// </summary>
         [BenchmarkCategory(Categories.Fennecs), Benchmark]
         public void Fennecs_Raw()

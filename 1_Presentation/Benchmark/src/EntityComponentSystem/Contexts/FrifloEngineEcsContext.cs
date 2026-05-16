@@ -133,14 +133,13 @@ namespace Alis.Benchmark.EntityComponentSystem.Contexts
             jobTwoWithComposition = queryTwo.ForEach(SystemWithTwoComponentsMultipleComposition.SystemWithTwoComponentsMultipleComposition.FrifloEngineEcsContext.ForEach);
         }
 
-        /// <summary>
-        ///     Initializes a new instance with specified entity count, padding, and component types
-        /// </summary>
-        /// <param name="entityCount">The number of entities to create</param>
+        /// <summary>See padding notes</summary>
+        /// <param name="entityCount"></param>
         /// <param name="padding">
-        ///     The number of padding entities per entry (has no influence on benchmark performance for SystemWith...Components)
+        ///     has no influence on benchmarks performance for: SystemWith...Components
+        ///     e.g. Params[Params(0, 10)] at <see cref="SystemWithOneComponent.EntityPadding" />
         /// </param>
-        /// <param name="componentTypes">The archetype component types</param>
+        /// <param name="componentTypes"></param>
         protected FrifloEngineEcsBaseContext(int entityCount, int padding, ComponentTypes componentTypes) : this()
         {
             EntityStore.EnsureCapacity(entityCount + padding * entityCount);
@@ -160,7 +159,7 @@ namespace Alis.Benchmark.EntityComponentSystem.Contexts
         }
 
         /// <summary>
-        ///     Gets the Friflo ECS entity store
+        ///     Gets the value of the gameObject store
         /// </summary>
         protected EntityStore EntityStore { get; }
 

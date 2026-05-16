@@ -34,24 +34,24 @@ namespace Alis.Extension.Graphic.Sdl2.Enums
     /// </summary>
     public enum GameControllerBindType
     {
-    /// <summary>
-    ///     No binding is defined
-    /// </summary>
-    SdlControllerBindTypeNone,
+        /// <summary>
+        ///     The sdl controller bind type none sdl game controller bind type
+        /// </summary>
+        SdlControllerBindTypeNone,
 
-    /// <summary>
-    ///     Binding maps to a button on the controller
-    /// </summary>
-    SdlControllerBindTypeButton,
+        /// <summary>
+        ///     The sdl controller bind type button sdl game controller bind type
+        /// </summary>
+        SdlControllerBindTypeButton,
 
-    /// <summary>
-    ///     Binding maps to an axis on the controller
-    /// </summary>
-    SdlControllerBindTypeAxis,
+        /// <summary>
+        ///     The sdl controller bind type axis sdl game controller bind type
+        /// </summary>
+        SdlControllerBindTypeAxis,
 
-    /// <summary>
-    ///     Binding maps to a hat (directional pad) position on the controller
-    /// </summary>
-    SdlControllerBindTypeHat
+        /// <summary>
+        ///     The sdl controller bind type hat sdl game controller bind type
+        /// </summary>
+        SdlControllerBindTypeHat
     }
 }

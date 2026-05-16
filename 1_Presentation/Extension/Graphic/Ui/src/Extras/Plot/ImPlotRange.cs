@@ -30,17 +30,17 @@
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     Defines a numeric range with minimum and maximum values, typically used for axis limits in ImPlot.
+    ///     The im plot range
     /// </summary>
     public struct ImPlotRange
     {
         /// <summary>
-        ///     Minimum value of the range.
+        ///     The min
         /// </summary>
         public double Min { get; set; }
 
         /// <summary>
-        ///     Maximum value of the range.
+        ///     The max
         /// </summary>
         public double Max { get; set; }
     }

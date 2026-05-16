@@ -45,7 +45,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
         [Context] private readonly FlecsContext _flecs;
 
         /// <summary>
-        ///     Benchmarks Each query with two components using FlecsNet
+        ///     Flecses the net each
         /// </summary>
         [BenchmarkCategory(Categories.FlecsNet), Benchmark]
         public void FlecsNet_Each()
@@ -54,7 +54,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
         }
 
         /// <summary>
-        ///     Benchmarks Iter query with two components using FlecsNet
+        ///     Flecses the net iter
         /// </summary>
         [BenchmarkCategory(Categories.FlecsNet), Benchmark]
         public void FlecsNet_Iter()

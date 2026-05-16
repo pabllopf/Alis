@@ -34,104 +34,104 @@ namespace Alis.Extension.Graphic.Sdl2.Enums
     /// </summary>
     public enum LogCategory
     {
-    /// <summary>
-    ///     Log messages from application-level code
-    /// </summary>
-    SdlLogCategoryApplication,
+        /// <summary>
+        ///     The sdl log category application sdl log category
+        /// </summary>
+        SdlLogCategoryApplication,
 
-    /// <summary>
-    ///     Log messages for internal SDL error reporting
-    /// </summary>
-    SdlLogCategoryError,
+        /// <summary>
+        ///     The sdl log category error sdl log category
+        /// </summary>
+        SdlLogCategoryError,
 
-    /// <summary>
-    ///     Log messages for assertion failures
-    /// </summary>
-    SdlLogCategoryAssert,
+        /// <summary>
+        ///     The sdl log category assert sdl log category
+        /// </summary>
+        SdlLogCategoryAssert,
 
-    /// <summary>
-    ///     Log messages from SDL system-level components
-    /// </summary>
-    SdlLogCategorySystem,
+        /// <summary>
+        ///     The sdl log category system sdl log category
+        /// </summary>
+        SdlLogCategorySystem,
 
-    /// <summary>
-    ///     Log messages from the audio subsystem
-    /// </summary>
-    SdlLogCategoryAudio,
+        /// <summary>
+        ///     The sdl log category audio sdl log category
+        /// </summary>
+        SdlLogCategoryAudio,
 
-    /// <summary>
-    ///     Log messages from the video subsystem
-    /// </summary>
-    SdlLogCategoryVideo,
+        /// <summary>
+        ///     The sdl log category video sdl log category
+        /// </summary>
+        SdlLogCategoryVideo,
 
-    /// <summary>
-    ///     Log messages from the render subsystem
-    /// </summary>
-    SdlLogCategoryRender,
+        /// <summary>
+        ///     The sdl log category render sdl log category
+        /// </summary>
+        SdlLogCategoryRender,
 
-    /// <summary>
-    ///     Log messages from the input subsystem
-    /// </summary>
-    SdlLogCategoryInput,
+        /// <summary>
+        ///     The sdl log category input sdl log category
+        /// </summary>
+        SdlLogCategoryInput,
 
-    /// <summary>
-    ///     Log messages from SDL test utilities
-    /// </summary>
-    SdlLogCategoryTest,
+        /// <summary>
+        ///     The sdl log category test sdl log category
+        /// </summary>
+        SdlLogCategoryTest,
 
-    /// <summary>
-    ///     Reserved for future SDL log categories (slot 1)
-    /// </summary>
-    SdlLogCategoryReserved1,
+        /// <summary>
+        ///     The sdl log category reserved1 sdl log category
+        /// </summary>
+        SdlLogCategoryReserved1,
 
-    /// <summary>
-    ///     Reserved for future SDL log categories (slot 2)
-    /// </summary>
-    SdlLogCategoryReserved2,
+        /// <summary>
+        ///     The sdl log category reserved2 sdl log category
+        /// </summary>
+        SdlLogCategoryReserved2,
 
-    /// <summary>
-    ///     Reserved for future SDL log categories (slot 3)
-    /// </summary>
-    SdlLogCategoryReserved3,
+        /// <summary>
+        ///     The sdl log category reserved3 sdl log category
+        /// </summary>
+        SdlLogCategoryReserved3,
 
-    /// <summary>
-    ///     Reserved for future SDL log categories (slot 4)
-    /// </summary>
-    SdlLogCategoryReserved4,
+        /// <summary>
+        ///     The sdl log category reserved4 sdl log category
+        /// </summary>
+        SdlLogCategoryReserved4,
 
-    /// <summary>
-    ///     Reserved for future SDL log categories (slot 5)
-    /// </summary>
-    SdlLogCategoryReserved5,
+        /// <summary>
+        ///     The sdl log category reserved5 sdl log category
+        /// </summary>
+        SdlLogCategoryReserved5,
 
-    /// <summary>
-    ///     Reserved for future SDL log categories (slot 6)
-    /// </summary>
-    SdlLogCategoryReserved6,
+        /// <summary>
+        ///     The sdl log category reserved6 sdl log category
+        /// </summary>
+        SdlLogCategoryReserved6,
 
-    /// <summary>
-    ///     Reserved for future SDL log categories (slot 7)
-    /// </summary>
-    SdlLogCategoryReserved7,
+        /// <summary>
+        ///     The sdl log category reserved7 sdl log category
+        /// </summary>
+        SdlLogCategoryReserved7,
 
-    /// <summary>
-    ///     Reserved for future SDL log categories (slot 8)
-    /// </summary>
-    SdlLogCategoryReserved8,
+        /// <summary>
+        ///     The sdl log category reserved8 sdl log category
+        /// </summary>
+        SdlLogCategoryReserved8,
 
-    /// <summary>
-    ///     Reserved for future SDL log categories (slot 9)
-    /// </summary>
-    SdlLogCategoryReserved9,
+        /// <summary>
+        ///     The sdl log category reserved9 sdl log category
+        /// </summary>
+        SdlLogCategoryReserved9,
 
-    /// <summary>
-    ///     Reserved for future SDL log categories (slot 10)
-    /// </summary>
-    SdlLogCategoryReserved10,
+        /// <summary>
+        ///     The sdl log category reserved10 sdl log category
+        /// </summary>
+        SdlLogCategoryReserved10,
 
-    /// <summary>
-    ///     Custom user-defined log category (beyond the reserved range)
-    /// </summary>
-    SdlLogCategoryCustom
+        /// <summary>
+        ///     The sdl log category custom sdl log category
+        /// </summary>
+        SdlLogCategoryCustom
     }
 }

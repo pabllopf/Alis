@@ -32,17 +32,17 @@ using System.Text;
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     Provides managed wrappers over the CImPlot native library for creating and interacting with ImPlot plots.
+    ///     The im plot class
     /// </summary>
     public static partial class ImPlot
     {
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
         public static void PlotBars(string labelId, uint[] values, int count, double barSize)
         {
             ImPlotNative.ImPlot_PlotBars_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, 0, 0, 0, sizeof(uint));
@@ -51,11 +51,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
-        /// <param name="shift">The shift offset</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="shift">The shift</param>
         public static void PlotBars(string labelId, uint[] values, int count, double barSize, double shift)
         {
             ImPlotNative.ImPlot_PlotBars_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, 0, 0, sizeof(uint));
@@ -64,12 +64,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
-        /// <param name="shift">The shift offset</param>
-        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBars(string labelId, uint[] values, int count, double barSize, double shift, ImPlotBarsFlags flags)
         {
             ImPlotNative.ImPlot_PlotBars_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, 0, sizeof(uint));
@@ -78,13 +78,13 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
-        /// <param name="shift">The shift offset</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <param name="offset">The offset from the origin</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotBars(string labelId, uint[] values, int count, double barSize, double shift, ImPlotBarsFlags flags, int offset)
         {
             ImPlotNative.ImPlot_PlotBars_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, offset, sizeof(uint));
@@ -93,14 +93,14 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
-        /// <param name="shift">The shift offset</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <param name="offset">The offset from the origin</param>
-        /// <param name="stride">The byte stride between elements</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotBars(string labelId, uint[] values, int count, double barSize, double shift, ImPlotBarsFlags flags, int offset, int stride)
         {
             ImPlotNative.ImPlot_PlotBars_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, offset, stride);
@@ -109,9 +109,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="count">The number of elements</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotBars(string labelId, long[] values, int count)
         {
             ImPlotNative.ImPlot_PlotBars_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 0.67, 0, 0, 0, sizeof(long));
@@ -120,10 +120,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
         public static void PlotBars(string labelId, long[] values, int count, double barSize)
         {
             ImPlotNative.ImPlot_PlotBars_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, 0, 0, 0, sizeof(long));
@@ -132,11 +132,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
-        /// <param name="shift">The shift offset</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="shift">The shift</param>
         public static void PlotBars(string labelId, long[] values, int count, double barSize, double shift)
         {
             ImPlotNative.ImPlot_PlotBars_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, 0, 0, sizeof(long));
@@ -145,12 +145,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
-        /// <param name="shift">The shift offset</param>
-        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBars(string labelId, long[] values, int count, double barSize, double shift, ImPlotBarsFlags flags)
         {
             ImPlotNative.ImPlot_PlotBars_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, 0, sizeof(long));
@@ -159,13 +159,13 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
-        /// <param name="shift">The shift offset</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <param name="offset">The offset from the origin</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotBars(string labelId, long[] values, int count, double barSize, double shift, ImPlotBarsFlags flags, int offset)
         {
             ImPlotNative.ImPlot_PlotBars_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, offset, sizeof(long));
@@ -174,14 +174,14 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
-        /// <param name="shift">The shift offset</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <param name="offset">The offset from the origin</param>
-        /// <param name="stride">The byte stride between elements</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotBars(string labelId, long[] values, int count, double barSize, double shift, ImPlotBarsFlags flags, int offset, int stride)
         {
             ImPlotNative.ImPlot_PlotBars_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, offset, stride);
@@ -190,9 +190,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="count">The number of elements</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotBars(string labelId, ulong[] values, int count)
         {
             ImPlotNative.ImPlot_PlotBars_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 0.67, 0, 0, 0, sizeof(ulong));
@@ -201,10 +201,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
         public static void PlotBars(string labelId, ulong[] values, int count, double barSize)
         {
             ImPlotNative.ImPlot_PlotBars_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, 0, 0, 0, sizeof(ulong));
@@ -213,11 +213,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
-        /// <param name="shift">The shift offset</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="shift">The shift</param>
         public static void PlotBars(string labelId, ulong[] values, int count, double barSize, double shift)
         {
             ImPlotNative.ImPlot_PlotBars_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, 0, 0, sizeof(ulong));
@@ -226,12 +226,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
-        /// <param name="shift">The shift offset</param>
-        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBars(string labelId, ulong[] values, int count, double barSize, double shift, ImPlotBarsFlags flags)
         {
             ImPlotNative.ImPlot_PlotBars_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, 0, sizeof(ulong));
@@ -240,13 +240,13 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
-        /// <param name="shift">The shift offset</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <param name="offset">The offset from the origin</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotBars(string labelId, ulong[] values, int count, double barSize, double shift, ImPlotBarsFlags flags, int offset)
         {
             ImPlotNative.ImPlot_PlotBars_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, offset, sizeof(ulong));
@@ -255,14 +255,14 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
-        /// <param name="shift">The shift offset</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <param name="offset">The offset from the origin</param>
-        /// <param name="stride">The byte stride between elements</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotBars(string labelId, ulong[] values, int count, double barSize, double shift, ImPlotBarsFlags flags, int offset, int stride)
         {
             ImPlotNative.ImPlot_PlotBars_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, offset, stride);
@@ -271,11 +271,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="xs">The array of x-coordinate values</param>
-        /// <param name="ys">The array of y-coordinate values</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
         public static void PlotBars(string labelId, ref float xs, ref float ys, int count, double barSize)
         {
             ImPlotNative.ImPlot_PlotBars_FloatPtrFloatPtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, barSize, 0, 0, sizeof(float));
@@ -284,12 +284,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="xs">The array of x-coordinate values</param>
-        /// <param name="ys">The array of y-coordinate values</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
-        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBars(string labelId, ref float xs, ref float ys, int count, double barSize, ImPlotBarsFlags flags)
         {
             ImPlotNative.ImPlot_PlotBars_FloatPtrFloatPtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, barSize, flags, 0, sizeof(float));
@@ -298,13 +298,13 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="xs">The array of x-coordinate values</param>
-        /// <param name="ys">The array of y-coordinate values</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <param name="offset">The offset from the origin</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotBars(string labelId, ref float xs, ref float ys, int count, double barSize, ImPlotBarsFlags flags, int offset)
         {
             ImPlotNative.ImPlot_PlotBars_FloatPtrFloatPtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, barSize, flags, offset, sizeof(float));
@@ -313,14 +313,14 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="xs">The array of x-coordinate values</param>
-        /// <param name="ys">The array of y-coordinate values</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <param name="offset">The offset from the origin</param>
-        /// <param name="stride">The byte stride between elements</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotBars(string labelId, ref float xs, ref float ys, int count, double barSize, ImPlotBarsFlags flags, int offset, int stride)
         {
             ImPlotNative.ImPlot_PlotBars_FloatPtrFloatPtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, barSize, flags, offset, stride);
@@ -329,11 +329,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="xs">The array of x-coordinate values</param>
-        /// <param name="ys">The array of y-coordinate values</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
         public static void PlotBars(string labelId, ref double xs, ref double ys, int count, double barSize)
         {
             ImPlotNative.ImPlot_PlotBars_doublePtrdoublePtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, barSize, 0, 0, sizeof(double));
@@ -342,12 +342,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="xs">The array of x-coordinate values</param>
-        /// <param name="ys">The array of y-coordinate values</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
-        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBars(string labelId, ref double xs, ref double ys, int count, double barSize, ImPlotBarsFlags flags)
         {
             ImPlotNative.ImPlot_PlotBars_doublePtrdoublePtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, barSize, flags, 0, sizeof(double));
@@ -356,13 +356,13 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="xs">The array of x-coordinate values</param>
-        /// <param name="ys">The array of y-coordinate values</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <param name="offset">The offset from the origin</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotBars(string labelId, ref double xs, ref double ys, int count, double barSize, ImPlotBarsFlags flags, int offset)
         {
             ImPlotNative.ImPlot_PlotBars_doublePtrdoublePtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, barSize, flags, offset, sizeof(double));
@@ -371,14 +371,14 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="xs">The array of x-coordinate values</param>
-        /// <param name="ys">The array of y-coordinate values</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <param name="offset">The offset from the origin</param>
-        /// <param name="stride">The byte stride between elements</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotBars(string labelId, ref double xs, ref double ys, int count, double barSize, ImPlotBarsFlags flags, int offset, int stride)
         {
             ImPlotNative.ImPlot_PlotBars_doublePtrdoublePtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, barSize, flags, offset, stride);
@@ -387,11 +387,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="xs">The array of x-coordinate values</param>
-        /// <param name="ys">The array of y-coordinate values</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
         public static void PlotBars(string labelId, ref sbyte xs, ref sbyte ys, int count, double barSize)
         {
             ImPlotNative.ImPlot_PlotBars_S8PtrS8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, barSize, 0, 0, sizeof(sbyte));
@@ -400,12 +400,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="xs">The array of x-coordinate values</param>
-        /// <param name="ys">The array of y-coordinate values</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
-        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBars(string labelId, ref sbyte xs, ref sbyte ys, int count, double barSize, ImPlotBarsFlags flags)
         {
             ImPlotNative.ImPlot_PlotBars_S8PtrS8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, barSize, flags, 0, sizeof(sbyte));
@@ -414,13 +414,13 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="xs">The array of x-coordinate values</param>
-        /// <param name="ys">The array of y-coordinate values</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <param name="offset">The offset from the origin</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotBars(string labelId, ref sbyte xs, ref sbyte ys, int count, double barSize, ImPlotBarsFlags flags, int offset)
         {
             ImPlotNative.ImPlot_PlotBars_S8PtrS8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, barSize, flags, offset, sizeof(sbyte));
@@ -429,14 +429,14 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="xs">The array of x-coordinate values</param>
-        /// <param name="ys">The array of y-coordinate values</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <param name="offset">The offset from the origin</param>
-        /// <param name="stride">The byte stride between elements</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotBars(string labelId, ref sbyte xs, ref sbyte ys, int count, double barSize, ImPlotBarsFlags flags, int offset, int stride)
         {
             ImPlotNative.ImPlot_PlotBars_S8PtrS8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, barSize, flags, offset, stride);
@@ -445,11 +445,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="xs">The array of x-coordinate values</param>
-        /// <param name="ys">The array of y-coordinate values</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
         public static void PlotBars(string labelId, ref byte xs, ref byte ys, int count, double barSize)
         {
             ImPlotNative.ImPlot_PlotBars_U8PtrU8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, barSize, 0, 0, sizeof(byte));
@@ -458,12 +458,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="xs">The array of x-coordinate values</param>
-        /// <param name="ys">The array of y-coordinate values</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
-        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBars(string labelId, ref byte xs, ref byte ys, int count, double barSize, ImPlotBarsFlags flags)
         {
             ImPlotNative.ImPlot_PlotBars_U8PtrU8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, barSize, flags, 0, sizeof(byte));
@@ -472,13 +472,13 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="xs">The array of x-coordinate values</param>
-        /// <param name="ys">The array of y-coordinate values</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <param name="offset">The offset from the origin</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotBars(string labelId, ref byte xs, ref byte ys, int count, double barSize, ImPlotBarsFlags flags, int offset)
         {
             ImPlotNative.ImPlot_PlotBars_U8PtrU8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, barSize, flags, offset, sizeof(byte));
@@ -487,14 +487,14 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="xs">The array of x-coordinate values</param>
-        /// <param name="ys">The array of y-coordinate values</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <param name="offset">The offset from the origin</param>
-        /// <param name="stride">The byte stride between elements</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotBars(string labelId, ref byte xs, ref byte ys, int count, double barSize, ImPlotBarsFlags flags, int offset, int stride)
         {
             ImPlotNative.ImPlot_PlotBars_U8PtrU8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, barSize, flags, offset, stride);
@@ -503,11 +503,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="xs">The array of x-coordinate values</param>
-        /// <param name="ys">The array of y-coordinate values</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
         public static void PlotBars(string labelId, ref short xs, ref short ys, int count, double barSize)
         {
             ImPlotNative.ImPlot_PlotBars_S16PtrS16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, barSize, 0, 0, sizeof(short));
@@ -516,12 +516,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="xs">The array of x-coordinate values</param>
-        /// <param name="ys">The array of y-coordinate values</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
-        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBars(string labelId, ref short xs, ref short ys, int count, double barSize, ImPlotBarsFlags flags)
         {
             ImPlotNative.ImPlot_PlotBars_S16PtrS16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, barSize, flags, 0, sizeof(short));
@@ -530,13 +530,13 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="xs">The array of x-coordinate values</param>
-        /// <param name="ys">The array of y-coordinate values</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <param name="offset">The offset from the origin</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotBars(string labelId, ref short xs, ref short ys, int count, double barSize, ImPlotBarsFlags flags, int offset)
         {
             ImPlotNative.ImPlot_PlotBars_S16PtrS16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, barSize, flags, offset, sizeof(short));
@@ -545,14 +545,14 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="xs">The array of x-coordinate values</param>
-        /// <param name="ys">The array of y-coordinate values</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <param name="offset">The offset from the origin</param>
-        /// <param name="stride">The byte stride between elements</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotBars(string labelId, ref short xs, ref short ys, int count, double barSize, ImPlotBarsFlags flags, int offset, int stride)
         {
             ImPlotNative.ImPlot_PlotBars_S16PtrS16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, barSize, flags, offset, stride);
@@ -561,11 +561,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="xs">The array of x-coordinate values</param>
-        /// <param name="ys">The array of y-coordinate values</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
         public static void PlotBars(string labelId, ref ushort xs, ref ushort ys, int count, double barSize)
         {
             ImPlotNative.ImPlot_PlotBars_U16PtrU16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, barSize, 0, 0, sizeof(ushort));
@@ -574,12 +574,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="xs">The array of x-coordinate values</param>
-        /// <param name="ys">The array of y-coordinate values</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
-        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBars(string labelId, ref ushort xs, ref ushort ys, int count, double barSize, ImPlotBarsFlags flags)
         {
             ImPlotNative.ImPlot_PlotBars_U16PtrU16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, barSize, flags, 0, sizeof(ushort));
@@ -588,13 +588,13 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="xs">The array of x-coordinate values</param>
-        /// <param name="ys">The array of y-coordinate values</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <param name="offset">The offset from the origin</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotBars(string labelId, ref ushort xs, ref ushort ys, int count, double barSize, ImPlotBarsFlags flags, int offset)
         {
             ImPlotNative.ImPlot_PlotBars_U16PtrU16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, barSize, flags, offset, sizeof(ushort));
@@ -603,14 +603,14 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="xs">The array of x-coordinate values</param>
-        /// <param name="ys">The array of y-coordinate values</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <param name="offset">The offset from the origin</param>
-        /// <param name="stride">The byte stride between elements</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotBars(string labelId, ref ushort xs, ref ushort ys, int count, double barSize, ImPlotBarsFlags flags, int offset, int stride)
         {
             ImPlotNative.ImPlot_PlotBars_U16PtrU16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, barSize, flags, offset, stride);
@@ -619,11 +619,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="xs">The array of x-coordinate values</param>
-        /// <param name="ys">The array of y-coordinate values</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
         public static void PlotBars(string labelId, ref int xs, ref int ys, int count, double barSize)
         {
             ImPlotNative.ImPlot_PlotBars_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, barSize, 0, 0, sizeof(int));
@@ -632,12 +632,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="xs">The array of x-coordinate values</param>
-        /// <param name="ys">The array of y-coordinate values</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
-        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBars(string labelId, ref int xs, ref int ys, int count, double barSize, ImPlotBarsFlags flags)
         {
             ImPlotNative.ImPlot_PlotBars_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, barSize, flags, 0, sizeof(int));
@@ -646,13 +646,13 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="xs">The array of x-coordinate values</param>
-        /// <param name="ys">The array of y-coordinate values</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <param name="offset">The offset from the origin</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotBars(string labelId, ref int xs, ref int ys, int count, double barSize, ImPlotBarsFlags flags, int offset)
         {
             ImPlotNative.ImPlot_PlotBars_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, barSize, flags, offset, sizeof(int));
@@ -661,14 +661,14 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="xs">The array of x-coordinate values</param>
-        /// <param name="ys">The array of y-coordinate values</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <param name="offset">The offset from the origin</param>
-        /// <param name="stride">The byte stride between elements</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotBars(string labelId, ref int xs, ref int ys, int count, double barSize, ImPlotBarsFlags flags, int offset, int stride)
         {
             ImPlotNative.ImPlot_PlotBars_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, barSize, flags, offset, stride);
@@ -677,11 +677,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="xs">The array of x-coordinate values</param>
-        /// <param name="ys">The array of y-coordinate values</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
         public static void PlotBars(string labelId, ref uint xs, ref uint ys, int count, double barSize)
         {
             ImPlotNative.ImPlot_PlotBars_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, barSize, 0, 0, sizeof(uint));
@@ -690,12 +690,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="xs">The array of x-coordinate values</param>
-        /// <param name="ys">The array of y-coordinate values</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
-        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBars(string labelId, ref uint xs, ref uint ys, int count, double barSize, ImPlotBarsFlags flags)
         {
             ImPlotNative.ImPlot_PlotBars_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, barSize, flags, 0, sizeof(uint));
@@ -704,13 +704,13 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="xs">The array of x-coordinate values</param>
-        /// <param name="ys">The array of y-coordinate values</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <param name="offset">The offset from the origin</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotBars(string labelId, ref uint xs, ref uint ys, int count, double barSize, ImPlotBarsFlags flags, int offset)
         {
             ImPlotNative.ImPlot_PlotBars_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, barSize, flags, offset, sizeof(uint));
@@ -719,14 +719,14 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="xs">The array of x-coordinate values</param>
-        /// <param name="ys">The array of y-coordinate values</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <param name="offset">The offset from the origin</param>
-        /// <param name="stride">The byte stride between elements</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotBars(string labelId, ref uint xs, ref uint ys, int count, double barSize, ImPlotBarsFlags flags, int offset, int stride)
         {
             ImPlotNative.ImPlot_PlotBars_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, barSize, flags, offset, stride);
@@ -735,11 +735,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="xs">The array of x-coordinate values</param>
-        /// <param name="ys">The array of y-coordinate values</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
         public static void PlotBars(string labelId, ref long xs, ref long ys, int count, double barSize)
         {
             ImPlotNative.ImPlot_PlotBars_S64PtrS64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, barSize, 0, 0, sizeof(long));
@@ -748,12 +748,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="xs">The array of x-coordinate values</param>
-        /// <param name="ys">The array of y-coordinate values</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
-        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBars(string labelId, ref long xs, ref long ys, int count, double barSize, ImPlotBarsFlags flags)
         {
             ImPlotNative.ImPlot_PlotBars_S64PtrS64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, barSize, flags, 0, sizeof(long));
@@ -762,13 +762,13 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="xs">The array of x-coordinate values</param>
-        /// <param name="ys">The array of y-coordinate values</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The size of each bar in the plot</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <param name="offset">The offset from the origin</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotBars(string labelId, ref long xs, ref long ys, int count, double barSize, ImPlotBarsFlags flags, int offset)
         {
             ImPlotNative.ImPlot_PlotBars_S64PtrS64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, barSize, flags, offset, sizeof(long));

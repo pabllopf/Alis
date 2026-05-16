@@ -182,7 +182,7 @@ namespace Alis.Extension.Network
         /// </summary>
         /// <param name="response">The response</param>
         /// <returns>The string</returns>
-        internal static string GetSubProtocolFromHeader(string response)
+        internal string GetSubProtocolFromHeader(string response)
         {
             // make sure we escape the accept string which could contain special regex characters
             string regexPattern = "Sec-WebSocket-Protocol: (.*)";
@@ -198,7 +198,7 @@ namespace Alis.Extension.Network
         /// <param name="response">The response</param>
         /// <param name="secWebSocketKey">The sec web socket key</param>
         /// <exception cref="WebSocketHandshakeFailedException"></exception>
-        internal static void ThrowIfInvalidAcceptString(Guid guid, string response, string secWebSocketKey)
+        internal void ThrowIfInvalidAcceptString(Guid guid, string response, string secWebSocketKey)
         {
             // make sure we escape the accept string which could contain special regex characters
             string regexPattern = "Sec-WebSocket-Accept: (.*)";
@@ -225,7 +225,7 @@ namespace Alis.Extension.Network
         /// <param name="responseHeader">The response header</param>
         /// <exception cref="InvalidHttpResponseCodeException"></exception>
         /// <exception cref="InvalidHttpResponseCodeException">null null </exception>
-        internal static void ThrowIfInvalidResponseCode(string responseHeader)
+        internal void ThrowIfInvalidResponseCode(string responseHeader)
         {
             string responseCode = HttpHelper.ReadHttpResponseCode(responseHeader);
             if (responseCode == null)
@@ -376,7 +376,7 @@ namespace Alis.Extension.Network
         ///     Generates the sec web socket key
         /// </summary>
         /// <returns>The string</returns>
-        internal static string GenerateSecWebSocketKey()
+        internal string GenerateSecWebSocketKey()
         {
             RandomNumberGenerator rand = RandomNumberGenerator.Create();
             byte[] keyAsBytes = new byte[16];
@@ -392,7 +392,7 @@ namespace Alis.Extension.Network
         /// <param name="secWebSocketProtocol">The sec web socket protocol</param>
         /// <param name="additionalHeaders">The additional headers</param>
         /// <returns>The string</returns>
-        internal static string BuildHandshakeRequest(Uri uri, string secWebSocketKey, string secWebSocketProtocol, string additionalHeaders) => $"GET {uri.PathAndQuery} HTTP/1.1\r\n" +
+        internal string BuildHandshakeRequest(Uri uri, string secWebSocketKey, string secWebSocketProtocol, string additionalHeaders) => $"GET {uri.PathAndQuery} HTTP/1.1\r\n" +
                                                                                                                                          $"Host: {uri.Host}:{uri.Port}\r\n" +
                                                                                                                                          "Upgrade: websocket\r\n" +
                                                                                                                                          "Connection: Upgrade\r\n" +
@@ -408,7 +408,7 @@ namespace Alis.Extension.Network
         /// <param name="stream">The stream</param>
         /// <param name="handshakeHttpRequest">The handshake http request</param>
         /// <param name="guid">The guid</param>
-        internal static async Task SendHandshakeRequest(Stream stream, string handshakeHttpRequest, Guid guid)
+        internal async Task SendHandshakeRequest(Stream stream, string handshakeHttpRequest, Guid guid)
         {
             byte[] httpRequest = Encoding.UTF8.GetBytes(handshakeHttpRequest);
             await stream.WriteAsync(httpRequest, 0, httpRequest.Length);

@@ -33,10 +33,8 @@ using Alis.Core.Graphic.OpenGL.Enums;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     Binds a named texture to a specified texture target
+    ///     The bind texture
     /// </summary>
-    /// <param name="target">Specifies the target to which the texture is bound</param>
-    /// <param name="texture">Specifies the name of the texture object to bind</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void BindTexture(TextureTarget target, uint texture);
 }

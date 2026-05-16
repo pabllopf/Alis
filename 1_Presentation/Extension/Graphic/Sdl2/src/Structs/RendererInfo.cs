@@ -33,120 +33,120 @@ using System.Runtime.InteropServices;
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     Represents an SDL renderer info structure, describing the capabilities and properties of a rendering driver.
+    ///     The sdl renderer info
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct RendererInfo
     {
         /// <summary>
-        ///     A pointer to the null-terminated name string of the renderer (e.g. "opengl", "direct3d").
+        ///     The name
         /// </summary>
         public IntPtr Name { get; set; }
 
         /// <summary>
-        ///     A bitmask of supported renderer flags (e.g. SDL_RENDERER_SOFTWARE, SDL_RENDERER_ACCELERATED, SDL_RENDERER_VSYNC).
+        ///     The flags
         /// </summary>
         public uint flags;
 
         /// <summary>
-        ///     The number of available texture formats in the textureFormats array.
+        ///     The num texture formats
         /// </summary>
         public uint num_texture_formats;
 
         /// <summary>
-        ///     The first supported texture pixel format (SDL_PixelFormatEnum).
+        ///     The texture formats
         /// </summary>
         public int textureFormats0;
 
         /// <summary>
-        ///     The second supported texture pixel format.
+        ///     The texture formats
         /// </summary>
         public int textureFormats1;
 
         /// <summary>
-        ///     The third supported texture pixel format.
+        ///     The texture formats
         /// </summary>
         public int textureFormats2;
 
         /// <summary>
-        ///     The fourth supported texture pixel format.
+        ///     The texture formats
         /// </summary>
         public int textureFormats3;
 
         /// <summary>
-        ///     The fifth supported texture pixel format.
+        ///     The texture formats
         /// </summary>
         public int textureFormats4;
 
         /// <summary>
-        ///     The sixth supported texture pixel format.
+        ///     The texture formats
         /// </summary>
         public int textureFormats5;
 
         /// <summary>
-        ///     The seventh supported texture pixel format.
+        ///     The texture formats
         /// </summary>
         public int textureFormats6;
 
         /// <summary>
-        ///     The eighth supported texture pixel format.
+        ///     The texture formats
         /// </summary>
         public int textureFormats7;
 
         /// <summary>
-        ///     The ninth supported texture pixel format.
+        ///     The texture formats
         /// </summary>
         public int textureFormats8;
 
         /// <summary>
-        ///     The tenth supported texture pixel format.
+        ///     The texture formats
         /// </summary>
         public int textureFormats9;
 
         /// <summary>
-        ///     The eleventh supported texture pixel format.
+        ///     The texture formats 10
         /// </summary>
         public int textureFormats10;
 
         /// <summary>
-        ///     The twelfth supported texture pixel format.
+        ///     The texture formats 11
         /// </summary>
         public int textureFormats11;
 
         /// <summary>
-        ///     The thirteenth supported texture pixel format.
+        ///     The texture formats 12
         /// </summary>
         public int textureFormats12;
 
         /// <summary>
-        ///     The fourteenth supported texture pixel format.
+        ///     The texture formats 13
         /// </summary>
         public int textureFormats13;
 
         /// <summary>
-        ///     The fifteenth supported texture pixel format.
+        ///     The texture formats 14
         /// </summary>
         public int textureFormats14;
 
         /// <summary>
-        ///     The sixteenth supported texture pixel format.
+        ///     The texture formats 15
         /// </summary>
         public int textureFormats15;
 
         /// <summary>
-        ///     The maximum texture width supported by the renderer.
+        ///     The max texture width
         /// </summary>
         public int maxTextureWidth;
 
         /// <summary>
-        ///     The maximum texture height supported by the renderer.
+        ///     The max texture height
         /// </summary>
         public int maxTextureHeight;
 
         /// <summary>
-        ///     Converts the native renderer name pointer to a managed string.
+        ///     Gets the name
         /// </summary>
-        /// <returns>The renderer name as a managed string, or null if the pointer is invalid.</returns>
+        /// <returns>The string</returns>
         public string GetName() => Marshal.PtrToStringAnsi(Name);
     }
 }

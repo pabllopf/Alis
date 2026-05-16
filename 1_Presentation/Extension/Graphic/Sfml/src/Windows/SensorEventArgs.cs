@@ -37,16 +37,16 @@ namespace Alis.Extension.Graphic.Sfml.Windows
     public class SensorEventArgs : EventArgs
     {
         /// <summary>Type of the sensor</summary>
-        public readonly Sensor.Type Type;
+        public Sensor.Type Type;
 
         /// <summary>Current value of the sensor on X axis</summary>
-        public readonly float X;
+        public float X;
 
         /// <summary>Current value of the sensor on Y axis</summary>
-        public readonly float Y;
+        public float Y;
 
         /// <summary>Current value of the sensor on Z axis</summary>
-        public readonly float Z;
+        public float Z;
 
         /// <summary>
         ///     Construct the sensor arguments from a sensor event

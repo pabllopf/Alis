@@ -32,19 +32,19 @@ using System;
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     Flags that control the layout and rendering of heatmap plots in ImPlot.
+    ///     The im plot heatmap flags enum
     /// </summary>
     [Flags]
     public enum ImPlotHeatmapFlags
     {
         /// <summary>
-        ///     Default row-major heatmap layout.
+        ///     The none im plot heatmap flags
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     Interpret input data as column-major instead of row-major.
+        ///     The col major im plot heatmap flags
         /// </summary>
-        ColMajor = 1
+        ColMajor = 1024
     }
 }

@@ -256,6 +256,12 @@ namespace Alis.Extension.Network.Client
                 }
 
                 // Send handshake to register on server
+                Dictionary<string, string> handshakeMsg = new Dictionary<string, string>
+                {
+                    {"action", "join"},
+                    {"playerId", _localPlayer.PlayerId},
+                    {"playerName", _localPlayer.PlayerName}
+                };
                 string handshakePayload = $"{{\"action\":\"join\",\"playerId\":\"{_localPlayer.PlayerId}\",\"playerName\":\"{_localPlayer.PlayerName}\"}}";
                 NetworkMessageEnvelope handshakeEnvelope = new NetworkMessageEnvelope
                 {

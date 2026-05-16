@@ -32,23 +32,23 @@ using System;
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     Flags that control how individual plot items (data series) are displayed and fitted.
+    ///     The im plot item flags enum
     /// </summary>
     [Flags]
     public enum ImPlotItemFlags
     {
         /// <summary>
-        ///     Default item behaviour with legend entry and fit enabled.
+        ///     The none im plot item flags
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     Exclude this item from the plot legend.
+        ///     The no legend im plot item flags
         /// </summary>
         NoLegend = 1,
 
         /// <summary>
-        ///     Exclude this item from automatic axis fitting.
+        ///     The no fit im plot item flags
         /// </summary>
         NoFit = 2
     }

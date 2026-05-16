@@ -107,7 +107,6 @@ namespace Alis.Extension.Graphic.Glfw.Structs
         /// <summary>
         ///     Gets or sets the opacity of the window in the range of <c>0.0</c> and <c>1.0</c> inclusive.
         /// </summary>
-        /// <value>A float between <c>0.0</c> (fully transparent) and <c>1.0</c> (fully opaque).</value>
         public float Opacity
         {
             get => GlfwNative.GetWindowOpacity(handle);

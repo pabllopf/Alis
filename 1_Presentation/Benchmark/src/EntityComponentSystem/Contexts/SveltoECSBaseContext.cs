@@ -50,22 +50,22 @@ namespace Alis.Benchmark.EntityComponentSystem.Contexts
         }
 
         /// <summary>
-        ///     Gets the exclusive entity group for Svelto ECS
+        ///     Gets the value of the group
         /// </summary>
         public static ExclusiveGroup Group { get; } = new ExclusiveGroup();
 
         /// <summary>
-        ///     Gets the entities submission scheduler
+        ///     Gets the value of the scheduler
         /// </summary>
         public SimpleEntitiesSubmissionScheduler Scheduler { get; }
 
         /// <summary>
-        ///     Gets the engines root for Svelto ECS
+        ///     Gets the value of the root
         /// </summary>
         public EnginesRoot Root { get; }
 
         /// <summary>
-        ///     Gets the entity factory for creating entities
+        ///     Gets the value of the factory
         /// </summary>
         public IEntityFactory Factory { get; }
 

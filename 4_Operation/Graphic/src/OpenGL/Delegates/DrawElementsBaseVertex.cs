@@ -34,13 +34,8 @@ using Alis.Core.Graphic.OpenGL.Enums;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     Renders primitives from array data with a per-element offset applied to each vertex
+    ///     The draw elements base vertex
     /// </summary>
-    /// <param name="mode">Specifies the primitive type to render</param>
-    /// <param name="count">Specifies the number of elements to render</param>
-    /// <param name="type">Specifies the type of the index values</param>
-    /// <param name="indices">Specifies a pointer to the index data</param>
-    /// <param name="basevertex">Specifies a constant integer offset applied to each element index</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void DrawElementsBaseVertex(BeginMode mode, int count, DrawElementsType type, IntPtr indices, int basevertex);
 }

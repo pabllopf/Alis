@@ -607,7 +607,7 @@ namespace Alis.Extension.Network.Test
             PublicBufferMemoryStream stream = new PublicBufferMemoryStream(buffer, bufferPool);
 
             long requiredSize = 5000;
-            PublicBufferMemoryStream.ValidateRequiredSize(requiredSize);
+            stream.ValidateRequiredSize(requiredSize);
 
             Assert.True(true); // If we reach this point, no exception was thrown and the test passes
         }
@@ -624,7 +624,7 @@ namespace Alis.Extension.Network.Test
 
             long requiredSize = (long) int.MaxValue + 1;
 
-            Assert.Throws<WebSocketBufferOverflowException>(() => PublicBufferMemoryStream.ValidateRequiredSize(requiredSize));
+            Assert.Throws<WebSocketBufferOverflowException>(() => stream.ValidateRequiredSize(requiredSize));
         }
     }
 }

@@ -160,7 +160,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
         /// <param name="yPos">The y position of the area.</param>
         /// <param name="width">The width of the area.</param>
         /// <param name="height">The height of the area.</param>
-        private static void PlaceRectangularArea(BoardSquare[,] board, int xPos, int yPos, int width, int height)
+        private void PlaceRectangularArea(BoardSquare[,] board, int xPos, int yPos, int width, int height)
         {
             int boardWidth = board.GetLength(0);
             int boardHeight = board.GetLength(1);
@@ -187,7 +187,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
         ///     This method checks all four cardinal directions (up, down, left, right)
         ///     and places walls where floor tiles are adjacent to empty spaces.
         /// </remarks>
-        private static void GenerateWalls(BoardSquare[,] board, int x, int y)
+        private void GenerateWalls(BoardSquare[,] board, int x, int y)
         {
             if (board[x, y].Type != BoardSquareType.Floor)
             {
@@ -224,7 +224,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
         ///     Outer corners are placed where a tile meets two empty spaces at perpendicular directions.
         ///     Priority: LeftDown -> RightDown -> LeftUp -> RightUp (to ensure deterministic results).
         /// </remarks>
-        private static void GenerateOuterCorners(BoardSquare[,] board, int x, int y)
+        private void GenerateOuterCorners(BoardSquare[,] board, int x, int y)
         {
             if (board[x, y].Type == BoardSquareType.Empty)
             {
@@ -261,7 +261,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
         ///     typically creating concave corners in the dungeon layout.
         ///     Priority: InternalLeftDown -> InternalRightDown -> InternalLeftUp -> InternalRightUp.
         /// </remarks>
-        private static void GenerateInnerCorners(BoardSquare[,] board, int x, int y)
+        private void GenerateInnerCorners(BoardSquare[,] board, int x, int y)
         {
             if (board[x, y].Type != BoardSquareType.Floor)
             {

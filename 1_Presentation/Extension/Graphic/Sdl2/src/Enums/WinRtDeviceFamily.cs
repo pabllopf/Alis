@@ -34,24 +34,24 @@ namespace Alis.Extension.Graphic.Sdl2.Enums
     /// </summary>
     public enum WinRtDeviceFamily
     {
-    /// <summary>
-    ///     Unknown or unrecognized WinRT device family
-    /// </summary>
-    SdlWinrtDeviceFamilyUnknown,
+        /// <summary>
+        ///     The sdl winrt device family unknown sdl winrt device family
+        /// </summary>
+        SdlWinrtDeviceFamilyUnknown,
 
-    /// <summary>
-    ///     WinRT application running on a desktop Windows system
-    /// </summary>
-    SdlWinrtDeviceFamilyDesktop,
+        /// <summary>
+        ///     The sdl winrt device family desktop sdl winrt device family
+        /// </summary>
+        SdlWinrtDeviceFamilyDesktop,
 
-    /// <summary>
-    ///     WinRT application running on a Windows Mobile device
-    /// </summary>
-    SdlWinrtDeviceFamilyMobile,
+        /// <summary>
+        ///     The sdl winrt device family mobile sdl winrt device family
+        /// </summary>
+        SdlWinrtDeviceFamilyMobile,
 
-    /// <summary>
-    ///     WinRT application running on an Xbox console
-    /// </summary>
-    SdlWinrtDeviceFamilyXbox
+        /// <summary>
+        ///     The sdl winrt device family xbox sdl winrt device family
+        /// </summary>
+        SdlWinrtDeviceFamilyXbox
     }
 }

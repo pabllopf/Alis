@@ -32,33 +32,33 @@ using System;
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     Flags representing keyboard modifier keys used in ImGui and ImPlot interactions.
+    ///     The im gui mod flags enum
     /// </summary>
     [Flags]
     public enum ImGuiModFlags
     {
         /// <summary>
-        ///     No modifier key pressed.
+        ///     The none im gui mod flags
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The Control (Ctrl) modifier key.
+        ///     The ctrl im gui mod flags
         /// </summary>
         Ctrl = 1,
 
         /// <summary>
-        ///     The Shift modifier key.
+        ///     The shift im gui mod flags
         /// </summary>
         Shift = 2,
 
         /// <summary>
-        ///     The Alt modifier key.
+        ///     The alt im gui mod flags
         /// </summary>
         Alt = 4,
 
         /// <summary>
-        ///     The Super (Windows / Command) modifier key.
+        ///     The super im gui mod flags
         /// </summary>
         Super = 8
     }

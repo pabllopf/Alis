@@ -41,8 +41,6 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <summary>
         ///     Implicit cast from <see cref="Alis.Core.Aspect.Math.Vector.Vector2F" /> to <see cref="Vec2" />
         /// </summary>
-        /// <param name="vec">The 2D floating-point vector to convert</param>
-        /// <returns>A <see cref="Vec2" /> with the same coordinates as the input vector</returns>
         public static implicit operator Vec2(Vector2F vec) => new Vec2(vec);
 
 

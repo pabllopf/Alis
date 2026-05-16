@@ -35,14 +35,13 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
     public class FastPriorityQueueNode
     {
         /// <summary>
-        ///     The priority value used to determine the node's position in the queue.
-        ///     Lower values indicate higher priority. Cannot be set directly — use <c>Enqueue</c> or <c>UpdatePriority</c> instead.
+        ///     The Priority to insert this node at.
+        ///     Cannot be manually edited - see queue.Enqueue() and queue.UpdatePriority() instead
         /// </summary>
         public float Priority { get; protected internal set; }
 
         /// <summary>
-        ///     Current index of this node in the internal heap array.
-        ///     Managed internally by the queue; should not be modified externally.
+        ///     Represents the current position in the queue
         /// </summary>
         public int QueueIndex { get; internal set; }
     }

@@ -39,8 +39,6 @@ namespace Alis.Extension.Network.Core
         /// <summary>
         ///     Initializes server message event args
         /// </summary>
-        /// <param name="channel">The channel the message was received on</param>
-        /// <param name="message">The message content</param>
         public ServerMessageEventArgs(string channel, string message)
         {
             Channel = channel;

@@ -43,17 +43,17 @@ namespace Alis.Extension.Graphic.Ui
         public ImFontAtlasFlags Flags { get; set; }
 
         /// <summary>
-        ///     The GPU texture identifier for the atlas
+        ///     The tex id
         /// </summary>
         public IntPtr TexId { get; set; }
 
         /// <summary>
-        ///     The desired texture width for the atlas
+        ///     The tex desired width
         /// </summary>
         public int TexDesiredWidth { get; set; }
 
         /// <summary>
-        ///     The padding between glyphs in the atlas texture
+        ///     The tex glyph padding
         /// </summary>
         public int TexGlyphPadding { get; set; }
 
@@ -63,37 +63,37 @@ namespace Alis.Extension.Graphic.Ui
         public byte Locked { get; set; }
 
         /// <summary>
-        ///     Flag indicating whether the atlas texture is ready
+        ///     The tex ready
         /// </summary>
         public byte TexReady { get; set; }
 
         /// <summary>
-        ///     Flag indicating whether the atlas uses color pixels
+        ///     The tex pixels use colors
         /// </summary>
         public byte TexPixelsUseColors { get; set; }
 
         /// <summary>
-        ///     Pointer to the alpha-only texture pixel data
+        ///     The tex pixels alpha
         /// </summary>
         public IntPtr TexPixelsAlpha8 { get; set; }
 
         /// <summary>
-        ///     Pointer to the RGBA32 texture pixel data
+        ///     The tex pixels rgba 32
         /// </summary>
         public IntPtr TexPixelsRgba32 { get; set; }
 
         /// <summary>
-        ///     The width of the atlas texture in pixels
+        ///     The tex width
         /// </summary>
         public int TexWidth { get; set; }
 
         /// <summary>
-        ///     The height of the atlas texture in pixels
+        ///     The tex height
         /// </summary>
         public int TexHeight { get; set; }
 
         /// <summary>
-        ///     The UV scale for mapping atlas coordinates to texture coordinates
+        ///     The tex uv scale
         /// </summary>
         public Vector2F TexUvScale { get; set; }
 
@@ -113,7 +113,7 @@ namespace Alis.Extension.Graphic.Ui
         public ImVector CustomRects { get; set; }
 
         /// <summary>
-        ///     The font configuration data pointer
+        ///     The config data
         /// </summary>
         public ImVector ConfigData { get; set; }
 

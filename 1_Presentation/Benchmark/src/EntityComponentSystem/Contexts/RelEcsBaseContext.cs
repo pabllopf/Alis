@@ -44,7 +44,7 @@ namespace Alis.Benchmark.EntityComponentSystem.Contexts
         public RelEcsBaseContext() => World = new World();
 
         /// <summary>
-        ///     Gets the RelEcs world instance
+        ///     Gets the value of the scene
         /// </summary>
         public World World { get; }
 

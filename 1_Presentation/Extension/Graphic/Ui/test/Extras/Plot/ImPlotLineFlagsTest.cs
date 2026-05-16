@@ -52,7 +52,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         [Fact]
         public void Flags_ShouldBeDistinct()
         {
+            Assert.NotEqual((int) ImPlotLineFlags.Segments, (int) ImPlotLineFlags.Loop);
             Assert.NotEqual((int) ImPlotLineFlags.SkipNaN, (int) ImPlotLineFlags.NoClip);
+            Assert.NotEqual((int) ImPlotLineFlags.Shaded, (int) ImPlotLineFlags.NoClip);
         }
     }
 }

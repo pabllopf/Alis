@@ -34,29 +34,29 @@ namespace Alis.Extension.Graphic.Sdl2.Enums
     /// </summary>
     public enum PowerState
     {
-    /// <summary>
-    ///     Power state could not be determined
-    /// </summary>
-    SdlPowerStateUnknown = 0,
+        /// <summary>
+        ///     The sdl power state unknown sdl power state
+        /// </summary>
+        SdlPowerStateUnknown = 0,
 
-    /// <summary>
-    ///     System is running on battery power (not plugged in)
-    /// </summary>
-    SdlPowerStateOnBattery,
+        /// <summary>
+        ///     The sdl power state on battery sdl power state
+        /// </summary>
+        SdlPowerStateOnBattery,
 
-    /// <summary>
-    ///     System has no battery (plugged in constantly)
-    /// </summary>
-    SdlPowerStateNoBattery,
+        /// <summary>
+        ///     The sdl power state no battery sdl power state
+        /// </summary>
+        SdlPowerStateNoBattery,
 
-    /// <summary>
-    ///     Battery is currently charging
-    /// </summary>
-    SdlPowerStateCharging,
+        /// <summary>
+        ///     The sdl power state charging sdl power state
+        /// </summary>
+        SdlPowerStateCharging,
 
-    /// <summary>
-    ///     Battery is fully charged
-    /// </summary>
-    SdlPowerStateCharged
+        /// <summary>
+        ///     The sdl power state charged sdl power state
+        /// </summary>
+        SdlPowerStateCharged
     }
 }

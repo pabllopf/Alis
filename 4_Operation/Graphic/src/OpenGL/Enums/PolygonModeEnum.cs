@@ -35,17 +35,17 @@ namespace Alis.Core.Graphic.OpenGL.Enums
     public enum PolygonModeEnum : uint
     {
         /// <summary>
-        ///     Polygons rendered as points at vertices (GL_POINT)
+        ///     The point polygon mode enum
         /// </summary>
         Point = 0x1B00,
 
         /// <summary>
-        ///     Polygons rendered as outlines at edges (GL_LINE)
+        ///     The line polygon mode enum
         /// </summary>
         Line = 0x1B01,
 
         /// <summary>
-        ///     Polygons rendered as filled areas (GL_FILL)
+        ///     The fill polygon mode enum
         /// </summary>
         Fill = 0x1B02
     }

@@ -34,15 +34,15 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Extension.Graphic.Ui
 {
     /// <summary>
-    ///     The ImGui wrapper class providing managed access to native Dear ImGui functionality
+    ///     The im gui class
     /// </summary>
     public static partial class ImGui
     {
         /// <summary>
         ///     Tables the setup column using the specified label
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="label">The label</param>
+        /// <param name="flags">The flags</param>
         public static void TableSetupColumn(string label, ImGuiTableColumnFlags flags)
         {
             ImGuiNative.igTableSetupColumn(Encoding.UTF8.GetBytes(label), flags, 0.0f, 0);
@@ -51,8 +51,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Tables the setup column using the specified label
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="label">The label</param>
+        /// <param name="flags">The flags</param>
         /// <param name="initWidthOrWeight">The init width or weight</param>
         public static void TableSetupColumn(string label, ImGuiTableColumnFlags flags, float initWidthOrWeight)
         {
@@ -62,8 +62,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Tables the setup column using the specified label
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="label">The label</param>
+        /// <param name="flags">The flags</param>
         /// <param name="initWidthOrWeight">The init width or weight</param>
         /// <param name="userId">The user id</param>
         public static void TableSetupColumn(string label, ImGuiTableColumnFlags flags, float initWidthOrWeight, uint userId)
@@ -74,8 +74,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Tables the setup scroll freeze using the specified cols
         /// </summary>
-        /// <param name="cols">The number of columns</param>
-        /// <param name="rows">The number of rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="rows">The rows</param>
         public static void TableSetupScrollFreeze(int cols, int rows)
         {
             ImGuiNative.igTableSetupScrollFreeze(cols, rows);
@@ -84,7 +84,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Texts the fmt
         /// </summary>
-        /// <param name="fmt">The format string</param>
+        /// <param name="fmt">The fmt</param>
         public static void Text(string fmt)
         {
             ImGuiNative.igText(Encoding.UTF8.GetBytes(fmt));
@@ -93,8 +93,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Texts the colored using the specified col
         /// </summary>
-        /// <param name="col">The color value in 0xRRGGBBAA format</param>
-        /// <param name="fmt">The format string</param>
+        /// <param name="col">The col</param>
+        /// <param name="fmt">The fmt</param>
         public static void TextColored(Vector4F col, string fmt)
         {
             ImGuiNative.igTextColored(col, Encoding.UTF8.GetBytes(fmt));
@@ -103,7 +103,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Texts the disabled using the specified fmt
         /// </summary>
-        /// <param name="fmt">The format string</param>
+        /// <param name="fmt">The fmt</param>
         public static void TextDisabled(string fmt)
         {
             ImGuiNative.igTextDisabled(Encoding.UTF8.GetBytes(fmt));
@@ -112,7 +112,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Texts the unformatted using the specified text
         /// </summary>
-        /// <param name="text">The text content to display</param>
+        /// <param name="text">The text</param>
         public static void TextUnformatted(string text)
         {
             byte[] nativeText = Encoding.UTF8.GetBytes(text);
@@ -122,7 +122,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Texts the wrapped using the specified fmt
         /// </summary>
-        /// <param name="fmt">The format string</param>
+        /// <param name="fmt">The fmt</param>
         public static void TextWrapped(string fmt)
         {
             ImGuiNative.igTextWrapped(Encoding.UTF8.GetBytes(fmt));
@@ -131,8 +131,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether tree node
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <returns>The bool</returns>
         public static bool TreeNode(string label)
         {
             byte ret = ImGuiNative.igTreeNode_Str(Encoding.UTF8.GetBytes(label));
@@ -142,9 +142,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether tree node
         /// </summary>
-        /// <param name="strId">The string identifier for the element</param>
-        /// <param name="fmt">The format string</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="strId">The str id</param>
+        /// <param name="fmt">The fmt</param>
+        /// <returns>The bool</returns>
         public static bool TreeNode(string strId, string fmt)
         {
             byte ret = ImGuiNative.igTreeNode_StrStr(Encoding.UTF8.GetBytes(strId), Encoding.UTF8.GetBytes(fmt));
@@ -155,8 +155,8 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether tree node
         /// </summary>
         /// <param name="ptrId">The ptr id</param>
-        /// <param name="fmt">The format string</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="fmt">The fmt</param>
+        /// <returns>The bool</returns>
         public static bool TreeNode(IntPtr ptrId, string fmt)
         {
             byte ret = ImGuiNative.igTreeNode_Ptr(ptrId, Encoding.UTF8.GetBytes(fmt));
@@ -166,8 +166,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether tree node ex
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <returns>The bool</returns>
         public static bool TreeNodeEx(string label)
         {
             byte ret = ImGuiNative.igTreeNodeEx_Str(Encoding.UTF8.GetBytes(label), 0);
@@ -177,9 +177,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether tree node ex
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
         public static bool TreeNodeEx(string label, ImGuiTreeNodeFlags flags)
         {
             byte ret = ImGuiNative.igTreeNodeEx_Str(Encoding.UTF8.GetBytes(label), flags);
@@ -189,10 +189,10 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether tree node ex
         /// </summary>
-        /// <param name="strId">The string identifier for the element</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <param name="fmt">The format string</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="strId">The str id</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="fmt">The fmt</param>
+        /// <returns>The bool</returns>
         public static bool TreeNodeEx(string strId, ImGuiTreeNodeFlags flags, string fmt)
         {
             byte ret = ImGuiNative.igTreeNodeEx_StrStr(Encoding.UTF8.GetBytes(strId), flags, Encoding.UTF8.GetBytes(fmt));
@@ -203,9 +203,9 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether tree node ex
         /// </summary>
         /// <param name="ptrId">The ptr id</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <param name="fmt">The format string</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="flags">The flags</param>
+        /// <param name="fmt">The fmt</param>
+        /// <returns>The bool</returns>
         public static bool TreeNodeEx(IntPtr ptrId, ImGuiTreeNodeFlags flags, string fmt)
         {
             byte ret = ImGuiNative.igTreeNodeEx_Ptr(ptrId, flags, Encoding.UTF8.GetBytes(fmt));
@@ -223,7 +223,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Trees the push using the specified str id
         /// </summary>
-        /// <param name="strId">The string identifier for the element</param>
+        /// <param name="strId">The str id</param>
         public static void TreePush(string strId)
         {
             ImGuiNative.igTreePush_Str(Encoding.UTF8.GetBytes(strId));
@@ -269,7 +269,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Values the prefix
         /// </summary>
         /// <param name="prefix">The prefix</param>
-        /// <param name="b">The blue color component</param>
+        /// <param name="b">The </param>
         public static void Value(string prefix, bool b)
         {
             ImGuiNative.igValue_Bool(Encoding.UTF8.GetBytes(prefix), b);
@@ -279,7 +279,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Values the prefix
         /// </summary>
         /// <param name="prefix">The prefix</param>
-        /// <param name="v">The value to be modified or populated</param>
+        /// <param name="v">The </param>
         public static void Value(string prefix, int v)
         {
             ImGuiNative.igValue_Int(Encoding.UTF8.GetBytes(prefix), v);
@@ -289,7 +289,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Values the prefix
         /// </summary>
         /// <param name="prefix">The prefix</param>
-        /// <param name="v">The value to be modified or populated</param>
+        /// <param name="v">The </param>
         public static void Value(string prefix, uint v)
         {
             ImGuiNative.igValue_Uint(Encoding.UTF8.GetBytes(prefix), v);
@@ -299,7 +299,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Values the prefix
         /// </summary>
         /// <param name="prefix">The prefix</param>
-        /// <param name="v">The value to be modified or populated</param>
+        /// <param name="v">The </param>
         public static void Value(string prefix, float v)
         {
             ImGuiNative.igValue_Float(Encoding.UTF8.GetBytes(prefix), v, null);
@@ -309,7 +309,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Values the prefix
         /// </summary>
         /// <param name="prefix">The prefix</param>
-        /// <param name="v">The value to be modified or populated</param>
+        /// <param name="v">The </param>
         /// <param name="floatFormat">The float format</param>
         public static void Value(string prefix, float v, string floatFormat)
         {
@@ -319,12 +319,12 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether v slider float
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="size">The size of the element in pixels</param>
-        /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vMin">The minimum value range</param>
-        /// <param name="vMax">The maximum value range</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <param name="size">The size</param>
+        /// <param name="v">The </param>
+        /// <param name="vMin">The min</param>
+        /// <param name="vMax">The max</param>
+        /// <returns>The bool</returns>
         public static bool VSliderFloat(string label, Vector2F size, ref float v, float vMin, float vMax)
         {
             byte ret = ImGuiNative.igVSliderFloat(Encoding.UTF8.GetBytes(label), size, ref v, vMin, vMax, null, 0);
@@ -334,13 +334,13 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether v slider float
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="size">The size of the element in pixels</param>
-        /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vMin">The minimum value range</param>
-        /// <param name="vMax">The maximum value range</param>
-        /// <param name="format">The display format string (printf-style)</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <param name="size">The size</param>
+        /// <param name="v">The </param>
+        /// <param name="vMin">The min</param>
+        /// <param name="vMax">The max</param>
+        /// <param name="format">The format</param>
+        /// <returns>The bool</returns>
         public static bool VSliderFloat(string label, Vector2F size, ref float v, float vMin, float vMax, string format)
         {
             byte ret = ImGuiNative.igVSliderFloat(Encoding.UTF8.GetBytes(label), size, ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), 0);
@@ -351,14 +351,14 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether v slider float
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="size">The size of the element in pixels</param>
-        /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vMin">The minimum value range</param>
-        /// <param name="vMax">The maximum value range</param>
-        /// <param name="format">The display format string (printf-style)</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <param name="size">The size</param>
+        /// <param name="v">The </param>
+        /// <param name="vMin">The min</param>
+        /// <param name="vMax">The max</param>
+        /// <param name="format">The format</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
         public static bool VSliderFloat(string label, Vector2F size, ref float v, float vMin, float vMax, string format, ImGuiSliderFlags flags)
         {
             byte ret = ImGuiNative.igVSliderFloat(Encoding.UTF8.GetBytes(label), size, ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), flags);
@@ -369,12 +369,12 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether v slider int
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="size">The size of the element in pixels</param>
-        /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vMin">The minimum value range</param>
-        /// <param name="vMax">The maximum value range</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <param name="size">The size</param>
+        /// <param name="v">The </param>
+        /// <param name="vMin">The min</param>
+        /// <param name="vMax">The max</param>
+        /// <returns>The bool</returns>
         public static bool VSliderInt(string label, Vector2F size, ref int v, int vMin, int vMax)
         {
             byte ret = ImGuiNative.igVSliderInt(Encoding.UTF8.GetBytes(label), size, ref v, vMin, vMax, null, 0);
@@ -385,13 +385,13 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether v slider int
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="size">The size of the element in pixels</param>
-        /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vMin">The minimum value range</param>
-        /// <param name="vMax">The maximum value range</param>
-        /// <param name="format">The display format string (printf-style)</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <param name="size">The size</param>
+        /// <param name="v">The </param>
+        /// <param name="vMin">The min</param>
+        /// <param name="vMax">The max</param>
+        /// <param name="format">The format</param>
+        /// <returns>The bool</returns>
         public static bool VSliderInt(string label, Vector2F size, ref int v, int vMin, int vMax, string format)
         {
             byte ret = ImGuiNative.igVSliderInt(Encoding.UTF8.GetBytes(label), size, ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), 0);
@@ -401,14 +401,14 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether v slider int
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="size">The size of the element in pixels</param>
-        /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vMin">The minimum value range</param>
-        /// <param name="vMax">The maximum value range</param>
-        /// <param name="format">The display format string (printf-style)</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <param name="size">The size</param>
+        /// <param name="v">The </param>
+        /// <param name="vMin">The min</param>
+        /// <param name="vMax">The max</param>
+        /// <param name="format">The format</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
         public static bool VSliderInt(string label, Vector2F size, ref int v, int vMin, int vMax, string format, ImGuiSliderFlags flags)
         {
             byte ret = ImGuiNative.igVSliderInt(Encoding.UTF8.GetBytes(label), size, ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), flags);
@@ -418,13 +418,13 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether v slider scalar
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="size">The size of the element in pixels</param>
-        /// <param name="dataType">The type of data being manipulated</param>
-        /// <param name="pData">The pointer to the data value</param>
-        /// <param name="pMin">The minimum value pointer</param>
-        /// <param name="pMax">The maximum value pointer</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <param name="size">The size</param>
+        /// <param name="dataType">The data type</param>
+        /// <param name="pData">The data</param>
+        /// <param name="pMin">The min</param>
+        /// <param name="pMax">The max</param>
+        /// <returns>The bool</returns>
         public static bool VSliderScalar(string label, Vector2F size, ImGuiDataType dataType, IntPtr pData, IntPtr pMin, IntPtr pMax)
         {
             byte ret = ImGuiNative.igVSliderScalar(Encoding.UTF8.GetBytes(label), size, dataType, pData, pMin, pMax, null, 0);
@@ -434,14 +434,14 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether v slider scalar
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="size">The size of the element in pixels</param>
-        /// <param name="dataType">The type of data being manipulated</param>
-        /// <param name="pData">The pointer to the data value</param>
-        /// <param name="pMin">The minimum value pointer</param>
-        /// <param name="pMax">The maximum value pointer</param>
-        /// <param name="format">The display format string (printf-style)</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <param name="size">The size</param>
+        /// <param name="dataType">The data type</param>
+        /// <param name="pData">The data</param>
+        /// <param name="pMin">The min</param>
+        /// <param name="pMax">The max</param>
+        /// <param name="format">The format</param>
+        /// <returns>The bool</returns>
         public static bool VSliderScalar(string label, Vector2F size, ImGuiDataType dataType, IntPtr pData, IntPtr pMin, IntPtr pMax, string format)
         {
             byte ret = ImGuiNative.igVSliderScalar(Encoding.UTF8.GetBytes(label), size, dataType, pData, pMin, pMax, Encoding.UTF8.GetBytes(format), 0);
@@ -451,15 +451,15 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether v slider scalar
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="size">The size of the element in pixels</param>
-        /// <param name="dataType">The type of data being manipulated</param>
-        /// <param name="pData">The pointer to the data value</param>
-        /// <param name="pMin">The minimum value pointer</param>
-        /// <param name="pMax">The maximum value pointer</param>
-        /// <param name="format">The display format string (printf-style)</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <param name="size">The size</param>
+        /// <param name="dataType">The data type</param>
+        /// <param name="pData">The data</param>
+        /// <param name="pMin">The min</param>
+        /// <param name="pMax">The max</param>
+        /// <param name="format">The format</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
         public static bool VSliderScalar(string label, Vector2F size, ImGuiDataType dataType, IntPtr pData, IntPtr pMin, IntPtr pMax, string format, ImGuiSliderFlags flags)
         {
             byte ret = ImGuiNative.igVSliderScalar(Encoding.UTF8.GetBytes(label), size, dataType, pData, pMin, pMax, Encoding.UTF8.GetBytes(format), flags);
@@ -469,10 +469,10 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input text
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
+        /// <param name="label">The label</param>
         /// <param name="buf">The buf</param>
         /// <param name="bufSize">The buf size</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool InputText(
             string label,
             byte[] buf,
@@ -482,11 +482,11 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input text
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
+        /// <param name="label">The label</param>
         /// <param name="buf">The buf</param>
         /// <param name="bufSize">The buf size</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
         public static bool InputText(
             string label,
             byte[] buf,
@@ -497,12 +497,12 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input text
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
+        /// <param name="label">The label</param>
         /// <param name="buf">The buf</param>
         /// <param name="bufSize">The buf size</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <param name="callback">The callback function pointer</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="flags">The flags</param>
+        /// <param name="callback">The callback</param>
+        /// <returns>The bool</returns>
         public static bool InputText(
             string label,
             byte[] buf,
@@ -514,13 +514,13 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input text
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
+        /// <param name="label">The label</param>
         /// <param name="buf">The buf</param>
         /// <param name="bufSize">The buf size</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <param name="callback">The callback function pointer</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="callback">The callback</param>
         /// <param name="userData">The user data</param>
-        /// <returns>The result returned from the native function</returns>
+        /// <returns>The ret</returns>
         public static bool InputText(
             string label,
             byte[] buf,
@@ -543,10 +543,10 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input text
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
+        /// <param name="label">The label</param>
         /// <param name="input">The input</param>
         /// <param name="maxLength">The max length</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool InputText(
             string label,
             ref string input,
@@ -555,11 +555,11 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input text
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
+        /// <param name="label">The label</param>
         /// <param name="input">The input</param>
         /// <param name="maxLength">The max length</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
         public static bool InputText(
             string label,
             ref string input,
@@ -569,12 +569,12 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input text
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
+        /// <param name="label">The label</param>
         /// <param name="input">The input</param>
         /// <param name="maxLength">The max length</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <param name="callback">The callback function pointer</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="flags">The flags</param>
+        /// <param name="callback">The callback</param>
+        /// <returns>The bool</returns>
         public static bool InputText(
             string label,
             ref string input,
@@ -615,11 +615,11 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input text multiline
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
+        /// <param name="label">The label</param>
         /// <param name="input">The input</param>
         /// <param name="maxLength">The max length</param>
-        /// <param name="size">The size of the element in pixels</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="size">The size</param>
+        /// <returns>The bool</returns>
         public static bool InputTextMultiline(
             string label,
             ref string input,
@@ -629,12 +629,12 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input text multiline
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
+        /// <param name="label">The label</param>
         /// <param name="input">The input</param>
         /// <param name="maxLength">The max length</param>
-        /// <param name="size">The size of the element in pixels</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="size">The size</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
         public static bool InputTextMultiline(
             string label,
             ref string input,
@@ -645,13 +645,13 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input text multiline
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
+        /// <param name="label">The label</param>
         /// <param name="input">The input</param>
         /// <param name="maxLength">The max length</param>
-        /// <param name="size">The size of the element in pixels</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <param name="callback">The callback function pointer</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="size">The size</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="callback">The callback</param>
+        /// <returns>The bool</returns>
         public static bool InputTextMultiline(
             string label,
             ref string input,
@@ -695,11 +695,11 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input text with hint
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
+        /// <param name="label">The label</param>
         /// <param name="hint">The hint</param>
         /// <param name="input">The input</param>
         /// <param name="maxLength">The max length</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool InputTextWithHint(
             string label,
             string hint,
@@ -709,12 +709,12 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input text with hint
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
+        /// <param name="label">The label</param>
         /// <param name="hint">The hint</param>
         /// <param name="input">The input</param>
         /// <param name="maxLength">The max length</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
         public static bool InputTextWithHint(
             string label,
             string hint,
@@ -725,13 +725,13 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input text with hint
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
+        /// <param name="label">The label</param>
         /// <param name="hint">The hint</param>
         /// <param name="input">The input</param>
         /// <param name="maxLength">The max length</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <param name="callback">The callback function pointer</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="flags">The flags</param>
+        /// <param name="callback">The callback</param>
+        /// <returns>The bool</returns>
         public static bool InputTextWithHint(
             string label,
             string hint,
@@ -743,14 +743,14 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input text with hint
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
+        /// <param name="label">The label</param>
         /// <param name="hint">The hint</param>
         /// <param name="input">The input</param>
         /// <param name="maxLength">The max length</param>
         /// <param name="flag">The flags</param>
-        /// <param name="callback">The callback function pointer</param>
+        /// <param name="callback">The callback</param>
         /// <param name="userData">The user data</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool InputTextWithHint(
             string label,
             string hint,
@@ -774,121 +774,121 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Calcs the text size using the specified text
         /// </summary>
-        /// <param name="text">The text content to display</param>
-        /// <returns>The resulting vector value</returns>
+        /// <param name="text">The text</param>
+        /// <returns>The vector</returns>
         public static Vector2F CalcTextSize(string text)
             => CalcTextSizeImpl(text);
 
         /// <summary>
         ///     Calcs the text size using the specified text
         /// </summary>
-        /// <param name="text">The text content to display</param>
-        /// <param name="start">The starting value/index</param>
-        /// <returns>The resulting vector value</returns>
+        /// <param name="text">The text</param>
+        /// <param name="start">The start</param>
+        /// <returns>The vector</returns>
         public static Vector2F CalcTextSize(string text, int start)
             => CalcTextSizeImpl(text, start);
 
         /// <summary>
         ///     Calcs the text size using the specified text
         /// </summary>
-        /// <param name="text">The text content to display</param>
+        /// <param name="text">The text</param>
         /// <param name="wrapWidth">The wrap width</param>
-        /// <returns>The resulting vector value</returns>
+        /// <returns>The vector</returns>
         public static Vector2F CalcTextSize(string text, float wrapWidth)
             => CalcTextSizeImpl(text, wrapWidth: wrapWidth);
 
         /// <summary>
         ///     Calcs the text size using the specified text
         /// </summary>
-        /// <param name="text">The text content to display</param>
+        /// <param name="text">The text</param>
         /// <param name="hideTextAfterDoubleHash">The hide text after double hash</param>
-        /// <returns>The resulting vector value</returns>
+        /// <returns>The vector</returns>
         public static Vector2F CalcTextSize(string text, bool hideTextAfterDoubleHash)
             => CalcTextSizeImpl(text, hideTextAfterDoubleHash: hideTextAfterDoubleHash);
 
         /// <summary>
         ///     Calcs the text size using the specified text
         /// </summary>
-        /// <param name="text">The text content to display</param>
-        /// <param name="start">The starting value/index</param>
-        /// <param name="length">The length value</param>
-        /// <returns>The resulting vector value</returns>
+        /// <param name="text">The text</param>
+        /// <param name="start">The start</param>
+        /// <param name="length">The length</param>
+        /// <returns>The vector</returns>
         public static Vector2F CalcTextSize(string text, int start, int length)
             => CalcTextSizeImpl(text, start, length);
 
         /// <summary>
         ///     Calcs the text size using the specified text
         /// </summary>
-        /// <param name="text">The text content to display</param>
-        /// <param name="start">The starting value/index</param>
+        /// <param name="text">The text</param>
+        /// <param name="start">The start</param>
         /// <param name="hideTextAfterDoubleHash">The hide text after double hash</param>
-        /// <returns>The resulting vector value</returns>
+        /// <returns>The vector</returns>
         public static Vector2F CalcTextSize(string text, int start, bool hideTextAfterDoubleHash)
             => CalcTextSizeImpl(text, start, hideTextAfterDoubleHash: hideTextAfterDoubleHash);
 
         /// <summary>
         ///     Calcs the text size using the specified text
         /// </summary>
-        /// <param name="text">The text content to display</param>
-        /// <param name="start">The starting value/index</param>
+        /// <param name="text">The text</param>
+        /// <param name="start">The start</param>
         /// <param name="wrapWidth">The wrap width</param>
-        /// <returns>The resulting vector value</returns>
+        /// <returns>The vector</returns>
         public static Vector2F CalcTextSize(string text, int start, float wrapWidth)
             => CalcTextSizeImpl(text, start, wrapWidth: wrapWidth);
 
         /// <summary>
         ///     Calcs the text size using the specified text
         /// </summary>
-        /// <param name="text">The text content to display</param>
+        /// <param name="text">The text</param>
         /// <param name="hideTextAfterDoubleHash">The hide text after double hash</param>
         /// <param name="wrapWidth">The wrap width</param>
-        /// <returns>The resulting vector value</returns>
+        /// <returns>The vector</returns>
         public static Vector2F CalcTextSize(string text, bool hideTextAfterDoubleHash, float wrapWidth)
             => CalcTextSizeImpl(text, hideTextAfterDoubleHash: hideTextAfterDoubleHash, wrapWidth: wrapWidth);
 
         /// <summary>
         ///     Calcs the text size using the specified text
         /// </summary>
-        /// <param name="text">The text content to display</param>
-        /// <param name="start">The starting value/index</param>
-        /// <param name="length">The length value</param>
+        /// <param name="text">The text</param>
+        /// <param name="start">The start</param>
+        /// <param name="length">The length</param>
         /// <param name="hideTextAfterDoubleHash">The hide text after double hash</param>
-        /// <returns>The resulting vector value</returns>
+        /// <returns>The vector</returns>
         public static Vector2F CalcTextSize(string text, int start, int length, bool hideTextAfterDoubleHash)
             => CalcTextSizeImpl(text, start, length, hideTextAfterDoubleHash);
 
         /// <summary>
         ///     Calcs the text size using the specified text
         /// </summary>
-        /// <param name="text">The text content to display</param>
-        /// <param name="start">The starting value/index</param>
-        /// <param name="length">The length value</param>
+        /// <param name="text">The text</param>
+        /// <param name="start">The start</param>
+        /// <param name="length">The length</param>
         /// <param name="wrapWidth">The wrap width</param>
-        /// <returns>The resulting vector value</returns>
+        /// <returns>The vector</returns>
         public static Vector2F CalcTextSize(string text, int start, int length, float wrapWidth)
             => CalcTextSizeImpl(text, start, length, wrapWidth: wrapWidth);
 
         /// <summary>
         ///     Calcs the text size using the specified text
         /// </summary>
-        /// <param name="text">The text content to display</param>
-        /// <param name="start">The starting value/index</param>
-        /// <param name="length">The length value</param>
+        /// <param name="text">The text</param>
+        /// <param name="start">The start</param>
+        /// <param name="length">The length</param>
         /// <param name="hideTextAfterDoubleHash">The hide text after double hash</param>
         /// <param name="wrapWidth">The wrap width</param>
-        /// <returns>The resulting vector value</returns>
+        /// <returns>The vector</returns>
         public static Vector2F CalcTextSize(string text, int start, int length, bool hideTextAfterDoubleHash, float wrapWidth)
             => CalcTextSizeImpl(text, start, length, hideTextAfterDoubleHash, wrapWidth);
 
         /// <summary>
         ///     Calcs the text size impl using the specified text
         /// </summary>
-        /// <param name="text">The text content to display</param>
-        /// <param name="start">The starting value/index</param>
-        /// <param name="length">The length value</param>
+        /// <param name="text">The text</param>
+        /// <param name="start">The start</param>
+        /// <param name="length">The length</param>
         /// <param name="hideTextAfterDoubleHash">The hide text after double hash</param>
         /// <param name="wrapWidth">The wrap width</param>
-        /// <returns>The result returned from the native function</returns>
+        /// <returns>The ret</returns>
         private static Vector2F CalcTextSizeImpl(
             string text,
             int start = 0,
@@ -903,10 +903,10 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input text
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
+        /// <param name="label">The label</param>
         /// <param name="buf">The buf</param>
         /// <param name="bufSize">The buf size</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool InputText(
             string label,
             IntPtr buf,
@@ -916,11 +916,11 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input text
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
+        /// <param name="label">The label</param>
         /// <param name="buf">The buf</param>
         /// <param name="bufSize">The buf size</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
         public static bool InputText(
             string label,
             IntPtr buf,
@@ -931,12 +931,12 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input text
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
+        /// <param name="label">The label</param>
         /// <param name="buf">The buf</param>
         /// <param name="bufSize">The buf size</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <param name="callback">The callback function pointer</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="flags">The flags</param>
+        /// <param name="callback">The callback</param>
+        /// <returns>The bool</returns>
         public static bool InputText(
             string label,
             IntPtr buf,
@@ -948,13 +948,13 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input text
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
+        /// <param name="label">The label</param>
         /// <param name="buf">The buf</param>
         /// <param name="bufSize">The buf size</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <param name="callback">The callback function pointer</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="callback">The callback</param>
         /// <param name="userData">The user data</param>
-        /// <returns>The result returned from the native function</returns>
+        /// <returns>The ret</returns>
         public static bool InputText(
             string label,
             IntPtr buf,
@@ -977,9 +977,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether begin
         /// </summary>
-        /// <param name="name">The name identifier string</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="name">The name</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
         public static bool Begin(string name, ImGuiWindowFlags flags)
         {
             bool isOpen = true;

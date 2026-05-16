@@ -35,87 +35,87 @@ namespace Alis.Core.Graphic.OpenGL.Enums
     public enum ProgramParameter
     {
         /// <summary>
-        ///     Maximum length of active uniform block names (GL_ACTIVE_UNIFORM_BLOCK_MAX_NAME_LENGTH)
+        ///     The active uniform block max name length program parameter
         /// </summary>
         ActiveUniformBlockMaxNameLength = 0x8A35,
 
         /// <summary>
-        ///     Number of active uniform blocks (GL_ACTIVE_UNIFORM_BLOCKS)
+        ///     The active uniform blocks program parameter
         /// </summary>
         ActiveUniformBlocks = 0x8A36,
 
         /// <summary>
-        ///     Whether the program has been marked for deletion (GL_DELETE_STATUS)
+        ///     The delete status program parameter
         /// </summary>
         DeleteStatus = 0x8B80,
 
         /// <summary>
-        ///     Whether the program link was successful (GL_LINK_STATUS)
+        ///     The link status program parameter
         /// </summary>
         LinkStatus = 0x8B82,
 
         /// <summary>
-        ///     Whether the program validation succeeded (GL_VALIDATE_STATUS)
+        ///     The validate status program parameter
         /// </summary>
         ValidateStatus = 0x8B83,
 
         /// <summary>
-        ///     Length of the program info log (GL_INFO_LOG_LENGTH)
+        ///     The info log length program parameter
         /// </summary>
         InfoLogLength = 0x8B84,
 
         /// <summary>
-        ///     Number of attached shader objects (GL_ATTACHED_SHADERS)
+        ///     The attached shaders program parameter
         /// </summary>
         AttachedShaders = 0x8B85,
 
         /// <summary>
-        ///     Number of active uniform variables (GL_ACTIVE_UNIFORMS)
+        ///     The active uniforms program parameter
         /// </summary>
         ActiveUniforms = 0x8B86,
 
         /// <summary>
-        ///     Maximum length of active uniform names (GL_ACTIVE_UNIFORM_MAX_LENGTH)
+        ///     The active uniform max length program parameter
         /// </summary>
         ActiveUniformMaxLength = 0x8B87,
 
         /// <summary>
-        ///     Number of active vertex attributes (GL_ACTIVE_ATTRIBUTES)
+        ///     The active attributes program parameter
         /// </summary>
         ActiveAttributes = 0x8B89,
 
         /// <summary>
-        ///     Maximum length of active attribute names (GL_ACTIVE_ATTRIBUTE_MAX_LENGTH)
+        ///     The active attribute max length program parameter
         /// </summary>
         ActiveAttributeMaxLength = 0x8B8A,
 
         /// <summary>
-        ///     Maximum length of transform feedback varying names (GL_TRANSFORM_FEEDBACK_VARYING_MAX_LENGTH)
+        ///     The transform feedback varying max length program parameter
         /// </summary>
         TransformFeedbackVaryingMaxLength = 0x8C76,
 
         /// <summary>
-        ///     Transform feedback buffer capture mode (GL_TRANSFORM_FEEDBACK_BUFFER_MODE)
+        ///     The transform feedback buffer mode program parameter
         /// </summary>
         TransformFeedbackBufferMode = 0x8C7F,
 
         /// <summary>
-        ///     Number of transform feedback varying variables (GL_TRANSFORM_FEEDBACK_VARYINGS)
+        ///     The transform feedback varyings program parameter
         /// </summary>
         TransformFeedbackVaryings = 0x8C83,
 
         /// <summary>
-        ///     Maximum number of vertices output by geometry shader (GL_GEOMETRY_VERTICES_OUT)
+        ///     The geometry vertices out program parameter
         /// </summary>
         GeometryVerticesOut = 0x8DDA,
 
         /// <summary>
-        ///     Input primitive type accepted by geometry shader (GL_GEOMETRY_INPUT_TYPE)
+        ///     The geometry input type program parameter
         /// </summary>
         GeometryInputType = 0x8DDB,
 
         /// <summary>
-        ///     Output primitive type produced by geometry shader (GL_GEOMETRY_OUTPUT_TYPE)
+        ///     The geometry output type program parameter
         /// </summary>
         GeometryOutputType = 0x8DDC
     }

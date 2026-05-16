@@ -33,11 +33,8 @@ using Alis.Core.Graphic.OpenGL.Enums;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     Returns the value of a parameter for a shader object
+    ///     The get shaderiv
     /// </summary>
-    /// <param name="shader">Specifies the shader object to query</param>
-    /// <param name="pname">Specifies the name of the parameter to retrieve</param>
-    /// <param name="params">Returns the value(s) of the specified parameter</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void GetShaderiv(uint shader, ShaderParameter pname, [Out] int[] @params);
 }

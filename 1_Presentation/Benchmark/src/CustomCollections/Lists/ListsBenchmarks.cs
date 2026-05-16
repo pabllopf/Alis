@@ -44,7 +44,7 @@ namespace Alis.Benchmark.CustomCollections.Lists
         [Params(10)] public int ArraySize;
 
         /// <summary>
-        ///     The standard list used for benchmarking
+        ///     The NORMAL stack
         /// </summary>
         private List<int> fastList;
 
@@ -63,7 +63,7 @@ namespace Alis.Benchmark.CustomCollections.Lists
         }
 
         /// <summary>
-        ///     Benchmarks iterating over a list by index
+        ///     Fastests the stack array iterate
         /// </summary>
         [Benchmark(Description = "[NORMAL] Iterate List")]
         public void Fastest_List_ArrayIterate()
@@ -76,7 +76,7 @@ namespace Alis.Benchmark.CustomCollections.Lists
 
 
         /// <summary>
-        ///     Benchmarks adding elements to a list
+        ///     Fastests the list add
         /// </summary>
         [Benchmark(Description = "[NORMAL] Add List")]
         public void Fastest_List_Add()
@@ -89,7 +89,7 @@ namespace Alis.Benchmark.CustomCollections.Lists
 
 
         /// <summary>
-        ///     Benchmarks removing elements from a list by index
+        ///     Fastests the list remove
         /// </summary>
         [Benchmark(Description = "[NORMAL] Remove List")]
         public void Fastest_List_Remove()
@@ -107,7 +107,7 @@ namespace Alis.Benchmark.CustomCollections.Lists
 
 
         /// <summary>
-        ///     Benchmarks clearing all elements from a list
+        ///     Fastests the list clear
         /// </summary>
         [Benchmark(Description = "[NORMAL] Clear List")]
         public void Fastest_List_Clear()
@@ -116,7 +116,7 @@ namespace Alis.Benchmark.CustomCollections.Lists
         }
 
         /// <summary>
-        ///     Benchmarks checking containment in a list
+        ///     Fastests the list contains
         /// </summary>
         [Benchmark(Description = "[NORMAL] Contains List")]
         public void Fastest_List_Contains()
@@ -129,7 +129,7 @@ namespace Alis.Benchmark.CustomCollections.Lists
 
 
         /// <summary>
-        ///     Benchmarks finding the index of elements in a list
+        ///     Fastests the list index of
         /// </summary>
         [Benchmark(Description = "[NORMAL] IndexOf List")]
         public void Fastest_List_IndexOf()
@@ -141,7 +141,7 @@ namespace Alis.Benchmark.CustomCollections.Lists
         }
 
         /// <summary>
-        ///     Benchmarks inserting elements into a list at specific positions
+        ///     Fastests the list insert
         /// </summary>
         [Benchmark(Description = "[NORMAL] Insert List")]
         public void Fastest_List_Insert()

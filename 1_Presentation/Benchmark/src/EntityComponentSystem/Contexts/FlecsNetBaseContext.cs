@@ -84,7 +84,7 @@ namespace Alis.Benchmark.EntityComponentSystem.Contexts
         public FlecsNetBaseContext() => World = World.Create();
 
         /// <summary>
-        ///     Gets the Flecs.NET world instance
+        ///     Gets the value of the scene
         /// </summary>
         public World World { get; }
 

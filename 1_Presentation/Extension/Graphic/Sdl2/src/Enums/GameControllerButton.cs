@@ -34,119 +34,119 @@ namespace Alis.Extension.Graphic.Sdl2.Enums
     /// </summary>
     public enum GameControllerButton
     {
-    /// <summary>
-    ///     Invalid or uninitialized button identifier
-    /// </summary>
-    SdlControllerButtonInvalid = -1,
+        /// <summary>
+        ///     The sdl controller button invalid sdl game controller button
+        /// </summary>
+        SdlControllerButtonInvalid = -1,
 
-    /// <summary>
-    ///     Bottom face button (typically A on Xbox, Cross on PlayStation)
-    /// </summary>
-    SdlControllerButtonA,
+        /// <summary>
+        ///     The sdl controller button sdl game controller button
+        /// </summary>
+        SdlControllerButtonA,
 
-    /// <summary>
-    ///     Right face button (typically B on Xbox, Circle on PlayStation)
-    /// </summary>
-    SdlControllerButtonB,
+        /// <summary>
+        ///     The sdl controller button sdl game controller button
+        /// </summary>
+        SdlControllerButtonB,
 
-    /// <summary>
-    ///     Left face button (typically X on Xbox, Square on PlayStation)
-    /// </summary>
-    SdlControllerButtonX,
+        /// <summary>
+        ///     The sdl controller button sdl game controller button
+        /// </summary>
+        SdlControllerButtonX,
 
-    /// <summary>
-    ///     Top face button (typically Y on Xbox, Triangle on PlayStation)
-    /// </summary>
-    SdlControllerButtonY,
+        /// <summary>
+        ///     The sdl controller button sdl game controller button
+        /// </summary>
+        SdlControllerButtonY,
 
-    /// <summary>
-    ///     Back or select button (typically located in the center)
-    /// </summary>
-    SdlControllerButtonBack,
+        /// <summary>
+        ///     The sdl controller button back sdl game controller button
+        /// </summary>
+        SdlControllerButtonBack,
 
-    /// <summary>
-    ///     Guide or Xbox button (typically located in the center)
-    /// </summary>
-    SdlControllerButtonGuide,
+        /// <summary>
+        ///     The sdl controller button guide sdl game controller button
+        /// </summary>
+        SdlControllerButtonGuide,
 
-    /// <summary>
-    ///     Start or menu button (typically located in the center)
-    /// </summary>
-    SdlControllerButtonStart,
+        /// <summary>
+        ///     The sdl controller button start sdl game controller button
+        /// </summary>
+        SdlControllerButtonStart,
 
-    /// <summary>
-    ///     Pressing the left analog stick down
-    /// </summary>
-    SdlControllerButtonLeftStick,
+        /// <summary>
+        ///     The sdl controller button left stick sdl game controller button
+        /// </summary>
+        SdlControllerButtonLeftStick,
 
-    /// <summary>
-    ///     Pressing the right analog stick down
-    /// </summary>
-    SdlControllerButtonRightStick,
+        /// <summary>
+        ///     The sdl controller button right stick sdl game controller button
+        /// </summary>
+        SdlControllerButtonRightStick,
 
-    /// <summary>
-    ///     Left shoulder or bumper button
-    /// </summary>
-    SdlControllerButtonLeftShoulder,
+        /// <summary>
+        ///     The sdl controller button left shoulder sdl game controller button
+        /// </summary>
+        SdlControllerButtonLeftShoulder,
 
-    /// <summary>
-    ///     Right shoulder or bumper button
-    /// </summary>
-    SdlControllerButtonRightShoulder,
+        /// <summary>
+        ///     The sdl controller button right shoulder sdl game controller button
+        /// </summary>
+        SdlControllerButtonRightShoulder,
 
-    /// <summary>
-    ///     Directional pad up direction
-    /// </summary>
-    SdlControllerButtonDpadUp,
+        /// <summary>
+        ///     The sdl controller button dpad up sdl game controller button
+        /// </summary>
+        SdlControllerButtonDpadUp,
 
-    /// <summary>
-    ///     Directional pad down direction
-    /// </summary>
-    SdlControllerButtonDpadDown,
+        /// <summary>
+        ///     The sdl controller button dpad down sdl game controller button
+        /// </summary>
+        SdlControllerButtonDpadDown,
 
-    /// <summary>
-    ///     Directional pad left direction
-    /// </summary>
-    SdlControllerButtonDpadLeft,
+        /// <summary>
+        ///     The sdl controller button dpad left sdl game controller button
+        /// </summary>
+        SdlControllerButtonDpadLeft,
 
-    /// <summary>
-    ///     Directional pad right direction
-    /// </summary>
-    SdlControllerButtonDpadRight,
+        /// <summary>
+        ///     The sdl controller button dpad right sdl game controller button
+        /// </summary>
+        SdlControllerButtonDpadRight,
 
-    /// <summary>
-    ///     Miscellaneous button 1 (additional controller button)
-    /// </summary>
-    SdlControllerButtonMisc1,
+        /// <summary>
+        ///     The sdl controller button misc1 sdl game controller button
+        /// </summary>
+        SdlControllerButtonMisc1,
 
-    /// <summary>
-    ///     Extra paddle button 1 on the back of the controller
-    /// </summary>
-    SdlControllerButtonPaddle1,
+        /// <summary>
+        ///     The sdl controller button paddle1 sdl game controller button
+        /// </summary>
+        SdlControllerButtonPaddle1,
 
-    /// <summary>
-    ///     Extra paddle button 2 on the back of the controller
-    /// </summary>
-    SdlControllerButtonPaddle2,
+        /// <summary>
+        ///     The sdl controller button paddle2 sdl game controller button
+        /// </summary>
+        SdlControllerButtonPaddle2,
 
-    /// <summary>
-    ///     Extra paddle button 3 on the back of the controller
-    /// </summary>
-    SdlControllerButtonPaddle3,
+        /// <summary>
+        ///     The sdl controller button paddle3 sdl game controller button
+        /// </summary>
+        SdlControllerButtonPaddle3,
 
-    /// <summary>
-    ///     Extra paddle button 4 on the back of the controller
-    /// </summary>
-    SdlControllerButtonPaddle4,
+        /// <summary>
+        ///     The sdl controller button paddle4 sdl game controller button
+        /// </summary>
+        SdlControllerButtonPaddle4,
 
-    /// <summary>
-    ///     Touchpad press on the controller
-    /// </summary>
-    SdlControllerButtonTouchpad,
+        /// <summary>
+        ///     The sdl controller button touchpad sdl game controller button
+        /// </summary>
+        SdlControllerButtonTouchpad,
 
-    /// <summary>
-    ///     Total number of button entries (sentinel value)
-    /// </summary>
-    SdlControllerButtonMax
+        /// <summary>
+        ///     The sdl controller button max sdl game controller button
+        /// </summary>
+        SdlControllerButtonMax
     }
 }

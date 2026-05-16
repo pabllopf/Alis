@@ -34,23 +34,23 @@ using Alis.Core.Aspect.Math.Shapes.Point;
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     Represents an SDL vertex structure, containing position, color, and texture coordinate for batch rendering.
+    ///     The sdl vertex
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct Vertex
     {
         /// <summary>
-        ///     The vertex position in 2D space.
+        ///     The position
         /// </summary>
         public PointF Position { get; set; }
 
         /// <summary>
-        ///     The vertex color (RGBA).
+        ///     The color
         /// </summary>
         public Color Color { get; set; }
 
         /// <summary>
-        ///     The texture coordinate for mapping a texture onto the vertex.
+        ///     The text coordinate
         /// </summary>
         public PointF TexCoordinate { get; set; }
     }

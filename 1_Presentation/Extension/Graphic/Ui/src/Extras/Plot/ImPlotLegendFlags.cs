@@ -32,49 +32,49 @@ using System;
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     Flags that control the appearance and interaction behaviour of the plot legend in ImPlot.
+    ///     The im plot legend flags enum
     /// </summary>
     [Flags]
     public enum ImPlotLegendFlags
     {
         /// <summary>
-        ///     Default legend with show/hide buttons and item highlighting enabled.
+        ///     The none im plot legend flags
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     Hide the show/hide buttons next to legend entries.
+        ///     The no buttons im plot legend flags
         /// </summary>
         NoButtons = 1,
 
         /// <summary>
-        ///     Disable highlighting of plot items when hovering legend entries.
+        ///     The no highlight item im plot legend flags
         /// </summary>
         NoHighlightItem = 2,
 
         /// <summary>
-        ///     Disable highlighting of axes when hovering legend axis labels.
+        ///     The no highlight axis im plot legend flags
         /// </summary>
         NoHighlightAxis = 4,
 
         /// <summary>
-        ///     Disable the legend's context menu.
+        ///     The no menus im plot legend flags
         /// </summary>
         NoMenus = 8,
 
         /// <summary>
-        ///     Arrange legend entries horizontally instead of vertically.
+        ///     The outside im plot legend flags
         /// </summary>
-        Horizontal = 1024,
+        Outside = 16,
 
         /// <summary>
-        ///     Position the legend outside the plot area.
+        ///     The horizontal im plot legend flags
         /// </summary>
-        Outside = 2048,
+        Horizontal = 32,
 
         /// <summary>
-        ///     Sort legend entries alphabetically.
+        ///     The sort im plot legend flags
         /// </summary>
-        Sort = 4096
+        Sort = 64
     }
 }

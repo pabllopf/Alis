@@ -44,18 +44,18 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Sets the hsv using the specified h
         /// </summary>
-        /// <param name="h">The hue component (0.0-1.0)</param>
-        /// <param name="s">The saturation component (0.0-1.0)</param>
-        /// <param name="v">The value to be modified or populated</param>
+        /// <param name="h">The </param>
+        /// <param name="s">The </param>
+        /// <param name="v">The </param>
         public void SetHsv(float h, float s, float v) => ImGuiNative.ImColor_SetHSV(ref this, h, s, v, 1.0f);
 
         /// <summary>
         ///     Sets the hsv using the specified h
         /// </summary>
-        /// <param name="h">The hue component (0.0-1.0)</param>
-        /// <param name="s">The saturation component (0.0-1.0)</param>
-        /// <param name="v">The value to be modified or populated</param>
-        /// <param name="a">The alpha component</param>
+        /// <param name="h">The </param>
+        /// <param name="s">The </param>
+        /// <param name="v">The </param>
+        /// <param name="a">The </param>
         public void SetHsv(float h, float s, float v, float a) => ImGuiNative.ImColor_SetHSV(ref this, h, s, v, a);
     }
 }

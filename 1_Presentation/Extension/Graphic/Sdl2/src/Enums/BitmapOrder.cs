@@ -34,19 +34,19 @@ namespace Alis.Extension.Graphic.Sdl2.Enums
     /// </summary>
     public enum BitmapOrder
     {
-    /// <summary>
-    ///     No specific bitmap byte order defined
-    /// </summary>
-    BitMapOrderNone,
+        /// <summary>
+        ///     The sdl bit map order none sdl bit map order
+        /// </summary>
+        BitMapOrderNone,
 
-    /// <summary>
-    ///     Bitmap byte order is most significant byte first (big-endian, 4321)
-    /// </summary>
-    BitMapOrder4321,
+        /// <summary>
+        ///     The sdl bit map order 4321 sdl bit map order
+        /// </summary>
+        BitMapOrder4321,
 
-    /// <summary>
-    ///     Bitmap byte order is least significant byte first (little-endian, 1234)
-    /// </summary>
-    BitMapOrder1234
+        /// <summary>
+        ///     The sdl bit map order 1234 sdl bit map order
+        /// </summary>
+        BitMapOrder1234
     }
 }

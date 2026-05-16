@@ -34,15 +34,8 @@ using Alis.Core.Graphic.OpenGL.Enums;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     Returns information about an active uniform variable in a program object
+    ///     The get active uniform
     /// </summary>
-    /// <param name="program">Specifies the program object containing the uniform</param>
-    /// <param name="index">Specifies the index of the uniform variable to query</param>
-    /// <param name="bufSize">Specifies the maximum number of characters that may be written into name</param>
-    /// <param name="length">Returns the actual number of characters written into name</param>
-    /// <param name="size">Returns the size of the uniform variable</param>
-    /// <param name="type">Returns the type of the uniform variable</param>
-    /// <param name="name">Returns the name of the uniform variable</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void GetActiveUniform(uint program, uint index, int bufSize, [Out] int[] length, [Out] int[] size, [Out] ActiveUniformType[] type, [Out] StringBuilder name);
 }

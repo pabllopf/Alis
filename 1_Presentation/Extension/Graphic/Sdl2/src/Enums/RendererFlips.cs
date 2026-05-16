@@ -37,19 +37,19 @@ namespace Alis.Extension.Graphic.Sdl2.Enums
     [Flags]
     public enum RendererFlips
     {
-    /// <summary>
-    ///     No flipping applied to the texture or surface
-    /// </summary>
-    None = 0x00000000,
+        /// <summary>
+        ///     The sdl flip none sdl renderer flip
+        /// </summary>
+        None = 0x00000000,
 
-    /// <summary>
-    ///     Flip the texture or surface horizontally (mirror left-right)
-    /// </summary>
-    FlipHorizontal = 0x00000001,
+        /// <summary>
+        ///     The sdl flip horizontal sdl renderer flip
+        /// </summary>
+        FlipHorizontal = 0x00000001,
 
-    /// <summary>
-    ///     Flip the texture or surface vertically (mirror upside-down)
-    /// </summary>
-    FlipVertical = 0x00000002
+        /// <summary>
+        ///     The sdl flip vertical sdl renderer flip
+        /// </summary>
+        FlipVertical = 0x00000002
     }
 }

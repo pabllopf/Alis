@@ -84,17 +84,17 @@ namespace Alis.Extension.Language.Translator.Providers
         /// </summary>
         /// <param name="translationsDictionary">The translations to save</param>
         /// <returns>A task representing the asynchronous operation</returns>
-        public Task SaveTranslationsAsync(Dictionary<string, Dictionary<string, string>> translations)
+        public Task SaveTranslationsAsync(Dictionary<string, Dictionary<string, string>> translationsDictionary)
         {
-            if (translations == null)
+            if (translationsDictionary == null)
             {
-                throw new ArgumentNullException(nameof(translations));
+                throw new ArgumentNullException(nameof(translationsDictionary));
             }
 
             lock (syncLock)
             {
                 translations.Clear();
-                foreach (KeyValuePair<string, Dictionary<string, string>> kvp in translations)
+                foreach (KeyValuePair<string, Dictionary<string, string>> kvp in translationsDictionary)
                 {
                     if (kvp.Value != null)
                     {

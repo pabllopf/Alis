@@ -44,13 +44,13 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
         [Context] private readonly HypEcsContext _hypEcs;
 
         /// <summary>
-        ///     Benchmarks mono-threaded query with one component using HypEcs
+        ///     Hyps the ecs mono thread
         /// </summary>
         [BenchmarkCategory(Categories.HypEcs), Benchmark]
         public void HypEcs_MonoThread() => _hypEcs.MonoThreadSystem.Run(_hypEcs.World);
 
         /// <summary>
-        ///     Benchmarks multi-threaded query with one component using HypEcs
+        ///     Hyps the ecs multi thread
         /// </summary>
         [BenchmarkCategory(Categories.HypEcs), Benchmark]
         public void HypEcs_MultiThread() => _hypEcs.MultiThreadSystem.Run(_hypEcs.World);
@@ -81,15 +81,15 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
                 }
             }
 
-        /// <summary>
-        ///     Gets the mono-threaded system
-        /// </summary>
-        public ISystem MonoThreadSystem { get; } = new MonoThreadRunSystem();
+            /// <summary>
+            ///     Gets the value of the mono thread system
+            /// </summary>
+            public ISystem MonoThreadSystem { get; } = new MonoThreadRunSystem();
 
-        /// <summary>
-        ///     Gets the multi-threaded system
-        /// </summary>
-        public ISystem MultiThreadSystem { get; } = new MultiThreadRunSystem();
+            /// <summary>
+            ///     Gets the value of the multi thread system
+            /// </summary>
+            public ISystem MultiThreadSystem { get; } = new MultiThreadRunSystem();
 
             /// <summary>
             ///     The mono thread run system class
@@ -98,9 +98,9 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
             private sealed class MonoThreadRunSystem : ISystem
             {
                 /// <summary>
-                ///     Runs the system on the given world
+                ///     Runs the scene
                 /// </summary>
-                /// <param name="world">The world to run on</param>
+                /// <param name="world">The scene</param>
                 public void Run(World world)
                 {
                     Query<Component1> query = world.Query<Component1>().Build();
@@ -121,9 +121,9 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
             private sealed class MultiThreadRunSystem : ISystem
             {
                 /// <summary>
-                ///     Runs the system on the given world
+                ///     Runs the scene
                 /// </summary>
-                /// <param name="world">The world to run on</param>
+                /// <param name="world">The scene</param>
                 public void Run(World world)
                 {
                     Query<Component1> query = world.Query<Component1>().Build();

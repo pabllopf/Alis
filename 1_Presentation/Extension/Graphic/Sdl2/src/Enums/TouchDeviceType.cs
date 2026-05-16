@@ -34,24 +34,24 @@ namespace Alis.Extension.Graphic.Sdl2.Enums
     /// </summary>
     public enum TouchDeviceType
     {
-    /// <summary>
-    ///     Invalid or uninitialized touch device type
-    /// </summary>
-    SdlTouchDeviceInvalid = -1,
+        /// <summary>
+        ///     The sdl touch device invalid sdl touch device type
+        /// </summary>
+        SdlTouchDeviceInvalid = -1,
 
-    /// <summary>
-    ///     Direct touch device (touchscreen where touch position maps to screen)
-    /// </summary>
-    SdlTouchDeviceDirect,
+        /// <summary>
+        ///     The sdl touch device direct sdl touch device type
+        /// </summary>
+        SdlTouchDeviceDirect,
 
-    /// <summary>
-    ///     Indirect touch device with absolute positioning (e.g., drawing tablet)
-    /// </summary>
-    SdlTouchDeviceIndirectAbsolute,
+        /// <summary>
+        ///     The sdl touch device indirect absolute sdl touch device type
+        /// </summary>
+        SdlTouchDeviceIndirectAbsolute,
 
-    /// <summary>
-    ///     Indirect touch device with relative positioning (e.g., touchpad)
-    /// </summary>
-    SdlTouchDeviceIndirectRelative
+        /// <summary>
+        ///     The sdl touch device indirect relative sdl touch device type
+        /// </summary>
+        SdlTouchDeviceIndirectRelative
     }
 }

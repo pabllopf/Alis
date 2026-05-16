@@ -33,18 +33,18 @@ using Alis.Extension.Graphic.Sdl2.Enums;
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     Represents a minimal SDL event structure containing only the type and timestamp, used as a generic event base.
+    ///     The sdl generic event
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct GenericEvent
     {
         /// <summary>
-        ///     The event type identifier.
+        ///     The type
         /// </summary>
         public EventType type;
 
         /// <summary>
-        ///     The timestamp of the event, in milliseconds, from the SDL event system.
+        ///     The timestamp
         /// </summary>
         public uint timestamp;
     }

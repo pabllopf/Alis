@@ -34,24 +34,24 @@ namespace Alis.Extension.Graphic.Sdl2.Enums
     /// </summary>
     public enum SensorType
     {
-    /// <summary>
-    ///     Invalid or uninitialized sensor type
-    /// </summary>
-    SdlSensorInvalid = -1,
+        /// <summary>
+        ///     The sdl sensor invalid sdl sensor type
+        /// </summary>
+        SdlSensorInvalid = -1,
 
-    /// <summary>
-    ///     Unknown or unsupported sensor type
-    /// </summary>
-    SdlSensorUnknown,
+        /// <summary>
+        ///     The sdl sensor unknown sdl sensor type
+        /// </summary>
+        SdlSensorUnknown,
 
-    /// <summary>
-    ///     Accelerometer sensor measuring linear acceleration
-    /// </summary>
-    SdlSensorAccel,
+        /// <summary>
+        ///     The sdl sensor accel sdl sensor type
+        /// </summary>
+        SdlSensorAccel,
 
-    /// <summary>
-    ///     Gyroscope sensor measuring angular rotation rate
-    /// </summary>
-    SdlSensorGyro
+        /// <summary>
+        ///     The sdl sensor gyro sdl sensor type
+        /// </summary>
+        SdlSensorGyro
     }
 }

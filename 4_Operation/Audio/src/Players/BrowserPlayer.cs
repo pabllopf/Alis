@@ -229,7 +229,7 @@ namespace Alis.Core.Audio.Players
         /// <param name="freq">The freq</param>
         /// <param name="format">The format</param>
         /// <returns>The bool</returns>
-        private static bool TryParseWav(byte[] wav, out int dataOffset, out int dataSize, out int freq, out int format)
+        private bool TryParseWav(byte[] wav, out int dataOffset, out int dataSize, out int freq, out int format)
         {
             // Parser WAV extendido: muestra todos los campos fmt, chunks, y sugiere conversión si es comprimido
             dataOffset = 0;

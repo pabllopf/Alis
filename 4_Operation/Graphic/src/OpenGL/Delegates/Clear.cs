@@ -33,9 +33,8 @@ using Alis.Core.Graphic.OpenGL.Enums;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     Clears the specified buffer(s) to preset values
+    ///     The clear
     /// </summary>
-    /// <param name="mask">Specifies the buffers to be cleared as a bitwise OR of buffer mask flags</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void Clear(ClearBufferMask mask);
 }

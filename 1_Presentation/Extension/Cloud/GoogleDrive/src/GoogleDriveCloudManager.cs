@@ -52,6 +52,11 @@ namespace Alis.Extension.Cloud.GoogleDrive
     public class GoogleDriveCloudManager : AManager, ICloudManager, IDisposable
     {
         /// <summary>
+        ///     The scopes required for Google Drive API
+        /// </summary>
+        private static readonly string[] Scopes = {DriveService.Scope.Drive};
+
+        /// <summary>
         ///     The Google Drive service
         /// </summary>
         private DriveService _driveService;
@@ -153,7 +158,7 @@ namespace Alis.Extension.Cloud.GoogleDrive
                         return fileMetadata.Id ?? "unknown";
                     }
 
-                    throw new InvalidOperationException($"Upload failed with status: {response.Status}");
+                    throw new Exception($"Upload failed with status: {response.Status}");
                 }
             }
             catch (Exception ex)

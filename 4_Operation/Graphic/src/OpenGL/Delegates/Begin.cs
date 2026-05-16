@@ -32,9 +32,8 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     Delimits the vertices of a primitive or a group of like primitives
+    ///     The begin
     /// </summary>
-    /// <param name="mode">Specifies the primitive type to be rendered</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void Begin(PrimitiveType mode);
 }

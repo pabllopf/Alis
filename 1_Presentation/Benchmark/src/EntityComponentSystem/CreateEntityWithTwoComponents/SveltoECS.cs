@@ -44,7 +44,7 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithTwoComponents
         [Context] private readonly SveltoECSBaseContext _sveltoECS;
 
         /// <summary>
-        ///     Benchmarks creating entities with two components using Svelto ECS
+        ///     Sveltoes the ecs
         /// </summary>
         [BenchmarkCategory(Categories.SveltoECS), Benchmark]
         public void SveltoECS()

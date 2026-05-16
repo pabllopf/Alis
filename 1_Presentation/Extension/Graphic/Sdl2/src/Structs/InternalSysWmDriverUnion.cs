@@ -32,79 +32,79 @@ using System.Runtime.InteropServices;
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     A union type overlaying all platform-specific window manager info structures at the same memory offset.
+    ///     The internal sys wm driver union
     /// </summary>
     [StructLayout(LayoutKind.Explicit)]
     public struct InternalSysWmDriverUnion
     {
         /// <summary>
-        ///     Windows native window manager info (HWND, HDC, HINSTANCE).
+        ///     The win
         /// </summary>
         [FieldOffset(0)] public InternalWindowsWmInfo win;
 
 
         /// <summary>
-        ///     WinRT window manager info.
+        ///     The winrt
         /// </summary>
         [FieldOffset(0)] public InternalWinrtWmInfo winrt;
 
 
         /// <summary>
-        ///     X11 window manager info (Display*, Window XID).
+        ///     The 11
         /// </summary>
         [FieldOffset(0)] public InternalX11WmInfo x11;
 
 
         /// <summary>
-        ///     DirectFB window manager info.
+        ///     The dfb
         /// </summary>
         [FieldOffset(0)] public InternalDirectfbWmInfo dfb;
 
 
         /// <summary>
-        ///     Cocoa (macOS) window manager info (NSWindow*).
+        ///     The cocoa
         /// </summary>
         [FieldOffset(0)] public InternalCocoaWmInfo cocoa;
 
 
         /// <summary>
-        ///     UIKit (iOS/tvOS) window manager info (UIWindow*).
+        ///     The uikit
         /// </summary>
         [FieldOffset(0)] public InternalUikitWmInfo uikit;
 
 
         /// <summary>
-        ///     Wayland window manager info (wl_display*, wl_surface*, etc.).
+        ///     The wl
         /// </summary>
         [FieldOffset(0)] public InternalWaylandWmInfo wl;
 
 
         /// <summary>
-        ///     Mir display server window manager info.
+        ///     The mir
         /// </summary>
         [FieldOffset(0)] public InternalMirWmInfo mir;
 
 
         /// <summary>
-        ///     Android window manager info (ANativeWindow*, EGLSurface*).
+        ///     The android
         /// </summary>
         [FieldOffset(0)] public InternalAndroidWmInfo android;
 
 
         /// <summary>
-        ///     OS/2 window manager info.
+        ///     The os
         /// </summary>
         [FieldOffset(0)] public InternalOs2WmInfo os2;
 
 
         /// <summary>
-        ///     Vivante (Vivante GPU) window manager info.
+        ///     The vivante
         /// </summary>
         [FieldOffset(0)] public InternalVivanteWmInfo VivanteWmInfo;
 
 
         /// <summary>
-        ///     KMS/DRM window manager info.
+        ///     The ksm
         /// </summary>
         [FieldOffset(0)] public InternalKmsWmInfo ksm;
     }

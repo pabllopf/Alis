@@ -32,10 +32,8 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     Specifies a vertex with two floating-point coordinates
+    ///     The vertex 2f
     /// </summary>
-    /// <param name="x">Specifies the x-coordinate of the vertex</param>
-    /// <param name="y">Specifies the y-coordinate of the vertex</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void Vertex2F(float x, float y);
 }

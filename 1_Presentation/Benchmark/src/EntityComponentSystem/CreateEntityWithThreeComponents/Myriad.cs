@@ -46,7 +46,7 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithThreeComponents
         [Context] private readonly MyriadBaseContext _myriad;
 
         /// <summary>
-        ///     Benchmarks creating entities with three components using Myriad ECS
+        ///     Myriads this instance
         /// </summary>
         [BenchmarkCategory(Categories.Myriad), Benchmark]
         public void Myriad()

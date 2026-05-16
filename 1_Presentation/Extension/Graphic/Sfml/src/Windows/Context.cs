@@ -60,14 +60,14 @@ namespace Alis.Extension.Graphic.Sfml.Windows
 
 
         /// <summary>
-        ///     Gets the OpenGL context creation settings, including depth buffer, stencil buffer, antialiasing, and version parameters
+        ///     Get the settings of the context.
         /// </summary>
 
         public ContextSettings Settings => sfContext_getSettings(myThis);
 
 
         /// <summary>
-        ///     Gets the shared global OpenGL context instance, created on first access
+        ///     Global helper context
         /// </summary>
 
         public static Context Global

@@ -46,7 +46,7 @@ namespace Alis.Extension.Language.Dialogue.Core
         /// <param name="context">The dialog context</param>
         /// <returns>True if the condition is satisfied</returns>
         /// <exception cref="ArgumentNullException">Thrown when condition or context is null</exception>
-        public static bool EvaluateCondition(IDialogCondition condition, DialogContext context)
+        public bool EvaluateCondition(IDialogCondition condition, DialogContext context)
         {
             if (condition == null)
             {

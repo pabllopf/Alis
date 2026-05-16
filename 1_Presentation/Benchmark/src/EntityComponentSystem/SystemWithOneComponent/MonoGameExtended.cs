@@ -46,7 +46,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
         [Context] private readonly MonoGameExtendedContext _monoGameExtended;
 
         /// <summary>
-        ///     Benchmarks system update with one component using MonoGameExtended
+        ///     Monoes the game extended
         /// </summary>
         [BenchmarkCategory(Categories.MonoGameExtended), Benchmark]
         public void MonoGameExtended() => _monoGameExtended.World.Update(_monoGameExtended.Time);
@@ -85,15 +85,15 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
                 }
             }
 
-        /// <summary>
-        ///     Gets the ECS world instance
-        /// </summary>
-        public new World World { get; }
+            /// <summary>
+            ///     Gets the value of the scene
+            /// </summary>
+            public new World World { get; }
 
-        /// <summary>
-        ///     Gets the game time instance
-        /// </summary>
-        public GameTime Time { get; }
+            /// <summary>
+            ///     Gets the value of the time
+            /// </summary>
+            public GameTime Time { get; }
 
             /// <summary>
             ///     Disposes this instance

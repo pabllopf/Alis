@@ -39,8 +39,6 @@ namespace Alis.Extension.Network.Core
         /// <summary>
         ///     Initializes client disconnection event args
         /// </summary>
-        /// <param name="clientId">The unique identifier of the disconnected client</param>
-        /// <param name="reason">Optional reason for the disconnection</param>
         public ClientDisconnectionEventArgs(string clientId, string reason = null)
         {
             ClientId = clientId;

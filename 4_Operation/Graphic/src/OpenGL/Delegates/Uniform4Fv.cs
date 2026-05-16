@@ -32,11 +32,8 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     Sets a vector of four float uniform values for the current program at the specified location
+    ///     The uniform 4fv
     /// </summary>
-    /// <param name="location">Specifies the location of the uniform variable to modify</param>
-    /// <param name="count">Specifies the number of elements to be modified</param>
-    /// <param name="value">Specifies an array of float values to assign</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void Uniform4Fv(int location, int count, float[] value);
 }

@@ -34,12 +34,8 @@ using Alis.Core.Graphic.OpenGL.Enums;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     Creates and initializes a buffer object's data store
+    ///     The buffer data
     /// </summary>
-    /// <param name="target">Specifies the target buffer object</param>
-    /// <param name="size">Specifies the size in bytes of the buffer object's new data store</param>
-    /// <param name="data">Specifies a pointer to data that will be copied into the data store</param>
-    /// <param name="usage">Specifies the expected usage pattern of the data store</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void BufferData(BufferTarget target, IntPtr size, IntPtr data, BufferUsageHint usage);
 }

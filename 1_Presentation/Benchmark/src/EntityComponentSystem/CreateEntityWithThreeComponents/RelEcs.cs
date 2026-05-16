@@ -43,7 +43,7 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithThreeComponents
         [Context] private readonly RelEcsBaseContext _relEcs;
 
         /// <summary>
-        ///     Benchmarks creating entities with three components using RelEcs
+        ///     Rels the ecs
         /// </summary>
         [BenchmarkCategory(Categories.RelEcs), Benchmark]
         public void RelEcs()

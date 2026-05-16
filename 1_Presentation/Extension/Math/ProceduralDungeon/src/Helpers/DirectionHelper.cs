@@ -98,7 +98,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Helpers
         {
             if (first == Direction.None || second == Direction.None)
             {
-                throw new ArgumentOutOfRangeException(nameof(first), "Neither direction can be Direction.None");
+                throw new ArgumentOutOfRangeException("Neither direction can be Direction.None");
             }
 
             return GetOpposite(first) == second;

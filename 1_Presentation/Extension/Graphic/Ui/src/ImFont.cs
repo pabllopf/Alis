@@ -39,22 +39,22 @@ namespace Alis.Extension.Graphic.Ui
     public struct ImFont
     {
         /// <summary>
-        ///     The per-glyph horizontal advance values
+        ///     The index advance
         /// </summary>
         public ImVector IndexAdvanceX { get; set; }
 
         /// <summary>
-        ///     The advance width of the fallback glyph
+        ///     The fallback advance
         /// </summary>
         public float FallbackAdvanceX { get; set; }
 
         /// <summary>
-        ///     The configured font size in pixels
+        ///     The font size
         /// </summary>
         public float FontSize { get; set; }
 
         /// <summary>
-        ///     The glyph index lookup table
+        ///     The index lookup
         /// </summary>
         public ImVector IndexLookup { get; set; }
 
@@ -69,17 +69,17 @@ namespace Alis.Extension.Graphic.Ui
         public IntPtr FallbackGlyph { get; set; }
 
         /// <summary>
-        ///     The owning font atlas container
+        ///     The container atlas
         /// </summary>
         public IntPtr ContainerAtlas { get; set; }
 
         /// <summary>
-        ///     The font configuration data pointer
+        ///     The config data
         /// </summary>
         public IntPtr ConfigData { get; set; }
 
         /// <summary>
-        ///     The font configuration data pointer count
+        ///     The config data count
         /// </summary>
         public short ConfigDataCount { get; set; }
 
@@ -99,7 +99,7 @@ namespace Alis.Extension.Graphic.Ui
         public ushort DotChar { get; set; }
 
         /// <summary>
-        ///     Flag indicating whether lookup tables need rebuilding
+        ///     The dirty lookup tables
         /// </summary>
         public byte DirtyLookupTables { get; set; }
 
@@ -119,7 +119,7 @@ namespace Alis.Extension.Graphic.Ui
         public float Descent { get; set; }
 
         /// <summary>
-        ///     The total surface area of all glyphs in the atlas
+        ///     The metrics total surface
         /// </summary>
         public int MetricsTotalSurface { get; set; }
 

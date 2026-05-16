@@ -34,49 +34,49 @@ namespace Alis.Extension.Graphic.Sdl2.Enums
     /// </summary>
     public enum PackedOrder
     {
-    /// <summary>
-    ///     No specific packed pixel component order defined
-    /// </summary>
-    PackedOrderNone,
+        /// <summary>
+        ///     The sdl packed order none sdl packed order
+        /// </summary>
+        PackedOrderNone,
 
-    /// <summary>
-    ///     Packed pixel order: X (unused), Red, Green, Blue
-    /// </summary>
-    PackedOrderXRgb,
+        /// <summary>
+        ///     The sdl packed order x rgb sdl packed order
+        /// </summary>
+        PackedOrderXRgb,
 
-    /// <summary>
-    ///     Packed pixel order: Red, Green, Blue, X (unused)
-    /// </summary>
-    PackedOrderRGbx,
+        /// <summary>
+        ///     The sdl packed order r gbx sdl packed order
+        /// </summary>
+        PackedOrderRGbx,
 
-    /// <summary>
-    ///     Packed pixel order: Alpha, Red, Green, Blue
-    /// </summary>
-    PackedOrderARgb,
+        /// <summary>
+        ///     The sdl packed order argb sdl packed order
+        /// </summary>
+        PackedOrderARgb,
 
-    /// <summary>
-    ///     Packed pixel order: Red, Green, Blue, Alpha
-    /// </summary>
-    PackedOrderRGba,
+        /// <summary>
+        ///     The sdl packed order rgba sdl packed order
+        /// </summary>
+        PackedOrderRGba,
 
-    /// <summary>
-    ///     Packed pixel order: X (unused), Blue, Green, Red
-    /// </summary>
-    PackedOrderXBgr,
+        /// <summary>
+        ///     The sdl packed order x bgr sdl packed order
+        /// </summary>
+        PackedOrderXBgr,
 
-    /// <summary>
-    ///     Packed pixel order: Blue, Green, Red, X (unused)
-    /// </summary>
-    PackedOrderBGrx,
+        /// <summary>
+        ///     The sdl packed order b grx sdl packed order
+        /// </summary>
+        PackedOrderBGrx,
 
-    /// <summary>
-    ///     Packed pixel order: Alpha, Blue, Green, Red
-    /// </summary>
-    PackedOrderABgr,
+        /// <summary>
+        ///     The sdl packed order a bgr sdl packed order
+        /// </summary>
+        PackedOrderABgr,
 
-    /// <summary>
-    ///     Packed pixel order: Blue, Green, Red, Alpha
-    /// </summary>
-    PackedOrderBGra
+        /// <summary>
+        ///     The sdl packed order b gra sdl packed order
+        /// </summary>
+        PackedOrderBGra
     }
 }

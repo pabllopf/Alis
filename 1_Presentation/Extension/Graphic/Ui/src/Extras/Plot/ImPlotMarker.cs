@@ -30,63 +30,68 @@
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     Defines the shape of markers used for data points in ImPlot plots.
+    ///     The im plot marker enum
     /// </summary>
     public enum ImPlotMarker
     {
         /// <summary>
-        ///     No marker is drawn.
+        ///     The none im plot marker
         /// </summary>
         None = -1,
 
         /// <summary>
-        ///     Circular marker.
+        ///     The circle im plot marker
         /// </summary>
         Circle = 0,
 
         /// <summary>
-        ///     Square marker.
+        ///     The square im plot marker
         /// </summary>
         Square = 1,
 
         /// <summary>
-        ///     Diamond-shaped marker.
+        ///     The diamond im plot marker
         /// </summary>
         Diamond = 2,
 
         /// <summary>
-        ///     Upward-pointing triangle marker.
+        ///     The up im plot marker
         /// </summary>
         Up = 3,
 
         /// <summary>
-        ///     Downward-pointing triangle marker.
+        ///     The down im plot marker
         /// </summary>
         Down = 4,
 
         /// <summary>
-        ///     Left-pointing triangle marker.
+        ///     The left im plot marker
         /// </summary>
         Left = 5,
 
         /// <summary>
-        ///     Right-pointing triangle marker.
+        ///     The right im plot marker
         /// </summary>
         Right = 6,
 
         /// <summary>
-        ///     Cross (X) marker.
+        ///     The cross im plot marker
         /// </summary>
         Cross = 7,
 
         /// <summary>
-        ///     Plus (+) marker.
+        ///     The plus im plot marker
         /// </summary>
         Plus = 8,
 
         /// <summary>
-        ///     Asterisk (*) marker.
+        ///     The asterisk im plot marker
         /// </summary>
-        Asterisk = 9
+        Asterisk = 9,
+
+        /// <summary>
+        ///     The count im plot marker
+        /// </summary>
+        Count = 10
     }
 }

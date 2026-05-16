@@ -34,99 +34,99 @@ namespace Alis.Extension.Graphic.Sdl2.Enums
     /// </summary>
     public enum WindowEventId : byte
     {
-    /// <summary>
-    ///     No window event occurred
-    /// </summary>
-    SdlWindowEventNone,
+        /// <summary>
+        ///     The sdl window event none sdl window event id
+        /// </summary>
+        SdlWindowEventNone,
 
-    /// <summary>
-    ///     Window has been shown and is now visible
-    /// </summary>
-    SdlWindowEventShown,
+        /// <summary>
+        ///     The sdl window event shown sdl window event id
+        /// </summary>
+        SdlWindowEventShown,
 
-    /// <summary>
-    ///     Window has been hidden and is now invisible
-    /// </summary>
-    SdlWindowEventHidden,
+        /// <summary>
+        ///     The sdl window event hidden sdl window event id
+        /// </summary>
+        SdlWindowEventHidden,
 
-    /// <summary>
-    ///     Window has been exposed and needs repainting
-    /// </summary>
-    SdlWindowEventExposed,
+        /// <summary>
+        ///     The sdl window event exposed sdl window event id
+        /// </summary>
+        SdlWindowEventExposed,
 
-    /// <summary>
-    ///     Window has been moved to a new position
-    /// </summary>
-    SdlWindowEventMoved,
+        /// <summary>
+        ///     The sdl window event moved sdl window event id
+        /// </summary>
+        SdlWindowEventMoved,
 
-    /// <summary>
-    ///     Window has been resized to new dimensions
-    /// </summary>
-    SdlWindowEventResized,
+        /// <summary>
+        ///     The sdl window event resized sdl window event id
+        /// </summary>
+        SdlWindowEventResized,
 
-    /// <summary>
-    ///     Window size has changed between minimized and restored state
-    /// </summary>
-    SdlWindowEventSizeChanged,
+        /// <summary>
+        ///     The sdl window event size changed sdl window event id
+        /// </summary>
+        SdlWindowEventSizeChanged,
 
-    /// <summary>
-    ///     Window has been minimized (iconified)
-    /// </summary>
-    SdlWindowEventMinimized,
+        /// <summary>
+        ///     The sdl window event minimized sdl window event id
+        /// </summary>
+        SdlWindowEventMinimized,
 
-    /// <summary>
-    ///     Window has been maximized
-    /// </summary>
-    SdlWindowEventMaximized,
+        /// <summary>
+        ///     The sdl window event maximized sdl window event id
+        /// </summary>
+        SdlWindowEventMaximized,
 
-    /// <summary>
-    ///     Window has been restored to its previous size
-    /// </summary>
-    SdlWindowEventRestored,
+        /// <summary>
+        ///     The sdl window event restored sdl window event id
+        /// </summary>
+        SdlWindowEventRestored,
 
-    /// <summary>
-    ///     Mouse has entered the window area
-    /// </summary>
-    SdlWindowEventEnter,
+        /// <summary>
+        ///     The sdl window event enter sdl window event id
+        /// </summary>
+        SdlWindowEventEnter,
 
-    /// <summary>
-    ///     Mouse has left the window area
-    /// </summary>
-    SdlWindowEventLeave,
+        /// <summary>
+        ///     The sdl window event leave sdl window event id
+        /// </summary>
+        SdlWindowEventLeave,
 
-    /// <summary>
-    ///     Window has gained keyboard focus
-    /// </summary>
-    SdlWindowEventFocusGained,
+        /// <summary>
+        ///     The sdl window event focus gained sdl window event id
+        /// </summary>
+        SdlWindowEventFocusGained,
 
-    /// <summary>
-    ///     Window has lost keyboard focus
-    /// </summary>
-    SdlWindowEventFocusLost,
+        /// <summary>
+        ///     The sdl window event focus lost sdl window event id
+        /// </summary>
+        SdlWindowEventFocusLost,
 
-    /// <summary>
-    ///     Window close button was pressed or close requested
-    /// </summary>
-    SdlWindowEventClose,
+        /// <summary>
+        ///     The sdl window event close sdl window event id
+        /// </summary>
+        SdlWindowEventClose,
 
-    /// <summary>
-    ///     Window has been offered focus (may take or ignore)
-    /// </summary>
-    SdlWindowEventTakeFocus,
+        /// <summary>
+        ///     The sdl window event take focus sdl window event id
+        /// </summary>
+        SdlWindowEventTakeFocus,
 
-    /// <summary>
-    ///     Window hit test has been performed
-    /// </summary>
-    SdlWindowEventHitTest,
+        /// <summary>
+        ///     The sdl window event hit test sdl window event id
+        /// </summary>
+        SdlWindowEventHitTest,
 
-    /// <summary>
-    ///     Window ICC profile has changed
-    /// </summary>
-    SdlWindowEventIccProfChanged,
+        /// <summary>
+        ///     The sdl window event icc prof changed sdl window event id
+        /// </summary>
+        SdlWindowEventIccProfChanged,
 
-    /// <summary>
-    ///     Window has been moved to a different display
-    /// </summary>
-    SdlWindowEventDisplayChanged
+        /// <summary>
+        ///     The sdl window event display changed sdl window event id
+        /// </summary>
+        SdlWindowEventDisplayChanged
     }
 }

@@ -136,7 +136,7 @@ namespace Alis.Core.Graphic
                         byte blue = reader.ReadByte();
                         byte green = reader.ReadByte();
                         byte red = reader.ReadByte();
-                        reader.ReadByte();
+                        byte reserved = reader.ReadByte();
                         palette[i] = new byte[] {red, green, blue, 255};
                     }
                 }

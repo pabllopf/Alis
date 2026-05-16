@@ -39,7 +39,7 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithOneComponent
     public partial class CreateEntityWithOneComponent
     {
         /// <summary>
-        ///     Benchmarks creating entities with one component using Friflo Engine ECS
+        ///     Frifloes the engine ecs
         /// </summary>
         [BenchmarkCategory(Categories.FrifloEngineEcs), Benchmark]
         public void FrifloEngineEcs()

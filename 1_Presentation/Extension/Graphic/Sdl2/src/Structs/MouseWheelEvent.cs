@@ -33,53 +33,53 @@ using Alis.Extension.Graphic.Sdl2.Enums;
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     Represents an SDL mouse wheel event, fired when the mouse wheel is scrolled.
+    ///     The sdl mouse wheel event
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct MouseWheelEvent
     {
         /// <summary>
-        ///     The event type identifier, set to <see cref="EventType.MouseWheel"/>.
+        ///     The type
         /// </summary>
         public readonly EventType type;
 
         /// <summary>
-        ///     The timestamp of the event, in milliseconds, from the SDL event system.
+        ///     The timestamp
         /// </summary>
         public readonly uint timestamp;
 
         /// <summary>
-        ///     The ID of the window that had mouse focus when the event occurred.
+        ///     The window id
         /// </summary>
         public readonly uint windowID;
 
         /// <summary>
-        ///     The mouse instance ID (SDL internal identifier for the mouse device).
+        ///     The which
         /// </summary>
         public readonly uint which;
 
         /// <summary>
-        ///     The horizontal scroll amount (positive for right, negative for left).
+        ///     The
         /// </summary>
         public readonly int x;
 
         /// <summary>
-        ///     The vertical scroll amount (positive for up/away from user, negative for down/toward user).
+        ///     The
         /// </summary>
         public readonly int y;
 
         /// <summary>
-        ///     The scroll direction, indicating the coordinate system (e.g. SDL_MOUSEWHEEL_NORMAL, SDL_MOUSEWHEEL_FLIPPED).
+        ///     The direction
         /// </summary>
         public readonly uint direction;
 
         /// <summary>
-        ///     The precise horizontal scroll amount with sub-pixel precision (for high-resolution scroll wheels).
+        ///     The precise
         /// </summary>
         public readonly float preciseX;
 
         /// <summary>
-        ///     The precise vertical scroll amount with sub-pixel precision (for high-resolution scroll wheels).
+        ///     The precise
         /// </summary>
         public readonly float preciseY;
     }

@@ -45,7 +45,7 @@ namespace Alis.Benchmark.InterfaceVsAbstract.Instancies
         /// <summary>
         ///     Initializes a new instance of the <see cref="CircleAbstract" /> class
         /// </summary>
-        /// <param name="r">The radius value</param>
+        /// <param name="r">The </param>
         public CircleAbstract(float r) => radius = r;
 
         /// <summary>

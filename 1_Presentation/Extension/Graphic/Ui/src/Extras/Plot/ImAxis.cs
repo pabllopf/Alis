@@ -30,42 +30,42 @@
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     Defines the available axes in an ImPlot plot for positioning data along X and Y dimensions.
+    ///     The im axis enum
     /// </summary>
     public enum ImAxis
     {
         /// <summary>
-        ///     Primary X axis (bottom).
+        ///     The  im axis
         /// </summary>
         X1 = 0,
 
         /// <summary>
-        ///     Secondary X axis (top), enabled with ImPlotAxisFlags.AuxDefault.
+        ///     The  im axis
         /// </summary>
         X2 = 1,
 
         /// <summary>
-        ///     Tertiary X axis, available for multi-axis plots.
+        ///     The  im axis
         /// </summary>
         X3 = 2,
 
         /// <summary>
-        ///     Primary Y axis (left).
+        ///     The  im axis
         /// </summary>
         Y1 = 3,
 
         /// <summary>
-        ///     Secondary Y axis (right), enabled with ImPlotAxisFlags.AuxDefault.
+        ///     The  im axis
         /// </summary>
         Y2 = 4,
 
         /// <summary>
-        ///     Tertiary Y axis, available for multi-axis plots.
+        ///     The  im axis
         /// </summary>
         Y3 = 5,
 
         /// <summary>
-        ///     Total number of axis slots defined.
+        ///     The count im axis
         /// </summary>
         Count = 6
     }

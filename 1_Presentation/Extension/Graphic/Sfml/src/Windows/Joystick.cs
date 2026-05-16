@@ -91,7 +91,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// <summary>
         ///     Return the number of buttons supported by a joystick
         /// </summary>
-        /// <remarks>If the joystick is not connected, this function returns 0.</remarks>
+        /// If the joystick is not connected, this function returns 0.
         /// <param name="joystick">Index of the joystick</param>
         /// <returns>Number of buttons supported by the joystick</returns>
         public static uint GetButtonCount(uint joystick) => sfJoystick_getButtonCount(joystick);
@@ -100,7 +100,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// <summary>
         ///     Check if a joystick supports a given axis
         /// </summary>
-        /// <remarks>If the joystick is not connected, this function returns false.</remarks>
+        /// If the joystick is not connected, this function returns false.
         /// <param name="joystick">Index of the joystick</param>
         /// <param name="axis">Axis to check</param>
         /// <returns>True if the joystick supports the axis, false otherwise</returns>
@@ -110,7 +110,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// <summary>
         ///     Check if a joystick button is pressed
         /// </summary>
-        /// <remarks>If the joystick is not connected, this function returns false.</remarks>
+        /// If the joystick is not connected, this function returns false.
         /// <param name="joystick">Index of the joystick</param>
         /// <param name="button">Button to check</param>
         /// <returns>True if the button is pressed, false otherwise</returns>
@@ -120,7 +120,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// <summary>
         ///     Get the current position of a joystick axis
         /// </summary>
-        /// <remarks>If the joystick is not connected, this function returns 0.</remarks>
+        /// If the joystick is not connected, this function returns 0.
         /// <param name="joystick">Index of the joystick</param>
         /// <param name="axis">Axis to check</param>
         /// <returns>Current position of the axis, in range [-100 .. 100]</returns>
@@ -130,12 +130,10 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// <summary>
         ///     Update the states of all joysticks
         /// </summary>
-        /// <remarks>
-        ///     This function is used internally by SFML, so you normally
-        ///     don't have to call it explicitly. However, you may need to
-        ///     call it if you have no window yet (or no window at all):
-        ///     in this case the joysticks states are not updated automatically.
-        /// </remarks>
+        /// This function is used internally by SFML, so you normally
+        /// don't have to call it explicitly. However, you may need to
+        /// call it if you have no window yet (or no window at all):
+        /// in this case the joysticks states are not updated automatically.
         public static void Update()
         {
             sfJoystick_update();
@@ -224,13 +222,13 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         public struct Identification
         {
             /// <summary>Name of the joystick</summary>
-            public string Name { get; set; }
+            public string Name;
 
             /// <summary>Manufacturer identifier</summary>
-            public uint VendorId { get; set; }
+            public uint VendorId;
 
             /// <summary>Product identifier</summary>
-            public uint ProductId { get; set; }
+            public uint ProductId;
         }
 
 

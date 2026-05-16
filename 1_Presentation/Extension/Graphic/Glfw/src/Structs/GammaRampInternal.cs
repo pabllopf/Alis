@@ -58,11 +58,6 @@ namespace Alis.Extension.Graphic.Glfw.Structs
         /// </summary>
         public readonly int Size;
 
-        /// <summary>
-        ///     Performs an explicit conversion from <see cref="GammaRampInternal" /> to <see cref="GammaRamp" />.
-        /// </summary>
-        /// <param name="ramp">The internal gamma ramp structure to convert.</param>
-        /// <returns>The managed <see cref="GammaRamp" /> with marshalled red, green, and blue channels.</returns>
         public static explicit operator GammaRamp(GammaRampInternal ramp)
         {
             int offset = 0;

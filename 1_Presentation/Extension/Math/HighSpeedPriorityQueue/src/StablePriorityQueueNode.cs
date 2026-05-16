@@ -36,8 +36,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
     public class StablePriorityQueueNode : FastPriorityQueueNode
     {
         /// <summary>
-        ///     Monotonically increasing insertion order counter.
-        ///     Used to break priority ties by first-in-first-out order within the stable queue.
+        ///     Represents the order the node was inserted in
         /// </summary>
         public long InsertionIndex { get; internal set; }
     }

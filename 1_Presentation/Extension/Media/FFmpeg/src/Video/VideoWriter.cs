@@ -133,42 +133,42 @@ namespace Alis.Extension.Media.FFmpeg.Video
         }
 
         /// <summary>
-        ///     Gets the current FFmpeg encoding process, if running.
+        ///     Gets the value of the current f fmpeg process
         /// </summary>
         public Process CurrentFFmpegProcess => Ffmpegp;
 
         /// <summary>
-        ///     Gets the input video width in pixels.
+        ///     Gets the value of the width
         /// </summary>
         public int Width { get; }
 
         /// <summary>
-        ///     Gets the input video height in pixels.
+        ///     Gets the value of the height
         /// </summary>
         public int Height { get; }
 
         /// <summary>
-        ///     Gets the input video framerate in frames per second.
+        ///     Gets the value of the framerate
         /// </summary>
         public double Framerate { get; }
 
         /// <summary>
-        ///     Gets whether output is written to a file (true) or a stream (false).
+        ///     Gets the value of the use filename
         /// </summary>
         public bool UseFilename { get; }
 
         /// <summary>
-        ///     Gets the encoder options used for video encoding.
+        ///     Gets the value of the encoder options
         /// </summary>
         public EncoderOptions EncoderOptions { get; }
 
         /// <summary>
-        ///     Gets the destination stream for stream-based output.
+        ///     Gets or sets the value of the destination stream
         /// </summary>
         public Stream DestinationStream { get; }
 
         /// <summary>
-        ///     Gets the FFmpeg process output data stream for stream-based output.
+        ///     Gets or sets the value of the output data stream
         /// </summary>
         public Stream OutputDataStream { get; private set; }
 

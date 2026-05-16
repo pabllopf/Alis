@@ -36,7 +36,7 @@ namespace Alis.Core.Graphic.Platforms.Android
     /// <summary>
     ///     The egl droid class
     /// </summary>
-    public static class EGLDroid
+    public class EGLDroid
     {
         /// <summary>
         ///     Gets the proc address using the specified proc

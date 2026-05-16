@@ -34,68 +34,68 @@ using Alis.Core.Aspect.Math.Shapes.Rectangle;
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     Represents an SDL software surface, a buffer of pixels in memory with a defined format and dimensions.
+    ///     The sdl surface
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct Surface
     {
         /// <summary>
-        ///     The surface flags (e.g. SDL_SWSURFACE, SDL_PREALLOC, SDL_RLEACCEL).
+        ///     The flags
         /// </summary>
         public readonly uint flags;
 
         /// <summary>
-        ///     A pointer to the SDL_PixelFormat structure describing the surface pixel layout.
+        ///     The format
         /// </summary>
         public IntPtr Format { get; set; }
 
         /// <summary>
-        ///     The width of the surface in pixels.
+        ///     The
         /// </summary>
         public readonly int w;
 
         /// <summary>
-        ///     The height of the surface in pixels.
+        ///     The
         /// </summary>
         public readonly int h;
 
         /// <summary>
-        ///     The length of a row of pixels in bytes (width * bytes_per_pixel + padding).
+        ///     The pitch
         /// </summary>
         public readonly int pitch;
 
         /// <summary>
-        ///     A pointer to the raw pixel data buffer.
+        ///     The pixels
         /// </summary>
         public IntPtr Pixels { get; set; }
 
         /// <summary>
-        ///     User-defined data pointer associated with the surface.
+        ///     The userdata
         /// </summary>
         public IntPtr Userdata { get; set; }
 
         /// <summary>
-        ///     Indicates whether the surface is currently locked (non-zero if locked).
+        ///     The locked
         /// </summary>
         public readonly int locked;
 
         /// <summary>
-        ///     A pointer to the internal list of blit map entries for optimized blitting.
+        ///     The list blit map
         /// </summary>
         public IntPtr ListBlitMap { get; set; }
 
         /// <summary>
-        ///     The clipping rectangle applied to rendering operations on this surface.
+        ///     The clip rect
         /// </summary>
         public RectangleI ClipRect { get; set; }
 
         /// <summary>
-        ///     A pointer to the SDL_BlitMap structure used for hardware-accelerated blitting.
+        ///     The map
         /// </summary>
         public IntPtr Map { get; set; }
 
         /// <summary>
-        ///     The reference count for the surface (used internally by SDL).
+        ///     The ref count
         /// </summary>
         public readonly int refCount;
     }

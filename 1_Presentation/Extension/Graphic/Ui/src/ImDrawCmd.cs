@@ -75,55 +75,55 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the clip rect
         /// </summary>
-        /// <returns>The resulting vector value</returns>
+        /// <returns>The vector</returns>
         public Vector4F GetClipRect() => ClipRect;
 
         /// <summary>
         ///     Gets the texture id
         /// </summary>
-        /// <returns>The native pointer to the structure</returns>
+        /// <returns>The int ptr</returns>
         public IntPtr GetTextureId() => TextureId;
 
         /// <summary>
         ///     Gets the vtx offset
         /// </summary>
-        /// <returns>The unsigned integer result</returns>
+        /// <returns>The uint</returns>
         public uint GetVtxOffset() => VtxOffset;
 
         /// <summary>
         ///     Gets the idx offset
         /// </summary>
-        /// <returns>The unsigned integer result</returns>
+        /// <returns>The uint</returns>
         public uint GetIdxOffset() => IdxOffset;
 
         /// <summary>
         ///     Gets the elem count
         /// </summary>
-        /// <returns>The unsigned integer result</returns>
+        /// <returns>The uint</returns>
         public uint GetElemCount() => ElemCount;
 
         /// <summary>
         ///     Gets the user callback
         /// </summary>
-        /// <returns>The native pointer to the structure</returns>
+        /// <returns>The int ptr</returns>
         public IntPtr GetUserCallback() => UserCallback;
 
         /// <summary>
         ///     Gets the user callback data
         /// </summary>
-        /// <returns>The native pointer to the structure</returns>
+        /// <returns>The int ptr</returns>
         public IntPtr GetUserCallbackData() => UserCallbackData;
 
         /// <summary>
         ///     Sets the user callback data using the specified value
         /// </summary>
-        /// <param name="value">The value to assign to the user callback data</param>
+        /// <param name="value">The value</param>
         public void SetUserCallbackData(IntPtr value) => UserCallbackData = value;
 
         /// <summary>
         ///     Gets the tex id
         /// </summary>
-        /// <returns>The result returned from the native function</returns>
+        /// <returns>The ret</returns>
         public IntPtr GetTexId() => ImGuiNative.ImDrawCmd_GetTexID(ref this);
     }
 }

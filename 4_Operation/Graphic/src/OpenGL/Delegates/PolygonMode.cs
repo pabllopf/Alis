@@ -33,10 +33,8 @@ using Alis.Core.Graphic.OpenGL.Enums;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     Selects a polygon rasterization mode for the specified polygon face
+    ///     The polygon mode
     /// </summary>
-    /// <param name="face">Specifies the polygon face to which the mode applies</param>
-    /// <param name="mode">Specifies the rasterization mode for the polygon face</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void PolygonMode(MaterialFace face, PolygonModeEnum mode);
 }

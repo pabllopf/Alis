@@ -32,9 +32,8 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     Deletes a shader object, freeing its resources
+    ///     The delete shader
     /// </summary>
-    /// <param name="shader">Specifies the shader object to delete</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void DeleteShader(uint shader);
 }

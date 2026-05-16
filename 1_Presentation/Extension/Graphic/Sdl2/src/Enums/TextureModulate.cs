@@ -37,19 +37,19 @@ namespace Alis.Extension.Graphic.Sdl2.Enums
     [Flags]
     public enum TextureModulate
     {
-    /// <summary>
-    ///     No texture color modulation applied
-    /// </summary>
-    None = 0x00000000,
+        /// <summary>
+        ///     The sdl texture modulate none sdl texture modulate
+        /// </summary>
+        None = 0x00000000,
 
-    /// <summary>
-    ///     Modulate texture color using the source color value
-    /// </summary>
-    SdlTextureModulateHorizontal = 0x00000001,
+        /// <summary>
+        ///     The sdl texture modulate horizontal sdl texture modulate
+        /// </summary>
+        SdlTextureModulateHorizontal = 0x00000001,
 
-    /// <summary>
-    ///     Modulate texture alpha using the source alpha value
-    /// </summary>
-    SdlTextureModulateVertical = 0x00000002
+        /// <summary>
+        ///     The sdl texture modulate vertical sdl texture modulate
+        /// </summary>
+        SdlTextureModulateVertical = 0x00000002
     }
 }

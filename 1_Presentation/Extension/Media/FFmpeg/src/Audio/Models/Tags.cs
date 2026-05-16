@@ -33,13 +33,13 @@ using Alis.Core.Aspect.Data.Json;
 namespace Alis.Extension.Media.FFmpeg.Audio.Models
 {
     /// <summary>
-    ///     Metadata tags associated with an audio file.
+    ///     The tags class
     /// </summary>
     [Serializable]
     public partial class Tags
     {
         /// <summary>
-        ///     Name of the encoder software used to create the audio file.
+        ///     Gets or sets the value of the encoder
         /// </summary>
         [JsonNativePropertyName("encoder")]
         public string Encoder { get; set; }

@@ -32,18 +32,18 @@ using System.Runtime.InteropServices;
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     Represents an SDL haptic direction, specifying the direction of a haptic effect using Cartesian or polar/spherical coordinates.
+    ///     The sdl haptic direction
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct HapticDirection
     {
         /// <summary>
-        ///     The direction type, specifying the coordinate system (e.g. SDL_HAPTIC_POLAR, SDL_HAPTIC_CARTESIAN, SDL_HAPTIC_SPHERICAL).
+        ///     The type
         /// </summary>
         public readonly byte type;
 
         /// <summary>
-        ///     The direction vector values (3 elements), interpreted according to the direction type.
+        ///     The dir
         /// </summary>
         [MarshalAs(UnmanagedType.LPArray, SizeConst = 3)]
         public readonly int[] dir;

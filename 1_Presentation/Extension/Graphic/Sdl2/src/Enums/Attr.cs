@@ -34,139 +34,139 @@ namespace Alis.Extension.Graphic.Sdl2.Enums
     /// </summary>
     public enum Attr
     {
-    /// <summary>
-    ///     Size of the red channel in bits for the GL framebuffer
-    /// </summary>
-    SdlGlRedSize,
+        /// <summary>
+        ///     The sdl gl red size sdl gl attr
+        /// </summary>
+        SdlGlRedSize,
 
-    /// <summary>
-    ///     Size of the green channel in bits for the GL framebuffer
-    /// </summary>
-    SdlGlGreenSize,
+        /// <summary>
+        ///     The sdl gl green size sdl gl attr
+        /// </summary>
+        SdlGlGreenSize,
 
-    /// <summary>
-    ///     Size of the blue channel in bits for the GL framebuffer
-    /// </summary>
-    SdlGlBlueSize,
+        /// <summary>
+        ///     The sdl gl blue size sdl gl attr
+        /// </summary>
+        SdlGlBlueSize,
 
-    /// <summary>
-    ///     Size of the alpha channel in bits for the GL framebuffer
-    /// </summary>
-    SdlGlAlphaSize,
+        /// <summary>
+        ///     The sdl gl alpha size sdl gl attr
+        /// </summary>
+        SdlGlAlphaSize,
 
-    /// <summary>
-    ///     Size of the color buffer in bits for the GL framebuffer
-    /// </summary>
-    SdlGlBufferSize,
+        /// <summary>
+        ///     The sdl gl buffer size sdl gl attr
+        /// </summary>
+        SdlGlBufferSize,
 
-    /// <summary>
-    ///     Whether double buffering is enabled for the GL context
-    /// </summary>
-    SdlGlDoubleBuffer,
+        /// <summary>
+        ///     The sdl gl double buffer sdl gl attr
+        /// </summary>
+        SdlGlDoubleBuffer,
 
-    /// <summary>
-    ///     Size of the depth buffer in bits for the GL framebuffer
-    /// </summary>
-    SdlGlDepthSize,
+        /// <summary>
+        ///     The sdl gl depth size sdl gl attr
+        /// </summary>
+        SdlGlDepthSize,
 
-    /// <summary>
-    ///     Size of the stencil buffer in bits for the GL framebuffer
-    /// </summary>
-    SdlGlStencilSize,
+        /// <summary>
+        ///     The sdl gl stencil size sdl gl attr
+        /// </summary>
+        SdlGlStencilSize,
 
-    /// <summary>
-    ///     Size of the red accumulation channel in bits for the GL framebuffer
-    /// </summary>
-    SdlGlAccumRedSize,
+        /// <summary>
+        ///     The sdl gl accum red size sdl gl attr
+        /// </summary>
+        SdlGlAccumRedSize,
 
-    /// <summary>
-    ///     Size of the green accumulation channel in bits for the GL framebuffer
-    /// </summary>
-    SdlGlAccumGreenSize,
+        /// <summary>
+        ///     The sdl gl accum green size sdl gl attr
+        /// </summary>
+        SdlGlAccumGreenSize,
 
-    /// <summary>
-    ///     Size of the blue accumulation channel in bits for the GL framebuffer
-    /// </summary>
-    SdlGlAccumBlueSize,
+        /// <summary>
+        ///     The sdl gl accum blue size sdl gl attr
+        /// </summary>
+        SdlGlAccumBlueSize,
 
-    /// <summary>
-    ///     Size of the alpha accumulation channel in bits for the GL framebuffer
-    /// </summary>
-    SdlGlAccumAlphaSize,
+        /// <summary>
+        ///     The sdl gl accum alpha size sdl gl attr
+        /// </summary>
+        SdlGlAccumAlphaSize,
 
-    /// <summary>
-    ///     Whether stereoscopic 3D rendering is enabled for the GL context
-    /// </summary>
-    SdlGlStereo,
+        /// <summary>
+        ///     The sdl gl stereo sdl gl attr
+        /// </summary>
+        SdlGlStereo,
 
-    /// <summary>
-    ///     Number of multisample buffers used for antialiasing
-    /// </summary>
-    SdlGlMultiSampleBuffers,
+        /// <summary>
+        ///     The sdl gl multi sample buffers sdl gl attr
+        /// </summary>
+        SdlGlMultiSampleBuffers,
 
-    /// <summary>
-    ///     Number of multisample samples per pixel used for antialiasing
-    /// </summary>
-    SdlGlMultiSampleSamples,
+        /// <summary>
+        ///     The sdl gl multi sample samples sdl gl attr
+        /// </summary>
+        SdlGlMultiSampleSamples,
 
-    /// <summary>
-    ///     Whether the GL context uses an accelerated visual
-    /// </summary>
-    SdlGlAcceleratedVisual,
+        /// <summary>
+        ///     The sdl gl accelerated visual sdl gl attr
+        /// </summary>
+        SdlGlAcceleratedVisual,
 
-    /// <summary>
-    ///     Whether the GL context retains the back buffer after swap
-    /// </summary>
-    SdlGlRetainedBacking,
+        /// <summary>
+        ///     The sdl gl retained backing sdl gl attr
+        /// </summary>
+        SdlGlRetainedBacking,
 
-    /// <summary>
-    ///     Major version number of the OpenGL context to request
-    /// </summary>
-    SdlGlContextMajorVersion,
+        /// <summary>
+        ///     The sdl gl context major version sdl gl attr
+        /// </summary>
+        SdlGlContextMajorVersion,
 
-    /// <summary>
-    ///     Minor version number of the OpenGL context to request
-    /// </summary>
-    SdlGlContextMinorVersion,
+        /// <summary>
+        ///     The sdl gl context minor version sdl gl attr
+        /// </summary>
+        SdlGlContextMinorVersion,
 
-    /// <summary>
-    ///     Whether the GL context uses EGL instead of the native platform GL
-    /// </summary>
-    SdlGlContextEgl,
+        /// <summary>
+        ///     The sdl gl context egl sdl gl attr
+        /// </summary>
+        SdlGlContextEgl,
 
-    /// <summary>
-    ///     Bitmask of GL context flags (debug, forward compatible, etc.)
-    /// </summary>
-    SdlGlContextFlags,
+        /// <summary>
+        ///     The sdl gl context flags sdl gl attr
+        /// </summary>
+        SdlGlContextFlags,
 
-    /// <summary>
-    ///     Bitmask of the GL context profile mask (core, compatibility, ES)
-    /// </summary>
-    SdlGlContextProfileMask,
+        /// <summary>
+        ///     The sdl gl context profile mask sdl gl attr
+        /// </summary>
+        SdlGlContextProfileMask,
 
-    /// <summary>
-    ///     Whether to share resources with the currently active GL context
-    /// </summary>
-    SdlGlShareWithCurrentContext,
+        /// <summary>
+        ///     The sdl gl share with current context sdl gl attr
+        /// </summary>
+        SdlGlShareWithCurrentContext,
 
-    /// <summary>
-    ///     Whether the framebuffer supports sRGB color space
-    /// </summary>
-    SdlGlFramebufferSrgbCapable,
+        /// <summary>
+        ///     The sdl gl framebuffer srgb capable sdl gl attr
+        /// </summary>
+        SdlGlFramebufferSrgbCapable,
 
-    /// <summary>
-    ///     Release behavior for the GL context (flush or none)
-    /// </summary>
-    SdlGlContextReleaseBehavior,
+        /// <summary>
+        ///     The sdl gl context release behavior sdl gl attr
+        /// </summary>
+        SdlGlContextReleaseBehavior,
 
-    /// <summary>
-    ///     Reset notification strategy for the GL context
-    /// </summary>
-    SdlGlContextResetNotification,
+        /// <summary>
+        ///     The sdl gl context reset notification sdl gl attr
+        /// </summary>
+        SdlGlContextResetNotification,
 
-    /// <summary>
-    ///     Whether the GL context suppresses error reporting for performance
-    /// </summary>
-    SdlGlContextNoError
+        /// <summary>
+        ///     The sdl gl context no error sdl gl attr
+        /// </summary>
+        SdlGlContextNoError
     }
 }

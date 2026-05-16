@@ -45,5 +45,14 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             Assert.Equal(0, (int) ImPlotScatterFlags.None);
         }
+
+        /// <summary>
+        ///     Verifies that no-clip mode uses a non-zero value.
+        /// </summary>
+        [Fact]
+        public void NoClip_ShouldBeNonZero()
+        {
+            Assert.True((int) ImPlotScatterFlags.NoClip > 0);
+        }
     }
 }

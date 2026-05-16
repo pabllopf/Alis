@@ -33,10 +33,8 @@ using Alis.Core.Graphic.OpenGL.Enums;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     Sets pixel storage modes that affect the operation of subsequent pixel manipulation routines
+    ///     The pixel storei
     /// </summary>
-    /// <param name="pname">Specifies the symbolic name of the pixel storage parameter to set</param>
-    /// <param name="param">Specifies the value to assign to the pixel storage parameter</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void Storei(StoreParameter pname, int param);
 }

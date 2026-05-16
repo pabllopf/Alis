@@ -63,6 +63,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         public void RepresentativeFlags_ShouldBeDistinct()
         {
             Assert.NotEqual((int) ImPlotSubplotFlags.NoResize, (int) ImPlotSubplotFlags.NoAlign);
+            Assert.NotEqual((int) ImPlotSubplotFlags.ShareItems, (int) ImPlotSubplotFlags.ColMajor);
         }
     }
 }

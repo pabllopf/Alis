@@ -37,10 +37,10 @@ namespace Alis.Extension.Graphic.Sfml.Windows
     public class JoystickButtonEventArgs : EventArgs
     {
         /// <summary>Index of the button</summary>
-        public readonly uint Button;
+        public uint Button;
 
         /// <summary>Index of the joystick which triggered the event</summary>
-        public readonly uint JoystickId;
+        public uint JoystickId;
 
         /// <summary>
         ///     Construct the joystick button arguments from a joystick button event

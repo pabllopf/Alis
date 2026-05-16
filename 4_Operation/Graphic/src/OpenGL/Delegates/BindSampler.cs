@@ -32,10 +32,8 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     Binds a named sampler object to a specified texture image unit
+    ///     The bind sampler
     /// </summary>
-    /// <param name="unit">Specifies the texture unit index to which to bind the sampler</param>
-    /// <param name="sampler">Specifies the name of the sampler object to bind</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void BindSampler(uint unit, uint sampler);
 }

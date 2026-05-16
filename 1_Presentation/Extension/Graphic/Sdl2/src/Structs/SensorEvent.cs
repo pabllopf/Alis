@@ -33,53 +33,53 @@ using Alis.Extension.Graphic.Sdl2.Enums;
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     Represents an SDL sensor event, fired when a sensor (e.g. accelerometer, gyroscope) updates its data.
+    ///     The sdl sensor event
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct SensorEvent
     {
         /// <summary>
-        ///     The event type identifier, set to <see cref="EventType.SensorUpdate"/>.
+        ///     The type
         /// </summary>
         public readonly EventType type;
 
         /// <summary>
-        ///     The timestamp of the event, in milliseconds, from the SDL event system.
+        ///     The timestamp
         /// </summary>
         public readonly uint timestamp;
 
         /// <summary>
-        ///     The SDL sensor instance ID that generated the event.
+        ///     The which
         /// </summary>
         public readonly int which;
 
         /// <summary>
-        ///     The first sensor data value (e.g. X-axis acceleration).
+        ///     The data
         /// </summary>
         public readonly float float0;
 
         /// <summary>
-        ///     The second sensor data value (e.g. Y-axis acceleration).
+        ///     The data
         /// </summary>
         public readonly float float1;
 
         /// <summary>
-        ///     The third sensor data value (e.g. Z-axis acceleration).
+        ///     The data
         /// </summary>
         public readonly float float2;
 
         /// <summary>
-        ///     The fourth sensor data value (e.g. X-axis gyroscope).
+        ///     The data
         /// </summary>
         public readonly float float3;
 
         /// <summary>
-        ///     The fifth sensor data value (e.g. Y-axis gyroscope).
+        ///     The data
         /// </summary>
         public readonly float float4;
 
         /// <summary>
-        ///     The sixth sensor data value (e.g. Z-axis gyroscope or additional sensor data).
+        ///     The data
         /// </summary>
         public readonly float float5;
     }

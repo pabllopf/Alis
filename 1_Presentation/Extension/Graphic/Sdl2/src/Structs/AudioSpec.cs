@@ -34,48 +34,48 @@ using Alis.Extension.Graphic.Sdl2.Delegates;
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     Represents an SDL audio specification, describing the format, frequency, and callback configuration for audio devices.
+    ///     The sdl audio spec
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct AudioSpec
     {
         /// <summary>
-        ///     The audio frequency in samples per second (Hz), e.g. 44100 or 48000.
+        ///     The freq
         /// </summary>
         public int Freq { get; set; }
 
         /// <summary>
-        ///     The SDL audio format (e.g. AUDIO_S16SYS), specifying the sample data type and byte order.
+        ///     The SDL_AudioFormat
         /// </summary>
         public ushort Format { get; set; }
 
         /// <summary>
-        ///     The number of audio channels: 1 for mono, 2 for stereo, etc.
+        ///     The channels
         /// </summary>
         public byte Channels { get; set; }
 
         /// <summary>
-        ///     The silence value used for audio buffer initialization, computed from the format.
+        ///     The silence
         /// </summary>
         public readonly byte silence;
 
         /// <summary>
-        ///     The audio buffer size in samples (per channel), defining latency and performance.
+        ///     The samples
         /// </summary>
         public ushort Samples { get; set; }
 
         /// <summary>
-        ///     The calculated audio buffer size in bytes, derived from format, channels, and samples.
+        ///     The size
         /// </summary>
         public readonly uint size;
 
         /// <summary>
-        ///     The callback function invoked by SDL when the audio device needs more data.
+        ///     The callback
         /// </summary>
         public SdlAudioCallback Callback { get; set; }
 
         /// <summary>
-        ///     User-defined data pointer passed to the audio callback for custom context.
+        ///     The userdata
         /// </summary>
         public IntPtr Userdata { get; set; }
     }

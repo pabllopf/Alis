@@ -30,17 +30,17 @@
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     Represents a 2D data point with double-precision coordinates for use in ImPlot.
+    ///     The im plot point
     /// </summary>
     public struct ImPlotPoint
     {
         /// <summary>
-        ///     X-coordinate value.
+        ///     The
         /// </summary>
         public double X { get; set; }
 
         /// <summary>
-        ///     Y-coordinate value.
+        ///     The
         /// </summary>
         public double Y { get; set; }
     }

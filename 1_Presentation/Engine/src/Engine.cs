@@ -560,7 +560,7 @@ namespace Alis.App.Engine
         }
 
         /// <summary>
-        ///     Renders the left and right sidebar toolbars
+        ///     Renders the project
         /// </summary>
         public void RenderProject()
         {

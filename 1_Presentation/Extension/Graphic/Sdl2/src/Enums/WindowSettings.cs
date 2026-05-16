@@ -37,131 +37,131 @@ namespace Alis.Extension.Graphic.Sdl2.Enums
     [Flags]
     public enum WindowSettings : uint
     {
-    /// <summary>
-    ///     No window flags set (default state)
-    /// </summary>
-    None = 0x00000000,
+        /// <summary>
+        ///     The none window
+        /// </summary>
+        None = 0x00000000,
 
-    /// <summary>
-    ///     Window is in fullscreen mode
-    /// </summary>
-    WindowFullscreen = 0x00000001,
+        /// <summary>
+        ///     The sdl window fullscreen sdl window flags
+        /// </summary>
+        WindowFullscreen = 0x00000001,
 
-    /// <summary>
-    ///     Window is usable with an OpenGL context
-    /// </summary>
-    WindowOpengl = 0x00000002,
+        /// <summary>
+        ///     The sdl window opengl sdl window flags
+        /// </summary>
+        WindowOpengl = 0x00000002,
 
-    /// <summary>
-    ///     Window is visible and shown on screen
-    /// </summary>
-    WindowShown = 0x00000004,
+        /// <summary>
+        ///     The sdl window shown sdl window flags
+        /// </summary>
+        WindowShown = 0x00000004,
 
-    /// <summary>
-    ///     Window is not visible
-    /// </summary>
-    WindowHidden = 0x00000008,
+        /// <summary>
+        ///     The sdl window hidden sdl window flags
+        /// </summary>
+        WindowHidden = 0x00000008,
 
-    /// <summary>
-    ///     Window has no window decorations (no title bar, borders)
-    /// </summary>
-    WindowBorderless = 0x00000010,
+        /// <summary>
+        ///     The sdl window borderless sdl window flags
+        /// </summary>
+        WindowBorderless = 0x00000010,
 
-    /// <summary>
-    ///     Window can be resized by the user
-    /// </summary>
-    WindowResizable = 0x00000020,
+        /// <summary>
+        ///     The sdl window resizable sdl window flags
+        /// </summary>
+        WindowResizable = 0x00000020,
 
-    /// <summary>
-    ///     Window is minimized (iconified)
-    /// </summary>
-    WindowMinimized = 0x00000040,
+        /// <summary>
+        ///     The sdl window minimized sdl window flags
+        /// </summary>
+        WindowMinimized = 0x00000040,
 
-    /// <summary>
-    ///     Window is maximized
-    /// </summary>
-    WindowMaximized = 0x00000080,
+        /// <summary>
+        ///     The sdl window maximized sdl window flags
+        /// </summary>
+        WindowMaximized = 0x00000080,
 
-    /// <summary>
-    ///     Window has mouse input grabbed (mouse confined to window)
-    /// </summary>
-    WindowMouseGrabbed = 0x00000100,
+        /// <summary>
+        ///     The sdl window mouse grabbed sdl window flags
+        /// </summary>
+        WindowMouseGrabbed = 0x00000100,
 
-    /// <summary>
-    ///     Window has input focus (receives keyboard events)
-    /// </summary>
-    WindowInputFocus = 0x00000200,
+        /// <summary>
+        ///     The sdl window input focus sdl window flags
+        /// </summary>
+        WindowInputFocus = 0x00000200,
 
-    /// <summary>
-    ///     Window has mouse focus (mouse is inside the window)
-    /// </summary>
-    WindowMouseFocus = 0x00000400,
+        /// <summary>
+        ///     The sdl window mouse focus sdl window flags
+        /// </summary>
+        WindowMouseFocus = 0x00000400,
 
-    /// <summary>
-    ///     Window is in fullscreen desktop mode (native resolution)
-    /// </summary>
-    WindowFullscreenDesktop =
-        WindowFullscreen | 0x00001000,
+        /// <summary>
+        ///     The sdl window fullscreen desktop sdl window flags
+        /// </summary>
+        WindowFullscreenDesktop =
+            WindowFullscreen | 0x00001000,
 
-    /// <summary>
-    ///     Window was created via a foreign (external) window handle
-    /// </summary>
-    WindowForeign = 0x00000800,
+        /// <summary>
+        ///     The sdl window foreign sdl window flags
+        /// </summary>
+        WindowForeign = 0x00000800,
 
-    /// <summary>
-    ///     Window supports high DPI mode on Retina/HiDPI displays
-    /// </summary>
-    WindowAllowHighDpi = 0x00002000,
+        /// <summary>
+        ///     The sdl window allow high dpi sdl window flags
+        /// </summary>
+        WindowAllowHighDpi = 0x00002000,
 
-    /// <summary>
-    ///     Window has mouse capture (mouse events captured outside window)
-    /// </summary>
-    WindowMouseCapture = 0x00004000,
+        /// <summary>
+        ///     The sdl window mouse capture sdl window flags
+        /// </summary>
+        WindowMouseCapture = 0x00004000,
 
-    /// <summary>
-    ///     Window is always on top of other windows
-    /// </summary>
-    WindowAlwaysOnTop = 0x00008000,
+        /// <summary>
+        ///     The sdl window always on top sdl window flags
+        /// </summary>
+        WindowAlwaysOnTop = 0x00008000,
 
-    /// <summary>
-    ///     Window is excluded from the taskbar
-    /// </summary>
-    WindowSkipTaskbar = 0x00010000,
+        /// <summary>
+        ///     The sdl window skip taskbar sdl window flags
+        /// </summary>
+        WindowSkipTaskbar = 0x00010000,
 
-    /// <summary>
-    ///     Window is a utility window (small, with minimal decorations)
-    /// </summary>
-    WindowUtility = 0x00020000,
+        /// <summary>
+        ///     The sdl window utility sdl window flags
+        /// </summary>
+        WindowUtility = 0x00020000,
 
-    /// <summary>
-    ///     Window is a tooltip popup window
-    /// </summary>
-    WindowTooltip = 0x00040000,
+        /// <summary>
+        ///     The sdl window tooltip sdl window flags
+        /// </summary>
+        WindowTooltip = 0x00040000,
 
-    /// <summary>
-    ///     Window is a popup menu window
-    /// </summary>
-    WindowPopupMenu = 0x00080000,
+        /// <summary>
+        ///     The sdl window popup menu sdl window flags
+        /// </summary>
+        WindowPopupMenu = 0x00080000,
 
-    /// <summary>
-    ///     Window has keyboard input grabbed
-    /// </summary>
-    WindowKeyboardGrabbed = 0x00100000,
+        /// <summary>
+        ///     The sdl window keyboard grabbed sdl window flags
+        /// </summary>
+        WindowKeyboardGrabbed = 0x00100000,
 
-    /// <summary>
-    ///     Window is usable with a Vulkan graphics context
-    /// </summary>
-    WindowVulkan = 0x10000000,
+        /// <summary>
+        ///     The sdl window vulkan sdl window flags
+        /// </summary>
+        WindowVulkan = 0x10000000,
 
-    /// <summary>
-    ///     Window is usable with a Metal graphics context (macOS/iOS)
-    /// </summary>
-    WindowMetal = 0x2000000,
+        /// <summary>
+        ///     The sdl window metal sdl window flags
+        /// </summary>
+        WindowMetal = 0x2000000,
 
-    /// <summary>
-    ///     Window has input grabbed (shorthand for mouse grab)
-    /// </summary>
-    WindowInputGrabbed =
-        WindowMouseGrabbed
+        /// <summary>
+        ///     The sdl window input grabbed sdl window flags
+        /// </summary>
+        WindowInputGrabbed =
+            WindowMouseGrabbed
     }
 }

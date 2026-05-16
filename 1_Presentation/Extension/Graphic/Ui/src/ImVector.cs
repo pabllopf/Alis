@@ -55,9 +55,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImVector" /> class
         /// </summary>
-        /// <param name="size">The size of the element in pixels</param>
+        /// <param name="size">The size</param>
         /// <param name="capacity">The capacity</param>
-        /// <param name="data">The data buffer content</param>
+        /// <param name="data">The data</param>
         public ImVector(int size, int capacity, IntPtr data)
         {
             Size = size;
@@ -91,7 +91,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="index">The index</param>
-        /// <returns>The native pointer to the structure</returns>
+        /// <returns>The int ptr</returns>
         public IntPtr Address<T>(int index) => Data + index * Marshal.SizeOf<T>();
     }
 }

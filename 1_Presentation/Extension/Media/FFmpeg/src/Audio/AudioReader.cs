@@ -103,15 +103,13 @@ namespace Alis.Extension.Media.FFmpeg.Audio
         }
 
         /// <summary>
-        ///     Load audio metadata into memory synchronously.
+        ///     Load audio metadata into memory.
         /// </summary>
-        /// <param name="ignoreStreamErrors">If true, stream parsing errors are silently ignored rather than thrown.</param>
         public void LoadMetadata(bool ignoreStreamErrors = false) => LoadMetadataAsync(ignoreStreamErrors).Wait();
 
         /// <summary>
-        ///     Load audio metadata into memory asynchronously.
+        ///     Load audio metadata into memory.
         /// </summary>
-        /// <param name="ignoreStreamErrors">If true, stream parsing errors are silently ignored rather than thrown.</param>
         public async Task LoadMetadataAsync(bool ignoreStreamErrors = false)
         {
             if (MetadataLoaded)
@@ -217,18 +215,17 @@ namespace Alis.Extension.Media.FFmpeg.Audio
         }
 
         /// <summary>
-        ///     Loads the next audio frame into memory with 1024 samples and returns it. This allocates a new frame.
-        ///     Returns <c>null</c> when there is no next frame.
+        ///     Loads the next audio frame into memory and returns it. This allocates a new frame.
+        ///     Returns 'null' when there is no next frame.
         /// </summary>
-        /// <returns>The next available audio frame, or <c>null</c> if the stream has ended.</returns>
+        /// <returns></returns>
         public override AudioFrame NextFrame() => NextFrame(1024);
 
         /// <summary>
-        ///     Loads the next audio frame with the specified number of samples and returns it. This allocates a new frame.
-        ///     Returns <c>null</c> when there is no next frame.
+        ///     Loads the next audio frame into memory and returns it. This allocates a new frame.
+        ///     Returns 'null' when there is no next frame.
         /// </summary>
-        /// <param name="samples">Number of samples to read in a frame.</param>
-        /// <returns>The next available audio frame, or <c>null</c> if the stream has ended.</returns>
+        /// <param name="samples">Number of samples to read in a frame</param>
         public AudioFrame NextFrame(int samples)
         {
             AudioFrame frame = new AudioFrame(Metadata.Channels, samples, loadedBitDepth);
@@ -236,11 +233,10 @@ namespace Alis.Extension.Media.FFmpeg.Audio
         }
 
         /// <summary>
-        ///     Loads the next audio frame into the provided frame buffer and returns it. Reuses the existing frame to avoid allocation.
-        ///     Returns <c>null</c> when there is no next frame.
+        ///     Loads the next audio frame into memory and returns it. This allocates a new frame.
+        ///     Returns 'null' when there is no next frame.
         /// </summary>
         /// <param name="frame">Existing frame to be overwritten with new frame data.</param>
-        /// <returns>The same frame instance with updated data, or <c>null</c> if the stream has ended.</returns>
         public override AudioFrame NextFrame(AudioFrame frame)
         {
             if (!OpenedForReading)

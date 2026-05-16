@@ -34,54 +34,54 @@ namespace Alis.Extension.Graphic.Sdl2.Enums
     /// </summary>
     public enum HitTestResult
     {
-    /// <summary>
-    ///     Normal window area, no special handling
-    /// </summary>
-    SdlHitTestNormal,
+        /// <summary>
+        ///     The sdl hit test normal sdl hit test result
+        /// </summary>
+        SdlHitTestNormal,
 
-    /// <summary>
-    ///     Title bar area, allows dragging the window
-    /// </summary>
-    SdlHitTestDraggable,
+        /// <summary>
+        ///     The sdl hit test draggable sdl hit test result
+        /// </summary>
+        SdlHitTestDraggable,
 
-    /// <summary>
-    ///     Top-left resize corner area
-    /// </summary>
-    SdlHitTestResizeTopLeft,
+        /// <summary>
+        ///     The sdl hit test resize top left sdl hit test result
+        /// </summary>
+        SdlHitTestResizeTopLeft,
 
-    /// <summary>
-    ///     Top edge resize area
-    /// </summary>
-    SdlHitTestResizeTop,
+        /// <summary>
+        ///     The sdl hit test resize top sdl hit test result
+        /// </summary>
+        SdlHitTestResizeTop,
 
-    /// <summary>
-    ///     Top-right resize corner area
-    /// </summary>
-    SdlHitTestResizeTopRight,
+        /// <summary>
+        ///     The sdl hit test resize top right sdl hit test result
+        /// </summary>
+        SdlHitTestResizeTopRight,
 
-    /// <summary>
-    ///     Right edge resize area
-    /// </summary>
-    SdlHitTestResizeRight,
+        /// <summary>
+        ///     The sdl hit test resize right sdl hit test result
+        /// </summary>
+        SdlHitTestResizeRight,
 
-    /// <summary>
-    ///     Bottom-right resize corner area
-    /// </summary>
-    SdlHitTestResizeBottomRight,
+        /// <summary>
+        ///     The sdl hit test resize bottom right sdl hit test result
+        /// </summary>
+        SdlHitTestResizeBottomRight,
 
-    /// <summary>
-    ///     Bottom edge resize area
-    /// </summary>
-    SdlHitTestResizeBottom,
+        /// <summary>
+        ///     The sdl hit test resize bottom sdl hit test result
+        /// </summary>
+        SdlHitTestResizeBottom,
 
-    /// <summary>
-    ///     Bottom-left resize corner area
-    /// </summary>
-    SdlHitTestResizeBottomLeft,
+        /// <summary>
+        ///     The sdl hit test resize bottom left sdl hit test result
+        /// </summary>
+        SdlHitTestResizeBottomLeft,
 
-    /// <summary>
-    ///     Left edge resize area
-    /// </summary>
-    SdlHitTestResizeLeft
+        /// <summary>
+        ///     The sdl hit test resize left sdl hit test result
+        /// </summary>
+        SdlHitTestResizeLeft
     }
 }

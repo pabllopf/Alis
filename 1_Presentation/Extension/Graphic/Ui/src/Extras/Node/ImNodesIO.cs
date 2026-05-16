@@ -30,7 +30,7 @@
 namespace Alis.Extension.Graphic.Ui.Extras.Node
 {
     /// <summary>
-    ///     The ImNodes input-output configuration structure
+    ///     The im nodes io
     /// </summary>
     public struct ImNodesIo
     {

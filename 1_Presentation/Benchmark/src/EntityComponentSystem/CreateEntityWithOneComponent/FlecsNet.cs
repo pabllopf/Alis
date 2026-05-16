@@ -45,7 +45,7 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithOneComponent
         [Context] private readonly FlecsNetBaseContext _flecs;
 
         /// <summary>
-        ///     Benchmarks creating entities with one component using Flecs.NET
+        ///     Flecses the net
         /// </summary>
         [BenchmarkCategory(Categories.FlecsNet), Benchmark]
         public void FlecsNet()

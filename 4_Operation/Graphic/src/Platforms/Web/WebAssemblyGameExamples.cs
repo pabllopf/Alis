@@ -65,8 +65,8 @@ namespace Alis.Core.Graphic.Platforms.Web
 
                     if (gameContext.IsMouseButtonDown(0)) // Left mouse button
                     {
-                        gameContext.GetMousePosition(out int _, out int _);
-                        // Handle mouse click at y position
+                        gameContext.GetMousePosition(out int x, out int y);
+                        // Handle mouse click at (x, y)
                     }
                 };
 
@@ -109,12 +109,18 @@ namespace Alis.Core.Graphic.Platforms.Web
                             GamepadState state = gamepadState.CurrentState;
 
                             // Read analog sticks
+                            float leftStickX = state.LeftStickX;
                             float leftStickY = state.LeftStickY;
+                            float rightStickX = state.RightStickX;
+                            float rightStickY = state.RightStickY;
 
                             // Apply deadzone
+                            if (Math.Abs(leftStickX) < 0.15f) leftStickX = 0;
                             if (Math.Abs(leftStickY) < 0.15f) leftStickY = 0;
 
                             // Read triggers
+                            float leftTrigger = state.LeftTrigger;
+                            float rightTrigger = state.RightTrigger;
 
                             // Check buttons
                             if (state.ButtonA)
@@ -179,7 +185,10 @@ namespace Alis.Core.Graphic.Platforms.Web
                     }
 
                     // Get current display info
-
+                    int width = context.GetWidth();
+                    int height = context.GetHeight();
+                    float aspectRatio = context.GetAspectRatio();
+                    float devicePixelRatio = context.DisplayManager.GetDevicePixelRatio();
 
                     // Check orientation for responsive layout
                     var orientation = context.DisplayManager.GetOrientation();
@@ -222,7 +231,7 @@ namespace Alis.Core.Graphic.Platforms.Web
                     // Get mouse movement for camera control
                     if (pointerLocked)
                     {
-                        context.GetMousePosition(out int _, out int _);
+                        context.GetMousePosition(out int mouseX, out int mouseY);
 
                         // Use mouseX and mouseY for camera rotation
                         // Calculate delta from center of screen for smooth look
@@ -246,7 +255,8 @@ namespace Alis.Core.Graphic.Platforms.Web
                         moveY += gamepadState.CurrentState.LeftStickY;
 
                         // Camera with right stick
-
+                        float lookX = gamepadState.CurrentState.RightStickX;
+                        float lookY = gamepadState.CurrentState.RightStickY;
                     }
 
                     // Normalize movement if both axes are pressed
@@ -463,9 +473,12 @@ namespace Alis.Core.Graphic.Platforms.Web
                     }
 
                     // Show confirmation dialog
-                    if (context.IsKeyDown(ConsoleKey.D3) && WebAssemblyGameContext.ShowConfirm("Do you want to quit?"))
+                    if (context.IsKeyDown(ConsoleKey.D3))
                     {
-                        context.Stop(); // Exit the game
+                        if (WebAssemblyGameContext.ShowConfirm("Do you want to quit?"))
+                        {
+                            context.Stop(); // Exit the game
+                        }
                     }
                 });
             }

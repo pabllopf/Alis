@@ -1909,7 +1909,10 @@ namespace Alis.Core.Ecs
         /// </summary>
         public GenericEvent OnComponentAddedGeneric
         {
-            readonly set => _ = value;
+            readonly set
+            {
+                /*the set is just to enable the += syntax*/
+            }
             get
             {
                 if (!InternalIsAlive(out Scene world, out _))
@@ -1927,7 +1930,10 @@ namespace Alis.Core.Ecs
         /// </summary>
         public GenericEvent OnComponentRemovedGeneric
         {
-            readonly set => _ = value;
+            readonly set
+            {
+                /*the set is just to enable the += syntax*/
+            }
             get
             {
                 if (!InternalIsAlive(out Scene world, out _))

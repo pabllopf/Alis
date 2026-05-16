@@ -32,28 +32,28 @@ using System;
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     Flags that control the appearance of colormap scale bars in ImPlot.
+    ///     The im plot colormap scale flags enum
     /// </summary>
     [Flags]
     public enum ImPlotColormapScaleFlags
     {
         /// <summary>
-        ///     Default scale bar appearance with label on the right.
+        ///     The none im plot colormap scale flags
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     Hide the label on the colormap scale bar.
+        ///     The no label im plot colormap scale flags
         /// </summary>
         NoLabel = 1,
 
         /// <summary>
-        ///     Display the scale bar on the opposite side.
+        ///     The opposite im plot colormap scale flags
         /// </summary>
         Opposite = 2,
 
         /// <summary>
-        ///     Invert the direction of the colormap scale (high to low).
+        ///     The invert im plot colormap scale flags
         /// </summary>
         Invert = 4
     }

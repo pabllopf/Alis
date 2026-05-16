@@ -47,13 +47,13 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
         [Context] private readonly DefaultEcsContext _defaultEcs;
 
         /// <summary>
-        ///     Benchmarks EntitySetSystem mono-threaded processing with two components using DefaultEcs
+        ///     Defaults the ecs mono thread
         /// </summary>
         [BenchmarkCategory(Categories.DefaultEcs), Benchmark]
         public void DefaultEcs_MonoThread() => _defaultEcs.MonoThreadEntitySetSystem.Update(0);
 
         /// <summary>
-        ///     Benchmarks EntitySetSystem multi-threaded processing with two components using DefaultEcs
+        ///     Defaults the ecs multi thread
         /// </summary>
         [BenchmarkCategory(Categories.DefaultEcs), Benchmark]
         public void DefaultEcs_MultiThread() => _defaultEcs.MultiThreadEntitySetSystem.Update(0);
@@ -98,20 +98,20 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
                 }
             }
 
-        /// <summary>
-        ///     Gets the parallel runner used for multi-threaded execution
-        /// </summary>
-        public IParallelRunner Runner { get; }
+            /// <summary>
+            ///     Gets the value of the runner
+            /// </summary>
+            public IParallelRunner Runner { get; }
 
-        /// <summary>
-        ///     Gets the mono-threaded entity set system
-        /// </summary>
-        public ISystem<int> MonoThreadEntitySetSystem { get; }
+            /// <summary>
+            ///     Gets the value of the mono thread gameObject set system
+            /// </summary>
+            public ISystem<int> MonoThreadEntitySetSystem { get; }
 
-        /// <summary>
-        ///     Gets the multi-threaded entity set system
-        /// </summary>
-        public ISystem<int> MultiThreadEntitySetSystem { get; }
+            /// <summary>
+            ///     Gets the value of the multi thread gameObject set system
+            /// </summary>
+            public ISystem<int> MultiThreadEntitySetSystem { get; }
 
             /// <summary>
             ///     Disposes this instance
@@ -129,11 +129,11 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
             /// <seealso cref="AEntitySetSystem{int}" />
             private sealed partial class EntitySetSystem : AEntitySetSystem<int>
             {
-        /// <summary>
-        ///     Sums the second component value into the first
-        /// </summary>
-        /// <param name="c1">The first component whose value will be increased</param>
-        /// <param name="c2">The second component whose value is added</param>
+                /// <summary>
+                ///     Updates the c 1
+                /// </summary>
+                /// <param name="c1">The </param>
+                /// <param name="c2">The </param>
                 [Update]
                 private static void Update(ref Component1 c1, in Component2 c2)
                 {

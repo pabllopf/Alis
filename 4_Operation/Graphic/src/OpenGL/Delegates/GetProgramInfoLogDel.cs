@@ -33,12 +33,8 @@ using System.Text;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     Returns the information log for a program object
+    ///     The get program info log del
     /// </summary>
-    /// <param name="program">Specifies the program object whose information log is to be queried</param>
-    /// <param name="maxLength">Specifies the maximum number of characters to write into infoLog</param>
-    /// <param name="length">Returns the actual number of characters written into infoLog</param>
-    /// <param name="infoLog">Returns the information log string</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void GetProgramInfoLogDel(uint program, int maxLength, [Out] int[] length, [Out] StringBuilder infoLog);
 }

@@ -34,20 +34,20 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Extension.Graphic.Ui
 {
     /// <summary>
-    ///     The ImGui wrapper class providing managed access to native Dear ImGui functionality
+    ///     The im gui class
     /// </summary>
     public static partial class ImGui
     {
         /// <summary>
         ///     Describes whether slider float 4
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vMin">The minimum value range</param>
-        /// <param name="vMax">The maximum value range</param>
-        /// <param name="format">The display format string (printf-style)</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <param name="v">The </param>
+        /// <param name="vMin">The min</param>
+        /// <param name="vMax">The max</param>
+        /// <param name="format">The format</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
         public static bool SliderFloat4(string label, ref Vector4F v, float vMin, float vMax, string format, ImGuiSliderFlags flags)
         {
             byte ret = ImGuiNative.igSliderFloat4(Encoding.UTF8.GetBytes(label), v, vMin, vMax, Encoding.UTF8.GetBytes(format), flags);
@@ -57,11 +57,11 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether slider int
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vMin">The minimum value range</param>
-        /// <param name="vMax">The maximum value range</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <param name="v">The </param>
+        /// <param name="vMin">The min</param>
+        /// <param name="vMax">The max</param>
+        /// <returns>The bool</returns>
         public static bool SliderInt(string label, ref int v, int vMin, int vMax)
         {
             byte ret = ImGuiNative.igSliderInt(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes("%d"), 0);
@@ -71,12 +71,12 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether slider int
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vMin">The minimum value range</param>
-        /// <param name="vMax">The maximum value range</param>
-        /// <param name="format">The display format string (printf-style)</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <param name="v">The </param>
+        /// <param name="vMin">The min</param>
+        /// <param name="vMax">The max</param>
+        /// <param name="format">The format</param>
+        /// <returns>The bool</returns>
         public static bool SliderInt(string label, ref int v, int vMin, int vMax, string format)
         {
             byte ret = ImGuiNative.igSliderInt(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), 0);
@@ -86,13 +86,13 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether slider int
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vMin">The minimum value range</param>
-        /// <param name="vMax">The maximum value range</param>
-        /// <param name="format">The display format string (printf-style)</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <param name="v">The </param>
+        /// <param name="vMin">The min</param>
+        /// <param name="vMax">The max</param>
+        /// <param name="format">The format</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
         public static bool SliderInt(string label, ref int v, int vMin, int vMax, string format, ImGuiSliderFlags flags)
         {
             byte ret = ImGuiNative.igSliderInt(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), flags);
@@ -102,11 +102,11 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether slider int 2
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vMin">The minimum value range</param>
-        /// <param name="vMax">The maximum value range</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <param name="v">The </param>
+        /// <param name="vMin">The min</param>
+        /// <param name="vMax">The max</param>
+        /// <returns>The bool</returns>
         public static bool SliderInt2(string label, ref int v, int vMin, int vMax)
         {
             byte ret = ImGuiNative.igSliderInt2(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes("%d"), 0);
@@ -116,12 +116,12 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether slider int 2
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vMin">The minimum value range</param>
-        /// <param name="vMax">The maximum value range</param>
-        /// <param name="format">The display format string (printf-style)</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <param name="v">The </param>
+        /// <param name="vMin">The min</param>
+        /// <param name="vMax">The max</param>
+        /// <param name="format">The format</param>
+        /// <returns>The bool</returns>
         public static bool SliderInt2(string label, ref int v, int vMin, int vMax, string format)
         {
             byte ret = ImGuiNative.igSliderInt2(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), 0);
@@ -131,13 +131,13 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether slider int 2
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vMin">The minimum value range</param>
-        /// <param name="vMax">The maximum value range</param>
-        /// <param name="format">The display format string (printf-style)</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <param name="v">The </param>
+        /// <param name="vMin">The min</param>
+        /// <param name="vMax">The max</param>
+        /// <param name="format">The format</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
         public static bool SliderInt2(string label, ref int v, int vMin, int vMax, string format, ImGuiSliderFlags flags)
         {
             byte ret = ImGuiNative.igSliderInt2(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), flags);
@@ -147,11 +147,11 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether slider int 3
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vMin">The minimum value range</param>
-        /// <param name="vMax">The maximum value range</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <param name="v">The </param>
+        /// <param name="vMin">The min</param>
+        /// <param name="vMax">The max</param>
+        /// <returns>The bool</returns>
         public static bool SliderInt3(string label, ref int v, int vMin, int vMax)
         {
             byte ret = ImGuiNative.igSliderInt3(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes("%d"), 0);
@@ -161,12 +161,12 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether slider int 3
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vMin">The minimum value range</param>
-        /// <param name="vMax">The maximum value range</param>
-        /// <param name="format">The display format string (printf-style)</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <param name="v">The </param>
+        /// <param name="vMin">The min</param>
+        /// <param name="vMax">The max</param>
+        /// <param name="format">The format</param>
+        /// <returns>The bool</returns>
         public static bool SliderInt3(string label, ref int v, int vMin, int vMax, string format)
         {
             byte ret = ImGuiNative.igSliderInt3(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), 0);
@@ -176,13 +176,13 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether slider int 3
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vMin">The minimum value range</param>
-        /// <param name="vMax">The maximum value range</param>
-        /// <param name="format">The display format string (printf-style)</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <param name="v">The </param>
+        /// <param name="vMin">The min</param>
+        /// <param name="vMax">The max</param>
+        /// <param name="format">The format</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
         public static bool SliderInt3(string label, ref int v, int vMin, int vMax, string format, ImGuiSliderFlags flags)
         {
             byte ret = ImGuiNative.igSliderInt3(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), flags);
@@ -192,11 +192,11 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether slider int 4
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vMin">The minimum value range</param>
-        /// <param name="vMax">The maximum value range</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <param name="v">The </param>
+        /// <param name="vMin">The min</param>
+        /// <param name="vMax">The max</param>
+        /// <returns>The bool</returns>
         public static bool SliderInt4(string label, ref int v, int vMin, int vMax)
         {
             byte ret = ImGuiNative.igSliderInt4(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes("%d"), 0);
@@ -206,12 +206,12 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether slider int 4
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vMin">The minimum value range</param>
-        /// <param name="vMax">The maximum value range</param>
-        /// <param name="format">The display format string (printf-style)</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <param name="v">The </param>
+        /// <param name="vMin">The min</param>
+        /// <param name="vMax">The max</param>
+        /// <param name="format">The format</param>
+        /// <returns>The bool</returns>
         public static bool SliderInt4(string label, ref int v, int vMin, int vMax, string format)
         {
             byte ret = ImGuiNative.igSliderInt4(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), 0);
@@ -221,13 +221,13 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether slider int 4
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vMin">The minimum value range</param>
-        /// <param name="vMax">The maximum value range</param>
-        /// <param name="format">The display format string (printf-style)</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <param name="v">The </param>
+        /// <param name="vMin">The min</param>
+        /// <param name="vMax">The max</param>
+        /// <param name="format">The format</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
         public static bool SliderInt4(string label, ref int v, int vMin, int vMax, string format, ImGuiSliderFlags flags)
         {
             byte ret = ImGuiNative.igSliderInt4(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), flags);
@@ -237,12 +237,12 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether slider scalar
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The type of data being manipulated</param>
-        /// <param name="pData">The pointer to the data value</param>
-        /// <param name="pMin">The minimum value pointer</param>
-        /// <param name="pMax">The maximum value pointer</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <param name="dataType">The data type</param>
+        /// <param name="pData">The data</param>
+        /// <param name="pMin">The min</param>
+        /// <param name="pMax">The max</param>
+        /// <returns>The bool</returns>
         public static bool SliderScalar(string label, ImGuiDataType dataType, IntPtr pData, IntPtr pMin, IntPtr pMax)
         {
             byte ret = ImGuiNative.igSliderScalar(Encoding.UTF8.GetBytes(label), dataType, pData, pMin, pMax, null, 0);
@@ -252,13 +252,13 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether slider scalar
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The type of data being manipulated</param>
-        /// <param name="pData">The pointer to the data value</param>
-        /// <param name="pMin">The minimum value pointer</param>
-        /// <param name="pMax">The maximum value pointer</param>
-        /// <param name="format">The display format string (printf-style)</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <param name="dataType">The data type</param>
+        /// <param name="pData">The data</param>
+        /// <param name="pMin">The min</param>
+        /// <param name="pMax">The max</param>
+        /// <param name="format">The format</param>
+        /// <returns>The bool</returns>
         public static bool SliderScalar(string label, ImGuiDataType dataType, IntPtr pData, IntPtr pMin, IntPtr pMax, string format)
         {
             byte ret = ImGuiNative.igSliderScalar(Encoding.UTF8.GetBytes(label), dataType, pData, pMin, pMax, Encoding.UTF8.GetBytes(format), 0);
@@ -268,14 +268,14 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether slider scalar
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The type of data being manipulated</param>
-        /// <param name="pData">The pointer to the data value</param>
-        /// <param name="pMin">The minimum value pointer</param>
-        /// <param name="pMax">The maximum value pointer</param>
-        /// <param name="format">The display format string (printf-style)</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <param name="dataType">The data type</param>
+        /// <param name="pData">The data</param>
+        /// <param name="pMin">The min</param>
+        /// <param name="pMax">The max</param>
+        /// <param name="format">The format</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
         public static bool SliderScalar(string label, ImGuiDataType dataType, IntPtr pData, IntPtr pMin, IntPtr pMax, string format, ImGuiSliderFlags flags)
         {
             byte ret = ImGuiNative.igSliderScalar(Encoding.UTF8.GetBytes(label), dataType, pData, pMin, pMax, Encoding.UTF8.GetBytes(format), flags);
@@ -285,13 +285,13 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether slider scalar n
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The type of data being manipulated</param>
-        /// <param name="pData">The pointer to the data value</param>
-        /// <param name="components">The number of components in the value</param>
-        /// <param name="pMin">The minimum value pointer</param>
-        /// <param name="pMax">The maximum value pointer</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <param name="dataType">The data type</param>
+        /// <param name="pData">The data</param>
+        /// <param name="components">The components</param>
+        /// <param name="pMin">The min</param>
+        /// <param name="pMax">The max</param>
+        /// <returns>The bool</returns>
         public static bool SliderScalarN(string label, ImGuiDataType dataType, IntPtr pData, int components, IntPtr pMin, IntPtr pMax)
         {
             byte ret = ImGuiNative.igSliderScalarN(Encoding.UTF8.GetBytes(label), dataType, pData, components, pMin, pMax, null, 0);
@@ -301,14 +301,14 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether slider scalar n
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The type of data being manipulated</param>
-        /// <param name="pData">The pointer to the data value</param>
-        /// <param name="components">The number of components in the value</param>
-        /// <param name="pMin">The minimum value pointer</param>
-        /// <param name="pMax">The maximum value pointer</param>
-        /// <param name="format">The display format string (printf-style)</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <param name="dataType">The data type</param>
+        /// <param name="pData">The data</param>
+        /// <param name="components">The components</param>
+        /// <param name="pMin">The min</param>
+        /// <param name="pMax">The max</param>
+        /// <param name="format">The format</param>
+        /// <returns>The bool</returns>
         public static bool SliderScalarN(string label, ImGuiDataType dataType, IntPtr pData, int components, IntPtr pMin, IntPtr pMax, string format)
         {
             byte ret = ImGuiNative.igSliderScalarN(Encoding.UTF8.GetBytes(label), dataType, pData, components, pMin, pMax, Encoding.UTF8.GetBytes(format), 0);
@@ -318,15 +318,15 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether slider scalar n
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The type of data being manipulated</param>
-        /// <param name="pData">The pointer to the data value</param>
-        /// <param name="components">The number of components in the value</param>
-        /// <param name="pMin">The minimum value pointer</param>
-        /// <param name="pMax">The maximum value pointer</param>
-        /// <param name="format">The display format string (printf-style)</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <param name="dataType">The data type</param>
+        /// <param name="pData">The data</param>
+        /// <param name="components">The components</param>
+        /// <param name="pMin">The min</param>
+        /// <param name="pMax">The max</param>
+        /// <param name="format">The format</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
         public static bool SliderScalarN(string label, ImGuiDataType dataType, IntPtr pData, int components, IntPtr pMin, IntPtr pMax, string format, ImGuiSliderFlags flags)
         {
             byte ret = ImGuiNative.igSliderScalarN(Encoding.UTF8.GetBytes(label), dataType, pData, components, pMin, pMax, Encoding.UTF8.GetBytes(format), flags);
@@ -336,8 +336,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether small button
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <returns>The bool</returns>
         public static bool SmallButton(string label)
         {
             byte ret = ImGuiNative.igSmallButton(Encoding.UTF8.GetBytes(label));
@@ -363,7 +363,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Styles the colors classic using the specified dst
         /// </summary>
-        /// <param name="dst">The destination object to write into</param>
+        /// <param name="dst">The dst</param>
         public static void StyleColorsClassic(ImGuiStyle dst)
         {
             ImGuiNative.igStyleColorsClassic(dst);
@@ -380,7 +380,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Styles the colors dark using the specified dst
         /// </summary>
-        /// <param name="dst">The destination object to write into</param>
+        /// <param name="dst">The dst</param>
         public static void StyleColorsDark(ImGuiStyle dst)
         {
             ImGuiNative.igStyleColorsDark(dst);
@@ -397,7 +397,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Styles the colors light using the specified dst
         /// </summary>
-        /// <param name="dst">The destination object to write into</param>
+        /// <param name="dst">The dst</param>
         public static void StyleColorsLight(ImGuiStyle dst)
         {
             ImGuiNative.igStyleColorsLight(dst);
@@ -406,8 +406,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether tab item button
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <returns>The bool</returns>
         public static bool TabItemButton(string label)
         {
             byte ret = ImGuiNative.igTabItemButton(Encoding.UTF8.GetBytes(label), 0);
@@ -417,9 +417,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether tab item button
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
         public static bool TabItemButton(string label, ImGuiTabItemFlags flags)
         {
             byte ret = ImGuiNative.igTabItemButton(Encoding.UTF8.GetBytes(label), flags);
@@ -429,7 +429,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Tables the get column count
         /// </summary>
-        /// <returns>The result returned from the native function</returns>
+        /// <returns>The ret</returns>
         public static int TableGetColumnCount()
         {
             int ret = ImGuiNative.igTableGetColumnCount();
@@ -439,7 +439,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Tables the get column flags
         /// </summary>
-        /// <returns>The result returned from the native function</returns>
+        /// <returns>The ret</returns>
         public static ImGuiTableColumnFlags TableGetColumnFlags()
         {
             int columnN = -1;
@@ -450,8 +450,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Tables the get column flags using the specified column n
         /// </summary>
-        /// <param name="columnN">The column index</param>
-        /// <returns>The result returned from the native function</returns>
+        /// <param name="columnN">The column</param>
+        /// <returns>The ret</returns>
         public static ImGuiTableColumnFlags TableGetColumnFlags(int columnN)
         {
             ImGuiTableColumnFlags ret = ImGuiNative.igTableGetColumnFlags(columnN);
@@ -461,7 +461,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Tables the get column index
         /// </summary>
-        /// <returns>The result returned from the native function</returns>
+        /// <returns>The ret</returns>
         public static int TableGetColumnIndex()
         {
             int ret = ImGuiNative.igTableGetColumnIndex();
@@ -471,7 +471,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Tables the get column name
         /// </summary>
-        /// <returns>The string result from the native function</returns>
+        /// <returns>The string</returns>
         public static string TableGetColumnName()
         {
             int columnN = -1;
@@ -481,14 +481,14 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Tables the get column name using the specified column n
         /// </summary>
-        /// <param name="columnN">The column index</param>
-        /// <returns>The string result from the native function</returns>
+        /// <param name="columnN">The column</param>
+        /// <returns>The string</returns>
         public static string TableGetColumnName(int columnN) => Encoding.UTF8.GetString(ImGuiNative.igTableGetColumnName_Int(columnN));
 
         /// <summary>
         ///     Tables the get row index
         /// </summary>
-        /// <returns>The result returned from the native function</returns>
+        /// <returns>The ret</returns>
         public static int TableGetRowIndex()
         {
             int ret = ImGuiNative.igTableGetRowIndex();
@@ -498,13 +498,13 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Tables the get sort specs
         /// </summary>
-        /// <returns>The ImGui table sort specifications pointer</returns>
+        /// <returns>The im gui table sort specs ptr</returns>
         public static ImGuiTableSortSpecs TableGetSortSpecs() => ImGuiNative.igTableGetSortSpecs();
 
         /// <summary>
         ///     Tables the header using the specified label
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
+        /// <param name="label">The label</param>
         public static void TableHeader(string label)
         {
             ImGuiNative.igTableHeader(Encoding.UTF8.GetBytes(label));
@@ -521,7 +521,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether table next column
         /// </summary>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool TableNextColumn()
         {
             byte ret = ImGuiNative.igTableNextColumn();
@@ -541,7 +541,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Tables the next row using the specified row flags
         /// </summary>
-        /// <param name="rowFlags">The flags controlling row behavior</param>
+        /// <param name="rowFlags">The row flags</param>
         public static void TableNextRow(ImGuiTableRowFlags rowFlags)
         {
             float minRowHeight = 0.0f;
@@ -551,8 +551,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Tables the next row using the specified row flags
         /// </summary>
-        /// <param name="rowFlags">The flags controlling row behavior</param>
-        /// <param name="minRowHeight">The minimum row height in pixels</param>
+        /// <param name="rowFlags">The row flags</param>
+        /// <param name="minRowHeight">The min row height</param>
         public static void TableNextRow(ImGuiTableRowFlags rowFlags, float minRowHeight)
         {
             ImGuiNative.igTableNextRow(rowFlags, minRowHeight);
@@ -562,7 +562,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Tables the set bg color using the specified target
         /// </summary>
         /// <param name="target">The target</param>
-        /// <param name="color">The color value to set</param>
+        /// <param name="color">The color</param>
         public static void TableSetBgColor(ImGuiTableBgTarget target, uint color)
         {
             int columnN = -1;
@@ -573,8 +573,8 @@ namespace Alis.Extension.Graphic.Ui
         ///     Tables the set bg color using the specified target
         /// </summary>
         /// <param name="target">The target</param>
-        /// <param name="color">The color value to set</param>
-        /// <param name="columnN">The column index</param>
+        /// <param name="color">The color</param>
+        /// <param name="columnN">The column</param>
         public static void TableSetBgColor(ImGuiTableBgTarget target, uint color, int columnN)
         {
             ImGuiNative.igTableSetBgColor(target, color, columnN);
@@ -583,8 +583,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Tables the set column enabled using the specified column n
         /// </summary>
-        /// <param name="columnN">The column index</param>
-        /// <param name="v">The value to be modified or populated</param>
+        /// <param name="columnN">The column</param>
+        /// <param name="v">The </param>
         public static void TableSetColumnEnabled(int columnN, bool v)
         {
             byte nativeV = v ? (byte) 1 : (byte) 0;
@@ -594,8 +594,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether table set column index
         /// </summary>
-        /// <param name="columnN">The column index</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="columnN">The column</param>
+        /// <returns>The bool</returns>
         public static bool TableSetColumnIndex(int columnN)
         {
             byte ret = ImGuiNative.igTableSetColumnIndex(columnN);
@@ -605,7 +605,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Tables the setup column using the specified label
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
+        /// <param name="label">The label</param>
         public static void TableSetupColumn(string label)
         {
             ImGuiNative.igTableSetupColumn(Encoding.UTF8.GetBytes(label), 0, 0, 0);
@@ -614,21 +614,21 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether menu item
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="enabled">Whether the element is enabled or grayed out</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <param name="enabled">The enabled</param>
+        /// <returns>The bool</returns>
         public static bool MenuItem(string label, bool enabled) => MenuItem(label, string.Empty, false, enabled);
 
         /// <summary>
         ///     Ims the font config
         /// </summary>
-        /// <returns>The ImFontConfig pointer</returns>
+        /// <returns>The im font config ptr</returns>
         public static ImFontConfigPtr ImFontConfig() => ImGuiNative.ImFontConfig_ImFontConfig();
 
         /// <summary>
         ///     Docks the builder remove node using the specified dockspace id
         /// </summary>
-        /// <param name="dockspaceId">The unique identifier for the dockspace</param>
+        /// <param name="dockspaceId">The dockspace id</param>
         public static void DockBuilderRemoveNode(uint dockspaceId)
         {
             ImGuiNative.igDockBuilderRemoveNode(dockspaceId);
@@ -637,7 +637,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Docks the builder add node using the specified dockspace id
         /// </summary>
-        /// <param name="dockspaceId">The unique identifier for the dockspace</param>
+        /// <param name="dockspaceId">The dockspace id</param>
         /// <param name="none">The none</param>
         public static void DockBuilderAddNode(uint dockspaceId, ImGuiDockNodeFlags none)
         {
@@ -647,8 +647,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Docks the builder set node size using the specified dockspace id
         /// </summary>
-        /// <param name="dockspaceId">The unique identifier for the dockspace</param>
-        /// <param name="viewportSize">The size of the viewport area for the dock node</param>
+        /// <param name="dockspaceId">The dockspace id</param>
+        /// <param name="viewportSize">The viewport size</param>
         public static void DockBuilderSetNodeSize(uint dockspaceId, Vector2F viewportSize)
         {
             ImGuiNative.igDockBuilderSetNodeSize(dockspaceId, viewportSize);
@@ -657,19 +657,19 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Docks the builder split node using the specified dock main id
         /// </summary>
-        /// <param name="dockMainId">The main dock node identifier to split</param>
+        /// <param name="dockMainId">The dock main id</param>
         /// <param name="left">The left</param>
-        /// <param name="p2">The second point coordinate</param>
-        /// <param name="p3">The third point coordinate</param>
-        /// <param name="dockIdRight">The resulting right-side dock identifier</param>
-        /// <returns>The unsigned integer result</returns>
+        /// <param name="p2">The </param>
+        /// <param name="p3">The </param>
+        /// <param name="dockIdRight">The dock id right</param>
+        /// <returns>The uint</returns>
         public static uint DockBuilderSplitNode(uint dockMainId, ImGuiDir left, float p2, object p3, out uint dockIdRight) => ImGuiNative.igDockBuilderSplitNode(dockMainId, left, p2, IntPtr.Zero, out dockIdRight);
 
         /// <summary>
         ///     Docks the builder dock window using the specified scene
         /// </summary>
         /// <param name="scene">The scene</param>
-        /// <param name="dockIdLeft">The left dock area identifier</param>
+        /// <param name="dockIdLeft">The dock id left</param>
         public static void DockBuilderDockWindow(string scene, uint dockIdLeft)
         {
             ImGuiNative.igDockBuilderDockWindow(Encoding.UTF8.GetBytes(scene), dockIdLeft);
@@ -678,7 +678,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Docks the builder finish using the specified dockspace id
         /// </summary>
-        /// <param name="dockspaceId">The unique identifier for the dockspace</param>
+        /// <param name="dockspaceId">The dockspace id</param>
         public static void DockBuilderFinish(uint dockspaceId)
         {
             ImGuiNative.igDockBuilderFinish(dockspaceId);
@@ -687,8 +687,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Docks the builder set node flags using the specified dockspace id
         /// </summary>
-        /// <param name="dockspaceId">The unique identifier for the dockspace</param>
-        /// <param name="dockNodeFlags">The flags controlling dock node behavior</param>
+        /// <param name="dockspaceId">The dockspace id</param>
+        /// <param name="dockNodeFlags">The dock node flags</param>
         public static void DockBuilderSetNodeFlags(uint dockspaceId, ImGuiDockNodeFlags dockNodeFlags)
         {
             ImGuiNative.igDockBuilderSetNodeFlags(dockspaceId, dockNodeFlags);

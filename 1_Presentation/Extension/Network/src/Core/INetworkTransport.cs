@@ -46,40 +46,26 @@ namespace Alis.Extension.Network.Core
         /// <summary>
         ///     Sends message to specific client
         /// </summary>
-        /// <param name="clientId">The client identifier to send the message to</param>
-        /// <param name="message">The message envelope to send</param>
-        /// <param name="cancellationToken">Token to cancel the send operation</param>
-        /// <returns>A task representing the asynchronous send operation</returns>
         Task SendAsync(string clientId, NetworkMessageEnvelope message, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         ///     Broadcasts message to all clients
         /// </summary>
-        /// <param name="message">The message envelope to broadcast</param>
-        /// <param name="exceptClientId">Optional client ID to exclude from broadcast</param>
-        /// <param name="cancellationToken">Token to cancel the broadcast</param>
-        /// <returns>A task representing the asynchronous broadcast operation</returns>
         Task BroadcastAsync(NetworkMessageEnvelope message, string exceptClientId = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         ///     Receives next message from transport
         /// </summary>
-        /// <param name="cancellationToken">Token to cancel the receive operation</param>
-        /// <returns>A tuple containing the client ID and the received message envelope</returns>
         Task<(string ClientId, NetworkMessageEnvelope Message)> ReceiveAsync(CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         ///     Starts transport listener
         /// </summary>
-        /// <param name="cancellationToken">Token to cancel the start operation</param>
-        /// <returns>A task representing the asynchronous start operation</returns>
         Task StartAsync(CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         ///     Stops transport listener
         /// </summary>
-        /// <param name="cancellationToken">Token to cancel the stop operation</param>
-        /// <returns>A task representing the asynchronous stop operation</returns>
         Task StopAsync(CancellationToken cancellationToken = default(CancellationToken));
     }
 }

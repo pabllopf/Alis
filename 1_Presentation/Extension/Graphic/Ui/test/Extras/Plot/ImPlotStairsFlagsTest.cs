@@ -45,5 +45,14 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             Assert.Equal(0, (int) ImPlotStairsFlags.None);
         }
+
+        /// <summary>
+        ///     Verifies that stairs modes use distinct values.
+        /// </summary>
+        [Fact]
+        public void Modes_ShouldBeDistinct()
+        {
+            Assert.NotEqual((int) ImPlotStairsFlags.PreStep, (int) ImPlotStairsFlags.Shaded);
+        }
     }
 }

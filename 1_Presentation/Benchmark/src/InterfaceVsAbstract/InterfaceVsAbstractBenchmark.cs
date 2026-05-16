@@ -49,7 +49,7 @@ namespace Alis.Benchmark.InterfaceVsAbstract
         private IShape[] interfaceShapes;
 
         /// <summary>
-        ///     Number of elements for benchmarking
+        ///     The
         /// </summary>
         [Params(10, 100, 1000)] public int N;
 
@@ -70,9 +70,9 @@ namespace Alis.Benchmark.InterfaceVsAbstract
         }
 
         /// <summary>
-        ///     Benchmarks virtual method call through an interface
+        ///     Interfaces the method call
         /// </summary>
-        /// <returns>The sum of all areas</returns>
+        /// <returns>The sum</returns>
         [Benchmark]
         public float InterfaceMethodCall()
         {
@@ -86,9 +86,9 @@ namespace Alis.Benchmark.InterfaceVsAbstract
         }
 
         /// <summary>
-        ///     Benchmarks virtual method call through an abstract class
+        ///     Abstracts the method call
         /// </summary>
-        /// <returns>The sum of all areas</returns>
+        /// <returns>The sum</returns>
         [Benchmark]
         public float AbstractMethodCall()
         {

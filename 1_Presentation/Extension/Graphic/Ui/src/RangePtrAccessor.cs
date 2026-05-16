@@ -51,8 +51,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Initializes a new instance of the  class
         /// </summary>
-        /// <param name="data">The data buffer content</param>
-        /// <param name="count">The number of elements</param>
+        /// <param name="data">The data</param>
+        /// <param name="count">The count</param>
         public RangePtrAccessor(IntPtr data, int count)
         {
             Data = data;

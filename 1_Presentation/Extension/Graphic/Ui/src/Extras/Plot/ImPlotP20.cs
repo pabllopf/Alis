@@ -32,22 +32,22 @@ using System.Text;
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     Provides managed wrappers over the CImPlot native library for creating and interacting with ImPlot plots.
+    ///     The im plot class
     /// </summary>
     public static partial class ImPlot
     {
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="rows">The number of rows</param>
-        /// <param name="cols">The number of columns</param>
-        /// <param name="scaleMin">The minimum scale value</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scaleMin">The scale min</param>
         /// <param name="scaleMax">The scale max</param>
-        /// <param name="labelFmt">The label format string</param>
-        /// <param name="boundsMin">The minimum boundary value</param>
-        /// <param name="boundsMax">The maximum boundary value</param>
+        /// <param name="labelFmt">The label fmt</param>
+        /// <param name="boundsMin">The bounds min</param>
+        /// <param name="boundsMax">The bounds max</param>
         public static void PlotHeatmap(string labelId, int[] values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax)
         {
             ImPlotNative.ImPlot_PlotHeatmap_S32Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, boundsMax, 0);
@@ -56,16 +56,16 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="rows">The number of rows</param>
-        /// <param name="cols">The number of columns</param>
-        /// <param name="scaleMin">The minimum scale value</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scaleMin">The scale min</param>
         /// <param name="scaleMax">The scale max</param>
-        /// <param name="labelFmt">The label format string</param>
-        /// <param name="boundsMin">The minimum boundary value</param>
-        /// <param name="boundsMax">The maximum boundary value</param>
-        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="labelFmt">The label fmt</param>
+        /// <param name="boundsMin">The bounds min</param>
+        /// <param name="boundsMax">The bounds max</param>
+        /// <param name="flags">The flags</param>
         public static void PlotHeatmap(string labelId, int[] values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax, ImPlotHeatmapFlags flags)
         {
             ImPlotNative.ImPlot_PlotHeatmap_S32Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, boundsMax, flags);
@@ -74,10 +74,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="rows">The number of rows</param>
-        /// <param name="cols">The number of columns</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
         public static void PlotHeatmap(string labelId, uint[] values, int rows, int cols)
         {
             ImPlotNative.ImPlot_PlotHeatmap_U32Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, 0, 0, Encoding.UTF8.GetBytes("%.1f"), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
@@ -86,11 +86,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="rows">The number of rows</param>
-        /// <param name="cols">The number of columns</param>
-        /// <param name="scaleMin">The minimum scale value</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scaleMin">The scale min</param>
         public static void PlotHeatmap(string labelId, uint[] values, int rows, int cols, double scaleMin)
         {
             ImPlotNative.ImPlot_PlotHeatmap_U32Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, 0, Encoding.UTF8.GetBytes("%.1f"), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
@@ -99,11 +99,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="rows">The number of rows</param>
-        /// <param name="cols">The number of columns</param>
-        /// <param name="scaleMin">The minimum scale value</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scaleMin">The scale min</param>
         /// <param name="scaleMax">The scale max</param>
         public static void PlotHeatmap(string labelId, uint[] values, int rows, int cols, double scaleMin, double scaleMax)
         {
@@ -113,13 +113,13 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="rows">The number of rows</param>
-        /// <param name="cols">The number of columns</param>
-        /// <param name="scaleMin">The minimum scale value</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scaleMin">The scale min</param>
         /// <param name="scaleMax">The scale max</param>
-        /// <param name="labelFmt">The label format string</param>
+        /// <param name="labelFmt">The label fmt</param>
         public static void PlotHeatmap(string labelId, uint[] values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt)
         {
             ImPlotNative.ImPlot_PlotHeatmap_U32Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
@@ -128,14 +128,14 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="rows">The number of rows</param>
-        /// <param name="cols">The number of columns</param>
-        /// <param name="scaleMin">The minimum scale value</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scaleMin">The scale min</param>
         /// <param name="scaleMax">The scale max</param>
-        /// <param name="labelFmt">The label format string</param>
-        /// <param name="boundsMin">The minimum boundary value</param>
+        /// <param name="labelFmt">The label fmt</param>
+        /// <param name="boundsMin">The bounds min</param>
         public static void PlotHeatmap(string labelId, uint[] values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt, ImPlotPoint boundsMin)
         {
             ImPlotNative.ImPlot_PlotHeatmap_U32Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, new ImPlotPoint {X = 1, Y = 1}, 0);
@@ -144,15 +144,15 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="rows">The number of rows</param>
-        /// <param name="cols">The number of columns</param>
-        /// <param name="scaleMin">The minimum scale value</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scaleMin">The scale min</param>
         /// <param name="scaleMax">The scale max</param>
-        /// <param name="labelFmt">The label format string</param>
-        /// <param name="boundsMin">The minimum boundary value</param>
-        /// <param name="boundsMax">The maximum boundary value</param>
+        /// <param name="labelFmt">The label fmt</param>
+        /// <param name="boundsMin">The bounds min</param>
+        /// <param name="boundsMax">The bounds max</param>
         public static void PlotHeatmap(string labelId, uint[] values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax)
         {
             ImPlotNative.ImPlot_PlotHeatmap_U32Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, boundsMax, 0);
@@ -161,16 +161,16 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="rows">The number of rows</param>
-        /// <param name="cols">The number of columns</param>
-        /// <param name="scaleMin">The minimum scale value</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scaleMin">The scale min</param>
         /// <param name="scaleMax">The scale max</param>
-        /// <param name="labelFmt">The label format string</param>
-        /// <param name="boundsMin">The minimum boundary value</param>
-        /// <param name="boundsMax">The maximum boundary value</param>
-        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="labelFmt">The label fmt</param>
+        /// <param name="boundsMin">The bounds min</param>
+        /// <param name="boundsMax">The bounds max</param>
+        /// <param name="flags">The flags</param>
         public static void PlotHeatmap(string labelId, uint[] values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax, ImPlotHeatmapFlags flags)
         {
             ImPlotNative.ImPlot_PlotHeatmap_U32Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, boundsMax, flags);
@@ -179,10 +179,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="rows">The number of rows</param>
-        /// <param name="cols">The number of columns</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
         public static void PlotHeatmap(string labelId, long[] values, int rows, int cols)
         {
             ImPlotNative.ImPlot_PlotHeatmap_S64Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, 0, 0, Encoding.UTF8.GetBytes("%.1f"), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
@@ -191,11 +191,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="rows">The number of rows</param>
-        /// <param name="cols">The number of columns</param>
-        /// <param name="scaleMin">The minimum scale value</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scaleMin">The scale min</param>
         public static void PlotHeatmap(string labelId, long[] values, int rows, int cols, double scaleMin)
         {
             ImPlotNative.ImPlot_PlotHeatmap_S64Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, 0, Encoding.UTF8.GetBytes("%.1f"), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
@@ -204,11 +204,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="rows">The number of rows</param>
-        /// <param name="cols">The number of columns</param>
-        /// <param name="scaleMin">The minimum scale value</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scaleMin">The scale min</param>
         /// <param name="scaleMax">The scale max</param>
         public static void PlotHeatmap(string labelId, long[] values, int rows, int cols, double scaleMin, double scaleMax)
         {
@@ -218,13 +218,13 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="rows">The number of rows</param>
-        /// <param name="cols">The number of columns</param>
-        /// <param name="scaleMin">The minimum scale value</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scaleMin">The scale min</param>
         /// <param name="scaleMax">The scale max</param>
-        /// <param name="labelFmt">The label format string</param>
+        /// <param name="labelFmt">The label fmt</param>
         public static void PlotHeatmap(string labelId, long[] values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt)
         {
             ImPlotNative.ImPlot_PlotHeatmap_S64Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
@@ -233,14 +233,14 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="rows">The number of rows</param>
-        /// <param name="cols">The number of columns</param>
-        /// <param name="scaleMin">The minimum scale value</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scaleMin">The scale min</param>
         /// <param name="scaleMax">The scale max</param>
-        /// <param name="labelFmt">The label format string</param>
-        /// <param name="boundsMin">The minimum boundary value</param>
+        /// <param name="labelFmt">The label fmt</param>
+        /// <param name="boundsMin">The bounds min</param>
         public static void PlotHeatmap(string labelId, long[] values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt, ImPlotPoint boundsMin)
         {
             ImPlotNative.ImPlot_PlotHeatmap_S64Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, new ImPlotPoint {X = 1, Y = 1}, 0);
@@ -249,15 +249,15 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="rows">The number of rows</param>
-        /// <param name="cols">The number of columns</param>
-        /// <param name="scaleMin">The minimum scale value</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scaleMin">The scale min</param>
         /// <param name="scaleMax">The scale max</param>
-        /// <param name="labelFmt">The label format string</param>
-        /// <param name="boundsMin">The minimum boundary value</param>
-        /// <param name="boundsMax">The maximum boundary value</param>
+        /// <param name="labelFmt">The label fmt</param>
+        /// <param name="boundsMin">The bounds min</param>
+        /// <param name="boundsMax">The bounds max</param>
         public static void PlotHeatmap(string labelId, long[] values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax)
         {
             ImPlotNative.ImPlot_PlotHeatmap_S64Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, boundsMax, 0);
@@ -266,16 +266,16 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="rows">The number of rows</param>
-        /// <param name="cols">The number of columns</param>
-        /// <param name="scaleMin">The minimum scale value</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scaleMin">The scale min</param>
         /// <param name="scaleMax">The scale max</param>
-        /// <param name="labelFmt">The label format string</param>
-        /// <param name="boundsMin">The minimum boundary value</param>
-        /// <param name="boundsMax">The maximum boundary value</param>
-        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="labelFmt">The label fmt</param>
+        /// <param name="boundsMin">The bounds min</param>
+        /// <param name="boundsMax">The bounds max</param>
+        /// <param name="flags">The flags</param>
         public static void PlotHeatmap(string labelId, long[] values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax, ImPlotHeatmapFlags flags)
         {
             ImPlotNative.ImPlot_PlotHeatmap_S64Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, boundsMax, flags);
@@ -284,10 +284,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="rows">The number of rows</param>
-        /// <param name="cols">The number of columns</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
         public static void PlotHeatmap(string labelId, ulong[] values, int rows, int cols)
         {
             ImPlotNative.ImPlot_PlotHeatmap_U64Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, 0, 0, Encoding.UTF8.GetBytes("%.1f"), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
@@ -296,11 +296,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="rows">The number of rows</param>
-        /// <param name="cols">The number of columns</param>
-        /// <param name="scaleMin">The minimum scale value</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scaleMin">The scale min</param>
         public static void PlotHeatmap(string labelId, ulong[] values, int rows, int cols, double scaleMin)
         {
             ImPlotNative.ImPlot_PlotHeatmap_U64Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, 0, Encoding.UTF8.GetBytes("%.1f"), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
@@ -309,11 +309,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="rows">The number of rows</param>
-        /// <param name="cols">The number of columns</param>
-        /// <param name="scaleMin">The minimum scale value</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scaleMin">The scale min</param>
         /// <param name="scaleMax">The scale max</param>
         public static void PlotHeatmap(string labelId, ulong[] values, int rows, int cols, double scaleMin, double scaleMax)
         {
@@ -323,13 +323,13 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="rows">The number of rows</param>
-        /// <param name="cols">The number of columns</param>
-        /// <param name="scaleMin">The minimum scale value</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scaleMin">The scale min</param>
         /// <param name="scaleMax">The scale max</param>
-        /// <param name="labelFmt">The label format string</param>
+        /// <param name="labelFmt">The label fmt</param>
         public static void PlotHeatmap(string labelId, ulong[] values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt)
         {
             ImPlotNative.ImPlot_PlotHeatmap_U64Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
@@ -338,14 +338,14 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="rows">The number of rows</param>
-        /// <param name="cols">The number of columns</param>
-        /// <param name="scaleMin">The minimum scale value</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scaleMin">The scale min</param>
         /// <param name="scaleMax">The scale max</param>
-        /// <param name="labelFmt">The label format string</param>
-        /// <param name="boundsMin">The minimum boundary value</param>
+        /// <param name="labelFmt">The label fmt</param>
+        /// <param name="boundsMin">The bounds min</param>
         public static void PlotHeatmap(string labelId, ulong[] values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt, ImPlotPoint boundsMin)
         {
             ImPlotNative.ImPlot_PlotHeatmap_U64Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, new ImPlotPoint {X = 1, Y = 1}, 0);
@@ -354,15 +354,15 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="rows">The number of rows</param>
-        /// <param name="cols">The number of columns</param>
-        /// <param name="scaleMin">The minimum scale value</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scaleMin">The scale min</param>
         /// <param name="scaleMax">The scale max</param>
-        /// <param name="labelFmt">The label format string</param>
-        /// <param name="boundsMin">The minimum boundary value</param>
-        /// <param name="boundsMax">The maximum boundary value</param>
+        /// <param name="labelFmt">The label fmt</param>
+        /// <param name="boundsMin">The bounds min</param>
+        /// <param name="boundsMax">The bounds max</param>
         public static void PlotHeatmap(string labelId, ulong[] values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax)
         {
             ImPlotNative.ImPlot_PlotHeatmap_U64Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, boundsMax, 0);
@@ -371,16 +371,16 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="rows">The number of rows</param>
-        /// <param name="cols">The number of columns</param>
-        /// <param name="scaleMin">The minimum scale value</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scaleMin">The scale min</param>
         /// <param name="scaleMax">The scale max</param>
-        /// <param name="labelFmt">The label format string</param>
-        /// <param name="boundsMin">The minimum boundary value</param>
-        /// <param name="boundsMax">The maximum boundary value</param>
-        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="labelFmt">The label fmt</param>
+        /// <param name="boundsMin">The bounds min</param>
+        /// <param name="boundsMax">The bounds max</param>
+        /// <param name="flags">The flags</param>
         public static void PlotHeatmap(string labelId, ulong[] values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax, ImPlotHeatmapFlags flags)
         {
             ImPlotNative.ImPlot_PlotHeatmap_U64Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, boundsMax, flags);
@@ -389,196 +389,196 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="count">The number of elements</param>
-        /// <returns>The double-precision floating-point result</returns>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, float[] values, int count) => ImPlotNative.ImPlot_PlotHistogram_FloatPtr(Encoding.UTF8.GetBytes(labelId), values, count, 0, 1.0, new ImPlotRange {Min = 0, Max = 0}, 0);
 
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="bins">The number of histogram bins</param>
-        /// <returns>The double-precision floating-point result</returns>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, float[] values, int count, int bins) => ImPlotNative.ImPlot_PlotHistogram_FloatPtr(Encoding.UTF8.GetBytes(labelId), values, count, bins, 1.0, new ImPlotRange {Min = 0, Max = 0}, 0);
 
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="bins">The number of histogram bins</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
         /// <param name="barScale">The bar scale</param>
-        /// <returns>The double-precision floating-point result</returns>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, float[] values, int count, int bins, double barScale) => ImPlotNative.ImPlot_PlotHistogram_FloatPtr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, new ImPlotRange {Min = 0, Max = 0}, 0);
 
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="bins">The number of histogram bins</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
         /// <param name="barScale">The bar scale</param>
-        /// <param name="range">The value range (min, max)</param>
-        /// <returns>The double-precision floating-point result</returns>
+        /// <param name="range">The range</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, float[] values, int count, int bins, double barScale, ImPlotRange range) => ImPlotNative.ImPlot_PlotHistogram_FloatPtr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, range, 0);
 
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="bins">The number of histogram bins</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
         /// <param name="barScale">The bar scale</param>
-        /// <param name="range">The value range (min, max)</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>The double-precision floating-point result</returns>
+        /// <param name="range">The range</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, float[] values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags) => ImPlotNative.ImPlot_PlotHistogram_FloatPtr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, range, flags);
 
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="count">The number of elements</param>
-        /// <returns>The double-precision floating-point result</returns>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, double[] values, int count) => ImPlotNative.ImPlot_PlotHistogram_doublePtr(Encoding.UTF8.GetBytes(labelId), values, count, 0, 1.0, new ImPlotRange {Min = 0, Max = 0}, 0);
 
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="bins">The number of histogram bins</param>
-        /// <returns>The double-precision floating-point result</returns>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, double[] values, int count, int bins) => ImPlotNative.ImPlot_PlotHistogram_doublePtr(Encoding.UTF8.GetBytes(labelId), values, count, bins, 1.0, new ImPlotRange {Min = 0, Max = 0}, 0);
 
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="bins">The number of histogram bins</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
         /// <param name="barScale">The bar scale</param>
-        /// <returns>The double-precision floating-point result</returns>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, double[] values, int count, int bins, double barScale) => ImPlotNative.ImPlot_PlotHistogram_doublePtr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, new ImPlotRange {Min = 0, Max = 0}, 0);
 
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="bins">The number of histogram bins</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
         /// <param name="barScale">The bar scale</param>
-        /// <param name="range">The value range (min, max)</param>
-        /// <returns>The double-precision floating-point result</returns>
+        /// <param name="range">The range</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, double[] values, int count, int bins, double barScale, ImPlotRange range) => ImPlotNative.ImPlot_PlotHistogram_doublePtr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, range, 0);
 
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="bins">The number of histogram bins</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
         /// <param name="barScale">The bar scale</param>
-        /// <param name="range">The value range (min, max)</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>The double-precision floating-point result</returns>
+        /// <param name="range">The range</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, double[] values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags) => ImPlotNative.ImPlot_PlotHistogram_doublePtr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, range, flags);
 
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="count">The number of elements</param>
-        /// <returns>The double-precision floating-point result</returns>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, sbyte[] values, int count) => ImPlotNative.ImPlot_PlotHistogram_S8Ptr(Encoding.UTF8.GetBytes(labelId), values, count, 0, 1.0, new ImPlotRange {Min = 0, Max = 0}, 0);
 
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="bins">The number of histogram bins</param>
-        /// <returns>The double-precision floating-point result</returns>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, sbyte[] values, int count, int bins) => ImPlotNative.ImPlot_PlotHistogram_S8Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, 1.0, new ImPlotRange {Min = 0, Max = 0}, 0);
 
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="bins">The number of histogram bins</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
         /// <param name="barScale">The bar scale</param>
-        /// <returns>The double-precision floating-point result</returns>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, sbyte[] values, int count, int bins, double barScale) => ImPlotNative.ImPlot_PlotHistogram_S8Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, new ImPlotRange {Min = 0, Max = 0}, 0);
 
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="bins">The number of histogram bins</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
         /// <param name="barScale">The bar scale</param>
-        /// <param name="range">The value range (min, max)</param>
-        /// <returns>The double-precision floating-point result</returns>
+        /// <param name="range">The range</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, sbyte[] values, int count, int bins, double barScale, ImPlotRange range) => ImPlotNative.ImPlot_PlotHistogram_S8Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, range, 0);
 
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="bins">The number of histogram bins</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
         /// <param name="barScale">The bar scale</param>
-        /// <param name="range">The value range (min, max)</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>The double-precision floating-point result</returns>
+        /// <param name="range">The range</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, sbyte[] values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags) => ImPlotNative.ImPlot_PlotHistogram_S8Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, range, flags);
 
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="count">The number of elements</param>
-        /// <returns>The double-precision floating-point result</returns>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, byte[] values, int count) => ImPlotNative.ImPlot_PlotHistogram_U8Ptr(Encoding.UTF8.GetBytes(labelId), values, count, 0, 1.0, new ImPlotRange {Min = 0, Max = 0}, 0);
 
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="bins">The number of histogram bins</param>
-        /// <returns>The double-precision floating-point result</returns>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, byte[] values, int count, int bins) => ImPlotNative.ImPlot_PlotHistogram_U8Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, 1.0, new ImPlotRange {Min = 0, Max = 0}, 0);
 
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
-        /// <param name="labelId">The label identifier for the plot item</param>
-        /// <param name="values">The array of data values to plot</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="bins">The number of histogram bins</param>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
         /// <param name="barScale">The bar scale</param>
-        /// <returns>The double-precision floating-point result</returns>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, byte[] values, int count, int bins, double barScale) => ImPlotNative.ImPlot_PlotHistogram_U8Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, new ImPlotRange {Min = 0, Max = 0}, 0);
     }
 }

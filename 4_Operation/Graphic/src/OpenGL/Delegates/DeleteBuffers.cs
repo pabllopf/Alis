@@ -32,10 +32,8 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     Deletes named buffer objects, freeing their resources
+    ///     The delete buffers
     /// </summary>
-    /// <param name="n">Specifies the number of buffer objects to be deleted</param>
-    /// <param name="buffers">Specifies an array of buffer object names to delete</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void DeleteBuffers(int n, uint[] buffers);
 }

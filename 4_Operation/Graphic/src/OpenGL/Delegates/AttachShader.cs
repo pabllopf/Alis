@@ -32,10 +32,8 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     Attaches a shader object to a program object
+    ///     The attach shader
     /// </summary>
-    /// <param name="program">Specifies the program object to which the shader will be attached</param>
-    /// <param name="shader">Specifies the shader object to attach</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void AttachShader(uint program, uint shader);
 }

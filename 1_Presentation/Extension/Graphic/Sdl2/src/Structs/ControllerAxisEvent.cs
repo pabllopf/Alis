@@ -33,28 +33,28 @@ using Alis.Extension.Graphic.Sdl2.Enums;
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     Represents an SDL controller axis motion event, fired when a game controller analog stick or trigger moves.
+    ///     The sdl controller axis event
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct ControllerAxisEvent
     {
         /// <summary>
-        ///     The event type identifier, set to <see cref="EventType.ControllerAxisMotion"/>.
+        ///     The type
         /// </summary>
         public EventType type;
 
         /// <summary>
-        ///     The timestamp of the event, in milliseconds, from the SDL event system.
+        ///     The timestamp
         /// </summary>
         public uint timestamp;
 
         /// <summary>
-        ///     The SDL joystick instance ID for the controller that generated the event.
+        ///     The which SDL_JoystickID
         /// </summary>
         public int which;
 
         /// <summary>
-        ///     The controller axis index (e.g. 0 for left stick horizontal, 1 for left stick vertical).
+        ///     The axis
         /// </summary>
         public byte axis;
     }

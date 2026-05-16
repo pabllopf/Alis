@@ -70,40 +70,35 @@ namespace Alis.Extension.Security
         }
 
         /// <summary>
-        ///     Implicitly converts a decimal value to a SecureDecimal
         /// </summary>
-        /// <param name="value">The decimal value to convert</param>
-        /// <returns>A SecureDecimal instance wrapping the value</returns>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static implicit operator SecureDecimal(decimal value) => new SecureDecimal(value);
 
         /// <summary>
-        ///     Implicitly converts a SecureDecimal to its underlying decimal value
         /// </summary>
-        /// <param name="value">The SecureDecimal to convert</param>
-        /// <returns>The decrypted decimal value</returns>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static implicit operator decimal(SecureDecimal value) => value.Value;
 
         /// <summary>
-        ///     Compares two SecureDecimal instances for equality
         /// </summary>
-        /// <param name="a">The first SecureDecimal</param>
-        /// <param name="b">The second SecureDecimal</param>
-        /// <returns>True if the values are equal; otherwise, false</returns>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static bool operator ==(SecureDecimal a, SecureDecimal b) => a.Value == b.Value;
 
         /// <summary>
-        ///     Compares two SecureDecimal instances for inequality
         /// </summary>
-        /// <param name="a">The first SecureDecimal</param>
-        /// <param name="b">The second SecureDecimal</param>
-        /// <returns>True if the values are not equal; otherwise, false</returns>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static bool operator !=(SecureDecimal a, SecureDecimal b) => a.Value != b.Value;
 
         /// <summary>
-        ///     Increments the SecureDecimal value by one
         /// </summary>
-        /// <param name="a">The SecureDecimal to increment</param>
-        /// <returns>The incremented SecureDecimal</returns>
+        /// <param name="a"></param>
+        /// <returns></returns>
         public static SecureDecimal operator ++(SecureDecimal a)
         {
             a.Value++;
@@ -111,10 +106,9 @@ namespace Alis.Extension.Security
         }
 
         /// <summary>
-        ///     Decrements the SecureDecimal value by one
         /// </summary>
-        /// <param name="a">The SecureDecimal to decrement</param>
-        /// <returns>The decremented SecureDecimal</returns>
+        /// <param name="a"></param>
+        /// <returns></returns>
         public static SecureDecimal operator --(SecureDecimal a)
         {
             a.Value--;
@@ -122,55 +116,51 @@ namespace Alis.Extension.Security
         }
 
         /// <summary>
-        ///     Adds two SecureDecimal values
         /// </summary>
-        /// <param name="a">The first SecureDecimal</param>
-        /// <param name="b">The second SecureDecimal</param>
-        /// <returns>A new SecureDecimal containing the sum</returns>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static SecureDecimal operator +(SecureDecimal a, SecureDecimal b) => new SecureDecimal(a.Value + b.Value);
 
 
         /// <summary>
-        ///     Subtracts one SecureDecimal from another
         /// </summary>
-        /// <param name="a">The SecureDecimal to subtract from</param>
-        /// <param name="b">The SecureDecimal to subtract</param>
-        /// <returns>A new SecureDecimal containing the difference</returns>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static SecureDecimal operator -(SecureDecimal a, SecureDecimal b) => new SecureDecimal(a.Value - b.Value);
 
         /// <summary>
-        ///     Multiplies two SecureDecimal values
         /// </summary>
-        /// <param name="a">The first SecureDecimal</param>
-        /// <param name="b">The second SecureDecimal</param>
-        /// <returns>A new SecureDecimal containing the product</returns>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static SecureDecimal operator *(SecureDecimal a, SecureDecimal b) => new SecureDecimal(a.Value * b.Value);
 
         /// <summary>
-        ///     Divides one SecureDecimal by another
         /// </summary>
-        /// <param name="a">The SecureDecimal to divide</param>
-        /// <param name="b">The SecureDecimal to divide by</param>
-        /// <returns>A new SecureDecimal containing the quotient</returns>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static SecureDecimal operator /(SecureDecimal a, SecureDecimal b) => new SecureDecimal(a.Value / b.Value);
 
         /// <summary>
-        ///     Returns the string representation of the decrypted value
+        ///     Returns the string
         /// </summary>
-        /// <returns>The decrypted decimal value as a string</returns>
+        /// <returns>The string</returns>
         public override string ToString() => Value.ToString(CultureInfo.InvariantCulture);
 
         /// <summary>
-        ///     Computes the hash code of the decrypted value
+        ///     Gets the hash code
         /// </summary>
-        /// <returns>The hash code of the underlying decimal</returns>
+        /// <returns>The int</returns>
         public override int GetHashCode() => Value.GetHashCode();
 
         /// <summary>
-        ///     Determines whether the specified object equals the current SecureDecimal
+        ///     Describes whether this instance equals
         /// </summary>
-        /// <param name="obj">The object to compare</param>
-        /// <returns>True if the values are equal; otherwise, false</returns>
+        /// <param name="obj">The obj</param>
+        /// <returns>The bool</returns>
         public override bool Equals(object obj) => Value.Equals((obj as SecureDecimal).Value);
     }
 }

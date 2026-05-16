@@ -304,7 +304,7 @@ namespace Alis.Extension.Network
         ///     Tried to create a buffer ({requiredSize:#,##0} bytes) that was
         ///     larger than the max allowed size ({int.MaxValue:#,##0})
         /// </exception>
-        internal static void ValidateRequiredSize(long requiredSize)
+        internal void ValidateRequiredSize(long requiredSize)
         {
             if (requiredSize > int.MaxValue)
             {
@@ -319,14 +319,14 @@ namespace Alis.Extension.Network
         /// <param name="newSize">The new size</param>
         /// <param name="requiredSize">The required size</param>
         /// <returns>The bool</returns>
-        internal static bool IsNewSizeLessThanRequiredSize(long newSize, long requiredSize) => requiredSize > newSize;
+        internal bool IsNewSizeLessThanRequiredSize(long newSize, long requiredSize) => requiredSize > newSize;
 
         /// <summary>
         ///     Computes the candidate size using the specified required size
         /// </summary>
         /// <param name="requiredSize">The required size</param>
         /// <returns>The long</returns>
-        internal static long ComputeCandidateSize(long requiredSize)
+        internal long ComputeCandidateSize(long requiredSize)
         {
             long candidateSize = (long) Math.Pow(2, Math.Ceiling(Math.Log(requiredSize) / Math.Log(2)));
             return candidateSize > int.MaxValue ? requiredSize : candidateSize;

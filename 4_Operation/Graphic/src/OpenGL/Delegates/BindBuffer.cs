@@ -33,10 +33,8 @@ using Alis.Core.Graphic.OpenGL.Enums;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     Binds a named buffer object to a specified buffer binding target
+    ///     The bind buffer
     /// </summary>
-    /// <param name="target">Specifies the target to which the buffer is bound</param>
-    /// <param name="buffer">Specifies the name of the buffer object to bind</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void BindBuffer(BufferTarget target, uint buffer);
 }

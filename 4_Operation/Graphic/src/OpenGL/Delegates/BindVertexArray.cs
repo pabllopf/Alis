@@ -32,9 +32,8 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     Binds a named vertex array object to the current rendering context
+    ///     The bind vertex array
     /// </summary>
-    /// <param name="array">Specifies the name of the vertex array object to bind</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void BindVertexArray(uint array);
 }

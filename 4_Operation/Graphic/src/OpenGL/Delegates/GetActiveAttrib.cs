@@ -34,15 +34,8 @@ using Alis.Core.Graphic.OpenGL.Enums;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     Returns information about an active attribute variable in a program object
+    ///     The get active attrib
     /// </summary>
-    /// <param name="program">Specifies the program object containing the attribute</param>
-    /// <param name="index">Specifies the index of the attribute variable to query</param>
-    /// <param name="bufSize">Specifies the maximum number of characters that may be written into name</param>
-    /// <param name="length">Returns the actual number of characters written into name</param>
-    /// <param name="size">Returns the size of the attribute variable</param>
-    /// <param name="type">Returns the type of the attribute variable</param>
-    /// <param name="name">Returns the name of the attribute variable</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void GetActiveAttrib(uint program, uint index, int bufSize, [Out] int[] length, [Out] int[] size, [Out] ActiveAttribType[] type, [Out] StringBuilder name);
 }

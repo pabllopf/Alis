@@ -33,98 +33,98 @@ using System.Runtime.InteropServices;
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     Represents an SDL pixel format, describing the pixel layout, bit masks, and shifts for a surface or texture.
+    ///     The sdl pixel format
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct PixelFormat
     {
         /// <summary>
-        ///     The pixel format identifier (e.g. SDL_PIXELFORMAT_RGB888).
+        ///     The format
         /// </summary>
         public readonly uint format;
 
         /// <summary>
-        ///     A pointer to an SDL_Palette structure, used for indexed color formats.
+        ///     The palette
         /// </summary>
         public IntPtr Palette { get; set; }
 
         /// <summary>
-        ///     The number of significant bits per pixel.
+        ///     The bits per pixel
         /// </summary>
         public readonly byte BitsPerPixel;
 
         /// <summary>
-        ///     The number of bytes per pixel (computed from BitsPerPixel).
+        ///     The bytes per pixel
         /// </summary>
         public readonly byte BytesPerPixel;
 
         /// <summary>
-        ///     The bit mask for the red channel.
+        ///     The r mask
         /// </summary>
         public readonly uint RMask;
 
         /// <summary>
-        ///     The bit mask for the green channel.
+        ///     The g mask
         /// </summary>
         public readonly uint GMask;
 
         /// <summary>
-        ///     The bit mask for the blue channel.
+        ///     The b mask
         /// </summary>
         public readonly uint BMask;
 
         /// <summary>
-        ///     The bit mask for the alpha channel.
+        ///     The a mask
         /// </summary>
         public readonly uint AMask;
 
         /// <summary>
-        ///     The number of bits lost for the red channel relative to the full byte.
+        ///     The r loss
         /// </summary>
         public readonly byte RLoss;
 
         /// <summary>
-        ///     The number of bits lost for the green channel relative to the full byte.
+        ///     The g loss
         /// </summary>
         public readonly byte Gloss;
 
         /// <summary>
-        ///     The number of bits lost for the blue channel relative to the full byte.
+        ///     The b loss
         /// </summary>
         public readonly byte BLoss;
 
         /// <summary>
-        ///     The number of bits lost for the alpha channel relative to the full byte.
+        ///     The a loss
         /// </summary>
         public readonly byte ALoss;
 
         /// <summary>
-        ///     The bit shift value for the red channel.
+        ///     The r shift
         /// </summary>
         public readonly byte RShift;
 
         /// <summary>
-        ///     The bit shift value for the green channel.
+        ///     The g shift
         /// </summary>
         public readonly byte GShift;
 
         /// <summary>
-        ///     The bit shift value for the blue channel.
+        ///     The b shift
         /// </summary>
         public readonly byte BShift;
 
         /// <summary>
-        ///     The bit shift value for the alpha channel.
+        ///     The a shift
         /// </summary>
         public readonly byte AShift;
 
         /// <summary>
-        ///     The reference count for the pixel format (used internally by SDL).
+        ///     The ref count
         /// </summary>
         public readonly int refCount;
 
         /// <summary>
-        ///     A pointer to the next pixel format in the linked list (used internally by SDL).
+        ///     The next
         /// </summary>
         public IntPtr Next { get; set; }
     }

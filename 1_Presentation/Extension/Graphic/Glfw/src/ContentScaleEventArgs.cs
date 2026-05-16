@@ -37,7 +37,6 @@ namespace Alis.Extension.Graphic.Glfw
     public class ContentScaleEventArgs : EventArgs
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="ContentScaleEventArgs" /> class.
         /// </summary>
         /// <param name="xScale">The new scale on the x-axis.</param>
         /// <param name="yScale">The new scale on the y-axis.</param>

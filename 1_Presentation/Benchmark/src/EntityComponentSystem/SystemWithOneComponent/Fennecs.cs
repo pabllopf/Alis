@@ -46,7 +46,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
         [Context] private readonly FennecsContext _fennecs;
 
         /// <summary>
-        ///     Benchmarks ForEach query with one component using Fennecs ECS
+        ///     Fennecses the for each
         /// </summary>
         [BenchmarkCategory(Categories.Fennecs), Benchmark]
         public void Fennecs_ForEach()
@@ -55,7 +55,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
         }
 
         /// <summary>
-        ///     Benchmarks Job query with one component using Fennecs ECS
+        ///     Fennecses the job
         /// </summary>
         [BenchmarkCategory(Categories.Fennecs), Benchmark]
         public void Fennecs_Job()
@@ -64,7 +64,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
         }
 
         /// <summary>
-        ///     Benchmarks Raw memory query with one component using Fennecs ECS
+        ///     Fennecses the raw
         /// </summary>
         [BenchmarkCategory(Categories.Fennecs), Benchmark]
         public void Fennecs_Raw()

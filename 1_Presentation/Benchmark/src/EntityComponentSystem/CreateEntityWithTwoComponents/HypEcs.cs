@@ -43,7 +43,7 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithTwoComponents
         [Context] private readonly HypEcsBaseContext _hypEcs;
 
         /// <summary>
-        ///     Benchmarks creating entities with two components using Hyp ECS
+        ///     Hyps the ecs
         /// </summary>
         [BenchmarkCategory(Categories.HypEcs), Benchmark]
         public void HypEcs()

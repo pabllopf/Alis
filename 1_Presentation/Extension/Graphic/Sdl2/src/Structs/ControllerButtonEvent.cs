@@ -33,33 +33,33 @@ using Alis.Extension.Graphic.Sdl2.Enums;
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     Represents an SDL controller button event, fired when a game controller button is pressed or released.
+    ///     The sdl controller button event
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct ControllerButtonEvent
     {
         /// <summary>
-        ///     The event type identifier, set to <see cref="EventType.ControllerButtonDown"/> or <see cref="EventType.ControllerButtonUp"/>.
+        ///     The type
         /// </summary>
         public EventType type;
 
         /// <summary>
-        ///     The timestamp of the event, in milliseconds, from the SDL event system.
+        ///     The timestamp
         /// </summary>
         public uint timestamp;
 
         /// <summary>
-        ///     The SDL joystick instance ID for the controller that generated the event.
+        ///     The which SDL_JoystickID
         /// </summary>
         public int which;
 
         /// <summary>
-        ///     The controller button index (e.g. SDL_CONTROLLER_BUTTON_A, SDL_CONTROLLER_BUTTON_B).
+        ///     The button
         /// </summary>
         public byte button;
 
         /// <summary>
-        ///     The button state: SDL_PRESSED (1) or SDL_RELEASED (0).
+        ///     The state
         /// </summary>
         public byte state;
     }

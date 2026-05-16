@@ -35,17 +35,17 @@ namespace Alis.Core.Graphic.OpenGL.Enums
     public enum DrawElementsType
     {
         /// <summary>
-        ///     8-bit unsigned integer index type (GL_UNSIGNED_BYTE)
+        ///     The unsigned byte draw elements type
         /// </summary>
         UnsignedByte = 0x1401,
 
         /// <summary>
-        ///     16-bit unsigned integer index type (GL_UNSIGNED_SHORT)
+        ///     The unsigned short draw elements type
         /// </summary>
         UnsignedShort = 0x1403,
 
         /// <summary>
-        ///     32-bit unsigned integer index type (GL_UNSIGNED_INT)
+        ///     The unsigned int draw elements type
         /// </summary>
         UnsignedInt = 0x1405
     }

@@ -46,7 +46,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
         [Context] private readonly SveltoECSContext _sveltoECS;
 
         /// <summary>
-        ///     Benchmarks engine update with one component using SveltoECS
+        ///     Sveltoes the ecs
         /// </summary>
         [BenchmarkCategory(Categories.SveltoECS), Benchmark]
         public void SveltoECS() => _sveltoECS.Engine.Update();
@@ -81,10 +81,10 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
                 Scheduler.SubmitEntities();
             }
 
-        /// <summary>
-        ///     Gets the Svelto engine instance
-        /// </summary>
-        public SveltoEngine Engine { get; }
+            /// <summary>
+            ///     Gets the value of the engine
+            /// </summary>
+            public SveltoEngine Engine { get; }
 
             /// <summary>
             ///     The svelto engine class
@@ -92,10 +92,10 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
             /// <seealso cref="IQueryingEntitiesEngine" />
             public sealed class SveltoEngine : IQueryingEntitiesEngine
             {
-        /// <summary>
-        ///     Gets or sets the entities database
-        /// </summary>
-        public EntitiesDB entitiesDB { get; set; }
+                /// <summary>
+                ///     Gets or sets the value of the entities db
+                /// </summary>
+                public EntitiesDB entitiesDB { get; set; }
 
                 /// <summary>
                 ///     Readies this instance
@@ -124,10 +124,10 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
             /// <seealso cref="IEntityDescriptor" />
             public sealed class PaddingEntity : IEntityDescriptor
             {
-        /// <summary>
-        ///     Gets the components to build for padding entities
-        /// </summary>
-        public IComponentBuilder[] componentsToBuild => Array.Empty<IComponentBuilder>();
+                /// <summary>
+                ///     Gets the value of the components to build
+                /// </summary>
+                public IComponentBuilder[] componentsToBuild => Array.Empty<IComponentBuilder>();
             }
 
             /// <summary>

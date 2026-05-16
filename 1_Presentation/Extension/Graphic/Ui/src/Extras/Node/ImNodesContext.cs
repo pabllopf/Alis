@@ -30,7 +30,7 @@
 namespace Alis.Extension.Graphic.Ui.Extras.Node
 {
     /// <summary>
-    ///     The ImNodes context structure
+    ///     The im nodes context
     /// </summary>
     public struct ImNodesContext
     {

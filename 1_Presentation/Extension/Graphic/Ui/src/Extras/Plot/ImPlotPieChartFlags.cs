@@ -32,24 +32,19 @@ using System;
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     Flags that control the rendering of pie charts in ImPlot.
+    ///     The im plot pie chart flags enum
     /// </summary>
     [Flags]
     public enum ImPlotPieChartFlags
     {
         /// <summary>
-        ///     Default pie chart rendering.
+        ///     The none im plot pie chart flags
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     Normalize slice angles so that values sum to 360 degrees.
+        ///     The normalize im plot pie chart flags
         /// </summary>
-        NormalizeAngle = 1,
-
-        /// <summary>
-        ///     Exclude slices that are hidden from the legend from rendering.
-        /// </summary>
-        IgnoreHidden = 2
+        Normalize = 1024
     }
 }

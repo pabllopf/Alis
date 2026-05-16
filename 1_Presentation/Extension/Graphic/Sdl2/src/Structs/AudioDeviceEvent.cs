@@ -32,28 +32,28 @@ using System.Runtime.InteropServices;
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     Represents an SDL audio device event, used when an audio device is added, removed, or its state changes.
+    ///     The sdl audio device event
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct AudioDeviceEvent
     {
         /// <summary>
-        ///     The event type identifier, distinguishing this audio device event from other event types.
+        ///     The type
         /// </summary>
         public uint type;
 
         /// <summary>
-        ///     The timestamp of the event, in milliseconds, from the SDL event system.
+        ///     The timestamp
         /// </summary>
         public uint timestamp;
 
         /// <summary>
-        ///     The SDL audio device instance ID that this event relates to.
+        ///     The which
         /// </summary>
         public uint which;
 
         /// <summary>
-        ///     Indicates whether the device is a capture (recording) device; non-zero for capture, zero for output.
+        ///     The is capture
         /// </summary>
         public byte isCapture;
     }

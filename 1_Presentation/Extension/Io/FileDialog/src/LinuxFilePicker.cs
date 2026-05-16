@@ -178,7 +178,7 @@ namespace Alis.Extension.Io.FileDialog
         /// <summary>
         ///     Gets the available dialog tool (zenity or kdialog).
         /// </summary>
-        private static string GetAvailableDialogTool()
+        private string GetAvailableDialogTool()
         {
             Logger.Trace("Checking for available dialog tools...");
 
@@ -321,7 +321,7 @@ namespace Alis.Extension.Io.FileDialog
         /// <summary>
         ///     Parses the dialog result.
         /// </summary>
-        private static FilePickerResult ParseResult(string output, FilePickerOptions options, bool allowMultiple)
+        private FilePickerResult ParseResult(string output, FilePickerOptions options, bool allowMultiple)
         {
             Logger.Trace($"Parsing result from dialog output: {output ?? "(null)"}");
 
@@ -367,7 +367,7 @@ namespace Alis.Extension.Io.FileDialog
         /// <summary>
         ///     Escapes special characters in shell strings.
         /// </summary>
-        private static string EscapeShellString(string input)
+        private string EscapeShellString(string input)
         {
             if (string.IsNullOrEmpty(input))
             {

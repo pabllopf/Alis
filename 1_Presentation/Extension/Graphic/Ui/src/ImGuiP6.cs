@@ -34,17 +34,17 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Extension.Graphic.Ui
 {
     /// <summary>
-    ///     The ImGui wrapper class providing managed access to native Dear ImGui functionality
+    ///     The im gui class
     /// </summary>
     public static partial class ImGui
     {
         /// <summary>
         ///     Describes whether input float 4
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="v">The value to be modified or populated</param>
-        /// <param name="format">The display format string (printf-style)</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <param name="v">The </param>
+        /// <param name="format">The format</param>
+        /// <returns>The bool</returns>
         public static bool InputFloat4(string label, ref Vector4F v, string format)
         {
             byte ret = ImGuiNative.igInputFloat4(Encoding.UTF8.GetBytes(label), ref v, Encoding.UTF8.GetBytes(format), ImGuiInputTextFlags.None);
@@ -55,11 +55,11 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input float 4
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="v">The value to be modified or populated</param>
-        /// <param name="format">The display format string (printf-style)</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <param name="v">The </param>
+        /// <param name="format">The format</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
         public static bool InputFloat4(string label, ref Vector4F v, string format, ImGuiInputTextFlags flags)
         {
             byte ret = ImGuiNative.igInputFloat4(Encoding.UTF8.GetBytes(label), ref v, Encoding.UTF8.GetBytes(format), flags);
@@ -69,9 +69,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input int
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="v">The value to be modified or populated</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <param name="v">The </param>
+        /// <returns>The bool</returns>
         public static bool InputInt(string label, ref int v)
         {
             byte ret = ImGuiNative.igInputInt(Encoding.UTF8.GetBytes(label), ref v, 1, 100, ImGuiInputTextFlags.None);
@@ -82,10 +82,10 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input int
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="v">The value to be modified or populated</param>
+        /// <param name="label">The label</param>
+        /// <param name="v">The </param>
         /// <param name="step">The step</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool InputInt(string label, ref int v, int step)
         {
             byte ret = ImGuiNative.igInputInt(Encoding.UTF8.GetBytes(label), ref v, step, 100, ImGuiInputTextFlags.None);
@@ -96,11 +96,11 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input int
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="v">The value to be modified or populated</param>
+        /// <param name="label">The label</param>
+        /// <param name="v">The </param>
         /// <param name="step">The step</param>
         /// <param name="stepFast">The step fast</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool InputInt(string label, ref int v, int step, int stepFast)
         {
             byte ret = ImGuiNative.igInputInt(Encoding.UTF8.GetBytes(label), ref v, step, stepFast, ImGuiInputTextFlags.None);
@@ -110,12 +110,12 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input int
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="v">The value to be modified or populated</param>
+        /// <param name="label">The label</param>
+        /// <param name="v">The </param>
         /// <param name="step">The step</param>
         /// <param name="stepFast">The step fast</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
         public static bool InputInt(string label, ref int v, int step, int stepFast, ImGuiInputTextFlags flags)
         {
             byte ret = ImGuiNative.igInputInt(Encoding.UTF8.GetBytes(label), ref v, step, stepFast, flags);
@@ -125,9 +125,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input int 2
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="v">The value to be modified or populated</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <param name="v">The </param>
+        /// <returns>The bool</returns>
         public static bool InputInt2(string label, ref int v)
         {
             byte ret = ImGuiNative.igInputInt2(Encoding.UTF8.GetBytes(label), ref v, ImGuiInputTextFlags.None);
@@ -138,10 +138,10 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input int 2
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="v">The value to be modified or populated</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <param name="v">The </param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
         public static bool InputInt2(string label, ref int v, ImGuiInputTextFlags flags)
         {
             byte ret = ImGuiNative.igInputInt2(Encoding.UTF8.GetBytes(label), ref v, flags);
@@ -151,9 +151,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input int 3
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="v">The value to be modified or populated</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <param name="v">The </param>
+        /// <returns>The bool</returns>
         public static bool InputInt3(string label, ref int v)
         {
             byte ret = ImGuiNative.igInputInt3(Encoding.UTF8.GetBytes(label), ref v, ImGuiInputTextFlags.None);
@@ -163,10 +163,10 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input int 3
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="v">The value to be modified or populated</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <param name="v">The </param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
         public static bool InputInt3(string label, ref int v, ImGuiInputTextFlags flags)
         {
             byte ret = ImGuiNative.igInputInt3(Encoding.UTF8.GetBytes(label), ref v, flags);
@@ -177,9 +177,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input int 4
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="v">The value to be modified or populated</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <param name="v">The </param>
+        /// <returns>The bool</returns>
         public static bool InputInt4(string label, ref int v)
         {
             byte ret = ImGuiNative.igInputInt4(Encoding.UTF8.GetBytes(label), ref v, ImGuiInputTextFlags.None);
@@ -190,10 +190,10 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input int 4
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="v">The value to be modified or populated</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <param name="v">The </param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
         public static bool InputInt4(string label, ref int v, ImGuiInputTextFlags flags)
         {
             byte ret = ImGuiNative.igInputInt4(Encoding.UTF8.GetBytes(label), ref v, flags);
@@ -204,10 +204,10 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input scalar
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The type of data being manipulated</param>
-        /// <param name="pData">The pointer to the data value</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <param name="dataType">The data type</param>
+        /// <param name="pData">The data</param>
+        /// <returns>The bool</returns>
         public static bool InputScalar(string label, ImGuiDataType dataType, IntPtr pData)
         {
             byte ret = ImGuiNative.igInputScalar(Encoding.UTF8.GetBytes(label), dataType, pData, IntPtr.Zero, IntPtr.Zero, null, ImGuiInputTextFlags.None);
@@ -217,11 +217,11 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input scalar
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The type of data being manipulated</param>
-        /// <param name="pData">The pointer to the data value</param>
+        /// <param name="label">The label</param>
+        /// <param name="dataType">The data type</param>
+        /// <param name="pData">The data</param>
         /// <param name="pStep">The step</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool InputScalar(string label, ImGuiDataType dataType, IntPtr pData, IntPtr pStep)
         {
             byte ret = ImGuiNative.igInputScalar(Encoding.UTF8.GetBytes(label), dataType, pData, pStep, IntPtr.Zero, null, ImGuiInputTextFlags.None);
@@ -231,12 +231,12 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input scalar
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The type of data being manipulated</param>
-        /// <param name="pData">The pointer to the data value</param>
+        /// <param name="label">The label</param>
+        /// <param name="dataType">The data type</param>
+        /// <param name="pData">The data</param>
         /// <param name="pStep">The step</param>
         /// <param name="pStepFast">The step fast</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool InputScalar(string label, ImGuiDataType dataType, IntPtr pData, IntPtr pStep, IntPtr pStepFast)
         {
             byte ret = ImGuiNative.igInputScalar(Encoding.UTF8.GetBytes(label), dataType, pData, pStep, pStepFast, null, ImGuiInputTextFlags.None);
@@ -247,13 +247,13 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input scalar
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The type of data being manipulated</param>
-        /// <param name="pData">The pointer to the data value</param>
+        /// <param name="label">The label</param>
+        /// <param name="dataType">The data type</param>
+        /// <param name="pData">The data</param>
         /// <param name="pStep">The step</param>
         /// <param name="pStepFast">The step fast</param>
-        /// <param name="format">The display format string (printf-style)</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="format">The format</param>
+        /// <returns>The bool</returns>
         public static bool InputScalar(string label, ImGuiDataType dataType, IntPtr pData, IntPtr pStep, IntPtr pStepFast, string format)
         {
             byte ret = ImGuiNative.igInputScalar(Encoding.UTF8.GetBytes(label), dataType, pData, pStep, pStepFast, Encoding.UTF8.GetBytes(format), ImGuiInputTextFlags.None);
@@ -264,14 +264,14 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input scalar
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The type of data being manipulated</param>
-        /// <param name="pData">The pointer to the data value</param>
+        /// <param name="label">The label</param>
+        /// <param name="dataType">The data type</param>
+        /// <param name="pData">The data</param>
         /// <param name="pStep">The step</param>
         /// <param name="pStepFast">The step fast</param>
-        /// <param name="format">The display format string (printf-style)</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="format">The format</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
         public static bool InputScalar(string label, ImGuiDataType dataType, IntPtr pData, IntPtr pStep, IntPtr pStepFast, string format, ImGuiInputTextFlags flags)
         {
             byte ret = ImGuiNative.igInputScalar(Encoding.UTF8.GetBytes(label), dataType, pData, pStep, pStepFast, Encoding.UTF8.GetBytes(format), flags);
@@ -281,11 +281,11 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input scalar n
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The type of data being manipulated</param>
-        /// <param name="pData">The pointer to the data value</param>
-        /// <param name="components">The number of components in the value</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <param name="dataType">The data type</param>
+        /// <param name="pData">The data</param>
+        /// <param name="components">The components</param>
+        /// <returns>The bool</returns>
         public static bool InputScalarN(string label, ImGuiDataType dataType, IntPtr pData, int components)
         {
             byte ret = ImGuiNative.igInputScalarN(Encoding.UTF8.GetBytes(label), dataType, pData, components, IntPtr.Zero, IntPtr.Zero, null, ImGuiInputTextFlags.None);
@@ -296,12 +296,12 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input scalar n
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The type of data being manipulated</param>
-        /// <param name="pData">The pointer to the data value</param>
-        /// <param name="components">The number of components in the value</param>
+        /// <param name="label">The label</param>
+        /// <param name="dataType">The data type</param>
+        /// <param name="pData">The data</param>
+        /// <param name="components">The components</param>
         /// <param name="pStep">The step</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool InputScalarN(string label, ImGuiDataType dataType, IntPtr pData, int components, IntPtr pStep)
         {
             byte ret = ImGuiNative.igInputScalarN(Encoding.UTF8.GetBytes(label), dataType, pData, components, pStep, IntPtr.Zero, null, ImGuiInputTextFlags.None);
@@ -311,13 +311,13 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input scalar n
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The type of data being manipulated</param>
-        /// <param name="pData">The pointer to the data value</param>
-        /// <param name="components">The number of components in the value</param>
+        /// <param name="label">The label</param>
+        /// <param name="dataType">The data type</param>
+        /// <param name="pData">The data</param>
+        /// <param name="components">The components</param>
         /// <param name="pStep">The step</param>
         /// <param name="pStepFast">The step fast</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool InputScalarN(string label, ImGuiDataType dataType, IntPtr pData, int components, IntPtr pStep, IntPtr pStepFast)
         {
             byte ret = ImGuiNative.igInputScalarN(Encoding.UTF8.GetBytes(label), dataType, pData, components, pStep, pStepFast, null, ImGuiInputTextFlags.None);
@@ -328,14 +328,14 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input scalar n
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The type of data being manipulated</param>
-        /// <param name="pData">The pointer to the data value</param>
-        /// <param name="components">The number of components in the value</param>
+        /// <param name="label">The label</param>
+        /// <param name="dataType">The data type</param>
+        /// <param name="pData">The data</param>
+        /// <param name="components">The components</param>
         /// <param name="pStep">The step</param>
         /// <param name="pStepFast">The step fast</param>
-        /// <param name="format">The display format string (printf-style)</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="format">The format</param>
+        /// <returns>The bool</returns>
         public static bool InputScalarN(string label, ImGuiDataType dataType, IntPtr pData, int components, IntPtr pStep, IntPtr pStepFast, string format)
         {
             byte ret = ImGuiNative.igInputScalarN(Encoding.UTF8.GetBytes(label), dataType, pData, components, pStep, pStepFast, Encoding.UTF8.GetBytes(format), ImGuiInputTextFlags.None);
@@ -346,15 +346,15 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input scalar n
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The type of data being manipulated</param>
-        /// <param name="pData">The pointer to the data value</param>
-        /// <param name="components">The number of components in the value</param>
+        /// <param name="label">The label</param>
+        /// <param name="dataType">The data type</param>
+        /// <param name="pData">The data</param>
+        /// <param name="components">The components</param>
         /// <param name="pStep">The step</param>
         /// <param name="pStepFast">The step fast</param>
-        /// <param name="format">The display format string (printf-style)</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="format">The format</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
         public static bool InputScalarN(string label, ImGuiDataType dataType, IntPtr pData, int components, IntPtr pStep, IntPtr pStepFast, string format, ImGuiInputTextFlags flags)
         {
             byte ret = ImGuiNative.igInputScalarN(Encoding.UTF8.GetBytes(label), dataType, pData, components, pStep, pStepFast, Encoding.UTF8.GetBytes(format), flags);
@@ -365,9 +365,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether invisible button
         /// </summary>
-        /// <param name="strId">The string identifier for the element</param>
-        /// <param name="size">The size of the element in pixels</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="strId">The str id</param>
+        /// <param name="size">The size</param>
+        /// <returns>The bool</returns>
         public static bool InvisibleButton(string strId, Vector2F size)
         {
             byte ret = ImGuiNative.igInvisibleButton(Encoding.UTF8.GetBytes(strId), size, ImGuiButtonFlags.None);
@@ -377,10 +377,10 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether invisible button
         /// </summary>
-        /// <param name="strId">The string identifier for the element</param>
-        /// <param name="size">The size of the element in pixels</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="strId">The str id</param>
+        /// <param name="size">The size</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
         public static bool InvisibleButton(string strId, Vector2F size, ImGuiButtonFlags flags)
         {
             byte ret = ImGuiNative.igInvisibleButton(Encoding.UTF8.GetBytes(strId), size, flags);
@@ -390,7 +390,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is any item active
         /// </summary>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool IsAnyItemActive()
         {
             byte ret = ImGuiNative.igIsAnyItemActive();
@@ -400,7 +400,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is any item focused
         /// </summary>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool IsAnyItemFocused()
         {
             byte ret = ImGuiNative.igIsAnyItemFocused();
@@ -410,7 +410,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is any item hovered
         /// </summary>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool IsAnyItemHovered()
         {
             byte ret = ImGuiNative.igIsAnyItemHovered();
@@ -420,7 +420,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is any mouse down
         /// </summary>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool IsAnyMouseDown()
         {
             byte ret = ImGuiNative.igIsAnyMouseDown();
@@ -430,7 +430,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is item activated
         /// </summary>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool IsItemActivated()
         {
             byte ret = ImGuiNative.igIsItemActivated();
@@ -440,7 +440,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is item active
         /// </summary>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool IsItemActive()
         {
             byte ret = ImGuiNative.igIsItemActive();
@@ -450,7 +450,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is item clicked
         /// </summary>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool IsItemClicked()
         {
             ImGuiMouseButton mouseButton = 0;
@@ -462,7 +462,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether is item clicked
         /// </summary>
         /// <param name="mouseButton">The mouse button</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool IsItemClicked(ImGuiMouseButton mouseButton)
         {
             byte ret = ImGuiNative.igIsItemClicked(mouseButton);
@@ -472,7 +472,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is item deactivated
         /// </summary>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool IsItemDeactivated()
         {
             byte ret = ImGuiNative.igIsItemDeactivated();
@@ -482,7 +482,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is item deactivated after edit
         /// </summary>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool IsItemDeactivatedAfterEdit()
         {
             byte ret = ImGuiNative.igIsItemDeactivatedAfterEdit();
@@ -492,7 +492,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is item edited
         /// </summary>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool IsItemEdited()
         {
             byte ret = ImGuiNative.igIsItemEdited();
@@ -502,7 +502,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is item focused
         /// </summary>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool IsItemFocused()
         {
             byte ret = ImGuiNative.igIsItemFocused();
@@ -512,7 +512,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is item hovered
         /// </summary>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool IsItemHovered()
         {
             ImGuiHoveredFlags flags = 0;
@@ -523,8 +523,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is item hovered
         /// </summary>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
         public static bool IsItemHovered(ImGuiHoveredFlags flags)
         {
             byte ret = ImGuiNative.igIsItemHovered(flags);
@@ -534,7 +534,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is item toggled open
         /// </summary>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool IsItemToggledOpen()
         {
             byte ret = ImGuiNative.igIsItemToggledOpen();
@@ -544,7 +544,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is item visible
         /// </summary>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool IsItemVisible()
         {
             byte ret = ImGuiNative.igIsItemVisible();
@@ -554,8 +554,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is key down
         /// </summary>
-        /// <param name="key">The lookup key</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="key">The key</param>
+        /// <returns>The bool</returns>
         public static bool IsKeyDown(ImGuiKey key)
         {
             byte ret = ImGuiNative.igIsKeyDown_Nil(key);
@@ -565,8 +565,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is key pressed
         /// </summary>
-        /// <param name="key">The lookup key</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="key">The key</param>
+        /// <returns>The bool</returns>
         public static bool IsKeyPressed(ImGuiKey key)
         {
             byte repeat = 1;
@@ -577,9 +577,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is key pressed
         /// </summary>
-        /// <param name="key">The lookup key</param>
+        /// <param name="key">The key</param>
         /// <param name="repeat">The repeat</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool IsKeyPressed(ImGuiKey key, bool repeat)
         {
             byte nativeRepeat = repeat ? (byte) 1 : (byte) 0;
@@ -590,8 +590,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is key released
         /// </summary>
-        /// <param name="key">The lookup key</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="key">The key</param>
+        /// <returns>The bool</returns>
         public static bool IsKeyReleased(ImGuiKey key)
         {
             byte ret = ImGuiNative.igIsKeyReleased_Nil(key);
@@ -601,8 +601,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is mouse clicked
         /// </summary>
-        /// <param name="button">The mouse button index</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="button">The button</param>
+        /// <returns>The bool</returns>
         public static bool IsMouseClicked(ImGuiMouseButton button)
         {
             byte repeat = 0;
@@ -613,9 +613,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is mouse clicked
         /// </summary>
-        /// <param name="button">The mouse button index</param>
+        /// <param name="button">The button</param>
         /// <param name="repeat">The repeat</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool IsMouseClicked(ImGuiMouseButton button, bool repeat)
         {
             byte nativeRepeat = repeat ? (byte) 1 : (byte) 0;
@@ -626,8 +626,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is mouse double clicked
         /// </summary>
-        /// <param name="button">The mouse button index</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="button">The button</param>
+        /// <returns>The bool</returns>
         public static bool IsMouseDoubleClicked(ImGuiMouseButton button)
         {
             byte ret = ImGuiNative.igIsMouseDoubleClicked(button);
@@ -637,8 +637,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is mouse down
         /// </summary>
-        /// <param name="button">The mouse button index</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="button">The button</param>
+        /// <returns>The bool</returns>
         public static bool IsMouseDown(ImGuiMouseButton button)
         {
             byte ret = ImGuiNative.igIsMouseDown_Nil(button);
@@ -648,8 +648,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is mouse dragging
         /// </summary>
-        /// <param name="button">The mouse button index</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="button">The button</param>
+        /// <returns>The bool</returns>
         public static bool IsMouseDragging(ImGuiMouseButton button)
         {
             float lockThreshold = -1.0f;
@@ -660,9 +660,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is mouse dragging
         /// </summary>
-        /// <param name="button">The mouse button index</param>
+        /// <param name="button">The button</param>
         /// <param name="lockThreshold">The lock threshold</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool IsMouseDragging(ImGuiMouseButton button, float lockThreshold)
         {
             byte ret = ImGuiNative.igIsMouseDragging(button, lockThreshold);
@@ -674,7 +674,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="rMin">The min</param>
         /// <param name="rMax">The max</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool IsMouseHoveringRect(Vector2F rMin, Vector2F rMax)
         {
             byte clip = 1;
@@ -688,7 +688,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="rMin">The min</param>
         /// <param name="rMax">The max</param>
         /// <param name="clip">The clip</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool IsMouseHoveringRect(Vector2F rMin, Vector2F rMax, bool clip)
         {
             byte nativeClip = clip ? (byte) 1 : (byte) 0;
@@ -699,7 +699,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is mouse pos valid
         /// </summary>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool IsMousePosValid()
         {
             Vector2F mousePos = Vector2F.Zero;
@@ -711,7 +711,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether is mouse pos valid
         /// </summary>
         /// <param name="mousePos">The mouse pos</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool IsMousePosValid(ref Vector2F mousePos)
         {
             byte ret = ImGuiNative.igIsMousePosValid(ref mousePos);
@@ -721,8 +721,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is mouse released
         /// </summary>
-        /// <param name="button">The mouse button index</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="button">The button</param>
+        /// <returns>The bool</returns>
         public static bool IsMouseReleased(ImGuiMouseButton button)
         {
             byte ret = ImGuiNative.igIsMouseReleased_Nil(button);
@@ -732,8 +732,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is popup open
         /// </summary>
-        /// <param name="strId">The string identifier for the element</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="strId">The str id</param>
+        /// <returns>The bool</returns>
         public static bool IsPopupOpen(string strId)
         {
             byte ret = ImGuiNative.igIsPopupOpen_Str(Encoding.UTF8.GetBytes(strId), ImGuiPopupFlags.None);
@@ -744,9 +744,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is popup open
         /// </summary>
-        /// <param name="strId">The string identifier for the element</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="strId">The str id</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
         public static bool IsPopupOpen(string strId, ImGuiPopupFlags flags)
         {
             byte ret = ImGuiNative.igIsPopupOpen_Str(Encoding.UTF8.GetBytes(strId), flags);
@@ -756,8 +756,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is rect visible
         /// </summary>
-        /// <param name="size">The size of the element in pixels</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="size">The size</param>
+        /// <returns>The bool</returns>
         public static bool IsRectVisible(Vector2F size)
         {
             byte ret = ImGuiNative.igIsRectVisible_Nil(size);
@@ -769,7 +769,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="rectMin">The rect min</param>
         /// <param name="rectMax">The rect max</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool IsRectVisible(Vector2F rectMin, Vector2F rectMax)
         {
             byte ret = ImGuiNative.igIsRectVisible_Vec2(rectMin, rectMax);
@@ -779,7 +779,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is window appearing
         /// </summary>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool IsWindowAppearing()
         {
             byte ret = ImGuiNative.igIsWindowAppearing();
@@ -789,7 +789,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is window collapsed
         /// </summary>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool IsWindowCollapsed()
         {
             byte ret = ImGuiNative.igIsWindowCollapsed();
@@ -799,7 +799,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is window docked
         /// </summary>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool IsWindowDocked()
         {
             byte ret = ImGuiNative.igIsWindowDocked();
@@ -809,7 +809,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is window focused
         /// </summary>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool IsWindowFocused()
         {
             ImGuiFocusedFlags flags = 0;
@@ -820,8 +820,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is window focused
         /// </summary>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
         public static bool IsWindowFocused(ImGuiFocusedFlags flags)
         {
             byte ret = ImGuiNative.igIsWindowFocused(flags);
@@ -831,7 +831,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is window hovered
         /// </summary>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool IsWindowHovered()
         {
             ImGuiHoveredFlags flags = 0;
@@ -842,8 +842,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is window hovered
         /// </summary>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
         public static bool IsWindowHovered(ImGuiHoveredFlags flags)
         {
             byte ret = ImGuiNative.igIsWindowHovered(flags);
@@ -853,8 +853,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Labels the text using the specified label
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="fmt">The format string</param>
+        /// <param name="label">The label</param>
+        /// <param name="fmt">The fmt</param>
         public static void LabelText(string label, string fmt)
         {
             ImGuiNative.igLabelText(Encoding.UTF8.GetBytes(label), Encoding.UTF8.GetBytes(fmt));
@@ -863,11 +863,11 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether list box
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="currentItem">The index of the currently selected item</param>
+        /// <param name="label">The label</param>
+        /// <param name="currentItem">The current item</param>
         /// <param name="items">The items</param>
         /// <param name="itemsCount">The items count</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool ListBox(string label, ref int currentItem, string[] items, int itemsCount)
         {
             byte[][] itemsNative = new byte[items.Length][];
@@ -883,12 +883,12 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether list box
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="currentItem">The index of the currently selected item</param>
+        /// <param name="label">The label</param>
+        /// <param name="currentItem">The current item</param>
         /// <param name="items">The items</param>
         /// <param name="itemsCount">The items count</param>
         /// <param name="heightInItems">The height in items</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool ListBox(string label, ref int currentItem, string[] items, int itemsCount, int heightInItems)
         {
             byte[][] itemsNative = new byte[items.Length][];
@@ -949,7 +949,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Logs the text using the specified fmt
         /// </summary>
-        /// <param name="fmt">The format string</param>
+        /// <param name="fmt">The fmt</param>
         public static void LogText(string fmt)
         {
             ImGuiNative.igLogText(Encoding.UTF8.GetBytes(fmt));
@@ -1022,8 +1022,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Mems the alloc using the specified size
         /// </summary>
-        /// <param name="size">The size of the element in pixels</param>
-        /// <returns>The native pointer to the structure</returns>
+        /// <param name="size">The size</param>
+        /// <returns>The int ptr</returns>
         public static IntPtr MemAlloc(uint size)
         {
             IntPtr ret = ImGuiNative.igMemAlloc(size);
@@ -1043,8 +1043,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether menu item
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">The label</param>
+        /// <returns>The bool</returns>
         public static bool MenuItem(string label)
         {
             byte ret = ImGuiNative.igMenuItem_Bool(Encoding.UTF8.GetBytes(label), null, 0, 1);
@@ -1054,9 +1054,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether menu item
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
+        /// <param name="label">The label</param>
         /// <param name="shortcut">The shortcut</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool MenuItem(string label, string shortcut)
         {
             byte ret = ImGuiNative.igMenuItem_Bool(Encoding.UTF8.GetBytes(label), Encoding.UTF8.GetBytes(shortcut), 0, 1);
@@ -1066,10 +1066,10 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether menu item
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
+        /// <param name="label">The label</param>
         /// <param name="shortcut">The shortcut</param>
-        /// <param name="selected">Whether the element is in the selected state</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="selected">The selected</param>
+        /// <returns>The bool</returns>
         public static bool MenuItem(string label, string shortcut, bool selected)
         {
             byte ret = ImGuiNative.igMenuItem_Bool(Encoding.UTF8.GetBytes(label), Encoding.UTF8.GetBytes(shortcut), selected ? (byte) 1 : (byte) 0, 1);
@@ -1080,11 +1080,11 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether menu item
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
+        /// <param name="label">The label</param>
         /// <param name="shortcut">The shortcut</param>
-        /// <param name="selected">Whether the element is in the selected state</param>
-        /// <param name="enabled">Whether the element is enabled or grayed out</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="selected">The selected</param>
+        /// <param name="enabled">The enabled</param>
+        /// <returns>The bool</returns>
         public static bool MenuItem(string label, string shortcut, bool selected, bool enabled)
         {
             byte ret = ImGuiNative.igMenuItem_Bool(Encoding.UTF8.GetBytes(label), Encoding.UTF8.GetBytes(shortcut), selected ? (byte) 1 : (byte) 0, enabled ? (byte) 1 : (byte) 0);
@@ -1095,10 +1095,10 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether menu item
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
+        /// <param name="label">The label</param>
         /// <param name="shortcut">The shortcut</param>
         /// <param name="pSelected">The selected</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <returns>The bool</returns>
         public static bool MenuItem(string label, string shortcut, ref bool pSelected)
         {
             byte ret = ImGuiNative.igMenuItem_BoolPtr(Encoding.UTF8.GetBytes(label), Encoding.UTF8.GetBytes(shortcut), pSelected, true);

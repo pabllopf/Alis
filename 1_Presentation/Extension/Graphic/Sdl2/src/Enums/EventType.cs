@@ -34,289 +34,289 @@ namespace Alis.Extension.Graphic.Sdl2.Enums
     /// </summary>
     public enum EventType : uint
     {
-    /// <summary>
-    ///     Unused and unclassified event type marker (value is 0)
-    /// </summary>
-    FirstEvent = 0,
+        /// <summary>
+        ///     The sdl first event sdl event type
+        /// </summary>
+        FirstEvent = 0,
 
-    /// <summary>
-    ///     User requested the application to quit
-    /// </summary>
-    Quit = 0x100,
+        /// <summary>
+        ///     The sdl quit sdl event type
+        /// </summary>
+        Quit = 0x100,
 
-    /// <summary>
-    ///     The application is being terminated by the OS
-    /// </summary>
-    AppTerminating,
+        /// <summary>
+        ///     The sdl app terminating sdl event type
+        /// </summary>
+        AppTerminating,
 
-    /// <summary>
-    ///     The application is running low on memory
-    /// </summary>
-    AppLowMemory,
+        /// <summary>
+        ///     The sdl app low memory sdl event type
+        /// </summary>
+        AppLowMemory,
 
-    /// <summary>
-    ///     The application will enter the background
-    /// </summary>
-    AppWillEnterBackground,
+        /// <summary>
+        ///     The sdl app will enter background sdl event type
+        /// </summary>
+        AppWillEnterBackground,
 
-    /// <summary>
-    ///     The application has entered the background
-    /// </summary>
-    AppDidEnterBackground,
+        /// <summary>
+        ///     The sdl app did enter background sdl event type
+        /// </summary>
+        AppDidEnterBackground,
 
-    /// <summary>
-    ///     The application will enter the foreground
-    /// </summary>
-    AppWillEnterForeground,
+        /// <summary>
+        ///     The sdl app will enter foreground sdl event type
+        /// </summary>
+        AppWillEnterForeground,
 
-    /// <summary>
-    ///     The application has entered the foreground
-    /// </summary>
-    AppDidEnterForeground,
+        /// <summary>
+        ///     The sdl app did enter foreground sdl event type
+        /// </summary>
+        AppDidEnterForeground,
 
-    /// <summary>
-    ///     The system locale has changed
-    /// </summary>
-    LocaleChanged,
+        /// <summary>
+        ///     The sdl locale changed sdl event type
+        /// </summary>
+        LocaleChanged,
 
-    /// <summary>
-    ///     A display-related event has occurred
-    /// </summary>
-    DisplayEvent = 0x150,
+        /// <summary>
+        ///     The sdl display event sdl event type
+        /// </summary>
+        DisplayEvent = 0x150,
 
-    /// <summary>
-    ///     A window-related event has occurred
-    /// </summary>
-    WindowEvent = 0x200,
+        /// <summary>
+        ///     The sdl window event sdl event type
+        /// </summary>
+        WindowEvent = 0x200,
 
-    /// <summary>
-    ///     A system-specific window manager event has occurred
-    /// </summary>
-    SysWmEvent,
+        /// <summary>
+        ///     The sdl sys wm event sdl event type
+        /// </summary>
+        SysWmEvent,
 
-    /// <summary>
-    ///     A keyboard key was pressed
-    /// </summary>
-    Keydown = 0x300,
+        /// <summary>
+        ///     The sdl keydown sdl event type
+        /// </summary>
+        Keydown = 0x300,
 
-    /// <summary>
-    ///     A keyboard key was released
-    /// </summary>
-    Keyup,
+        /// <summary>
+        ///     The sdl keyup sdl event type
+        /// </summary>
+        Keyup,
 
-    /// <summary>
-    ///     Keyboard text editing composition is in progress
-    /// </summary>
-    TextEditing,
+        /// <summary>
+        ///     The sdl text editing sdl event type
+        /// </summary>
+        TextEditing,
 
-    /// <summary>
-    ///     Keyboard text input has been entered
-    /// </summary>
-    TextInput,
+        /// <summary>
+        ///     The sdl text input sdl event type
+        /// </summary>
+        TextInput,
 
-    /// <summary>
-    ///     The keyboard layout or key mapping has changed
-    /// </summary>
-    KeymapChanged,
+        /// <summary>
+        ///     The sdl keymap changed sdl event type
+        /// </summary>
+        KeymapChanged,
 
-    /// <summary>
-    ///     The mouse was moved
-    /// </summary>
-    MouseMotion = 0x400,
+        /// <summary>
+        ///     The sdl mouse motion sdl event type
+        /// </summary>
+        MouseMotion = 0x400,
 
-    /// <summary>
-    ///     A mouse button was pressed
-    /// </summary>
-    MouseButtonDown,
+        /// <summary>
+        ///     The sdl mouse button down sdl event type
+        /// </summary>
+        MouseButtonDown,
 
-    /// <summary>
-    ///     A mouse button was released
-    /// </summary>
-    MouseButtonUp,
+        /// <summary>
+        ///     The sdl mouse button up sdl event type
+        /// </summary>
+        MouseButtonUp,
 
-    /// <summary>
-    ///     The mouse wheel was scrolled
-    /// </summary>
-    Mousewheel,
+        /// <summary>
+        ///     The sdl mousewheel sdl event type
+        /// </summary>
+        Mousewheel,
 
-    /// <summary>
-    ///     A joystick axis changed position
-    /// </summary>
-    JoyAxisMotion = 0x600,
+        /// <summary>
+        ///     The sdl joy axis motion sdl event type
+        /// </summary>
+        JoyAxisMotion = 0x600,
 
-    /// <summary>
-    ///     A joystick trackball was moved
-    /// </summary>
-    JoyBallMotion,
+        /// <summary>
+        ///     The sdl joy ball motion sdl event type
+        /// </summary>
+        JoyBallMotion,
 
-    /// <summary>
-    ///     A joystick hat position changed
-    /// </summary>
-    JoyHatMotion,
+        /// <summary>
+        ///     The sdl joy hat motion sdl event type
+        /// </summary>
+        JoyHatMotion,
 
-    /// <summary>
-    ///     A joystick button was pressed
-    /// </summary>
-    JoyButtonDown,
+        /// <summary>
+        ///     The sdl joy button down sdl event type
+        /// </summary>
+        JoyButtonDown,
 
-    /// <summary>
-    ///     A joystick button was released
-    /// </summary>
-    JoyButtonUp,
+        /// <summary>
+        ///     The sdl joy button up sdl event type
+        /// </summary>
+        JoyButtonUp,
 
-    /// <summary>
-    ///     A joystick device was connected
-    /// </summary>
-    JoyDeviceAdded,
+        /// <summary>
+        ///     The sdl joy device added sdl event type
+        /// </summary>
+        JoyDeviceAdded,
 
-    /// <summary>
-    ///     A joystick device was disconnected
-    /// </summary>
-    JoyDeviceRemoved,
+        /// <summary>
+        ///     The sdl joy device removed sdl event type
+        /// </summary>
+        JoyDeviceRemoved,
 
-    /// <summary>
-    ///     A game controller axis changed position
-    /// </summary>
-    ControllerAxisMotion = 0x650,
+        /// <summary>
+        ///     The sdl controller axis motion sdl event type
+        /// </summary>
+        ControllerAxisMotion = 0x650,
 
-    /// <summary>
-    ///     A game controller button was pressed
-    /// </summary>
-    ControllerButtonDown,
+        /// <summary>
+        ///     The sdl controller button down sdl event type
+        /// </summary>
+        ControllerButtonDown,
 
-    /// <summary>
-    ///     A game controller button was released
-    /// </summary>
-    ControllerButtonUp,
+        /// <summary>
+        ///     The sdl controller button up sdl event type
+        /// </summary>
+        ControllerButtonUp,
 
-    /// <summary>
-    ///     A game controller device was connected
-    /// </summary>
-    ControllerDeviceAdded,
+        /// <summary>
+        ///     The sdl controller device added sdl event type
+        /// </summary>
+        ControllerDeviceAdded,
 
-    /// <summary>
-    ///     A game controller device was disconnected
-    /// </summary>
-    ControllerDeviceRemoved,
+        /// <summary>
+        ///     The sdl controller device removed sdl event type
+        /// </summary>
+        ControllerDeviceRemoved,
 
-    /// <summary>
-    ///     A game controller device mapping was updated
-    /// </summary>
-    ControllerDeviceRemapped,
+        /// <summary>
+        ///     The sdl controller device remapped sdl event type
+        /// </summary>
+        ControllerDeviceRemapped,
 
-    /// <summary>
-    ///     A touchpad press occurred on a game controller
-    /// </summary>
-    ControllerTouchpadDown,
+        /// <summary>
+        ///     The sdl controller touchpad down sdl event type
+        /// </summary>
+        ControllerTouchpadDown,
 
-    /// <summary>
-    ///     A touchpad motion occurred on a game controller
-    /// </summary>
-    ControllerTouchpadMotion,
+        /// <summary>
+        ///     The sdl controller touchpad motion sdl event type
+        /// </summary>
+        ControllerTouchpadMotion,
 
-    /// <summary>
-    ///     A touchpad release occurred on a game controller
-    /// </summary>
-    ControllerTouchpadUp,
+        /// <summary>
+        ///     The sdl controller touchpad up sdl event type
+        /// </summary>
+        ControllerTouchpadUp,
 
-    /// <summary>
-    ///     A game controller sensor was updated
-    /// </summary>
-    ControllerSensorUpdate,
+        /// <summary>
+        ///     The sdl controller sensor update sdl event type
+        /// </summary>
+        ControllerSensorUpdate,
 
-    /// <summary>
-    ///     A finger touched the touchscreen
-    /// </summary>
-    FingerDown = 0x700,
+        /// <summary>
+        ///     The sdl finger down sdl event type
+        /// </summary>
+        FingerDown = 0x700,
 
-    /// <summary>
-    ///     A finger lifted from the touchscreen
-    /// </summary>
-    FingerUp,
+        /// <summary>
+        ///     The sdl finger up sdl event type
+        /// </summary>
+        FingerUp,
 
-    /// <summary>
-    ///     A finger moved across the touchscreen
-    /// </summary>
-    FingerMotion,
+        /// <summary>
+        ///     The sdl finger motion sdl event type
+        /// </summary>
+        FingerMotion,
 
-    /// <summary>
-    ///     A dollar gesture was detected
-    /// </summary>
-    DollarGesture = 0x800,
+        /// <summary>
+        ///     The sdl dollar gesture sdl event type
+        /// </summary>
+        DollarGesture = 0x800,
 
-    /// <summary>
-    ///     A dollar gesture recording is complete
-    /// </summary>
-    DollarRecord,
+        /// <summary>
+        ///     The sdl dollar record sdl event type
+        /// </summary>
+        DollarRecord,
 
-    /// <summary>
-    ///     A multi-finger gesture was detected
-    /// </summary>
-    MultiGesture,
+        /// <summary>
+        ///     The sdl multi gesture sdl event type
+        /// </summary>
+        MultiGesture,
 
-    /// <summary>
-    ///     The system clipboard content was updated
-    /// </summary>
-    ClipBoardUpdate = 0x900,
+        /// <summary>
+        ///     The sdl clip board update sdl event type
+        /// </summary>
+        ClipBoardUpdate = 0x900,
 
-    /// <summary>
-    ///     A file was dropped onto the application window
-    /// </summary>
-    DropFile = 0x1000,
+        /// <summary>
+        ///     The sdl drop file sdl event type
+        /// </summary>
+        DropFile = 0x1000,
 
-    /// <summary>
-    ///     Text was dropped onto the application window
-    /// </summary>
-    DropText,
+        /// <summary>
+        ///     The sdl drop text sdl event type
+        /// </summary>
+        DropText,
 
-    /// <summary>
-    ///     A drag-and-drop operation has begun
-    /// </summary>
-    DropBegin,
+        /// <summary>
+        ///     The sdl drop begin sdl event type
+        /// </summary>
+        DropBegin,
 
-    /// <summary>
-    ///     A drag-and-drop operation has completed
-    /// </summary>
-    DropComplete,
+        /// <summary>
+        ///     The sdl drop complete sdl event type
+        /// </summary>
+        DropComplete,
 
-    /// <summary>
-    ///     An audio device was connected
-    /// </summary>
-    AudioDeviceAdded = 0x1100,
+        /// <summary>
+        ///     The sdl audio device added sdl event type
+        /// </summary>
+        AudioDeviceAdded = 0x1100,
 
-    /// <summary>
-    ///     An audio device was disconnected
-    /// </summary>
-    AudioDeviceRemoved,
+        /// <summary>
+        ///     The sdl audio device removed sdl event type
+        /// </summary>
+        AudioDeviceRemoved,
 
-    /// <summary>
-    ///     A sensor state was updated
-    /// </summary>
-    SensorUpdate = 0x1200,
+        /// <summary>
+        ///     The sdl sensor update sdl event type
+        /// </summary>
+        SensorUpdate = 0x1200,
 
-    /// <summary>
-    ///     The render targets have been reset and need re-creation
-    /// </summary>
-    RenderTargetsReset = 0x2000,
+        /// <summary>
+        ///     The sdl render targets reset sdl event type
+        /// </summary>
+        RenderTargetsReset = 0x2000,
 
-    /// <summary>
-    ///     The rendering device has been reset and needs re-creation
-    /// </summary>
-    RenderDeviceReset,
+        /// <summary>
+        ///     The sdl render device reset sdl event type
+        /// </summary>
+        RenderDeviceReset,
 
-    /// <summary>
-    ///     Internal sentinel used to signal the end of polling
-    /// </summary>
-    PollSentinel = 0x7F00,
+        /// <summary>
+        ///     The sdl poll sentinel sdl event type
+        /// </summary>
+        PollSentinel = 0x7F00,
 
-    /// <summary>
-    ///     Custom user-defined event (range starts here)
-    /// </summary>
-    UserEvent = 0x8000,
+        /// <summary>
+        ///     The sdl user event sdl event type
+        /// </summary>
+        UserEvent = 0x8000,
 
-    /// <summary>
-    ///     Last valid event type in the enumeration (value is 0xFFFF)
-    /// </summary>
-    LastEvent = 0xFFFF
+        /// <summary>
+        ///     The sdl last event sdl event type
+        /// </summary>
+        LastEvent = 0xFFFF
     }
 }

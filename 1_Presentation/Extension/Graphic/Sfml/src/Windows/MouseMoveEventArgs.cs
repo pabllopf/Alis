@@ -37,10 +37,10 @@ namespace Alis.Extension.Graphic.Sfml.Windows
     public class MouseMoveEventArgs : EventArgs
     {
         /// <summary>X coordinate of the mouse cursor</summary>
-        public readonly int X;
+        public int X;
 
         /// <summary>Y coordinate of the mouse cursor</summary>
-        public readonly int Y;
+        public int Y;
 
         /// <summary>
         ///     Construct the mouse move arguments from a mouse move event

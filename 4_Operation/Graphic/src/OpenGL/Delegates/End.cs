@@ -32,7 +32,7 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     Ends the last Begin scope, signaling the completion of primitive definition
+    ///     The end
     /// </summary>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void End();

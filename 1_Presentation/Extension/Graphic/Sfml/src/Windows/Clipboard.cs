@@ -37,7 +37,7 @@ using Alis.Extension.Graphic.Sfml.Systems;
 namespace Alis.Extension.Graphic.Sfml.Windows
 {
     /// <summary>
-    ///     Provides access to the system clipboard for reading and writing Unicode text content via SFML
+    ///     The clipboard class
     /// </summary>
     public class Clipboard
     {

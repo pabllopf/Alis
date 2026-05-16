@@ -34,28 +34,28 @@ using Alis.Extension.Graphic.Sdl2.Mapping;
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     Represents an SDL keysym structure, containing the key code, scancode, and modifier flags for a keyboard event.
+    ///     The sdl key sym
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct KeySym
     {
         /// <summary>
-        ///     The physical key scancode (hardware-based, independent of keyboard layout).
+        ///     The scancode
         /// </summary>
         public SdlScancode scancode;
 
         /// <summary>
-        ///     The virtual key code, dependent on the keyboard layout.
+        ///     The sym
         /// </summary>
         public KeyCodes sym;
 
         /// <summary>
-        ///     The current key modifiers (e.g. Ctrl, Shift, Alt) at the time of the event.
+        ///     The mod
         /// </summary>
         public KeyMods mod;
 
         /// <summary>
-        ///     The Unicode character code associated with the key press, or 0 if not applicable.
+        ///     The unicode
         /// </summary>
         public uint unicode;
     }

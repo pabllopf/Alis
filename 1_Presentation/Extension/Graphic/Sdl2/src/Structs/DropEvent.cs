@@ -34,28 +34,28 @@ using Alis.Extension.Graphic.Sdl2.Enums;
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     Represents an SDL drop event, fired when a file or text is dragged and dropped onto the application window.
+    ///     The sdl drop event
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct DropEvent
     {
         /// <summary>
-        ///     The event type identifier, set to <see cref="EventType.DropFile"/>, <see cref="EventType.DropText"/>, or <see cref="EventType.DropComplete"/>.
+        ///     The type
         /// </summary>
         public readonly EventType type;
 
         /// <summary>
-        ///     The timestamp of the event, in milliseconds, from the SDL event system.
+        ///     The timestamp
         /// </summary>
         public readonly uint timestamp;
 
         /// <summary>
-        ///     A pointer to the null-terminated string containing the dropped file path or text.
+        ///     The file
         /// </summary>
         public IntPtr File { get; set; }
 
         /// <summary>
-        ///     The ID of the window that received the drop event.
+        ///     The window id
         /// </summary>
         public readonly uint windowID;
     }

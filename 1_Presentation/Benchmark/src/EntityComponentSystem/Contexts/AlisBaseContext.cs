@@ -40,7 +40,7 @@ namespace Alis.Benchmark.EntityComponentSystem.Contexts
     public class AlisBaseContext : IDisposable
     {
         /// <summary>
-        ///     Gets the Alis ECS scene instance
+        ///     Gets the value of the scene
         /// </summary>
         public Scene Scene { get; } = new Scene();
 

@@ -40,7 +40,7 @@ namespace Alis.Benchmark.EntityComponentSystem.Contexts
     public class FrentBaseContext : IDisposable
     {
         /// <summary>
-        ///     Gets the Frent ECS world instance
+        ///     Gets the value of the scene
         /// </summary>
         public World World { get; } = new World();
 

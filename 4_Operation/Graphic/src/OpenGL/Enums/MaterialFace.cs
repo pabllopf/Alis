@@ -35,17 +35,17 @@ namespace Alis.Core.Graphic.OpenGL.Enums
     public enum MaterialFace : uint
     {
         /// <summary>
-        ///     Front face of the polygon (GL_FRONT)
+        ///     The front material face
         /// </summary>
         Front = 0x0404,
 
         /// <summary>
-        ///     Back face of the polygon (GL_BACK)
+        ///     The back material face
         /// </summary>
         Back = 0x0405,
 
         /// <summary>
-        ///     Both front and back faces of the polygon (GL_FRONT_AND_BACK)
+        ///     The front and back material face
         /// </summary>
         FrontAndBack = 0x0408
     }

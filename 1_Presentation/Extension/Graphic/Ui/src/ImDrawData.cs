@@ -101,7 +101,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Scales the clip rects using the specified fb scale
         /// </summary>
-        /// <param name="fbScale">The framebuffer scale factor</param>
+        /// <param name="fbScale">The fb scale</param>
         public void ScaleClipRects(Vector2F fbScale)
         {
             ImGuiNative.ImDrawData_ScaleClipRects(ref this, fbScale);

@@ -32,11 +32,8 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     Returns the location of an attribute variable in a program object
+    ///     The get attrib location
     /// </summary>
-    /// <param name="program">Specifies the program object containing the attribute</param>
-    /// <param name="name">Specifies the name of the attribute variable whose location is to be queried</param>
-    /// <returns>The index of the attribute variable, or -1 if not found</returns>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate int GetAttribLocation(uint program, string name);
 }

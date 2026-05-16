@@ -38,9 +38,9 @@ namespace Alis.Extension.Security
     internal static class SecureRandom
     {
         /// <summary>
-        ///     Generates a cryptographically random int
+        ///     Nexts the int
         /// </summary>
-        /// <returns>A random int value</returns>
+        /// <returns>The int</returns>
         public static int NextInt()
         {
             RandomNumberGenerator random = RandomNumberGenerator.Create();
@@ -50,9 +50,9 @@ namespace Alis.Extension.Security
         }
 
         /// <summary>
-        ///     Generates a cryptographically random char
+        ///     Nexts the char
         /// </summary>
-        /// <returns>A random char value</returns>
+        /// <returns>The char</returns>
         public static char NextChar()
         {
             RandomNumberGenerator random = RandomNumberGenerator.Create();
@@ -62,9 +62,9 @@ namespace Alis.Extension.Security
         }
 
         /// <summary>
-        ///     Generates a cryptographically random long
+        ///     Nexts the long
         /// </summary>
-        /// <returns>A random long value</returns>
+        /// <returns>The long</returns>
         public static long NextLong()
         {
             RandomNumberGenerator random = RandomNumberGenerator.Create();
@@ -74,51 +74,51 @@ namespace Alis.Extension.Security
         }
 
         /// <summary>
-        ///     Generates a cryptographically random double within the specified range
+        ///     Nexts the double using the specified i
         /// </summary>
-        /// <param name="min">The minimum value (inclusive)</param>
-        /// <param name="max">The maximum value (exclusive)</param>
-        /// <returns>A random double between min and max</returns>
-        public static double NextDouble(int min, int max)
+        /// <param name="i">The </param>
+        /// <param name="i1">The </param>
+        /// <returns>The random double</returns>
+        public static double NextDouble(int i, int i1)
         {
             RandomNumberGenerator random = RandomNumberGenerator.Create();
             byte[] bytes = new byte[sizeof(long)]; // 8 bytes
             random.GetNonZeroBytes(bytes);
             long randomLong = BitConverter.ToInt64(bytes, 0);
-            double range = max - min;
-            double randomDouble = min + Abs(randomLong) / (double) long.MaxValue * range;
+            double range = i1 - i;
+            double randomDouble = i + Abs(randomLong) / (double) long.MaxValue * range;
             return randomDouble;
         }
 
         /// <summary>
-        ///     Computes the absolute value of a float
+        ///     Abs the value
         /// </summary>
-        /// <param name="value">The input value</param>
-        /// <returns>The absolute (non-negative) value</returns>
+        /// <param name="value">The value</param>
+        /// <returns>The float</returns>
         public static float Abs(float value) => value < 0f ? -value : value;
 
 
         /// <summary>
-        ///     Generates a cryptographically random decimal within the specified range
+        ///     Nexts the decimal using the specified i
         /// </summary>
-        /// <param name="min">The minimum value (inclusive)</param>
-        /// <param name="max">The maximum value (exclusive)</param>
-        /// <returns>A random decimal between min and max</returns>
-        public static decimal NextDecimal(int min, int max)
+        /// <param name="i">The </param>
+        /// <param name="i1">The </param>
+        /// <returns>The random decimal</returns>
+        public static decimal NextDecimal(int i, int i1)
         {
             RandomNumberGenerator random = RandomNumberGenerator.Create();
             byte[] bytes = new byte[sizeof(int)]; // 4 bytes
             random.GetNonZeroBytes(bytes);
             int randomInt = BitConverter.ToInt32(bytes, 0);
-            decimal range = max - min;
-            decimal randomDecimal = (decimal) (min + Abs(randomInt) / (double) int.MaxValue * (double) range);
+            decimal range = i1 - i;
+            decimal randomDecimal = (decimal) (i + Abs(randomInt) / (double) int.MaxValue * (double) range);
             return randomDecimal;
         }
 
         /// <summary>
-        ///     Generates a cryptographically random byte
+        ///     Nexts the byte
         /// </summary>
-        /// <returns>A random byte value</returns>
+        /// <returns>The byte</returns>
         public static byte NextByte()
         {
             RandomNumberGenerator random = RandomNumberGenerator.Create();
@@ -128,19 +128,19 @@ namespace Alis.Extension.Security
         }
 
         /// <summary>
-        ///     Generates a cryptographically random float within the specified range
+        ///     Nexts the float using the specified i
         /// </summary>
-        /// <param name="min">The minimum value (inclusive)</param>
-        /// <param name="max">The maximum value (exclusive)</param>
-        /// <returns>A random float between min and max</returns>
-        public static float NextFloat(int min, int max)
+        /// <param name="i">The </param>
+        /// <param name="i1">The </param>
+        /// <returns>The random float</returns>
+        public static float NextFloat(int i, int i1)
         {
             RandomNumberGenerator random = RandomNumberGenerator.Create();
             byte[] bytes = new byte[sizeof(int)]; // 4 bytes
             random.GetNonZeroBytes(bytes);
             int randomInt = BitConverter.ToInt32(bytes, 0);
-            float range = max - min;
-            float randomFloat = min + Abs(randomInt) / int.MaxValue * range;
+            float range = i1 - i;
+            float randomFloat = i + Abs(randomInt) / int.MaxValue * range;
             return randomFloat;
         }
     }

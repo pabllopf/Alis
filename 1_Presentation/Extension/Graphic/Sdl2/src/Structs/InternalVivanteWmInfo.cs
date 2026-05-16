@@ -33,18 +33,18 @@ using System.Runtime.InteropServices;
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     Contains Vivante GPU window manager information for SDL video.
+    ///     The internal vivante wm info
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct InternalVivanteWmInfo
     {
         /// <summary>
-        ///     Refers to a Vivante display handle.
+        ///     The display
         /// </summary>
         public IntPtr Display { get; set; }
 
         /// <summary>
-        ///     Refers to a Vivante window handle.
+        ///     The window
         /// </summary>
         public IntPtr Window { get; set; }
     }

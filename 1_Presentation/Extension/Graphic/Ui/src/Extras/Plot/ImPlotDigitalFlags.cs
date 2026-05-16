@@ -32,13 +32,13 @@ using System;
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     Flags that control the rendering of digital signals in ImPlot.
+    ///     The im plot digital flags enum
     /// </summary>
     [Flags]
     public enum ImPlotDigitalFlags
     {
         /// <summary>
-        ///     Default digital signal rendering with no special options.
+        ///     The none im plot digital flags
         /// </summary>
         None = 0
     }

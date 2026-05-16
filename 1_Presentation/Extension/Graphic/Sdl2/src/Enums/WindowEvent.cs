@@ -37,49 +37,49 @@ namespace Alis.Extension.Graphic.Sdl2.Enums
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct WindowEvent
     {
-    /// <summary>
-    ///     The type of this event
-    /// </summary>
-    public readonly EventType type;
+        /// <summary>
+        ///     The type
+        /// </summary>
+        public readonly EventType type;
 
-    /// <summary>
-    ///     Timestamp of the event in milliseconds
-    /// </summary>
-    public readonly uint timestamp;
+        /// <summary>
+        ///     The timestamp
+        /// </summary>
+        public readonly uint timestamp;
 
-    /// <summary>
-    ///     The ID of the window that generated the event
-    /// </summary>
-    public readonly uint windowID;
+        /// <summary>
+        ///     The window id
+        /// </summary>
+        public readonly uint windowID;
 
-    /// <summary>
-    ///     The specific window event type that occurred
-    /// </summary>
-    public readonly WindowEventId windowEvent;
+        /// <summary>
+        ///     The window event
+        /// </summary>
+        public readonly WindowEventId windowEvent;
 
-    /// <summary>
-    ///     Padding byte for memory alignment (reserved)
-    /// </summary>
-    private readonly byte padding1;
+        /// <summary>
+        ///     The padding
+        /// </summary>
+        private readonly byte padding1;
 
-    /// <summary>
-    ///     Padding byte for memory alignment (reserved)
-    /// </summary>
-    private readonly byte padding2;
+        /// <summary>
+        ///     The padding
+        /// </summary>
+        private readonly byte padding2;
 
-    /// <summary>
-    ///     Padding byte for memory alignment (reserved)
-    /// </summary>
-    private readonly byte padding3;
+        /// <summary>
+        ///     The padding
+        /// </summary>
+        private readonly byte padding3;
 
-    /// <summary>
-    ///     Event-specific data parameter 1 (depends on event type)
-    /// </summary>
-    public readonly int data1;
+        /// <summary>
+        ///     The data
+        /// </summary>
+        public readonly int data1;
 
-    /// <summary>
-    ///     Event-specific data parameter 2 (depends on event type)
-    /// </summary>
-    public readonly int data2;
+        /// <summary>
+        ///     The data
+        /// </summary>
+        public readonly int data2;
     }
 }

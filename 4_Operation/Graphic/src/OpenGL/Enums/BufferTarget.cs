@@ -35,72 +35,72 @@ namespace Alis.Core.Graphic.OpenGL.Enums
     public enum BufferTarget
     {
         /// <summary>
-        ///     Buffer for vertex attribute data (GL_ARRAY_BUFFER)
+        ///     The array buffer buffer target
         /// </summary>
         ArrayBuffer = 0x8892,
 
         /// <summary>
-        ///     Buffer for element indices (GL_ELEMENT_ARRAY_BUFFER)
+        ///     The element array buffer buffer target
         /// </summary>
         ElementArrayBuffer = 0x8893,
 
         /// <summary>
-        ///     Buffer for reading pixel data from GPU (GL_PIXEL_PACK_BUFFER)
+        ///     The pixel pack buffer buffer target
         /// </summary>
         PackBuffer = 0x88EB,
 
         /// <summary>
-        ///     Buffer for writing pixel data to GPU (GL_PIXEL_UNPACK_BUFFER)
+        ///     The pixel unpack buffer buffer target
         /// </summary>
         UnpackBuffer = 0x88EC,
 
         /// <summary>
-        ///     Buffer for uniform block data (GL_UNIFORM_BUFFER)
+        ///     The uniform buffer buffer target
         /// </summary>
         UniformBuffer = 0x8A11,
 
         /// <summary>
-        ///     Buffer acting as a texture data source (GL_TEXTURE_BUFFER)
+        ///     The texture buffer buffer target
         /// </summary>
         TextureBuffer = 0x8C2A,
 
         /// <summary>
-        ///     Buffer for transform feedback capture (GL_TRANSFORM_FEEDBACK_BUFFER)
+        ///     The transform feedback buffer buffer target
         /// </summary>
         TransformFeedbackBuffer = 0x8C8E,
 
         /// <summary>
-        ///     Buffer as source for copy operations (GL_COPY_READ_BUFFER)
+        ///     The copy read buffer buffer target
         /// </summary>
         CopyReadBuffer = 0x8F36,
 
         /// <summary>
-        ///     Buffer as destination for copy operations (GL_COPY_WRITE_BUFFER)
+        ///     The copy write buffer buffer target
         /// </summary>
         CopyWriteBuffer = 0x8F37,
 
         /// <summary>
-        ///     Buffer for indirect draw commands (GL_DRAW_INDIRECT_BUFFER)
+        ///     The draw indirect buffer buffer target
         /// </summary>
         DrawIndirectBuffer = 0x8F3F,
 
         /// <summary>
-        ///     Buffer for atomic counter storage (GL_ATOMIC_COUNTER_BUFFER)
+        ///     The atomic counter buffer buffer target
         /// </summary>
         AtomicCounterBuffer = 0x92C0,
 
         /// <summary>
-        ///     Buffer for indirect compute dispatch commands (GL_DISPATCH_INDIRECT_BUFFER)
+        ///     The dispatch indirect buffer buffer target
         /// </summary>
         DispatchIndirectBuffer = 0x90EE,
 
         /// <summary>
-        ///     Buffer for query result data (GL_QUERY_BUFFER)
+        ///     The query buffer buffer target
         /// </summary>
         QueryBuffer = 0x9192,
 
         /// <summary>
-        ///     Buffer for shader storage blocks (GL_SHADER_STORAGE_BUFFER)
+        ///     The shader storage buffer buffer target
         /// </summary>
         ShaderStorageBuffer = 0x90D2
     }

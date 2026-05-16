@@ -104,15 +104,13 @@ namespace Alis.Extension.Media.FFmpeg.Video
         }
 
         /// <summary>
-        ///     Load video metadata into memory synchronously.
+        ///     Load video metadata into memory.
         /// </summary>
-        /// <param name="ignoreStreamErrors">If true, stream parsing errors are silently ignored rather than thrown.</param>
         public void LoadMetadata(bool ignoreStreamErrors = false) => LoadMetadataAsync(ignoreStreamErrors).Wait();
 
         /// <summary>
-        ///     Load video metadata into memory asynchronously.
+        ///     Load video metadata into memory.
         /// </summary>
-        /// <param name="ignoreStreamErrors">If true, stream parsing errors are silently ignored rather than thrown.</param>
         public async Task LoadMetadataAsync(bool ignoreStreamErrors = false)
         {
             if (LoadedMetadata)
@@ -204,9 +202,8 @@ namespace Alis.Extension.Media.FFmpeg.Video
 
         /// <summary>
         ///     Loads the next video frame into memory and returns it. This allocates a new frame.
-        ///     Returns <c>null</c> when there is no next frame.
+        ///     Returns 'null' when there is no next frame.
         /// </summary>
-        /// <returns>The next available video frame, or <c>null</c> if the stream has ended.</returns>
         public override VideoFrame NextFrame()
         {
             VideoFrame frame = new VideoFrame(Metadata.Width, Metadata.Height);
@@ -214,11 +211,11 @@ namespace Alis.Extension.Media.FFmpeg.Video
         }
 
         /// <summary>
-        ///     Loads the next video frame into the provided frame buffer and returns it. Reuses the existing frame to avoid allocation.
-        ///     Returns <c>null</c> when there is no next frame.
+        ///     Loads the next video frame into memory and returns it. This overrides the given frame with no extra allocations.
+        ///     Recommended for performance.
+        ///     Returns 'null' when there is no next frame.
         /// </summary>
         /// <param name="frame">Existing frame to be overwritten with new frame data.</param>
-        /// <returns>The same frame instance with updated data, or <c>null</c> if the stream has ended.</returns>
         public override VideoFrame NextFrame(VideoFrame frame)
         {
             if (!OpenedForReading)
@@ -240,7 +237,7 @@ namespace Alis.Extension.Media.FFmpeg.Video
         /// </summary>
         /// <param name="pixFmt">The pix fmt</param>
         /// <returns>The int</returns>
-        private static int TryParseBitDepth(string pixFmt)
+        private int TryParseBitDepth(string pixFmt)
         {
             Match match = BitRateSimpleRgx.Match(pixFmt);
             if (match.Success)

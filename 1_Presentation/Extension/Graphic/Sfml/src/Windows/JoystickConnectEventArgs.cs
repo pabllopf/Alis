@@ -37,12 +37,12 @@ namespace Alis.Extension.Graphic.Sfml.Windows
     public class JoystickConnectEventArgs : EventArgs
     {
         /// <summary>Index of the joystick which triggered the event</summary>
-        public readonly uint JoystickId;
+        public uint JoystickId;
 
         /// <summary>
         ///     Construct the joystick connect arguments from a joystick connect event
         /// </summary>
-        /// <param name="e">Joystick connect event</param>
+        /// <param name="e">Joystick button event</param>
         public JoystickConnectEventArgs(JoystickConnectEvent e) => JoystickId = e.JoystickId;
 
 

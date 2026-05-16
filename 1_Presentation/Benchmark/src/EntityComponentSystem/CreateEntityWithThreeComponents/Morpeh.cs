@@ -44,7 +44,7 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithThreeComponents
         [Context] private readonly MorpehBaseContext _context;
 
         /// <summary>
-        ///     Benchmarks creating entities with three components using Morpeh direct API
+        ///     Morpehs the direct
         /// </summary>
         [BenchmarkCategory(Categories.Morpeh), Benchmark]
         public void Morpeh_Direct()
@@ -60,7 +60,7 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithThreeComponents
         }
 
         /// <summary>
-        ///     Benchmarks creating entities with three components using Morpeh stash API
+        ///     Morpehs the stash
         /// </summary>
         [BenchmarkCategory(Categories.Morpeh), Benchmark]
         public void Morpeh_Stash()

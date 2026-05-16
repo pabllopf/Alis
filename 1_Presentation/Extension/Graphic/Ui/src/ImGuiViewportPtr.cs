@@ -52,7 +52,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImGuiViewportPtr" /> class
         /// </summary>
-        /// <param name="viewport">The ImGuiViewport to use</param>
+        /// <param name="viewport">The viewport</param>
         public ImGuiViewportPtr(ImGuiViewport viewport)
         {
             GCHandle handle = GCHandle.Alloc(viewport, GCHandleType.Pinned);
@@ -62,13 +62,13 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         /// </summary>
         /// <param name="nativePtr"></param>
-        /// <returns>The converted wrapper instance</returns>
+        /// <returns></returns>
         public static implicit operator ImGuiViewportPtr(IntPtr nativePtr) => new ImGuiViewportPtr(nativePtr);
 
         /// <summary>
         /// </summary>
         /// <param name="wrappedPtr"></param>
-        /// <returns>The converted wrapper instance</returns>
+        /// <returns></returns>
         public static implicit operator IntPtr(ImGuiViewportPtr wrappedPtr) => wrappedPtr.NativePtr;
 
         /// <summary>

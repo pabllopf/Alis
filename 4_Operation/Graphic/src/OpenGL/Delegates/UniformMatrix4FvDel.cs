@@ -32,12 +32,8 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     Sets a 4x4 matrix uniform value for the current program at the specified location
+    ///     The uniform matrix 4fv del
     /// </summary>
-    /// <param name="location">Specifies the location of the uniform variable to modify</param>
-    /// <param name="count">Specifies the number of matrices to be modified</param>
-    /// <param name="transpose">Specifies whether to transpose the matrix values</param>
-    /// <param name="value">Specifies an array of float values representing the matrix</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void UniformMatrix4FvDel(int location, int count, bool transpose, float[] value);
 }

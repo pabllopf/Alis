@@ -34,49 +34,49 @@ namespace Alis.Extension.Graphic.Sdl2.Enums
     /// </summary>
     public enum PackedLayout
     {
-    /// <summary>
-    ///     No specific packed pixel layout defined
-    /// </summary>
-    PackedLayoutNone,
+        /// <summary>
+        ///     The sdl packed layout none sdl packed layout
+        /// </summary>
+        PackedLayoutNone,
 
-    /// <summary>
-    ///     Packed pixel layout with 3 bits red, 3 bits green, 2 bits blue
-    /// </summary>
-    PackedLayout332,
+        /// <summary>
+        ///     The sdl packed layout 332 sdl packed layout
+        /// </summary>
+        PackedLayout332,
 
-    /// <summary>
-    ///     Packed pixel layout with 4 bits per channel (4x4 = 16-bit)
-    /// </summary>
-    PackedLayout4444,
+        /// <summary>
+        ///     The sdl packed layout 4444 sdl packed layout
+        /// </summary>
+        PackedLayout4444,
 
-    /// <summary>
-    ///     Packed pixel layout with 1 bit alpha, 5 bits per RGB channel
-    /// </summary>
-    PackedLayout1555,
+        /// <summary>
+        ///     The sdl packed layout 1555 sdl packed layout
+        /// </summary>
+        PackedLayout1555,
 
-    /// <summary>
-    ///     Packed pixel layout with 5 bits per RGB channel, 1 bit alpha
-    /// </summary>
-    PackedLayout5551,
+        /// <summary>
+        ///     The sdl packed layout 5551 sdl packed layout
+        /// </summary>
+        PackedLayout5551,
 
-    /// <summary>
-    ///     Packed pixel layout with 5 bits red, 6 bits green, 5 bits blue
-    /// </summary>
-    PackedLayout565,
+        /// <summary>
+        ///     The sdl packed layout 565 sdl packed layout
+        /// </summary>
+        PackedLayout565,
 
-    /// <summary>
-    ///     Packed pixel layout with 8 bits per channel (4x8 = 32-bit)
-    /// </summary>
-    PackedLayout8888,
+        /// <summary>
+        ///     The sdl packed layout 8888 sdl packed layout
+        /// </summary>
+        PackedLayout8888,
 
-    /// <summary>
-    ///     Packed pixel layout with 2 bits red, 10 bits per GBA channel
-    /// </summary>
-    PackedLayout2101010,
+        /// <summary>
+        ///     The sdl packed layout 2101010 sdl packed layout
+        /// </summary>
+        PackedLayout2101010,
 
-    /// <summary>
-    ///     Packed pixel layout with 10 bits per RGB channel, 2 bits alpha
-    /// </summary>
-    PackedLayout1010102
+        /// <summary>
+        ///     The sdl packed layout 1010102 sdl packed layout
+        /// </summary>
+        PackedLayout1010102
     }
 }

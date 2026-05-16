@@ -46,17 +46,11 @@ namespace Alis.Extension.Network.Core
         /// <summary>
         ///     Connects to server
         /// </summary>
-        /// <param name="serverUri">The URI of the server to connect to</param>
-        /// <param name="playerName">The display name of the local player</param>
-        /// <param name="cancellationToken">Token to cancel the connection operation</param>
-        /// <returns>A task representing the asynchronous connection operation</returns>
         Task ConnectAsync(Uri serverUri, string playerName, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         ///     Disconnects from server
         /// </summary>
-        /// <param name="cancellationToken">Token to cancel the disconnect operation</param>
-        /// <returns>A task representing the asynchronous disconnect operation</returns>
         Task DisconnectAsync(CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>

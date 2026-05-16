@@ -37,13 +37,13 @@ namespace Alis.Extension.Graphic.Sfml.Windows
     public class MouseWheelEventArgs : EventArgs
     {
         /// <summary>Scroll amount</summary>
-        public readonly int Delta;
+        public int Delta;
 
         /// <summary>X coordinate of the mouse cursor</summary>
-        public readonly int X;
+        public int X;
 
         /// <summary>Y coordinate of the mouse cursor</summary>
-        public readonly int Y;
+        public int Y;
 
         /// <summary>
         ///     Construct the mouse wheel arguments from a mouse wheel event

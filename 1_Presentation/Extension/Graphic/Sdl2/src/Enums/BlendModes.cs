@@ -37,39 +37,39 @@ namespace Alis.Extension.Graphic.Sdl2.Enums
     [Flags]
     public enum BlendModes
     {
-    /// <summary>
-    ///     No blending applied; pixels are written as-is
-    /// </summary>
-    None = 0x00000000,
+        /// <summary>
+        ///     The sdl blend factor none sdl blend factor
+        /// </summary>
+        None = 0x00000000,
 
-    /// <summary>
-    ///     Standard alpha blending: src * src_alpha + dst * (1 - src_alpha)
-    /// </summary>
-    BlendModeBlend = 0x00000001,
+        /// <summary>
+        ///     The sdl blend factor blend sdl blend factor
+        /// </summary>
+        BlendModeBlend = 0x00000001,
 
-    /// <summary>
-    ///     Additive blending: src + dst
-    /// </summary>
-    BlendModeAdd = 0x00000002,
+        /// <summary>
+        ///     The sdl blend factor add sdl blend factor
+        /// </summary>
+        BlendModeAdd = 0x00000002,
 
-    /// <summary>
-    ///     Modulate blending: src * dst (color modulation)
-    /// </summary>
-    BlendModeMod = 0x00000004,
+        /// <summary>
+        ///     The sdl blend factor mod sdl blend factor
+        /// </summary>
+        BlendModeMod = 0x00000004,
 
-    /// <summary>
-    ///     Multiply blending: src * dst (multiply mode)
-    /// </summary>
-    BlendModeMul = 0x00000008,
+        /// <summary>
+        ///     The sdl blend factor mul sdl blend factor
+        /// </summary>
+        BlendModeMul = 0x00000008,
 
-    /// <summary>
-    ///     Invalid or uninitialized blend mode marker
-    /// </summary>
-    BlendModeInvalid = 0x7FFFFFFF,
+        /// <summary>
+        ///     The sdl blend factor invalid sdl blend factor
+        /// </summary>
+        BlendModeInvalid = 0x7FFFFFFF,
 
-    /// <summary>
-    ///     Combination of all valid blend modes
-    /// </summary>
-    BlendAll = BlendModeBlend | BlendModeAdd | BlendModeMod | BlendModeMul | BlendModeInvalid
+        /// <summary>
+        ///     The blend all blend mode
+        /// </summary>
+        BlendAll = BlendModeBlend | BlendModeAdd | BlendModeMod | BlendModeMul | BlendModeInvalid
     }
 }

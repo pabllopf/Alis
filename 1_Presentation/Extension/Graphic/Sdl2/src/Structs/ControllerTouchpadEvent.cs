@@ -28,53 +28,52 @@
 //  --------------------------------------------------------------------------
 
 using System.Runtime.InteropServices;
-using Alis.Extension.Graphic.Sdl2.Enums;
 
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     Represents an SDL controller touchpad event, fired when a touchpad on a game controller (e.g. PS4/PS5) detects finger motion.
+    ///     The sdl controller touch pad event
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct ControllerTouchpadEvent
     {
         /// <summary>
-        ///     The event type identifier, set to <see cref="EventType.ControllerTouchpadDown"/>, <see cref="EventType.ControllerTouchpadUp"/>, or <see cref="EventType.ControllerTouchpadMotion"/>.
+        ///     The type
         /// </summary>
         public uint type;
 
         /// <summary>
-        ///     The timestamp of the event, in milliseconds, from the SDL event system.
+        ///     The timestamp
         /// </summary>
         public uint timestamp;
 
         /// <summary>
-        ///     The SDL joystick instance ID for the controller that generated the event.
+        ///     The which SDL_JoystickID
         /// </summary>
         public int which;
 
         /// <summary>
-        ///     The index of the touchpad on the controller (0-based, for controllers with multiple touchpads).
+        ///     The touchpad
         /// </summary>
         public int touchpad;
 
         /// <summary>
-        ///     The index of the finger on the touchpad (0-based).
+        ///     The finger
         /// </summary>
         public int finger;
 
         /// <summary>
-        ///     The normalized X position of the finger on the touchpad, ranging from 0.0 to 1.0.
+        ///     The
         /// </summary>
         public float x;
 
         /// <summary>
-        ///     The normalized Y position of the finger on the touchpad, ranging from 0.0 to 1.0.
+        ///     The
         /// </summary>
         public float y;
 
         /// <summary>
-        ///     The normalized pressure of the finger on the touchpad, ranging from 0.0 to 1.0.
+        ///     The pressure
         /// </summary>
         public float pressure;
     }

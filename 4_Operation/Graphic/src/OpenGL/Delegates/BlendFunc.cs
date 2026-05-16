@@ -33,10 +33,8 @@ using Alis.Core.Graphic.OpenGL.Enums;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     Specifies the source and destination blending factors for pixel arithmetic
+    ///     The blend func
     /// </summary>
-    /// <param name="sfactor">Specifies the source blending factor</param>
-    /// <param name="dfactor">Specifies the destination blending factor</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void BlendFunc(BlendingFactorSrc sfactor, BlendingFactorDest dfactor);
 }

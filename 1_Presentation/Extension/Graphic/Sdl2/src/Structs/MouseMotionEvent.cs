@@ -33,53 +33,53 @@ using Alis.Extension.Graphic.Sdl2.Enums;
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     Represents an SDL mouse motion event, fired when the mouse moves within a window.
+    ///     The sdl mouse motion event
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct MouseMotionEvent
     {
         /// <summary>
-        ///     The event type identifier, set to <see cref="EventType.MouseMotion"/>.
+        ///     The type
         /// </summary>
         public readonly EventType type;
 
         /// <summary>
-        ///     The timestamp of the event, in milliseconds, from the SDL event system.
+        ///     The timestamp
         /// </summary>
         public readonly uint timestamp;
 
         /// <summary>
-        ///     The ID of the window that had mouse focus when the event occurred.
+        ///     The window id
         /// </summary>
         public readonly uint windowID;
 
         /// <summary>
-        ///     The mouse instance ID (SDL internal identifier for the mouse device).
+        ///     The which
         /// </summary>
         public readonly uint which;
 
         /// <summary>
-        ///     The current button state as a bitmask of pressed buttons (e.g. SDL_BUTTON_LMASK).
+        ///     The state
         /// </summary>
         public readonly byte state;
 
         /// <summary>
-        ///     The absolute X coordinate of the mouse cursor, relative to the window.
+        ///     The
         /// </summary>
         public readonly int x;
 
         /// <summary>
-        ///     The absolute Y coordinate of the mouse cursor, relative to the window.
+        ///     The
         /// </summary>
         public readonly int y;
 
         /// <summary>
-        ///     The relative motion in the X direction since the last event.
+        ///     The x rel
         /// </summary>
         public readonly int xRel;
 
         /// <summary>
-        ///     The relative motion in the Y direction since the last event.
+        ///     The y rel
         /// </summary>
         public readonly int yRel;
     }

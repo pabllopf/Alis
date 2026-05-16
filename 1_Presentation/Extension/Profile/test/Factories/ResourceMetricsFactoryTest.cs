@@ -110,7 +110,7 @@ namespace Alis.Extension.Profile.Test.Factories
             ResourceMetricsFactory factory = new ResourceMetricsFactory(mockMonitor);
 
             // Act
-            ResourceMetrics empty = ResourceMetricsFactory.CreateEmpty();
+            ResourceMetrics empty = factory.CreateEmpty();
 
             // Assert
             Assert.Equal(ResourceMetrics.Empty, empty);

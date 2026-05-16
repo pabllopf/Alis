@@ -33,10 +33,8 @@ using Alis.Core.Graphic.OpenGL.Enums;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     Creates an empty shader object of the specified type and returns a handle to it
+    ///     The create shader
     /// </summary>
-    /// <param name="shaderType">Specifies the type of shader to create</param>
-    /// <returns>The handle to the newly created shader object</returns>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate uint CreateShader(ShaderType shaderType);
 }

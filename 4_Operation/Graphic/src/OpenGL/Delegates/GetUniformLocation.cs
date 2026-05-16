@@ -32,11 +32,8 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     Returns the location of a uniform variable in a program object
+    ///     The get uniform location
     /// </summary>
-    /// <param name="program">Specifies the program object containing the uniform</param>
-    /// <param name="name">Specifies the name of the uniform variable whose location is to be queried</param>
-    /// <returns>The index of the uniform variable, or -1 if not found</returns>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate int GetUniformLocation(uint program, string name);
 }

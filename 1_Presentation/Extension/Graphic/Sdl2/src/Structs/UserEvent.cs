@@ -33,38 +33,38 @@ using System.Runtime.InteropServices;
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     Represents an SDL user event, a custom event type defined by the application with user-specified data.
+    ///     The sdl user event
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct UserEvent
     {
         /// <summary>
-        ///     The event type identifier, in the range SDL_USEREVENT through SDL_LASTEVENT.
+        ///     The type
         /// </summary>
         public uint type;
 
         /// <summary>
-        ///     The timestamp of the event, in milliseconds, from the SDL event system.
+        ///     The timestamp
         /// </summary>
         public uint timestamp;
 
         /// <summary>
-        ///     The ID of the target window, or 0 if not associated with a window.
+        ///     The window id
         /// </summary>
         public uint windowID;
 
         /// <summary>
-        ///     A user-defined integer code for the event type.
+        ///     The code
         /// </summary>
         public int code;
 
         /// <summary>
-        ///     A user-defined data pointer (first user data field).
+        ///     The data
         /// </summary>
         public IntPtr Data1 { get; set; }
 
         /// <summary>
-        ///     A user-defined data pointer (second user data field).
+        ///     The data
         /// </summary>
         public IntPtr Data2 { get; set; }
     }

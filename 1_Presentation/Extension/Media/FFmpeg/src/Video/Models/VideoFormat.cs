@@ -33,7 +33,7 @@ using Alis.Core.Aspect.Data.Json;
 namespace Alis.Extension.Media.FFmpeg.Video.Models
 {
     /// <summary>
-    ///     Container-level format information parsed by FFprobe for a video file.
+    ///     The video format class
     /// </summary>
     [Serializable]
     public partial class VideoFormat
@@ -75,67 +75,67 @@ namespace Alis.Extension.Media.FFmpeg.Video.Models
         }
 
         /// <summary>
-        ///     Path or URL of the probed media file.
+        ///     Gets or sets the value of the filename
         /// </summary>
         [JsonNativePropertyName("filename")]
         public string Filename { get; set; }
 
         /// <summary>
-        ///     Number of media streams (audio, video, subtitle) in the file.
+        ///     Gets or sets the value of the nb streams
         /// </summary>
         [JsonNativePropertyName("nb_streams")]
         public long NbStreams { get; set; }
 
         /// <summary>
-        ///     Number of programs in the container.
+        ///     Gets or sets the value of the nb programs
         /// </summary>
         [JsonNativePropertyName("nb_programs")]
         public long NbPrograms { get; set; }
 
         /// <summary>
-        ///     Short container format name (e.g. mov, mp4, matroska).
+        ///     Gets or sets the value of the format name
         /// </summary>
         [JsonNativePropertyName("format_name")]
         public string FormatName { get; set; }
 
         /// <summary>
-        ///     Descriptive container format name (e.g. QuickTime / MOV).
+        ///     Gets or sets the value of the format long name
         /// </summary>
         [JsonNativePropertyName("format_long_name")]
         public string FormatLongName { get; set; }
 
         /// <summary>
-        ///     Timestamp of the first packet in seconds.
+        ///     Gets or sets the value of the start time
         /// </summary>
         [JsonNativePropertyName("start_time")]
         public string StartTime { get; set; }
 
         /// <summary>
-        ///     Total duration of the file in seconds.
+        ///     Gets or sets the value of the duration
         /// </summary>
         [JsonNativePropertyName("duration")]
         public string Duration { get; set; }
 
         /// <summary>
-        ///     File size in bytes.
+        ///     Gets or sets the value of the size
         /// </summary>
         [JsonNativePropertyName("size")]
         public string Size { get; set; }
 
         /// <summary>
-        ///     Overall bit rate in bits per second.
+        ///     Gets or sets the value of the bit rate
         /// </summary>
         [JsonNativePropertyName("bit_rate")]
         public string BitRate { get; set; }
 
         /// <summary>
-        ///     Confidence score of the format detection (higher is more confident).
+        ///     Gets or sets the value of the probe score
         /// </summary>
         [JsonNativePropertyName("probe_score")]
         public long ProbeScore { get; set; }
 
         /// <summary>
-        ///     Metadata tags associated with the container.
+        ///     Gets or sets the value of the tags
         /// </summary>
         [JsonNativePropertyName("tags")]
         public VideoFormatTags Tags { get; set; }

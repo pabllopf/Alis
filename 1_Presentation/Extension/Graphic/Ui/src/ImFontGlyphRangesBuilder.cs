@@ -43,7 +43,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the char using the specified c
         /// </summary>
-        /// <param name="c">The Unicode codepoint to look up</param>
+        /// <param name="c">The </param>
         public void AddChar(ushort c)
         {
             ImGuiNative.ImFontGlyphRangesBuilder_AddChar(ref this, c);
@@ -60,8 +60,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether this instance get bit
         /// </summary>
-        /// <param name="n">The index or count parameter</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="n">The </param>
+        /// <returns>The bool</returns>
         public bool GetBit(uint n)
         {
             byte ret = ImGuiNative.ImFontGlyphRangesBuilder_GetBit(ref this, n);
@@ -71,7 +71,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Sets the bit using the specified n
         /// </summary>
-        /// <param name="n">The index or count parameter</param>
+        /// <param name="n">The </param>
         public void SetBit(uint n)
         {
             ImGuiNative.ImFontGlyphRangesBuilder_SetBit(ref this, n);

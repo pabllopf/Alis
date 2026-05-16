@@ -32,23 +32,23 @@ using System.Runtime.InteropServices;
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     Internal SDL representation of a game controller button binding, storing the bind type and union data as raw integers.
+    ///     The internal sdl game controller button bind
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     internal struct InternalSdlGameControllerButtonBind
     {
         /// <summary>
-        ///     The binding type, indicating how the button is mapped.
+        ///     The bind type
         /// </summary>
         public readonly int bindType;
 
         /// <summary>
-        ///     The first component of the union data (button, axis, or hat index).
+        ///     The union val
         /// </summary>
         public readonly int unionVal0;
 
         /// <summary>
-        ///     The second component of the union data (hat mask when bind type is hat).
+        ///     The union val
         /// </summary>
         public readonly int unionVal1;
     }

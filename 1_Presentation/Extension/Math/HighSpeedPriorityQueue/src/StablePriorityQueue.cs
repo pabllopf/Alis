@@ -369,7 +369,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     Returns true if 'higher' has higher priority than 'lower', false otherwise.
         ///     Note that calling HasHigherPriority(node, node) ( both arguments the same node) will return false
         /// </summary>
-        private static bool HasHigherPriority(T higher, T lower) => higher.Priority < lower.Priority ||
+        private bool HasHigherPriority(T higher, T lower) => higher.Priority < lower.Priority ||
                                                              ((System.Math.Abs(higher.Priority - lower.Priority) < 0.01F) && (higher.InsertionIndex < lower.InsertionIndex));
 
         /// <summary>

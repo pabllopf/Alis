@@ -38,22 +38,22 @@ namespace Alis.Core.Graphic.OpenGL.Enums
     public enum ClearBufferMask
     {
         /// <summary>
-        ///     Clears the depth buffer (GL_DEPTH_BUFFER_BIT)
+        ///     The depth buffer bit clear buffer mask
         /// </summary>
         DepthBufferBit = 0x00000100,
 
         /// <summary>
-        ///     Clears the accumulation buffer (GL_ACCUM_BUFFER_BIT)
+        ///     The accum buffer bit clear buffer mask
         /// </summary>
         AccumBufferBit = 0x00000200,
 
         /// <summary>
-        ///     Clears the stencil buffer (GL_STENCIL_BUFFER_BIT)
+        ///     The stencil buffer bit clear buffer mask
         /// </summary>
         StencilBufferBit = 0x00000400,
 
         /// <summary>
-        ///     Clears the color buffer (GL_COLOR_BUFFER_BIT)
+        ///     The color buffer bit clear buffer mask
         /// </summary>
         ColorBufferBit = 0x00004000
     }

@@ -64,13 +64,13 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         /// </summary>
         /// <param name="wrappedPtr"></param>
-        /// <returns>The converted wrapper instance</returns>
+        /// <returns></returns>
         public static implicit operator IntPtr(ImGuiIoPtr wrappedPtr) => wrappedPtr.NativePtr;
 
         /// <summary>
         /// </summary>
         /// <param name="nativePtr"></param>
-        /// <returns>The converted wrapper instance</returns>
+        /// <returns></returns>
         public static implicit operator ImGuiIoPtr(IntPtr nativePtr) => new ImGuiIoPtr(nativePtr);
 
         /// <summary>
@@ -764,6 +764,8 @@ namespace Alis.Extension.Graphic.Ui
             }
             set
             {
+                float[] navInputs = Marshal.PtrToStructure<ImGuiIo>(NativePtr).NavInputs;
+
                 float[] navInputs2 = new float[21];
                 for (int i = 0; i < value.Count; i++)
                 {
@@ -1521,7 +1523,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the input character using the specified c
         /// </summary>
-        /// <param name="c">The Unicode codepoint to look up</param>
+        /// <param name="c">The </param>
         public void AddInputCharacter(uint c)
         {
             ImGuiNative.ImGuiIO_AddInputCharacter(NativePtr, c);
@@ -1539,7 +1541,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the input character utf 16 using the specified c
         /// </summary>
-        /// <param name="c">The Unicode codepoint to look up</param>
+        /// <param name="c">The </param>
         public void AddInputCharacterUtf16(ushort c)
         {
             ImGuiNative.ImGuiIO_AddInputCharacterUTF16(NativePtr, c);
@@ -1548,9 +1550,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the key analog event using the specified key
         /// </summary>
-        /// <param name="key">The lookup key</param>
+        /// <param name="key">The key</param>
         /// <param name="down">The down</param>
-        /// <param name="v">The value to be modified or populated</param>
+        /// <param name="v">The </param>
         public void AddKeyAnalogEvent(ImGuiKey key, bool down, float v)
         {
             byte nativeDown = down ? (byte) 1 : (byte) 0;
@@ -1560,7 +1562,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the key event using the specified key
         /// </summary>
-        /// <param name="key">The lookup key</param>
+        /// <param name="key">The key</param>
         /// <param name="down">The down</param>
         public void AddKeyEvent(ImGuiKey key, bool down)
         {
@@ -1571,7 +1573,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the mouse button event using the specified button
         /// </summary>
-        /// <param name="button">The mouse button index</param>
+        /// <param name="button">The button</param>
         /// <param name="down">The down</param>
         public void AddMouseButtonEvent(int button, bool down)
         {
@@ -1582,8 +1584,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the mouse pos event using the specified x
         /// </summary>
-        /// <param name="x">The x-coordinate</param>
-        /// <param name="y">The y-coordinate</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
         public void AddMousePosEvent(float x, float y)
         {
             ImGuiNative.ImGuiIO_AddMousePosEvent(NativePtr, x, y);
@@ -1592,7 +1594,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the mouse viewport event using the specified id
         /// </summary>
-        /// <param name="id">The unique identifier for the element</param>
+        /// <param name="id">The id</param>
         public void AddMouseViewportEvent(uint id)
         {
             ImGuiNative.ImGuiIO_AddMouseViewportEvent(NativePtr, id);
@@ -1637,7 +1639,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Sets the key event native data using the specified key
         /// </summary>
-        /// <param name="key">The lookup key</param>
+        /// <param name="key">The key</param>
         /// <param name="nativeKeycode">The native keycode</param>
         /// <param name="nativeScancode">The native scancode</param>
         public void SetKeyEventNativeData(ImGuiKey key, int nativeKeycode, int nativeScancode)
@@ -1649,7 +1651,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Sets the key event native data using the specified key
         /// </summary>
-        /// <param name="key">The lookup key</param>
+        /// <param name="key">The key</param>
         /// <param name="nativeKeycode">The native keycode</param>
         /// <param name="nativeScancode">The native scancode</param>
         /// <param name="nativeLegacyIndex">The native legacy index</param>
