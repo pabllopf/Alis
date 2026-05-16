@@ -32,8 +32,9 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     The compile shader
+    ///     Compiles a shader object's source code
     /// </summary>
+    /// <param name="shader">Specifies the shader object to compile</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void CompileShader(uint shader);
 }

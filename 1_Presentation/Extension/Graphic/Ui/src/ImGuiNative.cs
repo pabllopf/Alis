@@ -323,7 +323,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Igs the checkbox using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igCheckbox"), ExcludeFromCodeCoverage]
         public static extern byte igCheckbox(byte[] label, ref bool v);
@@ -395,9 +395,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Igs the color convert hs vto rgb using the specified h
         /// </summary>
-        /// <param name="h">The </param>
-        /// <param name="s">The </param>
-        /// <param name="v">The </param>
+        /// <param name="h">The hue component (0.0-1.0)</param>
+        /// <param name="s">The saturation component (0.0-1.0)</param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="outR">The out</param>
         /// <param name="outG">The out</param>
         /// <param name="outB">The out</param>
@@ -407,9 +407,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Igs the color convert rg bto hsv using the specified r
         /// </summary>
-        /// <param name="r">The </param>
-        /// <param name="g">The </param>
-        /// <param name="b">The </param>
+        /// <param name="r">The red color component</param>
+        /// <param name="g">The green color component</param>
+        /// <param name="b">The blue color component</param>
         /// <param name="outH">The out</param>
         /// <param name="outS">The out</param>
         /// <param name="outV">The out</param>
@@ -551,7 +551,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Igs the drag float using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vSpeed">The speed</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
@@ -565,7 +565,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Igs the drag float 2 using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vSpeed">The speed</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
@@ -579,7 +579,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Igs the drag float 3 using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vSpeed">The speed</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
@@ -593,7 +593,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Igs the drag float 4 using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vSpeed">The speed</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
@@ -623,7 +623,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Igs the drag int using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vSpeed">The speed</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
@@ -637,7 +637,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Igs the drag int 2 using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vSpeed">The speed</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
@@ -651,7 +651,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Igs the drag int 3 using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vSpeed">The speed</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
@@ -665,7 +665,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Igs the drag int 4 using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vSpeed">The speed</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
@@ -1404,7 +1404,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Igs the input double using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="step">The step</param>
         /// <param name="stepFast">The step fast</param>
         /// <param name="format">The format</param>
@@ -1417,7 +1417,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Igs the input float using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="step">The step</param>
         /// <param name="stepFast">The step fast</param>
         /// <param name="format">The format</param>
@@ -1430,7 +1430,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Igs the input float 2 using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
@@ -1441,7 +1441,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Igs the input float 3 using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
@@ -1452,7 +1452,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Igs the input float 4 using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
@@ -1463,7 +1463,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Igs the input int using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="step">The step</param>
         /// <param name="stepFast">The step fast</param>
         /// <param name="flags">The flags</param>
@@ -1475,7 +1475,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Igs the input int 2 using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igInputInt2"), ExcludeFromCodeCoverage]
@@ -1485,7 +1485,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Igs the input int 3 using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_igInputInt3"), ExcludeFromCodeCoverage]
@@ -1495,7 +1495,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Igs the input int 4 using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igInputInt4"), ExcludeFromCodeCoverage]
@@ -2197,7 +2197,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Igs the radio button int ptr using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vButton">The button</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igRadioButton_IntPtr"), ExcludeFromCodeCoverage]
@@ -2715,7 +2715,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Igs the slider float using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
@@ -2728,7 +2728,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Igs the slider float 2 using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
@@ -2741,7 +2741,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Igs the slider float 3 using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
@@ -2754,7 +2754,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Igs the slider float 4 using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
@@ -2767,7 +2767,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Igs the slider int using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
@@ -2780,7 +2780,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Igs the slider int 2 using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
@@ -2793,7 +2793,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Igs the slider int 3 using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
@@ -2806,7 +2806,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Igs the slider int 4 using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
@@ -2973,7 +2973,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Igs the table set column enabled using the specified column n
         /// </summary>
         /// <param name="columnN">The column</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igTableSetColumnEnabled"), ExcludeFromCodeCoverage]
         public static extern void igTableSetColumnEnabled(int columnN, byte v);
 
@@ -3132,7 +3132,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Igs the value bool using the specified prefix
         /// </summary>
         /// <param name="prefix">The prefix</param>
-        /// <param name="b">The </param>
+        /// <param name="b">The blue color component</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igValue_Bool"), ExcludeFromCodeCoverage]
         public static extern void igValue_Bool(byte[] prefix, bool b);
 
@@ -3140,7 +3140,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Igs the value int using the specified prefix
         /// </summary>
         /// <param name="prefix">The prefix</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igValue_Int"), ExcludeFromCodeCoverage]
         public static extern void igValue_Int(byte[] prefix, int v);
 
@@ -3148,7 +3148,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Igs the value uint using the specified prefix
         /// </summary>
         /// <param name="prefix">The prefix</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igValue_Uint"), ExcludeFromCodeCoverage]
         public static extern void igValue_Uint(byte[] prefix, uint v);
 
@@ -3156,7 +3156,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Igs the value float using the specified prefix
         /// </summary>
         /// <param name="prefix">The prefix</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="floatFormat">The float format</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igValue_Float"), ExcludeFromCodeCoverage]
         public static extern void igValue_Float(byte[] prefix, float v, byte[] floatFormat);
@@ -3166,7 +3166,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="size">The size</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
@@ -3180,7 +3180,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="size">The size</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
@@ -3208,10 +3208,10 @@ namespace Alis.Extension.Graphic.Ui
         ///     Ims the color hsv using the specified p out
         /// </summary>
         /// <param name="pOut">The out</param>
-        /// <param name="h">The </param>
-        /// <param name="s">The </param>
-        /// <param name="v">The </param>
-        /// <param name="a">The </param>
+        /// <param name="h">The hue component (0.0-1.0)</param>
+        /// <param name="s">The saturation component (0.0-1.0)</param>
+        /// <param name="v">The value to be modified or populated</param>
+        /// <param name="a">The alpha component</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImColor_HSV"), ExcludeFromCodeCoverage]
         public static extern void ImColor_HSV(out ImColor pOut, float h, float s, float v, float a);
 
@@ -3225,10 +3225,10 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Ims the color im color float using the specified r
         /// </summary>
-        /// <param name="r">The </param>
-        /// <param name="g">The </param>
-        /// <param name="b">The </param>
-        /// <param name="a">The </param>
+        /// <param name="r">The red color component</param>
+        /// <param name="g">The green color component</param>
+        /// <param name="b">The blue color component</param>
+        /// <param name="a">The alpha component</param>
         /// <returns>The im color</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImColor_ImColor_Float"), ExcludeFromCodeCoverage]
         public static extern ImColor ImColor_ImColor_Float(float r, float g, float b, float a);
@@ -3244,10 +3244,10 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Ims the color im color int using the specified r
         /// </summary>
-        /// <param name="r">The </param>
-        /// <param name="g">The </param>
-        /// <param name="b">The </param>
-        /// <param name="a">The </param>
+        /// <param name="r">The red color component</param>
+        /// <param name="g">The green color component</param>
+        /// <param name="b">The blue color component</param>
+        /// <param name="a">The alpha component</param>
         /// <returns>The im color</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImColor_ImColor_Int"), ExcludeFromCodeCoverage]
         public static extern ImColor ImColor_ImColor_Int(int r, int g, int b, int a);
@@ -3264,10 +3264,10 @@ namespace Alis.Extension.Graphic.Ui
         ///     Ims the color set hsv using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="h">The </param>
-        /// <param name="s">The </param>
-        /// <param name="v">The </param>
-        /// <param name="a">The </param>
+        /// <param name="h">The hue component (0.0-1.0)</param>
+        /// <param name="s">The saturation component (0.0-1.0)</param>
+        /// <param name="v">The value to be modified or populated</param>
+        /// <param name="a">The alpha component</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImColor_SetHSV"), ExcludeFromCodeCoverage]
         public static extern void ImColor_SetHSV(ref ImColor self, float h, float s, float v, float a);
 
@@ -3401,10 +3401,10 @@ namespace Alis.Extension.Graphic.Ui
         ///     Ims the draw list add bezier cubic using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="p1">The </param>
-        /// <param name="p2">The </param>
-        /// <param name="p3">The </param>
-        /// <param name="p4">The </param>
+        /// <param name="p1">The first point coordinate</param>
+        /// <param name="p2">The second point coordinate</param>
+        /// <param name="p3">The third point coordinate</param>
+        /// <param name="p4">The fourth point coordinate</param>
         /// <param name="col">The col</param>
         /// <param name="thickness">The thickness</param>
         /// <param name="numSegments">The num segments</param>
@@ -3415,9 +3415,9 @@ namespace Alis.Extension.Graphic.Ui
         ///     Ims the draw list add bezier quadratic using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="p1">The </param>
-        /// <param name="p2">The </param>
-        /// <param name="p3">The </param>
+        /// <param name="p1">The first point coordinate</param>
+        /// <param name="p2">The second point coordinate</param>
+        /// <param name="p3">The third point coordinate</param>
         /// <param name="col">The col</param>
         /// <param name="thickness">The thickness</param>
         /// <param name="numSegments">The num segments</param>
@@ -3491,10 +3491,10 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="userTextureId">The user texture id</param>
-        /// <param name="p1">The </param>
-        /// <param name="p2">The </param>
-        /// <param name="p3">The </param>
-        /// <param name="p4">The </param>
+        /// <param name="p1">The first point coordinate</param>
+        /// <param name="p2">The second point coordinate</param>
+        /// <param name="p3">The third point coordinate</param>
+        /// <param name="p4">The fourth point coordinate</param>
         /// <param name="uv1">The uv</param>
         /// <param name="uv2">The uv</param>
         /// <param name="uv3">The uv</param>
@@ -3522,8 +3522,8 @@ namespace Alis.Extension.Graphic.Ui
         ///     Ims the draw list add line using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="p1">The </param>
-        /// <param name="p2">The </param>
+        /// <param name="p1">The first point coordinate</param>
+        /// <param name="p2">The second point coordinate</param>
         /// <param name="col">The col</param>
         /// <param name="thickness">The thickness</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddLine"), ExcludeFromCodeCoverage]
@@ -3568,10 +3568,10 @@ namespace Alis.Extension.Graphic.Ui
         ///     Ims the draw list add quad using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="p1">The </param>
-        /// <param name="p2">The </param>
-        /// <param name="p3">The </param>
-        /// <param name="p4">The </param>
+        /// <param name="p1">The first point coordinate</param>
+        /// <param name="p2">The second point coordinate</param>
+        /// <param name="p3">The third point coordinate</param>
+        /// <param name="p4">The fourth point coordinate</param>
         /// <param name="col">The col</param>
         /// <param name="thickness">The thickness</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddQuad"), ExcludeFromCodeCoverage]
@@ -3581,10 +3581,10 @@ namespace Alis.Extension.Graphic.Ui
         ///     Ims the draw list add quad filled using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="p1">The </param>
-        /// <param name="p2">The </param>
-        /// <param name="p3">The </param>
-        /// <param name="p4">The </param>
+        /// <param name="p1">The first point coordinate</param>
+        /// <param name="p2">The second point coordinate</param>
+        /// <param name="p3">The third point coordinate</param>
+        /// <param name="p4">The fourth point coordinate</param>
         /// <param name="col">The col</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddQuadFilled"), ExcludeFromCodeCoverage]
         public static extern void ImDrawList_AddQuadFilled(IntPtr self, Vector2F p1, Vector2F p2, Vector2F p3, Vector2F p4, uint col);
@@ -3657,9 +3657,9 @@ namespace Alis.Extension.Graphic.Ui
         ///     Ims the draw list add triangle using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="p1">The </param>
-        /// <param name="p2">The </param>
-        /// <param name="p3">The </param>
+        /// <param name="p1">The first point coordinate</param>
+        /// <param name="p2">The second point coordinate</param>
+        /// <param name="p3">The third point coordinate</param>
         /// <param name="col">The col</param>
         /// <param name="thickness">The thickness</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddTriangle"), ExcludeFromCodeCoverage]
@@ -3669,9 +3669,9 @@ namespace Alis.Extension.Graphic.Ui
         ///     Ims the draw list add triangle filled using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="p1">The </param>
-        /// <param name="p2">The </param>
-        /// <param name="p3">The </param>
+        /// <param name="p1">The first point coordinate</param>
+        /// <param name="p2">The second point coordinate</param>
+        /// <param name="p3">The third point coordinate</param>
         /// <param name="col">The col</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddTriangleFilled"), ExcludeFromCodeCoverage]
         public static extern void ImDrawList_AddTriangleFilled(IntPtr self, Vector2F p1, Vector2F p2, Vector2F p3, uint col);
@@ -3687,7 +3687,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Ims the draw list channels set current using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="n">The </param>
+        /// <param name="n">The index or count parameter</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_ChannelsSetCurrent"), ExcludeFromCodeCoverage]
         public static extern void ImDrawList_ChannelsSetCurrent(IntPtr self, int n);
 
@@ -3758,9 +3758,9 @@ namespace Alis.Extension.Graphic.Ui
         ///     Ims the draw list path bezier cubic curve to using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="p2">The </param>
-        /// <param name="p3">The </param>
-        /// <param name="p4">The </param>
+        /// <param name="p2">The second point coordinate</param>
+        /// <param name="p3">The third point coordinate</param>
+        /// <param name="p4">The fourth point coordinate</param>
         /// <param name="numSegments">The num segments</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_PathBezierCubicCurveTo"), ExcludeFromCodeCoverage]
         public static extern void ImDrawList_PathBezierCubicCurveTo(IntPtr self, Vector2F p2, Vector2F p3, Vector2F p4, int numSegments);
@@ -3769,8 +3769,8 @@ namespace Alis.Extension.Graphic.Ui
         ///     Ims the draw list path bezier quadratic curve to using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="p2">The </param>
-        /// <param name="p3">The </param>
+        /// <param name="p2">The second point coordinate</param>
+        /// <param name="p3">The third point coordinate</param>
         /// <param name="numSegments">The num segments</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_PathBezierQuadraticCurveTo"), ExcludeFromCodeCoverage]
         public static extern void ImDrawList_PathBezierQuadraticCurveTo(IntPtr self, Vector2F p2, Vector2F p3, int numSegments);
@@ -3845,8 +3845,8 @@ namespace Alis.Extension.Graphic.Ui
         ///     Ims the draw list prim quad uv using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="a">The </param>
-        /// <param name="b">The </param>
+        /// <param name="a">The alpha component</param>
+        /// <param name="b">The blue color component</param>
         /// <param name="c">The </param>
         /// <param name="d">The </param>
         /// <param name="uvA">The uv</param>
@@ -3861,8 +3861,8 @@ namespace Alis.Extension.Graphic.Ui
         ///     Ims the draw list prim rect using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="a">The </param>
-        /// <param name="b">The </param>
+        /// <param name="a">The alpha component</param>
+        /// <param name="b">The blue color component</param>
         /// <param name="col">The col</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_PrimRect"), ExcludeFromCodeCoverage]
         public static extern void ImDrawList_PrimRect(IntPtr self, Vector2F a, Vector2F b, uint col);
@@ -3871,8 +3871,8 @@ namespace Alis.Extension.Graphic.Ui
         ///     Ims the draw list prim rect uv using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="a">The </param>
-        /// <param name="b">The </param>
+        /// <param name="a">The alpha component</param>
+        /// <param name="b">The blue color component</param>
         /// <param name="uvA">The uv</param>
         /// <param name="uvB">The uv</param>
         /// <param name="col">The col</param>
@@ -4535,7 +4535,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Ims the font glyph ranges builder get bit using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="n">The </param>
+        /// <param name="n">The index or count parameter</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontGlyphRangesBuilder_GetBit"), ExcludeFromCodeCoverage]
         public static extern byte ImFontGlyphRangesBuilder_GetBit(ref ImFontGlyphRangesBuilder self, uint n);
@@ -4551,7 +4551,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Ims the font glyph ranges builder set bit using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="n">The </param>
+        /// <param name="n">The index or count parameter</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontGlyphRangesBuilder_SetBit"), ExcludeFromCodeCoverage]
         public static extern void ImFontGlyphRangesBuilder_SetBit(ref ImFontGlyphRangesBuilder self, uint n);
 
@@ -4641,7 +4641,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <param name="key">The key</param>
         /// <param name="down">The down</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiIO_AddKeyAnalogEvent"), ExcludeFromCodeCoverage]
         public static extern void ImGuiIO_AddKeyAnalogEvent(IntPtr self, ImGuiKey key, byte down, float v);
 
@@ -5176,7 +5176,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Ims the gui text range im gui text range str using the specified  b
         /// </summary>
-        /// <param name="b">The </param>
+        /// <param name="b">The blue color component</param>
         /// <param name="e">The </param>
         /// <returns>The im gui text range</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiTextRange_ImGuiTextRange_Str"), ExcludeFromCodeCoverage]
@@ -5284,7 +5284,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="dockMainId">The dock main id</param>
         /// <param name="left">The left</param>
-        /// <param name="p2">The </param>
+        /// <param name="p2">The second point coordinate</param>
         /// <param name="zero">The zero</param>
         /// <param name="dockIdRight">The dock id right</param>
         /// <returns>The uint</returns>

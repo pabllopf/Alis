@@ -34,8 +34,10 @@ using Alis.Core.Graphic.OpenGL.Enums;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     The get string
+    ///     Returns a string describing the current OpenGL connection
     /// </summary>
+    /// <param name="pname">Specifies the symbolic constant whose string representation is to be returned</param>
+    /// <returns>A pointer to the requested string</returns>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate IntPtr GetString(StringName pname);
 }

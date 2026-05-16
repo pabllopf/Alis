@@ -59,7 +59,7 @@ namespace Alis.Core.Graphic.Ui
         /// <summary>
         ///     The full path
         /// </summary>
-        private string fullPathFont = fullPath;
+        private readonly string fullPathFont = fullPath;
 
         /// <summary>
         ///     The image handle

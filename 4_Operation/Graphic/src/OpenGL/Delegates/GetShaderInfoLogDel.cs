@@ -33,8 +33,12 @@ using System.Text;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     The get shader info log del
+    ///     Returns the information log for a shader object
     /// </summary>
+    /// <param name="shader">Specifies the shader object whose information log is to be queried</param>
+    /// <param name="maxLength">Specifies the maximum number of characters to write into infoLog</param>
+    /// <param name="length">Returns the actual number of characters written into infoLog</param>
+    /// <param name="infoLog">Returns the information log string</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void GetShaderInfoLogDel(uint shader, int maxLength, [Out] int[] length, [Out] StringBuilder infoLog);
 }

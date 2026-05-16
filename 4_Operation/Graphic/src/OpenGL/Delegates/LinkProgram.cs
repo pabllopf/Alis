@@ -32,8 +32,9 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     The link program
+    ///     Links a program object, creating executable shaders for the current rendering context
     /// </summary>
+    /// <param name="program">Specifies the program object to link</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void LinkProgram(uint program);
 }

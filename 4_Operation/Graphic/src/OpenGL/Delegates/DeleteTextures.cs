@@ -32,8 +32,10 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     The delete textures
+    ///     Deletes named texture objects, freeing their resources
     /// </summary>
+    /// <param name="n">Specifies the number of texture objects to be deleted</param>
+    /// <param name="textures">Specifies an array of texture object names to delete</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void DeleteTextures(int n, uint[] textures);
 }

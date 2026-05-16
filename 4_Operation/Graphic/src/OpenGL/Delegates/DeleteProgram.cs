@@ -32,8 +32,9 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     The delete program
+    ///     Deletes a program object, freeing its resources
     /// </summary>
+    /// <param name="program">Specifies the program object to delete</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void DeleteProgram(uint program);
 }

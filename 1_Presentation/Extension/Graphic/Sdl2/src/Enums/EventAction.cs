@@ -34,19 +34,19 @@ namespace Alis.Extension.Graphic.Sdl2.Enums
     /// </summary>
     public enum EventAction
     {
-        /// <summary>
-        ///     The sdl add event sdl event action
-        /// </summary>
-        SdlAddEvent,
+    /// <summary>
+    ///     Add an event to the event queue
+    /// </summary>
+    SdlAddEvent,
 
-        /// <summary>
-        ///     The sdl peek event sdl event action
-        /// </summary>
-        SdlPeekEvent,
+    /// <summary>
+    ///     Peek at an event without removing it from the queue
+    /// </summary>
+    SdlPeekEvent,
 
-        /// <summary>
-        ///     The sdl get event sdl event action
-        /// </summary>
-        SdlGetEvent
+    /// <summary>
+    ///     Get (and remove) an event from the event queue
+    /// </summary>
+    SdlGetEvent
     }
 }

@@ -216,10 +216,10 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the bezier cubic using the specified p 1
         /// </summary>
-        /// <param name="p1">The </param>
-        /// <param name="p2">The </param>
-        /// <param name="p3">The </param>
-        /// <param name="p4">The </param>
+        /// <param name="p1">The first point coordinate</param>
+        /// <param name="p2">The second point coordinate</param>
+        /// <param name="p3">The third point coordinate</param>
+        /// <param name="p4">The fourth point coordinate</param>
         /// <param name="col">The col</param>
         /// <param name="thickness">The thickness</param>
         public void AddBezierCubic(Vector2F p1, Vector2F p2, Vector2F p3, Vector2F p4, uint col, float thickness) => ImGuiNative.ImDrawList_AddBezierCubic(NativePtr, p1, p2, p3, p4, col, thickness, 0);
@@ -227,10 +227,10 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the bezier cubic using the specified p 1
         /// </summary>
-        /// <param name="p1">The </param>
-        /// <param name="p2">The </param>
-        /// <param name="p3">The </param>
-        /// <param name="p4">The </param>
+        /// <param name="p1">The first point coordinate</param>
+        /// <param name="p2">The second point coordinate</param>
+        /// <param name="p3">The third point coordinate</param>
+        /// <param name="p4">The fourth point coordinate</param>
         /// <param name="col">The col</param>
         /// <param name="thickness">The thickness</param>
         /// <param name="numSegments">The num segments</param>
@@ -239,9 +239,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the bezier quadratic using the specified p 1
         /// </summary>
-        /// <param name="p1">The </param>
-        /// <param name="p2">The </param>
-        /// <param name="p3">The </param>
+        /// <param name="p1">The first point coordinate</param>
+        /// <param name="p2">The second point coordinate</param>
+        /// <param name="p3">The third point coordinate</param>
         /// <param name="col">The col</param>
         /// <param name="thickness">The thickness</param>
         public void AddBezierQuadratic(Vector2F p1, Vector2F p2, Vector2F p3, uint col, float thickness) => ImGuiNative.ImDrawList_AddBezierQuadratic(NativePtr, p1, p2, p3, col, thickness, 0);
@@ -249,9 +249,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the bezier quadratic using the specified p 1
         /// </summary>
-        /// <param name="p1">The </param>
-        /// <param name="p2">The </param>
-        /// <param name="p3">The </param>
+        /// <param name="p1">The first point coordinate</param>
+        /// <param name="p2">The second point coordinate</param>
+        /// <param name="p3">The third point coordinate</param>
         /// <param name="col">The col</param>
         /// <param name="thickness">The thickness</param>
         /// <param name="numSegments">The num segments</param>
@@ -410,10 +410,10 @@ namespace Alis.Extension.Graphic.Ui
         ///     Adds the image quad using the specified user texture id
         /// </summary>
         /// <param name="userTextureId">The user texture id</param>
-        /// <param name="p1">The </param>
-        /// <param name="p2">The </param>
-        /// <param name="p3">The </param>
-        /// <param name="p4">The </param>
+        /// <param name="p1">The first point coordinate</param>
+        /// <param name="p2">The second point coordinate</param>
+        /// <param name="p3">The third point coordinate</param>
+        /// <param name="p4">The fourth point coordinate</param>
         public void AddImageQuad(IntPtr userTextureId, Vector2F p1, Vector2F p2, Vector2F p3, Vector2F p4)
         {
             Vector2F uv1 = new Vector2F();
@@ -428,10 +428,10 @@ namespace Alis.Extension.Graphic.Ui
         ///     Adds the image quad using the specified user texture id
         /// </summary>
         /// <param name="userTextureId">The user texture id</param>
-        /// <param name="p1">The </param>
-        /// <param name="p2">The </param>
-        /// <param name="p3">The </param>
-        /// <param name="p4">The </param>
+        /// <param name="p1">The first point coordinate</param>
+        /// <param name="p2">The second point coordinate</param>
+        /// <param name="p3">The third point coordinate</param>
+        /// <param name="p4">The fourth point coordinate</param>
         /// <param name="uv1">The uv</param>
         public void AddImageQuad(IntPtr userTextureId, Vector2F p1, Vector2F p2, Vector2F p3, Vector2F p4, Vector2F uv1)
         {
@@ -446,10 +446,10 @@ namespace Alis.Extension.Graphic.Ui
         ///     Adds the image quad using the specified user texture id
         /// </summary>
         /// <param name="userTextureId">The user texture id</param>
-        /// <param name="p1">The </param>
-        /// <param name="p2">The </param>
-        /// <param name="p3">The </param>
-        /// <param name="p4">The </param>
+        /// <param name="p1">The first point coordinate</param>
+        /// <param name="p2">The second point coordinate</param>
+        /// <param name="p3">The third point coordinate</param>
+        /// <param name="p4">The fourth point coordinate</param>
         /// <param name="uv1">The uv</param>
         /// <param name="uv2">The uv</param>
         public void AddImageQuad(IntPtr userTextureId, Vector2F p1, Vector2F p2, Vector2F p3, Vector2F p4, Vector2F uv1, Vector2F uv2)
@@ -464,10 +464,10 @@ namespace Alis.Extension.Graphic.Ui
         ///     Adds the image quad using the specified user texture id
         /// </summary>
         /// <param name="userTextureId">The user texture id</param>
-        /// <param name="p1">The </param>
-        /// <param name="p2">The </param>
-        /// <param name="p3">The </param>
-        /// <param name="p4">The </param>
+        /// <param name="p1">The first point coordinate</param>
+        /// <param name="p2">The second point coordinate</param>
+        /// <param name="p3">The third point coordinate</param>
+        /// <param name="p4">The fourth point coordinate</param>
         /// <param name="uv1">The uv</param>
         /// <param name="uv2">The uv</param>
         /// <param name="uv3">The uv</param>
@@ -482,10 +482,10 @@ namespace Alis.Extension.Graphic.Ui
         ///     Adds the image quad using the specified user texture id
         /// </summary>
         /// <param name="userTextureId">The user texture id</param>
-        /// <param name="p1">The </param>
-        /// <param name="p2">The </param>
-        /// <param name="p3">The </param>
-        /// <param name="p4">The </param>
+        /// <param name="p1">The first point coordinate</param>
+        /// <param name="p2">The second point coordinate</param>
+        /// <param name="p3">The third point coordinate</param>
+        /// <param name="p4">The fourth point coordinate</param>
         /// <param name="uv1">The uv</param>
         /// <param name="uv2">The uv</param>
         /// <param name="uv3">The uv</param>
@@ -500,10 +500,10 @@ namespace Alis.Extension.Graphic.Ui
         ///     Adds the image quad using the specified user texture id
         /// </summary>
         /// <param name="userTextureId">The user texture id</param>
-        /// <param name="p1">The </param>
-        /// <param name="p2">The </param>
-        /// <param name="p3">The </param>
-        /// <param name="p4">The </param>
+        /// <param name="p1">The first point coordinate</param>
+        /// <param name="p2">The second point coordinate</param>
+        /// <param name="p3">The third point coordinate</param>
+        /// <param name="p4">The fourth point coordinate</param>
         /// <param name="uv1">The uv</param>
         /// <param name="uv2">The uv</param>
         /// <param name="uv3">The uv</param>
@@ -549,8 +549,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the line using the specified p 1
         /// </summary>
-        /// <param name="p1">The </param>
-        /// <param name="p2">The </param>
+        /// <param name="p1">The first point coordinate</param>
+        /// <param name="p2">The second point coordinate</param>
         /// <param name="col">The col</param>
         public void AddLine(Vector2F p1, Vector2F p2, uint col)
         {
@@ -561,8 +561,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the line using the specified p 1
         /// </summary>
-        /// <param name="p1">The </param>
-        /// <param name="p2">The </param>
+        /// <param name="p1">The first point coordinate</param>
+        /// <param name="p2">The second point coordinate</param>
         /// <param name="col">The col</param>
         /// <param name="thickness">The thickness</param>
         public void AddLine(Vector2F p1, Vector2F p2, uint col, float thickness)
@@ -624,10 +624,10 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the quad using the specified p 1
         /// </summary>
-        /// <param name="p1">The </param>
-        /// <param name="p2">The </param>
-        /// <param name="p3">The </param>
-        /// <param name="p4">The </param>
+        /// <param name="p1">The first point coordinate</param>
+        /// <param name="p2">The second point coordinate</param>
+        /// <param name="p3">The third point coordinate</param>
+        /// <param name="p4">The fourth point coordinate</param>
         /// <param name="col">The col</param>
         public void AddQuad(Vector2F p1, Vector2F p2, Vector2F p3, Vector2F p4, uint col)
         {
@@ -638,10 +638,10 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the quad using the specified p 1
         /// </summary>
-        /// <param name="p1">The </param>
-        /// <param name="p2">The </param>
-        /// <param name="p3">The </param>
-        /// <param name="p4">The </param>
+        /// <param name="p1">The first point coordinate</param>
+        /// <param name="p2">The second point coordinate</param>
+        /// <param name="p3">The third point coordinate</param>
+        /// <param name="p4">The fourth point coordinate</param>
         /// <param name="col">The col</param>
         /// <param name="thickness">The thickness</param>
         public void AddQuad(Vector2F p1, Vector2F p2, Vector2F p3, Vector2F p4, uint col, float thickness)
@@ -652,10 +652,10 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the quad filled using the specified p 1
         /// </summary>
-        /// <param name="p1">The </param>
-        /// <param name="p2">The </param>
-        /// <param name="p3">The </param>
-        /// <param name="p4">The </param>
+        /// <param name="p1">The first point coordinate</param>
+        /// <param name="p2">The second point coordinate</param>
+        /// <param name="p3">The third point coordinate</param>
+        /// <param name="p4">The fourth point coordinate</param>
         /// <param name="col">The col</param>
         public void AddQuadFilled(Vector2F p1, Vector2F p2, Vector2F p3, Vector2F p4, uint col)
         {
@@ -774,9 +774,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the triangle using the specified p 1
         /// </summary>
-        /// <param name="p1">The </param>
-        /// <param name="p2">The </param>
-        /// <param name="p3">The </param>
+        /// <param name="p1">The first point coordinate</param>
+        /// <param name="p2">The second point coordinate</param>
+        /// <param name="p3">The third point coordinate</param>
         /// <param name="col">The col</param>
         public void AddTriangle(Vector2F p1, Vector2F p2, Vector2F p3, uint col)
         {
@@ -787,9 +787,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the triangle using the specified p 1
         /// </summary>
-        /// <param name="p1">The </param>
-        /// <param name="p2">The </param>
-        /// <param name="p3">The </param>
+        /// <param name="p1">The first point coordinate</param>
+        /// <param name="p2">The second point coordinate</param>
+        /// <param name="p3">The third point coordinate</param>
         /// <param name="col">The col</param>
         /// <param name="thickness">The thickness</param>
         public void AddTriangle(Vector2F p1, Vector2F p2, Vector2F p3, uint col, float thickness)
@@ -800,9 +800,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the triangle filled using the specified p 1
         /// </summary>
-        /// <param name="p1">The </param>
-        /// <param name="p2">The </param>
-        /// <param name="p3">The </param>
+        /// <param name="p1">The first point coordinate</param>
+        /// <param name="p2">The second point coordinate</param>
+        /// <param name="p3">The third point coordinate</param>
         /// <param name="col">The col</param>
         public void AddTriangleFilled(Vector2F p1, Vector2F p2, Vector2F p3, uint col)
         {
@@ -820,7 +820,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Channelses the set current using the specified n
         /// </summary>
-        /// <param name="n">The </param>
+        /// <param name="n">The index or count parameter</param>
         public void ChannelsSetCurrent(int n)
         {
             ImGuiNative.ImDrawList_ChannelsSetCurrent(NativePtr, n);
@@ -902,9 +902,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Paths the bezier cubic curve to using the specified p 2
         /// </summary>
-        /// <param name="p2">The </param>
-        /// <param name="p3">The </param>
-        /// <param name="p4">The </param>
+        /// <param name="p2">The second point coordinate</param>
+        /// <param name="p3">The third point coordinate</param>
+        /// <param name="p4">The fourth point coordinate</param>
         public void PathBezierCubicCurveTo(Vector2F p2, Vector2F p3, Vector2F p4)
         {
             int numSegments = 0;
@@ -914,9 +914,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Paths the bezier cubic curve to using the specified p 2
         /// </summary>
-        /// <param name="p2">The </param>
-        /// <param name="p3">The </param>
-        /// <param name="p4">The </param>
+        /// <param name="p2">The second point coordinate</param>
+        /// <param name="p3">The third point coordinate</param>
+        /// <param name="p4">The fourth point coordinate</param>
         /// <param name="numSegments">The num segments</param>
         public void PathBezierCubicCurveTo(Vector2F p2, Vector2F p3, Vector2F p4, int numSegments)
         {
@@ -926,8 +926,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Paths the bezier quadratic curve to using the specified p 2
         /// </summary>
-        /// <param name="p2">The </param>
-        /// <param name="p3">The </param>
+        /// <param name="p2">The second point coordinate</param>
+        /// <param name="p3">The third point coordinate</param>
         public void PathBezierQuadraticCurveTo(Vector2F p2, Vector2F p3)
         {
             int numSegments = 0;
@@ -937,8 +937,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Paths the bezier quadratic curve to using the specified p 2
         /// </summary>
-        /// <param name="p2">The </param>
-        /// <param name="p3">The </param>
+        /// <param name="p2">The second point coordinate</param>
+        /// <param name="p3">The third point coordinate</param>
         /// <param name="numSegments">The num segments</param>
         public void PathBezierQuadraticCurveTo(Vector2F p2, Vector2F p3, int numSegments)
         {
@@ -1068,8 +1068,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Prims the quad uv using the specified a
         /// </summary>
-        /// <param name="a">The </param>
-        /// <param name="b">The </param>
+        /// <param name="a">The alpha component</param>
+        /// <param name="b">The blue color component</param>
         /// <param name="c">The </param>
         /// <param name="d">The </param>
         /// <param name="uvA">The uv</param>
@@ -1085,8 +1085,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Prims the rect using the specified a
         /// </summary>
-        /// <param name="a">The </param>
-        /// <param name="b">The </param>
+        /// <param name="a">The alpha component</param>
+        /// <param name="b">The blue color component</param>
         /// <param name="col">The col</param>
         public void PrimRect(Vector2F a, Vector2F b, uint col)
         {
@@ -1096,8 +1096,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Prims the rect uv using the specified a
         /// </summary>
-        /// <param name="a">The </param>
-        /// <param name="b">The </param>
+        /// <param name="a">The alpha component</param>
+        /// <param name="b">The blue color component</param>
         /// <param name="uvA">The uv</param>
         /// <param name="uvB">The uv</param>
         /// <param name="col">The col</param>

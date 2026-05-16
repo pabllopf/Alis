@@ -86,15 +86,15 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         /// The key states
         /// </summary>
-        private Dictionary<ConsoleKey, bool> _keyStates;
+        private readonly Dictionary<ConsoleKey, bool> _keyStates;
         /// <summary>
         /// The key pressed queue
         /// </summary>
-        private Queue<ConsoleKey> _keyPressedQueue;
+        private readonly Queue<ConsoleKey> _keyPressedQueue;
         /// <summary>
         /// The input character builder
         /// </summary>
-        private StringBuilder _inputCharacterBuilder;
+        private readonly StringBuilder _inputCharacterBuilder;
         /// <summary>
         /// The mouse
         /// </summary>
@@ -106,7 +106,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         /// The mouse buttons
         /// </summary>
-        private bool[] _mouseButtons; // [left, right, middle, aux1, aux2]
+        private readonly bool[] _mouseButtons; // [left, right, middle, aux1, aux2]
         /// <summary>
         /// The mouse wheel delta
         /// </summary>
@@ -114,7 +114,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         /// The gamepad states
         /// </summary>
-        private Dictionary<int, GamepadState> _gamepadStates;
+        private readonly Dictionary<int, GamepadState> _gamepadStates;
         /// <summary>
         /// The is initialized
         /// </summary>
@@ -200,7 +200,7 @@ namespace Alis.Core.Graphic.Platforms.Web
                 throw new InvalidOperationException("Failed to get EGL display");
             }
 
-            if (!EGL.Initialize(_eglDisplay, out int major, out int minor))
+            if (!EGL.Initialize(_eglDisplay, out _, out _))
             {
                 throw new InvalidOperationException("Failed to initialize EGL");
             }
@@ -484,7 +484,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Converts JavaScript key codes to ConsoleKey values
         /// </summary>
-        private ConsoleKey ConvertKeyCode(int keyCode)
+        private static ConsoleKey ConvertKeyCode(int keyCode)
         {
             return keyCode switch
             {

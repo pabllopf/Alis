@@ -32,8 +32,10 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     The gen textures
+    ///     Generates texture object names and stores them in the provided array
     /// </summary>
+    /// <param name="n">Specifies the number of texture object names to generate</param>
+    /// <param name="textures">Specifies an array into which the generated texture object names are stored</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void GenTextures(int n, [Out] uint[] textures);
 }

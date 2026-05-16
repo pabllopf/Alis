@@ -255,7 +255,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether slider float
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <returns>The bool</returns>
@@ -270,7 +270,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether slider float
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
@@ -286,7 +286,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether slider float
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
@@ -302,7 +302,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether slider float 2
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <returns>The bool</returns>
@@ -317,7 +317,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether slider float 2
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
@@ -332,7 +332,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether slider float 2
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
@@ -348,7 +348,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether slider float 3
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <returns>The bool</returns>
@@ -362,7 +362,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether slider float 3
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
@@ -377,7 +377,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether slider float 3
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
@@ -394,7 +394,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether slider float 4
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <returns>The bool</returns>
@@ -409,7 +409,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether slider float 4
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>

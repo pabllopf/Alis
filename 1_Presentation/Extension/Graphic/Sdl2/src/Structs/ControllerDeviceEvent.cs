@@ -33,23 +33,23 @@ using Alis.Extension.Graphic.Sdl2.Enums;
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl controller device event
+    ///     Represents an SDL controller device event, fired when a game controller is added, removed, or remapped.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct ControllerDeviceEvent
     {
         /// <summary>
-        ///     The type
+        ///     The event type identifier, set to <see cref="EventType.ControllerDeviceAdded"/>, <see cref="EventType.ControllerDeviceRemoved"/>, or <see cref="EventType.ControllerDeviceRemapped"/>.
         /// </summary>
         public EventType type;
 
         /// <summary>
-        ///     The timestamp
+        ///     The timestamp of the event, in milliseconds, from the SDL event system.
         /// </summary>
         public uint timestamp;
 
         /// <summary>
-        ///     The which joystick id
+        ///     The SDL joystick instance ID for the controller that was added, removed, or remapped.
         /// </summary>
         public int which;
     }

@@ -32,8 +32,10 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     The delete vertex arrays
+    ///     Deletes named vertex array objects, freeing their resources
     /// </summary>
+    /// <param name="n">Specifies the number of vertex array objects to be deleted</param>
+    /// <param name="arrays">Specifies an array of vertex array object names to delete</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void DeleteVertexArrays(int n, uint[] arrays);
 }

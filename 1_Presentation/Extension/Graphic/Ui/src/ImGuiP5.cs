@@ -751,7 +751,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether checkbox
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <returns>The bool</returns>
         public static bool Checkbox(string label, ref bool v)
         {
@@ -895,9 +895,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Colors the convert hs vto rgb using the specified h
         /// </summary>
-        /// <param name="h">The </param>
-        /// <param name="s">The </param>
-        /// <param name="v">The </param>
+        /// <param name="h">The hue component (0.0-1.0)</param>
+        /// <param name="s">The saturation component (0.0-1.0)</param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="outR">The out</param>
         /// <param name="outG">The out</param>
         /// <param name="outB">The out</param>
@@ -909,9 +909,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Colors the convert rg bto hsv using the specified r
         /// </summary>
-        /// <param name="r">The </param>
-        /// <param name="g">The </param>
-        /// <param name="b">The </param>
+        /// <param name="r">The red color component</param>
+        /// <param name="g">The green color component</param>
+        /// <param name="b">The blue color component</param>
         /// <param name="outH">The out</param>
         /// <param name="outS">The out</param>
         /// <param name="outV">The out</param>

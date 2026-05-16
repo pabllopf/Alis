@@ -34,48 +34,48 @@ using Alis.Extension.Graphic.Sdl2.Delegates;
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl audio spec
+    ///     Represents an SDL audio specification, describing the format, frequency, and callback configuration for audio devices.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct AudioSpec
     {
         /// <summary>
-        ///     The freq
+        ///     The audio frequency in samples per second (Hz), e.g. 44100 or 48000.
         /// </summary>
         public int Freq { get; set; }
 
         /// <summary>
-        ///     The SDL_AudioFormat
+        ///     The SDL audio format (e.g. AUDIO_S16SYS), specifying the sample data type and byte order.
         /// </summary>
         public ushort Format { get; set; }
 
         /// <summary>
-        ///     The channels
+        ///     The number of audio channels: 1 for mono, 2 for stereo, etc.
         /// </summary>
         public byte Channels { get; set; }
 
         /// <summary>
-        ///     The silence
+        ///     The silence value used for audio buffer initialization, computed from the format.
         /// </summary>
         public readonly byte silence;
 
         /// <summary>
-        ///     The samples
+        ///     The audio buffer size in samples (per channel), defining latency and performance.
         /// </summary>
         public ushort Samples { get; set; }
 
         /// <summary>
-        ///     The size
+        ///     The calculated audio buffer size in bytes, derived from format, channels, and samples.
         /// </summary>
         public readonly uint size;
 
         /// <summary>
-        ///     The callback
+        ///     The callback function invoked by SDL when the audio device needs more data.
         /// </summary>
         public SdlAudioCallback Callback { get; set; }
 
         /// <summary>
-        ///     The userdata
+        ///     User-defined data pointer passed to the audio callback for custom context.
         /// </summary>
         public IntPtr Userdata { get; set; }
     }

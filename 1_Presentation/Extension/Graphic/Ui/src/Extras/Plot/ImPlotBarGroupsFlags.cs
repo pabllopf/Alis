@@ -32,23 +32,23 @@ using System;
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     The im plot bar groups flags enum
+    ///     Flags controlling the layout of grouped bar charts in ImPlot.
     /// </summary>
     [Flags]
     public enum ImPlotBarGroupsFlags
     {
         /// <summary>
-        ///     The none im plot bar groups flags
+        ///     Default vertical bar groups.
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The horizontal im plot bar groups flags
+        ///     Draw bars horizontally instead of vertically.
         /// </summary>
         Horizontal = 1024,
 
         /// <summary>
-        ///     The stacked im plot bar groups flags
+        ///     Stack bars on top of each other rather than placing them side by side.
         /// </summary>
         Stacked = 2048
     }

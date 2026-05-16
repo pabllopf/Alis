@@ -46,11 +46,11 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         /// The key bindings
         /// </summary>
-        private Dictionary<string, KeyBinding> _keyBindings;
+        private readonly Dictionary<string, KeyBinding> _keyBindings;
         /// <summary>
         /// The previous gamepad states
         /// </summary>
-        private Dictionary<int, GamepadInputState> _previousGamepadStates;
+        private readonly Dictionary<int, GamepadInputState> _previousGamepadStates;
         /// <summary>
         /// The last mouse Y position
         /// </summary>
@@ -62,7 +62,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         /// The touch points
         /// </summary>
-        private Dictionary<int, TouchPoint> _touchPoints;
+        private readonly Dictionary<int, TouchPoint> _touchPoints;
 
         /// <summary>
         ///     Initializes a new instance of the WebAssemblyInputManager
@@ -185,7 +185,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         private void UpdateMouseState()
         {
-            _platform.GetMouseState(out _, out _lastMouseY, out bool[] buttons);
+            _platform.GetMouseState(out _, out _lastMouseY, out bool[] _);
             _lastMouseWheelDelta = _platform.GetMouseWheel();
         }
 
@@ -194,7 +194,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public void GetMousePosition(out int x, out int y)
         {
-            _platform.GetMouseState(out x, out y, out bool[] buttons);
+            _platform.GetMouseState(out x, out y, out bool[] _);
         }
 
         /// <summary>
@@ -210,7 +210,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public bool IsMouseButtonDown(int button)
         {
-            _platform.GetMouseState(out int x, out int y, out bool[] buttons);
+            _platform.GetMouseState(out _, out _, out bool[] buttons);
             return button >= 0 && button < buttons.Length && buttons[button];
         }
 
@@ -284,7 +284,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Vibrates a gamepad (rumble support)
         /// </summary>
-        public bool VibrateGamepad(int gamepadIndex, float leftMotor, float rightMotor, float duration = 0.1f)
+        public static bool VibrateGamepad(int gamepadIndex, float leftMotor, float rightMotor, float duration = 0.1f)
         {
             return EmscriptenWeb.VibrateGamepad(gamepadIndex, leftMotor, rightMotor, duration);
         }
@@ -340,7 +340,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         /// The keys
         /// </summary>
-        private HashSet<ConsoleKey> _keys;
+        private readonly HashSet<ConsoleKey> _keys;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="KeyBinding"/> class
@@ -539,7 +539,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Locks the pointer to the window (for FPS games)
         /// </summary>
-        public bool LockPointer()
+        public static bool LockPointer()
         {
             return EmscriptenWeb.LockPointer();
         }
@@ -547,7 +547,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Unlocks the pointer
         /// </summary>
-        public bool UnlockPointer()
+        public static bool UnlockPointer()
         {
             return EmscriptenWeb.UnlockPointer();
         }
@@ -555,7 +555,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Checks if the pointer is locked
         /// </summary>
-        public bool IsPointerLocked()
+        public static bool IsPointerLocked()
         {
             return EmscriptenWeb.IsPointerLocked();
         }
@@ -563,7 +563,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Enters fullscreen mode
         /// </summary>
-        public bool RequestFullscreen()
+        public static bool RequestFullscreen()
         {
             return EmscriptenWeb.RequestFullscreen();
         }
@@ -571,7 +571,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Exits fullscreen mode
         /// </summary>
-        public bool ExitFullscreen()
+        public static bool ExitFullscreen()
         {
             return EmscriptenWeb.ExitFullscreen();
         }
@@ -579,7 +579,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Checks if currently in fullscreen
         /// </summary>
-        public bool IsFullscreen()
+        public static bool IsFullscreen()
         {
             return EmscriptenWeb.IsFullscreenEnabled();
         }

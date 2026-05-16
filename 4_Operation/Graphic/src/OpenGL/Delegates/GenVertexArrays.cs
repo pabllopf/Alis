@@ -32,8 +32,10 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     The gen vertex arrays
+    ///     Generates vertex array object names and stores them in the provided array
     /// </summary>
+    /// <param name="n">Specifies the number of vertex array object names to generate</param>
+    /// <param name="arrays">Specifies an array into which the generated vertex array object names are stored</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void GenVertexArrays(int n, [Out] uint[] arrays);
 }

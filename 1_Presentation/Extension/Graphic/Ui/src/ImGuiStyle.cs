@@ -656,7 +656,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Scales the all sizes using the specified f
         /// </summary>
-        /// <param name="f">The </param>
+        /// <param name="f">The font instance</param>
         public void ScaleAllSizes(float f)
         {
             ImGuiNative.ImGuiStyle_ScaleAllSizes(ref this, f);

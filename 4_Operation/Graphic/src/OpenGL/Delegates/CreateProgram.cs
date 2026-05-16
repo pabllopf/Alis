@@ -32,8 +32,9 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     The create program
+    ///     Creates an empty program object and returns a handle to it
     /// </summary>
+    /// <returns>The handle to the newly created program object</returns>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate uint CreateProgram();
 }

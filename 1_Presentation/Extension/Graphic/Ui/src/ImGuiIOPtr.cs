@@ -1552,7 +1552,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="key">The key</param>
         /// <param name="down">The down</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         public void AddKeyAnalogEvent(ImGuiKey key, bool down, float v)
         {
             byte nativeDown = down ? (byte) 1 : (byte) 0;

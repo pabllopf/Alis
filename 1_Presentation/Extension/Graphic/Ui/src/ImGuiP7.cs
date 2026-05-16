@@ -615,7 +615,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether radio button
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vButton">The button</param>
         /// <returns>The bool</returns>
         public static bool RadioButton(string label, ref int v, int vButton)

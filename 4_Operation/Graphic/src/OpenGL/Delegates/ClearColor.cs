@@ -32,8 +32,12 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     The clear color
+    ///     Specifies the clear values for the color buffers
     /// </summary>
+    /// <param name="r">Specifies the red component of the color</param>
+    /// <param name="g">Specifies the green component of the color</param>
+    /// <param name="b">Specifies the blue component of the color</param>
+    /// <param name="a">Specifies the alpha component of the color</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void ClearColor(float r, float g, float b, float a);
 }

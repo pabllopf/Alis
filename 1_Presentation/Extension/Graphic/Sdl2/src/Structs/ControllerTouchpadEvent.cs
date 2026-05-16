@@ -32,48 +32,48 @@ using System.Runtime.InteropServices;
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl controller touch pad event
+    ///     Represents an SDL controller touchpad event, fired when a touchpad on a game controller (e.g. PS4/PS5) detects finger motion.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct ControllerTouchpadEvent
     {
         /// <summary>
-        ///     The type
+        ///     The event type identifier, set to <see cref="EventType.ControllerTouchpadDown"/>, <see cref="EventType.ControllerTouchpadUp"/>, or <see cref="EventType.ControllerTouchpadMotion"/>.
         /// </summary>
         public uint type;
 
         /// <summary>
-        ///     The timestamp
+        ///     The timestamp of the event, in milliseconds, from the SDL event system.
         /// </summary>
         public uint timestamp;
 
         /// <summary>
-        ///     The which SDL_JoystickID
+        ///     The SDL joystick instance ID for the controller that generated the event.
         /// </summary>
         public int which;
 
         /// <summary>
-        ///     The touchpad
+        ///     The index of the touchpad on the controller (0-based, for controllers with multiple touchpads).
         /// </summary>
         public int touchpad;
 
         /// <summary>
-        ///     The finger
+        ///     The index of the finger on the touchpad (0-based).
         /// </summary>
         public int finger;
 
         /// <summary>
-        ///     The
+        ///     The normalized X position of the finger on the touchpad, ranging from 0.0 to 1.0.
         /// </summary>
         public float x;
 
         /// <summary>
-        ///     The
+        ///     The normalized Y position of the finger on the touchpad, ranging from 0.0 to 1.0.
         /// </summary>
         public float y;
 
         /// <summary>
-        ///     The pressure
+        ///     The normalized pressure of the finger on the touchpad, ranging from 0.0 to 1.0.
         /// </summary>
         public float pressure;
     }

@@ -34,44 +34,44 @@ namespace Alis.Extension.Graphic.Sdl2.Enums
     /// </summary>
     public enum GameControllerAxis
     {
-        /// <summary>
-        ///     The sdl controller axis invalid sdl game controller axis
-        /// </summary>
-        SdlControllerAxisInvalid = -1,
+    /// <summary>
+    ///     Invalid or uninitialized axis identifier
+    /// </summary>
+    SdlControllerAxisInvalid = -1,
 
-        /// <summary>
-        ///     The sdl controller axis left x sdl game controller axis
-        /// </summary>
-        SdlControllerAxisLeftX,
+    /// <summary>
+    ///     Left analog stick horizontal axis
+    /// </summary>
+    SdlControllerAxisLeftX,
 
-        /// <summary>
-        ///     The sdl controller axis lefty sdl game controller axis
-        /// </summary>
-        SdlControllerAxisLeftY,
+    /// <summary>
+    ///     Left analog stick vertical axis
+    /// </summary>
+    SdlControllerAxisLeftY,
 
-        /// <summary>
-        ///     The sdl controller axis right X sdl game controller axis
-        /// </summary>
-        SdlControllerAxisRightX,
+    /// <summary>
+    ///     Right analog stick horizontal axis
+    /// </summary>
+    SdlControllerAxisRightX,
 
-        /// <summary>
-        ///     The sdl controller axis right Y sdl game controller axis
-        /// </summary>
-        SdlControllerAxisRightY,
+    /// <summary>
+    ///     Right analog stick vertical axis
+    /// </summary>
+    SdlControllerAxisRightY,
 
-        /// <summary>
-        ///     The sdl controller axis trigger left sdl game controller axis
-        /// </summary>
-        SdlControllerAxisTriggerLeft,
+    /// <summary>
+    ///     Left analog trigger axis
+    /// </summary>
+    SdlControllerAxisTriggerLeft,
 
-        /// <summary>
-        ///     The sdl controller axis trigger right sdl game controller axis
-        /// </summary>
-        SdlControllerAxisTriggerRight,
+    /// <summary>
+    ///     Right analog trigger axis
+    /// </summary>
+    SdlControllerAxisTriggerRight,
 
-        /// <summary>
-        ///     The sdl controller axis max sdl game controller axis
-        /// </summary>
-        SdlControllerAxisMax
+    /// <summary>
+    ///     Total number of axis entries (sentinel value)
+    /// </summary>
+    SdlControllerAxisMax
     }
 }

@@ -33,8 +33,9 @@ using Alis.Core.Graphic.OpenGL.Enums;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     The blend equation
+    ///     Specifies the blend equation used for RGB and alpha blending
     /// </summary>
+    /// <param name="mode">Specifies the blend equation mode to use</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void BlendEquation(BlendEquationMode mode);
 }

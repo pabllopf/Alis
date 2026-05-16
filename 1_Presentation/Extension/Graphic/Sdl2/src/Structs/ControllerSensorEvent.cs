@@ -32,43 +32,43 @@ using System.Runtime.InteropServices;
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl controller sensor event
+    ///     Represents an SDL controller sensor event, fired when a game controller's built-in sensor (e.g. accelerometer, gyroscope) updates.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct ControllerSensorEvent
     {
         /// <summary>
-        ///     The type
+        ///     The event type identifier, set to <see cref="EventType.ControllerSensorUpdate"/>.
         /// </summary>
         public readonly uint type;
 
         /// <summary>
-        ///     The timestamp
+        ///     The timestamp of the event, in milliseconds, from the SDL event system.
         /// </summary>
         public readonly uint timestamp;
 
         /// <summary>
-        ///     The which SDL_JoystickID
+        ///     The SDL joystick instance ID for the controller that generated the sensor event.
         /// </summary>
         public readonly int which;
 
         /// <summary>
-        ///     The sensor
+        ///     The sensor type index (e.g. SDL_SENSOR_ACCEL, SDL_SENSOR_GYRO).
         /// </summary>
         public readonly int sensor;
 
         /// <summary>
-        ///     The data
+        ///     The first component of the sensor data vector (e.g. X-axis for accelerometer).
         /// </summary>
         public readonly float data1;
 
         /// <summary>
-        ///     The data
+        ///     The second component of the sensor data vector (e.g. Y-axis for accelerometer).
         /// </summary>
         public readonly float data2;
 
         /// <summary>
-        ///     The data
+        ///     The third component of the sensor data vector (e.g. Z-axis for accelerometer).
         /// </summary>
         public readonly float data3;
     }

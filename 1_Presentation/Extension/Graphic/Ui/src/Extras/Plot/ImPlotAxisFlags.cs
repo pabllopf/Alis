@@ -32,108 +32,108 @@ using System;
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     The im plot axis flags enum
+    ///     Flags that control the appearance and behaviour of plot axes in ImPlot.
     /// </summary>
     [Flags]
     public enum ImPlotAxisFlags
     {
         /// <summary>
-        ///     The none im plot axis flags
+        ///     Default axis behaviour with all standard decorations shown.
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The no label im plot axis flags
+        ///     Hide the axis label.
         /// </summary>
         NoLabel = 1,
 
         /// <summary>
-        ///     The no grid lines im plot axis flags
+        ///     Hide the grid lines for this axis.
         /// </summary>
         NoGridLines = 2,
 
         /// <summary>
-        ///     The no tick marks im plot axis flags
+        ///     Hide the tick marks on this axis.
         /// </summary>
         NoTickMarks = 4,
 
         /// <summary>
-        ///     The no tick labels im plot axis flags
+        ///     Hide the tick label text on this axis.
         /// </summary>
         NoTickLabels = 8,
 
         /// <summary>
-        ///     The no initial fit im plot axis flags
+        ///     Do not apply an initial fit to the data range when the plot opens.
         /// </summary>
         NoInitialFit = 16,
 
         /// <summary>
-        ///     The no menus im plot axis flags
+        ///     Disable the context menu for this axis.
         /// </summary>
         NoMenus = 32,
 
         /// <summary>
-        ///     The no side switch im plot axis flags
+        ///     Prevent the user from switching the axis side via the context menu.
         /// </summary>
         NoSideSwitch = 64,
 
         /// <summary>
-        ///     The no highlight im plot axis flags
+        ///     Disable highlighting of the axis when hovered.
         /// </summary>
         NoHighlight = 128,
 
         /// <summary>
-        ///     The opposite im plot axis flags
+        ///     Render this axis on the opposite side (e.g. right for Y, top for X).
         /// </summary>
         Opposite = 256,
 
         /// <summary>
-        ///     The foreground im plot axis flags
+        ///     Render axis grid lines and ticks in the foreground, above plot data.
         /// </summary>
         Foreground = 512,
 
         /// <summary>
-        ///     The invert im plot axis flags
+        ///     Invert the axis direction (descending values).
         /// </summary>
         Invert = 1024,
 
         /// <summary>
-        ///     The auto fit im plot axis flags
+        ///     Automatically fit the axis range to visible data at every frame.
         /// </summary>
         AutoFit = 2048,
 
         /// <summary>
-        ///     The range fit im plot axis flags
+        ///     Fit the axis range only when data within the range changes.
         /// </summary>
         RangeFit = 4096,
 
         /// <summary>
-        ///     The pan stretch im plot axis flags
+        ///     Allow the axis to stretch during pan operations.
         /// </summary>
         PanStretch = 8192,
 
         /// <summary>
-        ///     The lock min im plot axis flags
+        ///     Lock the minimum value of the axis range.
         /// </summary>
         LockMin = 16384,
 
         /// <summary>
-        ///     The lock max im plot axis flags
+        ///     Lock the maximum value of the axis range.
         /// </summary>
         LockMax = 32768,
 
         /// <summary>
-        ///     The lock im plot axis flags
+        ///     Lock both the minimum and maximum values of the axis range (LockMin | LockMax).
         /// </summary>
         Lock = 49152,
 
         /// <summary>
-        ///     The no decorations im plot axis flags
+        ///     Shorthand for NoLabel | NoGridLines | NoTickMarks | NoTickLabels, removing all axis decorations.
         /// </summary>
         NoDecorations = 15,
 
         /// <summary>
-        ///     The aux default im plot axis flags
+        ///     Default flags for auxiliary axes: Opposite + Foreground.
         /// </summary>
         AuxDefault = 258
     }

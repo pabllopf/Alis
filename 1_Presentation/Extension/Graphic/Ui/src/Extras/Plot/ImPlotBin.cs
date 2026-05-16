@@ -30,27 +30,27 @@
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     The im plot bin enum
+    ///     Defines binning methods used for histogram computations in ImPlot.
     /// </summary>
     public enum ImPlotBin
     {
         /// <summary>
-        ///     The sqrt im plot bin
+        ///     Square-root rule: bin count = sqrt(n).
         /// </summary>
         Sqrt = -1,
 
         /// <summary>
-        ///     The sturges im plot bin
+        ///     Sturges' formula: bin count = ceil(log2(n)) + 1.
         /// </summary>
         Sturges = -2,
 
         /// <summary>
-        ///     The rice im plot bin
+        ///     Rice rule: bin count = ceil(2 * n^(1/3)).
         /// </summary>
         Rice = -3,
 
         /// <summary>
-        ///     The scott im plot bin
+        ///     Scott's normal reference rule: bin width = 3.49 * sigma * n^(-1/3).
         /// </summary>
         Scott = -4
     }

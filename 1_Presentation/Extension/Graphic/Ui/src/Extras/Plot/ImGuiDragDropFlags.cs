@@ -32,63 +32,63 @@ using System;
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     The im gui drag drop flags enum
+    ///     Flags to control drag-and-drop behaviour within ImPlot contexts.
     /// </summary>
     [Flags]
     public enum ImGuiDragDropFlags
     {
         /// <summary>
-        ///     The none im gui drag drop flags
+        ///     No special behaviour.
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The source no preview tooltip im gui drag drop flags
+        ///     Disable the default tooltip shown while dragging from a source.
         /// </summary>
         SourceNoPreviewTooltip = 1,
 
         /// <summary>
-        ///     The source no disable hover im gui drag drop flags
+        ///     Do not disable the hover state of the source item while dragging.
         /// </summary>
         SourceNoDisableHover = 2,
 
         /// <summary>
-        ///     The source no hold to open others im gui drag drop flags
+        ///     Disable the hold-to-open-others behaviour for the source.
         /// </summary>
         SourceNoHoldToOpenOthers = 4,
 
         /// <summary>
-        ///     The source allow null id im gui drag drop flags
+        ///     Allow the source to have a null ID (anonymous drag source).
         /// </summary>
         SourceAllowNullId = 8,
 
         /// <summary>
-        ///     The source extern im gui drag drop flags
+        ///     Mark the drag payload as originating from an external source.
         /// </summary>
         SourceExtern = 16,
 
         /// <summary>
-        ///     The source auto expire payload im gui drag drop flags
+        ///     Automatically expire the drag payload after the drag ends.
         /// </summary>
         SourceAutoExpirePayload = 32,
 
         /// <summary>
-        ///     The accept before delivery im gui drag drop flags
+        ///     Accept the payload before it is delivered (preview accept).
         /// </summary>
         AcceptBeforeDelivery = 1024,
 
         /// <summary>
-        ///     The accept no draw default rect im gui drag drop flags
+        ///     Suppress the default highlight rectangle on the accept target.
         /// </summary>
         AcceptNoDrawDefaultRect = 2048,
 
         /// <summary>
-        ///     The accept no preview tooltip im gui drag drop flags
+        ///     Disable the preview tooltip shown on the target side.
         /// </summary>
         AcceptNoPreviewTooltip = 4096,
 
         /// <summary>
-        ///     The accept peek only im gui drag drop flags
+        ///     Combination of AcceptBeforeDelivery and AcceptNoDrawDefaultRect for peek-only acceptance.
         /// </summary>
         AcceptPeekOnly = 3072
     }

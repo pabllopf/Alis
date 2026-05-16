@@ -32,8 +32,12 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     The color 4f
+    ///     Sets the current color with four floating-point components
     /// </summary>
+    /// <param name="red">Specifies the red component of the color</param>
+    /// <param name="green">Specifies the green component of the color</param>
+    /// <param name="blue">Specifies the blue component of the color</param>
+    /// <param name="alpha">Specifies the alpha component of the color</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void Color4F(float red, float green, float blue, float alpha);
 }

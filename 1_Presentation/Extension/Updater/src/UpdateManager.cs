@@ -191,7 +191,7 @@ namespace Alis.Extension.Updater
         /// </summary>
         /// <param name="ctsToken">The cts token</param>
         /// <returns>The bool</returns>
-        internal bool HandleCancellationRequest(CancellationToken ctsToken)
+        internal static bool HandleCancellationRequest(CancellationToken ctsToken)
         {
             if (!ctsToken.IsCancellationRequested)
             {
@@ -206,7 +206,7 @@ namespace Alis.Extension.Updater
         ///     Gets the architecture
         /// </summary>
         /// <returns>The string</returns>
-        internal string GetArchitecture() => RuntimeInformation.OSArchitecture.ToString().ToLower();
+        internal static string GetArchitecture() => RuntimeInformation.OSArchitecture.ToString().ToLower();
 
         /// <summary>
         ///     Reports the platform detection using the specified platform
@@ -445,7 +445,7 @@ namespace Alis.Extension.Updater
         /// <param name="platform">The platform</param>
         /// <param name="architecture">The architecture</param>
         /// <returns>A dictionary of string and object</returns>
-        private Dictionary<string, object> SelectAsset(object[] assets, string platform, string architecture)
+        private static Dictionary<string, object> SelectAsset(object[] assets, string platform, string architecture)
         {
             foreach (Dictionary<string, object> asset in assets)
             {
@@ -594,14 +594,14 @@ namespace Alis.Extension.Updater
         /// </summary>
         /// <param name="fileAsync">The file</param>
         /// <returns>The bool</returns>
-        internal bool IsZipPackage(string fileAsync) => fileAsync.Contains(".zip");
+        internal static bool IsZipPackage(string fileAsync) => fileAsync.Contains(".zip");
 
         /// <summary>
         ///     Ises the dmg package using the specified file async
         /// </summary>
         /// <param name="fileAsync">The file</param>
         /// <returns>The bool</returns>
-        internal bool IsDmgPackage(string fileAsync) => fileAsync.Contains(".dmg");
+        internal static bool IsDmgPackage(string fileAsync) => fileAsync.Contains(".dmg");
 
         /// <summary>
         ///     Executes the package extraction using the specified file async
@@ -669,7 +669,7 @@ namespace Alis.Extension.Updater
         /// </summary>
         /// <param name="fileAsync">The file</param>
         /// <returns>The string</returns>
-        internal string GetDmgMountPath(string fileAsync) => Path.Combine("/Volumes", Path.GetFileNameWithoutExtension(fileAsync));
+        internal static string GetDmgMountPath(string fileAsync) => Path.Combine("/Volumes", Path.GetFileNameWithoutExtension(fileAsync));
 
         /// <summary>
         ///     Mounts the dmg using the specified file async
@@ -736,7 +736,7 @@ namespace Alis.Extension.Updater
         ///     Executes the shell command using the specified command
         /// </summary>
         /// <param name="command">The command</param>
-        internal void ExecuteShellCommand(string command)
+        internal static void ExecuteShellCommand(string command)
         {
             Logger.Info($"Executing shell command: {command}");
             using (Process process = new Process())

@@ -1139,7 +1139,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether input double
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <returns>The bool</returns>
         public static bool InputDouble(string label, ref double v)
         {
@@ -1151,7 +1151,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether input double
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="step">The step</param>
         /// <returns>The bool</returns>
         public static bool InputDouble(string label, ref double v, double step)
@@ -1164,7 +1164,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether input double
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="step">The step</param>
         /// <param name="stepFast">The step fast</param>
         /// <returns>The bool</returns>
@@ -1178,7 +1178,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether input double
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="step">The step</param>
         /// <param name="stepFast">The step fast</param>
         /// <param name="format">The format</param>
@@ -1194,7 +1194,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether input double
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="step">The step</param>
         /// <param name="stepFast">The step fast</param>
         /// <param name="format">The format</param>
@@ -1210,7 +1210,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether input float
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <returns>The bool</returns>
         public static bool InputFloat(string label, ref float v)
         {
@@ -1222,7 +1222,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether input float
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="step">The step</param>
         /// <returns>The bool</returns>
         public static bool InputFloat(string label, ref float v, float step)
@@ -1235,7 +1235,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether input float
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="step">The step</param>
         /// <param name="stepFast">The step fast</param>
         /// <returns>The bool</returns>
@@ -1249,7 +1249,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether input float
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="step">The step</param>
         /// <param name="stepFast">The step fast</param>
         /// <param name="format">The format</param>
@@ -1264,7 +1264,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether input float
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="step">The step</param>
         /// <param name="stepFast">The step fast</param>
         /// <param name="format">The format</param>
@@ -1281,7 +1281,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether input float 2
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <returns>The bool</returns>
         public static bool InputFloat2(string label, ref Vector2F v)
         {
@@ -1294,7 +1294,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether input float 2
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="format">The format</param>
         /// <returns>The bool</returns>
         public static bool InputFloat2(string label, ref Vector2F v, string format)
@@ -1307,7 +1307,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether input float 2
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The bool</returns>
@@ -1322,7 +1322,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether input float 3
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <returns>The bool</returns>
         public static bool InputFloat3(string label, ref Vector3F v)
         {
@@ -1334,7 +1334,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether input float 3
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="format">The format</param>
         /// <returns>The bool</returns>
         public static bool InputFloat3(string label, ref Vector3F v, string format)
@@ -1348,7 +1348,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether input float 3
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The bool</returns>
@@ -1362,7 +1362,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether input float 4
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <returns>The bool</returns>
         public static bool InputFloat4(string label, ref Vector4F v)
         {

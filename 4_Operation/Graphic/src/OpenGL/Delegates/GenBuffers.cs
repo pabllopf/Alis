@@ -32,8 +32,10 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     The gen buffers
+    ///     Generates buffer object names and stores them in the provided array
     /// </summary>
+    /// <param name="n">Specifies the number of buffer object names to generate</param>
+    /// <param name="buffers">Specifies an array into which the generated buffer object names are stored</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void GenBuffers(int n, [Out] uint[] buffers);
 }

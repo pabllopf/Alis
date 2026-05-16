@@ -42,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether input float 4
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="format">The format</param>
         /// <returns>The bool</returns>
         public static bool InputFloat4(string label, ref Vector4F v, string format)
@@ -56,7 +56,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether input float 4
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The bool</returns>
@@ -70,7 +70,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether input int
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <returns>The bool</returns>
         public static bool InputInt(string label, ref int v)
         {
@@ -83,7 +83,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether input int
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="step">The step</param>
         /// <returns>The bool</returns>
         public static bool InputInt(string label, ref int v, int step)
@@ -97,7 +97,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether input int
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="step">The step</param>
         /// <param name="stepFast">The step fast</param>
         /// <returns>The bool</returns>
@@ -111,7 +111,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether input int
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="step">The step</param>
         /// <param name="stepFast">The step fast</param>
         /// <param name="flags">The flags</param>
@@ -126,7 +126,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether input int 2
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <returns>The bool</returns>
         public static bool InputInt2(string label, ref int v)
         {
@@ -139,7 +139,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether input int 2
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="flags">The flags</param>
         /// <returns>The bool</returns>
         public static bool InputInt2(string label, ref int v, ImGuiInputTextFlags flags)
@@ -152,7 +152,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether input int 3
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <returns>The bool</returns>
         public static bool InputInt3(string label, ref int v)
         {
@@ -164,7 +164,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether input int 3
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="flags">The flags</param>
         /// <returns>The bool</returns>
         public static bool InputInt3(string label, ref int v, ImGuiInputTextFlags flags)
@@ -178,7 +178,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether input int 4
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <returns>The bool</returns>
         public static bool InputInt4(string label, ref int v)
         {
@@ -191,7 +191,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether input int 4
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="flags">The flags</param>
         /// <returns>The bool</returns>
         public static bool InputInt4(string label, ref int v, ImGuiInputTextFlags flags)

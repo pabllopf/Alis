@@ -269,7 +269,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Checks if currently in fullscreen
         /// </summary>
-        public bool IsFullscreen()
+        public static bool IsFullscreen()
         {
             return EmscriptenWeb.IsFullscreenEnabled();
         }
@@ -333,7 +333,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Gets the browser's preferred language
         /// </summary>
-        public string GetSystemLanguage()
+        public static string GetSystemLanguage()
         {
             return EmscriptenWeb.GetLanguage();
         }
@@ -341,7 +341,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Checks if the browser is currently online
         /// </summary>
-        public bool IsOnline()
+        public static bool IsOnline()
         {
             return EmscriptenWeb.IsOnline();
         }
@@ -349,7 +349,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Gets the device battery level (if available)
         /// </summary>
-        public float GetBatteryLevel()
+        public static float GetBatteryLevel()
         {
             return EmscriptenWeb.GetBatteryLevel();
         }
@@ -357,7 +357,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Checks if the device is charging
         /// </summary>
-        public bool IsCharging()
+        public static bool IsCharging()
         {
             return EmscriptenWeb.IsCharging();
         }
@@ -365,7 +365,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Gets the screen refresh rate
         /// </summary>
-        public int GetRefreshRate()
+        public static int GetRefreshRate()
         {
             // WebAssembly typically uses 60 FPS for requestAnimationFrame
             // This could be extended to use higher rates if supported
@@ -375,7 +375,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Captures a screenshot and saves it to a file
         /// </summary>
-        public bool SaveScreenshot(string filename)
+        public static bool SaveScreenshot(string filename)
         {
             try
             {

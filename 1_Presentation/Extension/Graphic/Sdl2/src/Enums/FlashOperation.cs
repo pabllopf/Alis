@@ -34,19 +34,19 @@ namespace Alis.Extension.Graphic.Sdl2.Enums
     /// </summary>
     public enum FlashOperation
     {
-        /// <summary>
-        ///     The sdl flash cancel sdl flash operation
-        /// </summary>
-        SdlFlashCancel,
+    /// <summary>
+    ///     Cancel any pending flash operation on the window
+    /// </summary>
+    SdlFlashCancel,
 
-        /// <summary>
-        ///     The sdl flash briefly sdl flash operation
-        /// </summary>
-        SdlFlashBriefly,
+    /// <summary>
+    ///     Flash the window briefly to attract attention
+    /// </summary>
+    SdlFlashBriefly,
 
-        /// <summary>
-        ///     The sdl flash until focused sdl flash operation
-        /// </summary>
-        SdlFlashUntilFocused
+    /// <summary>
+    ///     Flash the window until it gains focus
+    /// </summary>
+    SdlFlashUntilFocused
     }
 }

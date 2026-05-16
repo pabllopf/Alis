@@ -269,7 +269,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Values the prefix
         /// </summary>
         /// <param name="prefix">The prefix</param>
-        /// <param name="b">The </param>
+        /// <param name="b">The blue color component</param>
         public static void Value(string prefix, bool b)
         {
             ImGuiNative.igValue_Bool(Encoding.UTF8.GetBytes(prefix), b);
@@ -279,7 +279,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Values the prefix
         /// </summary>
         /// <param name="prefix">The prefix</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         public static void Value(string prefix, int v)
         {
             ImGuiNative.igValue_Int(Encoding.UTF8.GetBytes(prefix), v);
@@ -289,7 +289,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Values the prefix
         /// </summary>
         /// <param name="prefix">The prefix</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         public static void Value(string prefix, uint v)
         {
             ImGuiNative.igValue_Uint(Encoding.UTF8.GetBytes(prefix), v);
@@ -299,7 +299,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Values the prefix
         /// </summary>
         /// <param name="prefix">The prefix</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         public static void Value(string prefix, float v)
         {
             ImGuiNative.igValue_Float(Encoding.UTF8.GetBytes(prefix), v, null);
@@ -309,7 +309,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Values the prefix
         /// </summary>
         /// <param name="prefix">The prefix</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="floatFormat">The float format</param>
         public static void Value(string prefix, float v, string floatFormat)
         {
@@ -321,7 +321,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="size">The size</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <returns>The bool</returns>
@@ -336,7 +336,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="size">The size</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
@@ -353,7 +353,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="size">The size</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
@@ -371,7 +371,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="size">The size</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <returns>The bool</returns>
@@ -387,7 +387,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="size">The size</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
@@ -403,7 +403,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="size">The size</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>

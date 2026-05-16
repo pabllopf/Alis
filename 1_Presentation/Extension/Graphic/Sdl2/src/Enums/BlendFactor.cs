@@ -34,54 +34,54 @@ namespace Alis.Extension.Graphic.Sdl2.Enums
     /// </summary>
     public enum BlendFactor
     {
-        /// <summary>
-        ///     The sdl blend factor zero sdl blend factor
-        /// </summary>
-        SdlBlendFactorZero = 0x1,
+    /// <summary>
+    ///     Blend factor of zero (multiply by 0)
+    /// </summary>
+    SdlBlendFactorZero = 0x1,
 
-        /// <summary>
-        ///     The sdl blend factor one sdl blend factor
-        /// </summary>
-        SdlBlendFactorOne = 0x2,
+    /// <summary>
+    ///     Blend factor of one (multiply by 1)
+    /// </summary>
+    SdlBlendFactorOne = 0x2,
 
-        /// <summary>
-        ///     The sdl blend factor src color sdl blend factor
-        /// </summary>
-        SdlBlendFactorSrcColor = 0x3,
+    /// <summary>
+    ///     Blend factor using the source color value
+    /// </summary>
+    SdlBlendFactorSrcColor = 0x3,
 
-        /// <summary>
-        ///     The sdl blend factor one minus src color sdl blend factor
-        /// </summary>
-        SdlBlendFactorOneMinusSrcColor = 0x4,
+    /// <summary>
+    ///     Blend factor using one minus the source color value
+    /// </summary>
+    SdlBlendFactorOneMinusSrcColor = 0x4,
 
-        /// <summary>
-        ///     The sdl blend factor src alpha sdl blend factor
-        /// </summary>
-        SdlBlendFactorSrcAlpha = 0x5,
+    /// <summary>
+    ///     Blend factor using the source alpha value
+    /// </summary>
+    SdlBlendFactorSrcAlpha = 0x5,
 
-        /// <summary>
-        ///     The sdl blend factor one minus src alpha sdl blend factor
-        /// </summary>
-        SdlBlendFactorOneMinusSrcAlpha = 0x6,
+    /// <summary>
+    ///     Blend factor using one minus the source alpha value
+    /// </summary>
+    SdlBlendFactorOneMinusSrcAlpha = 0x6,
 
-        /// <summary>
-        ///     The sdl blend factor dst color sdl blend factor
-        /// </summary>
-        SdlBlendFactorDstColor = 0x7,
+    /// <summary>
+    ///     Blend factor using the destination color value
+    /// </summary>
+    SdlBlendFactorDstColor = 0x7,
 
-        /// <summary>
-        ///     The sdl blend factor one minus dst color sdl blend factor
-        /// </summary>
-        SdlBlendFactorOneMinusDstColor = 0x8,
+    /// <summary>
+    ///     Blend factor using one minus the destination color value
+    /// </summary>
+    SdlBlendFactorOneMinusDstColor = 0x8,
 
-        /// <summary>
-        ///     The sdl blend factor dst alpha sdl blend factor
-        /// </summary>
-        SdlBlendFactorDstAlpha = 0x9,
+    /// <summary>
+    ///     Blend factor using the destination alpha value
+    /// </summary>
+    SdlBlendFactorDstAlpha = 0x9,
 
-        /// <summary>
-        ///     The sdl blend factor one minus dst alpha sdl blend factor
-        /// </summary>
-        SdlBlendFactorOneMinusDstAlpha = 0xA
+    /// <summary>
+    ///     Blend factor using one minus the destination alpha value
+    /// </summary>
+    SdlBlendFactorOneMinusDstAlpha = 0xA
     }
 }

@@ -42,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether slider float 4
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
@@ -58,7 +58,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether slider int
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <returns>The bool</returns>
@@ -72,7 +72,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether slider int
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
@@ -87,7 +87,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether slider int
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
@@ -103,7 +103,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether slider int 2
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <returns>The bool</returns>
@@ -117,7 +117,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether slider int 2
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
@@ -132,7 +132,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether slider int 2
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
@@ -148,7 +148,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether slider int 3
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <returns>The bool</returns>
@@ -162,7 +162,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether slider int 3
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
@@ -177,7 +177,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether slider int 3
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
@@ -193,7 +193,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether slider int 4
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <returns>The bool</returns>
@@ -207,7 +207,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether slider int 4
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
@@ -222,7 +222,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether slider int 4
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
@@ -584,7 +584,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Tables the set column enabled using the specified column n
         /// </summary>
         /// <param name="columnN">The column</param>
-        /// <param name="v">The </param>
+        /// <param name="v">The value to be modified or populated</param>
         public static void TableSetColumnEnabled(int columnN, bool v)
         {
             byte nativeV = v ? (byte) 1 : (byte) 0;
@@ -659,8 +659,8 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="dockMainId">The dock main id</param>
         /// <param name="left">The left</param>
-        /// <param name="p2">The </param>
-        /// <param name="p3">The </param>
+        /// <param name="p2">The second point coordinate</param>
+        /// <param name="p3">The third point coordinate</param>
         /// <param name="dockIdRight">The dock id right</param>
         /// <returns>The uint</returns>
         public static uint DockBuilderSplitNode(uint dockMainId, ImGuiDir left, float p2, object p3, out uint dockIdRight) => ImGuiNative.igDockBuilderSplitNode(dockMainId, left, p2, IntPtr.Zero, out dockIdRight);

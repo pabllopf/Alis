@@ -32,18 +32,18 @@ using System;
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     The im plot bars flags enum
+    ///     Flags that control the orientation and style of bar plots in ImPlot.
     /// </summary>
     [Flags]
     public enum ImPlotBarsFlags
     {
         /// <summary>
-        ///     The none im plot bars flags
+        ///     Default vertical bars.
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The horizontal im plot bars flags
+        ///     Draw bars horizontally instead of the default vertical orientation.
         /// </summary>
         Horizontal = 1024
     }

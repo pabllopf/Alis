@@ -33,8 +33,11 @@ using Alis.Core.Graphic.OpenGL.Enums;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     The get programiv
+    ///     Returns the value of a parameter for a program object
     /// </summary>
+    /// <param name="program">Specifies the program object to query</param>
+    /// <param name="pname">Specifies the name of the parameter to retrieve</param>
+    /// <param name="params">Returns the value(s) of the specified parameter</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void GetProgramiv(uint program, ProgramParameter pname, [Out] int[] @params);
 }

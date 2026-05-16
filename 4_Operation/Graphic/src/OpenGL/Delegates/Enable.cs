@@ -33,8 +33,9 @@ using Alis.Core.Graphic.OpenGL.Enums;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     The enable
+    ///     Enables a specified OpenGL capability
     /// </summary>
+    /// <param name="cap">Specifies the capability to enable</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void Enable(EnableCap cap);
 }
