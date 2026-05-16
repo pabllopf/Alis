@@ -37,49 +37,49 @@ namespace Alis.Extension.Graphic.Sdl2.Enums
     [Flags]
     public enum InitSettings : uint
     {
-        /// <summary>
-        ///     The sdl init timer
-        /// </summary>
-        InitTimer = 0x00000001,
+    /// <summary>
+    ///     Initialize the SDL timer subsystem
+    /// </summary>
+    InitTimer = 0x00000001,
 
-        /// <summary>
-        ///     The sdl init audio
-        /// </summary>
-        InitAudio = 0x00000010,
+    /// <summary>
+    ///     Initialize the SDL audio subsystem
+    /// </summary>
+    InitAudio = 0x00000010,
 
-        /// <summary>
-        ///     The sdl init video
-        /// </summary>
-        InitVideo = 0x00000020,
+    /// <summary>
+    ///     Initialize the SDL video subsystem
+    /// </summary>
+    InitVideo = 0x00000020,
 
-        /// <summary>
-        ///     The sdl init joystick
-        /// </summary>
-        InitJoystick = 0x00000200,
+    /// <summary>
+    ///     Initialize the SDL joystick subsystem
+    /// </summary>
+    InitJoystick = 0x00000200,
 
-        /// <summary>
-        ///     The sdl init haptic
-        /// </summary>
-        InitHaptic = 0x00001000,
+    /// <summary>
+    ///     Initialize the SDL haptic (force feedback) subsystem
+    /// </summary>
+    InitHaptic = 0x00001000,
 
-        /// <summary>
-        ///     The sdl init game controller
-        /// </summary>
-        InitGameController = 0x00002000,
+    /// <summary>
+    ///     Initialize the SDL game controller subsystem
+    /// </summary>
+    InitGameController = 0x00002000,
 
-        /// <summary>
-        ///     The sdl init events
-        /// </summary>
-        InitEvents = 0x00004000,
+    /// <summary>
+    ///     Initialize the SDL events subsystem
+    /// </summary>
+    InitEvents = 0x00004000,
 
-        /// <summary>
-        ///     The sdl init sensor
-        /// </summary>
-        InitSensor = 0x00008000,
+    /// <summary>
+    ///     Initialize the SDL sensor subsystem
+    /// </summary>
+    InitSensor = 0x00008000,
 
-        /// <summary>
-        ///     The init everything sdl init
-        /// </summary>
-        InitEverything = InitTimer | InitAudio | InitVideo | InitJoystick | InitHaptic | InitGameController | InitEvents | InitSensor
+    /// <summary>
+    ///     Initialize all available SDL subsystems at once
+    /// </summary>
+    InitEverything = InitTimer | InitAudio | InitVideo | InitJoystick | InitHaptic | InitGameController | InitEvents | InitSensor
     }
 }

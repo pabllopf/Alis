@@ -235,7 +235,7 @@ if ($dialog.ShowDialog() -eq 'OK') {{
         /// <summary>
         ///     Builds the filter string for Windows file dialogs.
         /// </summary>
-        private string BuildFilterString(List<FilePickerFilter> filters)
+        private static string BuildFilterString(List<FilePickerFilter> filters)
         {
             Logger.Trace($"Building filter string for {filters.Count} filter(s).");
 
@@ -254,7 +254,7 @@ if ($dialog.ShowDialog() -eq 'OK') {{
         /// <summary>
         ///     Executes a PowerShell script and returns the output.
         /// </summary>
-        private string ExecuteScript(string script)
+        private static string ExecuteScript(string script)
         {
             Logger.Trace("Executing PowerShell script.");
 
@@ -272,7 +272,7 @@ if ($dialog.ShowDialog() -eq 'OK') {{
         /// <summary>
         ///     Parses the dialog result.
         /// </summary>
-        private FilePickerResult ParseResult(string output, FilePickerOptions options, bool allowMultiple)
+        private static FilePickerResult ParseResult(string output, FilePickerOptions options, bool allowMultiple)
         {
             Logger.Trace($"Parsing result from dialog output: {output ?? "(null)"}");
 
@@ -309,7 +309,7 @@ if ($dialog.ShowDialog() -eq 'OK') {{
         /// <summary>
         ///     Escapes special characters in PowerShell strings.
         /// </summary>
-        private string EscapeScriptString(string input)
+        private static string EscapeScriptString(string input)
         {
             if (string.IsNullOrEmpty(input))
             {

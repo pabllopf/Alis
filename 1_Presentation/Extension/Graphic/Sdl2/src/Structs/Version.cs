@@ -32,35 +32,35 @@ using System.Runtime.InteropServices;
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl version
+    ///     Represents an SDL version structure with major, minor, and patch components.
     /// </summary>
     [StructLayout(LayoutKind.Explicit)]
     public struct Version
     {
         /// <summary>
-        ///     The major
+        ///     The major version number.
         /// </summary>
         [FieldOffset(0)] public byte major;
 
 
         /// <summary>
-        ///     The minor
+        ///     The minor version number.
         /// </summary>
         [FieldOffset(1)] public byte minor;
 
 
         /// <summary>
-        ///     The patch
+        ///     The patch version number.
         /// </summary>
         [FieldOffset(2)] public byte patch;
 
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Version" /> class
+        ///     Initializes a new instance of the <see cref="Version" /> struct with the specified version components.
         /// </summary>
-        /// <param name="sdlTtfMajorVersion">The sdl ttf major version</param>
-        /// <param name="sdlTtfMinorVersion">The sdl ttf minor version</param>
-        /// <param name="sdlTtfPatchLevel">The sdl ttf patch level</param>
+        /// <param name="sdlTtfMajorVersion">The major version number.</param>
+        /// <param name="sdlTtfMinorVersion">The minor version number.</param>
+        /// <param name="sdlTtfPatchLevel">The patch level (revision) number.</param>
         public Version(int sdlTtfMajorVersion, int sdlTtfMinorVersion, int sdlTtfPatchLevel)
         {
             major = (byte) sdlTtfMajorVersion;

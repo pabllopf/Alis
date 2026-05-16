@@ -30,22 +30,22 @@
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     The im plot cond enum
+    ///     Conditions that determine when to apply a style or setting change in ImPlot.
     /// </summary>
     public enum ImPlotCond
     {
         /// <summary>
-        ///     The none im plot cond
+        ///     Do not apply the change.
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The always im plot cond
+        ///     Always apply the change, overwriting any existing value.
         /// </summary>
         Always = 1,
 
         /// <summary>
-        ///     The once im plot cond
+        ///     Apply the change only once, leaving subsequent user modifications intact.
         /// </summary>
         Once = 2
     }

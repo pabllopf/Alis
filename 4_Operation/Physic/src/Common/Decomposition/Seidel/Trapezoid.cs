@@ -244,7 +244,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         /// <param name="edge">The edge</param>
         /// <param name="x">The </param>
         /// <returns>The point</returns>
-        private Point LineIntersect(Edge edge, float x)
+        private static Point LineIntersect(Edge edge, float x)
         {
             float y = edge.Slope * x + edge.B;
             return new Point(x, y);

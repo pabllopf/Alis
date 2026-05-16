@@ -34,49 +34,49 @@ namespace Alis.Extension.Graphic.Sdl2.Enums
     /// </summary>
     public enum JoystickType
     {
-        /// <summary>
-        ///     The sdl joystick type unknown sdl joystick type
-        /// </summary>
-        SdlJoystickTypeUnknown,
+    /// <summary>
+    ///     Unknown or unrecognized joystick type
+    /// </summary>
+    SdlJoystickTypeUnknown,
 
-        /// <summary>
-        ///     The sdl joystick type game controller sdl joystick type
-        /// </summary>
-        SdlJoystickTypeGameController,
+    /// <summary>
+    ///     Joystick is a game controller (recognized mapping available)
+    /// </summary>
+    SdlJoystickTypeGameController,
 
-        /// <summary>
-        ///     The sdl joystick type wheel sdl joystick type
-        /// </summary>
-        SdlJoystickTypeWheel,
+    /// <summary>
+    ///     Joystick is a steering wheel controller
+    /// </summary>
+    SdlJoystickTypeWheel,
 
-        /// <summary>
-        ///     The sdl joystick type arcade stick sdl joystick type
-        /// </summary>
-        SdlJoystickTypeArcadeStick,
+    /// <summary>
+    ///     Joystick is an arcade-style joystick
+    /// </summary>
+    SdlJoystickTypeArcadeStick,
 
-        /// <summary>
-        ///     The sdl joystick type flight stick sdl joystick type
-        /// </summary>
-        SdlJoystickTypeFlightStick,
+    /// <summary>
+    ///     Joystick is a flight stick controller
+    /// </summary>
+    SdlJoystickTypeFlightStick,
 
-        /// <summary>
-        ///     The sdl joystick type dance pad sdl joystick type
-        /// </summary>
-        SdlJoystickTypeDancePad,
+    /// <summary>
+    ///     Joystick is a dance pad controller
+    /// </summary>
+    SdlJoystickTypeDancePad,
 
-        /// <summary>
-        ///     The sdl joystick type guitar sdl joystick type
-        /// </summary>
-        SdlJoystickTypeGuitar,
+    /// <summary>
+    ///     Joystick is a guitar-shaped controller (e.g., Guitar Hero)
+    /// </summary>
+    SdlJoystickTypeGuitar,
 
-        /// <summary>
-        ///     The sdl joystick type drum kit sdl joystick type
-        /// </summary>
-        SdlJoystickTypeDrumKit,
+    /// <summary>
+    ///     Joystick is a drum kit controller (e.g., Rock Band)
+    /// </summary>
+    SdlJoystickTypeDrumKit,
 
-        /// <summary>
-        ///     The sdl joystick type arcade pad sdl joystick type
-        /// </summary>
-        SdlJoystickTypeArcadePad
+    /// <summary>
+    ///     Joystick is an arcade-style gamepad
+    /// </summary>
+    SdlJoystickTypeArcadePad
     }
 }

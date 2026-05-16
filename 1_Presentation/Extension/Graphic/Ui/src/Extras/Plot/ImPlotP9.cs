@@ -43,7 +43,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         public static void PlotLine(string labelId, ref int xs, ref int ys, int count)
         {
             ImPlotNative.ImPlot_PlotLine_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, 0, 0, sizeof(int));
@@ -55,8 +55,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotLine(string labelId, ref int xs, ref int ys, int count, ImPlotLineFlags flags)
         {
             ImPlotNative.ImPlot_PlotLine_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, flags, 0, sizeof(int));
@@ -68,9 +68,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="offset">The offset from the origin</param>
         public static void PlotLine(string labelId, ref int xs, ref int ys, int count, ImPlotLineFlags flags, int offset)
         {
             ImPlotNative.ImPlot_PlotLine_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, flags, offset, sizeof(int));
@@ -82,10 +82,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        /// <param name="stride">The stride</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="offset">The offset from the origin</param>
+        /// <param name="stride">The byte stride between elements</param>
         public static void PlotLine(string labelId, ref int xs, ref int ys, int count, ImPlotLineFlags flags, int offset, int stride)
         {
             ImPlotNative.ImPlot_PlotLine_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, flags, offset, stride);
@@ -97,7 +97,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         public static void PlotLine(string labelId, ref uint xs, ref uint ys, int count)
         {
             ImPlotNative.ImPlot_PlotLine_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, 0, 0, sizeof(uint));
@@ -109,8 +109,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotLine(string labelId, ref uint xs, ref uint ys, int count, ImPlotLineFlags flags)
         {
             ImPlotNative.ImPlot_PlotLine_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, flags, 0, sizeof(uint));
@@ -122,9 +122,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="offset">The offset from the origin</param>
         public static void PlotLine(string labelId, ref uint xs, ref uint ys, int count, ImPlotLineFlags flags, int offset)
         {
             ImPlotNative.ImPlot_PlotLine_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, flags, offset, sizeof(uint));
@@ -136,10 +136,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        /// <param name="stride">The stride</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="offset">The offset from the origin</param>
+        /// <param name="stride">The byte stride between elements</param>
         public static void PlotLine(string labelId, ref uint xs, ref uint ys, int count, ImPlotLineFlags flags, int offset, int stride)
         {
             ImPlotNative.ImPlot_PlotLine_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, flags, offset, stride);
@@ -151,7 +151,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         public static void PlotLine(string labelId, ref long xs, ref long ys, int count)
         {
             ImPlotNative.ImPlot_PlotLine_S64PtrS64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, sizeof(long));
@@ -163,8 +163,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotLine(string labelId, ref long xs, ref long ys, int count, ImPlotLineFlags flags)
         {
             ImPlotNative.ImPlot_PlotLine_S64PtrS64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, 0, sizeof(long));
@@ -176,9 +176,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="offset">The offset from the origin</param>
         public static void PlotLine(string labelId, ref long xs, ref long ys, int count, ImPlotLineFlags flags, int offset)
         {
             ImPlotNative.ImPlot_PlotLine_S64PtrS64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, sizeof(long));
@@ -190,10 +190,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        /// <param name="stride">The stride</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="offset">The offset from the origin</param>
+        /// <param name="stride">The byte stride between elements</param>
         public static void PlotLine(string labelId, ref long xs, ref long ys, int count, ImPlotLineFlags flags, int offset, int stride)
         {
             ImPlotNative.ImPlot_PlotLine_S64PtrS64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, stride);
@@ -205,7 +205,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         public static void PlotLine(string labelId, ref ulong xs, ref ulong ys, int count)
         {
             ImPlotNative.ImPlot_PlotLine_U64PtrU64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, sizeof(ulong));
@@ -217,8 +217,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotLine(string labelId, ref ulong xs, ref ulong ys, int count, ImPlotLineFlags flags)
         {
             ImPlotNative.ImPlot_PlotLine_U64PtrU64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, 0, sizeof(ulong));
@@ -230,9 +230,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="offset">The offset from the origin</param>
         public static void PlotLine(string labelId, ref ulong xs, ref ulong ys, int count, ImPlotLineFlags flags, int offset)
         {
             ImPlotNative.ImPlot_PlotLine_U64PtrU64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, sizeof(ulong));
@@ -244,10 +244,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        /// <param name="stride">The stride</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="offset">The offset from the origin</param>
+        /// <param name="stride">The byte stride between elements</param>
         public static void PlotLine(string labelId, ref ulong xs, ref ulong ys, int count, ImPlotLineFlags flags, int offset, int stride)
         {
             ImPlotNative.ImPlot_PlotLine_U64PtrU64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, stride);
@@ -258,8 +258,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="getter">The getter</param>
-        /// <param name="data">The data</param>
-        /// <param name="count">The count</param>
+        /// <param name="data">The data buffer content</param>
+        /// <param name="count">The number of elements</param>
         public static void PlotLineG(string labelId, IntPtr getter, IntPtr data, int count)
         {
             ImPlotNative.ImPlot_PlotLineG(Encoding.UTF8.GetBytes(labelId), getter, data, count, 0);
@@ -270,9 +270,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="getter">The getter</param>
-        /// <param name="data">The data</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="data">The data buffer content</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotLineG(string labelId, IntPtr getter, IntPtr data, int count, ImPlotLineFlags flags)
         {
             ImPlotNative.ImPlot_PlotLineG(Encoding.UTF8.GetBytes(labelId), getter, data, count, flags);
@@ -283,10 +283,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelIds">The label ids</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
-        /// <param name="radius">The radius</param>
+        /// <param name="radius">The radius of the shape</param>
         public static void PlotPieChart(string[] labelIds, float[] values, int count, double x, double y, double radius)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -303,10 +303,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelIds">The label ids</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
-        /// <param name="radius">The radius</param>
+        /// <param name="radius">The radius of the shape</param>
         /// <param name="labelFmt">The label fmt</param>
         public static void PlotPieChart(string[] labelIds, float[] values, int count, double x, double y, double radius, string labelFmt)
         {
@@ -324,10 +324,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelIds">The label ids</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
-        /// <param name="radius">The radius</param>
+        /// <param name="radius">The radius of the shape</param>
         /// <param name="labelFmt">The label fmt</param>
         /// <param name="angle0">The angle</param>
         public static void PlotPieChart(string[] labelIds, float[] values, int count, double x, double y, double radius, string labelFmt, double angle0)
@@ -346,13 +346,13 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelIds">The label ids</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
-        /// <param name="radius">The radius</param>
+        /// <param name="radius">The radius of the shape</param>
         /// <param name="labelFmt">The label fmt</param>
         /// <param name="angle0">The angle</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotPieChart(string[] labelIds, float[] values, int count, double x, double y, double radius, string labelFmt, double angle0, ImPlotPieChartFlags flags)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -369,10 +369,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelIds">The label ids</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
-        /// <param name="radius">The radius</param>
+        /// <param name="radius">The radius of the shape</param>
         public static void PlotPieChart(string[] labelIds, double[] values, int count, double x, double y, double radius)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -389,10 +389,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelIds">The label ids</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
-        /// <param name="radius">The radius</param>
+        /// <param name="radius">The radius of the shape</param>
         /// <param name="labelFmt">The label fmt</param>
         public static void PlotPieChart(string[] labelIds, double[] values, int count, double x, double y, double radius, string labelFmt)
         {
@@ -410,10 +410,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelIds">The label ids</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
-        /// <param name="radius">The radius</param>
+        /// <param name="radius">The radius of the shape</param>
         /// <param name="labelFmt">The label fmt</param>
         /// <param name="angle0">The angle</param>
         public static void PlotPieChart(string[] labelIds, double[] values, int count, double x, double y, double radius, string labelFmt, double angle0)
@@ -432,13 +432,13 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelIds">The label ids</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
-        /// <param name="radius">The radius</param>
+        /// <param name="radius">The radius of the shape</param>
         /// <param name="labelFmt">The label fmt</param>
         /// <param name="angle0">The angle</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotPieChart(string[] labelIds, double[] values, int count, double x, double y, double radius, string labelFmt, double angle0, ImPlotPieChartFlags flags)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -455,10 +455,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelIds">The label ids</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
-        /// <param name="radius">The radius</param>
+        /// <param name="radius">The radius of the shape</param>
         public static void PlotPieChart(string[] labelIds, sbyte[] values, int count, double x, double y, double radius)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -475,10 +475,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelIds">The label ids</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
-        /// <param name="radius">The radius</param>
+        /// <param name="radius">The radius of the shape</param>
         /// <param name="labelFmt">The label fmt</param>
         public static void PlotPieChart(string[] labelIds, sbyte[] values, int count, double x, double y, double radius, string labelFmt)
         {
@@ -496,10 +496,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelIds">The label ids</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
-        /// <param name="radius">The radius</param>
+        /// <param name="radius">The radius of the shape</param>
         /// <param name="labelFmt">The label fmt</param>
         /// <param name="angle0">The angle</param>
         public static void PlotPieChart(string[] labelIds, sbyte[] values, int count, double x, double y, double radius, string labelFmt, double angle0)
@@ -518,13 +518,13 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelIds">The label ids</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
-        /// <param name="radius">The radius</param>
+        /// <param name="radius">The radius of the shape</param>
         /// <param name="labelFmt">The label fmt</param>
         /// <param name="angle0">The angle</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotPieChart(string[] labelIds, sbyte[] values, int count, double x, double y, double radius, string labelFmt, double angle0, ImPlotPieChartFlags flags)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -541,10 +541,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelIds">The label ids</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
-        /// <param name="radius">The radius</param>
+        /// <param name="radius">The radius of the shape</param>
         public static void PlotPieChart(string[] labelIds, byte[] values, int count, double x, double y, double radius)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -561,10 +561,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelIds">The label ids</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
-        /// <param name="radius">The radius</param>
+        /// <param name="radius">The radius of the shape</param>
         /// <param name="labelFmt">The label fmt</param>
         public static void PlotPieChart(string[] labelIds, byte[] values, int count, double x, double y, double radius, string labelFmt)
         {
@@ -582,10 +582,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelIds">The label ids</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
-        /// <param name="radius">The radius</param>
+        /// <param name="radius">The radius of the shape</param>
         /// <param name="labelFmt">The label fmt</param>
         /// <param name="angle0">The angle</param>
         public static void PlotPieChart(string[] labelIds, byte[] values, int count, double x, double y, double radius, string labelFmt, double angle0)
@@ -604,13 +604,13 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelIds">The label ids</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
-        /// <param name="radius">The radius</param>
+        /// <param name="radius">The radius of the shape</param>
         /// <param name="labelFmt">The label fmt</param>
         /// <param name="angle0">The angle</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotPieChart(string[] labelIds, byte[] values, int count, double x, double y, double radius, string labelFmt, double angle0, ImPlotPieChartFlags flags)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -627,10 +627,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelIds">The label ids</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
-        /// <param name="radius">The radius</param>
+        /// <param name="radius">The radius of the shape</param>
         public static void PlotPieChart(string[] labelIds, short[] values, int count, double x, double y, double radius)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -647,10 +647,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelIds">The label ids</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
-        /// <param name="radius">The radius</param>
+        /// <param name="radius">The radius of the shape</param>
         /// <param name="labelFmt">The label fmt</param>
         public static void PlotPieChart(string[] labelIds, short[] values, int count, double x, double y, double radius, string labelFmt)
         {
@@ -668,10 +668,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelIds">The label ids</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
-        /// <param name="radius">The radius</param>
+        /// <param name="radius">The radius of the shape</param>
         /// <param name="labelFmt">The label fmt</param>
         /// <param name="angle0">The angle</param>
         public static void PlotPieChart(string[] labelIds, short[] values, int count, double x, double y, double radius, string labelFmt, double angle0)
@@ -690,13 +690,13 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelIds">The label ids</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
-        /// <param name="radius">The radius</param>
+        /// <param name="radius">The radius of the shape</param>
         /// <param name="labelFmt">The label fmt</param>
         /// <param name="angle0">The angle</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotPieChart(string[] labelIds, short[] values, int count, double x, double y, double radius, string labelFmt, double angle0, ImPlotPieChartFlags flags)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -713,10 +713,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelIds">The label ids</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
-        /// <param name="radius">The radius</param>
+        /// <param name="radius">The radius of the shape</param>
         public static void PlotPieChart(string[] labelIds, ushort[] values, int count, double x, double y, double radius)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];

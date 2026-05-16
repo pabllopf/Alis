@@ -32,19 +32,19 @@ using System;
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     The im plot text flags enum
+    ///     Flags that control the orientation of text labels in ImPlot.
     /// </summary>
     [Flags]
     public enum ImPlotTextFlags
     {
         /// <summary>
-        ///     The none im plot text flags
+        ///     Default horizontal text orientation.
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The vertical im plot text flags
+        ///     Render text vertically instead of horizontally.
         /// </summary>
-        Vertical = 1024
+        Vertical = 1
     }
 }

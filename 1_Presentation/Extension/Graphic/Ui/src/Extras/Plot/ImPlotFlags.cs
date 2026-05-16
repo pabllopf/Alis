@@ -32,69 +32,69 @@ using System;
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     The im plot flags enum
+    ///     Flags that control the overall appearance and behaviour of an ImPlot plot.
     /// </summary>
     [Flags]
     public enum ImPlotFlags
     {
         /// <summary>
-        ///     The none im plot flags
+        ///     Default plot appearance with title, legend, frame, mouse text, and inputs enabled.
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The no title im plot flags
+        ///     Hide the plot title.
         /// </summary>
         NoTitle = 1,
 
         /// <summary>
-        ///     The no legend im plot flags
+        ///     Hide the plot legend.
         /// </summary>
         NoLegend = 2,
 
         /// <summary>
-        ///     The no mouse text im plot flags
+        ///     Hide the mouse position tooltip text.
         /// </summary>
         NoMouseText = 4,
 
         /// <summary>
-        ///     The no inputs im plot flags
+        ///     Disable all mouse and keyboard input interaction with the plot.
         /// </summary>
         NoInputs = 8,
 
         /// <summary>
-        ///     The no menus im plot flags
+        ///     Disable the plot's context menu.
         /// </summary>
         NoMenus = 16,
 
         /// <summary>
-        ///     The no box select im plot flags
+        ///     Disable box-select functionality (drag to zoom).
         /// </summary>
         NoBoxSelect = 32,
 
         /// <summary>
-        ///     The no child im plot flags
+        ///     Do not create a child window for the plot.
         /// </summary>
         NoChild = 64,
 
         /// <summary>
-        ///     The no frame im plot flags
+        ///     Remove the frame (border) drawn around the plot area.
         /// </summary>
         NoFrame = 128,
 
         /// <summary>
-        ///     The equal im plot flags
+        ///     Force equal aspect ratio for X and Y axes.
         /// </summary>
         Equal = 256,
 
         /// <summary>
-        ///     The crosshairs im plot flags
+        ///     Draw crosshairs cursor lines on the plot.
         /// </summary>
         Crosshairs = 512,
 
         /// <summary>
-        ///     The canvas only im plot flags
+        ///     Shorthand for NoTitle | NoLegend | NoMouseText | NoInputs | NoMenus | NoBoxSelect | NoChild | NoFrame.
         /// </summary>
-        CanvasOnly = 55
+        CanvasOnly = 200
     }
 }

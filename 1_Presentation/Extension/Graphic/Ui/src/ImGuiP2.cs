@@ -40,10 +40,10 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether drag int
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
         /// <param name="vSpeed">The speed</param>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragInt(string label, ref int v, float vSpeed)
         {
             byte ret = ImGuiNative.igDragInt(Encoding.UTF8.GetBytes(label), ref v, vSpeed, 0, 0, Encoding.UTF8.GetBytes("%d"), ImGuiSliderFlags.None);
@@ -53,11 +53,11 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether drag int
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
         /// <param name="vSpeed">The speed</param>
-        /// <param name="vMin">The min</param>
-        /// <returns>The bool</returns>
+        /// <param name="vMin">The minimum value range</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragInt(string label, ref int v, float vSpeed, int vMin)
         {
             byte ret = ImGuiNative.igDragInt(Encoding.UTF8.GetBytes(label), ref v, vSpeed, vMin, 0, Encoding.UTF8.GetBytes("%d"), ImGuiSliderFlags.None);
@@ -67,12 +67,12 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether drag int
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
         /// <param name="vSpeed">The speed</param>
-        /// <param name="vMin">The min</param>
-        /// <param name="vMax">The max</param>
-        /// <returns>The bool</returns>
+        /// <param name="vMin">The minimum value range</param>
+        /// <param name="vMax">The maximum value range</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragInt(string label, ref int v, float vSpeed, int vMin, int vMax)
         {
             byte ret = ImGuiNative.igDragInt(Encoding.UTF8.GetBytes(label), ref v, vSpeed, vMin, vMax, Encoding.UTF8.GetBytes("%d"), ImGuiSliderFlags.None);
@@ -82,13 +82,13 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether drag int
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
         /// <param name="vSpeed">The speed</param>
-        /// <param name="vMin">The min</param>
-        /// <param name="vMax">The max</param>
-        /// <param name="format">The format</param>
-        /// <returns>The bool</returns>
+        /// <param name="vMin">The minimum value range</param>
+        /// <param name="vMax">The maximum value range</param>
+        /// <param name="format">The display format string (printf-style)</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragInt(string label, ref int v, float vSpeed, int vMin, int vMax, string format)
         {
             byte ret = ImGuiNative.igDragInt(Encoding.UTF8.GetBytes(label), ref v, vSpeed, vMin, vMax, Encoding.UTF8.GetBytes(format), ImGuiSliderFlags.None);
@@ -98,14 +98,14 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether drag int
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
         /// <param name="vSpeed">The speed</param>
-        /// <param name="vMin">The min</param>
-        /// <param name="vMax">The max</param>
-        /// <param name="format">The format</param>
-        /// <param name="flags">The flags</param>
-        /// <returns>The bool</returns>
+        /// <param name="vMin">The minimum value range</param>
+        /// <param name="vMax">The maximum value range</param>
+        /// <param name="format">The display format string (printf-style)</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragInt(string label, ref int v, float vSpeed, int vMin, int vMax, string format, ImGuiSliderFlags flags)
         {
             byte ret = ImGuiNative.igDragInt(Encoding.UTF8.GetBytes(label), ref v, vSpeed, vMin, vMax, Encoding.UTF8.GetBytes(format), flags);
@@ -116,9 +116,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether drag int 2
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragInt2(string label, ref int v)
         {
             byte ret = ImGuiNative.igDragInt2(Encoding.UTF8.GetBytes(label), ref v, 1.0f, 0, 0, Encoding.UTF8.GetBytes("%d"), ImGuiSliderFlags.None);
@@ -128,10 +128,10 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether drag int 2
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
         /// <param name="vSpeed">The speed</param>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragInt2(string label, ref int v, float vSpeed)
         {
             byte ret = ImGuiNative.igDragInt2(Encoding.UTF8.GetBytes(label), ref v, vSpeed, 0, 0, Encoding.UTF8.GetBytes("%d"), ImGuiSliderFlags.None);
@@ -141,11 +141,11 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether drag int 2
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
         /// <param name="vSpeed">The speed</param>
-        /// <param name="vMin">The min</param>
-        /// <returns>The bool</returns>
+        /// <param name="vMin">The minimum value range</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragInt2(string label, ref int v, float vSpeed, int vMin)
         {
             byte ret = ImGuiNative.igDragInt2(Encoding.UTF8.GetBytes(label), ref v, vSpeed, vMin, 0, Encoding.UTF8.GetBytes("%d"), ImGuiSliderFlags.None);
@@ -155,12 +155,12 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether drag int 2
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
         /// <param name="vSpeed">The speed</param>
-        /// <param name="vMin">The min</param>
-        /// <param name="vMax">The max</param>
-        /// <returns>The bool</returns>
+        /// <param name="vMin">The minimum value range</param>
+        /// <param name="vMax">The maximum value range</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragInt2(string label, ref int v, float vSpeed, int vMin, int vMax)
         {
             byte ret = ImGuiNative.igDragInt2(Encoding.UTF8.GetBytes(label), ref v, vSpeed, vMin, vMax, Encoding.UTF8.GetBytes("%d"), ImGuiSliderFlags.None);
@@ -170,13 +170,13 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether drag int 2
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
         /// <param name="vSpeed">The speed</param>
-        /// <param name="vMin">The min</param>
-        /// <param name="vMax">The max</param>
-        /// <param name="format">The format</param>
-        /// <returns>The bool</returns>
+        /// <param name="vMin">The minimum value range</param>
+        /// <param name="vMax">The maximum value range</param>
+        /// <param name="format">The display format string (printf-style)</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragInt2(string label, ref int v, float vSpeed, int vMin, int vMax, string format)
         {
             byte ret = ImGuiNative.igDragInt2(Encoding.UTF8.GetBytes(label), ref v, vSpeed, vMin, vMax, Encoding.UTF8.GetBytes(format), ImGuiSliderFlags.None);
@@ -186,14 +186,14 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether drag int 2
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
         /// <param name="vSpeed">The speed</param>
-        /// <param name="vMin">The min</param>
-        /// <param name="vMax">The max</param>
-        /// <param name="format">The format</param>
-        /// <param name="flags">The flags</param>
-        /// <returns>The bool</returns>
+        /// <param name="vMin">The minimum value range</param>
+        /// <param name="vMax">The maximum value range</param>
+        /// <param name="format">The display format string (printf-style)</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragInt2(string label, ref int v, float vSpeed, int vMin, int vMax, string format, ImGuiSliderFlags flags)
         {
             byte ret = ImGuiNative.igDragInt2(Encoding.UTF8.GetBytes(label), ref v, vSpeed, vMin, vMax, Encoding.UTF8.GetBytes(format), flags);
@@ -203,9 +203,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether drag int 3
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragInt3(string label, ref int v)
         {
             byte ret = ImGuiNative.igDragInt3(Encoding.UTF8.GetBytes(label), ref v, 1.0f, 0, 0, Encoding.UTF8.GetBytes("%d"), ImGuiSliderFlags.None);
@@ -215,10 +215,10 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether drag int 3
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
         /// <param name="vSpeed">The speed</param>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragInt3(string label, ref int v, float vSpeed)
         {
             byte ret = ImGuiNative.igDragInt3(Encoding.UTF8.GetBytes(label), ref v, vSpeed, 0, 0, Encoding.UTF8.GetBytes("%d"), ImGuiSliderFlags.None);
@@ -228,11 +228,11 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether drag int 3
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
         /// <param name="vSpeed">The speed</param>
-        /// <param name="vMin">The min</param>
-        /// <returns>The bool</returns>
+        /// <param name="vMin">The minimum value range</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragInt3(string label, ref int v, float vSpeed, int vMin)
         {
             byte ret = ImGuiNative.igDragInt3(Encoding.UTF8.GetBytes(label), ref v, vSpeed, vMin, 0, Encoding.UTF8.GetBytes("%d"), ImGuiSliderFlags.None);
@@ -242,12 +242,12 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether drag int 3
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
         /// <param name="vSpeed">The speed</param>
-        /// <param name="vMin">The min</param>
-        /// <param name="vMax">The max</param>
-        /// <returns>The bool</returns>
+        /// <param name="vMin">The minimum value range</param>
+        /// <param name="vMax">The maximum value range</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragInt3(string label, ref int v, float vSpeed, int vMin, int vMax)
         {
             byte ret = ImGuiNative.igDragInt3(Encoding.UTF8.GetBytes(label), ref v, vSpeed, vMin, vMax, Encoding.UTF8.GetBytes("%d"), ImGuiSliderFlags.None);
@@ -257,13 +257,13 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether drag int 3
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
         /// <param name="vSpeed">The speed</param>
-        /// <param name="vMin">The min</param>
-        /// <param name="vMax">The max</param>
-        /// <param name="format">The format</param>
-        /// <returns>The bool</returns>
+        /// <param name="vMin">The minimum value range</param>
+        /// <param name="vMax">The maximum value range</param>
+        /// <param name="format">The display format string (printf-style)</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragInt3(string label, ref int v, float vSpeed, int vMin, int vMax, string format)
         {
             byte ret = ImGuiNative.igDragInt3(Encoding.UTF8.GetBytes(label), ref v, vSpeed, vMin, vMax, Encoding.UTF8.GetBytes(format), ImGuiSliderFlags.None);
@@ -273,14 +273,14 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether drag int 3
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
         /// <param name="vSpeed">The speed</param>
-        /// <param name="vMin">The min</param>
-        /// <param name="vMax">The max</param>
-        /// <param name="format">The format</param>
-        /// <param name="flags">The flags</param>
-        /// <returns>The bool</returns>
+        /// <param name="vMin">The minimum value range</param>
+        /// <param name="vMax">The maximum value range</param>
+        /// <param name="format">The display format string (printf-style)</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragInt3(string label, ref int v, float vSpeed, int vMin, int vMax, string format, ImGuiSliderFlags flags)
         {
             byte ret = ImGuiNative.igDragInt3(Encoding.UTF8.GetBytes(label), ref v, vSpeed, vMin, vMax, Encoding.UTF8.GetBytes(format), flags);
@@ -290,9 +290,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether drag int 4
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragInt4(string label, ref int v)
         {
             byte ret = ImGuiNative.igDragInt4(Encoding.UTF8.GetBytes(label), ref v, 1.0f, 0, 0, Encoding.UTF8.GetBytes("%d"), ImGuiSliderFlags.None);
@@ -302,10 +302,10 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether drag int 4
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
         /// <param name="vSpeed">The speed</param>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragInt4(string label, ref int v, float vSpeed)
         {
             byte ret = ImGuiNative.igDragInt4(Encoding.UTF8.GetBytes(label), ref v, vSpeed, 0, 0, Encoding.UTF8.GetBytes("%d"), ImGuiSliderFlags.None);
@@ -315,11 +315,11 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether drag int 4
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
         /// <param name="vSpeed">The speed</param>
-        /// <param name="vMin">The min</param>
-        /// <returns>The bool</returns>
+        /// <param name="vMin">The minimum value range</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragInt4(string label, ref int v, float vSpeed, int vMin)
         {
             byte ret = ImGuiNative.igDragInt4(Encoding.UTF8.GetBytes(label), ref v, vSpeed, vMin, 0, Encoding.UTF8.GetBytes("%d"), ImGuiSliderFlags.None);
@@ -329,12 +329,12 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether drag int 4
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
         /// <param name="vSpeed">The speed</param>
-        /// <param name="vMin">The min</param>
-        /// <param name="vMax">The max</param>
-        /// <returns>The bool</returns>
+        /// <param name="vMin">The minimum value range</param>
+        /// <param name="vMax">The maximum value range</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragInt4(string label, ref int v, float vSpeed, int vMin, int vMax)
         {
             byte ret = ImGuiNative.igDragInt4(Encoding.UTF8.GetBytes(label), ref v, vSpeed, vMin, vMax, Encoding.UTF8.GetBytes("%d"), ImGuiSliderFlags.None);
@@ -344,13 +344,13 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether drag int 4
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
         /// <param name="vSpeed">The speed</param>
-        /// <param name="vMin">The min</param>
-        /// <param name="vMax">The max</param>
-        /// <param name="format">The format</param>
-        /// <returns>The bool</returns>
+        /// <param name="vMin">The minimum value range</param>
+        /// <param name="vMax">The maximum value range</param>
+        /// <param name="format">The display format string (printf-style)</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragInt4(string label, ref int v, float vSpeed, int vMin, int vMax, string format)
         {
             byte ret = ImGuiNative.igDragInt4(Encoding.UTF8.GetBytes(label), ref v, vSpeed, vMin, vMax, Encoding.UTF8.GetBytes(format), ImGuiSliderFlags.None);
@@ -360,14 +360,14 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether drag int 4
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
         /// <param name="vSpeed">The speed</param>
-        /// <param name="vMin">The min</param>
-        /// <param name="vMax">The max</param>
-        /// <param name="format">The format</param>
-        /// <param name="flags">The flags</param>
-        /// <returns>The bool</returns>
+        /// <param name="vMin">The minimum value range</param>
+        /// <param name="vMax">The maximum value range</param>
+        /// <param name="format">The display format string (printf-style)</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragInt4(string label, ref int v, float vSpeed, int vMin, int vMax, string format, ImGuiSliderFlags flags)
         {
             byte ret = ImGuiNative.igDragInt4(Encoding.UTF8.GetBytes(label), ref v, vSpeed, vMin, vMax, Encoding.UTF8.GetBytes(format), flags);
@@ -377,10 +377,10 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether drag int range 2
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="vCurrentMin">The current min</param>
         /// <param name="vCurrentMax">The current max</param>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragIntRange2(string label, ref int vCurrentMin, ref int vCurrentMax)
         {
             byte[] formatMax = Encoding.UTF8.GetBytes("");
@@ -391,11 +391,11 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether drag int range 2
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="vCurrentMin">The current min</param>
         /// <param name="vCurrentMax">The current max</param>
         /// <param name="vSpeed">The speed</param>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragIntRange2(string label, ref int vCurrentMin, ref int vCurrentMax, float vSpeed)
         {
             byte[] formatMax = Encoding.UTF8.GetBytes("");
@@ -407,12 +407,12 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether drag int range 2
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="vCurrentMin">The current min</param>
         /// <param name="vCurrentMax">The current max</param>
         /// <param name="vSpeed">The speed</param>
-        /// <param name="vMin">The min</param>
-        /// <returns>The bool</returns>
+        /// <param name="vMin">The minimum value range</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragIntRange2(string label, ref int vCurrentMin, ref int vCurrentMax, float vSpeed, int vMin)
         {
             byte[] formatMax = Encoding.UTF8.GetBytes("");
@@ -423,13 +423,13 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether drag int range 2
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="vCurrentMin">The current min</param>
         /// <param name="vCurrentMax">The current max</param>
         /// <param name="vSpeed">The speed</param>
-        /// <param name="vMin">The min</param>
-        /// <param name="vMax">The max</param>
-        /// <returns>The bool</returns>
+        /// <param name="vMin">The minimum value range</param>
+        /// <param name="vMax">The maximum value range</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragIntRange2(string label, ref int vCurrentMin, ref int vCurrentMax, float vSpeed, int vMin, int vMax)
         {
             byte[] formatMax = Encoding.UTF8.GetBytes("");
@@ -440,14 +440,14 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether drag int range 2
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="vCurrentMin">The current min</param>
         /// <param name="vCurrentMax">The current max</param>
         /// <param name="vSpeed">The speed</param>
-        /// <param name="vMin">The min</param>
-        /// <param name="vMax">The max</param>
-        /// <param name="format">The format</param>
-        /// <returns>The bool</returns>
+        /// <param name="vMin">The minimum value range</param>
+        /// <param name="vMax">The maximum value range</param>
+        /// <param name="format">The display format string (printf-style)</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragIntRange2(string label, ref int vCurrentMin, ref int vCurrentMax, float vSpeed, int vMin, int vMax, string format)
         {
             byte[] formatMax = Encoding.UTF8.GetBytes("");
@@ -458,15 +458,15 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether drag int range 2
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="vCurrentMin">The current min</param>
         /// <param name="vCurrentMax">The current max</param>
         /// <param name="vSpeed">The speed</param>
-        /// <param name="vMin">The min</param>
-        /// <param name="vMax">The max</param>
-        /// <param name="format">The format</param>
+        /// <param name="vMin">The minimum value range</param>
+        /// <param name="vMax">The maximum value range</param>
+        /// <param name="format">The display format string (printf-style)</param>
         /// <param name="formatMax">The format max</param>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragIntRange2(string label, ref int vCurrentMin, ref int vCurrentMax, float vSpeed, int vMin, int vMax, string format, string formatMax)
         {
             byte ret = ImGuiNative.igDragIntRange2(Encoding.UTF8.GetBytes(label), ref vCurrentMin, ref vCurrentMax, vSpeed, vMin, vMax, Encoding.UTF8.GetBytes(format), Encoding.UTF8.GetBytes(formatMax), ImGuiSliderFlags.None);
@@ -476,16 +476,16 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether drag int range 2
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="vCurrentMin">The current min</param>
         /// <param name="vCurrentMax">The current max</param>
         /// <param name="vSpeed">The speed</param>
-        /// <param name="vMin">The min</param>
-        /// <param name="vMax">The max</param>
-        /// <param name="format">The format</param>
+        /// <param name="vMin">The minimum value range</param>
+        /// <param name="vMax">The maximum value range</param>
+        /// <param name="format">The display format string (printf-style)</param>
         /// <param name="formatMax">The format max</param>
-        /// <param name="flags">The flags</param>
-        /// <returns>The bool</returns>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragIntRange2(string label, ref int vCurrentMin, ref int vCurrentMax, float vSpeed, int vMin, int vMax, string format, string formatMax, ImGuiSliderFlags flags)
         {
             byte ret = ImGuiNative.igDragIntRange2(Encoding.UTF8.GetBytes(label), ref vCurrentMin, ref vCurrentMax, vSpeed, vMin, vMax, Encoding.UTF8.GetBytes(format), Encoding.UTF8.GetBytes(formatMax), flags);
@@ -496,10 +496,10 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether drag scalar
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="dataType">The data type</param>
-        /// <param name="pData">The data</param>
-        /// <returns>The bool</returns>
+        /// <param name="pData">The pointer to the data value</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragScalar(string label, ImGuiDataType dataType, IntPtr pData)
         {
             byte ret = ImGuiNative.igDragScalar(Encoding.UTF8.GetBytes(label), dataType, pData, 1.0f, IntPtr.Zero, IntPtr.Zero, null, ImGuiSliderFlags.None);
@@ -509,11 +509,11 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether drag scalar
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="dataType">The data type</param>
-        /// <param name="pData">The data</param>
+        /// <param name="pData">The pointer to the data value</param>
         /// <param name="vSpeed">The speed</param>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragScalar(string label, ImGuiDataType dataType, IntPtr pData, float vSpeed)
         {
             byte ret = ImGuiNative.igDragScalar(Encoding.UTF8.GetBytes(label), dataType, pData, vSpeed, IntPtr.Zero, IntPtr.Zero, null, ImGuiSliderFlags.None);
@@ -523,12 +523,12 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether drag scalar
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="dataType">The data type</param>
-        /// <param name="pData">The data</param>
+        /// <param name="pData">The pointer to the data value</param>
         /// <param name="vSpeed">The speed</param>
-        /// <param name="pMin">The min</param>
-        /// <returns>The bool</returns>
+        /// <param name="pMin">The minimum value pointer</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragScalar(string label, ImGuiDataType dataType, IntPtr pData, float vSpeed, IntPtr pMin)
         {
             byte ret = ImGuiNative.igDragScalar(Encoding.UTF8.GetBytes(label), dataType, pData, vSpeed, pMin, IntPtr.Zero, null, ImGuiSliderFlags.None);
@@ -538,13 +538,13 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether drag scalar
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="dataType">The data type</param>
-        /// <param name="pData">The data</param>
+        /// <param name="pData">The pointer to the data value</param>
         /// <param name="vSpeed">The speed</param>
-        /// <param name="pMin">The min</param>
-        /// <param name="pMax">The max</param>
-        /// <returns>The bool</returns>
+        /// <param name="pMin">The minimum value pointer</param>
+        /// <param name="pMax">The maximum value pointer</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragScalar(string label, ImGuiDataType dataType, IntPtr pData, float vSpeed, IntPtr pMin, IntPtr pMax)
         {
             byte ret = ImGuiNative.igDragScalar(Encoding.UTF8.GetBytes(label), dataType, pData, vSpeed, pMin, pMax, null, ImGuiSliderFlags.None);
@@ -554,14 +554,14 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether drag scalar
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="dataType">The data type</param>
-        /// <param name="pData">The data</param>
+        /// <param name="pData">The pointer to the data value</param>
         /// <param name="vSpeed">The speed</param>
-        /// <param name="pMin">The min</param>
-        /// <param name="pMax">The max</param>
-        /// <param name="format">The format</param>
-        /// <returns>The bool</returns>
+        /// <param name="pMin">The minimum value pointer</param>
+        /// <param name="pMax">The maximum value pointer</param>
+        /// <param name="format">The display format string (printf-style)</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragScalar(string label, ImGuiDataType dataType, IntPtr pData, float vSpeed, IntPtr pMin, IntPtr pMax, string format)
         {
             byte ret = ImGuiNative.igDragScalar(Encoding.UTF8.GetBytes(label), dataType, pData, vSpeed, pMin, pMax, Encoding.UTF8.GetBytes(format), ImGuiSliderFlags.None);
@@ -571,15 +571,15 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether drag scalar
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="dataType">The data type</param>
-        /// <param name="pData">The data</param>
+        /// <param name="pData">The pointer to the data value</param>
         /// <param name="vSpeed">The speed</param>
-        /// <param name="pMin">The min</param>
-        /// <param name="pMax">The max</param>
-        /// <param name="format">The format</param>
-        /// <param name="flags">The flags</param>
-        /// <returns>The bool</returns>
+        /// <param name="pMin">The minimum value pointer</param>
+        /// <param name="pMax">The maximum value pointer</param>
+        /// <param name="format">The display format string (printf-style)</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragScalar(string label, ImGuiDataType dataType, IntPtr pData, float vSpeed, IntPtr pMin, IntPtr pMax, string format, ImGuiSliderFlags flags)
         {
             byte ret = ImGuiNative.igDragScalar(Encoding.UTF8.GetBytes(label), dataType, pData, vSpeed, pMin, pMax, Encoding.UTF8.GetBytes(format), flags);
@@ -589,11 +589,11 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether drag scalar n
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="dataType">The data type</param>
-        /// <param name="pData">The data</param>
-        /// <param name="components">The components</param>
-        /// <returns>The bool</returns>
+        /// <param name="pData">The pointer to the data value</param>
+        /// <param name="components">The number of components in the value</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragScalarN(string label, ImGuiDataType dataType, IntPtr pData, int components)
         {
             byte ret = ImGuiNative.igDragScalarN(Encoding.UTF8.GetBytes(label), dataType, pData, components, 1.0f, IntPtr.Zero, IntPtr.Zero, null, ImGuiSliderFlags.None);
@@ -603,12 +603,12 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether drag scalar n
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="dataType">The data type</param>
-        /// <param name="pData">The data</param>
-        /// <param name="components">The components</param>
+        /// <param name="pData">The pointer to the data value</param>
+        /// <param name="components">The number of components in the value</param>
         /// <param name="vSpeed">The speed</param>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragScalarN(string label, ImGuiDataType dataType, IntPtr pData, int components, float vSpeed)
         {
             byte ret = ImGuiNative.igDragScalarN(Encoding.UTF8.GetBytes(label), dataType, pData, components, vSpeed, IntPtr.Zero, IntPtr.Zero, null, ImGuiSliderFlags.None);
@@ -618,13 +618,13 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether drag scalar n
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="dataType">The data type</param>
-        /// <param name="pData">The data</param>
-        /// <param name="components">The components</param>
+        /// <param name="pData">The pointer to the data value</param>
+        /// <param name="components">The number of components in the value</param>
         /// <param name="vSpeed">The speed</param>
-        /// <param name="pMin">The min</param>
-        /// <returns>The bool</returns>
+        /// <param name="pMin">The minimum value pointer</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragScalarN(string label, ImGuiDataType dataType, IntPtr pData, int components, float vSpeed, IntPtr pMin)
         {
             byte ret = ImGuiNative.igDragScalarN(Encoding.UTF8.GetBytes(label), dataType, pData, components, vSpeed, pMin, IntPtr.Zero, null, ImGuiSliderFlags.None);

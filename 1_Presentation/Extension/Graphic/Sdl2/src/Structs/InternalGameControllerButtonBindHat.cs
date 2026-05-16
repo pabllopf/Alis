@@ -32,18 +32,18 @@ using System.Runtime.InteropServices;
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The internal game controller button bind hat
+    ///     Represents an SDL game controller button binding for a hat (directional pad) input.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct InternalGameControllerButtonBindHat
     {
         /// <summary>
-        ///     The hat
+        ///     The hat index on the joystick (0-based).
         /// </summary>
         public int Hat { get; set; }
 
         /// <summary>
-        ///     The hat mask
+        ///     The hat mask value indicating the direction(s) pressed (e.g. SDL_HAT_UP, SDL_HAT_LEFT).
         /// </summary>
         public int HatMask { get; set; }
     }

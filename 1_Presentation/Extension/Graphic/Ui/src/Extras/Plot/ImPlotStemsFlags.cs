@@ -32,18 +32,18 @@ using System;
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     The im plot stems flags enum
+    ///     Flags that control the orientation of stem plots in ImPlot.
     /// </summary>
     [Flags]
     public enum ImPlotStemsFlags
     {
         /// <summary>
-        ///     The none im plot stems flags
+        ///     Default vertical stems.
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The horizontal im plot stems flags
+        ///     Draw stems horizontally instead of vertically.
         /// </summary>
         Horizontal = 1024
     }

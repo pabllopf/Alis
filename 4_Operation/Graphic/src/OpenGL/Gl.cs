@@ -753,7 +753,7 @@ namespace Alis.Core.Graphic.OpenGL
         /// <param name="viewport">The array to receive the queried values</param>
         public static void GlGetIntegerv(int i, int[] viewport)
         {
-            GetIntegerv getIntegerv = GetCommand<GetIntegerv>("glGetIntegerv");
+            GetCommand<GetIntegerv>("glGetIntegerv");
             GlGetIntegerV(i, viewport);
         }
 

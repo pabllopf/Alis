@@ -30,27 +30,27 @@
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     The im plot scale enum
+    ///     Defines the scaling type applied to plot axes in ImPlot.
     /// </summary>
     public enum ImPlotScale
     {
         /// <summary>
-        ///     The linear im plot scale
+        ///     Linear scale (default).
         /// </summary>
         Linear = 0,
 
         /// <summary>
-        ///     The time im plot scale
+        ///     Time scale suitable for date/time data.
         /// </summary>
         Time = 1,
 
         /// <summary>
-        ///     The log 10 im plot scale
+        ///     Base-10 logarithmic scale.
         /// </summary>
         Log10 = 2,
 
         /// <summary>
-        ///     The sym log im plot scale
+        ///     Symmetric log scale, handling both positive and negative values.
         /// </summary>
         SymLog = 3
     }

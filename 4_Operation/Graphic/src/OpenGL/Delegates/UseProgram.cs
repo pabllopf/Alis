@@ -32,8 +32,9 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     The use program
+    ///     Installs a program object as part of the current rendering state
     /// </summary>
+    /// <param name="program">Specifies the program object to use</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void UseProgram(uint program);
 }

@@ -34,14 +34,14 @@ namespace Alis.Extension.Graphic.Sdl2.Enums
     /// </summary>
     public enum MouseWheelDirection : uint
     {
-        /// <summary>
-        ///     The sdl mousewheel normal sdl mouse wheel direction
-        /// </summary>
-        SdlMousewheelNormal,
+    /// <summary>
+    ///     Mouse wheel scroll direction is normal (away from user is positive)
+    /// </summary>
+    SdlMousewheelNormal,
 
-        /// <summary>
-        ///     The sdl mousewheel flipped sdl mouse wheel direction
-        /// </summary>
-        SdlMousewheelFlipped
+    /// <summary>
+    ///     Mouse wheel scroll direction is flipped (toward user is positive)
+    /// </summary>
+    SdlMousewheelFlipped
     }
 }

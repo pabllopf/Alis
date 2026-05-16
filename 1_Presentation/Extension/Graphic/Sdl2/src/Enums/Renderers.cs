@@ -37,29 +37,29 @@ namespace Alis.Extension.Graphic.Sdl2.Enums
     [Flags]
     public enum Renderers : uint
     {
-        /// <summary>
-        ///     The none renderer
-        /// </summary>
-        None = 0x00000000,
+    /// <summary>
+    ///     No renderer flags set (software fallback)
+    /// </summary>
+    None = 0x00000000,
 
-        /// <summary>
-        ///     The sdl renderer software sdl renderer flags
-        /// </summary>
-        SdlRendererSoftware = 0x00000001,
+    /// <summary>
+    ///     Renderer uses software-based rendering (CPU, no GPU)
+    /// </summary>
+    SdlRendererSoftware = 0x00000001,
 
-        /// <summary>
-        ///     The sdl renderer accelerated sdl renderer flags
-        /// </summary>
-        SdlRendererAccelerated = 0x00000002,
+    /// <summary>
+    ///     Renderer uses hardware-accelerated rendering (GPU)
+    /// </summary>
+    SdlRendererAccelerated = 0x00000002,
 
-        /// <summary>
-        ///     The sdl renderer present vsync sdl renderer flags
-        /// </summary>
-        SdlRendererPresentVSync = 0x00000004,
+    /// <summary>
+    ///     Renderer will present frames synchronized with vertical refresh
+    /// </summary>
+    SdlRendererPresentVSync = 0x00000004,
 
-        /// <summary>
-        ///     The sdl renderer target texture sdl renderer flags
-        /// </summary>
-        SdlRendererTargetTexture = 0x00000008
+    /// <summary>
+    ///     Renderer supports rendering to a texture target
+    /// </summary>
+    SdlRendererTargetTexture = 0x00000008
     }
 }

@@ -764,8 +764,6 @@ namespace Alis.Extension.Graphic.Ui
             }
             set
             {
-                float[] navInputs = Marshal.PtrToStructure<ImGuiIo>(NativePtr).NavInputs;
-
                 float[] navInputs2 = new float[21];
                 for (int i = 0; i < value.Count; i++)
                 {
@@ -1594,7 +1592,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the mouse viewport event using the specified id
         /// </summary>
-        /// <param name="id">The id</param>
+        /// <param name="id">The unique identifier for the element</param>
         public void AddMouseViewportEvent(uint id)
         {
             ImGuiNative.ImGuiIO_AddMouseViewportEvent(NativePtr, id);

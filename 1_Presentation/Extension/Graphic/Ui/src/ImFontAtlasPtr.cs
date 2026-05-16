@@ -198,11 +198,11 @@ namespace Alis.Extension.Graphic.Ui
         ///     Adds the custom rect font glyph using the specified font
         /// </summary>
         /// <param name="font">The font</param>
-        /// <param name="id">The id</param>
+        /// <param name="id">The unique identifier for the element</param>
         /// <param name="width">The width</param>
         /// <param name="height">The height</param>
         /// <param name="advanceX">The advance</param>
-        /// <returns>The ret</returns>
+        /// <returns>The result returned from the native function</returns>
         public int AddCustomRectFontGlyph(ImFontPtr font, ushort id, int width, int height, float advanceX)
         {
             Vector2F offset = new Vector2F();
@@ -214,12 +214,12 @@ namespace Alis.Extension.Graphic.Ui
         ///     Adds the custom rect font glyph using the specified font
         /// </summary>
         /// <param name="font">The font</param>
-        /// <param name="id">The id</param>
+        /// <param name="id">The unique identifier for the element</param>
         /// <param name="width">The width</param>
         /// <param name="height">The height</param>
         /// <param name="advanceX">The advance</param>
-        /// <param name="offset">The offset</param>
-        /// <returns>The ret</returns>
+        /// <param name="offset">The offset from the origin</param>
+        /// <returns>The result returned from the native function</returns>
         public int AddCustomRectFontGlyph(ImFontPtr font, ushort id, int width, int height, float advanceX, Vector2F offset)
         {
             int ret = ImGuiNative.ImFontAtlas_AddCustomRectFontGlyph(NativePtr, font.NativePtr, id, width, height, advanceX, offset);
@@ -231,7 +231,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="width">The width</param>
         /// <param name="height">The height</param>
-        /// <returns>The ret</returns>
+        /// <returns>The result returned from the native function</returns>
         public int AddCustomRectRegular(int width, int height)
         {
             int ret = ImGuiNative.ImFontAtlas_AddCustomRectRegular(NativePtr, width, height);
@@ -284,7 +284,6 @@ namespace Alis.Extension.Graphic.Ui
         /// <returns>The im font ptr</returns>
         public ImFontPtr AddFontFromFileTtf(string filename, float sizePixels, ImFontConfigPtr fontCfg)
         {
-            ushort[] glyphRanges = new ushort[0];
             IntPtr ret = ImGuiNative.ImFontAtlas_AddFontFromFileTTF(NativePtr, Encoding.UTF8.GetBytes(filename), sizePixels, fontCfg.NativePtr, new IntPtr());
             return new ImFontPtr(ret);
         }
@@ -427,7 +426,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether this instance build
         /// </summary>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public bool Build()
         {
             byte ret = ImGuiNative.ImFontAtlas_Build(NativePtr);
@@ -574,7 +573,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="outSize">The out size</param>
         /// <param name="outUvBorder">The out uv border</param>
         /// <param name="outUvFill">The out uv fill</param>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public bool GetMouseCursorTexData(ImGuiMouseCursor cursor, out Vector2F outOffset, out Vector2F outSize, out Vector2F outUvBorder, out Vector2F outUvFill)
         {
             byte ret = ImGuiNative.ImFontAtlas_GetMouseCursorTexData(NativePtr, cursor, out outOffset, out outSize, out outUvBorder, out outUvFill);
@@ -665,7 +664,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether this instance is built
         /// </summary>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public bool IsBuilt()
         {
             byte ret = ImGuiNative.ImFontAtlas_IsBuilt(NativePtr);
@@ -675,7 +674,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Sets the tex id using the specified id
         /// </summary>
-        /// <param name="id">The id</param>
+        /// <param name="id">The unique identifier for the element</param>
         public void SetTexId(IntPtr id)
         {
             ImGuiNative.ImFontAtlas_SetTexID(NativePtr, id);

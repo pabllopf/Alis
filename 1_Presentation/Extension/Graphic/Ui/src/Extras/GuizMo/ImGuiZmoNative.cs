@@ -97,7 +97,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
         /// <summary>
         ///     Ims the guizmo is over nil
         /// </summary>
-        /// <returns>The byte</returns>
+        /// <returns>the byte result from the native operation</returns>
         [DllImport(NativeLibrary, EntryPoint = "ImGuizmo_IsOver_Nil", CallingConvention = CallingConvention.Cdecl)]
         internal static extern byte InternalIsOverNil();
 
@@ -105,14 +105,14 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
         ///     Ims the guizmo is over operation using the specified op
         /// </summary>
         /// <param name="op">The op</param>
-        /// <returns>The byte</returns>
+        /// <returns>the byte result from the native operation</returns>
         [DllImport(NativeLibrary, EntryPoint = "ImGuizmo_IsOverOPERATION", CallingConvention = CallingConvention.Cdecl)]
         internal static extern byte InternalIsOverOPERATION(Operation op);
 
         /// <summary>
         ///     Ims the guizmo is using
         /// </summary>
-        /// <returns>The byte</returns>
+        /// <returns>the byte result from the native operation</returns>
         [DllImport(NativeLibrary, EntryPoint = "ImGuizmo_IsUsing", CallingConvention = CallingConvention.Cdecl)]
         internal static extern byte InternalIsUsing();
 
@@ -128,7 +128,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
         /// <param name="snap">The snap</param>
         /// <param name="localBounds">The local bounds</param>
         /// <param name="boundsSnap">The bounds snap</param>
-        /// <returns>The byte</returns>
+        /// <returns>the byte result from the native operation</returns>
         [DllImport(NativeLibrary, EntryPoint = "ImGuizmo_Manipulate", CallingConvention = CallingConvention.Cdecl)]
         internal static extern byte InternalManipulate(IntPtr view, IntPtr projection, Operation operation, Mode mode, IntPtr matrix, IntPtr deltaMatrix, IntPtr snap, IntPtr localBounds, IntPtr boundsSnap);
 
@@ -159,14 +159,14 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
         /// <summary>
         ///     Ims the guizmo set id using the specified id
         /// </summary>
-        /// <param name="id">The id</param>
+        /// <param name="id">The unique identifier for the element</param>
         [DllImport(NativeLibrary, EntryPoint = "ImGuizmo_SetID", CallingConvention = CallingConvention.Cdecl)]
         internal static extern void InternalSetID(int id);
 
         /// <summary>
         ///     Ims the guizmo set im gui context using the specified ctx
         /// </summary>
-        /// <param name="ctx">The ctx</param>
+        /// <param name="ctx">The ImNodes context instance</param>
         [DllImport(NativeLibrary, EntryPoint = "ImGuizmo_SetImGuiContext", CallingConvention = CallingConvention.Cdecl)]
         internal static extern void InternalSetImGuiContext(IntPtr ctx);
 
@@ -193,7 +193,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
         /// <param name="view">The view</param>
         /// <param name="length">The length</param>
         /// <param name="position">The position</param>
-        /// <param name="size">The size</param>
+        /// <param name="size">The size of the element in pixels</param>
         /// <param name="backgroundColor">The background color</param>
         [DllImport(NativeLibrary, EntryPoint = "ImGuizmo_ViewManipulate_Float", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
         public static extern void ImGuizmo_ViewManipulate(float[] view, float length, Vector2F position, Vector2F size, uint backgroundColor);

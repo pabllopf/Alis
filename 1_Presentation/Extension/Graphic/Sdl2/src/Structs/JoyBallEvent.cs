@@ -33,28 +33,28 @@ using Alis.Extension.Graphic.Sdl2.Enums;
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl joy ball event
+    ///     Represents an SDL joystick ball event, fired when a joystick trackball moves.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct JoyBallEvent
     {
         /// <summary>
-        ///     The type
+        ///     The event type identifier, set to <see cref="EventType.JoyBallMotion"/>.
         /// </summary>
         public readonly EventType type;
 
         /// <summary>
-        ///     The timestamp
+        ///     The timestamp of the event, in milliseconds, from the SDL event system.
         /// </summary>
         public readonly uint timestamp;
 
         /// <summary>
-        ///     The which
+        ///     The SDL joystick instance ID that generated the event.
         /// </summary>
         public readonly int which;
 
         /// <summary>
-        ///     The ball
+        ///     The index of the trackball on the joystick (0-based).
         /// </summary>
         public readonly byte ball;
     }

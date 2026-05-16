@@ -30,17 +30,17 @@
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     The im plot rect
+    ///     Defines a rectangular region in plot space using two ImPlotRange values for X and Y axes.
     /// </summary>
     public struct ImPlotRect
     {
         /// <summary>
-        ///     The
+        ///     Horizontal range (min and max for the X axis).
         /// </summary>
         public ImPlotRange X { get; set; }
 
         /// <summary>
-        ///     The
+        ///     Vertical range (min and max for the Y axis).
         /// </summary>
         public ImPlotRange Y { get; set; }
     }

@@ -34,64 +34,64 @@ namespace Alis.Extension.Graphic.Sdl2.Enums
     /// </summary>
     public enum TypePixel
     {
-        /// <summary>
-        ///     The sdl pixel type unknown sdl pixel type
-        /// </summary>
-        TypeUnknown,
+    /// <summary>
+    ///     Unknown or unsupported pixel type
+    /// </summary>
+    TypeUnknown,
 
-        /// <summary>
-        ///     The sdl pixel type index1 sdl pixel type
-        /// </summary>
-        TypeIndex1,
+    /// <summary>
+    ///     Indexed pixel type using 1-bit palette indices
+    /// </summary>
+    TypeIndex1,
 
-        /// <summary>
-        ///     The sdl pixel type index4 sdl pixel type
-        /// </summary>
-        TypeIndex4,
+    /// <summary>
+    ///     Indexed pixel type using 4-bit palette indices
+    /// </summary>
+    TypeIndex4,
 
-        /// <summary>
-        ///     The sdl pixel type index8 sdl pixel type
-        /// </summary>
-        TypeIndex8,
+    /// <summary>
+    ///     Indexed pixel type using 8-bit palette indices
+    /// </summary>
+    TypeIndex8,
 
-        /// <summary>
-        ///     The sdl pixel type packed8 sdl pixel type
-        /// </summary>
-        TypePacked8,
+    /// <summary>
+    ///     Packed pixel type with 8 bits per pixel
+    /// </summary>
+    TypePacked8,
 
-        /// <summary>
-        ///     The sdl pixel type packed16 sdl pixel type
-        /// </summary>
-        TypePacked16,
+    /// <summary>
+    ///     Packed pixel type with 16 bits per pixel
+    /// </summary>
+    TypePacked16,
 
-        /// <summary>
-        ///     The sdl pixel type packed32 sdl pixel type
-        /// </summary>
-        TypePacked32,
+    /// <summary>
+    ///     Packed pixel type with 32 bits per pixel
+    /// </summary>
+    TypePacked32,
 
-        /// <summary>
-        ///     The sdl pixel type array u8 sdl pixel type
-        /// </summary>
-        TypeArrayU8,
+    /// <summary>
+    ///     Array pixel type with 8-bit unsigned integer components
+    /// </summary>
+    TypeArrayU8,
 
-        /// <summary>
-        ///     The sdl pixel type arrayu16 sdl pixel type
-        /// </summary>
-        TypeArrayU16,
+    /// <summary>
+    ///     Array pixel type with 16-bit unsigned integer components
+    /// </summary>
+    TypeArrayU16,
 
-        /// <summary>
-        ///     The sdl pixel type arrayu32 sdl pixel type
-        /// </summary>
-        TypeArrayU32,
+    /// <summary>
+    ///     Array pixel type with 32-bit unsigned integer components
+    /// </summary>
+    TypeArrayU32,
 
-        /// <summary>
-        ///     The sdl pixel type arrayf16 sdl pixel type
-        /// </summary>
-        TypeArrayF16,
+    /// <summary>
+    ///     Array pixel type with 16-bit floating-point components
+    /// </summary>
+    TypeArrayF16,
 
-        /// <summary>
-        ///     The sdl pixel type arrayf32 sdl pixel type
-        /// </summary>
-        TypeArrayF32
+    /// <summary>
+    ///     Array pixel type with 32-bit floating-point components
+    /// </summary>
+    TypeArrayF32
     }
 }

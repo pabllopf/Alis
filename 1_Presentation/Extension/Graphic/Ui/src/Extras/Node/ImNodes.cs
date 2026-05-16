@@ -42,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Begins the input attribute using the specified id
         /// </summary>
-        /// <param name="id">The id</param>
+        /// <param name="id">The unique identifier for the element</param>
         public static void BeginInputAttribute(int id)
         {
             ImNodesPinShape shape = ImNodesPinShape.CircleFilled;
@@ -52,8 +52,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Begins the input attribute using the specified id
         /// </summary>
-        /// <param name="id">The id</param>
-        /// <param name="shape">The shape</param>
+        /// <param name="id">The unique identifier for the element</param>
+        /// <param name="shape">The pin shape style</param>
         public static void BeginInputAttribute(int id, ImNodesPinShape shape)
         {
             ImNodesNative.ImNodes_BeginInputAttribute(id, shape);
@@ -62,7 +62,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Begins the node using the specified id
         /// </summary>
-        /// <param name="id">The id</param>
+        /// <param name="id">The unique identifier for the element</param>
         public static void BeginNode(int id)
         {
             ImNodesNative.ImNodes_BeginNode(id);
@@ -87,7 +87,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Begins the output attribute using the specified id
         /// </summary>
-        /// <param name="id">The id</param>
+        /// <param name="id">The unique identifier for the element</param>
         public static void BeginOutputAttribute(int id)
         {
             ImNodesPinShape shape = ImNodesPinShape.CircleFilled;
@@ -97,8 +97,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Begins the output attribute using the specified id
         /// </summary>
-        /// <param name="id">The id</param>
-        /// <param name="shape">The shape</param>
+        /// <param name="id">The unique identifier for the element</param>
+        /// <param name="shape">The pin shape style</param>
         public static void BeginOutputAttribute(int id, ImNodesPinShape shape)
         {
             ImNodesNative.ImNodes_BeginOutputAttribute(id, shape);
@@ -107,7 +107,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Begins the static attribute using the specified id
         /// </summary>
-        /// <param name="id">The id</param>
+        /// <param name="id">The unique identifier for the element</param>
         public static void BeginStaticAttribute(int id)
         {
             ImNodesNative.ImNodes_BeginStaticAttribute(id);
@@ -124,7 +124,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Clears the link selection using the specified link id
         /// </summary>
-        /// <param name="linkId">The link id</param>
+        /// <param name="linkId">The unique identifier for the link</param>
         public static void ClearLinkSelection(int linkId)
         {
             ImNodesNative.ImNodes_ClearLinkSelection_Int(linkId);
@@ -141,7 +141,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Clears the node selection using the specified node id
         /// </summary>
-        /// <param name="nodeId">The node id</param>
+        /// <param name="nodeId">The unique identifier for the node</param>
         public static void ClearNodeSelection(int nodeId)
         {
             ImNodesNative.ImNodes_ClearNodeSelection_Int(nodeId);
@@ -164,7 +164,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Destroys the context using the specified ctx
         /// </summary>
-        /// <param name="ctx">The ctx</param>
+        /// <param name="ctx">The ImNodes context instance</param>
         public static void DestroyContext(ImNodesContext ctx)
         {
             ImNodesNative.ImNodes_DestroyContext(new ImNodesContext());
@@ -198,7 +198,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Editors the context move to node using the specified node id
         /// </summary>
-        /// <param name="nodeId">The node id</param>
+        /// <param name="nodeId">The unique identifier for the node</param>
         public static void EditorContextMoveToNode(int nodeId)
         {
             ImNodesNative.ImNodes_EditorContextMoveToNode(nodeId);
@@ -207,7 +207,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Editors the context reset panning using the specified pos
         /// </summary>
-        /// <param name="pos">The pos</param>
+        /// <param name="pos">The position in screen coordinates</param>
         public static void EditorContextResetPanning(Vector2F pos)
         {
             ImNodesNative.ImNodes_EditorContextResetPanning(pos);
@@ -285,7 +285,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Gets the node dimensions using the specified id
         /// </summary>
-        /// <param name="id">The id</param>
+        /// <param name="id">The unique identifier for the element</param>
         /// <returns>The retval</returns>
         public static Vector2F GetNodeDimensions(int id)
         {
@@ -296,7 +296,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Gets the node editor space pos using the specified node id
         /// </summary>
-        /// <param name="nodeId">The node id</param>
+        /// <param name="nodeId">The unique identifier for the node</param>
         /// <returns>The retval</returns>
         public static Vector2F GetNodeEditorSpacePos(int nodeId)
         {
@@ -307,7 +307,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Gets the node grid space pos using the specified node id
         /// </summary>
-        /// <param name="nodeId">The node id</param>
+        /// <param name="nodeId">The unique identifier for the node</param>
         /// <returns>The retval</returns>
         public static Vector2F GetNodeGridSpacePos(int nodeId)
         {
@@ -318,7 +318,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Gets the node screen space pos using the specified node id
         /// </summary>
-        /// <param name="nodeId">The node id</param>
+        /// <param name="nodeId">The unique identifier for the node</param>
         /// <returns>The retval</returns>
         public static Vector2F GetNodeScreenSpacePos(int nodeId)
         {
@@ -353,7 +353,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Describes whether is any attribute active
         /// </summary>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool IsAnyAttributeActive()
         {
             byte ret = ImNodesNative.ImNodes_IsAnyAttributeActive(0);
@@ -363,8 +363,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Describes whether is any attribute active
         /// </summary>
-        /// <param name="attributeId">The attribute id</param>
-        /// <returns>The bool</returns>
+        /// <param name="attributeId">The unique identifier for the attribute</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool IsAnyAttributeActive(ref int attributeId)
         {
             byte ret = ImNodesNative.ImNodes_IsAnyAttributeActive(attributeId);
@@ -374,7 +374,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Describes whether is attribute active
         /// </summary>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool IsAttributeActive()
         {
             byte ret = ImNodesNative.ImNodes_IsAttributeActive();
@@ -384,7 +384,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Describes whether is editor hovered
         /// </summary>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool IsEditorHovered()
         {
             byte ret = ImNodesNative.ImNodes_IsEditorHovered();
@@ -396,7 +396,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// </summary>
         /// <param name="startedAtAttributeId">The started at attribute id</param>
         /// <param name="endedAtAttributeId">The ended at attribute id</param>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool IsLinkCreated(ref int startedAtAttributeId, ref int endedAtAttributeId)
         {
             byte[] createdFromSnap = new byte[1];
@@ -410,7 +410,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <param name="startedAtAttributeId">The started at attribute id</param>
         /// <param name="endedAtAttributeId">The ended at attribute id</param>
         /// <param name="createdFromSnap">The created from snap</param>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool IsLinkCreated(ref int startedAtAttributeId, ref int endedAtAttributeId, ref bool createdFromSnap)
         {
             byte[] createdFromSnapArray = new byte[1];
@@ -426,7 +426,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <param name="startedAtAttributeId">The started at attribute id</param>
         /// <param name="endedAtNodeId">The ended at node id</param>
         /// <param name="endedAtAttributeId">The ended at attribute id</param>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool IsLinkCreated(ref int startedAtNodeId, ref int startedAtAttributeId, ref int endedAtNodeId, ref int endedAtAttributeId)
         {
             byte ret = ImNodesNative.ImNodes_IsLinkCreated_IntPtr(startedAtNodeId, startedAtAttributeId, endedAtNodeId, endedAtAttributeId, 0);
@@ -441,7 +441,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <param name="endedAtNodeId">The ended at node id</param>
         /// <param name="endedAtAttributeId">The ended at attribute id</param>
         /// <param name="createdFromSnap">The created from snap</param>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool IsLinkCreated(ref int startedAtNodeId, ref int startedAtAttributeId, ref int endedAtNodeId, ref int endedAtAttributeId, ref bool createdFromSnap)
         {
             byte nativeCreatedFromSnapVal = createdFromSnap ? (byte) 1 : (byte) 0;
@@ -453,8 +453,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Describes whether is link destroyed
         /// </summary>
-        /// <param name="linkId">The link id</param>
-        /// <returns>The bool</returns>
+        /// <param name="linkId">The unique identifier for the link</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool IsLinkDestroyed(ref int linkId)
         {
             byte ret = ImNodesNative.ImNodes_IsLinkDestroyed(linkId);
@@ -464,7 +464,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Describes whether is link dropped
         /// </summary>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool IsLinkDropped()
         {
             int startedAtAttributeId = 0;
@@ -477,7 +477,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         ///     Describes whether is link dropped
         /// </summary>
         /// <param name="startedAtAttributeId">The started at attribute id</param>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool IsLinkDropped(ref int startedAtAttributeId)
         {
             byte includingDetachedLinks = 1;
@@ -490,7 +490,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// </summary>
         /// <param name="startedAtAttributeId">The started at attribute id</param>
         /// <param name="includingDetachedLinks">The including detached links</param>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool IsLinkDropped(ref int startedAtAttributeId, bool includingDetachedLinks)
         {
             byte nativeIncludingDetachedLinks = includingDetachedLinks ? (byte) 1 : (byte) 0;
@@ -501,8 +501,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Describes whether is link hovered
         /// </summary>
-        /// <param name="linkId">The link id</param>
-        /// <returns>The bool</returns>
+        /// <param name="linkId">The unique identifier for the link</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool IsLinkHovered(ref int linkId)
         {
             byte ret = ImNodesNative.ImNodes_IsLinkHovered(linkId);
@@ -512,8 +512,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Describes whether is link selected
         /// </summary>
-        /// <param name="linkId">The link id</param>
-        /// <returns>The bool</returns>
+        /// <param name="linkId">The unique identifier for the link</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool IsLinkSelected(int linkId)
         {
             byte ret = ImNodesNative.ImNodes_IsLinkSelected(linkId);
@@ -524,7 +524,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         ///     Describes whether is link started
         /// </summary>
         /// <param name="startedAtAttributeId">The started at attribute id</param>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool IsLinkStarted(ref int startedAtAttributeId)
         {
             byte ret = ImNodesNative.ImNodes_IsLinkStarted(startedAtAttributeId);
@@ -534,8 +534,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Describes whether is node hovered
         /// </summary>
-        /// <param name="nodeId">The node id</param>
-        /// <returns>The bool</returns>
+        /// <param name="nodeId">The unique identifier for the node</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool IsNodeHovered(ref int nodeId)
         {
             byte ret = ImNodesNative.ImNodes_IsNodeHovered(nodeId);
@@ -545,8 +545,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Describes whether is node selected
         /// </summary>
-        /// <param name="nodeId">The node id</param>
-        /// <returns>The bool</returns>
+        /// <param name="nodeId">The unique identifier for the node</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool IsNodeSelected(int nodeId)
         {
             byte ret = ImNodesNative.ImNodes_IsNodeSelected(nodeId);
@@ -556,8 +556,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Describes whether is pin hovered
         /// </summary>
-        /// <param name="attributeId">The attribute id</param>
-        /// <returns>The bool</returns>
+        /// <param name="attributeId">The unique identifier for the attribute</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool IsPinHovered(ref int attributeId)
         {
             byte ret = ImNodesNative.ImNodes_IsPinHovered(attributeId);
@@ -567,7 +567,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Links the id
         /// </summary>
-        /// <param name="id">The id</param>
+        /// <param name="id">The unique identifier for the element</param>
         /// <param name="startAttributeId">The start attribute id</param>
         /// <param name="endAttributeId">The end attribute id</param>
         public static void Link(int id, int startAttributeId, int endAttributeId)
@@ -578,7 +578,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Loads the current editor state from ini file using the specified file name
         /// </summary>
-        /// <param name="fileName">The file name</param>
+        /// <param name="fileName">The path to the file</param>
         public static void LoadCurrentEditorStateFromIniFile(string fileName)
         {
             if (fileName != null)
@@ -595,8 +595,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Loads the current editor state from ini string using the specified data
         /// </summary>
-        /// <param name="data">The data</param>
-        /// <param name="dataSize">The data size</param>
+        /// <param name="data">The data buffer content</param>
+        /// <param name="dataSize">The size of the data in bytes</param>
         public static void LoadCurrentEditorStateFromIniString(string data, uint dataSize)
         {
             if (data != null)
@@ -613,8 +613,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Loads the editor state from ini file using the specified editor
         /// </summary>
-        /// <param name="editor">The editor</param>
-        /// <param name="fileName">The file name</param>
+        /// <param name="editor">The editor context instance</param>
+        /// <param name="fileName">The path to the file</param>
         public static void LoadEditorStateFromIniFile(ImNodesEditorContext editor, string fileName)
         {
             if (fileName != null)
@@ -631,9 +631,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Loads the editor state from ini string using the specified editor
         /// </summary>
-        /// <param name="editor">The editor</param>
-        /// <param name="data">The data</param>
-        /// <param name="dataSize">The data size</param>
+        /// <param name="editor">The editor context instance</param>
+        /// <param name="data">The data buffer content</param>
+        /// <param name="dataSize">The size of the data in bytes</param>
         public static void LoadEditorStateFromIniString(ImNodesEditorContext editor, string data, uint dataSize)
         {
             if (data != null)
@@ -710,7 +710,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Nums the selected links
         /// </summary>
-        /// <returns>The ret</returns>
+        /// <returns>The result returned from the native function</returns>
         public static int NumSelectedLinks()
         {
             int ret = ImNodesNative.ImNodes_NumSelectedLinks();
@@ -720,7 +720,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Nums the selected nodes
         /// </summary>
-        /// <returns>The ret</returns>
+        /// <returns>The result returned from the native function</returns>
         public static int NumSelectedNodes()
         {
             int ret = ImNodesNative.ImNodes_NumSelectedNodes();
@@ -755,7 +755,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Pops the style var using the specified count
         /// </summary>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         public static void PopStyleVar(int count)
         {
             ImNodesNative.ImNodes_PopStyleVar(count);
@@ -773,8 +773,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Pushes the color style using the specified item
         /// </summary>
-        /// <param name="item">The item</param>
-        /// <param name="color">The color</param>
+        /// <param name="item">The color style item to modify</param>
+        /// <param name="color">The color value to set</param>
         public static void PushColorStyle(ImNodesCol item, uint color)
         {
             ImNodesNative.ImNodes_PushColorStyle(item, color);
@@ -783,7 +783,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Pushes the style var using the specified style item
         /// </summary>
-        /// <param name="styleItem">The style item</param>
+        /// <param name="styleItem">The style variable to modify</param>
         /// <param name="value">The value</param>
         public static void PushStyleVar(ImNodesStyleVar styleItem, float value)
         {
@@ -793,7 +793,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Pushes the style var using the specified style item
         /// </summary>
-        /// <param name="styleItem">The style item</param>
+        /// <param name="styleItem">The style variable to modify</param>
         /// <param name="value">The value</param>
         public static void PushStyleVar(ImNodesStyleVar styleItem, Vector2F value)
         {
@@ -803,7 +803,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Saves the current editor state to ini file using the specified file name
         /// </summary>
-        /// <param name="fileName">The file name</param>
+        /// <param name="fileName">The path to the file</param>
         public static void SaveCurrentEditorStateToIniFile(string fileName)
         {
             if (fileName != null)
@@ -820,7 +820,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Saves the current editor state to ini string
         /// </summary>
-        /// <returns>The string</returns>
+        /// <returns>the string result from the native function</returns>
         public static string SaveCurrentEditorStateToIniString()
         {
             uint dataSize = 0;
@@ -840,8 +840,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Saves the current editor state to ini string using the specified data size
         /// </summary>
-        /// <param name="dataSize">The data size</param>
-        /// <returns>The string</returns>
+        /// <param name="dataSize">The size of the data in bytes</param>
+        /// <returns>the string result from the native function</returns>
         public static string SaveCurrentEditorStateToIniString(ref uint dataSize)
         {
             GCHandle gch = GCHandle.Alloc(dataSize, GCHandleType.Pinned);
@@ -860,8 +860,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Saves the editor state to ini file using the specified editor
         /// </summary>
-        /// <param name="editor">The editor</param>
-        /// <param name="fileName">The file name</param>
+        /// <param name="editor">The editor context instance</param>
+        /// <param name="fileName">The path to the file</param>
         public static void SaveEditorStateToIniFile(ImNodesEditorContext editor, string fileName)
         {
             if (fileName != null)
@@ -878,8 +878,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Saves the editor state to ini string using the specified editor
         /// </summary>
-        /// <param name="editor">The editor</param>
-        /// <returns>The string</returns>
+        /// <param name="editor">The editor context instance</param>
+        /// <returns>the string result from the native function</returns>
         public static string SaveEditorStateToIniString(ImNodesEditorContext editor)
         {
             byte[] ret = ImNodesNative.ImNodes_SaveEditorStateToIniString(editor, 0);
@@ -891,8 +891,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         ///     Saves the editor state to ini string using the specified native editor
         /// </summary>
         /// <param name="nativeEditor">The native editor</param>
-        /// <param name="dataSize">The data size</param>
-        /// <returns>The string</returns>
+        /// <param name="dataSize">The size of the data in bytes</param>
+        /// <returns>the string result from the native function</returns>
         public static string SaveEditorStateToIniString(ImNodesEditorContext nativeEditor, ref uint dataSize)
         {
             byte[] ret = ImNodesNative.ImNodes_SaveEditorStateToIniString(nativeEditor, dataSize);
@@ -903,7 +903,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Selects the link using the specified link id
         /// </summary>
-        /// <param name="linkId">The link id</param>
+        /// <param name="linkId">The unique identifier for the link</param>
         public static void SelectLink(int linkId)
         {
             ImNodesNative.ImNodes_SelectLink(linkId);
@@ -912,7 +912,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Selects the node using the specified node id
         /// </summary>
-        /// <param name="nodeId">The node id</param>
+        /// <param name="nodeId">The unique identifier for the node</param>
         public static void SelectNode(int nodeId)
         {
             ImNodesNative.ImNodes_SelectNode(nodeId);
@@ -921,7 +921,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Sets the current context using the specified ctx
         /// </summary>
-        /// <param name="ctx">The ctx</param>
+        /// <param name="ctx">The ImNodes context instance</param>
         public static void SetCurrentContext(ImNodesContext ctx)
         {
             ImNodesNative.ImNodes_SetCurrentContext(ctx);
@@ -930,7 +930,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Sets the im gui context using the specified ctx
         /// </summary>
-        /// <param name="ctx">The ctx</param>
+        /// <param name="ctx">The ImNodes context instance</param>
         public static void SetImGuiContext(IntPtr ctx)
         {
             ImNodesNative.ImNodes_SetImGuiContext(ctx);
@@ -939,7 +939,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Sets the node draggable using the specified node id
         /// </summary>
-        /// <param name="nodeId">The node id</param>
+        /// <param name="nodeId">The unique identifier for the node</param>
         /// <param name="draggable">The draggable</param>
         public static void SetNodeDraggable(int nodeId, bool draggable)
         {
@@ -950,7 +950,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Sets the node editor space pos using the specified node id
         /// </summary>
-        /// <param name="nodeId">The node id</param>
+        /// <param name="nodeId">The unique identifier for the node</param>
         /// <param name="editorSpacePos">The editor space pos</param>
         public static void SetNodeEditorSpacePos(int nodeId, Vector2F editorSpacePos)
         {
@@ -960,7 +960,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Sets the node grid space pos using the specified node id
         /// </summary>
-        /// <param name="nodeId">The node id</param>
+        /// <param name="nodeId">The unique identifier for the node</param>
         /// <param name="gridPos">The grid pos</param>
         public static void SetNodeGridSpacePos(int nodeId, Vector2F gridPos)
         {
@@ -970,7 +970,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Sets the node screen space pos using the specified node id
         /// </summary>
-        /// <param name="nodeId">The node id</param>
+        /// <param name="nodeId">The unique identifier for the node</param>
         /// <param name="screenSpacePos">The screen space pos</param>
         public static void SetNodeScreenSpacePos(int nodeId, Vector2F screenSpacePos)
         {
@@ -980,7 +980,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Snaps the node to grid using the specified node id
         /// </summary>
-        /// <param name="nodeId">The node id</param>
+        /// <param name="nodeId">The unique identifier for the node</param>
         public static void SnapNodeToGrid(int nodeId)
         {
             ImNodesNative.ImNodes_SnapNodeToGrid(nodeId);

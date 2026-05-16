@@ -34,34 +34,34 @@ namespace Alis.Extension.Graphic.Sdl2.Enums
     /// </summary>
     public enum RwOps : uint
     {
-        /// <summary>
-        ///     The sdl rw ops unknown
-        /// </summary>
-        RwOpsUnknown = 0,
+    /// <summary>
+    ///     Unknown or unsupported RWops backing storage type
+    /// </summary>
+    RwOpsUnknown = 0,
 
-        /// <summary>
-        ///     The sdl rw ops win file
-        /// </summary>
-        RwOpsWinFile = 1,
+    /// <summary>
+    ///     RWops backed by a Windows file handle
+    /// </summary>
+    RwOpsWinFile = 1,
 
-        /// <summary>
-        ///     The sdl rw ops std file
-        /// </summary>
-        RwOpsStdFile = 2,
+    /// <summary>
+    ///     RWops backed by a standard C file descriptor
+    /// </summary>
+    RwOpsStdFile = 2,
 
-        /// <summary>
-        ///     The sdl rw ops jni file
-        /// </summary>
-        RwOpsJniFile = 3,
+    /// <summary>
+    ///     RWops backed by a JNI file on Android
+    /// </summary>
+    RwOpsJniFile = 3,
 
-        /// <summary>
-        ///     The sdl rw ops memory
-        /// </summary>
-        RwOpsMemory = 4,
+    /// <summary>
+    ///     RWops backed by a read-write memory buffer
+    /// </summary>
+    RwOpsMemory = 4,
 
-        /// <summary>
-        ///     The sdl rw ops memory ro
-        /// </summary>
-        RwOpsMemoryRo = 5
+    /// <summary>
+    ///     RWops backed by a read-only memory buffer
+    /// </summary>
+    RwOpsMemoryRo = 5
     }
 }

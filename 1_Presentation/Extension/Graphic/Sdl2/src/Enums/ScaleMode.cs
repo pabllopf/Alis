@@ -34,19 +34,19 @@ namespace Alis.Extension.Graphic.Sdl2.Enums
     /// </summary>
     public enum ScaleMode
     {
-        /// <summary>
-        ///     The sdl scale mode nearest sdl scale mode
-        /// </summary>
-        SdlScaleModeNearest,
+    /// <summary>
+    ///     Nearest-neighbor pixel sampling (sharp, pixelated scaling)
+    /// </summary>
+    SdlScaleModeNearest,
 
-        /// <summary>
-        ///     The sdl scale mode linear sdl scale mode
-        /// </summary>
-        SdlScaleModeLinear,
+    /// <summary>
+    ///     Linear interpolation pixel sampling (smooth scaling)
+    /// </summary>
+    SdlScaleModeLinear,
 
-        /// <summary>
-        ///     The sdl scale mode best sdl scale mode
-        /// </summary>
-        SdlScaleModeBest
+    /// <summary>
+    ///     Best quality anisotropic pixel sampling (highest quality)
+    /// </summary>
+    SdlScaleModeBest
     }
 }

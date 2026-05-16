@@ -33,38 +33,38 @@ using Alis.Extension.Graphic.Sdl2.Enums;
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl keyboard event
+    ///     Represents an SDL keyboard event, fired when a key is pressed or released.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct KeyboardEvent
     {
         /// <summary>
-        ///     The type
+        ///     The event type identifier, set to <see cref="EventType.KeyDown"/> or <see cref="EventType.KeyUp"/>.
         /// </summary>
         public readonly EventType type;
 
         /// <summary>
-        ///     The timestamp
+        ///     The timestamp of the event, in milliseconds, from the SDL event system.
         /// </summary>
         public readonly uint timestamp;
 
         /// <summary>
-        ///     The window id
+        ///     The ID of the window that had keyboard focus when the event occurred.
         /// </summary>
         public readonly uint windowID;
 
         /// <summary>
-        ///     The state
+        ///     The key state: SDL_PRESSED (1) or SDL_RELEASED (0).
         /// </summary>
         public readonly byte state;
 
         /// <summary>
-        ///     The repeat
+        ///     Non-zero if this is a repeated key event from holding the key down.
         /// </summary>
         public readonly byte repeat;
 
         /// <summary>
-        ///     The key sym
+        ///     The keysym structure containing the key code, scancode, and modifier flags.
         /// </summary>
         public KeySym KeySym { get; set; }
     }

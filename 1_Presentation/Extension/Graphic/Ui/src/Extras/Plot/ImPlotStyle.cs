@@ -32,267 +32,267 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     The im plot style
+    ///     Stores all style configuration values for customizing the appearance of ImPlot plots.
     /// </summary>
     public struct ImPlotStyle
     {
         /// <summary>
-        ///     The line weight
+        ///     Thickness of plot lines in pixels.
         /// </summary>
         public float LineWeight { get; set; }
 
         /// <summary>
-        ///     The marker
+        ///     Marker style index (see ImPlotMarker enum).
         /// </summary>
         public int Marker { get; set; }
 
         /// <summary>
-        ///     The marker size
+        ///     Size of markers in pixels.
         /// </summary>
         public float MarkerSize { get; set; }
 
         /// <summary>
-        ///     The marker weight
+        ///     Thickness of marker outlines in pixels.
         /// </summary>
         public float MarkerWeight { get; set; }
 
         /// <summary>
-        ///     The fill alpha
+        ///     Alpha transparency for filled regions.
         /// </summary>
         public float FillAlpha { get; set; }
 
         /// <summary>
-        ///     The error bar size
+        ///     Width of error bar cap lines in pixels.
         /// </summary>
         public float ErrorBarSize { get; set; }
 
         /// <summary>
-        ///     The error bar weight
+        ///     Thickness of error bar lines in pixels.
         /// </summary>
         public float ErrorBarWeight { get; set; }
 
         /// <summary>
-        ///     The digital bit height
+        ///     Height of digital signal bits in pixels.
         /// </summary>
         public float DigitalBitHeight { get; set; }
 
         /// <summary>
-        ///     The digital bit gap
+        ///     Gap between adjacent digital signal bits in pixels.
         /// </summary>
         public float DigitalBitGap { get; set; }
 
         /// <summary>
-        ///     The plot border size
+        ///     Thickness of the border drawn around the plot area in pixels.
         /// </summary>
         public float PlotBorderSize { get; set; }
 
         /// <summary>
-        ///     The minor alpha
+        ///     Alpha transparency for minor (non-primary) plot elements.
         /// </summary>
         public float MinorAlpha { get; set; }
 
         /// <summary>
-        ///     The major tick len
+        ///     Length of major tick marks as a Vector2F (X, Y axes).
         /// </summary>
         public Vector2F MajorTickLen { get; set; }
 
         /// <summary>
-        ///     The minor tick len
+        ///     Length of minor tick marks as a Vector2F (X, Y axes).
         /// </summary>
         public Vector2F MinorTickLen { get; set; }
 
         /// <summary>
-        ///     The major tick size
+        ///     Thickness of major tick marks as a Vector2F (X, Y axes).
         /// </summary>
         public Vector2F MajorTickSize { get; set; }
 
         /// <summary>
-        ///     The minor tick size
+        ///     Thickness of minor tick marks as a Vector2F (X, Y axes).
         /// </summary>
         public Vector2F MinorTickSize { get; set; }
 
         /// <summary>
-        ///     The major grid size
+        ///     Thickness of major grid lines as a Vector2F (X, Y axes).
         /// </summary>
         public Vector2F MajorGridSize { get; set; }
 
         /// <summary>
-        ///     The minor grid size
+        ///     Thickness of minor grid lines as a Vector2F (X, Y axes).
         /// </summary>
         public Vector2F MinorGridSize { get; set; }
 
         /// <summary>
-        ///     The plot padding
+        ///     Padding between the plot area and its containing frame as a Vector2F.
         /// </summary>
         public Vector2F PlotPadding { get; set; }
 
         /// <summary>
-        ///     The label padding
+        ///     Padding between axis labels and the plot edge as a Vector2F.
         /// </summary>
         public Vector2F LabelPadding { get; set; }
 
         /// <summary>
-        ///     The legend padding
+        ///     Padding around the legend box as a Vector2F.
         /// </summary>
         public Vector2F LegendPadding { get; set; }
 
         /// <summary>
-        ///     The legend inner padding
+        ///     Inner padding within the legend box as a Vector2F.
         /// </summary>
         public Vector2F LegendInnerPadding { get; set; }
 
         /// <summary>
-        ///     The legend spacing
+        ///     Spacing between adjacent legend entries as a Vector2F.
         /// </summary>
         public Vector2F LegendSpacing { get; set; }
 
         /// <summary>
-        ///     The mouse pos padding
+        ///     Padding around the mouse position tooltip text as a Vector2F.
         /// </summary>
         public Vector2F MousePosPadding { get; set; }
 
         /// <summary>
-        ///     The annotation padding
+        ///     Padding around annotation labels as a Vector2F.
         /// </summary>
         public Vector2F AnnotationPadding { get; set; }
 
         /// <summary>
-        ///     The fit padding
+        ///     Padding applied when auto-fitting the axis range to data as a Vector2F.
         /// </summary>
         public Vector2F FitPadding { get; set; }
 
         /// <summary>
-        ///     The plot default size
+        ///     Default (width, height) size for newly created plots.
         /// </summary>
         public Vector2F PlotDefaultSize { get; set; }
 
         /// <summary>
-        ///     The plot min size
+        ///     Minimum allowed (width, height) size for plots.
         /// </summary>
         public Vector2F PlotMinSize { get; set; }
 
         /// <summary>
-        ///     The colors
+        ///     Color value for ImPlotCol index 0 (Line).
         /// </summary>
         public Vector4F Colors0 { get; set; }
 
         /// <summary>
-        ///     The colors
+        ///     Color value for ImPlotCol index 1 (Fill).
         /// </summary>
         public Vector4F Colors1 { get; set; }
 
         /// <summary>
-        ///     The colors
+        ///     Color value for ImPlotCol index 2 (MarkerOutline).
         /// </summary>
         public Vector4F Colors2 { get; set; }
 
         /// <summary>
-        ///     The colors
+        ///     Color value for ImPlotCol index 3 (MarkerFill).
         /// </summary>
         public Vector4F Colors3 { get; set; }
 
         /// <summary>
-        ///     The colors
+        ///     Color value for ImPlotCol index 4 (ErrorBar).
         /// </summary>
         public Vector4F Colors4 { get; set; }
 
         /// <summary>
-        ///     The colors
+        ///     Color value for ImPlotCol index 5 (FrameBg).
         /// </summary>
         public Vector4F Colors5 { get; set; }
 
         /// <summary>
-        ///     The colors
+        ///     Color value for ImPlotCol index 6 (PlotBg).
         /// </summary>
         public Vector4F Colors6 { get; set; }
 
         /// <summary>
-        ///     The colors
+        ///     Color value for ImPlotCol index 7 (PlotBorder).
         /// </summary>
         public Vector4F Colors7 { get; set; }
 
         /// <summary>
-        ///     The colors
+        ///     Color value for ImPlotCol index 8 (LegendBg).
         /// </summary>
         public Vector4F Colors8 { get; set; }
 
         /// <summary>
-        ///     The colors
+        ///     Color value for ImPlotCol index 9 (LegendBorder).
         /// </summary>
         public Vector4F Colors9 { get; set; }
 
         /// <summary>
-        ///     The colors 10
+        ///     Color value for ImPlotCol index 10 (LegendText).
         /// </summary>
         public Vector4F Colors10 { get; set; }
 
         /// <summary>
-        ///     The colors 11
+        ///     Color value for ImPlotCol index 11 (TitleText).
         /// </summary>
         public Vector4F Colors11 { get; set; }
 
         /// <summary>
-        ///     The colors 12
+        ///     Color value for ImPlotCol index 12 (InlayText).
         /// </summary>
         public Vector4F Colors12 { get; set; }
 
         /// <summary>
-        ///     The colors 13
+        ///     Color value for ImPlotCol index 13 (XAxis).
         /// </summary>
         public Vector4F Colors13 { get; set; }
 
         /// <summary>
-        ///     The colors 14
+        ///     Color value for ImPlotCol index 14 (XAxisGrid).
         /// </summary>
         public Vector4F Colors14 { get; set; }
 
         /// <summary>
-        ///     The colors 15
+        ///     Color value for ImPlotCol index 15 (YAxis).
         /// </summary>
         public Vector4F Colors15 { get; set; }
 
         /// <summary>
-        ///     The colors 16
+        ///     Color value for ImPlotCol index 16 (YAxisGrid).
         /// </summary>
         public Vector4F Colors16 { get; set; }
 
         /// <summary>
-        ///     The colors 17
+        ///     Color value for ImPlotCol index 17 (YAxis2).
         /// </summary>
         public Vector4F Colors17 { get; set; }
 
         /// <summary>
-        ///     The colors 18
+        ///     Color value for ImPlotCol index 18 (YAxisGrid2).
         /// </summary>
         public Vector4F Colors18 { get; set; }
 
         /// <summary>
-        ///     The colors 19
+        ///     Color value for ImPlotCol index 19 (XAxis2).
         /// </summary>
         public Vector4F Colors19 { get; set; }
 
         /// <summary>
-        ///     The colors 20
+        ///     Color value for ImPlotCol index 20 (XAxisGrid2).
         /// </summary>
         public Vector4F Colors20 { get; set; }
 
         /// <summary>
-        ///     The colormap
+        ///     Active colormap used for coloring data series.
         /// </summary>
         public ImPlotColormap Colormap { get; set; }
 
         /// <summary>
-        ///     The use local time
+        ///     Whether to display time values in local time (nonzero) or UTC (zero).
         /// </summary>
         public byte UseLocalTime { get; set; }
 
         /// <summary>
-        ///     The use iso 8601
+        ///     Whether to display dates in ISO 8601 format (nonzero) or a localized format (zero).
         /// </summary>
         public byte UseIso8601 { get; set; }
 
         /// <summary>
-        ///     The use 24 hour clock
+        ///     Whether to display time in 24-hour clock (nonzero) or 12-hour clock (zero).
         /// </summary>
         public byte Use24HourClock { get; set; }
     }

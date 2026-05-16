@@ -100,9 +100,6 @@ namespace Alis.Core.Physic.Collisions.Shapes
 
             for (int i = 1; i < vertices.Count; ++i)
             {
-                Vector2F v1 = vertices[i - 1];
-                Vector2F v2 = vertices[i];
-
                 // If the code crashes here, it means your vertices are too close together.
             }
 

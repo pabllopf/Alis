@@ -32,18 +32,18 @@ using System;
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     The im plot inf lines flags enum
+    ///     Flags that control the orientation of infinite lines in ImPlot.
     /// </summary>
     [Flags]
     public enum ImPlotInfLinesFlags
     {
         /// <summary>
-        ///     The none im plot inf lines flags
+        ///     Default vertical infinite lines.
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The horizontal im plot inf lines flags
+        ///     Draw infinite lines horizontally instead of vertically.
         /// </summary>
         Horizontal = 1024
     }

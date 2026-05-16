@@ -34,79 +34,79 @@ namespace Alis.Extension.Graphic.Sdl2.Enums
     /// </summary>
     public enum HapticConstant : ushort
     {
-        /// <summary>
-        ///     The sdl haptic constant
-        /// </summary>
-        HapticConstant = 1 << 0,
+    /// <summary>
+    ///     Constant force feedback effect (steady force in a fixed direction)
+    /// </summary>
+    HapticConstant = 1 << 0,
 
-        /// <summary>
-        ///     The sdl haptic sine
-        /// </summary>
-        HapticSine = 1 << 1,
+    /// <summary>
+    ///     Sine wave force feedback effect (oscillating force)
+    /// </summary>
+    HapticSine = 1 << 1,
 
-        /// <summary>
-        ///     The sdl haptic left right
-        /// </summary>
-        HapticLeftRight = 1 << 2,
+    /// <summary>
+    ///     Left-right (periodic) force feedback effect for gamepads
+    /// </summary>
+    HapticLeftRight = 1 << 2,
 
-        /// <summary>
-        ///     The sdl haptic triangle
-        /// </summary>
-        HapticTriangle = 1 << 3,
+    /// <summary>
+    ///     Triangle wave force feedback effect
+    /// </summary>
+    HapticTriangle = 1 << 3,
 
-        /// <summary>
-        ///     The sdl haptic saw tooth up
-        /// </summary>
-        HapticSawToothUp = 1 << 4,
+    /// <summary>
+    ///     Sawtooth-up wave force feedback effect (ramping up)
+    /// </summary>
+    HapticSawToothUp = 1 << 4,
 
-        /// <summary>
-        ///     The sdl haptic saw tooth down
-        /// </summary>
-        HapticSawToothDown = 1 << 5,
+    /// <summary>
+    ///     Sawtooth-down wave force feedback effect (ramping down)
+    /// </summary>
+    HapticSawToothDown = 1 << 5,
 
-        /// <summary>
-        ///     The sdl haptic spring
-        /// </summary>
-        HapticSpring = 1 << 7,
+    /// <summary>
+    ///     Spring effect that simulates resistance proportional to displacement
+    /// </summary>
+    HapticSpring = 1 << 7,
 
-        /// <summary>
-        ///     The sdl haptic damper
-        /// </summary>
-        HapticDamper = 1 << 8,
+    /// <summary>
+    ///     Damper effect that simulates resistance proportional to velocity
+    /// </summary>
+    HapticDamper = 1 << 8,
 
-        /// <summary>
-        ///     The sdl haptic inertia
-        /// </summary>
-        HapticInertia = 1 << 9,
+    /// <summary>
+    ///     Inertia effect that simulates resistance to acceleration
+    /// </summary>
+    HapticInertia = 1 << 9,
 
-        /// <summary>
-        ///     The sdl haptic friction
-        /// </summary>
-        HapticFriction = 1 << 10,
+    /// <summary>
+    ///     Friction effect that simulates resistance to movement
+    /// </summary>
+    HapticFriction = 1 << 10,
 
-        /// <summary>
-        ///     The sdl haptic custom
-        /// </summary>
-        HapticCustom = 1 << 11,
+    /// <summary>
+    ///     Custom force feedback effect defined by user data
+    /// </summary>
+    HapticCustom = 1 << 11,
 
-        /// <summary>
-        ///     The sdl haptic gain
-        /// </summary>
-        HapticGain = 1 << 12,
+    /// <summary>
+    ///     Ability to adjust the global gain of the haptic device
+    /// </summary>
+    HapticGain = 1 << 12,
 
-        /// <summary>
-        ///     The sdl haptic auto center
-        /// </summary>
-        HapticAutoCenter = 1 << 13,
+    /// <summary>
+    ///     Ability to enable automatic centering of the haptic device
+    /// </summary>
+    HapticAutoCenter = 1 << 13,
 
-        /// <summary>
-        ///     The sdl haptic status
-        /// </summary>
-        HapticStatus = 1 << 14,
+    /// <summary>
+    ///     Ability to query the status of a haptic effect
+    /// </summary>
+    HapticStatus = 1 << 14,
 
-        /// <summary>
-        ///     The sdl haptic pause
-        /// </summary>
-        HapticPauseVar = 1 << 15
+    /// <summary>
+    ///     Ability to pause and resume haptic effects
+    /// </summary>
+    HapticPauseVar = 1 << 15
     }
 }

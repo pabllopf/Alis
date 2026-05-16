@@ -34,19 +34,19 @@ namespace Alis.Extension.Graphic.Sdl2.Enums
     /// </summary>
     public enum HintPriority
     {
-        /// <summary>
-        ///     The sdl hint default sdl hint priority
-        /// </summary>
-        SdlHintDefault,
+    /// <summary>
+    ///     Lowest priority hint, used as a default fallback value
+    /// </summary>
+    SdlHintDefault,
 
-        /// <summary>
-        ///     The sdl hint normal sdl hint priority
-        /// </summary>
-        SdlHintNormal,
+    /// <summary>
+    ///     Normal priority hint, the standard setting level
+    /// </summary>
+    SdlHintNormal,
 
-        /// <summary>
-        ///     The sdl hint override sdl hint priority
-        /// </summary>
-        SdlHintOverride
+    /// <summary>
+    ///     Highest priority hint, overrides all other settings
+    /// </summary>
+    SdlHintOverride
     }
 }

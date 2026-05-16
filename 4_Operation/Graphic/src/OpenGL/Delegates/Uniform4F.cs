@@ -32,8 +32,13 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     The uniform 4f
+    ///     Sets four float uniform values for the current program at the specified location
     /// </summary>
+    /// <param name="location">Specifies the location of the uniform variable to modify</param>
+    /// <param name="v0">Specifies the first float value to assign</param>
+    /// <param name="v1">Specifies the second float value to assign</param>
+    /// <param name="v2">Specifies the third float value to assign</param>
+    /// <param name="v3">Specifies the fourth float value to assign</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void Uniform4F(int location, float v0, float v1, float v2, float v3);
 }

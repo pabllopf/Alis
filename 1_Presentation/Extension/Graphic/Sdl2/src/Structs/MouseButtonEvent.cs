@@ -33,53 +33,53 @@ using Alis.Extension.Graphic.Sdl2.Enums;
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl mouse button event
+    ///     Represents an SDL mouse button event, fired when a mouse button is pressed or released.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct MouseButtonEvent
     {
         /// <summary>
-        ///     The type
+        ///     The event type identifier, set to <see cref="EventType.MouseButtonDown"/> or <see cref="EventType.MouseButtonUp"/>.
         /// </summary>
         public readonly EventType type;
 
         /// <summary>
-        ///     The timestamp
+        ///     The timestamp of the event, in milliseconds, from the SDL event system.
         /// </summary>
         public readonly uint timestamp;
 
         /// <summary>
-        ///     The window id
+        ///     The ID of the window that had mouse focus when the event occurred.
         /// </summary>
         public readonly uint windowID;
 
         /// <summary>
-        ///     The which
+        ///     The mouse instance ID (SDL internal identifier for the mouse device).
         /// </summary>
         public readonly uint which;
 
         /// <summary>
-        ///     The button
+        ///     The mouse button index (e.g. SDL_BUTTON_LEFT, SDL_BUTTON_RIGHT, SDL_BUTTON_MIDDLE).
         /// </summary>
         public readonly byte button;
 
         /// <summary>
-        ///     The state
+        ///     The button state: SDL_PRESSED (1) or SDL_RELEASED (0).
         /// </summary>
         public readonly byte state;
 
         /// <summary>
-        ///     The clicks
+        ///     The number of clicks in a sequence (1 for single-click, 2 for double-click, etc.).
         /// </summary>
         public readonly byte clicks;
 
         /// <summary>
-        ///     The
+        ///     The X coordinate of the mouse cursor at the time of the event, relative to the window.
         /// </summary>
         public readonly int x;
 
         /// <summary>
-        ///     The
+        ///     The Y coordinate of the mouse cursor at the time of the event, relative to the window.
         /// </summary>
         public readonly int y;
     }

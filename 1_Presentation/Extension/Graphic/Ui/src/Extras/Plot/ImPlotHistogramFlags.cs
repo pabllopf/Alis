@@ -32,38 +32,38 @@ using System;
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     The im plot histogram flags enum
+    ///     Flags that control the appearance and computation of histograms in ImPlot.
     /// </summary>
     [Flags]
     public enum ImPlotHistogramFlags
     {
         /// <summary>
-        ///     The none im plot histogram flags
+        ///     Default vertical histogram.
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The horizontal im plot histogram flags
+        ///     Draw bars horizontally instead of vertically.
         /// </summary>
         Horizontal = 1024,
 
         /// <summary>
-        ///     The cumulative im plot histogram flags
+        ///     Display cumulative distribution (running total) instead of raw counts.
         /// </summary>
         Cumulative = 2048,
 
         /// <summary>
-        ///     The density im plot histogram flags
+        ///     Normalize bin counts to produce a probability density function.
         /// </summary>
         Density = 4096,
 
         /// <summary>
-        ///     The no outliers im plot histogram flags
+        ///     Exclude outlier bins from the displayed range.
         /// </summary>
         NoOutliers = 8192,
 
         /// <summary>
-        ///     The col major im plot histogram flags
+        ///     Interpret input data as column-major instead of row-major.
         /// </summary>
         ColMajor = 16384
     }

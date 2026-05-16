@@ -264,7 +264,7 @@ namespace Alis.Core.Ecs.Kernel
                             ArchetypeEdgeType.AddComponent);
                     }
 
-                    Scene.MoveEntityToArchetypeAdd(runners, concrete, ref lookup, out GameObjectLocation location,
+                    Scene.MoveEntityToArchetypeAdd(runners, concrete, ref lookup, out GameObjectLocation _,
                         id.Archetype(Scene)!);
                 }
 

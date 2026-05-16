@@ -65,7 +65,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelFmt">The label fmt</param>
         /// <param name="boundsMin">The bounds min</param>
         /// <param name="boundsMax">The bounds max</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotHeatmap(string labelId, int[] values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax, ImPlotHeatmapFlags flags)
         {
             ImPlotNative.ImPlot_PlotHeatmap_S32Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, boundsMax, flags);
@@ -170,7 +170,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelFmt">The label fmt</param>
         /// <param name="boundsMin">The bounds min</param>
         /// <param name="boundsMax">The bounds max</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotHeatmap(string labelId, uint[] values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax, ImPlotHeatmapFlags flags)
         {
             ImPlotNative.ImPlot_PlotHeatmap_U32Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, boundsMax, flags);
@@ -275,7 +275,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelFmt">The label fmt</param>
         /// <param name="boundsMin">The bounds min</param>
         /// <param name="boundsMax">The bounds max</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotHeatmap(string labelId, long[] values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax, ImPlotHeatmapFlags flags)
         {
             ImPlotNative.ImPlot_PlotHeatmap_S64Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, boundsMax, flags);
@@ -380,7 +380,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelFmt">The label fmt</param>
         /// <param name="boundsMin">The bounds min</param>
         /// <param name="boundsMax">The bounds max</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotHeatmap(string labelId, ulong[] values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax, ImPlotHeatmapFlags flags)
         {
             ImPlotNative.ImPlot_PlotHeatmap_U64Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, boundsMax, flags);
@@ -391,7 +391,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, float[] values, int count) => ImPlotNative.ImPlot_PlotHistogram_FloatPtr(Encoding.UTF8.GetBytes(labelId), values, count, 0, 1.0, new ImPlotRange {Min = 0, Max = 0}, 0);
 
@@ -400,7 +400,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="bins">The bins</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, float[] values, int count, int bins) => ImPlotNative.ImPlot_PlotHistogram_FloatPtr(Encoding.UTF8.GetBytes(labelId), values, count, bins, 1.0, new ImPlotRange {Min = 0, Max = 0}, 0);
@@ -410,7 +410,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="bins">The bins</param>
         /// <param name="barScale">The bar scale</param>
         /// <returns>The double</returns>
@@ -421,7 +421,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="bins">The bins</param>
         /// <param name="barScale">The bar scale</param>
         /// <param name="range">The range</param>
@@ -433,11 +433,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="bins">The bins</param>
         /// <param name="barScale">The bar scale</param>
         /// <param name="range">The range</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, float[] values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags) => ImPlotNative.ImPlot_PlotHistogram_FloatPtr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, range, flags);
 
@@ -446,7 +446,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, double[] values, int count) => ImPlotNative.ImPlot_PlotHistogram_doublePtr(Encoding.UTF8.GetBytes(labelId), values, count, 0, 1.0, new ImPlotRange {Min = 0, Max = 0}, 0);
 
@@ -455,7 +455,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="bins">The bins</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, double[] values, int count, int bins) => ImPlotNative.ImPlot_PlotHistogram_doublePtr(Encoding.UTF8.GetBytes(labelId), values, count, bins, 1.0, new ImPlotRange {Min = 0, Max = 0}, 0);
@@ -465,7 +465,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="bins">The bins</param>
         /// <param name="barScale">The bar scale</param>
         /// <returns>The double</returns>
@@ -476,7 +476,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="bins">The bins</param>
         /// <param name="barScale">The bar scale</param>
         /// <param name="range">The range</param>
@@ -488,11 +488,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="bins">The bins</param>
         /// <param name="barScale">The bar scale</param>
         /// <param name="range">The range</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, double[] values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags) => ImPlotNative.ImPlot_PlotHistogram_doublePtr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, range, flags);
 
@@ -501,7 +501,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, sbyte[] values, int count) => ImPlotNative.ImPlot_PlotHistogram_S8Ptr(Encoding.UTF8.GetBytes(labelId), values, count, 0, 1.0, new ImPlotRange {Min = 0, Max = 0}, 0);
 
@@ -510,7 +510,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="bins">The bins</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, sbyte[] values, int count, int bins) => ImPlotNative.ImPlot_PlotHistogram_S8Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, 1.0, new ImPlotRange {Min = 0, Max = 0}, 0);
@@ -520,7 +520,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="bins">The bins</param>
         /// <param name="barScale">The bar scale</param>
         /// <returns>The double</returns>
@@ -531,7 +531,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="bins">The bins</param>
         /// <param name="barScale">The bar scale</param>
         /// <param name="range">The range</param>
@@ -543,11 +543,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="bins">The bins</param>
         /// <param name="barScale">The bar scale</param>
         /// <param name="range">The range</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, sbyte[] values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags) => ImPlotNative.ImPlot_PlotHistogram_S8Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, range, flags);
 
@@ -556,7 +556,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, byte[] values, int count) => ImPlotNative.ImPlot_PlotHistogram_U8Ptr(Encoding.UTF8.GetBytes(labelId), values, count, 0, 1.0, new ImPlotRange {Min = 0, Max = 0}, 0);
 
@@ -565,7 +565,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="bins">The bins</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, byte[] values, int count, int bins) => ImPlotNative.ImPlot_PlotHistogram_U8Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, 1.0, new ImPlotRange {Min = 0, Max = 0}, 0);
@@ -575,7 +575,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="bins">The bins</param>
         /// <param name="barScale">The bar scale</param>
         /// <returns>The double</returns>

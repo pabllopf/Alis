@@ -34,39 +34,39 @@ namespace Alis.Extension.Graphic.Sdl2.Enums
     /// </summary>
     public enum JoystickPowerLevel
     {
-        /// <summary>
-        ///     The sdl joystick power unknown sdl joystick power level
-        /// </summary>
-        SdlJoystickPowerUnknown = -1,
+    /// <summary>
+    ///     Joystick power level could not be determined
+    /// </summary>
+    SdlJoystickPowerUnknown = -1,
 
-        /// <summary>
-        ///     The sdl joystick power empty sdl joystick power level
-        /// </summary>
-        SdlJoystickPowerEmpty,
+    /// <summary>
+    ///     Joystick battery is empty or critically low
+    /// </summary>
+    SdlJoystickPowerEmpty,
 
-        /// <summary>
-        ///     The sdl joystick power low sdl joystick power level
-        /// </summary>
-        SdlJoystickPowerLow,
+    /// <summary>
+    ///     Joystick battery level is low
+    /// </summary>
+    SdlJoystickPowerLow,
 
-        /// <summary>
-        ///     The sdl joystick power medium sdl joystick power level
-        /// </summary>
-        SdlJoystickPowerMedium,
+    /// <summary>
+    ///     Joystick battery level is medium
+    /// </summary>
+    SdlJoystickPowerMedium,
 
-        /// <summary>
-        ///     The sdl joystick power full sdl joystick power level
-        /// </summary>
-        SdlJoystickPowerFull,
+    /// <summary>
+    ///     Joystick battery level is full
+    /// </summary>
+    SdlJoystickPowerFull,
 
-        /// <summary>
-        ///     The sdl joystick power wired sdl joystick power level
-        /// </summary>
-        SdlJoystickPowerWired,
+    /// <summary>
+    ///     Joystick is powered via a wired connection (no battery used)
+    /// </summary>
+    SdlJoystickPowerWired,
 
-        /// <summary>
-        ///     The sdl joystick power max sdl joystick power level
-        /// </summary>
-        SdlJoystickPowerMax
+    /// <summary>
+    ///     Maximum joystick power level value (sentinel)
+    /// </summary>
+    SdlJoystickPowerMax
     }
 }

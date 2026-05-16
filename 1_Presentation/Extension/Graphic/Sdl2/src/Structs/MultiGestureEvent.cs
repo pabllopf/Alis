@@ -32,53 +32,53 @@ using System.Runtime.InteropServices;
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl multi gesture event
+    ///     Represents an SDL multi-finger gesture event, fired when a multi-touch gesture is detected.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct MultiGestureEvent
     {
         /// <summary>
-        ///     The type
+        ///     The event type identifier, set to <see cref="EventType.MultiGesture"/>.
         /// </summary>
         public readonly uint type;
 
         /// <summary>
-        ///     The timestamp
+        ///     The timestamp of the event, in milliseconds, from the SDL event system.
         /// </summary>
         public readonly uint timestamp;
 
         /// <summary>
-        ///     The touch id
+        ///     The touch device ID that registered the gesture.
         /// </summary>
         public readonly long touchId;
 
         /// <summary>
-        ///     The theta
+        ///     The angular rotation delta of the multi-finger gesture in radians.
         /// </summary>
         public readonly float dTheta;
 
         /// <summary>
-        ///     The dist
+        ///     The distance delta of the multi-finger gesture (pinch/spread).
         /// </summary>
         public readonly float dDist;
 
         /// <summary>
-        ///     The
+        ///     The normalized X coordinate of the gesture centroid.
         /// </summary>
         public readonly float x;
 
         /// <summary>
-        ///     The
+        ///     The normalized Y coordinate of the gesture centroid.
         /// </summary>
         public readonly float y;
 
         /// <summary>
-        ///     The num fingers
+        ///     The number of fingers involved in the gesture.
         /// </summary>
         public readonly ushort numFingers;
 
         /// <summary>
-        ///     The padding
+        ///     Padding bytes for struct alignment.
         /// </summary>
         public readonly ushort padding;
     }

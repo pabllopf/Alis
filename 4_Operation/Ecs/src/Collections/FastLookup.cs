@@ -105,7 +105,7 @@ namespace Alis.Core.Ecs.Collections
         /// <param name="id">The id</param>
         /// <param name="archetypeId">The archetype id</param>
         /// <returns>The key</returns>
-        public uint GetKey(ushort id, GameObjectType archetypeId)
+        public static uint GetKey(ushort id, GameObjectType archetypeId)
         {
             uint key = archetypeId.RawIndex | ((uint) id << 16);
             return key;

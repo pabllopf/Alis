@@ -32,69 +32,64 @@ using System;
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     The im plot subplot flags enum
+    ///     Flags that control the layout and behaviour of subplot grids in ImPlot.
     /// </summary>
     [Flags]
     public enum ImPlotSubplotFlags
     {
         /// <summary>
-        ///     The none im plot subplot flags
+        ///     Default subplot behaviour with titles, legends, menus, and resizing enabled.
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The no title im plot subplot flags
+        ///     Hide titles on subplots.
         /// </summary>
         NoTitle = 1,
 
         /// <summary>
-        ///     The no legend im plot subplot flags
+        ///     Hide legends on subplots.
         /// </summary>
         NoLegend = 2,
 
         /// <summary>
-        ///     The no menus im plot subplot flags
+        ///     Disable context menus on subplots.
         /// </summary>
         NoMenus = 4,
 
         /// <summary>
-        ///     The no resize im plot subplot flags
+        ///     Disable resizing of subplot cells.
         /// </summary>
         NoResize = 8,
 
         /// <summary>
-        ///     The no align im plot subplot flags
+        ///     Disable automatic alignment of axes across subplots.
         /// </summary>
         NoAlign = 16,
 
         /// <summary>
-        ///     The share items im plot subplot flags
+        ///     Link the row heights of all subplots in the same row.
         /// </summary>
-        ShareItems = 32,
+        LinkRows = 32,
 
         /// <summary>
-        ///     The link rows im plot subplot flags
+        ///     Link the column widths of all subplots in the same column.
         /// </summary>
-        LinkRows = 64,
+        LinkCols = 64,
 
         /// <summary>
-        ///     The link cols im plot subplot flags
+        ///     Link the X axis ranges across all subplots.
         /// </summary>
-        LinkCols = 128,
+        LinkAllX = 128,
 
         /// <summary>
-        ///     The link all im plot subplot flags
+        ///     Link the Y axis ranges across all subplots.
         /// </summary>
-        LinkAllX = 256,
+        LinkAllY = 256,
 
         /// <summary>
-        ///     The link all im plot subplot flags
+        ///     Draw a colored frame border around each subplot.
         /// </summary>
-        LinkAllY = 512,
-
-        /// <summary>
-        ///     The col major im plot subplot flags
-        /// </summary>
-        ColMajor = 1024
+        ColoredFrame = 512
     }
 }

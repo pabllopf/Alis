@@ -87,19 +87,19 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the vtx offset
         /// </summary>
-        /// <returns>The uint</returns>
+        /// <returns>the unsigned integer result</returns>
         public uint GetVtxOffset() => VtxOffset;
 
         /// <summary>
         ///     Gets the idx offset
         /// </summary>
-        /// <returns>The uint</returns>
+        /// <returns>the unsigned integer result</returns>
         public uint GetIdxOffset() => IdxOffset;
 
         /// <summary>
         ///     Gets the elem count
         /// </summary>
-        /// <returns>The uint</returns>
+        /// <returns>the unsigned integer result</returns>
         public uint GetElemCount() => ElemCount;
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the tex id
         /// </summary>
-        /// <returns>The ret</returns>
+        /// <returns>The result returned from the native function</returns>
         public IntPtr GetTexId() => ImGuiNative.ImDrawCmd_GetTexID(ref this);
     }
 }

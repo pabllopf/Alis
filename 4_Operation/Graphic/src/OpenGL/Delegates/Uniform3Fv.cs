@@ -32,8 +32,11 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     The uniform 3fv
+    ///     Sets a vector of three float uniform values for the current program at the specified location
     /// </summary>
+    /// <param name="location">Specifies the location of the uniform variable to modify</param>
+    /// <param name="count">Specifies the number of elements to be modified</param>
+    /// <param name="value">Specifies an array of float values to assign</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void Uniform3Fv(int location, int count, float[] value);
 }

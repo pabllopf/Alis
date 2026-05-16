@@ -32,58 +32,58 @@ using System.Runtime.InteropServices;
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl touch finger event
+    ///     Represents an SDL touch finger event, fired when a finger touches, moves, or lifts from a touch device.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct TouchFingerEvent
     {
         /// <summary>
-        ///     The type
+        ///     The event type identifier, set to <see cref="EventType.FingerDown"/>, <see cref="EventType.FingerUp"/>, or <see cref="EventType.FingerMotion"/>.
         /// </summary>
         public uint type;
 
         /// <summary>
-        ///     The timestamp
+        ///     The timestamp of the event, in milliseconds, from the SDL event system.
         /// </summary>
         public uint timestamp;
 
         /// <summary>
-        ///     The touch id
+        ///     The touch device ID that generated the event.
         /// </summary>
         public long touchId;
 
         /// <summary>
-        ///     The finger id
+        ///     The finger ID for this touch (unique per touch device).
         /// </summary>
         public long fingerId;
 
         /// <summary>
-        ///     The
+        ///     The normalized X position of the finger, ranging from 0.0 to 1.0.
         /// </summary>
         public float x;
 
         /// <summary>
-        ///     The
+        ///     The normalized Y position of the finger, ranging from 0.0 to 1.0.
         /// </summary>
         public float y;
 
         /// <summary>
-        ///     The dx
+        ///     The normalized X-axis motion delta of the finger since the last event.
         /// </summary>
         public float dx;
 
         /// <summary>
-        ///     The dy
+        ///     The normalized Y-axis motion delta of the finger since the last event.
         /// </summary>
         public float dy;
 
         /// <summary>
-        ///     The pressure
+        ///     The normalized pressure of the finger, ranging from 0.0 to 1.0.
         /// </summary>
         public float pressure;
 
         /// <summary>
-        ///     The window id
+        ///     The ID of the window that received the touch event.
         /// </summary>
         public uint windowID;
     }

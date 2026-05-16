@@ -571,7 +571,7 @@ namespace Alis.Extension.Network.Internal
         /// <param name="closeStatus">The close status</param>
         /// <param name="statusDescription">Optional extra close details</param>
         /// <returns>The payload to sent in the close frame</returns>
-        internal ArraySegment<byte> BuildClosePayload(WebSocketCloseStatus closeStatus, string statusDescription)
+        internal static ArraySegment<byte> BuildClosePayload(WebSocketCloseStatus closeStatus, string statusDescription)
         {
             byte[] statusBuffer = BitConverter.GetBytes((ushort) closeStatus);
             Array.Reverse(statusBuffer); // network byte order (big endian)
@@ -608,7 +608,7 @@ namespace Alis.Extension.Network.Internal
         /// </summary>
         /// <param name="payload">The payload</param>
         /// <exception cref="InvalidOperationException">Max ping message size {PingPongPayloadLen} exceeded: {payload.Count}</exception>
-        internal void ValidatePayloadSize(ArraySegment<byte> payload)
+        internal static void ValidatePayloadSize(ArraySegment<byte> payload)
         {
             if (payload.Count > PingPongPayloadLen)
             {

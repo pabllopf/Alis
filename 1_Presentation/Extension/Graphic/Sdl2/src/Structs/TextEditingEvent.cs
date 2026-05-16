@@ -34,43 +34,43 @@ using Alis.Extension.Graphic.Sdl2.Enums;
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl text editing event
+    ///     Represents an SDL text editing event, fired during IME text composition when the composition string changes.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public readonly struct TextEditingEvent
     {
         /// <summary>
-        ///     The type
+        ///     The event type identifier, set to <see cref="EventType.TextEditing"/>.
         /// </summary>
         public readonly EventType type;
 
         /// <summary>
-        ///     The timestamp
+        ///     The timestamp of the event, in milliseconds, from the SDL event system.
         /// </summary>
         public readonly uint timestamp;
 
         /// <summary>
-        ///     The window id
+        ///     The ID of the window that received the text editing event.
         /// </summary>
         public readonly uint windowID;
 
         /// <summary>
-        ///     The sdl text editing event text size
+        ///     The native pointer to the null-terminated UTF-8 composition string.
         /// </summary>
         private readonly IntPtr textPtr;
 
         /// <summary>
-        ///     The start
+        ///     The start position of the selection within the composition string.
         /// </summary>
         public readonly int start;
 
         /// <summary>
-        ///     The length
+        ///     The length of the selection within the composition string.
         /// </summary>
         public readonly int length;
 
         /// <summary>
-        ///     Gets the value of the text
+        ///     Gets the IME composition string as a managed string.
         /// </summary>
         public string Text => Marshal.PtrToStringAnsi(textPtr);
     }

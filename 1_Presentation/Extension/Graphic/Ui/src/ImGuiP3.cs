@@ -48,14 +48,14 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether drag scalar n
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="dataType">The data type</param>
-        /// <param name="pData">The data</param>
-        /// <param name="components">The components</param>
+        /// <param name="pData">The pointer to the data value</param>
+        /// <param name="components">The number of components in the value</param>
         /// <param name="vSpeed">The speed</param>
-        /// <param name="pMin">The min</param>
-        /// <param name="pMax">The max</param>
-        /// <returns>The bool</returns>
+        /// <param name="pMin">The minimum value pointer</param>
+        /// <param name="pMax">The maximum value pointer</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragScalarN(string label, ImGuiDataType dataType, IntPtr pData, int components, float vSpeed, IntPtr pMin, IntPtr pMax)
         {
             byte ret = ImGuiNative.igDragScalarN(Encoding.UTF8.GetBytes(label), dataType, pData, components, vSpeed, pMin, pMax, Encoding.UTF8.GetBytes(""), 0);
@@ -65,15 +65,15 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether drag scalar n
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="dataType">The data type</param>
-        /// <param name="pData">The data</param>
-        /// <param name="components">The components</param>
+        /// <param name="pData">The pointer to the data value</param>
+        /// <param name="components">The number of components in the value</param>
         /// <param name="vSpeed">The speed</param>
-        /// <param name="pMin">The min</param>
-        /// <param name="pMax">The max</param>
-        /// <param name="format">The format</param>
-        /// <returns>The bool</returns>
+        /// <param name="pMin">The minimum value pointer</param>
+        /// <param name="pMax">The maximum value pointer</param>
+        /// <param name="format">The display format string (printf-style)</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragScalarN(string label, ImGuiDataType dataType, IntPtr pData, int components, float vSpeed, IntPtr pMin, IntPtr pMax, string format)
         {
             byte ret = ImGuiNative.igDragScalarN(Encoding.UTF8.GetBytes(label), dataType, pData, components, vSpeed, pMin, pMax, Encoding.UTF8.GetBytes(format), 0);
@@ -83,16 +83,16 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether drag scalar n
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="dataType">The data type</param>
-        /// <param name="pData">The data</param>
-        /// <param name="components">The components</param>
+        /// <param name="pData">The pointer to the data value</param>
+        /// <param name="components">The number of components in the value</param>
         /// <param name="vSpeed">The speed</param>
-        /// <param name="pMin">The min</param>
-        /// <param name="pMax">The max</param>
-        /// <param name="format">The format</param>
-        /// <param name="flags">The flags</param>
-        /// <returns>The bool</returns>
+        /// <param name="pMin">The minimum value pointer</param>
+        /// <param name="pMax">The maximum value pointer</param>
+        /// <param name="format">The display format string (printf-style)</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragScalarN(string label, ImGuiDataType dataType, IntPtr pData, int components, float vSpeed, IntPtr pMin, IntPtr pMax, string format, ImGuiSliderFlags flags)
         {
             byte ret = ImGuiNative.igDragScalarN(Encoding.UTF8.GetBytes(label), dataType, pData, components, vSpeed, pMin, pMax, Encoding.UTF8.GetBytes(format), flags);
@@ -102,7 +102,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Dummies the size
         /// </summary>
-        /// <param name="size">The size</param>
+        /// <param name="size">The size of the element in pixels</param>
         public static void Dummy(Vector2F size)
         {
             ImGuiNative.igDummy(size);
@@ -255,7 +255,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Finds the viewport by id using the specified id
         /// </summary>
-        /// <param name="id">The id</param>
+        /// <param name="id">The unique identifier for the element</param>
         /// <returns>The im gui viewport ptr</returns>
         public static ImGuiViewportPtr FindViewportById(uint id) => new ImGuiViewportPtr(ImGuiNative.igFindViewportByID(id));
 
@@ -293,14 +293,14 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the clipboard text
         /// </summary>
-        /// <returns>The string</returns>
+        /// <returns>the string result from the native function</returns>
         public static string GetClipboardText() => Encoding.UTF8.GetString(ImGuiNative.igGetClipboardText());
 
         /// <summary>
         ///     Gets the color u 32 using the specified idx
         /// </summary>
         /// <param name="idx">The idx</param>
-        /// <returns>The ret</returns>
+        /// <returns>The result returned from the native function</returns>
         public static uint GetColorU32(ImGuiCol idx)
         {
             float alphaMul = 1.0f;
@@ -313,7 +313,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="idx">The idx</param>
         /// <param name="alphaMul">The alpha mul</param>
-        /// <returns>The ret</returns>
+        /// <returns>The result returned from the native function</returns>
         public static uint GetColorU32(ImGuiCol idx, float alphaMul)
         {
             uint ret = ImGuiNative.igGetColorU32_Col(idx, alphaMul);
@@ -324,7 +324,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Gets the color u 32 using the specified col
         /// </summary>
         /// <param name="col">The col</param>
-        /// <returns>The ret</returns>
+        /// <returns>The result returned from the native function</returns>
         public static uint GetColorU32(Vector4F col)
         {
             uint ret = ImGuiNative.igGetColorU32_Vec4(col);
@@ -335,7 +335,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Gets the color u 32 using the specified col
         /// </summary>
         /// <param name="col">The col</param>
-        /// <returns>The ret</returns>
+        /// <returns>The result returned from the native function</returns>
         public static uint GetColorU32(uint col)
         {
             uint ret = ImGuiNative.igGetColorU32_U32(col);
@@ -345,7 +345,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the column index
         /// </summary>
-        /// <returns>The ret</returns>
+        /// <returns>The result returned from the native function</returns>
         public static int GetColumnIndex()
         {
             int ret = ImGuiNative.igGetColumnIndex();
@@ -355,7 +355,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the column offset
         /// </summary>
-        /// <returns>The ret</returns>
+        /// <returns>The result returned from the native function</returns>
         public static float GetColumnOffset()
         {
             int columnIndex = -1;
@@ -367,7 +367,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Gets the column offset using the specified column index
         /// </summary>
         /// <param name="columnIndex">The column index</param>
-        /// <returns>The ret</returns>
+        /// <returns>The result returned from the native function</returns>
         public static float GetColumnOffset(int columnIndex)
         {
             float ret = ImGuiNative.igGetColumnOffset(columnIndex);
@@ -377,7 +377,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the columns count
         /// </summary>
-        /// <returns>The ret</returns>
+        /// <returns>The result returned from the native function</returns>
         public static int GetColumnsCount()
         {
             int ret = ImGuiNative.igGetColumnsCount();
@@ -387,7 +387,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the column width
         /// </summary>
-        /// <returns>The ret</returns>
+        /// <returns>The result returned from the native function</returns>
         public static float GetColumnWidth()
         {
             int columnIndex = -1;
@@ -399,7 +399,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Gets the column width using the specified column index
         /// </summary>
         /// <param name="columnIndex">The column index</param>
-        /// <returns>The ret</returns>
+        /// <returns>The result returned from the native function</returns>
         public static float GetColumnWidth(int columnIndex)
         {
             float ret = ImGuiNative.igGetColumnWidth(columnIndex);
@@ -429,7 +429,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the current context
         /// </summary>
-        /// <returns>The ret</returns>
+        /// <returns>The result returned from the native function</returns>
         public static IntPtr GetCurrentContext()
         {
             IntPtr ret = ImGuiNative.igGetCurrentContext();
@@ -449,7 +449,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the cursor pos x
         /// </summary>
-        /// <returns>The ret</returns>
+        /// <returns>The result returned from the native function</returns>
         public static float GetCursorPosX()
         {
             float ret = ImGuiNative.igGetCursorPosX();
@@ -459,7 +459,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the cursor pos y
         /// </summary>
-        /// <returns>The ret</returns>
+        /// <returns>The result returned from the native function</returns>
         public static float GetCursorPosY()
         {
             float ret = ImGuiNative.igGetCursorPosY();
@@ -501,7 +501,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the draw list shared data
         /// </summary>
-        /// <returns>The ret</returns>
+        /// <returns>The result returned from the native function</returns>
         public static IntPtr GetDrawListSharedData()
         {
             IntPtr ret = ImGuiNative.igGetDrawListSharedData();
@@ -517,7 +517,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the font size
         /// </summary>
-        /// <returns>The ret</returns>
+        /// <returns>The result returned from the native function</returns>
         public static float GetFontSize()
         {
             float ret = ImGuiNative.igGetFontSize();
@@ -550,7 +550,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the frame count
         /// </summary>
-        /// <returns>The ret</returns>
+        /// <returns>The result returned from the native function</returns>
         public static int GetFrameCount()
         {
             int ret = ImGuiNative.igGetFrameCount();
@@ -560,7 +560,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the frame height
         /// </summary>
-        /// <returns>The ret</returns>
+        /// <returns>The result returned from the native function</returns>
         public static float GetFrameHeight()
         {
             float ret = ImGuiNative.igGetFrameHeight();
@@ -570,7 +570,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the frame height with spacing
         /// </summary>
-        /// <returns>The ret</returns>
+        /// <returns>The result returned from the native function</returns>
         public static float GetFrameHeightWithSpacing()
         {
             float ret = ImGuiNative.igGetFrameHeightWithSpacing();
@@ -580,8 +580,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the id using the specified str id
         /// </summary>
-        /// <param name="strId">The str id</param>
-        /// <returns>The ret</returns>
+        /// <param name="strId">The string identifier for the element</param>
+        /// <returns>The result returned from the native function</returns>
         public static uint GetId(string strId)
         {
             uint ret = ImGuiNative.igGetID_Str(Encoding.UTF8.GetBytes(strId));
@@ -592,7 +592,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Gets the id using the specified ptr id
         /// </summary>
         /// <param name="ptrId">The ptr id</param>
-        /// <returns>The ret</returns>
+        /// <returns>The result returned from the native function</returns>
         public static uint GetId(IntPtr ptrId)
         {
             IntPtr nativePtrId = ptrId;
@@ -648,7 +648,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Gets the key index using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        /// <returns>The ret</returns>
+        /// <returns>The result returned from the native function</returns>
         public static ImGuiKey GetKeyIndex(ImGuiKey key)
         {
             ImGuiKey ret = ImGuiNative.igGetKeyIndex(key);
@@ -659,7 +659,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Gets the key name using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        /// <returns>The string</returns>
+        /// <returns>the string result from the native function</returns>
         public static string GetKeyName(ImGuiKey key) => Encoding.UTF8.GetString(ImGuiNative.igGetKeyName(key));
 
         /// <summary>
@@ -668,7 +668,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="key">The key</param>
         /// <param name="repeatDelay">The repeat delay</param>
         /// <param name="rate">The rate</param>
-        /// <returns>The ret</returns>
+        /// <returns>The result returned from the native function</returns>
         public static int GetKeyPressedAmount(ImGuiKey key, float repeatDelay, float rate)
         {
             int ret = ImGuiNative.igGetKeyPressedAmount(key, repeatDelay, rate);
@@ -685,7 +685,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Gets the mouse clicked count using the specified button
         /// </summary>
         /// <param name="button">The button</param>
-        /// <returns>The ret</returns>
+        /// <returns>The result returned from the native function</returns>
         public static int GetMouseClickedCount(ImGuiMouseButton button)
         {
             int ret = ImGuiNative.igGetMouseClickedCount(button);
@@ -695,7 +695,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the mouse cursor
         /// </summary>
-        /// <returns>The ret</returns>
+        /// <returns>The result returned from the native function</returns>
         public static ImGuiMouseCursor GetMouseCursor()
         {
             ImGuiMouseCursor ret = ImGuiNative.igGetMouseCursor();
@@ -767,7 +767,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the scroll max x
         /// </summary>
-        /// <returns>The ret</returns>
+        /// <returns>The result returned from the native function</returns>
         public static float GetScrollMaxX()
         {
             float ret = ImGuiNative.igGetScrollMaxX();
@@ -777,7 +777,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the scroll max y
         /// </summary>
-        /// <returns>The ret</returns>
+        /// <returns>The result returned from the native function</returns>
         public static float GetScrollMaxY()
         {
             float ret = ImGuiNative.igGetScrollMaxY();
@@ -787,7 +787,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the scroll x
         /// </summary>
-        /// <returns>The ret</returns>
+        /// <returns>The result returned from the native function</returns>
         public static float GetScrollX()
         {
             float ret = ImGuiNative.igGetScrollX();
@@ -797,7 +797,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the scroll y
         /// </summary>
-        /// <returns>The ret</returns>
+        /// <returns>The result returned from the native function</returns>
         public static float GetScrollY()
         {
             float ret = ImGuiNative.igGetScrollY();
@@ -820,14 +820,14 @@ namespace Alis.Extension.Graphic.Ui
         ///     Gets the style color name using the specified idx
         /// </summary>
         /// <param name="idx">The idx</param>
-        /// <returns>The string</returns>
+        /// <returns>the string result from the native function</returns>
         public static string GetStyleColorName(ImGuiCol idx) => Encoding.UTF8.GetString(ImGuiNative.igGetStyleColorName(idx));
 
         /// <summary>
         ///     Gets the style color vec 4 using the specified idx
         /// </summary>
         /// <param name="idx">The idx</param>
-        /// <returns>The ret</returns>
+        /// <returns>The result returned from the native function</returns>
         public static Vector4F GetStyleColorVec4(ImGuiCol idx)
         {
             Vector4F ret = ImGuiNative.igGetStyleColorVec4(idx);
@@ -837,7 +837,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the text line height
         /// </summary>
-        /// <returns>The ret</returns>
+        /// <returns>The result returned from the native function</returns>
         public static float GetTextLineHeight()
         {
             float ret = ImGuiNative.igGetTextLineHeight();
@@ -847,7 +847,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the text line height with spacing
         /// </summary>
-        /// <returns>The ret</returns>
+        /// <returns>The result returned from the native function</returns>
         public static float GetTextLineHeightWithSpacing()
         {
             float ret = ImGuiNative.igGetTextLineHeightWithSpacing();
@@ -857,7 +857,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the time
         /// </summary>
-        /// <returns>The ret</returns>
+        /// <returns>The result returned from the native function</returns>
         public static double GetTime()
         {
             double ret = ImGuiNative.igGetTime();
@@ -867,7 +867,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the tree node to label spacing
         /// </summary>
-        /// <returns>The ret</returns>
+        /// <returns>The result returned from the native function</returns>
         public static float GetTreeNodeToLabelSpacing()
         {
             float ret = ImGuiNative.igGetTreeNodeToLabelSpacing();
@@ -877,7 +877,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the version
         /// </summary>
-        /// <returns>The string</returns>
+        /// <returns>the string result from the native function</returns>
         public static string GetVersion() => Marshal.PtrToStringAnsi(ImGuiNative.igGetVersion());
 
         /// <summary>
@@ -903,7 +903,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the window dock id
         /// </summary>
-        /// <returns>The ret</returns>
+        /// <returns>The result returned from the native function</returns>
         public static uint GetWindowDockId()
         {
             uint ret = ImGuiNative.igGetWindowDockID();
@@ -913,7 +913,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the window dpi scale
         /// </summary>
-        /// <returns>The ret</returns>
+        /// <returns>The result returned from the native function</returns>
         public static float GetWindowDpiScale()
         {
             float ret = ImGuiNative.igGetWindowDpiScale();
@@ -929,7 +929,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the window height
         /// </summary>
-        /// <returns>The ret</returns>
+        /// <returns>The result returned from the native function</returns>
         public static float GetWindowHeight()
         {
             float ret = ImGuiNative.igGetWindowHeight();
@@ -965,7 +965,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the window width
         /// </summary>
-        /// <returns>The ret</returns>
+        /// <returns>The result returned from the native function</returns>
         public static float GetWindowWidth()
         {
             float ret = ImGuiNative.igGetWindowWidth();
@@ -975,8 +975,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Images the user texture id
         /// </summary>
-        /// <param name="userTextureId">The user texture id</param>
-        /// <param name="size">The size</param>
+        /// <param name="userTextureId">The native texture handle to render</param>
+        /// <param name="size">The size of the element in pixels</param>
         public static void Image(IntPtr userTextureId, Vector2F size)
         {
             Vector2F uv0 = new Vector2F();
@@ -989,8 +989,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Images the user texture id
         /// </summary>
-        /// <param name="userTextureId">The user texture id</param>
-        /// <param name="size">The size</param>
+        /// <param name="userTextureId">The native texture handle to render</param>
+        /// <param name="size">The size of the element in pixels</param>
         /// <param name="uv0">The uv</param>
         public static void Image(IntPtr userTextureId, Vector2F size, Vector2F uv0)
         {
@@ -1003,8 +1003,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Images the user texture id
         /// </summary>
-        /// <param name="userTextureId">The user texture id</param>
-        /// <param name="size">The size</param>
+        /// <param name="userTextureId">The native texture handle to render</param>
+        /// <param name="size">The size of the element in pixels</param>
         /// <param name="uv0">The uv</param>
         /// <param name="uv1">The uv</param>
         public static void Image(IntPtr userTextureId, Vector2F size, Vector2F uv0, Vector2F uv1)
@@ -1017,8 +1017,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Images the user texture id
         /// </summary>
-        /// <param name="userTextureId">The user texture id</param>
-        /// <param name="size">The size</param>
+        /// <param name="userTextureId">The native texture handle to render</param>
+        /// <param name="size">The size of the element in pixels</param>
         /// <param name="uv0">The uv</param>
         /// <param name="uv1">The uv</param>
         /// <param name="tintCol">The tint col</param>
@@ -1031,8 +1031,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Images the user texture id
         /// </summary>
-        /// <param name="userTextureId">The user texture id</param>
-        /// <param name="size">The size</param>
+        /// <param name="userTextureId">The native texture handle to render</param>
+        /// <param name="size">The size of the element in pixels</param>
         /// <param name="uv0">The uv</param>
         /// <param name="uv1">The uv</param>
         /// <param name="tintCol">The tint col</param>
@@ -1045,10 +1045,10 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether image button
         /// </summary>
-        /// <param name="strId">The str id</param>
-        /// <param name="userTextureId">The user texture id</param>
-        /// <param name="size">The size</param>
-        /// <returns>The bool</returns>
+        /// <param name="strId">The string identifier for the element</param>
+        /// <param name="userTextureId">The native texture handle to render</param>
+        /// <param name="size">The size of the element in pixels</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool ImageButton(string strId, IntPtr userTextureId, Vector2F size)
         {
             byte ret = ImGuiNative.igImageButton(Encoding.UTF8.GetBytes(strId), userTextureId, size, new Vector2F(), new Vector2F(1, 1), new Vector4F(), new Vector4F(1, 1, 1, 1));
@@ -1058,11 +1058,11 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether image button
         /// </summary>
-        /// <param name="strId">The str id</param>
-        /// <param name="userTextureId">The user texture id</param>
-        /// <param name="size">The size</param>
+        /// <param name="strId">The string identifier for the element</param>
+        /// <param name="userTextureId">The native texture handle to render</param>
+        /// <param name="size">The size of the element in pixels</param>
         /// <param name="uv0">The uv</param>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool ImageButton(string strId, IntPtr userTextureId, Vector2F size, Vector2F uv0)
         {
             byte ret = ImGuiNative.igImageButton(Encoding.UTF8.GetBytes(strId), userTextureId, size, uv0, new Vector2F(1, 1), new Vector4F(), new Vector4F(1, 1, 1, 1));
@@ -1072,12 +1072,12 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether image button
         /// </summary>
-        /// <param name="strId">The str id</param>
-        /// <param name="userTextureId">The user texture id</param>
-        /// <param name="size">The size</param>
+        /// <param name="strId">The string identifier for the element</param>
+        /// <param name="userTextureId">The native texture handle to render</param>
+        /// <param name="size">The size of the element in pixels</param>
         /// <param name="uv0">The uv</param>
         /// <param name="uv1">The uv</param>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool ImageButton(string strId, IntPtr userTextureId, Vector2F size, Vector2F uv0, Vector2F uv1)
         {
             byte ret = ImGuiNative.igImageButton(Encoding.UTF8.GetBytes(strId), userTextureId, size, uv0, uv1, new Vector4F(), new Vector4F(1, 1, 1, 1));
@@ -1087,13 +1087,13 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether image button
         /// </summary>
-        /// <param name="strId">The str id</param>
-        /// <param name="userTextureId">The user texture id</param>
-        /// <param name="size">The size</param>
+        /// <param name="strId">The string identifier for the element</param>
+        /// <param name="userTextureId">The native texture handle to render</param>
+        /// <param name="size">The size of the element in pixels</param>
         /// <param name="uv0">The uv</param>
         /// <param name="uv1">The uv</param>
         /// <param name="bgCol">The bg col</param>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool ImageButton(string strId, IntPtr userTextureId, Vector2F size, Vector2F uv0, Vector2F uv1, Vector4F bgCol)
         {
             byte ret = ImGuiNative.igImageButton(Encoding.UTF8.GetBytes(strId), userTextureId, size, uv0, uv1, bgCol, new Vector4F(1, 1, 1, 1));
@@ -1103,14 +1103,14 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether image button
         /// </summary>
-        /// <param name="strId">The str id</param>
-        /// <param name="userTextureId">The user texture id</param>
-        /// <param name="size">The size</param>
+        /// <param name="strId">The string identifier for the element</param>
+        /// <param name="userTextureId">The native texture handle to render</param>
+        /// <param name="size">The size of the element in pixels</param>
         /// <param name="uv0">The uv</param>
         /// <param name="uv1">The uv</param>
         /// <param name="bgCol">The bg col</param>
         /// <param name="tintCol">The tint col</param>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool ImageButton(string strId, IntPtr userTextureId, Vector2F size, Vector2F uv0, Vector2F uv1, Vector4F bgCol, Vector4F tintCol)
         {
             byte ret = ImGuiNative.igImageButton(Encoding.UTF8.GetBytes(strId), userTextureId, size, uv0, uv1, bgCol, tintCol);
@@ -1138,9 +1138,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input double
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool InputDouble(string label, ref double v)
         {
             byte ret = ImGuiNative.igInputDouble(Encoding.UTF8.GetBytes(label), ref v, 0.0, 0.0, null, 0);
@@ -1150,10 +1150,10 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input double
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
         /// <param name="step">The step</param>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool InputDouble(string label, ref double v, double step)
         {
             byte ret = ImGuiNative.igInputDouble(Encoding.UTF8.GetBytes(label), ref v, step, 0.0, null, 0);
@@ -1163,11 +1163,11 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input double
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
         /// <param name="step">The step</param>
         /// <param name="stepFast">The step fast</param>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool InputDouble(string label, ref double v, double step, double stepFast)
         {
             byte ret = ImGuiNative.igInputDouble(Encoding.UTF8.GetBytes(label), ref v, step, stepFast, null, 0);
@@ -1177,12 +1177,12 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input double
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
         /// <param name="step">The step</param>
         /// <param name="stepFast">The step fast</param>
-        /// <param name="format">The format</param>
-        /// <returns>The bool</returns>
+        /// <param name="format">The display format string (printf-style)</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool InputDouble(string label, ref double v, double step, double stepFast, string format)
         {
             byte ret = ImGuiNative.igInputDouble(Encoding.UTF8.GetBytes(label), ref v, step, stepFast, Encoding.UTF8.GetBytes(format), 0);
@@ -1193,13 +1193,13 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input double
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
         /// <param name="step">The step</param>
         /// <param name="stepFast">The step fast</param>
-        /// <param name="format">The format</param>
-        /// <param name="flags">The flags</param>
-        /// <returns>The bool</returns>
+        /// <param name="format">The display format string (printf-style)</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool InputDouble(string label, ref double v, double step, double stepFast, string format, ImGuiInputTextFlags flags)
         {
             byte ret = ImGuiNative.igInputDouble(Encoding.UTF8.GetBytes(label), ref v, step, stepFast, Encoding.UTF8.GetBytes(format), flags);
@@ -1209,9 +1209,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input float
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool InputFloat(string label, ref float v)
         {
             byte ret = ImGuiNative.igInputFloat(Encoding.UTF8.GetBytes(label), ref v, 0.0f, 0.0f, null, 0);
@@ -1221,10 +1221,10 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input float
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
         /// <param name="step">The step</param>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool InputFloat(string label, ref float v, float step)
         {
             byte ret = ImGuiNative.igInputFloat(Encoding.UTF8.GetBytes(label), ref v, step, 0.0f, null, 0);
@@ -1234,11 +1234,11 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input float
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
         /// <param name="step">The step</param>
         /// <param name="stepFast">The step fast</param>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool InputFloat(string label, ref float v, float step, float stepFast)
         {
             byte ret = ImGuiNative.igInputFloat(Encoding.UTF8.GetBytes(label), ref v, step, stepFast, null, 0);
@@ -1248,12 +1248,12 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input float
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
         /// <param name="step">The step</param>
         /// <param name="stepFast">The step fast</param>
-        /// <param name="format">The format</param>
-        /// <returns>The bool</returns>
+        /// <param name="format">The display format string (printf-style)</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool InputFloat(string label, ref float v, float step, float stepFast, string format)
         {
             byte ret = ImGuiNative.igInputFloat(Encoding.UTF8.GetBytes(label), ref v, step, stepFast, Encoding.UTF8.GetBytes(format), 0);
@@ -1263,13 +1263,13 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input float
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
         /// <param name="step">The step</param>
         /// <param name="stepFast">The step fast</param>
-        /// <param name="format">The format</param>
-        /// <param name="flags">The flags</param>
-        /// <returns>The bool</returns>
+        /// <param name="format">The display format string (printf-style)</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool InputFloat(string label, ref float v, float step, float stepFast, string format, ImGuiInputTextFlags flags)
         {
             byte ret = ImGuiNative.igInputFloat(Encoding.UTF8.GetBytes(label), ref v, step, stepFast, Encoding.UTF8.GetBytes(format), flags);
@@ -1280,9 +1280,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input float 2
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool InputFloat2(string label, ref Vector2F v)
         {
             byte ret = ImGuiNative.igInputFloat2(Encoding.UTF8.GetBytes(label), ref v, null, 0);
@@ -1293,10 +1293,10 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input float 2
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
-        /// <param name="format">The format</param>
-        /// <returns>The bool</returns>
+        /// <param name="format">The display format string (printf-style)</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool InputFloat2(string label, ref Vector2F v, string format)
         {
             byte ret = ImGuiNative.igInputFloat2(Encoding.UTF8.GetBytes(label), ref v, Encoding.UTF8.GetBytes(format), 0);
@@ -1306,11 +1306,11 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input float 2
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
-        /// <param name="format">The format</param>
-        /// <param name="flags">The flags</param>
-        /// <returns>The bool</returns>
+        /// <param name="format">The display format string (printf-style)</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool InputFloat2(string label, ref Vector2F v, string format, ImGuiInputTextFlags flags)
         {
             byte ret = ImGuiNative.igInputFloat2(Encoding.UTF8.GetBytes(label), ref v, Encoding.UTF8.GetBytes(format), flags);
@@ -1321,9 +1321,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input float 3
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool InputFloat3(string label, ref Vector3F v)
         {
             byte ret = ImGuiNative.igInputFloat3(Encoding.UTF8.GetBytes(label), ref v, null, 0);
@@ -1333,10 +1333,10 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input float 3
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
-        /// <param name="format">The format</param>
-        /// <returns>The bool</returns>
+        /// <param name="format">The display format string (printf-style)</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool InputFloat3(string label, ref Vector3F v, string format)
         {
             byte ret = ImGuiNative.igInputFloat3(Encoding.UTF8.GetBytes(label), ref v, Encoding.UTF8.GetBytes(format), 0);
@@ -1347,11 +1347,11 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input float 3
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
-        /// <param name="format">The format</param>
-        /// <param name="flags">The flags</param>
-        /// <returns>The bool</returns>
+        /// <param name="format">The display format string (printf-style)</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool InputFloat3(string label, ref Vector3F v, string format, ImGuiInputTextFlags flags)
         {
             byte ret = ImGuiNative.igInputFloat3(Encoding.UTF8.GetBytes(label), ref v, Encoding.UTF8.GetBytes(format), flags);
@@ -1361,9 +1361,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether input float 4
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool InputFloat4(string label, ref Vector4F v)
         {
             byte ret = ImGuiNative.igInputFloat4(Encoding.UTF8.GetBytes(label), ref v, null, 0);

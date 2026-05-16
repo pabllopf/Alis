@@ -232,13 +232,13 @@ namespace Alis.Extension.Graphic.Ui
         ///     Gets the char advance using the specified c
         /// </summary>
         /// <param name="c">The </param>
-        /// <returns>The ret</returns>
+        /// <returns>The result returned from the native function</returns>
         public float GetCharAdvance(ushort c) => ImGuiNative.ImFont_GetCharAdvance(NativePtr, c);
 
         /// <summary>
         ///     Gets the debug name
         /// </summary>
-        /// <returns>The string</returns>
+        /// <returns>the string result from the native function</returns>
         public string GetDebugName() => Encoding.UTF8.GetString(ImGuiNative.ImFont_GetDebugName(NativePtr));
 
         /// <summary>
@@ -253,15 +253,15 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether this instance is loaded
         /// </summary>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public bool IsLoaded() => ImGuiNative.ImFont_IsLoaded(NativePtr) != 0;
 
         /// <summary>
         ///     Renders the char using the specified draw list
         /// </summary>
         /// <param name="drawList">The draw list</param>
-        /// <param name="size">The size</param>
-        /// <param name="pos">The pos</param>
+        /// <param name="size">The size of the element in pixels</param>
+        /// <param name="pos">The position in screen coordinates</param>
         /// <param name="col">The col</param>
         /// <param name="c">The </param>
         public void RenderChar(ImDrawListPtr drawList, float size, Vector2F pos, uint col, ushort c)

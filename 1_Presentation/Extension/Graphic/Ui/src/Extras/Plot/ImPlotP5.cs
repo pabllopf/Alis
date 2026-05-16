@@ -43,9 +43,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="neg">The neg</param>
-        /// <param name="pos">The pos</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="pos">The position in screen coordinates</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotErrorBars(string labelId, ref sbyte xs, ref sbyte ys, ref sbyte neg, ref sbyte pos, int count, ImPlotErrorBarsFlags flags)
         {
             ImPlotNative.ImPlot_PlotErrorBars_S8PtrS8PtrS8PtrS8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, neg, pos, count, flags, 0, sizeof(sbyte));
@@ -58,10 +58,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="neg">The neg</param>
-        /// <param name="pos">The pos</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
+        /// <param name="pos">The position in screen coordinates</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="offset">The offset from the origin</param>
         public static void PlotErrorBars(string labelId, ref sbyte xs, ref sbyte ys, ref sbyte neg, ref sbyte pos, int count, ImPlotErrorBarsFlags flags, int offset)
         {
             ImPlotNative.ImPlot_PlotErrorBars_S8PtrS8PtrS8PtrS8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, neg, pos, count, flags, offset, sizeof(sbyte));
@@ -74,11 +74,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="neg">The neg</param>
-        /// <param name="pos">The pos</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        /// <param name="stride">The stride</param>
+        /// <param name="pos">The position in screen coordinates</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="offset">The offset from the origin</param>
+        /// <param name="stride">The byte stride between elements</param>
         public static void PlotErrorBars(string labelId, ref sbyte xs, ref sbyte ys, ref sbyte neg, ref sbyte pos, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         {
             ImPlotNative.ImPlot_PlotErrorBars_S8PtrS8PtrS8PtrS8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, neg, pos, count, flags, offset, stride);
@@ -91,8 +91,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="neg">The neg</param>
-        /// <param name="pos">The pos</param>
-        /// <param name="count">The count</param>
+        /// <param name="pos">The position in screen coordinates</param>
+        /// <param name="count">The number of elements</param>
         public static void PlotErrorBars(string labelId, ref byte xs, ref byte ys, ref byte neg, ref byte pos, int count)
         {
             ImPlotNative.ImPlot_PlotErrorBars_U8PtrU8PtrU8PtrU8Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, neg, pos, count, 0, 0, sizeof(byte));
@@ -105,9 +105,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="neg">The neg</param>
-        /// <param name="pos">The pos</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="pos">The position in screen coordinates</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotErrorBars(string labelId, ref byte xs, ref byte ys, ref byte neg, ref byte pos, int count, ImPlotErrorBarsFlags flags)
         {
             ImPlotNative.ImPlot_PlotErrorBars_U8PtrU8PtrU8PtrU8Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, neg, pos, count, flags, 0, sizeof(byte));
@@ -120,10 +120,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="neg">The neg</param>
-        /// <param name="pos">The pos</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
+        /// <param name="pos">The position in screen coordinates</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="offset">The offset from the origin</param>
         public static void PlotErrorBars(string labelId, ref byte xs, ref byte ys, ref byte neg, ref byte pos, int count, ImPlotErrorBarsFlags flags, int offset)
         {
             ImPlotNative.ImPlot_PlotErrorBars_U8PtrU8PtrU8PtrU8Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, neg, pos, count, flags, offset, sizeof(byte));
@@ -136,11 +136,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="neg">The neg</param>
-        /// <param name="pos">The pos</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        /// <param name="stride">The stride</param>
+        /// <param name="pos">The position in screen coordinates</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="offset">The offset from the origin</param>
+        /// <param name="stride">The byte stride between elements</param>
         public static void PlotErrorBars(string labelId, ref byte xs, ref byte ys, ref byte neg, ref byte pos, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         {
             ImPlotNative.ImPlot_PlotErrorBars_U8PtrU8PtrU8PtrU8Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, neg, pos, count, flags, offset, stride);
@@ -153,8 +153,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="neg">The neg</param>
-        /// <param name="pos">The pos</param>
-        /// <param name="count">The count</param>
+        /// <param name="pos">The position in screen coordinates</param>
+        /// <param name="count">The number of elements</param>
         public static void PlotErrorBars(string labelId, ref short xs, ref short ys, ref short neg, ref short pos, int count)
         {
             ImPlotNative.ImPlot_PlotErrorBars_S16PtrS16PtrS16PtrS16Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, neg, pos, count, 0, 0, sizeof(short));
@@ -167,9 +167,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="neg">The neg</param>
-        /// <param name="pos">The pos</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="pos">The position in screen coordinates</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotErrorBars(string labelId, ref short xs, ref short ys, ref short neg, ref short pos, int count, ImPlotErrorBarsFlags flags)
         {
             ImPlotNative.ImPlot_PlotErrorBars_S16PtrS16PtrS16PtrS16Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, neg, pos, count, flags, 0, sizeof(short));
@@ -182,10 +182,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="neg">The neg</param>
-        /// <param name="pos">The pos</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
+        /// <param name="pos">The position in screen coordinates</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="offset">The offset from the origin</param>
         public static void PlotErrorBars(string labelId, ref short xs, ref short ys, ref short neg, ref short pos, int count, ImPlotErrorBarsFlags flags, int offset)
         {
             ImPlotNative.ImPlot_PlotErrorBars_S16PtrS16PtrS16PtrS16Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, neg, pos, count, flags, offset, sizeof(short));
@@ -198,11 +198,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="neg">The neg</param>
-        /// <param name="pos">The pos</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        /// <param name="stride">The stride</param>
+        /// <param name="pos">The position in screen coordinates</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="offset">The offset from the origin</param>
+        /// <param name="stride">The byte stride between elements</param>
         public static void PlotErrorBars(string labelId, ref short xs, ref short ys, ref short neg, ref short pos, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         {
             ImPlotNative.ImPlot_PlotErrorBars_S16PtrS16PtrS16PtrS16Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, neg, pos, count, flags, offset, stride);
@@ -215,8 +215,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="neg">The neg</param>
-        /// <param name="pos">The pos</param>
-        /// <param name="count">The count</param>
+        /// <param name="pos">The position in screen coordinates</param>
+        /// <param name="count">The number of elements</param>
         public static void PlotErrorBars(string labelId, ref ushort xs, ref ushort ys, ref ushort neg, ref ushort pos, int count)
         {
             ImPlotNative.ImPlot_PlotErrorBars_U16PtrU16PtrU16PtrU16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, neg, pos, count, 0, 0, sizeof(ushort));
@@ -229,9 +229,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="neg">The neg</param>
-        /// <param name="pos">The pos</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="pos">The position in screen coordinates</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotErrorBars(string labelId, ref ushort xs, ref ushort ys, ref ushort neg, ref ushort pos, int count, ImPlotErrorBarsFlags flags)
         {
             ImPlotNative.ImPlot_PlotErrorBars_U16PtrU16PtrU16PtrU16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, neg, pos, count, flags, 0, sizeof(ushort));
@@ -244,10 +244,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="neg">The neg</param>
-        /// <param name="pos">The pos</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
+        /// <param name="pos">The position in screen coordinates</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="offset">The offset from the origin</param>
         public static void PlotErrorBars(string labelId, ref ushort xs, ref ushort ys, ref ushort neg, ref ushort pos, int count, ImPlotErrorBarsFlags flags, int offset)
         {
             ImPlotNative.ImPlot_PlotErrorBars_U16PtrU16PtrU16PtrU16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, neg, pos, count, flags, offset, sizeof(ushort));
@@ -260,11 +260,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="neg">The neg</param>
-        /// <param name="pos">The pos</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        /// <param name="stride">The stride</param>
+        /// <param name="pos">The position in screen coordinates</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="offset">The offset from the origin</param>
+        /// <param name="stride">The byte stride between elements</param>
         public static void PlotErrorBars(string labelId, ref ushort xs, ref ushort ys, ref ushort neg, ref ushort pos, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         {
             ImPlotNative.ImPlot_PlotErrorBars_U16PtrU16PtrU16PtrU16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, neg, pos, count, flags, offset, stride);
@@ -277,8 +277,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="neg">The neg</param>
-        /// <param name="pos">The pos</param>
-        /// <param name="count">The count</param>
+        /// <param name="pos">The position in screen coordinates</param>
+        /// <param name="count">The number of elements</param>
         public static void PlotErrorBars(string labelId, ref int xs, ref int ys, ref int neg, ref int pos, int count)
         {
             ImPlotNative.ImPlot_PlotErrorBars_S32PtrS32PtrS32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, neg, pos, count, 0, 0, sizeof(int));
@@ -291,9 +291,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="neg">The neg</param>
-        /// <param name="pos">The pos</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="pos">The position in screen coordinates</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotErrorBars(string labelId, ref int xs, ref int ys, ref int neg, ref int pos, int count, ImPlotErrorBarsFlags flags)
         {
             ImPlotNative.ImPlot_PlotErrorBars_S32PtrS32PtrS32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, neg, pos, count, flags, 0, sizeof(int));
@@ -306,10 +306,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="neg">The neg</param>
-        /// <param name="pos">The pos</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
+        /// <param name="pos">The position in screen coordinates</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="offset">The offset from the origin</param>
         public static void PlotErrorBars(string labelId, ref int xs, ref int ys, ref int neg, ref int pos, int count, ImPlotErrorBarsFlags flags, int offset)
         {
             ImPlotNative.ImPlot_PlotErrorBars_S32PtrS32PtrS32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, neg, pos, count, flags, offset, sizeof(int));
@@ -322,11 +322,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="neg">The neg</param>
-        /// <param name="pos">The pos</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        /// <param name="stride">The stride</param>
+        /// <param name="pos">The position in screen coordinates</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="offset">The offset from the origin</param>
+        /// <param name="stride">The byte stride between elements</param>
         public static void PlotErrorBars(string labelId, ref int xs, ref int ys, ref int neg, ref int pos, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         {
             ImPlotNative.ImPlot_PlotErrorBars_S32PtrS32PtrS32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, neg, pos, count, flags, offset, stride);
@@ -339,8 +339,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="neg">The neg</param>
-        /// <param name="pos">The pos</param>
-        /// <param name="count">The count</param>
+        /// <param name="pos">The position in screen coordinates</param>
+        /// <param name="count">The number of elements</param>
         public static void PlotErrorBars(string labelId, ref uint xs, ref uint ys, ref uint neg, ref uint pos, int count)
         {
             ImPlotNative.ImPlot_PlotErrorBars_U32PtrU32PtrU32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, neg, pos, count, 0, 0, sizeof(uint));
@@ -353,9 +353,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="neg">The neg</param>
-        /// <param name="pos">The pos</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="pos">The position in screen coordinates</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotErrorBars(string labelId, ref uint xs, ref uint ys, ref uint neg, ref uint pos, int count, ImPlotErrorBarsFlags flags)
         {
             ImPlotNative.ImPlot_PlotErrorBars_U32PtrU32PtrU32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, neg, pos, count, flags, 0, sizeof(uint));
@@ -368,10 +368,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="neg">The neg</param>
-        /// <param name="pos">The pos</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
+        /// <param name="pos">The position in screen coordinates</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="offset">The offset from the origin</param>
         public static void PlotErrorBars(string labelId, ref uint xs, ref uint ys, ref uint neg, ref uint pos, int count, ImPlotErrorBarsFlags flags, int offset)
         {
             ImPlotNative.ImPlot_PlotErrorBars_U32PtrU32PtrU32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, neg, pos, count, flags, offset, sizeof(uint));
@@ -384,11 +384,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="neg">The neg</param>
-        /// <param name="pos">The pos</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        /// <param name="stride">The stride</param>
+        /// <param name="pos">The position in screen coordinates</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="offset">The offset from the origin</param>
+        /// <param name="stride">The byte stride between elements</param>
         public static void PlotErrorBars(string labelId, ref uint xs, ref uint ys, ref uint neg, ref uint pos, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         {
             ImPlotNative.ImPlot_PlotErrorBars_U32PtrU32PtrU32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, neg, pos, count, flags, offset, stride);
@@ -401,8 +401,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="neg">The neg</param>
-        /// <param name="pos">The pos</param>
-        /// <param name="count">The count</param>
+        /// <param name="pos">The position in screen coordinates</param>
+        /// <param name="count">The number of elements</param>
         public static void PlotErrorBars(string labelId, ref long xs, ref long ys, ref long neg, ref long pos, int count)
         {
             ImPlotNative.ImPlot_PlotErrorBars_S64PtrS64PtrS64PtrS64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, neg, pos, count, 0, 0, sizeof(long));
@@ -415,9 +415,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="neg">The neg</param>
-        /// <param name="pos">The pos</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="pos">The position in screen coordinates</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotErrorBars(string labelId, ref long xs, ref long ys, ref long neg, ref long pos, int count, ImPlotErrorBarsFlags flags)
         {
             ImPlotNative.ImPlot_PlotErrorBars_S64PtrS64PtrS64PtrS64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, neg, pos, count, flags, 0, sizeof(long));
@@ -430,10 +430,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="neg">The neg</param>
-        /// <param name="pos">The pos</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
+        /// <param name="pos">The position in screen coordinates</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="offset">The offset from the origin</param>
         public static void PlotErrorBars(string labelId, ref long xs, ref long ys, ref long neg, ref long pos, int count, ImPlotErrorBarsFlags flags, int offset)
         {
             ImPlotNative.ImPlot_PlotErrorBars_S64PtrS64PtrS64PtrS64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, neg, pos, count, flags, offset, sizeof(long));
@@ -446,11 +446,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="neg">The neg</param>
-        /// <param name="pos">The pos</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        /// <param name="stride">The stride</param>
+        /// <param name="pos">The position in screen coordinates</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="offset">The offset from the origin</param>
+        /// <param name="stride">The byte stride between elements</param>
         public static void PlotErrorBars(string labelId, ref long xs, ref long ys, ref long neg, ref long pos, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         {
             ImPlotNative.ImPlot_PlotErrorBars_S64PtrS64PtrS64PtrS64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, neg, pos, count, flags, offset, stride);
@@ -463,8 +463,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="neg">The neg</param>
-        /// <param name="pos">The pos</param>
-        /// <param name="count">The count</param>
+        /// <param name="pos">The position in screen coordinates</param>
+        /// <param name="count">The number of elements</param>
         public static void PlotErrorBars(string labelId, ref ulong xs, ref ulong ys, ref ulong neg, ref ulong pos, int count)
         {
             ImPlotNative.ImPlot_PlotErrorBars_U64PtrU64PtrU64PtrU64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, neg, pos, count, 0, 0, sizeof(ulong));
@@ -477,9 +477,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="neg">The neg</param>
-        /// <param name="pos">The pos</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="pos">The position in screen coordinates</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotErrorBars(string labelId, ref ulong xs, ref ulong ys, ref ulong neg, ref ulong pos, int count, ImPlotErrorBarsFlags flags)
         {
             ImPlotNative.ImPlot_PlotErrorBars_U64PtrU64PtrU64PtrU64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, neg, pos, count, flags, 0, sizeof(ulong));
@@ -492,10 +492,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="neg">The neg</param>
-        /// <param name="pos">The pos</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
+        /// <param name="pos">The position in screen coordinates</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="offset">The offset from the origin</param>
         public static void PlotErrorBars(string labelId, ref ulong xs, ref ulong ys, ref ulong neg, ref ulong pos, int count, ImPlotErrorBarsFlags flags, int offset)
         {
             ImPlotNative.ImPlot_PlotErrorBars_U64PtrU64PtrU64PtrU64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, neg, pos, count, flags, offset, sizeof(ulong));
@@ -508,11 +508,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="neg">The neg</param>
-        /// <param name="pos">The pos</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        /// <param name="stride">The stride</param>
+        /// <param name="pos">The position in screen coordinates</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="offset">The offset from the origin</param>
+        /// <param name="stride">The byte stride between elements</param>
         public static void PlotErrorBars(string labelId, ref ulong xs, ref ulong ys, ref ulong neg, ref ulong pos, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         {
             ImPlotNative.ImPlot_PlotErrorBars_U64PtrU64PtrU64PtrU64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, neg, pos, count, flags, offset, stride);
@@ -617,7 +617,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelFmt">The label fmt</param>
         /// <param name="boundsMin">The bounds min</param>
         /// <param name="boundsMax">The bounds max</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotHeatmap(string labelId, float[] values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax, ImPlotHeatmapFlags flags)
         {
             ImPlotNative.ImPlot_PlotHeatmap_FloatPtr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, boundsMax, flags);

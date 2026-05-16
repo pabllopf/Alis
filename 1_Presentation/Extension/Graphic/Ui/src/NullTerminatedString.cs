@@ -46,13 +46,13 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Initializes a new instance of the <see cref="NullTerminatedString" /> class
         /// </summary>
-        /// <param name="data">The data</param>
+        /// <param name="data">The data buffer content</param>
         public NullTerminatedString(IntPtr data) => Data = data;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="NullTerminatedString" /> class
         /// </summary>
-        /// <param name="data">The data</param>
+        /// <param name="data">The data buffer content</param>
         public NullTerminatedString(byte[] data)
         {
             Data = Marshal.AllocHGlobal(data.Length + 1);
@@ -63,7 +63,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Returns the string
         /// </summary>
-        /// <returns>The string</returns>
+        /// <returns>the string result from the native function</returns>
         public override string ToString()
         {
             if (Data == IntPtr.Zero)

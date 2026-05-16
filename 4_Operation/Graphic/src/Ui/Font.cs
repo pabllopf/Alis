@@ -286,7 +286,6 @@ namespace Alis.Core.Graphic.Ui
         private void InitializeCharacterRects(int charWidth, int charHeight)
         {
             int atlasCols = (int) (Size.X / charWidth);
-            int atlasRows = (int) (Size.Y / charHeight);
             for (int i = 0; i < 256; i++) // ASCII básico
             {
                 int col = i % atlasCols;

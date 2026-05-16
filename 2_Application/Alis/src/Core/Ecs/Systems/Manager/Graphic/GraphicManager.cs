@@ -224,7 +224,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
 
             foreach (ConsoleKey k in releasedKeys)
             {
-                keyDownTimestamps.TryGetValue(k, out DateTime downTime);
+                keyDownTimestamps.TryGetValue(k, out DateTime _);
                 keyDownTimestamps.Remove(k);
             }
 

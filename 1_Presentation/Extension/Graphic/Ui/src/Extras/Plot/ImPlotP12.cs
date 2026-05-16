@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="bins">The bins</param>
         /// <param name="barScale">The bar scale</param>
         /// <param name="range">The range</param>
@@ -57,11 +57,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="bins">The bins</param>
         /// <param name="barScale">The bar scale</param>
         /// <param name="range">The range</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, byte[] values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags)
         {
@@ -74,7 +74,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, short[] values, int count)
         {
@@ -87,7 +87,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="bins">The bins</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, short[] values, int count, int bins)
@@ -101,7 +101,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="bins">The bins</param>
         /// <param name="barScale">The bar scale</param>
         /// <returns>The double</returns>
@@ -116,7 +116,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="bins">The bins</param>
         /// <param name="barScale">The bar scale</param>
         /// <param name="range">The range</param>
@@ -132,11 +132,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="bins">The bins</param>
         /// <param name="barScale">The bar scale</param>
         /// <param name="range">The range</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, short[] values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags)
         {
@@ -149,7 +149,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ushort[] values, int count)
         {
@@ -162,7 +162,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="bins">The bins</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ushort[] values, int count, int bins)
@@ -176,7 +176,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="bins">The bins</param>
         /// <param name="barScale">The bar scale</param>
         /// <returns>The double</returns>
@@ -191,7 +191,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="bins">The bins</param>
         /// <param name="barScale">The bar scale</param>
         /// <param name="range">The range</param>
@@ -207,11 +207,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="bins">The bins</param>
         /// <param name="barScale">The bar scale</param>
         /// <param name="range">The range</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ushort[] values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags)
         {
@@ -224,7 +224,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, int[] values, int count)
         {
@@ -237,7 +237,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="bins">The bins</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, int[] values, int count, int bins)
@@ -251,7 +251,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="bins">The bins</param>
         /// <param name="barScale">The bar scale</param>
         /// <returns>The double</returns>
@@ -266,7 +266,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="bins">The bins</param>
         /// <param name="barScale">The bar scale</param>
         /// <param name="range">The range</param>
@@ -282,11 +282,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="bins">The bins</param>
         /// <param name="barScale">The bar scale</param>
         /// <param name="range">The range</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, int[] values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags)
         {
@@ -299,7 +299,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, uint[] values, int count)
         {
@@ -312,7 +312,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="bins">The bins</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, uint[] values, int count, int bins)
@@ -326,7 +326,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="bins">The bins</param>
         /// <param name="barScale">The bar scale</param>
         /// <returns>The double</returns>
@@ -341,7 +341,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="bins">The bins</param>
         /// <param name="barScale">The bar scale</param>
         /// <param name="range">The range</param>
@@ -357,11 +357,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="bins">The bins</param>
         /// <param name="barScale">The bar scale</param>
         /// <param name="range">The range</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, uint[] values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags)
         {
@@ -374,7 +374,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, long[] values, int count)
         {
@@ -387,7 +387,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="bins">The bins</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, long[] values, int count, int bins)
@@ -401,7 +401,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="bins">The bins</param>
         /// <param name="barScale">The bar scale</param>
         /// <returns>The double</returns>
@@ -416,7 +416,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="bins">The bins</param>
         /// <param name="barScale">The bar scale</param>
         /// <param name="range">The range</param>
@@ -432,11 +432,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="bins">The bins</param>
         /// <param name="barScale">The bar scale</param>
         /// <param name="range">The range</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, long[] values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags)
         {
@@ -449,7 +449,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ulong[] values, int count)
         {
@@ -462,7 +462,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="bins">The bins</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ulong[] values, int count, int bins)
@@ -476,7 +476,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="bins">The bins</param>
         /// <param name="barScale">The bar scale</param>
         /// <returns>The double</returns>
@@ -491,7 +491,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="bins">The bins</param>
         /// <param name="barScale">The bar scale</param>
         /// <param name="range">The range</param>
@@ -507,11 +507,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="bins">The bins</param>
         /// <param name="barScale">The bar scale</param>
         /// <param name="range">The range</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ulong[] values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags)
         {
@@ -525,7 +525,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref float xs, ref float ys, int count)
         {
@@ -539,7 +539,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="xBins">The bins</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref float xs, ref float ys, int count, int xBins)
@@ -554,7 +554,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="xBins">The bins</param>
         /// <param name="yBins">The bins</param>
         /// <returns>The double</returns>
@@ -570,7 +570,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="xBins">The bins</param>
         /// <param name="yBins">The bins</param>
         /// <param name="range">The range</param>
@@ -587,11 +587,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="xBins">The bins</param>
         /// <param name="yBins">The bins</param>
         /// <param name="range">The range</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref float xs, ref float ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags)
         {
@@ -605,7 +605,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref double xs, ref double ys, int count)
         {
@@ -619,7 +619,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="xBins">The bins</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref double xs, ref double ys, int count, int xBins)
@@ -634,7 +634,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="xBins">The bins</param>
         /// <param name="yBins">The bins</param>
         /// <returns>The double</returns>
@@ -650,7 +650,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="xBins">The bins</param>
         /// <param name="yBins">The bins</param>
         /// <param name="range">The range</param>
@@ -667,11 +667,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="xBins">The bins</param>
         /// <param name="yBins">The bins</param>
         /// <param name="range">The range</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref double xs, ref double ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags)
         {
@@ -685,7 +685,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref sbyte xs, ref sbyte ys, int count)
         {
@@ -699,7 +699,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="xBins">The bins</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref sbyte xs, ref sbyte ys, int count, int xBins)
@@ -714,7 +714,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="xBins">The bins</param>
         /// <param name="yBins">The bins</param>
         /// <returns>The double</returns>
@@ -730,7 +730,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="xBins">The bins</param>
         /// <param name="yBins">The bins</param>
         /// <param name="range">The range</param>
@@ -747,11 +747,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="xBins">The bins</param>
         /// <param name="yBins">The bins</param>
         /// <param name="range">The range</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref sbyte xs, ref sbyte ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags)
         {
@@ -765,7 +765,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref byte xs, ref byte ys, int count)
         {
@@ -779,7 +779,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="xBins">The bins</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref byte xs, ref byte ys, int count, int xBins)
@@ -794,7 +794,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="xBins">The bins</param>
         /// <param name="yBins">The bins</param>
         /// <returns>The double</returns>

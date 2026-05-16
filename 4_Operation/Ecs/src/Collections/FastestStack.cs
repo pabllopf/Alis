@@ -522,7 +522,7 @@ namespace Alis.Core.Ecs.Collections
         ///     Throws the for empty stack
         /// </summary>
         /// <exception cref="InvalidOperationException">InvalidOperation_EmptyStack</exception>
-        private void ThrowForEmptyStack()
+        private static void ThrowForEmptyStack()
         {
             throw new InvalidOperationException("InvalidOperation_EmptyStack");
         }

@@ -33,188 +33,188 @@ using Alis.Extension.Graphic.Sdl2.Enums;
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl text input event
+    ///     Represents an SDL text input event, fired when a Unicode character is composed and entered via IME or keyboard.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct TextInputEvent
     {
         /// <summary>
-        ///     The type
+        ///     The event type identifier, set to <see cref="EventType.TextInput"/>.
         /// </summary>
         public EventType type;
 
         /// <summary>
-        ///     The timestamp
+        ///     The timestamp of the event, in milliseconds, from the SDL event system.
         /// </summary>
         public uint timestamp;
 
         /// <summary>
-        ///     The window id
+        ///     The ID of the window that received the text input event.
         /// </summary>
         public uint windowID;
 
         /// <summary>
-        ///     The byte
+        ///     The first byte of the UTF-8 encoded input text buffer.
         /// </summary>
         internal byte byte0;
 
         /// <summary>
-        ///     The byte
+        ///     The second byte of the UTF-8 encoded input text buffer.
         /// </summary>
         internal byte byte1;
 
         /// <summary>
-        ///     The byte
+        ///     The third byte of the UTF-8 encoded input text buffer.
         /// </summary>
         internal byte byte2;
 
         /// <summary>
-        ///     The byte
+        ///     The fourth byte of the UTF-8 encoded input text buffer.
         /// </summary>
         internal byte byte3;
 
         /// <summary>
-        ///     The byte
+        ///     The fifth byte of the UTF-8 encoded input text buffer.
         /// </summary>
         internal byte byte4;
 
         /// <summary>
-        ///     The byte
+        ///     The sixth byte of the UTF-8 encoded input text buffer.
         /// </summary>
         internal byte byte5;
 
         /// <summary>
-        ///     The byte
+        ///     The seventh byte of the UTF-8 encoded input text buffer.
         /// </summary>
         internal byte byte6;
 
         /// <summary>
-        ///     The byte
+        ///     The eighth byte of the UTF-8 encoded input text buffer.
         /// </summary>
         internal byte byte7;
 
         /// <summary>
-        ///     The byte
+        ///     The ninth byte of the UTF-8 encoded input text buffer.
         /// </summary>
         internal byte byte8;
 
         /// <summary>
-        ///     The byte
+        ///     The tenth byte of the UTF-8 encoded input text buffer.
         /// </summary>
         internal byte byte9;
 
         /// <summary>
-        ///     The byte 10
+        ///     The 11th byte of the UTF-8 encoded input text buffer.
         /// </summary>
         internal byte byte10;
 
         /// <summary>
-        ///     The byte 11
+        ///     The 12th byte of the UTF-8 encoded input text buffer.
         /// </summary>
         internal byte byte11;
 
         /// <summary>
-        ///     The byte 12
+        ///     The 13th byte of the UTF-8 encoded input text buffer.
         /// </summary>
         internal byte byte12;
 
         /// <summary>
-        ///     The byte 13
+        ///     The 14th byte of the UTF-8 encoded input text buffer.
         /// </summary>
         internal byte byte13;
 
         /// <summary>
-        ///     The byte 14
+        ///     The 15th byte of the UTF-8 encoded input text buffer.
         /// </summary>
         internal byte byte14;
 
         /// <summary>
-        ///     The byte 15
+        ///     The 16th byte of the UTF-8 encoded input text buffer.
         /// </summary>
         internal byte byte15;
 
         /// <summary>
-        ///     The byte 16
+        ///     The 17th byte of the UTF-8 encoded input text buffer.
         /// </summary>
         internal byte byte16;
 
         /// <summary>
-        ///     The byte 17
+        ///     The 18th byte of the UTF-8 encoded input text buffer.
         /// </summary>
         internal byte byte17;
 
         /// <summary>
-        ///     The byte 18
+        ///     The 19th byte of the UTF-8 encoded input text buffer.
         /// </summary>
         internal byte byte18;
 
         /// <summary>
-        ///     The byte 19
+        ///     The 20th byte of the UTF-8 encoded input text buffer.
         /// </summary>
         internal byte byte19;
 
         /// <summary>
-        ///     The byte 20
+        ///     The 21st byte of the UTF-8 encoded input text buffer.
         /// </summary>
         internal byte byte20;
 
         /// <summary>
-        ///     The byte 21
+        ///     The 22nd byte of the UTF-8 encoded input text buffer.
         /// </summary>
         internal byte byte21;
 
         /// <summary>
-        ///     The byte 22
+        ///     The 23rd byte of the UTF-8 encoded input text buffer.
         /// </summary>
         internal byte byte22;
 
         /// <summary>
-        ///     The byte 23
+        ///     The 24th byte of the UTF-8 encoded input text buffer.
         /// </summary>
         internal byte byte23;
 
         /// <summary>
-        ///     The byte 24
+        ///     The 25th byte of the UTF-8 encoded input text buffer.
         /// </summary>
         internal byte byte24;
 
         /// <summary>
-        ///     The byte 25
+        ///     The 26th byte of the UTF-8 encoded input text buffer.
         /// </summary>
         internal byte byte25;
 
         /// <summary>
-        ///     The byte 26
+        ///     The 27th byte of the UTF-8 encoded input text buffer.
         /// </summary>
         internal byte byte26;
 
         /// <summary>
-        ///     The byte 27
+        ///     The 28th byte of the UTF-8 encoded input text buffer.
         /// </summary>
         internal byte byte27;
 
         /// <summary>
-        ///     The byte 28
+        ///     The 29th byte of the UTF-8 encoded input text buffer.
         /// </summary>
         internal byte byte28;
 
         /// <summary>
-        ///     The byte 29
+        ///     The 30th byte of the UTF-8 encoded input text buffer.
         /// </summary>
         internal byte byte29;
 
         /// <summary>
-        ///     The byte 30
+        ///     The 31st byte of the UTF-8 encoded input text buffer.
         /// </summary>
         internal byte byte30;
 
         /// <summary>
-        ///     The byte 31
+        ///     The 32nd byte of the UTF-8 encoded input text buffer.
         /// </summary>
         internal byte byte31;
 
         /// <summary>
-        ///     Gets or sets the value of the text
+        ///     Gets the 32-byte UTF-8 encoded input text as a byte array.
         /// </summary>
         public byte[] Text
         {

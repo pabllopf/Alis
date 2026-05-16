@@ -526,7 +526,7 @@ namespace Alis.Extension.Network.Server
             {
                 while (!cancellationToken.IsCancellationRequested)
                 {
-                    (string clientId, NetworkMessageEnvelope message) = await _transport.ReceiveAsync(cancellationToken);
+                    (string _, NetworkMessageEnvelope message) = await _transport.ReceiveAsync(cancellationToken);
 
                     if (_messageHandlers.TryGetValue(message.Channel, out Func<string, string, Task> handler))
                     {

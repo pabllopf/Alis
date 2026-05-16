@@ -253,7 +253,6 @@ namespace Alis.Core.Ecs.Systems.Scope
         public void Preview()
         {
             InternalRuntime<AManager> internalRuntime = _context.InternalRuntime;
-            Setting setting = _context.Setting;
             TimeManager timeManager = _context.TimeManager;
 
             double frameStartTime = timeManager.Clock.Elapsed.TotalSeconds;

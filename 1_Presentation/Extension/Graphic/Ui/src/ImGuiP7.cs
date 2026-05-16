@@ -41,11 +41,11 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether menu item
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="shortcut">The shortcut</param>
         /// <param name="pSelected">The selected</param>
-        /// <param name="enabled">The enabled</param>
-        /// <returns>The bool</returns>
+        /// <param name="enabled">Whether the element is enabled or grayed out</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool MenuItem(string label, string shortcut, ref bool pSelected, bool enabled)
         {
             byte ret = ImGuiNative.igMenuItem_BoolPtr(Encoding.UTF8.GetBytes(label), Encoding.UTF8.GetBytes(shortcut), pSelected, enabled);
@@ -79,7 +79,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Opens the popup using the specified str id
         /// </summary>
-        /// <param name="strId">The str id</param>
+        /// <param name="strId">The string identifier for the element</param>
         public static void OpenPopup(string strId)
         {
             ImGuiNative.igOpenPopup_Str(Encoding.UTF8.GetBytes(strId), 0);
@@ -88,7 +88,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Opens the popup using the specified str id
         /// </summary>
-        /// <param name="strId">The str id</param>
+        /// <param name="strId">The string identifier for the element</param>
         /// <param name="popupFlags">The popup flags</param>
         public static void OpenPopup(string strId, ImGuiPopupFlags popupFlags)
         {
@@ -98,7 +98,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Opens the popup using the specified id
         /// </summary>
-        /// <param name="id">The id</param>
+        /// <param name="id">The unique identifier for the element</param>
         public static void OpenPopup(uint id)
         {
             ImGuiPopupFlags popupFlags = 0;
@@ -108,7 +108,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Opens the popup using the specified id
         /// </summary>
-        /// <param name="id">The id</param>
+        /// <param name="id">The unique identifier for the element</param>
         /// <param name="popupFlags">The popup flags</param>
         public static void OpenPopup(uint id, ImGuiPopupFlags popupFlags)
         {
@@ -127,7 +127,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Opens the popup on item click using the specified str id
         /// </summary>
-        /// <param name="strId">The str id</param>
+        /// <param name="strId">The string identifier for the element</param>
         public static void OpenPopupOnItemClick(string strId)
         {
             ImGuiNative.igOpenPopupOnItemClick(Encoding.UTF8.GetBytes(strId), 0);
@@ -136,7 +136,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Opens the popup on item click using the specified str id
         /// </summary>
-        /// <param name="strId">The str id</param>
+        /// <param name="strId">The string identifier for the element</param>
         /// <param name="popupFlags">The popup flags</param>
         public static void OpenPopupOnItemClick(string strId, ImGuiPopupFlags popupFlags)
         {
@@ -146,7 +146,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Plots the histogram using the specified label
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="values">The values</param>
         /// <param name="valuesCount">The values count</param>
         public static void PlotHistogram(string label, ref float values, int valuesCount)
@@ -157,7 +157,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Plots the histogram using the specified label
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="values">The values</param>
         /// <param name="valuesCount">The values count</param>
         /// <param name="valuesOffset">The values offset</param>
@@ -169,7 +169,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Plots the histogram using the specified label
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="values">The values</param>
         /// <param name="valuesCount">The values count</param>
         /// <param name="valuesOffset">The values offset</param>
@@ -182,7 +182,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Plots the histogram using the specified label
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="values">The values</param>
         /// <param name="valuesCount">The values count</param>
         /// <param name="valuesOffset">The values offset</param>
@@ -196,7 +196,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Plots the histogram using the specified label
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="values">The values</param>
         /// <param name="valuesCount">The values count</param>
         /// <param name="valuesOffset">The values offset</param>
@@ -211,7 +211,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Plots the histogram using the specified label
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="values">The values</param>
         /// <param name="valuesCount">The values count</param>
         /// <param name="valuesOffset">The values offset</param>
@@ -227,7 +227,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Plots the histogram using the specified label
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="values">The values</param>
         /// <param name="valuesCount">The values count</param>
         /// <param name="valuesOffset">The values offset</param>
@@ -235,7 +235,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="scaleMin">The scale min</param>
         /// <param name="scaleMax">The scale max</param>
         /// <param name="graphSize">The graph size</param>
-        /// <param name="stride">The stride</param>
+        /// <param name="stride">The byte stride between elements</param>
         public static void PlotHistogram(string label, ref float values, int valuesCount, int valuesOffset, string overlayText, float scaleMin, float scaleMax, Vector2F graphSize, int stride)
         {
             ImGuiNative.igPlotHistogram_FloatPtr(Encoding.UTF8.GetBytes(label), values, valuesCount, valuesOffset, Encoding.UTF8.GetBytes(overlayText), scaleMin, scaleMax, graphSize, stride);
@@ -244,7 +244,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Plots the lines using the specified label
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="values">The values</param>
         /// <param name="valuesCount">The values count</param>
         public static void PlotLines(string label, ref float values, int valuesCount)
@@ -255,7 +255,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Plots the lines using the specified label
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="values">The values</param>
         /// <param name="valuesCount">The values count</param>
         /// <param name="valuesOffset">The values offset</param>
@@ -267,7 +267,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Plots the lines using the specified label
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="values">The values</param>
         /// <param name="valuesCount">The values count</param>
         /// <param name="valuesOffset">The values offset</param>
@@ -280,7 +280,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Plots the lines using the specified label
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="values">The values</param>
         /// <param name="valuesCount">The values count</param>
         /// <param name="valuesOffset">The values offset</param>
@@ -294,7 +294,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Plots the lines using the specified label
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="values">The values</param>
         /// <param name="valuesCount">The values count</param>
         /// <param name="valuesOffset">The values offset</param>
@@ -309,7 +309,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Plots the lines using the specified label
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="values">The values</param>
         /// <param name="valuesCount">The values count</param>
         /// <param name="valuesOffset">The values offset</param>
@@ -325,7 +325,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Plots the lines using the specified label
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="values">The values</param>
         /// <param name="valuesCount">The values count</param>
         /// <param name="valuesOffset">The values offset</param>
@@ -333,7 +333,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="scaleMin">The scale min</param>
         /// <param name="scaleMax">The scale max</param>
         /// <param name="graphSize">The graph size</param>
-        /// <param name="stride">The stride</param>
+        /// <param name="stride">The byte stride between elements</param>
         public static void PlotLines(string label, ref float values, int valuesCount, int valuesOffset, string overlayText, float scaleMin, float scaleMax, Vector2F graphSize, int stride)
         {
             ImGuiNative.igPlotLines_FloatPtr(Encoding.UTF8.GetBytes(label), values, valuesCount, valuesOffset, Encoding.UTF8.GetBytes(overlayText), scaleMin, scaleMax, graphSize, stride);
@@ -399,7 +399,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Pops the style color using the specified count
         /// </summary>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         public static void PopStyleColor(int count)
         {
             ImGuiNative.igPopStyleColor(count);
@@ -417,7 +417,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Pops the style var using the specified count
         /// </summary>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         public static void PopStyleVar(int count)
         {
             ImGuiNative.igPopStyleVar(count);
@@ -485,9 +485,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Pushes the clip rect using the specified clip rect min
         /// </summary>
-        /// <param name="clipRectMin">The clip rect min</param>
-        /// <param name="clipRectMax">The clip rect max</param>
-        /// <param name="intersectWithCurrentClipRect">The intersect with current clip rect</param>
+        /// <param name="clipRectMin">The minimum corner of the clipping rectangle</param>
+        /// <param name="clipRectMax">The maximum corner of the clipping rectangle</param>
+        /// <param name="intersectWithCurrentClipRect">Whether to intersect with the existing clip rectangle</param>
         public static void PushClipRect(Vector2F clipRectMin, Vector2F clipRectMax, bool intersectWithCurrentClipRect)
         {
             byte nativeIntersectWithCurrentClipRect = intersectWithCurrentClipRect ? (byte) 1 : (byte) 0;
@@ -506,7 +506,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Pushes the id using the specified str id
         /// </summary>
-        /// <param name="strId">The str id</param>
+        /// <param name="strId">The string identifier for the element</param>
         public static void PushId(string strId)
         {
             ImGuiNative.igPushID_Str(Encoding.UTF8.GetBytes(strId));
@@ -601,9 +601,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether radio button
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="active">The active</param>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool RadioButton(string label, bool active)
         {
             byte ret = ImGuiNative.igRadioButton_Bool(Encoding.UTF8.GetBytes(label), active);
@@ -614,10 +614,10 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether radio button
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
         /// <param name="vButton">The button</param>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool RadioButton(string label, ref int v, int vButton)
         {
             byte ret = ImGuiNative.igRadioButton_IntPtr(Encoding.UTF8.GetBytes(label), ref v, vButton);
@@ -726,21 +726,21 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Saves the ini settings to memory
         /// </summary>
-        /// <returns>The string</returns>
+        /// <returns>the string result from the native function</returns>
         public static string SaveIniSettingsToMemory() => Encoding.UTF8.GetString(ImGuiNative.igSaveIniSettingsToMemory(out _));
 
         /// <summary>
         ///     Saves the ini settings to memory using the specified out ini size
         /// </summary>
         /// <param name="outIniSize">The out ini size</param>
-        /// <returns>The string</returns>
+        /// <returns>the string result from the native function</returns>
         public static string SaveIniSettingsToMemory(out uint outIniSize) => Encoding.UTF8.GetString(ImGuiNative.igSaveIniSettingsToMemory(out outIniSize));
 
         /// <summary>
         ///     Describes whether selectable
         /// </summary>
-        /// <param name="label">The label</param>
-        /// <returns>The bool</returns>
+        /// <param name="label">The display label for the UI element</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool Selectable(string label)
         {
             byte ret = ImGuiNative.igSelectable_Bool(Encoding.UTF8.GetBytes(label), false, 0, new Vector2F());
@@ -751,9 +751,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether selectable
         /// </summary>
-        /// <param name="label">The label</param>
-        /// <param name="selected">The selected</param>
-        /// <returns>The bool</returns>
+        /// <param name="label">The display label for the UI element</param>
+        /// <param name="selected">Whether the element is in the selected state</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool Selectable(string label, bool selected)
         {
             byte ret = ImGuiNative.igSelectable_Bool(Encoding.UTF8.GetBytes(label), selected, 0, new Vector2F());
@@ -763,10 +763,10 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether selectable
         /// </summary>
-        /// <param name="label">The label</param>
-        /// <param name="selected">The selected</param>
-        /// <param name="flags">The flags</param>
-        /// <returns>The bool</returns>
+        /// <param name="label">The display label for the UI element</param>
+        /// <param name="selected">Whether the element is in the selected state</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool Selectable(string label, bool selected, ImGuiSelectableFlags flags)
         {
             byte ret = ImGuiNative.igSelectable_Bool(Encoding.UTF8.GetBytes(label), selected, flags, new Vector2F());
@@ -776,11 +776,11 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether selectable
         /// </summary>
-        /// <param name="label">The label</param>
-        /// <param name="selected">The selected</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="size">The size</param>
-        /// <returns>The bool</returns>
+        /// <param name="label">The display label for the UI element</param>
+        /// <param name="selected">Whether the element is in the selected state</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="size">The size of the element in pixels</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool Selectable(string label, bool selected, ImGuiSelectableFlags flags, Vector2F size)
         {
             byte ret = ImGuiNative.igSelectable_Bool(Encoding.UTF8.GetBytes(label), selected, flags, size);
@@ -790,9 +790,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether selectable
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="pSelected">The selected</param>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool Selectable(string label, ref bool pSelected)
         {
             byte ret = ImGuiNative.igSelectable_BoolPtr(Encoding.UTF8.GetBytes(label), pSelected, 0, new Vector2F());
@@ -802,10 +802,10 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether selectable
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="pSelected">The selected</param>
-        /// <param name="flags">The flags</param>
-        /// <returns>The bool</returns>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool Selectable(string label, ref bool pSelected, ImGuiSelectableFlags flags)
         {
             byte ret = ImGuiNative.igSelectable_BoolPtr(Encoding.UTF8.GetBytes(label), pSelected, flags, new Vector2F());
@@ -815,11 +815,11 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether selectable
         /// </summary>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         /// <param name="pSelected">The selected</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="size">The size</param>
-        /// <returns>The bool</returns>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="size">The size of the element in pixels</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool Selectable(string label, ref bool pSelected, ImGuiSelectableFlags flags, Vector2F size)
         {
             byte ret = ImGuiNative.igSelectable_BoolPtr(Encoding.UTF8.GetBytes(label), pSelected, flags, size);
@@ -860,7 +860,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Sets the clipboard text using the specified text
         /// </summary>
-        /// <param name="text">The text</param>
+        /// <param name="text">The text content to display</param>
         public static void SetClipboardText(string text)
         {
             ImGuiNative.igSetClipboardText(Encoding.UTF8.GetBytes(text));
@@ -869,7 +869,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Sets the color edit options using the specified flags
         /// </summary>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public static void SetColorEditOptions(ImGuiColorEditFlags flags)
         {
             ImGuiNative.igSetColorEditOptions(flags);
@@ -898,7 +898,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Sets the current context using the specified ctx
         /// </summary>
-        /// <param name="ctx">The ctx</param>
+        /// <param name="ctx">The ImNodes context instance</param>
         public static void SetCurrentContext(IntPtr ctx)
         {
             ImGuiNative.igSetCurrentContext(ctx);
@@ -934,7 +934,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Sets the cursor screen pos using the specified pos
         /// </summary>
-        /// <param name="pos">The pos</param>
+        /// <param name="pos">The position in screen coordinates</param>
         public static void SetCursorScreenPos(Vector2F pos)
         {
             ImGuiNative.igSetCursorScreenPos(pos);
@@ -944,9 +944,9 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether set drag drop payload
         /// </summary>
         /// <param name="type">The type</param>
-        /// <param name="data">The data</param>
+        /// <param name="data">The data buffer content</param>
         /// <param name="sz">The sz</param>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool SetDragDropPayload(string type, IntPtr data, uint sz)
         {
             byte ret = ImGuiNative.igSetDragDropPayload(Encoding.UTF8.GetBytes(type), data, sz, ImGuiCond.None);
@@ -958,10 +958,10 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether set drag drop payload
         /// </summary>
         /// <param name="type">The type</param>
-        /// <param name="data">The data</param>
+        /// <param name="data">The data buffer content</param>
         /// <param name="sz">The sz</param>
         /// <param name="cond">The cond</param>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool SetDragDropPayload(string type, IntPtr data, uint sz, ImGuiCond cond)
         {
             byte ret = ImGuiNative.igSetDragDropPayload(Encoding.UTF8.GetBytes(type), data, sz, cond);
@@ -996,7 +996,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Sets the keyboard focus here using the specified offset
         /// </summary>
-        /// <param name="offset">The offset</param>
+        /// <param name="offset">The offset from the origin</param>
         public static void SetKeyboardFocusHere(int offset)
         {
             ImGuiNative.igSetKeyboardFocusHere(offset);
@@ -1105,7 +1105,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Sets the next window content size using the specified size
         /// </summary>
-        /// <param name="size">The size</param>
+        /// <param name="size">The size of the element in pixels</param>
         public static void SetNextWindowContentSize(Vector2F size)
         {
             ImGuiNative.igSetNextWindowContentSize(size);
@@ -1142,7 +1142,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Sets the next window pos using the specified pos
         /// </summary>
-        /// <param name="pos">The pos</param>
+        /// <param name="pos">The position in screen coordinates</param>
         public static void SetNextWindowPos(Vector2F pos)
         {
             ImGuiCond cond = 0;
@@ -1153,7 +1153,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Sets the next window pos using the specified pos
         /// </summary>
-        /// <param name="pos">The pos</param>
+        /// <param name="pos">The position in screen coordinates</param>
         /// <param name="cond">The cond</param>
         public static void SetNextWindowPos(Vector2F pos, ImGuiCond cond)
         {
@@ -1164,7 +1164,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Sets the next window pos using the specified pos
         /// </summary>
-        /// <param name="pos">The pos</param>
+        /// <param name="pos">The position in screen coordinates</param>
         /// <param name="cond">The cond</param>
         /// <param name="pivot">The pivot</param>
         public static void SetNextWindowPos(Vector2F pos, ImGuiCond cond, Vector2F pivot)
@@ -1184,7 +1184,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Sets the next window size using the specified size
         /// </summary>
-        /// <param name="size">The size</param>
+        /// <param name="size">The size of the element in pixels</param>
         public static void SetNextWindowSize(Vector2F size)
         {
             ImGuiCond cond = 0;
@@ -1194,7 +1194,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Sets the next window size using the specified size
         /// </summary>
-        /// <param name="size">The size</param>
+        /// <param name="size">The size of the element in pixels</param>
         /// <param name="cond">The cond</param>
         public static void SetNextWindowSize(Vector2F size, ImGuiCond cond)
         {
@@ -1440,7 +1440,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Sets the window pos using the specified pos
         /// </summary>
-        /// <param name="pos">The pos</param>
+        /// <param name="pos">The position in screen coordinates</param>
         public static void SetWindowPos(Vector2F pos)
         {
             ImGuiCond cond = 0;
@@ -1450,7 +1450,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Sets the window pos using the specified pos
         /// </summary>
-        /// <param name="pos">The pos</param>
+        /// <param name="pos">The position in screen coordinates</param>
         /// <param name="cond">The cond</param>
         public static void SetWindowPos(Vector2F pos, ImGuiCond cond)
         {
@@ -1461,7 +1461,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Sets the window pos using the specified name
         /// </summary>
         /// <param name="name">The name</param>
-        /// <param name="pos">The pos</param>
+        /// <param name="pos">The position in screen coordinates</param>
         public static void SetWindowPos(string name, Vector2F pos)
         {
             ImGuiNative.igSetWindowPos_Str(Encoding.UTF8.GetBytes(name), pos, ImGuiCond.None);
@@ -1471,7 +1471,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Sets the window pos using the specified name
         /// </summary>
         /// <param name="name">The name</param>
-        /// <param name="pos">The pos</param>
+        /// <param name="pos">The position in screen coordinates</param>
         /// <param name="cond">The cond</param>
         public static void SetWindowPos(string name, Vector2F pos, ImGuiCond cond)
         {
@@ -1481,7 +1481,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Sets the window size using the specified size
         /// </summary>
-        /// <param name="size">The size</param>
+        /// <param name="size">The size of the element in pixels</param>
         public static void SetWindowSize(Vector2F size)
         {
             ImGuiCond cond = 0;
@@ -1491,7 +1491,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Sets the window size using the specified size
         /// </summary>
-        /// <param name="size">The size</param>
+        /// <param name="size">The size of the element in pixels</param>
         /// <param name="cond">The cond</param>
         public static void SetWindowSize(Vector2F size, ImGuiCond cond)
         {
@@ -1502,7 +1502,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Sets the window size using the specified name
         /// </summary>
         /// <param name="name">The name</param>
-        /// <param name="size">The size</param>
+        /// <param name="size">The size of the element in pixels</param>
         public static void SetWindowSize(string name, Vector2F size)
         {
             ImGuiNative.igSetWindowSize_Str(Encoding.UTF8.GetBytes(name), size, ImGuiCond.None);
@@ -1512,7 +1512,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Sets the window size using the specified name
         /// </summary>
         /// <param name="name">The name</param>
-        /// <param name="size">The size</param>
+        /// <param name="size">The size of the element in pixels</param>
         /// <param name="cond">The cond</param>
         public static void SetWindowSize(string name, Vector2F size, ImGuiCond cond)
         {

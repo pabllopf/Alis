@@ -107,6 +107,6 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Sets
         ///     Describes whether this instance is valid
         /// </summary>
         /// <returns>The bool</returns>
-        public bool IsValid() => true;
+        public static bool IsValid() => true;
     }
 }

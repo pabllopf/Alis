@@ -209,7 +209,7 @@ namespace Alis.Core.Graphic.Platforms.Osx
                 if (type == 10) // NSKeyDown
                 {
                     int keyCode = ObjectiveCInterop.objc_msgSend_Int(evt, ObjectiveCInterop.Sel("keyCode"));
-                    ulong modifierFlags = ObjectiveCInterop.objc_msgSend_UL(evt, ObjectiveCInterop.Sel("modifierFlags"));
+                    ObjectiveCInterop.objc_msgSend_UL(evt, ObjectiveCInterop.Sel("modifierFlags"));
                     IntPtr nsString = ObjectiveCInterop.objc_msgSend(evt, ObjectiveCInterop.Sel("characters"));
                     char c = '\0';
                     if (nsString != IntPtr.Zero)
@@ -771,7 +771,7 @@ namespace Alis.Core.Graphic.Platforms.Osx
 
         // Estructura para la posición
 
-        private CGPoint GetMouseLocation()
+        private static CGPoint GetMouseLocation()
         {
             IntPtr eventRef = ObjectiveCInterop.CGEventCreate(IntPtr.Zero);
             CGPoint point = ObjectiveCInterop.CGEventGetLocation(eventRef);

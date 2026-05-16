@@ -88,19 +88,19 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether this instance is data type
         /// </summary>
         /// <param name="type">The type</param>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public bool IsDataType(string type) => ImGuiNative.ImGuiPayload_IsDataType(ref this, Encoding.UTF8.GetBytes(type)) != 0;
 
         /// <summary>
         ///     Describes whether this instance is delivery
         /// </summary>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public bool IsDelivery() => ImGuiNative.ImGuiPayload_IsDelivery(ref this) != 0;
 
         /// <summary>
         ///     Describes whether this instance is preview
         /// </summary>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public bool IsPreview() => ImGuiNative.ImGuiPayload_IsPreview(ref this) != 0;
     }
 }

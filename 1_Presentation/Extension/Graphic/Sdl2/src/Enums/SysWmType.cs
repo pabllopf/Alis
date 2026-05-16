@@ -34,74 +34,74 @@ namespace Alis.Extension.Graphic.Sdl2.Enums
     /// </summary>
     public enum SysWmType
     {
-        /// <summary>
-        ///     The sdl sys wm unknown sdl sys wm type
-        /// </summary>
-        SdlSysWmUnknown,
+    /// <summary>
+    ///     Unknown or unsupported window manager type
+    /// </summary>
+    SdlSysWmUnknown,
 
-        /// <summary>
-        ///     The sdl sys wm windows sdl sys wm type
-        /// </summary>
-        SdlSysWmWindows,
+    /// <summary>
+    ///     Microsoft Windows window manager
+    /// </summary>
+    SdlSysWmWindows,
 
-        /// <summary>
-        ///     The sdl sys wm x11 sdl sys wm type
-        /// </summary>
-        SdlSysWmX11,
+    /// <summary>
+    ///     X11 window system (Linux/Unix)
+    /// </summary>
+    SdlSysWmX11,
 
-        /// <summary>
-        ///     The sdl sys wm directfb sdl sys wm type
-        /// </summary>
-        SdlSysWmDirectfb,
+    /// <summary>
+    ///     DirectFB windowing system
+    /// </summary>
+    SdlSysWmDirectfb,
 
-        /// <summary>
-        ///     The sdl sys wm cocoa sdl sys wm type
-        /// </summary>
-        SdlSysWmCocoa,
+    /// <summary>
+    ///     Cocoa window manager (macOS)
+    /// </summary>
+    SdlSysWmCocoa,
 
-        /// <summary>
-        ///     The sdl sys wm uikit sdl sys wm type
-        /// </summary>
-        SdlSysWmUikit,
+    /// <summary>
+    ///     UIKit window manager (iOS/tvOS)
+    /// </summary>
+    SdlSysWmUikit,
 
-        /// <summary>
-        ///     The sdl sys wm wayland sdl sys wm type
-        /// </summary>
-        SdlSysWmWayland,
+    /// <summary>
+    ///     Wayland compositor (Linux)
+    /// </summary>
+    SdlSysWmWayland,
 
-        /// <summary>
-        ///     The sdl sys wm mir sdl sys wm type
-        /// </summary>
-        SdlSysWmMir,
+    /// <summary>
+    ///     Mir display server (Linux)
+    /// </summary>
+    SdlSysWmMir,
 
-        /// <summary>
-        ///     The sdl sys wm winrt sdl sys wm type
-        /// </summary>
-        SdlSysWmWinrt,
+    /// <summary>
+    ///     WinRT window manager (Windows Runtime)
+    /// </summary>
+    SdlSysWmWinrt,
 
-        /// <summary>
-        ///     The sdl sys wm android sdl sys wm type
-        /// </summary>
-        SdlSysWmAndroid,
+    /// <summary>
+    ///     Android window manager (SurfaceFlinger)
+    /// </summary>
+    SdlSysWmAndroid,
 
-        /// <summary>
-        ///     The sdl sys wm vivante sdl sys wm type
-        /// </summary>
-        SdlSysWmVivante,
+    /// <summary>
+    ///     Vivante display driver (embedded systems)
+    /// </summary>
+    SdlSysWmVivante,
 
-        /// <summary>
-        ///     The sdl sys wm os2 sdl sys wm type
-        /// </summary>
-        SdlSysWmOs2,
+    /// <summary>
+    ///     OS/2 Presentation Manager
+    /// </summary>
+    SdlSysWmOs2,
 
-        /// <summary>
-        ///     The sdl sys wm haiku sdl sys wm type
-        /// </summary>
-        SdlSysWmHaiku,
+    /// <summary>
+    ///     Haiku window manager
+    /// </summary>
+    SdlSysWmHaiku,
 
-        /// <summary>
-        ///     The sdl sys wm kms drm sdl sys wm type
-        /// </summary>
-        SdlSysWmKmsDrm
+    /// <summary>
+    ///     KMS/DRM direct graphics mode (Linux without a display server)
+    /// </summary>
+    SdlSysWmKmsDrm
     }
 }

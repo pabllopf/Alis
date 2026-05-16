@@ -30,67 +30,67 @@
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     The im plot input map
+    ///     Maps mouse buttons and modifier keys to ImPlot interaction commands such as pan, select, and menu.
     /// </summary>
     public struct ImPlotInputMap
     {
         /// <summary>
-        ///     The pan
+        ///     Mouse button used for panning the plot view.
         /// </summary>
         public ImGuiMouseButton Pan { get; set; }
 
         /// <summary>
-        ///     The pan mod
+        ///     Modifier key required while panning.
         /// </summary>
         public ImGuiModFlags PanMod { get; set; }
 
         /// <summary>
-        ///     The fit
+        ///     Mouse button for triggering an auto-fit of the axis range.
         /// </summary>
         public ImGuiMouseButton Fit { get; set; }
 
         /// <summary>
-        ///     The select
+        ///     Mouse button used for box-select (rectangle selection).
         /// </summary>
         public ImGuiMouseButton Select { get; set; }
 
         /// <summary>
-        ///     The select cancel
+        ///     Mouse button used to cancel an active selection.
         /// </summary>
         public ImGuiMouseButton SelectCancel { get; set; }
 
         /// <summary>
-        ///     The select mod
+        ///     Modifier key required while performing a selection.
         /// </summary>
         public ImGuiModFlags SelectMod { get; set; }
 
         /// <summary>
-        ///     The select horz mod
+        ///     Modifier key to constrain selection to the horizontal axis only.
         /// </summary>
         public ImGuiModFlags SelectHorzMod { get; set; }
 
         /// <summary>
-        ///     The select vert mod
+        ///     Modifier key to constrain selection to the vertical axis only.
         /// </summary>
         public ImGuiModFlags SelectVertMod { get; set; }
 
         /// <summary>
-        ///     The menu
+        ///     Mouse button used to open the plot context menu.
         /// </summary>
         public ImGuiMouseButton Menu { get; set; }
 
         /// <summary>
-        ///     The override mod
+        ///     Modifier key to temporarily override the current tool (e.g. force pan mode).
         /// </summary>
         public ImGuiModFlags OverrideMod { get; set; }
 
         /// <summary>
-        ///     The zoom mod
+        ///     Modifier key for zoom-to-fit or zoom gestures.
         /// </summary>
         public ImGuiModFlags ZoomMod { get; set; }
 
         /// <summary>
-        ///     The zoom rate
+        ///     Multiplier controlling the zoom speed.
         /// </summary>
         public float ZoomRate { get; set; }
     }

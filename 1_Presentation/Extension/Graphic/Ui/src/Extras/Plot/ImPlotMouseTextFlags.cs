@@ -32,29 +32,19 @@ using System;
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     The im plot mouse text flags enum
+    ///     Flags that control the display of mouse position tooltip text in ImPlot.
     /// </summary>
     [Flags]
     public enum ImPlotMouseTextFlags
     {
         /// <summary>
-        ///     The none im plot mouse text flags
+        ///     Default mouse tooltip behaviour.
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The no aux axes im plot mouse text flags
+        ///     Exclude the mouse tooltip from affecting automatic axis fitting.
         /// </summary>
-        NoAuxAxes = 1,
-
-        /// <summary>
-        ///     The no format im plot mouse text flags
-        /// </summary>
-        NoFormat = 2,
-
-        /// <summary>
-        ///     The show always im plot mouse text flags
-        /// </summary>
-        ShowAlways = 4
+        NoFit = 1
     }
 }

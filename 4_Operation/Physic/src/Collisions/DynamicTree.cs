@@ -917,7 +917,6 @@ namespace Alis.Core.Physic.Collisions
 
             int height1 = _nodes[child1].Height;
             int height2 = _nodes[child2].Height;
-            int height = 1 + Math.Max(height1, height2);
             Aabb aabb = new Aabb();
             aabb.Combine(ref _nodes[child1].Aabb, ref _nodes[child2].Aabb);
 

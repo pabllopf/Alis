@@ -32,8 +32,12 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     The viewport
+    ///     Sets the viewport rectangle, defining the affine transformation from normalized device coordinates to window coordinates
     /// </summary>
+    /// <param name="x">Specifies the x-coordinate of the lower-left corner of the viewport</param>
+    /// <param name="y">Specifies the y-coordinate of the lower-left corner of the viewport</param>
+    /// <param name="width">Specifies the width of the viewport</param>
+    /// <param name="height">Specifies the height of the viewport</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void Viewport(int x, int y, int width, int height);
 }

@@ -33,28 +33,28 @@ using System.Runtime.InteropServices;
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The internal uikit wm info
+    ///     Contains UIKit (iOS/tvOS) window manager information for SDL video.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct InternalUikitWmInfo
     {
         /// <summary>
-        ///     Refers to a UIWindow*
+        ///     Refers to a UIWindow* (the UIKit window object).
         /// </summary>
         public IntPtr Window { get; set; }
 
         /// <summary>
-        ///     The frame buffer
+        ///     The OpenGL ES frame buffer object ID.
         /// </summary>
         public uint framebuffer;
 
         /// <summary>
-        ///     The color buffer
+        ///     The OpenGL ES color render buffer object ID.
         /// </summary>
         public uint colorBuffer;
 
         /// <summary>
-        ///     The resolve frame buffer
+        ///     The OpenGL ES resolve frame buffer object ID (for MSAA).
         /// </summary>
         public uint resolveFramebuffer;
     }

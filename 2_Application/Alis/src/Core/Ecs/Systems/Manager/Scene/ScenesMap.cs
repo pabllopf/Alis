@@ -63,7 +63,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         ///     Loads this instance
         /// </summary>
         /// <returns>The scenes map</returns>
-        public ScenesMap Load() =>
+        public static ScenesMap Load() =>
             /*
             string pathFile = Path.Combine(Environment.CurrentDirectory, "Data", "ScenesMap.json");
             if (!File.Exists(pathFile))

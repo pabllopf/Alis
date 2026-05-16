@@ -89,7 +89,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         /// <param name="t">The </param>
         /// <param name="e">The </param>
         /// <returns>The trapezoids</returns>
-        public Trapezoid[] Case1(Trapezoid t, Edge e)
+        public static Trapezoid[] Case1(Trapezoid t, Edge e)
         {
             Trapezoid[] trapezoids = new Trapezoid[4];
             trapezoids[0] = new Trapezoid(t.LeftPoint, e.P, t.Top, t.Bottom);

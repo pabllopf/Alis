@@ -218,7 +218,7 @@ namespace Alis.Extension.Graphic.Glfw
         {
             get
             {
-                GlfwNative.GetWindowSize(Window, out int width, out int dummy);
+                GlfwNative.GetWindowSize(Window, out int width, out int _);
                 return width;
             }
             set
@@ -228,7 +228,7 @@ namespace Alis.Extension.Graphic.Glfw
                     throw new Exception("Window width muts be greater than 0.");
                 }
 
-                GlfwNative.GetWindowSize(Window, out int dummy, out int height);
+                GlfwNative.GetWindowSize(Window, out int _, out int height);
                 GlfwNative.SetWindowSize(Window, value, height);
             }
         }
@@ -241,7 +241,7 @@ namespace Alis.Extension.Graphic.Glfw
         {
             get
             {
-                GlfwNative.GetWindowSize(Window, out int dummy, out int height);
+                GlfwNative.GetWindowSize(Window, out int _, out int height);
                 return height;
             }
             set
@@ -251,7 +251,7 @@ namespace Alis.Extension.Graphic.Glfw
                     throw new Exception("Window height muts be greater than 0.");
                 }
 
-                GlfwNative.GetWindowSize(Window, out int width, out int dummy);
+                GlfwNative.GetWindowSize(Window, out int width, out int _);
                 GlfwNative.SetWindowSize(Window, width, value);
             }
         }
@@ -450,12 +450,12 @@ namespace Alis.Extension.Graphic.Glfw
             get
             {
                 GlfwNative.GetWindowPosition(Window, out int x, out int y);
-                GlfwNative.GetWindowFrameSize(Window, out int l, out int t, out int dummy1, out int dummy2);
+                GlfwNative.GetWindowFrameSize(Window, out int l, out int t, out int _, out int _);
                 return new Point(x - l, y - t);
             }
             set
             {
-                GlfwNative.GetWindowFrameSize(Window, out int l, out int t, out int dummy1, out int dummy2);
+                GlfwNative.GetWindowFrameSize(Window, out int l, out int t, out int _, out int _);
                 GlfwNative.SetWindowPosition(Window, value.X + l, value.Y + t);
             }
         }

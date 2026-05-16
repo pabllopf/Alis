@@ -33,23 +33,23 @@ using System.Runtime.InteropServices;
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The internal kms wm info
+    ///     Contains KMS/DRM (Kernel Mode Setting / Direct Rendering Manager) window manager information for SDL video.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct InternalKmsWmInfo
     {
         /// <summary>
-        ///     The dev index
+        ///     The device index for the KMS/DRM device.
         /// </summary>
         public readonly int dev_index;
 
         /// <summary>
-        ///     The drm fd
+        ///     The file descriptor for the opened DRM device.
         /// </summary>
         public readonly int drm_fd;
 
         /// <summary>
-        ///     Refers to a gbm_device*
+        ///     Refers to a gbm_device* (Generic Buffer Manager device).
         /// </summary>
         public readonly IntPtr gbm_dev;
     }

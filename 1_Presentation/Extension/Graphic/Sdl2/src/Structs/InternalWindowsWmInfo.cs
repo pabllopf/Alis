@@ -33,23 +33,23 @@ using System.Runtime.InteropServices;
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The internal windows wm info
+    ///     Contains Microsoft Windows window manager information for SDL video (HWND, HDC, HINSTANCE).
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct InternalWindowsWmInfo
     {
         /// <summary>
-        ///     Refers to an HWND
+        ///     Refers to an HWND (the native window handle).
         /// </summary>
         public IntPtr Window { get; set; }
 
         /// <summary>
-        ///     Refers to an HDC
+        ///     Refers to an HDC (the device context handle).
         /// </summary>
         public IntPtr Hdc { get; set; }
 
         /// <summary>
-        ///     Refers to an H INSTANCE
+        ///     Refers to an HINSTANCE (the application instance handle).
         /// </summary>
         public IntPtr HInstance { get; set; }
     }

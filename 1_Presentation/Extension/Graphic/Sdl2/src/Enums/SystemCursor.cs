@@ -34,69 +34,69 @@ namespace Alis.Extension.Graphic.Sdl2.Enums
     /// </summary>
     public enum SystemCursor
     {
-        /// <summary>
-        ///     The sdl system cursor arrow sdl system cursor
-        /// </summary>
-        SdlSystemCursorArrow,
+    /// <summary>
+    ///     Standard arrow pointer cursor (default)
+    /// </summary>
+    SdlSystemCursorArrow,
 
-        /// <summary>
-        ///     The sdl system cursor ibe am sdl system cursor
-        /// </summary>
-        SdlSystemCursorIbeAm,
+    /// <summary>
+    ///     I-beam text selection cursor
+    /// </summary>
+    SdlSystemCursorIbeAm,
 
-        /// <summary>
-        ///     The sdl system cursor wait sdl system cursor
-        /// </summary>
-        SdlSystemCursorWait,
+    /// <summary>
+    ///     Wait/hourglass cursor indicating busy state
+    /// </summary>
+    SdlSystemCursorWait,
 
-        /// <summary>
-        ///     The sdl system cursor crosshair sdl system cursor
-        /// </summary>
-        SdlSystemCursorCrosshair,
+    /// <summary>
+    ///     Crosshair precision selection cursor
+    /// </summary>
+    SdlSystemCursorCrosshair,
 
-        /// <summary>
-        ///     The sdl system cursor wait arrow sdl system cursor
-        /// </summary>
-        SdlSystemCursorWaitArrow,
+    /// <summary>
+    ///     Wait cursor with an arrow (background busy)
+    /// </summary>
+    SdlSystemCursorWaitArrow,
 
-        /// <summary>
-        ///     The sdl system cursor size n wse sdl system cursor
-        /// </summary>
-        SdlSystemCursorSizeNwSe,
+    /// <summary>
+    ///     Size-resize cursor pointing northwest-southeast
+    /// </summary>
+    SdlSystemCursorSizeNwSe,
 
-        /// <summary>
-        ///     The sdl system cursor size nes w sdl system cursor
-        /// </summary>
-        SdlSystemCursorSizeNesW,
+    /// <summary>
+    ///     Size-resize cursor pointing northeast-southwest
+    /// </summary>
+    SdlSystemCursorSizeNesW,
 
-        /// <summary>
-        ///     The sdl system cursor size we sdl system cursor
-        /// </summary>
-        SdlSystemCursorSizeWe,
+    /// <summary>
+    ///     Horizontal resize cursor (west-east arrows)
+    /// </summary>
+    SdlSystemCursorSizeWe,
 
-        /// <summary>
-        ///     The sdl system cursor size ns sdl system cursor
-        /// </summary>
-        SdlSystemCursorSizeNs,
+    /// <summary>
+    ///     Vertical resize cursor (north-south arrows)
+    /// </summary>
+    SdlSystemCursorSizeNs,
 
-        /// <summary>
-        ///     The sdl system cursor size all sdl system cursor
-        /// </summary>
-        SdlSystemCursorSizeAll,
+    /// <summary>
+    ///     Move/resize all directions cursor (four arrows)
+    /// </summary>
+    SdlSystemCursorSizeAll,
 
-        /// <summary>
-        ///     The sdl system cursor no sdl system cursor
-        /// </summary>
-        SdlSystemCursorNo,
+    /// <summary>
+    ///     Not-allowed cursor indicating an invalid operation
+    /// </summary>
+    SdlSystemCursorNo,
 
-        /// <summary>
-        ///     The sdl system cursor hand sdl system cursor
-        /// </summary>
-        SdlSystemCursorHand,
+    /// <summary>
+    ///     Hand pointer cursor (clickable links)
+    /// </summary>
+    SdlSystemCursorHand,
 
-        /// <summary>
-        ///     The sdl num system cursors sdl system cursor
-        /// </summary>
-        SdlNumSystemCursors
+    /// <summary>
+    ///     Total number of system cursor types (sentinel)
+    /// </summary>
+    SdlNumSystemCursors
     }
 }

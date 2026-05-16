@@ -34,23 +34,23 @@ using Alis.Extension.Graphic.Sdl2.Enums;
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl sys wm event
+    ///     Represents an SDL system window manager event, containing platform-specific window messages.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct SysWmEvent
     {
         /// <summary>
-        ///     The type
+        ///     The event type identifier, set to <see cref="EventType.SysWMEvent"/>.
         /// </summary>
         public readonly EventType type;
 
         /// <summary>
-        ///     The timestamp
+        ///     The timestamp of the event, in milliseconds, from the SDL event system.
         /// </summary>
         public readonly uint timestamp;
 
         /// <summary>
-        ///     The msg
+        ///     A pointer to the platform-specific window message data (e.g. MSG on Windows).
         /// </summary>
         public IntPtr Msg { get; set; }
     }

@@ -32,23 +32,23 @@ using System.Runtime.InteropServices;
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The internal game controller button bind union
+    ///     A union type used internally by SDL game controller bindings, overlaying button, axis, and hat fields at the same memory offset.
     /// </summary>
     [StructLayout(LayoutKind.Explicit)]
     public struct InternalGameControllerButtonBindUnion
     {
         /// <summary>
-        ///     The button
+        ///     The button index, valid when the bind type is button.
         /// </summary>
         [FieldOffset(0)] public readonly int button;
 
         /// <summary>
-        ///     The axis
+        ///     The axis index, valid when the bind type is axis.
         /// </summary>
         [FieldOffset(0)] public readonly int axis;
 
         /// <summary>
-        ///     The hat
+        ///     The hat binding data, valid when the bind type is hat.
         /// </summary>
         [FieldOffset(0)] public InternalGameControllerButtonBindHat hat;
     }

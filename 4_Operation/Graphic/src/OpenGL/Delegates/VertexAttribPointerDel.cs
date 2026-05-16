@@ -34,8 +34,14 @@ using Alis.Core.Graphic.OpenGL.Enums;
 namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
-    ///     The vertex attrib pointer del
+    ///     Defines an array of generic vertex attribute data, specifying the layout of vertex data in a buffer
     /// </summary>
+    /// <param name="index">Specifies the index of the generic vertex attribute to configure</param>
+    /// <param name="size">Specifies the number of components per attribute</param>
+    /// <param name="type">Specifies the data type of each component</param>
+    /// <param name="normalized">Specifies whether fixed-point values should be normalized</param>
+    /// <param name="stride">Specifies the byte offset between consecutive attribute values</param>
+    /// <param name="pointer">Specifies the offset to the first component of the attribute</param>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void VertexAttribPointerDel(uint index, int size, VertexAttribPointerType type, bool normalized, int stride, IntPtr pointer);
 }

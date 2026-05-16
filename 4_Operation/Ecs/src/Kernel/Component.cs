@@ -238,8 +238,8 @@ namespace Alis.Core.Ecs.Kernel
 
                 IdTable<T> stack = new IdTable<T>();
                 ComponentTable.Push(new ComponentData(type, stack,
-                    GenerationServices.TypeIniters.TryGetValue(type, out Delegate v1) ? initDelegate : null,
-                    GenerationServices.TypeDestroyers.TryGetValue(type, out Delegate d) ? destroyDelegate : null));
+                    GenerationServices.TypeIniters.TryGetValue(type, out Delegate _) ? initDelegate : null,
+                    GenerationServices.TypeDestroyers.TryGetValue(type, out Delegate _) ? destroyDelegate : null));
 
                 return (id, stack, initDelegate, destroyDelegate);
             }

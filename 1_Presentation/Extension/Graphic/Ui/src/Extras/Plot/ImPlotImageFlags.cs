@@ -32,13 +32,13 @@ using System;
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     The im plot image flags enum
+    ///     Flags that control the rendering of image overlays in ImPlot.
     /// </summary>
     [Flags]
     public enum ImPlotImageFlags
     {
         /// <summary>
-        ///     The none im plot image flags
+        ///     Default image rendering with no special options.
         /// </summary>
         None = 0
     }

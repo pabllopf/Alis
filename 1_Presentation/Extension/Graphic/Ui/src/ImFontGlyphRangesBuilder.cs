@@ -61,7 +61,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether this instance get bit
         /// </summary>
         /// <param name="n">The index or count parameter</param>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public bool GetBit(uint n)
         {
             byte ret = ImGuiNative.ImFontGlyphRangesBuilder_GetBit(ref this, n);

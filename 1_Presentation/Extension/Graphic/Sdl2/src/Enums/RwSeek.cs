@@ -34,19 +34,19 @@ namespace Alis.Extension.Graphic.Sdl2.Enums
     /// </summary>
     public enum RwSeek
     {
-        /// <summary>
-        ///     The rw seek set
-        /// </summary>
-        RwSeekSet = 0,
+    /// <summary>
+    ///     Seek from the beginning of the file or stream
+    /// </summary>
+    RwSeekSet = 0,
 
-        /// <summary>
-        ///     The rw seek cur
-        /// </summary>
-        RwSeekCur = 1,
+    /// <summary>
+    ///     Seek relative to the current position in the file or stream
+    /// </summary>
+    RwSeekCur = 1,
 
-        /// <summary>
-        ///     The rw seek end
-        /// </summary>
-        RwSeekEnd = 2
+    /// <summary>
+    ///     Seek relative to the end of the file or stream
+    /// </summary>
+    RwSeekEnd = 2
     }
 }

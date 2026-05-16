@@ -44,7 +44,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="xBins">The bins</param>
         /// <param name="yBins">The bins</param>
         /// <param name="range">The range</param>
@@ -57,11 +57,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="xBins">The bins</param>
         /// <param name="yBins">The bins</param>
         /// <param name="range">The range</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref byte xs, ref byte ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags) => ImPlotNative.ImPlot_PlotHistogram2D_U8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, flags);
 
@@ -71,7 +71,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref short xs, ref short ys, int count) => ImPlotNative.ImPlot_PlotHistogram2D_S16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, (int) ImPlotBin.Sturges, (int) ImPlotBin.Sturges, new ImPlotRect(), 0);
 
@@ -81,7 +81,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="xBins">The bins</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref short xs, ref short ys, int count, int xBins) => ImPlotNative.ImPlot_PlotHistogram2D_S16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, (int) ImPlotBin.Sturges, new ImPlotRect(), 0);
@@ -92,7 +92,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="xBins">The bins</param>
         /// <param name="yBins">The bins</param>
         /// <returns>The double</returns>
@@ -104,7 +104,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="xBins">The bins</param>
         /// <param name="yBins">The bins</param>
         /// <param name="range">The range</param>
@@ -117,11 +117,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="xBins">The bins</param>
         /// <param name="yBins">The bins</param>
         /// <param name="range">The range</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref short xs, ref short ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags) => ImPlotNative.ImPlot_PlotHistogram2D_S16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, flags);
 
@@ -131,7 +131,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref ushort xs, ref ushort ys, int count) => ImPlotNative.ImPlot_PlotHistogram2D_U16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, (int) ImPlotBin.Sturges, (int) ImPlotBin.Sturges, new ImPlotRect(), 0);
 
@@ -141,7 +141,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="xBins">The bins</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref ushort xs, ref ushort ys, int count, int xBins) => ImPlotNative.ImPlot_PlotHistogram2D_U16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, (int) ImPlotBin.Sturges, new ImPlotRect(), 0);
@@ -152,7 +152,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="xBins">The bins</param>
         /// <param name="yBins">The bins</param>
         /// <returns>The double</returns>
@@ -164,7 +164,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="xBins">The bins</param>
         /// <param name="yBins">The bins</param>
         /// <param name="range">The range</param>
@@ -177,11 +177,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="xBins">The bins</param>
         /// <param name="yBins">The bins</param>
         /// <param name="range">The range</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref ushort xs, ref ushort ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags) => ImPlotNative.ImPlot_PlotHistogram2D_U16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, flags);
 
@@ -191,7 +191,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref int xs, ref int ys, int count) => ImPlotNative.ImPlot_PlotHistogram2D_S32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, (int) ImPlotBin.Sturges, (int) ImPlotBin.Sturges, new ImPlotRect(), 0);
 
@@ -201,7 +201,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="xBins">The bins</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref int xs, ref int ys, int count, int xBins) => ImPlotNative.ImPlot_PlotHistogram2D_S32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, (int) ImPlotBin.Sturges, new ImPlotRect(), 0);
@@ -212,7 +212,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="xBins">The bins</param>
         /// <param name="yBins">The bins</param>
         /// <returns>The double</returns>
@@ -224,7 +224,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="xBins">The bins</param>
         /// <param name="yBins">The bins</param>
         /// <param name="range">The range</param>
@@ -237,11 +237,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="xBins">The bins</param>
         /// <param name="yBins">The bins</param>
         /// <param name="range">The range</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref int xs, ref int ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags) => ImPlotNative.ImPlot_PlotHistogram2D_S32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, flags);
 
@@ -251,7 +251,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref uint xs, ref uint ys, int count) => ImPlotNative.ImPlot_PlotHistogram2D_U32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, (int) ImPlotBin.Sturges, (int) ImPlotBin.Sturges, new ImPlotRect(), 0);
 
@@ -261,7 +261,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="xBins">The bins</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref uint xs, ref uint ys, int count, int xBins) => ImPlotNative.ImPlot_PlotHistogram2D_U32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, (int) ImPlotBin.Sturges, new ImPlotRect(), 0);
@@ -272,7 +272,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="xBins">The bins</param>
         /// <param name="yBins">The bins</param>
         /// <returns>The double</returns>
@@ -284,7 +284,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="xBins">The bins</param>
         /// <param name="yBins">The bins</param>
         /// <param name="range">The range</param>
@@ -297,11 +297,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="xBins">The bins</param>
         /// <param name="yBins">The bins</param>
         /// <param name="range">The range</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref uint xs, ref uint ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags) => ImPlotNative.ImPlot_PlotHistogram2D_U32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, flags);
 
@@ -311,7 +311,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref long xs, ref long ys, int count) => ImPlotNative.ImPlot_PlotHistogram2D_S64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, (int) ImPlotBin.Sturges, (int) ImPlotBin.Sturges, new ImPlotRect(), 0);
 
@@ -321,7 +321,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="xBins">The bins</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref long xs, ref long ys, int count, int xBins) => ImPlotNative.ImPlot_PlotHistogram2D_S64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, (int) ImPlotBin.Sturges, new ImPlotRect(), 0);
@@ -332,7 +332,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="xBins">The bins</param>
         /// <param name="yBins">The bins</param>
         /// <returns>The double</returns>
@@ -344,7 +344,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="xBins">The bins</param>
         /// <param name="yBins">The bins</param>
         /// <param name="range">The range</param>
@@ -357,11 +357,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="xBins">The bins</param>
         /// <param name="yBins">The bins</param>
         /// <param name="range">The range</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref long xs, ref long ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags) => ImPlotNative.ImPlot_PlotHistogram2D_S64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, flags);
 
@@ -371,7 +371,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref ulong xs, ref ulong ys, int count) => ImPlotNative.ImPlot_PlotHistogram2D_U64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, (int) ImPlotBin.Sturges, (int) ImPlotBin.Sturges, new ImPlotRect(), 0);
 
@@ -381,7 +381,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="xBins">The bins</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref ulong xs, ref ulong ys, int count, int xBins) => ImPlotNative.ImPlot_PlotHistogram2D_U64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, (int) ImPlotBin.Sturges, new ImPlotRect(), 0);
@@ -392,7 +392,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="xBins">The bins</param>
         /// <param name="yBins">The bins</param>
         /// <returns>The double</returns>
@@ -404,7 +404,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="xBins">The bins</param>
         /// <param name="yBins">The bins</param>
         /// <param name="range">The range</param>
@@ -417,11 +417,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="xBins">The bins</param>
         /// <param name="yBins">The bins</param>
         /// <param name="range">The range</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         /// <returns>The double</returns>
         public static double PlotHistogram2D(string labelId, ref ulong xs, ref ulong ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags) => ImPlotNative.ImPlot_PlotHistogram2D_U64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, flags);
 
@@ -429,7 +429,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Plots the image using the specified label id
         /// </summary>
         /// <param name="labelId">The label id</param>
-        /// <param name="userTextureId">The user texture id</param>
+        /// <param name="userTextureId">The native texture handle to render</param>
         /// <param name="boundsMin">The bounds min</param>
         /// <param name="boundsMax">The bounds max</param>
         public static void PlotImage(string labelId, IntPtr userTextureId, ImPlotPoint boundsMin, ImPlotPoint boundsMax)
@@ -441,7 +441,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Plots the image using the specified label id
         /// </summary>
         /// <param name="labelId">The label id</param>
-        /// <param name="userTextureId">The user texture id</param>
+        /// <param name="userTextureId">The native texture handle to render</param>
         /// <param name="boundsMin">The bounds min</param>
         /// <param name="boundsMax">The bounds max</param>
         /// <param name="uv0">The uv</param>
@@ -454,7 +454,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Plots the image using the specified label id
         /// </summary>
         /// <param name="labelId">The label id</param>
-        /// <param name="userTextureId">The user texture id</param>
+        /// <param name="userTextureId">The native texture handle to render</param>
         /// <param name="boundsMin">The bounds min</param>
         /// <param name="boundsMax">The bounds max</param>
         /// <param name="uv0">The uv</param>
@@ -468,7 +468,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Plots the image using the specified label id
         /// </summary>
         /// <param name="labelId">The label id</param>
-        /// <param name="userTextureId">The user texture id</param>
+        /// <param name="userTextureId">The native texture handle to render</param>
         /// <param name="boundsMin">The bounds min</param>
         /// <param name="boundsMax">The bounds max</param>
         /// <param name="uv0">The uv</param>
@@ -483,13 +483,13 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Plots the image using the specified label id
         /// </summary>
         /// <param name="labelId">The label id</param>
-        /// <param name="userTextureId">The user texture id</param>
+        /// <param name="userTextureId">The native texture handle to render</param>
         /// <param name="boundsMin">The bounds min</param>
         /// <param name="boundsMax">The bounds max</param>
         /// <param name="uv0">The uv</param>
         /// <param name="uv1">The uv</param>
         /// <param name="tintCol">The tint col</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotImage(string labelId, IntPtr userTextureId, ImPlotPoint boundsMin, ImPlotPoint boundsMax, Vector2F uv0, Vector2F uv1, Vector4F tintCol, ImPlotImageFlags flags)
         {
             ImPlotNative.ImPlot_PlotImage(Encoding.UTF8.GetBytes(labelId), userTextureId, boundsMin, boundsMax, uv0, uv1, tintCol, flags);
@@ -500,7 +500,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         public static void PlotInfLines(string labelId, float[] values, int count)
         {
             ImPlotNative.ImPlot_PlotInfLines_FloatPtr(Encoding.UTF8.GetBytes(labelId), values, count, 0, 0, sizeof(float));
@@ -511,8 +511,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotInfLines(string labelId, float[] values, int count, ImPlotInfLinesFlags flags)
         {
             ImPlotNative.ImPlot_PlotInfLines_FloatPtr(Encoding.UTF8.GetBytes(labelId), values, count, flags, 0, sizeof(float));
@@ -523,9 +523,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="offset">The offset from the origin</param>
         public static void PlotInfLines(string labelId, float[] values, int count, ImPlotInfLinesFlags flags, int offset)
         {
             ImPlotNative.ImPlot_PlotInfLines_FloatPtr(Encoding.UTF8.GetBytes(labelId), values, count, flags, offset, sizeof(float));
@@ -536,10 +536,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        /// <param name="stride">The stride</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="offset">The offset from the origin</param>
+        /// <param name="stride">The byte stride between elements</param>
         public static void PlotInfLines(string labelId, float[] values, int count, ImPlotInfLinesFlags flags, int offset, int stride)
         {
             ImPlotNative.ImPlot_PlotInfLines_FloatPtr(Encoding.UTF8.GetBytes(labelId), values, count, flags, offset, stride);
@@ -550,7 +550,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         public static void PlotInfLines(string labelId, double[] values, int count)
         {
             ImPlotNative.ImPlot_PlotInfLines_doublePtr(Encoding.UTF8.GetBytes(labelId), values, count, 0, 0, sizeof(double));
@@ -561,8 +561,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotInfLines(string labelId, double[] values, int count, ImPlotInfLinesFlags flags)
         {
             ImPlotNative.ImPlot_PlotInfLines_doublePtr(Encoding.UTF8.GetBytes(labelId), values, count, flags, 0, sizeof(double));
@@ -573,9 +573,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="offset">The offset from the origin</param>
         public static void PlotInfLines(string labelId, double[] values, int count, ImPlotInfLinesFlags flags, int offset)
         {
             ImPlotNative.ImPlot_PlotInfLines_doublePtr(Encoding.UTF8.GetBytes(labelId), values, count, flags, offset, sizeof(double));
@@ -586,10 +586,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        /// <param name="stride">The stride</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="offset">The offset from the origin</param>
+        /// <param name="stride">The byte stride between elements</param>
         public static void PlotInfLines(string labelId, double[] values, int count, ImPlotInfLinesFlags flags, int offset, int stride)
         {
             ImPlotNative.ImPlot_PlotInfLines_doublePtr(Encoding.UTF8.GetBytes(labelId), values, count, flags, offset, stride);
@@ -600,7 +600,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         public static void PlotInfLines(string labelId, sbyte[] values, int count)
         {
             ImPlotInfLinesFlags flags = 0;
@@ -614,8 +614,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotInfLines(string labelId, sbyte[] values, int count, ImPlotInfLinesFlags flags)
         {
             ImPlotNative.ImPlot_PlotInfLines_S8Ptr(Encoding.UTF8.GetBytes(labelId), values, count, flags, 0, sizeof(sbyte));
@@ -626,9 +626,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="offset">The offset from the origin</param>
         public static void PlotInfLines(string labelId, sbyte[] values, int count, ImPlotInfLinesFlags flags, int offset)
         {
             int stride = sizeof(sbyte);
@@ -640,10 +640,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        /// <param name="stride">The stride</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="offset">The offset from the origin</param>
+        /// <param name="stride">The byte stride between elements</param>
         public static void PlotInfLines(string labelId, sbyte[] values, int count, ImPlotInfLinesFlags flags, int offset, int stride)
         {
             ImPlotNative.ImPlot_PlotInfLines_S8Ptr(Encoding.UTF8.GetBytes(labelId), values, count, flags, offset, stride);
@@ -654,7 +654,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         public static void PlotInfLines(string labelId, byte[] values, int count)
         {
             ImPlotInfLinesFlags flags = 0;
@@ -668,8 +668,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotInfLines(string labelId, byte[] values, int count, ImPlotInfLinesFlags flags)
         {
             ImPlotNative.ImPlot_PlotInfLines_U8Ptr(Encoding.UTF8.GetBytes(labelId), values, count, flags, 0, sizeof(byte));
@@ -680,9 +680,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
+        /// <param name="count">The number of elements</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="offset">The offset from the origin</param>
         public static void PlotInfLines(string labelId, byte[] values, int count, ImPlotInfLinesFlags flags, int offset)
         {
             int stride = sizeof(byte);

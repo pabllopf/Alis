@@ -32,33 +32,33 @@ using System;
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     The im plot drag tool flags enum
+    ///     Flags controlling the behaviour of draggable annotation points in ImPlot.
     /// </summary>
     [Flags]
     public enum ImPlotDragToolFlags
     {
         /// <summary>
-        ///     The none im plot drag tool flags
+        ///     Default drag behaviour with cursor changes and fit support.
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The no cursors im plot drag tool flags
+        ///     Disable cursor changes when hovering the drag tool.
         /// </summary>
         NoCursors = 1,
 
         /// <summary>
-        ///     The no fit im plot drag tool flags
+        ///     Exclude the drag tool from automatic fit-to-data calculations.
         /// </summary>
         NoFit = 2,
 
         /// <summary>
-        ///     The no inputs im plot drag tool flags
+        ///     Disable mouse/keyboard input for the drag tool entirely.
         /// </summary>
         NoInputs = 4,
 
         /// <summary>
-        ///     The delayed im plot drag tool flags
+        ///     Delay the drag update until the mouse button is released.
         /// </summary>
         Delayed = 8
     }

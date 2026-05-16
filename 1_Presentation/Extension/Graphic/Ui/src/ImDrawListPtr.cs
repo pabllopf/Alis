@@ -150,8 +150,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Calcs the circle auto segment count using the specified radius
         /// </summary>
-        /// <param name="radius">The radius</param>
-        /// <returns>The ret</returns>
+        /// <param name="radius">The radius of the shape</param>
+        /// <returns>The result returned from the native function</returns>
         public int _CalcCircleAutoSegmentCount(float radius)
         {
             int ret = ImGuiNative.ImDrawList__CalcCircleAutoSegmentCount(NativePtr, radius);
@@ -181,8 +181,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Paths the arc to fast ex using the specified center
         /// </summary>
-        /// <param name="center">The center</param>
-        /// <param name="radius">The radius</param>
+        /// <param name="center">The center position of the shape</param>
+        /// <param name="radius">The radius of the shape</param>
         /// <param name="aMinSample">The min sample</param>
         /// <param name="aMaxSample">The max sample</param>
         /// <param name="aStep">The step</param>
@@ -191,11 +191,11 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Paths the arc to n using the specified center
         /// </summary>
-        /// <param name="center">The center</param>
-        /// <param name="radius">The radius</param>
+        /// <param name="center">The center position of the shape</param>
+        /// <param name="radius">The radius of the shape</param>
         /// <param name="aMin">The min</param>
         /// <param name="aMax">The max</param>
-        /// <param name="numSegments">The num segments</param>
+        /// <param name="numSegments">The number of segments used to approximate the curve</param>
         public void PathArcToN(Vector2F center, float radius, float aMin, float aMax, int numSegments) => ImGuiNative.ImDrawList__PathArcToN(NativePtr, center, radius, aMin, aMax, numSegments);
 
         /// <summary>
@@ -221,7 +221,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="p3">The third point coordinate</param>
         /// <param name="p4">The fourth point coordinate</param>
         /// <param name="col">The col</param>
-        /// <param name="thickness">The thickness</param>
+        /// <param name="thickness">The line thickness in pixels</param>
         public void AddBezierCubic(Vector2F p1, Vector2F p2, Vector2F p3, Vector2F p4, uint col, float thickness) => ImGuiNative.ImDrawList_AddBezierCubic(NativePtr, p1, p2, p3, p4, col, thickness, 0);
 
         /// <summary>
@@ -232,8 +232,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="p3">The third point coordinate</param>
         /// <param name="p4">The fourth point coordinate</param>
         /// <param name="col">The col</param>
-        /// <param name="thickness">The thickness</param>
-        /// <param name="numSegments">The num segments</param>
+        /// <param name="thickness">The line thickness in pixels</param>
+        /// <param name="numSegments">The number of segments used to approximate the curve</param>
         public void AddBezierCubic(Vector2F p1, Vector2F p2, Vector2F p3, Vector2F p4, uint col, float thickness, int numSegments) => ImGuiNative.ImDrawList_AddBezierCubic(NativePtr, p1, p2, p3, p4, col, thickness, numSegments);
 
         /// <summary>
@@ -243,7 +243,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="p2">The second point coordinate</param>
         /// <param name="p3">The third point coordinate</param>
         /// <param name="col">The col</param>
-        /// <param name="thickness">The thickness</param>
+        /// <param name="thickness">The line thickness in pixels</param>
         public void AddBezierQuadratic(Vector2F p1, Vector2F p2, Vector2F p3, uint col, float thickness) => ImGuiNative.ImDrawList_AddBezierQuadratic(NativePtr, p1, p2, p3, col, thickness, 0);
 
         /// <summary>
@@ -253,15 +253,15 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="p2">The second point coordinate</param>
         /// <param name="p3">The third point coordinate</param>
         /// <param name="col">The col</param>
-        /// <param name="thickness">The thickness</param>
-        /// <param name="numSegments">The num segments</param>
+        /// <param name="thickness">The line thickness in pixels</param>
+        /// <param name="numSegments">The number of segments used to approximate the curve</param>
         public void AddBezierQuadratic(Vector2F p1, Vector2F p2, Vector2F p3, uint col, float thickness, int numSegments) => ImGuiNative.ImDrawList_AddBezierQuadratic(NativePtr, p1, p2, p3, col, thickness, numSegments);
 
         /// <summary>
         ///     Adds the callback using the specified callback
         /// </summary>
-        /// <param name="callback">The callback</param>
-        /// <param name="callbackData">The callback data</param>
+        /// <param name="callback">The callback function pointer</param>
+        /// <param name="callbackData">The user data passed to the callback</param>
         public void AddCallback(IntPtr callback, IntPtr callbackData)
         {
             IntPtr nativeCallbackData = callbackData;
@@ -271,8 +271,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the circle using the specified center
         /// </summary>
-        /// <param name="center">The center</param>
-        /// <param name="radius">The radius</param>
+        /// <param name="center">The center position of the shape</param>
+        /// <param name="radius">The radius of the shape</param>
         /// <param name="col">The col</param>
         public void AddCircle(Vector2F center, float radius, uint col)
         {
@@ -284,10 +284,10 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the circle using the specified center
         /// </summary>
-        /// <param name="center">The center</param>
-        /// <param name="radius">The radius</param>
+        /// <param name="center">The center position of the shape</param>
+        /// <param name="radius">The radius of the shape</param>
         /// <param name="col">The col</param>
-        /// <param name="numSegments">The num segments</param>
+        /// <param name="numSegments">The number of segments used to approximate the curve</param>
         public void AddCircle(Vector2F center, float radius, uint col, int numSegments)
         {
             float thickness = 1.0f;
@@ -297,11 +297,11 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the circle using the specified center
         /// </summary>
-        /// <param name="center">The center</param>
-        /// <param name="radius">The radius</param>
+        /// <param name="center">The center position of the shape</param>
+        /// <param name="radius">The radius of the shape</param>
         /// <param name="col">The col</param>
-        /// <param name="numSegments">The num segments</param>
-        /// <param name="thickness">The thickness</param>
+        /// <param name="numSegments">The number of segments used to approximate the curve</param>
+        /// <param name="thickness">The line thickness in pixels</param>
         public void AddCircle(Vector2F center, float radius, uint col, int numSegments, float thickness)
         {
             ImGuiNative.ImDrawList_AddCircle(NativePtr, center, radius, col, numSegments, thickness);
@@ -310,8 +310,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the circle filled using the specified center
         /// </summary>
-        /// <param name="center">The center</param>
-        /// <param name="radius">The radius</param>
+        /// <param name="center">The center position of the shape</param>
+        /// <param name="radius">The radius of the shape</param>
         /// <param name="col">The col</param>
         public void AddCircleFilled(Vector2F center, float radius, uint col)
         {
@@ -322,10 +322,10 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the circle filled using the specified center
         /// </summary>
-        /// <param name="center">The center</param>
-        /// <param name="radius">The radius</param>
+        /// <param name="center">The center position of the shape</param>
+        /// <param name="radius">The radius of the shape</param>
         /// <param name="col">The col</param>
-        /// <param name="numSegments">The num segments</param>
+        /// <param name="numSegments">The number of segments used to approximate the curve</param>
         public void AddCircleFilled(Vector2F center, float radius, uint col, int numSegments)
         {
             ImGuiNative.ImDrawList_AddCircleFilled(NativePtr, center, radius, col, numSegments);
@@ -353,9 +353,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the image using the specified user texture id
         /// </summary>
-        /// <param name="userTextureId">The user texture id</param>
-        /// <param name="pMin">The min</param>
-        /// <param name="pMax">The max</param>
+        /// <param name="userTextureId">The native texture handle to render</param>
+        /// <param name="pMin">The minimum value pointer</param>
+        /// <param name="pMax">The maximum value pointer</param>
         public void AddImage(IntPtr userTextureId, Vector2F pMin, Vector2F pMax)
         {
             Vector2F uvMin = new Vector2F();
@@ -367,9 +367,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the image using the specified user texture id
         /// </summary>
-        /// <param name="userTextureId">The user texture id</param>
-        /// <param name="pMin">The min</param>
-        /// <param name="pMax">The max</param>
+        /// <param name="userTextureId">The native texture handle to render</param>
+        /// <param name="pMin">The minimum value pointer</param>
+        /// <param name="pMax">The maximum value pointer</param>
         /// <param name="uvMin">The uv min</param>
         public void AddImage(IntPtr userTextureId, Vector2F pMin, Vector2F pMax, Vector2F uvMin)
         {
@@ -381,9 +381,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the image using the specified user texture id
         /// </summary>
-        /// <param name="userTextureId">The user texture id</param>
-        /// <param name="pMin">The min</param>
-        /// <param name="pMax">The max</param>
+        /// <param name="userTextureId">The native texture handle to render</param>
+        /// <param name="pMin">The minimum value pointer</param>
+        /// <param name="pMax">The maximum value pointer</param>
         /// <param name="uvMin">The uv min</param>
         /// <param name="uvMax">The uv max</param>
         public void AddImage(IntPtr userTextureId, Vector2F pMin, Vector2F pMax, Vector2F uvMin, Vector2F uvMax)
@@ -395,9 +395,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the image using the specified user texture id
         /// </summary>
-        /// <param name="userTextureId">The user texture id</param>
-        /// <param name="pMin">The min</param>
-        /// <param name="pMax">The max</param>
+        /// <param name="userTextureId">The native texture handle to render</param>
+        /// <param name="pMin">The minimum value pointer</param>
+        /// <param name="pMax">The maximum value pointer</param>
         /// <param name="uvMin">The uv min</param>
         /// <param name="uvMax">The uv max</param>
         /// <param name="col">The col</param>
@@ -409,7 +409,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the image quad using the specified user texture id
         /// </summary>
-        /// <param name="userTextureId">The user texture id</param>
+        /// <param name="userTextureId">The native texture handle to render</param>
         /// <param name="p1">The first point coordinate</param>
         /// <param name="p2">The second point coordinate</param>
         /// <param name="p3">The third point coordinate</param>
@@ -427,7 +427,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the image quad using the specified user texture id
         /// </summary>
-        /// <param name="userTextureId">The user texture id</param>
+        /// <param name="userTextureId">The native texture handle to render</param>
         /// <param name="p1">The first point coordinate</param>
         /// <param name="p2">The second point coordinate</param>
         /// <param name="p3">The third point coordinate</param>
@@ -445,7 +445,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the image quad using the specified user texture id
         /// </summary>
-        /// <param name="userTextureId">The user texture id</param>
+        /// <param name="userTextureId">The native texture handle to render</param>
         /// <param name="p1">The first point coordinate</param>
         /// <param name="p2">The second point coordinate</param>
         /// <param name="p3">The third point coordinate</param>
@@ -463,7 +463,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the image quad using the specified user texture id
         /// </summary>
-        /// <param name="userTextureId">The user texture id</param>
+        /// <param name="userTextureId">The native texture handle to render</param>
         /// <param name="p1">The first point coordinate</param>
         /// <param name="p2">The second point coordinate</param>
         /// <param name="p3">The third point coordinate</param>
@@ -481,7 +481,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the image quad using the specified user texture id
         /// </summary>
-        /// <param name="userTextureId">The user texture id</param>
+        /// <param name="userTextureId">The native texture handle to render</param>
         /// <param name="p1">The first point coordinate</param>
         /// <param name="p2">The second point coordinate</param>
         /// <param name="p3">The third point coordinate</param>
@@ -499,7 +499,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the image quad using the specified user texture id
         /// </summary>
-        /// <param name="userTextureId">The user texture id</param>
+        /// <param name="userTextureId">The native texture handle to render</param>
         /// <param name="p1">The first point coordinate</param>
         /// <param name="p2">The second point coordinate</param>
         /// <param name="p3">The third point coordinate</param>
@@ -517,13 +517,13 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the image rounded using the specified user texture id
         /// </summary>
-        /// <param name="userTextureId">The user texture id</param>
-        /// <param name="pMin">The min</param>
-        /// <param name="pMax">The max</param>
+        /// <param name="userTextureId">The native texture handle to render</param>
+        /// <param name="pMin">The minimum value pointer</param>
+        /// <param name="pMax">The maximum value pointer</param>
         /// <param name="uvMin">The uv min</param>
         /// <param name="uvMax">The uv max</param>
         /// <param name="col">The col</param>
-        /// <param name="rounding">The rounding</param>
+        /// <param name="rounding">The corner rounding radius in pixels</param>
         public void AddImageRounded(IntPtr userTextureId, Vector2F pMin, Vector2F pMax, Vector2F uvMin, Vector2F uvMax, uint col, float rounding)
         {
             ImDrawFlags flags = 0;
@@ -533,14 +533,14 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the image rounded using the specified user texture id
         /// </summary>
-        /// <param name="userTextureId">The user texture id</param>
-        /// <param name="pMin">The min</param>
-        /// <param name="pMax">The max</param>
+        /// <param name="userTextureId">The native texture handle to render</param>
+        /// <param name="pMin">The minimum value pointer</param>
+        /// <param name="pMax">The maximum value pointer</param>
         /// <param name="uvMin">The uv min</param>
         /// <param name="uvMax">The uv max</param>
         /// <param name="col">The col</param>
-        /// <param name="rounding">The rounding</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="rounding">The corner rounding radius in pixels</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public void AddImageRounded(IntPtr userTextureId, Vector2F pMin, Vector2F pMax, Vector2F uvMin, Vector2F uvMax, uint col, float rounding, ImDrawFlags flags)
         {
             ImGuiNative.ImDrawList_AddImageRounded(NativePtr, userTextureId, pMin, pMax, uvMin, uvMax, col, rounding, flags);
@@ -564,7 +564,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="p1">The first point coordinate</param>
         /// <param name="p2">The second point coordinate</param>
         /// <param name="col">The col</param>
-        /// <param name="thickness">The thickness</param>
+        /// <param name="thickness">The line thickness in pixels</param>
         public void AddLine(Vector2F p1, Vector2F p2, uint col, float thickness)
         {
             ImGuiNative.ImDrawList_AddLine(NativePtr, p1, p2, col, thickness);
@@ -573,10 +573,10 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the ngon using the specified center
         /// </summary>
-        /// <param name="center">The center</param>
-        /// <param name="radius">The radius</param>
+        /// <param name="center">The center position of the shape</param>
+        /// <param name="radius">The radius of the shape</param>
         /// <param name="col">The col</param>
-        /// <param name="numSegments">The num segments</param>
+        /// <param name="numSegments">The number of segments used to approximate the curve</param>
         public void AddNgon(Vector2F center, float radius, uint col, int numSegments)
         {
             float thickness = 1.0f;
@@ -586,11 +586,11 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the ngon using the specified center
         /// </summary>
-        /// <param name="center">The center</param>
-        /// <param name="radius">The radius</param>
+        /// <param name="center">The center position of the shape</param>
+        /// <param name="radius">The radius of the shape</param>
         /// <param name="col">The col</param>
-        /// <param name="numSegments">The num segments</param>
-        /// <param name="thickness">The thickness</param>
+        /// <param name="numSegments">The number of segments used to approximate the curve</param>
+        /// <param name="thickness">The line thickness in pixels</param>
         public void AddNgon(Vector2F center, float radius, uint col, int numSegments, float thickness)
         {
             ImGuiNative.ImDrawList_AddNgon(NativePtr, center, radius, col, numSegments, thickness);
@@ -599,10 +599,10 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the ngon filled using the specified center
         /// </summary>
-        /// <param name="center">The center</param>
-        /// <param name="radius">The radius</param>
+        /// <param name="center">The center position of the shape</param>
+        /// <param name="radius">The radius of the shape</param>
         /// <param name="col">The col</param>
-        /// <param name="numSegments">The num segments</param>
+        /// <param name="numSegments">The number of segments used to approximate the curve</param>
         public void AddNgonFilled(Vector2F center, float radius, uint col, int numSegments)
         {
             ImGuiNative.ImDrawList_AddNgonFilled(NativePtr, center, radius, col, numSegments);
@@ -614,8 +614,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="points">The points</param>
         /// <param name="numPoints">The num points</param>
         /// <param name="col">The col</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="thickness">The thickness</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="thickness">The line thickness in pixels</param>
         public void AddPolyline(ref Vector2F points, int numPoints, uint col, ImDrawFlags flags, float thickness)
         {
             ImGuiNative.ImDrawList_AddPolyline(NativePtr, ref points, numPoints, col, flags, thickness);
@@ -643,7 +643,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="p3">The third point coordinate</param>
         /// <param name="p4">The fourth point coordinate</param>
         /// <param name="col">The col</param>
-        /// <param name="thickness">The thickness</param>
+        /// <param name="thickness">The line thickness in pixels</param>
         public void AddQuad(Vector2F p1, Vector2F p2, Vector2F p3, Vector2F p4, uint col, float thickness)
         {
             ImGuiNative.ImDrawList_AddQuad(NativePtr, p1, p2, p3, p4, col, thickness);
@@ -665,8 +665,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the rect using the specified p min
         /// </summary>
-        /// <param name="pMin">The min</param>
-        /// <param name="pMax">The max</param>
+        /// <param name="pMin">The minimum value pointer</param>
+        /// <param name="pMax">The maximum value pointer</param>
         /// <param name="col">The col</param>
         public void AddRect(Vector2F pMin, Vector2F pMax, uint col)
         {
@@ -679,10 +679,10 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the rect using the specified p min
         /// </summary>
-        /// <param name="pMin">The min</param>
-        /// <param name="pMax">The max</param>
+        /// <param name="pMin">The minimum value pointer</param>
+        /// <param name="pMax">The maximum value pointer</param>
         /// <param name="col">The col</param>
-        /// <param name="rounding">The rounding</param>
+        /// <param name="rounding">The corner rounding radius in pixels</param>
         public void AddRect(Vector2F pMin, Vector2F pMax, uint col, float rounding)
         {
             ImDrawFlags flags = 0;
@@ -693,11 +693,11 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the rect using the specified p min
         /// </summary>
-        /// <param name="pMin">The min</param>
-        /// <param name="pMax">The max</param>
+        /// <param name="pMin">The minimum value pointer</param>
+        /// <param name="pMax">The maximum value pointer</param>
         /// <param name="col">The col</param>
-        /// <param name="rounding">The rounding</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="rounding">The corner rounding radius in pixels</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public void AddRect(Vector2F pMin, Vector2F pMax, uint col, float rounding, ImDrawFlags flags)
         {
             float thickness = 1.0f;
@@ -707,12 +707,12 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the rect using the specified p min
         /// </summary>
-        /// <param name="pMin">The min</param>
-        /// <param name="pMax">The max</param>
+        /// <param name="pMin">The minimum value pointer</param>
+        /// <param name="pMax">The maximum value pointer</param>
         /// <param name="col">The col</param>
-        /// <param name="rounding">The rounding</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="thickness">The thickness</param>
+        /// <param name="rounding">The corner rounding radius in pixels</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="thickness">The line thickness in pixels</param>
         public void AddRect(Vector2F pMin, Vector2F pMax, uint col, float rounding, ImDrawFlags flags, float thickness)
         {
             ImGuiNative.ImDrawList_AddRect(NativePtr, pMin, pMax, col, rounding, flags, thickness);
@@ -721,8 +721,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the rect filled using the specified p min
         /// </summary>
-        /// <param name="pMin">The min</param>
-        /// <param name="pMax">The max</param>
+        /// <param name="pMin">The minimum value pointer</param>
+        /// <param name="pMax">The maximum value pointer</param>
         /// <param name="col">The col</param>
         public void AddRectFilled(Vector2F pMin, Vector2F pMax, uint col)
         {
@@ -734,10 +734,10 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the rect filled using the specified p min
         /// </summary>
-        /// <param name="pMin">The min</param>
-        /// <param name="pMax">The max</param>
+        /// <param name="pMin">The minimum value pointer</param>
+        /// <param name="pMax">The maximum value pointer</param>
         /// <param name="col">The col</param>
-        /// <param name="rounding">The rounding</param>
+        /// <param name="rounding">The corner rounding radius in pixels</param>
         public void AddRectFilled(Vector2F pMin, Vector2F pMax, uint col, float rounding)
         {
             ImDrawFlags flags = 0;
@@ -747,11 +747,11 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the rect filled using the specified p min
         /// </summary>
-        /// <param name="pMin">The min</param>
-        /// <param name="pMax">The max</param>
+        /// <param name="pMin">The minimum value pointer</param>
+        /// <param name="pMax">The maximum value pointer</param>
         /// <param name="col">The col</param>
-        /// <param name="rounding">The rounding</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="rounding">The corner rounding radius in pixels</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public void AddRectFilled(Vector2F pMin, Vector2F pMax, uint col, float rounding, ImDrawFlags flags)
         {
             ImGuiNative.ImDrawList_AddRectFilled(NativePtr, pMin, pMax, col, rounding, flags);
@@ -760,8 +760,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the rect filled multi color using the specified p min
         /// </summary>
-        /// <param name="pMin">The min</param>
-        /// <param name="pMax">The max</param>
+        /// <param name="pMin">The minimum value pointer</param>
+        /// <param name="pMax">The maximum value pointer</param>
         /// <param name="colUprLeft">The col upr left</param>
         /// <param name="colUprRight">The col upr right</param>
         /// <param name="colBotRight">The col bot right</param>
@@ -791,7 +791,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="p2">The second point coordinate</param>
         /// <param name="p3">The third point coordinate</param>
         /// <param name="col">The col</param>
-        /// <param name="thickness">The thickness</param>
+        /// <param name="thickness">The line thickness in pixels</param>
         public void AddTriangle(Vector2F p1, Vector2F p2, Vector2F p3, uint col, float thickness)
         {
             ImGuiNative.ImDrawList_AddTriangle(NativePtr, p1, p2, p3, col, thickness);
@@ -829,7 +829,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Channelses the split using the specified count
         /// </summary>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         public void ChannelsSplit(int count)
         {
             ImGuiNative.ImDrawList_ChannelsSplit(NativePtr, count);
@@ -864,8 +864,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Paths the arc to using the specified center
         /// </summary>
-        /// <param name="center">The center</param>
-        /// <param name="radius">The radius</param>
+        /// <param name="center">The center position of the shape</param>
+        /// <param name="radius">The radius of the shape</param>
         /// <param name="aMin">The min</param>
         /// <param name="aMax">The max</param>
         public void PathArcTo(Vector2F center, float radius, float aMin, float aMax)
@@ -877,11 +877,11 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Paths the arc to using the specified center
         /// </summary>
-        /// <param name="center">The center</param>
-        /// <param name="radius">The radius</param>
+        /// <param name="center">The center position of the shape</param>
+        /// <param name="radius">The radius of the shape</param>
         /// <param name="aMin">The min</param>
         /// <param name="aMax">The max</param>
-        /// <param name="numSegments">The num segments</param>
+        /// <param name="numSegments">The number of segments used to approximate the curve</param>
         public void PathArcTo(Vector2F center, float radius, float aMin, float aMax, int numSegments)
         {
             ImGuiNative.ImDrawList_PathArcTo(NativePtr, center, radius, aMin, aMax, numSegments);
@@ -890,8 +890,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Paths the arc to fast using the specified center
         /// </summary>
-        /// <param name="center">The center</param>
-        /// <param name="radius">The radius</param>
+        /// <param name="center">The center position of the shape</param>
+        /// <param name="radius">The radius of the shape</param>
         /// <param name="aMinOf12">The min of 12</param>
         /// <param name="aMaxOf12">The max of 12</param>
         public void PathArcToFast(Vector2F center, float radius, int aMinOf12, int aMaxOf12)
@@ -917,7 +917,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="p2">The second point coordinate</param>
         /// <param name="p3">The third point coordinate</param>
         /// <param name="p4">The fourth point coordinate</param>
-        /// <param name="numSegments">The num segments</param>
+        /// <param name="numSegments">The number of segments used to approximate the curve</param>
         public void PathBezierCubicCurveTo(Vector2F p2, Vector2F p3, Vector2F p4, int numSegments)
         {
             ImGuiNative.ImDrawList_PathBezierCubicCurveTo(NativePtr, p2, p3, p4, numSegments);
@@ -939,7 +939,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="p2">The second point coordinate</param>
         /// <param name="p3">The third point coordinate</param>
-        /// <param name="numSegments">The num segments</param>
+        /// <param name="numSegments">The number of segments used to approximate the curve</param>
         public void PathBezierQuadraticCurveTo(Vector2F p2, Vector2F p3, int numSegments)
         {
             ImGuiNative.ImDrawList_PathBezierQuadraticCurveTo(NativePtr, p2, p3, numSegments);
@@ -965,7 +965,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Paths the line to using the specified pos
         /// </summary>
-        /// <param name="pos">The pos</param>
+        /// <param name="pos">The position in screen coordinates</param>
         public void PathLineTo(Vector2F pos)
         {
             ImGuiNative.ImDrawList_PathLineTo(NativePtr, pos);
@@ -974,7 +974,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Paths the line to merge duplicate using the specified pos
         /// </summary>
-        /// <param name="pos">The pos</param>
+        /// <param name="pos">The position in screen coordinates</param>
         public void PathLineToMergeDuplicate(Vector2F pos)
         {
             ImGuiNative.ImDrawList_PathLineToMergeDuplicate(NativePtr, pos);
@@ -997,7 +997,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="rectMin">The rect min</param>
         /// <param name="rectMax">The rect max</param>
-        /// <param name="rounding">The rounding</param>
+        /// <param name="rounding">The corner rounding radius in pixels</param>
         public void PathRect(Vector2F rectMin, Vector2F rectMax, float rounding)
         {
             ImDrawFlags flags = 0;
@@ -1009,8 +1009,8 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="rectMin">The rect min</param>
         /// <param name="rectMax">The rect max</param>
-        /// <param name="rounding">The rounding</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="rounding">The corner rounding radius in pixels</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public void PathRect(Vector2F rectMin, Vector2F rectMax, float rounding, ImDrawFlags flags)
         {
             ImGuiNative.ImDrawList_PathRect(NativePtr, rectMin, rectMax, rounding, flags);
@@ -1031,7 +1031,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Paths the stroke using the specified col
         /// </summary>
         /// <param name="col">The col</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public void PathStroke(uint col, ImDrawFlags flags)
         {
             float thickness = 1.0f;
@@ -1042,8 +1042,8 @@ namespace Alis.Extension.Graphic.Ui
         ///     Paths the stroke using the specified col
         /// </summary>
         /// <param name="col">The col</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="thickness">The thickness</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="thickness">The line thickness in pixels</param>
         public void PathStroke(uint col, ImDrawFlags flags, float thickness)
         {
             ImGuiNative.ImDrawList_PathStroke(NativePtr, col, flags, thickness);
@@ -1129,7 +1129,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Prims the vtx using the specified pos
         /// </summary>
-        /// <param name="pos">The pos</param>
+        /// <param name="pos">The position in screen coordinates</param>
         /// <param name="uv">The uv</param>
         /// <param name="col">The col</param>
         public void PrimVtx(Vector2F pos, Vector2F uv, uint col)
@@ -1149,7 +1149,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Prims the write vtx using the specified pos
         /// </summary>
-        /// <param name="pos">The pos</param>
+        /// <param name="pos">The position in screen coordinates</param>
         /// <param name="uv">The uv</param>
         /// <param name="col">The col</param>
         public void PrimWriteVtx(Vector2F pos, Vector2F uv, uint col)
@@ -1160,8 +1160,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Pushes the clip rect using the specified clip rect min
         /// </summary>
-        /// <param name="clipRectMin">The clip rect min</param>
-        /// <param name="clipRectMax">The clip rect max</param>
+        /// <param name="clipRectMin">The minimum corner of the clipping rectangle</param>
+        /// <param name="clipRectMax">The maximum corner of the clipping rectangle</param>
         public void PushClipRect(Vector2F clipRectMin, Vector2F clipRectMax)
         {
             byte intersectWithCurrentClipRect = 0;
@@ -1171,9 +1171,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Pushes the clip rect using the specified clip rect min
         /// </summary>
-        /// <param name="clipRectMin">The clip rect min</param>
-        /// <param name="clipRectMax">The clip rect max</param>
-        /// <param name="intersectWithCurrentClipRect">The intersect with current clip rect</param>
+        /// <param name="clipRectMin">The minimum corner of the clipping rectangle</param>
+        /// <param name="clipRectMax">The maximum corner of the clipping rectangle</param>
+        /// <param name="intersectWithCurrentClipRect">Whether to intersect with the existing clip rectangle</param>
         public void PushClipRect(Vector2F clipRectMin, Vector2F clipRectMax, bool intersectWithCurrentClipRect)
         {
             byte nativeIntersectWithCurrentClipRect = intersectWithCurrentClipRect ? (byte) 1 : (byte) 0;
@@ -1191,7 +1191,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Pushes the texture id using the specified texture id
         /// </summary>
-        /// <param name="textureId">The texture id</param>
+        /// <param name="textureId">The texture identifier pointer</param>
         public void PushTextureId(IntPtr textureId)
         {
             ImGuiNative.ImDrawList_PushTextureID(NativePtr, textureId);
@@ -1200,7 +1200,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the text using the specified pos
         /// </summary>
-        /// <param name="pos">The pos</param>
+        /// <param name="pos">The position in screen coordinates</param>
         /// <param name="col">The col</param>
         /// <param name="textBegin">The text begin</param>
         public void AddText(Vector2F pos, uint col, string textBegin)
@@ -1213,7 +1213,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="fontSize">The font size</param>
-        /// <param name="pos">The pos</param>
+        /// <param name="pos">The position in screen coordinates</param>
         /// <param name="col">The col</param>
         /// <param name="textBegin">The text begin</param>
         public void AddText(ImFontPtr font, float fontSize, Vector2F pos, uint col, string textBegin)

@@ -49,34 +49,54 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         South = 2,
 
+    /// <summary>
+    ///     Predefined anchor locations for positioning elements such as the legend or annotations within a plot.
+    /// </summary>
+    public enum ImPlotLocation
+    {
         /// <summary>
-        ///     The west im plot location
+        ///     Center of the plot area.
         /// </summary>
-        West = 4,
+        Center = 0,
 
         /// <summary>
-        ///     The east im plot location
+        ///     Top-left corner.
         /// </summary>
-        East = 8,
+        NorthWest = 1,
 
         /// <summary>
-        ///     The north west im plot location
+        ///     Top-right corner.
         /// </summary>
-        NorthWest = 5,
+        NorthEast = 2,
 
         /// <summary>
-        ///     The north east im plot location
+        ///     Bottom-left corner.
         /// </summary>
-        NorthEast = 9,
+        SouthWest = 3,
 
         /// <summary>
-        ///     The south west im plot location
+        ///     Bottom-right corner.
         /// </summary>
-        SouthWest = 6,
+        SouthEast = 4,
 
         /// <summary>
-        ///     The south east im plot location
+        ///     Top-center edge.
         /// </summary>
-        SouthEast = 10
+        North = 5,
+
+        /// <summary>
+        ///     Bottom-center edge.
+        /// </summary>
+        South = 6,
+
+        /// <summary>
+        ///     Middle-left edge.
+        /// </summary>
+        West = 7,
+
+        /// <summary>
+        ///     Middle-right edge.
+        /// </summary>
+        East = 8
     }
 }

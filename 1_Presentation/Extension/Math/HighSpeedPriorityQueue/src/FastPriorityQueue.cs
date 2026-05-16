@@ -355,13 +355,13 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     Returns true if 'higher' has higher priority than 'lower', false otherwise.
         ///     Note that calling HasHigherPriority(node, node) (ie. both arguments the same node) will return false
         /// </summary>
-        private bool HasHigherPriority(T higher, T lower) => higher.Priority < lower.Priority;
+        private static bool HasHigherPriority(T higher, T lower) => higher.Priority < lower.Priority;
 
         /// <summary>
         ///     Returns true if 'higher' has higher priority than 'lower', false otherwise.
         ///     Note that calling HasHigherOrEqualPriority(node, node) (ie. both arguments the same node) will return true
         /// </summary>
-        private bool HasHigherOrEqualPriority(T higher, T lower) => higher.Priority <= lower.Priority;
+        private static bool HasHigherOrEqualPriority(T higher, T lower) => higher.Priority <= lower.Priority;
 
 
         /// <summary>

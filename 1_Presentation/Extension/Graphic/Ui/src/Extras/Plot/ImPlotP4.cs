@@ -81,7 +81,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelFmt">The label fmt</param>
         /// <param name="boundsMin">The bounds min</param>
         /// <param name="boundsMax">The bounds max</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotHeatmap(string labelId, double[] values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax, ImPlotHeatmapFlags flags)
         {
             ImPlotNative.ImPlot_PlotHeatmap_doublePtr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, boundsMax, flags);
@@ -186,7 +186,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelFmt">The label fmt</param>
         /// <param name="boundsMin">The bounds min</param>
         /// <param name="boundsMax">The bounds max</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotHeatmap(string labelId, sbyte[] values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax, ImPlotHeatmapFlags flags)
         {
             ImPlotNative.ImPlot_PlotHeatmap_S8Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, boundsMax, flags);
@@ -291,7 +291,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelFmt">The label fmt</param>
         /// <param name="boundsMin">The bounds min</param>
         /// <param name="boundsMax">The bounds max</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotHeatmap(string labelId, byte[] values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax, ImPlotHeatmapFlags flags)
         {
             ImPlotNative.ImPlot_PlotHeatmap_U8Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, boundsMax, flags);
@@ -396,7 +396,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelFmt">The label fmt</param>
         /// <param name="boundsMin">The bounds min</param>
         /// <param name="boundsMax">The bounds max</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotHeatmap(string labelId, short[] values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax, ImPlotHeatmapFlags flags)
         {
             ImPlotNative.ImPlot_PlotHeatmap_S16Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, boundsMax, flags);
@@ -501,7 +501,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelFmt">The label fmt</param>
         /// <param name="boundsMin">The bounds min</param>
         /// <param name="boundsMax">The bounds max</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotHeatmap(string labelId, ushort[] values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax, ImPlotHeatmapFlags flags)
         {
             ImPlotNative.ImPlot_PlotHeatmap_U16Ptr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, boundsMax, flags);

@@ -32,13 +32,13 @@ using System;
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     The im plot shaded flags enum
+    ///     Flags that control the rendering of shaded regions in ImPlot.
     /// </summary>
     [Flags]
     public enum ImPlotShadedFlags
     {
         /// <summary>
-        ///     The none im plot shaded flags
+        ///     Default shaded region rendering with no special options.
         /// </summary>
         None = 0
     }

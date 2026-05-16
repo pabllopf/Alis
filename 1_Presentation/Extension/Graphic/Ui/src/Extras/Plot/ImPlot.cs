@@ -34,7 +34,7 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     The im plot class
+    ///     Provides managed wrappers over the CImPlot native library for creating and interacting with ImPlot plots.
     /// </summary>
     public static partial class ImPlot
     {
@@ -44,9 +44,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="ref">The ref</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotStems(string labelId, ref ushort xs, ref ushort ys, int count, double @ref, ImPlotStemsFlags flags)
         {
             ImPlotNative.ImPlot_PlotStems_U16PtrU16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, flags, 0, sizeof(ushort));
@@ -58,10 +58,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="ref">The ref</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="offset">The offset from the origin</param>
         public static void PlotStems(string labelId, ref ushort xs, ref ushort ys, int count, double @ref, ImPlotStemsFlags flags, int offset)
         {
             ImPlotNative.ImPlot_PlotStems_U16PtrU16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, flags, offset, sizeof(ushort));
@@ -73,11 +73,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="ref">The ref</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        /// <param name="stride">The stride</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="offset">The offset from the origin</param>
+        /// <param name="stride">The byte stride between elements</param>
         public static void PlotStems(string labelId, ref ushort xs, ref ushort ys, int count, double @ref, ImPlotStemsFlags flags, int offset, int stride)
         {
             ImPlotNative.ImPlot_PlotStems_U16PtrU16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, flags, offset, stride);
@@ -89,7 +89,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         public static void PlotStems(string labelId, ref int xs, ref int ys, int count)
         {
             ImPlotNative.ImPlot_PlotStems_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, 0, 0, 0, sizeof(int));
@@ -101,7 +101,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="ref">The ref</param>
         public static void PlotStems(string labelId, ref int xs, ref int ys, int count, double @ref)
         {
@@ -114,9 +114,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="ref">The ref</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotStems(string labelId, ref int xs, ref int ys, int count, double @ref, ImPlotStemsFlags flags)
         {
             ImPlotNative.ImPlot_PlotStems_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, @ref, flags, 0, sizeof(int));
@@ -128,10 +128,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="ref">The ref</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="offset">The offset from the origin</param>
         public static void PlotStems(string labelId, ref int xs, ref int ys, int count, double @ref, ImPlotStemsFlags flags, int offset)
         {
             ImPlotNative.ImPlot_PlotStems_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, @ref, flags, offset, sizeof(int));
@@ -143,11 +143,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="ref">The ref</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        /// <param name="stride">The stride</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="offset">The offset from the origin</param>
+        /// <param name="stride">The byte stride between elements</param>
         public static void PlotStems(string labelId, ref int xs, ref int ys, int count, double @ref, ImPlotStemsFlags flags, int offset, int stride)
         {
             ImPlotNative.ImPlot_PlotStems_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, @ref, flags, offset, stride);
@@ -159,7 +159,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         public static void PlotStems(string labelId, ref uint xs, ref uint ys, int count)
         {
             ImPlotNative.ImPlot_PlotStems_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, 0, 0, 0, sizeof(uint));
@@ -171,7 +171,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="ref">The ref</param>
         public static void PlotStems(string labelId, ref uint xs, ref uint ys, int count, double @ref)
         {
@@ -184,9 +184,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="ref">The ref</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotStems(string labelId, ref uint xs, ref uint ys, int count, double @ref, ImPlotStemsFlags flags)
         {
             ImPlotNative.ImPlot_PlotStems_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, @ref, flags, 0, sizeof(uint));
@@ -198,10 +198,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="ref">The ref</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="offset">The offset from the origin</param>
         public static void PlotStems(string labelId, ref uint xs, ref uint ys, int count, double @ref, ImPlotStemsFlags flags, int offset)
         {
             ImPlotNative.ImPlot_PlotStems_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, @ref, flags, offset, sizeof(uint));
@@ -213,11 +213,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="ref">The ref</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        /// <param name="stride">The stride</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="offset">The offset from the origin</param>
+        /// <param name="stride">The byte stride between elements</param>
         public static void PlotStems(string labelId, ref uint xs, ref uint ys, int count, double @ref, ImPlotStemsFlags flags, int offset, int stride)
         {
             ImPlotNative.ImPlot_PlotStems_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, @ref, flags, offset, stride);
@@ -229,7 +229,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         public static void PlotStems(string labelId, ref long xs, ref long ys, int count)
         {
             ImPlotNative.ImPlot_PlotStems_S64PtrS64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, 0, sizeof(long));
@@ -241,7 +241,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="ref">The ref</param>
         public static void PlotStems(string labelId, ref long xs, ref long ys, int count, double @ref)
         {
@@ -254,9 +254,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="ref">The ref</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotStems(string labelId, ref long xs, ref long ys, int count, double @ref, ImPlotStemsFlags flags)
         {
             ImPlotNative.ImPlot_PlotStems_S64PtrS64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, flags, 0, sizeof(long));
@@ -268,10 +268,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="ref">The ref</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="offset">The offset from the origin</param>
         public static void PlotStems(string labelId, ref long xs, ref long ys, int count, double @ref, ImPlotStemsFlags flags, int offset)
         {
             ImPlotNative.ImPlot_PlotStems_S64PtrS64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, flags, offset, sizeof(long));
@@ -283,11 +283,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="ref">The ref</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        /// <param name="stride">The stride</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="offset">The offset from the origin</param>
+        /// <param name="stride">The byte stride between elements</param>
         public static void PlotStems(string labelId, ref long xs, ref long ys, int count, double @ref, ImPlotStemsFlags flags, int offset, int stride)
         {
             ImPlotNative.ImPlot_PlotStems_S64PtrS64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, flags, offset, stride);
@@ -299,7 +299,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         public static void PlotStems(string labelId, ref ulong xs, ref ulong ys, int count)
         {
             ImPlotNative.ImPlot_PlotStems_U64PtrU64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, 0, sizeof(ulong));
@@ -311,7 +311,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="ref">The ref</param>
         public static void PlotStems(string labelId, ref ulong xs, ref ulong ys, int count, double @ref)
         {
@@ -324,9 +324,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="ref">The ref</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotStems(string labelId, ref ulong xs, ref ulong ys, int count, double @ref, ImPlotStemsFlags flags)
         {
             ImPlotNative.ImPlot_PlotStems_U64PtrU64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, flags, 0, sizeof(ulong));
@@ -338,10 +338,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="ref">The ref</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="offset">The offset from the origin</param>
         public static void PlotStems(string labelId, ref ulong xs, ref ulong ys, int count, double @ref, ImPlotStemsFlags flags, int offset)
         {
             ImPlotNative.ImPlot_PlotStems_U64PtrU64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, flags, offset, sizeof(ulong));
@@ -353,11 +353,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         /// <param name="ref">The ref</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        /// <param name="stride">The stride</param>
+        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="offset">The offset from the origin</param>
+        /// <param name="stride">The byte stride between elements</param>
         public static void PlotStems(string labelId, ref ulong xs, ref ulong ys, int count, double @ref, ImPlotStemsFlags flags, int offset, int stride)
         {
             ImPlotNative.ImPlot_PlotStems_U64PtrU64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, flags, offset, stride);
@@ -366,7 +366,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the text using the specified text
         /// </summary>
-        /// <param name="text">The text</param>
+        /// <param name="text">The text content to display</param>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         public static void PlotText(string text, double x, double y)
@@ -377,7 +377,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the text using the specified text
         /// </summary>
-        /// <param name="text">The text</param>
+        /// <param name="text">The text content to display</param>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         /// <param name="pixOffset">The pix offset</param>
@@ -389,11 +389,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the text using the specified text
         /// </summary>
-        /// <param name="text">The text</param>
+        /// <param name="text">The text content to display</param>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         /// <param name="pixOffset">The pix offset</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotText(string text, double x, double y, Vector2F pixOffset, ImPlotTextFlags flags)
         {
             ImPlotNative.ImPlot_PlotText(Encoding.UTF8.GetBytes(text), x, y, pixOffset, flags);
@@ -492,7 +492,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Pops the colormap using the specified count
         /// </summary>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         public static void PopColormap(int count)
         {
             ImPlotNative.ImPlot_PopColormap(count);
@@ -518,7 +518,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Pops the style color using the specified count
         /// </summary>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         public static void PopStyleColor(int count)
         {
             ImPlotNative.ImPlot_PopStyleColor(count);
@@ -536,7 +536,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Pops the style var using the specified count
         /// </summary>
-        /// <param name="count">The count</param>
+        /// <param name="count">The number of elements</param>
         public static void PopStyleVar(int count)
         {
             ImPlotNative.ImPlot_PopStyleVar(count);
@@ -674,7 +674,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Sets the current context using the specified ctx
         /// </summary>
-        /// <param name="ctx">The ctx</param>
+        /// <param name="ctx">The ImNodes context instance</param>
         public static void SetCurrentContext(IntPtr ctx)
         {
             ImPlotNative.ImPlot_SetCurrentContext(ctx);
@@ -683,7 +683,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Sets the im gui context using the specified ctx
         /// </summary>
-        /// <param name="ctx">The ctx</param>
+        /// <param name="ctx">The ImNodes context instance</param>
         public static void SetImGuiContext(IntPtr ctx)
         {
             ImPlotNative.ImPlot_SetImGuiContext(ctx);
@@ -727,8 +727,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Sets the next axis limits using the specified axis
         /// </summary>
         /// <param name="axis">The axis</param>
-        /// <param name="vMin">The min</param>
-        /// <param name="vMax">The max</param>
+        /// <param name="vMin">The minimum value range</param>
+        /// <param name="vMax">The maximum value range</param>
         public static void SetNextAxisLimits(ImAxis axis, double vMin, double vMax)
         {
             ImPlotCond cond = ImPlotCond.Once;
@@ -739,8 +739,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Sets the next axis limits using the specified axis
         /// </summary>
         /// <param name="axis">The axis</param>
-        /// <param name="vMin">The min</param>
-        /// <param name="vMax">The max</param>
+        /// <param name="vMin">The minimum value range</param>
+        /// <param name="vMax">The maximum value range</param>
         /// <param name="cond">The cond</param>
         public static void SetNextAxisLimits(ImAxis axis, double vMin, double vMax, ImPlotCond cond)
         {
@@ -793,7 +793,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Sets the next error bar style using the specified col
         /// </summary>
         /// <param name="col">The col</param>
-        /// <param name="size">The size</param>
+        /// <param name="size">The size of the element in pixels</param>
         public static void SetNextErrorBarStyle(Vector4F col, float size)
         {
             float weight = -1;
@@ -804,7 +804,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Sets the next error bar style using the specified col
         /// </summary>
         /// <param name="col">The col</param>
-        /// <param name="size">The size</param>
+        /// <param name="size">The size of the element in pixels</param>
         /// <param name="weight">The weight</param>
         public static void SetNextErrorBarStyle(Vector4F col, float size, float weight)
         {
@@ -901,7 +901,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Sets the next marker style using the specified marker
         /// </summary>
         /// <param name="marker">The marker</param>
-        /// <param name="size">The size</param>
+        /// <param name="size">The size of the element in pixels</param>
         public static void SetNextMarkerStyle(ImPlotMarker marker, float size)
         {
             Vector4F fill = new Vector4F(0, 0, 0, -1);
@@ -914,7 +914,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Sets the next marker style using the specified marker
         /// </summary>
         /// <param name="marker">The marker</param>
-        /// <param name="size">The size</param>
+        /// <param name="size">The size of the element in pixels</param>
         /// <param name="fill">The fill</param>
         public static void SetNextMarkerStyle(ImPlotMarker marker, float size, Vector4F fill)
         {
@@ -927,7 +927,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Sets the next marker style using the specified marker
         /// </summary>
         /// <param name="marker">The marker</param>
-        /// <param name="size">The size</param>
+        /// <param name="size">The size of the element in pixels</param>
         /// <param name="fill">The fill</param>
         /// <param name="weight">The weight</param>
         public static void SetNextMarkerStyle(ImPlotMarker marker, float size, Vector4F fill, float weight)
@@ -940,7 +940,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Sets the next marker style using the specified marker
         /// </summary>
         /// <param name="marker">The marker</param>
-        /// <param name="size">The size</param>
+        /// <param name="size">The size of the element in pixels</param>
         /// <param name="fill">The fill</param>
         /// <param name="weight">The weight</param>
         /// <param name="outline">The outline</param>
@@ -1022,7 +1022,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Setup the axis using the specified axis
         /// </summary>
         /// <param name="axis">The axis</param>
-        /// <param name="label">The label</param>
+        /// <param name="label">The display label for the UI element</param>
         public static void SetupAxis(ImAxis axis, string label)
         {
             ImPlotNative.ImPlot_SetupAxis(axis, Encoding.UTF8.GetBytes(label), 0);
@@ -1032,8 +1032,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Setup the axis using the specified axis
         /// </summary>
         /// <param name="axis">The axis</param>
-        /// <param name="label">The label</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="label">The display label for the UI element</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public static void SetupAxis(ImAxis axis, string label, ImPlotAxisFlags flags)
         {
             ImPlotNative.ImPlot_SetupAxis(axis, Encoding.UTF8.GetBytes(label), flags);
@@ -1064,7 +1064,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="axis">The axis</param>
         /// <param name="formatter">The formatter</param>
-        /// <param name="data">The data</param>
+        /// <param name="data">The data buffer content</param>
         public static void SetupAxisFormat(ImAxis axis, IntPtr formatter, IntPtr data)
         {
             ImPlotNative.ImPlot_SetupAxisFormat_PlotFormatter(axis, formatter, data);
@@ -1074,8 +1074,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Setup the axis limits using the specified axis
         /// </summary>
         /// <param name="axis">The axis</param>
-        /// <param name="vMin">The min</param>
-        /// <param name="vMax">The max</param>
+        /// <param name="vMin">The minimum value range</param>
+        /// <param name="vMax">The maximum value range</param>
         public static void SetupAxisLimits(ImAxis axis, double vMin, double vMax)
         {
             ImPlotCond cond = ImPlotCond.Once;
@@ -1086,8 +1086,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Setup the axis limits using the specified axis
         /// </summary>
         /// <param name="axis">The axis</param>
-        /// <param name="vMin">The min</param>
-        /// <param name="vMax">The max</param>
+        /// <param name="vMin">The minimum value range</param>
+        /// <param name="vMax">The maximum value range</param>
         /// <param name="cond">The cond</param>
         public static void SetupAxisLimits(ImAxis axis, double vMin, double vMax, ImPlotCond cond)
         {
@@ -1098,8 +1098,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Setup the axis limits constraints using the specified axis
         /// </summary>
         /// <param name="axis">The axis</param>
-        /// <param name="vMin">The min</param>
-        /// <param name="vMax">The max</param>
+        /// <param name="vMin">The minimum value range</param>
+        /// <param name="vMax">The maximum value range</param>
         public static void SetupAxisLimitsConstraints(ImAxis axis, double vMin, double vMax)
         {
             ImPlotNative.ImPlot_SetupAxisLimitsConstraints(axis, vMin, vMax);
@@ -1143,7 +1143,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="axis">The axis</param>
         /// <param name="forward">The forward</param>
         /// <param name="inverse">The inverse</param>
-        /// <param name="data">The data</param>
+        /// <param name="data">The data buffer content</param>
         public static void SetupAxisScale(ImAxis axis, IntPtr forward, IntPtr inverse, IntPtr data)
         {
             ImPlotNative.ImPlot_SetupAxisScale_PlotTransform(axis, forward, inverse, data);
@@ -1189,8 +1189,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Setup the axis ticks using the specified axis
         /// </summary>
         /// <param name="axis">The axis</param>
-        /// <param name="vMin">The min</param>
-        /// <param name="vMax">The max</param>
+        /// <param name="vMin">The minimum value range</param>
+        /// <param name="vMax">The maximum value range</param>
         /// <param name="nTicks">The ticks</param>
         public static void SetupAxisTicks(ImAxis axis, double vMin, double vMax, int nTicks)
         {
@@ -1201,8 +1201,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Setup the axis ticks using the specified axis
         /// </summary>
         /// <param name="axis">The axis</param>
-        /// <param name="vMin">The min</param>
-        /// <param name="vMax">The max</param>
+        /// <param name="vMin">The minimum value range</param>
+        /// <param name="vMax">The maximum value range</param>
         /// <param name="nTicks">The ticks</param>
         /// <param name="labels">The labels</param>
         public static void SetupAxisTicks(ImAxis axis, double vMin, double vMax, int nTicks, string[] labels)
@@ -1214,8 +1214,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Setup the axis ticks using the specified axis
         /// </summary>
         /// <param name="axis">The axis</param>
-        /// <param name="vMin">The min</param>
-        /// <param name="vMax">The max</param>
+        /// <param name="vMin">The minimum value range</param>
+        /// <param name="vMax">The maximum value range</param>
         /// <param name="nTicks">The ticks</param>
         /// <param name="labels">The labels</param>
         /// <param name="keepDefault">The keep default</param>
@@ -1257,7 +1257,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Setup the legend using the specified location
         /// </summary>
         /// <param name="location">The location</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public static void SetupLegend(ImPlotLocation location, ImPlotLegendFlags flags)
         {
             ImPlotNative.ImPlot_SetupLegend(location, flags);
@@ -1277,7 +1277,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Setup the mouse text using the specified location
         /// </summary>
         /// <param name="location">The location</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flags">The ImGui behavior flags</param>
         public static void SetupMouseText(ImPlotLocation location, ImPlotMouseTextFlags flags)
         {
             ImPlotNative.ImPlot_SetupMouseText(location, flags);
@@ -1286,8 +1286,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Describes whether show colormap selector
         /// </summary>
-        /// <param name="label">The label</param>
-        /// <returns>The bool</returns>
+        /// <param name="label">The display label for the UI element</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool ShowColormapSelector(string label)
         {
             byte ret = ImPlotNative.ImPlot_ShowColormapSelector(Encoding.UTF8.GetBytes(label));
@@ -1305,7 +1305,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Shows the demo window using the specified p open
         /// </summary>
-        /// <param name="pOpen">The open</param>
+        /// <param name="pOpen">Pointer to a bool indicating if the element is open</param>
         public static void ShowDemoWindow(ref bool pOpen)
         {
             byte nativePOpenVal = pOpen ? (byte) 1 : (byte) 0;
@@ -1316,8 +1316,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Describes whether show input map selector
         /// </summary>
-        /// <param name="label">The label</param>
-        /// <returns>The bool</returns>
+        /// <param name="label">The display label for the UI element</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool ShowInputMapSelector(string label)
         {
             byte ret = ImPlotNative.ImPlot_ShowInputMapSelector(Encoding.UTF8.GetBytes(label));
@@ -1362,8 +1362,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Describes whether show style selector
         /// </summary>
-        /// <param name="label">The label</param>
-        /// <returns>The bool</returns>
+        /// <param name="label">The display label for the UI element</param>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool ShowStyleSelector(string label)
         {
             byte ret = ImPlotNative.ImPlot_ShowStyleSelector(Encoding.UTF8.GetBytes(label));

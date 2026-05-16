@@ -98,7 +98,7 @@ namespace Alis.Core.Ecs.Systems.Configuration.General
         ///     Ons the load
         /// </summary>
         /// <returns>The general setting</returns>
-        internal GeneralSetting OnLoad() => JsonNativeAot.DeserializeFromFile<GeneralSetting>(nameof(GeneralSetting), "Data");
+        internal static GeneralSetting OnLoad() => JsonNativeAot.DeserializeFromFile<GeneralSetting>(nameof(GeneralSetting), "Data");
 
         /// <summary>
         ///     Gets the serializable properties

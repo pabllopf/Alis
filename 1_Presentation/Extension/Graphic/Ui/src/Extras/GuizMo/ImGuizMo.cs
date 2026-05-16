@@ -184,20 +184,20 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
         /// <summary>
         ///     Describes whether is over
         /// </summary>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool IsOver() => ImGuiZmoNative.InternalIsOverNil() != 0;
 
         /// <summary>
         ///     Describes whether is over
         /// </summary>
         /// <param name="op">The op</param>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool IsOver(Operation op) => ImGuiZmoNative.InternalIsOverOPERATION(op) != 0;
 
         /// <summary>
         ///     Describes whether is using
         /// </summary>
-        /// <returns>The bool</returns>
+        /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool IsUsing() => ImGuiZmoNative.InternalIsUsing() != 0;
 
         /// <summary>
@@ -208,7 +208,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
         /// <param name="operation">The operation</param>
         /// <param name="mode">The mode</param>
         /// <param name="matrix">The matrix</param>
-        /// <returns>The byte</returns>
+        /// <returns>the byte result from the native operation</returns>
         public static byte Manipulate(float[] view, float[] projection, Operation operation, Mode mode, float[] matrix)
         {
             GCHandle viewHandle = GCHandle.Alloc(view, GCHandleType.Pinned);
@@ -284,7 +284,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
         /// <summary>
         ///     Sets the id using the specified id
         /// </summary>
-        /// <param name="id">The id</param>
+        /// <param name="id">The unique identifier for the element</param>
         public static void SetId(int id)
         {
             ImGuiZmoNative.InternalSetID(id);
@@ -293,7 +293,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
         /// <summary>
         ///     Sets the im gui context using the specified ctx
         /// </summary>
-        /// <param name="ctx">The ctx</param>
+        /// <param name="ctx">The ImNodes context instance</param>
         public static void SetImGuiContext(IntPtr ctx)
         {
             ImGuiZmoNative.InternalSetImGuiContext(ctx);
@@ -327,7 +327,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
         /// <param name="view">The view</param>
         /// <param name="length">The length</param>
         /// <param name="position">The position</param>
-        /// <param name="size">The size</param>
+        /// <param name="size">The size of the element in pixels</param>
         /// <param name="backgroundColor">The background color</param>
         public static void ViewManipulate(ref float[] view, float length, Vector2F position, Vector2F size, uint backgroundColor)
         {

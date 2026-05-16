@@ -30,57 +30,57 @@
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl game controller type enum
+    ///     Defines the known types of game controllers recognized by SDL.
     /// </summary>
     public enum GameControllerType
     {
         /// <summary>
-        ///     The sdl controller type unknown sdl game controller type
+        ///     An unknown or unrecognized controller type.
         /// </summary>
         ControllerTypeUnknown = 0,
 
         /// <summary>
-        ///     The sdl controller type xbox360 sdl game controller type
+        ///     Microsoft Xbox 360 controller.
         /// </summary>
         ControllerTypeXbox360,
 
         /// <summary>
-        ///     The sdl controller type xbox one sdl game controller type
+        ///     Microsoft Xbox One controller.
         /// </summary>
         ControllerTypeXboxOne,
 
         /// <summary>
-        ///     The sdl controller type ps3 sdl game controller type
+        ///     Sony PlayStation 3 controller.
         /// </summary>
         ControllerTypePs3,
 
         /// <summary>
-        ///     The sdl controller type ps4 sdl game controller type
+        ///     Sony PlayStation 4 controller (DualShock 4).
         /// </summary>
         ControllerTypePs4,
 
         /// <summary>
-        ///     The sdl controller type nintendo switch pro sdl game controller type
+        ///     Nintendo Switch Pro controller.
         /// </summary>
         ControllerTypeNintendoSwitchPro,
 
         /// <summary>
-        ///     The sdl controller type virtual sdl game controller type
+        ///     A virtual controller, typically created programmatically.
         /// </summary>
         ControllerTypeVirtual,
 
         /// <summary>
-        ///     The sdl controller type ps5 sdl game controller type
+        ///     Sony PlayStation 5 controller (DualSense).
         /// </summary>
         ControllerTypePs5,
 
         /// <summary>
-        ///     The sdl controller type amazon luna sdl game controller type
+        ///     Amazon Luna controller.
         /// </summary>
         ControllerTypeAmazonLuna,
 
         /// <summary>
-        ///     The sdl controller type google stadia sdl game controller type
+        ///     Google Stadia controller.
         /// </summary>
         ControllerTypeGoogleStadia
     }

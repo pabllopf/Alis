@@ -33,33 +33,33 @@ using Alis.Extension.Graphic.Sdl2.Enums;
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl joy hat event
+    ///     Represents an SDL joystick hat (directional pad) event, fired when a joystick hat position changes.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct JoyHatEvent
     {
         /// <summary>
-        ///     The type
+        ///     The event type identifier, set to <see cref="EventType.JoyHatMotion"/>.
         /// </summary>
         public readonly EventType type;
 
         /// <summary>
-        ///     The timestamp
+        ///     The timestamp of the event, in milliseconds, from the SDL event system.
         /// </summary>
         public readonly uint timestamp;
 
         /// <summary>
-        ///     The which
+        ///     The SDL joystick instance ID that generated the event.
         /// </summary>
         public readonly int which;
 
         /// <summary>
-        ///     The hat
+        ///     The hat index on the joystick (0-based).
         /// </summary>
         public readonly byte hat;
 
         /// <summary>
-        ///     The hat value
+        ///     The current hat position as a bitmask (e.g. SDL_HAT_UP, SDL_HAT_LEFT, SDL_HAT_CENTERED).
         /// </summary>
         public readonly byte hatValue;
     }

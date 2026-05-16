@@ -33,28 +33,28 @@ using Alis.Extension.Graphic.Sdl2.Enums;
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl joy axis event
+    ///     Represents an SDL joystick axis motion event, fired when a joystick axis changes position.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct JoyAxisEvent
     {
         /// <summary>
-        ///     The type
+        ///     The event type identifier, set to <see cref="EventType.JoyAxisMotion"/>.
         /// </summary>
         public readonly EventType type;
 
         /// <summary>
-        ///     The timestamp
+        ///     The timestamp of the event, in milliseconds, from the SDL event system.
         /// </summary>
         public readonly uint timestamp;
 
         /// <summary>
-        ///     The which
+        ///     The SDL joystick instance ID that generated the event.
         /// </summary>
         public readonly int which;
 
         /// <summary>
-        ///     The axis
+        ///     The index of the joystick axis that changed (0-based).
         /// </summary>
         public readonly byte axis;
     }
