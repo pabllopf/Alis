@@ -162,7 +162,7 @@ namespace Alis.Extension.Profile.Test.Factories
             ResourceMetricsFactory factory = new ResourceMetricsFactory(monitor);
 
             // Act
-            ResourceMetrics metrics = factory.CreateEmpty();
+            ResourceMetrics metrics = ResourceMetricsFactory.CreateEmpty();
 
             // Assert
             Assert.Equal(0, metrics.CpuUsageMilliseconds);
@@ -183,7 +183,7 @@ namespace Alis.Extension.Profile.Test.Factories
             ResourceMetricsFactory factory = new ResourceMetricsFactory(monitor);
 
             // Act
-            ResourceMetrics empty = factory.CreateEmpty();
+            ResourceMetrics empty = ResourceMetricsFactory.CreateEmpty();
             ResourceMetrics staticEmpty = ResourceMetrics.Empty;
 
             // Assert
@@ -202,7 +202,7 @@ namespace Alis.Extension.Profile.Test.Factories
 
             // Act
             ResourceMetrics snapshot = factory.CreateSnapshot();
-            ResourceMetrics empty = factory.CreateEmpty();
+            ResourceMetrics empty = ResourceMetricsFactory.CreateEmpty();
 
             // Assert
             Assert.NotEqual(snapshot, empty);

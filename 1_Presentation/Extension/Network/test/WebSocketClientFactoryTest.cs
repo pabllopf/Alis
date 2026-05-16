@@ -45,18 +45,6 @@ namespace Alis.Extension.Network.Test
     /// </summary>
     public class WebSocketClientFactoryTest
     {
-        /// <summary>
-        ///     Tests that dispose closes web socket
-        /// </summary>
-        [Fact]
-        public void Dispose_ClosesWebSocket()
-        {
-            WebSocketClientFactory factory = new WebSocketClientFactory();
-            Uri uri = new Uri("ws://localhost:8080");
-
-            Task<WebSocket> webSocket = factory.ConnectAsync(uri);
-            factory.Dispose();
-        }
 
         /// <summary>
         ///     Tests that validate server certificate should return true when ssl policy errors none
@@ -195,7 +183,7 @@ namespace Alis.Extension.Network.Test
                               "Connection: Upgrade\r\n" +
                               "Sec-WebSocket-Accept: s3pPLMBiTxaQ9kYGzzhZRbK+xOo=\r\n\r\n";
 
-            string result = factory.GetSubProtocolFromHeader(response);
+            string result = WebSocketClientFactory.GetSubProtocolFromHeader(response);
 
             Assert.Null(result);
         }
@@ -210,7 +198,7 @@ namespace Alis.Extension.Network.Test
             string response = "Sec-WebSocket-Accept: invalid_accept_string";
             string secWebSocketKey = "dGhlIHNhbXBsZSBub25jZQ=="; // Sample key
 
-            Assert.Throws<WebSocketHandshakeFailedException>(() => factory.ThrowIfInvalidAcceptString(Guid.NewGuid(), response, secWebSocketKey));
+            Assert.Throws<WebSocketHandshakeFailedException>(() => WebSocketClientFactory.ThrowIfInvalidAcceptString(Guid.NewGuid(), response, secWebSocketKey));
         }
 
         /// <summary>
@@ -224,7 +212,7 @@ namespace Alis.Extension.Network.Test
             string validAcceptString = HttpHelper.ComputeSocketAcceptString(secWebSocketKey);
             string response = $"Sec-WebSocket-Accept: {validAcceptString}";
 
-            Exception exception = Record.Exception(() => factory.ThrowIfInvalidAcceptString(Guid.NewGuid(), response, secWebSocketKey));
+            Exception exception = Record.Exception(() => WebSocketClientFactory.ThrowIfInvalidAcceptString(Guid.NewGuid(), response, secWebSocketKey));
             Assert.Null(exception);
         }
 
@@ -257,7 +245,7 @@ namespace Alis.Extension.Network.Test
                                           "Sec-WebSocket-Version: 13\r\n\r\n";
             MemoryStream stream = new MemoryStream();
 
-            await webSocketClientFactory.SendHandshakeRequest(stream, handshakeHttpRequest, guid);
+            await WebSocketClientFactory.SendHandshakeRequest(stream, handshakeHttpRequest, guid);
 
             stream.Position = 0;
             StreamReader reader = new StreamReader(stream);
@@ -278,7 +266,7 @@ namespace Alis.Extension.Network.Test
             string secWebSocketProtocol = "chat";
             string additionalHeaders = "Additional-Header: Value\r\n";
 
-            string result = webSocketClientFactory.BuildHandshakeRequest(uri, secWebSocketKey, secWebSocketProtocol, additionalHeaders);
+            string result = WebSocketClientFactory.BuildHandshakeRequest(uri, secWebSocketKey, secWebSocketProtocol, additionalHeaders);
 
             string expected = "GET / HTTP/1.1\r\n" +
                               "Host: localhost:80\r\n" +

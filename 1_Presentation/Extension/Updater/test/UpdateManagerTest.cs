@@ -129,10 +129,10 @@ namespace Alis.Extension.Updater.Test
         {
             UpdateManager sut = CreateManager();
 
-            bool notCancelled = sut.HandleCancellationRequest(CancellationToken.None);
+            bool notCancelled = UpdateManager.HandleCancellationRequest(CancellationToken.None);
             using CancellationTokenSource cts = new CancellationTokenSource();
             cts.Cancel();
-            bool cancelled = sut.HandleCancellationRequest(cts.Token);
+            bool cancelled = UpdateManager.HandleCancellationRequest(cts.Token);
 
             Assert.False(notCancelled);
             Assert.True(cancelled);
@@ -146,7 +146,7 @@ namespace Alis.Extension.Updater.Test
         {
             UpdateManager sut = CreateManager();
 
-            string architecture = sut.GetArchitecture();
+            string architecture = UpdateManager.GetArchitecture();
 
             Assert.False(string.IsNullOrWhiteSpace(architecture));
             Assert.Equal(architecture.ToLower(), architecture);
@@ -322,7 +322,7 @@ namespace Alis.Extension.Updater.Test
         {
             UpdateManager sut = CreateManager();
 
-            string mountPath = sut.GetDmgMountPath("/tmp/example.dmg");
+            string mountPath = UpdateManager.GetDmgMountPath("/tmp/example.dmg");
 
             Assert.Equal("/Volumes/example", mountPath);
         }
@@ -368,7 +368,7 @@ namespace Alis.Extension.Updater.Test
 
             try
             {
-                sut.ExecuteShellCommand("touch " + marker);
+                UpdateManager.ExecuteShellCommand("touch " + marker);
                 Assert.True(File.Exists(marker));
             }
             finally

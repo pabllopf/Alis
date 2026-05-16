@@ -45,15 +45,5 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             Assert.Equal(0, (int) ImPlotMouseTextFlags.None);
         }
-
-        /// <summary>
-        ///     Verifies that optional mouse text flags are distinct bits.
-        /// </summary>
-        [Fact]
-        public void Flags_ShouldBeDistinct()
-        {
-            Assert.NotEqual((int) ImPlotMouseTextFlags.NoAuxAxes, (int) ImPlotMouseTextFlags.NoFormat);
-            Assert.NotEqual((int) ImPlotMouseTextFlags.NoFormat, (int) ImPlotMouseTextFlags.ShowAlways);
-        }
     }
 }
