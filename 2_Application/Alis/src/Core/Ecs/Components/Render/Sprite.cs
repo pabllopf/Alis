@@ -142,7 +142,7 @@ namespace Alis.Core.Ecs.Components.Render
         ///     Gets or sets the value of the flip
         /// </summary>
 
-        private bool Flip { get; set; }
+        private bool Flip { get; set; } = false;
 
         /// <summary>
         ///     Inits the self
@@ -266,7 +266,7 @@ namespace Alis.Core.Ecs.Components.Render
             RotationLocation = Gl.GlGetUniformLocation(SharedShaderProgram, "rotation");
             FlipLocation = Gl.GlGetUniformLocation(SharedShaderProgram, "flip");
             TextureLocation = Gl.GlGetUniformLocation(SharedShaderProgram, "texture1");
-            Gl.Uniform1I(TextureLocation, 0);
+            Gl.GlUniform1I(TextureLocation, 0);
 
             // create a shared unit quad (vertices not pre-scaled)
             float[] vertices =

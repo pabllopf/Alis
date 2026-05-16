@@ -121,7 +121,7 @@ namespace Alis.Core.Ecs.Systems.Configuration.General
         /// <param name="properties">The properties</param>
         /// <returns>The general setting</returns>
         GeneralSetting IJsonDesSerializable<GeneralSetting>.CreateFromProperties(Dictionary<string, string> properties) => new GeneralSetting(
-            properties.TryGetValue(nameof(Debug), out string debugValue) && bool.TryParse(debugValue, out bool debug) && debug,
+            properties.TryGetValue(nameof(Debug), out string debugValue) && bool.TryParse(debugValue, out bool debugValueLocal) && debugValueLocal,
             properties.TryGetValue(nameof(Name), out string name) ? name : "Default Name",
             properties.TryGetValue(nameof(Description), out string description) ? description : "Default Description",
             properties.TryGetValue(nameof(Version), out string version) ? version : "0.0.0",
