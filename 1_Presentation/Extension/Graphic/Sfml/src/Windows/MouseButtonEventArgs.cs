@@ -37,13 +37,13 @@ namespace Alis.Extension.Graphic.Sfml.Windows
     public class MouseButtonEventArgs : EventArgs
     {
         /// <summary>Code of the button (see MouseButton enum)</summary>
-        public Mouse.Button Button;
+        public readonly Mouse.Button Button;
 
         /// <summary>X coordinate of the mouse cursor</summary>
-        public int X;
+        public readonly int X;
 
         /// <summary>Y coordinate of the mouse cursor</summary>
-        public int Y;
+        public readonly int Y;
 
         /// <summary>
         ///     Construct the mouse button arguments from a mouse button event

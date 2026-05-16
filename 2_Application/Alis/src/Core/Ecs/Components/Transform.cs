@@ -55,17 +55,17 @@ namespace Alis.Core.Ecs.Components
         /// <summary>
         ///     The position
         /// </summary>
-        public Vector2F Position;
+        public Vector2F Position { get; set; }
 
         /// <summary>
         ///     The rotation
         /// </summary>
-        public float Rotation;
+        public float Rotation { get; set; }
 
         /// <summary>
         ///     The scale
         /// </summary>
-        public Vector2F Scale;
+        public Vector2F Scale { get; set; }
 
         /// <summary>
         ///     Initialize using a position vector and a Complex rotation.

@@ -78,6 +78,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// <summary>
         ///     Get the list of all the supported fullscreen video modes
         /// </summary>
+        /// <returns>Array of all supported fullscreen <see cref="VideoMode" /> values</returns>
 
         public static VideoMode[] FullscreenModes
         {
@@ -102,6 +103,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// <summary>
         ///     Get the current desktop video mode
         /// </summary>
+        /// <returns>The desktop <see cref="VideoMode" /> containing width, height and bits per pixel</returns>
 
         public static VideoMode DesktopMode => sfVideoMode_getDesktopMode();
 

@@ -32,5 +32,7 @@ namespace Alis.Core.Physic.Dynamics
     /// <summary>
     ///     The body delegate
     /// </summary>
+    /// <param name="sender">The world physics instance that triggered the delegate.</param>
+    /// <param name="body">The body instance passed to the delegate.</param>
     public delegate void BodyDelegate(WorldPhysic sender, Body body);
 }

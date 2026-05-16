@@ -62,13 +62,13 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         /// </summary>
         /// <param name="wrappedPtr"></param>
-        /// <returns></returns>
+        /// <returns>The converted wrapper instance</returns>
         public static implicit operator IntPtr(ImFontConfigPtr wrappedPtr) => wrappedPtr.NativePtr;
 
         /// <summary>
         /// </summary>
         /// <param name="nativePtr"></param>
-        /// <returns></returns>
+        /// <returns>The converted wrapper instance</returns>
         public static implicit operator ImFontConfigPtr(IntPtr nativePtr) => new ImFontConfigPtr(nativePtr);
 
         /// <summary>

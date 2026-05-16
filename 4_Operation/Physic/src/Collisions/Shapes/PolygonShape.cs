@@ -141,7 +141,7 @@ namespace Alis.Core.Physic.Collisions.Shapes
         public override int ChildCount => 1;
 
         /// <summary>
-        ///     Computes the properties
+        ///     Computes the mass properties for this polygon using the vertex geometry and density.
         /// </summary>
         protected override void ComputeProperties()
         {
@@ -388,13 +388,13 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Computes the submerged area using the specified normal
+        ///     Computes the submerged area of this polygon beneath a fluid plane, used for buoyancy simulation.
         /// </summary>
-        /// <param name="normal">The normal</param>
-        /// <param name="offset">The offset</param>
-        /// <param name="xf">The xf</param>
-        /// <param name="sc">The sc</param>
-        /// <returns>The area</returns>
+        /// <param name="normal">The upward normal of the fluid surface.</param>
+        /// <param name="offset">The signed offset of the fluid plane along the normal.</param>
+        /// <param name="xf">The world transform of the polygon.</param>
+        /// <param name="sc">Outputs the submerged centroid in world coordinates.</param>
+        /// <returns>The submerged area of the polygon (zero if dry, full area if completely submerged).</returns>
         public override float ComputeSubmergedArea(ref Vector2F normal, float offset, ref ControllerTransform xf, out Vector2F sc)
         {
             sc = Vector2F.Zero;
@@ -520,10 +520,10 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Describes whether this instance compare to
+        ///     Compares this polygon to another for geometric equality.
         /// </summary>
-        /// <param name="shape">The shape</param>
-        /// <returns>The bool</returns>
+        /// <param name="shape">The other polygon shape to compare against.</param>
+        /// <returns><c>true</c> if both polygons have identical vertices, radius, and mass data; otherwise <c>false</c>.</returns>
         public bool CompareTo(PolygonShape shape)
         {
             if (Vertices.Count != shape.Vertices.Count)
@@ -543,9 +543,9 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Clones this instance
+        ///     Creates a deep copy of this polygon shape.
         /// </summary>
-        /// <returns>The clone</returns>
+        /// <returns>A new <see cref="PolygonShape"/> with the same vertices, normals, and properties.</returns>
         public override Shape Clone()
         {
             PolygonShape clone = new PolygonShape();

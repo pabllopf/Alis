@@ -40,11 +40,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The bar size</param>
+        /// <param name="barSize">The size of each bar in the plot</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -56,11 +56,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The bar size</param>
+        /// <param name="barSize">The size of each bar in the plot</param>
         public static void PlotBars(string labelId, ref ulong xs, ref ulong ys, int count, double barSize)
         {
             ImPlotNative.ImPlot_PlotBars_U64PtrU64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, barSize, 0, 0, sizeof(ulong));
@@ -69,11 +69,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The bar size</param>
+        /// <param name="barSize">The size of each bar in the plot</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotBars(string labelId, ref ulong xs, ref ulong ys, int count, double barSize, ImPlotBarsFlags flags)
         {
@@ -83,11 +83,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The bar size</param>
+        /// <param name="barSize">The size of each bar in the plot</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         public static void PlotBars(string labelId, ref ulong xs, ref ulong ys, int count, double barSize, ImPlotBarsFlags flags, int offset)
@@ -98,11 +98,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The bar size</param>
+        /// <param name="barSize">The size of each bar in the plot</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -114,11 +114,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars g using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
         /// <param name="getter">The getter</param>
         /// <param name="data">The data buffer content</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The bar size</param>
+        /// <param name="barSize">The size of each bar in the plot</param>
         public static void PlotBarsG(string labelId, IntPtr getter, IntPtr data, int count, double barSize)
         {
             ImPlotNative.ImPlot_PlotBarsG(Encoding.UTF8.GetBytes(labelId), getter, data, count, barSize, 0);
@@ -127,11 +127,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the bars g using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
         /// <param name="getter">The getter</param>
         /// <param name="data">The data buffer content</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The bar size</param>
+        /// <param name="barSize">The size of each bar in the plot</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotBarsG(string labelId, IntPtr getter, IntPtr data, int count, double barSize, ImPlotBarsFlags flags)
         {
@@ -141,9 +141,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         public static void PlotDigital(string labelId, ref float xs, ref float ys, int count)
         {
@@ -153,9 +153,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotDigital(string labelId, ref float xs, ref float ys, int count, ImPlotDigitalFlags flags)
@@ -166,9 +166,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -180,9 +180,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -195,9 +195,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         public static void PlotDigital(string labelId, ref double xs, ref double ys, int count)
         {
@@ -207,9 +207,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotDigital(string labelId, ref double xs, ref double ys, int count, ImPlotDigitalFlags flags)
@@ -220,9 +220,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -234,9 +234,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -249,9 +249,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         public static void PlotDigital(string labelId, ref sbyte xs, ref sbyte ys, int count)
         {
@@ -261,9 +261,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotDigital(string labelId, ref sbyte xs, ref sbyte ys, int count, ImPlotDigitalFlags flags)
@@ -274,9 +274,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -288,9 +288,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -303,9 +303,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         public static void PlotDigital(string labelId, ref byte xs, ref byte ys, int count)
         {
@@ -315,9 +315,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotDigital(string labelId, ref byte xs, ref byte ys, int count, ImPlotDigitalFlags flags)
@@ -328,9 +328,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -342,9 +342,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -357,9 +357,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         public static void PlotDigital(string labelId, ref short xs, ref short ys, int count)
         {
@@ -369,9 +369,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotDigital(string labelId, ref short xs, ref short ys, int count, ImPlotDigitalFlags flags)
@@ -382,9 +382,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -396,9 +396,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -411,9 +411,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         public static void PlotDigital(string labelId, ref ushort xs, ref ushort ys, int count)
         {
@@ -423,9 +423,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotDigital(string labelId, ref ushort xs, ref ushort ys, int count, ImPlotDigitalFlags flags)
@@ -436,9 +436,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -450,9 +450,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -465,9 +465,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         public static void PlotDigital(string labelId, ref int xs, ref int ys, int count)
         {
@@ -477,9 +477,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotDigital(string labelId, ref int xs, ref int ys, int count, ImPlotDigitalFlags flags)
@@ -490,9 +490,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -504,9 +504,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -519,9 +519,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         public static void PlotDigital(string labelId, ref uint xs, ref uint ys, int count)
         {
@@ -531,9 +531,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotDigital(string labelId, ref uint xs, ref uint ys, int count, ImPlotDigitalFlags flags)
@@ -544,9 +544,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -558,9 +558,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -573,9 +573,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         public static void PlotDigital(string labelId, ref long xs, ref long ys, int count)
         {
@@ -585,9 +585,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotDigital(string labelId, ref long xs, ref long ys, int count, ImPlotDigitalFlags flags)
@@ -598,9 +598,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -612,9 +612,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -627,9 +627,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         public static void PlotDigital(string labelId, ref ulong xs, ref ulong ys, int count)
         {
@@ -639,9 +639,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotDigital(string labelId, ref ulong xs, ref ulong ys, int count, ImPlotDigitalFlags flags)
@@ -652,9 +652,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -666,9 +666,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -681,7 +681,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the digital g using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
         /// <param name="getter">The getter</param>
         /// <param name="data">The data buffer content</param>
         /// <param name="count">The number of elements</param>
@@ -693,7 +693,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the digital g using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
         /// <param name="getter">The getter</param>
         /// <param name="data">The data buffer content</param>
         /// <param name="count">The number of elements</param>
@@ -706,7 +706,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the dummy using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
         public static void PlotDummy(string labelId)
         {
             ImPlotNative.ImPlot_PlotDummy(Encoding.UTF8.GetBytes(labelId), 0);
@@ -715,7 +715,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the dummy using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotDummy(string labelId, ImPlotDummyFlags flags)
         {
@@ -725,10 +725,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="err">The err</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="err">The error value/array for error bars</param>
         /// <param name="count">The number of elements</param>
         public static void PlotErrorBars(string labelId, ref float xs, ref float ys, ref float err, int count)
         {
@@ -738,10 +738,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="err">The err</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="err">The error value/array for error bars</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotErrorBars(string labelId, ref float xs, ref float ys, ref float err, int count, ImPlotErrorBarsFlags flags)

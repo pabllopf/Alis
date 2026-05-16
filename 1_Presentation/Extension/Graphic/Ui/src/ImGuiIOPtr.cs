@@ -64,13 +64,13 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         /// </summary>
         /// <param name="wrappedPtr"></param>
-        /// <returns></returns>
+        /// <returns>The converted wrapper instance</returns>
         public static implicit operator IntPtr(ImGuiIoPtr wrappedPtr) => wrappedPtr.NativePtr;
 
         /// <summary>
         /// </summary>
         /// <param name="nativePtr"></param>
-        /// <returns></returns>
+        /// <returns>The converted wrapper instance</returns>
         public static implicit operator ImGuiIoPtr(IntPtr nativePtr) => new ImGuiIoPtr(nativePtr);
 
         /// <summary>
@@ -1548,7 +1548,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the key analog event using the specified key
         /// </summary>
-        /// <param name="key">The key</param>
+        /// <param name="key">The lookup key</param>
         /// <param name="down">The down</param>
         /// <param name="v">The value to be modified or populated</param>
         public void AddKeyAnalogEvent(ImGuiKey key, bool down, float v)
@@ -1560,7 +1560,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the key event using the specified key
         /// </summary>
-        /// <param name="key">The key</param>
+        /// <param name="key">The lookup key</param>
         /// <param name="down">The down</param>
         public void AddKeyEvent(ImGuiKey key, bool down)
         {
@@ -1571,7 +1571,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the mouse button event using the specified button
         /// </summary>
-        /// <param name="button">The button</param>
+        /// <param name="button">The mouse button index</param>
         /// <param name="down">The down</param>
         public void AddMouseButtonEvent(int button, bool down)
         {
@@ -1637,7 +1637,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Sets the key event native data using the specified key
         /// </summary>
-        /// <param name="key">The key</param>
+        /// <param name="key">The lookup key</param>
         /// <param name="nativeKeycode">The native keycode</param>
         /// <param name="nativeScancode">The native scancode</param>
         public void SetKeyEventNativeData(ImGuiKey key, int nativeKeycode, int nativeScancode)
@@ -1649,7 +1649,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Sets the key event native data using the specified key
         /// </summary>
-        /// <param name="key">The key</param>
+        /// <param name="key">The lookup key</param>
         /// <param name="nativeKeycode">The native keycode</param>
         /// <param name="nativeScancode">The native scancode</param>
         /// <param name="nativeLegacyIndex">The native legacy index</param>

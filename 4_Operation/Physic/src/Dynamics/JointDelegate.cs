@@ -34,5 +34,7 @@ namespace Alis.Core.Physic.Dynamics
     /// <summary>
     ///     The joint delegate
     /// </summary>
+    /// <param name="sender">The world physics instance that triggered the delegate.</param>
+    /// <param name="joint">The joint instance passed to the delegate.</param>
     public delegate void JointDelegate(WorldPhysic sender, Joint joint);
 }

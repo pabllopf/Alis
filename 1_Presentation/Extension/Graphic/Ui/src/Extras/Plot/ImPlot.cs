@@ -86,9 +86,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         public static void PlotStems(string labelId, ref int xs, ref int ys, int count)
         {
@@ -98,11 +98,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         public static void PlotStems(string labelId, ref int xs, ref int ys, int count, double @ref)
         {
             ImPlotNative.ImPlot_PlotStems_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, @ref, 0, 0, sizeof(int));
@@ -111,11 +111,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotStems(string labelId, ref int xs, ref int ys, int count, double @ref, ImPlotStemsFlags flags)
         {
@@ -125,11 +125,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         public static void PlotStems(string labelId, ref int xs, ref int ys, int count, double @ref, ImPlotStemsFlags flags, int offset)
@@ -140,11 +140,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -156,9 +156,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         public static void PlotStems(string labelId, ref uint xs, ref uint ys, int count)
         {
@@ -168,11 +168,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         public static void PlotStems(string labelId, ref uint xs, ref uint ys, int count, double @ref)
         {
             ImPlotNative.ImPlot_PlotStems_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, @ref, 0, 0, sizeof(uint));
@@ -181,11 +181,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotStems(string labelId, ref uint xs, ref uint ys, int count, double @ref, ImPlotStemsFlags flags)
         {
@@ -195,11 +195,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         public static void PlotStems(string labelId, ref uint xs, ref uint ys, int count, double @ref, ImPlotStemsFlags flags, int offset)
@@ -210,11 +210,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -226,9 +226,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         public static void PlotStems(string labelId, ref long xs, ref long ys, int count)
         {
@@ -238,11 +238,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         public static void PlotStems(string labelId, ref long xs, ref long ys, int count, double @ref)
         {
             ImPlotNative.ImPlot_PlotStems_S64PtrS64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, 0, 0, sizeof(long));
@@ -251,11 +251,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotStems(string labelId, ref long xs, ref long ys, int count, double @ref, ImPlotStemsFlags flags)
         {
@@ -265,11 +265,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         public static void PlotStems(string labelId, ref long xs, ref long ys, int count, double @ref, ImPlotStemsFlags flags, int offset)
@@ -280,11 +280,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -296,9 +296,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         public static void PlotStems(string labelId, ref ulong xs, ref ulong ys, int count)
         {
@@ -308,11 +308,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         public static void PlotStems(string labelId, ref ulong xs, ref ulong ys, int count, double @ref)
         {
             ImPlotNative.ImPlot_PlotStems_U64PtrU64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, 0, 0, sizeof(ulong));
@@ -321,11 +321,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotStems(string labelId, ref ulong xs, ref ulong ys, int count, double @ref, ImPlotStemsFlags flags)
         {
@@ -335,11 +335,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         public static void PlotStems(string labelId, ref ulong xs, ref ulong ys, int count, double @ref, ImPlotStemsFlags flags, int offset)
@@ -350,11 +350,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -403,7 +403,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Converts a plot-space ImPlotPoint to pixel coordinates.
         /// </summary>
         /// <param name="plt">The plot-space point to convert</param>
-        /// <returns>Pixel-space coordinates of the point</returns>
+        /// <returns>The pixel-space coordinates of the point</returns>
         public static Vector2F PlotToPixels(ImPlotPoint plt)
         {
             ImAxis xAxis = (ImAxis) (-1);
@@ -417,7 +417,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="plt">The plot-space point to convert</param>
         /// <param name="xAxis">X axis to use for the conversion</param>
-        /// <returns>Pixel-space coordinates of the point</returns>
+        /// <returns>The pixel-space coordinates of the point</returns>
         public static Vector2F PlotToPixels(ImPlotPoint plt, ImAxis xAxis)
         {
             ImAxis yAxis = (ImAxis) (-1);
@@ -431,7 +431,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="plt">The plot-space point to convert</param>
         /// <param name="xAxis">X axis to use for the conversion</param>
         /// <param name="yAxis">Y axis to use for the conversion</param>
-        /// <returns>Pixel-space coordinates of the point</returns>
+        /// <returns>The pixel-space coordinates of the point</returns>
         public static Vector2F PlotToPixels(ImPlotPoint plt, ImAxis xAxis, ImAxis yAxis)
         {
             ImPlotNative.ImPlot_PlotToPixels_PlotPoInt(out Vector2F retval, plt, xAxis, yAxis);
@@ -443,7 +443,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="x">X-coordinate in plot space</param>
         /// <param name="y">Y-coordinate in plot space</param>
-        /// <returns>Pixel-space coordinates of the point</returns>
+        /// <returns>The pixel-space coordinates of the point</returns>
         public static Vector2F PlotToPixels(double x, double y)
         {
             ImAxis xAxis = (ImAxis) (-1);
@@ -458,7 +458,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="x">X-coordinate in plot space</param>
         /// <param name="y">Y-coordinate in plot space</param>
         /// <param name="xAxis">X axis to use for the conversion</param>
-        /// <returns>Pixel-space coordinates of the point</returns>
+        /// <returns>The pixel-space coordinates of the point</returns>
         public static Vector2F PlotToPixels(double x, double y, ImAxis xAxis)
         {
             ImAxis yAxis = (ImAxis) (-1);
@@ -473,7 +473,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="y">Y-coordinate in plot space</param>
         /// <param name="xAxis">X axis to use for the conversion</param>
         /// <param name="yAxis">Y axis to use for the conversion</param>
-        /// <returns>Pixel-space coordinates of the point</returns>
+        /// <returns>The pixel-space coordinates of the point</returns>
         public static Vector2F PlotToPixels(double x, double y, ImAxis xAxis, ImAxis yAxis)
         {
             ImPlotNative.ImPlot_PlotToPixels_double(out Vector2F retval, x, y, xAxis, yAxis);
@@ -872,7 +872,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Sets the next marker style
+        ///     Resets the marker style to defaults for the next plot item.
         /// </summary>
         public static void SetNextMarkerStyle()
         {
@@ -885,9 +885,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Sets the next marker style using the specified marker
+        ///     Sets the marker shape for the next plot item.
         /// </summary>
-        /// <param name="marker">The marker</param>
+        /// <param name="marker">The marker shape to use</param>
         public static void SetNextMarkerStyle(ImPlotMarker marker)
         {
             float size = -1;
@@ -898,10 +898,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Sets the next marker style using the specified marker
+        ///     Sets the marker shape and size for the next plot item.
         /// </summary>
-        /// <param name="marker">The marker</param>
-        /// <param name="size">The size of the element in pixels</param>
+        /// <param name="marker">The marker shape to use</param>
+        /// <param name="size">Size of the marker in pixels</param>
         public static void SetNextMarkerStyle(ImPlotMarker marker, float size)
         {
             Vector4F fill = new Vector4F(0, 0, 0, -1);
@@ -911,11 +911,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Sets the next marker style using the specified marker
+        ///     Sets the marker shape, size, and fill color for the next plot item.
         /// </summary>
-        /// <param name="marker">The marker</param>
-        /// <param name="size">The size of the element in pixels</param>
-        /// <param name="fill">The fill</param>
+        /// <param name="marker">The marker shape to use</param>
+        /// <param name="size">Size of the marker in pixels</param>
+        /// <param name="fill">Fill color for the marker interior</param>
         public static void SetNextMarkerStyle(ImPlotMarker marker, float size, Vector4F fill)
         {
             float weight = -1;
@@ -924,12 +924,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Sets the next marker style using the specified marker
+        ///     Sets the marker shape, size, fill, and outline weight for the next plot item.
         /// </summary>
-        /// <param name="marker">The marker</param>
-        /// <param name="size">The size of the element in pixels</param>
-        /// <param name="fill">The fill</param>
-        /// <param name="weight">The weight</param>
+        /// <param name="marker">The marker shape to use</param>
+        /// <param name="size">Size of the marker in pixels</param>
+        /// <param name="fill">Fill color for the marker interior</param>
+        /// <param name="weight">Thickness of the marker outline in pixels</param>
         public static void SetNextMarkerStyle(ImPlotMarker marker, float size, Vector4F fill, float weight)
         {
             Vector4F outline = new Vector4F(0, 0, 0, -1);
@@ -937,58 +937,58 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Sets the next marker style using the specified marker
+        ///     Sets the full marker style for the next plot item.
         /// </summary>
-        /// <param name="marker">The marker</param>
-        /// <param name="size">The size of the element in pixels</param>
-        /// <param name="fill">The fill</param>
-        /// <param name="weight">The weight</param>
-        /// <param name="outline">The outline</param>
+        /// <param name="marker">The marker shape to use</param>
+        /// <param name="size">Size of the marker in pixels</param>
+        /// <param name="fill">Fill color for the marker interior</param>
+        /// <param name="weight">Thickness of the marker outline in pixels</param>
+        /// <param name="outline">Color for the marker outline</param>
         public static void SetNextMarkerStyle(ImPlotMarker marker, float size, Vector4F fill, float weight, Vector4F outline)
         {
             ImPlotNative.ImPlot_SetNextMarkerStyle(marker, size, fill, weight, outline);
         }
 
         /// <summary>
-        ///     Setup the axes using the specified x label
+        ///     Configures the X and Y axis labels for the next plot.
         /// </summary>
-        /// <param name="xLabel">The label</param>
-        /// <param name="yLabel">The label</param>
+        /// <param name="xLabel">Label for the X axis</param>
+        /// <param name="yLabel">Label for the Y axis</param>
         public static void SetupAxes(string xLabel, string yLabel)
         {
             ImPlotNative.ImPlot_SetupAxes(Encoding.UTF8.GetBytes(xLabel), Encoding.UTF8.GetBytes(yLabel), 0, 0);
         }
 
         /// <summary>
-        ///     Setup the axes using the specified x label
+        ///     Configures the X and Y axis labels with X axis flags.
         /// </summary>
-        /// <param name="xLabel">The label</param>
-        /// <param name="yLabel">The label</param>
-        /// <param name="xFlags">The flags</param>
+        /// <param name="xLabel">Label for the X axis</param>
+        /// <param name="yLabel">Label for the Y axis</param>
+        /// <param name="xFlags">Flags controlling the X axis appearance</param>
         public static void SetupAxes(string xLabel, string yLabel, ImPlotAxisFlags xFlags)
         {
             ImPlotNative.ImPlot_SetupAxes(Encoding.UTF8.GetBytes(xLabel), Encoding.UTF8.GetBytes(yLabel), xFlags, 0);
         }
 
         /// <summary>
-        ///     Setup the axes using the specified x label
+        ///     Configures both X and Y axis labels and flags for the next plot.
         /// </summary>
-        /// <param name="xLabel">The label</param>
-        /// <param name="yLabel">The label</param>
-        /// <param name="xFlags">The flags</param>
-        /// <param name="yFlags">The flags</param>
+        /// <param name="xLabel">Label for the X axis</param>
+        /// <param name="yLabel">Label for the Y axis</param>
+        /// <param name="xFlags">Flags controlling the X axis appearance</param>
+        /// <param name="yFlags">Flags controlling the Y axis appearance</param>
         public static void SetupAxes(string xLabel, string yLabel, ImPlotAxisFlags xFlags, ImPlotAxisFlags yFlags)
         {
             ImPlotNative.ImPlot_SetupAxes(Encoding.UTF8.GetBytes(xLabel), Encoding.UTF8.GetBytes(yLabel), xFlags, yFlags);
         }
 
         /// <summary>
-        ///     Setup the axes limits using the specified x min
+        ///     Configures both X and Y axis limits for the next plot (applied once by default).
         /// </summary>
-        /// <param name="xMin">The min</param>
-        /// <param name="xMax">The max</param>
-        /// <param name="yMin">The min</param>
-        /// <param name="yMax">The max</param>
+        /// <param name="xMin">Minimum value for the X axis</param>
+        /// <param name="xMax">Maximum value for the X axis</param>
+        /// <param name="yMin">Minimum value for the Y axis</param>
+        /// <param name="yMax">Maximum value for the Y axis</param>
         public static void SetupAxesLimits(double xMin, double xMax, double yMin, double yMax)
         {
             ImPlotCond cond = ImPlotCond.Once;
@@ -996,22 +996,22 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Setup the axes limits using the specified x min
+        ///     Configures both X and Y axis limits with a specified condition.
         /// </summary>
-        /// <param name="xMin">The min</param>
-        /// <param name="xMax">The max</param>
-        /// <param name="yMin">The min</param>
-        /// <param name="yMax">The max</param>
-        /// <param name="cond">The cond</param>
+        /// <param name="xMin">Minimum value for the X axis</param>
+        /// <param name="xMax">Maximum value for the X axis</param>
+        /// <param name="yMin">Minimum value for the Y axis</param>
+        /// <param name="yMax">Maximum value for the Y axis</param>
+        /// <param name="cond">Condition under which the limits are applied</param>
         public static void SetupAxesLimits(double xMin, double xMax, double yMin, double yMax, ImPlotCond cond)
         {
             ImPlotNative.ImPlot_SetupAxesLimits(xMin, xMax, yMin, yMax, cond);
         }
 
         /// <summary>
-        ///     Setup the axis using the specified axis
+        ///     Configures an axis with default settings and no label.
         /// </summary>
-        /// <param name="axis">The axis</param>
+        /// <param name="axis">The axis to configure</param>
         public static void SetupAxis(ImAxis axis)
         {
             ImPlotAxisFlags flags = 0;
@@ -1019,63 +1019,63 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Setup the axis using the specified axis
+        ///     Configures an axis with a label.
         /// </summary>
-        /// <param name="axis">The axis</param>
-        /// <param name="label">The display label for the UI element</param>
+        /// <param name="axis">The axis to configure</param>
+        /// <param name="label">Label text for the axis</param>
         public static void SetupAxis(ImAxis axis, string label)
         {
             ImPlotNative.ImPlot_SetupAxis(axis, Encoding.UTF8.GetBytes(label), 0);
         }
 
         /// <summary>
-        ///     Setup the axis using the specified axis
+        ///     Configures an axis with a label and appearance flags.
         /// </summary>
-        /// <param name="axis">The axis</param>
-        /// <param name="label">The display label for the UI element</param>
-        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="axis">The axis to configure</param>
+        /// <param name="label">Label text for the axis</param>
+        /// <param name="flags">Flags controlling the axis appearance and behaviour</param>
         public static void SetupAxis(ImAxis axis, string label, ImPlotAxisFlags flags)
         {
             ImPlotNative.ImPlot_SetupAxis(axis, Encoding.UTF8.GetBytes(label), flags);
         }
 
         /// <summary>
-        ///     Setup the axis format using the specified axis
+        ///     Sets the axis tick label format using a printf-style format string.
         /// </summary>
-        /// <param name="axis">The axis</param>
-        /// <param name="fmt">The fmt</param>
+        /// <param name="axis">The axis to format</param>
+        /// <param name="fmt">Printf-style format string for tick labels</param>
         public static void SetupAxisFormat(ImAxis axis, string fmt)
         {
             ImPlotNative.ImPlot_SetupAxisFormat_Str(axis, Encoding.UTF8.GetBytes(fmt));
         }
 
         /// <summary>
-        ///     Setup the axis format using the specified axis
+        ///     Sets the axis tick label format using a custom formatter callback.
         /// </summary>
-        /// <param name="axis">The axis</param>
-        /// <param name="formatter">The formatter</param>
+        /// <param name="axis">The axis to format</param>
+        /// <param name="formatter">Pointer to a custom formatter function</param>
         public static void SetupAxisFormat(ImAxis axis, IntPtr formatter)
         {
             ImPlotNative.ImPlot_SetupAxisFormat_PlotFormatter(axis, formatter, IntPtr.Zero);
         }
 
         /// <summary>
-        ///     Setup the axis format using the specified axis
+        ///     Sets the axis tick label format using a custom formatter callback with user data.
         /// </summary>
-        /// <param name="axis">The axis</param>
-        /// <param name="formatter">The formatter</param>
-        /// <param name="data">The data buffer content</param>
+        /// <param name="axis">The axis to format</param>
+        /// <param name="formatter">Pointer to a custom formatter function</param>
+        /// <param name="data">User data pointer passed to the formatter callback</param>
         public static void SetupAxisFormat(ImAxis axis, IntPtr formatter, IntPtr data)
         {
             ImPlotNative.ImPlot_SetupAxisFormat_PlotFormatter(axis, formatter, data);
         }
 
         /// <summary>
-        ///     Setup the axis limits using the specified axis
+        ///     Configures a single axis range (applied once by default).
         /// </summary>
-        /// <param name="axis">The axis</param>
-        /// <param name="vMin">The minimum value range</param>
-        /// <param name="vMax">The maximum value range</param>
+        /// <param name="axis">The axis to constrain</param>
+        /// <param name="vMin">Minimum value for the axis</param>
+        /// <param name="vMax">Maximum value for the axis</param>
         public static void SetupAxisLimits(ImAxis axis, double vMin, double vMax)
         {
             ImPlotCond cond = ImPlotCond.Once;
@@ -1083,160 +1083,160 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Setup the axis limits using the specified axis
+        ///     Configures a single axis range with a specified condition.
         /// </summary>
-        /// <param name="axis">The axis</param>
-        /// <param name="vMin">The minimum value range</param>
-        /// <param name="vMax">The maximum value range</param>
-        /// <param name="cond">The cond</param>
+        /// <param name="axis">The axis to constrain</param>
+        /// <param name="vMin">Minimum value for the axis</param>
+        /// <param name="vMax">Maximum value for the axis</param>
+        /// <param name="cond">Condition under which the limits are applied</param>
         public static void SetupAxisLimits(ImAxis axis, double vMin, double vMax, ImPlotCond cond)
         {
             ImPlotNative.ImPlot_SetupAxisLimits(axis, vMin, vMax, cond);
         }
 
         /// <summary>
-        ///     Setup the axis limits constraints using the specified axis
+        ///     Sets hard limits on the range of an axis that the user cannot zoom beyond.
         /// </summary>
-        /// <param name="axis">The axis</param>
-        /// <param name="vMin">The minimum value range</param>
-        /// <param name="vMax">The maximum value range</param>
+        /// <param name="axis">The axis to constrain</param>
+        /// <param name="vMin">Minimum allowed value</param>
+        /// <param name="vMax">Maximum allowed value</param>
         public static void SetupAxisLimitsConstraints(ImAxis axis, double vMin, double vMax)
         {
             ImPlotNative.ImPlot_SetupAxisLimitsConstraints(axis, vMin, vMax);
         }
 
         /// <summary>
-        ///     Setup the axis links using the specified axis
+        ///     Links an axis range to external variables for two-way synchronization.
         /// </summary>
-        /// <param name="axis">The axis</param>
-        /// <param name="linkMin">The link min</param>
-        /// <param name="linkMax">The link max</param>
+        /// <param name="axis">The axis to link</param>
+        /// <param name="linkMin">Reference to the external minimum value</param>
+        /// <param name="linkMax">Reference to the external maximum value</param>
         public static void SetupAxisLinks(ImAxis axis, ref double linkMin, ref double linkMax)
         {
             ImPlotNative.ImPlot_SetupAxisLinks(axis, linkMin, linkMax);
         }
 
         /// <summary>
-        ///     Setup the axis scale using the specified axis
+        ///     Sets the scaling type for an axis (linear, log, time, etc.).
         /// </summary>
-        /// <param name="axis">The axis</param>
-        /// <param name="scale">The scale</param>
+        /// <param name="axis">The axis to configure</param>
+        /// <param name="scale">The scaling mode to apply</param>
         public static void SetupAxisScale(ImAxis axis, ImPlotScale scale)
         {
             ImPlotNative.ImPlot_SetupAxisScale_PlotScale(axis, scale);
         }
 
         /// <summary>
-        ///     Setup the axis scale using the specified axis
+        ///     Sets a custom transform for an axis via forward/inverse callbacks.
         /// </summary>
-        /// <param name="axis">The axis</param>
-        /// <param name="forward">The forward</param>
-        /// <param name="inverse">The inverse</param>
+        /// <param name="axis">The axis to configure</param>
+        /// <param name="forward">Pointer to the forward transform function</param>
+        /// <param name="inverse">Pointer to the inverse transform function</param>
         public static void SetupAxisScale(ImAxis axis, IntPtr forward, IntPtr inverse)
         {
             ImPlotNative.ImPlot_SetupAxisScale_PlotTransform(axis, forward, inverse, IntPtr.Zero);
         }
 
         /// <summary>
-        ///     Setup the axis scale using the specified axis
+        ///     Sets a custom transform for an axis with user data.
         /// </summary>
-        /// <param name="axis">The axis</param>
-        /// <param name="forward">The forward</param>
-        /// <param name="inverse">The inverse</param>
-        /// <param name="data">The data buffer content</param>
+        /// <param name="axis">The axis to configure</param>
+        /// <param name="forward">Pointer to the forward transform function</param>
+        /// <param name="inverse">Pointer to the inverse transform function</param>
+        /// <param name="data">User data pointer passed to the transform functions</param>
         public static void SetupAxisScale(ImAxis axis, IntPtr forward, IntPtr inverse, IntPtr data)
         {
             ImPlotNative.ImPlot_SetupAxisScale_PlotTransform(axis, forward, inverse, data);
         }
 
         /// <summary>
-        ///     Setup the axis ticks using the specified axis
+        ///     Sets custom tick positions for an axis using an array of values.
         /// </summary>
-        /// <param name="axis">The axis</param>
-        /// <param name="values">The values</param>
-        /// <param name="nTicks">The ticks</param>
+        /// <param name="axis">The axis to configure</param>
+        /// <param name="values">Array of tick position values</param>
+        /// <param name="nTicks">Number of ticks to set</param>
         public static void SetupAxisTicks(ImAxis axis, double[] values, int nTicks)
         {
             ImPlotNative.ImPlot_SetupAxisTicks_doublePtr(axis, values, nTicks, null, 0);
         }
 
         /// <summary>
-        ///     Setup the axis ticks using the specified axis
+        ///     Sets custom tick positions and labels for an axis.
         /// </summary>
-        /// <param name="axis">The axis</param>
-        /// <param name="values">The values</param>
-        /// <param name="nTicks">The ticks</param>
-        /// <param name="labels">The labels</param>
+        /// <param name="axis">The axis to configure</param>
+        /// <param name="values">Array of tick position values</param>
+        /// <param name="nTicks">Number of ticks to set</param>
+        /// <param name="labels">Array of label strings for each tick</param>
         public static void SetupAxisTicks(ImAxis axis, double[] values, int nTicks, string[] labels)
         {
             ImPlotNative.ImPlot_SetupAxisTicks_doublePtr(axis, values, nTicks, null, 0);
         }
 
         /// <summary>
-        ///     Setup the axis ticks using the specified axis
+        ///     Sets custom tick positions and labels with an option to keep default ticks.
         /// </summary>
-        /// <param name="axis">The axis</param>
-        /// <param name="values">The values</param>
-        /// <param name="nTicks">The ticks</param>
-        /// <param name="labels">The labels</param>
-        /// <param name="keepDefault">The keep default</param>
+        /// <param name="axis">The axis to configure</param>
+        /// <param name="values">Array of tick position values</param>
+        /// <param name="nTicks">Number of ticks to set</param>
+        /// <param name="labels">Array of label strings for each tick</param>
+        /// <param name="keepDefault">Whether to keep the default ticks as well</param>
         public static void SetupAxisTicks(ImAxis axis, double[] values, int nTicks, string[] labels, bool keepDefault)
         {
             ImPlotNative.ImPlot_SetupAxisTicks_doublePtr(axis, values, nTicks, null, 0);
         }
 
         /// <summary>
-        ///     Setup the axis ticks using the specified axis
+        ///     Sets evenly-spaced ticks between a min and max value.
         /// </summary>
-        /// <param name="axis">The axis</param>
-        /// <param name="vMin">The minimum value range</param>
-        /// <param name="vMax">The maximum value range</param>
-        /// <param name="nTicks">The ticks</param>
+        /// <param name="axis">The axis to configure</param>
+        /// <param name="vMin">Start value for the tick range</param>
+        /// <param name="vMax">End value for the tick range</param>
+        /// <param name="nTicks">Number of evenly-spaced ticks to create</param>
         public static void SetupAxisTicks(ImAxis axis, double vMin, double vMax, int nTicks)
         {
             ImPlotNative.ImPlot_SetupAxisTicks_double(axis, vMin, vMax, nTicks, Array.Empty<byte[]>(), 0);
         }
 
         /// <summary>
-        ///     Setup the axis ticks using the specified axis
+        ///     Sets evenly-spaced ticks with custom labels.
         /// </summary>
-        /// <param name="axis">The axis</param>
-        /// <param name="vMin">The minimum value range</param>
-        /// <param name="vMax">The maximum value range</param>
-        /// <param name="nTicks">The ticks</param>
-        /// <param name="labels">The labels</param>
+        /// <param name="axis">The axis to configure</param>
+        /// <param name="vMin">Start value for the tick range</param>
+        /// <param name="vMax">End value for the tick range</param>
+        /// <param name="nTicks">Number of evenly-spaced ticks to create</param>
+        /// <param name="labels">Array of label strings for each tick</param>
         public static void SetupAxisTicks(ImAxis axis, double vMin, double vMax, int nTicks, string[] labels)
         {
             ImPlotNative.ImPlot_SetupAxisTicks_double(axis, vMin, vMax, nTicks, Array.Empty<byte[]>(), 0);
         }
 
         /// <summary>
-        ///     Setup the axis ticks using the specified axis
+        ///     Sets evenly-spaced ticks with custom labels and a keep-default option.
         /// </summary>
-        /// <param name="axis">The axis</param>
-        /// <param name="vMin">The minimum value range</param>
-        /// <param name="vMax">The maximum value range</param>
-        /// <param name="nTicks">The ticks</param>
-        /// <param name="labels">The labels</param>
-        /// <param name="keepDefault">The keep default</param>
+        /// <param name="axis">The axis to configure</param>
+        /// <param name="vMin">Start value for the tick range</param>
+        /// <param name="vMax">End value for the tick range</param>
+        /// <param name="nTicks">Number of evenly-spaced ticks to create</param>
+        /// <param name="labels">Array of label strings for each tick</param>
+        /// <param name="keepDefault">Whether to keep the default ticks as well</param>
         public static void SetupAxisTicks(ImAxis axis, double vMin, double vMax, int nTicks, string[] labels, bool keepDefault)
         {
             ImPlotNative.ImPlot_SetupAxisTicks_double(axis, vMin, vMax, nTicks, Array.Empty<byte[]>(), 0);
         }
 
         /// <summary>
-        ///     Setup the axis zoom constraints using the specified axis
+        ///     Constrains the zoom range for an axis.
         /// </summary>
-        /// <param name="axis">The axis</param>
-        /// <param name="zMin">The min</param>
-        /// <param name="zMax">The max</param>
+        /// <param name="axis">The axis to constrain</param>
+        /// <param name="zMin">Minimum allowed zoom level (axis span)</param>
+        /// <param name="zMax">Maximum allowed zoom level (axis span)</param>
         public static void SetupAxisZoomConstraints(ImAxis axis, double zMin, double zMax)
         {
             ImPlotNative.ImPlot_SetupAxisZoomConstraints(axis, zMin, zMax);
         }
 
         /// <summary>
-        ///     Setup the finish
+        ///     Finalises the plot configuration after all Setup* calls.
         /// </summary>
         public static void SetupFinish()
         {
@@ -1244,9 +1244,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Setup the legend using the specified location
+        ///     Configures the legend location with default flags.
         /// </summary>
-        /// <param name="location">The location</param>
+        /// <param name="location">Anchor location for the legend within the plot</param>
         public static void SetupLegend(ImPlotLocation location)
         {
             ImPlotLegendFlags flags = 0;
@@ -1254,19 +1254,19 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Setup the legend using the specified location
+        ///     Configures the legend location and appearance flags.
         /// </summary>
-        /// <param name="location">The location</param>
-        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="location">Anchor location for the legend within the plot</param>
+        /// <param name="flags">Combination of ImPlotLegendFlags controlling legend appearance</param>
         public static void SetupLegend(ImPlotLocation location, ImPlotLegendFlags flags)
         {
             ImPlotNative.ImPlot_SetupLegend(location, flags);
         }
 
         /// <summary>
-        ///     Setup the mouse text using the specified location
+        ///     Configures the mouse position tooltip location.
         /// </summary>
-        /// <param name="location">The location</param>
+        /// <param name="location">Anchor location for the mouse tooltip</param>
         public static void SetupMouseText(ImPlotLocation location)
         {
             ImPlotMouseTextFlags flags = 0;
@@ -1274,20 +1274,20 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Setup the mouse text using the specified location
+        ///     Configures the mouse position tooltip location and flags.
         /// </summary>
-        /// <param name="location">The location</param>
-        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="location">Anchor location for the mouse tooltip</param>
+        /// <param name="flags">Combination of ImPlotMouseTextFlags controlling tooltip behaviour</param>
         public static void SetupMouseText(ImPlotLocation location, ImPlotMouseTextFlags flags)
         {
             ImPlotNative.ImPlot_SetupMouseText(location, flags);
         }
 
         /// <summary>
-        ///     Describes whether show colormap selector
+        ///     Shows an interactive colormap selector widget.
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">Label for the colormap selector</param>
+        /// <returns>true if the colormap was changed</returns>
         public static bool ShowColormapSelector(string label)
         {
             byte ret = ImPlotNative.ImPlot_ShowColormapSelector(Encoding.UTF8.GetBytes(label));
@@ -1295,7 +1295,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Shows the demo window
+        ///     Opens the ImPlot demo window.
         /// </summary>
         public static void ShowDemoWindow()
         {
@@ -1303,9 +1303,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Shows the demo window using the specified p open
+        ///     Opens the ImPlot demo window with an open/close state.
         /// </summary>
-        /// <param name="pOpen">Pointer to a bool indicating if the element is open</param>
+        /// <param name="pOpen">Reference to a bool tracking whether the demo window is open</param>
         public static void ShowDemoWindow(ref bool pOpen)
         {
             byte nativePOpenVal = pOpen ? (byte) 1 : (byte) 0;
@@ -1314,10 +1314,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Describes whether show input map selector
+        ///     Shows an interactive input map selector widget.
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">Label for the input map selector</param>
+        /// <returns>true if the input map was changed</returns>
         public static bool ShowInputMapSelector(string label)
         {
             byte ret = ImPlotNative.ImPlot_ShowInputMapSelector(Encoding.UTF8.GetBytes(label));
@@ -1325,7 +1325,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Shows the metrics window
+        ///     Opens the ImPlot metrics (profiling) window.
         /// </summary>
         public static void ShowMetricsWindow()
         {
@@ -1333,9 +1333,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Shows the metrics window using the specified p popen
+        ///     Opens the ImPlot metrics window with an open/close state.
         /// </summary>
-        /// <param name="pPopen">The popen</param>
+        /// <param name="pPopen">Reference to a bool tracking whether the metrics window is open</param>
         public static void ShowMetricsWindow(ref bool pPopen)
         {
             byte nativePPopenVal = pPopen ? (byte) 1 : (byte) 0;
@@ -1344,7 +1344,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Shows the style editor
+        ///     Opens the ImPlot style editor widget with default style values.
         /// </summary>
         public static void ShowStyleEditor()
         {
@@ -1352,7 +1352,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Shows the style editor using the specified ref
+        ///     Opens the ImPlot style editor widget.
         /// </summary>
         public static void ShowStyleEditor(ImPlotStyle imPlotStyle)
         {
@@ -1360,10 +1360,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Describes whether show style selector
+        ///     Shows an interactive style preset selector widget.
         /// </summary>
-        /// <param name="label">The display label for the UI element</param>
-        /// <returns>true if the operation succeeds; false otherwise</returns>
+        /// <param name="label">Label for the style selector</param>
+        /// <returns>true if the style was changed</returns>
         public static bool ShowStyleSelector(string label)
         {
             byte ret = ImPlotNative.ImPlot_ShowStyleSelector(Encoding.UTF8.GetBytes(label));
@@ -1371,7 +1371,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Shows the user guide
+        ///     Opens the ImPlot user guide.
         /// </summary>
         public static void ShowUserGuide()
         {
@@ -1379,7 +1379,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Styles the colors auto
+        ///     Applies the default ImPlot color theme (auto).
         /// </summary>
         public static void StyleColorsAuto()
         {
@@ -1387,16 +1387,16 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Styles the colors auto using the specified dst
+        ///     Applies the default ImPlot color theme to the specified style.
         /// </summary>
-        /// <param name="dst">The dst</param>
+        /// <param name="dst">Style struct to populate with auto theme colors</param>
         public static void StyleColorsAuto(ImPlotStyle dst)
         {
             ImPlotNative.ImPlot_StyleColorsAuto(dst);
         }
 
         /// <summary>
-        ///     Styles the colors classic
+        ///     Applies the classic ImPlot color theme.
         /// </summary>
         public static void StyleColorsClassic()
         {
@@ -1404,16 +1404,16 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Styles the colors classic using the specified dst
+        ///     Applies the classic ImPlot color theme to the specified style.
         /// </summary>
-        /// <param name="dst">The dst</param>
+        /// <param name="dst">Style struct to populate with classic theme colors</param>
         public static void StyleColorsClassic(ImPlotStyle dst)
         {
             ImPlotNative.ImPlot_StyleColorsClassic(dst);
         }
 
         /// <summary>
-        ///     Styles the colors dark
+        ///     Applies the dark ImPlot color theme.
         /// </summary>
         public static void StyleColorsDark()
         {
@@ -1421,16 +1421,16 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Styles the colors dark using the specified dst
+        ///     Applies the dark ImPlot color theme to the specified style.
         /// </summary>
-        /// <param name="dst">The dst</param>
+        /// <param name="dst">Style struct to populate with dark theme colors</param>
         public static void StyleColorsDark(ImPlotStyle dst)
         {
             ImPlotNative.ImPlot_StyleColorsDark(dst);
         }
 
         /// <summary>
-        ///     Styles the colors light
+        ///     Applies the light ImPlot color theme.
         /// </summary>
         public static void StyleColorsLight()
         {
@@ -1438,19 +1438,19 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Styles the colors light using the specified dst
+        ///     Applies the light ImPlot color theme to the specified style.
         /// </summary>
-        /// <param name="dst">The dst</param>
+        /// <param name="dst">Style struct to populate with light theme colors</param>
         public static void StyleColorsLight(ImPlotStyle dst)
         {
             ImPlotNative.ImPlot_StyleColorsLight(dst);
         }
 
         /// <summary>
-        ///     Tags the x using the specified x
+        ///     Draws a vertical tag (annotation line) at the specified X position.
         /// </summary>
-        /// <param name="x">The x-coordinate</param>
-        /// <param name="col">The col</param>
+        /// <param name="x">X-coordinate in plot space for the tag</param>
+        /// <param name="col">Color of the tag</param>
         public static void TagX(double x, Vector4F col)
         {
             byte round = 0;
@@ -1458,11 +1458,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Tags the x using the specified x
+        ///     Draws a vertical tag with rounded endpoints.
         /// </summary>
-        /// <param name="x">The x-coordinate</param>
-        /// <param name="col">The col</param>
-        /// <param name="round">The round</param>
+        /// <param name="x">X-coordinate in plot space for the tag</param>
+        /// <param name="col">Color of the tag</param>
+        /// <param name="round">Whether to draw rounded endpoints on the tag</param>
         public static void TagX(double x, Vector4F col, bool round)
         {
             byte nativeRound = round ? (byte) 1 : (byte) 0;
@@ -1470,21 +1470,21 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Tags the x using the specified x
+        ///     Draws a vertical tag with custom label text.
         /// </summary>
-        /// <param name="x">The x-coordinate</param>
-        /// <param name="col">The col</param>
-        /// <param name="fmt">The fmt</param>
+        /// <param name="x">X-coordinate in plot space for the tag</param>
+        /// <param name="col">Color of the tag</param>
+        /// <param name="fmt">Format string for the tag label</param>
         public static void TagX(double x, Vector4F col, string fmt)
         {
             ImPlotNative.ImPlot_TagX_Str(x, col, Encoding.UTF8.GetBytes(fmt));
         }
 
         /// <summary>
-        ///     Tags the y using the specified y
+        ///     Draws a horizontal tag (annotation line) at the specified Y position.
         /// </summary>
-        /// <param name="y">The y-coordinate</param>
-        /// <param name="col">The col</param>
+        /// <param name="y">Y-coordinate in plot space for the tag</param>
+        /// <param name="col">Color of the tag</param>
         public static void TagY(double y, Vector4F col)
         {
             byte round = 0;
@@ -1492,11 +1492,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Tags the y using the specified y
+        ///     Draws a horizontal tag with rounded endpoints.
         /// </summary>
-        /// <param name="y">The y-coordinate</param>
-        /// <param name="col">The col</param>
-        /// <param name="round">The round</param>
+        /// <param name="y">Y-coordinate in plot space for the tag</param>
+        /// <param name="col">Color of the tag</param>
+        /// <param name="round">Whether to draw rounded endpoints on the tag</param>
         public static void TagY(double y, Vector4F col, bool round)
         {
             byte nativeRound = round ? (byte) 1 : (byte) 0;
@@ -1504,11 +1504,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Tags the y using the specified y
+        ///     Draws a horizontal tag with custom label text.
         /// </summary>
-        /// <param name="y">The y-coordinate</param>
-        /// <param name="col">The col</param>
-        /// <param name="fmt">The fmt</param>
+        /// <param name="y">Y-coordinate in plot space for the tag</param>
+        /// <param name="col">Color of the tag</param>
+        /// <param name="fmt">Format string for the tag label</param>
         public static void TagY(double y, Vector4F col, string fmt)
         {
             ImPlotNative.ImPlot_TagY_Str(y, col, Encoding.UTF8.GetBytes(fmt));

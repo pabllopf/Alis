@@ -75,49 +75,49 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the clip rect
         /// </summary>
-        /// <returns>The vector</returns>
+        /// <returns>The resulting vector value</returns>
         public Vector4F GetClipRect() => ClipRect;
 
         /// <summary>
         ///     Gets the texture id
         /// </summary>
-        /// <returns>The int ptr</returns>
+        /// <returns>The native pointer to the structure</returns>
         public IntPtr GetTextureId() => TextureId;
 
         /// <summary>
         ///     Gets the vtx offset
         /// </summary>
-        /// <returns>the unsigned integer result</returns>
+        /// <returns>The unsigned integer result</returns>
         public uint GetVtxOffset() => VtxOffset;
 
         /// <summary>
         ///     Gets the idx offset
         /// </summary>
-        /// <returns>the unsigned integer result</returns>
+        /// <returns>The unsigned integer result</returns>
         public uint GetIdxOffset() => IdxOffset;
 
         /// <summary>
         ///     Gets the elem count
         /// </summary>
-        /// <returns>the unsigned integer result</returns>
+        /// <returns>The unsigned integer result</returns>
         public uint GetElemCount() => ElemCount;
 
         /// <summary>
         ///     Gets the user callback
         /// </summary>
-        /// <returns>The int ptr</returns>
+        /// <returns>The native pointer to the structure</returns>
         public IntPtr GetUserCallback() => UserCallback;
 
         /// <summary>
         ///     Gets the user callback data
         /// </summary>
-        /// <returns>The int ptr</returns>
+        /// <returns>The native pointer to the structure</returns>
         public IntPtr GetUserCallbackData() => UserCallbackData;
 
         /// <summary>
         ///     Sets the user callback data using the specified value
         /// </summary>
-        /// <param name="value">The value</param>
+        /// <param name="value">The value to assign to the user callback data</param>
         public void SetUserCallbackData(IntPtr value) => UserCallbackData = value;
 
         /// <summary>

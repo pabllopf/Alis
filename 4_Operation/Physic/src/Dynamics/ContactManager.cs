@@ -55,12 +55,12 @@ namespace Alis.Core.Physic.Dynamics
         public readonly int CollideMultithreadThreshold = int.MaxValue;
 
         /// <summary>
-        ///     The contact list
+        ///     The circular doubly linked list of all active contacts in the world.
         /// </summary>
         public readonly ContactListHead ContactList;
 
         /// <summary>
-        ///     The contact pool list
+        ///     The pool of recycled contact objects, stored as a linked list.
         /// </summary>
         internal readonly ContactListHead ContactPoolList;
 
@@ -133,7 +133,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        ///     Gets or sets the value of the contact count
+        ///     The number of active contacts currently in the world.
         /// </summary>
         public int ContactCount { get; private set; }
 

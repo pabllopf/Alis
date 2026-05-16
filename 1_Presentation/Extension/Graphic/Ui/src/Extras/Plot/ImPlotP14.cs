@@ -39,12 +39,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="scale">The scale</param>
-        /// <param name="start">The start</param>
+        /// <param name="start">The starting value/index</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         public static void PlotStems(string labelId, byte[] values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset)
@@ -55,12 +55,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="scale">The scale</param>
-        /// <param name="start">The start</param>
+        /// <param name="start">The starting value/index</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -72,8 +72,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         public static void PlotStems(string labelId, short[] values, int count)
         {
@@ -83,10 +83,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         public static void PlotStems(string labelId, short[] values, int count, double @ref)
         {
             ImPlotNative.ImPlot_PlotStems_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, 1, 0, 0, 0, 0);
@@ -95,10 +95,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="scale">The scale</param>
         public static void PlotStems(string labelId, short[] values, int count, double @ref, double scale)
         {
@@ -108,12 +108,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="scale">The scale</param>
-        /// <param name="start">The start</param>
+        /// <param name="start">The starting value/index</param>
         public static void PlotStems(string labelId, short[] values, int count, double @ref, double scale, double start)
         {
             ImPlotNative.ImPlot_PlotStems_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, 0, 0, 0);
@@ -122,12 +122,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="scale">The scale</param>
-        /// <param name="start">The start</param>
+        /// <param name="start">The starting value/index</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotStems(string labelId, short[] values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags)
         {
@@ -137,12 +137,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="scale">The scale</param>
-        /// <param name="start">The start</param>
+        /// <param name="start">The starting value/index</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         public static void PlotStems(string labelId, short[] values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset)
@@ -153,12 +153,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="scale">The scale</param>
-        /// <param name="start">The start</param>
+        /// <param name="start">The starting value/index</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -170,8 +170,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         public static void PlotStems(string labelId, ushort[] values, int count)
         {
@@ -181,10 +181,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         public static void PlotStems(string labelId, ushort[] values, int count, double @ref)
         {
             ImPlotNative.ImPlot_PlotStems_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, 1, 0, 0, 0, 0);
@@ -193,10 +193,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="scale">The scale</param>
         public static void PlotStems(string labelId, ushort[] values, int count, double @ref, double scale)
         {
@@ -206,12 +206,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="scale">The scale</param>
-        /// <param name="start">The start</param>
+        /// <param name="start">The starting value/index</param>
         public static void PlotStems(string labelId, ushort[] values, int count, double @ref, double scale, double start)
         {
             ImPlotNative.ImPlot_PlotStems_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, 0, 0, 0);
@@ -220,12 +220,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="scale">The scale</param>
-        /// <param name="start">The start</param>
+        /// <param name="start">The starting value/index</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotStems(string labelId, ushort[] values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags)
         {
@@ -235,12 +235,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="scale">The scale</param>
-        /// <param name="start">The start</param>
+        /// <param name="start">The starting value/index</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         public static void PlotStems(string labelId, ushort[] values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset)
@@ -251,12 +251,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="scale">The scale</param>
-        /// <param name="start">The start</param>
+        /// <param name="start">The starting value/index</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -268,8 +268,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         public static void PlotStems(string labelId, int[] values, int count)
         {
@@ -279,10 +279,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         public static void PlotStems(string labelId, int[] values, int count, double @ref)
         {
             ImPlotNative.ImPlot_PlotStems_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, 1, 0, 0, 0, 0);
@@ -291,10 +291,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="scale">The scale</param>
         public static void PlotStems(string labelId, int[] values, int count, double @ref, double scale)
         {
@@ -304,12 +304,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="scale">The scale</param>
-        /// <param name="start">The start</param>
+        /// <param name="start">The starting value/index</param>
         public static void PlotStems(string labelId, int[] values, int count, double @ref, double scale, double start)
         {
             ImPlotNative.ImPlot_PlotStems_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, 0, 0, 0);
@@ -318,12 +318,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="scale">The scale</param>
-        /// <param name="start">The start</param>
+        /// <param name="start">The starting value/index</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotStems(string labelId, int[] values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags)
         {
@@ -333,12 +333,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="scale">The scale</param>
-        /// <param name="start">The start</param>
+        /// <param name="start">The starting value/index</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         public static void PlotStems(string labelId, int[] values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset)
@@ -349,12 +349,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="scale">The scale</param>
-        /// <param name="start">The start</param>
+        /// <param name="start">The starting value/index</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -366,8 +366,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         public static void PlotStems(string labelId, uint[] values, int count)
         {
@@ -377,10 +377,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         public static void PlotStems(string labelId, uint[] values, int count, double @ref)
         {
             ImPlotNative.ImPlot_PlotStems_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, 1, 0, 0, 0, 0);
@@ -389,10 +389,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="scale">The scale</param>
         public static void PlotStems(string labelId, uint[] values, int count, double @ref, double scale)
         {
@@ -402,12 +402,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="scale">The scale</param>
-        /// <param name="start">The start</param>
+        /// <param name="start">The starting value/index</param>
         public static void PlotStems(string labelId, uint[] values, int count, double @ref, double scale, double start)
         {
             ImPlotNative.ImPlot_PlotStems_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, 0, 0, 0);
@@ -416,12 +416,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="scale">The scale</param>
-        /// <param name="start">The start</param>
+        /// <param name="start">The starting value/index</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotStems(string labelId, uint[] values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags)
         {
@@ -431,12 +431,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="scale">The scale</param>
-        /// <param name="start">The start</param>
+        /// <param name="start">The starting value/index</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         public static void PlotStems(string labelId, uint[] values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset)
@@ -447,12 +447,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="scale">The scale</param>
-        /// <param name="start">The start</param>
+        /// <param name="start">The starting value/index</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -464,8 +464,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         public static void PlotStems(string labelId, long[] values, int count)
         {
@@ -475,10 +475,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         public static void PlotStems(string labelId, long[] values, int count, double @ref)
         {
             ImPlotNative.ImPlot_PlotStems_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, 1, 0, 0, 0, 0);
@@ -487,10 +487,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="scale">The scale</param>
         public static void PlotStems(string labelId, long[] values, int count, double @ref, double scale)
         {
@@ -500,12 +500,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="scale">The scale</param>
-        /// <param name="start">The start</param>
+        /// <param name="start">The starting value/index</param>
         public static void PlotStems(string labelId, long[] values, int count, double @ref, double scale, double start)
         {
             ImPlotNative.ImPlot_PlotStems_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, 0, 0, 0);
@@ -514,12 +514,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="scale">The scale</param>
-        /// <param name="start">The start</param>
+        /// <param name="start">The starting value/index</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotStems(string labelId, long[] values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags)
         {
@@ -529,12 +529,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="scale">The scale</param>
-        /// <param name="start">The start</param>
+        /// <param name="start">The starting value/index</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         public static void PlotStems(string labelId, long[] values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset)
@@ -545,12 +545,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="scale">The scale</param>
-        /// <param name="start">The start</param>
+        /// <param name="start">The starting value/index</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -562,8 +562,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         public static void PlotStems(string labelId, ulong[] values, int count)
         {
@@ -573,10 +573,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         public static void PlotStems(string labelId, ulong[] values, int count, double @ref)
         {
             ImPlotNative.ImPlot_PlotStems_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, 1, 0, 0, 0, 0);
@@ -585,10 +585,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="scale">The scale</param>
         public static void PlotStems(string labelId, ulong[] values, int count, double @ref, double scale)
         {
@@ -598,12 +598,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="scale">The scale</param>
-        /// <param name="start">The start</param>
+        /// <param name="start">The starting value/index</param>
         public static void PlotStems(string labelId, ulong[] values, int count, double @ref, double scale, double start)
         {
             ImPlotNative.ImPlot_PlotStems_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, @ref, scale, start, 0, 0, 0);
@@ -612,12 +612,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="scale">The scale</param>
-        /// <param name="start">The start</param>
+        /// <param name="start">The starting value/index</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotStems(string labelId, ulong[] values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags)
         {
@@ -627,12 +627,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="scale">The scale</param>
-        /// <param name="start">The start</param>
+        /// <param name="start">The starting value/index</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         public static void PlotStems(string labelId, ulong[] values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset)
@@ -643,12 +643,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="scale">The scale</param>
-        /// <param name="start">The start</param>
+        /// <param name="start">The starting value/index</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -660,11 +660,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         public static void PlotStems(string labelId, ref float xs, ref float ys, int count, double @ref)
         {
             ImPlotNative.ImPlot_PlotStems_FloatPtrFloatPtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, 0, 0, 0);
@@ -673,11 +673,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotStems(string labelId, ref float xs, ref float ys, int count, double @ref, ImPlotStemsFlags flags)
         {
@@ -687,11 +687,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         public static void PlotStems(string labelId, ref float xs, ref float ys, int count, double @ref, ImPlotStemsFlags flags, int offset)
@@ -702,11 +702,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -718,9 +718,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         public static void PlotStems(string labelId, ref double xs, ref double ys, int count)
         {
@@ -730,11 +730,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         public static void PlotStems(string labelId, ref double xs, ref double ys, int count, double @ref)
         {
             ImPlotNative.ImPlot_PlotStems_doublePtrdoublePtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, 0, 0, 0);
@@ -743,11 +743,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotStems(string labelId, ref double xs, ref double ys, int count, double @ref, ImPlotStemsFlags flags)
         {
@@ -757,11 +757,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         public static void PlotStems(string labelId, ref double xs, ref double ys, int count, double @ref, ImPlotStemsFlags flags, int offset)
@@ -772,11 +772,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -788,9 +788,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         public static void PlotStems(string labelId, ref sbyte xs, ref sbyte ys, int count)
         {
@@ -800,11 +800,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         public static void PlotStems(string labelId, ref sbyte xs, ref sbyte ys, int count, double @ref)
         {
             ImPlotNative.ImPlot_PlotStems_S8PtrS8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, 0, 0, 0);
@@ -813,11 +813,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotStems(string labelId, ref sbyte xs, ref sbyte ys, int count, double @ref, ImPlotStemsFlags flags)
         {
@@ -827,11 +827,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         public static void PlotStems(string labelId, ref sbyte xs, ref sbyte ys, int count, double @ref, ImPlotStemsFlags flags, int offset)
@@ -842,11 +842,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -858,9 +858,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         public static void PlotStems(string labelId, ref byte xs, ref byte ys, int count)
         {
@@ -870,11 +870,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         public static void PlotStems(string labelId, ref byte xs, ref byte ys, int count, double @ref)
         {
             ImPlotNative.ImPlot_PlotStems_U8PtrU8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, 0, 0, 0);
@@ -883,11 +883,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotStems(string labelId, ref byte xs, ref byte ys, int count, double @ref, ImPlotStemsFlags flags)
         {
@@ -897,11 +897,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         public static void PlotStems(string labelId, ref byte xs, ref byte ys, int count, double @ref, ImPlotStemsFlags flags, int offset)
@@ -912,11 +912,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -928,9 +928,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         public static void PlotStems(string labelId, ref short xs, ref short ys, int count)
         {
@@ -940,11 +940,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         public static void PlotStems(string labelId, ref short xs, ref short ys, int count, double @ref)
         {
             ImPlotNative.ImPlot_PlotStems_S16PtrS16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, 0, 0, 0);
@@ -953,11 +953,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotStems(string labelId, ref short xs, ref short ys, int count, double @ref, ImPlotStemsFlags flags)
         {
@@ -967,11 +967,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         public static void PlotStems(string labelId, ref short xs, ref short ys, int count, double @ref, ImPlotStemsFlags flags, int offset)
@@ -982,11 +982,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -998,9 +998,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         public static void PlotStems(string labelId, ref ushort xs, ref ushort ys, int count)
         {
@@ -1010,11 +1010,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         public static void PlotStems(string labelId, ref ushort xs, ref ushort ys, int count, double @ref)
         {
             ImPlotNative.ImPlot_PlotStems_U16PtrU16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, 0, 0, 0);

@@ -32,42 +32,42 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     Reference face used for clipping
+    ///     Describes a reference face used for clipping incident edges during manifold generation.
     /// </summary>
     public struct ReferenceFace
     {
         /// <summary>
-        ///     The
+        ///     Vertex indices of the reference edge on the reference polygon.
         /// </summary>
         public int I1, I2;
 
         /// <summary>
-        ///     The
+        ///     World-space vertex positions of the reference edge.
         /// </summary>
         public Vector2F V1, V2;
 
         /// <summary>
-        ///     The normal
+        ///     The outward-facing normal of the reference edge.
         /// </summary>
         public Vector2F Normal;
 
         /// <summary>
-        ///     The side normal
+        ///     The side plane normal for the first side of the extruded reference edge.
         /// </summary>
         public Vector2F SideNormal1;
 
         /// <summary>
-        ///     The side offset
+        ///     The signed distance from the origin to the first side clipping plane.
         /// </summary>
         public float SideOffset1;
 
         /// <summary>
-        ///     The side normal
+        ///     The side plane normal for the second side of the extruded reference edge.
         /// </summary>
         public Vector2F SideNormal2;
 
         /// <summary>
-        ///     The side offset
+        ///     The signed distance from the origin to the second side clipping plane.
         /// </summary>
         public float SideOffset2;
     }

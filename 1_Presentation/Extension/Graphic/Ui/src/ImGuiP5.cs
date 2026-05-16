@@ -34,7 +34,7 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Extension.Graphic.Ui
 {
     /// <summary>
-    ///     The im gui class
+    ///     The ImGui wrapper class providing managed access to native Dear ImGui functionality
     /// </summary>
     public static partial class ImGui
     {
@@ -81,7 +81,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether begin
         /// </summary>
-        /// <param name="name">The name</param>
+        /// <param name="name">The name identifier string</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool Begin(string name)
         {
@@ -94,7 +94,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether begin
         /// </summary>
-        /// <param name="name">The name</param>
+        /// <param name="name">The name identifier string</param>
         /// <param name="pOpen">Pointer to a bool indicating if the element is open</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool Begin(string name, ref bool pOpen)
@@ -106,7 +106,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether begin
         /// </summary>
-        /// <param name="name">The name</param>
+        /// <param name="name">The name identifier string</param>
         /// <param name="pOpen">Pointer to a bool indicating if the element is open</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
@@ -539,7 +539,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether begin popup modal
         /// </summary>
-        /// <param name="name">The name</param>
+        /// <param name="name">The name identifier string</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool BeginPopupModal(string name)
         {
@@ -550,7 +550,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether begin popup modal
         /// </summary>
-        /// <param name="name">The name</param>
+        /// <param name="name">The name identifier string</param>
         /// <param name="pOpen">Pointer to a bool indicating if the element is open</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool BeginPopupModal(string name, ref bool pOpen)
@@ -562,7 +562,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether begin popup modal
         /// </summary>
-        /// <param name="name">The name</param>
+        /// <param name="name">The name identifier string</param>
         /// <param name="pOpen">Pointer to a bool indicating if the element is open</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
@@ -708,7 +708,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Bullets the text using the specified fmt
         /// </summary>
-        /// <param name="fmt">The fmt</param>
+        /// <param name="fmt">The format string</param>
         public static void BulletText(string fmt)
         {
             ImGuiNative.igBulletText(Encoding.UTF8.GetBytes(fmt));
@@ -846,7 +846,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether color button
         /// </summary>
         /// <param name="descId">The description identifier string</param>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool ColorButton(string descId, Vector4F col)
         {
@@ -858,7 +858,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether color button
         /// </summary>
         /// <param name="descId">The description identifier string</param>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool ColorButton(string descId, Vector4F col, ImGuiColorEditFlags flags)
@@ -871,7 +871,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether color button
         /// </summary>
         /// <param name="descId">The description identifier string</param>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="size">The size of the element in pixels</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
@@ -924,7 +924,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Colors the convert u 32 to float 4 using the specified in
         /// </summary>
         /// <param name="in">The in</param>
-        /// <returns>The retval</returns>
+        /// <returns>The return value from the native function</returns>
         public static Vector4F ColorConvertU32ToFloat4(uint @in)
         {
             ImGuiNative.igColorConvertU32ToFloat4(out Vector4F retval, @in);
@@ -935,7 +935,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether color edit 3
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool ColorEdit3(string label, ref Vector3F col)
         {
@@ -948,7 +948,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether color edit 3
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool ColorEdit3(string label, ref Vector3F col, ImGuiColorEditFlags flags)
@@ -961,7 +961,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether color edit 4
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool ColorEdit4(IntPtr label, ref Vector4F col)
         {
@@ -974,7 +974,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether color edit 4
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool ColorEdit4(IntPtr label, ref Vector4F col, ImGuiColorEditFlags flags)
@@ -987,7 +987,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether color picker 3
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool ColorPicker3(string label, ref Vector3F col)
         {
@@ -1000,7 +1000,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether color picker 3
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool ColorPicker3(string label, ref Vector3F col, ImGuiColorEditFlags flags)
@@ -1013,7 +1013,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether color picker 4
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool ColorPicker4(string label, ref Vector4F col)
         {
@@ -1026,7 +1026,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether color picker 4
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool ColorPicker4(string label, ref Vector4F col, ImGuiColorEditFlags flags)
@@ -1039,7 +1039,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether color picker 4
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="refCol">The ref col</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>

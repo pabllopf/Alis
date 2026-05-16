@@ -32,7 +32,8 @@ using Alis.Core.Physic.Dynamics.Contacts;
 namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>
-    ///     This delegate is called when a contact is deleted
+    ///     The end contact delegate
     /// </summary>
+    /// <param name="contact">The contact that has ended.</param>
     public delegate void EndContactDelegate(Contact contact);
 }

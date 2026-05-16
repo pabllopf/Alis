@@ -51,82 +51,82 @@ namespace Alis.Core.Physic.Dynamics
         private const float AngTolSqr = SettingEnv.AngularSleepTolerance * SettingEnv.AngularSleepTolerance;
 
         /// <summary>
-        ///     The contact solver
+        ///     Solver instance for contact constraints within this island.
         /// </summary>
         private readonly ContactSolver _contactSolver = new ContactSolver();
 
         /// <summary>
-        ///     The stopwatch
+        ///     Timer used for diagnostic timing of solver operations.
         /// </summary>
         private readonly Clock _watch = new Clock();
 
         /// <summary>
-        ///     The contact manager
+        ///     Reference to the world's contact manager.
         /// </summary>
         private ContactManager _contactManager;
 
         /// <summary>
-        ///     The contacts
+        ///     Array of contacts belonging to this island.
         /// </summary>
         private Contact[] _contacts;
 
         /// <summary>
-        ///     The joints
+        ///     Array of joints belonging to this island.
         /// </summary>
         private Joint[] _joints;
 
         /// <summary>
-        ///     The bodies
+        ///     Array of bodies belonging to this island.
         /// </summary>
         public Body[] Bodies;
 
         /// <summary>
-        ///     The body capacity
+        ///     The maximum number of bodies that can be stored in this island.
         /// </summary>
         public int BodyCapacity;
 
         /// <summary>
-        ///     The body count
+        ///     The current number of bodies in this island.
         /// </summary>
         public int BodyCount;
 
         /// <summary>
-        ///     The contact capacity
+        ///     The maximum number of contacts that can be stored.
         /// </summary>
         public int ContactCapacity;
 
         /// <summary>
-        ///     The contact count
+        ///     The current number of contacts in this island.
         /// </summary>
         public int ContactCount;
 
         /// <summary>
-        ///     The joint capacity
+        ///     The maximum number of joints that can be stored.
         /// </summary>
         public int JointCapacity;
 
         /// <summary>
-        ///     The joint count
+        ///     The current number of joints in this island.
         /// </summary>
         public int JointCount;
 
         /// <summary>
-        ///     The joint update time
+        ///     Total time spent updating joints in the last solve, for diagnostics.
         /// </summary>
         public TimeSpan JointUpdateTime;
 
         /// <summary>
-        ///     The locks
+        ///     Lock flags for thread synchronization during solving.
         /// </summary>
         internal int[] Locks;
 
         /// <summary>
-        ///     The positions
+        ///     Array of solver position states for each body.
         /// </summary>
         internal SolverPosition[] Positions;
 
         /// <summary>
-        ///     The velocities
+        ///     Array of solver velocity states for each body.
         /// </summary>
         internal SolverVelocity[] Velocities;
 

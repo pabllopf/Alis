@@ -105,12 +105,12 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         public Manifold Manifold;
 
         /// <summary>
-        ///     The toi
+        ///     The time of impact (TOI) value for continuous collision detection.
         /// </summary>
         internal float Toi;
 
         /// <summary>
-        ///     The toi count
+        ///     The number of time-of-impact (TOI) iterations performed.
         /// </summary>
         internal int ToiCount;
 
@@ -127,22 +127,22 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         }
 
         /// <summary>
-        ///     Gets or sets the value of the fixture a
+        ///     The first fixture participating in this contact.
         /// </summary>
         public Fixture FixtureA { get; internal set; }
 
         /// <summary>
-        ///     Gets or sets the value of the fixture b
+        ///     The second fixture participating in this contact.
         /// </summary>
         public Fixture FixtureB { get; internal set; }
 
         /// <summary>
-        ///     Gets or sets the value of the friction
+        ///     The combined friction coefficient of the two touching fixtures.
         /// </summary>
         public float Friction { get; set; }
 
         /// <summary>
-        ///     Gets or sets the value of the restitution
+        ///     The combined restitution (bounciness) coefficient of the two touching fixtures.
         /// </summary>
         public float Restitution { get; set; }
 
@@ -190,17 +190,17 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         public bool IsTouching { get; set; }
 
         /// <summary>
-        ///     Gets or sets the value of the island flag
+        ///     Flag indicating whether this contact belongs to an island in the solver.
         /// </summary>
         internal bool IslandFlag { get; set; }
 
         /// <summary>
-        ///     Gets or sets the value of the toi flag
+        ///     Flag indicating whether this contact has been processed in time-of-impact (TOI) solving.
         /// </summary>
         internal bool ToiFlag { get; set; }
 
         /// <summary>
-        ///     Gets or sets the value of the filter flag
+        ///     Flag indicating whether the filter for this contact has been evaluated.
         /// </summary>
         internal bool FilterFlag { get; set; }
 

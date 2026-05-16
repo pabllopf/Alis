@@ -34,7 +34,7 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Extension.Graphic.Ui
 {
     /// <summary>
-    ///     The im gui class
+    ///     The ImGui wrapper class providing managed access to native Dear ImGui functionality
     /// </summary>
     public static partial class ImGui
     {
@@ -567,8 +567,8 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether drag float range 2
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="vCurrentMin">The current min</param>
-        /// <param name="vCurrentMax">The current max</param>
+        /// <param name="vCurrentMin">The current minimum value pointer</param>
+        /// <param name="vCurrentMax">The current maximum value pointer</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragFloatRange2(string label, ref float vCurrentMin, ref float vCurrentMax)
         {
@@ -581,8 +581,8 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether drag float range 2
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="vCurrentMin">The current min</param>
-        /// <param name="vCurrentMax">The current max</param>
+        /// <param name="vCurrentMin">The current minimum value pointer</param>
+        /// <param name="vCurrentMax">The current maximum value pointer</param>
         /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragFloatRange2(string label, ref float vCurrentMin, ref float vCurrentMax, float vSpeed)
@@ -596,8 +596,8 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether drag float range 2
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="vCurrentMin">The current min</param>
-        /// <param name="vCurrentMax">The current max</param>
+        /// <param name="vCurrentMin">The current minimum value pointer</param>
+        /// <param name="vCurrentMax">The current maximum value pointer</param>
         /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="vMin">The minimum value range</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
@@ -612,8 +612,8 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether drag float range 2
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="vCurrentMin">The current min</param>
-        /// <param name="vCurrentMax">The current max</param>
+        /// <param name="vCurrentMin">The current minimum value pointer</param>
+        /// <param name="vCurrentMax">The current maximum value pointer</param>
         /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="vMin">The minimum value range</param>
         /// <param name="vMax">The maximum value range</param>
@@ -629,8 +629,8 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether drag float range 2
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="vCurrentMin">The current min</param>
-        /// <param name="vCurrentMax">The current max</param>
+        /// <param name="vCurrentMin">The current minimum value pointer</param>
+        /// <param name="vCurrentMax">The current maximum value pointer</param>
         /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="vMin">The minimum value range</param>
         /// <param name="vMax">The maximum value range</param>
@@ -647,8 +647,8 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether drag float range 2
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="vCurrentMin">The current min</param>
-        /// <param name="vCurrentMax">The current max</param>
+        /// <param name="vCurrentMin">The current minimum value pointer</param>
+        /// <param name="vCurrentMax">The current maximum value pointer</param>
         /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="vMin">The minimum value range</param>
         /// <param name="vMax">The maximum value range</param>
@@ -665,8 +665,8 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether drag float range 2
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="vCurrentMin">The current min</param>
-        /// <param name="vCurrentMax">The current max</param>
+        /// <param name="vCurrentMin">The current minimum value pointer</param>
+        /// <param name="vCurrentMax">The current maximum value pointer</param>
         /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="vMin">The minimum value range</param>
         /// <param name="vMax">The maximum value range</param>

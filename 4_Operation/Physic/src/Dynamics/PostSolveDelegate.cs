@@ -34,5 +34,7 @@ namespace Alis.Core.Physic.Dynamics
     /// <summary>
     ///     The post solve delegate
     /// </summary>
+    /// <param name="contact">The contact that was solved.</param>
+    /// <param name="impulse">The velocity constraint impulse resulting from the solve.</param>
     public delegate void PostSolveDelegate(Contact contact, ContactVelocityConstraint impulse);
 }

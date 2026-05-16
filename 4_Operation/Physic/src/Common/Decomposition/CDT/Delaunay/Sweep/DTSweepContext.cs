@@ -67,7 +67,12 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         /// </summary>
         public DtSweepContext()
         {
-            Clear();
+            Head = null;
+            Tail = null;
+            Triangles = new List<DelaunayTriangle>();
+            BadTriangles = new List<DelaunayTriangle>();
+            OpenList = new LinkedList<TriangulationPoint>();
+            EdgeMap = new Dictionary<TriangulationPoint, TriangulationPoint>();
         }
 
         /// <summary>

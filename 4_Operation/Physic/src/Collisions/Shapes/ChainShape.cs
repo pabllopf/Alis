@@ -149,10 +149,11 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     This method has been optimized to reduce garbage.
+        ///     Populates a pre-allocated <see cref="EdgeShape"/> with the edge data at the given chain segment index.
+        ///     This overload avoids allocating a new edge object.
         /// </summary>
-        /// <param name="edge">The cached edge to set properties on.</param>
-        /// <param name="index">The index.</param>
+        /// <param name="edge">The pre-allocated edge shape to populate with the child segment data.</param>
+        /// <param name="index">The zero-based index of the chain segment to retrieve.</param>
         internal void GetChildEdge(EdgeShape edge, int index)
         {
             edge.ShapeType = ShapeType.Edge;
@@ -185,9 +186,10 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Get a child edge.
+        ///     Gets a new <see cref="EdgeShape"/> representing the chain segment at the given index.
         /// </summary>
-        /// <param name="index">The index.</param>
+        /// <param name="index">The zero-based index of the chain segment to retrieve.</param>
+        /// <returns>A new edge shape configured with the segment's vertices and adjacency data.</returns>
         public EdgeShape GetChildEdge(int index)
         {
             EdgeShape edgeShape = new EdgeShape();
@@ -249,7 +251,7 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Computes the properties
+        ///     Chain shapes have no mass properties, so this method is a no-op.
         /// </summary>
         protected override void ComputeProperties()
         {
@@ -257,13 +259,13 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Computes the submerged area using the specified normal
+        ///     Computes the submerged area for buoyancy. Chain shapes always return zero area.
         /// </summary>
-        /// <param name="normal">The normal</param>
-        /// <param name="offset">The offset</param>
-        /// <param name="xf">The xf</param>
-        /// <param name="sc">The sc</param>
-        /// <returns>The float</returns>
+        /// <param name="normal">The surface normal of the fluid plane.</param>
+        /// <param name="offset">The offset of the fluid plane along the normal.</param>
+        /// <param name="xf">The world transform of the shape.</param>
+        /// <param name="sc">Outputs the submerged centroid (always zero for chains).</param>
+        /// <returns>The submerged area (always 0 for chain shapes).</returns>
         public override float ComputeSubmergedArea(ref Vector2F normal, float offset, ref ControllerTransform xf, out Vector2F sc)
         {
             sc = Vector2F.Zero;
@@ -271,10 +273,10 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Compare the chain to another chain
+        ///     Compares this chain shape to another for geometric equality.
         /// </summary>
-        /// <param name="shape">The other chain</param>
-        /// <returns>True if the two chain shapes are the same</returns>
+        /// <param name="shape">The other chain shape to compare against.</param>
+        /// <returns><c>true</c> if both chains have identical vertices and adjacency data; otherwise <c>false</c>.</returns>
         public bool CompareTo(ChainShape shape)
         {
             if (Vertices.Count != shape.Vertices.Count)
@@ -294,9 +296,9 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Clones this instance
+        ///     Creates a deep copy of this chain shape.
         /// </summary>
-        /// <returns>The clone</returns>
+        /// <returns>A new <see cref="ChainShape"/> with the same geometry and properties.</returns>
         public override Shape Clone()
         {
             ChainShape clone = new ChainShape();

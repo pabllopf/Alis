@@ -37,37 +37,37 @@ namespace Alis.Core.Physic.Dynamics.Contacts
     public sealed class VelocityConstraintPoint
     {
         /// <summary>
-        ///     The normal impulse
+        ///     The accumulated impulse along the contact normal.
         /// </summary>
         public float NormalImpulse;
 
         /// <summary>
-        ///     The normal mass
+        ///     The effective mass in the normal direction.
         /// </summary>
         public float NormalMass;
 
         /// <summary>
-        ///     The
+        ///     The vector from body A center of mass to the contact point.
         /// </summary>
         public Vector2F Ra;
 
         /// <summary>
-        ///     The
+        ///     The vector from body B center of mass to the contact point.
         /// </summary>
         public Vector2F Rb;
 
         /// <summary>
-        ///     The tangent impulse
+        ///     The accumulated impulse along the tangent (friction) direction.
         /// </summary>
         public float TangentImpulse;
 
         /// <summary>
-        ///     The tangent mass
+        ///     The effective mass in the tangent direction.
         /// </summary>
         public float TangentMass;
 
         /// <summary>
-        ///     The velocity bias
+        ///     The velocity bias for restitution (bounce) at this contact point.
         /// </summary>
         public float VelocityBias;
     }

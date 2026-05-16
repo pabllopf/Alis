@@ -35,27 +35,27 @@ namespace Alis.Core.Graphic.OpenGL.Enums
     public enum StringName
     {
         /// <summary>
-        ///     The vendor string name
+        ///     Returns the OpenGL vendor string (GL_VENDOR)
         /// </summary>
         Vendor = 0x1F00,
 
         /// <summary>
-        ///     The renderer string name
+        ///     Returns the OpenGL renderer string (GL_RENDERER)
         /// </summary>
         Renderer = 0x1F01,
 
         /// <summary>
-        ///     The version string name
+        ///     Returns the OpenGL version string (GL_VERSION)
         /// </summary>
         Version = 0x1F02,
 
         /// <summary>
-        ///     The extensions string name
+        ///     Returns the list of supported extensions (GL_EXTENSIONS)
         /// </summary>
         Extensions = 0x1F03,
 
         /// <summary>
-        ///     The shading language version string name
+        ///     Returns the GLSL shading language version (GL_SHADING_LANGUAGE_VERSION)
         /// </summary>
         ShadingLanguageVersion = 0x8B8C
     }

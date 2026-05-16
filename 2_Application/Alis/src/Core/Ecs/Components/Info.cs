@@ -39,27 +39,27 @@ namespace Alis.Core.Ecs.Components
         /// <summary>
         ///     The id
         /// </summary>
-        public int Id;
+        public int Id { get; set; }
 
         /// <summary>
         ///     The is active
         /// </summary>
-        public bool IsActive;
+        public bool IsActive { get; set; }
 
         /// <summary>
         ///     The is static
         /// </summary>
-        public bool IsStatic;
+        public bool IsStatic { get; set; }
 
         /// <summary>
         ///     The name
         /// </summary>
-        public string Name;
+        public string Name { get; set; }
 
         /// <summary>
         ///     The tag
         /// </summary>
-        public string Tag;
+        public string Tag { get; set; }
 
         /// <summary>
         ///     Inits the self

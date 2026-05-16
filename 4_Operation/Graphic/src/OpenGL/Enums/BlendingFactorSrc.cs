@@ -35,87 +35,87 @@ namespace Alis.Core.Graphic.OpenGL.Enums
     public enum BlendingFactorSrc
     {
         /// <summary>
-        ///     The zero blending factor src
+        ///     Factor of zero (GL_ZERO)
         /// </summary>
         Zero = 0,
 
         /// <summary>
-        ///     The src alpha blending factor src
+        ///     Multiplies by source alpha (GL_SRC_ALPHA)
         /// </summary>
         SrcAlpha = 0x0302,
 
         /// <summary>
-        ///     The one minus src alpha blending factor src
+        ///     Multiplies by one minus source alpha (GL_ONE_MINUS_SRC_ALPHA)
         /// </summary>
         OneMinusSrcAlpha = 0x0303,
 
         /// <summary>
-        ///     The dst alpha blending factor src
+        ///     Multiplies by destination alpha (GL_DST_ALPHA)
         /// </summary>
         DstAlpha = 0x0304,
 
         /// <summary>
-        ///     The one minus dst alpha blending factor src
+        ///     Multiplies by one minus destination alpha (GL_ONE_MINUS_DST_ALPHA)
         /// </summary>
         OneMinusDstAlpha = 0x0305,
 
         /// <summary>
-        ///     The dst color blending factor src
+        ///     Multiplies by destination color (GL_DST_COLOR)
         /// </summary>
         DstColor = 0x0306,
 
         /// <summary>
-        ///     The one minus dst color blending factor src
+        ///     Multiplies by one minus destination color (GL_ONE_MINUS_DST_COLOR)
         /// </summary>
         OneMinusDstColor = 0x0307,
 
         /// <summary>
-        ///     The src alpha saturate blending factor src
+        ///     Source alpha saturated to 0-1 range (GL_SRC_ALPHA_SATURATE)
         /// </summary>
         SrcAlphaSaturate = 0x0308,
 
         /// <summary>
-        ///     The constant color blending factor src
+        ///     Uses a constant color as the blend factor (GL_CONSTANT_COLOR)
         /// </summary>
         ConstantColor = 0x8001,
 
         /// <summary>
-        ///     The constant color ext blending factor src
+        ///     Uses a constant color as the blend factor, EXT version (GL_CONSTANT_COLOR_EXT)
         /// </summary>
         ConstantColorExt = 0x8001,
 
         /// <summary>
-        ///     The one minus constant color blending factor src
+        ///     Uses one minus constant color as the blend factor (GL_ONE_MINUS_CONSTANT_COLOR)
         /// </summary>
         OneMinusConstantColor = 0x8002,
 
         /// <summary>
-        ///     The one minus constant color ext blending factor src
+        ///     Uses one minus constant color as the blend factor, EXT version (GL_ONE_MINUS_CONSTANT_COLOR_EXT)
         /// </summary>
         OneMinusConstantColorExt = 0x8002,
 
         /// <summary>
-        ///     The constant alpha blending factor src
+        ///     Uses constant alpha as the blend factor (GL_CONSTANT_ALPHA)
         /// </summary>
         ConstantAlpha = 0x8003,
 
         /// <summary>
-        ///     The constant alpha ext blending factor src
+        ///     Uses constant alpha as the blend factor, EXT version (GL_CONSTANT_ALPHA_EXT)
         /// </summary>
         ConstantAlphaExt = 0x8003,
 
         /// <summary>
-        ///     The one minus constant alpha blending factor src
+        ///     Uses one minus constant alpha as the blend factor (GL_ONE_MINUS_CONSTANT_ALPHA)
         /// </summary>
         OneMinusConstantAlpha = 0x8004,
 
         /// <summary>
-        ///     The one minus constant alpha ext blending factor src
+        ///     Uses one minus constant alpha as the blend factor, EXT version (GL_ONE_MINUS_CONSTANT_ALPHA_EXT)
         /// </summary>
         OneMinusConstantAlphaExt = 0x8004,
 
         /// <summary>
-        ///     The one blending factor src
+        ///     Factor of one (GL_ONE)
         /// </summary>
         One = 1
     }

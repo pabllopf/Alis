@@ -40,9 +40,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotScatter(string labelId, ref short xs, ref short ys, int count, ImPlotScatterFlags flags)
@@ -53,9 +53,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -67,9 +67,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -82,9 +82,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         public static void PlotScatter(string labelId, ref ushort xs, ref ushort ys, int count)
         {
@@ -94,9 +94,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotScatter(string labelId, ref ushort xs, ref ushort ys, int count, ImPlotScatterFlags flags)
@@ -107,9 +107,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -121,9 +121,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -136,9 +136,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         public static void PlotScatter(string labelId, ref int xs, ref int ys, int count)
         {
@@ -148,9 +148,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotScatter(string labelId, ref int xs, ref int ys, int count, ImPlotScatterFlags flags)
@@ -161,9 +161,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -175,9 +175,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -190,9 +190,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         public static void PlotScatter(string labelId, ref uint xs, ref uint ys, int count)
         {
@@ -202,9 +202,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotScatter(string labelId, ref uint xs, ref uint ys, int count, ImPlotScatterFlags flags)
@@ -215,9 +215,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -229,9 +229,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -244,9 +244,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         public static void PlotScatter(string labelId, ref long xs, ref long ys, int count)
         {
@@ -256,9 +256,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotScatter(string labelId, ref long xs, ref long ys, int count, ImPlotScatterFlags flags)
@@ -269,9 +269,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -283,9 +283,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -298,9 +298,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         public static void PlotScatter(string labelId, ref ulong xs, ref ulong ys, int count)
         {
@@ -310,9 +310,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotScatter(string labelId, ref ulong xs, ref ulong ys, int count, ImPlotScatterFlags flags)
@@ -323,9 +323,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -337,9 +337,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -352,7 +352,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter g using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
         /// <param name="getter">The getter</param>
         /// <param name="data">The data buffer content</param>
         /// <param name="count">The number of elements</param>
@@ -364,7 +364,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter g using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
         /// <param name="getter">The getter</param>
         /// <param name="data">The data buffer content</param>
         /// <param name="count">The number of elements</param>
@@ -377,8 +377,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         public static void PlotShaded(string labelId, float[] values, int count)
         {
@@ -388,10 +388,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
+        /// <param name="yref">The reference y value</param>
         public static void PlotShaded(string labelId, float[] values, int count, double yref)
         {
             ImPlotNative.ImPlot_PlotShaded_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, 1, 0, 0, 0, sizeof(float));
@@ -400,11 +400,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
         public static void PlotShaded(string labelId, float[] values, int count, double yref, double xscale)
         {
             ImPlotNative.ImPlot_PlotShaded_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, 0, 0, 0, sizeof(float));
@@ -413,12 +413,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         public static void PlotShaded(string labelId, float[] values, int count, double yref, double xscale, double xstart)
         {
             ImPlotNative.ImPlot_PlotShaded_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, 0, 0, sizeof(float));
@@ -427,12 +427,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotShaded(string labelId, float[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags)
         {
@@ -442,12 +442,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         public static void PlotShaded(string labelId, float[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset)
@@ -458,12 +458,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -475,8 +475,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         public static void PlotShaded(string labelId, double[] values, int count)
         {
@@ -486,10 +486,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
+        /// <param name="yref">The reference y value</param>
         public static void PlotShaded(string labelId, double[] values, int count, double yref)
         {
             ImPlotNative.ImPlot_PlotShaded_doublePtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, 1, 0, 0, 0, sizeof(double));
@@ -498,11 +498,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
         public static void PlotShaded(string labelId, double[] values, int count, double yref, double xscale)
         {
             ImPlotNative.ImPlot_PlotShaded_doublePtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, 0, 0, 0, sizeof(double));
@@ -511,12 +511,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         public static void PlotShaded(string labelId, double[] values, int count, double yref, double xscale, double xstart)
         {
             ImPlotNative.ImPlot_PlotShaded_doublePtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, 0, 0, sizeof(double));
@@ -525,12 +525,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotShaded(string labelId, double[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags)
         {
@@ -540,12 +540,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         public static void PlotShaded(string labelId, double[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset)
@@ -556,12 +556,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -573,8 +573,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         public static void PlotShaded(string labelId, sbyte[] values, int count)
         {
@@ -584,10 +584,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
+        /// <param name="yref">The reference y value</param>
         public static void PlotShaded(string labelId, sbyte[] values, int count, double yref)
         {
             ImPlotNative.ImPlot_PlotShaded_S8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, 1, 0, 0, 0, sizeof(sbyte));
@@ -596,11 +596,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
         public static void PlotShaded(string labelId, sbyte[] values, int count, double yref, double xscale)
         {
             ImPlotNative.ImPlot_PlotShaded_S8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, 0, 0, 0, sizeof(sbyte));
@@ -609,12 +609,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         public static void PlotShaded(string labelId, sbyte[] values, int count, double yref, double xscale, double xstart)
         {
             ImPlotNative.ImPlot_PlotShaded_S8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, 0, 0, sizeof(sbyte));
@@ -623,12 +623,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotShaded(string labelId, sbyte[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags)
         {
@@ -638,12 +638,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         public static void PlotShaded(string labelId, sbyte[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset)
@@ -654,12 +654,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -671,8 +671,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         public static void PlotShaded(string labelId, byte[] values, int count)
         {
@@ -682,10 +682,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
+        /// <param name="yref">The reference y value</param>
         public static void PlotShaded(string labelId, byte[] values, int count, double yref)
         {
             ImPlotNative.ImPlot_PlotShaded_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, 1, 0, 0, 0, sizeof(byte));
@@ -694,11 +694,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
         public static void PlotShaded(string labelId, byte[] values, int count, double yref, double xscale)
         {
             ImPlotNative.ImPlot_PlotShaded_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, 0, 0, 0, sizeof(byte));
@@ -707,12 +707,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         public static void PlotShaded(string labelId, byte[] values, int count, double yref, double xscale, double xstart)
         {
             ImPlotNative.ImPlot_PlotShaded_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, 0, 0, sizeof(byte));
@@ -721,12 +721,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotShaded(string labelId, byte[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags)
         {
@@ -736,12 +736,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         public static void PlotShaded(string labelId, byte[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset)
@@ -752,12 +752,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -769,8 +769,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         public static void PlotShaded(string labelId, short[] values, int count)
         {
@@ -780,10 +780,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
+        /// <param name="yref">The reference y value</param>
         public static void PlotShaded(string labelId, short[] values, int count, double yref)
         {
             ImPlotNative.ImPlot_PlotShaded_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, 1, 0, 0, 0, sizeof(short));
@@ -792,11 +792,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
         public static void PlotShaded(string labelId, short[] values, int count, double yref, double xscale)
         {
             ImPlotNative.ImPlot_PlotShaded_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, 0, 0, 0, sizeof(short));
@@ -805,12 +805,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         public static void PlotShaded(string labelId, short[] values, int count, double yref, double xscale, double xstart)
         {
             ImPlotNative.ImPlot_PlotShaded_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, 0, 0, sizeof(short));
@@ -819,12 +819,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotShaded(string labelId, short[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags)
         {
@@ -834,12 +834,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         public static void PlotShaded(string labelId, short[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset)
@@ -850,12 +850,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -867,8 +867,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         public static void PlotShaded(string labelId, ushort[] values, int count)
         {
@@ -878,10 +878,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
+        /// <param name="yref">The reference y value</param>
         public static void PlotShaded(string labelId, ushort[] values, int count, double yref)
         {
             ImPlotNative.ImPlot_PlotShaded_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, 1, 0, 0, 0, sizeof(ushort));
@@ -890,11 +890,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
         public static void PlotShaded(string labelId, ushort[] values, int count, double yref, double xscale)
         {
             ImPlotNative.ImPlot_PlotShaded_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, 0, 0, 0, sizeof(ushort));
@@ -903,12 +903,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         public static void PlotShaded(string labelId, ushort[] values, int count, double yref, double xscale, double xstart)
         {
             ImPlotNative.ImPlot_PlotShaded_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, 0, 0, sizeof(ushort));
@@ -917,12 +917,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotShaded(string labelId, ushort[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags)
         {
@@ -932,12 +932,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         public static void PlotShaded(string labelId, ushort[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset)
@@ -948,12 +948,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -965,8 +965,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         public static void PlotShaded(string labelId, int[] values, int count)
         {
@@ -976,10 +976,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
+        /// <param name="yref">The reference y value</param>
         public static void PlotShaded(string labelId, int[] values, int count, double yref)
         {
             ImPlotNative.ImPlot_PlotShaded_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, 1, 0, 0, 0, sizeof(int));
@@ -988,11 +988,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
         public static void PlotShaded(string labelId, int[] values, int count, double yref, double xscale)
         {
             ImPlotNative.ImPlot_PlotShaded_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, 0, 0, 0, sizeof(int));
@@ -1001,12 +1001,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         public static void PlotShaded(string labelId, int[] values, int count, double yref, double xscale, double xstart)
         {
             ImPlotNative.ImPlot_PlotShaded_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, 0, 0, sizeof(int));
@@ -1015,12 +1015,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotShaded(string labelId, int[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags)
         {
@@ -1030,12 +1030,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         public static void PlotShaded(string labelId, int[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset)
@@ -1046,12 +1046,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -1063,8 +1063,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         public static void PlotShaded(string labelId, uint[] values, int count)
         {
@@ -1074,10 +1074,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
+        /// <param name="yref">The reference y value</param>
         public static void PlotShaded(string labelId, uint[] values, int count, double yref)
         {
             ImPlotNative.ImPlot_PlotShaded_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, 1, 0, 0, 0, sizeof(uint));
@@ -1086,11 +1086,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
         public static void PlotShaded(string labelId, uint[] values, int count, double yref, double xscale)
         {
             ImPlotNative.ImPlot_PlotShaded_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, 0, 0, 0, sizeof(uint));
@@ -1099,12 +1099,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         public static void PlotShaded(string labelId, uint[] values, int count, double yref, double xscale, double xstart)
         {
             ImPlotNative.ImPlot_PlotShaded_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, 0, 0, sizeof(uint));
@@ -1113,12 +1113,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotShaded(string labelId, uint[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags)
         {
@@ -1128,12 +1128,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         public static void PlotShaded(string labelId, uint[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset)
@@ -1144,12 +1144,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -1161,8 +1161,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         public static void PlotShaded(string labelId, long[] values, int count)
         {
@@ -1172,10 +1172,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
+        /// <param name="yref">The reference y value</param>
         public static void PlotShaded(string labelId, long[] values, int count, double yref)
         {
             ImPlotNative.ImPlot_PlotShaded_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, 1, 0, 0, 0, sizeof(long));
@@ -1184,11 +1184,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
         public static void PlotShaded(string labelId, long[] values, int count, double yref, double xscale)
         {
             ImPlotNative.ImPlot_PlotShaded_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, 0, 0, 0, sizeof(long));
@@ -1197,12 +1197,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         public static void PlotShaded(string labelId, long[] values, int count, double yref, double xscale, double xstart)
         {
             ImPlotNative.ImPlot_PlotShaded_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, 0, 0, sizeof(long));
@@ -1211,12 +1211,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotShaded(string labelId, long[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags)
         {
@@ -1226,12 +1226,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         public static void PlotShaded(string labelId, long[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset)
@@ -1242,12 +1242,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -1259,8 +1259,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         public static void PlotShaded(string labelId, ulong[] values, int count)
         {
@@ -1270,10 +1270,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
+        /// <param name="yref">The reference y value</param>
         public static void PlotShaded(string labelId, ulong[] values, int count, double yref)
         {
             ImPlotNative.ImPlot_PlotShaded_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, 1, 0, 0, 0, sizeof(ulong));
@@ -1282,11 +1282,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
         public static void PlotShaded(string labelId, ulong[] values, int count, double yref, double xscale)
         {
             ImPlotNative.ImPlot_PlotShaded_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, 0, 0, 0, sizeof(ulong));
@@ -1295,12 +1295,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         public static void PlotShaded(string labelId, ulong[] values, int count, double yref, double xscale, double xstart)
         {
             ImPlotNative.ImPlot_PlotShaded_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, 0, 0, sizeof(ulong));
@@ -1309,12 +1309,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotShaded(string labelId, ulong[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags)
         {
@@ -1324,12 +1324,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         public static void PlotShaded(string labelId, ulong[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset)
@@ -1340,12 +1340,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -1357,9 +1357,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         public static void PlotShaded(string labelId, ref float xs, ref float ys, int count)
         {
@@ -1369,11 +1369,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
+        /// <param name="yref">The reference y value</param>
         public static void PlotShaded(string labelId, ref float xs, ref float ys, int count, double yref)
         {
             ImPlotNative.ImPlot_PlotShaded_FloatPtrFloatPtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, yref, ImPlotShadedFlags.None, 0, sizeof(float));
@@ -1382,11 +1382,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
+        /// <param name="yref">The reference y value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotShaded(string labelId, ref float xs, ref float ys, int count, double yref, ImPlotShadedFlags flags)
         {
@@ -1396,11 +1396,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
+        /// <param name="yref">The reference y value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         public static void PlotShaded(string labelId, ref float xs, ref float ys, int count, double yref, ImPlotShadedFlags flags, int offset)
@@ -1411,11 +1411,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
+        /// <param name="yref">The reference y value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -1427,9 +1427,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         public static void PlotShaded(string labelId, ref double xs, ref double ys, int count)
         {
@@ -1439,11 +1439,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
+        /// <param name="yref">The reference y value</param>
         public static void PlotShaded(string labelId, ref double xs, ref double ys, int count, double yref)
         {
             ImPlotNative.ImPlot_PlotShaded_doublePtrdoublePtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, yref, ImPlotShadedFlags.None, 0, sizeof(double));
@@ -1452,11 +1452,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
+        /// <param name="yref">The reference y value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotShaded(string labelId, ref double xs, ref double ys, int count, double yref, ImPlotShadedFlags flags)
         {
@@ -1466,11 +1466,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
+        /// <param name="yref">The reference y value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         public static void PlotShaded(string labelId, ref double xs, ref double ys, int count, double yref, ImPlotShadedFlags flags, int offset)
@@ -1481,11 +1481,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
+        /// <param name="yref">The reference y value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>

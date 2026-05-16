@@ -30,7 +30,7 @@
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     The ep axis type enum
+    ///     Identifies which edge is used as the reference axis in the edge-polygon collider.
     /// </summary>
     public enum EpAxisType
     {

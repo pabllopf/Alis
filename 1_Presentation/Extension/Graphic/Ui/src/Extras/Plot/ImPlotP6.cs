@@ -39,8 +39,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -53,8 +53,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         public static void PlotInfLines(string labelId, short[] values, int count)
         {
@@ -64,8 +64,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotInfLines(string labelId, short[] values, int count, ImPlotInfLinesFlags flags)
@@ -76,8 +76,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -89,8 +89,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -103,8 +103,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         public static void PlotInfLines(string labelId, ushort[] values, int count)
         {
@@ -114,8 +114,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotInfLines(string labelId, ushort[] values, int count, ImPlotInfLinesFlags flags)
@@ -126,8 +126,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -139,8 +139,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -153,8 +153,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         public static void PlotInfLines(string labelId, int[] values, int count)
         {
@@ -164,8 +164,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotInfLines(string labelId, int[] values, int count, ImPlotInfLinesFlags flags)
@@ -176,8 +176,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -189,8 +189,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -203,8 +203,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         public static void PlotInfLines(string labelId, uint[] values, int count)
         {
@@ -214,8 +214,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotInfLines(string labelId, uint[] values, int count, ImPlotInfLinesFlags flags)
@@ -226,8 +226,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -239,8 +239,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -253,8 +253,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         public static void PlotInfLines(string labelId, long[] values, int count)
         {
@@ -264,8 +264,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotInfLines(string labelId, long[] values, int count, ImPlotInfLinesFlags flags)
@@ -276,8 +276,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -289,8 +289,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -303,8 +303,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         public static void PlotInfLines(string labelId, ulong[] values, int count)
         {
@@ -314,8 +314,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotInfLines(string labelId, ulong[] values, int count, ImPlotInfLinesFlags flags)
@@ -326,8 +326,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -339,8 +339,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -353,8 +353,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         public static void PlotLine(string labelId, float[] values, int count)
         {
@@ -364,10 +364,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
+        /// <param name="xscale">The x-axis scale factor</param>
         public static void PlotLine(string labelId, float[] values, int count, double xscale)
         {
             ImPlotNative.ImPlot_PlotLine_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, 0, 0, 0, sizeof(float));
@@ -376,11 +376,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         public static void PlotLine(string labelId, float[] values, int count, double xscale, double xstart)
         {
             ImPlotNative.ImPlot_PlotLine_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, 0, 0, sizeof(float));
@@ -389,11 +389,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotLine(string labelId, float[] values, int count, double xscale, double xstart, ImPlotLineFlags flags)
         {
@@ -403,11 +403,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         public static void PlotLine(string labelId, float[] values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset)
@@ -418,11 +418,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -434,8 +434,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         public static void PlotLine(string labelId, double[] values, int count)
         {
@@ -445,10 +445,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
+        /// <param name="xscale">The x-axis scale factor</param>
         public static void PlotLine(string labelId, double[] values, int count, double xscale)
         {
             ImPlotNative.ImPlot_PlotLine_doublePtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, 0, 0, 0, 0);
@@ -457,11 +457,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         public static void PlotLine(string labelId, double[] values, int count, double xscale, double xstart)
         {
             ImPlotNative.ImPlot_PlotLine_doublePtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, 0, 0, 0);
@@ -470,11 +470,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotLine(string labelId, double[] values, int count, double xscale, double xstart, ImPlotLineFlags flags)
         {
@@ -484,11 +484,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         public static void PlotLine(string labelId, double[] values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset)
@@ -499,11 +499,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -515,8 +515,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         public static void PlotLine(string labelId, sbyte[] values, int count)
         {
@@ -526,10 +526,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
+        /// <param name="xscale">The x-axis scale factor</param>
         public static void PlotLine(string labelId, sbyte[] values, int count, double xscale)
         {
             ImPlotNative.ImPlot_PlotLine_S8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, 0, 0, 0, 0);
@@ -538,11 +538,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         public static void PlotLine(string labelId, sbyte[] values, int count, double xscale, double xstart)
         {
             ImPlotNative.ImPlot_PlotLine_S8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, 0, 0, 0);
@@ -551,11 +551,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotLine(string labelId, sbyte[] values, int count, double xscale, double xstart, ImPlotLineFlags flags)
         {
@@ -565,11 +565,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         public static void PlotLine(string labelId, sbyte[] values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset)
@@ -580,11 +580,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -596,8 +596,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         public static void PlotLine(string labelId, byte[] values, int count)
         {
@@ -607,10 +607,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
+        /// <param name="xscale">The x-axis scale factor</param>
         public static void PlotLine(string labelId, byte[] values, int count, double xscale)
         {
             ImPlotNative.ImPlot_PlotLine_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, 0, 0, 0, 0);
@@ -619,11 +619,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         public static void PlotLine(string labelId, byte[] values, int count, double xscale, double xstart)
         {
             ImPlotNative.ImPlot_PlotLine_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, 0, 0, 0);
@@ -632,11 +632,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotLine(string labelId, byte[] values, int count, double xscale, double xstart, ImPlotLineFlags flags)
         {
@@ -646,11 +646,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         public static void PlotLine(string labelId, byte[] values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset)
@@ -661,11 +661,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -677,8 +677,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         public static void PlotLine(string labelId, short[] values, int count)
         {
@@ -688,10 +688,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
+        /// <param name="xscale">The x-axis scale factor</param>
         public static void PlotLine(string labelId, short[] values, int count, double xscale)
         {
             ImPlotNative.ImPlot_PlotLine_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, 0, 0, 0, 0);
@@ -700,11 +700,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         public static void PlotLine(string labelId, short[] values, int count, double xscale, double xstart)
         {
             ImPlotNative.ImPlot_PlotLine_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, 0, 0, 0);
@@ -713,11 +713,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotLine(string labelId, short[] values, int count, double xscale, double xstart, ImPlotLineFlags flags)
         {
@@ -727,11 +727,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         public static void PlotLine(string labelId, short[] values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset)

@@ -35,62 +35,62 @@ namespace Alis.Core.Graphic.OpenGL.Enums
     public enum BeginMode
     {
         /// <summary>
-        ///     The points begin mode
+        ///     Individual points primitive (GL_POINTS)
         /// </summary>
         Points = 0x0000,
 
         /// <summary>
-        ///     The lines begin mode
+        ///     Individual line segments primitive (GL_LINES)
         /// </summary>
         Lines = 0x0001,
 
         /// <summary>
-        ///     The line loop begin mode
+        ///     Connected line loop primitive (GL_LINE_LOOP)
         /// </summary>
         LineLoop = 0x0002,
 
         /// <summary>
-        ///     The line strip begin mode
+        ///     Connected line strip primitive (GL_LINE_STRIP)
         /// </summary>
         LineStrip = 0x0003,
 
         /// <summary>
-        ///     The triangles begin mode
+        ///     Individual triangles primitive (GL_TRIANGLES)
         /// </summary>
         Triangles = 0x0004,
 
         /// <summary>
-        ///     The triangle strip begin mode
+        ///     Connected triangle strip primitive (GL_TRIANGLE_STRIP)
         /// </summary>
         TriangleStrip = 0x0005,
 
         /// <summary>
-        ///     The triangle fan begin mode
+        ///     Connected triangle fan primitive (GL_TRIANGLE_FAN)
         /// </summary>
         TriangleFan = 0x0006,
 
         /// <summary>
-        ///     The lines adjacency begin mode
+        ///     Lines with adjacency information (GL_LINES_ADJACENCY)
         /// </summary>
         LinesAdjacency = 0xA,
 
         /// <summary>
-        ///     The line strip adjacency begin mode
+        ///     Line strip with adjacency information (GL_LINE_STRIP_ADJACENCY)
         /// </summary>
         LineStripAdjacency = 0xB,
 
         /// <summary>
-        ///     The triangles adjacency begin mode
+        ///     Triangles with adjacency information (GL_TRIANGLES_ADJACENCY)
         /// </summary>
         TrianglesAdjacency = 0xC,
 
         /// <summary>
-        ///     The triangle strip adjacency begin mode
+        ///     Triangle strip with adjacency information (GL_TRIANGLE_STRIP_ADJACENCY)
         /// </summary>
         TriangleStripAdjacency = 0xD,
 
         /// <summary>
-        ///     The patches begin mode
+        ///     Tessellation patches primitive (GL_PATCHES)
         /// </summary>
         Patches = 0xE
     }

@@ -32,27 +32,28 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     Output for Distance.ComputeDistance().
+    ///     Result data from <see cref="Distance.ComputeDistance"/> containing the minimum distance
+    ///     and the closest points on each shape.
     /// </summary>
     public struct DistanceOutput
     {
         /// <summary>
-        ///     The distance
+        ///     The minimum distance between the two shapes. Zero or negative if the shapes overlap.
         /// </summary>
         public float Distance;
 
         /// <summary>
-        ///     Number of GJK iterations used
+        ///     The number of GJK iterations used to converge to the result.
         /// </summary>
         public int Iterations;
 
         /// <summary>
-        ///     Closest point on shapeA
+        ///     The closest point on shape A in world coordinates.
         /// </summary>
         public Vector2F PointA;
 
         /// <summary>
-        ///     Closest point on shapeB
+        ///     The closest point on shape B in world coordinates.
         /// </summary>
         public Vector2F PointB;
     }

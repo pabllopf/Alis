@@ -34,7 +34,7 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Extension.Graphic.Ui
 {
     /// <summary>
-    ///     The im gui class
+    ///     The ImGui wrapper class providing managed access to native Dear ImGui functionality
     /// </summary>
     public static partial class ImGui
     {
@@ -147,7 +147,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Plots the histogram using the specified label
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="values">The values</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="valuesCount">The values count</param>
         public static void PlotHistogram(string label, ref float values, int valuesCount)
         {
@@ -158,7 +158,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Plots the histogram using the specified label
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="values">The values</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="valuesCount">The values count</param>
         /// <param name="valuesOffset">The values offset</param>
         public static void PlotHistogram(string label, ref float values, int valuesCount, int valuesOffset)
@@ -170,7 +170,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Plots the histogram using the specified label
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="values">The values</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="valuesCount">The values count</param>
         /// <param name="valuesOffset">The values offset</param>
         /// <param name="overlayText">The overlay text</param>
@@ -183,11 +183,11 @@ namespace Alis.Extension.Graphic.Ui
         ///     Plots the histogram using the specified label
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="values">The values</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="valuesCount">The values count</param>
         /// <param name="valuesOffset">The values offset</param>
         /// <param name="overlayText">The overlay text</param>
-        /// <param name="scaleMin">The scale min</param>
+        /// <param name="scaleMin">The minimum scale value</param>
         public static void PlotHistogram(string label, ref float values, int valuesCount, int valuesOffset, string overlayText, float scaleMin)
         {
             ImGuiNative.igPlotHistogram_FloatPtr(Encoding.UTF8.GetBytes(label), values, valuesCount, valuesOffset, Encoding.UTF8.GetBytes(overlayText), scaleMin, float.MaxValue, new Vector2F(), sizeof(float));
@@ -197,11 +197,11 @@ namespace Alis.Extension.Graphic.Ui
         ///     Plots the histogram using the specified label
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="values">The values</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="valuesCount">The values count</param>
         /// <param name="valuesOffset">The values offset</param>
         /// <param name="overlayText">The overlay text</param>
-        /// <param name="scaleMin">The scale min</param>
+        /// <param name="scaleMin">The minimum scale value</param>
         /// <param name="scaleMax">The scale max</param>
         public static void PlotHistogram(string label, ref float values, int valuesCount, int valuesOffset, string overlayText, float scaleMin, float scaleMax)
         {
@@ -212,11 +212,11 @@ namespace Alis.Extension.Graphic.Ui
         ///     Plots the histogram using the specified label
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="values">The values</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="valuesCount">The values count</param>
         /// <param name="valuesOffset">The values offset</param>
         /// <param name="overlayText">The overlay text</param>
-        /// <param name="scaleMin">The scale min</param>
+        /// <param name="scaleMin">The minimum scale value</param>
         /// <param name="scaleMax">The scale max</param>
         /// <param name="graphSize">The graph size</param>
         public static void PlotHistogram(string label, ref float values, int valuesCount, int valuesOffset, string overlayText, float scaleMin, float scaleMax, Vector2F graphSize)
@@ -228,11 +228,11 @@ namespace Alis.Extension.Graphic.Ui
         ///     Plots the histogram using the specified label
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="values">The values</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="valuesCount">The values count</param>
         /// <param name="valuesOffset">The values offset</param>
         /// <param name="overlayText">The overlay text</param>
-        /// <param name="scaleMin">The scale min</param>
+        /// <param name="scaleMin">The minimum scale value</param>
         /// <param name="scaleMax">The scale max</param>
         /// <param name="graphSize">The graph size</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -245,7 +245,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Plots the lines using the specified label
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="values">The values</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="valuesCount">The values count</param>
         public static void PlotLines(string label, ref float values, int valuesCount)
         {
@@ -256,7 +256,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Plots the lines using the specified label
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="values">The values</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="valuesCount">The values count</param>
         /// <param name="valuesOffset">The values offset</param>
         public static void PlotLines(string label, ref float values, int valuesCount, int valuesOffset)
@@ -268,7 +268,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Plots the lines using the specified label
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="values">The values</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="valuesCount">The values count</param>
         /// <param name="valuesOffset">The values offset</param>
         /// <param name="overlayText">The overlay text</param>
@@ -281,11 +281,11 @@ namespace Alis.Extension.Graphic.Ui
         ///     Plots the lines using the specified label
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="values">The values</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="valuesCount">The values count</param>
         /// <param name="valuesOffset">The values offset</param>
         /// <param name="overlayText">The overlay text</param>
-        /// <param name="scaleMin">The scale min</param>
+        /// <param name="scaleMin">The minimum scale value</param>
         public static void PlotLines(string label, ref float values, int valuesCount, int valuesOffset, string overlayText, float scaleMin)
         {
             ImGuiNative.igPlotLines_FloatPtr(Encoding.UTF8.GetBytes(label), values, valuesCount, valuesOffset, Encoding.UTF8.GetBytes(overlayText), scaleMin, float.MaxValue, new Vector2F(), sizeof(float));
@@ -295,11 +295,11 @@ namespace Alis.Extension.Graphic.Ui
         ///     Plots the lines using the specified label
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="values">The values</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="valuesCount">The values count</param>
         /// <param name="valuesOffset">The values offset</param>
         /// <param name="overlayText">The overlay text</param>
-        /// <param name="scaleMin">The scale min</param>
+        /// <param name="scaleMin">The minimum scale value</param>
         /// <param name="scaleMax">The scale max</param>
         public static void PlotLines(string label, ref float values, int valuesCount, int valuesOffset, string overlayText, float scaleMin, float scaleMax)
         {
@@ -310,11 +310,11 @@ namespace Alis.Extension.Graphic.Ui
         ///     Plots the lines using the specified label
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="values">The values</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="valuesCount">The values count</param>
         /// <param name="valuesOffset">The values offset</param>
         /// <param name="overlayText">The overlay text</param>
-        /// <param name="scaleMin">The scale min</param>
+        /// <param name="scaleMin">The minimum scale value</param>
         /// <param name="scaleMax">The scale max</param>
         /// <param name="graphSize">The graph size</param>
         public static void PlotLines(string label, ref float values, int valuesCount, int valuesOffset, string overlayText, float scaleMin, float scaleMax, Vector2F graphSize)
@@ -326,11 +326,11 @@ namespace Alis.Extension.Graphic.Ui
         ///     Plots the lines using the specified label
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="values">The values</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="valuesCount">The values count</param>
         /// <param name="valuesOffset">The values offset</param>
         /// <param name="overlayText">The overlay text</param>
-        /// <param name="scaleMin">The scale min</param>
+        /// <param name="scaleMin">The minimum scale value</param>
         /// <param name="scaleMax">The scale max</param>
         /// <param name="graphSize">The graph size</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -544,7 +544,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Pushes the style color using the specified idx
         /// </summary>
         /// <param name="idx">The idx</param>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         public static void PushStyleColor(ImGuiCol idx, uint col)
         {
             ImGuiNative.igPushStyleColor_U32(idx, col);
@@ -554,7 +554,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Pushes the style color using the specified idx
         /// </summary>
         /// <param name="idx">The idx</param>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         public static void PushStyleColor(ImGuiCol idx, Vector4F col)
         {
             ImGuiNative.igPushStyleColor_Vec4(idx, col);
@@ -678,7 +678,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Resets the mouse drag delta using the specified button
         /// </summary>
-        /// <param name="button">The button</param>
+        /// <param name="button">The mouse button index</param>
         public static void ResetMouseDragDelta(ImGuiMouseButton button)
         {
             ImGuiNative.igResetMouseDragDelta(button);
@@ -726,14 +726,14 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Saves the ini settings to memory
         /// </summary>
-        /// <returns>the string result from the native function</returns>
+        /// <returns>The string result from the native function</returns>
         public static string SaveIniSettingsToMemory() => Encoding.UTF8.GetString(ImGuiNative.igSaveIniSettingsToMemory(out _));
 
         /// <summary>
         ///     Saves the ini settings to memory using the specified out ini size
         /// </summary>
         /// <param name="outIniSize">The out ini size</param>
-        /// <returns>the string result from the native function</returns>
+        /// <returns>The string result from the native function</returns>
         public static string SaveIniSettingsToMemory(out uint outIniSize) => Encoding.UTF8.GetString(ImGuiNative.igSaveIniSettingsToMemory(out outIniSize));
 
         /// <summary>
@@ -960,7 +960,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="type">The type</param>
         /// <param name="data">The data buffer content</param>
         /// <param name="sz">The sz</param>
-        /// <param name="cond">The cond</param>
+        /// <param name="cond">The condition flag for the operation</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool SetDragDropPayload(string type, IntPtr data, uint sz, ImGuiCond cond)
         {
@@ -1046,7 +1046,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Sets the next item open using the specified is open
         /// </summary>
         /// <param name="isOpen">The is open</param>
-        /// <param name="cond">The cond</param>
+        /// <param name="cond">The condition flag for the operation</param>
         public static void SetNextItemOpen(bool isOpen, ImGuiCond cond)
         {
             byte nativeIsOpen = isOpen ? (byte) 1 : (byte) 0;
@@ -1095,7 +1095,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Sets the next window collapsed using the specified collapsed
         /// </summary>
         /// <param name="collapsed">The collapsed</param>
-        /// <param name="cond">The cond</param>
+        /// <param name="cond">The condition flag for the operation</param>
         public static void SetNextWindowCollapsed(bool collapsed, ImGuiCond cond)
         {
             byte nativeCollapsed = collapsed ? (byte) 1 : (byte) 0;
@@ -1125,7 +1125,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Sets the next window dock id using the specified dock id
         /// </summary>
         /// <param name="dockId">The dock id</param>
-        /// <param name="cond">The cond</param>
+        /// <param name="cond">The condition flag for the operation</param>
         public static void SetNextWindowDockId(uint dockId, ImGuiCond cond)
         {
             ImGuiNative.igSetNextWindowDockID(dockId, cond);
@@ -1154,7 +1154,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Sets the next window pos using the specified pos
         /// </summary>
         /// <param name="pos">The position in screen coordinates</param>
-        /// <param name="cond">The cond</param>
+        /// <param name="cond">The condition flag for the operation</param>
         public static void SetNextWindowPos(Vector2F pos, ImGuiCond cond)
         {
             Vector2F pivot = new Vector2F();
@@ -1165,7 +1165,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Sets the next window pos using the specified pos
         /// </summary>
         /// <param name="pos">The position in screen coordinates</param>
-        /// <param name="cond">The cond</param>
+        /// <param name="cond">The condition flag for the operation</param>
         /// <param name="pivot">The pivot</param>
         public static void SetNextWindowPos(Vector2F pos, ImGuiCond cond, Vector2F pivot)
         {
@@ -1195,7 +1195,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Sets the next window size using the specified size
         /// </summary>
         /// <param name="size">The size of the element in pixels</param>
-        /// <param name="cond">The cond</param>
+        /// <param name="cond">The condition flag for the operation</param>
         public static void SetNextWindowSize(Vector2F size, ImGuiCond cond)
         {
             ImGuiNative.igSetNextWindowSize(size, cond);
@@ -1362,7 +1362,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Sets the tooltip using the specified fmt
         /// </summary>
-        /// <param name="fmt">The fmt</param>
+        /// <param name="fmt">The format string</param>
         public static void SetTooltip(string fmt)
         {
             ImGuiNative.igSetTooltip(Encoding.UTF8.GetBytes(fmt));
@@ -1383,7 +1383,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Sets the window collapsed using the specified collapsed
         /// </summary>
         /// <param name="collapsed">The collapsed</param>
-        /// <param name="cond">The cond</param>
+        /// <param name="cond">The condition flag for the operation</param>
         public static void SetWindowCollapsed(bool collapsed, ImGuiCond cond)
         {
             byte nativeCollapsed = collapsed ? (byte) 1 : (byte) 0;
@@ -1393,7 +1393,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Sets the window collapsed using the specified name
         /// </summary>
-        /// <param name="name">The name</param>
+        /// <param name="name">The name identifier string</param>
         /// <param name="collapsed">The collapsed</param>
         public static void SetWindowCollapsed(string name, bool collapsed)
         {
@@ -1403,9 +1403,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Sets the window collapsed using the specified name
         /// </summary>
-        /// <param name="name">The name</param>
+        /// <param name="name">The name identifier string</param>
         /// <param name="collapsed">The collapsed</param>
-        /// <param name="cond">The cond</param>
+        /// <param name="cond">The condition flag for the operation</param>
         public static void SetWindowCollapsed(string name, bool collapsed, ImGuiCond cond)
         {
             ImGuiNative.igSetWindowCollapsed_Str(Encoding.UTF8.GetBytes(name), collapsed, cond);
@@ -1422,7 +1422,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Sets the window focus using the specified name
         /// </summary>
-        /// <param name="name">The name</param>
+        /// <param name="name">The name identifier string</param>
         public static void SetWindowFocus(string name)
         {
             ImGuiNative.igSetWindowFocus_Str(Encoding.UTF8.GetBytes(name));
@@ -1451,7 +1451,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Sets the window pos using the specified pos
         /// </summary>
         /// <param name="pos">The position in screen coordinates</param>
-        /// <param name="cond">The cond</param>
+        /// <param name="cond">The condition flag for the operation</param>
         public static void SetWindowPos(Vector2F pos, ImGuiCond cond)
         {
             ImGuiNative.igSetWindowPos_Vec2(pos, cond);
@@ -1460,7 +1460,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Sets the window pos using the specified name
         /// </summary>
-        /// <param name="name">The name</param>
+        /// <param name="name">The name identifier string</param>
         /// <param name="pos">The position in screen coordinates</param>
         public static void SetWindowPos(string name, Vector2F pos)
         {
@@ -1470,9 +1470,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Sets the window pos using the specified name
         /// </summary>
-        /// <param name="name">The name</param>
+        /// <param name="name">The name identifier string</param>
         /// <param name="pos">The position in screen coordinates</param>
-        /// <param name="cond">The cond</param>
+        /// <param name="cond">The condition flag for the operation</param>
         public static void SetWindowPos(string name, Vector2F pos, ImGuiCond cond)
         {
             ImGuiNative.igSetWindowPos_Str(Encoding.UTF8.GetBytes(name), pos, cond);
@@ -1492,7 +1492,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Sets the window size using the specified size
         /// </summary>
         /// <param name="size">The size of the element in pixels</param>
-        /// <param name="cond">The cond</param>
+        /// <param name="cond">The condition flag for the operation</param>
         public static void SetWindowSize(Vector2F size, ImGuiCond cond)
         {
             ImGuiNative.igSetWindowSize_Vec2(size, cond);
@@ -1501,7 +1501,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Sets the window size using the specified name
         /// </summary>
-        /// <param name="name">The name</param>
+        /// <param name="name">The name identifier string</param>
         /// <param name="size">The size of the element in pixels</param>
         public static void SetWindowSize(string name, Vector2F size)
         {
@@ -1511,9 +1511,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Sets the window size using the specified name
         /// </summary>
-        /// <param name="name">The name</param>
+        /// <param name="name">The name identifier string</param>
         /// <param name="size">The size of the element in pixels</param>
-        /// <param name="cond">The cond</param>
+        /// <param name="cond">The condition flag for the operation</param>
         public static void SetWindowSize(string name, Vector2F size, ImGuiCond cond)
         {
             ImGuiNative.igSetWindowSize_Str(Encoding.UTF8.GetBytes(name), size, cond);

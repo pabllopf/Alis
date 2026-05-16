@@ -63,13 +63,13 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         /// </summary>
         /// <param name="wrappedPtr"></param>
-        /// <returns></returns>
+        /// <returns>The converted wrapper instance</returns>
         public static implicit operator IntPtr(ImFontAtlasPtr wrappedPtr) => wrappedPtr.NativePtr;
 
         /// <summary>
         /// </summary>
         /// <param name="nativePtr"></param>
-        /// <returns></returns>
+        /// <returns>The converted wrapper instance</returns>
         public static implicit operator ImFontAtlasPtr(IntPtr nativePtr) => new ImFontAtlasPtr(nativePtr);
 
         /// <summary>
@@ -242,7 +242,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Adds the font using the specified font cfg
         /// </summary>
         /// <param name="fontCfg">The font cfg</param>
-        /// <returns>The im font ptr</returns>
+        /// <returns>The ImFont pointer instance</returns>
         public ImFontPtr AddFont(ImFontConfigPtr fontCfg)
         {
             IntPtr ret = ImGuiNative.ImFontAtlas_AddFont(NativePtr, fontCfg.NativePtr);
@@ -252,14 +252,14 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the font default
         /// </summary>
-        /// <returns>The im font ptr</returns>
+        /// <returns>The ImFont pointer instance</returns>
         public ImFontPtr AddFontDefault() => new ImFontPtr(ImGuiNative.ImFontAtlas_AddFontDefault(NativePtr, new IntPtr()));
 
         /// <summary>
         ///     Adds the font default using the specified font cfg
         /// </summary>
         /// <param name="fontCfg">The font cfg</param>
-        /// <returns>The im font ptr</returns>
+        /// <returns>The ImFont pointer instance</returns>
         public ImFontPtr AddFontDefault(ImFontConfigPtr fontCfg) => new ImFontPtr(ImGuiNative.ImFontAtlas_AddFontDefault(NativePtr, fontCfg.NativePtr));
 
         /// <summary>
@@ -267,7 +267,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="filename">The filename</param>
         /// <param name="sizePixels">The size pixels</param>
-        /// <returns>The im font ptr</returns>
+        /// <returns>The ImFont pointer instance</returns>
         public ImFontPtr AddFontFromFileTtf(string filename, float sizePixels)
         {
             IntPtr ret = ImGuiNative.ImFontAtlas_AddFontFromFileTTF(NativePtr, Encoding.UTF8.GetBytes(filename), sizePixels, new IntPtr(), new IntPtr());
@@ -281,7 +281,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="filename">The filename</param>
         /// <param name="sizePixels">The size pixels</param>
         /// <param name="fontCfg">The font cfg</param>
-        /// <returns>The im font ptr</returns>
+        /// <returns>The ImFont pointer instance</returns>
         public ImFontPtr AddFontFromFileTtf(string filename, float sizePixels, ImFontConfigPtr fontCfg)
         {
             IntPtr ret = ImGuiNative.ImFontAtlas_AddFontFromFileTTF(NativePtr, Encoding.UTF8.GetBytes(filename), sizePixels, fontCfg.NativePtr, new IntPtr());
@@ -295,7 +295,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="sizePixels">The size pixels</param>
         /// <param name="fontCfg">The font cfg</param>
         /// <param name="glyphRanges">The glyph ranges</param>
-        /// <returns>The im font ptr</returns>
+        /// <returns>The ImFont pointer instance</returns>
         public ImFontPtr AddFontFromFileTtf(string filename, float sizePixels, ImFontConfigPtr fontCfg, IntPtr glyphRanges)
         {
             IntPtr ret = ImGuiNative.ImFontAtlas_AddFontFromFileTTF(NativePtr, Encoding.UTF8.GetBytes(filename), sizePixels, fontCfg.NativePtr, glyphRanges);
@@ -308,7 +308,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="compressedFontDataBase85">The compressed font data base85</param>
         /// <param name="sizePixels">The size pixels</param>
-        /// <returns>The im font ptr</returns>
+        /// <returns>The ImFont pointer instance</returns>
         public ImFontPtr AddFontFromMemoryCompressedBase85Ttf(string compressedFontDataBase85, float sizePixels)
         {
             IntPtr ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryCompressedBase85TTF(NativePtr, Encoding.UTF8.GetBytes(compressedFontDataBase85), sizePixels, new IntPtr(), new IntPtr());
@@ -322,7 +322,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="compressedFontDataBase85">The compressed font data base85</param>
         /// <param name="sizePixels">The size pixels</param>
         /// <param name="fontCfg">The font cfg</param>
-        /// <returns>The im font ptr</returns>
+        /// <returns>The ImFont pointer instance</returns>
         public ImFontPtr AddFontFromMemoryCompressedBase85Ttf(string compressedFontDataBase85, float sizePixels, ImFontConfigPtr fontCfg)
         {
             IntPtr ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryCompressedBase85TTF(NativePtr, Encoding.UTF8.GetBytes(compressedFontDataBase85), sizePixels, fontCfg.NativePtr, new IntPtr());
@@ -336,7 +336,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="sizePixels">The size pixels</param>
         /// <param name="fontCfg">The font cfg</param>
         /// <param name="glyphRanges">The glyph ranges</param>
-        /// <returns>The im font ptr</returns>
+        /// <returns>The ImFont pointer instance</returns>
         public ImFontPtr AddFontFromMemoryCompressedBase85Ttf(string compressedFontDataBase85, float sizePixels, ImFontConfigPtr fontCfg, IntPtr glyphRanges)
         {
             IntPtr ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryCompressedBase85TTF(NativePtr, Encoding.UTF8.GetBytes(compressedFontDataBase85), sizePixels, fontCfg.NativePtr, glyphRanges);
@@ -350,7 +350,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="compressedFontData">The compressed font data</param>
         /// <param name="compressedFontSize">The compressed font size</param>
         /// <param name="sizePixels">The size pixels</param>
-        /// <returns>The im font ptr</returns>
+        /// <returns>The ImFont pointer instance</returns>
         public ImFontPtr AddFontFromMemoryCompressedTtf(IntPtr compressedFontData, int compressedFontSize, float sizePixels)
         {
             IntPtr ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryCompressedTTF(NativePtr, compressedFontData, compressedFontSize, sizePixels, new IntPtr(), new IntPtr());
@@ -364,7 +364,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="compressedFontSize">The compressed font size</param>
         /// <param name="sizePixels">The size pixels</param>
         /// <param name="fontCfg">The font cfg</param>
-        /// <returns>The im font ptr</returns>
+        /// <returns>The ImFont pointer instance</returns>
         public ImFontPtr AddFontFromMemoryCompressedTtf(IntPtr compressedFontData, int compressedFontSize, float sizePixels, ImFontConfigPtr fontCfg)
         {
             IntPtr ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryCompressedTTF(NativePtr, compressedFontData, compressedFontSize, sizePixels, fontCfg.NativePtr, new IntPtr());
@@ -379,7 +379,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="sizePixels">The size pixels</param>
         /// <param name="fontCfg">The font cfg</param>
         /// <param name="glyphRanges">The glyph ranges</param>
-        /// <returns>The im font ptr</returns>
+        /// <returns>The ImFont pointer instance</returns>
         public ImFontPtr AddFontFromMemoryCompressedTtf(IntPtr compressedFontData, int compressedFontSize, float sizePixels, ImFontConfigPtr fontCfg, IntPtr glyphRanges)
         {
             IntPtr nativeCompressedFontData = compressedFontData;
@@ -392,30 +392,30 @@ namespace Alis.Extension.Graphic.Ui
         ///     Adds the font from memory ttf using the specified font data
         /// </summary>
         /// <param name="fontData">The font data</param>
-        /// <param name="fontSize">The font size</param>
+        /// <param name="fontSize">The configured font size in pixels</param>
         /// <param name="sizePixels">The size pixels</param>
-        /// <returns>The im font ptr</returns>
+        /// <returns>The ImFont pointer instance</returns>
         public ImFontPtr AddFontFromMemoryTtf(IntPtr fontData, int fontSize, float sizePixels) => new ImFontPtr(ImGuiNative.ImFontAtlas_AddFontFromMemoryTTF(NativePtr, fontData, fontSize, sizePixels, new IntPtr(), new IntPtr()));
 
         /// <summary>
         ///     Adds the font from memory ttf using the specified font data
         /// </summary>
         /// <param name="fontData">The font data</param>
-        /// <param name="fontSize">The font size</param>
+        /// <param name="fontSize">The configured font size in pixels</param>
         /// <param name="sizePixels">The size pixels</param>
         /// <param name="fontCfg">The font cfg</param>
-        /// <returns>The im font ptr</returns>
+        /// <returns>The ImFont pointer instance</returns>
         public ImFontPtr AddFontFromMemoryTtf(IntPtr fontData, int fontSize, float sizePixels, ImFontConfigPtr fontCfg) => new ImFontPtr(ImGuiNative.ImFontAtlas_AddFontFromMemoryTTF(NativePtr, fontData, fontSize, sizePixels, fontCfg.NativePtr, new IntPtr()));
 
         /// <summary>
         ///     Adds the font from memory ttf using the specified font data
         /// </summary>
         /// <param name="fontData">The font data</param>
-        /// <param name="fontSize">The font size</param>
+        /// <param name="fontSize">The configured font size in pixels</param>
         /// <param name="sizePixels">The size pixels</param>
         /// <param name="fontCfg">The font cfg</param>
         /// <param name="glyphRanges">The glyph ranges</param>
-        /// <returns>The im font ptr</returns>
+        /// <returns>The ImFont pointer instance</returns>
         public ImFontPtr AddFontFromMemoryTtf(IntPtr fontData, int fontSize, float sizePixels, ImFontConfigPtr fontCfg, IntPtr glyphRanges)
         {
             IntPtr nativeFontData = fontData;
@@ -486,7 +486,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the glyph ranges chinese full
         /// </summary>
-        /// <returns>The int ptr</returns>
+        /// <returns>The native pointer to the structure</returns>
         public IntPtr GetGlyphRangesChineseFull()
         {
             IntPtr ret = ImGuiNative.ImFontAtlas_GetGlyphRangesChineseFull(NativePtr);
@@ -496,7 +496,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the glyph ranges chinese simplified common
         /// </summary>
-        /// <returns>The int ptr</returns>
+        /// <returns>The native pointer to the structure</returns>
         public IntPtr GetGlyphRangesChineseSimplifiedCommon()
         {
             IntPtr ret = ImGuiNative.ImFontAtlas_GetGlyphRangesChineseSimplifiedCommon(NativePtr);
@@ -506,7 +506,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the glyph ranges cyrillic
         /// </summary>
-        /// <returns>The int ptr</returns>
+        /// <returns>The native pointer to the structure</returns>
         public IntPtr GetGlyphRangesCyrillic()
         {
             IntPtr ret = ImGuiNative.ImFontAtlas_GetGlyphRangesCyrillic(NativePtr);
@@ -516,7 +516,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the glyph ranges default
         /// </summary>
-        /// <returns>The int ptr</returns>
+        /// <returns>The native pointer to the structure</returns>
         public IntPtr GetGlyphRangesDefault()
         {
             IntPtr ret = ImGuiNative.ImFontAtlas_GetGlyphRangesDefault(NativePtr);
@@ -526,7 +526,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the glyph ranges greek
         /// </summary>
-        /// <returns>The int ptr</returns>
+        /// <returns>The native pointer to the structure</returns>
         public IntPtr GetGlyphRangesGreek()
         {
             IntPtr ret = ImGuiNative.ImFontAtlas_GetGlyphRangesGreek(NativePtr);
@@ -536,7 +536,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the glyph ranges japanese
         /// </summary>
-        /// <returns>The int ptr</returns>
+        /// <returns>The native pointer to the structure</returns>
         public IntPtr GetGlyphRangesJapanese()
         {
             IntPtr ret = ImGuiNative.ImFontAtlas_GetGlyphRangesJapanese(NativePtr);
@@ -546,7 +546,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the glyph ranges korean
         /// </summary>
-        /// <returns>The int ptr</returns>
+        /// <returns>The native pointer to the structure</returns>
         public IntPtr GetGlyphRangesKorean()
         {
             IntPtr ret = ImGuiNative.ImFontAtlas_GetGlyphRangesKorean(NativePtr);
@@ -556,13 +556,13 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the glyph ranges thai
         /// </summary>
-        /// <returns>The int ptr</returns>
+        /// <returns>The native pointer to the structure</returns>
         public IntPtr GetGlyphRangesThai() => ImGuiNative.ImFontAtlas_GetGlyphRangesThai(NativePtr);
 
         /// <summary>
         ///     Gets the glyph ranges vietnamese
         /// </summary>
-        /// <returns>The int ptr</returns>
+        /// <returns>The native pointer to the structure</returns>
         public IntPtr GetGlyphRangesVietnamese() => ImGuiNative.ImFontAtlas_GetGlyphRangesVietnamese(NativePtr);
 
         /// <summary>

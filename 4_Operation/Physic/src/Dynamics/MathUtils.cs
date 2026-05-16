@@ -39,12 +39,12 @@ namespace Alis.Core.Physic.Dynamics
     public static class MathUtils
     {
         /// <summary>
-        ///     Gets or sets the value of the epsilon
+        ///     A small epsilon value used for floating-point comparisons.
         /// </summary>
         public static float Epsilon { get; set; } = 1e-6f;
 
         /// <summary>
-        ///     Crosses the a
+        ///     Computes the 2D cross product (scalar) of two vectors: a x b = a.X * b.Y - a.Y * b.X.
         /// </summary>
         /// <param name="a">The first vector.</param>
         /// <param name="b">The second vector.</param>
@@ -52,57 +52,59 @@ namespace Alis.Core.Physic.Dynamics
         public static float Cross(ref Vector2F a, ref Vector2F b) => a.X * b.Y - a.Y * b.X;
 
         /// <summary>
-        ///     Crosses the a
+        ///     Computes the 2D cross product (scalar) of two vectors (by-value overload).
         /// </summary>
-        /// <param name="a">The </param>
-        /// <param name="b">The </param>
-        /// <returns>The float</returns>
+        /// <param name="a">The first vector.</param>
+        /// <param name="b">The second vector.</param>
+        /// <returns>The scalar cross product.</returns>
         public static float Cross(Vector2F a, Vector2F b) => Cross(ref a, ref b);
 
-        /// Perform the cross product on two vectors.
+        /// <summary>
+        ///     Computes the 3D cross product of two 3D vectors.
+        /// </summary>
         public static Vector3F Cross(ref Vector3F a, ref Vector3F b) => new Vector3F(a.Y * b.Z - a.Z * b.Y,
             a.Z * b.X - a.X * b.Z,
             a.X * b.Y - a.Y * b.X);
 
         /// <summary>
-        ///     Crosses the a
+        ///     Computes the cross product of a 2D vector with a scalar (returns a perpendicular vector).
         /// </summary>
-        /// <param name="a">The </param>
-        /// <param name="s">The </param>
-        /// <returns>The vector</returns>
+        /// <param name="a">The input vector.</param>
+        /// <param name="s">The scalar.</param>
+        /// <returns>The resulting perpendicular vector.</returns>
         public static Vector2F Cross(Vector2F a, float s) => new Vector2F(s * a.Y, -s * a.X);
 
         /// <summary>
-        ///     Rots the 270 using the specified a
+        ///     Rotates the vector by 270 degrees counter-clockwise (equivalent to -90 degrees).
         /// </summary>
-        /// <param name="a">The </param>
-        /// <returns>The vector</returns>
+        /// <param name="a">The input vector.</param>
+        /// <returns>The rotated vector.</returns>
         public static Vector2F Rot270(ref Vector2F a) => new Vector2F(a.Y, -a.X);
 
         /// <summary>
-        ///     Crosses the s
+        ///     Computes the cross product of a scalar with a 2D vector.
         /// </summary>
-        /// <param name="s">The </param>
-        /// <param name="a">The </param>
-        /// <returns>The vector</returns>
+        /// <param name="s">The scalar.</param>
+        /// <param name="a">The input vector.</param>
+        /// <returns>The resulting perpendicular vector.</returns>
         public static Vector2F Cross(float s, ref Vector2F a) => new Vector2F(-s * a.Y, s * a.X);
 
         /// <summary>
-        ///     Rots the 90 using the specified a
+        ///     Rotates the vector by 90 degrees counter-clockwise.
         /// </summary>
-        /// <param name="a">The </param>
-        /// <returns>The vector</returns>
+        /// <param name="a">The input vector.</param>
+        /// <returns>The rotated vector.</returns>
         public static Vector2F Rot90(ref Vector2F a) => new Vector2F(-a.Y, a.X);
 
         /// <summary>
-        ///     Abses the v
+        ///     Returns a vector with the absolute values of each component.
         /// </summary>
-        /// <param name="v">The </param>
-        /// <returns>The vector</returns>
+        /// <param name="v">The input vector.</param>
+        /// <returns>The vector with absolute component values.</returns>
         public static Vector2F Abs(Vector2F v) => new Vector2F(Math.Abs(v.X), Math.Abs(v.Y));
 
         /// <summary>
-        ///     Muls the a
+        ///     Multiplies a 2x2 matrix by a 2D vector (by-value overload).
         /// </summary>
         /// <param name="a">The matrix.</param>
         /// <param name="v">The vector.</param>
@@ -110,39 +112,40 @@ namespace Alis.Core.Physic.Dynamics
         public static Vector2F Mul(ref Mat22 a, Vector2F v) => Mul(ref a, ref v);
 
         /// <summary>
-        ///     Muls the a
+        ///     Multiplies a 2x2 matrix by a 2D vector (by-ref overload).
         /// </summary>
-        /// <param name="a">The </param>
-        /// <param name="v">The </param>
-        /// <returns>The vector</returns>
+        /// <param name="a">The matrix.</param>
+        /// <param name="v">The vector.</param>
+        /// <returns>The multiplied vector.</returns>
         public static Vector2F Mul(ref Mat22 a, ref Vector2F v) => new Vector2F(a.Ex.X * v.X + a.Ey.X * v.Y, a.Ex.Y * v.X + a.Ey.Y * v.Y);
 
         /// <summary>
-        ///     Muls the t using the specified a
+        ///     Multiplies the transpose of a 2x2 matrix by a 2D vector (by-value overload).
         /// </summary>
-        /// <param name="a">The </param>
-        /// <param name="v">The </param>
-        /// <returns>The vector</returns>
+        /// <param name="a">The matrix.</param>
+        /// <param name="v">The vector.</param>
+        /// <returns>The resulting vector.</returns>
         public static Vector2F MulT(ref Mat22 a, Vector2F v) => MulT(ref a, ref v);
 
         /// <summary>
-        ///     Muls the t using the specified a
+        ///     Multiplies the transpose of a 2x2 matrix by a 2D vector (by-ref overload).
         /// </summary>
-        /// <param name="a">The </param>
-        /// <param name="v">The </param>
-        /// <returns>The vector</returns>
+        /// <param name="a">The matrix.</param>
+        /// <param name="v">The vector.</param>
+        /// <returns>The resulting vector.</returns>
         public static Vector2F MulT(ref Mat22 a, ref Vector2F v) => new Vector2F(v.X * a.Ex.X + v.Y * a.Ex.Y, v.X * a.Ey.X + v.Y * a.Ey.Y);
 
-
-        /// Multiply a matrix times a vector.
+        /// <summary>
+        ///     Multiplies a 3x3 matrix by a 3D vector.
+        /// </summary>
         public static Vector3F Mul(Mat33 a, Vector3F v) => v.X * a.Ex + v.Y * a.Ey + v.Z * a.Ez;
 
         /// <summary>
-        ///     Swaps the a
+        ///     Swaps two values of the same type.
         /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="a">The </param>
-        /// <param name="b">The </param>
+        /// <typeparam name="T">The type of the values to swap.</typeparam>
+        /// <param name="a">First value.</param>
+        /// <param name="b">Second value.</param>
         public static void Swap<T>(ref T a, ref T b)
         {
             T tmp = a;

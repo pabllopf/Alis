@@ -38,12 +38,12 @@ namespace Alis.Core.Physic.Dynamics
     public struct Complex
     {
         /// <summary>
-        ///     The
+        ///     The real component of the complex number.
         /// </summary>
         public float R;
 
         /// <summary>
-        ///     The
+        ///     The imaginary component of the complex number.
         /// </summary>
         public float I;
 

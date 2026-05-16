@@ -39,22 +39,22 @@ namespace Alis.Core.Physic.Dynamics
     public struct FixtureProxy
     {
         /// <summary>
-        ///     The aabb
+        ///     The axis-aligned bounding box for this proxy, used for broad-phase collision detection.
         /// </summary>
         public Aabb Aabb;
 
         /// <summary>
-        ///     The child index
+        ///     The child index of the shape associated with this proxy.
         /// </summary>
         public int ChildIndex;
 
         /// <summary>
-        ///     The fixture
+        ///     The fixture that owns this proxy.
         /// </summary>
         public Fixture Fixture;
 
         /// <summary>
-        ///     The proxy id
+        ///     The proxy ID in the broad-phase tree.
         /// </summary>
         public int ProxyId;
     }

@@ -34,7 +34,7 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Extension.Graphic.Ui
 {
     /// <summary>
-    ///     The im gui class
+    ///     The ImGui wrapper class providing managed access to native Dear ImGui functionality
     /// </summary>
     public static partial class ImGui
     {
@@ -363,7 +363,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Styles the colors classic using the specified dst
         /// </summary>
-        /// <param name="dst">The dst</param>
+        /// <param name="dst">The destination object to write into</param>
         public static void StyleColorsClassic(ImGuiStyle dst)
         {
             ImGuiNative.igStyleColorsClassic(dst);
@@ -380,7 +380,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Styles the colors dark using the specified dst
         /// </summary>
-        /// <param name="dst">The dst</param>
+        /// <param name="dst">The destination object to write into</param>
         public static void StyleColorsDark(ImGuiStyle dst)
         {
             ImGuiNative.igStyleColorsDark(dst);
@@ -397,7 +397,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Styles the colors light using the specified dst
         /// </summary>
-        /// <param name="dst">The dst</param>
+        /// <param name="dst">The destination object to write into</param>
         public static void StyleColorsLight(ImGuiStyle dst)
         {
             ImGuiNative.igStyleColorsLight(dst);
@@ -471,7 +471,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Tables the get column name
         /// </summary>
-        /// <returns>the string result from the native function</returns>
+        /// <returns>The string result from the native function</returns>
         public static string TableGetColumnName()
         {
             int columnN = -1;
@@ -482,7 +482,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Tables the get column name using the specified column n
         /// </summary>
         /// <param name="columnN">The column index</param>
-        /// <returns>the string result from the native function</returns>
+        /// <returns>The string result from the native function</returns>
         public static string TableGetColumnName(int columnN) => Encoding.UTF8.GetString(ImGuiNative.igTableGetColumnName_Int(columnN));
 
         /// <summary>
@@ -498,7 +498,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Tables the get sort specs
         /// </summary>
-        /// <returns>The im gui table sort specs ptr</returns>
+        /// <returns>The ImGui table sort specifications pointer</returns>
         public static ImGuiTableSortSpecs TableGetSortSpecs() => ImGuiNative.igTableGetSortSpecs();
 
         /// <summary>
@@ -622,7 +622,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Ims the font config
         /// </summary>
-        /// <returns>The im font config ptr</returns>
+        /// <returns>The ImFontConfig pointer</returns>
         public static ImFontConfigPtr ImFontConfig() => ImGuiNative.ImFontConfig_ImFontConfig();
 
         /// <summary>
@@ -662,7 +662,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="p2">The second point coordinate</param>
         /// <param name="p3">The third point coordinate</param>
         /// <param name="dockIdRight">The resulting right-side dock identifier</param>
-        /// <returns>the unsigned integer result</returns>
+        /// <returns>The unsigned integer result</returns>
         public static uint DockBuilderSplitNode(uint dockMainId, ImGuiDir left, float p2, object p3, out uint dockIdRight) => ImGuiNative.igDockBuilderSplitNode(dockMainId, left, p2, IntPtr.Zero, out dockIdRight);
 
         /// <summary>

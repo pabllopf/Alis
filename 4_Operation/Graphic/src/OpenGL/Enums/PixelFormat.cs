@@ -35,147 +35,147 @@ namespace Alis.Core.Graphic.OpenGL.Enums
     public enum PixelFormat
     {
         /// <summary>
-        ///     The color index pixel format
+        ///     Color-indexed pixel data (GL_COLOR_INDEX)
         /// </summary>
         ColorIndex = 0x1900,
 
         /// <summary>
-        ///     The stencil index pixel format
+        ///     Stencil index pixel data (GL_STENCIL_INDEX)
         /// </summary>
         StencilIndex = 0x1901,
 
         /// <summary>
-        ///     The depth component pixel format
+        ///     Depth component pixel data (GL_DEPTH_COMPONENT)
         /// </summary>
         DepthComponent = 0x1902,
 
         /// <summary>
-        ///     The red pixel format
+        ///     Red color channel pixel data (GL_RED)
         /// </summary>
         Red = 0x1903,
 
         /// <summary>
-        ///     The green pixel format
+        ///     Green color channel pixel data (GL_GREEN)
         /// </summary>
         Green = 0x1904,
 
         /// <summary>
-        ///     The blue pixel format
+        ///     Blue color channel pixel data (GL_BLUE)
         /// </summary>
         Blue = 0x1905,
 
         /// <summary>
-        ///     The alpha pixel format
+        ///     Alpha transparency channel pixel data (GL_ALPHA)
         /// </summary>
         Alpha = 0x1906,
 
         /// <summary>
-        ///     The rgb pixel format
+        ///     RGB color pixel data (GL_RGB)
         /// </summary>
         Rgb = 0x1907,
 
         /// <summary>
-        ///     The rgba pixel format
+        ///     RGBA color pixel data with alpha (GL_RGBA)
         /// </summary>
         Rgba = 0x1908,
 
         /// <summary>
-        ///     The luminance pixel format
+        ///     Luminance (grayscale) pixel data (GL_LUMINANCE)
         /// </summary>
         Luminance = 0x1909,
 
         /// <summary>
-        ///     The luminance alpha pixel format
+        ///     Luminance with alpha pixel data (GL_LUMINANCE_ALPHA)
         /// </summary>
         LuminanceAlpha = 0x190A,
 
         /// <summary>
-        ///     The abgr ext pixel format
+        ///     ABGR pixel format extension (GL_ABGR_EXT)
         /// </summary>
         AbgrExt = 0x8000,
 
         /// <summary>
-        ///     The cmyk ext pixel format
+        ///     CMYK pixel format extension (GL_CMYK_EXT)
         /// </summary>
         CmykExt = 0x800C,
 
         /// <summary>
-        ///     The cmyka ext pixel format
+        ///     CMYKA pixel format extension (GL_CMYKA_EXT)
         /// </summary>
         CmykaExt = 0x800D,
 
         /// <summary>
-        ///     The bgr pixel format
+        ///     Blue-green-red pixel data (GL_BGR)
         /// </summary>
         Bgr = 0x80E0,
 
         /// <summary>
-        ///     The bgra pixel format
+        ///     Blue-green-red-alpha pixel data (GL_BGRA)
         /// </summary>
         Bgra = 0x80E1,
 
         /// <summary>
-        ///     The ycrcb 422 sgix pixel format
+        ///     YCrCb 4:2:2 pixel format, SGIX (GL_YCRCB_422_SGIX)
         /// </summary>
         Ycrcb422Sgix = 0x81BB,
 
         /// <summary>
-        ///     The ycrcb 444 sgix pixel format
+        ///     YCrCb 4:4:4 pixel format, SGIX (GL_YCRCB_444_SGIX)
         /// </summary>
         Ycrcb444Sgix = 0x81BC,
 
         /// <summary>
-        ///     The rg pixel format
+        ///     Red-green two-component pixel data (GL_RG)
         /// </summary>
         Rg = 0x8227,
 
         /// <summary>
-        ///     The rg integer pixel format
+        ///     Red-green integer pixel data (GL_RG_INTEGER)
         /// </summary>
         RgInteger = 0x8228,
 
         /// <summary>
-        ///     The depth stencil pixel format
+        ///     Depth and stencil packed pixel data (GL_DEPTH_STENCIL)
         /// </summary>
         DepthStencil = 0x84F9,
 
         /// <summary>
-        ///     The red integer pixel format
+        ///     Red integer channel pixel data (GL_RED_INTEGER)
         /// </summary>
         RedInteger = 0x8D94,
 
         /// <summary>
-        ///     The green integer pixel format
+        ///     Green integer channel pixel data (GL_GREEN_INTEGER)
         /// </summary>
         GreenInteger = 0x8D95,
 
         /// <summary>
-        ///     The blue integer pixel format
+        ///     Blue integer channel pixel data (GL_BLUE_INTEGER)
         /// </summary>
         BlueInteger = 0x8D96,
 
         /// <summary>
-        ///     The alpha integer pixel format
+        ///     Alpha integer channel pixel data (GL_ALPHA_INTEGER)
         /// </summary>
         AlphaInteger = 0x8D97,
 
         /// <summary>
-        ///     The rgb integer pixel format
+        ///     RGB integer pixel data (GL_RGB_INTEGER)
         /// </summary>
         RgbInteger = 0x8D98,
 
         /// <summary>
-        ///     The rgba integer pixel format
+        ///     RGBA integer pixel data (GL_RGBA_INTEGER)
         /// </summary>
         RgbaInteger = 0x8D99,
 
         /// <summary>
-        ///     The bgr integer pixel format
+        ///     BGR integer pixel data (GL_BGR_INTEGER)
         /// </summary>
         BgrInteger = 0x8D9A,
 
         /// <summary>
-        ///     The bgra integer pixel format
+        ///     BGRA integer pixel data (GL_BGRA_INTEGER)
         /// </summary>
         BgraInteger = 0x8D9B
     }

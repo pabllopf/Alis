@@ -65,12 +65,12 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         private struct ContactEnumerator : IEnumerator<Contact>
         {
             /// <summary>
-            ///     The head
+            ///     The head of the contact list being enumerated.
             /// </summary>
             private ContactListHead _head;
 
             /// <summary>
-            ///     Gets or sets the value of the current
+            ///     The current contact in the enumeration sequence.
             /// </summary>
             public Contact Current { get; private set; }
 

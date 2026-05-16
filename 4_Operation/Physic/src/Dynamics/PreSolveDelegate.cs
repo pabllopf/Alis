@@ -35,5 +35,7 @@ namespace Alis.Core.Physic.Dynamics
     /// <summary>
     ///     The pre solve delegate
     /// </summary>
+    /// <param name="contact">The contact about to be solved.</param>
+    /// <param name="oldManifold">The manifold state from the previous time step, used for warm starting.</param>
     public delegate void PreSolveDelegate(Contact contact, ref Manifold oldManifold);
 }

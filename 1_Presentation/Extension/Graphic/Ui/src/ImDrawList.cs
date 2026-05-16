@@ -57,7 +57,7 @@ namespace Alis.Extension.Graphic.Ui
         public ImDrawListFlags Flags { get; set; }
 
         /// <summary>
-        ///     The vtx current idx
+        ///     The current vertex index for the draw list
         /// </summary>
         public uint VtxCurrentIdx { get; set; }
 
@@ -67,27 +67,27 @@ namespace Alis.Extension.Graphic.Ui
         public IntPtr Data { get; set; }
 
         /// <summary>
-        ///     The owner name
+        ///     The owner display name for the draw list
         /// </summary>
         public IntPtr OwnerName { get; set; }
 
         /// <summary>
-        ///     The vtx write ptr
+        ///     Write pointer for vertex data
         /// </summary>
         public IntPtr VtxWritePtr { get; set; }
 
         /// <summary>
-        ///     The idx write ptr
+        ///     Write pointer for index data
         /// </summary>
         public IntPtr IdxWritePtr { get; set; }
 
         /// <summary>
-        ///     The clip rect stack
+        ///     Stack of active clipping rectangles
         /// </summary>
         public ImVector ClipRectStack { get; set; }
 
         /// <summary>
-        ///     The texture id stack
+        ///     Stack of active texture identifiers
         /// </summary>
         public ImVector TextureIdStack { get; set; }
 
@@ -97,7 +97,7 @@ namespace Alis.Extension.Graphic.Ui
         public ImVector Path { get; set; }
 
         /// <summary>
-        ///     The cmd header
+        ///     The current draw command header
         /// </summary>
         public ImDrawCmdHeader CmdHeader { get; set; }
 
@@ -107,7 +107,7 @@ namespace Alis.Extension.Graphic.Ui
         public ImDrawListSplitter Splitter { get; set; }
 
         /// <summary>
-        ///     The fringe scale
+        ///     The anti-aliasing fringe scale factor
         /// </summary>
         public float FringeScale { get; set; }
     }

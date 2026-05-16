@@ -56,7 +56,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         /// <summary>
         ///     The sheer
         /// </summary>
-        private readonly float _sheer = 0.001f;
+        private readonly float _sheer;
 
         /// <summary>
         ///     The trapezoidal map

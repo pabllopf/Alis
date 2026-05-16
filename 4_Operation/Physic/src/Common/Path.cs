@@ -299,7 +299,7 @@ namespace Alis.Core.Physic.Common
             {
                 int p = (int) (time / _deltaT);
 
-                // 
+                // Calculate interpolation indices
                 int p0 = p - 1;
                 if (p0 < 0)
                 {

@@ -35,32 +35,32 @@ namespace Alis.Core.Graphic.OpenGL.Enums
     public enum ShaderType
     {
         /// <summary>
-        ///     The fragment shader shader type
+        ///     Fragment (pixel) shader type (GL_FRAGMENT_SHADER)
         /// </summary>
         FragmentShader = 0x8B30,
 
         /// <summary>
-        ///     The vertex shader shader type
+        ///     Vertex shader type (GL_VERTEX_SHADER)
         /// </summary>
         VertexShader = 0x8B31,
 
         /// <summary>
-        ///     The geometry shader shader type
+        ///     Geometry shader type (GL_GEOMETRY_SHADER)
         /// </summary>
         GeometryShader = 0x8DD9,
 
         /// <summary>
-        ///     The tess control shader shader type
+        ///     Tessellation control shader type (GL_TESS_CONTROL_SHADER)
         /// </summary>
         TessControlShader = 0x8E88,
 
         /// <summary>
-        ///     The tess evaluation shader shader type
+        ///     Tessellation evaluation shader type (GL_TESS_EVALUATION_SHADER)
         /// </summary>
         TessEvaluationShader = 0x8E87,
 
         /// <summary>
-        ///     The compute shader shader type
+        ///     Compute shader type for general-purpose GPU work (GL_COMPUTE_SHADER)
         /// </summary>
         ComputeShader = 0x91B9
     }

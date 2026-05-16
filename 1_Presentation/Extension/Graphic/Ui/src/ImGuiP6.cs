@@ -34,7 +34,7 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Extension.Graphic.Ui
 {
     /// <summary>
-    ///     The im gui class
+    ///     The ImGui wrapper class providing managed access to native Dear ImGui functionality
     /// </summary>
     public static partial class ImGui
     {
@@ -554,7 +554,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is key down
         /// </summary>
-        /// <param name="key">The key</param>
+        /// <param name="key">The lookup key</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool IsKeyDown(ImGuiKey key)
         {
@@ -565,7 +565,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is key pressed
         /// </summary>
-        /// <param name="key">The key</param>
+        /// <param name="key">The lookup key</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool IsKeyPressed(ImGuiKey key)
         {
@@ -577,7 +577,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is key pressed
         /// </summary>
-        /// <param name="key">The key</param>
+        /// <param name="key">The lookup key</param>
         /// <param name="repeat">The repeat</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool IsKeyPressed(ImGuiKey key, bool repeat)
@@ -590,7 +590,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is key released
         /// </summary>
-        /// <param name="key">The key</param>
+        /// <param name="key">The lookup key</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool IsKeyReleased(ImGuiKey key)
         {
@@ -601,7 +601,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is mouse clicked
         /// </summary>
-        /// <param name="button">The button</param>
+        /// <param name="button">The mouse button index</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool IsMouseClicked(ImGuiMouseButton button)
         {
@@ -613,7 +613,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is mouse clicked
         /// </summary>
-        /// <param name="button">The button</param>
+        /// <param name="button">The mouse button index</param>
         /// <param name="repeat">The repeat</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool IsMouseClicked(ImGuiMouseButton button, bool repeat)
@@ -626,7 +626,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is mouse double clicked
         /// </summary>
-        /// <param name="button">The button</param>
+        /// <param name="button">The mouse button index</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool IsMouseDoubleClicked(ImGuiMouseButton button)
         {
@@ -637,7 +637,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is mouse down
         /// </summary>
-        /// <param name="button">The button</param>
+        /// <param name="button">The mouse button index</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool IsMouseDown(ImGuiMouseButton button)
         {
@@ -648,7 +648,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is mouse dragging
         /// </summary>
-        /// <param name="button">The button</param>
+        /// <param name="button">The mouse button index</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool IsMouseDragging(ImGuiMouseButton button)
         {
@@ -660,7 +660,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is mouse dragging
         /// </summary>
-        /// <param name="button">The button</param>
+        /// <param name="button">The mouse button index</param>
         /// <param name="lockThreshold">The lock threshold</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool IsMouseDragging(ImGuiMouseButton button, float lockThreshold)
@@ -721,7 +721,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether is mouse released
         /// </summary>
-        /// <param name="button">The button</param>
+        /// <param name="button">The mouse button index</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool IsMouseReleased(ImGuiMouseButton button)
         {
@@ -854,7 +854,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Labels the text using the specified label
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="fmt">The fmt</param>
+        /// <param name="fmt">The format string</param>
         public static void LabelText(string label, string fmt)
         {
             ImGuiNative.igLabelText(Encoding.UTF8.GetBytes(label), Encoding.UTF8.GetBytes(fmt));
@@ -949,7 +949,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Logs the text using the specified fmt
         /// </summary>
-        /// <param name="fmt">The fmt</param>
+        /// <param name="fmt">The format string</param>
         public static void LogText(string fmt)
         {
             ImGuiNative.igLogText(Encoding.UTF8.GetBytes(fmt));
@@ -1023,7 +1023,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Mems the alloc using the specified size
         /// </summary>
         /// <param name="size">The size of the element in pixels</param>
-        /// <returns>The int ptr</returns>
+        /// <returns>The native pointer to the structure</returns>
         public static IntPtr MemAlloc(uint size)
         {
             IntPtr ret = ImGuiNative.igMemAlloc(size);

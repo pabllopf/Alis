@@ -50,25 +50,25 @@ namespace Alis.Extension.Graphic.Glfw.Structs
         }
 
         /// <summary>
-        ///     Gets the value of the width
+        ///     Gets the width of the image in pixels.
         /// </summary>
         public int Width { get; }
 
         /// <summary>
-        ///     Gets the value of the height
+        ///     Gets the height of the image in pixels.
         /// </summary>
         public int Height { get; }
 
         /// <summary>
-        ///     Gets the value of the data
+        ///     Gets the raw pixel data in RGBA format.
         /// </summary>
         public byte[] Data { get; }
 
         /// <summary>
-        ///     Loads the path
+        ///     Loads a BMP image from the specified file path and converts it to RGBA pixel data.
         /// </summary>
-        /// <param name="path">The path</param>
-        /// <returns>The sprite</returns>
+        /// <param name="path">The file path to the BMP image.</param>
+        /// <returns>The <see cref="Image" /> containing the loaded pixel data, or <c>null</c> if the file is not a valid BMP or an error occurred.</returns>
         public static Image Load(string path)
         {
             using (FileStream stream = new FileStream(path, FileMode.Open, FileAccess.Read))

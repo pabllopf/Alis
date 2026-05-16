@@ -34,7 +34,7 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Extension.Graphic.Ui
 {
     /// <summary>
-    ///     The im gui class
+    ///     The ImGui wrapper class providing managed access to native Dear ImGui functionality
     /// </summary>
     public static partial class ImGui
     {
@@ -74,8 +74,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Tables the setup scroll freeze using the specified cols
         /// </summary>
-        /// <param name="cols">The cols</param>
-        /// <param name="rows">The rows</param>
+        /// <param name="cols">The number of columns</param>
+        /// <param name="rows">The number of rows</param>
         public static void TableSetupScrollFreeze(int cols, int rows)
         {
             ImGuiNative.igTableSetupScrollFreeze(cols, rows);
@@ -84,7 +84,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Texts the fmt
         /// </summary>
-        /// <param name="fmt">The fmt</param>
+        /// <param name="fmt">The format string</param>
         public static void Text(string fmt)
         {
             ImGuiNative.igText(Encoding.UTF8.GetBytes(fmt));
@@ -93,8 +93,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Texts the colored using the specified col
         /// </summary>
-        /// <param name="col">The col</param>
-        /// <param name="fmt">The fmt</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
+        /// <param name="fmt">The format string</param>
         public static void TextColored(Vector4F col, string fmt)
         {
             ImGuiNative.igTextColored(col, Encoding.UTF8.GetBytes(fmt));
@@ -103,7 +103,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Texts the disabled using the specified fmt
         /// </summary>
-        /// <param name="fmt">The fmt</param>
+        /// <param name="fmt">The format string</param>
         public static void TextDisabled(string fmt)
         {
             ImGuiNative.igTextDisabled(Encoding.UTF8.GetBytes(fmt));
@@ -122,7 +122,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Texts the wrapped using the specified fmt
         /// </summary>
-        /// <param name="fmt">The fmt</param>
+        /// <param name="fmt">The format string</param>
         public static void TextWrapped(string fmt)
         {
             ImGuiNative.igTextWrapped(Encoding.UTF8.GetBytes(fmt));
@@ -143,7 +143,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether tree node
         /// </summary>
         /// <param name="strId">The string identifier for the element</param>
-        /// <param name="fmt">The fmt</param>
+        /// <param name="fmt">The format string</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool TreeNode(string strId, string fmt)
         {
@@ -155,7 +155,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether tree node
         /// </summary>
         /// <param name="ptrId">The ptr id</param>
-        /// <param name="fmt">The fmt</param>
+        /// <param name="fmt">The format string</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool TreeNode(IntPtr ptrId, string fmt)
         {
@@ -191,7 +191,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="strId">The string identifier for the element</param>
         /// <param name="flags">The ImGui behavior flags</param>
-        /// <param name="fmt">The fmt</param>
+        /// <param name="fmt">The format string</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool TreeNodeEx(string strId, ImGuiTreeNodeFlags flags, string fmt)
         {
@@ -204,7 +204,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="ptrId">The ptr id</param>
         /// <param name="flags">The ImGui behavior flags</param>
-        /// <param name="fmt">The fmt</param>
+        /// <param name="fmt">The format string</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool TreeNodeEx(IntPtr ptrId, ImGuiTreeNodeFlags flags, string fmt)
         {
@@ -775,7 +775,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Calcs the text size using the specified text
         /// </summary>
         /// <param name="text">The text content to display</param>
-        /// <returns>The vector</returns>
+        /// <returns>The resulting vector value</returns>
         public static Vector2F CalcTextSize(string text)
             => CalcTextSizeImpl(text);
 
@@ -783,8 +783,8 @@ namespace Alis.Extension.Graphic.Ui
         ///     Calcs the text size using the specified text
         /// </summary>
         /// <param name="text">The text content to display</param>
-        /// <param name="start">The start</param>
-        /// <returns>The vector</returns>
+        /// <param name="start">The starting value/index</param>
+        /// <returns>The resulting vector value</returns>
         public static Vector2F CalcTextSize(string text, int start)
             => CalcTextSizeImpl(text, start);
 
@@ -793,7 +793,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="text">The text content to display</param>
         /// <param name="wrapWidth">The wrap width</param>
-        /// <returns>The vector</returns>
+        /// <returns>The resulting vector value</returns>
         public static Vector2F CalcTextSize(string text, float wrapWidth)
             => CalcTextSizeImpl(text, wrapWidth: wrapWidth);
 
@@ -802,7 +802,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="text">The text content to display</param>
         /// <param name="hideTextAfterDoubleHash">The hide text after double hash</param>
-        /// <returns>The vector</returns>
+        /// <returns>The resulting vector value</returns>
         public static Vector2F CalcTextSize(string text, bool hideTextAfterDoubleHash)
             => CalcTextSizeImpl(text, hideTextAfterDoubleHash: hideTextAfterDoubleHash);
 
@@ -810,9 +810,9 @@ namespace Alis.Extension.Graphic.Ui
         ///     Calcs the text size using the specified text
         /// </summary>
         /// <param name="text">The text content to display</param>
-        /// <param name="start">The start</param>
-        /// <param name="length">The length</param>
-        /// <returns>The vector</returns>
+        /// <param name="start">The starting value/index</param>
+        /// <param name="length">The length value</param>
+        /// <returns>The resulting vector value</returns>
         public static Vector2F CalcTextSize(string text, int start, int length)
             => CalcTextSizeImpl(text, start, length);
 
@@ -820,9 +820,9 @@ namespace Alis.Extension.Graphic.Ui
         ///     Calcs the text size using the specified text
         /// </summary>
         /// <param name="text">The text content to display</param>
-        /// <param name="start">The start</param>
+        /// <param name="start">The starting value/index</param>
         /// <param name="hideTextAfterDoubleHash">The hide text after double hash</param>
-        /// <returns>The vector</returns>
+        /// <returns>The resulting vector value</returns>
         public static Vector2F CalcTextSize(string text, int start, bool hideTextAfterDoubleHash)
             => CalcTextSizeImpl(text, start, hideTextAfterDoubleHash: hideTextAfterDoubleHash);
 
@@ -830,9 +830,9 @@ namespace Alis.Extension.Graphic.Ui
         ///     Calcs the text size using the specified text
         /// </summary>
         /// <param name="text">The text content to display</param>
-        /// <param name="start">The start</param>
+        /// <param name="start">The starting value/index</param>
         /// <param name="wrapWidth">The wrap width</param>
-        /// <returns>The vector</returns>
+        /// <returns>The resulting vector value</returns>
         public static Vector2F CalcTextSize(string text, int start, float wrapWidth)
             => CalcTextSizeImpl(text, start, wrapWidth: wrapWidth);
 
@@ -842,7 +842,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="text">The text content to display</param>
         /// <param name="hideTextAfterDoubleHash">The hide text after double hash</param>
         /// <param name="wrapWidth">The wrap width</param>
-        /// <returns>The vector</returns>
+        /// <returns>The resulting vector value</returns>
         public static Vector2F CalcTextSize(string text, bool hideTextAfterDoubleHash, float wrapWidth)
             => CalcTextSizeImpl(text, hideTextAfterDoubleHash: hideTextAfterDoubleHash, wrapWidth: wrapWidth);
 
@@ -850,10 +850,10 @@ namespace Alis.Extension.Graphic.Ui
         ///     Calcs the text size using the specified text
         /// </summary>
         /// <param name="text">The text content to display</param>
-        /// <param name="start">The start</param>
-        /// <param name="length">The length</param>
+        /// <param name="start">The starting value/index</param>
+        /// <param name="length">The length value</param>
         /// <param name="hideTextAfterDoubleHash">The hide text after double hash</param>
-        /// <returns>The vector</returns>
+        /// <returns>The resulting vector value</returns>
         public static Vector2F CalcTextSize(string text, int start, int length, bool hideTextAfterDoubleHash)
             => CalcTextSizeImpl(text, start, length, hideTextAfterDoubleHash);
 
@@ -861,10 +861,10 @@ namespace Alis.Extension.Graphic.Ui
         ///     Calcs the text size using the specified text
         /// </summary>
         /// <param name="text">The text content to display</param>
-        /// <param name="start">The start</param>
-        /// <param name="length">The length</param>
+        /// <param name="start">The starting value/index</param>
+        /// <param name="length">The length value</param>
         /// <param name="wrapWidth">The wrap width</param>
-        /// <returns>The vector</returns>
+        /// <returns>The resulting vector value</returns>
         public static Vector2F CalcTextSize(string text, int start, int length, float wrapWidth)
             => CalcTextSizeImpl(text, start, length, wrapWidth: wrapWidth);
 
@@ -872,11 +872,11 @@ namespace Alis.Extension.Graphic.Ui
         ///     Calcs the text size using the specified text
         /// </summary>
         /// <param name="text">The text content to display</param>
-        /// <param name="start">The start</param>
-        /// <param name="length">The length</param>
+        /// <param name="start">The starting value/index</param>
+        /// <param name="length">The length value</param>
         /// <param name="hideTextAfterDoubleHash">The hide text after double hash</param>
         /// <param name="wrapWidth">The wrap width</param>
-        /// <returns>The vector</returns>
+        /// <returns>The resulting vector value</returns>
         public static Vector2F CalcTextSize(string text, int start, int length, bool hideTextAfterDoubleHash, float wrapWidth)
             => CalcTextSizeImpl(text, start, length, hideTextAfterDoubleHash, wrapWidth);
 
@@ -884,8 +884,8 @@ namespace Alis.Extension.Graphic.Ui
         ///     Calcs the text size impl using the specified text
         /// </summary>
         /// <param name="text">The text content to display</param>
-        /// <param name="start">The start</param>
-        /// <param name="length">The length</param>
+        /// <param name="start">The starting value/index</param>
+        /// <param name="length">The length value</param>
         /// <param name="hideTextAfterDoubleHash">The hide text after double hash</param>
         /// <param name="wrapWidth">The wrap width</param>
         /// <returns>The result returned from the native function</returns>
@@ -977,7 +977,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether begin
         /// </summary>
-        /// <param name="name">The name</param>
+        /// <param name="name">The name identifier string</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool Begin(string name, ImGuiWindowFlags flags)

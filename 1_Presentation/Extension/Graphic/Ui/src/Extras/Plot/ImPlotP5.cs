@@ -39,10 +39,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="neg">The neg</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="neg">The negative direction value</param>
         /// <param name="pos">The position in screen coordinates</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
@@ -54,10 +54,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="neg">The neg</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="neg">The negative direction value</param>
         /// <param name="pos">The position in screen coordinates</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
@@ -70,10 +70,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="neg">The neg</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="neg">The negative direction value</param>
         /// <param name="pos">The position in screen coordinates</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
@@ -87,10 +87,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="neg">The neg</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="neg">The negative direction value</param>
         /// <param name="pos">The position in screen coordinates</param>
         /// <param name="count">The number of elements</param>
         public static void PlotErrorBars(string labelId, ref byte xs, ref byte ys, ref byte neg, ref byte pos, int count)
@@ -101,10 +101,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="neg">The neg</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="neg">The negative direction value</param>
         /// <param name="pos">The position in screen coordinates</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
@@ -116,10 +116,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="neg">The neg</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="neg">The negative direction value</param>
         /// <param name="pos">The position in screen coordinates</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
@@ -132,10 +132,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="neg">The neg</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="neg">The negative direction value</param>
         /// <param name="pos">The position in screen coordinates</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
@@ -149,10 +149,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="neg">The neg</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="neg">The negative direction value</param>
         /// <param name="pos">The position in screen coordinates</param>
         /// <param name="count">The number of elements</param>
         public static void PlotErrorBars(string labelId, ref short xs, ref short ys, ref short neg, ref short pos, int count)
@@ -163,10 +163,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="neg">The neg</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="neg">The negative direction value</param>
         /// <param name="pos">The position in screen coordinates</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
@@ -178,10 +178,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="neg">The neg</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="neg">The negative direction value</param>
         /// <param name="pos">The position in screen coordinates</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
@@ -194,10 +194,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="neg">The neg</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="neg">The negative direction value</param>
         /// <param name="pos">The position in screen coordinates</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
@@ -211,10 +211,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="neg">The neg</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="neg">The negative direction value</param>
         /// <param name="pos">The position in screen coordinates</param>
         /// <param name="count">The number of elements</param>
         public static void PlotErrorBars(string labelId, ref ushort xs, ref ushort ys, ref ushort neg, ref ushort pos, int count)
@@ -225,10 +225,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="neg">The neg</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="neg">The negative direction value</param>
         /// <param name="pos">The position in screen coordinates</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
@@ -240,10 +240,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="neg">The neg</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="neg">The negative direction value</param>
         /// <param name="pos">The position in screen coordinates</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
@@ -256,10 +256,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="neg">The neg</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="neg">The negative direction value</param>
         /// <param name="pos">The position in screen coordinates</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
@@ -273,10 +273,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="neg">The neg</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="neg">The negative direction value</param>
         /// <param name="pos">The position in screen coordinates</param>
         /// <param name="count">The number of elements</param>
         public static void PlotErrorBars(string labelId, ref int xs, ref int ys, ref int neg, ref int pos, int count)
@@ -287,10 +287,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="neg">The neg</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="neg">The negative direction value</param>
         /// <param name="pos">The position in screen coordinates</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
@@ -302,10 +302,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="neg">The neg</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="neg">The negative direction value</param>
         /// <param name="pos">The position in screen coordinates</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
@@ -318,10 +318,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="neg">The neg</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="neg">The negative direction value</param>
         /// <param name="pos">The position in screen coordinates</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
@@ -335,10 +335,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="neg">The neg</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="neg">The negative direction value</param>
         /// <param name="pos">The position in screen coordinates</param>
         /// <param name="count">The number of elements</param>
         public static void PlotErrorBars(string labelId, ref uint xs, ref uint ys, ref uint neg, ref uint pos, int count)
@@ -349,10 +349,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="neg">The neg</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="neg">The negative direction value</param>
         /// <param name="pos">The position in screen coordinates</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
@@ -364,10 +364,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="neg">The neg</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="neg">The negative direction value</param>
         /// <param name="pos">The position in screen coordinates</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
@@ -380,10 +380,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="neg">The neg</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="neg">The negative direction value</param>
         /// <param name="pos">The position in screen coordinates</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
@@ -397,10 +397,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="neg">The neg</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="neg">The negative direction value</param>
         /// <param name="pos">The position in screen coordinates</param>
         /// <param name="count">The number of elements</param>
         public static void PlotErrorBars(string labelId, ref long xs, ref long ys, ref long neg, ref long pos, int count)
@@ -411,10 +411,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="neg">The neg</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="neg">The negative direction value</param>
         /// <param name="pos">The position in screen coordinates</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
@@ -426,10 +426,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="neg">The neg</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="neg">The negative direction value</param>
         /// <param name="pos">The position in screen coordinates</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
@@ -442,10 +442,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="neg">The neg</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="neg">The negative direction value</param>
         /// <param name="pos">The position in screen coordinates</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
@@ -459,10 +459,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="neg">The neg</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="neg">The negative direction value</param>
         /// <param name="pos">The position in screen coordinates</param>
         /// <param name="count">The number of elements</param>
         public static void PlotErrorBars(string labelId, ref ulong xs, ref ulong ys, ref ulong neg, ref ulong pos, int count)
@@ -473,10 +473,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="neg">The neg</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="neg">The negative direction value</param>
         /// <param name="pos">The position in screen coordinates</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
@@ -488,10 +488,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="neg">The neg</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="neg">The negative direction value</param>
         /// <param name="pos">The position in screen coordinates</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
@@ -504,10 +504,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="neg">The neg</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="neg">The negative direction value</param>
         /// <param name="pos">The position in screen coordinates</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
@@ -521,10 +521,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="rows">The rows</param>
-        /// <param name="cols">The cols</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
+        /// <param name="rows">The number of rows</param>
+        /// <param name="cols">The number of columns</param>
         public static void PlotHeatmap(string labelId, float[] values, int rows, int cols)
         {
             ImPlotNative.ImPlot_PlotHeatmap_FloatPtr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, 0, 0, Encoding.UTF8.GetBytes("%.1f"), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
@@ -533,11 +533,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="rows">The rows</param>
-        /// <param name="cols">The cols</param>
-        /// <param name="scaleMin">The scale min</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
+        /// <param name="rows">The number of rows</param>
+        /// <param name="cols">The number of columns</param>
+        /// <param name="scaleMin">The minimum scale value</param>
         public static void PlotHeatmap(string labelId, float[] values, int rows, int cols, double scaleMin)
         {
             ImPlotNative.ImPlot_PlotHeatmap_FloatPtr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, 0, Encoding.UTF8.GetBytes("%.1f"), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
@@ -546,11 +546,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="rows">The rows</param>
-        /// <param name="cols">The cols</param>
-        /// <param name="scaleMin">The scale min</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
+        /// <param name="rows">The number of rows</param>
+        /// <param name="cols">The number of columns</param>
+        /// <param name="scaleMin">The minimum scale value</param>
         /// <param name="scaleMax">The scale max</param>
         public static void PlotHeatmap(string labelId, float[] values, int rows, int cols, double scaleMin, double scaleMax)
         {
@@ -560,13 +560,13 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="rows">The rows</param>
-        /// <param name="cols">The cols</param>
-        /// <param name="scaleMin">The scale min</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
+        /// <param name="rows">The number of rows</param>
+        /// <param name="cols">The number of columns</param>
+        /// <param name="scaleMin">The minimum scale value</param>
         /// <param name="scaleMax">The scale max</param>
-        /// <param name="labelFmt">The label fmt</param>
+        /// <param name="labelFmt">The label format string</param>
         public static void PlotHeatmap(string labelId, float[] values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt)
         {
             ImPlotNative.ImPlot_PlotHeatmap_FloatPtr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
@@ -575,14 +575,14 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="rows">The rows</param>
-        /// <param name="cols">The cols</param>
-        /// <param name="scaleMin">The scale min</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
+        /// <param name="rows">The number of rows</param>
+        /// <param name="cols">The number of columns</param>
+        /// <param name="scaleMin">The minimum scale value</param>
         /// <param name="scaleMax">The scale max</param>
-        /// <param name="labelFmt">The label fmt</param>
-        /// <param name="boundsMin">The bounds min</param>
+        /// <param name="labelFmt">The label format string</param>
+        /// <param name="boundsMin">The minimum boundary value</param>
         public static void PlotHeatmap(string labelId, float[] values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt, ImPlotPoint boundsMin)
         {
             ImPlotNative.ImPlot_PlotHeatmap_FloatPtr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, new ImPlotPoint {X = 1, Y = 1}, 0);
@@ -591,15 +591,15 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="rows">The rows</param>
-        /// <param name="cols">The cols</param>
-        /// <param name="scaleMin">The scale min</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
+        /// <param name="rows">The number of rows</param>
+        /// <param name="cols">The number of columns</param>
+        /// <param name="scaleMin">The minimum scale value</param>
         /// <param name="scaleMax">The scale max</param>
-        /// <param name="labelFmt">The label fmt</param>
-        /// <param name="boundsMin">The bounds min</param>
-        /// <param name="boundsMax">The bounds max</param>
+        /// <param name="labelFmt">The label format string</param>
+        /// <param name="boundsMin">The minimum boundary value</param>
+        /// <param name="boundsMax">The maximum boundary value</param>
         public static void PlotHeatmap(string labelId, float[] values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax)
         {
             ImPlotNative.ImPlot_PlotHeatmap_FloatPtr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, boundsMax, 0);
@@ -608,15 +608,15 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="rows">The rows</param>
-        /// <param name="cols">The cols</param>
-        /// <param name="scaleMin">The scale min</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
+        /// <param name="rows">The number of rows</param>
+        /// <param name="cols">The number of columns</param>
+        /// <param name="scaleMin">The minimum scale value</param>
         /// <param name="scaleMax">The scale max</param>
-        /// <param name="labelFmt">The label fmt</param>
-        /// <param name="boundsMin">The bounds min</param>
-        /// <param name="boundsMax">The bounds max</param>
+        /// <param name="labelFmt">The label format string</param>
+        /// <param name="boundsMin">The minimum boundary value</param>
+        /// <param name="boundsMax">The maximum boundary value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotHeatmap(string labelId, float[] values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax, ImPlotHeatmapFlags flags)
         {
@@ -626,10 +626,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="rows">The rows</param>
-        /// <param name="cols">The cols</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
+        /// <param name="rows">The number of rows</param>
+        /// <param name="cols">The number of columns</param>
         public static void PlotHeatmap(string labelId, double[] values, int rows, int cols)
         {
             ImPlotNative.ImPlot_PlotHeatmap_doublePtr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, 0, 0, Encoding.UTF8.GetBytes("%.1f"), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
@@ -638,11 +638,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="rows">The rows</param>
-        /// <param name="cols">The cols</param>
-        /// <param name="scaleMin">The scale min</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
+        /// <param name="rows">The number of rows</param>
+        /// <param name="cols">The number of columns</param>
+        /// <param name="scaleMin">The minimum scale value</param>
         public static void PlotHeatmap(string labelId, double[] values, int rows, int cols, double scaleMin)
         {
             ImPlotNative.ImPlot_PlotHeatmap_doublePtr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, 0, Encoding.UTF8.GetBytes("%.1f"), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
@@ -651,11 +651,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="rows">The rows</param>
-        /// <param name="cols">The cols</param>
-        /// <param name="scaleMin">The scale min</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
+        /// <param name="rows">The number of rows</param>
+        /// <param name="cols">The number of columns</param>
+        /// <param name="scaleMin">The minimum scale value</param>
         /// <param name="scaleMax">The scale max</param>
         public static void PlotHeatmap(string labelId, double[] values, int rows, int cols, double scaleMin, double scaleMax)
         {
@@ -665,13 +665,13 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the heatmap using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="rows">The rows</param>
-        /// <param name="cols">The cols</param>
-        /// <param name="scaleMin">The scale min</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
+        /// <param name="rows">The number of rows</param>
+        /// <param name="cols">The number of columns</param>
+        /// <param name="scaleMin">The minimum scale value</param>
         /// <param name="scaleMax">The scale max</param>
-        /// <param name="labelFmt">The label fmt</param>
+        /// <param name="labelFmt">The label format string</param>
         public static void PlotHeatmap(string labelId, double[] values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt)
         {
             ImPlotNative.ImPlot_PlotHeatmap_doublePtr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);

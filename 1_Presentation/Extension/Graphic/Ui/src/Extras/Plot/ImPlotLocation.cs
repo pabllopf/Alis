@@ -30,26 +30,6 @@
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     The im plot location enum
-    /// </summary>
-    public enum ImPlotLocation
-    {
-        /// <summary>
-        ///     The center im plot location
-        /// </summary>
-        Center = 0,
-
-        /// <summary>
-        ///     The north im plot location
-        /// </summary>
-        North = 1,
-
-        /// <summary>
-        ///     The south im plot location
-        /// </summary>
-        South = 2,
-
-    /// <summary>
     ///     Predefined anchor locations for positioning elements such as the legend or annotations within a plot.
     /// </summary>
     public enum ImPlotLocation

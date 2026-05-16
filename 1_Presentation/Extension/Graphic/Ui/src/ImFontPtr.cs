@@ -63,13 +63,13 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         /// </summary>
         /// <param name="wrappedPtr"></param>
-        /// <returns></returns>
+        /// <returns>The converted wrapper instance</returns>
         public static implicit operator IntPtr(ImFontPtr wrappedPtr) => wrappedPtr.NativePtr;
 
         /// <summary>
         /// </summary>
         /// <param name="nativePtr"></param>
-        /// <returns></returns>
+        /// <returns>The converted wrapper instance</returns>
         public static implicit operator ImFontPtr(IntPtr nativePtr) => new ImFontPtr(nativePtr);
 
         /// <summary>
@@ -178,7 +178,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the remap char using the specified dst
         /// </summary>
-        /// <param name="dst">The dst</param>
+        /// <param name="dst">The destination object to write into</param>
         /// <param name="src">The src</param>
         public void AddRemapChar(ushort dst, ushort src)
         {
@@ -189,7 +189,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the remap char using the specified dst
         /// </summary>
-        /// <param name="dst">The dst</param>
+        /// <param name="dst">The destination object to write into</param>
         /// <param name="src">The src</param>
         /// <param name="overwriteDst">The overwrite dst</param>
         public void AddRemapChar(ushort dst, ushort src, bool overwriteDst)
@@ -238,7 +238,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the debug name
         /// </summary>
-        /// <returns>the string result from the native function</returns>
+        /// <returns>The string result from the native function</returns>
         public string GetDebugName() => Encoding.UTF8.GetString(ImGuiNative.ImFont_GetDebugName(NativePtr));
 
         /// <summary>
@@ -259,10 +259,10 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Renders the char using the specified draw list
         /// </summary>
-        /// <param name="drawList">The draw list</param>
+        /// <param name="drawList">The draw list to use for rendering</param>
         /// <param name="size">The size of the element in pixels</param>
         /// <param name="pos">The position in screen coordinates</param>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         /// <param name="c">The Unicode codepoint to look up</param>
         public void RenderChar(ImDrawListPtr drawList, float size, Vector2F pos, uint col, ushort c)
         {

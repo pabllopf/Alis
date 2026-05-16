@@ -35,542 +35,542 @@ namespace Alis.Core.Graphic.OpenGL.Enums
     public enum EnableCap
     {
         /// <summary>
-        ///     The line smooth enable cap
+        ///     Enables line antialiasing smoothing (GL_LINE_SMOOTH)
         /// </summary>
         LineSmooth = 0x0B20,
 
         /// <summary>
-        ///     The polygon smooth enable cap
+        ///     Enables polygon antialiasing smoothing (GL_POLYGON_SMOOTH)
         /// </summary>
         PolygonSmooth = 0x0B41,
 
         /// <summary>
-        ///     The cull face enable cap
+        ///     Enables face culling based on winding order (GL_CULL_FACE)
         /// </summary>
         CullFace = 0x0B44,
 
         /// <summary>
-        ///     The depth test enable cap
+        ///     Enables depth buffer testing (GL_DEPTH_TEST)
         /// </summary>
         DepthTest = 0x0B71,
 
         /// <summary>
-        ///     The stencil test enable cap
+        ///     Enables stencil buffer testing (GL_STENCIL_TEST)
         /// </summary>
         StencilTest = 0x0B90,
 
         /// <summary>
-        ///     The dither enable cap
+        ///     Enables color dithering (GL_DITHER)
         /// </summary>
         Dither = 0x0BD0,
 
         /// <summary>
-        ///     The blend enable cap
+        ///     Enables blending of incoming fragment colors (GL_BLEND)
         /// </summary>
         Blend = 0x0BE2,
 
         /// <summary>
-        ///     The index logic op enable cap
+        ///     Enables per-index logical operations (GL_INDEX_LOGIC_OP)
         /// </summary>
         IndexLogicOp = 0x0BF1,
 
         /// <summary>
-        ///     The color logic op enable cap
+        ///     Enables per-color logical operations (GL_COLOR_LOGIC_OP)
         /// </summary>
         ColorLogicOp = 0x0BF2,
 
         /// <summary>
-        ///     The scissor test enable cap
+        ///     Enables scissor rectangle test (GL_SCISSOR_TEST)
         /// </summary>
         ScissorTest = 0x0C11,
 
         /// <summary>
-        ///     The auto normal enable cap
+        ///     Enables automatic normal vector generation (GL_AUTO_NORMAL)
         /// </summary>
         AutoNormal = 0x0D80,
 
         /// <summary>
-        ///     The map color enable cap
+        ///     Enables 1D evaluator for RGBA color mapping (GL_MAP1_COLOR_4)
         /// </summary>
         Map1Color4 = 0x0D90,
 
         /// <summary>
-        ///     The map index enable cap
+        ///     Enables 1D evaluator for color index mapping (GL_MAP1_INDEX)
         /// </summary>
         Map1Index = 0x0D91,
 
         /// <summary>
-        ///     The map normal enable cap
+        ///     Enables 1D evaluator for normal vector mapping (GL_MAP1_NORMAL)
         /// </summary>
         Map1Normal = 0x0D92,
 
         /// <summary>
-        ///     The map texture coord enable cap
+        ///     Enables 1D evaluator for S texture coordinate (GL_MAP1_TEXTURE_COORD_1)
         /// </summary>
         Map1TextureCoord1 = 0x0D93,
 
         /// <summary>
-        ///     The map texture coord enable cap
+        ///     Enables 1D evaluator for S/T texture coordinates (GL_MAP1_TEXTURE_COORD_2)
         /// </summary>
         Map1TextureCoord2 = 0x0D94,
 
         /// <summary>
-        ///     The map texture coord enable cap
+        ///     Enables 1D evaluator for S/T/R texture coordinates (GL_MAP1_TEXTURE_COORD_3)
         /// </summary>
         Map1TextureCoord3 = 0x0D95,
 
         /// <summary>
-        ///     The map texture coord enable cap
+        ///     Enables 1D evaluator for S/T/R/Q texture coordinates (GL_MAP1_TEXTURE_COORD_4)
         /// </summary>
         Map1TextureCoord4 = 0x0D96,
 
         /// <summary>
-        ///     The map vertex enable cap
+        ///     Enables 1D evaluator for 3D vertex positions (GL_MAP1_VERTEX_3)
         /// </summary>
         Map1Vertex3 = 0x0D97,
 
         /// <summary>
-        ///     The map vertex enable cap
+        ///     Enables 1D evaluator for 4D vertex positions (GL_MAP1_VERTEX_4)
         /// </summary>
         Map1Vertex4 = 0x0D98,
 
         /// <summary>
-        ///     The map color enable cap
+        ///     Enables 2D evaluator for RGBA color mapping (GL_MAP2_COLOR_4)
         /// </summary>
         Map2Color4 = 0x0DB0,
 
         /// <summary>
-        ///     The map index enable cap
+        ///     Enables 2D evaluator for color index mapping (GL_MAP2_INDEX)
         /// </summary>
         Map2Index = 0x0DB1,
 
         /// <summary>
-        ///     The map normal enable cap
+        ///     Enables 2D evaluator for normal vector mapping (GL_MAP2_NORMAL)
         /// </summary>
         Map2Normal = 0x0DB2,
 
         /// <summary>
-        ///     The map texture coord enable cap
+        ///     Enables 2D evaluator for S texture coordinate (GL_MAP2_TEXTURE_COORD_1)
         /// </summary>
         Map2TextureCoord1 = 0x0DB3,
 
         /// <summary>
-        ///     The map texture coord enable cap
+        ///     Enables 2D evaluator for S/T texture coordinates (GL_MAP2_TEXTURE_COORD_2)
         /// </summary>
         Map2TextureCoord2 = 0x0DB4,
 
         /// <summary>
-        ///     The map texture coord enable cap
+        ///     Enables 2D evaluator for S/T/R texture coordinates (GL_MAP2_TEXTURE_COORD_3)
         /// </summary>
         Map2TextureCoord3 = 0x0DB5,
 
         /// <summary>
-        ///     The map texture coord enable cap
+        ///     Enables 2D evaluator for S/T/R/Q texture coordinates (GL_MAP2_TEXTURE_COORD_4)
         /// </summary>
         Map2TextureCoord4 = 0x0DB6,
 
         /// <summary>
-        ///     The map vertex enable cap
+        ///     Enables 2D evaluator for 3D vertex positions (GL_MAP2_VERTEX_3)
         /// </summary>
         Map2Vertex3 = 0x0DB7,
 
         /// <summary>
-        ///     The map vertex enable cap
+        ///     Enables 2D evaluator for 4D vertex positions (GL_MAP2_VERTEX_4)
         /// </summary>
         Map2Vertex4 = 0x0DB8,
 
         /// <summary>
-        ///     The texture enable cap
+        ///     Enables 1D texturing (GL_TEXTURE_1D)
         /// </summary>
         Texture1D = 0x0DE0,
 
         /// <summary>
-        ///     The texture enable cap
+        ///     Enables 2D texturing (GL_TEXTURE_2D)
         /// </summary>
         Texture2D = 0x0DE1,
 
         /// <summary>
-        ///     The polygon offset point enable cap
+        ///     Enables polygon offset for point mode (GL_POLYGON_OFFSET_POINT)
         /// </summary>
         PolygonOffsetPoint = 0x2A01,
 
         /// <summary>
-        ///     The polygon offset line enable cap
+        ///     Enables polygon offset for line mode (GL_POLYGON_OFFSET_LINE)
         /// </summary>
         PolygonOffsetLine = 0x2A02,
 
         /// <summary>
-        ///     The clip plane enable cap
+        ///     Enables user-defined clipping plane 0 (GL_CLIP_PLANE0)
         /// </summary>
         ClipPlane0 = 0x3000,
 
         /// <summary>
-        ///     The clip plane enable cap
+        ///     Enables user-defined clipping plane 1 (GL_CLIP_PLANE1)
         /// </summary>
         ClipPlane1 = 0x3001,
 
         /// <summary>
-        ///     The clip plane enable cap
+        ///     Enables user-defined clipping plane 2 (GL_CLIP_PLANE2)
         /// </summary>
         ClipPlane2 = 0x3002,
 
         /// <summary>
-        ///     The clip plane enable cap
+        ///     Enables user-defined clipping plane 3 (GL_CLIP_PLANE3)
         /// </summary>
         ClipPlane3 = 0x3003,
 
         /// <summary>
-        ///     The clip plane enable cap
+        ///     Enables user-defined clipping plane 4 (GL_CLIP_PLANE4)
         /// </summary>
         ClipPlane4 = 0x3004,
 
         /// <summary>
-        ///     The clip plane enable cap
+        ///     Enables user-defined clipping plane 5 (GL_CLIP_PLANE5)
         /// </summary>
         ClipPlane5 = 0x3005,
 
         /// <summary>
-        ///     The convolution enable cap
+        ///     Enables 1D convolution operations (GL_CONVOLUTION_1D)
         /// </summary>
         Convolution1D = 0x8010,
 
         /// <summary>
-        ///     The convolution ext enable cap
+        ///     Enables 1D convolution operations, EXT version (GL_CONVOLUTION_1D_EXT)
         /// </summary>
         Convolution1DExt = 0x8010,
 
         /// <summary>
-        ///     The convolution enable cap
+        ///     Enables 2D convolution operations (GL_CONVOLUTION_2D)
         /// </summary>
         Convolution2D = 0x8011,
 
         /// <summary>
-        ///     The convolution ext enable cap
+        ///     Enables 2D convolution operations, EXT version (GL_CONVOLUTION_2D_EXT)
         /// </summary>
         Convolution2DExt = 0x8011,
 
         /// <summary>
-        ///     The separable enable cap
+        ///     Enables separable 2D convolution (GL_SEPARABLE_2D)
         /// </summary>
         Separable2D = 0x8012,
 
         /// <summary>
-        ///     The separable ext enable cap
+        ///     Enables separable 2D convolution, EXT version (GL_SEPARABLE_2D_EXT)
         /// </summary>
         Separable2DExt = 0x8012,
 
         /// <summary>
-        ///     The histogram enable cap
+        ///     Enables histogram operations (GL_HISTOGRAM)
         /// </summary>
         Histogram = 0x8024,
 
         /// <summary>
-        ///     The histogram ext enable cap
+        ///     Enables histogram operations, EXT version (GL_HISTOGRAM_EXT)
         /// </summary>
         HistogramExt = 0x8024,
 
         /// <summary>
-        ///     The minmax ext enable cap
+        ///     Enables min/max computation, EXT version (GL_MINMAX_EXT)
         /// </summary>
         MinmaxExt = 0x802E,
 
         /// <summary>
-        ///     The polygon offset fill enable cap
+        ///     Enables polygon offset for fill mode (GL_POLYGON_OFFSET_FILL)
         /// </summary>
         PolygonOffsetFill = 0x8037,
 
         /// <summary>
-        ///     The rescale normal ext enable cap
+        ///     Enables rescaling of normal vectors, EXT (GL_RESCALE_NORMAL_EXT)
         /// </summary>
         RescaleNormalExt = 0x803A,
 
         /// <summary>
-        ///     The texture ext enable cap
+        ///     Enables 3D texturing, EXT version (GL_TEXTURE_3D_EXT)
         /// </summary>
         Texture3DExt = 0x806F,
 
         /// <summary>
-        ///     The vertex array enable cap
+        ///     Enables vertex array client state (GL_VERTEX_ARRAY)
         /// </summary>
         VertexArray = 0x8074,
 
         /// <summary>
-        ///     The normal array enable cap
+        ///     Enables normal array client state (GL_NORMAL_ARRAY)
         /// </summary>
         NormalArray = 0x8075,
 
         /// <summary>
-        ///     The color array enable cap
+        ///     Enables color array client state (GL_COLOR_ARRAY)
         /// </summary>
         ColorArray = 0x8076,
 
         /// <summary>
-        ///     The index array enable cap
+        ///     Enables color index array client state (GL_INDEX_ARRAY)
         /// </summary>
         IndexArray = 0x8077,
 
         /// <summary>
-        ///     The texture coord array enable cap
+        ///     Enables texture coordinate array client state (GL_TEXTURE_COORD_ARRAY)
         /// </summary>
         TextureCoordArray = 0x8078,
 
         /// <summary>
-        ///     The edge flag array enable cap
+        ///     Enables edge flag array client state (GL_EDGE_FLAG_ARRAY)
         /// </summary>
         EdgeFlagArray = 0x8079,
 
         /// <summary>
-        ///     The interlace sgix enable cap
+        ///     Enables interlace readback, SGIX (GL_INTERLACE_SGIX)
         /// </summary>
         InterlaceSgix = 0x8094,
 
         /// <summary>
-        ///     The multisample enable cap
+        ///     Enables multisample antialiasing (GL_MULTISAMPLE)
         /// </summary>
         Multisample = 0x809D,
 
         /// <summary>
-        ///     The sample alpha to coverage enable cap
+        ///     Enables alpha-to-coverage multisample mode (GL_SAMPLE_ALPHA_TO_COVERAGE)
         /// </summary>
         SampleAlphaToCoverage = 0x809E,
 
         /// <summary>
-        ///     The sample alpha to mask sgis enable cap
+        ///     Enables alpha-to-coverage multisample mode, SGIS (GL_SAMPLE_ALPHA_TO_MASK_SGIS)
         /// </summary>
         SampleAlphaToMaskSgis = 0x809E,
 
         /// <summary>
-        ///     The sample alpha to one enable cap
+        ///     Enables alpha-to-one multisample mode (GL_SAMPLE_ALPHA_TO_ONE)
         /// </summary>
         SampleAlphaToOne = 0x809F,
 
         /// <summary>
-        ///     The sample alpha to one sgis enable cap
+        ///     Enables alpha-to-one multisample mode, SGIS (GL_SAMPLE_ALPHA_TO_ONE_SGIS)
         /// </summary>
         SampleAlphaToOneSgis = 0x809F,
 
         /// <summary>
-        ///     The sample coverage enable cap
+        ///     Enables sample coverage for multisampling (GL_SAMPLE_COVERAGE)
         /// </summary>
         SampleCoverage = 0x80A0,
 
         /// <summary>
-        ///     The sample mask sgis enable cap
+        ///     Enables sample mask for multisampling, SGIS (GL_SAMPLE_MASK_SGIS)
         /// </summary>
         SampleMaskSgis = 0x80A0,
 
         /// <summary>
-        ///     The texture color table sgi enable cap
+        ///     Enables texture color table lookups, SGI (GL_TEXTURE_COLOR_TABLE_SGI)
         /// </summary>
         TextureColorTableSgi = 0x80BC,
 
         /// <summary>
-        ///     The color table enable cap
+        ///     Enables color table lookups (GL_COLOR_TABLE)
         /// </summary>
         ColorTable = 0x80D0,
 
         /// <summary>
-        ///     The color table sgi enable cap
+        ///     Enables color table lookups, SGI version (GL_COLOR_TABLE_SGI)
         /// </summary>
         ColorTableSgi = 0x80D0,
 
         /// <summary>
-        ///     The post convolution color table enable cap
+        ///     Enables post-convolution color table (GL_POST_CONVOLUTION_COLOR_TABLE)
         /// </summary>
         PostConvolutionColorTable = 0x80D1,
 
         /// <summary>
-        ///     The post convolution color table sgi enable cap
+        ///     Enables post-convolution color table, SGI (GL_POST_CONVOLUTION_COLOR_TABLE_SGI)
         /// </summary>
         PostConvolutionColorTableSgi = 0x80D1,
 
         /// <summary>
-        ///     The post color matrix color table enable cap
+        ///     Enables post-color-matrix color table (GL_POST_COLOR_MATRIX_COLOR_TABLE)
         /// </summary>
         PostColorMatrixColorTable = 0x80D2,
 
         /// <summary>
-        ///     The post color matrix color table sgi enable cap
+        ///     Enables post-color-matrix color table, SGI (GL_POST_COLOR_MATRIX_COLOR_TABLE_SGI)
         /// </summary>
         PostColorMatrixColorTableSgi = 0x80D2,
 
         /// <summary>
-        ///     The texture sgis enable cap
+        ///     Enables 4D texturing, SGIS (GL_TEXTURE_4D_SGIS)
         /// </summary>
         Texture4DSgis = 0x8134,
 
         /// <summary>
-        ///     The pixel tex gen sgix enable cap
+        ///     Enables pixel texture coordinate generation, SGIX (GL_PIXEL_TEX_GEN_SGIX)
         /// </summary>
         TexGenSgix = 0x8139,
 
         /// <summary>
-        ///     The sprite sgix enable cap
+        ///     Enables sprite point rendering, SGIX (GL_SPRITE_SGIX)
         /// </summary>
         SpriteSgix = 0x8148,
 
         /// <summary>
-        ///     The reference plane sgix enable cap
+        ///     Enables reference plane for clipping, SGIX (GL_REFERENCE_PLANE_SGIX)
         /// </summary>
         ReferencePlaneSgix = 0x817D,
 
         /// <summary>
-        ///     The ir instrument sgix enable cap
+        ///     Enables infrared instrument, SGIX (GL_IR_INSTRUMENT1_SGIX)
         /// </summary>
         IrInstrument1Sgix = 0x817F,
 
         /// <summary>
-        ///     The calligraphic fragment sgix enable cap
+        ///     Enables calligraphic fragment rendering, SGIX (GL_CALLIGRAPHIC_FRAGMENT_SGIX)
         /// </summary>
         CalligraphicFragmentSgix = 0x8183,
 
         /// <summary>
-        ///     The framezoom sgix enable cap
+        ///     Enables frame zoom, SGIX (GL_FRAMEZOOM_SGIX)
         /// </summary>
         FramezoomSgix = 0x818B,
 
         /// <summary>
-        ///     The fog offset sgix enable cap
+        ///     Enables fog offset calculation, SGIX (GL_FOG_OFFSET_SGIX)
         /// </summary>
         FogOffsetSgix = 0x8198,
 
         /// <summary>
-        ///     The shared texture palette ext enable cap
+        ///     Enables shared texture palette, EXT (GL_SHARED_TEXTURE_PALETTE_EXT)
         /// </summary>
         SharedTexturePaletteExt = 0x81FB,
 
         /// <summary>
-        ///     The async histogram sgix enable cap
+        ///     Enables asynchronous histogram operations, SGIX (GL_ASYNC_HISTOGRAM_SGIX)
         /// </summary>
         AsyncHistogramSgix = 0x832C,
 
         /// <summary>
-        ///     The pixel texture sgis enable cap
+        ///     Enables pixel texture, SGIS (GL_PIXEL_TEXTURE_SGIS)
         /// </summary>
         TextureSgis = 0x8353,
 
         /// <summary>
-        ///     The async tex image sgix enable cap
+        ///     Enables asynchronous texture image loading, SGIX (GL_ASYNC_TEX_IMAGE_SGIX)
         /// </summary>
         AsyncTexImageSgix = 0x835C,
 
         /// <summary>
-        ///     The async draw pixels sgix enable cap
+        ///     Enables asynchronous draw pixels, SGIX (GL_ASYNC_DRAW_PIXELS_SGIX)
         /// </summary>
         AsyncDrawPixelsSgix = 0x835D,
 
         /// <summary>
-        ///     The async read pixels sgix enable cap
+        ///     Enables asynchronous read pixels, SGIX (GL_ASYNC_READ_PIXELS_SGIX)
         /// </summary>
         AsyncReadPixelsSgix = 0x835E,
 
         /// <summary>
-        ///     The fragment lighting sgix enable cap
+        ///     Enables per-fragment lighting, SGIX (GL_FRAGMENT_LIGHTING_SGIX)
         /// </summary>
         FragmentLightingSgix = 0x8400,
 
         /// <summary>
-        ///     The fragment color material sgix enable cap
+        ///     Enables fragment color material tracking, SGIX (GL_FRAGMENT_COLOR_MATERIAL_SGIX)
         /// </summary>
         FragmentColorMaterialSgix = 0x8401,
 
         /// <summary>
-        ///     The fragment light sgix enable cap
+        ///     Enables fragment light source 0, SGIX (GL_FRAGMENT_LIGHT0_SGIX)
         /// </summary>
         FragmentLight0Sgix = 0x840C,
 
         /// <summary>
-        ///     The fragment light sgix enable cap
+        ///     Enables fragment light source 1, SGIX (GL_FRAGMENT_LIGHT1_SGIX)
         /// </summary>
         FragmentLight1Sgix = 0x840D,
 
         /// <summary>
-        ///     The fragment light sgix enable cap
+        ///     Enables fragment light source 2, SGIX (GL_FRAGMENT_LIGHT2_SGIX)
         /// </summary>
         FragmentLight2Sgix = 0x840E,
 
         /// <summary>
-        ///     The fragment light sgix enable cap
+        ///     Enables fragment light source 3, SGIX (GL_FRAGMENT_LIGHT3_SGIX)
         /// </summary>
         FragmentLight3Sgix = 0x840F,
 
         /// <summary>
-        ///     The fragment light sgix enable cap
+        ///     Enables fragment light source 4, SGIX (GL_FRAGMENT_LIGHT4_SGIX)
         /// </summary>
         FragmentLight4Sgix = 0x8410,
 
         /// <summary>
-        ///     The fragment light sgix enable cap
+        ///     Enables fragment light source 5, SGIX (GL_FRAGMENT_LIGHT5_SGIX)
         /// </summary>
         FragmentLight5Sgix = 0x8411,
 
         /// <summary>
-        ///     The fragment light sgix enable cap
+        ///     Enables fragment light source 6, SGIX (GL_FRAGMENT_LIGHT6_SGIX)
         /// </summary>
         FragmentLight6Sgix = 0x8412,
 
         /// <summary>
-        ///     The fragment light sgix enable cap
+        ///     Enables fragment light source 7, SGIX (GL_FRAGMENT_LIGHT7_SGIX)
         /// </summary>
         FragmentLight7Sgix = 0x8413,
 
         /// <summary>
-        ///     The color sum enable cap
+        ///     Enables secondary color summation (GL_COLOR_SUM)
         /// </summary>
         ColorSum = 0x8458,
 
         /// <summary>
-        ///     The secondary color array enable cap
+        ///     Enables secondary color array client state (GL_SECONDARY_COLOR_ARRAY)
         /// </summary>
         SecondaryColorArray = 0x845E,
 
         /// <summary>
-        ///     The texture cube map enable cap
+        ///     Enables cube map texturing (GL_TEXTURE_CUBE_MAP)
         /// </summary>
         TextureCubeMap = 0x8513,
 
         /// <summary>
-        ///     The program point size enable cap
+        ///     Enables program-defined point size (GL_PROGRAM_POINT_SIZE)
         /// </summary>
         ProgramPointSize = 0x8642,
 
         /// <summary>
-        ///     The vertex program point size enable cap
+        ///     Enables vertex program point size control (GL_VERTEX_PROGRAM_POINT_SIZE)
         /// </summary>
         VertexProgramPointSize = 0x8642,
 
         /// <summary>
-        ///     The depth clamp enable cap
+        ///     Enables depth value clamping (GL_DEPTH_CLAMP)
         /// </summary>
         DepthClamp = 0x864F,
 
         /// <summary>
-        ///     The texture cube map seamless enable cap
+        ///     Enables seamless cube map filtering (GL_TEXTURE_CUBE_MAP_SEAMLESS)
         /// </summary>
         TextureCubeMapSeamless = 0x884F,
 
         /// <summary>
-        ///     The point sprite enable cap
+        ///     Enables point sprite rendering (GL_POINT_SPRITE)
         /// </summary>
         PointSprite = 0x8861,
 
         /// <summary>
-        ///     The rasterizer discard enable cap
+        ///     Enables rasterizer discard, skipping fragment processing (GL_RASTERIZER_DISCARD)
         /// </summary>
         RasterizerDiscard = 0x8C89,
 
         /// <summary>
-        ///     The framebuffer srgb enable cap
+        ///     Enables sRGB framebuffer conversion (GL_FRAMEBUFFER_SRGB)
         /// </summary>
         FramebufferSrgb = 0x8DB9,
 
         /// <summary>
-        ///     The sample mask enable cap
+        ///     Enables sample mask for multisampling (GL_SAMPLE_MASK)
         /// </summary>
         SampleMask = 0x8E51,
 
         /// <summary>
-        ///     The primitive restart enable cap
+        ///     Enables primitive restart for indexed drawing (GL_PRIMITIVE_RESTART)
         /// </summary>
         PrimitiveRestart = 0x8F9D
     }

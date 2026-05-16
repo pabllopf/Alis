@@ -125,10 +125,10 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Set this as an isolated edge.
+        ///     Configures this edge as an isolated segment with the given start and end points, clearing any adjacency data.
         /// </summary>
-        /// <param name="start">The start.</param>
-        /// <param name="end">The end.</param>
+        /// <param name="start">The start point of the edge.</param>
+        /// <param name="end">The end point of the edge.</param>
         public void Set(Vector2F start, Vector2F end)
         {
             Vertex11 = start;
@@ -274,7 +274,7 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Computes the properties
+        ///     Computes the centroid of the edge segment (always the midpoint between the two vertices).
         /// </summary>
         protected override void ComputeProperties()
         {
@@ -282,13 +282,13 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Computes the submerged area using the specified normal
+        ///     Computes the submerged area for buoyancy. Edge shapes always return zero area.
         /// </summary>
-        /// <param name="normal">The normal</param>
-        /// <param name="offset">The offset</param>
-        /// <param name="xf">The xf</param>
-        /// <param name="sc">The sc</param>
-        /// <returns>The float</returns>
+        /// <param name="normal">The surface normal of the fluid plane.</param>
+        /// <param name="offset">The offset of the fluid plane along the normal.</param>
+        /// <param name="xf">The world transform of the shape.</param>
+        /// <param name="sc">Outputs the submerged centroid (always zero for edges).</param>
+        /// <returns>The submerged area (always 0 for edge shapes).</returns>
         public override float ComputeSubmergedArea(ref Vector2F normal, float offset, ref ControllerTransform xf, out Vector2F sc)
         {
             sc = Vector2F.Zero;
@@ -296,10 +296,10 @@ namespace Alis.Core.Physic.Collisions.Shapes
         }
 
         /// <summary>
-        ///     Describes whether this instance compare to
+        ///     Compares this edge shape to another for geometric equality, including adjacency information.
         /// </summary>
-        /// <param name="shape">The shape</param>
-        /// <returns>The bool</returns>
+        /// <param name="shape">The other edge shape to compare against.</param>
+        /// <returns><c>true</c> if both edges have identical vertices and adjacency data; otherwise <c>false</c>.</returns>
         public bool CompareTo(EdgeShape shape) => (HasVertex0 == shape.HasVertex0) &&
                                                   (HasVertex3 == shape.HasVertex3) &&
                                                   (Vertex0 == shape.Vertex0) &&
@@ -308,9 +308,9 @@ namespace Alis.Core.Physic.Collisions.Shapes
                                                   (Vertex3 == shape.Vertex3);
 
         /// <summary>
-        ///     Clones this instance
+        ///     Creates a deep copy of this edge shape.
         /// </summary>
-        /// <returns>The clone</returns>
+        /// <returns>A new <see cref="EdgeShape"/> with the same vertices, adjacency data, and properties.</returns>
         public override Shape Clone()
         {
             EdgeShape clone = new EdgeShape();

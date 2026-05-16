@@ -39,11 +39,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -55,8 +55,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         public static void PlotScatter(string labelId, short[] values, int count)
         {
@@ -66,10 +66,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
+        /// <param name="xscale">The x-axis scale factor</param>
         public static void PlotScatter(string labelId, short[] values, int count, double xscale)
         {
             ImPlotNative.ImPlot_PlotScatter_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, 0, 0, 0, sizeof(short));
@@ -78,11 +78,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         public static void PlotScatter(string labelId, short[] values, int count, double xscale, double xstart)
         {
             ImPlotNative.ImPlot_PlotScatter_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, 0, 0, sizeof(short));
@@ -91,11 +91,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotScatter(string labelId, short[] values, int count, double xscale, double xstart, ImPlotScatterFlags flags)
         {
@@ -105,11 +105,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         public static void PlotScatter(string labelId, short[] values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset)
@@ -120,11 +120,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -136,8 +136,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         public static void PlotScatter(string labelId, ushort[] values, int count)
         {
@@ -147,10 +147,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
+        /// <param name="xscale">The x-axis scale factor</param>
         public static void PlotScatter(string labelId, ushort[] values, int count, double xscale)
         {
             ImPlotNative.ImPlot_PlotScatter_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, 0, 0, 0, sizeof(ushort));
@@ -159,11 +159,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         public static void PlotScatter(string labelId, ushort[] values, int count, double xscale, double xstart)
         {
             ImPlotNative.ImPlot_PlotScatter_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, 0, 0, sizeof(ushort));
@@ -172,11 +172,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotScatter(string labelId, ushort[] values, int count, double xscale, double xstart, ImPlotScatterFlags flags)
         {
@@ -186,11 +186,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         public static void PlotScatter(string labelId, ushort[] values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset)
@@ -201,11 +201,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -217,8 +217,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         public static void PlotScatter(string labelId, int[] values, int count)
         {
@@ -228,10 +228,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
+        /// <param name="xscale">The x-axis scale factor</param>
         public static void PlotScatter(string labelId, int[] values, int count, double xscale)
         {
             ImPlotNative.ImPlot_PlotScatter_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, 0, 0, 0, sizeof(int));
@@ -240,11 +240,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         public static void PlotScatter(string labelId, int[] values, int count, double xscale, double xstart)
         {
             ImPlotNative.ImPlot_PlotScatter_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, 0, 0, sizeof(int));
@@ -253,11 +253,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotScatter(string labelId, int[] values, int count, double xscale, double xstart, ImPlotScatterFlags flags)
         {
@@ -267,11 +267,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         public static void PlotScatter(string labelId, int[] values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset)
@@ -282,11 +282,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -298,8 +298,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         public static void PlotScatter(string labelId, uint[] values, int count)
         {
@@ -309,10 +309,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
+        /// <param name="xscale">The x-axis scale factor</param>
         public static void PlotScatter(string labelId, uint[] values, int count, double xscale)
         {
             ImPlotNative.ImPlot_PlotScatter_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, 0, 0, 0, sizeof(uint));
@@ -321,11 +321,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         public static void PlotScatter(string labelId, uint[] values, int count, double xscale, double xstart)
         {
             ImPlotNative.ImPlot_PlotScatter_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, 0, 0, sizeof(uint));
@@ -334,11 +334,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotScatter(string labelId, uint[] values, int count, double xscale, double xstart, ImPlotScatterFlags flags)
         {
@@ -348,11 +348,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         public static void PlotScatter(string labelId, uint[] values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset)
@@ -363,11 +363,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -379,8 +379,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         public static void PlotScatter(string labelId, long[] values, int count)
         {
@@ -390,10 +390,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
+        /// <param name="xscale">The x-axis scale factor</param>
         public static void PlotScatter(string labelId, long[] values, int count, double xscale)
         {
             ImPlotNative.ImPlot_PlotScatter_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, 0, 0, 0, sizeof(long));
@@ -402,11 +402,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         public static void PlotScatter(string labelId, long[] values, int count, double xscale, double xstart)
         {
             ImPlotNative.ImPlot_PlotScatter_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, 0, 0, sizeof(long));
@@ -415,11 +415,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotScatter(string labelId, long[] values, int count, double xscale, double xstart, ImPlotScatterFlags flags)
         {
@@ -429,11 +429,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         public static void PlotScatter(string labelId, long[] values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset)
@@ -444,11 +444,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -460,8 +460,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         public static void PlotScatter(string labelId, ulong[] values, int count)
         {
@@ -471,10 +471,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
+        /// <param name="xscale">The x-axis scale factor</param>
         public static void PlotScatter(string labelId, ulong[] values, int count, double xscale)
         {
             ImPlotNative.ImPlot_PlotScatter_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, 0, 0, 0, sizeof(ulong));
@@ -483,11 +483,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         public static void PlotScatter(string labelId, ulong[] values, int count, double xscale, double xstart)
         {
             ImPlotNative.ImPlot_PlotScatter_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, 0, 0, sizeof(ulong));
@@ -496,11 +496,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotScatter(string labelId, ulong[] values, int count, double xscale, double xstart, ImPlotScatterFlags flags)
         {
@@ -510,11 +510,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         public static void PlotScatter(string labelId, ulong[] values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset)
@@ -525,11 +525,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -541,9 +541,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         public static void PlotScatter(string labelId, ref float xs, ref float ys, int count)
         {
@@ -553,9 +553,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotScatter(string labelId, ref float xs, ref float ys, int count, ImPlotScatterFlags flags)
@@ -566,9 +566,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -580,9 +580,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -595,9 +595,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         public static void PlotScatter(string labelId, ref double xs, ref double ys, int count)
         {
@@ -607,9 +607,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotScatter(string labelId, ref double xs, ref double ys, int count, ImPlotScatterFlags flags)
@@ -620,9 +620,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -634,9 +634,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -649,9 +649,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         public static void PlotScatter(string labelId, ref sbyte xs, ref sbyte ys, int count)
         {
@@ -661,9 +661,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotScatter(string labelId, ref sbyte xs, ref sbyte ys, int count, ImPlotScatterFlags flags)
@@ -674,9 +674,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -688,9 +688,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -704,9 +704,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         public static void PlotScatter(string labelId, ref byte xs, ref byte ys, int count)
         {
@@ -716,9 +716,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotScatter(string labelId, ref byte xs, ref byte ys, int count, ImPlotScatterFlags flags)
@@ -729,9 +729,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -743,9 +743,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -758,9 +758,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the scatter using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         public static void PlotScatter(string labelId, ref short xs, ref short ys, int count)
         {

@@ -328,7 +328,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         public struct Info
         {
             /// <summary>The font family</summary>
-            public string Family;
+            public string Family { get; set; }
         }
 
 

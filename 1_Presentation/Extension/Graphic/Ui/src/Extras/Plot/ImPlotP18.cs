@@ -41,397 +41,397 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xBins">The bins</param>
-        /// <param name="yBins">The bins</param>
-        /// <param name="range">The range</param>
-        /// <returns>The double</returns>
+        /// <param name="xBins">The number of bins along the x-axis</param>
+        /// <param name="yBins">The number of bins along the y-axis</param>
+        /// <param name="range">The value range (min, max)</param>
+        /// <returns>The double-precision floating-point result</returns>
         public static double PlotHistogram2D(string labelId, ref byte xs, ref byte ys, int count, int xBins, int yBins, ImPlotRect range) => ImPlotNative.ImPlot_PlotHistogram2D_U8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, 0);
 
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xBins">The bins</param>
-        /// <param name="yBins">The bins</param>
-        /// <param name="range">The range</param>
+        /// <param name="xBins">The number of bins along the x-axis</param>
+        /// <param name="yBins">The number of bins along the y-axis</param>
+        /// <param name="range">The value range (min, max)</param>
         /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>The double</returns>
+        /// <returns>The double-precision floating-point result</returns>
         public static double PlotHistogram2D(string labelId, ref byte xs, ref byte ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags) => ImPlotNative.ImPlot_PlotHistogram2D_U8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, flags);
 
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <returns>The double</returns>
+        /// <returns>The double-precision floating-point result</returns>
         public static double PlotHistogram2D(string labelId, ref short xs, ref short ys, int count) => ImPlotNative.ImPlot_PlotHistogram2D_S16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, (int) ImPlotBin.Sturges, (int) ImPlotBin.Sturges, new ImPlotRect(), 0);
 
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xBins">The bins</param>
-        /// <returns>The double</returns>
+        /// <param name="xBins">The number of bins along the x-axis</param>
+        /// <returns>The double-precision floating-point result</returns>
         public static double PlotHistogram2D(string labelId, ref short xs, ref short ys, int count, int xBins) => ImPlotNative.ImPlot_PlotHistogram2D_S16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, (int) ImPlotBin.Sturges, new ImPlotRect(), 0);
 
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xBins">The bins</param>
-        /// <param name="yBins">The bins</param>
-        /// <returns>The double</returns>
+        /// <param name="xBins">The number of bins along the x-axis</param>
+        /// <param name="yBins">The number of bins along the y-axis</param>
+        /// <returns>The double-precision floating-point result</returns>
         public static double PlotHistogram2D(string labelId, ref short xs, ref short ys, int count, int xBins, int yBins) => ImPlotNative.ImPlot_PlotHistogram2D_S16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, new ImPlotRect(), 0);
 
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xBins">The bins</param>
-        /// <param name="yBins">The bins</param>
-        /// <param name="range">The range</param>
-        /// <returns>The double</returns>
+        /// <param name="xBins">The number of bins along the x-axis</param>
+        /// <param name="yBins">The number of bins along the y-axis</param>
+        /// <param name="range">The value range (min, max)</param>
+        /// <returns>The double-precision floating-point result</returns>
         public static double PlotHistogram2D(string labelId, ref short xs, ref short ys, int count, int xBins, int yBins, ImPlotRect range) => ImPlotNative.ImPlot_PlotHistogram2D_S16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, 0);
 
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xBins">The bins</param>
-        /// <param name="yBins">The bins</param>
-        /// <param name="range">The range</param>
+        /// <param name="xBins">The number of bins along the x-axis</param>
+        /// <param name="yBins">The number of bins along the y-axis</param>
+        /// <param name="range">The value range (min, max)</param>
         /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>The double</returns>
+        /// <returns>The double-precision floating-point result</returns>
         public static double PlotHistogram2D(string labelId, ref short xs, ref short ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags) => ImPlotNative.ImPlot_PlotHistogram2D_S16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, flags);
 
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <returns>The double</returns>
+        /// <returns>The double-precision floating-point result</returns>
         public static double PlotHistogram2D(string labelId, ref ushort xs, ref ushort ys, int count) => ImPlotNative.ImPlot_PlotHistogram2D_U16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, (int) ImPlotBin.Sturges, (int) ImPlotBin.Sturges, new ImPlotRect(), 0);
 
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xBins">The bins</param>
-        /// <returns>The double</returns>
+        /// <param name="xBins">The number of bins along the x-axis</param>
+        /// <returns>The double-precision floating-point result</returns>
         public static double PlotHistogram2D(string labelId, ref ushort xs, ref ushort ys, int count, int xBins) => ImPlotNative.ImPlot_PlotHistogram2D_U16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, (int) ImPlotBin.Sturges, new ImPlotRect(), 0);
 
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xBins">The bins</param>
-        /// <param name="yBins">The bins</param>
-        /// <returns>The double</returns>
+        /// <param name="xBins">The number of bins along the x-axis</param>
+        /// <param name="yBins">The number of bins along the y-axis</param>
+        /// <returns>The double-precision floating-point result</returns>
         public static double PlotHistogram2D(string labelId, ref ushort xs, ref ushort ys, int count, int xBins, int yBins) => ImPlotNative.ImPlot_PlotHistogram2D_U16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, new ImPlotRect(), 0);
 
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xBins">The bins</param>
-        /// <param name="yBins">The bins</param>
-        /// <param name="range">The range</param>
-        /// <returns>The double</returns>
+        /// <param name="xBins">The number of bins along the x-axis</param>
+        /// <param name="yBins">The number of bins along the y-axis</param>
+        /// <param name="range">The value range (min, max)</param>
+        /// <returns>The double-precision floating-point result</returns>
         public static double PlotHistogram2D(string labelId, ref ushort xs, ref ushort ys, int count, int xBins, int yBins, ImPlotRect range) => ImPlotNative.ImPlot_PlotHistogram2D_U16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, 0);
 
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xBins">The bins</param>
-        /// <param name="yBins">The bins</param>
-        /// <param name="range">The range</param>
+        /// <param name="xBins">The number of bins along the x-axis</param>
+        /// <param name="yBins">The number of bins along the y-axis</param>
+        /// <param name="range">The value range (min, max)</param>
         /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>The double</returns>
+        /// <returns>The double-precision floating-point result</returns>
         public static double PlotHistogram2D(string labelId, ref ushort xs, ref ushort ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags) => ImPlotNative.ImPlot_PlotHistogram2D_U16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, flags);
 
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <returns>The double</returns>
+        /// <returns>The double-precision floating-point result</returns>
         public static double PlotHistogram2D(string labelId, ref int xs, ref int ys, int count) => ImPlotNative.ImPlot_PlotHistogram2D_S32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, (int) ImPlotBin.Sturges, (int) ImPlotBin.Sturges, new ImPlotRect(), 0);
 
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xBins">The bins</param>
-        /// <returns>The double</returns>
+        /// <param name="xBins">The number of bins along the x-axis</param>
+        /// <returns>The double-precision floating-point result</returns>
         public static double PlotHistogram2D(string labelId, ref int xs, ref int ys, int count, int xBins) => ImPlotNative.ImPlot_PlotHistogram2D_S32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, (int) ImPlotBin.Sturges, new ImPlotRect(), 0);
 
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xBins">The bins</param>
-        /// <param name="yBins">The bins</param>
-        /// <returns>The double</returns>
+        /// <param name="xBins">The number of bins along the x-axis</param>
+        /// <param name="yBins">The number of bins along the y-axis</param>
+        /// <returns>The double-precision floating-point result</returns>
         public static double PlotHistogram2D(string labelId, ref int xs, ref int ys, int count, int xBins, int yBins) => ImPlotNative.ImPlot_PlotHistogram2D_S32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, new ImPlotRect(), 0);
 
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xBins">The bins</param>
-        /// <param name="yBins">The bins</param>
-        /// <param name="range">The range</param>
-        /// <returns>The double</returns>
+        /// <param name="xBins">The number of bins along the x-axis</param>
+        /// <param name="yBins">The number of bins along the y-axis</param>
+        /// <param name="range">The value range (min, max)</param>
+        /// <returns>The double-precision floating-point result</returns>
         public static double PlotHistogram2D(string labelId, ref int xs, ref int ys, int count, int xBins, int yBins, ImPlotRect range) => ImPlotNative.ImPlot_PlotHistogram2D_S32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, 0);
 
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xBins">The bins</param>
-        /// <param name="yBins">The bins</param>
-        /// <param name="range">The range</param>
+        /// <param name="xBins">The number of bins along the x-axis</param>
+        /// <param name="yBins">The number of bins along the y-axis</param>
+        /// <param name="range">The value range (min, max)</param>
         /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>The double</returns>
+        /// <returns>The double-precision floating-point result</returns>
         public static double PlotHistogram2D(string labelId, ref int xs, ref int ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags) => ImPlotNative.ImPlot_PlotHistogram2D_S32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, flags);
 
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <returns>The double</returns>
+        /// <returns>The double-precision floating-point result</returns>
         public static double PlotHistogram2D(string labelId, ref uint xs, ref uint ys, int count) => ImPlotNative.ImPlot_PlotHistogram2D_U32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, (int) ImPlotBin.Sturges, (int) ImPlotBin.Sturges, new ImPlotRect(), 0);
 
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xBins">The bins</param>
-        /// <returns>The double</returns>
+        /// <param name="xBins">The number of bins along the x-axis</param>
+        /// <returns>The double-precision floating-point result</returns>
         public static double PlotHistogram2D(string labelId, ref uint xs, ref uint ys, int count, int xBins) => ImPlotNative.ImPlot_PlotHistogram2D_U32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, (int) ImPlotBin.Sturges, new ImPlotRect(), 0);
 
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xBins">The bins</param>
-        /// <param name="yBins">The bins</param>
-        /// <returns>The double</returns>
+        /// <param name="xBins">The number of bins along the x-axis</param>
+        /// <param name="yBins">The number of bins along the y-axis</param>
+        /// <returns>The double-precision floating-point result</returns>
         public static double PlotHistogram2D(string labelId, ref uint xs, ref uint ys, int count, int xBins, int yBins) => ImPlotNative.ImPlot_PlotHistogram2D_U32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, new ImPlotRect(), 0);
 
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xBins">The bins</param>
-        /// <param name="yBins">The bins</param>
-        /// <param name="range">The range</param>
-        /// <returns>The double</returns>
+        /// <param name="xBins">The number of bins along the x-axis</param>
+        /// <param name="yBins">The number of bins along the y-axis</param>
+        /// <param name="range">The value range (min, max)</param>
+        /// <returns>The double-precision floating-point result</returns>
         public static double PlotHistogram2D(string labelId, ref uint xs, ref uint ys, int count, int xBins, int yBins, ImPlotRect range) => ImPlotNative.ImPlot_PlotHistogram2D_U32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, 0);
 
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xBins">The bins</param>
-        /// <param name="yBins">The bins</param>
-        /// <param name="range">The range</param>
+        /// <param name="xBins">The number of bins along the x-axis</param>
+        /// <param name="yBins">The number of bins along the y-axis</param>
+        /// <param name="range">The value range (min, max)</param>
         /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>The double</returns>
+        /// <returns>The double-precision floating-point result</returns>
         public static double PlotHistogram2D(string labelId, ref uint xs, ref uint ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags) => ImPlotNative.ImPlot_PlotHistogram2D_U32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, flags);
 
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <returns>The double</returns>
+        /// <returns>The double-precision floating-point result</returns>
         public static double PlotHistogram2D(string labelId, ref long xs, ref long ys, int count) => ImPlotNative.ImPlot_PlotHistogram2D_S64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, (int) ImPlotBin.Sturges, (int) ImPlotBin.Sturges, new ImPlotRect(), 0);
 
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xBins">The bins</param>
-        /// <returns>The double</returns>
+        /// <param name="xBins">The number of bins along the x-axis</param>
+        /// <returns>The double-precision floating-point result</returns>
         public static double PlotHistogram2D(string labelId, ref long xs, ref long ys, int count, int xBins) => ImPlotNative.ImPlot_PlotHistogram2D_S64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, (int) ImPlotBin.Sturges, new ImPlotRect(), 0);
 
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xBins">The bins</param>
-        /// <param name="yBins">The bins</param>
-        /// <returns>The double</returns>
+        /// <param name="xBins">The number of bins along the x-axis</param>
+        /// <param name="yBins">The number of bins along the y-axis</param>
+        /// <returns>The double-precision floating-point result</returns>
         public static double PlotHistogram2D(string labelId, ref long xs, ref long ys, int count, int xBins, int yBins) => ImPlotNative.ImPlot_PlotHistogram2D_S64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, new ImPlotRect(), 0);
 
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xBins">The bins</param>
-        /// <param name="yBins">The bins</param>
-        /// <param name="range">The range</param>
-        /// <returns>The double</returns>
+        /// <param name="xBins">The number of bins along the x-axis</param>
+        /// <param name="yBins">The number of bins along the y-axis</param>
+        /// <param name="range">The value range (min, max)</param>
+        /// <returns>The double-precision floating-point result</returns>
         public static double PlotHistogram2D(string labelId, ref long xs, ref long ys, int count, int xBins, int yBins, ImPlotRect range) => ImPlotNative.ImPlot_PlotHistogram2D_S64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, 0);
 
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xBins">The bins</param>
-        /// <param name="yBins">The bins</param>
-        /// <param name="range">The range</param>
+        /// <param name="xBins">The number of bins along the x-axis</param>
+        /// <param name="yBins">The number of bins along the y-axis</param>
+        /// <param name="range">The value range (min, max)</param>
         /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>The double</returns>
+        /// <returns>The double-precision floating-point result</returns>
         public static double PlotHistogram2D(string labelId, ref long xs, ref long ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags) => ImPlotNative.ImPlot_PlotHistogram2D_S64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, flags);
 
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <returns>The double</returns>
+        /// <returns>The double-precision floating-point result</returns>
         public static double PlotHistogram2D(string labelId, ref ulong xs, ref ulong ys, int count) => ImPlotNative.ImPlot_PlotHistogram2D_U64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, (int) ImPlotBin.Sturges, (int) ImPlotBin.Sturges, new ImPlotRect(), 0);
 
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xBins">The bins</param>
-        /// <returns>The double</returns>
+        /// <param name="xBins">The number of bins along the x-axis</param>
+        /// <returns>The double-precision floating-point result</returns>
         public static double PlotHistogram2D(string labelId, ref ulong xs, ref ulong ys, int count, int xBins) => ImPlotNative.ImPlot_PlotHistogram2D_U64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, (int) ImPlotBin.Sturges, new ImPlotRect(), 0);
 
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xBins">The bins</param>
-        /// <param name="yBins">The bins</param>
-        /// <returns>The double</returns>
+        /// <param name="xBins">The number of bins along the x-axis</param>
+        /// <param name="yBins">The number of bins along the y-axis</param>
+        /// <returns>The double-precision floating-point result</returns>
         public static double PlotHistogram2D(string labelId, ref ulong xs, ref ulong ys, int count, int xBins, int yBins) => ImPlotNative.ImPlot_PlotHistogram2D_U64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, new ImPlotRect(), 0);
 
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xBins">The bins</param>
-        /// <param name="yBins">The bins</param>
-        /// <param name="range">The range</param>
-        /// <returns>The double</returns>
+        /// <param name="xBins">The number of bins along the x-axis</param>
+        /// <param name="yBins">The number of bins along the y-axis</param>
+        /// <param name="range">The value range (min, max)</param>
+        /// <returns>The double-precision floating-point result</returns>
         public static double PlotHistogram2D(string labelId, ref ulong xs, ref ulong ys, int count, int xBins, int yBins, ImPlotRect range) => ImPlotNative.ImPlot_PlotHistogram2D_U64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, 0);
 
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xBins">The bins</param>
-        /// <param name="yBins">The bins</param>
-        /// <param name="range">The range</param>
+        /// <param name="xBins">The number of bins along the x-axis</param>
+        /// <param name="yBins">The number of bins along the y-axis</param>
+        /// <param name="range">The value range (min, max)</param>
         /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>The double</returns>
+        /// <returns>The double-precision floating-point result</returns>
         public static double PlotHistogram2D(string labelId, ref ulong xs, ref ulong ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags) => ImPlotNative.ImPlot_PlotHistogram2D_U64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, flags);
 
         /// <summary>
         ///     Plots the image using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
         /// <param name="userTextureId">The native texture handle to render</param>
-        /// <param name="boundsMin">The bounds min</param>
-        /// <param name="boundsMax">The bounds max</param>
+        /// <param name="boundsMin">The minimum boundary value</param>
+        /// <param name="boundsMax">The maximum boundary value</param>
         public static void PlotImage(string labelId, IntPtr userTextureId, ImPlotPoint boundsMin, ImPlotPoint boundsMax)
         {
             ImPlotNative.ImPlot_PlotImage(Encoding.UTF8.GetBytes(labelId), userTextureId, boundsMin, boundsMax, new Vector2F(0, 0), new Vector2F(1, 1), new Vector4F(1, 1, 1, 1), 0);
@@ -440,10 +440,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the image using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
         /// <param name="userTextureId">The native texture handle to render</param>
-        /// <param name="boundsMin">The bounds min</param>
-        /// <param name="boundsMax">The bounds max</param>
+        /// <param name="boundsMin">The minimum boundary value</param>
+        /// <param name="boundsMax">The maximum boundary value</param>
         /// <param name="uv0">The uv</param>
         public static void PlotImage(string labelId, IntPtr userTextureId, ImPlotPoint boundsMin, ImPlotPoint boundsMax, Vector2F uv0)
         {
@@ -453,10 +453,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the image using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
         /// <param name="userTextureId">The native texture handle to render</param>
-        /// <param name="boundsMin">The bounds min</param>
-        /// <param name="boundsMax">The bounds max</param>
+        /// <param name="boundsMin">The minimum boundary value</param>
+        /// <param name="boundsMax">The maximum boundary value</param>
         /// <param name="uv0">The uv</param>
         /// <param name="uv1">The uv</param>
         public static void PlotImage(string labelId, IntPtr userTextureId, ImPlotPoint boundsMin, ImPlotPoint boundsMax, Vector2F uv0, Vector2F uv1)
@@ -467,10 +467,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the image using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
         /// <param name="userTextureId">The native texture handle to render</param>
-        /// <param name="boundsMin">The bounds min</param>
-        /// <param name="boundsMax">The bounds max</param>
+        /// <param name="boundsMin">The minimum boundary value</param>
+        /// <param name="boundsMax">The maximum boundary value</param>
         /// <param name="uv0">The uv</param>
         /// <param name="uv1">The uv</param>
         /// <param name="tintCol">The tint col</param>
@@ -482,10 +482,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the image using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
         /// <param name="userTextureId">The native texture handle to render</param>
-        /// <param name="boundsMin">The bounds min</param>
-        /// <param name="boundsMax">The bounds max</param>
+        /// <param name="boundsMin">The minimum boundary value</param>
+        /// <param name="boundsMax">The maximum boundary value</param>
         /// <param name="uv0">The uv</param>
         /// <param name="uv1">The uv</param>
         /// <param name="tintCol">The tint col</param>
@@ -498,8 +498,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         public static void PlotInfLines(string labelId, float[] values, int count)
         {
@@ -509,8 +509,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotInfLines(string labelId, float[] values, int count, ImPlotInfLinesFlags flags)
@@ -521,8 +521,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -534,8 +534,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -548,8 +548,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         public static void PlotInfLines(string labelId, double[] values, int count)
         {
@@ -559,8 +559,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotInfLines(string labelId, double[] values, int count, ImPlotInfLinesFlags flags)
@@ -571,8 +571,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -584,8 +584,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -598,8 +598,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         public static void PlotInfLines(string labelId, sbyte[] values, int count)
         {
@@ -612,8 +612,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotInfLines(string labelId, sbyte[] values, int count, ImPlotInfLinesFlags flags)
@@ -624,8 +624,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -638,8 +638,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -652,8 +652,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         public static void PlotInfLines(string labelId, byte[] values, int count)
         {
@@ -666,8 +666,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotInfLines(string labelId, byte[] values, int count, ImPlotInfLinesFlags flags)
@@ -678,8 +678,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the inf lines using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>

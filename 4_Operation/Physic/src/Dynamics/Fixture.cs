@@ -43,17 +43,17 @@ namespace Alis.Core.Physic.Dynamics
     public class Fixture
     {
         /// <summary>
-        ///     The friction
+        ///     Backing field for the friction coefficient of this fixture.
         /// </summary>
         private float _friction;
 
         /// <summary>
-        ///     The is sensor
+        ///     Backing field indicating whether this fixture is a sensor (detects overlaps without generating responses).
         /// </summary>
         private bool _isSensor;
 
         /// <summary>
-        ///     The restitution
+        ///     Backing field for the restitution (bounciness) coefficient of this fixture.
         /// </summary>
         private float _restitution;
 
@@ -69,17 +69,17 @@ namespace Alis.Core.Physic.Dynamics
         public BeforeCollisionEventHandler BeforeCollision;
 
         /// <summary>
-        ///     The collides with
+        ///     The collision categories this fixture will collide with (mask bits).
         /// </summary>
         internal Category CollidesWith;
 
         /// <summary>
-        ///     The collision categories
+        ///     The collision categories this fixture belongs to.
         /// </summary>
         internal Category CollisionCategories;
 
         /// <summary>
-        ///     The collision group
+        ///     The collision group this fixture belongs to (negative prevents, positive forces collision).
         /// </summary>
         internal short CollisionGroup;
 
@@ -130,12 +130,12 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        ///     Gets the value of the proxies
+        ///     The array of broad-phase proxies associated with this fixture.
         /// </summary>
         public FixtureProxy[] Proxies { get; }
 
         /// <summary>
-        ///     Gets or sets the value of the proxy count
+        ///     The number of active proxies currently associated with this fixture.
         /// </summary>
         public int ProxyCount { get; private set; }
 
@@ -406,10 +406,11 @@ namespace Alis.Core.Physic.Dynamics
         public Fixture CloneOnto(Body body) => CloneOnto(body, GetShape);
 
         /// <summary>
+        ///     Clones this fixture onto the specified body using the given shape.
         /// </summary>
-        /// <param name="body"></param>
-        /// <param name="shape"></param>
-        /// <returns></returns>
+        /// <param name="body">The body to clone the fixture onto.</param>
+        /// <param name="shape">The shape to use for the cloned fixture.</param>
+        /// <returns>The cloned fixture.</returns>
         internal Fixture CloneOnto(Body body, Shape shape)
         {
             Fixture fixture = new Fixture(shape.Clone());

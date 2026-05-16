@@ -34,5 +34,7 @@ namespace Alis.Core.Physic.Dynamics
     /// <summary>
     ///     The controller delegate
     /// </summary>
+    /// <param name="sender">The world physics instance that triggered the delegate.</param>
+    /// <param name="controller">The controller instance passed to the delegate.</param>
     public delegate void ControllerDelegate(WorldPhysic sender, Controller controller);
 }

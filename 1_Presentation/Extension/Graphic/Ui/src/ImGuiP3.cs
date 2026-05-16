@@ -35,7 +35,7 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Extension.Graphic.Ui
 {
     /// <summary>
-    ///     The im gui class
+    ///     The ImGui wrapper class providing managed access to native Dear ImGui functionality
     /// </summary>
     public static partial class ImGui
     {
@@ -280,20 +280,20 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the background draw list
         /// </summary>
-        /// <returns>The im draw list ptr</returns>
+        /// <returns>The ImDrawList pointer for rendering commands</returns>
         public static ImDrawListPtr GetBackgroundDrawList() => new ImDrawListPtr(ImGuiNative.igGetBackgroundDrawList_Nil());
 
         /// <summary>
         ///     Gets the background draw list using the specified viewport
         /// </summary>
         /// <param name="viewport">The ImGuiViewport to use</param>
-        /// <returns>The im draw list ptr</returns>
+        /// <returns>The ImDrawList pointer for rendering commands</returns>
         public static ImDrawListPtr GetBackgroundDrawList(ImGuiViewportPtr viewport) => new ImDrawListPtr(ImGuiNative.igGetBackgroundDrawList_ViewportPtr(viewport.NativePtr));
 
         /// <summary>
         ///     Gets the clipboard text
         /// </summary>
-        /// <returns>the string result from the native function</returns>
+        /// <returns>The string result from the native function</returns>
         public static string GetClipboardText() => Encoding.UTF8.GetString(ImGuiNative.igGetClipboardText());
 
         /// <summary>
@@ -323,7 +323,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the color u 32 using the specified col
         /// </summary>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         /// <returns>The result returned from the native function</returns>
         public static uint GetColorU32(Vector4F col)
         {
@@ -334,7 +334,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the color u 32 using the specified col
         /// </summary>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         /// <returns>The result returned from the native function</returns>
         public static uint GetColorU32(uint col)
         {
@@ -409,7 +409,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the content region avail
         /// </summary>
-        /// <returns>The retval</returns>
+        /// <returns>The return value from the native function</returns>
         public static Vector2F GetContentRegionAvail()
         {
             ImGuiNative.igGetContentRegionAvail(out Vector2F retval);
@@ -419,7 +419,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the content region max
         /// </summary>
-        /// <returns>The retval</returns>
+        /// <returns>The return value from the native function</returns>
         public static Vector2F GetContentRegionMax()
         {
             ImGuiNative.igGetContentRegionMax(out Vector2F retval);
@@ -439,7 +439,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the cursor pos
         /// </summary>
-        /// <returns>The retval</returns>
+        /// <returns>The return value from the native function</returns>
         public static Vector2F GetCursorPos()
         {
             ImGuiNative.igGetCursorPos(out Vector2F retval);
@@ -469,7 +469,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the cursor screen pos
         /// </summary>
-        /// <returns>The retval</returns>
+        /// <returns>The return value from the native function</returns>
         public static Vector2F GetCursorScreenPos()
         {
             ImGuiNative.igGetCursorScreenPos(out Vector2F retval);
@@ -479,7 +479,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the cursor start pos
         /// </summary>
-        /// <returns>The retval</returns>
+        /// <returns>The return value from the native function</returns>
         public static Vector2F GetCursorStartPos()
         {
             ImGuiNative.igGetCursorStartPos(out Vector2F retval);
@@ -511,7 +511,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the font
         /// </summary>
-        /// <returns>The im font ptr</returns>
+        /// <returns>The ImFont pointer instance</returns>
         public static ImFontPtr GetFont() => new ImFontPtr(ImGuiNative.igGetFont());
 
         /// <summary>
@@ -527,7 +527,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the font tex uv white pixel
         /// </summary>
-        /// <returns>The retval</returns>
+        /// <returns>The return value from the native function</returns>
         public static Vector2F GetFontTexUvWhitePixel()
         {
             ImGuiNative.igGetFontTexUvWhitePixel(out Vector2F retval);
@@ -537,14 +537,14 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the foreground draw list
         /// </summary>
-        /// <returns>The im draw list ptr</returns>
+        /// <returns>The ImDrawList pointer for rendering commands</returns>
         public static ImDrawListPtr GetForegroundDrawList() => new ImDrawListPtr(ImGuiNative.igGetForegroundDrawList_Nil());
 
         /// <summary>
         ///     Gets the foreground draw list using the specified viewport
         /// </summary>
         /// <param name="viewport">The ImGuiViewport to use</param>
-        /// <returns>The im draw list ptr</returns>
+        /// <returns>The ImDrawList pointer for rendering commands</returns>
         public static ImDrawListPtr GetForegroundDrawList(ImGuiViewportPtr viewport) => new ImDrawListPtr(ImGuiNative.igGetForegroundDrawList_ViewportPtr(viewport.NativePtr));
 
         /// <summary>
@@ -617,7 +617,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the item rect max
         /// </summary>
-        /// <returns>The retval</returns>
+        /// <returns>The return value from the native function</returns>
         public static Vector2F GetItemRectMax()
         {
             ImGuiNative.igGetItemRectMax(out Vector2F retval);
@@ -627,7 +627,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the item rect min
         /// </summary>
-        /// <returns>The retval</returns>
+        /// <returns>The return value from the native function</returns>
         public static Vector2F GetItemRectMin()
         {
             ImGuiNative.igGetItemRectMin(out Vector2F retval);
@@ -637,7 +637,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the item rect size
         /// </summary>
-        /// <returns>The retval</returns>
+        /// <returns>The return value from the native function</returns>
         public static Vector2F GetItemRectSize()
         {
             ImGuiNative.igGetItemRectSize(out Vector2F retval);
@@ -647,7 +647,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the key index using the specified key
         /// </summary>
-        /// <param name="key">The key</param>
+        /// <param name="key">The lookup key</param>
         /// <returns>The result returned from the native function</returns>
         public static ImGuiKey GetKeyIndex(ImGuiKey key)
         {
@@ -658,14 +658,14 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the key name using the specified key
         /// </summary>
-        /// <param name="key">The key</param>
-        /// <returns>the string result from the native function</returns>
+        /// <param name="key">The lookup key</param>
+        /// <returns>The string result from the native function</returns>
         public static string GetKeyName(ImGuiKey key) => Encoding.UTF8.GetString(ImGuiNative.igGetKeyName(key));
 
         /// <summary>
         ///     Gets the key pressed amount using the specified key
         /// </summary>
-        /// <param name="key">The key</param>
+        /// <param name="key">The lookup key</param>
         /// <param name="repeatDelay">The repeat delay</param>
         /// <param name="rate">The rate</param>
         /// <returns>The result returned from the native function</returns>
@@ -684,7 +684,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the mouse clicked count using the specified button
         /// </summary>
-        /// <param name="button">The button</param>
+        /// <param name="button">The mouse button index</param>
         /// <returns>The result returned from the native function</returns>
         public static int GetMouseClickedCount(ImGuiMouseButton button)
         {
@@ -705,7 +705,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the mouse drag delta
         /// </summary>
-        /// <returns>The retval</returns>
+        /// <returns>The return value from the native function</returns>
         public static Vector2F GetMouseDragDelta()
         {
             ImGuiMouseButton button = 0;
@@ -717,8 +717,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the mouse drag delta using the specified button
         /// </summary>
-        /// <param name="button">The button</param>
-        /// <returns>The retval</returns>
+        /// <param name="button">The mouse button index</param>
+        /// <returns>The return value from the native function</returns>
         public static Vector2F GetMouseDragDelta(ImGuiMouseButton button)
         {
             float lockThreshold = -1.0f;
@@ -729,9 +729,9 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the mouse drag delta using the specified button
         /// </summary>
-        /// <param name="button">The button</param>
+        /// <param name="button">The mouse button index</param>
         /// <param name="lockThreshold">The lock threshold</param>
-        /// <returns>The retval</returns>
+        /// <returns>The return value from the native function</returns>
         public static Vector2F GetMouseDragDelta(ImGuiMouseButton button, float lockThreshold)
         {
             ImGuiNative.igGetMouseDragDelta(out Vector2F retval, button, lockThreshold);
@@ -741,7 +741,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the mouse pos
         /// </summary>
-        /// <returns>The retval</returns>
+        /// <returns>The return value from the native function</returns>
         public static Vector2F GetMousePos()
         {
             ImGuiNative.igGetMousePos(out Vector2F retval);
@@ -751,7 +751,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the mouse pos on opening current popup
         /// </summary>
-        /// <returns>The retval</returns>
+        /// <returns>The return value from the native function</returns>
         public static Vector2F GetMousePosOnOpeningCurrentPopup()
         {
             ImGuiNative.igGetMousePosOnOpeningCurrentPopup(out Vector2F retval);
@@ -820,7 +820,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Gets the style color name using the specified idx
         /// </summary>
         /// <param name="idx">The idx</param>
-        /// <returns>the string result from the native function</returns>
+        /// <returns>The string result from the native function</returns>
         public static string GetStyleColorName(ImGuiCol idx) => Encoding.UTF8.GetString(ImGuiNative.igGetStyleColorName(idx));
 
         /// <summary>
@@ -877,13 +877,13 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the version
         /// </summary>
-        /// <returns>the string result from the native function</returns>
+        /// <returns>The string result from the native function</returns>
         public static string GetVersion() => Marshal.PtrToStringAnsi(ImGuiNative.igGetVersion());
 
         /// <summary>
         ///     Gets the window content region max
         /// </summary>
-        /// <returns>The retval</returns>
+        /// <returns>The return value from the native function</returns>
         public static Vector2F GetWindowContentRegionMax()
         {
             ImGuiNative.igGetWindowContentRegionMax(out Vector2F retval);
@@ -893,7 +893,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the window content region min
         /// </summary>
-        /// <returns>The retval</returns>
+        /// <returns>The return value from the native function</returns>
         public static Vector2F GetWindowContentRegionMin()
         {
             ImGuiNative.igGetWindowContentRegionMin(out Vector2F retval);
@@ -923,7 +923,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the window draw list
         /// </summary>
-        /// <returns>The im draw list ptr</returns>
+        /// <returns>The ImDrawList pointer for rendering commands</returns>
         public static ImDrawListPtr GetWindowDrawList() => new ImDrawListPtr(ImGuiNative.igGetWindowDrawList());
 
         /// <summary>
@@ -939,7 +939,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the window pos
         /// </summary>
-        /// <returns>The retval</returns>
+        /// <returns>The return value from the native function</returns>
         public static Vector2F GetWindowPos()
         {
             ImGuiNative.igGetWindowPos(out Vector2F retval);
@@ -949,7 +949,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the window size
         /// </summary>
-        /// <returns>The retval</returns>
+        /// <returns>The return value from the native function</returns>
         public static Vector2F GetWindowSize()
         {
             ImGuiNative.igGetWindowSize(out Vector2F retval);

@@ -91,7 +91,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="index">The index</param>
-        /// <returns>The int ptr</returns>
+        /// <returns>The native pointer to the structure</returns>
         public IntPtr Address<T>(int index) => Data + index * Marshal.SizeOf<T>();
     }
 }

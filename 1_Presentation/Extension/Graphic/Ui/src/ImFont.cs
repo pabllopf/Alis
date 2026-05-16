@@ -39,22 +39,22 @@ namespace Alis.Extension.Graphic.Ui
     public struct ImFont
     {
         /// <summary>
-        ///     The index advance
+        ///     The per-glyph horizontal advance values
         /// </summary>
         public ImVector IndexAdvanceX { get; set; }
 
         /// <summary>
-        ///     The fallback advance
+        ///     The advance width of the fallback glyph
         /// </summary>
         public float FallbackAdvanceX { get; set; }
 
         /// <summary>
-        ///     The font size
+        ///     The configured font size in pixels
         /// </summary>
         public float FontSize { get; set; }
 
         /// <summary>
-        ///     The index lookup
+        ///     The glyph index lookup table
         /// </summary>
         public ImVector IndexLookup { get; set; }
 
@@ -69,17 +69,17 @@ namespace Alis.Extension.Graphic.Ui
         public IntPtr FallbackGlyph { get; set; }
 
         /// <summary>
-        ///     The container atlas
+        ///     The owning font atlas container
         /// </summary>
         public IntPtr ContainerAtlas { get; set; }
 
         /// <summary>
-        ///     The config data
+        ///     The font configuration data pointer
         /// </summary>
         public IntPtr ConfigData { get; set; }
 
         /// <summary>
-        ///     The config data count
+        ///     The font configuration data pointer count
         /// </summary>
         public short ConfigDataCount { get; set; }
 
@@ -99,7 +99,7 @@ namespace Alis.Extension.Graphic.Ui
         public ushort DotChar { get; set; }
 
         /// <summary>
-        ///     The dirty lookup tables
+        ///     Flag indicating whether lookup tables need rebuilding
         /// </summary>
         public byte DirtyLookupTables { get; set; }
 
@@ -119,7 +119,7 @@ namespace Alis.Extension.Graphic.Ui
         public float Descent { get; set; }
 
         /// <summary>
-        ///     The metrics total surface
+        ///     The total surface area of all glyphs in the atlas
         /// </summary>
         public int MetricsTotalSurface { get; set; }
 

@@ -41,10 +41,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Adds the colormap using the specified name
         /// </summary>
-        /// <param name="name">The name</param>
-        /// <param name="cols">The cols</param>
+        /// <param name="name">The name identifier string</param>
+        /// <param name="cols">The number of columns</param>
         /// <param name="size">The size of the element in pixels</param>
-        /// <returns>The im plot colormap</returns>
+        /// <returns>The ImPlot colormap value</returns>
         public static ImPlotColormap AddColormap(string name, ref Vector4F cols, int size)
         {
             ImPlotColormap ret = ImPlotNative.ImPlot_AddColormap_Vec4Ptr(Encoding.UTF8.GetBytes(name), cols, size, 0);
@@ -54,11 +54,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Adds the colormap using the specified name
         /// </summary>
-        /// <param name="name">The name</param>
-        /// <param name="cols">The cols</param>
+        /// <param name="name">The name identifier string</param>
+        /// <param name="cols">The number of columns</param>
         /// <param name="size">The size of the element in pixels</param>
         /// <param name="qual">The qual</param>
-        /// <returns>The im plot colormap</returns>
+        /// <returns>The ImPlot colormap value</returns>
         public static ImPlotColormap AddColormap(string name, ref Vector4F cols, int size, bool qual)
         {
             ImPlotColormap ret = ImPlotNative.ImPlot_AddColormap_Vec4Ptr(Encoding.UTF8.GetBytes(name), cols, size, qual ? (byte) 1 : (byte) 0);
@@ -68,10 +68,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Adds the colormap using the specified name
         /// </summary>
-        /// <param name="name">The name</param>
-        /// <param name="cols">The cols</param>
+        /// <param name="name">The name identifier string</param>
+        /// <param name="cols">The number of columns</param>
         /// <param name="size">The size of the element in pixels</param>
-        /// <returns>The im plot colormap</returns>
+        /// <returns>The ImPlot colormap value</returns>
         public static ImPlotColormap AddColormap(string name, ref uint cols, int size)
         {
             ImPlotColormap ret = ImPlotNative.ImPlot_AddColormap_U32Ptr(Encoding.UTF8.GetBytes(name), cols, size, 0);
@@ -81,11 +81,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Adds the colormap using the specified name
         /// </summary>
-        /// <param name="name">The name</param>
-        /// <param name="cols">The cols</param>
+        /// <param name="name">The name identifier string</param>
+        /// <param name="cols">The number of columns</param>
         /// <param name="size">The size of the element in pixels</param>
         /// <param name="qual">The qual</param>
-        /// <returns>The im plot colormap</returns>
+        /// <returns>The ImPlot colormap value</returns>
         public static ImPlotColormap AddColormap(string name, ref uint cols, int size, bool qual)
         {
             ImPlotColormap ret = ImPlotNative.ImPlot_AddColormap_U32Ptr(Encoding.UTF8.GetBytes(name), cols, size, qual ? (byte) 1 : (byte) 0);
@@ -97,7 +97,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="x">The x-coordinate</param>
         /// <param name="y">The y-coordinate</param>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         /// <param name="pixOffset">The pix offset</param>
         /// <param name="clamp">The clamp</param>
         public static void Annotation(double x, double y, Vector4F col, Vector2F pixOffset, bool clamp)
@@ -112,7 +112,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="x">The x-coordinate</param>
         /// <param name="y">The y-coordinate</param>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         /// <param name="pixOffset">The pix offset</param>
         /// <param name="clamp">The clamp</param>
         /// <param name="round">The round</param>
@@ -128,10 +128,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="x">The x-coordinate</param>
         /// <param name="y">The y-coordinate</param>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         /// <param name="pixOffset">The pix offset</param>
         /// <param name="clamp">The clamp</param>
-        /// <param name="fmt">The fmt</param>
+        /// <param name="fmt">The format string</param>
         public static void Annotation(double x, double y, Vector4F col, Vector2F pixOffset, bool clamp, string fmt)
         {
             ImPlotNative.ImPlot_Annotation_Str(x, y, col, pixOffset, clamp ? (byte) 1 : (byte) 0, Encoding.UTF8.GetBytes(fmt));
@@ -187,7 +187,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Describes whether begin drag drop source item
         /// </summary>
-        /// <param name="labelId">The label id</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool BeginDragDropSourceItem(string labelId)
         {
@@ -198,7 +198,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Describes whether begin drag drop source item
         /// </summary>
-        /// <param name="labelId">The label id</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool BeginDragDropSourceItem(string labelId, ImGuiDragDropFlags flags)
@@ -263,7 +263,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Describes whether begin legend popup
         /// </summary>
-        /// <param name="labelId">The label id</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool BeginLegendPopup(string labelId)
         {
@@ -274,7 +274,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Describes whether begin legend popup
         /// </summary>
-        /// <param name="labelId">The label id</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
         /// <param name="mouseButton">The mouse button</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool BeginLegendPopup(string labelId, ImGuiMouseButton mouseButton)
@@ -323,8 +323,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Describes whether begin subplots
         /// </summary>
         /// <param name="titleId">The title id</param>
-        /// <param name="rows">The rows</param>
-        /// <param name="cols">The cols</param>
+        /// <param name="rows">The number of rows</param>
+        /// <param name="cols">The number of columns</param>
         /// <param name="size">The size of the element in pixels</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool BeginSubplots(string titleId, int rows, int cols, Vector2F size)
@@ -337,8 +337,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Describes whether begin subplots
         /// </summary>
         /// <param name="titleId">The title id</param>
-        /// <param name="rows">The rows</param>
-        /// <param name="cols">The cols</param>
+        /// <param name="rows">The number of rows</param>
+        /// <param name="cols">The number of columns</param>
         /// <param name="size">The size of the element in pixels</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
@@ -352,8 +352,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Describes whether begin subplots
         /// </summary>
         /// <param name="titleId">The title id</param>
-        /// <param name="rows">The rows</param>
-        /// <param name="cols">The cols</param>
+        /// <param name="rows">The number of rows</param>
+        /// <param name="cols">The number of columns</param>
         /// <param name="size">The size of the element in pixels</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="rowRatios">The row ratios</param>
@@ -368,8 +368,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Describes whether begin subplots
         /// </summary>
         /// <param name="titleId">The title id</param>
-        /// <param name="rows">The rows</param>
-        /// <param name="cols">The cols</param>
+        /// <param name="rows">The number of rows</param>
+        /// <param name="cols">The number of columns</param>
         /// <param name="size">The size of the element in pixels</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="rowRatios">The row ratios</param>
@@ -458,7 +458,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Colormaps the scale using the specified label
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="scaleMin">The scale min</param>
+        /// <param name="scaleMin">The minimum scale value</param>
         /// <param name="scaleMax">The scale max</param>
         public static void ColormapScale(string label, double scaleMin, double scaleMax)
         {
@@ -469,7 +469,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Colormaps the scale using the specified label
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="scaleMin">The scale min</param>
+        /// <param name="scaleMin">The minimum scale value</param>
         /// <param name="scaleMax">The scale max</param>
         /// <param name="size">The size of the element in pixels</param>
         public static void ColormapScale(string label, double scaleMin, double scaleMax, Vector2F size)
@@ -481,7 +481,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Colormaps the scale using the specified label
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="scaleMin">The scale min</param>
+        /// <param name="scaleMin">The minimum scale value</param>
         /// <param name="scaleMax">The scale max</param>
         /// <param name="size">The size of the element in pixels</param>
         /// <param name="format">The display format string (printf-style)</param>
@@ -494,7 +494,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Colormaps the scale using the specified label
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="scaleMin">The scale min</param>
+        /// <param name="scaleMin">The minimum scale value</param>
         /// <param name="scaleMax">The scale max</param>
         /// <param name="size">The size of the element in pixels</param>
         /// <param name="format">The display format string (printf-style)</param>
@@ -508,7 +508,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Colormaps the scale using the specified label
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="scaleMin">The scale min</param>
+        /// <param name="scaleMin">The minimum scale value</param>
         /// <param name="scaleMax">The scale max</param>
         /// <param name="size">The size of the element in pixels</param>
         /// <param name="format">The display format string (printf-style)</param>
@@ -606,7 +606,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="id">The unique identifier for the element</param>
         /// <param name="x">The x-coordinate</param>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragLineX(int id, ref double x, Vector4F col)
         {
@@ -621,7 +621,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="id">The unique identifier for the element</param>
         /// <param name="x">The x-coordinate</param>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         /// <param name="thickness">The line thickness in pixels</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragLineX(int id, ref double x, Vector4F col, float thickness)
@@ -636,7 +636,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="id">The unique identifier for the element</param>
         /// <param name="x">The x-coordinate</param>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         /// <param name="thickness">The line thickness in pixels</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
@@ -651,7 +651,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="id">The unique identifier for the element</param>
         /// <param name="y">The y-coordinate</param>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragLineY(int id, ref double y, Vector4F col)
         {
@@ -666,7 +666,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="id">The unique identifier for the element</param>
         /// <param name="y">The y-coordinate</param>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         /// <param name="thickness">The line thickness in pixels</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragLineY(int id, ref double y, Vector4F col, float thickness)
@@ -681,7 +681,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="id">The unique identifier for the element</param>
         /// <param name="y">The y-coordinate</param>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         /// <param name="thickness">The line thickness in pixels</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
@@ -697,7 +697,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="id">The unique identifier for the element</param>
         /// <param name="x">The x-coordinate</param>
         /// <param name="y">The y-coordinate</param>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragPoint(int id, ref double x, ref double y, Vector4F col)
         {
@@ -713,7 +713,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="id">The unique identifier for the element</param>
         /// <param name="x">The x-coordinate</param>
         /// <param name="y">The y-coordinate</param>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         /// <param name="size">The size of the element in pixels</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragPoint(int id, ref double x, ref double y, Vector4F col, float size)
@@ -729,7 +729,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="id">The unique identifier for the element</param>
         /// <param name="x">The x-coordinate</param>
         /// <param name="y">The y-coordinate</param>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         /// <param name="size">The size of the element in pixels</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
@@ -747,7 +747,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="y1">The ending y-coordinate</param>
         /// <param name="x2">The second x-coordinate</param>
         /// <param name="y2">The second y-coordinate</param>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragRect(int id, ref double x1, ref double y1, ref double x2, ref double y2, Vector4F col)
         {
@@ -764,7 +764,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="y1">The ending y-coordinate</param>
         /// <param name="x2">The second x-coordinate</param>
         /// <param name="y2">The second y-coordinate</param>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragRect(int id, ref double x1, ref double y1, ref double x2, ref double y2, Vector4F col, ImPlotDragToolFlags flags)

@@ -31,7 +31,8 @@ namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>
     ///     Called for each fixture found in the query.
-    ///     <returns>true: Continues the query, false: Terminate the query</returns>
     /// </summary>
+    /// <param name="fixture">The fixture found in the query.</param>
+    /// <returns>true continues the query, false terminates it.</returns>
     public delegate bool QueryReportFixtureDelegate(Fixture fixture);
 }

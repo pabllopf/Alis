@@ -35,47 +35,47 @@ namespace Alis.Core.Graphic.OpenGL.Enums
     public enum BufferUsageHint
     {
         /// <summary>
-        ///     The stream draw buffer usage hint
+        ///     Data modified once, used briefly for drawing (GL_STREAM_DRAW)
         /// </summary>
         StreamDraw = 0x88E0,
 
         /// <summary>
-        ///     The stream read buffer usage hint
+        ///     Data modified once, used briefly for reading (GL_STREAM_READ)
         /// </summary>
         StreamRead = 0x88E1,
 
         /// <summary>
-        ///     The stream copy buffer usage hint
+        ///     Data modified once, used briefly for copying (GL_STREAM_COPY)
         /// </summary>
         StreamCopy = 0x88E2,
 
         /// <summary>
-        ///     The static draw buffer usage hint
+        ///     Data modified once, used many times for drawing (GL_STATIC_DRAW)
         /// </summary>
         StaticDraw = 0x88E4,
 
         /// <summary>
-        ///     The static read buffer usage hint
+        ///     Data modified once, used many times for reading (GL_STATIC_READ)
         /// </summary>
         StaticRead = 0x88E5,
 
         /// <summary>
-        ///     The static copy buffer usage hint
+        ///     Data modified once, used many times for copying (GL_STATIC_COPY)
         /// </summary>
         StaticCopy = 0x88E6,
 
         /// <summary>
-        ///     The dynamic draw buffer usage hint
+        ///     Data modified repeatedly, used many times for drawing (GL_DYNAMIC_DRAW)
         /// </summary>
         DynamicDraw = 0x88E8,
 
         /// <summary>
-        ///     The dynamic read buffer usage hint
+        ///     Data modified repeatedly, used many times for reading (GL_DYNAMIC_READ)
         /// </summary>
         DynamicRead = 0x88E9,
 
         /// <summary>
-        ///     The dynamic copy buffer usage hint
+        ///     Data modified repeatedly, used many times for copying (GL_DYNAMIC_COPY)
         /// </summary>
         DynamicCopy = 0x88EA
     }

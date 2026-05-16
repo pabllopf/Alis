@@ -33,27 +33,27 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     The pair
+    ///     Represents a pair of overlapping proxy identifiers, sortable to enable duplicate removal.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     internal struct Pair : IComparable<Pair>
     {
         /// <summary>
-        ///     The proxy id
+        ///     The identifier of the first proxy in the overlapping pair. Always the smaller index after sorting.
         /// </summary>
         public int ProxyIdA;
 
         /// <summary>
-        ///     The proxy id
+        ///     The identifier of the second proxy in the overlapping pair. Always the larger index after sorting.
         /// </summary>
         public int ProxyIdB;
 
 
         /// <summary>
-        ///     Compares the to using the specified other
+        ///     Compares this pair to another, ordering by ProxyIdB first, then ProxyIdA.
         /// </summary>
-        /// <param name="other">The other</param>
-        /// <returns>The int</returns>
+        /// <param name="other">The other pair to compare against.</param>
+        /// <returns>Negative if this precedes other, positive if this follows, zero if equal.</returns>
         public int CompareTo(Pair other)
         {
             if (ProxyIdB < other.ProxyIdB)
@@ -81,7 +81,7 @@ namespace Alis.Core.Physic.Collisions
 
         public bool Equals(Pair other) => ProxyIdA == other.ProxyIdA && ProxyIdB == other.ProxyIdB;
 
-        public override int GetHashCode() => HashCode.Combine(ProxyIdA, ProxyIdB);
+        public override int GetHashCode() => (ProxyIdA << 16) ^ ProxyIdB;
 
         public static bool operator ==(Pair left, Pair right) => left.Equals(right);
 
@@ -94,14 +94,5 @@ namespace Alis.Core.Physic.Collisions
         public static bool operator >(Pair left, Pair right) => left.CompareTo(right) > 0;
 
         public static bool operator >=(Pair left, Pair right) => left.CompareTo(right) >= 0;
-
-                if (ProxyIdA == other.ProxyIdA)
-                {
-                    return 0;
-                }
-            }
-
-            return 1;
-        }
     }
 }

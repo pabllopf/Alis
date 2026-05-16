@@ -35,82 +35,82 @@ namespace Alis.Core.Graphic.OpenGL.Enums
     public enum TextureTarget
     {
         /// <summary>
-        ///     The texture texture target
+        ///     1D texture target (GL_TEXTURE_1D)
         /// </summary>
         Texture1D = 0x0DE0,
 
         /// <summary>
-        ///     The texture texture target
+        ///     2D texture target (GL_TEXTURE_2D)
         /// </summary>
         Texture2D = 0x0DE1,
 
         /// <summary>
-        ///     The texture texture target
+        ///     3D texture target (GL_TEXTURE_3D)
         /// </summary>
         Texture3D = 0x806F,
 
         /// <summary>
-        ///     The texture array texture target
+        ///     1D texture array target (GL_TEXTURE_1D_ARRAY)
         /// </summary>
         Texture1DArray = 0x8C18,
 
         /// <summary>
-        ///     The texture array texture target
+        ///     2D texture array target (GL_TEXTURE_2D_ARRAY)
         /// </summary>
         Texture2DArray = 0x8C1A,
 
         /// <summary>
-        ///     The texture rectangle texture target
+        ///     Rectangle texture target (non-power-of-two) (GL_TEXTURE_RECTANGLE)
         /// </summary>
         TextureRectangle = 0x84F5,
 
         /// <summary>
-        ///     The texture cube map texture target
+        ///     Cube map texture target (GL_TEXTURE_CUBE_MAP)
         /// </summary>
         TextureCubeMap = 0x8513,
 
         /// <summary>
-        ///     The texture cube map positive texture target
+        ///     Cube map positive X face (GL_TEXTURE_CUBE_MAP_POSITIVE_X)
         /// </summary>
         TextureCubeMapPositiveX = 0x8515,
 
         /// <summary>
-        ///     The texture cube map negative texture target
+        ///     Cube map negative X face (GL_TEXTURE_CUBE_MAP_NEGATIVE_X)
         /// </summary>
         TextureCubeMapNegativeX = 0x8516,
 
         /// <summary>
-        ///     The texture cube map positive texture target
+        ///     Cube map positive Y face (GL_TEXTURE_CUBE_MAP_POSITIVE_Y)
         /// </summary>
         TextureCubeMapPositiveY = 0x8517,
 
         /// <summary>
-        ///     The texture cube map negative texture target
+        ///     Cube map negative Y face (GL_TEXTURE_CUBE_MAP_NEGATIVE_Y)
         /// </summary>
         TextureCubeMapNegativeY = 0x8518,
 
         /// <summary>
-        ///     The texture cube map positive texture target
+        ///     Cube map positive Z face (GL_TEXTURE_CUBE_MAP_POSITIVE_Z)
         /// </summary>
         TextureCubeMapPositiveZ = 0x8519,
 
         /// <summary>
-        ///     The texture cube map negative texture target
+        ///     Cube map negative Z face (GL_TEXTURE_CUBE_MAP_NEGATIVE_Z)
         /// </summary>
         TextureCubeMapNegativeZ = 0x851A,
 
         /// <summary>
-        ///     The texture cube map array texture target
+        ///     Cube map array texture target (GL_TEXTURE_CUBE_MAP_ARRAY)
         /// </summary>
         TextureCubeMapArray = 0x9009,
 
         /// <summary>
-        ///     The texture multisample texture target
+        ///     2D multisample texture target (GL_TEXTURE_2D_MULTISAMPLE)
         /// </summary>
         Texture2DMultisample = 0x9100,
 
         /// <summary>
-        ///     The texture multisample array texture target
+        ///     2D multisample array texture target (GL_TEXTURE_2D_MULTISAMPLE_ARRAY)
         /// </summary>
         Texture2DMultisampleArray = 0x9102
     }

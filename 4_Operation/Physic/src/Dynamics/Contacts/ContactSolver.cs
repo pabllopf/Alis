@@ -44,52 +44,52 @@ namespace Alis.Core.Physic.Dynamics.Contacts
     public class ContactSolver : IDisposable
     {
         /// <summary>
-        ///     The countdown event
+        ///     Synchronization event used for multi-threaded velocity constraint solving.
         /// </summary>
         private readonly CountdownEvent solveVelocityConstraintsWaitLock = new CountdownEvent(0);
 
         /// <summary>
-        ///     The position constraints multithread threshold
+        ///     Threshold above which position constraint solving uses multiple threads.
         /// </summary>
         private int _positionConstraintsMultithreadThreshold;
 
         /// <summary>
-        ///     The velocity constraints multithread threshold
+        ///     Threshold above which velocity constraint solving uses multiple threads.
         /// </summary>
         private int _velocityConstraintsMultithreadThreshold;
 
         /// <summary>
-        ///     The contacts
+        ///     Array of contacts being solved in the current step.
         /// </summary>
         public Contact[] Contacts;
 
         /// <summary>
-        ///     The count
+        ///     The number of active contacts in the solver.
         /// </summary>
         public int Count;
 
         /// <summary>
-        ///     The locks
+        ///     Lock flags for thread synchronization during multi-core solving.
         /// </summary>
         internal int[] Locks;
 
         /// <summary>
-        ///     The position constraints
+        ///     Array of position constraints for each contact.
         /// </summary>
         public ContactPositionConstraint[] PositionConstraints;
 
         /// <summary>
-        ///     The positions
+        ///     Array of body positions used during constraint solving.
         /// </summary>
         internal SolverPosition[] Positions;
 
         /// <summary>
-        ///     The velocities
+        ///     Array of body velocities used during constraint solving.
         /// </summary>
         internal SolverVelocity[] Velocities;
 
         /// <summary>
-        ///     The velocity constraints
+        ///     Array of velocity constraints for each contact.
         /// </summary>
         public ContactVelocityConstraint[] VelocityConstraints;
 
@@ -1147,7 +1147,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             private static readonly ConcurrentQueue<SolveVelocityConstraintsState> Queue = new ConcurrentQueue<SolveVelocityConstraintsState>(); // pool
 
             /// <summary>
-            ///     The contact solver
+            ///     The contact solver instance for this state.
             /// </summary>
             public ContactSolver ContactSolver;
 
@@ -1159,12 +1159,12 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             }
 
             /// <summary>
-            ///     Gets or sets the value of the start
+            ///     The start index of the batch to solve.
             /// </summary>
             public int Start { get; private set; }
 
             /// <summary>
-            ///     Gets or sets the value of the end
+            ///     The end index (exclusive) of the batch to solve.
             /// </summary>
             public int End { get; private set; }
 

@@ -866,9 +866,9 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     Validates the structure using the specified index
+        ///     Recursively validates the tree structure starting from the given node, ensuring parent-child consistency.
         /// </summary>
-        /// <param name="index">The index</param>
+        /// <param name="index">The node index to validate. No-op if <see cref="NullNode"/>.</param>
         public void ValidateStructure(int index)
         {
             if (index == NullNode)
@@ -895,9 +895,9 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     Validates the metrics using the specified index
+        ///     Recursively validates that each internal node's AABB correctly encloses its children and height values are consistent.
         /// </summary>
-        /// <param name="index">The index</param>
+        /// <param name="index">The node index to validate. No-op if <see cref="NullNode"/>.</param>
         public void ValidateMetrics(int index)
         {
             if (index == NullNode)
@@ -925,7 +925,7 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     Validate this tree. For testing.
+        ///     Validates the entire tree structure and metrics. Intended for debugging and testing only.
         /// </summary>
         public void Validate()
         {
@@ -942,7 +942,7 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     Build an optimal tree. Very expensive. For testing.
+        ///     Rebuilds the tree from the bottom up to produce an optimal structure. This is computationally expensive and intended for testing.
         /// </summary>
         public void RebuildBottomUp()
         {
@@ -1020,9 +1020,9 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     Shift the origin of the nodes
+        ///     Translates all node AABBs by the given displacement, used when the world coordinate origin is moved.
         /// </summary>
-        /// <param name="newOrigin">The displacement to use.</param>
+        /// <param name="newOrigin">The displacement vector to subtract from all AABB bounds.</param>
         public void ShiftOrigin(Vector2F newOrigin)
         {
             // Build array of leaves. Free the rest.

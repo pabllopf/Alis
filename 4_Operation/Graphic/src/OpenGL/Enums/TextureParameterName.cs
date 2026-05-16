@@ -35,97 +35,97 @@ namespace Alis.Core.Graphic.OpenGL.Enums
     public enum TextureParameterName
     {
         /// <summary>
-        ///     The texture base level texture parameter name
+        ///     Base mipmap level for the texture (GL_TEXTURE_BASE_LEVEL)
         /// </summary>
         TextureBaseLevel = 0x813C,
 
         /// <summary>
-        ///     The texture border color texture parameter name
+        ///     Border color of the texture (GL_TEXTURE_BORDER_COLOR)
         /// </summary>
         TextureBorderColor = 0x1004,
 
         /// <summary>
-        ///     The texture compare mode texture parameter name
+        ///     Comparison mode for depth textures (GL_TEXTURE_COMPARE_MODE)
         /// </summary>
         TextureCompareMode = 0x884C,
 
         /// <summary>
-        ///     The texture compare func texture parameter name
+        ///     Comparison function for depth textures (GL_TEXTURE_COMPARE_FUNC)
         /// </summary>
         TextureCompareFunc = 0x884D,
 
         /// <summary>
-        ///     The texture lod bias texture parameter name
+        ///     Level-of-detail bias for mipmapping (GL_TEXTURE_LOD_BIAS)
         /// </summary>
         TextureLodBias = 0x8501,
 
         /// <summary>
-        ///     The texture mag filter texture parameter name
+        ///     Magnification filter method (GL_TEXTURE_MAG_FILTER)
         /// </summary>
         TextureMagFilter = 0x2800,
 
         /// <summary>
-        ///     The texture max level texture parameter name
+        ///     Maximum mipmap array level (GL_TEXTURE_MAX_LEVEL)
         /// </summary>
         TextureMaxLevel = 0x813D,
 
         /// <summary>
-        ///     The texture max lod texture parameter name
+        ///     Maximum level-of-detail value (GL_TEXTURE_MAX_LOD)
         /// </summary>
         TextureMaxLod = 0x813B,
 
         /// <summary>
-        ///     The texture min filter texture parameter name
+        ///     Minification filter method (GL_TEXTURE_MIN_FILTER)
         /// </summary>
         TextureMinFilter = 0x2801,
 
         /// <summary>
-        ///     The texture min lod texture parameter name
+        ///     Minimum level-of-detail value (GL_TEXTURE_MIN_LOD)
         /// </summary>
         TextureMinLod = 0x813A,
 
         /// <summary>
-        ///     The texture swizzle texture parameter name
+        ///     Swizzle mask for the red component (GL_TEXTURE_SWIZZLE_R)
         /// </summary>
         TextureSwizzleR = 0x8E42,
 
         /// <summary>
-        ///     The texture swizzle texture parameter name
+        ///     Swizzle mask for the green component (GL_TEXTURE_SWIZZLE_G)
         /// </summary>
         TextureSwizzleG = 0x8E43,
 
         /// <summary>
-        ///     The texture swizzle texture parameter name
+        ///     Swizzle mask for the blue component (GL_TEXTURE_SWIZZLE_B)
         /// </summary>
         TextureSwizzleB = 0x8E44,
 
         /// <summary>
-        ///     The texture swizzle texture parameter name
+        ///     Swizzle mask for the alpha component (GL_TEXTURE_SWIZZLE_A)
         /// </summary>
         TextureSwizzleA = 0x8E45,
 
         /// <summary>
-        ///     The texture swizzle rgba texture parameter name
+        ///     Swizzle mask for all components combined (GL_TEXTURE_SWIZZLE_RGBA)
         /// </summary>
         TextureSwizzleRgba = 0x8E46,
 
         /// <summary>
-        ///     The texture wrap texture parameter name
+        ///     Wrapping mode for the S (x) texture coordinate (GL_TEXTURE_WRAP_S)
         /// </summary>
         TextureWrapS = 0x2802,
 
         /// <summary>
-        ///     The texture wrap texture parameter name
+        ///     Wrapping mode for the T (y) texture coordinate (GL_TEXTURE_WRAP_T)
         /// </summary>
         TextureWrapT = 0x2803,
 
         /// <summary>
-        ///     The texture wrap texture parameter name
+        ///     Wrapping mode for the R (z) texture coordinate (GL_TEXTURE_WRAP_R)
         /// </summary>
         TextureWrapR = 0x8072,
 
         /// <summary>
-        ///     The max anisotropy ext texture parameter name
+        ///     Maximum level of anisotropic filtering, EXT (GL_MAX_ANISOTROPY_EXT)
         /// </summary>
         MaxAnisotropyExt = 0x84FE
     }

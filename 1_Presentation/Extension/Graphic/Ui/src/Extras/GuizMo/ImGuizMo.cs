@@ -34,7 +34,7 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
 {
     /// <summary>
-    ///     The im guizmo class
+    ///     The ImGuizmo wrapper class for 3D gizmo manipulation
     /// </summary>
     public static class ImGuizMo
     {
@@ -120,7 +120,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
         /// <summary>
         ///     Allows the axis flip using the specified value
         /// </summary>
-        /// <param name="value">The value</param>
+        /// <param name="value">The value to set</param>
         public static void AllowAxisFlip(bool value)
         {
             byte nativeValue = value ? (byte) 1 : (byte) 0;
@@ -138,10 +138,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
         /// <summary>
         ///     Decomposes the matrix to components using the specified matrix
         /// </summary>
-        /// <param name="matrix">The matrix</param>
-        /// <param name="translation">The translation</param>
-        /// <param name="rotation">The rotation</param>
-        /// <param name="scale">The scale</param>
+        /// <param name="matrix">The transformation matrix data</param>
+        /// <param name="translation">The output translation component array</param>
+        /// <param name="rotation">The output rotation component array</param>
+        /// <param name="scale">The output scale component array</param>
         public static void DecomposeMatrixToComponents(ref float[] matrix, ref float[] translation, ref float[] rotation, ref float[] scale)
         {
             ImGuiZmoNative.InternalDecomposeMatrixToComponents(matrix, translation, rotation, scale);
@@ -150,10 +150,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
         /// <summary>
         ///     Draws the cubes using the specified view
         /// </summary>
-        /// <param name="view">The view</param>
-        /// <param name="projection">The projection</param>
-        /// <param name="matrices">The matrices</param>
-        /// <param name="matrixCount">The matrix count</param>
+        /// <param name="view">The view matrix data</param>
+        /// <param name="projection">The projection matrix data</param>
+        /// <param name="matrices">The array of transformation matrices</param>
+        /// <param name="matrixCount">The number of matrices in the array</param>
         public static void DrawCubes(ref float view, ref float projection, ref float matrices, int matrixCount)
         {
             ImGuiZmoNative.InternalDrawCubes(view, projection, matrices, matrixCount);
@@ -162,10 +162,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
         /// <summary>
         ///     Draws the grid using the specified view
         /// </summary>
-        /// <param name="view">The view</param>
-        /// <param name="projection">The projection</param>
-        /// <param name="matrix">The matrix</param>
-        /// <param name="gridSize">The grid size</param>
+        /// <param name="view">The view matrix data</param>
+        /// <param name="projection">The projection matrix data</param>
+        /// <param name="matrix">The transformation matrix data</param>
+        /// <param name="gridSize">The size of the grid cells</param>
         public static void DrawGrid(ref float[] view, ref float[] projection, ref float[] matrix, float gridSize)
         {
             ImGuiZmoNative.InternalDrawGrid(view, projection, matrix, gridSize);
@@ -174,7 +174,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
         /// <summary>
         ///     Enables the enable
         /// </summary>
-        /// <param name="enable">To enable</param>
+        /// <param name="enable">Whether to enable the feature</param>
         public static void Enable(bool enable)
         {
             byte nativeEnable = enable ? (byte) 1 : (byte) 0;
@@ -190,7 +190,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
         /// <summary>
         ///     Describes whether is over
         /// </summary>
-        /// <param name="op">The op</param>
+        /// <param name="op">The gizmo operation type to query</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool IsOver(Operation op) => ImGuiZmoNative.InternalIsOverOPERATION(op) != 0;
 
@@ -203,12 +203,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
         /// <summary>
         ///     Manipulates the view
         /// </summary>
-        /// <param name="view">The view</param>
-        /// <param name="projection">The projection</param>
-        /// <param name="operation">The operation</param>
-        /// <param name="mode">The mode</param>
-        /// <param name="matrix">The matrix</param>
-        /// <returns>the byte result from the native operation</returns>
+        /// <param name="view">The view matrix data</param>
+        /// <param name="projection">The projection matrix data</param>
+        /// <param name="operation">The gizmo operation type (translate/rotate/scale)</param>
+        /// <param name="mode">The operation mode (local or world)</param>
+        /// <param name="matrix">The transformation matrix data</param>
+        /// <returns>The byte result from the native operation</returns>
         public static byte Manipulate(float[] view, float[] projection, Operation operation, Mode mode, float[] matrix)
         {
             GCHandle viewHandle = GCHandle.Alloc(view, GCHandleType.Pinned);
@@ -244,10 +244,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
         /// <summary>
         ///     Recomposes the matrix from components using the specified translation
         /// </summary>
-        /// <param name="translation">The translation</param>
-        /// <param name="rotation">The rotation</param>
-        /// <param name="scale">The scale</param>
-        /// <param name="matrix">The matrix</param>
+        /// <param name="translation">The output translation component array</param>
+        /// <param name="rotation">The output rotation component array</param>
+        /// <param name="scale">The output scale component array</param>
+        /// <param name="matrix">The transformation matrix data</param>
         public static void RecomposeMatrixFromComponents(ref float[] translation, ref float[] rotation, ref float[] scale, ref float[] matrix)
         {
             ImGuiZmoNative.InternalRecomposeMatrixFromComponents(translation, rotation, scale, matrix);
@@ -264,7 +264,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
         /// <summary>
         ///     Sets the drawlist using the specified drawlist
         /// </summary>
-        /// <param name="drawList">The draw list</param>
+        /// <param name="drawList">The draw list to use for rendering</param>
         public static void SetDrawList(ImDrawList drawList)
         {
             IntPtr drawListPtr = Marshal.AllocHGlobal(Marshal.SizeOf(drawList));
@@ -275,7 +275,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
         /// <summary>
         ///     Sets the gizmo size clip space using the specified value
         /// </summary>
-        /// <param name="value">The value</param>
+        /// <param name="value">The value to set</param>
         public static void SetGizmoSizeClipSpace(float value)
         {
             ImGuiZmoNative.InternalSetGizmoSizeClipSpace(value);
@@ -302,7 +302,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
         /// <summary>
         ///     Sets the orthographic using the specified is orthographic
         /// </summary>
-        /// <param name="isOrthographic">The is orthographic</param>
+        /// <param name="isOrthographic">Whether the camera projection is orthographic</param>
         public static void SetOrthographic(bool isOrthographic)
         {
             byte nativeIsOrthographic = isOrthographic ? (byte) 1 : (byte) 0;
@@ -324,11 +324,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
         /// <summary>
         ///     Views to manipulate using the specified view
         /// </summary>
-        /// <param name="view">The view</param>
-        /// <param name="length">The length</param>
-        /// <param name="position">The position</param>
+        /// <param name="view">The view matrix data</param>
+        /// <param name="length">The length value</param>
+        /// <param name="position">The screen position of the view manipulator</param>
         /// <param name="size">The size of the element in pixels</param>
-        /// <param name="backgroundColor">The background color</param>
+        /// <param name="backgroundColor">The background color in 0xRRGGBBAA format</param>
         public static void ViewManipulate(ref float[] view, float length, Vector2F position, Vector2F size, uint backgroundColor)
         {
             ImGuiZmoNative.ImGuizmo_ViewManipulate(view, length, position, size, backgroundColor);

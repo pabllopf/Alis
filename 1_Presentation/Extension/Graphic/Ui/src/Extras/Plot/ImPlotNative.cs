@@ -46,22 +46,22 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot add colormap vec 4 ptr using the specified name
         /// </summary>
-        /// <param name="name">The name</param>
-        /// <param name="cols">The cols</param>
+        /// <param name="name">The name identifier string</param>
+        /// <param name="cols">The number of columns</param>
         /// <param name="size">The size of the element in pixels</param>
         /// <param name="qual">The qual</param>
-        /// <returns>The im plot colormap</returns>
+        /// <returns>The ImPlot colormap value</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_AddColormap_Vec4Ptr")]
         internal static extern ImPlotColormap ImPlot_AddColormap_Vec4Ptr(byte[] name, Vector4F cols, int size, byte qual);
 
         /// <summary>
         ///     Ims the plot add colormap u 32 ptr using the specified name
         /// </summary>
-        /// <param name="name">The name</param>
-        /// <param name="cols">The cols</param>
+        /// <param name="name">The name identifier string</param>
+        /// <param name="cols">The number of columns</param>
         /// <param name="size">The size of the element in pixels</param>
         /// <param name="qual">The qual</param>
-        /// <returns>The im plot colormap</returns>
+        /// <returns>The ImPlot colormap value</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_AddColormap_U32Ptr")]
         internal static extern ImPlotColormap ImPlot_AddColormap_U32Ptr(byte[] name, uint cols, int size, byte qual);
 
@@ -70,7 +70,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="x">The x-coordinate</param>
         /// <param name="y">The y-coordinate</param>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         /// <param name="pixOffset">The pix offset</param>
         /// <param name="clamp">The clamp</param>
         /// <param name="round">The round</param>
@@ -82,10 +82,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="x">The x-coordinate</param>
         /// <param name="y">The y-coordinate</param>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         /// <param name="pixOffset">The pix offset</param>
         /// <param name="clamp">The clamp</param>
-        /// <param name="fmt">The fmt</param>
+        /// <param name="fmt">The format string</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_Annotation_Str")]
         internal static extern void ImPlot_Annotation_Str(double x, double y, Vector4F col, Vector2F pixOffset, byte clamp, byte[] fmt);
 
@@ -94,7 +94,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="groupId">The group id</param>
         /// <param name="vertical">The vertical</param>
-        /// <returns>the byte result from the native operation</returns>
+        /// <returns>The byte result from the native operation</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_BeginAlignedPlots")]
         internal static extern byte ImPlot_BeginAlignedPlots(byte[] groupId, byte vertical);
 
@@ -103,16 +103,16 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="axis">The axis</param>
         /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>the byte result from the native operation</returns>
+        /// <returns>The byte result from the native operation</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_BeginDragDropSourceAxis")]
         internal static extern byte ImPlot_BeginDragDropSourceAxis(ImAxis axis, ImGuiDragDropFlags flags);
 
         /// <summary>
         ///     Ims the plot begin drag drop source item using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
         /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>the byte result from the native operation</returns>
+        /// <returns>The byte result from the native operation</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_BeginDragDropSourceItem")]
         internal static extern byte ImPlot_BeginDragDropSourceItem(byte[] labelId, ImGuiDragDropFlags flags);
 
@@ -120,7 +120,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Ims the plot begin drag drop source plot using the specified flags
         /// </summary>
         /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>the byte result from the native operation</returns>
+        /// <returns>The byte result from the native operation</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_BeginDragDropSourcePlot")]
         internal static extern byte ImPlot_BeginDragDropSourcePlot(ImGuiDragDropFlags flags);
 
@@ -128,30 +128,30 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Ims the plot begin drag drop target axis using the specified axis
         /// </summary>
         /// <param name="axis">The axis</param>
-        /// <returns>the byte result from the native operation</returns>
+        /// <returns>The byte result from the native operation</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_BeginDragDropTargetAxis")]
         internal static extern byte ImPlot_BeginDragDropTargetAxis(ImAxis axis);
 
         /// <summary>
         ///     Ims the plot begin drag drop target legend
         /// </summary>
-        /// <returns>the byte result from the native operation</returns>
+        /// <returns>The byte result from the native operation</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_BeginDragDropTargetLegend")]
         internal static extern byte ImPlot_BeginDragDropTargetLegend();
 
         /// <summary>
         ///     Ims the plot begin drag drop target plot
         /// </summary>
-        /// <returns>the byte result from the native operation</returns>
+        /// <returns>The byte result from the native operation</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_BeginDragDropTargetPlot")]
         internal static extern byte ImPlot_BeginDragDropTargetPlot();
 
         /// <summary>
         ///     Ims the plot begin legend popup using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
         /// <param name="mouseButton">The mouse button</param>
-        /// <returns>the byte result from the native operation</returns>
+        /// <returns>The byte result from the native operation</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_BeginLegendPopup")]
         internal static extern byte ImPlot_BeginLegendPopup(byte[] labelId, ImGuiMouseButton mouseButton);
 
@@ -161,7 +161,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="titleId">The title id</param>
         /// <param name="size">The size of the element in pixels</param>
         /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>the byte result from the native operation</returns>
+        /// <returns>The byte result from the native operation</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_BeginPlot")]
         internal static extern byte ImPlot_BeginPlot(byte[] titleId, Vector2F size, ImPlotFlags flags);
 
@@ -169,13 +169,13 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Ims the plot begin subplots using the specified title id
         /// </summary>
         /// <param name="titleId">The title id</param>
-        /// <param name="rows">The rows</param>
-        /// <param name="cols">The cols</param>
+        /// <param name="rows">The number of rows</param>
+        /// <param name="cols">The number of columns</param>
         /// <param name="size">The size of the element in pixels</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="rowRatios">The row ratios</param>
         /// <param name="colRatios">The col ratios</param>
-        /// <returns>the byte result from the native operation</returns>
+        /// <returns>The byte result from the native operation</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_BeginSubplots")]
         internal static extern byte ImPlot_BeginSubplots(byte[] titleId, int rows, int cols, Vector2F size, ImPlotSubplotFlags flags, float rowRatios, float colRatios);
 
@@ -198,7 +198,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="label">The display label for the UI element</param>
         /// <param name="size">The size of the element in pixels</param>
         /// <param name="cmap">The cmap</param>
-        /// <returns>the byte result from the native operation</returns>
+        /// <returns>The byte result from the native operation</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_ColormapButton")]
         internal static extern byte ImPlot_ColormapButton(byte[] label, Vector2F size, ImPlotColormap cmap);
 
@@ -213,7 +213,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Ims the plot colormap scale using the specified label
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="scaleMin">The scale min</param>
+        /// <param name="scaleMin">The minimum scale value</param>
         /// <param name="scaleMax">The scale max</param>
         /// <param name="size">The size of the element in pixels</param>
         /// <param name="format">The display format string (printf-style)</param>
@@ -230,14 +230,14 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="out">The out</param>
         /// <param name="format">The display format string (printf-style)</param>
         /// <param name="cmap">The cmap</param>
-        /// <returns>the byte result from the native operation</returns>
+        /// <returns>The byte result from the native operation</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_ColormapSlider")]
         internal static extern byte ImPlot_ColormapSlider(byte[] label, float t, out Vector4F @out, byte[] format, ImPlotColormap cmap);
 
         /// <summary>
         ///     Ims the plot create context
         /// </summary>
-        /// <returns>The int ptr</returns>
+        /// <returns>The native pointer to the structure</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_CreateContext")]
         internal static extern IntPtr ImPlot_CreateContext();
 
@@ -253,10 +253,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="id">The unique identifier for the element</param>
         /// <param name="x">The x-coordinate</param>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         /// <param name="thickness">The line thickness in pixels</param>
         /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>the byte result from the native operation</returns>
+        /// <returns>The byte result from the native operation</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_DragLineX")]
         internal static extern byte ImPlot_DragLineX(int id, double x, Vector4F col, float thickness, ImPlotDragToolFlags flags);
 
@@ -265,10 +265,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="id">The unique identifier for the element</param>
         /// <param name="y">The y-coordinate</param>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         /// <param name="thickness">The line thickness in pixels</param>
         /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>the byte result from the native operation</returns>
+        /// <returns>The byte result from the native operation</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_DragLineY")]
         internal static extern byte ImPlot_DragLineY(int id, double y, Vector4F col, float thickness, ImPlotDragToolFlags flags);
 
@@ -278,10 +278,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="id">The unique identifier for the element</param>
         /// <param name="x">The x-coordinate</param>
         /// <param name="y">The y-coordinate</param>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         /// <param name="size">The size of the element in pixels</param>
         /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>the byte result from the native operation</returns>
+        /// <returns>The byte result from the native operation</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_DragPoint")]
         internal static extern byte ImPlot_DragPoint(int id, double x, double y, Vector4F col, float size, ImPlotDragToolFlags flags);
 
@@ -293,9 +293,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="y1">The ending y-coordinate</param>
         /// <param name="x2">The second x-coordinate</param>
         /// <param name="y2">The second y-coordinate</param>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>the byte result from the native operation</returns>
+        /// <returns>The byte result from the native operation</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_DragRect")]
         internal static extern byte ImPlot_DragRect(int id, double x1, double y1, double x2, double y2, Vector4F col, ImPlotDragToolFlags flags);
 
@@ -338,7 +338,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot get colormap color using the specified p out
         /// </summary>
-        /// <param name="pOut">The out</param>
+        /// <param name="pOut">The output parameter for the result</param>
         /// <param name="idx">The idx</param>
         /// <param name="cmap">The cmap</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_GetColormapColor")]
@@ -347,15 +347,15 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot get colormap count
         /// </summary>
-        /// <returns>the integer result/count</returns>
+        /// <returns>The integer result or count</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_GetColormapCount")]
         internal static extern int ImPlot_GetColormapCount();
 
         /// <summary>
         ///     Ims the plot get colormap index using the specified name
         /// </summary>
-        /// <param name="name">The name</param>
-        /// <returns>The im plot colormap</returns>
+        /// <param name="name">The name identifier string</param>
+        /// <returns>The ImPlot colormap value</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_GetColormapIndex")]
         internal static extern ImPlotColormap ImPlot_GetColormapIndex(byte[] name);
 
@@ -363,7 +363,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Ims the plot get colormap name using the specified cmap
         /// </summary>
         /// <param name="cmap">The cmap</param>
-        /// <returns>the byte result from the native operation</returns>
+        /// <returns>The byte result from the native operation</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_GetColormapName")]
         internal static extern byte[] ImPlot_GetColormapName(ImPlotColormap cmap);
 
@@ -371,14 +371,14 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Ims the plot get colormap size using the specified cmap
         /// </summary>
         /// <param name="cmap">The cmap</param>
-        /// <returns>the integer result/count</returns>
+        /// <returns>The integer result or count</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_GetColormapSize")]
         internal static extern int ImPlot_GetColormapSize(ImPlotColormap cmap);
 
         /// <summary>
         ///     Ims the plot get current context
         /// </summary>
-        /// <returns>The int ptr</returns>
+        /// <returns>The native pointer to the structure</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_GetCurrentContext")]
         internal static extern IntPtr ImPlot_GetCurrentContext();
 
@@ -392,7 +392,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot get last item color using the specified p out
         /// </summary>
-        /// <param name="pOut">The out</param>
+        /// <param name="pOut">The output parameter for the result</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_GetLastItemColor")]
         internal static extern void ImPlot_GetLastItemColor(out Vector4F pOut);
 
@@ -400,14 +400,14 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Ims the plot get marker name using the specified idx
         /// </summary>
         /// <param name="idx">The idx</param>
-        /// <returns>the byte result from the native operation</returns>
+        /// <returns>The byte result from the native operation</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_GetMarkerName")]
         internal static extern byte[] ImPlot_GetMarkerName(ImPlotMarker idx);
 
         /// <summary>
         ///     Ims the plot get plot draw list
         /// </summary>
-        /// <returns>The im draw list</returns>
+        /// <returns>The ImDrawList structure</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_GetPlotDrawList")]
         internal static extern ImDrawList ImPlot_GetPlotDrawList();
 
@@ -423,7 +423,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot get plot mouse pos using the specified p out
         /// </summary>
-        /// <param name="pOut">The out</param>
+        /// <param name="pOut">The output parameter for the result</param>
         /// <param name="xAxis">The axis</param>
         /// <param name="yAxis">The axis</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_GetPlotMousePos")]
@@ -432,7 +432,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot get plot pos using the specified p out
         /// </summary>
-        /// <param name="pOut">The out</param>
+        /// <param name="pOut">The output parameter for the result</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_GetPlotPos")]
         internal static extern void ImPlot_GetPlotPos(out Vector2F pOut);
 
@@ -448,7 +448,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot get plot size using the specified p out
         /// </summary>
-        /// <param name="pOut">The out</param>
+        /// <param name="pOut">The output parameter for the result</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_GetPlotSize")]
         internal static extern void ImPlot_GetPlotSize(out Vector2F pOut);
 
@@ -463,7 +463,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Ims the plot get style color name using the specified idx
         /// </summary>
         /// <param name="idx">The idx</param>
-        /// <returns>the byte result from the native operation</returns>
+        /// <returns>The byte result from the native operation</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_GetStyleColorName")]
         internal static extern byte[] ImPlot_GetStyleColorName(ImPlotCol idx);
 
@@ -471,7 +471,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Ims the plot hide next item using the specified hidden
         /// </summary>
         /// <param name="hidden">The hidden</param>
-        /// <param name="cond">The cond</param>
+        /// <param name="cond">The condition flag for the operation</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_HideNextItem")]
         internal static extern void ImPlot_HideNextItem(byte hidden, ImPlotCond cond);
 
@@ -479,78 +479,78 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Ims the plot is axis hovered using the specified axis
         /// </summary>
         /// <param name="axis">The axis</param>
-        /// <returns>the byte result from the native operation</returns>
+        /// <returns>The byte result from the native operation</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_IsAxisHovered")]
         internal static extern byte ImPlot_IsAxisHovered(ImAxis axis);
 
         /// <summary>
         ///     Ims the plot is legend entry hovered using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <returns>the byte result from the native operation</returns>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <returns>The byte result from the native operation</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_IsLegendEntryHovered")]
         internal static extern byte ImPlot_IsLegendEntryHovered(byte[] labelId);
 
         /// <summary>
         ///     Ims the plot is plot hovered
         /// </summary>
-        /// <returns>the byte result from the native operation</returns>
+        /// <returns>The byte result from the native operation</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_IsPlotHovered")]
         internal static extern byte ImPlot_IsPlotHovered();
 
         /// <summary>
         ///     Ims the plot is plot selected
         /// </summary>
-        /// <returns>the byte result from the native operation</returns>
+        /// <returns>The byte result from the native operation</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_IsPlotSelected")]
         internal static extern byte ImPlot_IsPlotSelected();
 
         /// <summary>
         ///     Ims the plot is subplots hovered
         /// </summary>
-        /// <returns>the byte result from the native operation</returns>
+        /// <returns>The byte result from the native operation</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_IsSubplotsHovered")]
         internal static extern byte ImPlot_IsSubplotsHovered();
 
         /// <summary>
         ///     Ims the plot item icon vec 4 using the specified col
         /// </summary>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_ItemIcon_Vec4")]
         internal static extern void ImPlot_ItemIcon_Vec4(Vector4F col);
 
         /// <summary>
         ///     Ims the plot item icon u 32 using the specified col
         /// </summary>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_ItemIcon_U32")]
         internal static extern void ImPlot_ItemIcon_U32(uint col);
 
         /// <summary>
         ///     Ims the plot map input default using the specified dst
         /// </summary>
-        /// <param name="dst">The dst</param>
+        /// <param name="dst">The destination object to write into</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_MapInputDefault")]
         internal static extern void ImPlot_MapInputDefault(ImPlotInputMap dst);
 
         /// <summary>
         ///     Ims the plot map input reverse using the specified dst
         /// </summary>
-        /// <param name="dst">The dst</param>
+        /// <param name="dst">The destination object to write into</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_MapInputReverse")]
         internal static extern void ImPlot_MapInputReverse(ImPlotInputMap dst);
 
         /// <summary>
         ///     Ims the plot next colormap color using the specified p out
         /// </summary>
-        /// <param name="pOut">The out</param>
+        /// <param name="pOut">The output parameter for the result</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_NextColormapColor")]
         internal static extern void ImPlot_NextColormapColor(out Vector4F pOut);
 
         /// <summary>
         ///     Ims the plot pixels to plot vec 2 using the specified p out
         /// </summary>
-        /// <param name="pOut">The out</param>
+        /// <param name="pOut">The output parameter for the result</param>
         /// <param name="pix">The pix</param>
         /// <param name="xAxis">The axis</param>
         /// <param name="yAxis">The axis</param>
@@ -560,7 +560,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot pixels to plot float using the specified p out
         /// </summary>
-        /// <param name="pOut">The out</param>
+        /// <param name="pOut">The output parameter for the result</param>
         /// <param name="x">The x-coordinate</param>
         /// <param name="y">The y-coordinate</param>
         /// <param name="xAxis">The axis</param>
@@ -571,12 +571,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot bar groups float ptr using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelIds">The array of label identifiers</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="itemCount">The item count</param>
-        /// <param name="groupCount">The group count</param>
-        /// <param name="groupSize">The group size</param>
-        /// <param name="shift">The shift</param>
+        /// <param name="groupCount">The number of groups to display</param>
+        /// <param name="groupSize">The size of each group</param>
+        /// <param name="shift">The shift offset</param>
         /// <param name="flags">The ImGui behavior flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotBarGroups_FloatPtr")]
         internal static extern void ImPlot_PlotBarGroups_FloatPtr(byte[][] labelIds, float[] values, int itemCount, int groupCount, double groupSize, double shift, ImPlotBarGroupsFlags flags);
@@ -584,12 +584,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot bar groups double ptr using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelIds">The array of label identifiers</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="itemCount">The item count</param>
-        /// <param name="groupCount">The group count</param>
-        /// <param name="groupSize">The group size</param>
-        /// <param name="shift">The shift</param>
+        /// <param name="groupCount">The number of groups to display</param>
+        /// <param name="groupSize">The size of each group</param>
+        /// <param name="shift">The shift offset</param>
         /// <param name="flags">The ImGui behavior flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotBarGroups_doublePtr")]
         internal static extern void ImPlot_PlotBarGroups_doublePtr(byte[][] labelIds, double[] values, int itemCount, int groupCount, double groupSize, double shift, ImPlotBarGroupsFlags flags);
@@ -597,12 +597,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot bar groups s 8 ptr using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelIds">The array of label identifiers</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="itemCount">The item count</param>
-        /// <param name="groupCount">The group count</param>
-        /// <param name="groupSize">The group size</param>
-        /// <param name="shift">The shift</param>
+        /// <param name="groupCount">The number of groups to display</param>
+        /// <param name="groupSize">The size of each group</param>
+        /// <param name="shift">The shift offset</param>
         /// <param name="flags">The ImGui behavior flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotBarGroups_S8Ptr")]
         internal static extern void ImPlot_PlotBarGroups_S8Ptr(byte[][] labelIds, sbyte[] values, int itemCount, int groupCount, double groupSize, double shift, ImPlotBarGroupsFlags flags);
@@ -610,12 +610,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot bar groups u 8 ptr using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelIds">The array of label identifiers</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="itemCount">The item count</param>
-        /// <param name="groupCount">The group count</param>
-        /// <param name="groupSize">The group size</param>
-        /// <param name="shift">The shift</param>
+        /// <param name="groupCount">The number of groups to display</param>
+        /// <param name="groupSize">The size of each group</param>
+        /// <param name="shift">The shift offset</param>
         /// <param name="flags">The ImGui behavior flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotBarGroups_U8Ptr")]
         internal static extern void ImPlot_PlotBarGroups_U8Ptr(byte[][] labelIds, byte[] values, int itemCount, int groupCount, double groupSize, double shift, ImPlotBarGroupsFlags flags);
@@ -623,12 +623,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot bar groups s 16 ptr using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelIds">The array of label identifiers</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="itemCount">The item count</param>
-        /// <param name="groupCount">The group count</param>
-        /// <param name="groupSize">The group size</param>
-        /// <param name="shift">The shift</param>
+        /// <param name="groupCount">The number of groups to display</param>
+        /// <param name="groupSize">The size of each group</param>
+        /// <param name="shift">The shift offset</param>
         /// <param name="flags">The ImGui behavior flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotBarGroups_S16Ptr")]
         internal static extern void ImPlot_PlotBarGroups_S16Ptr(byte[][] labelIds, short[] values, int itemCount, int groupCount, double groupSize, double shift, ImPlotBarGroupsFlags flags);
@@ -636,12 +636,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot bar groups u 16 ptr using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelIds">The array of label identifiers</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="itemCount">The item count</param>
-        /// <param name="groupCount">The group count</param>
-        /// <param name="groupSize">The group size</param>
-        /// <param name="shift">The shift</param>
+        /// <param name="groupCount">The number of groups to display</param>
+        /// <param name="groupSize">The size of each group</param>
+        /// <param name="shift">The shift offset</param>
         /// <param name="flags">The ImGui behavior flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotBarGroups_U16Ptr")]
         internal static extern void ImPlot_PlotBarGroups_U16Ptr(byte[][] labelIds, ushort[] values, int itemCount, int groupCount, double groupSize, double shift, ImPlotBarGroupsFlags flags);
@@ -649,12 +649,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot bar groups s 32 ptr using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelIds">The array of label identifiers</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="itemCount">The item count</param>
-        /// <param name="groupCount">The group count</param>
-        /// <param name="groupSize">The group size</param>
-        /// <param name="shift">The shift</param>
+        /// <param name="groupCount">The number of groups to display</param>
+        /// <param name="groupSize">The size of each group</param>
+        /// <param name="shift">The shift offset</param>
         /// <param name="flags">The ImGui behavior flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotBarGroups_S32Ptr")]
         internal static extern void ImPlot_PlotBarGroups_S32Ptr(byte[][] labelIds, int[] values, int itemCount, int groupCount, double groupSize, double shift, ImPlotBarGroupsFlags flags);
@@ -662,12 +662,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot bar groups u 32 ptr using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelIds">The array of label identifiers</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="itemCount">The item count</param>
-        /// <param name="groupCount">The group count</param>
-        /// <param name="groupSize">The group size</param>
-        /// <param name="shift">The shift</param>
+        /// <param name="groupCount">The number of groups to display</param>
+        /// <param name="groupSize">The size of each group</param>
+        /// <param name="shift">The shift offset</param>
         /// <param name="flags">The ImGui behavior flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotBarGroups_U32Ptr")]
         internal static extern void ImPlot_PlotBarGroups_U32Ptr(byte[][] labelIds, uint[] values, int itemCount, int groupCount, double groupSize, double shift, ImPlotBarGroupsFlags flags);
@@ -675,12 +675,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot bar groups s 64 ptr using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelIds">The array of label identifiers</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="itemCount">The item count</param>
-        /// <param name="groupCount">The group count</param>
-        /// <param name="groupSize">The group size</param>
-        /// <param name="shift">The shift</param>
+        /// <param name="groupCount">The number of groups to display</param>
+        /// <param name="groupSize">The size of each group</param>
+        /// <param name="shift">The shift offset</param>
         /// <param name="flags">The ImGui behavior flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotBarGroups_S64Ptr")]
         internal static extern void ImPlot_PlotBarGroups_S64Ptr(byte[][] labelIds, long[] values, int itemCount, int groupCount, double groupSize, double shift, ImPlotBarGroupsFlags flags);
@@ -688,12 +688,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot bar groups u 64 ptr using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelIds">The array of label identifiers</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="itemCount">The item count</param>
-        /// <param name="groupCount">The group count</param>
-        /// <param name="groupSize">The group size</param>
-        /// <param name="shift">The shift</param>
+        /// <param name="groupCount">The number of groups to display</param>
+        /// <param name="groupSize">The size of each group</param>
+        /// <param name="shift">The shift offset</param>
         /// <param name="flags">The ImGui behavior flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotBarGroups_U64Ptr")]
         internal static extern void ImPlot_PlotBarGroups_U64Ptr(byte[][] labelIds, ulong[] values, int itemCount, int groupCount, double groupSize, double shift, ImPlotBarGroupsFlags flags);
@@ -701,11 +701,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot bars float ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The bar size</param>
-        /// <param name="shift">The shift</param>
+        /// <param name="barSize">The size of each bar in the plot</param>
+        /// <param name="shift">The shift offset</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -715,11 +715,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot bars double ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The bar size</param>
-        /// <param name="shift">The shift</param>
+        /// <param name="barSize">The size of each bar in the plot</param>
+        /// <param name="shift">The shift offset</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -729,11 +729,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot bars s 8 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The bar size</param>
-        /// <param name="shift">The shift</param>
+        /// <param name="barSize">The size of each bar in the plot</param>
+        /// <param name="shift">The shift offset</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -743,11 +743,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot bars u 8 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The bar size</param>
-        /// <param name="shift">The shift</param>
+        /// <param name="barSize">The size of each bar in the plot</param>
+        /// <param name="shift">The shift offset</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -757,11 +757,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot bars s 16 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The bar size</param>
-        /// <param name="shift">The shift</param>
+        /// <param name="barSize">The size of each bar in the plot</param>
+        /// <param name="shift">The shift offset</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -771,11 +771,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot bars u 16 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The bar size</param>
-        /// <param name="shift">The shift</param>
+        /// <param name="barSize">The size of each bar in the plot</param>
+        /// <param name="shift">The shift offset</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -785,11 +785,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot bars s 32 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The bar size</param>
-        /// <param name="shift">The shift</param>
+        /// <param name="barSize">The size of each bar in the plot</param>
+        /// <param name="shift">The shift offset</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -799,11 +799,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot bars u 32 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The bar size</param>
-        /// <param name="shift">The shift</param>
+        /// <param name="barSize">The size of each bar in the plot</param>
+        /// <param name="shift">The shift offset</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -813,11 +813,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot bars s 64 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The bar size</param>
-        /// <param name="shift">The shift</param>
+        /// <param name="barSize">The size of each bar in the plot</param>
+        /// <param name="shift">The shift offset</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -827,11 +827,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot bars u 64 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The bar size</param>
-        /// <param name="shift">The shift</param>
+        /// <param name="barSize">The size of each bar in the plot</param>
+        /// <param name="shift">The shift offset</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -841,11 +841,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot bars float ptr float ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The bar size</param>
+        /// <param name="barSize">The size of each bar in the plot</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -855,11 +855,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot bars double ptrdouble ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The bar size</param>
+        /// <param name="barSize">The size of each bar in the plot</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -869,11 +869,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot bars s 8 ptr s 8 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The bar size</param>
+        /// <param name="barSize">The size of each bar in the plot</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -883,11 +883,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot bars u 8 ptr u 8 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The bar size</param>
+        /// <param name="barSize">The size of each bar in the plot</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -897,11 +897,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot bars s 16 ptr s 16 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The bar size</param>
+        /// <param name="barSize">The size of each bar in the plot</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -911,11 +911,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot bars u 16 ptr u 16 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The bar size</param>
+        /// <param name="barSize">The size of each bar in the plot</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -925,11 +925,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot bars s 32 ptr s 32 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The bar size</param>
+        /// <param name="barSize">The size of each bar in the plot</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -939,11 +939,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot bars u 32 ptr u 32 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The bar size</param>
+        /// <param name="barSize">The size of each bar in the plot</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -953,11 +953,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot bars s 64 ptr s 64 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The bar size</param>
+        /// <param name="barSize">The size of each bar in the plot</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -967,11 +967,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot bars u 64 ptr u 64 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The bar size</param>
+        /// <param name="barSize">The size of each bar in the plot</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -981,11 +981,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot bars g using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
         /// <param name="getter">The getter</param>
         /// <param name="data">The data buffer content</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="barSize">The bar size</param>
+        /// <param name="barSize">The size of each bar in the plot</param>
         /// <param name="flags">The ImGui behavior flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotBarsG")]
         internal static extern void ImPlot_PlotBarsG(byte[] labelId, IntPtr getter, IntPtr data, int count, double barSize, ImPlotBarsFlags flags);
@@ -993,9 +993,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot digital float ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -1006,9 +1006,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot digital double ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -1019,9 +1019,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot digital s 8 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -1032,9 +1032,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot digital u 8 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -1045,9 +1045,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot digital s 16 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -1058,9 +1058,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot digital u 16 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -1071,9 +1071,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot digital s 32 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -1084,9 +1084,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot digital u 32 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -1097,9 +1097,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot digital s 64 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -1110,9 +1110,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot digital u 64 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -1123,7 +1123,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot digital g using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
         /// <param name="getter">The getter</param>
         /// <param name="data">The data buffer content</param>
         /// <param name="count">The number of elements</param>
@@ -1134,7 +1134,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot dummy using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
         /// <param name="flags">The ImGui behavior flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotDummy")]
         internal static extern void ImPlot_PlotDummy(byte[] labelId, ImPlotDummyFlags flags);
@@ -1142,10 +1142,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot error bars float ptr float ptr float ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="err">The err</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="err">The error value/array for error bars</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -1156,10 +1156,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot error bars double ptrdouble ptrdouble ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="err">The err</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="err">The error value/array for error bars</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -1170,10 +1170,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot error bars s 8 ptr s 8 ptr s 8 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="err">The err</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="err">The error value/array for error bars</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -1184,10 +1184,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot error bars u 8 ptr u 8 ptr u 8 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="err">The err</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="err">The error value/array for error bars</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -1198,10 +1198,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot error bars s 16 ptr s 16 ptr s 16 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="err">The err</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="err">The error value/array for error bars</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -1212,10 +1212,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot error bars u 16 ptr u 16 ptr u 16 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="err">The err</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="err">The error value/array for error bars</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -1226,10 +1226,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot error bars s 32 ptr s 32 ptr s 32 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="err">The err</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="err">The error value/array for error bars</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -1240,10 +1240,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot error bars u 32 ptr u 32 ptr u 32 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="err">The err</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="err">The error value/array for error bars</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -1254,10 +1254,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot error bars s 64 ptr s 64 ptr s 64 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="err">The err</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="err">The error value/array for error bars</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -1268,10 +1268,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot error bars u 64 ptr u 64 ptr u 64 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="err">The err</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="err">The error value/array for error bars</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -1282,10 +1282,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot error bars float ptr float ptr float ptr float ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="neg">The neg</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="neg">The negative direction value</param>
         /// <param name="pos">The position in screen coordinates</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
@@ -1297,10 +1297,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot error bars double ptrdouble ptrdouble ptrdouble ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="neg">The neg</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="neg">The negative direction value</param>
         /// <param name="pos">The position in screen coordinates</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
@@ -1312,10 +1312,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot error bars s 8 ptr s 8 ptr s 8 ptr s 8 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="neg">The neg</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="neg">The negative direction value</param>
         /// <param name="pos">The position in screen coordinates</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
@@ -1327,10 +1327,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot error bars u 8 ptr u 8 ptr u 8 ptr u 8 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="neg">The neg</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="neg">The negative direction value</param>
         /// <param name="pos">The position in screen coordinates</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
@@ -1342,10 +1342,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot error bars s 16 ptr s 16 ptr s 16 ptr s 16 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="neg">The neg</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="neg">The negative direction value</param>
         /// <param name="pos">The position in screen coordinates</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
@@ -1357,10 +1357,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot error bars u 16 ptr u 16 ptr u 16 ptr u 16 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="neg">The neg</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="neg">The negative direction value</param>
         /// <param name="pos">The position in screen coordinates</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
@@ -1372,10 +1372,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot error bars s 32 ptr s 32 ptr s 32 ptr s 32 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="neg">The neg</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="neg">The negative direction value</param>
         /// <param name="pos">The position in screen coordinates</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
@@ -1387,10 +1387,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot error bars u 32 ptr u 32 ptr u 32 ptr u 32 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="neg">The neg</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="neg">The negative direction value</param>
         /// <param name="pos">The position in screen coordinates</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
@@ -1402,10 +1402,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot error bars s 64 ptr s 64 ptr s 64 ptr s 64 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="neg">The neg</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="neg">The negative direction value</param>
         /// <param name="pos">The position in screen coordinates</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
@@ -1417,10 +1417,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot error bars u 64 ptr u 64 ptr u 64 ptr u 64 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="neg">The neg</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
+        /// <param name="neg">The negative direction value</param>
         /// <param name="pos">The position in screen coordinates</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
@@ -1432,15 +1432,15 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot heatmap float ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="rows">The rows</param>
-        /// <param name="cols">The cols</param>
-        /// <param name="scaleMin">The scale min</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
+        /// <param name="rows">The number of rows</param>
+        /// <param name="cols">The number of columns</param>
+        /// <param name="scaleMin">The minimum scale value</param>
         /// <param name="scaleMax">The scale max</param>
-        /// <param name="labelFmt">The label fmt</param>
-        /// <param name="boundsMin">The bounds min</param>
-        /// <param name="boundsMax">The bounds max</param>
+        /// <param name="labelFmt">The label format string</param>
+        /// <param name="boundsMin">The minimum boundary value</param>
+        /// <param name="boundsMax">The maximum boundary value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHeatmap_FloatPtr")]
         internal static extern void ImPlot_PlotHeatmap_FloatPtr(byte[] labelId, float[] values, int rows, int cols, double scaleMin, double scaleMax, byte[] labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax, ImPlotHeatmapFlags flags);
@@ -1448,15 +1448,15 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot heatmap double ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="rows">The rows</param>
-        /// <param name="cols">The cols</param>
-        /// <param name="scaleMin">The scale min</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
+        /// <param name="rows">The number of rows</param>
+        /// <param name="cols">The number of columns</param>
+        /// <param name="scaleMin">The minimum scale value</param>
         /// <param name="scaleMax">The scale max</param>
-        /// <param name="labelFmt">The label fmt</param>
-        /// <param name="boundsMin">The bounds min</param>
-        /// <param name="boundsMax">The bounds max</param>
+        /// <param name="labelFmt">The label format string</param>
+        /// <param name="boundsMin">The minimum boundary value</param>
+        /// <param name="boundsMax">The maximum boundary value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHeatmap_doublePtr")]
         internal static extern void ImPlot_PlotHeatmap_doublePtr(byte[] labelId, double[] values, int rows, int cols, double scaleMin, double scaleMax, byte[] labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax, ImPlotHeatmapFlags flags);
@@ -1464,15 +1464,15 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot heatmap s 8 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="rows">The rows</param>
-        /// <param name="cols">The cols</param>
-        /// <param name="scaleMin">The scale min</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
+        /// <param name="rows">The number of rows</param>
+        /// <param name="cols">The number of columns</param>
+        /// <param name="scaleMin">The minimum scale value</param>
         /// <param name="scaleMax">The scale max</param>
-        /// <param name="labelFmt">The label fmt</param>
-        /// <param name="boundsMin">The bounds min</param>
-        /// <param name="boundsMax">The bounds max</param>
+        /// <param name="labelFmt">The label format string</param>
+        /// <param name="boundsMin">The minimum boundary value</param>
+        /// <param name="boundsMax">The maximum boundary value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHeatmap_S8Ptr")]
         internal static extern void ImPlot_PlotHeatmap_S8Ptr(byte[] labelId, sbyte[] values, int rows, int cols, double scaleMin, double scaleMax, byte[] labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax, ImPlotHeatmapFlags flags);
@@ -1480,15 +1480,15 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot heatmap u 8 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="rows">The rows</param>
-        /// <param name="cols">The cols</param>
-        /// <param name="scaleMin">The scale min</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
+        /// <param name="rows">The number of rows</param>
+        /// <param name="cols">The number of columns</param>
+        /// <param name="scaleMin">The minimum scale value</param>
         /// <param name="scaleMax">The scale max</param>
-        /// <param name="labelFmt">The label fmt</param>
-        /// <param name="boundsMin">The bounds min</param>
-        /// <param name="boundsMax">The bounds max</param>
+        /// <param name="labelFmt">The label format string</param>
+        /// <param name="boundsMin">The minimum boundary value</param>
+        /// <param name="boundsMax">The maximum boundary value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHeatmap_U8Ptr")]
         internal static extern void ImPlot_PlotHeatmap_U8Ptr(byte[] labelId, byte[] values, int rows, int cols, double scaleMin, double scaleMax, byte[] labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax, ImPlotHeatmapFlags flags);
@@ -1496,15 +1496,15 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot heatmap s 16 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="rows">The rows</param>
-        /// <param name="cols">The cols</param>
-        /// <param name="scaleMin">The scale min</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
+        /// <param name="rows">The number of rows</param>
+        /// <param name="cols">The number of columns</param>
+        /// <param name="scaleMin">The minimum scale value</param>
         /// <param name="scaleMax">The scale max</param>
-        /// <param name="labelFmt">The label fmt</param>
-        /// <param name="boundsMin">The bounds min</param>
-        /// <param name="boundsMax">The bounds max</param>
+        /// <param name="labelFmt">The label format string</param>
+        /// <param name="boundsMin">The minimum boundary value</param>
+        /// <param name="boundsMax">The maximum boundary value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHeatmap_S16Ptr")]
         internal static extern void ImPlot_PlotHeatmap_S16Ptr(byte[] labelId, short[] values, int rows, int cols, double scaleMin, double scaleMax, byte[] labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax, ImPlotHeatmapFlags flags);
@@ -1512,15 +1512,15 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot heatmap u 16 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="rows">The rows</param>
-        /// <param name="cols">The cols</param>
-        /// <param name="scaleMin">The scale min</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
+        /// <param name="rows">The number of rows</param>
+        /// <param name="cols">The number of columns</param>
+        /// <param name="scaleMin">The minimum scale value</param>
         /// <param name="scaleMax">The scale max</param>
-        /// <param name="labelFmt">The label fmt</param>
-        /// <param name="boundsMin">The bounds min</param>
-        /// <param name="boundsMax">The bounds max</param>
+        /// <param name="labelFmt">The label format string</param>
+        /// <param name="boundsMin">The minimum boundary value</param>
+        /// <param name="boundsMax">The maximum boundary value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHeatmap_U16Ptr")]
         internal static extern void ImPlot_PlotHeatmap_U16Ptr(byte[] labelId, ushort[] values, int rows, int cols, double scaleMin, double scaleMax, byte[] labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax, ImPlotHeatmapFlags flags);
@@ -1528,15 +1528,15 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot heatmap s 32 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="rows">The rows</param>
-        /// <param name="cols">The cols</param>
-        /// <param name="scaleMin">The scale min</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
+        /// <param name="rows">The number of rows</param>
+        /// <param name="cols">The number of columns</param>
+        /// <param name="scaleMin">The minimum scale value</param>
         /// <param name="scaleMax">The scale max</param>
-        /// <param name="labelFmt">The label fmt</param>
-        /// <param name="boundsMin">The bounds min</param>
-        /// <param name="boundsMax">The bounds max</param>
+        /// <param name="labelFmt">The label format string</param>
+        /// <param name="boundsMin">The minimum boundary value</param>
+        /// <param name="boundsMax">The maximum boundary value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHeatmap_S32Ptr")]
         internal static extern void ImPlot_PlotHeatmap_S32Ptr(byte[] labelId, int[] values, int rows, int cols, double scaleMin, double scaleMax, byte[] labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax, ImPlotHeatmapFlags flags);
@@ -1544,15 +1544,15 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot heatmap u 32 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="rows">The rows</param>
-        /// <param name="cols">The cols</param>
-        /// <param name="scaleMin">The scale min</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
+        /// <param name="rows">The number of rows</param>
+        /// <param name="cols">The number of columns</param>
+        /// <param name="scaleMin">The minimum scale value</param>
         /// <param name="scaleMax">The scale max</param>
-        /// <param name="labelFmt">The label fmt</param>
-        /// <param name="boundsMin">The bounds min</param>
-        /// <param name="boundsMax">The bounds max</param>
+        /// <param name="labelFmt">The label format string</param>
+        /// <param name="boundsMin">The minimum boundary value</param>
+        /// <param name="boundsMax">The maximum boundary value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHeatmap_U32Ptr")]
         internal static extern void ImPlot_PlotHeatmap_U32Ptr(byte[] labelId, uint[] values, int rows, int cols, double scaleMin, double scaleMax, byte[] labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax, ImPlotHeatmapFlags flags);
@@ -1560,15 +1560,15 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot heatmap s 64 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="rows">The rows</param>
-        /// <param name="cols">The cols</param>
-        /// <param name="scaleMin">The scale min</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
+        /// <param name="rows">The number of rows</param>
+        /// <param name="cols">The number of columns</param>
+        /// <param name="scaleMin">The minimum scale value</param>
         /// <param name="scaleMax">The scale max</param>
-        /// <param name="labelFmt">The label fmt</param>
-        /// <param name="boundsMin">The bounds min</param>
-        /// <param name="boundsMax">The bounds max</param>
+        /// <param name="labelFmt">The label format string</param>
+        /// <param name="boundsMin">The minimum boundary value</param>
+        /// <param name="boundsMax">The maximum boundary value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHeatmap_S64Ptr")]
         internal static extern void ImPlot_PlotHeatmap_S64Ptr(byte[] labelId, long[] values, int rows, int cols, double scaleMin, double scaleMax, byte[] labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax, ImPlotHeatmapFlags flags);
@@ -1576,15 +1576,15 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot heatmap u 64 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="rows">The rows</param>
-        /// <param name="cols">The cols</param>
-        /// <param name="scaleMin">The scale min</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
+        /// <param name="rows">The number of rows</param>
+        /// <param name="cols">The number of columns</param>
+        /// <param name="scaleMin">The minimum scale value</param>
         /// <param name="scaleMax">The scale max</param>
-        /// <param name="labelFmt">The label fmt</param>
-        /// <param name="boundsMin">The bounds min</param>
-        /// <param name="boundsMax">The bounds max</param>
+        /// <param name="labelFmt">The label format string</param>
+        /// <param name="boundsMin">The minimum boundary value</param>
+        /// <param name="boundsMax">The maximum boundary value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHeatmap_U64Ptr")]
         internal static extern void ImPlot_PlotHeatmap_U64Ptr(byte[] labelId, ulong[] values, int rows, int cols, double scaleMin, double scaleMax, byte[] labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax, ImPlotHeatmapFlags flags);
@@ -1592,300 +1592,300 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot histogram float ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="bins">The bins</param>
+        /// <param name="bins">The number of histogram bins</param>
         /// <param name="barScale">The bar scale</param>
-        /// <param name="range">The range</param>
+        /// <param name="range">The value range (min, max)</param>
         /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>The double</returns>
+        /// <returns>The double-precision floating-point result</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHistogram_FloatPtr")]
         internal static extern double ImPlot_PlotHistogram_FloatPtr(byte[] labelId, float[] values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags);
 
         /// <summary>
         ///     Ims the plot plot histogram double ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="bins">The bins</param>
+        /// <param name="bins">The number of histogram bins</param>
         /// <param name="barScale">The bar scale</param>
-        /// <param name="range">The range</param>
+        /// <param name="range">The value range (min, max)</param>
         /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>The double</returns>
+        /// <returns>The double-precision floating-point result</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHistogram_doublePtr")]
         internal static extern double ImPlot_PlotHistogram_doublePtr(byte[] labelId, double[] values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags);
 
         /// <summary>
         ///     Ims the plot plot histogram s 8 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="bins">The bins</param>
+        /// <param name="bins">The number of histogram bins</param>
         /// <param name="barScale">The bar scale</param>
-        /// <param name="range">The range</param>
+        /// <param name="range">The value range (min, max)</param>
         /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>The double</returns>
+        /// <returns>The double-precision floating-point result</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHistogram_S8Ptr")]
         internal static extern double ImPlot_PlotHistogram_S8Ptr(byte[] labelId, sbyte[] values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags);
 
         /// <summary>
         ///     Ims the plot plot histogram u 8 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="bins">The bins</param>
+        /// <param name="bins">The number of histogram bins</param>
         /// <param name="barScale">The bar scale</param>
-        /// <param name="range">The range</param>
+        /// <param name="range">The value range (min, max)</param>
         /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>The double</returns>
+        /// <returns>The double-precision floating-point result</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHistogram_U8Ptr")]
         internal static extern double ImPlot_PlotHistogram_U8Ptr(byte[] labelId, byte[] values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags);
 
         /// <summary>
         ///     Ims the plot plot histogram s 16 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="bins">The bins</param>
+        /// <param name="bins">The number of histogram bins</param>
         /// <param name="barScale">The bar scale</param>
-        /// <param name="range">The range</param>
+        /// <param name="range">The value range (min, max)</param>
         /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>The double</returns>
+        /// <returns>The double-precision floating-point result</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHistogram_S16Ptr")]
         internal static extern double ImPlot_PlotHistogram_S16Ptr(byte[] labelId, short[] values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags);
 
         /// <summary>
         ///     Ims the plot plot histogram u 16 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="bins">The bins</param>
+        /// <param name="bins">The number of histogram bins</param>
         /// <param name="barScale">The bar scale</param>
-        /// <param name="range">The range</param>
+        /// <param name="range">The value range (min, max)</param>
         /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>The double</returns>
+        /// <returns>The double-precision floating-point result</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHistogram_U16Ptr")]
         internal static extern double ImPlot_PlotHistogram_U16Ptr(byte[] labelId, ushort[] values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags);
 
         /// <summary>
         ///     Ims the plot plot histogram s 32 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="bins">The bins</param>
+        /// <param name="bins">The number of histogram bins</param>
         /// <param name="barScale">The bar scale</param>
-        /// <param name="range">The range</param>
+        /// <param name="range">The value range (min, max)</param>
         /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>The double</returns>
+        /// <returns>The double-precision floating-point result</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHistogram_S32Ptr")]
         internal static extern double ImPlot_PlotHistogram_S32Ptr(byte[] labelId, int[] values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags);
 
         /// <summary>
         ///     Ims the plot plot histogram u 32 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="bins">The bins</param>
+        /// <param name="bins">The number of histogram bins</param>
         /// <param name="barScale">The bar scale</param>
-        /// <param name="range">The range</param>
+        /// <param name="range">The value range (min, max)</param>
         /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>The double</returns>
+        /// <returns>The double-precision floating-point result</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHistogram_U32Ptr")]
         internal static extern double ImPlot_PlotHistogram_U32Ptr(byte[] labelId, uint[] values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags);
 
         /// <summary>
         ///     Ims the plot plot histogram s 64 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="bins">The bins</param>
+        /// <param name="bins">The number of histogram bins</param>
         /// <param name="barScale">The bar scale</param>
-        /// <param name="range">The range</param>
+        /// <param name="range">The value range (min, max)</param>
         /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>The double</returns>
+        /// <returns>The double-precision floating-point result</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHistogram_S64Ptr")]
         internal static extern double ImPlot_PlotHistogram_S64Ptr(byte[] labelId, long[] values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags);
 
         /// <summary>
         ///     Ims the plot plot histogram u 64 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="bins">The bins</param>
+        /// <param name="bins">The number of histogram bins</param>
         /// <param name="barScale">The bar scale</param>
-        /// <param name="range">The range</param>
+        /// <param name="range">The value range (min, max)</param>
         /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>The double</returns>
+        /// <returns>The double-precision floating-point result</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHistogram_U64Ptr")]
         internal static extern double ImPlot_PlotHistogram_U64Ptr(byte[] labelId, ulong[] values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags);
 
         /// <summary>
         ///     Ims the plot plot histogram 2 d float ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xBins">The bins</param>
-        /// <param name="yBins">The bins</param>
-        /// <param name="range">The range</param>
+        /// <param name="xBins">The number of bins along the x-axis</param>
+        /// <param name="yBins">The number of bins along the y-axis</param>
+        /// <param name="range">The value range (min, max)</param>
         /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>The double</returns>
+        /// <returns>The double-precision floating-point result</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHistogram2D_FloatPtr")]
         internal static extern double ImPlot_PlotHistogram2D_FloatPtr(byte[] labelId, ref float xs, ref float ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags);
 
         /// <summary>
         ///     Ims the plot plot histogram 2 d double ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xBins">The bins</param>
-        /// <param name="yBins">The bins</param>
-        /// <param name="range">The range</param>
+        /// <param name="xBins">The number of bins along the x-axis</param>
+        /// <param name="yBins">The number of bins along the y-axis</param>
+        /// <param name="range">The value range (min, max)</param>
         /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>The double</returns>
+        /// <returns>The double-precision floating-point result</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHistogram2D_doublePtr")]
         internal static extern double ImPlot_PlotHistogram2D_doublePtr(byte[] labelId, ref double xs, ref double ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags);
 
         /// <summary>
         ///     Ims the plot plot histogram 2 d s 8 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xBins">The bins</param>
-        /// <param name="yBins">The bins</param>
-        /// <param name="range">The range</param>
+        /// <param name="xBins">The number of bins along the x-axis</param>
+        /// <param name="yBins">The number of bins along the y-axis</param>
+        /// <param name="range">The value range (min, max)</param>
         /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>The double</returns>
+        /// <returns>The double-precision floating-point result</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHistogram2D_S8Ptr")]
         internal static extern double ImPlot_PlotHistogram2D_S8Ptr(byte[] labelId, ref sbyte xs, ref sbyte ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags);
 
         /// <summary>
         ///     Ims the plot plot histogram 2 d u 8 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xBins">The bins</param>
-        /// <param name="yBins">The bins</param>
-        /// <param name="range">The range</param>
+        /// <param name="xBins">The number of bins along the x-axis</param>
+        /// <param name="yBins">The number of bins along the y-axis</param>
+        /// <param name="range">The value range (min, max)</param>
         /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>The double</returns>
+        /// <returns>The double-precision floating-point result</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHistogram2D_U8Ptr")]
         internal static extern double ImPlot_PlotHistogram2D_U8Ptr(byte[] labelId, ref byte xs, ref byte ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags);
 
         /// <summary>
         ///     Ims the plot plot histogram 2 d s 16 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xBins">The bins</param>
-        /// <param name="yBins">The bins</param>
-        /// <param name="range">The range</param>
+        /// <param name="xBins">The number of bins along the x-axis</param>
+        /// <param name="yBins">The number of bins along the y-axis</param>
+        /// <param name="range">The value range (min, max)</param>
         /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>The double</returns>
+        /// <returns>The double-precision floating-point result</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHistogram2D_S16Ptr")]
         internal static extern double ImPlot_PlotHistogram2D_S16Ptr(byte[] labelId, ref short xs, ref short ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags);
 
         /// <summary>
         ///     Ims the plot plot histogram 2 d u 16 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xBins">The bins</param>
-        /// <param name="yBins">The bins</param>
-        /// <param name="range">The range</param>
+        /// <param name="xBins">The number of bins along the x-axis</param>
+        /// <param name="yBins">The number of bins along the y-axis</param>
+        /// <param name="range">The value range (min, max)</param>
         /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>The double</returns>
+        /// <returns>The double-precision floating-point result</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHistogram2D_U16Ptr")]
         internal static extern double ImPlot_PlotHistogram2D_U16Ptr(byte[] labelId, ref ushort xs, ref ushort ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags);
 
         /// <summary>
         ///     Ims the plot plot histogram 2 d s 32 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xBins">The bins</param>
-        /// <param name="yBins">The bins</param>
-        /// <param name="range">The range</param>
+        /// <param name="xBins">The number of bins along the x-axis</param>
+        /// <param name="yBins">The number of bins along the y-axis</param>
+        /// <param name="range">The value range (min, max)</param>
         /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>The double</returns>
+        /// <returns>The double-precision floating-point result</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHistogram2D_S32Ptr")]
         internal static extern double ImPlot_PlotHistogram2D_S32Ptr(byte[] labelId, ref int xs, ref int ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags);
 
         /// <summary>
         ///     Ims the plot plot histogram 2 d u 32 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xBins">The bins</param>
-        /// <param name="yBins">The bins</param>
-        /// <param name="range">The range</param>
+        /// <param name="xBins">The number of bins along the x-axis</param>
+        /// <param name="yBins">The number of bins along the y-axis</param>
+        /// <param name="range">The value range (min, max)</param>
         /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>The double</returns>
+        /// <returns>The double-precision floating-point result</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHistogram2D_U32Ptr")]
         internal static extern double ImPlot_PlotHistogram2D_U32Ptr(byte[] labelId, ref uint xs, ref uint ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags);
 
         /// <summary>
         ///     Ims the plot plot histogram 2 d s 64 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xBins">The bins</param>
-        /// <param name="yBins">The bins</param>
-        /// <param name="range">The range</param>
+        /// <param name="xBins">The number of bins along the x-axis</param>
+        /// <param name="yBins">The number of bins along the y-axis</param>
+        /// <param name="range">The value range (min, max)</param>
         /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>The double</returns>
+        /// <returns>The double-precision floating-point result</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHistogram2D_S64Ptr")]
         internal static extern double ImPlot_PlotHistogram2D_S64Ptr(byte[] labelId, ref long xs, ref long ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags);
 
         /// <summary>
         ///     Ims the plot plot histogram 2 d u 64 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xBins">The bins</param>
-        /// <param name="yBins">The bins</param>
-        /// <param name="range">The range</param>
+        /// <param name="xBins">The number of bins along the x-axis</param>
+        /// <param name="yBins">The number of bins along the y-axis</param>
+        /// <param name="range">The value range (min, max)</param>
         /// <param name="flags">The ImGui behavior flags</param>
-        /// <returns>The double</returns>
+        /// <returns>The double-precision floating-point result</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHistogram2D_U64Ptr")]
         internal static extern double ImPlot_PlotHistogram2D_U64Ptr(byte[] labelId, ref ulong xs, ref ulong ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags);
 
         /// <summary>
         ///     Ims the plot plot image using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
         /// <param name="userTextureId">The native texture handle to render</param>
-        /// <param name="boundsMin">The bounds min</param>
-        /// <param name="boundsMax">The bounds max</param>
+        /// <param name="boundsMin">The minimum boundary value</param>
+        /// <param name="boundsMax">The maximum boundary value</param>
         /// <param name="uv0">The uv</param>
         /// <param name="uv1">The uv</param>
         /// <param name="tintCol">The tint col</param>
@@ -1896,8 +1896,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot inf lines float ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -1908,8 +1908,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot inf lines double ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -1920,8 +1920,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot inf lines s 8 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -1932,8 +1932,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot inf lines u 8 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -1944,8 +1944,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot inf lines s 16 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -1956,8 +1956,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot inf lines u 16 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -1968,8 +1968,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot inf lines s 32 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -1980,8 +1980,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot inf lines u 32 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -1992,8 +1992,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot inf lines s 64 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -2004,8 +2004,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot inf lines u 64 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -2016,11 +2016,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot line float ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -2030,11 +2030,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot line double ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -2044,11 +2044,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot line s 8 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -2058,11 +2058,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot line u 8 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -2072,11 +2072,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot line s 16 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -2086,11 +2086,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot line u 16 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -2100,11 +2100,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot line s 32 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -2114,11 +2114,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot line u 32 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -2128,11 +2128,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot line s 64 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -2142,11 +2142,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot line u 64 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -2156,9 +2156,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot line float ptr float ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -2169,9 +2169,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot line double ptrdouble ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -2182,9 +2182,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot line s 8 ptr s 8 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -2195,9 +2195,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot line u 8 ptr u 8 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -2208,9 +2208,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot line s 16 ptr s 16 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -2221,9 +2221,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot line u 16 ptr u 16 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -2234,9 +2234,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot line s 32 ptr s 32 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -2247,9 +2247,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot line u 32 ptr u 32 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -2260,9 +2260,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot line s 64 ptr s 64 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -2273,9 +2273,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot line u 64 ptr u 64 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -2286,7 +2286,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot line g using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
         /// <param name="getter">The getter</param>
         /// <param name="data">The data buffer content</param>
         /// <param name="count">The number of elements</param>
@@ -2297,14 +2297,14 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot pie chart float ptr using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelIds">The array of label identifiers</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="x">The x-coordinate</param>
         /// <param name="y">The y-coordinate</param>
         /// <param name="radius">The radius of the shape</param>
-        /// <param name="labelFmt">The label fmt</param>
-        /// <param name="angle0">The angle</param>
+        /// <param name="labelFmt">The label format string</param>
+        /// <param name="angle0">The starting angle in radians</param>
         /// <param name="flags">The ImGui behavior flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotPieChart_FloatPtr")]
         internal static extern void ImPlot_PlotPieChart_FloatPtr(byte[][] labelIds, float[] values, int count, double x, double y, double radius, byte[] labelFmt, double angle0, ImPlotPieChartFlags flags);
@@ -2312,14 +2312,14 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot pie chart double ptr using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelIds">The array of label identifiers</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="x">The x-coordinate</param>
         /// <param name="y">The y-coordinate</param>
         /// <param name="radius">The radius of the shape</param>
-        /// <param name="labelFmt">The label fmt</param>
-        /// <param name="angle0">The angle</param>
+        /// <param name="labelFmt">The label format string</param>
+        /// <param name="angle0">The starting angle in radians</param>
         /// <param name="flags">The ImGui behavior flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotPieChart_doublePtr")]
         internal static extern void ImPlot_PlotPieChart_doublePtr(byte[][] labelIds, double[] values, int count, double x, double y, double radius, byte[] labelFmt, double angle0, ImPlotPieChartFlags flags);
@@ -2327,14 +2327,14 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot pie chart s 8 ptr using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelIds">The array of label identifiers</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="x">The x-coordinate</param>
         /// <param name="y">The y-coordinate</param>
         /// <param name="radius">The radius of the shape</param>
-        /// <param name="labelFmt">The label fmt</param>
-        /// <param name="angle0">The angle</param>
+        /// <param name="labelFmt">The label format string</param>
+        /// <param name="angle0">The starting angle in radians</param>
         /// <param name="flags">The ImGui behavior flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotPieChart_S8Ptr")]
         internal static extern void ImPlot_PlotPieChart_S8Ptr(byte[][] labelIds, sbyte[] values, int count, double x, double y, double radius, byte[] labelFmt, double angle0, ImPlotPieChartFlags flags);
@@ -2342,14 +2342,14 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot pie chart u 8 ptr using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelIds">The array of label identifiers</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="x">The x-coordinate</param>
         /// <param name="y">The y-coordinate</param>
         /// <param name="radius">The radius of the shape</param>
-        /// <param name="labelFmt">The label fmt</param>
-        /// <param name="angle0">The angle</param>
+        /// <param name="labelFmt">The label format string</param>
+        /// <param name="angle0">The starting angle in radians</param>
         /// <param name="flags">The ImGui behavior flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotPieChart_U8Ptr")]
         internal static extern void ImPlot_PlotPieChart_U8Ptr(byte[][] labelIds, byte[] values, int count, double x, double y, double radius, byte[] labelFmt, double angle0, ImPlotPieChartFlags flags);
@@ -2357,14 +2357,14 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot pie chart s 16 ptr using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelIds">The array of label identifiers</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="x">The x-coordinate</param>
         /// <param name="y">The y-coordinate</param>
         /// <param name="radius">The radius of the shape</param>
-        /// <param name="labelFmt">The label fmt</param>
-        /// <param name="angle0">The angle</param>
+        /// <param name="labelFmt">The label format string</param>
+        /// <param name="angle0">The starting angle in radians</param>
         /// <param name="flags">The ImGui behavior flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotPieChart_S16Ptr")]
         internal static extern void ImPlot_PlotPieChart_S16Ptr(byte[][] labelIds, short[] values, int count, double x, double y, double radius, byte[] labelFmt, double angle0, ImPlotPieChartFlags flags);
@@ -2372,14 +2372,14 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot pie chart u 16 ptr using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelIds">The array of label identifiers</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="x">The x-coordinate</param>
         /// <param name="y">The y-coordinate</param>
         /// <param name="radius">The radius of the shape</param>
-        /// <param name="labelFmt">The label fmt</param>
-        /// <param name="angle0">The angle</param>
+        /// <param name="labelFmt">The label format string</param>
+        /// <param name="angle0">The starting angle in radians</param>
         /// <param name="flags">The ImGui behavior flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotPieChart_U16Ptr")]
         internal static extern void ImPlot_PlotPieChart_U16Ptr(byte[][] labelIds, ushort[] values, int count, double x, double y, double radius, byte[] labelFmt, double angle0, ImPlotPieChartFlags flags);
@@ -2387,14 +2387,14 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot pie chart s 32 ptr using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelIds">The array of label identifiers</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="x">The x-coordinate</param>
         /// <param name="y">The y-coordinate</param>
         /// <param name="radius">The radius of the shape</param>
-        /// <param name="labelFmt">The label fmt</param>
-        /// <param name="angle0">The angle</param>
+        /// <param name="labelFmt">The label format string</param>
+        /// <param name="angle0">The starting angle in radians</param>
         /// <param name="flags">The ImGui behavior flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotPieChart_S32Ptr")]
         internal static extern void ImPlot_PlotPieChart_S32Ptr(byte[][] labelIds, int[] values, int count, double x, double y, double radius, byte[] labelFmt, double angle0, ImPlotPieChartFlags flags);
@@ -2402,14 +2402,14 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot pie chart u 32 ptr using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelIds">The array of label identifiers</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="x">The x-coordinate</param>
         /// <param name="y">The y-coordinate</param>
         /// <param name="radius">The radius of the shape</param>
-        /// <param name="labelFmt">The label fmt</param>
-        /// <param name="angle0">The angle</param>
+        /// <param name="labelFmt">The label format string</param>
+        /// <param name="angle0">The starting angle in radians</param>
         /// <param name="flags">The ImGui behavior flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotPieChart_U32Ptr")]
         internal static extern void ImPlot_PlotPieChart_U32Ptr(byte[][] labelIds, uint[] values, int count, double x, double y, double radius, byte[] labelFmt, double angle0, ImPlotPieChartFlags flags);
@@ -2417,14 +2417,14 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot pie chart s 64 ptr using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelIds">The array of label identifiers</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="x">The x-coordinate</param>
         /// <param name="y">The y-coordinate</param>
         /// <param name="radius">The radius of the shape</param>
-        /// <param name="labelFmt">The label fmt</param>
-        /// <param name="angle0">The angle</param>
+        /// <param name="labelFmt">The label format string</param>
+        /// <param name="angle0">The starting angle in radians</param>
         /// <param name="flags">The ImGui behavior flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotPieChart_S64Ptr")]
         internal static extern void ImPlot_PlotPieChart_S64Ptr(byte[][] labelIds, long[] values, int count, double x, double y, double radius, byte[] labelFmt, double angle0, ImPlotPieChartFlags flags);
@@ -2432,14 +2432,14 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot pie chart u 64 ptr using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelIds">The array of label identifiers</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="x">The x-coordinate</param>
         /// <param name="y">The y-coordinate</param>
         /// <param name="radius">The radius of the shape</param>
-        /// <param name="labelFmt">The label fmt</param>
-        /// <param name="angle0">The angle</param>
+        /// <param name="labelFmt">The label format string</param>
+        /// <param name="angle0">The starting angle in radians</param>
         /// <param name="flags">The ImGui behavior flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotPieChart_U64Ptr")]
         internal static extern void ImPlot_PlotPieChart_U64Ptr(byte[][] labelIds, ulong[] values, int count, double x, double y, double radius, byte[] labelFmt, double angle0, ImPlotPieChartFlags flags);
@@ -2447,11 +2447,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot scatter float ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -2461,11 +2461,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot scatter double ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -2475,11 +2475,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot scatter s 8 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -2489,11 +2489,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot scatter u 8 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -2503,11 +2503,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot scatter s 16 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -2517,11 +2517,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot scatter u 16 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -2531,11 +2531,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot scatter s 32 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -2545,11 +2545,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot scatter u 32 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -2559,11 +2559,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot scatter s 64 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -2573,11 +2573,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot scatter u 64 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -2587,9 +2587,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot scatter float ptr float ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -2600,9 +2600,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot scatter double ptrdouble ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -2613,9 +2613,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot scatter s 8 ptr s 8 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -2626,9 +2626,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot scatter u 8 ptr u 8 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -2639,9 +2639,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot scatter s 16 ptr s 16 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -2652,9 +2652,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot scatter u 16 ptr u 16 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -2665,9 +2665,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot scatter s 32 ptr s 32 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -2678,9 +2678,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot scatter u 32 ptr u 32 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -2691,9 +2691,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot scatter s 64 ptr s 64 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -2704,9 +2704,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot scatter u 64 ptr u 64 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -2717,7 +2717,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot scatter g using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
         /// <param name="getter">The getter</param>
         /// <param name="data">The data buffer content</param>
         /// <param name="count">The number of elements</param>
@@ -2728,12 +2728,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot shaded float ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -2743,12 +2743,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot shaded double ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -2758,12 +2758,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot shaded s 8 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -2773,12 +2773,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot shaded u 8 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -2788,12 +2788,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot shaded s 16 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -2803,12 +2803,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot shaded u 16 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -2818,12 +2818,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot shaded s 32 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -2833,12 +2833,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot shaded u 32 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -2848,12 +2848,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot shaded s 64 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -2863,12 +2863,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot shaded u 64 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="yref">The reference y value</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -2878,11 +2878,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot shaded float ptr float ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
+        /// <param name="yref">The reference y value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -2892,11 +2892,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot shaded double ptrdouble ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
+        /// <param name="yref">The reference y value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -2906,11 +2906,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot shaded s 8 ptr s 8 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
+        /// <param name="yref">The reference y value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -2920,11 +2920,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot shaded u 8 ptr u 8 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
+        /// <param name="yref">The reference y value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -2934,11 +2934,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot shaded s 16 ptr s 16 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
+        /// <param name="yref">The reference y value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -2948,11 +2948,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot shaded u 16 ptr u 16 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
+        /// <param name="yref">The reference y value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -2962,11 +2962,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot shaded s 32 ptr s 32 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
+        /// <param name="yref">The reference y value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -2976,11 +2976,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot shaded u 32 ptr u 32 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
+        /// <param name="yref">The reference y value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -2990,11 +2990,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot shaded s 64 ptr s 64 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
+        /// <param name="yref">The reference y value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -3004,11 +3004,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot shaded u 64 ptr u 64 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="yref">The yref</param>
+        /// <param name="yref">The reference y value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -3018,10 +3018,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot shaded float ptr float ptr float ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys1">The ys</param>
-        /// <param name="ys2">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys1">The first array of y-coordinate values</param>
+        /// <param name="ys2">The second array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -3032,10 +3032,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot shaded double ptrdouble ptrdouble ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys1">The ys</param>
-        /// <param name="ys2">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys1">The first array of y-coordinate values</param>
+        /// <param name="ys2">The second array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -3046,10 +3046,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot shaded s 8 ptr s 8 ptr s 8 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys1">The ys</param>
-        /// <param name="ys2">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys1">The first array of y-coordinate values</param>
+        /// <param name="ys2">The second array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -3060,10 +3060,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot shaded u 8 ptr u 8 ptr u 8 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys1">The ys</param>
-        /// <param name="ys2">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys1">The first array of y-coordinate values</param>
+        /// <param name="ys2">The second array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -3074,10 +3074,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot shaded s 16 ptr s 16 ptr s 16 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys1">The ys</param>
-        /// <param name="ys2">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys1">The first array of y-coordinate values</param>
+        /// <param name="ys2">The second array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -3088,10 +3088,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot shaded u 16 ptr u 16 ptr u 16 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys1">The ys</param>
-        /// <param name="ys2">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys1">The first array of y-coordinate values</param>
+        /// <param name="ys2">The second array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -3102,10 +3102,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot shaded s 32 ptr s 32 ptr s 32 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys1">The ys</param>
-        /// <param name="ys2">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys1">The first array of y-coordinate values</param>
+        /// <param name="ys2">The second array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -3116,10 +3116,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot shaded u 32 ptr u 32 ptr u 32 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys1">The ys</param>
-        /// <param name="ys2">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys1">The first array of y-coordinate values</param>
+        /// <param name="ys2">The second array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -3130,10 +3130,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot shaded s 64 ptr s 64 ptr s 64 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys1">The ys</param>
-        /// <param name="ys2">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys1">The first array of y-coordinate values</param>
+        /// <param name="ys2">The second array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -3144,10 +3144,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot shaded u 64 ptr u 64 ptr u 64 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys1">The ys</param>
-        /// <param name="ys2">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys1">The first array of y-coordinate values</param>
+        /// <param name="ys2">The second array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -3158,7 +3158,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot shaded g using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
         /// <param name="getter1">The getter</param>
         /// <param name="data1">The data</param>
         /// <param name="getter2">The getter</param>
@@ -3171,11 +3171,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot stairs float ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -3185,11 +3185,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot stairs double ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -3199,11 +3199,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot stairs s 8 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -3213,11 +3213,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot stairs u 8 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -3227,11 +3227,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot stairs s 16 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -3241,11 +3241,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot stairs u 16 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -3255,11 +3255,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot stairs s 32 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -3269,11 +3269,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot stairs u 32 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -3283,11 +3283,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot stairs s 64 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -3297,11 +3297,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot stairs u 64 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
+        /// <param name="xscale">The x-axis scale factor</param>
+        /// <param name="xstart">The starting x value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -3311,9 +3311,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot stairs float ptr float ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -3324,9 +3324,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot stairs double ptrdouble ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -3337,9 +3337,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot stairs s 8 ptr s 8 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -3350,9 +3350,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot stairs u 8 ptr u 8 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -3363,9 +3363,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot stairs s 16 ptr s 16 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -3376,9 +3376,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot stairs u 16 ptr u 16 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -3389,9 +3389,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot stairs s 32 ptr s 32 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -3402,9 +3402,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot stairs u 32 ptr u 32 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -3415,9 +3415,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot stairs s 64 ptr s 64 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -3428,9 +3428,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot stairs u 64 ptr u 64 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -3441,7 +3441,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot stairs g using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
         /// <param name="getter">The getter</param>
         /// <param name="data">The data buffer content</param>
         /// <param name="count">The number of elements</param>
@@ -3452,12 +3452,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot stems float ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="scale">The scale</param>
-        /// <param name="start">The start</param>
+        /// <param name="start">The starting value/index</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -3467,12 +3467,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot stems double ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="scale">The scale</param>
-        /// <param name="start">The start</param>
+        /// <param name="start">The starting value/index</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -3482,12 +3482,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot stems s 8 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="scale">The scale</param>
-        /// <param name="start">The start</param>
+        /// <param name="start">The starting value/index</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -3497,12 +3497,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot stems u 8 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="scale">The scale</param>
-        /// <param name="start">The start</param>
+        /// <param name="start">The starting value/index</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -3512,12 +3512,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot stems s 16 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="scale">The scale</param>
-        /// <param name="start">The start</param>
+        /// <param name="start">The starting value/index</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -3527,12 +3527,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot stems u 16 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="scale">The scale</param>
-        /// <param name="start">The start</param>
+        /// <param name="start">The starting value/index</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -3542,12 +3542,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot stems s 32 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="scale">The scale</param>
-        /// <param name="start">The start</param>
+        /// <param name="start">The starting value/index</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -3557,12 +3557,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot stems u 32 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="scale">The scale</param>
-        /// <param name="start">The start</param>
+        /// <param name="start">The starting value/index</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -3572,12 +3572,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot stems s 64 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="scale">The scale</param>
-        /// <param name="start">The start</param>
+        /// <param name="start">The starting value/index</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -3587,12 +3587,12 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot stems u 64 ptr int using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="scale">The scale</param>
-        /// <param name="start">The start</param>
+        /// <param name="start">The starting value/index</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -3602,11 +3602,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot stems float ptr float ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -3616,11 +3616,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot stems double ptrdouble ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -3630,11 +3630,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot stems s 8 ptr s 8 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -3644,11 +3644,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot stems u 8 ptr u 8 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -3658,11 +3658,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot stems s 16 ptr s 16 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -3672,11 +3672,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot stems u 16 ptr u 16 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -3686,11 +3686,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot stems s 32 ptr s 32 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -3700,11 +3700,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot stems u 32 ptr u 32 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -3714,11 +3714,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot stems s 64 ptr s 64 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -3728,11 +3728,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot stems u 64 ptr u 64 ptr using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
+        /// <param name="ref">The reference value</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
         /// <param name="stride">The byte stride between elements</param>
@@ -3753,7 +3753,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot to pixels plot po int using the specified p out
         /// </summary>
-        /// <param name="pOut">The out</param>
+        /// <param name="pOut">The output parameter for the result</param>
         /// <param name="plt">The plt</param>
         /// <param name="xAxis">The axis</param>
         /// <param name="yAxis">The axis</param>
@@ -3763,7 +3763,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot plot to pixels double using the specified p out
         /// </summary>
-        /// <param name="pOut">The out</param>
+        /// <param name="pOut">The output parameter for the result</param>
         /// <param name="x">The x-coordinate</param>
         /// <param name="y">The y-coordinate</param>
         /// <param name="xAxis">The axis</param>
@@ -3808,7 +3808,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot push colormap str using the specified name
         /// </summary>
-        /// <param name="name">The name</param>
+        /// <param name="name">The name identifier string</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PushColormap_Str")]
         internal static extern void ImPlot_PushColormap_Str(byte[] name);
 
@@ -3823,7 +3823,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Ims the plot push style color u 32 using the specified idx
         /// </summary>
         /// <param name="idx">The idx</param>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PushStyleColor_U32")]
         internal static extern void ImPlot_PushStyleColor_U32(ImPlotCol idx, uint col);
 
@@ -3831,7 +3831,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Ims the plot push style color vec 4 using the specified idx
         /// </summary>
         /// <param name="idx">The idx</param>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PushStyleColor_Vec4")]
         internal static extern void ImPlot_PushStyleColor_Vec4(ImPlotCol idx, Vector4F col);
 
@@ -3862,7 +3862,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot sample colormap using the specified p out
         /// </summary>
-        /// <param name="pOut">The out</param>
+        /// <param name="pOut">The output parameter for the result</param>
         /// <param name="t">The parameter value (theta or time)</param>
         /// <param name="cmap">The cmap</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_SampleColormap")]
@@ -3904,7 +3904,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="xMax">The max</param>
         /// <param name="yMin">The min</param>
         /// <param name="yMax">The max</param>
-        /// <param name="cond">The cond</param>
+        /// <param name="cond">The condition flag for the operation</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_SetNextAxesLimits")]
         internal static extern void ImPlot_SetNextAxesLimits(double xMin, double xMax, double yMin, double yMax, ImPlotCond cond);
 
@@ -3920,7 +3920,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="axis">The axis</param>
         /// <param name="vMin">The minimum value range</param>
         /// <param name="vMax">The maximum value range</param>
-        /// <param name="cond">The cond</param>
+        /// <param name="cond">The condition flag for the operation</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_SetNextAxisLimits")]
         internal static extern void ImPlot_SetNextAxisLimits(ImAxis axis, double vMin, double vMax, ImPlotCond cond);
 
@@ -3943,7 +3943,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot set next error bar style using the specified col
         /// </summary>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         /// <param name="size">The size of the element in pixels</param>
         /// <param name="weight">The weight</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_SetNextErrorBarStyle")]
@@ -3952,7 +3952,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot set next fill style using the specified col
         /// </summary>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         /// <param name="alphaMod">The alpha mod</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_SetNextFillStyle")]
         internal static extern void ImPlot_SetNextFillStyle(Vector4F col, float alphaMod);
@@ -3960,7 +3960,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot set next line style using the specified col
         /// </summary>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         /// <param name="weight">The weight</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_SetNextLineStyle")]
         internal static extern void ImPlot_SetNextLineStyle(Vector4F col, float weight);
@@ -3993,7 +3993,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="xMax">The max</param>
         /// <param name="yMin">The min</param>
         /// <param name="yMax">The max</param>
-        /// <param name="cond">The cond</param>
+        /// <param name="cond">The condition flag for the operation</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_SetupAxesLimits")]
         internal static extern void ImPlot_SetupAxesLimits(double xMin, double xMax, double yMin, double yMax, ImPlotCond cond);
 
@@ -4010,7 +4010,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Ims the plot setup axis format str using the specified axis
         /// </summary>
         /// <param name="axis">The axis</param>
-        /// <param name="fmt">The fmt</param>
+        /// <param name="fmt">The format string</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_SetupAxisFormat_Str")]
         internal static extern void ImPlot_SetupAxisFormat_Str(ImAxis axis, byte[] fmt);
 
@@ -4029,7 +4029,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="axis">The axis</param>
         /// <param name="vMin">The minimum value range</param>
         /// <param name="vMax">The maximum value range</param>
-        /// <param name="cond">The cond</param>
+        /// <param name="cond">The condition flag for the operation</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_SetupAxisLimits")]
         internal static extern void ImPlot_SetupAxisLimits(ImAxis axis, double vMin, double vMax, ImPlotCond cond);
 
@@ -4073,7 +4073,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Ims the plot setup axis ticks double ptr using the specified axis
         /// </summary>
         /// <param name="axis">The axis</param>
-        /// <param name="values">The values</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="nTicks">The ticks</param>
         /// <param name="labels">The labels</param>
         /// <param name="keepDefault">The keep default</param>
@@ -4127,7 +4127,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Ims the plot show colormap selector using the specified label
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <returns>the byte result from the native operation</returns>
+        /// <returns>The byte result from the native operation</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_ShowColormapSelector")]
         internal static extern byte ImPlot_ShowColormapSelector(byte[] label);
 
@@ -4142,7 +4142,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Ims the plot show input map selector using the specified label
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <returns>the byte result from the native operation</returns>
+        /// <returns>The byte result from the native operation</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_ShowInputMapSelector")]
         internal static extern byte ImPlot_ShowInputMapSelector(byte[] label);
 
@@ -4164,7 +4164,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Ims the plot show style selector using the specified label
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <returns>the byte result from the native operation</returns>
+        /// <returns>The byte result from the native operation</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_ShowStyleSelector")]
         internal static extern byte ImPlot_ShowStyleSelector(byte[] label);
 
@@ -4177,28 +4177,28 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot style colors auto using the specified dst
         /// </summary>
-        /// <param name="dst">The dst</param>
+        /// <param name="dst">The destination object to write into</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_StyleColorsAuto")]
         internal static extern void ImPlot_StyleColorsAuto(ImPlotStyle dst);
 
         /// <summary>
         ///     Ims the plot style colors classic using the specified dst
         /// </summary>
-        /// <param name="dst">The dst</param>
+        /// <param name="dst">The destination object to write into</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_StyleColorsClassic")]
         internal static extern void ImPlot_StyleColorsClassic(ImPlotStyle dst);
 
         /// <summary>
         ///     Ims the plot style colors dark using the specified dst
         /// </summary>
-        /// <param name="dst">The dst</param>
+        /// <param name="dst">The destination object to write into</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_StyleColorsDark")]
         internal static extern void ImPlot_StyleColorsDark(ImPlotStyle dst);
 
         /// <summary>
         ///     Ims the plot style colors light using the specified dst
         /// </summary>
-        /// <param name="dst">The dst</param>
+        /// <param name="dst">The destination object to write into</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_StyleColorsLight")]
         internal static extern void ImPlot_StyleColorsLight(ImPlotStyle dst);
 
@@ -4206,7 +4206,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Ims the plot tag x bool using the specified x
         /// </summary>
         /// <param name="x">The x-coordinate</param>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         /// <param name="round">The round</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_TagX_Bool")]
         internal static extern void ImPlot_TagX_Bool(double x, Vector4F col, byte round);
@@ -4215,8 +4215,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Ims the plot tag x str using the specified x
         /// </summary>
         /// <param name="x">The x-coordinate</param>
-        /// <param name="col">The col</param>
-        /// <param name="fmt">The fmt</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
+        /// <param name="fmt">The format string</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_TagX_Str")]
         internal static extern void ImPlot_TagX_Str(double x, Vector4F col, byte[] fmt);
 
@@ -4224,7 +4224,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Ims the plot tag y bool using the specified y
         /// </summary>
         /// <param name="y">The y-coordinate</param>
-        /// <param name="col">The col</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
         /// <param name="round">The round</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_TagY_Bool")]
         internal static extern void ImPlot_TagY_Bool(double y, Vector4F col, byte round);
@@ -4233,15 +4233,15 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Ims the plot tag y str using the specified y
         /// </summary>
         /// <param name="y">The y-coordinate</param>
-        /// <param name="col">The col</param>
-        /// <param name="fmt">The fmt</param>
+        /// <param name="col">The color value in 0xRRGGBBAA format</param>
+        /// <param name="fmt">The format string</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_TagY_Str")]
         internal static extern void ImPlot_TagY_Str(double y, Vector4F col, byte[] fmt);
 
         /// <summary>
         ///     Ims the plot input map destroy using the specified self
         /// </summary>
-        /// <param name="self">The self</param>
+        /// <param name="self">The native object instance</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlotInputMap_destroy")]
         internal static extern void ImPlotInputMap_destroy(ImPlotInputMap self);
 
@@ -4255,7 +4255,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot point destroy using the specified self
         /// </summary>
-        /// <param name="self">The self</param>
+        /// <param name="self">The native object instance</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlotPoint_destroy")]
         internal static extern void ImPlotPoint_destroy(ImPlotPoint self);
 
@@ -4286,25 +4286,25 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot range clamp using the specified self
         /// </summary>
-        /// <param name="self">The self</param>
-        /// <param name="value">The value</param>
-        /// <returns>The double</returns>
+        /// <param name="self">The native object instance</param>
+        /// <param name="value">The value to set</param>
+        /// <returns>The double-precision floating-point result</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlotRange_Clamp")]
         internal static extern double ImPlotRange_Clamp(ref ImPlotRange self, double value);
 
         /// <summary>
         ///     Ims the plot range contains using the specified self
         /// </summary>
-        /// <param name="self">The self</param>
-        /// <param name="value">The value</param>
-        /// <returns>the byte result from the native operation</returns>
+        /// <param name="self">The native object instance</param>
+        /// <param name="value">The value to set</param>
+        /// <returns>The byte result from the native operation</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlotRange_Contains")]
         internal static extern byte ImPlotRange_Contains(ref ImPlotRange self, double value);
 
         /// <summary>
         ///     Ims the plot range destroy using the specified self
         /// </summary>
-        /// <param name="self">The self</param>
+        /// <param name="self">The native object instance</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlotRange_destroy")]
         internal static extern void ImPlotRange_destroy(ref ImPlotRange self);
 
@@ -4327,16 +4327,16 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot range size using the specified self
         /// </summary>
-        /// <param name="self">The self</param>
-        /// <returns>The double</returns>
+        /// <param name="self">The native object instance</param>
+        /// <returns>The double-precision floating-point result</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlotRange_Size")]
         internal static extern double ImPlotRange_Size(ref ImPlotRange self);
 
         /// <summary>
         ///     Ims the plot rect clamp plot po int using the specified p out
         /// </summary>
-        /// <param name="pOut">The out</param>
-        /// <param name="self">The self</param>
+        /// <param name="pOut">The output parameter for the result</param>
+        /// <param name="self">The native object instance</param>
         /// <param name="p">The point or pointer value</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlotRect_Clamp_PlotPoInt")]
         internal static extern void ImPlotRect_Clamp_PlotPoInt(out ImPlotPoint pOut, ref ImPlotPoint self, ImPlotPoint p);
@@ -4344,8 +4344,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot rect clamp double using the specified p out
         /// </summary>
-        /// <param name="pOut">The out</param>
-        /// <param name="self">The self</param>
+        /// <param name="pOut">The output parameter for the result</param>
+        /// <param name="self">The native object instance</param>
         /// <param name="x">The x-coordinate</param>
         /// <param name="y">The y-coordinate</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlotRect_Clamp_double")]
@@ -4354,26 +4354,26 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot rect contains plot po int using the specified self
         /// </summary>
-        /// <param name="self">The self</param>
+        /// <param name="self">The native object instance</param>
         /// <param name="p">The point or pointer value</param>
-        /// <returns>the byte result from the native operation</returns>
+        /// <returns>The byte result from the native operation</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlotRect_Contains_PlotPoInt")]
         internal static extern byte ImPlotRect_Contains_PlotPoInt(ref ImPlotPoint self, ImPlotPoint p);
 
         /// <summary>
         ///     Ims the plot rect contains double using the specified self
         /// </summary>
-        /// <param name="self">The self</param>
+        /// <param name="self">The native object instance</param>
         /// <param name="x">The x-coordinate</param>
         /// <param name="y">The y-coordinate</param>
-        /// <returns>the byte result from the native operation</returns>
+        /// <returns>The byte result from the native operation</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlotRect_Contains_double")]
         internal static extern byte ImPlotRect_Contains_double(ref ImPlotPoint self, double x, double y);
 
         /// <summary>
         ///     Ims the plot rect destroy using the specified self
         /// </summary>
-        /// <param name="self">The self</param>
+        /// <param name="self">The native object instance</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlotRect_destroy")]
         internal static extern void ImPlotRect_destroy(ref ImPlotPoint self);
 
@@ -4398,31 +4398,31 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot rect max using the specified p out
         /// </summary>
-        /// <param name="pOut">The out</param>
-        /// <param name="self">The self</param>
+        /// <param name="pOut">The output parameter for the result</param>
+        /// <param name="self">The native object instance</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlotRect_Max")]
         internal static extern void ImPlotRect_Max(out ImPlotPoint pOut, ref ImPlotPoint self);
 
         /// <summary>
         ///     Ims the plot rect min using the specified p out
         /// </summary>
-        /// <param name="pOut">The out</param>
-        /// <param name="self">The self</param>
+        /// <param name="pOut">The output parameter for the result</param>
+        /// <param name="self">The native object instance</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlotRect_Min")]
         internal static extern void ImPlotRect_Min(out ImPlotPoint pOut, ref ImPlotRect self);
 
         /// <summary>
         ///     Ims the plot rect size using the specified p out
         /// </summary>
-        /// <param name="pOut">The out</param>
-        /// <param name="self">The self</param>
+        /// <param name="pOut">The output parameter for the result</param>
+        /// <param name="self">The native object instance</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlotRect_Size")]
         internal static extern void ImPlotRect_Size(out ImPlotPoint pOut, ref ImPlotRect self);
 
         /// <summary>
         ///     Ims the plot style destroy using the specified self
         /// </summary>
-        /// <param name="self">The self</param>
+        /// <param name="self">The native object instance</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlotStyle_destroy")]
         internal static extern void ImPlotStyle_destroy(ImPlotStyle self);
 

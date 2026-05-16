@@ -214,7 +214,7 @@ namespace Alis.Test
             ScenesMap map = new ScenesMap();
             map.AddScene(99);
 
-            ScenesMap loaded = map.Load();
+            ScenesMap loaded = ScenesMap.Load();
 
             Assert.NotNull(loaded);
             Assert.NotSame(map, loaded);

@@ -37,7 +37,7 @@ using Alis.Extension.Graphic.Sfml.Systems;
 namespace Alis.Extension.Graphic.Sfml.Windows
 {
     /// <summary>
-    ///     The cursor class
+    ///     Represents a cursor image, created either from a system-defined cursor type or from custom RGBA pixel data
     /// </summary>
     /// <seealso cref="ObjectBase" />
     public class Cursor : ObjectBase

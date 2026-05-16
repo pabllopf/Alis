@@ -38,22 +38,22 @@ namespace Alis.Core.Physic.Dynamics.Joints
     public abstract class Joint
     {
         /// <summary>
-        ///     The joint edge
+        ///     The joint edge connecting this joint to the first body.
         /// </summary>
         internal readonly JointEdge EdgeA = new JointEdge();
 
         /// <summary>
-        ///     The joint edge
+        ///     The joint edge connecting this joint to the second body.
         /// </summary>
         internal readonly JointEdge EdgeB = new JointEdge();
 
         /// <summary>
-        ///     The breakpoint
+        ///     The force threshold at which this joint will break.
         /// </summary>
         private float _breakpoint;
 
         /// <summary>
-        ///     The breakpoint squared
+        ///     Cached squared breakpoint value for efficient comparison.
         /// </summary>
         private double _breakpointSquared;
 
@@ -64,7 +64,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public bool Enabled = true;
 
         /// <summary>
-        ///     The island flag
+        ///     Flag indicating whether this joint belongs to an island in the solver.
         /// </summary>
         internal bool IslandFlag;
 
@@ -75,7 +75,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public object Tag;
 
         /// <summary>
-        ///     The world
+        ///     Internal reference to the world physics instance that owns this joint.
         /// </summary>
         internal WorldPhysic WorldPhysicInternal;
 

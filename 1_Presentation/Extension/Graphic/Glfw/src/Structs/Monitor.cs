@@ -113,8 +113,9 @@ namespace Alis.Extension.Graphic.Glfw.Structs
         public override string ToString() => handle.ToString();
 
         /// <summary>
-        ///     Gets the position, in screen coordinates of the valid work are for the monitor.
+        ///     Gets the position, in screen coordinates of the valid work area for the monitor.
         /// </summary>
+        /// <value>A <see cref="Rectangle" /> representing the work area not occluded by the operating system task bar.</value>
         public Rectangle WorkArea
         {
             get
@@ -128,6 +129,7 @@ namespace Alis.Extension.Graphic.Glfw.Structs
         ///     Gets the content scale of this monitor.
         ///     <para>The content scale is the ratio between the current DPI and the platform's default DPI.</para>
         /// </summary>
+        /// <value>A <see cref="PointF" /> where X and Y represent the scale factors for each axis.</value>
         /// <seealso cref="GlfwNative.GetMonitorContentScale" />
 
         public PointF ContentScale
@@ -140,8 +142,9 @@ namespace Alis.Extension.Graphic.Glfw.Structs
         }
 
         /// <summary>
-        ///     Gets or sets a user-defined pointer to associate with the window.
+        ///     Gets or sets a user-defined pointer to associate with the monitor.
         /// </summary>
+        /// <value>The user-defined pointer, or <see cref="IntPtr.Zero" /> if none is set.</value>
         /// <seealso cref="GlfwNative.GetMonitorUserPointer" />
         /// <seealso cref="GlfwNative.SetMonitorUserPointer" />
         public IntPtr UserPointer

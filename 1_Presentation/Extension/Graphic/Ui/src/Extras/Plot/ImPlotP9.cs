@@ -40,9 +40,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         public static void PlotLine(string labelId, ref int xs, ref int ys, int count)
         {
@@ -52,9 +52,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotLine(string labelId, ref int xs, ref int ys, int count, ImPlotLineFlags flags)
@@ -65,9 +65,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -79,9 +79,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -94,9 +94,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         public static void PlotLine(string labelId, ref uint xs, ref uint ys, int count)
         {
@@ -106,9 +106,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotLine(string labelId, ref uint xs, ref uint ys, int count, ImPlotLineFlags flags)
@@ -119,9 +119,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -133,9 +133,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -148,9 +148,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         public static void PlotLine(string labelId, ref long xs, ref long ys, int count)
         {
@@ -160,9 +160,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotLine(string labelId, ref long xs, ref long ys, int count, ImPlotLineFlags flags)
@@ -173,9 +173,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -187,9 +187,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -202,9 +202,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         public static void PlotLine(string labelId, ref ulong xs, ref ulong ys, int count)
         {
@@ -214,9 +214,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotLine(string labelId, ref ulong xs, ref ulong ys, int count, ImPlotLineFlags flags)
@@ -227,9 +227,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -241,9 +241,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
+        /// <param name="xs">The array of x-coordinate values</param>
+        /// <param name="ys">The array of y-coordinate values</param>
         /// <param name="count">The number of elements</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="offset">The offset from the origin</param>
@@ -256,7 +256,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line g using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
         /// <param name="getter">The getter</param>
         /// <param name="data">The data buffer content</param>
         /// <param name="count">The number of elements</param>
@@ -268,7 +268,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the line g using the specified label id
         /// </summary>
-        /// <param name="labelId">The label id</param>
+        /// <param name="labelId">The label identifier for the plot item</param>
         /// <param name="getter">The getter</param>
         /// <param name="data">The data buffer content</param>
         /// <param name="count">The number of elements</param>
@@ -281,8 +281,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the pie chart using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelIds">The array of label identifiers</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="x">The x-coordinate</param>
         /// <param name="y">The y-coordinate</param>
@@ -301,13 +301,13 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the pie chart using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelIds">The array of label identifiers</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="x">The x-coordinate</param>
         /// <param name="y">The y-coordinate</param>
         /// <param name="radius">The radius of the shape</param>
-        /// <param name="labelFmt">The label fmt</param>
+        /// <param name="labelFmt">The label format string</param>
         public static void PlotPieChart(string[] labelIds, float[] values, int count, double x, double y, double radius, string labelFmt)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -322,14 +322,14 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the pie chart using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelIds">The array of label identifiers</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="x">The x-coordinate</param>
         /// <param name="y">The y-coordinate</param>
         /// <param name="radius">The radius of the shape</param>
-        /// <param name="labelFmt">The label fmt</param>
-        /// <param name="angle0">The angle</param>
+        /// <param name="labelFmt">The label format string</param>
+        /// <param name="angle0">The starting angle in radians</param>
         public static void PlotPieChart(string[] labelIds, float[] values, int count, double x, double y, double radius, string labelFmt, double angle0)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -344,14 +344,14 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the pie chart using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelIds">The array of label identifiers</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="x">The x-coordinate</param>
         /// <param name="y">The y-coordinate</param>
         /// <param name="radius">The radius of the shape</param>
-        /// <param name="labelFmt">The label fmt</param>
-        /// <param name="angle0">The angle</param>
+        /// <param name="labelFmt">The label format string</param>
+        /// <param name="angle0">The starting angle in radians</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotPieChart(string[] labelIds, float[] values, int count, double x, double y, double radius, string labelFmt, double angle0, ImPlotPieChartFlags flags)
         {
@@ -367,8 +367,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the pie chart using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelIds">The array of label identifiers</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="x">The x-coordinate</param>
         /// <param name="y">The y-coordinate</param>
@@ -387,13 +387,13 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the pie chart using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelIds">The array of label identifiers</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="x">The x-coordinate</param>
         /// <param name="y">The y-coordinate</param>
         /// <param name="radius">The radius of the shape</param>
-        /// <param name="labelFmt">The label fmt</param>
+        /// <param name="labelFmt">The label format string</param>
         public static void PlotPieChart(string[] labelIds, double[] values, int count, double x, double y, double radius, string labelFmt)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -408,14 +408,14 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the pie chart using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelIds">The array of label identifiers</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="x">The x-coordinate</param>
         /// <param name="y">The y-coordinate</param>
         /// <param name="radius">The radius of the shape</param>
-        /// <param name="labelFmt">The label fmt</param>
-        /// <param name="angle0">The angle</param>
+        /// <param name="labelFmt">The label format string</param>
+        /// <param name="angle0">The starting angle in radians</param>
         public static void PlotPieChart(string[] labelIds, double[] values, int count, double x, double y, double radius, string labelFmt, double angle0)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -430,14 +430,14 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the pie chart using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelIds">The array of label identifiers</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="x">The x-coordinate</param>
         /// <param name="y">The y-coordinate</param>
         /// <param name="radius">The radius of the shape</param>
-        /// <param name="labelFmt">The label fmt</param>
-        /// <param name="angle0">The angle</param>
+        /// <param name="labelFmt">The label format string</param>
+        /// <param name="angle0">The starting angle in radians</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotPieChart(string[] labelIds, double[] values, int count, double x, double y, double radius, string labelFmt, double angle0, ImPlotPieChartFlags flags)
         {
@@ -453,8 +453,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the pie chart using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelIds">The array of label identifiers</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="x">The x-coordinate</param>
         /// <param name="y">The y-coordinate</param>
@@ -473,13 +473,13 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the pie chart using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelIds">The array of label identifiers</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="x">The x-coordinate</param>
         /// <param name="y">The y-coordinate</param>
         /// <param name="radius">The radius of the shape</param>
-        /// <param name="labelFmt">The label fmt</param>
+        /// <param name="labelFmt">The label format string</param>
         public static void PlotPieChart(string[] labelIds, sbyte[] values, int count, double x, double y, double radius, string labelFmt)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -494,14 +494,14 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the pie chart using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelIds">The array of label identifiers</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="x">The x-coordinate</param>
         /// <param name="y">The y-coordinate</param>
         /// <param name="radius">The radius of the shape</param>
-        /// <param name="labelFmt">The label fmt</param>
-        /// <param name="angle0">The angle</param>
+        /// <param name="labelFmt">The label format string</param>
+        /// <param name="angle0">The starting angle in radians</param>
         public static void PlotPieChart(string[] labelIds, sbyte[] values, int count, double x, double y, double radius, string labelFmt, double angle0)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -516,14 +516,14 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the pie chart using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelIds">The array of label identifiers</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="x">The x-coordinate</param>
         /// <param name="y">The y-coordinate</param>
         /// <param name="radius">The radius of the shape</param>
-        /// <param name="labelFmt">The label fmt</param>
-        /// <param name="angle0">The angle</param>
+        /// <param name="labelFmt">The label format string</param>
+        /// <param name="angle0">The starting angle in radians</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotPieChart(string[] labelIds, sbyte[] values, int count, double x, double y, double radius, string labelFmt, double angle0, ImPlotPieChartFlags flags)
         {
@@ -539,8 +539,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the pie chart using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelIds">The array of label identifiers</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="x">The x-coordinate</param>
         /// <param name="y">The y-coordinate</param>
@@ -559,13 +559,13 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the pie chart using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelIds">The array of label identifiers</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="x">The x-coordinate</param>
         /// <param name="y">The y-coordinate</param>
         /// <param name="radius">The radius of the shape</param>
-        /// <param name="labelFmt">The label fmt</param>
+        /// <param name="labelFmt">The label format string</param>
         public static void PlotPieChart(string[] labelIds, byte[] values, int count, double x, double y, double radius, string labelFmt)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -580,14 +580,14 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the pie chart using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelIds">The array of label identifiers</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="x">The x-coordinate</param>
         /// <param name="y">The y-coordinate</param>
         /// <param name="radius">The radius of the shape</param>
-        /// <param name="labelFmt">The label fmt</param>
-        /// <param name="angle0">The angle</param>
+        /// <param name="labelFmt">The label format string</param>
+        /// <param name="angle0">The starting angle in radians</param>
         public static void PlotPieChart(string[] labelIds, byte[] values, int count, double x, double y, double radius, string labelFmt, double angle0)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -602,14 +602,14 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the pie chart using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelIds">The array of label identifiers</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="x">The x-coordinate</param>
         /// <param name="y">The y-coordinate</param>
         /// <param name="radius">The radius of the shape</param>
-        /// <param name="labelFmt">The label fmt</param>
-        /// <param name="angle0">The angle</param>
+        /// <param name="labelFmt">The label format string</param>
+        /// <param name="angle0">The starting angle in radians</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotPieChart(string[] labelIds, byte[] values, int count, double x, double y, double radius, string labelFmt, double angle0, ImPlotPieChartFlags flags)
         {
@@ -625,8 +625,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the pie chart using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelIds">The array of label identifiers</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="x">The x-coordinate</param>
         /// <param name="y">The y-coordinate</param>
@@ -645,13 +645,13 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the pie chart using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelIds">The array of label identifiers</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="x">The x-coordinate</param>
         /// <param name="y">The y-coordinate</param>
         /// <param name="radius">The radius of the shape</param>
-        /// <param name="labelFmt">The label fmt</param>
+        /// <param name="labelFmt">The label format string</param>
         public static void PlotPieChart(string[] labelIds, short[] values, int count, double x, double y, double radius, string labelFmt)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -666,14 +666,14 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the pie chart using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelIds">The array of label identifiers</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="x">The x-coordinate</param>
         /// <param name="y">The y-coordinate</param>
         /// <param name="radius">The radius of the shape</param>
-        /// <param name="labelFmt">The label fmt</param>
-        /// <param name="angle0">The angle</param>
+        /// <param name="labelFmt">The label format string</param>
+        /// <param name="angle0">The starting angle in radians</param>
         public static void PlotPieChart(string[] labelIds, short[] values, int count, double x, double y, double radius, string labelFmt, double angle0)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
@@ -688,14 +688,14 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the pie chart using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelIds">The array of label identifiers</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="x">The x-coordinate</param>
         /// <param name="y">The y-coordinate</param>
         /// <param name="radius">The radius of the shape</param>
-        /// <param name="labelFmt">The label fmt</param>
-        /// <param name="angle0">The angle</param>
+        /// <param name="labelFmt">The label format string</param>
+        /// <param name="angle0">The starting angle in radians</param>
         /// <param name="flags">The ImGui behavior flags</param>
         public static void PlotPieChart(string[] labelIds, short[] values, int count, double x, double y, double radius, string labelFmt, double angle0, ImPlotPieChartFlags flags)
         {
@@ -711,8 +711,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Plots the pie chart using the specified label ids
         /// </summary>
-        /// <param name="labelIds">The label ids</param>
-        /// <param name="values">The values</param>
+        /// <param name="labelIds">The array of label identifiers</param>
+        /// <param name="values">The array of data values to plot</param>
         /// <param name="count">The number of elements</param>
         /// <param name="x">The x-coordinate</param>
         /// <param name="y">The y-coordinate</param>

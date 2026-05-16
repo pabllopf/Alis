@@ -63,7 +63,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Returns the string
         /// </summary>
-        /// <returns>the string result from the native function</returns>
+        /// <returns>The string result from the native function</returns>
         public override string ToString()
         {
             if (Data == IntPtr.Zero)
@@ -90,7 +90,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         /// </summary>
         /// <param name="nts"></param>
-        /// <returns></returns>
+        /// <returns>The converted wrapper instance</returns>
         public static implicit operator string(NullTerminatedString nts) => nts.ToString();
     }
 }

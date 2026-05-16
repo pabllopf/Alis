@@ -38,67 +38,67 @@ namespace Alis.Core.Physic.Dynamics.Contacts
     public sealed class ContactVelocityConstraint
     {
         /// <summary>
-        ///     The max manifold points
+        ///     The constraint points for each manifold point.
         /// </summary>
         public readonly VelocityConstraintPoint[] Points = new VelocityConstraintPoint[SettingEnv.MaxManifoldPoints];
 
         /// <summary>
-        ///     The contact index
+        ///     Index of the contact in the global contact array.
         /// </summary>
         public int ContactIndex;
 
         /// <summary>
-        ///     The friction
+        ///     The combined friction coefficient for this contact constraint.
         /// </summary>
         public float Friction;
 
         /// <summary>
-        ///     The index
+        ///     The index of the first body in the solver arrays.
         /// </summary>
         public int IndexA;
 
         /// <summary>
-        ///     The index
+        ///     The index of the second body in the solver arrays.
         /// </summary>
         public int IndexB;
 
         /// <summary>
-        ///     The inv ib
+        ///     The inverse inertia of body A and body B.
         /// </summary>
         public float InvIa, InvIb;
 
         /// <summary>
-        ///     The inv mass
+        ///     The inverse mass of body A and body B.
         /// </summary>
         public float InvMassA, InvMassB;
 
         /// <summary>
-        ///     The
+        ///     The effective mass matrix for the contact constraint.
         /// </summary>
         public Mat22 K;
 
         /// <summary>
-        ///     The normal
+        ///     The contact normal in world coordinates.
         /// </summary>
         public Vector2F Normal;
 
         /// <summary>
-        ///     The normal mass
+        ///     The inverse of the effective mass matrix.
         /// </summary>
         public Mat22 NormalMass;
 
         /// <summary>
-        ///     The point count
+        ///     The number of constraint points.
         /// </summary>
         public int PointCount;
 
         /// <summary>
-        ///     The restitution
+        ///     The combined restitution coefficient for this contact constraint.
         /// </summary>
         public float Restitution;
 
         /// <summary>
-        ///     The tangent speed
+        ///     The desired tangent speed for conveyor belt behavior.
         /// </summary>
         public float TangentSpeed;
 

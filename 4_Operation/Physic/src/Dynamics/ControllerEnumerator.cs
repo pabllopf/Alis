@@ -57,7 +57,7 @@ namespace Alis.Core.Physic.Dynamics
         private readonly int _generationStamp;
 
         /// <summary>
-        ///     The
+        ///     The current index position in the enumeration.
         /// </summary>
         private int i;
 

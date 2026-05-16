@@ -50,22 +50,18 @@ namespace Alis.Extension.Graphic.Sfml.Windows
 
 
         /// <summary>
-        ///     This function returns the current touch position
+        ///     Gets the current touch position for the specified finger
         /// </summary>
         /// <param name="finger">Finger index</param>
-        /// <returns>Current position of the finger</returns>
-        ////////////////////////////////////////////////////////////
+        /// <returns>Current position of the finger in desktop coordinates</returns>
         public static Vector2F GetPosition(uint finger) => GetPosition(finger, null);
 
-        ////////////////////////////////////////////////////////////
         /// <summary>
-        ///     This function returns the current touch position
-        ///     relative to the given window
+        ///     Gets the current touch position relative to the given window
         /// </summary>
         /// <param name="finger">Finger index</param>
-        /// <param name="relativeTo">Reference window</param>
+        /// <param name="relativeTo">Reference window, or null for desktop coordinates</param>
         /// <returns>Current position of the finger</returns>
-        ////////////////////////////////////////////////////////////
         public static Vector2F GetPosition(uint finger, Window relativeTo)
         {
             if (relativeTo != null)

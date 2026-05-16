@@ -41,6 +41,8 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <summary>
         ///     Implicit cast from <see cref="Alis.Core.Aspect.Math.Vector.Vector3F" /> to <see cref="Vec3" />
         /// </summary>
+        /// <param name="vec">The 3D floating-point vector to convert</param>
+        /// <returns>A <see cref="Vec3" /> with the same coordinates as the input vector</returns>
         public static implicit operator Vec3(Vector3F vec) => new Vec3(vec);
 
 

@@ -150,7 +150,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Creates the context
         /// </summary>
-        /// <returns>The im nodes context ptr</returns>
+        /// <returns>The ImNodes context pointer</returns>
         public static ImNodesContext CreateContext() => ImNodesNative.ImNodes_CreateContext();
 
         /// <summary>
@@ -173,7 +173,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Editors the context create
         /// </summary>
-        /// <returns>The im nodes editor context ptr</returns>
+        /// <returns>The ImNodes editor context pointer</returns>
         public static ImNodesEditorContext EditorContextCreate() => ImNodesNative.ImNodes_EditorContextCreate();
 
         /// <summary>
@@ -188,7 +188,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Editors the context get panning
         /// </summary>
-        /// <returns>The retval</returns>
+        /// <returns>The return value from the native function</returns>
         public static Vector2F EditorContextGetPanning()
         {
             ImNodesNative.ImNodes_EditorContextGetPanning(out Vector2F retval);
@@ -273,20 +273,20 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Gets the current context
         /// </summary>
-        /// <returns>The im nodes context ptr</returns>
+        /// <returns>The ImNodes context pointer</returns>
         public static ImNodesContext GetCurrentContext() => ImNodesNative.ImNodes_GetCurrentContext();
 
         /// <summary>
         ///     Gets the io
         /// </summary>
-        /// <returns>The im nodes io ptr</returns>
+        /// <returns>The ImNodes IO configuration pointer</returns>
         public static ImNodesIo GetIo() => ImNodesNative.ImNodes_GetIO();
 
         /// <summary>
         ///     Gets the node dimensions using the specified id
         /// </summary>
         /// <param name="id">The unique identifier for the element</param>
-        /// <returns>The retval</returns>
+        /// <returns>The return value from the native function</returns>
         public static Vector2F GetNodeDimensions(int id)
         {
             ImNodesNative.ImNodes_GetNodeDimensions(out Vector2F retval, id);
@@ -297,7 +297,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         ///     Gets the node editor space pos using the specified node id
         /// </summary>
         /// <param name="nodeId">The unique identifier for the node</param>
-        /// <returns>The retval</returns>
+        /// <returns>The return value from the native function</returns>
         public static Vector2F GetNodeEditorSpacePos(int nodeId)
         {
             ImNodesNative.ImNodes_GetNodeEditorSpacePos(out Vector2F retval, nodeId);
@@ -308,7 +308,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         ///     Gets the node grid space pos using the specified node id
         /// </summary>
         /// <param name="nodeId">The unique identifier for the node</param>
-        /// <returns>The retval</returns>
+        /// <returns>The return value from the native function</returns>
         public static Vector2F GetNodeGridSpacePos(int nodeId)
         {
             ImNodesNative.ImNodes_GetNodeGridSpacePos(out Vector2F retval, nodeId);
@@ -319,7 +319,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         ///     Gets the node screen space pos using the specified node id
         /// </summary>
         /// <param name="nodeId">The unique identifier for the node</param>
-        /// <returns>The retval</returns>
+        /// <returns>The return value from the native function</returns>
         public static Vector2F GetNodeScreenSpacePos(int nodeId)
         {
             ImNodesNative.ImNodes_GetNodeScreenSpacePos(out Vector2F retval, nodeId);
@@ -347,7 +347,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Gets the style
         /// </summary>
-        /// <returns>The im nodes style ptr</returns>
+        /// <returns>The ImNodes style pointer</returns>
         public static ImNodesStyle GetStyle() => ImNodesNative.ImNodes_GetStyle();
 
         /// <summary>
@@ -784,7 +784,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         ///     Pushes the style var using the specified style item
         /// </summary>
         /// <param name="styleItem">The style variable to modify</param>
-        /// <param name="value">The value</param>
+        /// <param name="value">The value to set</param>
         public static void PushStyleVar(ImNodesStyleVar styleItem, float value)
         {
             ImNodesNative.ImNodes_PushStyleVar_Float(styleItem, value);
@@ -794,7 +794,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         ///     Pushes the style var using the specified style item
         /// </summary>
         /// <param name="styleItem">The style variable to modify</param>
-        /// <param name="value">The value</param>
+        /// <param name="value">The value to set</param>
         public static void PushStyleVar(ImNodesStyleVar styleItem, Vector2F value)
         {
             ImNodesNative.ImNodes_PushStyleVar_Vec2(styleItem, value);
@@ -820,7 +820,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Saves the current editor state to ini string
         /// </summary>
-        /// <returns>the string result from the native function</returns>
+        /// <returns>The string result from the native function</returns>
         public static string SaveCurrentEditorStateToIniString()
         {
             uint dataSize = 0;
@@ -841,7 +841,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         ///     Saves the current editor state to ini string using the specified data size
         /// </summary>
         /// <param name="dataSize">The size of the data in bytes</param>
-        /// <returns>the string result from the native function</returns>
+        /// <returns>The string result from the native function</returns>
         public static string SaveCurrentEditorStateToIniString(ref uint dataSize)
         {
             GCHandle gch = GCHandle.Alloc(dataSize, GCHandleType.Pinned);
@@ -879,7 +879,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         ///     Saves the editor state to ini string using the specified editor
         /// </summary>
         /// <param name="editor">The editor context instance</param>
-        /// <returns>the string result from the native function</returns>
+        /// <returns>The string result from the native function</returns>
         public static string SaveEditorStateToIniString(ImNodesEditorContext editor)
         {
             byte[] ret = ImNodesNative.ImNodes_SaveEditorStateToIniString(editor, 0);
@@ -892,7 +892,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// </summary>
         /// <param name="nativeEditor">The native editor</param>
         /// <param name="dataSize">The size of the data in bytes</param>
-        /// <returns>the string result from the native function</returns>
+        /// <returns>The string result from the native function</returns>
         public static string SaveEditorStateToIniString(ImNodesEditorContext nativeEditor, ref uint dataSize)
         {
             byte[] ret = ImNodesNative.ImNodes_SaveEditorStateToIniString(nativeEditor, dataSize);
@@ -940,7 +940,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         ///     Sets the node draggable using the specified node id
         /// </summary>
         /// <param name="nodeId">The unique identifier for the node</param>
-        /// <param name="draggable">The draggable</param>
+        /// <param name="draggable">Whether the node should be draggable</param>
         public static void SetNodeDraggable(int nodeId, bool draggable)
         {
             byte nativeDraggable = draggable ? (byte) 1 : (byte) 0;
@@ -951,7 +951,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         ///     Sets the node editor space pos using the specified node id
         /// </summary>
         /// <param name="nodeId">The unique identifier for the node</param>
-        /// <param name="editorSpacePos">The editor space pos</param>
+        /// <param name="editorSpacePos">The position in editor space coordinates</param>
         public static void SetNodeEditorSpacePos(int nodeId, Vector2F editorSpacePos)
         {
             ImNodesNative.ImNodes_SetNodeEditorSpacePos(nodeId, editorSpacePos);
@@ -961,7 +961,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         ///     Sets the node grid space pos using the specified node id
         /// </summary>
         /// <param name="nodeId">The unique identifier for the node</param>
-        /// <param name="gridPos">The grid pos</param>
+        /// <param name="gridPos">The position snapped to grid coordinates</param>
         public static void SetNodeGridSpacePos(int nodeId, Vector2F gridPos)
         {
             ImNodesNative.ImNodes_SetNodeGridSpacePos(nodeId, gridPos);
@@ -971,7 +971,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         ///     Sets the node screen space pos using the specified node id
         /// </summary>
         /// <param name="nodeId">The unique identifier for the node</param>
-        /// <param name="screenSpacePos">The screen space pos</param>
+        /// <param name="screenSpacePos">The position in screen space coordinates</param>
         public static void SetNodeScreenSpacePos(int nodeId, Vector2F screenSpacePos)
         {
             ImNodesNative.ImNodes_SetNodeScreenSpacePos(nodeId, screenSpacePos);
@@ -997,7 +997,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Styles the colors classic using the specified dest
         /// </summary>
-        /// <param name="dest">The dest</param>
+        /// <param name="dest">The destination style to write into</param>
         public static void StyleColorsClassic(ImNodesStyle dest)
         {
             ImNodesNative.ImNodes_StyleColorsClassic(dest);
@@ -1014,7 +1014,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Styles the colors dark using the specified dest
         /// </summary>
-        /// <param name="dest">The dest</param>
+        /// <param name="dest">The destination style to write into</param>
         public static void StyleColorsDark(ImNodesStyle dest)
         {
             ImNodesNative.ImNodes_StyleColorsDark(dest);
@@ -1031,7 +1031,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Styles the colors light using the specified dest
         /// </summary>
-        /// <param name="dest">The dest</param>
+        /// <param name="dest">The destination style to write into</param>
         public static void StyleColorsLight(ImNodesStyle dest)
         {
             ImNodesNative.ImNodes_StyleColorsLight(dest);

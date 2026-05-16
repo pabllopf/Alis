@@ -34,7 +34,7 @@ namespace Alis.Core.Ecs.Kernel.Events
     /// <summary>
     ///     A collection of <see cref="IGenericAction{GameObject}" /> instances which can be added to or removed from.
     /// </summary>
-    public class GenericEvent
+    public class GenericEvent : IEquatable<GenericEvent>
     {
         /// <summary>
         ///     The first

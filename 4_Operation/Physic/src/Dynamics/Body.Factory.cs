@@ -43,9 +43,10 @@ namespace Alis.Core.Physic.Dynamics
     public partial class Body
     {
         /// <summary>
+        ///     Creates a fixture from the given shape and attaches it to this body.
         /// </summary>
-        /// <param name="shape"></param>
-        /// <returns></returns>
+        /// <param name="shape">The shape to create the fixture from.</param>
+        /// <returns>The newly created fixture.</returns>
         public virtual Fixture CreateFixture(Shape shape)
         {
             Fixture fixture = new Fixture(shape);
@@ -187,11 +188,11 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        ///     Creates the compound polygon using the specified list
+        ///     Creates compound polygon fixtures from a list of vertex sets.
         /// </summary>
-        /// <param name="list">The list</param>
-        /// <param name="density">The density</param>
-        /// <returns>The res</returns>
+        /// <param name="list">The list of vertex sets defining each polygon part.</param>
+        /// <param name="density">The density of the compound polygon.</param>
+        /// <returns>The list of created fixtures.</returns>
         public List<Fixture> CreateCompoundPolygon(List<Vertices> list, float density)
         {
             List<Fixture> res = new List<Fixture>(list.Count);
@@ -230,13 +231,13 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        ///     Creates the solid arc using the specified density
+        ///     Creates a solid arc shape by triangulating an arc into multiple polygon fixtures.
         /// </summary>
-        /// <param name="density">The density</param>
-        /// <param name="radians">The radians</param>
-        /// <param name="sides">The sides</param>
-        /// <param name="radius">The radius</param>
-        /// <returns>A list of fixture</returns>
+        /// <param name="density">The density of the solid arc.</param>
+        /// <param name="radians">The arc angle in radians.</param>
+        /// <param name="sides">The number of sides approximating the arc.</param>
+        /// <param name="radius">The radius of the arc.</param>
+        /// <returns>A list of fixtures comprising the solid arc.</returns>
         public List<Fixture> CreateSolidArc(float density, float radians, int sides, float radius)
         {
             Vertices arc = PolygonTools.CreateArc(radians, sides, radius);

@@ -90,18 +90,16 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// <summary>
         ///     Get the current position of the mouse
         /// </summary>
-        /// This function returns the current position of the mouse
-        /// cursor in desktop coordinates.
+        /// <remarks>This function returns the current position of the mouse cursor in desktop coordinates.</remarks>
         /// <returns>Current position of the mouse</returns>
         public static Vector2F GetPosition() => GetPosition(null);
 
 
         /// <summary>
-        ///     Get the current position of the mouse
+        ///     Get the current position of the mouse relative to a window
         /// </summary>
-        /// This function returns the current position of the mouse
-        /// cursor relative to a window.
-        /// <param name="relativeTo">Reference window</param>
+        /// <remarks>This function returns the current position of the mouse cursor relative to the specified window.</remarks>
+        /// <param name="relativeTo">Reference window, or null for desktop coordinates</param>
         /// <returns>Current position of the mouse</returns>
         public static Vector2F GetPosition(Window relativeTo)
         {
@@ -113,28 +111,22 @@ namespace Alis.Extension.Graphic.Sfml.Windows
             return sfMouse_getPosition(IntPtr.Zero);
         }
 
-        ////////////////////////////////////////////////////////////
         /// <summary>
-        ///     Set the current position of the mouse
+        ///     Set the current position of the mouse in desktop coordinates
         /// </summary>
-        /// This function sets the current position of the mouse
-        /// cursor in desktop coordinates.
+        /// <remarks>This function sets the current position of the mouse cursor in desktop coordinates.</remarks>
         /// <param name="position">New position of the mouse</param>
-        ////////////////////////////////////////////////////////////
         public static void SetPosition(Vector2F position)
         {
             SetPosition(position, null);
         }
 
-        ////////////////////////////////////////////////////////////
         /// <summary>
-        ///     Set the current position of the mouse
+        ///     Set the current position of the mouse relative to a window
         /// </summary>
-        /// This function sets the current position of the mouse
-        /// cursor relative to a window.
+        /// <remarks>This function sets the current position of the mouse cursor relative to the specified window.</remarks>
         /// <param name="position">New position of the mouse</param>
-        /// <param name="relativeTo">Reference window</param>
-        ////////////////////////////////////////////////////////////
+        /// <param name="relativeTo">Reference window, or null for desktop coordinates</param>
         public static void SetPosition(Vector2F position, Window relativeTo)
         {
             if (relativeTo != null)
