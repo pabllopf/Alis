@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Drawing;
+
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>

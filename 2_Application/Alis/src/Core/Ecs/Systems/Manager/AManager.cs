@@ -28,6 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Ecs.Systems.Manager.Scene;
+using Alis.Core.Ecs.Systems.Manager.Time;
 using Alis.Core.Ecs.Systems.Scope;
 
 namespace Alis.Core.Ecs.Systems.Manager

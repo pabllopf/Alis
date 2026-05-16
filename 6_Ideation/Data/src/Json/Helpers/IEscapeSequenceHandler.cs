@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Data.Json.Parsing;
+
 namespace Alis.Core.Aspect.Data.Json.Helpers
 {
     /// <summary>
