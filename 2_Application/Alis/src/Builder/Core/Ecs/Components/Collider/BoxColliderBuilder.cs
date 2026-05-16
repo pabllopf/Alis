@@ -63,7 +63,7 @@ namespace Alis.Builder.Core.Ecs.Components.Collider
         /// <summary>
         ///     The context
         /// </summary>
-        private Context context;
+        private readonly Context context;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="BoxColliderBuilder" /> class

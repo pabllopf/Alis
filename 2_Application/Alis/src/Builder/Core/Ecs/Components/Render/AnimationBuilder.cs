@@ -54,7 +54,7 @@ namespace Alis.Builder.Core.Ecs.Components.Render
         /// <summary>
         ///     The context
         /// </summary>
-        private Context context;
+        private readonly Context context;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="AnimationBuilder" /> class

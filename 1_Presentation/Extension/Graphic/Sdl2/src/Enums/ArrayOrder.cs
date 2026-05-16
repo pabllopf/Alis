@@ -34,39 +34,39 @@ namespace Alis.Extension.Graphic.Sdl2.Enums
     /// </summary>
     public enum ArrayOrder
     {
-        /// <summary>
-        ///     The sdl array order none sdl array order
-        /// </summary>
-        SdlArrayOrderNone,
+    /// <summary>
+    ///     No specific array color component order defined
+    /// </summary>
+    SdlArrayOrderNone,
 
-        /// <summary>
-        ///     The sdl array order rgb sdl array order
-        /// </summary>
-        SdlArrayOrderRgb,
+    /// <summary>
+    ///     Array color order is RGB (red, green, blue)
+    /// </summary>
+    SdlArrayOrderRgb,
 
-        /// <summary>
-        ///     The sdl array order rgba sdl array order
-        /// </summary>
-        SdlArrayOrderRgba,
+    /// <summary>
+    ///     Array color order is RGBA (red, green, blue, alpha)
+    /// </summary>
+    SdlArrayOrderRgba,
 
-        /// <summary>
-        ///     The sdl array order argb sdl array order
-        /// </summary>
-        SdlArrayOrderArgb,
+    /// <summary>
+    ///     Array color order is ARGB (alpha, red, green, blue)
+    /// </summary>
+    SdlArrayOrderArgb,
 
-        /// <summary>
-        ///     The sdl array order bgr sdl array order
-        /// </summary>
-        SdlArrayOrderBgr,
+    /// <summary>
+    ///     Array color order is BGR (blue, green, red)
+    /// </summary>
+    SdlArrayOrderBgr,
 
-        /// <summary>
-        ///     The sdl array order bgr sdl array order
-        /// </summary>
-        SdlArrayOrderBgrA,
+    /// <summary>
+    ///     Array color order is BGRA (blue, green, red, alpha)
+    /// </summary>
+    SdlArrayOrderBgrA,
 
-        /// <summary>
-        ///     The sdl array order abg sdl array order
-        /// </summary>
-        SdlArrayOrderAbgR
+    /// <summary>
+    ///     Array color order is ABGR (alpha, blue, green, red)
+    /// </summary>
+    SdlArrayOrderAbgR
     }
 }
