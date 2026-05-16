@@ -160,15 +160,15 @@ namespace Alis.Extension.Graphic.Ui
         ///     Adds the glyph using the specified src cfg
         /// </summary>
         /// <param name="srcCfg">The src cfg</param>
-        /// <param name="c">The </param>
-        /// <param name="x0">The </param>
-        /// <param name="y0">The </param>
-        /// <param name="x1">The </param>
-        /// <param name="y1">The </param>
-        /// <param name="u0">The </param>
-        /// <param name="v0">The </param>
-        /// <param name="u1">The </param>
-        /// <param name="v1">The </param>
+        /// <param name="c">The Unicode codepoint to look up</param>
+        /// <param name="x0">The starting x-coordinate</param>
+        /// <param name="y0">The starting y-coordinate</param>
+        /// <param name="x1">The ending x-coordinate</param>
+        /// <param name="y1">The ending y-coordinate</param>
+        /// <param name="u0">The starting U texture coordinate</param>
+        /// <param name="v0">The starting V texture coordinate</param>
+        /// <param name="u1">The ending U texture coordinate</param>
+        /// <param name="v1">The ending V texture coordinate</param>
         /// <param name="advanceX">The advance</param>
         public void AddGlyph(ImFontConfigPtr srcCfg, ushort c, float x0, float y0, float x1, float y1, float u0, float v0, float u1, float v1, float advanceX)
         {
@@ -217,21 +217,21 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Finds the glyph using the specified c
         /// </summary>
-        /// <param name="c">The </param>
+        /// <param name="c">The Unicode codepoint to look up</param>
         /// <returns>The im font glyph ptr</returns>
         public ImFontGlyph FindGlyph(ushort c) => ImGuiNative.ImFont_FindGlyph(NativePtr, c);
 
         /// <summary>
         ///     Finds the glyph no fallback using the specified c
         /// </summary>
-        /// <param name="c">The </param>
+        /// <param name="c">The Unicode codepoint to look up</param>
         /// <returns>The im font glyph ptr</returns>
         public ImFontGlyph FindGlyphNoFallback(ushort c) => ImGuiNative.ImFont_FindGlyphNoFallback(NativePtr, c);
 
         /// <summary>
         ///     Gets the char advance using the specified c
         /// </summary>
-        /// <param name="c">The </param>
+        /// <param name="c">The Unicode codepoint to look up</param>
         /// <returns>The result returned from the native function</returns>
         public float GetCharAdvance(ushort c) => ImGuiNative.ImFont_GetCharAdvance(NativePtr, c);
 
@@ -263,7 +263,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="size">The size of the element in pixels</param>
         /// <param name="pos">The position in screen coordinates</param>
         /// <param name="col">The col</param>
-        /// <param name="c">The </param>
+        /// <param name="c">The Unicode codepoint to look up</param>
         public void RenderChar(ImDrawListPtr drawList, float size, Vector2F pos, uint col, ushort c)
         {
             ImGuiNative.ImFont_RenderChar(NativePtr, drawList.NativePtr, size, pos, col, c);
@@ -272,7 +272,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Sets the glyph visible using the specified c
         /// </summary>
-        /// <param name="c">The </param>
+        /// <param name="c">The Unicode codepoint to look up</param>
         /// <param name="visible">The visible</param>
         public void SetGlyphVisible(ushort c, bool visible)
         {

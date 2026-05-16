@@ -95,8 +95,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Annotations the x
         /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="x">The x-coordinate</param>
+        /// <param name="y">The y-coordinate</param>
         /// <param name="col">The col</param>
         /// <param name="pixOffset">The pix offset</param>
         /// <param name="clamp">The clamp</param>
@@ -110,8 +110,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Annotations the x
         /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="x">The x-coordinate</param>
+        /// <param name="y">The y-coordinate</param>
         /// <param name="col">The col</param>
         /// <param name="pixOffset">The pix offset</param>
         /// <param name="clamp">The clamp</param>
@@ -126,8 +126,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Annotations the x
         /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="x">The x-coordinate</param>
+        /// <param name="y">The y-coordinate</param>
         /// <param name="col">The col</param>
         /// <param name="pixOffset">The pix offset</param>
         /// <param name="clamp">The clamp</param>
@@ -523,7 +523,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Describes whether colormap slider
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="t">The </param>
+        /// <param name="t">The parameter value (theta or time)</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool ColormapSlider(string label, ref float t)
         {
@@ -535,7 +535,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Describes whether colormap slider
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="t">The </param>
+        /// <param name="t">The parameter value (theta or time)</param>
         /// <param name="out">The out</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool ColormapSlider(string label, ref float t, out Vector4F @out)
@@ -548,7 +548,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Describes whether colormap slider
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="t">The </param>
+        /// <param name="t">The parameter value (theta or time)</param>
         /// <param name="out">The out</param>
         /// <param name="format">The display format string (printf-style)</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
@@ -562,7 +562,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Describes whether colormap slider
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="t">The </param>
+        /// <param name="t">The parameter value (theta or time)</param>
         /// <param name="out">The out</param>
         /// <param name="format">The display format string (printf-style)</param>
         /// <param name="cmap">The cmap</param>
@@ -605,7 +605,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Describes whether drag line x
         /// </summary>
         /// <param name="id">The unique identifier for the element</param>
-        /// <param name="x">The </param>
+        /// <param name="x">The x-coordinate</param>
         /// <param name="col">The col</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragLineX(int id, ref double x, Vector4F col)
@@ -620,7 +620,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Describes whether drag line x
         /// </summary>
         /// <param name="id">The unique identifier for the element</param>
-        /// <param name="x">The </param>
+        /// <param name="x">The x-coordinate</param>
         /// <param name="col">The col</param>
         /// <param name="thickness">The line thickness in pixels</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
@@ -635,7 +635,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Describes whether drag line x
         /// </summary>
         /// <param name="id">The unique identifier for the element</param>
-        /// <param name="x">The </param>
+        /// <param name="x">The x-coordinate</param>
         /// <param name="col">The col</param>
         /// <param name="thickness">The line thickness in pixels</param>
         /// <param name="flags">The ImGui behavior flags</param>
@@ -650,7 +650,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Describes whether drag line y
         /// </summary>
         /// <param name="id">The unique identifier for the element</param>
-        /// <param name="y">The </param>
+        /// <param name="y">The y-coordinate</param>
         /// <param name="col">The col</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragLineY(int id, ref double y, Vector4F col)
@@ -665,7 +665,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Describes whether drag line y
         /// </summary>
         /// <param name="id">The unique identifier for the element</param>
-        /// <param name="y">The </param>
+        /// <param name="y">The y-coordinate</param>
         /// <param name="col">The col</param>
         /// <param name="thickness">The line thickness in pixels</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
@@ -680,7 +680,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Describes whether drag line y
         /// </summary>
         /// <param name="id">The unique identifier for the element</param>
-        /// <param name="y">The </param>
+        /// <param name="y">The y-coordinate</param>
         /// <param name="col">The col</param>
         /// <param name="thickness">The line thickness in pixels</param>
         /// <param name="flags">The ImGui behavior flags</param>
@@ -695,8 +695,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Describes whether drag point
         /// </summary>
         /// <param name="id">The unique identifier for the element</param>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="x">The x-coordinate</param>
+        /// <param name="y">The y-coordinate</param>
         /// <param name="col">The col</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragPoint(int id, ref double x, ref double y, Vector4F col)
@@ -711,8 +711,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Describes whether drag point
         /// </summary>
         /// <param name="id">The unique identifier for the element</param>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="x">The x-coordinate</param>
+        /// <param name="y">The y-coordinate</param>
         /// <param name="col">The col</param>
         /// <param name="size">The size of the element in pixels</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
@@ -727,8 +727,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Describes whether drag point
         /// </summary>
         /// <param name="id">The unique identifier for the element</param>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="x">The x-coordinate</param>
+        /// <param name="y">The y-coordinate</param>
         /// <param name="col">The col</param>
         /// <param name="size">The size of the element in pixels</param>
         /// <param name="flags">The ImGui behavior flags</param>
@@ -743,10 +743,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Describes whether drag rect
         /// </summary>
         /// <param name="id">The unique identifier for the element</param>
-        /// <param name="x1">The </param>
-        /// <param name="y1">The </param>
-        /// <param name="x2">The </param>
-        /// <param name="y2">The </param>
+        /// <param name="x1">The ending x-coordinate</param>
+        /// <param name="y1">The ending y-coordinate</param>
+        /// <param name="x2">The second x-coordinate</param>
+        /// <param name="y2">The second y-coordinate</param>
         /// <param name="col">The col</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragRect(int id, ref double x1, ref double y1, ref double x2, ref double y2, Vector4F col)
@@ -760,10 +760,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Describes whether drag rect
         /// </summary>
         /// <param name="id">The unique identifier for the element</param>
-        /// <param name="x1">The </param>
-        /// <param name="y1">The </param>
-        /// <param name="x2">The </param>
-        /// <param name="y2">The </param>
+        /// <param name="x1">The ending x-coordinate</param>
+        /// <param name="y1">The ending y-coordinate</param>
+        /// <param name="x2">The second x-coordinate</param>
+        /// <param name="y2">The second y-coordinate</param>
         /// <param name="col">The col</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>

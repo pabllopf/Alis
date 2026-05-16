@@ -1521,7 +1521,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the input character using the specified c
         /// </summary>
-        /// <param name="c">The </param>
+        /// <param name="c">The Unicode codepoint to look up</param>
         public void AddInputCharacter(uint c)
         {
             ImGuiNative.ImGuiIO_AddInputCharacter(NativePtr, c);
@@ -1539,7 +1539,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the input character utf 16 using the specified c
         /// </summary>
-        /// <param name="c">The </param>
+        /// <param name="c">The Unicode codepoint to look up</param>
         public void AddInputCharacterUtf16(ushort c)
         {
             ImGuiNative.ImGuiIO_AddInputCharacterUTF16(NativePtr, c);
@@ -1582,8 +1582,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Adds the mouse pos event using the specified x
         /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="x">The x-coordinate</param>
+        /// <param name="y">The y-coordinate</param>
         public void AddMousePosEvent(float x, float y)
         {
             ImGuiNative.ImGuiIO_AddMousePosEvent(NativePtr, x, y);

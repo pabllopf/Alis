@@ -68,8 +68,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot annotation bool using the specified x
         /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="x">The x-coordinate</param>
+        /// <param name="y">The y-coordinate</param>
         /// <param name="col">The col</param>
         /// <param name="pixOffset">The pix offset</param>
         /// <param name="clamp">The clamp</param>
@@ -80,8 +80,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot annotation str using the specified x
         /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="x">The x-coordinate</param>
+        /// <param name="y">The y-coordinate</param>
         /// <param name="col">The col</param>
         /// <param name="pixOffset">The pix offset</param>
         /// <param name="clamp">The clamp</param>
@@ -226,7 +226,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Ims the plot colormap slider using the specified label
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="t">The </param>
+        /// <param name="t">The parameter value (theta or time)</param>
         /// <param name="out">The out</param>
         /// <param name="format">The display format string (printf-style)</param>
         /// <param name="cmap">The cmap</param>
@@ -252,7 +252,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Ims the plot drag line x using the specified id
         /// </summary>
         /// <param name="id">The unique identifier for the element</param>
-        /// <param name="x">The </param>
+        /// <param name="x">The x-coordinate</param>
         /// <param name="col">The col</param>
         /// <param name="thickness">The line thickness in pixels</param>
         /// <param name="flags">The ImGui behavior flags</param>
@@ -264,7 +264,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Ims the plot drag line y using the specified id
         /// </summary>
         /// <param name="id">The unique identifier for the element</param>
-        /// <param name="y">The </param>
+        /// <param name="y">The y-coordinate</param>
         /// <param name="col">The col</param>
         /// <param name="thickness">The line thickness in pixels</param>
         /// <param name="flags">The ImGui behavior flags</param>
@@ -276,8 +276,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Ims the plot drag point using the specified id
         /// </summary>
         /// <param name="id">The unique identifier for the element</param>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="x">The x-coordinate</param>
+        /// <param name="y">The y-coordinate</param>
         /// <param name="col">The col</param>
         /// <param name="size">The size of the element in pixels</param>
         /// <param name="flags">The ImGui behavior flags</param>
@@ -289,10 +289,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Ims the plot drag rect using the specified id
         /// </summary>
         /// <param name="id">The unique identifier for the element</param>
-        /// <param name="x1">The </param>
-        /// <param name="y1">The </param>
-        /// <param name="x2">The </param>
-        /// <param name="y2">The </param>
+        /// <param name="x1">The ending x-coordinate</param>
+        /// <param name="y1">The ending y-coordinate</param>
+        /// <param name="x2">The second x-coordinate</param>
+        /// <param name="y2">The second y-coordinate</param>
         /// <param name="col">The col</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <returns>the byte result from the native operation</returns>
@@ -561,8 +561,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Ims the plot pixels to plot float using the specified p out
         /// </summary>
         /// <param name="pOut">The out</param>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="x">The x-coordinate</param>
+        /// <param name="y">The y-coordinate</param>
         /// <param name="xAxis">The axis</param>
         /// <param name="yAxis">The axis</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PixelsToPlot_Float")]
@@ -2300,8 +2300,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelIds">The label ids</param>
         /// <param name="values">The values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="x">The x-coordinate</param>
+        /// <param name="y">The y-coordinate</param>
         /// <param name="radius">The radius of the shape</param>
         /// <param name="labelFmt">The label fmt</param>
         /// <param name="angle0">The angle</param>
@@ -2315,8 +2315,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelIds">The label ids</param>
         /// <param name="values">The values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="x">The x-coordinate</param>
+        /// <param name="y">The y-coordinate</param>
         /// <param name="radius">The radius of the shape</param>
         /// <param name="labelFmt">The label fmt</param>
         /// <param name="angle0">The angle</param>
@@ -2330,8 +2330,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelIds">The label ids</param>
         /// <param name="values">The values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="x">The x-coordinate</param>
+        /// <param name="y">The y-coordinate</param>
         /// <param name="radius">The radius of the shape</param>
         /// <param name="labelFmt">The label fmt</param>
         /// <param name="angle0">The angle</param>
@@ -2345,8 +2345,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelIds">The label ids</param>
         /// <param name="values">The values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="x">The x-coordinate</param>
+        /// <param name="y">The y-coordinate</param>
         /// <param name="radius">The radius of the shape</param>
         /// <param name="labelFmt">The label fmt</param>
         /// <param name="angle0">The angle</param>
@@ -2360,8 +2360,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelIds">The label ids</param>
         /// <param name="values">The values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="x">The x-coordinate</param>
+        /// <param name="y">The y-coordinate</param>
         /// <param name="radius">The radius of the shape</param>
         /// <param name="labelFmt">The label fmt</param>
         /// <param name="angle0">The angle</param>
@@ -2375,8 +2375,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelIds">The label ids</param>
         /// <param name="values">The values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="x">The x-coordinate</param>
+        /// <param name="y">The y-coordinate</param>
         /// <param name="radius">The radius of the shape</param>
         /// <param name="labelFmt">The label fmt</param>
         /// <param name="angle0">The angle</param>
@@ -2390,8 +2390,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelIds">The label ids</param>
         /// <param name="values">The values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="x">The x-coordinate</param>
+        /// <param name="y">The y-coordinate</param>
         /// <param name="radius">The radius of the shape</param>
         /// <param name="labelFmt">The label fmt</param>
         /// <param name="angle0">The angle</param>
@@ -2405,8 +2405,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelIds">The label ids</param>
         /// <param name="values">The values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="x">The x-coordinate</param>
+        /// <param name="y">The y-coordinate</param>
         /// <param name="radius">The radius of the shape</param>
         /// <param name="labelFmt">The label fmt</param>
         /// <param name="angle0">The angle</param>
@@ -2420,8 +2420,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelIds">The label ids</param>
         /// <param name="values">The values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="x">The x-coordinate</param>
+        /// <param name="y">The y-coordinate</param>
         /// <param name="radius">The radius of the shape</param>
         /// <param name="labelFmt">The label fmt</param>
         /// <param name="angle0">The angle</param>
@@ -2435,8 +2435,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelIds">The label ids</param>
         /// <param name="values">The values</param>
         /// <param name="count">The number of elements</param>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="x">The x-coordinate</param>
+        /// <param name="y">The y-coordinate</param>
         /// <param name="radius">The radius of the shape</param>
         /// <param name="labelFmt">The label fmt</param>
         /// <param name="angle0">The angle</param>
@@ -3743,8 +3743,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Ims the plot plot text using the specified text
         /// </summary>
         /// <param name="text">The text content to display</param>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="x">The x-coordinate</param>
+        /// <param name="y">The y-coordinate</param>
         /// <param name="pixOffset">The pix offset</param>
         /// <param name="flags">The ImGui behavior flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotText")]
@@ -3764,8 +3764,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Ims the plot plot to pixels double using the specified p out
         /// </summary>
         /// <param name="pOut">The out</param>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="x">The x-coordinate</param>
+        /// <param name="y">The y-coordinate</param>
         /// <param name="xAxis">The axis</param>
         /// <param name="yAxis">The axis</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotToPixels_double")]
@@ -3863,7 +3863,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Ims the plot sample colormap using the specified p out
         /// </summary>
         /// <param name="pOut">The out</param>
-        /// <param name="t">The </param>
+        /// <param name="t">The parameter value (theta or time)</param>
         /// <param name="cmap">The cmap</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_SampleColormap")]
         internal static extern void ImPlot_SampleColormap(out Vector4F pOut, float t, ImPlotColormap cmap);
@@ -4205,7 +4205,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot tag x bool using the specified x
         /// </summary>
-        /// <param name="x">The </param>
+        /// <param name="x">The x-coordinate</param>
         /// <param name="col">The col</param>
         /// <param name="round">The round</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_TagX_Bool")]
@@ -4214,7 +4214,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot tag x str using the specified x
         /// </summary>
-        /// <param name="x">The </param>
+        /// <param name="x">The x-coordinate</param>
         /// <param name="col">The col</param>
         /// <param name="fmt">The fmt</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_TagX_Str")]
@@ -4223,7 +4223,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot tag y bool using the specified y
         /// </summary>
-        /// <param name="y">The </param>
+        /// <param name="y">The y-coordinate</param>
         /// <param name="col">The col</param>
         /// <param name="round">The round</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_TagY_Bool")]
@@ -4232,7 +4232,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot tag y str using the specified y
         /// </summary>
-        /// <param name="y">The </param>
+        /// <param name="y">The y-coordinate</param>
         /// <param name="col">The col</param>
         /// <param name="fmt">The fmt</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_TagY_Str")]
@@ -4269,8 +4269,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot point im plot point double using the specified  x
         /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="x">The x-coordinate</param>
+        /// <param name="y">The y-coordinate</param>
         /// <returns>The im plot point</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlotPoint_ImPlotPoint_double")]
         internal static extern ImPlotPoint ImPlotPoint_ImPlotPoint_double(double x, double y);
@@ -4278,7 +4278,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Ims the plot point im plot point vec 2 using the specified p
         /// </summary>
-        /// <param name="p">The </param>
+        /// <param name="p">The point or pointer value</param>
         /// <returns>The im plot point</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlotPoint_ImPlotPoint_Vec2")]
         internal static extern ImPlotPoint ImPlotPoint_ImPlotPoint_Vec2(Vector2F p);
@@ -4337,7 +4337,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="pOut">The out</param>
         /// <param name="self">The self</param>
-        /// <param name="p">The </param>
+        /// <param name="p">The point or pointer value</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlotRect_Clamp_PlotPoInt")]
         internal static extern void ImPlotRect_Clamp_PlotPoInt(out ImPlotPoint pOut, ref ImPlotPoint self, ImPlotPoint p);
 
@@ -4346,8 +4346,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// </summary>
         /// <param name="pOut">The out</param>
         /// <param name="self">The self</param>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="x">The x-coordinate</param>
+        /// <param name="y">The y-coordinate</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlotRect_Clamp_double")]
         internal static extern void ImPlotRect_Clamp_double(out ImPlotPoint pOut, ref ImPlotPoint self, double x, double y);
 
@@ -4355,7 +4355,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Ims the plot rect contains plot po int using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="p">The </param>
+        /// <param name="p">The point or pointer value</param>
         /// <returns>the byte result from the native operation</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlotRect_Contains_PlotPoInt")]
         internal static extern byte ImPlotRect_Contains_PlotPoInt(ref ImPlotPoint self, ImPlotPoint p);
@@ -4364,8 +4364,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         ///     Ims the plot rect contains double using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="x">The x-coordinate</param>
+        /// <param name="y">The y-coordinate</param>
         /// <returns>the byte result from the native operation</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlotRect_Contains_double")]
         internal static extern byte ImPlotRect_Contains_double(ref ImPlotPoint self, double x, double y);

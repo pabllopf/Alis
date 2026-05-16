@@ -114,7 +114,7 @@ namespace Alis.Core.Ecs.Systems.Configuration
         /// </summary>
         public void OnLoad()
         {
-            General = General.OnLoad();
+            General = GeneralSetting.OnLoad();
 
             /*
             string directory = Path.Combine(Environment.CurrentDirectory, "Data", "Setting");

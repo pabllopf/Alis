@@ -180,8 +180,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
         /// <summary>
         ///     Ims the guizmo set rect using the specified x
         /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="x">The x-coordinate</param>
+        /// <param name="y">The y-coordinate</param>
         /// <param name="width">The width</param>
         /// <param name="height">The height</param>
         [DllImport(NativeLibrary, EntryPoint = "ImGuizmo_SetRect", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]

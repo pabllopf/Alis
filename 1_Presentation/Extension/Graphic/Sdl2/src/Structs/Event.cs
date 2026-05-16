@@ -463,32 +463,32 @@ namespace Alis.Extension.Graphic.Sdl2.Structs
         [FieldOffset(0)] private readonly byte padding49;
 
         /// <summary>
-        ///     The padding 50
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding50;
 
         /// <summary>
-        ///     The padding 51
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding51;
 
         /// <summary>
-        ///     The padding 52
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding52;
 
         /// <summary>
-        ///     The padding 53
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding53;
 
         /// <summary>
-        ///     The padding 54
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding54;
 
         /// <summary>
-        ///     The padding 55
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding55;
     }

@@ -579,60 +579,60 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Pushes the style color using the specified idx
+        ///     Pushes a plot color value onto the style stack (as a packed uint).
         /// </summary>
-        /// <param name="idx">The idx</param>
-        /// <param name="col">The col</param>
+        /// <param name="idx">The style color index to modify</param>
+        /// <param name="col">New color value as a packed 32-bit ABGR unsigned integer</param>
         public static void PushStyleColor(ImPlotCol idx, uint col)
         {
             ImPlotNative.ImPlot_PushStyleColor_U32(idx, col);
         }
 
         /// <summary>
-        ///     Pushes the style color using the specified idx
+        ///     Pushes a plot color value onto the style stack (as a Vector4F).
         /// </summary>
-        /// <param name="idx">The idx</param>
-        /// <param name="col">The col</param>
+        /// <param name="idx">The style color index to modify</param>
+        /// <param name="col">New color value as RGBA float components</param>
         public static void PushStyleColor(ImPlotCol idx, Vector4F col)
         {
             ImPlotNative.ImPlot_PushStyleColor_Vec4(idx, col);
         }
 
         /// <summary>
-        ///     Pushes the style var using the specified idx
+        ///     Pushes a float-valued style variable onto the style stack.
         /// </summary>
-        /// <param name="idx">The idx</param>
-        /// <param name="val">The val</param>
+        /// <param name="idx">The style variable index to modify</param>
+        /// <param name="val">New float value for the style variable</param>
         public static void PushStyleVar(ImPlotStyleVar idx, float val)
         {
             ImPlotNative.ImPlot_PushStyleVar_Float(idx, val);
         }
 
         /// <summary>
-        ///     Pushes the style var using the specified idx
+        ///     Pushes an integer-valued style variable onto the style stack.
         /// </summary>
-        /// <param name="idx">The idx</param>
-        /// <param name="val">The val</param>
+        /// <param name="idx">The style variable index to modify</param>
+        /// <param name="val">New integer value for the style variable</param>
         public static void PushStyleVar(ImPlotStyleVar idx, int val)
         {
             ImPlotNative.ImPlot_PushStyleVar_Int(idx, val);
         }
 
         /// <summary>
-        ///     Pushes the style var using the specified idx
+        ///     Pushes a Vector2F-valued style variable onto the style stack.
         /// </summary>
-        /// <param name="idx">The idx</param>
-        /// <param name="val">The val</param>
+        /// <param name="idx">The style variable index to modify</param>
+        /// <param name="val">New Vector2F value for the style variable</param>
         public static void PushStyleVar(ImPlotStyleVar idx, Vector2F val)
         {
             ImPlotNative.ImPlot_PushStyleVar_Vec2(idx, val);
         }
 
         /// <summary>
-        ///     Samples the colormap using the specified t
+        ///     Samples the active colormap at a normalized position.
         /// </summary>
-        /// <param name="t">The parameter value (theta or time)</param>
-        /// <returns>The retval</returns>
+        /// <param name="t">Normalized position in [0, 1] along the colormap</param>
+        /// <returns>Color sampled from the colormap at position t</returns>
         public static Vector4F SampleColormap(float t)
         {
             ImPlotColormap cmap = (ImPlotColormap) (-1);
@@ -641,11 +641,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Samples the colormap using the specified t
+        ///     Samples a specific colormap at a normalized position.
         /// </summary>
-        /// <param name="t">The parameter value (theta or time)</param>
-        /// <param name="cmap">The cmap</param>
-        /// <returns>The retval</returns>
+        /// <param name="t">Normalized position in [0, 1] along the colormap</param>
+        /// <param name="cmap">The colormap to sample</param>
+        /// <returns>Color sampled from the specified colormap at position t</returns>
         public static Vector4F SampleColormap(float t, ImPlotColormap cmap)
         {
             ImPlotNative.ImPlot_SampleColormap(out Vector4F retval, t, cmap);
@@ -653,49 +653,49 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Sets the axes using the specified x axis
+        ///     Sets the active X and Y axes for subsequent plot operations.
         /// </summary>
-        /// <param name="xAxis">The axis</param>
-        /// <param name="yAxis">The axis</param>
+        /// <param name="xAxis">The X axis to activate</param>
+        /// <param name="yAxis">The Y axis to activate</param>
         public static void SetAxes(ImAxis xAxis, ImAxis yAxis)
         {
             ImPlotNative.ImPlot_SetAxes(xAxis, yAxis);
         }
 
         /// <summary>
-        ///     Sets the axis using the specified axis
+        ///     Sets the active axis for subsequent plot operations.
         /// </summary>
-        /// <param name="axis">The axis</param>
+        /// <param name="axis">The axis to activate</param>
         public static void SetAxis(ImAxis axis)
         {
             ImPlotNative.ImPlot_SetAxis(axis);
         }
 
         /// <summary>
-        ///     Sets the current context using the specified ctx
+        ///     Sets the current ImPlot context for multi-context scenarios.
         /// </summary>
-        /// <param name="ctx">The ImNodes context instance</param>
+        /// <param name="ctx">Pointer to the ImPlot context</param>
         public static void SetCurrentContext(IntPtr ctx)
         {
             ImPlotNative.ImPlot_SetCurrentContext(ctx);
         }
 
         /// <summary>
-        ///     Sets the im gui context using the specified ctx
+        ///     Associates an ImGui context with the current ImPlot context.
         /// </summary>
-        /// <param name="ctx">The ImNodes context instance</param>
+        /// <param name="ctx">Pointer to the ImGui context</param>
         public static void SetImGuiContext(IntPtr ctx)
         {
             ImPlotNative.ImPlot_SetImGuiContext(ctx);
         }
 
         /// <summary>
-        ///     Sets the next axes limits using the specified x min
+        ///     Sets the next plot's X and Y axis limits (applied once by default).
         /// </summary>
-        /// <param name="xMin">The min</param>
-        /// <param name="xMax">The max</param>
-        /// <param name="yMin">The min</param>
-        /// <param name="yMax">The max</param>
+        /// <param name="xMin">Minimum value for the X axis</param>
+        /// <param name="xMax">Maximum value for the X axis</param>
+        /// <param name="yMin">Minimum value for the Y axis</param>
+        /// <param name="yMax">Maximum value for the Y axis</param>
         public static void SetNextAxesLimits(double xMin, double xMax, double yMin, double yMax)
         {
             ImPlotCond cond = ImPlotCond.Once;
@@ -703,20 +703,20 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Sets the next axes limits using the specified x min
+        ///     Sets the next plot's X and Y axis limits with a specified condition.
         /// </summary>
-        /// <param name="xMin">The min</param>
-        /// <param name="xMax">The max</param>
-        /// <param name="yMin">The min</param>
-        /// <param name="yMax">The max</param>
-        /// <param name="cond">The cond</param>
+        /// <param name="xMin">Minimum value for the X axis</param>
+        /// <param name="xMax">Maximum value for the X axis</param>
+        /// <param name="yMin">Minimum value for the Y axis</param>
+        /// <param name="yMax">Maximum value for the Y axis</param>
+        /// <param name="cond">Condition under which the limits are applied</param>
         public static void SetNextAxesLimits(double xMin, double xMax, double yMin, double yMax, ImPlotCond cond)
         {
             ImPlotNative.ImPlot_SetNextAxesLimits(xMin, xMax, yMin, yMax, cond);
         }
 
         /// <summary>
-        ///     Sets the next axes to fit
+        ///     Automatically fits the next plot's axes to the visible data range.
         /// </summary>
         public static void SetNextAxesToFit()
         {
@@ -724,11 +724,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Sets the next axis limits using the specified axis
+        ///     Sets the next plot's axis limits (applied once by default).
         /// </summary>
-        /// <param name="axis">The axis</param>
-        /// <param name="vMin">The minimum value range</param>
-        /// <param name="vMax">The maximum value range</param>
+        /// <param name="axis">The axis to constrain</param>
+        /// <param name="vMin">Minimum value for the axis</param>
+        /// <param name="vMax">Maximum value for the axis</param>
         public static void SetNextAxisLimits(ImAxis axis, double vMin, double vMax)
         {
             ImPlotCond cond = ImPlotCond.Once;
@@ -736,39 +736,39 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Sets the next axis limits using the specified axis
+        ///     Sets the next plot's axis limits with a specified condition.
         /// </summary>
-        /// <param name="axis">The axis</param>
-        /// <param name="vMin">The minimum value range</param>
-        /// <param name="vMax">The maximum value range</param>
-        /// <param name="cond">The cond</param>
+        /// <param name="axis">The axis to constrain</param>
+        /// <param name="vMin">Minimum value for the axis</param>
+        /// <param name="vMax">Maximum value for the axis</param>
+        /// <param name="cond">Condition under which the limits are applied</param>
         public static void SetNextAxisLimits(ImAxis axis, double vMin, double vMax, ImPlotCond cond)
         {
             ImPlotNative.ImPlot_SetNextAxisLimits(axis, vMin, vMax, cond);
         }
 
         /// <summary>
-        ///     Sets the next axis links using the specified axis
+        ///     Links the next plot's axis range to external variables.
         /// </summary>
-        /// <param name="axis">The axis</param>
-        /// <param name="linkMin">The link min</param>
-        /// <param name="linkMax">The link max</param>
+        /// <param name="axis">The axis to link</param>
+        /// <param name="linkMin">Reference to the external minimum value</param>
+        /// <param name="linkMax">Reference to the external maximum value</param>
         public static void SetNextAxisLinks(ImAxis axis, ref double linkMin, ref double linkMax)
         {
             ImPlotNative.ImPlot_SetNextAxisLinks(axis, linkMin, linkMax);
         }
 
         /// <summary>
-        ///     Sets the next axis to fit using the specified axis
+        ///     Automatically fits the specified axis to the visible data range.
         /// </summary>
-        /// <param name="axis">The axis</param>
+        /// <param name="axis">The axis to fit</param>
         public static void SetNextAxisToFit(ImAxis axis)
         {
             ImPlotNative.ImPlot_SetNextAxisToFit(axis);
         }
 
         /// <summary>
-        ///     Sets the next error bar style
+        ///     Resets the error bar style to defaults for the next plot item.
         /// </summary>
         public static void SetNextErrorBarStyle()
         {
@@ -779,9 +779,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Sets the next error bar style using the specified col
+        ///     Sets the error bar color for the next plot item.
         /// </summary>
-        /// <param name="col">The col</param>
+        /// <param name="col">Color for the error bars</param>
         public static void SetNextErrorBarStyle(Vector4F col)
         {
             float size = -1;
@@ -790,10 +790,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Sets the next error bar style using the specified col
+        ///     Sets the error bar color and cap size for the next plot item.
         /// </summary>
-        /// <param name="col">The col</param>
-        /// <param name="size">The size of the element in pixels</param>
+        /// <param name="col">Color for the error bars</param>
+        /// <param name="size">Width of the error bar cap lines in pixels</param>
         public static void SetNextErrorBarStyle(Vector4F col, float size)
         {
             float weight = -1;
@@ -801,18 +801,18 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Sets the next error bar style using the specified col
+        ///     Sets the error bar color, cap size, and line weight for the next plot item.
         /// </summary>
-        /// <param name="col">The col</param>
-        /// <param name="size">The size of the element in pixels</param>
-        /// <param name="weight">The weight</param>
+        /// <param name="col">Color for the error bars</param>
+        /// <param name="size">Width of the error bar cap lines in pixels</param>
+        /// <param name="weight">Thickness of the error bar lines in pixels</param>
         public static void SetNextErrorBarStyle(Vector4F col, float size, float weight)
         {
             ImPlotNative.ImPlot_SetNextErrorBarStyle(col, size, weight);
         }
 
         /// <summary>
-        ///     Sets the next fill style
+        ///     Resets the fill style to defaults for the next plot item.
         /// </summary>
         public static void SetNextFillStyle()
         {
@@ -822,9 +822,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Sets the next fill style using the specified col
+        ///     Sets the fill color for the next plot item.
         /// </summary>
-        /// <param name="col">The col</param>
+        /// <param name="col">Fill color for the next item</param>
         public static void SetNextFillStyle(Vector4F col)
         {
             float alphaMod = -1;
@@ -832,17 +832,17 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Sets the next fill style using the specified col
+        ///     Sets the fill color and alpha modifier for the next plot item.
         /// </summary>
-        /// <param name="col">The col</param>
-        /// <param name="alphaMod">The alpha mod</param>
+        /// <param name="col">Fill color for the next item</param>
+        /// <param name="alphaMod">Alpha multiplier applied to the fill color</param>
         public static void SetNextFillStyle(Vector4F col, float alphaMod)
         {
             ImPlotNative.ImPlot_SetNextFillStyle(col, alphaMod);
         }
 
         /// <summary>
-        ///     Sets the next line style
+        ///     Resets the line style to defaults for the next plot item.
         /// </summary>
         public static void SetNextLineStyle()
         {
@@ -852,9 +852,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Sets the next line style using the specified col
+        ///     Sets the line color for the next plot item.
         /// </summary>
-        /// <param name="col">The col</param>
+        /// <param name="col">Line color for the next item</param>
         public static void SetNextLineStyle(Vector4F col)
         {
             float weight = -1;
@@ -862,10 +862,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         }
 
         /// <summary>
-        ///     Sets the next line style using the specified col
+        ///     Sets the line color and weight for the next plot item.
         /// </summary>
-        /// <param name="col">The col</param>
-        /// <param name="weight">The weight</param>
+        /// <param name="col">Line color for the next item</param>
+        /// <param name="weight">Thickness of the line in pixels</param>
         public static void SetNextLineStyle(Vector4F col, float weight)
         {
             ImPlotNative.ImPlot_SetNextLineStyle(col, weight);

@@ -1070,8 +1070,8 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="a">The alpha component</param>
         /// <param name="b">The blue color component</param>
-        /// <param name="c">The </param>
-        /// <param name="d">The </param>
+        /// <param name="c">The Unicode codepoint to look up</param>
+        /// <param name="d">The destination point/value</param>
         /// <param name="uvA">The uv</param>
         /// <param name="uvB">The uv</param>
         /// <param name="uvC">The uv</param>

@@ -512,8 +512,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Pixelses the to plot using the specified x
         /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="x">The x-coordinate</param>
+        /// <param name="y">The y-coordinate</param>
         /// <returns>The retval</returns>
         public static ImPlotPoint PixelsToPlot(float x, float y)
         {
@@ -526,8 +526,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Pixelses the to plot using the specified x
         /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="x">The x-coordinate</param>
+        /// <param name="y">The y-coordinate</param>
         /// <param name="xAxis">The axis</param>
         /// <returns>The retval</returns>
         public static ImPlotPoint PixelsToPlot(float x, float y, ImAxis xAxis)
@@ -540,8 +540,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <summary>
         ///     Pixelses the to plot using the specified x
         /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="x">The x-coordinate</param>
+        /// <param name="y">The y-coordinate</param>
         /// <param name="xAxis">The axis</param>
         /// <param name="yAxis">The axis</param>
         /// <returns>The retval</returns>

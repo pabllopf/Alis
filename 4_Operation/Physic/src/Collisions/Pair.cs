@@ -76,5 +76,32 @@ namespace Alis.Core.Physic.Collisions
 
             return 1;
         }
+
+        public override bool Equals(object obj) => obj is Pair other && Equals(other);
+
+        public bool Equals(Pair other) => ProxyIdA == other.ProxyIdA && ProxyIdB == other.ProxyIdB;
+
+        public override int GetHashCode() => HashCode.Combine(ProxyIdA, ProxyIdB);
+
+        public static bool operator ==(Pair left, Pair right) => left.Equals(right);
+
+        public static bool operator !=(Pair left, Pair right) => !left.Equals(right);
+
+        public static bool operator <(Pair left, Pair right) => left.CompareTo(right) < 0;
+
+        public static bool operator <=(Pair left, Pair right) => left.CompareTo(right) <= 0;
+
+        public static bool operator >(Pair left, Pair right) => left.CompareTo(right) > 0;
+
+        public static bool operator >=(Pair left, Pair right) => left.CompareTo(right) >= 0;
+
+                if (ProxyIdA == other.ProxyIdA)
+                {
+                    return 0;
+                }
+            }
+
+            return 1;
+        }
     }
 }
