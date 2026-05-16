@@ -52,7 +52,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImGuiViewportPtr" /> class
         /// </summary>
-        /// <param name="viewport">The viewport</param>
+        /// <param name="viewport">The ImGuiViewport to use</param>
         public ImGuiViewportPtr(ImGuiViewport viewport)
         {
             GCHandle handle = GCHandle.Alloc(viewport, GCHandleType.Pinned);

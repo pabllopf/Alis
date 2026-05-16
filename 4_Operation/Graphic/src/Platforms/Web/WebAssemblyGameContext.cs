@@ -494,7 +494,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public float GetBatteryLevel()
         {
-            return _displayManager.GetBatteryLevel();
+            return WebAssemblyDisplayManager.GetBatteryLevel();
         }
 
         /// <summary>
@@ -502,7 +502,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public bool IsCharging()
         {
-            return _displayManager.IsCharging();
+            return WebAssemblyDisplayManager.IsCharging();
         }
 
         /// <summary>
@@ -510,7 +510,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public bool IsOnline()
         {
-            return _displayManager.IsOnline();
+            return WebAssemblyDisplayManager.IsOnline();
         }
 
         /// <summary>
@@ -518,7 +518,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public int GetRefreshRate()
         {
-            return _displayManager.GetRefreshRate();
+            return WebAssemblyDisplayManager.GetRefreshRate();
         }
 
         /// <summary>

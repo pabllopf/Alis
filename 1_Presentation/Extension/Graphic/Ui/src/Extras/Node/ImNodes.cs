@@ -394,8 +394,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Describes whether is link created
         /// </summary>
-        /// <param name="startedAtAttributeId">The started at attribute id</param>
-        /// <param name="endedAtAttributeId">The ended at attribute id</param>
+        /// <param name="startedAtAttributeId">The output attribute that started the link creation</param>
+        /// <param name="endedAtAttributeId">The input attribute where the link ended</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool IsLinkCreated(ref int startedAtAttributeId, ref int endedAtAttributeId)
         {
@@ -407,9 +407,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Describes whether is link created
         /// </summary>
-        /// <param name="startedAtAttributeId">The started at attribute id</param>
-        /// <param name="endedAtAttributeId">The ended at attribute id</param>
-        /// <param name="createdFromSnap">The created from snap</param>
+        /// <param name="startedAtAttributeId">The output attribute that started the link creation</param>
+        /// <param name="endedAtAttributeId">The input attribute where the link ended</param>
+        /// <param name="createdFromSnap">Whether the link was created via snap-to-pin</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool IsLinkCreated(ref int startedAtAttributeId, ref int endedAtAttributeId, ref bool createdFromSnap)
         {
@@ -422,10 +422,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Describes whether is link created
         /// </summary>
-        /// <param name="startedAtNodeId">The started at node id</param>
-        /// <param name="startedAtAttributeId">The started at attribute id</param>
-        /// <param name="endedAtNodeId">The ended at node id</param>
-        /// <param name="endedAtAttributeId">The ended at attribute id</param>
+        /// <param name="startedAtNodeId">The source node for the link creation</param>
+        /// <param name="startedAtAttributeId">The output attribute that started the link creation</param>
+        /// <param name="endedAtNodeId">The destination node for the link creation</param>
+        /// <param name="endedAtAttributeId">The input attribute where the link ended</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool IsLinkCreated(ref int startedAtNodeId, ref int startedAtAttributeId, ref int endedAtNodeId, ref int endedAtAttributeId)
         {
@@ -436,11 +436,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Describes whether is link created
         /// </summary>
-        /// <param name="startedAtNodeId">The started at node id</param>
-        /// <param name="startedAtAttributeId">The started at attribute id</param>
-        /// <param name="endedAtNodeId">The ended at node id</param>
-        /// <param name="endedAtAttributeId">The ended at attribute id</param>
-        /// <param name="createdFromSnap">The created from snap</param>
+        /// <param name="startedAtNodeId">The source node for the link creation</param>
+        /// <param name="startedAtAttributeId">The output attribute that started the link creation</param>
+        /// <param name="endedAtNodeId">The destination node for the link creation</param>
+        /// <param name="endedAtAttributeId">The input attribute where the link ended</param>
+        /// <param name="createdFromSnap">Whether the link was created via snap-to-pin</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool IsLinkCreated(ref int startedAtNodeId, ref int startedAtAttributeId, ref int endedAtNodeId, ref int endedAtAttributeId, ref bool createdFromSnap)
         {
@@ -476,7 +476,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Describes whether is link dropped
         /// </summary>
-        /// <param name="startedAtAttributeId">The started at attribute id</param>
+        /// <param name="startedAtAttributeId">The output attribute that started the link creation</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool IsLinkDropped(ref int startedAtAttributeId)
         {
@@ -488,8 +488,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Describes whether is link dropped
         /// </summary>
-        /// <param name="startedAtAttributeId">The started at attribute id</param>
-        /// <param name="includingDetachedLinks">The including detached links</param>
+        /// <param name="startedAtAttributeId">The output attribute that started the link creation</param>
+        /// <param name="includingDetachedLinks">Whether to include detached links in the check</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool IsLinkDropped(ref int startedAtAttributeId, bool includingDetachedLinks)
         {
@@ -523,7 +523,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Describes whether is link started
         /// </summary>
-        /// <param name="startedAtAttributeId">The started at attribute id</param>
+        /// <param name="startedAtAttributeId">The output attribute that started the link creation</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool IsLinkStarted(ref int startedAtAttributeId)
         {
@@ -568,8 +568,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         ///     Links the id
         /// </summary>
         /// <param name="id">The unique identifier for the element</param>
-        /// <param name="startAttributeId">The start attribute id</param>
-        /// <param name="endAttributeId">The end attribute id</param>
+        /// <param name="startAttributeId">The attribute id of the start pin</param>
+        /// <param name="endAttributeId">The attribute id of the end pin</param>
         public static void Link(int id, int startAttributeId, int endAttributeId)
         {
             ImNodesNative.ImNodes_Link(id, startAttributeId, endAttributeId);
@@ -662,7 +662,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Minis the map using the specified minimap size fraction
         /// </summary>
-        /// <param name="minimapSizeFraction">The minimap size fraction</param>
+        /// <param name="minimapSizeFraction">The fraction of the editor area used by the minimap</param>
         public static void MiniMap(float minimapSizeFraction)
         {
             ImNodesMiniMapLocation location = ImNodesMiniMapLocation.TopLeft;
@@ -674,7 +674,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Minis the map using the specified minimap size fraction
         /// </summary>
-        /// <param name="minimapSizeFraction">The minimap size fraction</param>
+        /// <param name="minimapSizeFraction">The fraction of the editor area used by the minimap</param>
         /// <param name="location">The location</param>
         public static void MiniMap(float minimapSizeFraction, ImNodesMiniMapLocation location)
         {
@@ -686,9 +686,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Minis the map using the specified minimap size fraction
         /// </summary>
-        /// <param name="minimapSizeFraction">The minimap size fraction</param>
+        /// <param name="minimapSizeFraction">The fraction of the editor area used by the minimap</param>
         /// <param name="location">The location</param>
-        /// <param name="nodeHoveringCallback">The node hovering callback</param>
+        /// <param name="nodeHoveringCallback">The callback invoked when hovering over a minimap node</param>
         public static void MiniMap(float minimapSizeFraction, ImNodesMiniMapLocation location, ImNodesMiniMapNodeHoveringCallback nodeHoveringCallback)
         {
             ImNodesMiniMapNodeHoveringCallbackUserData nodeHoveringCallbackData = null;
@@ -698,10 +698,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Minis the map using the specified minimap size fraction
         /// </summary>
-        /// <param name="minimapSizeFraction">The minimap size fraction</param>
+        /// <param name="minimapSizeFraction">The fraction of the editor area used by the minimap</param>
         /// <param name="location">The location</param>
-        /// <param name="nodeHoveringCallback">The node hovering callback</param>
-        /// <param name="nodeHoveringCallbackData">The node hovering callback data</param>
+        /// <param name="nodeHoveringCallback">The callback invoked when hovering over a minimap node</param>
+        /// <param name="nodeHoveringCallbackData">The user data for the minimap hovering callback</param>
         public static void MiniMap(float minimapSizeFraction, ImNodesMiniMapLocation location, ImNodesMiniMapNodeHoveringCallback nodeHoveringCallback, ImNodesMiniMapNodeHoveringCallbackUserData nodeHoveringCallbackData)
         {
             ImNodesNative.ImNodes_MiniMap(minimapSizeFraction, location, nodeHoveringCallback, nodeHoveringCallbackData);

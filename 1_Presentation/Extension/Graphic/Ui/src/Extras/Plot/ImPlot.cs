@@ -39,45 +39,45 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
     public static partial class ImPlot
     {
         /// <summary>
-        ///     Plots the stems using the specified label id
+        ///     Draws a stem plot with ushort X/Y data, a baseline reference, and explicit flags.
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
-        /// <param name="flags">The ImGui behavior flags</param>
+        /// <param name="labelId">Unique label for identifying this plot series in the legend</param>
+        /// <param name="xs">X-coordinate values for each data point</param>
+        /// <param name="ys">Y-coordinate values for each data point</param>
+        /// <param name="count">Number of data points to plot</param>
+        /// <param name="ref">Baseline reference value from which stems originate</param>
+        /// <param name="flags">Combination of ImPlotStemsFlags controlling stem appearance</param>
         public static void PlotStems(string labelId, ref ushort xs, ref ushort ys, int count, double @ref, ImPlotStemsFlags flags)
         {
             ImPlotNative.ImPlot_PlotStems_U16PtrU16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, flags, 0, sizeof(ushort));
         }
 
         /// <summary>
-        ///     Plots the stems using the specified label id
+        ///     Draws a stem plot with ushort X/Y data, a baseline, flags, and a data offset.
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <param name="offset">The offset from the origin</param>
+        /// <param name="labelId">Unique label for identifying this plot series in the legend</param>
+        /// <param name="xs">X-coordinate values for each data point</param>
+        /// <param name="ys">Y-coordinate values for each data point</param>
+        /// <param name="count">Number of data points to plot</param>
+        /// <param name="ref">Baseline reference value from which stems originate</param>
+        /// <param name="flags">Combination of ImPlotStemsFlags controlling stem appearance</param>
+        /// <param name="offset">Index offset into the data arrays</param>
         public static void PlotStems(string labelId, ref ushort xs, ref ushort ys, int count, double @ref, ImPlotStemsFlags flags, int offset)
         {
             ImPlotNative.ImPlot_PlotStems_U16PtrU16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, flags, offset, sizeof(ushort));
         }
 
         /// <summary>
-        ///     Plots the stems using the specified label id
+        ///     Draws a stem plot with ushort X/Y data, a baseline, flags, offset, and stride.
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="count">The number of elements</param>
-        /// <param name="ref">The ref</param>
-        /// <param name="flags">The ImGui behavior flags</param>
-        /// <param name="offset">The offset from the origin</param>
-        /// <param name="stride">The byte stride between elements</param>
+        /// <param name="labelId">Unique label for identifying this plot series in the legend</param>
+        /// <param name="xs">X-coordinate values for each data point</param>
+        /// <param name="ys">Y-coordinate values for each data point</param>
+        /// <param name="count">Number of data points to plot</param>
+        /// <param name="ref">Baseline reference value from which stems originate</param>
+        /// <param name="flags">Combination of ImPlotStemsFlags controlling stem appearance</param>
+        /// <param name="offset">Index offset into the data arrays</param>
+        /// <param name="stride">Byte stride between consecutive elements in the arrays</param>
         public static void PlotStems(string labelId, ref ushort xs, ref ushort ys, int count, double @ref, ImPlotStemsFlags flags, int offset, int stride)
         {
             ImPlotNative.ImPlot_PlotStems_U16PtrU16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, flags, offset, stride);

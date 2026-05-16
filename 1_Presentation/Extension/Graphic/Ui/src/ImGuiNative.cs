@@ -500,7 +500,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Igs the create context using the specified shared font atlas
         /// </summary>
-        /// <param name="sharedFontAtlas">The shared font atlas</param>
+        /// <param name="sharedFontAtlas">The ImFontAtlas to share, or null for a new one</param>
         /// <returns>The int ptr</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igCreateContext"), ExcludeFromCodeCoverage]
         public static extern IntPtr igCreateContext(IntPtr sharedFontAtlas);
@@ -509,12 +509,12 @@ namespace Alis.Extension.Graphic.Ui
         ///     Igs the debug check version and data layout using the specified version str
         /// </summary>
         /// <param name="versionStr">The version string to check</param>
-        /// <param name="szIo">The sz io</param>
-        /// <param name="szStyle">The sz style</param>
+        /// <param name="szIo">The size of the ImGuiIO structure</param>
+        /// <param name="szStyle">The size of the ImGuiStyle structure</param>
         /// <param name="szVec2">The sz vec2</param>
         /// <param name="szVec4">The sz vec4</param>
-        /// <param name="szDrawvert">The sz drawvert</param>
-        /// <param name="szDrawidx">The sz drawidx</param>
+        /// <param name="szDrawvert">The size of the ImDrawVert structure</param>
+        /// <param name="szDrawidx">The size of the draw index type</param>
         /// <returns>the byte result from the native operation</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDebugCheckVersionAndDataLayout"), ExcludeFromCodeCoverage]
         public static extern byte igDebugCheckVersionAndDataLayout(byte[] versionStr, uint szIo, uint szStyle, uint szVec2, uint szVec4, uint szDrawvert, uint szDrawidx);
@@ -540,7 +540,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Igs the dock space over viewport using the specified viewport
         /// </summary>
-        /// <param name="viewport">The viewport</param>
+        /// <param name="viewport">The ImGuiViewport to use</param>
         /// <param name="flags">The ImGui behavior flags</param>
         /// <param name="windowClass">The window class</param>
         /// <returns>the unsigned integer result</returns>
@@ -552,7 +552,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="vMin">The minimum value range</param>
         /// <param name="vMax">The maximum value range</param>
         /// <param name="format">The display format string (printf-style)</param>
@@ -566,7 +566,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="vMin">The minimum value range</param>
         /// <param name="vMax">The maximum value range</param>
         /// <param name="format">The display format string (printf-style)</param>
@@ -580,7 +580,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="vMin">The minimum value range</param>
         /// <param name="vMax">The maximum value range</param>
         /// <param name="format">The display format string (printf-style)</param>
@@ -594,7 +594,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="vMin">The minimum value range</param>
         /// <param name="vMax">The maximum value range</param>
         /// <param name="format">The display format string (printf-style)</param>
@@ -609,7 +609,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="label">The display label for the UI element</param>
         /// <param name="vCurrentMin">The current min</param>
         /// <param name="vCurrentMax">The current max</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="vMin">The minimum value range</param>
         /// <param name="vMax">The maximum value range</param>
         /// <param name="format">The display format string (printf-style)</param>
@@ -624,7 +624,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="vMin">The minimum value range</param>
         /// <param name="vMax">The maximum value range</param>
         /// <param name="format">The display format string (printf-style)</param>
@@ -638,7 +638,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="vMin">The minimum value range</param>
         /// <param name="vMax">The maximum value range</param>
         /// <param name="format">The display format string (printf-style)</param>
@@ -652,7 +652,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="vMin">The minimum value range</param>
         /// <param name="vMax">The maximum value range</param>
         /// <param name="format">The display format string (printf-style)</param>
@@ -666,7 +666,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="vMin">The minimum value range</param>
         /// <param name="vMax">The maximum value range</param>
         /// <param name="format">The display format string (printf-style)</param>
@@ -681,7 +681,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="label">The display label for the UI element</param>
         /// <param name="vCurrentMin">The current min</param>
         /// <param name="vCurrentMax">The current max</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="vMin">The minimum value range</param>
         /// <param name="vMax">The maximum value range</param>
         /// <param name="format">The display format string (printf-style)</param>
@@ -695,9 +695,9 @@ namespace Alis.Extension.Graphic.Ui
         ///     Igs the drag scalar using the specified label
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The data type</param>
+        /// <param name="dataType">The type of data being manipulated</param>
         /// <param name="pData">The pointer to the data value</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="pMin">The minimum value pointer</param>
         /// <param name="pMax">The maximum value pointer</param>
         /// <param name="format">The display format string (printf-style)</param>
@@ -710,10 +710,10 @@ namespace Alis.Extension.Graphic.Ui
         ///     Igs the drag scalar n using the specified label
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The data type</param>
+        /// <param name="dataType">The type of data being manipulated</param>
         /// <param name="pData">The pointer to the data value</param>
         /// <param name="components">The number of components in the value</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="pMin">The minimum value pointer</param>
         /// <param name="pMax">The maximum value pointer</param>
         /// <param name="format">The display format string (printf-style)</param>
@@ -872,7 +872,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Igs the get background draw list viewport ptr using the specified viewport
         /// </summary>
-        /// <param name="viewport">The viewport</param>
+        /// <param name="viewport">The ImGuiViewport to use</param>
         /// <returns>The im draw list</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetBackgroundDrawList_ViewportPtr"), ExcludeFromCodeCoverage]
         public static extern IntPtr igGetBackgroundDrawList_ViewportPtr(IntPtr viewport);
@@ -1047,7 +1047,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Igs the get foreground draw list viewport ptr using the specified viewport
         /// </summary>
-        /// <param name="viewport">The viewport</param>
+        /// <param name="viewport">The ImGuiViewport to use</param>
         /// <returns>The im draw list</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetForegroundDrawList_ViewportPtr"), ExcludeFromCodeCoverage]
         public static extern IntPtr igGetForegroundDrawList_ViewportPtr(IntPtr viewport);
@@ -1505,7 +1505,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Igs the input scalar using the specified label
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The data type</param>
+        /// <param name="dataType">The type of data being manipulated</param>
         /// <param name="pData">The pointer to the data value</param>
         /// <param name="pStep">The step</param>
         /// <param name="pStepFast">The step fast</param>
@@ -1519,7 +1519,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Igs the input scalar n using the specified label
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The data type</param>
+        /// <param name="dataType">The type of data being manipulated</param>
         /// <param name="pData">The pointer to the data value</param>
         /// <param name="components">The number of components in the value</param>
         /// <param name="pStep">The step</param>
@@ -2819,7 +2819,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Igs the slider scalar using the specified label
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The data type</param>
+        /// <param name="dataType">The type of data being manipulated</param>
         /// <param name="pData">The pointer to the data value</param>
         /// <param name="pMin">The minimum value pointer</param>
         /// <param name="pMax">The maximum value pointer</param>
@@ -2833,7 +2833,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Igs the slider scalar n using the specified label
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The data type</param>
+        /// <param name="dataType">The type of data being manipulated</param>
         /// <param name="pData">The pointer to the data value</param>
         /// <param name="components">The number of components in the value</param>
         /// <param name="pMin">The minimum value pointer</param>
@@ -2898,7 +2898,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Igs the table get column flags using the specified column n
         /// </summary>
-        /// <param name="columnN">The column</param>
+        /// <param name="columnN">The column index</param>
         /// <returns>The im gui table column flags</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igTableGetColumnFlags"), ExcludeFromCodeCoverage]
         public static extern ImGuiTableColumnFlags igTableGetColumnFlags(int columnN);
@@ -2913,7 +2913,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Igs the table get column name int using the specified column n
         /// </summary>
-        /// <param name="columnN">The column</param>
+        /// <param name="columnN">The column index</param>
         /// <returns>the byte result from the native operation</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igTableGetColumnName_Int"), ExcludeFromCodeCoverage]
         public static extern byte[] igTableGetColumnName_Int(int columnN);
@@ -2955,8 +2955,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Igs the table next row using the specified row flags
         /// </summary>
-        /// <param name="rowFlags">The row flags</param>
-        /// <param name="minRowHeight">The min row height</param>
+        /// <param name="rowFlags">The flags controlling row behavior</param>
+        /// <param name="minRowHeight">The minimum row height in pixels</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igTableNextRow"), ExcludeFromCodeCoverage]
         public static extern void igTableNextRow(ImGuiTableRowFlags rowFlags, float minRowHeight);
 
@@ -2965,14 +2965,14 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="target">The target</param>
         /// <param name="color">The color value to set</param>
-        /// <param name="columnN">The column</param>
+        /// <param name="columnN">The column index</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igTableSetBgColor"), ExcludeFromCodeCoverage]
         public static extern void igTableSetBgColor(ImGuiTableBgTarget target, uint color, int columnN);
 
         /// <summary>
         ///     Igs the table set column enabled using the specified column n
         /// </summary>
-        /// <param name="columnN">The column</param>
+        /// <param name="columnN">The column index</param>
         /// <param name="v">The value to be modified or populated</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igTableSetColumnEnabled"), ExcludeFromCodeCoverage]
         public static extern void igTableSetColumnEnabled(int columnN, byte v);
@@ -2980,7 +2980,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Igs the table set column index using the specified column n
         /// </summary>
-        /// <param name="columnN">The column</param>
+        /// <param name="columnN">The column index</param>
         /// <returns>the byte result from the native operation</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igTableSetColumnIndex"), ExcludeFromCodeCoverage]
         public static extern byte igTableSetColumnIndex(int columnN);
@@ -3194,7 +3194,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
         /// <param name="size">The size of the element in pixels</param>
-        /// <param name="dataType">The data type</param>
+        /// <param name="dataType">The type of data being manipulated</param>
         /// <param name="pData">The pointer to the data value</param>
         /// <param name="pMin">The minimum value pointer</param>
         /// <param name="pMax">The maximum value pointer</param>
@@ -3847,8 +3847,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <param name="a">The alpha component</param>
         /// <param name="b">The blue color component</param>
-        /// <param name="c">The </param>
-        /// <param name="d">The </param>
+        /// <param name="c">The Unicode codepoint to look up</param>
+        /// <param name="d">The destination point/value</param>
         /// <param name="uvA">The uv</param>
         /// <param name="uvB">The uv</param>
         /// <param name="uvC">The uv</param>
@@ -4002,15 +4002,15 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="srcCfg">The src cfg</param>
-        /// <param name="c">The </param>
-        /// <param name="x0">The </param>
-        /// <param name="y0">The </param>
-        /// <param name="x1">The </param>
-        /// <param name="y1">The </param>
-        /// <param name="u0">The </param>
-        /// <param name="v0">The </param>
-        /// <param name="u1">The </param>
-        /// <param name="v1">The </param>
+        /// <param name="c">The Unicode codepoint to look up</param>
+        /// <param name="x0">The starting x-coordinate</param>
+        /// <param name="y0">The starting y-coordinate</param>
+        /// <param name="x1">The ending x-coordinate</param>
+        /// <param name="y1">The ending y-coordinate</param>
+        /// <param name="u0">The starting U texture coordinate</param>
+        /// <param name="v0">The starting V texture coordinate</param>
+        /// <param name="u1">The ending U texture coordinate</param>
+        /// <param name="v1">The ending V texture coordinate</param>
         /// <param name="advanceX">The advance</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFont_AddGlyph"), ExcludeFromCodeCoverage]
         public static extern void ImFont_AddGlyph(IntPtr self, IntPtr srcCfg, ushort c, float x0, float y0, float x1, float y1, float u0, float v0, float u1, float v1, float advanceX);
@@ -4069,7 +4069,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Ims the font find glyph using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="c">The </param>
+        /// <param name="c">The Unicode codepoint to look up</param>
         /// <returns>The im font glyph</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFont_FindGlyph"), ExcludeFromCodeCoverage]
         public static extern ImFontGlyph ImFont_FindGlyph(IntPtr self, ushort c);
@@ -4078,7 +4078,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Ims the font find glyph no fallback using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="c">The </param>
+        /// <param name="c">The Unicode codepoint to look up</param>
         /// <returns>The im font glyph</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFont_FindGlyphNoFallback"), ExcludeFromCodeCoverage]
         public static extern ImFontGlyph ImFont_FindGlyphNoFallback(IntPtr self, ushort c);
@@ -4087,7 +4087,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Ims the font get char advance using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="c">The </param>
+        /// <param name="c">The Unicode codepoint to look up</param>
         /// <returns>the floating-point result</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFont_GetCharAdvance"), ExcludeFromCodeCoverage]
         public static extern float ImFont_GetCharAdvance(IntPtr self, ushort c);
@@ -4141,7 +4141,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="size">The size of the element in pixels</param>
         /// <param name="pos">The position in screen coordinates</param>
         /// <param name="col">The col</param>
-        /// <param name="c">The </param>
+        /// <param name="c">The Unicode codepoint to look up</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFont_RenderChar"), ExcludeFromCodeCoverage]
         public static extern void ImFont_RenderChar(IntPtr self, IntPtr drawList, float size, Vector2F pos, uint col, ushort c);
 
@@ -4165,7 +4165,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Ims the font set glyph visible using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="c">The </param>
+        /// <param name="c">The Unicode codepoint to look up</param>
         /// <param name="visible">The visible</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFont_SetGlyphVisible"), ExcludeFromCodeCoverage]
         public static extern void ImFont_SetGlyphVisible(IntPtr self, ushort c, byte visible);
@@ -4495,7 +4495,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Ims the font glyph ranges builder add char using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="c">The </param>
+        /// <param name="c">The Unicode codepoint to look up</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontGlyphRangesBuilder_AddChar"), ExcludeFromCodeCoverage]
         public static extern void ImFontGlyphRangesBuilder_AddChar(ref ImFontGlyphRangesBuilder self, ushort c);
 
@@ -4615,7 +4615,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Ims the gui io add input character using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="c">The </param>
+        /// <param name="c">The Unicode codepoint to look up</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiIO_AddInputCharacter"), ExcludeFromCodeCoverage]
         public static extern void ImGuiIO_AddInputCharacter(IntPtr self, uint c);
 
@@ -4631,7 +4631,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Ims the gui io add input character utf 16 using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="c">The </param>
+        /// <param name="c">The Unicode codepoint to look up</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiIO_AddInputCharacterUTF16"), ExcludeFromCodeCoverage]
         public static extern void ImGuiIO_AddInputCharacterUTF16(IntPtr self, ushort c);
 
@@ -4667,8 +4667,8 @@ namespace Alis.Extension.Graphic.Ui
         ///     Ims the gui io add mouse pos event using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="x">The x-coordinate</param>
+        /// <param name="y">The y-coordinate</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiIO_AddMousePosEvent"), ExcludeFromCodeCoverage]
         public static extern void ImGuiIO_AddMousePosEvent(IntPtr self, float x, float y);
 
@@ -5177,7 +5177,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Ims the gui text range im gui text range str using the specified  b
         /// </summary>
         /// <param name="b">The blue color component</param>
-        /// <param name="e">The </param>
+        /// <param name="e">The event or exception instance</param>
         /// <returns>The im gui text range</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiTextRange_ImGuiTextRange_Str"), ExcludeFromCodeCoverage]
         public static extern IntPtr ImGuiTextRange_ImGuiTextRange_Str(byte[] b, byte[] e);
@@ -5231,8 +5231,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Ims the vec 2 im vec 2 float using the specified  x
         /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="x">The x-coordinate</param>
+        /// <param name="y">The y-coordinate</param>
         /// <returns>The vector</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImVec2_ImVec2_Float"), ExcludeFromCodeCoverage]
         public static extern IntPtr ImVec2_ImVec2_Float(float x, float y);
@@ -5247,10 +5247,10 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Ims the vec 4 im vec 4 float using the specified  x
         /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        /// <param name="z">The </param>
-        /// <param name="w">The </param>
+        /// <param name="x">The x-coordinate</param>
+        /// <param name="y">The y-coordinate</param>
+        /// <param name="z">The z-coordinate/component</param>
+        /// <param name="w">The w-coordinate/component</param>
         /// <returns>The vector</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImVec4_ImVec4_Float"), ExcludeFromCodeCoverage]
         public static extern Vector4F ImVec4_ImVec4_Float(float x, float y, float z, float w);
@@ -5259,14 +5259,14 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Igs the dock builder remove node using the specified dockspace id
         /// </summary>
-        /// <param name="dockspaceId">The dockspace id</param>
+        /// <param name="dockspaceId">The unique identifier for the dockspace</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDockBuilderRemoveNode"), ExcludeFromCodeCoverage]
         public static extern void igDockBuilderRemoveNode(uint dockspaceId);
 
         /// <summary>
         ///     Igs the dock builder add node using the specified dockspace id
         /// </summary>
-        /// <param name="dockspaceId">The dockspace id</param>
+        /// <param name="dockspaceId">The unique identifier for the dockspace</param>
         /// <param name="none">The none</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDockBuilderAddNode"), ExcludeFromCodeCoverage]
         public static extern void igDockBuilderAddNode(uint dockspaceId, ImGuiDockNodeFlags none);
@@ -5274,19 +5274,19 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Igs the dock builder set node size using the specified dockspace id
         /// </summary>
-        /// <param name="dockspaceId">The dockspace id</param>
-        /// <param name="viewportSize">The viewport size</param>
+        /// <param name="dockspaceId">The unique identifier for the dockspace</param>
+        /// <param name="viewportSize">The size of the viewport area for the dock node</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDockBuilderSetNodeSize"), ExcludeFromCodeCoverage]
         public static extern void igDockBuilderSetNodeSize(uint dockspaceId, Vector2F viewportSize);
 
         /// <summary>
         ///     Igs the dock builder split node using the specified dock main id
         /// </summary>
-        /// <param name="dockMainId">The dock main id</param>
+        /// <param name="dockMainId">The main dock node identifier to split</param>
         /// <param name="left">The left</param>
         /// <param name="p2">The second point coordinate</param>
         /// <param name="zero">The zero</param>
-        /// <param name="dockIdRight">The dock id right</param>
+        /// <param name="dockIdRight">The resulting right-side dock identifier</param>
         /// <returns>the unsigned integer result</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDockBuilderSplitNode"), ExcludeFromCodeCoverage]
         public static extern uint igDockBuilderSplitNode(uint dockMainId, ImGuiDir left, float p2, IntPtr zero, out uint dockIdRight);
@@ -5295,22 +5295,22 @@ namespace Alis.Extension.Graphic.Ui
         ///     Igs the dock builder dock window using the specified get bytes
         /// </summary>
         /// <param name="getBytes">The get bytes</param>
-        /// <param name="dockIdLeft">The dock id left</param>
+        /// <param name="dockIdLeft">The left dock area identifier</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDockBuilderDockWindow"), ExcludeFromCodeCoverage]
         public static extern void igDockBuilderDockWindow(byte[] getBytes, uint dockIdLeft);
 
         /// <summary>
         ///     Igs the dock builder finish using the specified dockspace id
         /// </summary>
-        /// <param name="dockspaceId">The dockspace id</param>
+        /// <param name="dockspaceId">The unique identifier for the dockspace</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDockBuilderFinish"), ExcludeFromCodeCoverage]
         public static extern void igDockBuilderFinish(uint dockspaceId);
 
         /// <summary>
         ///     Igs the dock builder set node flags using the specified dockspace id
         /// </summary>
-        /// <param name="dockspaceId">The dockspace id</param>
-        /// <param name="dockNodeFlags">The dock node flags</param>
+        /// <param name="dockspaceId">The unique identifier for the dockspace</param>
+        /// <param name="dockNodeFlags">The flags controlling dock node behavior</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDockBuilderSetNodeFlags"), ExcludeFromCodeCoverage]
         public static extern void igDockBuilderSetNodeFlags(uint dockspaceId, ImGuiDockNodeFlags dockNodeFlags);
 

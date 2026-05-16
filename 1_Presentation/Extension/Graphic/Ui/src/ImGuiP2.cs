@@ -42,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragInt(string label, ref int v, float vSpeed)
         {
@@ -55,7 +55,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="vMin">The minimum value range</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragInt(string label, ref int v, float vSpeed, int vMin)
@@ -69,7 +69,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="vMin">The minimum value range</param>
         /// <param name="vMax">The maximum value range</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
@@ -84,7 +84,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="vMin">The minimum value range</param>
         /// <param name="vMax">The maximum value range</param>
         /// <param name="format">The display format string (printf-style)</param>
@@ -100,7 +100,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="vMin">The minimum value range</param>
         /// <param name="vMax">The maximum value range</param>
         /// <param name="format">The display format string (printf-style)</param>
@@ -130,7 +130,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragInt2(string label, ref int v, float vSpeed)
         {
@@ -143,7 +143,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="vMin">The minimum value range</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragInt2(string label, ref int v, float vSpeed, int vMin)
@@ -157,7 +157,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="vMin">The minimum value range</param>
         /// <param name="vMax">The maximum value range</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
@@ -172,7 +172,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="vMin">The minimum value range</param>
         /// <param name="vMax">The maximum value range</param>
         /// <param name="format">The display format string (printf-style)</param>
@@ -188,7 +188,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="vMin">The minimum value range</param>
         /// <param name="vMax">The maximum value range</param>
         /// <param name="format">The display format string (printf-style)</param>
@@ -217,7 +217,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragInt3(string label, ref int v, float vSpeed)
         {
@@ -230,7 +230,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="vMin">The minimum value range</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragInt3(string label, ref int v, float vSpeed, int vMin)
@@ -244,7 +244,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="vMin">The minimum value range</param>
         /// <param name="vMax">The maximum value range</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
@@ -259,7 +259,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="vMin">The minimum value range</param>
         /// <param name="vMax">The maximum value range</param>
         /// <param name="format">The display format string (printf-style)</param>
@@ -275,7 +275,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="vMin">The minimum value range</param>
         /// <param name="vMax">The maximum value range</param>
         /// <param name="format">The display format string (printf-style)</param>
@@ -304,7 +304,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragInt4(string label, ref int v, float vSpeed)
         {
@@ -317,7 +317,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="vMin">The minimum value range</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragInt4(string label, ref int v, float vSpeed, int vMin)
@@ -331,7 +331,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="vMin">The minimum value range</param>
         /// <param name="vMax">The maximum value range</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
@@ -346,7 +346,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="vMin">The minimum value range</param>
         /// <param name="vMax">The maximum value range</param>
         /// <param name="format">The display format string (printf-style)</param>
@@ -362,7 +362,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
         /// <param name="v">The value to be modified or populated</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="vMin">The minimum value range</param>
         /// <param name="vMax">The maximum value range</param>
         /// <param name="format">The display format string (printf-style)</param>
@@ -394,7 +394,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="label">The display label for the UI element</param>
         /// <param name="vCurrentMin">The current min</param>
         /// <param name="vCurrentMax">The current max</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragIntRange2(string label, ref int vCurrentMin, ref int vCurrentMax, float vSpeed)
         {
@@ -410,7 +410,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="label">The display label for the UI element</param>
         /// <param name="vCurrentMin">The current min</param>
         /// <param name="vCurrentMax">The current max</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="vMin">The minimum value range</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragIntRange2(string label, ref int vCurrentMin, ref int vCurrentMax, float vSpeed, int vMin)
@@ -426,7 +426,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="label">The display label for the UI element</param>
         /// <param name="vCurrentMin">The current min</param>
         /// <param name="vCurrentMax">The current max</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="vMin">The minimum value range</param>
         /// <param name="vMax">The maximum value range</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
@@ -443,7 +443,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="label">The display label for the UI element</param>
         /// <param name="vCurrentMin">The current min</param>
         /// <param name="vCurrentMax">The current max</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="vMin">The minimum value range</param>
         /// <param name="vMax">The maximum value range</param>
         /// <param name="format">The display format string (printf-style)</param>
@@ -461,7 +461,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="label">The display label for the UI element</param>
         /// <param name="vCurrentMin">The current min</param>
         /// <param name="vCurrentMax">The current max</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="vMin">The minimum value range</param>
         /// <param name="vMax">The maximum value range</param>
         /// <param name="format">The display format string (printf-style)</param>
@@ -479,7 +479,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="label">The display label for the UI element</param>
         /// <param name="vCurrentMin">The current min</param>
         /// <param name="vCurrentMax">The current max</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="vMin">The minimum value range</param>
         /// <param name="vMax">The maximum value range</param>
         /// <param name="format">The display format string (printf-style)</param>
@@ -497,7 +497,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether drag scalar
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The data type</param>
+        /// <param name="dataType">The type of data being manipulated</param>
         /// <param name="pData">The pointer to the data value</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragScalar(string label, ImGuiDataType dataType, IntPtr pData)
@@ -510,9 +510,9 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether drag scalar
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The data type</param>
+        /// <param name="dataType">The type of data being manipulated</param>
         /// <param name="pData">The pointer to the data value</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragScalar(string label, ImGuiDataType dataType, IntPtr pData, float vSpeed)
         {
@@ -524,9 +524,9 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether drag scalar
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The data type</param>
+        /// <param name="dataType">The type of data being manipulated</param>
         /// <param name="pData">The pointer to the data value</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="pMin">The minimum value pointer</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragScalar(string label, ImGuiDataType dataType, IntPtr pData, float vSpeed, IntPtr pMin)
@@ -539,9 +539,9 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether drag scalar
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The data type</param>
+        /// <param name="dataType">The type of data being manipulated</param>
         /// <param name="pData">The pointer to the data value</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="pMin">The minimum value pointer</param>
         /// <param name="pMax">The maximum value pointer</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
@@ -555,9 +555,9 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether drag scalar
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The data type</param>
+        /// <param name="dataType">The type of data being manipulated</param>
         /// <param name="pData">The pointer to the data value</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="pMin">The minimum value pointer</param>
         /// <param name="pMax">The maximum value pointer</param>
         /// <param name="format">The display format string (printf-style)</param>
@@ -572,9 +572,9 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether drag scalar
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The data type</param>
+        /// <param name="dataType">The type of data being manipulated</param>
         /// <param name="pData">The pointer to the data value</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="pMin">The minimum value pointer</param>
         /// <param name="pMax">The maximum value pointer</param>
         /// <param name="format">The display format string (printf-style)</param>
@@ -590,7 +590,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether drag scalar n
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The data type</param>
+        /// <param name="dataType">The type of data being manipulated</param>
         /// <param name="pData">The pointer to the data value</param>
         /// <param name="components">The number of components in the value</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
@@ -604,10 +604,10 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether drag scalar n
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The data type</param>
+        /// <param name="dataType">The type of data being manipulated</param>
         /// <param name="pData">The pointer to the data value</param>
         /// <param name="components">The number of components in the value</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragScalarN(string label, ImGuiDataType dataType, IntPtr pData, int components, float vSpeed)
         {
@@ -619,10 +619,10 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether drag scalar n
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The data type</param>
+        /// <param name="dataType">The type of data being manipulated</param>
         /// <param name="pData">The pointer to the data value</param>
         /// <param name="components">The number of components in the value</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="pMin">The minimum value pointer</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool DragScalarN(string label, ImGuiDataType dataType, IntPtr pData, int components, float vSpeed, IntPtr pMin)

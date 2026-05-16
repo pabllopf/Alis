@@ -309,9 +309,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Ims the nodes is link created bool ptr using the specified started at attribute id
         /// </summary>
-        /// <param name="startedAtAttributeId">The started at attribute id</param>
-        /// <param name="endedAtAttributeId">The ended at attribute id</param>
-        /// <param name="createdFromSnap">The created from snap</param>
+        /// <param name="startedAtAttributeId">The output attribute that started the link creation</param>
+        /// <param name="endedAtAttributeId">The input attribute where the link ended</param>
+        /// <param name="createdFromSnap">Whether the link was created via snap-to-pin</param>
         /// <returns>the byte result from the native operation</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_IsLinkCreated_BoolPtr")]
         internal static extern byte ImNodes_IsLinkCreated_BoolPtr(int startedAtAttributeId, int endedAtAttributeId, byte[] createdFromSnap);
@@ -319,11 +319,11 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Ims the nodes is link created int ptr using the specified started at node id
         /// </summary>
-        /// <param name="startedAtNodeId">The started at node id</param>
-        /// <param name="startedAtAttributeId">The started at attribute id</param>
-        /// <param name="endedAtNodeId">The ended at node id</param>
-        /// <param name="endedAtAttributeId">The ended at attribute id</param>
-        /// <param name="createdFromSnap">The created from snap</param>
+        /// <param name="startedAtNodeId">The source node for the link creation</param>
+        /// <param name="startedAtAttributeId">The output attribute that started the link creation</param>
+        /// <param name="endedAtNodeId">The destination node for the link creation</param>
+        /// <param name="endedAtAttributeId">The input attribute where the link ended</param>
+        /// <param name="createdFromSnap">Whether the link was created via snap-to-pin</param>
         /// <returns>the byte result from the native operation</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_IsLinkCreated_IntPtr")]
         internal static extern byte ImNodes_IsLinkCreated_IntPtr(int startedAtNodeId, int startedAtAttributeId, int endedAtNodeId, int endedAtAttributeId, byte createdFromSnap);
@@ -339,8 +339,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Ims the nodes is link dropped using the specified started at attribute id
         /// </summary>
-        /// <param name="startedAtAttributeId">The started at attribute id</param>
-        /// <param name="includingDetachedLinks">The including detached links</param>
+        /// <param name="startedAtAttributeId">The output attribute that started the link creation</param>
+        /// <param name="includingDetachedLinks">Whether to include detached links in the check</param>
         /// <returns>the byte result from the native operation</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_IsLinkDropped")]
         internal static extern byte ImNodes_IsLinkDropped(int startedAtAttributeId, byte includingDetachedLinks);
@@ -364,7 +364,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Ims the nodes is link started using the specified started at attribute id
         /// </summary>
-        /// <param name="startedAtAttributeId">The started at attribute id</param>
+        /// <param name="startedAtAttributeId">The output attribute that started the link creation</param>
         /// <returns>the byte result from the native operation</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_IsLinkStarted")]
         internal static extern byte ImNodes_IsLinkStarted(int startedAtAttributeId);
@@ -397,8 +397,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         ///     Ims the nodes link using the specified id
         /// </summary>
         /// <param name="id">The unique identifier for the element</param>
-        /// <param name="startAttributeId">The start attribute id</param>
-        /// <param name="endAttributeId">The end attribute id</param>
+        /// <param name="startAttributeId">The attribute id of the start pin</param>
+        /// <param name="endAttributeId">The attribute id of the end pin</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_Link")]
         internal static extern void ImNodes_Link(int id, int startAttributeId, int endAttributeId);
 
@@ -437,10 +437,10 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     Ims the nodes mini map using the specified minimap size fraction
         /// </summary>
-        /// <param name="minimapSizeFraction">The minimap size fraction</param>
+        /// <param name="minimapSizeFraction">The fraction of the editor area used by the minimap</param>
         /// <param name="location">The location</param>
-        /// <param name="nodeHoveringCallback">The node hovering callback</param>
-        /// <param name="nodeHoveringCallbackData">The node hovering callback data</param>
+        /// <param name="nodeHoveringCallback">The callback invoked when hovering over a minimap node</param>
+        /// <param name="nodeHoveringCallbackData">The user data for the minimap hovering callback</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_MiniMap")]
         internal static extern void ImNodes_MiniMap(float minimapSizeFraction, ImNodesMiniMapLocation location, ImNodesMiniMapNodeHoveringCallback nodeHoveringCallback, ImNodesMiniMapNodeHoveringCallbackUserData nodeHoveringCallbackData);
 

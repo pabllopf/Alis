@@ -420,7 +420,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
         /// <param name="size">The size of the element in pixels</param>
-        /// <param name="dataType">The data type</param>
+        /// <param name="dataType">The type of data being manipulated</param>
         /// <param name="pData">The pointer to the data value</param>
         /// <param name="pMin">The minimum value pointer</param>
         /// <param name="pMax">The maximum value pointer</param>
@@ -436,7 +436,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
         /// <param name="size">The size of the element in pixels</param>
-        /// <param name="dataType">The data type</param>
+        /// <param name="dataType">The type of data being manipulated</param>
         /// <param name="pData">The pointer to the data value</param>
         /// <param name="pMin">The minimum value pointer</param>
         /// <param name="pMax">The maximum value pointer</param>
@@ -453,7 +453,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
         /// <param name="size">The size of the element in pixels</param>
-        /// <param name="dataType">The data type</param>
+        /// <param name="dataType">The type of data being manipulated</param>
         /// <param name="pData">The pointer to the data value</param>
         /// <param name="pMin">The minimum value pointer</param>
         /// <param name="pMax">The maximum value pointer</param>

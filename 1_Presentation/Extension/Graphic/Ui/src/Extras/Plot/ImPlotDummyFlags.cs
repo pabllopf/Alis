@@ -32,13 +32,13 @@ using System;
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     The im plot dummy flags enum
+    ///     Placeholder flags with no active options, used where a flags parameter is required.
     /// </summary>
     [Flags]
     public enum ImPlotDummyFlags
     {
         /// <summary>
-        ///     The none im plot dummy flags
+        ///     Default value with no flags set.
         /// </summary>
         None = 0
     }

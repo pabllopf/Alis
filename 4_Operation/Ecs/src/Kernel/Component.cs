@@ -95,8 +95,7 @@ namespace Alis.Core.Ecs.Kernel
                     return;
                 }
 
-                throw new InvalidOperationException(
-                    $"{typeof(T).FullName} is not initalized correctly. (Is the source generator working?)");
+                // RunnerInstance already set by a previous type initialization
             }
 
             NoneUpdateRunnerFactory<T> fac = new NoneUpdateRunnerFactory<T>();

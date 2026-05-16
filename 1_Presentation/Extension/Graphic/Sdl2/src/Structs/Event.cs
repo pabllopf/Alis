@@ -33,332 +33,332 @@ using Alis.Extension.Graphic.Sdl2.Enums;
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl event
+    ///     An SDL event union that overlays all event types at the same memory offset, providing access to the active event via its type field.
     /// </summary>
     [StructLayout(LayoutKind.Explicit)]
     public struct Event
     {
         /// <summary>
-        ///     The type
+        ///     The event type identifier used to distinguish which event subtype is active.
         /// </summary>
         [FieldOffset(0)] public EventType type;
 
 
         /// <summary>
-        ///     The type sharp
+        ///     An alias for the type field, provided for F# compatibility.
         /// </summary>
         [FieldOffset(0)] public EventType typeFSharp;
 
 
         /// <summary>
-        ///     The display
+        ///     The display event data, active when type is <see cref="EventType.DisplayEvent"/>.
         /// </summary>
         [FieldOffset(0)] public DisplayEvent display;
 
 
         /// <summary>
-        ///     The window
+        ///     The window event data, active when type is <see cref="EventType.WindowEvent"/>.
         /// </summary>
         [FieldOffset(0)] public WindowEvent window;
 
 
         /// <summary>
-        ///     The key
+        ///     The keyboard event data, active when type is <see cref="EventType.KeyDown"/> or <see cref="EventType.KeyUp"/>.
         /// </summary>
         [FieldOffset(0)] public KeyboardEvent key;
 
 
         /// <summary>
-        ///     The edit
+        ///     The text editing (IME composition) event data, active when type is <see cref="EventType.TextEditing"/>.
         /// </summary>
         [FieldOffset(0)] public TextEditingEvent edit;
 
 
         /// <summary>
-        ///     The text
+        ///     The text input event data, active when type is <see cref="EventType.TextInput"/>.
         /// </summary>
         [FieldOffset(0)] public TextInputEvent text;
 
 
         /// <summary>
-        ///     The motion
+        ///     The mouse motion event data, active when type is <see cref="EventType.MouseMotion"/>.
         /// </summary>
         [FieldOffset(0)] public MouseMotionEvent motion;
 
 
         /// <summary>
-        ///     The button
+        ///     The mouse button event data, active when type is <see cref="EventType.MouseButtonDown"/> or <see cref="EventType.MouseButtonUp"/>.
         /// </summary>
         [FieldOffset(0)] public MouseButtonEvent button;
 
 
         /// <summary>
-        ///     The wheel
+        ///     The mouse wheel event data, active when type is <see cref="EventType.MouseWheel"/>.
         /// </summary>
         [FieldOffset(0)] public MouseWheelEvent wheel;
 
 
         /// <summary>
-        ///     The j axis
+        ///     The joystick axis event data, active when type is <see cref="EventType.JoyAxisMotion"/>.
         /// </summary>
         [FieldOffset(0)] public JoyAxisEvent jAxis;
 
 
         /// <summary>
-        ///     The j ball
+        ///     The joystick trackball event data, active when type is <see cref="EventType.JoyBallMotion"/>.
         /// </summary>
         [FieldOffset(0)] public JoyBallEvent jBall;
 
 
         /// <summary>
-        ///     The j hat
+        ///     The joystick hat (DPad) event data, active when type is <see cref="EventType.JoyHatMotion"/>.
         /// </summary>
         [FieldOffset(0)] public JoyHatEvent jHat;
 
 
         /// <summary>
-        ///     The j button
+        ///     The joystick button event data, active when type is <see cref="EventType.JoyButtonDown"/> or <see cref="EventType.JoyButtonUp"/>.
         /// </summary>
         [FieldOffset(0)] public JoyButtonEvent jButton;
 
 
         /// <summary>
-        ///     The j device
+        ///     The joystick device event data, active when type is <see cref="EventType.JoyDeviceAdded"/> or <see cref="EventType.JoyDeviceRemoved"/>.
         /// </summary>
         [FieldOffset(0)] public JoyDeviceEvent jDevice;
 
 
         /// <summary>
-        ///     The c axis
+        ///     The controller axis event data, active when type is <see cref="EventType.ControllerAxisMotion"/>.
         /// </summary>
         [FieldOffset(0)] public ControllerAxisEvent cAxis;
 
 
         /// <summary>
-        ///     The c button
+        ///     The controller button event data, active when type is <see cref="EventType.ControllerButtonDown"/> or <see cref="EventType.ControllerButtonUp"/>.
         /// </summary>
         [FieldOffset(0)] public ControllerButtonEvent cButton;
 
 
         /// <summary>
-        ///     The c device
+        ///     The controller device event data, active when type is <see cref="EventType.ControllerDeviceAdded"/>, <see cref="EventType.ControllerDeviceRemoved"/>, or <see cref="EventType.ControllerDeviceRemapped"/>.
         /// </summary>
         [FieldOffset(0)] public ControllerDeviceEvent cDevice;
 
 
         /// <summary>
-        ///     The c touchpad
+        ///     The controller touchpad event data, active when type is <see cref="EventType.ControllerTouchpadDown"/>, <see cref="EventType.ControllerTouchpadUp"/>, or <see cref="EventType.ControllerTouchpadMotion"/>.
         /// </summary>
         [FieldOffset(0)] public ControllerTouchpadEvent cTouchpad;
 
 
         /// <summary>
-        ///     The c sensor
+        ///     The controller sensor event data, active when type is <see cref="EventType.ControllerSensorUpdate"/>.
         /// </summary>
         [FieldOffset(0)] public ControllerSensorEvent cSensor;
 
 
         /// <summary>
-        ///     The audio device
+        ///     The audio device event data, active when type is <see cref="EventType.AudioDeviceAdded"/> or <see cref="EventType.AudioDeviceRemoved"/>.
         /// </summary>
         [FieldOffset(0)] public AudioDeviceEvent aDevice;
 
 
         /// <summary>
-        ///     The sensor
+        ///     The generic sensor event data, active when type is <see cref="EventType.SensorUpdate"/>.
         /// </summary>
         [FieldOffset(0)] public SensorEvent sensor;
 
 
         /// <summary>
-        ///     The quit
+        ///     The quit event data, active when type is <see cref="EventType.Quit"/>.
         /// </summary>
         [FieldOffset(0)] public QuitEvent quit;
 
 
         /// <summary>
-        ///     The user
+        ///     The user-defined event data, active when type is in the SDL_USEREVENT range.
         /// </summary>
         [FieldOffset(0)] public UserEvent user;
 
 
         /// <summary>
-        ///     The sys wm
+        ///     The system window manager event data, active when type is <see cref="EventType.SysWMEvent"/>.
         /// </summary>
         [FieldOffset(0)] public SysWmEvent sysWm;
 
 
         /// <summary>
-        ///     The t finger
+        ///     The touch finger event data, active when type is <see cref="EventType.FingerDown"/>, <see cref="EventType.FingerUp"/>, or <see cref="EventType.FingerMotion"/>.
         /// </summary>
         [FieldOffset(0)] public TouchFingerEvent tFinger;
 
 
         /// <summary>
-        ///     The m gesture
+        ///     The multi-finger gesture event data, active when type is <see cref="EventType.MultiGesture"/>.
         /// </summary>
         [FieldOffset(0)] public MultiGestureEvent mGesture;
 
 
         /// <summary>
-        ///     The d gesture
+        ///     The dollar gesture event data, active when type is <see cref="EventType.DollarGesture"/> or <see cref="EventType.DollarRecord"/>.
         /// </summary>
         [FieldOffset(0)] public DollarGestureEvent dGesture;
 
 
         /// <summary>
-        ///     The drop
+        ///     The drag-and-drop event data, active when type is <see cref="EventType.DropFile"/>, <see cref="EventType.DropText"/>, or <see cref="EventType.DropComplete"/>.
         /// </summary>
         [FieldOffset(0)] public DropEvent drop;
 
 
         /// <summary>
-        ///     The padding
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding0;
 
         /// <summary>
-        ///     The padding
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding1;
 
         /// <summary>
-        ///     The padding
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding2;
 
         /// <summary>
-        ///     The padding
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding3;
 
         /// <summary>
-        ///     The padding
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding4;
 
         /// <summary>
-        ///     The padding
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding5;
 
         /// <summary>
-        ///     The padding
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding6;
 
         /// <summary>
-        ///     The padding
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding7;
 
         /// <summary>
-        ///     The padding
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding8;
 
         /// <summary>
-        ///     The padding
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding9;
 
         /// <summary>
-        ///     The padding 10
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding10;
 
         /// <summary>
-        ///     The padding 11
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding11;
 
         /// <summary>
-        ///     The padding 12
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding12;
 
         /// <summary>
-        ///     The padding 13
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding13;
 
         /// <summary>
-        ///     The padding 14
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding14;
 
         /// <summary>
-        ///     The padding 15
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding15;
 
         /// <summary>
-        ///     The padding 16
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding16;
 
         /// <summary>
-        ///     The padding 17
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding17;
 
         /// <summary>
-        ///     The padding 18
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding18;
 
         /// <summary>
-        ///     The padding 19
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding19;
 
         /// <summary>
-        ///     The padding 20
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding20;
 
         /// <summary>
-        ///     The padding 21
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding21;
 
         /// <summary>
-        ///     The padding 22
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding22;
 
         /// <summary>
-        ///     The padding 23
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding23;
 
         /// <summary>
-        ///     The padding 24
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding24;
 
         /// <summary>
-        ///     The padding 25
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding25;
 
         /// <summary>
-        ///     The padding 26
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding26;
 
         /// <summary>
-        ///     The padding 27
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding27;
 
         /// <summary>
-        ///     The padding 28
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding28;
 
         /// <summary>
-        ///     The padding 29
+        ///     Padding byte used to reach the required event structure size for SDL compatibility.
         /// </summary>
         [FieldOffset(0)] private readonly byte padding29;
 

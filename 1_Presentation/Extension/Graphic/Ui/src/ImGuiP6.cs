@@ -205,7 +205,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether input scalar
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The data type</param>
+        /// <param name="dataType">The type of data being manipulated</param>
         /// <param name="pData">The pointer to the data value</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool InputScalar(string label, ImGuiDataType dataType, IntPtr pData)
@@ -218,7 +218,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether input scalar
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The data type</param>
+        /// <param name="dataType">The type of data being manipulated</param>
         /// <param name="pData">The pointer to the data value</param>
         /// <param name="pStep">The step</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
@@ -232,7 +232,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether input scalar
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The data type</param>
+        /// <param name="dataType">The type of data being manipulated</param>
         /// <param name="pData">The pointer to the data value</param>
         /// <param name="pStep">The step</param>
         /// <param name="pStepFast">The step fast</param>
@@ -248,7 +248,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether input scalar
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The data type</param>
+        /// <param name="dataType">The type of data being manipulated</param>
         /// <param name="pData">The pointer to the data value</param>
         /// <param name="pStep">The step</param>
         /// <param name="pStepFast">The step fast</param>
@@ -265,7 +265,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether input scalar
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The data type</param>
+        /// <param name="dataType">The type of data being manipulated</param>
         /// <param name="pData">The pointer to the data value</param>
         /// <param name="pStep">The step</param>
         /// <param name="pStepFast">The step fast</param>
@@ -282,7 +282,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether input scalar n
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The data type</param>
+        /// <param name="dataType">The type of data being manipulated</param>
         /// <param name="pData">The pointer to the data value</param>
         /// <param name="components">The number of components in the value</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
@@ -297,7 +297,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether input scalar n
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The data type</param>
+        /// <param name="dataType">The type of data being manipulated</param>
         /// <param name="pData">The pointer to the data value</param>
         /// <param name="components">The number of components in the value</param>
         /// <param name="pStep">The step</param>
@@ -312,7 +312,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether input scalar n
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The data type</param>
+        /// <param name="dataType">The type of data being manipulated</param>
         /// <param name="pData">The pointer to the data value</param>
         /// <param name="components">The number of components in the value</param>
         /// <param name="pStep">The step</param>
@@ -329,7 +329,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether input scalar n
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The data type</param>
+        /// <param name="dataType">The type of data being manipulated</param>
         /// <param name="pData">The pointer to the data value</param>
         /// <param name="components">The number of components in the value</param>
         /// <param name="pStep">The step</param>
@@ -347,7 +347,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether input scalar n
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The data type</param>
+        /// <param name="dataType">The type of data being manipulated</param>
         /// <param name="pData">The pointer to the data value</param>
         /// <param name="components">The number of components in the value</param>
         /// <param name="pStep">The step</param>

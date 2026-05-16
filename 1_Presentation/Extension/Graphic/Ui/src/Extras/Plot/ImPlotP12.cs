@@ -88,6 +88,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The number of elements</param>
+        /// <param aram>
+        /// <param name="count">The number of elements</param>
         /// <param name="bins">The bins</param>
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, short[] values, int count, int bins)

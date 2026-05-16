@@ -238,7 +238,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether slider scalar
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The data type</param>
+        /// <param name="dataType">The type of data being manipulated</param>
         /// <param name="pData">The pointer to the data value</param>
         /// <param name="pMin">The minimum value pointer</param>
         /// <param name="pMax">The maximum value pointer</param>
@@ -253,7 +253,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether slider scalar
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The data type</param>
+        /// <param name="dataType">The type of data being manipulated</param>
         /// <param name="pData">The pointer to the data value</param>
         /// <param name="pMin">The minimum value pointer</param>
         /// <param name="pMax">The maximum value pointer</param>
@@ -269,7 +269,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether slider scalar
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The data type</param>
+        /// <param name="dataType">The type of data being manipulated</param>
         /// <param name="pData">The pointer to the data value</param>
         /// <param name="pMin">The minimum value pointer</param>
         /// <param name="pMax">The maximum value pointer</param>
@@ -286,7 +286,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether slider scalar n
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The data type</param>
+        /// <param name="dataType">The type of data being manipulated</param>
         /// <param name="pData">The pointer to the data value</param>
         /// <param name="components">The number of components in the value</param>
         /// <param name="pMin">The minimum value pointer</param>
@@ -302,7 +302,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether slider scalar n
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The data type</param>
+        /// <param name="dataType">The type of data being manipulated</param>
         /// <param name="pData">The pointer to the data value</param>
         /// <param name="components">The number of components in the value</param>
         /// <param name="pMin">The minimum value pointer</param>
@@ -319,7 +319,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether slider scalar n
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The data type</param>
+        /// <param name="dataType">The type of data being manipulated</param>
         /// <param name="pData">The pointer to the data value</param>
         /// <param name="components">The number of components in the value</param>
         /// <param name="pMin">The minimum value pointer</param>
@@ -450,7 +450,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Tables the get column flags using the specified column n
         /// </summary>
-        /// <param name="columnN">The column</param>
+        /// <param name="columnN">The column index</param>
         /// <returns>The result returned from the native function</returns>
         public static ImGuiTableColumnFlags TableGetColumnFlags(int columnN)
         {
@@ -481,7 +481,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Tables the get column name using the specified column n
         /// </summary>
-        /// <param name="columnN">The column</param>
+        /// <param name="columnN">The column index</param>
         /// <returns>the string result from the native function</returns>
         public static string TableGetColumnName(int columnN) => Encoding.UTF8.GetString(ImGuiNative.igTableGetColumnName_Int(columnN));
 
@@ -541,7 +541,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Tables the next row using the specified row flags
         /// </summary>
-        /// <param name="rowFlags">The row flags</param>
+        /// <param name="rowFlags">The flags controlling row behavior</param>
         public static void TableNextRow(ImGuiTableRowFlags rowFlags)
         {
             float minRowHeight = 0.0f;
@@ -551,8 +551,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Tables the next row using the specified row flags
         /// </summary>
-        /// <param name="rowFlags">The row flags</param>
-        /// <param name="minRowHeight">The min row height</param>
+        /// <param name="rowFlags">The flags controlling row behavior</param>
+        /// <param name="minRowHeight">The minimum row height in pixels</param>
         public static void TableNextRow(ImGuiTableRowFlags rowFlags, float minRowHeight)
         {
             ImGuiNative.igTableNextRow(rowFlags, minRowHeight);
@@ -574,7 +574,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="target">The target</param>
         /// <param name="color">The color value to set</param>
-        /// <param name="columnN">The column</param>
+        /// <param name="columnN">The column index</param>
         public static void TableSetBgColor(ImGuiTableBgTarget target, uint color, int columnN)
         {
             ImGuiNative.igTableSetBgColor(target, color, columnN);
@@ -583,7 +583,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Tables the set column enabled using the specified column n
         /// </summary>
-        /// <param name="columnN">The column</param>
+        /// <param name="columnN">The column index</param>
         /// <param name="v">The value to be modified or populated</param>
         public static void TableSetColumnEnabled(int columnN, bool v)
         {
@@ -594,7 +594,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Describes whether table set column index
         /// </summary>
-        /// <param name="columnN">The column</param>
+        /// <param name="columnN">The column index</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
         public static bool TableSetColumnIndex(int columnN)
         {
@@ -628,7 +628,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Docks the builder remove node using the specified dockspace id
         /// </summary>
-        /// <param name="dockspaceId">The dockspace id</param>
+        /// <param name="dockspaceId">The unique identifier for the dockspace</param>
         public static void DockBuilderRemoveNode(uint dockspaceId)
         {
             ImGuiNative.igDockBuilderRemoveNode(dockspaceId);
@@ -637,7 +637,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Docks the builder add node using the specified dockspace id
         /// </summary>
-        /// <param name="dockspaceId">The dockspace id</param>
+        /// <param name="dockspaceId">The unique identifier for the dockspace</param>
         /// <param name="none">The none</param>
         public static void DockBuilderAddNode(uint dockspaceId, ImGuiDockNodeFlags none)
         {
@@ -647,8 +647,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Docks the builder set node size using the specified dockspace id
         /// </summary>
-        /// <param name="dockspaceId">The dockspace id</param>
-        /// <param name="viewportSize">The viewport size</param>
+        /// <param name="dockspaceId">The unique identifier for the dockspace</param>
+        /// <param name="viewportSize">The size of the viewport area for the dock node</param>
         public static void DockBuilderSetNodeSize(uint dockspaceId, Vector2F viewportSize)
         {
             ImGuiNative.igDockBuilderSetNodeSize(dockspaceId, viewportSize);
@@ -657,11 +657,11 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Docks the builder split node using the specified dock main id
         /// </summary>
-        /// <param name="dockMainId">The dock main id</param>
+        /// <param name="dockMainId">The main dock node identifier to split</param>
         /// <param name="left">The left</param>
         /// <param name="p2">The second point coordinate</param>
         /// <param name="p3">The third point coordinate</param>
-        /// <param name="dockIdRight">The dock id right</param>
+        /// <param name="dockIdRight">The resulting right-side dock identifier</param>
         /// <returns>the unsigned integer result</returns>
         public static uint DockBuilderSplitNode(uint dockMainId, ImGuiDir left, float p2, object p3, out uint dockIdRight) => ImGuiNative.igDockBuilderSplitNode(dockMainId, left, p2, IntPtr.Zero, out dockIdRight);
 
@@ -669,7 +669,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Docks the builder dock window using the specified scene
         /// </summary>
         /// <param name="scene">The scene</param>
-        /// <param name="dockIdLeft">The dock id left</param>
+        /// <param name="dockIdLeft">The left dock area identifier</param>
         public static void DockBuilderDockWindow(string scene, uint dockIdLeft)
         {
             ImGuiNative.igDockBuilderDockWindow(Encoding.UTF8.GetBytes(scene), dockIdLeft);
@@ -678,7 +678,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Docks the builder finish using the specified dockspace id
         /// </summary>
-        /// <param name="dockspaceId">The dockspace id</param>
+        /// <param name="dockspaceId">The unique identifier for the dockspace</param>
         public static void DockBuilderFinish(uint dockspaceId)
         {
             ImGuiNative.igDockBuilderFinish(dockspaceId);
@@ -687,8 +687,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Docks the builder set node flags using the specified dockspace id
         /// </summary>
-        /// <param name="dockspaceId">The dockspace id</param>
-        /// <param name="dockNodeFlags">The dock node flags</param>
+        /// <param name="dockspaceId">The unique identifier for the dockspace</param>
+        /// <param name="dockNodeFlags">The flags controlling dock node behavior</param>
         public static void DockBuilderSetNodeFlags(uint dockspaceId, ImGuiDockNodeFlags dockNodeFlags)
         {
             ImGuiNative.igDockBuilderSetNodeFlags(dockspaceId, dockNodeFlags);

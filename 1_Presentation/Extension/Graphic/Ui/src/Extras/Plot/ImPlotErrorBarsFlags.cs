@@ -32,18 +32,18 @@ using System;
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     The im plot error bars flags enum
+    ///     Flags that control the orientation of error bars in ImPlot.
     /// </summary>
     [Flags]
     public enum ImPlotErrorBarsFlags
     {
         /// <summary>
-        ///     The none im plot error bars flags
+        ///     Default vertical error bars.
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The horizontal im plot error bars flags
+        ///     Draw error bars horizontally instead of vertically.
         /// </summary>
         Horizontal = 1024
     }

@@ -32,7 +32,7 @@ using System.Text;
 namespace Alis.Extension.Graphic.Ui.Extras.Plot
 {
     /// <summary>
-    ///     The im plot class
+    ///     Provides managed wrappers over the CImPlot native library for creating and interacting with ImPlot plots.
     /// </summary>
     public static partial class ImPlot
     {

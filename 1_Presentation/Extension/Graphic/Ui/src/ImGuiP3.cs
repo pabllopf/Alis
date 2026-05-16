@@ -49,10 +49,10 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether drag scalar n
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The data type</param>
+        /// <param name="dataType">The type of data being manipulated</param>
         /// <param name="pData">The pointer to the data value</param>
         /// <param name="components">The number of components in the value</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="pMin">The minimum value pointer</param>
         /// <param name="pMax">The maximum value pointer</param>
         /// <returns>true if the operation succeeds; false otherwise</returns>
@@ -66,10 +66,10 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether drag scalar n
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The data type</param>
+        /// <param name="dataType">The type of data being manipulated</param>
         /// <param name="pData">The pointer to the data value</param>
         /// <param name="components">The number of components in the value</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="pMin">The minimum value pointer</param>
         /// <param name="pMax">The maximum value pointer</param>
         /// <param name="format">The display format string (printf-style)</param>
@@ -84,10 +84,10 @@ namespace Alis.Extension.Graphic.Ui
         ///     Describes whether drag scalar n
         /// </summary>
         /// <param name="label">The display label for the UI element</param>
-        /// <param name="dataType">The data type</param>
+        /// <param name="dataType">The type of data being manipulated</param>
         /// <param name="pData">The pointer to the data value</param>
         /// <param name="components">The number of components in the value</param>
-        /// <param name="vSpeed">The speed</param>
+        /// <param name="vSpeed">The drag speed sensitivity</param>
         /// <param name="pMin">The minimum value pointer</param>
         /// <param name="pMax">The maximum value pointer</param>
         /// <param name="format">The display format string (printf-style)</param>
@@ -286,7 +286,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the background draw list using the specified viewport
         /// </summary>
-        /// <param name="viewport">The viewport</param>
+        /// <param name="viewport">The ImGuiViewport to use</param>
         /// <returns>The im draw list ptr</returns>
         public static ImDrawListPtr GetBackgroundDrawList(ImGuiViewportPtr viewport) => new ImDrawListPtr(ImGuiNative.igGetBackgroundDrawList_ViewportPtr(viewport.NativePtr));
 
@@ -543,7 +543,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the foreground draw list using the specified viewport
         /// </summary>
-        /// <param name="viewport">The viewport</param>
+        /// <param name="viewport">The ImGuiViewport to use</param>
         /// <returns>The im draw list ptr</returns>
         public static ImDrawListPtr GetForegroundDrawList(ImGuiViewportPtr viewport) => new ImDrawListPtr(ImGuiNative.igGetForegroundDrawList_ViewportPtr(viewport.NativePtr));
 
