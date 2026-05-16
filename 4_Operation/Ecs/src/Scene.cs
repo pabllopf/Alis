@@ -157,7 +157,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The add component lookup
         /// </summary>
-        public FastLookup AddComponentLookup = new FastLookup();
+        internal FastLookup AddComponentLookup = new FastLookup();
 
         /// <summary>
         ///     The add tag lookup

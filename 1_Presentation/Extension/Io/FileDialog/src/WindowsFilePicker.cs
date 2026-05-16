@@ -239,7 +239,7 @@ if ($dialog.ShowDialog() -eq 'OK') {{
         {
             Logger.Trace($"Building filter string for {filters.Count} filter(s).");
 
-            if (filters == null || filters.Count == 0)
+            if (filters.Count == 0)
             {
                 return "All files (*.*)|*.*";
             }

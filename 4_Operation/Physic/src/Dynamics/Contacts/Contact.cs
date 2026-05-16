@@ -554,7 +554,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             {
                 if (c == null)
                 {
-                    c = new Contact(fixtureB, indexB, fixtureA, indexA);
+                    c = new Contact(fixtureA, indexA, fixtureB, indexB);
                 }
                 else
                 {

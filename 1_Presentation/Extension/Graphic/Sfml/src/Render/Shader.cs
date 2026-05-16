@@ -1138,8 +1138,9 @@ namespace Alis.Extension.Graphic.Sfml.Render
         ///     Special type that can be passed to SetParameter,
         ///     and that represents the texture of the object being drawn
         /// </summary>
-        public class CurrentTextureType
+        public sealed class CurrentTextureType
         {
+            private CurrentTextureType() { }
         }
     }
 }

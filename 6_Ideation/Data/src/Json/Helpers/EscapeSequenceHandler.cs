@@ -111,8 +111,8 @@ namespace Alis.Core.Aspect.Data.Json.Helpers
             }
 
             StringBuilder result = new StringBuilder(escapedString.Length);
-
-            for (int i = 0; i < escapedString.Length; i++)
+            int i = 0;
+            while (i < escapedString.Length)
             {
                 if ((escapedString[i] == '\\') && (i + 1 < escapedString.Length))
                 {
@@ -122,35 +122,27 @@ namespace Alis.Core.Aspect.Data.Json.Helpers
                     {
                         case '"':
                             result.Append('"');
-                            i++;
                             break;
                         case '\\':
                             result.Append('\\');
-                            i++;
                             break;
                         case '/':
                             result.Append('/');
-                            i++;
                             break;
                         case 'b':
                             result.Append('\b');
-                            i++;
                             break;
                         case 'f':
                             result.Append('\f');
-                            i++;
                             break;
                         case 'n':
                             result.Append('\n');
-                            i++;
                             break;
                         case 'r':
                             result.Append('\r');
-                            i++;
                             break;
                         case 't':
                             result.Append('\t');
-                            i++;
                             break;
                         case 'u':
                             if (i + 5 < escapedString.Length)
@@ -159,24 +151,21 @@ namespace Alis.Core.Aspect.Data.Json.Helpers
                                 if (int.TryParse(hexCode, NumberStyles.HexNumber, null, out int codePoint))
                                 {
                                     result.Append((char) codePoint);
-                                    i += 5;
+                                    i += 4;
                                 }
                                 else
                                 {
                                     result.Append(nextChar);
-                                    i++;
                                 }
                             }
                             else
                             {
                                 result.Append(nextChar);
-                                i++;
                             }
 
                             break;
                         default:
                             result.Append(nextChar);
-                            i++;
                             break;
                     }
                 }
@@ -184,6 +173,7 @@ namespace Alis.Core.Aspect.Data.Json.Helpers
                 {
                     result.Append(escapedString[i]);
                 }
+                i++;
             }
 
             return result.ToString();

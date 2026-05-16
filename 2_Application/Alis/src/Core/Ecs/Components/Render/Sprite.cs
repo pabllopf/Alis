@@ -261,15 +261,12 @@ namespace Alis.Core.Ecs.Components.Render
             Gl.GlDeleteShader(fragmentShader);
 
             // cache uniform locations after linking
-            //Gl.GlUseProgram(SharedShaderProgram);
             OffsetLocation = Gl.GlGetUniformLocation(SharedShaderProgram, "offset");
             ScaleLocation = Gl.GlGetUniformLocation(SharedShaderProgram, "scale");
             RotationLocation = Gl.GlGetUniformLocation(SharedShaderProgram, "rotation");
             FlipLocation = Gl.GlGetUniformLocation(SharedShaderProgram, "flip");
             TextureLocation = Gl.GlGetUniformLocation(SharedShaderProgram, "texture1");
-            // set default texture unit (0)
-            Gl.GlUniform1I(TextureLocation, 0);
-            //Gl.GlUseProgram(0);
+            Gl.Uniform1I(TextureLocation, 0);
 
             // create a shared unit quad (vertices not pre-scaled)
             float[] vertices =

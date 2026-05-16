@@ -12,6 +12,7 @@
 /**/.venv/
 /**/.test/
 /**/.temp/
+/**/graphify-out/
 
 Release/
 Debug/
@@ -85,3 +86,4 @@ Debug/
 *FodyWeavers.xsd
 *.htm
 /.sonarqube
+
