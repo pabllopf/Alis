@@ -374,7 +374,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public bool VibrateGamepad(int gamepadIndex, float leftMotor = 1.0f, float rightMotor = 1.0f, float duration = 0.1f)
         {
-            return _inputManager.VibrateGamepad(gamepadIndex, leftMotor, rightMotor, duration);
+            return WebAssemblyInputManager.VibrateGamepad(gamepadIndex, leftMotor, rightMotor, duration);
         }
 
         /// <summary>
@@ -406,7 +406,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public bool IsFullscreen()
         {
-            return _displayManager.IsFullscreen();
+            return WebAssemblyDisplayManager.IsFullscreen();
         }
 
         /// <summary>
@@ -414,7 +414,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public bool LockPointer()
         {
-            return _inputContext.LockPointer();
+            return WebAssemblyInputContext.LockPointer();
         }
 
         /// <summary>
@@ -422,7 +422,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public bool UnlockPointer()
         {
-            return _inputContext.UnlockPointer();
+            return WebAssemblyInputContext.UnlockPointer();
         }
 
         /// <summary>
@@ -430,7 +430,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public bool IsPointerLocked()
         {
-            return _inputContext.IsPointerLocked();
+            return WebAssemblyInputContext.IsPointerLocked();
         }
 
         /// <summary>
@@ -486,7 +486,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public string GetDeviceLanguage()
         {
-            return _displayManager.GetSystemLanguage();
+            return WebAssemblyDisplayManager.GetSystemLanguage();
         }
 
         /// <summary>
