@@ -47,7 +47,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
         [Context] private readonly FrifloEngineEcsContext _frifloEngineEcs;
 
         /// <summary>
-        ///     Frifloes the engine ecs mono thread
+        ///     Benchmarks mono-threaded chunk iteration with two components using FrifloEngineEcs
         /// </summary>
         [BenchmarkCategory(Categories.FrifloEngineEcs), Benchmark]
         public void FrifloEngineEcs_MonoThread()
@@ -64,7 +64,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
         }
 
         /// <summary>
-        ///     Frifloes the engine ecs multi thread
+        ///     Benchmarks parallel job processing with two components using FrifloEngineEcs
         /// </summary>
         [BenchmarkCategory(Categories.FrifloEngineEcs), Benchmark]
         public void FrifloEngineEcs_MultiThread()

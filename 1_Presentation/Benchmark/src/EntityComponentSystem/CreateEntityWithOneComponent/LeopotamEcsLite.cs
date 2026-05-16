@@ -44,7 +44,7 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithOneComponent
         [Context] private readonly LeopotamEcsLiteBaseContext _leopotamEcsLite;
 
         /// <summary>
-        ///     Leopotams the ecs lite
+        ///     Benchmarks creating entities with one component using Leopotam ECS Lite
         /// </summary>
         [BenchmarkCategory(Categories.LeopotamEcsLite), Benchmark]
         public void LeopotamEcsLite()

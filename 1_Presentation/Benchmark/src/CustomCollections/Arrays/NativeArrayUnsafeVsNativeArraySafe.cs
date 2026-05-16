@@ -39,22 +39,22 @@ namespace Alis.Benchmark.CustomCollections.Arrays
     public class NativeArrayUnsafeVsNativeArraySafe : IDisposable
     {
         /// <summary>
-        ///     The array size
+        ///     The size of arrays used for benchmarking
         /// </summary>
         [Params(2)] public int ArraySize;
 
         /// <summary>
-        ///     The fast array safe
+        ///     The safe managed array wrapper for benchmarking
         /// </summary>
         private FastArraySafe<int> fastArraySafe;
 
         /// <summary>
-        ///     The fastest array
+        ///     The array-pool-backed array for benchmarking
         /// </summary>
         private FastestArray<int> fastestArray;
 
         /// <summary>
-        ///     The native array
+        ///     The unmanaged native memory array for benchmarking
         /// </summary>
         private NativeArray<int> nativeArray;
 
@@ -67,9 +67,8 @@ namespace Alis.Benchmark.CustomCollections.Arrays
             nativeArray?.Dispose();
         }
 
-        // Inicialización
         /// <summary>
-        ///     Setup this instance
+        ///     Initializes all array instances before benchmarking
         /// </summary>
         [GlobalSetup]
         public void Setup()

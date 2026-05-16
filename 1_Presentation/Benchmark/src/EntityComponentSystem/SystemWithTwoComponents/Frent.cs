@@ -49,7 +49,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
         [Context] private readonly FrentContext _frent;
 
         /// <summary>
-        ///     Frents the query inline
+        ///     Benchmarks inline query processing with two components using Frent ECS
         /// </summary>
         [BenchmarkCategory(Categories.Frent), Benchmark]
         public void Frent_QueryInline()
@@ -58,7 +58,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
         }
 
         /// <summary>
-        ///     Frents the query delegate
+        ///     Benchmarks delegate query processing with two components using Frent ECS
         /// </summary>
         [BenchmarkCategory(Categories.Frent), Benchmark]
         public void Frent_QueryDelegate()
@@ -67,7 +67,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
         }
 
         /// <summary>
-        ///     Frents the simd
+        ///     Benchmarks SIMD-vectorized query processing with two components using Frent ECS
         /// </summary>
         [BenchmarkCategory(Categories.Frent), Benchmark]
         public void Frent_Simd()
@@ -129,10 +129,10 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
         public struct Sum : IAction<Component1, Component2>
         {
             /// <summary>
-            ///     Runs the t 0
+            ///     Sums the second component value into the first
             /// </summary>
-            /// <param name="t0">The </param>
-            /// <param name="t1">The </param>
+            /// <param name="t0">The first component whose value will be increased</param>
+            /// <param name="t1">The second component whose value is added</param>
             public void Run(ref Component1 t0, ref Component2 t1)
             {
                 t0.Value += t1.Value;

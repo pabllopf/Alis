@@ -68,7 +68,7 @@ namespace Alis.Benchmark.Loop
         }
 
         /// <summary>
-        ///     Fors this instance
+        ///     Benchmarks standard for-loop iteration over a list
         /// </summary>
         [Benchmark]
         public void For()
@@ -80,7 +80,7 @@ namespace Alis.Benchmark.Loop
         }
 
         /// <summary>
-        ///     Whiles this instance
+        ///     Benchmarks while-loop iteration over a list
         /// </summary>
         [Benchmark]
         public void While()
@@ -94,7 +94,7 @@ namespace Alis.Benchmark.Loop
         }
 
         /// <summary>
-        ///     Fors the each
+        ///     Benchmarks foreach iteration over a list
         /// </summary>
         [Benchmark]
         public void ForEach()
@@ -105,7 +105,7 @@ namespace Alis.Benchmark.Loop
         }
 
         /// <summary>
-        ///     Foreaches the linq
+        ///     Benchmarks List.ForEach using a LINQ-style action delegate
         /// </summary>
         [Benchmark]
         public void Foreach_Linq()
@@ -114,7 +114,7 @@ namespace Alis.Benchmark.Loop
         }
 
         /// <summary>
-        ///     Parallels the for each
+        ///     Benchmarks parallel iteration over a list using Parallel.ForEach
         /// </summary>
         [Benchmark]
         public void Parallel_ForEach()
@@ -123,7 +123,7 @@ namespace Alis.Benchmark.Loop
         }
 
         /// <summary>
-        ///     Parallels the linq
+        ///     Benchmarks parallel iteration using PLINQ
         /// </summary>
         [Benchmark]
         public void Parallel_Linq()
@@ -132,7 +132,7 @@ namespace Alis.Benchmark.Loop
         }
 
         /// <summary>
-        ///     Fors the span
+        ///     Benchmarks for-loop iteration over a list as a Span
         /// </summary>
         [Benchmark]
         public void For_Span()
@@ -146,7 +146,7 @@ namespace Alis.Benchmark.Loop
         }
 
         /// <summary>
-        ///     Foreaches the span
+        ///     Benchmarks foreach iteration over a list as a Span
         /// </summary>
         [Benchmark]
         public void Foreach_Span()

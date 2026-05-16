@@ -52,7 +52,7 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithTwoComponents
         [Context] private readonly FrentBaseContext _frent;
 
         /// <summary>
-        ///     Frents this instance
+        ///     Benchmarks creating entities with two components using Frent ECS
         /// </summary>
         [BenchmarkCategory(Categories.Frent), Benchmark]
         public void Frent()
@@ -67,7 +67,7 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithTwoComponents
         }
 
         /// <summary>
-        ///     Frents the bulk
+        ///     Benchmarks bulk-creating entities with two components using Frent ECS
         /// </summary>
         [BenchmarkCategory(Categories.Frent), Benchmark]
         public void Frent_Bulk()

@@ -185,82 +185,82 @@ namespace Alis.Extension.Media.FFmpeg.Video
         }
 
         /// <summary>
-        ///     Gets the value of the current f fmpeg process
+        ///     Gets the current FFmpeg encoding process, if running.
         /// </summary>
         public Process CurrentFFmpegProcess => Ffmpegp;
 
         /// <summary>
-        ///     Input video stream
+        ///     Input stream for writing raw video frames to FFmpeg.
         /// </summary>
         public Stream InputDataStreamVideo { get; private set; }
 
         /// <summary>
-        ///     Input audio stream
+        ///     Network stream for writing raw audio samples to FFmpeg via TCP.
         /// </summary>
         public NetworkStream InputDataStreamAudio { get; private set; }
 
         /// <summary>
-        ///     Destination stream (when filename is not specified)
+        ///     Destination stream for stream-based output (when filename is not specified).
         /// </summary>
         public Stream DestinationStream { get; }
 
         /// <summary>
-        ///     FFmpeg output stream
+        ///     FFmpeg process output stream, copied to DestinationStream for stream-based output.
         /// </summary>
         public Stream OutputDataStream { get; private set; }
 
         /// <summary>
-        ///     Output filename
+        ///     Output file path for file-based output.
         /// </summary>
         public string Filename { get; }
 
         /// <summary>
-        ///     Gets the value of the use filename
+        ///     Gets whether output is written to a file (true) or a stream (false).
         /// </summary>
         public bool UseFilename { get; }
 
         /// <summary>
-        ///     Gets the value of the video width
+        ///     Gets the input video width in pixels.
         /// </summary>
         public int VideoWidth { get; }
 
         /// <summary>
-        ///     Gets the value of the video height
+        ///     Gets the input video height in pixels.
         /// </summary>
         public int VideoHeight { get; }
 
         /// <summary>
-        ///     Gets the value of the video framerate
+        ///     Gets the input video framerate in frames per second.
         /// </summary>
         public double VideoFramerate { get; }
 
         /// <summary>
-        ///     Gets the value of the audio channels
+        ///     Gets the input audio channel count.
         /// </summary>
         public int AudioChannels { get; }
 
         /// <summary>
-        ///     Gets the value of the audio sample rate
+        ///     Gets the input audio sample rate in Hz.
         /// </summary>
         public int AudioSampleRate { get; }
 
         /// <summary>
-        ///     Gets the value of the audio bit depth
+        ///     Gets the input audio bit depth (16, 24, or 32).
         /// </summary>
         public int AudioBitDepth { get; }
 
         /// <summary>
-        ///     Is data stream opened for writing
+        ///     Gets whether the data stream is currently opened for writing.
         /// </summary>
         public virtual bool OpenedForWriting { get; protected set; }
 
         /// <summary>
-        ///     Gets the value of the audio encoder options
+        ///     Gets the encoder options used for audio encoding.
         /// </summary>
         public EncoderOptions AudioEncoderOptions { get; }
 
         /// <summary>
-        ///     Gets the value of the video encoder options
+        ///     Gets the encoder options used for video encoding.
         /// </summary>
         public EncoderOptions VideoEncoderOptions { get; }
 

@@ -52,7 +52,7 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithTwoComponents
         [Context] private readonly AlisBaseContext _alis;
 
         /// <summary>
-        ///     Frents this instance
+        ///     Benchmarks creating entities with two components using Alis ECS
         /// </summary>
         [BenchmarkCategory(Categories.Alis), Benchmark]
         public void Alis()
@@ -68,7 +68,7 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithTwoComponents
 
 
         /// <summary>
-        ///     Frents the bulk
+        ///     Benchmarks bulk-creating entities with two components using Alis ECS
         /// </summary>
         [BenchmarkCategory(Categories.Alis), Benchmark]
         public void Alis_Bulk()

@@ -44,7 +44,7 @@ namespace Alis.Benchmark.EntityComponentSystem.Contexts
         public HypEcsBaseContext() => World = new World();
 
         /// <summary>
-        ///     Gets the value of the scene
+        ///     Gets the Hyp ECS world instance
         /// </summary>
         public World World { get; }
 

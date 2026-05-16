@@ -44,7 +44,7 @@ namespace Alis.Benchmark.EntityComponentSystem.Contexts
         public DefaultEcsBaseContext() => World = new World();
 
         /// <summary>
-        ///     Gets the value of the scene
+        ///     Gets the Default ECS world instance
         /// </summary>
         public World World { get; }
 

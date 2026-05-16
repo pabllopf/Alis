@@ -44,7 +44,7 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithTwoComponents
         [Context] private readonly MorpehBaseContext _context;
 
         /// <summary>
-        ///     Morpehs the direct
+        ///     Benchmarks creating entities with two components using Morpeh direct API
         /// </summary>
         [BenchmarkCategory(Categories.Morpeh), Benchmark]
         public void Morpeh_Direct()
@@ -61,7 +61,7 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithTwoComponents
         }
 
         /// <summary>
-        ///     Morpehs the stash
+        ///     Benchmarks creating entities with two components using Morpeh stash API
         /// </summary>
         [BenchmarkCategory(Categories.Morpeh), Benchmark]
         public void Morpeh_Stash()

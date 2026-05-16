@@ -111,12 +111,12 @@ namespace Alis.Benchmark.EntityComponentSystem.Contexts
         }
 
         /// <summary>
-        ///     Gets the value of the scene
+        ///     Gets the Arch ECS world instance
         /// </summary>
         public World World { get; }
 
         /// <summary>
-        ///     Gets or sets the value of the job scheduler
+        ///     Gets or sets the job scheduler for parallel operations
         /// </summary>
         public JobScheduler JobScheduler { get; set; }
 

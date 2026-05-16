@@ -134,12 +134,12 @@ namespace Alis.Extension.Media.FFmpeg.Video
         }
 
         /// <summary>
-        ///     Saves the output
+        ///     Saves the current frame as an image file using the specified encoder.
         /// </summary>
-        /// <param name="output">The output</param>
-        /// <param name="encoder">The encoder</param>
-        /// <param name="extraParameters">The extra parameters</param>
-        /// <param name="ffmpegExecutable">The ffmpeg executable</param>
+        /// <param name="output">Output file path for the saved image.</param>
+        /// <param name="encoder">FFmpeg encoder to use (default: png).</param>
+        /// <param name="extraParameters">Extra FFmpeg encoder parameters.</param>
+        /// <param name="ffmpegExecutable">Name or path to the ffmpeg executable.</param>
         public void Save(string output, string encoder = "png", string extraParameters = "",
             string ffmpegExecutable = "ffmpeg")
         {
@@ -162,12 +162,12 @@ namespace Alis.Extension.Media.FFmpeg.Video
         }
 
         /// <summary>
-        ///     Gets the pixels using the specified x
+        ///     Gets a contiguous block of pixel data starting at the specified coordinates.
         /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        /// <param name="length">The length</param>
-        /// <returns>The pixels</returns>
+        /// <param name="x">The x-coordinate of the starting pixel.</param>
+        /// <param name="y">The y-coordinate of the starting pixel.</param>
+        /// <param name="length">Number of pixels to retrieve from the starting position.</param>
+        /// <returns>A byte array containing RGB pixel data for the requested pixels.</returns>
         public byte[] GetPixels(int x, int y, int length = 1)
         {
             int index = (x + y * Width) * 3;

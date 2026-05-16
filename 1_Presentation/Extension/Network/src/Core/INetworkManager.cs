@@ -68,36 +68,58 @@ namespace Alis.Extension.Network.Core
         /// <summary>
         ///     Initializes manager
         /// </summary>
+        /// <param name="config">Network configuration to apply</param>
+        /// <param name="cancellationToken">Token to cancel initialization</param>
+        /// <returns>A task representing the asynchronous initialization operation</returns>
         Task InitializeAsync(NetworkConfig config, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         ///     Starts networking
         /// </summary>
+        /// <param name="cancellationToken">Token to cancel the start operation</param>
+        /// <returns>A task representing the asynchronous start operation</returns>
         Task StartAsync(CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         ///     Stops networking
         /// </summary>
+        /// <param name="cancellationToken">Token to cancel the stop operation</param>
+        /// <returns>A task representing the asynchronous stop operation</returns>
         Task StopAsync(CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         ///     Sends message to specific player
         /// </summary>
+        /// <param name="targetPlayerId">The player ID to send the message to</param>
+        /// <param name="channel">The message channel name</param>
+        /// <param name="message">The message payload to send</param>
+        /// <param name="reliable">If true, message delivery is guaranteed</param>
+        /// <typeparam name="T">The type of the message payload, must implement IJsonSerializable</typeparam>
+        /// <returns>A task representing the asynchronous send operation</returns>
         Task SendMessageAsync<T>(string targetPlayerId, string channel, T message, bool reliable = true) where T : IJsonSerializable;
 
         /// <summary>
         ///     Broadcasts message to all players
         /// </summary>
+        /// <param name="channel">The message channel name</param>
+        /// <param name="message">The message payload to broadcast</param>
+        /// <param name="reliable">If true, message delivery is guaranteed</param>
+        /// <param name="exceptPlayerId">Optional player ID to exclude from the broadcast</param>
+        /// <typeparam name="T">The type of the message payload, must implement IJsonSerializable</typeparam>
+        /// <returns>A task representing the asynchronous broadcast operation</returns>
         Task BroadcastMessageAsync<T>(string channel, T message, bool reliable = true, string exceptPlayerId = null) where T : IJsonSerializable;
 
         /// <summary>
         ///     Registers message handler
         /// </summary>
+        /// <param name="channel">The channel name to handle messages for</param>
+        /// <param name="handler">The handler function receiving sender ID and payload</param>
         void RegisterMessageHandler(string channel, Func<string, string, Task> handler);
 
         /// <summary>
         ///     Unregisters message handler
         /// </summary>
+        /// <param name="channel">The channel name to remove the handler for</param>
         void UnregisterMessageHandler(string channel);
 
         /// <summary>

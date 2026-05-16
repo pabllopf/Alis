@@ -45,7 +45,7 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithOneComponent
         [Context] private readonly FennecsBaseContext _fennecs;
 
         /// <summary>
-        ///     Fennecses this instance
+        ///     Benchmarks creating entities with one component using Fennecs
         /// </summary>
         [BenchmarkCategory(Categories.Fennecs), Benchmark]
         public void Fennecs()

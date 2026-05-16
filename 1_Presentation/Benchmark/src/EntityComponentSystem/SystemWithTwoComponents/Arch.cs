@@ -62,10 +62,10 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
         private ForEach2 _forEach2;
 
         /// <summary>
-        ///     Fors the each using the specified t 0
+        ///     Sums the second component value into the first
         /// </summary>
-        /// <param name="t0">The </param>
-        /// <param name="t1">The </param>
+        /// <param name="t0">The first component whose value will be increased</param>
+        /// <param name="t1">The second component whose value is added</param>
         [Query]
         private static void ForEach(ref Component1 t0, Component2 t1)
         {
@@ -73,7 +73,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
         }
 
         /// <summary>
-        ///     Arches the mono thread
+        ///     Benchmarks mono-threaded inline query with two components using Arch ECS
         /// </summary>
         [BenchmarkCategory(Categories.Arch), Benchmark]
         public void Arch_MonoThread()
@@ -83,7 +83,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
         }
 
         /// <summary>
-        ///     Arches the mono thread source generated
+        ///     Benchmarks source-generated mono-threaded query with two components using Arch ECS
         /// </summary>
         [BenchmarkCategory(Categories.Arch), Benchmark]
         public void Arch_MonoThread_SourceGenerated()
@@ -92,7 +92,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
         }
 
         /// <summary>
-        ///     Arches the multi thread
+        ///     Benchmarks multi-threaded parallel query with two components using Arch ECS
         /// </summary>
         [BenchmarkCategory(Categories.Arch), Benchmark]
         public void Arch_MultiThread()
@@ -107,10 +107,10 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
         public struct ForEach2 : IForEach<Component1, Component2>
         {
             /// <summary>
-            ///     Updates the t 0
+            ///     Sums the second component value into the first
             /// </summary>
-            /// <param name="t0">The </param>
-            /// <param name="t1">The </param>
+            /// <param name="t0">The first component whose value will be increased</param>
+            /// <param name="t1">The second component whose value is added</param>
             public void Update(ref Component1 t0, ref Component2 t1)
             {
                 t0.Value += t1.Value;
@@ -127,7 +127,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
             ///     Initializes a new instance of the <see cref="ArchContext" /> class
             /// </summary>
             /// <param name="entityCount">The gameObject count</param>
-            /// <param name="_">The </param>
+            /// <param name="_">Unused padding parameter for API compatibility</param>
             public ArchContext(int entityCount, int _)
                 : base(_filter, entityCount)
             {

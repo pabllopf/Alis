@@ -39,6 +39,7 @@ namespace Alis.Extension.Network.Core
         /// <summary>
         ///     Initializes client connection event args
         /// </summary>
+        /// <param name="clientId">The unique identifier of the connected client</param>
         public ClientConnectionEventArgs(string clientId) => ClientId = clientId;
 
         /// <summary>

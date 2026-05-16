@@ -47,25 +47,25 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
         [Context] private readonly DefaultEcsContext _defaultEcs;
 
         /// <summary>
-        ///     Defaults the ecs component system mono thread
+        ///     Benchmarks ComponentSystem mono-threaded processing with one component using DefaultEcs
         /// </summary>
         [BenchmarkCategory(Categories.DefaultEcs), Benchmark]
         public void DefaultEcs_ComponentSystem_MonoThread() => _defaultEcs.MonoThreadComponentSystem.Update(0);
 
         /// <summary>
-        ///     Defaults the ecs component system multi thread
+        ///     Benchmarks ComponentSystem multi-threaded processing with one component using DefaultEcs
         /// </summary>
         [BenchmarkCategory(Categories.DefaultEcs), Benchmark]
         public void DefaultEcs_ComponentSystem_MultiThread() => _defaultEcs.MultiThreadComponentSystem.Update(0);
 
         /// <summary>
-        ///     Defaults the ecs gameObject set system mono thread
+        ///     Benchmarks EntitySetSystem mono-threaded processing with one component using DefaultEcs
         /// </summary>
         [BenchmarkCategory(Categories.DefaultEcs), Benchmark]
         public void DefaultEcs_EntitySetSystem_MonoThread() => _defaultEcs.MonoThreadEntitySetSystem.Update(0);
 
         /// <summary>
-        ///     Defaults the ecs gameObject set system multi thread
+        ///     Benchmarks EntitySetSystem multi-threaded processing with one component using DefaultEcs
         /// </summary>
         [BenchmarkCategory(Categories.DefaultEcs), Benchmark]
         public void DefaultEcs_EntitySetSystem_MultiThread() => _defaultEcs.MultiThreadEntitySetSystem.Update(0);
@@ -101,30 +101,30 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
                 }
             }
 
-            /// <summary>
-            ///     Gets the value of the runner
-            /// </summary>
-            public IParallelRunner Runner { get; }
+        /// <summary>
+        ///     Gets the parallel runner used for multi-threaded execution
+        /// </summary>
+        public IParallelRunner Runner { get; }
 
-            /// <summary>
-            ///     Gets the value of the mono thread component system
-            /// </summary>
-            public ISystem<int> MonoThreadComponentSystem { get; }
+        /// <summary>
+        ///     Gets the mono-threaded component system
+        /// </summary>
+        public ISystem<int> MonoThreadComponentSystem { get; }
 
-            /// <summary>
-            ///     Gets the value of the multi thread component system
-            /// </summary>
-            public ISystem<int> MultiThreadComponentSystem { get; }
+        /// <summary>
+        ///     Gets the multi-threaded component system
+        /// </summary>
+        public ISystem<int> MultiThreadComponentSystem { get; }
 
-            /// <summary>
-            ///     Gets the value of the mono thread gameObject set system
-            /// </summary>
-            public ISystem<int> MonoThreadEntitySetSystem { get; }
+        /// <summary>
+        ///     Gets the mono-threaded entity set system
+        /// </summary>
+        public ISystem<int> MonoThreadEntitySetSystem { get; }
 
-            /// <summary>
-            ///     Gets the value of the multi thread gameObject set system
-            /// </summary>
-            public ISystem<int> MultiThreadEntitySetSystem { get; }
+        /// <summary>
+        ///     Gets the multi-threaded entity set system
+        /// </summary>
+        public ISystem<int> MultiThreadEntitySetSystem { get; }
 
             /// <summary>
             ///     Disposes this instance

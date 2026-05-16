@@ -40,11 +40,11 @@ namespace Alis.Benchmark.Iterators
     public static class SpanExtensions
     {
         /// <summary>
-        ///     Fasts the for using the specified span
+        ///     Iterates over the span elements in vector-sized batches for improved performance
         /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="span">The span</param>
-        /// <param name="action">The action</param>
+        /// <typeparam name="T">The element type, must be a value type</typeparam>
+        /// <param name="span">The span to iterate over</param>
+        /// <param name="action">The action to invoke for each element</param>
         public static void FastFor<T>(this Span<T> span, Action<T> action) where T : struct
         {
             int vectorSize = Vector<T>.Count;

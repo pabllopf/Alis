@@ -37,8 +37,8 @@ namespace Alis.Benchmark.ClassVsStruct.Instancies
         /// <summary>
         ///     Initializes a new instance of the <see cref="ClassPoint" /> class
         /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="x">The X coordinate value</param>
+        /// <param name="y">The Y coordinate value</param>
         public SealedClassPoint(int x, int y) => (X, Y) = (x, y);
 
         /// <summary>

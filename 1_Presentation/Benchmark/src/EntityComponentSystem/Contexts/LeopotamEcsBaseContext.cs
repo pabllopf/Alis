@@ -44,7 +44,7 @@ namespace Alis.Benchmark.EntityComponentSystem.Contexts
         public LeopotamEcsBaseContext() => World = new EcsWorld();
 
         /// <summary>
-        ///     Gets the value of the scene
+        ///     Gets the Leopotam ECS world instance
         /// </summary>
         public EcsWorld World { get; }
 

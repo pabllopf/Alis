@@ -44,7 +44,7 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithTwoComponents
         [Context] private readonly MonoGameExtendedBaseContext _monoGameExtended;
 
         /// <summary>
-        ///     Monoes the game extended
+        ///     Benchmarks creating entities with two components using MonoGame Extended
         /// </summary>
         [BenchmarkCategory(Categories.MonoGameExtended), Benchmark]
         public void MonoGameExtended()

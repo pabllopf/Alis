@@ -51,7 +51,7 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithOneComponent
         [Context] private readonly ArchBaseContext _arch;
 
         /// <summary>
-        ///     Arches this instance
+        ///     Benchmarks creating entities with one component using Arch ECS
         /// </summary>
         [BenchmarkCategory(Categories.Arch), Benchmark]
         public void Arch()

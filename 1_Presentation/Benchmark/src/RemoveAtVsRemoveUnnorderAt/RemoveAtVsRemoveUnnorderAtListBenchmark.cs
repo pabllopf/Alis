@@ -44,7 +44,7 @@ namespace Alis.Benchmark.RemoveAtVsRemoveUnnorderAt
         private List<int> list;
 
         /// <summary>
-        ///     The
+        ///     Number of elements for benchmarking
         /// </summary>
         [Params(100)] public int N;
 

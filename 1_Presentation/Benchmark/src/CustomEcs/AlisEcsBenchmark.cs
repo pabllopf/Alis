@@ -44,22 +44,22 @@ namespace Alis.Benchmark.CustomEcs
     public partial class AlisEcsBenchmark
     {
         /// <summary>
-        ///     The id
+        ///     The entity type for Alis ECS with a single Component1
         /// </summary>
         private static readonly GameObjectType _entityAlisType = GameObject.EntityTypeOf([Component<Component1>.Id]);
 
         /// <summary>
-        ///     The query
+        ///     The query used for system benchmarks
         /// </summary>
         public Query Query;
 
         /// <summary>
-        ///     Gets the value of the scene
+        ///     Gets the scene used for benchmark setup and execution
         /// </summary>
         public Scene Scene { get; set; }
 
         /// <summary>
-        ///     Setup the alis
+        ///     Sets up the Alis ECS scene and query for benchmarking
         /// </summary>
         private void SetupAlis()
         {
@@ -68,7 +68,7 @@ namespace Alis.Benchmark.CustomEcs
         }
 
         /// <summary>
-        ///     Disposes the alis
+        ///     Disposes the Alis ECS scene and query
         /// </summary>
         private void DisposeAlis()
         {
@@ -78,7 +78,7 @@ namespace Alis.Benchmark.CustomEcs
         }
 
         /// <summary>
-        ///     Frents this instance
+        ///     Benchmarks creating entities with one component using Alis ECS
         /// </summary>
         [BenchmarkCategory("Pair/Create/1"), Benchmark]
         public void Alis_Create_With_One_Component()
@@ -93,7 +93,7 @@ namespace Alis.Benchmark.CustomEcs
         }
 
         /// <summary>
-        ///     Frents the bulk
+        ///     Benchmarks bulk-creating entities with one component using Alis ECS
         /// </summary>
         [BenchmarkCategory("Pair/Bulk/1"), Benchmark]
         public void Alis_Create_Bulk_With_One_Component()
@@ -108,7 +108,7 @@ namespace Alis.Benchmark.CustomEcs
         }
 
         /// <summary>
-        ///     Alises the create with two component
+        ///     Benchmarks creating entities with two components using Alis ECS
         /// </summary>
         [BenchmarkCategory("Pair/Create/2"), Benchmark]
         public void Alis_Create_With_Two_Component()
@@ -123,7 +123,7 @@ namespace Alis.Benchmark.CustomEcs
         }
 
         /// <summary>
-        ///     Frents the bulk
+        ///     Benchmarks bulk-creating entities with two components using Alis ECS
         /// </summary>
         [BenchmarkCategory("Pair/Bulk/2"), Benchmark]
         public void Alis_Create_Bulk_With_Two_Component()
@@ -140,7 +140,7 @@ namespace Alis.Benchmark.CustomEcs
         }
 
         /// <summary>
-        ///     Alises the create with three component
+        ///     Benchmarks creating entities with three components using Alis ECS
         /// </summary>
         [BenchmarkCategory("Pair/Create/3"), Benchmark]
         public void Alis_Create_With_Three_Component()
@@ -189,7 +189,7 @@ namespace Alis.Benchmark.CustomEcs
         }
 
         /// <summary>
-        ///     Alises the create bulk with four component
+        ///     Benchmarks bulk-creating entities with four components using Alis ECS
         /// </summary>
         [BenchmarkCategory("Pair/Bulk/4"), Benchmark]
         public void Alis_Create_Bulk_With_Four_Component()
@@ -210,7 +210,7 @@ namespace Alis.Benchmark.CustomEcs
         }
 
         /// <summary>
-        ///     Alises the create with five component
+        ///     Benchmarks creating entities with five components using Alis ECS
         /// </summary>
         [BenchmarkCategory("Pair/Create/5"), Benchmark]
         public void Alis_Create_With_Five_Component()
@@ -225,7 +225,7 @@ namespace Alis.Benchmark.CustomEcs
         }
 
         /// <summary>
-        ///     Alises the create bulk with five component
+        ///     Benchmarks bulk-creating entities with five components using Alis ECS
         /// </summary>
         [BenchmarkCategory("Pair/Bulk/5"), Benchmark]
         public void Alis_Create_Bulk_With_Five_Component()
@@ -248,7 +248,7 @@ namespace Alis.Benchmark.CustomEcs
         }
 
         /// <summary>
-        ///     Alises the create with six component
+        ///     Benchmarks creating entities with six components using Alis ECS
         /// </summary>
         [BenchmarkCategory("Pair/Create/6"), Benchmark]
         public void Alis_Create_With_Six_Component()
@@ -263,7 +263,7 @@ namespace Alis.Benchmark.CustomEcs
         }
 
         /// <summary>
-        ///     Alises the create bulk with six component
+        ///     Benchmarks bulk-creating entities with six components using Alis ECS
         /// </summary>
         [BenchmarkCategory("Pair/Bulk/6"), Benchmark]
         public void Alis_Create_Bulk_With_Six_Component()
@@ -288,7 +288,7 @@ namespace Alis.Benchmark.CustomEcs
         }
 
         /// <summary>
-        ///     Alises the create with seven component
+        ///     Benchmarks creating entities with seven components using Alis ECS
         /// </summary>
         [BenchmarkCategory("Pair/Create/7"), Benchmark]
         public void Alis_Create_With_Seven_Component()
@@ -303,7 +303,7 @@ namespace Alis.Benchmark.CustomEcs
         }
 
         /// <summary>
-        ///     Alises the create bulk with seven component
+        ///     Benchmarks bulk-creating entities with seven components using Alis ECS
         /// </summary>
         [BenchmarkCategory("Pair/Bulk/7"), Benchmark]
         public void Alis_Create_Bulk_With_Seven_Component()
@@ -330,7 +330,7 @@ namespace Alis.Benchmark.CustomEcs
         }
 
         /// <summary>
-        ///     Alises the create with eight component
+        ///     Benchmarks creating entities with eight components using Alis ECS
         /// </summary>
         [BenchmarkCategory("Pair/Create/8"), Benchmark]
         public void Alis_Create_With_Eight_Component()
@@ -345,7 +345,7 @@ namespace Alis.Benchmark.CustomEcs
         }
 
         /// <summary>
-        ///     Alises the create bulk with eight component
+        ///     Benchmarks bulk-creating entities with eight components using Alis ECS
         /// </summary>
         [BenchmarkCategory("Pair/Bulk/8"), Benchmark]
         public void Alis_Create_Bulk_With_Eight_Component()
@@ -375,7 +375,7 @@ namespace Alis.Benchmark.CustomEcs
 
 
         /// <summary>
-        ///     Alises the query inline
+        ///     Benchmarks inline query system with one component and no padding using Alis ECS
         /// </summary>
         [BenchmarkCategory("Pair/System/Inline/P0"), Benchmark]
         public void Alis_SystemWithOneComponent_QueryInline_With_Padding_0()
@@ -390,7 +390,7 @@ namespace Alis.Benchmark.CustomEcs
 
 
         /// <summary>
-        ///     Alises the query delegate
+        ///     Benchmarks delegate query system with one component and no padding using Alis ECS
         /// </summary>
         [BenchmarkCategory("Pair/System/Delegate/P0"), Benchmark]
         public void Alis_SystemWithOneComponent_QueryDelegate_With_Padding_0()
@@ -405,7 +405,7 @@ namespace Alis.Benchmark.CustomEcs
 
 
         /// <summary>
-        ///     Alises the simd
+        ///     Benchmarks SIMD-vectorized system with one component and no padding using Alis ECS
         /// </summary>
         [BenchmarkCategory("Pair/System/Simd/P0"), Benchmark]
         public void Alis_SystemWithOneComponent_Simd_With_Padding_0()
@@ -434,7 +434,7 @@ namespace Alis.Benchmark.CustomEcs
 
 
         /// <summary>
-        ///     Alises the query inline
+        ///     Benchmarks inline query system with one component and 10 padding entities using Alis ECS
         /// </summary>
         [BenchmarkCategory("Pair/System/Inline/P10"), Benchmark]
         public void Alis_SystemWithOneComponent_QueryInline_With_Padding_10()
@@ -453,7 +453,7 @@ namespace Alis.Benchmark.CustomEcs
 
 
         /// <summary>
-        ///     Alises the query delegate
+        ///     Benchmarks delegate query system with one component and 10 padding entities using Alis ECS
         /// </summary>
         [BenchmarkCategory("Pair/System/Delegate/P10"), Benchmark]
         public void Alis_SystemWithOneComponent_QueryDelegate_With_Padding_10()
@@ -472,7 +472,7 @@ namespace Alis.Benchmark.CustomEcs
 
 
         /// <summary>
-        ///     Alises the simd
+        ///     Benchmarks SIMD-vectorized system with one component and 10 padding entities using Alis ECS
         /// </summary>
         [BenchmarkCategory("Pair/System/Simd/P10"), Benchmark]
         public void Alis_SystemWithOneComponent_Simd_With_Padding_10()

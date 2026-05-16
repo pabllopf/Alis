@@ -178,9 +178,9 @@ namespace Alis.App.Hub.Core
         public void OnStart() => HubWindow.OnStart();
 
         /// <summary>
-        ///     Ons the render
+        ///     Renders the hub UI with the given scale factor
         /// </summary>
-        /// <param name="scaleFactor"></param>
+        /// <param name="scaleFactor">The DPI scale factor applied to UI elements</param>
         public void OnRender(float scaleFactor) => HubWindow.OnRender(scaleFactor);
     }
 }

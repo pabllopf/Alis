@@ -39,6 +39,8 @@ namespace Alis.Extension.Network.Core
         /// <summary>
         ///     Initializes error event args
         /// </summary>
+        /// <param name="message">Description of the error</param>
+        /// <param name="exception">Optional exception associated with the error</param>
         public NetworkErrorEventArgs(string message, Exception exception = null)
         {
             Message = message;

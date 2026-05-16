@@ -55,26 +55,26 @@ namespace Alis.Extension.Security
         }
 
         /// <summary>
-        ///     Sets the value using the specified value
+        ///     Sets the encrypted value using XOR cipher with the secret key
         /// </summary>
-        /// <param name="value">The value</param>
+        /// <param name="value">The plain text value to encrypt and store</param>
         internal void SetValue(string value)
         {
             encryptedValue = EncryptDecrypt(value, secret);
         }
 
         /// <summary>
-        ///     Gets the value
+        ///     Gets the decrypted plain text value
         /// </summary>
-        /// <returns>The string</returns>
+        /// <returns>The decrypted string value</returns>
         public string GetValue() => EncryptDecrypt(encryptedValue, secret);
 
         /// <summary>
-        ///     Encrypts the decrypt using the specified text to encrypt
+        ///     Encrypts or decrypts a string using XOR cipher with the given key
         /// </summary>
-        /// <param name="textToEncrypt">The text to encrypt</param>
-        /// <param name="key">The key</param>
-        /// <returns>The string</returns>
+        /// <param name="textToEncrypt">The text to encrypt or decrypt</param>
+        /// <param name="key">The XOR key character</param>
+        /// <returns>The transformed string</returns>
         private static string EncryptDecrypt(string textToEncrypt, char key)
         {
             char[] buffer = textToEncrypt.ToCharArray();
@@ -87,9 +87,9 @@ namespace Alis.Extension.Security
         }
 
         /// <summary>
-        ///     Generates the key
+        ///     Generates a random key character for XOR encryption
         /// </summary>
-        /// <returns>The char</returns>
+        /// <returns>A random char to use as encryption key</returns>
         private static char GenerateKey() => SecureRandom.NextChar();
     }
 }

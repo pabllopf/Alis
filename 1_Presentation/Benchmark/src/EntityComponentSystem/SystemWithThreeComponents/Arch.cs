@@ -62,11 +62,11 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithThreeComponents
         private ForEach3 _forEach3;
 
         /// <summary>
-        ///     Fors the each using the specified t 0
+        ///     Sums the second and third component values into the first
         /// </summary>
-        /// <param name="t0">The </param>
-        /// <param name="t1">The </param>
-        /// <param name="t2">The </param>
+        /// <param name="t0">The first component whose value will be increased</param>
+        /// <param name="t1">The second component whose value is added</param>
+        /// <param name="t2">The third component whose value is added</param>
         [Query]
         private static void ForEach(ref Component1 t0, Component2 t1, Component3 t2)
         {
@@ -74,7 +74,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithThreeComponents
         }
 
         /// <summary>
-        ///     Arches the mono thread
+        ///     Benchmarks mono-threaded inline query with three components using Arch ECS
         /// </summary>
         [BenchmarkCategory(Categories.Arch), Benchmark]
         public void Arch_MonoThread()
@@ -84,7 +84,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithThreeComponents
         }
 
         /// <summary>
-        ///     Arches the mono thread source generated
+        ///     Benchmarks source-generated mono-threaded query with three components using Arch ECS
         /// </summary>
         [BenchmarkCategory(Categories.Arch), Benchmark]
         public void Arch_MonoThread_SourceGenerated()
@@ -93,7 +93,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithThreeComponents
         }
 
         /// <summary>
-        ///     Arches the multi thread
+        ///     Benchmarks multi-threaded parallel query with three components using Arch ECS
         /// </summary>
         [BenchmarkCategory(Categories.Arch), Benchmark]
         public void Arch_MultiThread()
@@ -108,11 +108,11 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithThreeComponents
         public struct ForEach3 : IForEach<Component1, Component2, Component3>
         {
             /// <summary>
-            ///     Updates the t 0
+            ///     Sums the second and third component values into the first
             /// </summary>
-            /// <param name="t0">The </param>
-            /// <param name="t1">The </param>
-            /// <param name="t2">The </param>
+            /// <param name="t0">The first component whose value will be increased</param>
+            /// <param name="t1">The second component whose value is added</param>
+            /// <param name="t2">The third component whose value is added</param>
             public void Update(ref Component1 t0, ref Component2 t1, ref Component3 t2)
             {
                 t0.Value += t1.Value + t2.Value;
@@ -129,7 +129,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithThreeComponents
             ///     Initializes a new instance of the <see cref="ArchContext" /> class
             /// </summary>
             /// <param name="entityCount">The gameObject count</param>
-            /// <param name="_">The </param>
+            /// <param name="_">Unused padding parameter for API compatibility</param>
             public ArchContext(int entityCount, int _)
                 : base(_filter, entityCount)
             {

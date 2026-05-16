@@ -44,7 +44,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
         [Context] private readonly RelEcsContext _relEcs;
 
         /// <summary>
-        ///     Rels the ecs
+        ///     Benchmarks system processing with one component using RelEcs
         /// </summary>
         [BenchmarkCategory(Categories.RelEcs), Benchmark]
         public void RelEcs() => _relEcs.MonoThreadSystem.Run(_relEcs.World);
@@ -75,10 +75,10 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
                 }
             }
 
-            /// <summary>
-            ///     Gets the value of the mono thread system
-            /// </summary>
-            public ISystem MonoThreadSystem { get; } = new MonoThreadRunSystem();
+        /// <summary>
+        ///     Gets the mono-threaded system
+        /// </summary>
+        public ISystem MonoThreadSystem { get; } = new MonoThreadRunSystem();
 
             /// <summary>
             ///     The mono thread run system class
@@ -87,9 +87,9 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
             private sealed class MonoThreadRunSystem : ISystem
             {
                 /// <summary>
-                ///     Runs the scene
+                ///     Runs the system on the given world
                 /// </summary>
-                /// <param name="world">The scene</param>
+                /// <param name="world">The world to run on</param>
                 public void Run(World world)
                 {
                     foreach (Component1 c in world.Query<Component1>().Build())

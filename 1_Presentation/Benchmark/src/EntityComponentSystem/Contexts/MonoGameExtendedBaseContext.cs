@@ -44,7 +44,7 @@ namespace Alis.Benchmark.EntityComponentSystem.Contexts
         public MonoGameExtendedBaseContext() => World = new WorldBuilder().Build();
 
         /// <summary>
-        ///     Gets the value of the scene
+        ///     Gets the MonoGame Extended world instance
         /// </summary>
         public World World { get; }
 

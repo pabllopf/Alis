@@ -39,7 +39,7 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithThreeComponents
     public partial class CreateEntityWithThreeComponents
     {
         /// <summary>
-        ///     Frifloes the engine ecs
+        ///     Benchmarks creating entities with three components using Friflo Engine ECS
         /// </summary>
         [BenchmarkCategory(Categories.FrifloEngineEcs), Benchmark]
         public void FrifloEngineEcs()

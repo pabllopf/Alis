@@ -68,35 +68,40 @@ namespace Alis.Extension.Security
         }
 
         /// <summary>
+        ///     Implicitly converts a double value to a SecureDouble
         /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
+        /// <param name="value">The double value to convert</param>
+        /// <returns>A SecureDouble instance wrapping the value</returns>
         public static implicit operator SecureDouble(double value) => new SecureDouble(value);
 
         /// <summary>
+        ///     Implicitly converts a SecureDouble to its underlying double value
         /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
+        /// <param name="value">The SecureDouble to convert</param>
+        /// <returns>The decrypted double value</returns>
         public static implicit operator double(SecureDouble value) => value.Value;
 
         /// <summary>
+        ///     Compares two SecureDouble instances for equality within epsilon tolerance
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        /// <param name="a">The first SecureDouble</param>
+        /// <param name="b">The second SecureDouble</param>
+        /// <returns>True if the values are approximately equal; otherwise, false</returns>
         public static bool operator ==(SecureDouble a, SecureDouble b) => SecureRandom.Abs((float) (a.Value - b.Value)) < float.Epsilon;
 
         /// <summary>
+        ///     Compares two SecureDouble instances for inequality within epsilon tolerance
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        /// <param name="a">The first SecureDouble</param>
+        /// <param name="b">The second SecureDouble</param>
+        /// <returns>True if the values are not approximately equal; otherwise, false</returns>
         public static bool operator !=(SecureDouble a, SecureDouble b) => SecureRandom.Abs((float) (a.Value - b.Value)) > float.Epsilon;
 
         /// <summary>
+        ///     Increments the SecureDouble value by one
         /// </summary>
-        /// <param name="a"></param>
-        /// <returns></returns>
+        /// <param name="a">The SecureDouble to increment</param>
+        /// <returns>The incremented SecureDouble</returns>
         public static SecureDouble operator ++(SecureDouble a)
         {
             a.Value++;
@@ -104,9 +109,10 @@ namespace Alis.Extension.Security
         }
 
         /// <summary>
+        ///     Decrements the SecureDouble value by one
         /// </summary>
-        /// <param name="a"></param>
-        /// <returns></returns>
+        /// <param name="a">The SecureDouble to decrement</param>
+        /// <returns>The decremented SecureDouble</returns>
         public static SecureDouble operator --(SecureDouble a)
         {
             a.Value--;
@@ -114,50 +120,54 @@ namespace Alis.Extension.Security
         }
 
         /// <summary>
+        ///     Adds two SecureDouble values
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        /// <param name="a">The first SecureDouble</param>
+        /// <param name="b">The second SecureDouble</param>
+        /// <returns>A new SecureDouble containing the sum</returns>
         public static SecureDouble operator +(SecureDouble a, SecureDouble b) => new SecureDouble(a.Value + b.Value);
 
         /// <summary>
+        ///     Subtracts one SecureDouble from another
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        /// <param name="a">The SecureDouble to subtract from</param>
+        /// <param name="b">The SecureDouble to subtract</param>
+        /// <returns>A new SecureDouble containing the difference</returns>
         public static SecureDouble operator -(SecureDouble a, SecureDouble b) => new SecureDouble(a.Value - b.Value);
 
         /// <summary>
+        ///     Multiplies two SecureDouble values
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        /// <param name="a">The first SecureDouble</param>
+        /// <param name="b">The second SecureDouble</param>
+        /// <returns>A new SecureDouble containing the product</returns>
         public static SecureDouble operator *(SecureDouble a, SecureDouble b) => new SecureDouble(a.Value * b.Value);
 
         /// <summary>
+        ///     Divides one SecureDouble by another
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        /// <param name="a">The SecureDouble to divide</param>
+        /// <param name="b">The SecureDouble to divide by</param>
+        /// <returns>A new SecureDouble containing the quotient</returns>
         public static SecureDouble operator /(SecureDouble a, SecureDouble b) => new SecureDouble(a.Value / b.Value);
 
         /// <summary>
-        ///     Returns the string
+        ///     Returns the string representation of the decrypted value
         /// </summary>
-        /// <returns>The string</returns>
+        /// <returns>The decrypted double value as a string</returns>
         public override string ToString() => Value.ToString();
 
         /// <summary>
-        ///     Gets the hash code
+        ///     Computes the hash code of the decrypted value
         /// </summary>
-        /// <returns>The int</returns>
+        /// <returns>The hash code of the underlying double</returns>
         public override int GetHashCode() => Value.GetHashCode();
 
         /// <summary>
-        ///     Describes whether this instance equals
+        ///     Determines whether the specified object equals the current SecureDouble
         /// </summary>
-        /// <param name="obj">The obj</param>
-        /// <returns>The bool</returns>
+        /// <param name="obj">The object to compare</param>
+        /// <returns>True if the values are equal; otherwise, false</returns>
         public override bool Equals(object obj) => Value.Equals((obj as SecureDouble).Value);
     }
 }

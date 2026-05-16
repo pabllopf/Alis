@@ -51,7 +51,7 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithThreeComponents
         [Context] private readonly ArchBaseContext _arch;
 
         /// <summary>
-        ///     Arches this instance
+        ///     Benchmarks creating entities with three components using Arch ECS
         /// </summary>
         [BenchmarkCategory(Categories.Arch), Benchmark]
         public void Arch()

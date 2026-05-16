@@ -43,7 +43,7 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithOneComponent
         [Context] private readonly RelEcsBaseContext _relEcs;
 
         /// <summary>
-        ///     Rels the ecs
+        ///     Benchmarks creating entities with one component using RelEcs
         /// </summary>
         [BenchmarkCategory(Categories.RelEcs), Benchmark]
         public void RelEcs()

@@ -33,7 +33,7 @@ using Alis.Core.Aspect.Data.Json;
 namespace Alis.Extension.Media.FFmpeg.BaseClasses
 {
     /// <summary>
-    ///     The stream tags class
+    ///     Metadata tags associated with an individual media stream.
     /// </summary>
     [Serializable]
     public partial class StreamTags
@@ -59,19 +59,19 @@ namespace Alis.Extension.Media.FFmpeg.BaseClasses
         }
 
         /// <summary>
-        ///     Gets or sets the value of the creation time
+        ///     Creation timestamp of the stream.
         /// </summary>
         [JsonNativePropertyName("creation_time")]
         public string CreationTime { get; set; }
 
         /// <summary>
-        ///     Gets or sets the value of the language
+        ///     Language code of the stream (e.g. eng, spa).
         /// </summary>
         [JsonNativePropertyName("language")]
         public string Language { get; set; }
 
         /// <summary>
-        ///     Gets or sets the value of the handler name
+        ///     Handler name describing the stream type.
         /// </summary>
         [JsonNativePropertyName("handler_name")]
         public string HandlerName { get; set; }

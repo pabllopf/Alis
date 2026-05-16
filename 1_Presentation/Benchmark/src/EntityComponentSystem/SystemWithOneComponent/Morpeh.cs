@@ -45,13 +45,13 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
         [Context] private readonly MorpehContext _context;
 
         /// <summary>
-        ///     Morpehs the direct
+        ///     Benchmarks direct component access with one component using Morpeh
         /// </summary>
         [BenchmarkCategory(Categories.Morpeh), Benchmark]
         public void Morpeh_Direct() => _context.MonoThreadDirectSystem.OnUpdate(0f);
 
         /// <summary>
-        ///     Morpehs the stash
+        ///     Benchmarks stashed component access with one component using Morpeh
         /// </summary>
         [BenchmarkCategory(Categories.Morpeh), Benchmark]
         public void Morpeh_Stash() => _context.MonoThreadStashSystem.OnUpdate(0f);
@@ -88,15 +88,15 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
                 World.Commit();
             }
 
-            /// <summary>
-            ///     Gets the value of the mono thread direct system
-            /// </summary>
-            public ISystem MonoThreadDirectSystem { get; }
+        /// <summary>
+        ///     Gets the mono-threaded direct access system
+        /// </summary>
+        public ISystem MonoThreadDirectSystem { get; }
 
-            /// <summary>
-            ///     Gets the value of the mono thread stash system
-            /// </summary>
-            public ISystem MonoThreadStashSystem { get; }
+        /// <summary>
+        ///     Gets the mono-threaded stash access system
+        /// </summary>
+        public ISystem MonoThreadStashSystem { get; }
 
             /// <summary>
             ///     The direct system class

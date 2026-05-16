@@ -111,6 +111,10 @@ namespace Alis.Extension.Network.Core
         /// <summary>
         ///     Sends message to specific client
         /// </summary>
+        /// <param name="clientId">The client identifier to send the message to</param>
+        /// <param name="message">The message envelope to send</param>
+        /// <param name="cancellationToken">Token to cancel the send operation</param>
+        /// <returns>A task representing the asynchronous send operation</returns>
         public async Task SendAsync(string clientId, NetworkMessageEnvelope message, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (!_clientSockets.TryGetValue(clientId, out WebSocket socket))

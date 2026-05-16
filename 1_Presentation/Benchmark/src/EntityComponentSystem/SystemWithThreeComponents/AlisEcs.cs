@@ -50,7 +50,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithThreeComponents
         [Context] private readonly AlisContext _alis;
 
         /// <summary>
-        ///     Frents the query inline
+        ///     Benchmarks inline query processing with three components using Alis ECS
         /// </summary>
         [BenchmarkCategory(Categories.Alis), Benchmark]
         public void Alis_QueryInline()
@@ -59,7 +59,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithThreeComponents
         }
 
         /// <summary>
-        ///     Frents the query delegate
+        ///     Benchmarks delegate query processing with three components using Alis ECS
         /// </summary>
         [BenchmarkCategory(Categories.Alis), Benchmark]
         public void Alis_QueryDelegate()
@@ -68,7 +68,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithThreeComponents
         }
 
         /// <summary>
-        ///     Frents the simd
+        ///     Benchmarks SIMD-vectorized query processing with three components using Alis ECS
         /// </summary>
         [BenchmarkCategory(Categories.Alis), Benchmark]
         public void Alis_Simd()
@@ -108,7 +108,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithThreeComponents
             ///     Initializes a new instance of the <see cref="FrentContext" /> class
             /// </summary>
             /// <param name="entityCount">The gameObject count</param>
-            /// <param name="_">The </param>
+            /// <param name="_">Unused padding parameter for API compatibility</param>
             public AlisContext(int entityCount, int _)
             {
                 for (int i = 0; i < entityCount; i++)
@@ -127,11 +127,11 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithThreeComponents
         public struct SumAlis : IAction<Component1, Component2, Component3>
         {
             /// <summary>
-            ///     Runs the t 0
+            ///     Sums the values of the first component with the second and third
             /// </summary>
-            /// <param name="t0">The </param>
-            /// <param name="t1">The </param>
-            /// <param name="t2">The </param>
+            /// <param name="t0">The first component whose value will be increased</param>
+            /// <param name="t1">The second component whose value is added</param>
+            /// <param name="t2">The third component whose value is added</param>
             public void Run(ref Component1 t0, ref Component2 t1, ref Component3 t2)
             {
                 t0.Value += t1.Value + t2.Value;

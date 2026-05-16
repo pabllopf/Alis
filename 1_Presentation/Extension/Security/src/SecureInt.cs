@@ -75,35 +75,40 @@ namespace Alis.Extension.Security
         }
 
         /// <summary>
+        ///     Implicitly converts an int value to a SecureInt
         /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
+        /// <param name="value">The int value to convert</param>
+        /// <returns>A SecureInt instance wrapping the value</returns>
         public static implicit operator SecureInt(int value) => new SecureInt(value);
 
         /// <summary>
+        ///     Implicitly converts a SecureInt to its underlying int value
         /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
+        /// <param name="value">The SecureInt to convert</param>
+        /// <returns>The decrypted int value</returns>
         public static implicit operator int(SecureInt value) => value.Value;
 
         /// <summary>
+        ///     Compares two SecureInt instances for equality
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        /// <param name="a">The first SecureInt</param>
+        /// <param name="b">The second SecureInt</param>
+        /// <returns>True if the values are equal; otherwise, false</returns>
         public static bool operator ==(SecureInt a, SecureInt b) => a.Value == b.Value;
 
         /// <summary>
+        ///     Compares two SecureInt instances for inequality
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        /// <param name="a">The first SecureInt</param>
+        /// <param name="b">The second SecureInt</param>
+        /// <returns>True if the values are not equal; otherwise, false</returns>
         public static bool operator !=(SecureInt a, SecureInt b) => a.Value != b.Value;
 
         /// <summary>
+        ///     Increments the SecureInt value by one
         /// </summary>
-        /// <param name="a"></param>
-        /// <returns></returns>
+        /// <param name="a">The SecureInt to increment</param>
+        /// <returns>The incremented SecureInt</returns>
         public static SecureInt operator ++(SecureInt a)
         {
             a.Value++;
@@ -111,9 +116,10 @@ namespace Alis.Extension.Security
         }
 
         /// <summary>
+        ///     Decrements the SecureInt value by one
         /// </summary>
-        /// <param name="a"></param>
-        /// <returns></returns>
+        /// <param name="a">The SecureInt to decrement</param>
+        /// <returns>The decremented SecureInt</returns>
         public static SecureInt operator --(SecureInt a)
         {
             a.Value--;
@@ -121,50 +127,54 @@ namespace Alis.Extension.Security
         }
 
         /// <summary>
+        ///     Adds two SecureInt values
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        /// <param name="a">The first SecureInt</param>
+        /// <param name="b">The second SecureInt</param>
+        /// <returns>A new SecureInt containing the sum</returns>
         public static SecureInt operator +(SecureInt a, SecureInt b) => new SecureInt(a.Value + b.Value);
 
         /// <summary>
+        ///     Subtracts one SecureInt from another
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        /// <param name="a">The SecureInt to subtract from</param>
+        /// <param name="b">The SecureInt to subtract</param>
+        /// <returns>A new SecureInt containing the difference</returns>
         public static SecureInt operator -(SecureInt a, SecureInt b) => new SecureInt(a.Value - b.Value);
 
         /// <summary>
+        ///     Multiplies two SecureInt values
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        /// <param name="a">The first SecureInt</param>
+        /// <param name="b">The second SecureInt</param>
+        /// <returns>A new SecureInt containing the product</returns>
         public static SecureInt operator *(SecureInt a, SecureInt b) => new SecureInt(a.Value * b.Value);
 
         /// <summary>
+        ///     Divides one SecureInt by another
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        /// <param name="a">The SecureInt to divide</param>
+        /// <param name="b">The SecureInt to divide by</param>
+        /// <returns>A new SecureInt containing the quotient</returns>
         public static SecureInt operator /(SecureInt a, SecureInt b) => new SecureInt(a.Value / b.Value);
 
         /// <summary>
-        ///     Returns the string
+        ///     Returns the string representation of the decrypted value
         /// </summary>
-        /// <returns>The string</returns>
+        /// <returns>The decrypted int value as a string</returns>
         public override string ToString() => Value.ToString();
 
         /// <summary>
-        ///     Gets the hash code
+        ///     Computes the hash code of the decrypted value
         /// </summary>
-        /// <returns>The int</returns>
+        /// <returns>The hash code of the underlying int</returns>
         public override int GetHashCode() => Value.GetHashCode();
 
         /// <summary>
-        ///     Describes whether this instance equals
+        ///     Determines whether the specified object equals the current SecureInt
         /// </summary>
-        /// <param name="obj">The obj</param>
-        /// <returns>The bool</returns>
+        /// <param name="obj">The object to compare</param>
+        /// <returns>True if the values are equal; otherwise, false</returns>
         public override bool Equals(object obj) => Value.Equals((obj as SecureInt).Value);
     }
 }

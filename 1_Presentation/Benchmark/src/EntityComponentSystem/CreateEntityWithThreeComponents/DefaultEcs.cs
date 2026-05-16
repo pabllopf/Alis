@@ -44,7 +44,7 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithThreeComponents
         [Context] private readonly DefaultEcsBaseContext _defaultEcs;
 
         /// <summary>
-        ///     Defaults the ecs
+        ///     Benchmarks creating entities with three components using Default ECS
         /// </summary>
         [BenchmarkCategory(Categories.DefaultEcs), Benchmark]
         public void DefaultEcs()

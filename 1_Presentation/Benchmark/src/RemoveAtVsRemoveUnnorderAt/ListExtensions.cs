@@ -37,11 +37,12 @@ namespace Alis.Benchmark.RemoveAtVsRemoveUnnorderAt
     public static class ListExtensions
     {
         /// <summary>
-        ///     Removes the unnorder at using the specified list
+        ///     Removes the element at the specified index by swapping it with the last element and removing the last,
+        ///     avoiding the O(n) shift cost of a standard RemoveAt
         /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="list">The list</param>
-        /// <param name="index">The index</param>
+        /// <typeparam name="T">The element type</typeparam>
+        /// <param name="list">The list to remove from</param>
+        /// <param name="index">The index of the element to remove</param>
         public static void RemoveUnnorderAt<T>(this List<T> list, int index)
         {
             list[index] = list[list.Count - 1];

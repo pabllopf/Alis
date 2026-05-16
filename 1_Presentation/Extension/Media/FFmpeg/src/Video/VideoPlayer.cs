@@ -201,11 +201,12 @@ namespace Alis.Extension.Media.FFmpeg.Video
         /// <summary>
         ///     Get stream for writing and playing video in custom format.
         /// </summary>
-        /// <param name="format">Custom video format</param>
-        /// <param name="arguments">Custom FFmpeg arguments for the specified video format</param>
-        /// <param name="ffplayProcess"></param>
+        /// <param name="format">Custom video format (e.g. rawvideo, mp4).</param>
+        /// <param name="arguments">Custom FFmpeg arguments for the specified video format.</param>
+        /// <param name="ffplayProcess">The ffplay process created for playback.</param>
         /// <param name="showFFplayOutput">Show FFplay output for debugging purposes.</param>
-        /// <param name="ffplayExecutable"></param>
+        /// <param name="ffplayExecutable">Name or path to the ffplay executable.</param>
+        /// <returns>A writable stream for sending video frames to the player.</returns>
         public static Stream GetStreamForWriting(string format, string arguments, out Process ffplayProcess,
             bool showFFplayOutput = false, string ffplayExecutable = "ffplay")
         {

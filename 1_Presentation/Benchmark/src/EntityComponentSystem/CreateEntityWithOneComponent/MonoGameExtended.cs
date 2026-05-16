@@ -43,7 +43,7 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithOneComponent
         [Context] private readonly MonoGameExtendedBaseContext _monoGameExtended;
 
         /// <summary>
-        ///     Monoes the game extended
+        ///     Benchmarks creating entities with one component using MonoGame Extended
         /// </summary>
         [BenchmarkCategory(Categories.MonoGameExtended), Benchmark]
         public void MonoGameExtended()

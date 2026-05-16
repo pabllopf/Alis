@@ -62,9 +62,9 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
         private ForEach1 _forEach;
 
         /// <summary>
-        ///     Fors the each using the specified t 0
+        ///     Increments the component value by one
         /// </summary>
-        /// <param name="t0">The </param>
+        /// <param name="t0">The component to increment</param>
         [Query]
         private static void ForEach(ref Component1 t0)
         {
@@ -72,7 +72,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
         }
 
         /// <summary>
-        ///     Arches the mono thread
+        ///     Benchmarks mono-threaded inline query with one component using Arch ECS
         /// </summary>
         [BenchmarkCategory(Categories.Arch), Benchmark]
         public void Arch_MonoThread()
@@ -82,7 +82,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
         }
 
         /// <summary>
-        ///     Arches the mono thread source generated
+        ///     Benchmarks source-generated mono-threaded query with one component using Arch ECS
         /// </summary>
         [BenchmarkCategory(Categories.Arch), Benchmark]
         public void Arch_MonoThread_SourceGenerated()
@@ -91,7 +91,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
         }
 
         /// <summary>
-        ///     Arches the multi thread
+        ///     Benchmarks multi-threaded parallel query with one component using Arch ECS
         /// </summary>
         [BenchmarkCategory(Categories.Arch), Benchmark]
         public void Arch_MultiThread()
@@ -106,9 +106,9 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
         public struct ForEach1 : IForEach<Component1>
         {
             /// <summary>
-            ///     Updates the t 0
+            ///     Increments the component value by one
             /// </summary>
-            /// <param name="t0">The </param>
+            /// <param name="t0">The component to increment</param>
             public void Update(ref Component1 t0)
             {
                 ++t0.Value;
@@ -125,7 +125,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
             ///     Initializes a new instance of the <see cref="ArchContext" /> class
             /// </summary>
             /// <param name="entityCount">The gameObject count</param>
-            /// <param name="_">The </param>
+            /// <param name="_">Unused padding parameter for API compatibility</param>
             public ArchContext(int entityCount, int _)
                 : base(_filter, entityCount)
             {

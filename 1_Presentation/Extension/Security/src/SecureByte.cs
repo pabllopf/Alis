@@ -74,35 +74,40 @@ namespace Alis.Extension.Security
         }
 
         /// <summary>
+        ///     Implicitly converts a byte value to a SecureByte
         /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
+        /// <param name="value">The byte value to convert</param>
+        /// <returns>A SecureByte instance wrapping the value</returns>
         public static implicit operator SecureByte(byte value) => new SecureByte(value);
 
         /// <summary>
+        ///     Implicitly converts a SecureByte to its underlying byte value
         /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
+        /// <param name="value">The SecureByte to convert</param>
+        /// <returns>The decrypted byte value</returns>
         public static implicit operator byte(SecureByte value) => value.Value;
 
         /// <summary>
+        ///     Compares two SecureByte instances for equality
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        /// <param name="a">The first SecureByte</param>
+        /// <param name="b">The second SecureByte</param>
+        /// <returns>True if the values are equal; otherwise, false</returns>
         public static bool operator ==(SecureByte a, SecureByte b) => a.Value == b.Value;
 
         /// <summary>
+        ///     Compares two SecureByte instances for inequality
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        /// <param name="a">The first SecureByte</param>
+        /// <param name="b">The second SecureByte</param>
+        /// <returns>True if the values are not equal; otherwise, false</returns>
         public static bool operator !=(SecureByte a, SecureByte b) => a.Value != b.Value;
 
         /// <summary>
+        ///     Increments the SecureByte value by one
         /// </summary>
-        /// <param name="a"></param>
-        /// <returns></returns>
+        /// <param name="a">The SecureByte to increment</param>
+        /// <returns>The incremented SecureByte</returns>
         public static SecureByte operator ++(SecureByte a)
         {
             a.Value++;
@@ -110,9 +115,10 @@ namespace Alis.Extension.Security
         }
 
         /// <summary>
+        ///     Decrements the SecureByte value by one
         /// </summary>
-        /// <param name="a"></param>
-        /// <returns></returns>
+        /// <param name="a">The SecureByte to decrement</param>
+        /// <returns>The decremented SecureByte</returns>
         public static SecureByte operator --(SecureByte a)
         {
             a.Value--;
@@ -120,51 +126,55 @@ namespace Alis.Extension.Security
         }
 
         /// <summary>
+        ///     Adds two SecureByte values
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        /// <param name="a">The first SecureByte</param>
+        /// <param name="b">The second SecureByte</param>
+        /// <returns>A new SecureByte containing the sum</returns>
         public static SecureByte operator +(SecureByte a, SecureByte b) => new SecureByte((byte) (a.Value + b.Value));
 
         /// <summary>
+        ///     Subtracts one SecureByte from another
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        /// <param name="a">The SecureByte to subtract from</param>
+        /// <param name="b">The SecureByte to subtract</param>
+        /// <returns>A new SecureByte containing the difference</returns>
         public static SecureByte operator -(SecureByte a, SecureByte b) => new SecureByte((byte) (a.Value - b.Value));
 
 
         /// <summary>
+        ///     Multiplies two SecureByte values
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        /// <param name="a">The first SecureByte</param>
+        /// <param name="b">The second SecureByte</param>
+        /// <returns>A new SecureByte containing the product</returns>
         public static SecureByte operator *(SecureByte a, SecureByte b) => new SecureByte((byte) (a.Value * b.Value));
 
         /// <summary>
+        ///     Divides one SecureByte by another
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        /// <param name="a">The SecureByte to divide</param>
+        /// <param name="b">The SecureByte to divide by</param>
+        /// <returns>A new SecureByte containing the quotient</returns>
         public static SecureByte operator /(SecureByte a, SecureByte b) => new SecureByte((byte) (a.Value / b.Value));
 
         /// <summary>
-        ///     Returns the string
+        ///     Returns the string representation of the decrypted value
         /// </summary>
-        /// <returns>The string</returns>
+        /// <returns>The decrypted byte value as a string</returns>
         public override string ToString() => Value.ToString();
 
         /// <summary>
-        ///     Gets the hash code
+        ///     Computes the hash code of the decrypted value
         /// </summary>
-        /// <returns>The int</returns>
+        /// <returns>The hash code of the underlying byte</returns>
         public override int GetHashCode() => Value.GetHashCode();
 
         /// <summary>
-        ///     Describes whether this instance equals
+        ///     Determines whether the specified object equals the current SecureByte
         /// </summary>
-        /// <param name="obj">The obj</param>
-        /// <returns>The bool</returns>
+        /// <param name="obj">The object to compare</param>
+        /// <returns>True if the values are equal; otherwise, false</returns>
         public override bool Equals(object obj) => Value.Equals(((SecureByte) obj)!.Value);
     }
 }

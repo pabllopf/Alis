@@ -35,18 +35,20 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
     public class GenericPriorityQueueNode<TPriority>
     {
         /// <summary>
-        ///     The Priority to insert this node at.
-        ///     Cannot be manually edited - see queue.Enqueue() and queue.UpdatePriority() instead
+        ///     The priority value used to determine the node's position in the queue.
+        ///     Lower values indicate higher priority. Cannot be set directly — use <c>Enqueue</c> or <c>UpdatePriority</c> instead.
         /// </summary>
         public TPriority Priority { get; protected internal set; }
 
         /// <summary>
-        ///     Represents the current position in the queue
+        ///     Current index of this node in the internal heap array.
+        ///     Managed internally by the queue; should not be modified externally.
         /// </summary>
         public int QueueIndex { get; internal set; }
 
         /// <summary>
-        ///     Represents the order the node was inserted in
+        ///     Monotonically increasing insertion order counter.
+        ///     Used to break priority ties by first-in-first-out order.
         /// </summary>
         public long InsertionIndex { get; internal set; }
     }

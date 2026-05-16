@@ -39,6 +39,7 @@ namespace Alis.Extension.Network.Core
         /// <summary>
         ///     Initializes player event args
         /// </summary>
+        /// <param name="player">The player associated with this event</param>
         public PlayerEventArgs(NetworkPlayer player) => Player = player;
 
         /// <summary>

@@ -39,21 +39,31 @@ namespace Alis.Extension.Network.Core
         /// <summary>
         ///     Serializes object to JSON string
         /// </summary>
+        /// <param name="obj">The object to serialize</param>
+        /// <typeparam name="T">The type of the object, must implement IJsonSerializable</typeparam>
+        /// <returns>A JSON string representation of the object</returns>
         public string Serialize<T>(T obj) where T : IJsonSerializable => JsonNativeAot.Serialize(obj);
 
         /// <summary>
         ///     Deserializes JSON string to object
         /// </summary>
+        /// <param name="json">The JSON string to deserialize</param>
+        /// <typeparam name="T">The target type</typeparam>
+        /// <returns>The deserialized object</returns>
         public T Deserialize<T>(string json) where T : IJsonSerializable, IJsonDesSerializable<T>, new() => JsonNativeAot.Deserialize<T>(json);
 
         /// <summary>
         ///     Serializes envelope
         /// </summary>
+        /// <param name="envelope">The envelope to serialize</param>
+        /// <returns>A JSON string representation of the envelope</returns>
         public string SerializeEnvelope(NetworkMessageEnvelope envelope) => Serialize(envelope);
 
         /// <summary>
         ///     Deserializes envelope
         /// </summary>
+        /// <param name="json">The JSON string to deserialize</param>
+        /// <returns>The deserialized network message envelope</returns>
         public NetworkMessageEnvelope DeserializeEnvelope(string json) => Deserialize<NetworkMessageEnvelope>(json);
     }
 }

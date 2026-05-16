@@ -44,23 +44,23 @@ namespace Alis.Benchmark.CustomEcs
     public partial class AlisEcsBenchmark
     {
         /// <summary>
-        ///     The id
+        ///     The entity type for Frent ECS with a single Component1
         /// </summary>
         private static readonly EntityType _entityFrentType = Entity.EntityTypeOf([Component<Component1>.ID], []);
 
         /// <summary>
-        ///     The query
+        ///     The query used for Frent ECS system benchmarks
         /// </summary>
         public Query QueryFrent;
 
         /// <summary>
-        ///     Gets the value of the scene
+        ///     Gets the Frent world used for benchmark setup and execution
         /// </summary>
         public World WorldFrent { get; set; }
 
 
         /// <summary>
-        ///     Setup the alis
+        ///     Sets up the Frent ECS world and query for benchmarking
         /// </summary>
         private void SetupFrent()
         {
@@ -69,7 +69,7 @@ namespace Alis.Benchmark.CustomEcs
         }
 
         /// <summary>
-        ///     Disposes the frent
+        ///     Disposes the Frent ECS world and query
         /// </summary>
         private void DisposeFrent()
         {
@@ -79,7 +79,7 @@ namespace Alis.Benchmark.CustomEcs
         }
 
         /// <summary>
-        ///     Frents this instance
+        ///     Benchmarks creating entities with one component using Frent ECS
         /// </summary>
         [BenchmarkCategory("Pair/Create/1"), Benchmark]
         public void Frent_Create_With_One_Component()
@@ -94,7 +94,7 @@ namespace Alis.Benchmark.CustomEcs
         }
 
         /// <summary>
-        ///     Frents the bulk
+        ///     Benchmarks bulk-creating entities with one component using Frent ECS
         /// </summary>
         [BenchmarkCategory("Pair/Bulk/1"), Benchmark]
         public void Frent_Create_Bulk_With_One_Component()
@@ -109,7 +109,7 @@ namespace Alis.Benchmark.CustomEcs
         }
 
         /// <summary>
-        ///     Frents the create with two component
+        ///     Benchmarks creating entities with two components using Frent ECS
         /// </summary>
         [BenchmarkCategory("Pair/Create/2"), Benchmark]
         public void Frent_Create_With_Two_Component()
@@ -124,7 +124,7 @@ namespace Alis.Benchmark.CustomEcs
         }
 
         /// <summary>
-        ///     Frents the bulk
+        ///     Benchmarks bulk-creating entities with two components using Frent ECS
         /// </summary>
         [BenchmarkCategory("Pair/Bulk/2"), Benchmark]
         public void Frent_Create_Bulk_With_Two_Component()
@@ -141,7 +141,7 @@ namespace Alis.Benchmark.CustomEcs
         }
 
         /// <summary>
-        ///     Frents the create with three component
+        ///     Benchmarks creating entities with three components using Frent ECS
         /// </summary>
         [BenchmarkCategory("Pair/Create/3"), Benchmark]
         public void Frent_Create_With_Three_Component()
@@ -175,7 +175,7 @@ namespace Alis.Benchmark.CustomEcs
         }
 
         /// <summary>
-        ///     Frents the create with four component
+        ///     Benchmarks creating entities with four components using Frent ECS
         /// </summary>
         [BenchmarkCategory("Pair/Create/4"), Benchmark]
         public void Frent_Create_With_Four_Component()
@@ -211,7 +211,7 @@ namespace Alis.Benchmark.CustomEcs
         }
 
         /// <summary>
-        ///     Frents the create with five component
+        ///     Benchmarks creating entities with five components using Frent ECS
         /// </summary>
         [BenchmarkCategory("Pair/Create/5"), Benchmark]
         public void Frent_Create_With_Five_Component()
@@ -249,7 +249,7 @@ namespace Alis.Benchmark.CustomEcs
         }
 
         /// <summary>
-        ///     Frents the create with six component
+        ///     Benchmarks creating entities with six components using Frent ECS
         /// </summary>
         [BenchmarkCategory("Pair/Create/6"), Benchmark]
         public void Frent_Create_With_Six_Component()
@@ -289,7 +289,7 @@ namespace Alis.Benchmark.CustomEcs
         }
 
         /// <summary>
-        ///     Frents the create with seven component
+        ///     Benchmarks creating entities with seven components using Frent ECS
         /// </summary>
         [BenchmarkCategory("Pair/Create/7"), Benchmark]
         public void Frent_Create_With_Seven_Component()
@@ -331,7 +331,7 @@ namespace Alis.Benchmark.CustomEcs
         }
 
         /// <summary>
-        ///     Creates the with eight component
+        ///     Benchmarks creating entities with eight components using Frent ECS
         /// </summary>
         [BenchmarkCategory("Pair/Create/8"), Benchmark]
         public void Frent_Create_With_Eight_Component()
@@ -375,7 +375,7 @@ namespace Alis.Benchmark.CustomEcs
         }
 
         /// <summary>
-        ///     Frents the system with one component query inline with padding 0
+        ///     Benchmarks inline query system with one component and no padding using Frent ECS
         /// </summary>
         [BenchmarkCategory("Pair/System/Inline/P0"), Benchmark]
         public void Frent_SystemWithOneComponent_QueryInline_With_Padding_0()
@@ -390,7 +390,7 @@ namespace Alis.Benchmark.CustomEcs
 
 
         /// <summary>
-        ///     Frents the system with one component query delegate with padding 0
+        ///     Benchmarks delegate query system with one component and no padding using Frent ECS
         /// </summary>
         [BenchmarkCategory("Pair/System/Delegate/P0"), Benchmark]
         public void Frent_SystemWithOneComponent_QueryDelegate_With_Padding_0()
@@ -404,7 +404,7 @@ namespace Alis.Benchmark.CustomEcs
         }
 
         /// <summary>
-        ///     Frents the system with one component simd with padding 0
+        ///     Benchmarks SIMD-vectorized system with one component and no padding using Frent ECS
         /// </summary>
         [BenchmarkCategory("Pair/System/Simd/P0"), Benchmark]
         public void Frent_SystemWithOneComponent_Simd_With_Padding_0()
@@ -433,7 +433,7 @@ namespace Alis.Benchmark.CustomEcs
 
 
         /// <summary>
-        ///     Frents the system with one component query inline with padding 10
+        ///     Benchmarks inline query system with one component and 10 padding entities using Frent ECS
         /// </summary>
         [BenchmarkCategory("Pair/System/Inline/P10"), Benchmark]
         public void Frent_SystemWithOneComponent_QueryInline_With_Padding_10()
@@ -452,7 +452,7 @@ namespace Alis.Benchmark.CustomEcs
 
 
         /// <summary>
-        ///     Frents the system with one component query delegate with padding 10
+        ///     Benchmarks delegate query system with one component and 10 padding entities using Frent ECS
         /// </summary>
         [BenchmarkCategory("Pair/System/Delegate/P10"), Benchmark]
         public void Frent_SystemWithOneComponent_QueryDelegate_With_Padding_10()
@@ -470,7 +470,7 @@ namespace Alis.Benchmark.CustomEcs
         }
 
         /// <summary>
-        ///     Frents the system with one component simd with padding 10
+        ///     Benchmarks SIMD-vectorized system with one component and 10 padding entities using Frent ECS
         /// </summary>
         [BenchmarkCategory("Pair/System/Simd/P10"), Benchmark]
         public void Frent_SystemWithOneComponent_Simd_With_Padding_10()

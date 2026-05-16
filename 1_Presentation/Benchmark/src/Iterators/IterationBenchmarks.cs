@@ -47,7 +47,7 @@ namespace Alis.Benchmark.Iterators
         private int[] array;
 
         /// <summary>
-        ///     The
+        ///     Number of elements for benchmarking
         /// </summary>
         [Params(10, 1000, 10_000)] public int N;
 
@@ -61,9 +61,8 @@ namespace Alis.Benchmark.Iterators
         }
 
         /// <summary>
-        ///     Iterates the array for
+        ///     Benchmarks standard for-loop iteration over an array
         /// </summary>
-        /// <returns>The sum</returns>
         [Benchmark]
         public void IterateArrayFor()
         {
@@ -74,9 +73,8 @@ namespace Alis.Benchmark.Iterators
         }
 
         /// <summary>
-        ///     Iterates the array foreach
+        ///     Benchmarks foreach iteration over an array
         /// </summary>
-        /// <returns>The sum</returns>
         [Benchmark]
         public void IterateArrayForeach()
         {
@@ -102,9 +100,8 @@ namespace Alis.Benchmark.Iterators
         }
 
         /// <summary>
-        ///     Iterates the fastest
+        ///     Benchmarks pointer-like iteration using Unsafe.Add for maximum performance
         /// </summary>
-        /// <returns>The sum</returns>
         [Benchmark]
         public void IterateFastest()
         {
@@ -119,9 +116,8 @@ namespace Alis.Benchmark.Iterators
         }
 
         /// <summary>
-        ///     Bests the iterate with span and vector
+        ///     Benchmarks iteration using Span with vectorized SIMD processing
         /// </summary>
-        /// <returns>The sum</returns>
         [Benchmark]
         public void Best_IterateWithSpanAndVector()
         {
@@ -129,7 +125,7 @@ namespace Alis.Benchmark.Iterators
         }
 
         /// <summary>
-        ///     Does the while
+        ///     Benchmarks do-while loop iteration over an array
         /// </summary>
         [Benchmark]
         public void DoWhile()
@@ -143,10 +139,10 @@ namespace Alis.Benchmark.Iterators
         }
 
         /// <summary>
-        ///     Does the sometring using the specified i
+        ///     Returns the input value unchanged, used as a no-op operation for benchmark iteration overhead
         /// </summary>
-        /// <param name="i">The </param>
-        /// <returns>The </returns>
+        /// <param name="i">The input integer value</param>
+        /// <returns>The same integer value</returns>
         public int DoSometring(int i) => i;
     }
 }

@@ -45,7 +45,7 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithThreeComponents
         [Context] private readonly FlecsNetBaseContext _flecs;
 
         /// <summary>
-        ///     Flecses the net
+        ///     Benchmarks creating entities with three components using Flecs.NET
         /// </summary>
         [BenchmarkCategory(Categories.FlecsNet), Benchmark]
         public void FlecsNet()

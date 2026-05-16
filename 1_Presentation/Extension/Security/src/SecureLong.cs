@@ -74,35 +74,40 @@ namespace Alis.Extension.Security
         }
 
         /// <summary>
+        ///     Implicitly converts a long value to a SecureLong
         /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
+        /// <param name="value">The long value to convert</param>
+        /// <returns>A SecureLong instance wrapping the value</returns>
         public static implicit operator SecureLong(long value) => new SecureLong(value);
 
         /// <summary>
+        ///     Implicitly converts a SecureLong to its underlying long value
         /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
+        /// <param name="value">The SecureLong to convert</param>
+        /// <returns>The decrypted long value</returns>
         public static implicit operator long(SecureLong value) => value.Value;
 
         /// <summary>
+        ///     Compares two SecureLong instances for equality
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        /// <param name="a">The first SecureLong</param>
+        /// <param name="b">The second SecureLong</param>
+        /// <returns>True if the values are equal; otherwise, false</returns>
         public static bool operator ==(SecureLong a, SecureLong b) => a.Value == b.Value;
 
         /// <summary>
+        ///     Compares two SecureLong instances for inequality
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        /// <param name="a">The first SecureLong</param>
+        /// <param name="b">The second SecureLong</param>
+        /// <returns>True if the values are not equal; otherwise, false</returns>
         public static bool operator !=(SecureLong a, SecureLong b) => a.Value != b.Value;
 
         /// <summary>
+        ///     Increments the SecureLong value by one
         /// </summary>
-        /// <param name="a"></param>
-        /// <returns></returns>
+        /// <param name="a">The SecureLong to increment</param>
+        /// <returns>The incremented SecureLong</returns>
         public static SecureLong operator ++(SecureLong a)
         {
             a.Value++;
@@ -110,9 +115,10 @@ namespace Alis.Extension.Security
         }
 
         /// <summary>
+        ///     Decrements the SecureLong value by one
         /// </summary>
-        /// <param name="a"></param>
-        /// <returns></returns>
+        /// <param name="a">The SecureLong to decrement</param>
+        /// <returns>The decremented SecureLong</returns>
         public static SecureLong operator --(SecureLong a)
         {
             a.Value--;
@@ -120,50 +126,54 @@ namespace Alis.Extension.Security
         }
 
         /// <summary>
+        ///     Adds two SecureLong values
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        /// <param name="a">The first SecureLong</param>
+        /// <param name="b">The second SecureLong</param>
+        /// <returns>A new SecureLong containing the sum</returns>
         public static SecureLong operator +(SecureLong a, SecureLong b) => new SecureLong(a.Value + b.Value);
 
         /// <summary>
+        ///     Subtracts one SecureLong from another
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        /// <param name="a">The SecureLong to subtract from</param>
+        /// <param name="b">The SecureLong to subtract</param>
+        /// <returns>A new SecureLong containing the difference</returns>
         public static SecureLong operator -(SecureLong a, SecureLong b) => new SecureLong(a.Value - b.Value);
 
         /// <summary>
+        ///     Multiplies two SecureLong values
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        /// <param name="a">The first SecureLong</param>
+        /// <param name="b">The second SecureLong</param>
+        /// <returns>A new SecureLong containing the product</returns>
         public static SecureLong operator *(SecureLong a, SecureLong b) => new SecureLong(a.Value * b.Value);
 
         /// <summary>
+        ///     Divides one SecureLong by another
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        /// <param name="a">The SecureLong to divide</param>
+        /// <param name="b">The SecureLong to divide by</param>
+        /// <returns>A new SecureLong containing the quotient</returns>
         public static SecureLong operator /(SecureLong a, SecureLong b) => new SecureLong(a.Value / b.Value);
 
         /// <summary>
-        ///     Returns the string
+        ///     Returns the string representation of the decrypted value
         /// </summary>
-        /// <returns>The string</returns>
+        /// <returns>The decrypted long value as a string</returns>
         public override string ToString() => Value.ToString();
 
         /// <summary>
-        ///     Gets the hash code
+        ///     Computes the hash code of the decrypted value
         /// </summary>
-        /// <returns>The int</returns>
+        /// <returns>The hash code of the underlying long</returns>
         public override int GetHashCode() => Value.GetHashCode();
 
         /// <summary>
-        ///     Describes whether this instance equals
+        ///     Determines whether the specified object equals the current SecureLong
         /// </summary>
-        /// <param name="obj">The obj</param>
-        /// <returns>The bool</returns>
+        /// <param name="obj">The object to compare</param>
+        /// <returns>True if the values are equal; otherwise, false</returns>
         public override bool Equals(object obj) => Value.Equals((obj as SecureLong).Value);
     }
 }

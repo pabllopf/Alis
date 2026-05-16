@@ -44,7 +44,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
         [Context] private readonly LeopotamEcsLiteContext _leopotamEcsLite;
 
         /// <summary>
-        ///     Leopotams the ecs lite
+        ///     Benchmarks system processing with one component using LeopotamEcsLite
         /// </summary>
         [BenchmarkCategory(Categories.LeopotamEcsLite), Benchmark]
         public void LeopotamEcsLite() => _leopotamEcsLite.MonoThreadSystem.Run();
@@ -82,10 +82,10 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
                 }
             }
 
-            /// <summary>
-            ///     Gets the value of the mono thread system
-            /// </summary>
-            public IEcsSystems MonoThreadSystem { get; }
+        /// <summary>
+        ///     Gets the mono-threaded ECS system
+        /// </summary>
+        public IEcsSystems MonoThreadSystem { get; }
 
             /// <summary>
             ///     The mono thread run system class

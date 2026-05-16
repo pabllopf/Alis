@@ -68,35 +68,40 @@ namespace Alis.Extension.Security
         }
 
         /// <summary>
+        ///     Implicitly converts a float value to a SecureFloat
         /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
+        /// <param name="value">The float value to convert</param>
+        /// <returns>A SecureFloat instance wrapping the value</returns>
         public static implicit operator SecureFloat(float value) => new SecureFloat(value);
 
         /// <summary>
+        ///     Implicitly converts a SecureFloat to its underlying float value
         /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
+        /// <param name="value">The SecureFloat to convert</param>
+        /// <returns>The decrypted float value</returns>
         public static implicit operator float(SecureFloat value) => value.Value;
 
         /// <summary>
+        ///     Compares two SecureFloat instances for equality within 0.01 tolerance
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        /// <param name="a">The first SecureFloat</param>
+        /// <param name="b">The second SecureFloat</param>
+        /// <returns>True if the values are approximately equal; otherwise, false</returns>
         public static bool operator ==(SecureFloat a, SecureFloat b) => SecureRandom.Abs(a.Value - b.Value) < 0.01f;
 
         /// <summary>
+        ///     Compares two SecureFloat instances for inequality within 0.01 tolerance
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        /// <param name="a">The first SecureFloat</param>
+        /// <param name="b">The second SecureFloat</param>
+        /// <returns>True if the values are not approximately equal; otherwise, false</returns>
         public static bool operator !=(SecureFloat a, SecureFloat b) => SecureRandom.Abs(a.Value - b.Value) > 0.01f;
 
         /// <summary>
+        ///     Increments the SecureFloat value by one
         /// </summary>
-        /// <param name="a"></param>
-        /// <returns></returns>
+        /// <param name="a">The SecureFloat to increment</param>
+        /// <returns>The incremented SecureFloat</returns>
         public static SecureFloat operator ++(SecureFloat a)
         {
             a.Value++;
@@ -104,9 +109,10 @@ namespace Alis.Extension.Security
         }
 
         /// <summary>
+        ///     Decrements the SecureFloat value by one
         /// </summary>
-        /// <param name="a"></param>
-        /// <returns></returns>
+        /// <param name="a">The SecureFloat to decrement</param>
+        /// <returns>The decremented SecureFloat</returns>
         public static SecureFloat operator --(SecureFloat a)
         {
             a.Value--;
@@ -114,50 +120,54 @@ namespace Alis.Extension.Security
         }
 
         /// <summary>
+        ///     Adds two SecureFloat values
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        /// <param name="a">The first SecureFloat</param>
+        /// <param name="b">The second SecureFloat</param>
+        /// <returns>A new SecureFloat containing the sum</returns>
         public static SecureFloat operator +(SecureFloat a, SecureFloat b) => new SecureFloat(a.Value + b.Value);
 
         /// <summary>
+        ///     Subtracts one SecureFloat from another
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        /// <param name="a">The SecureFloat to subtract from</param>
+        /// <param name="b">The SecureFloat to subtract</param>
+        /// <returns>A new SecureFloat containing the difference</returns>
         public static SecureFloat operator -(SecureFloat a, SecureFloat b) => new SecureFloat(a.Value - b.Value);
 
         /// <summary>
+        ///     Multiplies two SecureFloat values
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        /// <param name="a">The first SecureFloat</param>
+        /// <param name="b">The second SecureFloat</param>
+        /// <returns>A new SecureFloat containing the product</returns>
         public static SecureFloat operator *(SecureFloat a, SecureFloat b) => new SecureFloat(a.Value * b.Value);
 
         /// <summary>
+        ///     Divides one SecureFloat by another
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        /// <param name="a">The SecureFloat to divide</param>
+        /// <param name="b">The SecureFloat to divide by</param>
+        /// <returns>A new SecureFloat containing the quotient</returns>
         public static SecureFloat operator /(SecureFloat a, SecureFloat b) => new SecureFloat(a.Value / b.Value);
 
         /// <summary>
-        ///     Returns the string
+        ///     Returns the string representation of the decrypted value
         /// </summary>
-        /// <returns>The string</returns>
+        /// <returns>The decrypted float value as a string</returns>
         public override string ToString() => Value.ToString();
 
         /// <summary>
-        ///     Gets the hash code
+        ///     Computes the hash code of the decrypted value
         /// </summary>
-        /// <returns>The int</returns>
+        /// <returns>The hash code of the underlying float</returns>
         public override int GetHashCode() => Value.GetHashCode();
 
         /// <summary>
-        ///     Describes whether this instance equals
+        ///     Determines whether the specified object equals the current SecureFloat
         /// </summary>
-        /// <param name="obj">The obj</param>
-        /// <returns>The bool</returns>
+        /// <param name="obj">The object to compare</param>
+        /// <returns>True if the values are equal; otherwise, false</returns>
         public override bool Equals(object obj) => Value.Equals((obj as SecureFloat).Value);
     }
 }

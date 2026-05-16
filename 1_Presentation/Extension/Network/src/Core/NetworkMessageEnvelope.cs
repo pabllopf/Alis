@@ -95,6 +95,8 @@ namespace Alis.Extension.Network.Core
         /// <summary>
         ///     Creates instance from properties
         /// </summary>
+        /// <param name="properties">Dictionary of property name-value pairs to populate the envelope</param>
+        /// <returns>A new NetworkMessageEnvelope populated from the given properties</returns>
         public NetworkMessageEnvelope CreateFromProperties(Dictionary<string, string> properties)
         {
             if (properties == null)
@@ -123,6 +125,7 @@ namespace Alis.Extension.Network.Core
         /// <summary>
         ///     Gets serializable properties
         /// </summary>
+        /// <returns>A sequence of key-value pairs representing all serializable properties</returns>
         public IEnumerable<(string, string)> GetSerializableProperties()
         {
             yield return (nameof(MessageId), MessageId);

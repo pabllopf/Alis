@@ -84,7 +84,7 @@ namespace Alis.Benchmark.EntityComponentSystem.Contexts
         public FennecsBaseContext() => World = new World();
 
         /// <summary>
-        ///     Gets the value of the scene
+        ///     Gets the Fennecs world instance
         /// </summary>
         public World World { get; }
 

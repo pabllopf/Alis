@@ -49,7 +49,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
         [Context] private readonly FrentContext _frent;
 
         /// <summary>
-        ///     Frents the query inline
+        ///     Benchmarks inline query processing with one component using Frent ECS
         /// </summary>
         [BenchmarkCategory(Categories.Frent), Benchmark]
         public void Frent_QueryInline()
@@ -58,7 +58,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
         }
 
         /// <summary>
-        ///     Frents the query delegate
+        ///     Benchmarks delegate query processing with one component using Frent ECS
         /// </summary>
         [BenchmarkCategory(Categories.Frent), Benchmark]
         public void Frent_QueryDelegate()
@@ -67,7 +67,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
         }
 
         /// <summary>
-        ///     Frents the simd
+        ///     Benchmarks SIMD-vectorized query processing with one component using Frent ECS
         /// </summary>
         [BenchmarkCategory(Categories.Frent), Benchmark]
         public void Frent_Simd()
@@ -127,9 +127,9 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
         public struct Increment : IAction<Component1>
         {
             /// <summary>
-            ///     Runs the t 0
+            ///     Increments the component value by one
             /// </summary>
-            /// <param name="t0">The </param>
+            /// <param name="t0">The component to increment</param>
             public void Run(ref Component1 t0)
             {
                 t0.Value++;

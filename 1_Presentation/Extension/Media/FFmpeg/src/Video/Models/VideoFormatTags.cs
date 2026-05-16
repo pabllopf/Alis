@@ -33,7 +33,7 @@ using Alis.Core.Aspect.Data.Json;
 namespace Alis.Extension.Media.FFmpeg.Video.Models
 {
     /// <summary>
-    ///     The video format tags class
+    ///     Metadata tags specific to a video container format.
     /// </summary>
     [Serializable]
     public partial class VideoFormatTags
@@ -63,31 +63,31 @@ namespace Alis.Extension.Media.FFmpeg.Video.Models
         }
 
         /// <summary>
-        ///     Gets or sets the value of the major brand
+        ///     Major brand identifier of the ISOBMFF container.
         /// </summary>
         [JsonNativePropertyName("major_brand")]
         public string MajorBrand { get; set; }
 
         /// <summary>
-        ///     Gets or sets the value of the minor version
+        ///     Minor version of the ISOBMFF brand.
         /// </summary>
         [JsonNativePropertyName("minor_version")]
         public string MinorVersion { get; set; }
 
         /// <summary>
-        ///     Gets or sets the value of the compatible brands
+        ///     Comma-separated list of compatible ISOBMFF brands.
         /// </summary>
         [JsonNativePropertyName("compatible_brands")]
         public string CompatibleBrands { get; set; }
 
         /// <summary>
-        ///     Gets or sets the value of the creation time
+        ///     Creation timestamp of the container.
         /// </summary>
         [JsonNativePropertyName("creation_time")]
         public string CreationTime { get; set; }
 
         /// <summary>
-        ///     Gets or sets the value of the encoder
+        ///     Name of the encoder software used to create the file.
         /// </summary>
         [JsonNativePropertyName("encoder")]
         public string Encoder { get; set; }

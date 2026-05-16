@@ -78,7 +78,7 @@ namespace Alis.Extension.Network.Core
         public Dictionary<string, string> CustomData { get; set; } = new Dictionary<string, string>();
 
         /// <summary>
-        ///     Gets join time
+        ///     Gets join time as a local DateTime
         /// </summary>
         public DateTime JoinedDateTime => UnixTimeStampToDateTime(JoinedAt);
 

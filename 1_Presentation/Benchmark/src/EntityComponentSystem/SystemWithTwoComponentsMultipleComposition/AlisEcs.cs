@@ -50,7 +50,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleCo
         [Context] private readonly AlisContext _alis;
 
         /// <summary>
-        ///     Frents the query inline
+        ///     Benchmarks inline query processing with two components plus composition using Alis ECS
         /// </summary>
         [BenchmarkCategory(Categories.Frent), Benchmark]
         public void Alis_QueryInline()
@@ -59,7 +59,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleCo
         }
 
         /// <summary>
-        ///     Frents the simd
+        ///     Benchmarks SIMD-vectorized query processing with two components plus composition using Alis ECS
         /// </summary>
         [BenchmarkCategory(Categories.Frent), Benchmark]
         public void Alis_Simd()
@@ -142,10 +142,10 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleCo
         public struct SumAlis : IAction<Component1, Component2>
         {
             /// <summary>
-            ///     Runs the t 0
+            ///     Sums the second component value into the first
             /// </summary>
-            /// <param name="t0">The </param>
-            /// <param name="t1">The </param>
+            /// <param name="t0">The first component whose value will be increased</param>
+            /// <param name="t1">The second component whose value is added</param>
             public void Run(ref Component1 t0, ref Component2 t1)
             {
                 t0.Value += t1.Value;

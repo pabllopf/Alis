@@ -50,8 +50,8 @@ using Alis.Extension.Graphic.Ui.Fonts;
 namespace Alis.App.Hub
 {
     /// <summary>
-    ///     Sample host application that creates a native window, initializes OpenGL and ImGui,
-    ///     and runs the selected example. Code is organized for clarity and maintainability.
+    ///     Hub host application that creates a native window, initializes OpenGL and ImGui,
+    ///     and runs the Alis Hub launcher interface. Code is organized for clarity and maintainability.
     /// </summary>
     public class HubEngine
     {

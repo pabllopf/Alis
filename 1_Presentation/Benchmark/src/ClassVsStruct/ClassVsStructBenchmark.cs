@@ -44,9 +44,9 @@ namespace Alis.Benchmark.ClassVsStruct
         private const int Iterations = 1_000;
 
         /// <summary>
-        ///     Usings this instance
+        ///     Benchmarks property access on a class type
         /// </summary>
-        /// <returns>The sum</returns>
+        /// <returns>The sum of X and Y after iterations</returns>
         [Benchmark(Baseline = true)]
         public int UsingClass()
         {
@@ -61,9 +61,9 @@ namespace Alis.Benchmark.ClassVsStruct
         }
 
         /// <summary>
-        ///     Usings the sealed
+        ///     Benchmarks property access on a sealed class type
         /// </summary>
-        /// <returns>The sum</returns>
+        /// <returns>The sum of X and Y after iterations</returns>
         [Benchmark]
         public int UsingSealedClass()
         {
@@ -78,9 +78,9 @@ namespace Alis.Benchmark.ClassVsStruct
         }
 
         /// <summary>
-        ///     Usings the struct
+        ///     Benchmarks property access on a struct type
         /// </summary>
-        /// <returns>The sum</returns>
+        /// <returns>The sum of X and Y after iterations</returns>
         [Benchmark]
         public int UsingStruct()
         {
@@ -96,9 +96,9 @@ namespace Alis.Benchmark.ClassVsStruct
 
 
         /// <summary>
-        ///     Usings the struct
+        ///     Benchmarks property access on a ref struct type
         /// </summary>
-        /// <returns>The sum</returns>
+        /// <returns>The sum of X and Y after iterations</returns>
         [Benchmark]
         public int UsingRefStruct()
         {
@@ -113,9 +113,9 @@ namespace Alis.Benchmark.ClassVsStruct
         }
 
         /// <summary>
-        ///     Usings the record
+        ///     Benchmarks property access on a record type
         /// </summary>
-        /// <returns>The sum</returns>
+        /// <returns>The sum of X and Y after iterations</returns>
         [Benchmark]
         public int UsingRecord()
         {

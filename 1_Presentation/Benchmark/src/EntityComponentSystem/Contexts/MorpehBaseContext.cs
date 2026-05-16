@@ -44,7 +44,7 @@ namespace Alis.Benchmark.EntityComponentSystem.Contexts
         public MorpehBaseContext() => World = World.Create();
 
         /// <summary>
-        ///     Gets the value of the scene
+        ///     Gets the Morpeh world instance
         /// </summary>
         public World World { get; }
 

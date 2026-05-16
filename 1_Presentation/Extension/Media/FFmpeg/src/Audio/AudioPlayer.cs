@@ -93,7 +93,7 @@ namespace Alis.Extension.Media.FFmpeg.Audio
         ///     Play audio
         /// </summary>
         /// <param name="extraInputParameters">Extra FFmpeg input parameters to be passed (example: -probesize 32)</param>
-        /// <param name="showWindow"></param>
+        /// <param name="showWindow">Whether to show the ffplay video window; if false, uses -nodisp for audio-only playback.</param>
         public void Play(string extraInputParameters = "", bool showWindow = false)
         {
             if (OpenedForWriting)
@@ -110,11 +110,12 @@ namespace Alis.Extension.Media.FFmpeg.Audio
         }
 
         /// <summary>
-        ///     Play audio in background and return the process associated with it
+        ///     Play audio in background and return the process associated with it.
         /// </summary>
         /// <param name="extraInputParameters">Extra FFmpeg input parameters to be passed (example: -probesize 32)</param>
-        /// <param name="showWindow">Show player window</param>
+        /// <param name="showWindow">Show player window; if false, uses -nodisp for audio-only playback.</param>
         /// <param name="runPureBackground">Detach the player from this AudioPlayer control. Player won't be killed on disposing.</param>
+        /// <returns>The ffplay process running in the background.</returns>
         public Process PlayInBackground(string extraInputParameters = "", bool showWindow = false, bool runPureBackground = false)
         {
             if (!runPureBackground && OpenedForWriting)
@@ -210,11 +211,12 @@ namespace Alis.Extension.Media.FFmpeg.Audio
         /// <summary>
         ///     Get stream for writing and playing audio in custom format.
         /// </summary>
-        /// <param name="format">Custom audio format</param>
-        /// <param name="arguments">Custom FFmpeg arguments for the specified audio format</param>
-        /// <param name="ffplayProcess"></param>
+        /// <param name="format">Custom audio format (e.g. wav, mp3).</param>
+        /// <param name="arguments">Custom FFmpeg arguments for the specified audio format.</param>
+        /// <param name="ffplayProcess">The ffplay process created for playback.</param>
         /// <param name="showFFplayOutput">Show FFplay output for debugging purposes.</param>
-        /// <param name="ffplayExecutable"></param>
+        /// <param name="ffplayExecutable">Name or path to the ffplay executable.</param>
+        /// <returns>A writable stream for sending audio data to the player.</returns>
         public static Stream GetStreamForWriting(string format, string arguments, out Process ffplayProcess,
             bool showFFplayOutput = false, string ffplayExecutable = "ffplay")
         {
