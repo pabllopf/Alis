@@ -436,7 +436,25 @@ namespace Alis.Extension.Updater
         /// <exception cref="PlatformNotSupportedException">Platform not supported.</exception>
         /// <returns>The string</returns>
         [ExcludeFromCodeCoverage]
-        private string GetPlatform() => RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "win" : RuntimeInformation.IsOSPlatform(OSPlatform.Linux) ? "linux" : RuntimeInformation.IsOSPlatform(OSPlatform.OSX) ? "osx" : throw new PlatformNotSupportedException("Platform not supported.");
+        private string GetPlatform()
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return "win";
+            }
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                return "linux";
+            }
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                return "osx";
+            }
+
+            throw new PlatformNotSupportedException("Platform not supported.");
+        }
 
         /// <summary>
         ///     Selects the asset using the specified assets
