@@ -1927,10 +1927,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         public GenericEvent OnComponentRemovedGeneric
         {
-            readonly set
-            {
-                /*the set is just to enable the += syntax*/
-            }
+            set => InitalizeEventRecord(value, GameObjectFlags.RemoveGenericComp);
             get
             {
                 if (!InternalIsAlive(out Scene world, out _))
