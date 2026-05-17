@@ -72,51 +72,50 @@ namespace Alis.Core.Physic.Controllers
     public sealed class BuoyancyController : Controller
     {
         /// <summary>
-        ///     The gravity
+        ///     The gravity vector defining the direction and magnitude of gravitational force.
         /// </summary>
         private readonly Vector2F _gravity;
 
         /// <summary>
-        ///     The body
+        ///     Collection of unique bodies currently within the fluid region that are eligible for buoyancy calculations.
         /// </summary>
         private readonly ICollection<Body> _uniqueBodies = new List<Body>();
 
         /// <summary>
-        ///     Controls the rotational drag that the fluid exerts on the bodies within it. Use higher values will simulate thick
-        ///     fluid, like honey, lower values to
-        ///     simulate water-like fluids.
+        ///     Controls the rotational drag that the fluid exerts on bodies within it.
+        ///     Higher values simulate thicker fluids (e.g., honey), while lower values simulate water-like fluids.
         /// </summary>
         public readonly float AngularDragCoefficient;
 
         /// <summary>
-        ///     Density of the fluid. Higher values will make things more buoyant, lower values will cause things to sink.
+        ///     Density of the fluid. Higher values increase buoyancy, causing objects to float more readily.
+        ///     Lower values reduce buoyant force, causing objects to sink.
         /// </summary>
         public readonly float Density;
 
         /// <summary>
-        ///     Controls the linear drag that the fluid exerts on the bodies within it.  Use higher values will simulate thick
-        ///     fluid, like honey, lower values to
-        ///     simulate water-like fluids.
+        ///     Controls the linear drag that the fluid exerts on bodies within it.
+        ///     Higher values simulate thicker fluids (e.g., honey), while lower values simulate water-like fluids.
         /// </summary>
         public readonly float LinearDragCoefficient;
 
         /// <summary>
-        ///     The container
+        ///     The AABB defining the fluid region. Updated via the <see cref="Container"/> property.
         /// </summary>
         private Aabb _container;
 
         /// <summary>
-        ///     The normal
+        ///     The surface normal vector of the fluid, pointing upward. Defaults to (0, 1).
         /// </summary>
         private Vector2F _normal;
 
         /// <summary>
-        ///     The offset
+        ///     The Y-coordinate offset representing the fluid surface level, derived from <see cref="Container"/>.UpperBound.Y.
         /// </summary>
         private float _offset;
 
         /// <summary>
-        ///     Acts like waterflow. Defaults to 0,0.
+        ///     Simulates water current or flow velocity. Defaults to (0, 0).
         /// </summary>
         public Vector2F Velocity;
 
