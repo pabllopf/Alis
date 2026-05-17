@@ -30,7 +30,7 @@
 namespace Alis.Benchmark.ClassVsStruct.Instancies
 {
     /// <summary>
-    ///     The class point class
+    ///     Represents a point as a reference-type class with X and Y coordinates.
     /// </summary>
     public class ClassPoint
     {
