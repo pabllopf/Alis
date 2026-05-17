@@ -34,8 +34,13 @@ using Alis.Core.Physic.Dynamics;
 namespace Alis.Core.Physic.Common
 {
     /// <summary>
-    ///     The polygon tools class
+    ///     Provides factory methods for creating common 2D polygon shapes used in physics simulation.
     /// </summary>
+    /// <remarks>
+    ///     All methods return <see cref="Vertices"/> collections with vertices in counter-clockwise order,
+    ///     suitable for use as collision shapes. The shapes are centered at the origin by default,
+    ///     and can be transformed via body transforms.
+    /// </remarks>
     public static class PolygonTools
     {
         /// <summary>
@@ -55,12 +60,21 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        ///     Build vertices to represent an oriented box.
+        ///     Creates an axis-aligned rectangle centered at the origin.
         /// </summary>
-        /// <param name="hx">the half-width.</param>
-        /// <param name="hy">the half-height.</param>
-        /// <param name="center">the center of the box in local coordinates.</param>
-        /// <param name="angle">the rotation of the box in local coordinates.</param>
+        /// <param name="hx">Half the width of the rectangle (X extent from center).</param>
+        /// <param name="hy">Half the height of the rectangle (Y extent from center).</param>
+        /// <returns>A <see cref="Vertices"/> collection with 4 vertices in counter-clockwise order.</returns>
+        public static Vertices CreateRectangle(float hx, float hy)
+
+        /// <summary>
+        ///     Creates an oriented (rotated and translated) rectangle.
+        /// </summary>
+        /// <param name="hx">Half the width of the rectangle (X extent from center).</param>
+        /// <param name="hy">Half the height of the rectangle (Y extent from center).</param>
+        /// <param name="center">The center of the box in local coordinates.</param>
+        /// <param name="angle">The rotation angle of the box in radians.</param>
+        /// <returns>A <see cref="Vertices"/> collection with 4 vertices in counter-clockwise order.</returns>
         public static Vertices CreateRectangle(float hx, float hy, Vector2F center, float angle)
         {
             Vertices vertices = CreateRectangle(hx, hy);
@@ -81,12 +95,13 @@ namespace Alis.Core.Physic.Common
         /// <summary>
         ///     Creates a rounded rectangle with the specified width and height.
         /// </summary>
-        /// <param name="width">The width.</param>
-        /// <param name="height">The height.</param>
-        /// <param name="xRadius">The rounding X radius.</param>
-        /// <param name="yRadius">The rounding Y radius.</param>
-        /// <param name="segments">The number of segments to subdivide the edges.</param>
-        /// <returns></returns>
+        /// <param name="width">The total width of the rectangle.</param>
+        /// <param name="height">The total height of the rectangle.</param>
+        /// <param name="xRadius">The corner rounding radius along the X axis.</param>
+        /// <param name="yRadius">The corner rounding radius along the Y axis.</param>
+        /// <param name="segments">The number of segments per corner. Use 0 for a simple 8-vertex rounded rectangle.</param>
+        /// <returns>A <see cref="Vertices"/> collection representing the rounded rectangle.</returns>
+        /// <exception cref="Exception">Thrown when rounding exceeds half the width/height or segments is negative.</exception>
         public static Vertices CreateRoundedRectangle(float width, float height, float xRadius, float yRadius,
             int segments)
         {
@@ -193,12 +208,37 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        ///     Creates the arc using the specified radians
+        ///     Creates a single-edge polygon (line segment) between two points.
         /// </summary>
-        /// <param name="radians">The radians</param>
-        /// <param name="sides">The sides</param>
-        /// <param name="radius">The radius</param>
-        /// <returns>The vertices</returns>
+        /// <param name="start">The starting point of the line.</param>
+        /// <param name="end">The ending point of the line.</param>
+        /// <returns>A <see cref="Vertices"/> collection with 2 vertices.</returns>
+        public static Vertices CreateLine(Vector2F start, Vector2F end)
+
+        /// <summary>
+        ///     Creates a circle approximation with the specified radius and number of edges.
+        /// </summary>
+        /// <param name="radius">The radius of the circle.</param>
+        /// <param name="numberOfEdges">The number of edges. Higher values produce a smoother circle.</param>
+        /// <returns>A <see cref="Vertices"/> collection representing the circle.</returns>
+        public static Vertices CreateCircle(float radius, int numberOfEdges) => CreateEllipse(radius, radius, numberOfEdges);
+
+        /// <summary>
+        ///     Creates an ellipse approximation with the specified radii and number of edges.
+        /// </summary>
+        /// <param name="xRadius">The horizontal radius (semi-major axis).</param>
+        /// <param name="yRadius">The vertical radius (semi-minor axis).</param>
+        /// <param name="numberOfEdges">The number of edges. Higher values produce a smoother ellipse.</param>
+        /// <returns>A <see cref="Vertices"/> collection representing the ellipse.</returns>
+        public static Vertices CreateEllipse(float xRadius, float yRadius, int numberOfEdges)
+
+        /// <summary>
+        ///     Creates an arc shape with the specified angular span.
+        /// </summary>
+        /// <param name="radians">The total angular span of the arc in radians.</param>
+        /// <param name="sides">The number of line segments used to approximate the arc.</param>
+        /// <param name="radius">The radius of the arc.</param>
+        /// <returns>A <see cref="Vertices"/> collection representing the arc shape.</returns>
         public static Vertices CreateArc(float radians, int sides, float radius)
         {
             Vertices vertices = new Vertices();
@@ -236,15 +276,26 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        ///     Creates an capsule with the specified  height, radius and number of edges.
+        ///     Creates a capsule shape with the specified height, radius and number of edges.
         ///     A capsule has the same form as a pill capsule.
         /// </summary>
-        /// <param name="height">Height (inner height + radii) of the capsule.</param>
-        /// <param name="topRadius">Radius of the top.</param>
-        /// <param name="topEdges">The number of edges of the top. The more edges, the more it resembles an capsule</param>
-        /// <param name="bottomRadius">Radius of bottom.</param>
-        /// <param name="bottomEdges">The number of edges of the bottom. The more edges, the more it resembles an capsule</param>
-        /// <returns></returns>
+        /// <param name="height">Total height (inner height + 2 * radius) of the capsule.</param>
+        /// <param name="endRadius">Radius of both capsule end caps.</param>
+        /// <param name="edges">The number of edges per end cap. Higher values produce smoother caps.</param>
+        /// <returns>A <see cref="Vertices"/> collection representing the capsule shape.</returns>
+        /// <exception cref="ArgumentException">Thrown when radius is too large relative to height.</exception>
+        public static Vertices CreateCapsule(float height, float endRadius, int edges)
+
+        /// <summary>
+        ///     Creates a capsule shape with different radii for top and bottom end caps.
+        /// </summary>
+        /// <param name="height">Total height (inner height + radii) of the capsule.</param>
+        /// <param name="topRadius">Radius of the top end cap.</param>
+        /// <param name="topEdges">The number of edges for the top cap. Higher values produce smoother caps.</param>
+        /// <param name="bottomRadius">Radius of the bottom end cap.</param>
+        /// <param name="bottomEdges">The number of edges for the bottom cap. Higher values produce smoother caps.</param>
+        /// <returns>A <see cref="Vertices"/> collection representing the capsule shape.</returns>
+        /// <exception cref="ArgumentException">Thrown when parameters are invalid (zero/negative values or radius too large).</exception>
         public static Vertices CreateCapsule(float height, float topRadius, int topEdges, float bottomRadius,
             int bottomEdges)
         {
@@ -321,11 +372,11 @@ namespace Alis.Core.Physic.Common
         /// <summary>
         ///     Creates a gear shape with the specified radius and number of teeth.
         /// </summary>
-        /// <param name="radius">The radius.</param>
-        /// <param name="numberOfTeeth">The number of teeth.</param>
-        /// <param name="tipPercentage">The tip percentage.</param>
-        /// <param name="toothHeight">Height of the tooth.</param>
-        /// <returns></returns>
+        /// <param name="radius">The base radius of the gear (distance from center to tooth root).</param>
+        /// <param name="numberOfTeeth">The number of teeth on the gear.</param>
+        /// <param name="tipPercentage">The percentage of each tooth that is flat at the tip (0-100).</param>
+        /// <param name="toothHeight">The height of each tooth above the base radius.</param>
+        /// <returns>A <see cref="Vertices"/> collection representing the gear shape.</returns>
         public static Vertices CreateGear(float radius, int numberOfTeeth, float tipPercentage, float toothHeight)
         {
             Vertices vertices = new Vertices();

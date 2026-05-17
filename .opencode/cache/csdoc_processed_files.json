@@ -26,5 +26,13 @@
   "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Common/Vertices.cs": {
     "status": "documented",
     "timestamp": "2026-05-17T10:38:59.924795+00:00"
+  },
+  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Common/Sweep.cs": {
+    "status": "documented",
+    "timestamp": "2026-05-17T10:40:33.448952+00:00"
+  },
+  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Common/PolygonTools.cs": {
+    "status": "documented",
+    "timestamp": "2026-05-17T10:43:56.936677+00:00"
   }
 }
