@@ -86,9 +86,8 @@ namespace Alis.Core.Ecs.Collections
                 return new GameObjectType(InlineArray8<ushort>.Get(ref _ids, index));
             }
 
-            if (scene.ArchetypeGraphEdges.TryGetValue(
-                    edgeKey = ArchetypeEdgeKey.Component(new(id.Value), archetype, edgeType), out Archetype destination))
-                //warm/cool depending on number of times they add/remove
+            edgeKey = ArchetypeEdgeKey.Component(new(id.Value), archetype, edgeType);
+            if (scene.ArchetypeGraphEdges.TryGetValue(edgeKey, out Archetype destination))
             {
                 return destination.Id;
             }
