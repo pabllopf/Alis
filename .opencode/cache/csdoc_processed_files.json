@@ -70,5 +70,9 @@
   "/Users/pabllopf/repositorios/Alis/1_Presentation/Benchmark/src/CustomCollections/Arrays/NativeArray.cs": {
     "status": "documented",
     "timestamp": "2026-05-17T11:04:58.142293+00:00"
+  },
+  "/Users/pabllopf/repositorios/Alis/1_Presentation/Benchmark/src/CustomCollections/Arrays/NativeArrayUnsafeVsNativeArraySafe.cs": {
+    "status": "documented",
+    "timestamp": "2026-05-17T11:10:39.424135+00:00"
   }
 }
