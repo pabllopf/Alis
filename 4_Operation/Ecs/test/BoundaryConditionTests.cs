@@ -89,7 +89,7 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
 
             int count = 0;
-            foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities())
+            foreach (GameObject go in scene.Query<With<Position>>().EnumerateWithEntities())
             {
                 count++;
             }
@@ -200,7 +200,7 @@ namespace Alis.Core.Ecs.Test
             scene.Create(new Position {X = 1, Y = 1});
 
             int count = 0;
-            foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities())
+            foreach (GameObject go in scene.Query<With<Position>>().EnumerateWithEntities())
             {
                 count++;
             }

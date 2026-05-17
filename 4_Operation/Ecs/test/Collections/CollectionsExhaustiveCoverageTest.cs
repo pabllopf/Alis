@@ -202,7 +202,7 @@ namespace Alis.Core.Ecs.Test.Collections
             IEnumerator<int> emptyEnum = ((IEnumerable<int>) new FastestStack<int>()).GetEnumerator();
             Assert.False(emptyEnum.MoveNext());
 
-            var mismatch = stack.GetEnumerator();
+            FastestStack<int>.Enumerator mismatch = stack.GetEnumerator();
             FieldInfo versionField = typeof(FastestStack<int>.Enumerator)
                 .GetField("_version", BindingFlags.Instance | BindingFlags.NonPublic);
             Assert.NotNull(versionField);

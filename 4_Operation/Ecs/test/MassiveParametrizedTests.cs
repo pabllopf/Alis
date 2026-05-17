@@ -69,7 +69,7 @@ namespace Alis.Core.Ecs.Test
             }
 
             int queryCount = 0;
-            foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities())
+            foreach (GameObject go in scene.Query<With<Position>>().EnumerateWithEntities())
             {
                 queryCount++;
             }
@@ -85,7 +85,7 @@ namespace Alis.Core.Ecs.Test
         public void MassiveParam_CreateAndDelete(int count)
         {
             using Scene scene = new Scene();
-            var entities = new GameObject[count];
+            GameObject[] entities = new GameObject[count];
             for (int i = 0; i < count; i++)
             {
                 entities[i] = scene.Create();
@@ -107,7 +107,7 @@ namespace Alis.Core.Ecs.Test
         public void MassiveParam_AddComponentToAll(int count)
         {
             using Scene scene = new Scene();
-            var entities = new GameObject[count];
+            GameObject[] entities = new GameObject[count];
             for (int i = 0; i < count; i++)
             {
                 entities[i] = scene.Create();
@@ -119,7 +119,7 @@ namespace Alis.Core.Ecs.Test
             }
 
             int queryCount = 0;
-            foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities())
+            foreach (GameObject go in scene.Query<With<Position>>().EnumerateWithEntities())
             {
                 queryCount++;
             }
@@ -140,9 +140,9 @@ namespace Alis.Core.Ecs.Test
                 scene.Create(new Position {X = i, Y = i});
             }
 
-            var toRemove = new List<GameObject>();
+            List<GameObject> toRemove = new List<GameObject>();
             int idx = 0;
-            foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities())
+            foreach (GameObject go in scene.Query<With<Position>>().EnumerateWithEntities())
             {
                 if (idx < count / 2)
                 {
@@ -152,13 +152,13 @@ namespace Alis.Core.Ecs.Test
                 idx++;
             }
 
-            foreach (var go in toRemove)
+            foreach (GameObject go in toRemove)
             {
                 go.Remove<Position>();
             }
 
             int remaining = 0;
-            foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities())
+            foreach (GameObject go in scene.Query<With<Position>>().EnumerateWithEntities())
             {
                 remaining++;
             }
@@ -182,7 +182,7 @@ namespace Alis.Core.Ecs.Test
             for (int q = 0; q < 10; q++)
             {
                 int count = 0;
-                foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities())
+                foreach (GameObject go in scene.Query<With<Position>>().EnumerateWithEntities())
                 {
                     count++;
                 }
@@ -199,7 +199,7 @@ namespace Alis.Core.Ecs.Test
         public void MassiveParam_ModifyComponents(int entityCount)
         {
             using Scene scene = new Scene();
-            var entities = new GameObject[entityCount];
+            GameObject[] entities = new GameObject[entityCount];
             for (int i = 0; i < entityCount; i++)
             {
                 entities[i] = scene.Create(new Position {X = 0, Y = 0});
@@ -257,7 +257,7 @@ namespace Alis.Core.Ecs.Test
             }
 
             int queryCount = 0;
-            foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities())
+            foreach (GameObject go in scene.Query<With<Position>>().EnumerateWithEntities())
             {
                 queryCount++;
             }
@@ -273,7 +273,7 @@ namespace Alis.Core.Ecs.Test
         public void MassiveParam_MixedOperations(int entityCount)
         {
             using Scene scene = new Scene();
-            var entities = new List<GameObject>();
+            List<GameObject> entities = new List<GameObject>();
 
             for (int i = 0; i < entityCount * 3; i++)
             {
@@ -322,7 +322,7 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             for (int i = 0; i < entityCount; i++)
             {
-                var go = scene.Create();
+                GameObject go = scene.Create();
                 if (componentCount >= 1)
                 {
                     go.Add(new Position {X = 1, Y = 1});

@@ -107,7 +107,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         {
             // Arrange
             using Scene scene = new Scene();
-            var entities = new GameObject[entityCount];
+            GameObject[] entities = new GameObject[entityCount];
             for (int i = 0; i < entityCount; i++)
             {
                 entities[i] = scene.Create(new Position {X = i, Y = i});

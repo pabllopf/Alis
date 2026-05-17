@@ -80,7 +80,7 @@ namespace Alis.Core.Ecs.Test
 
             // Assert
             int count = 0;
-            foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities())
+            foreach (GameObject go in scene.Query<With<Position>>().EnumerateWithEntities())
             {
                 count++;
             }
@@ -97,7 +97,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            var entities = new GameObject[entityCount];
+            GameObject[] entities = new GameObject[entityCount];
             for (int i = 0; i < entityCount; i++)
             {
                 entities[i] = scene.Create();
@@ -180,7 +180,7 @@ namespace Alis.Core.Ecs.Test
             for (int q = 0; q < 100; q++)
             {
                 int count = 0;
-                foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities())
+                foreach (GameObject go in scene.Query<With<Position>>().EnumerateWithEntities())
                 {
                     count++;
                 }
@@ -311,12 +311,12 @@ namespace Alis.Core.Ecs.Test
 
             // Assert
             int count1 = 0, count2 = 0;
-            foreach (var go in scene1.Query<With<Position>>().EnumerateWithEntities())
+            foreach (GameObject go in scene1.Query<With<Position>>().EnumerateWithEntities())
             {
                 count1++;
             }
 
-            foreach (var go in scene2.Query<With<Health>>().EnumerateWithEntities())
+            foreach (GameObject go in scene2.Query<With<Health>>().EnumerateWithEntities())
             {
                 count2++;
             }
@@ -337,7 +337,7 @@ namespace Alis.Core.Ecs.Test
             // Act
             for (int i = 0; i < depth; i++)
             {
-                var go = scene.Create(new Position {X = i, Y = i});
+                GameObject go = scene.Create(new Position {X = i, Y = i});
 
                 // Deep operation chain
                 if (go.IsAlive)
@@ -368,7 +368,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            var entities = new List<GameObject>();
+            List<GameObject> entities = new List<GameObject>();
 
             // Act
             for (int i = 0; i < iterations; i++)
@@ -379,7 +379,7 @@ namespace Alis.Core.Ecs.Test
                 }
                 else if ((i % 3 == 1) && (entities.Count > 0))
                 {
-                    var idx = i % entities.Count;
+                    int idx = i % entities.Count;
                     if (entities[idx].IsAlive)
                     {
                         ref Position pos = ref entities[idx].Get<Position>();
@@ -388,7 +388,7 @@ namespace Alis.Core.Ecs.Test
                 }
                 else if ((i % 3 == 2) && (entities.Count > 0))
                 {
-                    var idx = i % entities.Count;
+                    int idx = i % entities.Count;
                     entities[idx].Delete();
                 }
             }

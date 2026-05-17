@@ -18,7 +18,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void DisplayMode_DefaultValues_AreZero()
         {
-            var mode = new DisplayMode();
+            DisplayMode mode = new DisplayMode();
             Assert.Equal(0, mode.Width);
             Assert.Equal(0, mode.Height);
             Assert.Equal(0, mode.RefreshRate);
@@ -28,7 +28,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void DisplayMode_SetProperties_Works()
         {
-            var mode = new DisplayMode
+            DisplayMode mode = new DisplayMode
             {
                 Width = 1920,
                 Height = 1080,
@@ -44,22 +44,22 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void DisplayMode_ToString_ReturnsExpectedFormat()
         {
-            var mode = new DisplayMode { Width = 1920, Height = 1080, RefreshRate = 60 };
+            DisplayMode mode = new DisplayMode { Width = 1920, Height = 1080, RefreshRate = 60 };
             Assert.Equal("1920x1080@60Hz", mode.ToString());
         }
 
         [Fact]
         public void DisplayMode_ToString_WithZeroRefreshRate()
         {
-            var mode = new DisplayMode { Width = 800, Height = 600, RefreshRate = 0 };
+            DisplayMode mode = new DisplayMode { Width = 800, Height = 600, RefreshRate = 0 };
             Assert.Equal("800x600@0Hz", mode.ToString());
         }
 
         [Fact]
         public void DisplayMode_ToString_WithDifferentRefreshRates()
         {
-            var mode60 = new DisplayMode { Width = 1920, Height = 1080, RefreshRate = 60 };
-            var mode144 = new DisplayMode { Width = 1920, Height = 1080, RefreshRate = 144 };
+            DisplayMode mode60 = new DisplayMode { Width = 1920, Height = 1080, RefreshRate = 60 };
+            DisplayMode mode144 = new DisplayMode { Width = 1920, Height = 1080, RefreshRate = 144 };
             Assert.Equal("1920x1080@60Hz", mode60.ToString());
             Assert.Equal("1920x1080@144Hz", mode144.ToString());
         }
@@ -67,8 +67,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void DisplayMode_MultipleModes_DifferentInstances()
         {
-            var mode1 = new DisplayMode { Width = 800, Height = 600 };
-            var mode2 = new DisplayMode { Width = 1920, Height = 1080 };
+            DisplayMode mode1 = new DisplayMode { Width = 800, Height = 600 };
+            DisplayMode mode2 = new DisplayMode { Width = 1920, Height = 1080 };
             Assert.NotSame(mode1, mode2);
             Assert.NotEqual(mode1, mode2);
         }
@@ -80,7 +80,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void DisplayEventArgs_CanSetProperties()
         {
-            var args = new DisplayEventArgs { Width = 1024, Height = 768 };
+            DisplayEventArgs args = new DisplayEventArgs { Width = 1024, Height = 768 };
             Assert.Equal(1024, args.Width);
             Assert.Equal(768, args.Height);
         }
@@ -92,7 +92,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void OrientationEventArgs_CanSetProperties()
         {
-            var args = new OrientationEventArgs { Orientation = ScreenOrientation.Landscape };
+            OrientationEventArgs args = new OrientationEventArgs { Orientation = ScreenOrientation.Landscape };
             Assert.Equal(ScreenOrientation.Landscape, args.Orientation);
         }
 
@@ -105,7 +105,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [InlineData(false)]
         public void FullscreenEventArgs_CanSetIsFullscreen(bool value)
         {
-            var args = new FullscreenEventArgs { IsFullscreen = value };
+            FullscreenEventArgs args = new FullscreenEventArgs { IsFullscreen = value };
             Assert.Equal(value, args.IsFullscreen);
         }
 
@@ -116,24 +116,24 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void DisplayManager_GetWidth_ReturnsPlatformWidth()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyDisplayManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyDisplayManager manager = new WebAssemblyDisplayManager(platform);
             Assert.Equal(800, manager.GetWidth());
         }
 
         [Fact]
         public void DisplayManager_GetHeight_ReturnsPlatformHeight()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyDisplayManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyDisplayManager manager = new WebAssemblyDisplayManager(platform);
             Assert.Equal(600, manager.GetHeight());
         }
 
         [Fact]
         public void DisplayManager_GetAspectRatio_CorrectCalculation()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyDisplayManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyDisplayManager manager = new WebAssemblyDisplayManager(platform);
             float aspect = manager.GetAspectRatio();
             Assert.Equal(800.0f / 600.0f, aspect, 3);
         }
@@ -141,9 +141,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void DisplayManager_GetAspectRatio_Widescreen()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnWindowResize", 1920, 1080);
-            var manager = new WebAssemblyDisplayManager(platform);
+            WebAssemblyDisplayManager manager = new WebAssemblyDisplayManager(platform);
             float aspect = manager.GetAspectRatio();
             Assert.Equal(1920.0f / 1080.0f, aspect, 3);
         }
@@ -151,34 +151,34 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void DisplayManager_GetOrientation_Landscape()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyDisplayManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyDisplayManager manager = new WebAssemblyDisplayManager(platform);
             Assert.Equal(ScreenOrientation.Landscape, manager.GetOrientation());
         }
 
         [Fact]
         public void DisplayManager_GetOrientation_Portrait()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnWindowResize", 600, 800);
-            var manager = new WebAssemblyDisplayManager(platform);
+            WebAssemblyDisplayManager manager = new WebAssemblyDisplayManager(platform);
             Assert.Equal(ScreenOrientation.Portrait, manager.GetOrientation());
         }
 
         [Fact]
         public void DisplayManager_GetOrientation_Square()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnWindowResize", 500, 500);
-            var manager = new WebAssemblyDisplayManager(platform);
+            WebAssemblyDisplayManager manager = new WebAssemblyDisplayManager(platform);
             Assert.Equal(ScreenOrientation.Square, manager.GetOrientation());
         }
 
         [Fact]
         public void DisplayManager_GetDevicePixelRatio_ReturnsDefaultOnNonBrowser()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyDisplayManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyDisplayManager manager = new WebAssemblyDisplayManager(platform);
             float ratio = WebAssemblyDisplayManager.GetDevicePixelRatio();
             Assert.Equal(1.0f, ratio);
         }
@@ -197,8 +197,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void DisplayManager_SetResolution_CatchesException_ReturnsFalse()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyDisplayManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyDisplayManager manager = new WebAssemblyDisplayManager(platform);
             bool result = manager.SetResolution(1024, 768);
             Assert.False(result);
         }
@@ -210,24 +210,24 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void DisplayManager_ToggleFullscreen_ReturnsFalseOnNonBrowser()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyDisplayManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyDisplayManager manager = new WebAssemblyDisplayManager(platform);
             Assert.False(manager.ToggleFullscreen());
         }
 
         [Fact]
         public void DisplayManager_EnterFullscreen_ReturnsFalseOnNonBrowser()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyDisplayManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyDisplayManager manager = new WebAssemblyDisplayManager(platform);
             Assert.False(manager.EnterFullscreen());
         }
 
         [Fact]
         public void DisplayManager_ExitFullscreen_ReturnsFalseOnNonBrowser()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyDisplayManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyDisplayManager manager = new WebAssemblyDisplayManager(platform);
             Assert.False(manager.ExitFullscreen());
         }
 
@@ -244,8 +244,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void DisplayManager_GetSupportedModes_ReturnsModes()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyDisplayManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyDisplayManager manager = new WebAssemblyDisplayManager(platform);
             DisplayMode[] modes = manager.GetSupportedModes();
             Assert.NotNull(modes);
             Assert.NotEmpty(modes);
@@ -255,8 +255,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void DisplayManager_GetSupportedModes_ContainsStandardResolutions()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyDisplayManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyDisplayManager manager = new WebAssemblyDisplayManager(platform);
             DisplayMode[] modes = manager.GetSupportedModes();
             Assert.Contains(modes, m => m.Width == 640 && m.Height == 480);
             Assert.Contains(modes, m => m.Width == 800 && m.Height == 600);
@@ -266,8 +266,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void DisplayManager_GetSupportedModes_ContainsFullscreenMode()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyDisplayManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyDisplayManager manager = new WebAssemblyDisplayManager(platform);
             DisplayMode[] modes = manager.GetSupportedModes();
             Assert.Contains(modes, m => m.IsFullscreenOnly);
         }
@@ -275,8 +275,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void DisplayManager_FindDisplayMode_ExistingMode_ReturnsMode()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyDisplayManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyDisplayManager manager = new WebAssemblyDisplayManager(platform);
             DisplayMode mode = manager.FindDisplayMode(1920, 1080);
             Assert.NotNull(mode);
             Assert.Equal(1920, mode.Width);
@@ -286,8 +286,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void DisplayManager_FindDisplayMode_NonExisting_ReturnsNull()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyDisplayManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyDisplayManager manager = new WebAssemblyDisplayManager(platform);
             DisplayMode mode = manager.FindDisplayMode(9999, 9999);
             Assert.Null(mode);
         }
@@ -295,8 +295,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void DisplayManager_FindDisplayMode_640x480_ReturnsMode()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyDisplayManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyDisplayManager manager = new WebAssemblyDisplayManager(platform);
             DisplayMode mode = manager.FindDisplayMode(640, 480);
             Assert.NotNull(mode);
             Assert.Equal(640, mode.Width);
@@ -316,8 +316,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [InlineData(DisplayQuality.Ultra, 1.5f)]
         public void DisplayManager_GetRenderingScale_CorrectValue(DisplayQuality quality, float expectedScale)
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyDisplayManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyDisplayManager manager = new WebAssemblyDisplayManager(platform);
             manager.SetDisplayQuality(quality);
             Assert.Equal(expectedScale, manager.GetRenderingScale());
         }
@@ -325,16 +325,16 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void DisplayManager_GetDisplayQuality_DefaultIsHigh()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyDisplayManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyDisplayManager manager = new WebAssemblyDisplayManager(platform);
             Assert.Equal(DisplayQuality.High, manager.GetDisplayQuality());
         }
 
         [Fact]
         public void DisplayManager_SetDisplayQuality_ChangesQuality()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyDisplayManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyDisplayManager manager = new WebAssemblyDisplayManager(platform);
             manager.SetDisplayQuality(DisplayQuality.Ultra);
             Assert.Equal(DisplayQuality.Ultra, manager.GetDisplayQuality());
         }
@@ -389,8 +389,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void DisplayManager_Update_NoChange_DoesNotTriggerEvents()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyDisplayManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyDisplayManager manager = new WebAssemblyDisplayManager(platform);
             int resizeCount = 0;
             manager.OnDisplayResized += (s, e) => resizeCount++;
 
@@ -405,8 +405,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void DisplayManager_Update_SizeChange_TriggersResizeEvent()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyDisplayManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyDisplayManager manager = new WebAssemblyDisplayManager(platform);
             int resizeCount = 0;
             manager.OnDisplayResized += (s, e) => resizeCount++;
             InvokePrivate(platform, "OnWindowResize", 1920, 1080);
@@ -421,8 +421,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void DisplayManager_Update_OrientationChange_TriggersOrientationEvent()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyDisplayManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyDisplayManager manager = new WebAssemblyDisplayManager(platform);
             int orientationCount = 0;
             manager.OnOrientationChanged += (s, e) => orientationCount++;
             InvokePrivate(platform, "OnWindowResize", 600, 800);
@@ -437,8 +437,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void DisplayManager_Update_FullscreenChange_TriggersFullscreenEvent()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyDisplayManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyDisplayManager manager = new WebAssemblyDisplayManager(platform);
             int fullscreenCount = 0;
             manager.OnFullscreenChanged += (s, e) => fullscreenCount++;
 

@@ -66,7 +66,7 @@ namespace Alis.Core.Ecs.Test
 
             if (o == 1)
             {
-                foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities())
+                foreach (GameObject go in scene.Query<With<Position>>().EnumerateWithEntities())
                 {
                     ref Position pos = ref go.Get<Position>();
                     pos.X += m;
@@ -91,7 +91,7 @@ namespace Alis.Core.Ecs.Test
             }
 
             int queryCount = 0;
-            foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities())
+            foreach (GameObject go in scene.Query<With<Position>>().EnumerateWithEntities())
             {
                 queryCount++;
             }
@@ -111,7 +111,7 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             for (int i = 0; i < a; i++)
             {
-                var go = scene.Create();
+                GameObject go = scene.Create();
                 if (b >= 1)
                 {
                     go.Add(new Position {X = 1, Y = 1});

@@ -49,7 +49,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            var stopwatch = Stopwatch.StartNew();
+            Stopwatch stopwatch = Stopwatch.StartNew();
 
             // Act
             for (int i = 0; i < entityCount; i++)
@@ -85,7 +85,7 @@ namespace Alis.Core.Ecs.Test
 
             // Assert
             int count = 0;
-            foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities())
+            foreach (GameObject go in scene.Query<With<Position>>().EnumerateWithEntities())
             {
                 count++;
             }
@@ -111,7 +111,7 @@ namespace Alis.Core.Ecs.Test
             for (int i = 0; i < queryCount; i++)
             {
                 int count = 0;
-                foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities())
+                foreach (GameObject go in scene.Query<With<Position>>().EnumerateWithEntities())
                 {
                     count++;
                 }
@@ -156,7 +156,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            var entities = new GameObject[entityCount];
+            GameObject[] entities = new GameObject[entityCount];
             for (int i = 0; i < entityCount; i++)
             {
                 entities[i] = scene.Create();
@@ -207,7 +207,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            var entities = new List<GameObject>();
+            List<GameObject> entities = new List<GameObject>();
 
             // Act
             for (int i = 0; i < operationCount; i++)
@@ -307,11 +307,11 @@ namespace Alis.Core.Ecs.Test
             }
 
             // Act
-            var stopwatch = Stopwatch.StartNew();
+            Stopwatch stopwatch = Stopwatch.StartNew();
             for (int q = 0; q < 10; q++)
             {
                 int count = 0;
-                foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities())
+                foreach (GameObject go in scene.Query<With<Position>>().EnumerateWithEntities())
                 {
                     count++;
                 }

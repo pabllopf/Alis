@@ -380,7 +380,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static WebAssemblyPlatform CreateForGameDevelopment(int width = 1280, int height = 720)
         {
-            var config = new WebAssemblyConfiguration
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration
             {
                 WindowWidth = width,
                 WindowHeight = height,
@@ -406,7 +406,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static WebAssemblyPlatform CreateForLowEndDevice(int width = 800, int height = 600)
         {
-            var config = new WebAssemblyConfiguration
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration
             {
                 WindowWidth = width,
                 WindowHeight = height,
@@ -428,7 +428,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static WebAssemblyPlatform CreateForHighEndDevice(int width = 1920, int height = 1080)
         {
-            var config = new WebAssemblyConfiguration
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration
             {
                 WindowWidth = width,
                 WindowHeight = height,

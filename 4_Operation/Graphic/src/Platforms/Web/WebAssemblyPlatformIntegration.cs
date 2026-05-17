@@ -324,7 +324,7 @@ namespace Alis.Core.Graphic.Platforms.Web
             if (_gameContext.IsKeyDown(ConsoleKey.D))
                 x += 1;
 
-            if (_gameContext.TryGetGamepadState(0, out var state))
+            if (_gameContext.TryGetGamepadState(0, out GamepadInputState state))
             {
                 x += state.CurrentState.LeftStickX;
                 y += state.CurrentState.LeftStickY;
@@ -347,7 +347,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         public bool IsJumpPressed()
         {
             bool keyboard = _gameContext.IsKeyDown(ConsoleKey.Spacebar);
-            bool gamepad = _gameContext.TryGetGamepadState(0, out var state) && state.CurrentState.ButtonA;
+            bool gamepad = _gameContext.TryGetGamepadState(0, out GamepadInputState state) && state.CurrentState.ButtonA;
             return keyboard || gamepad;
         }
 
@@ -358,7 +358,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         public bool IsAttackPressed()
         {
             bool keyboard = _gameContext.IsKeyDown(ConsoleKey.E);
-            bool gamepad = _gameContext.TryGetGamepadState(0, out var state) && state.CurrentState.ButtonX;
+            bool gamepad = _gameContext.TryGetGamepadState(0, out GamepadInputState state) && state.CurrentState.ButtonX;
             return keyboard || gamepad;
         }
 
@@ -375,7 +375,7 @@ namespace Alis.Core.Graphic.Platforms.Web
             _gameContext.GetMousePosition(out int mx, out int my);
             // Use mouse position for camera control
 
-            if (_gameContext.TryGetGamepadState(0, out var state))
+            if (_gameContext.TryGetGamepadState(0, out GamepadInputState state))
             {
                 pitch += state.CurrentState.RightStickY * 90; // Convert to degrees
                 yaw += state.CurrentState.RightStickX * 90;
@@ -534,7 +534,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static void RunMinimalGame(Action<int, int> onRender)
         {
-            using (var game = WebAssemblyGameContext.Create(1280, 720, "Game"))
+            using (WebAssemblyGameContext game = WebAssemblyGameContext.Create(1280, 720, "Game"))
             {
                 game.Run((context) =>
                 {

@@ -59,8 +59,8 @@ namespace Alis.Core.Ecs.Test.Systems
             scene.Create(new Position {X = 3, Y = 4}, new Velocity {X = 9, Y = 9});
             Query query = scene.Query<With<Position>>();
 
-            var enumerable = query.EnumerateChunks<Position>();
-            using var enumerator = enumerable.GetEnumerator();
+            ChunkQueryEnumerator<Position>.QueryEnumerable enumerable = query.EnumerateChunks<Position>();
+            using ChunkQueryEnumerator<Position> enumerator = enumerable.GetEnumerator();
 
             Assert.False(scene.AllowStructualChanges);
 
@@ -87,7 +87,7 @@ namespace Alis.Core.Ecs.Test.Systems
             scene.Create(new Position {X = 10, Y = 20}, new Velocity {X = 30, Y = 40});
             Query query = scene.Query<With<Position>, With<Velocity>>();
 
-            using var enumerator = query.EnumerateChunks<Position, Velocity>().GetEnumerator();
+            using ChunkQueryEnumerator<Position, Velocity> enumerator = query.EnumerateChunks<Position, Velocity>().GetEnumerator();
 
             Assert.True(enumerator.MoveNext());
             ChunkTuple<Position, Velocity> current = enumerator.Current;
@@ -108,7 +108,7 @@ namespace Alis.Core.Ecs.Test.Systems
             scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 5});
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>>();
 
-            using var enumerator = query.EnumerateChunks<Position, Velocity, Health>().GetEnumerator();
+            using ChunkQueryEnumerator<Position, Velocity, Health> enumerator = query.EnumerateChunks<Position, Velocity, Health>().GetEnumerator();
 
             Assert.True(enumerator.MoveNext());
             ChunkTuple<Position, Velocity, Health> current = enumerator.Current;
@@ -132,7 +132,7 @@ namespace Alis.Core.Ecs.Test.Systems
                 new Transform {X = 6, Y = 7, Rotation = 8});
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>>();
 
-            using var enumerator = query.EnumerateChunks<Position, Velocity, Health, Transform>().GetEnumerator();
+            using ChunkQueryEnumerator<Position, Velocity, Health, Transform> enumerator = query.EnumerateChunks<Position, Velocity, Health, Transform>().GetEnumerator();
 
             Assert.True(enumerator.MoveNext());
             ChunkTuple<Position, Velocity, Health, Transform> current = enumerator.Current;
@@ -158,7 +158,7 @@ namespace Alis.Core.Ecs.Test.Systems
                 new TestComponent {Value = 9, Name = "n"});
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>>();
 
-            using var enumerator = query.EnumerateChunks<Position, Velocity, Health, Transform, TestComponent>().GetEnumerator();
+            using ChunkQueryEnumerator<Position, Velocity, Health, Transform, TestComponent> enumerator = query.EnumerateChunks<Position, Velocity, Health, Transform, TestComponent>().GetEnumerator();
 
             Assert.True(enumerator.MoveNext());
             ChunkTuple<Position, Velocity, Health, Transform, TestComponent> current = enumerator.Current;
@@ -186,7 +186,7 @@ namespace Alis.Core.Ecs.Test.Systems
                 new AnotherComponent {Data = 10, Y = 11, Name = "a"});
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>, With<AnotherComponent>>();
 
-            using var enumerator = query.EnumerateChunks<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>().GetEnumerator();
+            using ChunkQueryEnumerator<Position, Velocity, Health, Transform, TestComponent, AnotherComponent> enumerator = query.EnumerateChunks<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>().GetEnumerator();
 
             Assert.True(enumerator.MoveNext());
             ChunkTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent> current = enumerator.Current;
@@ -216,7 +216,7 @@ namespace Alis.Core.Ecs.Test.Systems
                 new Damage {Value = 12});
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>, With<AnotherComponent>, With<Damage>>();
 
-            using var enumerator = query.EnumerateChunks<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage>().GetEnumerator();
+            using ChunkQueryEnumerator<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage> enumerator = query.EnumerateChunks<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage>().GetEnumerator();
 
             Assert.True(enumerator.MoveNext());
             ChunkTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage> current = enumerator.Current;
@@ -250,8 +250,8 @@ namespace Alis.Core.Ecs.Test.Systems
 
             Assert.True(scene.AllowStructualChanges);
 
-            var enumerable = query.EnumerateChunks<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>();
-            using var enumerator = enumerable.GetEnumerator();
+            ChunkQueryEnumerator<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>.QueryEnumerable enumerable = query.EnumerateChunks<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>();
+            using ChunkQueryEnumerator<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor> enumerator = enumerable.GetEnumerator();
             Assert.False(scene.AllowStructualChanges);
 
             Assert.True(enumerator.MoveNext());

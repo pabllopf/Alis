@@ -49,12 +49,12 @@ namespace Alis.Core.Ecs.Test
         public void MatrixTest_SceneOperations(int entityCount, int componentType, int operationType)
         {
             using Scene scene = new Scene();
-            var entities = new List<GameObject>();
+            List<GameObject> entities = new List<GameObject>();
 
             // Create entities
             for (int i = 0; i < entityCount; i++)
             {
-                var go = scene.Create();
+                GameObject go = scene.Create();
                 if (componentType >= 1)
                 {
                     go.Add(new Position {X = i, Y = i});
@@ -79,7 +79,7 @@ namespace Alis.Core.Ecs.Test
                 case 0: // Query
                 {
                     int count = 0;
-                    foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities())
+                    foreach (GameObject go in scene.Query<With<Position>>().EnumerateWithEntities())
                     {
                         count++;
                     }
@@ -89,7 +89,7 @@ namespace Alis.Core.Ecs.Test
                 }
                 case 1: // Modify
                 {
-                    foreach (var go in entities)
+                    foreach (GameObject go in entities)
                     {
                         if (go.Has<Position>())
                         {
@@ -114,7 +114,7 @@ namespace Alis.Core.Ecs.Test
                 }
                 case 3: // Add
                 {
-                    foreach (var go in entities)
+                    foreach (GameObject go in entities)
                     {
                         if (!go.Has<Health>())
                         {
@@ -135,17 +135,17 @@ namespace Alis.Core.Ecs.Test
         /// <returns>The data</returns>
         public static IEnumerable<object[]> GetSceneTestData()
         {
-            var data = new List<object[]>();
+            List<object[]> data = new List<object[]>();
 
             int[] entityCounts = {1, 2, 5, 10, 20};
             int[] componentTypes = {1, 2, 3};
             int[] operationTypes = {0, 1, 2, 3};
 
-            foreach (var entityCount in entityCounts)
+            foreach (int entityCount in entityCounts)
             {
-                foreach (var componentType in componentTypes)
+                foreach (int componentType in componentTypes)
                 {
-                    foreach (var operationType in operationTypes)
+                    foreach (int operationType in operationTypes)
                     {
                         data.Add(new object[] {entityCount, componentType, operationType});
                     }

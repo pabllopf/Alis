@@ -64,7 +64,7 @@ namespace Alis.Core.Ecs.Sample.Samples
             scene.Create(7);
             scene.Create(9);
 
-            foreach (var tuple in scene.Query<With<int>>().EnumerateWithEntities<int>())
+            foreach (Systems.GameObjectRefTuple<int> tuple in scene.Query<With<int>>().EnumerateWithEntities<int>())
             {
                 Console.WriteLine($"Entity alive={tuple.GameObject.IsAlive}, value={tuple.Item1.Value}");
             }

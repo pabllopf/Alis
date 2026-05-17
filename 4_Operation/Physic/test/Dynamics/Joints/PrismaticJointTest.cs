@@ -1,5 +1,6 @@
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
+using Alis.Core.Physic.Dynamics.Joints;
 using Xunit;
 
 namespace Alis.Core.Physic.Test.Dynamics.Joints
@@ -27,7 +28,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Body bodyA = new Body {GetBodyType = BodyType.Dynamic, Position = new Vector2F(0.0f, 0.0f)};
             Body bodyB = new Body {GetBodyType = BodyType.Dynamic, Position = new Vector2F(5.0f, 0.0f)};
 
-            var joint = new global::Alis.Core.Physic.Dynamics.Joints.PrismaticJoint(
+            PrismaticJoint joint = new global::Alis.Core.Physic.Dynamics.Joints.PrismaticJoint(
                 bodyA,
                 bodyB,
                 new Vector2F(0.0f, 0.0f),
@@ -45,7 +46,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Body bodyA = new Body {GetBodyType = BodyType.Dynamic, Position = new Vector2F(0.0f, 0.0f)};
             Body bodyB = new Body {GetBodyType = BodyType.Dynamic, Position = new Vector2F(2.0f, 0.0f)};
 
-            var joint = new global::Alis.Core.Physic.Dynamics.Joints.PrismaticJoint(
+            PrismaticJoint joint = new global::Alis.Core.Physic.Dynamics.Joints.PrismaticJoint(
                 bodyA,
                 bodyB,
                 new Vector2F(0.0f, 0.0f),
@@ -66,7 +67,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Body bodyA = new Body {GetBodyType = BodyType.Dynamic};
             Body bodyB = new Body {GetBodyType = BodyType.Dynamic};
 
-            var joint = new global::Alis.Core.Physic.Dynamics.Joints.PrismaticJoint(
+            PrismaticJoint joint = new global::Alis.Core.Physic.Dynamics.Joints.PrismaticJoint(
                 bodyA,
                 bodyB,
                 new Vector2F(0.0f, 0.0f),

@@ -67,7 +67,7 @@ namespace Alis.Core.Ecs.Sample.Samples
 
             Console.WriteLine($"Initial entity count: {scene.EntityCount}");
 
-            foreach (var tuple in scene.Query<With<int>>().EnumerateWithEntities<int>())
+            foreach (Systems.GameObjectRefTuple<int> tuple in scene.Query<With<int>>().EnumerateWithEntities<int>())
             {
                 if (tuple.Item1.Value % 2 == 0)
                 {

@@ -136,7 +136,7 @@ namespace Alis.Test
         public void Constructor_EmptyArray_ShouldCreateEmptyRuntime()
         {
             // Arrange & Act
-            var runtime = new InternalRuntime<AManager>();
+            InternalRuntime<AManager> runtime = new InternalRuntime<AManager>();
 
             // Assert - should not throw, just be empty
             Assert.NotNull(runtime);
@@ -149,14 +149,14 @@ namespace Alis.Test
         public void Constructor_SingleItem_ShouldStoreIt()
         {
             // Arrange
-            var context = new Context();
-            var testRuntime = new TestRuntime(context);
+            Context context = new Context();
+            TestRuntime testRuntime = new TestRuntime(context);
 
             // Act
-            var runtime = new InternalRuntime<AManager>(testRuntime);
+            InternalRuntime<AManager> runtime = new InternalRuntime<AManager>(testRuntime);
 
             // Assert
-            var retrieved = runtime.Get<TestRuntime>();
+            TestRuntime retrieved = runtime.Get<TestRuntime>();
             Assert.Same(testRuntime, retrieved);
         }
         
@@ -168,12 +168,12 @@ namespace Alis.Test
         public void Get_ReturnsCorrectType_WhenPresent()
         {
             // Arrange
-            var context = new Context();
-            var testRuntime = new TestRuntime(context);
-            var runtime = new InternalRuntime<AManager>(testRuntime);
+            Context context = new Context();
+            TestRuntime testRuntime = new TestRuntime(context);
+            InternalRuntime<AManager> runtime = new InternalRuntime<AManager>(testRuntime);
 
             // Act
-            var result = runtime.Get<TestRuntime>();
+            TestRuntime result = runtime.Get<TestRuntime>();
 
             // Assert
             Assert.NotNull(result);
@@ -187,11 +187,11 @@ namespace Alis.Test
         public void Get_ThrowsInvalidOperationException_WhenTypeNotFound()
         {
             // Arrange
-            var context = new Context();
-            var runtime = new InternalRuntime<AManager>();
+            Context context = new Context();
+            InternalRuntime<AManager> runtime = new InternalRuntime<AManager>();
 
             // Act & Assert
-            var exception = Assert.Throws<InvalidOperationException>(() => runtime.Get<TestRuntime>());
+            InvalidOperationException exception = Assert.Throws<InvalidOperationException>(() => runtime.Get<TestRuntime>());
             Assert.Contains("TestRuntime", exception.Message);
         }
 
@@ -202,10 +202,10 @@ namespace Alis.Test
         public void OnInit_CallsOnInitOnAllRuntimes()
         {
             // Arrange
-            var context = new Context();
-            var runtime1 = new TestRuntime(context);
-            var runtime2 = new TestRuntime(context);
-            var runtime = new InternalRuntime<AManager>(runtime1, runtime2);
+            Context context = new Context();
+            TestRuntime runtime1 = new TestRuntime(context);
+            TestRuntime runtime2 = new TestRuntime(context);
+            InternalRuntime<AManager> runtime = new InternalRuntime<AManager>(runtime1, runtime2);
 
             // Act
             runtime.OnInit();
@@ -222,10 +222,10 @@ namespace Alis.Test
         public void OnAwake_CallsOnAwakeOnAllRuntimes()
         {
             // Arrange
-            var context = new Context();
-            var runtime1 = new TestRuntime(context);
-            var runtime2 = new TestRuntime(context);
-            var runtime = new InternalRuntime<AManager>(runtime1, runtime2);
+            Context context = new Context();
+            TestRuntime runtime1 = new TestRuntime(context);
+            TestRuntime runtime2 = new TestRuntime(context);
+            InternalRuntime<AManager> runtime = new InternalRuntime<AManager>(runtime1, runtime2);
 
             // Act
             runtime.OnAwake();
@@ -242,10 +242,10 @@ namespace Alis.Test
         public void OnStart_CallsOnStartOnAllRuntimes()
         {
             // Arrange
-            var context = new Context();
-            var runtime1 = new TestRuntime(context);
-            var runtime2 = new TestRuntime(context);
-            var runtime = new InternalRuntime<AManager>(runtime1, runtime2);
+            Context context = new Context();
+            TestRuntime runtime1 = new TestRuntime(context);
+            TestRuntime runtime2 = new TestRuntime(context);
+            InternalRuntime<AManager> runtime = new InternalRuntime<AManager>(runtime1, runtime2);
 
             // Act
             runtime.OnStart();
@@ -262,10 +262,10 @@ namespace Alis.Test
         public void OnUpdate_CallsOnUpdateOnAllRuntimes()
         {
             // Arrange
-            var context = new Context();
-            var runtime1 = new TestRuntime(context);
-            var runtime2 = new TestRuntime(context);
-            var runtime = new InternalRuntime<AManager>(runtime1, runtime2);
+            Context context = new Context();
+            TestRuntime runtime1 = new TestRuntime(context);
+            TestRuntime runtime2 = new TestRuntime(context);
+            InternalRuntime<AManager> runtime = new InternalRuntime<AManager>(runtime1, runtime2);
 
             // Act
             runtime.OnUpdate();
@@ -282,10 +282,10 @@ namespace Alis.Test
         public void OnDraw_CallsOnDrawOnAllRuntimes()
         {
             // Arrange
-            var context = new Context();
-            var runtime1 = new TestRuntime(context);
-            var runtime2 = new TestRuntime(context);
-            var runtime = new InternalRuntime<AManager>(runtime1, runtime2);
+            Context context = new Context();
+            TestRuntime runtime1 = new TestRuntime(context);
+            TestRuntime runtime2 = new TestRuntime(context);
+            InternalRuntime<AManager> runtime = new InternalRuntime<AManager>(runtime1, runtime2);
 
             // Act
             runtime.OnDraw();
@@ -302,10 +302,10 @@ namespace Alis.Test
         public void OnExit_CallsOnExitOnAllRuntimes()
         {
             // Arrange
-            var context = new Context();
-            var runtime1 = new TestRuntime(context);
-            var runtime2 = new TestRuntime(context);
-            var runtime = new InternalRuntime<AManager>(runtime1, runtime2);
+            Context context = new Context();
+            TestRuntime runtime1 = new TestRuntime(context);
+            TestRuntime runtime2 = new TestRuntime(context);
+            InternalRuntime<AManager> runtime = new InternalRuntime<AManager>(runtime1, runtime2);
 
             // Act
             runtime.OnExit();
@@ -322,10 +322,10 @@ namespace Alis.Test
         public void OnSave_CallsOnSaveOnAllRuntimes()
         {
             // Arrange
-            var context = new Context();
-            var runtime1 = new TestRuntime(context);
-            var runtime2 = new TestRuntime(context);
-            var runtime = new InternalRuntime<AManager>(runtime1, runtime2);
+            Context context = new Context();
+            TestRuntime runtime1 = new TestRuntime(context);
+            TestRuntime runtime2 = new TestRuntime(context);
+            InternalRuntime<AManager> runtime = new InternalRuntime<AManager>(runtime1, runtime2);
 
             // Act
             runtime.OnSave();
@@ -342,10 +342,10 @@ namespace Alis.Test
         public void OnLoad_CallsOnLoadOnAllRuntimes()
         {
             // Arrange
-            var context = new Context();
-            var runtime1 = new TestRuntime(context);
-            var runtime2 = new TestRuntime(context);
-            var runtime = new InternalRuntime<AManager>(runtime1, runtime2);
+            Context context = new Context();
+            TestRuntime runtime1 = new TestRuntime(context);
+            TestRuntime runtime2 = new TestRuntime(context);
+            InternalRuntime<AManager> runtime = new InternalRuntime<AManager>(runtime1, runtime2);
 
             // Act
             runtime.OnLoad();
@@ -362,10 +362,10 @@ namespace Alis.Test
         public void OnSave_WithPath_CallsOnSavePathOnAllRuntimes()
         {
             // Arrange
-            var context = new Context();
-            var runtime1 = new TestRuntime(context);
-            var runtime2 = new TestRuntime(context);
-            var runtime = new InternalRuntime<AManager>(runtime1, runtime2);
+            Context context = new Context();
+            TestRuntime runtime1 = new TestRuntime(context);
+            TestRuntime runtime2 = new TestRuntime(context);
+            InternalRuntime<AManager> runtime = new InternalRuntime<AManager>(runtime1, runtime2);
 
             // Act
             runtime.OnSave("/test/path");
@@ -381,10 +381,10 @@ namespace Alis.Test
         public void OnLoad_WithPath_CallsOnLoadPathOnAllRuntimes()
         {
             // Arrange
-            var context = new Context();
-            var runtime1 = new TestRuntime(context);
-            var runtime2 = new TestRuntime(context);
-            var runtime = new InternalRuntime<AManager>(runtime1, runtime2);
+            Context context = new Context();
+            TestRuntime runtime1 = new TestRuntime(context);
+            TestRuntime runtime2 = new TestRuntime(context);
+            InternalRuntime<AManager> runtime = new InternalRuntime<AManager>(runtime1, runtime2);
 
             // Act
             runtime.OnLoad("/test/path");
@@ -400,13 +400,13 @@ namespace Alis.Test
         public void Get_CachesItemsByType()
         {
             // Arrange
-            var context = new Context();
-            var testRuntime = new TestRuntime(context);
-            var runtime = new InternalRuntime<AManager>(testRuntime);
+            Context context = new Context();
+            TestRuntime testRuntime = new TestRuntime(context);
+            InternalRuntime<AManager> runtime = new InternalRuntime<AManager>(testRuntime);
 
             // Act - call Get multiple times
-            var result1 = runtime.Get<TestRuntime>();
-            var result2 = runtime.Get<TestRuntime>();
+            TestRuntime result1 = runtime.Get<TestRuntime>();
+            TestRuntime result2 = runtime.Get<TestRuntime>();
 
             // Assert
             Assert.Same(result1, result2);
@@ -419,10 +419,10 @@ namespace Alis.Test
         public void OnStop_CallsOnStopOnAllRuntimes()
         {
             // Arrange
-            var context = new Context();
-            var runtime1 = new TestRuntime(context);
-            var runtime2 = new TestRuntime(context);
-            var runtime = new InternalRuntime<AManager>(runtime1, runtime2);
+            Context context = new Context();
+            TestRuntime runtime1 = new TestRuntime(context);
+            TestRuntime runtime2 = new TestRuntime(context);
+            InternalRuntime<AManager> runtime = new InternalRuntime<AManager>(runtime1, runtime2);
 
             // Act
             runtime.OnStop();
@@ -439,10 +439,10 @@ namespace Alis.Test
         public void OnBeforeUpdate_CallsOnBeforeUpdateOnAllRuntimes()
         {
             // Arrange
-            var context = new Context();
-            var runtime1 = new TestRuntime(context);
-            var runtime2 = new TestRuntime(context);
-            var runtime = new InternalRuntime<AManager>(runtime1, runtime2);
+            Context context = new Context();
+            TestRuntime runtime1 = new TestRuntime(context);
+            TestRuntime runtime2 = new TestRuntime(context);
+            InternalRuntime<AManager> runtime = new InternalRuntime<AManager>(runtime1, runtime2);
 
             // Act
             runtime.OnBeforeUpdate();
@@ -459,10 +459,10 @@ namespace Alis.Test
         public void OnAfterUpdate_CallsOnAfterUpdateOnAllRuntimes()
         {
             // Arrange
-            var context = new Context();
-            var runtime1 = new TestRuntime(context);
-            var runtime2 = new TestRuntime(context);
-            var runtime = new InternalRuntime<AManager>(runtime1, runtime2);
+            Context context = new Context();
+            TestRuntime runtime1 = new TestRuntime(context);
+            TestRuntime runtime2 = new TestRuntime(context);
+            InternalRuntime<AManager> runtime = new InternalRuntime<AManager>(runtime1, runtime2);
 
             // Act
             runtime.OnAfterUpdate();

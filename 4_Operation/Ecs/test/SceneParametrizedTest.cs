@@ -205,12 +205,12 @@ namespace Alis.Core.Ecs.Test
             // Act
             int countPosition = 0;
             int countHealth = 0;
-            foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities())
+            foreach (GameObject go in scene.Query<With<Position>>().EnumerateWithEntities())
             {
                 countPosition++;
             }
 
-            foreach (var go in scene.Query<With<Health>>().EnumerateWithEntities())
+            foreach (GameObject go in scene.Query<With<Health>>().EnumerateWithEntities())
             {
                 countHealth++;
             }

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Common.Decomposition;
@@ -33,7 +34,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
                 new Vector2F(0.0f, 1.0f)
             };
 
-            var triangles = CdtDecomposer.ConvexPartition(vertices);
+            List<Vertices> triangles = CdtDecomposer.ConvexPartition(vertices);
 
             Assert.Equal(vertices.Count - 2, triangles.Count);
             foreach (Vertices triangle in triangles)

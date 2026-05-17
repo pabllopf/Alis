@@ -17,7 +17,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyConfiguration_DefaultValues_AreCorrect()
         {
-            var config = new WebAssemblyConfiguration();
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
 
             Assert.Equal(800, config.WindowWidth);
             Assert.Equal(600, config.WindowHeight);
@@ -46,7 +46,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void ConfigBuilder_WithSize_SetsWidthAndHeight()
         {
-            var config = new WebAssemblyConfigurationBuilder()
+            WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
                 .WithSize(1920, 1080)
                 .Build();
 
@@ -57,7 +57,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void ConfigBuilder_WithTitle_SetsTitle()
         {
-            var config = new WebAssemblyConfigurationBuilder()
+            WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
                 .WithTitle("My Game")
                 .Build();
 
@@ -67,7 +67,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void ConfigBuilder_WithIconPath_SetsIconPath()
         {
-            var config = new WebAssemblyConfigurationBuilder()
+            WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
                 .WithIconPath("/assets/icon.png")
                 .Build();
 
@@ -77,7 +77,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void ConfigBuilder_WithVSync_SetsVSync()
         {
-            var config = new WebAssemblyConfigurationBuilder()
+            WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
                 .WithVSync(false)
                 .Build();
 
@@ -87,7 +87,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void ConfigBuilder_WithTargetFrameRate_ValidValue_SetsRate()
         {
-            var config = new WebAssemblyConfigurationBuilder()
+            WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
                 .WithTargetFrameRate(120)
                 .Build();
 
@@ -111,7 +111,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void ConfigBuilder_WithMultisampling_SetsEnabled()
         {
-            var config = new WebAssemblyConfigurationBuilder()
+            WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
                 .WithMultisampling(false)
                 .Build();
 
@@ -125,7 +125,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [InlineData(16)]
         public void ConfigBuilder_WithMultisampleCount_ValidValue_SetsCount(int count)
         {
-            var config = new WebAssemblyConfigurationBuilder()
+            WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
                 .WithMultisampleCount(count)
                 .Build();
 
@@ -146,7 +146,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void ConfigBuilder_WithFullscreen_SetsFullscreen()
         {
-            var config = new WebAssemblyConfigurationBuilder()
+            WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
                 .WithFullscreen(true)
                 .Build();
 
@@ -156,7 +156,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void ConfigBuilder_WithPointerLock_SetsPointerLock()
         {
-            var config = new WebAssemblyConfigurationBuilder()
+            WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
                 .WithPointerLock(true)
                 .Build();
 
@@ -166,7 +166,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void ConfigBuilder_WithDisplayQuality_SetsQuality()
         {
-            var config = new WebAssemblyConfigurationBuilder()
+            WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
                 .WithDisplayQuality(DisplayQuality.Ultra)
                 .Build();
 
@@ -176,7 +176,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void ConfigBuilder_WithGamepadInput_SetsEnabled()
         {
-            var config = new WebAssemblyConfigurationBuilder()
+            WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
                 .WithGamepadInput(false)
                 .Build();
 
@@ -186,7 +186,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void ConfigBuilder_WithKeyboardInput_SetsEnabled()
         {
-            var config = new WebAssemblyConfigurationBuilder()
+            WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
                 .WithKeyboardInput(false)
                 .Build();
 
@@ -196,7 +196,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void ConfigBuilder_WithMouseInput_SetsEnabled()
         {
-            var config = new WebAssemblyConfigurationBuilder()
+            WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
                 .WithMouseInput(false)
                 .Build();
 
@@ -206,7 +206,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void ConfigBuilder_WithTouchInput_SetsEnabled()
         {
-            var config = new WebAssemblyConfigurationBuilder()
+            WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
                 .WithTouchInput(false)
                 .Build();
 
@@ -219,7 +219,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [InlineData(1.0f)]
         public void ConfigBuilder_WithGamepadDeadzone_ValidValue_SetsDeadzone(float deadzone)
         {
-            var config = new WebAssemblyConfigurationBuilder()
+            WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
                 .WithGamepadDeadzone(deadzone)
                 .Build();
 
@@ -241,7 +241,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [InlineData(1.0f)]
         public void ConfigBuilder_WithTriggerDeadzone_ValidValue_SetsDeadzone(float deadzone)
         {
-            var config = new WebAssemblyConfigurationBuilder()
+            WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
                 .WithTriggerDeadzone(deadzone)
                 .Build();
 
@@ -260,7 +260,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void ConfigBuilder_WithDebugMode_SetsDebugMode()
         {
-            var config = new WebAssemblyConfigurationBuilder()
+            WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
                 .WithDebugMode(true)
                 .Build();
 
@@ -270,7 +270,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void ConfigBuilder_ChainedMethods_Works()
         {
-            var config = new WebAssemblyConfigurationBuilder()
+            WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
                 .WithSize(1280, 720)
                 .WithTitle("Chained Test")
                 .WithVSync(true)
@@ -295,11 +295,11 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void ConfigBuilder_Build_MultipleTimes_ReturnsSameInstance()
         {
-            var builder = new WebAssemblyConfigurationBuilder()
+            WebAssemblyConfigurationBuilder builder = new WebAssemblyConfigurationBuilder()
                 .WithSize(800, 600);
 
-            var config1 = builder.Build();
-            var config2 = builder.Build();
+            WebAssemblyConfiguration config1 = builder.Build();
+            WebAssemblyConfiguration config2 = builder.Build();
 
             Assert.Same(config1, config2);
         }
@@ -307,7 +307,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void ConfigBuilder_WithSize_NegativeValues_Accepts()
         {
-            var config = new WebAssemblyConfigurationBuilder()
+            WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
                 .WithSize(-100, -200)
                 .Build();
 
@@ -318,7 +318,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void ConfigBuilder_WithSize_ZeroValues_Accepts()
         {
-            var config = new WebAssemblyConfigurationBuilder()
+            WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
                 .WithSize(0, 0)
                 .Build();
 
@@ -329,7 +329,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void ConfigBuilder_WithTitle_EmptyString_Accepts()
         {
-            var config = new WebAssemblyConfigurationBuilder()
+            WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
                 .WithTitle("")
                 .Build();
 
@@ -339,7 +339,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void ConfigBuilder_WithTitle_Null_Accepts()
         {
-            var config = new WebAssemblyConfigurationBuilder()
+            WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
                 .WithTitle(null)
                 .Build();
 
@@ -349,7 +349,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void ConfigBuilder_WithIconPath_Null_Accepts()
         {
-            var config = new WebAssemblyConfigurationBuilder()
+            WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
                 .WithIconPath(null)
                 .Build();
 
@@ -359,7 +359,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void ConfigBuilder_WithTargetFrameRate_One_Accepts()
         {
-            var config = new WebAssemblyConfigurationBuilder()
+            WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
                 .WithTargetFrameRate(1)
                 .Build();
 
@@ -369,7 +369,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void ConfigBuilder_WithTargetFrameRate_MaxInt_Accepts()
         {
-            var config = new WebAssemblyConfigurationBuilder()
+            WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
                 .WithTargetFrameRate(int.MaxValue)
                 .Build();
 
@@ -379,10 +379,10 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void ConfigBuilder_WithGamepadDeadzone_BoundaryValues()
         {
-            var configMin = new WebAssemblyConfigurationBuilder()
+            WebAssemblyConfiguration configMin = new WebAssemblyConfigurationBuilder()
                 .WithGamepadDeadzone(0.0f)
                 .Build();
-            var configMax = new WebAssemblyConfigurationBuilder()
+            WebAssemblyConfiguration configMax = new WebAssemblyConfigurationBuilder()
                 .WithGamepadDeadzone(1.0f)
                 .Build();
 
@@ -393,10 +393,10 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void ConfigBuilder_WithTriggerDeadzone_BoundaryValues()
         {
-            var configMin = new WebAssemblyConfigurationBuilder()
+            WebAssemblyConfiguration configMin = new WebAssemblyConfigurationBuilder()
                 .WithTriggerDeadzone(0.0f)
                 .Build();
-            var configMax = new WebAssemblyConfigurationBuilder()
+            WebAssemblyConfiguration configMax = new WebAssemblyConfigurationBuilder()
                 .WithTriggerDeadzone(1.0f)
                 .Build();
 
@@ -411,7 +411,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatformFactory_CreateDefault_ReturnsInstance()
         {
-            var platform = WebAssemblyPlatformFactory.CreateDefault();
+            WebAssemblyPlatform platform = WebAssemblyPlatformFactory.CreateDefault();
             Assert.NotNull(platform);
             Assert.IsType<WebAssemblyPlatform>(platform);
         }
@@ -427,7 +427,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatformFactory_Create_WithConfig_ThrowsOnNonBrowser()
         {
-            var config = new WebAssemblyConfiguration();
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
             if (!OperatingSystem.IsBrowser())
             {
                 Assert.Throws<InvalidOperationException>(() =>
@@ -479,7 +479,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContextPresets_Game2D_ReturnsValidConfig()
         {
-            var config = GameContextPresets.Game2D();
+            WebAssemblyConfiguration config = GameContextPresets.Game2D();
             Assert.Equal(1280, config.WindowWidth);
             Assert.Equal(720, config.WindowHeight);
             Assert.Equal("2D Game", config.WindowTitle);
@@ -496,7 +496,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContextPresets_Game3D_ReturnsValidConfig()
         {
-            var config = GameContextPresets.Game3D();
+            WebAssemblyConfiguration config = GameContextPresets.Game3D();
             Assert.Equal(1920, config.WindowWidth);
             Assert.Equal(1080, config.WindowHeight);
             Assert.Equal("3D Game", config.WindowTitle);
@@ -510,7 +510,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContextPresets_PuzzleGame_ReturnsValidConfig()
         {
-            var config = GameContextPresets.PuzzleGame();
+            WebAssemblyConfiguration config = GameContextPresets.PuzzleGame();
             Assert.Equal(800, config.WindowWidth);
             Assert.Equal(600, config.WindowHeight);
             Assert.Equal("Puzzle Game", config.WindowTitle);
@@ -526,7 +526,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContextPresets_MobileGame_ReturnsValidConfig()
         {
-            var config = GameContextPresets.MobileGame();
+            WebAssemblyConfiguration config = GameContextPresets.MobileGame();
             Assert.Equal(720, config.WindowWidth);
             Assert.Equal(1280, config.WindowHeight);
             Assert.Equal("Mobile Game", config.WindowTitle);

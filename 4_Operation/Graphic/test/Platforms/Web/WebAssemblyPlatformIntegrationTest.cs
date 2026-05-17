@@ -1,4 +1,5 @@
 using System;
+using Alis.Core.Graphic.Platforms;
 using Alis.Core.Graphic.Platforms.Web;
 using Xunit;
 
@@ -22,7 +23,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [InlineData("WASM")]
         public void WebAssemblyPlatformIntegration_GetPlatform_ValidName_ReturnsInstance(string name)
         {
-            var platform = WebAssemblyPlatformIntegration.GetPlatform(name);
+            INativePlatform platform = WebAssemblyPlatformIntegration.GetPlatform(name);
             Assert.NotNull(platform);
             Assert.IsType<WebAssemblyPlatform>(platform);
         }
@@ -55,7 +56,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatformIntegration_CreateOptimizedPlatform_Default_ReturnsInstance()
         {
-            var platform = WebAssemblyPlatformIntegration.CreateOptimizedPlatform(OptimizationProfile.Default);
+            WebAssemblyPlatform platform = WebAssemblyPlatformIntegration.CreateOptimizedPlatform(OptimizationProfile.Default);
             Assert.NotNull(platform);
             Assert.IsType<WebAssemblyPlatform>(platform);
         }
@@ -113,7 +114,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatformIntegration_CreateOptimizedPlatform_Web_ReturnsInstance()
         {
-            var platform = WebAssemblyPlatformIntegration.CreateOptimizedPlatform(OptimizationProfile.Web);
+            WebAssemblyPlatform platform = WebAssemblyPlatformIntegration.CreateOptimizedPlatform(OptimizationProfile.Web);
             Assert.NotNull(platform);
             Assert.IsType<WebAssemblyPlatform>(platform);
         }
@@ -142,7 +143,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void MultiplatformGameEngine_Constructor_DoesNotThrow()
         {
-            var engine = new MultiplatformGameEngine(800, 600, "Test");
+            MultiplatformGameEngine engine = new MultiplatformGameEngine(800, 600, "Test");
             Assert.NotNull(engine.GameContext);
         }
 
@@ -151,7 +152,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         {
             if (OperatingSystem.IsBrowser())
             {
-                var engine = new MultiplatformGameEngine(800, 600, "Test");
+                MultiplatformGameEngine engine = new MultiplatformGameEngine(800, 600, "Test");
                 engine.Dispose();
                 engine.Dispose();
             }

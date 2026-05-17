@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using Alis.Core.Ecs.Systems.Manager.Scene;
 using Xunit;
@@ -106,7 +107,7 @@ namespace Alis.Test
             ScenesMap map = new ScenesMap();
             map.AddScene(1);
 
-            var exception = Record.Exception(() => map.RemoveScene(99));
+            Exception exception = Record.Exception(() => map.RemoveScene(99));
 
             Assert.Null(exception);
             Assert.Single(map.Scenes);
@@ -162,7 +163,7 @@ namespace Alis.Test
             ScenesMap map = new ScenesMap();
             map.AddScene(1);
 
-            var exception = Record.Exception(() => map.Save());
+            Exception exception = Record.Exception(() => map.Save());
 
             Assert.Null(exception);
         }

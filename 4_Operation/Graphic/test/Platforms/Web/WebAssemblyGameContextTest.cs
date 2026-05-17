@@ -30,7 +30,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContext_Constructor_WithConfig_ThrowsOnNonBrowser()
         {
-            var config = new WebAssemblyConfiguration();
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
             if (!OperatingSystem.IsBrowser())
             {
                 Assert.Throws<InvalidOperationException>(() =>

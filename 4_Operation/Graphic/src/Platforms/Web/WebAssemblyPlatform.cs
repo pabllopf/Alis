@@ -878,7 +878,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         public int[] GetConnectedGamepadIndices()
         {
             List<int> connectedIndices = new List<int>();
-            foreach (var kvp in _gamepadStates)
+            foreach (KeyValuePair<int, GamepadState> kvp in _gamepadStates)
             {
                 if (kvp.Value.Connected)
                 {

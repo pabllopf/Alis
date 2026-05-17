@@ -18,8 +18,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void InputManager_RegisterKeyBinding_SingleKey_Works()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyInputManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyInputManager manager = new WebAssemblyInputManager(platform);
             manager.RegisterKeyBinding("Jump", ConsoleKey.Spacebar);
             Assert.False(manager.IsActionActive("Jump"));
         }
@@ -27,8 +27,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void InputManager_RegisterKeyBinding_MultipleKeys_Works()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyInputManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyInputManager manager = new WebAssemblyInputManager(platform);
             manager.RegisterKeyBinding("Move", ConsoleKey.W, ConsoleKey.UpArrow);
             Assert.False(manager.IsActionActive("Move"));
         }
@@ -36,8 +36,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void InputManager_RegisterKeyBinding_SameActionTwice_AddsKeys()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyInputManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyInputManager manager = new WebAssemblyInputManager(platform);
             manager.RegisterKeyBinding("Action", ConsoleKey.A);
             manager.RegisterKeyBinding("Action", ConsoleKey.B);
             InvokePrivate(platform, "OnKeyDown", 65, 0);
@@ -47,8 +47,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void InputManager_ClearKeyBinding_RemovesAction()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyInputManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyInputManager manager = new WebAssemblyInputManager(platform);
             manager.RegisterKeyBinding("Fire", ConsoleKey.F);
             manager.ClearKeyBinding("Fire");
             Assert.False(manager.IsActionActive("Fire"));
@@ -57,24 +57,24 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void InputManager_ClearKeyBinding_NonExistent_DoesNotThrow()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyInputManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyInputManager manager = new WebAssemblyInputManager(platform);
             manager.ClearKeyBinding("NonExistent");
         }
 
         [Fact]
         public void InputManager_IsActionActive_NonExistentAction_ReturnsFalse()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyInputManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyInputManager manager = new WebAssemblyInputManager(platform);
             Assert.False(manager.IsActionActive("Unknown"));
         }
 
         [Fact]
         public void InputManager_IsActionActive_WithPressedKey_ReturnsTrue()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyInputManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyInputManager manager = new WebAssemblyInputManager(platform);
             manager.RegisterKeyBinding("Fire", ConsoleKey.F);
             InvokePrivate(platform, "OnKeyDown", 70, 0);
             Assert.True(manager.IsActionActive("Fire"));
@@ -83,8 +83,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void InputManager_IsActionActive_AfterKeyUp_ReturnsFalse()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyInputManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyInputManager manager = new WebAssemblyInputManager(platform);
             manager.RegisterKeyBinding("Fire", ConsoleKey.F);
             InvokePrivate(platform, "OnKeyDown", 70, 0);
             InvokePrivate(platform, "OnKeyUp", 70, 0);
@@ -94,8 +94,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void InputManager_IsActionJustPressed_NoKeysInQueue_ReturnsFalse()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyInputManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyInputManager manager = new WebAssemblyInputManager(platform);
             manager.RegisterKeyBinding("Jump", ConsoleKey.Spacebar);
             Assert.False(manager.IsActionJustPressed("Jump"));
         }
@@ -103,8 +103,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void InputManager_IsActionJustPressed_MatchingKey_ReturnsTrue()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyInputManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyInputManager manager = new WebAssemblyInputManager(platform);
             manager.RegisterKeyBinding("Jump", ConsoleKey.Spacebar);
             InvokePrivate(platform, "OnKeyDown", 32, 0);
             Assert.True(manager.IsActionJustPressed("Jump"));
@@ -113,8 +113,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void InputManager_IsActionJustPressed_NonMatchingKey_ReturnsFalse()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyInputManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyInputManager manager = new WebAssemblyInputManager(platform);
             manager.RegisterKeyBinding("Jump", ConsoleKey.Spacebar);
             InvokePrivate(platform, "OnKeyDown", 65, 0);
             Assert.False(manager.IsActionJustPressed("Jump"));
@@ -123,8 +123,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void InputManager_IsActionJustPressed_ConsumesKeyFromQueue()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyInputManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyInputManager manager = new WebAssemblyInputManager(platform);
             manager.RegisterKeyBinding("Jump", ConsoleKey.Spacebar);
             InvokePrivate(platform, "OnKeyDown", 32, 0);
             manager.IsActionJustPressed("Jump");
@@ -134,8 +134,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void InputManager_IsActionJustPressed_NonExistentAction_ReturnsFalse()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyInputManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyInputManager manager = new WebAssemblyInputManager(platform);
             Assert.False(manager.IsActionJustPressed("Unknown"));
         }
 
@@ -146,8 +146,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void InputManager_GetMousePosition_ReturnsDefaultCoords()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyInputManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyInputManager manager = new WebAssemblyInputManager(platform);
             manager.GetMousePosition(out int x, out int y);
             Assert.Equal(0, x);
             Assert.Equal(0, y);
@@ -156,8 +156,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void InputManager_GetMousePosition_AfterMove_ReturnsNewCoords()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyInputManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyInputManager manager = new WebAssemblyInputManager(platform);
             InvokePrivate(platform, "OnMouseMove", 0, 0, 100, 200);
             manager.GetMousePosition(out int x, out int y);
             Assert.Equal(100, x);
@@ -167,16 +167,16 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void InputManager_GetMouseWheelDelta_Default_ReturnsZero()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyInputManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyInputManager manager = new WebAssemblyInputManager(platform);
             Assert.Equal(0.0f, manager.GetMouseWheelDelta());
         }
 
         [Fact]
         public void InputManager_GetMouseWheelDelta_AfterWheel_ReturnsDelta()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyInputManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyInputManager manager = new WebAssemblyInputManager(platform);
             InvokePrivate(platform, "OnMouseWheel", 0, 5);
             manager.Update();
             Assert.Equal(5.0f, manager.GetMouseWheelDelta());
@@ -185,16 +185,16 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void InputManager_IsMouseButtonDown_Default_ReturnsFalse()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyInputManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyInputManager manager = new WebAssemblyInputManager(platform);
             Assert.False(manager.IsMouseButtonDown(0));
         }
 
         [Fact]
         public void InputManager_IsMouseButtonDown_AfterClick_ReturnsTrue()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyInputManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyInputManager manager = new WebAssemblyInputManager(platform);
             InvokePrivate(platform, "OnMouseDown", 0, 0, 0, 50, 50);
             Assert.True(manager.IsMouseButtonDown(0));
         }
@@ -202,8 +202,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void InputManager_IsMouseButtonDown_RightButton()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyInputManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyInputManager manager = new WebAssemblyInputManager(platform);
             InvokePrivate(platform, "OnMouseDown", 1, 0, 0, 50, 50);
             Assert.True(manager.IsMouseButtonDown(1));
             Assert.False(manager.IsMouseButtonDown(0));
@@ -212,8 +212,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void InputManager_IsMouseButtonDown_InvalidButton_ReturnsFalse()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyInputManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyInputManager manager = new WebAssemblyInputManager(platform);
             Assert.False(manager.IsMouseButtonDown(-1));
             Assert.False(manager.IsMouseButtonDown(10));
         }
@@ -221,8 +221,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void InputManager_IsMouseButtonDown_AfterMouseUp_ReturnsFalse()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyInputManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyInputManager manager = new WebAssemblyInputManager(platform);
             InvokePrivate(platform, "OnMouseDown", 0, 0, 0, 50, 50);
             InvokePrivate(platform, "OnMouseUp", 0, 0, 0, 50, 50);
             Assert.False(manager.IsMouseButtonDown(0));
@@ -235,8 +235,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void InputManager_GetConnectedGamepadIndices_Empty_ReturnsEmpty()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyInputManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyInputManager manager = new WebAssemblyInputManager(platform);
             int[] indices = manager.GetConnectedGamepadIndices();
             Assert.NotNull(indices);
             Assert.Empty(indices);
@@ -245,9 +245,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void InputManager_TryGetGamepadState_NoGamepad_ReturnsFalse()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyInputManager(platform);
-            bool result = manager.TryGetGamepadState(0, out var state);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyInputManager manager = new WebAssemblyInputManager(platform);
+            bool result = manager.TryGetGamepadState(0, out GamepadInputState state);
             Assert.False(result);
             Assert.Null(state);
         }
@@ -255,16 +255,16 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void InputManager_IsGamepadButtonJustPressed_NoGamepad_ReturnsFalse()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyInputManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyInputManager manager = new WebAssemblyInputManager(platform);
             Assert.False(manager.IsGamepadButtonJustPressed(0, 0));
         }
 
         [Fact]
         public void InputManager_IsGamepadButtonJustReleased_NoGamepad_ReturnsFalse()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyInputManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyInputManager manager = new WebAssemblyInputManager(platform);
             Assert.False(manager.IsGamepadButtonJustReleased(0, 0));
         }
 
@@ -275,16 +275,16 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void InputManager_Update_DoesNotThrow()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyInputManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyInputManager manager = new WebAssemblyInputManager(platform);
             manager.Update();
         }
 
         [Fact]
         public void InputManager_Update_MultipleTimes_DoesNotThrow()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyInputManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyInputManager manager = new WebAssemblyInputManager(platform);
             manager.Update();
             manager.Update();
             manager.Update();
@@ -293,8 +293,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void InputManager_Update_DoesNotResetWheelDelta()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyInputManager(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyInputManager manager = new WebAssemblyInputManager(platform);
             InvokePrivate(platform, "OnMouseWheel", 0, 10);
             manager.Update();
             Assert.Equal(10.0f, manager.GetMouseWheelDelta());
@@ -307,9 +307,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void InputManager_VibrateGamepad_ReturnsFalseOnNonBrowser()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyInputManager(platform);
-            Assert.False(manager.VibrateGamepad(0, 1.0f, 0.5f));
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyInputManager manager = new WebAssemblyInputManager(platform);
+            Assert.False(WebAssemblyInputManager.VibrateGamepad(0, 1.0f, 0.5f));
         }
 
         // =====================================================================
@@ -330,14 +330,14 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void KeyBinding_Default_HasNoKeys()
         {
-            var binding = new KeyBinding();
+            KeyBinding binding = new KeyBinding();
             Assert.False(binding.ContainsKey(ConsoleKey.A));
         }
 
         [Fact]
         public void KeyBinding_AddKey_AddsKey()
         {
-            var binding = new KeyBinding();
+            KeyBinding binding = new KeyBinding();
             binding.AddKey(ConsoleKey.A);
             Assert.True(binding.ContainsKey(ConsoleKey.A));
         }
@@ -345,7 +345,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void KeyBinding_AddKey_DuplicateKey_DoesNotThrow()
         {
-            var binding = new KeyBinding();
+            KeyBinding binding = new KeyBinding();
             binding.AddKey(ConsoleKey.A);
             binding.AddKey(ConsoleKey.A);
             Assert.True(binding.ContainsKey(ConsoleKey.A));
@@ -354,7 +354,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void KeyBinding_RemoveKey_RemovesKey()
         {
-            var binding = new KeyBinding();
+            KeyBinding binding = new KeyBinding();
             binding.AddKey(ConsoleKey.A);
             binding.RemoveKey(ConsoleKey.A);
             Assert.False(binding.ContainsKey(ConsoleKey.A));
@@ -363,7 +363,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void KeyBinding_RemoveKey_NonExistent_DoesNotThrow()
         {
-            var binding = new KeyBinding();
+            KeyBinding binding = new KeyBinding();
             binding.RemoveKey(ConsoleKey.A);
             Assert.False(binding.ContainsKey(ConsoleKey.A));
         }
@@ -371,7 +371,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void KeyBinding_Clear_RemovesAllKeys()
         {
-            var binding = new KeyBinding();
+            KeyBinding binding = new KeyBinding();
             binding.AddKey(ConsoleKey.A);
             binding.AddKey(ConsoleKey.B);
             binding.AddKey(ConsoleKey.C);
@@ -384,7 +384,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void KeyBinding_MultipleKeys_AllDetected()
         {
-            var binding = new KeyBinding();
+            KeyBinding binding = new KeyBinding();
             binding.AddKey(ConsoleKey.W);
             binding.AddKey(ConsoleKey.UpArrow);
             Assert.True(binding.ContainsKey(ConsoleKey.W));
@@ -399,8 +399,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void InputContext_Constructor_CreatesInstance()
         {
-            var platform = new WebAssemblyPlatform();
-            var context = new WebAssemblyInputContext(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyInputContext context = new WebAssemblyInputContext(platform);
             Assert.NotNull(context.InputManager);
             Assert.NotNull(context.Platform);
             Assert.Same(platform, context.Platform);
@@ -416,8 +416,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void InputContext_TryGetTextInput_Empty_ReturnsFalse()
         {
-            var platform = new WebAssemblyPlatform();
-            var context = new WebAssemblyInputContext(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyInputContext context = new WebAssemblyInputContext(platform);
             bool result = context.TryGetTextInput(out string text);
             Assert.False(result);
             Assert.Equal(string.Empty, text);
@@ -426,8 +426,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void InputContext_TryGetTextInput_WithInput_ReturnsTrue()
         {
-            var platform = new WebAssemblyPlatform();
-            var context = new WebAssemblyInputContext(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyInputContext context = new WebAssemblyInputContext(platform);
             InvokePrivate(platform, "OnCharInput", (uint)'X');
             bool result = context.TryGetTextInput(out string text);
             Assert.True(result);
@@ -437,8 +437,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void InputContext_Update_DoesNotThrow()
         {
-            var platform = new WebAssemblyPlatform();
-            var context = new WebAssemblyInputContext(platform);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            WebAssemblyInputContext context = new WebAssemblyInputContext(platform);
             context.Update();
         }
 
@@ -485,7 +485,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void TouchPoint_Default_IsActiveAndBegin()
         {
-            var touch = new TouchPoint();
+            TouchPoint touch = new TouchPoint();
             Assert.True(touch.IsActive);
             Assert.Equal(TouchState.Begin, touch.State);
         }
@@ -493,7 +493,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void TouchPoint_SetProperties_Works()
         {
-            var touch = new TouchPoint
+            TouchPoint touch = new TouchPoint
             {
                 Id = 42,
                 X = 100,

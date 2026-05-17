@@ -140,7 +140,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static WebAssemblyGameContext Create(int width, int height, string title)
         {
-            var config = new WebAssemblyConfiguration
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration
             {
                 WindowWidth = width,
                 WindowHeight = height,
@@ -155,7 +155,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static WebAssemblyGameContext Create(Action<WebAssemblyConfigurationBuilder> configure)
         {
-            var builder = new WebAssemblyConfigurationBuilder();
+            WebAssemblyConfigurationBuilder builder = new WebAssemblyConfigurationBuilder();
             configure(builder);
             return new WebAssemblyGameContext(builder.Build());
         }

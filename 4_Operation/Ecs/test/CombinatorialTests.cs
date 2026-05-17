@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Ecs.Kernel.Archetypes;
 using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
@@ -88,7 +89,7 @@ namespace Alis.Core.Ecs.Test
         public void Combinatorial_DeletePatterns(int totalCount, int deleteCount)
         {
             using Scene scene = new Scene();
-            var entities = new GameObject[totalCount];
+            GameObject[] entities = new GameObject[totalCount];
 
             for (int i = 0; i < totalCount; i++)
             {
@@ -101,7 +102,7 @@ namespace Alis.Core.Ecs.Test
             }
 
             int remaining = 0;
-            foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities())
+            foreach (GameObject go in scene.Query<With<Position>>().EnumerateWithEntities())
             {
                 if (go.IsAlive)
                 {
@@ -266,7 +267,7 @@ namespace Alis.Core.Ecs.Test
             for (int op = 0; op < entityCount * operationMultiplier; op++)
             {
                 int count = 0;
-                foreach (var go in scene.Query<With<Position>>().AsSpan())
+                foreach (Archetype go in scene.Query<With<Position>>().AsSpan())
                 {
                     count++;
                     if (count >= entityCount)

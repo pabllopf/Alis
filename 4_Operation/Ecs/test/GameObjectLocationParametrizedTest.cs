@@ -48,8 +48,8 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            var entities = new GameObject[entityCount];
-            var ids = new HashSet<int>();
+            GameObject[] entities = new GameObject[entityCount];
+            HashSet<int> ids = new HashSet<int>();
 
             // Act
             for (int i = 0; i < entityCount; i++)
@@ -78,8 +78,8 @@ namespace Alis.Core.Ecs.Test
             // Arrange
             using Scene scene1 = new Scene();
             using Scene scene2 = new Scene();
-            var entities1 = new GameObject[entityCountPerScene];
-            var entities2 = new GameObject[entityCountPerScene];
+            GameObject[] entities1 = new GameObject[entityCountPerScene];
+            GameObject[] entities2 = new GameObject[entityCountPerScene];
 
             // Act
             for (int i = 0; i < entityCountPerScene; i++)
@@ -119,7 +119,7 @@ namespace Alis.Core.Ecs.Test
 
             // Act
             int queryCount = 0;
-            foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities())
+            foreach (GameObject go in scene.Query<With<Position>>().EnumerateWithEntities())
             {
                 queryCount++;
             }
@@ -139,12 +139,12 @@ namespace Alis.Core.Ecs.Test
             GameObject entity = scene.Create(new Position {X = 10, Y = 20});
 
             // Act
-            var id1 = entity;
+            GameObject id1 = entity;
             entity.Add(new Health {Value = 100});
-            var id2 = entity;
+            GameObject id2 = entity;
             ref Position pos = ref entity.Get<Position>();
             pos.X = 50;
-            var id3 = entity;
+            GameObject id3 = entity;
 
             // Assert
             Assert.Equal(id1, id2);
@@ -160,7 +160,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            var stored = new GameObject[entityCount];
+            GameObject[] stored = new GameObject[entityCount];
 
             // Act
             for (int i = 0; i < entityCount; i++)
@@ -188,14 +188,14 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            var stored = new GameObject[entityCount];
+            GameObject[] stored = new GameObject[entityCount];
 
             // Act
             for (int i = 0; i < entityCount; i++)
             {
                 GameObject created = scene.Create(new Position {X = i, Y = i});
                 stored[i] = created;
-                var sameRef = created;
+                GameObject sameRef = created;
 
                 // Verify they're the same
                 Assert.Equal(created, sameRef);
@@ -232,7 +232,7 @@ namespace Alis.Core.Ecs.Test
         {
             // Arrange
             using Scene scene = new Scene();
-            var entities = new GameObject[count];
+            GameObject[] entities = new GameObject[count];
             for (int i = 0; i < count; i++)
             {
                 entities[i] = scene.Create();

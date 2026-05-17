@@ -82,7 +82,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_GetMousePositionInView_ReturnsDefaultCoords()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             platform.GetMousePositionInView(out float x, out float y);
             Assert.Equal(0, x);
             Assert.Equal(0, y);
@@ -91,8 +91,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_TryGetGamepadState_NoGamepads_ReturnsFalse()
         {
-            var platform = new WebAssemblyPlatform();
-            bool result = platform.TryGetGamepadState(0, out var state);
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
+            bool result = platform.TryGetGamepadState(0, out GamepadState state);
             Assert.False(result);
             Assert.Null(state);
         }
@@ -100,7 +100,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_GetConnectedGamepadIndices_Empty_ReturnsEmptyArray()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             int[] indices = platform.GetConnectedGamepadIndices();
             Assert.NotNull(indices);
             Assert.Empty(indices);
@@ -109,14 +109,14 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_GetProcAddress_CallsInterop()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             Assert.ThrowsAny<Exception>(() => platform.GetProcAddress("glClearColor"));
         }
 
         [Fact]
         public void WebAssemblyPlatform_ShowWindow_SetsVisible()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             platform.ShowWindow();
             Assert.True(platform.IsWindowVisible());
         }
@@ -124,7 +124,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_HideWindow_ClearsVisible()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             platform.ShowWindow();
             platform.HideWindow();
             Assert.False(platform.IsWindowVisible());
@@ -133,28 +133,28 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_SetTitle_DoesNotThrow()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             platform.SetTitle("New Title");
         }
 
         [Fact]
         public void WebAssemblyPlatform_SetSize_DoesNotThrow()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             platform.SetSize(1024, 768);
         }
 
         [Fact]
         public void WebAssemblyPlatform_SetWindowIcon_DoesNotThrow()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             platform.SetWindowIcon("/icon.png");
         }
 
         [Fact]
         public void WebAssemblyPlatform_PollEvents_ResetsWheelDelta()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnMouseWheel", 0, 5);
             Assert.Equal(5.0f, platform.GetMouseWheel());
 
@@ -166,7 +166,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_PollEvents_ReturnsTrueWhenNotClosing()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             bool result = platform.PollEvents();
             Assert.True(result);
         }
@@ -174,14 +174,14 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_Cleanup_NotInitialized_DoesNothing()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             platform.Cleanup();
         }
 
         [Fact]
         public void WebAssemblyPlatform_Cleanup_NotInitialized_DoesNotClearState()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnKeyDown", 65, 0);
             InvokePrivate(platform, "OnCharInput", (uint)'B');
 
@@ -193,28 +193,28 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_Initialize_WhenAlreadyInitialized_ReturnsTrue()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             platform.Initialize(800, 600, "Test");
         }
 
         [Fact]
         public void WebAssemblyPlatform_MakeContextCurrent_WithZeroHandles_DoesNotThrow()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             platform.MakeContextCurrent();
         }
 
         [Fact]
         public void WebAssemblyPlatform_SwapBuffers_WithZeroHandles_DoesNotThrow()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             platform.SwapBuffers();
         }
 
         [Fact]
         public void WebAssemblyPlatform_TryGetLastKeyPressed_EmptyQueue_ReturnsFalse()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             bool result = platform.TryGetLastKeyPressed(out ConsoleKey key);
             Assert.False(result);
             Assert.Equal(ConsoleKey.NoName, key);
@@ -223,14 +223,14 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_IsKeyDown_UnknownKey_ReturnsFalse()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             Assert.False(platform.IsKeyDown(ConsoleKey.F24));
         }
 
         [Fact]
         public void WebAssemblyPlatform_TryGetLastInputCharacters_Empty_ReturnsFalse()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             bool result = platform.TryGetLastInputCharacters(out string chars);
             Assert.False(result);
             Assert.Equal(string.Empty, chars);
@@ -239,7 +239,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_OnMouseWheel_SetsDelta()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnMouseWheel", 0, -3);
             Assert.Equal(-3.0f, platform.GetMouseWheel());
         }
@@ -247,7 +247,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_OnMouseWheel_PositiveDelta()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnMouseWheel", 0, 10);
             Assert.Equal(10.0f, platform.GetMouseWheel());
         }
@@ -255,7 +255,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_OnMouseDown_BoundaryButton0_Works()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnMouseDown", 0, 0, 0, 50, 60);
             platform.GetMouseState(out int x, out int y, out bool[] buttons);
             Assert.True(buttons[0]);
@@ -266,7 +266,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_OnMouseDown_BoundaryButton4_Works()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnMouseDown", 4, 0, 0, 10, 20);
             platform.GetMouseState(out int x, out int y, out bool[] buttons);
             Assert.True(buttons[4]);
@@ -275,7 +275,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_OnMouseDown_OutOfBoundsButton_Ignored()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnMouseDown", 5, 0, 0, 10, 20);
             platform.GetMouseState(out int x, out int y, out bool[] buttons);
             Assert.False(buttons[0]);
@@ -288,7 +288,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_OnMouseDown_NegativeButton_Ignored()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnMouseDown", -1, 0, 0, 10, 20);
             platform.GetMouseState(out int x, out int y, out bool[] buttons);
             Assert.False(buttons[0]);
@@ -297,14 +297,14 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_OnMouseUp_OutOfBoundsButton_Ignored()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnMouseUp", 10, 0, 0, 0, 0);
         }
 
         [Fact]
         public void WebAssemblyPlatform_OnWindowResize_UpdatesDimensions()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnWindowResize", 1920, 1080);
             Assert.Equal(1920, platform.GetWindowWidth());
             Assert.Equal(1080, platform.GetWindowHeight());
@@ -313,7 +313,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_OnWindowClose_SetsShouldClose()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnWindowClose");
             bool result = platform.PollEvents();
             Assert.False(result);
@@ -322,7 +322,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_OnWindowFocus_True_SetsVisible()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnWindowFocus", true);
             Assert.True(platform.IsWindowVisible());
         }
@@ -330,7 +330,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_OnWindowFocus_False_ClearsVisible()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnWindowFocus", false);
             Assert.False(platform.IsWindowVisible());
         }
@@ -338,9 +338,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_OnGamepadConnect_CreatesState()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnGamepadConnect", 0);
-            bool result = platform.TryGetGamepadState(0, out var state);
+            bool result = platform.TryGetGamepadState(0, out GamepadState state);
             Assert.True(result);
             Assert.True(state.Connected);
         }
@@ -348,23 +348,23 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_OnGamepadConnect_MultipleGamepads()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnGamepadConnect", 0);
             InvokePrivate(platform, "OnGamepadConnect", 1);
             InvokePrivate(platform, "OnGamepadConnect", 2);
 
-            Assert.True(platform.TryGetGamepadState(0, out var s0) && s0.Connected);
-            Assert.True(platform.TryGetGamepadState(1, out var s1) && s1.Connected);
-            Assert.True(platform.TryGetGamepadState(2, out var s2) && s2.Connected);
+            Assert.True(platform.TryGetGamepadState(0, out GamepadState s0) && s0.Connected);
+            Assert.True(platform.TryGetGamepadState(1, out GamepadState s1) && s1.Connected);
+            Assert.True(platform.TryGetGamepadState(2, out GamepadState s2) && s2.Connected);
         }
 
         [Fact]
         public void WebAssemblyPlatform_OnGamepadDisconnect_SetsDisconnected()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnGamepadConnect", 0);
             InvokePrivate(platform, "OnGamepadDisconnect", 0);
-            bool result = platform.TryGetGamepadState(0, out var state);
+            bool result = platform.TryGetGamepadState(0, out GamepadState state);
             Assert.True(result);
             Assert.False(state.Connected);
         }
@@ -372,14 +372,14 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_OnGamepadDisconnect_NonExistent_DoesNotThrow()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnGamepadDisconnect", 99);
         }
 
         [Fact]
         public void WebAssemblyPlatform_GetConnectedGamepadIndices_ReturnsOnlyConnected()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnGamepadConnect", 0);
             InvokePrivate(platform, "OnGamepadConnect", 1);
             InvokePrivate(platform, "OnGamepadDisconnect", 1);
@@ -392,7 +392,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_GetConnectedGamepadIndices_AllDisconnected_ReturnsEmpty()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnGamepadConnect", 0);
             InvokePrivate(platform, "OnGamepadDisconnect", 0);
 
@@ -403,14 +403,14 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_OnCharInput_InvalidCharCode_DoesNotThrow()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnCharInput", (uint)0x110000);
         }
 
         [Fact]
         public void WebAssemblyPlatform_OnCharInput_MultipleCharacters_Accumulates()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnCharInput", (uint)'H');
             InvokePrivate(platform, "OnCharInput", (uint)'i');
             InvokePrivate(platform, "OnCharInput", (uint)'!');
@@ -422,7 +422,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_OnKeyDown_SameKeyMultipleTimes_EnqueuesEachTime()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnKeyDown", 65, 0);
             InvokePrivate(platform, "OnKeyUp", 65, 0);
             InvokePrivate(platform, "OnKeyDown", 65, 0);
@@ -436,7 +436,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_OnKeyDown_RepeatedKey_DoesNotEnqueueWithoutRelease()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
 
             InvokePrivate(platform, "OnKeyDown", 65, 0);
             Assert.True(platform.TryGetLastKeyPressed(out _));
@@ -449,7 +449,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_OnKeyDown_DifferentKeys_QueueOrderPreserved()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
 
             InvokePrivate(platform, "OnKeyDown", 65, 0);
             InvokePrivate(platform, "OnKeyDown", 66, 0);
@@ -467,14 +467,14 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_OnKeyUp_KeyNotInStates_DoesNotThrow()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnKeyUp", 65, 0);
         }
 
         [Fact]
         public void WebAssemblyPlatform_OnMouseMove_UpdatesClientCoords()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnMouseMove", 100, 200, 300, 400);
             platform.GetMouseState(out int x, out int y, out _);
             Assert.Equal(300, x);
@@ -484,7 +484,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_OnMouseDown_UpdatesCoordsAndButton()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnMouseDown", 0, 50, 60, 70, 80);
             platform.GetMouseState(out int x, out int y, out bool[] buttons);
             Assert.True(buttons[0]);
@@ -495,7 +495,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_OnMouseUp_UpdatesCoordsAndReleasesButton()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnMouseDown", 0, 0, 0, 10, 20);
             InvokePrivate(platform, "OnMouseUp", 0, 0, 0, 30, 40);
             platform.GetMouseState(out int x, out int y, out bool[] buttons);
@@ -507,7 +507,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_OnMouseWheel_NegativeDelta()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnMouseWheel", 0, -10);
             Assert.Equal(-10.0f, platform.GetMouseWheel());
         }
@@ -515,7 +515,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_OnMouseWheel_ZeroDelta()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnMouseWheel", 0, 0);
             Assert.Equal(0.0f, platform.GetMouseWheel());
         }
@@ -523,7 +523,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_OnGamepadConnect_SameIndexTwice_DoesNotDuplicate()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnGamepadConnect", 0);
             InvokePrivate(platform, "OnGamepadConnect", 0);
             int[] indices = platform.GetConnectedGamepadIndices();
@@ -533,7 +533,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_OnWindowResize_SameSize_Works()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnWindowResize", 800, 600);
             Assert.Equal(800, platform.GetWindowWidth());
             Assert.Equal(600, platform.GetWindowHeight());
@@ -542,7 +542,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_OnWindowResize_ZeroSize_Works()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnWindowResize", 0, 0);
             Assert.Equal(0, platform.GetWindowWidth());
             Assert.Equal(0, platform.GetWindowHeight());
@@ -551,7 +551,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_OnWindowResize_MaxSize_Works()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnWindowResize", int.MaxValue, int.MaxValue);
             Assert.Equal(int.MaxValue, platform.GetWindowWidth());
             Assert.Equal(int.MaxValue, platform.GetWindowHeight());
@@ -560,7 +560,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_OnWindowResize_NegativeSize_Works()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnWindowResize", -100, -200);
             Assert.Equal(-100, platform.GetWindowWidth());
             Assert.Equal(-200, platform.GetWindowHeight());
@@ -569,7 +569,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_PollEvents_MultipleCalls_ResetsWheelEachTime()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnMouseWheel", 0, 5);
             platform.PollEvents();
             Assert.Equal(0.0f, platform.GetMouseWheel());
@@ -582,21 +582,21 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_SetWindowIcon_EmptyPath_DoesNotThrow()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             platform.SetWindowIcon("");
         }
 
         [Fact]
         public void WebAssemblyPlatform_SetWindowIcon_NullPath_DoesNotThrow()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             platform.SetWindowIcon(null);
         }
 
         [Fact]
         public void WebAssemblyPlatform_GetWindowMetrics_ReturnsDefaultValuesOnNonBrowser()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             platform.GetWindowMetrics(out int winX, out int winY, out int winW, out int winH, out int fbW, out int fbH);
             Assert.Equal(0, winX);
             Assert.Equal(0, winY);
@@ -607,7 +607,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_GetProcAddress_NullOrEmpty_DoesNotCrash()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             if (!OperatingSystem.IsBrowser())
             {
                 Assert.ThrowsAny<Exception>(() => platform.GetProcAddress(""));
@@ -617,7 +617,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_GetMouseState_ReturnsClonedArray()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             platform.GetMouseState(out int x1, out int y1, out bool[] buttons1);
             platform.GetMouseState(out int x2, out int y2, out bool[] buttons2);
             Assert.NotSame(buttons1, buttons2);
@@ -626,7 +626,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_GetMouseState_MultipleButtons()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnMouseDown", 0, 0, 0, 10, 20);
             InvokePrivate(platform, "OnMouseDown", 2, 0, 0, 10, 20);
             InvokePrivate(platform, "OnMouseDown", 4, 0, 0, 10, 20);
@@ -666,7 +666,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [InlineData(19, ConsoleKey.Pause)]
         public void WebAssemblyPlatform_ConvertKeyCode_MapsCorrectly(int keyCode, ConsoleKey expected)
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnKeyDown", keyCode, 0);
             Assert.True(platform.IsKeyDown(expected));
         }
@@ -674,7 +674,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_ConvertKeyCode_UnknownKey_MapsToNoName()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnKeyDown", 999, 0);
             Assert.True(platform.IsKeyDown(ConsoleKey.NoName));
         }
@@ -682,7 +682,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_GetWindowPositionX_ReturnsDefaultOnNonBrowser()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             int x = platform.GetWindowPositionX();
             Assert.Equal(0, x);
         }
@@ -690,7 +690,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_GetWindowPositionY_ReturnsDefaultOnNonBrowser()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             int y = platform.GetWindowPositionY();
             Assert.Equal(0, y);
         }

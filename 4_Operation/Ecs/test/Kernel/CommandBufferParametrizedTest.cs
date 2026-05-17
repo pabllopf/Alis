@@ -76,7 +76,7 @@ namespace Alis.Core.Ecs.Test.Kernel
 
             // Assert
             int count = 0;
-            foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities())
+            foreach (GameObject go in scene.Query<With<Position>>().EnumerateWithEntities())
             {
                 count++;
             }
@@ -99,7 +99,7 @@ namespace Alis.Core.Ecs.Test.Kernel
 
             // Assert
             int queryCount = 0;
-            foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities())
+            foreach (GameObject go in scene.Query<With<Position>>().EnumerateWithEntities())
             {
                 queryCount++;
             }

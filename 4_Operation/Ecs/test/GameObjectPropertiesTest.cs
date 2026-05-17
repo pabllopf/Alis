@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Math.Collections;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
@@ -254,7 +255,7 @@ namespace Alis.Core.Ecs.Test
             GameObject gameObject = scene.Create(new Position {X = 10, Y = 20});
 
             // Act
-            var types = gameObject.ComponentTypes;
+            FastImmutableArray<ComponentId> types = gameObject.ComponentTypes;
 
             // Assert
             Assert.Contains(Component<Position>.Id, types);
@@ -274,7 +275,7 @@ namespace Alis.Core.Ecs.Test
                 new Health {Value = 100});
 
             // Act
-            var types = gameObject.ComponentTypes;
+            FastImmutableArray<ComponentId> types = gameObject.ComponentTypes;
 
             // Assert
             Assert.Contains(Component<Position>.Id, types);

@@ -69,7 +69,7 @@ namespace Alis.Core.Ecs.Test
             }
 
             int queryCount = 0;
-            foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities())
+            foreach (GameObject go in scene.Query<With<Position>>().EnumerateWithEntities())
             {
                 queryCount++;
             }
@@ -85,7 +85,7 @@ namespace Alis.Core.Ecs.Test
         public void Massive_DeleteMany(int count)
         {
             using Scene scene = new Scene();
-            var entities = new GameObject[count];
+            GameObject[] entities = new GameObject[count];
             for (int i = 0; i < count; i++)
             {
                 entities[i] = scene.Create();
@@ -107,7 +107,7 @@ namespace Alis.Core.Ecs.Test
         public void Massive_AddComponentsToMany(int count)
         {
             using Scene scene = new Scene();
-            var entities = new GameObject[count];
+            GameObject[] entities = new GameObject[count];
             for (int i = 0; i < count; i++)
             {
                 entities[i] = scene.Create();
@@ -119,7 +119,7 @@ namespace Alis.Core.Ecs.Test
             }
 
             int queryCount = 0;
-            foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities())
+            foreach (GameObject go in scene.Query<With<Position>>().EnumerateWithEntities())
             {
                 queryCount++;
             }
@@ -141,16 +141,16 @@ namespace Alis.Core.Ecs.Test
             }
 
             int before = 0;
-            foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities())
+            foreach (GameObject go in scene.Query<With<Position>>().EnumerateWithEntities())
             {
                 before++;
             }
 
             Assert.Equal(count, before);
 
-            var positions = new GameObject[count];
+            GameObject[] positions = new GameObject[count];
             int idx = 0;
-            foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities())
+            foreach (GameObject go in scene.Query<With<Position>>().EnumerateWithEntities())
             {
                 positions[idx++] = go;
             }
@@ -161,7 +161,7 @@ namespace Alis.Core.Ecs.Test
             }
 
             int after = 0;
-            foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities())
+            foreach (GameObject go in scene.Query<With<Position>>().EnumerateWithEntities())
             {
                 after++;
             }
@@ -180,7 +180,7 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             for (int i = 0; i < count; i++)
             {
-                var go = scene.Create();
+                GameObject go = scene.Create();
                 if (componentType >= 1)
                 {
                     go.Add(new Position {X = i, Y = i});
@@ -226,7 +226,7 @@ namespace Alis.Core.Ecs.Test
             for (int q = 0; q < 10; q++)
             {
                 int queryCount = 0;
-                foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities())
+                foreach (GameObject go in scene.Query<With<Position>>().EnumerateWithEntities())
                 {
                     queryCount++;
                 }
@@ -243,7 +243,7 @@ namespace Alis.Core.Ecs.Test
         public void Massive_ModifyComponentsManyTimes(int count)
         {
             using Scene scene = new Scene();
-            var entities = new GameObject[count];
+            GameObject[] entities = new GameObject[count];
             for (int i = 0; i < count; i++)
             {
                 entities[i] = scene.Create(new Position {X = 0, Y = 0});
@@ -290,7 +290,7 @@ namespace Alis.Core.Ecs.Test
         public void Massive_VariedOperationsSequence(int operations)
         {
             using Scene scene = new Scene();
-            var entities = new List<GameObject>();
+            List<GameObject> entities = new List<GameObject>();
 
             for (int i = 0; i < operations; i++)
             {
@@ -346,7 +346,7 @@ namespace Alis.Core.Ecs.Test
 
             for (int i = 0; i < count; i++)
             {
-                var go = scene.Create();
+                GameObject go = scene.Create();
                 if (i % 2 == 0)
                 {
                     go.Add(new Position {X = i, Y = i});

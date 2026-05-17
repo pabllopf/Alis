@@ -141,49 +141,59 @@ namespace Alis.Extension.Updater
             Logger.Info("Starting update process.");
             try
             {
-                if (HandleCancellationRequest(ctsToken))
-                {
-                    return false;
-                }
-
-                Dictionary<string, object> latestRelease = await GetLatestReleaseAsync();
-                if (latestRelease == null)
-                {
-                    Logger.Info("No release information was returned.");
-                    return false;
-                }
-
-                string platform = GetPlatform();
-                string architecture = GetArchitecture();
-                ReportPlatformDetection(platform, architecture);
-
-                Dictionary<string, object> selectedAsset = GetSelectedAsset(latestRelease, platform, architecture);
-                if (selectedAsset == null)
-                {
-                    return HandleMissingCompatiblePackage(platform, architecture);
-                }
-
-                string downloadUrl = selectedAsset["browser_download_url"]?.ToString();
-                string version = latestRelease["tag_name"]?.ToString();
-                ReportDownloadPreparation(platform, architecture, version);
-
-                if (IsLatestVersionAlreadyDownloaded(downloadUrl))
-                {
-                    return FinishAlreadyDownloadedFlow();
-                }
-
-                string downloadedFile = await DownloadLatestVersionAsync(downloadUrl, version);
-                if (string.IsNullOrEmpty(downloadedFile))
-                {
-                    return HandleDownloadFailure();
-                }
-
-                return InstallLatestVersion(downloadedFile, version);
+                return await ExecuteUpdateAsync(ctsToken);
             }
             catch (Exception ex)
             {
                 throw new Exception($"Error updating program: {ex.Message}");
             }
+        }
+
+        /// <summary>
+        ///     Executes the update workflow
+        /// </summary>
+        /// <param name="ctsToken">The cancellation token</param>
+        /// <returns>True if the update succeeded</returns>
+        private async Task<bool> ExecuteUpdateAsync(CancellationToken ctsToken)
+        {
+            if (HandleCancellationRequest(ctsToken))
+            {
+                return false;
+            }
+
+            Dictionary<string, object> latestRelease = await GetLatestReleaseAsync();
+            if (latestRelease == null)
+            {
+                Logger.Info("No release information was returned.");
+                return false;
+            }
+
+            string platform = GetPlatform();
+            string architecture = GetArchitecture();
+            ReportPlatformDetection(platform, architecture);
+
+            Dictionary<string, object> selectedAsset = GetSelectedAsset(latestRelease, platform, architecture);
+            if (selectedAsset == null)
+            {
+                return HandleMissingCompatiblePackage(platform, architecture);
+            }
+
+            string downloadUrl = selectedAsset["browser_download_url"]?.ToString();
+            string version = latestRelease["tag_name"]?.ToString();
+            ReportDownloadPreparation(platform, architecture, version);
+
+            if (IsLatestVersionAlreadyDownloaded(downloadUrl))
+            {
+                return FinishAlreadyDownloadedFlow();
+            }
+
+            string downloadedFile = await DownloadLatestVersionAsync(downloadUrl, version);
+            if (string.IsNullOrEmpty(downloadedFile))
+            {
+                return HandleDownloadFailure();
+            }
+
+            return InstallLatestVersion(downloadedFile, version);
         }
 
         /// <summary>

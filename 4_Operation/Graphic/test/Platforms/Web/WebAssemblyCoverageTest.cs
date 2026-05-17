@@ -20,10 +20,10 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContext_Properties_ReturnCorrectInstances()
         {
-            var config = new WebAssemblyConfiguration();
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
             if (OperatingSystem.IsBrowser())
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 Assert.NotNull(context.Platform);
                 Assert.NotNull(context.InputManager);
                 Assert.NotNull(context.InputContext);
@@ -39,7 +39,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         {
             if (OperatingSystem.IsBrowser())
             {
-                var context = new WebAssemblyGameContext();
+                WebAssemblyGameContext context = new WebAssemblyGameContext();
                 Assert.NotNull(context.Configuration);
                 Assert.Equal(800, context.Configuration.WindowWidth);
                 Assert.Equal(600, context.Configuration.WindowHeight);
@@ -53,15 +53,15 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContext_Show_DoesNotThrow()
         {
-            var config = new WebAssemblyConfiguration();
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
             if (OperatingSystem.IsBrowser())
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 context.Show();
             }
             else
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 context.Show();
             }
         }
@@ -69,15 +69,15 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContext_Hide_DoesNotThrow()
         {
-            var config = new WebAssemblyConfiguration();
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
             if (OperatingSystem.IsBrowser())
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 context.Hide();
             }
             else
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 context.Hide();
             }
         }
@@ -89,10 +89,10 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContext_Run_NullCallback_Throws()
         {
-            var config = new WebAssemblyConfiguration();
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
             if (OperatingSystem.IsBrowser())
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 Assert.Throws<ArgumentNullException>(() => context.Run(null));
             }
         }
@@ -100,10 +100,10 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContext_Run_AlreadyRunning_Throws()
         {
-            var config = new WebAssemblyConfiguration();
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
             if (OperatingSystem.IsBrowser())
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 bool firstStarted = false;
                 bool secondAttempted = false;
 
@@ -125,10 +125,10 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContext_Run_SetsIsRunning()
         {
-            var config = new WebAssemblyConfiguration();
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
             if (OperatingSystem.IsBrowser())
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 bool wasRunning = false;
 
                 context.Run(c =>
@@ -145,10 +145,10 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContext_Run_TriggersShutdownEvent()
         {
-            var config = new WebAssemblyConfiguration();
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
             if (OperatingSystem.IsBrowser())
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 bool shutdownTriggered = false;
 
                 context.OnShutdown += (s, e) => shutdownTriggered = true;
@@ -162,10 +162,10 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContext_Run_ErrorInCallback_LogsAndContinues()
         {
-            var config = new WebAssemblyConfiguration();
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
             if (OperatingSystem.IsBrowser())
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 int callCount = 0;
 
                 context.Run(c =>
@@ -189,10 +189,10 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContext_RegisterAction_SingleKey_Works()
         {
-            var config = new WebAssemblyConfiguration();
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
             if (OperatingSystem.IsBrowser())
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 context.RegisterAction("Jump", ConsoleKey.Spacebar);
                 Assert.False(context.IsActionActive("Jump"));
             }
@@ -201,10 +201,10 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContext_RegisterAction_MultipleKeys_Works()
         {
-            var config = new WebAssemblyConfiguration();
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
             if (OperatingSystem.IsBrowser())
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 context.RegisterAction("Move", ConsoleKey.W, ConsoleKey.UpArrow);
                 Assert.False(context.IsActionActive("Move"));
             }
@@ -217,10 +217,10 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContext_IsActionActive_NonExistent_ReturnsFalse()
         {
-            var config = new WebAssemblyConfiguration();
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
             if (OperatingSystem.IsBrowser())
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 Assert.False(context.IsActionActive("Unknown"));
             }
         }
@@ -228,10 +228,10 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContext_IsActionJustPressed_NonExistent_ReturnsFalse()
         {
-            var config = new WebAssemblyConfiguration();
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
             if (OperatingSystem.IsBrowser())
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 Assert.False(context.IsActionJustPressed("Unknown"));
             }
         }
@@ -243,10 +243,10 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContext_GetWidth_ReturnsPlatformWidth()
         {
-            var config = new WebAssemblyConfiguration();
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
             if (OperatingSystem.IsBrowser())
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 Assert.Equal(800, context.GetWidth());
             }
         }
@@ -254,10 +254,10 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContext_GetHeight_ReturnsPlatformHeight()
         {
-            var config = new WebAssemblyConfiguration();
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
             if (OperatingSystem.IsBrowser())
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 Assert.Equal(600, context.GetHeight());
             }
         }
@@ -265,10 +265,10 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContext_GetAspectRatio_CorrectCalculation()
         {
-            var config = new WebAssemblyConfiguration();
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
             if (OperatingSystem.IsBrowser())
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 float aspect = context.GetAspectRatio();
                 Assert.Equal(800.0f / 600.0f, aspect, 3);
             }
@@ -277,15 +277,15 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContext_SetSize_DoesNotThrow()
         {
-            var config = new WebAssemblyConfiguration();
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
             if (OperatingSystem.IsBrowser())
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 context.SetSize(1024, 768);
             }
             else
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 context.SetSize(1024, 768);
             }
         }
@@ -293,15 +293,15 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContext_SetTitle_DoesNotThrow()
         {
-            var config = new WebAssemblyConfiguration();
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
             if (OperatingSystem.IsBrowser())
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 context.SetTitle("Test");
             }
             else
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 context.SetTitle("Test");
             }
         }
@@ -313,10 +313,10 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContext_GetMousePosition_ReturnsDefaultCoords()
         {
-            var config = new WebAssemblyConfiguration();
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
             if (OperatingSystem.IsBrowser())
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 context.GetMousePosition(out int x, out int y);
                 Assert.Equal(0, x);
                 Assert.Equal(0, y);
@@ -326,10 +326,10 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContext_IsMouseButtonDown_Default_ReturnsFalse()
         {
-            var config = new WebAssemblyConfiguration();
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
             if (OperatingSystem.IsBrowser())
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 Assert.False(context.IsMouseButtonDown(0));
             }
         }
@@ -337,10 +337,10 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContext_GetMouseWheelDelta_Default_ReturnsZero()
         {
-            var config = new WebAssemblyConfiguration();
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
             if (OperatingSystem.IsBrowser())
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 Assert.Equal(0.0f, context.GetMouseWheelDelta());
             }
         }
@@ -352,10 +352,10 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContext_IsKeyDown_Default_ReturnsFalse()
         {
-            var config = new WebAssemblyConfiguration();
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
             if (OperatingSystem.IsBrowser())
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 Assert.False(context.IsKeyDown(ConsoleKey.A));
             }
         }
@@ -363,10 +363,10 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContext_TryGetKeyPressed_Empty_ReturnsFalse()
         {
-            var config = new WebAssemblyConfiguration();
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
             if (OperatingSystem.IsBrowser())
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 bool result = context.TryGetKeyPressed(out ConsoleKey key);
                 Assert.False(result);
                 Assert.Equal(ConsoleKey.NoName, key);
@@ -376,10 +376,10 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContext_TryGetInputText_Empty_ReturnsFalse()
         {
-            var config = new WebAssemblyConfiguration();
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
             if (OperatingSystem.IsBrowser())
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 bool result = context.TryGetInputText(out string text);
                 Assert.False(result);
                 Assert.Equal(string.Empty, text);
@@ -393,10 +393,10 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContext_GetConnectedGamepadIndices_Empty_ReturnsEmpty()
         {
-            var config = new WebAssemblyConfiguration();
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
             if (OperatingSystem.IsBrowser())
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 int[] indices = context.GetConnectedGamepadIndices();
                 Assert.NotNull(indices);
                 Assert.Empty(indices);
@@ -406,11 +406,11 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContext_TryGetGamepadState_NoGamepad_ReturnsFalse()
         {
-            var config = new WebAssemblyConfiguration();
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
             if (OperatingSystem.IsBrowser())
             {
-                var context = new WebAssemblyGameContext(config);
-                bool result = context.TryGetGamepadState(0, out var state);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
+                bool result = context.TryGetGamepadState(0, out GamepadInputState state);
                 Assert.False(result);
                 Assert.Null(state);
             }
@@ -419,15 +419,15 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContext_VibrateGamepad_ReturnsFalseOnNonBrowser()
         {
-            var config = new WebAssemblyConfiguration();
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
             if (OperatingSystem.IsBrowser())
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 context.VibrateGamepad(0);
             }
             else
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 Assert.False(context.VibrateGamepad(0));
             }
         }
@@ -439,15 +439,15 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContext_ToggleFullscreen_ReturnsFalseOnNonBrowser()
         {
-            var config = new WebAssemblyConfiguration();
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
             if (OperatingSystem.IsBrowser())
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 context.ToggleFullscreen();
             }
             else
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 Assert.False(context.ToggleFullscreen());
             }
         }
@@ -455,15 +455,15 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContext_EnterFullscreen_ReturnsFalseOnNonBrowser()
         {
-            var config = new WebAssemblyConfiguration();
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
             if (OperatingSystem.IsBrowser())
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 context.EnterFullscreen();
             }
             else
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 Assert.False(context.EnterFullscreen());
             }
         }
@@ -471,15 +471,15 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContext_ExitFullscreen_ReturnsFalseOnNonBrowser()
         {
-            var config = new WebAssemblyConfiguration();
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
             if (OperatingSystem.IsBrowser())
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 context.ExitFullscreen();
             }
             else
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 Assert.False(context.ExitFullscreen());
             }
         }
@@ -487,15 +487,15 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContext_IsFullscreen_ReturnsFalseOnNonBrowser()
         {
-            var config = new WebAssemblyConfiguration();
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
             if (OperatingSystem.IsBrowser())
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 context.IsFullscreen();
             }
             else
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 Assert.False(context.IsFullscreen());
             }
         }
@@ -507,15 +507,15 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContext_LockPointer_ReturnsFalseOnNonBrowser()
         {
-            var config = new WebAssemblyConfiguration();
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
             if (OperatingSystem.IsBrowser())
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 context.LockPointer();
             }
             else
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 Assert.False(context.LockPointer());
             }
         }
@@ -523,15 +523,15 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContext_UnlockPointer_ReturnsFalseOnNonBrowser()
         {
-            var config = new WebAssemblyConfiguration();
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
             if (OperatingSystem.IsBrowser())
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 context.UnlockPointer();
             }
             else
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 Assert.False(context.UnlockPointer());
             }
         }
@@ -539,15 +539,15 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContext_IsPointerLocked_ReturnsFalseOnNonBrowser()
         {
-            var config = new WebAssemblyConfiguration();
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
             if (OperatingSystem.IsBrowser())
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 context.IsPointerLocked();
             }
             else
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 Assert.False(context.IsPointerLocked());
             }
         }
@@ -559,15 +559,15 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContext_GetDeviceLanguage_ReturnsDefaultOnNonBrowser()
         {
-            var config = new WebAssemblyConfiguration();
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
             if (OperatingSystem.IsBrowser())
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 context.GetDeviceLanguage();
             }
             else
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 string lang = context.GetDeviceLanguage();
                 Assert.Equal("en", lang);
             }
@@ -576,15 +576,15 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContext_GetBatteryLevel_ReturnsDefaultOnNonBrowser()
         {
-            var config = new WebAssemblyConfiguration();
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
             if (OperatingSystem.IsBrowser())
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 context.GetBatteryLevel();
             }
             else
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 float level = context.GetBatteryLevel();
                 Assert.Equal(-1.0f, level);
             }
@@ -593,15 +593,15 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContext_IsCharging_ReturnsFalseOnNonBrowser()
         {
-            var config = new WebAssemblyConfiguration();
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
             if (OperatingSystem.IsBrowser())
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 context.IsCharging();
             }
             else
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 Assert.False(context.IsCharging());
             }
         }
@@ -609,15 +609,15 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContext_IsOnline_ReturnsFalseOnNonBrowser()
         {
-            var config = new WebAssemblyConfiguration();
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
             if (OperatingSystem.IsBrowser())
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 context.IsOnline();
             }
             else
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 Assert.False(context.IsOnline());
             }
         }
@@ -625,10 +625,10 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContext_GetRefreshRate_Returns60()
         {
-            var config = new WebAssemblyConfiguration();
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
             if (OperatingSystem.IsBrowser())
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 Assert.Equal(60, context.GetRefreshRate());
             }
         }
@@ -679,10 +679,10 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContext_Dispose_SetsIsRunningFalse()
         {
-            var config = new WebAssemblyConfiguration();
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
             if (OperatingSystem.IsBrowser())
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 context.Dispose();
                 Assert.False(context.IsRunning);
             }
@@ -691,10 +691,10 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContext_Dispose_MultipleTimes_DoesNotThrow()
         {
-            var config = new WebAssemblyConfiguration();
+            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
             if (OperatingSystem.IsBrowser())
             {
-                var context = new WebAssemblyGameContext(config);
+                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
                 context.Dispose();
                 context.Dispose();
             }
@@ -707,7 +707,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_Initialize_WithIconPath_ThrowsOnNonBrowser()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             if (!OperatingSystem.IsBrowser())
             {
                 bool result = platform.Initialize(800, 600, "Test", "/icon.png");
@@ -718,7 +718,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_Initialize_AlreadyInitialized_ReturnsTrue()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             // First call fails on non-browser, but sets _isInitialized via catch
             // Actually Initialize catches exception and returns false without setting _isInitialized
             // So we need to test the early return path differently
@@ -733,7 +733,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_Cleanup_WhenInitialized_ClearsState()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             // On non-browser, _isInitialized is always false since Initialize fails
             // So Cleanup returns early
             platform.Cleanup();
@@ -773,7 +773,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [InlineData(90, ConsoleKey.Z)]
         public void WebAssemblyPlatform_ConvertKeyCode_AlphabetKeys(int keyCode, ConsoleKey expected)
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnKeyDown", keyCode, 0);
             Assert.True(platform.IsKeyDown(expected));
         }
@@ -791,7 +791,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [InlineData(57, ConsoleKey.D9)]
         public void WebAssemblyPlatform_ConvertKeyCode_NumberKeys(int keyCode, ConsoleKey expected)
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnKeyDown", keyCode, 0);
             Assert.True(platform.IsKeyDown(expected));
         }
@@ -811,7 +811,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [InlineData(123, ConsoleKey.F12)]
         public void WebAssemblyPlatform_ConvertKeyCode_FunctionKeys(int keyCode, ConsoleKey expected)
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnKeyDown", keyCode, 0);
             Assert.True(platform.IsKeyDown(expected));
         }
@@ -829,7 +829,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [InlineData(105, ConsoleKey.NumPad9)]
         public void WebAssemblyPlatform_ConvertKeyCode_NumpadKeys(int keyCode, ConsoleKey expected)
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnKeyDown", keyCode, 0);
             Assert.True(platform.IsKeyDown(expected));
         }
@@ -842,7 +842,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [InlineData(111, ConsoleKey.Divide)]
         public void WebAssemblyPlatform_ConvertKeyCode_NumpadOperators(int keyCode, ConsoleKey expected)
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnKeyDown", keyCode, 0);
             Assert.True(platform.IsKeyDown(expected));
         }
@@ -852,7 +852,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [InlineData(17, ConsoleKey.Escape)]
         public void WebAssemblyPlatform_ConvertKeyCode_ModifierKeys(int keyCode, ConsoleKey expected)
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnKeyDown", keyCode, 0);
             Assert.True(platform.IsKeyDown(expected));
         }
@@ -860,7 +860,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_ConvertKeyCode_Default_ReturnsNoName()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnKeyDown", 9999, 0);
             Assert.True(platform.IsKeyDown(ConsoleKey.NoName));
         }
@@ -872,7 +872,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void WebAssemblyPlatform_GetWindowMetrics_ThrowsOnNonBrowser()
         {
-            var platform = new WebAssemblyPlatform();
+            WebAssemblyPlatform platform = new WebAssemblyPlatform();
             if (!OperatingSystem.IsBrowser())
             {
                 Assert.ThrowsAny<Exception>(() =>
@@ -952,7 +952,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void MultiplatformGameEngine_Constructor_DoesNotThrow()
         {
-            var engine = new MultiplatformGameEngine(800, 600, "Test");
+            MultiplatformGameEngine engine = new MultiplatformGameEngine(800, 600, "Test");
             Assert.NotNull(engine.GameContext);
         }
 
@@ -961,7 +961,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         {
             if (OperatingSystem.IsBrowser())
             {
-                var engine = new MultiplatformGameEngine(800, 600, "Test");
+                MultiplatformGameEngine engine = new MultiplatformGameEngine(800, 600, "Test");
                 engine.Dispose();
                 engine.Dispose();
             }
@@ -972,7 +972,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         {
             if (OperatingSystem.IsBrowser())
             {
-                var engine = new MultiplatformGameEngine(800, 600, "Test");
+                MultiplatformGameEngine engine = new MultiplatformGameEngine(800, 600, "Test");
                 Assert.NotNull(engine.GameContext);
                 Assert.NotNull(engine.Input);
                 Assert.NotNull(engine.Display);
@@ -988,7 +988,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         {
             if (OperatingSystem.IsBrowser())
             {
-                var engine = new MultiplatformGameEngine(800, 600, "Test");
+                MultiplatformGameEngine engine = new MultiplatformGameEngine(800, 600, "Test");
                 bool result = engine.Input.GetMovementInput(out float x, out float y);
                 Assert.False(result);
                 Assert.Equal(0, x);
@@ -1001,7 +1001,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         {
             if (OperatingSystem.IsBrowser())
             {
-                var engine = new MultiplatformGameEngine(800, 600, "Test");
+                MultiplatformGameEngine engine = new MultiplatformGameEngine(800, 600, "Test");
                 Assert.False(engine.Input.IsJumpPressed());
             }
         }
@@ -1011,7 +1011,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         {
             if (OperatingSystem.IsBrowser())
             {
-                var engine = new MultiplatformGameEngine(800, 600, "Test");
+                MultiplatformGameEngine engine = new MultiplatformGameEngine(800, 600, "Test");
                 Assert.False(engine.Input.IsAttackPressed());
             }
         }
@@ -1021,7 +1021,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         {
             if (OperatingSystem.IsBrowser())
             {
-                var engine = new MultiplatformGameEngine(800, 600, "Test");
+                MultiplatformGameEngine engine = new MultiplatformGameEngine(800, 600, "Test");
                 engine.Input.GetCameraInput(out float pitch, out float yaw);
             }
         }
@@ -1035,7 +1035,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         {
             if (OperatingSystem.IsBrowser())
             {
-                var engine = new MultiplatformGameEngine(800, 600, "Test");
+                MultiplatformGameEngine engine = new MultiplatformGameEngine(800, 600, "Test");
                 Assert.Equal(800, engine.Display.GetWidth());
             }
         }
@@ -1045,7 +1045,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         {
             if (OperatingSystem.IsBrowser())
             {
-                var engine = new MultiplatformGameEngine(800, 600, "Test");
+                MultiplatformGameEngine engine = new MultiplatformGameEngine(800, 600, "Test");
                 Assert.Equal(600, engine.Display.GetHeight());
             }
         }
@@ -1055,7 +1055,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         {
             if (OperatingSystem.IsBrowser())
             {
-                var engine = new MultiplatformGameEngine(800, 600, "Test");
+                MultiplatformGameEngine engine = new MultiplatformGameEngine(800, 600, "Test");
                 float aspect = engine.Display.GetAspectRatio();
                 Assert.Equal(800.0f / 600.0f, aspect, 3);
             }
@@ -1066,12 +1066,12 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         {
             if (OperatingSystem.IsBrowser())
             {
-                var engine = new MultiplatformGameEngine(800, 600, "Test");
+                MultiplatformGameEngine engine = new MultiplatformGameEngine(800, 600, "Test");
                 engine.Display.IsFullscreen();
             }
             else
             {
-                var engine = new MultiplatformGameEngine(800, 600, "Test");
+                MultiplatformGameEngine engine = new MultiplatformGameEngine(800, 600, "Test");
                 Assert.False(engine.Display.IsFullscreen());
             }
         }
@@ -1081,12 +1081,12 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         {
             if (OperatingSystem.IsBrowser())
             {
-                var engine = new MultiplatformGameEngine(800, 600, "Test");
+                MultiplatformGameEngine engine = new MultiplatformGameEngine(800, 600, "Test");
                 engine.Display.SetFullscreen(true);
             }
             else
             {
-                var engine = new MultiplatformGameEngine(800, 600, "Test");
+                MultiplatformGameEngine engine = new MultiplatformGameEngine(800, 600, "Test");
                 engine.Display.SetFullscreen(true);
             }
         }
@@ -1096,12 +1096,12 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         {
             if (OperatingSystem.IsBrowser())
             {
-                var engine = new MultiplatformGameEngine(800, 600, "Test");
+                MultiplatformGameEngine engine = new MultiplatformGameEngine(800, 600, "Test");
                 engine.Display.ToggleFullscreen();
             }
             else
             {
-                var engine = new MultiplatformGameEngine(800, 600, "Test");
+                MultiplatformGameEngine engine = new MultiplatformGameEngine(800, 600, "Test");
                 engine.Display.ToggleFullscreen();
             }
         }
@@ -1111,12 +1111,12 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         {
             if (OperatingSystem.IsBrowser())
             {
-                var engine = new MultiplatformGameEngine(800, 600, "Test");
+                MultiplatformGameEngine engine = new MultiplatformGameEngine(800, 600, "Test");
                 engine.Display.SetSize(1024, 768);
             }
             else
             {
-                var engine = new MultiplatformGameEngine(800, 600, "Test");
+                MultiplatformGameEngine engine = new MultiplatformGameEngine(800, 600, "Test");
                 engine.Display.SetSize(1024, 768);
             }
         }
@@ -1126,12 +1126,12 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         {
             if (OperatingSystem.IsBrowser())
             {
-                var engine = new MultiplatformGameEngine(800, 600, "Test");
+                MultiplatformGameEngine engine = new MultiplatformGameEngine(800, 600, "Test");
                 engine.Display.SetTitle("New Title");
             }
             else
             {
-                var engine = new MultiplatformGameEngine(800, 600, "Test");
+                MultiplatformGameEngine engine = new MultiplatformGameEngine(800, 600, "Test");
                 engine.Display.SetTitle("New Title");
             }
         }
@@ -1234,7 +1234,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContextPresets_Game2D_ReturnsValidConfig()
         {
-            var config = GameContextPresets.Game2D();
+            WebAssemblyConfiguration config = GameContextPresets.Game2D();
             Assert.Equal(1280, config.WindowWidth);
             Assert.Equal(720, config.WindowHeight);
             Assert.Equal("2D Game", config.WindowTitle);
@@ -1251,7 +1251,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContextPresets_Game3D_ReturnsValidConfig()
         {
-            var config = GameContextPresets.Game3D();
+            WebAssemblyConfiguration config = GameContextPresets.Game3D();
             Assert.Equal(1920, config.WindowWidth);
             Assert.Equal(1080, config.WindowHeight);
             Assert.Equal("3D Game", config.WindowTitle);
@@ -1265,7 +1265,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContextPresets_PuzzleGame_ReturnsValidConfig()
         {
-            var config = GameContextPresets.PuzzleGame();
+            WebAssemblyConfiguration config = GameContextPresets.PuzzleGame();
             Assert.Equal(800, config.WindowWidth);
             Assert.Equal(600, config.WindowHeight);
             Assert.Equal("Puzzle Game", config.WindowTitle);
@@ -1281,7 +1281,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameContextPresets_MobileGame_ReturnsValidConfig()
         {
-            var config = GameContextPresets.MobileGame();
+            WebAssemblyConfiguration config = GameContextPresets.MobileGame();
             Assert.Equal(720, config.WindowWidth);
             Assert.Equal(1280, config.WindowHeight);
             Assert.Equal("Mobile Game", config.WindowTitle);

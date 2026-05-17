@@ -165,7 +165,7 @@ namespace Alis.Core.Ecs.Test
 
             // Verify correct number were created
             int count = 0;
-            foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities())
+            foreach (GameObject go in scene.Query<With<Position>>().EnumerateWithEntities())
             {
                 if (componentType >= 1)
                 {
@@ -294,17 +294,17 @@ namespace Alis.Core.Ecs.Test
             }
 
             int posCount = 0, healthCount = 0, velCount = 0;
-            foreach (var go in scene.Query<With<Position>>().EnumerateWithEntities())
+            foreach (GameObject go in scene.Query<With<Position>>().EnumerateWithEntities())
             {
                 posCount++;
             }
 
-            foreach (var go in scene.Query<With<Health>>().EnumerateWithEntities())
+            foreach (GameObject go in scene.Query<With<Health>>().EnumerateWithEntities())
             {
                 healthCount++;
             }
 
-            foreach (var go in scene.Query<With<Velocity>>().EnumerateWithEntities())
+            foreach (GameObject go in scene.Query<With<Velocity>>().EnumerateWithEntities())
             {
                 velCount++;
             }
@@ -322,7 +322,7 @@ namespace Alis.Core.Ecs.Test
         public void BulkComponent_StressTestComponentOperations(int operationCount)
         {
             using Scene scene = new Scene();
-            var entities = new List<GameObject>();
+            List<GameObject> entities = new List<GameObject>();
 
             for (int i = 0; i < operationCount; i++)
             {
@@ -336,7 +336,7 @@ namespace Alis.Core.Ecs.Test
                     case 1:
                         if (entities.Count > 0)
                         {
-                            var go = entities[i % entities.Count];
+                            GameObject go = entities[i % entities.Count];
                             if (go.IsAlive && !go.Has<Health>())
                             {
                                 go.Add(new Health {Value = 100});
@@ -347,7 +347,7 @@ namespace Alis.Core.Ecs.Test
                     case 2:
                         if (entities.Count > 0)
                         {
-                            var go = entities[i % entities.Count];
+                            GameObject go = entities[i % entities.Count];
                             if (go.IsAlive && go.Has<Health>())
                             {
                                 go.Remove<Health>();
@@ -358,7 +358,7 @@ namespace Alis.Core.Ecs.Test
                     case 3:
                         if (entities.Count > 0)
                         {
-                            var go = entities[i % entities.Count];
+                            GameObject go = entities[i % entities.Count];
                             if (go.IsAlive)
                             {
                                 go.Delete();

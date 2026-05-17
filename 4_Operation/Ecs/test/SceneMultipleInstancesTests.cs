@@ -45,7 +45,7 @@ namespace Alis.Core.Ecs.Test
         [Theory, InlineData(1), InlineData(2), InlineData(5), InlineData(10)]
         public void MultipleScenes_CreateIndependentScenes_AllWork(int sceneCount)
         {
-            var scenes = new Scene[sceneCount];
+            Scene[] scenes = new Scene[sceneCount];
 
             try
             {
@@ -77,7 +77,7 @@ namespace Alis.Core.Ecs.Test
         [Theory, InlineData(2, 10), InlineData(3, 10), InlineData(5, 5)]
         public void MultipleScenes_CreateEntitiesInMultiple_Independent(int sceneCount, int entitiesPerScene)
         {
-            var scenes = new Scene[sceneCount];
+            Scene[] scenes = new Scene[sceneCount];
 
             try
             {
@@ -95,7 +95,7 @@ namespace Alis.Core.Ecs.Test
                 for (int s = 0; s < sceneCount; s++)
                 {
                     int count = 0;
-                    foreach (var go in scenes[s].Query<With<Position>>().EnumerateWithEntities())
+                    foreach (GameObject go in scenes[s].Query<With<Position>>().EnumerateWithEntities())
                     {
                         count++;
                     }
@@ -119,8 +119,8 @@ namespace Alis.Core.Ecs.Test
         [Theory, InlineData(2), InlineData(3), InlineData(5)]
         public void MultipleScenes_DeleteEntitiesInEachScene_Independent(int sceneCount)
         {
-            var scenes = new Scene[sceneCount];
-            var entities = new GameObject[sceneCount][];
+            Scene[] scenes = new Scene[sceneCount];
+            GameObject[][] entities = new GameObject[sceneCount][];
 
             try
             {
@@ -164,7 +164,7 @@ namespace Alis.Core.Ecs.Test
         [Theory, InlineData(2, 10), InlineData(3, 10), InlineData(5, 5)]
         public void MultipleScenes_QueryFromEachScene_Correct(int sceneCount, int entitiesPerScene)
         {
-            var scenes = new Scene[sceneCount];
+            Scene[] scenes = new Scene[sceneCount];
 
             try
             {
@@ -189,7 +189,7 @@ namespace Alis.Core.Ecs.Test
                 for (int s = 0; s < sceneCount; s++)
                 {
                     int count = 0;
-                    foreach (var go in scenes[s].Query<With<Position>>().EnumerateWithEntities())
+                    foreach (GameObject go in scenes[s].Query<With<Position>>().EnumerateWithEntities())
                     {
                         count++;
                     }
@@ -213,7 +213,7 @@ namespace Alis.Core.Ecs.Test
         [Theory, InlineData(2), InlineData(3), InlineData(5)]
         public void MultipleScenes_StressTest_ManyOperations(int sceneCount)
         {
-            var scenes = new Scene[sceneCount];
+            Scene[] scenes = new Scene[sceneCount];
 
             try
             {

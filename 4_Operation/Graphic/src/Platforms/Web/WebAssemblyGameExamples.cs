@@ -44,7 +44,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         public static void BasicGameLoopExample()
         {
             // Create a game context with specific dimensions
-            using (var gameContext = WebAssemblyGameContext.Create(1280, 720, "My Game"))
+            using (WebAssemblyGameContext gameContext = WebAssemblyGameContext.Create(1280, 720, "My Game"))
             {
                 // Register keyboard controls
                 gameContext.RegisterAction("Move_Up", ConsoleKey.W, ConsoleKey.UpArrow);
@@ -94,7 +94,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static void GamepadInputExample()
         {
-            using (var gameContext = WebAssemblyGameContext.Create(1280, 720, "Gamepad Test"))
+            using (WebAssemblyGameContext gameContext = WebAssemblyGameContext.Create(1280, 720, "Gamepad Test"))
             {
                 gameContext.Run((context) =>
                 {
@@ -142,7 +142,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static void DisplayManagementExample()
         {
-            using (var gameContext = WebAssemblyGameContext.Create(1280, 720, "Display Test"))
+            using (WebAssemblyGameContext gameContext = WebAssemblyGameContext.Create(1280, 720, "Display Test"))
             {
                 gameContext.DisplayManager.OnDisplayResized += (sender, args) =>
                 {
@@ -177,7 +177,7 @@ namespace Alis.Core.Graphic.Platforms.Web
                     float devicePixelRatio = WebAssemblyDisplayManager.GetDevicePixelRatio();
 
                     // Check orientation for responsive layout
-                    var orientation = context.DisplayManager.GetOrientation();
+                    ScreenOrientation orientation = context.DisplayManager.GetOrientation();
                     if (orientation == ScreenOrientation.Portrait)
                     {
                         // Use portrait layout
@@ -196,7 +196,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static void FpsGameExample()
         {
-            using (var gameContext = WebAssemblyGameContext.Create(1280, 720, "FPS Game"))
+            using (WebAssemblyGameContext gameContext = WebAssemblyGameContext.Create(1280, 720, "FPS Game"))
             {
                 bool pointerLocked = false;
 
@@ -251,7 +251,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static void SystemInfoExample()
         {
-            using (var gameContext = WebAssemblyGameContext.Create(1280, 720, "System Info"))
+            using (WebAssemblyGameContext gameContext = WebAssemblyGameContext.Create(1280, 720, "System Info"))
             {
                 // Log system information
                 WebAssemblyGameContext.ConsoleLog($"Device Language: {gameContext.GetDeviceLanguage()}");
@@ -286,7 +286,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         public static void ConfigurationPresetsExample()
         {
             // Create a 2D game with optimized settings
-            using (var game2D = new WebAssemblyGameContext(GameContextPresets.Game2D()))
+            using (WebAssemblyGameContext game2D = new WebAssemblyGameContext(GameContextPresets.Game2D()))
             {
                 game2D.Run((context) =>
                 {
@@ -295,7 +295,7 @@ namespace Alis.Core.Graphic.Platforms.Web
             }
 
             // Create a 3D game with high-quality settings
-            using (var game3D = new WebAssemblyGameContext(GameContextPresets.Game3D()))
+            using (WebAssemblyGameContext game3D = new WebAssemblyGameContext(GameContextPresets.Game3D()))
             {
                 game3D.Run((context) =>
                 {
@@ -304,7 +304,7 @@ namespace Alis.Core.Graphic.Platforms.Web
             }
 
             // Create a mobile game with touch support
-            using (var mobileGame = new WebAssemblyGameContext(GameContextPresets.MobileGame()))
+            using (WebAssemblyGameContext mobileGame = new WebAssemblyGameContext(GameContextPresets.MobileGame()))
             {
                 mobileGame.Run((context) =>
                 {
@@ -313,7 +313,7 @@ namespace Alis.Core.Graphic.Platforms.Web
             }
 
             // Create a custom configuration with builder pattern
-            using (var customGame = WebAssemblyGameContext.Create(config =>
+            using (WebAssemblyGameContext customGame = WebAssemblyGameContext.Create(config =>
             {
                 config
                     .WithSize(1600, 900)
@@ -340,7 +340,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static void TextInputExample()
         {
-            using (var gameContext = WebAssemblyGameContext.Create(1280, 720, "Text Input"))
+            using (WebAssemblyGameContext gameContext = WebAssemblyGameContext.Create(1280, 720, "Text Input"))
             {
                 string userInput = "";
 
@@ -379,7 +379,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static void PerformanceMonitoringExample()
         {
-            using (var gameContext = WebAssemblyGameContext.Create(1280, 720, "Performance Monitor"))
+            using (WebAssemblyGameContext gameContext = WebAssemblyGameContext.Create(1280, 720, "Performance Monitor"))
             {
                 double lastFrameTime = 0;
                 int frameCount = 0;
@@ -429,7 +429,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static void DialogBoxExample()
         {
-            using (var gameContext = WebAssemblyGameContext.Create(1280, 720, "Dialog Example"))
+            using (WebAssemblyGameContext gameContext = WebAssemblyGameContext.Create(1280, 720, "Dialog Example"))
             {
                 gameContext.Run((context) =>
                 {
@@ -462,7 +462,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static void CompleteGameTemplate()
         {
-            using (var gameContext = WebAssemblyGameContext.Create(config =>
+            using (WebAssemblyGameContext gameContext = WebAssemblyGameContext.Create(config =>
             {
                 config
                     .WithSize(1280, 720)
