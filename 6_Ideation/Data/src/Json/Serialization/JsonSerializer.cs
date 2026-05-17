@@ -63,7 +63,7 @@ namespace Alis.Core.Aspect.Data.Json.Serialization
         [ExcludeFromCodeCoverage]
         public string Serialize<T>(T instance) where T :  IJsonSerializable
         {
-            if (instance == null)
+            if (instance is null)
             {
                 throw new ArgumentNullException(nameof(instance));
             }

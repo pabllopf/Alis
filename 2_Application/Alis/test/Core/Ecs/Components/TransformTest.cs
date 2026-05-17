@@ -101,10 +101,7 @@ namespace Alis.Test.Core.Ecs.Components
         {
             Transform transform = new Transform();
 
-            Assert.Throws<System.NotImplementedException>(() =>
-            {
-                transform.OnStart(null!);
-            });
+            transform.OnStart(null!);
         }
 
         /// <summary>
@@ -119,10 +116,7 @@ namespace Alis.Test.Core.Ecs.Components
             transform.Rotation = 90f;
             transform.Scale = new Vector2F(5f, 5f);
 
-            Assert.Throws<System.NotImplementedException>(() =>
-            {
-                transform.OnExit(null!);
-            });
+            transform.OnExit(null!);
         }
 
         /// <summary>

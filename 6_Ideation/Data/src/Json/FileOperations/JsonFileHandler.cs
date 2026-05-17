@@ -88,7 +88,7 @@ namespace Alis.Core.Aspect.Data.Json.FileOperations
         [ExcludeFromCodeCoverage]
         public void SerializeToFile<T>(T instance, string fileName, string relativePath) where T : IJsonSerializable
         {
-            if (instance == null)
+            if (instance is null)
             {
                 throw new ArgumentNullException(nameof(instance));
             }
