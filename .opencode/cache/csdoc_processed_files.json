@@ -202,5 +202,10 @@
     "status": "enhanced",
     "changes": "xml_docs_improved",
     "timestamp": "2026-05-17T12:01:38.513359+00:00"
-  }
+  },
+  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/SeparationFunction.cs": "enhanced",
+  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/SeparationFunctionType.cs": "enhanced",
+  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/Simplex.cs": "enhanced",
+  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/SimplexCache.cs": "enhanced",
+  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/SimplexVertex.cs": "enhanced"
 }
