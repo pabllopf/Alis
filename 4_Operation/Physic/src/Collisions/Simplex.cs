@@ -185,9 +185,11 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     Gets the closest point
+        ///     Gets the closest point on the simplex to the origin.
         /// </summary>
-        /// <returns>The vector</returns>
+        /// <returns>
+        ///     A <see cref="Vector2F"/> representing the closest point. Zero if the simplex is empty or contains the origin.
+        /// </returns>
         internal Vector2F GetClosestPoint()
         {
             switch (Count)
@@ -293,8 +295,13 @@ namespace Alis.Core.Physic.Collisions
         // a2 = d12_2 / d12
 
         /// <summary>
-        ///     Solves the 2
+        ///     Solves the 2-vertex simplex to find barycentric coordinates.
         /// </summary>
+        /// <remarks>
+        ///     Uses barycentric coordinates to determine if the closest point to the origin
+        ///     lies on vertex 0, vertex 1, or somewhere along the edge between them.
+        ///     Reduces the simplex to 1 or 2 vertices accordingly.
+        /// </remarks>
         internal void Solve2()
         {
             Vector2F w1 = V[0].W;
