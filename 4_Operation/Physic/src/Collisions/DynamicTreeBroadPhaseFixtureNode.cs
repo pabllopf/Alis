@@ -43,66 +43,79 @@ namespace Alis.Core.Physic.Collisions
     }
 
     /// <summary>
-    ///     The broad-phase is used for computing pairs and performing volume queries and ray casts.
-    ///     This broad-phase does not persist pairs. Instead, this reports potentially new pairs.
-    ///     It is up to the client to consume the new pairs and to track subsequent overlap.
+    ///     Implements a broad-phase collision detection system using a dynamic bounding volume tree (DynamicTree).
     /// </summary>
+    /// <typeparam name="TNode">The type of the proxy node. Must be a struct.</typeparam>
+    /// <remarks>
+    ///     This broad-phase does not persist pairs. Instead, it reports potentially new pairs during each
+    ///     <see cref="UpdatePairs"/> call. It is up to the client to consume the new pairs and track
+    ///     subsequent overlap state.
+    ///     
+    ///     The tree provides efficient spatial queries with O(log n) complexity for most operations,
+    ///     where n is the number of proxies. Tree quality can be monitored via <see cref="TreeQuality"/>,
+    ///     <see cref="TreeBalance"/>, and <see cref="TreeHeight"/>.
+    /// </remarks>
     public class DynamicTreeBroadPhaseFixtureNode<TNode> : IBroadPhaseFixtureNode<TNode>
         where TNode : struct
     {
         /// <summary>
-        ///     The null proxy
+        ///     Gets the constant value representing an invalid/null proxy ID.
         /// </summary>
+        /// <value>Always -1.</value>
         private const int NullProxy = -1;
 
         /// <summary>
-        ///     The query callback cache
+        ///     Gets the cached query callback to avoid allocations during pair updates.
         /// </summary>
         private readonly BroadPhaseQueryCallback _queryCallbackCache;
 
         /// <summary>
-        ///     The node
+        ///     Gets the dynamic tree used for spatial partitioning and collision queries.
         /// </summary>
         private readonly DynamicTree<TNode> _tree = new DynamicTree<TNode>();
 
         /// <summary>
-        ///     The move buffer
+        ///     Gets or sets the buffer of proxy IDs that have moved and need pair updates.
         /// </summary>
         private int[] _moveBuffer;
 
         /// <summary>
-        ///     The move capacity
+        ///     Gets or sets the current capacity of the move buffer.
         /// </summary>
         private int _moveCapacity;
 
         /// <summary>
-        ///     The move count
+        ///     Gets or sets the number of entries in the move buffer.
         /// </summary>
         private int _moveCount;
 
         /// <summary>
-        ///     The pair buffer
+        ///     Gets or sets the buffer of pairs detected during pair updates.
         /// </summary>
         private Pair[] _pairBuffer;
 
         /// <summary>
-        ///     The pair capacity
+        ///     Gets or sets the current capacity of the pair buffer.
         /// </summary>
         private int _pairCapacity;
 
         /// <summary>
-        ///     The pair count
+        ///     Gets or sets the number of entries in the pair buffer.
         /// </summary>
         private int _pairCount;
 
         /// <summary>
-        ///     The query proxy id
+        ///     Gets or sets the proxy ID currently being queried during pair updates.
         /// </summary>
         private int _queryProxyId;
 
         /// <summary>
-        ///     Constructs a new broad phase based on the dynamic tree implementation
+        ///     Constructs a new broad-phase based on the dynamic tree implementation.
         /// </summary>
+        /// <remarks>
+        ///     Initializes the broad-phase with default buffer capacities of 16 entries
+        ///     for both move and pair buffers. The proxy count starts at zero.
+        /// </remarks>
         public DynamicTreeBroadPhaseFixtureNode()
         {
             _queryCallbackCache = QueryCallback;
