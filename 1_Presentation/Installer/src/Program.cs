@@ -35,9 +35,9 @@ namespace Alis.App.Installer
     public static class Program
     {
         /// <summary>
-        ///     Main the args
+        ///     Entry point for the installer application. Initializes and runs the installer with the provided command-line arguments.
         /// </summary>
-        /// <param name="args">The args</param>
+        /// <param name="args">Command-line arguments passed to the application.</param>
         public static void Main(string[] args)
         {
             new Installer().Run(args);
