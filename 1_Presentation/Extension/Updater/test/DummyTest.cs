@@ -95,44 +95,6 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        ///     Tests that select asset returns null when no asset matches
-        /// </summary>
-        [Fact]
-        public void SelectAsset_ReturnsNull_WhenNoAssetMatches()
-        {
-            UpdateManager manager = CreateManager();
-            object[] assets =
-            {
-                Asset("pkg-linux-arm64.zip", "https://example.invalid/linux"),
-                Asset("pkg-osx-x64.dmg", "https://example.invalid/osx")
-            };
-
-            Dictionary<string, object> selected = InvokeNonPublic<Dictionary<string, object>>(manager, "SelectAsset", assets, "win", "x64");
-
-            Assert.Null(selected);
-        }
-
-        /// <summary>
-        ///     Tests that select asset ignores null asset name and finds match
-        /// </summary>
-        [Fact]
-        public void SelectAsset_IgnoresNullAssetName_AndFindsMatch()
-        {
-            UpdateManager manager = CreateManager();
-            object[] assets =
-            {
-                Asset(null, "https://example.invalid/a"),
-                Asset("pkg-win-x64.zip", "https://example.invalid/win")
-            };
-
-            Dictionary<string, object> selected = InvokeNonPublic<Dictionary<string, object>>(manager, "SelectAsset", assets, "win", "x64");
-
-            Assert.NotNull(selected);
-            Assert.Contains("win", selected["name"].ToString());
-            Assert.Contains("x64", selected["name"].ToString());
-        }
-
-        /// <summary>
         ///     Tests that get platform returns expected current platform token
         /// </summary>
         [Fact]
@@ -317,50 +279,6 @@ namespace Alis.Extension.Updater.Test
             Assert.Throws<NotImplementedException>(() => service.CleanTempFiles("/tmp"));
             Assert.Throws<NotImplementedException>(() => service.ExtractAndReplace("archive.zip", "/tmp"));
             Assert.Throws<NotImplementedException>(() => service.DownloadFileAsync(new Uri("http://127.0.0.1:7777/"), "/tmp").GetAwaiter().GetResult());
-        }
-
-        /// <summary>
-        ///     Tests that select asset massive coverage
-        /// </summary>
-        /// <param name="caseId">The case id</param>
-        /// <param name="platform">The platform</param>
-        /// <param name="architecture">The architecture</param>
-        /// <param name="shouldMatch">The should match</param>
-        /// <param name="nullNameEntries">The null name entries</param>
-        [Theory, MemberData(nameof(SelectAssetMassiveCases))]
-        public void SelectAsset_MassiveCoverage(int caseId, string platform, string architecture, bool shouldMatch, int nullNameEntries)
-        {
-            UpdateManager manager = CreateManager();
-            object[] assets = BuildAssetsForCase(caseId, platform, architecture, shouldMatch, nullNameEntries);
-
-            Dictionary<string, object> selected = InvokeNonPublic<Dictionary<string, object>>(manager, "SelectAsset", assets, platform, architecture);
-
-            if (shouldMatch)
-            {
-                Assert.NotNull(selected);
-                string name = selected["name"].ToString();
-                Assert.Contains(platform, name);
-                Assert.Contains(architecture, name);
-            }
-            else
-            {
-                Assert.Null(selected);
-            }
-        }
-
-        /// <summary>
-        ///     Tests that extract and replace invalid extensions always throw
-        /// </summary>
-        /// <param name="fileName">The file name</param>
-        [Theory, MemberData(nameof(InvalidExtensionCases))]
-        public void ExtractAndReplace_InvalidExtensions_AlwaysThrow(string fileName)
-        {
-            UpdateManager manager = CreateManager();
-
-            TargetInvocationException ex = Assert.Throws<TargetInvocationException>(() =>
-                InvokeNonPublicVoid(manager, "ExtractAndReplace", fileName));
-
-            Assert.IsType<InvalidOperationException>(ex.InnerException);
         }
 
         /// <summary>

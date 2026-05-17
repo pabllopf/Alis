@@ -48,7 +48,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// <summary>
         ///     The null
         /// </summary>
-        internal static readonly GameObjectType Null = GetArchetypeId([Component.GetComponentId(typeof(void))]);
+        internal static readonly GameObjectType Null;
 
         /// <summary>
         ///     The create
@@ -103,6 +103,11 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         ///     The raw index
         /// </summary>
         internal byte[] ComponentTagTable = GlobalWorldTables.ComponentTagLocationTable[archetypeId.RawIndex];
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Archetype" /> class
+        /// </summary>
+        static Archetype() => Null = GetArchetypeId([Component.GetComponentId(typeof(void))]);
 
         /// <summary>
         ///     Gets the value of the id
@@ -681,6 +686,11 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
                 }
             }
 
+            //for (int i = 0; i < archetypeTypes.Length; i++)
+            //{
+            //    _ = Component.GetComponentID(archetypeTypes[i].Type);
+            //}
+
             ref byte[] componentTable = ref GlobalWorldTables.ComponentTagLocationTable[id];
             componentTable = new byte[GlobalWorldTables.ComponentTagTableBufferSize];
 
@@ -738,7 +748,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// <summary>
         ///     The null
         /// </summary>
-        internal static readonly GameObjectType Null = GetArchetypeId([Component.GetComponentId(typeof(void))]);
+        internal static readonly GameObjectType Null;
 
         /// <summary>
         ///     The create
@@ -756,9 +766,9 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         private static readonly Dictionary<long, ArchetypeData> ExistingArchetypes = [];
 
         /// <summary>
-        ///     The component tag table
+        ///     Initializes a new instance of the <see cref="Archetype" /> class
         /// </summary>
-        internal static byte[] ComponentTagTable;
+        static Archetype() => Null = GetArchetypeId([Component.GetComponentId(typeof(void))]);
 
         /// <summary>
         ///     Creates the new or get existing archetypes using the specified scene
@@ -952,6 +962,11 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
                     }
                 }
             }
+
+            //for (int i = 0; i < archetypeTypes.Length; i++)
+            //{
+            //    _ = Component.GetComponentID(archetypeTypes[i].Type);
+            //}
 
             ref byte[] componentTable = ref GlobalWorldTables.ComponentTagLocationTable[id];
             componentTable = new byte[GlobalWorldTables.ComponentTagTableBufferSize];

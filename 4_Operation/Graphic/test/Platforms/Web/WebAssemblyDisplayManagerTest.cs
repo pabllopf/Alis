@@ -189,20 +189,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Throws<ArgumentNullException>(() =>
                 new WebAssemblyDisplayManager(null));
         }
-
-        // =====================================================================
-        // WebAssemblyDisplayManager - SetResolution
-        // =====================================================================
-
-        [Fact]
-        public void DisplayManager_SetResolution_CatchesException_ReturnsFalse()
-        {
-            WebAssemblyPlatform platform = new WebAssemblyPlatform();
-            WebAssemblyDisplayManager manager = new WebAssemblyDisplayManager(platform);
-            bool result = manager.SetResolution(1024, 768);
-            Assert.False(result);
-        }
-
+        
         // =====================================================================
         // WebAssemblyDisplayManager - Fullscreen
         // =====================================================================

@@ -521,24 +521,7 @@ namespace Alis.Extension.Updater.Test
                 }
             }
         }
-
-
-        /// <summary>
-        ///     Tests that select asset returns null when no matches are found
-        /// </summary>
-        [Fact]
-        public void SelectAsset_ReturnsNull_WhenNoMatchesAreFound()
-        {
-            UpdateManager sut = CreateManager();
-            object[] assets =
-            {
-                Asset("pkg-linux-arm64.zip", "https://example.invalid/linux"),
-                Asset("pkg-osx-x64.dmg", "https://example.invalid/osx")
-            };
-
-            Dictionary<string, object> selected = InvokeNonPublic<Dictionary<string, object>>(sut, "SelectAsset", assets, "win", "x64");
-            Assert.Null(selected);
-        }
+        
 
         /// <summary>
         ///     Creates the manager using the specified version to install

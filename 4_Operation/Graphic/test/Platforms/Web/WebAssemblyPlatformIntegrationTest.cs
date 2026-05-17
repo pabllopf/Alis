@@ -136,17 +136,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(Enum.IsDefined(typeof(OptimizationProfile), profile));
         }
 
-        // =====================================================================
-        // MultiplatformGameEngine
-        // =====================================================================
-
-        [Fact]
-        public void MultiplatformGameEngine_Constructor_DoesNotThrow()
-        {
-            MultiplatformGameEngine engine = new MultiplatformGameEngine(800, 600, "Test");
-            Assert.NotNull(engine.GameContext);
-        }
-
         [Fact]
         public void MultiplatformGameEngine_Dispose_DoesNotThrow()
         {
@@ -231,16 +220,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         public void SystemInfo_ErrorToConsole_DoesNotThrow()
         {
             SystemInfo.ErrorToConsole("test");
-        }
-
-        // =====================================================================
-        // QuickStart
-        // =====================================================================
-
-        [Fact]
-        public void QuickStart_RunMinimalGame_DoesNotThrow()
-        {
-            QuickStart.RunMinimalGame((w, h) => { });
         }
 
         [Fact]

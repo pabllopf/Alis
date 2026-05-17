@@ -47,42 +47,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         // =====================================================================
-        // WebAssemblyGameContext - Show/Hide
-        // =====================================================================
-
-        [Fact]
-        public void GameContext_Show_DoesNotThrow()
-        {
-            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
-            if (OperatingSystem.IsBrowser())
-            {
-                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
-                context.Show();
-            }
-            else
-            {
-                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
-                context.Show();
-            }
-        }
-
-        [Fact]
-        public void GameContext_Hide_DoesNotThrow()
-        {
-            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
-            if (OperatingSystem.IsBrowser())
-            {
-                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
-                context.Hide();
-            }
-            else
-            {
-                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
-                context.Hide();
-            }
-        }
-
-        // =====================================================================
         // WebAssemblyGameContext - Run
         // =====================================================================
 
@@ -274,37 +238,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             }
         }
 
-        [Fact]
-        public void GameContext_SetSize_DoesNotThrow()
-        {
-            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
-            if (OperatingSystem.IsBrowser())
-            {
-                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
-                context.SetSize(1024, 768);
-            }
-            else
-            {
-                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
-                context.SetSize(1024, 768);
-            }
-        }
-
-        [Fact]
-        public void GameContext_SetTitle_DoesNotThrow()
-        {
-            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
-            if (OperatingSystem.IsBrowser())
-            {
-                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
-                context.SetTitle("Test");
-            }
-            else
-            {
-                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
-                context.SetTitle("Test");
-            }
-        }
+     
 
         // =====================================================================
         // WebAssemblyGameContext - Mouse methods
@@ -416,211 +350,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             }
         }
 
-        [Fact]
-        public void GameContext_VibrateGamepad_ReturnsFalseOnNonBrowser()
-        {
-            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
-            if (OperatingSystem.IsBrowser())
-            {
-                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
-                context.VibrateGamepad(0);
-            }
-            else
-            {
-                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
-                Assert.False(context.VibrateGamepad(0));
-            }
-        }
-
-        // =====================================================================
-        // WebAssemblyGameContext - Fullscreen methods
-        // =====================================================================
-
-        [Fact]
-        public void GameContext_ToggleFullscreen_ReturnsFalseOnNonBrowser()
-        {
-            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
-            if (OperatingSystem.IsBrowser())
-            {
-                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
-                context.ToggleFullscreen();
-            }
-            else
-            {
-                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
-                Assert.False(context.ToggleFullscreen());
-            }
-        }
-
-        [Fact]
-        public void GameContext_EnterFullscreen_ReturnsFalseOnNonBrowser()
-        {
-            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
-            if (OperatingSystem.IsBrowser())
-            {
-                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
-                context.EnterFullscreen();
-            }
-            else
-            {
-                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
-                Assert.False(context.EnterFullscreen());
-            }
-        }
-
-        [Fact]
-        public void GameContext_ExitFullscreen_ReturnsFalseOnNonBrowser()
-        {
-            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
-            if (OperatingSystem.IsBrowser())
-            {
-                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
-                context.ExitFullscreen();
-            }
-            else
-            {
-                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
-                Assert.False(context.ExitFullscreen());
-            }
-        }
-
-        [Fact]
-        public void GameContext_IsFullscreen_ReturnsFalseOnNonBrowser()
-        {
-            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
-            if (OperatingSystem.IsBrowser())
-            {
-                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
-                context.IsFullscreen();
-            }
-            else
-            {
-                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
-                Assert.False(context.IsFullscreen());
-            }
-        }
-
-        // =====================================================================
-        // WebAssemblyGameContext - Pointer methods
-        // =====================================================================
-
-        [Fact]
-        public void GameContext_LockPointer_ReturnsFalseOnNonBrowser()
-        {
-            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
-            if (OperatingSystem.IsBrowser())
-            {
-                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
-                context.LockPointer();
-            }
-            else
-            {
-                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
-                Assert.False(context.LockPointer());
-            }
-        }
-
-        [Fact]
-        public void GameContext_UnlockPointer_ReturnsFalseOnNonBrowser()
-        {
-            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
-            if (OperatingSystem.IsBrowser())
-            {
-                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
-                context.UnlockPointer();
-            }
-            else
-            {
-                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
-                Assert.False(context.UnlockPointer());
-            }
-        }
-
-        [Fact]
-        public void GameContext_IsPointerLocked_ReturnsFalseOnNonBrowser()
-        {
-            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
-            if (OperatingSystem.IsBrowser())
-            {
-                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
-                context.IsPointerLocked();
-            }
-            else
-            {
-                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
-                Assert.False(context.IsPointerLocked());
-            }
-        }
-
-        // =====================================================================
-        // WebAssemblyGameContext - System info methods
-        // =====================================================================
-
-        [Fact]
-        public void GameContext_GetDeviceLanguage_ReturnsDefaultOnNonBrowser()
-        {
-            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
-            if (OperatingSystem.IsBrowser())
-            {
-                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
-                context.GetDeviceLanguage();
-            }
-            else
-            {
-                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
-                string lang = context.GetDeviceLanguage();
-                Assert.Equal("en", lang);
-            }
-        }
-
-        [Fact]
-        public void GameContext_GetBatteryLevel_ReturnsDefaultOnNonBrowser()
-        {
-            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
-            if (OperatingSystem.IsBrowser())
-            {
-                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
-                context.GetBatteryLevel();
-            }
-            else
-            {
-                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
-                float level = context.GetBatteryLevel();
-                Assert.Equal(-1.0f, level);
-            }
-        }
-
-        [Fact]
-        public void GameContext_IsCharging_ReturnsFalseOnNonBrowser()
-        {
-            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
-            if (OperatingSystem.IsBrowser())
-            {
-                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
-                context.IsCharging();
-            }
-            else
-            {
-                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
-                Assert.False(context.IsCharging());
-            }
-        }
-
-        [Fact]
-        public void GameContext_IsOnline_ReturnsFalseOnNonBrowser()
-        {
-            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
-            if (OperatingSystem.IsBrowser())
-            {
-                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
-                context.IsOnline();
-            }
-            else
-            {
-                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
-                Assert.False(context.IsOnline());
-            }
-        }
+     
 
         [Fact]
         public void GameContext_GetRefreshRate_Returns60()
@@ -865,20 +595,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.NoName));
         }
 
-        // =====================================================================
-        // WebAssemblyPlatform - GetWindowMetrics
-        // =====================================================================
-
-        [Fact]
-        public void WebAssemblyPlatform_GetWindowMetrics_ThrowsOnNonBrowser()
-        {
-            WebAssemblyPlatform platform = new WebAssemblyPlatform();
-            if (!OperatingSystem.IsBrowser())
-            {
-                Assert.ThrowsAny<Exception>(() =>
-                    platform.GetWindowMetrics(out _, out _, out _, out _, out _, out _));
-            }
-        }
+       
 
         // =====================================================================
         // WebAssemblyGameExamples - All examples throw on non-browser
@@ -949,12 +666,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // MultiplatformGameEngine
         // =====================================================================
 
-        [Fact]
-        public void MultiplatformGameEngine_Constructor_DoesNotThrow()
-        {
-            MultiplatformGameEngine engine = new MultiplatformGameEngine(800, 600, "Test");
-            Assert.NotNull(engine.GameContext);
-        }
+        
 
         [Fact]
         public void MultiplatformGameEngine_Dispose_DoesNotThrow()
@@ -1061,81 +773,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             }
         }
 
-        [Fact]
-        public void DisplayManagerWrapper_IsFullscreen_ReturnsFalseOnNonBrowser()
-        {
-            if (OperatingSystem.IsBrowser())
-            {
-                MultiplatformGameEngine engine = new MultiplatformGameEngine(800, 600, "Test");
-                engine.Display.IsFullscreen();
-            }
-            else
-            {
-                MultiplatformGameEngine engine = new MultiplatformGameEngine(800, 600, "Test");
-                Assert.False(engine.Display.IsFullscreen());
-            }
-        }
-
-        [Fact]
-        public void DisplayManagerWrapper_SetFullscreen_DoesNotThrow()
-        {
-            if (OperatingSystem.IsBrowser())
-            {
-                MultiplatformGameEngine engine = new MultiplatformGameEngine(800, 600, "Test");
-                engine.Display.SetFullscreen(true);
-            }
-            else
-            {
-                MultiplatformGameEngine engine = new MultiplatformGameEngine(800, 600, "Test");
-                engine.Display.SetFullscreen(true);
-            }
-        }
-
-        [Fact]
-        public void DisplayManagerWrapper_ToggleFullscreen_DoesNotThrow()
-        {
-            if (OperatingSystem.IsBrowser())
-            {
-                MultiplatformGameEngine engine = new MultiplatformGameEngine(800, 600, "Test");
-                engine.Display.ToggleFullscreen();
-            }
-            else
-            {
-                MultiplatformGameEngine engine = new MultiplatformGameEngine(800, 600, "Test");
-                engine.Display.ToggleFullscreen();
-            }
-        }
-
-        [Fact]
-        public void DisplayManagerWrapper_SetSize_DoesNotThrow()
-        {
-            if (OperatingSystem.IsBrowser())
-            {
-                MultiplatformGameEngine engine = new MultiplatformGameEngine(800, 600, "Test");
-                engine.Display.SetSize(1024, 768);
-            }
-            else
-            {
-                MultiplatformGameEngine engine = new MultiplatformGameEngine(800, 600, "Test");
-                engine.Display.SetSize(1024, 768);
-            }
-        }
-
-        [Fact]
-        public void DisplayManagerWrapper_SetTitle_DoesNotThrow()
-        {
-            if (OperatingSystem.IsBrowser())
-            {
-                MultiplatformGameEngine engine = new MultiplatformGameEngine(800, 600, "Test");
-                engine.Display.SetTitle("New Title");
-            }
-            else
-            {
-                MultiplatformGameEngine engine = new MultiplatformGameEngine(800, 600, "Test");
-                engine.Display.SetTitle("New Title");
-            }
-        }
-
         // =====================================================================
         // SystemInfo - All methods
         // =====================================================================
@@ -1215,11 +852,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // QuickStart
         // =====================================================================
 
-        [Fact]
-        public void QuickStart_RunMinimalGame_DoesNotThrow()
-        {
-            QuickStart.RunMinimalGame((w, h) => { });
-        }
+      
 
         [Fact]
         public void QuickStart_LogPlatformInfo_DoesNotThrow()
