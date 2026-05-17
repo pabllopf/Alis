@@ -350,8 +350,17 @@ namespace Alis.Core.Physic.Collisions
         // - edge points[1]-points[2]
         // - inside the triangle
         /// <summary>
-        ///     Solves the 3
+        ///     Solves the 3-vertex simplex to find barycentric coordinates.
         /// </summary>
+        /// <remarks>
+        ///     Determines whether the closest point to the origin lies:
+        ///     <list type="bullet">
+        ///         <item>At vertex 0, 1, or 2</item>
+        ///         <item>On edge 0-1, 0-2, or 1-2</item>
+        ///         <item>Inside the triangle (origin contained = shapes overlap)</item>
+        ///     </list>
+        ///     Reduces the simplex to 1 or 2 vertices, or keeps all 3 if the origin is inside.
+        /// </remarks>
         internal void Solve3()
         {
             Vector2F w1 = V[0].W;
