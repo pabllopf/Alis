@@ -35,8 +35,6 @@ using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Physic.Common
 {
-    //Contributed by Matthew Bettcher
-
 /// <summary>
 ///     Represents a Catmull-Rom spline path defined by control points.
 ///     This class is similar to Vertices but specifically designed for 

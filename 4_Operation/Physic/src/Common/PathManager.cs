@@ -59,7 +59,7 @@ namespace Alis.Core.Physic.Common
         }
 
 
-        //Contributed by Matthew Bettcher
+        
 
         /// <summary>
         ///     Convert a path into a set of edges and attaches them to the specified body.

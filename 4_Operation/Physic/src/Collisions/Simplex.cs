@@ -129,9 +129,13 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     Writes the cache using the specified cache
+        ///     Writes the current simplex state to a cache for potential reuse in subsequent calls.
         /// </summary>
-        /// <param name="cache">The cache</param>
+        /// <param name="cache">The simplex cache to populate with current state.</param>
+        /// <remarks>
+        ///     Stores the metric (distance/area), vertex count, and vertex indices for both shapes.
+        ///     This enables warm-starting GJK in the next frame for improved performance.
+        /// </remarks>
         internal void WriteCache(ref SimplexCache cache)
         {
             cache.Metric = GetMetric();
@@ -144,9 +148,16 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     Gets the search direction
+        ///     Gets the search direction for the next support point query.
         /// </summary>
-        /// <returns>The vector</returns>
+        /// <returns>
+        ///     A <see cref="Vector2F"/> representing the direction from the closest point on the simplex toward the origin.
+        /// </returns>
+        /// <remarks>
+        ///     For a single vertex, the direction points toward the origin.
+        ///     For a line segment, the direction is perpendicular to the segment, pointing toward the origin.
+        ///     For a triangle containing the origin, returns zero vector (algorithm terminates).
+        /// </remarks>
         internal Vector2F GetSearchDirection()
         {
             switch (Count)
