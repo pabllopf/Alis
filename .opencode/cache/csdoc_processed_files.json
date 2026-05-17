@@ -239,5 +239,13 @@
   "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/Collision.cs": {
     "status": "enhanced",
     "timestamp": "2026-05-17T12:34:00.256677+00:00"
+  },
+  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/TimeOfImpact.cs": {
+    "status": "enhanced",
+    "timestamp": "2026-05-17T12:37:18.388839+00:00"
+  },
+  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/TreeNode.cs": {
+    "status": "enhanced",
+    "timestamp": "2026-05-17T12:37:18.388839+00:00"
   }
 }
