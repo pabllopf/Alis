@@ -133,53 +133,6 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <summary>
         ///     Construct the image directly from an array of pixels
         /// </summary>
-        /// <param name="pixels">2 dimensions array containing the pixels</param>
-        /// <exception cref="LoadingFailedException" />
-        private Image(Color[,] pixels) :
-            base(IntPtr.Zero)
-        {
-            uint width = (uint) pixels.GetLength(0);
-            uint height = (uint) pixels.GetLength(1);
-
-            // Transponer el array
-            Color[,] transposed = new Color[height, width];
-            for (int x = 0; x < width; ++x)
-            {
-                for (int y = 0; y < height; ++y)
-                {
-                    transposed[y, x] = pixels[x, y];
-                }
-            }
-
-            int totalColors = (int) (width * height);
-            IntPtr ptr = Marshal.AllocHGlobal(totalColors * Marshal.SizeOf<Color>());
-            try
-            {
-                // Copiar los datos al buffer
-                for (int i = 0; i < totalColors; i++)
-                {
-                    int y = i / (int) width;
-                    int x = i % (int) width;
-                    Marshal.StructureToPtr(transposed[y, x], ptr + i * Marshal.SizeOf<Color>(), false);
-                }
-
-                CPointer = sfImage_createFromPixels(width, height, ptr);
-            }
-            finally
-            {
-                Marshal.FreeHGlobal(ptr);
-            }
-
-            if (CPointer == IntPtr.Zero)
-            {
-                throw new LoadingFailedException("image");
-            }
-        }
-
-
-        /// <summary>
-        ///     Construct the image directly from an array of pixels
-        /// </summary>
         /// <param name="width">Image width</param>
         /// <param name="height">Image height</param>
         /// <param name="pixels">array containing the pixels</param>
