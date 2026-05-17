@@ -96,7 +96,7 @@ namespace Alis.Core.Graphic.Platforms.Web
     ///             context.Platform.SwapBuffers();
     ///         });
     /// </summary>
-    public class WebAssemblyPlatformIntegration
+    public static class WebAssemblyPlatformIntegration
     {
         /// <summary>
         /// The web assembly platform
