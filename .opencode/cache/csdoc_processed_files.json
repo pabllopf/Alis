@@ -207,5 +207,37 @@
   "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/SeparationFunctionType.cs": "enhanced",
   "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/Simplex.cs": "enhanced",
   "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/SimplexCache.cs": "enhanced",
-  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/SimplexVertex.cs": "enhanced"
+  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/SimplexVertex.cs": "enhanced",
+  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/ManifoldType.cs": {
+    "status": "enhanced",
+    "timestamp": "2026-05-17T12:28:24.597383+00:00"
+  },
+  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/TOIInput.cs": {
+    "status": "enhanced",
+    "timestamp": "2026-05-17T12:28:24.597383+00:00"
+  },
+  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/TOIOutput.cs": {
+    "status": "enhanced",
+    "timestamp": "2026-05-17T12:28:24.597383+00:00"
+  },
+  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/TOIOutputState.cs": {
+    "status": "enhanced",
+    "timestamp": "2026-05-17T12:28:24.597383+00:00"
+  },
+  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/IBroadPhaseFixture.cs": {
+    "status": "enhanced",
+    "timestamp": "2026-05-17T12:28:24.597383+00:00"
+  },
+  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/IBroadPhaseFixtureNode.cs": {
+    "status": "enhanced",
+    "timestamp": "2026-05-17T12:28:24.597383+00:00"
+  },
+  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/DynamicTreeBroadPhaseFixtureNode.cs": {
+    "status": "enhanced",
+    "timestamp": "2026-05-17T12:28:24.597383+00:00"
+  },
+  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/Collision.cs": {
+    "status": "enhanced",
+    "timestamp": "2026-05-17T12:34:00.256677+00:00"
+  }
 }

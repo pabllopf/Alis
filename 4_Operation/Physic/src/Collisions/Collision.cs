@@ -37,20 +37,31 @@ using Alis.Core.Physic.Dynamics;
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     Collision methods
+    ///     Provides static methods for collision detection and manifold generation between convex shapes.
     /// </summary>
+    /// <remarks>
+    ///     This class contains algorithms for:
+    ///     <list type="bullet">
+    ///         <item>Testing overlap between two shapes using the GJK algorithm</item>
+    ///         <item>Computing collision manifolds for circle-circle and polygon-circle contacts</item>
+    ///         <item>Tracking point states (Add, Persist, Remove) between collision steps</item>
+    ///     </list>
+    ///     All methods operate on <see cref="Manifold"/> objects to store collision results.
+    /// </remarks>
     public static class Collision
     {
         /// <summary>
-        ///     Test overlap between the two shapes.
+        ///     Tests whether two shapes overlap using the GJK distance algorithm.
         /// </summary>
         /// <param name="shapeA">The first shape.</param>
-        /// <param name="indexA">The index for the first shape.</param>
+        /// <param name="indexA">The vertex index for the first shape (for shapes with multiple vertices).</param>
         /// <param name="shapeB">The second shape.</param>
-        /// <param name="indexB">The index for the second shape.</param>
+        /// <param name="indexB">The vertex index for the second shape (for shapes with multiple vertices).</param>
         /// <param name="xfA">The transform for the first shape.</param>
-        /// <param name="xfB">The transform for the seconds shape.</param>
-        /// <returns>True if the shapes overlap, false otherwise.</returns>
+        /// <param name="xfB">The transform for the second shape.</param>
+        /// <returns>
+        ///     <c>true</c> if the shapes overlap (distance is within tolerance); otherwise, <c>false</c>.
+        /// </returns>
         public static bool TestOverlap(Shape shapeA, int indexA, Shape shapeB, int indexB, ref ControllerTransform xfA, ref ControllerTransform xfB)
         {
             DistanceInput input = new DistanceInput();
@@ -66,12 +77,20 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     Gets the point states using the specified state 1
+        ///     Computes the point states (Add, Persist, Remove) between two consecutive manifolds.
         /// </summary>
-        /// <param name="state1">The state</param>
-        /// <param name="state2">The state</param>
-        /// <param name="manifold1">The manifold</param>
-        /// <param name="manifold2">The manifold</param>
+        /// <param name="state1">When this method returns, contains the states of points in manifold1 (shape A's perspective).</param>
+        /// <param name="state2">When this method returns, contains the states of points in manifold2 (shape B's perspective).</param>
+        /// <param name="manifold1">The manifold from the previous collision step.</param>
+        /// <param name="manifold2">The manifold from the current collision step.</param>
+        /// <remarks>
+        ///     Point states indicate how contact points have changed between steps:
+        ///     <list type="bullet">
+        ///         <item><see cref="PointState.Add"/> - A new contact point has appeared</item>
+        ///         <item><see cref="PointState.Persist"/> - A contact point still exists</item>
+        ///         <item><see cref="PointState.Remove"/> - A contact point has disappeared</item>
+        ///     </list>
+        /// </remarks>
         public static void GetPointStates(out FixedArray2<PointState> state1, out FixedArray2<PointState> state2, ref Manifold manifold1, ref Manifold manifold2)
         {
             state1 = new FixedArray2<PointState>();
@@ -113,8 +132,17 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     Compute the collision manifold between two circles.
+        ///     Computes the collision manifold between two circles.
         /// </summary>
+        /// <param name="manifold">The manifold to populate with collision data.</param>
+        /// <param name="circleA">The first circle shape.</param>
+        /// <param name="xfA">The transform for circle A.</param>
+        /// <param name="circleB">The second circle shape.</param>
+        /// <param name="xfB">The transform for circle B.</param>
+        /// <remarks>
+        ///     If the circles do not overlap, the manifold point count is set to zero.
+        ///     Otherwise, the manifold type is set to <see cref="ManifoldType.Circles"/> with a single contact point.
+        /// </remarks>
         public static void CollideCircles(ref Manifold manifold, CircleShape circleA, ref ControllerTransform xfA, CircleShape circleB, ref ControllerTransform xfB)
         {
             manifold.PointCount = 0;
@@ -144,13 +172,18 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     Compute the collision manifold between a polygon and a circle.
+        ///     Computes the collision manifold between a polygon and a circle.
         /// </summary>
-        /// <param name="manifold">The manifold.</param>
-        /// <param name="polygonA">The polygon A.</param>
-        /// <param name="xfA">The transform of A.</param>
-        /// <param name="circleB">The circle B.</param>
-        /// <param name="xfB">The transform of B.</param>
+        /// <param name="manifold">The manifold to populate with collision data.</param>
+        /// <param name="polygonA">The polygon shape.</param>
+        /// <param name="xfA">The transform for the polygon.</param>
+        /// <param name="circleB">The circle shape.</param>
+        /// <param name="xfB">The transform for the circle.</param>
+        /// <remarks>
+        ///     Uses the separating axis theorem to find the minimum separation edge on the polygon.
+        ///     If the circle center is inside the polygon, a single contact point is generated.
+        ///     Otherwise, up to two contact points may be generated where the circle intersects the polygon edges.
+        /// </remarks>
         public static void CollidePolygonAndCircle(ref Manifold manifold, PolygonShape polygonA, ref ControllerTransform xfA, CircleShape circleB, ref ControllerTransform xfB)
         {
             manifold.PointCount = 0;
@@ -290,13 +323,18 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     Compute the collision manifold between two polygons.
+        ///     Computes the collision manifold between two polygons using the separating axis theorem (SAT).
         /// </summary>
-        /// <param name="manifold">The manifold.</param>
-        /// <param name="polyA">The poly A.</param>
-        /// <param name="controllerTransformA">The transform A.</param>
-        /// <param name="polyB">The poly B.</param>
-        /// <param name="controllerTransformB">The transform B.</param>
+        /// <param name="manifold">The manifold to populate with collision data.</param>
+        /// <param name="polyA">The first polygon shape.</param>
+        /// <param name="controllerTransformA">The transform for polygon A.</param>
+        /// <param name="polyB">The second polygon shape.</param>
+        /// <param name="controllerTransformB">The transform for polygon B.</param>
+        /// <remarks>
+        ///     Uses the EPA (Expanding Polytope Algorithm) approach to find the reference and incident edges,
+        ///     then clips the incident edge against the reference edge's sides to generate contact points.
+        ///     The manifold type is set based on which polygon provides the reference face.
+        /// </remarks>
         public static void CollidePolygons(ref Manifold manifold, PolygonShape polyA, ref ControllerTransform controllerTransformA, PolygonShape polyB, ref ControllerTransform controllerTransformB)
         {
             manifold.PointCount = 0;
@@ -683,14 +721,21 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     Find the max separation between poly1 and poly2 using edge normals from poly1.
+        ///     Finds the maximum separation between two polygons using edge normals from the first polygon.
         /// </summary>
-        /// <param name="edgeIndex">Index of the edge.</param>
-        /// <param name="poly1">The poly1.</param>
-        /// <param name="xf1">The XF1.</param>
-        /// <param name="poly2">The poly2.</param>
-        /// <param name="xf2">The XF2.</param>
-        /// <returns>The maximum separation distance.</returns>
+        /// <param name="edgeIndex">When this method returns, contains the index of the edge with maximum separation.</param>
+        /// <param name="poly1">The first polygon shape (used for edge normals).</param>
+        /// <param name="xf1">The transform for polygon 1.</param>
+        /// <param name="poly2">The second polygon shape.</param>
+        /// <param name="xf2">The transform for polygon 2.</param>
+        /// <returns>
+        ///     A <see cref="float"/> representing the maximum separation distance. Positive values indicate gap; negative indicates penetration.
+        /// </returns>
+        /// <remarks>
+        ///     Uses a local search algorithm to find the edge normal with the largest projection onto the
+        ///     direction from poly1's centroid to poly2's centroid. The search may iterate through adjacent edges
+        ///     to find the local maximum separation.
+        /// </remarks>
         private static float FindMaxSeparation(out int edgeIndex, PolygonShape poly1, ref ControllerTransform xf1, PolygonShape poly2, ref ControllerTransform xf2)
         {
             int count1 = poly1.Vertices.Count;
@@ -778,14 +823,18 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     Finds the incident edge using the specified c
+        ///     Finds the incident edge on poly2 relative to the reference edge on poly1.
         /// </summary>
-        /// <param name="c">The output array of clip vertices for the incident edge.</param>
+        /// <param name="c">When this method returns, contains the two clip vertices for the incident edge.</param>
         /// <param name="poly1">The reference polygon shape.</param>
         /// <param name="xf1">The transform of the reference polygon.</param>
-        /// <param name="edge1">The index of the reference edge.</param>
+        /// <param name="edge1">The index of the reference edge on poly1.</param>
         /// <param name="poly2">The incident polygon shape.</param>
         /// <param name="xf2">The transform of the incident polygon.</param>
+        /// <remarks>
+        ///     The incident edge is the edge on poly2 whose normal is most opposite to the reference edge normal.
+        ///     The clip vertices store both world-space positions and feature IDs for contact point generation.
+        /// </remarks>
         private static void FindIncidentEdge(out FixedArray2<ClipVertex> c, PolygonShape poly1, ref ControllerTransform xf1, int edge1, PolygonShape poly2, ref ControllerTransform xf2)
         {
             c = new FixedArray2<ClipVertex>();
@@ -837,18 +886,36 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     The ep collider class
+        ///     Provides collision detection and manifold generation for edge shapes against polygons.
         /// </summary>
+        /// <remarks>
+        ///     Edge shapes represent line segments and are typically used for terrain boundaries.
+        ///     The collision algorithm classifies vertices, determines separating axes, and clips
+        ///     to generate contact points between the edge and polygon.
+        /// </remarks>
         private static class EpCollider
         {
             /// <summary>
-            ///     Collides the manifold
+            ///     Computes the collision manifold between an edge shape and a polygon.
             /// </summary>
-            /// <param name="manifold">The manifold</param>
-            /// <param name="edgeA">The edge</param>
-            /// <param name="xfA">The xf</param>
-            /// <param name="polygonB">The polygon</param>
-            /// <param name="xfB">The xf</param>
+            /// <param name="manifold">The manifold to populate with collision data.</param>
+            /// <param name="edgeA">The edge shape.</param>
+            /// <param name="xfA">The transform for the edge.</param>
+            /// <param name="polygonB">The polygon shape.</param>
+            /// <param name="xfB">The transform for the polygon.</param>
+            /// <remarks>
+            ///     Algorithm:
+            ///     <list type="number">
+            ///         <item>Classify v1 and v2 relative to the edge</item>
+            ///         <item>Classify polygon centroid as front or back</item>
+            ///         <item>Flip normal if necessary</item>
+            ///         <item>Initialize normal range to [-pi, pi] about face normal</item>
+            ///         <item>Adjust normal range according to adjacent edges</item>
+            ///         <item>Visit each separating axis, only accept axes within the range</item>
+            ///         <item>Return if any axis indicates separation</item>
+            ///         <item>Clip to generate contact points</item>
+            ///     </list>
+            /// </remarks>
             public static void Collide(ref Manifold manifold, EdgeShape edgeA, ref ControllerTransform xfA, PolygonShape polygonB, ref ControllerTransform xfB)
             {
                 // Algorithm:
