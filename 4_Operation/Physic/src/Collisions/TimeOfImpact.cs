@@ -34,47 +34,73 @@ using Alis.Core.Physic.Dynamics;
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     The time of impact class
+    ///     Computes the Time of Impact (TOI) between two moving convex shapes using continuous collision detection (CCD).
     /// </summary>
+    /// <remarks>
+    ///     This class implements the local separating axis method for CCD. It seeks progression
+    ///     by computing the largest time at which separation is maintained between two shapes.
+    ///     
+    ///     The algorithm uses a swept separating axis and may miss some intermediate, non-tunneling collisions.
+    ///     For contact point and normal information at the time of impact, use <see cref="Distance"/> after calling this method.
+    ///     
+    ///     Diagnostics can be enabled via <see cref="SettingEnv.EnableDiagnostics"/> to track TOI computation statistics.
+    /// </remarks>
     public static class TimeOfImpact
     {
         // CCD via the local separating axis method. This seeks progression
         // by computing the largest time at which separation is maintained.
 
         /// <summary>
-        ///     The toi max iters
+        ///     Gets or sets the total number of TOI computation calls made (diagnostics only).
         /// </summary>
+        /// <remarks>
+        ///     Only updated when <see cref="SettingEnv.EnableDiagnostics"/> is true.
+        /// </remarks>
         [ThreadStatic] public static int ToiCalls;
 
         /// <summary>
-        ///     The toi max iters
+        ///     Gets or sets the number of iterations in the current TOI computation (diagnostics only).
         /// </summary>
+        /// <remarks>
+        ///     Only updated when <see cref="SettingEnv.EnableDiagnostics"/> is true.
+        /// </remarks>
         [ThreadStatic] public static int ToiIters;
 
         /// <summary>
-        ///     The toi max iters
+        ///     Gets or sets the maximum number of iterations allowed in TOI computation (diagnostics only).
         /// </summary>
+        /// <remarks>
+        ///     Only updated when <see cref="SettingEnv.EnableDiagnostics"/> is true.
+        /// </remarks>
         [ThreadStatic] public static int ToiMaxIters;
 
         /// <summary>
-        ///     The toi max root iters
+        ///     Gets or sets the number of root-finding iterations in the current TOI computation (diagnostics only).
         /// </summary>
+        /// <remarks>
+        ///     Only updated when <see cref="SettingEnv.EnableDiagnostics"/> is true.
+        /// </remarks>
         [ThreadStatic] public static int ToiRootIters;
 
         /// <summary>
-        ///     The toi max root iters
+        ///     Gets or sets the maximum number of root-finding iterations allowed in TOI computation (diagnostics only).
         /// </summary>
+        /// <remarks>
+        ///     Only updated when <see cref="SettingEnv.EnableDiagnostics"/> is true.
+        /// </remarks>
         [ThreadStatic] public static int ToiMaxRootIters;
 
         /// <summary>
-        ///     Compute the upper bound on time before two shapes penetrate. Time is represented as
-        ///     a fraction between [0,tMax]. This uses a swept separating axis and may miss some intermediate,
-        ///     non-tunneling collision. If you change the time interval, you should call this function
+        ///     Computes the upper bound on time before two shapes penetrate. Time is represented as
+        ///     a fraction between [0, tMax]. This uses a swept separating axis and may miss some intermediate,
+        ///     non-tunneling collision. If you change the time interval, you should call this method
         ///     again.
-        ///     Note: use Distance() to compute the contact point and normal at the time of impact.
         /// </summary>
-        /// <param name="output">The output.</param>
-        /// <param name="input">The input.</param>
+        /// <param name="output">When this method returns, contains the TOI output with state and fraction.</param>
+        /// <param name="input">The input parameters defining the shapes, sweeps, and time interval.</param>
+        /// <remarks>
+        ///     Note: use <see cref="Distance"/> to compute the contact point and normal at the time of impact.
+        /// </remarks>
         public static void CalculateTimeOfImpact(out ToiOutput output, ref ToiInput input)
         {
             if (SettingEnv.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
