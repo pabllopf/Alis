@@ -30,27 +30,31 @@
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     This is used for determining the state of contact points.
+    ///     Indicates the state of a contact point across simulation updates.
     /// </summary>
+    /// <remarks>
+    ///     Used by the collision detection system to track contact point lifecycle:
+    ///     which points are new, which persist, and which have been removed between frames.
+    /// </remarks>
     public enum PointState
     {
         /// <summary>
-        ///     Point does not exist
+        ///     The contact point does not exist (null/invalid).
         /// </summary>
         Null,
 
         /// <summary>
-        ///     Point was added in the update
+        ///     The contact point was newly added in this update.
         /// </summary>
         Add,
 
         /// <summary>
-        ///     Point persisted across the update
+        ///     The contact point persisted from the previous update.
         /// </summary>
         Persist,
 
         /// <summary>
-        ///     Point was removed in the update
+        ///     The contact point was removed in this update.
         /// </summary>
         Remove
     }

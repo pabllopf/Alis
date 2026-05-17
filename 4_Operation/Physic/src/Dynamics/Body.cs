@@ -263,10 +263,10 @@ namespace Alis.Core.Physic.Dynamics
                 if (GetWorldPhysic != null)
                 {
                     // Touch the proxies so that new contacts will be created (when appropriate)
-                    IBroadPhase broadPhase = GetWorldPhysic.ContactManager.BroadPhase;
+                    IBroadPhaseFixture broadPhaseFixtureNode = GetWorldPhysic.ContactManager.BroadPhaseFixtureNode;
                     foreach (Fixture fixture in FixtureList)
                     {
-                        fixture.TouchProxies(broadPhase);
+                        fixture.TouchProxies(broadPhaseFixtureNode);
                     }
                 }
             }
@@ -638,10 +638,10 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         internal void CreateProxies()
         {
-            IBroadPhase broadPhase = GetWorldPhysic.ContactManager.BroadPhase;
+            IBroadPhaseFixture broadPhaseFixtureNode = GetWorldPhysic.ContactManager.BroadPhaseFixtureNode;
             for (int i = 0; i < FixtureList.List.Count; i++)
             {
-                FixtureList.List[i].CreateProxies(broadPhase, ref Xf);
+                FixtureList.List[i].CreateProxies(broadPhaseFixtureNode, ref Xf);
             }
         }
 
@@ -650,10 +650,10 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         internal void DestroyProxies()
         {
-            IBroadPhase broadPhase = GetWorldPhysic.ContactManager.BroadPhase;
+            IBroadPhaseFixture broadPhaseFixtureNode = GetWorldPhysic.ContactManager.BroadPhaseFixtureNode;
             for (int i = 0; i < FixtureList.List.Count; i++)
             {
-                FixtureList.List[i].DestroyProxies(broadPhase);
+                FixtureList.List[i].DestroyProxies(broadPhaseFixtureNode);
             }
         }
 
@@ -732,8 +732,8 @@ namespace Alis.Core.Physic.Dynamics
             {
                 if (Enabled)
                 {
-                    IBroadPhase broadPhase = GetWorldPhysic.ContactManager.BroadPhase;
-                    fixture.CreateProxies(broadPhase, ref Xf);
+                    IBroadPhaseFixture broadPhaseFixtureNode = GetWorldPhysic.ContactManager.BroadPhaseFixtureNode;
+                    fixture.CreateProxies(broadPhaseFixtureNode, ref Xf);
                 }
 
                 // Let the world know we have a new fixture. This will cause new contacts
@@ -795,8 +795,8 @@ namespace Alis.Core.Physic.Dynamics
 
             if (Enabled)
             {
-                IBroadPhase broadPhase = GetWorldPhysic.ContactManager.BroadPhase;
-                fixture.DestroyProxies(broadPhase);
+                IBroadPhaseFixture broadPhaseFixtureNode = GetWorldPhysic.ContactManager.BroadPhaseFixtureNode;
+                fixture.DestroyProxies(broadPhaseFixtureNode);
             }
 
             fixture.GetBody = null;
@@ -871,10 +871,10 @@ namespace Alis.Core.Physic.Dynamics
             Sweep.C0 = Sweep.C;
             Sweep.A0 = angle;
 
-            IBroadPhase broadPhase = GetWorldPhysic.ContactManager.BroadPhase;
+            IBroadPhaseFixture broadPhaseFixtureNode = GetWorldPhysic.ContactManager.BroadPhaseFixtureNode;
             for (int i = 0; i < FixtureList.List.Count; i++)
             {
-                FixtureList.List[i].Synchronize(broadPhase, ref Xf, ref Xf);
+                FixtureList.List[i].Synchronize(broadPhaseFixtureNode, ref Xf, ref Xf);
             }
         }
 
@@ -1227,10 +1227,10 @@ namespace Alis.Core.Physic.Dynamics
             ControllerTransform xf1 = new ControllerTransform(Vector2F.Zero, Sweep.A0);
             xf1.Position = Sweep.C0 - Complex.Multiply(ref Sweep.LocalCenter, ref xf1.Rotation);
 
-            IBroadPhase broadPhase = GetWorldPhysic.ContactManager.BroadPhase;
+            IBroadPhaseFixture broadPhaseFixtureNode = GetWorldPhysic.ContactManager.BroadPhaseFixtureNode;
             for (int i = 0; i < FixtureList.List.Count; i++)
             {
-                FixtureList.List[i].Synchronize(broadPhase, ref xf1, ref Xf);
+                FixtureList.List[i].Synchronize(broadPhaseFixtureNode, ref xf1, ref Xf);
             }
         }
 

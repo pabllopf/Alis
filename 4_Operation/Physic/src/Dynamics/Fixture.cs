@@ -284,19 +284,19 @@ namespace Alis.Core.Physic.Dynamics
             }
 
             // Touch each proxy so that new pairs may be created
-            IBroadPhase broadPhase = worldPhysic.ContactManager.BroadPhase;
-            TouchProxies(broadPhase);
+            IBroadPhaseFixture broadPhaseFixtureNode = worldPhysic.ContactManager.BroadPhaseFixtureNode;
+            TouchProxies(broadPhaseFixtureNode);
         }
 
         /// <summary>
         ///     Touch each proxy so that new pairs may be created
         /// </summary>
-        /// <param name="broadPhase"></param>
-        internal void TouchProxies(IBroadPhase broadPhase)
+        /// <param name="broadPhaseFixtureNode"></param>
+        internal void TouchProxies(IBroadPhaseFixture broadPhaseFixtureNode)
         {
             for (int i = 0; i < ProxyCount; ++i)
             {
-                broadPhase.TouchProxy(Proxies[i].ProxyId);
+                broadPhaseFixtureNode.TouchProxy(Proxies[i].ProxyId);
             }
         }
 
@@ -332,10 +332,10 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Creates the proxies using the specified broad phase
         /// </summary>
-        /// <param name="broadPhase">The broad phase</param>
+        /// <param name="broadPhaseFixtureNode">The broad phase</param>
         /// <param name="xf">The xf</param>
         /// <exception cref="InvalidOperationException">Proxies allready created for this Fixture.</exception>
-        internal void CreateProxies(IBroadPhase broadPhase, ref ControllerTransform xf)
+        internal void CreateProxies(IBroadPhaseFixture broadPhaseFixtureNode, ref ControllerTransform xf)
         {
             if (ProxyCount != 0)
             {
@@ -351,8 +351,8 @@ namespace Alis.Core.Physic.Dynamics
                 proxy.Fixture = this;
                 proxy.ChildIndex = i;
                 GetShape.ComputeAabb(out proxy.Aabb, ref xf, i);
-                proxy.ProxyId = broadPhase.AddProxy(ref proxy.Aabb);
-                broadPhase.SetProxy(proxy.ProxyId, ref proxy);
+                proxy.ProxyId = broadPhaseFixtureNode.AddProxy(ref proxy.Aabb);
+                broadPhaseFixtureNode.SetProxy(proxy.ProxyId, ref proxy);
 
                 Proxies[i] = proxy;
             }
@@ -361,13 +361,13 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Destroys the proxies using the specified broad phase
         /// </summary>
-        /// <param name="broadPhase">The broad phase</param>
-        internal void DestroyProxies(IBroadPhase broadPhase)
+        /// <param name="broadPhaseFixtureNode">The broad phase</param>
+        internal void DestroyProxies(IBroadPhaseFixture broadPhaseFixtureNode)
         {
             // OnDestroy proxies in the broad-phase.
             for (int i = 0; i < ProxyCount; ++i)
             {
-                broadPhase.RemoveProxy(Proxies[i].ProxyId);
+                broadPhaseFixtureNode.RemoveProxy(Proxies[i].ProxyId);
                 Proxies[i].ProxyId = -1;
             }
 
@@ -377,10 +377,10 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Synchronizes the broad phase
         /// </summary>
-        /// <param name="broadPhase">The broad phase</param>
+        /// <param name="broadPhaseFixtureNode">The broad phase</param>
         /// <param name="transform1">The transform</param>
         /// <param name="transform2">The transform</param>
-        internal void Synchronize(IBroadPhase broadPhase, ref ControllerTransform transform1, ref ControllerTransform transform2)
+        internal void Synchronize(IBroadPhaseFixture broadPhaseFixtureNode, ref ControllerTransform transform1, ref ControllerTransform transform2)
         {
             for (int i = 0; i < ProxyCount; ++i)
             {
@@ -394,7 +394,7 @@ namespace Alis.Core.Physic.Dynamics
 
                 Vector2F displacement = transform2.Position - transform1.Position;
 
-                broadPhase.MoveProxy(proxy.ProxyId, ref proxy.Aabb, displacement);
+                broadPhaseFixtureNode.MoveProxy(proxy.ProxyId, ref proxy.Aabb, displacement);
             }
         }
 

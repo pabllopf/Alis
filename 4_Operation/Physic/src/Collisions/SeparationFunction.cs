@@ -35,49 +35,101 @@ using Alis.Core.Physic.Dynamics;
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     The separation function class
+    ///     Computes the separation distance between two convex shapes at a given time fraction during continuous collision detection.
     /// </summary>
+    /// <remarks>
+    ///     This class is used by the TOI (Time of Impact) solver to evaluate how far apart two shapes are
+    ///     at a specific point in time. It maintains thread-static state for the separation axis, local point,
+    ///     proxies, and sweeps to avoid allocations during iterative distance evaluation.
+    ///     
+    ///     The separation function can operate in three modes:
+    ///     <list type="bullet">
+    ///         <item><term>Points</term><description>Both shapes contribute a single vertex.</description></item>
+    ///         <item><term>FaceA</term><description>Shape A contributes a face, Shape B contributes a vertex.</description></item>
+    ///         <item><term>FaceB</term><description>Shape B contributes a face, Shape A contributes a vertex.</description></item>
+    ///     </list>
+    /// </remarks>
     public static class SeparationFunction
     {
         /// <summary>
-        ///     The axis
+        ///     Gets or sets the separation axis in world space.
         /// </summary>
+        /// <value>
+        ///     A <see cref="Vector2F"/> representing the direction along which separation is measured.
+        /// </value>
+        /// <remarks>
+        ///     Thread-static to avoid allocations during iterative TOI evaluation.
+        /// </remarks>
         [ThreadStatic] private static Vector2F _axis;
 
         /// <summary>
-        ///     The local point
+        ///     Gets or sets the local point on the reference face.
         /// </summary>
+        /// <value>
+        ///     A <see cref="Vector2F"/> in local shape space representing the center of the reference face.
+        /// </value>
+        /// <remarks>
+        ///     Thread-static to avoid allocations during iterative TOI evaluation.
+        /// </remarks>
         [ThreadStatic] private static Vector2F _localPoint;
 
         /// <summary>
-        ///     The proxy
+        ///     Gets or sets the distance proxy for shape A.
         /// </summary>
+        /// <value>
+        ///     A <see cref="DistanceProxy"/> providing access to shape A's vertices and radius.
+        /// </value>
+        /// <remarks>
+        ///     Thread-static to avoid allocations during iterative TOI evaluation.
+        /// </remarks>
         [ThreadStatic] private static DistanceProxy _proxyA;
 
         /// <summary>
-        ///     The proxy
+        ///     Gets or sets the distance proxy for shape B.
         /// </summary>
+        /// <value>
+        ///     A <see cref="DistanceProxy"/> providing access to shape B's vertices and radius.
+        /// </value>
+        /// <remarks>
+        ///     Thread-static to avoid allocations during iterative TOI evaluation.
+        /// </remarks>
         [ThreadStatic] private static DistanceProxy _proxyB;
 
         /// <summary>
-        ///     The sweep
+        ///     Gets or sets the sweeps for both shapes.
         /// </summary>
+        /// <value>
+        ///     Two <see cref="Sweep"/> objects representing the continuous motion of each shape.
+        /// </value>
+        /// <remarks>
+        ///     Thread-static to avoid allocations during iterative TOI evaluation.
+        /// </remarks>
         [ThreadStatic] private static Sweep _sweepA, _sweepB;
 
         /// <summary>
-        ///     The type
+        ///     Gets or sets the type of separation function currently active.
         /// </summary>
+        /// <value>
+        ///     A <see cref="SeparationFunctionType"/> indicating whether the function evaluates points, FaceA, or FaceB.
+        /// </value>
+        /// <remarks>
+        ///     Thread-static to avoid allocations during iterative TOI evaluation.
+        /// </remarks>
         [ThreadStatic] private static SeparationFunctionType _type;
 
         /// <summary>
-        ///     Sets the cache
+        ///     Initializes the separation function with proxy and sweep data from a simplex cache.
         /// </summary>
-        /// <param name="cache">The cache</param>
-        /// <param name="proxyA">The proxy</param>
-        /// <param name="sweepA">The sweep</param>
-        /// <param name="proxyB">The proxy</param>
-        /// <param name="sweepB">The sweep</param>
-        /// <param name="t1">The fractional time value for initializing the transform.</param>
+        /// <param name="cache">The simplex cache from the previous GJK iteration.</param>
+        /// <param name="proxyA">The distance proxy for shape A.</param>
+        /// <param name="sweepA">The sweep object for shape A's continuous motion.</param>
+        /// <param name="proxyB">The distance proxy for shape B.</param>
+        /// <param name="sweepB">The sweep object for shape B's continuous motion.</param>
+        /// <param name="t1">The fractional time value (0.0 to 1.0) for initializing the transform.</param>
+        /// <remarks>
+        ///     Sets up the separation axis and type based on the simplex cache configuration.
+        ///     The axis is oriented to point from shape A toward shape B.
+        /// </remarks>
         public static void Set(ref SimplexCache cache, ref DistanceProxy proxyA, ref Sweep sweepA, ref DistanceProxy proxyB, ref Sweep sweepB, float t1)
         {
             _localPoint = Vector2F.Zero;
@@ -151,12 +203,14 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     Finds the min separation using the specified index a
+        ///     Finds the minimum separation distance between the two shapes at the given time fraction.
         /// </summary>
-        /// <param name="indexA">The index of the support point on shape A.</param>
-        /// <param name="indexB">The index of the support point on shape B.</param>
-        /// <param name="t">The fractional time value for the transform.</param>
-        /// <returns>The minimum separation distance.</returns>
+        /// <param name="indexA">When this method returns, contains the index of the support point on shape A. -1 if a face is used.</param>
+        /// <param name="indexB">When this method returns, contains the index of the support point on shape B. -1 if a face is used.</param>
+        /// <param name="t">The fractional time value (0.0 to 1.0) for evaluating the transforms.</param>
+        /// <returns>
+        ///     A <see cref="float"/> representing the minimum separation distance. Positive values indicate gap; negative indicates penetration.
+        /// </returns>
         public static float FindMinSeparation(out int indexA, out int indexB, float t)
         {
             _sweepA.GetTransform(out ControllerTransform xfA, t);
@@ -224,12 +278,14 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     Evaluates the index a
+        ///     Evaluates the separation distance at specific support point indices and time fraction.
         /// </summary>
-        /// <param name="indexA">The index of the support point on shape A.</param>
-        /// <param name="indexB">The index of the support point on shape B.</param>
-        /// <param name="t">The fractional time value for the transform.</param>
-        /// <returns>The separation distance at the given indices and time.</returns>
+        /// <param name="indexA">The index of the support point on shape A. -1 if a face is used.</param>
+        /// <param name="indexB">The index of the support point on shape B. -1 if a face is used.</param>
+        /// <param name="t">The fractional time value (0.0 to 1.0) for evaluating the transforms.</param>
+        /// <returns>
+        ///     A <see cref="float"/> representing the separation distance at the given indices and time. Positive indicates gap; negative indicates penetration.
+        /// </returns>
         public static float Evaluate(int indexA, int indexB, float t)
         {
             _sweepA.GetTransform(out ControllerTransform xfA, t);

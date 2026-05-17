@@ -44,7 +44,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The broad phase
         /// </summary>
-        public readonly IBroadPhase BroadPhase;
+        public readonly IBroadPhaseFixture BroadPhaseFixtureNode;
 
         /// <summary>
         ///     A threshold for activating multiple cores to solve Collide.
@@ -121,14 +121,14 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Initializes a new instance of the <see cref="ContactManager" /> class
         /// </summary>
-        /// <param name="broadPhase">The broad phase</param>
-        internal ContactManager(IBroadPhase broadPhase)
+        /// <param name="broadPhaseFixtureNode">The broad phase</param>
+        internal ContactManager(IBroadPhaseFixture broadPhaseFixtureNode)
         {
             ContactList = new ContactListHead();
             ContactCount = 0;
             ContactPoolList = new ContactListHead();
 
-            BroadPhase = broadPhase;
+            BroadPhaseFixtureNode = broadPhaseFixtureNode;
             OnBroadphaseCollision += AddPair;
         }
 
@@ -145,8 +145,8 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="proxyIdB">The proxy id</param>
         private void AddPair(int proxyIdA, int proxyIdB)
         {
-            FixtureProxy proxyA = BroadPhase.GetProxy(proxyIdA);
-            FixtureProxy proxyB = BroadPhase.GetProxy(proxyIdB);
+            FixtureProxy proxyA = BroadPhaseFixtureNode.GetProxy(proxyIdA);
+            FixtureProxy proxyB = BroadPhaseFixtureNode.GetProxy(proxyIdB);
 
             Fixture fixtureA = proxyA.Fixture;
             Fixture fixtureB = proxyB.Fixture;
@@ -291,7 +291,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         internal void FindNewContacts()
         {
-            BroadPhase.UpdatePairs(OnBroadphaseCollision);
+            BroadPhaseFixtureNode.UpdatePairs(OnBroadphaseCollision);
         }
 
         /// <summary>
@@ -470,7 +470,7 @@ namespace Alis.Core.Physic.Dynamics
                 int proxyIdA = fixtureA.Proxies[indexA].ProxyId;
                 int proxyIdB = fixtureB.Proxies[indexB].ProxyId;
 
-                bool overlap = BroadPhase.TestOverlap(proxyIdA, proxyIdB);
+                bool overlap = BroadPhaseFixtureNode.TestOverlap(proxyIdA, proxyIdB);
 
                 // Here we destroy contacts that cease to overlap in the broad-phase.
                 if (!overlap)
@@ -565,7 +565,7 @@ namespace Alis.Core.Physic.Dynamics
                 int proxyIdA = fixtureA.Proxies[indexA].ProxyId;
                 int proxyIdB = fixtureB.Proxies[indexB].ProxyId;
 
-                bool overlap = BroadPhase.TestOverlap(proxyIdA, proxyIdB);
+                bool overlap = BroadPhaseFixtureNode.TestOverlap(proxyIdA, proxyIdB);
 
                 // Here we destroy contacts that cease to overlap in the broad-phase.
                 if (!overlap)

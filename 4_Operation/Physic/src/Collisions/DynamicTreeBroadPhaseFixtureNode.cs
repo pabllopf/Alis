@@ -38,7 +38,7 @@ namespace Alis.Core.Physic.Collisions
     ///     This broad-phase does not persist pairs. Instead, this reports potentially new pairs.
     ///     It is up to the client to consume the new pairs and to track subsequent overlap.
     /// </summary>
-    public class DynamicTreeBroadPhase : DynamicTreeBroadPhase<FixtureProxy>, IBroadPhase
+    public class DynamicTreeBroadPhaseFixtureNode : DynamicTreeBroadPhaseFixtureNode<FixtureProxy>, IBroadPhaseFixture
     {
     }
 
@@ -47,7 +47,7 @@ namespace Alis.Core.Physic.Collisions
     ///     This broad-phase does not persist pairs. Instead, this reports potentially new pairs.
     ///     It is up to the client to consume the new pairs and to track subsequent overlap.
     /// </summary>
-    public class DynamicTreeBroadPhase<TNode> : IBroadPhase<TNode>
+    public class DynamicTreeBroadPhaseFixtureNode<TNode> : IBroadPhaseFixtureNode<TNode>
         where TNode : struct
     {
         /// <summary>
@@ -103,7 +103,7 @@ namespace Alis.Core.Physic.Collisions
         /// <summary>
         ///     Constructs a new broad phase based on the dynamic tree implementation
         /// </summary>
-        public DynamicTreeBroadPhase()
+        public DynamicTreeBroadPhaseFixtureNode()
         {
             _queryCallbackCache = QueryCallback;
             ProxyCount = 0;

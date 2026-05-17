@@ -28,22 +28,13 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
     ///     The broad phase interface
     /// </summary>
-    /// <seealso cref="IBroadPhase{FixtureProxy}" />
-    public interface IBroadPhase : IBroadPhase<FixtureProxy>
-    {
-    }
-
-    /// <summary>
-    ///     The broad phase interface
-    /// </summary>
-    public interface IBroadPhase<TNode>
+    public interface IBroadPhaseFixtureNode<TNode>
         where TNode : struct
     {
         /// <summary>

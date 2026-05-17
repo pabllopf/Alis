@@ -34,19 +34,29 @@ using Alis.Core.Physic.Common;
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     A distance proxy is used by the GJK algorithm.
-    ///     It encapsulates any shape.
+    ///     A distance proxy that wraps any shape for use by the GJK distance algorithm.
     /// </summary>
+    /// <remarks>
+    ///     This struct provides a uniform interface for accessing shape vertices and radius
+    ///     regardless of the underlying shape type (circle, polygon, chain, or edge).
+    ///     It is used by the GJK algorithm to perform support queries and distance computations.
+    /// </remarks>
     public struct DistanceProxy
     {
         /// <summary>
-        ///     The radius
+        ///     Gets the radius of the encapsulated shape.
         /// </summary>
+        /// <value>
+        ///     A <see cref="float"/> representing the shape's radius for padding in distance calculations.
+        /// </value>
         internal readonly float Radius;
 
         /// <summary>
-        ///     The vertices
+        ///     Gets the vertices of the encapsulated shape.
         /// </summary>
+        /// <value>
+        ///     A <see cref="Vertices"/> collection containing the shape's corner points.
+        /// </value>
         internal readonly Vertices Vertices;
 
         // GJK using Voronoi regions (Christer Ericson) and Barycentric coordinates.
@@ -55,8 +65,14 @@ namespace Alis.Core.Physic.Collisions
         ///     Initialize the proxy using the given shape. The shape
         ///     must remain in scope while the proxy is in use.
         /// </summary>
-        /// <param name="shape">The shape.</param>
-        /// <param name="index">The index.</param>
+        /// <param name="shape">The shape to wrap as a distance proxy.</param>
+        /// <param name="index">The vertex index for chain shapes (ignored for other shape types).</param>
+        /// <remarks>
+        ///     For circle shapes, the proxy contains a single vertex at the circle's center.
+        ///     For polygon shapes, all vertices are copied into the proxy.
+        ///     For chain shapes, only two adjacent vertices around the given index are used.
+        ///     For edge shapes, both edge endpoints are used.
+        /// </remarks>
         public DistanceProxy(Shape shape, int index)
         {
             Vertices = new Vertices();
@@ -130,10 +146,16 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     Get the supporting vertex index in the given direction.
+        ///     Gets the index of the supporting vertex in the given direction.
         /// </summary>
-        /// <param name="direction">The direction.</param>
-        /// <returns></returns>
+        /// <param name="direction">The direction vector to find the support vertex in.</param>
+        /// <returns>
+        ///     The zero-based index of the vertex that maximizes the dot product with the direction.
+        /// </returns>
+        /// <remarks>
+        ///     The support vertex is the vertex farthest in the given direction,
+        ///     found by maximizing the dot product with all vertices.
+        /// </remarks>
         public int GetSupport(Vector2F direction)
         {
             int bestIndex = 0;
@@ -152,10 +174,16 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     Get the supporting vertex in the given direction.
+        ///     Gets the supporting vertex position in the given direction.
         /// </summary>
-        /// <param name="direction">The direction.</param>
-        /// <returns></returns>
+        /// <param name="direction">The direction vector to find the support vertex in.</param>
+        /// <returns>
+        ///     A <see cref="Vector2F"/> representing the position of the vertex farthest in the given direction.
+        /// </returns>
+        /// <remarks>
+        ///     The support vertex is the vertex farthest in the given direction,
+        ///     found by maximizing the dot product with all vertices.
+        /// </remarks>
         public Vector2F GetSupportVertex(Vector2F direction)
         {
             int bestIndex = 0;

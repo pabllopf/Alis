@@ -208,7 +208,7 @@ namespace Alis.Core.Physic.Dynamics
             _testPointDelegateCache = TestPointCallback;
 
 
-            ContactManager = new ContactManager(new DynamicTreeBroadPhase());
+            ContactManager = new ContactManager(new DynamicTreeBroadPhaseFixtureNode());
             GetGravity = new Vector2F(0f, -9.80665f);
         }
 
@@ -221,7 +221,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Initializes a new instance of the <see cref="WorldPhysic" /> class.
         /// </summary>
-        public WorldPhysic(IBroadPhase broadPhase) : this() => ContactManager = new ContactManager(broadPhase);
+        public WorldPhysic(IBroadPhaseFixture broadPhaseFixtureNode) : this() => ContactManager = new ContactManager(broadPhaseFixtureNode);
 
         /// <summary>
         ///     Gets or sets the value of the update time
@@ -262,7 +262,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Get the number of broad-phase proxies.
         /// </summary>
         /// <value>The proxy count.</value>
-        public int ProxyCount => ContactManager.BroadPhase.ProxyCount;
+        public int ProxyCount => ContactManager.BroadPhaseFixtureNode.ProxyCount;
 
         /// <summary>
         ///     Get the number of contacts (each may have 0 or more contact points).
@@ -1349,7 +1349,7 @@ namespace Alis.Core.Physic.Dynamics
         public void QueryAabb(QueryReportFixtureDelegate callback, ref Aabb aabb)
         {
             _queryDelegateTmp = callback;
-            ContactManager.BroadPhase.Query(_queryCallbackCache, ref aabb);
+            ContactManager.BroadPhaseFixtureNode.Query(_queryCallbackCache, ref aabb);
             _queryDelegateTmp = null;
         }
 
@@ -1360,7 +1360,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns>The bool</returns>
         private bool QueryAabbCallback(int proxyId)
         {
-            FixtureProxy proxy = ContactManager.BroadPhase.GetProxy(proxyId);
+            FixtureProxy proxy = ContactManager.BroadPhaseFixtureNode.GetProxy(proxyId);
             return _queryDelegateTmp(proxy.Fixture);
         }
 
@@ -1385,7 +1385,7 @@ namespace Alis.Core.Physic.Dynamics
             input.Point2 = point2;
 
             _rayCastDelegateTmp = callback;
-            ContactManager.BroadPhase.RayCast(_rayCastCallbackCache, ref input);
+            ContactManager.BroadPhaseFixtureNode.RayCast(_rayCastCallbackCache, ref input);
             _rayCastDelegateTmp = null;
         }
 
@@ -1397,7 +1397,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns>The float</returns>
         private float RayCastCallback(ref RayCastInput rayCastInput, int proxyId)
         {
-            FixtureProxy proxy = ContactManager.BroadPhase.GetProxy(proxyId);
+            FixtureProxy proxy = ContactManager.BroadPhaseFixtureNode.GetProxy(proxyId);
             Fixture fixture = proxy.Fixture;
             int index = proxy.ChildIndex;
             bool hit = fixture.RayCast(out RayCastOutput output, ref rayCastInput, index);
@@ -1533,7 +1533,7 @@ namespace Alis.Core.Physic.Dynamics
                 b.Sweep.C -= newOrigin;
             }
 
-            ContactManager.BroadPhase.ShiftOrigin(newOrigin);
+            ContactManager.BroadPhaseFixtureNode.ShiftOrigin(newOrigin);
         }
 
         /// <summary>

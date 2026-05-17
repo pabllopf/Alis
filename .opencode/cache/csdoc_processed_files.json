@@ -82,5 +82,125 @@
   "/Users/pabllopf/repositorios/Alis/1_Presentation/Benchmark/src/CustomCollections/Stacks/Elements/FastestStack.cs": {
     "status": "documented",
     "timestamp": "2026-05-17T11:21:48.782771+00:00"
+  },
+  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/AABB.cs": {
+    "status": "documented",
+    "changes": "no_changes_needed_already_documented",
+    "timestamp": "2026-05-17T11:38:20.213620+00:00"
+  },
+  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/BroadPhaseQueryCallback.cs": {
+    "status": "documented",
+    "changes": "no_changes_needed",
+    "timestamp": "2026-05-17T11:40:53.333914+00:00"
+  },
+  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/BroadPhaseRayCastCallback.cs": {
+    "status": "documented",
+    "changes": "no_changes_needed",
+    "timestamp": "2026-05-17T11:40:53.334104+00:00"
+  },
+  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/BroadphaseDelegate.cs": {
+    "status": "documented",
+    "changes": "no_changes_needed",
+    "timestamp": "2026-05-17T11:40:53.334106+00:00"
+  },
+  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/ClipVertex.cs": {
+    "status": "documented",
+    "changes": "no_changes_needed",
+    "timestamp": "2026-05-17T11:40:53.334108+00:00"
+  },
+  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/ContactFeature.cs": {
+    "status": "documented",
+    "changes": "no_changes_needed",
+    "timestamp": "2026-05-17T11:40:53.334109+00:00"
+  },
+  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/ContactFeatureType.cs": {
+    "status": "documented",
+    "changes": "no_changes_needed",
+    "timestamp": "2026-05-17T11:40:53.334111+00:00"
+  },
+  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/ContactID.cs": {
+    "status": "documented",
+    "changes": "no_changes_needed",
+    "timestamp": "2026-05-17T11:40:53.334112+00:00"
+  },
+  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/Distance.cs": {
+    "status": "documented",
+    "changes": "no_changes_needed",
+    "timestamp": "2026-05-17T11:40:53.334113+00:00"
+  },
+  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/DistanceInput.cs": {
+    "status": "enhanced",
+    "changes": "xml_docs_improved",
+    "timestamp": "2026-05-17T11:40:53.334114+00:00"
+  },
+  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/DistanceOutput.cs": {
+    "status": "enhanced",
+    "changes": "xml_docs_improved",
+    "timestamp": "2026-05-17T11:40:53.334116+00:00"
+  },
+  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/DistanceProxy.cs": {
+    "status": "enhanced",
+    "changes": "xml_docs_improved",
+    "timestamp": "2026-05-17T11:43:50.142685+00:00"
+  },
+  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/DynamicTree.cs": {
+    "status": "documented",
+    "changes": "no_changes_needed",
+    "timestamp": "2026-05-17T11:43:50.142850+00:00"
+  },
+  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/DynamicTreeBroadPhase.cs": {
+    "status": "documented",
+    "changes": "no_changes_needed",
+    "timestamp": "2026-05-17T11:43:50.142854+00:00"
+  },
+  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/EPAxis.cs": {
+    "status": "enhanced",
+    "changes": "xml_docs_improved",
+    "timestamp": "2026-05-17T11:47:53.523890+00:00"
+  },
+  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/EPAxisType.cs": {
+    "status": "enhanced",
+    "changes": "xml_docs_improved",
+    "timestamp": "2026-05-17T11:47:53.524079+00:00"
+  },
+  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/IBroadPhase.cs": {
+    "status": "enhanced",
+    "changes": "xml_docs_improved",
+    "timestamp": "2026-05-17T11:47:53.524081+00:00"
+  },
+  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/Manifold.cs": {
+    "status": "documented",
+    "changes": "no_changes_needed",
+    "timestamp": "2026-05-17T11:47:53.524082+00:00"
+  },
+  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/ManifoldPoint.cs": {
+    "status": "documented",
+    "changes": "no_changes_needed",
+    "timestamp": "2026-05-17T11:47:53.524084+00:00"
+  },
+  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/Pair.cs": {
+    "status": "enhanced",
+    "changes": "xml_docs_improved",
+    "timestamp": "2026-05-17T12:01:38.513157+00:00"
+  },
+  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/PointState.cs": {
+    "status": "enhanced",
+    "changes": "xml_docs_improved",
+    "timestamp": "2026-05-17T12:01:38.513350+00:00"
+  },
+  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/RayCastInput.cs": {
+    "status": "enhanced",
+    "changes": "xml_docs_improved",
+    "timestamp": "2026-05-17T12:01:38.513352+00:00"
+  },
+  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/RayCastOutput.cs": {
+    "status": "enhanced",
+    "changes": "xml_docs_improved",
+    "timestamp": "2026-05-17T12:01:38.513358+00:00"
+  },
+  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Collisions/ReferenceFace.cs": {
+    "status": "enhanced",
+    "changes": "xml_docs_improved",
+    "timestamp": "2026-05-17T12:01:38.513359+00:00"
   }
 }
