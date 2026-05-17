@@ -1,6 +1,80 @@
 {
   "$schema": "https://opencode.ai/config.json",
+
+  "theme": "system",
+  "default_agent": "build",
+  "share": "auto",
+  
+  "permission": "allow",
+
+  "compaction": {
+    "auto": true,
+    "prune": true
+  },
+
+  "watcher": {
+    "ignore": ["node_modules/**", "dist/**", ".git/**"]
+  },
+
+  "instructions": ["CONTRIBUTING.md", "docs/guidelines.md", ".cursor/rules/*.md"],
+
+  "provider": {
+    "omlx": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "oMLX",
+      "options": {
+        "baseURL": "http://127.0.0.1:8000/v1",
+        "apiKey": "1234"
+      },
+      "models": {
+        "Qwen3.6-35B-A3B-UD-MLX-4bit": {
+          "name": "Qwen3.6-35B-A3B-UD-MLX-4bit",
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "attachment": true,
+          "limit": {
+            "context": 262144,
+            "output": 262144
+          }
+        }
+      }
+    }
+  },
+  "model": "omlx/Qwen3.6-35B-A3B-UD-MLX-4bit",
   "plugin": [
-    ".opencode/plugins/graphify.js"
-  ]
+    "@warp-dot-dev/opencode-warp",
+    ".opencode/plugins/graphify.js",
+    ".opencode/plugins/tree-sitter-csharp.js",
+    ".opencode/plugins/git-smart-context.js",
+    ".opencode/plugins/test-impact.js",
+    ".opencode/plugins/file-summary-cache.js",
+    ".opencode/plugins/dead-code-detector.js"
+  ],
+
+  "autoupdate": true,
+
+  "tools": {
+    "ripgrep": true,
+    "fd": true,
+    "write": true,
+    "bash": true
+  },
+
+  "tui": {
+    "scroll_speed": 3,
+    "scroll_acceleration": {
+      "enabled": true
+    },
+    "diff_style": "auto"
+  },
+
+  "agent": {
+  }
 }
