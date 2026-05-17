@@ -39,14 +39,14 @@ namespace Alis.Benchmark.ClassVsStruct
     public class ClassVsStructBenchmark
     {
         /// <summary>
-        ///     The iterations
+        ///     The number of iterations for each benchmark.
         /// </summary>
         private const int Iterations = 1_000;
 
         /// <summary>
-        ///     Usings this instance
+        ///     Benchmarks accessing properties on a regular class instance in a tight loop.
         /// </summary>
-        /// <returns>The sum</returns>
+        /// <returns>The accumulated sum of X and Y properties across all iterations.</returns>
         [Benchmark(Baseline = true)]
         public int UsingClass()
         {
@@ -61,9 +61,9 @@ namespace Alis.Benchmark.ClassVsStruct
         }
 
         /// <summary>
-        ///     Usings the sealed
+        ///     Benchmarks accessing properties on a sealed class instance in a tight loop.
         /// </summary>
-        /// <returns>The sum</returns>
+        /// <returns>The accumulated sum of X and Y properties across all iterations.</returns>
         [Benchmark]
         public int UsingSealedClass()
         {
@@ -78,9 +78,9 @@ namespace Alis.Benchmark.ClassVsStruct
         }
 
         /// <summary>
-        ///     Usings the struct
+        ///     Benchmarks accessing properties on a struct instance in a tight loop.
         /// </summary>
-        /// <returns>The sum</returns>
+        /// <returns>The accumulated sum of X and Y properties across all iterations.</returns>
         [Benchmark]
         public int UsingStruct()
         {
@@ -96,9 +96,9 @@ namespace Alis.Benchmark.ClassVsStruct
 
 
         /// <summary>
-        ///     Usings the struct
+        ///     Benchmarks accessing properties on a ref struct instance in a tight loop.
         /// </summary>
-        /// <returns>The sum</returns>
+        /// <returns>The accumulated sum of X and Y properties across all iterations.</returns>
         [Benchmark]
         public int UsingRefStruct()
         {
@@ -113,9 +113,9 @@ namespace Alis.Benchmark.ClassVsStruct
         }
 
         /// <summary>
-        ///     Usings the record
+        ///     Benchmarks accessing properties on a record instance in a tight loop.
         /// </summary>
-        /// <returns>The sum</returns>
+        /// <returns>The accumulated sum of X and Y properties across all iterations.</returns>
         [Benchmark]
         public int UsingRecord()
         {
