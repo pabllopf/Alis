@@ -30,6 +30,7 @@
 using System;
 using Alis.Core.Ecs.Systems.Execution;
 using Alis.Core.Ecs.Systems.Manager;
+using Alis.Core.Ecs.Systems.Scope;
 using Moq;
 using Xunit;
 

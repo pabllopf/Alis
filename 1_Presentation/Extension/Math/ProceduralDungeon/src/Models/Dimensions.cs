@@ -41,7 +41,6 @@ namespace Alis.Extension.Math.ProceduralDungeon.Models
     ///     Dimensions is implemented as a readonly struct for performance and immutability.
     ///     It ensures that width and height are always positive values.
     /// </remarks>
-    [Serializable]
     public readonly partial struct Dimensions : IEquatable<Dimensions>
     {
         /// <summary>

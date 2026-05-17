@@ -41,14 +41,29 @@ namespace Alis.Extension.Math.ProceduralDungeon.Models
     public partial class DungeonData : IJsonSerializable, IJsonDesSerializable<DungeonData>
     {
         /// <summary>
+        ///     The backing field for <see cref="Board" />.
+        /// </summary>
+        private BoardSquare[,] _board;
+
+        /// <summary>
+        ///     The backing field for <see cref="Rooms" />.
+        /// </summary>
+        private List<RoomData> _rooms;
+
+        /// <summary>
+        ///     The backing field for <see cref="Corridors" />.
+        /// </summary>
+        private List<CorridorData> _corridors;
+
+        /// <summary>
         ///     Initializes a new instance of the <see cref="DungeonData" /> class.
         ///     Default constructor for serialization support.
         /// </summary>
         public DungeonData()
         {
-            Board = new BoardSquare[0, 0];
-            Rooms = new List<RoomData>();
-            Corridors = new List<CorridorData>();
+            _board = new BoardSquare[0, 0];
+            _rooms = new List<RoomData>();
+            _corridors = new List<CorridorData>();
         }
 
         /// <summary>
@@ -68,20 +83,35 @@ namespace Alis.Extension.Math.ProceduralDungeon.Models
         ///     Gets or sets the 2D array representing the dungeon board.
         ///     Each element represents a square on the board with its type (floor, wall, corner, etc.).
         /// </summary>
+        /// <exception cref="ArgumentNullException">Thrown when the assigned value is null.</exception>
         [JsonNativePropertyName("board")]
-        public BoardSquare[,] Board { get; set; }
+        public BoardSquare[,] Board
+        {
+            get => _board;
+            set => _board = value ?? throw new ArgumentNullException(nameof(Board));
+        }
 
         /// <summary>
         ///     Gets or sets the list of rooms in the dungeon.
         /// </summary>
+        /// <exception cref="ArgumentNullException">Thrown when the assigned value is null.</exception>
         [JsonNativePropertyName("rooms")]
-        public List<RoomData> Rooms { get; set; }
+        public List<RoomData> Rooms
+        {
+            get => _rooms;
+            set => _rooms = value ?? throw new ArgumentNullException(nameof(Rooms));
+        }
 
         /// <summary>
         ///     Gets or sets the list of corridors connecting the rooms.
         /// </summary>
+        /// <exception cref="ArgumentNullException">Thrown when the assigned value is null.</exception>
         [JsonNativePropertyName("corridors")]
-        public List<CorridorData> Corridors { get; set; }
+        public List<CorridorData> Corridors
+        {
+            get => _corridors;
+            set => _corridors = value ?? throw new ArgumentNullException(nameof(Corridors));
+        }
 
         /// <summary>
         ///     Gets the width of the dungeon board.

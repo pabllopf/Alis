@@ -760,11 +760,16 @@ namespace Alis.Extension.Updater
         /// <exception cref="InvalidOperationException">Exceeded the maximum compression ratio threshold.</exception>
         /// <exception cref="InvalidOperationException">Exceeded the maximum number of entries threshold.</exception>
         /// <exception cref="InvalidOperationException">Exceeded the maximum uncompressed size threshold.</exception>
+        /// <exception cref="InvalidOperationException">The entry name contains path traversal characters.</exception>
         [ExcludeFromCodeCoverage]
         internal void ExtractZip(string fileAsync)
         {
             int totalSizeArchive = 0;
             int totalEntryArchive = 0;
+
+            // Resolve the target directory once to use for path traversal checks
+            string targetDirectory = Path.GetFullPath(ProgramFolder);
+            Directory.CreateDirectory(targetDirectory);
 
             using (FileStream zipToOpen = new FileStream(fileAsync, FileMode.Open))
             using (ZipArchive archive = new ZipArchive(zipToOpen, ZipArchiveMode.Read))
@@ -778,9 +783,17 @@ namespace Alis.Extension.Updater
                         throw new InvalidOperationException("Exceeded the maximum number of entries threshold.");
                     }
 
+                    // Prevent path traversal: reject entries with ".." that would escape the target directory
+                    string entryFullPath = Path.GetFullPath(Path.Combine(targetDirectory, entry.FullName));
+                    if (!entryFullPath.StartsWith(targetDirectory, StringComparison.Ordinal))
+                    {
+                        throw new InvalidOperationException(
+                            $"Entry '{entry.FullName}' contains path traversal characters and is blocked.");
+                    }
+
                     using (Stream entryStream = entry.Open())
                     {
-                        byte[] buffer = new byte[1024];
+                        byte[] buffer = new byte[4096];
                         int totalSizeEntry = 0;
                         int numBytesRead;
 
@@ -789,7 +802,10 @@ namespace Alis.Extension.Updater
                             totalSizeEntry += numBytesRead;
                             totalSizeArchive += numBytesRead;
 
-                            double compressionRatio = (double) totalSizeEntry / entry.CompressedLength;
+                            double compressionRatio = entry.CompressedLength > 0
+                                ? (double)totalSizeEntry / entry.CompressedLength
+                                : 1.0;
+
                             if (compressionRatio > ThresholdRatio)
                             {
                                 throw new InvalidOperationException("Exceeded the maximum compression ratio threshold.");
@@ -801,10 +817,24 @@ namespace Alis.Extension.Updater
                             throw new InvalidOperationException("Exceeded the maximum uncompressed size threshold.");
                         }
                     }
+
+                    // Extract the entry to the target directory
+                    string destinationPath = Path.Combine(targetDirectory, entry.FullName);
+
+                    if (string.IsNullOrEmpty(entry.Name))
+                    {
+                        // Directory entry - ensure it exists
+                        Directory.CreateDirectory(destinationPath);
+                    }
+                    else
+                    {
+                        // File entry - ensure the parent directory exists, then extract
+                        Directory.CreateDirectory(Path.GetDirectoryName(destinationPath));
+                        entry.ExtractToFile(destinationPath, overwrite: true);
+                    }
                 }
             }
 
-            ZipFile.ExtractToDirectory(fileAsync, ProgramFolder);
             OnUpdateProgressChanged(0.7f, "Extracted and replaced.");
             Logger.Info($"Zip extracted to '{ProgramFolder}'.");
         }
