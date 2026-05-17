@@ -33,34 +33,35 @@ using System.Buffers;
 namespace Alis.Benchmark.CustomCollections.Arrays
 {
     /// <summary>
-    ///     The fastest array
+    ///     A high-performance array wrapper backed by <see cref="ArrayPool{T}"/> with memory and span support.
     /// </summary>
-    public struct FastestArray<T>
+    /// <typeparam name="T">The element type of the array.</typeparam>
+    public struct FastestArray<T> : IDisposable
     {
         /// <summary>
-        ///     The array
+        ///     The underlying rented array from the array pool.
         /// </summary>
         private T[] _array;
 
         /// <summary>
-        ///     The memory
+        ///     The memory wrapper around the underlying array.
         /// </summary>
         private Memory<T> _memory;
 
         /// <summary>
-        ///     Gets the value of the length
+        ///     Gets the number of elements in the array.
         /// </summary>
         public int Length => _array.Length;
 
         /// <summary>
-        ///     Gets the value of the span
+        ///     Gets a span over the entire array.
         /// </summary>
         public Span<T> Span => _memory.Span;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="FastestArray" /> class
+        ///     Initializes a new instance of the <see cref="FastestArray{T}"/> struct, renting an array from the shared pool.
         /// </summary>
-        /// <param name="length">The length</param>
+        /// <param name="length">The number of elements to rent from the array pool.</param>
         public FastestArray(int length)
         {
             _array = ArrayPool<T>.Shared.Rent(length);
@@ -68,8 +69,9 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         }
 
         /// <summary>
-        ///     The value
+        ///     Gets or sets the element at the specified index.
         /// </summary>
+        /// <param name="index">The zero-based index of the element to get or set.</param>
         public T this[int index]
         {
             get => _memory.Span[index];
@@ -77,23 +79,27 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         }
 
         /// <summary>
-        ///     Clears this instance
+        ///     Clears all elements in the span by setting them to their default values.
         /// </summary>
         public void Clear() => _memory.Span.Clear();
 
         /// <summary>
-        ///     Disposes this instance
+        ///     Returns the rented array to the shared pool and releases memory.
         /// </summary>
         public void Dispose()
         {
-            _array = null;
+            if (_array is not null)
+            {
+                ArrayPool<T>.Shared.Return(_array);
+            }
+
             _memory = Memory<T>.Empty;
         }
 
         /// <summary>
-        ///     Resizes the array size
+        ///     Resizes the array by renting a new block from the pool and copying existing elements.
         /// </summary>
-        /// <param name="arraySize">The array size</param>
+        /// <param name="arraySize">The new size of the array.</param>
         public void Resize(int arraySize)
         {
             if (arraySize == _array.Length)
@@ -110,16 +116,16 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         }
 
         /// <summary>
-        ///     Converts the span
+        ///     Returns a span over the entire array.
         /// </summary>
-        /// <returns>A span of t</returns>
+        /// <returns>A span containing all elements of the array.</returns>
         public Span<T> AsSpan() => _memory.Span;
 
         /// <summary>
-        ///     Converts the span len using the specified array size
+        ///     Returns a span containing the first <paramref name="arraySize"/> elements of the array.
         /// </summary>
-        /// <param name="arraySize">The array size</param>
-        /// <returns>A span of t</returns>
+        /// <param name="arraySize">The number of elements to include in the span.</param>
+        /// <returns>A span containing the specified number of elements from the start of the array.</returns>
         public Span<T> AsSpanLen(int arraySize) => _memory.Span.Slice(0, arraySize);
     }
 }

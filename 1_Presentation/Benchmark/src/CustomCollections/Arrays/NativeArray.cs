@@ -34,26 +34,26 @@ using System.Runtime.InteropServices;
 namespace Alis.Benchmark.CustomCollections.Arrays
 {
     /// <summary>
-    ///     The native array class
+    ///     A sealed native memory array wrapper for unmanaged types, providing direct access to unmanaged memory with span support.
     /// </summary>
-    /// <seealso cref="IDisposable" />
+    /// <typeparam name="T">The unmanaged element type.</typeparam>
     public sealed class NativeArray<T> : IDisposable where T : unmanaged
     {
         /// <summary>
-        ///     The handle
+        ///     The underlying safe memory handle for unmanaged allocation.
         /// </summary>
         private readonly SafeMemoryHandle _handle;
 
         /// <summary>
-        ///     The length
+        ///     The number of elements in the array.
         /// </summary>
         private int _length;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="NativeArray{T}" /> class
+        ///     Initializes a new instance of the <see cref="NativeArray{T}"/> class with the specified element count.
         /// </summary>
-        /// <param name="length">The length</param>
-        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        /// <param name="length">The number of elements to allocate.</param>
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="length"/> is less than or equal to zero.</exception>
         public NativeArray(int length)
         {
             if (length <= 0)
@@ -66,13 +66,16 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         }
 
         /// <summary>
-        ///     Gets the value of the length
+        ///     Gets the number of elements in the native array.
         /// </summary>
         public int Length => _length;
 
         /// <summary>
-        ///     The index
+        ///     Gets a reference to the element at the specified index.
         /// </summary>
+        /// <param name="index">The zero-based index of the element to reference.</param>
+        /// <returns>A reference to the element at the specified index.</returns>
+        /// <exception cref="IndexOutOfRangeException">Thrown when <paramref name="index"/> is out of range.</exception>
         public ref T this[int index]
         {
             get
@@ -87,15 +90,15 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         }
 
         /// <summary>
-        ///     Disposes this instance
+        ///     Releases the underlying unmanaged memory.
         /// </summary>
         public void Dispose() => _handle.Dispose();
 
         /// <summary>
-        ///     Resizes the new size
+        ///     Resizes the native array to the specified new element count.
         /// </summary>
-        /// <param name="newSize">The new size</param>
-        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        /// <param name="newSize">The new number of elements.</param>
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="newSize"/> is less than or equal to zero.</exception>
         public void Resize(int newSize)
         {
             if (newSize <= 0)
@@ -108,58 +111,57 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         }
 
         /// <summary>
-        ///     Converts the span
+        ///     Returns a span over the entire native array.
         /// </summary>
-        /// <returns>A span of t</returns>
+        /// <returns>A span of <typeparamref name="T"/> covering the native memory.</returns>
         public Span<T> AsSpan() => MemoryMarshal.Cast<byte, T>(_handle.GetSpan(_length * Unsafe.SizeOf<T>()));
 
         /// <summary>
-        ///     Converts the span len using the specified len
+        ///     Returns a span containing the first <paramref name="len"/> elements of the native array.
         /// </summary>
-        /// <param name="len">The len</param>
-        /// <returns>A span of t</returns>
+        /// <param name="len">The number of elements to include in the span.</param>
+        /// <returns>A span containing the specified number of elements from the start of the array.</returns>
         public Span<T> AsSpanLen(int len) => AsSpan().Slice(0, len);
     }
 
     /// <summary>
-    ///     The safe memory handle class
+    ///     Provides a safe wrapper for unmanaged memory allocations using <see cref="Marshal"/> methods.
     /// </summary>
-    /// <seealso cref="SafeHandle" />
     internal sealed class SafeMemoryHandle : SafeHandle
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="SafeMemoryHandle" /> class
+        ///     Initializes a new instance of the <see cref="SafeMemoryHandle"/> class, allocating unmanaged memory of the specified size.
         /// </summary>
-        /// <param name="byteSize">The byte size</param>
+        /// <param name="byteSize">The number of bytes to allocate.</param>
         public SafeMemoryHandle(int byteSize) : base(IntPtr.Zero, true)
         {
             SetHandle(Marshal.AllocHGlobal(byteSize));
         }
 
         /// <summary>
-        ///     Gets the value of the pointer
+        ///     Gets the pointer to the underlying unmanaged memory.
         /// </summary>
         public IntPtr Pointer => handle;
 
         /// <summary>
-        ///     Gets the value of the is invalid
+        ///     Gets a value indicating whether the handle is invalid.
         /// </summary>
         public override bool IsInvalid => handle == IntPtr.Zero;
 
         /// <summary>
-        ///     Reallocs the new size
+        ///     Reallocates the unmanaged memory to the specified new size.
         /// </summary>
-        /// <param name="newSize">The new size</param>
+        /// <param name="newSize">The new size in bytes.</param>
         public void Realloc(int newSize)
         {
             SetHandle(Marshal.ReAllocHGlobal(handle, newSize));
         }
 
         /// <summary>
-        ///     Gets the span using the specified size
+        ///     Copies the unmanaged memory into a managed byte span of the specified size.
         /// </summary>
-        /// <param name="size">The size</param>
-        /// <returns>The temp array</returns>
+        /// <param name="size">The number of bytes to copy.</param>
+        /// <returns>A span containing the copied bytes.</returns>
         public Span<byte> GetSpan(int size)
         {
             byte[] tempArray = new byte[size];
@@ -168,9 +170,9 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         }
 
         /// <summary>
-        ///     Releases the handle
+        ///     Releases the underlying unmanaged memory.
         /// </summary>
-        /// <returns>The bool</returns>
+        /// <returns>True if the handle was released successfully.</returns>
         protected override bool ReleaseHandle()
         {
             if (!IsInvalid)

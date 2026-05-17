@@ -76,18 +76,7 @@ namespace Alis.Core.Physic.Common
         ///     Center world positions
         /// </summary>
         public Vector2F C;
-
-        /// <summary>
-        ///     The angle at the previous time step (alpha0), in radians.
-        /// </summary>
-        public float A0;
-
-        /// <summary>
-        ///     Fraction of the current time step in the range [0,1].
-        ///     C0 and A0 represent the position and orientation at Alpha0.
-        /// </summary>
-        public float Alpha0;
-
+        
         /// <summary>
         ///     The center of mass position at the previous time step (alpha0), in world coordinates.
         /// </summary>
@@ -126,27 +115,6 @@ namespace Alis.Core.Physic.Common
             A0 += beta * (A - A0);
             Alpha0 = alpha;
         }
-
-        /// <summary>
-        ///     Computes the interpolated transform at a specific interpolation factor.
-        /// </summary>
-        /// <param name="xfb">When this method returns, contains the interpolated transform at the given beta value.</param>
-        /// <param name="beta">A factor in [0,1], where 0 indicates alpha0 (previous state) and 1 indicates the current state.</param>
-        /// <remarks>
-        ///     The transform is interpolated linearly for position and angle.
-        ///     The local center of mass is shifted to the body origin as required by the physics engine.
-        /// </remarks>
-        public void GetTransform(out ControllerTransform xfb, float beta)
-
-        /// <summary>
-        ///     Advances the sweep forward to a new time step, yielding a new initial state.
-        /// </summary>
-        /// <param name="alpha">The new initial time fraction in [0,1]. The sweep state is interpolated to this point and becomes the new baseline.</param>
-        /// <remarks>
-        ///     This method is used during continuous collision detection to rebase the sweep
-        ///     at the time of impact, allowing further TOI computation from that point.
-        /// </remarks>
-        public void Advance(float alpha)
 
         /// <summary>
         ///     Normalizes both angles to the range [0, 2π) by subtracting full rotations.

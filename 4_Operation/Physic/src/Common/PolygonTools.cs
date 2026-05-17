@@ -60,14 +60,6 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        ///     Creates an axis-aligned rectangle centered at the origin.
-        /// </summary>
-        /// <param name="hx">Half the width of the rectangle (X extent from center).</param>
-        /// <param name="hy">Half the height of the rectangle (Y extent from center).</param>
-        /// <returns>A <see cref="Vertices"/> collection with 4 vertices in counter-clockwise order.</returns>
-        public static Vertices CreateRectangle(float hx, float hy)
-
-        /// <summary>
         ///     Creates an oriented (rotated and translated) rectangle.
         /// </summary>
         /// <param name="hx">Half the width of the rectangle (X extent from center).</param>
@@ -208,31 +200,6 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        ///     Creates a single-edge polygon (line segment) between two points.
-        /// </summary>
-        /// <param name="start">The starting point of the line.</param>
-        /// <param name="end">The ending point of the line.</param>
-        /// <returns>A <see cref="Vertices"/> collection with 2 vertices.</returns>
-        public static Vertices CreateLine(Vector2F start, Vector2F end)
-
-        /// <summary>
-        ///     Creates a circle approximation with the specified radius and number of edges.
-        /// </summary>
-        /// <param name="radius">The radius of the circle.</param>
-        /// <param name="numberOfEdges">The number of edges. Higher values produce a smoother circle.</param>
-        /// <returns>A <see cref="Vertices"/> collection representing the circle.</returns>
-        public static Vertices CreateCircle(float radius, int numberOfEdges) => CreateEllipse(radius, radius, numberOfEdges);
-
-        /// <summary>
-        ///     Creates an ellipse approximation with the specified radii and number of edges.
-        /// </summary>
-        /// <param name="xRadius">The horizontal radius (semi-major axis).</param>
-        /// <param name="yRadius">The vertical radius (semi-minor axis).</param>
-        /// <param name="numberOfEdges">The number of edges. Higher values produce a smoother ellipse.</param>
-        /// <returns>A <see cref="Vertices"/> collection representing the ellipse.</returns>
-        public static Vertices CreateEllipse(float xRadius, float yRadius, int numberOfEdges)
-
-        /// <summary>
         ///     Creates an arc shape with the specified angular span.
         /// </summary>
         /// <param name="radians">The total angular span of the arc in radians.</param>
@@ -274,17 +241,6 @@ namespace Alis.Core.Physic.Common
 
             return CreateCapsule(height, endRadius, edges, endRadius, edges);
         }
-
-        /// <summary>
-        ///     Creates a capsule shape with the specified height, radius and number of edges.
-        ///     A capsule has the same form as a pill capsule.
-        /// </summary>
-        /// <param name="height">Total height (inner height + 2 * radius) of the capsule.</param>
-        /// <param name="endRadius">Radius of both capsule end caps.</param>
-        /// <param name="edges">The number of edges per end cap. Higher values produce smoother caps.</param>
-        /// <returns>A <see cref="Vertices"/> collection representing the capsule shape.</returns>
-        /// <exception cref="ArgumentException">Thrown when radius is too large relative to height.</exception>
-        public static Vertices CreateCapsule(float height, float endRadius, int edges)
 
         /// <summary>
         ///     Creates a capsule shape with different radii for top and bottom end caps.

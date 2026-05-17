@@ -33,30 +33,33 @@ using System.Runtime.InteropServices;
 namespace Alis.Benchmark.CustomCollections.Arrays
 {
     /// <summary>
-    ///     The fast array safe
+    ///     A high-performance, safe array wrapper with span support and manual memory management.
     /// </summary>
+    /// <typeparam name="T">The element type of the array.</typeparam>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct FastArraySafe<T> : IDisposable
     {
         /// <summary>
-        ///     The array
+        ///     The underlying array storage.
         /// </summary>
         private T[] _array = [];
 
         /// <summary>
-        ///     Obtiene la longitud del array.
+        ///     Gets the number of elements in the array.
         /// </summary>
         public int Length => _array.Length;
 
         /// <summary>
-        ///     Permite acceder al elemento en la posición indicada.
+        ///     Gets or sets the element at the specified index.
         /// </summary>
+        /// <param name="index">The zero-based index of the element to get or set.</param>
         public ref T this[int index] => ref _array[index];
 
         /// <summary>
-        ///     Inicializa una nueva instancia de FastArraySafe con la longitud especificada.
+        ///     Initializes a new instance of the <see cref="FastArraySafe{T}"/> struct with the specified length.
         /// </summary>
-        /// <param name="length">La longitud del array.</param>
+        /// <param name="length">The number of elements in the array. Must be greater than zero.</param>
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="length"/> is less than 1.</exception>
         public FastArraySafe(int length)
         {
             if (length < 1)
@@ -68,20 +71,20 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         }
 
         /// <summary>
-        ///     Devuelve el array como Span&lt;T&gt; para iteraciones rápidas.
+        ///     Returns the underlying array as a <see cref="Span{T}"/> for fast iteration.
         /// </summary>
+        /// <returns>A span wrapping the entire array.</returns>
         public Span<T> AsSpan() => _array;
 
         /// <summary>
-        ///     Limpia el array asignando el valor por defecto a cada elemento.
+        ///     Clears the array by setting each element to its default value.
         /// </summary>
         public void Clear() => Array.Clear(_array, 0, _array.Length);
 
         /// <summary>
-        ///     Redimensiona el array a la nueva longitud indicada.
-        ///     Se copia el contenido existente hasta el menor de ambas longitudes.
+        ///     Resizes the array to the specified new length, copying existing elements up to the smaller of the two lengths.
         /// </summary>
-        /// <param name="newLength">La nueva longitud del array.</param>
+        /// <param name="newLength">The new length of the array.</param>
         public void Resize(int newLength)
         {
             if (newLength == _array.Length)
@@ -96,15 +99,15 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         }
 
         /// <summary>
-        ///     Disposes this instance
+        ///     Releases the underlying array by setting it to null.
         /// </summary>
         public void Dispose() => _array = null;
 
         /// <summary>
-        ///     Converts the span len using the specified array size
+        ///     Returns a span covering the first <paramref name="arraySize"/> elements of the array.
         /// </summary>
-        /// <param name="arraySize">The array size</param>
-        /// <returns>A span of t</returns>
+        /// <param name="arraySize">The number of elements to include in the span.</param>
+        /// <returns>A span containing the specified number of elements from the start of the array.</returns>
         public Span<T> AsSpanLen(int arraySize) => _array.AsSpan(0, arraySize);
     }
 }

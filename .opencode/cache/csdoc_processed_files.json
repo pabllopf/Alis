@@ -58,5 +58,17 @@
   "/Users/pabllopf/repositorios/Alis/1_Presentation/Benchmark/src/ClassVsStruct/Instancies/StructRefPoint.cs": {
     "status": "documented",
     "timestamp": "2026-05-17T10:55:46.952756+00:00"
+  },
+  "/Users/pabllopf/repositorios/Alis/1_Presentation/Benchmark/src/CustomCollections/Arrays/FastArraySafe.cs": {
+    "status": "documented",
+    "timestamp": "2026-05-17T10:59:26.147930+00:00"
+  },
+  "/Users/pabllopf/repositorios/Alis/1_Presentation/Benchmark/src/CustomCollections/Arrays/FastestArray.cs": {
+    "status": "documented",
+    "timestamp": "2026-05-17T11:01:52.904045+00:00"
+  },
+  "/Users/pabllopf/repositorios/Alis/1_Presentation/Benchmark/src/CustomCollections/Arrays/NativeArray.cs": {
+    "status": "documented",
+    "timestamp": "2026-05-17T11:04:58.142293+00:00"
   }
 }
