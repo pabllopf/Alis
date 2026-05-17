@@ -108,20 +108,6 @@ namespace Alis.Core.Graphic.Platforms.Web
                         {
                             GamepadState state = gamepadState.CurrentState;
 
-                            // Read analog sticks
-                            float leftStickX = state.LeftStickX;
-                            float leftStickY = state.LeftStickY;
-                            float rightStickX = state.RightStickX;
-                            float rightStickY = state.RightStickY;
-
-                            // Apply deadzone
-                            if (Math.Abs(leftStickX) < 0.15f) leftStickX = 0;
-                            if (Math.Abs(leftStickY) < 0.15f) leftStickY = 0;
-
-                            // Read triggers
-                            float leftTrigger = state.LeftTrigger;
-                            float rightTrigger = state.RightTrigger;
-
                             // Check buttons
                             if (state.ButtonA)
                             {
@@ -253,19 +239,8 @@ namespace Alis.Core.Graphic.Platforms.Web
                     {
                         moveX += gamepadState.CurrentState.LeftStickX;
                         moveY += gamepadState.CurrentState.LeftStickY;
-
-                        // Camera with right stick
-                        float lookX = gamepadState.CurrentState.RightStickX;
-                        float lookY = gamepadState.CurrentState.RightStickY;
                     }
 
-                    // Normalize movement if both axes are pressed
-                    float moveMagnitude = (float)Math.Sqrt(moveX * moveX + moveY * moveY);
-                    if (moveMagnitude > 1.0f)
-                    {
-                        moveX /= moveMagnitude;
-                        moveY /= moveMagnitude;
-                    }
                 });
             }
         }
@@ -570,13 +545,6 @@ namespace Alis.Core.Graphic.Platforms.Web
                     }
 
                     // Normalize movement
-                    float magnitude = (float)Math.Sqrt(moveX * moveX + moveY * moveY);
-                    if (magnitude > 1.0f)
-                    {
-                        moveX /= magnitude;
-                        moveY /= magnitude;
-                    }
-
                     // Update game state with movement
                     // ... your game logic here ...
                 });
