@@ -35,48 +35,48 @@ namespace Alis.Extension.Graphic.Sdl2.Enums
     public enum Hat : byte
     {
         /// <summary>
-        ///     The sdl hat centered
+        ///     Centered
         /// </summary>
-        HatCentered = 0x00,
+        Centered = 0x00,
 
         /// <summary>
-        ///     The sdl hat up
+        ///     Up
         /// </summary>
-        HatUp = 0x01,
+        Up = 0x01,
 
         /// <summary>
-        ///     The sdl hat right
+        ///     Right
         /// </summary>
-        HatRight = 0x02,
+        Right = 0x02,
 
         /// <summary>
-        ///     The sdl hat down
+        ///     Down
         /// </summary>
-        HatDown = 0x04,
+        Down = 0x04,
 
         /// <summary>
-        ///     The sdl hat left
+        ///     Left
         /// </summary>
-        HatLeft = 0x08,
+        Left = 0x08,
 
         /// <summary>
-        ///     The sdl hat up
+        ///     Right and up
         /// </summary>
-        HatRightUp = HatRight | HatUp,
+        RightUp = Right | Up,
 
         /// <summary>
-        ///     The sdl hat down
+        ///     Right and down
         /// </summary>
-        HatRightDown = HatRight | HatDown,
+        RightDown = Right | Down,
 
         /// <summary>
-        ///     The sdl hat up
+        ///     Left and up
         /// </summary>
-        HatLeftUp = HatLeft | HatUp,
+        LeftUp = Left | Up,
 
         /// <summary>
-        ///     The sdl hat down
+        ///     Left and down
         /// </summary>
-        HatLeftDown = HatLeft | HatDown
+        LeftDown = Left | Down
     }
 }

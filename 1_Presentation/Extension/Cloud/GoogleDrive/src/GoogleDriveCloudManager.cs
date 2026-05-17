@@ -52,11 +52,6 @@ namespace Alis.Extension.Cloud.GoogleDrive
     public class GoogleDriveCloudManager : AManager, ICloudManager, IDisposable
     {
         /// <summary>
-        ///     The scopes required for Google Drive API
-        /// </summary>
-        private static readonly string[] Scopes = {DriveService.Scope.Drive};
-
-        /// <summary>
         ///     The Google Drive service
         /// </summary>
         private DriveService _driveService;
@@ -321,15 +316,6 @@ namespace Alis.Extension.Cloud.GoogleDrive
         }
 
         /// <summary>
-        ///     Disposes the manager
-        /// </summary>
-        public void Dispose()
-        {
-            GC.SuppressFinalize(this);
-            OnDestroy();
-        }
-
-        /// <summary>
         ///     Gets the file ID by path
         /// </summary>
         private async Task<string> GetFileIdByPathAsync(string path)
@@ -451,6 +437,32 @@ namespace Alis.Extension.Cloud.GoogleDrive
             }
 
             base.OnDestroy();
+        }
+
+        /// <summary>
+        ///     Disposes the manager
+        /// </summary>
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        ///     Releases the unmanaged resources used by the GoogleDriveCloudManager and optionally releases the managed resources
+        /// </summary>
+        /// <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (_driveService != null)
+                {
+                    _driveService.Dispose();
+                    _driveService = null;
+                    Logger.Info("Google Drive service disposed");
+                }
+            }
         }
     }
 }

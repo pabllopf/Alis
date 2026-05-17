@@ -329,7 +329,13 @@ namespace Alis.Extension.Cloud.DropBox
         /// </summary>
         public override void OnDestroy()
         {
-            Dispose(false);
+            if (_dropboxClient != null)
+            {
+                _dropboxClient.Dispose();
+                _dropboxClient = null;
+                Logger.Info("DropBox client disposed");
+            }
+
             base.OnDestroy();
         }
     }
