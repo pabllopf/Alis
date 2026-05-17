@@ -32,96 +32,114 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     The broad phase interface
+    ///     Defines the contract for a broad-phase collision detection system that manages proxy nodes.
     /// </summary>
+    /// <typeparam name="TNode">The type of the proxy node. Must be a struct.</typeparam>
     public interface IBroadPhaseFixtureNode<TNode>
         where TNode : struct
     {
         /// <summary>
-        ///     Gets the value of the proxy count
+        ///     Gets the number of proxies currently managed by this broad-phase.
         /// </summary>
+        /// <value>
+        ///     An <see cref="int"/> representing the count of active proxies.
+        /// </value>
         int ProxyCount { get; }
 
         /// <summary>
-        ///     Updates the pairs using the specified callback
+        ///     Notifies the broad-phase of active proxy pairs for contact processing.
         /// </summary>
-        /// <param name="callback">The callback</param>
+        /// <param name="callback">A <see cref="BroadphaseDelegate"/> callback invoked for each active pair.</param>
+        /// <remarks>
+        ///     This method is called during the collision detection phase to notify the contact manager
+        ///     of pairs that may be overlapping. The callback receives the proxy IDs for each pair.
+        /// </remarks>
         void UpdatePairs(BroadphaseDelegate callback);
 
         /// <summary>
-        ///     Describes whether this instance test overlap
+        ///     Tests whether two proxies overlap based on their axis-aligned bounding boxes.
         /// </summary>
-        /// <param name="proxyIdA">The proxy id</param>
-        /// <param name="proxyIdB">The proxy id</param>
-        /// <returns>The bool</returns>
+        /// <param name="proxyIdA">The proxy ID of the first proxy.</param>
+        /// <param name="proxyIdB">The proxy ID of the second proxy.</param>
+        /// <returns>
+        ///     <c>true</c> if the proxies' AABBs overlap; otherwise, <c>false</c>.
+        /// </returns>
         bool TestOverlap(int proxyIdA, int proxyIdB);
 
         /// <summary>
-        ///     Adds the proxy using the specified aabb
+        ///     Adds a new proxy with the specified axis-aligned bounding box.
         /// </summary>
-        /// <param name="aabb">The aabb</param>
-        /// <returns>The int</returns>
+        /// <param name="aabb">The axis-aligned bounding box of the proxy to add.</param>
+        /// <returns>
+        ///     An <see cref="int"/> representing the ID of the newly added proxy.
+        /// </returns>
         int AddProxy(ref Aabb aabb);
 
         /// <summary>
-        ///     Removes the proxy using the specified proxy id
+        ///     Removes a proxy from the broad-phase.
         /// </summary>
-        /// <param name="proxyId">The proxy id</param>
+        /// <param name="proxyId">The ID of the proxy to remove.</param>
         void RemoveProxy(int proxyId);
 
         /// <summary>
-        ///     Moves the proxy using the specified proxy id
+        ///     Moves a proxy to a new position and optionally applies displacement.
         /// </summary>
-        /// <param name="proxyId">The proxy id</param>
-        /// <param name="aabb">The aabb</param>
-        /// <param name="displacement">The displacement</param>
+        /// <param name="proxyId">The ID of the proxy to move.</param>
+        /// <param name="aabb">The new axis-aligned bounding box for the proxy.</param>
+        /// <param name="displacement">The displacement vector applied to the proxy's position.</param>
         void MoveProxy(int proxyId, ref Aabb aabb, Vector2F displacement);
 
         /// <summary>
-        ///     Sets the proxy using the specified proxy id
+        ///     Sets or updates the proxy node data for a given proxy ID.
         /// </summary>
-        /// <param name="proxyId">The proxy id</param>
-        /// <param name="proxy">The proxy</param>
+        /// <param name="proxyId">The ID of the proxy to update.</param>
+        /// <param name="proxy">The proxy node data to set.</param>
         void SetProxy(int proxyId, ref TNode proxy);
 
         /// <summary>
-        ///     Gets the proxy using the specified proxy id
+        ///     Gets the proxy node data for a given proxy ID.
         /// </summary>
-        /// <param name="proxyId">The proxy id</param>
-        /// <returns>The node</returns>
+        /// <param name="proxyId">The ID of the proxy to retrieve.</param>
+        /// <returns>
+        ///     The <typeparamref name="TNode"/> proxy node data.
+        /// </returns>
         TNode GetProxy(int proxyId);
 
         /// <summary>
-        ///     Touches the proxy using the specified proxy id
+        ///     Marks a proxy as touched, indicating it has been modified and needs pair updates.
         /// </summary>
-        /// <param name="proxyId">The proxy id</param>
+        /// <param name="proxyId">The ID of the proxy to touch.</param>
         void TouchProxy(int proxyId);
 
         /// <summary>
-        ///     Gets the fat aabb using the specified proxy id
+        ///     Gets the fat AABB (expanded bounding box) for a given proxy.
         /// </summary>
-        /// <param name="proxyId">The proxy id</param>
-        /// <param name="aabb">The aabb</param>
+        /// <param name="proxyId">The ID of the proxy.</param>
+        /// <param name="aabb">When this method returns, contains the fat AABB of the proxy.</param>
         void GetFatAabb(int proxyId, out Aabb aabb);
 
         /// <summary>
-        ///     Queries the callback
+        ///     Queries all proxies whose AABBs overlap the specified query AABB.
         /// </summary>
-        /// <param name="callback">The callback</param>
-        /// <param name="aabb">The aabb</param>
+        /// <param name="callback">A <see cref="BroadPhaseQueryCallback"/> invoked for each overlapping proxy.</param>
+        /// <param name="aabb">The query AABB to test against all proxies.</param>
         void Query(BroadPhaseQueryCallback callback, ref Aabb aabb);
 
         /// <summary>
-        ///     Rays the cast using the specified callback
+        ///     Performs a ray cast against all proxies and invokes the callback for each hit.
         /// </summary>
-        /// <param name="callback">The callback</param>
-        /// <param name="input">The input</param>
+        /// <param name="callback">A <see cref="BroadPhaseRayCastCallback"/> invoked for each proxy hit by the ray.</param>
+        /// <param name="input">The <see cref="RayCastInput"/> defining the ray's origin and direction.</param>
         void RayCast(BroadPhaseRayCastCallback callback, ref RayCastInput input);
 
         /// <summary>
-        ///     Shifts the origin using the specified new origin
+        ///     Shifts the origin of the broad-phase coordinate system.
         /// </summary>
-        /// <param name="newOrigin">The new origin</param>
+        /// <param name="newOrigin">The new origin vector for the coordinate system.</param>
+        /// <remarks>
+        ///     This is used to maintain numerical precision when the simulation world moves far from the origin.
+        ///     All proxy positions and AABBs are adjusted relative to the new origin.
+        /// </remarks>
         void ShiftOrigin(Vector2F newOrigin);
     }
 }
