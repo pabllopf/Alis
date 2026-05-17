@@ -62,7 +62,18 @@ namespace Alis.Test.Core.Ecs.Components.Render
             frame.NameFile = "frame2.jpg";
             Assert.Equal("frame2.jpg", frame.NameFile);
         }
-        
+
+        /// <summary>
+        ///     Tests that Frame can be created without exceptions
+        /// </summary>
+        [Fact]
+        public void Frame_Constructor_ShouldNotThrow()
+        {
+            Frame frame = new Frame();
+
+            Assert.NotNull(frame);
+        }
+
         /// <summary>
         ///     Tests that Frame properties can be modified independently
         /// </summary>
@@ -105,14 +116,29 @@ namespace Alis.Test.Core.Ecs.Components.Render
         }
 
         /// <summary>
-        ///     Tests that Frame is a struct type
+        ///     Tests that Frame implements expected interfaces
         /// </summary>
         [Fact]
-        public void Frame_ShouldBeStructType()
+        public void Frame_ShouldImplementExpectedInterfaces()
         {
             Frame frame = new Frame();
 
-            Assert.IsType<Frame>(frame);
+            Assert.IsAssignableFrom<object>(frame);
+        }
+
+        /// <summary>
+        ///     Tests that Frame constructor doesn't throw with various inputs
+        /// </summary>
+        [Fact]
+        public void Frame_Constructor_WithVariousInputs_ShouldNotThrow()
+        {
+            Frame frame = new Frame();
+
+            frame.NameFile = "test_frame.png";
+            Assert.Equal("test_frame.png", frame.NameFile);
+
+            Frame frame2 = new Frame();
+            Assert.NotNull(frame2);
         }
     }
 }

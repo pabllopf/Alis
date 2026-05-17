@@ -93,6 +93,17 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         }
 
         /// <summary>
+        ///     Tests that CircleCollider constructor doesn't throw
+        /// </summary>
+        [Fact]
+        public void CircleCollider_Constructor_ShouldNotThrow()
+        {
+            CircleCollider collider = new CircleCollider();
+
+            Assert.NotNull(collider);
+        }
+
+        /// <summary>
         ///     Tests that CircleCollider can be instantiated multiple times
         /// </summary>
         [Fact]
@@ -103,6 +114,18 @@ namespace Alis.Test.Core.Ecs.Components.Collider
 
             Assert.NotNull(collider1);
             Assert.NotNull(collider2);
+        }
+
+        /// <summary>
+        ///     Tests that CircleCollider can be created without exceptions
+        /// </summary>
+        [Fact]
+        public void CircleCollider_Constructor_WithoutParameters_ShouldNotThrow()
+        {
+            CircleCollider collider = new CircleCollider();
+
+            Assert.NotNull(collider);
+            Assert.IsType<CircleCollider>(collider);
         }
     }
 }

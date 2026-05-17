@@ -46,7 +46,7 @@ namespace Alis.Test.Core.Ecs.Components.Render
         {
             Animation animation = new Animation();
 
-            Assert.Equal("", animation.Name);
+            Assert.Equal(string.Empty, animation.Name);
             Assert.Equal(0, animation.Order);
             Assert.Equal(0f, animation.Speed);
             Assert.NotNull(animation.Frames);
@@ -85,7 +85,30 @@ namespace Alis.Test.Core.Ecs.Components.Render
             animation.Frames = frames;
             Assert.Same(frames, animation.Frames);
         }
-        
+
+        /// <summary>
+        ///     Tests that Animation methods are callable
+        /// </summary>
+        [Fact]
+        public void Animation_Methods_ShouldBeCallable()
+        {
+            Animation animation = new Animation();
+
+            animation.AddFrame(new Frame { NameFile = "frame1.png" });
+            Assert.Single(animation.Frames);
+        }
+
+        /// <summary>
+        ///     Tests that Animation can be created without exceptions
+        /// </summary>
+        [Fact]
+        public void Animation_Constructor_ShouldNotThrow()
+        {
+            Animation animation = new Animation();
+
+            Assert.NotNull(animation);
+        }
+
         /// <summary>
         ///     Tests that Animation properties can be modified
         /// </summary>
