@@ -86,20 +86,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Input
             Assert.Equal("Untagged", inputManager.Tag);
             Assert.True(inputManager.IsEnable);
         }
-
-        /// <summary>
-        ///     Tests that InputManager can be created without exceptions.
-        /// </summary>
-        [Fact]
-        public void InputManager_CanBeCreated_WithoutExceptions()
-        {
-            // Arrange
-            Context context = new Context(new Alis.Core.Ecs.Systems.Configuration.Setting());
-
-            // Act & Assert
-            Assert.DoesNotThrow(() => new InputManager(context));
-        }
-
+        
         /// <summary>
         ///     Tests that the InputManager context is set correctly.
         /// </summary>
