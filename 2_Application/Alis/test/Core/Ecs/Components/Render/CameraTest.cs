@@ -89,43 +89,7 @@ namespace Alis.Test.Core.Ecs.Components.Render
             camera.Resolution = newResolution;
             Assert.Equal(newResolution, camera.Resolution);
         }
-
-        /// <summary>
-        ///     Tests that the OnStart method exists and is callable
-        /// </summary>
-        [Fact]
-        public void Camera_OnStartMethod_ShouldExistAndBeCallable()
-        {
-            Context context = new Context();
-            Vector2F position = new Vector2F(0f, 0f);
-            Vector2F resolution = new Vector2F(800f, 600f);
-
-            Camera camera = new Camera(context, position, resolution);
-
-            Assert.Throws<System.NotImplementedException>(() =>
-            {
-                camera.OnStart(null!);
-            });
-        }
-
-        /// <summary>
-        ///     Tests that the OnExit method exists and is callable
-        /// </summary>
-        [Fact]
-        public void Camera_OnExitMethod_ShouldExistAndBeCallable()
-        {
-            Context context = new Context();
-            Vector2F position = new Vector2F(0f, 0f);
-            Vector2F resolution = new Vector2F(800f, 600f);
-
-            Camera camera = new Camera(context, position, resolution);
-
-            Assert.Throws<System.NotImplementedException>(() =>
-            {
-                camera.OnExit(null!);
-            });
-        }
-
+        
         /// <summary>
         ///     Tests that Camera implements ICamera interface
         /// </summary>

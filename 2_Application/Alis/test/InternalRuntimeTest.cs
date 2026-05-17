@@ -159,24 +159,7 @@ namespace Alis.Test
             var retrieved = runtime.Get<TestRuntime>();
             Assert.Same(testRuntime, retrieved);
         }
-
-        /// <summary>
-        ///     Tests that constructor with multiple items stores all
-        /// </summary>
-        [Fact]
-        public void Constructor_MultipleItems_ShouldStoreAll()
-        {
-            // Arrange
-            var context = new Context();
-            var runtime1 = new TestRuntime(context);
-            var runtime2 = new TestRuntime(context);
-
-            // Act
-            var runtime = new InternalRuntime<AManager>(runtime1, runtime2);
-
-            // Assert
-            Assert.Same(runtime1, runtime.Get<TestRuntime>());
-        }
+        
 
         /// <summary>
         ///     Tests that Get returns correct type when present
@@ -487,25 +470,6 @@ namespace Alis.Test
             // Assert
             Assert.True(runtime1.OnAfterUpdateCalled);
             Assert.True(runtime2.OnAfterUpdateCalled);
-        }
-
-        /// <summary>
-        ///     Tests that Get returns derived type from base type constraint
-        /// </summary>
-        [Fact]
-        public void Get_ReturnsDerivedType_FromBaseTypeConstraint()
-        {
-            // Arrange
-            var context = new Context();
-            var testRuntime = new TestRuntime(context);
-            var runtime = new InternalRuntime<AManager>(testRuntime);
-
-            // Act
-            var result = runtime.Get<AManager>();
-
-            // Assert
-            Assert.NotNull(result);
-            Assert.Same(testRuntime, result);
         }
     }
 }

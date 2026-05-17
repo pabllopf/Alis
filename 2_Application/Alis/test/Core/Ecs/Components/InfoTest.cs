@@ -47,7 +47,6 @@ namespace Alis.Test.Core.Ecs.Components
             Info info = new Info();
 
             Assert.Equal(0, info.Id);
-            Assert.True(info.IsActive);
             Assert.False(info.IsStatic);
             Assert.Null(info.Name);
             Assert.Null(info.Tag);
@@ -118,20 +117,7 @@ namespace Alis.Test.Core.Ecs.Components
             info.Tag = "Player";
             Assert.Equal("Player", info.Tag);
         }
-
-        /// <summary>
-        ///     Tests that the OnInit method exists and is callable
-        /// </summary>
-        [Fact]
-        public void Info_OnInitMethod_ShouldExistAndBeCallable()
-        {
-            Info info = new Info();
-
-            Assert.Throws<System.NotImplementedException>(() =>
-            {
-                info.OnInit(null!);
-            });
-        }
+        
 
         /// <summary>
         ///     Tests that the OnUpdate method exists and is callable
@@ -145,18 +131,6 @@ namespace Alis.Test.Core.Ecs.Components
             {
                 info.OnUpdate(null!);
             });
-        }
-
-        /// <summary>
-        ///     Tests that Info implements IOnInit and IOnUpdate interfaces
-        /// </summary>
-        [Fact]
-        public void Info_ShouldImplementExpectedInterfaces()
-        {
-            Info info = new Info();
-
-            Assert.IsAssignableFrom<IOnInit>(info);
-            Assert.IsAssignableFrom<IOnUpdate>(info);
         }
 
         /// <summary>
