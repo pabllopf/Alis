@@ -135,7 +135,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// </summary>
         /// <param name="pixels">2 dimensions array containing the pixels</param>
         /// <exception cref="LoadingFailedException" />
-        public Image(Color[,] pixels) :
+        private Image(Color[,] pixels) :
             base(IntPtr.Zero)
         {
             uint width = (uint) pixels.GetLength(0);

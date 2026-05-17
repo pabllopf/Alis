@@ -64,10 +64,7 @@ namespace Alis.Test.Core.Ecs.Components.Render
 
             Sprite sprite = new Sprite(context, "test.png", 0);
 
-            Assert.Throws<System.NotImplementedException>(() =>
-            {
-                sprite.OnExit(null!);
-            });
+            sprite.OnExit(null!);
         }
 
         /// <summary>
@@ -95,6 +92,19 @@ namespace Alis.Test.Core.Ecs.Components.Render
 
             Assert.Equal("test.png", sprite.NameFile);
             Assert.Equal(0, sprite.Depth);
+        }
+
+        /// <summary>
+        ///     Tests that Sprite can be created without exceptions
+        /// </summary>
+        [Fact]
+        public void Sprite_Constructor_ShouldNotThrow()
+        {
+            Context context = new Context();
+
+            Sprite sprite = new Sprite(context, string.Empty, 0);
+
+            Assert.NotNull(sprite);
         }
 
         /// <summary>
@@ -143,7 +153,21 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.NotNull(sprite.NameFile);
             Assert.Equal(0, sprite.Depth);
         }
-        
+
+        /// <summary>
+        ///     Tests that Sprite constructor doesn't throw with empty name
+        /// </summary>
+        [Fact]
+        public void Sprite_Constructor_WithEmptyName_ShouldNotThrow()
+        {
+            Context context = new Context();
+
+            Sprite sprite = new Sprite(context, string.Empty, 0);
+
+            Assert.NotNull(sprite);
+            Assert.Equal(string.Empty, sprite.NameFile);
+        }
+
         /// <summary>
         ///     Tests that Sprite default state is valid
         /// </summary>

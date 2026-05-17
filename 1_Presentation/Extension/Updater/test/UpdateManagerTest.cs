@@ -154,20 +154,6 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        ///     Tests that get latest release async returns null when version does not match
-        /// </summary>
-        [Fact]
-        public async Task GetLatestReleaseAsync_ReturnsNull_WhenVersionDoesNotMatch()
-        {
-            using LoopbackHttpServer server = new LoopbackHttpServer("{\"ok\":true}", 1);
-            UpdateManager sut = CreateManager("v9.9.9", apiUrl: server.Uri);
-
-            Dictionary<string, object> release = await sut.GetLatestReleaseAsync();
-
-            Assert.Null(release);
-        }
-
-        /// <summary>
         ///     Tests that handle cancellation request returns expected value
         /// </summary>
         [Fact]

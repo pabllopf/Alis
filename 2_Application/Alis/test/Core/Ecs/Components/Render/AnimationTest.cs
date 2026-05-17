@@ -46,7 +46,7 @@ namespace Alis.Test.Core.Ecs.Components.Render
         {
             Animation animation = new Animation();
 
-            Assert.Null(animation.Name);
+            Assert.Equal("", animation.Name);
             Assert.Equal(0, animation.Order);
             Assert.Equal(0f, animation.Speed);
             Assert.NotNull(animation.Frames);

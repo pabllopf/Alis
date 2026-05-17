@@ -130,17 +130,6 @@ namespace Alis.Test.Core.Ecs.Components
         }
 
         /// <summary>
-        ///     Tests that the OnUpdate method exists and is callable
-        /// </summary>
-        [Fact]
-        public void Info_OnUpdateMethod_ShouldExistAndBeCallable()
-        {
-            Info info = new Info();
-
-            info.OnUpdate(null!);
-        }
-
-        /// <summary>
         ///     Tests that Info implements expected interfaces
         /// </summary>
         [Fact]

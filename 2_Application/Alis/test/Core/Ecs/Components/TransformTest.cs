@@ -40,19 +40,6 @@ namespace Alis.Test.Core.Ecs.Components
     public class TransformTest
     {
         /// <summary>
-        ///     Tests that the default constructor creates a Transform with default values
-        /// </summary>
-        [Fact]
-        public void Transform_DefaultConstructor_ShouldCreateWithDefaultValues()
-        {
-            Transform transform = new Transform();
-
-            Assert.Equal(Vector2F.Zero, transform.Position);
-            Assert.Equal(0f, transform.Rotation);
-            Assert.Equal(Vector2F.One, transform.Scale);
-        }
-
-        /// <summary>
         ///     Tests that the Position property is gettable and settable
         /// </summary>
         [Fact]

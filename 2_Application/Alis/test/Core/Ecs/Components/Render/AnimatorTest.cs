@@ -82,7 +82,32 @@ namespace Alis.Test.Core.Ecs.Components.Render
             animator.CurrentFrameIndex = 3;
             Assert.Equal(3, animator.CurrentFrameIndex);
         }
-        
+
+        /// <summary>
+        ///     Tests that Animator methods are callable
+        /// </summary>
+        [Fact]
+        public void Animator_Methods_ShouldBeCallable()
+        {
+            Animator animator = new Animator();
+
+            animator.AddAnimation(new Animation("test", 0, 1f));
+            animator.Play("test");
+            animator.NextFrame();
+            animator.GetCurrentFrame();
+        }
+
+        /// <summary>
+        ///     Tests that Animator can be created without exceptions
+        /// </summary>
+        [Fact]
+        public void Animator_Constructor_ShouldNotThrow()
+        {
+            Animator animator = new Animator();
+
+            Assert.NotNull(animator);
+        }
+
         /// <summary>
         ///     Tests that Animator properties can be modified
         /// </summary>
