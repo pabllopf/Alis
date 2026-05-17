@@ -33,24 +33,23 @@ using BenchmarkDotNet.Attributes;
 namespace Alis.Benchmark.CustomCollections.Lists
 {
     /// <summary>
-    ///     The native array unsafe vs native array safe class
+    ///     Benchmarks operations on <see cref="List{T}"/> including iteration, add, remove, clear, contains, indexof, and insert.
     /// </summary>
     [Config(typeof(CustomConfig))]
     public class ListsBenchmarks
     {
         /// <summary>
-        ///     The array size
+        ///     The array size parameter for benchmark iterations.
         /// </summary>
         [Params(10)] public int ArraySize;
 
         /// <summary>
-        ///     The NORMAL stack
+        ///     The managed list used for benchmarking.
         /// </summary>
         private List<int> fastList;
 
-        // Inicialización
         /// <summary>
-        ///     Setup this instance
+        ///     Initializes the list with benchmark array size elements.
         /// </summary>
         [GlobalSetup]
         public void Setup()
@@ -139,9 +138,8 @@ namespace Alis.Benchmark.CustomCollections.Lists
                 _ = fastList.IndexOf(i);
             }
         }
-
         /// <summary>
-        ///     Fastests the list insert
+        ///     Benchmarks inserting elements into <see cref="List{T}"/> at specific indices.
         /// </summary>
         [Benchmark(Description = "[NORMAL] Insert List")]
         public void Fastest_List_Insert()

@@ -112,19 +112,7 @@ namespace Alis.Benchmark.CustomCollections.Arrays
                 fastestArray[i] = i;
             }
         }
-
-        /// <summary>
-        ///     Benchmarks sequential write iteration over <see cref="NativeArray{T}"/>.
-        /// </summary>
-        [Benchmark(Description = "[SAFE] Iteration over NativeArray")]
-        public void BenchmarkNativeArray()
-
-        /// <summary>
-        ///     Benchmarks sequential write iteration over <see cref="FastestArray{T}"/>.
-        /// </summary>
-        [Benchmark(Description = "[FASTEST] Iteration over FastestArray")]
-        public void BenchmarkFastestArray()
-
+        
         /// <summary>
         ///     Benchmarks sequential write iteration over <see cref="FastArraySafe{T}"/>.
         /// </summary>
@@ -156,17 +144,7 @@ namespace Alis.Benchmark.CustomCollections.Arrays
             fastestArray.Resize(ArraySize * 2);
         }
 
-        /// <summary>
-        ///     Benchmarks resizing <see cref="NativeArray{T}"/> to double the array size.
-        /// </summary>
-        [Benchmark(Description = "[SAFE] Resize NativeArray")]
-        public void BenchmarkResizeNativeArray()
-
-        /// <summary>
-        ///     Benchmarks resizing <see cref="FastestArray{T}"/> to double the array size.
-        /// </summary>
-        [Benchmark(Description = "[FASTEST] Resize FastestArray")]
-        public void BenchmarkResizeFastestArray()
+      
 
         /// <summary>
         ///     Benchmarks resizing <see cref="FastArraySafe{T}"/> to double the array size.
@@ -202,17 +180,8 @@ namespace Alis.Benchmark.CustomCollections.Arrays
             }
         }
 
-        /// <summary>
-        ///     Benchmarks element assignment over <see cref="NativeArray{T}"/>.
-        /// </summary>
-        [Benchmark(Description = "[SAFE] Assignment NativeArray")]
-        public void BenchmarkNativeArray_Assignment()
 
-        /// <summary>
-        ///     Benchmarks element assignment over <see cref="FastestArray{T}"/>.
-        /// </summary>
-        [Benchmark(Description = "[FASTEST] Assignment FastestArray")]
-        public void BenchmarkFastestArray_Assignment()
+
 
         /// <summary>
         ///     Benchmarks element assignment over <see cref="FastArraySafe{T}"/>.
@@ -250,18 +219,6 @@ namespace Alis.Benchmark.CustomCollections.Arrays
                 int value = fastestArray[i];
             }
         }
-
-        /// <summary>
-        ///     Benchmarks sequential read access over <see cref="NativeArray{T}"/>.
-        /// </summary>
-        [Benchmark(Description = "[SAFE] Sequential Access NativeArray")]
-        public void BenchmarkNativeArray_SequentialAccess()
-
-        /// <summary>
-        ///     Benchmarks sequential read access over <see cref="FastestArray{T}"/>.
-        /// </summary>
-        [Benchmark(Description = "[FASTEST] Sequential Access FastestArray")]
-        public void BenchmarkFastestArray_SequentialAccess()
 
         /// <summary>
         ///     Benchmarks sequential read access over <see cref="FastArraySafe{T}"/>.
@@ -302,17 +259,7 @@ namespace Alis.Benchmark.CustomCollections.Arrays
             }
         }
 
-        /// <summary>
-        ///     Benchmarks random read access over <see cref="NativeArray{T}"/>.
-        /// </summary>
-        [Benchmark(Description = "[SAFE] Random Access NativeArray")]
-        public void BenchmarkNativeArray_RandomAccess()
-
-        /// <summary>
-        ///     Benchmarks random read access over <see cref="FastestArray{T}"/>.
-        /// </summary>
-        [Benchmark(Description = "[FASTEST] Random Access FastestArray")]
-        public void BenchmarkFastestArray_RandomAccess()
+    
 
         /// <summary>
         ///     Benchmarks random read access over <see cref="FastArraySafe{T}"/>.
@@ -346,17 +293,7 @@ namespace Alis.Benchmark.CustomCollections.Arrays
             fastestArray.Dispose();
         }
 
-        /// <summary>
-        ///     Benchmarks disposal of <see cref="NativeArray{T}"/>.
-        /// </summary>
-        [Benchmark(Description = "[SAFE] Dispose NativeArray")]
-        public void BenchmarkDisposeNativeArray()
-
-        /// <summary>
-        ///     Benchmarks disposal of <see cref="FastestArray{T}"/>.
-        /// </summary>
-        [Benchmark(Description = "[FASTEST] Dispose FastestArray")]
-        public void BenchmarkDisposeFastestArray()
+   
 
         /// <summary>
         ///     Benchmarks disposal of <see cref="FastArraySafe{T}"/>.
