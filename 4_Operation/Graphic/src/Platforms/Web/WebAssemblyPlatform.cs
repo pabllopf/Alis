@@ -350,13 +350,8 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         private void OnKeyDown(int keyCode, int location)
         {
-            ConsoleKey key = ConvertKeyCode(keyCode, location);
-            if (!_keyStates.ContainsKey(key))
-            {
-                _keyStates[key] = true;
-                _keyPressedQueue.Enqueue(key);
-            }
-            else if (!_keyStates[key])
+            ConsoleKey key = ConvertKeyCode(keyCode);
+            if (!_keyStates.TryGetValue(key, out bool isDown) || !isDown)
             {
                 _keyStates[key] = true;
                 _keyPressedQueue.Enqueue(key);
@@ -368,7 +363,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         private void OnKeyUp(int keyCode, int location)
         {
-            ConsoleKey key = ConvertKeyCode(keyCode, location);
+            ConsoleKey key = ConvertKeyCode(keyCode);
             if (_keyStates.ContainsKey(key))
             {
                 _keyStates[key] = false;
@@ -484,7 +479,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Converts JavaScript key codes to ConsoleKey values
         /// </summary>
-        private ConsoleKey ConvertKeyCode(int keyCode, int location)
+        private ConsoleKey ConvertKeyCode(int keyCode)
         {
             return keyCode switch
             {

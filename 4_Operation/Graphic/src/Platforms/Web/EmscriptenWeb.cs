@@ -207,7 +207,7 @@ namespace Alis.Core.Graphic.Platforms.Web
                 IntPtr nativeArray = GetConnectedGamepadsNative();
                 if (nativeArray == IntPtr.Zero)
                 {
-                    return null;
+                    return Array.Empty<int>();
                 }
 
                 int length = GetArrayLength(nativeArray);
@@ -223,7 +223,7 @@ namespace Alis.Core.Graphic.Platforms.Web
             }
             catch
             {
-                return null;
+                return Array.Empty<int>();
             }
         }
 
@@ -237,7 +237,7 @@ namespace Alis.Core.Graphic.Platforms.Web
                 IntPtr nativeArray = GetGamepadAxesNative(gamepadIndex);
                 if (nativeArray == IntPtr.Zero)
                 {
-                    return null;
+                    return Array.Empty<float>();
                 }
 
                 int length = GetArrayLength(nativeArray);
@@ -253,7 +253,7 @@ namespace Alis.Core.Graphic.Platforms.Web
             }
             catch
             {
-                return null;
+                return Array.Empty<float>();
             }
         }
 
@@ -267,7 +267,7 @@ namespace Alis.Core.Graphic.Platforms.Web
                 IntPtr nativeArray = GetGamepadButtonsNative(gamepadIndex);
                 if (nativeArray == IntPtr.Zero)
                 {
-                    return null;
+                    return Array.Empty<bool>();
                 }
 
                 int length = GetArrayLength(nativeArray);
@@ -283,7 +283,7 @@ namespace Alis.Core.Graphic.Platforms.Web
             }
             catch
             {
-                return null;
+                return Array.Empty<bool>();
             }
         }
 
