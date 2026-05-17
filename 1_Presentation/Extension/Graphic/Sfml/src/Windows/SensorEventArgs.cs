@@ -37,16 +37,52 @@ namespace Alis.Extension.Graphic.Sfml.Windows
     public class SensorEventArgs : EventArgs
     {
         /// <summary>Type of the sensor</summary>
-        public Sensor.Type Type;
+        private Sensor.Type type;
 
         /// <summary>Current value of the sensor on X axis</summary>
-        public float X;
+        private float x;
 
         /// <summary>Current value of the sensor on Y axis</summary>
-        public float Y;
+        private float y;
 
         /// <summary>Current value of the sensor on Z axis</summary>
-        public float Z;
+        private float z;
+
+        /// <summary>
+        ///     Gets or sets the type of the sensor
+        /// </summary>
+        public Sensor.Type Type
+        {
+            get => type;
+            set => type = value;
+        }
+
+        /// <summary>
+        ///     Gets or sets the current value of the sensor on X axis
+        /// </summary>
+        public float X
+        {
+            get => x;
+            set => x = value;
+        }
+
+        /// <summary>
+        ///     Gets or sets the current value of the sensor on Y axis
+        /// </summary>
+        public float Y
+        {
+            get => y;
+            set => y = value;
+        }
+
+        /// <summary>
+        ///     Gets or sets the current value of the sensor on Z axis
+        /// </summary>
+        public float Z
+        {
+            get => z;
+            set => z = value;
+        }
 
         /// <summary>
         ///     Construct the sensor arguments from a sensor event

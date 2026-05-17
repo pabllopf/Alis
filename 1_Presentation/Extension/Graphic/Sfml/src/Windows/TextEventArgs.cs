@@ -37,7 +37,16 @@ namespace Alis.Extension.Graphic.Sfml.Windows
     public class TextEventArgs : EventArgs
     {
         /// <summary>UTF-16 value of the character</summary>
-        public string Unicode;
+        private string unicode;
+
+        /// <summary>
+        ///     Gets or sets the UTF-16 value of the character
+        /// </summary>
+        public string Unicode
+        {
+            get => unicode;
+            set => unicode = value;
+        }
 
         /// <summary>
         ///     Construct the text arguments from a text event

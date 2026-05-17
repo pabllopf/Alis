@@ -37,19 +37,64 @@ namespace Alis.Extension.Graphic.Sfml.Windows
     public class KeyEventArgs : EventArgs
     {
         /// <summary>Is the Alt modifier pressed?</summary>
-        public bool Alt;
+        private bool alt;
 
         /// <summary>Code of the key (see KeyCode enum)</summary>
-        public Keyboard.Key Code;
+        private Keyboard.Key code;
 
         /// <summary>Is the Control modifier pressed?</summary>
-        public bool Control;
+        private bool control;
 
         /// <summary>Is the Shift modifier pressed?</summary>
-        public bool Shift;
+        private bool shift;
 
         /// <summary>Is the System modifier pressed?</summary>
-        public bool System;
+        private bool system;
+
+        /// <summary>
+        ///     Gets or sets whether the Alt modifier is pressed
+        /// </summary>
+        public bool Alt
+        {
+            get => alt;
+            set => alt = value;
+        }
+
+        /// <summary>
+        ///     Gets or sets the code of the key (see KeyCode enum)
+        /// </summary>
+        public Keyboard.Key Code
+        {
+            get => code;
+            set => code = value;
+        }
+
+        /// <summary>
+        ///     Gets or sets whether the Control modifier is pressed
+        /// </summary>
+        public bool Control
+        {
+            get => control;
+            set => control = value;
+        }
+
+        /// <summary>
+        ///     Gets or sets whether the Shift modifier is pressed
+        /// </summary>
+        public bool Shift
+        {
+            get => shift;
+            set => shift = value;
+        }
+
+        /// <summary>
+        ///     Gets or sets whether the System modifier is pressed
+        /// </summary>
+        public bool System
+        {
+            get => system;
+            set => system = value;
+        }
 
         /// <summary>
         ///     Construct the key arguments from a key event

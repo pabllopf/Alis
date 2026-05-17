@@ -111,16 +111,52 @@ namespace Alis.Extension.Graphic.Sfml.Render
         public static RenderStates Default => new RenderStates(BlendMode.Alpha, Transform.Identity, null, null);
 
         /// <summary>Blending mode</summary>
-        public BlendMode BlendMode;
+        private BlendMode blendMode;
 
         /// <summary>Transform</summary>
-        public Transform Transform;
+        private Transform transform;
 
         /// <summary>Texture</summary>
-        public Texture Texture;
+        private Texture texture;
 
         /// <summary>Shader</summary>
-        public Shader Shader;
+        private Shader shader;
+
+        /// <summary>
+        ///     Gets or sets the blending mode
+        /// </summary>
+        public BlendMode BlendMode
+        {
+            get => blendMode;
+            set => blendMode = value;
+        }
+
+        /// <summary>
+        ///     Gets or sets the transform
+        /// </summary>
+        public Transform Transform
+        {
+            get => transform;
+            set => transform = value;
+        }
+
+        /// <summary>
+        ///     Gets or sets the texture
+        /// </summary>
+        public Texture Texture
+        {
+            get => texture;
+            set => texture = value;
+        }
+
+        /// <summary>
+        ///     Gets or sets the shader
+        /// </summary>
+        public Shader Shader
+        {
+            get => shader;
+            set => shader = value;
+        }
 
         // Return a marshalled version of the instance, that can directly be passed to the C API
         /// <summary>

@@ -37,13 +37,40 @@ namespace Alis.Extension.Graphic.Sfml.Windows
     public class JoystickMoveEventArgs : EventArgs
     {
         /// <summary>Joystick axis (see JoyAxis enum)</summary>
-        public Joystick.Axis Axis;
+        private Joystick.Axis axis;
 
         /// <summary>Index of the joystick which triggered the event</summary>
-        public uint JoystickId;
+        private uint joystickId;
 
         /// <summary>Current position of the axis</summary>
-        public float Position;
+        private float position;
+
+        /// <summary>
+        ///     Gets or sets the joystick axis (see JoyAxis enum)
+        /// </summary>
+        public Joystick.Axis Axis
+        {
+            get => axis;
+            set => axis = value;
+        }
+
+        /// <summary>
+        ///     Gets or sets the index of the joystick which triggered the event
+        /// </summary>
+        public uint JoystickId
+        {
+            get => joystickId;
+            set => joystickId = value;
+        }
+
+        /// <summary>
+        ///     Gets or sets the current position of the axis
+        /// </summary>
+        public float Position
+        {
+            get => position;
+            set => position = value;
+        }
 
         /// <summary>
         ///     Construct the joystick move arguments from a joystick move event

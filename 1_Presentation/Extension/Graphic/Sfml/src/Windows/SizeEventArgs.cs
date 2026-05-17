@@ -37,10 +37,28 @@ namespace Alis.Extension.Graphic.Sfml.Windows
     public class SizeEventArgs : EventArgs
     {
         /// <summary>New height of the window</summary>
-        public uint Height;
+        private uint height;
 
         /// <summary>New width of the window</summary>
-        public uint Width;
+        private uint width;
+
+        /// <summary>
+        ///     Gets or sets the new height of the window
+        /// </summary>
+        public uint Height
+        {
+            get => height;
+            set => height = value;
+        }
+
+        /// <summary>
+        ///     Gets or sets the new width of the window
+        /// </summary>
+        public uint Width
+        {
+            get => width;
+            set => width = value;
+        }
 
         /// <summary>
         ///     Construct the size arguments from a size event

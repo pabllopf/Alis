@@ -119,6 +119,15 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     The colors
         /// </summary>
-        public uint[] Colors;
+        private uint[] colors;
+
+        /// <summary>
+        ///     Gets or sets the colors
+        /// </summary>
+        public uint[] Colors
+        {
+            get => colors;
+            set => colors = value;
+        }
     }
 }

@@ -67,7 +67,16 @@ namespace Alis.Extension.Graphic.Ui
         ///     The data type
         /// </summary>
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 33)]
-        public byte[] DataType;
+        private byte[] dataType;
+
+        /// <summary>
+        ///     Gets or sets the data type
+        /// </summary>
+        public byte[] DataType
+        {
+            get => dataType;
+            set => dataType = value;
+        }
 
         /// <summary>
         ///     The preview

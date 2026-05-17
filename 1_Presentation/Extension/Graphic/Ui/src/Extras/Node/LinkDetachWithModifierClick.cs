@@ -37,6 +37,15 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         /// <summary>
         ///     The modifier
         /// </summary>
-        public byte[] Modifier;
+        private byte[] modifier;
+
+        /// <summary>
+        ///     Gets or sets the modifier
+        /// </summary>
+        public byte[] Modifier
+        {
+            get => modifier;
+            set => modifier = value;
+        }
     }
 }
