@@ -30,25 +30,25 @@
 namespace Alis.Benchmark.ClassVsStruct.Instancies
 {
     /// <summary>
-    ///     The struct point
+    ///     Represents a point as a value-type struct with X and Y coordinates.
     /// </summary>
     public struct StructPoint
     {
         /// <summary>
-        ///     Gets the value of the x
+        ///     Gets the X coordinate.
         /// </summary>
         public int X { get; }
 
         /// <summary>
-        ///     Gets the value of the y
+        ///     Gets the Y coordinate.
         /// </summary>
         public int Y { get; }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="StructPoint" /> class
+        ///     Initializes a new instance of the <see cref="StructPoint" /> struct.
         /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="x">The X coordinate.</param>
+        /// <param name="y">The Y coordinate.</param>
         public StructPoint(int x, int y) => (X, Y) = (x, y);
     }
 }

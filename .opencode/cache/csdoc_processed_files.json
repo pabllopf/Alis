@@ -46,5 +46,17 @@
   "/Users/pabllopf/repositorios/Alis/1_Presentation/Benchmark/src/ClassVsStruct/Instancies/RecordPoint.cs": {
     "status": "documented",
     "timestamp": "2026-05-17T10:53:32.990911+00:00"
+  },
+  "/Users/pabllopf/repositorios/Alis/1_Presentation/Benchmark/src/ClassVsStruct/Instancies/SealedClassPoint.cs": {
+    "status": "documented",
+    "timestamp": "2026-05-17T10:54:05.932441+00:00"
+  },
+  "/Users/pabllopf/repositorios/Alis/1_Presentation/Benchmark/src/ClassVsStruct/Instancies/StructPoint.cs": {
+    "status": "documented",
+    "timestamp": "2026-05-17T10:54:47.629664+00:00"
+  },
+  "/Users/pabllopf/repositorios/Alis/1_Presentation/Benchmark/src/ClassVsStruct/Instancies/StructRefPoint.cs": {
+    "status": "documented",
+    "timestamp": "2026-05-17T10:55:46.952756+00:00"
   }
 }
