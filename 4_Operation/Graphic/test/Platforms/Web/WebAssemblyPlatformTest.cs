@@ -6,13 +6,10 @@ using Xunit;
 namespace Alis.Core.Graphic.Test.Platforms.Web
 {
     /// <summary>
-    ///     Tests for WebAssemblyPlatform state and input handling behavior.
+    ///     Tests for WebAssemblyPlatform state, input handling, and window management.
     /// </summary>
     public class WebAssemblyPlatformTest
     {
-        /// <summary>
-        ///     Validates the default state on construction.
-        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_DefaultState_IsConsistent()
         {
@@ -35,9 +32,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             }
         }
 
-        /// <summary>
-        ///     Validates that key events update the internal state and queue.
-        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_KeyEvents_UpdateStateAndQueue()
         {
@@ -54,9 +48,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(platform.IsKeyDown(ConsoleKey.A));
         }
 
-        /// <summary>
-        ///     Validates that character input is accumulated and cleared.
-        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_CharInput_CollectsAndClears()
         {
@@ -69,9 +60,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(platform.TryGetLastInputCharacters(out string _));
         }
 
-        /// <summary>
-        ///     Validates mouse movement and button state updates.
-        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_MouseEvents_UpdateCoordinatesAndButtons()
         {
@@ -91,12 +79,646 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(buttons[1]);
         }
 
-        /// <summary>
-        /// Invokes the private using the specified instance
-        /// </summary>
-        /// <param name="instance">The instance</param>
-        /// <param name="methodName">The method name</param>
-        /// <param name="arguments">The arguments</param>
+        [Fact]
+        public void WebAssemblyPlatform_GetMousePositionInView_ReturnsDefaultCoords()
+        {
+            var platform = new WebAssemblyPlatform();
+            platform.GetMousePositionInView(out float x, out float y);
+            Assert.Equal(0, x);
+            Assert.Equal(0, y);
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_TryGetGamepadState_NoGamepads_ReturnsFalse()
+        {
+            var platform = new WebAssemblyPlatform();
+            bool result = platform.TryGetGamepadState(0, out var state);
+            Assert.False(result);
+            Assert.Null(state);
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_GetConnectedGamepadIndices_Empty_ReturnsEmptyArray()
+        {
+            var platform = new WebAssemblyPlatform();
+            int[] indices = platform.GetConnectedGamepadIndices();
+            Assert.NotNull(indices);
+            Assert.Empty(indices);
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_GetProcAddress_CallsInterop()
+        {
+            var platform = new WebAssemblyPlatform();
+            Assert.ThrowsAny<Exception>(() => platform.GetProcAddress("glClearColor"));
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_ShowWindow_SetsVisible()
+        {
+            var platform = new WebAssemblyPlatform();
+            if (OperatingSystem.IsBrowser())
+            {
+                platform.ShowWindow();
+                Assert.True(platform.IsWindowVisible());
+            }
+            else
+            {
+                Assert.ThrowsAny<Exception>(() => platform.ShowWindow());
+            }
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_HideWindow_ClearsVisible()
+        {
+            var platform = new WebAssemblyPlatform();
+            if (OperatingSystem.IsBrowser())
+            {
+                platform.ShowWindow();
+                platform.HideWindow();
+                Assert.False(platform.IsWindowVisible());
+            }
+            else
+            {
+                Assert.ThrowsAny<Exception>(() => platform.ShowWindow());
+            }
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_SetTitle_ThrowsOnNonBrowser()
+        {
+            var platform = new WebAssemblyPlatform();
+            if (!OperatingSystem.IsBrowser())
+            {
+                Assert.ThrowsAny<Exception>(() => platform.SetTitle("New Title"));
+            }
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_SetSize_ThrowsOnNonBrowser()
+        {
+            var platform = new WebAssemblyPlatform();
+            if (!OperatingSystem.IsBrowser())
+            {
+                Assert.ThrowsAny<Exception>(() => platform.SetSize(1024, 768));
+            }
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_SetWindowIcon_DoesNotThrow()
+        {
+            var platform = new WebAssemblyPlatform();
+            platform.SetWindowIcon("/icon.png");
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_PollEvents_ResetsWheelDelta()
+        {
+            var platform = new WebAssemblyPlatform();
+            InvokePrivate(platform, "OnMouseWheel", 0, 5);
+            Assert.Equal(5.0f, platform.GetMouseWheel());
+
+            platform.PollEvents();
+
+            Assert.Equal(0.0f, platform.GetMouseWheel());
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_PollEvents_ReturnsTrueWhenNotClosing()
+        {
+            var platform = new WebAssemblyPlatform();
+            bool result = platform.PollEvents();
+            Assert.True(result);
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_Cleanup_NotInitialized_DoesNothing()
+        {
+            var platform = new WebAssemblyPlatform();
+            platform.Cleanup();
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_Cleanup_NotInitialized_DoesNotClearState()
+        {
+            var platform = new WebAssemblyPlatform();
+            InvokePrivate(platform, "OnKeyDown", 65, 0);
+            InvokePrivate(platform, "OnCharInput", (uint)'B');
+
+            platform.Cleanup();
+
+            Assert.True(platform.IsKeyDown(ConsoleKey.A));
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_Initialize_WhenAlreadyInitialized_ReturnsTrue()
+        {
+            var platform = new WebAssemblyPlatform();
+            platform.Initialize(800, 600, "Test");
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_MakeContextCurrent_WithZeroHandles_DoesNotThrow()
+        {
+            var platform = new WebAssemblyPlatform();
+            platform.MakeContextCurrent();
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_SwapBuffers_WithZeroHandles_DoesNotThrow()
+        {
+            var platform = new WebAssemblyPlatform();
+            platform.SwapBuffers();
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_TryGetLastKeyPressed_EmptyQueue_ReturnsFalse()
+        {
+            var platform = new WebAssemblyPlatform();
+            bool result = platform.TryGetLastKeyPressed(out ConsoleKey key);
+            Assert.False(result);
+            Assert.Equal(ConsoleKey.NoName, key);
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_IsKeyDown_UnknownKey_ReturnsFalse()
+        {
+            var platform = new WebAssemblyPlatform();
+            Assert.False(platform.IsKeyDown(ConsoleKey.F24));
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_TryGetLastInputCharacters_Empty_ReturnsFalse()
+        {
+            var platform = new WebAssemblyPlatform();
+            bool result = platform.TryGetLastInputCharacters(out string chars);
+            Assert.False(result);
+            Assert.Equal(string.Empty, chars);
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_OnMouseWheel_SetsDelta()
+        {
+            var platform = new WebAssemblyPlatform();
+            InvokePrivate(platform, "OnMouseWheel", 0, -3);
+            Assert.Equal(-3.0f, platform.GetMouseWheel());
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_OnMouseWheel_PositiveDelta()
+        {
+            var platform = new WebAssemblyPlatform();
+            InvokePrivate(platform, "OnMouseWheel", 0, 10);
+            Assert.Equal(10.0f, platform.GetMouseWheel());
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_OnMouseDown_BoundaryButton0_Works()
+        {
+            var platform = new WebAssemblyPlatform();
+            InvokePrivate(platform, "OnMouseDown", 0, 0, 0, 50, 60);
+            platform.GetMouseState(out int x, out int y, out bool[] buttons);
+            Assert.True(buttons[0]);
+            Assert.Equal(50, x);
+            Assert.Equal(60, y);
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_OnMouseDown_BoundaryButton4_Works()
+        {
+            var platform = new WebAssemblyPlatform();
+            InvokePrivate(platform, "OnMouseDown", 4, 0, 0, 10, 20);
+            platform.GetMouseState(out int x, out int y, out bool[] buttons);
+            Assert.True(buttons[4]);
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_OnMouseDown_OutOfBoundsButton_Ignored()
+        {
+            var platform = new WebAssemblyPlatform();
+            InvokePrivate(platform, "OnMouseDown", 5, 0, 0, 10, 20);
+            platform.GetMouseState(out int x, out int y, out bool[] buttons);
+            Assert.False(buttons[0]);
+            Assert.False(buttons[1]);
+            Assert.False(buttons[2]);
+            Assert.False(buttons[3]);
+            Assert.False(buttons[4]);
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_OnMouseDown_NegativeButton_Ignored()
+        {
+            var platform = new WebAssemblyPlatform();
+            InvokePrivate(platform, "OnMouseDown", -1, 0, 0, 10, 20);
+            platform.GetMouseState(out int x, out int y, out bool[] buttons);
+            Assert.False(buttons[0]);
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_OnMouseUp_OutOfBoundsButton_Ignored()
+        {
+            var platform = new WebAssemblyPlatform();
+            InvokePrivate(platform, "OnMouseUp", 10, 0, 0, 0, 0);
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_OnWindowResize_UpdatesDimensions()
+        {
+            var platform = new WebAssemblyPlatform();
+            InvokePrivate(platform, "OnWindowResize", 1920, 1080);
+            Assert.Equal(1920, platform.GetWindowWidth());
+            Assert.Equal(1080, platform.GetWindowHeight());
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_OnWindowClose_SetsShouldClose()
+        {
+            var platform = new WebAssemblyPlatform();
+            InvokePrivate(platform, "OnWindowClose");
+            bool result = platform.PollEvents();
+            Assert.False(result);
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_OnWindowFocus_True_SetsVisible()
+        {
+            var platform = new WebAssemblyPlatform();
+            InvokePrivate(platform, "OnWindowFocus", true);
+            Assert.True(platform.IsWindowVisible());
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_OnWindowFocus_False_ClearsVisible()
+        {
+            var platform = new WebAssemblyPlatform();
+            InvokePrivate(platform, "OnWindowFocus", false);
+            Assert.False(platform.IsWindowVisible());
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_OnGamepadConnect_CreatesState()
+        {
+            var platform = new WebAssemblyPlatform();
+            InvokePrivate(platform, "OnGamepadConnect", 0);
+            bool result = platform.TryGetGamepadState(0, out var state);
+            Assert.True(result);
+            Assert.True(state.Connected);
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_OnGamepadConnect_MultipleGamepads()
+        {
+            var platform = new WebAssemblyPlatform();
+            InvokePrivate(platform, "OnGamepadConnect", 0);
+            InvokePrivate(platform, "OnGamepadConnect", 1);
+            InvokePrivate(platform, "OnGamepadConnect", 2);
+
+            Assert.True(platform.TryGetGamepadState(0, out var s0) && s0.Connected);
+            Assert.True(platform.TryGetGamepadState(1, out var s1) && s1.Connected);
+            Assert.True(platform.TryGetGamepadState(2, out var s2) && s2.Connected);
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_OnGamepadDisconnect_SetsDisconnected()
+        {
+            var platform = new WebAssemblyPlatform();
+            InvokePrivate(platform, "OnGamepadConnect", 0);
+            InvokePrivate(platform, "OnGamepadDisconnect", 0);
+            bool result = platform.TryGetGamepadState(0, out var state);
+            Assert.True(result);
+            Assert.False(state.Connected);
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_OnGamepadDisconnect_NonExistent_DoesNotThrow()
+        {
+            var platform = new WebAssemblyPlatform();
+            InvokePrivate(platform, "OnGamepadDisconnect", 99);
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_GetConnectedGamepadIndices_ReturnsOnlyConnected()
+        {
+            var platform = new WebAssemblyPlatform();
+            InvokePrivate(platform, "OnGamepadConnect", 0);
+            InvokePrivate(platform, "OnGamepadConnect", 1);
+            InvokePrivate(platform, "OnGamepadDisconnect", 1);
+
+            int[] indices = platform.GetConnectedGamepadIndices();
+            Assert.Single(indices);
+            Assert.Contains(0, indices);
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_GetConnectedGamepadIndices_AllDisconnected_ReturnsEmpty()
+        {
+            var platform = new WebAssemblyPlatform();
+            InvokePrivate(platform, "OnGamepadConnect", 0);
+            InvokePrivate(platform, "OnGamepadDisconnect", 0);
+
+            int[] indices = platform.GetConnectedGamepadIndices();
+            Assert.Empty(indices);
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_OnCharInput_InvalidCharCode_DoesNotThrow()
+        {
+            var platform = new WebAssemblyPlatform();
+            InvokePrivate(platform, "OnCharInput", (uint)0x110000);
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_OnCharInput_MultipleCharacters_Accumulates()
+        {
+            var platform = new WebAssemblyPlatform();
+            InvokePrivate(platform, "OnCharInput", (uint)'H');
+            InvokePrivate(platform, "OnCharInput", (uint)'i');
+            InvokePrivate(platform, "OnCharInput", (uint)'!');
+
+            Assert.True(platform.TryGetLastInputCharacters(out string chars));
+            Assert.Equal("Hi!", chars);
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_OnKeyDown_SameKeyMultipleTimes_EnqueuesEachTime()
+        {
+            var platform = new WebAssemblyPlatform();
+            InvokePrivate(platform, "OnKeyDown", 65, 0);
+            InvokePrivate(platform, "OnKeyUp", 65, 0);
+            InvokePrivate(platform, "OnKeyDown", 65, 0);
+
+            Assert.True(platform.TryGetLastKeyPressed(out ConsoleKey key1));
+            Assert.Equal(ConsoleKey.A, key1);
+            Assert.True(platform.TryGetLastKeyPressed(out ConsoleKey key2));
+            Assert.Equal(ConsoleKey.A, key2);
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_OnKeyDown_RepeatedKey_DoesNotEnqueueWithoutRelease()
+        {
+            var platform = new WebAssemblyPlatform();
+
+            InvokePrivate(platform, "OnKeyDown", 65, 0);
+            Assert.True(platform.TryGetLastKeyPressed(out _));
+
+            InvokePrivate(platform, "OnKeyDown", 65, 0);
+
+            Assert.False(platform.TryGetLastKeyPressed(out _));
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_OnKeyDown_DifferentKeys_QueueOrderPreserved()
+        {
+            var platform = new WebAssemblyPlatform();
+
+            InvokePrivate(platform, "OnKeyDown", 65, 0);
+            InvokePrivate(platform, "OnKeyDown", 66, 0);
+            InvokePrivate(platform, "OnKeyDown", 67, 0);
+
+            Assert.True(platform.TryGetLastKeyPressed(out ConsoleKey k1));
+            Assert.True(platform.TryGetLastKeyPressed(out ConsoleKey k2));
+            Assert.True(platform.TryGetLastKeyPressed(out ConsoleKey k3));
+
+            Assert.Equal(ConsoleKey.A, k1);
+            Assert.Equal(ConsoleKey.B, k2);
+            Assert.Equal(ConsoleKey.C, k3);
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_OnKeyUp_KeyNotInStates_DoesNotThrow()
+        {
+            var platform = new WebAssemblyPlatform();
+            InvokePrivate(platform, "OnKeyUp", 65, 0);
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_OnMouseMove_UpdatesClientCoords()
+        {
+            var platform = new WebAssemblyPlatform();
+            InvokePrivate(platform, "OnMouseMove", 100, 200, 300, 400);
+            platform.GetMouseState(out int x, out int y, out _);
+            Assert.Equal(300, x);
+            Assert.Equal(400, y);
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_OnMouseDown_UpdatesCoordsAndButton()
+        {
+            var platform = new WebAssemblyPlatform();
+            InvokePrivate(platform, "OnMouseDown", 0, 50, 60, 70, 80);
+            platform.GetMouseState(out int x, out int y, out bool[] buttons);
+            Assert.True(buttons[0]);
+            Assert.Equal(70, x);
+            Assert.Equal(80, y);
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_OnMouseUp_UpdatesCoordsAndReleasesButton()
+        {
+            var platform = new WebAssemblyPlatform();
+            InvokePrivate(platform, "OnMouseDown", 0, 0, 0, 10, 20);
+            InvokePrivate(platform, "OnMouseUp", 0, 0, 0, 30, 40);
+            platform.GetMouseState(out int x, out int y, out bool[] buttons);
+            Assert.False(buttons[0]);
+            Assert.Equal(30, x);
+            Assert.Equal(40, y);
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_OnMouseWheel_NegativeDelta()
+        {
+            var platform = new WebAssemblyPlatform();
+            InvokePrivate(platform, "OnMouseWheel", 0, -10);
+            Assert.Equal(-10.0f, platform.GetMouseWheel());
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_OnMouseWheel_ZeroDelta()
+        {
+            var platform = new WebAssemblyPlatform();
+            InvokePrivate(platform, "OnMouseWheel", 0, 0);
+            Assert.Equal(0.0f, platform.GetMouseWheel());
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_OnGamepadConnect_SameIndexTwice_DoesNotDuplicate()
+        {
+            var platform = new WebAssemblyPlatform();
+            InvokePrivate(platform, "OnGamepadConnect", 0);
+            InvokePrivate(platform, "OnGamepadConnect", 0);
+            int[] indices = platform.GetConnectedGamepadIndices();
+            Assert.Single(indices);
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_OnWindowResize_SameSize_Works()
+        {
+            var platform = new WebAssemblyPlatform();
+            InvokePrivate(platform, "OnWindowResize", 800, 600);
+            Assert.Equal(800, platform.GetWindowWidth());
+            Assert.Equal(600, platform.GetWindowHeight());
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_OnWindowResize_ZeroSize_Works()
+        {
+            var platform = new WebAssemblyPlatform();
+            InvokePrivate(platform, "OnWindowResize", 0, 0);
+            Assert.Equal(0, platform.GetWindowWidth());
+            Assert.Equal(0, platform.GetWindowHeight());
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_OnWindowResize_MaxSize_Works()
+        {
+            var platform = new WebAssemblyPlatform();
+            InvokePrivate(platform, "OnWindowResize", int.MaxValue, int.MaxValue);
+            Assert.Equal(int.MaxValue, platform.GetWindowWidth());
+            Assert.Equal(int.MaxValue, platform.GetWindowHeight());
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_OnWindowResize_NegativeSize_Works()
+        {
+            var platform = new WebAssemblyPlatform();
+            InvokePrivate(platform, "OnWindowResize", -100, -200);
+            Assert.Equal(-100, platform.GetWindowWidth());
+            Assert.Equal(-200, platform.GetWindowHeight());
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_PollEvents_MultipleCalls_ResetsWheelEachTime()
+        {
+            var platform = new WebAssemblyPlatform();
+            InvokePrivate(platform, "OnMouseWheel", 0, 5);
+            platform.PollEvents();
+            Assert.Equal(0.0f, platform.GetMouseWheel());
+
+            InvokePrivate(platform, "OnMouseWheel", 0, 10);
+            platform.PollEvents();
+            Assert.Equal(0.0f, platform.GetMouseWheel());
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_SetWindowIcon_EmptyPath_DoesNotThrow()
+        {
+            var platform = new WebAssemblyPlatform();
+            platform.SetWindowIcon("");
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_SetWindowIcon_NullPath_DoesNotThrow()
+        {
+            var platform = new WebAssemblyPlatform();
+            platform.SetWindowIcon(null);
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_GetWindowMetrics_ThrowsOnNonBrowser()
+        {
+            var platform = new WebAssemblyPlatform();
+            if (!OperatingSystem.IsBrowser())
+            {
+                Assert.ThrowsAny<Exception>(() =>
+                    platform.GetWindowMetrics(out _, out _, out _, out _, out _, out _));
+            }
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_GetProcAddress_NullOrEmpty_DoesNotCrash()
+        {
+            var platform = new WebAssemblyPlatform();
+            if (!OperatingSystem.IsBrowser())
+            {
+                Assert.ThrowsAny<Exception>(() => platform.GetProcAddress(""));
+            }
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_GetMouseState_ReturnsClonedArray()
+        {
+            var platform = new WebAssemblyPlatform();
+            platform.GetMouseState(out int x1, out int y1, out bool[] buttons1);
+            platform.GetMouseState(out int x2, out int y2, out bool[] buttons2);
+            Assert.NotSame(buttons1, buttons2);
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_GetMouseState_MultipleButtons()
+        {
+            var platform = new WebAssemblyPlatform();
+            InvokePrivate(platform, "OnMouseDown", 0, 0, 0, 10, 20);
+            InvokePrivate(platform, "OnMouseDown", 2, 0, 0, 10, 20);
+            InvokePrivate(platform, "OnMouseDown", 4, 0, 0, 10, 20);
+            platform.GetMouseState(out int x, out int y, out bool[] buttons);
+            Assert.True(buttons[0]);
+            Assert.False(buttons[1]);
+            Assert.True(buttons[2]);
+            Assert.False(buttons[3]);
+            Assert.True(buttons[4]);
+        }
+
+        [Theory]
+        [InlineData(65, ConsoleKey.A)]
+        [InlineData(66, ConsoleKey.B)]
+        [InlineData(90, ConsoleKey.Z)]
+        [InlineData(48, ConsoleKey.D0)]
+        [InlineData(57, ConsoleKey.D9)]
+        [InlineData(13, ConsoleKey.Enter)]
+        [InlineData(9, ConsoleKey.Tab)]
+        [InlineData(32, ConsoleKey.Spacebar)]
+        [InlineData(8, ConsoleKey.Backspace)]
+        [InlineData(27, ConsoleKey.Escape)]
+        [InlineData(46, ConsoleKey.Delete)]
+        [InlineData(37, ConsoleKey.LeftArrow)]
+        [InlineData(38, ConsoleKey.UpArrow)]
+        [InlineData(39, ConsoleKey.RightArrow)]
+        [InlineData(40, ConsoleKey.DownArrow)]
+        [InlineData(112, ConsoleKey.F1)]
+        [InlineData(123, ConsoleKey.F12)]
+        [InlineData(96, ConsoleKey.NumPad0)]
+        [InlineData(105, ConsoleKey.NumPad9)]
+        [InlineData(36, ConsoleKey.Home)]
+        [InlineData(35, ConsoleKey.End)]
+        [InlineData(33, ConsoleKey.PageUp)]
+        [InlineData(34, ConsoleKey.PageDown)]
+        [InlineData(45, ConsoleKey.Insert)]
+        [InlineData(19, ConsoleKey.Pause)]
+        public void WebAssemblyPlatform_ConvertKeyCode_MapsCorrectly(int keyCode, ConsoleKey expected)
+        {
+            var platform = new WebAssemblyPlatform();
+            InvokePrivate(platform, "OnKeyDown", keyCode, 0);
+            Assert.True(platform.IsKeyDown(expected));
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_ConvertKeyCode_UnknownKey_MapsToNoName()
+        {
+            var platform = new WebAssemblyPlatform();
+            InvokePrivate(platform, "OnKeyDown", 999, 0);
+            Assert.True(platform.IsKeyDown(ConsoleKey.NoName));
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_GetWindowPositionX_ThrowsOnNonBrowser()
+        {
+            var platform = new WebAssemblyPlatform();
+            if (!OperatingSystem.IsBrowser())
+            {
+                Assert.ThrowsAny<Exception>(() => platform.GetWindowPositionX());
+            }
+        }
+
+        [Fact]
+        public void WebAssemblyPlatform_GetWindowPositionY_ThrowsOnNonBrowser()
+        {
+            var platform = new WebAssemblyPlatform();
+            if (!OperatingSystem.IsBrowser())
+            {
+                Assert.ThrowsAny<Exception>(() => platform.GetWindowPositionY());
+            }
+        }
+
         private static void InvokePrivate(object instance, string methodName, params object[] arguments)
         {
             MethodInfo method = instance.GetType().GetMethod(methodName, BindingFlags.Instance | BindingFlags.NonPublic);

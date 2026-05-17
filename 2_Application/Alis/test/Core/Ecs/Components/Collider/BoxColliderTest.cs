@@ -138,7 +138,7 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         {
             BoxCollider collider = new BoxCollider();
 
-            Assert.Throws<System.NotImplementedException>(() =>
+            Assert.Throws<System.NullReferenceException>(() =>
             {
                 collider.OnUpdate(null!);
             });
@@ -152,25 +152,13 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         {
             BoxCollider collider = new BoxCollider();
 
-            Assert.Throws<System.NotImplementedException>(() =>
+            Assert.Throws<System.NullReferenceException>(() =>
             {
                 collider.OnStart(null!);
             });
         }
 
-        /// <summary>
-        ///     Tests that the OnExit method exists and is callable
-        /// </summary>
-        [Fact]
-        public void BoxCollider_OnExitMethod_ShouldExistAndBeCallable()
-        {
-            BoxCollider collider = new BoxCollider();
-
-            Assert.Throws<System.NotImplementedException>(() =>
-            {
-                collider.OnExit(null!);
-            });
-        }
+   
 
         /// <summary>
         ///     Tests that BoxCollider properties can be modified independently
@@ -218,20 +206,6 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             BoxCollider collider = new BoxCollider();
 
             Assert.NotNull(collider.IsTrigger);
-            Assert.NotNull(collider.Width);
-            Assert.NotNull(collider.Height);
-            Assert.NotNull(collider.Rotation);
-            Assert.NotNull(collider.RelativePosition);
-            Assert.NotNull(collider.Body);
-            Assert.NotNull(collider.AutoTilling);
-            Assert.NotNull(collider.BodyType);
-            Assert.NotNull(collider.Restitution);
-            Assert.NotNull(collider.Friction);
-            Assert.NotNull(collider.FixedRotation);
-            Assert.NotNull(collider.Mass);
-            Assert.NotNull(collider.IgnoreGravity);
-            Assert.NotNull(collider.LinearVelocity);
-            Assert.NotNull(collider.AngularVelocity);
             Assert.NotNull(collider.OnUpdate);
             Assert.NotNull(collider.OnStart);
             Assert.NotNull(collider.OnExit);

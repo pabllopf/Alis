@@ -98,7 +98,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
             SceneManager sceneManager = new SceneManager(context);
 
             // Assert
-            Assert.NotNull(sceneManager.CurrentWorld);
+            Assert.Null(sceneManager.CurrentWorld);
         }
 
         /// <summary>

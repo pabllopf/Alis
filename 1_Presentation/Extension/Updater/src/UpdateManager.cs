@@ -468,7 +468,6 @@ namespace Alis.Extension.Updater
         ///     Gets the latest release
         /// </summary>
         /// <returns>A task containing a dictionary of string and object</returns>
-        [ExcludeFromCodeCoverage]
         public async Task<Dictionary<string, object>> GetLatestReleaseAsync()
         {
             using HttpClient httpClient = new HttpClient();

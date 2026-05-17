@@ -63,11 +63,16 @@ namespace Alis.Core.Physic.Common
     public class Path
     {
 /// <summary>
+///     The backing field for <see cref="ControlPoints" />.
+/// </summary>
+        private readonly List<Vector2F> _controlPoints;
+
+/// <summary>
 ///     Gets the list of control points that define the Catmull-Rom spline curve.
 ///     These points determine the shape of the curve, with the curve passing
 ///     through each point except possibly the first and last in an open curve.
 /// </summary>
-        public readonly List<Vector2F> ControlPoints;
+        public IReadOnlyList<Vector2F> ControlPoints => _controlPoints;
 
 /// <summary>
 ///     Gets or sets the delta time value used for calculations along the spline.
@@ -79,7 +84,7 @@ namespace Alis.Core.Physic.Common
         /// <summary>
         ///     Initializes a new instance of the <see cref="Path" /> class.
         /// </summary>
-        public Path() => ControlPoints = new List<Vector2F>();
+        public Path() => _controlPoints = new List<Vector2F>();
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Path" /> class.
@@ -87,7 +92,7 @@ namespace Alis.Core.Physic.Common
         /// <param name="vertices">The vertices to created the path from.</param>
         public Path(Vector2F[] vertices)
         {
-            ControlPoints = new List<Vector2F>(vertices.Length);
+            _controlPoints = new List<Vector2F>(vertices.Length);
 
             for (int i = 0; i < vertices.Length; i++)
             {
@@ -101,7 +106,7 @@ namespace Alis.Core.Physic.Common
         /// <param name="vertices">The vertices to created the path from.</param>
         public Path(IList<Vector2F> vertices)
         {
-            ControlPoints = new List<Vector2F>(vertices.Count);
+            _controlPoints = new List<Vector2F>(vertices.Count);
             for (int i = 0; i < vertices.Count; i++)
             {
                 Add(vertices[i]);
@@ -121,7 +126,7 @@ namespace Alis.Core.Physic.Common
         /// <returns></returns>
         public int NextIndex(int index)
         {
-            if (index == ControlPoints.Count - 1)
+            if (index == _controlPoints.Count - 1)
             {
                 return 0;
             }
@@ -138,7 +143,7 @@ namespace Alis.Core.Physic.Common
         {
             if (index == 0)
             {
-                return ControlPoints.Count - 1;
+                return _controlPoints.Count - 1;
             }
 
             return index - 1;
@@ -150,9 +155,9 @@ namespace Alis.Core.Physic.Common
         /// <param name="vector">The vector.</param>
         public void Translate(ref Vector2F vector)
         {
-            for (int i = 0; i < ControlPoints.Count; i++)
+            for (int i = 0; i < _controlPoints.Count; i++)
             {
-                ControlPoints[i] = ControlPoints[i] + vector;
+                _controlPoints[i] = _controlPoints[i] + vector;
             }
         }
 
@@ -162,9 +167,9 @@ namespace Alis.Core.Physic.Common
         /// <param name="value">The Value.</param>
         public void Scale(ref Vector2F value)
         {
-            for (int i = 0; i < ControlPoints.Count; i++)
+            for (int i = 0; i < _controlPoints.Count; i++)
             {
-                ControlPoints[i] = ControlPoints[i] * value;
+                _controlPoints[i] = _controlPoints[i] * value;
             }
         }
 
@@ -176,9 +181,9 @@ namespace Alis.Core.Physic.Common
         {
             Complex rotation = Complex.FromAngle(value);
 
-            for (int i = 0; i < ControlPoints.Count; i++)
+            for (int i = 0; i < _controlPoints.Count; i++)
             {
-                ControlPoints[i] = Complex.Multiply(ControlPoints[i], ref rotation);
+                _controlPoints[i] = Complex.Multiply(_controlPoints[i], ref rotation);
             }
         }
 
@@ -189,10 +194,10 @@ namespace Alis.Core.Physic.Common
         public override string ToString()
         {
             StringBuilder builder = new StringBuilder();
-            for (int i = 0; i < ControlPoints.Count; i++)
+            for (int i = 0; i < _controlPoints.Count; i++)
             {
-                builder.Append(ControlPoints[i].ToString());
-                if (i < ControlPoints.Count - 1)
+                builder.Append(_controlPoints[i].ToString());
+                if (i < _controlPoints.Count - 1)
                 {
                     builder.Append(" ");
                 }
@@ -232,16 +237,16 @@ namespace Alis.Core.Physic.Common
         {
             Vector2F temp;
 
-            if (ControlPoints.Count < 2)
+            if (_controlPoints.Count < 2)
             {
                 throw new Exception("You need at least 2 control points to calculate a position.");
             }
 
             if (Closed)
             {
-                Add(ControlPoints[0]);
+                Add(_controlPoints[0]);
 
-                _deltaT = 1f / (ControlPoints.Count - 1);
+                _deltaT = 1f / (_controlPoints.Count - 1);
 
                 int p = (int) (time / _deltaT);
 
@@ -249,49 +254,49 @@ namespace Alis.Core.Physic.Common
                 int p0 = p - 1;
                 if (p0 < 0)
                 {
-                    p0 = p0 + (ControlPoints.Count - 1);
+                    p0 = p0 + (_controlPoints.Count - 1);
                 }
-                else if (p0 >= ControlPoints.Count - 1)
+                else if (p0 >= _controlPoints.Count - 1)
                 {
-                    p0 = p0 - (ControlPoints.Count - 1);
+                    p0 = p0 - (_controlPoints.Count - 1);
                 }
 
                 int p1 = p;
                 if (p1 < 0)
                 {
-                    p1 = p1 + (ControlPoints.Count - 1);
+                    p1 = p1 + (_controlPoints.Count - 1);
                 }
-                else if (p1 >= ControlPoints.Count - 1)
+                else if (p1 >= _controlPoints.Count - 1)
                 {
-                    p1 = p1 - (ControlPoints.Count - 1);
+                    p1 = p1 - (_controlPoints.Count - 1);
                 }
 
                 int p2 = p + 1;
                 if (p2 < 0)
                 {
-                    p2 = p2 + (ControlPoints.Count - 1);
+                    p2 = p2 + (_controlPoints.Count - 1);
                 }
-                else if (p2 >= ControlPoints.Count - 1)
+                else if (p2 >= _controlPoints.Count - 1)
                 {
-                    p2 = p2 - (ControlPoints.Count - 1);
+                    p2 = p2 - (_controlPoints.Count - 1);
                 }
 
                 int p3 = p + 2;
                 if (p3 < 0)
                 {
-                    p3 = p3 + (ControlPoints.Count - 1);
+                    p3 = p3 + (_controlPoints.Count - 1);
                 }
-                else if (p3 >= ControlPoints.Count - 1)
+                else if (p3 >= _controlPoints.Count - 1)
                 {
-                    p3 = p3 - (ControlPoints.Count - 1);
+                    p3 = p3 - (_controlPoints.Count - 1);
                 }
 
                 // relative time
                 float lt = (time - _deltaT * p) / _deltaT;
 
-                CalcCatmullRom(ControlPoints[p0], ControlPoints[p1], ControlPoints[p2], ControlPoints[p3], lt, out temp);
+                CalcCatmullRom(_controlPoints[p0], _controlPoints[p1], _controlPoints[p2], _controlPoints[p3], lt, out temp);
 
-                RemoveAt(ControlPoints.Count - 1);
+                RemoveAt(_controlPoints.Count - 1);
             }
             else
             {
@@ -303,9 +308,9 @@ namespace Alis.Core.Physic.Common
                 {
                     p0 = 0;
                 }
-                else if (p0 >= ControlPoints.Count - 1)
+                else if (p0 >= _controlPoints.Count - 1)
                 {
-                    p0 = ControlPoints.Count - 1;
+                    p0 = _controlPoints.Count - 1;
                 }
 
                 int p1 = p;
@@ -313,9 +318,9 @@ namespace Alis.Core.Physic.Common
                 {
                     p1 = 0;
                 }
-                else if (p1 >= ControlPoints.Count - 1)
+                else if (p1 >= _controlPoints.Count - 1)
                 {
-                    p1 = ControlPoints.Count - 1;
+                    p1 = _controlPoints.Count - 1;
                 }
 
                 int p2 = p + 1;
@@ -323,9 +328,9 @@ namespace Alis.Core.Physic.Common
                 {
                     p2 = 0;
                 }
-                else if (p2 >= ControlPoints.Count - 1)
+                else if (p2 >= _controlPoints.Count - 1)
                 {
-                    p2 = ControlPoints.Count - 1;
+                    p2 = _controlPoints.Count - 1;
                 }
 
                 int p3 = p + 2;
@@ -333,15 +338,15 @@ namespace Alis.Core.Physic.Common
                 {
                     p3 = 0;
                 }
-                else if (p3 >= ControlPoints.Count - 1)
+                else if (p3 >= _controlPoints.Count - 1)
                 {
-                    p3 = ControlPoints.Count - 1;
+                    p3 = _controlPoints.Count - 1;
                 }
 
                 // relative time
                 float lt = (time - _deltaT * p) / _deltaT;
 
-                CalcCatmullRom(ControlPoints[p0], ControlPoints[p1], ControlPoints[p2], ControlPoints[p3], lt, out temp);
+                CalcCatmullRom(_controlPoints[p0], _controlPoints[p1], _controlPoints[p2], _controlPoints[p3], lt, out temp);
             }
 
             return temp;
@@ -406,8 +411,8 @@ namespace Alis.Core.Physic.Common
         /// <param name="point">The point</param>
         public void Add(Vector2F point)
         {
-            ControlPoints.Add(point);
-            _deltaT = 1f / (ControlPoints.Count - 1);
+            _controlPoints.Add(point);
+            _deltaT = 1f / (_controlPoints.Count - 1);
         }
 
         /// <summary>
@@ -416,8 +421,8 @@ namespace Alis.Core.Physic.Common
         /// <param name="point">The point</param>
         public void Remove(Vector2F point)
         {
-            ControlPoints.Remove(point);
-            _deltaT = 1f / (ControlPoints.Count - 1);
+            _controlPoints.Remove(point);
+            _deltaT = 1f / (_controlPoints.Count - 1);
         }
 
         /// <summary>
@@ -426,8 +431,8 @@ namespace Alis.Core.Physic.Common
         /// <param name="index">The index</param>
         public void RemoveAt(int index)
         {
-            ControlPoints.RemoveAt(index);
-            _deltaT = 1f / (ControlPoints.Count - 1);
+            _controlPoints.RemoveAt(index);
+            _deltaT = 1f / (_controlPoints.Count - 1);
         }
 
         /// <summary>
@@ -436,7 +441,7 @@ namespace Alis.Core.Physic.Common
         /// <returns>The length</returns>
         public float GetLength()
         {
-            List<Vector2F> verts = GetVertices(ControlPoints.Count * 25);
+            List<Vector2F> verts = GetVertices(_controlPoints.Count * 25);
             float length = 0;
 
             for (int i = 1; i < verts.Count; i++)
@@ -446,7 +451,7 @@ namespace Alis.Core.Physic.Common
 
             if (Closed)
             {
-                length += Vector2F.Distance(verts[ControlPoints.Count - 1], verts[0]);
+                length += Vector2F.Distance(verts[_controlPoints.Count - 1], verts[0]);
             }
 
             return length;
@@ -467,7 +472,7 @@ namespace Alis.Core.Physic.Common
             float t = 0.000f;
 
             // we always start at the first control point
-            Vector2F start = ControlPoints[0];
+            Vector2F start = _controlPoints[0];
             Vector2F end = GetPosition(t);
 
             // increment t until we are at half the distance

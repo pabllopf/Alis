@@ -64,11 +64,16 @@ namespace Alis.Core.Physic.Common.Logic
     public class BreakableBody
     {
 /// <summary>
+///     The backing field for <see cref="Parts" />.
+/// </summary>
+        private readonly List<Fixture> _parts = new List<Fixture>(8);
+
+/// <summary>
 ///     Gets the list of fixtures that make up this breakable body.
 ///     Each fixture represents a separate part that can break away from the main body
 ///     when sufficient force is applied. The list is initialized with a capacity of 8.
 /// </summary>
-        public readonly List<Fixture> Parts = new List<Fixture>(8);
+        public IReadOnlyList<Fixture> Parts => _parts;
 
 /// <summary>
 ///     Gets the force threshold required to break the body apart.
@@ -115,7 +120,7 @@ namespace Alis.Core.Physic.Common.Logic
             {
                 PolygonShape polygonShape = new PolygonShape(part, density);
                 Fixture fixture = MainBody.CreateFixture(polygonShape);
-                Parts.Add(fixture);
+                _parts.Add(fixture);
             }
         }
 
@@ -133,7 +138,7 @@ namespace Alis.Core.Physic.Common.Logic
             foreach (Shape part in shapes)
             {
                 Fixture fixture = MainBody.CreateFixture(part);
-                Parts.Add(fixture);
+                _parts.Add(fixture);
             }
         }
 
@@ -156,7 +161,7 @@ namespace Alis.Core.Physic.Common.Logic
             {
                 PolygonShape polygonShape = new PolygonShape(part, density);
                 Fixture fixture = MainBody.CreateFixture(polygonShape);
-                Parts.Add(fixture);
+                _parts.Add(fixture);
             }
         }
 
@@ -184,7 +189,7 @@ namespace Alis.Core.Physic.Common.Logic
         {
             if (State != BreakableBodyState.Broken)
             {
-                if (Parts.Contains(contact.FixtureA) || Parts.Contains(contact.FixtureB))
+                    if (_parts.Contains(contact.FixtureA) || _parts.Contains(contact.FixtureB))
                 {
                     float maxImpulse = 0.0f;
                     int count = contact.Manifold.PointCount;
@@ -226,17 +231,17 @@ namespace Alis.Core.Physic.Common.Logic
         internal void CacheVelocities()
         {
             //Enlarge the cache if needed
-            if (Parts.Count > _angularVelocitiesCache.Length)
+            if (_parts.Count > _angularVelocitiesCache.Length)
             {
-                _velocitiesCache = new Vector2F[Parts.Count];
-                _angularVelocitiesCache = new float[Parts.Count];
+                _velocitiesCache = new Vector2F[_parts.Count];
+                _angularVelocitiesCache = new float[_parts.Count];
             }
 
             //Cache the linear and angular velocities.
-            for (int i = 0; i < Parts.Count; i++)
+            for (int i = 0; i < _parts.Count; i++)
             {
-                _velocitiesCache[i] = Parts[i].GetBody.LinearVelocity;
-                _angularVelocitiesCache[i] = Parts[i].GetBody.AngularVelocity;
+                _velocitiesCache[i] = _parts[i].GetBody.LinearVelocity;
+                _angularVelocitiesCache[i] = _parts[i].GetBody.AngularVelocity;
             }
         }
 
@@ -254,9 +259,9 @@ namespace Alis.Core.Physic.Common.Logic
             //Unsubsribe from the PostSolve delegate
             WorldPhysic.ContactManager.PostSolve -= PostSolve;
 
-            for (int i = 0; i < Parts.Count; i++)
+            for (int i = 0; i < _parts.Count; i++)
             {
-                Fixture oldFixture = Parts[i];
+                Fixture oldFixture = _parts[i];
 
                 Shape shape = oldFixture.GetShape.Clone();
                 object fixtureTag = oldFixture.Tag;
@@ -268,7 +273,7 @@ namespace Alis.Core.Physic.Common.Logic
 
                 Fixture newFixture = body.CreateFixture(shape);
                 newFixture.Tag = fixtureTag;
-                Parts[i] = newFixture;
+                _parts[i] = newFixture;
 
                 body.AngularVelocity = _angularVelocitiesCache[i];
                 body.LinearVelocity = _velocitiesCache[i];
