@@ -49,18 +49,6 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         }
 
         /// <summary>
-        ///     Tests that CircleCollider can be created without exceptions
-        /// </summary>
-        [Fact]
-        public void CircleCollider_ShouldBeCreatedWithoutExceptions()
-        {
-            Assert.DoesNotThrow(() =>
-            {
-                CircleCollider collider = new CircleCollider();
-            });
-        }
-
-        /// <summary>
         ///     Tests that CircleCollider default state is valid
         /// </summary>
         [Fact]
@@ -91,19 +79,6 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             CircleCollider collider = new CircleCollider();
 
             Assert.IsType<CircleCollider>(collider);
-        }
-
-        /// <summary>
-        ///     Tests that CircleCollider constructor does not throw
-        /// </summary>
-        [Fact]
-        public void CircleCollider_Constructor_ShouldNotThrow()
-        {
-            Assert.DoesNotThrow(() =>
-            {
-                CircleCollider collider = new CircleCollider();
-                Assert.NotNull(collider);
-            });
         }
 
         /// <summary>

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:PhysicSettingBuilderTest.cs
+//  File:AudioSettingBuilderTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,18 +27,17 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Builder.Core.Ecs.System.ConfigurationBuilders.Physic;
+using Alis.Builder.Core.Ecs.System.ConfigurationBuilders.Audio;
 using Alis.Core.Aspect.Fluent;
-using Alis.Core.Aspect.Fluent.Words;
-using Alis.Core.Ecs.Systems.Configuration.Physic;
+using Alis.Core.Ecs.Systems.Configuration.Audio;
 using Xunit;
 
-namespace Alis.Test.Builder.Core.Ecs.System.ConfigurationBuilders.Physic
+namespace Alis.Test.Builder.Core.Ecs.System.ConfigurationBuilders.Audio
 {
     /// <summary>
-    ///     Contains unit tests for the <see cref="PhysicSettingBuilder" /> class.
+    ///     Contains unit tests for the <see cref="AudioSettingBuilder" /> class.
     /// </summary>
-    public class PhysicSettingBuilderTest
+    public class AudioSettingBuilderTest
     {
         /// <summary>
         ///     Tests that the default constructor creates a builder.
@@ -47,68 +46,68 @@ namespace Alis.Test.Builder.Core.Ecs.System.ConfigurationBuilders.Physic
         public void DefaultConstructor_CreatesBuilder()
         {
             // Arrange & Act
-            PhysicSettingBuilder builder = new PhysicSettingBuilder();
+            AudioSettingBuilder builder = new AudioSettingBuilder();
 
             // Assert
             Assert.NotNull(builder);
         }
 
         /// <summary>
-        ///     Tests that the Build method returns a PhysicSetting instance.
+        ///     Tests that the Build method returns an AudioSetting instance.
         /// </summary>
         [Fact]
-        public void Build_ReturnsPhysicSettingInstance()
+        public void Build_ReturnsAudioSettingInstance()
         {
             // Arrange & Act
-            PhysicSettingBuilder builder = new PhysicSettingBuilder();
-            PhysicSetting setting = builder.Build();
+            AudioSettingBuilder builder = new AudioSettingBuilder();
+            AudioSetting setting = builder.Build();
 
             // Assert
             Assert.NotNull(setting);
-            Assert.IsType<PhysicSetting>(setting);
+            Assert.IsType<AudioSetting>(setting);
         }
 
         /// <summary>
-        ///     Tests that the Build method returns a non-null PhysicSetting.
+        ///     Tests that the Build method returns a non-null AudioSetting.
         /// </summary>
         [Fact]
-        public void Build_ReturnsNonNullPhysicSetting()
+        public void Build_ReturnsNonNullAudioSetting()
         {
             // Arrange & Act
-            PhysicSettingBuilder builder = new PhysicSettingBuilder();
-            PhysicSetting setting = builder.Build();
+            AudioSettingBuilder builder = new AudioSettingBuilder();
+            AudioSetting setting = builder.Build();
 
             // Assert
             Assert.NotNull(setting);
         }
 
         /// <summary>
-        ///     Tests that PhysicSetting can be configured via the builder.
+        ///     Tests that AudioSetting can be configured via the builder.
         /// </summary>
         [Fact]
-        public void PhysicSettingCanBeConfiguredViaBuilder()
+        public void AudioSettingCanBeConfiguredViaBuilder()
         {
             // Arrange
-            PhysicSettingBuilder builder = new PhysicSettingBuilder();
+            AudioSettingBuilder builder = new AudioSettingBuilder();
 
             // Act
-            PhysicSetting setting = builder.Gravity(0f, -9.81f).Debug(true).Build();
+            AudioSetting setting = builder.Volume(80).IsMute(false).Build();
 
             // Assert
             Assert.NotNull(setting);
         }
 
         /// <summary>
-        ///     Tests that the builder creates a valid PhysicSetting object.
+        ///     Tests that the builder creates a valid AudioSetting object.
         /// </summary>
         [Fact]
-        public void BuilderCreatesValidPhysicSettingObject()
+        public void BuilderCreatesValidAudioSettingObject()
         {
             // Arrange
-            PhysicSettingBuilder builder = new PhysicSettingBuilder();
+            AudioSettingBuilder builder = new AudioSettingBuilder();
 
             // Act
-            PhysicSetting setting = builder.Build();
+            AudioSetting setting = builder.Build();
 
             // Assert
             Assert.NotNull(setting);
@@ -121,40 +120,39 @@ namespace Alis.Test.Builder.Core.Ecs.System.ConfigurationBuilders.Physic
         public void BuilderImplementsExpectedInterfaces()
         {
             // Arrange & Act
-            PhysicSettingBuilder builder = new PhysicSettingBuilder();
+            AudioSettingBuilder builder = new AudioSettingBuilder();
 
             // Assert
-            Assert.IsAssignableFrom<IBuild<PhysicSetting>>(builder);
-            Assert.IsAssignableFrom<IGravity<PhysicSettingBuilder, float>>(builder);
+            Assert.IsAssignableFrom<IBuild<AudioSetting>>(builder);
         }
 
         /// <summary>
-        ///     Tests that gravity can be set via the builder.
+        ///     Tests that volume can be set via the builder.
         /// </summary>
         [Fact]
-        public void GravityCanBeSetViaBuilder()
+        public void VolumeCanBeSetViaBuilder()
         {
             // Arrange
-            PhysicSettingBuilder builder = new PhysicSettingBuilder();
+            AudioSettingBuilder builder = new AudioSettingBuilder();
 
             // Act
-            PhysicSetting setting = builder.Gravity(0f, -15f).Build();
+            AudioSetting setting = builder.Volume(100).Build();
 
             // Assert
             Assert.NotNull(setting);
         }
 
         /// <summary>
-        ///     Tests that debug mode can be set via the builder.
+        ///     Tests that mute can be set via the builder.
         /// </summary>
         [Fact]
-        public void DebugCanBeSetViaBuilder()
+        public void MuteCanBeSetViaBuilder()
         {
             // Arrange
-            PhysicSettingBuilder builder = new PhysicSettingBuilder();
+            AudioSettingBuilder builder = new AudioSettingBuilder();
 
             // Act
-            PhysicSetting setting = builder.Debug(true).Build();
+            AudioSetting setting = builder.IsMute(true).Build();
 
             // Assert
             Assert.NotNull(setting);
