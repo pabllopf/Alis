@@ -473,12 +473,9 @@ namespace Alis.Core.Graphic.Platforms.Web
                     }
 
                     // Show confirmation dialog
-                    if (context.IsKeyDown(ConsoleKey.D3))
+                    if (context.IsKeyDown(ConsoleKey.D3) && WebAssemblyGameContext.ShowConfirm("Do you want to quit?"))
                     {
-                        if (WebAssemblyGameContext.ShowConfirm("Do you want to quit?"))
-                        {
-                            context.Stop(); // Exit the game
-                        }
+                        context.Stop(); // Exit the game
                     }
                 });
             }

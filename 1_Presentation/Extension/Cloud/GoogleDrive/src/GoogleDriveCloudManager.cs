@@ -454,14 +454,11 @@ namespace Alis.Extension.Cloud.GoogleDrive
         /// <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources</param>
         protected virtual void Dispose(bool disposing)
         {
-            if (disposing)
+            if (disposing && _driveService != null)
             {
-                if (_driveService != null)
-                {
-                    _driveService.Dispose();
-                    _driveService = null;
-                    Logger.Info("Google Drive service disposed");
-                }
+                _driveService.Dispose();
+                _driveService = null;
+                Logger.Info("Google Drive service disposed");
             }
         }
     }

@@ -313,14 +313,11 @@ namespace Alis.Extension.Cloud.DropBox
         /// <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources</param>
         protected virtual void Dispose(bool disposing)
         {
-            if (disposing)
+            if (disposing && _dropboxClient != null)
             {
-                if (_dropboxClient != null)
-                {
-                    _dropboxClient.Dispose();
-                    _dropboxClient = null;
-                    Logger.Info("DropBox client disposed");
-                }
+                _dropboxClient.Dispose();
+                _dropboxClient = null;
+                Logger.Info("DropBox client disposed");
             }
         }
 
