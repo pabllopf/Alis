@@ -35,19 +35,19 @@ namespace Alis.Benchmark.ClassVsStruct.Instancies
     public class ClassPoint
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="ClassPoint" /> class
+        ///     Initializes a new instance of the <see cref="ClassPoint" /> class.
         /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="x">The X coordinate.</param>
+        /// <param name="y">The Y coordinate.</param>
         public ClassPoint(int x, int y) => (X, Y) = (x, y);
 
         /// <summary>
-        ///     Gets the value of the x
+        ///     Gets the X coordinate.
         /// </summary>
         public int X { get; }
 
         /// <summary>
-        ///     Gets the value of the y
+        ///     Gets the Y coordinate.
         /// </summary>
         public int Y { get; }
     }
