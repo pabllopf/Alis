@@ -10,5 +10,13 @@
   "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Controllers/GravityController.cs": {
     "status": "documented",
     "timestamp": "2026-05-17T10:35:27.320412+00:00"
+  },
+  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Controllers/GravityType.cs": {
+    "status": "documented",
+    "timestamp": "2026-05-17T10:35:47.047338+00:00"
+  },
+  "/Users/pabllopf/repositorios/Alis/4_Operation/Physic/src/Controllers/Controller.cs": {
+    "status": "documented",
+    "timestamp": "2026-05-17T10:36:00.447436+00:00"
   }
 }

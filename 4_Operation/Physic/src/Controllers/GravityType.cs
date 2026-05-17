@@ -37,12 +37,14 @@ namespace Alis.Core.Physic.Controllers
     public enum GravityType
     {
         /// <summary>
-        ///     The linear gravity type
+        ///     Linear gravity falloff: force is proportional to 1/r.
+        ///     Produces a more uniform gravitational field over distance.
         /// </summary>
         Linear,
 
         /// <summary>
-        ///     The distance squared gravity type
+        ///     Distance-squared gravity falloff: force is proportional to 1/r².
+        ///     Follows Newton's law of universal gravitation for realistic planetary gravity simulation.
         /// </summary>
         DistanceSquared
     }
