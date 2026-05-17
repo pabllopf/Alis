@@ -43,6 +43,11 @@ namespace Alis.Extension.Ads.GoogleAds
     public class AdsManager : AManager, IAdsManager, IDisposable
     {
         /// <summary>
+        ///     The not initialized message
+        /// </summary>
+        private const string NotInitializedMessage = "AdsManager not initialized. Call InitializeAsync first.";
+
+        /// <summary>
         ///     The ads configuration
         /// </summary>
         private AdConfiguration _configuration;
@@ -187,7 +192,7 @@ namespace Alis.Extension.Ads.GoogleAds
         {
             if (!_isInitialized)
             {
-                Logger.Error("AdsManager not initialized. Call InitializeAsync first.");
+                Logger.Error(NotInitializedMessage);
                 return;
             }
 
@@ -233,7 +238,7 @@ namespace Alis.Extension.Ads.GoogleAds
         {
             if (!_isInitialized)
             {
-                Logger.Error("AdsManager not initialized. Call InitializeAsync first.");
+                Logger.Error(NotInitializedMessage);
                 return;
             }
 
@@ -267,7 +272,7 @@ namespace Alis.Extension.Ads.GoogleAds
         {
             if (!_isInitialized)
             {
-                Logger.Error("AdsManager not initialized. Call InitializeAsync first.");
+                Logger.Error(NotInitializedMessage);
                 return;
             }
 
@@ -292,14 +297,21 @@ namespace Alis.Extension.Ads.GoogleAds
         /// </summary>
         public void Dispose()
         {
-            // Clean up any resources if necessary
-            Logger.Info("AdsManager disposed");
-            if (OnAdClosed != null)
-            {
-                OnAdClosed.Invoke("all");
-            }
-
+            Dispose(true);
             GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        ///     Releases the unmanaged resources used by the AdsManager and optionally releases the managed resources
+        /// </summary>
+        /// <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                Logger.Info("AdsManager disposed");
+                OnAdClosed?.Invoke("all");
+            }
         }
 
         /// <summary>
@@ -333,7 +345,7 @@ namespace Alis.Extension.Ads.GoogleAds
         {
             if (!_isInitialized)
             {
-                throw new InvalidOperationException("AdsManager not initialized. Call InitializeAsync first.");
+                throw new InvalidOperationException(NotInitializedMessage);
             }
 
             if (string.IsNullOrEmpty(adUnitId))
@@ -370,7 +382,7 @@ namespace Alis.Extension.Ads.GoogleAds
         {
             if (!_isInitialized)
             {
-                throw new InvalidOperationException("AdsManager not initialized. Call InitializeAsync first.");
+                throw new InvalidOperationException(NotInitializedMessage);
             }
 
             if (string.IsNullOrEmpty(adUnitId))
@@ -407,7 +419,7 @@ namespace Alis.Extension.Ads.GoogleAds
         {
             if (!_isInitialized)
             {
-                throw new InvalidOperationException("AdsManager not initialized. Call InitializeAsync first.");
+                throw new InvalidOperationException(NotInitializedMessage);
             }
 
             if (string.IsNullOrEmpty(adUnitId))

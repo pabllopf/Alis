@@ -817,19 +817,17 @@ namespace Alis.Extension.Updater
                         }
                     }
 
-                    // Extract the entry to the target directory
-                    string destinationPath = Path.Combine(targetDirectory, entry.FullName);
-
+                    // Extract the entry to the target directory using the already-validated safe path
                     if (string.IsNullOrEmpty(entry.Name))
                     {
                         // Directory entry - ensure it exists
-                        Directory.CreateDirectory(destinationPath);
+                        Directory.CreateDirectory(entryFullPath);
                     }
                     else
                     {
                         // File entry - ensure the parent directory exists, then extract
-                        Directory.CreateDirectory(Path.GetDirectoryName(destinationPath));
-                        entry.ExtractToFile(destinationPath, overwrite: true);
+                        Directory.CreateDirectory(Path.GetDirectoryName(entryFullPath));
+                        entry.ExtractToFile(entryFullPath, overwrite: true);
                     }
                 }
             }

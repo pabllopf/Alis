@@ -303,8 +303,25 @@ namespace Alis.Extension.Cloud.DropBox
         /// </summary>
         public void Dispose()
         {
+            Dispose(true);
             GC.SuppressFinalize(this);
-            OnDestroy();
+        }
+
+        /// <summary>
+        ///     Releases the unmanaged resources used by the DropBoxCloudManager and optionally releases the managed resources
+        /// </summary>
+        /// <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (_dropboxClient != null)
+                {
+                    _dropboxClient.Dispose();
+                    _dropboxClient = null;
+                    Logger.Info("DropBox client disposed");
+                }
+            }
         }
 
         /// <summary>
@@ -312,13 +329,7 @@ namespace Alis.Extension.Cloud.DropBox
         /// </summary>
         public override void OnDestroy()
         {
-            if (_dropboxClient != null)
-            {
-                _dropboxClient.Dispose();
-                _dropboxClient = null;
-                Logger.Info("DropBox client disposed");
-            }
-
+            Dispose(false);
             base.OnDestroy();
         }
     }

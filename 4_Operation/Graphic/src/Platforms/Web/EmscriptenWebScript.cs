@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
+
 namespace Alis.Core.Graphic.Platforms.Web
 {
     /// <summary>
@@ -38,6 +40,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Gets the complete JavaScript bridge code as a string
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public static string GetBridgeScript()
         {
             return @"
