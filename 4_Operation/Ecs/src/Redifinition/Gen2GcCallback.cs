@@ -42,7 +42,16 @@ namespace Alis.Core.Ecs.Redifinition
         /// <summary>
         ///     The gen collection occured
         /// </summary>
-        public static Action Gen2CollectionOccured;
+        private static Action gen2CollectionOccured;
+
+        /// <summary>
+        ///     Gets or sets the gen collection occurred event
+        /// </summary>
+        public static Action Gen2CollectionOccured
+        {
+            get => gen2CollectionOccured;
+            set => gen2CollectionOccured = value;
+        }
 
         /// <summary>
         ///     The callback

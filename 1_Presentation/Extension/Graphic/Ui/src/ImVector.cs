@@ -40,17 +40,44 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     The size
         /// </summary>
-        public int Size;
+        private int size;
 
         /// <summary>
         ///     The capacity
         /// </summary>
-        public int Capacity;
+        private int capacity;
 
         /// <summary>
         ///     The data
         /// </summary>
-        public IntPtr Data;
+        private IntPtr data;
+
+        /// <summary>
+        ///     Gets or sets the size
+        /// </summary>
+        public int Size
+        {
+            get => size;
+            set => size = value;
+        }
+
+        /// <summary>
+        ///     Gets or sets the capacity
+        /// </summary>
+        public int Capacity
+        {
+            get => capacity;
+            set => capacity = value;
+        }
+
+        /// <summary>
+        ///     Gets or sets the data
+        /// </summary>
+        public IntPtr Data
+        {
+            get => data;
+            set => data = value;
+        }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImVector" /> class

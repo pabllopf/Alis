@@ -54,7 +54,7 @@ namespace Alis.Extension.Updater.Test
         {
             UpdateManager sut = CreateManagerFast();
 
-            bool result = sut.IsZipPackage(fileName);
+            bool result = UpdateManager.IsZipPackage(fileName);
 
             Assert.Equal(expected, result);
             Assert.True(caseId >= 0);
@@ -71,7 +71,7 @@ namespace Alis.Extension.Updater.Test
         {
             UpdateManager sut = CreateManagerFast();
 
-            bool result = sut.IsDmgPackage(fileName);
+            bool result = UpdateManager.IsDmgPackage(fileName);
 
             Assert.Equal(expected, result);
             Assert.True(caseId >= 0);

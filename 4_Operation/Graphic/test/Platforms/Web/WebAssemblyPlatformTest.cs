@@ -117,51 +117,31 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         public void WebAssemblyPlatform_ShowWindow_SetsVisible()
         {
             var platform = new WebAssemblyPlatform();
-            if (OperatingSystem.IsBrowser())
-            {
-                platform.ShowWindow();
-                Assert.True(platform.IsWindowVisible());
-            }
-            else
-            {
-                Assert.ThrowsAny<Exception>(() => platform.ShowWindow());
-            }
+            platform.ShowWindow();
+            Assert.True(platform.IsWindowVisible());
         }
 
         [Fact]
         public void WebAssemblyPlatform_HideWindow_ClearsVisible()
         {
             var platform = new WebAssemblyPlatform();
-            if (OperatingSystem.IsBrowser())
-            {
-                platform.ShowWindow();
-                platform.HideWindow();
-                Assert.False(platform.IsWindowVisible());
-            }
-            else
-            {
-                Assert.ThrowsAny<Exception>(() => platform.ShowWindow());
-            }
+            platform.ShowWindow();
+            platform.HideWindow();
+            Assert.False(platform.IsWindowVisible());
         }
 
         [Fact]
-        public void WebAssemblyPlatform_SetTitle_ThrowsOnNonBrowser()
+        public void WebAssemblyPlatform_SetTitle_DoesNotThrow()
         {
             var platform = new WebAssemblyPlatform();
-            if (!OperatingSystem.IsBrowser())
-            {
-                Assert.ThrowsAny<Exception>(() => platform.SetTitle("New Title"));
-            }
+            platform.SetTitle("New Title");
         }
 
         [Fact]
-        public void WebAssemblyPlatform_SetSize_ThrowsOnNonBrowser()
+        public void WebAssemblyPlatform_SetSize_DoesNotThrow()
         {
             var platform = new WebAssemblyPlatform();
-            if (!OperatingSystem.IsBrowser())
-            {
-                Assert.ThrowsAny<Exception>(() => platform.SetSize(1024, 768));
-            }
+            platform.SetSize(1024, 768);
         }
 
         [Fact]
@@ -614,14 +594,14 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         [Fact]
-        public void WebAssemblyPlatform_GetWindowMetrics_ThrowsOnNonBrowser()
+        public void WebAssemblyPlatform_GetWindowMetrics_ReturnsDefaultValuesOnNonBrowser()
         {
             var platform = new WebAssemblyPlatform();
-            if (!OperatingSystem.IsBrowser())
-            {
-                Assert.ThrowsAny<Exception>(() =>
-                    platform.GetWindowMetrics(out _, out _, out _, out _, out _, out _));
-            }
+            platform.GetWindowMetrics(out int winX, out int winY, out int winW, out int winH, out int fbW, out int fbH);
+            Assert.Equal(0, winX);
+            Assert.Equal(0, winY);
+            Assert.Equal(800, winW);
+            Assert.Equal(600, winH);
         }
 
         [Fact]
@@ -700,23 +680,19 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         [Fact]
-        public void WebAssemblyPlatform_GetWindowPositionX_ThrowsOnNonBrowser()
+        public void WebAssemblyPlatform_GetWindowPositionX_ReturnsDefaultOnNonBrowser()
         {
             var platform = new WebAssemblyPlatform();
-            if (!OperatingSystem.IsBrowser())
-            {
-                Assert.ThrowsAny<Exception>(() => platform.GetWindowPositionX());
-            }
+            int x = platform.GetWindowPositionX();
+            Assert.Equal(0, x);
         }
 
         [Fact]
-        public void WebAssemblyPlatform_GetWindowPositionY_ThrowsOnNonBrowser()
+        public void WebAssemblyPlatform_GetWindowPositionY_ReturnsDefaultOnNonBrowser()
         {
             var platform = new WebAssemblyPlatform();
-            if (!OperatingSystem.IsBrowser())
-            {
-                Assert.ThrowsAny<Exception>(() => platform.GetWindowPositionY());
-            }
+            int y = platform.GetWindowPositionY();
+            Assert.Equal(0, y);
         }
 
         private static void InvokePrivate(object instance, string methodName, params object[] arguments)

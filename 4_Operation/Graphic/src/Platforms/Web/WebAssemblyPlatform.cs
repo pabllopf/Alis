@@ -479,7 +479,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Converts JavaScript key codes to ConsoleKey values
         /// </summary>
-        private ConsoleKey ConvertKeyCode(int keyCode)
+        private static ConsoleKey ConvertKeyCode(int keyCode)
         {
             return keyCode switch
             {
@@ -536,7 +536,7 @@ namespace Alis.Core.Graphic.Platforms.Web
             try
             {
                 int[] gamepadIndices = EmscriptenWeb.GetConnectedGamepads();
-                if (gamepadIndices == null || gamepadIndices.Length == 0)
+                if (gamepadIndices.Length == 0)
                 {
                     return;
                 }
@@ -553,9 +553,9 @@ namespace Alis.Core.Graphic.Platforms.Web
                     float[] axes = EmscriptenWeb.GetGamepadAxes(index);
                     bool[] buttons = EmscriptenWeb.GetGamepadButtons(index);
 
-                    if (axes != null)
+                    if (axes.Length > 0)
                     {
-                        state.LeftStickX = axes.Length > 0 ? axes[0] : 0.0f;
+                        state.LeftStickX = axes[0];
                         state.LeftStickY = axes.Length > 1 ? axes[1] : 0.0f;
                         state.RightStickX = axes.Length > 2 ? axes[2] : 0.0f;
                         state.RightStickY = axes.Length > 3 ? axes[3] : 0.0f;
@@ -563,7 +563,7 @@ namespace Alis.Core.Graphic.Platforms.Web
                         state.RightTrigger = axes.Length > 5 ? axes[5] : 0.0f;
                     }
 
-                    if (buttons != null)
+                    if (buttons.Length > 0)
                     {
                         for (int i = 0; i < Math.Min(buttons.Length, state.Buttons.Length); i++)
                         {

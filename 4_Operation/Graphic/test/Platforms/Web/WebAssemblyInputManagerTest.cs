@@ -305,14 +305,11 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // =====================================================================
 
         [Fact]
-        public void InputManager_VibrateGamepad_ThrowsOnNonBrowser()
+        public void InputManager_VibrateGamepad_ReturnsFalseOnNonBrowser()
         {
             var platform = new WebAssemblyPlatform();
             var manager = new WebAssemblyInputManager(platform);
-            if (!OperatingSystem.IsBrowser())
-            {
-                Assert.ThrowsAny<Exception>(() => manager.VibrateGamepad(0, 1.0f, 0.5f));
-            }
+            Assert.False(manager.VibrateGamepad(0, 1.0f, 0.5f));
         }
 
         // =====================================================================
@@ -446,69 +443,39 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         [Fact]
-        public void InputContext_LockPointer_ThrowsOnNonBrowser()
+        public void InputContext_LockPointer_ReturnsFalseOnNonBrowser()
         {
-            var platform = new WebAssemblyPlatform();
-            var context = new WebAssemblyInputContext(platform);
-            if (!OperatingSystem.IsBrowser())
-            {
-                Assert.ThrowsAny<Exception>(() => context.LockPointer());
-            }
+            Assert.False(WebAssemblyInputContext.LockPointer());
         }
 
         [Fact]
-        public void InputContext_UnlockPointer_ThrowsOnNonBrowser()
+        public void InputContext_UnlockPointer_ReturnsFalseOnNonBrowser()
         {
-            var platform = new WebAssemblyPlatform();
-            var context = new WebAssemblyInputContext(platform);
-            if (!OperatingSystem.IsBrowser())
-            {
-                Assert.ThrowsAny<Exception>(() => context.UnlockPointer());
-            }
+            Assert.False(WebAssemblyInputContext.UnlockPointer());
         }
 
         [Fact]
-        public void InputContext_IsPointerLocked_ThrowsOnNonBrowser()
+        public void InputContext_IsPointerLocked_ReturnsFalseOnNonBrowser()
         {
-            var platform = new WebAssemblyPlatform();
-            var context = new WebAssemblyInputContext(platform);
-            if (!OperatingSystem.IsBrowser())
-            {
-                Assert.ThrowsAny<Exception>(() => context.IsPointerLocked());
-            }
+            Assert.False(WebAssemblyInputContext.IsPointerLocked());
         }
 
         [Fact]
-        public void InputContext_RequestFullscreen_ThrowsOnNonBrowser()
+        public void InputContext_RequestFullscreen_ReturnsFalseOnNonBrowser()
         {
-            var platform = new WebAssemblyPlatform();
-            var context = new WebAssemblyInputContext(platform);
-            if (!OperatingSystem.IsBrowser())
-            {
-                Assert.ThrowsAny<Exception>(() => context.RequestFullscreen());
-            }
+            Assert.False(WebAssemblyInputContext.RequestFullscreen());
         }
 
         [Fact]
-        public void InputContext_ExitFullscreen_ThrowsOnNonBrowser()
+        public void InputContext_ExitFullscreen_ReturnsFalseOnNonBrowser()
         {
-            var platform = new WebAssemblyPlatform();
-            var context = new WebAssemblyInputContext(platform);
-            if (!OperatingSystem.IsBrowser())
-            {
-                Assert.ThrowsAny<Exception>(() => context.ExitFullscreen());
-            }
+            Assert.False(WebAssemblyInputContext.ExitFullscreen());
         }
 
         [Fact]
-        public void InputContext_IsFullscreen_ThrowsOnNonBrowser()
+        public void InputContext_IsFullscreen_ReturnsFalseOnNonBrowser()
         {
-            var platform = new WebAssemblyPlatform();
-            var context = new WebAssemblyInputContext(platform);
-            if (!OperatingSystem.IsBrowser())
-            {
-                Assert.ThrowsAny<Exception>(() => context.IsFullscreen());
-            }
+            Assert.False(WebAssemblyInputContext.IsFullscreen());
         }
 
         // =====================================================================

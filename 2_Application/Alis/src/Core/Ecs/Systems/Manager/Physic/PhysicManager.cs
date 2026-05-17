@@ -52,7 +52,16 @@ namespace Alis.Core.Ecs.Systems.Manager.Physic
         /// <summary>
         ///     The vector
         /// </summary>
-        public WorldPhysic WorldPhysic;
+        private WorldPhysic worldPhysic;
+
+        /// <summary>
+        ///     Gets or sets the world physic
+        /// </summary>
+        public WorldPhysic WorldPhysic
+        {
+            get => worldPhysic;
+            set => worldPhysic = value;
+        }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="PhysicManager" /> class

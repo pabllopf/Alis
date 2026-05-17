@@ -758,7 +758,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// <summary>
         ///     The component tag table
         /// </summary>
-        internal byte[] ComponentTagTable;
+        internal static byte[] ComponentTagTable;
 
         /// <summary>
         ///     Creates the new or get existing archetypes using the specified scene

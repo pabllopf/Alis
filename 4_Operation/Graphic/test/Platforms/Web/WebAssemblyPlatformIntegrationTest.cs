@@ -140,13 +140,10 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // =====================================================================
 
         [Fact]
-        public void MultiplatformGameEngine_Constructor_ThrowsOnNonBrowser()
+        public void MultiplatformGameEngine_Constructor_DoesNotThrow()
         {
-            if (!OperatingSystem.IsBrowser())
-            {
-                Assert.Throws<InvalidOperationException>(() =>
-                    new MultiplatformGameEngine(800, 600, "Test"));
-            }
+            var engine = new MultiplatformGameEngine(800, 600, "Test");
+            Assert.NotNull(engine.GameContext);
         }
 
         [Fact]
@@ -171,12 +168,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         [Fact]
-        public void SystemInfo_IsOnline_ThrowsOnNonBrowser()
+        public void SystemInfo_IsOnline_ReturnsFalseOnNonBrowser()
         {
-            if (!OperatingSystem.IsBrowser())
-            {
-                Assert.ThrowsAny<Exception>(() => SystemInfo.IsOnline());
-            }
+            Assert.False(SystemInfo.IsOnline());
         }
 
         [Fact]
@@ -187,75 +181,55 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         [Fact]
-        public void SystemInfo_GetDevicePixelRatio_ThrowsOnNonBrowser()
+        public void SystemInfo_GetDevicePixelRatio_ReturnsDefaultOnNonBrowser()
         {
-            if (!OperatingSystem.IsBrowser())
-            {
-                Assert.ThrowsAny<Exception>(() => SystemInfo.GetDevicePixelRatio());
-            }
+            float ratio = SystemInfo.GetDevicePixelRatio();
+            Assert.Equal(1.0f, ratio);
         }
 
         [Fact]
-        public void SystemInfo_GetBatteryLevel_ThrowsOnNonBrowser()
+        public void SystemInfo_GetBatteryLevel_ReturnsDefaultOnNonBrowser()
         {
-            if (!OperatingSystem.IsBrowser())
-            {
-                Assert.ThrowsAny<Exception>(() => SystemInfo.GetBatteryLevel());
-            }
+            float level = SystemInfo.GetBatteryLevel();
+            Assert.Equal(-1.0f, level);
         }
 
         [Fact]
-        public void SystemInfo_IsCharging_ThrowsOnNonBrowser()
+        public void SystemInfo_IsCharging_ReturnsFalseOnNonBrowser()
         {
-            if (!OperatingSystem.IsBrowser())
-            {
-                Assert.ThrowsAny<Exception>(() => SystemInfo.IsCharging());
-            }
+            Assert.False(SystemInfo.IsCharging());
         }
 
         [Fact]
-        public void SystemInfo_GetScreenOrientation_ThrowsOnNonBrowser()
+        public void SystemInfo_GetScreenOrientation_ReturnsDefaultOnNonBrowser()
         {
-            if (!OperatingSystem.IsBrowser())
-            {
-                Assert.ThrowsAny<Exception>(() => SystemInfo.GetScreenOrientation());
-            }
+            int orientation = SystemInfo.GetScreenOrientation();
+            Assert.Equal(1, orientation);
         }
 
         [Fact]
-        public void SystemInfo_GetSystemTimeMs_ThrowsOnNonBrowser()
+        public void SystemInfo_GetSystemTimeMs_ReturnsZeroOnNonBrowser()
         {
-            if (!OperatingSystem.IsBrowser())
-            {
-                Assert.ThrowsAny<Exception>(() => SystemInfo.GetSystemTimeMs());
-            }
+            double time = SystemInfo.GetSystemTimeMs();
+            Assert.Equal(0.0, time);
         }
 
         [Fact]
-        public void SystemInfo_LogToConsole_ThrowsOnNonBrowser()
+        public void SystemInfo_LogToConsole_DoesNotThrow()
         {
-            if (!OperatingSystem.IsBrowser())
-            {
-                Assert.ThrowsAny<Exception>(() => SystemInfo.LogToConsole("test"));
-            }
+            SystemInfo.LogToConsole("test");
         }
 
         [Fact]
-        public void SystemInfo_WarnToConsole_ThrowsOnNonBrowser()
+        public void SystemInfo_WarnToConsole_DoesNotThrow()
         {
-            if (!OperatingSystem.IsBrowser())
-            {
-                Assert.ThrowsAny<Exception>(() => SystemInfo.WarnToConsole("test"));
-            }
+            SystemInfo.WarnToConsole("test");
         }
 
         [Fact]
-        public void SystemInfo_ErrorToConsole_ThrowsOnNonBrowser()
+        public void SystemInfo_ErrorToConsole_DoesNotThrow()
         {
-            if (!OperatingSystem.IsBrowser())
-            {
-                Assert.ThrowsAny<Exception>(() => SystemInfo.ErrorToConsole("test"));
-            }
+            SystemInfo.ErrorToConsole("test");
         }
 
         // =====================================================================
@@ -263,22 +237,15 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // =====================================================================
 
         [Fact]
-        public void QuickStart_RunMinimalGame_ThrowsOnNonBrowser()
+        public void QuickStart_RunMinimalGame_DoesNotThrow()
         {
-            if (!OperatingSystem.IsBrowser())
-            {
-                Assert.Throws<InvalidOperationException>(() =>
-                    QuickStart.RunMinimalGame((w, h) => { }));
-            }
+            QuickStart.RunMinimalGame((w, h) => { });
         }
 
         [Fact]
-        public void QuickStart_LogPlatformInfo_ThrowsOnNonBrowser()
+        public void QuickStart_LogPlatformInfo_DoesNotThrow()
         {
-            if (!OperatingSystem.IsBrowser())
-            {
-                Assert.ThrowsAny<Exception>(() => QuickStart.LogPlatformInfo());
-            }
+            QuickStart.LogPlatformInfo();
         }
     }
 }

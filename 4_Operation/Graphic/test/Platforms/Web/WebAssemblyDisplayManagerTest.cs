@@ -175,14 +175,12 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         [Fact]
-        public void DisplayManager_GetDevicePixelRatio_ThrowsOnNonBrowser()
+        public void DisplayManager_GetDevicePixelRatio_ReturnsDefaultOnNonBrowser()
         {
             var platform = new WebAssemblyPlatform();
             var manager = new WebAssemblyDisplayManager(platform);
-            if (!OperatingSystem.IsBrowser())
-            {
-                Assert.ThrowsAny<Exception>(() => manager.GetDevicePixelRatio());
-            }
+            float ratio = WebAssemblyDisplayManager.GetDevicePixelRatio();
+            Assert.Equal(1.0f, ratio);
         }
 
         [Fact]
@@ -210,47 +208,33 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // =====================================================================
 
         [Fact]
-        public void DisplayManager_ToggleFullscreen_ThrowsOnNonBrowser()
+        public void DisplayManager_ToggleFullscreen_ReturnsFalseOnNonBrowser()
         {
             var platform = new WebAssemblyPlatform();
             var manager = new WebAssemblyDisplayManager(platform);
-            if (!OperatingSystem.IsBrowser())
-            {
-                Assert.ThrowsAny<Exception>(() => manager.ToggleFullscreen());
-            }
+            Assert.False(manager.ToggleFullscreen());
         }
 
         [Fact]
-        public void DisplayManager_EnterFullscreen_ThrowsOnNonBrowser()
+        public void DisplayManager_EnterFullscreen_ReturnsFalseOnNonBrowser()
         {
             var platform = new WebAssemblyPlatform();
             var manager = new WebAssemblyDisplayManager(platform);
-            if (!OperatingSystem.IsBrowser())
-            {
-                Assert.ThrowsAny<Exception>(() => manager.EnterFullscreen());
-            }
+            Assert.False(manager.EnterFullscreen());
         }
 
         [Fact]
-        public void DisplayManager_ExitFullscreen_ThrowsOnNonBrowser()
+        public void DisplayManager_ExitFullscreen_ReturnsFalseOnNonBrowser()
         {
             var platform = new WebAssemblyPlatform();
             var manager = new WebAssemblyDisplayManager(platform);
-            if (!OperatingSystem.IsBrowser())
-            {
-                Assert.ThrowsAny<Exception>(() => manager.ExitFullscreen());
-            }
+            Assert.False(manager.ExitFullscreen());
         }
 
         [Fact]
-        public void DisplayManager_IsFullscreen_ThrowsOnNonBrowser()
+        public void DisplayManager_IsFullscreen_ReturnsFalseOnNonBrowser()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyDisplayManager(platform);
-            if (!OperatingSystem.IsBrowser())
-            {
-                Assert.ThrowsAny<Exception>(() => manager.IsFullscreen());
-            }
+            Assert.False(WebAssemblyDisplayManager.IsFullscreen());
         }
 
         // =====================================================================
@@ -362,59 +346,39 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void DisplayManager_GetSystemLanguage_ReturnsDefaultOnNonBrowser()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyDisplayManager(platform);
-            string lang = manager.GetSystemLanguage();
+            string lang = WebAssemblyDisplayManager.GetSystemLanguage();
             Assert.Equal("en", lang);
         }
 
         [Fact]
-        public void DisplayManager_IsOnline_ThrowsOnNonBrowser()
+        public void DisplayManager_IsOnline_ReturnsFalseOnNonBrowser()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyDisplayManager(platform);
-            if (!OperatingSystem.IsBrowser())
-            {
-                Assert.ThrowsAny<Exception>(() => manager.IsOnline());
-            }
+            Assert.False(WebAssemblyDisplayManager.IsOnline());
         }
 
         [Fact]
-        public void DisplayManager_GetBatteryLevel_ThrowsOnNonBrowser()
+        public void DisplayManager_GetBatteryLevel_ReturnsDefaultOnNonBrowser()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyDisplayManager(platform);
-            if (!OperatingSystem.IsBrowser())
-            {
-                Assert.ThrowsAny<Exception>(() => manager.GetBatteryLevel());
-            }
+            float level = WebAssemblyDisplayManager.GetBatteryLevel();
+            Assert.Equal(-1.0f, level);
         }
 
         [Fact]
-        public void DisplayManager_IsCharging_ThrowsOnNonBrowser()
+        public void DisplayManager_IsCharging_ReturnsFalseOnNonBrowser()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyDisplayManager(platform);
-            if (!OperatingSystem.IsBrowser())
-            {
-                Assert.ThrowsAny<Exception>(() => manager.IsCharging());
-            }
+            Assert.False(WebAssemblyDisplayManager.IsCharging());
         }
 
         [Fact]
         public void DisplayManager_GetRefreshRate_Returns60()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyDisplayManager(platform);
-            Assert.Equal(60, manager.GetRefreshRate());
+            Assert.Equal(60, WebAssemblyDisplayManager.GetRefreshRate());
         }
 
         [Fact]
         public void DisplayManager_SaveScreenshot_ReturnsTrue()
         {
-            var platform = new WebAssemblyPlatform();
-            var manager = new WebAssemblyDisplayManager(platform);
-            bool result = manager.SaveScreenshot("screenshot.png");
+            bool result = WebAssemblyDisplayManager.SaveScreenshot("screenshot.png");
             Assert.True(result);
         }
 
