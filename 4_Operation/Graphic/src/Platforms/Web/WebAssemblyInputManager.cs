@@ -288,7 +288,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Vibrates a gamepad (rumble support)
         /// </summary>
-        public bool VibrateGamepad(int gamepadIndex, float leftMotor, float rightMotor, float duration = 0.1f)
+        public static bool VibrateGamepad(int gamepadIndex, float leftMotor, float rightMotor, float duration = 0.1f)
         {
             return EmscriptenWeb.VibrateGamepad(gamepadIndex, leftMotor, rightMotor, duration);
         }
@@ -550,7 +550,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Locks the pointer to the window (for FPS games)
         /// </summary>
-        public bool LockPointer()
+        public static bool LockPointer()
         {
             return EmscriptenWeb.LockPointer();
         }
@@ -558,7 +558,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Unlocks the pointer
         /// </summary>
-        public bool UnlockPointer()
+        public static bool UnlockPointer()
         {
             return EmscriptenWeb.UnlockPointer();
         }
@@ -566,7 +566,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Checks if the pointer is locked
         /// </summary>
-        public bool IsPointerLocked()
+        public static bool IsPointerLocked()
         {
             return EmscriptenWeb.IsPointerLocked();
         }
@@ -574,7 +574,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Enters fullscreen mode
         /// </summary>
-        public bool RequestFullscreen()
+        public static bool RequestFullscreen()
         {
             return EmscriptenWeb.RequestFullscreen();
         }
@@ -582,7 +582,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Exits fullscreen mode
         /// </summary>
-        public bool ExitFullscreen()
+        public static bool ExitFullscreen()
         {
             return EmscriptenWeb.ExitFullscreen();
         }
@@ -590,7 +590,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Checks if currently in fullscreen
         /// </summary>
-        public bool IsFullscreen()
+        public static bool IsFullscreen()
         {
             return EmscriptenWeb.IsFullscreenEnabled();
         }
