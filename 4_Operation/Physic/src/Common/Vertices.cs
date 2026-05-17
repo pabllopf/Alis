@@ -455,8 +455,12 @@ public Vertices(IEnumerable<Vector2F> vertices)
         }
 
         /// <summary>
-        ///     Forces the vertices to be counter clock wise order.
+        ///     Reverses the vertex order to ensure counter-clockwise winding.
         /// </summary>
+        /// <remarks>
+        ///     If the polygon is already in counter-clockwise order, this method does nothing.
+        ///     Has no effect on polygons with fewer than 3 vertices.
+        /// </remarks>
         public void ForceCounterClockWise()
         {
             //The simplest polygon which can exist in the Euclidean plane has 3 sides.
@@ -472,8 +476,15 @@ public Vertices(IEnumerable<Vector2F> vertices)
         }
 
         /// <summary>
-        ///     Checks if the vertices forms an simple polygon by checking for edge crossings.
+        ///     Determines whether the polygon is simple (non-self-intersecting) by checking for edge crossings.
         /// </summary>
+        /// <returns>
+        ///     <c>true</c> if no edges intersect; otherwise, <c>false</c>.
+        /// </returns>
+        /// <remarks>
+        ///     A simple polygon has no edges that cross each other. This check runs in O(n²) time.
+        ///     Polygons with fewer than 3 vertices are considered non-simple.
+        /// </remarks>
         public bool IsSimple()
         {
             //The simplest polygon which can exist in the Euclidean plane has 3 sides.
@@ -550,11 +561,15 @@ public Vertices(IEnumerable<Vector2F> vertices)
         }
 
         /// <summary>
-        ///     Projects to axis.
+        ///     Projects all vertices onto the specified axis and returns the minimum and maximum projection values.
         /// </summary>
-        /// <param name="axis">The axis.</param>
-        /// <param name="min">The min.</param>
-        /// <param name="max">The max.</param>
+        /// <param name="axis">The axis vector to project onto. Should be normalized for correct distance values.</param>
+        /// <param name="min">When this method returns, contains the minimum projection value along the axis.</param>
+        /// <param name="max">When this method returns, contains the maximum projection value along the axis.</param>
+        /// <remarks>
+        ///     This method uses the dot product to project each vertex onto the axis.
+        ///     It is commonly used in the Separating Axis Theorem (SAT) for collision detection.
+        /// </remarks>
         public void ProjectToAxis(ref Vector2F axis, out float min, out float max)
         {
             // To project a point on an axis use the dot product
@@ -658,9 +673,11 @@ public Vertices(IEnumerable<Vector2F> vertices)
 
 
         /// <summary>
-        ///     Returns the string
+        ///     Returns a string representation of this vertex collection.
         /// </summary>
-        /// <returns>The string</returns>
+        /// <returns>
+        ///     A space-separated string of each vertex's <see cref="Vector2F.ToString()"/> representation.
+        /// </returns>
         public override string ToString()
         {
             StringBuilder builder = new StringBuilder();

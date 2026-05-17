@@ -76,43 +76,37 @@ namespace Alis.Core.Physic.Controllers
         public readonly bool LimitLinearVelocity = true;
 
         /// <summary>
-        ///     The max angular sqared
+        ///     The squared maximum angular velocity, cached for efficient comparison.
         /// </summary>
         private float _maxAngularSqared;
 
         /// <summary>
-        ///     The max angular velocity
+        ///     The maximum angular velocity in radians per second.
         /// </summary>
         private float _maxAngularVelocity;
 
         /// <summary>
-        ///     The max linear sqared
+        ///     The squared maximum linear velocity, cached for efficient comparison.
         /// </summary>
         private float _maxLinearSqared;
 
         /// <summary>
-        ///     The max linear velocity
+        ///     The maximum linear velocity in units per second.
         /// </summary>
         private float _maxLinearVelocity;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="VelocityLimitController" /> class.
-        ///     Sets the max linear velocity to Settings.MaxTranslation
-        ///     Sets the max angular velocity to Settings.MaxRotation
+        ///     Uses default values from <see cref="SettingEnv.MaxTranslation"/> and <see cref="SettingEnv.MaxRotation"/>.
         /// </summary>
         public VelocityLimitController()
-        {
-            MaxLinearVelocity = SettingEnv.MaxTranslation;
-            MaxAngularVelocity = SettingEnv.MaxRotation;
-        }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="VelocityLimitController" /> class.
-        ///     Pass in 0 or float.MaxValue to disable the limit.
-        ///     maxAngularVelocity = 0 will disable the angular velocity limit.
+        ///     Pass <c>0</c> or <see cref="float.MaxValue"/> to a parameter to disable that limit.
         /// </summary>
-        /// <param name="maxLinearVelocity">The max linear velocity.</param>
-        /// <param name="maxAngularVelocity">The max angular velocity.</param>
+        /// <param name="maxLinearVelocity">The maximum linear velocity. Pass <c>0</c> or <see cref="float.MaxValue"/> to disable.</param>
+        /// <param name="maxAngularVelocity">The maximum angular velocity in radians per second. Pass <c>0</c> or <see cref="float.MaxValue"/> to disable.</param>
         public VelocityLimitController(float maxLinearVelocity, float maxAngularVelocity)
         {
             if (Math.Abs(maxLinearVelocity) < float.Epsilon || Math.Abs(maxLinearVelocity - float.MaxValue) < float.Epsilon)
@@ -224,9 +218,15 @@ namespace Alis.Core.Physic.Controllers
         }
 
         /// <summary>
-        ///     Removes the body using the specified body
+        ///     Adds a body to this controller so its velocity will be constrained.
         /// </summary>
-        /// <param name="body">The body</param>
+        /// <param name="body">The body to add for velocity limiting.</param>
+        public void AddBody(Body body)
+
+        /// <summary>
+        ///     Removes a body from this controller so its velocity will no longer be constrained.
+        /// </summary>
+        /// <param name="body">The body to remove from velocity limiting.</param>
         public void RemoveBody(Body body)
         {
             _bodies.Remove(body);
