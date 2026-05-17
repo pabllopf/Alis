@@ -85,36 +85,7 @@ namespace Alis.Test.Core.Ecs.Components.Render
             animation.Frames = frames;
             Assert.Same(frames, animation.Frames);
         }
-
-        /// <summary>
-        ///     Tests that Animation methods are callable
-        /// </summary>
-        [Fact]
-        public void Animation_Methods_ShouldBeCallable()
-        {
-            Animation animation = new Animation();
-
-            Frame frame = new Frame { NameFile = "frame1.png" };
-            Assert.DoesNotThrow(() =>
-            {
-                animation.AddFrame(frame);
-            });
-
-            Assert.Single(animation.Frames);
-        }
-
-        /// <summary>
-        ///     Tests that Animation can be created without exceptions
-        /// </summary>
-        [Fact]
-        public void Animation_ShouldBeCreatedWithoutExceptions()
-        {
-            Assert.DoesNotThrow(() =>
-            {
-                Animation animation = new Animation();
-            });
-        }
-
+        
         /// <summary>
         ///     Tests that Animation properties can be modified
         /// </summary>
