@@ -30,15 +30,15 @@
 namespace Alis.Benchmark.ClassVsStruct.Instancies
 {
     /// <summary>
-    ///     The record point
+    ///     Represents a point as an immutable record type with X and Y coordinates.
     /// </summary>
     public record RecordPoint
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="RecordPoint" /> class
+        ///     Initializes a new instance of the <see cref="RecordPoint" /> record.
         /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="x">The X coordinate.</param>
+        /// <param name="y">The Y coordinate.</param>
         public RecordPoint(int x, int y)
         {
             X = x;
@@ -46,12 +46,12 @@ namespace Alis.Benchmark.ClassVsStruct.Instancies
         }
 
         /// <summary>
-        ///     Gets the value of the x
+        ///     Gets the X coordinate.
         /// </summary>
         public int X { get; init; }
 
         /// <summary>
-        ///     Gets the value of the y
+        ///     Gets the Y coordinate.
         /// </summary>
         public int Y { get; init; }
     }
