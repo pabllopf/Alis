@@ -30,7 +30,7 @@
 namespace Alis.Benchmark.ClassVsStruct.Instancies
 {
     /// <summary>
-    ///     The sealed class point class
+    ///     Represents a point as a sealed reference-type class with X and Y coordinates.
     /// </summary>
     public sealed class SealedClassPoint
     {
