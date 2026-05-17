@@ -44,26 +44,26 @@ namespace Alis.Extension.Math.ProceduralDungeon.Interfaces
         /// <param name="width">The width of the board.</param>
         /// <param name="height">The height of the board.</param>
         /// <returns>A 2D array of board squares.</returns>
-        BoardSquare[,] CreateEmptyBoard(int width, int height);
+        internal BoardSquare[,] CreateEmptyBoard(int width, int height);
 
         /// <summary>
         ///     Places rooms on the board.
         /// </summary>
         /// <param name="board">The board to place rooms on.</param>
         /// <param name="rooms">The list of rooms to place.</param>
-        void PlaceRooms(BoardSquare[,] board, IReadOnlyList<RoomData> rooms);
+        internal void PlaceRooms(BoardSquare[,] board, IReadOnlyList<RoomData> rooms);
 
         /// <summary>
         ///     Places corridors on the board.
         /// </summary>
         /// <param name="board">The board to place corridors on.</param>
         /// <param name="corridors">The list of corridors to place.</param>
-        void PlaceCorridors(BoardSquare[,] board, IReadOnlyList<CorridorData> corridors);
+        internal void PlaceCorridors(BoardSquare[,] board, IReadOnlyList<CorridorData> corridors);
 
         /// <summary>
         ///     Generates walls and corners for the board based on floor layout.
         /// </summary>
         /// <param name="board">The board to generate walls and corners for.</param>
-        void GenerateWallsAndCorners(BoardSquare[,] board);
+        internal void GenerateWallsAndCorners(BoardSquare[,] board);
     }
 }
