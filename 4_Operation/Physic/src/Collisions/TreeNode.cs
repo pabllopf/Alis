@@ -30,40 +30,71 @@
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     A node in the dynamic tree. The client does not interact with this directly.
+    ///     Represents a node in the dynamic bounding volume tree (DynamicTree).
     /// </summary>
+    /// <typeparam name="TNode">The type of the user data stored in this tree node.</typeparam>
+    /// <remarks>
+    ///     The client does not interact with this struct directly. It is managed internally by <see cref="DynamicTree{TNode}"/>.
+    ///     Leaf nodes have <see cref="Height"/> = 0 and both children set to <see cref="DynamicTree{TNode}.NullNode"/>.
+    ///     Free nodes have <see cref="Height"/> = -1 and use <see cref="Parent"/> for a free-list linked list.
+    /// </remarks>
     internal struct TreeNode<TNode>
     {
         /// <summary>
-        ///     Enlarged AABB
+        ///     Gets or sets the enlarged axis-aligned bounding box for this node.
         /// </summary>
+        /// <value>
+        ///     An <see cref="Aabb"/> representing the node's bounding box, expanded for safety margins.
+        /// </value>
         internal Aabb Aabb;
 
         /// <summary>
-        ///     The child
+        ///     Gets or sets the index of the first child node.
         /// </summary>
+        /// <value>
+        ///     An <see cref="int"/> representing the index of the left child, or <see cref="DynamicTree{TNode}.NullNode"/> for leaf nodes.
+        /// </value>
         internal int Child1;
 
         /// <summary>
-        ///     The child
+        ///     Gets or sets the index of the second child node.
         /// </summary>
+        /// <value>
+        ///     An <see cref="int"/> representing the index of the right child, or <see cref="DynamicTree{TNode}.NullNode"/> for leaf nodes.
+        /// </value>
         internal int Child2;
 
         // leaf = 0, free node = -1
         /// <summary>
-        ///     The height
+        ///     Gets or sets the height of this node in the tree.
         /// </summary>
+        /// <value>
+        ///     An <see cref="int"/> representing the distance to the nearest leaf. Zero for leaf nodes, -1 for free nodes.
+        /// </value>
         internal int Height;
 
         /// <summary>
-        ///     The parent
+        ///     Gets or sets the index of the parent node.
         /// </summary>
+        /// <value>
+        ///     An <see cref="int"/> representing the index of the parent, or <see cref="DynamicTree{TNode}.NullNode"/> for root nodes.
+        /// </value>
+        /// <remarks>
+        ///     For free nodes, this field is repurposed as the next free node index in a linked list.
+        /// </remarks>
         internal int Parent;
 
         // to reduce struct size we use Parent for the Free linked-list
         /// <summary>
-        ///     Next free node
+        ///     Gets or sets the next free node index in the free-list.
         /// </summary>
+        /// <value>
+        ///     An <see cref="int"/> representing the index of the next free node, or <see cref="DynamicTree{TNode}.NullNode"/> if this is the last free node.
+        /// </value>
+        /// <remarks>
+        ///     This property provides a named interface to the <see cref="Parent"/> field when the node is free.
+        ///     For non-free nodes, this returns/sets the parent index.
+        /// </remarks>
         internal int Next
         {
             get => Parent;
@@ -71,15 +102,20 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     The user data
+        ///     Gets or sets the user data associated with this node.
         /// </summary>
+        /// <value>
+        ///     The <typeparamref name="TNode"/> user data stored in this tree node.
+        /// </value>
         internal TNode UserData;
 
 
         /// <summary>
-        ///     Describes whether this instance is leaf
+        ///     Determines whether this node is a leaf node.
         /// </summary>
-        /// <returns>The bool</returns>
+        /// <returns>
+        ///     <c>true</c> if this node is a leaf (has no children); otherwise, <c>false</c>.
+        /// </returns>
         internal bool IsLeaf() => Child1 == DynamicTree<TNode>.NullNode;
     }
 }
