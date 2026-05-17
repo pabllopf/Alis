@@ -4,19 +4,9 @@
   "theme": "system",
   "default_agent": "build",
   "share": "auto",
-  
   "permission": "allow",
 
-  "compaction": {
-    "auto": true,
-    "prune": true
-  },
-
-  "watcher": {
-    "ignore": ["node_modules/**", "dist/**", ".git/**"]
-  },
-
-  "instructions": ["CONTRIBUTING.md", "docs/guidelines.md", ".cursor/rules/*.md"],
+  "model": "omlx/Qwen3.6-35B-A3B-UD-MLX-4bit",
 
   "provider": {
     "omlx": {
@@ -30,35 +20,108 @@
         "Qwen3.6-35B-A3B-UD-MLX-4bit": {
           "name": "Qwen3.6-35B-A3B-UD-MLX-4bit",
           "modalities": {
-            "input": [
-              "text",
-              "image"
-            ],
-            "output": [
-              "text"
-            ]
+            "input": ["text", "image"],
+            "output": ["text"]
           },
           "attachment": true,
           "limit": {
-            "context": 262144,
-            "output": 262144
+            "context": 131072,
+            "output": 8192
           }
         }
       }
     }
   },
-  "model": "omlx/Qwen3.6-35B-A3B-UD-MLX-4bit",
-  "plugin": [
-    "@warp-dot-dev/opencode-warp",
-    ".opencode/plugins/graphify.js",
-    ".opencode/plugins/tree-sitter-csharp.js",
-    ".opencode/plugins/git-smart-context.js",
-    ".opencode/plugins/test-impact.js",
-    ".opencode/plugins/file-summary-cache.js",
-    ".opencode/plugins/dead-code-detector.js"
-  ],
 
-  "autoupdate": true,
+  "compaction": {
+    "auto": true,
+    "prune": true,
+    "strategy": "aggressive"
+  },
+
+  "watcher": {
+    "ignore": [
+      ".vs/",
+      ".vscode/",
+      ".idea/",
+      ".test/",
+      ".temp/",
+      ".publish/",
+      ".nuget/",
+      ".venv/",
+      "Release/",
+      "Debug/",
+
+      "**/.vs/**",
+      "**/.vscode/**",
+      "**/.idea/**",
+      "**/.test/**",
+      "**/.temp/**",
+      "**/.publish/**",
+      "**/.nuget/**",
+
+      "**/bin/**",
+      "**/obj/**",
+      "**/lib/**",
+
+      "**/vs/**",
+      "**/vscode/**",
+      "**/idea/**",
+
+      "**/graphify-out/**",
+      "**/test/**",
+
+      "**/_/**",
+      "**/build/**",
+      "**/.build/**",
+
+      "**/.DS_Store",
+      "**/.log",
+
+      "**/.xsd",
+
+      "*.log",
+      "*.html",
+      "*.css",
+      "*.js",
+      "*.c",
+      "*.exe",
+      "*.template.json",
+      "*.nupkg",
+      "*.suo",
+      "*.user",
+      "*.userprefs",
+      "*.pidb",
+      "*.booproj",
+      "*.svd",
+      "*.pdb",
+      "*.deb",
+      "*.gitattributes",
+      "*.nojekyll",
+      "*.tar",
+      "*.mdb",
+      "*.opendb",
+      "*.collabignore",
+      "*.tmp",
+      "*.TMP",
+      "*.htm",
+      "*.txt",
+
+      "*StyleCop.Cache",
+      "*alis.sln.DotSettings.user",
+      "*DS_Store",
+      "*FodyWeavers.xml",
+      "*FodyWeavers.xsd",
+
+      ".sonarqube/"
+    ]
+  },
+
+  "instructions": [
+    "CONTRIBUTING.md",
+    "docs/guidelines.md",
+    ".cursor/rules/*.md"
+  ],
 
   "tools": {
     "ripgrep": true,
@@ -67,14 +130,76 @@
     "bash": true
   },
 
+  "plugin": [
+    ".opencode/plugins/tree-sitter-csharp.js",
+    ".opencode/plugins/test-impact.js",
+    ".opencode/plugins/git-smart-context.js",
+    ".opencode/plugins/file-summary-cache.js"
+  ],
+
   "tui": {
-    "scroll_speed": 3,
+    "scroll_speed": 5,
     "scroll_acceleration": {
       "enabled": true
     },
-    "diff_style": "auto"
+    "diff_style": "minimal"
   },
 
+  "autoupdate": false,
+
   "agent": {
+    "build": {
+      "description": "Primary autonomous build agent for large-scale software engineering tasks",
+      "model": "omlx/Qwen3.6-35B-A3B-UD-MLX-4bit",
+      "prompt": "You are a senior software architect responsible for building robust, scalable systems. Prioritize correctness, modular design, and performance.",
+      "tools": {
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+
+    "csharp-architect": {
+      "description": "Senior C# architect for large enterprise-grade systems",
+      "model": "omlx/Qwen3.6-35B-A3B-UD-MLX-4bit",
+      "prompt": "You design large-scale .NET systems using clean architecture, SOLID principles, and high maintainability patterns. You optimize for AOT readiness and low allocations.",
+      "tools": {
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+
+    "csharp-performance": {
+      "description": "Performance specialist for .NET systems",
+      "model": "omlx/Qwen3.6-35B-A3B-UD-MLX-4bit",
+      "prompt": "You optimize .NET systems for throughput, memory efficiency, and low GC pressure using spans, pooling, and allocation-free patterns.",
+      "tools": {
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+
+    "csharp-test-engineer": {
+      "description": "Senior test engineer for .NET systems",
+      "model": "omlx/Qwen3.6-35B-A3B-UD-MLX-4bit",
+      "prompt": "You design deterministic, isolated, high-quality test suites for .NET systems with strong edge-case coverage.",
+      "tools": {
+        "write": true,
+        "edit": true
+      }
+    },
+
+    "code-reviewer": {
+      "description": "Security and maintainability code reviewer",
+      "model": "omlx/Qwen3.6-35B-A3B-UD-MLX-4bit",
+      "prompt": "You review code strictly for security issues, performance regressions, and maintainability problems.",
+      "tools": {
+        "write": false,
+        "edit": false,
+        "bash": false
+      }
+    }
   }
 }

@@ -1,0 +1,32 @@
+{
+  "name": "alis",
+  "version": "1.0.0",
+  "description": "[![](https://raw.githubusercontent.com/pabllopf/Alis/master/docs/banner/Alis_Banner_970x250.bmp)](https://pabllopf.github.io/Alis/index.html)",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pabllopf/Alis.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/pabllopf/Alis/issues"
+  },
+  "homepage": "https://github.com/pabllopf/Alis#readme",
+  "dependencies": {
+    "chokidar": "^5.0.0",
+    "fast-glob": "^3.3.3",
+    "simple-git": "^3.36.0",
+    "tree-sitter": "^0.25.0",
+    "tree-sitter-c-sharp": "^0.23.5",
+    "web-tree-sitter": "^0.26.8"
+  }
+}
