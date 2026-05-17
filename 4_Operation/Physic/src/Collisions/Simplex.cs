@@ -35,28 +35,51 @@ using Alis.Core.Physic.Dynamics;
 namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     The simplex
+    ///     Represents a simplex (point, line segment, or triangle) in the GJK algorithm.
     /// </summary>
+    /// <remarks>
+    ///     The simplex is built iteratively in the Minkowski difference space of two convex shapes.
+    ///     It tracks up to 3 vertices, each storing support point indices, world positions, and
+    ///     barycentric coordinates for computing the closest point to the origin.
+    ///     
+    ///     The simplex evolves through these states:
+    ///     <list type="number">
+    ///         <item><term>1 vertex</term><description>A single point in Minkowski space.</description></item>
+    ///         <item><term>2 vertices</term><description>A line segment. The closest point lies on the segment.</description></item>
+    ///         <item><term>3 vertices</term><description>A triangle. The origin is inside = shapes overlap.</description></item>
+    ///     </list>
+    /// </remarks>
     internal struct Simplex
     {
         /// <summary>
-        ///     The count
+        ///     Gets or sets the number of active vertices in this simplex.
         /// </summary>
+        /// <value>
+        ///     An <see cref="int"/> between 0 and 3. A count of 3 means the origin is contained.
+        /// </value>
         internal int Count;
 
         /// <summary>
-        ///     The
+        ///     Gets or sets the array of simplex vertices.
         /// </summary>
+        /// <value>
+        ///     A <see cref="FixedArray3{T}"/> of <see cref="SimplexVertex"/> entries.
+        /// </value>
         internal FixedArray3<SimplexVertex> V;
 
         /// <summary>
-        ///     Reads the cache using the specified cache
+        ///     Reads simplex state from a cache and validates it for reuse.
         /// </summary>
-        /// <param name="cache">The cache</param>
-        /// <param name="proxyA">The proxy</param>
-        /// <param name="controllerTransformA">The transform</param>
-        /// <param name="proxyB">The proxy</param>
-        /// <param name="controllerTransformB">The transform</param>
+        /// <param name="cache">The simplex cache from the previous frame.</param>
+        /// <param name="proxyA">The distance proxy for shape A.</param>
+        /// <param name="controllerTransformA">The world transform for shape A.</param>
+        /// <param name="proxyB">The distance proxy for shape B.</param>
+        /// <param name="controllerTransformB">The world transform for shape B.</param>
+        /// <remarks>
+        ///     If the cached simplex is still valid (metric hasn't changed significantly),
+        ///     it is reused to warm-start the GJK algorithm. Otherwise, the simplex is reset
+        ///     and a fresh start vertex is computed.
+        /// </remarks>
         internal void ReadCache(ref SimplexCache cache, ref DistanceProxy proxyA, ref ControllerTransform controllerTransformA, ref DistanceProxy proxyB, ref ControllerTransform controllerTransformB)
         {
             // Copy data from cache.
