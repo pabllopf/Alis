@@ -66,7 +66,6 @@ namespace Alis.App.Installer
         /// </summary>
         private readonly INativePlatform _platform;
 
-        // State to handle mouse click/double-click detection
         /// <summary>
         ///     The prev mouse down
         /// </summary>
@@ -118,7 +117,6 @@ namespace Alis.App.Installer
         /// <param name="platform">The platform</param>
         public ImguiSample(INativePlatform platform) => _platform = platform;
 
-        // Parameterless constructor to allow alternate build contexts
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImguiSample" /> class
         /// </summary>

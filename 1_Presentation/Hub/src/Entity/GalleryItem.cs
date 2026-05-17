@@ -34,7 +34,6 @@ namespace Alis.App.Hub.Entity
     /// </summary>
     public class GalleryItem
     {
-        // Constructor para inicializar los valores
         /// <summary>
         ///     Initializes a new instance of the <see cref="GalleryItem" /> class
         /// </summary>

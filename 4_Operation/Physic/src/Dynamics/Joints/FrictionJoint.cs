@@ -60,7 +60,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         private float _angularMass;
 
-        // Solver temp
         /// <summary>
         ///     The index
         /// </summary>
@@ -81,7 +80,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         private float _invMassB;
 
-        // Solver shared
         /// <summary>
         ///     The linear impulse
         /// </summary>

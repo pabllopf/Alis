@@ -48,7 +48,6 @@ namespace Alis.Core.Ecs.Components.Collider
     /// <seealso cref="IOnUpdate" />
     public class BoxCollider : IBoxCollider
     {
-        // Vértices del triángulo (posición 2D)
         /// <summary>
         ///     The vertices
         /// </summary>

@@ -74,7 +74,6 @@ namespace Alis.Core.Physic.Common
             return Vector2F.Distance(point, pointOnLine);
         }
 
-        // From Eric Jordan's convex decomposition library
         /// <summary>
         ///     Check if the lines a0->a1 and b0->b1 cross.
         ///     If they do, intersectionPoint will be filled
@@ -132,7 +131,6 @@ namespace Alis.Core.Physic.Common
             return false;
         }
 
-        //From Mark Bayazit's convex decomposition algorithm
         /// <summary>
         ///     Lines the intersect using the specified p 1
         /// </summary>

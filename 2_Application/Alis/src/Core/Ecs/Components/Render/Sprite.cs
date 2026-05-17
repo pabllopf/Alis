@@ -49,7 +49,6 @@ namespace Alis.Core.Ecs.Components.Render
         /// <summary>
         ///     Gets or sets the value of the shader program
         /// </summary>
-        // shader and quad buffers are now shared to avoid recompiling/allocating per sprite
         private static uint SharedShaderProgram;
 
         /// <summary>
@@ -72,7 +71,6 @@ namespace Alis.Core.Ecs.Components.Render
         /// </summary>
         private static bool SharedInitialized = false;
 
-        // cached uniform locations
         /// <summary>
         ///     The offset location
         /// </summary>
@@ -98,7 +96,6 @@ namespace Alis.Core.Ecs.Components.Render
         /// </summary>
         private static int TextureLocation = -1;
 
-        // track last bound texture to avoid redundant binds
         /// <summary>
         ///     The last bound texture
         /// </summary>

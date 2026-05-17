@@ -328,7 +328,6 @@ namespace Alis.Core.Physic.Dynamics
             aabb = Proxies[childIndex].Aabb;
         }
 
-        // These support body activation/deactivation.
         /// <summary>
         ///     Creates the proxies using the specified broad phase
         /// </summary>

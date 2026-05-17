@@ -83,7 +83,6 @@ namespace Alis.App.Engine
         /// </summary>
         private readonly double[] _lastClickTime = new double[5];
 
-        // --- Añadir campos en la clase HubEngine (junto a _prevMouseDown, _lastClickTime, _lastClickPos) ---
         /// <summary>
         ///     The mouse clicked
         /// </summary>
@@ -2236,7 +2235,6 @@ namespace Alis.App.Engine
             Gl.GlUseProgram(0);
         }
 
-        // Returns the appropriate platform implementation for the current OS.
         /// <summary>
         ///     Gets the platform
         /// </summary>
@@ -2254,7 +2252,6 @@ namespace Alis.App.Engine
 #endif
         }
 
-        // Initializes the native platform and OpenGL context. Returns true on success.
         /// <summary>
         ///     Initializes the platform using the specified platform
         /// </summary>
@@ -2299,7 +2296,6 @@ namespace Alis.App.Engine
             return nativePtr;
         }
 
-        // Loads the texture using the specified pixel data (RGBA8) and returns the GL texture id.
         /// <summary>
         ///     Loads the texture using the specified pixel data
         /// </summary>

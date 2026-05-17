@@ -59,19 +59,16 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
             }
         }
 
-        // Specifies the OpenGL ShaderID.
         /// <summary>
         ///     Gets or sets the value of the shader id
         /// </summary>
         public uint ShaderId { get; private set; }
 
-        // Specifies the type of shader.
         /// <summary>
         ///     Gets or sets the value of the shader type
         /// </summary>
         public ShaderType ShaderType { get; private set; }
 
-        // Returns Gl.GetShaderInfoLog(ShaderID), which contains any compilation errors.
         /// <summary>
         ///     Gets the value of the shader log
         /// </summary>

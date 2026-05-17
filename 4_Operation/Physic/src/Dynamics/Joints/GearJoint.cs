@@ -88,7 +88,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         private readonly float _constant;
 
-        // Solver shared
         /// <summary>
         ///     The local anchor
         /// </summary>
@@ -139,7 +138,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         private float _impulse;
 
-        // Solver temp
         /// <summary>
         ///     The index
         /// </summary>

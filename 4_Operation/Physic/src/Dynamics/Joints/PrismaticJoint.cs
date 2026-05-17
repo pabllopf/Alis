@@ -125,7 +125,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         private Vector3F _impulse;
 
-        // Solver temp
         /// <summary>
         ///     The index
         /// </summary>

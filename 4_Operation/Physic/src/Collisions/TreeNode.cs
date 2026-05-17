@@ -64,7 +64,6 @@ namespace Alis.Core.Physic.Collisions
         /// </value>
         internal int Child2;
 
-        // leaf = 0, free node = -1
         /// <summary>
         ///     Gets or sets the height of this node in the tree.
         /// </summary>
@@ -84,7 +83,6 @@ namespace Alis.Core.Physic.Collisions
         /// </remarks>
         internal int Parent;
 
-        // to reduce struct size we use Parent for the Free linked-list
         /// <summary>
         ///     Gets or sets the next free node index in the free-list.
         /// </summary>

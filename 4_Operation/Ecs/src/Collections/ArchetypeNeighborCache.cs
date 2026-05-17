@@ -42,19 +42,16 @@ namespace Alis.Core.Ecs.Collections
     /// </remarks>
     internal struct ArchetypeNeighborCache
     {
-        // 4 source archetype keys
         /// <summary>
         ///     The
         /// </summary>
         private ushort _k0, _k1, _k2, _k3;
 
-        // 4 destination archetype IDs (kept for backward-compat with Lookup)
         /// <summary>
         ///     The
         /// </summary>
         private ushort _v0, _v1, _v2, _v3;
 
-        // 4 direct Archetype references – zero-cost hit path (no WorldArchetypeTable lookup)
         /// <summary>
         ///     The arch
         /// </summary>

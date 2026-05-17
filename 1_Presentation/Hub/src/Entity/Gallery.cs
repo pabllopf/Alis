@@ -41,7 +41,6 @@ namespace Alis.App.Hub.Entity
         /// </summary>
         public readonly List<GalleryItem> Items;
 
-        // Método para generar una lista de 10 elementos de tipo GalleryItem
         /// <summary>
         ///     Initializes a new instance of the <see cref="Gallery" /> class
         /// </summary>

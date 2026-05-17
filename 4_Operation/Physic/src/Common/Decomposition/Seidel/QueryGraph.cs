@@ -32,7 +32,6 @@ using System.Collections.Generic;
 namespace Alis.Core.Physic.Common.Decomposition.Seidel
 {
     // Directed Acyclic graph (DAG)
-    // See "Computational Geometry", 3rd edition, by Mark de Berg et al, Chapter 6.2
     /// <summary>
     ///     The query graph class
     /// </summary>

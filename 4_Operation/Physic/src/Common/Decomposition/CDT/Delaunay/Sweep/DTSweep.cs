@@ -834,7 +834,6 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             }
         }
 
-        // True if HoleAngle exceeds 90 degrees.
         /// <summary>
         ///     Describes whether large hole dont fill
         /// </summary>

@@ -63,7 +63,6 @@ namespace Alis.Benchmark.CustomCollections.Stacks
             _fastestStack.Dispose();
         }
 
-        // Inicialización
         /// <summary>
         ///     Setup this instance
         /// </summary>

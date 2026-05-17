@@ -94,7 +94,6 @@ namespace Alis.Extension.Language.Translator.Test
         // Singular (ends with 1)
         // Few
         // Many
-        // Many
         public void GetPluralForm_Russian_ShouldReturnCorrectForm(int quantity, int expected)
         {
             // Arrange

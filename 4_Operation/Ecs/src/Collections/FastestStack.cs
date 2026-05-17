@@ -75,7 +75,6 @@ namespace Alis.Core.Ecs.Collections
         public FastestStack() => _array = Array.Empty<T>();
 
         // Create a stack with a specific initial capacity.  The initial capacity
-        // must be a non-negative number.
         /// <summary>
         ///     Initializes a new instance of the <see cref="FastestStack{T}" /> class
         /// </summary>
@@ -136,7 +135,6 @@ namespace Alis.Core.Ecs.Collections
         /// </summary>
         public bool Any => _size > 0;
 
-        // Removes all Objects from the Stack.
         /// <summary>
         ///     Clears this instance
         /// </summary>
@@ -159,7 +157,6 @@ namespace Alis.Core.Ecs.Collections
         /// <returns>The bool</returns>
         public bool Contains(T item) => (_size != 0) && (Array.LastIndexOf(_array, item, _size - 1) != -1);
 
-        // Copies the stack into an array.
         /// <summary>
         ///     Copies the to using the specified array
         /// </summary>
@@ -298,7 +295,6 @@ namespace Alis.Core.Ecs.Collections
         }
 
         // Returns the top object on the stack without removing it.  If the stack
-        // is empty, Peek throws an InvalidOperationException.
         /// <summary>
         ///     Peeks this instance
         /// </summary>
@@ -337,7 +333,6 @@ namespace Alis.Core.Ecs.Collections
         }
 
         // Pops an item from the top of the stack.  If the stack is empty, Pop
-        // throws an InvalidOperationException.
         /// <summary>
         ///     Pops this instance
         /// </summary>
@@ -393,7 +388,6 @@ namespace Alis.Core.Ecs.Collections
             return true;
         }
 
-        // Pushes an item to the top of the stack.
         /// <summary>
         ///     Pushes the item
         /// </summary>
@@ -495,7 +489,6 @@ namespace Alis.Core.Ecs.Collections
             Array.Resize(ref _array, newcapacity);
         }
 
-        // Copies the Stack to an array, in the same order Pop would return the items.
         /// <summary>
         ///     Returns the array
         /// </summary>

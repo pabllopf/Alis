@@ -46,7 +46,6 @@ namespace Alis.Core.Ecs.Updating
         /// </summary>
         private readonly ShortSparseSet<(Archetype Archetype, int Start, int Length)> _archetypes = new ShortSparseSet<(Archetype Archetype, int Start, int Length)>();
 
-        //its entirely possible that the HashSet<Type> for this filter in GenerationServices.TypeAttributeCache doesn't even exist yet
         /// <summary>
         ///     The attribute type
         /// </summary>
@@ -57,7 +56,6 @@ namespace Alis.Core.Ecs.Updating
         /// </summary>
         private readonly Scene _scene;
 
-        //if we want, we can replace this with a byte[] array to save memory
         /// <summary>
         ///     The component storage base
         /// </summary>
@@ -68,7 +66,6 @@ namespace Alis.Core.Ecs.Updating
         /// </summary>
         private HashSet<Type> _filter;
 
-        //these components need to be updated
         /// <summary>
         ///     The create
         /// </summary>

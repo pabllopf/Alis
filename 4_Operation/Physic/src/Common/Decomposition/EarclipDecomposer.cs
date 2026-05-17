@@ -373,7 +373,6 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <seealso cref="Vertices" />
         private class Triangle : Vertices
         {
-            //Constructor automatically fixes orientation to ccw
             /// <summary>
             ///     Initializes a new instance of the <see cref="Triangle" /> class
             /// </summary>

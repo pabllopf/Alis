@@ -50,7 +50,6 @@ namespace Alis.Core.Graphic.Ui
         private readonly int sizeFont = size;
 
 
-        // Diccionario para las posiciones de cada carácter en el atlas
         /// <summary>
         ///     The character rects
         /// </summary>
@@ -277,7 +276,6 @@ namespace Alis.Core.Graphic.Ui
             Gl.EnableVertexAttribArray(1);
         }
 
-        // Inicializa el diccionario de rectángulos de caracteres (asume cuadrícula ASCII)
         /// <summary>
         ///     Initializes the character rects using the specified char width
         /// </summary>
@@ -301,7 +299,6 @@ namespace Alis.Core.Graphic.Ui
             }
         }
 
-        // Inicializa el diccionario de rectángulos de caracteres usando organización personalizada
         /// <summary>
         ///     Initializes the character rects custom using the specified char width
         /// </summary>
@@ -345,7 +342,6 @@ namespace Alis.Core.Graphic.Ui
             }
         }
 
-        // Inicializa el diccionario de rectángulos de caracteres siguiendo la lógica exacta del ejemplo proporcionado
         /// <summary>
         ///     Initializes the character rects from atlas using the specified char width
         /// </summary>

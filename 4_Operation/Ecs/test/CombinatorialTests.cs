@@ -38,7 +38,6 @@ namespace Alis.Core.Ecs.Test
     /// </summary>
     public class CombinatorialTests
     {
-        // Generate tests for all pairs of components
         /// <summary>
         ///     Tests that combinatorial component pair interactions
         /// </summary>
@@ -60,7 +59,6 @@ namespace Alis.Core.Ecs.Test
             Assert.True(ComponentExists(go, comp2));
         }
 
-        // Generate tests for all entity counts with different component sets
         /// <summary>
         ///     Tests that combinatorial entity count with component type
         /// </summary>
@@ -81,7 +79,6 @@ namespace Alis.Core.Ecs.Test
             Assert.True(true);
         }
 
-        // Generate tests for deletion patterns
         /// <summary>
         ///     Tests that combinatorial delete patterns
         /// </summary>
@@ -115,7 +112,6 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(totalCount - deleteCount, remaining);
         }
 
-        // Generate tests for component addition/removal patterns
         /// <summary>
         ///     Tests that combinatorial add remove patterns
         /// </summary>
@@ -252,7 +248,6 @@ namespace Alis.Core.Ecs.Test
             }
         }
 
-        // Matrix of entity counts and operations
         /// <summary>
         ///     Tests that combinatorial operation count matrix
         /// </summary>

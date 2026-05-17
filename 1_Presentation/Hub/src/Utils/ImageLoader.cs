@@ -162,7 +162,6 @@ namespace Alis.App.Hub.Utils
             return (IntPtr) texture;
         }
 
-        // Llamar cuando ya no necesites la textura (por ejemplo al cerrar una ventana)
         /// <summary>
         ///     Releases the texture using the specified file path
         /// </summary>
@@ -199,7 +198,6 @@ namespace Alis.App.Hub.Utils
             }
         }
 
-        // Elimina texturas no usadas por más tiempo (por defecto DefaultExpiration)
         /// <summary>
         ///     Clears the unused using the specified expiration
         /// </summary>

@@ -428,7 +428,6 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
         [Theory, InlineData(1, 1, 1, 1), InlineData(100, 100, 1, 1), InlineData(1, 1, 100, 100)]
         // Both equal to 1
         // Large can contain tiny
-        // Tiny cannot contain large
         public void CanContain_WithVariousDimensions_ReturnsCorrectResult(int width1, int height1, int width2, int height2)
         {
             // Arrange

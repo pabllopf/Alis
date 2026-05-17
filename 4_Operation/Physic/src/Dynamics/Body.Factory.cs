@@ -36,7 +36,6 @@ using Alis.Core.Physic.Common.Decomposition;
 
 namespace Alis.Core.Physic.Dynamics
 {
-    // An easy to use factory for creating bodies
     /// <summary>
     ///     The body class
     /// </summary>

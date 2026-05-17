@@ -637,7 +637,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
         // Chinese
         // Russian
         // Arabic
-        // Hebrew
         public void ParseToDictionary_UnicodeCharacters_ParsesCorrectly(string unicodeText)
         {
             // Arrange
@@ -658,7 +657,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
         // Grinning face
         // Heart
         // Rocket
-        // Party popper
         public void ParseToDictionary_Emojis_ParsesCorrectly(string emoji)
         {
             // Arrange

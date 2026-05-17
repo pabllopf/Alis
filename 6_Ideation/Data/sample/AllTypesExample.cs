@@ -488,7 +488,6 @@ namespace Alis.Core.Aspect.Data.Sample
         [JsonNativePropertyName("entityName")]
         public string Name { get; set; }
 
-        // Primitive Types
         /// <summary>
         ///     Gets or sets a boolean value (primitive).
         /// </summary>
@@ -509,7 +508,6 @@ namespace Alis.Core.Aspect.Data.Sample
         /// </summary>
         public double DoubleProperty { get; set; }
 
-        // Special Types
         /// <summary>
         ///     Gets or sets a date and time value (special type).
         /// </summary>
@@ -535,7 +533,6 @@ namespace Alis.Core.Aspect.Data.Sample
         /// </summary>
         public Version ApiVersion { get; set; }
 
-        // Arrays
         /// <summary>
         ///     Gets or sets a one-dimensional integer array.
         /// </summary>
@@ -551,7 +548,6 @@ namespace Alis.Core.Aspect.Data.Sample
         /// </summary>
         public decimal[,] Values2D { get; set; }
 
-        // Collections
         /// <summary>
         ///     Gets or sets a list of strings.
         /// </summary>
@@ -562,7 +558,6 @@ namespace Alis.Core.Aspect.Data.Sample
         /// </summary>
         public List<int> Numbers { get; set; }
 
-        // Dictionaries
         /// <summary>
         ///     Gets or sets metadata as a dictionary.
         /// </summary>
@@ -573,13 +568,11 @@ namespace Alis.Core.Aspect.Data.Sample
         /// </summary>
         public Dictionary<string, int> Statistics { get; set; }
 
-        // Enum
         /// <summary>
         ///     Gets or sets the current status.
         /// </summary>
         public StatusType Status { get; set; }
 
-        // Ignored Property
         /// <summary>
         ///     Gets or sets internal notes (NOT serialized).
         /// </summary>

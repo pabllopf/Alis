@@ -36,7 +36,6 @@ using Alis.Core.Ecs.Kernel.Archetypes;
 
 namespace Alis.Core.Ecs.Kernel
 {
-    //This isn't named ArchetypeID because archetypes are an implementation detail
     /// <summary>
     ///     Represents an gameObject's type, or set of component and tag types that make it up
     /// </summary>

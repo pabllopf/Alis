@@ -56,7 +56,6 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         /// </summary>
         public bool Inside;
 
-        // Neighbor pointers
         /// <summary>
         ///     The lower left
         /// </summary>
@@ -108,7 +107,6 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             Sink = null;
         }
 
-        // Update neighbors to the left
         /// <summary>
         ///     Updates the left using the specified ul
         /// </summary>
@@ -129,7 +127,6 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             }
         }
 
-        // Update neighbors to the right
         /// <summary>
         ///     Updates the right using the specified ur
         /// </summary>
@@ -150,7 +147,6 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             }
         }
 
-        // Update neighbors on both sides
         /// <summary>
         ///     Updates the left right using the specified ul
         /// </summary>
@@ -185,7 +181,6 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             }
         }
 
-        // Recursively trim outside neighbors
         /// <summary>
         ///     Trims the neighbors
         /// </summary>
@@ -216,7 +211,6 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             }
         }
 
-        // Determines if this point lies inside the trapezoid
         /// <summary>
         ///     Describes whether this instance contains
         /// </summary>
@@ -250,7 +244,6 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             return new Point(x, y);
         }
 
-        // Add points to monotone mountain
         /// <summary>
         ///     Adds the points
         /// </summary>

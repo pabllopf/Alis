@@ -238,7 +238,6 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         [ExcludeFromCodeCoverage]
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
-        //Performance appears to be slightly better when this is NOT inlined o_O
         /// <summary>
         ///     Cascades the up using the specified node
         /// </summary>

@@ -140,7 +140,6 @@ namespace Alis.Core.Ecs
 
         // -1: normal state
         // 0: some kind of transition in End/Enter
-        // n: n systems/updates active
         /// <summary>
         ///     The allow structural changes
         /// </summary>
@@ -200,7 +199,6 @@ namespace Alis.Core.Ecs
         /// </summary>
         public GameObjectOnlyEvent EntityDeletedEvent = new GameObjectOnlyEvent();
 
-        //entityID -> gameObject metadata
         /// <summary>
         ///     The gameObject location
         /// </summary>
@@ -236,7 +234,6 @@ namespace Alis.Core.Ecs
         /// </summary>
         public FastLookup RemoveTagLookup = new FastLookup();
 
-        //archetype ID -> Archetype?
         /// <summary>
         ///     The scene archetype table
         /// </summary>
@@ -1916,7 +1913,6 @@ namespace Alis.Core.Ecs
         }
 
 
-        //Delete
         /// <summary>
         ///     Deletes the gameObject using the specified gameObject
         /// </summary>

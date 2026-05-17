@@ -47,7 +47,6 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         public static readonly string NameWindow = $"{FontAwesome5.Hashtag} Scene";
 
-        // Crear un HashSet para almacenar los botones activos
         /// <summary>
         ///     The active button
         /// </summary>

@@ -53,13 +53,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         private bool _enableMotor;
 
-        // Solver shared
         /// <summary>
         ///     The impulse
         /// </summary>
         private Vector3F _impulse;
 
-        // Solver temp
         /// <summary>
         ///     The index
         /// </summary>

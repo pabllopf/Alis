@@ -151,7 +151,6 @@ namespace Alis.Core.Aspect.Time
             _startTime = DateTime.MinValue;
         }
 
-        // Convenience method for replacing {sw.Reset(); sw.Start();} with a single sw.Restart()
         /// <summary>
         ///     Resets the elapsed time to zero and starts the clock.
         ///     This is a convenience method equivalent to calling <see cref="Reset" /> followed by <see cref="Start" />.

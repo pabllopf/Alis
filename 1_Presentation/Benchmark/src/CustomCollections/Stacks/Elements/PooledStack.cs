@@ -490,7 +490,6 @@ namespace Alis.Benchmark.CustomCollections.Stacks.Elements
             return result;
         }
 
-        // Copies the stack into an array.
         /// <summary>
         ///     Copies the to using the specified array
         /// </summary>

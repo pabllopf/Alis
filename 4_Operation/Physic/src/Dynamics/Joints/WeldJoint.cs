@@ -66,13 +66,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         private float _gamma;
 
-        // Solver shared
         /// <summary>
         ///     The impulse
         /// </summary>
         private Vector3F _impulse;
 
-        // Solver temp
         /// <summary>
         ///     The index
         /// </summary>

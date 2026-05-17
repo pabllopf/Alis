@@ -408,7 +408,6 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
         // Only horizontal distance
         // Only vertical distance
         // Positive quadrant
-        // Cross quadrants
         public void ManhattanDistanceTo_WithVariousPositions_ReturnsCorrectDistance(int x1, int y1, int x2, int y2, int expected)
         {
             // Arrange

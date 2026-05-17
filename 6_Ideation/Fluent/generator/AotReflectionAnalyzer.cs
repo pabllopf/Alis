@@ -44,7 +44,6 @@ namespace Alis.Core.Aspect.Fluent.Generator
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class AotReflectionAnalyzer : DiagnosticAnalyzer
     {
-        // Diagnostic IDs
         /// <summary>
         ///     The id reflection api
         /// </summary>

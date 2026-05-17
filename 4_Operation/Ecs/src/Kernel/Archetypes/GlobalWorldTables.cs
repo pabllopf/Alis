@@ -48,7 +48,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// </summary>
         public const int Mod16Mask = 0xF;
 
-        //we accsess by archetype first because i think we access different comps from the same archetype more
         /// <summary>
         ///     The component tag location table
         /// </summary>

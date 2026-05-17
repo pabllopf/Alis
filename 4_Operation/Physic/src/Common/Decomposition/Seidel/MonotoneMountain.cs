@@ -37,7 +37,6 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
     /// </summary>
     internal class MonotoneMountain
     {
-        // Almost Pi!
         /// <summary>
         ///     The pi slop
         /// </summary>
@@ -48,13 +47,11 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         /// </summary>
         private readonly HashSet<Point> _convexPoints;
 
-        // Monotone mountain points
         /// <summary>
         ///     The mono poly
         /// </summary>
         private readonly List<Point> _monoPoly;
 
-        // Triangles that constitute the mountain
         /// <summary>
         ///     The triangles
         /// </summary>
@@ -65,7 +62,6 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         /// </summary>
         private Point _head;
 
-        // Used to track which side of the line we are on
         /// <summary>
         ///     The positive
         /// </summary>
@@ -95,7 +91,6 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             Triangles = new List<List<Point>>();
         }
 
-        // Append a point to the list
         /// <summary>
         ///     Adds the point
         /// </summary>
@@ -125,7 +120,6 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             }
         }
 
-        // Remove a point from the list
         /// <summary>
         ///     Removes the point
         /// </summary>
@@ -140,7 +134,6 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         }
 
         // Partition a x-monotone mountain into triangles O(n)
-        // See "Computational Geometry in C", 2nd edition, by Joseph O'Rourke, page 52
         /// <summary>
         ///     Processes this instance
         /// </summary>
@@ -216,7 +209,6 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         /// <returns>The bool</returns>
         private bool Valid(Point p) => p.Neq(_head) && p.Neq(_tail) && IsConvex(p);
 
-        // Create the monotone polygon
         /// <summary>
         ///     Gens the mono poly
         /// </summary>
@@ -253,7 +245,6 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             return Math.Atan2(a.Cross(b), a.Dot(b)) >= 0;
         }
 
-        // Determines if the inslide angle is convex or reflex
         /// <summary>
         ///     Describes whether this instance is convex
         /// </summary>

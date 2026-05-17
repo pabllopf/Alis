@@ -37,25 +37,21 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
     /// </summary>
     internal class TrapezoidalMap
     {
-        // AABB margin
         /// <summary>
         ///     The margin
         /// </summary>
         private readonly float _margin;
 
-        // Trapezoid container
         /// <summary>
         ///     The map
         /// </summary>
         public readonly HashSet<Trapezoid> Map;
 
-        // Bottom segment that spans multiple trapezoids
         /// <summary>
         ///     The cross
         /// </summary>
         private Edge _bCross;
 
-        // Top segment that spans multiple trapezoids
         /// <summary>
         ///     The cross
         /// </summary>
@@ -82,7 +78,6 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         }
 
         // Case 1: segment completely enclosed by trapezoid
-        //         break trapezoid into 4 smaller trapezoids
         /// <summary>
         ///     Cases the 1 using the specified t
         /// </summary>
@@ -106,7 +101,6 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         }
 
         // Case 2: Trapezoid contains point p, q lies outside
-        //         break trapezoid into 3 smaller trapezoids
         /// <summary>
         ///     Cases the 2 using the specified t
         /// </summary>
@@ -143,7 +137,6 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             return trapezoids;
         }
 
-        // Case 3: Trapezoid is bisected
         /// <summary>
         ///     Cases the 3 using the specified t
         /// </summary>
@@ -208,7 +201,6 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         }
 
         // Case 4: Trapezoid contains point q, p lies outside
-        //         break trapezoid into 3 smaller trapezoids
         /// <summary>
         ///     Cases the 4 using the specified t
         /// </summary>
@@ -257,7 +249,6 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             return trapezoids;
         }
 
-        // Create an AABB around segments
         /// <summary>
         ///     Boundings the box using the specified edges
         /// </summary>

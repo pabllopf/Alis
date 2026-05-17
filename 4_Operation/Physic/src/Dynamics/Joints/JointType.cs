@@ -59,7 +59,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         Pulley,
 
-        //Mouse, <- We have fixed mouse
         /// <summary>
         ///     The gear joint type
         /// </summary>

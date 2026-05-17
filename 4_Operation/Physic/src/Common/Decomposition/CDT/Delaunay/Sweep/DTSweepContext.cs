@@ -36,7 +36,6 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
     internal class DtSweepContext : TriangulationContext
     {
         // Inital triangle factor, seed triangle will extend 30% of 
-        // PointSet width to both left and right.
         /// <summary>
         ///     The alpha
         /// </summary>

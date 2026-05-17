@@ -1069,7 +1069,6 @@ namespace Alis.App.Installer
             }
         }
 
-        // Returns the appropriate platform implementation for the current OS.
         /// <summary>
         ///     Gets the platform
         /// </summary>
@@ -1087,7 +1086,6 @@ namespace Alis.App.Installer
 #endif
         }
 
-        // Initializes the native platform and OpenGL context. Returns true on success.
         /// <summary>
         ///     Initializes the platform using the specified plat
         /// </summary>
@@ -1131,7 +1129,6 @@ namespace Alis.App.Installer
             return nativePtr;
         }
 
-        // Loads the texture using the specified pixel data (RGBA8) and returns the GL texture id.
         /// <summary>
         ///     Loads the texture using the specified pixel data
         /// </summary>

@@ -38,7 +38,6 @@ namespace Alis.Core.Ecs.Test
     /// </summary>
     public class GigaScaleTests
     {
-        // Generate thousands of test cases from a single parametrized test
         /// <summary>
         ///     Tests that giga create and query 001
         /// </summary>

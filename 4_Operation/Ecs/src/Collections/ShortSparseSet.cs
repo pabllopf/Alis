@@ -53,7 +53,6 @@ namespace Alis.Core.Ecs.Collections
         /// </summary>
         private int _nextIndex;
 
-        // this collection should never be empty
         /// <summary>
         ///     The sparse
         /// </summary>

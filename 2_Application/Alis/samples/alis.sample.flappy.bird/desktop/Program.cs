@@ -82,7 +82,6 @@ namespace Alis.Sample.Flappy.Bird.Desktop
                 .World(sceneManager => sceneManager
 
                         ////////////////////////////////////////
-                        // MAIN MENU SCENE:
                         ////////////////////////////////////////
                         .Add<Scene>(gameScene => gameScene
                                 .Name("Main_Menu")
@@ -99,7 +98,6 @@ namespace Alis.Sample.Flappy.Bird.Desktop
                                 )
 
                                 ////////////////////////////////////////
-                                // MAIN MENU SCENE: BACKGROUND
                                 ////////////////////////////////////////
                                 .Add<GameObject>(gameObject => gameObject
                                     .Name("Background")
@@ -112,7 +110,6 @@ namespace Alis.Sample.Flappy.Bird.Desktop
                                     )
                                 )
                                 ////////////////////////////////////////
-                                // MAIN MENU SCENE: FLOOR
                                 ////////////////////////////////////////
                                 .Add<GameObject>(gameObject => gameObject
                                     .Name("Floor")
@@ -129,7 +126,6 @@ namespace Alis.Sample.Flappy.Bird.Desktop
                                 )
 
                                 ////////////////////////////////////////
-                                // MAIN MENU SCENE: MESSAGE MENU
                                 ////////////////////////////////////////
                                 .Add<GameObject>(gameObject => gameObject
                                     .Name("Message Menu")
@@ -146,7 +142,6 @@ namespace Alis.Sample.Flappy.Bird.Desktop
                                 )
 
                                 ////////////////////////////////////////
-                                // MAIN MENU SCENE: COUNTER
                                 ////////////////////////////////////////
                                 .Add<GameObject>(gameObject => gameObject
                                     .Name("Counter")
@@ -158,7 +153,6 @@ namespace Alis.Sample.Flappy.Bird.Desktop
                                 )
 
                                 ////////////////////////////////////////
-                                // MAIN MENU SCENE: BIRD
                                 ////////////////////////////////////////
                                 .Add<GameObject>(gameObject => gameObject
                                     .Name("Bird")
@@ -195,7 +189,6 @@ namespace Alis.Sample.Flappy.Bird.Desktop
                                 )
 
                                 ////////////////////////////////////////
-                                // MAIN MENU SCENE: SOUNDTRACK
                                 ////////////////////////////////////////
                                 .Add<GameObject>(gameObject => gameObject
                                     .Name("Soundtrack")
@@ -208,7 +201,6 @@ namespace Alis.Sample.Flappy.Bird.Desktop
                         ) // end main menu scene
 
                         ////////////////////////////////////////
-                        // GAME SCENE:
                         ////////////////////////////////////////
                         .Add<Scene>(gameScene => gameScene
                                 .Name("Game_Scene")
@@ -225,7 +217,6 @@ namespace Alis.Sample.Flappy.Bird.Desktop
                                 )
 
                                 ////////////////////////////////////////
-                                // GAME SCENE: BACKGROUND
                                 ////////////////////////////////////////
                                 .Add<GameObject>(gameObject => gameObject
                                     .Name("Background")
@@ -239,7 +230,6 @@ namespace Alis.Sample.Flappy.Bird.Desktop
                                 )
 
                                 ////////////////////////////////////////
-                                // GAME SCENE: FLOOR
                                 ////////////////////////////////////////
                                 .Add<GameObject>(gameObject => gameObject
                                     .Name("Floor")
@@ -256,7 +246,6 @@ namespace Alis.Sample.Flappy.Bird.Desktop
                                 )
 
                                 ////////////////////////////////////////
-                                // GAME SCENE: FLOOR COLLISION
                                 ////////////////////////////////////////
                                 .Add<GameObject>(gameObject => gameObject
                                     .Name("Floor Collision")
@@ -283,7 +272,6 @@ namespace Alis.Sample.Flappy.Bird.Desktop
                                 )
 
                                 ////////////////////////////////////////
-                                // GAME SCENE: SKY COLLISION
                                 ////////////////////////////////////////
                                 .Add<GameObject>(gameObject => gameObject
                                     .Name("Sky Collision")
@@ -310,7 +298,6 @@ namespace Alis.Sample.Flappy.Bird.Desktop
                                 )
 
                                 ////////////////////////////////////////
-                                // GAME SCENE: COUNTER
                                 ////////////////////////////////////////
                                 .Add<GameObject>(gameObject => gameObject
                                     .Name("Counter")
@@ -322,7 +309,6 @@ namespace Alis.Sample.Flappy.Bird.Desktop
                                 )
 
                                 ////////////////////////////////////////
-                                // GAME SCENE: PIPELINE UP
                                 ////////////////////////////////////////
                                 .Add<GameObject>(gameObject => gameObject
                                     .Name("Pipeline UP")
@@ -354,7 +340,6 @@ namespace Alis.Sample.Flappy.Bird.Desktop
                                 )
 
                                 ////////////////////////////////////////
-                                // GAME SCENE: PIPELINE MIDDLE
                                 ////////////////////////////////////////
                                 .Add<GameObject>(gameObject => gameObject
                                     .Name("Pipeline Middle")
@@ -386,7 +371,6 @@ namespace Alis.Sample.Flappy.Bird.Desktop
                                 )
 
                                 ////////////////////////////////////////
-                                // GAME SCENE: PIPELINE DOWN
                                 ////////////////////////////////////////
                                 .Add<GameObject>(gameObject => gameObject
                                     .Name("Pipeline Down")
@@ -418,7 +402,6 @@ namespace Alis.Sample.Flappy.Bird.Desktop
                                 )
 
                                 ////////////////////////////////////////
-                                // GAME SCENE: BIRD
                                 ////////////////////////////////////////
                                 .Add<GameObject>(gameObject => gameObject
                                     .Name("Bird")

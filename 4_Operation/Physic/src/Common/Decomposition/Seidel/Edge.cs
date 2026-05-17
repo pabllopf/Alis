@@ -42,7 +42,6 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         /// </summary>
         public readonly float B;
 
-        // Montone mountain points
         /// <summary>
         ///     The points
         /// </summary>
@@ -58,13 +57,11 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         /// </summary>
         public readonly Point Q;
 
-        // Slope of the line (m)
         /// <summary>
         ///     The slope
         /// </summary>
         public readonly float Slope;
 
-        // Pointers used for building trapezoidal map
         /// <summary>
         ///     The above
         /// </summary>

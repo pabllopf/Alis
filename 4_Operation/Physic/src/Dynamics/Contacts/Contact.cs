@@ -82,7 +82,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             }
         };
 
-        // Nodes for connecting bodies.
         /// <summary>
         ///     The contact edge
         /// </summary>

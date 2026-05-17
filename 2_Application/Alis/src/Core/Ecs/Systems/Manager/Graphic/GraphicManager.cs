@@ -74,13 +74,11 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             ConsoleKey.Spacebar, ConsoleKey.Enter, ConsoleKey.Escape
         };
 
-        // Diccionario para guardar el timestamp de pulsación de cada tecla
         /// <summary>
         ///     The date time
         /// </summary>
         private readonly Dictionary<ConsoleKey, DateTime> keyDownTimestamps = new Dictionary<ConsoleKey, DateTime>();
 
-        // Estado actual de teclas presionadas
         /// <summary>
         ///     The console key
         /// </summary>
@@ -91,7 +89,6 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         /// </summary>
         private INativePlatform platform;
 
-        // Estado anterior de teclas presionadas
         /// <summary>
         ///     The console key
         /// </summary>

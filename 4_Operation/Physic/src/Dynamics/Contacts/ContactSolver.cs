@@ -880,7 +880,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             return minSeparation >= -3.0f * SettingEnv.LinearSlop;
         }
 
-        // Sequential position solver for position constraints.
         /// <summary>
         ///     Describes whether this instance solve toi position constraints
         /// </summary>

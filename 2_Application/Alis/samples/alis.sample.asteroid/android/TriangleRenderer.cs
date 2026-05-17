@@ -89,7 +89,6 @@ namespace Alis.Sample.Asteroid.Android
         /// </summary>
         private uint program;
 
-        // Métodos para compatibilidad con IGL10/EGLConfig
         /// <summary>
         ///     Ons the draw frame using the specified gl
         /// </summary>

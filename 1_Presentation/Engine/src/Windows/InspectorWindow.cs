@@ -48,7 +48,6 @@ namespace Alis.App.Engine.Windows
         public static readonly string NameWindow = $"{FontAwesome5.InfoCircle} Inspector";
 
         /*
-        // Define a dictionary to map component types to icons
         /// <summary>
         ///     The play
         /// </summary>

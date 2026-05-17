@@ -31,7 +31,6 @@ namespace Alis.Benchmark.InterfaceVsAbstract.Instancies
 {
 // Interface definition
 
-// Abstract class definition
     /// <summary>
     ///     The shape class
     /// </summary>

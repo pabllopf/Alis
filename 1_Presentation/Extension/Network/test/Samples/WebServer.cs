@@ -47,7 +47,6 @@ namespace Alis.Extension.Network.Test.Samples
     [ExcludeFromCodeCoverage]
     public class WebServer : IDisposable
     {
-        // const int BUFFER_SIZE = 1 * 1024 * 1024 * 1024; // 1GB
         /// <summary>
         ///     The buffer size
         /// </summary>

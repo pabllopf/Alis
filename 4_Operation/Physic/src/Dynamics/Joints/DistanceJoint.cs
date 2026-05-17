@@ -54,7 +54,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
     /// </remarks>
     public class DistanceJoint : Joint
     {
-        // Solver shared
         /// <summary>
         ///     The bias
         /// </summary>
@@ -70,7 +69,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         private float _impulse;
 
-        // Solver temp
         /// <summary>
         ///     The index
         /// </summary>

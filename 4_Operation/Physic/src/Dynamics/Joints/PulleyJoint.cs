@@ -55,13 +55,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
     /// </summary>
     public class PulleyJoint : Joint
     {
-        // Solver shared
         /// <summary>
         ///     The impulse
         /// </summary>
         private float _impulse;
 
-        // Solver temp
         /// <summary>
         ///     The index
         /// </summary>

@@ -38,7 +38,6 @@ namespace Alis.Core.Ecs.Test
     /// </summary>
     public class UltraComprehensiveTests
     {
-        // Generate 500+ tests with this single theory
         /// <summary>
         ///     Tests that ultra comp complex matrix
         /// </summary>

@@ -195,7 +195,6 @@ namespace Alis.Core.Graphic
             }
         }
 
-        // Métodos separados para cada tipo de BMP
         /// <summary>
         ///     Loads the bmp rgb using the specified reader
         /// </summary>

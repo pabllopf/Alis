@@ -137,7 +137,6 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         public int ContactCount { get; private set; }
 
-        // Broad-phase callback.
         /// <summary>
         ///     Adds the pair using the specified proxy id a
         /// </summary>

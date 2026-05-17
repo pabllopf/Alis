@@ -48,7 +48,6 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static SpaceWork _spaceWork;
 
-        // Diccionario para mapear las acciones del menú con sus métodos
         /// <summary>
         ///     The action
         /// </summary>
@@ -182,7 +181,6 @@ namespace Alis.App.Engine.Menus
             }
         }
 
-        // Métodos de las acciones del menú
         /// <summary>
         ///     Abouts the alis
         /// </summary>

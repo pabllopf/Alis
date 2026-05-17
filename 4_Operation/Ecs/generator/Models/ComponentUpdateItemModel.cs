@@ -72,7 +72,6 @@ namespace Alis.Core.Ecs.Generator.Models
         /// </summary>
         public readonly bool IsDefault => Flags == UpdateModelFlags.None;
 
-        // ComponentUpdateItemModel
         /// <summary>
         ///     Gets the value of the name
         /// </summary>

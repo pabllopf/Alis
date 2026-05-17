@@ -83,7 +83,6 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Sample
             //Notice that when two users with the same priority were enqueued, they were dequeued in the same order that they were enqueued.
         }
 
-        //The class to be enqueued.
         /// <summary>
         ///     The user class
         /// </summary>

@@ -87,7 +87,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         private float _impulse;
 
-        // Solver temp
         /// <summary>
         ///     The index
         /// </summary>
@@ -118,7 +117,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         private Vector2F _localCenterB;
 
-        // Solver shared
         /// <summary>
         ///     The local axis
         /// </summary>

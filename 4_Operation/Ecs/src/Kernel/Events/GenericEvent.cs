@@ -114,7 +114,6 @@ namespace Alis.Core.Ecs.Kernel.Events
 
 
         //https://learn.microsoft.com/en-us/dotnet/standard/design-guidelines/operator-overloads
-        //I don't think its violating "DO NOT be cute when defining operator overloads." since its what event does.
         /// <summary>
         ///     Adds an <see cref="IGenericAction{GameObject}" /> to this event instance
         /// </summary>

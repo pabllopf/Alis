@@ -60,7 +60,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         private float _angularOffset;
 
-        // Solver temp
         /// <summary>
         ///     The index
         /// </summary>
@@ -96,7 +95,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         private Mat22 _linearMass;
 
-        // Solver shared
         /// <summary>
         ///     The linear offset
         /// </summary>

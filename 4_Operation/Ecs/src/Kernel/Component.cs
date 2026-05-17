@@ -146,7 +146,6 @@ namespace Alis.Core.Ecs.Kernel
         /// </summary>
         private static int _nextComponentId = -1;
 
-        //initalize default(ComponentID) to point to void
         /// <summary>
         ///     Initializes a new instance of the <see cref="Component" /> class
         /// </summary>

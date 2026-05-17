@@ -134,7 +134,6 @@ namespace Alis.Core.Physic
         /// </summary>
         public const float Baumgarte = 0.2f;
 
-        // Sleep
         /// <summary>
         ///     The time that a body must be still before it will go to sleep.
         /// </summary>

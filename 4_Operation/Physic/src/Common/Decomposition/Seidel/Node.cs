@@ -31,7 +31,6 @@ using System.Collections.Generic;
 
 namespace Alis.Core.Physic.Common.Decomposition.Seidel
 {
-    // Node for a Directed Acyclic graph (DAG)
     /// <summary>
     ///     The node class
     /// </summary>
@@ -82,7 +81,6 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         public abstract Sink Locate(Edge s);
 
         // Replace a node in the graph with this node
-        // Make sure parent pointers are updated
         /// <summary>
         ///     Replaces the node
         /// </summary>

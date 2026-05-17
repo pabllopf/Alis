@@ -50,7 +50,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// </summary>
         internal ArchetypeEdgeType EdgeType;
 
-        //could be tag type or component type
         /// <summary>
         ///     The component id
         /// </summary>

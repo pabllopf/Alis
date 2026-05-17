@@ -80,7 +80,6 @@ namespace Alis.Core.Graphic.OpenGL
         /// <param name="width">The width of the line</param>
         public delegate void LineWidth(float width);
 
-        // En Gl.cs
         /// <summary>
         ///     The read pixels
         /// </summary>

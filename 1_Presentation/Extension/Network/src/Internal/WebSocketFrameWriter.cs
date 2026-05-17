@@ -38,7 +38,6 @@ namespace Alis.Extension.Network.Internal
     // EXAMPLE: For a text message sent as three fragments, 
     //   the first fragment would have an opcode of TextFrame and isLastFrame false,
     //   the second fragment would have an opcode of ContinuationFrame and isLastFrame false,
-    //   the third fragment would have an opcode of ContinuationFrame and isLastFrame true.
     /// <summary>
     ///     The web socket frame writer class
     /// </summary>

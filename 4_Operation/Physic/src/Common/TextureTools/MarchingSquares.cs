@@ -636,7 +636,6 @@ namespace Alis.Core.Physic.Common.TextureTools
             /// </summary>
             internal int _count;
 
-            // first node in the list
             /// <summary>
             ///     The head
             /// </summary>
@@ -828,7 +827,6 @@ namespace Alis.Core.Physic.Common.TextureTools
             /// </summary>
             public bool Has(T value) => Find(value) != null;
 
-            // Non CxFastList Methods 
             /// <summary>
             ///     Finds the value
             /// </summary>

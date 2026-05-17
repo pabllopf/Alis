@@ -63,7 +63,6 @@ namespace Alis.App.Hub.Windows.Sections
         /// </summary>
         private int selectedVersionIndex;
 
-        // Example dropdown for selecting version
         /// <summary>
         ///     The empty
         /// </summary>

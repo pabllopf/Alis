@@ -191,7 +191,6 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
         {
             // Myriad stores components as arrays of structs, so all structs of the same type are 
             // always sequential in memory no matter what else is attached to the gameObject. So no need to respect
-            // the padding input
             /// <summary>
             ///     Initializes a new instance of the <see cref="MyriadContext" /> class
             /// </summary>

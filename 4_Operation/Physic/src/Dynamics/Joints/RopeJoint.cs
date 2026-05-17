@@ -51,13 +51,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
     /// </remarks>
     public class RopeJoint : Joint
     {
-        // Solver shared
         /// <summary>
         ///     The impulse
         /// </summary>
         private float _impulse;
 
-        // Solver temp
         /// <summary>
         ///     The index
         /// </summary>

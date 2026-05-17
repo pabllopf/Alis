@@ -38,13 +38,11 @@ namespace Alis.Benchmark.IDs
     [Config(typeof(CustomConfig))]
     public class IdStorageBenchmark
     {
-        // Number of iterations to run for the benchmark
         /// <summary>
         ///     The iterations
         /// </summary>
         private const int Iterations = 1000000;
 
-        // Unique identifier values for each type
         /// <summary>
         ///     The byte id
         /// </summary>

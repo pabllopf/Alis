@@ -73,7 +73,6 @@ namespace Alis.Core.Ecs.Kernel
         /// </summary>
         internal bool IsInactive;
 
-        //-1 indicates normal state
         /// <summary>
         ///     The last create gameObject components buffer index
         /// </summary>

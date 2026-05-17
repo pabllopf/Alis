@@ -452,7 +452,6 @@ namespace Alis.Core.Physic.Common.Logic
             return exploded;
         }
 
-        // Métodos auxiliares
         /// <summary>
         ///     Lists the any using the specified list
         /// </summary>

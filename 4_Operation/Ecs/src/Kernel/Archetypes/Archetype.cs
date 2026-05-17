@@ -65,7 +65,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// </summary>
         private static readonly Dictionary<long, ArchetypeData> ExistingArchetypes = [];
 
-        //2
         /// <summary>
         ///     The archetype id
         /// </summary>
@@ -80,13 +79,11 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
 
         //we include version
         //this is so we dont need to lookup
-        //the scene table every time
         /// <summary>
         ///     The gameObject id only
         /// </summary>
         private GameObjectIdOnly[] _entities = isTempCreateArchetype ? Array.Empty<GameObjectIdOnly>() : new GameObjectIdOnly[1];
 
-        //4
         /// <summary>
         ///     The next component index or deferred gameObject count
         /// </summary>
@@ -102,7 +99,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
 
         //information for tag existence & component index per id
         //updated by static methods
-        //saves a lookup on hot paths
         /// <summary>
         ///     The raw index
         /// </summary>
@@ -743,7 +739,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         public static readonly FastImmutableArray<ComponentId> ArchetypeComponentIDs =
             new FastImmutableArray<ComponentId>(new[] {Component<T>.Id});
 
-        //ArchetypeTypes init first, then ID
         /// <summary>
         ///     The empty
         /// </summary>
@@ -1033,7 +1028,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         public static readonly FastImmutableArray<ComponentId> ArchetypeComponentIDs =
             new FastImmutableArray<ComponentId>(new[] {Component<T1>.Id, Component<T2>.Id});
 
-        //ArchetypeTypes init first, then ID
         /// <summary>
         ///     The empty
         /// </summary>
@@ -1093,7 +1087,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         public static readonly FastImmutableArray<ComponentId> ArchetypeComponentIDs =
             new FastImmutableArray<ComponentId>(new[] {Component<T1>.Id, Component<T2>.Id, Component<T3>.Id});
 
-        //ArchetypeTypes init first, then ID
         /// <summary>
         ///     The empty
         /// </summary>
@@ -1157,7 +1150,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
             new FastImmutableArray<ComponentId>(new[]
                 {Component<T1>.Id, Component<T2>.Id, Component<T3>.Id, Component<T4>.Id});
 
-        //ArchetypeTypes init first, then ID
         /// <summary>
         ///     The empty
         /// </summary>
@@ -1224,7 +1216,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
             new FastImmutableArray<ComponentId>(new[]
                 {Component<T1>.Id, Component<T2>.Id, Component<T3>.Id, Component<T4>.Id, Component<T5>.Id});
 
-        //ArchetypeTypes init first, then ID
         /// <summary>
         ///     The empty
         /// </summary>
@@ -1296,7 +1287,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
                 Component<T1>.Id, Component<T2>.Id, Component<T3>.Id, Component<T4>.Id, Component<T5>.Id, Component<T6>.Id
             });
 
-        //ArchetypeTypes init first, then ID
         /// <summary>
         ///     The empty
         /// </summary>
@@ -1372,7 +1362,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
                 Component<T7>.Id
             });
 
-        //ArchetypeTypes init first, then ID
         /// <summary>
         ///     The empty
         /// </summary>
@@ -1451,7 +1440,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
                 Component<T7>.Id, Component<T8>.Id
             });
 
-        //ArchetypeTypes init first, then ID
         /// <summary>
         ///     The empty
         /// </summary>

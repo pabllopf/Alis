@@ -46,7 +46,6 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         /// </summary>
         public readonly float Y;
 
-        // Pointers to next and previous points in Monontone Mountain
         /// <summary>
         ///     The prev
         /// </summary>
