@@ -57,6 +57,9 @@ namespace Alis.Extension.Graphic.Glfw.Structs
         ///     The size
         /// </summary>
         public readonly int Size;
+        /// <summary>
+        ///     Explicitly converts to GammaRamp.
+        /// </summary>
 
         public static explicit operator GammaRamp(GammaRampInternal ramp)
         {

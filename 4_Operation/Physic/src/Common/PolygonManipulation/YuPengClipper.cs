@@ -530,6 +530,9 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             /// </summary>
             /// <returns>The vector</returns>
             public Vector2F GetCenter() => (EdgeStart + EdgeEnd) / 2f;
+            /// <summary>
+            ///     The - operator.
+            /// </summary>
 
             public static Edge operator -(Edge e) => new Edge(e.EdgeEnd, e.EdgeStart);
 

@@ -63,12 +63,24 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             Next = null;
             Prev = null;
         }
+        /// <summary>
+        ///     The - operator.
+        /// </summary>
 
         public static Point operator -(Point p1, Point p2) => new Point(p1.X - p2.X, p1.Y - p2.Y);
+        /// <summary>
+        ///     The + operator.
+        /// </summary>
 
         public static Point operator +(Point p1, Point p2) => new Point(p1.X + p2.X, p1.Y + p2.Y);
+        /// <summary>
+        ///     The - operator.
+        /// </summary>
 
         public static Point operator -(Point p1, float f) => new Point(p1.X - f, p1.Y - f);
+        /// <summary>
+        ///     The + operator.
+        /// </summary>
 
         public static Point operator +(Point p1, float f) => new Point(p1.X + f, p1.Y + f);
 
