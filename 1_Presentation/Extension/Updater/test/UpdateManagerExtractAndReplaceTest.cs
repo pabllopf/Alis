@@ -88,7 +88,7 @@ namespace Alis.Extension.Updater.Test
         {
             UpdateManager sut = CreateManagerFast();
 
-            string result = sut.GetPackageType(fileName);
+            string result = UpdateManager.GetPackageType(fileName);
 
             Assert.Equal(expected, result);
             Assert.True(caseId >= 0);
