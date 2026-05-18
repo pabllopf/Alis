@@ -218,7 +218,7 @@ namespace Alis.Extension.Graphic.Glfw
         {
             get
             {
-                GlfwNative.GetWindowSize(Window, out int width, out int dummy);
+                GlfwNative.GetWindowSize(Window, out int width, out _);
                 return width;
             }
             set
@@ -455,7 +455,7 @@ namespace Alis.Extension.Graphic.Glfw
             }
             set
             {
-                GlfwNative.GetWindowFrameSize(Window, out int l, out int t, out int dummy1, out int dummy2);
+                GlfwNative.GetWindowFrameSize(Window, out int l, out int t, out _, out _);
                 GlfwNative.SetWindowPosition(Window, value.X + l, value.Y + t);
             }
         }
