@@ -65,8 +65,7 @@ namespace Alis.Core.Graphic.Platforms.Web
 
                     if (gameContext.IsMouseButtonDown(0)) // Left mouse button
                     {
-                        gameContext.GetMousePosition(out int x, out int y);
-                        // Handle mouse click at (x, y)
+                        gameContext.GetMousePosition(out _, out _);
                     }
                 };
 
