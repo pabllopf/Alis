@@ -201,7 +201,7 @@ namespace Alis.Core.Graphic.Platforms.Web
                 throw new InvalidOperationException("Failed to get EGL display");
             }
 
-            if (!EGL.Initialize(_eglDisplay, out int major, out int minor))
+            if (!EGL.Initialize(_eglDisplay, out _, out _))
             {
                 throw new InvalidOperationException("Failed to initialize EGL");
             }
