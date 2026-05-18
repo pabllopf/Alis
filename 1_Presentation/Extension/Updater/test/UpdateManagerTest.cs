@@ -202,7 +202,7 @@ namespace Alis.Extension.Updater.Test
                 }
             };
 
-            Dictionary<string, object> selected = sut.GetSelectedAsset(release, "win", "x64");
+            Dictionary<string, object> selected = UpdateManager.GetSelectedAsset(release, "win", "x64");
 
             Assert.NotNull(selected);
             Assert.Equal("pkg-win-x64.zip", selected["name"]);

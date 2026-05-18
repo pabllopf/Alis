@@ -98,7 +98,7 @@ namespace Alis.Extension.Updater.Test
                 {"assets", BuildAssets(caseId, platform, architecture, matchingName, includeMatch, nullEntries, unrelatedEntries)}
             };
 
-            Dictionary<string, object> selected = sut.GetSelectedAsset(release, platform, architecture);
+            Dictionary<string, object> selected = UpdateManager.GetSelectedAsset(release, platform, architecture);
 
             if (includeMatch)
             {
