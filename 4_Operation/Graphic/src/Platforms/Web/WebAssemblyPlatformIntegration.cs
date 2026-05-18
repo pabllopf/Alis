@@ -372,8 +372,7 @@ namespace Alis.Core.Graphic.Platforms.Web
             pitch = 0;
             yaw = 0;
 
-            _gameContext.GetMousePosition(out int mx, out int my);
-            // Use mouse position for camera control
+            _gameContext.GetMousePosition(out _, out _);
 
             if (_gameContext.TryGetGamepadState(0, out GamepadInputState state))
             {
