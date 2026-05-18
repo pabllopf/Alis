@@ -251,7 +251,7 @@ namespace Alis.Extension.Graphic.Glfw
                     throw new Exception("Window height muts be greater than 0.");
                 }
 
-                GlfwNative.GetWindowSize(Window, out int width, out int dummy);
+                GlfwNative.GetWindowSize(Window, out int width, out _);
                 GlfwNative.SetWindowSize(Window, width, value);
             }
         }
