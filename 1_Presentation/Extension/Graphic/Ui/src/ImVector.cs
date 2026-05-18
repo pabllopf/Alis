@@ -38,46 +38,19 @@ namespace Alis.Extension.Graphic.Ui
     public struct ImVector
     {
         /// <summary>
-        ///     The size
-        /// </summary>
-        private int size;
-
-        /// <summary>
-        ///     The capacity
-        /// </summary>
-        private int capacity;
-
-        /// <summary>
-        ///     The data
-        /// </summary>
-        private IntPtr data;
-
-        /// <summary>
         ///     Gets or sets the size
         /// </summary>
-        public int Size
-        {
-            get => size;
-            set => size = value;
-        }
+        public int Size { get; set; }
 
         /// <summary>
         ///     Gets or sets the capacity
         /// </summary>
-        public int Capacity
-        {
-            get => capacity;
-            set => capacity = value;
-        }
+        public int Capacity { get; set; }
 
         /// <summary>
         ///     Gets or sets the data
         /// </summary>
-        public IntPtr Data
-        {
-            get => data;
-            set => data = value;
-        }
+        public IntPtr Data { get; set; }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImVector" /> class
