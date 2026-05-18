@@ -284,7 +284,6 @@ namespace Alis.Extension.Graphic.Ui
         /// <returns>The im font ptr</returns>
         public ImFontPtr AddFontFromFileTtf(string filename, float sizePixels, ImFontConfigPtr fontCfg)
         {
-            ushort[] glyphRanges = new ushort[0];
             IntPtr ret = ImGuiNative.ImFontAtlas_AddFontFromFileTTF(NativePtr, Encoding.UTF8.GetBytes(filename), sizePixels, fontCfg.NativePtr, new IntPtr());
             return new ImFontPtr(ret);
         }
