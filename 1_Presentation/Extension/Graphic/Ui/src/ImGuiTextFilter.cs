@@ -43,16 +43,6 @@ namespace Alis.Extension.Graphic.Ui
         private byte[] inputBuf;
 
         /// <summary>
-        ///     The filters
-        /// </summary>
-        private ImVector filters;
-
-        /// <summary>
-        ///     The count grep
-        /// </summary>
-        private int countGrep;
-
-        /// <summary>
         ///     Gets or sets the input buf
         /// </summary>
         public byte[] InputBuf
@@ -64,19 +54,11 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets or sets the filters
         /// </summary>
-        public ImVector Filters
-        {
-            get => filters;
-            set => filters = value;
-        }
+        public ImVector Filters { get; set; }
 
         /// <summary>
         ///     Gets or sets the count grep
         /// </summary>
-        public int CountGrep
-        {
-            get => countGrep;
-            set => countGrep = value;
-        }
+        public int CountGrep { get; set; }
     }
 }
