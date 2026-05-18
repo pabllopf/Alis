@@ -75,7 +75,6 @@ namespace Alis.Core.Graphic.Platforms.Web
             _platform = platform ?? throw new ArgumentNullException(nameof(platform));
             _keyBindings = new Dictionary<string, KeyBinding>();
             _previousGamepadStates = new Dictionary<int, GamepadInputState>();
-            _touchPoints = new Dictionary<int, TouchPoint>();
             _lastMouseX = 0;
             _lastMouseY = 0;
             _lastMouseWheelDelta = 0.0f;
