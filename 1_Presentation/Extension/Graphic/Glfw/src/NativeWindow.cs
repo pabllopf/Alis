@@ -228,20 +228,20 @@ namespace Alis.Extension.Graphic.Glfw
                     throw new Exception("Window width muts be greater than 0.");
                 }
 
-                GlfwNative.GetWindowSize(Window, out int dummy, out int height);
+                GlfwNative.GetWindowSize(Window, out _, out int height);
                 GlfwNative.SetWindowSize(Window, value, height);
             }
         }
 
         /// <summary>
-        ///     Gets or sets the height of the client area of the window, in screen coordinates.
+        ///     Gets the client height
         /// </summary>
         /// <exception cref="Exception">Thrown when specified value is less than 1.</exception>
         public int ClientHeight
         {
             get
             {
-                GlfwNative.GetWindowSize(Window, out int dummy, out int height);
+                GlfwNative.GetWindowSize(Window, out _, out int height);
                 return height;
             }
             set
