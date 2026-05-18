@@ -209,7 +209,6 @@ namespace Alis.Core.Graphic.Platforms.Osx
                 if (type == 10) // NSKeyDown
                 {
                     int keyCode = ObjectiveCInterop.objc_msgSend_Int(evt, ObjectiveCInterop.Sel("keyCode"));
-                    ulong modifierFlags = ObjectiveCInterop.objc_msgSend_UL(evt, ObjectiveCInterop.Sel("modifierFlags"));
                     IntPtr nsString = ObjectiveCInterop.objc_msgSend(evt, ObjectiveCInterop.Sel("characters"));
                     char c = '\0';
                     if (nsString != IntPtr.Zero)
