@@ -51,6 +51,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// The window height
         /// </summary>
         private int _windowHeight;
+        // TODO: [S4487] Suppress: Required for interface contract, SetTitle sets window title
         /// <summary>
         /// The window title
         /// </summary>

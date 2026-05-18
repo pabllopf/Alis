@@ -237,7 +237,7 @@ namespace Alis.Extension.Updater
         /// <param name="platform">The platform</param>
         /// <param name="architecture">The architecture</param>
         /// <returns>A dictionary of string and object</returns>
-        internal Dictionary<string, object> GetSelectedAsset(Dictionary<string, object> latestRelease, string platform, string architecture)
+        internal static Dictionary<string, object> GetSelectedAsset(Dictionary<string, object> latestRelease, string platform, string architecture)
         {
             object[] assets = (object[]) latestRelease["assets"];
             return SelectAsset(assets, platform, architecture);

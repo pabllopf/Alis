@@ -63,11 +63,6 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         private float _lastMouseWheelDelta;
         /// <summary>
-        /// The touch points
-        /// </summary>
-        private Dictionary<int, TouchPoint> _touchPoints;
-
-        /// <summary>
         ///     Initializes a new instance of the WebAssemblyInputManager
         /// </summary>
         public WebAssemblyInputManager(WebAssemblyPlatform platform)
