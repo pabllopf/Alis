@@ -372,7 +372,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Vibrates a gamepad
         /// </summary>
-        public bool VibrateGamepad(int gamepadIndex, float leftMotor = 1.0f, float rightMotor = 1.0f, float duration = 0.1f)
+        public static bool VibrateGamepad(int gamepadIndex, float leftMotor = 1.0f, float rightMotor = 1.0f, float duration = 0.1f)
         {
             return WebAssemblyInputManager.VibrateGamepad(gamepadIndex, leftMotor, rightMotor, duration);
         }

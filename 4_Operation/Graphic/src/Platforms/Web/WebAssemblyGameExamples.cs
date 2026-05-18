@@ -127,7 +127,7 @@ namespace Alis.Core.Graphic.Platforms.Web
                             // Trigger vibration feedback
                             if (state.ButtonLb)
                             {
-                                context.VibrateGamepad(gamepadIndex, 1.0f, 0.5f, 0.1f);
+                                WebAssemblyGameContext.VibrateGamepad(gamepadIndex, 1.0f, 0.5f, 0.1f);
                             }
                         }
                     }
