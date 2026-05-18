@@ -484,7 +484,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Gets the device language
         /// </summary>
-        public string GetDeviceLanguage()
+        public static string GetDeviceLanguage()
         {
             return WebAssemblyDisplayManager.GetSystemLanguage();
         }

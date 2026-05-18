@@ -244,7 +244,7 @@ namespace Alis.Core.Graphic.Platforms.Web
             using (WebAssemblyGameContext gameContext = WebAssemblyGameContext.Create(1280, 720, "System Info"))
             {
                 // Log system information
-                WebAssemblyGameContext.ConsoleLog($"Device Language: {gameContext.GetDeviceLanguage()}");
+                WebAssemblyGameContext.ConsoleLog($"Device Language: {WebAssemblyGameContext.GetDeviceLanguage()}");
                 WebAssemblyGameContext.ConsoleLog($"Is Online: {gameContext.IsOnline()}");
                 WebAssemblyGameContext.ConsoleLog($"Battery Level: {gameContext.GetBatteryLevel():P}");
                 WebAssemblyGameContext.ConsoleLog($"Is Charging: {gameContext.IsCharging()}");
