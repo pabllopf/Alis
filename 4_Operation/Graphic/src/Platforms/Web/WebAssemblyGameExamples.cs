@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alis.Core.Graphic.Platforms.Web
 {
@@ -35,6 +36,7 @@ namespace Alis.Core.Graphic.Platforms.Web
     ///     Examples and utilities for developing games with WebAssembly
     ///     This class provides practical examples and helper methods for common game development tasks
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public static class WebAssemblyGameExamples
     {
         /// <summary>
@@ -198,13 +200,13 @@ namespace Alis.Core.Graphic.Platforms.Web
                     // Click to lock pointer (typical FPS behavior)
                     if (context.IsMouseButtonDown(0) && !pointerLocked)
                     {
-                        pointerLocked = context.LockPointer();
+                        pointerLocked = WebAssemblyGameContext.LockPointer();
                     }
 
                     // Escape to unlock pointer
                     if (context.IsKeyDown(ConsoleKey.Escape) && pointerLocked)
                     {
-                        pointerLocked = context.UnlockPointer();
+                        pointerLocked = WebAssemblyGameContext.UnlockPointer();
                     }
 
                     // Get mouse movement for camera control
