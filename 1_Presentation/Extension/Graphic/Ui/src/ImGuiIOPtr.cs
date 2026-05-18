@@ -764,8 +764,6 @@ namespace Alis.Extension.Graphic.Ui
             }
             set
             {
-                float[] navInputs = Marshal.PtrToStructure<ImGuiIo>(NativePtr).NavInputs;
-
                 float[] navInputs2 = new float[21];
                 for (int i = 0; i < value.Count; i++)
                 {
