@@ -601,7 +601,7 @@ namespace Alis.Extension.Updater
         /// </summary>
         /// <param name="fileAsync">The file</param>
         /// <returns>The package type</returns>
-        internal string GetPackageType(string fileAsync)
+        internal static string GetPackageType(string fileAsync)
         {
             if (IsZipPackage(fileAsync))
             {
