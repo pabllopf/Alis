@@ -169,11 +169,6 @@ namespace Alis.Core.Graphic.Platforms.Web
                         context.ToggleFullscreen();
                     }
 
-                    // Get current display info
-                    int width = context.GetWidth();
-                    int height = context.GetHeight();
-                    float aspectRatio = context.GetAspectRatio();
-
                     // Check orientation for responsive layout
                     ScreenOrientation orientation = context.DisplayManager.GetOrientation();
                     if (orientation == ScreenOrientation.Portrait)
