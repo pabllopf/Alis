@@ -59,16 +59,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         private float _beta;
 
         /// <summary>
-        ///     The damping ratio
-        /// </summary>
-        private float _dampingRatio;
-
-        /// <summary>
-        ///     The frequency
-        /// </summary>
-        private float _frequency;
-
-        /// <summary>
         ///     The gamma
         /// </summary>
         private float _gamma;
@@ -99,11 +89,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         private Mat22 _mass;
 
         /// <summary>
-        ///     The max force
-        /// </summary>
-        private float _maxForce;
-
-        /// <summary>
         ///     The
         /// </summary>
         private Vector2F _rA;
@@ -112,6 +97,21 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The world anchor
         /// </summary>
         private Vector2F _worldAnchor;
+
+        /// <summary>
+        ///     The maximum force
+        /// </summary>
+        private float _maxForce;
+
+        /// <summary>
+        ///     The frequency
+        /// </summary>
+        private float _frequency;
+
+        /// <summary>
+        ///     The damping ratio
+        /// </summary>
+        private float _dampingRatio;
 
         /// <summary>
         ///     The

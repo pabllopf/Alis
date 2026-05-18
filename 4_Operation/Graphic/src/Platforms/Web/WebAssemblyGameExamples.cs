@@ -198,13 +198,13 @@ namespace Alis.Core.Graphic.Platforms.Web
                     // Click to lock pointer (typical FPS behavior)
                     if (context.IsMouseButtonDown(0) && !pointerLocked)
                     {
-                        pointerLocked = context.LockPointer();
+                        pointerLocked = WebAssemblyGameContext.LockPointer();
                     }
 
                     // Escape to unlock pointer
                     if (context.IsKeyDown(ConsoleKey.Escape) && pointerLocked)
                     {
-                        pointerLocked = context.UnlockPointer();
+                        pointerLocked = WebAssemblyGameContext.UnlockPointer();
                     }
 
                     // Get mouse movement for camera control

@@ -412,7 +412,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Locks the pointer for FPS games
         /// </summary>
-        public bool LockPointer()
+        public static bool LockPointer()
         {
             return WebAssemblyInputContext.LockPointer();
         }
@@ -420,7 +420,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Unlocks the pointer
         /// </summary>
-        public bool UnlockPointer()
+        public static bool UnlockPointer()
         {
             return WebAssemblyInputContext.UnlockPointer();
         }
@@ -428,7 +428,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Checks if the pointer is locked
         /// </summary>
-        public bool IsPointerLocked()
+        public static bool IsPointerLocked()
         {
             return WebAssemblyInputContext.IsPointerLocked();
         }
