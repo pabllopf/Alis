@@ -208,7 +208,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public bool IsMouseButtonDown(int button)
         {
-            _platform.GetMouseState(out int x, out int y, out bool[] buttons);
+            _platform.GetMouseState(out _, out _, out bool[] buttons);
             return button >= 0 && button < buttons.Length && buttons[button];
         }
 
