@@ -174,7 +174,6 @@ namespace Alis.Core.Graphic.Platforms.Web
                     int width = context.GetWidth();
                     int height = context.GetHeight();
                     float aspectRatio = context.GetAspectRatio();
-                    float devicePixelRatio = WebAssemblyDisplayManager.GetDevicePixelRatio();
 
                     // Check orientation for responsive layout
                     ScreenOrientation orientation = context.DisplayManager.GetOrientation();
