@@ -450,7 +450,7 @@ namespace Alis.Extension.Graphic.Glfw
             get
             {
                 GlfwNative.GetWindowPosition(Window, out int x, out int y);
-                GlfwNative.GetWindowFrameSize(Window, out int l, out int t, out int dummy1, out int dummy2);
+                GlfwNative.GetWindowFrameSize(Window, out int l, out int t, out _, out _);
                 return new Point(x - l, y - t);
             }
             set
