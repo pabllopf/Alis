@@ -183,7 +183,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         private void UpdateMouseState()
         {
-            _platform.GetMouseState(out _lastMouseX, out _lastMouseY, out bool[] buttons);
+            _platform.GetMouseState(out _lastMouseX, out _lastMouseY, out _);
             _lastMouseWheelDelta = _platform.GetMouseWheel();
         }
 
@@ -192,7 +192,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public void GetMousePosition(out int x, out int y)
         {
-            _platform.GetMouseState(out x, out y, out bool[] buttons);
+            _platform.GetMouseState(out x, out y, out _);
         }
 
         /// <summary>
