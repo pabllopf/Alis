@@ -36,65 +36,30 @@ namespace Alis.Extension.Graphic.Sfml.Windows
     /// </summary>
     public class KeyEventArgs : EventArgs
     {
-        /// <summary>Is the Alt modifier pressed?</summary>
-        private bool alt;
-
-        /// <summary>Code of the key (see KeyCode enum)</summary>
-        private Keyboard.Key code;
-
-        /// <summary>Is the Control modifier pressed?</summary>
-        private bool control;
-
-        /// <summary>Is the Shift modifier pressed?</summary>
-        private bool shift;
-
-        /// <summary>Is the System modifier pressed?</summary>
-        private bool system;
-
         /// <summary>
         ///     Gets or sets whether the Alt modifier is pressed
         /// </summary>
-        public bool Alt
-        {
-            get => alt;
-            set => alt = value;
-        }
+        public bool Alt { get; set; }
 
         /// <summary>
         ///     Gets or sets the code of the key (see KeyCode enum)
         /// </summary>
-        public Keyboard.Key Code
-        {
-            get => code;
-            set => code = value;
-        }
+        public Keyboard.Key Code { get; set; }
 
         /// <summary>
         ///     Gets or sets whether the Control modifier is pressed
         /// </summary>
-        public bool Control
-        {
-            get => control;
-            set => control = value;
-        }
+        public bool Control { get; set; }
 
         /// <summary>
         ///     Gets or sets whether the Shift modifier is pressed
         /// </summary>
-        public bool Shift
-        {
-            get => shift;
-            set => shift = value;
-        }
+        public bool Shift { get; set; }
 
         /// <summary>
         ///     Gets or sets whether the System modifier is pressed
         /// </summary>
-        public bool System
-        {
-            get => system;
-            set => system = value;
-        }
+        public bool System { get; set; }
 
         /// <summary>
         ///     Construct the key arguments from a key event

@@ -404,7 +404,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Checks if currently in fullscreen
         /// </summary>
-        public bool IsFullscreen()
+        public static bool IsFullscreen()
         {
             return WebAssemblyDisplayManager.IsFullscreen();
         }

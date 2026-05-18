@@ -117,17 +117,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         public ImNodesStyleFlags Flags { get; set; }
 
         /// <summary>
-        ///     The colors
-        /// </summary>
-        private uint[] colors;
-
-        /// <summary>
         ///     Gets or sets the colors
         /// </summary>
-        public uint[] Colors
-        {
-            get => colors;
-            set => colors = value;
-        }
+        public uint[] Colors { get; set; }
     }
 }

@@ -327,17 +327,10 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// </summary>
         public struct Info
         {
-            /// <summary>The font family</summary>
-            private string family;
-
             /// <summary>
             ///     Gets or sets the font family
             /// </summary>
-            public string Family
-            {
-                get => family;
-                set => family = value;
-            }
+            public string Family { get; set; }
         }
 
 

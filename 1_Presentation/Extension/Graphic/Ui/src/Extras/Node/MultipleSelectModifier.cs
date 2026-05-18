@@ -35,17 +35,8 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
     public struct MultipleSelectModifier
     {
         /// <summary>
-        ///     The modifier
-        /// </summary>
-        private byte[] modifier;
-
-        /// <summary>
         ///     Gets or sets the modifier
         /// </summary>
-        public byte[] Modifier
-        {
-            get => modifier;
-            set => modifier = value;
-        }
+        public byte[] Modifier { get; set; }
     }
 }

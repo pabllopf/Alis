@@ -37,59 +37,23 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Image
     public struct ImgAnimation
     {
         /// <summary>
-        ///     The width
-        /// </summary>
-        private int w;
-
-        /// <summary>
-        ///     The height
-        /// </summary>
-        private int h;
-
-        /// <summary>
-        ///     The frames
-        /// </summary>
-        private IntPtr frames;
-
-        /// <summary>
-        ///     The delays
-        /// </summary>
-        private IntPtr delays;
-
-        /// <summary>
         ///     Gets or sets the width
         /// </summary>
-        public int W
-        {
-            get => w;
-            set => w = value;
-        }
+        public int W { get; set; }
 
         /// <summary>
         ///     Gets or sets the height
         /// </summary>
-        public int H
-        {
-            get => h;
-            set => h = value;
-        }
+        public int H { get; set; }
 
         /// <summary>
         ///     Gets or sets the frames
         /// </summary>
-        public IntPtr Frames
-        {
-            get => frames;
-            set => frames = value;
-        }
+        public IntPtr Frames { get; set; }
 
         /// <summary>
         ///     Gets or sets the delays
         /// </summary>
-        public IntPtr Delays
-        {
-            get => delays;
-            set => delays = value;
-        }
+        public IntPtr Delays { get; set; }
     }
 }

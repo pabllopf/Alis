@@ -36,29 +36,15 @@ namespace Alis.Extension.Graphic.Sfml.Windows
     /// </summary>
     public class JoystickButtonEventArgs : EventArgs
     {
-        /// <summary>Index of the button</summary>
-        private uint button;
-
-        /// <summary>Index of the joystick which triggered the event</summary>
-        private uint joystickId;
-
         /// <summary>
         ///     Gets or sets the index of the button
         /// </summary>
-        public uint Button
-        {
-            get => button;
-            set => button = value;
-        }
+        public uint Button { get; set; }
 
         /// <summary>
         ///     Gets or sets the index of the joystick which triggered the event
         /// </summary>
-        public uint JoystickId
-        {
-            get => joystickId;
-            set => joystickId = value;
-        }
+        public uint JoystickId { get; set; }
 
         /// <summary>
         ///     Construct the joystick button arguments from a joystick button event
