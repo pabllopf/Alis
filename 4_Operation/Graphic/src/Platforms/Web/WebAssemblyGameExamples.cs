@@ -210,10 +210,7 @@ namespace Alis.Core.Graphic.Platforms.Web
                     // Get mouse movement for camera control
                     if (pointerLocked)
                     {
-                        context.GetMousePosition(out int mouseX, out int mouseY);
-
-                        // Use mouseX and mouseY for camera rotation
-                        // Calculate delta from center of screen for smooth look
+                        context.GetMousePosition(out _, out _);
                     }
 
                     // Keyboard movement
