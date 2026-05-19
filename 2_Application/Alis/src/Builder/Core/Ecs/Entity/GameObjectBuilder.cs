@@ -54,11 +54,6 @@ namespace Alis.Builder.Core.Ecs.Entity
         private readonly Context context;
 
         /// <summary>
-        ///     The scene
-        /// </summary>
-        private readonly Scene scene;
-
-        /// <summary>
         ///     The game object
         /// </summary>
         private GameObject gameObject;
@@ -83,7 +78,6 @@ namespace Alis.Builder.Core.Ecs.Entity
         /// <param name="context">The context</param>
         public GameObjectBuilder(Scene scene, Context context)
         {
-            this.scene = scene;
             gameObject = scene.Create();
             this.context = context;
         }
