@@ -51,10 +51,10 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// The window height
         /// </summary>
         private int _windowHeight;
-        // TODO: [S4487] Suppress: Required for interface contract, SetTitle sets window title
         /// <summary>
         /// The window title
         /// </summary>
+        [SuppressMessage("Sonar", "S4487", Justification = "Required for interface contract, SetTitle sets window title")]
         private string _windowTitle;
         /// <summary>
         /// The is window visible
