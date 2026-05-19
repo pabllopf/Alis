@@ -148,18 +148,18 @@ namespace Alis.Core.Aspect.Logging.Core
 
 
         /// <summary>
-        ///     Logs the critical using the specified message
-        /// </summary>
-        /// <param name="message">The message</param>
-        public void LogCritical(string message) => Log(LogLevel.Critical, message);
-
-
-        /// <summary>
         ///     Logs the error using the specified message
         /// </summary>
         /// <param name="message">The message</param>
         /// <param name="exception">The exception</param>
         public void LogError(string message, Exception exception) => Log(LogLevel.Error, message, exception);
+
+
+        /// <summary>
+        ///     Logs the critical using the specified message
+        /// </summary>
+        /// <param name="message">The message</param>
+        public void LogCritical(string message) => Log(LogLevel.Critical, message);
 
 
         /// <summary>
