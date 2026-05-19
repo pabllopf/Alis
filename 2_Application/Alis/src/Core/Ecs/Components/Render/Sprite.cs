@@ -184,18 +184,18 @@ namespace Alis.Core.Ecs.Components.Render
         /// <summary>
         ///     Initializes the shared shaders and quad buffers (run once)
         /// </summary>
-        private void InitializeSharedResources()
+        private static void InitializeSharedResources(Context context)
         {
             if (SharedInitialized)
             {
                 return;
             }
 
-            string version = Context.Setting.Graphic.PreviewMode ? "#version 300 es\n" : "#version 330 core\n";
-            string precision = Context.Setting.Graphic.PreviewMode ? "precision mediump float;\n" : string.Empty;
+            string version = context.Setting.Graphic.PreviewMode ? "#version 300 es\n" : "#version 330 core\n";
+            string precision = context.Setting.Graphic.PreviewMode ? "precision mediump float;\n" : string.Empty;
 
             string vertexShaderSource = version +
-                                        (Context.Setting.Graphic.PreviewMode ? "in vec3 aPos;\nin vec2 aTexCoord;\nout vec2 TexCoord;\n" : "layout (location = 0) in vec3 aPos;\nlayout (location = 1) in vec2 aTexCoord;\nout vec2 TexCoord;\n") +
+                                        (context.Setting.Graphic.PreviewMode ? "in vec3 aPos;\nin vec2 aTexCoord;\nout vec2 TexCoord;\n" : "layout (location = 0) in vec3 aPos;\nlayout (location = 1) in vec2 aTexCoord;\nout vec2 TexCoord;\n") +
                                         "uniform vec2 offset;\n" +
                                         "uniform vec2 scale;\n" +
                                         "uniform float rotation;\n" +
@@ -213,7 +213,7 @@ namespace Alis.Core.Ecs.Components.Render
                                         "}\n";
 
             string fragmentShaderSource = version + precision +
-                                          (Context.Setting.Graphic.PreviewMode ? "in vec2 TexCoord;\nout vec4 FragColor;\n" : "in vec2 TexCoord;\nout vec4 FragColor;\n") +
+                                          (context.Setting.Graphic.PreviewMode ? "in vec2 TexCoord;\nout vec4 FragColor;\n" : "in vec2 TexCoord;\nout vec4 FragColor;\n") +
                                           "uniform sampler2D texture1;\n" +
                                           "void main() {\n" +
                                           "    FragColor = texture(texture1, TexCoord);\n" +
@@ -362,7 +362,7 @@ namespace Alis.Core.Ecs.Components.Render
             if (!string.IsNullOrEmpty(NameFile) && (Path == string.Empty))
             {
                 Path = "";
-                InitializeSharedResources();
+                InitializeSharedResources(Context);
                 LoadTexture(Path);
             }
 
