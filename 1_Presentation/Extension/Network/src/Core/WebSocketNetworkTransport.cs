@@ -56,11 +56,6 @@ namespace Alis.Extension.Network.Core
         private readonly string _host;
 
         /// <summary>
-        ///     The listen uri
-        /// </summary>
-        private readonly Uri _listenUri;
-
-        /// <summary>
         ///     The lock object
         /// </summary>
         private readonly object _lockObject = new object();
@@ -103,9 +98,9 @@ namespace Alis.Extension.Network.Core
             _serializer = new NetworkSerializer();
             _clientSockets = new ConcurrentDictionary<string, WebSocket>();
             _messageQueue = new ConcurrentQueue<(string, NetworkMessageEnvelope)>();
-            _listenUri = listenUri ?? new Uri("ws://127.0.0.1:8888/");
-            _host = _listenUri.Host;
-            _port = _listenUri.Port > 0 ? _listenUri.Port : 8888;
+            Uri listenUriValue = listenUri ?? new Uri("ws://127.0.0.1:8888/");
+            _host = listenUriValue.Host;
+            _port = listenUriValue.Port > 0 ? listenUriValue.Port : 8888;
         }
 
         /// <summary>
