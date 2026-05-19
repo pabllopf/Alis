@@ -237,7 +237,7 @@ if ($dialog.ShowDialog() -eq 'OK') {{
         /// </summary>
         private static string BuildFilterString(List<FilePickerFilter> filters)
         {
-            Logger.Trace($"Building filter string for {filters.Count} filter(s).");
+            Logger.Trace($"Building filter string for {filters?.Count ?? 0} filter(s).");
 
             if (filters == null || filters.Count == 0)
             {
