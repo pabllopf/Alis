@@ -794,7 +794,6 @@ namespace Alis.Extension.Updater
             int totalSizeArchive = 0;
             int totalEntryArchive = 0;
 
-            // Resolve the target directory once to use for path traversal checks
             string targetDirectory = Path.GetFullPath(ProgramFolder);
             Directory.CreateDirectory(targetDirectory);
 
@@ -810,58 +809,82 @@ namespace Alis.Extension.Updater
                         throw new InvalidOperationException("Exceeded the maximum number of entries threshold.");
                     }
 
-                    // Prevent path traversal: reject entries with ".." that would escape the target directory
-                    string entryFullPath = Path.GetFullPath(Path.Combine(targetDirectory, entry.FullName));
-                    if (!entryFullPath.StartsWith(targetDirectory, StringComparison.Ordinal))
+                    string entryFullPath = GetSafeEntryPath(entry, targetDirectory);
+
+                    totalSizeArchive += ValidateAndReadEntrySize(entry, totalSizeArchive);
+
+                    if (totalSizeArchive > ThresholdSize)
                     {
-                        throw new InvalidOperationException(
-                            $"Entry '{entry.FullName}' contains path traversal characters and is blocked.");
+                        throw new InvalidOperationException("Exceeded the maximum uncompressed size threshold.");
                     }
 
-                    using (Stream entryStream = entry.Open())
-                    {
-                        byte[] buffer = new byte[4096];
-                        int totalSizeEntry = 0;
-                        int numBytesRead;
-
-                        while ((numBytesRead = entryStream.Read(buffer, 0, buffer.Length)) > 0)
-                        {
-                            totalSizeEntry += numBytesRead;
-                            totalSizeArchive += numBytesRead;
-
-                            double compressionRatio = entry.CompressedLength > 0
-                                ? (double)totalSizeEntry / entry.CompressedLength
-                                : 1.0;
-
-                            if (compressionRatio > ThresholdRatio)
-                            {
-                                throw new InvalidOperationException("Exceeded the maximum compression ratio threshold.");
-                            }
-                        }
-
-                        if (totalSizeArchive > ThresholdSize)
-                        {
-                            throw new InvalidOperationException("Exceeded the maximum uncompressed size threshold.");
-                        }
-                    }
-
-                    // Extract the entry to the target directory using the already-validated safe path
-                    if (string.IsNullOrEmpty(entry.Name))
-                    {
-                        // Directory entry - ensure it exists
-                        Directory.CreateDirectory(entryFullPath);
-                    }
-                    else
-                    {
-                        // File entry - ensure the parent directory exists, then extract
-                        Directory.CreateDirectory(Path.GetDirectoryName(entryFullPath));
-                        entry.ExtractToFile(entryFullPath, overwrite: true);
-                    }
+                    ExtractEntry(entry, entryFullPath);
                 }
             }
 
             OnUpdateProgressChanged(0.7f, "Extracted and replaced.");
             Logger.Info($"Zip extracted to '{ProgramFolder}'.");
+        }
+
+        /// <summary>
+        ///     Validates path traversal and returns the safe full path for the entry
+        /// </summary>
+        private static string GetSafeEntryPath(ZipArchiveEntry entry, string targetDirectory)
+        {
+            string entryFullPath = Path.GetFullPath(Path.Combine(targetDirectory, entry.FullName));
+            if (!entryFullPath.StartsWith(targetDirectory, StringComparison.Ordinal))
+            {
+                throw new InvalidOperationException(
+                    $"Entry '{entry.FullName}' contains path traversal characters and is blocked.");
+            }
+
+            return entryFullPath;
+        }
+
+        /// <summary>
+        ///     Validates compression ratio while reading entry and returns total bytes read
+        /// </summary>
+        private static int ValidateAndReadEntrySize(ZipArchiveEntry entry, int totalSizeArchive)
+        {
+            int totalSizeEntry = 0;
+            byte[] buffer = new byte[4096];
+            int numBytesRead;
+
+            using (Stream entryStream = entry.Open())
+            {
+                while ((numBytesRead = entryStream.Read(buffer, 0, buffer.Length)) > 0)
+                {
+                    totalSizeEntry += numBytesRead;
+                    totalSizeArchive += numBytesRead;
+
+                    double compressionRatio = entry.CompressedLength > 0
+                        ? (double)totalSizeEntry / entry.CompressedLength
+                        : 1.0;
+
+                    if (compressionRatio > ThresholdRatio)
+                    {
+                        throw new InvalidOperationException("Exceeded the maximum compression ratio threshold.");
+                    }
+                }
+            }
+
+            return totalSizeArchive;
+        }
+
+        /// <summary>
+        ///     Extracts a single entry to the target path
+        /// </summary>
+        private static void ExtractEntry(ZipArchiveEntry entry, string entryFullPath)
+        {
+            if (string.IsNullOrEmpty(entry.Name))
+            {
+                Directory.CreateDirectory(entryFullPath);
+            }
+            else
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(entryFullPath));
+                entry.ExtractToFile(entryFullPath, overwrite: true);
+            }
         }
 
         /// <summary>
