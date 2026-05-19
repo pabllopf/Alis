@@ -41,7 +41,7 @@ namespace Alis.Extension.Payment.Stripe
     /// <summary>
     ///     The store manager class
     /// </summary>
-    public class StoreManager : AManager, IStoreManager, IDisposable
+    public sealed class StoreManager : AManager, IStoreManager, IDisposable
     {
         /// <summary>
         ///     The products

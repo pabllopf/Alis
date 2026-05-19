@@ -42,7 +42,7 @@ namespace Alis.Extension.Network.Client
     /// <summary>
     ///     Client-side network manager implementation
     /// </summary>
-    public class NetworkClientManager : INetworkClientManager
+    public sealed class NetworkClientManager : INetworkClientManager
     {
         /// <summary>
         ///     The id

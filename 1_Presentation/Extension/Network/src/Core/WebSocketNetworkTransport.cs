@@ -43,7 +43,7 @@ namespace Alis.Extension.Network.Core
     /// <summary>
     ///     WebSocket-based network transport implementation
     /// </summary>
-    public class WebSocketNetworkTransport : INetworkTransport
+    public sealed class WebSocketNetworkTransport : INetworkTransport
     {
         /// <summary>
         ///     The client sockets

@@ -41,7 +41,7 @@ namespace Alis.Extension.Network.Server
     /// <summary>
     ///     Server-side network manager implementation
     /// </summary>
-    public class NetworkServerManager : INetworkServerManager
+    public sealed class NetworkServerManager : INetworkServerManager
     {
         /// <summary>
         ///     The client to session map
