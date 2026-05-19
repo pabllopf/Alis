@@ -553,13 +553,11 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             {
                 if (c == null)
                 {
-                    // Parameters intentionally swapped: Edge+Polygon is non-symmetrical
-                    c = new Contact(fixtureB, indexB, fixtureA, indexA);
+                    c = new Contact(fA: fixtureB, indexA: indexB, fB: fixtureA, indexB: indexA);
                 }
                 else
                 {
-                    // Parameters intentionally swapped: Edge+Polygon is non-symmetrical
-                    c.Reset(fixtureB, indexB, fixtureA, indexA);
+                    c.Reset(fA: fixtureB, indexA: indexB, fB: fixtureA, indexB: indexA);
                 }
             }
 
