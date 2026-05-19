@@ -91,8 +91,13 @@ namespace Alis.Extension.Language.Translator
         private ILanguage currentLanguage;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="TranslationManager" /> class with default providers
+        ///     Error message for null or empty language code
         /// </summary>
+        private const string LanguageCodeNullError = LanguageCodeNullError;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="TranslationManager" /> class with default providers
+        /// </summary>>
         public TranslationManager()
             : this(new LanguageProvider(), new MemoryTranslationProvider(),
                 new MemoryTranslationCache(), new PluralizationEngine())
@@ -159,7 +164,7 @@ namespace Alis.Extension.Language.Translator
         {
             if (string.IsNullOrWhiteSpace(languageCode))
             {
-                throw new ArgumentNullException(nameof(languageCode), "Language code cannot be null or empty");
+                throw new ArgumentNullException(nameof(languageCode), LanguageCodeNullError);
             }
 
             lock (syncLock)
@@ -191,7 +196,7 @@ namespace Alis.Extension.Language.Translator
 
             if (string.IsNullOrWhiteSpace(code))
             {
-                throw new ArgumentNullException(nameof(code), "Language code cannot be null or empty");
+                throw new ArgumentNullException(nameof(code), LanguageCodeNullError);
             }
 
             lock (syncLock)
@@ -251,7 +256,7 @@ namespace Alis.Extension.Language.Translator
 
             if (string.IsNullOrWhiteSpace(code))
             {
-                throw new ArgumentNullException(nameof(code), "Language code cannot be null or empty");
+                throw new ArgumentNullException(nameof(code), LanguageCodeNullError);
             }
 
             Lang language = new Lang(code, name);
@@ -385,7 +390,7 @@ namespace Alis.Extension.Language.Translator
         {
             if (string.IsNullOrWhiteSpace(languageCode))
             {
-                throw new ArgumentNullException(nameof(languageCode), "Language code cannot be null or empty");
+                throw new ArgumentNullException(nameof(languageCode), LanguageCodeNullError);
             }
 
             if (string.IsNullOrWhiteSpace(key))
