@@ -52,14 +52,6 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         private readonly Dictionary<int, GamepadInputState> _previousGamepadStates;
         /// <summary>
-        /// The last mouse
-        /// </summary>
-        private int _lastMouseX;
-        /// <summary>
-        /// The last mouse
-        /// </summary>
-        private int _lastMouseY;
-        /// <summary>
         /// The last mouse wheel delta
         /// </summary>
         private float _lastMouseWheelDelta;
@@ -71,8 +63,6 @@ namespace Alis.Core.Graphic.Platforms.Web
             _platform = platform ?? throw new ArgumentNullException(nameof(platform));
             _keyBindings = new Dictionary<string, KeyBinding>();
             _previousGamepadStates = new Dictionary<int, GamepadInputState>();
-            _lastMouseX = 0;
-            _lastMouseY = 0;
             _lastMouseWheelDelta = 0.0f;
         }
 
@@ -184,7 +174,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         private void UpdateMouseState()
         {
-            _platform.GetMouseState(out _lastMouseX, out _lastMouseY, out _);
+            _platform.GetMouseState(out _, out _, out _);
             _lastMouseWheelDelta = _platform.GetMouseWheel();
         }
 
