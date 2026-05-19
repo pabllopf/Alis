@@ -51,11 +51,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// The window height
         /// </summary>
         private int _windowHeight;
-        /// <summary>
-        /// The window title
-        /// </summary>
-        [SuppressMessage("Sonar", "S4487", Justification = "Required for interface contract, SetTitle sets window title")]
-        private string _windowTitle;
+
         /// <summary>
         /// The is window visible
         /// </summary>
@@ -126,7 +122,6 @@ namespace Alis.Core.Graphic.Platforms.Web
         {
             _windowWidth = 800;
             _windowHeight = 600;
-            _windowTitle = "WebAssembly Application";
             _isWindowVisible = false;
             _windowShouldClose = false;
             _isInitialized = false;
@@ -173,7 +168,6 @@ namespace Alis.Core.Graphic.Platforms.Web
 
             _windowWidth = width;
             _windowHeight = height;
-            _windowTitle = title;
 
             try
             {
@@ -599,7 +593,6 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <param name="title">The title</param>
         public void SetTitle(string title)
         {
-            _windowTitle = title;
             EmscriptenWeb.SetWindowTitle(title);
         }
 
