@@ -358,8 +358,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             WebAssemblyConfiguration config = new WebAssemblyConfiguration();
             if (OperatingSystem.IsBrowser())
             {
-                WebAssemblyGameContext context = new WebAssemblyGameContext(config);
-                Assert.Equal(60, context.GetRefreshRate());
+                Assert.Equal(60, WebAssemblyGameContext.GetRefreshRate());
             }
         }
 
