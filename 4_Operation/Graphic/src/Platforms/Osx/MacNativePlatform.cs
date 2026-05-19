@@ -674,6 +674,7 @@ namespace Alis.Core.Graphic.Platforms.Osx
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
+#pragma warning disable S2696
         public IntPtr GetProcAddress(string name)
         {
             // OpenGL dynamic loading
@@ -691,6 +692,7 @@ namespace Alis.Core.Graphic.Platforms.Osx
 
             return ObjectiveCInterop.Dlsym(_openGlHandle, name);
         }
+#pragma warning restore S2696
 
 
         /// <summary>
