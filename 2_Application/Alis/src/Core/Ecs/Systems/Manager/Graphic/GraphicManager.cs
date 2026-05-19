@@ -90,11 +90,6 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         private INativePlatform platform;
 
         /// <summary>
-        ///     The console key
-        /// </summary>
-        private HashSet<ConsoleKey> previousKeys = new HashSet<ConsoleKey>();
-
-        /// <summary>
         ///     Initializes a new instance of the <see cref="GraphicManager" /> class
         /// </summary>
         public GraphicManager(Context context) : base(context)
@@ -268,7 +263,6 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             }
 
             // Actualizar los estados para el siguiente frame
-            previousKeys = new HashSet<ConsoleKey>(currentKeys);
             currentKeys = newKeys;
 
 
