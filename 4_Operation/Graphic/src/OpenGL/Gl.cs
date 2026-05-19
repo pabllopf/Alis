@@ -98,17 +98,17 @@ namespace Alis.Core.Graphic.OpenGL
         /// <summary>
         ///     Temporary array for single uint OpenGL operations
         /// </summary>
-        public static uint[] Uint1 = new uint[1];
+        private static readonly uint[] Uint1 = new uint[1];
 
         /// <summary>
         ///     Temporary array for single int OpenGL operations
         /// </summary>
-        public static int[] Int1 = new int[1];
+        private static readonly int[] Int1 = new int[1];
 
         /// <summary>
         ///     Temporary array for 4x4 matrix float operations
         /// </summary>
-        public static float[] Matrix4Float = new float[16];
+        private static readonly float[] Matrix4Float = new float[16];
 
         /// <summary>
         ///     The get string
