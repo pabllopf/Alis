@@ -492,7 +492,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Gets the device battery level
         /// </summary>
-        public float GetBatteryLevel()
+        public static float GetBatteryLevel()
         {
             return WebAssemblyDisplayManager.GetBatteryLevel();
         }
@@ -500,7 +500,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Checks if the device is charging
         /// </summary>
-        public bool IsCharging()
+        public static bool IsCharging()
         {
             return WebAssemblyDisplayManager.IsCharging();
         }
@@ -508,7 +508,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Checks if the browser is online
         /// </summary>
-        public bool IsOnline()
+        public static bool IsOnline()
         {
             return WebAssemblyDisplayManager.IsOnline();
         }
@@ -516,7 +516,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Gets the screen refresh rate
         /// </summary>
-        public int GetRefreshRate()
+        public static int GetRefreshRate()
         {
             return WebAssemblyDisplayManager.RefreshRate;
         }
