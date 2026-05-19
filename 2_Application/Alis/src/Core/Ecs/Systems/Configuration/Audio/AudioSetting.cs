@@ -35,12 +35,12 @@ namespace Alis.Core.Ecs.Systems.Configuration.Audio
     ///     The audio setting
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public struct AudioSetting(int volume = 100, bool mute = false) : IAudioSetting
+    public struct AudioSetting(int volume, bool mute) : IAudioSetting
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="AudioSetting" /> class
+        ///     Initializes a new instance of the <see cref="AudioSetting" /> class.
         /// </summary>
-        public AudioSetting() : this(100)
+        public AudioSetting() : this(100, false)
         {
         }
 
