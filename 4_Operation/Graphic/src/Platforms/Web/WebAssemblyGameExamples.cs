@@ -216,15 +216,22 @@ namespace Alis.Core.Graphic.Platforms.Web
                     }
 
                     // Keyboard movement
-                    float moveX = 0, moveY = 0;
                     if (context.IsKeyDown(ConsoleKey.W))
-                        moveY += 1.0f;
+                    {
+                        // Handle forward movement
+                    }
                     if (context.IsKeyDown(ConsoleKey.S))
-                        moveY -= 1.0f;
+                    {
+                        // Handle backward movement
+                    }
                     if (context.IsKeyDown(ConsoleKey.A))
-                        moveX -= 1.0f;
+                    {
+                        // Handle left movement
+                    }
                     if (context.IsKeyDown(ConsoleKey.D))
-                        moveX += 1.0f;
+                    {
+                        // Handle right movement
+                    }
 
                 });
             }
@@ -496,16 +503,22 @@ namespace Alis.Core.Graphic.Platforms.Web
                 gameContext.Run((context) =>
                 {
                     // Input handling
-                    float moveX = 0, moveY = 0;
-
                     if (context.IsActionActive("Move_Forward"))
-                        moveY += 1.0f;
+                    {
+                        // Handle forward movement
+                    }
                     if (context.IsActionActive("Move_Backward"))
-                        moveY -= 1.0f;
+                    {
+                        // Handle backward movement
+                    }
                     if (context.IsActionActive("Move_Left"))
-                        moveX -= 1.0f;
+                    {
+                        // Handle left movement
+                    }
                     if (context.IsActionActive("Move_Right"))
-                        moveX += 1.0f;
+                    {
+                        // Handle right movement
+                    }
 
                     if (context.IsActionJustPressed("Jump"))
                     {
