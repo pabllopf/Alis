@@ -46,8 +46,8 @@
 
     </PropertyGroup>
 
-    <ItemGroup>
-        <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute"/>
+     <ItemGroup>
+        <AssemblyAttribute Condition="$(TargetFramework.Contains('net8'))" Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute"/>
     </ItemGroup>
 
     <ItemGroup>
