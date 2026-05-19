@@ -57,20 +57,6 @@ if ($dialog.ShowDialog() -eq 'OK') {{
 ";
 
         /// <summary>
-        ///     The file save script
-        /// </summary>
-        private const string FileSaveScript = @"
-Add-Type -AssemblyName System.Windows.Forms
-$dialog = New-Object System.Windows.Forms.SaveFileDialog
-$dialog.Title = '{0}'
-{1}
-{2}
-if ($dialog.ShowDialog() -eq 'OK') {{
-    $dialog.FileName
-}}
-";
-
-        /// <summary>
         ///     The folder select script
         /// </summary>
         private const string FolderSelectScript = @"
