@@ -52,6 +52,11 @@ namespace Alis.Extension.Cloud.GoogleDrive
     public class GoogleDriveCloudManager : AManager, ICloudManager, IDisposable
     {
         /// <summary>
+        ///     Error message for not initialized state
+        /// </summary>
+        private const string NotInitializedError = "Google Drive manager is not initialized. Call InitializeAsync first.";
+
+        /// <summary>
         ///     The Google Drive service
         /// </summary>
         private DriveService _driveService;
@@ -126,7 +131,7 @@ namespace Alis.Extension.Cloud.GoogleDrive
         {
             if (!IsInitialized)
             {
-                throw new InvalidOperationException("Google Drive manager is not initialized. Call InitializeAsync first.");
+                throw new InvalidOperationException(NotInitializedError);
             }
 
             if (!File.Exists(localFilePath))
@@ -173,7 +178,7 @@ namespace Alis.Extension.Cloud.GoogleDrive
         {
             if (!IsInitialized)
             {
-                throw new InvalidOperationException("Google Drive manager is not initialized. Call InitializeAsync first.");
+                throw new InvalidOperationException(NotInitializedError);
             }
 
             try
@@ -214,7 +219,7 @@ namespace Alis.Extension.Cloud.GoogleDrive
         {
             if (!IsInitialized)
             {
-                throw new InvalidOperationException("Google Drive manager is not initialized. Call InitializeAsync first.");
+                throw new InvalidOperationException(NotInitializedError);
             }
 
             try
@@ -251,7 +256,7 @@ namespace Alis.Extension.Cloud.GoogleDrive
         {
             if (!IsInitialized)
             {
-                throw new InvalidOperationException("Google Drive manager is not initialized. Call InitializeAsync first.");
+                throw new InvalidOperationException(NotInitializedError);
             }
 
             try
@@ -281,7 +286,7 @@ namespace Alis.Extension.Cloud.GoogleDrive
         {
             if (!IsInitialized)
             {
-                throw new InvalidOperationException("Google Drive manager is not initialized. Call InitializeAsync first.");
+                throw new InvalidOperationException(NotInitializedError);
             }
 
             try
