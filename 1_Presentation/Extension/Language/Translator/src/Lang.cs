@@ -39,7 +39,7 @@ namespace Alis.Extension.Language.Translator
     ///     This class implements the ILanguage interface and provides a concrete implementation
     ///     for managing language metadata including language codes, display names, and culture information.
     /// </remarks>
-    public class Lang : ILanguage
+    public sealed class Lang : ILanguage
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="Lang" /> class

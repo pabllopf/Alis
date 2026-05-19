@@ -250,12 +250,17 @@ namespace Alis.Core.Ecs
         /// </summary>
         public CommandBuffer WorldUpdateCommandBuffer;
 
+        private static readonly object _idLock = new object();
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="Scene" /> class
         /// </summary>
         public Scene()
         {
-            Id = _nextWorldId++;
+            lock (_idLock)
+            {
+                Id = _nextWorldId++;
+            }
 
             GlobalWorldTables.Worlds[Id] = this;
 
