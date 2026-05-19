@@ -51,12 +51,12 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// <summary>
         ///     The component tag location table
         /// </summary>
-        public static byte[ /*archetype id*/][ /*component id*/] ComponentTagLocationTable = [];
+        internal static byte[ /*archetype id*/][ /*component id*/] ComponentTagLocationTable = [];
 
         /// <summary>
         ///     The scene
         /// </summary>
-        internal static FastestTable<Scene> Worlds = new FastestTable<Scene>(2);
+        internal static readonly FastestTable<Scene> Worlds = new FastestTable<Scene>(2);
 
         /// <summary>
         ///     The buffer change lock
