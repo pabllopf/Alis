@@ -191,7 +191,7 @@ namespace Alis.Core.Physic.Common.TextureTools
         /// </summary>
         /// <param name="data"></param>
         /// <param name="offset"></param>
-        public void ApplyData(sbyte[,] data, Vector2F offset = default(Vector2F))
+        internal void ApplyData(sbyte[,] data, Vector2F offset = default(Vector2F))
         {
             for (int x = 0; x < data.GetUpperBound(0); x++)
             {
