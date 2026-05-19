@@ -365,12 +365,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Gets the screen refresh rate
         /// </summary>
-        public static int GetRefreshRate()
-        {
-            // WebAssembly typically uses 60 FPS for requestAnimationFrame
-            // This could be extended to use higher rates if supported
-            return 60;
-        }
+        public const int RefreshRate = 60;
 
         /// <summary>
         ///     Captures a screenshot and saves it to a file
