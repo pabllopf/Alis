@@ -160,17 +160,16 @@ namespace Alis.Extension.Math.ProceduralDungeon.Models
         {
             if (BoardWidth <= 0)
             {
-                throw new ArgumentException("Board width must be greater than 0.", nameof(BoardWidth));
-            }
+                throw new ArgumentException("Board width must be greater than 0.");
 
             if (BoardHeight <= 0)
             {
-                throw new ArgumentException("Board height must be greater than 0.", nameof(BoardHeight));
+                throw new ArgumentException("Board height must be greater than 0.");
             }
 
             if (NumberOfRooms < 2)
             {
-                throw new ArgumentException("Number of rooms must be at least 2.", nameof(NumberOfRooms));
+                throw new ArgumentException("Number of rooms must be at least 2.");
             }
 
             if (FirstRoomWidth <= 0 || FirstRoomHeight <= 0)
