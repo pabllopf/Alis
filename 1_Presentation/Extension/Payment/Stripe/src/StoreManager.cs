@@ -170,9 +170,13 @@ namespace Alis.Extension.Payment.Stripe
                 throw new ArgumentException("Product price must be greater than zero.", nameof(product));
             }
 
-            product.Currency = NormalizeCurrency(string.IsNullOrWhiteSpace(product.Currency)
-                ? _configuration != null ? _configuration.DefaultCurrency : "usd"
-                : product.Currency);
+            string currency = product.Currency;
+            if (string.IsNullOrWhiteSpace(currency))
+            {
+                currency = _configuration?.DefaultCurrency ?? "usd";
+            }
+
+            product.Currency = NormalizeCurrency(currency);
 
             _products[product.Id] = product;
         }
