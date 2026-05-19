@@ -59,7 +59,7 @@ namespace Alis.Sample.Flappy.Bird.Web
         /// <summary>
         ///     The is stop
         /// </summary>
-        public static bool IsStop;
+        internal static bool IsStop;
 
         /// <summary>
         ///     The box collider

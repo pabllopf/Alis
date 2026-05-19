@@ -44,12 +44,12 @@ namespace Alis.Sample.Flappy.Bird.Web
         /// <summary>
         ///     The is death
         /// </summary>
-        public static bool IsDeath;
+        internal static bool IsDeath;
 
         /// <summary>
         ///     The time delta
         /// </summary>
-        public static float CounterTimeDeath = 3.0f;
+        internal static float CounterTimeDeath = 3.0f;
 
         /// <summary>
         ///     Gets or sets the value of the bird
