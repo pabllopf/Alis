@@ -138,7 +138,7 @@ namespace Alis.Extension.Cloud.DropBox
                 throw new FileNotFoundException($"Local file not found: {localFilePath}");
             }
 
-            if (!dropboxPath.StartsWith("/"))
+            if (!dropboxPath.StartsWith('/'))
             {
                 dropboxPath = "/" + dropboxPath;
             }
@@ -176,7 +176,7 @@ namespace Alis.Extension.Cloud.DropBox
                 throw new InvalidOperationException(NotInitializedError);
             }
 
-            if (!dropboxPath.StartsWith("/"))
+            if (!dropboxPath.StartsWith('/'))
             {
                 dropboxPath = "/" + dropboxPath;
             }
@@ -256,7 +256,7 @@ namespace Alis.Extension.Cloud.DropBox
                 throw new InvalidOperationException(NotInitializedError);
             }
 
-            if (!dropboxPath.StartsWith("/"))
+            if (!dropboxPath.StartsWith('/'))
             {
                 dropboxPath = "/" + dropboxPath;
             }
@@ -285,7 +285,7 @@ namespace Alis.Extension.Cloud.DropBox
                 throw new InvalidOperationException(NotInitializedError);
             }
 
-            if (!dropboxPath.StartsWith("/"))
+            if (!dropboxPath.StartsWith('/'))
             {
                 dropboxPath = "/" + dropboxPath;
             }
