@@ -77,7 +77,7 @@ namespace Alis.Core.Graphic.Platforms.Osx
         /// <param name="h"></param>
         /// <param name="t"></param>
         /// <returns></returns>
-        public bool Initialize(int w, int h, string t)
+        public bool Initialize(int width, int height, string title)
         {
             ObjectiveCInterop.NSApplicationLoad();
             pool = ObjectiveCInterop.objc_msgSend(ObjectiveCInterop.Class("NSAutoreleasePool"), ObjectiveCInterop.Sel("new"));
@@ -85,7 +85,7 @@ namespace Alis.Core.Graphic.Platforms.Osx
             ObjectiveCInterop.objc_msgSend_void_Long(app, ObjectiveCInterop.Sel("setActivationPolicy:"), MacConstants.NsApplicationActivationPolicyRegular);
             ObjectiveCInterop.objc_msgSend_void_Bool(app, ObjectiveCInterop.Sel("activateIgnoringOtherApps:"), true);
             ObjectiveCInterop.objc_msgSend_void(app, ObjectiveCInterop.Sel("finishLaunching"));
-            window = new MacWindow(w, h, t);
+            window = new MacWindow(width, height, title);
             glContext = new MacOpenGLContext(window);
             ObjectiveCInterop.objc_msgSend_void_IntPtr(window.Handle, ObjectiveCInterop.Sel("makeKeyAndOrderFront:"), IntPtr.Zero);
             distantPast = ObjectiveCInterop.objc_msgSend(ObjectiveCInterop.Class("NSDate"), ObjectiveCInterop.Sel("distantPast"));
@@ -105,13 +105,13 @@ namespace Alis.Core.Graphic.Platforms.Osx
         /// <summary>
         /// </summary>
         /// <param name="t"></param>
-        public void SetTitle(string t) => window?.SetTitle(t);
+        public void SetTitle(string title) => window?.SetTitle(title);
 
         /// <summary>
         /// </summary>
-        /// <param name="w"></param>
-        /// <param name="h"></param>
-        public void SetSize(int w, int h) => window?.SetSize(w, h);
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        public void SetSize(int width, int height) => window?.SetSize(width, height);
 
         /// <summary>
         /// </summary>
@@ -672,10 +672,10 @@ namespace Alis.Core.Graphic.Platforms.Osx
 
         /// <summary>
         /// </summary>
-        /// <param name="name"></param>
+        /// <param name="procName"></param>
         /// <returns></returns>
 #pragma warning disable S2696
-        public IntPtr GetProcAddress(string name)
+        public IntPtr GetProcAddress(string procName)
         {
             // OpenGL dynamic loading
             const string OpenGLPath = "/System/Library/Frameworks/OpenGL.framework/OpenGL";
@@ -690,7 +690,7 @@ namespace Alis.Core.Graphic.Platforms.Osx
                 }
             }
 
-            return ObjectiveCInterop.Dlsym(_openGlHandle, name);
+            return ObjectiveCInterop.Dlsym(_openGlHandle, procName);
         }
 #pragma warning restore S2696
 
