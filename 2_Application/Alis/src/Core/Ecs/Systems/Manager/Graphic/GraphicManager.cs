@@ -146,12 +146,9 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             }
 
 
-            if (!string.IsNullOrEmpty(Context.Setting.General.Icon))
+            if (!string.IsNullOrEmpty(Context.Setting.General.Icon) && AssetRegistry.GetResourcePathByName(Context.Setting.General.Icon) != null)
             {
-                if (AssetRegistry.GetResourcePathByName(Context.Setting.General.Icon) != null)
-                {
-                    platform.SetWindowIcon(AssetRegistry.GetResourcePathByName(Context.Setting.General.Icon));
-                }
+                platform.SetWindowIcon(AssetRegistry.GetResourcePathByName(Context.Setting.General.Icon));
             }
 
             platform.ShowWindow();
