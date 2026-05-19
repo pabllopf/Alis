@@ -98,9 +98,17 @@ namespace Alis.Extension.Network.Core
             _serializer = new NetworkSerializer();
             _clientSockets = new ConcurrentDictionary<string, WebSocket>();
             _messageQueue = new ConcurrentQueue<(string, NetworkMessageEnvelope)>();
-            Uri listenUriValue = listenUri ?? new Uri("ws://127.0.0.1:8888/");
-            _host = listenUriValue.Host;
-            _port = listenUriValue.Port > 0 ? listenUriValue.Port : 8888;
+
+            if (listenUri != null)
+            {
+                _host = listenUri.Host;
+                _port = listenUri.Port > 0 ? listenUri.Port : 8888;
+            }
+            else
+            {
+                _host = System.Net.IPAddress.Loopback.ToString();
+                _port = 8888;
+            }
         }
 
         /// <summary>
