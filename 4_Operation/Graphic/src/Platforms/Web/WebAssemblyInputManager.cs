@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Alis.Core.Graphic.Platforms.Web
 {
@@ -391,14 +392,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <returns>The bool</returns>
         public bool IsActive(WebAssemblyPlatform platform)
         {
-            foreach (ConsoleKey key in _keys)
-            {
-                if (platform.IsKeyDown(key))
-                {
-                    return true;
-                }
-            }
-            return false;
+            return _keys.Any(platform.IsKeyDown);
         }
     }
 

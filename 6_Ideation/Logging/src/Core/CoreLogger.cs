@@ -30,6 +30,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using Alis.Core.Aspect.Logging.Abstractions;
 
 namespace Alis.Core.Aspect.Logging.Core
@@ -323,12 +324,9 @@ namespace Alis.Core.Aspect.Logging.Core
             try
             {
                 // Apply filters
-                foreach (ILogFilter filter in _filters)
+                if (_filters.Any(filter => !filter.ShouldLog(entry)))
                 {
-                    if (!filter.ShouldLog(entry))
-                    {
-                        return;
-                    }
+                    return;
                 }
 
                 // Write to outputs
