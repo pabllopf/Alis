@@ -113,8 +113,8 @@ namespace Alis.Extension.Network.Core
                 ServerTimestamp = properties.ContainsKey(nameof(ServerTimestamp)) && long.TryParse(properties[nameof(ServerTimestamp)], out long st) ? st : 0,
                 ClientTimestamp = properties.ContainsKey(nameof(ClientTimestamp)) && long.TryParse(properties[nameof(ClientTimestamp)], out long ct) ? ct : 0,
                 SequenceNumber = properties.ContainsKey(nameof(SequenceNumber)) && uint.TryParse(properties[nameof(SequenceNumber)], out uint sn) ? sn : 0,
-                IsReliable = properties.ContainsKey(nameof(IsReliable)) && bool.TryParse(properties[nameof(IsReliable)], out bool ir) ? ir : true,
-                IsOrdered = properties.ContainsKey(nameof(IsOrdered)) && bool.TryParse(properties[nameof(IsOrdered)], out bool io) ? io : true
+                IsReliable = !properties.ContainsKey(nameof(IsReliable)) || !bool.TryParse(properties[nameof(IsReliable)], out bool ir) || ir,
+                IsOrdered = !properties.ContainsKey(nameof(IsOrdered)) || !bool.TryParse(properties[nameof(IsOrdered)], out bool io) || io
             };
 
             return envelope;
