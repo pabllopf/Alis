@@ -518,7 +518,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public int GetRefreshRate()
         {
-            return WebAssemblyDisplayManager.GetRefreshRate();
+            return WebAssemblyDisplayManager.RefreshRate;
         }
 
         /// <summary>
