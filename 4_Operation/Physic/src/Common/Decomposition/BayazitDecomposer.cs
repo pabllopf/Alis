@@ -321,7 +321,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         internal static bool Right(Vector2F a, Vector2F b, Vector2F c) => MathUtils.Area(ref a, ref b, ref c) < 0;
 
         /// <summary>
-        ///     Describes whether right on
+        ///     Describes whether right
         /// </summary>
         /// <param name="a">The </param>
         /// <param name="b">The </param>

@@ -50,18 +50,9 @@ namespace Alis.Core.Ecs.Systems.Manager.Physic
         private float timeStepPhysics;
 
         /// <summary>
-        ///     The vector
-        /// </summary>
-        private WorldPhysic worldPhysic;
-
-        /// <summary>
         ///     Gets or sets the world physic
         /// </summary>
-        public WorldPhysic WorldPhysic
-        {
-            get => worldPhysic;
-            set => worldPhysic = value;
-        }
+        public WorldPhysic WorldPhysic { get; set; }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="PhysicManager" /> class
