@@ -317,10 +317,6 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
                 }
             }
 
-            // Swap the buffers to display the triangle
-            //Glfw.SwapBuffers(Window);
-
-
             platform.SwapBuffers();
             int glError = Gl.GlGetError();
             if (glError != 0)
