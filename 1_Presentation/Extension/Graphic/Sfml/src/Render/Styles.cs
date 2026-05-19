@@ -38,7 +38,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
     public enum Styles
     {
         /// <summary>Regular characters, no style</summary>
-        Regular = 0,
+        None = 0,
 
         /// <summary>Bold characters</summary>
         Bold = 1 << 0,

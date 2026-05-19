@@ -44,7 +44,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         [Fact]
         public void Hat_Centered_IsDefined()
         {
-            Assert.True(Enum.IsDefined(typeof(Hat), Hat.Centered));
+            Assert.True(Enum.IsDefined(typeof(Hat), Hat.None));
         }
 
         /// <summary>
@@ -126,7 +126,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         public void Hat_CanBeCombinedWithBitwiseOr()
         {
             Hat combined = Hat.Up | Hat.Right;
-            Assert.NotEqual(Hat.Centered, combined);
+            Assert.NotEqual(Hat.None, combined);
             Assert.True((combined & Hat.Up) == Hat.Up);
             Assert.True((combined & Hat.Right) == Hat.Right);
         }
@@ -137,7 +137,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         [Fact]
         public void Hat_Centered_HasZeroValue()
         {
-            Assert.Equal(0, (int) Hat.Centered);
+            Assert.Equal(0, (int) Hat.None);
         }
 
         /// <summary>

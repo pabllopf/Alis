@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.Glfw.Enums
         /// <summary>
         ///     Centered
         /// </summary>
-        Centered = 0x00,
+        None = 0x00,
 
         /// <summary>
         ///     Up

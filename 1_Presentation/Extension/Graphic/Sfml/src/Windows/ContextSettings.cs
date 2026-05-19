@@ -45,7 +45,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         public enum Attribute
         {
             /// <summary>Non-debug, compatibility context (this and the core attribute are mutually exclusive)</summary>
-            Default = 0,
+            None = 0,
 
             /// <summary>Core attribute</summary>
             Core = 1 << 0,
@@ -73,7 +73,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// <param name="stencilBits">Stencil buffer bits</param>
         /// <param name="antialiasingLevel">Antialiasing level</param>
         public ContextSettings(uint depthBits, uint stencilBits, uint antialiasingLevel) :
-            this(depthBits, stencilBits, antialiasingLevel, 2, 0, Attribute.Default, false)
+            this(depthBits, stencilBits, antialiasingLevel, 2, 0, Attribute.None, false)
         {
         }
 

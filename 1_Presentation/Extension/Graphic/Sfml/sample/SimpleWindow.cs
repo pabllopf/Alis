@@ -46,7 +46,7 @@ namespace Alis.Extension.Graphic.Sfml.Sample
             VideoMode mode = new VideoMode(800, 600);
             // ContextSettings: profundidad 24, stencil 8, sin antialiasing, OpenGL 2.1, sin flags especiales, sin sRGB
             // Prueba máxima compatibilidad: todos los valores a 0 salvo versión
-            ContextSettings settings = new ContextSettings(0, 0, 0, 2, 1, ContextSettings.Attribute.Default, false);
+            ContextSettings settings = new ContextSettings(0, 0, 0, 2, 1, ContextSettings.Attribute.None, false);
             RenderWindow window = new RenderWindow(mode, "SFML works!", Styles.Default, settings);
             window.KeyPressed += Window_KeyPressed;
 

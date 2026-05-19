@@ -380,7 +380,7 @@ namespace Alis.Extension.Graphic.Glfw
         /// <returns>A bitmask enumeration containing the state of the joystick hats.</returns>
         public static Hat GetJoystickHats(int joystickId)
         {
-            Hat hat = Hat.Centered;
+            Hat hat = Hat.None;
             IntPtr ptr = GetJoystickHats(joystickId, out int count);
             for (int i = 0; i < count; i++)
             {
