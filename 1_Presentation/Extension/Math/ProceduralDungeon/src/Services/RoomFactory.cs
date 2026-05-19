@@ -133,7 +133,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
                     break;
 
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(direction), direction, "Invalid direction.");
+                    throw new ArgumentOutOfRangeException(nameof(corridor), direction, "Invalid corridor direction.");
             }
 
             return new RoomData(xPos, yPos, roomWidth, roomHeight, direction, isBossRoom);
