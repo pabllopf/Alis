@@ -61,6 +61,7 @@ namespace Alis.Extension.Io.FileDialog
             {
                 Logger.Warning("FilePickerOptions Title is null or empty.");
                 throw new ArgumentException("Title cannot be null or empty.", nameof(options));
+            }
 
             if (!string.IsNullOrWhiteSpace(options.DefaultPath) && !Directory.Exists(options.DefaultPath))
             {
