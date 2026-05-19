@@ -45,11 +45,11 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         /// The key bindings
         /// </summary>
-        private Dictionary<string, KeyBinding> _keyBindings;
+        private readonly Dictionary<string, KeyBinding> _keyBindings;
         /// <summary>
         /// The previous gamepad states
         /// </summary>
-        private Dictionary<int, GamepadInputState> _previousGamepadStates;
+        private readonly Dictionary<int, GamepadInputState> _previousGamepadStates;
         /// <summary>
         /// The last mouse
         /// </summary>
@@ -338,7 +338,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         /// The keys
         /// </summary>
-        private HashSet<ConsoleKey> _keys;
+        private readonly HashSet<ConsoleKey> _keys;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="KeyBinding"/> class

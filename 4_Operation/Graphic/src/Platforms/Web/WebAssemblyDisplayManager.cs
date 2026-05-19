@@ -65,7 +65,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         /// The supported modes
         /// </summary>
-        private List<DisplayMode> _supportedModes;
+        private readonly List<DisplayMode> _supportedModes;
 
         /// <summary>
         ///     Event triggered when the window size changes
