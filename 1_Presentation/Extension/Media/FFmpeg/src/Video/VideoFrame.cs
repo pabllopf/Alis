@@ -102,13 +102,13 @@ namespace Alis.Extension.Media.FFmpeg.Video
         ///     Loads frame data from stream.
         /// </summary>
         /// <param name="str">Stream containing raw frame data in RGB24 format</param>
-        public bool Load(Stream str)
+        public bool Load(Stream stream)
         {
             offset = 0;
 
             while (offset < size)
             {
-                int r = str.Read(frameBuffer, offset, size - offset);
+                int r = stream.Read(frameBuffer, offset, size - offset);
                 if (r <= 0)
                 {
                     if (offset == 0)

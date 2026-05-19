@@ -71,6 +71,6 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         /// </summary>
         /// <param name="edge">The edge</param>
         /// <returns>The sink</returns>
-        public override Sink Locate(Edge edge) => this;
+        public override Sink Locate(Edge s) => this;
     }
 }

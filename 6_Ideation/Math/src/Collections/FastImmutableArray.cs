@@ -234,9 +234,9 @@ namespace Alis.Core.Aspect.Math.Collections
             /// </summary>
             /// <param name="element">The element to remove.</param>
             /// <returns><c>true</c> if the element was found and removed; otherwise, <c>false</c>.</returns>
-            public bool Remove(T element)
+            public bool Remove(T item)
             {
-                int index = IndexOf(element);
+                int index = IndexOf(item);
                 if (index >= 0)
                 {
                     RemoveAt(index);
@@ -272,9 +272,9 @@ namespace Alis.Core.Aspect.Math.Collections
             /// </summary>
             /// <param name="array">The destination array.</param>
             /// <param name="index">The starting index in the destination array.</param>
-            public void CopyTo(T[] array, int index)
+            public void CopyTo(T[] array, int arrayIndex)
             {
-                System.Array.Copy(_elements, 0, array, index, Count);
+                System.Array.Copy(_elements, 0, array, arrayIndex, Count);
             }
 
             /// <summary>

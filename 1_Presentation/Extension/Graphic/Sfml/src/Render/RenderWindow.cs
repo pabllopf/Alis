@@ -520,9 +520,9 @@ namespace Alis.Extension.Graphic.Sfml.Render
         ///     Show or hide the mouse cursor
         /// </summary>
         /// <param name="visible">True to show, false to hide</param>
-        public override void SetMouseCursorVisible(bool visible)
+        public override void SetMouseCursorVisible(bool show)
         {
-            sfRenderWindow_setMouseCursorVisible(CPointer, visible);
+            sfRenderWindow_setMouseCursorVisible(CPointer, show);
         }
 
 
