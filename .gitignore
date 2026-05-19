@@ -90,3 +90,4 @@ Debug/
 *.txt
 live_issues.json
 maintainability_issues.json
+live_issues_full.json
